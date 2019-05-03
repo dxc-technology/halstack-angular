@@ -1,0 +1,17 @@
+<ng-template #content><ng-content></ng-content></ng-template>
+<button *ngIf="type === 'basic'" mat-button [disabled]="disabled">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+<button *ngIf="type === 'raised'" mat-raised-button [disabled]="disabled">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+<button *ngIf="type === 'outlined'" mat-stroked-button [disabled]="disabled">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+<button
+  *ngIf="type !== 'basic' && type !== 'raised' && type !== 'outlined'"
+  mat-button
+  [disabled]="disabled"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>

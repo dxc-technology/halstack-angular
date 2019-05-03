@@ -1,0 +1,15 @@
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'dxc-button',
+  templateUrl: './dxc-button.component.html',
+  styleUrls: ['./dxc-button.component.scss'],
+  encapsulation: ViewEncapsulation.None
+})
+export class DxcButtonComponent implements OnInit {
+  @Input() type: string;
+  @Input() disabled: boolean;
+  constructor() {}
+
+  ngOnInit() {}
+}

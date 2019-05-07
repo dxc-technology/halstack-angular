@@ -56,7 +56,7 @@ pipeline {
                         }
 
                         // ADD HERE NEW VERSION ON PACKAGE.JSON
-                        sh "sed -i -e 's/0.0.0/'${env.RELEASE_NUMBER}'/g' ./dist/ux-web/package.json"
+                        sh "sed -i -e 's/0.0.0/'${env.RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
                         sh "cat package.json"
 
                         // TAG IF IS STABLE

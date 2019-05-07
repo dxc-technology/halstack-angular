@@ -2,4 +2,4 @@
  * Public API Surface of dxc-ngx-cdk
  */
 
-export * from './lib/dxc-ngx-cdk.module';
+export * from './lib/dxc-button/dxc-button.module';

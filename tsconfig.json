@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "dxc-ngx-cdk": [
+        "dist/dxc-ngx-cdk"
+      ],
+      "dxc-ngx-cdk/*": [
+        "dist/dxc-ngx-cdk/*"
+      ]
+    }
   }
 }

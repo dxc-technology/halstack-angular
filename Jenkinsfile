@@ -29,7 +29,6 @@ pipeline {
             steps {
                 sh '''
                     ng build dxc-ngx-cdk
-                    cp -R ./projects/dxc-ngx-cdk/src/lib/styles ./dist/dxc-ngx-cdk/styles
                 '''
             }
         }

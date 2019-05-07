@@ -3,5 +3,6 @@
   "dest": "../../dist/dxc-ngx-cdk",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["."]
 }

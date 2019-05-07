@@ -32,6 +32,15 @@ pipeline {
                 '''
             }
         }
+        stage('.npmrc') {
+          steps {
+            withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
+                sh '''
+                    cat ${CONFIG} > ~/.npmrc
+                '''
+            }
+          }
+        }
         stage('Push dxc-ngx-cdk library artifact to master') {
             steps {
                 script {

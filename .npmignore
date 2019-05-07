@@ -1,0 +1,15 @@
+dist
+e2e
+.editorconfig
+debug.log
+karma.conf.js
+ng-package.json
+protractor.conf.js
+public_api.ts
+test.ts
+tsconfig.app.json
+tsconfig.spec.json
+tslint.json
+*spec.ts
+*mock.ts
+*.testing.ts

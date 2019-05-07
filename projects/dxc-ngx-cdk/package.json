@@ -7,7 +7,7 @@
     "email": "DigitalInsurance@dxc.com",
     "url": "https://dxc.com"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
     "@angular/animations": "^7.2.14",

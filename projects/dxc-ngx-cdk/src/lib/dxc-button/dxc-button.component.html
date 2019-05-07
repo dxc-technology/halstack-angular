@@ -8,8 +8,11 @@
 <button *ngIf="type === 'outlined'" mat-stroked-button [disabled]="disabled">
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </button>
+<button *ngIf="type === 'flat'" mat-flat-button [disabled]="disabled">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
 <button
-  *ngIf="type !== 'basic' && type !== 'raised' && type !== 'outlined'"
+  *ngIf="type !== 'basic' && type !== 'raised' && type !== 'outlined' && type !== 'flat'"
   mat-button
   [disabled]="disabled"
 >

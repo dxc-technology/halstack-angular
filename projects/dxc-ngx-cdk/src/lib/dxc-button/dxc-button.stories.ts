@@ -57,4 +57,19 @@ storiesOf('Button', module)
       }
     }),
     { notes: 'Outlined DXC Button' }
+  )
+  .add(
+    'Flat',
+    () => ({
+      template: `<dxc-button type="flat">
+        Button <mat-icon>info</mat-icon>
+      </dxc-button>
+      <dxc-button type="flat" disabled>
+        Button <mat-icon>info</mat-icon>
+      </dxc-button>`,
+      props: {
+        button
+      }
+    }),
+    { notes: 'Flat DXC Button' }
   );

@@ -1,16 +1,17 @@
 dxc-button {
   button.mat-raised-button,
   button.mat-button,
-  button.mat-stroked-button {
+  button.mat-stroked-button,
+  button.mat-flat-button {
     padding: 12px 30px;
     border-radius: 4px;
     min-width: 122px;
     max-width: 420px;
-    min-height: 40px;
+    min-height: 43px;
     line-height: 1;
     font-size: 14px;
     font-weight: 500;
-    margin: 30px;
+    margin: 15px;
 
     span.mat-button-wrapper {
       text-transform: uppercase;
@@ -20,6 +21,10 @@ dxc-button {
     }
 
     &:attr(disabled) {
+      cursor: not-allowed;
+    }
+
+    &:disabled {
       cursor: not-allowed;
     }
   }
@@ -81,6 +86,7 @@ dxc-button {
   }
 
   button.mat-stroked-button {
+
     &:not([disabled]) {
       border: 2px solid #000;
     }
@@ -100,6 +106,30 @@ dxc-button {
     .mat-button-focus-overlay {
       background-color: white;
       z-index: -5;
+    }
+  }
+
+  button.mat-flat-button {
+    &:hover:not([disabled]) {
+      background-color: transparent;
+
+      span.mat-button-wrapper {
+        z-index: 5;
+      }
+
+      .mat-button-ripple.mat-ripple,
+      .mat-button-focus-overlay {
+        z-index: -5;
+        .mat-ripple-element {
+          background-color: #eee;
+          opacity: 0.75;
+        }
+      }
+
+      .mat-button-ripple.mat-ripple {
+        background-color: #d9d9d9;
+      }
+  
     }
   }
 }

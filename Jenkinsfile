@@ -71,7 +71,7 @@ pipeline {
                         }
                     }
                     sh '''
-                        cd dist/ux-web
+                        cd dist/dxc-ngx-cdk
                         cp ../../projects/dxc-ngx-cdk/package.json ../../projects/dxc-ngx-cdk/src/lib/package.json
                         cp ../../.npmignore ../../projects/dxc-ngx-cdk/src/lib/.npmignore
                         npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm

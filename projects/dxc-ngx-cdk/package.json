@@ -1,7 +1,7 @@
 {
   "name": "@diaas/dxc-ngx-cdk",
   "version": "0.0.1",
-  "dependencies": {
+  "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
     "@angular/animations": "^7.2.14",

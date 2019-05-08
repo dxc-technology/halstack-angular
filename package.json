@@ -35,9 +35,17 @@
     "@angular/cli": "~7.3.8",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
-    "@types/node": "~8.9.4",
+    "@babel/core": "^7.4.4",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addon-notes": "^5.0.11",
+    "@storybook/addon-storyshots": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/angular": "^5.0.11",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "babel-loader": "^8.0.5",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -52,13 +60,6 @@
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2",
-    "@babel/core": "^7.4.4",
-    "babel-loader": "^8.0.5",
-    "@storybook/angular": "^5.0.11",
-    "@storybook/addon-notes": "^5.0.11",
-    "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11",
-    "@storybook/addons": "^5.0.11"
+    "typescript": "~3.2.2"
   }
 }

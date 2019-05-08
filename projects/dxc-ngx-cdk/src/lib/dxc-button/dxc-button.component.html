@@ -1,20 +1,46 @@
 <ng-template #content><ng-content></ng-content></ng-template>
-<button *ngIf="type === 'basic'" mat-button [disabled]="disabled">
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</button>
-<button *ngIf="type === 'raised'" mat-raised-button [disabled]="disabled">
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</button>
-<button *ngIf="type === 'outlined'" mat-stroked-button [disabled]="disabled">
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</button>
-<button *ngIf="type === 'flat'" mat-flat-button [disabled]="disabled">
+<button
+  *ngIf="type === 'basic'"
+  mat-button
+  [disabled]="disabled"
+  [disableRipple]="disableRipple"
+>
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </button>
 <button
-  *ngIf="type !== 'basic' && type !== 'raised' && type !== 'outlined' && type !== 'flat'"
+  *ngIf="type === 'raised'"
+  mat-raised-button
+  [disabled]="disabled"
+  [disableRipple]="disableRipple"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+<button
+  *ngIf="type === 'outlined'"
+  mat-stroked-button
+  [disabled]="disabled"
+  [disableRipple]="disableRipple"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+<button
+  *ngIf="type === 'flat'"
+  mat-flat-button
+  [disabled]="disabled"
+  [disableRipple]="disableRipple"
+>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+<button
+  *ngIf="
+    type !== 'basic' &&
+    type !== 'raised' &&
+    type !== 'outlined' &&
+    type !== 'flat'
+  "
   mat-button
   [disabled]="disabled"
+  [disableRipple]="disableRipple"
 >
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </button>

@@ -1,16 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MatIconModule } from '@angular/material';
+import { DxcButtonModule } from 'projects/dxc-ngx-cdk/src/public-api';
+import { DxcCheckboxModule } from 'projects/dxc-ngx-cdk/src/public-api';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatIconModule,
+        DxcButtonModule,
+        DxcCheckboxModule
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent]
     }).compileComponents();
   }));
 
@@ -26,10 +30,12 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('dxc-angular-cdk');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render at least a button', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to dxc-angular-cdk!');
+    expect(compiled.querySelector('dxc-button').textContent).toContain(
+      'Button 1'
+    );
   });
 });

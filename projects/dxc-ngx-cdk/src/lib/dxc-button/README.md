@@ -41,6 +41,13 @@ The API properties are the following:
         <td>No</td>
         <td>false</td>
     </tr>
+    <tr>
+        <td>disableRipple</td>
+        <td>boolean | string</td>
+        <td>-</td>
+        <td>No</td>
+        <td>false</td>
+    </tr>
 </table>
 
 ## Example
@@ -51,5 +58,8 @@ The API properties are the following:
 </dxc-button>
 <dxc-button type="outlined" disabled>
   Button 2
+</dxc-button>
+<dxc-button type="raised" disableRipple>
+  Button 3
 </dxc-button>
 ```

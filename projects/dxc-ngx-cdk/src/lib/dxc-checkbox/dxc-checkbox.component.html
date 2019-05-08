@@ -1,0 +1,18 @@
+<mat-checkbox
+  [(ngModel)]="ngModel"
+  [(indeterminate)]="indeterminate"
+  [labelPosition]="labelPosition"
+  [disableRipple]="disableRipple"
+  [checked]="checked"
+  [value]="value"
+  [disabled]="disabled"
+  [required]="required"
+  [name]="name"
+  [id]="id"
+  (change)="onChange()"
+  (indeterminateChange)="onIndeterminateChange()"
+>
+  <ng-content></ng-content>
+</mat-checkbox>
+
+<!-- [(ngModel)]="model" -->

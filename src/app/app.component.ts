@@ -8,7 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'dxc-angular-cdk';
 
+  checked = true;
+
   showAlert() {
     window.alert('Button1');
+  }
+
+  changeCheckBoxValue() {
+    this.checked = !this.checked;
   }
 }

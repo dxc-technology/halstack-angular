@@ -21,6 +21,9 @@ storiesOf('Button', module)
       </dxc-button>
       <dxc-button type="basic" disabled>
         Button <mat-icon>home</mat-icon>
+      </dxc-button>
+      <dxc-button type="basic" disableRipple>
+        Button <mat-icon>home</mat-icon>
       </dxc-button>`,
       props: {
         button
@@ -35,6 +38,9 @@ storiesOf('Button', module)
         Button <mat-icon>person</mat-icon>
       </dxc-button>
       <dxc-button type="raised" disabled>
+        Button <mat-icon>person</mat-icon>
+      </dxc-button>
+      <dxc-button type="raised" disableRipple>
         Button <mat-icon>person</mat-icon>
       </dxc-button>`,
       props: {
@@ -51,6 +57,9 @@ storiesOf('Button', module)
       </dxc-button>
       <dxc-button type="raised" disabled>
         Button <mat-icon>info</mat-icon>
+      </dxc-button>
+      <dxc-button type="raised" disableRipple>
+        Button <mat-icon>info</mat-icon>
       </dxc-button>`,
       props: {
         button
@@ -65,6 +74,9 @@ storiesOf('Button', module)
         Button <mat-icon>info</mat-icon>
       </dxc-button>
       <dxc-button type="flat" disabled>
+        Button <mat-icon>info</mat-icon>
+      </dxc-button>
+      <dxc-button type="flat" disableRipple>
         Button <mat-icon>info</mat-icon>
       </dxc-button>`,
       props: {

@@ -9,8 +9,8 @@
   [required]="required"
   [name]="name"
   [id]="id"
-  (change)="onChange()"
-  (indeterminateChange)="onIndeterminateChange()"
+  (change)="onChange($event)"
+  (indeterminateChange)="onIndeterminateChange($event)"
 >
   <ng-content></ng-content>
 </mat-checkbox>

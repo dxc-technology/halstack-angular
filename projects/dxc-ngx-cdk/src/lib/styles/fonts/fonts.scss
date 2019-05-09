@@ -1,95 +1,118 @@
+@import './font-awesome/font-awesome-icons';
+@import './material-icons/material-icons';
+
 @font-face {
-    font-family: "Material Icons";
-    src: url("../fonts/material-icons/MaterialIcons-Regular.woff2") format("woff2");
+  font-family: 'Material Icons';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/material-icons/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'),
+    url('~@diaas/dxc-ngx-cdk/styles/fonts/material-icons/MaterialIcons-Regular.woff2')
+      format('woff2'),
+    url('~@diaas/dxc-ngx-cdk/styles/fonts/material-icons/MaterialIcons-Regular.woff')
+      format('woff'),
+    url('~@diaas/dxc-ngx-cdk/styles/fonts/material-icons/MaterialIcons-Regular.ttf')
+      format('truetype');
 }
 
 @font-face {
-    font-family: "Font Awesome";
-    src: url("../fonts/font-awesome/fa-regular-400.woff2") format("woff2");
-    font-style: normal;
-    font-weight: 400;
+  font-family: 'Font Awesome';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/font-awesome/fa-regular-400.woff2')
+    format('woff2');
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Font Awesome";
-    src: url("../fonts/font-awesome/fa-solid-900.woff2") format("woff2");
-    font-style: normal;
-    font-weight: 700;
+  font-family: 'Font Awesome';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/font-awesome/fa-solid-900.woff2')
+    format('woff2');
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
-    font-family: "Font Awesome Brands";
-    src: url("../fonts/font-awesome/fa-brands-400.woff2") format("woff2");
-    font-style: normal;
-    font-weight: 400;
+  font-family: 'Font Awesome Brands';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/font-awesome/fa-brands-400.woff2')
+    format('woff2');
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-Light.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 200;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-Light.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 200;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-Regular.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 400;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-Regular.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-SemiBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 600;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-SemiBold.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 600;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-Bold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 700;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-Bold.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 700;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-ExtraBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 800;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-ExtraBold.ttf')
+    format('truetype');
+  font-style: normal;
+  font-weight: 800;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-LightItalic.ttf") format("truetype");
-    font-style: italic;
-    font-weight: 200;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-LightItalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: 200;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-Italic.ttf") format("truetype");
-    font-style: italic;
-    font-weight: 400;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-Italic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-SemiBoldItalic.ttf") format("truetype");
-    font-style: italic;
-    font-weight: 600;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-SemiBoldItalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: 600;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-BoldItalic.ttf") format("truetype");
-    font-style: italic;
-    font-weight: 700;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-BoldItalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: 700;
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/open-sans/OpenSans-ExtraBoldItalic.ttf") format("truetype");
-    font-style: italic;
-    font-weight: 800;
+  font-family: 'Open Sans';
+  src: url('~@diaas/dxc-ngx-cdk/styles/fonts/open-sans/OpenSans-ExtraBoldItalic.ttf')
+    format('truetype');
+  font-style: italic;
+  font-weight: 800;
 }

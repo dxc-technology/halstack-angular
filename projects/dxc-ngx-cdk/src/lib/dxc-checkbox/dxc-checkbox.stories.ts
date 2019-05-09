@@ -12,9 +12,9 @@ storiesOf('Checkbox', module)
     })
   )
   .add(
-    'Normal',
+    'Basic',
     () => ({
-      template: `<dxc-checkbox>Checkbox</dxc-checkbox>`,
+      template: `<dxc-checkbox> Checkbox</dxc-checkbox>`,
       props: {
         checkbox
       }

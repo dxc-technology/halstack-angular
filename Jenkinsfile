@@ -1,21 +1,21 @@
 pipeline {
     agent {
-      dockerfile {
-        args '-u root:root'
-        filename 'docker/Dockerfile'
-        reuseNode true
-      }
+        dockerfile {
+            args '-u root:root'
+            filename 'docker/Dockerfile'
+            reuseNode true
+        }
     }
     stages {
         stage('Git') {
-          steps {
-            withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
-              sh "touch ~/.netrc"
-              sh "echo 'machine github.dxc.com' >> ~/.netrc"
-              sh "echo 'login ${GIT_USER}' >> ~/.netrc"
-              sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
+            steps {
+                    withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
+                        sh "touch ~/.netrc"
+                        sh "echo 'machine github.dxc.com' >> ~/.netrc"
+                        sh "echo 'login ${GIT_USER}' >> ~/.netrc"
+                        sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
+                    }
             }
-          }
         }
         stage('Install dependencies') {
             steps {
@@ -34,15 +34,17 @@ pipeline {
             }
         }
         stage('.npmrc') {
-          steps {
-            withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
-                sh '''
-                    cat ${CONFIG} > ~/.npmrc
-                '''
+            when { branch 'master' }
+            steps {
+                withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
+                    sh '''
+                        cat ${CONFIG} > ~/.npmrc
+                    '''
+                }
             }
-          }
         }
         stage('Push dxc-ngx-cdk library artifact to master') {
+            when { branch 'master' }
             steps {
                 script {
                     def doPromote=true;
@@ -57,12 +59,12 @@ pipeline {
                     if(doPromote){
                         isStable=false;
                         try {
-                             timeout(time: 2, unit: 'MINUTES') {
-                                 input (message: 'Do you want to tag this package as stable?', ok: 'Yes')
-                             }
-                             isStable=true;
+                            timeout(time: 2, unit: 'MINUTES') {
+                                input (message: 'Do you want to tag this package as stable?', ok: 'Yes')
+                            }
+                            isStable=true;
                         } catch(err) {
-                         echo "This build was published to NPM but not tagged as stable"
+                            echo "This build was published to NPM but not tagged as stable"
                         }
 
                         // ADD HERE NEW VERSION ON PACKAGE.JSON
@@ -71,13 +73,13 @@ pipeline {
 
                         // TAG IF IS STABLE
                         if (isStable) {
-                          currentBuild.description = "published: ${env.RELEASE_NUMBER} (stable tag:${isStable})"
-                          echo "Create Git tag ${env.RELEASE_NUMBER}"
-                          sh '''
-                            gitUrlWithCreds="$(echo "${GIT_URL}" | sed -e 's!://!://'${GIT_USER}:${GIT_PASSWORD}'@!')"
-                            git tag "${RELEASE_NUMBER}" "${GIT_COMMIT}"
-                            git push "${gitUrlWithCreds}" "${RELEASE_NUMBER}"
-                          '''
+                            currentBuild.description = "published: ${env.RELEASE_NUMBER} (stable tag:${isStable})"
+                            echo "Create Git tag ${env.RELEASE_NUMBER}"
+                            sh '''
+                                gitUrlWithCreds="$(echo "${GIT_URL}" | sed -e 's!://!://'${GIT_USER}:${GIT_PASSWORD}'@!')"
+                                git tag "${RELEASE_NUMBER}" "${GIT_COMMIT}"
+                                git push "${gitUrlWithCreds}" "${RELEASE_NUMBER}"
+                            '''
                         }
                     }
                     sh '''

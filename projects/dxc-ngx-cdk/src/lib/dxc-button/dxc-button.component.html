@@ -1,11 +1,24 @@
-<ng-template #content><ng-content></ng-content></ng-template>
 <button
-  *ngIf="type === 'basic'"
+  *ngIf="type !== 'raised' && type !== 'outlined' && type !== 'flat'"
   mat-button
   [disabled]="disabled"
   [disableRipple]="disableRipple"
 >
-  <ng-container *ngTemplateOutlet="content"></ng-container>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition === 'before'">{{
+    icon
+  }}</mat-icon>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition === 'before'"
+    class="{{ icon }}"
+  ></i
+  ><span *ngIf="text">{{ text }}</span>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition !== 'before'"
+    class="{{ icon }}"
+  ></i>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition !== 'before'">{{
+    icon
+  }}</mat-icon>
 </button>
 <button
   *ngIf="type === 'raised'"
@@ -13,7 +26,21 @@
   [disabled]="disabled"
   [disableRipple]="disableRipple"
 >
-  <ng-container *ngTemplateOutlet="content"></ng-container>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition === 'before'">{{
+    icon
+  }}</mat-icon>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition === 'before'"
+    class="{{ icon }}"
+  ></i
+  ><span *ngIf="text">{{ text }}</span>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition !== 'before'"
+    class="{{ icon }}"
+  ></i>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition !== 'before'">{{
+    icon
+  }}</mat-icon>
 </button>
 <button
   *ngIf="type === 'outlined'"
@@ -21,7 +48,21 @@
   [disabled]="disabled"
   [disableRipple]="disableRipple"
 >
-  <ng-container *ngTemplateOutlet="content"></ng-container>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition === 'before'">{{
+    icon
+  }}</mat-icon>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition === 'before'"
+    class="{{ icon }}"
+  ></i
+  ><span *ngIf="text">{{ text }}</span>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition !== 'before'"
+    class="{{ icon }}"
+  ></i>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition !== 'before'">{{
+    icon
+  }}</mat-icon>
 </button>
 <button
   *ngIf="type === 'flat'"
@@ -29,18 +70,19 @@
   [disabled]="disabled"
   [disableRipple]="disableRipple"
 >
-  <ng-container *ngTemplateOutlet="content"></ng-container>
-</button>
-<button
-  *ngIf="
-    type !== 'basic' &&
-    type !== 'raised' &&
-    type !== 'outlined' &&
-    type !== 'flat'
-  "
-  mat-button
-  [disabled]="disabled"
-  [disableRipple]="disableRipple"
->
-  <ng-container *ngTemplateOutlet="content"></ng-container>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition === 'before'">{{
+    icon
+  }}</mat-icon>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition === 'before'"
+    class="{{ icon }}"
+  ></i
+  ><span *ngIf="text">{{ text }}</span>
+  <i
+    *ngIf="iconType === 'fa' && iconPosition !== 'before'"
+    class="{{ icon }}"
+  ></i>
+  <mat-icon *ngIf="iconType !== 'fa' && iconPosition !== 'before'">{{
+    icon
+  }}</mat-icon>
 </button>

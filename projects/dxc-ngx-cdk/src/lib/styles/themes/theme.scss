@@ -1,3 +1,5 @@
+@import "./../fonts/fonts.scss";
+
 // Import all the theming functionality.
 // We can use relative imports for imports from the cdk because we bundle everything
 // up into a single flat scss file for material.
@@ -4042,3 +4044,22 @@ $my-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 // @include angular-material-theme($candy-app-theme);
+
+body * {
+    font-family: 'Open Sans';
+    font-weight: 400;
+
+    mat-icon {
+        font-family: 'Material Icons';
+    }
+
+    i.fas {
+        font-family: 'Font Awesome';
+        font-weight: 700;
+    }
+
+    i.fab {
+        font-family: 'Font Awesome Brands';
+        font-weight: 700;
+    }
+}

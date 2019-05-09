@@ -1,6 +1,6 @@
-@import "./../styles/themes/theme.scss";
-
 dxc-button {
+    display: inline-flex;
+
     button.mat-raised-button,
     button.mat-button,
     button.mat-stroked-button,
@@ -20,6 +20,28 @@ dxc-button {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            mat-icon {
+                font-size: 20px;
+                width: auto;
+                height: auto;
+            }
+
+            i {
+                font-size: 18px;
+            }
+
+            mat-icon:first-child, i:first-child {
+                margin-right: 6px;
+
+                &:last-child {
+                    margin: 0 6px;
+                }
+            }
+
+            span + mat-icon, span + i {
+                margin-left: 6px;
+            }
         }
 
         &:attr(disabled) {

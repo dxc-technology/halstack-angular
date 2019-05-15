@@ -21,8 +21,8 @@ storiesOf('Button', module)
       <dxc-button text="Button Disabled" disabled></dxc-button>
       <dxc-button text="Material" icon="favorite"></dxc-button>
       <dxc-button text="Font Awesome" iconType="fa" icon="fas fa-allergies" iconPosition="before"></dxc-button>
-      <dxc-button type="basic" icon="delete_forever"></dxc-button>
-      <dxc-button type="basic" text="No Ripple" disableRipple></dxc-button>`,
+      <dxc-button icon="delete_forever"></dxc-button>
+      <dxc-button text="No Ripple" disableRipple></dxc-button>`,
       props: {
         button
       }

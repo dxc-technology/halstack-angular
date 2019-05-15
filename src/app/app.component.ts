@@ -17,4 +17,8 @@ export class AppComponent {
   changeCheckBoxValue() {
     this.checked = !this.checked;
   }
+
+  isRequired() {
+    return true;
+  }
 }

@@ -2,6 +2,8 @@
 
 ## Overview
 
+The DXC Checkbox Component provides to the user the ability to select a true, false or indeterminate value for a field.
+
 ## Usage
 
 To use the component, add the following selector to any template:

@@ -16,15 +16,13 @@ storiesOf('Button', module)
   .add(
     'Basic',
     () => ({
-      template: `<dxc-button type="basic">
-        Button <mat-icon>home</mat-icon>
-      </dxc-button>
-      <dxc-button type="basic" disabled>
-        Button <mat-icon>home</mat-icon>
-      </dxc-button>
-      <dxc-button type="basic" disableRipple>
-        Button <mat-icon>home</mat-icon>
-      </dxc-button>`,
+      template: `
+      <dxc-button text="Button"></dxc-button>
+      <dxc-button text="Button Disabled" disabled></dxc-button>
+      <dxc-button text="Material" icon="favorite"></dxc-button>
+      <dxc-button text="Font Awesome" iconType="fa" icon="fas fa-allergies" iconPosition="before"></dxc-button>
+      <dxc-button icon="delete_forever"></dxc-button>
+      <dxc-button text="No Ripple" disableRipple></dxc-button>`,
       props: {
         button
       }
@@ -34,15 +32,13 @@ storiesOf('Button', module)
   .add(
     'Raised',
     () => ({
-      template: `<dxc-button type="raised">
-        Button <mat-icon>person</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disabled>
-        Button <mat-icon>person</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disableRipple>
-        Button <mat-icon>person</mat-icon>
-      </dxc-button>`,
+      template: `
+      <dxc-button type="raised" text="Button"></dxc-button>
+      <dxc-button type="raised" text="Button Disabled" disabled></dxc-button>
+      <dxc-button type="raised" text="Material" icon="favorite"></dxc-button>
+      <dxc-button type="raised" text="Font Awesome" iconType="fa" icon="fas fa-allergies" iconPosition="before"></dxc-button>
+      <dxc-button type="raised" icon="delete_forever"></dxc-button>
+      <dxc-button type="raised" text="No Ripple" disableRipple></dxc-button>`,
       props: {
         button
       }
@@ -52,15 +48,13 @@ storiesOf('Button', module)
   .add(
     'Outlined',
     () => ({
-      template: `<dxc-button type="outlined">
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disabled>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disableRipple>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>`,
+      template: `
+      <dxc-button type="outlined" text="Button"></dxc-button>
+      <dxc-button type="outlined" text="Button Disabled" disabled></dxc-button>
+      <dxc-button type="outlined" text="Material" icon="favorite"></dxc-button>
+      <dxc-button type="outlined" text="Font Awesome" iconType="fa" icon="fas fa-allergies" iconPosition="before"></dxc-button>
+      <dxc-button type="outlined" icon="delete_forever"></dxc-button>
+      <dxc-button type="outlined" text="No Ripple" disableRipple></dxc-button>`,
       props: {
         button
       }
@@ -70,15 +64,13 @@ storiesOf('Button', module)
   .add(
     'Flat',
     () => ({
-      template: `<dxc-button type="flat">
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="flat" disabled>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="flat" disableRipple>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>`,
+      template: `
+      <dxc-button type="flat" text="Button"></dxc-button>
+      <dxc-button type="flat" text="Button Disabled" disabled></dxc-button>
+      <dxc-button type="flat" text="Material" icon="favorite"></dxc-button>
+      <dxc-button type="flat" text="Font Awesome" iconType="fa" icon="fas fa-allergies" iconPosition="before"></dxc-button>
+      <dxc-button type="flat" icon="delete_forever"></dxc-button>
+      <dxc-button type="flat" text="No Ripple" disableRipple></dxc-button>`,
       props: {
         button
       }

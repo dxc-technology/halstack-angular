@@ -68,6 +68,7 @@ The API properties are the following:
 <table>
     <tr style="background-color: grey">
         <td>Property</td>
+        <td>Input / Output</td>
         <td>Type</td>
         <td>Values</td>
         <td>Required</td>
@@ -75,6 +76,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>type</td>
+        <td>@Input()</td>
         <td><code>string</code></td>
         <td>{basic, outlined, raised, flat}</td>
         <td>No</td>
@@ -82,6 +84,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>disabled</td>
+        <td>@Input()</td>
         <td><code>boolean | string</code></td>
         <td>-</td>
         <td>No</td>
@@ -89,6 +92,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>disableRipple</td>
+        <td>@Input()</td>
         <td><code>boolean | string</code></td>
         <td>-</td>
         <td>No</td>
@@ -96,6 +100,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>text</td>
+        <td>@Input()</td>
         <td><code>string</code></td>
         <td>-</td>
         <td>No</td>
@@ -103,6 +108,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>iconType</td>
+        <td>@Input()</td>
         <td><code>string</code></td>
         <td>{mat, fa}</td>
         <td>No</td>
@@ -110,6 +116,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>icon</td>
+        <td>@Input()</td>
         <td><code>string</code></td>
         <td>Icon from 'iconType' API</td>
         <td>No</td>
@@ -117,6 +124,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>iconPosition</td>
+        <td>@Input()</td>
         <td><code>string</code></td>
         <td>{before, after}</td>
         <td>No</td>

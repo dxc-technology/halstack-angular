@@ -4,21 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   DxcButtonModule,
-  DxcCheckboxModule
+  DxcCheckboxModule,
+  DxcDateModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
-import { MatIconModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     DxcButtonModule,
     DxcCheckboxModule,
-    MatIconModule
+    DxcDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

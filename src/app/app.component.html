@@ -65,19 +65,62 @@
   icon="photo_camera"
   iconPosition="before"
 ></dxc-button>
-
+<br />
 <dxc-button type="raised" text="Click me!"></dxc-button>
 
 <br />
 
-<dxc-checkbox [(ngModel)]="checked" labelPosition="before"
-  >Checkbox 1</dxc-checkbox
->
+<dxc-checkbox
+  [(ngModel)]="checked"
+  labelPosition="before"
+  text="Checkbox 1"
+></dxc-checkbox>
+<br />
+<dxc-checkbox
+  [(ngModel)]="checked"
+  labelPosition="before"
+  text="Checkbox 2"
+></dxc-checkbox>
 
-<dxc-checkbox disabled>Checkbox 2</dxc-checkbox>
+<dxc-checkbox
+  [(ngModel)]="checked"
+  labelPosition="after"
+  text="Checkbox 3"
+></dxc-checkbox>
 
-<dxc-checkbox indeterminate="true" (change)="showAlert()"
-  >Checkbox 2</dxc-checkbox
->
+<dxc-checkbox
+  disabled
+  required
+  labelPosition="before"
+  text="Checkbox 4"
+></dxc-checkbox>
+
+<dxc-checkbox
+  indeterminate
+  (change)="showAlert($event)"
+  text="Checkbox 5"
+></dxc-checkbox>
+
+<dxc-checkbox></dxc-checkbox>
+
+<dxc-checkbox
+  indeterminate
+  (change)="showAlert($event)"
+  required
+  text="Checkbox 7"
+></dxc-checkbox>
+
+<br />
+
+<dxc-date
+  icon="keyboard_arrow_down"
+  [startAt]="birthday"
+  disabled="input"
+  appearance="legacy"
+  text="Select date"
+  floatLabel="never"
+  [filter]="filter"
+></dxc-date>
+<dxc-date startView="multi-year" [min]="minDate" [max]="maxDate"></dxc-date>
 
 <!-- <router-outlet></router-outlet> -->

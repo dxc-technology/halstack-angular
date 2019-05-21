@@ -1,5 +1,5 @@
 <mat-checkbox
-  [(ngModel)]="ngModel"
+  [ngModel]="ngModel"
   [indeterminate]="indeterminate"
   [labelPosition]="labelPosition"
   [disableRipple]="disableRipple"
@@ -9,6 +9,7 @@
   [required]="required"
   [name]="name"
   [id]="id"
+  (ngModelChange)="onNgModelChange($event)"
   (change)="onChange($event)"
   (indeterminateChange)="onIndeterminateChange($event)"
 >

@@ -97,7 +97,7 @@
 
 <dxc-checkbox
   indeterminate
-  (change)="showAlert()"
+  (change)="showAlert($event)"
   text="Checkbox 5"
 ></dxc-checkbox>
 
@@ -105,9 +105,22 @@
 
 <dxc-checkbox
   indeterminate
-  (change)="showAlert()"
+  (change)="showAlert($event)"
   required
   text="Checkbox 7"
 ></dxc-checkbox>
+
+<br />
+
+<dxc-date
+  icon="keyboard_arrow_down"
+  [startAt]="birthday"
+  disabled="input"
+  appearance="legacy"
+  text="Select date"
+  floatLabel="never"
+  [filter]="filter"
+></dxc-date>
+<dxc-date startView="multi-year" [min]="minDate" [max]="maxDate"></dxc-date>
 
 <!-- <router-outlet></router-outlet> -->

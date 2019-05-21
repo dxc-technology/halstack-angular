@@ -14,7 +14,7 @@ import { EventEmitter } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class DxcCheckboxComponent implements OnInit {
-  @Input() @Output() ngModel: string;
+  @Input() ngModel: string;
   @Input() indeterminate: boolean | string;
   @Input() checked: boolean;
   @Input() disableRipple: boolean;
@@ -25,9 +25,11 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() id: string;
   @Input() labelPosition: string;
   @Input() value: string;
-  @Output() change: any;
-  @Output() indeterminateChange: any;
+  @Output() ngModelChange: EventEmitter<any>;
+  @Output() change: EventEmitter<any>;
+  @Output() indeterminateChange: EventEmitter<any>;
   constructor() {
+    this.ngModelChange = new EventEmitter();
     this.change = new EventEmitter();
     this.indeterminateChange = new EventEmitter();
   }
@@ -54,11 +56,15 @@ export class DxcCheckboxComponent implements OnInit {
     }
   }
 
-  onChange(change: any) {
-    this.change.emit(change);
+  onNgModelChange(event: any) {
+    this.ngModelChange.emit(event);
   }
 
-  onIndeterminateChange(change: any) {
-    this.indeterminateChange.emit(change);
+  onChange(event: any) {
+    this.change.emit({ event, dxcCheckbox: this });
+  }
+
+  onIndeterminateChange(event: any) {
+    this.indeterminateChange.emit(event);
   }
 }

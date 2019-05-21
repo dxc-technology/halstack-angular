@@ -4,11 +4,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   DxcButtonModule,
-  DxcCheckboxModule
+  DxcCheckboxModule,
+  DxcDateModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [AppRoutingModule, DxcButtonModule, DxcCheckboxModule],
+  imports: [
+    AppRoutingModule,
+    DxcButtonModule,
+    DxcCheckboxModule,
+    DxcDateModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

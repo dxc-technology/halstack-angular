@@ -10,7 +10,17 @@ export class AppComponent {
 
   checked = true;
 
-  showAlert() {
+  birthday = new Date(1992, 11, 5);
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date(2020, 0, 1);
+
+  // Prevent Saturday and Sunday from being selected.
+  filter(d: Date): boolean {
+    return d.getDay() !== 0 && d.getDay() !== 6;
+  }
+
+  showAlert(event) {
+    console.log(event);
     window.alert('Button1');
   }
 

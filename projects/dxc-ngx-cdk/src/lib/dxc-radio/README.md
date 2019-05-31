@@ -28,7 +28,7 @@ Add the following selector to any template:
 ></dxc-radio>
 ```
 
-## Props
+## API reference
 
 The API properties are the following:
 

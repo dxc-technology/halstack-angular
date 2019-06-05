@@ -1,4 +1,4 @@
-# DXC Checkbox Component
+# DXC Radio Component
 
 ## Usage
 

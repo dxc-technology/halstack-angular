@@ -1,3 +1,19 @@
+# Adding new components
+
+The projects auto-generate the routes and the navside links. You only have to care about :
+- Create the component wher you want to place the info about the component
+- Add  some info in **src/app/components.ts**
+- For each component you have to specify:
+    - name to show in sidenav
+    - the route you want to navigate when click in that link
+    - the component wher you have been added the info for the component
+```typescript
+ {
+        name: 'Button',
+        route: 'button',
+        component: ButtonInfoComponent
+    },
+```
 # DxcAngularCdk
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.

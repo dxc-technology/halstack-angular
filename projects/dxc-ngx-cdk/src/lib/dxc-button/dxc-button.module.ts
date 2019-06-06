@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
 import { DxcButtonComponent } from './dxc-button.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [DxcButtonComponent],
-  imports: [BrowserModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   exports: [DxcButtonComponent]
 })
 export class DxcButtonModule {}

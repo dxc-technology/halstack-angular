@@ -1,113 +1,21 @@
-<dxc-button
-  (click)="changeCheckBoxValue()"
-  text="Basic"
-  iconType="fa"
-  icon="fas fa-allergies"
-  iconPosition="before"
-></dxc-button>
+<header>
+  <img src="/assets/images/logo.756a28b8.png" alt="logo" class="header-logo">
+</header>
+<div class = "body-container">
+    <div class= "sidenav">
+        <div class="sidenav-title">DXC Components Angular</div>
+        <div class = sidenav-links>
+            <div *ngFor="let component of components;index as i" [ngClass]="selectedComponent === component.name ? 'active' : '' " (click)="selectedComponent = component.name"  class="nav-item">
+              <a [routerLink]= "component.route">{{component.name}}</a>
+            </div>
+      </div>
+    <div class="content">
+       
+    </div>
 
-<dxc-button
-  type="basic"
-  disabled
-  text="Back"
-  iconType="fa"
-  icon="fas fa-arrow-left"
-  iconPosition="before"
->
-</dxc-button>
+</div>
 
-<dxc-button
-  type="raised"
-  disableRipple
-  text="Search"
-  iconType="mat"
-  icon="search"
-></dxc-button>
+<router-outlet></router-outlet>
 
-<dxc-button
-  type="raised"
-  disabled
-  text="Share"
-  icon="fab fa-instagram"
-  iconType="fa"
-  iconPosition="before"
->
-</dxc-button>
 
-<dxc-button type="outlined" text="Go to profile" icon="person"></dxc-button>
 
-<dxc-button
-  type="outlined"
-  disabled
-  text="Save"
-  iconType="fa"
-  icon="fas fa-save"
-></dxc-button>
-
-<dxc-button
-  type="flat"
-  (click)="showAlert()"
-  text="Warning"
-  icon="warning"
-></dxc-button>
-
-<dxc-button
-  type="flat"
-  disabled
-  text="Take a photo"
-  icon="photo_camera"
-  iconPosition="before"
-></dxc-button>
-
-<dxc-button
-  type="flat"
-  disabled
-  icon="photo_camera"
-  iconPosition="before"
-></dxc-button>
-<br />
-<dxc-button type="raised" text="Click me!"></dxc-button>
-
-<br />
-
-<dxc-checkbox
-  [(ngModel)]="checked"
-  labelPosition="before"
-  text="Checkbox 1"
-></dxc-checkbox>
-<br />
-<dxc-checkbox
-  [(ngModel)]="checked"
-  labelPosition="before"
-  text="Checkbox 2"
-></dxc-checkbox>
-
-<dxc-checkbox
-  [(ngModel)]="checked"
-  labelPosition="after"
-  text="Checkbox 3"
-></dxc-checkbox>
-
-<dxc-checkbox
-  disabled
-  required
-  labelPosition="before"
-  text="Checkbox 4"
-></dxc-checkbox>
-
-<dxc-checkbox
-  indeterminate
-  (change)="showAlert()"
-  text="Checkbox 5"
-></dxc-checkbox>
-
-<dxc-checkbox></dxc-checkbox>
-
-<dxc-checkbox
-  indeterminate
-  (change)="showAlert()"
-  required
-  text="Checkbox 7"
-></dxc-checkbox>
-
-<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,52 @@
+header  {
+    background-color: black;
+    display: flex;
+    padding: 5px 20px;
+    .header-logo {
+        height: 40px;
+        margin: 15px 0px;
+    }
+}
+
+.body-container {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: row;
+    .sidenav {
+        width: 300px;
+        background-color: rgb(242, 242, 242);
+        display: flex;
+        flex-direction: column;
+
+        .sidenav-title {
+            font-weight: bold;
+            font-size: 15px;
+            text-transform: uppercase;
+            color: rgb(102, 102, 102);
+            padding: 30px 20px;
+            border-bottom: 1px solid rgb(217, 217, 217);
+        }
+        .sidenav-links {
+            padding: 20px;
+            .nav-item {
+                margin-bottom: 5px;
+                padding-left: 0px;
+                border-left: 0px;
+                a {
+                    font-weight: normal;
+                    font-size: 14px;
+                    color: rgb(102, 102, 102);
+                    text-decoration: none;
+                }
+                &.active {
+                    margin-bottom: 5px;
+                    padding-left: 3px;
+                    border-left: 5px solid rgb(255, 237, 0);
+                    a {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

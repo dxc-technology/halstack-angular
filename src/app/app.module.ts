@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   DxcButtonModule,
-  DxcCheckboxModule
+  DxcCheckboxModule,
+  DxcDateModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonInfoComponent } from './pages/button/button-info.component';

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Components } from './components'
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  components: Array<any>;
+  constructor() {
+     this.components = Components;
+  }
+
+
   title = 'dxc-angular-cdk';
 
   checked = true;
@@ -22,3 +30,5 @@ export class AppComponent {
     return true;
   }
 }
+
+

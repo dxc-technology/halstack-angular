@@ -8,6 +8,8 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 })
 export class DxcButtonComponent implements OnInit {
   @Input() type: string;
+  @Input() theme: string;
+
   @Input() disabled: boolean;
   @Input() disableRipple: boolean;
   @Input() text: string;

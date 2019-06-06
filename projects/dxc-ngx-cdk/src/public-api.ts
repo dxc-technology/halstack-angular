@@ -4,3 +4,4 @@
 
 export * from './lib/dxc-button/dxc-button.module';
 export * from './lib/dxc-checkbox/dxc-checkbox.module';
+export * from './lib/dxc-date/dxc-date.module';

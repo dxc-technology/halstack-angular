@@ -130,7 +130,7 @@ The API properties are the following:
         <td><code>string</code></td>
         <td>{before, after}</td>
         <td>No</td>
-        <td>after</td>
+        <td>"after"</td>
     </tr>
     <tr>
         <td>value</td>
@@ -143,7 +143,7 @@ The API properties are the following:
     <tr>
         <td>change</td>
         <td>@Output()</td>
-        <td><code>string</code></td>
+        <td><code>EventEmitter &lt;MatCheckboxChange&gt;</code></td>
         <td>-</td>
         <td>No</td>
         <td>""</td>
@@ -151,7 +151,7 @@ The API properties are the following:
     <tr>
         <td>indeterminateChange</td>
         <td>@Output()</td>
-        <td><code>string</code></td>
+        <td><code>EventEmitter &lt;boolean&gt;</code></td>
         <td>-</td>
         <td>No</td>
         <td>""</td>

@@ -1,6 +1,5 @@
-:host{
+:host.light {
     display: inline-flex;
-
     mat-checkbox {
         ::ng-deep {
         label.mat-checkbox-layout {
@@ -20,9 +19,20 @@
                     svg path {
                         stroke: black !important;
                     }
+
+                    .mat-checkbox-mixedmark {
+                        background-color: black;
+                    }
                 }
             }
         }
+
+        &.mat-checkbox-checked {
+            .mat-checkbox-frame {
+                border-color: #ffed00;
+            }
+        }
+
         &.mat-checkbox-label-before {
             span.mat-checkbox-label {
                 margin-left: 15px;

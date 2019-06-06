@@ -1,6 +1,7 @@
 import { SliderInfoComponent } from 'src/app/pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checbkox/checkbox-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
+import { DxcDateComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.component';
 
 
 export const Components = [
@@ -18,5 +19,16 @@ export const Components = [
         name: 'Slider',
         route: 'slider',
         component: SliderInfoComponent
+    },
+    {
+        name: 'Date',
+        route: 'date',
+        component: DxcDateComponent
+    },
+    {
+        name: 'Radio',
+        route: 'radio',
+        component: SliderInfoComponent
     }
+    
 ]

@@ -1,0 +1,11 @@
+
+:host.dark {
+    mat-checkbox ::ng-deep {
+        .mat-checkbox-label {
+            color:white;
+        }
+        .mat-checkbox-frame {
+            border-color: white;
+        }
+    }
+}

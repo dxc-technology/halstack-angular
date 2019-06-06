@@ -1,12 +1,13 @@
+:host {
+  padding: 20px;
+}
 
 div.dark {
   background: black;
+}
+
+.dark {
   h2 {
     color:white;
   }
-}
-
-h2 {
-  padding-left: 10px;
-padding-top: 10px;
 }

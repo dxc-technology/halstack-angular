@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'dxc-button',
@@ -14,14 +14,21 @@ export class DxcButtonComponent  {
   @Input() iconType: string;
   @Input() icon: string;
   @Input() iconPosition: string;
+  
+  @Output() onClick = new EventEmitter<any>();
+
   @HostBinding('class.light') isLight: boolean = true;
   @HostBinding('class.dark') isDark: boolean = false;
 
 
-  ngOnChanges() { 
+  public ngOnChanges() :void { 
     if(this.theme  === 'dark') {
       this.isDark = true;
       this.isLight = false;
     }
+  }
+
+  public onClickHandler($event: any): void {
+    this.onClick.emit($event)
   }
 }

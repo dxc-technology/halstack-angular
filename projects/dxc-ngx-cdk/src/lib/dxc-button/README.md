@@ -138,6 +138,14 @@ The API properties are the following:
         <td>No</td>
         <td>"after"</td>
     </tr>
+      <tr>
+        <td>onClick</td>
+        <td>@Output()</td>
+        <td><code>EventEmitter</code></td>
+        <td></td>
+        <td>No</td>
+        <td></td>
+    </tr>
 </table>
 
 ## Examples

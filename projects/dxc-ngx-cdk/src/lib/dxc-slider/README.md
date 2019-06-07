@@ -51,6 +51,22 @@ Add the following selector to any template:
         <td><code>1</code></td>
         <td>The step interval between values available for selection.</td>
     </tr>
+      <tr>
+        <td>@Input<br>required: boolean</td>
+        <td><code>false</code></td>
+        <td>Value to bind required property for slider</td>
+    </tr>
+        <tr>
+        <td>@Input<br>disabled: boolean</td>
+        <td><code>false</code></td>
+        <td>Value to bind disabled property for slider</td>
+    </tr>
+      <tr>
+        <td>@Input<br>theme: 'light' |
+ 'dark'</td>
+        <td><code>'light'</code></td>
+        <td>Uses one of the available component themes.</td>
+    </tr>
     <tr>
         <td>@Input<br>value: number</td>
         <td><code>0</code></td>
@@ -75,6 +91,11 @@ Add the following selector to any template:
         <td>@Output<br>valueChange: EventEmitter</td>
         <td></td>
         <td>This event will be triggered when the slider changes its value, as it's being dragged. The new value will be passed as a parameter to the bound function</td>
+    </tr>
+     <tr>
+        <td>@Output<br>inputBlur: EventEmitter</td>
+        <td></td>
+        <td>This event will be triggered when input field lost the focust</td>
     </tr>
     <tr>
         <td>@Output<br>dragEnd: EventEmitter</td>

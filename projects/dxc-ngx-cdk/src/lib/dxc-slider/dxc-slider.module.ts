@@ -14,6 +14,7 @@ import { CommonModule } from "@angular/common";
     CommonModule,
     MatSliderModule,
     MatInputModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule
   ],

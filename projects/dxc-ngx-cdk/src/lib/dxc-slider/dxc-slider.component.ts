@@ -4,15 +4,13 @@ import {
   Input,
   Output,
   EventEmitter,
-  HostBinding,
-  ChangeDetectionStrategy
+  HostBinding
 } from "@angular/core";
 import { Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
-  changeDetection:ChangeDetectionStrategy.OnPush,
   styleUrls: [
     "./dxc-slider.component.scss",
     "./dxc-light-slider.scss",
@@ -40,7 +38,9 @@ export class DxcSliderComponent implements OnInit {
   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() inputBlur: EventEmitter<any> = new EventEmitter<any>();
   tickInterval: any;
+  rateControl: FormControl;
   ngOnInit(): void {
+    this.rateControl = new FormControl("", [Validators.max(this.max), Validators.min(this.min)])
     this.tickInterval = this.step > 1 ? 1 : 0;
     if (this.theme === "dark") {
       this.isLight = false;

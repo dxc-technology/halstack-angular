@@ -11,22 +11,96 @@ storiesOf('Checkbox', module)
     })
   )
   .add(
-    'Normal',
+    'Light',
     () => ({
       template: `
-      <dxc-checkbox [(ngModel)]="checked" text="Checkbox 1" (change)="onChange($event)"></dxc-checkbox>
-      <dxc-checkbox [(ngModel)]="checked" labelPosition="before" text="Checkbox 2"></dxc-checkbox>
-      <dxc-checkbox [(ngModel)]="checked" labelPosition="after" text="Checkbox 3"></dxc-checkbox>
-      <dxc-checkbox disabled required labelPosition="before" text="Checkbox 4"></dxc-checkbox>
-      <dxc-checkbox indeterminate text="Checkbox 5"></dxc-checkbox>
-      <dxc-checkbox></dxc-checkbox>
-      <dxc-checkbox indeterminate (change)="onChange($event)"
-        (indeterminateChange)="onIndeterminateChange($event)" required text="Checkbox 7"></dxc-checkbox>
+      <div class="sliders-sections">
+    
+    <div>
+      <h4>Basic slider</h4>
+      <dxc-slider [name]="slider1"></dxc-slider>
+    </div>
+    <div>
+      <h4>Slider with custom min, max, step and limitValue</h4>
+      <dxc-slider
+        min="10"
+        [max]="60"
+        [step]="15"
+        [name]="slider2"
+        [showLimitValues]="true"
+      ></dxc-slider>
+    </div>
+    <div>
+      <h4>Slider with Input and variable binding: Value {{sliderValue}}</h4>
+      <dxc-slider [showInput]="true" [(value)]="sliderValue"></dxc-slider>
+    </div>
+    <div>
+      <h4>Slider OnDragEnnd </h4>
+      <dxc-slider  (dragEnd) = "onDragEnd($event)"></dxc-slider>
+    </div>
+    <div>
+        <h4>Slider onChange </h4>
+        <dxc-slider  (valueChange) = "sliderValueChange($event)"></dxc-slider>
+    </div>
+    <div>
+      <h4>Slider disabled</h4>
+      <dxc-slider [disabled]="true"></dxc-slider>
+    </div>
+  </div>
       `,
       props: {
-        onChange: action('Change fired!'),
-        onIndeterminateChange: action('Indeterminate change fired!')
+        valueChange: action('Change fired!'),
+        dragEnd: action('Drag end change fired!')
       }
     }),
-    { notes: 'Normal DXC Checkbox' }
-  );
+    { notes: 'Normal DXC Slider' }
+  ).add(
+    'Dark',
+    () => ({
+      template: `
+      <div class="sliders-sections-dark">
+      <div> 
+          <h2>Dark theme</h2>
+      </div>   
+          <div>
+        <div class="dark-slider-content">
+          <h4>Basic slider</h4>
+          <dxc-slider [name]="slider1"  [theme] ="'dark'"></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider with custom min, max, step and limitValue</h4>
+          <dxc-slider
+            [min]="0"
+            [max]="60"
+            [step]="15"
+            [name]="slider2"
+            [showLimitValues]="true"
+            [theme] ="'dark'"
+          ></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider with Input and variable binding: Value {{sliderValue}}</h4>
+          <dxc-slider [showInput]="true" [(value)]="sliderValue"  [theme] ="'dark'"   [step]="15"  [showLimitValues]="true"></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider OnDragEnnd </h4>
+          <dxc-slider  (dragEnd) = "onDragEnd($event)"   [theme] ="'dark'"></dxc-slider>
+        </div>
+        <div>
+            <h4>Slider onChange </h4>
+            <dxc-slider  (valueChange) = "sliderValueChange($event)"  [theme] ="'dark'"></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider disabled</h4>
+          <dxc-slider [disabled]="true"   [theme] ="'dark'"></dxc-slider>
+        </div>
+      </div> 
+      </div>
+      `,
+      props: {
+        valueChange: action('Change fired!'),
+        dragEnd: action('Drag end change fired!')
+      }
+    }),
+    { notes: 'Dark DXC Slider' }
+  )

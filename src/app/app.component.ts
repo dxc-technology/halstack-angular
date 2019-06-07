@@ -27,15 +27,7 @@ export class AppComponent {
     return d.getDay() !== 0 && d.getDay() !== 6;
   }
 
-  showAlert(event) {
-    console.log(event);
-    window.alert('Button1');
-  }
-
-  changeCheckBoxValue() {
-    this.checked = !this.checked;
-  }
-
+ 
   isRequired() {
     return true;
   }

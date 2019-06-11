@@ -123,4 +123,45 @@
 ></dxc-date>
 <dxc-date startView="multi-year" [min]="minDate" [max]="maxDate"></dxc-date>
 
+<br />
+<dxc-radio
+  value="Radio 1"
+  labelPosition="before"
+></dxc-radio>
+<br />
+<br />
+
+<dxc-radio
+  [(checked)]="checked"
+  labelPosition="before"
+  value="Radio 2"
+></dxc-radio>
+<br />
+<br />
+
+<dxc-radio
+  labelPosition="after"
+  value="Radio 3"
+  name = "radio"
+  [(checked)]="checked"
+  [disableRipple]= "true"
+></dxc-radio>
+<br />
+<br />
+
+
+<dxc-radio
+  disabled
+  labelPosition="before"
+  value="Radio 4"
+></dxc-radio>
+<br />
+<br />
+
+
+<dxc-radio
+  (checkedChange)="showAlert($event)"
+  value="Radio 5"
+></dxc-radio>
+
 <!-- <router-outlet></router-outlet> -->

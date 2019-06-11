@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import {
   DxcButtonModule,
   DxcCheckboxModule,
-  DxcDateModule
+  DxcDateModule,
+  DxcRadioModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
 
 @NgModule({
@@ -14,7 +15,8 @@ import {
     AppRoutingModule,
     DxcButtonModule,
     DxcCheckboxModule,
-    DxcDateModule
+    DxcDateModule,
+    DxcRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

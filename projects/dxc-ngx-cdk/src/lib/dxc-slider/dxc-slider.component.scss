@@ -1,0 +1,85 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  mat-slider {
+    flex-grow: 1;
+    margin: 0 15px;
+    min-width: 185px;
+    margin-bottom: 10px;
+    ::ng-deep {
+      .mat-slider-horizontal .mat-slider-wrapper {
+        height: 1px;
+      }
+    }
+    &:not(.mat-slider-disabled) {
+      ::ng-deep {
+        .mat-slider-track-wrapper {
+          height: 1px;
+        }
+      }
+
+      &.mat-slider-sliding {
+        ::ng-deep {
+          .mat-slider-thumb {
+            cursor: grabbing;
+            transform: scale(1);
+          }
+        }
+      }
+      &.cdk-focused:not(.mat-slider-sliding) {
+        ::ng-deep {
+          .mat-slider-thumb {
+            transform: scale(0.7);
+          }
+          .mat-slider-focus-ring {
+            transform: scale(1.4);
+          }
+        }
+      }
+      &.mat-slider-has-ticks {
+        ::ng-deep {
+          .mat-slider-ticks {
+            opacity: 1 !important;
+          
+          }
+        }
+      }
+    }
+
+    &.mat-slider-disabled {
+      ::ng-deep {
+        .mat-slider-track-wrapper {
+          height: 1px;
+        }
+        .mat-slider-thumb {
+          transform: scale(0.7) !important;
+        }
+      }
+    }
+  }
+  mat-form-field {
+    width: 50px;
+    margin-left: 22px;
+    ::ng-deep {
+      .mat-form-field-infix {
+        padding: 0px;
+        border-top-width: 0px;
+      }
+    }
+  }
+
+  span,
+  input {
+    font-size: 16px;
+  }
+  input {
+    margin-bottom: 5px;
+  }
+  span {
+    margin-bottom: 10px;
+  }
+}
+
+

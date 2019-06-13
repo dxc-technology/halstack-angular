@@ -1,0 +1,18 @@
+
+:host.dark {
+    mat-checkbox ::ng-deep {
+        .mat-checkbox-mixedmark {
+            background: black;
+        }
+        .mat-checkbox-label {
+            color:white;
+        }
+        .mat-ripple-element {
+            background-color: white;
+
+        }
+        .mat-checkbox-frame {
+            border-color: white;
+        }
+    }
+}

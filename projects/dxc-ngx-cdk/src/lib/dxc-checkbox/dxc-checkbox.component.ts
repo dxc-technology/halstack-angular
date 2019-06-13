@@ -2,20 +2,20 @@ import {
   Component,
   OnInit,
   Input,
-  ViewEncapsulation,
-  Output
+  Output,
+  HostBinding
 } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'dxc-checkbox',
   templateUrl: './dxc-checkbox.component.html',
-  styleUrls: ['./dxc-checkbox.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./dxc-checkbox.component.scss','./dxc-light-checkbox.component.scss','./dxc-dark-checkbox.component.scss']
 })
 export class DxcCheckboxComponent implements OnInit {
-  @Input() @Output() ngModel: string;
+  @Input() ngModel: string;
   @Input() indeterminate: boolean | string;
+  @Input() theme: string;
   @Input() checked: boolean;
   @Input() disableRipple: boolean;
   @Input() disabled: boolean | string;
@@ -25,9 +25,23 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() id: string;
   @Input() labelPosition: string;
   @Input() value: string;
-  @Output() change: any;
-  @Output() indeterminateChange: any;
+  @Output() ngModelChange: EventEmitter<any>;
+  @Output() change: EventEmitter<any>;
+  @Output() indeterminateChange: EventEmitter<any>;
+
+  @HostBinding('class.light') isLight: boolean = true;
+  @HostBinding('class.dark') isDark: boolean = false;
+
+
+  public ngOnChanges() :void { 
+    if(this.theme  === 'dark') {
+      this.isDark = true;
+      this.isLight = false;
+    }
+  }
+
   constructor() {
+    this.ngModelChange = new EventEmitter();
     this.change = new EventEmitter();
     this.indeterminateChange = new EventEmitter();
   }
@@ -54,11 +68,15 @@ export class DxcCheckboxComponent implements OnInit {
     }
   }
 
-  onChange(change: any) {
-    this.change.emit(change);
+  onNgModelChange(event: any) {
+    this.ngModelChange.emit(event);
   }
 
-  onIndeterminateChange(change: any) {
-    this.indeterminateChange.emit(change);
+  onChange(event: any) {
+    this.change.emit({ event, dxcCheckbox: this });
+  }
+
+  onIndeterminateChange(event: any) {
+    this.indeterminateChange.emit(event);
   }
 }

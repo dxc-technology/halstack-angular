@@ -81,9 +81,8 @@ The API properties are the following:
         <td>If true, the ripple effect will be disabled.</td>
     </tr>
     <tr>
-        <td>@Output<br>checkedChange: EventEmitter<$event></td>
+        <td>@Output<br>checkedChange: EventEmitter</td>
         <td></td>
-        <td>This function will be called when the user clicks the radio. The event object will be passed as a parameter.<br>
-        Current state can be accessed via event.target.checked</td>
+        <td>This event will be triggered when the user clicks the radio. The new value will be passed as a parameter.
     </tr>
 </table>

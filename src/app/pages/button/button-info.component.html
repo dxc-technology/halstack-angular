@@ -1,0 +1,57 @@
+<div class="light">
+  <h2>Light mode</h2>
+  <dxc-button (click)="changeCheckBoxValue()" text="Basic" iconType="fa" icon="fas fa-allergies" iconPosition="before">
+  </dxc-button>
+
+  <dxc-button type="basic" disabled text="Back" iconType="fa" icon="fas fa-arrow-left" iconPosition="before">
+  </dxc-button>
+
+  <dxc-button type="raised" disableRipple text="Search" iconType="mat" icon="search"></dxc-button>
+
+  <dxc-button type="raised" disabled text="Share" icon="fab fa-instagram" iconType="fa" iconPosition="before">
+  </dxc-button>
+
+  <dxc-button type="outlined" text="Go to profile" icon="person"></dxc-button>
+
+  <dxc-button type="outlined" disabled text="Save" iconType="fa" icon="fas fa-save"></dxc-button>
+
+  <dxc-button type="flat" (click)="showAlert()" text="Warning" icon="warning"></dxc-button>
+
+  <dxc-button type="flat" disabled text="Take a photo" icon="photo_camera" iconPosition="before"></dxc-button>
+
+  <dxc-button type="flat" disabled icon="photo_camera" iconPosition="before"></dxc-button>
+  <br />
+  <dxc-button type="raised" text="Click me!"></dxc-button>
+</div>
+
+<div class="dark">
+  <h2>Dark mode</h2>
+  <dxc-button [theme]="'dark'" (click)="changeCheckBoxValue()" text="Basic" iconType="fa" icon="fas fa-allergies"
+    iconPosition="before"></dxc-button>
+
+  <dxc-button [theme]="'dark'" type="basic" disabled text="Back" iconType="fa" icon="fas fa-arrow-left"
+    iconPosition="before">
+  </dxc-button>
+
+  <dxc-button [theme]="'dark'" type="raised" disableRipple text="Search" iconType="mat" icon="search"></dxc-button>
+
+  <dxc-button type="raised" [theme]="'dark'" disabled text="Share" icon="fab fa-instagram" iconType="fa"
+    iconPosition="before">
+  </dxc-button>
+
+  <dxc-button type="outlined" text="Go to profile" icon="person" [theme]="'dark'"></dxc-button>
+
+  <dxc-button type="outlined" disabled text="Save" [theme]="'dark'" iconType="fa" icon="fas fa-save"></dxc-button>
+
+  <dxc-button type="flat" (click)="showAlert()" [theme]="'dark'" text="Warning" icon="warning"></dxc-button>
+
+  <dxc-button type="flat" disabled text="Take a photo" [theme]="'dark'" icon="photo_camera" iconPosition="before">
+  </dxc-button>
+
+
+  <dxc-button [theme]="'dark'" type="raised" text="Click me!"> </dxc-button>
+
+  <dxc-button type="flat" disabled [theme]="'dark'" icon="photo_camera" iconPosition="before"></dxc-button>
+  <dxc-button type="flat"  [theme]="'dark'"  text="flat"></dxc-button>
+
+</div>

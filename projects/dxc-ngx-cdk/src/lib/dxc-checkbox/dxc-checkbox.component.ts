@@ -2,20 +2,20 @@ import {
   Component,
   OnInit,
   Input,
-  ViewEncapsulation,
-  Output
+  Output,
+  HostBinding
 } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'dxc-checkbox',
   templateUrl: './dxc-checkbox.component.html',
-  styleUrls: ['./dxc-checkbox.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./dxc-checkbox.component.scss','./dxc-light-checkbox.component.scss','./dxc-dark-checkbox.component.scss']
 })
 export class DxcCheckboxComponent implements OnInit {
   @Input() ngModel: string;
   @Input() indeterminate: boolean | string;
+  @Input() theme: string;
   @Input() checked: boolean;
   @Input() disableRipple: boolean;
   @Input() disabled: boolean | string;
@@ -28,6 +28,18 @@ export class DxcCheckboxComponent implements OnInit {
   @Output() ngModelChange: EventEmitter<any>;
   @Output() change: EventEmitter<any>;
   @Output() indeterminateChange: EventEmitter<any>;
+
+  @HostBinding('class.light') isLight: boolean = true;
+  @HostBinding('class.dark') isDark: boolean = false;
+
+
+  public ngOnChanges() :void { 
+    if(this.theme  === 'dark') {
+      this.isDark = true;
+      this.isLight = false;
+    }
+  }
+
   constructor() {
     this.ngModelChange = new EventEmitter();
     this.change = new EventEmitter();

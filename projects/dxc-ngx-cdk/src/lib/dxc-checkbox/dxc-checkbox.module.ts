@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { DxcCheckboxComponent } from './dxc-checkbox.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [DxcCheckboxComponent],
-  imports: [BrowserModule, MatCheckboxModule, FormsModule],
+  imports: [CommonModule, MatCheckboxModule, FormsModule],
   exports: [DxcCheckboxComponent]
 })
 export class DxcCheckboxModule {}

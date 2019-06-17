@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {
   MatDatepickerModule,
@@ -10,12 +8,12 @@ import {
   MatIconModule
 } from '@angular/material';
 import { DxcDateComponent } from './dxc-date.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [DxcDateComponent],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
@@ -24,5 +22,6 @@ import { DxcDateComponent } from './dxc-date.component';
     FormsModule
   ],
   exports: [DxcDateComponent]
-})
+}) 
 export class DxcDateModule {}
+ 

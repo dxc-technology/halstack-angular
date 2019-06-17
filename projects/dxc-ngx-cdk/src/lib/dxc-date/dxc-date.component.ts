@@ -11,8 +11,7 @@ import { DateAdapter } from '@angular/material';
 @Component({
   selector: 'dxc-date',
   templateUrl: './dxc-date.component.html',
-  styleUrls: ['./dxc-date.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./dxc-date.component.scss']
 })
 export class DxcDateComponent implements OnInit {
   @Input() @Output() ngModel: string;

@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { DxcSliderComponent } from './dxc-slider.component';
 import { MatSliderModule } from '@angular/material';
 
-storiesOf('Checkbox', module)
+storiesOf('Slider', module)
   .addDecorator(
     moduleMetadata({
       imports: [MatSliderModule],
@@ -15,38 +15,37 @@ storiesOf('Checkbox', module)
     () => ({
       template: `
       <div class="sliders-sections">
-    
-    <div>
-      <h4>Basic slider</h4>
-      <dxc-slider [name]="slider1"></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider with custom min, max, step and limitValue</h4>
-      <dxc-slider
-        min="10"
-        [max]="60"
-        [step]="15"
-        [name]="slider2"
-        [showLimitValues]="true"
-      ></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider with Input and variable binding: Value {{sliderValue}}</h4>
-      <dxc-slider [showInput]="true" [(value)]="sliderValue"></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider OnDragEnnd </h4>
-      <dxc-slider  (dragEnd) = "onDragEnd($event)"></dxc-slider>
-    </div>
-    <div>
-        <h4>Slider onChange </h4>
-        <dxc-slider  (valueChange) = "sliderValueChange($event)"></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider disabled</h4>
-      <dxc-slider [disabled]="true"></dxc-slider>
-    </div>
-  </div>
+        <div>
+          <h4>Basic slider</h4>
+          <dxc-slider [name]="slider1"></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider with custom min, max, step and limitValue</h4>
+          <dxc-slider
+            min="10"
+            [max]="60"
+            [step]="15"
+            [name]="slider2"
+            [showLimitValues]="true"
+          ></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider with Input and variable binding: Value {{sliderValue}}</h4>
+          <dxc-slider [showInput]="true" [(value)]="sliderValue"></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider OnDragEnnd </h4>
+          <dxc-slider  (dragEnd) = "onDragEnd($event)"></dxc-slider>
+        </div>
+        <div>
+            <h4>Slider onChange </h4>
+            <dxc-slider  (valueChange) = "sliderValueChange($event)"></dxc-slider>
+        </div>
+        <div>
+          <h4>Slider disabled</h4>
+          <dxc-slider [disabled]="true"></dxc-slider>
+        </div>
+      </div>
       `,
       props: {
         valueChange: action('Change fired!'),

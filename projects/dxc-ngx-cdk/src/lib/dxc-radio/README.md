@@ -53,15 +53,13 @@ The API properties are the following:
         <td></td>
         <td>Text to be placed next to the radio.</td>
     </tr>
-    </tr>
-        <tr>
+    <tr>
         <td>@Input<br>labelPosition: 'before' | 'after'</td>
         <td><code>'before'</code></td>
         <td>Whether the label should appear after or before the radio.</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' |
- 'dark'</td>
+        <td>@Input<br>theme: 'light' | 'dark'</td>
         <td><code>'light'</code></td>
         <td>Uses one of the available component themes.</td>
     </tr>
@@ -83,6 +81,6 @@ The API properties are the following:
     <tr>
         <td>@Output<br>checkedChange: EventEmitter</td>
         <td></td>
-        <td>This event will be triggered when the user clicks the radio. The new value will be passed as a parameter.
+        <td>This event will be triggered when the radio changes its value. The new value will be passed as a parameter.</td>
     </tr>
 </table>

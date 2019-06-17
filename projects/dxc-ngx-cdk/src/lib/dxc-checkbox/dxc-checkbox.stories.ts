@@ -1,15 +1,14 @@
 import { storiesOf, moduleMetadata } from "@storybook/angular";
 import { action } from "@storybook/addon-actions";
 import { boolean, number, text } from "@storybook/addon-knobs";
-import { MatCheckboxModule } from "@angular/material";
+import { DxcCheckboxModule } from "./dxc-checkbox.module";
 import { DxcCheckboxComponent } from "./dxc-checkbox.component";
 import checkboxMD from "./README.md";
 
 storiesOf("Form Components|Checkbox", module)
   .addDecorator(
     moduleMetadata({
-      imports: [MatCheckboxModule],
-      declarations: [DxcCheckboxComponent]
+      imports: [DxcCheckboxModule]
     })
   )
   .add(
@@ -38,8 +37,7 @@ storiesOf("Form Components|Checkbox", module)
 storiesOf("Form Components|Checkbox", module)
   .addDecorator(
     moduleMetadata({
-      imports: [MatCheckboxModule],
-      declarations: [DxcCheckboxComponent]
+      imports: [DxcCheckboxModule]
     })
   )
   .add(

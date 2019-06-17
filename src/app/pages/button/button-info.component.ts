@@ -9,4 +9,15 @@ export class ButtonInfoComponent {
 
   constructor()  {}
 
+  checked = true;
+  public showAlert(event) {
+    console.log(event);
+    window.alert('Button1');
+  }
+
+  public changeCheckBoxValue() {
+    this.checked = !this.checked;
+  }
+
+
 }

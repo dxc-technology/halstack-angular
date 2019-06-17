@@ -17,6 +17,7 @@ export class DxcRadioComponent implements OnInit {
   @Input() checked: boolean;
   @Input() disableRipple: boolean;
   @Input() disabled: boolean;
+  @Input() label: string;
   @Input() name: string;
   @Input() labelPosition: string;
   @Input() value: any;
@@ -30,7 +31,7 @@ export class DxcRadioComponent implements OnInit {
   }
 
   onChange(event: any) {
-    this.checkedChange.emit({ event, dxcRadio: this });
+    this.checkedChange.emit(event.source.checked);
   }
  }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Components } from './components'
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  components: Array<any>;
+  constructor() {
+     this.components = Components;
+  }
+
+
   title = 'dxc-angular-cdk';
 
   checked = true;
@@ -19,16 +27,10 @@ export class AppComponent {
     return d.getDay() !== 0 && d.getDay() !== 6;
   }
 
-  showAlert(event) {
-    console.log(event);
-    window.alert('Button1');
-  }
-
-  changeCheckBoxValue() {
-    this.checked = !this.checked;
-  }
-
+ 
   isRequired() {
     return true;
   }
 }
+
+

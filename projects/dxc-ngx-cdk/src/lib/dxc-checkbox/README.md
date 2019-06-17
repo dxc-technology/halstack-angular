@@ -53,6 +53,14 @@ The API properties are the following:
         <td>Default</td>
     </tr>
     <tr>
+        <td>theme</td>
+        <td>@Input()</td>
+        <td><code> string</code></td>
+        <td>{light,dark}</td>
+        <td>No</td>
+        <td>light</td>
+    </tr>
+    <tr>
         <td>ngModel</td>
         <td>@Input()</td>
         <td><code>string</code></td>

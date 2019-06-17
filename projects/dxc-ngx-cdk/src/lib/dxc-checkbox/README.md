@@ -43,7 +43,7 @@ export class AppModule {}
         <td>false</td>
         <td>If true, the component is checked.</td>
     </tr>
-        <tr>
+    <tr>
         <td>@Input<br>value: any</td>
         <td></td>
         <td>Will be passed to the value attribute of the html input element. When inside a form, this value will be only submitted if the checkbox is checked </td>

@@ -1,12 +1,13 @@
-import { storiesOf, moduleMetadata } from '@storybook/angular';
-import { MatButtonModule, MatIconModule } from '@angular/material';
-import { DxcButtonComponent } from './dxc-button.component';
+import { storiesOf, moduleMetadata } from "@storybook/angular";
+import { MatButtonModule, MatIconModule } from "@angular/material";
+import { DxcButtonComponent } from "./dxc-button.component";
+import buttonMD from "./README.md";
 
 export const button = {
-  type: 'basic'
+  type: "basic"
 };
 
-storiesOf('Button', module)
+storiesOf("Form Components|Button", module)
   .addDecorator(
     moduleMetadata({
       imports: [MatButtonModule, MatIconModule],
@@ -14,7 +15,7 @@ storiesOf('Button', module)
     })
   )
   .add(
-    'Basic',
+    "Basic",
     () => ({
       template: `
       <dxc-button text="Button"></dxc-button>
@@ -27,10 +28,12 @@ storiesOf('Button', module)
         button
       }
     }),
-    { notes: 'Basic DXC Button' }
+    {
+      notes: { markdown: buttonMD }
+    }
   )
   .add(
-    'Raised',
+    "Raised",
     () => ({
       template: `
       <dxc-button type="raised" text="Button"></dxc-button>
@@ -43,10 +46,12 @@ storiesOf('Button', module)
         button
       }
     }),
-    { notes: 'Raised DXC Button' }
+    {
+      notes: { markdown: buttonMD }
+    }
   )
   .add(
-    'Outlined',
+    "Outlined",
     () => ({
       template: `
       <dxc-button type="outlined" text="Button"></dxc-button>
@@ -59,10 +64,12 @@ storiesOf('Button', module)
         button
       }
     }),
-    { notes: 'Outlined DXC Button' }
+    {
+      notes: { markdown: buttonMD }
+    }
   )
   .add(
-    'Flat',
+    "Flat",
     () => ({
       template: `
       <dxc-button type="flat" text="Button"></dxc-button>
@@ -75,5 +82,7 @@ storiesOf('Button', module)
         button
       }
     }),
-    { notes: 'Flat DXC Button' }
+    {
+      notes: { markdown: buttonMD }
+    }
   );

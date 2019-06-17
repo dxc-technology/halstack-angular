@@ -1,9 +1,11 @@
-import { storiesOf, moduleMetadata } from '@storybook/angular';
-import { action } from '@storybook/addon-actions';
-import { MatCheckboxModule } from '@angular/material';
-import { DxcCheckboxComponent } from './dxc-checkbox.component';
+import { storiesOf, moduleMetadata } from "@storybook/angular";
+import { action } from "@storybook/addon-actions";
+import { boolean, number, text } from "@storybook/addon-knobs";
+import { MatCheckboxModule } from "@angular/material";
+import { DxcCheckboxComponent } from "./dxc-checkbox.component";
+import checkboxMD from "./README.md";
 
-storiesOf('Checkbox', module)
+storiesOf("Form Components|Checkbox", module)
   .addDecorator(
     moduleMetadata({
       imports: [MatCheckboxModule],
@@ -11,7 +13,7 @@ storiesOf('Checkbox', module)
     })
   )
   .add(
-    'Normal',
+    "Normal",
     () => ({
       template: `
       <dxc-checkbox [(ngModel)]="checked" text="Checkbox 1" (change)="onChange($event)"></dxc-checkbox>
@@ -24,9 +26,33 @@ storiesOf('Checkbox', module)
         (indeterminateChange)="onIndeterminateChange($event)" required text="Checkbox 7"></dxc-checkbox>
       `,
       props: {
-        onChange: action('Change fired!'),
-        onIndeterminateChange: action('Indeterminate change fired!')
+        onChange: action("Change fired!"),
+        onIndeterminateChange: action("Indeterminate change fired!")
       }
     }),
-    { notes: 'Normal DXC Checkbox' }
+    {
+      notes: { markdown: checkboxMD }
+    }
+  );
+
+storiesOf("Form Components|Checkbox", module)
+  .addDecorator(
+    moduleMetadata({
+      imports: [MatCheckboxModule],
+      declarations: [DxcCheckboxComponent]
+    })
+  )
+  .add(
+    "Knobs example",
+    () => ({
+      component: DxcCheckboxComponent,
+      props: {
+        text: text("text", "Checkbox example"),
+        onChange: action("Change fired!"),
+        onIndeterminateChange: action("Indeterminate change fired!")
+      }
+    }),
+    {
+      notes: { markdown: checkboxMD }
+    }
   );

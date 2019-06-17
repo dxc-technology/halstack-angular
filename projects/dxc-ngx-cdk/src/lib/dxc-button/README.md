@@ -6,15 +6,6 @@ The DXC Button Component is a button which could have different style depending 
 
 ## Usage
 
-To use the component, add the following selector to any template:
-
-<table style="border-radius: 10px">
-    <tr>
-        <td style="background-color: black; color: white">Selector</td>
-        <td>dxc-button</td>
-    </tr>
-</table>
-
 ```html
 <dxc-button
   type="basic"
@@ -29,9 +20,9 @@ To use the component, add the following selector to any template:
 Include the **DxcButtonModule** into **app.module.ts** to use the button component:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DxcButtonModule } from '@diaas/dxc-ngx-cdk';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcButtonModule } from "@diaas/dxc-ngx-cdk";
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,109 +33,55 @@ import { DxcButtonModule } from '@diaas/dxc-ngx-cdk';
 export class AppModule {}
 ```
 
-The component also may include a **material icon** or a **font awesome icon**. Check the following links to include any icon:
-
-<table style="border-radius: 10px">
-    <tr>
-        <td style="background-color: #ffed00; color: black">Material</td>
-        <td>https://material.io/icons/</td>
-    </tr>
-    <tr>
-        <td style="background-color: #ffed00; color: black">Font Awesome</td>
-        <td>https://fontawesome.com/icons</td>
-    </tr>
-</table>
-
-To include any of these icons, add into **styles.scss** the DXC theme:
-
-```scss
-@import '~@diaas/dxc-ngx-cdk/styles/theme.scss';
-```
-
 ## API
 
 The API properties are the following:
 
 <table>
     <tr style="background-color: grey">
-        <td>Property</td>
-        <td>Input / Output</td>
-        <td>Type</td>
-        <td>Values</td>
-        <td>Required</td>
+        <td>Name</td>
         <td>Default</td>
+        <td>Description</td>
     </tr>
     <tr>
-        <td>type</td>
-        <td>@Input()</td>
-        <td><code>string</code></td>
-        <td>{basic, outlined, raised, flat}</td>
-        <td>No</td>
-        <td>"basic"</td>
+        <td>@Input<br>mode: 'basic' | 'outlined' | 'raised' | 'flat'</td>
+        <td><code>'basic'</code></td>
+        <td>Uses on of the available button modes.</td>
     </tr>
     <tr>
-        <td>theme</td>
-        <td>@Input()</td>
-        <td><code>string</code></td>
-        <td>{light, dark}</td>
-        <td>No</td>
-        <td>"light"</td>
+        <td>@Input<br>theme: 'light' |'dark'</td>
+        <td><code>'light'</code></td>
+        <td>Uses one of the available button themes.</td>
     </tr>
     <tr>
-        <td>disabled</td>
-        <td>@Input()</td>
-        <td><code>boolean | string</code></td>
-        <td>-</td>
-        <td>No</td>
+        <td>@Input<br>label: string</td>
+        <td><code>''</code></td>
+        <td>Text to be placed next to the button.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>iconSrc: string</td>
+        <td></td>
+        <td>URL of the icon that will be placed next to the button label.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>iconPosition 'before' | 'after'</td>
+        <td><code>'before'</code></td>
+        <td>Whether the icon should appear after or before the label.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>disabled: boolean</td>
         <td>false</td>
+        <td>If true, the component will be disabled.</td>
     </tr>
     <tr>
-        <td>disableRipple</td>
-        <td>@Input()</td>
-        <td><code>boolean | string</code></td>
-        <td>-</td>
-        <td>No</td>
+        <td>@Input<br>disableRipple: boolean</td>
         <td>false</td>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>@Input()</td>
-        <td><code>string</code></td>
-        <td>-</td>
-        <td>No</td>
-        <td>""</td>
-    </tr>
-    <tr>
-        <td>iconType</td>
-        <td>@Input()</td>
-        <td><code>string</code></td>
-        <td>{mat, fa}</td>
-        <td>No</td>
-        <td>"mat"</td>
-    </tr>
-    <tr>
-        <td>icon</td>
-        <td>@Input()</td>
-        <td><code>string</code></td>
-        <td>Icon from 'iconType' API</td>
-        <td>No</td>
-        <td>""</td>
-    </tr>
-    <tr>
-        <td>iconPosition</td>
-        <td>@Input()</td>
-        <td><code>string</code></td>
-        <td>{before, after}</td>
-        <td>No</td>
-        <td>"after"</td>
+        <td>If true, the ripple effect will be disabled.</td>
     </tr>
       <tr>
-        <td>onClick</td>
-        <td>@Output()</td>
-        <td><code>EventEmitter</code></td>
+        <td>@Output<br>onClick: EventEmitter</td>
         <td></td>
-        <td>No</td>
-        <td></td>
+        <td>This event will be triggered when the user clicks the radio. The new event will be passed as a parameter.</td>
     </tr>
 </table>
 

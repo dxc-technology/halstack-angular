@@ -19,6 +19,7 @@
 
                 .mat-checkbox-background {
                     svg path {
+                     
                         stroke: black !important;
                     }
 
@@ -35,18 +36,6 @@
             }
         }
 
-        &.mat-checkbox-label-before {
-            span.mat-checkbox-label {
-                margin-left: 15px;
-            }
-        }
-
-        &:not(.mat-checkbox-label-before) {
-            span.mat-checkbox-label {
-                margin-right: 15px;
-            }
-        }
-
         .mat-checkbox-label {
             .mat-checkbox-required {
                 color: #EE2222;
@@ -54,9 +43,16 @@
             }
         }
 
-        &.mat-checkbox-disabled {
-            cursor: not-allowed;
+        
+    }
+    &.mat-checkbox-disabled {
+        ::ng-deep { 
+            .mat-checkbox-inner-container   .mat-checkbox-background svg path.mat-checkbox-checkmark-path {
+                 stroke:white !important;
+             }
+
         }
+        cursor: not-allowed;
     }
     }
 }

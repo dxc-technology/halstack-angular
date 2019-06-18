@@ -1,5 +1,12 @@
 :host.dark{
     button {
+        &:disabled
+        ::ng-deep {
+           span.mat-button-wrapper  span {
+                color:black;
+                opacity: 1;
+            }
+        }
         &.mat-raised-button,
         &.mat-button {
             background: #FFED00;
@@ -26,10 +33,16 @@
             color:white;
             background: transparent;
             border-color: white;
-            &:hover {
+            &:hover:not([disabled]) {
                 color:#FFED00;
                 border-color:#FFED00;
             }
+            &:disabled {
+            ::ng-deep  span.mat-button-wrapper  span { 
+                color:white;
+               
+            }
+        }
         } 
         &.mat-flat-button {
             &:hover {

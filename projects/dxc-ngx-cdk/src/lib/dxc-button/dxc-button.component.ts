@@ -6,11 +6,11 @@ import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@an
   styleUrls: ['./dxc-button.component.scss', './dxc-light-button.component.scss', './dxc-dark-button.component.scss'],
 })
 export class DxcButtonComponent  {
-  @Input() type: string;
+  @Input() mode: string;
   @Input() theme: string;
   @Input() disabled: boolean;
   @Input() disableRipple: boolean;
-  @Input() text: string;
+  @Input() label: string;
   @Input() iconType: string;
   @Input() icon: string;
   @Input() iconPosition: string;

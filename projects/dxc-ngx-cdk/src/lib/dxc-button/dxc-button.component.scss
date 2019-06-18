@@ -10,12 +10,12 @@
     border-radius: 4px;
     min-width: 122px;
     max-width: 420px;
-    min-height: 43px;
+    max-height: 43px;
     line-height: 1;
     font-size: 14px;
     font-weight: 500;
     margin: 15px;
-
+    ::ng-deep {
     span.mat-button-wrapper {
       text-transform: uppercase;
       display: flex;
@@ -26,13 +26,21 @@
         display: block;
         width: 100%;
         white-space: normal;
+       
         text-align: left;
+        
+      }
+      .icon-before {
+        margin-right: 10px;
+      }
+      .icon-after {
+        margin-left: 10px;
       }
 
       mat-icon {
         font-size: 20px;
         width: auto;
-        height: auto;
+        height: auto; 
         margin-bottom: -2.5px;
         margin-top: -2.5px;
       }
@@ -58,6 +66,7 @@
         margin-left: 6px;
       }
     }
+  }
 
     &:attr(disabled) {
       cursor: not-allowed;
@@ -66,5 +75,6 @@
     &:disabled {
       cursor: not-allowed;
     }
+  
   }
 }

@@ -8,7 +8,7 @@ The DXC Checkbox Component provides to the user the ability to select a true, fa
 
 ```html
 <dxc-checkbox
-  [(ngModel)]="checked"
+  [(checked)]="checked"
   labelPosition="before"
   text="Checkbox 1"
 ></dxc-checkbox>

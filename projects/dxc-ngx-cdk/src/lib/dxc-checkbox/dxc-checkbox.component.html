@@ -1,6 +1,5 @@
 <mat-checkbox
-  [ngModel]="ngModel"
-  [indeterminate]="indeterminate"
+  [checked]="checked"
   [labelPosition]="labelPosition"
   [disableRipple]="disableRipple"
   [checked]="checked"
@@ -9,10 +8,8 @@
   [required]="required"
   [name]="name"
   [id]="id"
-  (ngModelChange)="onNgModelChange($event)"
-  (change)="onChange($event)"
-  (indeterminateChange)="onIndeterminateChange($event)"
->
+  (change)="onValueChange($event)"
+  >
   <span *ngIf="required && text" class="mat-checkbox-required">*</span
   >{{ text }}
 </mat-checkbox>

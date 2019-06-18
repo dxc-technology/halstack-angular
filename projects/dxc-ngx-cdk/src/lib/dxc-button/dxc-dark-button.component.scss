@@ -37,9 +37,12 @@
                 color:#FFED00;
                 border-color:#FFED00;
             }
-            ::ng-deep span{ 
+            &:disabled {
+            ::ng-deep  span.mat-button-wrapper  span { 
                 color:white;
+               
             }
+        }
         } 
         &.mat-flat-button {
             &:hover {

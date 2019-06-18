@@ -12,21 +12,103 @@ storiesOf("Form Components|Checkbox", module)
     })
   )
   .add(
-    "Normal",
+    "Types",
     () => ({
       template: `
-      <dxc-checkbox [(ngModel)]="checked" text="Checkbox 1" (change)="onChange($event)"></dxc-checkbox>
-      <dxc-checkbox [(ngModel)]="checked" labelPosition="before" text="Checkbox 2"></dxc-checkbox>
-      <dxc-checkbox [(ngModel)]="checked" labelPosition="after" text="Checkbox 3"></dxc-checkbox>
-      <dxc-checkbox disabled required labelPosition="before" text="Checkbox 4"></dxc-checkbox>
-      <dxc-checkbox indeterminate text="Checkbox 5"></dxc-checkbox>
+      <div class= "light">
+      <dxc-checkbox
+      [(ngModel)]="checked"
+      labelPosition="before"
+      text="Checkbox 1"
+      ></dxc-checkbox>
+      <br />
+      <dxc-checkbox
+      [(ngModel)]="checked"
+      labelPosition="before"
+      text="Checkbox 2"
+      ></dxc-checkbox>
+      
+      <dxc-checkbox
+      [(ngModel)]="checked"
+      labelPosition="after"
+      text="Checkbox 3"
+      ></dxc-checkbox>
+      
+      <dxc-checkbox
+      disabled
+      required
+      labelPosition="before"
+      text="Checkbox 4"
+      ></dxc-checkbox>
+      
+      <dxc-checkbox
+      indeterminate
+      (change)="showAlert()"
+      text="Checkbox 5"
+      ></dxc-checkbox>
+      
       <dxc-checkbox></dxc-checkbox>
-      <dxc-checkbox indeterminate (change)="onChange($event)"
-        (indeterminateChange)="onIndeterminateChange($event)" required text="Checkbox 7"></dxc-checkbox>
+      
+      <dxc-checkbox
+      indeterminate
+      (change)="showAlert()"
+      required
+      text="Checkbox 7"
+      ></dxc-checkbox>
+      </div>
+      <div class="dark"> 
+            
+          <dxc-checkbox
+          [(ngModel)]="checked"
+          labelPosition="before"
+          [theme]="'dark'"
+          text="Checkbox 1"
+          ></dxc-checkbox>
+          <br />
+          <dxc-checkbox
+          [(ngModel)]="checked"
+          labelPosition="before"
+          [theme]="'dark'"
+          text="Checkbox 2"
+          ></dxc-checkbox>
+      
+          <dxc-checkbox
+          [(ngModel)]="checked"
+          [theme]="'dark'"
+          labelPosition="after"
+          text="Checkbox 3"
+          ></dxc-checkbox>
+      
+          <dxc-checkbox
+          disabled
+          required
+          [theme]="'dark'"
+          labelPosition="before"
+          text="Checkbox 4"
+          ></dxc-checkbox>
+      
+          <dxc-checkbox
+          indeterminate
+          [theme]="'dark'"
+          (change)="showAlert()"
+          text="Checkbox 5"
+          ></dxc-checkbox>
+      
+          <dxc-checkbox></dxc-checkbox>
+      
+          <dxc-checkbox
+          indeterminate
+          (change)="showAlert()"
+          [theme]="'dark'"
+          required
+          text="Checkbox 7"
+          ></dxc-checkbox>
+      
+      </div>
+      
       `,
       props: {
-        onChange: action("Change fired!"),
-        onIndeterminateChange: action("Indeterminate change fired!")
+        onChange: action("Change fired!")
       }
     }),
     {
@@ -46,8 +128,7 @@ storiesOf("Form Components|Checkbox", module)
       component: DxcCheckboxComponent,
       props: {
         text: text("text", "Checkbox example"),
-        onChange: action("Change fired!"),
-        onIndeterminateChange: action("Indeterminate change fired!")
+        onChange: action("Change fired!")
       }
     }),
     {

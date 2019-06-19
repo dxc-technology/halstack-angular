@@ -49,6 +49,11 @@
                 background: #E5E5E5;
             }
             &:disabled {
+                ::ng-deep {
+                    span.mat-button-wrapper > span {
+                        color:white;
+                    }
+                }
                 background: #666666;
             }
         }

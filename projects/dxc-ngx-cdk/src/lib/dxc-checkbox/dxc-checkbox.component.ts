@@ -34,6 +34,7 @@ export class DxcCheckboxComponent implements OnInit {
       this.isDark = true;
       this.isLight = false;
     }
+    this.labelPosition === 'after' ?  'after': 'before'
   }
 
   constructor() {
@@ -41,6 +42,7 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   ngOnInit() {
+  
     if (this.required === '') {
       this.required = true;
     } else if (this.required === 'false') {
@@ -56,7 +58,7 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   onValueChange(event: any) {
-    this.checkedChange.emit(event);
+    this.checkedChange.emit(event.checked);
   }
 
 

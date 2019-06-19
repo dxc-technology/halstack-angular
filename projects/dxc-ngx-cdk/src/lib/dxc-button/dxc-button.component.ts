@@ -11,8 +11,7 @@ export class DxcButtonComponent  {
   @Input() disabled: boolean;
   @Input() disableRipple: boolean;
   @Input() label: string;
-  @Input() iconType: string;
-  @Input() icon: string;
+  @Input() iconSrc: string;
   @Input() iconPosition: string;
   
   @Output() onClick = new EventEmitter<any>();
@@ -22,6 +21,9 @@ export class DxcButtonComponent  {
 
 
   public ngOnChanges() :void { 
+    if(this.iconPosition !== 'after'){
+      this.iconPosition='before';
+    }
     if(this.theme  === 'dark') {
       this.isDark = true;
       this.isLight = false;

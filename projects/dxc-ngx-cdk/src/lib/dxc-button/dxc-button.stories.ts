@@ -42,16 +42,16 @@ storiesOf("Form Components|Button", module)
       </div>
       <h3> With Icon </h3>
       <div>
-        <dxc-button (onClick)="onClick($event)" mode="basic" label="Basic"></dxc-button>
-        <dxc-button (onClick)="onClick($event)" mode="raised" label="Raised"></dxc-button>
-        <dxc-button (onClick)="onClick($event)" mode="flat" label="Flat"></dxc-button>
-        <dxc-button (onClick)="onClick($event)" mode="outlined" label="Outlined"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg" mode="basic" label="Basic"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg"  mode="raised" label="Raised"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg" mode="flat" label="Flat"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg" mode="outlined" label="Outlined"></dxc-button>
       </div>
       <div>
-        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="basic" label="Basic"></dxc-button>
-        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="raised" label="Raised"></dxc-button>
-        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="flat" label="Flat"></dxc-button>
-        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="outlined" label="Outlined"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="basic" label="Basic"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="raised" label="Raised"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="flat" label="Flat"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="outlined" label="Outlined"></dxc-button>
       </div>
       `,
     props: {
@@ -71,18 +71,15 @@ storiesOf("Form Components|Button", module)
       template: `<div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF'}" >
             <dxc-button  
               [mode]="mode"
-              [theme] = "theme"
-              [icon] = "icon"
-              [iconType] = "iconType"
               [disabled] = "disabled"  
-              [iconPosition] = "iconPosition"
+              [iconSrc] = "iconSrc"
               [label] = "label"
+              [iconPosition]="iconPosition"
               (onClick)="onClick($event)">
             </dxc-button>
          </div>`,
       props: {
-        icon: text("icon", "photo_camera"),
-        iconType: select("iconType", { fa: "fa", mat: "mat" }, "mat"),
+        iconSrc: text("iconSrc", "/pencil.svg"),
         mode: select(
           "mode",
           {

@@ -5,21 +5,15 @@
   [disableRipple]="disableRipple"
   (click) = "onClickHandler($event)"
 >
-  <mat-icon class="icon-before" *ngIf="icon && iconType !== 'fa' && iconPosition === 'before'">{{
-    icon
-  }}</mat-icon>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition === 'before'"
-    class="{{ icon }} icon-before "
-  ></i
-  ><span *ngIf="label">{{ label }}</span>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition !== 'before'"
-    class="{{ icon }}  icon-after"
-  ></i>
-  <mat-icon  class = "icon-after" *ngIf="icon && iconType !== 'fa' && iconPosition !== 'before'">{{
-    icon
-  }}</mat-icon>
+  <img src="{{iconSrc}}" 
+    *ngIf="iconSrc && iconPosition === 'before'"
+    class="icon-before "
+  >
+  <span *ngIf="label">{{ label }}</span>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition !== 'before'"
+    class=" icon-after"
+  >
 </button>
 <button
   *ngIf="mode === 'raised'"
@@ -28,21 +22,15 @@
   (click) = "onClickHandler($event)"
   [disableRipple]="disableRipple"
 >
-  <mat-icon  class = "icon-before" *ngIf="icon && iconType !== 'fa' && iconPosition === 'before'">{{
-    icon
-  }}</mat-icon>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition === 'before'"
-    class="{{ icon }} icon-before"
-  ></i
-  ><span *ngIf="label">{{ label }}</span>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition !== 'before'"
-    class="{{ icon }} icon-after"
-  ></i>
-  <mat-icon class="icon-after" *ngIf="icon && iconType !== 'fa' && iconPosition !== 'before'">{{
-    icon
-  }}</mat-icon>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition === 'before'"
+    class="icon-before"
+  >
+  <span *ngIf="label">{{ label }}</span>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition !== 'before'"
+    class="icon-after"
+  >
 </button>
 <button
   *ngIf="mode === 'outlined'"
@@ -51,21 +39,15 @@
   (click) = "onClickHandler($event)"
   [disableRipple]="disableRipple"
 >
-  <mat-icon class= "icon-before" *ngIf="icon && iconType !== 'fa' && iconPosition === 'before'">{{
-    icon
-  }}</mat-icon>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition === 'before'"
-    class="{{ icon }} icon-before"
-  ></i
-  ><span *ngIf="label">{{ label }}</span>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition !== 'before'"
-    class="{{ icon }} icon-after"
-  ></i>
-  <mat-icon class=" icon-after"  *ngIf="icon && iconType !== 'fa' && iconPosition !== 'before'">{{
-    icon
-  }}</mat-icon>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition === 'before'"
+    class="icon-before"
+  >
+  <span *ngIf="label">{{ label }}</span>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition !== 'before'"
+    class="icon-after"
+  >
 </button>
 <button
 (click) = "onClickHandler($event)"
@@ -74,19 +56,13 @@
   [disabled]="disabled"
   [disableRipple]="disableRipple"
 >
-  <mat-icon  class="icon-before"*ngIf="icon && iconType !== 'fa' && iconPosition === 'before'">{{
-    icon
-  }}</mat-icon>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition === 'before'"
-    class="{{ icon }} icon-before "
-  ></i
-  ><span *ngIf="label">{{ label }}</span>
-  <i
-    *ngIf="icon && iconType === 'fa' && iconPosition !== 'before'"
-    class="{{ icon }} icon-after"
-  ></i>
-  <mat-icon  class="icon-after"  *ngIf="icon && iconType !== 'fa' && iconPosition !== 'before'">{{
-    icon
-  }}</mat-icon>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition === 'before'"
+    class="icon-before "
+  >
+  <span *ngIf="label">{{ label }}</span>
+  <img src="{{iconSrc}}"
+    *ngIf="iconSrc && iconPosition !== 'before'"
+    class="icon-after"
+  >
 </button>

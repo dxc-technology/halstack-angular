@@ -5,8 +5,10 @@ import { AppComponent } from "./app.component";
 import {
   DxcButtonModule,
   DxcCheckboxModule,
-  DxcDateModule
-} from "projects/dxc-ngx-cdk/src/public-api";
+  DxcDateModule,
+  DxcRadioModule
+} from 'projects/dxc-ngx-cdk/src/public-api';
+
 import { BrowserModule } from "@angular/platform-browser";
 import { ButtonInfoComponent } from "./pages/button/button-info.component";
 import { SliderInfoComponent } from "./pages/slider/slider-info.component";
@@ -26,8 +28,9 @@ import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-sli
     BrowserAnimationsModule,
     DxcButtonModule,
     DxcCheckboxModule,
-    BrowserModule,
     DxcDateModule,
+    DxcRadioModule
+    BrowserModule,
     DxcSliderModule
   ],
   providers: [],

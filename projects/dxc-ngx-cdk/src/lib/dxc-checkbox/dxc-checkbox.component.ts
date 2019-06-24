@@ -13,8 +13,7 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./dxc-checkbox.component.scss','./dxc-light-checkbox.component.scss','./dxc-dark-checkbox.component.scss']
 })
 export class DxcCheckboxComponent implements OnInit {
-  @Input() ngModel: string;
-  @Input() indeterminate: boolean | string;
+  @Input() value: string;
   @Input() theme: string;
   @Input() checked: boolean;
   @Input() disableRipple: boolean;
@@ -24,10 +23,7 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() name: string;
   @Input() id: string;
   @Input() labelPosition: string;
-  @Input() value: string;
-  @Output() ngModelChange: EventEmitter<any>;
-  @Output() change: EventEmitter<any>;
-  @Output() indeterminateChange: EventEmitter<any>;
+  @Output() checkedChange: EventEmitter<any>;
 
   @HostBinding('class.light') isLight: boolean = true;
   @HostBinding('class.dark') isDark: boolean = false;
@@ -38,15 +34,15 @@ export class DxcCheckboxComponent implements OnInit {
       this.isDark = true;
       this.isLight = false;
     }
+    this.labelPosition === 'after' ?  'after': 'before'
   }
 
   constructor() {
-    this.ngModelChange = new EventEmitter();
-    this.change = new EventEmitter();
-    this.indeterminateChange = new EventEmitter();
+    this.checkedChange = new EventEmitter();
   }
 
   ngOnInit() {
+  
     if (this.required === '') {
       this.required = true;
     } else if (this.required === 'false') {
@@ -59,24 +55,11 @@ export class DxcCheckboxComponent implements OnInit {
       this.required = false;
     }
 
-    if (this.indeterminate === '') {
-      this.indeterminate = true;
-    } else if (this.indeterminate === 'false') {
-      this.indeterminate = false;
-    } else if (this.indeterminate === 'true') {
-      this.indeterminate = true;
-    }
   }
 
-  onNgModelChange(event: any) {
-    this.ngModelChange.emit(event);
+  onValueChange(event: any) {
+    this.checkedChange.emit(event.checked);
   }
 
-  onChange(event: any) {
-    this.change.emit({ event, dxcCheckbox: this });
-  }
 
-  onIndeterminateChange(event: any) {
-    this.indeterminateChange.emit(event);
-  }
 }

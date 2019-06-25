@@ -6,6 +6,8 @@ RUN npm config set unsafe-perm true
 
 RUN npm install -g @angular/cli
 
+RUN npm install -g release
+
 ENV AWS_CLI_VERSION 1.15.47
 
 RUN apk --no-cache update && \

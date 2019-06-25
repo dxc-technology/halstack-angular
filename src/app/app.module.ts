@@ -29,7 +29,7 @@ import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-sli
     DxcButtonModule,
     DxcCheckboxModule,
     DxcDateModule,
-    DxcRadioModule
+    DxcRadioModule,
     BrowserModule,
     DxcSliderModule
   ],

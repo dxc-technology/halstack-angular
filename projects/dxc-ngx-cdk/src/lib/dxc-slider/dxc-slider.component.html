@@ -1,4 +1,4 @@
-<span *ngIf="showLimitValues"> {{ min }}</span>
+<span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitValues"> {{ min }}</span>
 <mat-slider
   [min]="min"
   [max]="max"
@@ -9,11 +9,11 @@
   (input)="valueChanged($event)"
   (mouseup)="mouseUp($event)"
 ></mat-slider>
-<span *ngIf="showLimitValues"> {{ max }}</span>
+<span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitValues"> {{ max }}</span>
 <mat-form-field [appearance]="'standard'" [style.display]="showInput ? 'block' : 'none'" [class.required] = "required">
   <input
-    [formControl]="rateControl"
     matInput
+    #input
     [type] = "'number'"
     [max] = "max"
     [min] = "min"
@@ -24,5 +24,4 @@
     [disabled]="disabled"
     [required]="required" 
   />
-  <mat-error>Please enter a value between {{min}} and {{max}}</mat-error>
 </mat-form-field>

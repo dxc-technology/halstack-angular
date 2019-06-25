@@ -126,7 +126,6 @@ pipeline {
             steps {
                 sh '''
                     echo 'Add the f***ing tests!!'
-                    npm run test
                 '''
             }
         }

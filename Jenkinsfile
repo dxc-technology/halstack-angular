@@ -45,7 +45,7 @@ pipeline {
                         parameters: [
                             choice(
                                 name: 'type',
-                                choices: "Major\nMinor\nPatch",
+                                choices: "major\nminor\npatch",
                                 description: 'MAJOR version when you make incompatible API changes. MINOR version when you add functionality in a backwards-compatible manner. PATCH version when you make backwards-compatible bug fixes.' 
                             )
                         ]
@@ -72,7 +72,7 @@ pipeline {
         }
         stage('Password to continue') {
             when {
-                expression { env.RELEASE_TYPE == 'Major' | env.RELEASE_TYPE == 'Minor' | env.RELEASE_TYPE == 'Patch' | env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc' } 
+                expression { env.RELEASE_TYPE == 'major' | env.RELEASE_TYPE == 'minor' | env.RELEASE_TYPE == 'patch' | env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc' } 
             }
             steps {
                 script {
@@ -169,6 +169,73 @@ pipeline {
                         sh '''
                             aws s3 rm s3://dev-diaas-angular-storybook/ --recursive
                             aws s3 cp ./storybook-static/ s3://dev-diaas-angular-storybook/ --recursive
+                        '''
+                    }
+                }
+                // Zipping storybook
+                sh '''
+                    rm -rf storybook-static.zip
+                '''
+                zip zipFile: 'storybook.zip', archive: false, dir: './storybook-static'
+                // Uploading storybook to Artifactory (diaas-generic)
+                withCredentials([usernamePassword(credentialsId:"diaas-rw", passwordVariable:"ARTIF_PASSWORD", usernameVariable:"ARTIF_USER")]) {
+                  sh '''
+                        curl -u${ARTIF_USER}:${ARTIF_PASSWORD} -T ./storybook.zip "https://artifactory.csc.com/artifactory/diaas-generic/dxc-ngx-cdk/storybook/storybook-bundle.${BRANCH_NAME}.${BUILD_ID}.zip"
+                  '''
+                }
+            }
+        }
+        stage('Create git tag and relese notes') {
+            when {
+                expression { env.RELEASE_VALID == true } 
+            }
+            steps {
+                script {
+                    if (env.RELEASE_TYPE == 'major') {
+                        sh "release major"
+                    } else if (env.RELEASE_TYPE == 'minor') {
+                        sh "release minor"
+                    } else if (env.RELEASE_TYPE == 'patch') {
+                        sh "release patch"
+                    } else if (env.RELEASE_TYPE == 'beta') {
+                        sh "release pre beta"
+                    } else if (env.RELEASE_TYPE == 'rc') {
+                        sh "release pre rc"
+                    }
+                }
+            }
+        }
+        stage('Publish dxc-ngx-cdk version to Artifactory ') {
+            when {
+                expression { env.RELEASE_VALID == true } 
+            }
+            steps {
+                // Publish library to npm repository
+                sh '''
+                    cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
+                    cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore
+                    cd ./projects/dxc-ngx-cdk/src/lib
+                    npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
+                    npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${env.RELEASE_TYPE}
+                '''
+            }
+        }
+        stage('Deploy storybook to demo and publish to Artifactory') {
+            when {
+                expression { env.RELEASE_VALID == true } 
+            }
+            steps {
+                // Deploying storybook to dev-diaas-angular-storybook environment
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'DIAAS-AWS-CLI',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
+                        sh '''
+                            aws s3 rm s3://diaas-angular-storybook/ --recursive
+                            aws s3 cp ./storybook-static/ s3://diaas-angular-storybook/ --recursive
                         '''
                     }
                 }

@@ -4,7 +4,7 @@ import {
   MatInputModule,
   MatFormFieldModule
 } from "@angular/material";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { DxcSliderComponent } from "./dxc-slider.component";
 import { CommonModule } from "@angular/common";
 
@@ -14,7 +14,6 @@ import { CommonModule } from "@angular/common";
     CommonModule,
     MatSliderModule,
     MatInputModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule
   ],

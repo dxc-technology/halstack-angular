@@ -95,7 +95,6 @@ pipeline {
             steps {
                 sh '''
                     npm install
-                    ng build --prod
                 '''
             }
         }
@@ -110,6 +109,16 @@ pipeline {
                 '''
             }
         }
+        stage('Build dxc-ngx-cdk storybook') {
+            when {
+                expression { env.RELEASE_VALID == true |  env.RELEASE_TYPE == 'no-release' } 
+            }
+            steps {
+                sh '''
+                    npm run build-storybook
+                '''
+            }
+        }
         stage('Test library') {
             when {
                 expression { env.RELEASE_VALID == true |  env.RELEASE_TYPE == 'no-release' } 
@@ -117,6 +126,7 @@ pipeline {
             steps {
                 sh '''
                     echo 'Add the f***ing tests!!'
+                    npm run test
                 '''
             }
         }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Components } from './components'
+import { Components } from './components';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,10 @@ import { Components } from './components'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   components: Array<any>;
   constructor() {
-     this.components = Components;
+    this.components = Components;
   }
-
 
   title = 'dxc-angular-cdk';
 
@@ -27,10 +25,7 @@ export class AppComponent {
     return d.getDay() !== 0 && d.getDay() !== 6;
   }
 
- 
   isRequired() {
     return true;
   }
 }
-
-

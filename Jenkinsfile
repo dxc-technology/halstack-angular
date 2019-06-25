@@ -80,10 +80,10 @@ pipeline {
                         env.PASSWORD = input message: 'Enter password to continue', ok: 'Continue',
                             parameters: [string(defaultValue: '', description: 'Password required', name: 'password')]
                         if (env.PASSWORD == ARTIF_PASSWORD) {
-                            env.RELEASE_VALID = true;
+                            env.RELEASE_VALID = 'valid';
                             sh "echo 'SIIIIII'"
                         } else {
-                            env.RELEASE_VALID = false;
+                            env.RELEASE_VALID = 'invalid';
                             sh "echo 'NOOOOO'"
                         }
                     }
@@ -92,7 +92,7 @@ pipeline {
         }
         stage('Install dependencies') {
             when {
-                expression { env.RELEASE_VALID | env.RELEASE_TYPE == 'no-release' } 
+                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
             }
             steps {
                 sh '''
@@ -102,7 +102,7 @@ pipeline {
         }
         stage('Build dxc-ngx-cdk library') {
             when {
-                expression { env.RELEASE_VALID | env.RELEASE_TYPE == 'no-release' } 
+                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
             }
             steps {
                 sh '''
@@ -113,7 +113,7 @@ pipeline {
         }
         stage('Build dxc-ngx-cdk storybook') {
             when {
-                expression { env.RELEASE_VALID | env.RELEASE_TYPE == 'no-release' } 
+                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
             }
             steps {
                 sh '''
@@ -123,7 +123,7 @@ pipeline {
         }
         stage('Test library') {
             when {
-                expression { env.RELEASE_VALID | env.RELEASE_TYPE == 'no-release' } 
+                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
             }
             steps {
                 sh '''
@@ -133,7 +133,7 @@ pipeline {
         }
         stage('.npmrc') {
             when {
-                expression { env.RELEASE_VALID | env.RELEASE_TYPE == 'no-release' } 
+                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
             }
             steps {
                 withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
@@ -189,7 +189,7 @@ pipeline {
         }
         stage('Create git tag and relese notes') {
             when {
-                expression { env.RELEASE_VALID } 
+                expression { env.RELEASE_VALID == 'valid' } 
             }
             steps {
                 script {
@@ -209,7 +209,7 @@ pipeline {
         }
         stage('Publish dxc-ngx-cdk version to Artifactory ') {
             when {
-                expression { env.RELEASE_VALID } 
+                expression { env.RELEASE_VALID == 'valid' } 
             }
             steps {
                 // Publish library to npm repository
@@ -224,7 +224,7 @@ pipeline {
         }
         stage('Deploy storybook to demo and publish to Artifactory') {
             when {
-                expression { env.RELEASE_VALID } 
+                expression { env.RELEASE_VALID == 'valid' } 
             }
             steps {
                 // Deploying storybook to dev-diaas-angular-storybook environment

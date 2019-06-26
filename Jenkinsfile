@@ -149,7 +149,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 // Publish library to npm repository
-                sh "sed -i -e 's/0.0.0/'0.0.0-alpha.${BUILD_ID}'/g' ./projects/dxc-ngx-cdk/package.json"
+                sh "sed -i -e 's/1.0.0/'1.0.0-alpha.${BUILD_ID}'/g' ./projects/dxc-ngx-cdk/package.json"
                 sh '''
                     cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
                     cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore

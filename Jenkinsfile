@@ -195,7 +195,6 @@ pipeline {
             }
             steps {
                 script {
-                    sh "git checkout -b ${GIT_BRANCH}"
                     sh "git push --set-upstream origin ${GIT_BRANCH}"
                     if (env.RELEASE_TYPE == 'major') {
                         sh "release major"

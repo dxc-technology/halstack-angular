@@ -3,7 +3,7 @@ pipeline {
         dockerfile {
             args '-u root:root'
             filename 'docker/Dockerfile'
-            reuseNode true
+            reuseNode false
         }
     }
     stages {
@@ -195,7 +195,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "git pull origin master"
+                    sh "git checkout -b ${GIT_BRANCH}"
                     if (env.RELEASE_TYPE == 'major') {
                         sh "release major"
                     } else if (env.RELEASE_TYPE == 'minor') {

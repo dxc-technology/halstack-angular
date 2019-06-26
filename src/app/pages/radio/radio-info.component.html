@@ -1,0 +1,76 @@
+<div class= "light">
+    <dxc-radio
+    labelPosition="before"
+    label="Radio 1"
+    ></dxc-radio>
+    <br />
+    <dxc-radio
+    labelPosition="before"
+    label="Radio 2"
+    ></dxc-radio>
+    
+    <dxc-radio
+    labelPosition="after"
+    label="Radio 3"
+    ></dxc-radio>
+    
+    <dxc-radio
+    disabled
+    labelPosition="before"
+    label="Radio 4"
+    ></dxc-radio>
+    
+    <dxc-radio
+    (change)="showAlert()"
+    label="Radio 5"
+    ></dxc-radio>
+    
+    <dxc-radio></dxc-radio>
+    
+    <dxc-radio
+    (change)="showAlert()"
+    label="Radio 7"
+    ></dxc-radio>
+    </div>
+    <div class="dark"> 
+          
+        <dxc-radio
+        labelPosition="before"
+        [theme]="'dark'"
+        label="Radio 1"
+        ></dxc-radio>
+        <br />
+        <dxc-radio
+        labelPosition="before"
+        [theme]="'dark'"
+        label="Radio 2"
+        ></dxc-radio>
+    
+        <dxc-radio
+        [theme]="'dark'"
+        labelPosition="after"
+        label="Radio 3"
+        ></dxc-radio>
+    
+        <dxc-radio
+        disabled
+        [theme]="'dark'"
+        labelPosition="before"
+        label="Radio 4"
+        ></dxc-radio>
+    
+        <dxc-radio
+        [theme]="'dark'"
+        (change)="showAlert()"
+        label="Radio 5"
+        ></dxc-radio>
+    
+        <dxc-radio></dxc-radio>
+    
+        <dxc-radio
+        (change)="showAlert()"
+        [theme]="'dark'"
+        label="Radio 7"
+        ></dxc-radio>
+    
+    </div>

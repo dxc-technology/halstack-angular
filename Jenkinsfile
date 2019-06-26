@@ -195,7 +195,7 @@ pipeline {
             }
             steps {
                 script {
-                    if (${BUILD_ID} === 1) {
+                    if (BUILD_ID === 1) {
                         sh "git checkout -b ${GIT_BRANCH}"
                         sh "git push --set-upstream origin ${GIT_BRANCH}"
                     } else {

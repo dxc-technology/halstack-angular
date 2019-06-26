@@ -197,10 +197,10 @@ pipeline {
                 script {
                     if (env.BUILD_ID == 1) {
                         sh "git checkout -b ${GIT_BRANCH}"
-                        sh "git push --set-upstream origin ${GIT_BRANCH}"
                     } else {
                         sh "git checkout ${GIT_BRANCH}"
                     }
+                    sh "git push --set-upstream origin ${GIT_BRANCH}"
                     if (env.RELEASE_TYPE == 'major') {
                         sh "release major"
                     } else if (env.RELEASE_TYPE == 'minor') {

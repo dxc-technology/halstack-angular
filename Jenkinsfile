@@ -195,6 +195,7 @@ pipeline {
             }
             steps {
                 script {
+                    sh "git pull origin master"
                     if (env.RELEASE_TYPE == 'major') {
                         sh "release major"
                     } else if (env.RELEASE_TYPE == 'minor') {

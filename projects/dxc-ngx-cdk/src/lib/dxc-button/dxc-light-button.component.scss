@@ -1,38 +1,37 @@
-:host.light {
+@import "~@angular/material/theming";
 
-  button:disabled{
+:host.light {
+  button:disabled {
     ::ng-deep {
       span.mat-button-wrapper > span {
-        color:black;
+        color: black;
       }
+    }
   }
-}
-  button.mat-raised-button, button.mat-button {
-    box-shadow: 0px 1.5px 3px 0px rgba(0, 0, 0, 0.16) !important;
+
+  button.mat-raised-button,
+  button.mat-button {
     background-color: #ffed00;
     color: #000;
-    
+
     &:hover:not([disabled]) {
       background-color: black;
       color: #ffed00;
     }
-
-    .mat-button-ripple.mat-ripple,
-    .mat-button-focus-overlay {
-      z-index: -5;
-
+    ::ng-deep {
       .mat-ripple-element {
-        background-color: #666;
-        opacity: 0.75;
+        background-color: #666666;
+        opacity: 1;
       }
     }
-  
   }
-button.mat-raised-button {
-  &:disabled{
-   background-color: rgba(0, 0, 0, 0.12);
+  button.mat-raised-button {
+    box-shadow: 0px 1.5px 3px 0px rgba(0, 0, 0, 0.16) !important;
+
+    &:disabled {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
   }
-}
   button.mat-button {
     background-color: #ffed00;
     color: #000;
@@ -76,49 +75,45 @@ button.mat-raised-button {
 
     &:disabled {
       border-width: 2px;
-    }
-
-    color: #000;
-
-    &:hover:not([disabled]) {
-      border-color: #ffed00;
-    }
-
-    .mat-button-ripple.mat-ripple {
-      z-index: -5;
-
-      .mat-ripple-element {
-        background-color: #eee;
-        opacity: 0.75;
-      }
-    }
-
-    .mat-button-focus-overlay {
-      background-color: white;
-      z-index: -5;
-    }
-  }
-
-  button.mat-flat-button {
-    &:hover:not([disabled]) {
-      background-color: transparent;
-
-      span.mat-button-wrapper {
-        z-index: 5;
-      }
-
-      .mat-button-ripple.mat-ripple,
-      .mat-button-focus-overlay {
-        z-index: -5;
-
-        .mat-ripple-element {
-          background-color: #eee;
-          opacity: 0.75;
+      border-color: #d9d9d9;
+      ::ng-deep {
+        span {
+          color: #d9d9d9;
         }
       }
+    }
 
-      .mat-button-ripple.mat-ripple {
-        background-color: #d9d9d9;
+    &:hover:not([disabled]) {
+      background-color: transparent;
+      border-color: #ffed00;
+      ::ng-deep {
+        .mat-button-focus-overlay {
+          opacity: 0;
+        }
+      }
+    }
+
+    button.mat-flat-button {
+      &:hover:not([disabled]) {
+        background-color: transparent;
+
+        span.mat-button-wrapper {
+          z-index: 5;
+        }
+
+        .mat-button-ripple.mat-ripple,
+        .mat-button-focus-overlay {
+          z-index: -5;
+
+          .mat-ripple-element {
+            background-color: #eee;
+            opacity: 0.75;
+          }
+        }
+
+        .mat-button-ripple.mat-ripple {
+          background-color: #d9d9d9;
+        }
       }
     }
   }

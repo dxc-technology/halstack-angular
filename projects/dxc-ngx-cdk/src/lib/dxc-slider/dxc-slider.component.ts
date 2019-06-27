@@ -1,12 +1,14 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
-  HostBinding
+  HostBinding,
+  OnChanges,
+  OnInit,
+  ViewChild,
+  ElementRef
 } from "@angular/core";
-import { Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: "dxc-slider",
@@ -17,7 +19,7 @@ import { Validators, FormControl } from '@angular/forms';
     "./dxc-dark-slider.scss"
   ]
 })
-export class DxcSliderComponent implements OnInit {
+export class DxcSliderComponent implements OnChanges {
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
 
@@ -37,10 +39,12 @@ export class DxcSliderComponent implements OnInit {
   @Output() dragEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() inputBlur: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('input',{static:true}) input: ElementRef;
+  
   tickInterval: any;
-  rateControl: FormControl;
-  ngOnInit(): void {
-    this.rateControl = new FormControl("", [Validators.max(this.max), Validators.min(this.min)])
+
+
+  public ngOnChanges(): void {
     this.tickInterval = this.step > 1 ? 1 : 0;
     if (this.theme === "dark") {
       this.isLight = false;
@@ -53,14 +57,15 @@ export class DxcSliderComponent implements OnInit {
    *  @param $event
    */
   public valueChanged($event: any): void {
-    let  newValue = $event.value || $event.target.value;
+    let newValue = $event.value || $event.target.value;
     if (newValue > this.max) {
       newValue = this.max;
     }
-    if (newValue< this.min) {
+    if (newValue < this.min) {
       newValue = this.min;
     }
-
+    this.value =newValue;
+    this.input.nativeElement.value = newValue;
     this.valueChange.emit(newValue);
   }
 
@@ -69,7 +74,8 @@ export class DxcSliderComponent implements OnInit {
    * @param $event
    */
   public mouseUp($event): void {
-    this.dragEnd.emit( $event.value);
+    this.dragEnd.emit(this.value || this.input.nativeElement.value);
+
   }
 
   /**
@@ -77,6 +83,6 @@ export class DxcSliderComponent implements OnInit {
    */
   public onBlur($event): void {
    
-    this.inputBlur.emit( $event.target.value);
+    this.inputBlur.emit($event.target.value);
   }
 }

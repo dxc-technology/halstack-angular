@@ -8,7 +8,7 @@
     "test": "ng test",
     "testJest": "jest",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e", 
     "storybook": "start-storybook -s .storybook/public -p 6006",
     "build-storybook": "build-storybook -s .storybook/public"
   },

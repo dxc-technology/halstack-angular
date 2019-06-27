@@ -1,0 +1,19 @@
+
+:host.dark {
+    mat-radio-button ::ng-deep {
+        .mat-radio-mixedmark {
+            background: black;
+        }
+    
+        .mat-radio-label-content {
+            color:white;
+        }
+        .mat-ripple-element {
+            background-color: white;
+
+        }
+        .mat-radio-outer-circle {
+            border-color: white;
+        }
+    }
+}

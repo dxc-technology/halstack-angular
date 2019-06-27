@@ -1,52 +1,48 @@
-mat-radio-button {
+:host  {
     display: inline-flex;
-
+  
     mat-radio-button {
-        label.mat-radio-button-layout {
-            display: inline-flex;
-            align-items: center;
-
-            .mat-radio-button-inner-container {
-                margin: 10px 15px;
-                width: 24px;
-                height: 24px;
-
-                .mat-radio-button-frame {
-                    border-radius: 4px;
-                }
-
-                .mat-radio-button-background {
-                    svg path {
-                        stroke: black !important;
-                    }
-
-                    .mat-radio-button-mixedmark {
-                        background-color: black;
-                    }
-                }
+      ::ng-deep {
+        .mat-radio-label {
+          display: inline-flex;
+          align-items: center;
+  
+          .mat-radio-container {
+            margin: 10px 15px;
+            width: 24px;
+            height: 24px;
+  
+            .mat-radio-frame {
+              border-radius: 4px;
             }
-        }
-
-        &.mat-radio-button-checked {
-            .mat-radio-button-frame {
-                border-color: #ffed00;
+  
+            .mat-radio-background {
+              svg path {
+                stroke: black !important;
+                stroke-width: 3px;
+              }
             }
-        }
-
-        &.mat-radio-button-label-before {
-            span.mat-radio-button-label {
-                margin-left: 15px;
-            }
-        }
-
-        &:not(.mat-radio-button-label-before) {
-            span.mat-radio-button-label {
-                margin-right: 15px;
-            }
-        }
-
-        &.mat-radio-button-disabled {
+          }
+        }  
+      }
+      .label-after {
+        margin-right: 15px;
+      }
+      .label-before {
+        margin-left: 15px;
+      }
+      &.mat-radio-disabled {
+          cursor: not-allowed;
+        ::ng-deep {
+          .mat-radio-label{
             cursor: not-allowed;
+          }
+          .mat-radio-label .mat-radio-outer-circle,
+           .mat-radio-label .mat-radio-inner-circle {
+            background: #666666;
+            border-color: #666666;
+          }
         }
+      }
     }
-}
+  }

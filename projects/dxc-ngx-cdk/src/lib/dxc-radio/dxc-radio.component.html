@@ -1,5 +1,5 @@
 <mat-radio-button
-  [labelPosition]="labelPosition"
+  [labelPosition]="labelPosition ? labelPosition :  'before'"
   [value]="value"
   [disabled]="disabled"
   [name]="name"
@@ -7,5 +7,7 @@
   [disableRipple]="disableRipple"
   [checked]="checked"
 >
-{{label}}
+<span *ngIf="label" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
+  {{label}}
+</span>
 </mat-radio-button>

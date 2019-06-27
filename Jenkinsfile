@@ -158,18 +158,20 @@ pipeline {
                 expression { env.RELEASE_VALID == 'valid' } 
             }
             steps {
-                // Publish library to npm repository
-                env.RELEASE_TYPE = sh (
-                    script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
-                    returnStdout: true
-                ).trim()
-                sh '''
-                    cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
-                    cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore
-                    cd ./projects/dxc-ngx-cdk/src/lib
-                    npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
-                    npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${env.RELEASE_TYPE}
-                '''
+                script {
+                    // Publish library to npm repository
+                    env.RELEASE_TYPE = sh (
+                        script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
+                        returnStdout: true
+                    ).trim()
+                    sh '''
+                        cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
+                        cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore
+                        cd ./projects/dxc-ngx-cdk/src/lib
+                        npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
+                        npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${env.RELEASE_TYPE}
+                    '''
+                }
             }
         }
         stage('Deploy storybook to demo and publish to Artifactory') {

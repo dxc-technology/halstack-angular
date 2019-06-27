@@ -65,7 +65,7 @@ export class DxcSliderComponent implements OnChanges {
       newValue = this.min;
     }
     this.value =newValue;
-    //this.input.nativeElement.value = newValue;
+    this.input.nativeElement.value = newValue;
     this.valueChange.emit(newValue);
   }
 

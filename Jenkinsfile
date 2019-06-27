@@ -141,7 +141,10 @@ pipeline {
             }
             steps {
                 script {
-                    env.RELEASE_NUMBER = sh "grep 'version' package.json | grep -o '[0-9.].*[^\",]'"
+                    env.RELEASE_NUMBER = sh (
+                        script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                        returnStdout: true
+                    ).trim()
                     sh '''
                         gitUrlWithCreds="$(echo "${GIT_URL}" | sed -e 's!://!://'${GIT_USER}:${GIT_PASSWORD}'@!')"
                         git tag "${RELEASE_NUMBER}" "${GIT_COMMIT}"
@@ -156,6 +159,10 @@ pipeline {
             }
             steps {
                 // Publish library to npm repository
+                env.RELEASE_TYPE = sh (
+                    script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
+                    returnStdout: true
+                ).trim()
                 sh '''
                     cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
                     cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore

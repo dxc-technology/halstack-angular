@@ -87,6 +87,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
                     sh '''
                         cat ${CONFIG} > ~/.npmrc
+                        npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
                     '''
                 }
             }
@@ -100,7 +101,6 @@ pipeline {
                     cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
                     cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore
                     cd ./projects/dxc-ngx-cdk/src/lib
-                    npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
                     npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag alpha
                 '''
             }
@@ -160,21 +160,20 @@ pipeline {
             steps {
                 script {
                     // Publish library to npm repository
-                    sh "sed -i -e 's/0.0.0/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
+                    sh "sed -i -e 's/0.0.0/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
+                    sh "cat ./dist/dxc-ngx-cdk/package.json"
                     env.RELEASE_TYPE = sh (
                         script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
                         returnStdout: true
                     ).trim()
                     if (env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc') {
                         sh '''
-                            cd dist/dxc-ngx-cdk
-                            npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
-                            npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${env.RELEASE_TYPE}
+                            cd ./dist/dxc-ngx-cdk
+                            npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${RELEASE_TYPE}
                         '''
                     } else {
                         sh '''
-                            cd dist/dxc-ngx-cdk
-                            npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
+                            cd ./dist/dxc-ngx-cdk
                             npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
                         '''
                     }

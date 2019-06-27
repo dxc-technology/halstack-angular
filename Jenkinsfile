@@ -14,8 +14,6 @@ pipeline {
                         sh "echo 'machine github.dxc.com' >> ~/.netrc"
                         sh "echo 'login ${GIT_USER}' >> ~/.netrc"
                         sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
-                        sh "git config --global user.email 'jenkins@dxc.com'"
-                        sh "git config --global user.name 'Jenkins User'"
                     }
             }
         }
@@ -29,52 +27,16 @@ pipeline {
                         parameters: [
                             choice(
                                 name: 'type',
-                                choices: "Release\nPre-release\nNo-release",
-                                description: 'If release is selected, a new release will be released. If pre-release is selected, a new pre-release will be released. To continue without releasing, select No-release.' 
+                                choices: "release\nno-release",
+                                description: 'If release is selected, a new release will be released. To continue without releasing, select no-release.' 
                             )
                         ]
-                }
-            }
-        }
-        stage('Release versioning') {
-            steps {
-                script {
-                    if (env.RELEASE_OPTION == 'Release') {
-                        sh '''
-                            echo 'Releaseeeee!'
-                        '''
-                        env.RELEASE_TYPE = input message: 'Select a release type', ok: 'Continue',
-                        parameters: [
-                            choice(
-                                name: 'type',
-                                choices: "major\nminor\npatch",
-                                description: 'MAJOR version when you make incompatible API changes. MINOR version when you add functionality in a backwards-compatible manner. PATCH version when you make backwards-compatible bug fixes.' 
-                            )
-                        ]
-                    } else if (env.RELEASE_OPTION == 'Pre-release') {
-                        sh '''
-                            echo 'Pre-Releaseeeee!'
-                        '''
-                        env.RELEASE_TYPE = input message: 'Select a pre-release type', ok: 'Continue',
-                        parameters: [
-                            choice(
-                                name: 'type',
-                                choices: "beta\nrc",
-                                description: 'BETA when the version could have some errors. RC if the version is completely ready to release.' 
-                            )
-                        ]
-                    } else {
-                        sh '''
-                            echo 'No-Releaseeeee!'
-                        '''
-                        env.RELEASE_TYPE = 'no-release'
-                    }
                 }
             }
         }
         stage('Password to continue') {
             when {
-                expression { env.RELEASE_TYPE == 'major' | env.RELEASE_TYPE == 'minor' | env.RELEASE_TYPE == 'patch' | env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc' } 
+                expression { env.RELEASE_OPTION == 'release' } 
             }
             steps {
                 script {
@@ -83,19 +45,15 @@ pipeline {
                             parameters: [string(defaultValue: '', description: 'Password required', name: 'password')]
                         if (env.PASSWORD == ARTIF_PASSWORD) {
                             env.RELEASE_VALID = 'valid';
-                            sh "echo 'SIIIIII'"
                         } else {
                             env.RELEASE_VALID = 'invalid';
-                            sh "echo 'NOOOOO'"
+                            echo 'Invalid password. The version will not be released.'
                         }
                     }
                 }
             }
         }
         stage('Install dependencies') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
-            }
             steps {
                 sh '''
                     npm install
@@ -103,9 +61,6 @@ pipeline {
             }
         }
         stage('Build dxc-ngx-cdk library') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
-            }
             steps {
                 sh '''
                     ng build dxc-ngx-cdk
@@ -114,9 +69,6 @@ pipeline {
             }
         }
         stage('Build dxc-ngx-cdk storybook') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
-            }
             steps {
                 sh '''
                     npm run build-storybook
@@ -124,9 +76,6 @@ pipeline {
             }
         }
         stage('Test library') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
-            }
             steps {
                 sh '''
                     echo 'Add the f***ing tests!!'
@@ -134,9 +83,6 @@ pipeline {
             }
         }
         stage('.npmrc') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' | env.RELEASE_TYPE == 'no-release' } 
-            }
             steps {
                 withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
                     sh '''
@@ -149,7 +95,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 // Publish library to npm repository
-                sh "sed -i -e 's/1.0.0/'1.0.0-alpha.${BUILD_ID}'/g' ./projects/dxc-ngx-cdk/package.json"
+                sh "sed -i -e 's/0.0.0/'0.0.0-alpha.${BUILD_ID}'/g' ./projects/dxc-ngx-cdk/package.json"
                 sh '''
                     cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
                     cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore
@@ -195,23 +141,12 @@ pipeline {
             }
             steps {
                 script {
-                    if (env.BUILD_ID == 1) {
-                        sh "git checkout -b ${GIT_BRANCH}"
-                    } else {
-                        sh "git checkout ${GIT_BRANCH}"
-                    }
-                    sh "git push --set-upstream origin ${GIT_BRANCH}"
-                    if (env.RELEASE_TYPE == 'major') {
-                        sh "release major"
-                    } else if (env.RELEASE_TYPE == 'minor') {
-                        sh "release minor"
-                    } else if (env.RELEASE_TYPE == 'patch') {
-                        sh "release patch"
-                    } else if (env.RELEASE_TYPE == 'beta') {
-                        sh "release pre beta"
-                    } else if (env.RELEASE_TYPE == 'rc') {
-                        sh "release pre rc"
-                    }
+                    env.RELEASE_NUMBER = sh "grep 'version' package.json | grep -o '[0-9.].*[^\",]'"
+                    sh '''
+                        gitUrlWithCreds="$(echo "${GIT_URL}" | sed -e 's!://!://'${GIT_USER}:${GIT_PASSWORD}'@!')"
+                        git tag "${RELEASE_NUMBER}" "${GIT_COMMIT}"
+                        git push "${gitUrlWithCreds}" "${RELEASE_NUMBER}"
+                    '''
                 }
             }
         }

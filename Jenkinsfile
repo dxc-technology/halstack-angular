@@ -160,6 +160,7 @@ pipeline {
             steps {
                 script {
                     // Publish library to npm repository
+                    sh "sed -i -e 's/0.0.0/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
                     env.RELEASE_TYPE = sh (
                         script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
                         returnStdout: true

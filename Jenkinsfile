@@ -164,13 +164,20 @@ pipeline {
                         script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
                         returnStdout: true
                     ).trim()
-                    sh '''
-                        cp ./projects/dxc-ngx-cdk/package.json ./projects/dxc-ngx-cdk/src/lib/package.json
-                        cp ./.npmignore ./projects/dxc-ngx-cdk/src/lib/.npmignore
-                        cd ./projects/dxc-ngx-cdk/src/lib
-                        npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
-                        npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${env.RELEASE_TYPE}
-                    '''
+                    if (env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc') {
+                        sh '''
+                            cd dist/dxc-ngx-cdk
+                            npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
+                            npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag ${env.RELEASE_TYPE}
+                        '''
+                    } else {
+                        sh '''
+                            cd dist/dxc-ngx-cdk
+                            npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
+                            npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
+                        '''
+                    }
+                    
                 }
             }
         }

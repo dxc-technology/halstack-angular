@@ -162,10 +162,15 @@ pipeline {
                     // Publish library to npm repository
                     sh "sed -i -e 's/0.0.0/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
                     sh "cat ./dist/dxc-ngx-cdk/package.json"
-                    env.RELEASE_TYPE = sh (
-                        script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
-                        returnStdout: true
-                    ).trim()
+                    try {
+                        env.RELEASE_TYPE = sh (
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
+                            returnStdout: true
+                        ).trim()
+                    } catch {
+                        env.RELEASE_TYPE = ''
+                    }
+                    
                     if (env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc') {
                         sh '''
                             cd ./dist/dxc-ngx-cdk

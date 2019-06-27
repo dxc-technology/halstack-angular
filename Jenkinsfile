@@ -167,7 +167,7 @@ pipeline {
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
                             returnStdout: true
                         ).trim()
-                    } catch {
+                    } catch(err) {
                         env.RELEASE_TYPE = ''
                     }
                     

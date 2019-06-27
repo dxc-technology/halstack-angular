@@ -2,13 +2,23 @@
   mat-slider {
     &:not(.mat-slider-disabled) {
       ::ng-deep {
-        .mat-slider-track-fill,
+        .mat-slider-track-fill{
+          background-color: black;
+        }
         .mat-slider-thumb {
           background-color: black;
         }
         .mat-slider-track-background {
           opacity: 0.54;
-          background-color: #666666;
+          background-color: #D9D9D9;
+        }
+        .mat-slider-ticks {
+          background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, 1) , rgba(0, 0, 0, 1) 5px 5px, transparent 5px, #e2141400);
+        
+        }
+        .mat-slider-wrapper {
+          opacity: 0.54;
+          background-color: #D9D9D9;
         }
       }
 

@@ -229,6 +229,7 @@ pipeline {
     post { 
         failure {
             script {
+                sh "echo ${GIT_AUTHOR_EMAIL}"
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
@@ -238,6 +239,7 @@ pipeline {
         }
         success {
             script {
+                sh "echo ${GIT_AUTHOR_EMAIL}"
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/) {
                     emailext subject: 'New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {

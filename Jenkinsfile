@@ -23,14 +23,20 @@ pipeline {
             }
             steps {
                 script {
-                    env.RELEASE_OPTION = input message: 'Select a release option', ok: 'Continue',
-                        parameters: [
-                            choice(
-                                name: 'type',
-                                choices: "release\nno-release",
-                                description: 'If release is selected, a new release will be released. To continue without releasing, select no-release.' 
-                            )
-                        ]
+                    try {
+                        timeout(time: 10, unit: 'MINUTES') {
+                            env.RELEASE_OPTION = input message: 'Select a release option', ok: 'Continue',
+                                parameters: [
+                                    choice(
+                                        name: 'type',
+                                        choices: "release\nno-release",
+                                        description: 'If release is selected, a new release will be released. To continue without releasing, select no-release.' 
+                                    )
+                                ]
+                        }
+                    } catch(err) {
+                        env.RELEASE_OPTION = 'no-release'
+                    }
                 }
             }
         }

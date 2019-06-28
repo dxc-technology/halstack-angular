@@ -8,6 +8,14 @@ RUN npm install -g @angular/cli
 
 RUN npm install -g release
 
+RUN npm install github-release-notes -g
+
+RUN gem install github_changelog_generator
+
+RUN npm install -g @compodoc/compodoc
+
+RUN npm install showdown -g
+
 ENV AWS_CLI_VERSION 1.15.47
 
 RUN apk --no-cache update && \

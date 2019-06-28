@@ -249,7 +249,7 @@ pipeline {
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/) {
                     emailext subject: 'New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
-                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
+                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
                 }
             }
         }

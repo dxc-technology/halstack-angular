@@ -30,7 +30,7 @@ pipeline {
                                     choice(
                                         name: 'type',
                                         choices: "release\nno-release",
-                                        description: 'If release is selected, a new release will be released. To continue without releasing, select no-release.' 
+                                        description: 'If release is selected, a new release will be released. For the release, the package.json version will be taken so it`s your responsability to change that version. When you select release option, a tag is created in GitHub with that version, the release is pointed to that tag and release notes will be added. Also is important to note that the created package for the release is going to be uploaded to Artifactory. There are only 2 possible prereleases: beta and rc. Any other prerelease is going to be ignored. To continue without releasing, select no-release. After 10 minutes, if you don`t select any choice the default selected option will be `no-release`' 
                                     )
                                 ]
                         }
@@ -89,6 +89,9 @@ pipeline {
             }
         }
         stage('.npmrc') {
+            when {
+                expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' } 
+            }
             steps {
                 withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
                     sh '''

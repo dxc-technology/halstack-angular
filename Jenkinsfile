@@ -142,7 +142,7 @@ pipeline {
                 }
             }
         }
-        stage('Create git tag and relese notes') {
+        stage('Create git tag and release') {
             when {
                 expression { env.RELEASE_VALID == 'valid' } 
             }
@@ -157,6 +157,23 @@ pipeline {
                         git tag "${RELEASE_NUMBER}" "${GIT_COMMIT}"
                         git push "${gitUrlWithCreds}" "${RELEASE_NUMBER}"
                     '''
+                }
+            }
+        }
+        stage('Generating release notes') {
+            when {
+                expression { env.RELEASE_VALID == 'valid' } 
+            }
+            steps {
+                script {
+                    try {
+                        sh "github_changelog_generator --github-site='https://github.dxc.com' --github-api='https://github.dxc.com/api/v3/' --token d53a75471da39b66fafb25dfcc9613c069de337e"
+                        sh "cat CHANGELOG.md"
+                        sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
+                        sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
+                    } catch(err) {
+                        echo "GREN Release Notes failed!"
+                    }
                 }
             }
         }
@@ -190,23 +207,6 @@ pipeline {
                         '''
                     }
                     
-                }
-            }
-        }
-        stage('Release notes') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' } 
-            }
-            steps {
-                script {
-                    try {
-                        sh "github_changelog_generator --github-site='https://github.dxc.com' --github-api='https://github.dxc.com/api/v3/' --token d53a75471da39b66fafb25dfcc9613c069de337e"
-                        sh "cat CHANGELOG.md"
-                        sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
-                        sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
-                    } catch(err) {
-                        echo "GREN Release Notes failed!"
-                    }
                 }
             }
         }

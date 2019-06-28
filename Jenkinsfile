@@ -105,7 +105,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 // Publish library to npm repository
-                sh "sed -i -e 's/0.0.0/'0.0.0-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
+                sh "sed -i -e 's/0.0.0/'alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
                 sh '''
                     cd ./dist/dxc-ngx-cdk
                     npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag alpha
@@ -229,7 +229,10 @@ pipeline {
     post { 
         failure {
             script {
-                sh "echo ${GIT_USER}"
+                env.GIT_USER = sh (
+                    script: 'git --no-pager show -s --format=\'%ae\'',
+                    returnStdout: true
+                ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
@@ -239,7 +242,10 @@ pipeline {
         }
         success {
             script {
-                sh "echo ${GIT_USER}"
+                env.GIT_USER = sh (
+                    script: 'git --no-pager show -s --format=\'%ae\'',
+                    returnStdout: true
+                ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/) {
                     emailext subject: 'New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {

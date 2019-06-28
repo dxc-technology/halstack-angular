@@ -105,7 +105,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 // Publish library to npm repository
-                sh "sed -i -e 's/0.0.0/'alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
+                sh "sed -i -e 's/0.0.0/'0.0.0-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
                 sh '''
                     cd ./dist/dxc-ngx-cdk
                     npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag alpha
@@ -236,7 +236,7 @@ pipeline {
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_AUTHOR_EMAIL}",from: 'gvigilrodrig@dxc.com'
+                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
                 }
             }
         }
@@ -249,7 +249,7 @@ pipeline {
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/) {
                     emailext subject: 'New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
-                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_AUTHOR_EMAIL}",from: 'gvigilrodrig@dxc.com'
+                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
                 }
             }
         }

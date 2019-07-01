@@ -6,8 +6,6 @@ RUN npm config set unsafe-perm true
 
 RUN npm install -g @angular/cli
 
-RUN npm install -g release
-
 RUN npm install github-release-notes -g
 
 RUN gem install github_changelog_generator

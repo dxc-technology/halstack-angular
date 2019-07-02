@@ -1,87 +1,107 @@
-import { storiesOf, moduleMetadata } from '@storybook/angular';
-import { MatButtonModule, MatIconModule } from '@angular/material';
-import { DxcButtonComponent } from './dxc-button.component';
+import { storiesOf, moduleMetadata } from "@storybook/angular";
+import buttonMD from "./README.md";
+import { text, boolean, select } from "@storybook/addon-knobs";
+import { DxcButtonModule } from "./dxc-button.module";
+import { action } from "@storybook/addon-actions";
 
-export const button = {
-  type: 'basic'
-};
-
-storiesOf('Button', module)
+storiesOf("Form Components|Button", module)
   .addDecorator(
     moduleMetadata({
-      imports: [MatButtonModule, MatIconModule],
-      declarations: [DxcButtonComponent]
+      imports: [DxcButtonModule]
+    })
+  )
+  .add("Types", () => ({
+    template: `
+      <h3> Light </h3>
+      <div>
+        <dxc-button (onClick)="onClick($event)" mode="basic" label="Basic"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" mode="raised" label="Raised"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" mode="flat" label="Flat"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" mode="outlined" label="Outlined"></dxc-button>
+      </div>
+      <div>
+        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="basic" label="Basic"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="raised" label="Raised"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="flat" label="Flat"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [disabled]="true" mode="outlined" label="Outlined"></dxc-button>
+      </div>
+      <h3> Dark </h3>
+      <div style="background:black" >
+        <div>
+          <dxc-button (onClick)="onClick($event)" theme="dark" mode="basic" label="Basic"></dxc-button>
+          <dxc-button (onClick)="onClick($event)" theme="dark" mode="raised" label="Raised"></dxc-button>
+          <dxc-button (onClick)="onClick($event)" theme="dark" mode="flat" label="Flat"></dxc-button>
+          <dxc-button (onClick)="onClick($event)" theme="dark" mode="outlined" label="Outlined"></dxc-button>
+        </div>
+        <div>
+          <dxc-button (onClick)="onClick($event)" theme="dark" [disabled]="true" mode="basic" label="Basic"></dxc-button>
+          <dxc-button (onClick)="onClick($event)" theme="dark" [disabled]="true" mode="raised" label="Raised"></dxc-button>
+          <dxc-button (onClick)="onClick($event)" theme="dark" [disabled]="true" mode="flat" label="Flat"></dxc-button>
+          <dxc-button (onClick)="onClick($event)" theme="dark" [disabled]="true" mode="outlined" label="Outlined"></dxc-button>
+        </div>
+      </div>
+      <h3> With Icon </h3>
+      <div>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg" mode="basic" label="Basic"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg"  mode="raised" label="Raised"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg" mode="flat" label="Flat"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" iconSrc = "/pencil.svg" mode="outlined" label="Outlined"></dxc-button>
+      </div>
+      <div>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="basic" label="Basic"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="raised" label="Raised"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="flat" label="Flat"></dxc-button>
+        <dxc-button (onClick)="onClick($event)" [iconPosition]="'after'" iconSrc = "/pencil.svg" [disabled]="true" mode="outlined" label="Outlined"></dxc-button>
+      </div>
+      `,
+    props: {
+      onClick: action("Click fired!")
+    }
+  }));
+
+storiesOf("Form Components|Button", module)
+  .addDecorator(
+    moduleMetadata({
+      imports: [DxcButtonModule]
     })
   )
   .add(
-    'Basic',
+    "Knobs example",
     () => ({
-      template: `<dxc-button type="basic">
-        Button <mat-icon>home</mat-icon>
-      </dxc-button>
-      <dxc-button type="basic" disabled>
-        Button <mat-icon>home</mat-icon>
-      </dxc-button>
-      <dxc-button type="basic" disableRipple>
-        Button <mat-icon>home</mat-icon>
-      </dxc-button>`,
+      template: `<div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF'}" >
+            <dxc-button  
+              [mode]="mode"
+              [disabled] = "disabled"  
+              [iconSrc] = "iconSrc"
+              [label] = "label"
+              [iconPosition]="iconPosition"
+              (onClick)="onClick($event)">
+            </dxc-button>
+         </div>`,
       props: {
-        button
+        iconSrc: text("iconSrc", "/pencil.svg"),
+        mode: select(
+          "mode",
+          {
+            basic: "basic",
+            raised: "raised",
+            flat: "flat",
+            outlined: "outlined"
+          },
+          "basic"
+        ),
+        theme: select("theme", { light: "light", dark: "dark" }, "light"),
+        disabled: boolean("disabled", false),
+        iconPosition: select(
+          "iconPosition",
+          { before: "before", after: "after" },
+          "before"
+        ),
+        label: text("label", "Button example"),
+        onClick: action("Click fired!")
       }
     }),
-    { notes: 'Basic DXC Button' }
-  )
-  .add(
-    'Raised',
-    () => ({
-      template: `<dxc-button type="raised">
-        Button <mat-icon>person</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disabled>
-        Button <mat-icon>person</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disableRipple>
-        Button <mat-icon>person</mat-icon>
-      </dxc-button>`,
-      props: {
-        button
-      }
-    }),
-    { notes: 'Raised DXC Button' }
-  )
-  .add(
-    'Outlined',
-    () => ({
-      template: `<dxc-button type="outlined">
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disabled>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="raised" disableRipple>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>`,
-      props: {
-        button
-      }
-    }),
-    { notes: 'Outlined DXC Button' }
-  )
-  .add(
-    'Flat',
-    () => ({
-      template: `<dxc-button type="flat">
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="flat" disabled>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>
-      <dxc-button type="flat" disableRipple>
-        Button <mat-icon>info</mat-icon>
-      </dxc-button>`,
-      props: {
-        button
-      }
-    }),
-    { notes: 'Flat DXC Button' }
+    {
+      notes: { markdown: buttonMD }
+    }
   );

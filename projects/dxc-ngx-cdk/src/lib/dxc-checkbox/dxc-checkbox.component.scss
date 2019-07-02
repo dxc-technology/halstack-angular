@@ -1,1 +1,59 @@
-dxc-checkbox {}
+:host {
+  display: inline-flex;
+
+  mat-checkbox {
+    ::ng-deep {
+      label.mat-checkbox-layout {
+        display: inline-flex;
+        align-items: center;
+
+        .mat-checkbox-inner-container {
+          margin: 10px 15px;
+          width: 24px;
+          height: 24px;
+
+          .mat-checkbox-frame {
+            border-radius: 4px;
+          }
+
+          .mat-checkbox-background {
+            svg path {
+              stroke: black !important;
+              stroke-width: 3px;
+            }
+          }
+        }
+      }
+
+      .mat-checkbox-label {
+        .mat-checkbox-required {
+          color: #ee2222;
+          margin-right: 2px;
+        }
+      }
+
+      &.mat-checkbox-disabled {
+        cursor: not-allowed;
+      }
+    }
+    .label-after {
+      margin-right: 15px;
+    }
+    .label-before {
+      margin-left: 15px;
+    }
+
+    &.mat-checkbox-disabled {
+        cursor: not-allowed;
+      ::ng-deep {
+        .mat-checkbox-frame {
+          border-color: #666666;
+        }
+        .mat-checkbox-layout .mat-checkbox-inner-container,
+         .mat-checkbox-layout .mat-checkbox-background {
+          background: #666666;
+        }
+      }
+    }
+  }
+}

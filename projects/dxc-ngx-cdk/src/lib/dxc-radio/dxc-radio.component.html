@@ -1,0 +1,13 @@
+<mat-radio-button
+  [labelPosition]="labelPosition ? labelPosition :  'before'"
+  [value]="value"
+  [disabled]="disabled"
+  [name]="name"
+  (change)="onChange($event)"
+  [disableRipple]="disableRipple"
+  [checked]="checked"
+>
+<span *ngIf="label" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
+  {{label}}
+</span>
+</mat-radio-button>

@@ -1,0 +1,58 @@
+<div class="light">
+  <dxc-checkbox labelPosition="before" text="Checkbox 1"></dxc-checkbox>
+  <br />
+  <dxc-checkbox labelPosition="before" text="Checkbox 2"></dxc-checkbox>
+
+  <dxc-checkbox labelPosition="after" text="Checkbox 3"></dxc-checkbox>
+
+  <dxc-checkbox
+    disabled
+    required
+    labelPosition="before"
+    text="Checkbox 4"
+  ></dxc-checkbox>
+
+  <dxc-checkbox indeterminate text="Checkbox 5"></dxc-checkbox>
+
+  <dxc-checkbox></dxc-checkbox>
+
+  <dxc-checkbox indeterminate required text="Checkbox 7"></dxc-checkbox>
+</div>
+<div class="dark">
+  <dxc-checkbox
+    labelPosition="before"
+    [theme]="'dark'"
+    text="Checkbox 1"
+  ></dxc-checkbox>
+  <br />
+  <dxc-checkbox
+    labelPosition="before"
+    [theme]="'dark'"
+    text="Checkbox 2"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    [theme]="'dark'"
+    labelPosition="after"
+    text="Checkbox 3"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    disabled
+    required
+    [theme]="'dark'"
+    labelPosition="before"
+    text="Checkbox 4"
+  ></dxc-checkbox>
+
+  <dxc-checkbox indeterminate [theme]="'dark'" text="Checkbox 5"></dxc-checkbox>
+
+  <dxc-checkbox></dxc-checkbox>
+
+  <dxc-checkbox
+    indeterminate
+    [theme]="'dark'"
+    required
+    text="Checkbox 7"
+  ></dxc-checkbox>
+</div>

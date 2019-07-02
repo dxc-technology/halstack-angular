@@ -1,7 +1,6 @@
 <mat-checkbox
-  [(ngModel)]="ngModel"
-  [(indeterminate)]="indeterminate"
-  [labelPosition]="labelPosition"
+  [checked]="checked"
+  [labelPosition]="labelPosition ? labelPosition :  'before'"
   [disableRipple]="disableRipple"
   [checked]="checked"
   [value]="value"
@@ -9,10 +8,10 @@
   [required]="required"
   [name]="name"
   [id]="id"
-  (change)="onChange($event)"
-  (indeterminateChange)="onIndeterminateChange($event)"
->
-  <ng-content></ng-content>
+  (change)="onValueChange($event)"
+  >
+  <span *ngIf="text" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
+    <span *ngIf="required" class="mat-checkbox-required" >*</span>
+    {{ text }}
+  </span>
 </mat-checkbox>
-
-<!-- [(ngModel)]="model" -->

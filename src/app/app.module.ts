@@ -4,21 +4,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   DxcButtonModule,
-  DxcCheckboxModule
+  DxcCheckboxModule,
+  DxcDateModule,
+  DxcRadioModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
-import { MatIconModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { ButtonInfoComponent } from './pages/button/button-info.component';
+import { SliderInfoComponent } from './pages/slider/slider-info.component';
+import { CheckboxInfoComponent } from './pages/checbkox/checkbox-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-slider.module";
+import { RadioInfoComponent } from './pages/radio/radio-info.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ButtonInfoComponent,
+    SliderInfoComponent,
+    CheckboxInfoComponent,
+    RadioInfoComponent
+  ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     DxcButtonModule,
     DxcCheckboxModule,
-    MatIconModule
+    DxcDateModule,
+    DxcRadioModule,
+    BrowserModule,
+    DxcSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

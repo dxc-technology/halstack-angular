@@ -1,0 +1,17 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <mat-select
+    (selectionChange)="valueChanged($event)"
+    [disableRipple]="disableRipple"
+    [required]="required"
+    [disabled]="disabled"
+    [multiple]="multiple"
+    [value]="value"
+  >
+    <mat-option *ngFor="let option of options; index as i" value="option.value">
+      <img src="option.iconSrc" />
+      {{ option.label }}
+    </mat-option>
+  </mat-select>
+  <input type="hidden" name="name" value="value" />
+</mat-form-field>

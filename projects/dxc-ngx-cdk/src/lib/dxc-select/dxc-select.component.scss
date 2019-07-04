@@ -7,6 +7,12 @@
     height: 42px;
     padding: 10px 20px;
     margin-right: 0px;
+    .mat-option-text {
+        display: flex;
+        flex-grow: unset;
+        align-items: center;
+        width: fit-content;
+    }
     &.mat-selected {
       background: #d9d9d9;
     }
@@ -18,8 +24,22 @@
       .mat-pseudo-checkbox {
         width: 20px;
         height: 20px;
+        margin-right: 15px;
       }
       padding-left: 11px 15px;
+    }
+    &.icon-after {
+        .mat-option-text {
+            flex-direction: row-reverse;
+        }
+        img {
+            margin-left: 11px;
+        }
+    }
+    &.icon-before {
+        img {
+        margin-right: 11px;
+        }
     }
   }
   mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
@@ -32,10 +52,15 @@
       height: 6px;
     }
   }
+  img {
+    width: 20px;
+    height: 20px;
+}
 }
 
 :host {
   .mat-form-field-disabled {
     opacity: 0.69;
   }
+ 
 }

@@ -45,9 +45,8 @@ export class DxcSelectComponent implements OnChanges {
   }
 
   public valueChanged($event: any): void {
-    let newValue = $event.value || $event.target.value;
-    this.value =newValue;
-    this.valueChange.emit(newValue);
+    this.value = $event.value;
+    this.valueChange.emit(this.value);
   }
 
   

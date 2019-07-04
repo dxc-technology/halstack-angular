@@ -10,9 +10,9 @@
     [multiple]="multiple"
     [value]="value"
   >
-    <mat-option *ngFor="let option of options; index as i" value="option.value">
-      <img  *ngIf="option.iconSr" src="option.iconSrc" />
-      {{ option.label }}
+    <mat-option *ngFor="let option of options; index as i" value="{{option.value}}"  [ngClass] = "iconPosition === 'after' ? 'icon-after': 'icon-before'">
+      <img  *ngIf="option.iconSrc" src="{{option.iconSrc}}" />
+      <span>{{ option.label }}</span>
     </mat-option>
   </mat-select>
   <input type="hidden" name="name" value="value" />

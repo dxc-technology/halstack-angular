@@ -65,7 +65,7 @@ storiesOf("Form Components|Select", module)
     notes: {markdown: selectMD }
     }
   );
-  const defaultValue = [{label:'Red',value: 'red'},{label:'Blue',value: 'blue'}];
+  const defaultValue = [{label:'Macaw',value: 'macaw',iconSrc:'./macaw.svg'},{label:'Toucan',value: 'toucan', iconSrc:'/toucan.svg'}];
     storiesOf("Form Components|Select", module)
     .addDecorator(
       moduleMetadata({

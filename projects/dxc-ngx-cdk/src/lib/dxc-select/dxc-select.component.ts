@@ -23,21 +23,24 @@ export class DxcSelectComponent implements OnChanges {
   @HostBinding("class.dxc-dark") isDark: boolean = false;
 
   @Input() theme: string = "light";
-  @Input() multiple: boolean = false;;
+  @Input() multiple: boolean;
   @Input() value: string | string[];
-  @Input() options: {label:string, value:any, iconSrc?:string} [];
+  @Input() options: {label?:string, value:any, iconSrc?:string} [];
   @Input() disableRipple: boolean = false;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
   @Input() name: string;
   @Input() iconPosition: string = 'before';
-
+  @Input() label: string;
   @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
   public ngOnChanges(): void {
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
+    } else {
+      this.isLight = true;
+      this.isDark = false;
     }
   }
 

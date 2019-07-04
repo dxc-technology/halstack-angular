@@ -24,9 +24,12 @@ export class DxcButtonComponent  {
     if(this.iconPosition !== 'after'){
       this.iconPosition='before';
     }
-    if(this.theme  === 'dark') {
-      this.isDark = true;
+    if (this.theme === "dark") {
       this.isLight = false;
+      this.isDark = true;
+    } else {
+      this.isLight = true;
+      this.isDark = false;
     }
   }
 

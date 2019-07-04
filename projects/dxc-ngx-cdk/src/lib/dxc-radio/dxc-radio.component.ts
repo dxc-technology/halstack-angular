@@ -27,9 +27,12 @@ export class DxcRadioComponent implements OnInit {
   @HostBinding('class.dark') isDark: boolean = false;
 
   public ngOnChanges() :void { 
-    if(this.theme  === 'dark') {
-      this.isDark = true;
+    if (this.theme === "dark") {
       this.isLight = false;
+      this.isDark = true;
+    } else {
+      this.isLight = true;
+      this.isDark = false;
     }
     this.labelPosition === 'after' ?  'after': 'before'
   }

@@ -1,6 +1,8 @@
 <mat-form-field>
   <mat-label>{{ label }}</mat-label>
   <mat-select
+    disableOptionCentering
+    [panelClass] = "'dxc-panel-select-class'"
     (selectionChange)="valueChanged($event)"
     [disableRipple]="disableRipple"
     [required]="required"
@@ -9,7 +11,7 @@
     [value]="value"
   >
     <mat-option *ngFor="let option of options; index as i" value="option.value">
-      <img src="option.iconSrc" />
+      <img  *ngIf="option.iconSr" src="option.iconSrc" />
       {{ option.label }}
     </mat-option>
   </mat-select>

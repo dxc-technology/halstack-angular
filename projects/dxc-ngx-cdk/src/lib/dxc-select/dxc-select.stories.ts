@@ -1,18 +1,17 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import selectMD from "./README.md";
-import { DxcSliderModule } from './dxc-select.module';
+import { DXCSelectModule } from './dxc-select.module';
 import { boolean, select, array, text } from "@storybook/addon-knobs";
 import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcSelectComponent } from './dxc-slelect.component';
 
 
 storiesOf("Form Components|Select", module)
   .addDecorator(
     moduleMetadata({
-      imports: [DxcSelectComponent,BrowserModule, BrowserAnimationsModule],
+      imports: [DXCSelectModule,BrowserModule, BrowserAnimationsModule],
     })
   )
   .add(
@@ -66,27 +65,43 @@ storiesOf("Form Components|Select", module)
     notes: {markdown: selectMD }
     }
   );
-  const defaultValue = ['Red', "Blue"];
+  const defaultValue = [{label:'Red',value: 'red'},{label:'Blue',value: 'blue'}];
     storiesOf("Form Components|Select", module)
     .addDecorator(
       moduleMetadata({
-        imports: [DxcSliderModule,BrowserModule, BrowserAnimationsModule],
+        imports: [DXCSelectModule,BrowserModule, BrowserAnimationsModule],
       })
     )
     .add(
       "Knobs example",
       () => ({
         template: `<div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF'}" >
-
-                   
-
+                        <dxc-select [options] = "options"
+                                    [multiple] = "nultple"
+                                    [disabled] = "disabled"
+                                    [required] = "required"
+                                    [theme] = "theme"
+                                    [label] = "label"
+                                    (valueChange) = "valueChange($event)"
+                                    [iconPosition] = "iconPosition"
+                        ></dxc-select>
+                        <br>
+                        <dxc-select [options] = "options"
+                        [multiple] = "true"
+                        [disabled] = "disabled"
+                        [required] = "required"
+                        [theme] = "theme"
+                        [label] = "label"
+                        (valueChange) = "valueChange($event)"
+                        [iconPosition] = "iconPosition"
+            ></dxc-select>
+  
                      </div>
                         `,
         props: {
           iconPosition : select("Icon position", { before: "before", after: "after" }, "before"),
-          label: text("text", "Checkbox example"),
-          nultple: boolean("nultple", false),
-          options: array("Options", defaultValue);
+          label: text("text", "Select example"),
+          options: array("Options", defaultValue),
           valueChange: action("option selected!"),
           required: boolean("required", false),
           disabled: boolean("disabled", false),

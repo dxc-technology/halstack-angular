@@ -5,7 +5,7 @@ import {
 } from "@angular/material";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { DxcSelectComponent } from './dxc-slelect.component';
+import { DxcSelectComponent } from './dxc-select.component';
 
 @NgModule({
   declarations: [DxcSelectComponent],
@@ -17,4 +17,4 @@ import { DxcSelectComponent } from './dxc-slelect.component';
   ],
   exports: [DxcSelectComponent]
 })
-export class DxcSliderModule {}
+export class DXCSelectModule {}

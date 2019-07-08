@@ -229,6 +229,7 @@ pipeline {
                         sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
                         sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
                         sh "git push origin ${GIT_BRANCH}"
+                        sh "git pull origin master"
                         sh "git push origin master"
                         sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
                         sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
@@ -322,7 +323,7 @@ pipeline {
                     script: 'git --no-pager show -s --format=\'%ae\'',
                     returnStdout: true
                 ).trim()
-                if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ & RELEASE_NUMBER !=~ null) {
+                if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ & env.RELEASE_NUMBER !=~ null) {
                     emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
                     emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'

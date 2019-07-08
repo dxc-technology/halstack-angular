@@ -190,7 +190,7 @@ pipeline {
                     } else {
                         sh "git checkout ${GIT_BRANCH}"
                     }
-                    sh "git push --set-upstream origin ${GIT_BRANCH}"
+                    sh "git pull origin ${GIT_BRANCH}"
                     if (env.RELEASE_TYPE == 'major') {
                         sh "release major"
                     } else if (env.RELEASE_TYPE == 'minor') {
@@ -202,6 +202,7 @@ pipeline {
                     } else if (env.RELEASE_TYPE == 'rc') {
                         sh "release pre rc"
                     }
+                    sh "git push --set-upstream origin ${GIT_BRANCH}"
                 }
             }
         }

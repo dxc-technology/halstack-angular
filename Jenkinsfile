@@ -14,6 +14,8 @@ pipeline {
                         sh "echo 'machine github.dxc.com' >> ~/.netrc"
                         sh "echo 'login ${GIT_USER}' >> ~/.netrc"
                         sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
+                        sh "git config --global user.email 'jenkins@dxc.com'"
+                        sh "git config --global user.name 'Jenkins User'"
                     }
             }
         }

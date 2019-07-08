@@ -16,6 +16,8 @@ pipeline {
                         sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
                         sh "git config --global user.email 'jenkins@dxc.com'"
                         sh "git config --global user.name 'Jenkins User'"
+                    }
+                    script {
                         env.OLD_RELEASE_NUMBER = sh (
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true

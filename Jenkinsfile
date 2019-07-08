@@ -39,6 +39,10 @@ pipeline {
                     } catch(err) {
                         env.RELEASE_OPTION = 'no-release'
                     }
+                    env.OLD_RELEASE_NUMBER = sh (
+                        script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                        returnStdout: true
+                    ).trim()
                 }
             }
         }
@@ -142,7 +146,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 // Publish library to npm repository
-                sh "sed -i -e 's/0.0.0/'0.0.0-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
+                sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${OLD_RELEASE_NUMBER}-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
                 sh '''
                     cd ./dist/dxc-ngx-cdk
                     npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag alpha
@@ -191,10 +195,6 @@ pipeline {
                         sh "git checkout ${GIT_BRANCH}"
                     }
                     sh "git pull origin ${GIT_BRANCH}"
-                    env.OLD_RELEASE_NUMBER = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
-                            returnStdout: true
-                        ).trim()
                     if (env.RELEASE_TYPE == 'major') {
                         sh "npm version major"
                     } else if (env.RELEASE_TYPE == 'minor') {

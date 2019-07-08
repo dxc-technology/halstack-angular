@@ -206,14 +206,6 @@ pipeline {
                     } else if (env.RELEASE_TYPE == 'rc') {
                         sh "npm version prerelease --preid=rc"
                     }
-                    env.RELEASE_NUMBER = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
-                            returnStdout: true
-                        ).trim()
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
-                    // sh "git push --set-upstream origin ${GIT_BRANCH}"
-                    sh "git push origin ${GIT_BRANCH}"
                 }
             }
         }
@@ -228,6 +220,15 @@ pipeline {
                         sh "cat CHANGELOG.md"
                         sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
                         sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
+                        env.RELEASE_NUMBER = sh (
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                            returnStdout: true
+                        ).trim()
+                        sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
+                        sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
+                        // sh "git push --set-upstream origin ${GIT_BRANCH}"
+                        sh "git push origin ${GIT_BRANCH}"
+                        sh "git push --tags"
                     } catch(err) {
                         echo "GREN Release Notes failed!"
                     }

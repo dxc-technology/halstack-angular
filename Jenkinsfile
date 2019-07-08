@@ -213,7 +213,7 @@ pipeline {
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
                     // sh "git push --set-upstream origin ${GIT_BRANCH}"
-                    sh "git push"
+                    sh "git push origin ${GIT_BRANCH}"
                 }
             }
         }

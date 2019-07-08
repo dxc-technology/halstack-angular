@@ -210,10 +210,6 @@ pipeline {
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
-                    env.GIT_USER = sh (
-                        script: 'git --no-pager show -s --format=\'%ae\'',
-                        returnStdout: true
-                    ).trim()
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
                     // sh "git push --set-upstream origin ${GIT_BRANCH}"
@@ -311,19 +307,27 @@ pipeline {
     post { 
         failure {
             script {
+                env.GIT_USER = sh (
+                    script: 'git --no-pager show -s --format=\'%ae\'',
+                    returnStdout: true
+                ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${env.GIT_USER}",from: 'gvigilrodrig@dxc.com'
+                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
                 }
             }
         }
         success {
             script {
+                env.GIT_USER = sh (
+                    script: 'git --no-pager show -s --format=\'%ae\'',
+                    returnStdout: true
+                ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ && env.RELEASE_VALID == 'valid') {
                     emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
-                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${env.GIT_USER}",from: 'gvigilrodrig@dxc.com'
+                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
                 }
             }
         }

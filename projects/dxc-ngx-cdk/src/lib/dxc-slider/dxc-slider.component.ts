@@ -60,7 +60,13 @@ export class DxcSliderComponent implements OnChanges {
    *  @param $event
    */
   public valueChanged($event: any): void {
-    let newValue = $event.value || $event.target.value;
+    let newValue;
+    if($event.target) {
+      newValue = $event.target.value;
+    } else {
+      newValue = $event.value;
+    }
+    
     if (newValue > this.max) {
       newValue = this.max;
     }

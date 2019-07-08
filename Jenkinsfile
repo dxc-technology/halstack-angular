@@ -210,6 +210,10 @@ pipeline {
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
+                    env.GIT_USER = sh (
+                        script: 'git --no-pager show -s --format=\'%ae\'',
+                        returnStdout: true
+                    ).trim()
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
                     // sh "git push --set-upstream origin ${GIT_BRANCH}"
@@ -229,9 +233,9 @@ pipeline {
                         sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
                         sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
                         sh "git push origin ${GIT_BRANCH}"
-                        sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
-                        sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
-                        sh "git push origin master"
+                        // sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
+                        // sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
+                        // sh "git push origin master"
                         sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
                         sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
                     } catch(err) {
@@ -307,10 +311,6 @@ pipeline {
     post { 
         failure {
             script {
-                env.GIT_USER = sh (
-                    script: 'git --no-pager show -s --format=\'%ae\'',
-                    returnStdout: true
-                ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {
@@ -320,10 +320,6 @@ pipeline {
         }
         success {
             script {
-                env.GIT_USER = sh (
-                    script: 'git --no-pager show -s --format=\'%ae\'',
-                    returnStdout: true
-                ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ & env.RELEASE_NUMBER !=~ null) {
                     emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
                 } else {

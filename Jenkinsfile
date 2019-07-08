@@ -191,6 +191,10 @@ pipeline {
                     //     sh "git checkout ${GIT_BRANCH}"
                     // }
                     // sh "git pull origin ${GIT_BRANCH}"
+                    env.OLD_RELEASE_NUMBER = sh (
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                            returnStdout: true
+                        ).trim()
                     if (env.RELEASE_TYPE == 'major') {
                         sh "npm version major"
                     } else if (env.RELEASE_TYPE == 'minor') {
@@ -202,8 +206,14 @@ pipeline {
                     } else if (env.RELEASE_TYPE == 'rc') {
                         sh "npm version prerelease --preid=rc"
                     }
+                    env.RELEASE_NUMBER = sh (
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                            returnStdout: true
+                        ).trim()
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
                     // sh "git push --set-upstream origin ${GIT_BRANCH}"
-                    sh "git push --tags"
+                    sh "git push"
                 }
             }
         }
@@ -231,11 +241,6 @@ pipeline {
             steps {
                 script {
                     // Publish library to npm repository
-                    env.RELEASE_NUMBER = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
-                            returnStdout: true
-                        ).trim()
-                    sh "sed -i -e 's/0.0.0/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
                     try {
                         env.RELEASE_TYPE = sh (
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",

@@ -231,8 +231,11 @@ pipeline {
             steps {
                 script {
                     // Publish library to npm repository
+                    env.RELEASE_NUMBER = sh (
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                            returnStdout: true
+                        ).trim()
                     sh "sed -i -e 's/0.0.0/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
-                    sh "cat ./dist/dxc-ngx-cdk/package.json"
                     try {
                         env.RELEASE_TYPE = sh (
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",

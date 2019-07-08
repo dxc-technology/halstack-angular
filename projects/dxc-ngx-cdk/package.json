@@ -1,6 +1,6 @@
 {
   "name": "@diaas/dxc-ngx-cdk",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "author": {
     "name": "DXC Technology",

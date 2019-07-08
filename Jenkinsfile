@@ -192,15 +192,15 @@ pipeline {
                     }
                     sh "git pull origin ${GIT_BRANCH}"
                     if (env.RELEASE_TYPE == 'major') {
-                        sh "release major"
+                        sh "npm version major"
                     } else if (env.RELEASE_TYPE == 'minor') {
-                        sh "release minor"
+                        sh "npm version minor"
                     } else if (env.RELEASE_TYPE == 'patch') {
-                        sh "release patch"
+                        sh "npm version patch"
                     } else if (env.RELEASE_TYPE == 'beta') {
-                        sh "release pre beta"
+                        sh "npm version prerelease --preid=beta"
                     } else if (env.RELEASE_TYPE == 'rc') {
-                        sh "release pre rc"
+                        sh "npm version prerelease --preid=rc"
                     }
                     sh "git push --set-upstream origin ${GIT_BRANCH}"
                 }

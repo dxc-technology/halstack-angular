@@ -37,7 +37,7 @@ pipeline {
                                 parameters: [
                                     choice(
                                         name: 'type',
-                                        choices: "release\npre-release\nno-release",
+                                        choices: "major\nminor\npatch\npremajor\npreminor\nprepatch\nprerelease\nno-release",
                                         description: 'If release is selected, a new release will be released. When you select release option, a tag is created in GitHub with that version, the release is pointed to that tag and release notes will be added. Also is important to note that the created package for the release is going to be uploaded to Artifactory. To continue without releasing, select no-release. After 10 minutes, if you don`t select any choice the default selected option will be `no-release`' 
                                     )
                                 ]
@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Password to continue') {
             when {
-                expression { env.RELEASE_OPTION == 'release' | env.RELEASE_OPTION == 'pre-release' } 
+                expression { env.RELEASE_OPTION == 'major' | env.RELEASE_OPTION == 'minor' | env.RELEASE_OPTION == 'patch' | env.RELEASE_OPTION == 'premajor' | env.RELEASE_OPTION == 'preminor' | env.RELEASE_OPTION == 'prepatch' |env.RELEASE_OPTION == 'prerelease' } 
             }
             steps {
                 script {
@@ -74,22 +74,7 @@ pipeline {
             }
             steps {
                 script {
-                    if (env.RELEASE_OPTION == 'release') {
-                        sh '''
-                            echo 'Releaseeeee!'
-                        '''
-                        env.RELEASE_TYPE = input message: 'Select a release type', ok: 'Continue',
-                        parameters: [
-                            choice(
-                                name: 'type',
-                                choices: "major\nminor\npatch",
-                                description: 'MAJOR version when you make incompatible API changes. MINOR version when you add functionality in a backwards-compatible manner. PATCH version when you make backwards-compatible bug fixes.' 
-                            )
-                        ]
-                    } else if (env.RELEASE_OPTION == 'pre-release') {
-                        sh '''
-                            echo 'Pre-Releaseeeee!'
-                        '''
+                    if (env.RELEASE_OPTION == 'premajor' | env.RELEASE_OPTION == 'preminor' | env.RELEASE_OPTION == 'prepatch' | env.RELEASE_OPTION == 'prerelease') {
                         env.RELEASE_TYPE = input message: 'Select a pre-release type', ok: 'Continue',
                         parameters: [
                             choice(
@@ -197,23 +182,28 @@ pipeline {
                         sh "git checkout ${GIT_BRANCH}"
                     }
                     sh "git pull origin ${GIT_BRANCH}"
-                    if (env.RELEASE_TYPE == 'major') {
+                    sh "cd projects/dxc-ngx-cdk"
+                    if (env.RELEASE_OPTION == 'major') {
                         sh "npm version major"
-                    } else if (env.RELEASE_TYPE == 'minor') {
+                    } else if (env.RELEASE_OPTION == 'minor') {
                         sh "npm version minor"
-                    } else if (env.RELEASE_TYPE == 'patch') {
+                    } else if (env.RELEASE_OPTION == 'patch') {
                         sh "npm version patch"
-                    } else if (env.RELEASE_TYPE == 'beta') {
-                        sh "npm version prerelease --preid=beta"
-                    } else if (env.RELEASE_TYPE == 'rc') {
-                        sh "npm version prerelease --preid=rc"
+                    } else if (env.RELEASE_OPTION == 'premajor') {
+                        sh "npm version premajor --preid=${env.RELEASE_TYPE}"
+                    } else if (env.RELEASE_OPTION == 'preminor') {
+                        sh "npm version preminor --preid=${env.RELEASE_TYPE}"
+                    } else if (env.RELEASE_OPTION == 'prepatch') {
+                        sh "npm version prepatch --preid=${env.RELEASE_TYPE}"
+                    } else if (env.RELEASE_OPTION == 'prerelease') {
+                        sh "npm version preminor --preid=${env.RELEASE_TYPE}"
                     }
                     env.RELEASE_NUMBER = sh (
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./dist/dxc-ngx-cdk/package.json"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ./projects/dxc-ngx-cdk/package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../dist/dxc-ngx-cdk/package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../package.json"
                     // sh "git push --set-upstream origin ${GIT_BRANCH}"
                     sh "git push --tags"
                 }

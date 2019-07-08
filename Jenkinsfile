@@ -182,7 +182,6 @@ pipeline {
                         sh "git checkout ${GIT_BRANCH}"
                     }
                     sh "git pull origin ${GIT_BRANCH}"
-                    sh "cd projects/dxc-ngx-cdk"
                     if (env.RELEASE_OPTION == 'major') {
                         sh "npm version major"
                     } else if (env.RELEASE_OPTION == 'minor') {
@@ -202,8 +201,8 @@ pipeline {
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../dist/dxc-ngx-cdk/package.json"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' dist/dxc-ngx-cdk/package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json"
                     // sh "git push --set-upstream origin ${GIT_BRANCH}"
                     sh "git push --tags"
                 }

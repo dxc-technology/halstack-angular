@@ -29,8 +29,8 @@ pipeline {
                                 parameters: [
                                     choice(
                                         name: 'type',
-                                        choices: "release\nno-release",
-                                        description: 'If release is selected, a new release will be released. For the release, the package.json version will be taken so it`s your responsability to change that version. When you select release option, a tag is created in GitHub with that version, the release is pointed to that tag and release notes will be added. Also is important to note that the created package for the release is going to be uploaded to Artifactory. There are only 2 possible prereleases: beta and rc. Any other prerelease is going to be ignored. To continue without releasing, select no-release. After 10 minutes, if you don`t select any choice the default selected option will be `no-release`' 
+                                        choices: "release\npre-release\nno-release",
+                                        description: 'If release is selected, a new release will be released. When you select release option, a tag is created in GitHub with that version, the release is pointed to that tag and release notes will be added. Also is important to note that the created package for the release is going to be uploaded to Artifactory. To continue without releasing, select no-release. After 10 minutes, if you don`t select any choice the default selected option will be `no-release`' 
                                     )
                                 ]
                         }
@@ -42,7 +42,7 @@ pipeline {
         }
         stage('Password to continue') {
             when {
-                expression { env.RELEASE_OPTION == 'release' } 
+                expression { env.RELEASE_OPTION == 'release' | env.RELEASE_OPTION == 'pre-release' } 
             }
             steps {
                 script {
@@ -53,8 +53,43 @@ pipeline {
                             env.RELEASE_VALID = 'valid';
                         } else {
                             env.RELEASE_VALID = 'invalid';
+                            env.RELEASE_TYPE = 'no-release'
                             echo 'Invalid password. The version will not be released.'
                         }
+                    }
+                }
+            }
+        }
+        stage('Release versioning') {
+            when {
+                expression { env.RELEASE_VALID == 'valid' } 
+            }
+            steps {
+                script {
+                    if (env.RELEASE_OPTION == 'release') {
+                        sh '''
+                            echo 'Releaseeeee!'
+                        '''
+                        env.RELEASE_TYPE = input message: 'Select a release type', ok: 'Continue',
+                        parameters: [
+                            choice(
+                                name: 'type',
+                                choices: "major\nminor\npatch",
+                                description: 'MAJOR version when you make incompatible API changes. MINOR version when you add functionality in a backwards-compatible manner. PATCH version when you make backwards-compatible bug fixes.' 
+                            )
+                        ]
+                    } else if (env.RELEASE_OPTION == 'pre-release') {
+                        sh '''
+                            echo 'Pre-Releaseeeee!'
+                        '''
+                        env.RELEASE_TYPE = input message: 'Select a pre-release type', ok: 'Continue',
+                        parameters: [
+                            choice(
+                                name: 'type',
+                                choices: "beta\nrc",
+                                description: 'BETA when the version could have some errors. RC if the version is completely ready to release.' 
+                            )
+                        ]
                     }
                 }
             }
@@ -142,21 +177,29 @@ pipeline {
                 }
             }
         }
-        stage('Create git tag and release') {
+        stage('Create git tag and relese notes') {
             when {
                 expression { env.RELEASE_VALID == 'valid' } 
             }
             steps {
                 script {
-                    env.RELEASE_NUMBER = sh (
-                        script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
-                        returnStdout: true
-                    ).trim()
-                    sh '''
-                        gitUrlWithCreds="$(echo "${GIT_URL}" | sed -e 's!://!://'${GIT_USER}:${GIT_PASSWORD}'@!')"
-                        git tag "${RELEASE_NUMBER}" "${GIT_COMMIT}"
-                        git push "${gitUrlWithCreds}" "${RELEASE_NUMBER}"
-                    '''
+                    if (env.BUILD_ID == 1) {
+                        sh "git checkout -b ${GIT_BRANCH}"
+                    } else {
+                        sh "git checkout ${GIT_BRANCH}"
+                    }
+                    sh "git push --set-upstream origin ${GIT_BRANCH}"
+                    if (env.RELEASE_TYPE == 'major') {
+                        sh "release major"
+                    } else if (env.RELEASE_TYPE == 'minor') {
+                        sh "release minor"
+                    } else if (env.RELEASE_TYPE == 'patch') {
+                        sh "release patch"
+                    } else if (env.RELEASE_TYPE == 'beta') {
+                        sh "release pre beta"
+                    } else if (env.RELEASE_TYPE == 'rc') {
+                        sh "release pre rc"
+                    }
                 }
             }
         }

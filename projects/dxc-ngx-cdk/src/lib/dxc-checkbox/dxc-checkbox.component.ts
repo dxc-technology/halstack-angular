@@ -30,9 +30,12 @@ export class DxcCheckboxComponent implements OnInit {
 
 
   public ngOnChanges() :void { 
-    if(this.theme  === 'dark') {
-      this.isDark = true;
+    if (this.theme === "dark") {
       this.isLight = false;
+      this.isDark = true;
+    } else {
+      this.isLight = true;
+      this.isDark = false;
     }
     this.labelPosition === 'after' ?  'after': 'before'
   }

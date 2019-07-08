@@ -49,6 +49,9 @@ export class DxcSliderComponent implements OnChanges {
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
+    } else {
+      this.isLight = true;
+      this.isDark = false;
     }
   }
 

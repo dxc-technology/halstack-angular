@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DxcSelectComponent } from './dxc-slelect.component';
+import { DxcSelectComponent } from './dxc-select.component';
 
 
 describe('DxcSliderComponent', () => {

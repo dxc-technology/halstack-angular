@@ -185,12 +185,12 @@ pipeline {
             }
             steps {
                 script {
-                    // if (env.BUILD_ID == 1) {
-                    //     sh "git checkout -b ${GIT_BRANCH}"
-                    // } else {
-                    //     sh "git checkout ${GIT_BRANCH}"
-                    // }
-                    // sh "git pull origin ${GIT_BRANCH}"
+                    if (env.BUILD_ID == 1) {
+                        sh "git checkout -b ${GIT_BRANCH}"
+                    } else {
+                        sh "git checkout ${GIT_BRANCH}"
+                    }
+                    sh "git pull origin ${GIT_BRANCH}"
                     env.OLD_RELEASE_NUMBER = sh (
                             script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true

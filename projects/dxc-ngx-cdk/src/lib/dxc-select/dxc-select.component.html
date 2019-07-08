@@ -2,7 +2,11 @@
   <mat-label>{{ label }}</mat-label>
   <mat-select
     disableOptionCentering
-    [panelClass] = "'dxc-panel-select-class'"
+    [panelClass]="
+      onlyHasIcons
+        ? 'dxc-panel-select-class panel-icons'
+        : 'dxc-panel-select-class'
+    "
     (selectionChange)="valueChanged($event)"
     [disableRipple]="disableRipple"
     [required]="required"
@@ -10,9 +14,29 @@
     [multiple]="multiple"
     [value]="value"
   >
-    <mat-option *ngFor="let option of options; index as i" value="{{option.value}}"  [ngClass] = "iconPosition === 'after' ? 'icon-after': 'icon-before'">
-      <img  *ngIf="option.iconSrc" src="{{option.iconSrc}}" />
-      <span>{{ option.label }}</span>
+    <mat-select-trigger>
+      <ng-container *ngIf="value && onlyHasIcons">
+        <div *ngFor="let icon of iconsToShow">
+          <img src="{{ icon }}" />
+        </div>
+      </ng-container>
+
+      <div
+        *ngIf="value && !onlyHasIcons"
+        [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
+      >
+        <img *ngIf="iconsToShow[0] && !this.multiple && iconsToShow.length === 1" src="{{ iconsToShow[0] }}" />
+        <span>{{ labeltoShow }}</span>
+    </div>
+    </mat-select-trigger>
+
+    <mat-option
+      *ngFor="let option of options; index as i"
+      value="{{ option.value }}"
+      [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
+    >
+      <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
+      <span *ngIf="option.label">{{ option.label }}</span>
     </mat-option>
   </mat-select>
   <input type="hidden" name="name" value="value" />

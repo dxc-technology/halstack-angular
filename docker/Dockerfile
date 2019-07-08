@@ -12,6 +12,8 @@ RUN gem install github_changelog_generator
 
 RUN npm install showdown -g
 
+RUN npm install -g release
+
 ENV AWS_CLI_VERSION 1.15.47
 
 RUN apk --no-cache update && \

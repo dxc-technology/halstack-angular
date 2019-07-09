@@ -1,9 +1,7 @@
 pipeline {
     agent {
         dockerfile {
-            args '-u root:root'
             filename 'docker/Dockerfile'
-            reuseNode false
         }
     }
     stages {

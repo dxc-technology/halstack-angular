@@ -178,6 +178,7 @@ pipeline {
                         sh "git checkout -b ${GIT_BRANCH}"
                     } else {
                         sh "git checkout ${GIT_BRANCH}"
+                        sh "git reset --hard origin/${GIT_BRANCH}"
                     }
                     sh "git pull origin ${GIT_BRANCH}"
                     if (env.RELEASE_OPTION == 'major') {

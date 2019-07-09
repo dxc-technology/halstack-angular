@@ -203,7 +203,7 @@ pipeline {
                         ).trim()
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' dist/dxc-ngx-cdk/package.json"
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json"
-                    // sh "git push --set-upstream origin ${GIT_BRANCH}"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' projects/dxc-ngx-cdk/package.json"
                     sh "git push --tags"
                 }
             }
@@ -220,9 +220,6 @@ pipeline {
                         sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
                         sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
                         sh "git push origin ${GIT_BRANCH}"
-                        // sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
-                        // sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
-                        // sh "git push origin master"
                         sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
                         sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
                     } catch(err) {

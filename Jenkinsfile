@@ -283,7 +283,7 @@ pipeline {
                 }
                 // Zipping storybook
                 sh '''
-                    rm -rf storybook-static.zip
+                    rm -rf storybook.zip
                 '''
                 zip zipFile: 'storybook.zip', archive: false, dir: './storybook-static'
                 // Uploading storybook to Artifactory (diaas-generic)

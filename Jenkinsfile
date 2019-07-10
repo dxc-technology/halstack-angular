@@ -17,7 +17,7 @@ pipeline {
                     }
                     script {
                         env.OLD_RELEASE_NUMBER = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                            script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
                     }
@@ -36,7 +36,7 @@ pipeline {
                                     choice(
                                         name: 'type',
                                         choices: "major\nminor\npatch\npremajor\npreminor\nprepatch\nprerelease\nno-release",
-                                        description: 'If release is selected, a new release will be released. When you select release option, a tag is created in GitHub with that version, the release is pointed to that tag and release notes will be added. Also is important to note that the created package for the release is going to be uploaded to Artifactory. To continue without releasing, select no-release. After 10 minutes, if you don`t select any choice the default selected option will be `no-release`' 
+                                        description: 'Version to bump from: ${OLD_RELEASE_NUMBER}. If release is selected, a new release will be released. When you select release option, a tag is created in GitHub with that version, the release is pointed to that tag and release notes will be added. Also is important to note that the created package for the release is going to be uploaded to Artifactory. To continue without releasing, select no-release. After 10 minutes, if you don`t select any choice the default selected option will be `no-release`' 
                                     )
                                 ]
                         }
@@ -183,28 +183,52 @@ pipeline {
                     }
                     sh "git pull origin ${GIT_BRANCH}"
                     if (env.RELEASE_OPTION == 'major') {
-                        sh "npm version major"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version major
+                        '''
                     } else if (env.RELEASE_OPTION == 'minor') {
-                        sh "npm version minor"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version minor
+                        '''
                     } else if (env.RELEASE_OPTION == 'patch') {
-                        sh "npm version patch"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version patch
+                        '''
                     } else if (env.RELEASE_OPTION == 'premajor') {
-                        sh "npm version premajor --preid=${env.RELEASE_TYPE}"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version premajor --preid=${env.RELEASE_TYPE}
+                        '''
                     } else if (env.RELEASE_OPTION == 'preminor') {
-                        sh "npm version preminor --preid=${env.RELEASE_TYPE}"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version preminor --preid=${env.RELEASE_TYPE}
+                        '''
                     } else if (env.RELEASE_OPTION == 'prepatch') {
-                        sh "npm version prepatch --preid=${env.RELEASE_TYPE}"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version prepatch --preid=${env.RELEASE_TYPE}
+                        '''
                     } else if (env.RELEASE_OPTION == 'prerelease') {
-                        sh "npm version preminor --preid=${env.RELEASE_TYPE}"
+                        sh '''
+                            cd projects/dxc-ngx-cdk
+                            npm version preminor --preid=${env.RELEASE_TYPE}
+                        '''
                     }
                     env.RELEASE_NUMBER = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
+                            script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' dist/dxc-ngx-cdk/package.json"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' projects/dxc-ngx-cdk/package.json"
-                    sh "git push --tags"
+                    sh '''
+                        cd projects/dxc-ngx-cdk/package.json
+                        sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../dist/dxc-ngx-cdk/package.json
+                        sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json
+                        sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../package.json
+                        git push --tags
+                    '''
                 }
             }
         }
@@ -217,7 +241,7 @@ pipeline {
                     try {
                         sh "github_changelog_generator --github-site='https://github.dxc.com' --github-api='https://github.dxc.com/api/v3/' --token d53a75471da39b66fafb25dfcc9613c069de337e"
                         sh "cat CHANGELOG.md"
-                        sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json"
+                        sh "git add CHANGELOG.md projects/dxc-ngx-cdk/package.json package.json"
                         sh "git commit -m 'New release: ${RELEASE_NUMBER}'"
                         sh "git push origin ${GIT_BRANCH}"
                         sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
@@ -237,7 +261,7 @@ pipeline {
                     // Publish library to npm repository
                     try {
                         env.RELEASE_TYPE = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
+                            script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
                             returnStdout: true
                         ).trim()
                     } catch(err) {
@@ -274,7 +298,7 @@ pipeline {
                     withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
                         sh '''
                             aws s3 rm s3://diaas-angular-storybook/ --recursive
-                            aws s3 cp ./storybook-static/ s3://diaas-angular-storybook/ --recursive
+                            aws s3 cp ./storybook-static/ s3://diaas-angular-storybook/${RELEASE_NUMBER}/ --recursive
                         '''
                     }
                 }

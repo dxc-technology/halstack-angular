@@ -184,38 +184,38 @@ pipeline {
                     sh "git pull origin ${GIT_BRANCH}"
                     if (env.RELEASE_OPTION == 'major') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
+                            cd ./projects/dxc-ngx-cdk
                             npm version major
                         '''
                     } else if (env.RELEASE_OPTION == 'minor') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
+                            cd ./projects/dxc-ngx-cdk
                             npm version minor
                         '''
                     } else if (env.RELEASE_OPTION == 'patch') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
+                            cd ./projects/dxc-ngx-cdk
                             npm version patch
                         '''
                     } else if (env.RELEASE_OPTION == 'premajor') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
-                            npm version premajor --preid=${env.RELEASE_TYPE}
+                            cd ./projects/dxc-ngx-cdk
+                            npm version premajor --preid=${RELEASE_TYPE}
                         '''
                     } else if (env.RELEASE_OPTION == 'preminor') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
-                            npm version preminor --preid=${env.RELEASE_TYPE}
+                            cd ./projects/dxc-ngx-cdk
+                            npm version preminor --preid=${RELEASE_TYPE}
                         '''
                     } else if (env.RELEASE_OPTION == 'prepatch') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
-                            npm version prepatch --preid=${env.RELEASE_TYPE}
+                            cd ./projects/dxc-ngx-cdk
+                            npm version prepatch --preid=${RELEASE_TYPE}
                         '''
                     } else if (env.RELEASE_OPTION == 'prerelease') {
                         sh '''
-                            cd projects/dxc-ngx-cdk
-                            npm version preminor --preid=${env.RELEASE_TYPE}
+                            cd ./projects/dxc-ngx-cdk
+                            npm version preminor --preid=${RELEASE_TYPE}
                         '''
                     }
                     env.RELEASE_NUMBER = sh (

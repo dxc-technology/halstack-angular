@@ -177,8 +177,8 @@ pipeline {
                     if (env.BUILD_ID == 1) {
                         sh "git checkout -b ${GIT_BRANCH}"
                     } else {
-                        sh "git checkout ${GIT_BRANCH}"
                         sh "git reset --hard origin/${GIT_BRANCH}"
+                        sh "git checkout ${GIT_BRANCH}"
                         sh "git tag | xargs git tag -d"
                     }
                     sh "git pull origin ${GIT_BRANCH}"

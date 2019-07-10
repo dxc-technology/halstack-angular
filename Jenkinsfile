@@ -20,10 +20,6 @@ pipeline {
                             script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
-                        env.OLD_RELEASE_NUMBER_ROOT = sh (
-                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
-                            returnStdout: true
-                        ).trim()
                     }
             }
         }
@@ -186,7 +182,6 @@ pipeline {
                         sh "git tag | xargs git tag -d"
                     }
                     sh "git pull origin ${GIT_BRANCH}"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER_ROOT}/'${OLD_RELEASE_NUMBER}'/g' package.json"
                     if (env.RELEASE_OPTION == 'major') {
                         sh "npm version major"
                     } else if (env.RELEASE_OPTION == 'minor') {

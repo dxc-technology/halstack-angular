@@ -17,7 +17,7 @@ pipeline {
                     }
                     script {
                         env.OLD_RELEASE_NUMBER = sh (
-                            script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
                     }
@@ -198,7 +198,7 @@ pipeline {
                         sh "npm version prerelease --preid=${RELEASE_TYPE}"
                     }
                     env.RELEASE_NUMBER = sh (
-                            script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' dist/dxc-ngx-cdk/package.json"
@@ -236,7 +236,7 @@ pipeline {
                     // Publish library to npm repository
                     try {
                         env.RELEASE_TYPE = sh (
-                            script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
+                            script: "grep 'version' package.json | grep -o '[0-9.].*[^\",]' | grep -o '[a-z].*[^.0-9]'",
                             returnStdout: true
                         ).trim()
                     } catch(err) {

@@ -183,47 +183,26 @@ pipeline {
                     }
                     sh "git pull origin ${GIT_BRANCH}"
                     if (env.RELEASE_OPTION == 'major') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version major
-                        '''
+                        sh "npm version major"
                     } else if (env.RELEASE_OPTION == 'minor') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version minor
-                        '''
+                        sh "npm version minor"
                     } else if (env.RELEASE_OPTION == 'patch') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version patch
-                        '''
+                        sh "npm version patch"
                     } else if (env.RELEASE_OPTION == 'premajor') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version premajor --preid=${RELEASE_TYPE}
-                        '''
+                        sh "npm version premajor --preid=${RELEASE_TYPE}"
                     } else if (env.RELEASE_OPTION == 'preminor') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version preminor --preid=${RELEASE_TYPE}
-                        '''
+                        sh "npm version preminor --preid=${RELEASE_TYPE}"
                     } else if (env.RELEASE_OPTION == 'prepatch') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version prepatch --preid=${RELEASE_TYPE}
-                        '''
+                        sh "npm version prepatch --preid=${RELEASE_TYPE}"
                     } else if (env.RELEASE_OPTION == 'prerelease') {
-                        sh '''
-                            cd ./projects/dxc-ngx-cdk
-                            npm version preminor --preid=${RELEASE_TYPE}
-                        '''
+                        sh "npm version prerelease --preid=${RELEASE_TYPE}"
                     }
                     env.RELEASE_NUMBER = sh (
                             script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' dist/dxc-ngx-cdk/package.json"
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' projects/dxc-ngx-cdk/package.json"
                     sh "git push --tags"
                 }
             }

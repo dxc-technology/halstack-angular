@@ -222,13 +222,9 @@ pipeline {
                             script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
                             returnStdout: true
                         ).trim()
-                    sh '''
-                        cd projects/dxc-ngx-cdk
-                        sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../dist/dxc-ngx-cdk/package.json
-                        sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json
-                        sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../package.json
-                        git push --tags
-                    '''
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' dist/dxc-ngx-cdk/package.json"
+                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json"
+                    sh "git push --tags"
                 }
             }
         }

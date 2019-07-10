@@ -223,7 +223,7 @@ pipeline {
                             returnStdout: true
                         ).trim()
                     sh '''
-                        cd projects/dxc-ngx-cdk/package.json
+                        cd projects/dxc-ngx-cdk
                         sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../dist/dxc-ngx-cdk/package.json
                         sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' package.json
                         sed -i -e 's/${OLD_RELEASE_NUMBER}/'${RELEASE_NUMBER}'/g' ../../package.json

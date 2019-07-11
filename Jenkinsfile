@@ -168,7 +168,7 @@ pipeline {
                 }
             }
         }
-        stage('Create git tag and relese notes') {
+        stage('Tagging version') {
             when {
                 expression { env.RELEASE_VALID == 'valid' } 
             }

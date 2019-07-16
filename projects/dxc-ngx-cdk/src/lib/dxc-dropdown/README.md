@@ -20,7 +20,7 @@
     <tr>
         <td>@Input<br>iconPosition: 'before' | 'after'</td>
         <td><code>'before'</code></td>
-        <td>In case options include an icon, whether the icon should appear after or before the label.</td>
+        <td>In case options include an icon, whether the icon should appear after or before the label.</td> 
     </tr>
     <tr>
         <td>@Input<br>label: string</td>

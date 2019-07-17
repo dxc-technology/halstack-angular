@@ -1,6 +1,6 @@
 <mat-form-field>
   <span matPrefix *ngIf="prefix && !prefixIconSrc"> {{ prefix }}</span>
-  <img *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
+  <img  matPrefix *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
   <mat-label *ngIf="label">{{label}}</mat-label>
   <input
     matInput
@@ -15,6 +15,6 @@
     (input)="valueChanged($event)"
   />
   <span matSuffix *ngIf="suffix && !suffixIconSrc">{{ suffix }}</span>
-  <img *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
+  <img  matSuffix *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
   <mat-hint  *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>

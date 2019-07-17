@@ -1,46 +1,46 @@
 :host {
-    .mat-form-field {
-        width: 230px;
-        max-height: 74px;
-        img {
-            width: 20px;
-            height: 20px;
-        }
-       
-       
+  .mat-form-field {
+    width: 230px;
+    max-height: 74px;
+    img {
+      width: 20px;
+      height: 20px;
     }
-    .mat-form-field-invalid {
-        .mat-hint {
-            color:red;
-        }
-        input {
-            color:red;
-        }
+  }
+  .mat-form-field-invalid {
+    .mat-hint {
+      color: red;
     }
+    input {
+      color: red;
+    }
+  }
+  .mat-form-field  {
     ::ng-deep {
-        .mat-form-field-label-wrapper  {
-            display: flex;
-            .mat-form-field-label {
-                flex-direction: row-reverse;
-                justify-content: flex-end;
-                display: flex;
-                span {
-                    color:red;
-                }
-            }
+      .mat-form-field-label-wrapper {
+        display: flex;
+        .mat-form-field-label {
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          display: flex;
+          span {
+            color: red;
+          }
         }
-        .mat-form-field-subscript-wrapper {
-            margin-top: 6px;
-        }
-        .mat-form-field-hide-placeholder {
-            .mat-form-field-infix {
-                 padding-bottom: 12px;
-            }
-        }
+      }
+      .mat-form-field-subscript-wrapper {
+        margin-top: 6px;
+      }
+      .mat-form-field-hide-placeholder {
         .mat-form-field-infix {
-            padding-bottom: 6px;
-            padding-top: 6px;
-            margin-left: 12px;
+          padding-bottom: 12px;
         }
+      }
+      .mat-form-field-infix {
+        padding-bottom: 6px;
+        padding-top: 6px;
+        margin-left: 12px;
+      }
     }
+  }
 }

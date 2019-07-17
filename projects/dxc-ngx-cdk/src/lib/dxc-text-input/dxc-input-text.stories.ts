@@ -102,11 +102,11 @@ storiesOf("Form Components|Input Text", module)
                      </div>
                         `,
         props: {
-          suffix: text("Suffix", "Suffix"),
-          prefix: text("Prefix" , "Prefix" ),
-          suffixIconSrc:text("suffixIconSrc",""),
+          suffix: text("Suffix", ""),
+          prefix: text("Prefix" , "(+34)" ),
+          suffixIconSrc:text("suffixIconSrc","/telephone.svg"),
           prefixIconSrc:text("prefixIconSrc",""),
-          label:text("label", "Label"),
+          label:text("label", "Phone Number"),
           invalid: boolean('Invalid',false),
           assistiveText: text("Assistive Text", "I am an assistive text"),
           valueChange: action("option selected!"),

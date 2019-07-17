@@ -66,12 +66,7 @@
     <tr>
         <td>@Input<br>invalid: boolean</td>
         <td><code>false</code></td>
-        <td>If true, the input will change its appearence, showing that the value is valid.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>disableRipple: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the ripple effect will be disabled.</td>
+        <td>If true, the input will change its appearence, showing that the value is invalid.</td>
     </tr>
     <tr>
         <td>@Output<br>valueChange: EventEmitter</td>

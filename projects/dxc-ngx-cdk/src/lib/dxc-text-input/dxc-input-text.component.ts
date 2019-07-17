@@ -41,7 +41,7 @@ export class DxcTextInputComponent implements OnChanges {
   @Output() public valueChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public blur: EventEmitter<any> = new EventEmitter<any>();
 
-  public invalidControl = new FormControl();
+  public formControl = new FormControl();
   public matcher = new InvalidStateMatcher();
 
   public ngOnChanges(): void {
@@ -52,6 +52,7 @@ export class DxcTextInputComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+    // this.disabled ? this.formControl.disable() : this.formControl.enable();
     this.value = this.value || '';
 
     this.matcher.setInvalid(this.invalid);
@@ -73,7 +74,7 @@ export class DxcTextInputComponent implements OnChanges {
 class InvalidStateMatcher implements ErrorStateMatcher {
   private invalid: boolean;
   isErrorState(): boolean {
-    return this.invalid === true;
+    return this.invalid;
   }
 
   public setInvalid(invalid: boolean): void {

@@ -6,13 +6,18 @@
       width: 20px;
       height: 20px;
     }
+    &.disabled {
+        opacity:0.3;
+        pointer-events: none;
   }
+  }
+ 
   .mat-form-field-invalid {
     .mat-hint {
-      color: red;
+      color: #D0011B;
     }
     input {
-      color: red;
+      color: #D0011B;
     }
   }
   .mat-form-field  {
@@ -24,7 +29,7 @@
           justify-content: flex-end;
           display: flex;
           span {
-            color: red;
+            color: #D0011B;
           }
         }
       }

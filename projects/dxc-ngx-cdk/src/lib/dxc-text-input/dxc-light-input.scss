@@ -1,0 +1,8 @@
+:host.dxc-light {
+  .mat-form-field {
+    &.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+  }
+}

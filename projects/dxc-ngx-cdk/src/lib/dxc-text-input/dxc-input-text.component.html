@@ -1,0 +1,19 @@
+<mat-form-field [class.disabled]="disabled"> 
+  <span matPrefix *ngIf="prefix && !prefixIconSrc"> {{ prefix }}</span>
+  <img matPrefix *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input
+    matInput
+    [value]="value"
+    [required]="required"
+    [name]="name"
+    [type]="'text'"
+    [formControl]="formControl"
+    [errorStateMatcher]="matcher"
+    (blur)="onBlur($event)"
+    (input)="valueChanged($event)"
+  />
+  <span matSuffix *ngIf="suffix && !suffixIconSrc">{{ suffix }}</span>
+  <img matSuffix *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
+  <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
+</mat-form-field>

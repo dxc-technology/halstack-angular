@@ -24,29 +24,34 @@
                 }
             }
         }
-        &.mat-raised-button {
-            &:disabled {
-            background:  #D9D9D9
-            }
-        }
         &.mat-stroked-button {
             color:white;
             background: transparent;
             border-color: white;
+            border-width: 2px;
             &:hover:not([disabled]) {
-                color:#FFED00;
                 border-color:#FFED00;
             }
-            &:disabled {
-            ::ng-deep  span.mat-button-wrapper  span { 
-                color:white;
-               
+            ::ng-deep  {
+                span.mat-button-wrapper  span { 
+                    color:white;
+                }
+                .mat-ripple-element {
+                    background-color: #212121;
+                }
             }
-        }
         } 
         &.mat-flat-button {
-            &:hover {
-                background: #E5E5E5;
+            &:hover:not([disabled]) {
+                background: #D9D9D9;
+                ::ng-deep {
+                    span.mat-button-wrapper > span {
+                        color:black;
+                    }
+                    .mat-ripple-element {
+                        background-color: #ffffff;
+                    }
+                }
             }
             &:disabled {
                 ::ng-deep {
@@ -54,8 +59,14 @@
                         color:white;
                     }
                 }
-                background: #666666;
+                background-color: #666666;
             }
+            ::ng-deep {
+                span.mat-button-wrapper > span {
+                    color:white;
+                }
+            }
+            background-color: transparent;
         }
     }
 

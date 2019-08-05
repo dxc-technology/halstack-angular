@@ -85,9 +85,13 @@
   
   }
 
-  button.mat-raised-button ´{
-    &:disabled ´{
-      background-color: #E5E5E5 
+  button.mat-raised-button {
+    &:disabled {
+      background-color: #FFED00 
     }
+  }
+
+  button.mat-flat-button:hover:not([disabled]) {
+    background-color: #D9D9D9;
   }
 }

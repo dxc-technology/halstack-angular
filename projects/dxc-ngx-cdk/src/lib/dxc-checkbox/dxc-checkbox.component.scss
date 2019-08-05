@@ -9,8 +9,8 @@
 
         .mat-checkbox-inner-container {
           margin: 10px 15px;
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
 
           .mat-checkbox-frame {
             border-radius: 4px;
@@ -47,11 +47,7 @@
         cursor: not-allowed;
       ::ng-deep {
         .mat-checkbox-frame {
-          border-color: #666666;
-        }
-        .mat-checkbox-layout .mat-checkbox-inner-container,
-         .mat-checkbox-layout .mat-checkbox-background {
-          background: #666666;
+          border-color: #D9D9D9;
         }
       }
     }

@@ -1,48 +1,42 @@
 :host.light {
-    display: inline-flex;
-    mat-radio-button {
-        ::ng-deep {
-        label.mat-radio-button-layout {
-            display: inline-flex;
-            align-items: center;
-            .mat-ripple-element {
-                background-color: #666666,;
+  display: inline-flex;
+  mat-radio-button:not(.mat-radio-disabled) {
+    ::ng-deep {
+      label.mat-radio-button-layout {
+        display: inline-flex;
+        align-items: center;
+        .mat-radio-button-inner-container {
+          margin: 10px 15px;
+          width: 24px;
+          height: 24px;
+
+          .mat-radio-button-frame {
+            border-radius: 4px;
+          }
+
+          .mat-radio-button-background {
+            svg path {
+              stroke: black;
             }
-            .mat-radio-button-inner-container {
-                margin: 10px 15px;
-                width: 24px;
-                height: 24px;
 
-                .mat-radio-button-frame {
-                    border-radius: 4px;
-                }
-
-                .mat-radio-button-background {
-                    svg path {
-                     
-                        stroke: black !important;
-                    }
-
-                    .mat-radio-button-mixedmark {
-                        background-color: black;
-                    }
-                }
+            .mat-radio-button-mixedmark {
+              background-color: black;
             }
+          }
         }
+      }
+      .mat-radio-inner-circle {
+        background-color: black;
+      }
+      .mat-radio-outer-circle {
+        border-color: black;
+      }
 
-        &.mat-radio-button-checked {
-            .mat-radio-button-frame {
-                border-color: #ffed00;
-            }
+      .mat-radio-ripple {
+        .mat-ripple-element:not(.mat-radio-persistent-ripple) {
+          opacity: 0.1;
         }
+      }
     }
-    &.mat-radio-disabled {
-        ::ng-deep { 
-            .mat-radio-inner-container   .mat-radio-button-background svg path.mat-radio-button-checkmark-path {
-                 stroke:white !important;
-             }
-        }
-        cursor: not-allowed;
-        }
-    }
+  }
 }

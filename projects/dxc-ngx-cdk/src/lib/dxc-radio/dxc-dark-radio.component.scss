@@ -1,19 +1,35 @@
 
 :host.dark {
-    mat-radio-button ::ng-deep {
+    mat-radio-button:not(.mat-radio-disabled) ::ng-deep {
         .mat-radio-mixedmark {
-            background: black;
+            background-color: black;
         }
     
         .mat-radio-label-content {
             color:white;
         }
-        .mat-ripple-element {
-            background-color: white;
-
-        }
         .mat-radio-outer-circle {
             border-color: white;
+        }
+        .mat-radio-inner-circle {
+            border-color: #FFED00;
+        }
+
+        .mat-radio-ripple {
+            .mat-ripple-element:not(.mat-radio-persistent-ripple) {
+              opacity: 0.25;
+            }
+        }
+    }
+    mat-radio-button.mat-radio-disabled ::ng-deep {
+        .mat-radio-label-content {
+            color:#666666;
+        }
+        .mat-radio-outer-circle {
+            border-color: #666666;
+        }
+        .mat-radio-inner-circle {
+            background-color: #666666;
         }
     }
 }

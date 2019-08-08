@@ -1,0 +1,92 @@
+.mat-form-field-invalid {
+  .mat-hint {
+    color: #d0011b;
+  }
+}
+
+.mat-form-field {
+  width: 230px;
+
+  &.form-field-should-float {
+    label {
+      color: black;
+    }
+  }
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+::ng-deep {
+  .mat-form-field-wrapper {
+  }
+  .mat-datepicker-toggle-default-icon {
+    width: 20px !important;
+    height: 20px;
+  }
+  .mat-form-field-infix {
+  }
+  .mat-form-field-infix .mat-form-field-label-wrapper {
+    display: flex;
+    .mat-form-field-label {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      display: flex !important;
+      span {
+        color: #d0011b;
+      }
+    }
+  }
+
+  .dxc-date-date-panel {
+    padding: 20px;
+    height: 314px;
+    width: 256px;
+   
+    .mat-calendar-content {
+      height: 88%;
+    }
+    .mat-calendar-table {
+      height: 100%;
+    }
+    .mat-calendar-header {
+      color: black;
+      padding: 0px;
+      .mat-calendar-controls {
+        margin: 0px;
+      }
+      .mat-calendar-arrow {
+        margin-left: 8px;
+      }
+    }
+    div.mat-calendar-body-selected {
+      border-color: #000000;
+      background: #000000;
+      color: #ffed00;
+    }
+    mat-month-view .mat-calendar-body-cell-content {
+      // width: 28px;
+      // height: 28px;
+    }
+    .mat-calendar-body-cell-content {
+      &:hover {
+        background-color: #d9d9d9 !important;
+      }
+      mat-multi-year-view .mat-calendar-body-cell-content,
+      mat-year-view .mat-calendar-body-cell-content {
+        width: 55px;
+        height: 33px;
+      }
+      .mat-calendar-period-button {
+        padding: 0px;
+        height: 34px;
+        width: 94px;
+        &:hover {
+          background: #00000012;
+        }
+      }
+    }
+  }
+}

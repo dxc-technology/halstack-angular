@@ -1,3 +1,8 @@
+:host {
+  &.disabled{
+    cursor: not-allowed;
+  }
+  
 .mat-form-field-invalid {
   .mat-hint {
     color: #d0011b;
@@ -91,4 +96,5 @@ img {
       }
     }
   }
+}
 }

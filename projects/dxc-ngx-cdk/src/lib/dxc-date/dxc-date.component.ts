@@ -9,7 +9,7 @@ import {
   ViewChild
 } from "@angular/core";
 
-import { ErrorStateMatcher, DateAdapter, MatDatepicker, MatDatepickerInput } from "@angular/material";
+import { ErrorStateMatcher, MatDatepicker, MatDatepickerInput } from "@angular/material";
 import * as moment from "moment";
 import { FormControl } from "@angular/forms";
 export enum Formats {
@@ -60,14 +60,12 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public formControl = new FormControl();
 
   @ViewChild('picker',{static:true}) picker: MatDatepicker<any>;
-  @ViewChild('input',{static:true}) input: MatDatepickerInput<any>;
 
   public ngOnInit(): void {
     this.format = this.format.toUpperCase();
     this.checkFormat();
    
     this.picker.openedStream.subscribe( () => {
-        const d = JSON.parse(JSON.stringify(this.picker._datepickerInput['_dateFormats']));
         this.picker._datepickerInput['_dateFormats'].display.dateInput = this.format.toUpperCase();
     })
     this.maskObject = { format: this.format, showMask: this.showMask };

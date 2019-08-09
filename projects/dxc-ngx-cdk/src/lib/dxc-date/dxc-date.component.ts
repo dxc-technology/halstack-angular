@@ -9,7 +9,7 @@ import {
   ViewChild
 } from "@angular/core";
 
-import { ErrorStateMatcher, MatDatepicker, MatDatepickerInput } from "@angular/material";
+import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
 import * as moment from "moment";
 import { FormControl } from "@angular/forms";
 export enum Formats {
@@ -40,8 +40,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() theme: string;
   @Input() invalid: boolean;
   @Input() disableRipple: boolean;
-  @Input() disabled: boolean | string;
-  @Input() required: boolean | string;
+  @Input() disabled: boolean;
+  @Input() required: boolean;
   @Input() assistiveText: string;
   @Input() iconSrc: string;
   @Input() name: string;
@@ -55,7 +55,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
-  private maskObject: {};
+  @HostBinding("class.disabled") isDisabled: boolean = false;
+
+  public maskObject: {};
   public matcher = new InvalidStateMatcher();
   public formControl = new FormControl();
 

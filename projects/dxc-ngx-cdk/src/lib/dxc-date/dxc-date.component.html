@@ -1,4 +1,4 @@
-<mat-form-field>
+ <mat-form-field  [class.disabled]="disabled"> 
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
     matInput
@@ -6,7 +6,6 @@
     [max]="max"
     [matDatepicker]="picker"
     [required]="required"
-    [disabled]="disabled"
     [dxcMask]="maskObject"
     [formControl]="formControl"
     [errorStateMatcher]="matcher"

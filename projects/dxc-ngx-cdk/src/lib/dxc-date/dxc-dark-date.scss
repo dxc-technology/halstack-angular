@@ -35,6 +35,9 @@
       }
       &.disabled {
         pointer-events: none;
+        .mat-form-field-suffix {
+          opacity: 0.3;
+        }
         ::ng-deep {
           .mat-form-field-label-wrapper label mat-label,
           .mat-hint,

@@ -19,6 +19,7 @@ export class DxcRadioComponent implements OnInit {
   @Input() disabled: boolean | string;
   @Input() label: string;
   @Input() name: string;
+  @Input() required: boolean | string;
   @Input() labelPosition: string;
   @Input() value: any;
   @Output() checkedChange: EventEmitter<any>;
@@ -42,8 +43,6 @@ export class DxcRadioComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.disabled === '' || this.disabled === true) {
-    }
   }
 
   onChange(event: any) {

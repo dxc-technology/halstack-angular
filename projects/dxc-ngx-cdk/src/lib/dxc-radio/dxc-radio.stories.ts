@@ -30,24 +30,27 @@ storiesOf("Form Components|Radio", module)
         [checked]="true"
         [labelPosition]="before"
         label="Radio 1"
+        name="radio1"
+        [value]=1
         ></dxc-radio>
 
         <dxc-radio
-        [checked]="checked"
         [labelPosition]="before"
         label="Label before"
+        name="radio2"
         ></dxc-radio>
         
         <dxc-radio
-        [checked]="checked"
         [labelPosition]="'after'"
         label="Label after"
+        name="radio3"
         ></dxc-radio>
         
         <dxc-radio
         [disabled] = "true"
         [labelPosition]="'before'"
         label= "Disabled radio unchecked"
+        name="radio4"
         ></dxc-radio>
 
         <dxc-radio
@@ -55,12 +58,15 @@ storiesOf("Form Components|Radio", module)
         [disabled] = "true"
         [labelPosition]="'before'"
         label="Disabled radio"
+        name="radio5"
         ></dxc-radio>
       
         
         <dxc-radio
         (checkedChange)="showAlert()"
-        label="Required checbkox"
+        label="Required radio"
+        name="radio6"
+        required="true"
         ></dxc-radio>
       </div>
 
@@ -78,6 +84,7 @@ storiesOf("Form Components|Radio", module)
           [labelPosition]="'before'"
           [theme]="'dark'"
           label="Radio 1"
+          name="radio7"
           ></dxc-radio>
 
           <dxc-radio
@@ -85,6 +92,7 @@ storiesOf("Form Components|Radio", module)
           labelPosition="before"
           [theme]="'dark'"
           label="Label before"
+          name="radio8"
           ></dxc-radio>
       
           <dxc-radio
@@ -92,6 +100,7 @@ storiesOf("Form Components|Radio", module)
           [theme]="'dark'"
           [labelPosition]="'after'"
           label="Label after"
+          name="radio9"
           ></dxc-radio>
       
           <dxc-radio
@@ -99,7 +108,8 @@ storiesOf("Form Components|Radio", module)
           [disabled] = "true"
           [theme]="'dark'"
           [labelPosition]="'before'"
-          label="Disabled radio"
+          label="Disabled unchecked radio"
+          name="radio10"
           ></dxc-radio>
       
           <dxc-radio
@@ -108,13 +118,17 @@ storiesOf("Form Components|Radio", module)
           [theme]="'dark'"
           [labelPosition]="'before'"
           label="Disabled radio"
+          name="radio11"
           ></dxc-radio>
       
 
           <dxc-radio
           (checkedChange)="showAlert()"
+          [labelPosition]="'after'"
           [theme]="'dark'"
-          label= "Radio"
+          label="Required radio"
+          name="radio12"
+          required="true"
           ></dxc-radio>
       
       </div>

@@ -10,7 +10,7 @@ import {
 } from "@angular/core";
 
 import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
-var moment = require(moment);
+var moment = require('moment');
 
 import { FormControl } from "@angular/forms";
 export enum Formats {

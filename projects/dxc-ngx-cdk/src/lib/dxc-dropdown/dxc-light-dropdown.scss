@@ -1,0 +1,33 @@
+:host.dxc-light {
+  .menu-buttom-label-wrapper {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 2px solid #000000;
+    &.menu-opened {
+      background: #eeeeee;
+      border-bottom: 0px solid #000000;
+    }
+  }
+  .menu-buttom-label {
+    color: #000000;
+  }
+
+  .arrow-down {
+    border-top: 5px solid black;
+  }
+  .arrow-up {
+    border-bottom: 5px solid black;
+  }
+}
+::ng-deep .dxc-dropdown-menu {
+  .mat-menu-content {
+    border: 2px solid #000000;
+  }
+  .mat-menu-item {
+    &:hover {
+      background: #eeeeee;
+    }
+    &:active {
+      background: #d9d9d9;
+    }
+  }
+}

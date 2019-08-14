@@ -13,4 +13,15 @@
         background-color: white;
     }
   }
+  .mat-form-field-disabled {
+    
+    &::ng-deep {
+      .mat-form-field-underline {
+        background: #666666;
+      }
+      .mat-form-field-label, .mat-select-arrow {
+        color:#666666
+      }
+    }
+  }
 }

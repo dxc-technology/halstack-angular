@@ -93,6 +93,46 @@ storiesOf("Form Components|Select", module)
       padding: 20px;
       margin-left: 45px;" >            
 
+      <dxc-select 
+      [label] = "'Simple select'"
+      [options] = "options"
+      [theme] ="'dark'"
+      ></dxc-select>
+
+      <dxc-select 
+      [label] = "'disabled select'"
+      [options] = "options"
+      [disabled] = true
+      [theme] ="'dark'"
+      ></dxc-select>
+
+      <dxc-select 
+      [multiple]= true
+      [label] = "'Multiple Select'"
+      [theme] ="'dark'"
+      [options] = "options"
+      ></dxc-select>
+
+      <dxc-select 
+      [multiple] = true
+      [label] = "'Multiple Select with text   & icons'"
+      [options] = "optionsTextIcons"
+      [theme] ="'dark'"
+      ></dxc-select>
+      
+      <dxc-select 
+      [multiple] = true
+      [label] = "'Multiple Select with text   & icons'"
+      [options] = "optionsTextIcons"
+      [theme] ="'dark'"
+      ></dxc-select>
+
+      <dxc-select 
+      [label] = "'Multiple Select with only  icons'"
+      [multiple] = true
+      [theme] ="'dark'"
+      [options] = "optionsOnlyIcons"
+      ></dxc-select>
 
     </div>
       `,

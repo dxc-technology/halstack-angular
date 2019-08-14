@@ -1,68 +1,125 @@
 import {
   Component,
-  OnInit,
-  ViewEncapsulation,
-  Output,
+  OnChanges,
   Input,
-  EventEmitter
-} from '@angular/core';
-import { DateAdapter } from '@angular/material';
+  Output,
+  EventEmitter,
+  HostBinding,
+  OnInit,
+  ViewChild
+} from "@angular/core";
+
+import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
+var moment = require('moment');
+
+import { FormControl } from "@angular/forms";
+export enum Formats {
+  "MM/DD/YYYY",
+  "DD/MM/YYYY",
+  "YYYY/MM/DD",
+  "YYYY-MM-DD",
+  "DD-MM-YYYY",
+  "MM-DD-YYYY",
+  "DD.MM.YYYY",
+  "MM.DD.YYYY",
+  "YYYY.MM.DD"
+}
 
 @Component({
-  selector: 'dxc-date',
-  templateUrl: './dxc-date.component.html',
-  styleUrls: ['./dxc-date.component.scss']
+  selector: "dxc-date",
+  templateUrl: "./dxc-date.component.html",
+  styleUrls: [
+    "./dxc-date.component.scss",
+    "./dxc-light-date.scss",
+    "./dxc-dark-date.scss"
+  ]
 })
-export class DxcDateComponent implements OnInit {
-  @Input() @Output() ngModel: string;
-  @Input() icon: string;
-  @Input() startView: string;
-  @Input() startAt: Date;
-  @Input() min: Date;
-  @Input() max: Date;
-  @Input() floatLabel: string;
-  @Input() appearance: string;
-  @Input() mask: string;
-  @Input() text: string;
-  @Input() filter: any;
-  @Input() disabled: string | boolean;
-  @Output() dateInput: EventEmitter<any>;
-  @Output() dateChange: EventEmitter<any>;
+export class DxcDateComponent implements OnChanges, OnInit {
+  @Input() min: any;
+  @Input() max: any;
+  @Input() value: Date;
+  @Input() theme: string;
+  @Input() invalid: boolean;
+  @Input() disableRipple: boolean;
+  @Input() disabled: boolean;
+  @Input() required: boolean;
+  @Input() assistiveText: string;
+  @Input() iconSrc: string;
+  @Input() name: string;
+  @Input() id: string;
+  @Input() format: string;
+  @Input() showMask: boolean;
+  @Input() label: string;
 
-  allDisabled: boolean;
-  popupDisabled: boolean;
-  inputDisabled: boolean;
-  constructor(private adapter: DateAdapter<any>) {
-    this.dateInput = new EventEmitter();
-    this.dateChange = new EventEmitter();
-    this.adapter.setLocale(navigator.language);
+  @Output() public valueChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public inputChange: EventEmitter<any> = new EventEmitter<any>();
+
+  @HostBinding("class.dxc-light") isLight: boolean = true;
+  @HostBinding("class.dxc-dark") isDark: boolean = false;
+  @HostBinding("class.disabled") isDisabled: boolean = false;
+
+  public maskObject: {};
+  public matcher = new InvalidStateMatcher();
+  public formControl = new FormControl();
+
+  @ViewChild('picker',{static:true}) picker: MatDatepicker<any>;
+
+  public ngOnInit(): void {
+    this.format = this.format.toUpperCase();
+    this.checkFormat();
+   
+    this.picker.openedStream.subscribe( () => {
+        this.picker._datepickerInput['_dateFormats'].display.dateInput = this.format.toUpperCase();
+    })
+    this.maskObject = { format: this.format, showMask: this.showMask };
+
   }
 
-  ngOnInit() {
-    if (this.startView === '' || !this.startView) {
-      this.startView = 'month';
+  public ngOnChanges(): void {
+    if (this.theme === "dark") {
+      this.isLight = false;
+      this.isDark = true;
+    } else {
+      this.isLight = true;
+      this.isDark = false;
     }
-    if (!this.startAt) {
-      this.startAt = new Date();
-    }
-    if (this.disabled === '') {
-      this.allDisabled = true;
-      this.popupDisabled = true;
-      this.inputDisabled = true;
-    } else if (this.disabled === 'input') {
-      this.allDisabled = true;
-      this.inputDisabled = false;
-    } else if (this.disabled === 'popup') {
-      this.allDisabled = false;
-      this.popupDisabled = true;
+    this.value = this.value || new Date();
+    this.maskObject = { format: this.format, showMask: this.showMask };
+    this.matcher.setInvalid(this.invalid);
+  }
+
+  public valueChanged($event: any): void {
+    let _dateValue = moment($event.targetElement.value, this.format, true);
+    if (_dateValue.isValid()) {
+      this.value = $event.target.value;
+      this.valueChange.emit(this.value);
     }
   }
 
-  addEvent(type: string, event: any) {
-    if (type === 'input') {
-      this.dateInput.emit(event);
-    } else if (type === 'change') {
-      this.dateChange.emit(event);
+  public dateInput($event: any): void {
+    this.valueChange.emit($event.targetElement.value);
+  }
+
+  /**
+   * Check the user format and throw an error if it is not compatible
+   */
+  private checkFormat(): void {
+    let isFormatCorrect = Object.values(Formats).includes(this.format);
+    if (!isFormatCorrect) {
+      throw new Error("Invalid Date format");
     }
+  }
+
+
+}
+/** Error when invalid control is dirty, touched, or submitted. */
+class InvalidStateMatcher implements ErrorStateMatcher {
+  private invalid: boolean;
+  isErrorState(): boolean {
+    return this.invalid;
+  }
+
+  public setInvalid(invalid: boolean): void {
+    this.invalid = invalid;
   }
 }

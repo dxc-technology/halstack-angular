@@ -21,7 +21,7 @@ import { ErrorStateMatcher } from "@angular/material";
 export class DxcTextInputComponent implements OnChanges {
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
-
+  @HostBinding("class.disabled") isDisabled: boolean = false;
   @Input() public prefix: string;
   @Input() public suffix: string;
   @Input() public prefixIconSrc: string;
@@ -52,6 +52,7 @@ export class DxcTextInputComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+    this.isDisabled = this.disabled;
     // this.disabled ? this.formControl.disable() : this.formControl.enable();
     this.value = this.value || "";
 

@@ -36,8 +36,7 @@
     <tr>
         <td>@Output<br>activeTabIndexChange: function</td>
         <td></td>
-        <td>This event will be triggered when the user clicks on a tab. The index of the tab clicked will be passed as a parameter.<br>
-        </td>
+        <td>This event will be triggered when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
     </tr>
 </table>
 

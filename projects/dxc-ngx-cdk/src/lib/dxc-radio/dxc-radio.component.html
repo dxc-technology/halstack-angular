@@ -8,6 +8,7 @@
   [disableRipple]="disableRipple"
   [checked]="checked"
 >
+{{checked}}
 <span *ngIf="label" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
   <span *ngIf="required" class="mat-radio-required" >*</span>
   {{label}}

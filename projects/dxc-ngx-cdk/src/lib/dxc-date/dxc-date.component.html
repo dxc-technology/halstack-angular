@@ -1,25 +1,20 @@
-<mat-form-field [floatLabel]="floatLabel" [appearance]="appearance">
-  <mat-label *ngIf="mask && text">{{ text }}</mat-label>
+ <mat-form-field  [class.disabled]="disabled"> 
+  <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
     matInput
     [min]="min"
     [max]="max"
     [matDatepicker]="picker"
-    [matDatepickerFilter]="filter"
-    [disabled]="allDisabled"
-    [placeholder]="text && mask ? mask : text"
-    (dateInput)="addEvent('input', $event)"
-    (dateChange)="addEvent('change', $event)"
+    [required]="required"
+    [dxcMask]="maskObject"
+    [formControl]="formControl"
+    [errorStateMatcher]="matcher"
+    (dateInput)="dateInput($event)"
+    (dateChange)="valueChanged($event)"
   />
-  <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="popupDisabled">
-    <mat-icon *ngIf="icon" matDatepickerToggleIcon>{{
-      icon
-    }}</mat-icon></mat-datepicker-toggle
-  >
-  <mat-datepicker
-    [startView]="startView"
-    [startAt]="startAt"
-    #picker
-    [disabled]="inputDisabled"
-  ></mat-datepicker>
+  <mat-datepicker-toggle matSuffix [for]="picker">
+    <img *ngIf="iconSrc" matDatepickerToggleIcon src="{{ iconSrc }}" />
+  </mat-datepicker-toggle>
+  <mat-datepicker [panelClass]="'dxc-date-date-panel'" #picker></mat-datepicker>
+  <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>

@@ -1,0 +1,54 @@
+:host.dxc-dark {
+    mat-form-field,
+    mat-label,
+    .mat-hint {
+      color: white;
+    }
+    input{
+        caret-color: white;
+    }
+    .mat-form-field.mat-form-field-invalid ::ng-deep {
+      .mat-form-field-label-wrapper label mat-label,
+      .mat-hint,
+      input {
+
+        color: #ff6161;
+      }
+      .mat-form-field-ripple {
+        background-color: #ff6161;
+      }
+    }
+    .mat-form-field {
+      ::ng-deep {
+        .mat-form-field-prefix,
+        .mat-form-field-suffix {
+          span {
+            color: #ffed00;
+          }
+        }
+        .mat-form-field-ripple {
+          background-color: rgb(255, 255, 255);
+        }
+        .mat-form-field-underline {
+          background-color: white;
+        }
+      }
+      &.disabled {
+        pointer-events: none;
+        .mat-form-field-suffix {
+          opacity: 0.3;
+        }
+        ::ng-deep {
+          .mat-form-field-label-wrapper label mat-label,
+          .mat-hint,
+          input {
+            color: #757575;
+          }
+          .mat-form-field-ripple, .mat-form-field-underline {
+            background-color: #757575;
+          }
+        }
+      }
+    }
+  }
+  

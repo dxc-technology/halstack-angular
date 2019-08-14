@@ -1,7 +1,20 @@
 :host {
+  min-height: 34px;
+  max-height: 74px;
+  min-width:230px ;
+  max-width:100%;
+  margin: 15px;
+  display: inline-flex;
+  &.disabled{
+    cursor: not-allowed;
+  }
   .mat-form-field {
     width: 230px;
     max-height: 74px;
+    input {
+      min-height: 22px;
+      text-overflow: ellipsis;
+    }
     img {
       width: 20px;
       height: 20px;
@@ -15,9 +28,7 @@
     .mat-hint {
       color: #d0011b;
     }
-    input {
-      color: #d0011b;
-    }
+   
   }
   .mat-form-field {
     &.mat-form-field-should-float {
@@ -49,7 +60,6 @@
 
       .mat-form-field-infix {
         padding-top: 6px;
-        margin-left: 12px;
       }
     }
   }

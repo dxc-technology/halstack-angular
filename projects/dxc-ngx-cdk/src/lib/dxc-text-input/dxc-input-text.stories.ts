@@ -32,6 +32,15 @@ storiesOf("Form Components|Input Text", module)
         [assistiveText]="'I am a hint'"
         >
         </dxc-input-text>
+
+        <h4>TextArea </h4>
+        <dxc-input-text  
+        [label]="'Normal Input'"
+        [multiline]="true"
+        [assistiveText]="'I am a textArea'"
+        >
+        </dxc-input-text>
+
         <h4> Normal Input  data binding </h4>
         <dxc-input-text  
         [label]="'Normal Input'"
@@ -87,20 +96,26 @@ storiesOf("Form Components|Input Text", module)
     font-weight: bold;"
     >Dark</h3>
 
-    <div style="background: black;
-     width: calc(100% - 380px); 
-      margin-right: 200px;
-      padding: 20px;
-      margin-left: 45px;" >            
+    <div style="background: black;" >            
 
-      <h4> Normal Input  with Assistive Text </h4>
+      <h4 style="color:white"> Normal Input  with Assistive Text </h4>
       <dxc-input-text  
       [label]="'Normal Input'"
       [theme] = "'dark'"
       [assistiveText]="'I am a hint'"
       >
       </dxc-input-text>
-      <h4> Normal Input  data binding </h4>
+
+      <h4 style = "color:white;">TextArea </h4>
+      <dxc-input-text  
+      [label]="'Text Area'"
+      [multiline]="true"
+      [theme] = "'dark'"
+      [assistiveText]="'I am a textArea'"
+      >
+      </dxc-input-text>
+
+      <h4 style = "color:white;"> Normal Input  data binding </h4>
       <dxc-input-text  
       [label]="'Normal Input'"
       [theme] = "'dark'"
@@ -111,7 +126,7 @@ storiesOf("Form Components|Input Text", module)
 <label style = "color:white;"> The value is : {{inputValue}}</label>
 
 
-    <h4> Inalid Input  </h4>
+    <h4 style = "color:white;"> Inalid Input  </h4>
         <dxc-input-text  
         [label]="'Invalid Input'"
         [invalid] = true
@@ -119,21 +134,21 @@ storiesOf("Form Components|Input Text", module)
         [assistiveText]="'I am an error '"
         >
         </dxc-input-text>
-    <h4> Required Input  </h4>
+    <h4 style="color:white"> Required Input  </h4>
         <dxc-input-text  
         [label]="'First Name'"
         [theme] = "'dark'"
         [required] = true
         >
     </dxc-input-text>
-    <h4> Disabled Input  </h4>
+    <h4 style="color:white"> Disabled Input  </h4>
     <dxc-input-text  
     [theme] = "'dark'"
     [label]="'First Name'"
     [disabled] = true
     >
     </dxc-input-text>
-    <h4> Input  with prefix and suffix </h4>
+    <h4 style="color:white"> Input  with prefix and suffix </h4>
         <dxc-input-text  
         [suffixIconSrc]="suffixIconSrc"
         [prefixIconSrc]="prefixIconSrc"
@@ -142,10 +157,9 @@ storiesOf("Form Components|Input Text", module)
         [label]="label"
         [invalid]="invalid"
         [assistiveText]="'Format: XXX XX XX XX'"
-        [theme]="theme"
         [disabled]="disabled"
         [required]="required"
-        [theme] = "'dark'"
+        [theme] ="'dark'"
         (blur)="onBlur($event)"
         (change)="valueChanged($event)"
         >
@@ -198,6 +212,7 @@ storiesOf("Form Components|Input Text", module)
                        [disabled]="disabled"
                        [required]="required"
                        (blur)="onBlur($event)"
+                       [multiline]="multiline"
                        (change)="valueChanged($event)"
                        >
                        </dxc-input-text>
@@ -215,6 +230,7 @@ storiesOf("Form Components|Input Text", module)
         valueChange: action("option selected!"),
         required: boolean("required", false),
         disabled: boolean("disabled", false),
+        multiline: boolean("multiline", false),
         theme: select("theme", { light: "light", dark: "dark" }, "light"),
         onBlur: action("blur fired!"),
         valueChanged: action("input string fired!")

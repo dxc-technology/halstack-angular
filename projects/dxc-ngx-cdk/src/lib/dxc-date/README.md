@@ -13,10 +13,27 @@
         <td></td>
         <td>The value of the date component. Must be a Date object.</td>
     </tr>
+     <tr>
+        <td>@Input<br>min: date</td>
+        <td></td>
+        <td>The min date to be able to select using datepicker</td>
+    </tr>
+    <tr>
+     <tr>
+        <td>@Input<br>max: date</td>
+        <td></td>
+        <td>The max date to be able to select using datepicker</td>
+    </tr>
+    <tr>
     <tr>
         <td>@Input<br>format: string</td>
         <td></td>
         <td>The format in which the date value will be displayed. User must use this format when editing the input.</td>
+    </tr>
+       <tr>
+        <td>@Input<br>showMask: boolean</td>
+        <td> false</td>
+        <td>Boolean to show or not the mask</td>
     </tr>
     <tr>
         <td>@Input<br>label: string</td>
@@ -77,3 +94,20 @@
     </tr>
 </table>
 
+## Available date formats
+
+Although there are a lot of date formats for differents countries and languages we only suppor the ones that are widely used (see ISO 8601)
+
+```typescript
+export enum Formats {
+  "MM/DD/YYYY",
+  "DD/MM/YYYY",
+  "YYYY/MM/DD",
+  "YYYY-MM-DD",
+  "DD-MM-YYYY",
+  "MM-DD-YYYY",
+  "DD.MM.YYYY",
+  "MM.DD.YYYY",
+  "YYYY.MM.DD"
+}
+```

@@ -36,7 +36,7 @@ storiesOf("Form Components|Input Text", module)
         <h4>TextArea </h4>
         <dxc-input-text  
         [label]="'Normal Input'"
-        [multiple]="true"
+        [multiline]="true"
         [assistiveText]="'I am a textArea'"
         >
         </dxc-input-text>
@@ -109,7 +109,7 @@ storiesOf("Form Components|Input Text", module)
       <h4 style = "color:white;">TextArea </h4>
       <dxc-input-text  
       [label]="'Text Area'"
-      [multiple]="true"
+      [multiline]="true"
       [theme] = "'dark'"
       [assistiveText]="'I am a textArea'"
       >
@@ -213,7 +213,7 @@ storiesOf("Form Components|Input Text", module)
                        [disabled]="disabled"
                        [required]="required"
                        (blur)="onBlur($event)"
-                       [multiple]="multiple"
+                       [multiline]="multiline"
                        (change)="valueChanged($event)"
                        >
                        </dxc-input-text>
@@ -231,7 +231,7 @@ storiesOf("Form Components|Input Text", module)
         valueChange: action("option selected!"),
         required: boolean("required", false),
         disabled: boolean("disabled", false),
-        multiple: boolean("multiple", false),
+        multiline: boolean("multiline", false),
         theme: select("theme", { light: "light", dark: "dark" }, "light"),
         onBlur: action("blur fired!"),
         valueChanged: action("input string fired!")

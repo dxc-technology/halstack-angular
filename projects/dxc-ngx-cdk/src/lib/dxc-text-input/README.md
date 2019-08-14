@@ -24,7 +24,7 @@
         <td>Assistive text to be placed at the bottom of the input.</td>
     </tr>
       <tr>
-        <td>@Input<br>multiple: boolean</td>
+        <td>@Input<br>multiline: boolean</td>
         <td>false</td>
         <td>Boolean to display an input with multiples lines (text area or not)</td>
     </tr>

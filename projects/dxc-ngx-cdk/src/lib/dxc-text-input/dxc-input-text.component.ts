@@ -27,10 +27,10 @@ export class DxcTextInputComponent implements OnChanges {
   @Input() public prefixIconSrc: string;
   @Input() public suffixIconSrc: string;
 
-
   @Input() public theme: string = "light";
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
+  @Input() public multiple: boolean = false;
   @Input() public invalid: boolean = false;
 
   @Input() public label: String;
@@ -54,7 +54,7 @@ export class DxcTextInputComponent implements OnChanges {
     }
     this.isDisabled = this.disabled;
     // this.disabled ? this.formControl.disable() : this.formControl.enable();
-    this.value = this.value || '';
+    this.value = this.value || "";
 
     this.matcher.setInvalid(this.invalid);
   }

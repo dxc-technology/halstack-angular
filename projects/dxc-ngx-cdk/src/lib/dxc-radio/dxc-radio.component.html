@@ -3,11 +3,14 @@
   [value]="value"
   [disabled]="disabled"
   [name]="name"
+  [required]="required"
   (change)="onChange($event)"
   [disableRipple]="disableRipple"
   [checked]="checked"
 >
+{{checked}}
 <span *ngIf="label" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
+  <span *ngIf="required" class="mat-radio-required" >*</span>
   {{label}}
 </span>
 </mat-radio-button>

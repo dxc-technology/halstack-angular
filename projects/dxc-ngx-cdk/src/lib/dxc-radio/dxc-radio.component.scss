@@ -4,6 +4,10 @@
     mat-radio-button {
       ::ng-deep {
         .mat-radio-label {
+          .mat-radio-required {
+            color: #ee2222;
+            margin-right: 2px;
+          }
           display: inline-flex;
           align-items: center;
   
@@ -11,6 +15,14 @@
             margin: 10px 15px;
             width: 24px;
             height: 24px;
+
+            .mat-radio-ripple {
+              left: calc(50% - 22px);
+              top: calc(50% - 22px);
+              .mat-ripple-element {
+                background-color: #666666;
+              }
+            }
   
             .mat-radio-frame {
               border-radius: 4px;
@@ -32,17 +44,11 @@
         margin-left: 15px;
       }
       &.mat-radio-disabled {
+      ::ng-deep {
+        .mat-radio-label{
           cursor: not-allowed;
-        ::ng-deep {
-          .mat-radio-label{
-            cursor: not-allowed;
-          }
-          .mat-radio-label .mat-radio-outer-circle,
-           .mat-radio-label .mat-radio-inner-circle {
-            background: #666666;
-            border-color: #666666;
-          }
         }
       }
+    }
     }
   }

@@ -1,0 +1,40 @@
+<button
+  [disabled]="disabled"
+  mat-button
+  (menuClosed)="isMenuOpened()"
+  (menuOpened)="isMenuOpened()"
+  [matMenuTriggerFor]="menu"
+  class="menu-buttom-label-wrapper menu-{{ menuOpened }} {{
+    !label ? 'label-only-icon' : ''
+  }}"
+  [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
+>
+<div>
+  <img *ngIf="iconSrc" src="{{ iconSrc }}" />
+  <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
+</div> 
+  <div class="mat-select-arrow-wrapper">
+    <div class="dxc-arrow arrow-{{ arrowClass }}"></div>
+  </div>
+</button>
+<mat-menu
+  #menu="matMenu"
+  disableRipple="disableRipple"
+  class="
+    {{ onlyHasIcons ? 'dxc-dropdown-menu only-icons' : 'dxc-dropdown-menu' }} {{
+    isDark ? 'dxc-dark' : ''
+  }}
+  "
+>
+  <button
+    *ngFor="let option of options; index as i"
+    mat-menu-item
+    [ngClass]="optionsIconPosition === 'after' ? 'icon-after' : 'icon-before'"
+    (click)="selectedOption(option)"
+  >
+    <div>
+      <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
+      <span *ngIf="option.label">{{ option.label }}</span>
+    </div>
+  </button>
+</mat-menu>

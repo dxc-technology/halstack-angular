@@ -1,0 +1,135 @@
+:host {
+  margin: 15px;
+
+  .icon-before {
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+  }
+  .icon-after {
+    img {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+  }
+
+  .menu-buttom-label-wrapper {
+    width: 230px;
+    min-height: 46px;
+    padding-left: 18px;
+    padding-right: 13px;
+    border-radius: 2px;
+    display: inline-flex;
+
+    &.label-only-icon {
+      width: 115px;
+    }
+  }
+  opacity: 1;
+  .menu-buttom-label {
+    font-size: 16px;
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+    letter-spacing: 0.49px;
+    flex-grow: 1;
+    opacity: 1;
+    vertical-align: middle;
+  }
+
+  .dxc-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin: 0 4px;
+  }
+
+  ::ng-deep {
+    .mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+       &>div:first-child{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        align-items: center;
+        display: flex;
+        width: 100%;
+      }
+    }
+    .icon-after span.mat-button-wrapper > div:first-child {
+        display: flex;
+        flex-grow: unset;
+        flex-direction: row-reverse;
+        align-items: center;
+        width: 100%;
+      }
+    .mat-select-arrow-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+::ng-deep .dxc-dropdown-menu {
+  &.only-icons {
+    width: 115px;
+
+    .mat-menu-item,
+    .mat-menu-content {
+      min-width: 111px;
+      width: 111px;
+    }
+  }
+  .icon-before {
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+  }
+  .icon-after {
+    img {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+   
+  }
+  box-shadow: none;
+  .mat-menu-content {
+    min-width: 226px;
+    border-radius: 2px;
+    padding: 0px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .mat-menu-item {
+    &.icon-after {
+      div {
+        display: flex;
+        flex-grow: unset;
+        width: fit-content;
+        flex-direction: row-reverse;
+        align-items: center;
+      }
+    }
+    padding-left: 18px;
+    padding-right: 13px;
+    span {
+      text-overflow: ellipsis;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+  }
+}

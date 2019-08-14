@@ -21,16 +21,16 @@ import { ErrorStateMatcher } from "@angular/material";
 export class DxcTextInputComponent implements OnChanges {
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
-
+  @HostBinding("class.disabled") isDisabled: boolean = false;
   @Input() public prefix: string;
   @Input() public suffix: string;
   @Input() public prefixIconSrc: string;
   @Input() public suffixIconSrc: string;
 
-
   @Input() public theme: string = "light";
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
+  @Input() public multiple: boolean = false;
   @Input() public invalid: boolean = false;
 
   @Input() public label: String;
@@ -52,8 +52,9 @@ export class DxcTextInputComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+    this.isDisabled = this.disabled;
     // this.disabled ? this.formControl.disable() : this.formControl.enable();
-    this.value = this.value || '';
+    this.value = this.value || "";
 
     this.matcher.setInvalid(this.invalid);
   }

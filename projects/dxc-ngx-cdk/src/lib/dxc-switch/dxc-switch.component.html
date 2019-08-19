@@ -1,0 +1,18 @@
+<mat-slide-toggle
+  [checked]="checked"
+  [labelPosition]="labelPosition ? labelPosition : 'before'"
+  [disableRipple]="disableRipple"
+  [disabled]="disabled"
+  [required]="required"
+  [name]="name"
+  [id]="id"
+  (change)="onChange($event)"
+>
+  <span
+    *ngIf="label"
+    [ngClass]="labelPosition === 'after' ? 'label-after' : 'label-before'"
+  >
+    <span *ngIf="required" class="mat-slide-toggle-required">*</span>
+    {{ label }}
+  </span>
+</mat-slide-toggle>

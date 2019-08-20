@@ -76,11 +76,11 @@
     <tr>
         <td>@Output<br>valueChange: EventEmitter</td>
         <td></td>
-        <td>This event will be triggered when the user changes the value of the input. The new value will be passed as a parameter.
+        <td>This event will be triggered when the user changes the value of the input. The new value will be passed as a parameter.</td>
     </tr>
     <tr>
         <td>@Output<br>blur: EventEmitter</td>
         <td></td>
-        <td>This event will be triggered when the focus moves away from the input. The input value will be passed as a parameter.
+        <td>This event will be triggered when the focus moves away from the input. The input value will be passed as a parameter.</td>
     </tr>
 </table>

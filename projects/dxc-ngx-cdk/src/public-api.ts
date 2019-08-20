@@ -10,3 +10,4 @@ export * from './lib/dxc-slider/dxc-slider.module';
 export * from './lib/dxc-select/dxc-select.module';
 export * from './lib/dxc-dropdown/dxc-dropdown.module';
 export * from './lib/dxc-tabs/dxc-tabs.module';
+export * from './lib/dxc-switch/dxc-switch.module';

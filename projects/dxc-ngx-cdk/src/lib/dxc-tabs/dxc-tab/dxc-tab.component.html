@@ -1,0 +1,12 @@
+<mat-tab [disabled]="disabled" class="we">
+  <ng-template mat-tab-label>
+    <div [ngClass]="labelClass">
+      <img *ngIf="iconSrc" src="{{ iconSrc }}" />
+      <div class="dxc-tab-label">
+        <span *ngIf="showDotIndicator" class="show-dot"></span>
+        <span>{{ label }}</span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-content></ng-content>
+</mat-tab>

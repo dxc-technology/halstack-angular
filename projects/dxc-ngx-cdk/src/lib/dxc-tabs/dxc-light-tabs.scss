@@ -1,0 +1,32 @@
+:host.dxc-light {
+  .filled-tabs {
+    ::ng-deep {
+      div.mat-ripple-element {
+        background-color: black;
+        opacity: 1;
+      }
+
+      .mat-tab-label {
+        opacity: 1;
+        background: #d9d9d9 0% 0% no-repeat padding-box;
+        .dxc-tab-label span {
+          color: #666666;
+          opacity: 1;
+        }
+        &:hover:not(.mat-tab-disabled) {
+          background: #666666 0% 0% no-repeat padding-box;
+          opacity: 0.8;
+          .dxc-tab-label span {
+            color: white;
+          }
+        }
+      }
+    }
+    .underlined-tabs {
+      div.mat-ripple-element {
+        background-color: black;
+        opacity: 1;
+      }
+    }
+  }
+}

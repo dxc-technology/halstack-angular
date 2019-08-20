@@ -1,0 +1,69 @@
+:host {
+  ::ng-deep .mat-tab-list .mat-tab-label {
+    width: 180px;
+    height: 64px;
+    max-width: 160px;
+    opacity: 1;
+    padding-right: 20px;
+
+    padding-left: 20px;
+    .mat-tab-label-content {
+      font-size: 16px;
+      display: inline-grid;
+      text-align: -webkit-center;
+      text-transform: uppercase;
+      letter-spacing: 1.43px;
+      z-index: 1;
+      img {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    &.mat-tab-label-active .show-dot {
+      width: 6px;
+      height: 6px;
+      background: #ffed00 0% 0% no-repeat padding-box;
+      display: inline-flex;
+      vertical-align: unset;
+      margin-right: 4px;
+      border-radius: 100%;
+    }
+    .icon-text {
+      height: 40px;
+    }
+    .only-text {
+    }
+    .only-icon {
+      .dxc-tab-label {
+        margin-top: 4px;
+        display: grid;
+      }
+    }
+
+    &.mat-tab-disabled {
+      opacity: 0.5 !important;
+    }
+  }
+
+  .filled-tabs {
+    ::ng-deep {
+
+      .mat-tab-label {
+        .dxc-tab-label span {
+          letter-spacing: 1.43px;
+          opacity: 1;
+        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  &.label-icons {
+    ::ng-deep  {
+      .mat-tab-list .mat-tab-label {
+        height: 76px;
+      }
+    }
+  }
+}

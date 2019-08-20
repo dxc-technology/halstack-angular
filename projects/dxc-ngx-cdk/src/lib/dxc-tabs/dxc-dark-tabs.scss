@@ -1,0 +1,19 @@
+:host.dxc-dark {
+  ::ng-deep {
+    div.mat-ripple-element {
+      background-color: #323232;
+      opacity: 1;
+    }
+
+    mat-tab-label {
+      background: black;
+    }
+    .mat-ink-bar {
+      background-color: #ffed00;
+    }
+
+    .mat-tab-label span {
+      color: white;
+    }
+  }
+}

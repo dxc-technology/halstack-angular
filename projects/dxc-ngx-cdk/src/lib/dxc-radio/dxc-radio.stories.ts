@@ -164,7 +164,7 @@ storiesOf("Form Components|Radio", module)
       </dxc-radio>
    </div>`,
       props: {
-        text: text("text", "Radio example"),
+        label: text("label", "Radio example"),
         checkedChange: action("checked fired!"),
         checked: boolean("checked", false),
         labelPosition: select("labelPosition", { before: "before", after: "after" }, "before"),

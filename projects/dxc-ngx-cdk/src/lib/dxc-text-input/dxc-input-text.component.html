@@ -2,7 +2,7 @@
   <span matPrefix *ngIf="prefix && !prefixIconSrc"> {{ prefix }}</span>
   <img matPrefix *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
   <mat-label *ngIf="label">{{ label }}</mat-label>
-  <input *ngIf="!multiple"
+  <input *ngIf="!multiline"
     matInput
     [value]="value"
     [required]="required"
@@ -13,7 +13,7 @@
     (blur)="onBlur($event)"
     (input)="valueChanged($event)"
   />
-  <textarea *ngIf="multiple"
+  <textarea *ngIf="multiline"
     matInput
     [value]="value"
     [required]="required"

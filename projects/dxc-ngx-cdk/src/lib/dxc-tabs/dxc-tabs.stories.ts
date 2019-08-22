@@ -1,17 +1,18 @@
 import { storiesOf, moduleMetadata } from "@storybook/angular";
-import { action } from "@storybook/addon-actions";
 import tabsMD from "./README.md";
-import { boolean, select, text } from "@storybook/addon-knobs";
+import { boolean, select, text, number } from "@storybook/addon-knobs";
 import "hammerjs";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { DxcTabsModule } from "./dxc-tabs.module";
+import { action } from '@storybook/addon-actions';
+import { MatInputModule, MatFormFieldModule } from '@angular/material';
 
-const sliderValue = 10;
+const activeTab = 0;
 storiesOf("Form Components|Tabs", module)
   .addDecorator(
     moduleMetadata({
-      imports: [DxcTabsModule, BrowserModule, BrowserAnimationsModule]
+      imports: [DxcTabsModule, BrowserModule, BrowserAnimationsModule, MatInputModule, MatFormFieldModule]
     })
   )
   .add(
@@ -31,6 +32,18 @@ storiesOf("Form Components|Tabs", module)
       margin-right: 200px;
       padding: 20px;
       margin-left: 45px;">
+      <h3> Tab with variable binding</h3>
+     <mat-form-field>
+     <mat-label>Selected Index</mat-label>
+      <input matInput   [(ngModel)] ="activeTab" [value]=0>
+      <br>
+      </mat-form-field>
+      <dxc-tabs [showDotIndicator]= "true" [activeTabIndex] ="activeTab" >
+      <dxc-tab [label]="'Tab 1'">Content A</dxc-tab>
+      <dxc-tab [label]="'Tab with icon'" [iconSrc]="iconSrc">Content B</dxc-tab>
+      <dxc-tab [label]="'Tab 3 Disabled'" [disabled]="true">Content C</dxc-tab>
+    </dxc-tabs>
+
       <dxc-tabs [showDotIndicator]= "true">
         <dxc-tab [label]="'Tab 1'">Content A</dxc-tab>
         <dxc-tab [label]="'Tab with icon'" [iconSrc]="iconSrc">Content B</dxc-tab>
@@ -38,9 +51,9 @@ storiesOf("Form Components|Tabs", module)
       </dxc-tabs>
         
       <dxc-tabs [mode]="'underlined'">
-      <dxc-tab [label]="'Tab 1'"><p style="color: white;"> Content A</p></dxc-tab>
-      <dxc-tab [label]="'Tab 2'"><div style="color: white;">Content B </div></dxc-tab>
-      <dxc-tab [label]="'Tab 3 Disabled'" [disabled]="true"><div style="color: white;">Content C</div></dxc-tab>
+      <dxc-tab [label]="'Tab 1'"> Content A</dxc-tab>
+      <dxc-tab [label]="'Tab 2'">Content B </dxc-tab>
+      <dxc-tab [label]="'Tab 3 Disabled'" [disabled]="true">Content C</dxc-tab>
     </dxc-tabs>
         
     <h3 style="display: block;
@@ -53,9 +66,9 @@ storiesOf("Form Components|Tabs", module)
     >Dark</h3>
     <div style="background:black;"> 
     <dxc-tabs [theme]="'dark'">
-    <dxc-tab [label]="'Tab 1'" >Content A</dxc-tab>
-    <dxc-tab [label]="'Tab with icon'" [iconSrc]="iconSrcWhite">Content B</dxc-tab>
-    <dxc-tab [label]="'Tab 3 Disabled'" [disabled]="true">Content C</dxc-tab>
+    <dxc-tab [label]="'Tab 1'" ><div style="color: white;">Content A</div></dxc-tab>
+    <dxc-tab [label]="'Tab with icon'" [iconSrc]="iconSrcWhite"><div style="color: white;">Content A</div></dxc-tab>
+    <dxc-tab [label]="'Tab 3 Disabled'" [disabled]="true"><div style="color: white;">Content A</div></dxc-tab>
   </dxc-tabs>
     
 
@@ -64,7 +77,10 @@ storiesOf("Form Components|Tabs", module)
       `,
       props: {
         iconSrc: text("iconSrc", "./love.svg"),
-        iconSrcWhite: text("iconSrcWhite", "./hearth-2.svg")
+        iconSrcWhite: text("iconSrcWhite", "./hearth-2.svg"),
+        activeTab: number("activeTab", 0)
+
+
 
       }
     }),
@@ -95,7 +111,8 @@ storiesOf("Form Components|Tabs", module)
                      </div>
                         `,
       props: {
-        disabled: boolean("Dsiable Tab 2", false),
+        activeTabIndexChange: action("Tab selected!"),
+        disabled: boolean("disabled", true),
         label: text("label", "Fav"),
         iconSrc: text("iconSrc", "./love.svg"),
         showDotIndicator: boolean("showDotIndicator", true),

@@ -1,46 +1,54 @@
 import {
-    Component,
-    Input,
-    OnChanges,
-    ViewChild,
-    HostBinding
-  } from "@angular/core";
-import { MatTab } from '@angular/material';
-  
-  @Component({
-    selector: "dxc-tab",
-    templateUrl: "./dxc-tab.component.html"
-    
-  })
-  export class DxcTabComponent implements OnChanges {
+  Component,
+  Input,
+  OnChanges,
+  ViewChild,
+  HostBinding,
+  SimpleChange,
+  ChangeDetectorRef
+} from "@angular/core";
+import { MatTab } from "@angular/material";
 
-    //Default values
-    @Input() label: string;
-    @Input() theme: string = "light";
-    @Input() iconSrc: string;
-    @Input() disabled: boolean;
+@Component({
+  selector: "dxc-tab",
+  templateUrl: "./dxc-tab.component.html"
+})
+export class DxcTabComponent implements OnChanges {
+  //Default values
+  @Input() label: string;
+  @Input() theme: string = "light";
+  @Input() iconSrc: string;
+  @Input() disabled: boolean = false;
 
-   showDotIndicator: boolean =  false
-   labelClass: string
+  showDotIndicator: boolean = false;
+  labelClass: string;
+  @ViewChild(MatTab, { static: false })
+  public matTab: MatTab;
 
-   @HostBinding("class.piurla") isDark: boolean = true;
-    @ViewChild(MatTab, {static:true})
-    public matTab: MatTab;
+  constructor(  private cdRef: ChangeDetectorRef) {
 
-    public ngOnChanges(): void {
-     
-      this.getLabelClass();
-    }
-  
-    getLabelClass() {
-        if(this.iconSrc && this.label) {
-          this.labelClass ="icon-text"
-        } else if (!this.iconSrc) {
-          this.labelClass='only-text'
-        } else {
-          this.labelClass='only-icon'
-        }
+  }
+
+  public ngOnChanges(): void {
+    this.getLabelClass();
+    if (this.matTab) {
+      this.matTab.disabled = this.disabled;
+      this.cdRef.detectChanges();
 
     }
   }
-  
+
+  public ngAfterViewInit() {
+    this.matTab.disabled = this.disabled;
+  }
+
+  getLabelClass() {
+    if (this.iconSrc && this.label) {
+      this.labelClass = "icon-text";
+    } else if (!this.iconSrc) {
+      this.labelClass = "only-text";
+    } else {
+      this.labelClass = "only-icon";
+    }
+  }
+}

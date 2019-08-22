@@ -14,9 +14,9 @@ import {
   ComponentFactoryResolver,
   ViewContainerRef
 } from "@angular/core";
-import { DxcTabComponent } from './dxc-tab/dxc-tab.component';
-import { generate } from 'rxjs';
-import { MatIcon, MatTab, MatTabGroup } from '@angular/material';
+import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
+import { generate } from "rxjs";
+import { MatIcon, MatTab, MatTabGroup } from "@angular/material";
 
 @Component({
   selector: "dxc-tabs",
@@ -37,16 +37,14 @@ export class DxcTabsComponent implements OnChanges {
   @Input() theme: string = "light";
   @Input() disableRipple: boolean = false;
   @Input() showDotIndicator: boolean = false;
-  @Input("activeTabIndex") selectedIndex: number = 0;
 
+  @Input("activeTabIndex") selectedIndex: number = 0;
   @Output() activeTabIndexChange: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild(MatTabGroup,{static:true})
+  @ViewChild(MatTabGroup, { static: true })
   public tabGroup: MatTabGroup;
 
   @ContentChildren(DxcTabComponent)
   protected tabs: QueryList<DxcTabComponent>;
- 
-
 
   public ngOnChanges(): void {
     if (this.theme === "dark") {
@@ -56,9 +54,12 @@ export class DxcTabsComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+    if (this.tabs && this.tabs.length > 0) {
+      this.generateTabs();
+    }
   }
   public activeTabIndexChanged($event): void {
-    this.activeTabIndexChange.emit(event);
+    this.activeTabIndexChange.emit($event);
   }
 
   public ngAfterViewInit() {
@@ -66,18 +67,16 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   private generateTabs() {
-    const matTabsFromQueryList = this.tabs.map((tab) => {
-      if(tab.label  &&  tab.iconSrc) {
+    const matTabsFromQueryList = this.tabs.map(tab => {
+      if (tab.label && tab.iconSrc) {
         this.allTabWithLabelAndIcon = true;
       }
       tab.showDotIndicator = this.showDotIndicator;
-      return tab.matTab
-    } );
+      return tab.matTab;
+    });
     const list = new QueryList<MatTab>();
     list.reset([matTabsFromQueryList]);
     this.tabGroup._tabs = list;
     this.tabGroup.ngAfterContentInit();
   }
-
- 
 }

@@ -30,7 +30,7 @@ export class DxcTextInputComponent implements OnChanges {
   @Input() public theme: string = "light";
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
-  @Input() public multiple: boolean = false;
+  @Input() public multiline: boolean = false;
   @Input() public invalid: boolean = false;
 
   @Input() public label: String;

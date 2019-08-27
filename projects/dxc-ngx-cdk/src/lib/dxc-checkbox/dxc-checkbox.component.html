@@ -11,6 +11,6 @@
   >
   <span *ngIf="text" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
     <span *ngIf="required" class="mat-checkbox-required" >*</span>
-    {{ text }}
+    <span>{{ text }}</span>
   </span>
 </mat-checkbox>

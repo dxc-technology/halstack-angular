@@ -15,6 +15,7 @@
 
                 .mat-checkbox-frame {
                     border-radius: 4px;
+                    border-color: #666666;
                 }
 
                 .mat-checkbox-background {
@@ -39,7 +40,7 @@
         .mat-checkbox-label {
             .mat-checkbox-required {
                 color: #D0011B;
-                margin-right: 2px;
+                margin-right: 1px;
             }
         }
 
@@ -52,7 +53,8 @@
             }
 
             .mat-checkbox-label {
-                color: #D9D9D9;
+                color: #666666;
+                opacity: 0.5;
             }
 
         }

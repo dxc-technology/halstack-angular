@@ -1,4 +1,4 @@
-# DXC Date Component
+# DXC Tab Component
 
 ## Tab Group Props
 

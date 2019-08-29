@@ -61,7 +61,7 @@ storiesOf("Form Components|Checkbox", module)
         <dxc-checkbox
         (checkedChange)="showAlert()"
         [required] = "true"
-        text="Required checbkox"
+        text="Required checkbox"
         ></dxc-checkbox>
       </div>
 
@@ -73,7 +73,7 @@ storiesOf("Form Components|Checkbox", module)
       margin-inline-end: 0px;
       font-weight: bold;"
       >Dark</h3>
-      <div style="background:black" >            
+      <div style="background:black; height:50px; padding-top:10px" >            
           <dxc-checkbox
           [checked]="true"
           [labelPosition]="'before'"

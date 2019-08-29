@@ -1,0 +1,40 @@
+:host {
+  mat-slide-toggle {
+    ::ng-deep {
+      div.mat-slide-toggle-thumb {
+        height: 26px;
+        width: 26px;
+        position: absolute;
+        top: -4px;
+        right: -3px;
+      }
+      label.mat-slide-toggle-label {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+      div.mat-slide-toggle-bar {
+        height: 12px;
+        margin: 0px 15px;
+      }
+      span:not(.mat-slide-toggle-content) {
+        margin: 0px 0px;
+      }
+      span.label-after {
+        margin-right: 15px;
+      }
+      span.label-before {
+        margin-left: 15px;
+      }
+    }
+  }
+  .mat-slide-toggle.mat-disabled {
+    ::ng-deep {
+      .mat-slide-toggle-label {
+        cursor: not-allowed;
+      }
+      .mat-slide-toggle-thumb {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

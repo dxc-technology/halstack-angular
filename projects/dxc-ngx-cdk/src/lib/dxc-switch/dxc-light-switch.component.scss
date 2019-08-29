@@ -1,0 +1,39 @@
+:host.light {
+  mat-slide-toggle {
+    ::ng-deep {
+      .mat-slide-toggle-thumb {
+        background-color: #ffffff;
+      }
+      .mat-slide-toggle-bar {
+        background-color: #666666;
+      }
+      span.mat-slide-toggle-required {
+        color: #d0011b;
+      }
+    }
+  }
+  mat-slide-toggle.mat-checked {
+    ::ng-deep {
+      .mat-slide-toggle-thumb {
+        background-color: #000000;
+      }
+      .mat-slide-toggle-bar {
+        background-color: #666666;
+      }
+    }
+  }
+  mat-slide-toggle.mat-checked.mat-disabled {
+    ::ng-deep {
+      .mat-slide-toggle-thumb {
+        background-color: #666666;
+      }
+    }
+  }
+  mat-slide-toggle.mat-disabled {
+    ::ng-deep {
+      .mat-slide-toggle-bar {
+        background-color: #d9d9d9;
+      }
+    }
+  }
+}

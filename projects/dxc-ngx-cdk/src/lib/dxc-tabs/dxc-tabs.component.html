@@ -1,0 +1,8 @@
+<mat-tab-group
+  #tabGroup
+  [ngClass]="mode === 'filled' ? 'filled-tabs' : 'underlined-tabs'"
+  (selectedIndexChange)="activeTabIndexChanged($event)"
+  [disableRipple] ="disableRipple"
+  [(selectedIndex)] = "selectedIndex">
+  <ng-content #outlet></ng-content>
+</mat-tab-group>

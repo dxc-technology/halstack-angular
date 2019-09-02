@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <mat-toolbar-row [ngClass] ="underline ? 'underlined': ''">
+    <span class="dxc-logo" *ngIf=!logoSrc></span>
+    <img *ngIf="logoSrc" src ="{{logoSrc}}">
+    <span class="spacer"></span>
+    <ng-content></ng-content>
+  </mat-toolbar-row>
+
+</mat-toolbar>

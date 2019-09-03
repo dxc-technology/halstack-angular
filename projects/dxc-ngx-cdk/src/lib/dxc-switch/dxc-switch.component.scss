@@ -1,20 +1,22 @@
 :host {
   mat-slide-toggle {
     ::ng-deep {
+      height: auto;
+      display: inline-flex;
       div.mat-slide-toggle-thumb {
-        height: 26px;
-        width: 26px;
+        height: 24px;
+        width: 24px;
         position: absolute;
-        top: -4px;
-        right: -3px;
+        top: -3px;
+        right: -2px;
       }
       label.mat-slide-toggle-label {
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
       div.mat-slide-toggle-bar {
         height: 12px;
-        margin: 0px 15px;
+        margin: 0px 10px;
       }
       span:not(.mat-slide-toggle-content) {
         margin: 0px 0px;

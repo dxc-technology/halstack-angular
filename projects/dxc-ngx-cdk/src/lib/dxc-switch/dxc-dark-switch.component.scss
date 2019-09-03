@@ -15,6 +15,16 @@
         color: #ffffff;
         opacity: 1;
       }
+      .mat-ripple-element.mat-slide-toggle-persistent-ripple {
+        background-color: #ffed00;
+      }
+      .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple) {
+        background-color: #ffed00;
+        opacity: 0.25;
+      }
+      .mat-slide-toggle-ripple {
+        top: calc(50% - 21px);
+      }
     }
   }
   mat-slide-toggle.mat-checked:not(.mat-disabled) {
@@ -25,6 +35,13 @@
       .mat-slide-toggle-bar {
         background-color: #666666;
         opacity: 1;
+      }
+      .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple) {
+        background-color: #FFFFFF;
+        opacity: 0.25;
+      }
+      .mat-ripple-element.mat-slide-toggle-persistent-ripple {
+        background-color: #FFFFFF;
       }
     }
   }

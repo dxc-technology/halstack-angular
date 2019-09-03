@@ -10,6 +10,16 @@
       span.mat-slide-toggle-required {
         color: #d0011b;
       }
+      .mat-ripple-element.mat-slide-toggle-persistent-ripple {
+        background-color: #666666;
+      }
+      .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple) {
+        background-color: #666666;
+        opacity: 0.25;
+      }
+      .mat-slide-toggle-ripple {
+        top: calc(50% - 21px);
+      }
     }
   }
   mat-slide-toggle.mat-checked {

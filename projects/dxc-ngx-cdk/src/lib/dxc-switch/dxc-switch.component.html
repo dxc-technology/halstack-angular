@@ -13,6 +13,6 @@
     [ngClass]="labelPosition === 'after' ? 'label-after' : 'label-before'"
   >
     <span *ngIf="required" class="mat-slide-toggle-required">*</span>
-    {{ label }}
+    <span>{{ label }}</span>
   </span>
 </mat-slide-toggle>

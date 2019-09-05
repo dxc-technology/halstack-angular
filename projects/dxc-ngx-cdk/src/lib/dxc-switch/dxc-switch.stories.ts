@@ -87,7 +87,7 @@ storiesOf("Form Components|Switch", module)
       font-weight: bold;"
       >Dark</h3>
 
-      <div style="background:black; height: 50px">
+      <div style="background:black;">
 
         <dxc-switch
         [checked]="true"

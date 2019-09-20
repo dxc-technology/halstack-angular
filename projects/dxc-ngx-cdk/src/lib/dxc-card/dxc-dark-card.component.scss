@@ -1,0 +1,25 @@
+:host.dark {
+    mat-card{
+        ::ng-deep {
+            background-color: #212121;
+            color: white;
+            box-shadow: 0px 3px 6px #D9D9D929;
+        }
+    }
+    mat-card.alternative{
+        ::ng-deep {
+            background-color: black;
+            border: solid white 2px;
+            color: white;
+            box-shadow: 0px 3px 6px #D9D9D929;
+            max-width: 396px;
+            max-height: 370px;
+        }
+    }
+    mat-card:hover {
+        box-shadow: 0px 3px 6px #FFFFFF29;
+    }
+    mat-card.alternative:hover {
+        border-color: #FFED00;
+    }
+}

@@ -1,0 +1,10 @@
+<mat-card
+(click) = "onClickHandler($event)" [ngClass] = "[mode === 'alternative' ? 'alternative': 'default', imagePosition === 'before' ? 'before' : imagePosition === 'after' ? 'after' : imagePosition === 'above' ? 'above': imagePosition === 'below' ? 'below' : 'before']"
+>
+  <div class="imageContainer">
+    <img *ngIf="imageSrc" src ="{{imageSrc}}" />
+  </div>
+  <div #content>
+    <ng-content></ng-content>
+  </div>
+</mat-card>

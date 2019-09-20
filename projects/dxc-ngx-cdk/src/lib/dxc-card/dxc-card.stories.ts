@@ -84,7 +84,7 @@ storiesOf("Form Components|Card", module)
     "Knobs example",
     () => ({
       template: `
-      <div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF', 'display': 'inline-flex', 'align-items': 'center'}" >
+      <div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF', 'display': 'inline-flex', 'align-items': 'center', 'flex-wrap': 'wrap'}" >
         <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/pwa-lighthouse.png'" (onClick)="onClick($event)" [mode]="mode">
           <div>
             <h1>Knobs example</h1>

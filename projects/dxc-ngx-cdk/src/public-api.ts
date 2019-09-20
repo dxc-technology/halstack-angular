@@ -12,3 +12,4 @@ export * from './lib/dxc-dropdown/dxc-dropdown.module';
 export * from './lib/dxc-tabs/dxc-tabs.module';
 export * from './lib/dxc-switch/dxc-switch.module';
 export * from './lib/dxc-header/dxc-header.module';
+export * from './lib/dxc-card/dxc-card.module';

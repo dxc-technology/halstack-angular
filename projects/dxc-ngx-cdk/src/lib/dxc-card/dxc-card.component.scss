@@ -1,0 +1,69 @@
+:host {
+  display: inline-flex;
+  mat-card {
+    ::ng-deep {
+      font-size: 14px;
+      cursor: pointer;
+      margin: 20px;
+      display: inline-flex;
+      max-width: 400px;
+      max-height: 374px;
+      padding: 0px;
+      .childComponents {
+        padding: 20px;
+        overflow: hidden;
+      }
+      img {
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    .imageContainer {
+      display: inline-flex;
+    }
+  }
+  mat-card.before {
+    flex-direction: row;
+    align-items: stretch;
+    .imageContainer {
+      max-width: 140px;
+    }
+    .childComponents {
+      width: calc(100% - 140px - 40px);
+    }
+    
+  }
+  mat-card.after {
+    flex-direction: row-reverse;
+    align-items: stretch;
+    .imageContainer {
+      max-width: 140px;
+    }
+    .childComponents {
+      width: calc(100% - 140px - 40px);
+    }
+    
+  }
+  mat-card.above {
+    flex-direction: column;
+    align-items: center;
+    .imageContainer {
+      max-height: 120px;
+    }
+    .childComponents {
+      width:calc(100% - 40px);
+      height: calc(100% - 120px - 40px);
+    }
+  }
+  mat-card.below {
+    flex-direction: column-reverse;
+    align-items: center;
+    .imageContainer {
+      max-height: 120px;
+    }
+    .childComponents {
+      width: calc(100% - 40px);
+      height: calc(100% - 120px - 40px);
+    }
+  }
+}

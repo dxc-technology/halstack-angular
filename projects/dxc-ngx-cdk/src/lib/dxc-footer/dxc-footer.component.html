@@ -1,0 +1,37 @@
+<mat-toolbar>
+  <mat-toolbar-row class="footerHeader">
+    <img class="dxc-logo" *ngIf="!logoSrc" src="./dxc_logo_white.png" />
+    <img *ngIf="logoSrc" src="{{ logoSrc }}" />
+    <div class="socialIcons">
+      <span *ngFor="let link of socialLinks; index as i">
+        <a
+          class="socialIcon"
+          [class.spacing]="i != 0"
+          ngClass
+          *ngIf="link.logoSrc"
+          href="{{ link.href }}"
+        >
+          <img class="socialIconImage" src="{{ link.logoSrc }}" />
+        </a>
+      </span>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="childComponents">
+    <ng-content></ng-content>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="footerFooter">
+    <div class="bottomLinks">
+      <span *ngFor="let bottomLink of bottomLinks; index as i">
+        <span *ngIf="i != 0" class="point">·</span>
+        <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}">
+          <span>
+            {{ bottomLink.text }}
+          </span>
+        </a>
+      </span>
+    </div>
+    <div class="copyright">
+      {{ copyright }}
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

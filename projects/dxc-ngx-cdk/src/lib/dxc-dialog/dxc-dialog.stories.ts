@@ -18,12 +18,12 @@ storiesOf("Form Components|Dialog", module)
       template: `
       <div>
         <dxc-button label="click me" (onClick)="onClick($event)"></dxc-button>
-        <dxc-dialog [overlay]="false" [isVisible]="visible1" (onClose)="onClick($event)">
+        <dxc-dialog [overlay]="false" [isCloseVisible]="true" [isVisible]="visible1" (onClose)="onClick($event)">
           Lorem ipsum dolor sit amet consectetur adipiscing elit curae, sodales ac sapien consequat augue vitae id suscipit rhoncus, nunc auctor nisl faucibus mattis dapibus sociis. Senectus sociis viverra laoreet ligula habitant nullam potenti lectus tortor sodales, vulputate semper erat mauris fringilla natoque diam praesent scelerisque eget, mattis facilisi dapibus nibh interdum donec condimentum venenatis sollicitudin. Sociosqu taciti class diam placerat aliquam imperdiet tempus, metus natoque euismod convallis dictum ac dapibus suscipit, a molestie pulvinar gravida viverra faucibus. Dis ad quis tincidunt facilisi neque nunc, ligula odio rhoncus non nibh elementum, massa lacinia mollis inceptos molestie.
         </dxc-dialog>
 
         <dxc-button label="click me" (onClick)="onClick2($event)"></dxc-button>
-        <dxc-dialog [overlay]="true" [isVisible]="visible2" (onClose)="onClick2($event)">
+        <dxc-dialog [overlay]="true" [isCloseVisible]="true" [isVisible]="visible2" (onClose)="onClick2($event)">
           Lorem ipsum dolor sit amet consectetur adipiscing elit curae, sodales ac sapien consequat augue vitae id suscipit rhoncus, nunc auctor nisl faucibus mattis dapibus sociis. Senectus sociis viverra laoreet ligula habitant nullam potenti lectus tortor sodales, vulputate semper erat mauris fringilla natoque diam praesent scelerisque eget, mattis facilisi dapibus nibh interdum donec condimentum venenatis sollicitudin. Sociosqu taciti class diam placerat aliquam imperdiet tempus, metus natoque euismod convallis dictum ac dapibus suscipit, a molestie pulvinar gravida viverra faucibus. Dis ad quis tincidunt facilisi neque nunc, ligula odio rhoncus non nibh elementum, massa lacinia mollis inceptos molestie.
         </dxc-dialog>
       </div>

@@ -1,5 +1,5 @@
 <div class="dialog" *ngIf="isVisible">
-  <div class="backOverlay" [ngClass]="{'backVisible': overlay==true}"></div>
+  <div class="backOverlay" (click) = "onCloseHandler($event)" [ngClass]="{'backVisible': overlay==true}"></div>
   <div class="container">
     <div class="dialogContainer">
       <span class="closeIcon" *ngIf="isCloseVisible" (click) = "onCloseHandler($event)">

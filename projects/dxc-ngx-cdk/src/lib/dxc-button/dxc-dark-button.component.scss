@@ -29,6 +29,7 @@
             background: transparent;
             border-color: white;
             border-width: 2px;
+            border-radius: 2px;
             &:hover:not([disabled]) {
                 border-color:#FFED00;
             }
@@ -37,7 +38,8 @@
                     color:white;
                 }
                 .mat-ripple-element {
-                    background-color: #212121;
+                    background-color: #D9D9D9;
+                    opacity:0.3;
                 }
             }
         } 

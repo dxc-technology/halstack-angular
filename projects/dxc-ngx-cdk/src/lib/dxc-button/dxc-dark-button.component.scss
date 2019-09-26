@@ -24,6 +24,9 @@
                 }
             }
         }
+        &.mat-raised-button {
+            box-shadow: 0px 2px 3px #FFFFFF29 !important;
+        }
         &.mat-stroked-button {
             color:white;
             background: transparent;

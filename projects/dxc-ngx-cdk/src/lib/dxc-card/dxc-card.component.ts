@@ -41,19 +41,11 @@ export class DxcCardComponent implements OnInit {
   ngAfterContentChecked() {
     if(this.content && this.content.nativeElement && this.content.nativeElement.children.length > 0){
       this.content.nativeElement.classList.add('childComponents');
+      this.content.nativeElement.parentElement.classList.add('hasChildren');
     }
   }
 
   public onClickHandler($event: any): void {
     this.onClick.emit($event)
-  }
-
-  public hasChildren(): boolean {
-    var div = document.getElementById('childComponents');
-    console.log(div);
-    if(div && div.childNodes && div.childNodes.length === 0) {
-      return false;
-    }
-    return true;
   }
 }

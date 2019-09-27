@@ -23,7 +23,7 @@ storiesOf("Form Components|Card", module)
       font-weight: bold;"
       >Light</h3>
       <div style="display: inline-flex; align-items: center;">
-        <dxc-card (onClick)="onClick($event)" [imageSrc] = "'/pwa-lighthouse.png'">
+        <dxc-card (onClick)="onClick($event)" [imageSrc] = "'/kevin-mueller.jpg'">
           <span>Card Example</span>
         </dxc-card>
 
@@ -31,7 +31,7 @@ storiesOf("Form Components|Card", module)
           <span>Card Example</span>
         </dxc-card>
 
-        <dxc-card (onClick)="onClick($event)" [imagePosition] = "'above'" [imageSrc] = "'/pwa-lighthouse.png'"  [mode]="'alternative'">
+        <dxc-card (onClick)="onClick($event)" [imagePosition] = "'above'" [imageSrc] = "'/kevin-mueller.jpg'"  [mode]="'alternative'">
           <span>Card Example</span>
         </dxc-card>
 
@@ -48,7 +48,7 @@ storiesOf("Form Components|Card", module)
       font-weight: bold;"
       >Dark</h3>
       <div style="background:black; padding-top:10px; display: inline-flex; align-items: center;" >            
-        <dxc-card (onClick)="onClick($event)" [theme]="'dark'" [imageSrc] = "'/pwa-lighthouse.png'">
+        <dxc-card (onClick)="onClick($event)" [theme]="'dark'" [imageSrc] = "'/kevin-mueller.jpg'">
           <span>Card Example</span>
         </dxc-card>
 
@@ -56,7 +56,7 @@ storiesOf("Form Components|Card", module)
           <span>Card Example</span>
         </dxc-card>
 
-        <dxc-card (onClick)="onClick($event)" [theme]="'dark'" [imagePosition] = "'above'" [imageSrc] = "'/pwa-lighthouse.png'"  [mode]="'alternative'">
+        <dxc-card (onClick)="onClick($event)" [theme]="'dark'" [imagePosition] = "'above'" [imageSrc] = "'/kevin-mueller.jpg'"  [mode]="'alternative'">
           <span>Card Example</span>
         </dxc-card>
 
@@ -84,8 +84,8 @@ storiesOf("Form Components|Card", module)
     "Knobs example",
     () => ({
       template: `
-      <div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF', 'display': 'inline-flex', 'align-items': 'center', 'flex-wrap': 'wrap'}" >
-        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/pwa-lighthouse.png'" (onClick)="onClick($event)" [mode]="mode">
+      <div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF', 'margin': '10px', 'display': 'flex', 'align-items': 'center', 'flex-wrap': 'wrap'}" >
+        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" (onClick)="onClick($event)" [mode]="mode">
           <div>
             <h1>Knobs example</h1>
             <p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -99,12 +99,16 @@ storiesOf("Form Components|Card", module)
           </div>
         </dxc-card>
       
-        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/pwa-lighthouse.png'" (onClick)="onClick($event)" [mode]="mode">
+        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/kevin-mueller.jpg'" (onClick)="onClick($event)" [mode]="mode">
           <div><span>Knobs example</span></div>
         </dxc-card>
       
-        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/pwa-lighthouse.png'" (onClick)="onClick($event)" [mode]="mode">
+        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/dylan-ferreira.jpg'" (onClick)="onClick($event)" [mode]="mode">
         </dxc-card>
+
+        <dxc-card [theme]="theme" [imagePosition] = "imagePosition" [imageSrc] = "'/kevin-mueller.jpg'" (onClick)="onClick($event)" [mode]="mode">
+        </dxc-card>
+        
       </div>`,
       props: {
         mode: select(

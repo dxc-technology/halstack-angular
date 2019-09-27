@@ -14,7 +14,7 @@
         overflow: hidden;
       }
       img {
-        object-fit: contain;
+        object-fit: cover;
         width: 100%;
       }
     }
@@ -22,48 +22,50 @@
       display: inline-flex;
     }
   }
-  mat-card.before {
-    flex-direction: row;
-    align-items: stretch;
-    .imageContainer {
-      max-width: 140px;
-    }
-    .childComponents {
-      width: calc(100% - 140px - 40px);
-    }
-    
-  }
+
   mat-card.after {
     flex-direction: row-reverse;
     align-items: stretch;
-    .imageContainer {
-      max-width: 140px;
-    }
-    .childComponents {
-      width: calc(100% - 140px - 40px);
-    }
-    
   }
+
+  mat-card.before {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
   mat-card.above {
     flex-direction: column;
     align-items: center;
-    .imageContainer {
-      max-height: 120px;
-    }
-    .childComponents {
-      width:calc(100% - 40px);
-      height: calc(100% - 120px - 40px);
-    }
   }
+
   mat-card.below {
     flex-direction: column-reverse;
     align-items: center;
-    .imageContainer {
-      max-height: 120px;
+  }
+
+  mat-card.after.hasChildren, mat-card.before.hasChildren {
+    .imageContainer + .childComponents {
+      width: calc(100% - 140px - 40px);
     }
-    .childComponents {
-      width: calc(100% - 40px);
-      height: calc(100% - 120px - 40px);
+    .imageContainer {
+      max-width: 140px;
+      img {
+        object-fit: contain;
+      }
     }
   }
+
+  mat-card.above.hasChildren, mat-card.below.hasChildren {
+    .imageContainer + .childComponents {
+      width:calc(100% - 40px);
+      height: calc(100% - 120px - 40px);
+    }
+    .imageContainer {
+      max-height: 120px;
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+  
 }

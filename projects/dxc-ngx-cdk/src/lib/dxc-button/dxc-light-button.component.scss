@@ -20,8 +20,8 @@
     }
     ::ng-deep {
       .mat-ripple-element {
-        background-color: #666666;
-        opacity: 1;
+        background-color: #FFFFFF;
+        opacity: 0.3;
       }
     }
   }
@@ -67,7 +67,7 @@
   button.mat-stroked-button {
     ::ng-deep {
       .mat-ripple-element {
-        background-color: #d9d9d9;
+        background-color: #666666;
       }
     }
     &:not([disabled]) {

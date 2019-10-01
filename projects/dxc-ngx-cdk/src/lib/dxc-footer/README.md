@@ -1,5 +1,36 @@
 # DXC Footer Component
 
+## Overview
+
+The DXC Footer Component is a collapsible panel.
+
+## Usage
+
+```html
+<dxc-footer
+  [socialLinks]="social"
+  [bottomLinks]="bottom"
+  [copyright]="'© DXC Technology 2019. All rights reserved.'"
+>
+</dxc-footer>
+```
+
+Include the **DxcFooterModule** into **app.module.ts** to use the footer component:
+
+```ts
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcFooterModule } from "@diaas/dxc-ngx-cdk";
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [DxcFooterModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
 ## Props
 
 <table>

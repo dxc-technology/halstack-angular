@@ -12,7 +12,7 @@ The DXC Accordion Component is a collapsible panel.
   icon="person"
   iconPosition="before"
   assistiveText="Helper text"
-  (click)="openAccordion()"  
+  (click)="accordionOpened()"  
 >
 </dxc-accordion>
 ```
@@ -26,7 +26,7 @@ import { DxcAccordionModule } from "@diaas/dxc-ngx-cdk";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DxcButtonModule],
+  imports: [DxcAccordionModule],
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -79,9 +79,4 @@ The API properties are the following:
         <td>This event will be triggered when the user clicks panel. The state of the panel(opened/closed) should be passed as a parameter.</td>
     </tr>
 </table>
-
-## Examples
-
-```html
-
 ```

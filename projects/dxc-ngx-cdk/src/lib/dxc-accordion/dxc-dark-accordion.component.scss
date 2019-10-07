@@ -1,0 +1,132 @@
+:host.dark {
+  mat-accordion {
+    mat-expansion-panel:not(.disabled) {
+      ::ng-deep {
+        mat-expansion-panel-header {
+          &:hover {
+            background-color: #d9d9d9;
+          }
+          padding: 8px 30px;
+          svg.up {
+            display: none;
+          }
+          svg.down {
+            fill: #666666;
+          }
+          .mat-expansion-panel-header-title,
+          .mat-expansion-panel-header-description {
+            color: #666666;
+          }
+          &.mat-expanded {
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description {
+              color: #000000;
+            }
+            svg.down {
+              display: none;
+            }
+            svg.up {
+              display: block;
+              fill: #000000;
+            }
+            border-bottom: 1px solid #d9d9d9;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+          }
+        }
+
+        div.mat-expansion-panel-content {
+          div.mat-expansion-panel-body {
+            padding: 30px;
+          }
+        }
+      }
+    }
+    mat-expansion-panel.disabled {
+      background-color: #eeeeee;
+      cursor: not-allowed;
+      ::ng-deep {
+        mat-expansion-panel-header {
+          padding: 8px 30px;
+          svg.up {
+            display: none;
+          }
+          svg.down {
+            fill: #d9d9d9;
+          }
+          .mat-expansion-panel-header-title,
+          .mat-expansion-panel-header-description {
+            color: #d9d9d9;
+          }
+        }
+      }
+    }
+  }
+
+  mat-accordion.alternative {
+    mat-expansion-panel:not(.disabled) {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+      ::ng-deep {
+        mat-expansion-panel-header {
+          &:hover {
+            background-color: #212121;
+          }
+          padding: 6px 28px;
+          svg.up {
+            display: none;
+          }
+          svg.down {
+            fill: #d9d9d9;
+          }
+          .mat-expansion-panel-header-title,
+          .mat-expansion-panel-header-description,
+          .mat-expansion-indicator::after {
+            color: #d9d9d9;
+          }
+          &.mat-expanded {
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description,
+            .mat-expansion-indicator::after {
+              color: #ffffff;
+            }
+            svg.up {
+              display: block;
+              fill: #ffffff;
+            }
+            border-bottom: 2px solid #ffffff;
+          }
+        }
+
+        div.mat-expansion-panel-content {
+          div.mat-expansion-panel-body {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+    mat-expansion-panel.disabled {
+      background-color: #666666;
+      border: 2px solid #d9d9d9;
+      opacity: 0.5;
+      cursor: not-allowed;
+      ::ng-deep {
+        mat-expansion-panel-header {
+          padding: 6px 28px;
+          svg.up {
+            display: none;
+          }
+          svg.down {
+            fill: #ffffff;
+            opacity: 0.5;
+          }
+          .mat-expansion-panel-header-title,
+          .mat-expansion-panel-header-description {
+            color: #ffffff;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}

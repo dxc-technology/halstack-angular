@@ -8,9 +8,12 @@ The DXC Card Component is a container which basically has an image and some cont
 
 ```html
 <dxc-card
-  image="person"
-  imagePosition="before"
+  (onClick)="onClick($event)"
+  [imagePosition]="'after'"
+  [imageSrc]="person"
+  [mode]="'default'"
 >
+  <span>Card Example</span>
 </dxc-card>
 ```
 
@@ -61,9 +64,3 @@ The API properties are the following:
         <td>Uses one of the available card themes.</td>
     </tr>
 </table>
-
-## Examples
-
-```html
-
-```

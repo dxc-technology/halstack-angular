@@ -1,0 +1,41 @@
+:host.dxc-dark {
+  mat-button-toggle {
+    ::ng-deep {
+      .mat-ripple-element {
+        background-color: #ffffff;
+        opacity: 0.3;
+      }
+    }
+    &.basic:not(.mat-button-toggle-checked) {
+      background-color: #eeeeee;
+      ::ng-deep {
+        .mat-ripple-element {
+          background-color: #ffed00;
+          opacity: 0.3;
+        }
+      }
+    }
+    &.mat-button-toggle-checked.basic {
+      background-color: #ffed00;
+      &:hover:not(.mat-button-toggle-disabled) {
+        background-color: #212121;
+        color: #ffed00;
+      }
+    }
+    &.outlined {
+      background-color: transparent;
+      color: #ffffff;
+      border-color: #ffffff;
+      &:hover:not(.mat-button-toggle-disabled) {
+        background-color: #666666;
+      }
+    }
+    &.mat-button-toggle-checked.outlined {
+      background-color: transparent;
+      border-color: #ffed00;
+      &:hover:not(.mat-button-toggle-disabled) {
+        background-color: #666666;
+      }
+    }
+  }
+}

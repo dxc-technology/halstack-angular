@@ -1,0 +1,19 @@
+<mat-button-toggle
+  [ngClass]="[mode === 'outlined' ? 'outlined' : 'basic']"
+  checked="{{selected}}"
+  (change)="onClickHandler($event)"
+  disabled="{{disabled}}"
+  disableRipple="{{disableRipple}}"
+>
+  <span
+    class="content"
+    [ngClass]="[iconPosition === 'after' ? 'icon-after' : 'icon-before', label ? 'labelContainer' : 'iconContainer']"
+  >
+    <img
+      [ngClass]="[label ? 'spaced' : '']"
+      *ngIf="iconSrc"
+      src="{{ iconSrc }}"
+    />
+    <span *ngIf="label" class="label">{{ label }}</span>
+  </span>
+</mat-button-toggle>

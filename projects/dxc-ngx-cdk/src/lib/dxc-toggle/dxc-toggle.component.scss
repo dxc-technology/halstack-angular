@@ -1,0 +1,63 @@
+:host {
+  mat-button-toggle {
+    margin: 15px;
+    &.mat-button-toggle-disabled {
+      opacity: 0.5;
+      ::ng-deep {
+        .mat-button-toggle-button {
+          cursor: not-allowed;
+        }
+      }
+    }
+    &.basic {
+      border: none;
+      height: 43px;
+      span.content {
+        &.labelContainer {
+          padding: 12px 30px;
+        }
+        &.iconContainer {
+          padding: 12px 10px;
+        }
+      }
+    }
+    &.outlined {
+      border: 2px solid;
+      height: 39px;
+      span.content {
+        &.labelContainer {
+          padding: 10px 28px;
+        }
+        &.iconContainer {
+          padding: 10px 8px;
+        }
+      }
+    }
+    ::ng-deep {
+      .mat-button-toggle-label-content {
+        line-height: 1;
+        padding: 0px;
+      }
+    }
+    span.content {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-family: "Open Sans", sans-serif;
+      &.icon-before {
+        img.spaced {
+          margin-right: 15px;
+        }
+      }
+      &.icon-after {
+        img.spaced {
+          margin-left: 15px;
+        }
+      }
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

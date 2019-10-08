@@ -15,7 +15,7 @@ storiesOf("Form Components|Spinner", module)
     () => ({
       template: `
       <h3> Light </h3>
-      <div style="display: flex; align-items: center; justify-content: space-around; height: 180px;">
+      <div style="display: flex; align-items: center; justify-content: space-around; height: 180px; background-color: #EEEEEE;">
         <dxc-spinner [overlay]="false" label="PROCESSING..."></dxc-spinner>
         <dxc-spinner [overlay]="false" value="75"></dxc-spinner>
         <dxc-spinner [overlay]="false" label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
@@ -26,7 +26,7 @@ storiesOf("Form Components|Spinner", module)
         <dxc-spinner label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
       </div>
       <h3> Dark </h3>
-      <div style="display: flex; align-items: center; justify-content: space-around; height: 180px; background-color: #000000;">
+      <div style="display: flex; align-items: center; justify-content: space-around; height: 180px; background-color: #666666;">
         <dxc-spinner theme="dark" [overlay]="false" label="PROCESSING..."></dxc-spinner>
         <dxc-spinner theme="dark" [overlay]="false" value="75"></dxc-spinner>
         <dxc-spinner theme="dark" [overlay]="false" label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
@@ -54,7 +54,7 @@ storiesOf("Form Components|Spinner", module)
   .add(
     "Knobs example",
     () => ({
-      template: `<div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF', 'display':'flex', 'justify-content':'center', 'align-items':'center', 'height': '100vh'}" >
+      template: `<div [ngStyle]= "{'background':theme==='dark' ? '#666666' : '#EEEEEE', 'display':'flex', 'justify-content':'center', 'align-items':'center', 'height': '100vh'}" >
         <dxc-spinner [value]="value" [showValue]="showValue" [theme]="theme" [overlay]="overlay" [label]="label"></dxc-spinner>
       </div>`,
       props: {

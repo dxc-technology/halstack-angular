@@ -37,6 +37,8 @@ export class DxcSpinnerComponent {
     }
     if (this.value) {
       this.mode = "determinate";
+    }  else if(this.value === "") {
+      this.mode = "indeterminate";
     }
   }
 

@@ -1,0 +1,13 @@
+<div class="spinnerContainer">
+  <div
+    class="backOverlay"
+    *ngIf="overlay===true"
+  ></div>
+  <mat-progress-spinner class="backCircle" value="100"></mat-progress-spinner>
+  <mat-progress-spinner value="{{ value }}" mode="{{ mode }}" class="spinner">
+  </mat-progress-spinner>
+  <div [ngClass]="{'overlayed': overlay===false}" class="labelsContainer">
+    <p class="label">{{label}}<br></p>
+    <p *ngIf="value && showValue">{{ value }}%</p>
+  </div>
+</div>

@@ -64,9 +64,10 @@ storiesOf("Form Components|Progressbar", module)
   .add(
     "Knobs example",
     () => ({
-      template: `<div [ngStyle]= "{'background':theme==='dark' ? '#666666' : '#EEEEEE', 'display':'flex', 'justify-content':'center', 'align-items':'center', 'height': '100vh'}" >
-      <dxc-progressbar [value]="value" [showValue]="showValue" [theme]="theme" [overlay]="overlay" [label]="label"></dxc-progressbar>
-    </div>`,
+      template: `
+      <div [ngStyle]= "{'background':theme==='dark' ? '#666666' : '#EEEEEE', 'display':'flex', 'justify-content':'center', 'align-items':'center', 'height': '100vh'}" >
+        <dxc-progressbar [value]="value" [showValue]="showValue" [theme]="theme" [overlay]="overlay" [label]="label"></dxc-progressbar>
+      </div>`,
       props: {
         overlay: boolean("Overlay", false),
         theme: select("theme", { light: "light", dark: "dark" }, "light"),

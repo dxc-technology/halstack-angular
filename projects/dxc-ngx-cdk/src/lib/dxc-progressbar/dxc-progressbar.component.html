@@ -1,8 +1,6 @@
-<div class="progressbarContainer">
-  <div class="backOverlay" *ngIf="overlay === true"></div>
-  <div class="labelContainer" [ngClass]="{ notOverlayed: overlay === false }">
-    <span class="label" *ngIf="label">{{ label }}</span>
-    <span class="value" *ngIf="value && showValue">{{ value }}%</span>
-  </div>
-  <mat-progress-bar value="{{ value }}" mode="{{ mode }}"></mat-progress-bar>
+<div class="backOverlay" *ngIf="overlay === true"></div>
+<div class="labelContainer" [ngClass]="{ notOverlayed: overlay === false }">
+  <span class="label" *ngIf="label">{{ label }}</span>
+  <span class="value" *ngIf="value && showValue">{{ value }}%</span>
 </div>
+<mat-progress-bar value="{{ value }}" mode="{{ mode }}"></mat-progress-bar>

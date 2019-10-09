@@ -1,0 +1,55 @@
+:host {
+  width: 100%;
+  .progressbarContainer {
+    .backOverlay {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: fixed;
+      opacity: 1;
+      transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      background-color: #000000B3;
+    }
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    mat-progress-bar {
+      ::ng-deep {
+        height: 9px;
+        max-width: 80%;
+        min-width: 685px;
+        z-index: 1;
+        .mat-progress-bar-fill::after {
+          background-color: #ffed00;
+        }
+        .mat-progress-bar-buffer {
+          background-color: #0000004d;
+        }
+        .mat-progress-bar-background {
+          fill: transparent;
+        }
+      }
+    }
+    .labelContainer {
+      z-index: 1;
+      font-size: 12px;
+      font-family: "Open Sans", sans-serif;
+      max-width: 80%;
+      width: 100%;
+      margin-bottom: 8px;
+      display: flex;
+      .label {
+        display: inline-flex;
+        justify-content: flex-start;
+        width: 100%;
+      }
+      .value {
+        display: inline-flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+  }
+}

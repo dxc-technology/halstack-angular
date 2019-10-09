@@ -7,7 +7,7 @@
   <mat-progress-spinner value="{{ value }}" mode="{{ mode }}" class="spinner">
   </mat-progress-spinner>
   <div [ngClass]="{'overlayed': overlay===false}" class="labelsContainer">
-    <p class="label">{{label}}<br></p>
-    <p *ngIf="value && showValue">{{ value }}%</p>
+    <p class="label">{{label}}</p>
+    <p class="value" *ngIf="value && showValue">{{ value }}%</p>
   </div>
 </div>

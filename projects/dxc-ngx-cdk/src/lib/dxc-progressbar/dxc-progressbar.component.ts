@@ -26,6 +26,7 @@ export class DxcProgressbarComponent {
 
   @HostBinding("class.light") isLight: boolean = true;
   @HostBinding("class.dark") isDark: boolean = false;
+  @HostBinding("class.absolute") isAbsolute: boolean = false;
 
   public ngOnChanges(): void {
     if (this.theme === "dark") {
@@ -39,6 +40,11 @@ export class DxcProgressbarComponent {
       this.mode = "determinate";
     }  else if(this.value === "") {
       this.mode = "indeterminate";
+    }
+    if(this.overlay === true){
+      this.isAbsolute = true;
+    } else {
+      this.isAbsolute = false;
     }
   }
 

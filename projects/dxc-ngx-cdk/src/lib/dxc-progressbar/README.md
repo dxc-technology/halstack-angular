@@ -65,5 +65,6 @@ The API properties are the following:
 ## Examples
 
 ```html
+<dxc-progressbar [overlay]="true" theme="dark" label="LOADING..." [showValue]="true" value="75"></dxc-progressbar>
 
 ```

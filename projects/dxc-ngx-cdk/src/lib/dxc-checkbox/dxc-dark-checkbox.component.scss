@@ -43,7 +43,7 @@
           top: 0px !important;
           opacity: 0.25;
       }
-      .mat-checkbox-inner-container:hover .mat-checkbox-persistent-ripple {
+      .mat-checkbox-inner-container:focus .mat-checkbox-persistent-ripple {
         opacity: 0.15;
       }
 

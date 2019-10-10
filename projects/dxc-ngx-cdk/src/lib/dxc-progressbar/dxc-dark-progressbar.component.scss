@@ -3,4 +3,11 @@
   .notOverlayed {
     color: #ffffff;
   }
+  mat-progress-bar {
+    ::ng-deep {
+      .mat-progress-bar-buffer {
+        background-color: #ffffff4d;
+      }
+    }
+  }
 }

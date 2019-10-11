@@ -1,19 +1,83 @@
 :host.dxc-dark {
   ::ng-deep {
-    div.mat-ripple-element {
-      background-color: #323232;
-      opacity: 1;
-    }
+    .filled-tabs {
+      ::ng-deep {
+        div.mat-ripple-element {
+          background-color: #ffffff;
+          opacity: 0.3;
+        }
 
-    mat-tab-label {
-      background: black;
-    }
-    .mat-ink-bar {
-      background-color: #ffed00;
-    }
+        div.mat-tab-label-active .mat-ripple-element {
+          background-color: #666666;
+          opacity: 0.3;
+        }
 
-    .mat-tab-label span {
-      color: white;
+        .mat-tab-label {
+          opacity: 1;
+          background: #666666 0% 0% no-repeat padding-box;
+          .dxc-tab-label span {
+            color: #ffffff;
+            opacity: 0.8;
+          }
+          &:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
+            background: #666666 0% 0% no-repeat padding-box;
+            .dxc-tab-label span {
+              color: #ffffff;
+              opacity: 0.8;
+            }
+          }
+          &.mat-tab-label-active {
+            background-color: #ffffff;
+            .dxc-tab-label span {
+              color: #000000;
+              opacity: 1;
+            }
+          }
+        }
+        .mat-ink-bar {
+          background-color: #ffed00;
+        }
+      }
+    }
+    .underlined-tabs {
+      ::ng-deep {
+        .mat-tab-header {
+          border-bottom: 1px solid #FFFFFF;
+        }
+        .mat-tab-label:not(.mat-tab-disabled) {
+          .dxc-tab-label span {
+            color: #FFFFFF;
+            opacity: 1;
+          }
+        }
+        div.mat-ripple-element {
+          background-color: #ffffff;
+          opacity: 0.3;
+        }
+        .mat-tab-label:not(.mat-tab-disabled):not(.mat-tab-label-active) {
+          .dxc-tab-label span {
+            color: #FFFFFF;
+            opacity: 0.75;
+          }
+        }
+        .mat-tab-label:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
+          color: #666666 !important;
+          opacity: 1;
+        }
+        .mat-ink-bar {
+          background-color: #ffffff;
+        }
+
+        .mat-tab-disabled {
+          color: #666666B3;
+          &.mat-tab-label-active {
+            color: #666666FF;
+            & + .mat-ink-bar {
+              background-color: #666666;
+            }
+          }
+        }
+      }
     }
   }
 }

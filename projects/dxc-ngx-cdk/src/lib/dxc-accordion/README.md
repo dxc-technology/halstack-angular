@@ -49,6 +49,11 @@ The API properties are the following:
         <td>Panel label.</td>
     </tr>
     <tr>
+        <td>@Input<br>mode: 'default' | 'alternative'</td>
+        <td><code>'default'</code></td>
+        <td>Uses one of the available modes.</td>
+    </tr>
+    <tr>
         <td>@Input<br>iconSrc: string</td>
         <td></td>
         <td>URL of the icon that will be placed next to panel label.</td>

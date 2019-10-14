@@ -8,7 +8,7 @@ import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@an
 export class DxcAccordionComponent  {
   @Input() mode: string;
   @Input() theme: string;
-  @Input() disabled: boolean;
+  @Input() disabled: boolean = false;
   @Input() label: string;
   @Input() assistiveText: string;
   @Input() iconSrc: string;
@@ -36,7 +36,9 @@ export class DxcAccordionComponent  {
   }
 
   public onClickHandler($event: any): void {
+   if(!this.disabled) {
     this.opened = !this.opened;
     this.onClick.emit(this.opened);
+   }
   }
 }

@@ -1,4 +1,5 @@
 :host {
+  display: block;
   mat-toolbar {
     font: unset;
     mat-toolbar-row {
@@ -17,8 +18,12 @@
         height: 34px;
         width: auto;
       }
-      .socialIcon {
-        display: inline-flex;
+      .socialIcons {
+        display: flex;
+        align-items: center;
+        .socialIcon {
+          display: inline-flex;
+        }
       }
       .socialIconImage {
         display: inline-flex;
@@ -38,7 +43,7 @@
       align-items: baseline;
       .bottomLinks {
         padding-top: 6px;
-        border-top: 2px solid #ffed00;
+        border-top: 3px solid #ffed00;
         display: inline-flex;
         .point {
           margin: 0px 10px;

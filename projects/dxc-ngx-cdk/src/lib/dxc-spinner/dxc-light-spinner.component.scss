@@ -1,0 +1,30 @@
+@import "~@angular/material/theming";
+
+:host.light {
+  .spinnerContainer {
+    .backOverlay {
+      background-color: #000000b3;
+    }
+    .labelsContainer {
+      color: #ffffff;
+      &.overlayed {
+        color: #000000;
+      }
+    }
+  }
+  .mat-progress-spinner.backCircle {
+    ::ng-deep {
+      circle {
+        stroke: #ffffff;
+      }
+    }
+  }
+  .mat-spinner.spinner,
+  .mat-progress-spinner.spinner {
+    ::ng-deep {
+      circle {
+        stroke: #ffed00;
+      }
+    }
+  }
+}

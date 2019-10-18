@@ -1,0 +1,28 @@
+:host.dark {
+  .spinnerContainer {
+    .backOverlay {
+      background-color: #000000B3;
+    }
+    .labelsContainer {
+      color: #ffffff;
+      &.overlayed {
+        color: #ffffff;
+      }
+    }
+  }
+  .mat-progress-spinner.backCircle {
+    ::ng-deep {
+      circle {
+        stroke: #000000;
+      }
+    }
+  }
+  .mat-spinner.spinner,
+  .mat-progress-spinner.spinner {
+    ::ng-deep {
+      circle {
+        stroke: #ffed00;
+      }
+    }
+  }
+}

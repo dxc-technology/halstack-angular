@@ -105,7 +105,7 @@ storiesOf("Form Components|Tabs", module)
                   [mode] ="mode"
                   (activeTabIndexChange) ="activeTabIndexChange($event)">
           <dxc-tab [label]="label" [iconSrc]="iconSrc">Content A</dxc-tab>
-          <dxc-tab [label]="'Disabled Tab 2'" [disabled]="disabled">Content B</dxc-tab>
+          <dxc-tab [label]="'Disabled Tab'" [disabled]="disabled">Content B</dxc-tab>
       
       </dxc-tabs>
                      </div>
@@ -113,8 +113,8 @@ storiesOf("Form Components|Tabs", module)
       props: {
         activeTabIndexChange: action("Tab selected!"),
         disabled: boolean("disabled", true),
-        label: text("label", "Fav"),
-        iconSrc: text("iconSrc", "./love.svg"),
+        label: text("label", "Favourite"),
+        iconSrc: text("iconSrc", "./hearth-2.svg"),
         showDotIndicator: boolean("showDotIndicator", true),
         mode: select(
           "mode",

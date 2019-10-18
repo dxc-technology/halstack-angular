@@ -1,0 +1,38 @@
+:host.dxc-light {
+  mat-button-toggle {
+    ::ng-deep {
+      .mat-ripple-element {
+        background-color: #FFFFFF;
+        opacity: 0.3;
+      }
+    }
+    &.basic:not(.mat-button-toggle-checked) {
+      background-color: #eeeeee;
+      ::ng-deep {
+        .mat-ripple-element {
+          background-color: #ffed00;
+          opacity: 0.3;
+        }
+      }
+    }
+    &.mat-button-toggle-checked.basic {
+      background-color: #ffed00;
+      &:hover:not(.mat-button-toggle-disabled) {
+        background-color: #000000;
+        color: #ffed00;
+      }
+    }
+    &.outlined {
+      background-color: transparent;
+      &:hover:not(.mat-button-toggle-disabled) {
+        background-color: #eeeeee;
+      }
+    }
+    &.mat-button-toggle-checked.outlined {
+      background-color: #eeeeee;
+      &:hover:not(.mat-button-toggle-disabled) {
+        background-color: #d9d9d9;
+      }
+    }
+  }
+}

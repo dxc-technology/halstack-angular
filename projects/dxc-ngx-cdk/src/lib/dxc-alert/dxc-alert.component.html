@@ -1,0 +1,111 @@
+<div class="alert" *ngIf="isVisible" [ngClass]="{ modal: mode == 'modal' }">
+  <div
+    class="backOverlay"
+    (click)="onCloseHandler($event)"
+    [ngClass]="{ backVisible: mode == 'modal' }"
+  ></div>
+  <div class="container" [ngClass]="{
+    infoHeader: type == 'info',
+    warningHeader: type == 'warning',
+    errorHeader: type == 'error',
+    confirmHeader: type == 'confirm'
+  }">
+    <div
+      class="alertHeader"
+      
+    >
+      <div *ngIf="type == 'info'" class="headerLabel">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="#4A90E2"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
+          </svg>
+        </div>
+        <span class="mainLabel">
+          INFORMATION
+        </span>
+      </div>
+      <div *ngIf="type == 'warning'" class="headerLabel">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="#FFD806"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+          </svg>
+        </div>
+        <span class="mainLabel">
+          WARNING
+        </span>
+      </div>
+      <div *ngIf="type == 'error'" class="headerLabel">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="#EE2222"
+          >
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+            />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg>
+        </div>
+        <span class="mainLabel">
+          ERROR
+        </span>
+      </div>
+      <div *ngIf="type == 'confirm'" class="headerLabel">
+        <div class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="#7ED321"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+            />
+          </svg>
+        </div>
+        <span class="mainLabel">
+          SUCCESS
+        </span>
+      </div>
+      <span *ngIf="inlineText" class="spacer"> - </span>
+      <span *ngIf="inlineText" class="inlineText"> {{ inlineText }} </span>
+      <span class="closeIcon" (click)="onCloseHandler($event)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </span>
+    </div>
+    <div #contents>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

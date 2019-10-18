@@ -1,8 +1,10 @@
 :host {
+  display: block;
   mat-accordion {
+    display: block;
     mat-expansion-panel {
       ::ng-deep {
-        margin-bottom: 2px;
+        margin: 1px;
         box-shadow: 0px 6px 10px #00000024;
         mat-expansion-panel-header {
           font-size: 16px;
@@ -21,14 +23,14 @@
             &.after{
               flex-direction: row;
               img {
-                margin-left: 15px;
+                margin-left: 10px;
               }
             }
             &.before {
               flex-direction: row-reverse;
               justify-content: flex-end;
               img {
-                margin-right: 15px;
+                margin-right: 10px;
               }
             }
           }

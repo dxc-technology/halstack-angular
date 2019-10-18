@@ -3,8 +3,13 @@
     mat-expansion-panel:not(.disabled) {
       ::ng-deep {
         mat-expansion-panel-header {
+          max-height: 64px;
           &:hover {
             background-color: #d9d9d9;
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description {
+              color: #000000;
+            }
           }
           padding: 8px 30px;
           svg.up {
@@ -43,7 +48,8 @@
       }
     }
     mat-expansion-panel.disabled {
-      background-color: #eeeeee;
+      background-color: #FFFFFF;
+      opacity: 0.65;
       cursor: not-allowed;
       ::ng-deep {
         mat-expansion-panel-header {
@@ -70,6 +76,10 @@
         mat-expansion-panel-header {
           &:hover {
             background-color: #212121;
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description {
+              color: #ffffff;
+            }
           }
           padding: 8px 30px;
           svg.down {
@@ -101,8 +111,11 @@
       }
     }
     mat-expansion-panel.disabled {
-      background-color: #666666;
-      opacity: 0.5;
+      mat-expansion-panel-header {
+        max-height: 64px;
+      }
+      background-color: #000000;
+      opacity: 0.3;
       cursor: not-allowed;
       ::ng-deep {
         mat-expansion-panel-header {

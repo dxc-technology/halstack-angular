@@ -10,7 +10,7 @@ The DXC Toggle Component is an on/off toggle with the appearance of a button.
 <dxc-toggle
   type="basic"
   (click)="selectOption()"
-  text="Profile"
+  label="Profile"
   >
 </dxc-button>
 ```
@@ -81,10 +81,22 @@ The API properties are the following:
         <td></td>
         <td>This event will be triggered when the user clicks the button. The new state will be passed as a parameter.</td>
     </tr>
+    <tr>
+        <td>@Input<br>iconPosition: 'before'|'after'</td>
+        <td><code>'before'</code></td>
+        <td>Whether the icon should appear after or before the label.</td>
+    </tr>
 </table>
 
 ## Examples
 
 ```html
-
+<dxc-toggle
+  selected="true"
+  theme="dark"
+  mode="basic"
+  iconSrc="/money.svg"
+  (onClick)="onClick($event.source.checked)"
+  label="Toggle"
+></dxc-toggle>
 ```

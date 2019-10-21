@@ -3,17 +3,18 @@
     class="backOverlay"
     (click)="onCloseHandler($event)"
     [ngClass]="{ backVisible: mode == 'modal' }"
+    *ngIf="mode == 'modal'"
   ></div>
-  <div class="container" [ngClass]="{
-    infoHeader: type == 'info',
-    warningHeader: type == 'warning',
-    errorHeader: type == 'error',
-    confirmHeader: type == 'confirm'
-  }">
-    <div
-      class="alertHeader"
-      
-    >
+  <div
+    class="container"
+    [ngClass]="{
+      infoHeader: type == 'info',
+      warningHeader: type == 'warning',
+      errorHeader: type == 'error',
+      confirmHeader: type == 'confirm'
+    }"
+  >
+    <div class="alertHeader">
       <div *ngIf="type == 'info'" class="headerLabel">
         <div class="icon">
           <svg
@@ -25,7 +26,7 @@
           >
             <path d="M0 0h24v24H0z" fill="none" />
             <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
             />
           </svg>
         </div>
@@ -90,7 +91,7 @@
       </div>
       <span *ngIf="inlineText" class="spacer"> - </span>
       <span *ngIf="inlineText" class="inlineText"> {{ inlineText }} </span>
-      <span class="closeIcon" (click)="onCloseHandler($event)">
+      <span class="closeIcon" *ngIf="isCloseVisible || mode == 'modal'" (click)="onCloseHandler($event)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

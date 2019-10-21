@@ -5,8 +5,8 @@ import { DXCAlertModule } from "./dxc-alert.module";
 import { arrayExpression } from "@babel/types";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 
-let visible = false;
-let visible1 = false;
+let visible = true;
+let visible1 = true;
 let visible2 = false;
 let visible3 = false;
 
@@ -21,7 +21,7 @@ storiesOf("Form Components|Alert", module)
     () => ({
       template: `
       <dxc-button label="info alert" (onClick)="onClick($event)"></dxc-button>
-      <dxc-alert [isVisible]="visible" inlineText="Information header" (onClose)="onClick($event)">
+      <dxc-alert [isVisible]="visible" isCloseVisible="true" inlineText="Information header" (onClose)="onClick($event)">
       </dxc-alert>
       <dxc-button label="warning alert" (onClick)="onClick1($event)"></dxc-button>
       <dxc-alert [isVisible]="visible1" type="warning" inlineText="Warning header" (onClose)="onClick1($event)">
@@ -37,6 +37,10 @@ storiesOf("Form Components|Alert", module)
       `,
 
       props: {
+        visible: boolean("Info Alert", true),
+        visible1: boolean("Warning Alert", true),
+        visible2: boolean("Error Alert", false),
+        visible3: boolean("Confirm Alert", false),
         onClick: function(event) {
           this.visible = !this.visible;
         },
@@ -68,9 +72,9 @@ storiesOf("Form Components|Alert", module)
     () => ({
       template: `<div >
         <dxc-button label="alert 1" (onClick)="onClick($event)"></dxc-button>
-        <dxc-alert [isVisible]="visible" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick($event)"></dxc-alert>
+        <dxc-alert [isVisible]="visible" [isCloseVisible]="isCloseVisible" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick($event)"></dxc-alert>
         <dxc-button label="alert 2" (onClick)="onClick1($event)"></dxc-button>
-        <dxc-alert [isVisible]="visible1" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick1($event)"> <span>Content</span> </dxc-alert>
+        <dxc-alert [isVisible]="visible1" [isCloseVisible]="isCloseVisible" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick1($event)"> <span>Content</span> </dxc-alert>
       </div>
       `,
       props: {
@@ -81,7 +85,8 @@ storiesOf("Form Components|Alert", module)
         onClick: function( event ) {
           this.visible = !this.visible;
         },
-        visible1: boolean("Is second one Visible", false),
+        visible1: boolean("Is second alert Visible", false),
+        isCloseVisible: boolean("IsCloseVisible", false),
         onClick1: function( event ) {
           this.visible1 = !this.visible1;
         }

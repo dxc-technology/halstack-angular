@@ -1,4 +1,7 @@
 :host {
+  .progressContainer {
+    width: 100%;
+  }
   &.absolute {
     position: absolute;
   }
@@ -13,9 +16,18 @@
     background-color: #000000b3;
   }
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  .overlayed {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    position: fixed;
+    z-index: 31295;
+    display: flex;
+  }
   mat-progress-bar {
     ::ng-deep {
       height: 9px;

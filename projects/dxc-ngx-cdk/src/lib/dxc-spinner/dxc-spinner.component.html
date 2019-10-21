@@ -1,4 +1,4 @@
-<div class="spinnerContainer">
+<div class="spinnerContainer" [ngClass] = "[overlay === true ? 'overlayed': 'default']">
   <div
     class="backOverlay"
     *ngIf="overlay===true"

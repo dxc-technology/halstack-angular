@@ -32,9 +32,9 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
     border-radius: 4px;
     z-index: 1;
+    max-width: 810px;
+    min-width: 590px;
     .alertHeader {
-      max-width: 810px;
-      min-width: 590px;
       max-height: calc(100%);
       position: relative;
       overflow-y: auto;

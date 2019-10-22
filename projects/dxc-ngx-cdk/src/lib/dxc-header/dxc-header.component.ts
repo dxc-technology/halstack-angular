@@ -2,7 +2,9 @@ import {
   Component,
   Input,
   HostBinding,
-  OnChanges
+  OnChanges,
+  Output, 
+  EventEmitter
 } from "@angular/core";
 @Component({
   selector: "dxc-header",
@@ -21,6 +23,8 @@ export class DxcHeaderComponent implements OnChanges {
   @Input() public underline= false;
   @Input() public logoSrc: string;
 
+  @Output() onClick = new EventEmitter<any>();
+
   public ngOnInit() {}
 
   public ngOnChanges(): void {
@@ -31,5 +35,9 @@ export class DxcHeaderComponent implements OnChanges {
       this.isLight = true; 
       this.isDark = false;
     }
+  }
+
+  public onClickHandler($event: any): void {
+    this.onClick.emit($event)
   }
 }

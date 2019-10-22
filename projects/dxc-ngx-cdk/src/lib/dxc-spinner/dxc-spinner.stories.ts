@@ -17,20 +17,22 @@ storiesOf("Form Components|Spinner", module)
       template: `
       <h3> Light </h3>
       <div style="display: flex; align-items: center; justify-content: space-around; height: 180px; background-color: #EEEEEE;">
-        <dxc-spinner [overlay]="false" label="PROCESSING..."></dxc-spinner>
-        <dxc-spinner [overlay]="false" value="75"></dxc-spinner>
-        <dxc-spinner [overlay]="false" label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
+        <dxc-spinner [type]="'large'" label="PROCESSING..."></dxc-spinner>
+        <dxc-spinner [type]="'large'" value="75"></dxc-spinner>
+        <dxc-spinner [type]="'large'" label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
+        <dxc-spinner [type]="'small'" label="PROCESSING..."></dxc-spinner>
       </div>
       
       <h3> Dark </h3>
       <div style="display: flex; align-items: center; justify-content: space-around; height: 180px; background-color: #666666;">
-        <dxc-spinner theme="dark" [overlay]="false" label="PROCESSING..."></dxc-spinner>
-        <dxc-spinner theme="dark" [overlay]="false" value="75"></dxc-spinner>
-        <dxc-spinner theme="dark" [overlay]="false" label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
+        <dxc-spinner theme="dark" [type]="'large'" label="PROCESSING..."></dxc-spinner>
+        <dxc-spinner theme="dark" [type]="'large'" value="75"></dxc-spinner>
+        <dxc-spinner theme="dark" [type]="'large'" label="LOADING... " [showValue]="true" value="50"></dxc-spinner>
+        <dxc-spinner theme="dark" [type]="'small'" label="PROCESSING..."></dxc-spinner>
       </div>
       <dxc-button (onClick)="onClick($event)" mode="basic" label="Overlay"></dxc-button>
       <div *ngIf="overlay">
-      <dxc-spinner theme="light" [overlay]="overlay" label="PROCESSING..."></dxc-spinner>
+        <dxc-spinner theme="light" [type]="'overlay'" label="PROCESSING..."></dxc-spinner>
       </div>
       
       `,
@@ -53,11 +55,11 @@ storiesOf("Form Components|Spinner", module)
   .add(
     "Knobs example",
     () => ({
-      template: `<div [ngStyle]= "{'background':theme==='dark' ? '#666666' : '#EEEEEE'}" >
-        <dxc-spinner [value]="value" [showValue]="showValue" [theme]="theme" [overlay]="overlay" [label]="label"></dxc-spinner>
+      template: `<div [ngStyle]= "{'background':theme==='dark' ? '#666666' : '', 'height': '200px'}" >
+        <dxc-spinner [value]="value" [showValue]="showValue" [theme]="theme" [type]="type" [label]="label"></dxc-spinner>
       </div>`,
       props: {
-        overlay: boolean("Overlay", false),
+        type: select("type", { small: "small", large: "large", overlay: "overlay" }, "large"),
         theme: select("theme", { light: "light", dark: "dark" }, "light"),
         label: text("label", "LABEL"),
         showValue: boolean("Show Value", false),

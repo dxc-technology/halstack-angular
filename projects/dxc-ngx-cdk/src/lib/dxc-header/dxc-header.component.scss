@@ -1,9 +1,13 @@
 :host {
- .spacer {
-  flex: 1 1 auto;
- }
- .dxc-logo, img {
+  .spacer {
+    flex: 1 1 auto;
+  }
+  .dxc-logo,
+  img {
     height: 32px;
     width: 181px;
- }
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

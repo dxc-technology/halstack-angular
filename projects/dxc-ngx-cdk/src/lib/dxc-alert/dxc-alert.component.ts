@@ -22,6 +22,7 @@ export class DxcAlertComponent implements OnChanges {
   @Input() mode: string = "inline"
   @Input() inlineText: string;
   @Output() onClose = new EventEmitter<any>();
+  @Input() isCloseVisible: boolean;
 
   @ViewChild('contents', {static: false}) content:ElementRef;
 

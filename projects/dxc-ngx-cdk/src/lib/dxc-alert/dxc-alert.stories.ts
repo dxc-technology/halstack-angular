@@ -5,11 +5,6 @@ import { DXCAlertModule } from "./dxc-alert.module";
 import { arrayExpression } from "@babel/types";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 
-let visible = true;
-let visible1 = true;
-let visible2 = false;
-let visible3 = false;
-
 storiesOf("Form Components|Alert", module)
   .addDecorator(
     moduleMetadata({
@@ -20,40 +15,35 @@ storiesOf("Form Components|Alert", module)
     "Types",
     () => ({
       template: `
+      
+      <dxc-alert [isVisible]="true" inlineText="Information header" >
+      </dxc-alert>
+      <dxc-alert [isVisible]="visible1" isCloseVisible="true" mode="inline" type="warning" inlineText="Warning header" (onClose)="onClick1($event)">
+        <span>Content</span>
+      </dxc-alert>
+      <dxc-alert [isVisible]="true" mode="inline" type="error" inlineText="Error header">
+        <span>Content</span>
+      </dxc-alert>
+      <dxc-alert [isVisible]="visible2" isCloseVisible="true" mode="inline" type="confirm" inlineText="Confirm header" (onClose)="onClick2($event)">
+      </dxc-alert>
+
       <dxc-button label="info alert" (onClick)="onClick($event)"></dxc-button>
-      <dxc-alert [isVisible]="visible" isCloseVisible="true" inlineText="Information header" (onClose)="onClick($event)">
-      </dxc-alert>
-      <dxc-button label="warning alert" (onClick)="onClick1($event)"></dxc-button>
-      <dxc-alert [isVisible]="visible1" type="warning" inlineText="Warning header" (onClose)="onClick1($event)">
-      <span>Content</span>
-      </dxc-alert>
-      <dxc-button label="error alert" (onClick)="onClick2($event)"></dxc-button>
-      <dxc-alert [isVisible]="visible2" mode="modal" type="error" inlineText="Error header" (onClose)="onClick2($event)">
-      <span>Content</span>
-      </dxc-alert>
-      <dxc-button label="confirm alert" (onClick)="onClick3($event)"></dxc-button>
-      <dxc-alert [isVisible]="visible3" mode="modal" type="confirm" inlineText="Confirm header" (onClose)="onClick3($event)">
-      </dxc-alert>
+      <dxc-alert [isVisible]="visible" mode="modal" inlineText="Information header" (onClose)="onClick($event)"></dxc-alert>
       `,
 
       props: {
-        visible: boolean("Info Alert", true),
-        visible1: boolean("Warning Alert", true),
-        visible2: boolean("Error Alert", false),
-        visible3: boolean("Confirm Alert", false),
+        visible: boolean("Modal Alert", false),
         onClick: function(event) {
           this.visible = !this.visible;
         },
+        visible1: boolean("Error Alert", true),
         onClick1: function(event) {
           this.visible1 = !this.visible1;
         },
+        visible2: boolean("Confirm Alert", true),
         onClick2: function(event) {
           this.visible2 = !this.visible2;
-        },
-        onClick3: function(event) {
-          this.visible3 = !this.visible3;
         }
-        
       }
     }),
     {

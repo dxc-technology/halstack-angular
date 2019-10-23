@@ -23,5 +23,10 @@
         <td></td>
         <td>The path of an icon to replace the default dxc logo.</td>
     </tr>
+    <tr>
+        <td>@Output<br>onClick: EventEmitter</td>
+        <td></td>
+        <td>This event will be triggered when the user clicks the logo.</td>
+    </tr>
 </table>
 

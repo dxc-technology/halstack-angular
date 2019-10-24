@@ -1,6 +1,6 @@
 import { storiesOf, moduleMetadata } from "@storybook/angular";
 import spinnerMD from "./README.md";
-import { text, boolean, select } from "@storybook/addon-knobs";
+import { text, boolean, select, number } from "@storybook/addon-knobs";
 import { DxcSpinnerModule } from "./dxc-spinner.module";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { action } from "@storybook/addon-actions";

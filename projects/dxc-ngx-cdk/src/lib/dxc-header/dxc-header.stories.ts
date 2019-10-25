@@ -45,8 +45,7 @@ storiesOf("Form Components|Header", module)
           <h4> Header with no underline</h4>
         <dxc-header>
           <div  style="color: white; display: contents;">
-            <dxc-switch style="margin-bottom: 10px;" [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
-            <dxc-select style="width: 55px;" [label]="label" [options]="icons" [theme]="'dark'"></dxc-select>
+            <dxc-switch [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
             <mat-icon style="margin-right: 35px;">settings</mat-icon>
             <p style="margin-right: 10px;"> kkdrensk</p>
             <mat-icon >account_circle</mat-icon>
@@ -56,8 +55,7 @@ storiesOf("Form Components|Header", module)
         <h4> Header with  underline</h4>
         <dxc-header [underline]="true">
             <div  style="display: contents;">
-            <dxc-switch style="margin-bottom: 10px;" [label]="'Autosave'"></dxc-switch>
-            <dxc-select  style="width: 55px;" [label]="label" [options]="icons"></dxc-select>
+            <dxc-switch [label]="'Autosave'"></dxc-switch>
             <mat-icon style="margin-right: 35px;">settings</mat-icon>
             <p style="margin-right: 10px;"> kkdrensk</p>
             <mat-icon >account_circle</mat-icon>
@@ -80,8 +78,7 @@ storiesOf("Form Components|Header", module)
         <h4> Header with no underline</h4>
         <dxc-header  [theme]="'dark'">
          <div  style="display: contents;">
-            <dxc-switch style="margin-bottom: 10px;" [label]="'Autosave'" ></dxc-switch>
-            <dxc-select style="width: 55px;" [label]="label" [options]="icons"></dxc-select>
+            <dxc-switch [label]="'Autosave'" ></dxc-switch>
             <mat-icon style="margin-right: 35px;">settings</mat-icon>
             <p style="margin-right: 10px;"> kkdrensk</p>
             <mat-icon >account_circle</mat-icon>
@@ -91,8 +88,7 @@ storiesOf("Form Components|Header", module)
         <h4 > Header with  underline</h4>
         <dxc-header [underline]="true" [theme]="'dark'">
           <div  style="color: white; display: contents;">
-              <dxc-switch style="margin-bottom: 10px;" [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
-              <dxc-select style="width: 55px;" [label]="label" [options]="icons" [theme]="'dark'"></dxc-select>
+              <dxc-switch [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
               <mat-icon style="margin-right: 35px;">settings</mat-icon>
               <p style="margin-right: 10px;"> kkdrensk</p>
               <mat-icon >account_circle</mat-icon>
@@ -132,7 +128,6 @@ storiesOf("Form Components|Header", module)
                      <dxc-header [theme]="theme" [underline]="underline" >
                         <div  style="color: white; display: contents;">
                             <dxc-switch style="margin-bottom: 10px;" [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
-                            <dxc-select style="width: 55px;" [label]="label" [options]="icons"  [theme]="theme"></dxc-select>
                             <mat-icon style="margin-right: 35px;">settings</mat-icon>
                             <p style="margin-right: 10px;"> kkdrensk</p>
                             <mat-icon >account_circle</mat-icon>

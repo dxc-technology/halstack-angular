@@ -19,5 +19,7 @@
     display: flex;
     align-items: center;
     min-height: 64px;
+    max-width: calc(100% - 181px);
+    overflow: hidden;
   }
 }

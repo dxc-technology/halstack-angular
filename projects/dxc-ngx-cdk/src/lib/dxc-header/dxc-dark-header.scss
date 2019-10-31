@@ -1,15 +1,13 @@
 :host.dxc-dark {
   .mat-toolbar-row {
     background: white;
-    .dxc-logo {
-      background-repeat: no-repeat;
-      background-image: url("dxc_logo_black.png");
-      background-size: contain;
+    img.dxc-logo {
+      content: url("dxc_logo_black.png");
     }
     &.underlined {
       background: #000000;
-      .dxc-logo {
-      background-image: url("dxc_logo_white.png");
+      img.dxc-logo {
+        content: url("dxc_logo_white.png");
       }
       border-bottom: 2px solid white;
     }

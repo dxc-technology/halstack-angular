@@ -1,8 +1,9 @@
 <mat-toolbar>
   <mat-toolbar-row [ngClass] ="underline ? 'underlined': ''">
-    <span (click)="onClickHandler($event)" class="dxc-logo" *ngIf=!logoSrc></span>
+    <img (click)="onClickHandler($event)" class="dxc-logo" *ngIf=!logoSrc>
     <img *ngIf="logoSrc" src ="{{logoSrc}}">
-    <span class="spacer"></span>
-    <ng-content></ng-content>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

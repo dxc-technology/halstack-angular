@@ -74,19 +74,18 @@
     .labelsContainer {
       position: absolute;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      justify-content: center;
-      width: 120px;
+      display: block;
+      width: 110px;
       font-size: 12px;
       p {
         margin: 0;
         &.label,
         &.value {
           width: 100%;
-          display: flex;
-          justify-content: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-align: center;
         }
       }
     }

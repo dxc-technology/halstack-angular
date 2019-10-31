@@ -19,7 +19,7 @@ import {
 export class DxcSpinnerComponent {
   type: string = "indeterminate";
   @Input() theme: string = "light";
-  @Input() value: string;
+  @Input() value: number;
   @Input() label: string;
   @Input() showValue: boolean = false;
   @Input() overlay: boolean;
@@ -40,20 +40,25 @@ export class DxcSpinnerComponent {
       this.isLight = true;
       this.isDark = false;
     }
-    if (this.value) {
-      this.type = "determinate";
-    }  else if(this.value === "") {
+    if (this.value || this.value === 0) {
+      if (this.value <= 100 && this.value >= 0) {
+        this.type = "determinate";
+      } else {
+        this.value = undefined;
+        this.type = "indeterminate";
+      }
+    } else {
       this.type = "indeterminate";
     }
-    if(this.mode === "overlay") {
+    if (this.mode === "overlay") {
       this.isOverlayed = true;
       this.isLarge = false;
       this.isSmall = false;
-    } else if(this.mode === "small"){
+    } else if (this.mode === "small") {
       this.isOverlayed = false;
       this.isLarge = false;
       this.isSmall = true;
-    } else if(this.mode === "large") {
+    } else if (this.mode === "large") {
       this.isOverlayed = false;
       this.isLarge = true;
       this.isSmall = false;

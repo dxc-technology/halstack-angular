@@ -34,6 +34,16 @@
         <td>The index of the active tab.</td>
     </tr>
     <tr>
+        <td>@Input<br>stepper: boolean</td>
+        <td><code>false</code></td>
+        <td>If true, the component should be rendered as a Stepper component.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>orientation: 'horizontal' | 'vertical'</td>
+        <td><code>'horizontal'</code></td>
+        <td>Only if stepper, this parameter shows the stepper orientation.</td>
+    </tr>
+    <tr>
         <td>@Output<br>activeTabIndexChange: function</td>
         <td></td>
         <td>This event will be triggered when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>

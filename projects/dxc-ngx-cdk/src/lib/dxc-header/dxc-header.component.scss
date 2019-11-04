@@ -1,9 +1,25 @@
 :host {
- .spacer {
-  flex: 1 1 auto;
- }
- .dxc-logo, img {
+  display: block;
+  mat-toolbar-row.mat-toolbar-row,
+  .mat-toolbar-row {
+    padding: 0 60px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+  }
+  .dxc-logo,
+  img {
     height: 32px;
     width: 181px;
- }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    max-width: calc(100% - 181px);
+    overflow: hidden;
+  }
 }

@@ -11,12 +11,17 @@
     <tr>
         <td>@Input<br>type: 'info' | 'confirm' | 'warning' | 'error'</td>
         <td><code>'info'</code></td>
-        <td>Uses on of the available alert types.</td>
+        <td>Uses one of the available alert types.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>isCloseVisible: boolean</td>
+        <td>true</td>
+        <td>If true, the close button should be visible</td>
     </tr>
     <tr>
         <td>@Input<br>mode: 'inline' | 'modal'</td>
-            <td><code>'inline'</code></td>
-            <td>Uses on of the available alert modes:
+        <td><code>'inline'</code></td>
+        <td>Uses one of the available alert modes:
             <ul>
                 <li>
                     <strong>inline:</strong> if onClose function is received, close button should be visible and the fuction should be executed whe its clicked.
@@ -46,5 +51,7 @@
         <td>This event will be triggered when the user clicks the close button. If there is no function we should close the alert by default</td>
     </tr>
 </table>
+
+```
 
 ```

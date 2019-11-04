@@ -19,17 +19,6 @@
         height: 22px;
       }
     }
-    &.mat-tab-label-active .show-dot {
-      width: 6px;
-      height: 6px;
-      background: #ffed00 0% 0% no-repeat padding-box;
-      display: inline-flex;
-      vertical-align: unset;
-      border-radius: 100%;
-    }
-    &.mat-tab-label-active .show-dot + span {
-      margin-left: 4px;
-    }
     .icon-text {
       min-height: 78px;
       display: flex;

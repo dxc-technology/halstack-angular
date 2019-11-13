@@ -5,13 +5,12 @@ import {
   EventEmitter,
   Input
 } from "@angular/core";
-import { DxcFilePreviewRowComponent } from "./dxc-file-preview-row/dxc-file-preview-row.component";
 @Component({
-  selector: "dxc-file-preview",
-  templateUrl: "./dxc-file-preview.component.html",
-  styleUrls: ["./dxc-file-preview.component.scss"]
+  selector: "dxc-files-preview",
+  templateUrl: "./dxc-files-preview.component.html",
+  styleUrls: ["./dxc-files-preview.component.scss"]
 })
-export class DxcFilePreviewComponent {
+export class DxcFilesPreviewComponent {
   @Output() showOverlay = new EventEmitter<any>();
   @Input() filesList;
 

@@ -1,14 +1,14 @@
-import { Component, Output, Input, OnChanges, EventEmitter } from "@angular/core";
+import { Component, Output, OnChanges, EventEmitter, Input } from "@angular/core";
 @Component({
-  selector: "dxc-file-preview-row",
-  templateUrl: "./dxc-file-preview-row.component.html",
-  styleUrls: ["./dxc-file-preview-row.component.scss"]
+  selector: "dxc-transaction",
+  templateUrl: "./dxc-transaction.component.html",
+  styleUrls: ["./dxc-transaction.component.scss"]
 })
-export class DxcFilePreviewRowComponent {
+export class DxcTransactionComponent implements OnChanges {
 
   @Input() file;
   fileFormat = "default";
-
+  
   public ngOnInit() {
     if (this.file.format.includes("image")) {
       this.fileFormat ="image";
@@ -19,7 +19,6 @@ export class DxcFilePreviewRowComponent {
     }
   }
 
-  public onCloseHandler(): void {
-    this.file.removeFile();
-  }
+  public ngOnChanges(): void {}
+
 }

@@ -1,14 +1,14 @@
-import { Component, Output, OnChanges, EventEmitter, Input } from "@angular/core";
+import { Component, Output, Input, OnChanges, EventEmitter } from "@angular/core";
 @Component({
-  selector: "dxc-uploaded-summary-row",
-  templateUrl: "./dxc-uploaded-summary-row.component.html",
-  styleUrls: ["./dxc-uploaded-summary-row.component.scss"]
+  selector: "dxc-file-preview",
+  templateUrl: "./dxc-file-preview.component.html",
+  styleUrls: ["./dxc-file-preview.component.scss"]
 })
-export class DxcUploadedSummaryRowComponent implements OnChanges {
+export class DxcFilePreviewComponent {
 
   @Input() file;
   fileFormat = "default";
-  
+
   public ngOnInit() {
     if (this.file.format.includes("image")) {
       this.fileFormat ="image";
@@ -19,6 +19,7 @@ export class DxcUploadedSummaryRowComponent implements OnChanges {
     }
   }
 
-  public ngOnChanges(): void {}
-
+  public onCloseHandler(): void {
+    this.file.removeFile();
+  }
 }

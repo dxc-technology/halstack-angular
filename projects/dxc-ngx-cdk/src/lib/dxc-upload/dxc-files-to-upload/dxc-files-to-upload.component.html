@@ -5,5 +5,5 @@
   (dragleave)="dragLeave($event)"
   (dragover)="dragOver($event)"
 ></div>
-<dxc-file-preview [ngClass]="[summaryVisible === true ? 'summaryVisible': '']" *ngIf="filesToUpload" (showOverlay)="showOverlay()" [filesList]="filesToUpload"></dxc-file-preview>
+<dxc-files-preview [ngClass]="[summaryVisible === true ? 'summaryVisible': '']" *ngIf="filesToUpload" (showOverlay)="showOverlay()" [filesList]="filesToUpload"></dxc-files-preview>
 <dxc-upload-buttons *ngIf="filesToUpload" (showOverlay)="showOverlay()" (onAddFile)="addFiles($event)" (upload)="handleUploadEvent()"></dxc-upload-buttons>

@@ -1,10 +1,10 @@
 import { Component, Output, OnChanges, EventEmitter, Input } from "@angular/core";
 @Component({
-  selector: "dxc-uploaded-summary",
-  templateUrl: "./dxc-uploaded-summary.component.html",
-  styleUrls: ["./dxc-uploaded-summary.component.scss"]
+  selector: "dxc-transactions",
+  templateUrl: "./dxc-transactions.component.html",
+  styleUrls: ["./dxc-transactions.component.scss"]
 })
-export class DxcUploadedSummaryComponent implements OnChanges {
+export class DxcTransactionsComponent implements OnChanges {
 
   @Input() filesSummary = [];
   @Input() successfulCount;

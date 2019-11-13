@@ -5,11 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxcUploadComponent } from "./dxc-upload.component";
 import { DxcDragAndDropComponent } from "./dxc-drag-and-drop/dxc-drag-and-drop.component";
 import { DxcFilesToUploadComponent } from "./dxc-files-to-upload/dxc-files-to-upload.component";
-import { DxcFilePreviewComponent } from "./dxc-files-to-upload/dxc-file-preview/dxc-file-preview.component";
-import { DxcFilePreviewRowComponent } from "./dxc-files-to-upload/dxc-file-preview/dxc-file-preview-row/dxc-file-preview-row.component";
+import { DxcFilesPreviewComponent } from "./dxc-files-to-upload/dxc-files-preview/dxc-files-preview.component";
+import { DxcFilePreviewComponent } from "./dxc-files-to-upload/dxc-files-preview/dxc-file-preview/dxc-file-preview.component";
 import { DxcUploadButtonsComponent } from "./dxc-files-to-upload/dxc-upload-buttons/dxc-upload-buttons.component";
-import { DxcUploadedSummaryComponent } from "./dxc-uploaded-summary/dxc-uploaded-summary.component";
-import { DxcUploadedSummaryRowComponent } from "./dxc-uploaded-summary/dxc-uploaded-summary-row/dxc-uploaded-summary-row.component";
+import { DxcTransactionsComponent } from "./dxc-transactions/dxc-transactions.component";
+import { DxcTransactionComponent } from "./dxc-transactions/dxc-transaction/dxc-transaction.component";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcSpinnerModule } from "../dxc-spinner/dxc-spinner.module";
 import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
@@ -20,11 +20,11 @@ import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
     DxcUploadComponent,
     DxcDragAndDropComponent,
     DxcFilePreviewComponent,
-    DxcFilePreviewRowComponent,
+    DxcFilesPreviewComponent,
     DxcUploadButtonsComponent,
     DxcFilesToUploadComponent,
-    DxcUploadedSummaryComponent,
-    DxcUploadedSummaryRowComponent
+    DxcTransactionsComponent,
+    DxcTransactionComponent
   ],
   imports: [
     CommonModule,
@@ -39,11 +39,11 @@ import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
     DxcUploadComponent,
     DxcDragAndDropComponent,
     DxcFilePreviewComponent,
-    DxcFilePreviewRowComponent,
+    DxcFilesPreviewComponent,
     DxcUploadButtonsComponent,
     DxcFilesToUploadComponent,
-    DxcUploadedSummaryComponent,
-    DxcUploadedSummaryRowComponent
+    DxcTransactionsComponent,
+    DxcTransactionComponent
   ]
 })
 export class DXCUploadModule {}

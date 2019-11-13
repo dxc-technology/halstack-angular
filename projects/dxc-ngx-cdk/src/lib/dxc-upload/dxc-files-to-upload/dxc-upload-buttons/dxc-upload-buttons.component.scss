@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  .dragAndDropLabel {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+    .dragAreaLabel {
+      margin-left: 5px;
+      font-size: 12px;
+      font-style: italic;
+      color: #666666;
+    }
+  }
+  .uploadButtons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

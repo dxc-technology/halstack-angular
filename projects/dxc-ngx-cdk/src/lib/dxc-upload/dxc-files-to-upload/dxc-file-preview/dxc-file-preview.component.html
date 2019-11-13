@@ -1,0 +1,7 @@
+<div class="previewContainer" (dragenter)="dragEnter($event)">
+  <div *ngFor="let file of filesList">
+    <dxc-file-preview-row
+      [file]="file"
+    ></dxc-file-preview-row>
+  </div>
+</div>

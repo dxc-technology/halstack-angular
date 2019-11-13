@@ -1,0 +1,9 @@
+<div class="header">
+  <span class="uploadedLabel">Files uploaded</span>
+  <span class="successCount"
+    ><span>{{ successfulCount }}</span> documents uploaded in total</span
+  >
+</div>
+<div *ngFor="let file of filesSummary; index as i" class="filesSummary">
+  <dxc-uploaded-summary-row  matTooltip="{{file.errorMessage}}" [file]="file" id="i"></dxc-uploaded-summary-row>
+</div>

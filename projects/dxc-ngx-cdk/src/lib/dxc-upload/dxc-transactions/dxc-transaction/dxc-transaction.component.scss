@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 30px;
+  max-width: 95%;
+  label {
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.49px;
+    font-size: 16px;
+  }
+  .fileStatus {
+    margin-left: 16px;
+    display: flex;
+    align-items: center;
+  }
+  .previewIcon {
+    margin-right: 16px;
+    fill: #C9C9C9;
+  }
+  .errorIcon {
+    svg {
+      fill: #D0011B;
+    }
+  }
+  .fileName {
+    text-overflow: ellipsis;
+    max-width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .fileName.errorLabel {
+    color: #D0011B;
+  }
+}

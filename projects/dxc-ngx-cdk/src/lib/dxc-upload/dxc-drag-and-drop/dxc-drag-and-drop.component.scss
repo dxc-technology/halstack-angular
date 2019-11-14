@@ -1,0 +1,155 @@
+:host {
+  width: 100%;
+  &.reduced {
+    max-width: 65%;
+  }
+  .dropZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    border-radius: 4px;
+  }
+  .summaryVisible {
+    --border-color: #666666;
+    --border-weight: 1px;
+    --dash-size: 8px;
+    --gap-size: 8px;
+    background: linear-gradient(
+          90deg,
+          var(--border-color) 100%,
+          transparent 100%
+        )
+        top left no-repeat,
+      linear-gradient(
+          90deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        top center repeat-x,
+      linear-gradient(90deg, var(--border-color) 100%, transparent 100%) top
+        right no-repeat,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top left
+        no-repeat,
+      linear-gradient(
+          0deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        center left repeat-y,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom
+        left no-repeat,
+      linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom
+        left no-repeat,
+      linear-gradient(
+          90deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        bottom center repeat-x,
+      linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom
+        right no-repeat,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top
+        right no-repeat,
+      linear-gradient(
+          0deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        center right repeat-y,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom
+        right no-repeat;
+    background-size: var(--dash-size) var(--border-weight),
+      calc(var(--dash-size) + var(--gap-size)) var(--border-weight),
+      var(--dash-size) var(--border-weight),
+      var(--border-weight) var(--dash-size),
+      var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
+      var(--border-weight) var(--dash-size);
+    background-color: #0000000f;
+  }
+  .droppingZone {
+    --border-color: #666666;
+    --border-weight: 1px;
+    --dash-size: 8px;
+    --gap-size: 8px;
+    background: linear-gradient(
+          90deg,
+          var(--border-color) 100%,
+          transparent 100%
+        )
+        top left no-repeat,
+      linear-gradient(
+          90deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        top center repeat-x,
+      linear-gradient(90deg, var(--border-color) 100%, transparent 100%) top
+        right no-repeat,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top left
+        no-repeat,
+      linear-gradient(
+          0deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        center left repeat-y,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom
+        left no-repeat,
+      linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom
+        left no-repeat,
+      linear-gradient(
+          90deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        bottom center repeat-x,
+      linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom
+        right no-repeat,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top
+        right no-repeat,
+      linear-gradient(
+          0deg,
+          transparent calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2),
+          var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+          transparent calc(var(--gap-size) / 2 + var(--dash-size))
+        )
+        center right repeat-y,
+      linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom
+        right no-repeat;
+    background-size: var(--dash-size) var(--border-weight),
+      calc(var(--dash-size) + var(--gap-size)) var(--border-weight),
+      var(--dash-size) var(--border-weight),
+      var(--border-weight) var(--dash-size),
+      var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
+      var(--border-weight) var(--dash-size);
+    background-color: #0000000f;
+  }
+  h6 {
+    margin: 0px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .dropLabel {
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 20px;
+  }
+}

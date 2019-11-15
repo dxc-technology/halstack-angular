@@ -1,16 +1,4 @@
 :host {
-  ::-webkit-scrollbar {
-    width: 3px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: #D9D9D9;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #666666;
-    border-radius: 3px;
-  }
-  
   .dialog {
     position: fixed;
     z-index: 1300;
@@ -66,7 +54,20 @@
             height: 34px;
           }
         }
-        .content{
+        .content {
+          ::ng-deep {
+            ::-webkit-scrollbar {
+              width: 3px;
+            }
+            ::-webkit-scrollbar-track {
+              background-color: #d9d9d9;
+              border-radius: 3px;
+            }
+            ::-webkit-scrollbar-thumb {
+              background-color: #666666;
+              border-radius: 3px;
+            }
+          }
         }
       }
     }

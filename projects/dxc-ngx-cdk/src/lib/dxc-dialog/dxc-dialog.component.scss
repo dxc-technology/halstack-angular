@@ -28,6 +28,7 @@
       opacity: 1;
       transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       .dialogContainer {
+        overflow: unset;
         max-width: 80%;
         min-width: 800px;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
@@ -55,6 +56,18 @@
           }
         }
         .content {
+          overflow-y: auto;
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          &::-webkit-scrollbar-track {
+            background-color: #d9d9d9;
+            border-radius: 3px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: #666666;
+            border-radius: 3px;
+          }
           ::ng-deep {
             ::-webkit-scrollbar {
               width: 3px;

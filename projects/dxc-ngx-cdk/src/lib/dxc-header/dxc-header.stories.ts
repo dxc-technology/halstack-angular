@@ -8,12 +8,7 @@ import { DXCHeaderModule } from "./dxc-header.module";
 import { MatIconModule } from "@angular/material";
 import { DxcSwitchModule } from "../dxc-switch/dxc-switch.module";
 import { DXCSelectModule } from '../dxc-select/dxc-select.module';
-
-const icons = [
-  { value: "spain", iconSrc: "./spain.svg" },
-  { value: "english", iconSrc: "/united-kingdom.svg" },
-  { value: "france", iconSrc: "/france.svg" }
-];
+import { action } from "@storybook/addon-actions";
 
 storiesOf("Form Components|Header", module)
   .addDecorator(
@@ -43,21 +38,21 @@ storiesOf("Form Components|Header", module)
       <div style="background: #D3D3D3;">
       <div>
           <h4> Header with no underline</h4>
-        <dxc-header>
+        <dxc-header (onClick)="onClick($event)">
           <div  style="color: white; display: contents;">
             <dxc-switch [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
             <mat-icon style="margin-right: 35px;">settings</mat-icon>
-            <p style="margin-right: 10px;"> kkdrensk</p>
+            <p> kkdrensk</p>
             <mat-icon >account_circle</mat-icon>
           </div> 
         </dxc-header>
 
         <h4> Header with  underline</h4>
-        <dxc-header [underline]="true">
+        <dxc-header (onClick)="onClick($event)" [underline]="true">
             <div  style="display: contents;">
             <dxc-switch [label]="'Autosave'"></dxc-switch>
             <mat-icon style="margin-right: 35px;">settings</mat-icon>
-            <p style="margin-right: 10px;"> kkdrensk</p>
+            <p> kkdrensk</p>
             <mat-icon >account_circle</mat-icon>
       </div> 
         
@@ -76,21 +71,21 @@ storiesOf("Form Components|Header", module)
         <div style="padding-bottom:20px;" >            
         <div>
         <h4> Header with no underline</h4>
-        <dxc-header  [theme]="'dark'">
+        <dxc-header (onClick)="onClick($event)" [theme]="'dark'">
          <div  style="display: contents;">
             <dxc-switch [label]="'Autosave'" ></dxc-switch>
             <mat-icon style="margin-right: 35px;">settings</mat-icon>
-            <p style="margin-right: 10px;"> kkdrensk</p>
+            <p> kkdrensk</p>
             <mat-icon >account_circle</mat-icon>
           </div> 
         </dxc-header>
 
         <h4 > Header with  underline</h4>
-        <dxc-header [underline]="true" [theme]="'dark'">
+        <dxc-header (onClick)="onClick($event)" [underline]="true" [theme]="'dark'">
           <div  style="color: white; display: contents;">
               <dxc-switch [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
               <mat-icon style="margin-right: 35px;">settings</mat-icon>
-              <p style="margin-right: 10px;"> kkdrensk</p>
+              <p> kkdrensk</p>
               <mat-icon >account_circle</mat-icon>
           </div> 
         </dxc-header>
@@ -100,9 +95,9 @@ storiesOf("Form Components|Header", module)
 
       props: {
         label: text("label", ""),
-        icons: object("icons", icons),
         underlined: boolean("Inderlined", false),
-        theme: select("theme", { light: "light", dark: "dark" }, "light")
+        theme: select("theme", { light: "light", dark: "dark" }, "light"),
+        onClick: action("Click fired!")
       }
     }),
     {
@@ -127,19 +122,19 @@ storiesOf("Form Components|Header", module)
       template: `<div style="background: #D3D3D3;min-height: 200px;" >
                      <dxc-header [theme]="theme" [underline]="underline" >
                         <div  style="color: white; display: contents;">
-                            <dxc-switch style="margin-bottom: 10px;" [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
+                            <dxc-switch [label]="'Autosave'" [theme]="'dark'"></dxc-switch>
                             <mat-icon style="margin-right: 35px;">settings</mat-icon>
-                            <p style="margin-right: 10px;"> kkdrensk</p>
+                            <p> kkdrensk</p>
                             <mat-icon >account_circle</mat-icon>
                         </div> 
                         </dxc-header>    
                      </div>
                         `,
       props: {
-        icons: object("icons", icons),
         label: text("label", ""),
         underline: boolean("Inderline", false),
-        theme: select("theme", { light: "light", dark: "dark" }, "light")
+        theme: select("theme", { light: "light", dark: "dark" }, "light"),
+        onClick: action("Click fired!")
       }
     }),
     {

@@ -19,7 +19,7 @@ import {
 export class DxcProgressbarComponent {
   mode: string = "indeterminate";
   @Input() theme: string = "light";
-  @Input() value: string;
+  @Input() value: number;
   @Input() label: string;
   @Input() showValue: boolean;
   @Input() overlay: boolean = false;
@@ -36,9 +36,19 @@ export class DxcProgressbarComponent {
       this.isLight = true;
       this.isDark = false;
     }
-    if (this.value) {
-      this.mode = "determinate";
-    }  else if(this.value === "") {
+    if (this.value || this.value === 0) {
+      if (this.value <= 100 && this.value >= 0) {
+        this.mode = "determinate";
+      } else {
+        if(this.value > 100) {
+          this.mode = "determinate";
+          this.value = 100;
+        } else {
+          this.mode = "determinate";
+          this.value = 0;
+        }
+      }
+    } else {
       this.mode = "indeterminate";
     }
     if(this.overlay === true){

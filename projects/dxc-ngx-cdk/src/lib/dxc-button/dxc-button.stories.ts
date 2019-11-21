@@ -69,7 +69,8 @@ storiesOf("Form Components|Button", module)
     "Knobs example",
     () => ({
       template: `<div [ngStyle]= "{'background':theme==='dark' ? 'black' : '#FFFFFF'}" >
-            <dxc-button  
+            <dxc-button 
+              [theme] = "theme"
               [mode]="mode"
               [disabled] = "disabled"  
               [iconSrc] = "iconSrc"

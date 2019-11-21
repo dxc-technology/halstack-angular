@@ -4,12 +4,14 @@
     img.dxc-logo {
       content: url("dxc_logo_black.png");
     }
-    &.underlined {
+  }
+  .underlined {
+    .mat-toolbar-row {
       background: #000000;
       img.dxc-logo {
         content: url("dxc_logo_white.png");
       }
-      border-bottom: 2px solid white;
     }
+    border-bottom: 2px solid white;
   }
 }

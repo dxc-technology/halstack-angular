@@ -8,6 +8,6 @@
   </mat-progress-spinner>
   <div *ngIf="mode!=='small'" [ngClass]="{'notOverlayed': mode !== 'overlay'}" class="labelsContainer">
     <p class="label">{{label}}</p>
-    <p class="value" *ngIf="value && showValue">{{ value }}%</p>
+    <p class="value" *ngIf="(value || value === 0) && showValue">{{ value }}%</p>
   </div>
 </div>

@@ -1,9 +1,11 @@
-<mat-toolbar>
-  <mat-toolbar-row [ngClass] ="underline ? 'underlined': ''">
-    <img (click)="onClickHandler($event)" class="dxc-logo" *ngIf=!logoSrc>
-    <img *ngIf="logoSrc" src ="{{logoSrc}}">
+<mat-toolbar [ngClass]="underline ? 'underlined' : ''">
+  <mat-toolbar-row>
+    <a class="headerAnchor" (click)="onClickHandler($event)">
+      <img class="dxc-logo" *ngIf="!logoSrc" />
+      <img *ngIf="logoSrc" src="{{ logoSrc }}" />
+    </a>
     <div class="content">
-        <ng-content></ng-content>
+      <ng-content></ng-content>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

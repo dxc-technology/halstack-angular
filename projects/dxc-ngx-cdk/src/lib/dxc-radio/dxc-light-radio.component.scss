@@ -1,5 +1,12 @@
 :host.light {
   display: inline-flex;
+  ::ng-deep {
+    label.mat-radio-label {
+      .mat-radio-required {
+        color: #D0011B;
+      }
+    }
+  }
   mat-radio-button:not(.mat-radio-disabled) {
     ::ng-deep {
       label.mat-radio-button-layout {

@@ -43,9 +43,11 @@ export class DxcProgressbarComponent {
         if(this.value > 100) {
           this.mode = "determinate";
           this.value = 100;
-        } else {
+        } else if(this.value < 0){
           this.mode = "determinate";
           this.value = 0;
+        } else {
+          this.mode = "indeterminate";
         }
       }
     } else {

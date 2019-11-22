@@ -1,12 +1,26 @@
 :host {
   display: block;
-  width: 80%;
+  max-width: 80%;
+  min-width: 685px;
   margin: 15px;
+  height: auto;
   .progressContainer {
     width: 100%;
   }
   &.absolute {
     position: absolute;
+    max-width: 100%;
+    width: 100%;
+    margin: 0px;
+    height: 100%;
+    ::ng-deep {
+      mat-progress-bar {
+        width: 80%;
+      }
+    }
+    .labelContainer {
+      width: 80%;
+    }
   }
   .backOverlay {
     top: 0;
@@ -19,7 +33,6 @@
     background-color: #000000b3;
   }
   .overlayed {
-    width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -37,6 +50,7 @@
       max-width: 100%;
       min-width: 685px;
       z-index: 1;
+      width: auto;
       .mat-progress-bar-fill::after {
         background-color: #ffed00;
       }
@@ -49,7 +63,8 @@
     z-index: 1;
     font-size: 12px;
     font-family: "Open Sans", sans-serif;
-    width: 100%;
+    max-width: 100%;
+    min-width: 685px;
     margin-bottom: 8px;
     display: flex;
     .label {

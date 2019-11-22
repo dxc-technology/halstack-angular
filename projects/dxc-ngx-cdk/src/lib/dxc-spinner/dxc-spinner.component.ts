@@ -47,9 +47,11 @@ export class DxcSpinnerComponent {
         if(this.value > 100) {
           this.type = "determinate";
           this.value = 100;
-        } else {
+        } else if(this.value < 0){
           this.type = "determinate";
           this.value = 0;
+        } else {
+          this.type = "indeterminate";
         }
       }
     } else {

@@ -1,13 +1,17 @@
 ::ng-deep .dxc-panel-select-class {
   //Common styling for all themes for panel
-  width: 212px;
   position: absolute;
-  top: 30px;
+  top: 27px;
+  // left: 16px;
+  // &.multiple {
+  //   left: 44px;
+  // }
   &.mat-select-panel mat-option {
     width: 100%;
     height: 42px;
     padding: 10px 20px;
     margin-right: 0px;
+
     .mat-option-text {
       display: flex;
       flex-grow: unset;
@@ -59,18 +63,17 @@
   }
 
   &.panel-icons {
-    min-width: 115px !important;
-    width: 115px;
+    max-width: 115px !important;
   }
 }
 
 :host {
   margin: 15px;
+  display: block;
+  width: 230px;
   .mat-option.mat-active {
     background: #d9d9d9;
   }
-  display: block;
-  width: 230px;
   &.select-icons {
     width: 115px;
   }
@@ -132,7 +135,8 @@
 
   ::ng-deep {
     .mat-form-field-infix {
-      padding-bottom: 12px;
+      padding-bottom: 6px;
+      height: 20px;
     }
   }
   ::ng-deep {
@@ -141,7 +145,7 @@
       .mat-form-field-label {
         flex-direction: row-reverse;
         justify-content: flex-end;
-        display: flex;
+        display: flex !important;
         span {
           color: #d0011b;
         }

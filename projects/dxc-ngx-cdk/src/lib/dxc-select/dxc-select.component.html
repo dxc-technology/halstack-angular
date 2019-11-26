@@ -3,9 +3,11 @@
   <mat-select
     disableOptionCentering
     [panelClass]="
-      onlyHasIcons
+      onlyHasIcons && !multiple
         ? 'dxc-panel-select-class panel-icons'
-        : 'dxc-panel-select-class'
+        : !onlyHasIcons && multiple
+        ? 'dxc-panel-select-class multiple'
+        : onlyHasIcons && multiple ? 'dxc-panel-select-class panel-icons multiple' : 'dxc-panel-select-class'
     "
     (selectionChange)="valueChanged($event)"
     [disableRipple]="disableRipple"

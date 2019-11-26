@@ -64,7 +64,7 @@ storiesOf("Form Components|Alert", module)
         <dxc-button label="alert 1" (onClick)="onClick($event)"></dxc-button>
         <dxc-alert [isVisible]="visible" [isCloseVisible]="isCloseVisible" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick($event)"></dxc-alert>
         <dxc-button label="alert 2" (onClick)="onClick1($event)"></dxc-button>
-        <dxc-alert [isVisible]="visible1" [isCloseVisible]="isCloseVisible" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick1($event)"> <span>Content</span> </dxc-alert>
+        <dxc-alert [isVisible]="visible1" [isCloseVisible]="isCloseVisible" [type]="type" [mode]="mode" [inlineText]="inlineText" (onClose)="onClick1($event)"> <p>Content</p> </dxc-alert>
       </div>
       `,
       props: {

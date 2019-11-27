@@ -49,6 +49,11 @@
         <td>If true, the ripple effect will be disabled.</td>
     </tr>
     <tr>
+        <td>@Input<br>showCaret: boolean</td>
+        <td><code>true</code></td>
+        <td>Whether the arrow next to the label is displayed or not.</td>
+    </tr>
+    <tr>
         <td>@Output<br>selectOption: function</td>
         <td></td>
         <td>This event will be triggered when the selection changes. The string with the key of the selected value will be passed as a parameter.</td>

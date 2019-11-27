@@ -1,12 +1,12 @@
 :host {
   margin: 15px;
-
+  display: inline-flex;
+  align-items: center;
   .icon-before {
     img {
       width: 20px;
       height: 20px;
       margin-right: 10px;
-      vertical-align: middle;
     }
   }
   .icon-after {
@@ -14,20 +14,6 @@
       width: 20px;
       height: 20px;
       margin-left: 10px;
-      vertical-align: middle;
-    }
-  }
-
-  .menu-buttom-label-wrapper {
-    width: 230px;
-    min-height: 46px;
-    padding-left: 18px;
-    padding-right: 13px;
-    border-radius: 2px;
-    display: inline-flex;
-
-    &.label-only-icon {
-      width: 115px;
     }
   }
   opacity: 1;
@@ -57,7 +43,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-       &>div:first-child{
+      & > div:first-child {
         overflow: hidden;
         text-overflow: ellipsis;
         align-items: center;
@@ -66,22 +52,74 @@
       }
     }
     .icon-after span.mat-button-wrapper > div:first-child {
-        display: flex;
-        flex-grow: unset;
-        flex-direction: row-reverse;
-        align-items: center;
-        width: 100%;
-      }
+      display: flex;
+      flex-grow: unset;
+      flex-direction: row-reverse;
+      align-items: center;
+      width: 100%;
+    }
     .mat-select-arrow-wrapper {
       display: table-cell;
       vertical-align: middle;
     }
   }
+
+  .menu-buttom-label-wrapper {
+    width: 230px;
+    min-height: 46px;
+    padding-left: 18px;
+    padding-right: 13px;
+    border-radius: 2px;
+    display: inline-flex;
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    &.onlyIcon {
+      width: unset !important;
+      padding: 10px 15px;
+    }
+
+    &.menu-opened {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    &.label-only-icon {
+      width: 115px;
+      min-width: unset;
+      img{
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+    }
+  }
 }
 ::ng-deep .dxc-dropdown-menu {
+  box-shadow: none;
+  margin-top: -2px;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  width: 230px;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #d9d9d9;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #666666;
+    border-radius: 3px;
+  }
+  &.basic {
+    margin-top: 2px;
+  }
   &.only-icons {
     width: 115px;
-
     .mat-menu-item,
     .mat-menu-content {
       min-width: 111px;
@@ -103,10 +141,7 @@
       margin-left: 10px;
       vertical-align: middle;
     }
-
-   
   }
-  box-shadow: none;
   .mat-menu-content {
     min-width: 226px;
     border-radius: 2px;
@@ -132,4 +167,7 @@
       font-size: 16px;
     }
   }
+}
+::ng-deep .cdk-overlay-pane {
+  max-height: 200px;
 }

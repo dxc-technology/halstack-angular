@@ -26,9 +26,12 @@ export class DxcDropdownComponent implements OnChanges {
   @Input() public name: string;
   @Input() public iconPosition: string = "before";
   @Input() public optionsIconPosition: string = "before";
+  @Input() public mode: string = "basic";
+
+  @Input() public showCaret: boolean = true;
 
   @Input() public iconSrc: string;
-  @Input() public label: string;
+  @Input() public label: string = "";
   @Output() public selectOption: EventEmitter<any> = new EventEmitter<any>();
 
   public onlyHasIcons: boolean;

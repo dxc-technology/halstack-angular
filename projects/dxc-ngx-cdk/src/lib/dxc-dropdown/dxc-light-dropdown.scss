@@ -4,18 +4,30 @@
     border: 2px solid #000000;
     &.menu-opened {
       background: #eeeeee;
-      border-bottom: 0px solid #000000;
     }
   }
   .menu-buttom-label {
     color: #000000;
   }
-
   .arrow-down {
     border-top: 5px solid black;
   }
   .arrow-up {
     border-bottom: 5px solid black;
+  }
+  button.mat-button.basic {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    .menu-buttom-label {
+      color: #ffffff;
+    }
+    .arrow-down {
+      border-top: 5px solid #ffffff;
+    }
+    .arrow-up {
+      border-bottom: 5px solid #ffffff;
+    }
   }
 }
 ::ng-deep .dxc-dropdown-menu {
@@ -28,6 +40,23 @@
     }
     &:active {
       background: #d9d9d9;
+    }
+  }
+  &.basic {
+    background-color: #000000;
+    .mat-menu-content {
+      border: none;
+      .mat-menu-item {
+        color: #ffffff;
+        &:hover {
+          background: #eeeeee;
+          color: #000000;
+        }
+        &:active {
+          background: #d9d9d9;
+          color: #000000;
+        }
+      }
     }
   }
 }

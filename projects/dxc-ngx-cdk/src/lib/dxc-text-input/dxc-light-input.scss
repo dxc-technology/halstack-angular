@@ -5,4 +5,38 @@
       pointer-events: none;
     }
   }
+  ::ng-deep {
+    .mat-form-field-underline {
+      background-color: #000000;
+    }
+    label.mat-form-field-label:not(.mat-form-field-empty) {
+      color: #000000;
+    }
+    .mat-form-field-invalid {
+      .mat-hint {
+        color: #d0011b;
+      }
+      .mat-form-field-underline {
+        background-color: #d0011b;
+      }
+      .mat-form-field-empty mat-label {
+        color: #666666;
+      }
+      &.mat-focused .mat-form-field-empty mat-label {
+        color: #d0011b;
+      }
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label{
+        color: #d0011b;
+      }
+    }
+  }
+  ::ng-deep {
+    .mat-form-field-label-wrapper {
+      .mat-form-field-label {
+        span {
+          color: #d0011b;
+        }
+      }
+    }
+  }
 }

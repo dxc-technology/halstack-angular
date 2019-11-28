@@ -1,6 +1,6 @@
 <mat-form-field [class.disabled]="disabled"> 
-  <span matPrefix *ngIf="prefix && !prefixIconSrc"> {{ prefix }}</span>
-  <img matPrefix *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
+  <span matPrefix class="prefixElement" *ngIf="prefix && !prefixIconSrc"> {{ prefix }}</span>
+  <img matPrefix class="prefixElement" *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input *ngIf="!multiline"
     matInput
@@ -24,7 +24,7 @@
     (blur)="onBlur($event)"
     (input)="valueChanged($event)">
 </textarea>
-  <span matSuffix *ngIf="suffix && !suffixIconSrc">{{ suffix }}</span>
-  <img matSuffix *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
+  <span matSuffix class="suffixElement" *ngIf="suffix && !suffixIconSrc">{{ suffix }}</span>
+  <img matSuffix class="suffixElement" *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>

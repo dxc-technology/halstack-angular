@@ -5,10 +5,39 @@
   max-width:100%;
   margin: 15px;
   display: inline-flex;
+
+  .prefixElement {
+    margin-right: 12px;
+  }
+  .suffixElement {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  
+  ::ng-deep textarea {
+    min-height: 76px;
+    max-height: 100px;
+    min-width: 230px;
+    max-width: 726px;
+    width: unset;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #d9d9d9;
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #666666;
+      border-radius: 3px;
+    }
+  }
+
   &.disabled{
     cursor: not-allowed;
   }
   .mat-form-field {
+    line-height: unset;
     width: 230px;
     max-height: 74px;
     input {
@@ -24,17 +53,11 @@
     }
   }
 
-  .mat-form-field-invalid {
-    .mat-hint {
-      color: #d0011b;
-    }
-   
-  }
   .mat-form-field {
     &.mat-form-field-should-float {
       ::ng-deep {
         .mat-form-field-infix {
-          padding-bottom: 6px;
+          padding-bottom: 7px;
         }
         mat-label {
           font-size: 15px;
@@ -49,9 +72,6 @@
           flex-direction: row-reverse;
           justify-content: flex-end;
           display: flex;
-          span {
-            color: #d0011b;
-          }
         }
       }
       .mat-form-field-subscript-wrapper {
@@ -61,6 +81,12 @@
       .mat-form-field-infix {
         padding-top: 6px;
       }
+    }
+  }
+  ::ng-deep .mat-form-field-flex {
+    align-items: center;
+    .mat-form-field-infix {
+      border-top: unset;
     }
   }
 }

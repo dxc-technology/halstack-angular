@@ -2,6 +2,12 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  &.disabled {
+    cursor: not-allowed;
+    input {
+      cursor: not-allowed;
+    }
+  }
   .disabled-span {
     opacity: 0.54;
   }
@@ -10,6 +16,10 @@
     margin: 0 15px;
     min-width: 185px;
     ::ng-deep {
+      .mat-slider-ticks-container {
+        height: 4px;
+        top: -1px;
+      }
       .mat-slider-track-wrapper, .mat-slider-track-background, .mat-slider-wrapper {
         height: 1px;
         background-color: #D9D9D9;
@@ -72,12 +82,7 @@
   input {
     font-size: 16px;
   }
-  input {
-    margin-bottom: 5px;
-  }
-  span {
-    margin-bottom: 10px;
-  }
+  
 }
 
 

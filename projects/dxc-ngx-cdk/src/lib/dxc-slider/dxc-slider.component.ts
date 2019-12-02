@@ -22,6 +22,7 @@ import {
 export class DxcSliderComponent implements OnChanges {
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
+  @HostBinding("class.disabled") isDisabled: boolean = false;
 
   //Default values
   @Input() min: number = 0;
@@ -53,6 +54,7 @@ export class DxcSliderComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+    this.isDisabled = this.disabled;
   }
 
   /**

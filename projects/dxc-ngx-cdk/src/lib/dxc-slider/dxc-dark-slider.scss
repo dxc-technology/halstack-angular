@@ -3,7 +3,8 @@
     &:not(.mat-slider-disabled) {
       ::ng-deep {
         .mat-slider-ticks {
-            background-image: repeating-linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0.7) 2px, transparent 0, transparent);
+            background-image: repeating-linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0.7) 4px, transparent 0, transparent);
+            height: 4px;
         }
         .mat-slider-track-fill,
         .mat-slider-thumb {

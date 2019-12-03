@@ -13,11 +13,11 @@
           background-color: #D9D9D9;
         }
         .mat-slider-ticks {
-          background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, 1) , rgba(0, 0, 0, 1) 5px 5px, transparent 5px, #e2141400);
-        
+          background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, 1) , rgba(0, 0, 0, 1) 4px 4px, transparent 2px, #e2141400);
+          height: 4px;
         }
         .mat-slider-wrapper {
-          opacity: 0.54;
+          opacity: 1;
           background-color: #D9D9D9;
         }
       }

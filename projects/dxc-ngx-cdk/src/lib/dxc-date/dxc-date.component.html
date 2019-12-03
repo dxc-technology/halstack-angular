@@ -11,6 +11,7 @@
     [errorStateMatcher]="matcher"
     (dateInput)="dateInput($event)"
     (dateChange)="valueChanged($event)"
+    placeholder={{format}}
   />
   <mat-datepicker-toggle matSuffix [for]="picker">
     <img *ngIf="iconSrc" matDatepickerToggleIcon src="{{ iconSrc }}" />

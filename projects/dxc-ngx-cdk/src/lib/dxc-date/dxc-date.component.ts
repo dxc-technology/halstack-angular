@@ -83,6 +83,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       this.isLight = true;
       this.isDark = false;
     }
+    this.isDisabled = this.disabled;
     this.value = this.value || new Date();
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);

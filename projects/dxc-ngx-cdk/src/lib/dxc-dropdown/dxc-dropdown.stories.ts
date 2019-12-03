@@ -1,7 +1,7 @@
 import { storiesOf, moduleMetadata } from "@storybook/angular";
 import { action } from "@storybook/addon-actions";
 import dropdownMD from "./README.md";
-import { boolean, select, array, text } from "@storybook/addon-knobs";
+import { boolean, select, array, text, object } from "@storybook/addon-knobs";
 import "hammerjs";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
@@ -41,76 +41,112 @@ storiesOf("Form Components|Dropdown", module)
       margin-inline-end: 0px;
       font-weight: bold;"
       >Light</h3>
-      <div>
-   
+      <div style="display: flex; align-items: center;">
         <dxc-dropdown [options] = "options"
         [label] = "'Select a bird'"
         (selectOption) = "selectOption($event)"
-        >
-    </dxc-dropdown>
+        [mode] = "'basic'"
+        ></dxc-dropdown>
    
   
         <dxc-dropdown [options] = "optionsTextIcons"
         [iconSrc] ="'./bird.svg'"
         [label] = "'Select a bird with icons'"
         (selectOption) = "selectOption($event)"
-          >
-    </dxc-dropdown>
+        [mode] = "'basic'"
+        ></dxc-dropdown>
 
-    <dxc-dropdown [options] = "optionsOnlyIcons"
-    [iconSrc] ="'./bird.svg'"
-    (selectOption) = "selectOption($event)"
-      >
-</dxc-dropdown>
-   </div>
-  
-  
-  
-     
+        <dxc-dropdown [options] = "optionsOnlyIcons"
+        [iconSrc] ="'./bird.svg'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'basic'"
+        [showCaret] = "false"
+        ></dxc-dropdown>
 
-        
-    <h3 style="display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;"
-    >Dark</h3>
-
-    <div style="background: black;" >            
-    <div>
+        <dxc-dropdown [options] = "options"
+        [label] = "'Select a bird'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'outlined'"
+        ></dxc-dropdown>
    
-    <dxc-dropdown [options] = "options"
-    [label] = "'Select a bird'"
-    [theme] ="'dark'"
-    (selectOption) = "selectOption($event)"
-    >
-</dxc-dropdown>
-    <dxc-dropdown [options] = "optionsTextIcons"
-    [iconSrc] ="'./bird.svg'"
-    [theme] ="'dark'"
-    [label] = "'Bird with icons'"
-    (selectOption) = "selectOption($event)"
-      >
-</dxc-dropdown>
-<dxc-dropdown [options] = "optionsOnlyIcons"
-[iconSrc] ="'./bird.svg'"
-[theme] ="'dark'"
+  
+        <dxc-dropdown [options] = "optionsTextIcons"
+        [iconSrc] ="'./bird.svg'"
+        [label] = "'Select a bird with icons'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'outlined'"
+        ></dxc-dropdown>
 
-(selectOption) = "selectOption($event)"
-  >
-</dxc-dropdown>
-</div>
-    
+        <dxc-dropdown [options] = "optionsOnlyIcons"
+        [iconSrc] ="'./bird.svg'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'outlined'"
+        [showCaret] = "false"
+        ></dxc-dropdown>
+      </div>
 
-    </div>
+      <h3 style="display: block;
+      font-size: 1.17em;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;"
+      >Dark</h3>
+
+      <div style="background: black; display: flex; align-items: center;" >
+        <dxc-dropdown [options] = "options"
+        [label] = "'Select a bird'"
+        [theme] ="'dark'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'basic'"
+        ></dxc-dropdown>
+
+        <dxc-dropdown [options] = "optionsTextIcons"
+        [iconSrc] ="'./bird.svg'"
+        [theme] ="'dark'"
+        [label] = "'Bird with icons'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'basic'"
+        ></dxc-dropdown>
+
+        <dxc-dropdown [options] = "optionsOnlyIcons"
+        [iconSrc] ="'./bird.svg'"
+        [theme] ="'dark'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'basic'"
+        [showCaret] = "false"
+        ></dxc-dropdown>
+
+        <dxc-dropdown [options] = "options"
+        [label] = "'Select a bird'"
+        [theme] ="'dark'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'outlined'"
+        ></dxc-dropdown>
+
+        <dxc-dropdown [options] = "optionsTextIcons"
+        [iconSrc] ="'./bird.svg'"
+        [theme] ="'dark'"
+        [label] = "'Bird with icons'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'outlined'"
+        ></dxc-dropdown>
+
+        <dxc-dropdown [options] = "optionsOnlyIcons"
+        [iconSrc] ="'./bird.svg'"
+        [theme] ="'dark'"
+        (selectOption) = "selectOption($event)"
+        [mode] = "'outlined'"
+        [showCaret] = "false"
+        ></dxc-dropdown>
+      </div>
       `,
 
       props: {
-        options: array("Options", noIcons),
-        optionsOnlyIcons: array("OptionsOnlyIcons", icons),
-        optionsTextIcons: array("OptionsTextAndIcon", iconsText),
+        options: object("Options", noIcons),
+        optionsOnlyIcons: object("OptionsOnlyIcons", icons),
+        optionsTextIcons: object("OptionsTextAndIcon", iconsText),
         valueChange: action("Change fired!")
       }
     }),
@@ -137,6 +173,8 @@ storiesOf("Form Components|Dropdown", module)
         (selectOption) = "selectOption($event)"
         [iconPosition] = "iconPosition"
         [optionsIconPosition]="optionsIconPosition"
+        [showCaret] = "showCaret"
+        [mode] = "mode"
         >
     </dxc-dropdown>
                      </div>
@@ -154,10 +192,12 @@ storiesOf("Form Components|Dropdown", module)
         ),
         iconSrc: text("iconSrc", "./bird.svg"),
         label: text("label", "Dropdown example"),
-        optionsTextIcons: array("OptionsTextAndIcon", iconsText),
+        optionsTextIcons: object("OptionsTextAndIcon", iconsText),
         selectOption: action("option selected!"),
         disabled: boolean("disabled", false),
-        theme: select("theme", { light: "light", dark: "dark" }, "light")
+        showCaret: boolean("Show Caret", true),
+        theme: select("theme", { light: "light", dark: "dark" }, "light"),
+        mode: select("mode", { basic: "basic", outlined: "outlined" }, "basic")
       }
     }),
     {

@@ -153,3 +153,8 @@
     }
   }
 }
+::ng-deep {
+  .cdk-overlay-pane {
+    transform: translateX(0px) !important;
+  }
+}

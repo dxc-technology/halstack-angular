@@ -17,6 +17,20 @@
   .arrow-up {
     border-bottom: 5px solid white;
   }
+  button.mat-button.basic {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    .menu-buttom-label {
+      color: #000000;
+    }
+    .arrow-down {
+      border-top: 5px solid #000000;
+    }
+    .arrow-up {
+      border-bottom: 5px solid #000000;
+    }
+  }
 }
 ::ng-deep .dxc-dropdown-menu.dxc-dark {
   .mat-menu-content {
@@ -32,6 +46,16 @@
       &:active {
         color: white;
         background: #666666;
+      }
+    }
+  }
+  &.basic {
+    background-color: #ffffff;
+    .mat-menu-content {
+      border: none;
+      background-color: #ffffff;
+      .mat-menu-item {
+        color: #000000;
       }
     }
   }

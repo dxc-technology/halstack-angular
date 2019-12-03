@@ -4,26 +4,33 @@
   (menuClosed)="isMenuOpened()"
   (menuOpened)="isMenuOpened()"
   [matMenuTriggerFor]="menu"
+  [disableRipple]="true"
   class="menu-buttom-label-wrapper menu-{{ menuOpened }} {{
     !label ? 'label-only-icon' : ''
   }}"
-  [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
+  [ngClass]="{'icon-after': iconPosition === 'after', 'icon-before': iconPosition === 'before',
+    'basic': mode === 'basic', 'outlined': mode === 'outlined', 
+    'onlyIcon': label === '' && !showCaret,
+    'disabled' : disabled}"
 >
-<div>
-  <img *ngIf="iconSrc" src="{{ iconSrc }}" />
-  <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
-</div> 
-  <div class="mat-select-arrow-wrapper">
+
+  <div>
+    <img *ngIf="iconSrc" src="{{ iconSrc }}" />
+    <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
+  </div>
+
+  <div class="mat-select-arrow-wrapper" *ngIf="showCaret">
     <div class="dxc-arrow arrow-{{ arrowClass }}"></div>
   </div>
+
 </button>
 <mat-menu
   #menu="matMenu"
   disableRipple="disableRipple"
   class="
-    {{ onlyHasIcons ? 'dxc-dropdown-menu only-icons' : 'dxc-dropdown-menu' }} {{
-    isDark ? 'dxc-dark' : ''
-  }}
+    {{ onlyHasIcons ? 'dxc-dropdown-menu only-icons' : 'dxc-dropdown-menu' }} 
+    {{ isDark ? 'dxc-dark' : '' }}
+    {{ mode === 'basic' ? 'basic' : 'outlined' }}
   "
 >
   <button

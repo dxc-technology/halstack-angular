@@ -11,8 +11,8 @@ header  {
 .body-container {
     display: flex;
     min-height: 100vh;
-    flex-direction: row;
     background: #efefef;
+
     .sidenav {
         background: black;
         color: white;
@@ -51,7 +51,6 @@ header  {
     }
 
     .container-content {
-        display: flex;
         margin: 50px;
         background: white;
         -webkit-box-flex: 1;

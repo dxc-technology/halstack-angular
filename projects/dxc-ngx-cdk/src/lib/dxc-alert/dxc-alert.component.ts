@@ -17,17 +17,17 @@ import {
 })
 export class DxcAlertComponent implements OnChanges {
 
-  @Input() isVisible: boolean;
   @Input() type: string = "info";
   @Input() mode: string = "inline"
   @Input() inlineText: string;
   @Output() onClose = new EventEmitter<any>();
-  @Input() isCloseVisible: boolean;
-
+  isCloseVisible = false;
   @ViewChild('contents', {static: false}) content:ElementRef;
 
 
-  public ngOnInit() {}
+  public ngOnInit() {
+      this.isCloseVisible = this.onClose.observers.length > 0;
+  }
 
   public ngOnChanges(): void {
     

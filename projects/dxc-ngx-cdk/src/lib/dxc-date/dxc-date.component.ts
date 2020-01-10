@@ -10,9 +10,9 @@ import {
 } from "@angular/core";
 
 import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
-var moment = require('moment');
 
 import { FormControl } from "@angular/forms";
+import * as moment from 'moment';
 export enum Formats {
   "MM/DD/YYYY",
   "DD/MM/YYYY",
@@ -65,7 +65,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @ViewChild('picker',{static:true}) picker: MatDatepicker<any>;
 
   public ngOnInit(): void {
-    this.format = this.format.toUpperCase();
+    this.format = this.format != null ? this.format.toUpperCase() : Formats[Formats["DD-MM-YYYY"]];
     this.checkFormat();
    
     this.picker.openedStream.subscribe( () => {
@@ -105,7 +105,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
    * Check the user format and throw an error if it is not compatible
    */
   private checkFormat(): void {
-    let isFormatCorrect = Object.values(Formats).includes(this.format);
+    const isFormatCorrect = Object.values(Formats).includes(this.format);
     if (!isFormatCorrect) {
       throw new Error("Invalid Date format");
     }

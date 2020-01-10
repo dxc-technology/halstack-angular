@@ -1,0 +1,71 @@
+<div>
+    <div style="display:flex; flex-direction: column">
+        <dxc-alert
+        *ngIf="isVisibleWarningAlert"
+            type="info"
+            isVisible="true"
+            mode="inline"
+            inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
+                leo lobortis eget.">
+        </dxc-alert>
+
+        <dxc-alert *ngIf="isVisibleWarningAlert"
+              type="warning"
+              mode="inline"
+              inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
+        leo lobortis eget."
+              (onClose)="setVisibleWarningAlert()"
+            >
+            </dxc-alert>
+
+            <dxc-alert *ngIf="isVisibleSuccessAlert"
+              type="confirm"
+              mode="inline"
+              inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
+        leo lobortis eget."
+            >
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
+              </div>
+            </dxc-alert>
+
+
+            <dxc-alert *ngIf="isVisibleErrorAlert"
+              type="error"
+              mode="inline"
+              inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
+        leo lobortis eget."
+              (onClose)="setVisibleErrorAlert()"
+            >
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
+              </div>
+            </dxc-alert>
+    </div>
+    <div>
+            <dxc-button
+            mode="basic"
+            theme="light"
+            label="Overlay Alert"
+            (click)="setVisibleModalAlert()"
+          >
+        </dxc-button>
+    </div>
+    <dxc-alert *ngIf="isVisibleModalAlert"
+        type="info"
+        mode="modal"
+        inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
+            leo lobortis eget."
+            (onClose)="setVisibleModalAlert()"
+  >
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+      eget.
+    </div>
+  </dxc-alert>
+</div>

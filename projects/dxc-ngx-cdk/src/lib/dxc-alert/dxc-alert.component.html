@@ -1,4 +1,4 @@
-<div class="alert" *ngIf="isVisible" [ngClass]="{ modal: mode == 'modal' }">
+<div class="alert" [ngClass]="{ modal: mode == 'modal' }">
   <div
     class="backOverlay"
     (click)="onCloseHandler($event)"

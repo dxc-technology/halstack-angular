@@ -9,6 +9,13 @@ export class ButtonInfoComponent {
 
   constructor()  {}
 
+  margins = {
+    top: "medium",
+    left: "small",
+    right: "small",
+    bottom: "xxsmall"
+  }
+
   checked = true;
   public showAlert(event) {
     console.log(event);

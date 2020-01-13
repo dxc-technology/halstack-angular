@@ -44,18 +44,9 @@ export class DxcBoxComponent implements OnInit {
       border-radius: 4px;
       overflow: hidden;
   
-      ${ this.utils.getBoxShadow(inputs.shadowDepth) }
-      ${ this.utils.getMargin('', inputs.margin) }
-      ${ this.utils.getMargin('top', inputs.margin.top) }
-      ${ this.utils.getMargin('right', inputs.margin.right) }
-      ${ this.utils.getMargin('bottom', inputs.margin.bottom) }
-      ${ this.utils.getMargin('left', inputs.margin.left) }
-
-      ${ this.utils.getPadding('', inputs.padding) }
-      ${ this.utils.getPadding('top', inputs.padding.top) }
-      ${ this.utils.getPadding('right', inputs.padding.right) }
-      ${ this.utils.getPadding('bottom', inputs.padding.bottom) }
-      ${ this.utils.getPadding('left', inputs.padding.left) }
+      ${this.utils.getBoxShadow(inputs.shadowDepth) }
+      ${this.utils.getMargins(inputs.margin) }
+      ${this.utils.getPaddings(inputs.padding) }
 
     `;
   }

@@ -29,6 +29,7 @@ export class DxcButtonComponent {
   @Input() iconSrc: string;
   @Input() iconPosition: string;
   @Input() margin: any;
+  @Input() size: string;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -44,7 +45,8 @@ export class DxcButtonComponent {
     label: null,
     iconSrc: null,
     iconPosition: "before",
-    margin: null
+    margin: null,
+    size: "medium"
   });
 
   constructor(private utils: CssUtils) {}
@@ -83,8 +85,30 @@ export class DxcButtonComponent {
     this.onClick.emit($event);
   }
 
+  sizes = {
+    small: "42px",
+    medium: "120px",
+    large: "240px",
+    fillParent: "100%",
+    fitContent: "unset"
+  };
+
+  calculateWidth(margin, size) {
+    if (size === "fillParent") {
+      return css`
+        width: calc(
+          ${this.sizes[size]} - ${this.utils.getMarginValue(margin, "left")} - ${this.utils.getMarginValue(margin, "left")}
+        );
+      `;
+    }
+    return css`
+      width: ${this.sizes[size]};
+    `;
+  }
+
   getDynamicStyle(inputs) {
     return css`
+      ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
       vertical-align: middle;
       button.mat-raised-button,
@@ -93,14 +117,12 @@ export class DxcButtonComponent {
       button.mat-flat-button {
         padding: 12px 30px;
         border-radius: 4px;
-        min-width: 122px;
-        max-width: 420px;
+        ${this.calculateWidth(inputs.margin, inputs.size)}
         min-height: 43px;
         line-height: 19px;
         font-size: 14px;
         font-weight: 500;
-        ${this.utils.getMargins(inputs.margin)}
-
+        white-space: normal;
         letter-spacing: 1px;
         img {
           height: 15px;

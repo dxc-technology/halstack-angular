@@ -1,59 +1,190 @@
 <div>
   <h3>Light</h3>
-  <div>
-    
-  </div>
-  <dxc-button (click)="changeCheckBoxValue()" margin="medium" label="Default" iconmode="fa" mode="flat" icon="fas fa-allergies" iconPosition="before">
+  <div></div>
+  <dxc-button
+    (click)="changeCheckBoxValue()"
+    margin="medium"
+    label="Default"
+    iconmode="fa"
+    [mode]="mode"
+    icon="fas fa-allergies"
+    iconPosition="before"
+  >
+  </dxc-button>
+  
+  <dxc-button
+    margin="medium"
+    mode="basic"
+    disabled
+    label="Back"
+    iconmode="fa"
+    icon="fas fa-arrow-left"
+    iconPosition="before"
+  >
   </dxc-button>
 
-  <!-- <dxc-button mode="basic"  disabled label="Back" iconmode="fa" icon="fas fa-arrow-left" iconPosition="before">
+  <dxc-button
+    margin="medium"
+    mode="raised"
+    disableRipple
+    label="Search"
+    iconmode="mat"
+    icon="search"
+  ></dxc-button>
+
+  <dxc-button
+    margin="medium"
+    mode="raised"
+    disabled
+    label="Share"
+    icon="fab fa-instagram"
+    iconmode="fa"
+    iconPosition="before"
+  >
   </dxc-button>
 
-  <dxc-button mode="raised" disableRipple label="Search" iconmode="mat" icon="search"></dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="outlined"
+    label="Go to profile"
+    icon="person"
+  ></dxc-button>
 
-  <dxc-button mode="raised" disabled label="Share" icon="fab fa-instagram" iconmode="fa" iconPosition="before">
-  </dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="outlined"
+    disabled
+    label="Save"
+    iconmode="fa"
+    icon="fas fa-save"
+  ></dxc-button>
 
-  <dxc-button mode="outlined" label="Go to profile" icon="person"></dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="flat"
+    (click)="showAlert()"
+    label="Warning"
+    icon="warning"
+  ></dxc-button>
 
-  <dxc-button mode="outlined" disabled label="Save" iconmode="fa" icon="fas fa-save"></dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="flat"
+    disabled
+    label="Take a photo"
+    icon="photo_camera"
+    iconPosition="before"
+  ></dxc-button>
 
-  <dxc-button mode="flat" (click)="showAlert()" label="Warning" icon="warning"></dxc-button>
-
-  <dxc-button mode="flat" disabled label="Take a photo" icon="photo_camera" iconPosition="before"></dxc-button>
-
-  <dxc-button mode="flat" label="Click me!" disabled icon="photo_camera" iconPosition="before"></dxc-button> -->
+  <dxc-button
+    margin="medium"
+    mode="flat"
+    label="Click me!"
+    disabled
+    icon="photo_camera"
+    iconPosition="before"
+  ></dxc-button>
   <br />
   <dxc-button [margin]="margins" mode="raised" label="Click me!"></dxc-button>
 </div>
 
 <div class="dark">
   <h2>Dark mode</h2>
-  <!-- <dxc-button [theme]="'dark'" mode="flat" (click)="changeCheckBoxValue()" label="Basic" iconmode="fa" icon="fas fa-allergies"
-    iconPosition="before"></dxc-button>
+  <dxc-button
+    margin="medium"
+    [theme]="'dark'"
+    mode="flat"
+    (click)="changeCheckBoxValue()"
+    label="Basic"
+    iconmode="fa"
+    icon="fas fa-allergies"
+    iconPosition="before"
+  ></dxc-button>
 
-  <dxc-button [theme]="'dark'" mode="basic" disabled label="Back" iconmode="fa" icon="fas fa-arrow-left"
-    iconPosition="before">
+  <dxc-button
+    margin="medium"
+    [theme]="'dark'"
+    mode="basic"
+    disabled
+    label="Back"
+    iconmode="fa"
+    icon="fas fa-arrow-left"
+    iconPosition="before"
+  >
   </dxc-button>
 
-  <dxc-button [theme]="'dark'" mode="raised" disableRipple label="Search" iconmode="mat" icon="search"></dxc-button>
+  <dxc-button
+    margin="medium"
+    [theme]="'dark'"
+    mode="raised"
+    disableRipple
+    label="Search"
+    iconmode="mat"
+    icon="search"
+  ></dxc-button>
 
-  <dxc-button mode="raised" [theme]="'dark'" disabled label="Share" icon="fab fa-instagram" iconmode="fa"
-    iconPosition="before">
+  <dxc-button
+    margin="medium"
+    mode="raised"
+    [theme]="'dark'"
+    disabled
+    label="Share"
+    icon="fab fa-instagram"
+    iconmode="fa"
+    iconPosition="before"
+  >
   </dxc-button>
 
-  <dxc-button mode="outlined" label="Go to profile" icon="person" [theme]="'dark'"></dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="outlined"
+    label="Go to profile"
+    icon="person"
+    [theme]="'dark'"
+  ></dxc-button>
 
-  <dxc-button mode="outlined" disabled label="Save" [theme]="'dark'" iconmode="fa" icon="fas fa-save"></dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="outlined"
+    disabled
+    label="Save"
+    [theme]="'dark'"
+    iconmode="fa"
+    icon="fas fa-save"
+  ></dxc-button>
 
-  <dxc-button mode="flat" (click)="showAlert()" [theme]="'dark'" label="Warning" icon="warning"></dxc-button>
+  <dxc-button
+    margin="medium"
+    mode="flat"
+    (click)="showAlert()"
+    [theme]="'dark'"
+    label="Warning"
+    icon="warning"
+  ></dxc-button>
 
-  <dxc-button mode="flat" disabled label="Take a photo" [theme]="'dark'" icon="photo_camera" iconPosition="before">
+  <dxc-button
+    margin="medium"
+    mode="flat"
+    disabled
+    label="Take a photo"
+    [theme]="'dark'"
+    icon="photo_camera"
+    iconPosition="before"
+  >
   </dxc-button>
 
-
-  <dxc-button [theme]="'dark'" mode="raised" label="Click me!"> </dxc-button>
-
-  <dxc-button label="Click me!" mode="flat" disabled [theme]="'dark'" icon="photo_camera" iconPosition="before"></dxc-button> -->
-
+  <dxc-button margin="medium" [theme]="'dark'" mode="raised" label="Click me!">
+  </dxc-button>
+  <div style="width: 250px">
+    <dxc-button
+      [margin]="margins"
+      label="Click me!"
+      mode="flat"
+      disabled
+      size="fillParent"
+      [theme]="'dark'"
+      icon="photo_camera"
+      iconPosition="before"
+    ></dxc-button>
+  </div>
 </div>

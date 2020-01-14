@@ -11,15 +11,21 @@ export class ButtonInfoComponent {
 
   margins = {
     top: "medium",
-    left: "small",
     right: "small",
-    bottom: "xxsmall"
+    bottom: "medium"
   }
+
+  mode="basic";
 
   checked = true;
   public showAlert(event) {
     console.log(event);
     window.alert('Button1');
+  }
+
+  public updateMode(event) {
+    this.mode = event.target.value;
+    console.log(this.mode);
   }
 
   public changeCheckBoxValue() {

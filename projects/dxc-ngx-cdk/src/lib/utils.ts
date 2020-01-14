@@ -20,22 +20,6 @@ export class CssUtils {
         `;
   }
 
-  getMarginValue(marginType, margin) {
-    return margin && margin !== "object"
-      ? spaces[margin]
-      : margin && margin[marginType]
-      ? spaces[margin[marginType]]
-      : "0px";
-  }
-
-  getPaddingValue(paddingType, padding) {
-    return padding && padding !== "object"
-      ? spaces[padding]
-      : padding && padding[paddingType]
-      ? spaces[padding[paddingType]]
-      : "0px";
-  }
-
   getPaddings(padding) {
     return padding && typeof padding !== "object"
       ? css`
@@ -51,6 +35,22 @@ export class CssUtils {
       : css`
           padding: 0px;
         `;
+  }
+
+  getMarginValue(marginType, margin) {
+    return margin && margin !== "object"
+      ? spaces[margin]
+      : margin && margin[marginType]
+      ? spaces[margin[marginType]]
+      : "0px";
+  }
+
+  getPaddingValue(paddingType, padding) {
+    return padding && padding !== "object"
+      ? spaces[padding]
+      : padding && padding[paddingType]
+      ? spaces[padding[paddingType]]
+      : "0px";
   }
 
   getBoxShadow(shadowDepth) {

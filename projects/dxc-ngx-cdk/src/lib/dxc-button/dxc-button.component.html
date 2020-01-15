@@ -1,68 +1,80 @@
 <button
+  theme
   *ngIf="mode !== 'raised' && mode !== 'outlined' && mode !== 'flat'"
   mat-button
   [disabled]="disabled"
   [disableRipple]="disableRipple"
-  (click) = "onClickHandler($event)"
+  (click)="onClickHandler($event)"
 >
-  <img src="{{iconSrc}}" 
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition === 'before'"
     class="icon-before "
-  >
+  />
   <span *ngIf="label">{{ label }}</span>
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition !== 'before'"
     class=" icon-after"
-  >
+  />
 </button>
 <button
+  theme
   *ngIf="mode === 'raised'"
   mat-raised-button
   [disabled]="disabled"
-  (click) = "onClickHandler($event)"
+  (click)="onClickHandler($event)"
   [disableRipple]="disableRipple"
 >
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition === 'before'"
     class="icon-before"
-  >
+  />
   <span *ngIf="label">{{ label }}</span>
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition !== 'before'"
     class="icon-after"
-  >
+  />
 </button>
 <button
+  theme
   *ngIf="mode === 'outlined'"
   mat-stroked-button
   [disabled]="disabled"
-  (click) = "onClickHandler($event)"
+  (click)="onClickHandler($event)"
   [disableRipple]="disableRipple"
 >
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition === 'before'"
     class="icon-before"
-  >
+  />
   <span *ngIf="label">{{ label }}</span>
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition !== 'before'"
     class="icon-after"
-  >
+  />
 </button>
 <button
-(click) = "onClickHandler($event)"
+  theme
+  (click)="onClickHandler($event)"
   *ngIf="mode === 'flat'"
   mat-flat-button
   [disabled]="disabled"
   [disableRipple]="disableRipple"
 >
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition === 'before'"
     class="icon-before "
-  >
+  />
   <span *ngIf="label">{{ label }}</span>
-  <img src="{{iconSrc}}"
+  <img
+    src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition !== 'before'"
     class="icon-after"
-  >
+  />
 </button>

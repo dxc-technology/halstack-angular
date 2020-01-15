@@ -1,26 +1,27 @@
-@import "~@angular/material/theming";
-
 :host.light {
   button:disabled {
     ::ng-deep {
       span.mat-button-wrapper > span {
-        color: black;
+        color: var(--black);
       }
     }
+  }
+  button.mat-flat-button:hover:not([disabled]) {
+    background-color: var(--lightGrey);
   }
 
   button.mat-raised-button,
   button.mat-button {
-    background-color: #ffed00;
-    color: #000;
+    background-color: var(--yellow);
+    color: var(--black);
 
     &:hover:not([disabled]) {
-      background-color: black;
-      color: #ffed00;
+      background-color: var(--black);
+      color: var(--yellow);
     }
     ::ng-deep {
       .mat-ripple-element {
-        background-color: #FFFFFF;
+        background-color: var(--white);
         opacity: 0.3;
       }
     }
@@ -29,27 +30,27 @@
     box-shadow: 0px 1.5px 3px 0px rgba(0, 0, 0, 0.16) !important;
   }
   button.mat-button {
-    background-color: #ffed00;
-    color: #000;
+    background-color: var(--yellow);
+    color: var(--black);
 
     .mat-button-ripple.mat-ripple,
     .mat-button-focus-overlay {
       .mat-ripple-element {
-        background-color: #666;
+        background-color: var(--darkGrey);
         opacity: 0.75;
       }
     }
 
     &:hover:not([disabled]) {
-      background-color: black;
-      color: #ffed00;
+      background-color: var(--black);;
+      color: var(--yellow);
 
       span.mat-button-wrapper {
         z-index: 5;
       }
 
       .mat-button-ripple.mat-ripple {
-        background-color: black;
+        background-color: var(--black);;
       }
 
       .mat-button-ripple.mat-ripple,
@@ -57,7 +58,7 @@
         z-index: -5;
 
         .mat-ripple-element {
-          background-color: #666;
+          background-color: var(--darkGrey);
           opacity: 0.75;
         }
       }
@@ -67,26 +68,26 @@
   button.mat-stroked-button {
     ::ng-deep {
       .mat-ripple-element {
-        background-color: #666666;
+        background-color: var(--darkGrey);
       }
     }
     &:not([disabled]) {
-      border: 2px solid #000;
+      border: 2px solid var(--black);;
     }
 
     &:disabled {
       border-width: 2px;
-      border-color: #d9d9d9;
+      border-color: var(--lightGrey);
       ::ng-deep {
         span.mat-button-wrapper > span {
-          color: #d9d9d9;
+          color: var(--lightGrey);
         }
       }
     }
 
     &:hover:not([disabled]) {
       background-color: transparent;
-      border-color: #ffed00;
+      border-color: var(--yellow);
       ::ng-deep {
         .mat-button-focus-overlay {
           opacity: 0;

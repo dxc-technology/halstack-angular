@@ -2,6 +2,7 @@ import { css } from "emotion";
 import { spaces } from "./variables.js";
 
 export class CssUtils {
+  spacesVariables = spaces;
   getMargins(margin) {
     return margin && typeof margin !== "object"
       ? css`
@@ -37,7 +38,7 @@ export class CssUtils {
   }
 
   getMarginValue(marginType, margin) {
-    return margin && margin !== "object"
+    return margin && typeof margin !== "object"
       ? spaces[margin]
       : margin && margin[marginType]
       ? spaces[margin[marginType]]
@@ -45,7 +46,7 @@ export class CssUtils {
   }
 
   getPaddingValue(paddingType, padding) {
-    return padding && padding !== "object"
+    return padding && typeof padding !== "object"
       ? spaces[padding]
       : padding && padding[paddingType]
       ? spaces[padding[paddingType]]

@@ -3,56 +3,31 @@
   mat-checkbox {
     ::ng-deep {
       label.mat-checkbox-layout {
-        display: inline-flex;
-        align-items: center;
         .mat-ripple-element {
-          background-color: #666666;
+          background-color: var(--darkGrey);
         }
         .mat-checkbox-inner-container {
-          margin: 10px 15px;
-          width: 20px;
-          height: 20px;
-
           .mat-checkbox-frame {
-            border-radius: 4px;
-            border-color: #666666;
+            border-color: var(--darkGrey);
           }
 
           .mat-checkbox-background {
-            svg path {
-              stroke: black !important;
-            }
-
             .mat-checkbox-mixedmark {
-              background-color: black;
+              background-color: var(--black);
             }
           }
         }
-      }
-      .mat-checkbox-ripple {
-        left: calc(50% - 23.3px);
-        top: calc(50% - 23.3px);
-        height: 46.6px;
-        width: 46.6px;
-      }
-
-      .mat-ripple-element:not(.mat-checkbox-persistent-ripple) {
-        height: 46.6px !important;
-        width: 46.6px !important;
-        left: 0px !important;
-        top: 0px !important;
-        opacity: 0.25;
       }
 
       &.mat-checkbox-checked {
         .mat-checkbox-frame {
-          border-color: #ffed00;
+          border-color: var(--yellow);
         }
       }
 
       .mat-checkbox-label {
         .mat-checkbox-required {
-          color: #d0011b;
+          color: var(--darkRed);
           margin-right: 1px;
         }
       }
@@ -63,11 +38,11 @@
           .mat-checkbox-background
           svg
           path.mat-checkbox-checkmark-path {
-          stroke: white !important;
+          stroke: var(--white) !important;
         }
 
         .mat-checkbox-label {
-          color: #666666;
+          color: var(--darkGrey);
           opacity: 0.5;
         }
 

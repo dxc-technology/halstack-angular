@@ -1,0 +1,66 @@
+<div class="light">
+  <div style="width: 250px">
+    <dxc-checkbox
+      margin="medium"
+      size="fillParent"
+      labelPosition="before"
+      label="Checkbox 1"
+    ></dxc-checkbox>
+  </div>
+
+  <dxc-checkbox labelPosition="before" label="Checkbox 2"></dxc-checkbox>
+
+  <dxc-checkbox labelPosition="after" label="Checkbox 3"></dxc-checkbox>
+
+  <dxc-checkbox
+    disabled
+    required
+    labelPosition="before"
+    label="Checkbox 4"
+  ></dxc-checkbox>
+
+  <dxc-checkbox indeterminate label="Checkbox 5"></dxc-checkbox>
+
+  <dxc-checkbox indeterminate required label="Checkbox 6"></dxc-checkbox>
+</div>
+<div class="dark">
+  <dxc-checkbox
+    labelPosition="before"
+    [theme]="'dark'"
+    label="Checkbox 1"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    labelPosition="before"
+    [theme]="'dark'"
+    label="Checkbox 2"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    [theme]="'dark'"
+    labelPosition="after"
+    label="Checkbox 3"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    disabled
+    required
+    [checked]="checkedValue"
+    [theme]="'dark'"
+    labelPosition="before"
+    label="Checkbox 4"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    indeterminate
+    [theme]="'dark'"
+    label="Checkbox 5"
+  ></dxc-checkbox>
+
+  <dxc-checkbox
+    indeterminate
+    [theme]="'dark'"
+    required
+    label="Checkbox 6"
+  ></dxc-checkbox>
+</div>

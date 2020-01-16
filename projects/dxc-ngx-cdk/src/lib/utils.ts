@@ -1,6 +1,5 @@
 import { css } from "emotion";
 import { spaces } from "./variables.js";
-import { tsPropertySignature } from "@babel/types";
 
 export class CssUtils {
   getMargins(margin) {

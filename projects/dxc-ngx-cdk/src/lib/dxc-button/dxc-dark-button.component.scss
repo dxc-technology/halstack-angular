@@ -41,14 +41,14 @@
                     color: var(--white);
                 }
                 .mat-ripple-element {
-                    background-color: var(--lightGrey);;
+                    background-color: var(--lightGrey);
                     opacity:0.3;
                 }
             }
         } 
         &.mat-flat-button {
             &:hover:not([disabled]) {
-                background: var(--lightGrey);;
+                background: var(--lightGrey);
                 ::ng-deep {
                     span.mat-button-wrapper > span {
                         color:var(--black);
@@ -61,7 +61,7 @@
                         color: var(--white);
                     }
                 }
-                background-color: var(--darkGrey);;
+                background-color: var(--darkGrey);
             }
             ::ng-deep {
                 span.mat-button-wrapper > span {

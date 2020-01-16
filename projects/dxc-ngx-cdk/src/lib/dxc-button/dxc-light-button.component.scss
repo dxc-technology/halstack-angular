@@ -42,7 +42,7 @@
     }
 
     &:hover:not([disabled]) {
-      background-color: var(--black);;
+      background-color: var(--black);
       color: var(--yellow);
 
       span.mat-button-wrapper {
@@ -50,7 +50,7 @@
       }
 
       .mat-button-ripple.mat-ripple {
-        background-color: var(--black);;
+        background-color: var(--black);
       }
 
       .mat-button-ripple.mat-ripple,
@@ -72,7 +72,7 @@
       }
     }
     &:not([disabled]) {
-      border: 2px solid var(--black);;
+      border: 2px solid var(--black);
     }
 
     &:disabled {
@@ -94,6 +94,5 @@
         }
       }
     }
-    
   }
 }

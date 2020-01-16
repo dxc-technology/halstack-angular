@@ -10,7 +10,6 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { ThemeService } from '../theme';
 
 @Component({
   selector: "dxc-button",
@@ -50,7 +49,7 @@ export class DxcButtonComponent {
     size: "medium"
   });
 
-  constructor(private utils: CssUtils, private themeService: ThemeService) {}
+  constructor(private utils: CssUtils) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.iconPosition !== "after") {
@@ -80,7 +79,6 @@ export class DxcButtonComponent {
       this.isLight = true;
       this.isDark = false;
     }
-    this.themeService.setTheme('default');
   }
 
   public onClickHandler($event: any): void {

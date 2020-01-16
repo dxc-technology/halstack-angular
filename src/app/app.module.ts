@@ -37,6 +37,8 @@ import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
 import { DxcBoxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-box/dxc-box.module';
+import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,9 +74,11 @@ import { DxcBoxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-box/dxc-box
     DxcDateModule,
     DxcRadioModule,
     BrowserModule,
-    DxcSliderModule
+    DxcSliderModule,
+    HttpClientModule
+    
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

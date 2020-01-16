@@ -1,6 +1,8 @@
 <div>
 <h3>Light</h3>
-    <dxc-accordion label="First accordion uncontrolled">
+    <dxc-accordion label="First accordion uncontrolled"
+    [margin]="{top: 'small', bottom: 'large'}"
+    padding="xxlarge">
     <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -10,7 +12,9 @@
           theme="light"
           label="Second accordion controlled"
           (change)="changeIsExpanded()"
-          isExpanded={isExpanded}>
+          isExpanded={isExpanded}
+          [margin]="  { top: 'small', bottom: 'large' }"
+          padding="xxlarge">
           <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -19,8 +23,10 @@
     <dxc-accordion
           label="Third accordion"
           (change)="changeIsExpanded()"
-          disabled
+          disabled="true"
           assistiveText="Extra information"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           isExpanded={isExpanded}>
           <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -33,6 +39,8 @@
           assistiveText="Extra information"
           iconPosition="before"
           iconSrc="{{homeLogo}}"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           (change)="changeIsExpanded()"
           isExpanded={isExpanded}
         >
@@ -48,6 +56,8 @@
           iconPosition="after"
           iconSrc="{{homeLogo}}"
           (change)="changeIsExpanded()"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           isExpanded={isExpanded}
         >
           <div>
@@ -61,6 +71,8 @@
           theme="light"
           mode="alternative"
           label="First accordion"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           (change)="changeIsExpanded()"
         >
           <div>
@@ -73,8 +85,10 @@
         <dxc-accordion
           theme="light"
           mode="alternative"
-          disabled
+          disabled="true"
           label="Second accordion"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           (change)="changeIsExpanded()"
         >
           <div>
@@ -87,6 +101,8 @@
           mode="alternative"
           label="Third accordion"
           assistiveText="Extra information"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           (change)="changeIsExpanded()"
         >
           <div>
@@ -101,6 +117,8 @@
           assistiveText="Extra information"
           iconPosition="before"
           iconSrc="{{homeLogo}}"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           (change)="changeIsExpanded()"
         >
           <div>
@@ -115,6 +133,8 @@
           assistiveText="Extra information"
           iconPosition="after"
           iconSrc="{{homeLogo}}"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           (change)="changeIsExpanded()"
         >
           <div>
@@ -127,10 +147,10 @@
       <div>
         <div
           style="
-            background: black;
-            padding-top: 50px;
-            padding-bottom: 50px; ">
+            background: black;">
           <dxc-accordion label="First accordion" (change)="changeIsExpanded()"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
           >
             <div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -140,8 +160,10 @@
           </dxc-accordion>
           <dxc-accordion
             theme="dark"
-            disabled
+            disabled = "true"
             label="Second accordion"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -155,6 +177,8 @@
             label="Third accordion"
             (change)="changeIsExpanded()"
             assistiveText="Extra information"
+            [margin]="{ top: 'small', bottom: 'large' }" 
+            padding="xxlarge"
           >
             <div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -168,6 +192,8 @@
             assistiveText="Extra information"
             iconPosition="before"
             iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -182,6 +208,8 @@
             assistiveText="Extra information"
             iconPosition="after"
             iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -196,6 +224,8 @@
             theme="dark"
             mode="alternative"
             label="First accordion"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -207,8 +237,10 @@
           <dxc-accordion
             theme="dark"
             mode="alternative"
-            disabled
+            disabled = "true"
             label="Second accordion"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -222,6 +254,8 @@
             mode="alternative"
             label="Third accordion"
             assistiveText="Extra information"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -237,6 +271,8 @@
             assistiveText="Extra information"
             iconPosition="before"
             iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>
@@ -252,6 +288,8 @@
             assistiveText="Extra information"
             iconPosition="after"
             iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
             (change)="changeIsExpanded()"
             >
             <div>

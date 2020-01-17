@@ -3,14 +3,22 @@ import {
   OnInit,
   Input,
   Output,
-  HostBinding
-} from '@angular/core';
-import { EventEmitter } from '@angular/core';
+  HostBinding,
+  SimpleChanges
+} from "@angular/core";
+import { EventEmitter } from "@angular/core";
+import { css } from "emotion";
+import { BehaviorSubject } from "rxjs";
+import { CssUtils } from "../utils";
 
 @Component({
-  selector: 'dxc-radio',
-  templateUrl: './dxc-radio.component.html',
-  styleUrls: ['./dxc-radio.component.scss','./dxc-light-radio.component.scss','./dxc-dark-radio.component.scss'],
+  selector: "dxc-radio",
+  templateUrl: "./dxc-radio.component.html",
+  styleUrls: [
+    "./dxc-light-radio.component.scss",
+    "./dxc-dark-radio.component.scss"
+  ],
+  providers: [CssUtils]
 })
 export class DxcRadioComponent implements OnInit {
   @Input() checked: boolean;
@@ -21,13 +29,36 @@ export class DxcRadioComponent implements OnInit {
   @Input() name: string;
   @Input() required: boolean | string;
   @Input() labelPosition: string;
-  @Input() value: any;
   @Output() checkedChange: EventEmitter<any>;
+  @Input() margin: string;
+  @Input() size: string;
 
-  @HostBinding('class.light') isLight: boolean = true;
-  @HostBinding('class.dark') isDark: boolean = false;
+  @HostBinding("class") className;
+  @HostBinding("class.light") isLight: boolean = true;
+  @HostBinding("class.dark") isDark: boolean = false;
 
-  public ngOnChanges() :void { 
+  defaultInputs = new BehaviorSubject<any>({
+    checked: false,
+    theme: "light",
+    disabled: false,
+    disableRipple: false,
+    label: null,
+    name: "",
+    required: false,
+    labelPosition: "before",
+    margin: null,
+    size: "medium"
+  });
+
+  sizes = {
+    small: "42px",
+    medium: "120px",
+    large: "240px",
+    fillParent: "100%",
+    fitContent: "unset"
+  };
+
+  public ngOnChanges(changes: SimpleChanges): void {
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
@@ -35,18 +66,80 @@ export class DxcRadioComponent implements OnInit {
       this.isLight = true;
       this.isDark = false;
     }
-    this.labelPosition === 'after' ?  'after': 'before'
+    this.labelPosition === "after" ? "after" : "before";
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      result[item] = changes[item].currentValue;
+      return result;
+    }, {});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
-  
-  constructor() {
+
+  constructor(private utils: CssUtils) {
     this.checkedChange = new EventEmitter();
   }
 
+  calculateWidth(margin, size) {
+    if (size === "fillParent") {
+      return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
+    }
+    return css`
+      width: ${this.sizes[size]};
+    `;
+  }
+
   ngOnInit() {
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   onChange(event: any) {
     this.checkedChange.emit(event.source.checked);
   }
- }
 
+  getDynamicStyle(inputs) {
+    return css`
+      display: inline-flex;
+      justify-content: center;
+      ${this.utils.getMargins(inputs.margin)}
+      ${this.calculateWidth(inputs.margin, inputs.size)}
+      mat-radio-button {
+        .mat-radio-label {
+          .mat-radio-label-content {
+            padding: 0px !important;
+          }
+          .mat-radio-required {
+            margin-right: 1px;
+          }
+          display: inline-flex;
+          align-items: center;
+
+          .mat-radio-container {
+            ${inputs.labelPosition === "after"
+            ? css`
+                margin-right: 15px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+              `
+            : inputs.labelPosition === "before"
+            ? css`
+                margin-left: 15px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+              `
+            : css``}
+
+            .mat-radio-frame {
+              border-radius: 4px;
+            }
+          }
+        }
+
+        &.mat-radio-disabled {
+          .mat-radio-label {
+            cursor: not-allowed;
+          }
+        }
+      }
+    `;
+  }
+}

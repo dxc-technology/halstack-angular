@@ -1,76 +1,69 @@
-<div class= "light">
-    <dxc-radio
-    labelPosition="before"
-    label="Radio 1"
-    ></dxc-radio>
-    <br />
-    <dxc-radio
-    labelPosition="before"
-    label="Radio 2"
-    ></dxc-radio>
-    
-    <dxc-radio
-    labelPosition="after"
-    label="Radio 3"
-    ></dxc-radio>
-    
-    <dxc-radio
+<div class="light">
+  <dxc-radio labelPosition="before" label="Radio 1" margin="medium"></dxc-radio>
+
+  <dxc-radio labelPosition="before" label="Radio 2" margin="medium"></dxc-radio>
+
+  <dxc-radio labelPosition="after" label="Radio 3" margin="medium"></dxc-radio>
+
+  <dxc-radio
     disabled
     labelPosition="before"
     label="Radio 4"
-    ></dxc-radio>
-    
-    <dxc-radio
+    margin="medium"
+  ></dxc-radio>
+
+  <dxc-radio (change)="showAlert()" label="Radio 5" margin="medium"></dxc-radio>
+
+  <dxc-radio (change)="showAlert()" label="Radio 6" margin="medium"></dxc-radio>
+</div>
+<div class="dark">
+  <dxc-radio
+    labelPosition="before"
+    [theme]="'dark'"
+    label="Radio 1"
+    margin="medium"
+  ></dxc-radio>
+
+  <dxc-radio
+    labelPosition="before"
+    [theme]="'dark'"
+    label="Radio 2"
+    margin="medium"
+  ></dxc-radio>
+
+  <dxc-radio
+    [theme]="'dark'"
+    labelPosition="after"
+    label="Radio 3"
+    margin="medium"
+  ></dxc-radio>
+
+  <dxc-radio
+    disabled
+    [theme]="'dark'"
+    labelPosition="before"
+    label="Radio 4"
+    margin="medium"
+  ></dxc-radio>
+
+  <dxc-radio
+    [theme]="'dark'"
     (change)="showAlert()"
     label="Radio 5"
-    ></dxc-radio>
-    
-    <dxc-radio></dxc-radio>
-    
+    margin="medium"
+  ></dxc-radio>
+
+  <dxc-radio
+    [checked]="checked"
+    [theme]="'dark'"
+    label="Radio 6"
+    margin="medium"
+  ></dxc-radio>
+</div>
+
+<div style="width: 600px">
     <dxc-radio
-    (change)="showAlert()"
-    label="Radio 7"
-    ></dxc-radio>
-    </div>
-    <div class="dark"> 
-          
-        <dxc-radio
-        labelPosition="before"
-        [theme]="'dark'"
-        label="Radio 1"
-        ></dxc-radio>
-        <br />
-        <dxc-radio
-        labelPosition="before"
-        [theme]="'dark'"
-        label="Radio 2"
-        ></dxc-radio>
-    
-        <dxc-radio
-        [theme]="'dark'"
-        labelPosition="after"
-        label="Radio 3"
-        ></dxc-radio>
-    
-        <dxc-radio
-        disabled
-        [theme]="'dark'"
-        labelPosition="before"
-        label="Radio 4"
-        ></dxc-radio>
-    
-        <dxc-radio
-        [theme]="'dark'"
-        (change)="showAlert()"
-        label="Radio 5"
-        ></dxc-radio>
-    
-        <dxc-radio></dxc-radio>
-    
-        <dxc-radio
-        (change)="showAlert()"
-        [theme]="'dark'"
-        label="Radio 7"
-        ></dxc-radio>
-    
-    </div>
+    label="Parent Filled"
+    margin="medium"
+    size="fillParent"
+  ></dxc-radio></div>

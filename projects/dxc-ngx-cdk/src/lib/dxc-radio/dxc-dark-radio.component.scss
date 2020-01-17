@@ -2,40 +2,42 @@
   ::ng-deep {
     label.mat-radio-label {
       .mat-radio-required {
-        color: #ff6161;
+        color: var(--lightRed);
       }
     }
   }
   mat-radio-button:not(.mat-radio-disabled) ::ng-deep {
     .mat-radio-mixedmark {
-      background-color: black;
+      background-color: var(--black);
     }
 
     .mat-radio-label-content {
-      color: white;
+      color: var(--white);
     }
     .mat-radio-outer-circle {
-      border-color: white;
+      border-color: var(--white);
     }
     .mat-radio-inner-circle {
-      border-color: #ffed00;
+      border-color: var(--yellow);
+      background-color: var(--yellow);
     }
 
     .mat-radio-ripple {
       .mat-ripple-element:not(.mat-radio-persistent-ripple) {
         opacity: 0.25;
+        background-color: var(--darkGrey);
       }
     }
   }
   mat-radio-button.mat-radio-disabled ::ng-deep {
     .mat-radio-label-content {
-      color: #666666;
+      color: var(--darkGrey);
     }
     .mat-radio-outer-circle {
-      border-color: #666666;
+      border-color: var(--darkGrey);
     }
     .mat-radio-inner-circle {
-      background-color: #666666;
+      background-color: var(--darkGrey);
     }
   }
 }

@@ -12,7 +12,9 @@ import {
 import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
 
 import { FormControl } from "@angular/forms";
-import * as moment from 'moment';
+import * as momentImported from 'moment';
+const moment = momentImported;
+
 export enum Formats {
   "MM/DD/YYYY",
   "DD/MM/YYYY",

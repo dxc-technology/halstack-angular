@@ -46,7 +46,7 @@ export class DxcButtonComponent {
     iconSrc: null,
     iconPosition: "before",
     margin: null,
-    size: "medium"
+    size: null
   });
 
   constructor(private utils: CssUtils) {}

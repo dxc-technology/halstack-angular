@@ -1,10 +1,10 @@
 <div>
     <div style="display:flex; flex-direction: column">
         <dxc-alert
-        *ngIf="isVisibleWarningAlert"
+        *ngIf="isVisibleInfoAlert"
             type="info"
-            isVisible="true"
             mode="inline"
+            margin="medium"
             inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
                 leo lobortis eget.">
         </dxc-alert>
@@ -12,6 +12,7 @@
         <dxc-alert *ngIf="isVisibleWarningAlert"
               type="warning"
               mode="inline"
+              [margin]="{left: 'medium', bottom: 'medium'}"
               inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
         leo lobortis eget."
               (onClose)="setVisibleWarningAlert()"
@@ -21,6 +22,7 @@
             <dxc-alert *ngIf="isVisibleSuccessAlert"
               type="confirm"
               mode="inline"
+              [margin]="{left: 'medium', bottom: 'medium'}"
               inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
         leo lobortis eget."
             >
@@ -35,6 +37,7 @@
             <dxc-alert *ngIf="isVisibleErrorAlert"
               type="error"
               mode="inline"
+              [margin]="{left: 'medium', bottom: 'medium'}"
               inlineText=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
         leo lobortis eget."
               (onClose)="setVisibleErrorAlert()"
@@ -51,6 +54,7 @@
             mode="basic"
             theme="light"
             label="Overlay Alert"
+            [margin]="{left: 'medium', bottom: 'medium'}"
             (click)="setVisibleModalAlert()"
           >
         </dxc-button>

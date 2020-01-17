@@ -1,0 +1,301 @@
+<div>
+<h3>Light</h3>
+    <dxc-accordion label="First accordion uncontrolled"
+    [margin]="{top: 'small', bottom: 'large'}"
+    padding="xxlarge">
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        malesuada lacus ex, sit amet blandit leo lobortis eget.
+    </div>
+    </dxc-accordion>
+    <dxc-accordion
+          theme="light"
+          label="Second accordion controlled"
+          (change)="changeIsExpanded()"
+          isExpanded={isExpanded}
+          [margin]="  { top: 'small', bottom: 'large' }"
+          padding="xxlarge">
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+    </dxc-accordion>
+    <dxc-accordion
+          label="Third accordion"
+          (change)="changeIsExpanded()"
+          disabled="true"
+          assistiveText="Extra information"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          isExpanded={isExpanded}>
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+        <dxc-accordion
+          theme="light"
+          label="Fourth accordion"
+          assistiveText="Extra information"
+          iconPosition="before"
+          iconSrc="{{homeLogo}}"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          (change)="changeIsExpanded()"
+          isExpanded={isExpanded}
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+        <dxc-accordion
+          theme="light"
+          label="Fifth accordion"
+          assistiveText="Extra information"
+          iconPosition="after"
+          iconSrc="{{homeLogo}}"
+          (change)="changeIsExpanded()"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          isExpanded={isExpanded}
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+      </div>
+      <div style="margin-bottom:50px;">
+        <dxc-accordion
+          theme="light"
+          mode="alternative"
+          label="First accordion"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          (change)="changeIsExpanded()"
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
+            lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+        <dxc-accordion
+          theme="light"
+          mode="alternative"
+          disabled="true"
+          label="Second accordion"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          (change)="changeIsExpanded()"
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+        <dxc-accordion
+          theme="light"
+          mode="alternative"
+          label="Third accordion"
+          assistiveText="Extra information"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          (change)="changeIsExpanded()"
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+        <dxc-accordion
+          theme="light"
+          mode="alternative"
+          label="Fourth accordion"
+          assistiveText="Extra information"
+          iconPosition="before"
+          iconSrc="{{homeLogo}}"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          (change)="changeIsExpanded()"
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+        <dxc-accordion
+          theme="light"
+          mode="alternative"
+          label="Fifth accordion"
+          assistiveText="Extra information"
+          iconPosition="after"
+          iconSrc="{{homeLogo}}"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          (change)="changeIsExpanded()"
+        >
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </dxc-accordion>
+      </div>
+      <h3>Dark</h3>
+      <div>
+        <div
+          style="
+            background: black;">
+          <dxc-accordion label="First accordion" (change)="changeIsExpanded()"
+          [margin]="{ top: 'small', bottom: 'large' }"
+          padding="xxlarge"
+          >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            disabled = "true"
+            label="Second accordion"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            label="Third accordion"
+            (change)="changeIsExpanded()"
+            assistiveText="Extra information"
+            [margin]="{ top: 'small', bottom: 'large' }" 
+            padding="xxlarge"
+          >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            label="Fourth accordion"
+            assistiveText="Extra information"
+            iconPosition="before"
+            iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            label="Fifth accordion"
+            assistiveText="Extra information"
+            iconPosition="after"
+            iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+        </div>
+        <div style="background: black; padding-bottom: 50px">
+          <dxc-accordion
+            theme="dark"
+            mode="alternative"
+            label="First accordion"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            mode="alternative"
+            disabled = "true"
+            label="Second accordion"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            mode="alternative"
+            label="Third accordion"
+            assistiveText="Extra information"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            mode="alternative"
+            label="Fourth accordion"
+            assistiveText="Extra information"
+            iconPosition="before"
+            iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+          <dxc-accordion
+            theme="dark"
+            mode="alternative"
+            label="Fifth accordion"
+            assistiveText="Extra information"
+            iconPosition="after"
+            iconSrc="{{homeLogo}}"
+            [margin]="{ top: 'small', bottom: 'large' }"
+            padding="xxlarge"
+            (change)="changeIsExpanded()"
+            >
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </div>
+          </dxc-accordion>
+</div>

@@ -8,9 +8,10 @@
   [name]="name"
   [id]="id"
   (change)="onValueChange($event)"
+  theme
   >
-  <span *ngIf="text" [ngClass] = "labelPosition === 'after' ? 'label-after' : 'label-before'">
+  <span *ngIf="label" class="checkboxLabel">
     <span *ngIf="required" class="mat-checkbox-required" >*</span>
-    <span>{{ text }}</span>
+    <span>{{ label }}</span>
   </span>
 </mat-checkbox>

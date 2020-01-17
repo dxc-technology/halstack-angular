@@ -3,25 +3,16 @@
   mat-checkbox {
     ::ng-deep {
       label.mat-checkbox-layout {
-        display: inline-flex;
-        align-items: center;
         .mat-ripple-element {
-          background-color: #ffffff;
+          background-color: var(--white);
         }
         .mat-checkbox-inner-container {
-          margin: 10px 15px;
-          width: 20px;
-          height: 20px;
 
           .mat-checkbox-frame {
-            border-radius: 4px;
-            border-color: #ffffff;
+            border-color: var(--white);
           }
 
           .mat-checkbox-background {
-            svg path {
-              stroke: black !important;
-            }
 
             .mat-checkbox-mixedmark {
               background-color: transparent;
@@ -29,28 +20,17 @@
           }
         }
       }
-      .mat-checkbox-ripple {
-        left: calc(50% - 23.3px);
-        top: calc(50% - 23.3px);
-        height: 46.6px;
-        width: 46.6px;
-      }
 
-      .mat-ripple-element:not(.mat-checkbox-persistent-ripple) {
-          height: 46.6px !important;
-          width: 46.6px !important;
-          left: 0px !important;
-          top: 0px !important;
-          opacity: 0.25;
-      }
-      .mat-checkbox-inner-container:focus .mat-checkbox-persistent-ripple {
-        opacity: 0.15;
+      &.mat-checkbox-checked {
+        .mat-checkbox-frame {
+          border-color: var(--yellow);
+        }
       }
 
       .mat-checkbox-label {
-        color: #ffffff;
+        color: var(--white);
         .mat-checkbox-required {
-          color: #ff6161;
+          color: var(--lightRed);
           margin-right: 1px;
         }
       }
@@ -58,22 +38,21 @@
     &.mat-checkbox-disabled {
       ::ng-deep {
         .mat-checkbox-frame {
-            border-color: #666666 !important;
+          border-color: var(--darkGrey) !important;
         }
         .mat-checkbox-label {
-            color: #fff;
-            opacity: 0.7;
+          color: var(--white);
+          opacity: 0.7;
         }
-        
       }
       cursor: not-allowed;
     }
     &.mat-checkbox-disabled.mat-checkbox-checked {
-        ::ng-deep {
-            .mat-checkbox-background {
-                background-color: #666666 !important;
-            }
-          }
+      ::ng-deep {
+        .mat-checkbox-background {
+          background-color: var(--darkGrey) !important;
+        }
+      }
     }
   }
 }

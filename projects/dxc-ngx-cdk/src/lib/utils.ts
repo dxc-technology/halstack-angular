@@ -2,7 +2,6 @@ import { css } from "emotion";
 import { spaces } from "./variables.js";
 
 export class CssUtils {
-  spacesVariables = spaces;
   getMargins(margin) {
     return margin && typeof margin !== "object"
       ? css`

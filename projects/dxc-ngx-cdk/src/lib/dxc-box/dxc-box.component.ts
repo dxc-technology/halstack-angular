@@ -14,6 +14,16 @@ export class DxcBoxComponent implements OnInit {
   @Input() display:string;
   @Input() margin: any;
   @Input() padding: any;
+  @Input() size: any;
+
+
+   sizes = {
+    small: "60px",
+    medium: "240px",
+    large: "480px",
+    fillParent: "100%",
+    fitcontent: "unset"
+  };
 
   defaultInputs = new BehaviorSubject<any>({
     display: 'inline-flex',

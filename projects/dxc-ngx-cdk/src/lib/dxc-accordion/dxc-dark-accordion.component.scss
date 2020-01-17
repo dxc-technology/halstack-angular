@@ -124,8 +124,10 @@
             display: none;
           }
           svg.down {
-            fill: #ffffff;
+            
+            display: block;
             opacity: 0.5;
+            fill: #ffffff;
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {

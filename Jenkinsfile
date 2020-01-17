@@ -118,13 +118,6 @@ pipeline {
                 '''
             }
         }
-        stage('Build dxc-ngx-cdk storybook') {
-            steps {
-                sh '''
-                    npm run build-storybook
-                '''
-            }
-        }
         stage('Test library') {
             steps {
                 sh '''
@@ -154,36 +147,6 @@ pipeline {
                     cd ./dist/dxc-ngx-cdk
                     npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm --tag alpha
                 '''
-            }
-        }
-        stage('Deploy storybook to dev and publish to Artifactory') {
-            when { branch 'master' }
-            steps {
-                // Deploying storybook to dev-diaas-angular-storybook environment
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'DIAAS-AWS-CLI',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                    withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
-                        sh '''
-                            aws s3 rm s3://dev-diaas-angular-storybook/ --recursive
-                            aws s3 cp ./storybook-static/ s3://dev-diaas-angular-storybook/ --recursive
-                        '''
-                    }
-                }
-                // Zipping storybook
-                sh '''
-                    rm -rf storybook.zip
-                '''
-                zip zipFile: 'storybook.zip', archive: false, dir: './storybook-static'
-                // Uploading storybook to Artifactory (diaas-generic)
-                withCredentials([usernamePassword(credentialsId:"diaas-rw", passwordVariable:"ARTIF_PASSWORD", usernameVariable:"ARTIF_USER")]) {
-                  sh '''
-                        curl -u${ARTIF_USER}:${ARTIF_PASSWORD} -T ./storybook.zip "https://artifactory.csc.com/artifactory/diaas-generic/"${SERVICE_NAME}"/storybook/storybook-bundle.${BRANCH_NAME}.${BUILD_ID}.zip"
-                  '''
-                }
             }
         }
         stage('Tagging version') {
@@ -273,38 +236,6 @@ pipeline {
                         '''
                     }
                     
-                }
-            }
-        }
-        stage('Deploy storybook to demo and publish to Artifactory') {
-            when {
-                expression { env.RELEASE_VALID == 'valid' } 
-            }
-            steps {
-                // Deploying storybook to dev-diaas-angular-storybook environment
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'DIAAS-AWS-CLI',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                    withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
-                        sh '''
-                            aws s3 rm s3://diaas-angular-storybook/${RELEASE_NUMBER}/ --recursive
-                            aws s3 cp ./storybook-static/ s3://diaas-angular-storybook/${RELEASE_NUMBER}/ --recursive
-                        '''
-                    }
-                }
-                // Zipping storybook
-                sh '''
-                    rm -rf storybook.zip
-                '''
-                zip zipFile: 'storybook.zip', archive: false, dir: './storybook-static'
-                // Uploading storybook to Artifactory (diaas-generic)
-                withCredentials([usernamePassword(credentialsId:"diaas-rw", passwordVariable:"ARTIF_PASSWORD", usernameVariable:"ARTIF_USER")]) {
-                  sh '''
-                        curl -u${ARTIF_USER}:${ARTIF_PASSWORD} -T ./storybook.zip "https://artifactory.csc.com/artifactory/diaas-generic/"${SERVICE_NAME}"/storybook/storybook-bundle.${BRANCH_NAME}.${BUILD_ID}.zip"
-                  '''
                 }
             }
         }

@@ -39,12 +39,6 @@
             border-bottom-right-radius: 0px;
           }
         }
-
-        div.mat-expansion-panel-content {
-          div.mat-expansion-panel-body {
-            padding: 30px;
-          }
-        }
       }
     }
     mat-expansion-panel.disabled {
@@ -55,10 +49,11 @@
         mat-expansion-panel-header {
           padding: 8px 30px;
           svg.up {
-            display: none;
+            display: block;
+            fill: #d9d9d9;
           }
           svg.down {
-            fill: #d9d9d9;
+            display: none;
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
@@ -115,7 +110,7 @@
         max-height: 64px;
       }
       background-color: #000000;
-      opacity: 0.3;
+      opacity: 0.8;
       cursor: not-allowed;
       ::ng-deep {
         mat-expansion-panel-header {
@@ -126,6 +121,7 @@
           svg.down {
             fill: #ffffff;
             opacity: 0.5;
+            display:block;
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {

@@ -1,5 +1,5 @@
 <mat-accordion [ngClass] = "[mode === 'alternative' ? 'alternative': 'default']">
-  <mat-expansion-panel [ngClass] = "[disabled ? 'disabled': '']" [disabled]="disabled">
+  <mat-expansion-panel [ngClass] = "[disabled ? 'disabled': '']" [disabled]="disabled" [expanded]="isExpanded">
     <mat-expansion-panel-header (click) = "onClickHandler($event)" [expandedHeight]="'48px'">
       <mat-panel-title [ngClass]="iconPosition === 'after' ? 'after' : 'before'">
         <span *ngIf="label">{{label}}</span>

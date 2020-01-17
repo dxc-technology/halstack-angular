@@ -39,17 +39,11 @@
             border-bottom-right-radius: 0px;
           }
         }
-
-        div.mat-expansion-panel-content {
-          div.mat-expansion-panel-body {
-            padding: 30px;
-          }
-        }
       }
     }
     mat-expansion-panel.disabled {
       background-color: #FFFFFF;
-      opacity: 0.65;
+      opacity: 1;
       cursor: not-allowed;
       ::ng-deep {
         mat-expansion-panel-header {
@@ -130,8 +124,10 @@
             display: none;
           }
           svg.down {
-            fill: #ffffff;
+            
+            display: block;
             opacity: 0.5;
+            fill: #ffffff;
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {

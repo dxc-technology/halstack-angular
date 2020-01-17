@@ -9,22 +9,22 @@ header  {
 }
 
 .body-container {
-    min-height: calc(100vh - 80px);
     display: flex;
-    flex-direction: row;
+    min-height: 100vh;
+    background: #efefef;
+
     .sidenav {
-        width: 300px;
-        background-color: rgb(242, 242, 242);
+        background: black;
+        color: white;
         display: flex;
+        padding: 20px 30px 20px 20px;
         flex-direction: column;
 
         .sidenav-title {
             font-weight: bold;
-            font-size: 15px;
-            text-transform: uppercase;
-            color: rgb(102, 102, 102);
-            padding: 30px 20px;
-            border-bottom: 1px solid rgb(217, 217, 217);
+            font-size: 20px;
+            margin: 10px 0px 30px 0px;
+            
         }
         .sidenav-links {
             padding: 20px;
@@ -35,7 +35,7 @@ header  {
                 a {
                     font-weight: normal;
                     font-size: 14px;
-                    color: rgb(102, 102, 102);
+                    color: white;
                     text-decoration: none;
                 }
                 &.active {
@@ -51,7 +51,12 @@ header  {
     }
 
     .container-content {
-        padding: 20px;
-        width: 100%;
+        margin: 50px;
+        background: white;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        border: 1px dashed #cccccc;
     }
 }

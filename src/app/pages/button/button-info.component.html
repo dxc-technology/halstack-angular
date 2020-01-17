@@ -1,6 +1,5 @@
 <div>
   <h3>Light</h3>
-  <div></div>
   <dxc-button
     (click)="changeCheckBoxValue()"
     margin="medium"
@@ -11,7 +10,7 @@
     iconPosition="before"
   >
   </dxc-button>
-  
+
   <dxc-button
     margin="medium"
     mode="basic"
@@ -84,8 +83,15 @@
     icon="photo_camera"
     iconPosition="before"
   ></dxc-button>
-  <br />
-  <dxc-button [margin]="margins" mode="raised" label="Click me!"></dxc-button>
+
+  <div style="width: 600px">
+    <dxc-button
+      size="fillParent"
+      [margin]="margins"
+      mode="raised"
+      label="Click me!"
+    ></dxc-button>
+  </div>
 </div>
 
 <div class="dark">
@@ -175,16 +181,13 @@
 
   <dxc-button margin="medium" [theme]="'dark'" mode="raised" label="Click me!">
   </dxc-button>
-  <div style="width: 250px">
+  <div style="width: 600px">
     <dxc-button
-      [margin]="margins"
-      label="Click me!"
-      mode="flat"
-      disabled
       size="fillParent"
-      [theme]="'dark'"
-      icon="photo_camera"
-      iconPosition="before"
+      margin="medium"
+      mode="raised"
+      label="Click me!"
+      theme="dark"
     ></dxc-button>
   </div>
 </div>

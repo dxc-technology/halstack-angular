@@ -37,20 +37,32 @@ export class CssUtils {
         `;
   }
 
-  getMarginValue(marginType, margin) {
-    return margin && typeof margin !== "object"
-      ? spaces[margin]
-      : margin && margin[marginType]
-      ? spaces[margin[marginType]]
-      : "0px";
-  }
-
-  getPaddingValue(paddingType, padding) {
-    return padding && typeof padding !== "object"
-      ? spaces[padding]
-      : padding && padding[paddingType]
-      ? spaces[padding[paddingType]]
-      : "0px";
+  calculateWidthWithMargins(sizes, size, margin) {
+    const value =
+      margin && typeof margin !== "object"
+        ? css`
+            width: calc(${sizes[size]} - ${spaces[margin]} - ${spaces[margin]});
+          `
+        : margin
+        ? margin["right"] === undefined && margin["left"]
+          ? css`
+              width: calc(${sizes[size]} - ${spaces[margin["left"]]});
+            `
+          : margin["left"] === undefined && margin["right"]
+          ? css`
+              width: calc(${sizes[size]} - ${spaces[margin["right"]]});
+            `
+          : margin["left"] && margin["right"]
+          ? css`
+              width: calc(${sizes[size]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]});
+            `
+          : css`
+              width: ${sizes[size]};
+            `
+        : css`
+            width: ${sizes[size]};
+          `;
+    return value;
   }
 
   getBoxShadow(shadowDepth) {

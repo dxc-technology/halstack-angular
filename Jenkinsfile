@@ -139,11 +139,12 @@ pipeline {
                         cat ~/.npmrc
                     '''
                 }
-
-                echo "Installing dependencies!"
-                sh "npm install"
+                
                 echo "Running cypress!"
-                sh 'npm run cy:ci'
+                sh ''' 
+                    npm ci
+                    npm run cy:ci
+                '''
             }           
         }
         stage('.npmrc') {

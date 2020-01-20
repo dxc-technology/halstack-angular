@@ -3,9 +3,7 @@ pipeline {
         dockerfile {
             filename 'docker/Dockerfile'
         }
-        docker {                    
-            image 'cypress/base:10'
-        }
+        
     }
     environment  {
         REPO_NAME = 'diaas-angular-cdk'
@@ -122,6 +120,11 @@ pipeline {
             }
         }
         stage('Execute cypress tests') {
+            agent{
+                docker {                    
+                    image 'cypress/base:10'
+                }
+            }
             steps {
                 sh 'npm run cy:fast'
             }           

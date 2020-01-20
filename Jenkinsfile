@@ -123,6 +123,8 @@ pipeline {
             agent{
                 docker {                    
                     image 'cypress/base:10'
+                    args '-v $WORKSPACE:/workDir -w /workDir'
+
                 }
             }
             steps {

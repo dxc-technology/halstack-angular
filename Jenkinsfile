@@ -126,6 +126,7 @@ pipeline {
                 }
             }
             steps {
+                sh "npm install"
                 sh 'npm run cy:ci'
             }           
         }

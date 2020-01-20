@@ -126,7 +126,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm run cy:fast'
+                sh 'npm run cy:ci'
             }           
         }
         stage('.npmrc') {

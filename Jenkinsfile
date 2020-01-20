@@ -123,26 +123,12 @@ pipeline {
             agent{
                 docker {                    
                     image 'cypress/base:10'
-                    args '-v $WORKSPACE:/workDir -w /workDir'
-
                 }
             }
             steps {
 
-                withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
-                    sh "touch ~/.npmrc"
-                    sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
-                    sh '''
-                        cat ${CONFIG} >> ~/.npmrc
-                    '''
-                    sh '''
-                        cat ~/.npmrc
-                    '''
-                }
-                
                 echo "Running cypress!"
                 sh ''' 
-                    npm ci
                     npm run cy:ci
                 '''
             }           

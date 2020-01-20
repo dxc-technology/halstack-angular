@@ -128,7 +128,21 @@ pipeline {
                 }
             }
             steps {
+
+                withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
+                    sh "touch ~/.npmrc"
+                    sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
+                    sh '''
+                        cat ${CONFIG} >> ~/.npmrc
+                    '''
+                    sh '''
+                        cat ~/.npmrc
+                    '''
+                }
+
+                echo "Installing dependencies!"
                 sh "npm install"
+                echo "Running cypress!"
                 sh 'npm run cy:ci'
             }           
         }

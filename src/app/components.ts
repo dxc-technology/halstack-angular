@@ -23,6 +23,7 @@ import { DxcUploadComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-uploa
 import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
+import { AllComponent } from './pages/all/all.component';
 
 
 export const Components = [
@@ -125,6 +126,11 @@ export const Components = [
         name: 'Upload',
         route: 'upload',
         component: DxcUploadComponent
+    },
+    {
+        name: 'All',
+        route: 'all',
+        component: AllComponent
     }
    
 ]

@@ -118,12 +118,34 @@ pipeline {
                 '''
             }
         }
-        stage('Test library') {
-            steps {
-                sh '''
-                    echo 'Add the f***ing tests!!'
-                '''
+        stage('Execute cypress tests') {
+            agent {
+                // this image provides everything needed to run Cypress
+                docker {                    
+                    image 'cypress/base:10'
+                    args '-v $WORKSPACE:/workDir -w /workDir'
+                }
             }
+            steps {
+               
+                withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
+                    sh "touch ~/.npmrc"
+                    sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
+                    sh '''
+                        cat ${CONFIG} >> ~/.npmrc
+                    '''
+                    sh '''
+                        cat ~/.npmrc
+                    '''
+                }
+                
+                sh "npm install"
+                // there a few default environment variables on Jenkins
+                // on local Jenkins machine (assuming port 8080) see
+                // http://localhost:8080/pipeline-syntax/globals#env
+                sh 'npm ci'
+                sh 'npm run cy:fast'
+            }           
         }
         stage('.npmrc') {
             when {

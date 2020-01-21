@@ -42,6 +42,23 @@ pipeline {
                 }
             }
         }
+        stage('Execute cypress tests') {
+            agent{
+                docker {                    
+                    image 'cypress/base:10'
+                    args '-v $WORKSPACE:/workDir -w /workDir'
+                }
+            }
+            steps {
+                
+                echo "Running cypress!"
+                sh ''' 
+                    npm install
+                    npm ci
+                    npm run cy:ci
+                '''
+            }           
+        }
         stage('Release type') {
             when {
                 expression { BRANCH_NAME ==~ /^.*\b(release)\b.*$/ } 
@@ -119,22 +136,7 @@ pipeline {
                 '''
             }
         }
-        stage('Execute cypress tests') {
-            agent{
-                docker {                    
-                    image 'cypress/base:10'
-                    args '-v $WORKSPACE:/workDir -w /workDir'
-                }
-            }
-            steps {
-                echo "Running cypress!"
-                sh ''' 
-                    npm install
-                    npm ci
-                    npm run cy:ci
-                '''
-            }           
-        }
+        
         stage('.npmrc') {
             when {
                 expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' } 

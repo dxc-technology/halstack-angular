@@ -123,12 +123,13 @@ pipeline {
             agent{
                 docker {                    
                     image 'cypress/base:10'
+                    args '-v $WORKSPACE:/workDir -w /workDir'
                 }
             }
             steps {
-
                 echo "Running cypress!"
                 sh ''' 
+                    npm install
                     npm ci
                     npm run cy:ci
                 '''

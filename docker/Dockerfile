@@ -18,3 +18,11 @@ RUN apk --no-cache update && \
     apk --no-cache add python py-pip py-setuptools ca-certificates groff less && \
     pip --no-cache-dir install awscli==${AWS_CLI_VERSION} && \
     rm -rf /var/cache/apk/*
+
+FROM cypress/base:10
+
+RUN npm install --save-dev cypress
+
+RUN $(npm bin)/cypress verify
+
+RUN $(npm bin)/cypress run

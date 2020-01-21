@@ -2,7 +2,7 @@ FROM node:10.13
 
 RUN apt-get update && \
     apt-get install -y \
-    git bash openssh-client curl chromium libgtk2.0-0 \
+    software-properties-common git bash openssh-client curl chromium libgtk2.0-0 \
     libnotify-dev \
     libgconf-2-4 \
     libnss3 \

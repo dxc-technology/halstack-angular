@@ -1,3 +1,9 @@
+FROM cypress/base:10
+
+RUN npm install --save-dev cypress
+
+RUN $(npm bin)/cypress verify
+
 FROM node:10.16.0-alpine
 
 RUN apk add --update git bash openssh curl chromium ruby ruby-full
@@ -18,9 +24,3 @@ RUN apk --no-cache update && \
     apk --no-cache add python py-pip py-setuptools ca-certificates groff less && \
     pip --no-cache-dir install awscli==${AWS_CLI_VERSION} && \
     rm -rf /var/cache/apk/*
-
-FROM cypress/base:10
-
-RUN npm install --save-dev cypress
-
-RUN $(npm bin)/cypress verify

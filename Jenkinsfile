@@ -44,11 +44,6 @@ pipeline {
         }
         stage('Execute cypress tests') {
 
-            agent{
-                docker {
-                    image 'cypress/base:10'
-                }
-            }
             steps {
                 
                 echo "Running cypress!"

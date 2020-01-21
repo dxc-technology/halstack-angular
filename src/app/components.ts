@@ -3,10 +3,10 @@ import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component'
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { DxcDateComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
 import { DxcAccordionComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.component';
 import { DxcAlertComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.component';
 import { DxcDialogComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-dialog/dxc-dialog.component';
-import { DXCDropdownModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-dropdown/dxc-dropdown.module';
 import { DxcDropdownComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-dropdown/dxc-dropdown.component';
 import { DxcFooterComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-footer/dxc-footer.component';
 import { DxcHeaderComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-header/dxc-header.component';
@@ -64,7 +64,7 @@ export const Components = [
     {
         name: 'Dropdown',
         route: 'dropdown',
-        component:  DxcDropdownComponent
+        component:  DropdownInfoComponent
     },
     {
         name: 'Footer',

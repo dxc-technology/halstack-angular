@@ -16,7 +16,7 @@ RUN npm install -g @angular/cli
 
 RUN npm install github-release-notes -g
 
-RUN gem install github_changelog_generator -v 1.10.5
+RUN gem install github_changelog_generator -v 1.10.4
 
 RUN npm install showdown -g
 

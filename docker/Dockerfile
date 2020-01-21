@@ -2,19 +2,13 @@ FROM node:10.13
 
 RUN apt-get update && \
     apt-get install -y \
-    software-properties-common git bash openssh-client curl chromium libgtk2.0-0 \
+    software-properties-common git bash openssh-client curl ruby-full chromium libgtk2.0-0 \
     libnotify-dev \
     libgconf-2-4 \
     libnss3 \
     libxss1 \
     libasound2 \
     xvfb
-
-RUN apt-add-repository ppa:brightbox/ruby-ng
-
-RUN apt-get update
-
-RUN apt-get install ruby2.6 ruby2.6-dev
 
 RUN npm config set unsafe-perm true
 

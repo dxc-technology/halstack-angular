@@ -1,22 +1,6 @@
 FROM node:10.16.0-alpine
 
-RUN apk add --update git bash openssh curl chromium ruby ruby-full
-
-RUN npm config set unsafe-perm true
-
-RUN npm install -g @angular/cli
-
-RUN npm install github-release-notes -g
-
-RUN gem install github_changelog_generator
-
-RUN npm install showdown -g
-
-RUN npm install --save-dev cypress
-
-RUN apt-get update && \
-  apt-get install --no-install-recommends -y \
-  libgtk2.0-0 \
+RUN apk add --update git bash openssh curl chromium ruby ruby-full libgtk2.0-0 \
   libgtk-3-0 \
   libnotify-dev \
   libgconf-2-4 \
@@ -37,9 +21,19 @@ RUN apt-get update && \
   ttf-wqy-zenhei \
   ttf-wqy-microhei \
   xfonts-wqy \
-  # clean up
-  && rm -rf /var/lib/apt/lists/*
-  
+
+RUN npm config set unsafe-perm true
+
+RUN npm install -g @angular/cli
+
+RUN npm install github-release-notes -g
+
+RUN gem install github_changelog_generator
+
+RUN npm install showdown -g
+
+RUN npm install --save-dev cypress
+
 RUN $(npm bin)/cypress verify
 
 ENV AWS_CLI_VERSION 1.15.47

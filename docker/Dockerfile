@@ -1,9 +1,3 @@
-FROM cypress/base:10
-
-RUN npm install --save-dev cypress
-
-RUN $(npm bin)/cypress verify
-
 FROM node:10.16.0-alpine
 
 RUN apk add --update git bash openssh curl chromium ruby ruby-full

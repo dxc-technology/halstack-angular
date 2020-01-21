@@ -16,8 +16,6 @@ RUN npm install -g @angular/cli
 
 RUN npm install github-release-notes -g
 
-RUN gem install github_changelog_generator
-
 RUN npm install showdown -g
 
 RUN npm install --save-dev cypress

@@ -10,8 +10,6 @@ RUN apt-get update && \
     libasound2 \
     xvfb
 
-RUN apt-get install npm
-
 RUN npm config set unsafe-perm true
 
 RUN npm install -g @angular/cli

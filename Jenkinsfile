@@ -129,6 +129,7 @@ pipeline {
 
                 echo "Running cypress!"
                 sh ''' 
+                    npm ci
                     npm run cy:ci
                 '''
             }           

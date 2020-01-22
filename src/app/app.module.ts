@@ -44,7 +44,6 @@ import { DxcBoxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-box/dxc-box
 import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AllComponent } from './pages/all/all.component';
-import { DateInfoComponent } from './pages/date/date-info.component';
 @NgModule({
   declarations: [
     AppComponent,

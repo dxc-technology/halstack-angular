@@ -1,6 +1,6 @@
 pipeline {
     
-    agent none
+    agent any
     
     environment  {
         REPO_NAME = 'diaas-angular-cdk'

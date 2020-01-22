@@ -102,6 +102,19 @@ export class DxcButtonComponent {
     `;
   }
 
+  setPadding(size) {
+    if (size === "small") {
+      return css`
+        padding: 11px;
+        min-width: calc(100% - 22px);
+      `;
+    }
+    return css`
+      padding: 12px 30px;
+      min-width: unset;
+    `;
+  }
+
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
@@ -112,7 +125,7 @@ export class DxcButtonComponent {
       button.mat-button,
       button.mat-stroked-button,
       button.mat-flat-button {
-        padding: 12px 30px;
+        ${this.setPadding(inputs.size)}
         border-radius: 4px;
         width: 100%;
         min-height: 43px;
@@ -126,62 +139,59 @@ export class DxcButtonComponent {
           width: 15px;
           z-index: 20;
         }
-        ::ng-deep {
-          .mat-ripple-element {
-            transition-duration: 200ms !important;
-            transition: opacity,
-              transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        .mat-ripple-element {
+          transition-duration: 200ms !important;
+          transition: opacity, transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+        span.mat-button-wrapper {
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          word-break: break-all;
+
+          & > span {
+            display: block;
+            width: 100%;
+            z-index: 20;
+            white-space: normal;
+
+            text-align: center;
           }
-          span.mat-button-wrapper {
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 62px;
+          .icon-before {
+            margin-right: 10px;
+          }
+          .icon-after {
+            margin-left: 10px;
+          }
 
-            & > span {
-              display: block;
-              width: 100%;
-              z-index: 20;
-              white-space: normal;
+          mat-icon {
+            font-size: 20px;
+            width: auto;
+            height: auto;
+            margin-bottom: -2.5px;
+            margin-top: -2.5px;
+          }
 
-              text-align: center;
-            }
-            .icon-before {
-              margin-right: 10px;
-            }
-            .icon-after {
-              margin-left: 10px;
-            }
+          i {
+            font-size: 18px;
+            margin-bottom: -2.5px;
+            margin-top: -2.5px;
+          }
 
-            mat-icon {
-              font-size: 20px;
-              width: auto;
-              height: auto;
-              margin-bottom: -2.5px;
-              margin-top: -2.5px;
-            }
+          mat-icon:first-child,
+          i:first-child {
+            margin-right: 6px;
 
-            i {
-              font-size: 18px;
-              margin-bottom: -2.5px;
-              margin-top: -2.5px;
-            }
-
-            mat-icon:first-child,
-            i:first-child {
+            &:last-child {
               margin-right: 6px;
-
-              &:last-child {
-                margin-right: 6px;
-                margin-left: 6px;
-              }
-            }
-
-            span + mat-icon,
-            span + i {
               margin-left: 6px;
             }
+          }
+
+          span + mat-icon,
+          span + i {
+            margin-left: 6px;
           }
         }
 

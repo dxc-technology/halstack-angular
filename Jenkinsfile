@@ -286,9 +286,13 @@ pipeline {
                     returnStdout: true
                 ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
-                    emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'gvigilrodrig@dxc.com; jsuarezardid@dxc.com',from: 'gvigilrodrig@dxc.com'
+                    emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com',from: 'mgarcia232@dxc.com@dxc.com'
                 } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
+                    emailext 
+                        attachmentsPattern: '/home/ubuntu/workspace/DIaaS_diaas-angular-cdk_cypress@2/cypress/screenshots/fast-visual-regression.js/*', 
+                        subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', 
+                        body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", 
+                        to: "${GIT_USER}",from: 'gvigilrodrig@dxc.com'
                 }
             }
         }

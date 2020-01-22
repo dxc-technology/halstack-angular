@@ -289,7 +289,6 @@ pipeline {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com',from: 'mgarcia232@dxc.com@dxc.com'
                 } else {
                     emailext 
-                        attachmentsPattern: '/cypress/screenshots/fast-visual-regression.js/*', 
                         subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', 
                         body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", 
                         to: "${GIT_USER}",from: 'mgarcia232@dxc.com'

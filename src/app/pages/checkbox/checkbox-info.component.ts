@@ -10,7 +10,7 @@ export class CheckboxInfoComponent {
   constructor()  {}
   checked = false;
   onChange() {
-    console.log(this.checked);
+    // console.debug(this.checked);
   }
 
 }

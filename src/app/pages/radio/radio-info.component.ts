@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 export class RadioInfoComponent {
 
   checked = true;
-  constructor()  {}
+  constructor() {}
+
+  onChange(){
+    // console.debug(this.checked);
+  }
 
 }

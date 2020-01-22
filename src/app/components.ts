@@ -1,12 +1,14 @@
 import { SliderInfoComponent } from 'src/app/pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component';
+import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
+import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
-import { DxcDateComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.component';
+import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
 import { DxcAccordionComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.component';
 import { DxcAlertComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.component';
 import { DxcDialogComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-dialog/dxc-dialog.component';
-import { DXCDropdownModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-dropdown/dxc-dropdown.module';
 import { DxcDropdownComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-dropdown/dxc-dropdown.component';
 import { DxcFooterComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-footer/dxc-footer.component';
 import { DxcHeaderComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-header/dxc-header.component';
@@ -55,17 +57,17 @@ export const Components = [
     {
         name: 'Date',
         route: 'date',
-        component: DxcDateComponent
+        component: DateInfoComponent
     } ,
     {
         name: 'Dialog',
         route: 'dialog',
-        component:  DxcDialogComponent
+        component:  DialogInfoComponent
     },
     {
         name: 'Dropdown',
         route: 'dropdown',
-        component:  DxcDropdownComponent
+        component:  DropdownInfoComponent
     },
     {
         name: 'Footer',
@@ -75,7 +77,7 @@ export const Components = [
     {
         name: 'Header',
         route: 'header',
-        component:  DxcHeaderComponent
+        component:  HeaderInfoComponent
     },
     {
         name: 'Input Text',

@@ -14,9 +14,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { SliderInfoComponent } from './pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component';
+import { DateInfoComponent } from './pages/date/date-info.component';
+import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
+import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-slider.module";
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
 import { DxcAccordionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.module';
 import { DXCAlertModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.module';
 import { DXCDialogModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-dialog/dxc-dialog.module';
@@ -24,10 +28,13 @@ import { DXCDropdownModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-dropdo
 import { DXCFooterModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-footer/dxc-footer.module';
 import { DXCHeaderModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-header/dxc-header.module';
 import { DXCInputTextModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-text-input/dxc-input-text.module';
+import { DxcProgressbarComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.component';
 import { DxcProgressbarModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.module';
 import { DxcSpinnerModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-spinner/dxc-spinner.module';
+import { DxcSwitchComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-switch/dxc-switch.component';
 import { DxcSwitchModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-switch/dxc-switch.module';
 import { DXCToggleModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-toggle/dxc-toggle.module';
+import { DxcTabsComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
 import { DxcTabsModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.module';
 import { DXCUploadModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.module';
 import { AccordionComponent } from './pages/accordion/accordion.component';
@@ -42,14 +49,17 @@ import { DateInfoComponent } from './pages/date/date-info.component';
   declarations: [
     AppComponent,
     ButtonInfoComponent,
-    // DateInfoComponent,
     SliderInfoComponent,
     CheckboxInfoComponent,
+    DateInfoComponent,
+    DialogInfoComponent,
+    HeaderInfoComponent,
     RadioInfoComponent,
     AccordionComponent,
     AlertComponent,
     BoxComponent,
-    AllComponent
+    DropdownInfoComponent,
+AllComponent
   ],
   imports: [
     AppRoutingModule,

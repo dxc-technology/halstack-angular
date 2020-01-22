@@ -38,6 +38,7 @@
     mat-menu-item
     [ngClass]="optionsIconPosition === 'after' ? 'icon-after' : 'icon-before'"
     (click)="selectedOption(option)"
+    class="option"
   >
     <div>
       <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />

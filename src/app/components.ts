@@ -1,5 +1,7 @@
 import { SliderInfoComponent } from 'src/app/pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component';
+import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
+import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
@@ -59,7 +61,7 @@ export const Components = [
     {
         name: 'Dialog',
         route: 'dialog',
-        component:  DxcDialogComponent
+        component:  DialogInfoComponent
     },
     {
         name: 'Dropdown',
@@ -74,7 +76,7 @@ export const Components = [
     {
         name: 'Header',
         route: 'header',
-        component:  DxcHeaderComponent
+        component:  HeaderInfoComponent
     },
     {
         name: 'Input Text',

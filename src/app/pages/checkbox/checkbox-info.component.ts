@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
 export class CheckboxInfoComponent {
 
   constructor()  {}
-  checkedValue = true;
+  checked = false;
+  onChange() {
+    console.log(this.checked);
+  }
+
 }

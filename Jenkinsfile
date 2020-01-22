@@ -1,7 +1,6 @@
 pipeline {
     
     agent none
-
     
     environment  {
         REPO_NAME = 'diaas-angular-cdk'
@@ -118,7 +117,7 @@ pipeline {
                             } else {
                                 env.RELEASE_VALID = 'invalid';
                                 env.RELEASE_TYPE = 'no-release'
-                                echo 'Invalid password. The version will not be released.'
+                                sh "echo 'Invalid password. The version will not be released.'"
                             }
                         }
                     }
@@ -237,7 +236,7 @@ pipeline {
                             sh "showdown makehtml -i CHANGELOG.md -o CHANGELOG.html"
                             sh "gren release --api-url=https://github.dxc.com/api/v3 --token=d53a75471da39b66fafb25dfcc9613c069de337e --override"
                         } catch(err) {
-                            echo "GREN Release Notes failed!"
+                            sh "echo 'GREN Release Notes failed!'"
                         }
                     }
                 }

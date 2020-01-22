@@ -1,0 +1,17 @@
+<div class="light">
+  <dxc-button
+    margin="medium"
+    mode="raised"
+    label="Open dialog"
+    (click)="openDialog()"
+  ></dxc-button>
+  <dxc-dialog
+    [padding]="padding"
+    (onBackgroundClick)="openDialog()"
+    [overlay]="true"
+    isCloseVisible="true"
+    (onClose)="openDialog()"
+    [isVisible]="visible"
+    >Dialog Opened</dxc-dialog
+  >
+</div>

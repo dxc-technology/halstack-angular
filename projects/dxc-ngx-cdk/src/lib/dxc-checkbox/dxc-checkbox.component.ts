@@ -114,6 +114,14 @@ export class DxcCheckboxComponent implements OnInit {
     `;
   }
 
+  setTextAlign(labelPosition){
+    if(labelPosition==="before") {
+      return css `
+        text-align: end;
+      `;
+    }
+  }
+
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
@@ -123,9 +131,18 @@ export class DxcCheckboxComponent implements OnInit {
       )}
       display: inline-flex;
       mat-checkbox {
+        width: 100%;
         label.mat-checkbox-layout {
           display: inline-flex;
           align-items: center;
+          width: 100%;
+          white-space: normal;
+
+          span.mat-checkbox-label {
+            width: calc(100% - 50px);
+            word-break: break-word;
+            ${this.setTextAlign(inputs.labelPosition)}
+          }
 
           .mat-checkbox-inner-container {
             margin: 10px 15px;
@@ -167,18 +184,6 @@ export class DxcCheckboxComponent implements OnInit {
 
         .mat-checkbox-inner-container:focus .mat-checkbox-persistent-ripple {
           opacity: 0.15;
-        }
-
-        .checkboxLabel {
-          ${inputs.labelPosition === "after"
-            ? css`
-                margin-right: 15px;
-              `
-            : inputs.labelPosition === "before"
-            ? css`
-                margin-left: 15px;
-              `
-            : css``}
         }
       }
     `;

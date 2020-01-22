@@ -14,6 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { SliderInfoComponent } from './pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component';
+import { DateInfoComponent } from './pages/date/date-info.component';
 import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,6 +48,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ButtonInfoComponent,
     SliderInfoComponent,
     CheckboxInfoComponent,
+    DateInfoComponent,
     DialogInfoComponent,
     HeaderInfoComponent,
     RadioInfoComponent,

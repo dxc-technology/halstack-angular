@@ -3,7 +3,7 @@ import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component'
 import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
-import { DxcDateComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.component';
+import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
 import { DxcAccordionComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.component';
 import { DxcAlertComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.component';
@@ -56,7 +56,7 @@ export const Components = [
     {
         name: 'Date',
         route: 'date',
-        component: DxcDateComponent
+        component: DateInfoComponent
     } ,
     {
         name: 'Dialog',

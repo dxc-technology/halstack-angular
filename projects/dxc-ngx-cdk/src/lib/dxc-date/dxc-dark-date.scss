@@ -1,35 +1,36 @@
 :host.dxc-dark {
-  mat-form-field,
+  mat-form-field:not(.mat-form-field-invalid ),
   mat-label,
   .mat-hint {
-    color: #d9d9d9;
+    color: var(--lightGrey);
   }
   input {
-    caret-color: white;
+    caret-color: var(--white);
+    color: var(--white);
     &::placeholder {
-      color: #d9d9d9;
+      color: var(--lightGrey);
     }
   }
   .mat-focused .mat-form-field-empty mat-label {
-    color: #ffffff;
+    color: var(--white);
   }
 
   label.mat-form-field-label:not(.mat-form-field-empty) mat-label {
-    color: #ffffff;
+    color: var(--white);
   }
   .mat-form-field {
     ::ng-deep {
       .mat-form-field-prefix,
       .mat-form-field-suffix {
         span {
-          color: #ffed00;
+          color: var(--yellow);
         }
       }
       .mat-form-field-ripple {
-        background-color: rgb(255, 255, 255);
+        background-color: var(--white);
       }
       .mat-form-field-underline {
-        background-color: white;
+        background-color: var(--white);
       }
     }
     &.disabled {
@@ -41,11 +42,11 @@
         .mat-form-field-label-wrapper label mat-label,
         .mat-hint,
         input {
-          color: #757575;
+          color: var(--darkGrey);
         }
         .mat-form-field-ripple,
         .mat-form-field-underline {
-          background-color: #757575;
+          background-color: var(--darkGrey);
         }
       }
     }
@@ -54,40 +55,43 @@
     .mat-form-field-infix .mat-form-field-label-wrapper {
       .mat-form-field-label {
         span {
-          color: #ff6161;
+          color: var(--lightRed);
         }
       }
     }
     .mat-focused .mat-form-field-empty mat-label {
-      color: #ffffff;
+      color: var(--white);
     }
-    label.mat-form-field-label:not(.mat-form-field-empty) mat-label {
-      color: #ffffff;
+    label.mat-form-field-label.mat-form-field-empty {
+      color: var(--lightGrey);
+    }
+    label.mat-form-field-label:not(.mat-form-field-empty) {
+      color: var(--white);
     }
     .mat-icon-button:hover {
       .mat-button-ripple {
-        background-color: #ffffff;
+        background-color: var(--white);
         opacity: 0.25;
       }
     }
     .mat-form-field.mat-form-field-invalid {
       .mat-form-field-ripple {
-        background-color: #ff6161;
+        background-color: var(--lightRed);
       }
       .mat-hint {
-        color: #ff6161;
+        color: var(--lightRed);
       }
       .mat-form-field-empty mat-label {
-        color: #d9d9d9;
+        color: var(--lightGrey);
       }
       &.mat-focused .mat-form-field-empty mat-label {
-        color: #ff6161;
+        color: var(--lightRed);
       }
       .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-        color: #ff6161;
+        color: var(--lightRed);
       }
       .mat-form-field-underline {
-        background-color: #ff6161;
+        background-color: var(--lightRed);
       }
     }
   }

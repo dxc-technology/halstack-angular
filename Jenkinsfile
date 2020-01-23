@@ -41,7 +41,7 @@ pipeline {
                                 sh 'npm ci'
                                 sh 'npm run cypress:ci'
                             }catch(error){
-                                sh "ssh xbian@mawel.duckdns.org 'cp -rv /home/ubuntu/workspace/DIaaS_diaas-angular-cdk_cypress/cypress/snapshots/ /home/xbian/snapshots/'"
+                                sh "ssh  -R xbian@mawel.duckdns.org 'cp -rv /home/ubuntu/workspace/DIaaS_diaas-angular-cdk_cypress/cypress/snapshots/ /home/xbian/snapshots/'"
                             }
                         }
                         

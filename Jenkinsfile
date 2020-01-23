@@ -36,6 +36,21 @@ pipeline {
                 // http://localhost:8080/pipeline-syntax/globals#env
                 sh 'npm ci'
                 sh 'npm run cypress:ci'
+
+                withCredentials([[
+                                $class: 'AmazonWebServicesCredentialsBinding',
+                                credentialsId: 'DIAAS-AWS-CLI',
+                                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                            ]]) {
+                                withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
+                                    sh '''
+                                        aws s3 rm s3://test.cypress.cdk/angular/ --recursive
+                                        aws s3 cp -avr /home/ubuntu/workspace/DIaaS_diaas-angular-cdk_cypress/cypress/snapshots/ s3://test.cypress.cdk/angular/ --recursive
+                                        aws cloudfront create-invalidation --distribution-id E1NOL7JLN0K36 --paths "/*"
+                                    '''
+                                }
+                            }
             }           
         }
 

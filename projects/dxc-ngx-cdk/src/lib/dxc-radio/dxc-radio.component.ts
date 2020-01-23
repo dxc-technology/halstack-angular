@@ -45,15 +45,15 @@ export class DxcRadioComponent implements OnInit {
     label: null,
     name: "",
     required: false,
-    labelPosition: "before",
+    labelPosition: "after",
     margin: null,
     size: "medium"
   });
 
   sizes = {
-    small: "42px",
-    medium: "120px",
-    large: "240px",
+    small: "120px",
+    medium: "240px",
+    large: "480px",
     fillParent: "100%",
     fitContent: "unset"
   };
@@ -66,7 +66,7 @@ export class DxcRadioComponent implements OnInit {
       this.isLight = true;
       this.isDark = false;
     }
-    this.labelPosition === "after" ? "after" : "before";
+    this.labelPosition === "before" ? "before" : "after";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -96,16 +96,28 @@ export class DxcRadioComponent implements OnInit {
     this.checkedChange.emit(event.source.checked);
   }
 
+  setTextAlign(labelPosition){
+    if(labelPosition==="before") {
+      return css `
+        text-align: end;
+      `;
+    }
+  }
+
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
-      justify-content: center;
+
       ${this.utils.getMargins(inputs.margin)}
       ${this.calculateWidth(inputs.margin, inputs.size)}
       mat-radio-button {
+        width: 100%;
         .mat-radio-label {
+          white-space: normal;
           .mat-radio-label-content {
             padding: 0px !important;
+            width: calc(100% - 50px);
+            ${this.setTextAlign(inputs.labelPosition)}
           }
           .mat-radio-required {
             margin-right: 1px;
@@ -117,12 +129,14 @@ export class DxcRadioComponent implements OnInit {
             ${inputs.labelPosition === "after"
             ? css`
                 margin-right: 15px;
+                margin-left: 15px;
                 margin-top: 10px;
                 margin-bottom: 10px;
               `
             : inputs.labelPosition === "before"
             ? css`
                 margin-left: 15px;
+                margin-right: 15px;
                 margin-top: 10px;
                 margin-bottom: 10px;
               `

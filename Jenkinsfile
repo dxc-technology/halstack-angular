@@ -7,15 +7,16 @@ pipeline {
         SERVICE_NAME='dxc-ngx-cdk'
     } 
     stages {
-        agent {
-                // this image provides everything needed to run Cypress
-            docker {                    
-                image 'cypress/base:10'
-                args '-v $WORKSPACE:/workDir -w /workDir'
-            }
-        }
+        
 
         stage ('Cypress execution'){
+            agent {
+                // this image provides everything needed to run Cypress
+                docker {                    
+                    image 'cypress/base:10'
+                    args '-v $WORKSPACE:/workDir -w /workDir'
+                }
+            }
             stages{
                 stage('Execute cypress tests') {
                     steps {

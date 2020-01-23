@@ -38,6 +38,7 @@ pipeline {
                                 // on local Jenkins machine (assuming port 8080) see
                                 // http://localhost:8080/pipeline-syntax/globals#env
                                 sh 'npm install'
+                                sh 'npm ci'
                                 sh 'npm run cypress:ci'
                         }
                         

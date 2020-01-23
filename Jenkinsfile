@@ -7,37 +7,41 @@ pipeline {
         SERVICE_NAME='dxc-ngx-cdk'
     } 
     stages {
-
-
-        stage('Execute cypress tests') {
-            agent {
+        agent {
                 // this image provides everything needed to run Cypress
-                docker {                    
-                    image 'cypress/base:10'
-                    args '-v $WORKSPACE:/workDir -w /workDir'
-                }
+            docker {                    
+                image 'cypress/base:10'
+                args '-v $WORKSPACE:/workDir -w /workDir'
             }
-            steps {
-               
-                withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
-                    sh "touch ~/.npmrc"
-                    sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
-                    sh '''
-                        cat ${CONFIG} >> ~/.npmrc
-                    '''
-                    sh '''
-                        cat ~/.npmrc
-                    '''
-                }
-                
-                sh "npm install"
-                // there a few default environment variables on Jenkins
-                // on local Jenkins machine (assuming port 8080) see
-                // http://localhost:8080/pipeline-syntax/globals#env
-                sh 'npm ci'
-                sh 'npm run cypress:ci'
+        }
 
-                withCredentials([[
+        stage ('Cypress execution'){
+            stages{
+                stage('Execute cypress tests') {
+                    steps {
+                    
+                        withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
+                            sh "touch ~/.npmrc"
+                            sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
+                            sh '''
+                                cat ${CONFIG} >> ~/.npmrc
+                            '''
+                            sh '''
+                                cat ~/.npmrc
+                            '''
+                        }
+                        
+                        sh "npm install"
+                        // there a few default environment variables on Jenkins
+                        // on local Jenkins machine (assuming port 8080) see
+                        // http://localhost:8080/pipeline-syntax/globals#env
+                        sh 'npm ci'
+                        sh 'npm run cypress:ci'
+                    }           
+                }
+                stage('Deploy to S3'){
+                    steps {
+                            withCredentials([[
                                 $class: 'AmazonWebServicesCredentialsBinding',
                                 credentialsId: 'DIAAS-AWS-CLI',
                                 accessKeyVariable: 'AWS_ACCESS_KEY_ID',
@@ -45,15 +49,17 @@ pipeline {
                             ]]) {
                                 withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
                                     sh '''
-                                        aws s3 rm s3://test.cypress.cdk/angular/ --recursive
-                                        aws s3 cp -avr /home/ubuntu/workspace/DIaaS_diaas-angular-cdk_cypress/cypress/snapshots/ s3://test.cypress.cdk/angular/ --recursive
+                                        aws s3 rm s3://platform-launcher-ui/ --recursive
+                                        aws s3 cp ./build/ s3://platform-launcher-ui/ --recursive
                                         aws cloudfront create-invalidation --distribution-id E1NOL7JLN0K36 --paths "/*"
                                     '''
                                 }
                             }
-            }           
-        }
+                    }
+                }
 
+            }
+        }
         stage('Build and Deploy'){
 
            agent {

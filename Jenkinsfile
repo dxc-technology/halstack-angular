@@ -31,34 +31,35 @@ pipeline {
                                 cat ~/.npmrc
                             '''
                         }
-                        
-                        sh "npm install"
-                        // there a few default environment variables on Jenkins
-                        // on local Jenkins machine (assuming port 8080) see
-                        // http://localhost:8080/pipeline-syntax/globals#env
-                        sh 'npm ci'
-                        sh 'npm run cypress:ci'
-                    }           
-                }
-                stage('Deploy to S3'){
-                    steps {
-                            withCredentials([[
-                                $class: 'AmazonWebServicesCredentialsBinding',
-                                credentialsId: 'DIAAS-AWS-CLI',
-                                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                            ]]) {
-                                withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
-                                    sh '''
-                                        aws s3 rm s3://platform-launcher-ui/ --recursive
-                                        aws s3 cp ./build/ s3://platform-launcher-ui/ --recursive
-                                        aws cloudfront create-invalidation --distribution-id E1NOL7JLN0K36 --paths "/*"
-                                    '''
+
+                        script{
+                            try {
+                                sh "npm install"
+                                // there a few default environment variables on Jenkins
+                                // on local Jenkins machine (assuming port 8080) see
+                                // http://localhost:8080/pipeline-syntax/globals#env
+                                sh 'npm ci'
+                                sh 'npm run cypress:ci'
+                            }catch(error){
+                                withCredentials([[
+                                    $class: 'AmazonWebServicesCredentialsBinding',
+                                    credentialsId: 'DIAAS-AWS-CLI',
+                                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                                ]]) {
+                                    withAWS(role:"arn:aws:iam::665158502186:role/ISS_DIAAS_PowerUser"){
+                                        sh '''
+                                            aws s3 rm s3://platform-launcher-ui/ --recursive
+                                            aws s3 cp ./build/ s3://platform-launcher-ui/ --recursive
+                                            aws cloudfront create-invalidation --distribution-id E1NOL7JLN0K36 --paths "/*"
+                                        '''
+                                    }
                                 }
                             }
-                    }
+                        }
+                        
+                    }           
                 }
-
             }
         }
         stage('Build and Deploy'){

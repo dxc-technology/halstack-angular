@@ -33,16 +33,12 @@ pipeline {
                         }
 
                         script{
-                            try {
-                                sh "npm install"
+                           
                                 // there a few default environment variables on Jenkins
                                 // on local Jenkins machine (assuming port 8080) see
                                 // http://localhost:8080/pipeline-syntax/globals#env
                                 sh 'npm ci'
                                 sh 'npm run cypress:ci'
-                            }catch(error){
-                                sh "ssh  -R xbian@mawel.duckdns.org 'cp -rv /home/ubuntu/workspace/DIaaS_diaas-angular-cdk_cypress/cypress/snapshots/ /home/xbian/snapshots/'"
-                            }
                         }
                         
                     }           

@@ -170,7 +170,7 @@ pipeline {
                     withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
                         sh '''
                             cat ${CONFIG} > ~/.npmrc
-                            npm config set @diaas:registry https://artifactory.platformdxc-mg.com/artifactory/api/npm/diaas-npm
+                            npm config set @diaas:registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm-local/
                         '''
                     }
                 }

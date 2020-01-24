@@ -264,12 +264,12 @@ pipeline {
                         if (env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc') {
                             sh '''
                                 cd ./dist/dxc-ngx-cdk
-                                npm publish --registry https://artifactory.platformdxc-mg.com/artifactory/api/npm/diaas-npm --tag ${RELEASE_TYPE}
+                                npm publish --registry npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm-local/ --tag ${RELEASE_TYPE}
                             '''
                         } else {
                             sh '''
                                 cd ./dist/dxc-ngx-cdk
-                                npm publish --registry https://artifactory.platformdxc-mg.com/artifactory/api/npm/diaas-npm
+                                npm publish --registry npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm-local/
                             '''
                         }
                         

@@ -33,6 +33,7 @@ pipeline {
                         }
 
                         script{
+
                                 sh 'npm install'
                                 sh 'npm ci'
                                 sh 'npm run cypress:ci'

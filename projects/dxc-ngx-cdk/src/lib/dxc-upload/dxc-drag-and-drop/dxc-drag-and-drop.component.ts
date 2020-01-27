@@ -5,12 +5,10 @@ import { Component, Output, HostBinding, OnChanges, EventEmitter, Input } from "
   styleUrls: ["./dxc-drag-and-drop.component.scss"]
 })
 export class DxcDragAndDropComponent implements OnChanges {
-  private hoveringWithFile = false;
+  hoveringWithFile = false;
   @Output() onAddFile = new EventEmitter<any>();
   @Input() summaryVisible = false;
   @HostBinding('class.reduced') reduced: boolean = false;
-
-  private files = [];
 
   public ngOnInit() {}
 

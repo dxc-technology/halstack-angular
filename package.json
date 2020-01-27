@@ -9,8 +9,9 @@
     "testJest": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "storybook": "start-storybook -s .storybook/public -p 6006",
-    "build-storybook": "build-storybook -s .storybook/public"
+    "cy:open": "cypress open",
+    "cy:fast": "cypress run --env updateSnapshots=true --spec  './cypress/integration/fast-visual-regression.js' --config video=false ",
+    "cypress:ci": "start-server-and-test start http://localhost:4200 cy:fast"
   },
   "private": true,
   "dependencies": {
@@ -41,23 +42,19 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.800.4",
+    "@angular-devkit/build-angular": "^0.803.23",
     "@angular-devkit/build-ng-packagr": "~0.800.4",
     "@angular/cli": "~8.0.4",
     "@angular/compiler-cli": "~8.0.2",
     "@angular/language-service": "~8.0.2",
     "@babel/core": "^7.4.5",
-    "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-links": "^5.1.9",
-    "@storybook/addon-notes": "^5.1.9",
-    "@storybook/addon-storyshots": "^5.1.9",
-    "@storybook/addons": "^5.1.9",
-    "@storybook/angular": "^5.1.9",
     "@types/jasmine": "~3.3.13",
     "@types/jasminewd2": "~2.0.6",
     "@types/node": "^12.0.12",
     "babel-loader": "^8.0.6",
     "codelyzer": "~5.1.0",
+    "cypress": "^3.7.0",
+    "cypress-image-snapshot": "^3.1.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "^24.8.0",
@@ -72,7 +69,8 @@
     "tsickle": ">=0.35.0",
     "tslib": "^1.10.0",
     "tslint": "~5.18.0",
-    "typescript": "~3.4.5"
+    "typescript": "~3.4.5",
+    "start-server-and-test": "^1.10.6"
   },
   "jest": {
     "preset": "jest-preset-angular",

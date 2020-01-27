@@ -43,7 +43,8 @@ import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
 import { DxcBoxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-box/dxc-box.module';
 import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AllComponent } from './pages/all/all.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AlertComponent,
     BoxComponent,
     DropdownInfoComponent,
-    SwitchInfoComponent
+    SwitchInfoComponent,
+    AllComponent
   ],
   imports: [
     AppRoutingModule,

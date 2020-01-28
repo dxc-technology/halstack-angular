@@ -1,7 +1,7 @@
 /*
  * Public API Surface of dxc-ngx-cdk
  */
-
+export * from './lib/theme/';
 export * from './lib/dxc-accordion/dxc-accordion.module';
 export * from './lib/dxc-alert/dxc-alert.module';
 export * from './lib/dxc-button/dxc-button.module';
@@ -22,4 +22,3 @@ export * from './lib/dxc-tabs/dxc-tabs.module';
 export * from './lib/dxc-text-input/dxc-input-text.module';
 export * from './lib/dxc-toggle/dxc-toggle.module';
 export * from './lib/dxc-upload/dxc-upload.module';
-export * from './lib/theme/theme.module'

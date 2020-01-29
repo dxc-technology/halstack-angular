@@ -154,7 +154,7 @@ export class DxcTextInputComponent implements OnChanges {
       textarea {
         min-height: 76px;
         max-height: 100px;
-        min-width: 230px;
+        ${this.utils.calculateMinWidth(this.sizes, inputs.margin)}
         max-width: 726px;
         width: unset;
         &::-webkit-scrollbar {

@@ -156,16 +156,15 @@ export class DxcTextInputComponent implements OnChanges {
         max-height: 100px;
         ${this.utils.calculateMinWidth(this.sizes, inputs.margin)}
         max-width: 726px;
-        width: unset;
         &::-webkit-scrollbar {
           width: 3px;
         }
         &::-webkit-scrollbar-track {
-          background-color: #d9d9d9;
+          background-color: var(--lightGrey);
           border-radius: 3px;
         }
         &::-webkit-scrollbar-thumb {
-          background-color: #666666;
+          background-color: var(--darkGrey);
           border-radius: 3px;
         }
       }

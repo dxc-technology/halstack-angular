@@ -2,38 +2,38 @@
   mat-form-field,
   mat-label,
   .mat-hint {
-    color: #d9d9d9;
+    color: var(--lightGrey);
   }
   input {
-    caret-color: white;
+    caret-color: var(--white);
   }
   ::ng-deep {
     .mat-form-field-underline {
-      background-color: #ffffff;
+      background-color: var(--white);
     }
     .mat-focused .mat-form-field-empty mat-label {
-      color: #ffffff;
+      color: var(--white);
     }
     
     label.mat-form-field-label:not(.mat-form-field-empty) mat-label{
-      color: #ffffff;
+      color: var(--white);
     }
     .mat-form-field.mat-form-field-invalid {
       .mat-hint {
-        color: #ff6161;
+        color: var(--lightRed);
       }
       .mat-form-field-ripple,
       .mat-form-field-underline {
-        background-color: #ff6161;
+        background-color: var(--lightRed);
       }
       .mat-form-field-empty mat-label {
-        color: #ffffff;
+        color: var(--white);
       }
       &.mat-focused .mat-form-field-empty mat-label {
-        color: #ff6161;
+        color: var(--lightRed);
       }
       .mat-form-field-label:not(.mat-form-field-empty) mat-label{
-        color: #ff6161;
+        color: var(--lightRed);
       }
     }
   }
@@ -43,14 +43,14 @@
       .mat-form-field-prefix,
       .mat-form-field-suffix {
         span {
-          color: #ffed00;
+          color: var(--yellow);
         }
       }
       .mat-form-field-ripple {
-        background-color: rgb(255, 255, 255);
+        background-color: var(--white);
       }
       .mat-form-field-underline {
-        background-color: white;
+        background-color: var(--white);
       }
     }
     &.disabled {
@@ -59,11 +59,11 @@
         .mat-form-field-label-wrapper label mat-label,
         .mat-hint,
         input {
-          color: #666666;
+          color: var(--darkGrey);
         }
         .mat-form-field-ripple,
         .mat-form-field-underline {
-          background-color: #666666;
+          background-color: var(--darkGrey);
         }
       }
     }
@@ -72,7 +72,7 @@
     .mat-form-field-label-wrapper {
       .mat-form-field-label {
         span {
-          color: #ff6161;
+          color: var(--lightRed);
         }
       }
     }

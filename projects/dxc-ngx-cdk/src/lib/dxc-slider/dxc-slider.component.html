@@ -1,5 +1,6 @@
 <span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitValues"> {{ min }}</span>
 <mat-slider
+  theme
   [min]="min"
   [max]="max"
   [step]="step"

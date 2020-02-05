@@ -1,73 +1,247 @@
-<h2>Light theme</h2>
-<div class="sliders-sections">
+<div className="test-case" id="light-theme">
+  <h4>Light theme</h4>
+  <dxc-slider
+    minValue="0"
+    maxValue="100"
+    showLimitsValues="true"
+    showInput="false"
+    name="input"
+    theme="light"
+    step="1"
+    margin="medium"
+  ></dxc-slider>
+</div>
+<div>
+  <h4>Dark theme</h4>
+  <div
+    className="test-case"
+    id="dark-theme"
+    style="background-color: black"
     
-    <div>
-      <h4>Basic slider</h4>
-      <dxc-slider [name]="slider1"></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider with custom min, max, step and limitValue</h4>
-      <dxc-slider
-        min="10"
-        [max]="60"
-        [step]="15"
-        [name]="slider2"
-        [showLimitValues]="true"
-      ></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider with Input and variable binding: Value {{sliderValue}}</h4>
-      <dxc-slider [showInput]="true" [(value)]="sliderValue"></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider OnDragEnnd </h4>
-      <dxc-slider  (dragEnd) = "onDragEnd($event)"></dxc-slider>
-    </div>
-    <div>
-        <h4>Slider onChange </h4>
-        <dxc-slider  (valueChange) = "sliderValueChange($event)"></dxc-slider>
-    </div>
-    <div>
-      <h4>Slider disabled</h4>
-      <dxc-slider [disabled]="true"></dxc-slider>
-    </div>
+  >
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="dark"
+      step="1"
+      margin="medium"
+    ></dxc-slider>
   </div>
-  
-  <div class="sliders-sections-dark">
-    <div> 
-        <h2>Dark theme</h2>
-    </div>   
-        <div>
-      <div class="dark-slider-content">
-        <h4>Basic slider</h4>
-        <dxc-slider [name]="slider1"  [theme] ="'dark'"></dxc-slider>
-      </div>
-      <div>
-        <h4>Slider with custom min, max, step and limitValue</h4>
-        <dxc-slider
-          [min]="0"
-          [max]="60"
-          [step]="15"
-          [name]="slider2"
-          [showLimitValues]="true"
-          [theme] ="'dark'"
-        ></dxc-slider>
-      </div>
-      <div>
-        <h4>Slider with Input and variable binding: Value {{sliderValue}}</h4>
-        <dxc-slider [showInput]="true" [(value)]="sliderValue"  [theme] ="'dark'"   [step]="15"  [showLimitValues]="true"></dxc-slider>
-      </div>
-      <div>
-        <h4>Slider OnDragEnnd </h4>
-        <dxc-slider  (dragEnd) = "onDragEnd($event)"   [theme] ="'dark'"></dxc-slider>
-      </div>
-      <div>
-          <h4>Slider onChange </h4>
-          <dxc-slider  (valueChange) = "sliderValueChange($event)"  [theme] ="'dark'"></dxc-slider>
-      </div>
-      <div>
-        <h4>Slider disabled</h4>
-        <dxc-slider [disabled]="true"   [theme] ="'dark'"></dxc-slider>
-      </div>
-    </div> 
-    </div>
+</div>
+<div className="test-case" id="discrete-slider">
+  <h4>Discrete Slider</h4>
+  <dxc-slider
+    minValue="0"
+    maxValue="50"
+    showLimitsValues="true"
+    name="input"
+    step="5"
+    marks="true"
+    onChange="onChange"
+    margin="medium"
+  ></dxc-slider>
+</div>
+<div className="test-case" id="continuous-slider">
+  <h4>Continuous Slider</h4>
+  <dxc-slider
+    minValue="0"
+    maxValue="100"
+    showLimitsValues="true"
+    name="input"
+    step="1"
+    onChange="onChange"
+    margin="medium"
+  ></dxc-slider>
+</div>
+<div className="test-case" id="no-limits-slider">
+  <h4>Slider without limit values</h4>
+  <dxc-slider
+    minValue="0"
+    maxValue="100"
+    name="input"
+    step="1"
+    onChange="onChange"
+    margin="medium"
+  ></dxc-slider>
+</div>
+<div className="test-case" id="input-slider">
+  <h4>Slider with input</h4>
+  <dxc-slider
+    minValue="0"
+    maxValue="50"
+    showLimitsValues="true"
+    showInput="true"
+    name="input"
+    step="5"
+    value="25"
+    marks="true"
+    onChange="onChange"
+    onDragEnd="onDragEnd"
+    onChangeInput="onChangeInput"
+    margin="medium"
+  ></dxc-slider>
+</div>
+<div className="test-case" id="disabled-slider">
+  <h4>Disabled slider</h4>
+  <dxc-slider
+    minValue="0"
+    maxValue="100"
+    showLimitsValues="true"
+    name="input"
+    onChange="onChange"
+    disabled="true"
+    margin="medium"
+  ></dxc-slider>
+</div>
+<div>
+  <h4>Sizes</h4>
+  <div className="test-case" id="medium-size-slider">
+    <h5>Medium size</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      size="medium"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="large-size-slider">
+    <h5>Large size</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      size="large"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="fillParent-size-slider">
+    <h5>FillParent size</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      size="fillParent"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="fitContent-size-slider">
+    <h5>FitContent size</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      size="fitContent"
+    ></dxc-slider>
+  </div>
+</div>
+<div>
+  <h4>Margins</h4>
+  <div className="test-case" id="xxsmall-margin">
+    <h5>xxsmall margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="xxsmall"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="xsmall-margin">
+    <h5>xsmall margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="xsmall"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="small-margin">
+    <h5>small margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="small"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="medium-margin">
+    <h5>Medium margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="medium"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="large-margin">
+    <h5>Large margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="large"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="xlarge-margin">
+    <h5>xlarge margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="xlarge"
+    ></dxc-slider>
+  </div>
+  <div className="test-case" id="xxlarge-margin">
+    <h5>xxlarge margin</h5>
+    <dxc-slider
+      minValue="0"
+      maxValue="100"
+      showLimitsValues="true"
+      showInput="false"
+      name="input"
+      theme="light"
+      step="1"
+      margin="xxlarge"
+    ></dxc-slider>
+  </div>
+</div>

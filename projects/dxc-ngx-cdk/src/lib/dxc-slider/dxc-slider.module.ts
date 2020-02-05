@@ -7,6 +7,7 @@ import {
 import { FormsModule } from "@angular/forms";
 import { DxcSliderComponent } from "./dxc-slider.component";
 import { CommonModule } from "@angular/common";
+import { ThemeModule, defaultTheme } from '../theme';
 
 @NgModule({
   declarations: [DxcSliderComponent],
@@ -15,7 +16,11 @@ import { CommonModule } from "@angular/common";
     MatSliderModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ThemeModule.forRoot({
+      themes: [defaultTheme],
+      active: "default"
+    })
   ],
   exports: [DxcSliderComponent]
 })

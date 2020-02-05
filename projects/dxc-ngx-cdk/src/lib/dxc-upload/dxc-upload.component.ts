@@ -13,8 +13,7 @@ import {
 export class DxcUploadComponent implements OnChanges {
   private files = [];
 
-  private uploadedFiles = [];
-  private filesToUpload = [];
+   uploadedFiles = [];
 
   newFile = new EventEmitter<any>();
 

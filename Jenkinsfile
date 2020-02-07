@@ -7,20 +7,11 @@ pipeline {
         SERVICE_NAME='dxc-ngx-cdk'
     } 
     stages {
-        
-
-        stage ('Cypress execution'){
-            agent {
-                // this image provides everything needed to run Cypress
-                docker {                    
-                    image 'cypress/base:10'
-                    args '-v $WORKSPACE:/workDir -w /workDir'
-                }
-            }
-            stages{
-                stage('Execute cypress tests') {
-                    steps {
-                    
+        stage('Execute cypress tests') {
+            steps {
+                script{
+                    // this image provides everything needed to run Cypress
+                    docker.image('cypress/base:10').inside('-v $WORKSPACE:/workDir -w /workDir') {
                         withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
                             sh "touch ~/.npmrc"
                             sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
@@ -31,19 +22,14 @@ pipeline {
                                 cat ~/.npmrc
                             '''
                         }
-
-                        script{
-
-                                sh 'npm install'
-                                sh 'npm ci'
-                                sh 'npm run cypress:ci'
-                        }
-                        
-                    }           
+                        sh 'npm install'
+                        sh 'npm ci'
+                        sh 'npm run cypress:ci'
+                    }
                 }
-            }
+            } 
         }
-        stage('Build and Deploy'){
+        stage('Build and Deploy') {
 
            agent {
                 dockerfile {
@@ -51,26 +37,8 @@ pipeline {
                     reuseNode true
                 } 
            }
-           stages {
-            stage('Git') {
-                steps {
-                        withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
-                            sh "touch ~/.netrc"
-                            sh "echo 'machine github.dxc.com' >> ~/.netrc"
-                            sh "echo 'login ${GIT_USER}' >> ~/.netrc"
-                            sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
-                            sh "git config --global user.email 'jenkins@dxc.com'"
-                            sh "git config --global user.name 'Jenkins User'"
-                        }
-                        script {
-                            env.OLD_RELEASE_NUMBER = sh (
-                                script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
-                                returnStdout: true
-                            ).trim()
-                        }
-                }
-            }
-            stage('Check repo name'){
+           stages {     
+            stage('Check repo name') {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
@@ -160,8 +128,7 @@ pipeline {
                         cp -R ./projects/dxc-ngx-cdk/src/lib/styles ./dist/dxc-ngx-cdk/styles
                     '''
                 }
-            }
-        
+            }        
             stage('.npmrc') {
                 when {
                     expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' } 
@@ -277,11 +244,8 @@ pipeline {
                 }
             }
            }
-
         }
-    }
-
-        
+    }        
     post { 
         failure {
             script {

@@ -30,7 +30,6 @@ pipeline {
             } 
         }
         stage('Build and Deploy') {
-
            agent {
                 dockerfile {
                     filename 'docker/Dockerfile'
@@ -50,6 +49,16 @@ pipeline {
                             } 
                         }
                     }
+                }
+            }
+            stage('Release number') {
+                steps {
+                        script {
+                            env.OLD_RELEASE_NUMBER = sh (
+                                script: "grep 'version' projects/dxc-ngx-cdk/package.json | grep -o '[0-9.].*[^\",]'",
+                                returnStdout: true
+                            ).trim()
+                        }
                 }
             }
             stage('Release type') {

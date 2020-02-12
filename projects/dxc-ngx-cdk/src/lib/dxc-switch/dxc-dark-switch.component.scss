@@ -2,24 +2,21 @@
   mat-slide-toggle {
     ::ng-deep {
       .mat-slide-toggle-thumb {
-        background-color: #ffffff;
+        background-color: var(--white);
         opacity: 1;
       }
-      .mat-slide-toggle-bar {
-        background-color: #66666666;
-      }
       span.mat-slide-toggle-required {
-        color: #ff6161;
+        color: var(--lightRed);
       }
       span:not(.mat-slide-toggle-content):not(.mat-slide-toggle-required) {
-        color: #ffffff;
+        color: var(--white);
         opacity: 1;
       }
       .mat-ripple-element.mat-slide-toggle-persistent-ripple {
-        background-color: #ffed00;
+        background-color: var(--yellow);
       }
       .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple) {
-        background-color: #ffed00;
+        background-color: var(--yellow);
         opacity: 0.25;
       }
       .mat-slide-toggle-ripple {
@@ -30,25 +27,25 @@
   mat-slide-toggle.mat-checked:not(.mat-disabled) {
     ::ng-deep {
       .mat-slide-toggle-thumb {
-        background-color: #ffed00;
+        background-color: var(--yellow);
       }
       .mat-slide-toggle-bar {
-        background-color: #666666;
+        background-color: var(--darkGrey);
         opacity: 1;
       }
       .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple) {
-        background-color: #FFFFFF;
+        background-color: var(--white);
         opacity: 0.25;
       }
       .mat-ripple-element.mat-slide-toggle-persistent-ripple {
-        background-color: #FFFFFF;
+        background-color: var(--white);
       }
     }
   }
   .mat-slide-toggle.mat-disabled:not(.mat-slide-toggle-content) {
     ::ng-deep {
       .mat-slide-toggle-bar {
-        background-color: #666666;
+        background-color: var(--darkGrey);
         opacity: 1;
       }
       opacity: 0.7;

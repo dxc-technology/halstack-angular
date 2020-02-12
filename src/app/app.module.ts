@@ -18,6 +18,7 @@ import { DateInfoComponent } from './pages/date/date-info.component';
 import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-slider.module";
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
@@ -60,6 +61,7 @@ import { AllComponent } from './pages/all/all.component';
     BoxComponent,
     DropdownInfoComponent,
     TextInputInfoComponent,
+    SwitchInfoComponent,
     AllComponent
   ],
   imports: [

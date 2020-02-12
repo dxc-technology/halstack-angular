@@ -64,6 +64,34 @@ export class CssUtils {
     return value;
   }
 
+  calculateMinWidth(sizes, margin) {
+    const value =
+      margin && typeof margin !== "object"
+        ? css`
+            min-width: calc(${sizes["small"]} - ${spaces[margin]} - ${spaces[margin]});
+          `
+        : margin
+        ? margin["right"] === undefined && margin["left"]
+          ? css`
+              min-width: calc(${sizes["small"]} - ${spaces[margin["left"]]});
+            `
+          : margin["left"] === undefined && margin["right"]
+          ? css`
+              min-width: calc(${sizes["small"]} - ${spaces[margin["right"]]});
+            `
+          : margin["left"] && margin["right"]
+          ? css`
+              min-width: calc(${sizes["small"]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]});
+            `
+          : css`
+              min-width: ${sizes["small"]};
+            `
+        : css`
+            min-width: ${sizes["small"]};
+          `;
+    return value;
+  }
+
   getBoxShadow(shadowDepth) {
     switch (shadowDepth) {
       case "1":

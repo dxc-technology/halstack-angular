@@ -2,19 +2,16 @@
   mat-slide-toggle {
     ::ng-deep {
       .mat-slide-toggle-thumb {
-        background-color: #ffffff;
-      }
-      .mat-slide-toggle-bar {
-        background-color: #66666666;
+        background-color: var(--white);
       }
       span.mat-slide-toggle-required {
-        color: #d0011b;
+        color: var(--darkRed);
       }
       .mat-ripple-element.mat-slide-toggle-persistent-ripple {
-        background-color: #666666;
+        background-color: var(--darkGrey);
       }
       .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple) {
-        background-color: #666666;
+        background-color: var(--darkGrey);
         opacity: 0.25;
       }
       .mat-slide-toggle-ripple {
@@ -25,24 +22,24 @@
   mat-slide-toggle.mat-checked {
     ::ng-deep {
       .mat-slide-toggle-thumb {
-        background-color: #000000;
+        background-color: var(--black);
       }
       .mat-slide-toggle-bar {
-        background-color: #666666;
+        background-color: var(--darkGrey);
       }
     }
   }
   mat-slide-toggle.mat-checked.mat-disabled {
     ::ng-deep {
       .mat-slide-toggle-thumb {
-        background-color: #666666;
+        background-color: var(--darkGrey);
       }
     }
   }
   mat-slide-toggle.mat-disabled {
     ::ng-deep {
       .mat-slide-toggle-bar {
-        background-color: #d9d9d9;
+        background-color: var(--lightGrey);
       }
     }
   }

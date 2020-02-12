@@ -5,6 +5,7 @@ import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { DxcAccordionComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.component';
@@ -113,7 +114,7 @@ export const Components = [
     {
         name: 'Switch',
         route: 'switch',
-        component: DxcSwitchComponent
+        component: SwitchInfoComponent
     },
     {
         name: 'Tabs',

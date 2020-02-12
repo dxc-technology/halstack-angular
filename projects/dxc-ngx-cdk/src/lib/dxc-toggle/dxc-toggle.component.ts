@@ -84,6 +84,17 @@ export class DxcToggleComponent implements OnChanges {
     fitContent: "unset"
   };
 
+  setPadding(size) {
+    if (size === "small") {
+      return css`
+        padding: 11px;
+      `;
+    }
+    return css`
+      padding: 12px 30px;
+    `;
+  }
+
   calculateWidth(margin, size) {
     if (size === "fillParent") {
       return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
@@ -109,14 +120,14 @@ export class DxcToggleComponent implements OnChanges {
           border: none;
           height: 43px;
           .mat-button-toggle-button {
-            padding: ${inputs.label === "" ? "12px 10px" : "12px 30px"};
+            ${this.setPadding(inputs.size)}
           }
         }
         &.outlined {
           border: 2px solid;
           height: 39px;
           .mat-button-toggle-button {
-            padding: ${inputs.label === "" ? "10px 8px" : "10px 28px"};
+            ${this.setPadding(inputs.size)}
           }
         }
 

@@ -5,8 +5,10 @@ import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
 import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
+import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { DxcAccordionComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.component';
 import { DxcAlertComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.component';
 import { DxcDialogComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-dialog/dxc-dialog.component';
@@ -83,7 +85,7 @@ export const Components = [
     {
         name: 'Input Text',
         route: 'input_text',
-        component:  DxcTextInputComponent
+        component:  TextInputInfoComponent
     },
     {
         name: 'Progress Bar',
@@ -113,7 +115,7 @@ export const Components = [
     {
         name: 'Switch',
         route: 'switch',
-        component: DxcSwitchComponent
+        component: SwitchInfoComponent
     },
     {
         name: 'Tabs',

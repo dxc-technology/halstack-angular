@@ -1,19 +1,22 @@
-<mat-form-field [class.disabled]="disabled"> 
-  <span matPrefix class="prefixElement" *ngIf="prefix && !prefixIconSrc"> {{ prefix }}</span>
-  <img matPrefix class="prefixElement" *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
-  <mat-label *ngIf="label">{{ label }}</mat-label>
-  <input *ngIf="!multiline"
-    matInput
-    [value]="value"
-    [required]="required"
-    [name]="name"
-    [type]="'text'"
-    [formControl]="formControl"
-    [errorStateMatcher]="matcher"
-    (blur)="onBlur($event)"
-    (input)="valueChanged($event)"
+<mat-form-field theme [class.disabled]="disabled">
+  <span
+    matPrefix
+    (click)="onClickPrefixHandler($event)"
+    class="prefixElement"
+    *ngIf="prefix && !prefixIconSrc"
+  >
+    {{ prefix }}</span
+  >
+  <img
+    matPrefix
+    (click)="onClickPrefixHandler($event)"
+    class="prefixElement"
+    *ngIf="prefixIconSrc"
+    src="{{ prefixIconSrc }}"
   />
-  <textarea *ngIf="multiline"
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input
+    *ngIf="!multiline"
     matInput
     [value]="value"
     [required]="required"
@@ -21,10 +24,34 @@
     [type]="'text'"
     [formControl]="formControl"
     [errorStateMatcher]="matcher"
-    (blur)="onBlur($event)"
-    (input)="valueChanged($event)">
-</textarea>
-  <span matSuffix class="suffixElement" *ngIf="suffix && !suffixIconSrc">{{ suffix }}</span>
-  <img matSuffix class="suffixElement" *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
+    (blur)="onBlurHandle($event)"
+    (input)="onChanged($event)"
+  />
+  <textarea
+    *ngIf="multiline"
+    matInput
+    [value]="value"
+    [required]="required"
+    [name]="name"
+    [type]="'text'"
+    [formControl]="formControl"
+    [errorStateMatcher]="matcher"
+    (blur)="onBlurHandle($event)"
+    (input)="onChanged($event)"
+  ></textarea>
+  <span
+    matSuffix
+    (click)="onClickSuffixHandler($event)"
+    class="suffixElement"
+    *ngIf="suffix && !suffixIconSrc"
+    >{{ suffix }}</span
+  >
+  <img
+    matSuffix
+    (click)="onClickSuffixHandler($event)"
+    class="suffixElement"
+    *ngIf="suffixIconSrc"
+    src="{{ suffixIconSrc }}"
+  />
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>

@@ -2,36 +2,36 @@
   mat-button-toggle {
     ::ng-deep {
       .mat-ripple-element {
-        background-color: #FFFFFF;
+        background-color: var(--white);
         opacity: 0.3;
       }
     }
     &.basic:not(.mat-button-toggle-checked) {
-      background-color: #eeeeee;
+      background-color: var(--darkWhite);
       ::ng-deep {
         .mat-ripple-element {
-          background-color: #ffed00;
+          background-color: var(--yellow);
           opacity: 0.3;
         }
       }
     }
     &.mat-button-toggle-checked.basic {
-      background-color: #ffed00;
+      background-color: var(--yellow);
       &:hover:not(.mat-button-toggle-disabled) {
-        background-color: #000000;
-        color: #ffed00;
+        background-color: var(--black);
+        color: var(--yellow);
       }
     }
     &.outlined {
       background-color: transparent;
       &:hover:not(.mat-button-toggle-disabled) {
-        background-color: #eeeeee;
+        background-color: var(--darkWhite);
       }
     }
     &.mat-button-toggle-checked.outlined {
-      background-color: #eeeeee;
+      background-color: var(--darkWhite);
       &:hover:not(.mat-button-toggle-disabled) {
-        background-color: #d9d9d9;
+        background-color: var(--lightGrey);
       }
     }
   }

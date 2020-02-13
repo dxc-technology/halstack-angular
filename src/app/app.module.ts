@@ -17,6 +17,7 @@ import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component'
 import { DateInfoComponent } from './pages/date/date-info.component';
 import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
+import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,6 +57,7 @@ import { AllComponent } from './pages/all/all.component';
     DialogInfoComponent,
     HeaderInfoComponent,
     RadioInfoComponent,
+    ToggleInfoComponent,
     AccordionComponent,
     AlertComponent,
     BoxComponent,

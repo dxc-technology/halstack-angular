@@ -1,7 +1,7 @@
 <mat-toolbar>
   <mat-toolbar-row class="footerHeader">
-    <img class="dxc-logo" *ngIf="!logoSrc" src="./dxc_logo_white.png" />
-    <img *ngIf="logoSrc" src="{{ logoSrc }}" />
+    <img class="logo" *ngIf="!logoSrc" src="./dxc_logo_white.png" />
+    <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
     <div class="socialIcons">
       <div *ngFor="let link of socialLinks; index as i">
         <a

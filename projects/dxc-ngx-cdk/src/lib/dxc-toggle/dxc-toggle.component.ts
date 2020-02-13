@@ -110,6 +110,10 @@ export class DxcToggleComponent implements OnChanges {
         ${this.calculateWidth(inputs.margin, inputs.size)}
         ${this.utils.getMargins(inputs.margin)}
         white-space: normal;
+        .mat-button-toggle-button {
+          display: flex;
+          justify-content: center;
+        }
         &.mat-button-toggle-disabled {
           opacity: 0.5;
           .mat-button-toggle-button {

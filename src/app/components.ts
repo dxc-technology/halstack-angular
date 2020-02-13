@@ -8,6 +8,7 @@ import { RadioInfoComponent } from './pages/radio/radio-info.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { DxcAccordionComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.component';
 import { DxcAlertComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.component';
 import { DxcDialogComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-dialog/dxc-dialog.component';
@@ -74,7 +75,7 @@ export const Components = [
     {
         name: 'Footer',
         route: 'footer',
-        component:  DxcFooterComponent
+        component:  FooterInfoComponent
     },
     {
         name: 'Header',

@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-slider.module";
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
+import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { DxcAccordionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-accordion/dxc-accordion.module';
 import { DXCAlertModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-alert/dxc-alert.module';
 import { DXCDialogModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-dialog/dxc-dialog.module';
@@ -60,6 +61,7 @@ import { AllComponent } from './pages/all/all.component';
     AlertComponent,
     BoxComponent,
     DropdownInfoComponent,
+    FooterInfoComponent,
     TextInputInfoComponent,
     SwitchInfoComponent,
     AllComponent

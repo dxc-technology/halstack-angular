@@ -19,6 +19,20 @@ export class CssUtils {
         `;
   }
 
+  getTopMargin(margin) {
+    return margin && typeof margin !== "object"
+      ? css`
+          margin-top: ${spaces[margin]};
+        `
+      : margin && margin !== null
+      ? css`
+          margin-top: ${spaces[margin["top"]]};
+        `
+      : css`
+          margin: 0px;
+        `;
+  }
+
   getPaddings(padding) {
     return padding && typeof padding !== "object"
       ? css`
@@ -53,7 +67,9 @@ export class CssUtils {
             `
           : margin["left"] && margin["right"]
           ? css`
-              width: calc(${sizes[size]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]});
+              width: calc(
+                ${sizes[size]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]}
+              );
             `
           : css`
               width: ${sizes[size]};
@@ -68,7 +84,9 @@ export class CssUtils {
     const value =
       margin && typeof margin !== "object"
         ? css`
-            min-width: calc(${sizes["small"]} - ${spaces[margin]} - ${spaces[margin]});
+            min-width: calc(
+              ${sizes["small"]} - ${spaces[margin]} - ${spaces[margin]}
+            );
           `
         : margin
         ? margin["right"] === undefined && margin["left"]
@@ -81,7 +99,9 @@ export class CssUtils {
             `
           : margin["left"] && margin["right"]
           ? css`
-              min-width: calc(${sizes["small"]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]});
+              min-width: calc(
+                ${sizes["small"]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]}
+              );
             `
           : css`
               min-width: ${sizes["small"]};

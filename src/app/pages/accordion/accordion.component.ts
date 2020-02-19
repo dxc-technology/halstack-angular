@@ -9,7 +9,8 @@ export class AccordionComponent implements OnInit {
 
 
   isExpanded = true;
-  homeLogo = './../../assets/images/home.svg';
+  homeLogo = './assets/images/home.svg';
+  facebookLogo = './assets/images/facebook.svg';
   
   constructor() { }
 

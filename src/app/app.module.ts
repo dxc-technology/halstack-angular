@@ -96,7 +96,7 @@ import { AllComponent } from './pages/all/all.component';
     HttpClientModule
     
   ],
-  providers: [ThemeService],
+  providers: [{provide: ThemeService, useClass: ThemeService}],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

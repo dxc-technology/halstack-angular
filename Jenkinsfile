@@ -7,28 +7,28 @@ pipeline {
         SERVICE_NAME='dxc-ngx-cdk'
     } 
     stages {
-        stage('Execute cypress tests') {
-            steps {
-                script{
-                    // this image provides everything needed to run Cypress
-                    docker.image('cypress/base:10').inside('-v $WORKSPACE:/workDir -w /workDir') {
-                        withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
-                            sh "touch ~/.npmrc"
-                            sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
-                            sh '''
-                                cat ${CONFIG} >> ~/.npmrc
-                            '''
-                            sh '''
-                                cat ~/.npmrc
-                            '''
-                        }
-                        sh 'npm install'
-                        sh 'npm ci'
-                        sh 'npm run cypress:ci'
-                    }
-                }
-            } 
-        }
+        // stage('Execute cypress tests') {
+        //     steps {
+        //         script{
+        //             // this image provides everything needed to run Cypress
+        //             docker.image('cypress/base:10').inside('-v $WORKSPACE:/workDir -w /workDir') {
+        //                 withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
+        //                     sh "touch ~/.npmrc"
+        //                     sh "echo '//registry.npmjs.org/:always-auth=false' >> ~/.npmrc"
+        //                     sh '''
+        //                         cat ${CONFIG} >> ~/.npmrc
+        //                     '''
+        //                     sh '''
+        //                         cat ~/.npmrc
+        //                     '''
+        //                 }
+        //                 sh 'npm install'
+        //                 sh 'npm ci'
+        //                 sh 'npm run cypress:ci'
+        //             }
+        //         }
+        //     } 
+        // }
         stage('Build and Deploy') {
            agent {
                 dockerfile {

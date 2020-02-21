@@ -2,14 +2,14 @@
   .mat-toolbar-row {
     background: var(--white);
     img.dxc-logo {
-      content: url("dxc_logo_black.png");
+      content: url("../assets/dxc_logo_black.png");
     }
   }
   .underlined {
     .mat-toolbar-row {
       background: var(--black);
       img.dxc-logo {
-        content: url("dxc_logo_white.png");
+        content: url("../assets/dxc_logo_white.png");
       }
     }
     border-bottom: 2px solid var(--white);

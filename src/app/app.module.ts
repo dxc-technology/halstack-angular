@@ -3,11 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-  DxcButtonModule,
-  DxcCheckboxModule,
-  DxcDateModule,
-  DxcRadioModule,
-  DXCSelectModule
+  DxcButtonModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,6 +37,11 @@ import { DXCToggleModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-toggle/d
 import { DxcTabsComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
 import { DxcTabsModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.module';
 import { DXCUploadModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.module';
+import { DxcCheckboxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-checkbox/dxc-checkbox.module';
+import { DXCSelectModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.module';
+import { DxcDateModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.module';
+import { DxcRadioModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-radio/dxc-radio.module';
+import { DxcTableModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-table/dxc-table.module';
 import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
@@ -48,6 +49,7 @@ import { DxcBoxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-box/dxc-box
 import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AllComponent } from './pages/all/all.component';
+import { TableInfoComponent } from './pages/table/table-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +68,7 @@ import { AllComponent } from './pages/all/all.component';
     FooterInfoComponent,
     TextInputInfoComponent,
     SwitchInfoComponent,
+    TableInfoComponent,
     AllComponent
   ],
   imports: [
@@ -89,6 +92,7 @@ import { AllComponent } from './pages/all/all.component';
     DXCToggleModule,
     DxcTabsModule,
     DXCUploadModule,
+    DxcTableModule,
     DxcDateModule,
     DxcRadioModule,
     BrowserModule,

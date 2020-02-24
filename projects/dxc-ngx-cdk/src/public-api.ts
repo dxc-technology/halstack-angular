@@ -9,8 +9,8 @@ export * from './lib/theme/theme.module';
 // export * from './lib/dxc-accordion/dxc-accordion.component';
 // export * from './lib/dxc-accordion/dxc-accordion.module';
 
-// export * from './lib/dxc-alert/dxc-alert.component';
-// export * from './lib/dxc-alert/dxc-alert.module';
+export * from './lib/dxc-alert/dxc-alert.component';
+export * from './lib/dxc-alert/dxc-alert.module';
 
 // export * from './lib/dxc-box/dxc-box.component';
 // export * from './lib/dxc-box/dxc-box.module';
@@ -38,6 +38,10 @@ export * from './lib/dxc-footer/dxc-footer.module';
 
 export * from './lib/dxc-header/dxc-header.component';
 export * from './lib/dxc-header/dxc-header.module';
+
+
+export * from './lib/dxc-table/dxc-table.component';
+export * from './lib/dxc-table/dxc-table.module';
 
 // export * from './lib/dxc-progressbar/dxc-progressbar.component';
 // export * from './lib/dxc-progressbar/dxc-progressbar.module';

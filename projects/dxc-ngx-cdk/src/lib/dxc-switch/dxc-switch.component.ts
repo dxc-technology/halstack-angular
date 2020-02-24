@@ -6,7 +6,7 @@ import {
   HostBinding,
   SimpleChanges
 } from "@angular/core";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Inject } from '@angular/core';
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -84,7 +84,7 @@ export class DxcSwitchComponent implements OnChanges {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils, private themeService: ThemeService) {
+  constructor(private utils: CssUtils, @Inject('ThemeService') private themeService: ThemeService) {
     this.checkedChange = new EventEmitter();
   }
 

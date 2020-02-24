@@ -100,7 +100,7 @@ import { TableInfoComponent } from './pages/table/table-info.component';
     HttpClientModule
     
   ],
-  providers: [{provide: ThemeService, useClass: ThemeService}],
+  providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

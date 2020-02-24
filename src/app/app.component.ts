@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Components } from './components';
 import { HttpClient } from '@angular/common/http';
 import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.service';
@@ -10,7 +10,7 @@ import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.ser
 })
 export class AppComponent {
   components: Array<any>;
-  constructor(private http: HttpClient, private themeService: ThemeService) {
+  constructor(private http: HttpClient, @Inject('ThemeService') private themeService: ThemeService) {
     this.components = Components;
   }
 

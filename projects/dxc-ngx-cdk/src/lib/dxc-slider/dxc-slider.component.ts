@@ -142,12 +142,12 @@ export class DxcSliderComponent implements OnChanges {
     this.inputBlur.emit($event.target.value);
   }
 
-  calculateWidth(margin, size) {
-    if (size === "fillParent") {
-      return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
+  calculateWidth(inputs) {
+    if (inputs.size === "fillParent") {
+      return this.utils.calculateWidth(this.sizes, inputs);
     }
     return css`
-      width: ${this.sizes[size]};
+      width: ${this.sizes[inputs.size]};
     `;
   }
 
@@ -155,7 +155,7 @@ export class DxcSliderComponent implements OnChanges {
     return css`
       display: flex;
       align-items: center;
-      ${this.calculateWidth(inputs.margin, inputs.size)}
+      ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       &.disabled {
         cursor: not-allowed;

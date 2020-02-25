@@ -93,12 +93,12 @@ export class DxcButtonComponent {
     fitContent: "unset"
   };
 
-  calculateWidth(margin, size) {
-    if (size === "fillParent") {
-      return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
+  calculateWidth(inputs) {
+    if (inputs.size === "fillParent") {
+      return this.utils.calculateMinWidth(this.sizes, inputs);
     }
     return css`
-      width: ${this.sizes[size]};
+      width: ${this.sizes[inputs.size]};
     `;
   }
 
@@ -120,7 +120,7 @@ export class DxcButtonComponent {
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
       vertical-align: middle;
-      ${this.calculateWidth(inputs.margin, inputs.size)}
+      ${this.calculateWidth(inputs)}
       button.mat-raised-button,
       button.mat-button,
       button.mat-stroked-button,

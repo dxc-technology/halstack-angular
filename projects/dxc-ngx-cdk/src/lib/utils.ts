@@ -50,34 +50,48 @@ export class CssUtils {
         `;
   }
 
-  calculateWidthWithMargins(sizes, size, margin) {
-    const value =
-      margin && typeof margin !== "object"
-        ? css`
-            width: calc(${sizes[size]} - ${spaces[margin]} - ${spaces[margin]});
-          `
-        : margin
-        ? margin["right"] === undefined && margin["left"]
-          ? css`
-              width: calc(${sizes[size]} - ${spaces[margin["left"]]});
-            `
-          : margin["left"] === undefined && margin["right"]
-          ? css`
-              width: calc(${sizes[size]} - ${spaces[margin["right"]]});
-            `
-          : margin["left"] && margin["right"]
-          ? css`
-              width: calc(
-                ${sizes[size]} - ${spaces[margin["left"]]} -${spaces[margin["right"]]}
-              );
-            `
-          : css`
-              width: ${sizes[size]};
-            `
-        : css`
-            width: ${sizes[size]};
-          `;
-    return value;
+  calculateWidth(sizes, inputs) {
+    const width = sizes[inputs.size];
+    let margins = "";
+    if (inputs.size === "fillParent" && inputs.margin) {
+      margins =
+        inputs.margin && typeof inputs.margin !== "object"
+          ? " - " + spaces[inputs.margin] + " - " + spaces[inputs.margin]
+          : inputs.margin && inputs.size
+          ? inputs.margin["right"] === undefined && inputs.margin["left"]
+            ? " - " + spaces[inputs.margin["left"]]
+            : inputs.margin["left"] === undefined && inputs.margin["right"]
+            ? " - " + spaces[inputs.margin["right"]]
+            : inputs.margin["left"] && inputs.margin["right"]
+            ? " - " +
+              spaces[inputs.margin["left"]] +
+              " - " +
+              spaces[inputs.margin["right"]]
+            : ""
+          : "";
+    }
+
+    let paddings = "";
+    if (inputs.padding) {
+      paddings =
+        inputs.padding && typeof inputs.padding !== "object"
+          ? " - " + spaces[inputs.padding] + " - " + spaces[inputs.padding]
+          : inputs.padding && inputs.size
+          ? inputs.padding["right"] === undefined && inputs.padding["left"]
+            ? " - " + spaces[inputs.padding["left"]]
+            : inputs.padding["left"] === undefined && inputs.padding["right"]
+            ? " - " + spaces[inputs.padding["right"]]
+            : inputs.padding["left"] && inputs.padding["right"]
+            ? " - " +
+              spaces[inputs.padding["left"]] +
+              " - " +
+              spaces[inputs.padding["right"]]
+            : ""
+          : "";
+    }
+    return css`
+      width: calc(${width} ${paddings} ${margins});
+    `;
   }
 
   calculateMinWidth(sizes, margin) {

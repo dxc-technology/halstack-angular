@@ -95,19 +95,19 @@ export class DxcToggleComponent implements OnChanges {
     `;
   }
 
-  calculateWidth(margin, size) {
-    if (size === "fillParent") {
-      return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
+  calculateWidth(inputs) {
+    if (inputs.size === "fillParent") {
+      return this.utils.calculateWidth(this.sizes, inputs);
     }
     return css`
-      width: ${this.sizes[size]};
+      width: ${this.sizes[inputs.size]};
     `;
   }
 
   getDynamicStyle(inputs) {
     return css`
       mat-button-toggle {
-        ${this.calculateWidth(inputs.margin, inputs.size)}
+        ${this.calculateWidth(inputs)}
         ${this.utils.getMargins(inputs.margin)}
         white-space: normal;
         .mat-button-toggle-button {

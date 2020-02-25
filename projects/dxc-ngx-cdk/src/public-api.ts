@@ -3,7 +3,6 @@
  */
 
 export * from './lib/theme/theme.service';
-export * from './lib/theme/theme.directive';
 export * from './lib/theme/theme.module';
 
 // export * from './lib/dxc-accordion/dxc-accordion.component';
@@ -21,8 +20,8 @@ export * from './lib/dxc-button/dxc-button.module';
 // export * from './lib/dxc-card/dxc-card.component';
 // export * from './lib/dxc-card/dxc-card.module';
 
-// export * from './lib/dxc-checkbox/dxc-checkbox.component';
-// export * from './lib/dxc-checkbox/dxc-checkbox.module';
+export * from './lib/dxc-checkbox/dxc-checkbox.component';
+export * from './lib/dxc-checkbox/dxc-checkbox.module';
 
 // export * from './lib/dxc-date/dxc-date.component';
 // export * from './lib/dxc-date/dxc-date.module';
@@ -64,8 +63,8 @@ export * from './lib/dxc-table/dxc-table.module';
 // export * from './lib/dxc-tabs/dxc-tabs.component';
 // export * from './lib/dxc-tabs/dxc-tabs.module';
 
-// export * from './lib/dxc-text-input/dxc-input-text.component';
-// export * from './lib/dxc-text-input/dxc-input-text.module';
+export * from './lib/dxc-text-input/dxc-input-text.component';
+export * from './lib/dxc-text-input/dxc-input-text.module';
 
 // export * from './lib/dxc-toggle/dxc-toggle.component';
 // export * from './lib/dxc-toggle/dxc-toggle.module';

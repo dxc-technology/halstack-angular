@@ -79,12 +79,12 @@ export class DxcRadioComponent implements OnInit {
     this.checkedChange = new EventEmitter();
   }
 
-  calculateWidth(margin, size) {
-    if (size === "fillParent") {
-      return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
+  calculateWidth(inputs) {
+    if (inputs.size === "fillParent") {
+      return this.utils.calculateWidth(this.sizes, inputs);
     }
     return css`
-      width: ${this.sizes[size]};
+      width: ${this.sizes[inputs.size]};
     `;
   }
 
@@ -109,7 +109,7 @@ export class DxcRadioComponent implements OnInit {
       display: inline-flex;
 
       ${this.utils.getMargins(inputs.margin)}
-      ${this.calculateWidth(inputs.margin, inputs.size)}
+      ${this.calculateWidth(inputs)}
       mat-radio-button {
         width: 100%;
         .mat-radio-label {

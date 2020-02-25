@@ -126,12 +126,12 @@ export class DxcTextInputComponent implements OnChanges {
     this.onClickPrefix.emit();
   }
 
-  calculateWidth(margin, size) {
-    if (size === "fillParent") {
-      return this.utils.calculateWidthWithMargins(this.sizes, size, margin);
+  calculateWidth(inputs) {
+    if (inputs.size === "fillParent") {
+      return this.utils.calculateWidth(this.sizes, inputs);
     }
     return css`
-      width: ${this.sizes[size]};
+      width: ${this.sizes[inputs.size]};
     `;
   }
 
@@ -139,7 +139,7 @@ export class DxcTextInputComponent implements OnChanges {
     return css`
       min-height: 34px;
       max-height: 74px;
-      ${this.calculateWidth(inputs.margin, inputs.size)}
+      ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
 

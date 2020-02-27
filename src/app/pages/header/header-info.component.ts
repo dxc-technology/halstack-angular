@@ -7,6 +7,51 @@ import { Component } from '@angular/core';
 })
 export class HeaderInfoComponent {
 
+  options = [
+    {
+      value: 1,
+      label: "Facebook"
+    },
+    {
+      value: 2,
+      label: "Twitter"
+    },
+    {
+      value: 3,
+      label: "Linkedin"
+    }
+  ];
+
+  selected = true;
+
+  paddingXxSmall = {
+    right: "xxsmall"
+  };
+
+  paddingXSmall = {
+    right: "xsmall"
+  };
+
+  paddingSmall = {
+    right: "small"
+  };
+
+  paddingMedium = {
+    right: "medium"
+  };
+
+  paddingLarge = {
+    right: "large"
+  };
+
+  paddingXLarge = {
+    right: "xlarge"
+  };
+
+  paddingXxLarge = {
+    right: "xxlarge"
+  };
+
   constructor()  {}
   underlined = true;
 }

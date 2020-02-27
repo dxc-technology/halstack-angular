@@ -119,7 +119,7 @@ export class DxcHeaderComponent implements OnChanges {
       }
       .content {
         display: flex;
-        flex-direction: row-reverse;
+        justify-content: flex-end;
         align-items: center;
         flex-wrap: wrap;
         width: 100%;

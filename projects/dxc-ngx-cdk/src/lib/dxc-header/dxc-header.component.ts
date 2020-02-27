@@ -39,8 +39,7 @@ export class DxcHeaderComponent implements OnChanges {
     padding: null
   });
 
-  constructor(private utils: CssUtils) {
-  }
+  constructor(private utils: CssUtils) {}
 
   public ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -103,23 +102,26 @@ export class DxcHeaderComponent implements OnChanges {
       }
       mat-toolbar-row.mat-toolbar-row,
       .mat-toolbar-row {
-        padding: 0 60px 0 20px;
+        padding: 0 0px 0 20px;
         display: flex;
         justify-content: space-between;
         height: auto;
       }
       .dxc-logo,
       img {
-        height: 32px;
-        width: 181px;
+        max-height: 32px;
+        width: auto;
+        vertical-align: middle;
+
         &:hover {
           cursor: pointer;
         }
       }
       .content {
         display: flex;
+        flex-direction: row-reverse;
         align-items: center;
-        max-width: calc(100% - 181px);
+        flex-wrap: wrap;
         width: 100%;
         overflow: hidden;
         font-family: "Open Sans", sans-serif;

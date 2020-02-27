@@ -11,8 +11,8 @@ export * from './lib/theme/theme.module';
 export * from './lib/dxc-alert/dxc-alert.component';
 export * from './lib/dxc-alert/dxc-alert.module';
 
-// export * from './lib/dxc-box/dxc-box.component';
-// export * from './lib/dxc-box/dxc-box.module';
+export * from './lib/dxc-box/dxc-box.component';
+export * from './lib/dxc-box/dxc-box.module';
 
 export * from './lib/dxc-button/dxc-button.component';
 export * from './lib/dxc-button/dxc-button.module';

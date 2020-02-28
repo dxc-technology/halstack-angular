@@ -15,6 +15,7 @@ import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-slider.module";
@@ -67,6 +68,7 @@ import { TableInfoComponent } from './pages/table/table-info.component';
     DropdownInfoComponent,
     FooterInfoComponent,
     TextInputInfoComponent,
+    SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,
     AllComponent

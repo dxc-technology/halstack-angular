@@ -94,6 +94,30 @@ export class CssUtils {
     `;
   }
 
+  calculateWidthWithSize(size, padding) {
+    let paddings = "";
+    if (padding) {
+      paddings =
+        padding && typeof padding !== "object"
+          ? " - " + spaces[padding] + " - " + spaces[padding]
+          : padding && size
+          ? padding["right"] === undefined && padding["left"]
+            ? " - " + spaces[padding["left"]]
+            : padding["left"] === undefined && padding["right"]
+            ? " - " + spaces[padding["right"]]
+            : padding["left"] && padding["right"]
+            ? " - " +
+              spaces[padding["left"]] +
+              " - " +
+              spaces[padding["right"]]
+            : ""
+          : "";
+    }
+    return css`
+      width: calc(${size} ${paddings});
+    `;
+  }
+
   calculateMinWidth(sizes, margin) {
     const value =
       margin && typeof margin !== "object"

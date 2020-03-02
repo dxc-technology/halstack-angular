@@ -12,7 +12,6 @@ import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
-import { DxcSpinnerComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-spinner/dxc-spinner.component';
 import { DxcProgressbarComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.component';
 import { DxcSelectComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.component';
 import { DxcTabsComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
@@ -21,6 +20,7 @@ import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
 import { AllComponent } from './pages/all/all.component';
+import { CardInfoComponent } from './pages/card/card-info.component';
 
 
 export const Components = [
@@ -43,7 +43,12 @@ export const Components = [
         name: 'Button',
         route: 'button',
         component: ButtonInfoComponent
-    }, 
+    },
+    {
+        name: 'Card',
+        route: 'card',
+        component:  CardInfoComponent
+    },
     {
         name: 'Checkbox',
         route: 'checkbox',

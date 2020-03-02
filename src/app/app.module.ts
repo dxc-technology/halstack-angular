@@ -51,11 +51,14 @@ import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.ser
 import { HttpClientModule } from '@angular/common/http';
 import { AllComponent } from './pages/all/all.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
+import { DxcCardModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-card/dxc-card.module';
+import { CardInfoComponent } from './pages/card/card-info.component';
 @NgModule({
   declarations: [
     AppComponent,
     ButtonInfoComponent,
     SliderInfoComponent,
+    CardInfoComponent,
     CheckboxInfoComponent,
     DateInfoComponent,
     DialogInfoComponent,
@@ -81,6 +84,7 @@ import { TableInfoComponent } from './pages/table/table-info.component';
     DXCAlertModule,
     DxcBoxModule,
     DxcButtonModule,
+    DxcCardModule,
     DxcCheckboxModule,
     DXCDialogModule,
     DXCDropdownModule,

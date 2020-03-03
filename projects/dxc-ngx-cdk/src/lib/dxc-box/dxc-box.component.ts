@@ -34,6 +34,10 @@ export class DxcBoxComponent implements OnInit {
   });
 
   calculateWidth(inputs) {
+    if (inputs.size === undefined || inputs.size === null){
+      return css`width:unset`
+    }
+
     if (inputs.size !== "fitContent") {
       return this.utils.calculateWidth(this.sizes, inputs);
     }

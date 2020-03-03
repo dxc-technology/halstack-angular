@@ -17,11 +17,12 @@ export * from './lib/dxc-box/dxc-box.module';
 export * from './lib/dxc-button/dxc-button.component';
 export * from './lib/dxc-button/dxc-button.module';
 
-// export * from './lib/dxc-card/dxc-card.component';
-// export * from './lib/dxc-card/dxc-card.module';
+export * from './lib/dxc-card/dxc-card.component';
+export * from './lib/dxc-card/dxc-card.module';
 
 export * from './lib/dxc-checkbox/dxc-checkbox.component';
 export * from './lib/dxc-checkbox/dxc-checkbox.module';
+
 
 // export * from './lib/dxc-date/dxc-date.component';
 // export * from './lib/dxc-date/dxc-date.module';
@@ -41,6 +42,9 @@ export * from './lib/dxc-header/dxc-header.module';
 
 export * from './lib/dxc-table/dxc-table.component';
 export * from './lib/dxc-table/dxc-table.module';
+
+export * from './lib/dxc-tag/dxc-tag.component';
+export * from './lib/dxc-tag/dxc-tag.module';
 
 // export * from './lib/dxc-progressbar/dxc-progressbar.component';
 // export * from './lib/dxc-progressbar/dxc-progressbar.module';

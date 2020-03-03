@@ -21,6 +21,7 @@ import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
 import { AllComponent } from './pages/all/all.component';
+import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 
 
 export const Components = [
@@ -118,6 +119,11 @@ export const Components = [
         name: 'Tabs',
         route: 'tabs',
         component: DxcTabsComponent
+    },
+    {
+        name: 'Tags',
+        route: 'tags',
+        component: TagInfoComponent
     },
     {
         name: 'Toggle',

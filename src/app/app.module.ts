@@ -51,6 +51,8 @@ import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.ser
 import { HttpClientModule } from '@angular/common/http';
 import { AllComponent } from './pages/all/all.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
+import { TagInfoComponent } from './pages/tag-info/tag-info.component';
+import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,8 @@ import { TableInfoComponent } from './pages/table/table-info.component';
     SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,
-    AllComponent
+    AllComponent,
+    TagInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -96,6 +99,7 @@ import { TableInfoComponent } from './pages/table/table-info.component';
     DXCUploadModule,
     DxcTableModule,
     DxcDateModule,
+    DxcTagModule,
     DxcRadioModule,
     BrowserModule,
     DxcSliderModule,

@@ -1,0 +1,27 @@
+<div [class]="styleDxcTag" (mouseenter) ="mouseEnter()"  (mouseleave) ="mouseLeave()" 
+      (click)="onClickHandler($event)">
+    <dxc-box *ngIf="linkHref == null" [size]="size" [shadowDepth]="shadowDepth" >   
+        <div [class]="tagContent">
+                <div [class]="iconContainer">
+                    <img src="{{iconSrc}}" class="tagIcon">
+                </div>
+                <div [class]="tagLabel" *ngIf="size !== 'small' && (label!== undefined || label !== null)">
+                    {{label}}
+                </div>
+        </div>
+    </dxc-box>
+    <div *ngIf="linkHref!=null">
+        <a [class]="styledLink" href="{{linkHref}}">
+            <dxc-box [size]="size" [shadowDepth]="shadowDepth" >   
+                <div [class]="tagContent">
+                        <div [class]="iconContainer">
+                            <img src="{{iconSrc}}" class="tagIcon">
+                        </div>
+                        <div [class]="tagLabel" *ngIf="size !== 'small' && (label!== undefined || label !== null)">
+                            {{label}}
+                        </div>
+                </div>
+            </dxc-box>
+        </a>
+    </div>
+</div>

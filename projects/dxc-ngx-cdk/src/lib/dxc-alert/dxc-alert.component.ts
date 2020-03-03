@@ -26,14 +26,24 @@ export class DxcAlertComponent implements OnChanges {
   @Input() mode: string = "inline";
   @Input() inlineText: string;
   @Input() margin: any;
+  @Input() size: string;
+
   @Output() onClose = new EventEmitter<any>();
   isCloseVisible = false;
   @ViewChild("contents", { static: true }) content: ElementRef;
 
+  sizes = {
+    small: "42px",
+    medium: "120px",
+    large: "240px",
+    fitContent: "unset"
+  };
+
   defaultInputs = new BehaviorSubject<any>({
     mode: "inline",
     margin: null,
-    type: "info"
+    type: "info",
+    size: "fitContent"
   });
 
   constructor(private utils: CssUtils) {}
@@ -62,6 +72,7 @@ export class DxcAlertComponent implements OnChanges {
       font-family: "Open Sans", sans-serif;
       z-index: 300;
       ${this.utils.getMargins(inputs.margin)}
+      ${this.utils.calculateWidth(this.sizes, inputs)}
       cursor: default;
       ${
         inputs.mode && inputs.mode === "modal"
@@ -113,10 +124,10 @@ export class DxcAlertComponent implements OnChanges {
       this.content.nativeElement.children.length > 0
     ) {
       this.content.nativeElement.classList.add("content");
-      this.content.nativeElement.parentElement.setAttribute('style','min-width: 348px; max-width: 590px;min-height: 92px;');
+      // this.content.nativeElement.parentElement.setAttribute('style','min-width: 348px; max-width: 590px;min-height: 92px;');
 
     }else{
-      this.content.nativeElement.parentElement.setAttribute('style','min-width: 590px;max-width: 810px;min-height: 48px;');
+      // this.content.nativeElement.parentElement.setAttribute('style','min-width: 590px;max-width: 810px;min-height: 48px;');
     }
   }
 }

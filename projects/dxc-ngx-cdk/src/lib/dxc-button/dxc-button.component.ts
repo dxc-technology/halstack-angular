@@ -45,7 +45,7 @@ export class DxcButtonComponent {
     iconSrc: null,
     iconPosition: "before",
     margin: null,
-    size: null
+    size: "fitContent"
   });
 
   constructor(private utils: CssUtils) {}
@@ -92,15 +92,6 @@ export class DxcButtonComponent {
     fitContent: "unset"
   };
 
-  calculateWidth(inputs) {
-    if (inputs.size === "fillParent") {
-      return this.utils.calculateMinWidth(this.sizes, inputs);
-    }
-    return css`
-      width: ${this.sizes[inputs.size]};
-    `;
-  }
-
   setPadding(size) {
     if (size === "small") {
       return css`
@@ -119,7 +110,7 @@ export class DxcButtonComponent {
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
       vertical-align: middle;
-      ${this.calculateWidth(inputs)}
+      ${this.utils.calculateWidth(this.sizes, inputs)}
       button.mat-raised-button,
       button.mat-button,
       button.mat-stroked-button,
@@ -147,14 +138,14 @@ export class DxcButtonComponent {
           display: flex;
           align-items: center;
           justify-content: center;
-          word-break: break-all;
 
           & > span {
             display: block;
             width: 100%;
             z-index: 20;
             white-space: normal;
-
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-align: center;
           }
           .icon-before {

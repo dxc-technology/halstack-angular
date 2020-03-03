@@ -53,6 +53,8 @@ import { AllComponent } from './pages/all/all.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
 import { DxcCardModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-card/dxc-card.module';
 import { CardInfoComponent } from './pages/card/card-info.component';
+import { TagInfoComponent } from './pages/tag-info/tag-info.component';
+import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +76,8 @@ import { CardInfoComponent } from './pages/card/card-info.component';
     SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,
-    AllComponent
+    AllComponent,
+    TagInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -100,6 +103,7 @@ import { CardInfoComponent } from './pages/card/card-info.component';
     DXCUploadModule,
     DxcTableModule,
     DxcDateModule,
+    DxcTagModule,
     DxcRadioModule,
     BrowserModule,
     DxcSliderModule,

@@ -57,9 +57,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() showMask: boolean;
   @Input() label: string;
   @Input() margin: any;
+  @Input() size: string;
 
-  @Output() public valueChange: EventEmitter<any> = new EventEmitter<any>();
-  @Output() public inputChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
@@ -82,7 +83,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
     format: "DD/MM/YYYY",
     showMask: true,
     label: null,
-    margin: null
+    margin: null,
+    size: "medium"
   });
 
   public maskObject: {};
@@ -90,6 +92,12 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public formControl = new FormControl();
 
   @ViewChild("picker", { static: true }) picker: MatDatepicker<any>;
+
+  sizes = {
+    medium: "240px",
+    large: "480px",
+    fillParent: "100%"
+  };
 
   constructor(private utils: CssUtils) {}
 
@@ -121,7 +129,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.value = this.value || new Date();
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);
-    console.log(this.invalid);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -134,12 +141,12 @@ export class DxcDateComponent implements OnChanges, OnInit {
     let _dateValue = moment($event.targetElement.value, this.format, true);
     if (_dateValue.isValid()) {
       this.value = $event.target.value;
-      this.valueChange.emit(this.value);
+      this.onChange.emit(this.value);
     }
   }
 
   public dateInput($event: any): void {
-    this.valueChange.emit($event.targetElement.value);
+    this.onInputChange.emit($event.targetElement.value);
   }
 
   /**
@@ -174,7 +181,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
       .mat-form-field {
         ${this.utils.getMargins(inputs.margin)}
-        width: 230px;
+        ${this.utils.calculateWidth(this.sizes, inputs)}
         line-height: unset;
         &.form-field-should-float {
           label {

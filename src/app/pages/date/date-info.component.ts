@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class DateInfoComponent {
 
+  inputValue = new Date("1995/12/03");
+
+  onChange(event)  {
+    this.inputValue = new Date(event);
+  };
   constructor()  {}
 
 }

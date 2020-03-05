@@ -7,7 +7,7 @@ import {
   HostBinding,
   OnInit,
   ViewChild,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -17,6 +17,7 @@ import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
 
 import { FormControl } from "@angular/forms";
 import * as momentImported from "moment";
+
 const moment = momentImported;
 
 export enum Formats {
@@ -106,15 +107,16 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.format =
       this.format != null
         ? this.format.toUpperCase()
-        : Formats[Formats["DD-MM-YYYY"]];
+        : this.defaultInputs.getValue().format;
     this.checkFormat();
+
+    this.maskObject = { format: this.format, showMask: this.showMask };
 
     this.picker.openedStream.subscribe(() => {
       this.picker._datepickerInput[
         "_dateFormats"
       ].display.dateInput = this.format.toUpperCase();
     });
-    this.maskObject = { format: this.format, showMask: this.showMask };
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -147,6 +149,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   public dateInput($event: any): void {
     this.onInputChange.emit($event.targetElement.value);
+  }
+
+  public dateFormat() {
+    return this.format.toLowerCase().replace(/m/g, "M");
   }
 
   /**

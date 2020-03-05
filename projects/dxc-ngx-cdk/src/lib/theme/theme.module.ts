@@ -10,7 +10,7 @@ import { THEMES, ACTIVE_THEME, ThemeOptions } from './symbols';
   providers: [ThemeService],
   declarations: [ThemeDirective],
   exports: [ThemeDirective]
-})
+}) 
 export class ThemeModule {
   static forRoot(options: ThemeOptions): ModuleWithProviders {
     return {

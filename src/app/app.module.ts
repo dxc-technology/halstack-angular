@@ -3,11 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-  DxcButtonModule,
-  DxcCheckboxModule,
-  DxcDateModule,
-  DxcRadioModule,
-  DXCSelectModule
+  DxcButtonModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +15,7 @@ import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxcSliderModule } from "projects/dxc-ngx-cdk/src/lib/dxc-slider/dxc-slider.module";
@@ -41,6 +38,11 @@ import { DXCToggleModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-toggle/d
 import { DxcTabsComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
 import { DxcTabsModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.module';
 import { DXCUploadModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.module';
+import { DxcCheckboxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-checkbox/dxc-checkbox.module';
+import { DXCSelectModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.module';
+import { DxcDateModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.module';
+import { DxcRadioModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-radio/dxc-radio.module';
+import { DxcTableModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-table/dxc-table.module';
 import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
@@ -48,11 +50,17 @@ import { DxcBoxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-box/dxc-box
 import { ThemeService } from '../../projects/dxc-ngx-cdk/src/lib/theme/theme.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AllComponent } from './pages/all/all.component';
+import { TableInfoComponent } from './pages/table/table-info.component';
+import { DxcCardModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-card/dxc-card.module';
+import { CardInfoComponent } from './pages/card/card-info.component';
+import { TagInfoComponent } from './pages/tag-info/tag-info.component';
+import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag.module';
 @NgModule({
   declarations: [
     AppComponent,
     ButtonInfoComponent,
     SliderInfoComponent,
+    CardInfoComponent,
     CheckboxInfoComponent,
     DateInfoComponent,
     DialogInfoComponent,
@@ -65,8 +73,11 @@ import { AllComponent } from './pages/all/all.component';
     DropdownInfoComponent,
     FooterInfoComponent,
     TextInputInfoComponent,
+    SpinnerInfoComponent,
     SwitchInfoComponent,
-    AllComponent
+    TableInfoComponent,
+    AllComponent,
+    TagInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -76,6 +87,7 @@ import { AllComponent } from './pages/all/all.component';
     DXCAlertModule,
     DxcBoxModule,
     DxcButtonModule,
+    DxcCardModule,
     DxcCheckboxModule,
     DXCDialogModule,
     DXCDropdownModule,
@@ -89,14 +101,16 @@ import { AllComponent } from './pages/all/all.component';
     DXCToggleModule,
     DxcTabsModule,
     DXCUploadModule,
+    DxcTableModule,
     DxcDateModule,
+    DxcTagModule,
     DxcRadioModule,
     BrowserModule,
     DxcSliderModule,
     HttpClientModule
     
   ],
-  providers: [ThemeService],
+  providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -5,7 +5,6 @@ import {
   OnChanges,
   SimpleChanges
 } from "@angular/core";
-import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -13,7 +12,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-footer",
   templateUrl: "./dxc-footer.component.html",
-  styleUrls: [],
+  styleUrls: ["./dxc-footer.component.scss"],
   providers: [CssUtils]
 })
 export class DxcFooterComponent implements OnChanges {
@@ -25,11 +24,13 @@ export class DxcFooterComponent implements OnChanges {
   @Input() public copyright: string;
   @Input() public logoSrc: string;
 
+  defaultImglogo: string;
+
   defaultInputs = new BehaviorSubject<any>({
     socialLinks: {},
     bottomLinks: {},
     copyright: "",
-    logoSrc: ""
+    logoSrc: null
   });
 
   constructor(private utils: CssUtils) {}
@@ -55,10 +56,12 @@ export class DxcFooterComponent implements OnChanges {
         overflow: hidden;
         ${this.utils.getTopMargin(inputs.margin)}
         font: unset;
+        
         mat-toolbar-row {
           height: auto;
           padding: 0px;
           white-space: inherit;
+          
         }
         padding: 20px 60px 20px 20px;
         font-family: "Open Sans", sans-serif;
@@ -71,6 +74,7 @@ export class DxcFooterComponent implements OnChanges {
             height: 34px;
             width: auto;
           }
+          
           .socialIcons {
             display: flex;
             align-items: center;

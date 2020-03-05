@@ -14,7 +14,7 @@ export class DxcBoxComponent implements OnInit {
   @Input() display:string;
   @Input() margin: any;
   @Input() padding: any;
-  @Input() size: any;
+  @Input() size: string;
 
 
    sizes = {
@@ -22,15 +22,29 @@ export class DxcBoxComponent implements OnInit {
     medium: "240px",
     large: "480px",
     fillParent: "100%",
-    fitcontent: "unset"
+    fitContent: "fit-content"
   };
 
   defaultInputs = new BehaviorSubject<any>({
     display: 'inline-flex',
     shadowDepth : '2',
     margin: null,
-    padding: null
+    padding: null,
+    size: null
   });
+
+  calculateWidth(inputs) {
+    if (inputs.size === undefined || inputs.size === null){
+      return css`width:unset`
+    }
+
+    if (inputs.size !== "fitContent") {
+      return this.utils.calculateWidth(this.sizes, inputs);
+    }
+    return css`
+      width: ${this.sizes[inputs.size]};
+    `;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
       const inputs = Object.keys(changes).reduce((result, item)=> {
@@ -57,7 +71,7 @@ export class DxcBoxComponent implements OnInit {
       ${this.utils.getBoxShadow(inputs.shadowDepth) }
       ${this.utils.getMargins(inputs.margin) }
       ${this.utils.getPaddings(inputs.padding) }
-
+      ${this.calculateWidth(inputs)}
     `;
   }
 }

@@ -7,36 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
+  isVisible = false;
 
+  handleVisibility() {
+    this.isVisible = !this.isVisible;
+  }
 
-  isVisibleInfoAlert =  true; 
-  isVisibleWarningAlert =  true;
-  isVisibleSuccessAlert =  true;
-  isVisibleErrorAlert =  true;
-  isVisibleModalAlert = false ; 
   constructor() { }
 
   ngOnInit() {
   }
-
-  setVisibleInfoAlert (){
-    this.isVisibleInfoAlert =  !this.isVisibleInfoAlert ;
-  };
-
-  setVisibleWarningAlert(){
-    this.isVisibleWarningAlert =  !this.isVisibleWarningAlert ;
-  };
-
-  setVisibleSuccessAlert(){
-    this.isVisibleSuccessAlert = !this.isVisibleSuccessAlert ;
-  };
-
-  setVisibleErrorAlert (){
-    this.isVisibleErrorAlert =  !this.isVisibleErrorAlert;
-  };
-
-  setVisibleModalAlert() {
-    this.isVisibleModalAlert =  !this.isVisibleModalAlert ;
-  };
 
 }

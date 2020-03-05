@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AccordionComponent implements OnInit {
 
 
-  isExpanded = true;
-  homeLogo = './../../assets/images/home.svg';
+  isExpanded = false;
+  homeLogo = './assets/images/home.svg';
+  facebookLogo = './assets/images/facebook.svg';
   
   constructor() { }
 

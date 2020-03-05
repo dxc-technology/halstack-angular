@@ -12,6 +12,7 @@
     (dateInput)="dateInput($event)"
     (dateChange)="valueChanged($event)"
     placeholder={{format}}
+    [(value)] = "showValue"
   />
   <mat-datepicker-toggle matSuffix [for]="picker">
     <img *ngIf="iconSrc" matDatepickerToggleIcon src="{{ iconSrc }}" />

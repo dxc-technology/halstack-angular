@@ -9,6 +9,7 @@ import {
   ViewChild,
   SimpleChanges
 } from "@angular/core";
+import { DatePipe } from '@angular/common';
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -17,6 +18,7 @@ import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
 
 import { FormControl } from "@angular/forms";
 import * as momentImported from "moment";
+
 const moment = momentImported;
 
 export enum Formats {
@@ -38,12 +40,12 @@ export enum Formats {
     "./dxc-light-date.scss",
     "./dxc-dark-date.scss"
   ],
-  providers: [CssUtils]
+  providers: [CssUtils, DatePipe]
 })
 export class DxcDateComponent implements OnChanges, OnInit {
   @Input() min: any;
   @Input() max: any;
-  @Input() value: Date;
+  @Input() value: any;
   @Input() theme: string;
   @Input() invalid: boolean;
   @Input() disableRipple: boolean;
@@ -57,9 +59,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() showMask: boolean;
   @Input() label: string;
   @Input() margin: any;
+  @Input() size: string;
 
-  @Output() public valueChange: EventEmitter<any> = new EventEmitter<any>();
-  @Output() public inputChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
@@ -82,31 +85,44 @@ export class DxcDateComponent implements OnChanges, OnInit {
     format: "DD/MM/YYYY",
     showMask: true,
     label: null,
-    margin: null
+    margin: null,
+    size: "medium"
   });
 
   public maskObject: {};
   public matcher = new InvalidStateMatcher();
   public formControl = new FormControl();
+  showValue: string;
 
   @ViewChild("picker", { static: true }) picker: MatDatepicker<any>;
 
-  constructor(private utils: CssUtils) {}
+  sizes = {
+    medium: "240px",
+    large: "480px",
+    fillParent: "100%"
+  };
+
+  constructor(private utils: CssUtils, private datePipe: DatePipe) {}
 
   public ngOnInit(): void {
+
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.format =
       this.format != null
         ? this.format.toUpperCase()
-        : Formats[Formats["DD-MM-YYYY"]];
+        : this.defaultInputs.getValue().format;
     this.checkFormat();
+
+    this.showValue = this.datePipe.transform(this.value, this.dateFormat());
+
+    this.maskObject = { format: this.format, showMask: this.showMask };
+    this.matcher.setInvalid(this.invalid);
 
     this.picker.openedStream.subscribe(() => {
       this.picker._datepickerInput[
         "_dateFormats"
       ].display.dateInput = this.format.toUpperCase();
     });
-    this.maskObject = { format: this.format, showMask: this.showMask };
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -118,10 +134,13 @@ export class DxcDateComponent implements OnChanges, OnInit {
       this.isDark = false;
     }
     this.isDisabled = this.disabled;
-    this.value = this.value || new Date();
+    this.format =
+      this.format != null
+        ? this.format.toUpperCase()
+        : this.defaultInputs.getValue().format;
+    this.showValue = this.datePipe.transform(this.value, this.dateFormat());
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);
-    console.log(this.invalid);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -134,12 +153,17 @@ export class DxcDateComponent implements OnChanges, OnInit {
     let _dateValue = moment($event.targetElement.value, this.format, true);
     if (_dateValue.isValid()) {
       this.value = $event.target.value;
-      this.valueChange.emit(this.value);
+      this.showValue = this.datePipe.transform(this.value, this.dateFormat());
+      this.onChange.emit(this.value);
     }
   }
 
   public dateInput($event: any): void {
-    this.valueChange.emit($event.targetElement.value);
+    this.onInputChange.emit($event.targetElement.value);
+  }
+
+  public dateFormat() {
+    return this.format.toLowerCase().replace(/m/g, "M");
   }
 
   /**
@@ -174,7 +198,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
       .mat-form-field {
         ${this.utils.getMargins(inputs.margin)}
-        width: 230px;
+        ${this.utils.calculateWidth(this.sizes, inputs)}
         line-height: unset;
         &.form-field-should-float {
           label {

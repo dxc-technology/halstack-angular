@@ -4,7 +4,6 @@
     display: block;
     mat-expansion-panel {
       ::ng-deep {
-        margin: 1px;
         box-shadow: 0px 6px 10px #00000024;
         mat-expansion-panel-header {
           font-size: 16px;
@@ -16,6 +15,7 @@
           }
           mat-panel-title {
             display: flex;
+            align-items: center;
             img {
               width: 20px;
               height: 20px;

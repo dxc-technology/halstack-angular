@@ -10,7 +10,7 @@ import {
   MAT_DATE_LOCALE
 } from "@angular/material";
 import { DxcDateComponent } from "./dxc-date.component";
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 import { NgxMaskModule } from "ngx-mask";
 import { DXCMaskDirective } from "./dxc-mask.directive";
 import {
@@ -52,6 +52,7 @@ export const MY_FORMATS = {
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    DatePipe
   ],
 
   exports: [DxcDateComponent]

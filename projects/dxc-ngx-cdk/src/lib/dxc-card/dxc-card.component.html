@@ -1,10 +1,18 @@
 <mat-card
-(click) = "onClickHandler($event)" [ngClass] = "[mode === 'alternative' ? 'alternative': 'default', imagePosition === 'before' ? 'before' : imagePosition === 'after' ? 'after' : imagePosition === 'above' ? 'above': imagePosition === 'below' ? 'below' : 'before']"
+  (click)="onClickHandler($event)"
+  [ngClass]="[
+    outlined ? 'outlined' : '',
+    imagePosition === 'before'
+      ? 'before'
+      : imagePosition === 'after'
+      ? 'after'
+      : 'before'
+  ]"
 >
-  <div  *ngIf="imageSrc" class="imageContainer">
-    <img src ="{{imageSrc}}" />
+  <div class="imageContainer">
+    <img *ngIf="imageSrc" src="{{ imageSrc }}" />
   </div>
-  <div #content>
+  <div class="content" #content>
     <ng-content></ng-content>
   </div>
 </mat-card>

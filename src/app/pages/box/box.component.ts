@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-box',
+  selector: 'box-info',
   templateUrl: './box.component.html',
   styleUrls: ['./box.component.scss']
 })

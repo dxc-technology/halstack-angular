@@ -7,8 +7,9 @@ import {
   HostBinding,
   OnInit,
   ViewChild,
-  SimpleChanges,
+  SimpleChanges
 } from "@angular/core";
+import { DatePipe } from '@angular/common';
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -39,12 +40,12 @@ export enum Formats {
     "./dxc-light-date.scss",
     "./dxc-dark-date.scss"
   ],
-  providers: [CssUtils]
+  providers: [CssUtils, DatePipe]
 })
 export class DxcDateComponent implements OnChanges, OnInit {
   @Input() min: any;
   @Input() max: any;
-  @Input() value: Date;
+  @Input() value: any;
   @Input() theme: string;
   @Input() invalid: boolean;
   @Input() disableRipple: boolean;
@@ -91,6 +92,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public maskObject: {};
   public matcher = new InvalidStateMatcher();
   public formControl = new FormControl();
+  showValue: string;
 
   @ViewChild("picker", { static: true }) picker: MatDatepicker<any>;
 
@@ -100,9 +102,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
     fillParent: "100%"
   };
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private datePipe: DatePipe) {}
 
   public ngOnInit(): void {
+
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.format =
       this.format != null
@@ -110,7 +113,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
         : this.defaultInputs.getValue().format;
     this.checkFormat();
 
+    this.showValue = this.datePipe.transform(this.value, this.dateFormat());
+
     this.maskObject = { format: this.format, showMask: this.showMask };
+    this.matcher.setInvalid(this.invalid);
 
     this.picker.openedStream.subscribe(() => {
       this.picker._datepickerInput[
@@ -128,7 +134,11 @@ export class DxcDateComponent implements OnChanges, OnInit {
       this.isDark = false;
     }
     this.isDisabled = this.disabled;
-    this.value = this.value || new Date();
+    this.format =
+      this.format != null
+        ? this.format.toUpperCase()
+        : this.defaultInputs.getValue().format;
+    this.showValue = this.datePipe.transform(this.value, this.dateFormat());
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -143,6 +153,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     let _dateValue = moment($event.targetElement.value, this.format, true);
     if (_dateValue.isValid()) {
       this.value = $event.target.value;
+      this.showValue = this.datePipe.transform(this.value, this.dateFormat());
       this.onChange.emit(this.value);
     }
   }

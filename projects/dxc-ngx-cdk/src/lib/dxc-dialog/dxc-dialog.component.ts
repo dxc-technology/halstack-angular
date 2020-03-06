@@ -16,17 +16,15 @@ import { CssUtils } from "../utils";
   providers: [CssUtils]
 })
 export class DxcDialogComponent {
-  @Input() isVisible: boolean;
   @Input() overlay: boolean;
   @Input() isCloseVisible: boolean;
   @Input() padding: any;
-  @Output() onClose = new EventEmitter<any>();
+  @Output() onCloseClick = new EventEmitter<any>();
   @Output() onBackgroundClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({
-    isVisible: false,
     overlay: true,
     isCloseVisible: true,
     padding: null
@@ -49,7 +47,7 @@ export class DxcDialogComponent {
   }
 
   public onCloseHandler($event: any): void {
-    this.onClose.emit($event);
+    this.onCloseClick.emit($event);
   }
 
   public onBackgroundClickHandler($event: any): void {
@@ -72,11 +70,14 @@ export class DxcDialogComponent {
           bottom: 0;
           position: fixed;
           opacity: 1;
-          background-color: transparent;
+          ${inputs.overlay
+            ? css`
+                background-color: rgba(0, 0, 0, 0.7);
+              `
+            : css`
+                background-color: transparent;
+              `}
           transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-        .backVisible {
-          background-color: rgba(0, 0, 0, 0.7);
         }
         .container {
           display: flex;
@@ -90,7 +91,7 @@ export class DxcDialogComponent {
             overflow: unset;
             max-width: 80%;
             min-width: 800px;
-            min-height: 72px;
+            ${inputs.isCloseVisible ? css`min-height: 72px;` : css``}
             box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
             ${this.utils.getPaddings(inputs.padding)}
             display: flex;

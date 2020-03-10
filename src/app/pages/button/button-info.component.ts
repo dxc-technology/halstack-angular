@@ -19,7 +19,6 @@ export class ButtonInfoComponent {
 
   checked = true;
   public showAlert(event) {
-    console.log(event);
     window.alert('Button1');
   }
 

@@ -70,6 +70,5 @@ class TestAppComponent {
   }
 
   onChange(event: any) {
-    console.log(event);
   }
 }

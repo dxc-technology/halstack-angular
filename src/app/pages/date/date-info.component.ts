@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'date-info',
   templateUrl: './date-info.component.html',
   styleUrls: ['./date-info.component.scss']
 })
-export class DateInfoComponent {
+export class DateInfoComponent  implements OnInit{
 
-  inputValue = new Date("1995/12/03");
+
+  inputValue:Date;
+  
+  ngOnInit(): void {
+    this.inputValue = new Date("1995/12/03");
+  }
 
   onChange(event)  {
     this.inputValue = new Date(event);

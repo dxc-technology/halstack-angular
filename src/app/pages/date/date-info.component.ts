@@ -15,7 +15,7 @@ export class DateInfoComponent  implements OnInit{
   }
 
   onChange(event)  {
-    this.inputValue = event.isValid ?  new Date(event) : null;
+    this.inputValue = event.dateValue!== null && event.dateValue !== undefined ?  new Date(event.dateValue) : null;
   };
   constructor()  {}
 

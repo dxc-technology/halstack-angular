@@ -30,8 +30,8 @@ export * from './lib/dxc-date/dxc-date.module';
 // export * from './lib/dxc-dialog/dxc-dialog.component';
 // export * from './lib/dxc-dialog/dxc-dialog.module';
 
-// export * from './lib/dxc-dropdown/dxc-dropdown.component';
-// export * from './lib/dxc-dropdown/dxc-dropdown.module';
+export * from './lib/dxc-dropdown/dxc-dropdown.component';
+export * from './lib/dxc-dropdown/dxc-dropdown.module';
 
 export * from './lib/dxc-footer/dxc-footer.component';
 export * from './lib/dxc-footer/dxc-footer.module';

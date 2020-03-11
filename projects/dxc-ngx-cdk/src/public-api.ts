@@ -5,8 +5,8 @@
 export * from './lib/theme/theme.service';
 export * from './lib/theme/theme.module';
 
-// export * from './lib/dxc-accordion/dxc-accordion.component';
-// export * from './lib/dxc-accordion/dxc-accordion.module';
+export * from './lib/dxc-accordion/dxc-accordion.component';
+export * from './lib/dxc-accordion/dxc-accordion.module';
 
 export * from './lib/dxc-alert/dxc-alert.component';
 export * from './lib/dxc-alert/dxc-alert.module';

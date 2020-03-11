@@ -24,8 +24,8 @@ export * from './lib/dxc-checkbox/dxc-checkbox.component';
 export * from './lib/dxc-checkbox/dxc-checkbox.module';
 
 
-// export * from './lib/dxc-date/dxc-date.component';
-// export * from './lib/dxc-date/dxc-date.module';
+export * from './lib/dxc-date/dxc-date.component';
+export * from './lib/dxc-date/dxc-date.module';
 
 // export * from './lib/dxc-dialog/dxc-dialog.component';
 // export * from './lib/dxc-dialog/dxc-dialog.module';

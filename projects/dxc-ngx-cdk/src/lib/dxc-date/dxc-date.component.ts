@@ -113,7 +113,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
         : this.defaultInputs.getValue().format;
     this.checkFormat();
     this.showValue = this.getTransformedValue();
-    debugger;
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);
 
@@ -154,7 +153,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
     if (_dateValue.isValid()) {
       this.value = $event;  
       this.showValue = this.datePipe.transform(this.value, this.dateFormat());
-      this.onChange.emit(this.showValue);
+      this.onChange.emit({value: this.showValue, isValid: true});
+    }else{
+      this.onChange.emit({value: this.showValue, isValid: false});
     }
   }
 
@@ -178,7 +179,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   private getTransformedValue(){
     const value = this.datePipe.transform(this.value, this.dateFormat());
-    debugger;
     return value !== undefined && value!== null ? 
     new Date(value) : undefined;
   }

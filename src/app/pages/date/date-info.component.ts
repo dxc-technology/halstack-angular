@@ -9,13 +9,16 @@ export class DateInfoComponent  implements OnInit{
 
 
   inputValue:Date;
+
+  validDate = true;
   
   ngOnInit(): void {
     this.inputValue = new Date("1995/12/03");
   }
 
   onChange(event)  {
-    this.inputValue = new Date(event);
+    this.validDate = event.isValid;
+    this.inputValue = this.validDate ?  new Date(event) : null;
   };
   constructor()  {}
 

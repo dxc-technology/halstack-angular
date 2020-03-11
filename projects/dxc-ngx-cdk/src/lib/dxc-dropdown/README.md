@@ -39,11 +39,6 @@
         <td>Name attribute of the input element.</td>
     </tr>
     <tr>
-        <td>@Input<br>disabled: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the component will be disabled.</td>
-    </tr>
-    <tr>
         <td>@Input<br>disableRipple: boolean</td>
         <td><code>false</code></td>
         <td>If true, the ripple effect will be disabled.</td>

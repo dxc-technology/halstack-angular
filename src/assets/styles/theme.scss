@@ -3233,6 +3233,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     @include _mat-theme-overridable-elevation(4, $theme);
 
     background: mat-color($background, 'card');
+    max-width: none !important;
+    min-width: fit-content !important;
   }
 
   .mat-menu-item {

@@ -34,9 +34,12 @@ export class DxcAccordionComponent  {
     disabled: false
   });
 
-  constructor(private cssutils: CssUtils){
+  constructor(private cssUtils: CssUtils){}
 
+  ngOnInit() {
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
+
   public ngOnChanges(changes: SimpleChanges) :void { 
     if(this.iconPosition !== 'after'){
       this.iconPosition='before';
@@ -57,10 +60,6 @@ export class DxcAccordionComponent  {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  ngOnInit() {
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-  }
-
   public onClickHandler($event: any): void {
    if(!this.disabled) {
     this.opened = !this.opened;
@@ -68,13 +67,15 @@ export class DxcAccordionComponent  {
    }
   }
 
-    getDynamicStyle(inputs) {
+  getDynamicStyle(inputs) {
     return css`
       cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
-      ${ this.cssutils.getMargins(inputs.margin) }
+      ${ this.cssUtils.getMargins(inputs.margin) }
       div.mat-expansion-panel-content {
           div.mat-expansion-panel-body {
-        ${ this.cssutils.getPaddings(inputs.padding) }
+            display: flex;
+            cursor: default;
+            ${ this.cssUtils.getPaddings(inputs.padding) }
       }
     }
     `;

@@ -153,9 +153,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
     if (_dateValue.isValid()) {
       this.value = $event;  
       this.showValue = this.datePipe.transform(this.value, this.dateFormat());
-      this.onChange.emit({value: this.showValue, isValid: true});
+      this.onChange.emit({stringValue: this.value, dateValue: this.showValue});
     }else{
-      this.onChange.emit({value: this.showValue, isValid: false});
+      this.onChange.emit({stringValue: this.value, dateValue: this.showValue});
     }
   }
 

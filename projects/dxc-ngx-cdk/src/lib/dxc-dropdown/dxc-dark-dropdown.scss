@@ -2,7 +2,6 @@
   .menu-buttom-label-wrapper {
     color: white;
     background: black;
-    border: 2px solid white;
     &.menu-opened {
       background: #212121;
     }
@@ -20,7 +19,7 @@
   button.mat-button.basic {
     background-color: #ffffff;
     color: #000000;
-    border: none;
+     border: none;
     .menu-buttom-label {
       color: #000000;
     }
@@ -34,11 +33,9 @@
 }
 ::ng-deep .dxc-dropdown-menu.dxc-dark {
   .mat-menu-content {
-    border: 2px solid white;
     background: black;
 
     .mat-menu-item {
-      color: white;
       &:hover {
         color: black;
         background: #EEEEEE;
@@ -52,7 +49,6 @@
   &.basic {
     background-color: #ffffff;
     .mat-menu-content {
-      border: none;
       background-color: #ffffff;
       .mat-menu-item {
         color: #000000;

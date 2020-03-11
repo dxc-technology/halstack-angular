@@ -92,7 +92,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public maskObject: {};
   public matcher = new InvalidStateMatcher();
   public formControl = new FormControl();
-  showValue: string;
+  showValue: any;
 
   @ViewChild("picker", { static: true }) picker: MatDatepicker<any>;
 
@@ -112,9 +112,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
         ? this.format.toUpperCase()
         : this.defaultInputs.getValue().format;
     this.checkFormat();
-
-    this.showValue = this.datePipe.transform(this.value, this.dateFormat());
-
+    this.showValue = this.getTransformedValue();
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);
 
@@ -138,7 +136,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
       this.format != null
         ? this.format.toUpperCase()
         : this.defaultInputs.getValue().format;
-    this.showValue = this.datePipe.transform(this.value, this.dateFormat());
+
+    this.showValue = this.getTransformedValue();
     this.maskObject = { format: this.format, showMask: this.showMask };
     this.matcher.setInvalid(this.invalid);
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -150,11 +149,13 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
 
   public valueChanged($event: any): void {
-    let _dateValue = moment($event.targetElement.value, this.format, true);
+    let _dateValue = moment($event, this.format, true);
     if (_dateValue.isValid()) {
-      this.value = $event.target.value;
+      this.value = $event;  
       this.showValue = this.datePipe.transform(this.value, this.dateFormat());
-      this.onChange.emit(this.value);
+      this.onChange.emit({stringValue: this.value, dateValue: this.showValue});
+    }else{
+      this.onChange.emit({stringValue: this.value, dateValue: this.showValue});
     }
   }
 
@@ -174,6 +175,12 @@ export class DxcDateComponent implements OnChanges, OnInit {
     if (!isFormatCorrect) {
       throw new Error("Invalid Date format");
     }
+  }
+
+  private getTransformedValue(){
+    const value = this.datePipe.transform(this.value, this.dateFormat());
+    return value !== undefined && value!== null ? 
+    new Date(value) : undefined;
   }
 
   getDynamicStyle(inputs) {
@@ -283,7 +290,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
 }
 /** Error when invalid control is dirty, touched, or submitted. */
 class InvalidStateMatcher implements ErrorStateMatcher {
-  private invalid: boolean;
+  private invalid = false;
   isErrorState(): boolean {
     return this.invalid;
   }

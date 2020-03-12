@@ -60,9 +60,15 @@ export class CssUtils {
     if (inputs.padding) {
       paddings = this.getPaddingOrMargin(sizes, inputs.padding);
     }
-    return css`
-      width: calc(${width} ${paddings} ${margins});
-    `;
+    if(paddings || margins) {
+      return css`
+        width: calc(${width} ${paddings} ${margins});
+      `;
+    } else {
+      return css`
+        width: ${width};
+      `;
+    }
   }
   getPaddingOrMargin(size, paddingOrMargin) {
     let finalPaddingOrMargin = "";

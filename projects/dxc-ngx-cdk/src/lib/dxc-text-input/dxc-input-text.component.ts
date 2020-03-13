@@ -5,7 +5,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material";
@@ -20,6 +21,7 @@ import { CssUtils } from "../utils";
     "./dxc-light-input.scss",
     "./dxc-dark-input.scss"
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
 export class DxcTextInputComponent implements OnChanges {

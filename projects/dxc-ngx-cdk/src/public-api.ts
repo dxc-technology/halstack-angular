@@ -58,8 +58,8 @@ export * from './lib/dxc-select/dxc-select.module';
 export * from './lib/dxc-slider/dxc-slider.component';
 export * from './lib/dxc-slider/dxc-slider.module';
 
-// export * from './lib/dxc-spinner/dxc-spinner.component';
-// export * from './lib/dxc-spinner/dxc-spinner.module';
+export * from './lib/dxc-spinner/dxc-spinner.component';
+export * from './lib/dxc-spinner/dxc-spinner.module';
 
 export * from './lib/dxc-switch/dxc-switch.component';
 export * from './lib/dxc-switch/dxc-switch.module';

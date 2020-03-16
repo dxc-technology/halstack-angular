@@ -22,8 +22,8 @@ Add the following selector to any template:
 
 ```html
 <dxc-slider
-  [min]="0"
-  [max]="100"
+  [minValue]="0"
+  [maxValue]="100"
   [(value)]="value"
 ></dxc-slider>
 ```
@@ -37,12 +37,12 @@ Add the following selector to any template:
         <td>Description</td>
     </tr>
     <tr>
-        <td>@Input<br>min: number</td>
+        <td>@Input<br>minValue: number</td>
         <td><code>0</code></td>
         <td>The minimum value available for selection.</td>
     </tr>
     <tr>
-        <td>@Input<br>max: number</td>
+        <td>@Input<br>maxValue: number</td>
         <td><code>100</code></td>
         <td>The maximum value available for selection.</td>
     </tr>

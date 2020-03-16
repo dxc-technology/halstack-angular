@@ -52,7 +52,7 @@ export class DxcSwitchComponent implements OnChanges {
     id: null,
     labelPosition: "before",
     margin: null,
-    size: "medium"
+    size: "fitContent"
   });
 
   sizes = {
@@ -121,13 +121,12 @@ export class DxcSwitchComponent implements OnChanges {
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
-      ${this.calculateWidth(inputs.margin, inputs.size)}
-      display: block;
+      ${this.utils.calculateWidth(this.sizes, inputs)}
+      display: inline-flex;
       mat-slide-toggle {
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         display: inline-flex;
-        width: 100%;
         height: auto;
 
         div.mat-slide-toggle-thumb {
@@ -144,7 +143,6 @@ export class DxcSwitchComponent implements OnChanges {
         }
         span.mat-slide-toggle-content {
           white-space: normal;
-          width: calc(100% - 44px);
           ${this.setTextAlign(inputs.labelPosition)}
         }
       }

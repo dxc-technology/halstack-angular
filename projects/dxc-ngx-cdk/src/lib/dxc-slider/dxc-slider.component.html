@@ -1,8 +1,8 @@
-<span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitValues"> {{ min }}</span>
+<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues"> {{ minValue }}</span>
 <mat-slider
   theme
-  [min]="min"
-  [max]="max"
+  [min]="minValue"
+  [max]="maxValue"
   [step]="step"
   [value] ="value"
   [tickInterval] = "tickInterval"
@@ -10,14 +10,14 @@
   (input)="valueChanged($event)"
   (mouseup)="mouseUp($event)"
 ></mat-slider>
-<span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitValues"> {{ max }}</span>
+<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues"> {{ maxValue }}</span>
 <mat-form-field [appearance]="'standard'" [style.display]="showInput ? 'block' : 'none'" [class.required] = "required">
   <input
     matInput
     #input
     [type] = "'number'"
-    [max] = "max"
-    [min] = "min"
+    [max] = "maxValue"
+    [min] = "minValue"
     (input) = "valueChanged($event)"
     (blur) = "onBlur($event)"
     [name]="name"

@@ -30,10 +30,10 @@ export class DxcSliderComponent implements OnChanges {
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
   //Default values
-  @Input() min: number = 0;
-  @Input() max: number = 100;
+  @Input() minValue: number = 0;
+  @Input() maxValue: number = 100;
   @Input() step: number = 1;
-  @Input() showLimitValues: boolean = false;
+  @Input() showLimitsValues: boolean = false;
   @Input() showInput: boolean = false;
   @Input() value: number = 0;
   @Input() theme: string = "light";
@@ -52,10 +52,10 @@ export class DxcSliderComponent implements OnChanges {
   tickInterval: any;
 
   defaultInputs = new BehaviorSubject<any>({
-    min: 0,
-    max: 100,
+    minValue: 0,
+    maxValue: 100,
     step: 1,
-    showLimitValues: false,
+    showLimitsValues: false,
     showInput: false,
     value: 0,
     theme: "light",
@@ -116,11 +116,11 @@ export class DxcSliderComponent implements OnChanges {
       newValue = $event.value;
     }
 
-    if (newValue > this.max) {
-      newValue = this.max;
+    if (newValue > this.maxValue) {
+      newValue = this.maxValue;
     }
-    if (newValue < this.min) {
-      newValue = this.min;
+    if (newValue < this.minValue) {
+      newValue = this.minValue;
     }
     this.value = newValue;
     this.input.nativeElement.value = newValue;

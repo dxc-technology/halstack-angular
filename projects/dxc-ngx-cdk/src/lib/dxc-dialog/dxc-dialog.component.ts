@@ -58,7 +58,7 @@ export class DxcDialogComponent {
     return css`
       .dialog {
         position: fixed;
-        z-index: 1300;
+        z-index: 3300;
         right: 0px;
         bottom: 0px;
         top: 0px;

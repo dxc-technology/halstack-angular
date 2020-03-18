@@ -1,37 +1,40 @@
-<mat-toolbar>
-  <mat-toolbar-row class="footerHeader">
-    <img class="defaultImgLogo logo" *ngIf="!logoSrc" />
-    <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
-    <div class="socialIcons">
-      <div *ngFor="let link of socialLinks; index as i">
-        <a
-          class="socialIcon"
-          [class.spacing]="i != 0"
-          ngClass
-          *ngIf="link.logoSrc"
-          href="{{ link.href }}"
-        >
-          <img class="socialIconImage" src="{{ link.logoSrc }}" />
-        </a>
-      </div>
+<div [class]="footerContainerStyle">
+    <div [class]="footerHeaderStyle">
+            <img class="defaultImgLogo logo" *ngIf="!logoSrc" />
+            <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
+            <div>
+              <div [class]="socialLinksStyle" *ngFor="let link of socialLinks; index as i">
+                <a
+                  [class]="socialIconStyle"
+                  [class.spacing]="i != 0"
+                  ngClass
+                  *ngIf="link.logoSrc"
+                  href="{{ link.href }}"
+                >
+                  <img [class]="socialIconImageStyle" src="{{ link.logoSrc }}" />
+                </a>
+              </div>
+            </div>
     </div>
-  </mat-toolbar-row>
-  <mat-toolbar-row class="childComponents">
-    <ng-content></ng-content>
-  </mat-toolbar-row>
-  <mat-toolbar-row class="footerFooter">
-    <div class="bottomLinks">
-      <span *ngFor="let bottomLink of bottomLinks; index as i">
-        <span *ngIf="i != 0" class="point">·</span>
-        <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}">
-          <span>
-            {{ bottomLink.text }}
-          </span>
-        </a>
-      </span>
+    <div>
+        <div [class]="childComponentsStyle">
+            <ng-content></ng-content>
+        </div>
+        <div [class]="footerFooterStyle">
+                <div [class]="bottomLinksStyle">
+                  <span *ngFor="let bottomLink of bottomLinks; index as i">
+                    <span *ngIf="i != 0" class="point">·</span>
+                    <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}">
+                      <span>
+                        {{ bottomLink.text }}
+                      </span>
+                    </a>
+                  </span>
+                </div>
+                <div [class]="copyrightStyle">
+                  {{ copyright }}
+                </div>
+        </div>
     </div>
-    <div class="copyright">
-      {{ copyright }}
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+    
+</div>

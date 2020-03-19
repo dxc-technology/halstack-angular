@@ -12,7 +12,7 @@ import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
-import { DxcProgressbarComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.component';
+import {ProgressInfoComponent} from './pages/progressBar/progressBar-info.component';
 import { DxcSelectComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.component';
 import { DxcTabsComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
 import { DxcUploadComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
@@ -88,7 +88,7 @@ export const Components = [
     {
         name: 'Progress Bar',
         route: 'progress',
-        component:  DxcProgressbarComponent
+        component:  ProgressInfoComponent
     },
     {
         name: 'Radio',

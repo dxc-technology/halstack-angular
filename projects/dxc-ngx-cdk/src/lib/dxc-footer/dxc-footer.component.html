@@ -1,4 +1,4 @@
-<div [class]="footerContainerStyle">
+<div theme [class]="footerContainerStyle">
     <div [class]="footerHeaderStyle">
             <img class="defaultImgLogo logo" *ngIf="!logoSrc" />
             <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
@@ -23,12 +23,13 @@
         <div [class]="footerFooterStyle">
                 <div [class]="bottomLinksStyle">
                   <span *ngFor="let bottomLink of bottomLinks; index as i">
-                    <span *ngIf="i != 0" class="point">·</span>
-                    <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}">
+                    
+                    <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}" [class]="bottomLinkStyle">
                       <span>
                         {{ bottomLink.text }}
                       </span>
                     </a>
+                    <span *ngIf="i != 0" class="point">·</span>
                   </span>
                 </div>
                 <div [class]="copyrightStyle">

@@ -93,7 +93,7 @@ export class DxcFooterComponent implements OnChanges {
       }
   `;
 
-  buttomLinkStyle:string =css`
+  bottomLinkStyle:string =css`
     text-decoration: none;
     color: var(--white);
     font-size: 12px;

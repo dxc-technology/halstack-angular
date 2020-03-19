@@ -18,11 +18,13 @@ import { CssUtils } from "../utils";
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;
 
-  @Input() public socialLinks: { href?: string; logoSrc?: string }[];
-  @Input() public bottomLinks: { href?: string; text?: string }[];
+  @Input() socialLinks: { href?: string; logoSrc?: string }[];
+  @Input() bottomLinks: { href?: string; text?: string }[];
 
-  @Input() public copyright: string;
-  @Input() public logoSrc: string;
+  @Input() copyright: string;
+  @Input() margin: any;
+  @Input() padding: any;  
+  @Input() logoSrc: string;
 
   defaultImglogo: string;
 
@@ -30,13 +32,84 @@ export class DxcFooterComponent implements OnChanges {
     socialLinks: {},
     bottomLinks: {},
     copyright: "",
-    logoSrc: null
+    logoSrc: null,
+    margin:null,
+    padding: null
   });
+
+  // Styling
+  footerContainerStyle:string;
+
+  footerHeaderStyle: string  = css`
+    display: flex;
+    justify-content: space-between;
+  `;
+  socialIconsStyle: string = css`  
+    display: flex;
+    align-items: center;
+  `;
+
+  socialIconStyle: string = css`
+    display: inline-flex;
+  `;
+
+  socialIconImageStyle: string = css`
+    display: inline-flex;
+    height: 25px;
+    width: 25px;
+  `;
+
+  childComponentsStyle: string;
+
+  footerFooterStyle:string = css`
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-direction: row;
+  `;
+
+  socialLinksStyle: string = css`
+    display: inline-flex;
+    margin-left: 15px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  `;
+
+  bottomLinksStyle:string = css`
+      padding-top: 6px;
+      border-top: 2px solid var(--yellow);
+      display: inline-flex;
+      flex-wrap: wrap;
+      max-width: 60%;
+      .point {
+        margin: 0px 10px;
+        color: white;
+      }
+      a {
+        text-decoration: none;
+        color: var(--white);
+        font-size: 12px;
+      }
+  `;
+
+  bottomLinkStyle:string =css`
+    text-decoration: none;
+    color: var(--white);
+    font-size: 12px;
+  `;
+  copyrightStyle: string = css`
+    color: var(--white);
+    font-size: 12px;
+    max-width: 40%;
+    text-align: "right";
+  `;
 
   constructor(private utils: CssUtils) {}
 
   public ngOnInit() {
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.footerContainerStyle = `${this.setFooterContainerStyle(this.defaultInputs.getValue())}`;
+    this.childComponentsStyle = `${this.setChildComponentsStyle(this.defaultInputs.getValue())}`;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -45,83 +118,36 @@ export class DxcFooterComponent implements OnChanges {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.footerContainerStyle = `${this.setFooterContainerStyle(this.defaultInputs.getValue())}`;
+    this.childComponentsStyle = `${this.setChildComponentsStyle(this.defaultInputs.getValue())}`;
+
   }
 
-  getDynamicStyle(inputs) {
+
+  setFooterContainerStyle(input: any){
     return css`
-      max-width: 100%;
-      display: block;
-      mat-toolbar {
-        overflow: hidden;
-        ${this.utils.getTopMargin(inputs.margin)}
-        font: unset;
-        
-        mat-toolbar-row {
-          height: auto;
-          padding: 0px;
-          white-space: inherit;
-          
-        }
         padding: 20px 60px 20px 20px;
         font-family: "Open Sans", sans-serif;
-        background-color: black;
-        .footerHeader {
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          .logo {
-            height: 34px;
-            width: auto;
-          }
-          
-          .socialIcons {
-            display: flex;
-            align-items: center;
-            .socialIcon {
-              display: inline-flex;
-            }
-          }
-          .socialIconImage {
-            display: inline-flex;
-            height: 25px;
-            width: 25px;
-          }
-          .spacing {
-            margin-left: 15px;
-          }
-        }
-        .childComponents {
-          min-height: 15px;
-          color: #fff;
-        }
-        .footerFooter {
-          display: flex;
-          justify-content: space-between;
-          align-items: baseline;
-          .bottomLinks {
-            padding-top: 6px;
-            border-top: 2px solid #ffed00;
-            display: inline-flex;
-            flex-wrap: wrap;
-            max-width: 60%;
-            .point {
-              margin: 0px 10px;
-              color: white;
-            }
-            a {
-              text-decoration: none;
-              color: white;
-              font-size: 12px;
-            }
-          }
-          .copyright {
-            color: white;
-            font-size: 12px;
-            max-width: 40%;
-          }
-        }
-      }
+        background-color: var(--black);
+        ${this.utils.getTopMargin(input.margin)}    
     `;
   }
+
+  setFooterHeaderStyle(){
+    return css`
+      display: flex;
+      justify-content: space-between;
+    `;
+  }
+
+  setChildComponentsStyle(inputs: any){
+    return css`
+      min-height: 15px;
+      color: #fff;
+      overflow: hidden;
+      ${this.utils.getPaddings(inputs.padding)}
+    `;
+  }
+
+  
 }

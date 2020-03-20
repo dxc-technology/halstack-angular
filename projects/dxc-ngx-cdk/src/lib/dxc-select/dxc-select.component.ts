@@ -4,9 +4,13 @@ import {
   Output,
   EventEmitter,
   HostBinding,
-  OnChanges
+  OnChanges,
+  SimpleChanges
 } from "@angular/core";
 import { isArray } from "util";
+import { css } from "emotion";
+import { BehaviorSubject } from "rxjs";
+import { CssUtils } from "../utils";
 
 @Component({
   selector: "dxc-select",
@@ -15,9 +19,12 @@ import { isArray } from "util";
     "./dxc-select.component.scss",
     "./dxc-light-select.scss",
     "./dxc-dark-select.scss"
-  ]
+  ],
+  providers: [CssUtils]
 })
 export class DxcSelectComponent implements OnChanges {
+
+  @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
   @HostBinding("class.select-icons") onlyHasIcons: boolean = false;
@@ -32,10 +39,40 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public name: string;
   @Input() public iconPosition: string = "before";
   @Input() public label: string;
+  @Input() public margin: any;
+  @Input() public size: string = "medium";
   @Output() public valueChange: EventEmitter<any> = new EventEmitter<any>();
   public iconsToShow: string[] = []; //Auxiliar property used to get iconSRC for several values
   public labeltoShow: string[] = [] //The value is not the correct valur to display. Use label instead
-  public ngOnChanges(): void {
+
+  defaultInputs = new BehaviorSubject<any>({
+    theme: "light",
+    multiple: false,
+    disableRipple: true,
+    disabled: false,
+    required: false,
+    iconPosition: "before",
+    label: "",
+    size: "medium"
+  });
+
+  sizes = {
+    small: "60px",
+    medium: "240px",
+    large: "480px",
+    fillParent: "100%"
+  };
+  constructor(private utils: CssUtils) {}
+
+  public ngOnInit(): void {
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+
+    if(this.value) {
+      this.getIconAndLabelByValue(this.value);
+    }
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
@@ -44,6 +81,14 @@ export class DxcSelectComponent implements OnChanges {
       this.isDark = false;
     }
     this.hasOptionsOnlyIcons();
+    this.getIconAndLabelByValue(this.value);
+
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      result[item] = changes[item].currentValue;
+      return result;
+    }, {});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   public valueChanged($event: any): void {
@@ -65,11 +110,17 @@ export class DxcSelectComponent implements OnChanges {
     this.labeltoShow = [];
     const multipleValue = isArray(value) ? value : [value];
     multipleValue.map(value => {
-      const selectedOption = this.options.filter(
-        option => option.value === value
-      )[0];
-      this.iconsToShow.push(selectedOption.iconSrc);
-      this.labeltoShow.push(selectedOption.label);
+      if(this.options[value - 1]) {
+        this.iconsToShow.push(this.options[value - 1].iconSrc);
+        this.labeltoShow.push(this.options[value - 1].label);
+      }
     });
+  }
+
+  getDynamicStyle(inputs) {
+    return css`
+      ${this.utils.getMargins(inputs.margin)}
+      ${this.utils.calculateWidth(this.sizes, inputs)}
+    `;
   }
 }

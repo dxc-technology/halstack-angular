@@ -2,10 +2,9 @@
   //Common styling for all themes for panel
   position: absolute;
   top: 27px;
-  // left: 16px;
-  // &.multiple {
-  //   left: 44px;
-  // }
+  ::ng-deep {
+    min-width: 100% !important;
+  }
   &.mat-select-panel mat-option {
     width: 100%;
     height: 42px;
@@ -19,10 +18,10 @@
       width: fit-content;
     }
     &.mat-selected {
-      background: #d9d9d9;
+      background: var(--lightGrey);
     }
     &:hover:not(.mat-option-disabled) {
-      background: #eeeeee;
+      background: var(--darkWhite);
     }
 
     &.mat-option-multiple {
@@ -48,9 +47,9 @@
     }
   }
   mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
-    background: #ffed00;
+    background: var(--yellow);
     &::after {
-      color: black;
+      color: var(--black);
       top: 2.4px;
       left: 1px;
       width: 12px;
@@ -68,14 +67,9 @@
 }
 
 :host {
-  margin: 15px;
   display: block;
-  width: 230px;
   .mat-option.mat-active {
-    background: #d9d9d9;
-  }
-  &.select-icons {
-    width: 115px;
+    background: var(--lightGrey);
   }
   mat-select-trigger {
     display: flex;
@@ -104,20 +98,18 @@
     opacity: 0.69;
     &::ng-deep {
       .mat-form-field-underline {
-        background: #d9d9d9;
+        background-color: var(--lightGrey);
       }
       .mat-select-disabled .mat-select-trigger {
         cursor: not-allowed;
       }
       .mat-form-field-label,
       .mat-select-arrow {
-        color: #d9d9d9;
+        color: var(--lightGrey);
       }
     }
   }
-  .select-icons {
-    width: 115px;
-  }
+
   div {
     display: inline;
     &:not(:last-child) {
@@ -147,7 +139,7 @@
         justify-content: flex-end;
         display: flex !important;
         span {
-          color: #d0011b;
+          color: var(--darkRed);
         }
       }
     }

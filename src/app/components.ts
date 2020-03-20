@@ -5,6 +5,7 @@ import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { SelectInfoComponent } from './pages/select/select-info.component';
 import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
@@ -12,8 +13,7 @@ import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
-import {ProgressInfoComponent} from './pages/progressBar/progressBar-info.component';
-import { DxcSelectComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.component';
+import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
 import { DxcTabsComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
 import { DxcUploadComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
 import { AccordionComponent } from './pages/accordion/accordion.component';
@@ -98,7 +98,7 @@ export const Components = [
     {
         name: 'Select',
         route: 'select',
-        component: DxcSelectComponent
+        component: SelectInfoComponent
     },
     {
         name: 'Slider',

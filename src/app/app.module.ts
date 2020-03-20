@@ -15,6 +15,7 @@ import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { SelectInfoComponent } from './pages/select/select-info.component';
 import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -74,6 +75,7 @@ import {ProgressInfoComponent} from './pages/progressBar/progressBar-info.compon
     DropdownInfoComponent,
     FooterInfoComponent,
     TextInputInfoComponent,
+    SelectInfoComponent,
     SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,

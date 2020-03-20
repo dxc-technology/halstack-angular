@@ -1,6 +1,7 @@
 /*
  * Public API Surface of foo
  */
+export * from './lib/scroll-spy/scroll-spy.module'
 
 export * from './lib/theme/theme.service';
 export * from './lib/theme/theme.module';

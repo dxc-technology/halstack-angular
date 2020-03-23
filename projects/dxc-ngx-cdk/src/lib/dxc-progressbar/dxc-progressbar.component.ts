@@ -92,6 +92,22 @@ export class DxcProgressbarComponent {
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
+      .backOverlay {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          position: fixed;
+          opacity: 1;
+          ${inputs.overlay
+            ? css`
+                background-color: rgba(0, 0, 0, 0.7);
+              `
+            : css`
+                background-color: transparent;
+              `}
+          transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
     `;
   }
 }

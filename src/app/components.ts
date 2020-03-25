@@ -22,6 +22,7 @@ import { BoxComponent } from './pages/box/box.component';
 import { AllComponent } from './pages/all/all.component';
 import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
+import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 
 
 export const Components = [
@@ -124,6 +125,11 @@ export const Components = [
         name: 'Tabs',
         route: 'tabs',
         component: DxcTabsComponent
+    },
+    {
+        name: 'TabbedSection',
+        route: 'tabbedSection',
+        component: TabbedSectionComponent
     },
     {
         name: 'Tags',

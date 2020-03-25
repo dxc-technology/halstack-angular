@@ -14,7 +14,7 @@ import { TextInputInfoComponent } from './pages/inputText/text-input-info.compon
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
 import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
-import { DxcTabsComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
+import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 import { DxcUploadComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
 import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
@@ -123,7 +123,7 @@ export const Components = [
     {
         name: 'Tabs',
         route: 'tabs',
-        component: DxcTabsComponent
+        component: TabsInfoComponent
     },
     {
         name: 'Tags',

@@ -57,6 +57,7 @@ import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag.module';
 import {ProgressInfoComponent} from './pages/progressBar/progressBar-info.component';
+import {TabsInfoComponent} from './pages/tabs/tabs-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +82,8 @@ import {ProgressInfoComponent} from './pages/progressBar/progressBar-info.compon
     TableInfoComponent,
     AllComponent,
     TagInfoComponent,
-    ProgressInfoComponent
+    ProgressInfoComponent,
+    TabsInfoComponent
   ],
   imports: [
     AppRoutingModule,

@@ -47,7 +47,7 @@ export class DxcTabComponent implements OnChanges {
     this.matTab.disabled = this.disabled;
   }
 
-  public onClickHandler($event: any): void {
+  public onClickHandler(): void {
     this.onClick.emit(this.id);
   }
 

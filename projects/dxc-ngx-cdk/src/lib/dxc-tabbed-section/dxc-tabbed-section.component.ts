@@ -59,7 +59,7 @@ export class DxcTabbedSectionComponent implements OnInit {
 
   scroll (section) {
     const topOfElement = document.getElementById(section).offsetTop  - 1 ;
-    window.scroll({ top: topOfElement - this.offset, behavior: "smooth" });
+    window.scroll({ top: topOfElement - this.offset + 10, behavior: "smooth" });
   }
 
   onSectionChange(sectionId: string) {

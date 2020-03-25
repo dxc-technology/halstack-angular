@@ -1,6 +1,6 @@
 <mat-tab [disabled]="disabled">
   <ng-template mat-tab-label>
-    <div [ngClass]="labelClass">
+    <div [ngClass]="labelClass" (click)="onClickHandler(tabId)">
       <img *ngIf="iconSrc" src="{{ iconSrc }}" />
       <div class="dxc-tab-label">
         <span>{{ label }}</span>

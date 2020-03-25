@@ -5,7 +5,7 @@
     padding-right: 20px;
     padding-left: 20px;
     opacity: 1;
-    min-width: unset;
+    min-width: 180px;
 
     .mat-tab-label-content {
       font-size: 16px;
@@ -57,13 +57,6 @@
         &:hover {
           opacity: 0.8;
         }
-      }
-    }
-  }
-  &.label-icons {
-    ::ng-deep {
-      .mat-tab-list .mat-tab-label {
-        height: 76px;
       }
     }
   }

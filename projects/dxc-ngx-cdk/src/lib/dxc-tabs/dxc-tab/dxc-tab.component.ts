@@ -5,6 +5,8 @@ import {
   ViewChild,
   HostBinding,
   SimpleChange,
+  Output,
+  EventEmitter,
   ChangeDetectorRef
 } from "@angular/core";
 import { MatTab } from "@angular/material";
@@ -19,6 +21,9 @@ export class DxcTabComponent implements OnChanges {
   @Input() theme: string = "light";
   @Input() iconSrc: string;
   @Input() disabled: boolean = false;
+  @Input() id: number;
+  @Output() onClick = new EventEmitter<any>();
+
 
   showDotIndicator: boolean = false;
   labelClass: string;
@@ -41,6 +46,11 @@ export class DxcTabComponent implements OnChanges {
   public ngAfterViewInit() {
     this.matTab.disabled = this.disabled;
   }
+
+  public onClickHandler($event: any): void {
+    this.onClick.emit(this.id);
+  }
+
 
   getLabelClass() {
     if (this.iconSrc && this.label) {

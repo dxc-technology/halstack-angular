@@ -56,7 +56,7 @@ import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag
 import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
 import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabbed-section/dxc-tabbed-section.module';
-
+import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +82,8 @@ import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-t
     AllComponent,
     TagInfoComponent,
     ProgressInfoComponent,
-    TabbedSectionComponent
+    TabbedSectionComponent,
+    TabsInfoComponent
   ],
   imports: [
     AppRoutingModule,

@@ -17,10 +17,19 @@ export const colors = {
   
   export const spaces = {
     xxsmall: "6px",
-    xsmall: "8px",
-    small: "12px",
-    medium: "16px",
-    large: "20px",
-    xlarge: "24px",
-    xxlarge: "26px"
+    xsmall: "16px",
+    small: "24px",
+    medium: "36px",
+    large: "48px",
+    xlarge: "64px",
+    xxlarge: "100px"
   };
+
+  export const responsiveSizes = {
+    mobileSmall: "320",
+    mobileMedium: "375",
+    mobileLarge: "425",
+    tablet: "768",
+    laptop: "1024",
+    desktop: "1440"
+  }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, HostBinding, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, SimpleChanges } from '@angular/core';
 import { EventEmitter } from 'events';
 import { css } from "emotion";
 import { DxcTabsComponent } from '../dxc-tabs/dxc-tabs.component';
@@ -12,10 +12,10 @@ import { BehaviorSubject } from 'rxjs';
 export class DxcTabbedSectionComponent implements OnInit {
 
   //input attributes
-  @Input() tabsMode: string;
-  @Input() tabsTheme: string;
-  @Input() disableTabsRipple: boolean;
-  @Input() stickAtPx: number;
+  @Input() tabsMode: string = "filled";;
+  @Input() tabsTheme: string = "light";;
+  @Input() disableTabsRipple: boolean = false;
+  @Input() stickAtPx: number = 0;
   @Input() sections : Array<any>;
   
   @ViewChild(DxcTabsComponent, { static: true })
@@ -24,9 +24,8 @@ export class DxcTabbedSectionComponent implements OnInit {
   tabChange = new EventEmitter();
   selectecTab = 0; 
 
-  styledDxcSectionTabbedGroup:string;
-  styledDxcSectionTab: string = css`z-index: 10;`;
-
+  styledDxcSectionTabbedGroup: string;
+  
   private TABS_HEIGHT : number = 54;
   offset: number = 0;
 
@@ -44,7 +43,6 @@ export class DxcTabbedSectionComponent implements OnInit {
     this.styledDxcSectionTabbedGroup = `${this.setStyledDxcSectionTabbedGroup(this.defaultInputs.getValue())}`;
     this.calculateOffset(this.defaultInputs.getValue().stickAtPx);
     this.sectionTabGroup.activeTabIndexChange.subscribe(sectionId => this.selectecTab = sectionId);
-    
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -78,14 +76,10 @@ export class DxcTabbedSectionComponent implements OnInit {
     return css`
       .mat-tab-group {
         z-index: 100;
-        background: white;
         ${input.stickAtPx ? css`
           position: sticky;
           top: ${+input.stickAtPx}px;` 
         : css``};
-      }
-      .mat-tab-label {
-        background: white;
       }`;
   }
  

@@ -123,6 +123,9 @@ export class DxcFooterComponent implements OnChanges {
 
   }
 
+  getLogoDxc(){
+    return "../../assets/dxc_logo_white.png";
+  }
 
   setFooterContainerStyle(input: any){
     return css`

@@ -1,14 +1,7 @@
 <mat-toolbar [ngClass]="underline ? 'underlined' : ''" theme>
   <mat-toolbar-row>
     <a class="headerAnchor" (click)="onClickHandler($event)">
-      <img
-        [ngClass]="
-          (theme === 'light' && underline) || (theme === 'dark' && !underline)
-            ? 'dxc-logo-black'
-            : 'dxc-logo-white'
-        "
-        *ngIf="!logoSrc"
-      />
+      <img [src]="getLogoDxc()" *ngIf="!logoSrc"/>
       <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
     <div class="hamburger">

@@ -1,6 +1,7 @@
 /*
  * Public API Surface of foo
  */
+export * from './lib/scroll-spy/scroll-spy.module'
 
 export * from './lib/theme/theme.service';
 export * from './lib/theme/theme.module';
@@ -75,3 +76,6 @@ export * from './lib/dxc-toggle/dxc-toggle.module';
 
 // export * from './lib/dxc-upload/dxc-upload.component';
 // export * from './lib/dxc-upload/dxc-upload.module';
+
+export * from './lib/dxc-tabbed-section/dxc-tabbed-section.component';
+export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';

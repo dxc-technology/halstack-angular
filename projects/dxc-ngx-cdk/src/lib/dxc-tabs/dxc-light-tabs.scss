@@ -39,6 +39,7 @@
   }
   .underlined-tabs {
     ::ng-deep {
+      background-color: white;
       .mat-tab-label:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
         color: #666666 !important;
         opacity: 1;

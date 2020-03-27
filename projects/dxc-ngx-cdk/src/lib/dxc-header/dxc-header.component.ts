@@ -157,6 +157,14 @@ export class DxcHeaderComponent implements OnChanges {
       `;
     }
   }
+  
+  getLogoDxc(){
+    if (this.theme === 'light'){
+      return "../../assets/dxc_logo_white.png";
+    }else {
+      return "../../assets/dxc_logo_black.png";
+    }
+  }
 
   getDynamicStyle(inputs) {
     return css`

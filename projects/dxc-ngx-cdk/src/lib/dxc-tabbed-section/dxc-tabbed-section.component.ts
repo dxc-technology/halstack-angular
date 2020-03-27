@@ -75,11 +75,15 @@ export class DxcTabbedSectionComponent implements OnInit {
   setStyledDxcSectionTabbedGroup(input: any){
     return css`
       .mat-tab-group {
-        z-index: 100;
         ${input.stickAtPx ? css`
+          z-index: 500;
           position: sticky;
           top: ${+input.stickAtPx}px;` 
-        : css``};
+        : css`
+          z-index: 10;
+          position: initial;
+          top: unset;
+        `};
       }`;
   }
  

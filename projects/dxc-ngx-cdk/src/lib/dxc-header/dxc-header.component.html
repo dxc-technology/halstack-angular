@@ -19,14 +19,14 @@
     </div>
 
     <div *ngIf="!isResponsive" class="content">
-      <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+            <ng-content select="[id=unresponsive]"></ng-content>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 <div theme [class]="responsiveMenu">
   <div class="responsiveMenu-Header">
     <a class="headerAnchor" (click)="onClickHandler($event)">
-      <img class="dxc-logo-black" *ngIf="!logoSrc" />
+      <img [src]="getLogoDxc()" *ngIf="!logoSrc" />
       <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
     <div class="closeIcon" (click)="showMenu()">
@@ -44,8 +44,9 @@
     </div>
   </div>
   <div class="menuContent">
-    <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+    <ng-content select="[id=responsive]"></ng-content>
+    <!-- <ng-container *ngTemplateOutlet="contentTpl"></ng-container> -->
   </div>
 </div>
 <div (click)="showMenu()" *ngIf="isMenuVisible" class="overlay"></div>
-<ng-template #contentTpl><ng-content></ng-content></ng-template>
+<!-- <ng-template #contentTpl><ng-content></ng-content></ng-template> -->

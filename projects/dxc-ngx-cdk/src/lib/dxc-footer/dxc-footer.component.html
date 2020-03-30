@@ -21,18 +21,17 @@
             <ng-content></ng-content>
         </div>
         <div [class]="footerFooterStyle">
-                <div [class]="bottomLinksStyle">
+                <div class="bottomLinksStyle">
                   <span *ngFor="let bottomLink of bottomLinks; index as i">
-                    
                     <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}" [class]="bottomLinkStyle">
                       <span>
                         {{ bottomLink.text }}
                       </span>
+                      <span *ngIf="i != bottomLinksLength" class="point">·</span>
                     </a>
-                    <span *ngIf="i != 0" class="point">·</span>
                   </span>
                 </div>
-                <div [class]="copyrightStyle">
+                <div class="copyrightStyle">
                   {{ copyright }}
                 </div>
         </div>

@@ -2,12 +2,12 @@
   .filled-tabs {
     ::ng-deep {
       div.mat-ripple-element {
-        background-color: black;
+        background-color: var(--black);
         opacity: 1;
       }
 
       div.mat-tab-label-active .mat-ripple-element {
-        background-color: white;
+        background-color: var(--white);
         opacity: 0.3;
       }
 
@@ -25,21 +25,21 @@
           }
         }
         &.mat-tab-label-active {
-          background-color: #000000;
+          background-color:var(--black);
           .dxc-tab-label span {
-            color: #FFFFFF;
+            color:var(--white);
             opacity: 1;
           }
         }
       }
       .mat-ink-bar {
-        background-color: #FFED00;
+        background-color: var(--yellow);
       }
     }
   }
   .underlined-tabs {
     ::ng-deep {
-      background-color: white;
+      background-color: var(--white);
       .mat-tab-label:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
         color: #666666 !important;
         opacity: 1;

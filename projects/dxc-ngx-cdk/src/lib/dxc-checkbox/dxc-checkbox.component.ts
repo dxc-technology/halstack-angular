@@ -32,8 +32,8 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() name: string;
   @Input() id: string;
   @Input() labelPosition: string;
-  @Input() margin: string;
-  @Input() size: string;
+  @Input() margin: any;
+  @Input() size: any;
   @Output() checkedChange: EventEmitter<any>;
 
   @HostBinding("class") className;

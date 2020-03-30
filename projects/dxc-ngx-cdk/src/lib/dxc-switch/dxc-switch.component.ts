@@ -27,7 +27,7 @@ export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class.dark") isDark: boolean = false;
 
   @Input() checked: boolean;
-  @Input() value: string;
+  @Input() value: any;
   @Input() theme: string;
   @Input() disableRipple: boolean;
   @Input() disabled: boolean | string;

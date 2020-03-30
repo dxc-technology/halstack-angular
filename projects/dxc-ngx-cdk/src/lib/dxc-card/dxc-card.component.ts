@@ -22,7 +22,7 @@ import { CssUtils } from "../utils";
 export class DxcCardComponent implements OnInit {
   @Input() imageSrc: string;
   @Input() imagePosition: string;
-  @Input() imagePadding: string;
+  @Input() imagePadding: any;
   @Input() imageCover: boolean;
   @Input() imageBgColor: string;
   @Input() outlined: boolean;

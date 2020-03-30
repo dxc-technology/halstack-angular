@@ -59,6 +59,9 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   updateCss() {
+
+
+
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,
@@ -106,7 +109,6 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.underline === true ? true : false;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -126,7 +128,7 @@ export class DxcHeaderComponent implements OnChanges {
     `;
   }
 
-  public getThemeLogo(theme) {
+  private getThemeLogo(theme) {
     if (theme === "light") {
       return css`
         .mat-toolbar-row {
@@ -160,9 +162,10 @@ export class DxcHeaderComponent implements OnChanges {
   
   getLogoDxc(){
     if (this.theme === 'light'){
-      return "../../assets/dxc_logo_white.png";
-    }else {
-      return "../../assets/dxc_logo_black.png";
+      return this.underline ? "../../assets/dxc_logo_black.png" : "../../assets/dxc_logo_white.png";
+    }
+    else{
+        return !this.underline ? "../../assets/dxc_logo_black.png" : "../../assets/dxc_logo_white.png";
     }
   }
 
@@ -195,14 +198,14 @@ export class DxcHeaderComponent implements OnChanges {
       }
       ${this.getThemeLogo(inputs.theme)}
       .dxc-logo,
-      img {
-        max-height: 32px;
-        width: auto;
-        vertical-align: middle;
+        img {
+          max-height: 32px;
+          width: auto;
+          vertical-align: middle;
 
-        &:hover {
-          cursor: pointer;
-        }
+          &:hover {
+            cursor: pointer;
+          }
       }
       .content {
         display: flex;

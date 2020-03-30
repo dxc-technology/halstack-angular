@@ -5,19 +5,13 @@ import {
   EventEmitter,
   HostBinding,
   OnChanges,
-  OnInit,
   ViewChild,
-  ElementRef,
   ContentChildren,
   QueryList,
-  Renderer2,
-  ComponentFactoryResolver,
-  ViewContainerRef,
   SimpleChanges
 } from "@angular/core";
 import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
-import { generate } from "rxjs";
-import { MatIcon, MatTab, MatTabGroup } from "@angular/material";
+import { MatTab, MatTabGroup } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";

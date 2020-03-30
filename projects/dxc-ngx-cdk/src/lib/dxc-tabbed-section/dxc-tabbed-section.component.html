@@ -2,7 +2,8 @@
     <dxc-tabs 
         [mode]="tabsMode" 
         [theme]="tabsTheme" 
-        [disableRipple] ="disableTabsRipple">
+        [disableRipple] ="disableTabsRipple"
+        id="dxcTabbedSection">
         <dxc-tab 
             *ngFor="let currentSection of sections; let i = index" 
             [label]="currentSection.label" 

@@ -50,7 +50,7 @@ export class DxcHeaderComponent implements OnChanges {
   @HostListener("window:resize", ["$event"])
   onResize(event) {
     this.innerWidth = event.target.innerWidth;
-    if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {
+    if (this.innerWidth <= responsiveSizes.tablet) {
       this.isResponsive = true;
     } else {
       this.isResponsive = false;

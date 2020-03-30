@@ -36,9 +36,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   updateTheme(theme: Theme) {
-    // project properties onto the element
-    console.log('updating the theme');
-
     for (const key in theme.properties) {
       this._elementRef.nativeElement.style.setProperty(key, theme.properties[key]);
     }

@@ -52,7 +52,6 @@ export class DxcFooterComponent implements OnChanges {
       this.isResponsive = false;
     }
     this.footerFooterStyle = `${this.setFooterFooterStyle(this.isResponsive)}`;
-    console.log(this.isResponsive);
   }
 
   // Styling

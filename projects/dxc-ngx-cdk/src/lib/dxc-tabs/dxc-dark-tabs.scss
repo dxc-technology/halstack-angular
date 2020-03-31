@@ -8,19 +8,19 @@
         }
 
         div.mat-tab-label-active .mat-ripple-element {
-          background-color: #666666;
+          background-color: var(--darkGrey);
           opacity: 0.3;
         }
 
         .mat-tab-label {
           opacity: 1;
-          background: #666666 0% 0% no-repeat padding-box;
+          background: var(--darkGrey) 0% 0% no-repeat padding-box;
           .dxc-tab-label span {
             color: var(--white);
             opacity: 0.8;
           }
           &:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
-            background: #666666 0% 0% no-repeat padding-box;
+            background: var(--darkGrey) 0% 0% no-repeat padding-box;
             .dxc-tab-label span {
               color: var(--white);
               opacity: 0.8;
@@ -61,7 +61,7 @@
           }
         }
         .mat-tab-label:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
-          color: #666666 !important;
+          color: var(--darkGrey) !important;
           opacity: 1;
         }
         .mat-ink-bar {
@@ -69,11 +69,11 @@
         }
 
         .mat-tab-disabled {
-          color: #666666B3;
+          color: var(--darkGrey)B3;
           &.mat-tab-label-active {
-            color: #666666FF;
+            color: var(--darkGrey)FF;
             & + .mat-ink-bar {
-              background-color: #666666;
+              background-color: var(--darkGrey);
             }
           }
         }

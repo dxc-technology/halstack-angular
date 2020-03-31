@@ -25,7 +25,7 @@ export class DxcUploadComponent implements OnChanges {
 
   addFiles($event) {
     const aux = this;
-    $event.forEach(file => {
+    Array.from($event).forEach(file => {
       this.getPreview(file);
     });
   }

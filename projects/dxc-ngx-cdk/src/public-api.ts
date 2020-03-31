@@ -74,8 +74,8 @@ export * from './lib/dxc-text-input/dxc-input-text.module';
 export * from './lib/dxc-toggle/dxc-toggle.component';
 export * from './lib/dxc-toggle/dxc-toggle.module';
 
-// export * from './lib/dxc-upload/dxc-upload.component';
-// export * from './lib/dxc-upload/dxc-upload.module';
+export * from './lib/dxc-upload/dxc-upload.component';
+export * from './lib/dxc-upload/dxc-upload.module';
 
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';

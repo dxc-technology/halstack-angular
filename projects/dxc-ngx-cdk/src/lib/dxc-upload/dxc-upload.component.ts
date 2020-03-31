@@ -34,7 +34,7 @@ export class DxcUploadComponent implements OnChanges {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = event => {
-      if (!file.type.includes("image")) {
+      if (!file.type.includes("image") || file.type.includes("image/svg")) {
         const fileToPush = {};
         fileToPush["status"] = "pending";
         fileToPush["fileData"] = file;

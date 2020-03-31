@@ -17,7 +17,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log('initializating directive theme');
     const active = this._themeService.getActiveTheme();
     if (active) {
       this.updateTheme(active);
@@ -26,8 +25,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
     this._themeService.themeChange
       .pipe(takeUntil(this._destroy$))
       .subscribe((theme: Theme) => {
-          console.log('updating theme');
-          console.debug(theme);
           this.updateTheme(theme);
         } 
       );
@@ -39,9 +36,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   updateTheme(theme: Theme) {
-    // project properties onto the element
-    console.log('updating the theme');
-
     for (const key in theme.properties) {
       this._elementRef.nativeElement.style.setProperty(key, theme.properties[key]);
     }

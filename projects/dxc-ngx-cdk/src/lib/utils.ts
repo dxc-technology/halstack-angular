@@ -54,44 +54,41 @@ export class CssUtils {
     const width = sizes[inputs.size];
     let margins = "";
     if (inputs.size === "fillParent" && inputs.margin) {
-      margins =
-        inputs.margin && typeof inputs.margin !== "object"
-          ? " - " + spaces[inputs.margin] + " - " + spaces[inputs.margin]
-          : inputs.margin && inputs.size
-          ? inputs.margin["right"] === undefined && inputs.margin["left"]
-            ? " - " + spaces[inputs.margin["left"]]
-            : inputs.margin["left"] === undefined && inputs.margin["right"]
-            ? " - " + spaces[inputs.margin["right"]]
-            : inputs.margin["left"] && inputs.margin["right"]
-            ? " - " +
-              spaces[inputs.margin["left"]] +
-              " - " +
-              spaces[inputs.margin["right"]]
-            : ""
-          : "";
+      margins = this.getPaddingOrMargin(sizes, inputs.margin);
     }
-
     let paddings = "";
     if (inputs.padding) {
-      paddings =
-        inputs.padding && typeof inputs.padding !== "object"
-          ? " - " + spaces[inputs.padding] + " - " + spaces[inputs.padding]
-          : inputs.padding && inputs.size
-          ? inputs.padding["right"] === undefined && inputs.padding["left"]
-            ? " - " + spaces[inputs.padding["left"]]
-            : inputs.padding["left"] === undefined && inputs.padding["right"]
-            ? " - " + spaces[inputs.padding["right"]]
-            : inputs.padding["left"] && inputs.padding["right"]
-            ? " - " +
-              spaces[inputs.padding["left"]] +
-              " - " +
-              spaces[inputs.padding["right"]]
-            : ""
-          : "";
+      paddings = this.getPaddingOrMargin(sizes, inputs.padding);
     }
-    return css`
-      width: calc(${width} ${paddings} ${margins});
-    `;
+    if(paddings || margins) {
+      return css`
+        width: calc(${width} ${paddings} ${margins});
+      `;
+    } else {
+      return css`
+        width: ${width};
+      `;
+    }
+  }
+  getPaddingOrMargin(size, paddingOrMargin) {
+    let finalPaddingOrMargin = "";
+    if (paddingOrMargin && typeof paddingOrMargin !== "object") {
+      finalPaddingOrMargin =
+        " - " + spaces[paddingOrMargin] + " - " + spaces[paddingOrMargin];
+    } else if (size) {
+      if (!paddingOrMargin["right"] && paddingOrMargin["left"]) {
+        finalPaddingOrMargin = " - " + spaces[paddingOrMargin["left"]];
+      } else if (!paddingOrMargin["left"] && paddingOrMargin["right"]) {
+        finalPaddingOrMargin = " - " + spaces[paddingOrMargin["right"]];
+      } else if (paddingOrMargin["left"] && paddingOrMargin["right"]) {
+        finalPaddingOrMargin =
+          " - " +
+          spaces[paddingOrMargin["left"]] +
+          " - " +
+          spaces[paddingOrMargin["right"]];
+      }
+    }
+    return finalPaddingOrMargin;
   }
 
   calculateWidthWithSize(size, padding) {
@@ -106,10 +103,7 @@ export class CssUtils {
             : padding["left"] === undefined && padding["right"]
             ? " - " + spaces[padding["right"]]
             : padding["left"] && padding["right"]
-            ? " - " +
-              spaces[padding["left"]] +
-              " - " +
-              spaces[padding["right"]]
+            ? " - " + spaces[padding["left"]] + " - " + spaces[padding["right"]]
             : ""
           : "";
     }

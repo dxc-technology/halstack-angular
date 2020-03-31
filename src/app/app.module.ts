@@ -15,6 +15,7 @@ import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { SelectInfoComponent } from './pages/select/select-info.component';
 import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,13 +30,10 @@ import { DXCDropdownModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-dropdo
 import { DXCFooterModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-footer/dxc-footer.module';
 import { DXCHeaderModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-header/dxc-header.module';
 import { DXCInputTextModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-text-input/dxc-input-text.module';
-import { DxcProgressbarComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.component';
 import { DxcProgressbarModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.module';
 import { DxcSpinnerModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-spinner/dxc-spinner.module';
-import { DxcSwitchComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-switch/dxc-switch.component';
 import { DxcSwitchModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-switch/dxc-switch.module';
 import { DXCToggleModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-toggle/dxc-toggle.module';
-import { DxcTabsComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
 import { DxcTabsModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.module';
 import { DXCUploadModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.module';
 import { DxcCheckboxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-checkbox/dxc-checkbox.module';
@@ -55,6 +53,10 @@ import { DxcCardModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-card/dxc-card.mo
 import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag.module';
+import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
+import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
+import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabbed-section/dxc-tabbed-section.module';
+import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,11 +75,15 @@ import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag
     DropdownInfoComponent,
     FooterInfoComponent,
     TextInputInfoComponent,
+    SelectInfoComponent,
     SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,
     AllComponent,
-    TagInfoComponent
+    TagInfoComponent,
+    ProgressInfoComponent,
+    TabbedSectionComponent,
+    TabsInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -107,8 +113,8 @@ import { DxcTagModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tag/dxc-tag
     DxcRadioModule,
     BrowserModule,
     DxcSliderModule,
+    DxcTabbedSectionModule,
     HttpClientModule
-    
   ],
   providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]

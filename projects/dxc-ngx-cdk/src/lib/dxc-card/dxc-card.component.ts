@@ -22,7 +22,7 @@ import { CssUtils } from "../utils";
 export class DxcCardComponent implements OnInit {
   @Input() imageSrc: string;
   @Input() imagePosition: string;
-  @Input() imagePadding: string;
+  @Input() imagePadding: any;
   @Input() imageCover: boolean;
   @Input() imageBgColor: string;
   @Input() outlined: boolean;
@@ -92,7 +92,7 @@ export class DxcCardComponent implements OnInit {
     if (theme === "dark") {
       return css`
         mat-card {
-          background-color: #000000;
+          background-color: var(--black);
           color: white;
           ${!outlined
             ? this.utils.getBoxShadow("1")
@@ -117,7 +117,7 @@ export class DxcCardComponent implements OnInit {
     } else if (theme === "medium") {
       return css`
         mat-card {
-          background-color: #212121;
+          background-color: var(--lightBlack);
           color: white;
           ${!outlined
             ? this.utils.getBoxShadow("1")
@@ -142,7 +142,7 @@ export class DxcCardComponent implements OnInit {
     } else {
       return css`
         mat-card {
-          background-color: #ffffff;
+          background-color: var(--white);
           color: black;
           ${!outlined
             ? this.utils.getBoxShadow("1")
@@ -180,7 +180,7 @@ export class DxcCardComponent implements OnInit {
   getBorderOnHover(href) {
     if (this.onClick.observers.length > 0 || href) {
       return css`
-        border-color: #ffed00;
+        border-color: var(--yellow);
       `;
     } else {
       return css``;

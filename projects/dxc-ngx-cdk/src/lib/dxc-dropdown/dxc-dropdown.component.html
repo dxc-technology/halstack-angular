@@ -1,17 +1,14 @@
 <button
-  [disabled]="disabled"
+#dropdownButton
   mat-button
   (menuClosed)="isMenuOpened()"
   (menuOpened)="isMenuOpened()"
   [matMenuTriggerFor]="menu"
   [disableRipple]="true"
-  class="menu-buttom-label-wrapper menu-{{ menuOpened }} {{
-    !label ? 'label-only-icon' : ''
-  }}"
+  class="menu-buttom-label-wrapper menu-{{ menuOpened }}"
   [ngClass]="{'icon-after': iconPosition === 'after', 'icon-before': iconPosition === 'before',
     'basic': mode === 'basic', 'outlined': mode === 'outlined', 
-    'onlyIcon': label === '' && !showCaret,
-    'disabled' : disabled}"
+    'onlyIcon': label === '' && !showCaret}"
 >
 
   <div>
@@ -27,6 +24,7 @@
 <mat-menu
   #menu="matMenu"
   disableRipple="disableRipple"
+  [class] = "menuOptions"
   class="
     {{ onlyHasIcons ? 'dxc-dropdown-menu only-icons' : 'dxc-dropdown-menu' }} 
     {{ isDark ? 'dxc-dark' : '' }}
@@ -42,7 +40,7 @@
   >
     <div>
       <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
-      <span *ngIf="option.label">{{ option.label }}</span>
+      <span *ngIf="option.label" class="label-span">{{ option.label }}</span>
     </div>
   </button>
 </mat-menu>

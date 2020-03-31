@@ -128,7 +128,6 @@ export class DxcUploadComponent implements OnChanges {
             aux.getUploadedFiles()
           })
           .catch(err => {
-            console.log(JSON.stringify(err));
             file.status = "error";
             file.errorMessage = err;
             aux.getUploadedFiles()

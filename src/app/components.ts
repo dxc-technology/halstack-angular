@@ -5,6 +5,7 @@ import { HeaderInfoComponent } from './pages/header/header-info.component';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { DateInfoComponent } from './pages/date/date-info.component';
 import { RadioInfoComponent } from './pages/radio/radio-info.component';
+import { SelectInfoComponent } from './pages/select/select-info.component';
 import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
@@ -12,9 +13,8 @@ import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
-import { DxcProgressbarComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-progressbar/dxc-progressbar.component';
-import { DxcSelectComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.component';
-import { DxcTabsComponent } from 'projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-tabs.component';
+import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
+import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 import { DxcUploadComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
 import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
@@ -22,6 +22,7 @@ import { BoxComponent } from './pages/box/box.component';
 import { AllComponent } from './pages/all/all.component';
 import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
+import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 
 
 export const Components = [
@@ -88,7 +89,7 @@ export const Components = [
     {
         name: 'Progress Bar',
         route: 'progress',
-        component:  DxcProgressbarComponent
+        component:  ProgressInfoComponent
     },
     {
         name: 'Radio',
@@ -98,7 +99,7 @@ export const Components = [
     {
         name: 'Select',
         route: 'select',
-        component: DxcSelectComponent
+        component: SelectInfoComponent
     },
     {
         name: 'Slider',
@@ -123,7 +124,12 @@ export const Components = [
     {
         name: 'Tabs',
         route: 'tabs',
-        component: DxcTabsComponent
+        component: TabsInfoComponent
+    },
+    {
+        name: 'TabbedSection',
+        route: 'tabbedSection',
+        component: TabbedSectionComponent
     },
     {
         name: 'Tags',

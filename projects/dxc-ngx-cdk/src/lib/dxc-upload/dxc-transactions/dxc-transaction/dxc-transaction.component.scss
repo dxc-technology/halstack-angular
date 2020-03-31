@@ -20,7 +20,7 @@
   }
   .errorIcon {
     svg {
-      fill: #D0011B;
+      fill: var(--darkRed);
     }
   }
   .fileName {
@@ -33,6 +33,6 @@
     }
   }
   .fileName.errorLabel {
-    color: #D0011B;
+    color: var(--darkRed);
   }
 }

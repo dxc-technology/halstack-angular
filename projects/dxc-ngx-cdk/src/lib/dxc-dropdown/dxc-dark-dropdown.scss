@@ -1,57 +1,57 @@
 :host.dxc-dark {
   .menu-buttom-label-wrapper {
-    color: white;
-    background: black;
+    color: var(--white);
+    background: var(--black);
     &.menu-opened {
-      background: #212121;
+      background: var(--lightBlack);
     }
   }
   .menu-buttom-label {
-    color: white;
+    color: var(--white);
   }
 
   .arrow-down {
-    border-top: 5px solid white;
+    border-top: 5px solid var(--white);
   }
   .arrow-up {
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid var(--white);
   }
   button.mat-button.basic {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--white);
+    color: var(--black);
      border: none;
     .menu-buttom-label {
-      color: #000000;
+      color: var(--black);
     }
     .arrow-down {
-      border-top: 5px solid #000000;
+      border-top: 5px solid var(--black);
     }
     .arrow-up {
-      border-bottom: 5px solid #000000;
+      border-bottom: 5px solid var(--black);
     }
   }
 }
 ::ng-deep .dxc-dropdown-menu.dxc-dark {
   .mat-menu-content {
-    background: black;
+    background: var(--black);
 
     .mat-menu-item {
       &:hover {
-        color: black;
-        background: #EEEEEE;
+        color: var(--black);
+        background: var(--darkWhite);
       }
       &:active {
-        color: white;
-        background: #666666;
+        color: var(--white);
+        background: var(--darkGrey);
       }
     }
   }
   &.basic {
-    background-color: #ffffff;
+    background-color: var(--white);
     .mat-menu-content {
-      background-color: #ffffff;
+      background-color: var(--white);
       .mat-menu-item {
-        color: #000000;
+        color: var(--black);
       }
     }
   }

@@ -108,15 +108,15 @@
     }
   }
   .infoHeader {
-    background-color: #cee0f5;
+    background-color: var(--lightBlue);
   }
   .warningHeader {
-    background-color: #fcf2bd;
+    background-color: var(--lightYellow);
   }
   .errorHeader {
-    background-color: #f9cfcf;
+    background-color: var(--lightPink);
   }
   .confirmHeader {
-    background-color: #dbf1c4;
+    background-color: var(--lightGreen);
   }
 }

@@ -5,10 +5,10 @@
         mat-expansion-panel-header {
           max-height: 64px;
           &:hover {
-            background-color: #d9d9d9;
+            background-color: var(--lightGrey);
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description {
-              color: #000000;
+              color: var(--black);
             }
           }
           padding: 8px 30px;
@@ -16,25 +16,25 @@
             display: none;
           }
           svg.down {
-            fill: #666666;
+            fill: var(--darkGrey);
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
-            color: #666666;
+            color: var(--darkGrey);
           }
           &.mat-expanded {
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description {
-              color: #000000;
+              color: var(--black);
             }
             svg.down {
               display: none;
             }
             svg.up {
               display: block;
-              fill: #000000;
+              fill: var(--black);
             }
-            border-bottom: 1px solid #d9d9d9;
+            border-bottom: 1px solid var(--lightGrey);
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
           }
@@ -42,7 +42,7 @@
       }
     }
     mat-expansion-panel.disabled {
-      background-color: #FFFFFF;
+      background-color: var(--white);
       opacity: 1;
       cursor: not-allowed;
       ::ng-deep {
@@ -52,11 +52,11 @@
             display: none;
           }
           svg.down {
-            fill: #d9d9d9;
+            fill: var(--lightGrey);
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
-            color: #d9d9d9;
+            color: var(--lightGrey);
           }
         }
       }
@@ -65,15 +65,15 @@
 
   mat-accordion.alternative {
     mat-expansion-panel:not(.disabled) {
-      background-color: #000000;
-      border: 2px solid #ffffff;
+      background-color: var(--black);
+      border: 2px solid var(--white);
       ::ng-deep {
         mat-expansion-panel-header {
           &:hover {
-            background-color: #212121;
+            background-color: var(--lightBlack);
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description {
-              color: #FFFFFF;
+              color: var(--white);
             }
           }
           padding: 6px 28px;
@@ -81,30 +81,30 @@
             display: none;
           }
           svg.down {
-            fill: #d9d9d9;
+            fill: var(--lightGrey);
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description,
           .mat-expansion-indicator::after {
-            color: #d9d9d9;
+            color: var(--lightGrey);
           }
           &.mat-expanded {
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description,
             .mat-expansion-indicator::after {
-              color: #ffffff;
+              color: var(--white);
             }
             svg.up {
               display: block;
-              fill: #ffffff;
+              fill: var(--white);
             }
-            border-bottom: 2px solid #ffffff;
+            border-bottom: 2px solid var(--white);
           }
         }
 
         div.mat-expansion-panel-content {
           div.mat-expansion-panel-body {
-            color: #ffffff;
+            color: var(--white);
           }
         }
       }
@@ -113,8 +113,8 @@
       mat-expansion-panel-header {
         max-height: 64px;
       }
-      background-color: #000000;
-      border: 2px solid #d9d9d9;
+      background-color: var(--black);
+      border: 2px solid var(--lightGrey);
       opacity: 0.65;
       cursor: not-allowed;
       ::ng-deep {
@@ -127,11 +127,11 @@
             
             display: block;
             opacity: 0.5;
-            fill: #ffffff;
+            fill: var(--white);
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
-            color: #ffffff;
+            color: var(--white);
             opacity: 0.5;
           }
         }

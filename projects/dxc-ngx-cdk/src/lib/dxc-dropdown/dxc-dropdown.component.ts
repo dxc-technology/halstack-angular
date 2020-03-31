@@ -110,25 +110,25 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     let borderColor = "";
     let color = "";
     if (theme === "light" && mode === "outlined") {
-      backgroundColor = "#FFFFFF";
-      borderColor = "#000000";
-      color = "#000000";
+      backgroundColor = "var(--white)";
+      borderColor = "var(--black)";
+      color = "var(--black)";
     } else if (theme === "light" && mode === "basic") {
-      backgroundColor = "#000000";
-      borderColor = "#FFFFFF";
-      color = "#FFFFFF";
+      backgroundColor = "var(--black)";
+      borderColor = "var(--white)";
+      color = "var(--white)";
     } else if (theme === "dark" && mode === "outlined") {
-      backgroundColor = "#000000";
-      borderColor = "#FFFFFF";
-      color = "#FFFFFF";
+      backgroundColor = "var(--black)";
+      borderColor = "var(--white)";
+      color = "var(--white)";
     } else if (theme === "dark" && mode === "basic") {
-      backgroundColor = "#FFFFFF";
-      borderColor = "#FFFFFF";
-      color = "#000000";
+      backgroundColor = "var(--white)";
+      borderColor = "var(--white)";
+      color = "var(--black)";
     } else {
-      backgroundColor = "#FFFFFF";
-      borderColor = "#000000";
-      color = "#000000";
+      backgroundColor = "var(--white)";
+      borderColor = "var(--black)";
+      color = "var(--black)";
     }
     return css`
       background-color: ${backgroundColor};
@@ -146,11 +146,11 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       .mat-menu-item {
         &:hover {
           color: black;
-          background: #eeeeee;
+          background: var(--darkWhite);
         }
         &:active {
           color: white;
-          background: #666666;
+          background: var(--darkGrey);
         }
       }
     `;
@@ -158,7 +158,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
 
   getStylesForLightTheme() {
     return css`
-      background-color: #000000;
+      background-color: var(--black);
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
       border-top-left-radius: 0px;
@@ -168,25 +168,25 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       ${this.getBackgroundColorBaseOnModeAndTheme("light", this.mode)}
       .mat-menu-item {
         &:hover {
-          background: #eeeeee;
-          color: #000000;
+          background: var(--darkWhite);
+          color: var(--black);
         }
         &:active {
-          background: #d9d9d9;
+          background: var(--lightGrey);
         }
       }
       &.basic {
-        background-color: #000000;
+        background-color: var(--black);
         .mat-menu-content {
           .mat-menu-item {
-            color: #ffffff;
+            color: var(--white);
             &:hover {
-              background: #eeeeee;
-              color: #000000;
+              background: var(--darkWhite);
+              color: var(--black);
             }
             &:active {
-              background: #d9d9d9;
-              color: #000000;
+              background: var(--lightGrey);
+              color: var(--black);
             }
           }
         }

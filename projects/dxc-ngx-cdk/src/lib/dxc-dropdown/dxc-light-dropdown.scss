@@ -1,60 +1,60 @@
 :host.dxc-light {
   .menu-buttom-label-wrapper {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    border: 2px solid #000000;
+    background: var(--white) 0% 0% no-repeat padding-box;
+    border: 2px solid var(--black);
     &.menu-opened {
-      background: #eeeeee;
+      background: var(--darkWhite);
     }
   }
   .menu-buttom-label {
-    color: #000000;
+    color: var(--black);
   }
   .arrow-down {
-    border-top: 5px solid black;
+    border-top: 5px solid var(--black);
   }
   .arrow-up {
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid var(--black);
   }
   button.mat-button.basic {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--black);
+    color: var(--white);
     border: none;
     .menu-buttom-label {
-      color: #ffffff;
+      color: var(--white);
     }
     .arrow-down {
-      border-top: 5px solid #ffffff;
+      border-top: 5px solid var(--white);
     }
     .arrow-up {
-      border-bottom: 5px solid #ffffff;
+      border-bottom: 5px solid var(--white);
     }
   }
 }
 ::ng-deep .dxc-dropdown-menu {
   .mat-menu-content {
-    border: 2px solid #000000;
+    border: 2px solid var(--black);
   }
   .mat-menu-item {
     &:hover {
-      background: #eeeeee;
+      background: var(--darkWhite);
     }
     &:active {
-      background: #d9d9d9;
+      background: var(--lightGrey);
     }
   }
   &.basic {
-    background-color: #000000;
+    background-color: var(--black);
     .mat-menu-content {
       border: none;
       .mat-menu-item {
-        color: #ffffff;
+        color: var(--white);
         &:hover {
-          background: #eeeeee;
-          color: #000000;
+          background: var(--darkWhite);
+          color: var(--black);
         }
         &:active {
-          background: #d9d9d9;
-          color: #000000;
+          background: var(--lightGrey);
+          color: var(--black);
         }
       }
     }

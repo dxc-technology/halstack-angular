@@ -82,10 +82,8 @@ class TestAppComponent {
   }
 
   onChange(event: any) {
-    console.log(event);
   }
 
   onIndeterminateChange(event: any) {
-    console.log(event);
   }
 }

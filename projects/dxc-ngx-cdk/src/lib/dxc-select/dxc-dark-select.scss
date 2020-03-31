@@ -1,34 +1,34 @@
 :host.dxc-dark {
   ::ng-deep {
     .mat-form-field-label:not(.mat-form-field-empty) {
-      color: white !important;
+      color: var(--white) !important;
     }
     .mat-form-field-label.mat-form-field-empty {
-      color: #d9d9d9 !important;
+      color: var(--lightGrey) !important;
     }
   }
 
   .mat-form-field ::ng-deep {
     .mat-select-arrow,
     .mat-select-value {
-      color: white;
+      color: var(--white);
     }
     .mat-form-field-ripple {
-      background-color: rgb(255, 255, 255);
+      background-color: var(--white);
     }
     .mat-form-field-underline {
-      background-color: white;
+      background-color: var(--white);
     }
   }
 
   .mat-form-field-disabled {
     &::ng-deep {
       .mat-form-field-underline {
-        background: #666666;
+        background-color: var(--darkGrey);
       }
       .mat-form-field-label,
       .mat-select-arrow {
-        color: #666666;
+        color: var(--darkGrey);
       }
     }
   }

@@ -1,46 +1,47 @@
-:host.dxc-light {
+:host.light {
   .filled-tabs {
     ::ng-deep {
       div.mat-ripple-element {
-        background-color: black;
+        background-color: var(--black);
         opacity: 1;
       }
 
       div.mat-tab-label-active .mat-ripple-element {
-        background-color: white;
+        background-color: var(--white);
         opacity: 0.3;
       }
 
       .mat-tab-label {
         opacity: 1;
-        background: #d9d9d9 0% 0% no-repeat padding-box;
+        background: var(--lightGrey) 0% 0% no-repeat padding-box;
         .dxc-tab-label span {
-          color: #666666;
+          color: var(--darkGrey);
           opacity: 1;
         }
         &:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
-          background: #666666 0% 0% no-repeat padding-box;
+          background: var(--darkGrey) 0% 0% no-repeat padding-box;
           .dxc-tab-label span {
-            color: #D9D9D9;
+            color: var(--lightGrey);
           }
         }
         &.mat-tab-label-active {
-          background-color: #000000;
+          background-color:var(--black);
           .dxc-tab-label span {
-            color: #FFFFFF;
+            color:var(--white);
             opacity: 1;
           }
         }
       }
       .mat-ink-bar {
-        background-color: #FFED00;
+        background-color: var(--yellow);
       }
     }
   }
   .underlined-tabs {
     ::ng-deep {
+      background-color: var(--white);
       .mat-tab-label:hover:not(.mat-tab-disabled):not(.mat-tab-label-active) {
-        color: #666666 !important;
+        color: var(--darkGrey) !important;
         opacity: 1;
       }
     }

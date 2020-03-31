@@ -133,8 +133,9 @@ pipeline {
             stage('Build dxc-ngx-cdk library') {
                 steps {
                     sh '''
-                        ng build dxc-ngx-cdk
-                        cp -R ./projects/dxc-ngx-cdk/src/lib/styles ./dist/dxc-ngx-cdk/styles
+                        npm run build-lib
+                        npm run post-build-lib
+                        npm run package
                     '''
                 }
             }        

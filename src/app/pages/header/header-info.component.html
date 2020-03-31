@@ -6,13 +6,21 @@
 <div>
   <h4>Dark theme</h4>
   <div style="background-color: black" className="test-case" id="dark-theme">
-    <dxc-header theme="dark" logoSrc="./assets/images/dxcassure_blk.png"></dxc-header>
+    <dxc-header theme="dark" logoSrc="./assets/images/dxcassure_blk.png">
+      <div id="responsive">
+        <a>test</a>
+      </div>
+
+      <div id="unresponsive" *ngFor="let component of components; index as i" class="nav-item">
+        <a [routerLink]="component.route">{{ component.name }}</a>
+      </div>    
+    </dxc-header>
   </div>
 </div>
 
-<div className="test-case" id="underlined-header">
+<div className="test-case" id="underlined-header" id="underlined">
   <h4>Underlined Header</h4>
-  <dxc-header [underline]="underlined" logoSrc="./assets/images/invision.png">
+  <dxc-header [underline]="underlined" >
   </dxc-header>
 </div>
 

@@ -40,46 +40,49 @@ export class DxcTableComponent {
 
   getDynamicStyle(inputs) {
     return css`
-      border-collapse: collapse;
+      div {
+        ${this.utils.getMargins(inputs.margin)}
+      }  
 
-      font-family: "Open Sans", sans-serif;
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      
+        & tr {
+          border-bottom: 1px solid var(--lightGrey);
+        }
 
-      ${this.utils.getMargins(inputs.margin)}
+        & td {
+          color: var(--darkGrey);
+          min-height: 48px;
+        }
 
-      tr {
-        border-bottom: 1px solid var(--lightGrey);
-      }
+        & th {
+          padding: 16px 20px 16px 40px;
+          min-height: 60px;
+        }
 
-      td {
-        color: var(--darkGrey);
-        min-height: 48px;
-      }
+        & td {
+          padding: 14px 20px 12px 40px;
+        }
 
-      th {
-        padding: 16px 20px 16px 40px;
-        min-height: 60px;
-      }
+        & th {
+          text-align: left;
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: 100;
+          background-color: var(--black);
+          color: var(--white);
+        }
 
-      td {
-        padding: 14px 20px 12px 40px;
-      }
+        & th:first-child {
+          border-radius: 4px 0px 0px 0px;
+        }
 
-      th {
-        text-align: left;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 100;
-        background-color: var(--black);
-        color: var(--white);
-      }
+        & th:nth-child(3) {
+          border-radius: 0px 4px 0px 0px;
+        }
 
-      th:first-child {
-        width: 20%;
-        border-radius: 4px 0px 0px 0px;
-      }
-
-      th:nth-child(3) {
-        border-radius: 0px 4px 0px 0px;
       }
     `;
   }

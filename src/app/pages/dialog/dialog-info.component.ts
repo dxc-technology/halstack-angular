@@ -7,13 +7,21 @@ import { Component } from '@angular/core';
 })
 export class DialogInfoComponent {
 
-  visible = false;
+  visible1 = false;
+  visible2 = false;
+  visible3 = false;
 
   padding={top:"xxlarge", right: "xxlarge", bottom: "xxlarge", left: "xxlarge"}
 
   constructor()  {}
 
-  openDialog() {
-    this.visible = !this.visible;
+  openDialog1() {
+    this.visible1 = !this.visible1;
+  }
+  openDialog2() {
+    this.visible2 = !this.visible2;
+  }
+  openDialog3() {
+    this.visible3 = !this.visible3;
   }
 }

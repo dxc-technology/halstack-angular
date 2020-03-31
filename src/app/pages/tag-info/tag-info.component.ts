@@ -16,8 +16,6 @@ export class TagInfoComponent implements OnInit {
   }
 
   onClick(){
-    
-    console.log('click Action');
-  }
+      }
 
 }

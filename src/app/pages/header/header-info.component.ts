@@ -1,4 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
+import { AccordionComponent } from '../accordion/accordion.component';
+import { AlertComponent } from '../alert/alert.component';
+import { BoxComponent } from '../box/box.component';
+import { ButtonInfoComponent } from '../button/button-info.component';
+import { CardInfoComponent } from '../card/card-info.component';
+import { CheckboxInfoComponent } from '../checkbox/checkbox-info.component';
+import { DateInfoComponent } from '../date/date-info.component';
+import { DialogInfoComponent } from '../dialog/dialog-info.component';
+import { DropdownInfoComponent } from '../dropdown/dropdown-info.component';
+import { FooterInfoComponent } from '../footer/footer-info.component';
+import { TextInputInfoComponent } from '../inputText/text-input-info.component';
+import { ProgressInfoComponent } from '../progressBar/progressBar-info.component';
+import { RadioInfoComponent } from '../radio/radio-info.component';
+import { SelectInfoComponent } from '../select/select-info.component';
+import { SliderInfoComponent } from '../slider/slider-info.component';
+import { SpinnerInfoComponent } from '../spinner/spinner.component';
+import { SwitchInfoComponent } from '../switch/switch-info.component';
+import { TableInfoComponent } from '../table/table-info.component';
+import { TabsInfoComponent } from '../tabs/tabs-info.component';
+import { TabbedSectionComponent } from '../tabbed-section/tabbed-section.component';
+import { TagInfoComponent } from '../tag-info/tag-info.component';
+import { ToggleInfoComponent } from '../toggle/toggle-info.component';
+import { DxcUploadComponent } from '../../../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
+import { AllComponent } from '../all/all.component';
 
 @Component({
   selector: 'header-info',
@@ -21,6 +45,134 @@ export class HeaderInfoComponent {
       label: "Linkedin"
     }
   ];
+   components = [
+    {
+        name: 'Accordion',
+        route: 'accordion',
+        component: AccordionComponent
+    },
+    {
+        name: 'Alert',
+        route: 'alert',
+        component: AlertComponent
+    },
+    {
+        name: 'Box',
+        route: 'box',
+        component: BoxComponent
+    }, 
+    {
+        name: 'Button',
+        route: 'button',
+        component: ButtonInfoComponent
+    },
+    {
+        name: 'Card',
+        route: 'card',
+        component:  CardInfoComponent
+    },
+    {
+        name: 'Checkbox',
+        route: 'checkbox',
+        component:  CheckboxInfoComponent
+    },
+    {
+        name: 'Date',
+        route: 'date',
+        component: DateInfoComponent
+    } ,
+    {
+        name: 'Dialog',
+        route: 'dialog',
+        component:  DialogInfoComponent
+    },
+    {
+        name: 'Dropdown',
+        route: 'dropdown',
+        component:  DropdownInfoComponent
+    },
+    {
+        name: 'Footer',
+        route: 'footer',
+        component:  FooterInfoComponent
+    },
+    {
+        name: 'Header',
+        route: 'header',
+        component:  HeaderInfoComponent
+    },
+    {
+        name: 'Input Text',
+        route: 'input_text',
+        component:  TextInputInfoComponent
+    },
+    {
+        name: 'Progress Bar',
+        route: 'progress',
+        component:  ProgressInfoComponent
+    },
+    {
+        name: 'Radio',
+        route: 'radio',
+        component: RadioInfoComponent
+    },
+    {
+        name: 'Select',
+        route: 'select',
+        component: SelectInfoComponent
+    },
+    {
+        name: 'Slider',
+        route: 'slider',
+        component: SliderInfoComponent
+    },
+    {
+        name: 'Spinner',
+        route: 'spinner',
+        component: SpinnerInfoComponent
+    },
+    {
+        name: 'Switch',
+        route: 'switch',
+        component: SwitchInfoComponent
+    },
+    {
+        name: 'Table',
+        route: 'table',
+        component: TableInfoComponent
+    },
+    {
+        name: 'Tabs',
+        route: 'tabs',
+        component: TabsInfoComponent
+    },
+    {
+        name: 'TabbedSection',
+        route: 'tabbedSection',
+        component: TabbedSectionComponent
+    },
+    {
+        name: 'Tags',
+        route: 'tags',
+        component: TagInfoComponent
+    },
+    {
+        name: 'Toggle',
+        route: 'toggle',
+        component: ToggleInfoComponent
+    },
+    {
+        name: 'Upload',
+        route: 'upload',
+        component: DxcUploadComponent
+    },
+    {
+        name: 'All',
+        route: 'all',
+        component: AllComponent
+    }
+   
+];
 
   selected = true;
 
@@ -52,6 +204,23 @@ export class HeaderInfoComponent {
     right: "xxlarge"
   };
 
-  constructor()  {}
+  constructor()  {
+
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    
+
+  }
+
   underlined = true;
+
 }

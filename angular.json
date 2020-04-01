@@ -63,7 +63,10 @@
             "production": {
               "browserTarget": "dxc-angular-cdk:build:production"
             }
-          }
+          },
+          "assets": [ 
+            "projects/dxc-ngx-cdk/src/assets"
+            ]
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

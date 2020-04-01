@@ -2,9 +2,11 @@
   ::ng-deep {
     .filled-tabs {
       ::ng-deep {
-        div.mat-ripple-element {
-          background-color: var(--white);
-          opacity: 0.3;
+        .mat-tab-label-container {
+          div.mat-ripple-element {
+            background-color: var(--white);
+            opacity: 0.3;
+          }
         }
 
         div.mat-tab-label-active .mat-ripple-element {

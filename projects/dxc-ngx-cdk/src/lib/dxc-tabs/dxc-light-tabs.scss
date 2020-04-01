@@ -1,11 +1,12 @@
 :host.light {
   .filled-tabs {
     ::ng-deep {
-      div.mat-ripple-element {
-        background-color: var(--black);
-        opacity: 1;
+      .mat-tab-label-container {
+        div.mat-ripple-element {
+          background-color: var(--black);
+          opacity: 1;
+        }
       }
-
       div.mat-tab-label-active .mat-ripple-element {
         background-color: var(--white);
         opacity: 0.3;
@@ -25,9 +26,9 @@
           }
         }
         &.mat-tab-label-active {
-          background-color:var(--black);
+          background-color: var(--black);
           .dxc-tab-label span {
-            color:var(--white);
+            color: var(--white);
             opacity: 1;
           }
         }

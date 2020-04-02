@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-  DxcButtonModule
+  DxcButtonModule, DxcPaginatorModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -57,6 +57,7 @@ import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.comp
 import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabbed-section/dxc-tabbed-section.module';
 import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
+import { PaginatorComponent } from './pages/paginator/paginator.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,8 @@ import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
     TagInfoComponent,
     ProgressInfoComponent,
     TabbedSectionComponent,
-    TabsInfoComponent
+    TabsInfoComponent,
+    PaginatorComponent
   ],
   imports: [
     AppRoutingModule,
@@ -114,7 +116,8 @@ import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
     BrowserModule,
     DxcSliderModule,
     DxcTabbedSectionModule,
-    HttpClientModule
+    DxcPaginatorModule,
+    HttpClientModule,
   ],
   providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]

@@ -23,6 +23,7 @@ import { AllComponent } from './pages/all/all.component';
 import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
+import { PaginatorComponent } from './pages/paginator/paginator.component';
 
 
 export const Components = [
@@ -85,6 +86,11 @@ export const Components = [
         name: 'Input Text',
         route: 'input_text',
         component:  TextInputInfoComponent
+    },
+    {
+        name: 'Paginator',
+        route: 'paginator',
+        component:  PaginatorComponent
     },
     {
         name: 'Progress Bar',

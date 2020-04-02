@@ -79,3 +79,6 @@ export * from './lib/dxc-upload/dxc-upload.module';
 
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';
+
+export * from './lib/dxc-paginator/dxc-paginator.component';
+export * from './lib/dxc-paginator/dxc-paginator.module';

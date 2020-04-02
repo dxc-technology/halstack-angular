@@ -1,0 +1,42 @@
+<div class="paginator-container">
+    <div class="labels-container">
+        <span class="total-items-container">
+            {{minItemsPerPage}} to {{maxItemsPerPage}} of {{totalItems}}
+        </span>
+        <dxc-button *ngIf="showFirst"
+                mode="flat"
+                (onClick)="onFirstHandler($event)"
+                size="small"
+                [margin]="buttonMargin"
+                [iconSrc]="firstImgSrc"
+                [disabled]="currentPageInternal === 1"
+        ></dxc-button>
+        <dxc-button *ngIf="showPrev"
+                mode="flat"
+                (onClick)="onPrevHandler($event)"
+                size="small"
+                [margin]="buttonMargin"
+                [iconSrc]="prevImgSrc"
+                [disabled]="currentPageInternal === 1"
+        ></dxc-button>
+        <span>
+                 Page: {{ currentPageInternal }} of {{ totalPages }}
+        </span>
+        <dxc-button *ngIf="showNext"
+                mode="flat"
+                (onClick)="onNextHandler($event)"
+                size="small"
+                [margin]="buttonMargin"
+                [iconSrc]="nextImgSrc"
+                [disabled]="currentPageInternal === totalPages"
+        ></dxc-button>
+        <dxc-button *ngIf="showLast"
+                mode="flat"
+                (onClick)="onLastHandler($event)"
+                size="small"
+                [margin]="buttonMargin"
+                [iconSrc]="lastImgSrc"
+                [disabled]="currentPageInternal === totalPages"
+        ></dxc-button>
+    </div>
+</div>

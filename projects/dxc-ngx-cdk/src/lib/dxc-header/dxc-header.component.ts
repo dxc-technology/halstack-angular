@@ -60,8 +60,6 @@ export class DxcHeaderComponent implements OnChanges {
 
   updateCss() {
 
-
-
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,

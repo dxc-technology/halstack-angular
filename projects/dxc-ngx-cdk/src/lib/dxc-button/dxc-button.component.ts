@@ -23,7 +23,7 @@ export class DxcButtonComponent {
   @Input() mode: string;
   @Input() theme: string;
   @Input() disabled: boolean;
-  @Input() disableRipple: boolean;
+  @Input() disableRipple: boolean = false;
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;

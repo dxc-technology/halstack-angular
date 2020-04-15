@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { MatTabsModule, MatIconModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +12,6 @@ import { DxcTabsModule } from '../dxc-tabs/dxc-tabs.module';
     DxcTabbedSectionComponent
     ],
   imports: [
-    BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,

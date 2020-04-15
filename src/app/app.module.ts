@@ -6,7 +6,6 @@ import {
   DxcButtonModule, DxcPaginatorModule
 } from 'projects/dxc-ngx-cdk/src/public-api';
 
-import { BrowserModule } from '@angular/platform-browser';
 import { ButtonInfoComponent } from './pages/button/button-info.component';
 import { SliderInfoComponent } from './pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component';
@@ -60,6 +59,7 @@ import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-t
 import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +92,7 @@ import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     DxcAccordionModule,
     DXCAlertModule,
@@ -117,11 +117,10 @@ import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
     DxcDateModule,
     DxcTagModule,
     DxcRadioModule,
-    BrowserModule,
     DxcSliderModule,
     DxcTabbedSectionModule,
     DxcPaginatorModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]

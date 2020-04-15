@@ -91,15 +91,7 @@ pipeline {
                 steps {
                     script {
                         withCredentials([usernamePassword(credentialsId:"diaas-rw", passwordVariable:"ARTIF_PASSWORD", usernameVariable:"ARTIF_USER")]) {
-                            env.PASSWORD = input message: 'Enter password to continue', ok: 'Continue',
-                                parameters: [string(defaultValue: '', description: 'Password required', name: 'password')]
-                            if (env.PASSWORD == ARTIF_PASSWORD) {
-                                env.RELEASE_VALID = 'valid';
-                            } else {
-                                env.RELEASE_VALID = 'invalid';
-                                env.RELEASE_TYPE = 'no-release'
-                                sh "echo 'Invalid password. The version will not be released.'"
-                            }
+                             env.RELEASE_VALID = 'valid';
                         }
                     }
                 }

@@ -1,19 +1,20 @@
 <div className="test-case" id="label-before">
   <h4>Label before</h4>
-  <dxc-checkbox [(checked)]="checked" label="Checkbox " (checkedChange)="onChange()" ></dxc-checkbox>
+  <dxc-checkbox [checked]="checked" 
+  label="Checkbox " 
+  (onChange)="onChange($event)" ></dxc-checkbox>
 </div>
 
 <div className="test-case" id="label-after">
   <h4>Label after</h4>
   <dxc-checkbox
-    [(checked)]="checked"
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (checkedChange)="onUncontrolledChange()"
     labelPosition="after"
   ></dxc-checkbox>
 </div>
-<div className="test-case" id="light-theme">
-  <h4>Light theme</h4>
+<!-- <div className="test-case" id="light-theme"> -->
+  <!-- <h4>Light theme</h4>
   <dxc-checkbox
     [(checked)]="checked"
     label="Checkbox"
@@ -256,5 +257,5 @@
       labelPosition="after"
       margin="xxlarge"
     ></dxc-checkbox>
-  </div>
-</div>
+  </div> 
+</div> -->

@@ -24,6 +24,7 @@ import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 import { PaginatorComponent } from './pages/paginator/paginator.component';
+import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 
 
 export const Components = [
@@ -106,6 +107,11 @@ export const Components = [
         name: 'Select',
         route: 'select',
         component: SelectInfoComponent
+    },
+    {
+        name: 'Sidenav',
+        route: 'sidenav',
+        component: SidenavInfoComponent
     },
     {
         name: 'Slider',

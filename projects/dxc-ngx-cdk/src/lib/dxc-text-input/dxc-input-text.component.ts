@@ -136,7 +136,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   public onChanged($event: any): void {
     this.clicked = false;
     this.selectionStart = $event.target.selectionStart;
-    this.selectionEnd = $event.target.selectionStart;
+    this.selectionEnd = $event.target.selectionEnd;
     
     this.onChange.emit($event.target.value);
     if (this.value === undefined || this.value === null){

@@ -47,7 +47,7 @@ export class DxcRadioComponent implements OnInit {
     required: false,
     labelPosition: "after",
     margin: null,
-    size: "medium"
+    size: "fitContent"
   });
 
   sizes = {

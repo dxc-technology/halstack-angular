@@ -105,13 +105,13 @@ export class DxcCheckboxComponent implements OnInit {
     }
   }
 
-  onValueChange(event: any) {
-    this.onChange.emit(event.checked);
+  onValueChange($event: any) {
+    this.onChange.emit($event.checked);
+    
     if (this.checked === undefined || this.checked === null){
-      this.renderedChecked = event.checked;
+      this.renderedChecked = $event.checked;
     }else{
-      event.source._checked= this.renderedChecked;
-      event.checked = this.renderedChecked;
+      $event.source.checked = this.renderedChecked;
     }
   }
 

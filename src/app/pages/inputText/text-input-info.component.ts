@@ -12,16 +12,16 @@ export class TextInputInfoComponent {
   constructor()  {}
 
   onBlur(value){
-    console.log('Blur event' + value);
+    console.log('Blur event ' + value);
   }
 
   onChange(value){
     this.inputValue  = value;
-    console.log('Change event' + value);
+    console.log('Change event ' + value);
   }
 
   onChangeUncontrolled(value){
-    console.log('Change uncontrolled event' + value);
+    console.log('Change uncontrolled event ' + value);
   }
 
   onPrefixClick() {

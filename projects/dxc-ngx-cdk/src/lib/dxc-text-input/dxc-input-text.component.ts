@@ -6,13 +6,15 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  ViewChild
 } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { ElementRef, OnInit, AfterViewChecked } from '@angular/core';
 
 @Component({
   selector: "dxc-input-text",
@@ -24,7 +26,7 @@ import { CssUtils } from "../utils";
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
-export class DxcTextInputComponent implements OnChanges {
+export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecked {
   @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
@@ -54,6 +56,13 @@ export class DxcTextInputComponent implements OnChanges {
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   renderedValue = '';
+
+  @ViewChild('dxcSingleInput', {static: false}) singleInput : ElementRef; 
+  @ViewChild('dxcMultiInput', {static: false}) multiInput : ElementRef; 
+
+  selectionStart : number;
+  selectionEnd : number;
+  clicked: boolean = false;
 
   sizes = {
     small: "42px",
@@ -95,6 +104,10 @@ export class DxcTextInputComponent implements OnChanges {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
+  ngAfterViewChecked(): void {
+    this.multiline ? this.setCursorSelection(this.multiInput) : this.setCursorSelection(this.singleInput);
+  }
+
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.theme === "dark") {
       this.isLight = false;
@@ -104,9 +117,9 @@ export class DxcTextInputComponent implements OnChanges {
       this.isDark = false;
     }
     this.isDisabled = this.disabled;
-    // this.disabled ? this.formControl.disable() : this.formControl.enable();
-    //this.value = this.value || "";
+    
     this.renderedValue = this.value || '';
+
     this.matcher.setInvalid(this.invalid);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -116,16 +129,30 @@ export class DxcTextInputComponent implements OnChanges {
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+
+    this.multiline ? this.setCursorSelection(this.multiInput) : this.setCursorSelection(this.singleInput);
   }
 
   public onChanged($event: any): void {
+    this.clicked = false;
+    this.selectionStart = $event.target.selectionStart;
+    this.selectionEnd = $event.target.selectionStart;
+    
     this.onChange.emit($event.target.value);
     if (this.value === undefined || this.value === null){
       this.renderedValue = $event.target.value;
     }else{
       $event.target.value = this.renderedValue;
     }
-    
+  }
+
+  /**
+   * internal click event handler
+   * 
+   * @param $event 
+   */
+  public onClickHandle($event): void {
+    this.clicked = true;
   }
 
   /**
@@ -142,6 +169,13 @@ export class DxcTextInputComponent implements OnChanges {
 
   public onClickPrefixHandler($event): void {
       this.onClickPrefix.emit();
+  }
+
+  private setCursorSelection(input: ElementRef) {
+    if (!this.clicked && input) {
+      input.nativeElement.selectionStart = this.selectionStart;
+      input.nativeElement.selectionEnd = this.selectionEnd;
+    }
   }
 
   calculateWidth(inputs) {
@@ -254,4 +288,5 @@ class InvalidStateMatcher implements ErrorStateMatcher {
   public setInvalid(invalid: boolean): void {
     this.invalid = invalid;
   }
+
 }

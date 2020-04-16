@@ -62,23 +62,19 @@ export class DxcPaginatorComponent implements OnInit {
   }
 
   public onFirstHandler($event: any): void {
-    this.currentPage = 1;
-    this.firstFunction.emit(this.currentPage);
+    this.firstFunction.emit(1);
   }
 
   public onNextHandler($event: any): void {
-    this.currentPage=+this.currentPage + 1;
-    this.nextFunction.emit(this.currentPage);
+    this.nextFunction.emit(+this.currentPage + 1);
   }
 
   public onPrevHandler($event: any): void {
-    this.currentPage=+this.currentPage - 1;
-    this.prevFunction.emit(this.currentPage);
+    this.prevFunction.emit(+this.currentPage - 1);
   }
 
   public onLastHandler($event: any): void {
-    this.currentPage=this.totalPages;
-    this.lastFunction.emit(this.currentPage);
+    this.lastFunction.emit(this.totalPages);
   }
 
   private setButtonVisibility(paginationActions : Array<string>) {

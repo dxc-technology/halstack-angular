@@ -52,7 +52,7 @@ export class DxcCheckboxComponent implements OnInit {
     id: null,
     labelPosition: "before",
     margin: null,
-    size: "medium"
+    size: "fitContent"
   });
 
   sizes = {

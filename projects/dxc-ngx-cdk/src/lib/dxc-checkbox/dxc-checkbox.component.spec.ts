@@ -1,5 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcCheckboxComponent } from "./dxc-checkbox.component";
+import { screen } from '@testing-library/dom'
 import { MatCheckboxModule } from "@angular/material";
 
 describe("DxcCheckbox tests", () => {
@@ -13,9 +14,9 @@ describe("DxcCheckbox tests", () => {
   });
 
   test("uncontrolled dxc-checkbox", async () => {
-    const onClickFunction = jest.fn(x => {
+    const onClickFunction = jest.fn(event => {
       expect(input.checked).toBeTruthy();
-      expect(x).toBeTruthy();
+      expect(event).toBeTruthy();
     });
     const dxcCheckbox = await render(DxcCheckboxComponent, {
       componentProperties: {
@@ -27,6 +28,7 @@ describe("DxcCheckbox tests", () => {
     expect(dxcCheckbox);
 
     const input = <HTMLInputElement>dxcCheckbox.getByRole("checkbox");
-    fireEvent.click(input);
+    const dxcInput = screen.getByTestId("dxcCheckbox");
+    fireEvent.click(dxcInput);
   });
 });

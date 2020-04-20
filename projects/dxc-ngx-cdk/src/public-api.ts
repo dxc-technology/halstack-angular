@@ -82,3 +82,6 @@ export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';
 
 export * from './lib/dxc-paginator/dxc-paginator.component';
 export * from './lib/dxc-paginator/dxc-paginator.module';
+
+export * from './lib/dxc-link/dxc-link.component';
+export * from './lib/dxc-link/dxc-link.module';

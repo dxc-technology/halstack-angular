@@ -38,6 +38,7 @@ import { DxcTabsModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabs/dxc-t
 import { DXCUploadModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.module';
 import { DxcCheckboxModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-checkbox/dxc-checkbox.module';
 import { DXCSelectModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-select/dxc-select.module';
+import { DxcSideNavModule } from 'projects/dxc-ngx-cdk/src/lib/dxc-sidenav/dxc-sidenav.module';
 import { DxcDateModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-date/dxc-date.module';
 import { DxcRadioModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-radio/dxc-radio.module';
 import { DxcTableModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-table/dxc-table.module';
@@ -58,6 +59,9 @@ import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.co
 import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-tabbed-section/dxc-tabbed-section.module';
 import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 import { PaginatorComponent } from './pages/paginator/paginator.component';
+import { LinkInfoComponent } from './pages/link/link-info.component';
+import { DxcLinkModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-link/dxc-link.module';
+import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +81,7 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
     FooterInfoComponent,
     TextInputInfoComponent,
     SelectInfoComponent,
+    SidenavInfoComponent,
     SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,
@@ -85,7 +90,8 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
     ProgressInfoComponent,
     TabbedSectionComponent,
     TabsInfoComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LinkInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -104,6 +110,7 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
     DXCInputTextModule,
     DxcProgressbarModule,
     DXCSelectModule,
+    DxcSideNavModule,
     DxcSpinnerModule,
     DxcSwitchModule,
     DXCToggleModule,
@@ -118,6 +125,7 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
     DxcTabbedSectionModule,
     DxcPaginatorModule,
     HttpClientModule,
+    DxcLinkModule
   ],
   providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]

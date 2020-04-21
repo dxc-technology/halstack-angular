@@ -9,8 +9,13 @@ export class ToggleInfoComponent {
 
   selected = true;
 
-  onClick() {
-    this.selected = !this.selected;
+  onClick(value) {
+    this.selected = value;
+    console.log(value);
+  }
+
+  onUncontrolledClick(value) {
+    console.log('uncontrolled: ' + value);
   }
 
   constructor()  {}

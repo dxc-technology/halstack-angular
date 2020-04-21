@@ -1,9 +1,9 @@
 <mat-button-toggle
   [ngClass]="[mode === 'outlined' ? 'outlined' : 'basic']"
-  checked="{{selected}}"
+  [checked]="renderedSelected"
   (change)="onClickHandler($event)"
-  disabled="{{disabled}}"
-  disableRipple="{{disableRipple}}"
+  [disabled]="disabled"
+  [disableRipple]="disableRipple"
   theme
 >
   <span

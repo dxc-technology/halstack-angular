@@ -1,55 +1,25 @@
-import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { render, fireEvent } from '@testing-library/angular';
+import { DxcButtonComponent } from './dxc-button.component'
 
-import { DxcButtonComponent } from './dxc-button.component';
-import { DxcButtonModule } from './dxc-button.module';
+describe('DxcButton tests', () => {
+  test('should render dxc-button', async () => {
+    const { getByText } = await render(DxcButtonComponent, {
+      componentProperties: { label: "test-button" },
+    })
 
-describe('DxcButtonComponent', () => {
-  let component: DxcButtonComponent;
-  let fixture: ComponentFixture<TestAppComponent>;
-  let buttonDebugElement: any;
+    expect(getByText("test-button"))
+  })
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [DxcButtonModule],
-      declarations: [TestAppComponent]
-    }).compileComponents();
-  }));
+  test("Calls correct function on click", async () => {
+    const onClickFunction = jest.fn();
+    const { getByText } = await render(DxcButtonComponent, {
+      componentProperties: { label: "test-button", onClick: { emit: onClickFunction } as any },
+    })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TestAppComponent);
-    component = fixture.debugElement.componentInstance;
-    fixture.detectChanges();
+    const button = getByText("test-button");
+    fireEvent.click(button);
+    expect(onClickFunction).toHaveBeenCalled();
+    
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-    buttonDebugElement = fixture.debugElement.query(By.css('button'));
-    expect(
-      buttonDebugElement.nativeElement.classList.contains('mat-button')
-    ).toBe(true);
-    expect(buttonDebugElement.nativeElement.disabled).toBe(true);
-  });
-});
-
-/** Test component that contains an MatButton. */
-@Component({
-  selector: 'test-app',
-  template: `
-    <dxc-button [disableRipple]="rippleDisabled" [disabled]="isDisabled">
-      Button 1
-    </dxc-button>
-  `
 })
-class TestAppComponent {
-  isDisabled: boolean;
-  rippleDisabled: boolean;
-  buttonType: string;
-
-  constructor() {
-    this.isDisabled = true;
-    this.rippleDisabled = true;
-    this.buttonType = 'outlined';
-  }
-}

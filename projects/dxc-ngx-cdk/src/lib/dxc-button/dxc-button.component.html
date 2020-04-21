@@ -3,7 +3,6 @@
   *ngIf="mode !== 'raised' && mode !== 'outlined' && mode !== 'flat'"
   mat-button
   [disabled]="disabled"
-  [disableRipple]="disableRipple"
   (click)="onClickHandler($event)"
 >
   <img
@@ -24,7 +23,6 @@
   mat-raised-button
   [disabled]="disabled"
   (click)="onClickHandler($event)"
-  [disableRipple]="disableRipple"
 >
   <img
     src="{{ iconSrc }}"
@@ -44,7 +42,6 @@
   mat-stroked-button
   [disabled]="disabled"
   (click)="onClickHandler($event)"
-  [disableRipple]="disableRipple"
 >
   <img
     src="{{ iconSrc }}"
@@ -64,7 +61,6 @@
   *ngIf="mode === 'flat'"
   mat-flat-button
   [disabled]="disabled"
-  [disableRipple]="disableRipple"
 >
   <img
     src="{{ iconSrc }}"

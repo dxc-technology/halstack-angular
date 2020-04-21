@@ -1,5 +1,5 @@
 import { css } from "emotion";
-import { spaces } from "./variables.js";
+import { spaces } from "./variables";
 
 export class CssUtils {
   getMargins(margin) {

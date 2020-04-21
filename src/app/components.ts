@@ -24,6 +24,7 @@ import { CardInfoComponent } from './pages/card/card-info.component';
 import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 import { PaginatorComponent } from './pages/paginator/paginator.component';
+import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 
 
@@ -87,6 +88,11 @@ export const Components = [
         name: 'Input Text',
         route: 'input_text',
         component:  TextInputInfoComponent
+    },
+    {
+        name: 'Link',
+        route: 'link',
+        component:  LinkInfoComponent
     },
     {
         name: 'Paginator',

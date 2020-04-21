@@ -1,13 +1,13 @@
 <mat-slide-toggle
   theme
-  [checked]="checked"
+  [checked]="renderedChecked"
   [labelPosition]="labelPosition ? labelPosition : 'before'"
   [disableRipple]="disableRipple"
   [disabled]="disabled"
   [required]="required"
   [name]="name"
   [id]="id"
-  (change)="onChange($event)"
+  (change)="onChangeHandler($event)"
 >
   <span
     *ngIf="label"

@@ -15,17 +15,17 @@
     [required]="required"
     [disabled]="disabled"
     [multiple]="multiple"
-    [value]="value"
+    [value]="renderedValue"
   >
     <mat-select-trigger theme>
-      <ng-container *ngIf="value && onlyHasIcons">
+      <ng-container *ngIf="renderedValue && onlyHasIcons">
         <div *ngFor="let icon of iconsToShow">
           <img src="{{ icon }}" />
         </div>
       </ng-container>
 
       <div
-        *ngIf="value && !onlyHasIcons"
+        *ngIf="renderedValue && !onlyHasIcons"
         [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
       >
         <img *ngIf="iconsToShow[0] && !this.multiple && iconsToShow.length === 1" src="{{ iconsToShow[0] }}" />
@@ -43,5 +43,5 @@
       <span *ngIf="option.label">{{ option.label }}</span>
     </mat-option>
   </mat-select>
-  <input type="hidden" name="name" value="{{value}}" />
+  <input type="hidden" name="name" value="{{renderedValue}}" />
 </mat-form-field>

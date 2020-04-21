@@ -16,7 +16,7 @@ export class CheckboxInfoComponent {
   }
 
   onUncontrolledChange(value) {
-    console.debug(value);
+    console.debug("uncontrolled change: " + value);
   }
 
 }

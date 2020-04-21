@@ -7,17 +7,28 @@ import { Component } from '@angular/core';
 })
 export class TextInputInfoComponent {
 
-  inputValue = ""
+  inputValue = "";
+
   constructor()  {}
-  onChange(value) {
-    this.inputValue = value;
+
+  onBlur(value){
+    console.log('Blur event ' + value);
+  }
+
+  onChange(value){
+    this.inputValue  = value;
+    console.log('Change event ' + value);
+  }
+
+  onChangeUncontrolled(value){
+    console.log('Change uncontrolled event ' + value);
   }
 
   onPrefixClick() {
-    console.debug("prefix Clicked");
+    console.log('onPrefixClick event');
   }
 
   onSuffixClick() {
-    console.debug("suffix Clicked");
+    console.debug('onSuffixClick Clicked');
   }
 }

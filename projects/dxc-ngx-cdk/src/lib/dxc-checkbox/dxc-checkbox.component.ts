@@ -34,13 +34,15 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
+  
   @Output() onChange: EventEmitter<any>;
+  @Output() onClick: EventEmitter<any>;
 
   @HostBinding("class") className;
   @HostBinding("class.light") isLight: boolean = true;
   @HostBinding("class.dark") isDark: boolean = false;
 
-  renderedChecked;
+  renderedChecked : boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -74,6 +76,7 @@ export class DxcCheckboxComponent implements OnInit {
       this.isDark = false;
     }
     this.renderedChecked = this.checked;
+    
     this.labelPosition === "after" ? "after" : "before";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;

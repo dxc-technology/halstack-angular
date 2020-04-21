@@ -36,7 +36,6 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() size: any;
   
   @Output() onChange: EventEmitter<any>;
-  @Output() onClick: EventEmitter<any>;
 
   @HostBinding("class") className;
   @HostBinding("class.light") isLight: boolean = true;

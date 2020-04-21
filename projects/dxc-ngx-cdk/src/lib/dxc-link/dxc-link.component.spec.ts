@@ -1,25 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { render, fireEvent } from '@testing-library/angular';
 import { DxcLinkComponent } from './dxc-link.component';
 
-describe('DxcLinkComponent', () => {
-  let component: DxcLinkComponent;
-  let fixture: ComponentFixture<DxcLinkComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DxcLinkComponent ]
+describe('DxcLink tests', () => {
+  test('should render dxc-link', async () => {
+    const { getByText } = await render(DxcLinkComponent, {
+      componentProperties: { text: "test-link" },
     })
-    .compileComponents();
-  }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DxcLinkComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    expect(getByText("test-link"))
+  })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  test("Calls correct function on click", async () => {
+    const { getByText } = await render(DxcLinkComponent, {
+      componentProperties: { text: "test-link", href: "/testpage" },
+    })
+
+    const link = getByText("test-link");
+    expect(link.getAttribute('href')).toEqual('/testpage');
   });
 });

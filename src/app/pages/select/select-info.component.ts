@@ -137,10 +137,19 @@ export class SelectInfoComponent {
 
   inputValue = "1";
 
-  multipleSelected = [1, 2];
+  multipleSelected = '';
 
   onChange($event) {
+    this.inputValue= $event;
     console.log($event);
   }
 
+  onUncontrolledChange(value) {
+    console.debug("uncontrolled change: " + value);
+  }
+
+  onMultipleChange($event) {
+    this.multipleSelected = $event.filter(item => (item!='2'));
+    console.log($event);
+  }
 }

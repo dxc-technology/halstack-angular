@@ -41,7 +41,11 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public label: string;
   @Input() public margin: any;
   @Input() public size: string = "medium";
-  @Output() public valueChange: EventEmitter<any> = new EventEmitter<any>();
+  
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+
+  renderedValue : string | string[];
+
   public iconsToShow: string[] = []; //Auxiliar property used to get iconSRC for several values
   public labeltoShow: string[] = [] //The value is not the correct valur to display. Use label instead
 
@@ -65,10 +69,13 @@ export class DxcSelectComponent implements OnChanges {
   constructor(private utils: CssUtils) {}
 
   public ngOnInit(): void {
+
+    this.renderedValue = this.value || '';   
+
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
 
-    if(this.value) {
-      this.getIconAndLabelByValue(this.value);
+    if(this.renderedValue) {
+      this.getIconAndLabelByValue(this.renderedValue);
     }
   }
 
@@ -81,7 +88,9 @@ export class DxcSelectComponent implements OnChanges {
       this.isDark = false;
     }
     this.hasOptionsOnlyIcons();
-    this.getIconAndLabelByValue(this.value);
+    
+    this.renderedValue = this.value || '';
+    this.getIconAndLabelByValue(this.renderedValue);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -90,11 +99,15 @@ export class DxcSelectComponent implements OnChanges {
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
-
+  
   public valueChanged($event: any): void {
-    this.value = $event.value;
-    this.getIconAndLabelByValue(this.value);
-    this.valueChange.emit(this.value);
+    this.onChange.emit($event.value);
+    if (this.value === undefined || this.value === null){
+      this.renderedValue = $event.value;
+      this.getIconAndLabelByValue(this.renderedValue);
+    }else{
+      $event.value = this.renderedValue;
+    }
   }
 
   public hasOptionsOnlyIcons() {

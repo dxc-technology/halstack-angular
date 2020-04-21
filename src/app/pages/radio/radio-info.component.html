@@ -1,10 +1,18 @@
+<div className="test-case" id="uncontrolled">
+  <h4>Uncontrolled Radio</h4>
+  <dxc-radio
+    label="radio"
+    (onChange)="onUncontrolledChange($event)"
+  ></dxc-radio>
+</div>
+
 <div className="test-case" id="label-before">
   <h4>Label before</h4>
   <dxc-radio
     label="Radio"
     labelPosition="before"
     [checked]="checked"
-    (onChange)="changeChecked($event)"
+    (onChange)="onChange($event)"
   ></dxc-radio>
 </div>
 
@@ -23,19 +31,19 @@
       [checked]="checked"
       theme="dark"
       label="Radio"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
     ></dxc-radio>
   </div>
 
 
 <div className="test-case" id="color-checked">
-  <h4>Color checked checkbox</h4>
-  <dxc-radio label="Radio" checked="{{true}}" (checkedChange)="onChange()" ></dxc-radio>
+  <h4>Color checked radio</h4>
+  <dxc-radio label="Radio" checked="{{true}}" (onChange)="onChange()" ></dxc-radio>
 </div>
 
 <div className="test-case" id="color-unchecked">
-  <h4>Color unchecked checkbox</h4>
-  <dxc-radio label="Radio" [checked]="checked" (checkedChange)="onChange()" ></dxc-radio>
+  <h4>Color unchecked radio</h4>
+  <dxc-radio label="Radio" [checked]="checked" (onChange)="onChange()" ></dxc-radio>
 </div>
 
 <div className="test-case" id="disabled-radio">
@@ -44,17 +52,17 @@
     label="Radio"
     disabled="{{true}}"
     [checked]="checked"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
   ></dxc-radio>
 </div>
 
 <div className="test-case" id="required-radio">
-  <h4>Required checkbox</h4>
+  <h4>Required radio</h4>
   <dxc-radio
     label="Radio"
     required="{{true}}"
     [checked]="checked"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
   ></dxc-radio>
 </div>
 
@@ -66,7 +74,7 @@
       label="Small si"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="small"
     ></dxc-radio>
   </div>
@@ -76,7 +84,7 @@
       label="Small siz"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="small"
     ></dxc-radio>
   </div>
@@ -86,7 +94,7 @@
       label="Medium size example la"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="medium"
     ></dxc-radio>
   </div>
@@ -96,7 +104,7 @@
       label="Medium size example lab"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="medium"
     ></dxc-radio>
   </div>
@@ -106,7 +114,7 @@
       label="Large size example label radio radio radio radio radi"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="large"
     ></dxc-radio>
   </div>
@@ -116,7 +124,7 @@
       label="Large size example label radio radio radio radio radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="large"
     ></dxc-radio>
   </div>
@@ -126,7 +134,7 @@
       label="FillParent size example label radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio rad"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="fillParent"
     ></dxc-radio>
   </div>
@@ -136,7 +144,7 @@
       label="FillParent size example label radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radi"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="fillParent"
     ></dxc-radio>
   </div>
@@ -146,7 +154,7 @@
       label="FitContent size example label radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio ra"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="fitContent"
     ></dxc-radio>
   </div>
@@ -156,7 +164,7 @@
       label="FitContent size example label radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio radio rad"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       size="fitContent"
     ></dxc-radio>
   </div>
@@ -170,7 +178,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="xxsmall"
     ></dxc-radio>
   </div>
@@ -180,7 +188,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="xxsmall"
     ></dxc-radio>
   </div>
@@ -190,7 +198,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="small"
     ></dxc-radio>
   </div>
@@ -200,7 +208,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="medium"
     ></dxc-radio>
   </div>
@@ -210,7 +218,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="large"
     ></dxc-radio>
   </div>
@@ -220,7 +228,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="xlarge"
     ></dxc-radio>
   </div>
@@ -230,7 +238,7 @@
       label="Radio"
       required="{{true}}"
       [checked]="checked"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       margin="xxlarge"
     ></dxc-radio>
   </div>

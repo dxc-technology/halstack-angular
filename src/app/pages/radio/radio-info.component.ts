@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
 })
 export class RadioInfoComponent {
 
-  checked = true;
+  checked = false;
   constructor() {}
 
-  changeChecked(value){
-    this.checked = false;
-    console.debug(this.checked);
+  onChange(value){
+    this.checked = value;
+    console.debug(value);
   }
 
-  onChange(){
-    console.log('changing uncontrolled radio');
+  onUncontrolledChange(value) {
+    console.debug("uncontrolled change: " + value);
   }
 
 }

@@ -6,7 +6,8 @@
   [required]="required"
   (change)="onValueChange($event)"
   [disableRipple]="disableRipple"
-  [checked]="checked"
+  [checked]="renderedChecked"
+  [value]="value"
 >
 <span *ngIf="label" [ngClass] = "labelPosition === 'before' ? 'label-before' : 'label-after'">
   <span *ngIf="required" class="mat-radio-required" >*</span>

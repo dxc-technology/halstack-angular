@@ -20,7 +20,7 @@ import { responsiveSizes } from "../variables";
   providers: [CssUtils]
 })
 export class DxcSidenavComponent implements OnInit {
-  @HostBinding("class") className;
+  className;
   @Input() arrowDistance: string;
   @Input() mode: string = "push";
   @Input() padding: any;
@@ -47,7 +47,17 @@ export class DxcSidenavComponent implements OnInit {
     this.updateCss();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    debugger;
+    this.className = `${this.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+      mode: this.mode,
+      innerWidth: this.innerWidth,
+      isResponsive: this.isResponsive,
+      isShown: this.displayArrow
+    })}`;
+    console.log('oninit');
+  }
 
   public arrowClicked() {
     this.isShown = !this.isShown;
@@ -56,17 +66,20 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    console.log('onchanges');
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    if (this.innerWidth) {
+    debugger;
+    if (this.sidenav) {
       this.updateCss();
     }
   }
 
   ngAfterViewInit() {
+    console.log('onafter');
     this.updateCss();
     this.firstLoad = false;
   }
@@ -95,7 +108,7 @@ export class DxcSidenavComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      .sidenavContainer {
+      .sidenavContainerClass {
         display: flex;
         position: relative;
         overflow: hidden;

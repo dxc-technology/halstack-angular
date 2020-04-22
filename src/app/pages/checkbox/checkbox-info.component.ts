@@ -9,8 +9,14 @@ export class CheckboxInfoComponent {
 
   constructor()  {}
   checked = false;
-  onChange() {
-    // console.debug(this.checked);
+  
+  onChange(value) {
+    this.checked = value;
+    console.debug(value);
+  }
+
+  onUncontrolledChange(value) {
+    console.debug("uncontrolled change: " + value);
   }
 
 }

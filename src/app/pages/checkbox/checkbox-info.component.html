@@ -1,23 +1,35 @@
+<div className="test-case" id="uncontrolled">
+  <h4>Uncontrolled Checkbox</h4>
+  <dxc-checkbox
+    label="Checkbox"
+    (onChange)="onUncontrolledChange($event)"
+  ></dxc-checkbox>
+</div>
+
 <div className="test-case" id="label-before">
   <h4>Label before</h4>
-  <dxc-checkbox [(checked)]="checked" label="Checkbox " (checkedChange)="onChange()" ></dxc-checkbox>
+  <dxc-checkbox 
+  [checked]="checked" 
+  label="Checkbox " 
+  (onChange)="onChange($event)" 
+  ></dxc-checkbox>
 </div>
 
 <div className="test-case" id="label-after">
   <h4>Label after</h4>
   <dxc-checkbox
-    [(checked)]="checked"
+    [checked]="checked" 
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (onChange)="onChange($event)"
     labelPosition="after"
   ></dxc-checkbox>
 </div>
-<div className="test-case" id="light-theme">
+<div className="test-case" id="light-theme"> 
   <h4>Light theme</h4>
   <dxc-checkbox
-    [(checked)]="checked"
+    [checked]="checked"
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
     labelPosition="after"
   ></dxc-checkbox>
 </div>
@@ -31,9 +43,9 @@
   >
     <dxc-checkbox
       theme="dark"
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
     ></dxc-checkbox>
   </div>
@@ -42,9 +54,9 @@
 <div className="test-case" id="color-checked">
   <h4>Color checked checkbox</h4>
   <dxc-checkbox
-    [checked]="true"
+    [checked]="checked"
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
     labelPosition="after"
   ></dxc-checkbox>
 </div>
@@ -52,9 +64,9 @@
 <div className="test-case" id="color-unchecked">
   <h4>Color unchecked checkbox</h4>
   <dxc-checkbox
-    [(checked)]="checked"
+    [checked]="checked"
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
     labelPosition="after"
   ></dxc-checkbox>
 </div>
@@ -62,9 +74,9 @@
 <div className="test-case" id="disabled-checkbox">
   <h4>Disabled checkbox</h4>
   <dxc-checkbox
-    [(checked)]="checked"
+    [checked]="checked"
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
     labelPosition="after"
     disabled={true}
   ></dxc-checkbox>
@@ -73,9 +85,9 @@
 <div className="test-case" id="required-checkbox">
   <h4>Required checkbox</h4>
   <dxc-checkbox
-    [(checked)]="checked"
+    [checked]="checked"
     label="Checkbox"
-    (checkedChange)="onChange()"
+    (onChange)="onChange()"
     labelPosition="after"
     [required]="true"
   ></dxc-checkbox>
@@ -86,9 +98,9 @@
   <div className="test-case" id="small-size-single-line">
     <h5>Small size - Label max size single line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Small siz"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="small"
     ></dxc-checkbox>
@@ -96,9 +108,9 @@
   <div className="test-case" id="small-size-multi-line">
     <h5>Small size - Label min size multi line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Small size"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="small"
     ></dxc-checkbox>
@@ -106,9 +118,9 @@
   <div className="test-case" id="medium-size-single-line">
     <h5>Medium size - Label max size single line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Medium size example lab"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="medium"
     ></dxc-checkbox>
@@ -116,9 +128,9 @@
   <div className="test-case" id="medium-size-multi-line">
     <h5>Medium size - Label min size multi line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Medium size example labe"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="medium"
     ></dxc-checkbox>
@@ -126,9 +138,9 @@
   <div className="test-case" id="large-size-single-line">
     <h5>Large size - Label max size single line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Large size example label checkbox checkbox checkbox ch"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="large"
     ></dxc-checkbox>
@@ -136,9 +148,9 @@
   <div className="test-case" id="large-size-multi-line">
     <h5>Large size - Label min size multi line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Large size example label checkbox checkbox checkbox che"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="large"
     ></dxc-checkbox>
@@ -146,9 +158,9 @@
   <div className="test-case" id="fillParent-size-single-line">
     <h5>FillParent size - Label max size single line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="FillParent size example label checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox check"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="fillParent"
     ></dxc-checkbox>
@@ -156,9 +168,9 @@
   <div className="test-case" id="fillParent-size-multi-line">
     <h5>FillParent size - Label min size multi line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="FillParent size example label checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkb"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="fillParent"
     ></dxc-checkbox>
@@ -166,9 +178,9 @@
   <div className="test-case" id="fitContent-size-single-line">
     <h5>FitContent size - Label max size single line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="FitContent size example label checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox chec"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="fitContent"
     ></dxc-checkbox>
@@ -176,9 +188,9 @@
   <div className="test-case" id="fitContent-size-multi-line">
     <h5>FitContent size - Label min size multi line</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="FitContent size example label checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox checkbox check"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       size="fitContent"
     ></dxc-checkbox>
@@ -190,9 +202,9 @@
   <div className="test-case" id="xxsmall-margin">
     <h5>xxsmall margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="xxsmall"
     ></dxc-checkbox>
@@ -200,9 +212,9 @@
   <div className="test-case" id="xsmall-margin">
     <h5>xsmall margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="xsmall"
     ></dxc-checkbox>
@@ -210,9 +222,9 @@
   <div className="test-case" id="small-margin">
     <h5>Small margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="small"
     ></dxc-checkbox>
@@ -220,9 +232,9 @@
   <div className="test-case" id="medium-margin">
     <h5>Medium margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="medium"
     ></dxc-checkbox>
@@ -230,9 +242,9 @@
   <div className="test-case" id="large-margin">
     <h5>Large margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="large"
     ></dxc-checkbox>
@@ -240,9 +252,9 @@
   <div className="test-case" id="xlarge-margin">
     <h5>xlarge margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="xlarge"
     ></dxc-checkbox>
@@ -250,11 +262,11 @@
   <div className="test-case" id="xxlarge-margin">
     <h5>xxlarge margin</h5>
     <dxc-checkbox
-      [(checked)]="checked"
+      [checked]="checked"
       label="Checkbox"
-      (checkedChange)="onChange()"
+      (onChange)="onChange()"
       labelPosition="after"
       margin="xxlarge"
     ></dxc-checkbox>
-  </div>
+  </div> 
 </div>

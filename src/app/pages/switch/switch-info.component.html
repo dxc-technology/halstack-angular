@@ -1,10 +1,18 @@
+<h4>Uncontrolled Component</h4>
+  <div className="test-case" id="uncontrolled">
+    <dxc-switch
+    labelPosition="before"
+    label="Switch"
+    (onChange)="onUncontrolledChange($event)"
+  ></dxc-switch>
+  </div>
 <div className="test-case" id="label-before">
   <h4>Label before</h4>
   <dxc-switch
-    [(checked)]="checked"
+    [checked]="checked"
     labelPosition="before"
     label="Switch"
-    (onChange)="onChange()"
+    (onChange)="onChange($event)"
   ></dxc-switch>
 </div>
 

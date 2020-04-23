@@ -35,7 +35,9 @@ export class DxcTagComponent implements OnInit {
 
   shadowDepth:string;
 
-  styledLink: string;
+  styledLink: string = css`
+    text-decoration: none;
+  `;
 
   defaultInputs = new BehaviorSubject<any>({
     size: "fitContent",
@@ -54,7 +56,6 @@ export class DxcTagComponent implements OnInit {
     this.tagContent = `${this.setTagContentDynamicStyle(this.defaultInputs.getValue())}`;
     this.iconContainer = `${this.setIconContainerDynamicStyle(this.defaultInputs.getValue())}`;
     this.shadowDepth = this.getShadowDepth();
-    this.styledLink = this.getStyledLink();
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -96,10 +97,6 @@ export class DxcTagComponent implements OnInit {
 
   getShadowDepth(): string{
     return ( this.isHovered && (this.isClickDefined || (this.linkHref !== null && this.linkHref !== undefined ))) ? '2' : '1';
-  }
-
-  getStyledLink(){
-    return css`text-decoration: none`;
   }
 
   setDxcTagDynamicStyle(input: any) {

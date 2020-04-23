@@ -34,11 +34,14 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
-  @Output() checkedChange: EventEmitter<any>;
+  
+  @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
   @HostBinding("class.light") isLight: boolean = true;
   @HostBinding("class.dark") isDark: boolean = false;
+
+  renderedChecked : boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -71,6 +74,8 @@ export class DxcCheckboxComponent implements OnInit {
       this.isLight = true;
       this.isDark = false;
     }
+    this.renderedChecked = this.checked;
+    
     this.labelPosition === "after" ? "after" : "before";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -81,10 +86,13 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   constructor(private utils: CssUtils) {
-    this.checkedChange = new EventEmitter();
+    this.onChange = new EventEmitter();
   }
 
   ngOnInit() {
+
+    this.renderedChecked = this.checked;   
+
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     if (this.required === "") {
       this.required = true;
@@ -99,8 +107,14 @@ export class DxcCheckboxComponent implements OnInit {
     }
   }
 
-  onValueChange(event: any) {
-    this.checkedChange.emit(event.checked);
+  onValueChange($event: any) {
+    this.onChange.emit($event.checked);
+    
+    if (this.checked === undefined || this.checked === null){
+      this.renderedChecked = $event.checked;
+    }else{
+      $event.source.checked = this.renderedChecked;
+    }
   }
 
   calculateWidth(margin, size) {

@@ -30,8 +30,6 @@ export class DxcWizardComponent {
   innerCurrentStep: number;
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     mode: "horizontal",
@@ -46,23 +44,9 @@ export class DxcWizardComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     this.innerCurrentStep = this.currentStep || 0;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;

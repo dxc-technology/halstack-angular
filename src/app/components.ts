@@ -15,7 +15,6 @@ import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
 import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
 import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
-import { DxcUploadComponent } from '../../projects/dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
 import { AccordionComponent } from './pages/accordion/accordion.component';
 import { AlertComponent } from './pages/alert/alert.component';
 import { BoxComponent } from './pages/box/box.component';
@@ -26,6 +25,7 @@ import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.co
 import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
+import { DxcUploadComponent } from '@diaas/dxc-ngx-cdk';
 
 
 export const Components = [

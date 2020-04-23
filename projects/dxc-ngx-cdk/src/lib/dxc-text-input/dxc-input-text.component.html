@@ -1,10 +1,10 @@
+
 <mat-form-field theme [class.disabled]="disabled">
   <span
     matPrefix
     (click)="onClickPrefixHandler($event)"
     class="prefixElement"
-    *ngIf="prefix && !prefixIconSrc"
-  >
+    *ngIf="prefix && !prefixIconSrc">
     {{ prefix }}</span
   >
   <img
@@ -18,19 +18,22 @@
   <input
     *ngIf="!multiline"
     matInput
-    [value]="value"
+    #dxcSingleInput
+    [value]="renderedValue"
+    (input)="onChanged($event)"
+    (blur)="onBlurHandle($event)"
+    (click)="onClickHandle($event)"
     [required]="required"
     [name]="name"
     [type]="'text'"
     [formControl]="formControl"
     [errorStateMatcher]="matcher"
-    (blur)="onBlurHandle($event)"
-    (input)="onChanged($event)"
-  />
+    />
   <textarea
     *ngIf="multiline"
     matInput
-    [value]="value"
+    #dxcMultiInput
+    [value]="renderedValue"
     [required]="required"
     [name]="name"
     [type]="'text'"
@@ -38,7 +41,7 @@
     [errorStateMatcher]="matcher"
     (blur)="onBlurHandle($event)"
     (input)="onChanged($event)"
-  ></textarea>
+    (click)="onClickHandle($event)"></textarea>
   <span
     matSuffix
     (click)="onClickSuffixHandler($event)"

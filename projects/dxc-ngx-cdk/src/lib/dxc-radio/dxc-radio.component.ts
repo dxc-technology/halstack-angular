@@ -9,7 +9,7 @@ import {
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
-import { CssUtils } from "../utils";
+import { CssUtils } from '../utils';
 
 @Component({
   selector: "dxc-radio",
@@ -29,13 +29,17 @@ export class DxcRadioComponent implements OnInit {
   @Input() name: string;
   @Input() required: boolean | string;
   @Input() labelPosition: string;
-  @Output() checkedChange: EventEmitter<any>;
   @Input() margin: string;
   @Input() size: string;
+  @Input() value: string;
+
+  @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
   @HostBinding("class.light") isLight: boolean = true;
   @HostBinding("class.dark") isDark: boolean = false;
+
+  renderedChecked: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     checked: false,
@@ -47,7 +51,8 @@ export class DxcRadioComponent implements OnInit {
     required: false,
     labelPosition: "after",
     margin: null,
-    size: "medium"
+    size: "fitContent",
+    value:null
   });
 
   sizes = {
@@ -66,6 +71,8 @@ export class DxcRadioComponent implements OnInit {
       this.isLight = true;
       this.isDark = false;
     }
+    this.renderedChecked = this.checked;
+    
     this.labelPosition === "before" ? "before" : "after";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -76,7 +83,7 @@ export class DxcRadioComponent implements OnInit {
   }
 
   constructor(private utils: CssUtils) {
-    this.checkedChange = new EventEmitter();
+    this.onChange = new EventEmitter();
   }
 
   calculateWidth(inputs) {
@@ -89,11 +96,18 @@ export class DxcRadioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.renderedChecked = this.checked;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  onChange(event: any) {
-    this.checkedChange.emit(event.source.checked);
+  onValueChange($event: any) {
+    this.onChange.emit($event.source.checked);
+
+    if (this.checked === undefined || this.checked === null){
+      this.renderedChecked = $event.source.checked;
+    }else{
+      $event.source.checked = this.renderedChecked;
+    }  
   }
 
   setTextAlign(labelPosition){
@@ -155,5 +169,9 @@ export class DxcRadioComponent implements OnInit {
         }
       }
     `;
+  }
+
+  ngOnDestroy(){
+    this.utils = null;
   }
 }

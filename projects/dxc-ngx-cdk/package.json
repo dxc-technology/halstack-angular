@@ -33,6 +33,7 @@
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
+    "zone.js": "~0.9.1",
     "vanilla-text-mask": "^5.1.1"
   },
   "devDependencies": {

@@ -38,7 +38,10 @@ export class DxcSwitchComponent implements OnChanges {
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
-  @Output() checkedChange: EventEmitter<any>;
+
+  @Output() onChange: EventEmitter<any>;
+
+  renderedChecked : boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -71,6 +74,8 @@ export class DxcSwitchComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+
+    this.renderedChecked = this.checked;
     this.labelPosition === "after" ? "after" : "before";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -81,15 +86,23 @@ export class DxcSwitchComponent implements OnChanges {
   }
 
   ngOnInit() {
+    this.renderedChecked = this.checked;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   constructor(private utils: CssUtils, @Inject('ThemeService') private themeService: ThemeService) {
-    this.checkedChange = new EventEmitter();
+    this.onChange = new EventEmitter();
   }
 
-  onChange(event: any) {
-    this.checkedChange.emit(event.checked);
+  onChangeHandler($event: any) {
+    this.onChange.emit($event.checked);
+    if (this.checked === undefined || this.checked === null){
+      this.renderedChecked = $event.checked;
+    }else{
+      $event.checked = this.renderedChecked;
+      $event.source._checked = this.renderedChecked;
+      $event.source._inputElement.nativeElement.checked = this.renderedChecked;
+    }
   }
 
   calculateWidth(margin, size) {

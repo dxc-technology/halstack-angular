@@ -6,13 +6,12 @@ import {
   HostBinding,
   OnChanges,
   OnInit,
-  ViewChild,
-  ElementRef,
   SimpleChanges
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-slider",
@@ -23,7 +22,7 @@ import { CssUtils } from "../utils";
   ],
   providers: [CssUtils]
 })
-export class DxcSliderComponent implements OnChanges {
+export class DxcSliderComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
@@ -33,23 +32,38 @@ export class DxcSliderComponent implements OnChanges {
   @Input() minValue: number = 0;
   @Input() maxValue: number = 100;
   @Input() step: number = 1;
-  @Input() showLimitsValues: boolean = false;
-  @Input() showInput: boolean = false;
-  @Input() value: number = 0;
+  @Input()
+  get showLimitsValues(): boolean { return this._showLimitsValues; }
+  set showLimitsValues(value: boolean) {
+    this._showLimitsValues = coerceBooleanProperty(value);
+  }
+  private _showLimitsValues = false;
+
+  @Input()
+  get showInput(): boolean { return this._showInput; }
+  set showInput(value: boolean) {
+    this._showInput = coerceBooleanProperty(value);
+  }
+  private _showInput = false;
+
   @Input() theme: string = "light";
 
+  @Input() value: number;
   @Input() name: string;
   @Input() disabled: boolean;
   @Input() required: boolean;
   @Input() margin: any;
   @Input() size: string;
 
-  @Output() dragEnd: EventEmitter<any> = new EventEmitter<any>();
-  @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
-  @Output() inputBlur: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild("input", { static: true }) input: ElementRef;
+  @Output() onDragEnd: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   tickInterval: any;
+  renderedValue: number;
+  
+  minValueClass: any;
+  maxValueClass: any;
+  inputMargin= {left: 'medium', top:'xxsmall'};
 
   defaultInputs = new BehaviorSubject<any>({
     minValue: 0,
@@ -76,7 +90,9 @@ export class DxcSliderComponent implements OnChanges {
   constructor(private utils: CssUtils) {}
 
   ngOnInit() {
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.renderedValue = this.value;
+
+    this.updateStyles(this.defaultInputs.getValue());
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
@@ -87,6 +103,7 @@ export class DxcSliderComponent implements OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    
     this.tickInterval = this.step > 1 ? 1 : 0;
     if (this.theme === "dark") {
       this.isLight = false;
@@ -96,35 +113,53 @@ export class DxcSliderComponent implements OnChanges {
       this.isDark = false;
     }
     this.isDisabled = this.disabled;
+    this.renderedValue = this.value
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.updateStyles(this.defaultInputs.getValue());
   }
 
+  private updateStyles(inputs: any) {
+    this.className = `${this.getDynamicStyle(inputs)}`;
+    this.minValueClass = `${this.getMinLabelContainerClass()}`;
+    this.maxValueClass = `${this.getMaxLabelContainerClass(inputs)}`;
+  }
   /**
    * Executed while  slider value moves or when user press a key in input
    *  @param $event
    */
   public valueChanged($event: any): void {
-    let newValue;
-    if ($event.target) {
-      newValue = $event.target.value;
-    } else {
-      newValue = $event.value;
+    let newValue = ($event.target ? $event.target.value : $event.value)*1;
+    newValue = (newValue < this.minValue ? this.minValue : newValue);
+    newValue = (newValue > this.maxValue ? this.maxValue : newValue);
+        
+    this.onChange.emit(newValue);
+    if (this.value === undefined || this.value === null){
+      this.renderedValue = newValue;
+    }else{
+      $event.value = this.renderedValue;
+      $event.source._value=this.renderedValue;
+      $event.source._percent=this.renderedValue/100;
     }
+  }
 
-    if (newValue > this.maxValue) {
-      newValue = this.maxValue;
+  /**
+   * controlled dxc-input behaviour
+   * 
+   * @param $event
+   */
+  public inputValueChanged($event: any): void {
+    let newValue = $event * 1;
+    newValue = (newValue < this.minValue ? this.minValue : newValue);
+    newValue = (newValue > this.maxValue ? this.maxValue : newValue);
+        
+    this.onChange.emit(newValue);
+    if (this.value === undefined || this.value === null){
+      this.renderedValue = newValue;
     }
-    if (newValue < this.minValue) {
-      newValue = this.minValue;
-    }
-    this.value = newValue;
-    this.input.nativeElement.value = newValue;
-    this.valueChange.emit(newValue);
   }
 
   /**
@@ -132,14 +167,7 @@ export class DxcSliderComponent implements OnChanges {
    * @param $event
    */
   public mouseUp($event): void {
-    this.dragEnd.emit(this.value || this.input.nativeElement.value);
-  }
-
-  /**
-   *Executed when input lost the focus
-   */
-  public onBlur($event): void {
-    this.inputBlur.emit($event.target.value);
+    this.onDragEnd.emit(this.renderedValue);
   }
 
   calculateWidth(inputs) {
@@ -211,23 +239,20 @@ export class DxcSliderComponent implements OnChanges {
           }
         }
       }
-      mat-form-field {
-        width: 42px;
-        margin-left: 15px;
-        &.mat-form-field-disabled {
-          opacity: 0.54;
-        }
 
-        .mat-form-field-infix {
-          padding: 0px;
-          border-top-width: 0px;
-        }
-      }
-
-      span,
-      input {
-        font-size: 16px;
-      }
     `;
   }
+
+  getMinLabelContainerClass() { 
+    return css`    
+      font-size: 16px;
+      margin-right: 15px;
+    `;}
+
+  getMaxLabelContainerClass(inputs: any) { 
+    return css`    
+      font-size: 16px;
+      margin-left: ${inputs.step === 1 ? "15px" : "20px"};
+    `;}
+    
 }

@@ -23,7 +23,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
     }
 
     this._themeService.themeChange
-      .pipe(takeUntil(this._destroy$))
+      
       .subscribe((theme: Theme) => {
           this.updateTheme(theme);
         } 

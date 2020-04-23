@@ -10,6 +10,12 @@ export class SwitchInfoComponent {
   constructor() {}
   checked = false;
 
-  onChange(){}
+  onChange($event) {  
+    this.checked= $event;
+    console.log($event);
+  }
 
+  onUncontrolledChange(value) {
+    console.debug("uncontrolled change: " + value);
+  }
 }

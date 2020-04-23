@@ -85,3 +85,11 @@ export * from './lib/dxc-paginator/dxc-paginator.module';
 
 export * from './lib/dxc-wizard/dxc-wizard.component';
 export * from './lib/dxc-wizard/dxc-wizard.module';
+
+export * from './lib/dxc-link/dxc-link.component';
+export * from './lib/dxc-link/dxc-link.module';
+
+export * from './lib/dxc-sidenav/dxc-sidenav.component';
+export * from './lib/dxc-sidenav/dxc-sidenav-menu/dxc-sidenav-menu.component';
+export * from './lib/dxc-sidenav/dxc-sidenav-content/dxc-sidenav-content.component';
+export * from './lib/dxc-sidenav/dxc-sidenav.module';

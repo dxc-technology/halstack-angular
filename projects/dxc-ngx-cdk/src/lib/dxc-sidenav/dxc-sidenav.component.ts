@@ -6,7 +6,8 @@ import {
   HostBinding,
   HostListener,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
@@ -17,6 +18,7 @@ import { responsiveSizes } from "../variables";
   selector: "dxc-sidenav",
   templateUrl: "./dxc-sidenav.component.html",
   styleUrls: ["./dxc-sidenav.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
 export class DxcSidenavComponent implements OnInit {

@@ -56,14 +56,11 @@ export class DxcSidenavComponent implements OnInit {
       isResponsive: this.isResponsive,
       isShown: this.displayArrow
     })}`;
-    console.log('oninit:', this.className);
   }
 
   public arrowClicked() {
     this.isShown = !this.isShown;
     this.updateCss();
-    console.log(this.isShown);
-    console.log('arrowClicked:', this.className);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -75,13 +72,11 @@ export class DxcSidenavComponent implements OnInit {
     if (this.sidenav) {
       this.updateCss();
     }
-    console.log('onchanges:', this.className);
   }
 
   ngAfterViewInit() {
     this.cdr.detectChanges;
     this.firstLoad = false;
-    console.log('onafter', this.className);
   }
 
   updateCss() {
@@ -107,7 +102,6 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   getDynamicStyle(inputs) {
-    //console.log("inputs:",inputs);
     return css`
       .sidenavContainerClass {
         display: flex;

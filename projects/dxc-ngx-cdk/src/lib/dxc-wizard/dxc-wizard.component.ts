@@ -25,7 +25,7 @@ export class DxcWizardComponent {
   @Input() currentStep: number;
   @Input() margin: any;
   @Input() steps: Array<any>;
-  @Output()  onStepClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output()  onStepClick = new EventEmitter<any>();
 
   innerCurrentStep: number;
 
@@ -74,8 +74,6 @@ export class DxcWizardComponent {
 
   public handleStepClick(i) {
     if (this.currentStep == null) { this.innerCurrentStep = i; }
-
-    console.log(i, this.innerCurrentStep, this.currentStep);
     
     if (this.onStepClick) { this.onStepClick.emit(i); }
   }

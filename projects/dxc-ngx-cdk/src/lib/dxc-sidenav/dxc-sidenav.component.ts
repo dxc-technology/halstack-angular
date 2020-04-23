@@ -6,7 +6,8 @@ import {
   HostBinding,
   HostListener,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ChangeDetectorRef
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
@@ -20,7 +21,7 @@ import { responsiveSizes } from "../variables";
   providers: [CssUtils]
 })
 export class DxcSidenavComponent implements OnInit {
-  @HostBinding("class") className;
+  className;
   @Input() arrowDistance: string;
   @Input() mode: string = "push";
   @Input() padding: any;
@@ -40,19 +41,26 @@ export class DxcSidenavComponent implements OnInit {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils,private cdr: ChangeDetectorRef) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
     this.updateCss();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.className = `${this.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+      mode: this.mode,
+      innerWidth: this.innerWidth,
+      isResponsive: this.isResponsive,
+      isShown: this.displayArrow
+    })}`;
+  }
 
   public arrowClicked() {
     this.isShown = !this.isShown;
     this.updateCss();
-    console.log(this.isShown);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -61,13 +69,13 @@ export class DxcSidenavComponent implements OnInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    if (this.innerWidth) {
+    if (this.sidenav) {
       this.updateCss();
     }
   }
 
   ngAfterViewInit() {
-    this.updateCss();
+    this.cdr.detectChanges;
     this.firstLoad = false;
   }
 
@@ -95,7 +103,7 @@ export class DxcSidenavComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      .sidenavContainer {
+      .sidenavContainerClass {
         display: flex;
         position: relative;
         overflow: hidden;

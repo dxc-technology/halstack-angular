@@ -1,4 +1,14 @@
 <div>
+  <h4>Uncontrolled Component</h4>
+  <div className="test-case" id="uncontrolled">
+    <dxc-select
+      (onChange)="onUncontrolledChange($event)"
+      label="Medium"
+      [options]="optionsWithIconAndLabels"
+      size="medium"
+      margin="xsmall"
+    ></dxc-select>
+  </div>
   <h4>Sizes</h4>
   <div className="test-case" id="small-size">
     <dxc-select
@@ -12,7 +22,7 @@
   <div className="test-case" id="medium-size">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Medium"
       [options]="optionsWithIconAndLabels"
       size="medium"
@@ -360,8 +370,8 @@
   <div className="test-case" id="multiple-icons&labels">
     <h4>Multiple select labels and icons selected</h4>
     <dxc-select
-      (onChange)="onChange($event)"
-      [(value)]="multipleSelected"
+      (onChange)="onMultipleChange($event)"
+      [value]="multipleSelected"
       multiple="true"
       size="medium"
       label="Multiple Labels"

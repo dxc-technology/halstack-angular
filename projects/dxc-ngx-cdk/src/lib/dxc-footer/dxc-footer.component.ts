@@ -142,13 +142,6 @@ export class DxcFooterComponent implements OnChanges {
     `;
   }
 
-  setFooterHeaderStyle() {
-    return css`
-      display: flex;
-      justify-content: space-between;
-    `;
-  }
-
   setChildComponentsStyle(inputs: any) {
     return css`
       min-height: 15px;

@@ -25,6 +25,7 @@ import { TagInfoComponent } from './pages/tag-info/tag-info.component';
 import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.component';
 import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
+import { WizardComponent } from './pages/wizard/wizard.component';
 
 
 export const Components = [
@@ -157,6 +158,11 @@ export const Components = [
         name: 'Upload',
         route: 'upload',
         component: DxcUploadComponent
+    },
+    {
+        name: 'Wizard',
+        route: 'wizard',
+        component: WizardComponent
     },
     {
         name: 'All',

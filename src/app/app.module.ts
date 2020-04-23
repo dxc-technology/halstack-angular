@@ -60,6 +60,8 @@ import { DxcTabbedSectionModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-t
 import { TabsInfoComponent } from './pages/tabs/tabs-info.component';
 import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
+import { WizardComponent } from './pages/wizard/wizard.component';
+import { DxcWizardModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-wizard/dxc-wizard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +90,8 @@ import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
     ProgressInfoComponent,
     TabbedSectionComponent,
     TabsInfoComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    WizardComponent
   ],
   imports: [
     AppRoutingModule,
@@ -121,6 +124,7 @@ import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
     DxcSliderModule,
     DxcTabbedSectionModule,
     DxcPaginatorModule,
+    DxcWizardModule,
     HttpClientModule,
   ],
   providers: [{ provide: 'ThemeService', useClass: ThemeService }],

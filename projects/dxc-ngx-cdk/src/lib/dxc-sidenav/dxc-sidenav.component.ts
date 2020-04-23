@@ -6,7 +6,8 @@ import {
   HostBinding,
   HostListener,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ChangeDetectorRef
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
@@ -40,7 +41,7 @@ export class DxcSidenavComponent implements OnInit {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils,private cdr: ChangeDetectorRef) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -48,7 +49,6 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
@@ -56,32 +56,32 @@ export class DxcSidenavComponent implements OnInit {
       isResponsive: this.isResponsive,
       isShown: this.displayArrow
     })}`;
-    console.log('oninit');
+    console.log('oninit:', this.className);
   }
 
   public arrowClicked() {
     this.isShown = !this.isShown;
     this.updateCss();
     console.log(this.isShown);
+    console.log('arrowClicked:', this.className);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    console.log('onchanges');
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    debugger;
     if (this.sidenav) {
       this.updateCss();
     }
+    console.log('onchanges:', this.className);
   }
 
   ngAfterViewInit() {
-    console.log('onafter');
-    this.updateCss();
+    this.cdr.detectChanges;
     this.firstLoad = false;
+    console.log('onafter', this.className);
   }
 
   updateCss() {
@@ -107,6 +107,7 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   getDynamicStyle(inputs) {
+    //console.log("inputs:",inputs);
     return css`
       .sidenavContainerClass {
         display: flex;

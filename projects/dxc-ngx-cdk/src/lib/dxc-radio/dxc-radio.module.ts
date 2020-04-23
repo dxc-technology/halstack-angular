@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { DxcRadioComponent } from "./dxc-radio.component";
-import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { MatRadioModule } from "@angular/material";
 import { ThemeModule, defaultTheme } from '../theme';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [DxcRadioComponent],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     MatRadioModule,
     ThemeModule.forRoot({

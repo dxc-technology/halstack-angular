@@ -108,8 +108,8 @@ export class DxcStepComponent {
       }
 
       .iconContainer {
-        width: ${!inputs.isCurrent || !inputs.disabled ? "32px" : "36px"};
-        height: ${!inputs.isCurrent || !inputs.disabled ? "32px" : "36px"};
+        width: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
+        height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
 
         ${!inputs.isCurrent && !inputs.disabled ?
           `border: 2px solid ${inputs.theme === "light" ? "#000000" : "#FFFFFF"};` :

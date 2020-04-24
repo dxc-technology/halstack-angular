@@ -32,7 +32,6 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 import { WizardComponent } from './pages/wizard/wizard.component';
-import { DxcWizardModule } from '../../projects/dxc-ngx-cdk/src/lib/dxc-wizard/dxc-wizard.module';
 import { CommonModule } from '@angular/common';
 import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcCardModule, 
   DxcCheckboxModule, DXCDialogModule, DXCDropdownModule, 
@@ -40,7 +39,7 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
   DXCSelectModule, DxcSpinnerModule, DxcSwitchModule, DXCToggleModule, 
   DxcTabsModule, DXCUploadModule, DxcTableModule, DxcDateModule, DxcTagModule, DxcRadioModule, 
   DxcSliderModule, DxcTabbedSectionModule,
-  DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService } from '@diaas/dxc-ngx-cdk';
+  DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService, DxcWizardModule } from '@diaas/dxc-ngx-cdk';
 
 @NgModule({
   declarations: [

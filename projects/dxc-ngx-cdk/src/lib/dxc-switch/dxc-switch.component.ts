@@ -90,7 +90,7 @@ export class DxcSwitchComponent implements OnChanges {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils, @Inject('ThemeService') private themeService: ThemeService) {
+  constructor(private utils: CssUtils) {
     this.onChange = new EventEmitter();
   }
 
@@ -123,14 +123,7 @@ export class DxcSwitchComponent implements OnChanges {
       `;
     }
   }
-
-  setBarColor() {
-    const color = this.themeService.getActiveTheme().properties["--darkGrey"] + "66";
-    return css`
-      background-color: ${color};
-    `;
-  }
-
+  
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
@@ -152,7 +145,7 @@ export class DxcSwitchComponent implements OnChanges {
         div.mat-slide-toggle-bar {
           height: 12px;
           margin: 15px;
-          ${this.setBarColor()}
+          background-color: #66666666;
         }
         span.mat-slide-toggle-content {
           white-space: normal;

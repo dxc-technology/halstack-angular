@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges } from '@angular/core';
 import { CssUtils } from '../utils';
 import { BehaviorSubject } from 'rxjs';
 import { css } from "emotion";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'dxc-accordion',
@@ -10,23 +11,30 @@ import { css } from "emotion";
   providers : [CssUtils]
 
 })
-export class DxcAccordionComponent  {
+export class DxcAccordionComponent implements OnInit, OnChanges {
   @Input() mode: string;
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;
   @Input() assistiveText: string;
   @Input() disabled: boolean = false;
-  @Input() isExpanded: boolean = false;
   @Output() onClick = new EventEmitter<any>();
   @Input() theme: string;
-  opened = false;
   @Input() margin: any;
   @Input() padding: any;
+  @Input()
+  get isExpanded(): boolean { return this._isExpanded; }
+  set isExpanded(value: boolean) {
+    this._isExpanded = coerceBooleanProperty(value);
+  }
+  private _isExpanded;
   
   @HostBinding("class") className;
   @HostBinding('class.light') isLight: boolean = true;
   @HostBinding('class.dark') isDark: boolean = false;
+
+  @ViewChild('matExpansionPanel', {static: true}) _matExpansionPanel:any;
+  renderedIsExpanded: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
@@ -37,6 +45,7 @@ export class DxcAccordionComponent  {
   constructor(private cssUtils: CssUtils){}
 
   ngOnInit() {
+    this.renderedIsExpanded = this.isExpanded || false;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
@@ -51,7 +60,7 @@ export class DxcAccordionComponent  {
       this.isLight = true;
       this.isDark = false;
     }
-
+    this.renderedIsExpanded = this.isExpanded;
     const inputs = Object.keys(changes).reduce((result, item)=> {
       result[item] = changes[item].currentValue;
       return result;
@@ -61,10 +70,13 @@ export class DxcAccordionComponent  {
   }
 
   public onClickHandler($event: any): void {
-   if(!this.disabled) {
-    this.opened = !this.opened;
-    this.onClick.emit(this.opened);
-   }
+    if (!this.disabled) {
+      this.onClick.emit(!this.renderedIsExpanded);
+      if (this.isExpanded === undefined || this.isExpanded === null){
+        this.renderedIsExpanded = !this.renderedIsExpanded;
+      }
+    }
+    this.renderedIsExpanded === true ? this._matExpansionPanel.open() : this._matExpansionPanel.close();
   }
 
   getDynamicStyle(inputs) {

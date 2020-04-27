@@ -131,6 +131,7 @@ pipeline {
                     sh '''
                         cd .                                  
                         npm install
+                        npm run install-lib
                     '''
                 }
             }            

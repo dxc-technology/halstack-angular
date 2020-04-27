@@ -1,43 +1,54 @@
-# Adding new components
+# Assure Angular CDK
 
-The projects auto-generate the routes and the navside links. You only have to care about :
-- Create the component wher you want to place the info about the component
-- Add  some info in **src/app/components.ts**
-- For each component you have to specify:
-    - name to show in sidenav
-    - the route you want to navigate when click in that link
-    - the component wher you have been added the info for the component
-```typescript
- {
-        name: 'Button',
-        route: 'button',
-        component: ButtonInfoComponent
-    },
-```
-# DxcAngularCdk
+Assure Angular CDK is a npm library of reusable Angular components, made with the purpose of helping Angular developers with the task of implementing User Interfaces following the DXC Design Guidelines.
+- It increases visual and behavioral consistency across the applications using the library.
+- It cuts down development efforts, taking the responsability of following the Design Guidelines away from the developer, and allowing him to focus on providing business value.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+## Usage
+___
+Assure Angular CDK is a set of reusable components distributed as a npm library. See the [documentation site](http://design-system-angular-cdk-site.s3-website.us-east-2.amazonaws.com) for details on how to use it.
 
-## Development server
+## Contributing
+---
+Before opening new issues or pull requests, please refer to [CONTRIBUTING.MD](https://github.dxc.com/DIaaS/diaas-angular-cdk/blob/master/README.md).
+## Development Setup
+___
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The project is divided in two main folders. One is for the actual library, and the other one is a Angular application using the library.
+### Library
+Contained in the projects/dxc-ngx-cdk.
+````
+cd projects/dxc-ngx-cdk/
+````
+Install the library dependencies.
+````
+npm install
+````
+Build the cdk library on the root application folder.
 
-## Code scaffolding
+If you are using mac or linux architecture, run the following npm command:
+````
+npm run install-lib
+````
+If you are using windows architecture, run the following npm command:
+````
+npm run install-win-lib
+````
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Example Application
+Contained in `diaas-angular-cdk` folder.
 
-## Build
+````
+cd diaas-angular-cdk
+````
+Istall the application dependencies. The Assure Angular CDK dependency is linked to the local lib file in `dist/dxc-ngx-cdk` and named as `diaas-dxc-ngx-cdk-{version-number}.tgz` and check if `package.json` the name of the lib file is exactly the same as the lib folder. This one must have been previously built.
+````
+npm install
+````
+Start the application
+````
+ng serve
+````
+## Running the test
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

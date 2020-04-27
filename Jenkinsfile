@@ -115,14 +115,23 @@ pipeline {
                     }
                 }
             }
-            stage('Build lib and Install dependencies') {
+            stage('Install lib dependencies'){
                 steps {
                     sh '''
-                        npm run install-lib
+                        cd /projects/dxc-ngx-cdk/
                         npm install
                     '''
                 }
             }
+            stage('Build dxc-ngx-cdk library') {
+                steps {
+                    sh '''
+                        npm run build-lib
+                        npm run post-build-lib
+                        npm run package
+                    '''
+                }
+            }        
             stage('.npmrc') {
                 when {
                     expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' } 

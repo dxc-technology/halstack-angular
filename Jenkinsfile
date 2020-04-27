@@ -115,7 +115,7 @@ pipeline {
                     }
                 }
             }
-            stage('Install lib dependencies'){
+            stage('Build and Install lib dependencies'){
                 steps {
                     sh '''
                         cd ./projects/dxc-ngx-cdk
@@ -126,12 +126,11 @@ pipeline {
                     '''
                 }
             }
-            stage('Build lib and Install dependencies'){
+            stage('Install dependencies'){
                 steps {
                     sh '''
                         cd .                                  
                         npm install
-                        npm run install-lib
                     '''
                 }
             }            

@@ -120,16 +120,16 @@ pipeline {
                     sh '''
                         cd ./projects/dxc-ngx-cdk
                         npm install
+                        npm run build-lib
+                        npm run post-build-lib
+                        npm run package   
                     '''
                 }
             }
             stage('Build lib and Install dependencies'){
                 steps {
                     sh '''
-                        cd .
-                        npm run build-lib
-                        npm run post-build-lib
-                        npm run package                        
+                        cd .                                  
                         npm install
                     '''
                 }
@@ -261,7 +261,7 @@ pipeline {
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
                     emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com',from: 'mgarcia232@dxc.com'
                 } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'mgarcia232@dxc.com'
+                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com', from: 'mgarcia232@dxc.com'
                 }
             }
         }

@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "scripts": {
+    "build-lib": "ng build dxc-ngx-cdk",
+    "package": "cd . && cd ./../../dist/dxc-ngx-cdk && npm pack",
+    "post-build-lib": "cp -R ./../../projects/dxc-ngx-cdk/src/assets ./../../dist/dxc-ngx-cdk/lib/assets ",
     "test": "jest --config ./jest.lib.config.js"
   },
   "author": {

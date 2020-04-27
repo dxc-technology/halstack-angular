@@ -1,7 +1,23 @@
 <div>
+  <div className="test-case" id="uncontrolled">
+    <h4>Uncontrolled Accordion</h4>
+    <dxc-accordion 
+    label="Accordion" 
+    (onClick)="uncontrolledIsExpanded($event)" 
+    padding="medium">
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        malesuada lacus ex, sit amet blandit leo lobortis eget.
+      </div>
+    </dxc-accordion>
+  </div>
   <div className="test-case" id="light-theme-default">
     <h4>Light theme - Default Accordion</h4>
-    <dxc-accordion label="Accordion" (onClick)="changeIsExpanded()" padding="medium">
+    <dxc-accordion 
+    label="Accordion" 
+    [isExpanded]="isExpanded" 
+    (onClick)="changeIsExpanded($event)" 
+    padding="medium">
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -14,7 +30,8 @@
     <dxc-accordion
       label="Accordion"
       mode="alternative"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -36,7 +53,8 @@
       <dxc-accordion
         label="Accordion"
         theme="dark"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="medium"
       >
         <div>
@@ -55,7 +73,8 @@
       label="Accordion"
       theme="dark"
       mode="alternative"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -71,7 +90,8 @@
       label="Accordion"
       iconPosition="before"
       iconSrc="{{homeLogo}}"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -88,7 +108,8 @@
       mode="alternative"
       iconPosition="before"
       iconSrc="{{facebookLogo}}"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -104,7 +125,8 @@
       label="Accordion"
       iconPosition="after"
       iconSrc="{{homeLogo}}"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -121,7 +143,8 @@
       iconPosition="after"
       mode="alternative"
       iconSrc="{{facebookLogo}}"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -135,8 +158,9 @@
     <h4>Disabled - Default Accordion</h4>
     <dxc-accordion
       label="Accordion"
-      disabled
-      (onClick)="changeIsExpanded()"
+      disabled="true"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -151,8 +175,9 @@
     <dxc-accordion
       label="Accordion"
       mode="alternative"
-      disabled
-      (onClick)="changeIsExpanded()"
+      disabled="true"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -166,7 +191,8 @@
     <h4>Max label size single line - Default Accordion</h4>
     <dxc-accordion
       label="Accordion label max size example simgle line accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion ac"
-      (onClick)="changeIsExpanded()"
+      (onClick)="changeIsExpanded($event)"
+      [isExpanded]="isExpanded"
       padding="medium"
     >
       <div>
@@ -180,7 +206,8 @@
     <h4>Min label size multiline - Default Accordion</h4>
     <dxc-accordion
       label="Accordion label max size example simgle line accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion accordion acc"
-      (onClick)="changeIsExpanded()"
+      (onClick)="changeIsExpanded($event)"
+      [isExpanded]="isExpanded"
       padding="medium"
     >
       <div>
@@ -195,7 +222,8 @@
     <dxc-accordion
       label="Accordion"
       assistiveText="Assistive text"
-      (onClick)="changeIsExpanded()"
+      (onClick)="changeIsExpanded($event)"
+      [isExpanded]="isExpanded"
       padding="medium"
     >
       <div>
@@ -211,7 +239,8 @@
       label="Accordion"
       mode="alternative"
       assistiveText="Assistive text"
-      (onClick)="changeIsExpanded()"
+      (onClick)="changeIsExpanded($event)"
+      [isExpanded]="isExpanded"
       padding="medium"
     >
       <div>
@@ -226,7 +255,8 @@
     <dxc-accordion
       label="Accordion"
       assistiveText="Assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assi"
-      (onClick)="changeIsExpanded()"
+      (onClick)="changeIsExpanded($event)"
+      [isExpanded]="isExpanded"
       padding="medium"
     >
       <div>
@@ -241,7 +271,8 @@
     <dxc-accordion
       label="Accordion"
       assistiveText="Assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assistive text assis"
-      (onClick)="changeIsExpanded()"
+      (onClick)="changeIsExpanded($event)"
+      [isExpanded]="isExpanded"
       padding="medium"
     >
       <div>
@@ -258,7 +289,8 @@
       <dxc-accordion
         label="Accordion"
         margin="xxsmall"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -272,7 +304,8 @@
       <dxc-accordion
         label="Accordion"
         margin="xsmall"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -286,7 +319,8 @@
       <dxc-accordion
         label="Accordion"
         margin="small"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -300,7 +334,8 @@
       <dxc-accordion
         label="Accordion"
         margin="medium"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -314,7 +349,8 @@
       <dxc-accordion
         label="Accordion"
         margin="large"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -328,7 +364,8 @@
       <dxc-accordion
         label="Accordion"
         margin="xlarge"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -342,7 +379,8 @@
       <dxc-accordion
         label="Accordion"
         margin="xxlarge"
-        (onClick)="changeIsExpanded()"
+        (onClick)="changeIsExpanded($event)"
+        [isExpanded]="isExpanded"
         padding="medium"
       >
         <div>
@@ -359,8 +397,8 @@
       <h5>xxsmall padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="xxsmall"
       >
         <div>
@@ -373,8 +411,8 @@
       <h5>xsmall padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="xsmall"
       >
         <div>
@@ -387,8 +425,8 @@
       <h5>Small padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="small"
       >
         <div>
@@ -401,8 +439,8 @@
       <h5>Medium padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="medium"
       >
         <div>
@@ -415,8 +453,8 @@
       <h5>Large padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="large"
       >
         <div>
@@ -429,8 +467,8 @@
       <h5>xlarge padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="xlarge"
       >
         <div>
@@ -443,8 +481,8 @@
       <h5>xxlarge padding</h5>
       <dxc-accordion
         label="Accordion"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="xxlarge"
       >
         <div>
@@ -461,8 +499,8 @@
       <dxc-accordion
         label="Accordion"
         mode="alternative"
-        [(isExpanded)]="isExpanded"
-        (onClick)="changeIsExpanded()"
+        [isExpanded]="isExpanded"
+        (onClick)="changeIsExpanded($event)"
         padding="medium"
       >
         <div>
@@ -478,8 +516,8 @@
     <h4>Expanded accordion - Max content size single line</h4>
     <dxc-accordion
       label="Accordion"
-      [(isExpanded)]="isExpanded"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>
@@ -494,8 +532,8 @@
     <h4>Expanded accordion - Min content size multiline</h4>
     <dxc-accordion
       label="Accordion"
-      [(isExpanded)]="isExpanded"
-      (onClick)="changeIsExpanded()"
+      [isExpanded]="isExpanded"
+      (onClick)="changeIsExpanded($event)"
       padding="medium"
     >
       <div>

@@ -33,7 +33,7 @@ npm run install-lib
 ````
 If you are using windows architecture, run the following npm command:
 ````
-npm run install-win-lib
+npm run install-lib-win
 ````
 
 ### Example Application

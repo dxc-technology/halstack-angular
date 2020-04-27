@@ -118,7 +118,14 @@ pipeline {
             stage('Install lib dependencies'){
                 steps {
                     sh '''
-                        cd /projects/dxc-ngx-cdk/
+                        cd ./projects/dxc-ngx-cdk
+                        npm install
+                    '''
+                }
+            }
+            stage('Install dependencies'){
+                steps {
+                    sh '''
                         npm install
                     '''
                 }

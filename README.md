@@ -17,38 +17,59 @@ These instructions will get you a copy of the project up and running on your loc
 
 The project is divided in two main folders. One is for the actual library, and the other one is a Angular application using the library.
 ### Library
-Contained in the projects/dxc-ngx-cdk.
-````
+Contained in the `projects/dxc-ngx-cdk`.
+
+```bash
 cd projects/dxc-ngx-cdk/
-````
+```
+
 Install the library dependencies.
-````
+
+```bash
 npm install
-````
+```
+
 Build the cdk library on the root application folder.
 
-If you are using mac or linux architecture, run the following npm command:
+````bash
+npm run build-lib
 ````
-npm run install-lib
-````
-If you are using windows architecture, run the following npm command:
-````
-npm run install-lib-win
+
+Or if you want it to automatically detect changes:
+
+````bash
+npm run build-lib:watch
 ````
 
 ### Example Application
 Contained in `diaas-angular-cdk` folder.
 
-````
+````bash
 cd diaas-angular-cdk
 ````
-Istall the application dependencies. The Assure Angular CDK dependency is linked to the local lib file in `dist/dxc-ngx-cdk` and named as `diaas-dxc-ngx-cdk-{version-number}.tgz` and check if `package.json` the name of the lib file is exactly the same as the lib folder. This one must have been previously built.
-````
+
+Install the application dependencies. The Assure Angular CDK dependency is linked to the local lib file in `dist/dxc-ngx-cdk`. This one must have been previously built as shown before.
+
+````bash
 npm install
 ````
+
 Start the application
-````
+
+````bash
 ng serve
 ````
+
 ## Running the test
 
+You run the tests from the library folder `projects/dxc-ngx-cdk`.
+
+```bash
+cd projects/dxc-ngx-cdk/
+```
+
+For running the tests after the library dependencies has been installed
+
+```bash
+npm run test
+```

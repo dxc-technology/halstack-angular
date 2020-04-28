@@ -4,10 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "install-lib": "npm run build-lib && npm run post-build-lib && npm run package && npm install @diaas/dxc-ngx-cdk",
-    "build-lib": "ng build dxc-ngx-cdk",
-    "package": "cd  ./dist/dxc-ngx-cdk && npm pack",
-    "post-build-lib": "cp -R ./projects/dxc-ngx-cdk/src/assets ./dist/dxc-ngx-cdk/lib/assets ",
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",

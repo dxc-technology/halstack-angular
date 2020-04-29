@@ -24,7 +24,6 @@ export class DxcTabComponent implements OnChanges {
   @Input() id: number;
   @Output() onClick = new EventEmitter<any>();
 
-
   showDotIndicator: boolean = false;
   labelClass: string;
   @ViewChild(MatTab, { static: false })
@@ -39,7 +38,6 @@ export class DxcTabComponent implements OnChanges {
     if (this.matTab) {
       this.matTab.disabled = this.disabled;
       this.cdRef.detectChanges();
-
     }
   }
 

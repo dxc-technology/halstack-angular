@@ -131,11 +131,11 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       color = "var(--black)";
     }
     return css`
-      background-color: ${backgroundColor};
-      border-color: ${borderColor};
       margin-top: ${mode === "outlined" ? "-2px" : "2px"};
       .mat-menu-item {
         color: ${color};
+        background-color: ${backgroundColor};
+        border-color: ${borderColor};
       }
     `;
   }
@@ -158,7 +158,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
 
   getStylesForLightTheme() {
     return css`
-      background-color: var(--black);
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
       border-top-left-radius: 0px;

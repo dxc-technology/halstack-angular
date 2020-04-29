@@ -196,8 +196,8 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     return css`
       .mat-menu-content {
         ${this.getStylesForTheme(this.theme)};
-        padding-top: 0px;
-        padding-bottom: 0px;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
         width:${this.width}px;
 
       }
@@ -209,8 +209,8 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       border-color: ${this.theme === "dark" ? "white" : "black"};
       .mat-menu-content {
         ${this.getStylesForTheme(this.theme)};
-        padding-top: 0px;
-        padding-bottom: 0px;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
         width: ${this.width};
         max-width: ${this.width};
       }

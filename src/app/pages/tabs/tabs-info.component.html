@@ -1,6 +1,14 @@
+<div>
+  <h3>Uncontrolled tabs</h3>
+  <dxc-tabs theme="dark">
+    <dxc-tab label="Tab 1" (onClick)="uncontrolledTabClicked($event)"></dxc-tab>
+    <dxc-tab label="Tab 2" (onClick)="uncontrolledTabClicked($event)"></dxc-tab>
+    <dxc-tab label="Tab 3" (onClick)="uncontrolledTabClicked($event)"></dxc-tab>
+  </dxc-tabs>
+</div>
 <div style="width: 320px">
   <h3>Light theme tabs</h3>
-  <dxc-tabs margin="small">
+  <dxc-tabs margin="small" [activeTabIndex]="tabId">
     <dxc-tab label="Tab 1" (onClick)="tabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 2" (onClick)="tabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 3" (onClick)="tabClicked($event)"></dxc-tab>
@@ -8,7 +16,7 @@
 </div>
 <div>
   <h3>Dark theme tabs</h3>
-  <dxc-tabs theme="dark">
+  <dxc-tabs theme="dark" [activeTabIndex]="tabId">
     <dxc-tab label="Tab 1" (onClick)="tabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 2" (onClick)="tabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 3" (onClick)="tabClicked($event)"></dxc-tab>
@@ -16,7 +24,7 @@
 </div>
 <div>
   <h3>Tabs with content</h3>
-  <dxc-tabs mode="underline">
+  <dxc-tabs mode="underline" [activeTabIndex]="tabId">
     <dxc-tab label="Tab 1"></dxc-tab>
     <dxc-tab label="Tab 2"></dxc-tab>
     <dxc-tab label="Tab 3"></dxc-tab>
@@ -24,7 +32,7 @@
 </div>
 <div>
   <h3>Underlined tabs</h3>
-  <dxc-tabs mode="underline">
+  <dxc-tabs mode="underline" [activeTabIndex]="tabId">
     <dxc-tab label="Tab 1"></dxc-tab>
     <dxc-tab label="Tab 2"></dxc-tab>
     <dxc-tab label="Tab 3"></dxc-tab>

@@ -7,9 +7,16 @@ import { Component } from "@angular/core";
 })
 export class TabsInfoComponent {
 
+  tabId = 2;
+
   constructor() {}
 
   tabClicked(tabId) {
+    this.tabId = tabId;
     console.log("Tab clicked " + tabId);
+  }
+
+  uncontrolledTabClicked(tabId) {
+    console.log("Uncontrolled Tab clicked " + tabId);
   }
 }

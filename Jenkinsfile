@@ -115,19 +115,21 @@ pipeline {
                     }
                 }
             }
-            stage('Install dependencies') {
+            stage('Install dependencies and build lib') {
                 steps {
                     sh '''
+                        cd ./dist/dxc-ngx-cdk
                         npm install
+                        npm run build-lib
+                        rpm run post-build-lib
+                        npm run package
                     '''
                 }
             }
-            stage('Build dxc-ngx-cdk library') {
+            stage('Install dependencies') {
                 steps {
                     sh '''
-                        npm run build-lib
-                        npm run post-build-lib
-                        npm run package
+                        npm install                        
                     '''
                 }
             }        

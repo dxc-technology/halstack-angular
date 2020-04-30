@@ -25,6 +25,7 @@ import { TabbedSectionComponent } from './pages/tabbed-section/tabbed-section.co
 import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
+import { WizardComponent } from './pages/wizard/wizard.component';
 import { DxcUploadComponent } from '@diaas/dxc-ngx-cdk';
 
 
@@ -163,6 +164,11 @@ export const Components = [
         name: 'Upload',
         route: 'upload',
         component: DxcUploadComponent
+    },
+    {
+        name: 'Wizard',
+        route: 'wizard',
+        component: WizardComponent
     },
     {
         name: 'All',

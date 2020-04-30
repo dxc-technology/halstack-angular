@@ -13,6 +13,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-sidenav",
@@ -25,12 +26,17 @@ export class DxcSidenavComponent implements OnInit {
   @Input() arrowDistance: string;
   @Input() mode: string = "overlay";
   @Input() padding: any;
-  @Input() displayArrow: boolean = true;
+  @Input()
+  get displayArrow(): boolean { return this._displayArrow; }
+  set displayArrow(value: boolean) {
+    this._displayArrow = coerceBooleanProperty(value);
+  }
+  private _displayArrow = true;
 
   innerWidth;
   isResponsive;
-  isShown;
-  firstLoad = true;
+  isShown:boolean = true;
+  firstLoad:boolean = true;
 
   defaultInputs = new BehaviorSubject<any>({
     arrowDistance: "",
@@ -54,7 +60,7 @@ export class DxcSidenavComponent implements OnInit {
       mode: this.mode,
       innerWidth: this.innerWidth,
       isResponsive: this.isResponsive,
-      isShown: this.displayArrow
+      isShown: this.isShown
     })}`;
   }
 

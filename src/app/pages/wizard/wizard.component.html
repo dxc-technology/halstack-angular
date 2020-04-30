@@ -1,0 +1,32 @@
+<div>
+    <h3>Default wizard</h3>
+    <dxc-wizard
+        [steps]="stepsExample1">
+    </dxc-wizard>
+</div>
+<div>
+    <h3>Controlled wizard</h3>
+    <dxc-wizard 
+        [currentStep]="currentStep"
+        (onStepClick)="myOnStepClick($event)"
+        [steps]="stepsExample2">
+    </dxc-wizard>
+</div>
+<div style="background-color: black;">
+    <h3 style="color: white;">Dark theme wizard</h3>
+    <dxc-wizard 
+        theme="dark"
+        [steps]="stepsExample3">
+    </dxc-wizard>
+</div>
+<div>
+    <h3>Vertical wizards</h3>
+    <dxc-wizard 
+        mode="vertical"
+        [steps]="stepsExample4">
+    </dxc-wizard>
+    <dxc-wizard 
+        mode="vertical"
+        [steps]="stepsExample2">
+    </dxc-wizard>
+</div>

@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
-    "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "declaration": true,
@@ -12,10 +11,13 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "types": ["node"],
+    "target": "es6",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
-      "dom",
-      "es2018"
+      "es2018",
+      "dom"
     ]
   },
   "angularCompilerOptions": {

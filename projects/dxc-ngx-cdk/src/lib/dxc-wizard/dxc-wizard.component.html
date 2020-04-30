@@ -1,0 +1,16 @@
+<dxc-step 
+    *ngFor="let step of steps; let i = index"
+    [label]="step.label"
+    [description]="step.description"
+    [iconSrc]="step.iconSrc"
+    [disabled]="step.disabled"
+    [valid]="step.valid"
+    [position]="i"
+    [isCurrent]="i === innerCurrentStep"
+    [isFirst]="i === 0"
+    [isLast]="i === this.steps.length-1"
+    [mode]="mode ? mode : 'horizontal'"
+    [theme]="theme ? theme : 'light'"
+    [currentStep]="innerCurrentStep"
+    (click)="!step.disabled ? handleStepClick(i) : ''">
+</dxc-step>

@@ -1,0 +1,21 @@
+<button class="step" [disabled]="disabled">
+    <div class="stepHeader">
+        <div class="iconContainer">
+            <img class="icon" *ngIf="iconSrc; else numberBlock" [src]="iconSrc" />
+            <ng-template #numberBlock>
+                <p class="number">{{position+1}}</p>
+            </ng-template>
+        </div>
+        <img class="validityIcon" 
+            *ngIf="valid !== undefined && valid"
+            [src]="validIcon"/>
+        <img class="validityIcon" 
+            *ngIf="valid !== undefined && !valid"
+            [src]="invalidIcon"/>  
+    </div>
+    <div class="infoContainer" *ngIf="label || description">
+        <p class="label" *ngIf="label"> {{label}}</p>
+        <p class="description" *ngIf="description">{{description}}</p>
+    </div>
+</button>
+<div class="stepSeparator" *ngIf="!isLast"></div>

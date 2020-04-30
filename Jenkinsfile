@@ -118,7 +118,7 @@ pipeline {
             stage('Install dependencies and build lib') {
                 steps {
                     sh '''
-                        cd ./dist/dxc-ngx-cdk
+                        cd ./projects/dxc-ngx-cdk
                         npm install
                         npm run build-lib
                         rpm run post-build-lib

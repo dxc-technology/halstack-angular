@@ -4,7 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "install-lib": "npm install ./dist/dxc-ngx-cdk",
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",

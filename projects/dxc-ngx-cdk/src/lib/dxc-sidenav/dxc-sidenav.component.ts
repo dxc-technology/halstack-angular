@@ -23,7 +23,7 @@ import { responsiveSizes } from "../variables";
 export class DxcSidenavComponent implements OnInit {
   className;
   @Input() arrowDistance: string;
-  @Input() mode: string = "push";
+  @Input() mode: string = "overlay";
   @Input() padding: any;
   @Input() displayArrow: boolean = true;
 

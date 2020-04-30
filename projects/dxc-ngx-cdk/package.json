@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "scripts": {
-    "build-lib": "ng build dxc-ngx-cdk",
-    "package": "cd . && cd ./../../dist/dxc-ngx-cdk && npm pack",
-    "post-build-lib": "cp -R ./../../projects/dxc-ngx-cdk/src/assets ./../../dist/dxc-ngx-cdk/lib/assets ",
-    "test": "jest --config ./jest.lib.config.js"
+    "build-lib": "ng build",
+    "package": "cd ./../../dist/dxc-ngx-cdk && npm pack",
+    "post-build-lib": "cp -R ./src/assets ./../../dist/dxc-ngx-cdk/lib/assets ",
+    "post-build-lib-win": "xcopy .\\src\\assets .\\..\\..\\dist\\dxc-ngx-cdk\\lib\\assets /Y /I",
+    "generate-lib": "npm run build-lib && npm run post-build-lib && npm run package",
+    "generate-lib-win": "npm run build-lib && npm run post-build-lib-win && npm run package",
+    "test": "jest --config ./jest.lib.config.js",
+    "build-lib:watch": "ng build --watch"
   },
   "author": {
     "name": "DXC Technology",
@@ -15,12 +19,12 @@
   },
   "dependencies": {
     "@angular/animations": "8.2.14",
-    "@angular/cdk": "8.0.2",
+    "@angular/cdk": "8.2.3",
     "@angular/common": "8.2.14",
     "@angular/compiler": "8.2.14",
     "@angular/core": "8.2.14",
     "@angular/forms": "8.2.14",
-    "@angular/material": "8.0.2",
+    "@angular/material": "8.2.3",
     "@angular/material-moment-adapter": "^8.1.2",
     "@angular/platform-browser": "8.2.14",
     "@angular/platform-browser-dynamic": "8.2.14",
@@ -37,21 +41,35 @@
     "moment": "^2.24.0",
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
-    "vanilla-text-mask": "^5.1.1"
+    "vanilla-text-mask": "^5.1.1",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.803.23",
     "@angular-devkit/build-ng-packagr": "0.803.23",
     "@angular/cli": "8.3.21",
     "@angular/compiler-cli": "8.2.14",
-    "@types/node": "8.9.4",
+    "@angular/language-service": "8.2.14",
     "@babel/core": "^7.4.5",
-    "ts-node": "7.0.0",    
+    "@types/node": "8.9.4",
+    "babel-loader": "^8.0.6",
+    "codelyzer": "~5.1.0",
+    "cypress": "^3.7.0",
+    "cypress-image-snapshot": "^3.1.1",
+    "jasmine-core": "3.4.0",
+    "jasmine-spec-reporter": "4.2.1",
+    "karma": "4.1.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage-istanbul-reporter": "2.0.1",
+    "karma-jasmine": "2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "ng-packagr": "^5.4.0",
+    "protractor": "5.4.0",
+    "ts-node": "7.0.0",
+    "tsickle": "^0.37.0",
     "tslib": "^1.10.0",
     "tslint": "5.15.0",
     "typescript": "3.5.3",
-    "core-js": "^3.6.5"
+    "start-server-and-test": "^1.10.6"
   }
 }

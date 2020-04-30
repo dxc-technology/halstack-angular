@@ -1,7 +1,7 @@
 <div [class]="className">
   <div #sidenavContainer class="sidenavContainerClass">
     <ng-content></ng-content>
-    <div class="sidenavArrow" (click)="arrowClicked()">
+    <div *ngIf="displayArrow" class="sidenavArrow" (click)="arrowClicked()">
       <span class="sidenavArrowImage">
         <svg
           xmlns="http://www.w3.org/2000/svg"

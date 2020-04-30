@@ -121,7 +121,7 @@ pipeline {
                         cd ./projects/dxc-ngx-cdk
                         npm install
                         npm run build-lib
-                        rpm run post-build-lib
+                        npm run post-build-lib
                         npm run package
                     '''
                 }

@@ -2,8 +2,9 @@
   theme
   #tabGroup
   [ngClass]="mode === 'filled' ? 'filled-tabs' : 'underlined-tabs'"
-  (selectedIndexChange)="activeTabIndexChanged($event)"
-  [disableRipple] ="disableRipple"
-  [(selectedIndex)] = "selectedIndex">
+  [disableRipple]="disableRipple"
+  [selectedIndex]="renderedActiveTabIndex"
+  (selectedTabChange)="onSelectedTabChangeHandler($event)"
+  >
   <ng-content #outlet></ng-content>
 </mat-tab-group>

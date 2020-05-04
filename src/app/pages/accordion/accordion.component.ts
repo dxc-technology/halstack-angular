@@ -17,9 +17,13 @@ export class AccordionComponent implements OnInit {
   ngOnInit() {
   }
 
+  changeIsExpanded($event){
+    this.isExpanded = $event;
+    console.log($event);
+  }
 
-  changeIsExpanded(){
-    this.isExpanded = !this.isExpanded;
+  uncontrolledIsExpanded($event){
+    console.log('uncontrolled: ' + $event);
   }
 
 }

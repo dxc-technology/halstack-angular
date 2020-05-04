@@ -15,6 +15,7 @@ import { MatTab, MatTabGroup } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-tabs",
@@ -38,8 +39,13 @@ export class DxcTabsComponent implements OnChanges {
   @Input() disableRipple: boolean = false;
   @Input() margin: any;
 
-  @Input("activeTabIndex") selectedIndex: number = 0;
-  @Output() activeTabIndexChange: EventEmitter<any> = new EventEmitter<any>();
+  @Input()
+  get activeTabIndex(): number { return this._activeTabIndex; }
+  set activeTabIndex(value: number) {
+    this._activeTabIndex = coerceNumberProperty(value);
+  }
+  private _activeTabIndex;
+  renderedActiveTabIndex: number;
 
   @ViewChild(MatTabGroup, { static: true })
   public tabGroup: MatTabGroup;
@@ -62,9 +68,12 @@ export class DxcTabsComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+  
+    this.renderedActiveTabIndex = this.activeTabIndex;
     if (this.tabs && this.tabs.length > 0) {
       this.generateTabs();
     }
+    
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -74,6 +83,7 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   ngOnInit() {
+    this.renderedActiveTabIndex = this.activeTabIndex;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     if (this.theme === "dark") {
       this.isLight = false;
@@ -84,8 +94,14 @@ export class DxcTabsComponent implements OnChanges {
     }
   }
 
-  public activeTabIndexChanged($event): void {
-    this.activeTabIndexChange.emit($event);
+  public onSelectedTabChangeHandler($event) {
+    this.setActiveTab();
+  }
+
+  public setActiveTab() {
+    if (this.activeTabIndex) {
+      this.tabGroup.selectedIndex = this.renderedActiveTabIndex;
+    }
   }
 
   public ngAfterViewInit() {
@@ -111,8 +127,10 @@ export class DxcTabsComponent implements OnChanges {
     const list = new QueryList<MatTab>();
     list.reset([matTabsFromQueryList]);
     this.tabGroup._tabs = list;
+    this.setActiveTab();
     this.tabGroup.ngAfterContentInit();
   }
+
   getDynamicStyle(inputs) {
     return css`
       .mat-tab-group {

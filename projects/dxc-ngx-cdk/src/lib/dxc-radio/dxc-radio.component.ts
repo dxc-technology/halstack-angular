@@ -107,6 +107,7 @@ export class DxcRadioComponent implements OnInit {
       this.renderedChecked = $event.source.checked;
     }else{
       $event.source.checked = this.renderedChecked;
+      $event.source._inputElement.nativeElement.checked = this.renderedChecked;
     }  
   }
 

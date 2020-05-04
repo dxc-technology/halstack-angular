@@ -1,3 +1,18 @@
+<h4>Uncontrolled Component</h4>
+  <div className="test-case" id="uncontrolled">
+    <dxc-slider
+    minValue="0"
+    maxValue="100"
+    showLimitsValues="true"
+    showInput="true"
+    name="input"
+    step="1"
+    marks="true"
+    (onChange)="onUncontrolledChange($event)"
+    (onDragEnd)="onDragEnd($event)"
+    margin="medium"
+  ></dxc-slider>
+  </div>
 <div className="test-case" id="light-theme">
   <h4>Light theme</h4>
   <dxc-slider
@@ -6,8 +21,11 @@
     showLimitsValues="true"
     showInput="false"
     name="input"
-    theme="light"
     step="1"
+    [value]="value"
+    marks="true"
+    (onChange)="onChange($event)"
+    (onDragEnd)="onDragEnd($event)"
     margin="medium"
   ></dxc-slider>
 </div>
@@ -40,7 +58,8 @@
     name="input"
     step="5"
     marks="true"
-    onChange="onChange"
+    [value]="value"
+    (onChange)="onChange($event)"
     margin="medium"
   ></dxc-slider>
 </div>
@@ -52,7 +71,8 @@
     showLimitsValues="true"
     name="input"
     step="1"
-    onChange="onChange"
+    [value]="value"
+    (onChange)="onChange($event)"
     margin="medium"
   ></dxc-slider>
 </div>
@@ -63,7 +83,8 @@
     maxValue="100"
     name="input"
     step="1"
-    onChange="onChange"
+    [value]="value"
+    (onChange)="onChange($event)"
     margin="medium"
   ></dxc-slider>
 </div>
@@ -76,11 +97,10 @@
     showInput="true"
     name="input"
     step="5"
-    value="25"
+    [value]="value"
     marks="true"
-    onChange="onChange"
+    (onChange)="onChange($event)"
     onDragEnd="onDragEnd"
-    onChangeInput="onChangeInput"
     margin="medium"
   ></dxc-slider>
 </div>
@@ -91,7 +111,8 @@
     maxValue="100"
     showLimitsValues="true"
     name="input"
-    onChange="onChange"
+    [value]="value"
+    (onChange)="onChange($event)"
     disabled="true"
     margin="medium"
   ></dxc-slider>

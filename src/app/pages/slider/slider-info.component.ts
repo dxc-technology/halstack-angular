@@ -7,6 +7,20 @@ import { Component } from '@angular/core';
 })
 export class SliderInfoComponent {
 
+  value: number = 0;
+
   constructor()  {}
 
+  onChange(value) {
+    this.value=value;
+    console.log(value);
+  }
+
+  onUncontrolledChange(value) {
+    console.log('uncontrolled: ' + value);
+  }
+
+  onDragEnd(value) {
+    console.log('dragEnd: ' + value);
+  }
 }

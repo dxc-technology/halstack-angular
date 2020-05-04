@@ -1,28 +1,24 @@
-<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues"> {{ minValue }}</span>
+<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues" [class]="minValueClass"> {{ minValue }}</span>
 <mat-slider
   theme
   [min]="minValue"
   [max]="maxValue"
   [step]="step"
-  [value] ="value"
-  [tickInterval] = "tickInterval"
+  [value]="renderedValue"
+  [tickInterval]="tickInterval"
   [disabled]="disabled"
   (input)="valueChanged($event)"
   (mouseup)="mouseUp($event)"
 ></mat-slider>
-<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues"> {{ maxValue }}</span>
-<mat-form-field [appearance]="'standard'" [style.display]="showInput ? 'block' : 'none'" [class.required] = "required">
-  <input
-    matInput
-    #input
-    [type] = "'number'"
-    [max] = "maxValue"
-    [min] = "minValue"
-    (input) = "valueChanged($event)"
-    (blur) = "onBlur($event)"
-    [name]="name"
-    [value] ="value"
-    [disabled]="disabled"
-    [required]="required" 
-  />
-</mat-form-field>
+<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues" [class]="maxValueClass"> {{ maxValue }}</span>
+<dxc-input-text *ngIf="showInput"
+  [value]="renderedValue"
+  [name]="name"
+  [theme]="theme"
+  [disabled]="disabled"
+  (onChange)="inputValueChanged($event)"
+  [size]="'small'"
+  [margin]="inputMargin"
+></dxc-input-text>
+
+

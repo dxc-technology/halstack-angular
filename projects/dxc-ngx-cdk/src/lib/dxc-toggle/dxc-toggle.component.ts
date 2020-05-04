@@ -39,6 +39,8 @@ export class DxcToggleComponent implements OnChanges {
 
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
 
+  renderedSelected: boolean;
+
   defaultInputs = new BehaviorSubject<any>({
     mode: "basic",
     theme: "light",
@@ -52,7 +54,10 @@ export class DxcToggleComponent implements OnChanges {
 
   constructor(private utils: CssUtils) {}
 
-  public ngOnInit() {}
+  public ngOnInit() {
+    this.renderedSelected = this.selected;
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.theme === "dark") {
@@ -62,7 +67,9 @@ export class DxcToggleComponent implements OnChanges {
       this.isLight = true;
       this.isDark = false;
     }
+
     this.iconPosition === "after" ? "after" : "before";
+    this.renderedSelected = this.selected;
 
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -73,7 +80,12 @@ export class DxcToggleComponent implements OnChanges {
   }
 
   public onClickHandler($event: any): void {
-    this.onClick.emit($event);
+    this.onClick.emit($event.source._checked);
+    if (this.selected === undefined || this.selected === null){
+      this.renderedSelected = $event.source._checked;
+    }else{
+      $event.source._checked = this.renderedSelected;
+    }
   }
 
   sizes = {

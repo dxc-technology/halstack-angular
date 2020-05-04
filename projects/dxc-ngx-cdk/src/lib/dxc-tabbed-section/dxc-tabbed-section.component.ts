@@ -42,7 +42,6 @@ export class DxcTabbedSectionComponent implements OnInit {
   ngOnInit() {
     this.styledDxcSectionTabbedGroup = `${this.setStyledDxcSectionTabbedGroup(this.defaultInputs.getValue())}`;
     this.calculateOffset(this.defaultInputs.getValue().stickAtPx);
-    this.sectionTabGroup.activeTabIndexChange.subscribe(sectionId => this.selectecTab = sectionId);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -62,9 +61,9 @@ export class DxcTabbedSectionComponent implements OnInit {
 
   onSectionChange(sectionId: string) {
     if (sectionId !== undefined && sectionId !== null) {
-      this.sectionTabGroup.selectedIndex = +sectionId;
+      this.sectionTabGroup.activeTabIndex = +sectionId;
     } else {
-      this.sectionTabGroup.selectedIndex = 0;
+      this.sectionTabGroup.activeTabIndex = 0;
     }
   }
 

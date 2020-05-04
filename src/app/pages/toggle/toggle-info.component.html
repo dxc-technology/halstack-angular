@@ -1,6 +1,14 @@
+<h4>Uncontrolled Component</h4>
+  <div className="test-case" id="uncontrolled">
+    <dxc-toggle 
+      label="Toggle"  
+      (onClick)="onUncontrolledClick($event)" 
+    ></dxc-toggle>
+  </div>
+
 <div className="test-case" id="light-theme">
   <h4>Light theme</h4>
-  <dxc-toggle label="Toggle" [(selected)]="selected" (onClick)="onClick()" ></dxc-toggle>
+  <dxc-toggle label="Toggle" [selected]="selected" (onClick)="onClick($event)" ></dxc-toggle>
 </div>
 
 <div>
@@ -12,16 +20,16 @@
   >
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
+      [selected]="selected"
       theme="dark"
-      (onClick)="onClick()"
+      (onClick)="onClick($event)"
     ></dxc-toggle>
   </div>
 </div>
 
 <div className="test-case" id="basic-toggle">
   <h4>Basic toggle</h4>
-  <dxc-toggle label="Basic toggle" [(selected)]="selected" (onClick)="onClick()" ></dxc-toggle>
+  <dxc-toggle label="Basic toggle" [selected]="selected" (onClick)="onClick($event)" ></dxc-toggle>
 </div>
 
 <div className="test-case" id="outlined-toggle">
@@ -29,21 +37,21 @@
   <dxc-toggle
     label="Outlined toggle"
     mode="outlined"
-    [(selected)]="selected"
-    (onClick)="onClick()"
+    [selected]="selected"
+    (onClick)="onClick($event)"
   ></dxc-toggle>
 </div>
 <div className="test-case" id="icon-toggle">
   <h4>Toggle with icon</h4>
-  <dxc-toggle iconSrc="./assets/images/favorite.svg" [(selected)]="selected" (onClick)="onClick()" ></dxc-toggle>
+  <dxc-toggle iconSrc="./assets/images/favorite.svg" [selected]="selected" (onClick)="onClick($event)" ></dxc-toggle>
 </div>
 <div className="test-case" id="disabled-toggle">
   <h4>Disabled toggle</h4>
   <dxc-toggle
     label="Toggle"
     disabled="true"
-    [(selected)]="selected"
-    (onClick)="onClick()"
+    [selected]="selected"
+    (onClick)="onClick($event)"
   ></dxc-toggle>
 </div>
 
@@ -53,8 +61,8 @@
     <h5>Small size - Label max size single line</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="small"
     ></dxc-toggle>
   </div>
@@ -62,8 +70,8 @@
     <h5>Small size - Label min size multiline</h5>
     <dxc-toggle
       label="Toggle e"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="small"
     ></dxc-toggle>
   </div>
@@ -72,8 +80,8 @@
     <h5>Medium size - Label max size single line</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="medium"
     ></dxc-toggle>
   </div>
@@ -81,8 +89,8 @@
     <h5>Medium size - Label min size multiline</h5>
     <dxc-toggle
       label="Toggle e"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="medium"
     ></dxc-toggle>
   </div>
@@ -91,8 +99,8 @@
     <dxc-toggle
       label="Toggle"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="medium"
     ></dxc-toggle>
   </div>
@@ -101,8 +109,8 @@
     <dxc-toggle
       label="Toggle e"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="medium"
     ></dxc-toggle>
   </div>
@@ -112,8 +120,8 @@
       label="Toggle"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="medium"
     ></dxc-toggle>
   </div>
@@ -123,8 +131,8 @@
       label="Toggle e"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="medium"
     ></dxc-toggle>
   </div>
@@ -133,8 +141,8 @@
     <h5>Large size - Label max size single line</h5>
     <dxc-toggle
       label="Toggle example toggl"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="large"
     ></dxc-toggle>
   </div>
@@ -142,8 +150,8 @@
     <h5>Large size - Label min size multiline</h5>
     <dxc-toggle
       label="Toggle example toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="large"
     ></dxc-toggle>
   </div>
@@ -152,8 +160,8 @@
     <dxc-toggle
       label="Toggle example to"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="large"
     ></dxc-toggle>
   </div>
@@ -162,8 +170,8 @@
     <dxc-toggle
       label="Toggle example tog"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="large"
     ></dxc-toggle>
   </div>
@@ -173,8 +181,8 @@
       label="Toggle example to"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="large"
     ></dxc-toggle>
   </div>
@@ -184,8 +192,8 @@
       label="Toggle example tog"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="large"
     ></dxc-toggle>
   </div>
@@ -194,8 +202,8 @@
     <h5>FitContent size - Label max size single line</h5>
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle exam"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fitContent"
     ></dxc-toggle>
   </div>
@@ -204,8 +212,8 @@
     <h5>FitContent size - Label min size multiline</h5>
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle examp"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fitContent"
     ></dxc-toggle>
   </div>
@@ -215,8 +223,8 @@
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle e"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fitContent"
     ></dxc-toggle>
   </div>
@@ -225,8 +233,8 @@
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle ex"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fitContent"
     ></dxc-toggle>
   </div>
@@ -236,8 +244,8 @@
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle e"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fitContent"
     ></dxc-toggle>
   </div>
@@ -247,8 +255,8 @@
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle ex"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fitContent"
     ></dxc-toggle>
   </div>
@@ -257,8 +265,8 @@
     <h5>FillParent size - Label max size single line</h5>
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle exam"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fillParent"
     ></dxc-toggle>
   </div>
@@ -266,8 +274,8 @@
     <h5>FillParent size - Label min size multiline</h5>
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle examp"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fillParent"
     ></dxc-toggle>
   </div>
@@ -276,8 +284,8 @@
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle e"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fillParent"
     ></dxc-toggle>
   </div>
@@ -286,8 +294,8 @@
     <dxc-toggle
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle ex"
       iconSrc="./assets/images/favorite.svg"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fillParent"
     ></dxc-toggle>
   </div>
@@ -297,8 +305,8 @@
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle e"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fillParent"
     ></dxc-toggle>
   </div>
@@ -308,8 +316,8 @@
       label="Toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle example toggle ex"
       iconSrc="./assets/images/favorite.svg"
       iconPosition="after"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       size="fillParent"
     ></dxc-toggle>
   </div>
@@ -320,8 +328,8 @@
     <h5>xxsmall margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="xxsmall"
     ></dxc-toggle>
   </div>
@@ -329,8 +337,8 @@
     <h5>xsmall margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="xsmall"
     ></dxc-toggle>
   </div>
@@ -338,8 +346,8 @@
     <h5>Small margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="small"
     ></dxc-toggle>
   </div>
@@ -347,8 +355,8 @@
     <h5>Medium margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="medium"
     ></dxc-toggle>
   </div>
@@ -356,8 +364,8 @@
     <h5>Large margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="large"
     ></dxc-toggle>
   </div>
@@ -365,8 +373,8 @@
     <h5>xlarge margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="xlarge"
     ></dxc-toggle>
   </div>
@@ -374,8 +382,8 @@
     <h5>xxlarge margin</h5>
     <dxc-toggle
       label="Toggle"
-      [(selected)]="selected"
-      (onClick)="onClick()"
+      [selected]="selected"
+      (onClick)="onClick($event)"
       margin="xxlarge"
     ></dxc-toggle>
   </div>

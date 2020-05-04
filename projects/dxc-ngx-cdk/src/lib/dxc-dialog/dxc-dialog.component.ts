@@ -54,6 +54,18 @@ export class DxcDialogComponent {
     this.onBackgroundClick.emit($event);
   }
 
+  private overlayStyle(overlay:boolean){
+    if(overlay === true){
+      return css`
+        background-color: rgba(0, 0, 0, 0.7);
+      `;
+    }
+    else 
+      return css`
+        background-color: transparent;
+      `;
+  }
+
   getDynamicStyle(inputs) {
     return css`
       .dialog {
@@ -70,13 +82,7 @@ export class DxcDialogComponent {
           bottom: 0;
           position: fixed;
           opacity: 1;
-          ${inputs.overlay
-            ? css`
-                background-color: rgba(0, 0, 0, 0.7);
-              `
-            : css`
-                background-color: transparent;
-              `}
+          ${this.overlayStyle(inputs.overlay)}
           transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         }
         .container {

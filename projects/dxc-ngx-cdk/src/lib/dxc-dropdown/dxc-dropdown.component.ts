@@ -110,25 +110,25 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     let borderColor = "";
     let color = "";
     if (theme === "light" && mode === "outlined") {
-      backgroundColor = "var(--white)";
-      borderColor = "var(--black)";
-      color = "var(--black)";
+      backgroundColor = "var(--white, white)";
+      borderColor = "var(--black, black)";
+      color = "var(--black, black)";
     } else if (theme === "light" && mode === "basic") {
-      backgroundColor = "var(--black)";
-      borderColor = "var(--white)";
-      color = "var(--white)";
+      backgroundColor = "var(--black, black)";
+      borderColor = "var(--white, white)";
+      color = "var(--white, white)";
     } else if (theme === "dark" && mode === "outlined") {
-      backgroundColor = "var(--black)";
-      borderColor = "var(--white)";
-      color = "var(--white)";
+      backgroundColor = "var(--black, black)";
+      borderColor = "var(--white, white)";
+      color = "var(--white, white)";
     } else if (theme === "dark" && mode === "basic") {
-      backgroundColor = "var(--white)";
-      borderColor = "var(--white)";
-      color = "var(--black)";
+      backgroundColor = "var(--white, white)";
+      borderColor = "var(--white, white)";
+      color = "var(--black, black)";
     } else {
-      backgroundColor = "var(--white)";
-      borderColor = "var(--black)";
-      color = "var(--black)";
+      backgroundColor = "var(--white, white)";
+      borderColor = "var(--black, black)";
+      color = "var(--black, black)";
     }
     return css`
       margin-top: ${mode === "outlined" ? "-2px" : "2px"};
@@ -146,11 +146,11 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       .mat-menu-item {
         &:hover {
           color: black;
-          background: var(--darkWhite);
+          background: var(--darkWhite, #EEEEEE);
         }
         &:active {
           color: white;
-          background: var(--darkGrey);
+          background: var(--darkGrey, #666666);
         }
       }
     `;
@@ -167,25 +167,25 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       ${this.getBackgroundColorBaseOnModeAndTheme("light", this.mode)}
       .mat-menu-item {
         &:hover {
-          background: var(--darkWhite);
-          color: var(--black);
+          background: var(--darkWhite, #EEEEEE);
+          color: var(--black, black);
         }
         &:active {
-          background: var(--lightGrey);
+          background: var(--lightGrey, #D9D9D9);
         }
       }
       &.basic {
-        background-color: var(--black);
+        background-color: var(--black, black);
         .mat-menu-content {
           .mat-menu-item {
-            color: var(--white);
+            color: var(--white, white);
             &:hover {
-              background: var(--darkWhite);
-              color: var(--black);
+              background: var(--darkWhite, #EEEEEE);
+              color: var(--black, black);
             }
             &:active {
-              background: var(--lightGrey);
-              color: var(--black);
+              background: var(--lightGrey, #D9D9D9);
+              color: var(--black, black);
             }
           }
         }

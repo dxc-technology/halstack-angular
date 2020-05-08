@@ -3,7 +3,7 @@
   ::ng-deep {
     label.mat-radio-label {
       .mat-radio-required {
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
     }
   }
@@ -23,26 +23,26 @@
 
           .mat-radio-button-background {
             svg path {
-              stroke: var(--black);
+              stroke: var(--black, black);
             }
 
             .mat-radio-button-mixedmark {
-              background-color: var(--black);
+              background-color: var(--black, black);
             }
           }
         }
       }
       .mat-radio-inner-circle {
-        background-color: var(--black);
+        background-color: var(--black, black);
       }
       .mat-radio-outer-circle {
-        border-color: var(--black);
+        border-color: var(--black, black);
       }
 
       .mat-radio-ripple {
         .mat-ripple-element:not(.mat-radio-persistent-ripple) {
           opacity: 0.1;
-          background-color: var(--darkGrey);
+          background-color: var(--darkGrey, #666666);
         }
       }
     }

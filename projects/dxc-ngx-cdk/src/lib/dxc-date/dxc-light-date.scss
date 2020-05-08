@@ -3,30 +3,30 @@
     .mat-form-field-infix .mat-form-field-label-wrapper {
       .mat-form-field-label {
         span {
-          color: var(--darkRed);
+          color: var(--darkRed, #D0011B);
         }
       }
     }
     .mat-form-field-invalid {
       .mat-hint {
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
       .mat-form-field-empty mat-label {
-        color: var(--darkGrey);
+        color: var(--darkGrey, #666666);
       }
       &.mat-focused .mat-form-field-empty mat-label {
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
       .mat-form-field-label:not(.mat-form-field-empty) mat-label{
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
     }
     label.mat-form-field-label:not(.mat-form-field-empty) mat-label {
-      color: var(--black);
+      color: var(--black, black);
     }
     .mat-icon-button:hover {
       .mat-button-ripple {
-        background-color: var(--darkGrey);
+        background-color: var(--darkGrey, #666666);
         opacity: 0.25;
       }
     }

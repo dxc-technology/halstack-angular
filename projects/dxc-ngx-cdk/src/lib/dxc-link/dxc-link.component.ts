@@ -19,6 +19,7 @@ export class DxcLinkComponent {
   @Input() theme: string;
   @Input() underlined: boolean;
   @Input() inheritColor: boolean;
+  @Input() disabled: boolean;
   @Input() text: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;
@@ -34,6 +35,7 @@ export class DxcLinkComponent {
     theme: "light",
     underlined: true,
     inheritColor: false,
+    disabled: false,
     text: null,
     iconSrc: null,
     iconPosition: "before",
@@ -90,9 +92,13 @@ export class DxcLinkComponent {
         border-bottom: 1px solid;` : 
         ``}
 
-        color: ${!inputs.inheritColor ?
+        ${inputs.disabled ? "pointer-events: none;" : ""}
+
+        color: ${inputs.disabled ? 
+              inputs.theme === "light" ? "#525252" : "#959595" 
+              : (!inputs.inheritColor ?
                 inputs.theme === "light" ? '#006BF6' : '#4797FF'
-                : inputs.theme === "dark" ? `#FFFFFF` : `inherit` } !important;
+                : inputs.theme === "dark" ? `#FFFFFF` : `inherit`)} !important;
 
         ${this.getStateStyles(inputs)}
 
@@ -121,7 +127,10 @@ export class DxcLinkComponent {
       }
 
       &:visited {
-        color: ${inputs.theme === "light" ? `#8800F6` : `#C175FF`} !important;
+        ${
+          !inputs.disabled ?
+          `color: ${inputs.theme === "light" ? `#8800F6` : `#C175FF`} !important;` : ""
+        }
       }
     `;
   } 

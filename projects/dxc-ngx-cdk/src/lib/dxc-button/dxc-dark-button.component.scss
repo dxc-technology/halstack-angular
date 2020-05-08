@@ -3,23 +3,23 @@
         &:disabled
         ::ng-deep {
            span.mat-button-wrapper  span {
-                color: var(--black);
+                color: var(--black, black);
                 opacity: 1;
             }
         }
         &.mat-raised-button,
         &.mat-button {
-            background: var(--yellow);
+            background: var(--yellow, #FFED00);
             &:disabled {
                 opacity: 0.5;
             }
             &:hover:not([disabled]) {
-                background: var(--lightBlack);
-                color:var(--yellow);
+                background: var(--lightBlack, #212121);
+                color:var(--yellow, #FFED00);
             }
             ::ng-deep {
                 .mat-ripple-element {
-                  background-color: var(--white);
+                  background-color: var(--white, white);
                   opacity:0.4;
                 }
             }
@@ -28,44 +28,44 @@
             box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.16) !important;
         }
         &.mat-stroked-button {
-            color: var(--white);
+            color: var(--white, white);
             background: transparent;
-            border-color: var(--white);
+            border-color: var(--white, white);
             border-width: 2px;
             border-radius: 2px;
             &:hover:not([disabled]) {
-                border-color:var(--yellow);
+                border-color:var(--yellow, #FFED00);
             }
             ::ng-deep  {
                 span.mat-button-wrapper  span { 
-                    color: var(--white);
+                    color: var(--white, white);
                 }
                 .mat-ripple-element {
-                    background-color: var(--lightGrey);
+                    background-color: var(--lightGrey, #D9D9D9);
                     opacity:0.3;
                 }
             }
         } 
         &.mat-flat-button {
             &:hover:not([disabled]) {
-                background: var(--lightGrey);
+                background: var(--lightGrey, #D9D9D9);
                 ::ng-deep {
                     span.mat-button-wrapper > span {
-                        color:var(--black);
+                        color:var(--black, black);
                     }
                 }
             }
             &:disabled {
                 ::ng-deep {
                     span.mat-button-wrapper > span {
-                        color: var(--white);
+                        color: var(--white, white);
                     }
                 }
-                background-color: var(--darkGrey);
+                background-color: var(--darkGrey, #666666);
             }
             ::ng-deep {
                 span.mat-button-wrapper > span {
-                    color: var(--white);
+                    color: var(--white, white);
                 }
             }
             background-color: transparent;

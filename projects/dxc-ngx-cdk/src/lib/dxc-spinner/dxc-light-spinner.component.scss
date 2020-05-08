@@ -6,16 +6,16 @@
       background-color: #000000b3;
     }
     .labelsContainer {
-      color: var(--white);
+      color: var(--white,white);
       &.notOverlayed {
-        color: var(--black);
+        color: var(--black, black);
       }
     }
   }
   .mat-progress-spinner.backCircle {
     ::ng-deep {
       circle {
-        stroke: var(--white);
+        stroke: var(--white, white);
       }
     }
   }
@@ -23,7 +23,7 @@
   .mat-progress-spinner.spinner {
     ::ng-deep {
       circle {
-        stroke: var(--yellow);
+        stroke: var(--yellow, #FFED00);
       }
     }
   }

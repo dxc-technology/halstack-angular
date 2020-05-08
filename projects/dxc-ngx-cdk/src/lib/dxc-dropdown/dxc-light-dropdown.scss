@@ -1,60 +1,60 @@
 :host.dxc-light {
   .menu-buttom-label-wrapper {
-    background: var(--white) 0% 0% no-repeat padding-box;
-    border: 2px solid var(--black);
+    background: var(--white, white) 0% 0% no-repeat padding-box;
+    border: 2px solid var(--black, black);
     &.menu-opened {
-      background: var(--darkWhite);
+      background: var(--darkWhite, #EEEEEE);
     }
   }
   .menu-buttom-label {
-    color: var(--black);
+    color: var(--black, black);
   }
   .arrow-down {
-    border-top: 5px solid var(--black);
+    border-top: 5px solid var(--black, black);
   }
   .arrow-up {
-    border-bottom: 5px solid var(--black);
+    border-bottom: 5px solid var(--black, black);
   }
   button.mat-button.basic {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--black, black);
+    color: var(--white, white);
     border: none;
     .menu-buttom-label {
-      color: var(--white);
+      color: var(--white, white);
     }
     .arrow-down {
-      border-top: 5px solid var(--white);
+      border-top: 5px solid var(--white, white);
     }
     .arrow-up {
-      border-bottom: 5px solid var(--white);
+      border-bottom: 5px solid var(--white, white);
     }
   }
 }
 ::ng-deep .dxc-dropdown-menu {
   .mat-menu-content {
-    border: 2px solid var(--black);
+    border: 2px solid var(--black, black);
   }
   .mat-menu-item {
     &:hover {
-      background: var(--darkWhite);
+      background: var(--darkWhite, #EEEEEE);
     }
     &:active {
-      background: var(--lightGrey);
+      background: var(--lightGrey, #D9D9D9);
     }
   }
   &.basic {
-    background-color: var(--black);
+    background-color: var(--black, black);
     .mat-menu-content {
       border: none;
       .mat-menu-item {
-        color: var(--white);
+        color: var(--white, white);
         &:hover {
-          background: var(--darkWhite);
-          color: var(--black);
+          background: var(--darkWhite, #EEEEEE);
+          color: var(--black, black);
         }
         &:active {
-          background: var(--lightGrey);
-          color: var(--black);
+          background: var(--lightGrey, #D9D9D9);
+          color: var(--black, black);
         }
       }
     }

@@ -3,14 +3,14 @@
     &:not(.mat-slider-disabled) {
       ::ng-deep {
         .mat-slider-track-fill{
-          background-color: var(--black);
+          background-color: var(--black, black);
         }
         .mat-slider-thumb {
-          background-color: var(--black);
+          background-color: var(--black, black);
         }
         .mat-slider-track-background {
           opacity: 0.54;
-          background-color: var(--lightGrey);
+          background-color: var(--lightGrey, #D9D9D9);
         }
         .mat-slider-ticks {
           background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, 1) , rgba(0, 0, 0, 1) 4px 4px, transparent 2px, #e2141400);
@@ -18,7 +18,7 @@
         }
         .mat-slider-wrapper {
           opacity: 1;
-          background-color: var(--lightGrey);
+          background-color: var(--lightGrey, #D9D9D9);
         }
       }
 
@@ -36,7 +36,7 @@
         ::ng-deep {
           .mat-slider-focus-ring {
             opacity: 0.1;
-            background-color: var(--darkGrey);
+            background-color: var(--darkGrey, #666666);
           }
         }
       }
@@ -46,8 +46,8 @@
       ::ng-deep {
         .mat-slider-thumb {
           transform: scale(0.7) !important;
-          border-color: var(--lightGrey) !important;
-          background-color: var(--lightGrey);
+          border-color: var(--lightGrey, #D9D9D9) !important;
+          background-color: var(--lightGrey, #D9D9D9);
         }
       }
     }

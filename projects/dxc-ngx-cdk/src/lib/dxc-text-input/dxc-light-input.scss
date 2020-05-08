@@ -7,26 +7,26 @@
   }
   ::ng-deep {
     .mat-form-field-underline {
-      background-color: var(--black);
+      background-color: var(--black, black);
     }
     label.mat-form-field-label:not(.mat-form-field-empty) {
-      color: var(--black);
+      color: var(--black, black);
     }
     .mat-form-field-invalid {
       .mat-hint {
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
       .mat-form-field-underline {
-        background-color: var(--darkRed);
+        background-color: var(--darkRed, #D0011B);
       }
       .mat-form-field-empty mat-label {
-        color: var(--darkGrey);
+        color: var(--darkGrey, #666666);
       }
       &.mat-focused .mat-form-field-empty mat-label {
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
       .mat-form-field-label:not(.mat-form-field-empty) mat-label{
-        color: var(--darkRed);
+        color: var(--darkRed, #D0011B);
       }
     }
   }
@@ -34,7 +34,7 @@
     .mat-form-field-label-wrapper {
       .mat-form-field-label {
         span {
-          color: var(--darkRed);
+          color: var(--darkRed, #D0011B);
         }
       }
     }

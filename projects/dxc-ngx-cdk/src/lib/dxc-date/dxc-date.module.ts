@@ -18,7 +18,6 @@ import {
   MomentDateAdapter,
   MatMomentDateModule
 } from "@angular/material-moment-adapter";
-import { ThemeModule, defaultTheme } from '../theme';
 export const MY_FORMATS = {
   parse: {
     dateInput: "L"
@@ -43,11 +42,7 @@ export const MY_FORMATS = {
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxMaskModule.forRoot(),
-    ThemeModule.forRoot({
-      themes: [defaultTheme],
-      active: "default"
-    })
+    NgxMaskModule.forRoot()
   ],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},

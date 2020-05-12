@@ -1,6 +1,5 @@
 <button
   #dropdownButton
-  theme
   mat-button
   (menuClosed)="isMenuOpened()"
   (menuOpened)="isMenuOpened()"
@@ -23,7 +22,6 @@
 </button>
 
 <mat-menu
-  theme
   #menu="matMenu"
   disableRipple="disableRipple"
   [class] = "menuOptions"
@@ -34,7 +32,6 @@
   ">
 
   <button
-    theme
     *ngFor="let option of options; index as i"
     mat-menu-item
     [ngClass]="optionsIconPosition === 'after' ? 'icon-after' : 'icon-before'"

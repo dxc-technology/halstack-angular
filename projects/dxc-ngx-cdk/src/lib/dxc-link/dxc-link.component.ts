@@ -75,8 +75,6 @@ export class DxcLinkComponent {
   }
 
   getDynamicStyle(inputs) {
-    console.log(this.disabled);
-    console.log(inputs.disabled);
     return css`
       a {
         ${this.utils.getMargins(inputs.margin)}

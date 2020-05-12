@@ -5,7 +5,6 @@ import {
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTextInputComponent } from './dxc-input-text.component';
-import { ThemeModule, defaultTheme } from '../theme';
 
 @NgModule({
   declarations: [DxcTextInputComponent],
@@ -14,11 +13,7 @@ import { ThemeModule, defaultTheme } from '../theme';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule,
-    ThemeModule.forRoot({
-      themes: [defaultTheme],
-      active: "default"
-    })
+    FormsModule
   ],
   exports: [DxcTextInputComponent]
 })

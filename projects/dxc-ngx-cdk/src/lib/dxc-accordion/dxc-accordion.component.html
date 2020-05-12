@@ -1,4 +1,4 @@
-<mat-accordion [ngClass] = "[mode === 'alternative' ? 'alternative': 'default']" theme>
+<mat-accordion [ngClass] = "[mode === 'alternative' ? 'alternative': 'default']">
   <mat-expansion-panel #matExpansionPanel [ngClass] = "[disabled ? 'disabled': '']" [disabled]="disabled" [expanded]="renderedIsExpanded">
     <mat-expansion-panel-header (click)="onClickHandler($event)" [expandedHeight]="'48px'">
       <mat-panel-title [ngClass]="iconPosition === 'after' ? 'after' : 'before'">

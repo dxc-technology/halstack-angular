@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
   ],
   exports: [DxcRadioComponent]
 })

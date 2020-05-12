@@ -1,7 +1,6 @@
-<mat-form-field theme>
+<mat-form-field>
   <mat-label>{{ label }}</mat-label>
   <mat-select
-    theme
     disableOptionCentering
     [panelClass]="
       onlyHasIcons && !multiple
@@ -17,7 +16,7 @@
     [multiple]="multiple"
     [value]="renderedValue"
   >
-    <mat-select-trigger theme>
+    <mat-select-trigger>
       <ng-container *ngIf="renderedValue && onlyHasIcons">
         <div *ngFor="let icon of iconsToShow">
           <img src="{{ icon }}" />
@@ -34,7 +33,6 @@
     </mat-select-trigger>
 
     <mat-option
-      theme
       *ngFor="let option of options; index as i"
       value="{{ option.value }}"
       [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"

@@ -41,12 +41,8 @@ export class AppComponent {
     this.http.get('../assets/styles/themesProperties.json').
     subscribe(
       resp=> {
-        const remoteTheme = {name:"remote", properties: JSON.parse(JSON.stringify(resp))};
+        const remoteTheme = {properties: JSON.parse(JSON.stringify(resp))};
         this.themeService.registerTheme(remoteTheme);
-        this.themeService.setTheme('remote');    
-      },
-      () => {
-        this.themeService.setTheme('default');    
       }
     );
 

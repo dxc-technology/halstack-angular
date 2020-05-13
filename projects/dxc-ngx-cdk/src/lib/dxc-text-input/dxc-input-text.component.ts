@@ -9,12 +9,12 @@ import {
   ChangeDetectionStrategy,
   ViewChild
 } from "@angular/core";
-import { FormControl } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { ElementRef, OnInit, AfterViewChecked } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: "dxc-input-text",
@@ -46,6 +46,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   @Input() public assistiveText: string;
   @Input() public name: string;
   @Input() public value: string;
+  @Input() public placeholder: string;
 
   @Input() public margin: any;
   @Input() public size: string;
@@ -56,12 +57,13 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   renderedValue = '';
+  private _valueChangeTrack : boolean;
 
   @ViewChild('dxcSingleInput', {static: false}) singleInput : ElementRef; 
   @ViewChild('dxcMultiInput', {static: false}) multiInput : ElementRef; 
 
-  selectionStart : number;
-  selectionEnd : number;
+  selectionStart : number = 0;
+  selectionEnd : number = 0;
   clicked: boolean = false;
 
   sizes = {
@@ -83,6 +85,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
     invalid: false,
     label: null,
     assistiveText: null,
+    placeholder: null,
     name: null,
     value: null,
     margin: null,
@@ -96,16 +99,15 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   }
 
   ngOnInit() {
-
-    if (this.value){
-      this.renderedValue = this.value;
-    }
-
+    this.renderedValue = this.value || '';
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   ngAfterViewChecked(): void {
-    this.multiline ? this.setCursorSelection(this.multiInput) : this.setCursorSelection(this.singleInput);
+      if (this._valueChangeTrack) {
+        this._valueChangeTrack = false;
+        this.multiline ? this.setCursorSelection(this.multiInput) : this.setCursorSelection(this.singleInput);
+      }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -119,7 +121,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
     this.isDisabled = this.disabled;
     
     this.renderedValue = this.value || '';
-
+    this.label = this.label || '';
     this.matcher.setInvalid(this.invalid);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -129,16 +131,15 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-
-    this.multiline ? this.setCursorSelection(this.multiInput) : this.setCursorSelection(this.singleInput);
+    this._valueChangeTrack = true;
   }
 
   public onChanged($event: any): void {
     this.clicked = false;
     this.selectionStart = $event.target.selectionStart;
     this.selectionEnd = $event.target.selectionEnd;
-    
     this.onChange.emit($event.target.value);
+
     if (this.value === undefined || this.value === null){
       this.renderedValue = $event.target.value;
     }else{
@@ -158,24 +159,23 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   /**
    *Executed when input lost the focus
    */
-  public onBlurHandle($event): void {
+  public onBlurHandle($event: any): void {
     this.onBlur.emit(this.renderedValue);
   }
 
   public onClickSuffixHandler($event): void {
-    this.onClickSuffix.emit();    
-  
+    this.onClickSuffix.emit($event);    
   }
 
   public onClickPrefixHandler($event): void {
-      this.onClickPrefix.emit();
+      this.onClickPrefix.emit($event);
   }
 
   private setCursorSelection(input: ElementRef) {
     if (!this.clicked && input) {
       input.nativeElement.selectionStart = this.selectionStart;
       input.nativeElement.selectionEnd = this.selectionEnd;
-    }
+    } 
   }
 
   calculateWidth(inputs) {

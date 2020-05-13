@@ -1,5 +1,5 @@
 
-<mat-form-field theme [class.disabled]="disabled">
+<mat-form-field theme [class.disabled]="disabled" appearance="standard">
   <span
     matPrefix
     (click)="onClickPrefixHandler($event)"
@@ -27,6 +27,7 @@
     [name]="name"
     [type]="'text'"
     [errorStateMatcher]="matcher"
+    [placeholder]="placeholder"
     />
   <textarea
     *ngIf="multiline"
@@ -39,7 +40,10 @@
     [errorStateMatcher]="matcher"
     (blur)="onBlurHandle($event)"
     (input)="onChanged($event)"
-    (click)="onClickHandle($event)"></textarea>
+    (click)="onClickHandle($event)"
+    [placeholder]="placeholder"
+    >
+  </textarea>
   <span
     matSuffix
     (click)="onClickSuffixHandler($event)"

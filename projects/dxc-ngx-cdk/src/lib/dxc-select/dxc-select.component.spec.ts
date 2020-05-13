@@ -129,10 +129,7 @@ describe("DxcSelect tests", () => {
   });
 
   test("dxc-select controlled multiple functionality", async () => {
-    const changeMock = jest.fn(x=> {
-      console.log(x);
-      dxcSelect.detectChanges();
-    });
+    const changeMock = jest.fn();
     const dxcSelect = await render(DxcSelectComponent, {
       componentProperties: {
         label: "test-select",
@@ -150,10 +147,11 @@ describe("DxcSelect tests", () => {
     fireEvent.click(screen.getByText("Apple"));
     expect(changeMock).toHaveBeenCalledWith(["1", "2", "3"]);
     dxcSelect.detectChanges();
+    fireEvent.click(dxcSelect.getByText("Amazon,Ebay"));
+    dxcSelect.detectChanges();
     fireEvent.click(screen.getByText("Google"));
-    expect(changeMock).toHaveBeenCalledWith(["1", "2", "3", "4"]);
+    expect(changeMock).toHaveBeenCalledWith(["1", "2", "4"]);
     dxcSelect.detectChanges();
     expect(dxcSelect.getByText("Amazon,Ebay"));
   });
-
 });

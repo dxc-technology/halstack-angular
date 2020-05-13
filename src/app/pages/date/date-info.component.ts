@@ -8,15 +8,26 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 export class DateInfoComponent  implements OnInit{
 
 
-  inputValue:Date;
+  inputValue:string = "1995/12/03";
+
+  isInvalidDate:boolean= false;
 
   ngOnInit(): void {
-    this.inputValue = new Date("1995/12/03");
+    
   }
 
-  onChange(event)  {
-    this.inputValue = event.dateValue!== null && event.dateValue !== undefined ?  new Date(event.dateValue) : null;
+  onChange(event: any)  {
+    this.inputValue = event.stringValue;
+    console.log('change: ' + JSON.stringify(event));
+    this.checkDate(event.dateValue);
   };
-  constructor()  {}
 
+  onUncontrolledChange(event: any) {
+    console.log('uncontrolledchange: ' + JSON.stringify(event));
+  }
+
+  checkDate(dateValue: Date ) {
+    debugger;
+    this.isInvalidDate=dateValue ? false : true;
+  }
 }

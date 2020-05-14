@@ -270,7 +270,7 @@ pipeline {
         always {
             script {
                 env.GIT_USER = sh (
-                    script: 'pwd && ls -la && git --no-pager show -s --format=\'%ae\'',
+                    script: 'git --no-pager show -s --format=\'%ae\'',
                     returnStdout: true
                 ).trim()
 
@@ -287,7 +287,7 @@ pipeline {
                   }
                   subjectmessage = 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)'
                 }
-                emailext subject: "${subjectmessage}", body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH} <br/> ${mailmessage}", to: "${GIT_USER}",from: 'no-reply@platformdxc-mg.com'
+                emailext subject: "${subjectmessage}", body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH} <br/> ${mailmessage}", to: "mgarcia232@dxc.com,vrodriguezgu@dxc.com",from: 'no-reply@platformdxc-mg.com'
                 sh "cd /"
                 deleteDir()
                 }

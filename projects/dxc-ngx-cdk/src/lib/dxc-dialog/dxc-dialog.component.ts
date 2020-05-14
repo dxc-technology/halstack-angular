@@ -109,7 +109,7 @@ export class DxcDialogComponent {
             border-radius: 4px;
             color: rgba(0, 0, 0, 0.87);
             transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            background-color: var(--white);
+            background-color: var(--white, white);
             .closeIcon {
               display: flex;
               justify-content: flex-end;
@@ -128,22 +128,22 @@ export class DxcDialogComponent {
                 width: 3px;
               }
               &::-webkit-scrollbar-track {
-                background-color: var(--lightGrey);
+                background-color: var(--lightGrey, #D9D9D9);
                 border-radius: 3px;
               }
               &::-webkit-scrollbar-thumb {
-                background-color: var(--darkGrey);
+                background-color: var(--darkGrey, #666666);
                 border-radius: 3px;
               }
               ::-webkit-scrollbar {
                 width: 3px;
               }
               ::-webkit-scrollbar-track {
-                background-color: var(--lightGrey);
+                background-color: var(--lightGrey, #D9D9D9);
                 border-radius: 3px;
               }
               ::-webkit-scrollbar-thumb {
-                background-color: var(--darkGrey);
+                background-color: var(--darkGrey, #666666);
                 border-radius: 3px;
               }
             }

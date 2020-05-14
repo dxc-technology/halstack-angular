@@ -90,7 +90,7 @@ export class DxcFooterComponent implements OnChanges {
 
   bottomLinkStyle: string = css`
     text-decoration: none;
-    color: var(--white);
+    color: var(--white, white);
     font-size: 12px;
   `;
 
@@ -137,7 +137,7 @@ export class DxcFooterComponent implements OnChanges {
     return css`
       padding: ${responsive ? "20px" : "20px 60px 20px 20px"};
       font-family: "Open Sans", sans-serif;
-      background-color: var(--black);
+      background-color: var(--black, black);
       ${this.utils.getTopMargin(input.margin)}
     `;
   }
@@ -159,7 +159,7 @@ export class DxcFooterComponent implements OnChanges {
       align-items: ${responsive ? "center" : "flex-end"};
 
       .copyrightStyle {
-        color: var(--white);
+        color: var(--white, white);
         font-size: 12px;
         max-width: ${responsive ? "100%" : "40%"};
         width: ${responsive ? "100%" : "40%"};
@@ -168,7 +168,7 @@ export class DxcFooterComponent implements OnChanges {
 
       .bottomLinksStyle {
         padding-top: 6px;
-        border-top: 2px solid var(--yellow);
+        border-top: 2px solid var(--yellow, #FFED00);
         display: inline-flex;
         flex-wrap: wrap;
         max-width: ${responsive ? "100%" : "60%"};
@@ -181,7 +181,7 @@ export class DxcFooterComponent implements OnChanges {
         }
         a {
           text-decoration: none;
-          color: var(--white);
+          color: var(--white, white);
           font-size: 12px;
         }
       }

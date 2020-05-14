@@ -10,8 +10,6 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTabsComponent } from './dxc-tabs.component';
 import { DxcTabComponent } from './dxc-tab/dxc-tab.component';
-import { ThemeModule } from '../theme/theme.module';
-import { defaultTheme } from '../theme/defaultTheme';
 
 @NgModule({
   declarations: [DxcTabsComponent, DxcTabComponent],
@@ -20,11 +18,7 @@ import { defaultTheme } from '../theme/defaultTheme';
     MatInputModule,
     MatTabsModule,
     MatFormFieldModule,
-    FormsModule,
-    ThemeModule.forRoot({
-      themes: [defaultTheme],
-      active: "default"
-    })
+    FormsModule
   ],
   exports: [DxcTabsComponent,DxcTabComponent],
   entryComponents:[MatTab,MatTabGroup]

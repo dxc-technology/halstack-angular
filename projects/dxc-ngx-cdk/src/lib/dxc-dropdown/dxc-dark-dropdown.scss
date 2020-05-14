@@ -1,57 +1,57 @@
 :host.dxc-dark {
   .menu-buttom-label-wrapper {
-    color: var(--white);
-    background: var(--black);
+    color: var(--white, white);
+    background: var(--black, black);
     &.menu-opened {
-      background: var(--lightBlack);
+      background: var(--lightBlack, #212121);
     }
   }
   .menu-buttom-label {
-    color: var(--white);
+    color: var(--white, white);
   }
 
   .arrow-down {
-    border-top: 5px solid var(--white);
+    border-top: 5px solid var(--white, white);
   }
   .arrow-up {
-    border-bottom: 5px solid var(--white);
+    border-bottom: 5px solid var(--white, white);
   }
   button.mat-button.basic {
-    background-color: var(--white);
-    color: var(--black);
+    background-color: var(--white, white);
+    color: var(--black, black);
      border: none;
     .menu-buttom-label {
-      color: var(--black);
+      color: var(--black, black);
     }
     .arrow-down {
-      border-top: 5px solid var(--black);
+      border-top: 5px solid var(--black, black);
     }
     .arrow-up {
-      border-bottom: 5px solid var(--black);
+      border-bottom: 5px solid var(--black, black);
     }
   }
 }
 ::ng-deep .dxc-dropdown-menu.dxc-dark {
   .mat-menu-content {
-    background: var(--black);
+    background: var(--black, black);
 
     .mat-menu-item {
       &:hover {
-        color: var(--black);
-        background: var(--darkWhite);
+        color: var(--black, black);
+        background: var(--darkWhite, #EEEEEE);
       }
       &:active {
-        color: var(--white);
-        background: var(--darkGrey);
+        color: var(--white, white);
+        background: var(--darkGrey, #666666);
       }
     }
   }
   &.basic {
-    background-color: var(--white);
+    background-color: var(--white, white);
     .mat-menu-content {
-      background-color: var(--white);
+      background-color: var(--white, white);
       .mat-menu-item {
-        color: var(--black);
+        color: var(--black, black);
       }
     }
   }

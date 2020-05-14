@@ -168,11 +168,15 @@ pipeline {
                 when { branch 'master' }
                 steps {
                     // Publish library to npm repository
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${OLD_RELEASE_NUMBER}-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
-                    releasedVerion = sh(returnStdout: true, script: '''
+                    script{
+                      sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${OLD_RELEASE_NUMBER}-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
+                      releasedVerion = sh(returnStdout: true, script: """
                         cd ./dist/dxc-ngx-cdk
                         npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm-local/ --tag alpha
-                    ''').trim()
+                        """).trim()
+                    }
+
+
                 }
             }
             stage('Tagging version') {

@@ -1,6 +1,7 @@
 pipeline {
 
     agent any
+    def releasedVerion = ''
 
     environment  {
         REPO_NAME = 'diaas-angular-cdk'
@@ -167,10 +168,10 @@ pipeline {
                 steps {
                     // Publish library to npm repository
                     sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${OLD_RELEASE_NUMBER}-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
-                    sh '''
+                    releasedVerion = sh(returnStdout: true, script: '''
                         cd ./dist/dxc-ngx-cdk
                         npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm-local/ --tag alpha
-                    '''
+                    ''').trim()
                 }
             }
             stage('Tagging version') {
@@ -285,7 +286,7 @@ pipeline {
                     } else if (GIT_USER != 'jenkins@dxc.com') {
                       mailmessage = "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}"
                   }
-                  subjectmessage = 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)'
+                  subjectmessage = "Your changes passed succesfully all the stages, you are a really good developers! YES, YOU ARE :) ${releasedVerion}"
                 }
                 emailext subject: "${subjectmessage}", body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH} <br/> ${mailmessage}", to: "mgarcia232@dxc.com,vrodriguezgu@dxc.com",from: 'no-reply@platformdxc-mg.com'
                 sh "cd /"

@@ -120,9 +120,7 @@ pipeline {
                     sh '''
                         cd ./projects/dxc-ngx-cdk
                         npm install
-                        npm run build-lib
-                        npm run post-build-lib
-                        npm run package
+                        npm run generate-lib-prod
                     '''
                 }
             }

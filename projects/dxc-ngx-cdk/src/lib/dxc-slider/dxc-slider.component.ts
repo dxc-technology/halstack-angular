@@ -205,7 +205,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         .mat-slider-track-background,
         .mat-slider-wrapper {
           height: 1px;
-          background-color: var(--lightGrey);
+          background-color: var(--lightGrey, #D9D9D9);
         }
         .mat-slider-track-background {
           opacity: 0.54;

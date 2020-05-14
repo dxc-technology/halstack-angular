@@ -1,4 +1,4 @@
-<div class="progressContainer" theme [ngClass]="[overlay ? 'overlayed' : '']">
+<div class="progressContainer" [ngClass]="[overlay ? 'overlayed' : '']">
   <div class="backOverlay" *ngIf="overlay"></div>
   <div class="labelContainer" [ngClass]="[overlay ? '' : 'notOverlayed']">
     <span class="label" *ngIf="label">{{ label }}</span>

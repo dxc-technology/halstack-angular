@@ -258,9 +258,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
           }
         }
         div.mat-calendar-body-selected {
-          border-color: var(--black);
-          background: var(--black);
-          color: var(--yellow);
+          border-color: var(--black, black);
+          background: var(--black, black);
+          color: var(--yellow, #FFED00);
         }
         mat-month-view .mat-calendar-body-cell-content {
           width: 28px;
@@ -268,7 +268,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
         }
         td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
           &:hover {
-            background-color: var(--lightGrey) !important;
+            background-color: var(--lightGrey, #D9D9D9) !important;
           }
           mat-multi-year-view .mat-calendar-body-cell-content,
           mat-year-view .mat-calendar-body-cell-content {

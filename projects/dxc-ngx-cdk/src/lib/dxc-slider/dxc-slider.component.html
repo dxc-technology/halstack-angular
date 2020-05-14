@@ -1,6 +1,5 @@
-<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues" [class]="minValueClass"> {{ minValue }}</span>
+<span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues" [class]="minValueClass"> {{ minValue }}</span>
 <mat-slider
-  theme
   [min]="minValue"
   [max]="maxValue"
   [step]="step"
@@ -10,7 +9,7 @@
   (input)="valueChanged($event)"
   (mouseup)="mouseUp($event)"
 ></mat-slider>
-<span theme [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues" [class]="maxValueClass"> {{ maxValue }}</span>
+<span [ngClass]= "disabled ? 'disabled-span' : ''" *ngIf="showLimitsValues" [class]="maxValueClass"> {{ maxValue }}</span>
 <dxc-input-text *ngIf="showInput"
   [value]="renderedValue"
   [name]="name"

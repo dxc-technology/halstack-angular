@@ -2,26 +2,26 @@
   button:disabled {
     ::ng-deep {
       span.mat-button-wrapper > span {
-        color: var(--black);
+        color: var(--black, black);
       }
     }
   }
   button.mat-flat-button:hover:not([disabled]) {
-    background-color: var(--lightGrey);
+    background-color: var(--lightGrey, #D9D9D9);
   }
 
   button.mat-raised-button,
   button.mat-button {
-    background-color: var(--yellow);
-    color: var(--black);
+    background-color: var(--yellow, #FFED00);
+    color: var(--black, black);
 
     &:hover:not([disabled]) {
-      background-color: var(--black);
-      color: var(--yellow);
+      background-color: var(--black, black);
+      color: var(--yellow, #FFED00);
     }
     ::ng-deep {
       .mat-ripple-element {
-        background-color: var(--white);
+        background-color: var(--white, white);
         opacity: 0.3;
       }
     }
@@ -30,27 +30,27 @@
     box-shadow: 0px 1.5px 3px 0px rgba(0, 0, 0, 0.16) !important;
   }
   button.mat-button {
-    background-color: var(--yellow);
-    color: var(--black);
+    background-color: var(--yellow, #FFED00);
+    color: var(--black, black);
 
     .mat-button-ripple.mat-ripple,
     .mat-button-focus-overlay {
       .mat-ripple-element {
-        background-color: var(--darkGrey);
+        background-color: var(--darkGrey, #666666);
         opacity: 0.75;
       }
     }
 
     &:hover:not([disabled]) {
-      background-color: var(--black);
-      color: var(--yellow);
+      background-color: var(--black, black);
+      color: var(--yellow, #FFED00);
 
       span.mat-button-wrapper {
         z-index: 5;
       }
 
       .mat-button-ripple.mat-ripple {
-        background-color: var(--black);
+        background-color: var(--black, black);
       }
 
       .mat-button-ripple.mat-ripple,
@@ -58,7 +58,7 @@
         z-index: -5;
 
         .mat-ripple-element {
-          background-color: var(--darkGrey);
+          background-color: var(--darkGrey, #666666);
           opacity: 0.75;
         }
       }
@@ -68,26 +68,26 @@
   button.mat-stroked-button {
     ::ng-deep {
       .mat-ripple-element {
-        background-color: var(--darkGrey);
+        background-color: var(--darkGrey, #666666);
       }
     }
     &:not([disabled]) {
-      border: 2px solid var(--black);
+      border: 2px solid var(--black, black);
     }
 
     &:disabled {
       border-width: 2px;
-      border-color: var(--lightGrey);
+      border-color: var(--lightGrey, #D9D9D9);
       ::ng-deep {
         span.mat-button-wrapper > span {
-          color: var(--lightGrey);
+          color: var(--lightGrey, #D9D9D9);
         }
       }
     }
 
     &:hover:not([disabled]) {
       background-color: transparent;
-      border-color: var(--yellow);
+      border-color: var(--yellow, #FFED00);
       ::ng-deep {
         .mat-button-focus-overlay {
           opacity: 0;

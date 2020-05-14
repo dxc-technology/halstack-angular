@@ -1,19 +1,29 @@
 <div>
-  <h4>Uncontrolled Component</h4>
+  <h4>Uncontrolled Select</h4>
   <div className="test-case" id="uncontrolled">
     <dxc-select
       (onChange)="onUncontrolledChange($event)"
-      label="Medium"
+      label="Uncontrolled"
       [options]="optionsWithIconAndLabels"
       size="medium"
       margin="xsmall"
+    ></dxc-select>
+  </div>
+  <div className="test-case" id="multiple-uncontrolled">
+    <h4>Multiple Uncontrolled Select</h4>
+    <dxc-select
+      (onChange)="onMultipleUncontrolledChange($event)"
+      multiple="true"
+      size="medium"
+      label="Multiple Uncontrolled"
+      [options]="optionsWithIconAndLabels"
     ></dxc-select>
   </div>
   <h4>Sizes</h4>
   <div className="test-case" id="small-size">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Small"
       [options]="optionsWithIcon"
       size="small"
@@ -32,7 +42,7 @@
   <div className="test-case" id="large-size">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Large"
       [options]="optionsWithIconAndLabels"
       size="large"
@@ -42,7 +52,7 @@
   <div className="test-case" id="fillParent-size">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Fill Parent"
       [options]="optionsWithIcon"
       size="fillParent"
@@ -54,7 +64,7 @@
   <div className="test-case" id="xxsmall-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="xxSmall margin"
       [options]="optionsWithIconAndLabels"
       margin="xxsmall"
@@ -63,7 +73,7 @@
   <div className="test-case" id="xsmall-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="xSmall margin"
       [options]="optionsWithIconAndLabels"
       margin="xsmall"
@@ -72,7 +82,7 @@
   <div className="test-case" id="small-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Small margin"
       [options]="optionsWithIconAndLabels"
       margin="small"
@@ -81,7 +91,7 @@
   <div className="test-case" id="medium-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Medium margin"
       [options]="optionsWithIconAndLabels"
       margin="medium"
@@ -90,7 +100,7 @@
   <div className="test-case" id="large-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="Large margin"
       [options]="optionsWithIconAndLabels"
       margin="large"
@@ -99,7 +109,7 @@
   <div className="test-case" id="xlarge-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="xLarge margin"
       [options]="optionsWithIconAndLabels"
       margin="xlarge"
@@ -108,7 +118,7 @@
   <div className="test-case" id="xxlarge-margin">
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       label="xxLarge margin"
       [options]="optionsWithIconAndLabels"
       margin="xxlarge"
@@ -120,7 +130,7 @@
     <h4>Medium select - Max label size in one line</h4>
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       size="medium"
       label="MaximumSizeForMultilineLabel1"
       [options]="optionsWithIconAndLabels"
@@ -130,7 +140,7 @@
     <h4>Medium select - Min label size in multi line</h4>
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       size="medium"
       label="Maximum Size For Multiline Label12"
       [options]="optionsWithIconAndLabels"
@@ -140,7 +150,7 @@
     <h4>Large select - Max label size in one line</h4>
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       size="large"
       label="Large size example label one single line select component select1"
       [options]="optionsWithIconAndLabels"
@@ -150,7 +160,7 @@
     <h4>Large select - Min label size in multi line</h4>
     <dxc-select
       (onChange)="onChange($event)"
-      [(value)]="inputValue"
+      [value]="inputValue"
       size="large"
       label="Large size example label one single line select component select12"
       [options]="optionsWithIconAndLabels"
@@ -381,8 +391,8 @@
   <div className="test-case" id="multiple icons">
     <h4>Multiple select only icons selected</h4>
     <dxc-select
-      (onChange)="onChange($event)"
-      [(value)]="multipleSelected"
+      (onChange)="onMultipleChange($event)"
+      [value]="multipleSelected"
       multiple="true"
       size="medium"
       label="Multiple Icons"

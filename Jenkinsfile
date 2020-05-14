@@ -267,37 +267,30 @@ pipeline {
         }
     }
     post {
-        failure {
-            script {
-                env.GIT_USER = sh (
-                    script: 'git --no-pager show -s --format=\'%ae\'',
-                    returnStdout: true
-                ).trim()
-                if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
-                    emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'no-reply@platformdxc-mg.com'
-                } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com', from: 'no-reply@platformdxc-mg.com'
-                }
-            }
-        }
-        success {
+        always {
             script {
                 env.GIT_USER = sh (
                     script: 'pwd && ls -la && git --no-pager show -s --format=\'%ae\'',
                     returnStdout: true
                 ).trim()
-                if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ && env.RELEASE_VALID == 'valid') {
-                    emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'mgarcia232@dxc.com; jsuarezardid@dxc.com',from: 'no-reply@platformdxc-mg.com'
-                } else if (GIT_USER != 'jenkins@dxc.com') {
-                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'no-reply@platformdxc-mg.com'
-                }
-            }
-        }
 
-        always {
-            script {
-              sh "cd /"
-              deleteDir()
+                def mailmessage = ''
+                def subjectmessage = ''
+                if (currentBuild.currentResult != 'SUCCESS'  ) {
+                  mailmessage = 'The pipeline failed! Please fix this error ASAP :) '
+                  subjectmessage = 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :). SOIS ESCORIA.'
+                }else{
+                    if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ && env.RELEASE_VALID == 'valid') {
+                      mailmessage = "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)"
+                    } else if (GIT_USER != 'jenkins@dxc.com') {
+                      mailmessage = "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}"
+                  }
+                  subjectmessage = 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)'
+                }
+                emailext subject: "${subjectmessage}", body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH} <br/> ${mailmessage}", to: "${GIT_USER}",from: 'no-reply@platformdxc-mg.com'
+                sh "cd /"
+                deleteDir()
+                }
             }
         }
     }

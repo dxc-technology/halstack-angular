@@ -25,7 +25,8 @@ export class DxcTabbedSectionComponent implements OnInit {
   selectecTab = 0; 
 
   styledDxcSectionTabbedGroup: string;
-  
+  tabId: number;
+
   private TABS_HEIGHT : number = 54;
   offset: number = 0;
 
@@ -61,9 +62,9 @@ export class DxcTabbedSectionComponent implements OnInit {
 
   onSectionChange(sectionId: string) {
     if (sectionId !== undefined && sectionId !== null) {
-      this.sectionTabGroup.activeTabIndex = +sectionId;
+      this.tabId = +sectionId;
     } else {
-      this.sectionTabGroup.activeTabIndex = 0;
+      this.tabId = 0;
     }
   }
 

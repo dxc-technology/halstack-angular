@@ -5,12 +5,14 @@ import {
   EventEmitter,
   HostBinding,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild
 } from "@angular/core";
 import { isArray } from "util";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: "dxc-select",
@@ -48,6 +50,8 @@ export class DxcSelectComponent implements OnChanges {
 
   public iconsToShow: string[] = []; //Auxiliar property used to get iconSRC for several values
   public labeltoShow: string[] = [] //The value is not the correct valur to display. Use label instead
+
+  @ViewChild('dxcSelect', {static: false}) _dxcSelect: MatSelect;
 
   defaultInputs = new BehaviorSubject<any>({
     theme: "light",
@@ -90,6 +94,7 @@ export class DxcSelectComponent implements OnChanges {
     this.hasOptionsOnlyIcons();
     
     this.renderedValue = this.value || '';
+    if (this._dxcSelect) this._dxcSelect.writeValue(this.renderedValue);
     this.getIconAndLabelByValue(this.renderedValue);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -105,7 +110,9 @@ export class DxcSelectComponent implements OnChanges {
     if (this.value === undefined || this.value === null){
       this.renderedValue = $event.value;
       this.getIconAndLabelByValue(this.renderedValue);
-    }else{
+    } else {
+      $event.source._selectionModel.clear();
+      $event.source.writeValue(this.renderedValue);
       $event.value = this.renderedValue;
     }
   }

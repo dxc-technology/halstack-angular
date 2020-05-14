@@ -1,11 +1,11 @@
 pipeline {
-    
+
     agent any
-    
+
     environment  {
         REPO_NAME = 'diaas-angular-cdk'
         SERVICE_NAME='dxc-ngx-cdk'
-    } 
+    }
     stages {
         // stage('Execute cypress tests') {
         //     steps {
@@ -27,26 +27,26 @@ pipeline {
         //                 sh 'npm run cypress:ci'
         //             }
         //         }
-        //     } 
+        //     }
         // }
         stage('Build and Deploy') {
            agent {
                 dockerfile {
                     filename 'docker/Dockerfile'
                     reuseNode true
-                } 
+                }
            }
-           stages {     
+           stages {
             stage('Check repo name') {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
-                            env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')                          
-                            
+                            env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+
                             def check=checkRepoName(env.GIT_REPO_NAME,"${REPO_NAME}");
                             if (!check){
                                 error "This pipeline stops here! Please check the environment variables"
-                            } 
+                            }
                         }
                     }
                 }
@@ -63,7 +63,7 @@ pipeline {
             }
             stage('Release type') {
                 when {
-                    expression { BRANCH_NAME ==~ /^.*\b(release)\b.*$/ } 
+                    expression { BRANCH_NAME ==~ /^.*\b(release)\b.*$/ }
                 }
                 steps {
                     script {
@@ -86,7 +86,7 @@ pipeline {
             }
             stage('Password to continue') {
                 when {
-                    expression { env.RELEASE_OPTION == 'major' | env.RELEASE_OPTION == 'minor' | env.RELEASE_OPTION == 'patch' | env.RELEASE_OPTION == 'premajor' | env.RELEASE_OPTION == 'preminor' | env.RELEASE_OPTION == 'prepatch' |env.RELEASE_OPTION == 'prerelease' } 
+                    expression { env.RELEASE_OPTION == 'major' | env.RELEASE_OPTION == 'minor' | env.RELEASE_OPTION == 'patch' | env.RELEASE_OPTION == 'premajor' | env.RELEASE_OPTION == 'preminor' | env.RELEASE_OPTION == 'prepatch' |env.RELEASE_OPTION == 'prerelease' }
                 }
                 steps {
                     script {
@@ -98,7 +98,7 @@ pipeline {
             }
             stage('Release versioning') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -108,7 +108,7 @@ pipeline {
                                 choice(
                                     name: 'type',
                                     choices: "beta\nrc",
-                                    description: 'BETA when the version could have some errors. RC if the version is completely ready to release.' 
+                                    description: 'BETA when the version could have some errors. RC if the version is completely ready to release.'
                                 )
                             ]
                         }
@@ -119,24 +119,25 @@ pipeline {
                 steps {
                     sh '''
                         cd ./projects/dxc-ngx-cdk
+                        npm cache clean --force
                         npm install
                         npm run build-lib
                         npm run post-build-lib
-                        npm run package   
+                        npm run package
                     '''
                 }
             }
             stage('Install dependencies'){
                 steps {
                     sh '''
-                        cd .                                  
+                        cd .
                         npm install
                     '''
                 }
-            }            
+            }
             stage('.npmrc') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' } 
+                    expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' }
                 }
                 steps {
                     withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
@@ -160,7 +161,7 @@ pipeline {
             }
             stage('Tagging version') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -199,7 +200,7 @@ pipeline {
             }
             stage('Generating release notes') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -219,7 +220,7 @@ pipeline {
             }
             stage('Publish dxc-ngx-cdk version to Artifactory ') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -232,7 +233,7 @@ pipeline {
                         } catch(err) {
                             env.RELEASE_TYPE = ''
                         }
-                        
+
                         if (env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc') {
                             sh '''
                                 cd ./dist/dxc-ngx-cdk
@@ -244,14 +245,14 @@ pipeline {
                                 npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
                             '''
                         }
-                        
+
                     }
                 }
             }
            }
         }
-    }        
-    post { 
+    }
+    post {
         failure {
             script {
                 env.GIT_USER = sh (

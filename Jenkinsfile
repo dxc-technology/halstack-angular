@@ -1,7 +1,8 @@
+def releasedVerion
+
 pipeline {
 
     agent any
-    def releasedVerion = ''
 
     environment  {
         REPO_NAME = 'diaas-angular-cdk'

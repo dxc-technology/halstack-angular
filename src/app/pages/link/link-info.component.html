@@ -154,4 +154,30 @@
             </p>
         </div>
     </div>
+    <div>
+        <h4>Disabled</h4>
+        <div className="test-case" id="disabled-ligth">
+            <dxc-link
+                href="#"
+                theme="light"
+                [underlined]="underlined"
+                [disabled]="disabled"
+                text="Disabled link"
+            >
+            </dxc-link>
+        </div>
+        <div
+            style="background: black"
+            className="test-case" 
+            id="disabled-dark">
+            <dxc-link
+                href="#"
+                [underlined]="!underlined"
+                [disabled]="disabled"
+                theme="dark"
+                text="Disabled link"
+            >
+            </dxc-link>
+        </div>
+    </div>
 </div>

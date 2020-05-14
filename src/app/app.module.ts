@@ -32,6 +32,7 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 import { WizardComponent } from './pages/wizard/wizard.component';
+import { HeadingInfoComponent } from './pages/heading/heading-info.component';
 import { CommonModule } from '@angular/common';
 import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcCardModule, 
   DxcCheckboxModule, DXCDialogModule, DXCDropdownModule, 
@@ -39,7 +40,7 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
   DXCSelectModule, DxcSpinnerModule, DxcSwitchModule, DXCToggleModule, 
   DxcTabsModule, DXCUploadModule, DxcTableModule, DxcDateModule, DxcTagModule, DxcRadioModule, 
   DxcSliderModule, DxcTabbedSectionModule,
-  DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService, DxcWizardModule } from '@diaas/dxc-ngx-cdk';
+  DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService, DxcWizardModule, DxcHeadingModule } from '@diaas/dxc-ngx-cdk';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
     TabsInfoComponent,
     PaginatorComponent,
     WizardComponent,
-    LinkInfoComponent
+    LinkInfoComponent,
+    HeadingInfoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -105,7 +107,8 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
     DxcPaginatorModule,
     DxcWizardModule,
     HttpClientModule,
-    DxcLinkModule
+    DxcLinkModule,
+    DxcHeadingModule
   ],
   providers: [{ provide: 'ThemeService', useClass: ThemeService }],
   bootstrap: [AppComponent]

@@ -27,6 +27,7 @@ import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 import { WizardComponent } from './pages/wizard/wizard.component';
 import { DxcUploadComponent } from '@diaas/dxc-ngx-cdk';
+import { HeadingInfoComponent } from './pages/heading/heading-info.component';
 
 
 export const Components = [
@@ -84,6 +85,11 @@ export const Components = [
         name: 'Header',
         route: 'header',
         component:  HeaderInfoComponent
+    },
+    {
+        name: 'Heading',
+        route: 'heading',
+        component:  HeadingInfoComponent
     },
     {
         name: 'Input Text',

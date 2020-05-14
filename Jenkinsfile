@@ -118,9 +118,9 @@ pipeline {
             stage('Build and Install lib dependencies'){
                 steps {
                     sh '''
-                        cd ./projects/dxc-ngx-cdk
+                        cd ./projects/dxc-ngx-cdk && rm -rf node_modules
                         npm install
-                        npm run generate-lib-prod
+                        npm run generate-lib
                     '''
                 }
             }
@@ -274,6 +274,13 @@ pipeline {
                 } else if (GIT_USER != 'jenkins@dxc.com') {
                     emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'mgarcia232@dxc.com'
                 }
+            }
+        }
+
+        always {
+            script {
+              sh "cd /"
+              deleteDir()
             }
         }
     }

@@ -29,6 +29,10 @@ pipeline {
         //         }
         //     }
         // }
+
+
+
+
         stage('Build and Deploy') {
            agent {
                 dockerfile {
@@ -37,6 +41,19 @@ pipeline {
                 }
            }
            stages {
+
+            stage('Git') {
+              steps {
+                withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
+                  sh "touch ~/.netrc"
+                  sh "echo 'machine github.dxc.com' >> ~/.netrc"
+                  sh "echo 'login ${GIT_USER}' >> ~/.netrc"
+                  sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
+                  sh "git config --global user.email 'jenkins@dxc.com'"
+                  sh "git config --global user.name 'Jenkins User'"
+                }
+              }
+            }
             stage('Check repo name') {
                 steps{
                     script{
@@ -257,22 +274,22 @@ pipeline {
                     returnStdout: true
                 ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
-                    emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com',from: 'mgarcia232@dxc.com'
+                    emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'no-reply@platformdxc-mg.com'
                 } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com', from: 'mgarcia232@dxc.com'
+                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com', from: 'no-reply@platformdxc-mg.com'
                 }
             }
         }
         success {
             script {
                 env.GIT_USER = sh (
-                    script: 'git --no-pager show -s --format=\'%ae\'',
+                    script: 'pwd && ls -la && git --no-pager show -s --format=\'%ae\'',
                     returnStdout: true
                 ).trim()
                 if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ && env.RELEASE_VALID == 'valid') {
-                    emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'mgarcia232@dxc.com; jsuarezardid@dxc.com',from: 'mgarcia232@dxc.com'
+                    emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'mgarcia232@dxc.com; jsuarezardid@dxc.com',from: 'no-reply@platformdxc-mg.com'
                 } else if (GIT_USER != 'jenkins@dxc.com') {
-                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'mgarcia232@dxc.com'
+                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'no-reply@platformdxc-mg.com'
                 }
             }
         }

@@ -4,7 +4,7 @@ RUN apk add --update git bash openssh curl chromium ruby ruby-full
 
 RUN npm config set unsafe-perm true
 
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@9.1.6
 
 RUN npm install github-release-notes -g
 

@@ -119,7 +119,6 @@ pipeline {
                 steps {
                     sh '''
                         cd ./projects/dxc-ngx-cdk
-                        npm cache clean --force
                         npm install
                         npm run build-lib
                         npm run post-build-lib

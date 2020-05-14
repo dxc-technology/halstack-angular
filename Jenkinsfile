@@ -293,7 +293,6 @@ pipeline {
                 }
             }
         }
-    }
 }
 Boolean checkRepoName(repoName, hardcodeRepoName){
     if (hardcodeRepoName == repoName){

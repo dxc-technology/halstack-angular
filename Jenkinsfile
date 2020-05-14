@@ -120,7 +120,7 @@ pipeline {
                     sh '''
                         cd ./projects/dxc-ngx-cdk && rm -rf node_modules
                         npm install
-                        npm run generate-lib
+                        pwd && ls -la && npm run generate-lib
                     '''
                 }
             }

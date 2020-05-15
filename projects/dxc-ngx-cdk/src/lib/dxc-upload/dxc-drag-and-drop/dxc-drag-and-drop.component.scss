@@ -12,7 +12,7 @@
     border-radius: 4px;
   }
   .summaryVisible {
-    --border-color: var(--darkGrey);
+    --border-color: var(--darkGrey, #666666);
     --border-weight: 1px;
     --dash-size: 8px;
     --gap-size: 8px;
@@ -77,7 +77,7 @@
     background-color: #0000000f;
   }
   .droppingZone {
-    --border-color: var(--darkGrey);
+    --border-color: var(--darkGrey, #666666);
     --border-weight: 1px;
     --dash-size: 8px;
     --gap-size: 8px;
@@ -149,7 +149,7 @@
   }
   .dropLabel {
     font-style: italic;
-    color: var(--darkGrey);
+    color: var(--darkGrey, #666666);
     margin-bottom: 20px;
   }
 }

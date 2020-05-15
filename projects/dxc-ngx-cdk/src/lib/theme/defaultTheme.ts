@@ -1,7 +1,6 @@
 import { Theme } from './symbols';
 
 export const defaultTheme: Theme = {
-  name: 'default',
   properties: {
     '--black': '#000000',
     '--lightBlack': '#212121',

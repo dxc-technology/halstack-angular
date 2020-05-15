@@ -1,52 +1,25 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
-import { THEMES, ACTIVE_THEME, Theme } from './symbols';
+import { Theme } from './symbols';
 
 @Injectable()
 export class ThemeService {
 
   themeChange = new EventEmitter<Theme>();
+  theme: Theme;
 
-  constructor(
-    @Inject(THEMES) public themes: Theme[],
-    @Inject(ACTIVE_THEME) public theme: string
-  ) {
-  }
+  constructor() {}
 
-  getTheme(name: string) {
-    const theme = this.themes.find(t => t.name === name);
-    if (!theme) {
-      throw new Error(`Theme not found: '${name}'`);
-    }
-    return theme;
-  }
-
-  getActiveTheme() {
-    return this.getTheme(this.theme);
+  getTheme() {
+    return this.theme;
   }
 
   getProperty(propName: string) {
-    return this.getActiveTheme().properties[propName];
-  }
-
-  setTheme(name: string) {
-    this.theme = name;
-    this.themeChange.emit( this.getActiveTheme());
+    return this.theme.properties[propName];
   }
 
   registerTheme(theme: Theme) {
-    this.themes.push(theme);
-  }
-
-  updateTheme(name: string, properties: { [key: string]: string; }) {
-    const theme = this.getTheme(name);
-    theme.properties = {
-      ...theme.properties,
-      ...properties
-    };
-
-    if (name === this.theme) {
-      this.themeChange.emit(theme);
-    }
+    this.theme = theme;
+    this.themeChange.emit(this.theme);
   }
 
 }

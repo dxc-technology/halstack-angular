@@ -27,7 +27,7 @@ describe("DxcToggle tests", () => {
     expect(onClickFunction).toHaveBeenCalledWith(true);
   });
 
-  test("Calls correct function on click", async () => {
+  test("Controlled toggle calls correct function on click", async () => {
     const onClickFunction = jest.fn();
     const { getByText } = await render(DxcToggleComponent, {
       componentProperties: {
@@ -39,6 +39,8 @@ describe("DxcToggle tests", () => {
     });
 
     const toggle = getByText("test-toggle");
+    fireEvent.click(toggle);
+    expect(onClickFunction).toHaveBeenCalledWith(false);
     fireEvent.click(toggle);
     expect(onClickFunction).toHaveBeenCalledWith(false);
   });

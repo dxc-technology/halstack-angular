@@ -130,29 +130,29 @@ export class DxcHeaderComponent implements OnChanges {
     if (theme === "light") {
       return css`
         .mat-toolbar-row {
-          background: var(--black);
-          color: var(--white);
+          background: var(--black, black);
+          color: var(--white, white);
         }
         .underlined {
           .mat-toolbar-row {
-            background: var(--white);
-            color: var(--black);
+            background: var(--white, white);
+            color: var(--black, black);
           }
-          border-bottom: 2px solid var(--black);
+          border-bottom: 2px solid var(--black, black);
         }
       `;
     } else {
       return css`
         .mat-toolbar-row {
-          background: var(--white);
-          color: var(--black);
+          background: var(--white, white);
+          color: var(--black, black);
         }
         .underlined {
           .mat-toolbar-row {
-            background: var(--black);
-            color: var(--white);
+            background: var(--black, black);
+            color: var(--white, white);
           }
-          border-bottom: 2px solid var(--white);
+          border-bottom: 2px solid var(--white, white);
         }
       `;
     }
@@ -229,8 +229,8 @@ export class DxcHeaderComponent implements OnChanges {
             background-color: ${(inputs.theme === "light" &&
               inputs.underline) ||
             (inputs.theme === "dark" && !inputs.underline)
-              ? "var(--lightGrey)"
-              : "var(--darkGrey)"};
+              ? "var(--lightGrey, #D9D9D9)"
+              : "var(--darkGrey, #666666)"};
           }
           .hamburgerIcon {
             width: 24px;
@@ -238,8 +238,8 @@ export class DxcHeaderComponent implements OnChanges {
             svg path {
               fill: ${(inputs.theme === "light" && inputs.underline) ||
               (inputs.theme === "dark" && !inputs.underline)
-                ? "var(--black)"
-                : "var(--white)"};
+                ? "var(--black, black)"
+                : "var(--white, white)"};
             }
           }
           .hamburgerTitle {
@@ -274,13 +274,13 @@ export class DxcHeaderComponent implements OnChanges {
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-evenly;
-      background-color: var(--lightGrey);
+      background-color: var(--lightGrey, #D9D9D9);
       position: fixed;
       top: 0;
       right: 0;
       z-index: 1000;
 
-      color: var(--black);
+      color: var(--black, black);
       width: ${inputs.innerWidth <= responsiveSizes.laptop &&
       inputs.innerWidth > responsiveSizes.mobileLarge
         ? "calc(60vw - 40px)"

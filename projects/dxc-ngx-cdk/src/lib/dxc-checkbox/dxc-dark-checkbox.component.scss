@@ -4,12 +4,12 @@
     ::ng-deep {
       label.mat-checkbox-layout {
         .mat-ripple-element {
-          background-color: var(--white);
+          background-color: var(--white, white);
         }
         .mat-checkbox-inner-container {
 
           .mat-checkbox-frame {
-            border-color: var(--white);
+            border-color: var(--white, white);
           }
 
           .mat-checkbox-background {
@@ -23,14 +23,14 @@
 
       &.mat-checkbox-checked {
         .mat-checkbox-frame {
-          border-color: var(--yellow);
+          border-color: var(--yellow, #FFED00);
         }
       }
 
       .mat-checkbox-label {
-        color: var(--white);
+        color: var(--white, white);
         .mat-checkbox-required {
-          color: var(--lightRed);
+          color: var(--lightRed, #FF6161);
           margin-right: 1px;
         }
       }
@@ -38,10 +38,10 @@
     &.mat-checkbox-disabled {
       ::ng-deep {
         .mat-checkbox-frame {
-          border-color: var(--darkGrey) !important;
+          border-color: var(--darkGrey, #666666) !important;
         }
         .mat-checkbox-label {
-          color: var(--white);
+          color: var(--white, white);
           opacity: 0.7;
         }
       }
@@ -50,7 +50,7 @@
     &.mat-checkbox-disabled.mat-checkbox-checked {
       ::ng-deep {
         .mat-checkbox-background {
-          background-color: var(--darkGrey) !important;
+          background-color: var(--darkGrey, #666666) !important;
         }
       }
     }

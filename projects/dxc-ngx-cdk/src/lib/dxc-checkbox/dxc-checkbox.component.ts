@@ -90,7 +90,6 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.renderedChecked = this.checked;   
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -146,6 +145,10 @@ export class DxcCheckboxComponent implements OnInit {
         inputs.size
       )}
       display: inline-flex;
+      .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
+      .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+          background: var(--yellow) !important;
+      }
       mat-checkbox {
         width: 100%;
         label.mat-checkbox-layout {

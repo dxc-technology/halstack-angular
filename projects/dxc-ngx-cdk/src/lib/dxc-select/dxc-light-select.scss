@@ -1,13 +1,13 @@
 :host.dxc-light {
   ::ng-deep {
     .mat-form-field-label:not(.mat-form-field-empty) {
-      color: var(--black);
+      color: var(--black, black);
     }
     .mat-form-field-label.mat-form-field-empty {
-      color: var(--darkGrey);
+      color: var(--darkGrey, #666666);
     }
     .mat-form-field-appearance-legacy .mat-form-field-underline {
-        background-color: var(--black);
+        background-color: var(--black, black);
     }
   }
 }

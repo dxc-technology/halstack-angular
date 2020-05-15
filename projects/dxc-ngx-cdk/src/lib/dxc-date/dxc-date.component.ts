@@ -7,31 +7,18 @@ import {
   HostBinding,
   OnInit,
   ViewChild,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
-import { DatePipe } from '@angular/common';
+
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 
-import { ErrorStateMatcher, MatDatepicker } from "@angular/material";
-
-import { FormControl } from "@angular/forms";
 import * as momentImported from "moment";
-
+import { MatCalendar } from '@angular/material/datepicker';
+import { Moment } from 'moment';
+import { MdePopoverTrigger } from '@material-extended/mde';
 const moment = momentImported;
-
-export enum Formats {
-  "MM/DD/YYYY",
-  "DD/MM/YYYY",
-  "YYYY/MM/DD",
-  "YYYY-MM-DD",
-  "DD-MM-YYYY",
-  "MM-DD-YYYY",
-  "DD.MM.YYYY",
-  "MM.DD.YYYY",
-  "YYYY.MM.DD"
-}
 
 @Component({
   selector: "dxc-date",
@@ -40,29 +27,26 @@ export enum Formats {
     "./dxc-light-date.scss",
     "./dxc-dark-date.scss"
   ],
-  providers: [CssUtils, DatePipe]
+  providers: [CssUtils]
 })
 export class DxcDateComponent implements OnChanges, OnInit {
-  @Input() min: any;
-  @Input() max: any;
+  
   @Input() value: any;
-  @Input() theme: string;
-  @Input() invalid: boolean;
-  @Input() disableRipple: boolean;
+  @Input() format: string = 'dd-MM-yyyy';
+  @Input() label: string;
+  @Input() theme: string = 'light';
+  @Input() iconSrc: string;
+  @Input() name: string;
   @Input() disabled: boolean;
   @Input() required: boolean;
   @Input() assistiveText: string;
-  @Input() iconSrc: string;
-  @Input() name: string;
-  @Input() id: string;
-  @Input() format: string;
-  @Input() showMask: boolean;
-  @Input() label: string;
+  @Input() invalid: boolean;
+  @Input() disableRipple: boolean;
   @Input() margin: any;
   @Input() size: string;
 
-  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
@@ -70,57 +54,57 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
-    min: null,
-    max: null,
     value: null,
+    format: "dd-MM-yyyy",
+    label: null,
     theme: "light",
-    invalid: false,
-    disabled: false,
-    disableRipple: false,
-    required: false,
-    assistiveText: null,
     iconSrc: null,
     name: null,
-    id: null,
-    format: "DD/MM/YYYY",
-    showMask: true,
-    label: null,
+    disabled: false,
+    required: false,
+    assistiveText: null,
+    invalid: false,
+    disableRipple: false,
     margin: null,
     size: "medium"
   });
 
-  public maskObject: {};
-  public matcher = new InvalidStateMatcher();
-  public formControl = new FormControl();
-  showValue: any;
+  renderedValue: string;
+  dateValue: Moment;
+  startDate: Date = new Date(1990, 8, 22);
+  calendarIconSrc: string;
+  popOverOffsetX: any;
 
-  @ViewChild("picker", { static: true }) picker: MatDatepicker<any>;
+  calendarDynamicStyle: any;
 
-  sizes = {
-    medium: "240px",
-    large: "480px",
-    fillParent: "100%"
-  };
+  @ViewChild(MdePopoverTrigger, {static: false}) _dxcTrigger: MdePopoverTrigger;
+  @ViewChild('dxcCalendar', {static: false}) _dxcCalendar: MatCalendar<Moment>;
 
-  constructor(private utils: CssUtils, private datePipe: DatePipe) {}
+  private _sizes = ['medium', 'large', 'fillParent'];
+
+  private _isOpenClicked: boolean = false;
+  private _isCalendarOpened: boolean = false;
+  private _isSelectingDate: boolean = false;
+
+  constructor(private utils: CssUtils) {}
+
+  private calculateComponentValues(): void {
+    this.size = this.size ? this._sizes.find(item => item===this.size) : 'medium';
+    this.popOverOffsetX = this.size==='fillParent' ? null : '130';
+    
+    this.isDisabled = this.disabled;
+    this.format = this.format ? this.format : this.defaultInputs.getValue().format;
+    
+    this.renderedValue = this.value;
+    this.dateValue = this.getMomentValue(this.renderedValue, this.format);
+    this.calendarIconSrc =  this.theme === 'light' ? "../../assets/calendar.svg" : "../../assets/calendar_dark.svg";
+  }
 
   public ngOnInit(): void {
+    this.calculateComponentValues();
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.format =
-      this.format != null
-        ? this.format.toUpperCase()
-        : this.defaultInputs.getValue().format;
-    this.checkFormat();
-    this.showValue = this.getTransformedValue();
-    this.maskObject = { format: this.format, showMask: this.showMask };
-    this.matcher.setInvalid(this.invalid);
-
-    this.picker.openedStream.subscribe(() => {
-      this.picker._datepickerInput[
-        "_dateFormats"
-      ].display.dateInput = this.format.toUpperCase();
-    });
+    this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;    
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -131,58 +115,159 @@ export class DxcDateComponent implements OnChanges, OnInit {
       this.isLight = true;
       this.isDark = false;
     }
-    this.isDisabled = this.disabled;
-    this.format =
-      this.format != null
-        ? this.format.toUpperCase()
-        : this.defaultInputs.getValue().format;
 
-    this.showValue = this.getTransformedValue();
-    this.maskObject = { format: this.format, showMask: this.showMask };
-    this.matcher.setInvalid(this.invalid);
+    this.calculateComponentValues();
+
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
-  public valueChanged($event: any): void {
-    let _dateValue = moment($event, this.format, true);
-    if (_dateValue.isValid()) {
-      this.value = $event;  
-      this.showValue = this.datePipe.transform(this.value, this.dateFormat());
-      this.onChange.emit({stringValue: this.value, dateValue: this.showValue});
-    }else{
-      this.onChange.emit({stringValue: this.value, dateValue: this.showValue});
+  onInputChangeHandler(value: string){
+    if (this._isCalendarOpened) this.closeCalendar();
+    let _dateValue = this.getMomentValue(value, this.format);
+    let _dateReturn = {
+      stringValue: value,
+      dateValue: _dateValue.isValid() ? _dateValue.toDate() : null
+    }
+    this.onInputChange.emit(_dateReturn);
+
+    if (!this.value) {
+      this.renderedValue = value;
+      this.dateValue = _dateValue;
     }
   }
 
-  public dateInput($event: any): void {
-    this.onInputChange.emit($event.targetElement.value);
+  onSelectedChangeHandler(value: Moment) {
+    let _stringValue = this.getDateStringValue(value, this.format);
+    let _dateReturn = {
+      stringValue: _stringValue,
+      dateValue: value.isValid() ? value.toDate() : null
+    }
+    this.onInputChange.emit(_dateReturn);
+    if (!this.value) {
+      this.dateValue = value;
+      this.renderedValue = _stringValue;
+    }
+    this.closeCalendar();
   }
 
-  public dateFormat() {
-    return this.format.toLowerCase().replace(/m/g, "M");
+  onBlurHandler(value: string){
+    this.onBlur.emit(value);
   }
 
-  /**
-   * Check the user format and throw an error if it is not compatible
-   */
-  private checkFormat(): void {
-    const isFormatCorrect = Object.values(Formats).includes(this.format);
-    if (!isFormatCorrect) {
-      throw new Error("Invalid Date format");
+  public onClickOutsideHandler() {
+    if (this._isCalendarOpened) {
+        if (!this._isOpenClicked && !this._isSelectingDate) {
+        this.closeCalendar(); 
+      } else {
+        this._isOpenClicked=false;
+        this._isSelectingDate=false;
+      }
     }
   }
 
-  private getTransformedValue(){
-    const value = this.datePipe.transform(this.value, this.dateFormat());
-    return value !== undefined && value!== null ? 
-    new Date(value) : undefined;
+  public openCalendar(event: any) {
+    this._dxcCalendar.activeDate = this.dateValue.isValid() ? this.dateValue : moment();
+    this._dxcCalendar.currentView='month';
+    this._dxcTrigger.openPopover();
+    this.resetCalendarState(true);
   }
 
+  public closeCalendar() {
+    this._dxcTrigger.closePopover();
+    this.resetCalendarState();
+  }
+
+  public onSelectingDateHandler() {
+    this._isSelectingDate=true;
+  }
+
+  private resetCalendarState(value: boolean = false) {
+    this._isOpenClicked=this._isCalendarOpened=this._isSelectingDate=value;
+  }
+
+  private getMomentValue(value:string, format:string){
+    return moment(value, format.toUpperCase(), true);
+  }
+
+  private getDateStringValue(value:Moment, format:string){
+    return value.format(format.toUpperCase());
+  }
+
+  getCalendarContentStyle () {
+    return css`
+      width: 297px;
+      background: white;
+  
+      .mat-calendar {
+        width: 100%;
+      }
+      .mat-calendar-content {
+        height: 88%;
+      }
+      .mat-calendar-table {
+        height: 100%;
+      }
+      .mat-calendar-header {
+        color: black;
+        padding: 0px;
+        margin-bottom: 5px;
+        .mat-calendar-controls {
+          margin: 0px;
+        }
+        .mat-calendar-arrow {
+          margin-left: 8px;
+        }
+      }
+      .mat-calendar-table-header th {
+        font-size: 12px;
+      }
+      
+      .mat-calendar-period-button {
+        font-size: 16px;
+      }
+      .mat-calendar-body-selected {
+        border-color: var(--black);
+        background-color: var(--black);
+        color: var(--yellow);
+        &:hover {
+          background-color: var(--black)
+        }
+        &.mat-calendar-body-today {
+          border: none;
+          box-shadow: none;
+        }
+      }
+      mat-month-view .mat-calendar-body-cell-content {
+        width: 28px;
+        height: 28px;
+      }
+      td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
+        &:not(.mat-calendar-body-selected):hover {
+          background-color: var(--lightGrey) !important;
+        }
+        mat-multi-year-view .mat-calendar-body-cell-content,
+        mat-year-view .mat-calendar-body-cell-content {
+          width: 55px;
+          height: 33px;
+        }
+        .mat-calendar-period-button {
+          padding: 0px;
+          height: 34px;
+          width: 94px;
+          &:hover {
+            background: #00000012;
+          }
+        }
+      }
+     `;
+  }
   getDynamicStyle(inputs) {
     return css`
       &.disabled {
@@ -190,112 +275,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
       .disabled {
         cursor: not-allowed;
-      }
-      .mat-icon-button {
-        width: 33px;
-        height: 33px;
-        .mat-button-ripple {
-          width: 33px;
-          height: 33px;
-        }
-      }
-      .mat-form-field-suffix {
-        margin-right: 8px;
-      }
-
-      .mat-form-field {
-        ${this.utils.getMargins(inputs.margin)}
-        ${this.utils.calculateWidth(this.sizes, inputs)}
-        line-height: unset;
-        &.form-field-should-float {
-          label {
-            color: black;
-          }
-        }
-      }
-
-      img {
-        width: 20px;
-        height: 20px;
-      }
-
-      .mat-form-field-wrapper {
-      }
-      .mat-datepicker-toggle-default-icon {
-        width: 20px !important;
-        height: 20px;
-      }
-      .mat-form-field-infix {
-      }
-      .mat-form-field-infix .mat-form-field-label-wrapper {
-        display: flex;
-        .mat-form-field-label {
-          flex-direction: row-reverse;
-          justify-content: flex-end;
-          display: flex !important;
-        }
-      }
-
-      .dxc-date-date-panel {
-        padding: 20px;
-        height: 314px;
-        width: 256px;
-
-        .mat-calendar-content {
-          height: 88%;
-        }
-        .mat-calendar-table {
-          height: 100%;
-        }
-        .mat-calendar-header {
-          color: black;
-          padding: 0px;
-          .mat-calendar-controls {
-            margin: 0px;
-          }
-          .mat-calendar-arrow {
-            margin-left: 8px;
-          }
-        }
-        div.mat-calendar-body-selected {
-          border-color: var(--black, black);
-          background: var(--black, black);
-          color: var(--yellow, #FFED00);
-        }
-        mat-month-view .mat-calendar-body-cell-content {
-          width: 28px;
-          height: 28px;
-        }
-        td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
-          &:hover {
-            background-color: var(--lightGrey, #D9D9D9) !important;
-          }
-          mat-multi-year-view .mat-calendar-body-cell-content,
-          mat-year-view .mat-calendar-body-cell-content {
-            width: 55px;
-            height: 33px;
-          }
-          .mat-calendar-period-button {
-            padding: 0px;
-            height: 34px;
-            width: 94px;
-            &:hover {
-              background: #00000012;
-            }
-          }
-        }
-      }
+      }  
     `;
-  }
-}
-/** Error when invalid control is dirty, touched, or submitted. */
-class InvalidStateMatcher implements ErrorStateMatcher {
-  private invalid = false;
-  isErrorState(): boolean {
-    return this.invalid;
-  }
-
-  public setInvalid(invalid: boolean): void {
-    this.invalid = invalid;
   }
 }

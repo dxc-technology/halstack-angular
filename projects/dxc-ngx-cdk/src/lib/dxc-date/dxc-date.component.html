@@ -1,23 +1,34 @@
- <mat-form-field [class.disabled]="disabled"> 
-  <mat-label *ngIf="label && (showValue === null  || showValue === undefined)">{{ label }}</mat-label>
-  <input
-    matInput
-    [min]="min"
-    [max]="max"
-    [matDatepicker]="picker"
+  <dxc-input-text
+    [label]="label"
     [required]="required"
-    [dxcMask]="maskObject"
-    [formControl]="formControl"
-    [errorStateMatcher]="matcher"
-    (dateInput)="dateInput($event)"
-    (dateChange)="valueChanged($event)"
-    placeholder={{format}}
-    [(ngModel)] = "showValue"
-    (change)="valueChanged($event)"
-  /> 
-  <mat-datepicker-toggle matSuffix [for]="picker">
-    <img *ngIf="iconSrc" matDatepickerToggleIcon src="{{ iconSrc }}" />
-  </mat-datepicker-toggle>
-  <mat-datepicker [panelClass]="'dxc-date-date-panel'" #picker></mat-datepicker>
-  <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
-</mat-form-field>
+    [value]="renderedValue"
+    [invalid]="invalid"
+    [assistiveText]="assistiveText"
+    [suffixIconSrc]="calendarIconSrc"
+    (onChange)="onInputChangeHandler($event)"
+    (onBlur)="onBlurHandler($event)"
+    (onClickSuffix)="openCalendar($event)"
+    [margin]="margin"
+    [size]="size"
+    [placeholder]="format"
+    [mdePopoverTriggerFor]="dxcPopover"
+    mdePopoverTriggerOn="none"
+    [mdePopoverOffsetX]="popOverOffsetX"
+    [mdePopoverPositionX]="'before'"
+  ></dxc-input-text>
+
+  <mde-popover #dxcPopover="mdePopover" [mdePopoverOverlapTrigger]="false" 
+    [mdePopoverCloseOnClick]="false" [mdePopoverArrowWidth]="0" >
+    <div [class]="calendarDynamicStyle" theme>
+      <dxc-box size="fillParent" padding="xsmall" >
+        <mat-calendar #dxcCalendar 
+          [selected]="dateValue"
+          (selectedChange)="onSelectedChangeHandler($event)"
+          (yearSelected)="onSelectingDateHandler()" 
+          (monthSelected)="onSelectingDateHandler()" 
+          (clickOutside)="onClickOutsideHandler()"
+          >
+        </mat-calendar>
+      </dxc-box>
+    </div>
+  </mde-popover>

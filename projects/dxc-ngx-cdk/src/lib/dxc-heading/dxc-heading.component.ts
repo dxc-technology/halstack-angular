@@ -20,6 +20,7 @@ export class DxcHeadingComponent {
   @Input() level: number;
   @Input() text: string;
   @Input() weight: string;
+  @Input() margin: string;
 
   @HostBinding("class") className;
   @HostBinding("class.light") isLight: boolean = true;
@@ -30,6 +31,7 @@ export class DxcHeadingComponent {
     level: 1,
     text: null,
     weight: null,
+    margin: null,
   });
 
   constructor(private utils: CssUtils) {}
@@ -59,11 +61,16 @@ export class DxcHeadingComponent {
     }, {});
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    console.log(this.defaultInputs.getValue().margin);
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   getDynamicStyle(inputs) {
     return css`
+      .container {
+        ${this.utils.getMargins(inputs.margin)}
+      }
+
       font-family: "Open Sans", sans-serif;
       color: ${inputs.theme === "light"
         ? "var(--lightThemeHeading, #000000DE)"

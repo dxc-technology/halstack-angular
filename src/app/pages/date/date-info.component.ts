@@ -27,7 +27,6 @@ export class DateInfoComponent  implements OnInit{
   }
 
   checkDate(dateValue: Date ) {
-    debugger;
     this.isInvalidDate=dateValue ? false : true;
   }
 }

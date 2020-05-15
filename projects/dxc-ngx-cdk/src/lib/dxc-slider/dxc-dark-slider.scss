@@ -9,10 +9,10 @@
         .mat-slider-track-fill,
         .mat-slider-thumb {
           border: none;
-          background-color: var(--white);
+          background-color: var(--white, white);
         }
         .mat-slider-track-background {
-          background-color: var(--lightGrey);
+          background-color: var(--lightGrey, #D9D9D9);
           opacity: 0.54;
         }
       }
@@ -21,7 +21,7 @@
       ::ng-deep {
         .mat-slider-wrapper,
         .mat-slider-thumb {
-          background-color: var(--darkGrey);
+          background-color: var(--darkGrey, #666666);
           border: none;
         }
       }
@@ -34,14 +34,14 @@
         .mat-slider-focus-ring {
           transform: scale(1.4);
           opacity: 0.3;
-          background-color: var(--white);
+          background-color: var(--white, white);
         }
       }
     }
     &.mat-slider-sliding {
       ::ng-deep {
         .mat-slider-thumb {
-          background-color: var(--yellow);
+          background-color: var(--yellow, #FFED00);
           -webkit-box-shadow: 0px 3px 3px 0px rgba(255, 255, 255, 0.2);
           -moz-box-shadow: 0px 3px 3px 0px rgba(255, 255, 255, 0.2);
           box-shadow: 0px 3px 3px 0px rgba(255, 255, 255, 0.2);
@@ -51,13 +51,13 @@
   }
   span,
   input {
-    color: var(--white);
+    color: var(--white, white);
   }
   mat-form-field {
     ::ng-deep {
       .mat-form-field-underline,
       .mat-form-field-ripple {
-        background-color: var(--white);
+        background-color: var(--white, white);
       }
     }
   }

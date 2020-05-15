@@ -49,11 +49,11 @@ export class DxcTableComponent {
         width: 100%;
       
         & tr {
-          border-bottom: 1px solid var(--lightGrey);
+          border-bottom: 1px solid var(--lightGrey, #D9D9D9);
         }
 
         & td {
-          color: var(--darkGrey);
+          color: var(--darkGrey, #666666);
           min-height: 48px;
         }
 
@@ -71,8 +71,8 @@ export class DxcTableComponent {
           text-transform: uppercase;
           font-size: 14px;
           font-weight: 100;
-          background-color: var(--black);
-          color: var(--white);
+          background-color: var(--black, black);
+          color: var(--white, white);
         }
 
         & th:first-child {

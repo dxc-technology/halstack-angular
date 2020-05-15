@@ -1,7 +1,7 @@
 :host.dark {
-  color: var(--white);
+  color: var(--white, white);
   .notOverlayed {
-    color: var(--white);
+    color: var(--white, white);
   }
   mat-progress-bar {
     ::ng-deep {

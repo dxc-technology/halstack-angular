@@ -3,7 +3,6 @@ import { MatSliderModule } from "@angular/material";
 import { FormsModule } from "@angular/forms";
 import { DxcSliderComponent } from "./dxc-slider.component";
 import { CommonModule } from "@angular/common";
-import { ThemeModule, defaultTheme } from '../theme';
 import { DXCInputTextModule } from '../dxc-text-input/dxc-input-text.module';
 
 @NgModule({
@@ -12,11 +11,7 @@ import { DXCInputTextModule } from '../dxc-text-input/dxc-input-text.module';
     CommonModule,
     MatSliderModule,
     FormsModule,
-    DXCInputTextModule,
-    ThemeModule.forRoot({
-      themes: [defaultTheme],
-      active: "default"
-    })
+    DXCInputTextModule
   ],
   exports: [DxcSliderComponent]
 })

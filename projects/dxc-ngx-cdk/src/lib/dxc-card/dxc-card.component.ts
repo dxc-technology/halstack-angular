@@ -92,7 +92,7 @@ export class DxcCardComponent implements OnInit {
     if (theme === "dark") {
       return css`
         mat-card {
-          background-color: var(--black);
+          background-color: var(--black, black);
           color: white;
           ${!outlined
             ? this.utils.getBoxShadow("1")
@@ -117,7 +117,7 @@ export class DxcCardComponent implements OnInit {
     } else if (theme === "medium") {
       return css`
         mat-card {
-          background-color: var(--lightBlack);
+          background-color: var(--lightBlack, #212121);
           color: white;
           ${!outlined
             ? this.utils.getBoxShadow("1")
@@ -142,7 +142,7 @@ export class DxcCardComponent implements OnInit {
     } else {
       return css`
         mat-card {
-          background-color: var(--white);
+          background-color: var(--white, white);
           color: black;
           ${!outlined
             ? this.utils.getBoxShadow("1")
@@ -180,7 +180,7 @@ export class DxcCardComponent implements OnInit {
   getBorderOnHover(href) {
     if (this.onClick.observers.length > 0 || href) {
       return css`
-        border-color: var(--yellow);
+        border-color: var(--yellow, #FFED00);
       `;
     } else {
       return css``;

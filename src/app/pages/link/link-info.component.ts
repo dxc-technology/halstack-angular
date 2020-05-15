@@ -10,6 +10,7 @@ export class LinkInfoComponent implements OnInit {
   inheritColor: boolean = true;
   newWindow: boolean = true;
   underlined: boolean = true;
+  disabled: boolean = true;
 
   constructor() { }
 

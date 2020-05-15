@@ -1,4 +1,4 @@
-<mat-toolbar [ngClass]="underline ? 'underlined' : ''" theme>
+<mat-toolbar [ngClass]="underline ? 'underlined' : ''">
   <mat-toolbar-row>
     <a class="headerAnchor" (click)="onClickHandler($event)">
       <img [src]="getLogoDxc()" *ngIf="!logoSrc"/>
@@ -23,7 +23,7 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<div theme [class]="responsiveMenu">
+<div [class]="responsiveMenu">
   <div class="responsiveMenu-Header">
     <a class="headerAnchor" (click)="onClickHandler($event)">
       <img [src]="getLogoDxc()" *ngIf="!logoSrc" />

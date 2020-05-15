@@ -3,7 +3,9 @@
         [mode]="tabsMode" 
         [theme]="tabsTheme" 
         [disableRipple] ="disableTabsRipple"
-        id="dxcTabbedSection">
+        id="dxcTabbedSection"
+        [activeTabIndex]="tabId"
+        >
         <dxc-tab 
             *ngFor="let currentSection of sections; let i = index" 
             [label]="currentSection.label" 

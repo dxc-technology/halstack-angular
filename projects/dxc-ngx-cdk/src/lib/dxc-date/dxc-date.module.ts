@@ -1,55 +1,39 @@
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import {
   MatDatepickerModule,
-  MatFormFieldModule,
-  MatNativeDateModule,
-  MatInputModule,
   MAT_DATE_FORMATS,
   DateAdapter,
   MAT_DATE_LOCALE
 } from "@angular/material";
 import { DxcDateComponent } from "./dxc-date.component";
-import { CommonModule, DatePipe } from "@angular/common";
-import { NgxMaskModule } from "ngx-mask";
-import { DXCMaskDirective } from "./dxc-mask.directive";
-import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MatMomentDateModule
-} from "@angular/material-moment-adapter";
-export const MY_FORMATS = {
-  parse: {
-    dateInput: "L"
-  },
-  display: {
-    dateInput: "L",
-    monthYearLabel: "MMM YYYY",
-    dateA11yLabel: "L",
-    monthYearA11yLabel: "MMMM YYYY"
-  }
-};
+import { CommonModule } from "@angular/common";
+import { MAT_MOMENT_DATE_FORMATS,MomentDateAdapter, MatMomentDateModule } from "@angular/material-moment-adapter";
+import { DXCInputTextModule } from '../dxc-text-input/dxc-input-text.module';
+import { MdePopoverModule } from '@material-extended/mde';
+import { DxcBoxModule } from '../dxc-box/dxc-box.module';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
-  declarations: [DxcDateComponent, DXCMaskDirective],
+  declarations: [
+    DxcDateComponent
+  ],
   imports: [
     CommonModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-    MatNativeDateModule,
     MatMomentDateModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
     FormsModule,
-    NgxMaskModule.forRoot()
+    DXCInputTextModule,
+    DxcBoxModule,
+    MdePopoverModule,
+    ClickOutsideModule
   ],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-    DatePipe
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS}
   ],
-
-  exports: [DxcDateComponent]
+  exports: [
+    DxcDateComponent
+  ]
 })
 export class DxcDateModule {}

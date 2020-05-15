@@ -1,4 +1,13 @@
-
+  <div className="test-case" id="uncontrolled">
+    <h4>Uncontrolled Date</h4>
+    <dxc-date
+      label="uncontrolled label"
+      format="yyyy-mm-dd"
+      assistiveText="assistive text"
+      (onInputChange)="onUncontrolledChange($event)"
+      margin="large"
+    ></dxc-date>
+  </div>
   <div className="test-case" id="assistive-text-date">
     <h4>With assistive text</h4>
     <dxc-date
@@ -6,7 +15,9 @@
       [value]="inputValue"
       format="MM/DD/YYYY"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
+      (onInputChange)="onChange($event)"
+      margin="large"
+      size="fillParent"
     ></dxc-date>
   </div>
 
@@ -16,8 +27,8 @@
       label="Input label"
       [value]="inputValue"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
-      invalid="true"
+      (onInputChange)="onChange($event)"
+      [invalid]="isInvalidDate"
     ></dxc-date>
   </div>
 
@@ -26,13 +37,16 @@
     <dxc-date
       [value]="inputValue"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
+      (onInputChange)="onChange($event)"
+      size="large"
+      margin="large"
+      [invalid]="isInvalidDate"
     ></dxc-date>
   </div>
 
   <div className="test-case" id="without-assistive-text-label-date">
     <h4>Without assistive text and label</h4>
-    <dxc-date [value]="inputValue" (onChange)="onChange($event)" ></dxc-date>
+    <dxc-date [value]="inputValue" (onInputChange)="onChange($event)" ></dxc-date>
   </div>
 
   <div className="test-case" id="light-theme">
@@ -41,7 +55,7 @@
       label="Input label"
       [value]="inputValue"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
+      (onInputChange)="onChange($event)"
     ></dxc-date>
   </div>
 
@@ -52,7 +66,7 @@
         <dxc-date
           label="Input label"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           theme="dark"
           required
         ></dxc-date>
@@ -67,7 +81,7 @@
       [value]="inputValue"
       disabled="true"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
+      (onInputChange)="onChange($event)"
     ></dxc-date>
   </div>
 
@@ -78,7 +92,7 @@
       [value]="inputValue"
       required="true"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
+      (onInputChange)="onChange($event)"
       margin="medium"
     ></dxc-date>
   </div>
@@ -88,7 +102,7 @@
       label="Input label"
       required="true"
       assistiveText="assistive text"
-      (onChange)="onChange($event)"
+      (onInputChange)="onChange($event)"
       margin="medium"
     ></dxc-date>
   </div>
@@ -98,7 +112,7 @@
       <dxc-date
         label="Input label 123456789012"
         [value]="inputValue"
-        (onChange)="onChange($event)"
+        (onInputChange)="onChange($event)"
       ></dxc-date>
     </div>
     <div className="test-case" id="min-size-multiline-with-value">
@@ -106,16 +120,16 @@
       <dxc-date
         label="Input label 1234567890123"
         [value]="inputValue"
-        (onChange)="onChange($event)"
+        (onInputChange)="onChange($event)"
       ></dxc-date>
     </div>
     <div className="test-case" id="max-size-oneline-without-value">
       <h5>Label Max size oneline with value</h5>
-      <dxc-date label="Input label 123456789012" (onChange)="onChange($event)" ></dxc-date>
+      <dxc-date label="Input label 123456789012" (onInputChange)="onChange($event)" ></dxc-date>
     </div>
     <div className="test-case" id="min-size-multiline-without-value">
       <h5>Min size multiline with value</h5>
-      <dxc-date label="Input label 1234567890123" (onChange)="onChange($event)" ></dxc-date>
+      <dxc-date label="Input label 1234567890123" (onInputChange)="onChange($event)" ></dxc-date>
     </div>
     <div className="test-case" id="min-size-oneline-assistiveText">
       <h5>Min size oneline assistive text</h5>
@@ -123,7 +137,7 @@
         label="Label"
         [value]="inputValue"
         assistiveText="Assistive test 12345678901234 56789012"
-        (onChange)="onChange($event)"
+        (onInputChange)="onChange($event)"
       ></dxc-date>
     </div>
     <div className="test-case" id="min-size-multiline-assistiveText">
@@ -132,7 +146,7 @@
         label="Label"
         [value]="inputValue"
         assistiveText="Assistive test 12345678901234 567890123"
-        (onChange)="onChange($event)"
+        (onInputChange)="onChange($event)"
       ></dxc-date>
     </div>
 
@@ -178,7 +192,7 @@
           label="Input label"
           [value]="inputValue"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           margin="xxsmall"
         ></dxc-date>
       </div>
@@ -189,7 +203,7 @@
           label="Input label"
           [value]="inputValue"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           margin="xsmall"
         ></dxc-date>
       </div>
@@ -200,7 +214,7 @@
           label="Input label"
           [value]="inputValue"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           margin="small"
         ></dxc-date>
       </div>
@@ -211,7 +225,7 @@
           label="Input label"
           [value]="inputValue"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           margin="large"
         ></dxc-date>
       </div>
@@ -222,7 +236,7 @@
           label="Input label"
           [value]="inputValue"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           margin="xlarge"
         ></dxc-date>
       </div>
@@ -233,7 +247,7 @@
           label="Input label"
           [value]="inputValue"
           assistiveText="assistive text"
-          (onChange)="onChange($event)"
+          (onInputChange)="onChange($event)"
           margin="xxlarge"
         ></dxc-date>
       </div>

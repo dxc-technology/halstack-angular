@@ -233,11 +233,11 @@ export class DxcDateComponent implements OnChanges, OnInit {
         font-size: 16px;
       }
       .mat-calendar-body-selected {
-        border-color: var(--black);
-        background-color: var(--black);
-        color: var(--yellow);
+        border-color: var(--black, black);
+        background-color: var(--black, black);
+        color: var(--yellow, yellow);
         &:hover {
-          background-color: var(--black)
+          background-color: var(--black, black)
         }
         &.mat-calendar-body-today {
           border: none;
@@ -250,7 +250,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
-          background-color: var(--lightGrey) !important;
+          background-color: var(--lightGrey, #D9D9D9) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
         mat-year-view .mat-calendar-body-cell-content {

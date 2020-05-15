@@ -1,11 +1,13 @@
+def releasedVerion
+
 pipeline {
-    
+
     agent any
-    
+
     environment  {
         REPO_NAME = 'diaas-angular-cdk'
         SERVICE_NAME='dxc-ngx-cdk'
-    } 
+    }
     stages {
         // stage('Execute cypress tests') {
         //     steps {
@@ -27,26 +29,43 @@ pipeline {
         //                 sh 'npm run cypress:ci'
         //             }
         //         }
-        //     } 
+        //     }
         // }
+
+
+
+
         stage('Build and Deploy') {
            agent {
                 dockerfile {
                     filename 'docker/Dockerfile'
                     reuseNode true
-                } 
+                }
            }
-           stages {     
+           stages {
+
+            stage('Git') {
+              steps {
+                withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
+                  sh "touch ~/.netrc"
+                  sh "echo 'machine github.dxc.com' >> ~/.netrc"
+                  sh "echo 'login ${GIT_USER}' >> ~/.netrc"
+                  sh "echo 'password ${GIT_PASSWORD}' >> ~/.netrc"
+                  sh "git config --global user.email 'jenkins@dxc.com'"
+                  sh "git config --global user.name 'Jenkins User'"
+                }
+              }
+            }
             stage('Check repo name') {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId:"pdxc-jenkins", passwordVariable:"GIT_PASSWORD", usernameVariable:"GIT_USER")]) {
-                            env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')                          
-                            
+                            env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+
                             def check=checkRepoName(env.GIT_REPO_NAME,"${REPO_NAME}");
                             if (!check){
                                 error "This pipeline stops here! Please check the environment variables"
-                            } 
+                            }
                         }
                     }
                 }
@@ -63,7 +82,7 @@ pipeline {
             }
             stage('Release type') {
                 when {
-                    expression { BRANCH_NAME ==~ /^.*\b(release)\b.*$/ } 
+                    expression { BRANCH_NAME ==~ /^.*\b(release)\b.*$/ }
                 }
                 steps {
                     script {
@@ -86,7 +105,7 @@ pipeline {
             }
             stage('Password to continue') {
                 when {
-                    expression { env.RELEASE_OPTION == 'major' | env.RELEASE_OPTION == 'minor' | env.RELEASE_OPTION == 'patch' | env.RELEASE_OPTION == 'premajor' | env.RELEASE_OPTION == 'preminor' | env.RELEASE_OPTION == 'prepatch' |env.RELEASE_OPTION == 'prerelease' } 
+                    expression { env.RELEASE_OPTION == 'major' | env.RELEASE_OPTION == 'minor' | env.RELEASE_OPTION == 'patch' | env.RELEASE_OPTION == 'premajor' | env.RELEASE_OPTION == 'preminor' | env.RELEASE_OPTION == 'prepatch' |env.RELEASE_OPTION == 'prerelease' }
                 }
                 steps {
                     script {
@@ -98,7 +117,7 @@ pipeline {
             }
             stage('Release versioning') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -108,7 +127,7 @@ pipeline {
                                 choice(
                                     name: 'type',
                                     choices: "beta\nrc",
-                                    description: 'BETA when the version could have some errors. RC if the version is completely ready to release.' 
+                                    description: 'BETA when the version could have some errors. RC if the version is completely ready to release.'
                                 )
                             ]
                         }
@@ -118,25 +137,23 @@ pipeline {
             stage('Build and Install lib dependencies'){
                 steps {
                     sh '''
-                        cd ./projects/dxc-ngx-cdk
+                        cd ./projects/dxc-ngx-cdk && rm -rf node_modules
                         npm install
-                        npm run build-lib
-                        npm run post-build-lib
-                        npm run package   
+                        pwd && ls -la && npm run generate-lib
                     '''
                 }
             }
             stage('Install dependencies'){
                 steps {
                     sh '''
-                        cd .                                  
+                        cd .
                         npm install
                     '''
                 }
-            }            
+            }
             stage('.npmrc') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' } 
+                    expression { env.RELEASE_VALID == 'valid' | env.BRANCH_NAME == 'master' }
                 }
                 steps {
                     withCredentials([file(credentialsId: 'npmrc', variable: 'CONFIG')]) {
@@ -151,16 +168,20 @@ pipeline {
                 when { branch 'master' }
                 steps {
                     // Publish library to npm repository
-                    sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${OLD_RELEASE_NUMBER}-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
-                    sh '''
+                    script{
+                      sh "sed -i -e 's/${OLD_RELEASE_NUMBER}/'${OLD_RELEASE_NUMBER}-alpha.${BUILD_ID}'/g' ./dist/dxc-ngx-cdk/package.json"
+                      releasedVerion = sh(returnStdout: true, script: """
                         cd ./dist/dxc-ngx-cdk
                         npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm-local/ --tag alpha
-                    '''
+                        """).trim()
+                    }
+
+
                 }
             }
             stage('Tagging version') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -199,7 +220,7 @@ pipeline {
             }
             stage('Generating release notes') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -219,7 +240,7 @@ pipeline {
             }
             stage('Publish dxc-ngx-cdk version to Artifactory ') {
                 when {
-                    expression { env.RELEASE_VALID == 'valid' } 
+                    expression { env.RELEASE_VALID == 'valid' }
                 }
                 steps {
                     script {
@@ -232,7 +253,7 @@ pipeline {
                         } catch(err) {
                             env.RELEASE_TYPE = ''
                         }
-                        
+
                         if (env.RELEASE_TYPE == 'beta' | env.RELEASE_TYPE == 'rc') {
                             sh '''
                                 cd ./dist/dxc-ngx-cdk
@@ -244,41 +265,40 @@ pipeline {
                                 npm publish --registry https://artifactory.csc.com/artifactory/api/npm/diaas-npm
                             '''
                         }
-                        
+
                     }
                 }
             }
            }
         }
-    }        
-    post { 
-        failure {
-            script {
-                env.GIT_USER = sh (
-                    script: 'git --no-pager show -s --format=\'%ae\'',
-                    returnStdout: true
-                ).trim()
-                if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ | BRANCH_NAME == 'master') {
-                    emailext subject: 'The pipeline failed! Please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com',from: 'mgarcia232@dxc.com'
-                } else {
-                    emailext subject: 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: 'mgarcia232@dxc.com', from: 'mgarcia232@dxc.com'
-                }
-            }
-        }
-        success {
-            script {
-                env.GIT_USER = sh (
-                    script: 'git --no-pager show -s --format=\'%ae\'',
-                    returnStdout: true
-                ).trim()
-                if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ && env.RELEASE_VALID == 'valid') {
-                    emailext mimeType: 'text/html', subject: "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)", body: '${FILE,path="./CHANGELOG.html"}', to: 'mgarcia232@dxc.com; jsuarezardid@dxc.com',from: 'mgarcia232@dxc.com'
-                } else if (GIT_USER != 'jenkins@dxc.com') {
-                    emailext subject: 'Your changes passed succesfully all the stages, you are a really good developer! YES, YOU ARE :)', body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}", to: "${GIT_USER}",from: 'mgarcia232@dxc.com'
-                }
-            }
-        }
     }
+    post {
+        always {
+            script {
+                env.GIT_USER = sh (
+                    script: 'git --no-pager show -s --format=\'%ae\'',
+                    returnStdout: true
+                ).trim()
+
+                def mailmessage = ''
+                def subjectmessage = ''
+                if (currentBuild.currentResult != 'SUCCESS'  ) {
+                  mailmessage = 'The pipeline failed! Please fix this error ASAP :) '
+                  subjectmessage = 'The pipeline failed! Your changes are breaking the project, please fix this error ASAP :). SOIS ESCORIA.'
+                }else{
+                    if (BRANCH_NAME ==~ /^.*\b(release)\b.*$/ && env.RELEASE_VALID == 'valid') {
+                      mailmessage = "New DXC Angular CDK Release! Check out the new changes in this version: ${env.RELEASE_NUMBER} :)"
+                    } else if (GIT_USER != 'jenkins@dxc.com') {
+                      mailmessage = "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH}"
+                  }
+                  subjectmessage = "Your changes passed succesfully all the stages, you are a really good developers! YES, YOU ARE :) ${releasedVerion}"
+                }
+                emailext subject: "${subjectmessage}", body: "Commit: ${GIT_COMMIT}\n Url: ${GIT_URL}\n Branch: ${GIT_BRANCH} <br/> ${mailmessage}", to: "mgarcia232@dxc.com,vrodriguezgu@dxc.com",from: 'no-reply@platformdxc-mg.com'
+                sh "cd /"
+                deleteDir()
+                }
+            }
+        }
 }
 Boolean checkRepoName(repoName, hardcodeRepoName){
     if (hardcodeRepoName == repoName){

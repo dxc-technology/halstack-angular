@@ -4,7 +4,7 @@
     display: block;
     mat-expansion-panel {
       ::ng-deep {
-        box-shadow: 0px 6px 10px var(--black)24;
+        box-shadow: 0px 6px 10px var(--black, black)24;
         mat-expansion-panel-header {
           font-size: 16px;
           span.mat-expansion-indicator {

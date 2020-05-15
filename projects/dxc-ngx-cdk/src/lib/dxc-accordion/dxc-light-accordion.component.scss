@@ -5,10 +5,10 @@
         mat-expansion-panel-header {
           max-height: 64px;
           &:hover {
-            background-color: var(--lightGrey);
+            background-color: var(--lightGrey, #D9D9D9);
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description {
-              color: var(--black);
+              color: var(--black, black);
             }
           }
           padding: 8px 30px;
@@ -16,25 +16,25 @@
             display: none;
           }
           svg.down {
-            fill: var(--darkGrey);
+            fill: var(--darkGrey, #666666);
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
-            color: var(--darkGrey);
+            color: var(--darkGrey, #666666);
           }
           &.mat-expanded {
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description {
-              color: var(--black);
+              color: var(--black, black);
             }
             svg.down {
               display: none;
             }
             svg.up {
               display: block;
-              fill: var(--black);
+              fill: var(--black, black);
             }
-            border-bottom: 1px solid var(--lightGrey);
+            border-bottom: 1px solid var(--lightGrey, #D9D9D9);
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
           }
@@ -42,7 +42,7 @@
       }
     }
     mat-expansion-panel.disabled {
-      background-color: var(--white);
+      background-color: var(--white, white);
       opacity: 0.65;
       cursor: not-allowed;
       ::ng-deep {
@@ -50,14 +50,14 @@
           padding: 8px 30px;
           svg.up {
             display: block;
-            fill: var(--lightGrey);
+            fill: var(--lightGrey, #D9D9D9);
           }
           svg.down {
             display: none;
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
-            color: var(--lightGrey);
+            color: var(--lightGrey, #D9D9D9);
           }
         }
       }
@@ -66,41 +66,41 @@
 
   mat-accordion.alternative {
     mat-expansion-panel:not(.disabled) {
-      background-color: var(--black);
+      background-color: var(--black, black);
       ::ng-deep {
         mat-expansion-panel-header {
           &:hover {
-            background-color: var(--lightBlack);
+            background-color: var(--lightBlack, #212121);
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description {
-              color: var(--white);
+              color: var(--white, white);
             }
           }
           padding: 8px 30px;
           svg.down {
-            fill: var(--lightGrey);
+            fill: var(--lightGrey, #D9D9D9);
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description,
           .mat-expansion-indicator::after {
-            color: var(--lightGrey);
+            color: var(--lightGrey, #D9D9D9);
           }
           &.mat-expanded {
             .mat-expansion-panel-header-title,
             .mat-expansion-panel-header-description,
             .mat-expansion-indicator::after {
-              color: var(--white);
+              color: var(--white, white);
             }
             svg.up {
-              fill: var(--white);
+              fill: var(--white, white);
             }
-            border-bottom: 1px solid var(--darkGrey);
+            border-bottom: 1px solid var(--darkGrey, #666666);
           }
         }
 
         div.mat-expansion-panel-content {
           div.mat-expansion-panel-body {
-            color: var(--white);
+            color: var(--white, white);
           }
         }
       }
@@ -109,7 +109,7 @@
       mat-expansion-panel-header {
         max-height: 64px;
       }
-      background-color: var(--black);
+      background-color: var(--black, black);
       opacity: 0.8;
       cursor: not-allowed;
       ::ng-deep {
@@ -119,13 +119,13 @@
             display: none;
           }
           svg.down {
-            fill: var(--white);
+            fill: var(--white, white);
             opacity: 0.5;
             display:block;
           }
           .mat-expansion-panel-header-title,
           .mat-expansion-panel-header-description {
-            color: var(--white);
+            color: var(--white, white);
             opacity: 0.5;
           }
         }

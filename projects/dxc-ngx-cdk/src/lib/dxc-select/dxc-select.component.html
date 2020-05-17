@@ -32,7 +32,7 @@
     </div>
     </mat-select-trigger>
 
-    <mat-option
+    <mat-option theme
       *ngFor="let option of options; index as i"
       value="{{ option.value }}"
       [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"

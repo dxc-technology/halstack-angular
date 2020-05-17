@@ -30,7 +30,7 @@ const moment = momentImported;
   providers: [CssUtils]
 })
 export class DxcDateComponent implements OnChanges, OnInit {
-  
+
   @Input() value: any;
   @Input() format: string = 'dd-MM-yyyy';
   @Input() label: string;
@@ -91,10 +91,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private calculateComponentValues(): void {
     this.size = this.size ? this._sizes.find(item => item===this.size) : 'medium';
     this.popOverOffsetX = this.size==='fillParent' ? null : '130';
-    
+
     this.isDisabled = this.disabled;
     this.format = this.format ? this.format : this.defaultInputs.getValue().format;
-    
+
     this.renderedValue = this.value;
     this.dateValue = this.getMomentValue(this.renderedValue, this.format);
     this.calendarIconSrc =  this.theme === 'light' ? "../../assets/calendar.svg" : "../../assets/calendar_dark.svg";
@@ -104,7 +104,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.calculateComponentValues();
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;    
+    this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -164,7 +164,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public onClickOutsideHandler() {
     if (this._isCalendarOpened) {
         if (!this._isOpenClicked && !this._isSelectingDate) {
-        this.closeCalendar(); 
+        this.closeCalendar();
       } else {
         this._isOpenClicked=false;
         this._isSelectingDate=false;
@@ -204,7 +204,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     return css`
       width: 297px;
       background: white;
-  
+
       .mat-calendar {
         width: 100%;
       }
@@ -228,7 +228,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       .mat-calendar-table-header th {
         font-size: 12px;
       }
-      
+
       .mat-calendar-period-button {
         font-size: 16px;
       }
@@ -275,7 +275,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
       .disabled {
         cursor: not-allowed;
-      }  
+      }
     `;
   }
 }

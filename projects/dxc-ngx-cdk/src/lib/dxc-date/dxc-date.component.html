@@ -17,15 +17,15 @@
     [mdePopoverPositionX]="'before'"
   ></dxc-input-text>
 
-  <mde-popover #dxcPopover="mdePopover" [mdePopoverOverlapTrigger]="false" 
+  <mde-popover #dxcPopover="mdePopover" [mdePopoverOverlapTrigger]="false"
     [mdePopoverCloseOnClick]="false" [mdePopoverArrowWidth]="0" >
-    <div [class]="calendarDynamicStyle" theme>
-      <dxc-box size="fillParent" padding="xsmall" >
-        <mat-calendar #dxcCalendar 
+    <div [class]="calendarDynamicStyle">
+      <dxc-box theme size="fillParent" padding="xsmall" >
+        <mat-calendar #dxcCalendar
           [selected]="dateValue"
           (selectedChange)="onSelectedChangeHandler($event)"
-          (yearSelected)="onSelectingDateHandler()" 
-          (monthSelected)="onSelectingDateHandler()" 
+          (yearSelected)="onSelectingDateHandler()"
+          (monthSelected)="onSelectingDateHandler()"
           (clickOutside)="onClickOutsideHandler()"
           >
         </mat-calendar>

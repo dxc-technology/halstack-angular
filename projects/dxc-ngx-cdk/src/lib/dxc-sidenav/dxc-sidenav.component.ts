@@ -112,7 +112,6 @@ export class DxcSidenavComponent implements OnInit {
       .sidenavContainerClass {
         display: flex;
         position: relative;
-        overflow: hidden;
 
         .sidenavArrow {
           width: 42px;

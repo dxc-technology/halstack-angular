@@ -13,7 +13,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-sidenav",
@@ -27,7 +27,9 @@ export class DxcSidenavComponent implements OnInit {
   @Input() mode: string = "overlay";
   @Input() padding: any;
   @Input()
-  get displayArrow(): boolean { return this._displayArrow; }
+  get displayArrow(): boolean {
+    return this._displayArrow;
+  }
   set displayArrow(value: boolean) {
     this._displayArrow = coerceBooleanProperty(value);
   }
@@ -35,8 +37,8 @@ export class DxcSidenavComponent implements OnInit {
 
   innerWidth;
   isResponsive;
-  isShown:boolean = true;
-  firstLoad:boolean = true;
+  isShown: boolean = true;
+  firstLoad: boolean = true;
 
   defaultInputs = new BehaviorSubject<any>({
     arrowDistance: "",
@@ -47,10 +49,13 @@ export class DxcSidenavComponent implements OnInit {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils,private cdr: ChangeDetectorRef) {}
+  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
+    if (this.isResponsive === false && this.displayArrow === false) {
+      this.isShown = true;
+    }
     this.updateCss();
   }
 
@@ -81,7 +86,8 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.cdr.detectChanges;
+    this.updateCss();
+    this.cdr.detectChanges();
     this.firstLoad = false;
   }
 
@@ -160,7 +166,6 @@ export class DxcSidenavComponent implements OnInit {
         dxc-sidenav-menu {
           display: flex;
           flex-direction: column;
-          position: absolute;
           background-color: #f8f8f8;
           height: 100%;
           width: ${
@@ -168,9 +173,7 @@ export class DxcSidenavComponent implements OnInit {
           };
           box-sizing: border-box;
           ${this.utils.getPaddings(inputs.padding)}
-          z-index: ${
-            inputs.mode === "overlay" || this.isResponsive ? "400" : "auto"
-          };
+          z-index: ${inputs.mode === "overlay" ? "400" : "auto"};
           transform: ${
             inputs.isShown
               ? "translateX(0)"
@@ -178,19 +181,29 @@ export class DxcSidenavComponent implements OnInit {
               ? "translateX(-100%)"
               : ""
           };
-          transition: transform 0.4s ease-in-out;
+          opacity: ${inputs.isShown ? "1" : "0"};
+          visibility: ${inputs.isShown ? "visible" : "hidden"};
+          transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
         }
 
         dxc-sidenav-content {
+          box-sizing: border-box;
           flex-grow: 1;
           height: 100%;
           ${this.utils.getPaddings(inputs.padding)}
           margin-left: ${
             inputs.isShown && inputs.mode === "push" && !inputs.isResponsive
+              ? ""
+              : !inputs.isResponsive
               ? "300px"
-              : "0"
+              : "-60%"
           };
           transition: margin 0.4s ease-in-out;
+          width: ${
+            inputs.isShown && inputs.mode === "push"
+              ? "calc(100% - 300px)"
+              : "calc(100%)"
+          };
         }
       }
     `;

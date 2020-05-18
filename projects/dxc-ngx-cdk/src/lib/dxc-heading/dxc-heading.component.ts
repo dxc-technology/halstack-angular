@@ -45,6 +45,9 @@ export class DxcHeadingComponent {
       this.isLight = true;
       this.isDark = false;
     }
+    if (this.level == null) {
+      this.level = 1;
+    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -55,13 +58,15 @@ export class DxcHeadingComponent {
       this.isLight = true;
       this.isDark = false;
     }
+    if (this.level == null) {
+      this.level = 1;
+    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    console.log(this.defaultInputs.getValue().margin);
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

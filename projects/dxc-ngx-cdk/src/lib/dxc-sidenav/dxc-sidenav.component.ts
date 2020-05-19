@@ -86,6 +86,7 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.updateCss();
     this.cdr.detectChanges();
     this.firstLoad = false;
   }

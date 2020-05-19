@@ -96,6 +96,9 @@ export class DxcSidenavComponent implements OnInit {
       this.isResponsive = true;
     } else {
       this.isResponsive = false;
+      if(!this.displayArrow && !this.isShown) {
+        this.isShown = true;
+      }
     }
     this.isShown =
       this.isShown !== undefined
@@ -166,13 +169,12 @@ export class DxcSidenavComponent implements OnInit {
           display: flex;
           flex-direction: column;
           background-color: #f8f8f8;
-          height: 100%;
           width: ${
             inputs.innerWidth <= responsiveSizes.tablet ? "60%" : "300px"
           };
           box-sizing: border-box;
           ${this.utils.getPaddings(inputs.padding)}
-          z-index: ${inputs.mode === "overlay" ? "400" : "auto"};
+          z-index: ${inputs.mode === "overlay" || inputs.isResponsive ? "400" : "auto"};
           transform: ${
             inputs.isShown
               ? "translateX(0)"

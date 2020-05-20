@@ -37,8 +37,7 @@ export class DxcSidenavComponent implements OnInit {
 
   innerWidth;
   isResponsive;
-  isShown: boolean = true;
-  firstLoad: boolean = true;
+  isShown: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     arrowDistance: "",
@@ -86,8 +85,8 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.updateCss();
     this.cdr.detectChanges();
-    this.firstLoad = false;
   }
 
   updateCss() {
@@ -96,6 +95,9 @@ export class DxcSidenavComponent implements OnInit {
       this.isResponsive = true;
     } else {
       this.isResponsive = false;
+      if(!this.displayArrow && !this.isShown) {
+        this.isShown = true;
+      }
     }
     this.isShown =
       this.isShown !== undefined
@@ -140,9 +142,7 @@ export class DxcSidenavComponent implements OnInit {
               ? "translateX(0)"
               : !inputs.isShown
               ? inputs.innerWidth <= responsiveSizes.tablet
-                ? this.firstLoad
-                  ? "translateX(-" + (inputs.innerWidth * 0.6 - 15.6) + "px)"
-                  : "translateX(-" + inputs.innerWidth * 0.6 + "px)"
+                  ? "translateX(-" + (inputs.innerWidth * 0.6) + "px)"
                 : "translateX(-297px)"
               : ""
           };
@@ -166,13 +166,12 @@ export class DxcSidenavComponent implements OnInit {
           display: flex;
           flex-direction: column;
           background-color: #f8f8f8;
-          height: 100%;
           width: ${
             inputs.innerWidth <= responsiveSizes.tablet ? "60%" : "300px"
           };
           box-sizing: border-box;
           ${this.utils.getPaddings(inputs.padding)}
-          z-index: ${inputs.mode === "overlay" ? "400" : "auto"};
+          z-index: ${inputs.mode === "overlay" || inputs.isResponsive ? "400" : "auto"};
           transform: ${
             inputs.isShown
               ? "translateX(0)"
@@ -194,12 +193,12 @@ export class DxcSidenavComponent implements OnInit {
             inputs.isShown && inputs.mode === "push" && !inputs.isResponsive
               ? ""
               : !inputs.isResponsive
-              ? "300px"
+              ? "-300px"
               : "-60%"
           };
           transition: margin 0.4s ease-in-out;
           width: ${
-            inputs.isShown && inputs.mode === "push"
+            inputs.isShown && inputs.mode === "push" && !inputs.isResponsive
               ? "calc(100% - 300px)"
               : "calc(100%)"
           };

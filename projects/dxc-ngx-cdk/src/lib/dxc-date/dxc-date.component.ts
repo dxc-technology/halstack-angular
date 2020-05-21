@@ -71,7 +71,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   renderedValue: string;
   dateValue: Moment;
-  startDate: Date = new Date(1990, 8, 22);
   calendarIconSrc: string;
   popOverOffsetX: any;
 

@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { colors } from "../variables.js";
+import { colors } from "../variables";
 
 @Component({
   selector: "dxc-alert",

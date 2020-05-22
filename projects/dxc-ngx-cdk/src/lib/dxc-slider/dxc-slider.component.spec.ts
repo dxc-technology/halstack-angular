@@ -80,8 +80,8 @@ describe("DxcSlider tests", () => {
     expect(input.value).toBe("45");     
   });
 
-  /*test("DragEnd dxc-slider", async () => {
-    const onDragEndFunction = jest.fn();
+  test("DragEnd dxc-slider", async () => {
+    const onDragEndFunction = jest.fn((a) => console.log(a));
     const value = 22;
     TestBed.overrideComponent(DxcSliderComponent, {
       set: { selector: "slider" }
@@ -97,8 +97,8 @@ describe("DxcSlider tests", () => {
       imports: [MatSliderModule,DXCInputTextModule]
     });
     const input = <HTMLInputElement>(slider.getByRole("slider"));
-    fireEvent.dragEnd(input);
+    fireEvent.mouseUp(input);
     expect(onDragEndFunction).toHaveBeenCalled(); 
-  });*/
+  });
 
 });

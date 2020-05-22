@@ -96,6 +96,7 @@
           class="closeIcon"
           *ngIf="isCloseVisible || mode == 'modal'"
           (click)="onCloseHandler($event)"
+          data-testId="closeIcon"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

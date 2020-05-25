@@ -16,8 +16,8 @@ import { CssUtils } from "../utils";
   providers: [CssUtils]
 })
 export class DxcDialogComponent {
-  @Input() overlay: boolean;
-  @Input() isCloseVisible: boolean;
+  @Input() overlay: boolean = true;
+  @Input() isCloseVisible: boolean = true;
   @Input() padding: any;
   @Output() onCloseClick = new EventEmitter<any>();
   @Output() onBackgroundClick = new EventEmitter<any>();

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'dxc-paginator',
@@ -8,9 +9,27 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DxcPaginatorComponent implements OnInit {
 
-  @Input() currentPage: number;
-  @Input() itemsPerPage: number;
-  @Input() totalItems: number;
+  @Input()
+  get currentPage(): number { return this._currentPage; }
+  set currentPage(value: number) {
+    this._currentPage = coerceNumberProperty(value);
+  }
+  private _currentPage;
+
+  @Input()
+  get itemsPerPage(): number { return this._itemsPerPage; }
+  set itemsPerPage(value: number) {
+    this._itemsPerPage = coerceNumberProperty(value);
+  }
+  private _itemsPerPage;
+
+  @Input()
+  get totalItems(): number { return this._totalItems; }
+  set totalItems(value: number) {
+    this._totalItems = coerceNumberProperty(value);
+  }
+  private _totalItems;
+
   @Input() paginationActions : Array<string>;
 
   @Output() firstFunction: EventEmitter<any> = new EventEmitter<any>();
@@ -44,7 +63,7 @@ export class DxcPaginatorComponent implements OnInit {
   constructor() { 
     this.currentPage = 1;
     this.itemsPerPage = 5;
-    this.totalItems = 1;
+    this.totalItems = 1;  
   }
 
   ngOnInit() {
@@ -103,6 +122,7 @@ export class DxcPaginatorComponent implements OnInit {
     this.totalPages = Math.ceil(input.totalItems / input.itemsPerPage);
     this.currentPageInternal = input.currentPage === -1 ? input.totalPages : input.currentPage;
     this.minItemsPerPage = this.currentPageInternal === 1 ? this.currentPageInternal : (this.currentPageInternal - 1) * input.itemsPerPage + 1;
-    this.maxItemsPerPage = this.minItemsPerPage - 1 + input.itemsPerPage > input.totalItems ? input.totalItems : this.minItemsPerPage - 1 + input.itemsPerPage;
+    this.maxItemsPerPage = this.minItemsPerPage - 1 + input.itemsPerPage > input.totalItems ? 
+    +input.totalItems : this.minItemsPerPage - 1 + input.itemsPerPage;
   }
 }

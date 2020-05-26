@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty, coerceArray } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'dxc-paginator',
@@ -30,7 +30,12 @@ export class DxcPaginatorComponent implements OnInit {
   }
   private _totalItems;
 
-  @Input() paginationActions : Array<string>;
+  @Input()
+  get paginationActions(): Array<string> { return this._paginationActions; }
+  set paginationActions(value: Array<string>) {
+    this._paginationActions = coerceArray(value);
+  }
+  private _paginationActions;
 
   @Output() firstFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() nextFunction: EventEmitter<any> = new EventEmitter<any>();
@@ -63,7 +68,7 @@ export class DxcPaginatorComponent implements OnInit {
   constructor() { 
     this.currentPage = 1;
     this.itemsPerPage = 5;
-    this.totalItems = 1;  
+    this.totalItems = 1;
   }
 
   ngOnInit() {

@@ -127,7 +127,6 @@ export class DxcPaginatorComponent implements OnInit {
     this.totalPages = Math.ceil(input.totalItems / input.itemsPerPage);
     this.currentPageInternal = input.currentPage === -1 ? input.totalPages : input.currentPage;
     this.minItemsPerPage = this.currentPageInternal === 1 ? this.currentPageInternal : (this.currentPageInternal - 1) * input.itemsPerPage + 1;
-    this.maxItemsPerPage = this.minItemsPerPage - 1 + input.itemsPerPage > input.totalItems ? 
-    +input.totalItems : this.minItemsPerPage - 1 + input.itemsPerPage;
+    this.maxItemsPerPage = this.minItemsPerPage - 1 + input.itemsPerPage > input.totalItems ? input.totalItems : this.minItemsPerPage - 1 + input.itemsPerPage;
   }
 }

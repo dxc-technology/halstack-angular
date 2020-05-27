@@ -1,3 +1,18 @@
-<dxc-transactions *ngIf="uploadedVisibility()" [successfulCount]="getSuccessfullyUploadedFiles()" [filesSummary]="uploadedFiles"></dxc-transactions>
-<dxc-drag-and-drop *ngIf="toUploadVisibility()" [summaryVisible]="uploadedVisibility()" (onAddFile)="addFiles($event)"></dxc-drag-and-drop>
-<dxc-files-to-upload *ngIf="!toUploadVisibility()" [summaryVisible]="uploadedVisibility()" [filesToUpload]="getFilesToUpload()" (onAddFile)="addFiles($event)" (upload)="handleUpload()"></dxc-files-to-upload>
+<dxc-transactions
+  *ngIf="uploadedVisibility()"
+  [successfulCount]="getSuccessfullyUploadedFiles()"
+  [filesSummary]="uploadedFiles"
+></dxc-transactions>
+<dxc-drag-and-drop
+  *ngIf="toUploadVisibility()"
+  [summaryVisible]="uploadedVisibility()"
+  (onAddFile)="addFiles($event)"
+></dxc-drag-and-drop>
+<dxc-files-to-upload
+  data-testid="filesToUpload"
+  *ngIf="!toUploadVisibility()"
+  [summaryVisible]="uploadedVisibility()"
+  [filesToUpload]="getFilesToUpload()"
+  (onAddFile)="addFiles($event)"
+  (upload)="handleUpload()"
+></dxc-files-to-upload>

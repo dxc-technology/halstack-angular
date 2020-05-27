@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 import { css } from "emotion";
 import { DxcTabsComponent } from '../dxc-tabs/dxc-tabs.component';
 import { BehaviorSubject } from 'rxjs';
+import { coerceArray, coerceNumberProperty, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'dxc-tabbed-section',
@@ -14,9 +15,27 @@ export class DxcTabbedSectionComponent implements OnInit {
   //input attributes
   @Input() tabsMode: string = "filled";;
   @Input() tabsTheme: string = "light";;
-  @Input() disableTabsRipple: boolean = false;
-  @Input() stickAtPx: number = 0;
-  @Input() sections : Array<any>;
+
+  @Input()
+  get disableTabsRipple(): boolean { return this._disableTabsRipple; }
+  set disableTabsRipple(value: boolean) {
+    this._disableTabsRipple = coerceBooleanProperty(value);
+  }
+  private _disableTabsRipple;
+
+  @Input()
+  get stickAtPx(): number { return this._stickAtPx; }
+  set stickAtPx(value: number) {
+    this._stickAtPx = coerceNumberProperty(value);
+  }
+  private _stickAtPx;
+
+  @Input()
+  get sections(): Array<any> { return this._sections; }
+  set sections(value: Array<any>) {
+    this._sections = coerceArray(value);
+  }
+  private _sections;
   
   @ViewChild(DxcTabsComponent, { static: true })
   public sectionTabGroup: DxcTabsComponent;
@@ -37,7 +56,9 @@ export class DxcTabbedSectionComponent implements OnInit {
     stickAtPx: 0,
   });
 
-  constructor() {     
+  constructor() { 
+    this.stickAtPx = 0;  
+    this.disableTabsRipple = false; 
   }
 
   ngOnInit() {

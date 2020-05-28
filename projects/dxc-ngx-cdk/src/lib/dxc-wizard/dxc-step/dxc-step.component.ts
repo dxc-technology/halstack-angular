@@ -21,6 +21,7 @@ export class DxcStepComponent {
   @Input() label: string;
   @Input() description: string;
   @Input() iconSrc: string;
+  @Input() iconAlt: string;
   @Input() disabled: boolean;
   @Input() valid: boolean;
 

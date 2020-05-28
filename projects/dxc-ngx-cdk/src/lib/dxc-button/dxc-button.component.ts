@@ -29,6 +29,7 @@ export class DxcButtonComponent {
   @Input() iconPosition: string;
   @Input() margin: any;
   @Input() size: string;
+  @Input() iconAlt: string;
 
   @Output() onClick = new EventEmitter<any>();
 

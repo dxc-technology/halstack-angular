@@ -1,15 +1,17 @@
 <button class="step" [disabled]="disabled">
     <div class="stepHeader">
         <div class="iconContainer">
-            <img class="icon" *ngIf="iconSrc; else numberBlock" [src]="iconSrc" />
+            <img [alt]="iconAlt" class="icon" *ngIf="iconSrc; else numberBlock" [src]="iconSrc" />
             <ng-template #numberBlock>
                 <p class="number">{{position+1}}</p>
             </ng-template>
         </div>
-        <img class="validityIcon" 
+        <img class="validityIcon"
+            alt="Valid"
             *ngIf="valid !== undefined && valid"
             [src]="validIcon"/>
         <img class="validityIcon" 
+            alt="Invalid"
             *ngIf="valid !== undefined && !valid"
             [src]="invalidIcon"/>  
     </div>

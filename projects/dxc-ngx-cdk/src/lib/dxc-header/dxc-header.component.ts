@@ -28,6 +28,8 @@ export class DxcHeaderComponent implements OnChanges {
   @Input() margin: any;
   @Input() padding: any;
 
+  @Input() imgAlt: string;
+
   @Output() onClick = new EventEmitter<any>();
 
   isResponsive = false;

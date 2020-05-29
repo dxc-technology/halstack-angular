@@ -45,8 +45,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() margin: any;
   @Input() size: string;
 
-  @Input() iconAlt: string= "Calendar Icon";
-
   @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 

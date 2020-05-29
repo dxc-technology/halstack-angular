@@ -9,7 +9,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { responsiveSizes } from "../variables.js";
+import { responsiveSizes } from "../variables";
 
 @Component({
   selector: "dxc-footer",

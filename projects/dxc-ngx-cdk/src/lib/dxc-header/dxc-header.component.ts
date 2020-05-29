@@ -11,7 +11,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { spaces, responsiveSizes } from "../variables.js";
+import { spaces, responsiveSizes } from '../variables';
 
 @Component({
   selector: "dxc-header",

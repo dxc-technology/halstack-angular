@@ -51,8 +51,6 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   @Input() public margin: any;
   @Input() public size: string;
 
-  @Input() iconAlt: string;
-
   @Output() public onClickSuffix: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onClickPrefix: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();

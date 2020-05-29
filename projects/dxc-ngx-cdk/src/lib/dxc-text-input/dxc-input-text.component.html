@@ -13,7 +13,6 @@
     class="prefixElement"
     *ngIf="prefixIconSrc"
     src="{{ prefixIconSrc }}"
-    [alt]="iconAlt"
   />
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
@@ -58,7 +57,6 @@
     class="suffixElement"
     *ngIf="suffixIconSrc"
     src="{{ suffixIconSrc }}"
-    [alt]="iconAlt"
   />
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>

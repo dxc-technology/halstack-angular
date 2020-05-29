@@ -1,7 +1,7 @@
 <div [class]="footerContainerStyle">
     <div [class]="footerHeaderStyle">
-      <img class="logo" [alt]="imgAlt" [src]="getLogoDxc()" *ngIf="!logoSrc"/>
-      <img class="logo" [alt]="imgAlt" *ngIf="logoSrc" src="{{ logoSrc }}" />
+      <img class="logo" [src]="getLogoDxc()" *ngIf="!logoSrc"/>
+      <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
             <div>
               <div [class]="socialLinksStyle" *ngFor="let link of socialLinks; index as i">
                 <a
@@ -11,7 +11,7 @@
                   *ngIf="link.logoSrc"
                   href="{{ link.href }}"
                 >
-                  <img alt="{{link.iconAlt}}" [class]="socialIconImageStyle" src="{{ link.logoSrc }}" />
+                  <img [class]="socialIconImageStyle" src="{{ link.logoSrc }}" />
                 </a>
               </div>
             </div>

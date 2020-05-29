@@ -20,14 +20,13 @@ import { responsiveSizes } from "../variables";
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;
 
-  @Input() socialLinks: { href?: string; logoSrc?: string; iconAlt?: string }[];
+  @Input() socialLinks: { href?: string; logoSrc?: string }[];
   @Input() bottomLinks: { href?: string; text?: string }[];
 
   @Input() copyright: string;
   @Input() margin: any;
   @Input() padding: any;
   @Input() logoSrc: string;
-  @Input() imgAlt: string;
 
   defaultImglogo: string;
   innerWidth;

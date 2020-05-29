@@ -1,8 +1,8 @@
 <mat-toolbar [ngClass]="underline ? 'underlined' : ''">
   <mat-toolbar-row>
     <a class="headerAnchor" (click)="onClickHandler($event)">
-      <img [alt]="imgAlt" [src]="getLogoDxc()" *ngIf="!logoSrc"/>
-      <img [alt]="imgAlt" *ngIf="logoSrc" src="{{ logoSrc }}" />
+      <img [src]="getLogoDxc()" *ngIf="!logoSrc"/>
+      <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
     <div class="hamburger">
       <span (click)="showMenu()" *ngIf="isResponsive" class="hamburgerItem">

@@ -96,3 +96,8 @@ export * from './lib/dxc-sidenav/dxc-sidenav.module';
 
 export * from './lib/dxc-heading/dxc-heading.component';
 export * from './lib/dxc-heading/dxc-heading.module';
+
+export * from './lib/dxc-resultable/table-module';
+export * from './lib/dxc-resultable/table';
+export * from './lib/dxc-resultable/directives/dxc-cell-def.directive';
+export * from './lib/dxc-resultable/directives/dxc-column-def.directive';

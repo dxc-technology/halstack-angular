@@ -147,16 +147,6 @@ export const CDK_TABLE_TEMPLATE =
       <ng-container rowOutlet>
       </ng-container>
     </dxc-table>
-
-    <dxc-paginator *ngIf="(totalItems | async) !== null"
-      [totalItems]="totalItems | async"
-      [itemsPerPage]="itemsPerPage"
-      [currentPage]="page"
-      (nextFunction)="navigate($event, 'next')"
-      (prevFunction)="navigate($event, 'prev')"
-      (firstFunction)="navigate($event, 'first')"
-      (lastFunction)="navigate($event, 'last')"
-    ></dxc-paginator>
 `;
 /**
  * A data table that can render a header row, data rows, and a footer row.
@@ -182,7 +172,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   itemsPerPage: number = 5;
 
   @Input()
-  private collectionResource: {items: [], totalItems: number}
+  collectionResource = {items: [], totalItems: 0};
 
   displayedColumns:string[] = [];
 
@@ -297,7 +287,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       @Optional() protected readonly _dir: Directionality, @Inject(DOCUMENT) _document: any,
       private resolver: ComponentFactoryResolver) {
 
-        this.totalItems = this.collectionResource.totalItems;
+        //this.totalItems = this.collectionResource ? this.collectionResource.totalItems : 0;
         this.dataSource = new TableDataSource(this.collectionResource.items);
 
     if (!role) {

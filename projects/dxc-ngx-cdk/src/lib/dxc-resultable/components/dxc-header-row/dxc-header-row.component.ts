@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, ElementRef, ViewChild } from '@angular/core';
-import { css } from "emotion";
+import { ErrorStateMatcher } from '@angular/material';
 
 @Component({
   selector: 'th',
@@ -16,7 +16,7 @@ export class DxcHeaderRowComponent {
   ascSort: string = `<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>`;
   descSort: string = `<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>`;
 
-  constructor(private elRef: ElementRef){}
+  state:string;
 
   ngAfterViewInit(){
     this.setDefaultSort();
@@ -35,6 +35,7 @@ export class DxcHeaderRowComponent {
     if(this.isSortable){
       let spanIcon = document.getElementById(`iconSort-${this.columnName}`);
       spanIcon.insertAdjacentHTML('beforeend', this.defaultSort);
+      this.state = "default";
     }
   }
 
@@ -42,6 +43,7 @@ export class DxcHeaderRowComponent {
     if(this.isSortable){
       let spanIcon = document.getElementById(`iconSort-${this.columnName}`);
       spanIcon.insertAdjacentHTML('beforeend', this.ascSort);
+      this.state = "up";
     }
   }
 
@@ -49,6 +51,7 @@ export class DxcHeaderRowComponent {
     if(this.isSortable){
       let spanIcon = document.getElementById(`iconSort-${this.columnName}`);
       spanIcon.insertAdjacentHTML('beforeend', this.descSort);
+      this.state = "down";
     }
   }
 

@@ -30,7 +30,7 @@ describe("DxcSlider tests", () => {
       },
       imports: [MatSliderModule,DXCInputTextModule]
     });
-    const input = <HTMLInputElement>(slider.getByRole("textbox"));
+    const input = <HTMLInputElement>(slider.getByRole("combobox"));
     fireEvent.input(input, { target: { value: value } });
     expect(onChangeFunction).toHaveBeenCalledWith(value);     
   });
@@ -51,7 +51,7 @@ describe("DxcSlider tests", () => {
       },
       imports: [MatSliderModule,DXCInputTextModule]
     });
-    const input = <HTMLInputElement>(slider.getByRole("textbox"));
+    const input = <HTMLInputElement>(slider.getByRole("combobox"));
     fireEvent.input(input, { target: { value: value } });
     expect(onChangeFunction).toHaveBeenCalledWith(value); 
   });
@@ -72,7 +72,7 @@ describe("DxcSlider tests", () => {
       },
       imports: [MatSliderModule,DXCInputTextModule]
     });
-    const input = <HTMLInputElement>(slider.getByRole("textbox"));
+    const input = <HTMLInputElement>(slider.getByRole("combobox"));
     fireEvent.input(input, { target: { value: value } });
     expect(onChangeFunction).toHaveBeenCalledWith(value);
     
@@ -81,7 +81,7 @@ describe("DxcSlider tests", () => {
   });
 
   test("DragEnd dxc-slider", async () => {
-    const onDragEndFunction = jest.fn((a) => console.log(a));
+    const onDragEndFunction = jest.fn();
     const value = 22;
     TestBed.overrideComponent(DxcSliderComponent, {
       set: { selector: "slider" }

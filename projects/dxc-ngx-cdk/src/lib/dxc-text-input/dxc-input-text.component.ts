@@ -12,21 +12,20 @@ import {
 import { ErrorStateMatcher } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
+import { switchMap } from "rxjs/operators";
 import { CssUtils } from "../utils";
-import { ElementRef, OnInit, AfterViewChecked } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ElementRef, OnInit, AfterViewChecked } from "@angular/core";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
-  styleUrls: [
-    "./dxc-light-input.scss",
-    "./dxc-dark-input.scss"
-  ],
+  styleUrls: ["./dxc-light-input.scss", "./dxc-dark-input.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
-export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecked {
+export class DxcTextInputComponent
+  implements OnInit, OnChanges, AfterViewChecked {
   @HostBinding("class") className;
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
@@ -47,6 +46,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   @Input() public name: string;
   @Input() public value: string;
   @Input() public placeholder: string;
+  @Input() public autocompleteOptions: any;
 
   @Input() public margin: any;
   @Input() public size: string;
@@ -56,14 +56,15 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
-  renderedValue = '';
-  private _valueChangeTrack : boolean;
+  renderedValue = "";
+  private _valueChangeTrack: boolean;
+  options = [];
 
-  @ViewChild('dxcSingleInput', {static: false}) singleInput : ElementRef; 
-  @ViewChild('dxcMultiInput', {static: false}) multiInput : ElementRef; 
+  @ViewChild("dxcSingleInput", { static: false }) singleInput: ElementRef;
+  @ViewChild("dxcMultiInput", { static: false }) multiInput: ElementRef;
 
-  selectionStart : number = 0;
-  selectionEnd : number = 0;
+  selectionStart: number = 0;
+  selectionEnd: number = 0;
   clicked: boolean = false;
 
   sizes = {
@@ -95,22 +96,39 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   public formControl = new FormControl();
   public matcher = new InvalidStateMatcher();
 
-  constructor(private utils: CssUtils) {
-  }
+  constructor(private utils: CssUtils) {}
 
   ngOnInit() {
-    this.renderedValue = this.value || '';
+    this.renderedValue = this.value || "";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    if (this.autocompleteOptions && Array.isArray(this.autocompleteOptions)) {
+      this.options = this.autocompleteOptions;
+    } else if (
+      this.autocompleteOptions &&
+      typeof this.autocompleteOptions === "function"
+    ) {
+      this.autocompleteOptions().subscribe(
+        autocompleteOptionsList => {
+          this.options = autocompleteOptionsList;
+        },
+        err => (this.options = ["Error"])
+      );
+    }
   }
 
   ngAfterViewChecked(): void {
-      if (this._valueChangeTrack) {
-        this._valueChangeTrack = false;
-        this.multiline ? this.setCursorSelection(this.multiInput) : this.setCursorSelection(this.singleInput);
-      }
+    if (this._valueChangeTrack) {
+      this._valueChangeTrack = false;
+      this.multiline
+        ? this.setCursorSelection(this.multiInput)
+        : this.setCursorSelection(this.singleInput);
+    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    if(changes && changes.value && changes.value.currentValue) {
+      this.autocompleteFunction(changes.value.currentValue);
+    }
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
@@ -119,9 +137,9 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
       this.isDark = false;
     }
     this.isDisabled = this.disabled;
-    
-    this.renderedValue = this.value || '';
-    this.label = this.label || '';
+
+    this.renderedValue = this.value || "";
+    this.label = this.label || "";
     this.matcher.setInvalid(this.invalid);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -140,17 +158,52 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
     this.selectionEnd = $event.target.selectionEnd;
     this.onChange.emit($event.target.value);
 
-    if (this.value === undefined || this.value === null){
+    if (this.value === undefined || this.value === null) {
       this.renderedValue = $event.target.value;
-    }else{
+      this.autocompleteFunction(this.renderedValue);
+    } else {
       $event.target.value = this.renderedValue;
+    }
+  }
+
+  public onClickOption($event: any) {
+    this.onChange.emit($event);
+    if (this.value === undefined || this.value === null) {
+      this.renderedValue = $event;
+    } else {
+      this.singleInput.nativeElement.value = this.renderedValue;
+    }
+  }
+
+  autocompleteFunction(value) {
+    if (
+      value &&
+      value !== undefined &&
+      this.autocompleteOptions &&
+      Array.isArray(this.autocompleteOptions)
+    ) {
+      const inputValue = value.toLowerCase();
+      this.options = this.autocompleteOptions.filter(option =>
+        option.toLowerCase().includes(inputValue)
+      );
+    } else if (
+      this.autocompleteOptions &&
+      typeof this.autocompleteOptions === "function"
+    ) {
+      this.options = ["Searching..."];
+      this.autocompleteOptions().subscribe(
+        autocompleteOptionsList => {
+          this.options = autocompleteOptionsList;
+        },
+        err => (this.options = ["Error"])
+      );
     }
   }
 
   /**
    * internal click event handler
-   * 
-   * @param $event 
+   *
+   * @param $event
    */
   public onClickHandle($event): void {
     this.clicked = true;
@@ -164,18 +217,18 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
   }
 
   public onClickSuffixHandler($event): void {
-    this.onClickSuffix.emit($event);    
+    this.onClickSuffix.emit($event);
   }
 
   public onClickPrefixHandler($event): void {
-      this.onClickPrefix.emit($event);
+    this.onClickPrefix.emit($event);
   }
 
   private setCursorSelection(input: ElementRef) {
     if (!this.clicked && input) {
       input.nativeElement.selectionStart = this.selectionStart;
       input.nativeElement.selectionEnd = this.selectionEnd;
-    } 
+    }
   }
 
   calculateWidth(inputs) {
@@ -212,7 +265,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, AfterViewChecke
           width: 3px;
         }
         &::-webkit-scrollbar-track {
-          background-color: var(--lightGrey, #D9D9D9);
+          background-color: var(--lightGrey, #d9d9d9);
           border-radius: 3px;
         }
         &::-webkit-scrollbar-thumb {
@@ -288,5 +341,4 @@ class InvalidStateMatcher implements ErrorStateMatcher {
   public setInvalid(invalid: boolean): void {
     this.invalid = invalid;
   }
-
 }

@@ -12,7 +12,7 @@
     label.mat-form-field-label:not(.mat-form-field-empty) {
       color: var(--black, black);
     }
-    .mat-form-field-invalid {
+    .invalid {
       .mat-hint {
         color: var(--darkRed, #D0011B);
       }

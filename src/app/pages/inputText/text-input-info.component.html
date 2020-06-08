@@ -6,15 +6,18 @@
       prefixIconSrc="./assets/images/home.svg"
       [value]="inputValue"
       (onChange)="onChange($event)"
+      [autocompleteOptions]="autocompleteAsync"
+      required=true
+      invalid=true
     ></dxc-input-text>
+<!-- 
   </div>
-
   <div className="test-case" id="prefix-icon-input">
     <h4>With prefix icon</h4>
     <dxc-input-text
       label="Surname"
       prefixIconSrc="./assets/images/home.svg"
-      (onChange)="onChange($event)"
+      [autocompleteOptions]="options"
     ></dxc-input-text>
   </div>
 
@@ -602,6 +605,6 @@
         margin="xxlarge"
         (onChange)="onChangeUncontrolled($event)"
         (onBlur)="onBlur($event)"
-      ></dxc-input-text>
+      ></dxc-input-text> -->
 
     </div>

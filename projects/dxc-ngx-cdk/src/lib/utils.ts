@@ -61,7 +61,6 @@ export class CssUtils {
       paddings = this.getPaddingOrMargin(sizes, inputs.padding);
     }
     if(paddings || margins) {
-      console.log(margins);
       return css`
         width: calc(${width} ${paddings} ${margins});
       `;

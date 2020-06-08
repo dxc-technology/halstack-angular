@@ -361,7 +361,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
     }
   }
 
-
   /**
    * Renders rows based on the table's latest set of data, which was either provided directly as an
    * input or retrieved through an Observable stream (directly or from a DataSource).
@@ -642,6 +641,27 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
     });
   }
 
+
+  ngAfterViewInit(){
+    this.addListenerHeaders();
+  }
+
+  //It is adding click event for sorting cells
+  addListenerHeaders(){
+    if (this._columnDefsByName !== null ){
+      this._columnDefsByName.forEach((value: DxcColumnDef , key: string) => {
+        if(value._isSortable){
+          let divHeader = document.getElementById(`header-${key}`);
+          divHeader.addEventListener('click', this.sortCells);
+        }
+
+      });
+    }
+  }
+
+  sortCells(event) {
+    alert("hola");
+  }
 
 
 }

@@ -55,7 +55,7 @@ import {DXC_HAL_TABLE} from './tokens';
 import { DxcHeaderRowComponent } from './components/dxc-header-row/dxc-header-row.component';
 import { DxcRowComponent } from './components/dxc-row/dxc-row.component';
 import { DxcColumnDef } from './directives/dxc-column-def.directive';
-import { PaginationService } from './pagination.service';
+import { PaginationService } from './services/pagination.service';
 
 /** Interface used to provide an outlet for rows to be inserted into. */
 export interface RowOutlet {
@@ -353,6 +353,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
         const factory = this.resolver.resolveComponentFactory(DxcHeaderRowComponent);
         const viewRef = this._headerOutlet.viewContainer.createComponent(factory);
         viewRef.instance.columnName = key;
+        viewRef.instance.isSortable = value._isSortable;
         if (!this.displayedColumns.includes(key)){
           this.displayedColumns.push( key );
         }
@@ -521,7 +522,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       throw getTableUnknownDataSourceError();
     }
 
-
     this._renderChangeSubscription = dataStream.pipe(takeUntil(this._onDestroy)).subscribe(data => {
       this._data = data || [];
       this.renderHeaders();
@@ -641,6 +641,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       this.collectionData.next( this.collectionResource.slice(parameters.start,parameters.end));
     });
   }
+
+
 
 }
 

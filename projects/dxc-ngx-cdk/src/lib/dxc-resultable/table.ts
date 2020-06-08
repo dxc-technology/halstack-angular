@@ -52,10 +52,10 @@ import {
   getTableUnknownDataSourceError
 } from './table-errors';
 import {DXC_HAL_TABLE} from './tokens';
-import { TableSpinnerComponent } from './components/table-spinner/table-spinner.component';
 import { DxcHeaderRowComponent } from './components/dxc-header-row/dxc-header-row.component';
 import { DxcRowComponent } from './components/dxc-row/dxc-row.component';
 import { DxcColumnDef } from './directives/dxc-column-def.directive';
+import { PaginationService } from './pagination.service';
 
 /** Interface used to provide an outlet for rows to be inserted into. */
 export interface RowOutlet {
@@ -68,15 +68,6 @@ export interface RowOutlet {
  */
 type DxcHalTableDataSourceInput<T> =
     DataSource<T>|Observable<ReadonlyArray<T>|T[]>|ReadonlyArray<T>|T[];
-
-/**
- * Provides a handle for the table to grab the view container's ng-container to insert spinner.
- * @docs-private
- */
-@Directive({selector: '[spinnerOutlet]'})
-export class SpinnerOutlet implements RowOutlet {
-  constructor(public viewContainer: ViewContainerRef, public elementRef: ElementRef) {}
-}
 
 /**
  * Provides a handle for the table to grab the view container's ng-container to insert data rows.
@@ -142,11 +133,23 @@ export interface Columns {
 export const CDK_TABLE_TEMPLATE =
     `
     <dxc-table>
-      <ng-container headerOutlet>
+      <ng-container headerOutlet>        
       </ng-container>
       <ng-container rowOutlet>
       </ng-container>
     </dxc-table>
+
+    <dxc-paginator *ngIf="totalItems !== null"
+      [totalItems]="totalItems"
+      [itemsPerPage]="itemsPerPage"
+      [currentPage]="page"
+      (nextFunction)="navigate($event, 'next')"
+      (prevFunction)="navigate($event, 'prev')"
+      (firstFunction)="navigate($event, 'first')"
+      (lastFunction)="navigate($event, 'last')"
+    ></dxc-paginator>
+
+
 `;
 /**
  * A data table that can render a header row, data rows, and a footer row.
@@ -164,7 +167,8 @@ export const CDK_TABLE_TEMPLATE =
   // declared elsewhere, they are checked when their declaration points are checked.
   // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
-  providers: [{provide: DXC_HAL_TABLE, useExisting: DxcResultTable}]
+  providers: [{provide: DXC_HAL_TABLE, useExisting: DxcResultTable}, 
+              PaginationService]
 })
 export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit {
 
@@ -172,11 +176,13 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   itemsPerPage: number = 5;
 
   @Input()
-  collectionResource = {items: [], totalItems: 0};
+  collectionResource: Array<any>;
+
+  collectionData: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
 
   displayedColumns:string[] = [];
 
-  totalItems;
+  totalItems:Number = 0;
 
   fetchStatus;
 
@@ -270,7 +276,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       new BehaviorSubject<{start: number, end: number}>({start: 0, end: Number.MAX_VALUE});
 
   // Outlets in the table's template where the header, data rows, and footer will be inserted.
-  @ViewChild(SpinnerOutlet, {static: true}) _spinnerOutlet: SpinnerOutlet;
   @ViewChild(HeaderOutlet, {static: true}) _headerOutlet: HeaderOutlet;
   @ViewChild(DataRowOutlet, {static: true}) _rowOutlet: DataRowOutlet;
 
@@ -285,10 +290,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       protected readonly _changeDetectorRef: ChangeDetectorRef,
       protected readonly _elementRef: ElementRef, @Attribute('role') role: string,
       @Optional() protected readonly _dir: Directionality, @Inject(DOCUMENT) _document: any,
-      private resolver: ComponentFactoryResolver) {
-
-        //this.totalItems = this.collectionResource ? this.collectionResource.totalItems : 0;
-        this.dataSource = new TableDataSource(this.collectionResource.items);
+      private resolver: ComponentFactoryResolver, 
+      private paginationService: PaginationService) {
 
     if (!role) {
       this._elementRef.nativeElement.setAttribute('role', 'grid');
@@ -299,6 +302,10 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   }
 
   ngOnInit() {
+
+    this.collectionData.next(this.collectionResource.slice(0, this.itemsPerPage));
+    this.dataSource =  new TableDataSource(this.collectionData);
+    this.totalItems = this.collectionResource.length;
 
     if (this._isNativeHtmlTable) {
       this._applyNativeTableSections();
@@ -316,13 +323,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   ngAfterContentChecked() {
     // Cache the row and column definitions gathered by ContentChildren and programmatic injection.
     //this._cacheRowDefs();
-
-
     this._cacheColumnDefs();
-
-
-    // Render updates if the list of columns have been changed for the header, row, or footer defs.
-
+   // Render updates if the list of columns have been changed for the header, row, or footer defs.
 
     // If there is a data source and row definitions, connect to the data source unless a
     // connection has already been made.
@@ -334,7 +336,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
 
   ngOnDestroy() {
     this._headerOutlet.viewContainer.clear();
-    this._spinnerOutlet.viewContainer.clear();
     this._rowOutlet.viewContainer.clear();
     this._cachedRenderRowsMap.clear();
     this._onDestroy.next();
@@ -399,18 +400,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       const rowView = <RowViewRef<T>>viewContainer.get(record.currentIndex!);
       rowView.context.$implicit = record.item.data;
     });
-
-    this._spinnerOutlet.viewContainer.clear();
-  }
-
-  renderSpinner(outlet: RowOutlet){
-    const spinnerOutletContainer =  outlet.viewContainer;
-    const spinnerComponentFactory = this.resolver.resolveComponentFactory(TableSpinnerComponent);
-    spinnerOutletContainer.createComponent(spinnerComponentFactory);
-
-
-    // const helloComponentRef:ComponentRef<DxcSpinnerComponent> = spinnerViewContainer.createComponent(spinnerComponentFactory);
-    // const spinnerView: ViewRef = helloComponentRef.hostView;
   }
 
   /**
@@ -459,10 +448,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   private _getRenderRowsForData(
       data: T, dataIndex: number, cache?: WeakMap<Object, RenderRow<T>[]>): RenderRow<T>[] {
 
-      debugger;
     return this.displayedColumns.map(rowDef => {
       const cachedRenderRows = (cache && cache.has(rowDef)) ? cache.get(rowDef)! : [];
-      debugger;
       if (cachedRenderRows.length) {
         const dataRow = cachedRenderRows.shift()!;
         dataRow.dataIndex = dataIndex;
@@ -537,9 +524,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
 
     this._renderChangeSubscription = dataStream.pipe(takeUntil(this._onDestroy)).subscribe(data => {
       this._data = data || [];
-      console.log('Render change subscription');
       this.renderHeaders();
-      this.renderSpinner(this._spinnerOutlet);
       this.renderRows();
     });
   }
@@ -651,23 +636,10 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   }
 
   navigate(page: number, operation:string){
-    switch (operation) {
-      case 'next':
-      case 'first':
-      case 'prev':
-      case 'last':
-        this.page=page;
-        // return this.collectionResource.handleGet({
-        //   url: this.collectionResource.addPageParams(this.page, this.itemsPerPage),
-        //   status: 'navigating'
-        // });
-        break;
-      default:
-        // this.collectionResource.buildErrorResponse({
-        //   message: `Error. Operation  ${operation} is not known.`
-        // });
-        break;
-    }
+    this.page=page;
+    this.paginationService.calculatePagination(this.page, this.itemsPerPage, (parameters) => {         
+      this.collectionData.next( this.collectionResource.slice(parameters.start,parameters.end));
+    });
   }
 
 }
@@ -681,11 +653,16 @@ function mergeArrayAndSet<T>(array: T[], set: Set<T>): T[] {
 export class TableDataSource extends DataSource<any> {
   /** Stream of data that is provided to the table. */
 
-  data = new BehaviorSubject<[]>([]);
+  public data = new BehaviorSubject<[]>([]);
 
   constructor(items){
     super();
     this.data = items;
+  }
+
+
+  getData(){
+    return this.data;
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */

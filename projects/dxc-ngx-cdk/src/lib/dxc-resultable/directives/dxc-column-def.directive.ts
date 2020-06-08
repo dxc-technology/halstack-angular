@@ -21,6 +21,7 @@ const _DxcColumnDefBase: typeof DxcColumnDefBase =
 export class DxcColumnDef extends _DxcColumnDefBase {
   /** Unique name for this column. */
   @Input('dxcColumnDef')
+
   get name(): string {
     return this._name;
   }

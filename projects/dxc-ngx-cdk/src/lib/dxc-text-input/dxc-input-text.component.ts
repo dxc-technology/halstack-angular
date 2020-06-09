@@ -12,9 +12,8 @@ import {
 import { ErrorStateMatcher } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
-import { switchMap } from "rxjs/operators";
 import { CssUtils } from "../utils";
-import { ElementRef, OnInit, AfterViewChecked } from "@angular/core";
+import { ElementRef, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from "@angular/forms";
 
 @Component({
@@ -30,6 +29,7 @@ export class DxcTextInputComponent
   @HostBinding("class.dxc-light") isLight: boolean = true;
   @HostBinding("class.dxc-dark") isDark: boolean = false;
   @HostBinding("class.disabled") isDisabled: boolean = false;
+
   @Input() public prefix: string;
   @Input() public suffix: string;
   @Input() public prefixIconSrc: string;
@@ -96,24 +96,19 @@ export class DxcTextInputComponent
   public formControl = new FormControl();
   public matcher = new InvalidStateMatcher();
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.renderedValue = this.value || "";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.bindAutocompleteOptions();
+    
+  }
+
+  private bindAutocompleteOptions(){
     if (this.autocompleteOptions && Array.isArray(this.autocompleteOptions)) {
       this.options = this.autocompleteOptions;
-    } else if (
-      this.autocompleteOptions &&
-      typeof this.autocompleteOptions === "function"
-    ) {
-      this.autocompleteOptions().subscribe(
-        autocompleteOptionsList => {
-          this.options = autocompleteOptionsList;
-        },
-        err => (this.options = ["Error"])
-      );
-    }
+    } 
   }
 
   ngAfterViewChecked(): void {
@@ -126,9 +121,9 @@ export class DxcTextInputComponent
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if(changes && changes.value && changes.value.currentValue) {
-      this.autocompleteFunction(changes.value.currentValue);
-    }
+    // if(changes && changes.value && changes.value.currentValue) {
+    //   this.autocompleteFunction(changes.value.currentValue);
+    // }
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
@@ -159,11 +154,12 @@ export class DxcTextInputComponent
     this.onChange.emit($event.target.value);
 
     if (this.value === undefined || this.value === null) {
-      this.renderedValue = $event.target.value;
-      this.autocompleteFunction(this.renderedValue);
+      this.renderedValue = $event.target.value;      
     } else {
       $event.target.value = this.renderedValue;
     }
+
+    this.autocompleteFunction(this.renderedValue);
   }
 
   public onClickOption($event: any) {
@@ -194,6 +190,7 @@ export class DxcTextInputComponent
       this.autocompleteOptions().subscribe(
         autocompleteOptionsList => {
           this.options = autocompleteOptionsList;
+          this.ref.markForCheck();
         },
         err => (this.options = ["Error"])
       );

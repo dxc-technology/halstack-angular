@@ -29,7 +29,6 @@ export class TextInputInfoComponent {
 
   onChange(value){
     this.inputValue  = value;
-    console.log('Change event ' + value);
   }
 
   onChangeUncontrolled(value){

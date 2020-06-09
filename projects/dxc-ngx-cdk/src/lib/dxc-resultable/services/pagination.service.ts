@@ -9,16 +9,22 @@ export class PaginationService {
 
   end = 5; 
 
+  constructor() {}
+
   calculatePagination(pageNumber: number,itemsPerPage: number,  callback){
-    
     if (pageNumber === 0){
       callback({start:0, end: 5});
-    }      
-    callback({start: pageNumber * itemsPerPage - itemsPerPage , end: pageNumber * itemsPerPage});
+    }
+    this.start = pageNumber * itemsPerPage - itemsPerPage;    
+    this.end = pageNumber * itemsPerPage;    
+    callback({start: this.start , end: this.end});
   }
 
-  constructor() { 
+  getCurrentStart(){
+    return this.start;
+  }
 
-
+  getCurrentEnd(){
+    return this.end;
   }
 }

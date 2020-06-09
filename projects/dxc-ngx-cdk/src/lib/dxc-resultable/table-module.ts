@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DataRowOutlet, DxcResultTable, HeaderOutlet } from './table';
+import { DataRowOutlet, DxcResultTable, HeaderOutlet, Ordering } from './table';
 import { DxcCellOutlet, DxcRowDef } from './row';
 import { CommonModule } from '@angular/common';
 import { DxcHeaderRowComponent } from './components/dxc-header-row/dxc-header-row.component';
@@ -20,7 +20,8 @@ const EXPORTED_DECLARATIONS = [
   DxcHeaderRowComponent,
   HeaderOutlet,
   DataRowOutlet,
-  DxcRowComponent
+  DxcRowComponent,
+  Ordering
 ];
 
 @NgModule({

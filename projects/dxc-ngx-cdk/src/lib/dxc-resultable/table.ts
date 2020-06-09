@@ -33,7 +33,9 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
-  ComponentFactoryResolver
+  ComponentFactoryResolver,
+  HostListener,
+  ViewChildren
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -56,6 +58,7 @@ import { DxcHeaderRowComponent } from './components/dxc-header-row/dxc-header-ro
 import { DxcRowComponent } from './components/dxc-row/dxc-row.component';
 import { DxcColumnDef } from './directives/dxc-column-def.directive';
 import { PaginationService } from './services/pagination.service';
+import { SortService } from './services/sort.service';
 
 /** Interface used to provide an outlet for rows to be inserted into. */
 export interface RowOutlet {
@@ -76,6 +79,40 @@ type DxcHalTableDataSourceInput<T> =
 @Directive({selector: '[headerOutlet]'})
 export class HeaderOutlet implements RowOutlet {
   constructor(public viewContainer: ViewContainerRef, public elementRef: ElementRef) {}
+}
+
+@Directive({selector: '[ordering]'})
+export class Ordering {
+  state:string;
+  @Input('ordering') ordering: string;
+  parent: DxcResultTable<any>;
+  @HostListener('click') click() {
+    if(this.ordering === "true"){
+      let stateElement = this.elementRef.nativeElement.getAttribute("state");
+      this.state = stateElement;
+      let idHeader = this.elementRef.nativeElement.id;
+      if(this.state === "default" || this.state === "down"){
+        this.state = "up";
+      }
+      else if (this.state === "up"){
+        this.state = "down";
+        this.parent.removeOtherSorts(idHeader);
+      }
+      console.log("click");
+      console.log("this.state:",this.state);
+      
+      let columnName = idHeader.split("-")[1];
+      //this.parent.sortCells(columnName,this.state);
+    }
+  }
+  constructor(public elementRef: ElementRef,public viewContainerRef: ViewContainerRef,
+    @Optional() parent: DxcResultTable<any>) {
+    this.state = "default";
+    if(parent){
+      this.parent = parent;
+      parent.registerOrderingRef(this);
+    }
+  }
 }
 
 
@@ -168,7 +205,7 @@ export const CDK_TABLE_TEMPLATE =
   // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
   providers: [{provide: DXC_HAL_TABLE, useExisting: DxcResultTable}, 
-              PaginationService]
+              PaginationService,SortService]
 })
 export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit {
 
@@ -187,6 +224,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   fetchStatus;
 
   page : number = 1;
+
+  allOrderingRefs: Ordering[] = [];
 
   private _document: Document;
 
@@ -278,6 +317,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   // Outlets in the table's template where the header, data rows, and footer will be inserted.
   @ViewChild(HeaderOutlet, {static: true}) _headerOutlet: HeaderOutlet;
   @ViewChild(DataRowOutlet, {static: true}) _rowOutlet: DataRowOutlet;
+  @ViewChildren(Ordering) _orderingDirectives: QueryList<Ordering>;
 
   /**
    * The column definitions provided by the user that contain what the header, data, and footer
@@ -291,7 +331,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       protected readonly _elementRef: ElementRef, @Attribute('role') role: string,
       @Optional() protected readonly _dir: Directionality, @Inject(DOCUMENT) _document: any,
       private resolver: ComponentFactoryResolver, 
-      private paginationService: PaginationService) {
+      private paginationService: PaginationService, private sortService: SortService) {
 
     if (!role) {
       this._elementRef.nativeElement.setAttribute('role', 'grid');
@@ -331,7 +371,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
     if (this.dataSource  && !this._renderChangeSubscription) {
       this._observeRenderChanges();
     }
-
   }
 
   ngOnDestroy() {
@@ -637,30 +676,48 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   navigate(page: number, operation:string){
     this.page=page;
     this.paginationService.calculatePagination(this.page, this.itemsPerPage, (parameters) => {         
-      this.collectionData.next( this.collectionResource.slice(parameters.start,parameters.end));
+      this.collectionData.next(this.collectionResource.slice(parameters.start,parameters.end));
     });
   }
 
-
-  ngAfterViewInit(){
-    this.addListenerHeaders();
-  }
-
-  //It is adding click event for sorting cells
-  addListenerHeaders(){
-    if (this._columnDefsByName !== null ){
-      this._columnDefsByName.forEach((value: DxcColumnDef , key: string) => {
-        if(value._isSortable){
-          let divHeader = document.getElementById(`header-${key}`);
-          divHeader.addEventListener('click', this.sortCells);
+  removeOtherSorts(actualIdHeader){
+    console.log("this.allOrderingRefs:",this.allOrderingRefs);
+    this.allOrderingRefs.forEach(element => {
+      let nativeElement = element.elementRef.nativeElement;
+      if(actualIdHeader != nativeElement.id){
+        let stateElement = nativeElement.getAttribute("state");
+        if(stateElement === "up" || stateElement === "down"){
+          this.sortService.removeOtherSortings(nativeElement.id,stateElement);
         }
-
-      });
-    }
+      }
+    });
   }
 
-  sortCells(event) {
-    alert("hola");
+  registerOrderingRef(ref: Ordering) {
+    this.allOrderingRefs.push(ref);
+  }
+
+  sortCells(columnName,state) {
+    console.log("columnName to sort:",columnName);
+    let start = this.paginationService.getCurrentStart();
+    let end = this.paginationService.getCurrentEnd();
+    let list;
+    if(state === "up"){
+      list = this.ascSort(columnName, start, end);
+    }
+    else if(state === "down"){
+      list = this.descSort(columnName, start, end);
+    }
+    console.log(list)
+    this.collectionData.next(list);
+  }
+
+  ascSort(columnName, start, end){
+    return this.sortService.getSortedList(this.collectionResource,columnName,'asc').slice(start, end);
+  }
+
+  descSort(columnName, start, end){
+    return this.sortService.getSortedList(this.collectionResource,columnName,'desc').slice(start, end);
   }
 
 

@@ -38,7 +38,6 @@ export class DxcTextInputComponent
   @Input() public theme: string = "light";
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
-  @Input() public multiline: boolean = false;
   @Input() public invalid: boolean = false;
 
   @Input() public label: String;
@@ -61,7 +60,6 @@ export class DxcTextInputComponent
   options = [];
 
   @ViewChild("dxcSingleInput", { static: false }) singleInput: ElementRef;
-  @ViewChild("dxcMultiInput", { static: false }) multiInput: ElementRef;
 
   selectionStart: number = 0;
   selectionEnd: number = 0;
@@ -82,7 +80,6 @@ export class DxcTextInputComponent
     theme: "light",
     disabled: false,
     required: false,
-    multiline: false,
     invalid: false,
     label: null,
     assistiveText: null,
@@ -114,9 +111,7 @@ export class DxcTextInputComponent
   ngAfterViewChecked(): void {
     if (this._valueChangeTrack) {
       this._valueChangeTrack = false;
-      this.multiline
-        ? this.setCursorSelection(this.multiInput)
-        : this.setCursorSelection(this.singleInput);
+      this.setCursorSelection(this.singleInput);
     }
   }
 
@@ -186,7 +181,7 @@ export class DxcTextInputComponent
       this.autocompleteOptions &&
       typeof this.autocompleteOptions === "function"
     ) {
-      this.options = ["Searching..."];
+      // this.options = ["Searching..."];
       this.autocompleteOptions().subscribe(
         autocompleteOptionsList => {
           this.options = autocompleteOptionsList;

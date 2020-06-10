@@ -26,14 +26,13 @@ export class SortService {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         return 0;
       }
-      let varA = (typeof a[key] === 'string')
-        ? a[key].toUpperCase() : a[key];
-      let varB = (typeof b[key] === 'string')
-        ? b[key].toUpperCase() : b[key];
+      let varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
+      let varB = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
       let comparison = 0;
       if (varA > varB) {
         comparison = 1;
-      } else if (varA < varB) {
+      } 
+      else if (varA < varB) {
         comparison = -1;
       }
       return (
@@ -44,11 +43,11 @@ export class SortService {
 
   /** Set to default state the given header id (like "header-user"). */
  removeOtherSortings(id){
-      let columnName = id.split("-")[1];
-      let spanIcon = document.getElementById(`iconSort-${columnName}`);
-      spanIcon.innerHTML = this.getDefaultIcon(columnName);
-      this.mapStatesHeaders.set(columnName,"default");
-      document.getElementById(id).setAttribute("state","default");
+    let columnName = id.split("-")[1];
+    let spanIcon = document.getElementById(`iconSort-${columnName}`);
+    spanIcon.innerHTML = this.getDefaultIcon(columnName);
+    this.mapStatesHeaders.set(columnName,"default");
+    document.getElementById(id).setAttribute("state","default");
   }
 
   /** Set default icon to the header. */

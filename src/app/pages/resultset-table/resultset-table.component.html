@@ -3,12 +3,12 @@
         <ng-container dxcColumnDef="user" isSortable="true">
             <td *dxcCellDef="let item">
                 {{item['user']}}
-              </td>
+            </td>
           </ng-container>
-          <ng-container dxcColumnDef="email" isSortable="true">
+          <ng-container dxcColumnDef="email">
             <td *dxcCellDef="let item">
                 <dxc-button [label]="item['email']"></dxc-button>
-              </td>
+            </td>
           </ng-container>
     </dxc-hal-table>
 </div>

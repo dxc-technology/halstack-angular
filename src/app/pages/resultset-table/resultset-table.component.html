@@ -1,5 +1,4 @@
 <div className="test-case" id="uncontrolled">
-    Resultset Table
     <dxc-hal-table itemsPerPage="5" [collectionResource]="data">
         <ng-container dxcColumnDef="user" isSortable="true">
             <td *dxcCellDef="let item">
@@ -8,8 +7,7 @@
           </ng-container>
           <ng-container dxcColumnDef="email" isSortable="true">
             <td *dxcCellDef="let item">
-                <dxc-button [label]="item['email']">
-                  </dxc-button>
+                <dxc-button [label]="item['email']"></dxc-button>
               </td>
           </ng-container>
     </dxc-hal-table>

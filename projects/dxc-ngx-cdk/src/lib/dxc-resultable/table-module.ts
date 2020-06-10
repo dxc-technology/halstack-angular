@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DataRowOutlet, DxcResultTable, HeaderOutlet, Ordering } from './table';
+import { DataRowOutlet, DxcResultTable, HeaderOutlet } from './table';
 import { DxcCellOutlet, DxcRowDef } from './row';
 import { CommonModule } from '@angular/common';
 import { DxcHeaderRowComponent } from './components/dxc-header-row/dxc-header-row.component';
@@ -9,6 +9,7 @@ import { DxcColumnDef } from './directives/dxc-column-def.directive';
 import { FormsModule } from '@angular/forms';
 import { DxcTableModule } from '../dxc-table/dxc-table.module';
 import { DxcPaginatorModule } from '../dxc-paginator/dxc-paginator.module';
+import { Ordering } from './directives/sorting.directive';
 
 
 const EXPORTED_DECLARATIONS = [

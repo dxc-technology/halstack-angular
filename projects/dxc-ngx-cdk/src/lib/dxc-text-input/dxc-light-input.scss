@@ -1,7 +1,23 @@
 :host.dxc-light {
   .mat-form-field {
     &.disabled {
-      opacity: 0.3;
+      ::ng-deep {
+        .mat-hint {
+          color: var(--lightGrey, #d9d9d9);
+        }
+        .mat-form-field-underline {
+          background-color: var(--lightGrey, #d9d9d9);
+        }
+        .mat-form-field-empty mat-label {
+          color: var(--lightGrey, #d9d9d9);
+        }
+        &.mat-focused .mat-form-field-empty mat-label {
+          color: var(--lightGrey, #d9d9d9);
+        }
+        .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+          color: var(--lightGrey, #d9d9d9);
+        }
+      }
       pointer-events: none;
     }
   }
@@ -12,21 +28,21 @@
     label.mat-form-field-label:not(.mat-form-field-empty) {
       color: var(--black, black);
     }
-    .invalid {
+    .mat-form-field-invalid {
       .mat-hint {
-        color: var(--darkRed, #D0011B);
+        color: var(--darkRed, #d0011b);
       }
       .mat-form-field-underline {
-        background-color: var(--darkRed, #D0011B);
+        background-color: var(--darkRed, #d0011b);
       }
       .mat-form-field-empty mat-label {
         color: var(--darkGrey, #666666);
       }
       &.mat-focused .mat-form-field-empty mat-label {
-        color: var(--darkRed, #D0011B);
+        color: var(--darkRed, #d0011b);
       }
-      .mat-form-field-label:not(.mat-form-field-empty) mat-label{
-        color: var(--darkRed, #D0011B);
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+        color: var(--darkRed, #d0011b);
       }
     }
   }
@@ -34,7 +50,7 @@
     .mat-form-field-label-wrapper {
       .mat-form-field-label {
         span {
-          color: var(--darkRed, #D0011B);
+          color: var(--darkRed, #d0011b);
         }
       }
     }

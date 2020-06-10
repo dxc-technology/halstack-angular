@@ -19,20 +19,20 @@ export class ResultsetTableComponent implements OnInit {
           email:"user1@gmail.com"
         },
         {
-          user:"user3",
+          user:"pepe",
           email:"user2@gmail.com"
         },
         {
-          user:"user65",
+          user:"user555",
           email:"user2@gmail.com"
         },{
-          user:"user44",
+          user:"aida",
           email:"user2@gmail.com"
         },{
           user:"user75",
           email:"user2@gmail.com"
         },{
-          user:"user6",
+          user:"espe",
           email:"user2@gmail.com"
         },{
           user:"user7",

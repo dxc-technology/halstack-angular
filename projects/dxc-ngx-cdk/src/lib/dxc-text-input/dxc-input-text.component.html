@@ -28,23 +28,9 @@
     [errorStateMatcher]="matcher"
     [placeholder]="placeholder"
     [matAutocomplete]="auto"
+    [formControl]="formControl"
+    [attr.aria-label]="label"
     />
-    
-  <!-- <textarea
-    *ngIf="multiline"
-    matInput
-    #dxcMultiInput
-    [value]="renderedValue"
-    [required]="required"
-    [name]="name"
-    [type]="'text'"
-    [errorStateMatcher]="matcher"
-    (blur)="onBlurHandle($event)"
-    (input)="onChanged($event)"
-    (click)="onClickHandle($event)"
-    [placeholder]="placeholder"
-    >
-  </textarea> -->
   <span
     matSuffix
     (click)="onClickSuffixHandler($event)"

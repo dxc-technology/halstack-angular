@@ -51,7 +51,7 @@ import {
 import {
   getTableUnknownDataSourceError
 } from './table-errors';
-import { DXC_HAL_TABLE } from './tokens';
+import { DXC_RESULTSET_TABLE } from './tokens';
 import { DxcHeaderRowComponent } from './components/dxc-header-row/dxc-header-row.component';
 import { DxcRowComponent } from './components/dxc-row/dxc-row.component';
 import { DxcColumnDef } from './directives/dxc-column-def.directive';
@@ -68,7 +68,7 @@ export interface RowOutlet {
  * Union of the types that can be set as the data source for a `CdkTable`.
  * @docs-private
  */
-type DxcHalTableDataSourceInput<T> =
+type dxcResultsetTableDataSourceInput<T> =
     DataSource<T>|Observable<ReadonlyArray<T>|T[]>|ReadonlyArray<T>|T[];
 
 /**
@@ -132,7 +132,7 @@ export interface Columns {
  */
 export const CDK_TABLE_TEMPLATE =
     `
-    <dxc-table>
+    <dxc-table [margin]="margin">
       <ng-container headerOutlet>        
       </ng-container>
       <ng-container rowOutlet>
@@ -158,8 +158,8 @@ export const CDK_TABLE_TEMPLATE =
  * connect function that will return an Observable stream that emits the data array to render.
  */
 @Component({
-  selector: 'dxc-hal-table, table[dxc-hal-table]',
-  exportAs: 'dxcHalTable',
+  selector: 'dxc-resultset-table, table[dxc-resultset-table]',
+  exportAs: 'dxcResultsetTable',
   template: CDK_TABLE_TEMPLATE,
   encapsulation: ViewEncapsulation.None,
   // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
@@ -167,7 +167,7 @@ export const CDK_TABLE_TEMPLATE =
   // declared elsewhere, they are checked when their declaration points are checked.
   // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
-  providers: [{provide: DXC_HAL_TABLE, useExisting: DxcResultTable}, 
+  providers: [{provide: DXC_RESULTSET_TABLE, useExisting: DxcResultTable}, 
               PaginationService,SortService]
 })
 export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit {
@@ -177,6 +177,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
 
   @Input()
   collectionResource: Array<any>;
+
+  @Input() margin:string;
 
   collectionData: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
 
@@ -265,7 +267,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   }
   private _trackByFn: TrackByFunction<T>;
 
-  private dataSource: DxcHalTableDataSourceInput<T>;
+  private dataSource: dxcResultsetTableDataSourceInput<T>;
 
   // TODO(andrewseguin): Remove max value as the end index
   //   and instead calculate the view on init and scroll.
@@ -481,7 +483,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
    * render change subscription if one exists. If the data source is null, interpret this by
    * clearing the row outlet. Otherwise start listening for new data.
    */
-  private _switchDataSource(dataSource: DxcHalTableDataSourceInput<T>) {
+  private _switchDataSource(dataSource: dxcResultsetTableDataSourceInput<T>) {
     this._data = [];
 
     if (isDataSource(this.dataSource)) {

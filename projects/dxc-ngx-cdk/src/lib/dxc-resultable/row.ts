@@ -19,7 +19,7 @@ import {
   Inject,
   Optional
 } from '@angular/core';
-import {DXC_HAL_TABLE} from './tokens';
+import {DXC_RESULTSET_TABLE} from './tokens';
 import { DxcColumnDef } from './directives/dxc-column-def.directive';
 import { DxcCellDef } from './directives/dxc-cell-def.directive';
 
@@ -91,7 +91,7 @@ export abstract class BaseRowDef implements OnChanges {
   constructor(
     template: TemplateRef<any>,
     _differs: IterableDiffers,
-    @Inject(DXC_HAL_TABLE) @Optional() public _table?: any) {
+    @Inject(DXC_RESULTSET_TABLE) @Optional() public _table?: any) {
     super(template, _differs);
   }
 }

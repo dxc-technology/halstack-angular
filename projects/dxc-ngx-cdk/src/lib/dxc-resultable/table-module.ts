@@ -42,4 +42,4 @@ const EXPORTED_DECLARATIONS = [
   ]
   })
 
-export class CdkTableModule { }
+export class DxcResultsetTableModule { }

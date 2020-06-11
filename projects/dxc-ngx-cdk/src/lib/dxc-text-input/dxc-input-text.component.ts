@@ -100,6 +100,7 @@ export class DxcTextInputComponent
     this.renderedValue = this.value || "";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.bindAutocompleteOptions();
+    this.autocompleteFunction("");
     
   }
 
@@ -249,24 +250,6 @@ export class DxcTextInputComponent
       .suffixElement {
         margin-left: 8px;
         margin-right: 8px;
-      }
-
-      textarea {
-        min-height: 76px;
-        max-height: 100px;
-        ${this.utils.calculateMinWidth(this.sizes, inputs.margin)}
-        max-width: 726px;
-        &::-webkit-scrollbar {
-          width: 3px;
-        }
-        &::-webkit-scrollbar-track {
-          background-color: var(--lightGrey, #d9d9d9);
-          border-radius: 3px;
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: var(--darkGrey, #666666);
-          border-radius: 3px;
-        }
       }
 
       &.disabled {

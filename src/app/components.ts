@@ -28,7 +28,7 @@ import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 import { WizardComponent } from './pages/wizard/wizard.component';
 import { DxcUploadComponent } from '@diaas/dxc-ngx-cdk';
 import { HeadingInfoComponent } from './pages/heading/heading-info.component';
-
+import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 
 export const Components = [
     {
@@ -115,6 +115,11 @@ export const Components = [
         name: 'Radio',
         route: 'radio',
         component: RadioInfoComponent
+    },
+    {
+        name: 'Resultset Table',
+        route: 'resultsettable',
+        component: ResultsetTableComponent
     },
     {
         name: 'Select',

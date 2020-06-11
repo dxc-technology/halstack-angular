@@ -204,7 +204,7 @@ describe("DxcTextInputComponent autocomplete tests", () => {
     expect(screen.getByText("Three"));
   });
 
-  test("should use autocomplete function", async () => {
+  test("should use autocomplete function returning an observable", async () => {
     const autocompleteFunction = jest.fn(() => {
       return of(["One", "Two", "Three"]).pipe(
         switchMap(options => of(options).pipe(delay(1000)))

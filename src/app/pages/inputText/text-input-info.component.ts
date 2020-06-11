@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Subject, BehaviorSubject } from 'rxjs';
 import { delay } from 'rxjs/internal/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'text-info',
@@ -11,12 +12,14 @@ export class TextInputInfoComponent {
 
   inputValue = "";
 
+
   options = ["One", "Two", "Three"];
   filteredOptions = this.options;
   error = "true";
 
-  constructor() {
+   constructor() {
     this.autocompleteAsync = this.autocompleteAsync.bind(this);
+
   }
 
   onBlur(value){
@@ -47,7 +50,7 @@ export class TextInputInfoComponent {
     this.filteredOptions = this.options.filter(option =>
       option.toLowerCase().includes(this.inputValue.toLowerCase())
     );
-    return of(this.filteredOptions).pipe(delay(2000));
+    return of(this.filteredOptions).pipe(switchMap((options)=>  of(options).pipe(delay(1000))));
     
   }
 }

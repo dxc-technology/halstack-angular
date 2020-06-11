@@ -55,6 +55,7 @@ export class DxcTextInputComponent
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
+  loading = new BehaviorSubject(false);
   renderedValue = "";
   private _valueChangeTrack: boolean;
   options = [];
@@ -181,11 +182,13 @@ export class DxcTextInputComponent
       this.autocompleteOptions &&
       typeof this.autocompleteOptions === "function"
     ) {
-      // this.options = ["Searching..."];
+      //this.options = ["Searching..."];
       this.autocompleteOptions().subscribe(
         autocompleteOptionsList => {
+          console.log('Binding options');
           this.options = autocompleteOptionsList;
           this.ref.markForCheck();
+          this.loading.next(false);
         },
         err => (this.options = ["Error"])
       );

@@ -478,33 +478,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
     });
   }
 
- /**
-   * Switch to the provided data source by resetting the data and unsubscribing from the current
-   * render change subscription if one exists. If the data source is null, interpret this by
-   * clearing the row outlet. Otherwise start listening for new data.
-   */
-  private _switchDataSource(dataSource: dxcResultsetTableDataSourceInput<T>) {
-    this._data = [];
-
-    if (isDataSource(this.dataSource)) {
-      this.dataSource.disconnect(this);
-    }
-
-    // Stop listening for data from the previous data source.
-    if (this._renderChangeSubscription) {
-      this._renderChangeSubscription.unsubscribe();
-      this._renderChangeSubscription = null;
-    }
-
-    if (!dataSource) {
-      if (this._dataDiffer) {
-        this._dataDiffer.diff([]);
-      }
-      this._rowOutlet.viewContainer.clear();
-    }
-
-  }
-
   /** Set up a subscription for the data provided by the data source. */
   private _observeRenderChanges() {
     // If no data source has been set, there is nothing to observe for changes.
@@ -531,17 +504,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       this.renderHeaders();
       this.renderRows();
     });
-  }
-
-  /** Gets the list of rows that have been rendered in the row outlet. */
-  _getRenderedRows(rowOutlet: RowOutlet): HTMLElement[] {
-    const renderedRows: HTMLElement[] = [];
-    for (let i = 0; i < rowOutlet.viewContainer.length; i++) {
-      const viewRef = (rowOutlet.viewContainer.get(i)! as EmbeddedViewRef<any>);
-      renderedRows.push(viewRef.rootNodes[0]);
-    }
-
-    return renderedRows;
   }
 
   /**
@@ -621,17 +583,6 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
 
     // Use a DocumentFragment so we don't hit the DOM on each iteration.
     this._elementRef.nativeElement.appendChild(documentFragment);
-  }
-
-  /**
-   * Forces a re-render of the data rows. Should be called in cases where there has been an input
-   * change that affects the evaluation of which rows should be rendered, e.g. toggling
-   * `multiTemplateDataRows` or adding/removing row definitions.
-   */
-  private _forceRenderDataRows() {
-    this._dataDiffer.diff([]);
-    this._rowOutlet.viewContainer.clear();
-    this.renderRows();
   }
 
   /** Filters definitions that belong to this table from a QueryList. */

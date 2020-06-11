@@ -20,7 +20,6 @@ import {
   Optional
 } from '@angular/core';
 import {DXC_RESULTSET_TABLE} from './tokens';
-import { DxcColumnDef } from './directives/dxc-column-def.directive';
 import { DxcCellDef } from './directives/dxc-cell-def.directive';
 
 /**
@@ -54,18 +53,6 @@ export abstract class BaseRowDef implements OnChanges {
     }
   }
 
-  /**
-   * Returns the difference between the current columns and the columns from the last diff, or null
-   * if there is no difference.
-   */
-  getColumnsDiff(): IterableChanges<any>|null {
-    return this._columnsDiffer.diff(this.columns);
-  }
-
-  /** Gets this row def's relevant cell template from the provided column def. */
-  extractCellTemplate(column: DxcColumnDef): TemplateRef<any> {
-      return column.cell.template;
-  }
 }
 
   /**

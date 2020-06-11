@@ -44,7 +44,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
 
   @Input() public iconSrc: string;
   @Input() public label: string = "";
-  @Output() public selectOption: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild("dropdownButton", { static: true }) dropdownButton;
 
@@ -62,7 +62,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     iconSrc: null,
     label: null,
     margin: null,
-    padding: null,
     size: "fitContent"
   });
 
@@ -259,7 +258,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     this.menuOpened = this.menuOpened === "opened" ? "closed" : "opened";
   }
   public selectedOption(option: any): void {
-    this.selectOption.emit(option.value);
+    this.onSelectOption.emit(option.value);
   }
 
   public hasOptionsOnlyIcons() {
@@ -361,7 +360,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         padding-right: 13px;
         border-radius: 2px;
         display: inline-flex;
-        ${this.utils.getMargins(inputs.margin)}
+        align-items: center;
         &.onlyIcon {
           width: unset !important;
           padding: 10px 15px;

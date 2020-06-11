@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/angular';
 import { DxcResultTable } from './table';
-import { CdkTableModule } from './table-module';
+import { DxcResultsetTableModule } from './table-module';
 
 describe('DxcResultset Table tests', () => {
   test('should render dxc-resultset-table', async () => {
@@ -17,7 +17,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     expect(getByText("user1")).toBeTruthy();
@@ -44,7 +44,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     table.detectChanges();
@@ -80,7 +80,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     table.detectChanges();
@@ -114,7 +114,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     table.detectChanges();
@@ -154,7 +154,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     table.detectChanges();
@@ -194,7 +194,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     table.detectChanges();
@@ -233,7 +233,7 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [CdkTableModule],
+       imports: [DxcResultsetTableModule],
        excludeComponentDeclaration: true
     })
     table.detectChanges();

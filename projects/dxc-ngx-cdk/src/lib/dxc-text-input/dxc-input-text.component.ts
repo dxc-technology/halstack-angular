@@ -182,7 +182,7 @@ export class DxcTextInputComponent
       this.autocompleteOptions &&
       typeof this.autocompleteOptions === "function"
     ) {
-      //this.options = ["Searching..."];
+      this.loading.next(true);
       this.autocompleteOptions().subscribe(
         autocompleteOptionsList => {
           console.log('Binding options');

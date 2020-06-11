@@ -118,9 +118,6 @@ export class DxcTextInputComponent
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    // if(changes && changes.value && changes.value.currentValue) {
-    //   this.autocompleteFunction(changes.value.currentValue);
-    // }
     if (this.theme === "dark") {
       this.isLight = false;
       this.isDark = true;
@@ -186,7 +183,6 @@ export class DxcTextInputComponent
       this.loading.next(true);
       this.autocompleteOptions().subscribe(
         autocompleteOptionsList => {
-          console.log('Binding options');
           this.options = autocompleteOptionsList;
           this.ref.markForCheck();
           this.loading.next(false);

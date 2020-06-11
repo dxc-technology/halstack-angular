@@ -95,8 +95,8 @@ describe("DxcDate", () => {
       ]
     });
 
-    const input = <HTMLInputElement>dxcDate.getByRole("textbox");
-    expect(dxcDate.getByRole("textbox"));
+    const input = <HTMLInputElement>dxcDate.getByRole("combobox");
+    expect(dxcDate.getByRole("combobox"));
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChangeFunction).toHaveBeenCalledWith({
       stringValue: newValue,
@@ -131,8 +131,8 @@ describe("DxcDate", () => {
       ]
     });
 
-    const input = <HTMLInputElement>dxcDate.getByRole("textbox");
-    expect(dxcDate.getByRole("textbox"));
+    const input = <HTMLInputElement>dxcDate.getByRole("combobox");
+    expect(dxcDate.getByRole("combobox"));
     fireEvent.input(input, { target: { value: "1995/12/03" } });
     expect(onChangeFunction).toHaveBeenCalledWith({
       stringValue: "1995/12/03",
@@ -168,8 +168,8 @@ describe("DxcDate", () => {
 
     const invalidValue = "03-12-199_";
 
-    const input = <HTMLInputElement>dxcDate.getByRole("textbox");
-    expect(dxcDate.getByRole("textbox"));
+    const input = <HTMLInputElement>dxcDate.getByRole("combobox");
+    expect(dxcDate.getByRole("combobox"));
     fireEvent.input(input, { target: { value: invalidValue } });
     expect(onChangeFunction).toHaveBeenCalledWith({
       dateValue: null,

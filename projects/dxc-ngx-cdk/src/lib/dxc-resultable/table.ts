@@ -58,6 +58,7 @@ import { DxcColumnDef } from './directives/dxc-column-def.directive';
 import { PaginationService } from './services/pagination.service';
 import { SortService } from './services/sort.service';
 import { Ordering } from './directives/sorting.directive';
+import { coerceArray } from '@angular/cdk/coercion';
 
 /** Interface used to provide an outlet for rows to be inserted into. */
 export interface RowOutlet {
@@ -176,7 +177,11 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   itemsPerPage: number = 5;
 
   @Input()
-  collectionResource: Array<any>;
+  get collectionResource(): Array<any> { return this._collectionResource; }
+  set collectionResource(value: Array<any>) {
+    this._collectionResource = coerceArray(value);
+  }
+  private _collectionResource;
 
   @Input() margin:string;
 

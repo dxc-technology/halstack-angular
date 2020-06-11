@@ -1,8 +1,8 @@
 <div class="dialog">
-  <div class="backOverlay" (click) = "onBackgroundClickHandler($event)" [class.backVisible]="overlay"></div>
+  <div class="backOverlay" role="overlay" (click) = "onBackgroundClickHandler($event)" [class.backVisible]="overlay"></div>
   <div class="container">
     <div class="dialogContainer">
-      <span class="closeIcon" *ngIf="isCloseVisible" (click) = "onCloseHandler($event)">
+      <span class="closeIcon" role="closeIcon" *ngIf="isCloseVisible" (click) = "onCloseHandler($event)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

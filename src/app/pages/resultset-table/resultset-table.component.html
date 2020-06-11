@@ -1,5 +1,5 @@
 <div className="test-case" id="uncontrolled">
-    <dxc-hal-table itemsPerPage="5" [collectionResource]="data">
+    <dxc-resultset-table itemsPerPage="5" [collectionResource]="data" margin="xxsmall">
         <ng-container dxcColumnDef="user" isSortable="true">
             <td *dxcCellDef="let item">
                 {{item['user']}}
@@ -10,5 +10,5 @@
                 <dxc-button [label]="item['email']"></dxc-button>
             </td>
           </ng-container>
-    </dxc-hal-table>
+    </dxc-resultset-table>
 </div>

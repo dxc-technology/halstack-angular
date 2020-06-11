@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import {
-  MatFormFieldModule, MatInputModule,
+  MatFormFieldModule, MatInputModule, MatAutocompleteModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -13,7 +13,8 @@ import { DxcTextInputComponent } from './dxc-input-text.component';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule
   ],
   exports: [DxcTextInputComponent]
 })

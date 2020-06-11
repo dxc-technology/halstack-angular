@@ -1,6 +1,11 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcTextInputComponent } from "./dxc-input-text.component";
-import { MatInputModule } from "@angular/material";
+import { MatInputModule, MatAutocompleteModule } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { screen, waitFor } from "@testing-library/dom";
+import { of } from "rxjs";
+import { delay } from "rxjs/internal/operators";
+import { switchMap, timeout } from "rxjs/operators";
 
 describe("DxcTextInputComponent", () => {
   test("should render dxc-input-text", async () => {
@@ -9,7 +14,12 @@ describe("DxcTextInputComponent", () => {
         label: "test-input",
         assistiveText: "assistive text"
       },
-      imports: [MatInputModule]
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     });
 
     expect(getByText("test-input"));
@@ -26,10 +36,15 @@ describe("DxcTextInputComponent", () => {
         onChange: { emit: onInputFunction } as any,
         onBlur: { emit: onBlurFunction } as any
       },
-      imports: [MatInputModule]
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     });
 
-    const input = <HTMLInputElement>(getByRole("textbox"));
+    const input = <HTMLInputElement>getByRole("combobox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
     fireEvent.blur(input);
@@ -48,10 +63,15 @@ describe("DxcTextInputComponent", () => {
         onChange: { emit: onInputFunction } as any,
         onBlur: { emit: onBlurFunction } as any
       },
-      imports: [MatInputModule]
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     });
 
-    const input = <HTMLInputElement>(dxcText.getByRole("textbox"));
+    const input = <HTMLInputElement>dxcText.getByRole("combobox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
     fireEvent.blur(input);
@@ -68,7 +88,12 @@ describe("DxcTextInputComponent", () => {
         suffix: "su",
         onClickPrefix: { emit: onClickFunction } as any
       },
-      imports: [MatInputModule]
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     });
 
     expect(getByText("pr"));
@@ -86,11 +111,130 @@ describe("DxcTextInputComponent", () => {
         suffix: "su",
         onClickSuffix: { emit: onClickFunction } as any
       },
-      imports: [MatInputModule]
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     });
 
     expect(getByText("su"));
     fireEvent.click(getByText("su"));
     expect(onClickFunction).toHaveBeenCalled();
+  });
+});
+
+describe("DxcTextInputComponent autocomplete tests", () => {
+  test("should render autocomplete options", async () => {
+    const dxcInput = await render(DxcTextInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        assistiveText: "assistive text",
+        autocompleteOptions: ["One", "Two", "Three"]
+      },
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
+    });
+
+    expect(dxcInput.getByText("test-input"));
+    expect(dxcInput.getByText("assistive text"));
+    fireEvent.focusIn(dxcInput.getByRole("combobox"));
+    dxcInput.detectChanges();
+    expect(screen.getByText("One"));
+    expect(screen.getByText("Two"));
+    expect(screen.getByText("Three"));
+  });
+
+  test("should filter autocomplete options", async () => {
+    const dxcInput = await render(DxcTextInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        assistiveText: "assistive text",
+        autocompleteOptions: ["One", "Two", "Three"]
+      },
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
+    });
+
+    expect(dxcInput.getByText("test-input"));
+    expect(dxcInput.getByText("assistive text"));
+    const input = <HTMLInputElement>dxcInput.getByRole("combobox");
+    fireEvent.input(input, { target: { value: "O" } });
+    fireEvent.focusIn(dxcInput.getByRole("combobox"));
+    dxcInput.detectChanges();
+    expect(screen.getByText("One"));
+    expect(screen.getByText("Two"));
+    const filteredOutOption = screen.queryByText("Three");
+    expect(filteredOutOption).toBeNull();
+  });
+
+  test("should use autocomplete function", async () => {
+    const autocompleteFunction = jest.fn(() => {
+      return of(["One", "Two", "Three"]);
+    });
+    const dxcInput = await render(DxcTextInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        assistiveText: "assistive text",
+        autocompleteOptions: autocompleteFunction
+      },
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
+    });
+
+    expect(dxcInput.getByText("test-input"));
+    expect(dxcInput.getByText("assistive text"));
+    fireEvent.focusIn(dxcInput.getByRole("combobox"));
+    dxcInput.detectChanges();
+    expect(screen.getByText("One"));
+    expect(screen.getByText("Two"));
+    expect(screen.getByText("Three"));
+  });
+
+  test("should use autocomplete function returning an observable", async () => {
+    const autocompleteFunction = jest.fn(() => {
+      return of(["One", "Two", "Three"]).pipe(
+        switchMap(options => of(options).pipe(delay(1000)))
+      );
+    });
+    const dxcInput = await render(DxcTextInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        assistiveText: "assistive text",
+        autocompleteOptions: autocompleteFunction
+      },
+      imports: [
+        MatInputModule,
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
+    });
+
+    expect(dxcInput.getByText("test-input"));
+    expect(dxcInput.getByText("assistive text"));
+    fireEvent.focusIn(dxcInput.getByRole("combobox"));
+    dxcInput.detectChanges();
+    expect(screen.getByText("Searching..."));
+    await waitFor(
+      () => {
+        dxcInput.detectChanges();
+        expect(screen.getByText("Two")).toBeTruthy();
+      },
+      { timeout: 1200 }
+    );
   });
 });

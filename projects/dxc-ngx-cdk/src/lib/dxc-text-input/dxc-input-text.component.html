@@ -48,6 +48,11 @@
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>
 
-<mat-autocomplete #auto="matAutocomplete">
-  <mat-option (click)="onClickOption(option)" *ngFor="let option of options" [value]="option">{{option}}</mat-option>
-</mat-autocomplete>
+
+  <mat-autocomplete #auto="matAutocomplete">    
+        <mat-option 
+          (click)="onClickOption(option)" 
+          *ngFor="let option of options" 
+          [value]="option">{{option}}
+        </mat-option>  
+  </mat-autocomplete>

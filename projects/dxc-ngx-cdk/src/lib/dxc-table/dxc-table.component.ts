@@ -40,7 +40,7 @@ export class DxcTableComponent {
 
   getDynamicStyle(inputs) {
     return css`
-      div {
+      div#divTable{
         ${this.utils.getMargins(inputs.margin)}
       }  
 

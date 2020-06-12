@@ -134,10 +134,8 @@ export interface Columns {
 export const CDK_TABLE_TEMPLATE =
     `
     <dxc-table [margin]="margin">
-      <ng-container headerOutlet>        
-      </ng-container>
-      <ng-container rowOutlet>
-      </ng-container>
+      <ng-container headerOutlet></ng-container>
+      <ng-container rowOutlet></ng-container>
     </dxc-table>
 
     <dxc-paginator *ngIf="totalItems !== null"

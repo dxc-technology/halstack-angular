@@ -13,13 +13,21 @@ import { ErrorStateMatcher } from "@angular/material";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { ElementRef, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import {
+  ElementRef,
+  OnInit,
+  AfterViewChecked,
+  ChangeDetectorRef
+} from "@angular/core";
 import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
-  styleUrls: ["./dxc-light-input.scss", "./dxc-dark-input.scss"],
+  styleUrls: [
+    "./dxc-light-input.scss",
+    "./dxc-dark-input.scss"
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
@@ -59,6 +67,8 @@ export class DxcTextInputComponent
   renderedValue = "";
   private _valueChangeTrack: boolean;
   options = [];
+
+  dxcAutocompleteMenu = this.getAutoCompleteStyle();
 
   @ViewChild("dxcSingleInput", { static: false }) singleInput: ElementRef;
 
@@ -101,13 +111,12 @@ export class DxcTextInputComponent
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.bindAutocompleteOptions();
     this.autocompleteFunction("");
-    
   }
 
-  private bindAutocompleteOptions(){
+  private bindAutocompleteOptions() {
     if (this.autocompleteOptions && Array.isArray(this.autocompleteOptions)) {
       this.options = this.autocompleteOptions;
-    } 
+    }
   }
 
   ngAfterViewChecked(): void {
@@ -146,14 +155,12 @@ export class DxcTextInputComponent
     this.selectionStart = $event.target.selectionStart;
     this.selectionEnd = $event.target.selectionEnd;
     this.onChange.emit($event.target.value);
-
+    this.autocompleteFunction($event.target.value);
     if (this.value === undefined || this.value === null) {
-      this.renderedValue = $event.target.value;      
+      this.renderedValue = $event.target.value;
     } else {
       $event.target.value = this.renderedValue;
     }
-
-    this.autocompleteFunction(this.renderedValue);
   }
 
   public onClickOption($event: any) {
@@ -181,7 +188,7 @@ export class DxcTextInputComponent
       typeof this.autocompleteOptions === "function"
     ) {
       this.loading.next(true);
-      this.autocompleteOptions().subscribe(
+      this.autocompleteOptions(value).subscribe(
         autocompleteOptionsList => {
           this.options = autocompleteOptionsList;
           this.ref.markForCheck();
@@ -300,6 +307,22 @@ export class DxcTextInputComponent
         .mat-form-field-infix {
           border-top: unset;
         }
+      }
+    `;
+  }
+
+  getAutoCompleteStyle() {
+    return css`
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: var(--lightGrey, #d9d9d9);
+        border-radius: 3px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--darkGrey, #666666);
+        border-radius: 3px;
       }
     `;
   }

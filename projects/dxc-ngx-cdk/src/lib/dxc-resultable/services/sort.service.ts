@@ -44,7 +44,8 @@ export class SortService {
   /** Set to default state the given header id (like "header-user"). */
  removeOtherSortings(id){
     let columnName = id.split("-")[1];
-    let spanIcon = document.getElementById(`iconSort-${columnName}`);
+    let className = id.split("-")[2];
+    let spanIcon = document.getElementById(`iconSort-${columnName}-${className}`);
     spanIcon.innerHTML = this.getDefaultIcon(columnName);
     this.mapStatesHeaders.set(columnName,"default");
     document.getElementById(id).setAttribute("state","default");

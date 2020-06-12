@@ -11,8 +11,7 @@ import { DxcTableModule } from '../dxc-table/dxc-table.module';
 import { DxcPaginatorModule } from '../dxc-paginator/dxc-paginator.module';
 import { Ordering } from './directives/sorting.directive';
 
-
-const EXPORTED_DECLARATIONS = [
+const DECLARATIONS = [
   DxcResultTable,
   DxcRowDef,
   DxcCellDef,
@@ -22,6 +21,13 @@ const EXPORTED_DECLARATIONS = [
   HeaderOutlet,
   DataRowOutlet,
   DxcRowComponent,
+  Ordering
+];
+
+const EXPORTED_DECLARATIONS = [
+  DxcResultTable,
+  DxcCellDef,  
+  DxcColumnDef,  
   Ordering
 ];
 
@@ -35,7 +41,7 @@ const EXPORTED_DECLARATIONS = [
     DxcTableModule,
     DxcPaginatorModule
   ],
-  declarations: EXPORTED_DECLARATIONS,
+  declarations: DECLARATIONS,
   entryComponents: [
     DxcRowComponent,
     DxcHeaderRowComponent

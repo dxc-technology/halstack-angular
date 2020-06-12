@@ -52,7 +52,7 @@
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>
 
-<mat-autocomplete #auto="matAutocomplete">
+<mat-autocomplete [class]="dxcAutocompleteMenu" #auto="matAutocomplete">
   <ng-container *ngIf="!loading.getValue()">
     <mat-option
       (click)="onClickOption(option)"

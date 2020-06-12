@@ -59,6 +59,7 @@ import { PaginationService } from './services/pagination.service';
 import { SortService } from './services/sort.service';
 import { Ordering } from './directives/sorting.directive';
 import { coerceArray } from '@angular/cdk/coercion';
+import { HostBinding } from '@angular/core';
 
 /** Interface used to provide an outlet for rows to be inserted into. */
 export interface RowOutlet {
@@ -193,6 +194,8 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
 
   page : number = 1;
 
+  @HostBinding("class") className;
+
   /** List of ordering directives. */
   private _allOrderingRefs: Ordering[] = [];
 
@@ -307,6 +310,9 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
 
     this._document = _document;
     this._isNativeHtmlTable = this._elementRef.nativeElement.nodeName === 'TABLE';
+
+    this.setClassName();
+
   }
 
   ngOnInit() {
@@ -362,6 +368,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
         viewRef.instance.columnName = key;
         viewRef.instance.isSortable = value._isSortable; //Save if header is sortable in the created component
         viewRef.instance.state = this.getMapStateHeaders().get(key); //Get header's current state for sorting and save it in the created component
+        viewRef.instance.parentClassName = this.className; // just in case there ar more tables in the page
         if (!this.displayedColumns.includes(key)){
           this.displayedColumns.push( key );
         }
@@ -507,6 +514,7 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
       this.renderHeaders();
       this.renderRows();
     });
+  
   }
 
   /**
@@ -674,6 +682,16 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
   /** Return map with header's states */
   getMapStateHeaders(){
     return this.sortService.mapStatesHeaders;
+  }
+
+  //It is needed to give a unique id to the resultset table
+  setClassName(){
+    this.className = Math.round(Math.random() * 100000000000);
+    let element = document.getElementsByClassName(this.className)[0];
+    while(element != undefined){
+      this.className = Math.round(Math.random() * 100000000000);
+      element = document.getElementsByClassName(this.className)[0];
+    }
   }
 
 

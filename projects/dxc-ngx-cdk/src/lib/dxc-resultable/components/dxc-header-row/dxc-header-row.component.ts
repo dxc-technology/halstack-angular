@@ -3,7 +3,7 @@ import { SortService } from '../../services/sort.service';
 
 @Component({
   selector: 'th',
-  template: `<div ordering="{{isSortable}}" id="header-{{columnName}}">{{columnName}} <span id="iconSort-{{columnName}}" *ngIf="isSortable"></span></div>`,
+  template: `<div ordering="{{isSortable}}" id="header-{{columnName}}-{{parentClassName}}">{{columnName}} <span id="iconSort-{{columnName}}-{{parentClassName}}" *ngIf="isSortable"></span></div>`,
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   providers:[SortService]
@@ -18,6 +18,7 @@ export class DxcHeaderRowComponent {
   descSort: string;
 
   state: string;
+  parentClassName: any;
 
   constructor(private sortService: SortService){}
 
@@ -29,7 +30,7 @@ export class DxcHeaderRowComponent {
   /** Set style for sort header */
   private setStyle(){
     if(this.isSortable){
-      let divHeader = document.getElementById(`header-${this.columnName}`);
+      let divHeader = document.getElementById(`header-${this.columnName}-${this.parentClassName}`);
       divHeader.style.cursor = "pointer";
       divHeader.style.width = "fit-content";
     }
@@ -38,8 +39,8 @@ export class DxcHeaderRowComponent {
   /** Paint icon for sorting depending on header state (up for asc, down for desc and default) */
   setSortIcon(){
     if(this.isSortable){
-      let divHeader = document.getElementById(`header-${this.columnName}`);
-      let spanIcon = document.getElementById(`iconSort-${this.columnName}`);
+      let divHeader = document.getElementById(`header-${this.columnName}-${this.parentClassName}`);
+      let spanIcon = document.getElementById(`iconSort-${this.columnName}-${this.parentClassName}`);
       switch(this.state){
         case "up":
           let up = this.sortService.getAscIcon(this.columnName);

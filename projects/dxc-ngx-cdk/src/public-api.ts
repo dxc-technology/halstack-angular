@@ -24,7 +24,6 @@ export * from './lib/dxc-card/dxc-card.module';
 export * from './lib/dxc-checkbox/dxc-checkbox.component';
 export * from './lib/dxc-checkbox/dxc-checkbox.module';
 
-
 export * from './lib/dxc-date/dxc-date.component';
 export * from './lib/dxc-date/dxc-date.module';
 
@@ -39,7 +38,6 @@ export * from './lib/dxc-footer/dxc-footer.module';
 
 export * from './lib/dxc-header/dxc-header.component';
 export * from './lib/dxc-header/dxc-header.module';
-
 
 export * from './lib/dxc-table/dxc-table.component';
 export * from './lib/dxc-table/dxc-table.module';

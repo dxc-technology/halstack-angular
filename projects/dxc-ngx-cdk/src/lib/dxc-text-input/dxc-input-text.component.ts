@@ -24,10 +24,7 @@ import { FormControl } from "@angular/forms";
 @Component({
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
-  styleUrls: [
-    "./dxc-light-input.scss",
-    "./dxc-dark-input.scss"
-  ],
+  styleUrls: ["./dxc-light-input.scss", "./dxc-dark-input.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
@@ -64,9 +61,10 @@ export class DxcTextInputComponent
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   loading = new BehaviorSubject(false);
+  isError = new BehaviorSubject(false);
   renderedValue = "";
   private _valueChangeTrack: boolean;
-  options = [];
+  options;
 
   dxcAutocompleteMenu = this.getAutoCompleteStyle();
 
@@ -174,7 +172,6 @@ export class DxcTextInputComponent
 
   autocompleteFunction(value) {
     if (
-      value &&
       value !== undefined &&
       this.autocompleteOptions &&
       Array.isArray(this.autocompleteOptions)
@@ -188,14 +185,23 @@ export class DxcTextInputComponent
       typeof this.autocompleteOptions === "function"
     ) {
       this.loading.next(true);
+      this.isError.next(false);
       this.autocompleteOptions(value).subscribe(
         autocompleteOptionsList => {
           this.options = autocompleteOptionsList;
           this.ref.markForCheck();
           this.loading.next(false);
         },
-        err => (this.options = ["Error"])
+        err => {
+          this.isError.next(true);
+          this.loading.next(false);
+          this.ref.markForCheck();
+        }
       );
+    } else if (this.autocompleteOptions) {
+      this.isError.next(true);
+      this.loading.next(false);
+      this.ref.markForCheck();
     }
   }
 
@@ -323,6 +329,12 @@ export class DxcTextInputComponent
       &::-webkit-scrollbar-thumb {
         background-color: var(--darkGrey, #666666);
         border-radius: 3px;
+      }
+      .errorOption {
+        .mat-option-text {
+          display: flex;
+          align-items: center;
+        }
       }
     `;
   }

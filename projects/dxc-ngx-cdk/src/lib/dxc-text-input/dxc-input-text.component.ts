@@ -334,6 +334,7 @@ export class DxcTextInputComponent
         .mat-option-text {
           display: flex;
           align-items: center;
+          justify-content: space-between;
         }
       }
     `;

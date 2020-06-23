@@ -262,7 +262,7 @@ export class DxcTextInputComponent
       }
 
       &.disabled {
-        cursor: not-allowed;
+        cursor: default;
       }
       .mat-form-field {
         line-height: unset;

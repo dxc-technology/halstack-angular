@@ -3,19 +3,19 @@
     &.disabled {
       ::ng-deep {
         .mat-hint {
-          color: var(--lightGrey, #d9d9d9);
+          color: var(--disableLight, #A5A5A5);
         }
         .mat-form-field-underline {
-          background-color: var(--lightGrey, #d9d9d9);
+          background-color: var(--disableLight, #A5A5A5);
         }
         .mat-form-field-empty mat-label {
-          color: var(--lightGrey, #d9d9d9);
+          color: var(--disableLight, #A5A5A5);
         }
         &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--lightGrey, #d9d9d9);
+          color: var(--disableLight, #A5A5A5);
         }
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--lightGrey, #d9d9d9);
+          color: var(--disableLight, #A5A5A5);
         }
       }
       pointer-events: none;

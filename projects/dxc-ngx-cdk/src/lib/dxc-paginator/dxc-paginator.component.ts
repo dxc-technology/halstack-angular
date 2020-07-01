@@ -43,10 +43,10 @@ export class DxcPaginatorComponent implements OnInit {
   @Output() lastFunction: EventEmitter<any> = new EventEmitter<any>();
 
   buttonMargin = {left: 'xxsmall', right: 'xxsmall'};
-  firstImgSrc = "../../assets/previousPage.svg";
-  prevImgSrc ="../../assets/previous.svg";
-  nextImgSrc = "../../assets/next.svg";
-  lastImgSrc = "../../assets/nextPage.svg";
+  firstImgSrc = "assets/previousPage.svg";
+  prevImgSrc ="assets/previous.svg";
+  nextImgSrc = "assets/next.svg";
+  lastImgSrc = "assets/nextPage.svg";
 
   totalPages : number;
   currentPageInternal : number;

@@ -12,7 +12,7 @@ export class TextInputInfoComponent {
   inputValue = "";
 
   options = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"];
-  filteredOptions = this.options;
+  filteredOptions = new BehaviorSubject(this.options);
   error = "true";
 
   constructor() {
@@ -44,10 +44,10 @@ export class TextInputInfoComponent {
   }
 
   autocompleteAsync(inputValue) {
-    this.filteredOptions = this.options.filter(option =>
+    this.filteredOptions.next(this.options.filter(option =>
       option.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    return of(this.filteredOptions).pipe(
+    ));
+    return this.filteredOptions.pipe(
       switchMap(options => of(options).pipe(delay(1000)))
     );
   }

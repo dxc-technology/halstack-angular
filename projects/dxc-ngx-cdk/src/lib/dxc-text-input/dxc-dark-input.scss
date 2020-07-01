@@ -59,11 +59,11 @@
         .mat-form-field-label-wrapper label mat-label,
         .mat-hint,
         input {
-          color: var(--darkGrey, #666666);
+          color: var(--disableDark, #959595);
         }
         .mat-form-field-ripple,
         .mat-form-field-underline {
-          background-color: var(--darkGrey, #666666);
+          background-color: var(--disableDark, #959595);
         }
       }
     }

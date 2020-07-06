@@ -183,7 +183,7 @@ describe('DxcResultset Table tests', () => {
                         {user:'aida',email:'test@gmail.com'}
                     ]" 
                     [itemsPerPage]="2">
-                        <ng-container dxcColumnDef="user" isSortable="true">
+                        <ng-container dxcColumnDef="user" [sortable]="{isSortable:true, propertyName:'user'}">
                             <td *dxcCellDef="let item">
                                 {{item['user']}}
                             </td>
@@ -222,12 +222,12 @@ describe('DxcResultset Table tests', () => {
                         {user:'aida',email:'test@gmail.com'}
                     ]" 
                     [itemsPerPage]="2">
-                        <ng-container dxcColumnDef="user" isSortable="true">
+                        <ng-container dxcColumnDef="user" [sortable]="{isSortable:true, propertyName:'user'}">
                             <td *dxcCellDef="let item">
                                 {{item['user']}}
                             </td>
                         </ng-container>
-                        <ng-container dxcColumnDef="email" isSortable="false">
+                        <ng-container dxcColumnDef="email" [sortable]="{isSortable:false, propertyName:'email'}">
                             <td *dxcCellDef="let item">
                                 {{item['email']}}
                             </td>

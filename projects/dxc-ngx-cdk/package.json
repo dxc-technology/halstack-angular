@@ -42,6 +42,7 @@
     "jest-preset-angular": "^7.1.1",
     "moment": "^2.24.0",
     "ng-click-outside": "^6.0.0",
+    "ng-mocks": "^10.0.0",
     "ng-packagr": "^5.4.0",
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2",

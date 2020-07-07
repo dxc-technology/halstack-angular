@@ -366,9 +366,10 @@ export class DxcResultTable<T> implements AfterContentChecked, CollectionViewer,
         const factory = this.resolver.resolveComponentFactory(DxcHeaderRowComponent);
         const viewRef = this._headerOutlet.viewContainer.createComponent(factory);
         viewRef.instance.columnName = key;
-        viewRef.instance.isSortable = value._isSortable; //Save if header is sortable in the created component
+        viewRef.instance.isSortable = value.sortable.isSortable; //Save if header is sortable in the created component
         viewRef.instance.state = this.getMapStateHeaders().get(key); //Get header's current state for sorting and save it in the created component
-        viewRef.instance.parentClassName = this.className; // just in case there ar more tables in the page
+        viewRef.instance.parentClassName = this.className; // just in case there are more tables in the page
+        viewRef.instance.propertyName = value.sortable.propertyName;
         if (!this.displayedColumns.includes(key)){
           this.displayedColumns.push( key );
         }

@@ -38,6 +38,7 @@ export * from './lib/dxc-footer/dxc-footer.module';
 
 export * from './lib/dxc-header/dxc-header.component';
 export * from './lib/dxc-header/dxc-header.module';
+export * from './lib/dxc-header/directives/closable.directive';
 
 export * from './lib/dxc-table/dxc-table.component';
 export * from './lib/dxc-table/dxc-table.module';

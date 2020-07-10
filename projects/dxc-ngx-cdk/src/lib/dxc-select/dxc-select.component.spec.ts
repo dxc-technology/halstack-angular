@@ -5,19 +5,19 @@ import { screen } from "@testing-library/dom";
 
 const optionsMock = [
   {
-    value: 1,
+    value: 'pepe',
     label: "Amazon"
   },
   {
-    value: 2,
+    value: 'martin',
     label: "Ebay"
   },
   {
-    value: 3,
+    value: '3',
     label: "Apple"
   },
   {
-    value: 4,
+    value: '4',
     label: "Google"
   }
 ];
@@ -76,7 +76,7 @@ describe("DxcSelect tests", () => {
       componentProperties: {
         label: "test-select",
         options: optionsMock,
-        value: "1",
+        value: "pepe",
         onChange: { emit: changeMock } as any
       },
       imports: [MatSelectModule]
@@ -91,7 +91,7 @@ describe("DxcSelect tests", () => {
       componentProperties: {
         label: "test-select",
         options: optionsMock,
-        value: "1",
+        value: "pepe",
         onChange: { emit: changeMock } as any
       },
       imports: [MatSelectModule]
@@ -135,7 +135,7 @@ describe("DxcSelect tests", () => {
         label: "test-select",
         options: optionsMock,
         multiple: true,
-        value: ["1", "2"],
+        value: ["pepe", "martin"],
         onChange: { emit: changeMock } as any
       },
       imports: [MatSelectModule]
@@ -145,12 +145,12 @@ describe("DxcSelect tests", () => {
     fireEvent.click(dxcSelect.getByText("Amazon,Ebay"));
     dxcSelect.detectChanges();
     fireEvent.click(screen.getByText("Apple"));
-    expect(changeMock).toHaveBeenCalledWith(["1", "2", "3"]);
+    expect(changeMock).toHaveBeenCalledWith(["pepe", "martin", "3"]);
     dxcSelect.detectChanges();
     fireEvent.click(dxcSelect.getByText("Amazon,Ebay"));
     dxcSelect.detectChanges();
     fireEvent.click(screen.getByText("Google"));
-    expect(changeMock).toHaveBeenCalledWith(["1", "2", "4"]);
+    expect(changeMock).toHaveBeenCalledWith(["pepe", "martin", "3", "4"]);
     dxcSelect.detectChanges();
     expect(dxcSelect.getByText("Amazon,Ebay"));
   });

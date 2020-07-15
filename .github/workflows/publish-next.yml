@@ -1,0 +1,39 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Publish Next Version
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+        registry-url: https://registry.npmjs.org/
+      
+    - name: Install lib dependencies
+      run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib
+    
+    - name: Install app dependencies
+      run: cd . && npm install
+    
+    - name: Test library
+      run: cd ./projects/dxc-ngx-cdk && npm run test
+      
+    - name: Publish alpha to npm
+      run: |
+        sed -i "s#\"version\": \"0.0.0\"#\"version\": \"0.0.0-${GITHUB_SHA:0:7}\"#" ./dist/dxc-ngx-cdk/package.json
+        cd ./dist/dxc-ngx-cdk
+        npm publish --tag next --access public
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

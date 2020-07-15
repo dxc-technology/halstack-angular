@@ -25,7 +25,7 @@
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
     "@babel/preset-env": "^7.4.5",
-    "@diaas/dxc-ngx-cdk": "file:./dist/dxc-ngx-cdk",
+    "@dxc-technology/halstack-angular": "file:./dist/dxc-ngx-cdk",
     "@types/jest": "^25.2.1",
     "babel-jest": "^24.8.0",
     "emotion": "10.0.27",

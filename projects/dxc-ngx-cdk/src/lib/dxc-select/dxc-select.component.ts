@@ -5,14 +5,12 @@ import {
   EventEmitter,
   HostBinding,
   OnChanges,
-  SimpleChanges,
-  ViewChild
+  SimpleChanges
 } from "@angular/core";
 import { isArray } from "util";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: "dxc-select",
@@ -34,7 +32,7 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public theme: string = "light";
   @Input() public multiple: boolean;
   @Input() public value: string | string[];
-  @Input() public options: { label?: string; value: any; iconSrc?: string }[];
+  @Input() public options: { label?: string; value: string; iconSrc?: string }[];
   @Input() public disableRipple: boolean = false;
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
@@ -50,8 +48,6 @@ export class DxcSelectComponent implements OnChanges {
 
   public iconsToShow: string[] = []; //Auxiliar property used to get iconSRC for several values
   public labeltoShow: string[] = [] //The value is not the correct valur to display. Use label instead
-
-  @ViewChild('dxcSelect', {static: false}) _dxcSelect: MatSelect;
 
   defaultInputs = new BehaviorSubject<any>({
     theme: "light",
@@ -94,7 +90,7 @@ export class DxcSelectComponent implements OnChanges {
     this.hasOptionsOnlyIcons();
     
     this.renderedValue = this.value || '';
-    if (this._dxcSelect) this._dxcSelect.writeValue(this.renderedValue);
+      
     this.getIconAndLabelByValue(this.renderedValue);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -112,8 +108,8 @@ export class DxcSelectComponent implements OnChanges {
       this.getIconAndLabelByValue(this.renderedValue);
     } else {
       $event.source._selectionModel.clear();
+      this.renderedValue = $event.value;
       $event.source.writeValue(this.renderedValue);
-      $event.value = this.renderedValue;
     }
   }
 
@@ -130,9 +126,10 @@ export class DxcSelectComponent implements OnChanges {
     this.labeltoShow = [];
     const multipleValue = isArray(value) ? value : [value];
     multipleValue.map(value => {
-      if(this.options[value - 1]) {
-        this.iconsToShow.push(this.options[value - 1].iconSrc);
-        this.labeltoShow.push(this.options[value - 1].label);
+      const element = this.options.filter(item=> item.value == value);
+      if(element!== undefined && element[0]) {
+        this.iconsToShow.push(element[0].iconSrc);
+        this.labeltoShow.push(element[0].label);
       }
     });
   }

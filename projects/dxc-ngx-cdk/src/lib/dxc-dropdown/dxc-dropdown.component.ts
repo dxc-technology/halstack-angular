@@ -363,6 +363,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       padding-right: 13px;
       display: inline-flex;
       align-items: center;
+      border-radius: 2px;
 
       &:focus {
         outline: none;

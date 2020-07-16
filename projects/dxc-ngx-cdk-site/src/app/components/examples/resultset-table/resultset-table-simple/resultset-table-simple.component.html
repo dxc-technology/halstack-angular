@@ -1,0 +1,22 @@
+<dxc-resultset-table itemsPerPage="4" [collectionResource]="data" margin="medium">
+  <ng-container dxcColumnDef="id">
+    <td *dxcCellDef="let item">
+        {{item['id']}}
+    </td>
+  </ng-container>
+  <ng-container dxcColumnDef="name" isSortable="true">
+    <td *dxcCellDef="let item">
+        {{item['name']}}
+    </td>
+  </ng-container>
+  <ng-container dxcColumnDef="city">
+    <td *dxcCellDef="let item">
+        {{item['city']}}
+    </td>
+  </ng-container>
+  <ng-container dxcColumnDef="actions" isSortable="true">
+    <td *dxcCellDef="let item">
+        <dxc-button *ngIf="item['actions'] === true" label="Delete"></dxc-button>
+    </td>
+  </ng-container>
+</dxc-resultset-table>

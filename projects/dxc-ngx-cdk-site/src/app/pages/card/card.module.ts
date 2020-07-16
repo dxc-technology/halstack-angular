@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcCardModule, DxcTableModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcCardModule, DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { CardComponent } from './card.component';
 import { CardActionComponent } from '../../components/examples/card/card-action/card-action.component';
 import { CardDefaultComponent } from '../../components/examples/card/card-default/card-default.component';

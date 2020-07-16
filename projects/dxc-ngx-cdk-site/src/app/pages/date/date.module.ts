@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DateComponent } from './date.component';
-import { DxcDateModule, DxcTableModule, DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcDateModule, DxcTableModule, DxcTagModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';

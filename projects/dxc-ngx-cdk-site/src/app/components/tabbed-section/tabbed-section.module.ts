@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DynamicComponentComponent } from '../dynamic-component/dynamic-component.component';
-import { DxcTabbedSectionModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTabbedSectionModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [    

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionComponent } from './accordion.component';
-import { DxcTableModule, DxcAccordionModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTableModule, DxcAccordionModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { AccordionTablePropertiesComponent } from 'src/app/components/examples/accordion/properties/accordion-table-properties/accordion-table-properties.component';
 import { ExampleViewerComponent } from 'src/app/components/example-viewer/example-viewer.component';

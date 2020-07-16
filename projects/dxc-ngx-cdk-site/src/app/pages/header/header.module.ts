@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DXCHeaderModule, DxcTableModule, DxcButtonModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DXCHeaderModule, DxcTableModule, DxcButtonModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';

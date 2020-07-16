@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SliderComponent } from './slider.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcSliderModule, DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTableModule, DxcSliderModule, DxcTagModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { SliderPropertiesComponent } from '../../components/examples/slider/properties/slider-properties/slider-properties.component';

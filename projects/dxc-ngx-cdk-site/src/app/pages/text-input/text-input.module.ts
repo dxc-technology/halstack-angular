@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DXCInputTextModule, DxcLinkModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTableModule, DXCInputTextModule, DxcLinkModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TextInputComponent } from './text-input.component';

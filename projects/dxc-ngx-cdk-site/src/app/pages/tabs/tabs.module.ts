@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DxcTabsModule,DxcTagModule } from "@diaas/dxc-ngx-cdk";
+import { DxcTableModule, DxcTabsModule,DxcTagModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";

@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcRadioModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTableModule, DxcRadioModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';

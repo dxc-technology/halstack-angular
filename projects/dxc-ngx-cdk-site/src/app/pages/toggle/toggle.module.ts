@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToggleComponent } from './toggle.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DXCToggleModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTableModule, DXCToggleModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ToggleTablePropertiesComponent } from '../../components/examples/toggle/properties/toggle-table-properties/toggle-table-properties.component';

@@ -26,7 +26,7 @@ import { PaginatorComponent } from './pages/paginator/paginator.component';
 import { LinkInfoComponent } from './pages/link/link-info.component';
 import { SidenavInfoComponent } from './pages/sidenav/sidenav-info.component';
 import { WizardComponent } from './pages/wizard/wizard.component';
-import { DxcUploadComponent } from '@diaas/dxc-ngx-cdk';
+import { DxcUploadComponent } from '@dxc-technology/halstack-angular';
 import { HeadingInfoComponent } from './pages/heading/heading-info.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 

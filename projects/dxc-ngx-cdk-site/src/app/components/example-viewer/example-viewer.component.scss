@@ -1,0 +1,75 @@
+.docs-example-viewer-wrapper {
+    margin: 4px;
+}
+
+.example-view-code-button{
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.docs-example-viewer-title {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(193, 193, 193);
+    margin-bottom: 30px;
+    -webkit-box-align: center;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 0px 10px;
+    h3{
+        font-size: 20px;
+        color: grey;
+        font-weight: normal;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        margin: 5px 0px;
+        text-transform: none;
+
+    }
+}
+
+.example-viewer .docs-example-viewer-title {
+    color: rgba(0,0,0,.54);
+    background: rgba(0,0,0,.03);
+}
+
+
+.docs-example-viewer-title-spacer{
+    flex: 1 1 auto;
+}
+.example-component-area {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 10px inset;
+    border-width: 1px;
+    border-style: dashed;
+    border-color: rgb(220, 220, 220);
+    border-image: initial;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+button.mat-icon-button {
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.mat-tab-group {
+    z-index: 10;
+    position: initial;
+    top: unset;
+}
+
+.docs-example-viewer-source{
+    padding-bottom: 50px;
+}

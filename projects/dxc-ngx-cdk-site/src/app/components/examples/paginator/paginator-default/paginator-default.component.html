@@ -1,0 +1,11 @@
+<dxc-paginator 
+    [totalItems]="totalItems"
+    [itemsPerPage]="itemsPerPage"
+    [currentPage]="page"
+    (nextFunction)="navigate($event, 'next')"
+    (prevFunction)="navigate($event, 'prev')"
+    (firstFunction)="navigate($event, 'first')"
+    (lastFunction)="navigate($event, 'last')"
+    [paginationActions]="paginationActions"
+    >
+</dxc-paginator>

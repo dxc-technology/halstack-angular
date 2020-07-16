@@ -6,7 +6,7 @@ import {
   DXCInputTextModule,
   DxcLinkModule,
   DxcTagModule
-} from "@diaas/dxc-ngx-cdk";
+} from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
 import { AutocompleteComponent } from "./autocomplete.component";

@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PortalModule } from '@angular/cdk/portal';
-import { DxcButtonModule, DxcTableModule } from '@diaas/dxc-ngx-cdk';
+import { DxcButtonModule, DxcTableModule } from '@dxc-technology/halstack-angular';
 import { MatButtonModule, MatIconModule, MatTabsModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

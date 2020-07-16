@@ -1,5 +1,5 @@
 import { Component, Inject } from "@angular/core";
-import { ThemeService } from "@diaas/dxc-ngx-cdk";
+import { ThemeService } from "@dxc-technology/halstack-angular";
 import { customTheme } from '../assets/styles/themesProperties';
 
 @Component({

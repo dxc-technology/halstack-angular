@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcButtonModule, DxcTableModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcButtonModule, DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { ButtonComponent } from './button.component';
 import { ButtonModesComponent } from '../../components/examples/button/button-modes/button-modes.component';
 import { ButtonWithIconComponent } from '../../components/examples/button/button-with-icon/button-with-icon.component';

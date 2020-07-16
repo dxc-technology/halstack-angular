@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { SidenavComponent } from './sidenav.component';
-import { DxcSideNavModule, DxcTableModule,DxcTagModule } from "@diaas/dxc-ngx-cdk";
+import { DxcSideNavModule, DxcTableModule,DxcTagModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';

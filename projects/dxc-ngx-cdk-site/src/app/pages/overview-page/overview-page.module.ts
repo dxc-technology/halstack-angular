@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
-import { DxcBoxModule, DxcBoxComponent, DxcTagModule, DxcTagComponent } from "@diaas/dxc-ngx-cdk"
+import { DxcBoxModule, DxcBoxComponent, DxcTagModule, DxcTagComponent } from "@dxc-technology/halstack-angular"
 import { BrowserModule } from '@angular/platform-browser';
 import { OverviewPageComponent} from "./overview-page.component"
 import { OverviewInstallComponent } from 'src/app/components/overview/overview-install/overview-install.component';

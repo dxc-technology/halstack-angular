@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ThemeService, DXCHeaderModule,DXCFooterModule, DxcSliderModule, ThemeModule } from '@diaas/dxc-ngx-cdk';
+import { ThemeService, DXCHeaderModule,DXCFooterModule, DxcSliderModule, ThemeModule } from '@dxc-technology/halstack-angular';
 import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
 import { AlertModule } from './pages/alert/alert.module';

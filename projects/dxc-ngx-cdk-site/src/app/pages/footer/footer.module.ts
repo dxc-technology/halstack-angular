@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { DXCFooterModule, DxcTableModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DXCFooterModule, DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { FooterComponent } from './footer.component';
 import { FooterExampleComponent } from '../../components/examples/footer/footer-example/footer-example.component';

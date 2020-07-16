@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcCheckboxModule, DxcTableModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcCheckboxModule, DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { CheckboxComponent } from './checkbox.component';
 import { CheckboxDarkThemeComponent } from '../../components/examples/checkbox/checkbox-dark-theme/checkbox-dark-theme.component';
 import { CheckboxLabelPositionComponent } from '../../components/examples/checkbox/checkbox-label-position/checkbox-label-position.component';

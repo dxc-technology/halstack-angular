@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResultsetTableComponent } from './resultset-table.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule } from '@diaas/dxc-ngx-cdk';
+import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';

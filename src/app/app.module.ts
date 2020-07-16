@@ -41,7 +41,7 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
   DXCSelectModule, DxcSpinnerModule, DxcSwitchModule, DXCToggleModule, 
   DxcTabsModule, DXCUploadModule, DxcTableModule, DxcDateModule, DxcTagModule, DxcRadioModule, 
   DxcSliderModule, DxcTabbedSectionModule,
-  DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService, DxcWizardModule, DxcHeadingModule,DxcResultsetTableModule } from '@diaas/dxc-ngx-cdk';
+  DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService, DxcWizardModule, DxcHeadingModule,DxcResultsetTableModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [

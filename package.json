@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
     "@babel/preset-env": "^7.4.5",
-    "@diaas/dxc-ngx-cdk": "0.0.0-alpha.305",
+    "@dxc-technology/halstack-angular": "file:./dist/dxc-ngx-cdk",
     "@scullyio/init": "0.0.28",
     "@scullyio/ng-lib-v8": "0.0.21",
     "@scullyio/scully": "latest",

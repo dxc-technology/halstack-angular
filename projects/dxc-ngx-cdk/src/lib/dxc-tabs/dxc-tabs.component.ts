@@ -45,7 +45,7 @@ export class DxcTabsComponent implements OnChanges {
   private _activeTabIndex;
   renderedActiveTabIndex: number;
 
-  @ViewChild(MatTabGroup, { static: true })
+  @ViewChild("tabGroup", { static: true })
   public tabGroup: MatTabGroup;
 
   @ContentChildren(DxcTabComponent)
@@ -124,6 +124,7 @@ export class DxcTabsComponent implements OnChanges {
     });
     const list = new QueryList<MatTab>();
     list.reset([matTabsFromQueryList]);
+    console.log("this.tabGroup:",this.tabGroup)
     this.tabGroup._tabs = list;
     this.setActiveTab();
     this.tabGroup.ngAfterContentInit();

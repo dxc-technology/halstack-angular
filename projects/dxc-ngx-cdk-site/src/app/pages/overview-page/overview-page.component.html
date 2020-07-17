@@ -1,0 +1,44 @@
+<div class="overview-container">
+  <div class="overview-header">
+    <img src="../../../tools/angular/assets/img/angular.png" class="angular-logo" />
+    <div class="overview-header-titles">
+      <h1 class="overview-header-title">DXC COMPONENTS</h1>
+      <h2 class="overview-header-subtitle">FOR ANGULAR</h2>
+    </div>
+  </div>
+  <div class="overview-links-section">
+
+  <dxc-tag  margin="medium"
+      [iconSrc]="imgDxc"
+      linkHref="https://developer.dxc.com/design/principles"
+      label="DESIGN GUIDELINES">
+  </dxc-tag>
+  <dxc-tag  margin="medium"
+      [iconSrc]="imgGithub"
+      label="GITHUB"
+      linkHref="https://github.dxc.com/DIaaS/diaas-angular-cdk">
+  </dxc-tag>
+  </div>
+  <div class="overview-intro">
+    <p>
+      DXC Angular Components is a library of reusable elements, made with the
+      purpose of helping Angular developers with the task of implementing User
+      Interfaces that follow the <a href="https://developer.dxc.com/design/principles" target="_blank">DXC Design Guidelines</a>
+      right out of the box.
+    </p>
+    <ul>
+      <li>
+        It increases <b>visual and behavioral consistency</b> across the
+        applications using the library.
+      </li>
+      <li>
+        It <b>cuts down development</b> time, taking the responsability of
+        implementing the Design Guidelines away from the developer, and
+        allowing him to focus on providing business value.
+      </li>
+    </ul>
+  </div>
+  <div>
+    <app-tabbed-section [sections] ="sections"></app-tabbed-section>
+  </div>
+</div>

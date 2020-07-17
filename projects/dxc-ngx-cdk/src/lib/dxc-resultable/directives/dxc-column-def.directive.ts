@@ -34,15 +34,7 @@ export class DxcColumnDef extends _DxcColumnDefBase {
   }
   _name: string;
 
-  @Input('isSortable')
-  get isSortable(): boolean { return this._isSortable; }
-  set isSortable(value: boolean) {
-    if (value) {
-      this._isSortable = coerceBooleanProperty(value);
-    }
-    else this._isSortable = false;
-  }
-  _isSortable: boolean;
+  @Input('sortable') sortable = {isSortable:false,propertyName:""};
 
   /** @docs-private */
   @ContentChild(DxcCellDef, { static:true }) cell: DxcCellDef;

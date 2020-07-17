@@ -1,0 +1,9 @@
+<dxc-button
+      mode="basic"
+      theme="light"
+      label="Show Spinner for 3 seconds"
+      (onClick)="showModal()"
+      margin="medium"
+></dxc-button>
+
+<dxc-spinner *ngIf="isVisible" margin="medium" label="Loading..." mode="overlay"></dxc-spinner>

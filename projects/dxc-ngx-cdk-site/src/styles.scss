@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/theme.scss";
+
+body {
+    margin: 0px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Open Sans, "Helvetica Neue", sans-serif; }
+
+.title-example{
+    font-size: 50px;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+  
+.subtitle-example{
+    font-size: 30px;
+    font-weight: normal;
+}
+  
+.example-container{
+    display: flex;
+    flex-direction: column;
+    margin: 70px 150px;
+}
+
+.title-components{
+    font-size: 60px;
+    font-weight: 100;
+    text-align: left;
+    font: Regular 34px/46px Open Sans;
+    letter-spacing: 0.24px;
+    color: #000000DE;
+    opacity: 1;
+}
+
+.subtitle-components{
+    font-size: 34px;
+    font-weight: 100;
+    text-align: left;
+    font: Regular 34px/46px Open Sans;
+    letter-spacing: 0.24px;
+    color: #000000DE;
+    opacity: 1;
+}
+
+code{
+    font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace;
+}
+
+.title-tag{
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: baseline;
+    align-items: baseline;
+}

@@ -1,0 +1,89 @@
+div.overview-container {
+  max-width: 1120px;
+  margin: 0px auto;
+  padding: 50px 20px;
+}
+
+div.overview-header {
+  display: flex;
+  margin: 40px 0px;
+}
+
+div.overview-header-titles {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000000;
+  margin-left: 10px; 
+}
+
+h1.overview-header-title {
+  margin: 0px;
+  font-size: 35px;
+  line-height: 40px;
+}
+  
+h2.overview-header-subtitle {
+  margin: 0px;
+  font-size: 25px;
+  line-height: 20px;
+  color: #474747;
+  font-weight: normal;
+}
+
+.angular-logo {
+  width: 70px;
+  height: 70px;
+}
+
+div.overview-links-section {
+  display: flex;
+  margin: 70px 0px 50px 0px;
+}
+
+div.overview-intro {
+  padding: 0px 0px 100px 0px;
+  max-width: 800px;
+}
+
+li {
+  margin-top: 30px;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: black;
+  letter-spacing: initial;
+}
+
+.overview-doc-title {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.overview-doc-subtitle {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.code-section {
+  display: block; 
+  overflow-x: auto; 
+  padding: 0.5em; 
+  color: rgb(0, 0, 0); 
+  background: rgb(248, 248, 255);
+}
+
+.overview-viewer-source {
+  border: 1px solid rgba(0,0,0,.03);
+  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+  margin: 4px;
+}
+
+.mat-tab-group {
+  z-index: 10;
+  position: initial;
+  top: unset;
+}

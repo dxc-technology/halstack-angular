@@ -29,7 +29,7 @@
               "projects/dxc-ngx-cdk-site/src/zearch.html",
               {
                 "glob": "**/*",
-                "input": "./node_modules/@diaas/dxc-ngx-cdk/lib/assets",
+                "input": "./node_modules/@dxc-technology/halstack-angular/lib/assets",
                 "output": "./assets/"
               },
               {
@@ -91,7 +91,8 @@
             "production": {
               "browserTarget": "angular-dxc-site:build:production"
             }
-          },"assets": [ 
+          },
+          "assets": [ 
             "projects/dxc-ngx-cdk-site/src/assets"
             ]
         },
@@ -164,11 +165,11 @@
             "index": "projects/dxc-ngx-cdk-examples/src/index.html",
             "main": "projects/dxc-ngx-cdk-examples/src/main.ts",
             "polyfills": "projects/dxc-ngx-cdk-examples/src/polyfills.ts",
-            "tsConfig": "projects/dxc-ngx-cdk-examples/src/tsconfig.app.json",
+            "tsConfig": "projects/dxc-ngx-cdk-examples/tsconfig.app.json",
             "assets": ["projects/dxc-ngx-cdk-examples/src/favicon.ico", "projects/dxc-ngx-cdk-examples/src/assets", 
               {
               "glob": "**/*",
-              "input": "./node_modules/@diaas/dxc-ngx-cdk/lib/assets",
+              "input": "./node_modules/@dxc-technology/halstack-angular/lib/assets",
               "output": "./assets/"
               }],
             "styles": ["projects/dxc-ngx-cdk-examples/src/styles.scss"],
@@ -236,7 +237,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["projects/dxc-ngx-cdk-examples/src/tsconfig.app.json", "projects/dxc-ngx-cdk-examples/src/tsconfig.spec.json"],
+            "tsConfig": ["projects/dxc-ngx-cdk-examples/tsconfig.app.json", "projects/dxc-ngx-cdk-examples/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         }

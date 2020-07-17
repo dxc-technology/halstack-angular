@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --baseHref=/tools/angular/",
+    "start": "ng serve angular-dxc-site --baseHref=/tools/angular/",
+    "start-example": "ng serve dxc-angular-cdk",
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -27,7 +28,7 @@
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
     "@babel/preset-env": "^7.4.5",
-    "@dxc-technology/halstack-angular": "file:./dist/dxc-ngx-cdk",
+    "@dxc-technology/halstack-angular": "file:dist/dxc-ngx-cdk",
     "@scullyio/init": "0.0.28",
     "@scullyio/ng-lib-v8": "0.0.21",
     "@scullyio/scully": "latest",

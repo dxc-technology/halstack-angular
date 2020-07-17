@@ -1,0 +1,42 @@
+<div theme class="header-container">
+  <dxc-header [padding]="headerPadding" logoSrc="../../tools/angular/assets/dxc_logo_white.png">
+    <div id="unresponsive">
+        <a class="header-link" routerLinkActive="active-route" routerLink="/overview">Overview</a>
+        <a class="header-link" routerLinkActive="active-route" routerLink="/components" >Components</a>
+        <a class="header-link" target="_blank" rel="noopener noreferrer" href="https://developer.dxc.com/design/principles">Design Guidelines</a>
+        <a class="header-link" target="_blank" rel="noopener noreferrer" href="https://github.dxc.com/DIaaS/diaas-angular-cdk">
+          <img src='../../tools/angular/assets/img/github-logo.png' alt="GitHub logo" class="logo-32">
+        </a>
+    </div>
+    <div id="responsive">
+      <ul style="list-style: none;">
+        <li style="margin: 0;
+        padding: 0;"><a class="header-link" routerLinkActive="active-route" routerLink="/overview" isClosable>Overview</a></li>
+        <li style="margin: 0;
+        padding: 0;"><a class="header-link" routerLinkActive="active-route" routerLink="/components" isClosable>Components</a></li>
+        <li style="margin: 0;
+        padding: 0;"><a class="header-link" target="_blank" rel="noopener noreferrer" href="https://developer.dxc.com/design/principles" isClosable>Design Guidelines</a></li>
+        <li style="margin: 0;
+        padding: 0;"><a class="header-link" target="_blank" rel="noopener noreferrer" href="https://github.dxc.com/DIaaS/diaas-angular-cdk" isClosable></a></li>
+      </ul>
+    </div>
+  </dxc-header>
+</div>
+<div theme class="body-container" >
+  <div class="container-content">
+    <div class="styled-container">
+      <router-outlet #routerOutlet="outlet"></router-outlet>
+    </div>
+  </div>
+</div>
+<div theme class="portal-footer">
+  <dxc-footer logoSrc="assets/dxc_logo_wht.png"
+    [bottomLinks]="[
+      { text: 'Twitter', href: 'http://www.google.com' },
+      { text: 'Facebook', href: 'http://www.google.com' },
+      { text: 'Instagram', href: 'http://www.google.com' }
+    ]"
+    [copyright]="'© DXC Technology 2019. All rights reserved.'"
+  >
+  </dxc-footer>
+</div>

@@ -16,12 +16,12 @@ export class SortService {
   constructor() { }
 
   /** Get sorted list from given list, header's name and type of order ("asc" or "desc"). */
-  getSortedList(collectionResource,columnName, order){
+  getSortedList(collectionResource: any[], columnName:string, order:string){
     return collectionResource.sort(this.compareValues(columnName,order));
   }
 
   /** Compare values for sorting with given order ("asc" or "desc") and header's name. */
-  private compareValues(key, order) {
+  private compareValues(key:any, order:string) {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         return 0;
@@ -41,8 +41,8 @@ export class SortService {
     };
   }
 
-  /** Set to default state the given header id (like "header-user"). */
- removeOtherSortings(id){
+  /** Set to default state the given header id (like "header-user-user"). */
+ removeOtherSortings(id:string){
     let columnName = id.split("-")[1];
     let className = id.split("-")[2];
     let spanIcon = document.getElementById(`iconSort-${columnName}-${className}`);

@@ -1,4 +1,4 @@
-import { SliderInfoComponent } from 'src/app/pages/slider/slider-info.component';
+import { SliderInfoComponent } from './pages/slider/slider-info.component';
 import { CheckboxInfoComponent } from './pages/checkbox/checkbox-info.component';
 import { DialogInfoComponent } from './pages/dialog/dialog-info.component';
 import { HeaderInfoComponent } from './pages/header/header-info.component';

@@ -1,0 +1,14 @@
+<div style="display: flex;">
+    <dxc-toggle 
+        iconSrc="{{favoriteIcon}}" 
+        [selected]="selectedFav" 
+        (onClick)="onClickFav()" 
+        margin="medium">
+    </dxc-toggle>
+    <dxc-toggle 
+        iconSrc="{{visibilityIcon}}" 
+        [selected]="selectedVis" 
+        (onClick)="onClickVis()" 
+        margin="medium">
+    </dxc-toggle>
+</div>

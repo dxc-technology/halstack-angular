@@ -1,0 +1,10 @@
+<dxc-tabbed-section [sections]="sections" stickAtPx="64" tabsMode="underlined">
+    <div [attr.id]="currentSection.selector + i" *ngFor="let currentSection of sections; let i = index" 
+        class="tabbed-section-content">
+        <app-dynamic-component
+            [selector]="currentSection.selector + i" 
+            [component]="currentSection.component">
+        </app-dynamic-component>
+    </div>
+</dxc-tabbed-section>
+

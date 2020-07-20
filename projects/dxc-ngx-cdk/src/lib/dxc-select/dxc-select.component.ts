@@ -41,6 +41,7 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public label: string;
   @Input() public margin: any;
   @Input() public size: string = "medium";
+  @Input() public assistiveText: string;
   
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
@@ -139,5 +140,12 @@ export class DxcSelectComponent implements OnChanges {
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
     `;
+  }
+
+  public hasAssistiveText(){
+    if(this.assistiveText != undefined){
+      return true;
+    }
+    return false;
   }
 }

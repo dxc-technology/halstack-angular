@@ -1,0 +1,7 @@
+<h2 class="subtitle-example">Responsive</h2>
+<div *ngIf="resp_examples && resp_examples.length > 0 ">
+    <div *ngFor="let example of resp_examples">
+        <app-example-viewer   [item]="example" [id]="example.selector"></app-example-viewer>
+    </div>
+    
+</div>

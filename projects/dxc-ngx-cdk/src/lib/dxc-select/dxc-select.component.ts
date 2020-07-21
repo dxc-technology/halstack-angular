@@ -41,7 +41,8 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public label: string;
   @Input() public margin: any;
   @Input() public size: string = "medium";
-  
+  @Input() public assistiveText: string;
+
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
   renderedValue : string | string[];
@@ -70,7 +71,7 @@ export class DxcSelectComponent implements OnChanges {
 
   public ngOnInit(): void {
 
-    this.renderedValue = this.value || '';   
+    this.renderedValue = this.value || '';
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
 
@@ -88,9 +89,9 @@ export class DxcSelectComponent implements OnChanges {
       this.isDark = false;
     }
     this.hasOptionsOnlyIcons();
-    
+
     this.renderedValue = this.value || '';
-      
+
     this.getIconAndLabelByValue(this.renderedValue);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -100,7 +101,7 @@ export class DxcSelectComponent implements OnChanges {
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
-  
+
   public valueChanged($event: any): void {
     this.onChange.emit($event.value);
     if (this.value === undefined || this.value === null){
@@ -139,5 +140,12 @@ export class DxcSelectComponent implements OnChanges {
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
     `;
+  }
+
+  hasAssistiveText(){
+    if(this.assistiveText != undefined){
+      return true;
+    }
+    return false;
   }
 }

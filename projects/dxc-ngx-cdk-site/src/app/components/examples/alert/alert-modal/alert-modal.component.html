@@ -1,0 +1,12 @@
+<dxc-button label="overlay Alert" margin="medium" (onClick)="handleVisible()">
+</dxc-button>
+
+<dxc-alert
+  *ngIf="visible"
+  type="info"
+  mode="modal"
+  inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+  margin="medium"
+  (onClose)="handleVisible()"
+>
+</dxc-alert>

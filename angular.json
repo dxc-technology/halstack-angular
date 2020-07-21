@@ -3,9 +3,153 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "angular-dxc-site": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dxc-ngx-cdk-site",
+      "sourceRoot": "projects/dxc-ngx-cdk-site/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-dxc-site",
+            "index": "projects/dxc-ngx-cdk-site/src/index.html",
+            "main": "projects/dxc-ngx-cdk-site/src/main.ts",
+            "polyfills": "projects/dxc-ngx-cdk-site/src/polyfills.ts",
+            "tsConfig": "projects/dxc-ngx-cdk-site/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/dxc-ngx-cdk-site/src/favicon.ico",
+              "projects/dxc-ngx-cdk-site/src/assets",
+              "projects/dxc-ngx-cdk-site/src/zearch.html",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@dxc-technology/halstack-angular/lib/assets",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-monaco-editor/assets/monaco",
+                "output": "./assets/monaco/"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/dxc-ngx-cdk-site/src/app/components/examples",
+                "output": "./assets/examples/"
+              }
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/dxc-ngx-cdk-site/src/styles.scss"
+            ],
+            "scripts": [],
+            "baseHref" : "/tool/angular"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/dxc-ngx-cdk-site/src/environments/environment.ts",
+                  "with": "projects/dxc-ngx-cdk-site/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-dxc-site:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-dxc-site:build:production"
+            }
+          },
+          "assets": [ 
+            "projects/dxc-ngx-cdk-site/src/assets"
+            ]
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-dxc-site:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dxc-ngx-cdk-site/src/test.ts",
+            "polyfills": "projects/dxc-ngx-cdk-site/src/polyfills.ts",
+            "tsConfig": "projects/dxc-ngx-cdk-site/tsconfig.spec.json",
+            "karmaConfig": "projects/dxc-ngx-cdk-site/karma.conf.js",
+            "assets": [
+              "projects/dxc-ngx-cdk-site/src/favicon.ico",
+              "projects/dxc-ngx-cdk-site/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/dxc-ngx-cdk-site/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dxc-ngx-cdk-site/tsconfig.app.json",
+              "projects/dxc-ngx-cdk-site/tsconfig.spec.json",
+              "projects/dxc-ngx-cdk-site/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/dxc-ngx-cdk-site/e2e/protractor.conf.js",
+            "devServerTarget": "angular-dxc-site:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-dxc-site:serve:production"
+            }
+          }
+        }
+      }
+    },
     "dxc-angular-cdk": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/dxc-ngx-cdk-examples",
+      "sourceRoot": "projects/dxc-ngx-cdk-examples/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
@@ -17,18 +161,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dxc-angular-cdk",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets", 
+            "outputPath": "dist/dxc-angular-cdk-examples",
+            "index": "projects/dxc-ngx-cdk-examples/src/index.html",
+            "main": "projects/dxc-ngx-cdk-examples/src/main.ts",
+            "polyfills": "projects/dxc-ngx-cdk-examples/src/polyfills.ts",
+            "tsConfig": "projects/dxc-ngx-cdk-examples/tsconfig.app.json",
+            "assets": ["projects/dxc-ngx-cdk-examples/src/favicon.ico", "projects/dxc-ngx-cdk-examples/src/assets", 
               {
               "glob": "**/*",
-              "input": "./node_modules/@diaas/dxc-ngx-cdk/lib/assets",
+              "input": "./node_modules/@dxc-technology/halstack-angular/lib/assets",
               "output": "./assets/"
               }],
-            "styles": ["src/styles.scss"],
+            "styles": ["projects/dxc-ngx-cdk-examples/src/styles.scss"],
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -36,8 +180,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/dxc-ngx-cdk-examples/src/environments/environment.ts",
+                  "with": "projects/dxc-ngx-cdk-examples/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -70,7 +214,7 @@
             }
           },
           "assets": [ 
-            "projects/dxc-ngx-cdk/src/assets"
+            "projects/dxc-ngx-cdk-examples/src/assets"
             ]
         },
         "extract-i18n": {
@@ -82,18 +226,18 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/dxc-ngx-cdk/src/test.ts",
-            "tsConfig": "projects/dxc-ngx-cdk/tsconfig.spec.json",
-            "karmaConfig": "projects/dxc-ngx-cdk/karma.conf.js",
-            "styles": ["src/styles.scss"],
+            "main": "projects/dxc-ngx-cdk-examples/src/test.ts",
+            "tsConfig": "projects/dxc-ngx-cdk-examples/tsconfig.spec.json",
+            "karmaConfig": "projects/dxc-ngx-cdk-examples/karma.conf.js",
+            "styles": ["projects/dxc-ngx-cdk-examples/src/styles.scss"],
             "scripts": [],
-            "assets": ["src/favicon.ico", "src/assets"]
+            "assets": ["projects/dxc-ngx-cdk-examples/src/favicon.ico", "projects/dxc-ngx-cdk-examples/src/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "tsConfig": ["projects/dxc-ngx-cdk-examples/tsconfig.app.json", "projects/dxc-ngx-cdk-examples/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         }
@@ -110,13 +254,13 @@
           "options": {
             "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.json",
             "project": "projects/dxc-ngx-cdk/ng-package.json"
-          }
-        ,          "configurations": {
+          },          
+          "configurations": {
             "production": {
               "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

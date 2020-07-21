@@ -1,0 +1,56 @@
+<div class="section">
+    <h2 class="overview-doc-subtitle">Custom Themes</h2>
+    <p>
+        You can customize the components with your own theme and branding. 
+    </p>
+    <p>
+        In order to apply this theme customization, we need to use the ThemeService and ThemeModule classes, as well as 
+        the Theme interface, which are all provided by the CDK.
+        ThemeService is the service that will be registering the theme in your app and ThemeModule
+        is the module that allows this service to work.
+    </p>
+    <p>
+        Please follow the next steps to add your own theme:
+    </p>
+    <ol>
+        <li>
+            Provide ThemeService and import ThemeModule in your app module.
+        </li>
+        <li> 
+            In order to create your theme properties, you should declare the theme 
+            variables following the same schema as provided in the example below. Then, override the default palette with your own just by chaning the color HEX codes. 
+            For that, you can use the Theme interface, also provided by the CDK.
+        </li>
+        <li> 
+             Inject ThemeService and register your theme in app.component.ts. 
+             This will be done with the help of the exported 
+             <code>register(theme: Theme)</code> function.
+        </li>
+        <li> 
+            Include the directive <code>theme</code> in your HTML component.
+       </li>
+    </ol> 
+    <p>
+        Check out the example:
+    </p>
+    <div class="overview-viewer-source" >
+        <mat-tab-group animationDuration="1000ms">
+            <mat-tab label="Module TS">
+                <app-code-playground [code]="tsModuleCode" type="TS" >
+                </app-code-playground>
+            </mat-tab>
+            <mat-tab label="Component TS">
+                <app-code-playground [code]="tsAppCode" type="TS" >
+                </app-code-playground>
+            </mat-tab>
+            <mat-tab label="HTML">
+                <app-code-playground [code]="htmlCode" type="HTML" >
+                </app-code-playground>
+            </mat-tab>
+            <mat-tab label="Theme Properties TS">
+                <app-code-playground [code]="tsThemeCode" type="CONSOLE" >
+                </app-code-playground>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

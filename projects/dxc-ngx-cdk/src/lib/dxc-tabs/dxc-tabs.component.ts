@@ -45,7 +45,7 @@ export class DxcTabsComponent implements OnChanges {
   private _activeTabIndex;
   renderedActiveTabIndex: number;
 
-  @ViewChild(MatTabGroup, { static: true })
+  @ViewChild("tabGroup", { static: true })
   public tabGroup: MatTabGroup;
 
   @ContentChildren(DxcTabComponent)

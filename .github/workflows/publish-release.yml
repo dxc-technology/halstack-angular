@@ -18,8 +18,8 @@ jobs:
       with:
         node-version: 10.x
         registry-url: https://registry.npmjs.org/
-      
-   - name: Install lib dependencies
+
+    - name: Install lib dependencies
       run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib
     
     - name: Install app dependencies

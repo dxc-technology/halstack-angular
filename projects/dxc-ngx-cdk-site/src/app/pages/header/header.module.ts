@@ -14,6 +14,9 @@ import { HeaderDarkComponent } from '../../components/examples/header/header-dar
 import { HeaderUnderlinedComponent } from '../../components/examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
 
+import { HeaderDirectivesComponent } from '../../components/examples/header/header-directives/header-directives.component';
+import { HeaderResponsiveComponent } from '../../components/examples/header/responsive/header-responsive/header-responsive.component';
+import { HeaderExampleResponsiveComponent } from '../../components/examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { HeaderCustomContentComponent } from '../../components/examples/header/h
     HeaderDefaultComponent,
     HeaderDarkComponent,
     HeaderUnderlinedComponent,
-    HeaderCustomContentComponent
+    HeaderCustomContentComponent,
+    HeaderResponsiveComponent,
+    HeaderDirectivesComponent,
+    HeaderExampleResponsiveComponent
   ],
   imports: [
       BrowserModule,
@@ -44,7 +50,10 @@ import { HeaderCustomContentComponent } from '../../components/examples/header/h
     HeaderDefaultComponent,
     HeaderDarkComponent,
     HeaderUnderlinedComponent,
-    HeaderCustomContentComponent
+    HeaderCustomContentComponent,
+    HeaderResponsiveComponent,
+    HeaderDirectivesComponent,
+    HeaderExampleResponsiveComponent
   ],
   entryComponents: [
     ExampleViewerComponent

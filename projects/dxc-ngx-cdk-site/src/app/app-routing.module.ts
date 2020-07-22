@@ -40,171 +40,134 @@ let routes: Routes = [];
   routes.push({ path: '', redirectTo: 'overview', pathMatch: 'full' }),
   routes.push({ path: 'overview', component: OverviewPageComponent }),
   routes.push({ path: 'guidelines', component: DesignGuidelinesPageComponent }),
+
   routes.push({
     path: 'components',
     component: ComponentsPageComponent,
-    children: [
-      {
-        path: 'accordion',
-        component: AccordionComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'alert',
-        component: AlertComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'autocomplete',
-        component: AutocompleteComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'box',
-        component: BoxComponent,
-        outlet: 'components'
-      },
-      {
-        path: "",
-        redirectTo: "button",
-        pathMatch: "full"
-      },
-      {
-        path: 'button',
-        component: ButtonComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'card',
-        component: CardComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'table',
-        component: TableComponent ,
-        outlet: 'components'
-      },
-      {
-        path: 'checkbox',
-        component: CheckboxComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'date',
-        component: DateComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'dropdown',
-        component: DropdownComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'radio',
-        component: RadioComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'spinner',
-        component: SpinnerComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'switch',
-        component: SwitchComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'input',
-        component: TextInputComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'footer',
-        component: FooterComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'header',
-        component: HeaderComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'toggle',
-        component: ToggleComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'dialog',
-        component: DialogComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'select',
-        component: SelectComponent ,
-        outlet: 'components'
-      },
-      {
-        path: 'slider',
-        component: SliderComponent ,
-        outlet: 'components'
-      },
-      {
-        path: 'tag',
-        component: TagComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'tabbed-section',
-        component: TabbedSectionInfoComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'tabs',
-        component: TabsComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'paginator',
-        component: PaginatorComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'progressbar',
-        component: ProgressbarComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'upload',
-        component: UploadComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'sidenav',
-        component: SidenavComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'link',
-        component: LinkComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'wizard',
-        component: WizardComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'heading',
-        component: HeadingComponent,
-        outlet: 'components'
-      },
-      {
-        path: 'resultsettable',
-        component: ResultsetTableComponent,
-        outlet: 'components'
-      }
-    ]
+  }, 
+  {
+    path: 'components/accordion',
+    component: AccordionComponent
+  },
+  {
+    path: 'components/alert',
+    component: AlertComponent
+  },
+  {
+    path: 'components/autocomplete',
+    component: AutocompleteComponent
+  },
+  {
+    path: 'components/box',
+    component: BoxComponent
+  },
+  {
+    path: 'components/button',
+    component: ButtonComponent
+  },
+  {
+    path: 'components/card',
+    component: CardComponent
+  },
+  {
+    path: 'components/table',
+    component: TableComponent 
+  },
+  {
+    path: 'components/checkbox',
+    component: CheckboxComponent
+  },
+  {
+    path: 'components/date',
+    component: DateComponent
+  },
+  {
+    path: 'components/dropdown',
+    component: DropdownComponent
+  },
+  {
+    path: 'components/radio',
+    component: RadioComponent
+  },
+  {
+    path: 'components/spinner',
+    component: SpinnerComponent
+  },
+  {
+    path: 'components/switch',
+    component: SwitchComponent
+  },
+  {
+    path: 'components/input',
+    component: TextInputComponent
+  },
+  {
+    path: 'components/footer',
+    component: FooterComponent
+  },
+  {
+    path: 'components/header',
+    component: HeaderComponent
+  },
+  {
+    path: 'components/toggle',
+    component: ToggleComponent
+  },
+  {
+    path: 'components/dialog',
+    component: DialogComponent
+  },
+  {
+    path: 'components/select',
+    component: SelectComponent 
+  },
+  {
+    path: 'components/slider',
+    component: SliderComponent 
+  },
+  {
+    path: 'components/tag',
+    component: TagComponent
+  },
+  {
+    path: 'components/tabbed-section',
+    component: TabbedSectionInfoComponent
+  },
+  {
+    path: 'components/tabs',
+    component: TabsComponent
+  },
+  {
+    path: 'components/paginator',
+    component: PaginatorComponent
+  },
+  {
+    path: 'progressbar',
+    component: ProgressbarComponent
+  },
+  {
+    path: 'components/upload',
+    component: UploadComponent
+  },
+  {
+    path: 'components/sidenav',
+    component: SidenavComponent
+  },
+  {
+    path: 'components/link',
+    component: LinkComponent
+  },
+  {
+    path: 'components/wizard',
+    component: WizardComponent
+  },
+  {
+    path: 'components/heading',
+    component: HeadingComponent
+  },
+  {
+    path: 'components/resultsettable',
+    component: ResultsetTableComponent
   });
 
 @NgModule({

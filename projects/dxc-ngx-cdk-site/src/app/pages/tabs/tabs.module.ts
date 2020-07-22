@@ -13,6 +13,7 @@ import { TabsThemedComponent } from "../../components/examples/tabs/tabs-themed/
 import { TabsUnderlinedComponent } from "../../components/examples/tabs/tabs-underlined/tabs-underlined.component";
 import { TabsContentComponent } from "../../components/examples/tabs/tabs-content/tabs-content.component";
 import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-u
     TabbedSectionModule,
     DxcTabsModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TabsComponent,

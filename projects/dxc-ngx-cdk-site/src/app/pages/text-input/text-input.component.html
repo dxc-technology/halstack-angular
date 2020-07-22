@@ -1,12 +1,15 @@
-<div class="example-container">
+<components-sidenav>
+  <div class="example-container">
     <div class="title-tag">
-        <h1 class="title-example">Input</h1>
-        <dxc-tag  
-            margin="medium" 
-            iconSrc="{{tagImg}}"
-            label="READY"
-            iconBgColor="#24CB93">
-        </dxc-tag>
+      <h1 class="title-example">Input</h1>
+      <dxc-tag
+        margin="medium"
+        iconSrc="{{ tagImg }}"
+        label="READY"
+        iconBgColor="#24CB93"
+      >
+      </dxc-tag>
     </div>
     <app-tabbed-section [sections]="sections"></app-tabbed-section>
-</div>
+  </div>
+</components-sidenav>

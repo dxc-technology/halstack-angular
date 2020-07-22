@@ -11,6 +11,7 @@ import { DatePropertiesComponent } from '../../components/examples/date/properti
 import { DateSizedComponent } from '../../components/examples/date/date-sized/date-sized.component';
 import { DateSimpleComponent } from '../../components/examples/date/date-simple/date-simple.component';
 import { DateUncontrolledComponent } from '../../components/examples/date/date-uncontrolled/date-uncontrolled.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { DateUncontrolledComponent } from '../../components/examples/date/date-u
       ExampleViewerModule,
       DxcTableModule,
       DxcDateModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule
     ],
     exports: [
       DateComponent,

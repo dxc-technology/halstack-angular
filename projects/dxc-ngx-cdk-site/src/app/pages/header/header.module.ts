@@ -13,6 +13,7 @@ import { HeaderDefaultComponent } from '../../components/examples/header/header-
 import { HeaderDarkComponent } from '../../components/examples/header/header-dark/header-dark.component';
 import { HeaderUnderlinedComponent } from '../../components/examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 
 
@@ -35,7 +36,8 @@ import { HeaderCustomContentComponent } from '../../components/examples/header/h
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule
   ],
   exports: [
     HeaderComponent,

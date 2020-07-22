@@ -12,6 +12,7 @@ import { DropdownOutlinedComponent } from "../../components/examples/dropdown/dr
 import { DropdownIconsComponent } from "../../components/examples/dropdown/dropdown-icons/dropdown-icons.component";
 import {DropdownDarkComponent} from "../../components/examples/dropdown/dropdown-dark/dropdown-dark.component";
 import { DropdownComponent } from "./dropdown.component";
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DropdownComponent } from "./dropdown.component";
     TabbedSectionModule,
     DXCDropdownModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     DropdownTablePropertiesComponent,

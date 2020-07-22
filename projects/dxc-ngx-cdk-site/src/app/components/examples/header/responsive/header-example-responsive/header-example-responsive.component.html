@@ -1,7 +1,31 @@
 <h2 class="subtitle-example">Responsive</h2>
-<div *ngIf="resp_examples && resp_examples.length > 0 ">
-    <div *ngFor="let example of resp_examples">
-        <app-example-viewer   [item]="example" [id]="example.selector"></app-example-viewer>
-    </div>
-    
-</div>
+
+<p>
+    You can make your header responsive. You need to specify with the id attribute which HTML element you want to apply 
+    the responsive menu.
+</p>
+
+<dxc-table>
+    <tr>
+        <th>id</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>responsive</td>
+        <td>
+            Content that will be displayed when the width of the device is small.
+        </td>
+    </tr>
+    <tr>
+        <td>unresponsive</td>
+        <td>
+            Content that will be displayed when the width of the device is large.
+        </td>
+    </tr>
+</dxc-table>
+
+<p>
+    Here is an example of its used.
+</p>
+
+<app-code-playground [code]="bindCode" type="HTML" ></app-code-playground>

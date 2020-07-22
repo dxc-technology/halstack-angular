@@ -9,6 +9,14 @@ export class HeaderDirectivesComponent implements OnInit {
 
   constructor() { }
 
+  bindCode = `
+  <dxc-header>
+    <div id="responsive">
+      <a isClosable>test</a>
+    </div>  
+  </dxc-header>
+  `;
+
   ngOnInit() {
   }
 

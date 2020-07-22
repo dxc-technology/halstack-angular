@@ -15,9 +15,9 @@ import { HeaderUnderlinedComponent } from '../../components/examples/header/head
 import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
 
 import { HeaderDirectivesComponent } from '../../components/examples/header/header-directives/header-directives.component';
-import { HeaderResponsiveComponent } from '../../components/examples/header/responsive/header-responsive/header-responsive.component';
 import { HeaderExampleResponsiveComponent } from '../../components/examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,6 @@ import { HeaderExampleResponsiveComponent } from '../../components/examples/head
     HeaderDarkComponent,
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
-    HeaderResponsiveComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent
   ],
@@ -41,7 +40,8 @@ import { HeaderExampleResponsiveComponent } from '../../components/examples/head
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      CodePlaygroundModule
   ],
   exports: [
     HeaderComponent,
@@ -51,7 +51,6 @@ import { HeaderExampleResponsiveComponent } from '../../components/examples/head
     HeaderDarkComponent,
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
-    HeaderResponsiveComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent
   ],

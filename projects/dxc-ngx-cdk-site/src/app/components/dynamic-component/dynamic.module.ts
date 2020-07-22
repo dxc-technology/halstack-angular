@@ -197,7 +197,6 @@ import { ResultsetTableExampleComponent } from '../examples/resultset-table/resu
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
 
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
-import { HeaderResponsiveComponent } from '../examples/header/responsive/header-responsive/header-responsive.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
 
@@ -398,7 +397,6 @@ import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     HeaderDirectivesComponent,
-    HeaderResponsiveComponent,
     HeaderExampleResponsiveComponent
   ]
 })

@@ -199,6 +199,9 @@ import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/p
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
+import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
+import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
+import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -397,7 +400,10 @@ import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     HeaderDirectivesComponent,
-    HeaderExampleResponsiveComponent
+    HeaderExampleResponsiveComponent,
+    AccordionImportComponent,
+    AlertImportComponent,
+    BoxImportComponent
   ]
 })
 export class DynamicModule {}

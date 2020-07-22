@@ -16,6 +16,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
+
+
 @NgModule({
   declarations: [
     AlertChildrenComponent,
@@ -28,7 +32,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     AlertSuccessComponent,
     AlertWarningComponent,
     AlertErrorComponent,
-    AlertClosableComponent
+    AlertClosableComponent,
+    AlertImportComponent
     ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     TabbedSectionModule,
     ExampleViewerModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     AlertChildrenComponent,
@@ -49,7 +55,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     AlertSuccessComponent,
     AlertWarningComponent,
     AlertErrorComponent,
-    AlertClosableComponent
+    AlertClosableComponent,
+    AlertImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

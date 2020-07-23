@@ -17,6 +17,8 @@ import { SelectSizedComponent } from '../../components/examples/select/select-si
 import { SelectThemedComponent } from '../../components/examples/select/select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
+import { SelectAssistiveComponent } from '../../components/examples/select/select-assistive/select-assistive.component';
+
 
 @NgModule({
     declarations: [
@@ -29,7 +31,8 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
       SelectSizedComponent,
       SelectThemedComponent,
       SelectUncontrolledComponent,
-      SelectUncontrolledMultipleComponent
+      SelectUncontrolledMultipleComponent,
+      SelectAssistiveComponent
       ],
     imports: [
       BrowserModule,
@@ -49,7 +52,8 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
-      SelectThemedComponent
+      SelectThemedComponent,
+      SelectAssistiveComponent
     ],
     entryComponents: [
       ExampleViewerComponent

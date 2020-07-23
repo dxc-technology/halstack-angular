@@ -195,6 +195,7 @@ import { HeadingWeightsComponent } from '../examples/heading/heading-weights/hea
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
+import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
 
 
 
@@ -393,7 +394,8 @@ import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/p
     HeadingWeightsComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
-    ResultsetTablePropertiesComponent
+    ResultsetTablePropertiesComponent,
+    SelectAssistiveComponent
   ]
 })
 export class DynamicModule {}

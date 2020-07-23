@@ -8,6 +8,7 @@ import { SelectSizedComponent } from '../select-sized/select-sized.component';
 import { SelectThemedComponent } from '../select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from "../select-uncontrolled/select-uncontrolled.component";
 import { SelectUncontrolledMultipleComponent } from '../select-uncontrolled-multiple/select-uncontrolled-multiple.component';
+import { SelectInvalidComponent } from '../select-invalid/select-invalid.component';
 
 @Component({
   selector: "app-select-example",
@@ -119,6 +120,19 @@ export class SelectExampleComponent implements OnInit {
             title: "Select Sized",
             component: SelectSizedComponent,
             selector: "example7",
+            examples: [resp1[0], resp1[1], resp1[2]]
+          })
+        );
+      });
+
+      this.exampleService
+      .getCodeExample("select/select-invalid/select-invalid.component")
+      .subscribe(resp1 => {
+        this.examples.push(
+          this.exampleService.generateExample({
+            title: "Select Invalid",
+            component: SelectInvalidComponent,
+            selector: "example8",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

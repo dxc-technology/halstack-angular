@@ -9,6 +9,7 @@ import { UploadComponent } from "./upload.component";
 import { UploadTablePropertiesComponent } from "src/app/components/examples/upload/properties/upload-table-properties.component";
 import {UploadExampleComponent} from "../../components/examples/upload/upload-example/upload-example.component";
 import { UploadDefaultComponent } from "../../components/examples/upload/upload-default/upload-default.component";
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UploadDefaultComponent } from "../../components/examples/upload/upload-
     TabbedSectionModule,
     DXCUploadModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     UploadComponent,

@@ -17,6 +17,7 @@ import { RadioSimpleComponent } from '../../components/examples/radio/radio-simp
 import { RadioSizedComponent } from '../../components/examples/radio/radio-sized/radio-sized.component';
 import { MatRadioModule } from '@angular/material';
 import { RadioUncontrolledComponent } from '../../components/examples/radio/radio-uncontrolled/radio-uncontrolled.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { RadioUncontrolledComponent } from '../../components/examples/radio/radi
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule
     ],
     exports: [
         RadioComponent,

@@ -12,6 +12,8 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
+import { CardImportComponent } from '../../components/examples/card/card-import/card-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -23,7 +25,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     CardLinkedComponent,
     CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent
+    CardThemedComponent,
+    CardImportComponent
     ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcCardModule,
     DxcTableModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -40,7 +44,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     CardLinkedComponent,
     CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent
+    CardThemedComponent,
+    CardImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

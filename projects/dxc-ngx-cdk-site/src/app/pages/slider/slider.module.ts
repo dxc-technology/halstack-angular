@@ -17,6 +17,9 @@ import { SliderInputComponent } from 'src/app/components/examples/slider/slider-
 import { SliderSizedComponent } from 'src/app/components/examples/slider/slider-sized/slider-sized.component';
 import { SliderUnlimitedComponent } from 'src/app/components/examples/slider/slider-unlimited/slider-unlimited.component';
 import { SliderUncontrolledComponent } from 'src/app/components/examples/slider/slider-uncontrolled/slider-uncontrolled.component';
+import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -32,7 +35,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderInputComponent,
     SliderSizedComponent,
     SliderUnlimitedComponent,
-    SliderUncontrolledComponent
+    SliderUncontrolledComponent,
+    SliderImportComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +46,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcSliderModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -55,7 +60,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderDiscreteComponent,
     SliderInputComponent,
     SliderSizedComponent,
-    SliderUnlimitedComponent
+    SliderUnlimitedComponent,
+    SliderImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

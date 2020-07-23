@@ -11,6 +11,7 @@ import { ToggleDarkComponent } from '../../components/examples/toggle/toggle-dar
 import { ToggleDefaultComponent } from '../../components/examples/toggle/toggle-default/toggle-default.component';
 import { ToggleIconComponent } from '../../components/examples/toggle/toggle-icon/toggle-icon.component';
 import { ToggleOutlinedComponent } from '../../components/examples/toggle/toggle-outlined/toggle-outlined.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ToggleOutlinedComponent } from '../../components/examples/toggle/toggle
     TabbedSectionModule,
     DXCToggleModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     ToggleComponent,

@@ -19,6 +19,7 @@ import { AutocompleteSyncControlledComponent } from "../../components/examples/a
 import { AutocompleteSyncUncontrolledComponent } from "../../components/examples/autocomplete/autocomplete-synchronous-uncontrolled/autocomplete-synchronous-uncontrolled.component";
 import { AutocompleteUsageComponent } from "../../components/examples/autocomplete/autocomplete-usage/autocomplete-usage.component";
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     ExampleViewerModule,
     DxcLinkModule,
     CodePlaygroundModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     AutocompleteComponent,

@@ -14,6 +14,7 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { CheckboxExampleComponent } from '../../components/examples/checkbox/checkbox-example/checkbox-example.component';
 import { CheckboxUncontrolledComponent } from '../../components/examples/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { CheckboxUncontrolledComponent } from '../../components/examples/checkbo
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule
     ],
     exports: [
         CheckboxComponent,

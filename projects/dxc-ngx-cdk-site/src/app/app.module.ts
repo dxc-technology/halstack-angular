@@ -43,6 +43,7 @@ import { SidenavModule } from './pages/sidenav/sidenav.module';
 import { LinkModule } from './pages/link/link.module';
 import { HeadingModule } from './pages/heading/heading.module';
 import { ScullyLibModule } from '@scullyio/ng-lib-v8';
+import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib-v8';
     TabsModule,
     UploadModule,
     ComponentsPageModule,
+    ComponentsSidenavModule,
     WizardModule,
     SidenavModule,
     ThemeModule,

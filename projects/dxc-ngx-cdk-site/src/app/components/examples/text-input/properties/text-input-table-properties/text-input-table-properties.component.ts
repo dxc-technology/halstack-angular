@@ -20,7 +20,7 @@ export class TextInputTablePropertiesComponent implements OnInit {
   }
 
   navigateToRoute() {
-    this.router.navigate(['/components', {outlets: { components: ["autocomplete"]}}], {skipLocationChange: true});
+    this.router.navigate(["components/autocomplete"]);
   }
 
 }

@@ -14,6 +14,7 @@ import { WizardUncontrolledComponent } from '../../components/examples/wizard/wi
 import { WizardThemedComponent } from '../../components/examples/wizard/wizard-themed/wizard-themed.component';
 import { WizardVerticalComponent } from '../../components/examples/wizard/wizard-vertical/wizard-vertical.component';
 import { WizardExampleComponent } from '../../components/examples/wizard/wizard-example/wizard-example.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { WizardExampleComponent } from '../../components/examples/wizard/wizard-
     ExampleViewerModule,
     DxcTableModule,
     DxcWizardModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports:[
     WizardComponent,

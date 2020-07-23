@@ -12,6 +12,8 @@ import { TagActionComponent } from 'src/app/components/examples/tag/tag-action/t
 import { TagLinkComponent } from 'src/app/components/examples/tag/tag-link/tag-link.component';
 import { TagDefaultComponent } from 'src/app/components/examples/tag/tag-default/tag-default.component';
 import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example/tag-example.component';
+import { TagImportComponent } from '../../components/examples/tag/tag-import/tag-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example
     TagLinkComponent,
     TagActionComponent,
     TagSizedComponent,
-    TagTablePropertiesComponent
+    TagTablePropertiesComponent,
+    TagImportComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example
     DxcTableModule,
     TabbedSectionModule,
     DxcTagModule,
-    ExampleViewerModule
+    ExampleViewerModule,
+    CodePlaygroundModule
   ],
   exports: [
     TagComponent,
@@ -38,7 +42,8 @@ import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example
     TagLinkComponent,
     TagActionComponent,
     TagSizedComponent,
-    TagTablePropertiesComponent
+    TagTablePropertiesComponent,
+    TagImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

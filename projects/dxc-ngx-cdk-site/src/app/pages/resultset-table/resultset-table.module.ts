@@ -9,13 +9,17 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { ResultsetTableSimpleComponent } from '../../components/examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../../components/examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../../components/examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
+import { ResultsetTableImportComponent } from '../../components/examples/resultset-table/resultset-table-import/resultset-table-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
     ResultsetTableComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
-    ResultsetTablePropertiesComponent
+    ResultsetTablePropertiesComponent,
+    ResultsetTableImportComponent
   ],
   imports: [
     CommonModule,
@@ -25,13 +29,15 @@ import { ResultsetTablePropertiesComponent } from '../../components/examples/res
     ExampleViewerModule,
     DxcResultsetTableModule,
     DxcButtonModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     ResultsetTableComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
-    ResultsetTablePropertiesComponent
+    ResultsetTablePropertiesComponent,
+    ResultsetTableImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

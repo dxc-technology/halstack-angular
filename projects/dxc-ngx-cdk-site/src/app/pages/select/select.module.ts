@@ -17,6 +17,9 @@ import { SelectSizedComponent } from '../../components/examples/select/select-si
 import { SelectThemedComponent } from '../../components/examples/select/select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
+import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
     declarations: [
@@ -29,7 +32,8 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
       SelectSizedComponent,
       SelectThemedComponent,
       SelectUncontrolledComponent,
-      SelectUncontrolledMultipleComponent
+      SelectUncontrolledMultipleComponent,
+      SelectImportComponent
       ],
     imports: [
       BrowserModule,
@@ -39,7 +43,8 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
       ExampleViewerModule,
       DxcTableModule,
       DXCSelectModule,
-      DxcTagModule
+      DxcTagModule,
+      CodePlaygroundModule
     ],
     exports: [
       SelectComponent,
@@ -49,7 +54,8 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
-      SelectThemedComponent
+      SelectThemedComponent,
+      SelectImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

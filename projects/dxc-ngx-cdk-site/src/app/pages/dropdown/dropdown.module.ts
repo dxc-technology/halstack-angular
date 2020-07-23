@@ -12,6 +12,9 @@ import { DropdownOutlinedComponent } from "../../components/examples/dropdown/dr
 import { DropdownIconsComponent } from "../../components/examples/dropdown/dropdown-icons/dropdown-icons.component";
 import {DropdownDarkComponent} from "../../components/examples/dropdown/dropdown-dark/dropdown-dark.component";
 import { DropdownComponent } from "./dropdown.component";
+import { DropdownImportComponent } from '../../components/examples/dropdown/dropdown-import/dropdown-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { DropdownComponent } from "./dropdown.component";
     DropdownOutlinedComponent,
     DropdownIconsComponent,
     DropdownDarkComponent,
-    DropdownComponent
+    DropdownComponent,
+    DropdownImportComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,8 @@ import { DropdownComponent } from "./dropdown.component";
     TabbedSectionModule,
     DXCDropdownModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     DropdownTablePropertiesComponent,
@@ -39,7 +44,8 @@ import { DropdownComponent } from "./dropdown.component";
     DropdownOutlinedComponent,
     DropdownIconsComponent,
     DropdownDarkComponent,
-    DropdownComponent
+    DropdownComponent,
+    DropdownImportComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

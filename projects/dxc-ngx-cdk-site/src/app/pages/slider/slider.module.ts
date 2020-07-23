@@ -17,6 +17,9 @@ import { SliderInputComponent } from 'src/app/components/examples/slider/slider-
 import { SliderSizedComponent } from 'src/app/components/examples/slider/slider-sized/slider-sized.component';
 import { SliderUnlimitedComponent } from 'src/app/components/examples/slider/slider-unlimited/slider-unlimited.component';
 import { SliderUncontrolledComponent } from 'src/app/components/examples/slider/slider-uncontrolled/slider-uncontrolled.component';
+import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { SliderUncontrolledComponent } from 'src/app/components/examples/slider/
     SliderInputComponent,
     SliderSizedComponent,
     SliderUnlimitedComponent,
-    SliderUncontrolledComponent
+    SliderUncontrolledComponent,
+    SliderImportComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,8 @@ import { SliderUncontrolledComponent } from 'src/app/components/examples/slider/
     TabbedSectionModule,
     ExampleViewerModule,
     DxcSliderModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     SliderComponent,
@@ -53,7 +58,8 @@ import { SliderUncontrolledComponent } from 'src/app/components/examples/slider/
     SliderDiscreteComponent,
     SliderInputComponent,
     SliderSizedComponent,
-    SliderUnlimitedComponent
+    SliderUnlimitedComponent,
+    SliderImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

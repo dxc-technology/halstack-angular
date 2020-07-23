@@ -205,6 +205,31 @@ import { BoxImportComponent } from '../examples/box/box-import/box-import.compon
 import { ButtonImportComponent } from '../examples/button/button-import/button-import.component';
 import { CardImportComponent } from '../examples/card/card-import/card-import.component';
 import { CheckboxImportComponent } from '../examples/checkbox/checkbox-import/checkbox-import.component';
+import { DateImportComponent } from '../examples/date/date-import/date-import.component';
+import { DialogImportComponent } from '../examples/dialog/dialog-import/dialog-import.component';
+import { DropdownImportComponent } from '../examples/dropdown/dropdown-import/dropdown-import.component';
+import { FooterImportComponent } from '../examples/footer/footer-import/footer-import.component';
+import { HeaderImportComponent } from '../examples/header/header-import/header-import.component';
+import { HeadingImportComponent } from '../examples/heading/heading-import/heading-import.component';
+import { LinkImportComponent } from '../examples/link/link-import/link-import.component';
+import { PaginatorImportComponent } from '../examples/paginator/paginator-import/paginator-import.component';
+import { ProgressbarImportComponent } from '../examples/progressbar/progressbar-import/progressbar-import.component';
+import { RadioImportComponent } from '../examples/radio/radio-import/radio-import.component';
+import { ResultsetTableImportComponent } from '../examples/resultset-table/resultset-table-import/resultset-table-import.component';
+import { SelectImportComponent } from '../examples/select/select-import/select-import.component';
+import { SidenavImportComponent } from '../examples/sidenav/sidenav-import/sidenav-import.component';
+import { SliderImportComponent } from '../examples/slider/slider-import/slider-import.component';
+import { SpinnerImportComponent } from '../examples/spinner/spinner-import/spinner-import.component';
+import { SwitchImportComponent } from '../examples/switch/switch-import/switch-import.component';
+import { TabbedSectionImportComponent } from '../examples/tabbed-section/tabbed-section-import/tabbed-section-import.component';
+import { TableImportComponent } from '../examples/table/table-import/table-import.component';
+import { TabsImportComponent } from '../examples/tabs/tabs-import/tabs-import.component';
+import { TagImportComponent } from '../examples/tag/tag-import/tag-import.component';
+import { TextInputImportComponent } from '../examples/text-input/text-input-import/text-input-import.component';
+import { ToggleImportComponent } from '../examples/toggle/toggle-import/toggle-import.component';
+import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
+import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
+
 
 
 @NgModule({
@@ -410,7 +435,31 @@ import { CheckboxImportComponent } from '../examples/checkbox/checkbox-import/ch
     BoxImportComponent,
     ButtonImportComponent,
     CardImportComponent,
-    CheckboxImportComponent
+    CheckboxImportComponent,
+    DateImportComponent,
+    DialogImportComponent,
+    DropdownImportComponent,
+    FooterImportComponent,
+    HeaderImportComponent,
+    HeadingImportComponent,
+    LinkImportComponent,
+    PaginatorImportComponent,
+    ProgressbarImportComponent,
+    RadioImportComponent,
+    ResultsetTableImportComponent,
+    SelectImportComponent,
+    SidenavImportComponent,
+    SliderImportComponent,
+    SpinnerImportComponent,
+    SwitchImportComponent,
+    TabbedSectionImportComponent,
+    TableImportComponent,
+    TabsImportComponent,
+    TagImportComponent,
+    TextInputImportComponent,
+    ToggleImportComponent,
+    UploadImportComponent,
+    WizardImportComponent
   ]
 })
 export class DynamicModule {}

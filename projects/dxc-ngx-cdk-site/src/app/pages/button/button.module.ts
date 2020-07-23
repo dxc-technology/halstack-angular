@@ -12,6 +12,9 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
+import { ButtonImportComponent } from '../../components/examples/button/button-import/button-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +25,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     ButtonDarkThemeComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
-    ButtonTablePropertiesComponent
-    
+    ButtonTablePropertiesComponent,
+    ButtonImportComponent
     ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     TabbedSectionModule,
     ExampleViewerModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     ButtonModesComponent,
@@ -40,7 +44,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     ButtonDarkThemeComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
-    ButtonTablePropertiesComponent
+    ButtonTablePropertiesComponent,
+    ButtonImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

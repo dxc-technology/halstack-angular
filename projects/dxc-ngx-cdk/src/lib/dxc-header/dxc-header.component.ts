@@ -160,10 +160,10 @@ export class DxcHeaderComponent implements OnChanges {
   
   getLogoDxc(){
     if (this.theme === 'light'){
-      return this.underline ? "../../assets/dxc_logo_black.png" : "../../assets/dxc_logo_white.png";
+      return this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
     }
     else{
-        return !this.underline ? "../../assets/dxc_logo_black.png" : "../../assets/dxc_logo_white.png";
+        return !this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
     }
   }
 

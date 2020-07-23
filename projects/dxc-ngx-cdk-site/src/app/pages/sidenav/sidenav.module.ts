@@ -13,6 +13,9 @@ import { SidenavDefaultComponent } from '../../components/examples/sidenav/siden
 import { SidenavContentComponent } from '../../components/examples/sidenav/sidenav-content/sidenav-content.component';
 import { SidenavNoArrowComponent } from '../../components/examples/sidenav/sidenav-no-arrow/sidenav-no-arrow.component';
 import { SidenavExampleComponent } from '../../components/examples/sidenav/sidenav-example/sidenav-example.component';
+import { SidenavImportComponent } from '../../components/examples/sidenav/sidenav-import/sidenav-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -22,7 +25,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SidenavTablePropertiesComponent,
     SidenavDefaultComponent,
     SidenavContentComponent,
-    SidenavNoArrowComponent
+    SidenavNoArrowComponent,
+    SidenavImportComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcTableModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports:[
@@ -40,7 +45,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SidenavTablePropertiesComponent,
     SidenavDefaultComponent,
     SidenavContentComponent,
-    SidenavNoArrowComponent
+    SidenavNoArrowComponent,
+    SidenavImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

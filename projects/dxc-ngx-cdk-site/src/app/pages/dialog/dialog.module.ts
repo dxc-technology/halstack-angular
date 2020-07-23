@@ -11,6 +11,9 @@ import { DialogComponent } from "./dialog.component";
 import {DialogDefaultComponent} from "../../components/examples/dialog/dialog-default/dialog-default.component";
 import {DialogModalComponent} from "../../components/examples/dialog/dialog-modal/dialog-modal.component";
 import {DialogCloseComponent} from "../../components/examples/dialog/dialog-close/dialog-close.component";
+import { DialogImportComponent } from '../../components/examples/dialog/dialog-import/dialog-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -20,7 +23,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DialogComponent,
     DialogDefaultComponent,
     DialogModalComponent,
-    DialogCloseComponent
+    DialogCloseComponent,
+    DialogImportComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +35,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcButtonModule,
     ExampleViewerModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -39,7 +44,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DialogComponent,
     DialogDefaultComponent,
     DialogModalComponent,
-    DialogCloseComponent
+    DialogCloseComponent,
+    DialogImportComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

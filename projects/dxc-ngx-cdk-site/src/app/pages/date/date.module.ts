@@ -14,6 +14,7 @@ import { DateUncontrolledComponent } from '../../components/examples/date/date-u
 import { DateImportComponent } from '../../components/examples/date/date-import/date-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
       DxcTableModule,
       DxcDateModule,
       DxcTagModule,
-      CodePlaygroundModule
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
       DateComponent,

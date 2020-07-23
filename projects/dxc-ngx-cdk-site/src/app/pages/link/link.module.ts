@@ -16,6 +16,7 @@ import { LinkIconComponent } from '../../components/examples/link/link-icon/link
 import { LinkTablePropertiesComponent } from '../../components/examples/link/properties/link-table-properties/link-table-properties.component';
 import { LinkImportComponent } from '../../components/examples/link/link-import/link-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     TabbedSectionModule,
     ExampleViewerModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports:[
     LinkComponent,

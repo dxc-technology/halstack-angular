@@ -14,6 +14,7 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { CardImportComponent } from '../../components/examples/card/card-import/card-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcCardModule,
     DxcTableModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     CardActionComponent,

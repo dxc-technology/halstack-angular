@@ -14,6 +14,7 @@ import { ProgressbarOverlayComponent } from "../../components/examples/progressb
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     ExampleViewerModule,
     DxcButtonModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     ProgressbarTablePropertiesComponent,

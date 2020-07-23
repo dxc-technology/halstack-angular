@@ -14,6 +14,7 @@ import { SwitchDefaultComponent } from '../../components/examples/switch/switch-
 import { SwitchImportComponent } from '../../components/examples/switch/switch-import/switch-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcSwitchModule,
     DxcTableModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     SwitchExampleComponent,

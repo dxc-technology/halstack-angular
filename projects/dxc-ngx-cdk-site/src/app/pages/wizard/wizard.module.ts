@@ -17,6 +17,7 @@ import { WizardExampleComponent } from '../../components/examples/wizard/wizard-
 import { WizardImportComponent } from '../../components/examples/wizard/wizard-import/wizard-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcTableModule,
     DxcWizardModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports:[
     WizardComponent,

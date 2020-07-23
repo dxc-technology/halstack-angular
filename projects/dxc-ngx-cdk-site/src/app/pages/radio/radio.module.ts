@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material';
 import { RadioUncontrolledComponent } from '../../components/examples/radio/radio-uncontrolled/radio-uncontrolled.component';
 import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
       ExampleViewerModule,
       DxcTableModule,
       DxcTagModule,
-      CodePlaygroundModule
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
         RadioComponent,

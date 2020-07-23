@@ -12,6 +12,8 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
+import { CardImportComponent } from '../../components/examples/card/card-import/card-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     CardLinkedComponent,
     CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent
+    CardThemedComponent,
+    CardImportComponent
     ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     ExampleViewerModule,
     DxcCardModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     CardActionComponent,
@@ -38,7 +42,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     CardLinkedComponent,
     CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent
+    CardThemedComponent,
+    CardImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

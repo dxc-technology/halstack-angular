@@ -202,6 +202,10 @@ import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
+import { ButtonImportComponent } from '../examples/button/button-import/button-import.component';
+import { CardImportComponent } from '../examples/card/card-import/card-import.component';
+import { CheckboxImportComponent } from '../examples/checkbox/checkbox-import/checkbox-import.component';
+
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -403,7 +407,10 @@ import { BoxImportComponent } from '../examples/box/box-import/box-import.compon
     HeaderExampleResponsiveComponent,
     AccordionImportComponent,
     AlertImportComponent,
-    BoxImportComponent
+    BoxImportComponent,
+    ButtonImportComponent,
+    CardImportComponent,
+    CheckboxImportComponent
   ]
 })
 export class DynamicModule {}

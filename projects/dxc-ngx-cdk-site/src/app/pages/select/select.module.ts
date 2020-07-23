@@ -20,6 +20,7 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
 import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
       DxcTableModule,
       DXCSelectModule,
       DxcTagModule,
-      CodePlaygroundModule
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
       SelectComponent,

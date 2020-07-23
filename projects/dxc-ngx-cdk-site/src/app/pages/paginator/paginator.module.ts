@@ -12,6 +12,7 @@ import { PaginatorDefaultComponent } from '../../components/examples/paginator/p
 import { PaginatorImportComponent } from '../../components/examples/paginator/paginator-import/paginator-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcPaginatorModule,
     ExampleViewerModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     PaginatorComponent

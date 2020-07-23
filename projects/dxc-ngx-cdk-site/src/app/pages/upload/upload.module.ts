@@ -12,6 +12,7 @@ import { UploadDefaultComponent } from "../../components/examples/upload/upload-
 import { UploadImportComponent } from '../../components/examples/upload/upload-import/upload-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DXCUploadModule,
     ExampleViewerModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     UploadComponent,

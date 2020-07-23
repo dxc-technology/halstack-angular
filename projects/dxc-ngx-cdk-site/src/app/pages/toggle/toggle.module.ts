@@ -13,6 +13,8 @@ import { ToggleIconComponent } from '../../components/examples/toggle/toggle-ico
 import { ToggleOutlinedComponent } from '../../components/examples/toggle/toggle-outlined/toggle-outlined.component';
 import { ToggleImportComponent } from '../../components/examples/toggle/toggle-import/toggle-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+
 @NgModule({
   declarations: [
     ToggleComponent,
@@ -32,7 +34,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DXCToggleModule,
     ExampleViewerModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     ToggleComponent,

@@ -15,6 +15,7 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { CheckboxExampleComponent } from '../../components/examples/checkbox/checkbox-example/checkbox-example.component';
 import { CheckboxUncontrolledComponent } from '../../components/examples/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component';
 import { CheckboxImportComponent } from '../../components/examples/checkbox/checkbox-import/checkbox-import.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 @NgModule({
@@ -38,7 +39,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
       ExampleViewerModule,
       DxcTableModule,
       DxcTagModule,
-      CodePlaygroundModule
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
         CheckboxComponent,

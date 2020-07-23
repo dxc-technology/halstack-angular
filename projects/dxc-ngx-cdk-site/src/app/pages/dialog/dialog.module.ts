@@ -14,6 +14,7 @@ import {DialogCloseComponent} from "../../components/examples/dialog/dialog-clos
 import { DialogImportComponent } from '../../components/examples/dialog/dialog-import/dialog-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcButtonModule,
     ExampleViewerModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     DialogTablePropertiesComponent,

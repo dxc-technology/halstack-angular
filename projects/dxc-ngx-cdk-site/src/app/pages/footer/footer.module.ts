@@ -13,6 +13,7 @@ import { FooterDefaultComponent } from '../../components/examples/footer/footer-
 import { FooterCustomContentComponent } from '../../components/examples/footer/footer-custom-content/footer-custom-content.component';
 import { FooterImportComponent } from '../../components/examples/footer/footer-import/footer-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
       ExampleViewerModule,
       DxcTableModule,
       DxcTagModule,
-      CodePlaygroundModule
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
         FooterComponent,

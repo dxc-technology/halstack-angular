@@ -15,6 +15,7 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { ButtonImportComponent } from '../../components/examples/button/button-import/button-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     ExampleViewerModule,
     DxcTableModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     ButtonModesComponent,

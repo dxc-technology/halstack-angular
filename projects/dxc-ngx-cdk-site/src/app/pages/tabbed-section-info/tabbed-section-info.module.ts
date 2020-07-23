@@ -12,6 +12,7 @@ import { TabbedSectionExampleComponent } from '../../components/examples/tabbed-
 import { TabbedSectionNotesComponent } from '../../components/examples/tabbed-section/properties/tabbed-section-notes/tabbed-section-notes.component';
 import { CodePlaygroundModule } from 'src/app/components/code-playground/code-playground.module';
 import { TabbedSectionImportComponent } from '../../components/examples/tabbed-section/tabbed-section-import/tabbed-section-import.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TabbedSectionImportComponent } from '../../components/examples/tabbed-s
     TabbedSectionModule,
     ExampleViewerModule,
     CodePlaygroundModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TabbedSectionInfoComponent,

@@ -14,6 +14,7 @@ import { TagDefaultComponent } from 'src/app/components/examples/tag/tag-default
 import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example/tag-example.component';
 import { TagImportComponent } from '../../components/examples/tag/tag-import/tag-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     TabbedSectionModule,
     DxcTagModule,
     ExampleViewerModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TagComponent,

@@ -15,6 +15,7 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { SpinnerImportComponent } from '../../components/examples/spinner/spinner-import/spinner-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcTableModule,
     DxcButtonModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     SpinnerDeterminedComponent,

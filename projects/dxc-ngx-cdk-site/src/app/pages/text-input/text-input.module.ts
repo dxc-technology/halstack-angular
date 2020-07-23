@@ -18,6 +18,7 @@ import { TextInputUncontrolledComponent } from '../../components/examples/text-i
 import { TextInputImportComponent } from '../../components/examples/text-input/text-input-import/text-input-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     ExampleViewerModule,
     DxcLinkModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TextInputComponent,

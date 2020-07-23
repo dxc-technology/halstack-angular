@@ -20,6 +20,7 @@ import { SliderUncontrolledComponent } from 'src/app/components/examples/slider/
 import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     ExampleViewerModule,
     DxcSliderModule,
     DxcTagModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     SliderComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
 import { LinkTablePropertiesComponent } from "../../components/examples/link/properties/link-table-properties/link-table-properties.component";
 import { LinkExampleComponent } from "../../components/examples/link/link-example/link-example.component";
+import { LinkImportComponent } from '../../components/examples/link/link-import/link-import.component';
 
 @Component({
   selector: 'app-link',
@@ -28,6 +29,12 @@ export class LinkComponent implements OnInit {
       },
       {
         id: 1,
+        label: "MODULE",
+        selector: "link-import",
+        component: LinkImportComponent
+      },
+      {
+        id: 2,
         label: "EXAMPLES",
         selector: "link-example",
         component: LinkExampleComponent

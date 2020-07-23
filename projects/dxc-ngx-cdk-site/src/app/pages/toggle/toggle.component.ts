@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { ToggleTablePropertiesComponent } from '../../components/examples/toggle/properties/toggle-table-properties/toggle-table-properties.component';
 import { ToggleExampleComponent } from '../../components/examples/toggle/toggle-example/toggle-example.component';
+import { ToggleImportComponent } from '../../components/examples/toggle/toggle-import/toggle-import.component';
 
 @Component({
   selector: 'app-toggle',
@@ -21,7 +22,8 @@ export class ToggleComponent implements OnInit {
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'PROPERTIES',selector: 'examples-properties-toggle', component: ToggleTablePropertiesComponent},
-      {id:1, label: 'EXAMPLES', selector: 'examples-component-toggle', component: ToggleExampleComponent}
+      {id:1, label: 'MODULE', selector: 'toggle-import', component: ToggleImportComponent},
+      {id:2, label: 'EXAMPLES', selector: 'examples-component-toggle', component: ToggleExampleComponent}
     );
   }
 

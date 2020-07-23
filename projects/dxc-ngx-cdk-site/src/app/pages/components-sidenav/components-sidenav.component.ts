@@ -3,11 +3,11 @@ import { Components } from '../../components';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-components-page',
-  templateUrl: './components-page.component.html',
-  styleUrls: ['./components-page.component.scss']
+  selector: 'components-sidenav',
+  templateUrl: './components-sidenav.component.html',
+  styleUrls: ['./components-sidenav.component.scss']
 })
-export class ComponentsPageComponent implements OnInit {
+export class ComponentsSidenavComponent implements OnInit {
 
   components: Array<any>;
   default:boolean;
@@ -54,11 +54,7 @@ export class ComponentsPageComponent implements OnInit {
       }
     });
   }
-
-  navigateToRoute(component: string) {
-    this.router.navigate(['components/' + component]);
-  }
-
+  
   ngOnInit() {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth <= this.responsiveSizes.tablet && this.innerWidth > this.responsiveSizes.mobileLarge) {

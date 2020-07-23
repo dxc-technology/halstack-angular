@@ -15,6 +15,7 @@ import { TextInputMultiComponent } from '../../components/examples/text-input/te
 import { TextInputPrefixSuffixComponent } from '../../components/examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component';
 import { TextInputSizedComponent } from '../../components/examples/text-input/text-input-sized/text-input-sized.component';
 import { TextInputUncontrolledComponent } from '../../components/examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TextInputUncontrolledComponent } from '../../components/examples/text-i
     DXCInputTextModule,
     ExampleViewerModule,
     DxcLinkModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TextInputComponent,

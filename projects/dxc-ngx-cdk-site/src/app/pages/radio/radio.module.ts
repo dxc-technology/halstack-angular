@@ -17,6 +17,8 @@ import { RadioSimpleComponent } from '../../components/examples/radio/radio-simp
 import { RadioSizedComponent } from '../../components/examples/radio/radio-sized/radio-sized.component';
 import { MatRadioModule } from '@angular/material';
 import { RadioUncontrolledComponent } from '../../components/examples/radio/radio-uncontrolled/radio-uncontrolled.component';
+import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       RadioLabelPositionComponent,
       RadioSimpleComponent,
       RadioSizedComponent,
-      RadioUncontrolledComponent
+      RadioUncontrolledComponent,
+      RadioImportComponent
       ],
     imports: [
       BrowserModule,
@@ -41,6 +44,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       ExampleViewerModule,
       DxcTableModule,
       DxcTagModule,
+      CodePlaygroundModule,
       ComponentsSidenavModule
     ],
     exports: [
@@ -51,7 +55,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
         RadioDarkThemeComponent,
         RadioLabelPositionComponent,
         RadioSimpleComponent,
-        RadioSizedComponent
+        RadioSizedComponent,
+        RadioImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

@@ -17,6 +17,9 @@ import { SelectSizedComponent } from '../../components/examples/select/select-si
 import { SelectThemedComponent } from '../../components/examples/select/select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
+import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -30,7 +33,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectSizedComponent,
       SelectThemedComponent,
       SelectUncontrolledComponent,
-      SelectUncontrolledMultipleComponent
+      SelectUncontrolledMultipleComponent,
+      SelectImportComponent
       ],
     imports: [
       BrowserModule,
@@ -41,6 +45,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       DxcTableModule,
       DXCSelectModule,
       DxcTagModule,
+      CodePlaygroundModule,
       ComponentsSidenavModule
     ],
     exports: [
@@ -51,7 +56,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
-      SelectThemedComponent
+      SelectThemedComponent,
+      SelectImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

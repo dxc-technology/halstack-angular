@@ -9,8 +9,7 @@ import { Router } from "@angular/router";
 export class AutocompleteUsageComponent implements OnInit {
   navigateToRoute() {
     this.router.navigate(
-      ["/components", { outlets: { components: ["autocomplete"] } }],
-      { skipLocationChange: true }
+      ["components/input"]
     );
   }
 

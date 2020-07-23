@@ -90,6 +90,7 @@ export class DxcHeadingComponent {
           ? 400
           : 600};
         letter-spacing: -0.53px;
+        margin: 0px;
       }
 
       h2,
@@ -101,6 +102,7 @@ export class DxcHeadingComponent {
           : inputs.weight === "light"
           ? 200
           : 600};
+        margin: 0px;
       }
 
       h2 {

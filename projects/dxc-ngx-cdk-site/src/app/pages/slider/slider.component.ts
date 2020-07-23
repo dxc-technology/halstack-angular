@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { SliderPropertiesComponent } from '../../components/examples/slider/properties/slider-properties/slider-properties.component';
 import { SliderExampleComponent } from '../../components/examples/slider/slider-example/slider-example.component';
+import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
 
 @Component({
   selector: 'app-slider',
@@ -21,7 +22,8 @@ export class SliderComponent implements OnInit {
   ngOnInit() {
     this.sections.push( 
       {id: 0, label: 'PROPERTIES',selector: 'examples-properties-slider', component: SliderPropertiesComponent},
-      {id: 1, label: 'EXAMPLES', selector: 'examples-component-slider', component: SliderExampleComponent}
+      {id: 1, label: 'MODULE', selector: 'slider-import', component: SliderImportComponent},
+      {id: 2, label: 'EXAMPLES', selector: 'examples-component-slider', component: SliderExampleComponent}
     );
   }
 

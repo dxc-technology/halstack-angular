@@ -17,6 +17,8 @@ import { RadioSimpleComponent } from '../../components/examples/radio/radio-simp
 import { RadioSizedComponent } from '../../components/examples/radio/radio-sized/radio-sized.component';
 import { MatRadioModule } from '@angular/material';
 import { RadioUncontrolledComponent } from '../../components/examples/radio/radio-uncontrolled/radio-uncontrolled.component';
+import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,8 @@ import { RadioUncontrolledComponent } from '../../components/examples/radio/radi
       RadioLabelPositionComponent,
       RadioSimpleComponent,
       RadioSizedComponent,
-      RadioUncontrolledComponent
+      RadioUncontrolledComponent,
+      RadioImportComponent
       ],
     imports: [
       BrowserModule,
@@ -39,7 +42,8 @@ import { RadioUncontrolledComponent } from '../../components/examples/radio/radi
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      CodePlaygroundModule
     ],
     exports: [
         RadioComponent,
@@ -49,7 +53,8 @@ import { RadioUncontrolledComponent } from '../../components/examples/radio/radi
         RadioDarkThemeComponent,
         RadioLabelPositionComponent,
         RadioSimpleComponent,
-        RadioSizedComponent
+        RadioSizedComponent,
+        RadioImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

@@ -9,13 +9,17 @@ import { DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { TableSimpleComponent } from '../../components/examples/table/table-simple/table-simple.component';
 import { TableExampleComponent } from '../../components/examples/table/table-example/table-example.component';
 import { TablePropertiesComponent } from '../../components/examples/table/properties/table-properties/table-properties.component';
+import { TableImportComponent } from '../../components/examples/table/table-import/table-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
     TableComponent,
     TableExampleComponent,
     TableSimpleComponent,
-    TablePropertiesComponent
+    TablePropertiesComponent,
+    TableImportComponent
   ],
   imports: [
     CommonModule,
@@ -23,13 +27,15 @@ import { TablePropertiesComponent } from '../../components/examples/table/proper
     DxcTableModule,
     TabbedSectionModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     TableComponent,
     TableExampleComponent,
     TableSimpleComponent,
-    TablePropertiesComponent
+    TablePropertiesComponent,
+    TableImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

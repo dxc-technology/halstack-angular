@@ -11,6 +11,9 @@ import { SwitchThemedComponent } from '../../components/examples/switch/switch-t
 import { SwitchTablePropertiesComponent } from '../../components/examples/switch/properties/switch-table-properties/switch-table-properties.component';
 import { SwitchUncontrolledComponent } from '../../components/examples/switch/switch-uncontrolled/switch-uncontrolled.component'
 import { SwitchDefaultComponent } from '../../components/examples/switch/switch-default/switch-default.component';
+import { SwitchImportComponent } from '../../components/examples/switch/switch-import/switch-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { SwitchDefaultComponent } from '../../components/examples/switch/switch-
     SwitchThemedComponent,
     SwitchTablePropertiesComponent,
     SwitchUncontrolledComponent,
-    SwitchDefaultComponent
+    SwitchDefaultComponent,
+    SwitchImportComponent
     ],
   imports: [
     BrowserModule,
@@ -28,13 +32,15 @@ import { SwitchDefaultComponent } from '../../components/examples/switch/switch-
     ExampleViewerModule,
     DxcSwitchModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     SwitchExampleComponent,
     SwitchLabelComponent,
     SwitchThemedComponent,
-    SwitchTablePropertiesComponent
+    SwitchTablePropertiesComponent,
+    SwitchImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

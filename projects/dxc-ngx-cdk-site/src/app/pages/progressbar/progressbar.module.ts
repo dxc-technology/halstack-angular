@@ -12,6 +12,8 @@ import { ProgressbarUndeterminedComponent } from "../../components/examples/prog
 import { ProgressbarThemedComponent } from "../../components/examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../../components/examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
+import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
     ProgressbarThemedComponent,
-    ProgressbarOverlayComponent
+    ProgressbarOverlayComponent,
+    ProgressbarImportComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
     DxcProgressbarModule,
     ExampleViewerModule,
     DxcButtonModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports: [
     ProgressbarTablePropertiesComponent,
@@ -40,7 +44,8 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
     ProgressbarThemedComponent,
-    ProgressbarOverlayComponent
+    ProgressbarOverlayComponent,
+    ProgressbarImportComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

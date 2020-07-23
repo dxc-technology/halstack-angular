@@ -14,6 +14,9 @@ import { WizardUncontrolledComponent } from '../../components/examples/wizard/wi
 import { WizardThemedComponent } from '../../components/examples/wizard/wizard-themed/wizard-themed.component';
 import { WizardVerticalComponent } from '../../components/examples/wizard/wizard-vertical/wizard-vertical.component';
 import { WizardExampleComponent } from '../../components/examples/wizard/wizard-example/wizard-example.component';
+import { WizardImportComponent } from '../../components/examples/wizard/wizard-import/wizard-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { WizardExampleComponent } from '../../components/examples/wizard/wizard-
     WizardDefaultComponent,
     WizardThemedComponent,
     WizardVerticalComponent,
-    WizardUncontrolledComponent
+    WizardUncontrolledComponent,
+    WizardImportComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,8 @@ import { WizardExampleComponent } from '../../components/examples/wizard/wizard-
     ExampleViewerModule,
     DxcTableModule,
     DxcWizardModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule
   ],
   exports:[
     WizardComponent,
@@ -41,7 +46,8 @@ import { WizardExampleComponent } from '../../components/examples/wizard/wizard-
     WizardDefaultComponent,
     WizardThemedComponent,
     WizardVerticalComponent,
-    WizardUncontrolledComponent
+    WizardUncontrolledComponent,
+    WizardImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

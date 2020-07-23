@@ -8,6 +8,8 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
+import { BoxImportComponent } from '../../components/examples/box/box-import/box-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     BoxComponent,
     BoxExampleComponent,
     BoxBasicComponent,
-    BoxTablePropertiesComponent
+    BoxTablePropertiesComponent,
+    BoxImportComponent
     ],
   imports: [
     BrowserModule,
@@ -24,12 +27,14 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcBoxModule,
     DxcTableModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
     BoxExampleComponent,
     BoxBasicComponent,
-    BoxTablePropertiesComponent
+    BoxTablePropertiesComponent,
+    BoxImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

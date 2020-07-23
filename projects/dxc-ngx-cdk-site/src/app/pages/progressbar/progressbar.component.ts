@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import {ProgressbarTablePropertiesComponent} from "../../components/examples/progressbar/properties/progressbar-table-properties.component";
 import {ProgressbarExampleComponent} from '../../components/examples/progressbar/progressbar-example/progressbar-example.component';
+import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
 
 @Component({
   selector: "app-progressbar",
@@ -22,14 +23,20 @@ export class ProgressbarComponent implements OnInit {
       {
         id: 0,
         label: "PROPERTIES",
-        selector: "examples-properties-dates",
+        selector: "app-progressbar-table-properties",
         component: ProgressbarTablePropertiesComponent
       }
       ,
       {
         id: 1,
+        label: "MODULE",
+        selector: "progressbar-import",
+        component: ProgressbarImportComponent
+      },
+      {
+        id: 2,
         label: "EXAMPLES",
-        selector: "examples-component-dates",
+        selector: "app-progressbar-example",
         component: ProgressbarExampleComponent
       }
     );

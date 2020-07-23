@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { SpinnerTablePropertiesComponent } from '../../components/examples/spinner/properties/spinner-table-properties/spinner-table-properties.component';
 import { SpinnerExampleComponent } from '../../components/examples/spinner/spinner-example/spinner-example.component';
+import { SpinnerImportComponent } from '../../components/examples/spinner/spinner-import/spinner-import.component';
 
 @Component({
   selector: "app-spinner",
@@ -22,7 +23,8 @@ export class SpinnerComponent implements OnInit{
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'PROPERTIES',selector: 'examples-properties-buttons', component: SpinnerTablePropertiesComponent},
-      {id:1, label: 'EXAMPLES', selector: 'examples-component-buttons', component: SpinnerExampleComponent}
+      {id:1, label: 'MODULE', selector: 'spinner-import', component: SpinnerImportComponent},
+      {id:2, label: 'EXAMPLES', selector: 'examples-component-buttons', component: SpinnerExampleComponent}
       );
   }
   

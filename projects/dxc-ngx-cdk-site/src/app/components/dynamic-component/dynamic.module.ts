@@ -195,6 +195,7 @@ import { HeadingWeightsComponent } from '../examples/heading/heading-weights/hea
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
+import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
 
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
@@ -428,6 +429,7 @@ import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-i
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
+    SelectAssistiveComponent
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     AccordionImportComponent,

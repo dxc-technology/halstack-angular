@@ -17,10 +17,11 @@ import { SelectSizedComponent } from '../../components/examples/select/select-si
 import { SelectThemedComponent } from '../../components/examples/select/select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
+import { SelectAssistiveComponent } from '../../components/examples/select/select-assistive/select-assistive.component';
 import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectThemedComponent,
       SelectUncontrolledComponent,
       SelectUncontrolledMultipleComponent,
+      SelectAssistiveComponent,
       SelectImportComponent
       ],
     imports: [
@@ -57,6 +59,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectPropertiesComponent,
       SelectSizedComponent,
       SelectThemedComponent,
+      SelectAssistiveComponent,
       SelectImportComponent
     ],
     entryComponents: [

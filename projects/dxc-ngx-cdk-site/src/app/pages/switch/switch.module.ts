@@ -11,6 +11,7 @@ import { SwitchThemedComponent } from '../../components/examples/switch/switch-t
 import { SwitchTablePropertiesComponent } from '../../components/examples/switch/properties/switch-table-properties/switch-table-properties.component';
 import { SwitchUncontrolledComponent } from '../../components/examples/switch/switch-uncontrolled/switch-uncontrolled.component'
 import { SwitchDefaultComponent } from '../../components/examples/switch/switch-default/switch-default.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SwitchDefaultComponent } from '../../components/examples/switch/switch-
     ExampleViewerModule,
     DxcSwitchModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     SwitchExampleComponent,

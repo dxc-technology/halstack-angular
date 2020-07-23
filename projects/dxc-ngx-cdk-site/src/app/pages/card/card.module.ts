@@ -12,6 +12,7 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     ExampleViewerModule,
     DxcCardModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     CardActionComponent,

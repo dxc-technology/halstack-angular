@@ -197,6 +197,8 @@ import { ResultsetTableExampleComponent } from '../examples/resultset-table/resu
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
 import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
 
+import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
+import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
 
 @NgModule({
@@ -396,6 +398,8 @@ import { SelectAssistiveComponent } from '../examples/select/select-assistive/se
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     SelectAssistiveComponent
+    HeaderDirectivesComponent,
+    HeaderExampleResponsiveComponent
   ]
 })
 export class DynamicModule {}

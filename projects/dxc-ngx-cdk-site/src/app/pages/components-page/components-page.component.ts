@@ -56,7 +56,7 @@ export class ComponentsPageComponent implements OnInit {
   }
 
   navigateToRoute(component: string) {
-    this.router.navigate(['/components', {outlets: { components: [component]}}], {skipLocationChange: true});
+    this.router.navigate(['components/' + component]);
   }
 
   ngOnInit() {

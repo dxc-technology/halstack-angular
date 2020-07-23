@@ -18,6 +18,7 @@ import { SelectThemedComponent } from '../../components/examples/select/select-t
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
 import { SelectAssistiveComponent } from '../../components/examples/select/select-assistive/select-assistive.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SelectAssistiveComponent } from '../../components/examples/select/selec
       ExampleViewerModule,
       DxcTableModule,
       DXCSelectModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule
     ],
     exports: [
       SelectComponent,

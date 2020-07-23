@@ -13,8 +13,12 @@ import { HeaderDefaultComponent } from '../../components/examples/header/header-
 import { HeaderDarkComponent } from '../../components/examples/header/header-dark/header-dark.component';
 import { HeaderUnderlinedComponent } from '../../components/examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
+import { HeaderDirectivesComponent } from '../../components/examples/header/header-directives/header-directives.component';
+import { HeaderExampleResponsiveComponent } from '../../components/examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { HeaderCustomContentComponent } from '../../components/examples/header/h
     HeaderDefaultComponent,
     HeaderDarkComponent,
     HeaderUnderlinedComponent,
-    HeaderCustomContentComponent
+    HeaderCustomContentComponent,
+    HeaderDirectivesComponent,
+    HeaderExampleResponsiveComponent
   ],
   imports: [
       BrowserModule,
@@ -35,7 +41,9 @@ import { HeaderCustomContentComponent } from '../../components/examples/header/h
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule,
+      CodePlaygroundModule
   ],
   exports: [
     HeaderComponent,
@@ -44,7 +52,9 @@ import { HeaderCustomContentComponent } from '../../components/examples/header/h
     HeaderDefaultComponent,
     HeaderDarkComponent,
     HeaderUnderlinedComponent,
-    HeaderCustomContentComponent
+    HeaderCustomContentComponent,
+    HeaderDirectivesComponent,
+    HeaderExampleResponsiveComponent
   ],
   entryComponents: [
     ExampleViewerComponent

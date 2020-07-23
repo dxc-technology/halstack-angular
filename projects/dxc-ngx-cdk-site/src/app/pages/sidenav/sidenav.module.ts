@@ -13,6 +13,7 @@ import { SidenavDefaultComponent } from '../../components/examples/sidenav/siden
 import { SidenavContentComponent } from '../../components/examples/sidenav/sidenav-content/sidenav-content.component';
 import { SidenavNoArrowComponent } from '../../components/examples/sidenav/sidenav-no-arrow/sidenav-no-arrow.component';
 import { SidenavExampleComponent } from '../../components/examples/sidenav/sidenav-example/sidenav-example.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SidenavExampleComponent } from '../../components/examples/sidenav/siden
     TabbedSectionModule,
     ExampleViewerModule,
     DxcTableModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports:[
     SidenavComponent,

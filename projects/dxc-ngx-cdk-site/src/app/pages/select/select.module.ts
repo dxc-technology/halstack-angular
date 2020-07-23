@@ -17,6 +17,7 @@ import { SelectSizedComponent } from '../../components/examples/select/select-si
 import { SelectThemedComponent } from '../../components/examples/select/select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { SelectUncontrolledMultipleComponent } from '../../components/examples/s
       ExampleViewerModule,
       DxcTableModule,
       DXCSelectModule,
-      DxcTagModule
+      DxcTagModule,
+      ComponentsSidenavModule
     ],
     exports: [
       SelectComponent,

@@ -12,6 +12,7 @@ import { ProgressbarUndeterminedComponent } from "../../components/examples/prog
 import { ProgressbarThemedComponent } from "../../components/examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../../components/examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
     DxcProgressbarModule,
     ExampleViewerModule,
     DxcButtonModule,
-    DxcTagModule
+    DxcTagModule,
+    ComponentsSidenavModule
   ],
   exports: [
     ProgressbarTablePropertiesComponent,

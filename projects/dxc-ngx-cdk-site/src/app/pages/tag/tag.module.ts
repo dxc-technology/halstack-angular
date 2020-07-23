@@ -12,6 +12,7 @@ import { TagActionComponent } from 'src/app/components/examples/tag/tag-action/t
 import { TagLinkComponent } from 'src/app/components/examples/tag/tag-link/tag-link.component';
 import { TagDefaultComponent } from 'src/app/components/examples/tag/tag-default/tag-default.component';
 import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example/tag-example.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example
     DxcTableModule,
     TabbedSectionModule,
     DxcTagModule,
-    ExampleViewerModule
+    ExampleViewerModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TagComponent,

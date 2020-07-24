@@ -142,7 +142,7 @@ let routes: Routes = [];
     component: PaginatorComponent
   },
   {
-    path: 'progressbar',
+    path: 'components/progressbar',
     component: ProgressbarComponent
   },
   {

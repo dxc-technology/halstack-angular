@@ -35,7 +35,7 @@ export class AutocompleteExampleComponent implements OnInit {
       .subscribe(resp => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Autocomplete Synchronous Controlled",
+            title: "Synchronous Controlled Autocomplete",
             component: AutocompleteSyncControlledComponent,
             selector: "example1",
             examples: [resp[0], resp[1], resp[2]]
@@ -48,7 +48,7 @@ export class AutocompleteExampleComponent implements OnInit {
       .subscribe(resp => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Autocomplete Synchronous Uncontrolled",
+            title: "Synchronous Uncontrolled Autocomplete",
             component: AutocompleteSyncUncontrolledComponent,
             selector: "example2",
             examples: [resp[0], resp[1], resp[2]]
@@ -61,7 +61,7 @@ export class AutocompleteExampleComponent implements OnInit {
       .subscribe(resp => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Autocomplete Asynchronous Controlled",
+            title: "Asynchronous Controlled Autocomplete",
             component: AutocompleteAsyncControlledComponent,
             selector: "example3",
             examples: [resp[0], resp[1], resp[2]]
@@ -74,7 +74,7 @@ export class AutocompleteExampleComponent implements OnInit {
       .subscribe(resp => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Autocomplete Asynchronous Uncontrolled",
+            title: "Asynchronous Unontrolled Autocomplete",
             component: AutocompleteAsyncUncontrolledComponent,
             selector: "example4",
             examples: [resp[0], resp[1], resp[2]]
@@ -87,7 +87,7 @@ export class AutocompleteExampleComponent implements OnInit {
       .subscribe(resp => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Autocomplete Dark Theme",
+            title: "Dark Theme Autocomplete",
             component: AutocompleteDarkComponent,
             selector: "example5",
             examples: [resp[0], resp[1], resp[2]]

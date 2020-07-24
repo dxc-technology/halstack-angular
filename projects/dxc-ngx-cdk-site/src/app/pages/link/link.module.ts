@@ -14,6 +14,9 @@ import { LinkUndercoratedComponent } from '../../components/examples/link/link-u
 import { LinkThemedComponent } from '../../components/examples/link/link-themed/link-themed.component';
 import { LinkIconComponent } from '../../components/examples/link/link-icon/link-icon.component';
 import { LinkTablePropertiesComponent } from '../../components/examples/link/properties/link-table-properties/link-table-properties.component';
+import { LinkImportComponent } from '../../components/examples/link/link-import/link-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { LinkTablePropertiesComponent } from '../../components/examples/link/pro
     LinkUndercoratedComponent,
     LinkThemedComponent,
     LinkIconComponent,
-    LinkTablePropertiesComponent
+    LinkTablePropertiesComponent,
+    LinkImportComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { LinkTablePropertiesComponent } from '../../components/examples/link/pro
     DxcTableModule,
     TabbedSectionModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports:[
     LinkComponent,
@@ -41,7 +47,8 @@ import { LinkTablePropertiesComponent } from '../../components/examples/link/pro
     LinkUndercoratedComponent,
     LinkThemedComponent,
     LinkIconComponent,
-    LinkTablePropertiesComponent
+    LinkTablePropertiesComponent,
+    LinkImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

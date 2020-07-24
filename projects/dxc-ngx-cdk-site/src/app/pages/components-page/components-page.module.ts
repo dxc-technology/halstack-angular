@@ -4,12 +4,11 @@ import { DxcBoxModule, DxcBoxComponent, DxcSidenavComponent, DxcSideNavModule, D
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ComponentsPageComponent } from 'src/app/pages/components-page/components-page.component';
-import { ComponentsSidenavComponent } from 'src/app/pages/components-page/components-sidenav/components-sidenav.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
-    ComponentsPageComponent,
-    ComponentsSidenavComponent
+    ComponentsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -17,13 +16,13 @@ import { ComponentsSidenavComponent } from 'src/app/pages/components-page/compon
     DxcBoxModule,
     RouterModule,
     DxcSideNavModule,
-    DxcLinkModule
+    DxcLinkModule,
+    ComponentsSidenavModule
   ],
   exports: [
   ],
   entryComponents: [
-    DxcBoxComponent,
-    DxcSidenavComponent
+    DxcBoxComponent
   ]
 })
 export class ComponentsPageModule {}

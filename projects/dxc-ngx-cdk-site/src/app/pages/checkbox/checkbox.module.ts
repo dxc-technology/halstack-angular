@@ -14,7 +14,10 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { CheckboxExampleComponent } from '../../components/examples/checkbox/checkbox-example/checkbox-example.component';
 import { CheckboxUncontrolledComponent } from '../../components/examples/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component';
+import { CheckboxImportComponent } from '../../components/examples/checkbox/checkbox-import/checkbox-import.component';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 @NgModule({
     declarations: [
       CheckboxComponent,
@@ -24,7 +27,8 @@ import { CheckboxUncontrolledComponent } from '../../components/examples/checkbo
       CheckboxPropertiesComponent,
       CheckboxSimpleComponent,
       CheckboxSizedComponent,
-      CheckboxUncontrolledComponent
+      CheckboxUncontrolledComponent,
+      CheckboxImportComponent
       ],
     imports: [
       BrowserModule,
@@ -34,7 +38,9 @@ import { CheckboxUncontrolledComponent } from '../../components/examples/checkbo
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
         CheckboxComponent,
@@ -43,7 +49,8 @@ import { CheckboxUncontrolledComponent } from '../../components/examples/checkbo
         CheckboxLabelPositionComponent,
         CheckboxPropertiesComponent,
         CheckboxSimpleComponent,
-        CheckboxSizedComponent
+        CheckboxSizedComponent,
+        CheckboxImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

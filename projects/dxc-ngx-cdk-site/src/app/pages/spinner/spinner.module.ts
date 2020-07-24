@@ -12,6 +12,10 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
+import { SpinnerImportComponent } from '../../components/examples/spinner/spinner-import/spinner-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     SpinnerTablePropertiesComponent,
     SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    SpinnerImportComponent
     ],
   imports: [
     BrowserModule,
@@ -31,7 +36,9 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     DxcSpinnerModule,
     DxcTableModule,
     DxcButtonModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     SpinnerDeterminedComponent,
@@ -40,7 +47,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
     SpinnerTablePropertiesComponent,
     SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    SpinnerImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

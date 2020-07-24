@@ -13,6 +13,9 @@ import { HeadingDefaultComponent } from '../../components/examples/heading/headi
 import { HeadingExampleComponent } from '../../components/examples/heading/heading-example/heading-example.component';
 import { HeadingDarkComponent } from '../../components/examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../../components/examples/heading/heading-weights/heading-weights.component';
+import { HeadingImportComponent } from '../../components/examples/heading/heading-import/heading-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { HeadingWeightsComponent } from '../../components/examples/heading/headi
     HeadingDefaultComponent,
     HeadingExampleComponent,
     HeadingDarkComponent,
-    HeadingWeightsComponent
+    HeadingWeightsComponent,
+    HeadingImportComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,9 @@ import { HeadingWeightsComponent } from '../../components/examples/heading/headi
     DxcTableModule,
     TabbedSectionModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports:[
     HeadingComponent,
@@ -38,7 +44,8 @@ import { HeadingWeightsComponent } from '../../components/examples/heading/headi
     HeadingDefaultComponent,
     HeadingExampleComponent,
     HeadingDarkComponent,
-    HeadingWeightsComponent
+    HeadingWeightsComponent,
+    HeadingImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

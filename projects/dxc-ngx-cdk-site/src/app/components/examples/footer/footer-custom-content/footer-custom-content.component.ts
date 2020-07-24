@@ -9,15 +9,15 @@ export class FooterCustomContentComponent implements OnInit {
   socialLinks = [
     {
       href: "https://www.linkedin.com/company/dxctechnology",
-      logoSrc: '../assets/img/linkedin.svg'
+      logoSrc: 'assets/img/linkedin.svg'
     },
     {
       href: "https://twitter.com/dxctechnology",
-      logoSrc: '../assets/img/twitter.svg'
+      logoSrc: 'assets/img/twitter.svg'
     },
     {
       href: "https://www.facebook.com/DXCTechnology/",
-      logoSrc: '../assets/img/facebook.svg'
+      logoSrc: 'assets/img/facebook.svg'
     }
   ];
   bottomLinks = [

@@ -33,8 +33,8 @@ export class DxcStepComponent {
   @Input() theme: string;
   @Input() currentStep: number;
 
-  validIcon = "../../../assets/valid_icon.svg";
-  invalidIcon = "../../../assets/invalid_icon.svg";
+  validIcon = "assets/valid_icon.svg";
+  invalidIcon = "assets/invalid_icon.svg";
 
   @HostBinding("class") className;
 

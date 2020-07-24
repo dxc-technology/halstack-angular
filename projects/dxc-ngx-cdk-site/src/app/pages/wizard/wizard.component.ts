@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
 import { WizardTablePropertiesComponent } from "../../components/examples/wizard/properties/wizard-table-properties/wizard-table-properties.component";
 import { WizardExampleComponent } from "../../components/examples/wizard/wizard-example/wizard-example.component";
+import { WizardImportComponent } from '../../components/examples/wizard/wizard-import/wizard-import.component';
 
 @Component({
   selector: 'app-wizard',
@@ -28,6 +29,12 @@ export class WizardComponent implements OnInit {
       },
       {
         id: 1,
+        label: "MODULE",
+        selector: "wizard-import",
+        component: WizardImportComponent
+      },
+      {
+        id: 2,
         label: "EXAMPLES",
         selector: "wizard-example",
         component: WizardExampleComponent

@@ -13,6 +13,9 @@ import { TabsThemedComponent } from "../../components/examples/tabs/tabs-themed/
 import { TabsUnderlinedComponent } from "../../components/examples/tabs/tabs-underlined/tabs-underlined.component";
 import { TabsContentComponent } from "../../components/examples/tabs/tabs-content/tabs-content.component";
 import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
+import { TabsImportComponent } from '../../components/examples/tabs/tabs-import/tabs-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-u
     TabsThemedComponent,
     TabsUnderlinedComponent,
     TabsContentComponent,
-    TabsUncontrolledComponent
+    TabsUncontrolledComponent,
+    TabsImportComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-u
     TabbedSectionModule,
     DxcTabsModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     TabsComponent,
@@ -41,7 +47,8 @@ import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-u
     TabsExampleComponent,
     TabsThemedComponent,
     TabsUnderlinedComponent,
-    TabsContentComponent
+    TabsContentComponent,
+    TabsImportComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

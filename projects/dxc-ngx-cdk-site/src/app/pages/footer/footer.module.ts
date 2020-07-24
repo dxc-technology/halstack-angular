@@ -11,6 +11,9 @@ import { FooterExampleComponent } from '../../components/examples/footer/footer-
 import { FooterTablePropertiesComponent } from '../../components/examples/footer/properties/footer-table-properties/footer-table-properties.component';
 import { FooterDefaultComponent } from '../../components/examples/footer/footer-default/footer-default.component';
 import { FooterCustomContentComponent } from '../../components/examples/footer/footer-custom-content/footer-custom-content.component';
+import { FooterImportComponent } from '../../components/examples/footer/footer-import/footer-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +21,8 @@ import { FooterCustomContentComponent } from '../../components/examples/footer/f
         FooterExampleComponent,
         FooterTablePropertiesComponent,
         FooterDefaultComponent,
-        FooterCustomContentComponent
+        FooterCustomContentComponent,
+        FooterImportComponent
       ],
     imports: [
       BrowserModule,
@@ -28,14 +32,17 @@ import { FooterCustomContentComponent } from '../../components/examples/footer/f
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DxcTagModule
+      DxcTagModule,
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
         FooterComponent,
         FooterExampleComponent,
         FooterTablePropertiesComponent,
         FooterDefaultComponent,
-        FooterCustomContentComponent
+        FooterCustomContentComponent,
+        FooterImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

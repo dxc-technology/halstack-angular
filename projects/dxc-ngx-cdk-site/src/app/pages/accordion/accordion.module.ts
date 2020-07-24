@@ -15,6 +15,10 @@ import { AccordionIconComponent } from 'src/app/components/examples/accordion/ac
 import { AccordionDarkComponent } from 'src/app/components/examples/accordion/accordion-dark/accordion-dark.component';
 import { AccordionExampleModule } from '../../components/examples/accordion/accordion-example/accordion-example.module';
 import { AccordionControlledComponent } from '../../components/examples/accordion/accordion-controlled/accordion-controlled.component';
+import { AccordionImportComponent } from '../../components/examples/accordion/accordion-import/accordion-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { AccordionControlledComponent } from '../../components/examples/accordio
     AccordionAssistiveComponent,
     AccordionIconComponent,
     AccordionDarkComponent,
-    AccordionControlledComponent
+    AccordionControlledComponent,
+    AccordionImportComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +41,9 @@ import { AccordionControlledComponent } from '../../components/examples/accordio
     DxcAccordionModule,
     AccordionExampleModule,
     ExampleViewerModule,
-    DxcTagModule
+    DxcTagModule,
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ], 
   exports: [
     AccordionComponent,
@@ -46,7 +53,8 @@ import { AccordionControlledComponent } from '../../components/examples/accordio
     AccordionDisabledComponent,
     AccordionAssistiveComponent,
     AccordionIconComponent,
-    AccordionDarkComponent
+    AccordionDarkComponent,
+    AccordionImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

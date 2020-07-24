@@ -11,6 +11,10 @@ import { DatePropertiesComponent } from '../../components/examples/date/properti
 import { DateSizedComponent } from '../../components/examples/date/date-sized/date-sized.component';
 import { DateSimpleComponent } from '../../components/examples/date/date-simple/date-simple.component';
 import { DateUncontrolledComponent } from '../../components/examples/date/date-uncontrolled/date-uncontrolled.component';
+import { DateImportComponent } from '../../components/examples/date/date-import/date-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
     declarations: [
@@ -19,7 +23,8 @@ import { DateUncontrolledComponent } from '../../components/examples/date/date-u
       DatePropertiesComponent,
       DateSizedComponent,
       DateSimpleComponent,
-      DateUncontrolledComponent
+      DateUncontrolledComponent,
+      DateImportComponent
       ],
     imports: [
       BrowserModule,
@@ -27,14 +32,17 @@ import { DateUncontrolledComponent } from '../../components/examples/date/date-u
       ExampleViewerModule,
       DxcTableModule,
       DxcDateModule,
-      DxcTagModule
+      DxcTagModule,
+      CodePlaygroundModule,
+      ComponentsSidenavModule
     ],
     exports: [
       DateComponent,
       DatePropertiesComponent,
       DateSizedComponent,
       DateExampleComponent,
-      DateSimpleComponent
+      DateSimpleComponent,
+      DateImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

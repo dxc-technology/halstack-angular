@@ -13,16 +13,25 @@ export class ExampleViewerComponent implements OnInit {
 
   @Input()
   item: Example; 
-
+  
   visible = false;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }
 
   changeVisibility(){
     this.visible = !this.visible;
+    if(this.visible){
+      var element = document.getElementById(this.id);
+      element.scrollIntoView({
+        behavior: "auto",
+        block: "start"
+      });
+      window.scroll(0,window.pageYOffset+(element.offsetHeight-200));
+    }
   }
 
   ngAfterViewInit(): void {

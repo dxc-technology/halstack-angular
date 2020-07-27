@@ -1,4 +1,4 @@
-<div _ngcontent-hgo-c501="" class="docs-example-viewer-wrapper">
+<div _ngcontent-hgo-c501="" class="docs-example-viewer-wrapper" [id]="id">
   <div class="docs-example-viewer-title">
     <div class="docs-example-viewer-title-spacer">
       <h3>{{ item.title }}</h3>
@@ -10,7 +10,7 @@
       aria-describedby="cdk-describedby-message-5"
       style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
       (click)="changeVisibility()">
-      <span class="mat-button-wrapper">
+      <span class="mat-button-wrapper" style="padding-right: 8px;">
           <mat-icon
             class="mat-icon notranslate material-icons mat-icon-no-color"
             aria-hidden="true"
@@ -34,7 +34,8 @@
     </span>
       <div class="mat-button-ripple mat-ripple mat-button-ripple-round"></div>
       <div class="mat-button-focus-overlay"></div>
-      View Code
+      <span *ngIf="!visible">View Code</span>
+      <span *ngIf="visible">Hide Code</span>
     </button>
   </div>
 
@@ -45,7 +46,7 @@
   </app-dynamic-component>
 </div>
 
-  <div class="docs-example-viewer-source" >
+  <div class="docs-example-viewer-source" [id]="codeId">
 
     <mat-tab-group animationDuration="1000ms" *ngIf="visible">
       <mat-tab label="HTML">

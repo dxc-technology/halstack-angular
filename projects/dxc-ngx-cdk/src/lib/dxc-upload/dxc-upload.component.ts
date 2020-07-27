@@ -4,11 +4,16 @@ import {
   OnChanges,
   EventEmitter
 } from "@angular/core";
+import { CssUtils } from '../utils';
+import { css } from "emotion";
+import { SimpleChanges, HostBinding } from '@angular/core';
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "dxc-upload",
   templateUrl: "./dxc-upload.component.html",
-  styleUrls: ["./dxc-upload.component.scss"]
+  styleUrls: ["./dxc-upload.component.scss"],
+  providers : [CssUtils]
 })
 export class DxcUploadComponent implements OnChanges {
   private files = [];
@@ -18,10 +23,29 @@ export class DxcUploadComponent implements OnChanges {
   newFile = new EventEmitter<any>();
 
   @Input() public uploadCallback: Function;
+  @Input() margin: any;
+  @HostBinding("class") className;
 
-  public ngOnInit() {}
+  styleDxcUpload:string;
 
-  public ngOnChanges(): void {}
+  defaultInputs = new BehaviorSubject<any>({
+    margin: null
+  });
+
+  constructor(private utils: CssUtils) { }
+
+  ngOnInit() {
+    this.className = `${this.setDxcUploadDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      result[item] = changes[item].currentValue;
+      return result;
+    }, {});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.className = `${this.setDxcUploadDynamicStyle(this.defaultInputs.getValue())}`;
+  }
 
   addFiles($event) {
     const aux = this;
@@ -136,5 +160,11 @@ export class DxcUploadComponent implements OnChanges {
         this.getUploadedFiles();
       }
     });
+  }
+
+  setDxcUploadDynamicStyle(input: any) {
+    return css`
+      ${this.utils.getMargins(input.margin)};
+    `;
   }
 }

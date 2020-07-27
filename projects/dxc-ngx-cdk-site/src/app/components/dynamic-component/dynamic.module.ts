@@ -70,6 +70,7 @@ import { RadioSizedComponent } from "../examples/radio/radio-sized/radio-sized.c
 import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
 import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
 import { SelectIconsComponent } from "../examples/select/select-icons/select-icons.component";
+import { SelectInvalidComponent } from '../examples/select/select-invalid/select-invalid.component';
 import { SelectMultipleComponent } from "../examples/select/select-multiple/select-multiple.component";
 import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
 import { SelectThemedComponent } from "../examples/select/select-themed/select-themed.component";
@@ -313,6 +314,7 @@ import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-i
     SelectUncontrolledComponent,
     SelectExampleComponent,
     SelectIconsComponent,
+    SelectInvalidComponent,
     SelectMultipleComponent,
     SelectPropertiesComponent,
     SelectUncontrolledMultipleComponent,
@@ -429,7 +431,7 @@ import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-i
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
-    SelectAssistiveComponent
+    SelectAssistiveComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     AccordionImportComponent,

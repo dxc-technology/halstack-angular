@@ -11,6 +11,7 @@ import { SelectComponent } from './select.component';
 import { SelectDefaultComponent } from '../../components/examples/select/select-default/select-default.component';
 import { SelectExampleComponent } from 'src/app/components/examples/select/select-example/select-example.component';
 import { SelectIconsComponent } from '../../components/examples/select/select-icons/select-icons.component';
+import { SelectInvalidComponent } from 'src/app/components/examples/select/select-invalid/select-invalid.component';
 import { SelectPropertiesComponent } from '../../components/examples/select/properties/select-properties/select-properties.component';
 import { SelectMultipleComponent } from '../../components/examples/select/select-multiple/select-multiple.component';
 import { SelectSizedComponent } from '../../components/examples/select/select-sized/select-sized.component';
@@ -29,6 +30,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectDefaultComponent,
       SelectExampleComponent,
       SelectIconsComponent,
+      SelectInvalidComponent,
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
@@ -55,6 +57,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectDefaultComponent,
       SelectExampleComponent,
       SelectIconsComponent,
+      SelectInvalidComponent,
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,

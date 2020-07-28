@@ -15,6 +15,7 @@ import { LinkThemedComponent } from '../../components/examples/link/link-themed/
 import { LinkIconComponent } from '../../components/examples/link/link-icon/link-icon.component';
 import { LinkTablePropertiesComponent } from '../../components/examples/link/properties/link-table-properties/link-table-properties.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { LinkDisabledComponent } from '../../components/examples/link/link-disabled/link-disabled.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     LinkUndercoratedComponent,
     LinkThemedComponent,
     LinkIconComponent,
-    LinkTablePropertiesComponent
+    LinkTablePropertiesComponent,
+    LinkDisabledComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     LinkUndercoratedComponent,
     LinkThemedComponent,
     LinkIconComponent,
-    LinkTablePropertiesComponent
+    LinkTablePropertiesComponent,
+    LinkDisabledComponent
   ],
   entryComponents: [
     ExampleViewerComponent

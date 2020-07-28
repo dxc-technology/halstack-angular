@@ -191,16 +191,13 @@ import { HeadingDefaultComponent } from '../examples/heading/heading-default/hea
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
 import { HeadingDarkComponent } from '../examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../examples/heading/heading-weights/heading-weights.component';
-
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
-
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
-
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
-
+import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -400,7 +397,8 @@ import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/r
     ResultsetTablePropertiesComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
-    ResultsetTableDirectivesComponent
+    ResultsetTableDirectivesComponent,
+    LinkDisabledComponent
   ]
 })
 export class DynamicModule {}

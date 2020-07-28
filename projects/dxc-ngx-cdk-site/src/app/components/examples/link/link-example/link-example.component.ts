@@ -70,7 +70,7 @@ export class LinkExampleComponent implements OnInit {
       });
 
       this.exampleService
-      .getCodeExample("link/link-icon/link-disabled.component").subscribe(resp1 => {
+      .getCodeExample("link/link-disabled/link-disabled.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Disabled Link',
           component: LinkDisabledComponent,
@@ -96,7 +96,6 @@ export class LinkExampleComponent implements OnInit {
           ]
         }));
       });
-
     }
 
 }

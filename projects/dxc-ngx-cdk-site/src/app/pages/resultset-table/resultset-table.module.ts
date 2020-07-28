@@ -13,6 +13,7 @@ import { ResultsetTableImportComponent } from '../../components/examples/results
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
+    ResultsetTableDirectivesComponent,
     ResultsetTableImportComponent
   ],
   imports: [
@@ -31,6 +33,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcResultsetTableModule,
     DxcButtonModule,
     DxcTagModule,
+    ComponentsSidenavModule,
     CodePlaygroundModule,
     ComponentsSidenavModule
   ],
@@ -39,6 +42,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
+    ResultsetTableDirectivesComponent,
     ResultsetTableImportComponent
   ],
   entryComponents: [

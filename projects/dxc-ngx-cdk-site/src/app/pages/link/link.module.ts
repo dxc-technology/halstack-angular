@@ -17,6 +17,7 @@ import { LinkTablePropertiesComponent } from '../../components/examples/link/pro
 import { LinkImportComponent } from '../../components/examples/link/link-import/link-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { LinkDisabledComponent } from '../../components/examples/link/link-disabled/link-disabled.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     LinkThemedComponent,
     LinkIconComponent,
     LinkTablePropertiesComponent,
+    LinkDisabledComponent,
     LinkImportComponent
   ],
   imports: [
@@ -48,6 +50,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     LinkThemedComponent,
     LinkIconComponent,
     LinkTablePropertiesComponent,
+    LinkDisabledComponent,
     LinkImportComponent
   ],
   entryComponents: [

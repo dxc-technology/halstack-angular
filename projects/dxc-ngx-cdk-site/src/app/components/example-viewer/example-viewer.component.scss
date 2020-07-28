@@ -21,7 +21,7 @@
     font-size: 12px;
     font-weight: normal;
     text-transform: uppercase;
-    cursor: pointer;
+    justify-content:space-between;
     letter-spacing: 1px;
     padding: 0px 10px;
     h3{
@@ -58,6 +58,7 @@
 }
 
 button.mat-icon-button {
+    width: 100px;
     border: none;
     &:hover {
         cursor: pointer;

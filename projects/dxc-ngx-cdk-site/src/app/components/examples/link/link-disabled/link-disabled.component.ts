@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkDisabledComponent implements OnInit {
 
-  disabled: boolean = true;
-
   constructor() { }
 
   ngOnInit() {

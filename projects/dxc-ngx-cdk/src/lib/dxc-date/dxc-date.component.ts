@@ -96,7 +96,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
     this.renderedValue = this.value;
     this.dateValue = this.getMomentValue(this.renderedValue, this.format);
-    this.calendarIconSrc =  this.theme === 'light' ? "../../assets/calendar.svg" : "../../assets/calendar_dark.svg";
+    this.calendarIconSrc =  this.theme === 'light' ? "assets/calendar.svg" : "assets/calendar_dark.svg";
   }
 
   public ngOnInit(): void {

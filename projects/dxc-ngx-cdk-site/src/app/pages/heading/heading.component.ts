@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
 import { HeadingExampleComponent } from '../../components/examples/heading/heading-example/heading-example.component';
 import { HeadingTablePropertiesComponent } from '../../components/examples/heading/properties/heading-table-properties/heading-table-properties.component';
+import { HeadingImportComponent } from '../../components/examples/heading/heading-import/heading-import.component';
 
 @Component({
   selector: 'app-heading',
@@ -28,6 +29,12 @@ export class HeadingComponent implements OnInit {
       },
       {
         id: 1,
+        label: "MODULE",
+        selector: "heading-import",
+        component: HeadingImportComponent
+      },
+      {
+        id: 2,
         label: "EXAMPLES",
         selector: "heading-example",
         component: HeadingExampleComponent

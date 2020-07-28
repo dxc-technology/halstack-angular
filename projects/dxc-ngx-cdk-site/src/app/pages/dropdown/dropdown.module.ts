@@ -12,6 +12,9 @@ import { DropdownOutlinedComponent } from "../../components/examples/dropdown/dr
 import { DropdownIconsComponent } from "../../components/examples/dropdown/dropdown-icons/dropdown-icons.component";
 import {DropdownDarkComponent} from "../../components/examples/dropdown/dropdown-dark/dropdown-dark.component";
 import { DropdownComponent } from "./dropdown.component";
+import { DropdownImportComponent } from '../../components/examples/dropdown/dropdown-import/dropdown-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -22,7 +25,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DropdownOutlinedComponent,
     DropdownIconsComponent,
     DropdownDarkComponent,
-    DropdownComponent
+    DropdownComponent,
+    DropdownImportComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +36,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DXCDropdownModule,
     ExampleViewerModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -41,7 +46,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DropdownOutlinedComponent,
     DropdownIconsComponent,
     DropdownDarkComponent,
-    DropdownComponent
+    DropdownComponent,
+    DropdownImportComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

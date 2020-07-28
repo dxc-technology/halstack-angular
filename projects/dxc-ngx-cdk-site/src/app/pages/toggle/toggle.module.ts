@@ -11,6 +11,8 @@ import { ToggleDarkComponent } from '../../components/examples/toggle/toggle-dar
 import { ToggleDefaultComponent } from '../../components/examples/toggle/toggle-default/toggle-default.component';
 import { ToggleIconComponent } from '../../components/examples/toggle/toggle-icon/toggle-icon.component';
 import { ToggleOutlinedComponent } from '../../components/examples/toggle/toggle-outlined/toggle-outlined.component';
+import { ToggleImportComponent } from '../../components/examples/toggle/toggle-import/toggle-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ToggleExampleComponent,
     ToggleIconComponent,
     ToggleOutlinedComponent,
-    ToggleTablePropertiesComponent
+    ToggleTablePropertiesComponent,
+    ToggleImportComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DXCToggleModule,
     ExampleViewerModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -40,7 +44,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ToggleExampleComponent,
     ToggleIconComponent,
     ToggleOutlinedComponent,
-    ToggleTablePropertiesComponent
+    ToggleTablePropertiesComponent,
+    ToggleImportComponent
   ]
 })
 export class ToggleModule { }

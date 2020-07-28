@@ -9,9 +9,11 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { ResultsetTableSimpleComponent } from '../../components/examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../../components/examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../../components/examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
+import { ResultsetTableImportComponent } from '../../components/examples/resultset-table/resultset-table-import/resultset-table-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
-import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
-    ResultsetTableDirectivesComponent
+    ResultsetTableDirectivesComponent,
+    ResultsetTableImportComponent
   ],
   imports: [
     CommonModule,
@@ -31,14 +34,16 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     DxcButtonModule,
     DxcTagModule,
     ComponentsSidenavModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    ComponentsSidenavModule
   ],
   exports: [
     ResultsetTableComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
-    ResultsetTableDirectivesComponent
+    ResultsetTableDirectivesComponent,
+    ResultsetTableImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

@@ -11,6 +11,8 @@ import { FooterExampleComponent } from '../../components/examples/footer/footer-
 import { FooterTablePropertiesComponent } from '../../components/examples/footer/properties/footer-table-properties/footer-table-properties.component';
 import { FooterDefaultComponent } from '../../components/examples/footer/footer-default/footer-default.component';
 import { FooterCustomContentComponent } from '../../components/examples/footer/footer-custom-content/footer-custom-content.component';
+import { FooterImportComponent } from '../../components/examples/footer/footer-import/footer-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -19,7 +21,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
         FooterExampleComponent,
         FooterTablePropertiesComponent,
         FooterDefaultComponent,
-        FooterCustomContentComponent
+        FooterCustomContentComponent,
+        FooterImportComponent
       ],
     imports: [
       BrowserModule,
@@ -30,6 +33,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       ExampleViewerModule,
       DxcTableModule,
       DxcTagModule,
+      CodePlaygroundModule,
       ComponentsSidenavModule
     ],
     exports: [
@@ -37,7 +41,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
         FooterExampleComponent,
         FooterTablePropertiesComponent,
         FooterDefaultComponent,
-        FooterCustomContentComponent
+        FooterCustomContentComponent,
+        FooterImportComponent
     ],
     entryComponents: [
       ExampleViewerComponent

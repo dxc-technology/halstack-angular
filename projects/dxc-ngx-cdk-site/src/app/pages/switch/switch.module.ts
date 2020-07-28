@@ -11,6 +11,9 @@ import { SwitchThemedComponent } from '../../components/examples/switch/switch-t
 import { SwitchTablePropertiesComponent } from '../../components/examples/switch/properties/switch-table-properties/switch-table-properties.component';
 import { SwitchUncontrolledComponent } from '../../components/examples/switch/switch-uncontrolled/switch-uncontrolled.component'
 import { SwitchDefaultComponent } from '../../components/examples/switch/switch-default/switch-default.component';
+import { SwitchImportComponent } from '../../components/examples/switch/switch-import/switch-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -21,7 +24,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SwitchThemedComponent,
     SwitchTablePropertiesComponent,
     SwitchUncontrolledComponent,
-    SwitchDefaultComponent
+    SwitchDefaultComponent,
+    SwitchImportComponent
     ],
   imports: [
     BrowserModule,
@@ -30,13 +34,15 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcSwitchModule,
     DxcTableModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
     SwitchExampleComponent,
     SwitchLabelComponent,
     SwitchThemedComponent,
-    SwitchTablePropertiesComponent
+    SwitchTablePropertiesComponent,
+    SwitchImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

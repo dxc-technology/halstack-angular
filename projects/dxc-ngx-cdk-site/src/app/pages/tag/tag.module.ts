@@ -12,6 +12,8 @@ import { TagActionComponent } from 'src/app/components/examples/tag/tag-action/t
 import { TagLinkComponent } from 'src/app/components/examples/tag/tag-link/tag-link.component';
 import { TagDefaultComponent } from 'src/app/components/examples/tag/tag-default/tag-default.component';
 import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example/tag-example.component';
+import { TagImportComponent } from '../../components/examples/tag/tag-import/tag-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TagLinkComponent,
     TagActionComponent,
     TagSizedComponent,
-    TagTablePropertiesComponent
+    TagTablePropertiesComponent,
+    TagImportComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TabbedSectionModule,
     DxcTagModule,
     ExampleViewerModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -40,7 +44,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TagLinkComponent,
     TagActionComponent,
     TagSizedComponent,
-    TagTablePropertiesComponent
+    TagTablePropertiesComponent,
+    TagImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

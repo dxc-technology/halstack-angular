@@ -12,6 +12,8 @@ import { ProgressbarUndeterminedComponent } from "../../components/examples/prog
 import { ProgressbarThemedComponent } from "../../components/examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../../components/examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
+import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
     ProgressbarThemedComponent,
-    ProgressbarOverlayComponent
+    ProgressbarOverlayComponent,
+    ProgressbarImportComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +36,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcButtonModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -42,7 +46,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
     ProgressbarThemedComponent,
-    ProgressbarOverlayComponent
+    ProgressbarOverlayComponent,
+    ProgressbarImportComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

@@ -11,7 +11,7 @@ export class ComponentsSidenavMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   navigateTo(route) {
-    this.router.navigate([route])
+    this.router.navigate([route]);
   }
 
   ngOnInit() {

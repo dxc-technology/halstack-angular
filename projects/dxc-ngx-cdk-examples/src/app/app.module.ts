@@ -42,6 +42,7 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
   DxcTabsModule, DXCUploadModule, DxcTableModule, DxcDateModule, DxcTagModule, DxcRadioModule, 
   DxcSliderModule, DxcTabbedSectionModule,
   DxcSideNavModule, DxcPaginatorModule, DxcLinkModule, ThemeService, DxcWizardModule, DxcHeadingModule,DxcResultsetTableModule } from '@dxc-technology/halstack-angular';
+import { UploadComponent } from './pages/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { DxcAccordionModule, DXCAlertModule, DxcBoxModule, DxcButtonModule, DxcC
     WizardComponent,
     LinkInfoComponent,
     HeadingInfoComponent,
-    ResultsetTableComponent
+    ResultsetTableComponent,
+    UploadComponent
   ],
   imports: [
     AppRoutingModule,

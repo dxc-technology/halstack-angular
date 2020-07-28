@@ -192,15 +192,14 @@ import { HeadingDefaultComponent } from '../examples/heading/heading-default/hea
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
 import { HeadingDarkComponent } from '../examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../examples/heading/heading-weights/heading-weights.component';
-
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
-import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
-
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
-
+import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
+import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
+import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
@@ -231,7 +230,6 @@ import { TextInputImportComponent } from '../examples/text-input/text-input-impo
 import { ToggleImportComponent } from '../examples/toggle/toggle-import/toggle-import.component';
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
-
 
 
 @NgModule({
@@ -434,6 +432,9 @@ import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-i
     SelectAssistiveComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
+    ResultsetTableDirectivesComponent,
+    LinkDisabledComponent,
+    ResultsetTableDirectivesComponent,
     AccordionImportComponent,
     AlertImportComponent,
     BoxImportComponent,

@@ -1,0 +1,58 @@
+<h2 class="subtitle-example">Directives</h2>
+<p>
+    Directives are used to add functionality and new syntax into HTML components.
+    The following directives are customized and you can use them on this component.
+</p>
+<dxc-table>
+    <tr>
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>sortable: object[]</td>
+        <td>
+            <code>
+            <ul class="ul-code">
+                <li>
+                    isSortable:false
+                </li>
+                <li>
+                    propertyName:''
+                </li>
+            </ul>
+            </code>
+        </td>
+        <td>
+            An array of objects representing if the column is going to be sorted and the key value.
+            <ul>
+                <li>
+                    <b>isSortable</b>: boolean value if it is sorteable.
+                </li>
+                <li>
+                    <b>propertyName</b>: string with the key from the array of objects.
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>dxcColumnDef: string</td>
+        <td></td>
+        <td>
+            Column definition.
+        </td>
+    </tr>
+    <tr>
+        <td>dxcCellDef: Iterable&lt;string&gt; </td>
+        <td></td>
+        <td>
+            Cell definition. It selects the value from the array.
+        </td>
+    </tr>
+</dxc-table>
+
+<p>
+    Here there is an example of how to use them:
+</p>
+
+<app-code-playground [code]="bindCode" type="HTML" ></app-code-playground>

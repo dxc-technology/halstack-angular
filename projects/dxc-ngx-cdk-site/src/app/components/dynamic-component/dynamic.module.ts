@@ -199,6 +199,8 @@ import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/p
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
+import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
+
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -397,7 +399,8 @@ import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     HeaderDirectivesComponent,
-    HeaderExampleResponsiveComponent
+    HeaderExampleResponsiveComponent,
+    ResultsetTableDirectivesComponent
   ]
 })
 export class DynamicModule {}

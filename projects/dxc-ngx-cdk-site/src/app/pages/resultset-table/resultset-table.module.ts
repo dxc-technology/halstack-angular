@@ -10,13 +10,16 @@ import { ResultsetTableSimpleComponent } from '../../components/examples/results
 import { ResultsetTableExampleComponent } from '../../components/examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../../components/examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 
 @NgModule({
   declarations: [
     ResultsetTableComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
-    ResultsetTablePropertiesComponent
+    ResultsetTablePropertiesComponent,
+    ResultsetTableDirectivesComponent
   ],
   imports: [
     CommonModule,
@@ -27,13 +30,15 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcResultsetTableModule,
     DxcButtonModule,
     DxcTagModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    CodePlaygroundModule
   ],
   exports: [
     ResultsetTableComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
-    ResultsetTablePropertiesComponent
+    ResultsetTablePropertiesComponent,
+    ResultsetTableDirectivesComponent
   ],
   entryComponents: [
     ExampleViewerComponent

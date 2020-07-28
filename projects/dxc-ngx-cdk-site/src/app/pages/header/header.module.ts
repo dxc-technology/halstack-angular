@@ -19,6 +19,7 @@ import { HeaderDirectivesComponent } from '../../components/examples/header/head
 import { HeaderExampleResponsiveComponent } from '../../components/examples/header/responsive/header-example-responsive/header-example-responsive.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { HeaderImportComponent } from '../../components/examples/header/header-import/header-import.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     HeaderDirectivesComponent,
-    HeaderExampleResponsiveComponent
+    HeaderExampleResponsiveComponent,
+    HeaderImportComponent
   ],
   imports: [
       BrowserModule,
@@ -54,7 +56,8 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     HeaderDirectivesComponent,
-    HeaderExampleResponsiveComponent
+    HeaderExampleResponsiveComponent,
+    HeaderImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

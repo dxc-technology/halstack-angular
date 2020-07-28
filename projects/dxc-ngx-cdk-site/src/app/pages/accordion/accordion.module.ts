@@ -15,6 +15,9 @@ import { AccordionIconComponent } from 'src/app/components/examples/accordion/ac
 import { AccordionDarkComponent } from 'src/app/components/examples/accordion/accordion-dark/accordion-dark.component';
 import { AccordionExampleModule } from '../../components/examples/accordion/accordion-example/accordion-example.module';
 import { AccordionControlledComponent } from '../../components/examples/accordion/accordion-controlled/accordion-controlled.component';
+import { AccordionImportComponent } from '../../components/examples/accordion/accordion-import/accordion-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -27,7 +30,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     AccordionAssistiveComponent,
     AccordionIconComponent,
     AccordionDarkComponent,
-    AccordionControlledComponent
+    AccordionControlledComponent,
+    AccordionImportComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +42,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     AccordionExampleModule,
     ExampleViewerModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ], 
   exports: [
@@ -48,7 +53,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     AccordionDisabledComponent,
     AccordionAssistiveComponent,
     AccordionIconComponent,
-    AccordionDarkComponent
+    AccordionDarkComponent,
+    AccordionImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

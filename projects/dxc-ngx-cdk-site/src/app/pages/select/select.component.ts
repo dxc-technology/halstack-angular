@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import { SelectPropertiesComponent } from "../../components/examples/select/properties/select-properties/select-properties.component";
 import { SelectExampleComponent } from "../../components/examples/select/select-example/select-example.component";
+import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
 
 @Component({
   selector: "app-select",
@@ -26,6 +27,12 @@ export class SelectComponent implements OnInit {
       },
       {
         id: 1,
+        label: "MODULE",
+        selector: "select-import",
+        component: SelectImportComponent
+      },
+      {
+        id: 2,
         label: "EXAMPLES",
         selector: "examples-component-buttons",
         component: SelectExampleComponent

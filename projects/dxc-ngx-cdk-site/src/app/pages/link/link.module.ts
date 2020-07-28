@@ -14,6 +14,8 @@ import { LinkUndercoratedComponent } from '../../components/examples/link/link-u
 import { LinkThemedComponent } from '../../components/examples/link/link-themed/link-themed.component';
 import { LinkIconComponent } from '../../components/examples/link/link-icon/link-icon.component';
 import { LinkTablePropertiesComponent } from '../../components/examples/link/properties/link-table-properties/link-table-properties.component';
+import { LinkImportComponent } from '../../components/examples/link/link-import/link-import.component';
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { LinkDisabledComponent } from '../../components/examples/link/link-disabled/link-disabled.component';
 
@@ -26,7 +28,8 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
     LinkThemedComponent,
     LinkIconComponent,
     LinkTablePropertiesComponent,
-    LinkDisabledComponent
+    LinkDisabledComponent,
+    LinkImportComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
     TabbedSectionModule,
     ExampleViewerModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports:[
@@ -46,7 +50,8 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
     LinkThemedComponent,
     LinkIconComponent,
     LinkTablePropertiesComponent,
-    LinkDisabledComponent
+    LinkDisabledComponent,
+    LinkImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

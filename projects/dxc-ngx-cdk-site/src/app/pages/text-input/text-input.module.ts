@@ -15,6 +15,9 @@ import { TextInputMultiComponent } from '../../components/examples/text-input/te
 import { TextInputPrefixSuffixComponent } from '../../components/examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component';
 import { TextInputSizedComponent } from '../../components/examples/text-input/text-input-sized/text-input-sized.component';
 import { TextInputUncontrolledComponent } from '../../components/examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
+import { TextInputImportComponent } from '../../components/examples/text-input/text-input-import/text-input-import.component';
+
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
@@ -28,7 +31,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TextInputMultiComponent,
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
-    TextInputTablePropertiesComponent
+    TextInputTablePropertiesComponent,
+    TextInputImportComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcLinkModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -51,7 +56,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TextInputMultiComponent,
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
-    TextInputTablePropertiesComponent
+    TextInputTablePropertiesComponent,
+    TextInputImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

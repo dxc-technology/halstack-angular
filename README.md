@@ -13,11 +13,11 @@ Assure Angular CDK is a npm library of reusable Angular components, made with th
 
 ## Usage
 
-Assure Angular CDK is a set of reusable components distributed as a npm library. See the [documentation site](http://design-system-angular-cdk-site.s3-website.us-east-2.amazonaws.com) for details on how to use it.
+Assure Angular CDK is a set of reusable components distributed as a npm library. See the [documentation site](https://developer.dxc.com/tools/angular/) for details on how to use it.
 
 ## Contributing
 
-Before opening new issues or pull requests, please refer to [CONTRIBUTING.MD](https://github.dxc.com/DIaaS/diaas-angular-cdk/blob/master/README.md).
+Before opening new issues or pull requests, please refer to [CONTRIBUTING.MD](https://github.com/dxc-technology/halstack-angular/blob/master/CONTRIBUTING.md).
 
 ## Development Setup
 

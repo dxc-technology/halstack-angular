@@ -17,6 +17,10 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
+import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
+
+
 @NgModule({
   declarations: [
     AlertChildrenComponent,
@@ -29,7 +33,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     AlertSuccessComponent,
     AlertWarningComponent,
     AlertErrorComponent,
-    AlertClosableComponent
+    AlertClosableComponent,
+    AlertImportComponent
     ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcTableModule,
     DxcTagModule,
+    CodePlaygroundModule,
     ComponentsSidenavModule
   ],
   exports: [
@@ -51,7 +57,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     AlertSuccessComponent,
     AlertWarningComponent,
     AlertErrorComponent,
-    AlertClosableComponent
+    AlertClosableComponent,
+    AlertImportComponent
   ],
   entryComponents: [
     ExampleViewerComponent

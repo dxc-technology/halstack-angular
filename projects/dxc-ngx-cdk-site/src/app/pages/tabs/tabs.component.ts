@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import {TabsTablePropertiesComponent} from "../../components/examples/tabs/properties/tabs-table-properties.component";
 import {TabsExampleComponent} from '../../components/examples/tabs/tabs-example/tabs-example.component';
+import { TabsImportComponent } from '../../components/examples/tabs/tabs-import/tabs-import.component';
 
 @Component({
   selector: "app-tabs",
@@ -22,14 +23,20 @@ export class TabsComponent implements OnInit {
       {
         id: 0,
         label: "PROPERTIES",
-        selector: "examples-properties-dates",
+        selector: "app-tabs-table-properties",
         component: TabsTablePropertiesComponent
       }
       ,
       {
         id: 1,
+        label: "MODULE",
+        selector: "tabs-import",
+        component: TabsImportComponent
+      },
+      {
+        id: 2,
         label: "EXAMPLES",
-        selector: "examples-component-dates",
+        selector: "app-tabs-example",
         component: TabsExampleComponent
       }
     );

@@ -28,7 +28,7 @@
     (click)="onClickHandle($event)"
     [required]="required"
     [name]="name"
-    [type]="'text'"
+    [type]="type"
     [errorStateMatcher]="matcher"
     [placeholder]="placeholder"
     [matAutocomplete]="auto"
@@ -68,7 +68,7 @@
   <ng-container *ngIf="!loading.getValue() && isError.getValue()">
     <mat-option class="errorOption" disabled="true"
       >Error fetching data
-      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" style="">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
         <rect
           id="backgroundrect"
           width="100%"
@@ -78,7 +78,7 @@
           fill="none"
           stroke="none"
         />
-        <g class="currentLayer" style="">
+        <g class="currentLayer">
           <title>Layer 1</title>
           <path
             d="M0 0h24v24H0V0z"

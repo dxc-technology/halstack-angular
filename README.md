@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/%40dxc-technology%2Fhalstack-angular.svg)](https://www.npmjs.com/@dxc-technology/halstack-angular)
 [![GitHub license](https://img.shields.io/badge/license-apache-blue.svg)](https://github.com/fxc-technology/halstack-angular/blob/master/LICENSE.md) 
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dxc-technology/halstack-angular/blob/master/CONTRIBUTING.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dxc-technology/halstack-angular/blob/master/CONTRIBUTING.md)
 # Assure Angular CDK
 
 Assure Angular CDK is a npm library of reusable Angular components, made with the purpose of helping Angular developers with the task of implementing User Interfaces following the DXC Design Guidelines.

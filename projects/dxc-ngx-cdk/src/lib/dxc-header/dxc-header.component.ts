@@ -6,7 +6,8 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
-  HostListener
+  HostListener,
+  ElementRef
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -33,6 +34,7 @@ export class DxcHeaderComponent implements OnChanges {
   isResponsive = false;
   isMenuVisible = false;
   innerWidth;
+  innerHeight;
 
   responsiveMenu: string;
 
@@ -44,41 +46,52 @@ export class DxcHeaderComponent implements OnChanges {
     padding: null,
     isResponsive: false,
     isMenuVisible: false,
-    innerWidth
+    innerWidth,
+    innerHeight
   });
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    this.innerWidth = event.target.innerWidth;
+    this.innerWidth  = event.target.innerWidth;
+    this.innerHeight = event.target.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet) {
       this.isResponsive = true;
     } else {
       this.isResponsive = false;
+      this.isMenuVisible = false;
     }
     this.updateCss();
   }
 
+  constructor(private utils: CssUtils, private elRef: ElementRef) {}
+
   updateCss() {
+
+    if(this.isMenuVisible) {
+      this.elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden';
+    } else {
+      this.elRef.nativeElement.ownerDocument.body.style.overflow = null;
+    }
 
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,
       isResponsive: this.isResponsive,
-      innerWidth: this.innerWidth
+      innerWidth: this.innerWidth,
+      innerHeight: this.innerHeight
     })}`;
 
     this.responsiveMenu = `${this.getResponsiveMenuStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,
       isResponsive: this.isResponsive,
-      innerWidth: this.innerWidth
+      innerWidth: this.innerWidth,
+      innerHeight: this.innerHeight
     })}`;
   }
 
-  constructor(private utils: CssUtils) {}
-
   public ngOnInit() {
-    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {
       this.isResponsive = true;
     } else {
@@ -255,7 +268,7 @@ export class DxcHeaderComponent implements OnChanges {
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: ${inputs.innerHeight}px;
         background-color: #000000b3;
         visibility: ${inputs.isMenuVisible ? "visible" : "hidden"};
         opacity: ${inputs.isMenuVisible ? "1" : "0"};
@@ -285,7 +298,7 @@ export class DxcHeaderComponent implements OnChanges {
       inputs.innerWidth > responsiveSizes.mobileLarge
         ? "calc(60vw - 40px)"
         : "calc(100vw - 40px)"};
-      height: 100vh;
+      height: ${inputs.innerHeight}px;
       padding: 20px;
 
       ${this.checkMenuVisible(inputs.isMenuVisible)}

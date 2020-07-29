@@ -114,12 +114,6 @@ import { DropdownTablePropertiesComponent } from "../examples/dropdown/propertie
 import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example/dropdown-example.component";
 import { DropdownIconsComponent } from "../examples/dropdown/dropdown-icons/dropdown-icons.component";
 import { DropdownDarkComponent } from "../examples/dropdown/dropdown-dark/dropdown-dark.component";
-import { ToggleTablePropertiesComponent } from "../examples/toggle/properties/toggle-table-properties/toggle-table-properties.component";
-import { ToggleExampleComponent } from "../examples/toggle/toggle-example/toggle-example.component";
-import { ToggleOutlinedComponent } from "../examples/toggle/toggle-outlined/toggle-outlined.component";
-import { ToggleIconComponent } from "../examples/toggle/toggle-icon/toggle-icon.component";
-import { ToggleDefaultComponent } from "../examples/toggle/toggle-default/toggle-default.component";
-import { ToggleDarkComponent } from "../examples/toggle/toggle-dark/toggle-dark.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
 import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog-example.component";
 import { DialogDefaultComponent } from "../examples/dialog/dialog-default/dialog-default.component";
@@ -227,7 +221,6 @@ import { TableImportComponent } from '../examples/table/table-import/table-impor
 import { TabsImportComponent } from '../examples/tabs/tabs-import/tabs-import.component';
 import { TagImportComponent } from '../examples/tag/tag-import/tag-import.component';
 import { TextInputImportComponent } from '../examples/text-input/text-input-import/text-input-import.component';
-import { ToggleImportComponent } from '../examples/toggle/toggle-import/toggle-import.component';
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
 import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
@@ -358,12 +351,6 @@ import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/drop
     DropdownOutlinedComponent,
     DropdownIconsComponent,
     DropdownDarkComponent,
-    ToggleDarkComponent,
-    ToggleDefaultComponent,
-    ToggleExampleComponent,
-    ToggleIconComponent,
-    ToggleOutlinedComponent,
-    ToggleTablePropertiesComponent,
     DialogTablePropertiesComponent,
     DialogExampleComponent,
     DialogDefaultComponent,
@@ -463,7 +450,6 @@ import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/drop
     TabsImportComponent,
     TagImportComponent,
     TextInputImportComponent,
-    ToggleImportComponent,
     UploadImportComponent,
     WizardImportComponent,
     DropdownHoverComponent

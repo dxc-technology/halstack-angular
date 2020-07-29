@@ -269,7 +269,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
             img {
               width: 20px;
               height: 20px;
-              margin-left: 10px;
+              margin-right: 10px;
               vertical-align: middle;
             }
           `}
@@ -508,6 +508,12 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       }
       .mat-select-arrow-wrapper {
         display: table-cell;
+        vertical-align: middle;
+      }
+      img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
         vertical-align: middle;
       }
     `;

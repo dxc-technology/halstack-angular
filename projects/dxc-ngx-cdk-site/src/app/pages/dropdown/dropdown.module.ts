@@ -16,6 +16,7 @@ import { DropdownImportComponent } from '../../components/examples/dropdown/drop
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { DropdownHoverComponent } from '../../components/examples/dropdown/dropdown-hover/dropdown-hover.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DropdownIconsComponent,
     DropdownDarkComponent,
     DropdownComponent,
-    DropdownImportComponent
+    DropdownImportComponent,
+    DropdownHoverComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DropdownIconsComponent,
     DropdownDarkComponent,
     DropdownComponent,
-    DropdownImportComponent
+    DropdownImportComponent,
+    DropdownHoverComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

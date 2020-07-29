@@ -9,6 +9,7 @@ import {
   ViewChild,
   AfterViewChecked,
   ChangeDetectionStrategy,
+  Renderer2,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -39,6 +40,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Input() public mode: string = "basic";
   @Input() public margin: any;
   @Input() public size: any;
+  @Input() public expandOnHover:boolean;
 
   @Input() public showCaret: boolean = true;
 
@@ -64,14 +66,17 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     label: null,
     margin: null,
     size: "fitContent",
+    expandOnHover:false
   });
 
   public onlyHasIcons: boolean;
   public arrowClass: string = "down";
   public menuOpened: string = "closed";
-
+  enterButton: boolean = false;
+  menuOpen: boolean = false;
+  btnTrigger: any;
   private width: string = "";
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils,private ren: Renderer2) {}
 
   sizes = {
     small: "60px",
@@ -507,4 +512,65 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       }
     `;
   }
+  buttonEnter(trigger) {
+    if(this.expandOnHover){
+      setTimeout(() => {
+        if(this.btnTrigger && this.btnTrigger != trigger){
+          this.btnTrigger.closeMenu();
+          this.btnTrigger = trigger;
+          this.menuOpen = false;
+          trigger.openMenu();
+        }
+        else if (!this.menuOpen) {
+          this.enterButton = true;
+          this.btnTrigger = trigger
+          trigger.openMenu()
+        }
+        else {
+          this.enterButton = true;
+          this.btnTrigger = trigger
+        }
+      })
+    }
+  }
+
+  buttonLeave(trigger, button) {
+    if(this.expandOnHover){
+      setTimeout(() => {
+        if (this.enterButton && !this.menuOpen) {
+          trigger.closeMenu();
+          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+        } if (!this.menuOpen) {
+          trigger.closeMenu();
+          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+        } else {
+          this.enterButton = false;
+        }
+      }, 100)
+    }
+  }
+
+  menuenter() {
+    if(this.expandOnHover){
+      this.menuOpen = true;
+    }
+  }
+
+  menuLeave(trigger, button) {
+    if(this.expandOnHover){
+      setTimeout(() => {
+        if (!this.enterButton) {
+          this.menuOpen = false;
+          trigger.closeMenu();
+          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+        } else {
+          this.menuOpen = false;
+        }
+      }, 80)
+    }
+  }
+
 }

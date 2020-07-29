@@ -230,6 +230,7 @@ import { TextInputImportComponent } from '../examples/text-input/text-input-impo
 import { ToggleImportComponent } from '../examples/toggle/toggle-import/toggle-import.component';
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
+import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
 
 
 @NgModule({
@@ -464,7 +465,8 @@ import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-i
     TextInputImportComponent,
     ToggleImportComponent,
     UploadImportComponent,
-    WizardImportComponent
+    WizardImportComponent,
+    DropdownHoverComponent
   ]
 })
 export class DynamicModule {}

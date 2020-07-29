@@ -69,18 +69,18 @@ export class DropdownExampleComponent implements OnInit {
       });
 
 // Still fix for icons size is needed. Commented till then
-      // this.exampleService
-      // .getCodeExample("dropdown/dropdown-icons/dropdown-icons.component")
-      // .subscribe(resp1 => {
-      //   this.examples.push(
-      //     this.exampleService.generateExample({
-      //       title: "Icons dropdown",
-      //       component: DropdownIconsComponent,
-      //       selector: "example3",
-      //       examples: [resp1[0], resp1[1], resp1[2]]
-      //     })
-      //   );
-      // });
+      this.exampleService
+      .getCodeExample("dropdown/dropdown-icons/dropdown-icons.component")
+      .subscribe(resp1 => {
+        this.examples.push(
+          this.exampleService.generateExample({
+            title: "Dropdown with icons",
+            component: DropdownIconsComponent,
+            selector: "example4",
+            examples: [resp1[0], resp1[1], resp1[2]]
+          })
+        );
+      });
 
       this.exampleService
       .getCodeExample("dropdown/dropdown-dark/dropdown-dark.component")
@@ -89,7 +89,7 @@ export class DropdownExampleComponent implements OnInit {
           this.exampleService.generateExample({
             title: "Dark Dropdown",
             component: DropdownDarkComponent,
-            selector: "example4",
+            selector: "example5",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

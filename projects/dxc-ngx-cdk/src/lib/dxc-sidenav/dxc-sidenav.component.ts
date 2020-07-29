@@ -142,8 +142,8 @@ export class DxcSidenavComponent implements OnInit {
               ? "translateX(0)"
               : !inputs.isShown
               ? inputs.innerWidth <= responsiveSizes.tablet
-                  ? "translateX(-" + (inputs.innerWidth * 0.6) + "px)"
-                : "translateX(-297px)"
+              ? "translateX(-" + inputs.innerWidth * 0.6 + "px) !important"
+              : "translateX(-297px) !important"
               : ""
           };
           transition: transform 0.4s ease-in-out;
@@ -157,7 +157,7 @@ export class DxcSidenavComponent implements OnInit {
             display: flex;
             align-items: center;
             margin-left: ${inputs.isShown ? "0px" : "10px"};
-            transform: ${inputs.isShown ? "rotate(-180deg)" : "rotate(0deg)"};
+            transform: ${inputs.isShown ? "rotate(-180deg)" : "rotate(0deg) !important"};
             transition: margin 0.4s ease-in, transform 0.4s ease-in-out;
           }
         }
@@ -171,12 +171,13 @@ export class DxcSidenavComponent implements OnInit {
           };
           box-sizing: border-box;
           ${this.utils.getPaddings(inputs.padding)}
-          z-index: ${inputs.mode === "overlay" || inputs.isResponsive ? "400" : "auto"};
-          transform: ${
+          z-index: ${
+            inputs.mode === "overlay" || inputs.isResponsive ? "400" : "auto"
+          };          transform: ${
             inputs.isShown
               ? "translateX(0)"
               : !inputs.isShown
-              ? "translateX(-100%)"
+              ? "translateX(-100%) !important"
               : ""
           };
           opacity: ${inputs.isShown ? "1" : "0"};

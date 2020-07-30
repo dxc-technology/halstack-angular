@@ -34,6 +34,7 @@ import { SidenavComponent } from './pages/sidenav/sidenav.component';
 import { LinkComponent } from './pages/link/link.component';
 import { HeadingComponent } from './pages/heading/heading.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
+import { ChipComponent } from './pages/chip/chip.component';
 
 let routes: Routes = [];
 
@@ -76,6 +77,10 @@ let routes: Routes = [];
   {
     path: 'components/checkbox',
     component: CheckboxComponent
+  },
+  {
+    path: 'components/chip',
+    component: ChipComponent
   },
   {
     path: 'components/date',

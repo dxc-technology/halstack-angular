@@ -14,7 +14,7 @@ Include the **DxcProgressBar** into **app.module.ts** to use the toggle componen
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcProgressBar } from "@diaas/dxc-ngx-cdk";
+import { DxcProgressBar } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

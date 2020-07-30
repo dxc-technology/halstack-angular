@@ -24,6 +24,9 @@ export * from './lib/dxc-card/dxc-card.module';
 export * from './lib/dxc-checkbox/dxc-checkbox.component';
 export * from './lib/dxc-checkbox/dxc-checkbox.module';
 
+export * from './lib/dxc-chip/dxc-chip.component';
+export * from './lib//dxc-chip/dxc-chip.module';
+
 export * from './lib/dxc-date/dxc-date.component';
 export * from './lib/dxc-date/dxc-date.module';
 

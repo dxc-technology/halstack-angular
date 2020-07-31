@@ -44,6 +44,7 @@ export class DxcTextInputComponent
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
   @Input() public invalid: boolean = false;
+  @Input() public isMasked: boolean;
 
   @Input() public label: String;
   @Input() public assistiveText: string;
@@ -65,6 +66,7 @@ export class DxcTextInputComponent
   renderedValue = "";
   private _valueChangeTrack: boolean;
   options;
+  type:string;
 
   dxcAutocompleteMenu = this.getAutoCompleteStyle();
 
@@ -96,7 +98,8 @@ export class DxcTextInputComponent
     name: null,
     value: null,
     margin: null,
-    size: "medium"
+    size: "medium",
+    isMasked: false
   });
 
   public formControl = new FormControl();
@@ -131,6 +134,12 @@ export class DxcTextInputComponent
     } else {
       this.isLight = true;
       this.isDark = false;
+    }
+    if(this.isMasked){
+      this.type = "password";
+    }
+    else{
+      this.type = "text";
     }
     this.isDisabled = this.disabled;
 

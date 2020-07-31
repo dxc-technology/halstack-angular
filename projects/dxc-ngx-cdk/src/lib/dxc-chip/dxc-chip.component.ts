@@ -24,8 +24,6 @@ export class DxcChipComponent implements OnChanges {
   @Input() prefixIconSrc: string;
   @Input() disabled: boolean;
   @Input() margin: any;
-  @Input() backgroundColor: string;
-  @Input() borderColor: string;
 
   @Output() suffixIconClick = new EventEmitter<any>();
   @Output() prefixIconClick = new EventEmitter<any>();
@@ -64,23 +62,17 @@ export class DxcChipComponent implements OnChanges {
   getDynamicStyle(inputs) {
     return css`
       opacity: ${inputs.disabled ? "0.34" : "1"};
-      height: ${inputs.borderColor ? "20px" : "22px"};
+      height: 22px;
       ${this.utils.getMargins(inputs.margin)}
       display: flex;
       max-width: calc(100% - 40px);
       flex-wrap: nowrap;
       text-overflow: ellipsis;
       border-radius: 48px;
-      background-color: ${inputs.backgroundColor
-        ? inputs.backgroundColor
-        : inputs.borderColor
-        ? "transparent"
-        : "var(--darkWhite, #EEEEEE);"};
+      background-color: var(--darkWhite, #EEEEEE);
       padding: 10px 20px;
       width: fit-content;
-      border: ${inputs.borderColor
-        ? "1px solid " + inputs.borderColor
-        : "none"};
+      border: none;
       .labelContainer {
         font-size: 16px;
         font-family: "Open Sans", sans-serif;

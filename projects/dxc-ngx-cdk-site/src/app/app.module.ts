@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ThemeService, DXCHeaderModule,DXCFooterModule, DxcSliderModule, ThemeModule } from '@dxc-technology/halstack-angular';
+import { ThemeService, DXCHeaderModule,DXCFooterModule, ThemeModule } from '@dxc-technology/halstack-angular';
 import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
 import { AlertModule } from './pages/alert/alert.module';
@@ -14,6 +14,7 @@ import { BoxModule } from './pages/box/box.module';
 import { ButtonModule } from './pages/button/button.module';
 import { CardModule } from './pages/card/card.module';
 import { CheckboxModule } from './pages/checkbox/checkbox.module';
+import { ChipModule } from './pages/chip/chip.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RadioModule } from './pages/radio/radio.module';
 import { SelectModule } from './pages/select/select.module';
@@ -67,6 +68,7 @@ import { ComponentsSidenavModule } from './pages/components-sidenav/components-s
     ButtonModule,
     CardModule,
     CheckboxModule,
+    ChipModule,
     DateModule,
     FooterModule,
     HeaderModule,

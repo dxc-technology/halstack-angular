@@ -21,7 +21,6 @@ import { TextInputComponent } from './pages/text-input/text-input.component';
 import { DropdownComponent } from "./pages/dropdown/dropdown.component";
 import { DialogComponent } from "./pages/dialog/dialog.component";
 import { TableComponent } from './pages/table/table.component';
-import { ToggleComponent } from './pages/toggle/toggle.component';
 import { TagComponent } from './pages/tag/tag.component';
 import { ProgressbarComponent } from './pages/progressbar/progressbar.component';
 import { TabbedSectionInfoComponent } from './pages/tabbed-section-info/tabbed-section-info.component';
@@ -108,10 +107,6 @@ let routes: Routes = [];
   {
     path: 'components/header',
     component: HeaderComponent
-  },
-  {
-    path: 'components/toggle',
-    component: ToggleComponent
   },
   {
     path: 'components/dialog',

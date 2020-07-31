@@ -26,7 +26,6 @@ import { TextInputModule } from './pages/text-input/text-input.module';
 import { SliderModule } from './pages/slider/slider.module';
 import { FooterModule } from './pages/footer/footer.module';
 import { DropdownModule } from './pages/dropdown/dropdown.module';
-import { ToggleModule } from './pages/toggle/toggle.module';
 import { DialogModule } from './pages/dialog/dialog.module';
 import { TableModule } from './pages/table/table.module';
 import { TagModule } from './pages/tag/tag.module';
@@ -81,7 +80,6 @@ import { ComponentsSidenavModule } from './pages/components-sidenav/components-s
     TabbedSectionInfoModule,
     TableModule,
     TagModule,
-    ToggleModule,
     PaginatorModule,
     ProgressbarModule,
     TabsModule,

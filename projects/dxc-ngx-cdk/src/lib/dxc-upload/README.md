@@ -15,7 +15,7 @@ Include the **DxcUploadModule** into **app.module.ts** to use the upload compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcUploadModule } from "@diaas/dxc-ngx-cdk";
+import { DxcUploadModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

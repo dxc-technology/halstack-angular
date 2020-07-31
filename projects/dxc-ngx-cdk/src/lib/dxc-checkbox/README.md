@@ -19,7 +19,7 @@ Include the **DxcCheckboxModule** into **app.module.ts** to use the checkbox com
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcCheckboxModule } from "@diaas/dxc-ngx-cdk";
+import { DxcCheckboxModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

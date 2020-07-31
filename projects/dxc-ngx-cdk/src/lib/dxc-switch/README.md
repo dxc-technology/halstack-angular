@@ -19,7 +19,7 @@ Include the **DxcSwitchModule** into **app.module.ts** to use the Switch compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcSwitchModule } from "@diaas/dxc-ngx-cdk";
+import { DxcSwitchModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

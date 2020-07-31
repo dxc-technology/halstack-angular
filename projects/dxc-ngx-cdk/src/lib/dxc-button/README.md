@@ -22,7 +22,7 @@ Include the **DxcButtonModule** into **app.module.ts** to use the button compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcButtonModule } from "@diaas/dxc-ngx-cdk";
+import { DxcButtonModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

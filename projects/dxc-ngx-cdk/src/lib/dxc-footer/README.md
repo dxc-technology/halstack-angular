@@ -20,7 +20,7 @@ Include the **DxcFooterModule** into **app.module.ts** to use the footer compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcFooterModule } from "@diaas/dxc-ngx-cdk";
+import { DxcFooterModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

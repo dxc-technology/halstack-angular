@@ -7,7 +7,7 @@ Include the **DxcRadioModule** into **app.module.ts** to use the radio component
 ```ts
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { DxcRadioModule } from '@diaas/dxc-ngx-cdk';
+import { DxcRadioModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

@@ -2,8 +2,6 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from "@angular/core";
 import { Example } from "src/app/model/example";
 import { ExampleService } from "src/app/service/example.service";
 import { ChipBasicComponent } from "../chip-basic/chip-basic.component";
-import { ChipColouredComponent } from "../chip-coloured/chip-coloured.component";
-import { ChipBorderComponent } from "../chip-border/chip-border.component";
 import { ChipDisabledComponent } from '../chip-disabled/chip-disabled.component';
 
 @Component({
@@ -42,37 +40,13 @@ export class ChipExampleComponent implements OnInit {
         );
       });
     this.exampleService
-      .getCodeExample("chip/chip-coloured/chip-coloured.component")
-      .subscribe((resp1) => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Chip with background",
-            component: ChipColouredComponent,
-            selector: "example2",
-            examples: [resp1[0], resp1[1], resp1[2]],
-          })
-        );
-      });
-    this.exampleService
-      .getCodeExample("chip/chip-border/chip-border.component")
-      .subscribe((resp1) => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Bordered Chip",
-            component: ChipBorderComponent,
-            selector: "example3",
-            examples: [resp1[0], resp1[1], resp1[2]],
-          })
-        );
-      });
-    this.exampleService
       .getCodeExample("chip/chip-disabled/chip-disabled.component")
       .subscribe((resp1) => {
         this.examples.push(
           this.exampleService.generateExample({
             title: "Disabled Chip",
             component: ChipDisabledComponent,
-            selector: "example4",
+            selector: "example2",
             examples: [resp1[0], resp1[1], resp1[2]],
           })
         );

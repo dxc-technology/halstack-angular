@@ -17,16 +17,12 @@ import { ChipBasicComponent } from "src/app/components/examples/chip/chip-basic/
 import { ChipExampleComponent } from "src/app/components/examples/chip/chip-example/chip-example.component";
 import { ChipTablePropertiesComponent } from "src/app/components/examples/chip/properties/box-table-properties/chip-table-properties.component";
 import { ChipImportComponent } from "src/app/components/examples/chip/chip-import/chip-import.component";
-import { ChipBorderComponent } from 'src/app/components/examples/chip/chip-border/chip-border.component';
-import { ChipColouredComponent } from 'src/app/components/examples/chip/chip-coloured/chip-coloured.component';
 import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-disabled/chip-disabled.component';
 
 @NgModule({
   declarations: [
     ChipComponent,
     ChipBasicComponent,
-    ChipBorderComponent,
-    ChipColouredComponent,
     ChipDisabledComponent,
     ChipExampleComponent,
     ChipTablePropertiesComponent,
@@ -47,8 +43,6 @@ import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-dis
   exports: [
     ChipComponent,
     ChipBasicComponent,
-    ChipBorderComponent,
-    ChipColouredComponent,
     ChipDisabledComponent,
     ChipExampleComponent,
     ChipTablePropertiesComponent,

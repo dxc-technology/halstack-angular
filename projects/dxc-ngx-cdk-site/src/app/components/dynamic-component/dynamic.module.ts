@@ -52,6 +52,13 @@ import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/che
 import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/checkbox-simple.component";
 import { CheckboxSizedComponent } from "../examples/checkbox/checkbox-sized/checkbox-sized.component";
 import { CheckboxExampleComponent } from "../examples/checkbox/checkbox-example/checkbox-example.component";
+import { ChipBasicComponent } from '../examples/chip/chip-basic/chip-basic.component';
+import { ChipBorderComponent } from '../examples/chip/chip-border/chip-border.component';
+import { ChipColouredComponent } from '../examples/chip/chip-coloured/chip-coloured.component';
+import { ChipDisabledComponent } from '../examples/chip/chip-disabled/chip-disabled.component';
+import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example.component';
+import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
+import { ChipTablePropertiesComponent } from '../examples/chip/properties/box-table-properties/chip-table-properties.component';
 import { DatePropertiesComponent } from "../examples/date/properties/date-properties/date-properties.component";
 import { DateSizedComponent } from "../examples/date/date-sized/date-sized.component";
 import { DateExampleComponent } from "../examples/date/date-example/date-example.component";
@@ -225,7 +232,6 @@ import { UploadImportComponent } from '../examples/upload/upload-import/upload-i
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
 import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
 
-
 @NgModule({
   declarations: [DynamicComponentComponent],
   imports: [BrowserModule, FormsModule, PortalModule],
@@ -281,6 +287,13 @@ import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/drop
     CheckboxSimpleComponent,
     CheckboxUncontrolledComponent,
     CheckboxSizedComponent,
+    ChipBasicComponent,
+    ChipBorderComponent,
+    ChipColouredComponent,
+    ChipDisabledComponent,
+    ChipExampleComponent,
+    ChipImportComponent,
+    ChipTablePropertiesComponent,
     DatePropertiesComponent,
     DateExampleComponent,
     DateSizedComponent,

@@ -53,8 +53,6 @@ import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/ch
 import { CheckboxSizedComponent } from "../examples/checkbox/checkbox-sized/checkbox-sized.component";
 import { CheckboxExampleComponent } from "../examples/checkbox/checkbox-example/checkbox-example.component";
 import { ChipBasicComponent } from '../examples/chip/chip-basic/chip-basic.component';
-import { ChipBorderComponent } from '../examples/chip/chip-border/chip-border.component';
-import { ChipColouredComponent } from '../examples/chip/chip-coloured/chip-coloured.component';
 import { ChipDisabledComponent } from '../examples/chip/chip-disabled/chip-disabled.component';
 import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example.component';
 import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
@@ -288,8 +286,6 @@ import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/drop
     CheckboxUncontrolledComponent,
     CheckboxSizedComponent,
     ChipBasicComponent,
-    ChipBorderComponent,
-    ChipColouredComponent,
     ChipDisabledComponent,
     ChipExampleComponent,
     ChipImportComponent,

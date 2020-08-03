@@ -41,7 +41,7 @@ jobs:
       run: cd ./projects/dxc-ngx-cdk && npm run test
 
     - name: Build angular cdk site
-      run: cd . && ng build angular-dxc-site --baseHref=/tools/angular/next
+      run: cd ./projects/dxc-ngx-cdk && ng build angular-dxc-site --baseHref=/tools/angular/next
       
     # - name: Publish alpha to npm
     #   run: |

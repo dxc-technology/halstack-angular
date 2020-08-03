@@ -20,6 +20,16 @@ jobs:
       with:
         node-version: 10.x
         registry-url: https://registry.npmjs.org/
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+        role-to-assume: ${{ secrets.AWS_ROLE_SANDBOX }}
+        role-duration-seconds: 3600
+        role-skip-session-tagging: true
       
     - name: Install lib dependencies
       run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib
@@ -29,6 +39,9 @@ jobs:
     
     - name: Test library
       run: cd ./projects/dxc-ngx-cdk && npm run test
+
+    - name: Build angular cdk site
+      run: ng build angular-dxc-site --baseHref=/tools/angular/next
       
     - name: Publish alpha to npm
       run: |
@@ -37,3 +50,8 @@ jobs:
         npm publish --tag next --access public
       env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+    
+    - name: Publish angular cdk site next version in S3
+      run: |
+        aws s3 rm s3://design-system-angular-cdk-site/tools/angular/next/ --recursive
+        aws s3 cp ./dist/angular-dxc-site s3://design-system-angular-cdk-site/tools/angular/next --recursive

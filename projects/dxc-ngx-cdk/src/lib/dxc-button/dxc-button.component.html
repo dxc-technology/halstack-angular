@@ -1,5 +1,5 @@
 <button
-  *ngIf="mode !== 'raised' && mode !== 'outlined' && mode !== 'flat'"
+  disableRipple
   mat-button
   [disabled]="disabled"
   (click)="onClickHandler($event)"
@@ -14,59 +14,5 @@
     src="{{ iconSrc }}"
     *ngIf="iconSrc && iconPosition !== 'before'"
     class=" icon-after"
-  />
-</button>
-<button
-  *ngIf="mode === 'raised'"
-  mat-raised-button
-  [disabled]="disabled"
-  (click)="onClickHandler($event)"
->
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition === 'before'"
-    class="icon-before"
-  />
-  <span *ngIf="label">{{ label }}</span>
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition !== 'before'"
-    class="icon-after"
-  />
-</button>
-<button
-  *ngIf="mode === 'outlined'"
-  mat-stroked-button
-  [disabled]="disabled"
-  (click)="onClickHandler($event)"
->
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition === 'before'"
-    class="icon-before"
-  />
-  <span *ngIf="label">{{ label }}</span>
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition !== 'before'"
-    class="icon-after"
-  />
-</button>
-<button
-  (click)="onClickHandler($event)"
-  *ngIf="mode === 'flat'"
-  mat-flat-button
-  [disabled]="disabled"
->
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition === 'before'"
-    class="icon-before "
-  />
-  <span *ngIf="label">{{ label }}</span>
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition !== 'before'"
-    class="icon-after"
   />
 </button>

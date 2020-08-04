@@ -79,6 +79,7 @@ You run the tests from the library folder `projects/dxc-ngx-cdk`.
 cd projects/dxc-ngx-cdk/
 ```
 
+
 For running the tests after the library dependencies has been installed
 
 ```bash

@@ -1,5 +1,6 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { Theme } from './symbols';
+import { defaultTheme } from './defaultTheme';
 
 @Injectable()
 export class ThemeService {
@@ -7,7 +8,9 @@ export class ThemeService {
   themeChange = new EventEmitter<Theme>();
   theme: Theme;
 
-  constructor() {}
+  constructor() {
+    this.registerTheme(defaultTheme);
+  }
 
   getTheme() {
     return this.theme;
@@ -18,7 +21,12 @@ export class ThemeService {
   }
 
   registerTheme(theme: Theme) {
-    this.theme = theme;
+    if(this.theme !== undefined){
+       Object.assign(this.theme.properties, theme.properties);
+    }
+    else{
+      this.theme = theme;
+    }
     this.themeChange.emit(this.theme);
   }
 

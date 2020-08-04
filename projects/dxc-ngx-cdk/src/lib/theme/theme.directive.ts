@@ -4,12 +4,14 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Theme } from './symbols';
 
+
 @Directive({
   selector: '[theme]'
 })
 export class ThemeDirective implements OnInit, OnDestroy {
 
   private _destroy$ = new Subject();
+  theme: Theme;
 
   constructor(
     private _elementRef: ElementRef,
@@ -26,8 +28,30 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   updateTheme(theme: Theme) {
-    for (const key in theme.properties) {
-      this._elementRef.nativeElement.style.setProperty(key, theme.properties[key]);
+    this.theme = theme;
+    this.setProperties(this.theme.properties);
+  }
+
+  private setProperties(obj, parent?){
+    for (const key in obj) {
+      if ((typeof obj[key]) === "string" ){
+        if(parent !== undefined){
+          let keyName = `--${parent}-${key}`;
+          this._elementRef.nativeElement.style.setProperty(keyName.toString(), obj[key]);
+        }
+        else{
+          this._elementRef.nativeElement.style.setProperty(key, obj[key]);
+        }
+      }
+      else{
+        if(parent !== undefined){
+          let keyName = `${parent}-${key}`;
+          this.setProperties(obj[key],keyName);
+        }
+        else{
+          this.setProperties(obj[key],key);
+        }
+      }
     }
   }
 

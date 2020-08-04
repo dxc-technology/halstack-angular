@@ -14,7 +14,7 @@ export class ButtonDarkThemeComponent implements OnInit {
 
 
   onClick(){
-    console.log('Click on button dark theme');
+    console.log('Click on button primary mode');
   }
 
 }

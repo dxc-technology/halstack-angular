@@ -224,6 +224,7 @@ import { TextInputImportComponent } from '../examples/text-input/text-input-impo
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
 import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
+import { ButtonTextModeComponent } from '../examples/button/button-text-mode/button-text-mode.component';
 
 
 @NgModule({
@@ -452,7 +453,8 @@ import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/drop
     TextInputImportComponent,
     UploadImportComponent,
     WizardImportComponent,
-    DropdownHoverComponent
+    DropdownHoverComponent,
+    ButtonTextModeComponent
   ]
 })
 export class DynamicModule {}

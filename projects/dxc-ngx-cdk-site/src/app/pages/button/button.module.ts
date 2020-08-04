@@ -16,6 +16,7 @@ import { ButtonImportComponent } from '../../components/examples/button/button-i
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { ButtonTextModeComponent } from '../../components/examples/button/button-text-mode/button-text-mode.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
-    ButtonImportComponent
+    ButtonImportComponent,
+    ButtonTextModeComponent
     ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
-    ButtonImportComponent
+    ButtonImportComponent,
+    ButtonTextModeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

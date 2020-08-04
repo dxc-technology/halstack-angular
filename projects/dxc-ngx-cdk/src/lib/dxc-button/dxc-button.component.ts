@@ -13,17 +13,11 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-button",
   templateUrl: "./dxc-button.component.html",
-  styleUrls: [
-    "./dxc-light-button.component.scss",
-    "./dxc-dark-button.component.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcButtonComponent {
   @Input() mode: string;
-  @Input() theme: string;
   @Input() disabled: boolean;
-  @Input() disableRipple: boolean;
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;
@@ -33,14 +27,10 @@ export class DxcButtonComponent {
   @Output() onClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
-    mode: "basic",
-    theme: "light",
+    mode: "secondary",
     disabled: false,
-    disableRipple: false,
     label: null,
     iconSrc: null,
     iconPosition: "before",
@@ -54,13 +44,6 @@ export class DxcButtonComponent {
     if (this.iconPosition !== "after") {
       this.iconPosition = "before";
     }
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -71,13 +54,6 @@ export class DxcButtonComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
   }
 
   public onClickHandler($event: any): void {
@@ -111,10 +87,8 @@ export class DxcButtonComponent {
       display: inline-flex;
       vertical-align: middle;
       ${this.utils.calculateWidth(this.sizes, inputs)}
-      button.mat-raised-button,
-      button.mat-button,
-      button.mat-stroked-button,
-      button.mat-flat-button {
+      button {
+        padding: 10px 28px;
         ${this.setPadding(inputs.size)}
         border-radius: 4px;
         width: 100%;
@@ -124,14 +98,12 @@ export class DxcButtonComponent {
         font-weight: 500;
         white-space: normal;
         letter-spacing: 1px;
+        border: 2px solid transparent;
+        ${this.getModeStyle()}
         img {
           height: 15px;
           width: 15px;
           z-index: 20;
-        }
-        .mat-ripple-element {
-          transition-duration: 200ms !important;
-          transition: opacity, transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         }
         span.mat-button-wrapper {
           text-transform: uppercase;
@@ -194,10 +166,90 @@ export class DxcButtonComponent {
           opacity: 0.5;
         }
       }
+    `;
+  }
 
-      button.mat-stroked-button {
-        padding: 10px 28px;
-      }
+  getModeStyle(){
+    if(this.mode === "primary"){
+      return this.getPrimaryStyle();
+    } else if(this.mode === "text"){
+      return this.getTextStyle();
+    } else {
+      return this.getSecondaryStyle();
+    }
+  }
+
+  getPrimaryStyle(){
+    return css`
+        background: var(--button-color,var(--yellow)); 
+        &:disabled
+        ::ng-deep {
+           span.mat-button-wrapper  span {
+                color: var(--black);
+                opacity: 1;
+            }
+        }
+        &:disabled {
+            opacity: 0.5;
+        }
+        &:hover:not([disabled]) {
+            background: var(--button-hoverColor, var(--black));
+            color:var(--button-primaryHoverFontColor, var(--yellow));
+        }
+        &:focus {
+            border: 2px solid #005FCC; 
+        }
+    `;
+  }
+  getSecondaryStyle(){
+    return css `
+        border: 2px solid var(--button-color,var(--yellow)); 
+        &:hover:not([disabled]) {
+          background-color: transparent;
+          border-color: var(--button-hoverColor,var(--black)); 
+          ::ng-deep {
+            .mat-button-focus-overlay {
+              opacity: 0;
+            }
+          }
+        }
+        &:disabled {
+          border: 2px solid var(--button-color,var(--yellow)); 
+          ::ng-deep {
+            span.mat-button-wrapper > span {
+              color: var(--black);
+            }
+          }
+        }
+        &:focus {
+          border: 2px solid #005FCC; 
+        }
+    `;
+  }
+  getTextStyle(){
+    return css `
+        background-color: transparent; 
+        &:hover:not([disabled]) {
+            background: var(--button-hoverColor, var(--black));
+            color: var(--button-textHoverFontColor, var(--white));
+            ::ng-deep {
+                span.mat-button-wrapper > span {
+                    color: var(--button-textHoverFontColor, var(--black));
+                }
+            }
+        }
+        &:disabled
+        ::ng-deep {
+           span.mat-button-wrapper  span {
+                color: var(--black);
+                opacity: 1;
+            }
+        }
+        &:focus {
+            border: 2px solid #005FCC; 
+            background: var(--button-hoverColor, var(--black));
+            color: var(--button-textHoverFontColor, var(--white));
+        }
     `;
   }
 }

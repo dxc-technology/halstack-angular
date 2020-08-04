@@ -16,6 +16,7 @@ export const defaultTheme: Theme = {
     "--lightPink": "#F9CFCF",
     "--lightGreen": "#DBF1C4",
     "--disableLight": "#A5A5A5",
-    "--disableDark": "#959595"
-  }
+    "--disableDark": "#959595",
+  },
+
 };

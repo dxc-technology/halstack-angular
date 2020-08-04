@@ -9,8 +9,10 @@ A clear and concise description of what the bug is.
 **To Reproduce**
 Steps to reproduce the behavior:
 
-1. Go to the url of a diaas-web-starter forked repository and clone it
-2. Install de dependencies and run the app
+Example:
+
+1. Start a new empty Angular project
+2. Install the `halstack-angular` dependencies and run the app
 3. Click on '....'
 4. Scroll down to '....'
 5. See error

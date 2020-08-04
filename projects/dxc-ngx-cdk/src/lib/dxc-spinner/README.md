@@ -20,7 +20,7 @@ Include the **DxcSpinnerModule** into **app.module.ts** to use the toggle compon
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcSpinnerModule } from "@diaas/dxc-ngx-cdk";
+import { DxcSpinnerModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

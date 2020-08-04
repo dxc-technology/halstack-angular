@@ -20,7 +20,7 @@ Include the **DxcToggleModule** into **app.module.ts** to use the toggle compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcToggleModule } from "@diaas/dxc-ngx-cdk";
+import { DxcToggleModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

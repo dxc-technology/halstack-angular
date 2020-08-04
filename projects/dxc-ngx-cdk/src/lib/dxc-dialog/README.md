@@ -31,7 +31,7 @@ Include the **DxcDialogModule** into **app.module.ts** to use the dialog compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcDialogModule } from "@diaas/dxc-ngx-cdk";
+import { DxcDialogModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

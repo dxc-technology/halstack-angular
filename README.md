@@ -53,10 +53,10 @@ npm run build-lib:watch
 
 ### Example Application
 
-Contained in `diaas-angular-cdk` folder.
+Contained in `halstack-angular` folder.
 
 ````bash
-cd diaas-angular-cdk
+cd halstack-angular
 ````
 
 Install the application dependencies. The Assure Angular CDK dependency is linked to the local lib file in `dist/dxc-ngx-cdk`. This one must have been previously built as shown before.
@@ -78,6 +78,7 @@ You run the tests from the library folder `projects/dxc-ngx-cdk`.
 ```bash
 cd projects/dxc-ngx-cdk/
 ```
+
 
 For running the tests after the library dependencies has been installed
 

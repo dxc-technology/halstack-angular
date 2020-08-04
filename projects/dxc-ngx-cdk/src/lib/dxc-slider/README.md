@@ -7,7 +7,7 @@ Include the **DxcSliderModule** into **app.module.ts** to use the slider compone
 ```ts
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { DxcSliderModule } from '@diaas/dxc-ngx-cdk';
+import { DxcSliderModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],

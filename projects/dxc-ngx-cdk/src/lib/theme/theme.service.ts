@@ -7,6 +7,7 @@ export class ThemeService {
 
   themeChange = new EventEmitter<Theme>();
   theme: Theme;
+  count = 0;
 
   constructor() {
     this.registerTheme(defaultTheme);
@@ -22,7 +23,15 @@ export class ThemeService {
 
   registerTheme(theme: Theme) {
     if(this.theme !== undefined){
-       Object.assign(this.theme.properties, theme.properties);
+      for(const key in this.theme.properties){
+        if(theme.properties.hasOwnProperty(key)){
+          for(const component in this.theme.properties[key]){
+            if(theme.properties[key].hasOwnProperty(component)){
+              this.theme.properties[key][component] = theme.properties[key][component];
+            }
+          }
+        }
+      }
     }
     else{
       this.theme = theme;

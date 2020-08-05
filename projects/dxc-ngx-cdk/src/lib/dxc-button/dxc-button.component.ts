@@ -163,7 +163,6 @@ export class DxcButtonComponent {
 
         &:disabled {
           cursor: not-allowed;
-          opacity: 0.5;
         }
       }
     `;
@@ -181,74 +180,55 @@ export class DxcButtonComponent {
 
   getPrimaryStyle(){
     return css`
-        background: var(--button-color,var(--yellow)); 
-        &:disabled
-        ::ng-deep {
-           span.mat-button-wrapper  span {
-                color: var(--black);
-                opacity: 1;
-            }
+        background: var(--button-color); 
+        color:var(--button-primaryFontColor);
+        &:hover:not([disabled]) {
+            background: var(--button-primaryHoverBackgroundColor);
+            color:var(--button-primaryHoverFontColor);
         }
         &:disabled {
-            opacity: 0.5;
-        }
-        &:hover:not([disabled]) {
-            background: var(--button-hoverColor, var(--black));
-            color:var(--button-primaryHoverFontColor, var(--yellow));
+          opacity: var(--button-primaryDisabledOpacity);
         }
         &:focus {
-            border: 2px solid #005FCC; 
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: blue;
         }
     `;
   }
   getSecondaryStyle(){
     return css `
-        border: 2px solid var(--button-color,var(--yellow)); 
+        border: 2px solid var(--button-color); 
+        color:var(--button-secondaryFontColor);
+        background-color: var(--button-secondaryBackgroundColor); 
         &:hover:not([disabled]) {
-          background-color: transparent;
-          border-color: var(--button-hoverColor,var(--black)); 
-          ::ng-deep {
-            .mat-button-focus-overlay {
-              opacity: 0;
-            }
-          }
+          border-color: var(--button-hoverColor); 
+          color:var(--button-secondaryHoverFontColor);
         }
         &:disabled {
-          border: 2px solid var(--button-color,var(--yellow)); 
-          ::ng-deep {
-            span.mat-button-wrapper > span {
-              color: var(--black);
-            }
-          }
+          opacity: var(--button-secondaryDisabledOpacity); 
         }
         &:focus {
-          border: 2px solid #005FCC; 
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: blue;
         }
     `;
   }
   getTextStyle(){
     return css `
-        background-color: transparent; 
+        background-color: var(--button-textBackgroundColor);
+        color: var(--button-textFontColor);
         &:hover:not([disabled]) {
-            background: var(--button-hoverColor, var(--black));
-            color: var(--button-textHoverFontColor, var(--white));
-            ::ng-deep {
-                span.mat-button-wrapper > span {
-                    color: var(--button-textHoverFontColor, var(--black));
-                }
-            }
+          background: var(--button-hoverColor);
+          color: var(--button-textHoverFontColor);
         }
-        &:disabled
-        ::ng-deep {
-           span.mat-button-wrapper  span {
-                color: var(--black);
-                opacity: 1;
-            }
+        &:disabled {
+          opacity: var(--button-textDisabledOpacity); 
         }
         &:focus {
-            border: 2px solid #005FCC; 
-            background: var(--button-hoverColor, var(--black));
-            color: var(--button-textHoverFontColor, var(--white));
+          background: var(--button-hoverColor, var(--black));
+          color: var(--button-textHoverFontColor, var(--white));
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: blue;
         }
     `;
   }

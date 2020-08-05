@@ -13,6 +13,7 @@ jobs:
     - uses: jungwinter/split@v1
       id: split
       with:
+        seperator: '.'
         msg: ${{ github.event.release.tag_name }}
 
     - name: Checkout repository

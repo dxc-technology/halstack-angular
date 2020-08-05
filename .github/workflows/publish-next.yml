@@ -42,6 +42,14 @@ jobs:
 
     - name: Build angular cdk site
       run: cd . && npm run build-next-cdk-site
+    
+    - name: Publish next to npm
+      run: |
+        sed -i "s#\"version\": \"0.0.0\"#\"version\": \"0.0.0-${GITHUB_SHA:0:7}\"#" ./dist/dxc-ngx-cdk/package.json
+        cd ./dist/dxc-ngx-cdk
+        npm publish --tag next --access public
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       
     - name: Publish angular cdk site next version in S3
       run: |

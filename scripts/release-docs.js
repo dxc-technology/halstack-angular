@@ -38,7 +38,7 @@ const moveToBucket = (version) => {
   return new Promise((resolve, reject) => {
     exec(
       `aws s3 rm s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive &&
-        aws s3 cp ./docs/build/ s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
+        aws s3 cp ./dist/angular-dxc-site s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
       (error, stdout, stderr) => {
         if (error) {
           throw new Error(error.message);

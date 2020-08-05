@@ -193,6 +193,9 @@ export class DxcButtonComponent {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: blue;
         }
+        &:active {
+          opacity: var(--button-primaryActiveOpacity);
+        }
     `;
   }
   getSecondaryStyle(){
@@ -211,6 +214,10 @@ export class DxcButtonComponent {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: blue;
         }
+        &:active {
+          opacity: var(--button-secondaryActiveOpacity);
+          border-color: var(--button-hoverColor); 
+        }
     `;
   }
   getTextStyle(){
@@ -225,10 +232,15 @@ export class DxcButtonComponent {
           opacity: var(--button-textDisabledOpacity); 
         }
         &:focus {
-          background: var(--button-hoverColor, var(--black));
-          color: var(--button-textHoverFontColor, var(--white));
+          background: var(--button-hoverColor);
+          color: var(--button-textHoverFontColor);
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: blue;
+        }
+        &:active {
+          opacity: var(--button-textActiveOpacity);
+          background: var(--button-hoverColor);
+          color: var(--button-textHoverFontColor);
         }
     `;
   }

@@ -29,12 +29,12 @@ export class ThemeDirective implements OnInit, OnDestroy {
 
   updateTheme(theme: Theme) {
     this.theme = theme;
-    this.setProperties(this.theme.properties);
+    this.setProperties(theme.properties);
   }
 
   private setProperties(obj, parent?){
     for (const key in obj) {
-      if ((typeof obj[key]) === "string" ){
+      if ((typeof obj[key]) === "string" || (typeof obj[key]) === "number"){
         if(parent !== undefined){
           let keyName = `--${parent}-${key}`;
           this._elementRef.nativeElement.style.setProperty(keyName.toString(), obj[key]);

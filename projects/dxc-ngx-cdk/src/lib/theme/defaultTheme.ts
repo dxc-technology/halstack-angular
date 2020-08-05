@@ -25,16 +25,19 @@ export const defaultTheme: Theme = {
       "hoverColor": colors.black,
 
       "primaryDisabledOpacity": 0.34,
+      "primaryActiveOpacity": 0.64,
       "primaryFontColor": colors.black,
       "primaryHoverFontColor": colors.yellow,
       "primaryHoverBackgroundColor": colors.black,
 
       "secondaryDisabledOpacity": 0.34,
+      "secondaryActiveOpacity": 0.64,
       "secondaryBackgroundColor": "transparent",
       "secondaryFontColor": colors.black,
       "secondaryHoverFontColor": colors.black,
 
       "textDisabledOpacity": 0.34,
+      "textActiveOpacity": 0.64,
       "textBackgroundColor": "transparent",
       "textFontColor": colors.black,
       "textHoverFontColor": colors.white

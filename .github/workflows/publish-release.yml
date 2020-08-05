@@ -39,7 +39,7 @@ jobs:
       run: cd ./projects/dxc-ngx-cdk && npm run test
     
     - name: Build angular release cdk site
-      run: cd . && npm run build-release-cdk-site $TAG_NAME 
+      run: cd . && npm run build-release-cdk-site /tools/angular/$TAG_NAME
       env: 
           TAG_NAME: ${{ github.event.release.tag_name }}
 

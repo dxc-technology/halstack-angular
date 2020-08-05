@@ -230,6 +230,8 @@ import { UploadImportComponent } from '../examples/upload/upload-import/upload-i
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
 import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
 import { ButtonTextModeComponent } from '../examples/button/button-text-mode/button-text-mode.component';
+import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
+import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -463,7 +465,9 @@ import { ButtonTextModeComponent } from '../examples/button/button-text-mode/but
     UploadImportComponent,
     WizardImportComponent,
     DropdownHoverComponent,
-    ButtonTextModeComponent
+    ButtonTextModeComponent,
+    ButtonThemeComponent,
+    ButtonApiComponent
   ]
 })
 export class DynamicModule {}

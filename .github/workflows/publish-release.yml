@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: jungwinter/split@v1
+      id: split
+      with:
+        seperator: '.'
+        msg: ${{ github.event.release.tag_name }}
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -39,7 +45,7 @@ jobs:
       run: cd ./projects/dxc-ngx-cdk && npm run test
     
     - name: Build angular release cdk site
-      run: cd . && npm run build-release-cdk-site $TAG_NAME 
+      run: cd . && npm run build-release-cdk-site /tools/angular/${{steps.split.outputs._0}}
       env: 
           TAG_NAME: ${{ github.event.release.tag_name }}
 

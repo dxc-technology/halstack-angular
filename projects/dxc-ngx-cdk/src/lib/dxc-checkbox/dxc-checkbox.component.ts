@@ -18,9 +18,7 @@ import { CssUtils } from "../utils";
 })
 export class DxcCheckboxComponent implements OnInit {
   @Input() value: string;
-  @Input() theme: string;
   @Input() checked: boolean;
-  @Input() disableRipple: boolean;
   @Input() disabled: boolean | string;
   @Input() required: boolean | string;
   @Input() label: string;
@@ -38,10 +36,8 @@ export class DxcCheckboxComponent implements OnInit {
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
-    theme: "light",
     checked: false,
     disabled: false,
-    disableRipple: false,
     required: false,
     label: null,
     name: null,

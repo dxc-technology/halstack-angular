@@ -138,7 +138,7 @@ export class DxcCheckboxComponent implements OnInit {
               }
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
       .mat-checkbox-checked.mat-accent .mat-checkbox-background{
-          background: var(--checkbox-backgroundColorChecked) !important;
+          background: var(--checkbox-color) !important;
       }
       mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background:focus, 
       mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame:focus{
@@ -157,7 +157,7 @@ export class DxcCheckboxComponent implements OnInit {
           span.mat-checkbox-label {
             width: calc(100% - 50px);
             word-break: break-word;
-            color: var(--checkbox-text);
+            color: var(--checkbox-fontColor);
           }
 
           .mat-checkbox-inner-container {

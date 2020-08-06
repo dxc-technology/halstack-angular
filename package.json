@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve angular-dxc-site --baseHref=/tools/angular/",
     "start-example": "ng serve dxc-angular-cdk",
-    "build-next-cdk-site":"ng build angular-dxc-site --baseHref=/tools/angular/next",
+    "build-next-cdk-site":"ng build angular-dxc-site --baseHref=/tools/angular/next/",
     "build-release-cdk-site":"ng build angular-dxc-site ",
     "test": "jest",
     "lint": "ng lint",

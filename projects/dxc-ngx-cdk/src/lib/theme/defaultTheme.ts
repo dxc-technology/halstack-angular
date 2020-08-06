@@ -59,9 +59,9 @@ export const customTheme: Theme = {
       "textHoverFontColor": colors.white
     },
     "checkbox":{
-      "backgroundColorChecked": colors.yellow,
+      "color": colors.yellow,
       "checkColor": colors.black,
-      "text": colors.black
+      "fontColor": colors.black
     }
   }
 };

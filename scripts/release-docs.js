@@ -41,6 +41,7 @@ const moveToBucket = (version) => {
         aws s3 cp ./dist/angular-dxc-site s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
       (error, stdout, stderr) => {
         if (error) {
+          console.log(error.message);
           throw new Error(error.message);
         }
         if (stderr) {

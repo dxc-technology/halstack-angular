@@ -34,14 +34,31 @@ const getVersionsInS3Bucket = async () => {
   });
 };
 
-const moveToBucket = (version) => {
-  return new Promise((resolve, reject) => {
+const removeBucket = (version) => {
+   return new Promise((resolve, reject) => {
+    console.log(`Removin s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
     exec(
-      `aws s3 rm s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive &&
-        aws s3 cp ./dist/angular-dxc-site s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
+      `aws s3 rm s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
       (error, stdout, stderr) => {
         if (error) {
-          console.log(error.message);
+          throw new Error(error.message);
+        }
+        if (stderr) {
+          throw new Error(stderr);
+        }
+        resolve(stdout);
+      }
+    );
+  }); 
+};
+
+const moveToBucket = (version) => {
+  return new Promise((resolve, reject) => {
+    console.log(`Moving to s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
+    exec(
+      `aws s3 cp ./dist/angular-dxc-site s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
+      (error, stdout, stderr) => {
+        if (error) {
           throw new Error(error.message);
         }
         if (stderr) {
@@ -78,6 +95,7 @@ const deploy = async () => {
   );
   const existingVersionsInBucket = await getVersionsInS3Bucket();
   const isNewLatest = !existingVersionsInBucket.includes(majorVersionToDeploy);
+  await removeBucket(majorVersionToDeploy);
   await moveToBucket(majorVersionToDeploy);
   if (isNewLatest) {
     await updateRedirectionToLatest(majorVersionToDeploy);

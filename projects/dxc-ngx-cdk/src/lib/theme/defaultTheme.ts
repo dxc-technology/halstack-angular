@@ -21,24 +21,39 @@ const colors = {
 export const defaultTheme: Theme = {
   properties: {
     "button":{
-      "color": colors.yellow,
-      "hoverColor": colors.black,
-
       "primaryDisabledOpacity": 0.34,
       "primaryActiveOpacity": 0.64,
-      "primaryFontColor": colors.black,
-      "primaryHoverFontColor": colors.yellow,
-      "primaryHoverBackgroundColor": colors.black,
 
       "secondaryDisabledOpacity": 0.34,
       "secondaryActiveOpacity": 0.64,
       "secondaryBackgroundColor": "transparent",
-      "secondaryFontColor": colors.black,
-      "secondaryHoverFontColor": colors.black,
 
       "textDisabledOpacity": 0.34,
       "textActiveOpacity": 0.64,
       "textBackgroundColor": "transparent",
+
+    },
+    "checkbox":{
+      "opacityDisabled": 0.34,
+      "opacityDisabledCheckColor": 0.34,
+      "text": ""
+    }
+  }
+};
+
+export const customTheme: Theme = {
+  properties: {
+    "button":{
+      "color": colors.yellow,
+      "hoverColor": colors.black,
+
+      "primaryFontColor": colors.black,
+      "primaryHoverFontColor": colors.yellow,
+      "primaryHoverBackgroundColor": colors.black,
+
+      "secondaryFontColor": colors.black,
+      "secondaryHoverFontColor": colors.black,
+
       "textFontColor": colors.black,
       "textHoverFontColor": colors.white
     }

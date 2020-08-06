@@ -1,6 +1,6 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { Theme } from './symbols';
-import { defaultTheme } from './defaultTheme';
+import { defaultTheme, customTheme } from './defaultTheme';
 
 @Injectable()
 export class ThemeService {
@@ -10,7 +10,7 @@ export class ThemeService {
   count = 0;
 
   constructor() {
-    this.registerTheme(defaultTheme);
+    this.registerTheme(customTheme);
   }
 
   getTheme() {
@@ -26,9 +26,14 @@ export class ThemeService {
       for(const key in this.theme.properties){
         if(theme.properties.hasOwnProperty(key)){
           for(const component in this.theme.properties[key]){
-            if(theme.properties[key].hasOwnProperty(component)){
+            if(theme.properties[key].hasOwnProperty(component) && !defaultTheme.properties[key][component]){
               this.theme.properties[key][component] = theme.properties[key][component];
             }
+          }
+        }
+        if(defaultTheme.properties.hasOwnProperty(key)){
+          for(const component in defaultTheme.properties[key]){
+            this.theme.properties[key][component] = defaultTheme.properties[key][component];
           }
         }
       }

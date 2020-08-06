@@ -14,11 +14,6 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-checkbox",
   templateUrl: "./dxc-checkbox.component.html",
-  styleUrls: [
-    "./dxc-checkbox.component.scss",
-    "./dxc-light-checkbox.component.scss",
-    "./dxc-dark-checkbox.component.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcCheckboxComponent implements OnInit {
@@ -38,8 +33,6 @@ export class DxcCheckboxComponent implements OnInit {
   @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   renderedChecked : boolean;
 
@@ -67,13 +60,6 @@ export class DxcCheckboxComponent implements OnInit {
   };
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     this.renderedChecked = this.checked;
     
     this.labelPosition === "after" ? "after" : "before";
@@ -145,11 +131,22 @@ export class DxcCheckboxComponent implements OnInit {
         inputs.size
       )}
       display: inline-flex;
+      vertical-align: top;
+      mat-checkbox:focus {
+                outline: -webkit-focus-ring-color auto 1px;
+                outline-color: blue;
+              }
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
       .mat-checkbox-checked.mat-accent .mat-checkbox-background{
-          background: var(--yellow) !important;
+          background: var(--checkbox-backgroundColorChecked) !important;
+      }
+      mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background:focus, 
+      mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame:focus{
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: blue;
       }
       mat-checkbox {
+        display: inline-flex; 
         width: 100%;
         label.mat-checkbox-layout {
           display: inline-flex;
@@ -160,7 +157,7 @@ export class DxcCheckboxComponent implements OnInit {
           span.mat-checkbox-label {
             width: calc(100% - 50px);
             word-break: break-word;
-            ${this.setTextAlign(inputs.labelPosition)}
+            color: var(--checkbox-text);
           }
 
           .mat-checkbox-inner-container {
@@ -175,36 +172,24 @@ export class DxcCheckboxComponent implements OnInit {
 
             .mat-checkbox-background {
               svg path {
-                stroke: black !important;
+                stroke: var(--checkbox-checkColor) !important;
                 stroke-width: 3px;
               }
             }
           }
         }
-
         &.mat-checkbox-disabled {
-          cursor: not-allowed;
-        }
-
-        .mat-checkbox-ripple {
-          left: calc(50% - 23.3px);
-          top: calc(50% - 23.3px);
-          height: 46.6px;
-          width: 46.6px;
-        }
-
-        .mat-ripple-element:not(.mat-checkbox-persistent-ripple) {
-          height: 46.6px !important;
-          width: 46.6px !important;
-          left: 0px !important;
-          top: 0px !important;
-          opacity: 0.25;
-        }
-
-        .mat-checkbox-inner-container:focus .mat-checkbox-persistent-ripple {
-          opacity: 0.15;
-        }
+          cursor: not-allowed; 
+          .mat-checkbox-inner-container {
+            opacity: var(--checkbox-opacityDisabled);
+          }
+          label.mat-checkbox-layout span.mat-checkbox-label {
+            opacity: var(--checkbox-opacityDisabledCheckColor);
+          }
+        }   
       }
     `;
   }
+
+
 }

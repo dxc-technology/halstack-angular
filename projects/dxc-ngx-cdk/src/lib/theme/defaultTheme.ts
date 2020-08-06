@@ -1,4 +1,5 @@
 import { Theme } from "./symbols";
+// import { readableColor } from 'polished';
 
 const colors = {
   black: "#000000",
@@ -36,7 +37,7 @@ export const defaultTheme: Theme = {
     "checkbox":{
       "opacityDisabled": 0.34,
       "opacityDisabledCheckColor": 0.34,
-      "text": ""
+      // "text": readableColor(colors.black)
     }
   }
 };
@@ -56,6 +57,11 @@ export const customTheme: Theme = {
 
       "textFontColor": colors.black,
       "textHoverFontColor": colors.white
+    },
+    "checkbox":{
+      "backgroundColorChecked": colors.yellow,
+      "checkColor": colors.black,
+      "text": colors.black
     }
   }
 };

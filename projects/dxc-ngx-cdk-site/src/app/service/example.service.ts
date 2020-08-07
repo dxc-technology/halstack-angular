@@ -17,7 +17,7 @@ export class ExampleService {
   relativePath:string;
 
   constructor(private http: HttpClient, @Inject(APP_BASE_HREF) public baseHref: string) {
-    this.relativePath = this.relativePath.substring(this.relativePath.length);
+    this.relativePath = baseHref.substring(baseHref.length);
   }
 
   getCodeExample(examplePath){

@@ -32,7 +32,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
         role-to-assume: ${{ secrets.AWS_ROLE_SANDBOX }}
-        role-duration-seconds: 10600
+        role-duration-seconds: 6000
         role-skip-session-tagging: true
 
     - name: Install lib dependencies

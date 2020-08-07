@@ -32,7 +32,7 @@ jobs:
         role-skip-session-tagging: true
       
     - name: Install lib dependencies
-      run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib-prod
+      run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib
     
     - name: Install app dependencies
       run: cd . && npm install
@@ -54,4 +54,4 @@ jobs:
     - name: Publish angular cdk site next version in S3
       run: |
         aws s3 rm s3://design-system-angular-cdk-site/tools/angular/next/ --recursive
-        aws s3 cp ./dist/angular-dxc-site s3://design-system-angular-cdk-site/tools/angular/next --recursive
+        aws s3 cp ./dist/angular-dxc-site s3://design-system-angular-cdk-site/tools/angular/next/ --recursive

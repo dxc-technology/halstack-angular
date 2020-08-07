@@ -3,6 +3,8 @@ import { Section } from '../../model/sections';
 import { RadioPropertiesComponent } from 'src/app/components/examples/radio/properties/radio-properties/radio-properties.component';
 import { RadioExampleComponent } from '../../components/examples/radio/radio-example/radio-example.component';
 import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
+import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
+import { RadioThemeComponent } from '../../components/examples/radio/radio-theme/radio-theme.component';
 
 @Component({
   selector: 'app-radio',
@@ -21,8 +23,8 @@ export class RadioComponent implements OnInit {
 
   ngOnInit() {
     this.sections.push( 
-      {id: 0, label: 'PROPERTIES',selector: 'examples-properties-radios', component: RadioPropertiesComponent},
-      {id: 1,label: 'MODULE', selector: 'radio-import', component: RadioImportComponent},
+      {id: 0, label: 'API',selector: 'radio-api', component: RadioApiComponent},
+      {id: 1,label: 'THEMING', selector: 'radio-theme', component: RadioThemeComponent},
       {id: 2,label: 'EXAMPLES', selector: 'examples-component-radios', component: RadioExampleComponent}
       );
   }

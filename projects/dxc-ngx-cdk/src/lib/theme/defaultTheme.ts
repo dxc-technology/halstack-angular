@@ -38,6 +38,11 @@ export const defaultTheme: Theme = {
       "opacityDisabled": 0.34,
       "opacityDisabledCheckColor": 0.34,
       // "text": readableColor(colors.black)
+    },
+    "radio":{
+      // "disabledDotColor": 0.34,
+      // "disabledBorderColor": 0.34
+      "disabled": 0.34
     }
   }
 };
@@ -61,6 +66,10 @@ export const customTheme: Theme = {
     "checkbox":{
       "color": colors.yellow,
       "checkColor": colors.black,
+      "fontColor": colors.black
+    },
+    "radio":{
+      "color": colors.black,
       "fontColor": colors.black
     }
   }

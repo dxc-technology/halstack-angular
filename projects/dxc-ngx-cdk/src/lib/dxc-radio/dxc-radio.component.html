@@ -1,10 +1,10 @@
 <mat-radio-button
+  disableRipple
   [labelPosition]="labelPosition ? labelPosition :  'after'"
   [disabled]="disabled"
   [name]="name"
   [required]="required"
   (change)="onValueChange($event)"
-  [disableRipple]="disableRipple"
   [checked]="renderedChecked"
   [value]="value"
 >

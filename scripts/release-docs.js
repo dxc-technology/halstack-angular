@@ -65,7 +65,8 @@ const moveToBucket = (version) => {
           throw new Error(stderr);
         }
         resolve(stdout);
-      }
+      },            
+      {maxBuffer: 1024 * 1024 * 10}
     );
   });
 };

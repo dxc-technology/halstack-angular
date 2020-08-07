@@ -12,18 +12,17 @@ export class ExampleService {
 
   example: Example;
 
-  rootExamplesPath = '/assets/examples/';
+  rootExamplesPath = 'assets/examples/';
 
-  relativePath:string;
 
   constructor(private http: HttpClient, @Inject(APP_BASE_HREF) public baseHref: string) {
-    this.relativePath = this.baseHref.substring(this.baseHref.length);
+
   }
 
   getCodeExample(examplePath){
-      const html =  this.getContentTab(`${this.relativePath}${this.rootExamplesPath}${examplePath}.html`);
-      const ts =  this.getContentTab(`${this.relativePath}${this.rootExamplesPath}${examplePath}.ts`);
-      const css =  this.getContentTab(`${this.relativePath}${this.rootExamplesPath}${examplePath}.scss`);
+      const html =  this.getContentTab(`${this.baseHref}${this.rootExamplesPath}${examplePath}.html`);
+      const ts =  this.getContentTab(`${this.baseHref}${this.rootExamplesPath}${examplePath}.ts`);
+      const css =  this.getContentTab(`${this.baseHref}${this.rootExamplesPath}${examplePath}.scss`);
       return forkJoin([html, ts, css]);
   }
 
@@ -31,7 +30,7 @@ export class ExampleService {
     let result = [];
 
     files.forEach(file => {
-      result.push(this.getContentTab(` ${this.relativePath}${this.rootExamplesPath}${file}.properties`))
+      result.push(this.getContentTab(` ${this.baseHref}${this.rootExamplesPath}${file}.properties`))
     });
 
    return forkJoin(result);
@@ -50,4 +49,5 @@ export class ExampleService {
   private getContentTab(file){
     return this.http.get(file, {responseType: 'text'});
   }
+
 }

@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { DxcCheckboxModule, DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
 import { CheckboxComponent } from './checkbox.component';
-import { CheckboxDarkThemeComponent } from '../../components/examples/checkbox/checkbox-dark-theme/checkbox-dark-theme.component';
 import { CheckboxLabelPositionComponent } from '../../components/examples/checkbox/checkbox-label-position/checkbox-label-position.component';
 import { CheckboxPropertiesComponent } from '../../components/examples/checkbox/properties/checkbox-properties/checkbox-properties.component';
 import { CheckboxSimpleComponent } from '../../components/examples/checkbox/checkbox-simple/checkbox-simple.component';
@@ -18,17 +17,20 @@ import { CheckboxImportComponent } from '../../components/examples/checkbox/chec
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
+import { CheckboxApiComponent } from '../../components/examples/checkbox/checkbox-api/checkbox-api.component';
+import { CheckboxThemeComponent } from '../../components/examples/checkbox/checkbox-theme/checkbox-theme.component';
 @NgModule({
     declarations: [
       CheckboxComponent,
-      CheckboxDarkThemeComponent,
       CheckboxExampleComponent,
       CheckboxLabelPositionComponent,
       CheckboxPropertiesComponent,
       CheckboxSimpleComponent,
       CheckboxSizedComponent,
       CheckboxUncontrolledComponent,
-      CheckboxImportComponent
+      CheckboxImportComponent,
+      CheckboxApiComponent,
+      CheckboxThemeComponent
       ],
     imports: [
       BrowserModule,
@@ -45,12 +47,13 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
     exports: [
         CheckboxComponent,
         CheckboxExampleComponent,
-        CheckboxDarkThemeComponent,
         CheckboxLabelPositionComponent,
         CheckboxPropertiesComponent,
         CheckboxSimpleComponent,
         CheckboxSizedComponent,
-        CheckboxImportComponent
+        CheckboxImportComponent,
+        CheckboxApiComponent,
+        CheckboxThemeComponent
     ],
     entryComponents: [
       ExampleViewerComponent

@@ -14,16 +14,10 @@ import { CssUtils } from '../utils';
 @Component({
   selector: "dxc-radio",
   templateUrl: "./dxc-radio.component.html",
-  styleUrls: [
-    "./dxc-light-radio.component.scss",
-    "./dxc-dark-radio.component.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcRadioComponent implements OnInit {
   @Input() checked: boolean;
-  @Input() theme: string;
-  @Input() disableRipple: boolean;
   @Input() disabled: boolean | string;
   @Input() label: string;
   @Input() name: string;
@@ -36,16 +30,12 @@ export class DxcRadioComponent implements OnInit {
   @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   renderedChecked: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     checked: false,
-    theme: "light",
     disabled: false,
-    disableRipple: false,
     label: null,
     name: "",
     required: false,
@@ -64,13 +54,6 @@ export class DxcRadioComponent implements OnInit {
   };
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     this.renderedChecked = this.checked;
     
     this.labelPosition === "before" ? "before" : "after";
@@ -122,24 +105,32 @@ export class DxcRadioComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
-
       ${this.utils.getMargins(inputs.margin)}
       ${this.calculateWidth(inputs)}
-      mat-radio-button {
+      mat-radio-button{
         width: 100%;
+        &.cdk-focused:not(.mat-radio-disabled){
+          .mat-radio-label {
+            .mat-radio-container {
+              .mat-radio-outer-circle {
+              border-color: blue;
+              }
+            }
+          }
+        }
         .mat-radio-label {
           white-space: normal;
+          display: inline-flex;
+          align-items: center;
           .mat-radio-label-content {
             padding: 0px !important;
             width: calc(100% - 50px);
             ${this.setTextAlign(inputs.labelPosition)}
+            color: var(--radio-fontColor);
           }
           .mat-radio-required {
             margin-right: 1px;
           }
-          display: inline-flex;
-          align-items: center;
-
           .mat-radio-container {
             ${inputs.labelPosition === "after"
             ? css`
@@ -156,7 +147,12 @@ export class DxcRadioComponent implements OnInit {
                 margin-bottom: 10px;
               `
             : css``}
-
+            .mat-radio-inner-circle {
+              background-color: var(--radio-color);
+            }
+            .mat-radio-outer-circle {
+              border-color: var(--radio-color);
+            }
             .mat-radio-frame {
               border-radius: 4px;
             }
@@ -166,6 +162,18 @@ export class DxcRadioComponent implements OnInit {
         &.mat-radio-disabled {
           .mat-radio-label {
             cursor: not-allowed;
+            opacity: var(--radio-disabled);
+            /* .mat-radio-label-content {
+                opacity: var(--radio-disabledDotColor);
+            } */
+            /* .mat-radio-container {
+              .mat-radio-inner-circle {
+                opacity: var(--radio-disabledDotColor);
+              }
+              .mat-radio-outer-circle {
+                opacity: var(--radio-disabledBorderColor);
+              }
+            } */
           }
         }
       }

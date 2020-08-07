@@ -11,7 +11,6 @@ import { RadioComponent } from './radio.component';
 import { RadioExampleComponent } from 'src/app/components/examples/radio/radio-example/radio-example.component';
 import { RadioPropertiesComponent } from '../../components/examples/radio/properties/radio-properties/radio-properties.component';
 import { RadioGroupComponent } from '../../components/examples/radio/radio-group/radio-group.component';
-import { RadioDarkThemeComponent } from 'src/app/components/examples/radio/radio-dark-theme/radio-dark-theme.component';
 import { RadioLabelPositionComponent } from '../../components/examples/radio/radio-label-position/radio-label-position.component';
 import { RadioSimpleComponent } from '../../components/examples/radio/radio-simple/radio-simple.component';
 import { RadioSizedComponent } from '../../components/examples/radio/radio-sized/radio-sized.component';
@@ -20,6 +19,8 @@ import { RadioUncontrolledComponent } from '../../components/examples/radio/radi
 import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { RadioThemeComponent } from '../../components/examples/radio/radio-theme/radio-theme.component';
+import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       RadioExampleComponent,
       RadioPropertiesComponent,
       RadioGroupComponent,
-      RadioDarkThemeComponent,
+      RadioApiComponent,
+      RadioThemeComponent,
       RadioLabelPositionComponent,
       RadioSimpleComponent,
       RadioSizedComponent,
@@ -52,11 +54,12 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
         RadioExampleComponent,
         RadioPropertiesComponent,
         RadioGroupComponent,
-        RadioDarkThemeComponent,
         RadioLabelPositionComponent,
         RadioSimpleComponent,
         RadioSizedComponent,
-        RadioImportComponent
+        RadioImportComponent,
+        RadioApiComponent,
+        RadioThemeComponent
     ],
     entryComponents: [
       ExampleViewerComponent

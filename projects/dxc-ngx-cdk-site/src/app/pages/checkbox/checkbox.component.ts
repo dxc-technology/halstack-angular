@@ -23,7 +23,7 @@ export class CheckboxComponent implements OnInit {
 
     this.sections.push( 
       {id: 0, label: 'API',selector: 'checkbox-api', component: CheckboxApiComponent},
-      {id: 1, label: 'THEME',selector: 'checkbox-theme', component: CheckboxThemeComponent},
+      {id: 1, label: 'THEMING',selector: 'checkbox-theme', component: CheckboxThemeComponent},
       {id: 2,label: 'EXAMPLES', selector: 'examples-component-checkboxes', component: CheckboxExampleComponent}
       );
   }

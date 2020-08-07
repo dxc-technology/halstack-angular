@@ -68,7 +68,6 @@ import { RadioExampleComponent } from "../examples/radio/radio-example/radio-exa
 import { RadioPropertiesComponent } from "../examples/radio/properties/radio-properties/radio-properties.component";
 import { RadioSimpleComponent } from "../examples/radio/radio-simple/radio-simple.component";
 import { RadioLabelPositionComponent } from "../examples/radio/radio-label-position/radio-label-position.component";
-import { RadioDarkThemeComponent } from "../examples/radio/radio-dark-theme/radio-dark-theme.component";
 import { RadioGroupComponent } from "../examples/radio/radio-group/radio-group.component";
 import { RadioSizedComponent } from "../examples/radio/radio-sized/radio-sized.component";
 import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
@@ -233,6 +232,8 @@ import { ButtonThemeComponent } from '../examples/button/button-theme/button-the
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
 import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/checkbox-theme.component';
+import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.component';
+import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -310,7 +311,6 @@ import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/chec
     RadioSimpleComponent,
     RadioUncontrolledComponent,
     RadioLabelPositionComponent,
-    RadioDarkThemeComponent,
     RadioGroupComponent,
     RadioSizedComponent,
     RadioExampleComponent,
@@ -469,7 +469,9 @@ import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/chec
     ButtonThemeComponent,
     ButtonApiComponent,
     CheckboxApiComponent,
-    CheckboxThemeComponent
+    CheckboxThemeComponent,
+    RadioApiComponent,
+    RadioThemeComponent
   ]
 })
 export class DynamicModule {}

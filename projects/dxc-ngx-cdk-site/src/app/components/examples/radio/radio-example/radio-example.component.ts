@@ -3,7 +3,6 @@ import { Example } from '../../../../model/example';
 import { ExampleService } from '../../../../service/example.service';
 import { RadioSimpleComponent } from '../radio-simple/radio-simple.component';
 import { RadioLabelPositionComponent } from '../radio-label-position/radio-label-position.component';
-import { RadioDarkThemeComponent } from '../radio-dark-theme/radio-dark-theme.component';
 import { RadioGroupComponent } from '../radio-group/radio-group.component';
 import { RadioSizedComponent } from '../radio-sized/radio-sized.component';
 import { RadioUncontrolledComponent } from '../radio-uncontrolled/radio-uncontrolled.component';
@@ -73,25 +72,11 @@ export class RadioExampleComponent implements OnInit {
       });
 
       this.exampleService
-      .getCodeExample("radio/radio-dark-theme/radio-dark-theme.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Radio Dark Theme',
-          component: RadioDarkThemeComponent,
-          selector: "example4",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-
-      this.exampleService
       .getCodeExample("radio/radio-group/radio-group.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Radio Group',
           component: RadioGroupComponent,
-          selector: "example5",
+          selector: "example4",
           examples: [
             resp1[0],
             resp1[1],
@@ -104,7 +89,7 @@ export class RadioExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Radio Sized',
           component: RadioSizedComponent,
-          selector: "example6",
+          selector: "example5",
           examples: [
             resp1[0],
             resp1[1],

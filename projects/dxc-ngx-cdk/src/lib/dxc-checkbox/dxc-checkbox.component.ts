@@ -144,6 +144,16 @@ export class DxcCheckboxComponent implements OnInit {
       mat-checkbox {
         display: inline-flex; 
         width: 100%;
+        &.cdk-focused:not(.mat-checkbox-disabled){
+          label.mat-checkbox-layout {
+            .mat-checkbox-inner-container {
+              .mat-checkbox-background{
+                outline: -webkit-focus-ring-color auto 1px;
+                outline-color: blue;
+              }
+            }
+          }
+        }
         label.mat-checkbox-layout {
           display: inline-flex;
           align-items: center;

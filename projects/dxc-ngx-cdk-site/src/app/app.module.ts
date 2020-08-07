@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { CommonModule, APP_BASE_HREF, PlatformLocation } from '@angular/common';
 import { ThemeService, DXCHeaderModule,DXCFooterModule, ThemeModule } from '@dxc-technology/halstack-angular';
 import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
@@ -100,7 +100,13 @@ import { ComponentsSidenavModule } from './pages/components-sidenav/components-s
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },
-    { provide: 'ExampleService', useClass: ExampleService }
+    { provide: 'ExampleService', useClass: ExampleService },
+    {
+      provide: APP_BASE_HREF,
+      useFactory: (s: PlatformLocation) => s.getBaseHrefFromDOM(),
+      deps: [PlatformLocation]
+    }
+
   ],
   bootstrap: [AppComponent],
   entryComponents: [

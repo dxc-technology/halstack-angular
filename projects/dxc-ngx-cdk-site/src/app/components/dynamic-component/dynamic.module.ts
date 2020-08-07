@@ -46,7 +46,6 @@ import { CardLinkedComponent } from "../examples/card/card-linked/card-linked.co
 import { CardOutlinedComponent } from "../examples/card/card-outlined/card-outlined.component";
 import { CardTablePropertiesComponent } from "../examples/card/properties/card-table-properties/card-table-properties.component";
 import { CardThemedComponent } from "../examples/card/card-themed/card-themed.component";
-import { CheckboxDarkThemeComponent } from "../examples/checkbox/checkbox-dark-theme/checkbox-dark-theme.component";
 import { CheckboxLabelPositionComponent } from "../examples/checkbox/checkbox-label-position/checkbox-label-position.component";
 import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/checkbox-properties/checkbox-properties.component";
 import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/checkbox-simple.component";
@@ -69,7 +68,6 @@ import { RadioExampleComponent } from "../examples/radio/radio-example/radio-exa
 import { RadioPropertiesComponent } from "../examples/radio/properties/radio-properties/radio-properties.component";
 import { RadioSimpleComponent } from "../examples/radio/radio-simple/radio-simple.component";
 import { RadioLabelPositionComponent } from "../examples/radio/radio-label-position/radio-label-position.component";
-import { RadioDarkThemeComponent } from "../examples/radio/radio-dark-theme/radio-dark-theme.component";
 import { RadioGroupComponent } from "../examples/radio/radio-group/radio-group.component";
 import { RadioSizedComponent } from "../examples/radio/radio-sized/radio-sized.component";
 import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
@@ -232,6 +230,10 @@ import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/drop
 import { ButtonTextModeComponent } from '../examples/button/button-text-mode/button-text-mode.component';
 import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
+import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
+import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/checkbox-theme.component';
+import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.component';
+import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -281,7 +283,6 @@ import { ButtonApiComponent } from '../examples/button/button-api/button-api.com
     CardOutlinedComponent,
     CardTablePropertiesComponent,
     CardThemedComponent,
-    CheckboxDarkThemeComponent,
     CheckboxExampleComponent,
     CheckboxLabelPositionComponent,
     CheckboxPropertiesComponent,
@@ -310,7 +311,6 @@ import { ButtonApiComponent } from '../examples/button/button-api/button-api.com
     RadioSimpleComponent,
     RadioUncontrolledComponent,
     RadioLabelPositionComponent,
-    RadioDarkThemeComponent,
     RadioGroupComponent,
     RadioSizedComponent,
     RadioExampleComponent,
@@ -467,7 +467,11 @@ import { ButtonApiComponent } from '../examples/button/button-api/button-api.com
     DropdownHoverComponent,
     ButtonTextModeComponent,
     ButtonThemeComponent,
-    ButtonApiComponent
+    ButtonApiComponent,
+    CheckboxApiComponent,
+    CheckboxThemeComponent,
+    RadioApiComponent,
+    RadioThemeComponent
   ]
 })
 export class DynamicModule {}

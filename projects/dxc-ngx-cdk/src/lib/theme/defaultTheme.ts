@@ -16,7 +16,8 @@ const colors = {
   lightPink: "#F9CFCF",
   lightGreen: "#DBF1C4",
   disableLight: "#A5A5A5",
-  disableDark: "#959595"
+  disableDark: "#959595",
+  blue: "#005FCC"
 };
 
 export const defaultTheme: Theme = {
@@ -33,16 +34,25 @@ export const defaultTheme: Theme = {
       "textActiveOpacity": 0.64,
       "textBackgroundColor": "transparent",
 
+      "focusColor": colors.blue
     },
     "checkbox":{
       "opacityDisabled": 0.34,
       "opacityDisabledCheckColor": 0.34,
       // "text": readableColor(colors.black)
+      "focusColor": colors.blue
     },
     "radio":{
       // "disabledDotColor": 0.34,
       // "disabledBorderColor": 0.34
-      "disabled": 0.34
+      "disabled": 0.34,
+      "focusColor": colors.blue
+    },
+    "select":{
+      "color": colors.black,
+      "hoverOptionBackgroundColor": "#D9D9D957",
+      "invalidColor": colors.darkRed,
+      "focusColor": colors.blue
     }
   }
 };
@@ -71,6 +81,9 @@ export const customTheme: Theme = {
     "radio":{
       "color": colors.black,
       "fontColor": colors.black
+    },
+    "select":{
+      "selectedOptionBackgroundColor": colors.lightGrey
     }
   }
 };

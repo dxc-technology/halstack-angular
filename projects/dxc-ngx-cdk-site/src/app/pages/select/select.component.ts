@@ -3,6 +3,8 @@ import { Section } from "../../model/sections";
 import { SelectPropertiesComponent } from "../../components/examples/select/properties/select-properties/select-properties.component";
 import { SelectExampleComponent } from "../../components/examples/select/select-example/select-example.component";
 import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
+import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
+import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
 
 @Component({
   selector: "app-select",
@@ -21,15 +23,15 @@ export class SelectComponent implements OnInit {
     this.sections.push(
       {
         id: 0,
-        label: "PROPERTIES",
-        selector: "examples-properties-selects",
-        component: SelectPropertiesComponent
+        label: "API",
+        selector: "select-api",
+        component: SelectApiComponent
       },
       {
         id: 1,
-        label: "MODULE",
-        selector: "select-import",
-        component: SelectImportComponent
+        label: "THEMING",
+        selector: "select-theme",
+        component: SelectThemeComponent
       },
       {
         id: 2,

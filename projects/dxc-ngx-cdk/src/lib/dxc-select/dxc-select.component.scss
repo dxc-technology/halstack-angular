@@ -17,13 +17,15 @@
       align-items: center;
       width: fit-content;
     }
+    &.mat-selected:not(.mat-option-multiple){
+      background: var(--select-selectedOptionBackgroundColor);
+    }
     &.mat-selected {
-      background: var(--lightGrey, #D9D9D9);
+      background: var(--select-selectedOptionBackgroundColor);
     }
     &:hover:not(.mat-option-disabled) {
-      background: var(--darkWhite, #EEEEEE);
+      background: var(--select-hoverOptionBackgroundColor);
     }
-
     &.mat-option-multiple {
       .mat-pseudo-checkbox {
         width: 20px;
@@ -47,9 +49,10 @@
     }
   }
   mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
-    background: var(--yellow, #FFED00);
+    background: var(--checkbox-color);
+    border-color: var(--checkbox-color);
     &::after {
-      color: var(--black, black);
+      color: var(--select-color);
       top: 2.4px;
       left: 1px;
       width: 12px;
@@ -69,7 +72,10 @@
 :host {
   display: block;
   .mat-option.mat-active {
-    background: var(--lightGrey, #D9D9D9);
+    background: var(--select-selectedOptionBackgroundColor) !important;
+  }
+  .mat-select-arrow {
+    color: var(--select-color) !important;
   }
   mat-select-trigger {
     display: flex;
@@ -98,14 +104,14 @@
     opacity: 0.69;
     &::ng-deep {
       .mat-form-field-underline {
-        background-color: var(--lightGrey, #D9D9D9);
+        background-color: var(--select-selectedOptionBackgroundColor);
       }
       .mat-select-disabled .mat-select-trigger {
         cursor: not-allowed;
       }
       .mat-form-field-label,
       .mat-select-arrow {
-        color: var(--lightGrey, #D9D9D9);
+        color: var(--select-selectedOptionBackgroundColor);
       }
     }
   }
@@ -139,7 +145,7 @@
         justify-content: flex-end;
         display: flex !important;
         span {
-          color: var(--darkRed, #D0011B);
+          color: var(--select-invalidColor);
         }
       }
     }

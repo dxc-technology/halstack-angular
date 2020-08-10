@@ -48,7 +48,7 @@
               "projects/dxc-ngx-cdk-site/src/styles.scss"
             ],
             "scripts": [],
-            "baseHref" : "/tool/angular"
+            "baseHref" : "/tools/angular"
           },
           "configurations": {
             "production": {

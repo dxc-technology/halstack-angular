@@ -19,6 +19,16 @@ export const customTheme: Theme = {
       "color": "#FFED00",
       "checkColor": "#000000",
       "fontColor": "#000000"
+    },
+    "radio":{
+      "color": "#000000",
+      "fontColor": "#000000"
+    },
+    "select":{
+      "selectedOptionBackgroundColor": "#FABADA"
+    },
+    "slider":{
+      "color": "#FABADA"
     }
   }
 };

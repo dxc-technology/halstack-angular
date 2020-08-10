@@ -22,6 +22,8 @@ import { SelectAssistiveComponent } from '../../components/examples/select/selec
 import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
+import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectUncontrolledComponent,
       SelectUncontrolledMultipleComponent,
       SelectAssistiveComponent,
-      SelectImportComponent
+      SelectImportComponent,
+      SelectApiComponent,
+      SelectThemeComponent
       ],
     imports: [
       BrowserModule,
@@ -63,7 +67,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       SelectSizedComponent,
       SelectThemedComponent,
       SelectAssistiveComponent,
-      SelectImportComponent
+      SelectImportComponent,
+      SelectApiComponent,
+      SelectThemeComponent
     ],
     entryComponents: [
       ExampleViewerComponent

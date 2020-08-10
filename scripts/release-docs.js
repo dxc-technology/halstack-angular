@@ -57,6 +57,7 @@ const moveToBucket = (version) => {
     console.log(`Moving to s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
     exec(
       `aws s3 cp ./dist/angular-dxc-site s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
+      {maxBuffer: 1024 * 1024 * 10},
       (error, stdout, stderr) => {
         if (error) {
           throw new Error(error.message);
@@ -65,8 +66,8 @@ const moveToBucket = (version) => {
           throw new Error(stderr);
         }
         resolve(stdout);
-      },            
-      {maxBuffer: 1024 * 1024 * 10}
+      }            
+      
     );
   });
 };

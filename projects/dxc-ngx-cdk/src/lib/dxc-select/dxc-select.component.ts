@@ -16,19 +16,14 @@ import { CssUtils } from "../utils";
   selector: "dxc-select",
   templateUrl: "./dxc-select.component.html",
   styleUrls: [
-    "./dxc-select.component.scss",
-    "./dxc-light-select.scss",
-    "./dxc-dark-select.scss",
+    "./dxc-select.component.scss"
   ],
   providers: [CssUtils],
 })
 export class DxcSelectComponent implements OnChanges {
   @HostBinding("class") className;
-  @HostBinding("class.dxc-light") isLight: boolean = true;
-  @HostBinding("class.dxc-dark") isDark: boolean = false;
   @HostBinding("class.select-icons") onlyHasIcons: boolean = false;
 
-  @Input() public theme: string = "light";
   @Input() public multiple: boolean;
   @Input() public value: string | string[];
   @Input() public options: {
@@ -36,7 +31,6 @@ export class DxcSelectComponent implements OnChanges {
     value: string;
     iconSrc?: string;
   }[];
-  @Input() public disableRipple: boolean = false;
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
   @Input() public name: string;
@@ -55,9 +49,7 @@ export class DxcSelectComponent implements OnChanges {
   public labeltoShow: string[] = []; //The value is not the correct valur to display. Use label instead
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
     multiple: false,
-    disableRipple: true,
     disabled: false,
     required: false,
     iconPosition: "before",
@@ -84,13 +76,6 @@ export class DxcSelectComponent implements OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     this.hasOptionsOnlyIcons();
 
     this.renderedValue = this.value || "";
@@ -139,51 +124,27 @@ export class DxcSelectComponent implements OnChanges {
   }
 
   getInvalidStyles(inputs) {
-    if (inputs.theme === "dark" && inputs.invalid) {
+    if (inputs.invalid) {
       return css`
-        .assistiveText {
-          color: var(--lightRed, #ff6161) !important;
-        }
+        /* .assistiveText {
+          color: var(--select-invalidColor) !important;
+        } */
         .mat-form-field {
           .mat-hint {
-            color: var(--lightRed, #ff6161) !important;
+            color: var(--select-invalidColor) !important;
           }
           .mat-form-field-ripple,
           .mat-form-field-underline {
-            background-color: var(--lightRed, #ff6161) !important;
+            background-color: var(--select-invalidColor) !important;
           }
           .mat-form-field-empty mat-label {
-            color: var(--white, white) !important;
+            color: var(--select-selectedOptionBackgroundColor) !important;
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--lightRed, #ff6161) !important;
+            color: var(--select-invalidColor) !important;
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            color: var(--lightRed, #ff6161) !important;
-          }
-        }
-      `;
-    } else if (inputs.theme === "light" && inputs.invalid) {
-      return css`
-        .assistiveText {
-          color: var(--darkRed, #d0011b) !important;
-        }
-        .mat-form-field {
-          .mat-hint {
-            color: var(--darkRed, #d0011b) !important;
-          }
-          .mat-form-field-ripple,
-          .mat-form-field-underline {
-            background-color: var(--darkRed, #d0011b) !important;
-          }
-          .mat-form-field-empty mat-label {
-            color: var(--darkGrey, #666666) !important;
-          }
-          &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--darkRed, #d0011b) !important;
-          }
-          .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            color: var(--darkRed, #d0011b) !important;
+            color: var(--select-invalidColor) !important;
           }
         }
       `;
@@ -195,7 +156,19 @@ export class DxcSelectComponent implements OnChanges {
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
       ${this.getInvalidStyles(inputs)}
-    `;
+      ::ng-deep {
+        .mat-form-field-label:not(.mat-form-field-empty) {
+          color: var(--select-color);
+        }
+        .mat-form-field-label.mat-form-field-empty {
+          color: var(--select-selectedOptionBackgroundColor);
+        }
+        .mat-form-field-appearance-legacy .mat-form-field-underline {
+            background-color: var(--select-color);
+            height: 1px;
+        }
+      }
+      `;
   }
 
   public hasAssistiveText() {

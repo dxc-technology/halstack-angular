@@ -16,7 +16,6 @@ import {
   providers: [CssUtils],
 })
 export class DxcLinkComponent {
-  @Input() theme: string;
   @Input() underlined: boolean;
   @Input() inheritColor: boolean;
   @Input() disabled: boolean;
@@ -28,8 +27,6 @@ export class DxcLinkComponent {
   @Input() margin: string;
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     theme: "light",
@@ -48,23 +45,9 @@ export class DxcLinkComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -97,15 +80,9 @@ export class DxcLinkComponent {
 
         color: ${
           inputs.disabled
-            ? inputs.theme === "light"
-              ? "var(--disabledLightTheme, #525252)"
-              : "var(--disabledDarkTheme, #959595)"
+            ? "var(--link-disabledColor)"
             : !inputs.inheritColor
-            ? inputs.theme === "light"
-              ? "var(--lightThemeLink, #006BF6)"
-              : "var(--darkThemeLink, #4797FF)"
-            : inputs.theme === "dark"
-            ? "var(--white, #FFFFFF)"
+            ? "var(--link-fontColor)"
             : `inherit`
         } !important;
 
@@ -128,9 +105,7 @@ export class DxcLinkComponent {
   private getStateStyles(inputs) {
     return css`
       &:hover {
-        color: ${inputs.theme === "light"
-          ? `var(--lightThemeLink, #006BF6)`
-          : `var(--darkThemeLink, #4797FF)`} !important;
+        color: var(--link-fontColor) !important;
         text-decoration: none;
         padding-bottom: 1px !important;
         border-bottom: 1px solid;
@@ -138,13 +113,9 @@ export class DxcLinkComponent {
       }
 
       &:visited {
-        ${!inputs.disabled
-          ? `color: ${
-              inputs.theme === "light"
-                ? `var(--lightVisitedLink, #8800F6)`
-                : `var(--darkVisitedLink, #C175FF)`
-            } !important;`
-          : ""}
+        ${inputs.disabled
+          ? `color: var(--link-disabledColor) !important;`
+          : `color: var(--link-visitedColor) !important;`}
       }
     `;
   }

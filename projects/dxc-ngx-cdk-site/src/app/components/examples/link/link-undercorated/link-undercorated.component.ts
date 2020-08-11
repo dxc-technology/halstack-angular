@@ -9,6 +9,7 @@ export class LinkUndercoratedComponent implements OnInit {
 
   underlined: boolean = true;
   newWindow: boolean = true;
+  inheritColor: boolean = true;
 
   constructor() { }
 

@@ -231,6 +231,8 @@ import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox
 import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/checkbox-theme.component';
 import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.component';
 import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.component';
+import { LinkApiComponent } from '../examples/link/link-api/link-api.component';
+import { LinkThemeComponent } from '../examples/link/link-theme/link-theme.component';
 import { SliderThemeComponent } from '../examples/slider/slider-theme/slider-theme.component';
 import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
 import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
@@ -472,6 +474,8 @@ import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-the
     CheckboxThemeComponent,
     RadioApiComponent,
     RadioThemeComponent,
+    LinkApiComponent,
+    LinkThemeComponent,
     SliderThemeComponent,
     SliderApiComponent,
     SelectApiComponent,

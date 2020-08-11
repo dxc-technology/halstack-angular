@@ -8,7 +8,6 @@ import { SliderUnlimitedComponent } from '../slider-unlimited/slider-unlimited.c
 import { SliderInputComponent } from '../slider-input/slider-input.component';
 import { SliderSizedComponent } from '../slider-sized/slider-sized.component';
 import { SliderDisabledComponent } from '../slider-disabled/slider-disabled.component';
-import { SliderDarkComponent } from '../slider-dark/slider-dark.component';
 import { SliderUncontrolledComponent } from '../slider-uncontrolled/slider-uncontrolled.component';
 
 @Component({
@@ -126,19 +125,6 @@ export class SliderExampleComponent implements OnInit {
           title: 'Disabled Slider',
           component: SliderDisabledComponent,
           selector: "Slider_example_8",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-      this.exampleService
-      .getCodeExample("slider/slider-dark/slider-dark.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Dark Theme Slider',
-          component: SliderDarkComponent,
-          selector: "Slider_example_9",
           examples: [
             resp1[0],
             resp1[1],

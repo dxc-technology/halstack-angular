@@ -10,7 +10,6 @@ import { SliderPropertiesComponent } from '../../components/examples/slider/prop
 import { SliderExampleComponent } from '../../components/examples/slider/slider-example/slider-example.component';
 import { SliderDefaultComponent } from 'src/app/components/examples/slider/slider-default/slider-default.component';
 import { SliderContinuousComponent } from 'src/app/components/examples/slider/slider-continuous/slider-continuous.component';
-import { SliderDarkComponent } from 'src/app/components/examples/slider/slider-dark/slider-dark.component';
 import { SliderDisabledComponent } from 'src/app/components/examples/slider/slider-disabled/slider-disabled.component';
 import { SliderDiscreteComponent } from 'src/app/components/examples/slider/slider-discrete/slider-discrete.component';
 import { SliderInputComponent } from 'src/app/components/examples/slider/slider-input/slider-input.component';
@@ -30,7 +29,6 @@ import { SliderThemeComponent } from '../../components/examples/slider/slider-th
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,
-    SliderDarkComponent,
     SliderDefaultComponent,
     SliderDisabledComponent,
     SliderDiscreteComponent,
@@ -58,7 +56,6 @@ import { SliderThemeComponent } from '../../components/examples/slider/slider-th
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,
-    SliderDarkComponent,
     SliderDefaultComponent,
     SliderDisabledComponent,
     SliderDiscreteComponent,

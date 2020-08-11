@@ -80,7 +80,6 @@ import { SelectUncontrolledMultipleComponent } from '../examples/select/select-u
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
 import { SliderDefaultComponent } from "../examples/slider/slider-default/slider-default.component";
-import { SliderDarkComponent } from "../examples/slider/slider-dark/slider-dark.component";
 import { SliderDisabledComponent } from "../examples/slider/slider-disabled/slider-disabled.component";
 import { SliderDiscreteComponent } from "../examples/slider/slider-discrete/slider-discrete.component";
 import { SliderUnlimitedComponent } from "../examples/slider/slider-unlimited/slider-unlimited.component";
@@ -329,7 +328,6 @@ import { SelectThemeComponent } from '../examples/select/select-theme/select-the
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,
-    SliderDarkComponent,
     SliderDefaultComponent,
     SliderDisabledComponent,
     SliderDiscreteComponent,

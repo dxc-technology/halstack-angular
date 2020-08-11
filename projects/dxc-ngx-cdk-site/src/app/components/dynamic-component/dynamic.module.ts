@@ -234,6 +234,8 @@ import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox
 import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/checkbox-theme.component';
 import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.component';
 import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.component';
+import { LinkApiComponent } from '../examples/link/link-api/link-api.component';
+import { LinkThemeComponent } from '../examples/link/link-theme/link-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -471,7 +473,9 @@ import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.c
     CheckboxApiComponent,
     CheckboxThemeComponent,
     RadioApiComponent,
-    RadioThemeComponent
+    RadioThemeComponent,
+    LinkApiComponent,
+    LinkThemeComponent
   ]
 })
 export class DynamicModule {}

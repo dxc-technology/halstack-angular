@@ -21,6 +21,8 @@ import { SliderImportComponent } from '../../components/examples/slider/slider-i
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
+import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderSizedComponent,
     SliderUnlimitedComponent,
     SliderUncontrolledComponent,
-    SliderImportComponent
+    SliderImportComponent,
+    SliderApiComponent,
+    SliderThemeComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +65,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderInputComponent,
     SliderSizedComponent,
     SliderUnlimitedComponent,
-    SliderImportComponent
+    SliderImportComponent,
+    SliderApiComponent,
+    SliderThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

@@ -50,6 +50,9 @@ export const customTheme: Theme = {
     },
     "slider":{
       "color": colors.black
+    },
+    "switch":{
+      "checkedTrackBackgroundColor": colors.darkGrey
     }
   }
 };
@@ -94,6 +97,13 @@ export const defaultTheme: Theme = {
       "disabledDotsBackgroundColor": 0.34,
       "disabledTrackLine": 0.34,
       "disabledtotalLine": 0.34
+    },
+    "switch":{
+      "checkedThumbBackgroundColor": colors.white,
+      "uncheckedThumbBackgroundColor": colors.white,
+      "uncheckedTrackBackgroundColor": colors.lightGrey,
+      "disabledBackgroundColor": 0.34,
+      "requiredColor": colors.darkRed
     }
   }
 };

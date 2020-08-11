@@ -76,12 +76,10 @@ import { SelectIconsComponent } from "../examples/select/select-icons/select-ico
 import { SelectInvalidComponent } from '../examples/select/select-invalid/select-invalid.component';
 import { SelectMultipleComponent } from "../examples/select/select-multiple/select-multiple.component";
 import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
-import { SelectThemedComponent } from "../examples/select/select-themed/select-themed.component";
 import { SelectUncontrolledMultipleComponent } from '../examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
 import { SliderDefaultComponent } from "../examples/slider/slider-default/slider-default.component";
-import { SliderDarkComponent } from "../examples/slider/slider-dark/slider-dark.component";
 import { SliderDisabledComponent } from "../examples/slider/slider-disabled/slider-disabled.component";
 import { SliderDiscreteComponent } from "../examples/slider/slider-discrete/slider-discrete.component";
 import { SliderUnlimitedComponent } from "../examples/slider/slider-unlimited/slider-unlimited.component";
@@ -236,6 +234,10 @@ import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.compone
 import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.component';
 import { LinkApiComponent } from '../examples/link/link-api/link-api.component';
 import { LinkThemeComponent } from '../examples/link/link-theme/link-theme.component';
+import { SliderThemeComponent } from '../examples/slider/slider-theme/slider-theme.component';
+import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
+import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
+import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -325,11 +327,9 @@ import { LinkThemeComponent } from '../examples/link/link-theme/link-theme.compo
     SelectPropertiesComponent,
     SelectUncontrolledMultipleComponent,
     SelectSizedComponent,
-    SelectThemedComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,
-    SliderDarkComponent,
     SliderDefaultComponent,
     SliderDisabledComponent,
     SliderDiscreteComponent,
@@ -475,7 +475,11 @@ import { LinkThemeComponent } from '../examples/link/link-theme/link-theme.compo
     RadioApiComponent,
     RadioThemeComponent,
     LinkApiComponent,
-    LinkThemeComponent
+    LinkThemeComponent,
+    SliderThemeComponent,
+    SliderApiComponent,
+    SelectApiComponent,
+    SelectThemeComponent
   ]
 })
 export class DynamicModule {}

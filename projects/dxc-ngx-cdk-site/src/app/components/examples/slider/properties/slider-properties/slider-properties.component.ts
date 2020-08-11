@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'app-slider-properties',
+  selector: 'slider-properties',
   templateUrl: './slider-properties.component.html',
   styleUrls: ['./slider-properties.component.scss']
 })

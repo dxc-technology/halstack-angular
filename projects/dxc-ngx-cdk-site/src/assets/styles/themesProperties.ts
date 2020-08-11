@@ -28,7 +28,7 @@ export const customTheme: Theme = {
       "selectedOptionBackgroundColor": "#FABADA"
     },
     "slider":{
-      "color": "#FABADA"
+      "color": "#000000"
     }
   }
 };

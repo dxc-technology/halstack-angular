@@ -3,6 +3,8 @@ import { Section } from '../../model/sections';
 import { SliderPropertiesComponent } from '../../components/examples/slider/properties/slider-properties/slider-properties.component';
 import { SliderExampleComponent } from '../../components/examples/slider/slider-example/slider-example.component';
 import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
+import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
+import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 
 @Component({
   selector: 'app-slider',
@@ -21,8 +23,8 @@ export class SliderComponent implements OnInit {
 
   ngOnInit() {
     this.sections.push( 
-      {id: 0, label: 'PROPERTIES',selector: 'examples-properties-slider', component: SliderPropertiesComponent},
-      {id: 1, label: 'MODULE', selector: 'slider-import', component: SliderImportComponent},
+      {id: 0, label: 'API',selector: 'examples-properties-slider', component: SliderApiComponent},
+      {id: 1, label: 'THEMING', selector: 'slider-import', component: SliderThemeComponent},
       {id: 2, label: 'EXAMPLES', selector: 'examples-component-slider', component: SliderExampleComponent}
     );
   }

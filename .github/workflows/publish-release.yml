@@ -32,7 +32,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
         role-to-assume: ${{ secrets.AWS_ROLE_SANDBOX }}
-        role-duration-seconds: 10600
+        role-duration-seconds: 6000
         role-skip-session-tagging: true
 
     - name: Install lib dependencies
@@ -45,7 +45,7 @@ jobs:
       run: cd ./projects/dxc-ngx-cdk && npm run test
     
     - name: Build angular release cdk site
-      run: cd . && npm run build-release-cdk-site --baseHref=/tools/angular/${{steps.split.outputs._0}}
+      run: cd . && npm run build-release-cdk-site -- --baseHref=/tools/angular/${{steps.split.outputs._0}} --deploy-url /tools/angular/${{steps.split.outputs._0}}/
       env: 
           TAG_NAME: ${{ github.event.release.tag_name }}
 

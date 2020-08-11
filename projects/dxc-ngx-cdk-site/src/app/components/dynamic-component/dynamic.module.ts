@@ -76,7 +76,6 @@ import { SelectIconsComponent } from "../examples/select/select-icons/select-ico
 import { SelectInvalidComponent } from '../examples/select/select-invalid/select-invalid.component';
 import { SelectMultipleComponent } from "../examples/select/select-multiple/select-multiple.component";
 import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
-import { SelectThemedComponent } from "../examples/select/select-themed/select-themed.component";
 import { SelectUncontrolledMultipleComponent } from '../examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
@@ -327,7 +326,6 @@ import { SelectThemeComponent } from '../examples/select/select-theme/select-the
     SelectPropertiesComponent,
     SelectUncontrolledMultipleComponent,
     SelectSizedComponent,
-    SelectThemedComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,

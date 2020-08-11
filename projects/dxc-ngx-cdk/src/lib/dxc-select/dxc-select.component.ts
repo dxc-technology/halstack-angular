@@ -138,7 +138,7 @@ export class DxcSelectComponent implements OnChanges {
             background-color: var(--select-invalidColor) !important;
           }
           .mat-form-field-empty mat-label {
-            color: var(--select-selectedOptionBackgroundColor) !important;
+            color: var(--select-color) !important;
           }
           &.mat-focused .mat-form-field-empty mat-label {
             color: var(--select-invalidColor) !important;

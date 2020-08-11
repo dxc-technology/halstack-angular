@@ -16,7 +16,9 @@ const colors = {
   lightPink: "#F9CFCF",
   lightGreen: "#DBF1C4",
   disableLight: "#A5A5A5",
-  disableDark: "#959595"
+  disableDark: "#959595",
+  purple: "#8800F6",
+  blue: "#006BF6"
 };
 
 export const defaultTheme: Theme = {
@@ -71,6 +73,11 @@ export const customTheme: Theme = {
     "radio":{
       "color": colors.black,
       "fontColor": colors.black
+    },
+    "link":{
+      "fontColor": colors.blue,
+      "visitedColor": colors.purple,
+      "disabledColor": colors.lightGrey,
     }
   }
 };

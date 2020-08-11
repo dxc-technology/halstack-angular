@@ -5,6 +5,9 @@
   ::ng-deep {
     min-width: 100% !important;
   }
+  .mat-option.mat-active:not(.mat-selected) {
+    background: var(--select-hoverOptionBackgroundColor) !important;
+  }
   &.mat-select-panel mat-option {
     width: 100%;
     height: 42px;
@@ -31,6 +34,7 @@
         width: 20px;
         height: 20px;
         margin-right: 15px;
+        border-color: var(--checkbox-color);
       }
       padding-left: 11px 15px;
     }
@@ -50,7 +54,6 @@
   }
   mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
     background: var(--checkbox-color);
-    border-color: var(--checkbox-color);
     &::after {
       color: var(--select-color);
       top: 2.4px;

@@ -11,11 +11,11 @@
         : onlyHasIcons && multiple ? 'dxc-panel-select-class panel-icons multiple' : 'dxc-panel-select-class'
     "
     (selectionChange)="valueChanged($event)"
-    [disableRipple]="disableRipple"
     [required]="required"
     [disabled]="disabled"
     [multiple]="multiple"
     [value]="renderedValue"
+    disableRipple
   >
     <mat-select-trigger>
       <ng-container *ngIf="renderedValue && onlyHasIcons">

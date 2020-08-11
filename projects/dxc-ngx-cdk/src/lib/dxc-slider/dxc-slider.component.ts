@@ -16,16 +16,10 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
-  styleUrls: [
-    "./dxc-light-slider.scss",
-    "./dxc-dark-slider.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcSliderComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
-  @HostBinding("class.dxc-light") isLight: boolean = true;
-  @HostBinding("class.dxc-dark") isDark: boolean = false;
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
   //Default values
@@ -45,8 +39,6 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     this._showInput = coerceBooleanProperty(value);
   }
   private _showInput = false;
-
-  @Input() theme: string = "light";
 
   @Input() value: number;
   @Input() name: string;
@@ -72,7 +64,6 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     showLimitsValues: false,
     showInput: false,
     value: 0,
-    theme: "light",
     name: null,
     disabled: false,
     required: false,
@@ -93,25 +84,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     this.renderedValue = this.value;
 
     this.updateStyles(this.defaultInputs.getValue());
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     
     this.tickInterval = this.step > 1 ? 1 : 0;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     this.isDisabled = this.disabled;
     this.renderedValue = this.value
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -195,8 +172,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         opacity: 0.54;
       }
       mat-slider {
-        flex-grow: 1;
-
+        flex-grow: 1; 
         .mat-slider-ticks-container {
           height: 4px;
           top: -1px;
@@ -205,13 +181,23 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         .mat-slider-track-background,
         .mat-slider-wrapper {
           height: 1px;
-          background-color: var(--lightGrey, #D9D9D9);
         }
-        .mat-slider-track-background {
-          opacity: 0.54;
-        }
-
         &:not(.mat-slider-disabled) {
+          .mat-slider-track-fill{
+            background-color: var(--slider-color);
+          }
+          .mat-slider-thumb {
+            background-color: var(--slider-color);
+            border-color: var(--slider-color) !important;
+          }
+          .mat-slider-track-background {
+            opacity: var(--slider-totalLine) !important;
+            background-color: var(--slider-color) !important;
+          }
+          .mat-slider-ticks {
+            background-image: repeating-linear-gradient(to right,var(--slider-color) , var(--slider-color) 4px 4px, transparent 2px, #e2141400);
+            height: 4px;
+          }
           &.mat-slider-sliding {
             .mat-slider-thumb {
               cursor: grabbing;
@@ -223,7 +209,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
               transform: scale(0.7);
             }
             .mat-slider-focus-ring {
-              transform: scale(1.4);
+              width: 0px;
+              height: 0px;
             }
           }
           &.mat-slider-has-ticks {
@@ -236,6 +223,19 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         &.mat-slider-disabled {
           .mat-slider-thumb {
             transform: scale(0.7) !important;
+            border-color: var(--slider-color) !important;
+            background-color: var(--slider-color);
+            opacity: var(--slider-disabledThumbBackgroundColor);
+          }
+          .mat-slider-track-background {
+            opacity: var(--slider-disabledtotalLine) !important;
+            background-color: var(--slider-color) !important;
+          }
+          .mat-slider-track-fill{
+            opacity: var(--slider-disabledTrackLine) !important;
+          }
+          .mat-slider-ticks {
+            opacity: var(--slider-disabledDotsBackgroundColor) !important;
           }
         }
       }

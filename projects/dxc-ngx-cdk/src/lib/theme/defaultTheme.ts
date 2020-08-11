@@ -20,6 +20,40 @@ const colors = {
   blue: "#005FCC"
 };
 
+export const customTheme: Theme = {
+  properties: {
+    "button":{
+      "color": colors.yellow,
+      "hoverColor": colors.black,
+
+      "primaryFontColor": colors.black,
+      "primaryHoverFontColor": colors.yellow,
+      "primaryHoverBackgroundColor": colors.black,
+
+      "secondaryFontColor": colors.black,
+      "secondaryHoverFontColor": colors.black,
+
+      "textFontColor": colors.black,
+      "textHoverFontColor": colors.white
+    },
+    "checkbox":{
+      "color": colors.yellow,
+      "checkColor": colors.black,
+      "fontColor": colors.black
+    },
+    "radio":{
+      "color": colors.black,
+      "fontColor": colors.black
+    },
+    "select":{
+      "selectedOptionBackgroundColor": colors.lightGrey
+    },
+    "slider":{
+      "color": colors.black
+    }
+  }
+};
+
 export const defaultTheme: Theme = {
   properties: {
     "button":{
@@ -50,40 +84,16 @@ export const defaultTheme: Theme = {
     },
     "select":{
       "color": colors.black,
-      "hoverOptionBackgroundColor": "#D9D9D957",
       "invalidColor": colors.darkRed,
-      "focusColor": colors.blue
-    }
-  }
-};
-
-export const customTheme: Theme = {
-  properties: {
-    "button":{
-      "color": colors.yellow,
-      "hoverColor": colors.black,
-
-      "primaryFontColor": colors.black,
-      "primaryHoverFontColor": colors.yellow,
-      "primaryHoverBackgroundColor": colors.black,
-
-      "secondaryFontColor": colors.black,
-      "secondaryHoverFontColor": colors.black,
-
-      "textFontColor": colors.black,
-      "textHoverFontColor": colors.white
+      "focusColor": colors.blue,
+      "hoverOptionBackgroundColor": customTheme.properties["select"]["selectedOptionBackgroundColor"] + "57"
     },
-    "checkbox":{
-      "color": colors.yellow,
-      "checkColor": colors.black,
-      "fontColor": colors.black
-    },
-    "radio":{
-      "color": colors.black,
-      "fontColor": colors.black
-    },
-    "select":{
-      "selectedOptionBackgroundColor": colors.lightGrey
+    "slider":{
+      "totalLine": 0.34,
+      "disabledThumbBackgroundColor": 0.34,
+      "disabledDotsBackgroundColor": 0.34,
+      "disabledTrackLine": 0.34,
+      "disabledtotalLine": 0.34
     }
   }
 };

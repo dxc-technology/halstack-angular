@@ -18,6 +18,8 @@ import { LinkImportComponent } from '../../components/examples/link/link-import/
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { LinkDisabledComponent } from '../../components/examples/link/link-disabled/link-disabled.component';
+import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
+import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
     LinkIconComponent,
     LinkTablePropertiesComponent,
     LinkDisabledComponent,
-    LinkImportComponent
+    LinkImportComponent,
+    LinkApiComponent,
+    LinkThemeComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +55,9 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
     LinkIconComponent,
     LinkTablePropertiesComponent,
     LinkDisabledComponent,
-    LinkImportComponent
+    LinkImportComponent,
+    LinkApiComponent,
+    LinkThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

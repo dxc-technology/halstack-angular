@@ -17,6 +17,7 @@ const colors = {
   lightGreen: "#DBF1C4",
   disableLight: "#A5A5A5",
   disableDark: "#959595",
+  purple: "#8800F6",
   blue: "#005FCC"
 };
 
@@ -53,7 +54,8 @@ export const customTheme: Theme = {
     },
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
-    }
+    },
+    "link":{}
   }
 };
 
@@ -104,6 +106,11 @@ export const defaultTheme: Theme = {
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
       "requiredColor": colors.darkRed
+    },
+    "link":{
+      "fontColor": colors.blue,
+      "visitedColor": colors.purple,
+      "disabledColor": colors.lightGrey
     }
   }
 };

@@ -168,9 +168,6 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           cursor: not-allowed;
         }
       }
-      .disabled-span {
-        opacity: 0.54;
-      }
       mat-slider {
         flex-grow: 1; 
         .mat-slider-ticks-container {
@@ -237,7 +234,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           }
           .mat-slider-ticks {
             opacity: var(--slider-disabledDotsBackgroundColor) !important;
-            background-color: var(--slider-color) !important;
+            background-image: repeating-linear-gradient(to right,var(--slider-color) , var(--slider-color) 4px 4px, transparent 2px, #e2141400);
+            height: 4px;
           }
         }
       }

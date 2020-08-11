@@ -130,7 +130,7 @@ export class DxcCheckboxComponent implements OnInit {
       vertical-align: top;
       mat-checkbox:focus {
                 outline: -webkit-focus-ring-color auto 1px;
-                outline-color: blue;
+                outline-color: var(--checkbox-focusColor);
               }
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
       .mat-checkbox-checked.mat-accent .mat-checkbox-background{
@@ -139,7 +139,7 @@ export class DxcCheckboxComponent implements OnInit {
       mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background:focus, 
       mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame:focus{
         outline: -webkit-focus-ring-color auto 1px;
-        outline-color: blue;
+        outline-color: var(--checkbox-focusColor);
       }
       mat-checkbox {
         display: inline-flex; 
@@ -149,7 +149,7 @@ export class DxcCheckboxComponent implements OnInit {
             .mat-checkbox-inner-container {
               .mat-checkbox-background{
                 outline: -webkit-focus-ring-color auto 1px;
-                outline-color: blue;
+                outline-color: var(--checkbox-focusColor);
               }
             }
           }
@@ -174,6 +174,7 @@ export class DxcCheckboxComponent implements OnInit {
             .mat-checkbox-background,
             .mat-checkbox-frame {
               border-radius: 4px;
+              border-color: var(--checkbox-color);
             }
 
             .mat-checkbox-background {

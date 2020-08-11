@@ -10,7 +10,6 @@ import { SliderPropertiesComponent } from '../../components/examples/slider/prop
 import { SliderExampleComponent } from '../../components/examples/slider/slider-example/slider-example.component';
 import { SliderDefaultComponent } from 'src/app/components/examples/slider/slider-default/slider-default.component';
 import { SliderContinuousComponent } from 'src/app/components/examples/slider/slider-continuous/slider-continuous.component';
-import { SliderDarkComponent } from 'src/app/components/examples/slider/slider-dark/slider-dark.component';
 import { SliderDisabledComponent } from 'src/app/components/examples/slider/slider-disabled/slider-disabled.component';
 import { SliderDiscreteComponent } from 'src/app/components/examples/slider/slider-discrete/slider-discrete.component';
 import { SliderInputComponent } from 'src/app/components/examples/slider/slider-input/slider-input.component';
@@ -21,6 +20,8 @@ import { SliderImportComponent } from '../../components/examples/slider/slider-i
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
+import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,
-    SliderDarkComponent,
     SliderDefaultComponent,
     SliderDisabledComponent,
     SliderDiscreteComponent,
@@ -36,7 +36,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderSizedComponent,
     SliderUnlimitedComponent,
     SliderUncontrolledComponent,
-    SliderImportComponent
+    SliderImportComponent,
+    SliderApiComponent,
+    SliderThemeComponent
   ],
   imports: [
     CommonModule,
@@ -54,14 +56,15 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderContinuousComponent,
-    SliderDarkComponent,
     SliderDefaultComponent,
     SliderDisabledComponent,
     SliderDiscreteComponent,
     SliderInputComponent,
     SliderSizedComponent,
     SliderUnlimitedComponent,
-    SliderImportComponent
+    SliderImportComponent,
+    SliderApiComponent,
+    SliderThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

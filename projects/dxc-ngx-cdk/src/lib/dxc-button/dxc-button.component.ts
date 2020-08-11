@@ -189,11 +189,11 @@ export class DxcButtonComponent {
         &:disabled {
           opacity: var(--button-primaryDisabledOpacity);
         }
-        &:focus {
+        &:focus:not([disabled]){
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: blue;
+          outline-color: var(--button-focusColor);
         }
-        &:active {
+        &:active:not([disabled]) {
           opacity: var(--button-primaryActiveOpacity);
         }
     `;
@@ -212,7 +212,7 @@ export class DxcButtonComponent {
         }
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: blue;
+          outline-color: var(--button-focusColor);
         }
         &:active {
           opacity: var(--button-secondaryActiveOpacity);
@@ -235,7 +235,7 @@ export class DxcButtonComponent {
           background: var(--button-hoverColor);
           color: var(--button-textHoverFontColor);
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: blue;
+          outline-color: var(--button-focusColor);
         }
         &:active {
           opacity: var(--button-textActiveOpacity);

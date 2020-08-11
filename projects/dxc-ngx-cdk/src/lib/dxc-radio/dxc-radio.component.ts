@@ -113,7 +113,7 @@ export class DxcRadioComponent implements OnInit {
           .mat-radio-label {
             .mat-radio-container {
               .mat-radio-outer-circle {
-              border-color: blue;
+              border-color: var(--radio-focusColor);
               }
             }
           }

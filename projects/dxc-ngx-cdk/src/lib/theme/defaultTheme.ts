@@ -17,6 +17,7 @@ const colors = {
   lightGreen: "#DBF1C4",
   disableLight: "#A5A5A5",
   disableDark: "#959595",
+  purple: "#8800F6",
   blue: "#005FCC"
 };
 
@@ -50,7 +51,8 @@ export const customTheme: Theme = {
     },
     "slider":{
       "color": colors.black
-    }
+    },
+    "link":{}
   }
 };
 
@@ -94,6 +96,11 @@ export const defaultTheme: Theme = {
       "disabledDotsBackgroundColor": 0.34,
       "disabledTrackLine": 0.34,
       "disabledtotalLine": 0.34
+    },
+    "link":{
+      "fontColor": colors.blue,
+      "visitedColor": colors.purple,
+      "disabledColor": colors.lightGrey
     }
   }
 };

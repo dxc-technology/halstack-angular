@@ -15,9 +15,6 @@ import { ThemeService } from "../theme/theme.service";
 @Component({
   selector: "dxc-switch",
   templateUrl: "./dxc-switch.component.html",
-  styleUrls: [
-    "./dxc-light-switch.component.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcSwitchComponent implements OnChanges {

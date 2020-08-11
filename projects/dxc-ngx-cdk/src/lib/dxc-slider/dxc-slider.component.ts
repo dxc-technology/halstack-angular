@@ -233,9 +233,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           }
           .mat-slider-track-fill{
             opacity: var(--slider-disabledTrackLine) !important;
+            background-color: var(--slider-color) !important;
           }
           .mat-slider-ticks {
             opacity: var(--slider-disabledDotsBackgroundColor) !important;
+            background-color: var(--slider-color) !important;
           }
         }
       }

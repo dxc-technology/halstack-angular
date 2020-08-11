@@ -15,7 +15,6 @@ import { SelectInvalidComponent } from 'src/app/components/examples/select/selec
 import { SelectPropertiesComponent } from '../../components/examples/select/properties/select-properties/select-properties.component';
 import { SelectMultipleComponent } from '../../components/examples/select/select-multiple/select-multiple.component';
 import { SelectSizedComponent } from '../../components/examples/select/select-sized/select-sized.component';
-import { SelectThemedComponent } from '../../components/examples/select/select-themed/select-themed.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
 import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
 import { SelectAssistiveComponent } from '../../components/examples/select/select-assistive/select-assistive.component';
@@ -36,7 +35,6 @@ import { SelectThemeComponent } from '../../components/examples/select/select-th
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
-      SelectThemedComponent,
       SelectUncontrolledComponent,
       SelectUncontrolledMultipleComponent,
       SelectAssistiveComponent,
@@ -65,7 +63,6 @@ import { SelectThemeComponent } from '../../components/examples/select/select-th
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
-      SelectThemedComponent,
       SelectAssistiveComponent,
       SelectImportComponent,
       SelectApiComponent,

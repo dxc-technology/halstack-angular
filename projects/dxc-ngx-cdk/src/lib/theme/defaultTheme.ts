@@ -51,7 +51,8 @@ export const customTheme: Theme = {
     },
     "slider":{
       "color": colors.black
-    }
+    },
+    "link":{}
   }
 };
 

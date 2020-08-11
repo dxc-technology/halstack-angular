@@ -96,7 +96,6 @@ import { SpinnerOverlayComponent } from '../examples/spinner/spinner-overlay/spi
 import { SwitchExampleComponent } from "../examples/switch/switch-example/switch-example.component";
 import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-label.component";
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
-import { SwitchThemedComponent } from "../examples/switch/switch-themed/switch-themed.component";
 import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
 import { TextInputDarkComponent } from "../examples/text-input/text-input-dark/text-input-dark.component";
@@ -236,6 +235,8 @@ import { SliderThemeComponent } from '../examples/slider/slider-theme/slider-the
 import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
 import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
+import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
+import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -346,7 +347,6 @@ import { SelectThemeComponent } from '../examples/select/select-theme/select-the
     SwitchDefaultComponent,
     SwitchLabelComponent,
     SwitchTablePropertiesComponent,
-    SwitchThemedComponent,
     SwitchUncontrolledComponent,
     TextInputExampleComponent,
     TextInputDarkComponent,
@@ -475,7 +475,9 @@ import { SelectThemeComponent } from '../examples/select/select-theme/select-the
     SliderThemeComponent,
     SliderApiComponent,
     SelectApiComponent,
-    SelectThemeComponent
+    SelectThemeComponent,
+    SwitchApiComponent,
+    SwitchThemeComponent
   ]
 })
 export class DynamicModule {}

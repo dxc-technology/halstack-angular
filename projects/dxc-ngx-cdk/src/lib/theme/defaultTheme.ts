@@ -52,7 +52,12 @@ export const customTheme: Theme = {
     "slider":{
       "color": colors.black
     },
-    "link":{}
+    "link":{},
+    "box":{
+      "backgroundColor": colors.white,
+      "borderColor": "transparent",
+      "fontColor": colors.black
+    }
   }
 };
 
@@ -101,6 +106,9 @@ export const defaultTheme: Theme = {
       "fontColor": colors.blue,
       "visitedColor": colors.purple,
       "disabledColor": colors.lightGrey
+    },
+    "box":{
+      // "text": readableColor(colors.black)
     }
   }
 };

@@ -65,8 +65,12 @@ export class DxcBoxComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: ${inputs.display};
+      border: 1px solid;
       border-radius: 4px;
       overflow: hidden;
+      background-color: var(--box-backgroundColor);
+      border-color: var(--box-borderColor);
+      color: var(--box-fontColor);
   
       ${this.utils.getBoxShadow(inputs.shadowDepth) }
       ${this.utils.getMargins(inputs.margin) }

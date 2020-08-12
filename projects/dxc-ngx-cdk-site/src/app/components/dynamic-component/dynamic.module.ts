@@ -240,6 +240,8 @@ import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.com
 import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
 import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
 import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
+import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
+import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -483,7 +485,9 @@ import { TextInputThemeComponent } from '../examples/text-input/text-input-theme
     SwitchApiComponent,
     SwitchThemeComponent,
     TextInputThemeComponent,
-    TextInputApiComponent
+    TextInputApiComponent,
+    BoxApiComponent,
+    BoxThemeComponent
   ]
 })
 export class DynamicModule {}

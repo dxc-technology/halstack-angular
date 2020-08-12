@@ -52,11 +52,20 @@ export const customTheme: Theme = {
     "slider":{
       "color": colors.black
     },
+<<<<<<< HEAD
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
     },
     "link":{},
     "text":{}
+=======
+    "link":{},
+    "box":{
+      "backgroundColor": colors.white,
+      "borderColor": "transparent",
+      "fontColor": colors.black
+    }
+>>>>>>> b4d8c47f3cd4429774fe60c10062e3acce39381b
   }
 };
 
@@ -121,6 +130,8 @@ export const defaultTheme: Theme = {
       "disabledUnderlinedColor": 0.34,
       "disabledAssistiveTextColor": 0.34,
       "invalidColor": colors.darkRed
+    "box":{
+      // "text": readableColor(colors.black)
     }
   }
 };

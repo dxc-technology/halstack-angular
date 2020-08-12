@@ -11,6 +11,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { BoxImportComponent } from '../../components/examples/box/box-import/box-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
+import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     BoxExampleComponent,
     BoxBasicComponent,
     BoxTablePropertiesComponent,
-    BoxImportComponent
+    BoxImportComponent,
+    BoxApiComponent,
+    BoxThemeComponent
     ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     BoxExampleComponent,
     BoxBasicComponent,
     BoxTablePropertiesComponent,
-    BoxImportComponent
+    BoxImportComponent,
+    BoxApiComponent,
+    BoxThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

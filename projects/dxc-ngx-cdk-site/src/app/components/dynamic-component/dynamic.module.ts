@@ -238,6 +238,8 @@ import { SliderThemeComponent } from '../examples/slider/slider-theme/slider-the
 import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
 import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
+import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
+import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -479,7 +481,9 @@ import { SelectThemeComponent } from '../examples/select/select-theme/select-the
     SliderThemeComponent,
     SliderApiComponent,
     SelectApiComponent,
-    SelectThemeComponent
+    SelectThemeComponent,
+    BoxApiComponent,
+    BoxThemeComponent
   ]
 })
 export class DynamicModule {}

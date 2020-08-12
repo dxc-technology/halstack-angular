@@ -123,7 +123,8 @@ export class DxcSwitchComponent implements OnChanges {
           color: var(--switch-requiredColor);
         }
         .mat-slide-toggle-ripple {
-          top: calc(50% - 21px);
+          height: 0px;
+          width: 0px;
         }
         div.mat-slide-toggle-thumb {
           height: 24px;

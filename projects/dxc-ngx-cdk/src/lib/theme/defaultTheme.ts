@@ -55,7 +55,8 @@ export const customTheme: Theme = {
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
     },
-    "link":{}
+    "link":{},
+    "text":{}
   }
 };
 
@@ -111,6 +112,15 @@ export const defaultTheme: Theme = {
       "fontColor": colors.blue,
       "visitedColor": colors.purple,
       "disabledColor": colors.lightGrey
+    },
+    "text":{
+      "color": colors.black,
+      "placeholderColor": colors.lightGrey,
+      "disabledFontColor": 0.34,
+      "disabledLabelColor": 0.34,
+      "disabledUnderlinedColor": 0.34,
+      "disabledAssistiveTextColor": 0.34,
+      "invalidColor": colors.darkRed
     }
   }
 };

@@ -98,7 +98,6 @@ import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-lab
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
 import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
-import { TextInputDarkComponent } from "../examples/text-input/text-input-dark/text-input-dark.component";
 import { TextInputDefaultComponent } from "../examples/text-input/text-input-default/text-input-default.component";
 import { TextInputFillParentComponent } from "../examples/text-input/text-input-fill-parent/text-input-fill-parent.component";
 import { TextInputMultiComponent } from "../examples/text-input/text-input-multi/text-input-multi.component";
@@ -239,6 +238,8 @@ import { SelectApiComponent } from '../examples/select/select-api/select-api.com
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
 import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
 import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
+import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
+import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -351,7 +352,6 @@ import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-the
     SwitchTablePropertiesComponent,
     SwitchUncontrolledComponent,
     TextInputExampleComponent,
-    TextInputDarkComponent,
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputFillParentComponent,
@@ -481,7 +481,9 @@ import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-the
     SelectApiComponent,
     SelectThemeComponent,
     SwitchApiComponent,
-    SwitchThemeComponent
+    SwitchThemeComponent,
+    TextInputThemeComponent,
+    TextInputApiComponent
   ]
 })
 export class DynamicModule {}

@@ -18,6 +18,8 @@ import { ChipExampleComponent } from "src/app/components/examples/chip/chip-exam
 import { ChipTablePropertiesComponent } from "src/app/components/examples/chip/properties/box-table-properties/chip-table-properties.component";
 import { ChipImportComponent } from "src/app/components/examples/chip/chip-import/chip-import.component";
 import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-disabled/chip-disabled.component';
+import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
+import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-dis
     ChipExampleComponent,
     ChipTablePropertiesComponent,
     ChipImportComponent,
+    ChipApiComponent,
+    ChipThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-dis
     ChipExampleComponent,
     ChipTablePropertiesComponent,
     ChipImportComponent,
+    ChipApiComponent,
+    ChipThemeComponent
   ],
   entryComponents: [ExampleViewerComponent],
 })

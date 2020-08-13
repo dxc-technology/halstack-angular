@@ -127,6 +127,12 @@ export const defaultTheme: Theme = {
     },
     "box":{
       // "text": readableColor(colors.black)
+    },
+    "card":{
+      "backgroundColor": colors.white
+    },
+    "tag":{
+      "backgroundColor": colors.white
     }
   }
 };

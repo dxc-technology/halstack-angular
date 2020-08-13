@@ -7,7 +7,7 @@ import { TagSizedComponent } from '../tag-sized/tag-sized.component';
 import { TagActionComponent } from '../tag-action/tag-action.component';
 
 @Component({
-  selector: 'app-tag-example',
+  selector: 'tag-example',
   templateUrl: './tag-example.component.html',
   styleUrls: ['./tag-example.component.scss']
 })

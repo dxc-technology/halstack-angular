@@ -236,12 +236,14 @@ import { SelectApiComponent } from '../examples/select/select-api/select-api.com
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
 import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
-import { ColorPreviewComponent } from '../color-preview/color-preview.component';
+import { TagApiComponent } from '../examples/tag/tag-api/tag-api.component';
+import { TagThemeComponent } from '../examples/tag/tag-theme/tag-theme.component';
 import { CardApiComponent } from '../examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
 import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
 import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
 import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
+import { ColorPreviewComponent } from '../color-preview/color-preview.component';
 import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
 
 @NgModule({
@@ -489,7 +491,9 @@ import { TextInputThemeComponent } from '../examples/text-input/text-input-theme
     SwitchApiComponent,
     SwitchThemeComponent,
     TextInputApiComponent,
-    TextInputThemeComponent
+    TextInputThemeComponent,
+    TagApiComponent,
+    TagThemeComponent
   ]
 })
 export class DynamicModule {}

@@ -5,7 +5,7 @@ import { ChipBasicComponent } from "../chip-basic/chip-basic.component";
 import { ChipDisabledComponent } from '../chip-disabled/chip-disabled.component';
 
 @Component({
-  selector: "app-chip-example",
+  selector: "chip-example",
   templateUrl: "./chip-example.component.html",
   styleUrls: ["./chip-example.component.scss"],
 })

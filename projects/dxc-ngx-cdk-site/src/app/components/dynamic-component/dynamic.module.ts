@@ -43,9 +43,7 @@ import { CardActionComponent } from "../examples/card/card-action/card-action.co
 import { CardDefaultComponent } from "../examples/card/card-default/card-default.component";
 import { CardExampleComponent } from "../examples/card/card-example/card-example.component";
 import { CardLinkedComponent } from "../examples/card/card-linked/card-linked.component";
-import { CardOutlinedComponent } from "../examples/card/card-outlined/card-outlined.component";
 import { CardTablePropertiesComponent } from "../examples/card/properties/card-table-properties/card-table-properties.component";
-import { CardThemedComponent } from "../examples/card/card-themed/card-themed.component";
 import { CheckboxLabelPositionComponent } from "../examples/checkbox/checkbox-label-position/checkbox-label-position.component";
 import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/checkbox-properties/checkbox-properties.component";
 import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/checkbox-simple.component";
@@ -240,6 +238,8 @@ import { SelectApiComponent } from '../examples/select/select-api/select-api.com
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
 import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
+import { CardApiComponent } from '../examples/card/card-api/card-api.component';
+import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -286,9 +286,9 @@ import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component
     CardDefaultComponent,
     CardExampleComponent,
     CardLinkedComponent,
-    CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent,
+    CardApiComponent,
+    CardThemeComponent,
     CheckboxExampleComponent,
     CheckboxLabelPositionComponent,
     CheckboxPropertiesComponent,

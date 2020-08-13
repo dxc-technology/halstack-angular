@@ -25,13 +25,10 @@ export const customTheme: Theme = {
       "fontColor": "#000000"
     },
     "select":{
-      "selectedOptionBackgroundColor": "#D9D9D9"
+      "selectedOptionBackgroundColor": "#FABADA"
     },
     "slider":{
       "color": "#000000"
-    },
-    "switch":{
-      "checkedTrackBackgroundColor": "#666666"
     }
   }
 };

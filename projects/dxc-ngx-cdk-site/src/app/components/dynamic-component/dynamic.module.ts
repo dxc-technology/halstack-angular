@@ -240,6 +240,8 @@ import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
 import { CardApiComponent } from '../examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
+import { ChipApiComponent } from '../examples/chip/chip-api/chip-api.component';
+import { ChipThemeComponent } from '../examples/chip/chip-theme/chip-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -483,7 +485,9 @@ import { CardThemeComponent } from '../examples/card/card-theme/card-theme.compo
     SelectApiComponent,
     SelectThemeComponent,
     BoxApiComponent,
-    BoxThemeComponent
+    BoxThemeComponent,
+    ChipApiComponent,
+    ChipThemeComponent
   ]
 })
 export class DynamicModule {}

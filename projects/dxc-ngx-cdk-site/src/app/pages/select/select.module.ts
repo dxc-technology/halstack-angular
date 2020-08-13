@@ -23,6 +23,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SelectThemeComponent } from '../../components/examples/select/select-th
       DXCSelectModule,
       DxcTagModule,
       CodePlaygroundModule,
-      ComponentsSidenavModule
+      ComponentsSidenavModule,
+      ColorPreviewModule
     ],
     exports: [
       SelectComponent,

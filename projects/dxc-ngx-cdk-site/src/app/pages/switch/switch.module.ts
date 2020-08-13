@@ -16,6 +16,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SwitchApiComponent } from '../../components/examples/switch/switch-api/switch-api.component';
 import { SwitchThemeComponent } from '../../components/examples/switch/switch-theme/switch-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SwitchThemeComponent } from '../../components/examples/switch/switch-th
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     SwitchExampleComponent,

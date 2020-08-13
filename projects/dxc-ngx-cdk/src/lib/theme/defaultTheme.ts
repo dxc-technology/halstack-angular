@@ -59,9 +59,7 @@ export const customTheme: Theme = {
       "backgroundColor": colors.white,
       "borderColor": "transparent",
       "fontColor": colors.black
-    },
-    "tag":{},
-    "card":{}
+    }
   }
 };
 
@@ -106,6 +104,13 @@ export const defaultTheme: Theme = {
       "disabledTrackLine": 0.34,
       "disabledtotalLine": 0.34
     },
+    "switch":{
+      "checkedThumbBackgroundColor": colors.white,
+      "uncheckedThumbBackgroundColor": colors.white,
+      "uncheckedTrackBackgroundColor": colors.lightGrey,
+      "disabledBackgroundColor": 0.34,
+      "requiredColor": colors.darkRed
+    },
     "link":{
       "fontColor": colors.blue,
       "visitedColor": colors.purple,
@@ -131,5 +136,3 @@ export const defaultTheme: Theme = {
     }
   }
 };
-
-

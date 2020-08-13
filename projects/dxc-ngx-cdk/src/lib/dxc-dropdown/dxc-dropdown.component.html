@@ -6,7 +6,7 @@
   [matMenuTriggerFor]="menu"
   [disableRipple]="true"
   [class]="triggerStyles"
-  #menuTrigger="matMenuTrigger" 
+  #menuTrigger="matMenuTrigger"
   (mouseenter)="buttonEnter(menuTrigger)" (mouseleave)="buttonLeave(menuTrigger, dropdownButton)"
   >
 
@@ -27,7 +27,8 @@
   [class] = "menuOptions"
   [hasBackdrop]="false"
   >
-  <span 
+
+  <span
   (mouseenter)="menuenter()" (mouseleave)="menuLeave(menuTrigger, dropdownButton)">
     <button
       *ngFor="let option of options; index as i"

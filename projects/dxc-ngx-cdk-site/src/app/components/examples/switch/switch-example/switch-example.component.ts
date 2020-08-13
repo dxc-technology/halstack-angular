@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from "@angular/core";
 import { Example } from "src/app/model/example";
 import { ExampleService } from "src/app/service/example.service";
 import { SwitchLabelComponent } from '../switch-label/switch-label.component';
+import { SwitchThemedComponent } from "../switch-themed/switch-themed.component";
 import { SwitchUncontrolledComponent } from '../switch-uncontrolled/switch-uncontrolled.component';
 import { SwitchDefaultComponent } from '../switch-default/switch-default.component';
 
@@ -54,6 +55,20 @@ export class SwitchExampleComponent implements OnInit {
         })
       );
     });
+
+    this.exampleService
+      .getCodeExample("switch/switch-themed/switch-themed.component")
+      .subscribe(resp1 => {
+        this.examples.push(
+          this.exampleService.generateExample({
+            title: "Themed Switch",
+            component: SwitchThemedComponent,
+            selector: "example3",
+            examples: [resp1[0], resp1[1], resp1[2]]
+          })
+        );
+      });
+
       this.exampleService
       .getCodeExample("switch/switch-label/switch-label.component")
       .subscribe(resp1 => {
@@ -61,7 +76,7 @@ export class SwitchExampleComponent implements OnInit {
           this.exampleService.generateExample({
             title: "Label Position Switch",
             component: SwitchLabelComponent,
-            selector: "example3",
+            selector: "example4",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

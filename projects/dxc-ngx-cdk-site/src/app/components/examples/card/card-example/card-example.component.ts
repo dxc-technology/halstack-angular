@@ -4,9 +4,6 @@ import { ExampleService } from "src/app/service/example.service";
 import { CardActionComponent } from '../card-action/card-action.component';
 import { CardDefaultComponent } from "../card-default/card-default.component";
 import { CardLinkedComponent } from '../card-linked/card-linked.component';
-import { CardOutlinedComponent } from "../card-outlined/card-outlined.component";
-import { CardThemedComponent } from "../card-themed/card-themed.component";
-
 @Component({
   selector: "app-card-example",
   templateUrl: "./card-example.component.html",
@@ -38,32 +35,6 @@ export class CardExampleComponent implements OnInit {
             title: "Default Card",
             component: CardDefaultComponent,
             selector: "example1",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-    this.exampleService
-      .getCodeExample("card/card-themed/card-themed.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Themed Card",
-            component: CardThemedComponent,
-            selector: "example2",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-    this.exampleService
-      .getCodeExample("card/card-outlined/card-outlined.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Outlined Card",
-            component: CardOutlinedComponent,
-            selector: "example3",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

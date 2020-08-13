@@ -43,9 +43,7 @@ import { CardActionComponent } from "../examples/card/card-action/card-action.co
 import { CardDefaultComponent } from "../examples/card/card-default/card-default.component";
 import { CardExampleComponent } from "../examples/card/card-example/card-example.component";
 import { CardLinkedComponent } from "../examples/card/card-linked/card-linked.component";
-import { CardOutlinedComponent } from "../examples/card/card-outlined/card-outlined.component";
 import { CardTablePropertiesComponent } from "../examples/card/properties/card-table-properties/card-table-properties.component";
-import { CardThemedComponent } from "../examples/card/card-themed/card-themed.component";
 import { CheckboxLabelPositionComponent } from "../examples/checkbox/checkbox-label-position/checkbox-label-position.component";
 import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/checkbox-properties/checkbox-properties.component";
 import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/checkbox-simple.component";
@@ -96,8 +94,10 @@ import { SpinnerOverlayComponent } from '../examples/spinner/spinner-overlay/spi
 import { SwitchExampleComponent } from "../examples/switch/switch-example/switch-example.component";
 import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-label.component";
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
+import { SwitchThemedComponent } from "../examples/switch/switch-themed/switch-themed.component";
 import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
+import { TextInputDarkComponent } from "../examples/text-input/text-input-dark/text-input-dark.component";
 import { TextInputDefaultComponent } from "../examples/text-input/text-input-default/text-input-default.component";
 import { TextInputFillParentComponent } from "../examples/text-input/text-input-fill-parent/text-input-fill-parent.component";
 import { TextInputMultiComponent } from "../examples/text-input/text-input-multi/text-input-multi.component";
@@ -236,13 +236,11 @@ import { SliderThemeComponent } from '../examples/slider/slider-theme/slider-the
 import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
 import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
-import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
-import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
-import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
-import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
 import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
 import { ColorPreviewComponent } from '../color-preview/color-preview.component';
+import { CardApiComponent } from '../examples/card/card-api/card-api.component';
+import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -289,9 +287,9 @@ import { ColorPreviewComponent } from '../color-preview/color-preview.component'
     CardDefaultComponent,
     CardExampleComponent,
     CardLinkedComponent,
-    CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent,
+    CardApiComponent,
+    CardThemeComponent,
     CheckboxExampleComponent,
     CheckboxLabelPositionComponent,
     CheckboxPropertiesComponent,
@@ -353,8 +351,10 @@ import { ColorPreviewComponent } from '../color-preview/color-preview.component'
     SwitchDefaultComponent,
     SwitchLabelComponent,
     SwitchTablePropertiesComponent,
+    SwitchThemedComponent,
     SwitchUncontrolledComponent,
     TextInputExampleComponent,
+    TextInputDarkComponent,
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputFillParentComponent,
@@ -483,10 +483,6 @@ import { ColorPreviewComponent } from '../color-preview/color-preview.component'
     SliderApiComponent,
     SelectApiComponent,
     SelectThemeComponent,
-    SwitchApiComponent,
-    SwitchThemeComponent,
-    TextInputThemeComponent,
-    TextInputApiComponent,
     BoxApiComponent,
     BoxThemeComponent,
     ColorPreviewComponent

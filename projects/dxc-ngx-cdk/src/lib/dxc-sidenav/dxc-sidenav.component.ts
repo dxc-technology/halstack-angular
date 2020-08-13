@@ -123,7 +123,7 @@ export class DxcSidenavComponent implements OnInit {
         .sidenavArrow {
           width: 42px;
           height: 42px;
-          background-color: #D9D9D980;
+          background-color: var(--sidenav-arrowBackground);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -159,13 +159,14 @@ export class DxcSidenavComponent implements OnInit {
             margin-left: ${inputs.isShown ? "0px" : "10px"};
             transform: ${inputs.isShown ? "rotate(-180deg)" : "rotate(0deg) !important"};
             transition: margin 0.4s ease-in, transform 0.4s ease-in-out;
+            fill: var(--sidenav-arrowColor)
           }
         }
 
         dxc-sidenav-menu {
           display: flex;
           flex-direction: column;
-          background-color: #f8f8f8;
+          background-color: var(--sidenav-color);
           width: ${
             inputs.innerWidth <= responsiveSizes.tablet ? "60%" : "300px"
           };

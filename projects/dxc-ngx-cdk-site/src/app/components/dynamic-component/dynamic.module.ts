@@ -94,10 +94,8 @@ import { SpinnerOverlayComponent } from '../examples/spinner/spinner-overlay/spi
 import { SwitchExampleComponent } from "../examples/switch/switch-example/switch-example.component";
 import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-label.component";
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
-import { SwitchThemedComponent } from "../examples/switch/switch-themed/switch-themed.component";
 import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
-import { TextInputDarkComponent } from "../examples/text-input/text-input-dark/text-input-dark.component";
 import { TextInputDefaultComponent } from "../examples/text-input/text-input-default/text-input-default.component";
 import { TextInputFillParentComponent } from "../examples/text-input/text-input-fill-parent/text-input-fill-parent.component";
 import { TextInputMultiComponent } from "../examples/text-input/text-input-multi/text-input-multi.component";
@@ -244,6 +242,11 @@ import { CardApiComponent } from '../examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
 import { ChipApiComponent } from '../examples/chip/chip-api/chip-api.component';
 import { ChipThemeComponent } from '../examples/chip/chip-theme/chip-theme.component';
+import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
+import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
+import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
+import { ColorPreviewComponent } from '../color-preview/color-preview.component';
+import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -354,10 +357,8 @@ import { ChipThemeComponent } from '../examples/chip/chip-theme/chip-theme.compo
     SwitchDefaultComponent,
     SwitchLabelComponent,
     SwitchTablePropertiesComponent,
-    SwitchThemedComponent,
     SwitchUncontrolledComponent,
     TextInputExampleComponent,
-    TextInputDarkComponent,
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputFillParentComponent,
@@ -490,6 +491,11 @@ import { ChipThemeComponent } from '../examples/chip/chip-theme/chip-theme.compo
     BoxThemeComponent,
     ChipApiComponent,
     ChipThemeComponent,
+    ColorPreviewComponent,
+    SwitchApiComponent,
+    SwitchThemeComponent,
+    TextInputApiComponent,
+    TextInputThemeComponent,
     TagApiComponent,
     TagThemeComponent
   ]

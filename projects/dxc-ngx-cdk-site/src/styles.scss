@@ -50,6 +50,11 @@ body { margin: 0; font-family: Open Sans, "Helvetica Neue", sans-serif; }
     opacity: 1;
 }
 
+.default-color{
+    display: flex;
+    align-items: center;
+}
+
 code{
     font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace;
 }

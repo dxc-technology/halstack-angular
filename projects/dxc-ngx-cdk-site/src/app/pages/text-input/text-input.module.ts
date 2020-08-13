@@ -7,7 +7,6 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { TextInputComponent } from './text-input.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { TextInputTablePropertiesComponent } from '../../components/examples/text-input/properties/text-input-table-properties/text-input-table-properties.component';
-import { TextInputDarkComponent } from '../../components/examples/text-input/text-input-dark/text-input-dark.component';
 import { TextInputDefaultComponent } from '../../components/examples/text-input/text-input-default/text-input-default.component';
 import { TextInputExampleComponent } from '../../components/examples/text-input/text-input-example/text-input-example.component';
 import { TextInputFillParentComponent } from '../../components/examples/text-input/text-input-fill-parent/text-input-fill-parent.component';
@@ -19,11 +18,12 @@ import { TextInputImportComponent } from '../../components/examples/text-input/t
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { TextInputThemeComponent } from '../../components/examples/text-input/text-input-theme/text-input-theme.component';
+import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
 
 @NgModule({
   declarations: [
     TextInputComponent,
-    TextInputDarkComponent,
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputExampleComponent,
@@ -32,7 +32,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
     TextInputTablePropertiesComponent,
-    TextInputImportComponent
+    TextInputImportComponent,
+    TextInputApiComponent,
+    TextInputThemeComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
   ],
   exports: [
     TextInputComponent,
-    TextInputDarkComponent,
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputExampleComponent,
@@ -57,7 +58,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
     TextInputTablePropertiesComponent,
-    TextInputImportComponent
+    TextInputImportComponent,
+    TextInputApiComponent,
+    TextInputThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

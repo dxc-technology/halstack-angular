@@ -26,15 +26,12 @@ export class DxcCardComponent implements OnInit {
   @Input() imageCover: boolean;
   @Input() imageBgColor: string;
   @Input() outlined: boolean;
-  @Input() theme: string;
   @Input() margin: any;
   @Input() linkHref: string;
 
   @Output() onClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   @ViewChild("content", { static: false }) content: ElementRef;
 
@@ -45,20 +42,11 @@ export class DxcCardComponent implements OnInit {
     imageCover: false,
     imageBgColor: "black",
     outlined: false,
-    theme: "light",
     margin: null,
     linkHref: null
   });
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
-
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -89,82 +77,22 @@ export class DxcCardComponent implements OnInit {
   }
 
   applyTheme(theme, href, outlined) {
-    if (theme === "dark") {
-      return css`
+    return css`
         mat-card {
-          background-color: var(--black, black);
-          color: white;
-          ${!outlined
-            ? this.utils.getBoxShadow("1")
-            : this.utils.getBoxShadow(0)}
-        }
-
-        mat-card.outlined {
-          border: solid white 2px;
-          color: white;
-          max-width: 396px;
-          max-height: 216px;
-        }
-        mat-card:hover {
-          ${!outlined
-            ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
-            : this.utils.getBoxShadow("1")}
-        }
-        mat-card.outlined:hover {
-          ${this.getBorderOnHover(href)}
-        }
-      `;
-    } else if (theme === "medium") {
-      return css`
-        mat-card {
-          background-color: var(--lightBlack, #212121);
-          color: white;
-          ${!outlined
-            ? this.utils.getBoxShadow("1")
-            : this.utils.getBoxShadow(0)}
-        }
-
-        mat-card.outlined {
-          border: solid white 2px;
-          color: white;
-          max-width: 396px;
-          max-height: 216px;
-        }
-        mat-card:hover {
-          ${!outlined
-            ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
-            : this.utils.getBoxShadow("1")}
-        }
-        mat-card.outlined:hover {
-          ${this.getBorderOnHover(href)}
-        }
-      `;
-    } else {
-      return css`
-        mat-card {
-          background-color: var(--white, white);
+          background-color: var(--card-backgroundColor);
           color: black;
           ${!outlined
             ? this.utils.getBoxShadow("1")
             : this.utils.getBoxShadow(0)}
         }
 
-        mat-card.outlined {
-          border: solid black 2px;
-          color: black;
-          max-width: 396px;
-          max-height: 216px;
-        }
         mat-card:hover {
           ${!outlined
             ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
             : this.utils.getBoxShadow("1")}
         }
-        mat-card.outlined:hover {
-          ${this.getBorderOnHover(href)}
-        }
       `;
-    }
+    
   }
 
   getCursor(href) {
@@ -176,17 +104,7 @@ export class DxcCardComponent implements OnInit {
       return css``;
     }
   }
-
-  getBorderOnHover(href) {
-    if (this.onClick.observers.length > 0 || href) {
-      return css`
-        border-color: var(--yellow, #FFED00);
-      `;
-    } else {
-      return css``;
-    }
-  }
-
+  
   getShadowDepthOnHover(href) {
     if (this.onClick.observers.length > 0 || href) {
       return "2";

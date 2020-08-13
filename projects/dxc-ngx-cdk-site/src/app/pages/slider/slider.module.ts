@@ -22,6 +22,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
 import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SliderThemeComponent } from '../../components/examples/slider/slider-th
     DxcSliderModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     SliderComponent,

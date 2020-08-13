@@ -21,6 +21,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { RadioThemeComponent } from '../../components/examples/radio/radio-theme/radio-theme.component';
 import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { RadioApiComponent } from '../../components/examples/radio/radio-api/rad
       DxcTableModule,
       DxcTagModule,
       CodePlaygroundModule,
-      ComponentsSidenavModule
+      ComponentsSidenavModule,
+      ColorPreviewModule
     ],
     exports: [
         RadioComponent,

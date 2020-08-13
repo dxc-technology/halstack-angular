@@ -142,8 +142,8 @@ export class DxcSidenavComponent implements OnInit {
               ? "translateX(0)"
               : !inputs.isShown
               ? inputs.innerWidth <= responsiveSizes.tablet
-                ? "translateX(-" + inputs.innerWidth * 0.6 + "px) !important"
-                : "translateX(-297px) !important"
+              ? "translateX(-" + inputs.innerWidth * 0.6 + "px) !important"
+              : "translateX(-297px) !important"
               : ""
           };
           transition: transform 0.4s ease-in-out;

@@ -41,7 +41,6 @@ export class DxcTextInputComponent
   @Input() public required: boolean = false;
   @Input() public invalid: boolean = false;
   @Input() public isMasked: boolean;
-
   @Input() public label: String;
   @Input() public assistiveText: string;
   @Input() public name: string;
@@ -63,7 +62,6 @@ export class DxcTextInputComponent
   private _valueChangeTrack: boolean;
   options;
   type:string;
-
   dxcAutocompleteMenu = this.getAutoCompleteStyle();
 
   @ViewChild("dxcSingleInput", { static: false }) singleInput: ElementRef;
@@ -123,6 +121,12 @@ export class DxcTextInputComponent
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    if(this.isMasked){
+      this.type = "password";
+    }
+    else{
+      this.type = "text";
+    }
     if(this.isMasked){
       this.type = "password";
     }

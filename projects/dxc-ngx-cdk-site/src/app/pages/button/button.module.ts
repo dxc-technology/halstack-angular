@@ -19,7 +19,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ButtonTextModeComponent } from '../../components/examples/button/button-text-mode/button-text-mode.component';
 import { ButtonThemeComponent } from '../../components/examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
-import { ColorPreviewComponent } from '../../components/color-preview/color-preview.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,7 @@ import { ColorPreviewComponent } from '../../components/color-preview/color-prev
     ButtonImportComponent,
     ButtonTextModeComponent,
     ButtonThemeComponent,
-    ButtonApiComponent,
-    ColorPreviewComponent
+    ButtonApiComponent
     ],
   imports: [
     BrowserModule,
@@ -45,7 +44,8 @@ import { ColorPreviewComponent } from '../../components/color-preview/color-prev
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     ButtonModesComponent,
@@ -58,8 +58,7 @@ import { ColorPreviewComponent } from '../../components/color-preview/color-prev
     ButtonImportComponent,
     ButtonTextModeComponent,
     ButtonThemeComponent,
-    ButtonApiComponent,
-    ColorPreviewComponent
+    ButtonApiComponent
   ],
   entryComponents: [
     ExampleViewerComponent

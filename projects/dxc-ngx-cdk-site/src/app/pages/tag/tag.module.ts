@@ -15,6 +15,8 @@ import { TagExampleComponent } from 'src/app/components/examples/tag/tag-example
 import { TagImportComponent } from '../../components/examples/tag/tag-import/tag-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
+import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-theme.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TagActionComponent,
     TagSizedComponent,
     TagTablePropertiesComponent,
-    TagImportComponent
+    TagImportComponent,
+    TagApiComponent,
+    TagThemeComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +49,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TagActionComponent,
     TagSizedComponent,
     TagTablePropertiesComponent,
-    TagImportComponent
+    TagImportComponent,
+    TagApiComponent,
+    TagThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

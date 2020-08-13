@@ -59,6 +59,13 @@ export const customTheme: Theme = {
       "backgroundColor": colors.white,
       "borderColor": "transparent",
       "fontColor": colors.black
+    },
+    "card":{},
+    "tag":{},
+    "chip":{
+      "backgroundColor": colors.lightGrey,
+      "outlinedColor": colors.black,
+      "fontColor": colors.black
     }
   }
 };
@@ -133,6 +140,9 @@ export const defaultTheme: Theme = {
     },
     "tag":{
       "backgroundColor": colors.white
+    },
+    "chip":{
+      "disabled": 0.34
     }
   }
 };

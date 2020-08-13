@@ -61,7 +61,7 @@ export class DxcChipComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      opacity: ${inputs.disabled ? "0.34" : "1"};
+      opacity: ${inputs.disabled ? "var(--chip-disabled)" : "1"};
       height: 22px;
       ${this.utils.getMargins(inputs.margin)}
       display: flex;
@@ -69,10 +69,10 @@ export class DxcChipComponent implements OnChanges {
       flex-wrap: nowrap;
       text-overflow: ellipsis;
       border-radius: 48px;
-      background-color: var(--darkWhite, #EEEEEE);
+      background-color: var(--chip-backgroundColor);
       padding: 10px 20px;
       width: fit-content;
-      border: none;
+      border: 1px solid var(--chip-outlinedColor);
       .labelContainer {
         font-size: 16px;
         font-family: "Open Sans", sans-serif;
@@ -80,6 +80,7 @@ export class DxcChipComponent implements OnChanges {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        color: var(--chip-fontColor);
       }
       .prefixIcon {
         margin-right: 10px;

@@ -5,9 +5,7 @@ import { CardActionComponent } from '../../components/examples/card/card-action/
 import { CardDefaultComponent } from '../../components/examples/card/card-default/card-default.component';
 import { CardExampleComponent } from '../../components/examples/card/card-example/card-example.component';
 import { CardLinkedComponent } from '../../components/examples/card/card-linked/card-linked.component';
-import { CardOutlinedComponent } from '../../components/examples/card/card-outlined/card-outlined.component';
 import { CardTablePropertiesComponent } from '../../components/examples/card/properties/card-table-properties/card-table-properties.component';
-import { CardThemedComponent } from '../../components/examples/card/card-themed/card-themed.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
@@ -15,6 +13,8 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { CardImportComponent } from '../../components/examples/card/card-import/card-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
+import { CardThemeComponent } from '../../components/examples/card/card-theme/card-theme.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +23,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     CardDefaultComponent,
     CardExampleComponent,
     CardLinkedComponent,
-    CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent,
-    CardImportComponent
+    CardImportComponent,
+    CardApiComponent,
+    CardThemeComponent
     ],
   imports: [
     BrowserModule,
@@ -42,10 +42,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     CardActionComponent,
     CardDefaultComponent,
     CardLinkedComponent,
-    CardOutlinedComponent,
     CardTablePropertiesComponent,
-    CardThemedComponent,
-    CardImportComponent
+    CardImportComponent,
+    CardApiComponent,
+    CardThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

@@ -52,7 +52,9 @@ export const customTheme: Theme = {
     "slider":{
       "color": colors.black
     },
-    "link":{},
+    "switch":{
+      "checkedTrackBackgroundColor": colors.darkGrey
+    },
     "box":{
       "backgroundColor": colors.white,
       "borderColor": "transparent",
@@ -107,6 +109,15 @@ export const defaultTheme: Theme = {
       "fontColor": colors.blue,
       "visitedColor": colors.purple,
       "disabledColor": colors.lightGrey
+    },
+    "text":{
+      "color": colors.black,
+      "placeholderColor": colors.lightGrey,
+      "disabledFontColor": 0.34,
+      "disabledLabelColor": 0.34,
+      "disabledUnderlinedColor": 0.34,
+      "disabledAssistiveTextColor": 0.34,
+      "invalidColor": colors.darkRed
     },
     "box":{
       // "text": readableColor(colors.black)

@@ -44,6 +44,7 @@ import { LinkModule } from './pages/link/link.module';
 import { HeadingModule } from './pages/heading/heading.module';
 import { ScullyLibModule } from '@scullyio/ng-lib-v8';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
+import { AssetsPipeModule } from './pipe/assets.pipe.module';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { ComponentsSidenavModule } from './pages/components-sidenav/components-s
     HeadingModule,
     ResultsetTableModule,
     ThemeModule,
-    ScullyLibModule
+    ScullyLibModule,
+    AssetsPipeModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

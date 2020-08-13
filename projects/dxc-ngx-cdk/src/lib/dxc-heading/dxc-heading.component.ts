@@ -89,6 +89,7 @@ export class DxcHeadingComponent {
           : inputs.weight === "normal"
           ? 400
           : 600};
+        margin: 0px;
         letter-spacing: -0.53px;
         margin: 0px;
       }

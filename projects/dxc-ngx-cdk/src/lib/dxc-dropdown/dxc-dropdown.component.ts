@@ -9,7 +9,7 @@ import {
   ViewChild,
   AfterViewChecked,
   ChangeDetectionStrategy,
-  Renderer2,
+  Renderer2
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -41,7 +41,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Input() public margin: any;
   @Input() public size: any;
   @Input() public expandOnHover:boolean;
-
   @Input() public showCaret: boolean = true;
 
   @Input() public iconSrc: string;
@@ -77,7 +76,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   btnTrigger: any;
   private width: string = "";
   constructor(private utils: CssUtils,private ren: Renderer2) {}
-
   sizes = {
     small: "60px",
     medium: "240px",
@@ -578,5 +576,4 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
       }, 80)
     }
   }
-
 }

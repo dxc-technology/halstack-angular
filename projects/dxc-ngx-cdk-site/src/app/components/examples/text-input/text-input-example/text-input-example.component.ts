@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ExampleService } from 'src/app/service/example.service';
 import { Example } from 'src/app/model/example';
 import { TextInputDefaultComponent } from '../text-input-default/text-input-default.component';
+import { TextInputDarkComponent } from '../text-input-dark/text-input-dark.component';
 import { TextInputFillParentComponent } from '../text-input-fill-parent/text-input-fill-parent.component';
 import { TextInputMultiComponent } from '../text-input-multi/text-input-multi.component';
 import { TextInputPrefixSuffixComponent } from '../text-input-prefix-suffix/text-input-prefix-suffix.component';
@@ -52,12 +53,26 @@ export class TextInputExampleComponent implements OnInit {
           ]
         }));
       });
+
+    this.exampleService
+      .getCodeExample("text-input/text-input-dark/text-input-dark.component").subscribe(resp1 => {
+        this.examples.push(this.exampleService.generateExample({
+          title: 'Dark theme Input',
+          component: TextInputDarkComponent,
+          selector: "text-input_example_3",
+          examples: [
+            resp1[0],
+            resp1[1],
+            resp1[2]
+          ]
+        }));
+      });
     this.exampleService
       .getCodeExample("text-input/text-input-fill-parent/text-input-fill-parent.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Fill parent Input',
           component: TextInputFillParentComponent,
-          selector: "text-input_example_3",
+          selector: "text-input_example_4",
           examples: [
             resp1[0],
             resp1[1],
@@ -70,7 +85,7 @@ export class TextInputExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Multilined Input',
           component: TextInputMultiComponent,
-          selector: "text-input_example_4",
+          selector: "text-input_example_5",
           examples: [
             resp1[0],
             resp1[1],
@@ -83,7 +98,7 @@ export class TextInputExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Input with prefix/suffix',
           component: TextInputPrefixSuffixComponent,
-          selector: "text-input_example_5",
+          selector: "text-input_example_6",
           examples: [
             resp1[0],
             resp1[1],
@@ -96,7 +111,7 @@ export class TextInputExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Sized Input',
           component: TextInputSizedComponent,
-          selector: "text-input_example_6",
+          selector: "text-input_example_7",
           examples: [
             resp1[0],
             resp1[1],

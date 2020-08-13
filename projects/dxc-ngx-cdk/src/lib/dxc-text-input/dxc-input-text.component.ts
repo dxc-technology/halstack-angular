@@ -24,23 +24,18 @@ import { FormControl } from "@angular/forms";
 @Component({
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
-  styleUrls: ["./dxc-light-input.scss", "./dxc-dark-input.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils]
 })
 export class DxcTextInputComponent
   implements OnInit, OnChanges, AfterViewChecked {
   @HostBinding("class") className;
-  @HostBinding("class.dxc-light") isLight: boolean = true;
-  @HostBinding("class.dxc-dark") isDark: boolean = false;
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
   @Input() public prefix: string;
   @Input() public suffix: string;
   @Input() public prefixIconSrc: string;
   @Input() public suffixIconSrc: string;
-
-  @Input() public theme: string = "light";
   @Input() public disabled: boolean = false;
   @Input() public required: boolean = false;
   @Input() public invalid: boolean = false;
@@ -86,7 +81,6 @@ export class DxcTextInputComponent
     suffix: null,
     prefixIconSrc: null,
     suffixIconSrc: null,
-    theme: "light",
     disabled: false,
     required: false,
     invalid: false,
@@ -126,13 +120,6 @@ export class DxcTextInputComponent
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     if(this.isMasked){
       this.type = "password";
     }
@@ -265,7 +252,6 @@ export class DxcTextInputComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
-
       .prefixElement {
         margin-right: 12px;
       }
@@ -273,7 +259,6 @@ export class DxcTextInputComponent
         margin-left: 8px;
         margin-right: 8px;
       }
-
       &.disabled {
         cursor: default;
       }
@@ -291,9 +276,59 @@ export class DxcTextInputComponent
         }
         &.disabled {
           pointer-events: none;
+          .mat-hint {
+            opacity: var(--text-disabledAssistiveTextColor);
+          }
+          .mat-form-field-underline {
+            opacity: var(--text-disabledUnderlinedColor);
+          }
+          .mat-form-field-empty mat-label {
+            opacity: var(--text-disabledLabelColor);
+          }
+          &.mat-focused .mat-form-field-empty mat-label {
+            opacity: var(--text-disabledLabelColor);
+          }
+          .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+            opacity: var(--text-disabledLabelColor);
+          }
+          .mat-form-field-wrapper{
+            .mat-form-field-flex{
+              .mat-form-field-infix input{
+                opacity: var(--text-disabledFontColor);
+              }
+            }
+          }
         }
       }
-
+      .mat-hint {
+        color: var(--text-color);
+      }
+      .mat-form-field-underline {
+        background-color: var(--text-color);
+      }
+      label.mat-form-field-label {
+        color: var(--text-color);
+      }
+      input::placeholder {
+        color: var(--text-placeholderColor);
+      }
+      .mat-form-field-invalid {
+        .mat-hint {
+          color: var(--text-invalidColor);
+        }
+        .mat-form-field-underline {
+          background-color: var(--text-invalidColor);
+        }
+        .mat-form-field-empty mat-label {
+          color: var(--text-color);
+        }
+        &.mat-focused .mat-form-field-empty mat-label {
+          color: var(--text-invalidColor);
+        }
+        .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+          color: var(--text-invalidColor);
+        }
+      }
       .mat-form-field {
         &.mat-form-field-should-float {
           .mat-form-field-infix {
@@ -303,24 +338,24 @@ export class DxcTextInputComponent
             font-size: 15px;
           }
         }
-
         .mat-form-field-label-wrapper {
           display: flex;
           .mat-form-field-label {
             flex-direction: row-reverse;
             justify-content: flex-end;
             display: flex;
+            span {
+              color: var(--text-invalidColor);
+            }
           }
         }
         .mat-form-field-subscript-wrapper {
           margin-top: 6px;
         }
-
         .mat-form-field-infix {
           padding-top: 6px;
         }
       }
-
       .mat-form-field-flex {
         align-items: center;
         .mat-form-field-infix {

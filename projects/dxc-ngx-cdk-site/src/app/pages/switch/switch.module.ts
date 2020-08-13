@@ -7,7 +7,6 @@ import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-sect
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { SwitchExampleComponent } from '../../components/examples/switch/switch-example/switch-example.component';
 import { SwitchLabelComponent } from '../../components/examples/switch/switch-label/switch-label.component';
-import { SwitchThemedComponent } from '../../components/examples/switch/switch-themed/switch-themed.component';
 import { SwitchTablePropertiesComponent } from '../../components/examples/switch/properties/switch-table-properties/switch-table-properties.component';
 import { SwitchUncontrolledComponent } from '../../components/examples/switch/switch-uncontrolled/switch-uncontrolled.component'
 import { SwitchDefaultComponent } from '../../components/examples/switch/switch-default/switch-default.component';
@@ -15,17 +14,20 @@ import { SwitchImportComponent } from '../../components/examples/switch/switch-i
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { SwitchApiComponent } from '../../components/examples/switch/switch-api/switch-api.component';
+import { SwitchThemeComponent } from '../../components/examples/switch/switch-theme/switch-theme.component';
 
 @NgModule({
   declarations: [
     SwitchComponent,
     SwitchExampleComponent,
     SwitchLabelComponent,
-    SwitchThemedComponent,
     SwitchTablePropertiesComponent,
     SwitchUncontrolledComponent,
     SwitchDefaultComponent,
-    SwitchImportComponent
+    SwitchImportComponent,
+    SwitchApiComponent,
+    SwitchThemeComponent,
     ],
   imports: [
     BrowserModule,
@@ -40,9 +42,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
   exports: [
     SwitchExampleComponent,
     SwitchLabelComponent,
-    SwitchThemedComponent,
     SwitchTablePropertiesComponent,
-    SwitchImportComponent
+    SwitchImportComponent,
+    SwitchApiComponent,
+    SwitchThemeComponent,
   ],
   entryComponents: [
     ExampleViewerComponent

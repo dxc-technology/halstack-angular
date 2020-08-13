@@ -240,6 +240,8 @@ import { TagApiComponent } from '../examples/tag/tag-api/tag-api.component';
 import { TagThemeComponent } from '../examples/tag/tag-theme/tag-theme.component';
 import { CardApiComponent } from '../examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
+import { ChipApiComponent } from '../examples/chip/chip-api/chip-api.component';
+import { ChipThemeComponent } from '../examples/chip/chip-theme/chip-theme.component';
 import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
 import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
 import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
@@ -487,6 +489,8 @@ import { TextInputThemeComponent } from '../examples/text-input/text-input-theme
     SelectThemeComponent,
     BoxApiComponent,
     BoxThemeComponent,
+    ChipApiComponent,
+    ChipThemeComponent,
     ColorPreviewComponent,
     SwitchApiComponent,
     SwitchThemeComponent,

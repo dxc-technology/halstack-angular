@@ -3,6 +3,8 @@ import { Section } from '../../model/sections';
 import { CardExampleComponent } from '../../components/examples/card/card-example/card-example.component';
 import { CardTablePropertiesComponent } from '../../components/examples/card/properties/card-table-properties/card-table-properties.component';
 import { CardImportComponent } from '../../components/examples/card/card-import/card-import.component';
+import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
+import { CardThemeComponent } from '../../components/examples/card/card-theme/card-theme.component';
 
 @Component({
   selector: "app-card",
@@ -22,8 +24,8 @@ export class CardComponent implements OnInit{
 
    ngOnInit() { 
     this.sections.push( 
-      {id:0, label: 'PROPERTIES',selector: 'examples-properties-buttons', component: CardTablePropertiesComponent},
-      {id:1, label: 'MODULE',selector: 'card-import', component: CardImportComponent},
+      {id:0, label: 'API',selector: 'card-api', component: CardApiComponent},
+      {id:1, label: 'THEMING',selector: 'card-theme', component: CardThemeComponent},
       {id:2, label: 'EXAMPLES', selector: 'examples-component-buttons', component: CardExampleComponent}
       );
   }

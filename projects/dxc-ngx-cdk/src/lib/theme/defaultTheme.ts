@@ -60,6 +60,7 @@ export const customTheme: Theme = {
       "borderColor": "transparent",
       "fontColor": colors.black
     },
+    "tag":{},
     "card":{}
   }
 };
@@ -123,6 +124,9 @@ export const defaultTheme: Theme = {
       // "text": readableColor(colors.black)
     },
     "card":{
+      "backgroundColor": colors.white
+    },
+    "tag":{
       "backgroundColor": colors.white
     }
   }

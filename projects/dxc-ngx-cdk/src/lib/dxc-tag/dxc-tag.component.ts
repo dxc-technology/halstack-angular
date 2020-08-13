@@ -111,7 +111,7 @@ export class DxcTagComponent implements OnInit {
     return css`
       display: inline-flex;
       align-items: center;
-      background-color: white;
+      background-color: var(--tag-backgroundColor);
       ${this.utils.calculateWidth(this.sizes, input)};
       ${ input.labelPosition &&  input.labelPosition != null && input.labelPosition === "before" ? css`flex-direction: row-reverse` :  css`flex-direction: row` };
     `;

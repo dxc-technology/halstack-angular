@@ -1,0 +1,58 @@
+:host.dxc-light {
+  .mat-form-field {
+    &.disabled {
+      ::ng-deep {
+        .mat-hint {
+          color: var(--disableLight, #A5A5A5);
+        }
+        .mat-form-field-underline {
+          background-color: var(--disableLight, #A5A5A5);
+        }
+        .mat-form-field-empty mat-label {
+          color: var(--disableLight, #A5A5A5);
+        }
+        &.mat-focused .mat-form-field-empty mat-label {
+          color: var(--disableLight, #A5A5A5);
+        }
+        .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+          color: var(--disableLight, #A5A5A5);
+        }
+      }
+      pointer-events: none;
+    }
+  }
+  ::ng-deep {
+    .mat-form-field-underline {
+      background-color: var(--black, black);
+    }
+    label.mat-form-field-label:not(.mat-form-field-empty) {
+      color: var(--black, black);
+    }
+    .mat-form-field-invalid {
+      .mat-hint {
+        color: var(--darkRed, #d0011b);
+      }
+      .mat-form-field-underline {
+        background-color: var(--darkRed, #d0011b);
+      }
+      .mat-form-field-empty mat-label {
+        color: var(--darkGrey, #666666);
+      }
+      &.mat-focused .mat-form-field-empty mat-label {
+        color: var(--darkRed, #d0011b);
+      }
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+        color: var(--darkRed, #d0011b);
+      }
+    }
+  }
+  ::ng-deep {
+    .mat-form-field-label-wrapper {
+      .mat-form-field-label {
+        span {
+          color: var(--darkRed, #d0011b);
+        }
+      }
+    }
+  }
+}

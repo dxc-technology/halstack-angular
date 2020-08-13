@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'app-tag-table-properties',
+  selector: 'tag-table-properties',
   templateUrl: './tag-table-properties.component.html',
   styleUrls: ['./tag-table-properties.component.scss']
 })

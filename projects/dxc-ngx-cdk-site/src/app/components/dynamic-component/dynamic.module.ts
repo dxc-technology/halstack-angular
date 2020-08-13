@@ -240,6 +240,8 @@ import { SelectApiComponent } from '../examples/select/select-api/select-api.com
 import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
 import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
+import { TagApiComponent } from '../examples/tag/tag-api/tag-api.component';
+import { TagThemeComponent } from '../examples/tag/tag-theme/tag-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -483,7 +485,9 @@ import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component
     SelectApiComponent,
     SelectThemeComponent,
     BoxApiComponent,
-    BoxThemeComponent
+    BoxThemeComponent,
+    TagApiComponent,
+    TagThemeComponent
   ]
 })
 export class DynamicModule {}

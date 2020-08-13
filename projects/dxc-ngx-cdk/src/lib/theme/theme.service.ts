@@ -10,7 +10,7 @@ export class ThemeService {
   count = 0;
 
   constructor() {
-    this.registerTheme(customTheme);
+    this.setDefaultTheme(customTheme);
   }
 
   getTheme() {
@@ -31,24 +31,32 @@ export class ThemeService {
             }
           }
         }
-        if(defaultTheme.properties.hasOwnProperty(key)){
-          for(const token in defaultTheme.properties[key]){
-            this.theme.properties[key][token] = defaultTheme.properties[key][token];
-          }
-        }
       }
       this.checkSpecialProperty(theme);
-    }
-    else{
-      this.theme = theme;
     }
     this.themeChange.emit(this.theme);
   }
 
-  checkSpecialProperty(theme){
+  private checkSpecialProperty(theme){
     if(theme.properties["select"].hasOwnProperty("selectedOptionBackgroundColor")){
       this.theme.properties["select"]["hoverOptionBackgroundColor"] = theme.properties["select"]["selectedOptionBackgroundColor"] + "57";
     }
+  }
+
+  private setDefaultTheme(newTheme: Theme) {
+    this.theme = newTheme;
+    for(const key in defaultTheme.properties){
+      if(this.theme.properties.hasOwnProperty(key)){
+        for(const token in defaultTheme.properties[key]){
+          this.theme.properties[key][token] = defaultTheme.properties[key][token];
+        }
+      }
+      else{
+        this.theme.properties[key] = defaultTheme.properties[key];
+      }
+
+    }
+    this.themeChange.emit(this.theme);
   }
 
 }

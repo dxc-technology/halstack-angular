@@ -46,7 +46,6 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public size: string = "medium";
   @Input() public assistiveText: string;
   @Input() public invalid: boolean = false;
-
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
   renderedValue: string | string[];

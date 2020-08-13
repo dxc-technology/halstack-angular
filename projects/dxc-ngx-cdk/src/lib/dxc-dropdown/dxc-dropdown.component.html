@@ -6,6 +6,8 @@
   [matMenuTriggerFor]="menu"
   [disableRipple]="true"
   [class]="triggerStyles"
+  #menuTrigger="matMenuTrigger"
+  (mouseenter)="buttonEnter(menuTrigger)" (mouseleave)="buttonLeave(menuTrigger, dropdownButton)"
   >
 
   <div>
@@ -23,16 +25,20 @@
   #menu="matMenu"
   disableRipple="disableRipple"
   [class] = "menuOptions"
+  [hasBackdrop]="false"
   >
 
-  <button
-    *ngFor="let option of options; index as i"
-    mat-menu-item
-    (click)="selectedOption(option)"
-    class="option">
-    <div>
-      <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
-      <span *ngIf="option.label" class="label-span">{{ option.label }}</span>
-    </div>
-  </button>
+  <span
+  (mouseenter)="menuenter()" (mouseleave)="menuLeave(menuTrigger, dropdownButton)">
+    <button
+      *ngFor="let option of options; index as i"
+      mat-menu-item
+      (click)="selectedOption(option)"
+      class="option">
+      <div>
+        <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
+        <span *ngIf="option.label" class="label-span">{{ option.label }}</span>
+      </div>
+    </button>
+  </span>
 </mat-menu>

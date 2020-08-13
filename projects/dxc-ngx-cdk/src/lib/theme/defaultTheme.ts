@@ -18,7 +18,8 @@ const colors = {
   disableLight: "#A5A5A5",
   disableDark: "#959595",
   purple: "#8800F6",
-  blue: "#005FCC"
+  blue: "#005FCC",
+  grey: "#F8F8F8"
 };
 
 export const customTheme: Theme = {
@@ -66,6 +67,11 @@ export const customTheme: Theme = {
       "backgroundColor": colors.lightGrey,
       "outlinedColor": colors.black,
       "fontColor": colors.black
+    },
+    "sidenav":{
+      "color": colors.grey,
+      "arrowBackground": colors.lightGrey,
+      "arrowColor": colors.black
     }
   }
 };
@@ -143,6 +149,7 @@ export const defaultTheme: Theme = {
     },
     "chip":{
       "disabled": 0.34
-    }
+    },
+    "sidenav":{}
   }
 };

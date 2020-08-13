@@ -3,7 +3,7 @@ import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-text-input-table-properties',
+  selector: 'text-input-table-properties',
   templateUrl: './text-input-table-properties.component.html',
   styleUrls: ['./text-input-table-properties.component.scss']
 })

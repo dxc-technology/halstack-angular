@@ -15,21 +15,13 @@ import { ThemeService } from "../theme/theme.service";
 @Component({
   selector: "dxc-switch",
   templateUrl: "./dxc-switch.component.html",
-  styleUrls: [
-    "./dxc-light-switch.component.scss",
-    "./dxc-dark-switch.component.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   @Input() checked: boolean;
   @Input() value: any;
-  @Input() theme: string;
-  @Input() disableRipple: boolean;
   @Input() disabled: boolean | string;
   @Input() required: boolean | string;
   @Input() label: string;
@@ -45,10 +37,8 @@ export class DxcSwitchComponent implements OnChanges {
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
-    theme: "light",
     checked: false,
     disabled: false,
-    disableRipple: false,
     required: false,
     label: null,
     name: null,
@@ -67,14 +57,6 @@ export class DxcSwitchComponent implements OnChanges {
   };
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
-
     this.renderedChecked = this.checked;
     this.labelPosition === "after" ? "after" : "before";
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -134,7 +116,16 @@ export class DxcSwitchComponent implements OnChanges {
         margin-bottom: 5px;
         display: inline-flex;
         height: auto;
-
+        .mat-slide-toggle-thumb:not(.mat-checked) {
+          background-color: var(--switch-uncheckedThumbBackgroundColor);
+        }
+        span.mat-slide-toggle-required {
+          color: var(--switch-requiredColor);
+        }
+        .mat-slide-toggle-ripple {
+          height: 0px;
+          width: 0px;
+        }
         div.mat-slide-toggle-thumb {
           height: 24px;
           width: 24px;
@@ -145,20 +136,41 @@ export class DxcSwitchComponent implements OnChanges {
         div.mat-slide-toggle-bar {
           height: 12px;
           margin: 15px;
-          background-color: #66666666;
+          background-color: var(--switch-uncheckedTrackBackgroundColor);
         }
         span.mat-slide-toggle-content {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
         }
       }
-
+      mat-slide-toggle.mat-checked {
+        .mat-slide-toggle-thumb {
+          background-color: var(--switch-checkedThumbBackgroundColor);
+        }
+        .mat-slide-toggle-bar {
+          background-color: var(--switch-checkedTrackBackgroundColor);
+        }
+      }
+      mat-slide-toggle.mat-disabled:not(.mat-checked) {
+        .mat-slide-toggle-bar {
+          opacity: var(--switch-disabledBackgroundColor) !important;
+        }
+      }
+      mat-slide-toggle.mat-disabled {
+        .mat-slide-toggle-content {
+          opacity: var(--switch-disabledBackgroundColor) !important;
+        }
+      }
       .mat-slide-toggle.mat-disabled {
+        opacity: 1;
         .mat-slide-toggle-label {
           cursor: not-allowed;
         }
         .mat-slide-toggle-thumb {
           cursor: not-allowed;
+        }
+        .mat-slide-toggle-bar {
+          opacity: var(--switch-disabledBackgroundColor) !important;
         }
       }
     `;

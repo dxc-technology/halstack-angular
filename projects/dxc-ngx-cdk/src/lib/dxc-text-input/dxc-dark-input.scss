@@ -1,0 +1,80 @@
+:host.dxc-dark {
+  mat-form-field,
+  mat-label,
+  .mat-hint {
+    color: var(--lightGrey, #D9D9D9);
+  }
+  input {
+    caret-color: var(--white, white);
+  }
+  ::ng-deep {
+    .mat-form-field-underline {
+      background-color: var(--white, white);
+    }
+    .mat-focused .mat-form-field-empty mat-label {
+      color: var(--white, white);
+    }
+    
+    label.mat-form-field-label:not(.mat-form-field-empty) mat-label{
+      color: var(--white, white);
+    }
+    .mat-form-field.mat-form-field-invalid {
+      .mat-hint {
+        color: var(--lightRed, #FF6161);
+      }
+      .mat-form-field-ripple,
+      .mat-form-field-underline {
+        background-color: var(--lightRed, #FF6161);
+      }
+      .mat-form-field-empty mat-label {
+        color: var(--white, white);
+      }
+      &.mat-focused .mat-form-field-empty mat-label {
+        color: var(--lightRed, #FF6161);
+      }
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label{
+        color: var(--lightRed, #FF6161);
+      }
+    }
+  }
+  
+  .mat-form-field:not(.mat-form-field-invalid) {
+    ::ng-deep {
+      .mat-form-field-prefix,
+      .mat-form-field-suffix {
+        span {
+          color: var(--yellow, #FFED00);
+        }
+      }
+      .mat-form-field-ripple {
+        background-color: var(--white, white);
+      }
+      .mat-form-field-underline {
+        background-color: var(--white, white);
+      }
+    }
+    &.disabled {
+      pointer-events: none;
+      ::ng-deep {
+        .mat-form-field-label-wrapper label mat-label,
+        .mat-hint,
+        input {
+          color: var(--disableDark, #959595);
+        }
+        .mat-form-field-ripple,
+        .mat-form-field-underline {
+          background-color: var(--disableDark, #959595);
+        }
+      }
+    }
+  }
+  ::ng-deep {
+    .mat-form-field-label-wrapper {
+      .mat-form-field-label {
+        span {
+          color: var(--lightRed, #FF6161);
+        }
+      }
+    }
+  }
+}

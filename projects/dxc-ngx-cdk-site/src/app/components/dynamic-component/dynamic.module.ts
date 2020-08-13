@@ -242,6 +242,7 @@ import { TextInputApiComponent } from '../examples/text-input/text-input-api/tex
 import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
 import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
+import { ColorPreviewComponent } from '../color-preview/color-preview.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -487,7 +488,8 @@ import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component
     TextInputThemeComponent,
     TextInputApiComponent,
     BoxApiComponent,
-    BoxThemeComponent
+    BoxThemeComponent,
+    ColorPreviewComponent
   ]
 })
 export class DynamicModule {}

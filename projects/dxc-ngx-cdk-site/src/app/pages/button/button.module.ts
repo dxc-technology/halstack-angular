@@ -19,6 +19,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ButtonTextModeComponent } from '../../components/examples/button/button-text-mode/button-text-mode.component';
 import { ButtonThemeComponent } from '../../components/examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
+import { ColorPreviewComponent } from '../../components/color-preview/color-preview.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ButtonApiComponent } from '../../components/examples/button/button-api/
     ButtonImportComponent,
     ButtonTextModeComponent,
     ButtonThemeComponent,
-    ButtonApiComponent
+    ButtonApiComponent,
+    ColorPreviewComponent
     ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { ButtonApiComponent } from '../../components/examples/button/button-api/
     ButtonImportComponent,
     ButtonTextModeComponent,
     ButtonThemeComponent,
-    ButtonApiComponent
+    ButtonApiComponent,
+    ColorPreviewComponent
   ],
   entryComponents: [
     ExampleViewerComponent

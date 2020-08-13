@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CodePlaygroundModule } from 'src/app/components/code-playground/code-playground.module';
 import { TabbedSectionModule } from 'src/app/components/tabbed-section/tabbed-section.module';
 import { OverviewThemesComponent } from 'src/app/components/overview/overview-themes/overview-themes.component';
+import { AssetsPipeModule } from 'src/app/pipe/assets.pipe.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { OverviewThemesComponent } from 'src/app/components/overview/overview-th
     MatIconModule,
     MatTabsModule,
     FormsModule,
-    CodePlaygroundModule
+    CodePlaygroundModule,
+    AssetsPipeModule
   ],
   exports: [
   ],

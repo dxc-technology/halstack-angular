@@ -52,7 +52,7 @@ export class DxcHeaderComponent implements OnChanges {
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    this.innerWidth = event.target.innerWidth;
+    this.innerWidth  = event.target.innerWidth;
     this.innerHeight = event.target.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet) {
       this.isResponsive = true;
@@ -66,6 +66,7 @@ export class DxcHeaderComponent implements OnChanges {
   constructor(private utils: CssUtils, private elRef: ElementRef) {}
 
   updateCss() {
+
     if(this.isMenuVisible) {
       this.elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden';
     } else {
@@ -169,13 +170,13 @@ export class DxcHeaderComponent implements OnChanges {
       `;
     }
   }
-  
+
   getLogoDxc(){
     if (this.theme === 'light'){
       return this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
     }
     else{
-        return !this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
+      return !this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
     }
   }
 

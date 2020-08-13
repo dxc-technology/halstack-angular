@@ -61,6 +61,7 @@ export const customTheme: Theme = {
       "fontColor": colors.black
     },
     "card":{},
+    "tag":{},
     "chip":{
       "backgroundColor": colors.lightGrey,
       "outlinedColor": colors.black,
@@ -128,6 +129,9 @@ export const defaultTheme: Theme = {
       // "text": readableColor(colors.black)
     },
     "card":{
+      "backgroundColor": colors.white
+    },
+    "tag":{
       "backgroundColor": colors.white
     },
     "chip":{

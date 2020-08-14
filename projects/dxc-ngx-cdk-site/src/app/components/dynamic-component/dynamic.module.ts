@@ -247,6 +247,8 @@ import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-the
 import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
 import { ColorPreviewComponent } from '../color-preview/color-preview.component';
 import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
+import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
+import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -497,7 +499,9 @@ import { TextInputThemeComponent } from '../examples/text-input/text-input-theme
     TextInputApiComponent,
     TextInputThemeComponent,
     TagApiComponent,
-    TagThemeComponent
+    TagThemeComponent,
+    SidenavApiComponent,
+    SidenavThemeComponent
   ]
 })
 export class DynamicModule {}

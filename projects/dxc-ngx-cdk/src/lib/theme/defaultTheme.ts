@@ -18,7 +18,8 @@ const colors = {
   disableLight: "#A5A5A5",
   disableDark: "#959595",
   purple: "#8800F6",
-  blue: "#005FCC"
+  blue: "#005FCC",
+  grey: "#F8F8F8"
 };
 
 export const customTheme: Theme = {
@@ -68,6 +69,11 @@ export const customTheme: Theme = {
     "date":{
       "pickerSelectedDateBackgroundColor": colors.black,
       "pickerSelectedDateColor": colors.yellow
+    },
+    "sidenav":{
+      "color": colors.grey,
+      "arrowBackground": colors.lightGrey,
+      "arrowColor": colors.black
     }
   }
 };
@@ -155,6 +161,7 @@ export const defaultTheme: Theme = {
       "pickerHoverDateBackgroundColor": 0.34,
       "pickerHoverDateTextColor": colors.black,
       "invalidColor": colors.darkRed
-    }
+    },
+    "sidenav":{}
   }
 };

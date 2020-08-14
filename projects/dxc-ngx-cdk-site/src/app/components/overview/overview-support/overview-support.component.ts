@@ -12,7 +12,7 @@ export class OverviewSupportComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.imgGithub = '../../../tools/angular/assets/img/github-logo.png';
+    this.imgGithub = 'assets/img/github-logo.png';
   }
 
 }

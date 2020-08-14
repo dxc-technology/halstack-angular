@@ -10,7 +10,7 @@ export class ExampleService {
 
   example: Example;
 
-  rootExamplesPath = '/tools/angular/assets/examples/';
+  rootExamplesPath = 'assets/examples/';
 
   constructor(private http: HttpClient) {
   }

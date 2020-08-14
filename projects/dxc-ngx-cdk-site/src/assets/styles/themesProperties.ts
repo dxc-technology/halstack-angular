@@ -25,7 +25,7 @@ export const customTheme: Theme = {
       "fontColor": "#000000"
     },
     "select":{
-      "selectedOptionBackgroundColor": "#FABADA"
+      "selectedOptionBackgroundColor": "#D9D9D90"
     },
     "slider":{
       "color": "#000000"

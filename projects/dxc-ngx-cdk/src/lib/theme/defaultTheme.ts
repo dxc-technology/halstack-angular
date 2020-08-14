@@ -60,12 +60,14 @@ export const customTheme: Theme = {
       "borderColor": "transparent",
       "fontColor": colors.black
     },
-    "card":{},
-    "tag":{},
     "chip":{
       "backgroundColor": colors.lightGrey,
       "outlinedColor": colors.black,
       "fontColor": colors.black
+    },
+    "date":{
+      "pickerSelectedDateBackgroundColor": colors.black,
+      "pickerSelectedDateColor": colors.yellow
     }
   }
 };
@@ -143,6 +145,16 @@ export const defaultTheme: Theme = {
     },
     "chip":{
       "disabled": 0.34
+    },
+    "date":{
+      "color": colors.black,
+      "placeholderColor": colors.black,
+      "pickerBackgroundColor": colors.white,
+      "pickerTextColor": colors.black,
+      "pickerActualDate": colors.lightGrey,
+      "pickerHoverDateBackgroundColor": 0.34,
+      "pickerHoverDateTextColor": colors.black,
+      "invalidColor": colors.darkRed
     }
   }
 };

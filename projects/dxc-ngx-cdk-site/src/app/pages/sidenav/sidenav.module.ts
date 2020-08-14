@@ -19,6 +19,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SidenavApiComponent } from '../../components/examples/sidenav/sidenav-api/sidenav-api.component';
 import { SidenavThemeComponent } from '../../components/examples/sidenav/sidenav-theme/sidenav-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SidenavThemeComponent } from '../../components/examples/sidenav/sidenav
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports:[
     SidenavComponent,

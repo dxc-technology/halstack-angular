@@ -17,6 +17,9 @@ import { SidenavImportComponent } from '../../components/examples/sidenav/sidena
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { SidenavApiComponent } from '../../components/examples/sidenav/sidenav-api/sidenav-api.component';
+import { SidenavThemeComponent } from '../../components/examples/sidenav/sidenav-theme/sidenav-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SidenavDefaultComponent,
     SidenavContentComponent,
     SidenavNoArrowComponent,
-    SidenavImportComponent
+    SidenavImportComponent,
+    SidenavApiComponent,
+    SidenavThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports:[
     SidenavComponent,
@@ -46,7 +52,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SidenavDefaultComponent,
     SidenavContentComponent,
     SidenavNoArrowComponent,
-    SidenavImportComponent
+    SidenavImportComponent,
+    SidenavApiComponent,
+    SidenavThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

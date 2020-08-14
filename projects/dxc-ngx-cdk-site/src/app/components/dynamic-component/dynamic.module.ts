@@ -249,6 +249,8 @@ import { ColorPreviewComponent } from '../color-preview/color-preview.component'
 import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
 import { DateThemeComponent } from '../examples/date/date-theme/date-theme.component';
 import { DateApiComponent } from '../examples/date/date-api/date-api.component';
+import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
+import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -501,7 +503,9 @@ import { DateApiComponent } from '../examples/date/date-api/date-api.component';
     TagApiComponent,
     TagThemeComponent,
     DateApiComponent,
-    DateThemeComponent
+    DateThemeComponent,
+    SidenavApiComponent,
+    SidenavThemeComponent
   ]
 })
 export class DynamicModule {}

@@ -19,6 +19,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { CheckboxApiComponent } from '../../components/examples/checkbox/checkbox-api/checkbox-api.component';
 import { CheckboxThemeComponent } from '../../components/examples/checkbox/checkbox-theme/checkbox-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 @NgModule({
     declarations: [
       CheckboxComponent,
@@ -42,7 +43,8 @@ import { CheckboxThemeComponent } from '../../components/examples/checkbox/check
       DxcTableModule,
       DxcTagModule,
       CodePlaygroundModule,
-      ComponentsSidenavModule
+      ComponentsSidenavModule,
+      ColorPreviewModule
     ],
     exports: [
         CheckboxComponent,

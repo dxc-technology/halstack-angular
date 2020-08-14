@@ -270,10 +270,15 @@ export class DxcDateComponent implements OnChanges, OnInit {
   getDynamicStyle(inputs) {
     return css`
       &.disabled {
-        cursor: not-allowed;
+        cursor: not-allowed !important;
       }
       .disabled {
-        cursor: not-allowed;
+        cursor: not-allowed !important;
+      }
+      .mat-form-field{
+        img{
+          cursor:pointer;
+        }
       }
     `;
   }

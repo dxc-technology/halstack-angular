@@ -32,7 +32,7 @@ export class ThemeService {
           }
         }
       }
-      this.checkSpecialProperty(theme);
+      this.checkSpecialProperty(this.theme);
     }
     this.themeChange.emit(this.theme);
   }
@@ -40,6 +40,9 @@ export class ThemeService {
   private checkSpecialProperty(theme){
     if(theme.properties["select"].hasOwnProperty("selectedOptionBackgroundColor")){
       this.theme.properties["select"]["hoverOptionBackgroundColor"] = theme.properties["select"]["selectedOptionBackgroundColor"] + "57";
+    }
+    if(theme.properties["sidenav"].hasOwnProperty("arrowBackground")){
+      this.theme.properties["sidenav"]["arrowBackground"] = theme.properties["sidenav"]["arrowBackground"] + "80";
     }
   }
 

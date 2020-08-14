@@ -44,7 +44,7 @@ let routes: Routes = [];
   routes.push({
     path: 'components',
     component: ComponentsPageComponent,
-  }, 
+  },
   {
     path: 'components/accordion',
     component: AccordionComponent
@@ -71,7 +71,7 @@ let routes: Routes = [];
   },
   {
     path: 'components/table',
-    component: TableComponent 
+    component: TableComponent
   },
   {
     path: 'components/checkbox',
@@ -119,11 +119,11 @@ let routes: Routes = [];
   },
   {
     path: 'components/select',
-    component: SelectComponent 
+    component: SelectComponent
   },
   {
     path: 'components/slider',
-    component: SliderComponent 
+    component: SliderComponent
   },
   {
     path: 'components/tag',

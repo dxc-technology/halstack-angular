@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [DxcAccordionComponent],
   imports: [
-    CommonModule, 
-    MatExpansionModule, 
+    CommonModule,
+    MatExpansionModule,
     MatIconModule
   ],
   exports: [DxcAccordionComponent]

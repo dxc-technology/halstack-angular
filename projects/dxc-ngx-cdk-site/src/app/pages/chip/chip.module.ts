@@ -20,6 +20,7 @@ import { ChipImportComponent } from "src/app/components/examples/chip/chip-impor
 import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-disabled/chip-disabled.component';
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/ch
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     ChipComponent,

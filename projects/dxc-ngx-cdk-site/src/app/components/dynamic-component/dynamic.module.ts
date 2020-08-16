@@ -247,6 +247,8 @@ import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-the
 import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
 import { ColorPreviewComponent } from '../color-preview/color-preview.component';
 import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
+import { DateThemeComponent } from '../examples/date/date-theme/date-theme.component';
+import { DateApiComponent } from '../examples/date/date-api/date-api.component';
 import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
 import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
 
@@ -500,6 +502,8 @@ import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav
     TextInputThemeComponent,
     TagApiComponent,
     TagThemeComponent,
+    DateApiComponent,
+    DateThemeComponent,
     SidenavApiComponent,
     SidenavThemeComponent
   ]

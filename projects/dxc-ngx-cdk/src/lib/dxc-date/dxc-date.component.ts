@@ -23,10 +23,6 @@ const moment = momentImported;
 @Component({
   selector: "dxc-date",
   templateUrl: "./dxc-date.component.html",
-  styleUrls: [
-    "./dxc-light-date.scss",
-    "./dxc-dark-date.scss"
-  ],
   providers: [CssUtils]
 })
 export class DxcDateComponent implements OnChanges, OnInit {
@@ -34,14 +30,12 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() value: any;
   @Input() format: string = 'dd-MM-yyyy';
   @Input() label: string;
-  @Input() theme: string = 'light';
   @Input() iconSrc: string;
   @Input() name: string;
   @Input() disabled: boolean;
   @Input() required: boolean;
   @Input() assistiveText: string;
   @Input() invalid: boolean;
-  @Input() disableRipple: boolean;
   @Input() margin: any;
   @Input() size: string;
 
@@ -49,8 +43,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
-  @HostBinding("class.dxc-light") isLight: boolean = true;
-  @HostBinding("class.dxc-dark") isDark: boolean = false;
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
@@ -64,7 +56,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
     required: false,
     assistiveText: null,
     invalid: false,
-    disableRipple: false,
     margin: null,
     size: "medium"
   });
@@ -96,7 +87,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
     this.renderedValue = this.value;
     this.dateValue = this.getMomentValue(this.renderedValue, this.format);
-    this.calendarIconSrc =  this.theme === 'light' ? "assets/calendar.svg" : "assets/calendar_dark.svg";
+    this.calendarIconSrc =  "assets/calendar.svg";
   }
 
   public ngOnInit(): void {
@@ -107,14 +98,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
-
     this.calculateComponentValues();
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -202,7 +185,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   getCalendarContentStyle () {
     return css`
       width: 297px;
-      background: white;
+      background: var(--date-pickerBackgroundColor);
 
       .mat-calendar {
         width: 100%;
@@ -214,7 +197,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
         height: 100%;
       }
       .mat-calendar-header {
-        color: black;
+        color: var(--date-color);
         padding: 0px;
         margin-bottom: 5px;
         .mat-calendar-controls {
@@ -232,11 +215,12 @@ export class DxcDateComponent implements OnChanges, OnInit {
         font-size: 16px;
       }
       .mat-calendar-body-selected {
-        border-color: var(--black, black);
-        background-color: var(--black, black);
-        color: var(--yellow, yellow);
+        border-color: var(--date-pickerSelectedDateBackgroundColor);
+        background-color: var(--date-pickerSelectedDateBackgroundColor);
+        color: var(--date-pickerSelectedDateColor);
         &:hover {
-          background-color: var(--black, black)
+          background-color: var(--date-pickerHoverDateTextColor);
+          opacity: var(--date-pickerHoverDateBackgroundColor);
         }
         &.mat-calendar-body-today {
           border: none;
@@ -247,9 +231,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
         width: 28px;
         height: 28px;
       }
+
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
-          background-color: var(--lightGrey, #D9D9D9) !important;
+          background-color:  var(--date-pickerActualDate) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
         mat-year-view .mat-calendar-body-cell-content {
@@ -269,11 +254,81 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
   getDynamicStyle(inputs) {
     return css`
+      .mat-form-field-infix .mat-form-field-label-wrapper {
+        .mat-form-field-label {
+          span {
+            color: var(--date-invalidColor);
+          }
+        }
+      }
+      .mat-form-field-invalid {
+        .mat-hint {
+          color: var(--date-invalidColor);
+        }
+        .mat-form-field-empty mat-label {
+          color: var(--date-color);
+        }
+        &.mat-focused .mat-form-field-empty mat-label {
+          color: var(--date-invalidColor);
+        }
+        .mat-form-field-label:not(.mat-form-field-empty) mat-label{
+          color: var(--date-invalidColor);
+        }
+        .mat-form-field-wrapper{
+          .mat-form-field-underline{
+            background-color: var(--date-invalidColor);
+            &:focus {
+              outline: -webkit-focus-ring-color auto 1px;
+              outline-color: var(--date-invalidColor);
+            }
+          }
+        }
+      }
+      label.mat-form-field-label:not(.mat-form-field-empty) mat-label {
+        color: var(--date-color);
+      }
       &.disabled {
-        cursor: not-allowed;
+        cursor: not-allowed !important;
       }
       .disabled {
-        cursor: not-allowed;
+        cursor: not-allowed !important;
+      }
+      .mat-form-field{
+        color: var(--date-color);
+        .mat-hint {
+          color: var(--date-color);
+        }
+        .mat-form-field-empty mat-label {
+          color: var(--date-color);
+        }
+        &.mat-focused .mat-form-field-empty mat-label {
+          color: var(--date-color);
+        }
+        .mat-form-field-label:not(.mat-form-field-empty) mat-label{
+          color: var(--date-color);
+        }
+        .mat-form-field-wrapper{
+          .mat-form-field-underline{
+            background-color: var(--date-color);
+            &:focus {
+              outline: -webkit-focus-ring-color auto 1px;
+              outline-color: var(--date-color);
+            }
+          }
+          .mat-form-field-flex{
+            /* &:hover {
+              color: var(--date-color);
+            } */
+            .mat-form-field-infix{
+              input::placeholder{
+                color: var(--date-placeholderColor);
+              }
+            }
+          }
+        }
+        img{
+          cursor:pointer;
+        }
       }
     `;
   }

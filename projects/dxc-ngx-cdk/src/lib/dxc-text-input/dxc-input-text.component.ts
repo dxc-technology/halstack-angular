@@ -305,6 +305,9 @@ export class DxcTextInputComponent
       }
       .mat-form-field-underline {
         background-color: var(--text-color);
+        /* .mat-form-field-ripple{
+          height: 0px;
+        } */
       }
       label.mat-form-field-label {
         color: var(--text-color);
@@ -371,11 +374,13 @@ export class DxcTextInputComponent
         width: 3px;
       }
       &::-webkit-scrollbar-track {
-        background-color: var(--lightGrey, #d9d9d9);
+        /* background-color: var(--lightGrey, #d9d9d9); */
+        background-color: var(--text-placeholderColor);
         border-radius: 3px;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: var(--darkGrey, #666666);
+        /* background-color: var(--darkGrey, #666666); */
+        background-color: var(--text-color);
         border-radius: 3px;
       }
       .errorOption {

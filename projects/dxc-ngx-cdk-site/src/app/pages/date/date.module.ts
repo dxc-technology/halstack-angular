@@ -15,6 +15,9 @@ import { DateImportComponent } from '../../components/examples/date/date-import/
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { DateThemeComponent } from '../../components/examples/date/date-theme/date-theme.component';
+import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +27,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       DateSizedComponent,
       DateSimpleComponent,
       DateUncontrolledComponent,
-      DateImportComponent
+      DateImportComponent,
+      DateApiComponent,
+      DateThemeComponent
       ],
     imports: [
       BrowserModule,
@@ -34,7 +39,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       DxcDateModule,
       DxcTagModule,
       CodePlaygroundModule,
-      ComponentsSidenavModule
+      ComponentsSidenavModule,
+      ColorPreviewModule
     ],
     exports: [
       DateComponent,
@@ -42,7 +48,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
       DateSizedComponent,
       DateExampleComponent,
       DateSimpleComponent,
-      DateImportComponent
+      DateImportComponent,
+      DateApiComponent,
+      DateThemeComponent
     ],
     entryComponents: [
       ExampleViewerComponent

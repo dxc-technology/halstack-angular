@@ -251,6 +251,8 @@ import { DateApiComponent } from '../examples/date/date-api/date-api.component';
 import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
 import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
+import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-theme.component';
+import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -505,7 +507,9 @@ import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplet
     DateThemeComponent,
     SidenavApiComponent,
     SidenavThemeComponent,
-    AutocompleteThemeComponent
+    AutocompleteThemeComponent,
+    FooterApiComponent,
+    FooterThemeComponent
   ]
 })
 export class DynamicModule {}

@@ -4,7 +4,7 @@ import { ExampleService } from 'src/app/service/example.service';
 import { TabbedSectionDefaultComponent } from '../tabbed-section-default/tabbed-section-default.component';
 
 @Component({
-  selector: 'app-tabbed-section-example',
+  selector: 'tabbed-section-example',
   templateUrl: './tabbed-section-example.component.html',
   styleUrls: ['./tabbed-section-example.component.scss']
 })

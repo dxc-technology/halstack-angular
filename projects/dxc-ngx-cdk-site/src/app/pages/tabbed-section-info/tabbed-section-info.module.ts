@@ -13,6 +13,8 @@ import { TabbedSectionNotesComponent } from '../../components/examples/tabbed-se
 import { CodePlaygroundModule } from 'src/app/components/code-playground/code-playground.module';
 import { TabbedSectionImportComponent } from '../../components/examples/tabbed-section/tabbed-section-import/tabbed-section-import.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { TabbedSectionApiComponent } from '../../components/examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
+import { TabbedSectionThemeComponent } from '../../components/examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TabbedSectionDefaultComponent,
     TabbedSectionExampleComponent,
     TabbedSectionNotesComponent,
-    TabbedSectionImportComponent
+    TabbedSectionImportComponent,
+    TabbedSectionApiComponent,
+    TabbedSectionThemeComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TabbedSectionDefaultComponent,
     TabbedSectionExampleComponent,
     TabbedSectionNotesComponent,
-    TabbedSectionImportComponent
+    TabbedSectionImportComponent,
+    TabbedSectionApiComponent,
+    TabbedSectionThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

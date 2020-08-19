@@ -3,7 +3,6 @@ import { Example } from "src/app/model/example";
 import { ExampleService } from "src/app/service/example.service";
 import { ProgressbarDeterminedComponent } from "../progressbar-determined/progressbar-determined.component";
 import { ProgressbarUndeterminedComponent } from '../progressbar-undetermined/progressbar-undetermined.component';
-import {ProgressbarThemedComponent} from '../progressbar-themed/progressbar-themed.component';
 import {ProgressbarOverlayComponent} from '../progressbar-overlay/progressbar-overlay.component';
 
 @Component({
@@ -58,26 +57,13 @@ export class ProgressbarExampleComponent implements OnInit {
       });
 
       this.exampleService
-      .getCodeExample("progressbar/progressbar-themed/progressbar-themed.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Dark theme Progress Bar",
-            component: ProgressbarThemedComponent,
-            selector: "example3",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-      this.exampleService
       .getCodeExample("progressbar/progressbar-overlay/progressbar-overlay.component")
       .subscribe(resp1 => {
         this.examples.push(
           this.exampleService.generateExample({
             title: "Progress Bar with Overlay",
             component: ProgressbarOverlayComponent,
-            selector: "example4",
+            selector: "example3",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

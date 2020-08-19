@@ -77,7 +77,12 @@ export const customTheme: Theme = {
     },
     "autocomplete":{
       "selectedOptionBackgroundColor": colors.lightGrey,
-    }
+    },
+    "footer":{
+      "backgroundColor": colors.black,
+      "fontColor": colors.white,
+      "lineColor": colors.yellow
+    },
   }
 };
 
@@ -171,6 +176,7 @@ export const defaultTheme: Theme = {
       "hoverOptionColor": colors.black,
       "scrollBarThumbColor": colors.darkGrey,
       "scrollBarTrackColor": colors.lightGrey
-    }
+    },
+    "footer":{},
   }
 };

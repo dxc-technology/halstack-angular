@@ -253,6 +253,8 @@ import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav
 import { TabbedSectionApiComponent } from '../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
+import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-theme.component';
+import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -509,7 +511,9 @@ import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplet
     DateThemeComponent,
     SidenavApiComponent,
     SidenavThemeComponent,
-    AutocompleteThemeComponent
+    AutocompleteThemeComponent,
+    FooterApiComponent,
+    FooterThemeComponent
   ]
 })
 export class DynamicModule {}

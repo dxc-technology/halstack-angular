@@ -112,6 +112,7 @@
     ::ng-deep {
       circle {
         stroke: var(--spinner-color);
+        opacity: var(--spinner-totalCircleOpacity);
       }
     }
   }

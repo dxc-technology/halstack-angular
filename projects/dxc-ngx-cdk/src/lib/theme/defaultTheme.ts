@@ -184,6 +184,7 @@ export const defaultTheme: Theme = {
     "footer":{},
     "spinner":{
       // "text": readableColor(colors.black)
+      "totalCircleOpacity": 0.34
     },
   }
 };

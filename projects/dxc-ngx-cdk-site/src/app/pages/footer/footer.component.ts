@@ -3,6 +3,8 @@ import { Section } from '../../model/sections';
 import { FooterTablePropertiesComponent } from '../../components/examples/footer/properties/footer-table-properties/footer-table-properties.component';
 import { FooterExampleComponent } from '../../components/examples/footer/footer-example/footer-example.component';
 import { FooterImportComponent } from '../../components/examples/footer/footer-import/footer-import.component';
+import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
+import { FooterThemeComponent } from '../../components/examples/footer/footer-theme/footer-theme.component';
 
 @Component({
   selector: 'app-footer',
@@ -21,8 +23,8 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     this.sections.push( 
-      {id:0, label: 'PROPERTIES',selector: 'examples-properties-footer', component: FooterTablePropertiesComponent},
-      {id:1, label: 'MODULE', selector: 'footer-import', component: FooterImportComponent},
+      {id:0, label: 'API',selector: 'footer-api', component: FooterApiComponent},
+      {id:1, label: 'THEMING', selector: 'footer-theme', component: FooterThemeComponent},
       {id:2, label: 'EXAMPLES', selector: 'examples-component-footer', component: FooterExampleComponent}
       );
   }

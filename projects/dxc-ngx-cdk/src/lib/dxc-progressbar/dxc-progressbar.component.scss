@@ -90,6 +90,7 @@
     ::ng-deep {
       .mat-progress-bar-buffer {
         background-color: var(--progressbar-color);
+        opacity: var(--progressbar-totalLineOpacity);
       }
     }
   }

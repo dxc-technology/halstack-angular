@@ -177,6 +177,7 @@ export const defaultTheme: Theme = {
     "sidenav":{},
     "progressbar":{
       // "text": readableColor(colors.black)
+      "totalLineOpacity": 0.34
     },
     "autocomplete":{
       "hoverOptionBackgroundColor": customTheme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57",

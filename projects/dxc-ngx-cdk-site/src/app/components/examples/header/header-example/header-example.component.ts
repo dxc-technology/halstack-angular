@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Example } from '../../../../model/example';
 import { ExampleService } from '../../../../service/example.service';
 import { HeaderDefaultComponent } from '../header-default/header-default.component';
-import { HeaderDarkComponent } from '../header-dark/header-dark.component';
 import { HeaderUnderlinedComponent } from '../header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../header-custom-content/header-custom-content.component';
 
@@ -41,25 +40,11 @@ export class HeaderExampleComponent implements OnInit {
       });
 
       this.exampleService
-      .getCodeExample("header/header-dark/header-dark.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Dark Header',
-          component: HeaderDarkComponent,
-          selector: "example2",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-
-      this.exampleService
       .getCodeExample("header/header-underlined/header-underlined.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Underlined Header',
           component: HeaderUnderlinedComponent,
-          selector: "example3",
+          selector: "example2",
           examples: [
             resp1[0],
             resp1[1],
@@ -73,7 +58,7 @@ export class HeaderExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Custom content Header',
           component: HeaderCustomContentComponent,
-          selector: "example4",
+          selector: "example3",
           examples: [
             resp1[0],
             resp1[1],

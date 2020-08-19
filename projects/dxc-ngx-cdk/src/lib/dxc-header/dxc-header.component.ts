@@ -17,14 +17,10 @@ import { spaces, responsiveSizes } from '../variables';
 @Component({
   selector: "dxc-header",
   templateUrl: "./dxc-header.component.html",
-  styleUrls: ["./dxc-header.scss"],
   providers: [CssUtils]
 })
 export class DxcHeaderComponent implements OnChanges {
   @HostBinding("class") className;
-
-  @Input() theme: string = "light";
-  @Input() underline: boolean;
   @Input() logoSrc: string;
   @Input() margin: any;
   @Input() padding: any;
@@ -35,12 +31,11 @@ export class DxcHeaderComponent implements OnChanges {
   isMenuVisible = false;
   innerWidth;
   innerHeight;
+  underline: boolean = true;
 
   responsiveMenu: string;
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
-    underline: false,
     logoSrc: null,
     margin: null,
     padding: null,
@@ -139,45 +134,8 @@ export class DxcHeaderComponent implements OnChanges {
     `;
   }
 
-  private getThemeLogo(theme) {
-    if (theme === "light") {
-      return css`
-        .mat-toolbar-row {
-          background: var(--black, black);
-          color: var(--white, white);
-        }
-        .underlined {
-          .mat-toolbar-row {
-            background: var(--white, white);
-            color: var(--black, black);
-          }
-          border-bottom: 2px solid var(--black, black);
-        }
-      `;
-    } else {
-      return css`
-        .mat-toolbar-row {
-          background: var(--white, white);
-          color: var(--black, black);
-        }
-        .underlined {
-          .mat-toolbar-row {
-            background: var(--black, black);
-            color: var(--white, white);
-          }
-          border-bottom: 2px solid var(--white, white);
-        }
-      `;
-    }
-  }
-
   getLogoDxc(){
-    if (this.theme === 'light'){
-      return this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
-    }
-    else{
-      return !this.underline ? "assets/dxc_logo_black.png" : "assets/dxc_logo_white.png";
-    }
+    return "assets/dxc_logo_white.png";
   }
 
   getDynamicStyle(inputs) {
@@ -207,7 +165,16 @@ export class DxcHeaderComponent implements OnChanges {
         justify-content: space-between;
         height: auto;
       }
-      ${this.getThemeLogo(inputs.theme)}
+      .mat-toolbar-row {
+        background: var(--header-backgroundColor);
+        color: var(--header-fontColor);
+      }
+      .underlined {
+        .mat-toolbar-row {
+          color: var(--header-fontColor);
+        }
+        border-bottom: 2px solid var(--header-underlinedColor);
+      }
       .dxc-logo,
         img {
           max-height: 32px;
@@ -228,8 +195,8 @@ export class DxcHeaderComponent implements OnChanges {
         font-family: "Open Sans", sans-serif;
         ${this.utils.getPaddings(inputs.padding)}
       }
-
       .hamburger {
+        color: var(--header-fontColor);
         padding: ${this.utils.getPaddings(inputs.padding)};
         .hamburgerItem {
           display: flex;
@@ -239,20 +206,13 @@ export class DxcHeaderComponent implements OnChanges {
           width: 54px;
           &:hover {
             cursor: pointer;
-            background-color: ${(inputs.theme === "light" &&
-              inputs.underline) ||
-            (inputs.theme === "dark" && !inputs.underline)
-              ? "var(--lightGrey, #D9D9D9)"
-              : "var(--darkGrey, #666666)"};
+            background-color: var(--header-hoverHamburguerColor);
           }
           .hamburgerIcon {
             width: 24px;
             height: 24px;
             svg path {
-              fill: ${(inputs.theme === "light" && inputs.underline) ||
-              (inputs.theme === "dark" && !inputs.underline)
-                ? "var(--black, black)"
-                : "var(--white, white)"};
+              fill: var(--header-hamburguerColor) !important;
             }
           }
           .hamburgerTitle {
@@ -269,7 +229,7 @@ export class DxcHeaderComponent implements OnChanges {
         left: 0;
         width: 100vw;
         height: ${inputs.innerHeight}px;
-        background-color: #000000b3;
+        background-color: var(--header-overlayColor);
         visibility: ${inputs.isMenuVisible ? "visible" : "hidden"};
         opacity: ${inputs.isMenuVisible ? "1" : "0"};
         display: ${inputs.innerWidth <= responsiveSizes.mobileLarge
@@ -287,13 +247,13 @@ export class DxcHeaderComponent implements OnChanges {
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-evenly;
-      background-color: var(--lightGrey, #D9D9D9);
+      background-color: var(--header-backgroundColorMenu);
       position: fixed;
       top: 0;
       right: 0;
       z-index: 1000;
-
-      color: var(--black, black);
+      
+      color: var(--header-fontColorMenu);
       width: ${inputs.innerWidth <= responsiveSizes.laptop &&
       inputs.innerWidth > responsiveSizes.mobileLarge
         ? "calc(60vw - 40px)"
@@ -318,6 +278,9 @@ export class DxcHeaderComponent implements OnChanges {
           width: 100%;
           &:hover {
             cursor: pointer;
+          }
+          svg{
+            fill: var(--header-fontColorMenu);
           }
         }
       }

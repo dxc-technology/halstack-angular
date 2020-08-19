@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header-table-properties',
+  selector: 'header-table-properties',
   templateUrl: './header-table-properties.component.html',
   styleUrls: ['./header-table-properties.component.scss']
 })

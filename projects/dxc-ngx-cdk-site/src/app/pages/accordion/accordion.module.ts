@@ -8,30 +8,31 @@ import { AccordionTablePropertiesComponent } from 'src/app/components/examples/a
 import { ExampleViewerComponent } from 'src/app/components/example-viewer/example-viewer.component';
 import { ExampleViewerModule } from 'src/app/components/example-viewer/example-viewer.module';
 import { AccordionDefaultComponent } from 'src/app/components/examples/accordion/accordion-default/accordion-default.component';
-import { AccordionAlternativeComponent } from 'src/app/components/examples/accordion/accordion-alternative/accordion-alternative.component';
 import { AccordionDisabledComponent } from 'src/app/components/examples/accordion/accordion-disabled/accordion-disabled.component';
 import { AccordionAssistiveComponent } from 'src/app/components/examples/accordion/accordion-assistive/accordion-assistive.component';
 import { AccordionIconComponent } from 'src/app/components/examples/accordion/accordion-icon/accordion-icon.component';
-import { AccordionDarkComponent } from 'src/app/components/examples/accordion/accordion-dark/accordion-dark.component';
 import { AccordionExampleModule } from '../../components/examples/accordion/accordion-example/accordion-example.module';
 import { AccordionControlledComponent } from '../../components/examples/accordion/accordion-controlled/accordion-controlled.component';
 import { AccordionImportComponent } from '../../components/examples/accordion/accordion-import/accordion-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
+import { AccordionThemeComponent } from '../../components/examples/accordion/accordion-theme/accordion-theme.component';
 
 @NgModule({
   declarations: [
     AccordionComponent,
     AccordionTablePropertiesComponent,
     AccordionDefaultComponent,
-    AccordionAlternativeComponent,
     AccordionDisabledComponent,
     AccordionAssistiveComponent,
     AccordionIconComponent,
-    AccordionDarkComponent,
     AccordionControlledComponent,
-    AccordionImportComponent
+    AccordionImportComponent,
+    AccordionApiComponent,
+    AccordionThemeComponent
   ],
   imports: [
     CommonModule,
@@ -43,18 +44,19 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ], 
   exports: [
     AccordionComponent,
     AccordionTablePropertiesComponent,
     AccordionDefaultComponent,
-    AccordionAlternativeComponent,
     AccordionDisabledComponent,
     AccordionAssistiveComponent,
     AccordionIconComponent,
-    AccordionDarkComponent,
-    AccordionImportComponent
+    AccordionImportComponent,
+    AccordionApiComponent,
+    AccordionThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

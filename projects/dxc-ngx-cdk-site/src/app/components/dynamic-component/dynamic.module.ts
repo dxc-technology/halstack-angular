@@ -250,6 +250,8 @@ import { DateThemeComponent } from '../examples/date/date-theme/date-theme.compo
 import { DateApiComponent } from '../examples/date/date-api/date-api.component';
 import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
 import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
+import { TabbedSectionApiComponent } from '../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
+import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 
 @NgModule({
@@ -387,6 +389,8 @@ import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplet
     TabbedSectionExampleComponent,
     TabbedSectionNotesComponent,
     TabbedSectionTablePropertiesComponent,
+    TabbedSectionApiComponent,
+    TabbedSectionThemeComponent,
     TagExampleComponent,
     TagDefaultComponent,
     TagLinkComponent,

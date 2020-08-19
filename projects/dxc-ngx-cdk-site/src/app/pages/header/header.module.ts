@@ -10,7 +10,6 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../../components/examples/header/properties/header-table-properties/header-table-properties.component';
 import { HeaderDefaultComponent } from '../../components/examples/header/header-default/header-default.component';
-import { HeaderDarkComponent } from '../../components/examples/header/header-dark/header-dark.component';
 import { HeaderUnderlinedComponent } from '../../components/examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
@@ -20,6 +19,9 @@ import { HeaderExampleResponsiveComponent } from '../../components/examples/head
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { HeaderImportComponent } from '../../components/examples/header/header-import/header-import.component';
+import { HeaderThemeComponent } from '../../components/examples/header/header-theme/header-theme.component';
+import { HeaderApiComponent } from '../../components/examples/header/header-api/header-api.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,13 @@ import { HeaderImportComponent } from '../../components/examples/header/header-i
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     HeaderDefaultComponent,
-    HeaderDarkComponent,
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
-    HeaderImportComponent
+    HeaderImportComponent,
+    HeaderApiComponent,
+    HeaderThemeComponent
   ],
   imports: [
       BrowserModule,
@@ -45,19 +48,21 @@ import { HeaderImportComponent } from '../../components/examples/header/header-i
       DxcTableModule,
       DxcTagModule,
       ComponentsSidenavModule,
-      CodePlaygroundModule
+      CodePlaygroundModule,
+      ColorPreviewModule
   ],
   exports: [
     HeaderComponent,
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     HeaderDefaultComponent,
-    HeaderDarkComponent,
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
-    HeaderImportComponent
+    HeaderImportComponent,
+    HeaderApiComponent,
+    HeaderThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

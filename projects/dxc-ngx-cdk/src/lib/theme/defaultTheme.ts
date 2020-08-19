@@ -86,6 +86,30 @@ export const customTheme: Theme = {
       "backgroundColor": colors.black,
       "fontColor": colors.white,
       "lineColor": colors.yellow
+    },
+    "header":{
+      "backgroundColor": colors.black,
+      "underlinedColor": colors.black,
+      "fontColor": colors.white,
+      "backgroundColorMenu": colors.lightGrey,
+      "fontColorMenu": colors.black,
+      "hamburguerColor": colors.white,
+    },
+    "tabs":{
+      "selectedBackgroundColor": colors.black,
+      "selectedUnderlinedColor": colors.yellow,
+      "selectedColor": colors.white
+    },
+    "wizard":{
+      "selectedBackgroundColor": colors.yellow,
+      "selectedBackgroundFont": colors.black
+    },
+    "accordion":{
+      "arrowColor": colors.darkGrey
+    },
+    "dropdown":{
+      "backgroundColor": colors.darkRed,
+      "fontColor": colors.black
     }
   }
 };
@@ -165,14 +189,13 @@ export const defaultTheme: Theme = {
       "disabled": 0.34
     },
     "date":{
-      "color": colors.black,
-      "placeholderColor": colors.black,
       "pickerBackgroundColor": colors.white,
       "pickerTextColor": colors.black,
       "pickerActualDate": colors.lightGrey,
-      "pickerHoverDateBackgroundColor": 0.34,
+      "pickerHoverDateBackgroundColor": customTheme.properties["date"]["pickerSelectedDateBackgroundColor"] + "57",
       "pickerHoverDateTextColor": colors.black,
-      "invalidColor": colors.darkRed
+      "invalidColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "sidenav":{},
     "progressbar":{
@@ -185,6 +208,46 @@ export const defaultTheme: Theme = {
       "scrollBarThumbColor": colors.darkGrey,
       "scrollBarTrackColor": colors.lightGrey
     },
-    "footer":{}
+    "footer":{},
+    "header":{
+      "hoverHamburguerColor": colors.darkGrey,
+      "overlayColor": colors.black + "b3"
+    },
+    "tabs":{
+      "backgroundColor": 0.34,
+      "underlineColor": colors.lightGrey,
+      "fontColor": colors.black,
+      "disabled": 0.34
+    },
+    "wizard":{
+      "borderColor": colors.black,
+      "fontColor": colors.black,
+      "lineColor": colors.lightGrey,
+      "disabledBackground": colors.darkWhite,
+      "disabledText": colors.darkGrey
+    },
+    "accordion":{
+      "fontColor": colors.darkGrey,
+      "backgroundColor": colors.white,
+      "hoverBackgroundColor": customTheme.properties["accordion"]["arrowColor"] + "57",
+      "hoverFontColor": colors.black,
+      "disabled": 0.34
+    },
+    "dialog":{
+      "overlayColor": colors.black + "CC",
+      "separator": colors.lightGrey,
+      "backgroundColor": colors.white,
+      "scrollBarThumbColor": colors.darkGrey,
+      "scrollBarTrackColor": colors.lightGrey
+    },
+    "dropdown":{
+      "dropdownBackgroundColor": colors.white,
+      "dropdownFontColor": colors.black,
+      "hoverBackgroundOption": colors.white + "57",
+      "hoverBackgroundColor": customTheme.properties["dropdown"]["backgroundColor"] + "CC",
+      "disabled": 0.34,
+      "scrollBarThumbColor": colors.darkGrey,
+      "scrollBarTrackColor": colors.lightGrey
+    }
   }
 };

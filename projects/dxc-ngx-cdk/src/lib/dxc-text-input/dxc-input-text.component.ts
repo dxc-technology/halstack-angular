@@ -374,14 +374,24 @@ export class DxcTextInputComponent
         width: 3px;
       }
       &::-webkit-scrollbar-track {
-        /* background-color: var(--lightGrey, #d9d9d9); */
-        background-color: var(--text-placeholderColor);
+        background-color: var(--autocomplete-scrollBarTrackColor);
+        opacity: 0.34;
         border-radius: 3px;
       }
       &::-webkit-scrollbar-thumb {
-        /* background-color: var(--darkGrey, #666666); */
-        background-color: var(--text-color);
+        background-color: var(--autocomplete-scrollBarThumbColor);
         border-radius: 3px;
+      }
+      .mat-option{
+        color: var(--autocomplete-hoverOptionColor);
+      }
+      .mat-option.mat-selected:not(:hover):not(.mat-option-disabled){
+        background-color: var(--autocomplete-selectedOptionBackgroundColor) !important;
+        color: var(--autocomplete-hoverOptionColor);
+      }
+      .mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled){
+        background-color: var(--autocomplete-hoverOptionBackgroundColor);
+        color: var(--autocomplete-hoverOptionColor);
       }
       .errorOption {
         .mat-option-text {

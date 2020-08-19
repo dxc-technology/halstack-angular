@@ -24,7 +24,6 @@ import { AlertErrorComponent } from '../examples/alert/alert-error/alert-error.c
 import { AlertClosableComponent } from '../examples/alert/alert-closable/alert-closable.component';
 import { AutocompleteAsyncControlledComponent } from '../examples/autocomplete/autocomplete-asynchronous-controlled/autocomplete-asynchronous-controlled.component';
 import { AutocompleteAsyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-asynchronous-uncontrolled/autocomplete-asynchronous-uncontrolled.component';
-import { AutocompleteDarkComponent } from '../examples/autocomplete/autocomplete-dark/autocomplete-dark.component';
 import { AutocompleteExampleComponent } from '../examples/autocomplete/autocomplete-example/autocomplete-example.component';
 import { AutocompleteSyncControlledComponent } from '../examples/autocomplete/autocomplete-synchronous-controlled/autocomplete-synchronous-controlled.component';
 import { AutocompleteSyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-synchronous-uncontrolled/autocomplete-synchronous-uncontrolled.component';
@@ -253,6 +252,7 @@ import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api
 import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
 import { TabbedSectionApiComponent } from '../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
+import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -280,7 +280,6 @@ import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-s
     AlertClosableComponent,
     AutocompleteAsyncControlledComponent,
     AutocompleteAsyncUncontrolledComponent,
-    AutocompleteDarkComponent,
     AutocompleteExampleComponent,
     AutocompleteSyncControlledComponent,
     AutocompleteSyncUncontrolledComponent,
@@ -509,7 +508,8 @@ import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-s
     DateApiComponent,
     DateThemeComponent,
     SidenavApiComponent,
-    SidenavThemeComponent
+    SidenavThemeComponent,
+    AutocompleteThemeComponent
   ]
 })
 export class DynamicModule {}

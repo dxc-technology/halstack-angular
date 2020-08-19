@@ -43,5 +43,62 @@
         }
       }
     }
+    mat-expansion-panel:not(.disabled) {
+      ::ng-deep {
+        mat-expansion-panel-header {
+          max-height: 64px;
+          background: transparent;
+          padding: 8px 30px;
+          &:hover {
+            background-color: var(--accordion-hoverBackgroundColor);
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description {
+              color: var(--accordion-hoverFontColor);
+            }
+          }
+          svg.up {
+            display: none;
+          }
+          svg.down {
+            fill: var(--accordion-arrowColor);
+          }
+          .mat-expansion-panel-header-title,
+          .mat-expansion-panel-header-description {
+            color: var(--accordion-fontColor);
+          }
+          &.mat-expanded {
+            .mat-expansion-panel-header-title,
+            .mat-expansion-panel-header-description {
+              color: var(--accordion-hoverFontColor);
+            }
+            svg.down {
+              display: none;
+            }
+            svg.up {
+              display: block;
+              fill: var(--accordion-arrowColor);
+            }
+            border-bottom: 1px solid #00000029;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+          }
+        }
+      }
+    }
+    mat-expansion-panel.disabled {
+      cursor: not-allowed;
+      ::ng-deep {
+        mat-expansion-panel-header {
+          opacity: var(--accordion-disabled);
+          padding: 8px 30px;
+          svg.up {
+            display: none;
+          }
+          svg.down {
+            fill: var(--accordion-arrowColor);
+          }
+        }
+      }
+    }
   }
 }

@@ -7,7 +7,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 @Component({
   selector: 'dxc-accordion',
   templateUrl: './dxc-accordion.component.html',
-  styleUrls: ['./dxc-accordion.component.scss', './dxc-light-accordion.component.scss', './dxc-dark-accordion.component.scss'],
+  styleUrls: ['./dxc-accordion.component.scss'],
   providers : [CssUtils]
 
 })

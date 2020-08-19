@@ -74,6 +74,9 @@ export const customTheme: Theme = {
       "color": colors.grey,
       "arrowBackground": colors.lightGrey,
       "arrowColor": colors.black
+    },
+    "autocomplete":{
+      "selectedOptionBackgroundColor": colors.lightGrey,
     }
   }
 };
@@ -162,6 +165,12 @@ export const defaultTheme: Theme = {
       "pickerHoverDateTextColor": colors.black,
       "invalidColor": colors.darkRed
     },
-    "sidenav":{}
+    "sidenav":{},
+    "autocomplete":{
+      "hoverOptionBackgroundColor": customTheme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57",
+      "hoverOptionColor": colors.black,
+      "scrollBarThumbColor": colors.darkGrey,
+      "scrollBarTrackColor": colors.lightGrey
+    }
   }
 };

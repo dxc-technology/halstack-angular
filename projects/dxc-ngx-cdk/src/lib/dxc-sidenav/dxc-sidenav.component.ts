@@ -124,6 +124,7 @@ export class DxcSidenavComponent implements OnInit {
           width: 42px;
           height: 42px;
           background-color: var(--sidenav-arrowBackground);
+          opacity: var(--sidenav-arrowContainerOpacity);
           border-radius: 50%;
           display: flex;
           align-items: center;

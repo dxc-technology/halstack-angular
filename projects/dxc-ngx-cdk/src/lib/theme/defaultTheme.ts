@@ -170,7 +170,9 @@ export const defaultTheme: Theme = {
       "pickerHoverDateTextColor": colors.black,
       "invalidColor": colors.darkRed
     },
-    "sidenav":{},
+    "sidenav":{
+      "arrowContainerOpacity": 0.80
+    },
     "autocomplete":{
       "hoverOptionBackgroundColor": customTheme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57",
       "hoverOptionColor": colors.black,

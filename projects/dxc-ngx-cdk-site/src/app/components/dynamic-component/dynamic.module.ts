@@ -129,7 +129,6 @@ import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/pro
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
 import { ProgressbarDeterminedComponent } from "../examples/progressbar/progressbar-determined/progressbar-determined.component";
 import { ProgressbarUndeterminedComponent } from "../examples/progressbar/progressbar-undetermined/progressbar-undetermined.component";
-import { ProgressbarThemedComponent } from "../examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
 import { TabbedSectionDefaultComponent } from '../examples/tabbed-section/tabbed-section-default/tabbed-section-default.component';
@@ -255,6 +254,8 @@ import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-s
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-theme.component';
 import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
+import { SpinnerApiComponent } from '../examples/spinner/spinner-api/spinner-api.component';
+import { SpinnerThemeComponent } from '../examples/spinner/spinner-theme/spinner-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -360,6 +361,8 @@ import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.com
     SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
+    SpinnerApiComponent,
+    SpinnerThemeComponent,
     SwitchExampleComponent,
     SwitchDefaultComponent,
     SwitchLabelComponent,
@@ -403,7 +406,6 @@ import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.com
     ProgressbarExampleComponent,
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
-    ProgressbarThemedComponent,
     ProgressbarOverlayComponent,
     TabsTablePropertiesComponent,
     TabsDefaultComponent,

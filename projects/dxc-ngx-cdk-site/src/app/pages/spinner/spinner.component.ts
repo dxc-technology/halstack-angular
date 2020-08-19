@@ -1,31 +1,44 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { Section } from '../../model/sections';
-import { SpinnerTablePropertiesComponent } from '../../components/examples/spinner/properties/spinner-table-properties/spinner-table-properties.component';
-import { SpinnerExampleComponent } from '../../components/examples/spinner/spinner-example/spinner-example.component';
-import { SpinnerImportComponent } from '../../components/examples/spinner/spinner-import/spinner-import.component';
+import { Component, Inject, OnInit } from "@angular/core";
+import { Section } from "../../model/sections";
+import { SpinnerExampleComponent } from "../../components/examples/spinner/spinner-example/spinner-example.component";
+import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-api/spinner-api.component';
+import { SpinnerThemeComponent } from '../../components/examples/spinner/spinner-theme/spinner-theme.component';
 
 @Component({
   selector: "app-spinner",
   templateUrl: "./spinner.component.html",
   styleUrls: ["./spinner.component.scss"],
-  providers: []
+  providers: [],
 })
-export class SpinnerComponent implements OnInit{
-
+export class SpinnerComponent implements OnInit {
   sections: Array<Section>;
   tagImg: string;
 
-  constructor(){
+  constructor() {
     this.sections = new Array<Section>();
-    this.tagImg = './assets/img/ready.svg';
+    this.tagImg = "./assets/img/ready.svg";
   }
 
-   ngOnInit() { 
-    this.sections.push( 
-      {id:0, label: 'PROPERTIES',selector: 'examples-properties-buttons', component: SpinnerTablePropertiesComponent},
-      {id:1, label: 'MODULE', selector: 'spinner-import', component: SpinnerImportComponent},
-      {id:2, label: 'EXAMPLES', selector: 'examples-component-buttons', component: SpinnerExampleComponent}
-      );
+  ngOnInit() {
+    this.sections.push(
+      {
+        id: 0,
+        label: "API",
+        selector: "spinner-api",
+        component: SpinnerApiComponent,
+      },
+      {
+        id: 1,
+        label: "THEMING",
+        selector: "spinner-theme",
+        component: SpinnerThemeComponent,
+      },
+      {
+        id: 2,
+        label: "EXAMPLES",
+        selector: "spinner-example",
+        component: SpinnerExampleComponent,
+      }
+    );
   }
-  
 }

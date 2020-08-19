@@ -8,7 +8,7 @@ import { SpinnerThemedComponent } from '../spinner-themed/spinner-themed.compone
 import { SpinnerOverlayComponent } from '../spinner-overlay/spinner-overlay.component';
 
 @Component({
-  selector: "app-spinner-example",
+  selector: "spinner-example",
   templateUrl: "./spinner-example.component.html",
   styleUrls: ["./spinner-example.component.scss"]
 })

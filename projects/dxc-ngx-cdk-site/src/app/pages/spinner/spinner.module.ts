@@ -5,7 +5,6 @@ import { SpinnerDeterminedComponent } from '../../components/examples/spinner/sp
 import { SpinnerExampleComponent } from '../../components/examples/spinner/spinner-example/spinner-example.component';
 import { SpinnerSmallComponent } from '../../components/examples/spinner/spinner-small/spinner-small.component';
 import { SpinnerTablePropertiesComponent } from '../../components/examples/spinner/properties/spinner-table-properties/spinner-table-properties.component';
-import { SpinnerThemedComponent } from '../../components/examples/spinner/spinner-themed/spinner-themed.component';
 import { SpinnerUndeterminedComponent } from '../../components/examples/spinner/spinner-undetermined/spinner-undetermined.component';
 import { SpinnerOverlayComponent } from '../../components/examples/spinner/spinner-overlay/spinner-overlay.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
@@ -27,7 +26,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     SpinnerExampleComponent,
     SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
     SpinnerImportComponent,
@@ -51,7 +49,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     SpinnerExampleComponent,
     SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
     SpinnerImportComponent,

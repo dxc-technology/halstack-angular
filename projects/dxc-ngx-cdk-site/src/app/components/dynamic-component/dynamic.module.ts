@@ -86,7 +86,6 @@ import { SliderContinuousComponent } from "../examples/slider/slider-continuous/
 import { SpinnerDeterminedComponent } from "../examples/spinner/spinner-determined/spinner-determined.component";
 import { SpinnerExampleComponent } from "../examples/spinner/spinner-example/spinner-example.component";
 import { SpinnerSmallComponent } from "../examples/spinner/spinner-small/spinner-small.component";
-import { SpinnerThemedComponent } from "../examples/spinner/spinner-themed/spinner-themed.component";
 import { SpinnerTablePropertiesComponent } from "../examples/spinner/properties/spinner-table-properties/spinner-table-properties.component";
 import { SpinnerUndeterminedComponent } from "../examples/spinner/spinner-undetermined/spinner-undetermined.component";
 import { SpinnerOverlayComponent } from '../examples/spinner/spinner-overlay/spinner-overlay.component';
@@ -358,7 +357,6 @@ import { SpinnerThemeComponent } from '../examples/spinner/spinner-theme/spinner
     SpinnerExampleComponent,
     SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
     SpinnerApiComponent,

@@ -45,7 +45,6 @@ export class DxcStepComponent {
     disabled: false,
     valid: null,
     mode: "horizontal",
-    theme: "light",
     currentStep: 0
   });
 
@@ -112,14 +111,14 @@ export class DxcStepComponent {
         height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
 
         ${!inputs.isCurrent && !inputs.disabled ?
-          `border: 2px solid ${inputs.theme === "light" ? "#000000" : "#FFFFFF"};` :
+          `border: 2px solid var(--wizard-borderColor);` :
           ""}
 
         ${inputs.disabled ?
-          "background: #D9D9D9 0% 0% no-repeat padding-box;" : ""}
+          "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;" : ""}
 
         ${inputs.isCurrent ? 
-          "background: #FFED00 0% 0% no-repeat padding-box;" : ""}
+          "background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box;" : ""}
 
         border-radius: 45px;
         display: flex;
@@ -136,8 +135,8 @@ export class DxcStepComponent {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
         color: ${!inputs.isCurrent && !inputs.disabled ?
-          inputs.theme === "light" ? "#000000" : "#FFFFFF"
-          : inputs.isCurrent ? "#000000" : "#666666"};
+          "var(--wizard-fontColor)"
+          : inputs.isCurrent ? "var(--wizard-fontColor)" : "var(--wizard-disabledText)"};
         opacity: 1;
         margin: 0;
       }
@@ -152,9 +151,7 @@ export class DxcStepComponent {
 
       .infoContainer {
         margin-left: 10px;
-        color: ${inputs.theme === "light" ?
-          inputs.position <= inputs.currentStep ? "#000000" : "#666666" :
-          inputs.position <= inputs.currentStep ? "#FFFFFF" : "#D9D9D9"};
+        color: ${inputs.position <= inputs.currentStep ? "var(--wizard-fontColor)" : "var(--wizard-disabledText)"};
       }
 
       .label {
@@ -177,7 +174,7 @@ export class DxcStepComponent {
         width: ${inputs.mode === "horizontal" ? "" : "0"};
         height: ${inputs.mode === "horizontal" ? "0" : ""};
         ${inputs.mode === "vertical" ? "margin: 0 18px;" : ""}
-        border: 1px solid #D9D9D9;
+        border: 1px solid var(--wizard-lineColor);
         opacity: 1;
         flex-grow: 1;
       }

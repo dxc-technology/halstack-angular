@@ -137,7 +137,7 @@ export class DxcFooterComponent implements OnChanges {
     return css`
       padding: ${responsive ? "20px" : "20px 60px 20px 20px"};
       font-family: "Open Sans", sans-serif;
-      background-color: var(--black, black);
+      background-color: var(--footer-backgroundColor);
       ${this.utils.getTopMargin(input.margin)}
     `;
   }
@@ -159,7 +159,7 @@ export class DxcFooterComponent implements OnChanges {
       align-items: ${responsive ? "center" : "flex-end"};
 
       .copyrightStyle {
-        color: var(--white, white);
+        color: var(--footer-fontColor);
         font-size: 12px;
         max-width: ${responsive ? "100%" : "40%"};
         width: ${responsive ? "100%" : "40%"};
@@ -168,7 +168,7 @@ export class DxcFooterComponent implements OnChanges {
 
       .bottomLinksStyle {
         padding-top: 6px;
-        border-top: 2px solid var(--yellow, #FFED00);
+        border-top: 2px solid var(--footer-lineColor);
         display: inline-flex;
         flex-wrap: wrap;
         max-width: ${responsive ? "100%" : "60%"};
@@ -177,11 +177,11 @@ export class DxcFooterComponent implements OnChanges {
         margin: ${responsive ? "40px 0 40px 0" : ""};
         .point {
           margin: 0px 10px;
-          color: white;
+          color: var(--footer-fontColor);
         }
         a {
           text-decoration: none;
-          color: var(--white, white);
+          color: var(--footer-fontColor);
           font-size: 12px;
         }
       }

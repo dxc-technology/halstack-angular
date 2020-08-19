@@ -78,6 +78,14 @@ export const customTheme: Theme = {
     "progressbar":{
       "trackColor": colors.yellow,
       "color": colors.black
+    },
+    "autocomplete":{
+      "selectedOptionBackgroundColor": colors.lightGrey,
+    },
+    "footer":{
+      "backgroundColor": colors.black,
+      "fontColor": colors.white,
+      "lineColor": colors.yellow
     }
   }
 };
@@ -169,6 +177,13 @@ export const defaultTheme: Theme = {
     "sidenav":{},
     "progressbar":{
       // "text": readableColor(colors.black)
-    }
+    },
+    "autocomplete":{
+      "hoverOptionBackgroundColor": customTheme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57",
+      "hoverOptionColor": colors.black,
+      "scrollBarThumbColor": colors.darkGrey,
+      "scrollBarTrackColor": colors.lightGrey
+    },
+    "footer":{}
   }
 };

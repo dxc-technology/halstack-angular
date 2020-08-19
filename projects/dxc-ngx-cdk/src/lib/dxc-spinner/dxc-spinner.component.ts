@@ -13,15 +13,12 @@ import { CssUtils } from "../utils";
   selector: "dxc-spinner",
   templateUrl: "./dxc-spinner.component.html",
   styleUrls: [
-    "./dxc-spinner.component.scss",
-    "./dxc-light-spinner.component.scss",
-    "./dxc-dark-spinner.component.scss"
+    "./dxc-spinner.component.scss"
   ],
   providers: [CssUtils]
 })
 export class DxcSpinnerComponent {
   type: string = "indeterminate";
-  @Input() theme: string = "light";
   @Input() value: number;
   @Input() label: string;
   @Input() showValue: boolean = false;
@@ -30,15 +27,12 @@ export class DxcSpinnerComponent {
   @Input() margin: any;
   
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   @HostBinding("class.overlay") isOverlayed: boolean = false;
   @HostBinding("class.small") isSmall: boolean = false;
   @HostBinding("class.large") isLarge: boolean = true;
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
     showValue: false,
     mode: "large"
   });
@@ -46,13 +40,6 @@ export class DxcSpinnerComponent {
   constructor(private utils: CssUtils) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     if (this.value || this.value === 0) {
       if (this.value <= 100 && this.value >= 0) {
         this.type = "determinate";

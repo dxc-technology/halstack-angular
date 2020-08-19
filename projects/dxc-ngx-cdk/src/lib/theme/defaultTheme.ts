@@ -83,6 +83,10 @@ export const customTheme: Theme = {
       "fontColor": colors.white,
       "lineColor": colors.yellow
     },
+    "spinner":{
+      "trackColor": colors.yellow,
+      "color": colors.white
+    }
   }
 };
 
@@ -178,5 +182,8 @@ export const defaultTheme: Theme = {
       "scrollBarTrackColor": colors.lightGrey
     },
     "footer":{},
+    "spinner":{
+      // "text": readableColor(colors.black)
+    },
   }
 };

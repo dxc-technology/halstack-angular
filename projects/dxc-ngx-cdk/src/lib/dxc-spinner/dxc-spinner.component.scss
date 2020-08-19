@@ -97,4 +97,30 @@
       position: absolute;
     }
   }
+  .spinnerContainer {
+    .backOverlay {
+      background-color: #000000b3;
+    }
+    .labelsContainer {
+      color: var(--white,white);
+      &.notOverlayed {
+        color: var(--spinner-text);
+      }
+    }
+  }
+  .mat-progress-spinner.backCircle {
+    ::ng-deep {
+      circle {
+        stroke: var(--spinner-color);
+      }
+    }
+  }
+  .mat-spinner.spinner,
+  .mat-progress-spinner.spinner {
+    ::ng-deep {
+      circle {
+        stroke: var(--spinner-trackColor);
+      }
+    }
+  }
 }

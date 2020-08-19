@@ -234,7 +234,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
-          background-color:  var(--date-pickerActualDate) !important;
+          background-color:  var(--date-pickerHoverDateBackgroundColor) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
         mat-year-view .mat-calendar-body-cell-content {
@@ -254,39 +254,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
   getDynamicStyle(inputs) {
     return css`
-      .mat-form-field-infix .mat-form-field-label-wrapper {
-        .mat-form-field-label {
-          span {
-            color: var(--date-invalidColor);
-          }
-        }
-      }
-      .mat-form-field-invalid {
-        .mat-hint {
-          color: var(--date-invalidColor);
-        }
-        .mat-form-field-empty mat-label {
-          color: var(--date-color);
-        }
-        &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--date-invalidColor);
-        }
-        .mat-form-field-label:not(.mat-form-field-empty) mat-label{
-          color: var(--date-invalidColor);
-        }
-        .mat-form-field-wrapper{
-          .mat-form-field-underline{
-            background-color: var(--date-invalidColor);
-            &:focus {
-              outline: -webkit-focus-ring-color auto 1px;
-              outline-color: var(--date-invalidColor);
-            }
-          }
-        }
-      }
-      label.mat-form-field-label:not(.mat-form-field-empty) mat-label {
-        color: var(--date-color);
-      }
       &.disabled {
         cursor: not-allowed !important;
       }
@@ -294,35 +261,11 @@ export class DxcDateComponent implements OnChanges, OnInit {
         cursor: not-allowed !important;
       }
       .mat-form-field{
-        color: var(--date-color);
-        .mat-hint {
-          color: var(--date-color);
-        }
-        .mat-form-field-empty mat-label {
-          color: var(--date-color);
-        }
-        &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--date-color);
-        }
-        .mat-form-field-label:not(.mat-form-field-empty) mat-label{
-          color: var(--date-color);
-        }
         .mat-form-field-wrapper{
           .mat-form-field-underline{
-            background-color: var(--date-color);
             &:focus {
               outline: -webkit-focus-ring-color auto 1px;
-              outline-color: var(--date-color);
-            }
-          }
-          .mat-form-field-flex{
-            /* &:hover {
-              color: var(--date-color);
-            } */
-            .mat-form-field-infix{
-              input::placeholder{
-                color: var(--date-placeholderColor);
-              }
+              outline-color: var(--date-focusColor);
             }
           }
         }

@@ -37,10 +37,10 @@ export class ThemeDirective implements OnInit, OnDestroy {
       if ((typeof obj[key]) === "string" || (typeof obj[key]) === "number"){
         if(parent !== undefined){
           let keyName = `--${parent}-${key}`;
-          this._elementRef.nativeElement.style.setProperty(keyName.toString(), obj[key]);
+          document.body.style.setProperty(keyName.toString(), obj[key]);
         }
         else{
-          this._elementRef.nativeElement.style.setProperty(key, obj[key]);
+          document.body.style.setProperty(key, obj[key]);
         }
       }
       else{

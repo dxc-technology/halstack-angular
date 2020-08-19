@@ -21,7 +21,6 @@ import { DxcStepComponent } from './dxc-step/dxc-step.component';
 })
 export class DxcWizardComponent {
   @Input() mode: string;
-  @Input() theme: string;
   @Input() currentStep: number;
   @Input() margin: any;
   @Input() steps: Array<any>;
@@ -33,7 +32,6 @@ export class DxcWizardComponent {
 
   defaultInputs = new BehaviorSubject<any>({
     mode: "horizontal",
-    theme: "light",
     currentStep: 0,
     margin: null,
     steps: null

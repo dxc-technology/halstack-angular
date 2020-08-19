@@ -74,6 +74,10 @@ export const customTheme: Theme = {
       "color": colors.grey,
       "arrowBackground": colors.lightGrey,
       "arrowColor": colors.black
+    },
+    "progressbar":{
+      "trackColor": colors.yellow,
+      "color": colors.black
     }
   }
 };
@@ -162,6 +166,9 @@ export const defaultTheme: Theme = {
       "pickerHoverDateTextColor": colors.black,
       "invalidColor": colors.darkRed
     },
-    "sidenav":{}
+    "sidenav":{},
+    "progressbar":{
+      // "text": readableColor(colors.black)
+    }
   }
 };

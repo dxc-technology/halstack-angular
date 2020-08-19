@@ -52,7 +52,7 @@
       z-index: 1;
       width: auto;
       .mat-progress-bar-fill::after {
-        background-color: var(--yellow, #FFED00);
+        background-color: var(--progressbar-trackColor);
       }
       .mat-progress-bar-background {
         fill: transparent;
@@ -67,6 +67,7 @@
     min-width: 685px;
     margin-bottom: 8px;
     display: flex;
+    color: var(--progressbar-text);
     .label {
       display: block;
       text-align: left;
@@ -80,6 +81,16 @@
       display: inline-flex;
       justify-content: flex-end;
       width: 5%;
+    }
+  }
+  .notOverlayed {
+    color: var(--black, black);
+  }
+  mat-progress-bar {
+    ::ng-deep {
+      .mat-progress-bar-buffer {
+        background-color: var(--progressbar-color);
+      }
     }
   }
 }

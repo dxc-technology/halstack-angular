@@ -16,6 +16,9 @@ import { SpinnerImportComponent } from '../../components/examples/spinner/spinne
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-api/spinner-api.component';
+import { SpinnerThemeComponent } from '../../components/examples/spinner/spinner-theme/spinner-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
-    SpinnerImportComponent
+    SpinnerImportComponent,
+    SpinnerApiComponent,
+    SpinnerThemeComponent
     ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcButtonModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     SpinnerDeterminedComponent,
@@ -48,7 +54,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
-    SpinnerImportComponent
+    SpinnerImportComponent,
+    SpinnerApiComponent,
+    SpinnerThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

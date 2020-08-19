@@ -9,7 +9,6 @@ import { ProgressbarTablePropertiesComponent } from "src/app/components/examples
 import { ProgressbarExampleComponent } from "../../components/examples/progressbar/progressbar-example/progressbar-example.component";
 import { ProgressbarDeterminedComponent } from "../../components/examples/progressbar/progressbar-determined/progressbar-determined.component";
 import { ProgressbarUndeterminedComponent } from "../../components/examples/progressbar/progressbar-undetermined/progressbar-undetermined.component";
-import { ProgressbarThemedComponent } from "../../components/examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../../components/examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
@@ -23,7 +22,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ProgressbarExampleComponent,
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
-    ProgressbarThemedComponent,
     ProgressbarOverlayComponent,
     ProgressbarImportComponent
   ],
@@ -45,7 +43,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ProgressbarComponent,
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
-    ProgressbarThemedComponent,
     ProgressbarOverlayComponent,
     ProgressbarImportComponent
   ],

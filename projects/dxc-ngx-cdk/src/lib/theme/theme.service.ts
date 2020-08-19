@@ -47,6 +47,9 @@ export class ThemeService {
     if(theme.properties["progressbar"].hasOwnProperty("color")){
       this.theme.properties["progressbar"]["color"] = theme.properties["progressbar"]["color"] + "57";
     }
+    if(theme.properties["autocomplete"].hasOwnProperty("selectedOptionBackgroundColor")){
+      this.theme.properties["autocomplete"]["hoverOptionBackgroundColor"] = theme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57";
+    }
   }
 
   private setDefaultTheme(newTheme: Theme) {

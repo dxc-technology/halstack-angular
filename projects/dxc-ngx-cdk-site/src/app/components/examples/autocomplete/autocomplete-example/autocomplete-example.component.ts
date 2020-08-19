@@ -3,7 +3,6 @@ import { Example } from "src/app/model/example";
 import { ExampleService } from "src/app/service/example.service";
 import { AutocompleteAsyncControlledComponent } from '../autocomplete-asynchronous-controlled/autocomplete-asynchronous-controlled.component';
 import { AutocompleteAsyncUncontrolledComponent } from '../autocomplete-asynchronous-uncontrolled/autocomplete-asynchronous-uncontrolled.component';
-import { AutocompleteDarkComponent } from '../autocomplete-dark/autocomplete-dark.component';
 import { AutocompleteSyncControlledComponent } from '../autocomplete-synchronous-controlled/autocomplete-synchronous-controlled.component';
 import { AutocompleteSyncUncontrolledComponent } from '../autocomplete-synchronous-uncontrolled/autocomplete-synchronous-uncontrolled.component';
 
@@ -81,19 +80,5 @@ export class AutocompleteExampleComponent implements OnInit {
           })
         );
       });
-
-      this.exampleService
-      .getCodeExample("autocomplete/autocomplete-dark/autocomplete-dark.component")
-      .subscribe(resp => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Dark Theme Autocomplete",
-            component: AutocompleteDarkComponent,
-            selector: "example5",
-            examples: [resp[0], resp[1], resp[2]]
-          })
-        );
-      });
-
   }
 }

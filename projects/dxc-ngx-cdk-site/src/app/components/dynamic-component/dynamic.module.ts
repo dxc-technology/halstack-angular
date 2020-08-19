@@ -253,6 +253,8 @@ import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-the
 import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
 import { HeaderThemeComponent } from '../examples/header/header-theme/header-theme.component';
 import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
+import { WizardThemeComponent } from '../examples/wizard/wizard-theme/wizard-theme.component';
+import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.component';
 
 
 @NgModule({
@@ -511,7 +513,8 @@ import { HeaderApiComponent } from '../examples/header/header-api/header-api.com
     FooterThemeComponent,
     HeaderApiComponent,
     HeaderThemeComponent,
-
+    WizardApiComponent,
+    WizardThemeComponent,
   ]
 })
 export class DynamicModule {}

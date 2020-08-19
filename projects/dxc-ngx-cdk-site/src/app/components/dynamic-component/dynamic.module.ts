@@ -6,11 +6,9 @@ import { FormsModule } from "@angular/forms";
 import { AccordionExampleComponent } from "../examples/accordion/accordion-example/accordion-example.component";
 import { AccordionTablePropertiesComponent } from "../examples/accordion/properties/accordion-table-properties/accordion-table-properties.component";
 import { AccordionDefaultComponent } from "../examples/accordion/accordion-default/accordion-default.component";
-import { AccordionAlternativeComponent } from "../examples/accordion/accordion-alternative/accordion-alternative.component";
 import { AccordionDisabledComponent } from "../examples/accordion/accordion-disabled/accordion-disabled.component";
 import { AccordionAssistiveComponent } from "../examples/accordion/accordion-assistive/accordion-assistive.component";
 import { AccordionIconComponent } from "../examples/accordion/accordion-icon/accordion-icon.component";
-import { AccordionDarkComponent } from "../examples/accordion/accordion-dark/accordion-dark.component";
 import { AccordionControlledComponent } from '../examples/accordion/accordion-controlled/accordion-controlled.component';
 import { AlertChildrenComponent } from "../examples/alert/alert-children/alert-children.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
@@ -144,7 +142,6 @@ import { TabsContentComponent } from "../examples/tabs/tabs-content/tabs-content
 import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
 import { HeaderDefaultComponent } from '../examples/header/header-default/header-default.component';
-import { HeaderDarkComponent } from '../examples/header/header-dark/header-dark.component';
 import { HeaderUnderlinedComponent } from '../examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../examples/header/header-custom-content/header-custom-content.component';
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
@@ -175,7 +172,6 @@ import { WizardExampleComponent } from '../examples/wizard/wizard-example/wizard
 import { WizardTablePropertiesComponent } from '../examples/wizard/properties/wizard-table-properties/wizard-table-properties.component';
 import { WizardDefaultComponent } from '../examples/wizard/wizard-default/wizard-default.component';
 import { WizardUncontrolledComponent } from '../examples/wizard/wizard-uncontrolled/wizard-uncontrolled.component';
-import { WizardThemedComponent } from '../examples/wizard/wizard-themed/wizard-themed.component';
 import { WizardVerticalComponent } from '../examples/wizard/wizard-vertical/wizard-vertical.component';
 import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
 import { HeadingDefaultComponent } from '../examples/heading/heading-default/heading-default.component';
@@ -255,6 +251,9 @@ import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-s
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-theme.component';
 import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
+import { HeaderThemeComponent } from '../examples/header/header-theme/header-theme.component';
+import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
+
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -264,12 +263,10 @@ import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.com
     AccordionExampleComponent,
     AccordionTablePropertiesComponent,
     AccordionDefaultComponent,
-    AccordionAlternativeComponent,
     AccordionDisabledComponent,
     AccordionControlledComponent,
     AccordionAssistiveComponent,
     AccordionIconComponent,
-    AccordionDarkComponent,
     AlertChildrenComponent,
     AlertExampleComponent,
     AlertInfoComponent,
@@ -415,7 +412,6 @@ import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.com
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     HeaderDefaultComponent,
-    HeaderDarkComponent,
     HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     UploadTablePropertiesComponent,
@@ -437,7 +433,6 @@ import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.com
     WizardTablePropertiesComponent,
     WizardDefaultComponent,
     WizardUncontrolledComponent,
-    WizardThemedComponent,
     WizardVerticalComponent,
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
@@ -513,7 +508,10 @@ import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.com
     SidenavThemeComponent,
     AutocompleteThemeComponent,
     FooterApiComponent,
-    FooterThemeComponent
+    FooterThemeComponent,
+    HeaderApiComponent,
+    HeaderThemeComponent,
+
   ]
 })
 export class DynamicModule {}

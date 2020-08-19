@@ -9,12 +9,14 @@ import { ProgressbarTablePropertiesComponent } from "src/app/components/examples
 import { ProgressbarExampleComponent } from "../../components/examples/progressbar/progressbar-example/progressbar-example.component";
 import { ProgressbarDeterminedComponent } from "../../components/examples/progressbar/progressbar-determined/progressbar-determined.component";
 import { ProgressbarUndeterminedComponent } from "../../components/examples/progressbar/progressbar-undetermined/progressbar-undetermined.component";
-import { ProgressbarThemedComponent } from "../../components/examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../../components/examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
+import { ProgressbarThemeComponent } from '../../components/examples/progressbar/progressbar-theme/progressbar-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ProgressbarExampleComponent,
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
-    ProgressbarThemedComponent,
     ProgressbarOverlayComponent,
-    ProgressbarImportComponent
+    ProgressbarImportComponent,
+    ProgressbarApiComponent,
+    ProgressbarThemeComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcButtonModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     ProgressbarTablePropertiesComponent,
@@ -45,9 +49,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ProgressbarComponent,
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
-    ProgressbarThemedComponent,
     ProgressbarOverlayComponent,
-    ProgressbarImportComponent
+    ProgressbarImportComponent,
+    ProgressbarApiComponent,
+    ProgressbarThemeComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

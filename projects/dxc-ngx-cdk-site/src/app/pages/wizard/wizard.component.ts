@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
-import { WizardTablePropertiesComponent } from "../../components/examples/wizard/properties/wizard-table-properties/wizard-table-properties.component";
 import { WizardExampleComponent } from "../../components/examples/wizard/wizard-example/wizard-example.component";
-import { WizardImportComponent } from '../../components/examples/wizard/wizard-import/wizard-import.component';
+import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/wizard-api.component';
+import { WizardThemeComponent } from '../../components/examples/wizard/wizard-theme/wizard-theme.component';
 
 @Component({
   selector: 'app-wizard',
@@ -23,15 +23,15 @@ export class WizardComponent implements OnInit {
     this.sections.push(
       {
         id: 0,
-        label: "PROPERTIES",
-        selector: "wizard-table-properties",
-        component: WizardTablePropertiesComponent
+        label: "API",
+        selector: "wizard-api",
+        component: WizardApiComponent
       },
       {
         id: 1,
-        label: "MODULE",
-        selector: "wizard-import",
-        component: WizardImportComponent
+        label: "THEMING",
+        selector: "wizard-theme",
+        component: WizardThemeComponent
       },
       {
         id: 2,

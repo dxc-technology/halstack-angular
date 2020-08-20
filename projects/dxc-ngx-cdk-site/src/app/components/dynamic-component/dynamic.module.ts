@@ -127,7 +127,6 @@ import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/pro
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
 import { ProgressbarDeterminedComponent } from "../examples/progressbar/progressbar-determined/progressbar-determined.component";
 import { ProgressbarUndeterminedComponent } from "../examples/progressbar/progressbar-undetermined/progressbar-undetermined.component";
-import { ProgressbarThemedComponent } from "../examples/progressbar/progressbar-themed/progressbar-themed.component";
 import { ProgressbarOverlayComponent } from "../examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
 import { TabbedSectionDefaultComponent } from '../examples/tabbed-section/tabbed-section-default/tabbed-section-default.component';
@@ -246,6 +245,8 @@ import { DateThemeComponent } from '../examples/date/date-theme/date-theme.compo
 import { DateApiComponent } from '../examples/date/date-api/date-api.component';
 import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
 import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
+import { ProgressbarThemeComponent } from '../examples/progressbar/progressbar-theme/progressbar-theme.component';
+import { ProgressbarApiComponent } from '../examples/progressbar/progressbar-api/progressbar-api.component';
 import { TabbedSectionApiComponent } from '../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
@@ -255,7 +256,10 @@ import { HeaderThemeComponent } from '../examples/header/header-theme/header-the
 import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
 import { WizardThemeComponent } from '../examples/wizard/wizard-theme/wizard-theme.component';
 import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.component';
-
+import { AccordionApiComponent } from '../examples/accordion/accordion-api/accordion-api.component';
+import { AccordionThemeComponent } from '../examples/accordion/accordion-theme/accordion-theme.component';
+import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.component';
+import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -402,8 +406,9 @@ import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.com
     ProgressbarExampleComponent,
     ProgressbarDeterminedComponent,
     ProgressbarUndeterminedComponent,
-    ProgressbarThemedComponent,
     ProgressbarOverlayComponent,
+    ProgressbarThemeComponent,
+    ProgressbarApiComponent,
     TabsTablePropertiesComponent,
     TabsDefaultComponent,
     TabsExampleComponent,
@@ -515,6 +520,10 @@ import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.com
     HeaderThemeComponent,
     WizardApiComponent,
     WizardThemeComponent,
+    AccordionApiComponent,
+    AccordionThemeComponent,
+    DialogApiComponent,
+    DialogThemeComponent
   ]
 })
 export class DynamicModule {}

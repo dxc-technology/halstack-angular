@@ -5,7 +5,7 @@ import {
   HostBinding,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -16,14 +16,11 @@ import { CssUtils } from "../utils";
   templateUrl: "./dxc-progressbar.component.html",
   styleUrls: [
     "./dxc-progressbar.component.scss",
-    "./dxc-light-progressbar.component.scss",
-    "./dxc-dark-progressbar.component.scss"
   ],
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcProgressbarComponent {
   mode: string = "indeterminate";
-  @Input() theme: string = "light";
   @Input() value: number;
   @Input() label: string;
   @Input() showValue: boolean;
@@ -31,26 +28,16 @@ export class DxcProgressbarComponent {
   @Input() margin: any;
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
   @HostBinding("class.absolute") isAbsolute: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
     showValue: false,
-    mode: "large"
+    mode: "large",
   });
 
   constructor(private utils: CssUtils) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     if (this.value || this.value === 0) {
       if (this.value <= 100 && this.value >= 0) {
         this.mode = "determinate";
@@ -93,21 +80,21 @@ export class DxcProgressbarComponent {
     return css`
       ${this.utils.getMargins(inputs.margin)}
       .backOverlay {
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          position: fixed;
-          opacity: 1;
-          ${inputs.overlay
-            ? css`
-                background-color: rgba(0, 0, 0, 0.7);
-              `
-            : css`
-                background-color: transparent;
-              `}
-          transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        opacity: 1;
+        ${inputs.overlay
+          ? css`
+              background-color: rgba(0, 0, 0, 0.7);
+            `
+          : css`
+              background-color: transparent;
+            `}
+        transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      }
     `;
   }
 }

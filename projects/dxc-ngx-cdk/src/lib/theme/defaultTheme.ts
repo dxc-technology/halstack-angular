@@ -75,6 +75,10 @@ export const customTheme: Theme = {
       "arrowBackground": colors.lightGrey,
       "arrowColor": colors.black
     },
+    "progressbar":{
+      "trackColor": colors.yellow,
+      "color": colors.black
+    },
     "autocomplete":{
       "selectedOptionBackgroundColor": colors.lightGrey,
     },
@@ -195,6 +199,10 @@ export const defaultTheme: Theme = {
     },
     "sidenav":{
       "arrowContainerOpacity": 0.80
+    },
+    "progressbar":{
+      // "text": readableColor(colors.black)
+      "totalLineOpacity": 0.34
     },
     "autocomplete":{
       "hoverOptionBackgroundColor": customTheme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57",

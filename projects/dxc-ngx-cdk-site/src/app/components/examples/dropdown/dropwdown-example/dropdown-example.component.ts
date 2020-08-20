@@ -4,7 +4,6 @@ import { ExampleService } from "src/app/service/example.service";
 import {DropdownDefaultComponent} from '../dropdown-default/dropdown-default.component';
 import {DropdownOutlinedComponent} from '../dropdown-outlined/dropdown-outlined.component';
 import {DropdownIconsComponent} from '../dropdown-icons/dropdown-icons.component';
-import {DropdownDarkComponent} from '../dropdown-dark/dropdown-dark.component';
 import { DropdownHoverComponent } from '../dropdown-hover/dropdown-hover.component';
 @Component({
   selector: "app-dropdown-example",
@@ -55,20 +54,7 @@ export class DropdownExampleComponent implements OnInit {
         );
       });
 
-      this.exampleService
-      .getCodeExample("dropdown/dropdown-outlined/dropdown-outlined.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Outlined dropdown",
-            component: DropdownOutlinedComponent,
-            selector: "example3",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-// Still fix for icons size is needed. Commented till then
+      // Still fix for icons size is needed. Commented till then
       this.exampleService
       .getCodeExample("dropdown/dropdown-icons/dropdown-icons.component")
       .subscribe(resp1 => {
@@ -76,20 +62,7 @@ export class DropdownExampleComponent implements OnInit {
           this.exampleService.generateExample({
             title: "Dropdown with icons",
             component: DropdownIconsComponent,
-            selector: "example4",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-      this.exampleService
-      .getCodeExample("dropdown/dropdown-dark/dropdown-dark.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Dark Dropdown",
-            component: DropdownDarkComponent,
-            selector: "example5",
+            selector: "example3",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

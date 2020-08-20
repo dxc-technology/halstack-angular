@@ -13,19 +13,19 @@ export class DropdownIconsComponent {
       value: 1,
       label: "Facebook"
       ,
-      iconSrc:"assets/img/facebook.svg"
+      iconSrc:"https://img.icons8.com/android/24/000000/facebook.png"
     },
     {
       value: 2,
       label: "Twitter"
       ,
-      iconSrc:"assets/img/twitter.svg"
+      iconSrc:"https://img.icons8.com/android/24/000000/twitter.png"
     },
     {
       value: 3,
       label: "Linkedin"
       ,
-      iconSrc:"assets/img/linkedin.svg"
+      iconSrc:"https://img.icons8.com/android/24/000000/linkedin.png"
     }
   ];
 

@@ -261,6 +261,8 @@ import { DropdownThemeComponent } from '../examples/dropdown/dropdown-theme/drop
 import { DropdownApiComponent } from '../examples/dropdown/dropdown-api/dropdown-api.component';
 import { TableThemeComponent } from '../examples/table/table-theme/table-theme.component';
 import { TableApiComponent } from '../examples/table/table-api/table-api.component';
+import { PaginatorThemeComponent } from '../examples/paginator/paginator-theme/paginator-theme.component';
+import { PaginatorApiComponent } from '../examples/paginator/paginator-api/paginator-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -525,7 +527,9 @@ import { TableApiComponent } from '../examples/table/table-api/table-api.compone
     DropdownApiComponent,
     DropdownThemeComponent,
     TableApiComponent,
-    TableThemeComponent
+    TableThemeComponent,
+    PaginatorApiComponent,
+    PaginatorThemeComponent
   ]
 })
 export class DynamicModule {}

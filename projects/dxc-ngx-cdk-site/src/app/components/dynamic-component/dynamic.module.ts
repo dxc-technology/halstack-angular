@@ -84,7 +84,6 @@ import { SliderContinuousComponent } from "../examples/slider/slider-continuous/
 import { SpinnerDeterminedComponent } from "../examples/spinner/spinner-determined/spinner-determined.component";
 import { SpinnerExampleComponent } from "../examples/spinner/spinner-example/spinner-example.component";
 import { SpinnerSmallComponent } from "../examples/spinner/spinner-small/spinner-small.component";
-import { SpinnerThemedComponent } from "../examples/spinner/spinner-themed/spinner-themed.component";
 import { SpinnerTablePropertiesComponent } from "../examples/spinner/properties/spinner-table-properties/spinner-table-properties.component";
 import { SpinnerUndeterminedComponent } from "../examples/spinner/spinner-undetermined/spinner-undetermined.component";
 import { SpinnerOverlayComponent } from '../examples/spinner/spinner-overlay/spinner-overlay.component';
@@ -252,6 +251,8 @@ import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-s
 import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-theme.component';
 import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
+import { SpinnerApiComponent } from '../examples/spinner/spinner-api/spinner-api.component';
+import { SpinnerThemeComponent } from '../examples/spinner/spinner-theme/spinner-theme.component';
 import { HeaderThemeComponent } from '../examples/header/header-theme/header-theme.component';
 import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
 import { WizardThemeComponent } from '../examples/wizard/wizard-theme/wizard-theme.component';
@@ -360,9 +361,10 @@ import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-the
     SpinnerExampleComponent,
     SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerThemedComponent,
     SpinnerUndeterminedComponent,
     SpinnerOverlayComponent,
+    SpinnerApiComponent,
+    SpinnerThemeComponent,
     SwitchExampleComponent,
     SwitchDefaultComponent,
     SwitchLabelComponent,

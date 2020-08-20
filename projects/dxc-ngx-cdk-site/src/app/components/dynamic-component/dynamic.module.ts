@@ -255,7 +255,10 @@ import { HeaderThemeComponent } from '../examples/header/header-theme/header-the
 import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
 import { WizardThemeComponent } from '../examples/wizard/wizard-theme/wizard-theme.component';
 import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.component';
-
+import { AccordionApiComponent } from '../examples/accordion/accordion-api/accordion-api.component';
+import { AccordionThemeComponent } from '../examples/accordion/accordion-theme/accordion-theme.component';
+import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.component';
+import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -515,6 +518,10 @@ import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.com
     HeaderThemeComponent,
     WizardApiComponent,
     WizardThemeComponent,
+    AccordionApiComponent,
+    AccordionThemeComponent,
+    DialogApiComponent,
+    DialogThemeComponent
   ]
 })
 export class DynamicModule {}

@@ -41,9 +41,6 @@ export class ThemeService {
     if(theme.properties["select"].hasOwnProperty("selectedOptionBackgroundColor")){
       this.theme.properties["select"]["hoverOptionBackgroundColor"] = theme.properties["select"]["selectedOptionBackgroundColor"] + "57";
     }
-    if(theme.properties["sidenav"].hasOwnProperty("arrowBackground")){
-      this.theme.properties["sidenav"]["arrowBackground"] = theme.properties["sidenav"]["arrowBackground"] + "80";
-    }
     if(theme.properties["autocomplete"].hasOwnProperty("selectedOptionBackgroundColor")){
       this.theme.properties["autocomplete"]["hoverOptionBackgroundColor"] = theme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57";
     }

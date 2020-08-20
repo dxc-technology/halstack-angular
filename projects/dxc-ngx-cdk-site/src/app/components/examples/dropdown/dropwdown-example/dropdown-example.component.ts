@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from "@angular/core";
 import { Example } from "src/app/model/example";
 import { ExampleService } from "src/app/service/example.service";
 import {DropdownDefaultComponent} from '../dropdown-default/dropdown-default.component';
-import {DropdownOutlinedComponent} from '../dropdown-outlined/dropdown-outlined.component';
 import {DropdownIconsComponent} from '../dropdown-icons/dropdown-icons.component';
 import { DropdownHoverComponent } from '../dropdown-hover/dropdown-hover.component';
 @Component({

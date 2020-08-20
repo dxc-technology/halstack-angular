@@ -259,6 +259,8 @@ import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.com
 import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-theme.component';
 import { DropdownThemeComponent } from '../examples/dropdown/dropdown-theme/dropdown-theme.component';
 import { DropdownApiComponent } from '../examples/dropdown/dropdown-api/dropdown-api.component';
+import { TableThemeComponent } from '../examples/table/table-theme/table-theme.component';
+import { TableApiComponent } from '../examples/table/table-api/table-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -521,7 +523,9 @@ import { DropdownApiComponent } from '../examples/dropdown/dropdown-api/dropdown
     DialogApiComponent,
     DialogThemeComponent,
     DropdownApiComponent,
-    DropdownThemeComponent
+    DropdownThemeComponent,
+    TableApiComponent,
+    TableThemeComponent
   ]
 })
 export class DynamicModule {}

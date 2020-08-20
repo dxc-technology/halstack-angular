@@ -13,6 +13,9 @@ import { TableImportComponent } from '../../components/examples/table/table-impo
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { TableThemeComponent } from '../../components/examples/table/table-theme/table-theme.component';
+import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TableExampleComponent,
     TableSimpleComponent,
     TablePropertiesComponent,
-    TableImportComponent
+    TableImportComponent,
+    TableApiComponent,
+    TableThemeComponent
   ],
   imports: [
     CommonModule,
@@ -30,14 +35,17 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     TableComponent,
     TableExampleComponent,
     TableSimpleComponent,
     TablePropertiesComponent,
-    TableImportComponent
+    TableImportComponent,
+    TableApiComponent,
+    TableThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

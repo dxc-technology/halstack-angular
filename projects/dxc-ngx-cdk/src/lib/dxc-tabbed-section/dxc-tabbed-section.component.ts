@@ -14,14 +14,6 @@ export class DxcTabbedSectionComponent implements OnInit {
 
   //input attributes
   @Input() tabsMode: string = "filled";;
-  @Input() tabsTheme: string = "light";;
-
-  @Input()
-  get disableTabsRipple(): boolean { return this._disableTabsRipple; }
-  set disableTabsRipple(value: boolean) {
-    this._disableTabsRipple = coerceBooleanProperty(value);
-  }
-  private _disableTabsRipple;
 
   @Input()
   get stickAtPx(): number { return this._stickAtPx; }
@@ -51,14 +43,12 @@ export class DxcTabbedSectionComponent implements OnInit {
 
   defaultInputs = new BehaviorSubject<any>({
     tabsMode: "filled",
-    tabsTheme: "light",
     disableTabsRipple: "false",
     stickAtPx: 0,
   });
 
   constructor() { 
     this.stickAtPx = 0;  
-    this.disableTabsRipple = false; 
   }
 
   ngOnInit() {

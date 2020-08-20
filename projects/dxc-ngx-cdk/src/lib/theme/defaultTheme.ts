@@ -197,7 +197,9 @@ export const defaultTheme: Theme = {
       "invalidColor": colors.darkRed,
       "focusColor": colors.blue
     },
-    "sidenav":{},
+    "sidenav":{
+      "arrowContainerOpacity": 0.80
+    },
     "progressbar":{
       // "text": readableColor(colors.black)
       "totalLineOpacity": 0.34

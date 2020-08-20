@@ -56,11 +56,6 @@ export const customTheme: Theme = {
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
     },
-    "box":{
-      "backgroundColor": colors.white,
-      "borderColor": "transparent",
-      "fontColor": colors.black
-    },
     "chip":{
       "backgroundColor": colors.lightGrey,
       "outlinedColor": colors.black,
@@ -173,7 +168,7 @@ export const defaultTheme: Theme = {
       "invalidColor": colors.darkRed
     },
     "box":{
-      // "text": readableColor(colors.black)
+      "backgroundColor": colors.white
     },
     "card":{
       "backgroundColor": colors.white

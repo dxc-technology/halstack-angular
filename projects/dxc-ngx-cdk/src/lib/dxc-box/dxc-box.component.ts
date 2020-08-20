@@ -69,8 +69,8 @@ export class DxcBoxComponent implements OnInit {
       border-radius: 4px;
       overflow: hidden;
       background-color: var(--box-backgroundColor);
-      border-color: var(--box-borderColor);
-      color: var(--box-fontColor);
+      border-color: transparent;
+      color: "#000000";
   
       ${this.utils.getBoxShadow(inputs.shadowDepth) }
       ${this.utils.getMargins(inputs.margin) }

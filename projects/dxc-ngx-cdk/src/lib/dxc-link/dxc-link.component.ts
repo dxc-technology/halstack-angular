@@ -105,7 +105,7 @@ export class DxcLinkComponent {
   private getStateStyles(inputs) {
     return css`
       &:hover {
-        color: var(--link-fontColor) !important;
+        color: var(--link-hoverColor) !important;
         text-decoration: none;
         padding-bottom: 1px !important;
         border-bottom: 1px solid;

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
-import {ProgressbarTablePropertiesComponent} from "../../components/examples/progressbar/properties/progressbar-table-properties.component";
 import {ProgressbarExampleComponent} from '../../components/examples/progressbar/progressbar-example/progressbar-example.component';
-import { ProgressbarImportComponent } from '../../components/examples/progressbar/progressbar-import/progressbar-import.component';
+import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
+import { ProgressbarThemeComponent } from '../../components/examples/progressbar/progressbar-theme/progressbar-theme.component';
 
 @Component({
   selector: "app-progressbar",
@@ -22,21 +22,21 @@ export class ProgressbarComponent implements OnInit {
     this.sections.push(
       {
         id: 0,
-        label: "PROPERTIES",
-        selector: "app-progressbar-table-properties",
-        component: ProgressbarTablePropertiesComponent
+        label: "API",
+        selector: "progressbar-api",
+        component: ProgressbarApiComponent
       }
       ,
       {
         id: 1,
-        label: "MODULE",
-        selector: "progressbar-import",
-        component: ProgressbarImportComponent
+        label: "THEMING",
+        selector: "progressbar-theme",
+        component: ProgressbarThemeComponent
       },
       {
         id: 2,
         label: "EXAMPLES",
-        selector: "app-progressbar-example",
+        selector: "progressbar-example",
         component: ProgressbarExampleComponent
       }
     );

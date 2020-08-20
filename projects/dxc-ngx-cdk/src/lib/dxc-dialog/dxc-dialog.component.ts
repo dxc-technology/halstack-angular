@@ -57,7 +57,7 @@ export class DxcDialogComponent {
   private overlayStyle(overlay:boolean){
     if(overlay === true){
       return css`
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: var(--dialog-overlayColor);
       `;
     }
     else 
@@ -109,7 +109,7 @@ export class DxcDialogComponent {
             border-radius: 4px;
             color: rgba(0, 0, 0, 0.87);
             transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            background-color: var(--white, white);
+            background-color: var(--dialog-backgroundColor);
             .closeIcon {
               display: flex;
               justify-content: flex-end;
@@ -128,22 +128,22 @@ export class DxcDialogComponent {
                 width: 3px;
               }
               &::-webkit-scrollbar-track {
-                background-color: var(--lightGrey, #D9D9D9);
+                background-color: var(--dialog-scrollBarTrackColor);
                 border-radius: 3px;
               }
               &::-webkit-scrollbar-thumb {
-                background-color: var(--darkGrey, #666666);
+                background-color: var(--dialog-scrollBarThumbColor);
                 border-radius: 3px;
               }
               ::-webkit-scrollbar {
                 width: 3px;
               }
               ::-webkit-scrollbar-track {
-                background-color: var(--lightGrey, #D9D9D9);
+                background-color: var(--dialog-scrollBarTrackColor);
                 border-radius: 3px;
               }
               ::-webkit-scrollbar-thumb {
-                background-color: var(--darkGrey, #666666);
+                background-color: var(--dialog-scrollBarThumbColor);
                 border-radius: 3px;
               }
             }

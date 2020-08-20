@@ -2,11 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Example } from 'src/app/model/example';
 import { ExampleService } from 'src/app/service/example.service';
 import { AccordionDefaultComponent } from '../accordion-default/accordion-default.component';
-import { AccordionAlternativeComponent } from '../accordion-alternative/accordion-alternative.component';
 import { AccordionDisabledComponent } from '../accordion-disabled/accordion-disabled.component';
 import { AccordionAssistiveComponent } from '../accordion-assistive/accordion-assistive.component';
 import { AccordionIconComponent } from '../accordion-icon/accordion-icon.component';
-import { AccordionDarkComponent } from '../accordion-dark/accordion-dark.component';
 import { AccordionControlledComponent } from '../accordion-controlled/accordion-controlled.component';
 
 @Component({
@@ -54,24 +52,11 @@ export class AccordionExampleComponent implements OnInit {
         }));
       });
     this.exampleService
-      .getCodeExample("accordion/accordion-alternative/accordion-alternative.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Alternative Accordion',
-          component: AccordionAlternativeComponent,
-          selector: "Accordion_example_3",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-    this.exampleService
       .getCodeExample("accordion/accordion-disabled/accordion-disabled.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Disabled Accordion',
           component: AccordionDisabledComponent,
-          selector: "Accordion_example_4",
+          selector: "Accordion_example_3",
           examples: [
             resp1[0],
             resp1[1],
@@ -84,7 +69,7 @@ export class AccordionExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Accordion with assistive text',
           component: AccordionAssistiveComponent,
-          selector: "Accordion_example_5",
+          selector: "Accordion_example_4",
           examples: [
             resp1[0],
             resp1[1],
@@ -97,20 +82,7 @@ export class AccordionExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Accordion with icon',
           component: AccordionIconComponent,
-          selector: "Accordion_example_6",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-    this.exampleService
-      .getCodeExample("accordion/accordion-dark/accordion-dark.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Dark theme Accordion',
-          component: AccordionDarkComponent,
-          selector: "Accordion_example_7",
+          selector: "Accordion_example_5",
           examples: [
             resp1[0],
             resp1[1],

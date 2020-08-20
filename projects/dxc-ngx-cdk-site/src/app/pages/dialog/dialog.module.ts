@@ -15,6 +15,9 @@ import { DialogImportComponent } from '../../components/examples/dialog/dialog-i
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { DialogApiComponent } from '../../components/examples/dialog/dialog-api/dialog-api.component';
+import { DialogThemeComponent } from '../../components/examples/dialog/dialog-theme/dialog-theme.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DialogDefaultComponent,
     DialogModalComponent,
     DialogCloseComponent,
-    DialogImportComponent
+    DialogImportComponent,
+    DialogApiComponent,
+    DialogThemeComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +41,8 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     DialogTablePropertiesComponent,
@@ -45,7 +51,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DialogDefaultComponent,
     DialogModalComponent,
     DialogCloseComponent,
-    DialogImportComponent
+    DialogImportComponent,
+    DialogApiComponent,
+    DialogThemeComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

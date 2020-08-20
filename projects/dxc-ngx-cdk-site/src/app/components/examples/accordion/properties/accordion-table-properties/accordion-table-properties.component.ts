@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'app-accordion-table-properties',
+  selector: 'accordion-table-properties',
   templateUrl: './accordion-table-properties.component.html',
   styleUrls: ['./accordion-table-properties.component.scss']
 })

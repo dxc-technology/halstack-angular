@@ -3,6 +3,8 @@ import { Section } from "../../model/sections";
 import {DialogTablePropertiesComponent} from "../../components/examples/dialog/properties/dialog-table-properties.component";
 import {DialogExampleComponent} from "../../components/examples/dialog/dialog-example/dialog-example.component";
 import { DialogImportComponent } from '../../components/examples/dialog/dialog-import/dialog-import.component';
+import { DialogApiComponent } from '../../components/examples/dialog/dialog-api/dialog-api.component';
+import { DialogThemeComponent } from '../../components/examples/dialog/dialog-theme/dialog-theme.component';
 
 @Component({
   selector: "app-dialog",
@@ -22,16 +24,16 @@ export class DialogComponent implements OnInit {
     this.sections.push(
       {
         id: 0,
-        label: "PROPERTIES",
-        selector: "examples-properties-dates",
-        component: DialogTablePropertiesComponent
+        label: "API",
+        selector: "dialog-api",
+        component: DialogApiComponent
       }
       ,
       {
         id: 1,
-        label: "MODULE",
-        selector: "dialog-import",
-        component: DialogImportComponent
+        label: "THEMING",
+        selector: "dialog-theme",
+        component: DialogThemeComponent
       }
       ,
       {

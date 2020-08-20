@@ -4,11 +4,10 @@ import { ExampleService } from "src/app/service/example.service";
 import { SpinnerSmallComponent } from '../spinner-small/spinner-small.component';
 import { SpinnerUndeterminedComponent } from "../spinner-undetermined/spinner-undetermined.component";
 import { SpinnerDeterminedComponent } from '../spinner-determined/spinner-determined.component';
-import { SpinnerThemedComponent } from '../spinner-themed/spinner-themed.component';
 import { SpinnerOverlayComponent } from '../spinner-overlay/spinner-overlay.component';
 
 @Component({
-  selector: "app-spinner-example",
+  selector: "spinner-example",
   templateUrl: "./spinner-example.component.html",
   styleUrls: ["./spinner-example.component.scss"]
 })
@@ -77,21 +76,6 @@ export class SpinnerExampleComponent implements OnInit {
 
       this.exampleService
       .getCodeExample(
-        "spinner/spinner-themed/spinner-themed.component"
-      )
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Themed Spinner",
-            component: SpinnerThemedComponent,
-            selector: "example4",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-      this.exampleService
-      .getCodeExample(
         "spinner/spinner-overlay/spinner-overlay.component"
       )
       .subscribe(resp1 => {
@@ -99,7 +83,7 @@ export class SpinnerExampleComponent implements OnInit {
           this.exampleService.generateExample({
             title: "Spinner with Overlay",
             component: SpinnerOverlayComponent,
-            selector: "example5",
+            selector: "example4",
             examples: [resp1[0], resp1[1], resp1[2]]
           })
         );

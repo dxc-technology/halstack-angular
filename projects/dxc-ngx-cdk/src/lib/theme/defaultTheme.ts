@@ -19,6 +19,7 @@ const colors = {
   disableDark: "#959595",
   purple: "#8800F6",
   blue: "#005FCC",
+  linkBlue: "#006BF6",
   grey: "#F8F8F8"
 };
 
@@ -161,7 +162,8 @@ export const defaultTheme: Theme = {
     "link":{
       "fontColor": colors.blue,
       "visitedColor": colors.purple,
-      "disabledColor": colors.lightGrey
+      "disabledColor": colors.lightGrey,
+      "hoverColor": colors.linkBlue
     },
     "text":{
       "color": colors.black,

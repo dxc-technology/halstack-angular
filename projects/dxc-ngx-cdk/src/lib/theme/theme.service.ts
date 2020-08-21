@@ -32,24 +32,8 @@ export class ThemeService {
           }
         }
       }
-      this.checkSpecialProperty(this.theme);
     }
     this.themeChange.emit(this.theme);
-  }
-
-  private checkSpecialProperty(theme){
-    if(theme.properties["select"].hasOwnProperty("selectedOptionBackgroundColor")){
-      this.theme.properties["select"]["hoverOptionBackgroundColor"] = theme.properties["select"]["selectedOptionBackgroundColor"] + "57";
-    }
-    if(theme.properties["autocomplete"].hasOwnProperty("selectedOptionBackgroundColor")){
-      this.theme.properties["autocomplete"]["hoverOptionBackgroundColor"] = theme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57";
-    }
-    if(theme.properties["accordion"].hasOwnProperty("arrowColor")){
-      this.theme.properties["accordion"]["hoverBackgroundColor"] = theme.properties["accordion"]["arrowColor"] + "57";
-    }
-    if(theme.properties["dropdown"].hasOwnProperty("dropdownBackgroundColor")){
-      this.theme.properties["dropdown"]["hoverBackgroundOption"] = theme.properties["dropdown"]["dropdownBackgroundColor"] + "57";
-    }
   }
 
   private setDefaultTheme(newTheme: Theme) {

@@ -154,7 +154,7 @@ export const defaultTheme: Theme = {
       "color": colors.black,
       "invalidColor": colors.darkRed,
       "focusColor": colors.blue,
-      "hoverOptionBackgroundColor": customTheme.properties["select"]["selectedOptionBackgroundColor"] + "57"
+      "hoverOptionBackgroundColor": "57"
     },
     "slider":{
       "totalLine": 0.34,
@@ -201,7 +201,7 @@ export const defaultTheme: Theme = {
       "pickerBackgroundColor": colors.white,
       "pickerTextColor": colors.black,
       "pickerActualDate": colors.lightGrey,
-      "pickerHoverDateBackgroundColor": customTheme.properties["date"]["pickerSelectedDateBackgroundColor"] + "57",
+      "pickerHoverDateBackgroundColor": "57",
       "pickerHoverDateTextColor": colors.black,
       "invalidColor": colors.darkRed,
       "focusColor": colors.blue
@@ -214,7 +214,7 @@ export const defaultTheme: Theme = {
       "totalLineOpacity": 0.34
     },
     "autocomplete":{
-      "hoverOptionBackgroundColor": customTheme.properties["autocomplete"]["selectedOptionBackgroundColor"] + "57",
+      "hoverOptionBackgroundColor": "57",
       "hoverOptionColor": colors.black,
       "scrollBarThumbColor": colors.darkGrey,
       "scrollBarTrackColor": colors.lightGrey
@@ -229,7 +229,7 @@ export const defaultTheme: Theme = {
       "overlayColor": colors.black + "b3"
     },
     "tabs":{
-      "backgroundColor": customTheme.properties["tabs"]["selectedBackgroundColor"] + "57",
+      "backgroundColor": "57",
       "underlineColor": colors.lightGrey,
       "fontColor": colors.black,
       "disabled": 0.34,
@@ -245,7 +245,7 @@ export const defaultTheme: Theme = {
     "accordion":{
       "fontColor": colors.darkGrey,
       "backgroundColor": colors.white,
-      "hoverBackgroundColor": customTheme.properties["accordion"]["arrowColor"] + "57",
+      "hoverBackgroundColor": "57",
       "hoverFontColor": colors.black,
       "disabled": 0.34
     },
@@ -260,7 +260,7 @@ export const defaultTheme: Theme = {
       "dropdownBackgroundColor": colors.white,
       "dropdownFontColor": colors.black,
       "hoverBackgroundOption": colors.white + "57",
-      "hoverBackgroundColor": customTheme.properties["dropdown"]["backgroundColor"] + "CC",
+      "hoverBackgroundColor": "CC",
       "disabled": 0.34,
       "scrollBarThumbColor": colors.darkGrey,
       "scrollBarTrackColor": colors.lightGrey

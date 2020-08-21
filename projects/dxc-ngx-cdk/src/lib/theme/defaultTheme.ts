@@ -92,9 +92,9 @@ export const customTheme: Theme = {
       "hamburguerColor": colors.white,
     },
     "tabs":{
-      "selectedBackgroundColor": colors.black,
-      "selectedUnderlinedColor": colors.yellow,
-      "selectedColor": colors.white
+      "selectedBackgroundColor": "transparent",
+      "selectedUnderlinedColor": colors.black,
+      "selectedColor": colors.black
     },
     "wizard":{
       "selectedBackgroundColor": colors.yellow,
@@ -104,8 +104,16 @@ export const customTheme: Theme = {
       "arrowColor": colors.darkGrey
     },
     "dropdown":{
-      "backgroundColor": colors.darkRed,
+      "backgroundColor": colors.white,
       "fontColor": colors.black
+    },
+    "table":{
+      "headerBackgroundColor": colors.black,
+      "headerFontColor": colors.white
+    },
+    "paginator":{
+      "paginatorBackgroundColor": colors.darkWhite,
+      "paginatorFontColor": colors.black
     }
   }
 };
@@ -206,10 +214,11 @@ export const defaultTheme: Theme = {
       "overlayColor": colors.black + "b3"
     },
     "tabs":{
-      "backgroundColor": 0.34,
+      "backgroundColor": customTheme.properties["tabs"]["selectedBackgroundColor"] + "57",
       "underlineColor": colors.lightGrey,
       "fontColor": colors.black,
-      "disabled": 0.34
+      "disabled": 0.34,
+      "focusColor": colors.blue
     },
     "wizard":{
       "borderColor": colors.black,
@@ -240,6 +249,11 @@ export const defaultTheme: Theme = {
       "disabled": 0.34,
       "scrollBarThumbColor": colors.darkGrey,
       "scrollBarTrackColor": colors.lightGrey
+    },
+    "table":{
+      "separatorColor": colors.darkGrey,
+      "bodyBackgroundColor": colors.white,
+      "bodyFontColor": colors.black
     }
   }
 };

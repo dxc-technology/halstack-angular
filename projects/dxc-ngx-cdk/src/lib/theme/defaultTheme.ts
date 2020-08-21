@@ -168,7 +168,8 @@ export const defaultTheme: Theme = {
       "uncheckedThumbBackgroundColor": colors.white,
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
-      "requiredColor": colors.darkRed
+      "requiredColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "link":{
       "fontColor": colors.blue,

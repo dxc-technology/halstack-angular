@@ -79,6 +79,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--switch-uncheckedTrackBackgroundColor": theme.properties["switch"]["uncheckedTrackBackgroundColor"],
       "--switch-disabledBackgroundColor": theme.properties["switch"]["disabledBackgroundColor"],
       "--switch-requiredColor": theme.properties["switch"]["requiredColor"],
+      "--switch-focusColor": theme.properties["switch"]["focusColor"],
       "--box-backgroundColor": theme.properties["box"]["backgroundColor"],
       "--chip-backgroundColor": theme.properties["chip"]["backgroundColor"],
       "--chip-outlinedColor": theme.properties["chip"]["outlinedColor"],

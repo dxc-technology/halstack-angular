@@ -42,28 +42,37 @@
     }
 
     &.mat-tab-disabled {
-      opacity: 0.5 !important;
+      opacity: var(--tabs-disabled) !important;
       cursor: not-allowed;
+      pointer-events: all !important;
     }
   }
 
   .filled-tabs {
     ::ng-deep {
       .mat-tab-label {
+        opacity: 1;
+        background: var(--tabs-backgroundColor) 0% 0% no-repeat padding-box;
+        .dxc-tab-label span {
+          color: var(--tabs-fontColor);
+          opacity: 1;
+        }
+        &.mat-tab-label-active {
+          background-color: var(--tabs-selectedBackgroundColor);
+          .dxc-tab-label span {
+            color: var(--tabs-selectedColor);
+            opacity: 1;
+          }
+        }
         .dxc-tab-label span:not(.show-dot) {
           letter-spacing: 1.43px;
           opacity: 1;
           white-space: normal;
         }
-        &:hover {
-          opacity: 0.8;
-        }
       }
-    }
-  }
-  .underlined-tabs {
-    .mat-tab-label:not(.mat-tab-label-active) {
-      opacity: 0.5;
+      .mat-ink-bar {
+        background-color: var(--tabs-selectedUnderlinedColor);
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
-import {DropdownTablePropertiesComponent } from "../../components/examples/dropdown/properties/dropdown-table-properties.component";
 import {DropdownExampleComponent} from '../../components/examples/dropdown/dropwdown-example/dropdown-example.component';
-import { DropdownImportComponent } from '../../components/examples/dropdown/dropdown-import/dropdown-import.component';
+import { DropdownApiComponent } from '../../components/examples/dropdown/dropdown-api/dropdown-api.component';
+import { DropdownThemeComponent } from '../../components/examples/dropdown/dropdown-theme/dropdown-theme.component';
 
 @Component({
   selector: "app-dropdown",
@@ -22,16 +22,16 @@ export class DropdownComponent implements OnInit {
     this.sections.push(
       {
         id: 0,
-        label: "PROPERTIES",
-        selector: "examples-properties-dates",
-        component: DropdownTablePropertiesComponent
+        label: "API",
+        selector: "dropdown-api",
+        component: DropdownApiComponent
       }
       ,
       {
         id: 1,
-        label: "MODULE",
-        selector: "dropdown-import",
-        component: DropdownImportComponent
+        label: "THEMING",
+        selector: "dropdown-theme",
+        component: DropdownThemeComponent
       }
       ,
       {

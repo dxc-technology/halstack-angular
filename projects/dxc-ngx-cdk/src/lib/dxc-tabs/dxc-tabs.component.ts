@@ -14,27 +14,22 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: "dxc-tabs",
   templateUrl: "./dxc-tabs.component.html",
   styleUrls: [
-    "./dxc-tabs.component.scss",
-    "./dxc-light-tabs.scss",
-    "./dxc-dark-tabs.scss"
+    "./dxc-tabs.component.scss"
   ],
   providers: [CssUtils]
 })
 export class DxcTabsComponent implements OnChanges {
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
   @HostBinding("class.label-icons") allTabWithLabelAndIcon: boolean = false;
 
   //Default values
   @Input() mode: string = "filled";
-  @Input() theme: string = "light";
-  @Input() disableRipple: boolean = false;
   @Input() margin: any;
 
   @Input()
@@ -52,21 +47,13 @@ export class DxcTabsComponent implements OnChanges {
   protected tabs: QueryList<DxcTabComponent>;
   defaultInputs = new BehaviorSubject<any>({
     mode: "filled",
-    theme: "light",
-    disableRipple: false,
     margin: null
   });
-  constructor(private utils: CssUtils) {}
+  
+  constructor(private utils: CssUtils,private _element: ElementRef) {
+  }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
-  
     this.renderedActiveTabIndex = this.activeTabIndex;
     if (this.tabs && this.tabs.length > 0) {
       this.generateTabs();
@@ -83,13 +70,6 @@ export class DxcTabsComponent implements OnChanges {
   ngOnInit() {
     this.renderedActiveTabIndex = this.activeTabIndex;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
   }
 
   public onSelectedTabChangeHandler($event) {
@@ -105,13 +85,7 @@ export class DxcTabsComponent implements OnChanges {
   public ngAfterViewInit() {
     this.generateTabs();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
+    this.insertUnderline();
   }
 
   private generateTabs() {
@@ -129,10 +103,23 @@ export class DxcTabsComponent implements OnChanges {
     this.tabGroup.ngAfterContentInit();
   }
 
+  insertUnderline(){
+    let tabList = this._element.nativeElement.getElementsByClassName("mat-tab-list")[0];
+    tabList.insertAdjacentHTML('beforeend', '<div class="underline"></div>');
+  }
+
   getDynamicStyle(inputs) {
     return css`
+      .mat-tab-list .underline{
+        height: 2px;
+        width: 100%;
+        background-color: var(--tabs-underlineColor);
+      }
       .mat-tab-group {
         ${this.utils.getMargins(inputs.margin)}
+        .mat-tab-header{
+          background-color: white;
+        }
       }
       .mat-tab-list .mat-tab-label {
         height: auto !important;
@@ -141,6 +128,11 @@ export class DxcTabsComponent implements OnChanges {
         padding-left: 20px;
         opacity: 1;
         min-width: 180px;
+
+        &.cdk-focused{
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--tabs-focusColor);
+        }
 
         .mat-tab-label-content {
           font-size: 16px;

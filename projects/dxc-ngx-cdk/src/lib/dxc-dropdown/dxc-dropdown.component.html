@@ -1,13 +1,15 @@
 <button
+  disableRipple
   #dropdownButton
   mat-button
   (menuClosed)="isMenuOpened()"
   (menuOpened)="isMenuOpened()"
   [matMenuTriggerFor]="menu"
-  [disableRipple]="true"
   [class]="triggerStyles"
   #menuTrigger="matMenuTrigger"
-  (mouseenter)="buttonEnter(menuTrigger)" (mouseleave)="buttonLeave(menuTrigger, dropdownButton)"
+  (mouseenter)="buttonEnter(menuTrigger)" 
+  (mouseleave)="buttonLeave(menuTrigger, dropdownButton)"
+  (click)="updateCss()"
   >
 
   <div>
@@ -22,8 +24,8 @@
 </button>
 
 <mat-menu
+  disableRipple
   #menu="matMenu"
-  disableRipple="disableRipple"
   [class] = "menuOptions"
   [hasBackdrop]="false"
   >

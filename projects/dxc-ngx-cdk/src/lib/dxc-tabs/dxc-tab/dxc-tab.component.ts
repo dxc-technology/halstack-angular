@@ -18,7 +18,6 @@ import { MatTab } from "@angular/material";
 export class DxcTabComponent implements OnChanges {
   //Default values
   @Input() label: string;
-  @Input() theme: string = "light";
   @Input() iconSrc: string;
   @Input() disabled: boolean = false;
   @Input() id: number;

@@ -102,11 +102,9 @@ import { FooterTablePropertiesComponent } from "../examples/footer/properties/fo
 import { FooterDefaultComponent } from "../examples/footer/footer-default/footer-default.component";
 import { FooterCustomContentComponent } from "../examples/footer/footer-custom-content/footer-custom-content.component";
 import { DropdownDefaultComponent } from "../examples/dropdown/dropdown-default/dropdown-default.component";
-import { DropdownOutlinedComponent } from "../examples/dropdown/dropdown-outlined/dropdown-outlined.component";
 import { DropdownTablePropertiesComponent } from "../examples/dropdown/properties/dropdown-table-properties.component";
 import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example/dropdown-example.component";
 import { DropdownIconsComponent } from "../examples/dropdown/dropdown-icons/dropdown-icons.component";
-import { DropdownDarkComponent } from "../examples/dropdown/dropdown-dark/dropdown-dark.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
 import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog-example.component";
 import { DialogDefaultComponent } from "../examples/dialog/dialog-default/dialog-default.component";
@@ -261,6 +259,12 @@ import { AccordionApiComponent } from '../examples/accordion/accordion-api/accor
 import { AccordionThemeComponent } from '../examples/accordion/accordion-theme/accordion-theme.component';
 import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.component';
 import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-theme.component';
+import { DropdownThemeComponent } from '../examples/dropdown/dropdown-theme/dropdown-theme.component';
+import { DropdownApiComponent } from '../examples/dropdown/dropdown-api/dropdown-api.component';
+import { TableThemeComponent } from '../examples/table/table-theme/table-theme.component';
+import { TableApiComponent } from '../examples/table/table-api/table-api.component';
+import { PaginatorThemeComponent } from '../examples/paginator/paginator-theme/paginator-theme.component';
+import { PaginatorApiComponent } from '../examples/paginator/paginator-api/paginator-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -381,9 +385,7 @@ import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-the
     DropdownTablePropertiesComponent,
     DropdownExampleComponent,
     DropdownDefaultComponent,
-    DropdownOutlinedComponent,
     DropdownIconsComponent,
-    DropdownDarkComponent,
     DialogTablePropertiesComponent,
     DialogExampleComponent,
     DialogDefaultComponent,
@@ -525,7 +527,13 @@ import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-the
     AccordionApiComponent,
     AccordionThemeComponent,
     DialogApiComponent,
-    DialogThemeComponent
+    DialogThemeComponent,
+    DropdownApiComponent,
+    DropdownThemeComponent,
+    TableApiComponent,
+    TableThemeComponent,
+    PaginatorApiComponent,
+    PaginatorThemeComponent
   ]
 })
 export class DynamicModule {}

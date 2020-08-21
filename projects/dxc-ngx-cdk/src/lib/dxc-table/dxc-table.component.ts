@@ -47,13 +47,13 @@ export class DxcTableComponent {
       table {
         border-collapse: collapse;
         width: 100%;
-      
         & tr {
-          border-bottom: 1px solid var(--lightGrey, #D9D9D9);
+          border-bottom: 1px solid var(--table-separatorColor);
         }
 
         & td {
-          color: var(--darkGrey, #666666);
+          background-color: var(--table-bodyBackgroundColor);
+          color: var(--table-bodyFontColor);
           min-height: 48px;
         }
 
@@ -71,8 +71,8 @@ export class DxcTableComponent {
           text-transform: uppercase;
           font-size: 14px;
           font-weight: 100;
-          background-color: var(--black, black);
-          color: var(--white, white);
+          background-color: var(--table-headerBackgroundColor);
+          color: var(--table-headerFontColor);
         }
 
         & th:first-child {

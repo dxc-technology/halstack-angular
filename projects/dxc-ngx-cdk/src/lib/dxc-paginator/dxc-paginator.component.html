@@ -4,7 +4,7 @@
             {{minItemsPerPage}} to {{maxItemsPerPage}} of {{totalItems}}
         </span>
         <dxc-button *ngIf="showFirst"
-                mode="flat"
+                mode="text"
                 (onClick)="onFirstHandler($event)"
                 size="small"
                 [margin]="buttonMargin"
@@ -12,7 +12,7 @@
                 [disabled]="currentPageInternal === 1"
         ></dxc-button>
         <dxc-button *ngIf="showPrev"
-                mode="flat"
+                mode="text"
                 (onClick)="onPrevHandler($event)"
                 size="small"
                 [margin]="buttonMargin"
@@ -23,7 +23,7 @@
                  Page: {{ currentPageInternal }} of {{ totalPages }}
         </span>
         <dxc-button *ngIf="showNext"
-                mode="flat"
+                mode="text"
                 (onClick)="onNextHandler($event)"
                 size="small"
                 [margin]="buttonMargin"
@@ -31,7 +31,7 @@
                 [disabled]="currentPageInternal === totalPages"
         ></dxc-button>
         <dxc-button *ngIf="showLast"
-                mode="flat"
+                mode="text"
                 (onClick)="onLastHandler($event)"
                 size="small"
                 [margin]="buttonMargin"

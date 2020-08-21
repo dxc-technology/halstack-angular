@@ -9,7 +9,8 @@
 .paginator-container {
   display: flex;
   height: 64px;
-  background-color: #eeeeee;
+  background-color: var(--paginator-paginatorBackgroundColor);
+  color: var(--paginator-paginatorFontColor);
   button {
     &:disabled {
       background-color: transparent !important;

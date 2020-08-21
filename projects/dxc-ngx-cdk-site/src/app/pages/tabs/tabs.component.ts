@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
-import {TabsTablePropertiesComponent} from "../../components/examples/tabs/properties/tabs-table-properties.component";
 import {TabsExampleComponent} from '../../components/examples/tabs/tabs-example/tabs-example.component';
-import { TabsImportComponent } from '../../components/examples/tabs/tabs-import/tabs-import.component';
+import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
+import { TabsThemeComponent } from '../../components/examples/tabs/tabs-theme/tabs-theme.component';
 
 @Component({
   selector: "app-tabs",
@@ -22,16 +22,16 @@ export class TabsComponent implements OnInit {
     this.sections.push(
       {
         id: 0,
-        label: "PROPERTIES",
-        selector: "app-tabs-table-properties",
-        component: TabsTablePropertiesComponent
+        label: "API",
+        selector: "tabs-api",
+        component: TabsApiComponent
       }
       ,
       {
         id: 1,
-        label: "MODULE",
-        selector: "tabs-import",
-        component: TabsImportComponent
+        label: "THEMING",
+        selector: "tabs-theme",
+        component: TabsThemeComponent
       },
       {
         id: 2,

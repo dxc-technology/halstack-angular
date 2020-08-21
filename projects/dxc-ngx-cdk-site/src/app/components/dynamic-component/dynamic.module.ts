@@ -132,8 +132,6 @@ import { TabbedSectionNotesComponent } from '../examples/tabbed-section/properti
 import { TabsTablePropertiesComponent } from "../examples/tabs/properties/tabs-table-properties.component";
 import { TabsDefaultComponent } from "../examples/tabs/tabs-default/tabs-default.component";
 import { TabsExampleComponent } from "../examples/tabs/tabs-example/tabs-example.component";
-import { TabsThemedComponent } from "../examples/tabs/tabs-themed/tabs-themed.component";
-import { TabsUnderlinedComponent } from "../examples/tabs/tabs-underlined/tabs-underlined.component";
 import { TabsContentComponent } from "../examples/tabs/tabs-content/tabs-content.component";
 import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
@@ -265,6 +263,8 @@ import { TableThemeComponent } from '../examples/table/table-theme/table-theme.c
 import { TableApiComponent } from '../examples/table/table-api/table-api.component';
 import { PaginatorThemeComponent } from '../examples/paginator/paginator-theme/paginator-theme.component';
 import { PaginatorApiComponent } from '../examples/paginator/paginator-api/paginator-api.component';
+import { TabsThemeComponent } from '../examples/tabs/tabs-theme/tabs-theme.component';
+import { TabsApiComponent } from '../examples/tabs/tabs-api/tabs-api.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -416,8 +416,6 @@ import { PaginatorApiComponent } from '../examples/paginator/paginator-api/pagin
     TabsTablePropertiesComponent,
     TabsDefaultComponent,
     TabsExampleComponent,
-    TabsThemedComponent,
-    TabsUnderlinedComponent,
     TabsContentComponent,
     TabsUncontrolledComponent,
     HeaderExampleComponent,
@@ -533,7 +531,9 @@ import { PaginatorApiComponent } from '../examples/paginator/paginator-api/pagin
     TableApiComponent,
     TableThemeComponent,
     PaginatorApiComponent,
-    PaginatorThemeComponent
+    PaginatorThemeComponent,
+    TabsApiComponent,
+    TabsThemeComponent
   ]
 })
 export class DynamicModule {}

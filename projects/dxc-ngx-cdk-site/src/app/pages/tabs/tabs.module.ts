@@ -9,13 +9,14 @@ import { TabsComponent } from "./tabs.component";
 import { TabsTablePropertiesComponent } from "src/app/components/examples/tabs/properties/tabs-table-properties.component";
 import { TabsDefaultComponent } from "../../components/examples/tabs/tabs-default/tabs-default.component";
 import { TabsExampleComponent } from "../../components/examples/tabs/tabs-example/tabs-example.component";
-import { TabsThemedComponent } from "../../components/examples/tabs/tabs-themed/tabs-themed.component";
-import { TabsUnderlinedComponent } from "../../components/examples/tabs/tabs-underlined/tabs-underlined.component";
 import { TabsContentComponent } from "../../components/examples/tabs/tabs-content/tabs-content.component";
 import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
 import { TabsImportComponent } from '../../components/examples/tabs/tabs-import/tabs-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { TabsThemeComponent } from '../../components/examples/tabs/tabs-theme/tabs-theme.component';
+import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,11 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     TabsTablePropertiesComponent,
     TabsDefaultComponent,
     TabsExampleComponent,
-    TabsThemedComponent,
-    TabsUnderlinedComponent,
     TabsContentComponent,
     TabsUncontrolledComponent,
-    TabsImportComponent
+    TabsImportComponent,
+    TabsApiComponent,
+    TabsThemeComponent
   ],
   imports: [
     CommonModule,
@@ -38,17 +39,18 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    ColorPreviewModule
   ],
   exports: [
     TabsComponent,
     TabsTablePropertiesComponent,
     TabsDefaultComponent,
     TabsExampleComponent,
-    TabsThemedComponent,
-    TabsUnderlinedComponent,
     TabsContentComponent,
-    TabsImportComponent
+    TabsImportComponent,
+    TabsApiComponent,
+    TabsThemeComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

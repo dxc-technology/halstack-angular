@@ -4,7 +4,7 @@ import {
   Input,
   Output,
   HostBinding,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
@@ -14,7 +14,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-checkbox",
   templateUrl: "./dxc-checkbox.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcCheckboxComponent implements OnInit {
   @Input() value: string;
@@ -27,12 +27,12 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
-  
+
   @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
 
-  renderedChecked : boolean;
+  renderedChecked: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -44,7 +44,7 @@ export class DxcCheckboxComponent implements OnInit {
     id: null,
     labelPosition: "before",
     margin: null,
-    size: "fitContent"
+    size: "fitContent",
   });
 
   sizes = {
@@ -52,12 +52,12 @@ export class DxcCheckboxComponent implements OnInit {
     medium: "240px",
     large: "480px",
     fillParent: "100%",
-    fitContent: "unset"
+    fitContent: "unset",
   };
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.renderedChecked = this.checked;
-    
+
     this.labelPosition === "after" ? "after" : "before";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -72,7 +72,7 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.renderedChecked = this.checked;   
+    this.renderedChecked = this.checked;
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     if (this.required === "") {
@@ -90,10 +90,10 @@ export class DxcCheckboxComponent implements OnInit {
 
   onValueChange($event: any) {
     this.onChange.emit($event.checked);
-    
-    if (this.checked === undefined || this.checked === null){
+
+    if (this.checked === undefined || this.checked === null) {
       this.renderedChecked = $event.checked;
-    }else{
+    } else {
       $event.source.checked = this.renderedChecked;
       $event.source._checked = this.renderedChecked;
       $event.source._inputElement.nativeElement.checked = this.renderedChecked;
@@ -111,9 +111,9 @@ export class DxcCheckboxComponent implements OnInit {
     `;
   }
 
-  setTextAlign(labelPosition){
-    if(labelPosition==="before") {
-      return css `
+  setTextAlign(labelPosition) {
+    if (labelPosition === "before") {
+      return css`
         text-align: end;
       `;
     }
@@ -128,26 +128,23 @@ export class DxcCheckboxComponent implements OnInit {
       )}
       display: inline-flex;
       vertical-align: top;
-      mat-checkbox:focus {
-                outline: -webkit-focus-ring-color auto 1px;
-                outline-color: var(--checkbox-focusColor);
-              }
-      .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, 
-      .mat-checkbox-checked.mat-accent .mat-checkbox-background{
-          background: var(--checkbox-color) !important;
+      .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+      .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background: var(--checkbox-color) !important;
       }
-      mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background:focus, 
-      mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame:focus{
-        outline: -webkit-focus-ring-color auto 1px;
-        outline-color: var(--checkbox-focusColor);
+      
+      .mat-checkbox:not(.mat-checkbox-disabled).mat-accent
+        .mat-checkbox-ripple
+        .mat-ripple-element {
+        background-color: transparent;
       }
       mat-checkbox {
-        display: inline-flex; 
+        display: inline-flex;
         width: 100%;
-        &.cdk-focused:not(.mat-checkbox-disabled){
+        &.cdk-focused:not(.mat-checkbox-disabled) {
           label.mat-checkbox-layout {
             .mat-checkbox-inner-container {
-              .mat-checkbox-background{
+              .mat-checkbox-background {
                 outline: -webkit-focus-ring-color auto 1px;
                 outline-color: var(--checkbox-focusColor);
               }
@@ -186,17 +183,15 @@ export class DxcCheckboxComponent implements OnInit {
           }
         }
         &.mat-checkbox-disabled {
-          cursor: not-allowed; 
+          cursor: not-allowed;
           .mat-checkbox-inner-container {
             opacity: var(--checkbox-opacityDisabled);
           }
           label.mat-checkbox-layout span.mat-checkbox-label {
             opacity: var(--checkbox-opacityDisabledCheckColor);
           }
-        }   
+        }
       }
     `;
   }
-
-
 }

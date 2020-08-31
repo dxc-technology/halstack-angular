@@ -183,7 +183,8 @@ export const defaultTheme: Theme = {
       "disabledLabelColor": 0.34,
       "disabledUnderlinedColor": 0.34,
       "disabledAssistiveTextColor": 0.34,
-      "invalidColor": colors.darkRed
+      "invalidColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "box":{
       "backgroundColor": colors.white

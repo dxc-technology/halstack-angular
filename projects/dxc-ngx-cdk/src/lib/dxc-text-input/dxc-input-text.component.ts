@@ -7,7 +7,7 @@ import {
   EventEmitter,
   SimpleChanges,
   ChangeDetectionStrategy,
-  ViewChild
+  ViewChild,
 } from "@angular/core";
 import { ErrorStateMatcher } from "@angular/material";
 import { css } from "emotion";
@@ -17,7 +17,7 @@ import {
   ElementRef,
   OnInit,
   AfterViewChecked,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { FormControl } from "@angular/forms";
 
@@ -25,7 +25,7 @@ import { FormControl } from "@angular/forms";
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcTextInputComponent
   implements OnInit, OnChanges, AfterViewChecked {
@@ -55,12 +55,17 @@ export class DxcTextInputComponent
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
+  prefixIndex = 0;
+  suffixIndex = 0;
+  prefixPointer = true;
+  suffixPointer = true;
+
   loading = new BehaviorSubject(false);
   isError = new BehaviorSubject(false);
   renderedValue = "";
   private _valueChangeTrack: boolean;
   options;
-  type:string;
+  type: string;
   dxcAutocompleteMenu = this.getAutoCompleteStyle();
 
   @ViewChild("dxcSingleInput", { static: false }) singleInput: ElementRef;
@@ -73,7 +78,7 @@ export class DxcTextInputComponent
     small: "42px",
     medium: "240px",
     large: "480px",
-    fillParent: "100%"
+    fillParent: "100%",
   };
 
   defaultInputs = new BehaviorSubject<any>({
@@ -91,7 +96,7 @@ export class DxcTextInputComponent
     value: null,
     margin: null,
     size: "medium",
-    isMasked: false
+    isMasked: false,
   });
 
   public formControl = new FormControl();
@@ -120,16 +125,14 @@ export class DxcTextInputComponent
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if(this.isMasked){
+    if (this.isMasked) {
       this.type = "password";
-    }
-    else{
+    } else {
       this.type = "text";
     }
-    if(this.isMasked){
+    if (this.isMasked) {
       this.type = "password";
-    }
-    else{
+    } else {
       this.type = "text";
     }
     this.isDisabled = this.disabled;
@@ -146,6 +149,16 @@ export class DxcTextInputComponent
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this._valueChangeTrack = true;
+
+    if (this.onClickSuffix.observers.length === 0) {
+      this.suffixIndex = -1;
+      this.suffixPointer = false;
+    }
+
+    if (this.onClickPrefix.observers.length === 0) {
+      this.prefixIndex = -1;
+      this.prefixPointer = false;
+    }
   }
 
   public onChanged($event: any): void {
@@ -177,7 +190,7 @@ export class DxcTextInputComponent
       Array.isArray(this.autocompleteOptions)
     ) {
       const inputValue = value.toLowerCase();
-      this.options = this.autocompleteOptions.filter(option =>
+      this.options = this.autocompleteOptions.filter((option) =>
         option.toLowerCase().includes(inputValue)
       );
     } else if (
@@ -187,12 +200,12 @@ export class DxcTextInputComponent
       this.loading.next(true);
       this.isError.next(false);
       this.autocompleteOptions(value).subscribe(
-        autocompleteOptionsList => {
+        (autocompleteOptionsList) => {
           this.options = autocompleteOptionsList;
           this.ref.markForCheck();
           this.loading.next(false);
         },
-        err => {
+        (err) => {
           this.isError.next(true);
           this.loading.next(false);
           this.ref.markForCheck();
@@ -221,12 +234,22 @@ export class DxcTextInputComponent
     this.onBlur.emit(this.renderedValue);
   }
 
-  public onClickSuffixHandler($event): void {
-    this.onClickSuffix.emit($event);
+  public onClickSuffixHandler($event: any): void {
+    if ($event.keyCode && $event.keyCode === 32) {
+      $event.preventDefault();
+      this.onClickSuffix.emit($event);
+    } else if (!$event.keyCode) {
+      this.onClickSuffix.emit($event);
+    }
   }
 
-  public onClickPrefixHandler($event): void {
-    this.onClickPrefix.emit($event);
+  public onClickPrefixHandler($event: any): void {
+    if ($event.keyCode && $event.keyCode === 32) {
+      $event.preventDefault();
+      this.onClickPrefix.emit($event);
+    } else if (!$event.keyCode) {
+      this.onClickPrefix.emit($event);
+    }
   }
 
   private setCursorSelection(input: ElementRef) {
@@ -254,10 +277,20 @@ export class DxcTextInputComponent
       display: inline-flex;
       .prefixElement {
         margin-right: 12px;
+        cursor: ${this.prefixPointer ? "pointer" : "default"};
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--text-focusColor);
+        }
       }
       .suffixElement {
         margin-left: 8px;
         margin-right: 8px;
+        cursor: ${this.suffixPointer ? "pointer" : "default"};
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--text-focusColor);
+        }
       }
       &.disabled {
         cursor: default;
@@ -291,9 +324,9 @@ export class DxcTextInputComponent
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
             opacity: var(--text-disabledLabelColor);
           }
-          .mat-form-field-wrapper{
-            .mat-form-field-flex{
-              .mat-form-field-infix input{
+          .mat-form-field-wrapper {
+            .mat-form-field-flex {
+              .mat-form-field-infix input {
                 opacity: var(--text-disabledFontColor);
               }
             }
@@ -382,14 +415,17 @@ export class DxcTextInputComponent
         background-color: var(--autocomplete-scrollBarThumbColor);
         border-radius: 3px;
       }
-      .mat-option{
+      .mat-option {
         color: var(--autocomplete-hoverOptionColor);
       }
-      .mat-option.mat-selected:not(:hover):not(.mat-option-disabled){
-        background-color: var(--autocomplete-selectedOptionBackgroundColor) !important;
+      .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
+        background-color: var(
+          --autocomplete-selectedOptionBackgroundColor
+        ) !important;
         color: var(--autocomplete-hoverOptionColor);
       }
-      .mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled){
+      .mat-option:hover:not(.mat-option-disabled),
+      .mat-option:focus:not(.mat-option-disabled) {
         background-color: var(--autocomplete-hoverOptionBackgroundColor);
         color: var(--autocomplete-hoverOptionColor);
       }

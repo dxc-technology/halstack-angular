@@ -20,4 +20,7 @@ export class TextInputPrefixSuffixComponent implements OnInit {
     this.inputValue = value;
   }
 
+  iconClick(){
+    console.log("click");
+  }
 }

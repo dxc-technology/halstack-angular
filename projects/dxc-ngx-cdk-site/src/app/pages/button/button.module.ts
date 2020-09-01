@@ -4,7 +4,7 @@ import { ButtonComponent } from './button.component';
 import { ButtonModesComponent } from '../../components/examples/button/button-modes/button-modes.component';
 import { ButtonWithIconComponent } from '../../components/examples/button/button-with-icon/button-with-icon.component';
 import { ButtonExampleComponent } from '../../components/examples/button/button-example/button-example.component';
-import { ButtonDarkThemeComponent } from '../../components/examples/button/button-dark-theme/button-dark-theme.component';
+import { ButtonDefaultComponent } from '../../components/examples/button/button-default/button-default.component';
 import { ButtonFilledParentComponent } from '../../components/examples/button/button-filled-parent/button-filled-parent.component';
 import { ButtonSizedComponent } from '../../components/examples/button/button-sized/button-sized.component';
 import { ButtonTablePropertiesComponent } from '../../components/examples/button/properties/button-table-properties/button-table-properties.component';
@@ -27,7 +27,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ButtonModesComponent,
     ButtonWithIconComponent,
     ButtonExampleComponent,
-    ButtonDarkThemeComponent,
+    ButtonDefaultComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
@@ -51,7 +51,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ButtonModesComponent,
     ButtonWithIconComponent,
     ButtonExampleComponent,
-    ButtonDarkThemeComponent,
+    ButtonDefaultComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,

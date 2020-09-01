@@ -73,6 +73,9 @@ export * from './lib/dxc-tabs/dxc-tabs.module';
 export * from './lib/dxc-text-input/dxc-input-text.component';
 export * from './lib/dxc-text-input/dxc-input-text.module';
 
+export * from './lib/dxc-textarea/dxc-textarea.component';
+export * from './lib/dxc-textarea/dxc-textarea.module';
+
 export * from './lib/dxc-upload/dxc-upload.component';
 export * from './lib/dxc-upload/dxc-upload.module';
 

@@ -153,7 +153,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--text-disabledLabelColor": theme.properties["text"]["disabledLabelColor"],
       "--text-disabledUnderlinedColor": theme.properties["text"]["disabledUnderlinedColor"],
       "--text-disabledAssistiveTextColor": theme.properties["text"]["disabledAssistiveTextColor"],
-     " --text-invalidColor": theme.properties["text"]["invalidColor"],
+      "--text-invalidColor": theme.properties["text"]["invalidColor"],
       "--card-backgroundColor": theme.properties["card"]["backgroundColor"],
       "--tag-backgroundColor": theme.properties["tag"]["backgroundColor"],
       "--dialog-overlayColor": theme.properties["dialog"]["overlayColor"],

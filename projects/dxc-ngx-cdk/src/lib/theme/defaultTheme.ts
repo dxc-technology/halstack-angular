@@ -46,13 +46,13 @@ export const customTheme: Theme = {
     },
     "radio":{
       "color": colors.black,
-      "fontColor": colors.black
+      "fontColor": "inherit"
     },
     "select":{
       "selectedOptionBackgroundColor": colors.lightGrey
     },
     "slider":{
-      "color": colors.black
+      "color": "inherit"
     },
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
@@ -181,10 +181,7 @@ export const defaultTheme: Theme = {
     "text":{
       "color": colors.black,
       "placeholderColor": colors.lightGrey,
-      "disabledFontColor": 0.34,
-      "disabledLabelColor": 0.34,
-      "disabledUnderlinedColor": 0.34,
-      "disabledAssistiveTextColor": 0.34,
+      "disabled": 0.34,
       "invalidColor": colors.darkRed
     },
     "box":{

@@ -225,8 +225,9 @@ export const defaultTheme: Theme = {
     },
     "footer":{},
     "spinner":{
-      // "text": readableColor(colors.black)
-      "totalCircleOpacity": 0.34
+      "text": "inherit",
+      "overlayColor": colors.black,
+      "overlayOpacity": 0.8
     },
     "header":{
       "hoverHamburguerColor": "29",
@@ -270,7 +271,7 @@ export const defaultTheme: Theme = {
       "scrollBarTrackColor": colors.lightGrey
     },
     "table":{
-      "separatorColor": colors.darkGrey,
+      "separatorColor": colors.lightGrey,
       "bodyBackgroundColor": colors.white,
       "bodyFontColor": colors.black
     }

@@ -237,7 +237,7 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "wizard":{
-      "fontColor": colors.black,
+      "fontColor": "inherit",
       "lineColor": colors.lightGrey,
       "disabledBackground": colors.darkWhite,
       "disabledText": colors.darkGrey

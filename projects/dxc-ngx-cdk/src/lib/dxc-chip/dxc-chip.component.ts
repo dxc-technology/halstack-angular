@@ -89,6 +89,10 @@ export class DxcChipComponent implements OnChanges {
         &:hover {
           cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
         }
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--chip-focusColor);
+        }
       }
       .suffixIcon {
         margin-left: 10px;
@@ -96,6 +100,10 @@ export class DxcChipComponent implements OnChanges {
         width: 24px;
         &:hover {
           cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
+        }
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--chip-focusColor);
         }
       }
     `;

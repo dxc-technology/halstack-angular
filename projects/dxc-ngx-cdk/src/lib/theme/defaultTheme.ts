@@ -96,7 +96,7 @@ export const customTheme: Theme = {
       "hamburguerColor": colors.white,
     },
     "tabs":{
-      "selectedBackgroundColor": "transparent",
+      "selectedBackgroundColor": colors.white,
       "selectedUnderlinedColor": colors.black,
       "selectedColor": colors.black
     },
@@ -199,7 +199,8 @@ export const defaultTheme: Theme = {
       "backgroundColor": colors.white
     },
     "chip":{
-      "disabled": 0.34
+      "disabled": 0.34,
+      "focusColor": colors.blue
     },
     "date":{
       "pickerBackgroundColor": colors.white,

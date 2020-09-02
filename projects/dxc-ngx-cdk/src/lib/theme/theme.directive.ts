@@ -88,6 +88,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--chip-backgroundColor": theme.properties["chip"]["backgroundColor"],
       "--chip-outlinedColor": theme.properties["chip"]["outlinedColor"],
       "--chip-fontColor": theme.properties["chip"]["fontColor"],
+      "--chip-focusColor": theme.properties["chip"]["focusColor"],
       "--chip-disabled": theme.properties["chip"]["disabled"],
       "--date-pickerSelectedDateBackgroundColor": theme.properties["date"]["pickerSelectedDateBackgroundColor"],
       "--date-pickerSelectedDateColor": theme.properties["date"]["pickerSelectedDateColor"],

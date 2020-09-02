@@ -1,3 +1,17 @@
-<img (click)="handlePrefrixClick()" class="prefixIcon" *ngIf="prefixIconSrc" src="{{ prefixIconSrc }}" />
+<img
+  (click)="handlePrefrixClick()"
+  tabindex="0"
+  (keydown)="handlePrefrixClick()"
+  class="prefixIcon"
+  *ngIf="prefixIconSrc"
+  src="{{ prefixIconSrc }}"
+/>
 <span class="labelContainer">{{ label }}</span>
-<img (click)="handleSuffixClick()" class="suffixIcon" *ngIf="suffixIconSrc" src="{{ suffixIconSrc }}" />
+<img
+  (click)="handleSuffixClick()"
+  tabindex="0"
+  (keydown)="handleSuffixClick()"
+  class="suffixIcon"
+  *ngIf="suffixIconSrc"
+  src="{{ suffixIconSrc }}"
+/>

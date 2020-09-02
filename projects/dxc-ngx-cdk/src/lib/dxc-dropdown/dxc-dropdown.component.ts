@@ -46,7 +46,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   triggerStyles: string;
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
     options: null,
     disableRipple: false,
     name: null,
@@ -256,6 +255,10 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
 
       &:focus {
         outline: none;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
 
       ${this.label === "" && !this.showCaret

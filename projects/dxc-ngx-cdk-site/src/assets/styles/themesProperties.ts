@@ -21,8 +21,7 @@ export const customTheme: Theme = {
       "fontColor": "#000000"
     },
     "radio":{
-      "color": "#000000",
-      "fontColor": "#000000"
+      "color": "#000000"
     },
     "select":{
       "selectedOptionBackgroundColor": "#D9D9D9"

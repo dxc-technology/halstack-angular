@@ -42,17 +42,17 @@ export const customTheme: Theme = {
     "checkbox":{
       "color": colors.yellow,
       "checkColor": colors.black,
-      
+      "fontColor": colors.black
     },
     "radio":{
       "color": colors.black,
-      "fontColor": "inherit"
+      "fontColor": colors.black
     },
     "select":{
       "selectedOptionBackgroundColor": colors.lightGrey
     },
     "slider":{
-      "color": "inherit"
+      "color": colors.black
     },
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
@@ -102,7 +102,8 @@ export const customTheme: Theme = {
     },
     "wizard":{
       "selectedBackgroundColor": colors.yellow,
-      "selectedBackgroundFont": colors.black
+      "selectedFont": colors.black,
+      "borderColor": colors.black
     },
     "accordion":{
       "arrowColor": colors.darkGrey
@@ -142,7 +143,6 @@ export const defaultTheme: Theme = {
     "checkbox":{
       "opacityDisabled": 0.34,
       "opacityDisabledCheckColor": 0.34,
-      "fontColor": "inherit",
       // "text": readableColor(colors.black)
       "focusColor": colors.blue
     },
@@ -170,8 +170,7 @@ export const defaultTheme: Theme = {
       "uncheckedThumbBackgroundColor": colors.white,
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
-      "requiredColor": colors.darkRed,
-      "focusColor": colors.blue
+      "requiredColor": colors.darkRed
     },
     "link":{
       "fontColor": colors.blue,
@@ -182,8 +181,12 @@ export const defaultTheme: Theme = {
     "text":{
       "color": colors.black,
       "placeholderColor": colors.lightGrey,
-      "disabled": 0.34,
+      "disabledFontColor": 0.34,
+      "disabledLabelColor": 0.34,
+      "disabledUnderlinedColor": 0.34,
+      "disabledAssistiveTextColor": 0.34,
       "invalidColor": colors.darkRed,
+      "disabled": 0.34,
       "focusColor": colors.blue
     },
     "box":{
@@ -238,11 +241,10 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "wizard":{
-      "borderColor": colors.black,
-      "fontColor": colors.black,
+      "fontColor": "inherit",
       "lineColor": colors.lightGrey,
       "disabledBackground": colors.darkWhite,
-      "disabledText": colors.darkGrey
+      "disabledText": "inherit"
     },
     "accordion":{
       "fontColor": colors.darkGrey,

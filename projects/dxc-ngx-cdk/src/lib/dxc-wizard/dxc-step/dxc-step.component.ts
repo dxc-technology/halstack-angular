@@ -7,15 +7,15 @@ import {
   SimpleChanges,
   Output,
   EventEmitter,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { css } from "emotion";
-import { CssUtils } from '../../utils';
-import { BehaviorSubject } from 'rxjs';
+import { CssUtils } from "../../utils";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
-  selector: 'dxc-step',
-  templateUrl: './dxc-step.component.html'
+  selector: "dxc-step",
+  templateUrl: "./dxc-step.component.html",
 })
 export class DxcStepComponent {
   @Input() label: string;
@@ -45,10 +45,10 @@ export class DxcStepComponent {
     disabled: false,
     valid: null,
     mode: "horizontal",
-    currentStep: 0
+    currentStep: 0,
   });
 
-  constructor(private utils: CssUtils) { }
+  constructor(private utils: CssUtils) {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -81,18 +81,24 @@ export class DxcStepComponent {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin: ${ inputs.isFirst ?
-          inputs.mode === "vertical" ? "0 0 25px 0" : "0 25px 0 0"
-          : inputs.isLast ? 
-          inputs.mode === "vertical" ? "25px 0 0 0" : "0 0 0 25px"
-          : inputs.mode === "vertical" ? "25px 0" : "0 25px"
-        };
+        margin: ${inputs.isFirst
+          ? inputs.mode === "vertical"
+            ? "0 0 25px 0"
+            : "0 25px 0 0"
+          : inputs.isLast
+          ? inputs.mode === "vertical"
+            ? "25px 0 0 0"
+            : "0 0 0 25px"
+          : inputs.mode === "vertical"
+          ? "25px 0"
+          : "0 25px"};
 
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
 
         &:focus {
-          outline: none;
+          padding: 2px;
+          outline: -webkit-focus-ring-color auto 1px;
         }
 
         &:hover {
@@ -110,15 +116,19 @@ export class DxcStepComponent {
         width: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
         height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
 
-        ${!inputs.isCurrent && !inputs.disabled ?
-          `border: 2px solid var(--wizard-borderColor);` :
-          ""}
+        ${!inputs.isCurrent && !inputs.disabled
+          ? `border: 2px solid var(--wizard-borderColor);`
+          : ""}
 
-        ${inputs.disabled ?
-          "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;" : ""}
+        ${inputs.disabled
+          ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
+          : ""}
 
-        ${inputs.isCurrent ? 
-          "background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box;" : ""}
+        ${inputs.isCurrent &&
+        `background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box; 
+          p {
+            color: var(--wizard-selectedFont) !important;
+          }`}
 
         border-radius: 45px;
         display: flex;
@@ -134,9 +144,11 @@ export class DxcStepComponent {
       .number {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
-        color: ${!inputs.isCurrent && !inputs.disabled ?
-          "var(--wizard-fontColor)"
-          : inputs.isCurrent ? "var(--wizard-fontColor)" : "var(--wizard-disabledText)"};
+        color: ${!inputs.isCurrent && !inputs.disabled
+          ? "var(--wizard-fontColor)"
+          : inputs.isCurrent
+          ? "var(--wizard-fontColor)"
+          : "var(--wizard-disabledText)"};
         opacity: 1;
         margin: 0;
       }
@@ -151,7 +163,9 @@ export class DxcStepComponent {
 
       .infoContainer {
         margin-left: 10px;
-        color: ${inputs.position <= inputs.currentStep ? "var(--wizard-fontColor)" : "var(--wizard-disabledText)"};
+        color: ${inputs.position <= inputs.currentStep
+          ? "var(--wizard-fontColor)"
+          : "var(--wizard-disabledText)"};
       }
 
       .label {
@@ -159,6 +173,8 @@ export class DxcStepComponent {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
         color: inherit;
+        ${inputs.position > inputs.currentStep && `opacity: 0.64;`}
+        ${inputs.disabled && `opacity: 0.34;`}
         margin: 0;
       }
 

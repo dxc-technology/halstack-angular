@@ -126,14 +126,15 @@ export const defaultTheme: Theme = {
   properties: {
     "button":{
       "primaryDisabledOpacity": 0.34,
-      "primaryActiveOpacity": 0.64,
+      "primaryActiveOpacity": "A3",
 
       "secondaryDisabledOpacity": 0.34,
-      "secondaryActiveOpacity": 0.64,
+      "secondaryHoverOpacity": "14",
+      "secondaryActiveOpacity": "29",
       "secondaryBackgroundColor": "transparent",
 
       "textDisabledOpacity": 0.34,
-      "textActiveOpacity": 0.64,
+      "textActiveOpacity": "A3",
       "textBackgroundColor": "transparent",
 
       "focusColor": colors.blue

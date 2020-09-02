@@ -44,7 +44,7 @@ describe("DxcTextareaComponent", () => {
       ],
     });
 
-    const input = <HTMLInputElement>getByRole("combobox");
+    const input = <HTMLInputElement>getByRole("textbox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
     fireEvent.blur(input);
@@ -71,7 +71,7 @@ describe("DxcTextareaComponent", () => {
       ]
     });
 
-    const input = <HTMLInputElement>dxcText.getByRole("combobox");
+    const input = <HTMLInputElement>dxcText.getByRole("textbox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
     fireEvent.blur(input);

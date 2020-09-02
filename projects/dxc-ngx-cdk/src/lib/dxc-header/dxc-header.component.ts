@@ -7,17 +7,17 @@ import {
   EventEmitter,
   SimpleChanges,
   HostListener,
-  ElementRef
+  ElementRef,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { spaces, responsiveSizes } from '../variables';
+import { spaces, responsiveSizes } from "../variables";
 
 @Component({
   selector: "dxc-header",
   templateUrl: "./dxc-header.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcHeaderComponent implements OnChanges {
   @HostBinding("class") className;
@@ -42,12 +42,12 @@ export class DxcHeaderComponent implements OnChanges {
     isResponsive: false,
     isMenuVisible: false,
     innerWidth,
-    innerHeight
+    innerHeight,
   });
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    this.innerWidth  = event.target.innerWidth;
+    this.innerWidth = event.target.innerWidth;
     this.innerHeight = event.target.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet) {
       this.isResponsive = true;
@@ -61,9 +61,8 @@ export class DxcHeaderComponent implements OnChanges {
   constructor(private utils: CssUtils, private elRef: ElementRef) {}
 
   updateCss() {
-
-    if(this.isMenuVisible) {
-      this.elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden';
+    if (this.isMenuVisible) {
+      this.elRef.nativeElement.ownerDocument.body.style.overflow = "hidden";
     } else {
       this.elRef.nativeElement.ownerDocument.body.style.overflow = null;
     }
@@ -72,7 +71,7 @@ export class DxcHeaderComponent implements OnChanges {
       isMenuVisible: this.isMenuVisible,
       isResponsive: this.isResponsive,
       innerWidth: this.innerWidth,
-      innerHeight: this.innerHeight
+      innerHeight: this.innerHeight,
     })}`;
 
     this.responsiveMenu = `${this.getResponsiveMenuStyle({
@@ -80,7 +79,7 @@ export class DxcHeaderComponent implements OnChanges {
       isMenuVisible: this.isMenuVisible,
       isResponsive: this.isResponsive,
       innerWidth: this.innerWidth,
-      innerHeight: this.innerHeight
+      innerHeight: this.innerHeight,
     })}`;
   }
 
@@ -98,6 +97,13 @@ export class DxcHeaderComponent implements OnChanges {
   showMenu() {
     this.isMenuVisible = !this.isMenuVisible;
     this.updateCss();
+  }
+
+  showMenuKey($event) {
+    if ($event.keyCode === 32) {
+      this.isMenuVisible = !this.isMenuVisible;
+      this.updateCss();
+    }
   }
 
   getBottomMargin(margin) {
@@ -134,7 +140,7 @@ export class DxcHeaderComponent implements OnChanges {
     `;
   }
 
-  getLogoDxc(){
+  getLogoDxc() {
     return "assets/dxc_logo_white.png";
   }
 
@@ -176,14 +182,14 @@ export class DxcHeaderComponent implements OnChanges {
         border-bottom: 2px solid var(--header-underlinedColor);
       }
       .dxc-logo,
-        img {
-          max-height: 32px;
-          width: auto;
-          vertical-align: middle;
+      img {
+        max-height: 32px;
+        width: auto;
+        vertical-align: middle;
 
-          &:hover {
-            cursor: pointer;
-          }
+        &:hover {
+          cursor: pointer;
+        }
       }
       .content {
         display: flex;
@@ -207,6 +213,9 @@ export class DxcHeaderComponent implements OnChanges {
           &:hover {
             cursor: pointer;
             background-color: var(--header-hoverHamburguerColor);
+          }
+          &:focus {
+            outline: var(--header-focusColor) solid 1px;
           }
           .hamburgerIcon {
             width: 24px;
@@ -252,7 +261,7 @@ export class DxcHeaderComponent implements OnChanges {
       top: 0;
       right: 0;
       z-index: 1000;
-      
+
       color: var(--header-fontColorMenu);
       width: ${inputs.innerWidth <= responsiveSizes.laptop &&
       inputs.innerWidth > responsiveSizes.mobileLarge
@@ -271,15 +280,19 @@ export class DxcHeaderComponent implements OnChanges {
       .responsiveMenu-Header {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         width: 100%;
         .closeIcon {
           display: flex;
           justify-content: flex-end;
-          width: 100%;
+          width: 24px;
           &:hover {
             cursor: pointer;
           }
-          svg{
+          &:focus {
+            outline: var(--header-focusColor) solid 1px;
+          }
+          svg {
             fill: var(--header-fontColorMenu);
           }
         }

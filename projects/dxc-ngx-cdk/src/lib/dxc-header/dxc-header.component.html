@@ -5,7 +5,7 @@
       <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
     <div class="hamburger">
-      <span (click)="showMenu()" *ngIf="isResponsive" class="hamburgerItem">
+      <span id="hamburguer" tabindex="0" (keydown)="showMenuKey($event)" (click)="showMenu()" *ngIf="isResponsive" class="hamburgerItem">
         <div class="hamburgerIcon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
@@ -29,7 +29,7 @@
       <img [src]="getLogoDxc()" *ngIf="!logoSrc" />
       <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
-    <div class="closeIcon" (click)="showMenu()">
+    <div class="closeIcon" (keydown)="showMenuKey($event)" (click)="showMenu()" id="closeIcon" tabindex="0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

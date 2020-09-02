@@ -99,7 +99,8 @@
   }
   .spinnerContainer {
     .backOverlay {
-      background-color: #000000b3;
+      background-color: var(--spinner-overlayColor);
+      opacity: var(--spinner-overlayOpacity);
     }
     .labelsContainer {
       color: var(--white,white);

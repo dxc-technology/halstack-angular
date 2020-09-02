@@ -171,7 +171,8 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--progressbar-totalLineOpacity": theme.properties["progressbar"]["totalLineOpacity"],
       "--spinner-trackColor": theme.properties["spinner"]["trackColor"],
       "--spinner-color": theme.properties["spinner"]["color"],
-      "--spinner-totalCircleOpacity": theme.properties["spinner"]["totalCircleOpacity"]
+      "--spinner-overlayColor": theme.properties["spinner"]["overlayColor"],
+      "--spinner-overlayOpacity": theme.properties["spinner"]["overlayOpacity"]
     }
     for (const key in obj) {
       document.body.style.setProperty(key, obj[key]);

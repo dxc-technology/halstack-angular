@@ -265,7 +265,7 @@ export const defaultTheme: Theme = {
       "scrollBarTrackColor": colors.lightGrey
     },
     "table":{
-      "separatorColor": colors.darkGrey,
+      "separatorColor": colors.lightGrey,
       "bodyBackgroundColor": colors.white,
       "bodyFontColor": colors.black
     }

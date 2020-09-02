@@ -68,9 +68,8 @@ export class DxcTableComponent {
 
         & th {
           text-align: left;
-          text-transform: uppercase;
           font-size: 14px;
-          font-weight: 100;
+          font-weight: 500;
           background-color: var(--table-headerBackgroundColor);
           color: var(--table-headerFontColor);
         }

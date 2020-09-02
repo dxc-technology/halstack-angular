@@ -215,8 +215,10 @@ export const defaultTheme: Theme = {
       "arrowContainerOpacity": 0.80
     },
     "progressbar":{
-      // "text": readableColor(colors.black)
-      "totalLineOpacity": 0.34
+      "text": "inherit",
+      "totalLineOpacity": 0.34,
+      "overlayColor": colors.black,
+      "overlayOpacity": 0.8
     },
     "autocomplete":{
       "hoverOptionBackgroundColor": "57",

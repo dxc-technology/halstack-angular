@@ -117,8 +117,11 @@ export class DxcStepComponent {
         ${inputs.disabled ?
           "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;" : ""}
 
-        ${inputs.isCurrent ? 
-          "background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box;" : ""}
+        ${inputs.isCurrent && 
+          `background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box; 
+          p {
+            color: var(--wizard-selectedFont) !important;
+          }`}
 
         border-radius: 45px;
         display: flex;

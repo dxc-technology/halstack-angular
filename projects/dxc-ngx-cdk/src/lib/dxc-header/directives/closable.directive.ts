@@ -8,7 +8,7 @@ export class ClosableDirective {
 
   parent: DxcHeaderComponent;
 
-  @HostListener('click') click() {
+  @HostListener('click') click($event) {
     this.parent.showMenu();
   }
 

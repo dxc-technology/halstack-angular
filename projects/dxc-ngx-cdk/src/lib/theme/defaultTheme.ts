@@ -224,8 +224,9 @@ export const defaultTheme: Theme = {
       "totalCircleOpacity": 0.34
     },
     "header":{
-      "hoverHamburguerColor": colors.darkGrey,
-      "overlayColor": colors.black + "b3"
+      "hoverHamburguerColor": "29",
+      "overlayColor": colors.black + "b3",
+      "focusColor": colors.blue
     },
     "tabs":{
       "backgroundColor": "57",

@@ -182,7 +182,8 @@ export const defaultTheme: Theme = {
       "color": colors.black,
       "placeholderColor": colors.lightGrey,
       "disabled": 0.34,
-      "invalidColor": colors.darkRed
+      "invalidColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "box":{
       "backgroundColor": colors.white

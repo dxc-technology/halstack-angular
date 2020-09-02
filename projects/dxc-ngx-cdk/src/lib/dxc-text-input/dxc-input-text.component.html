@@ -6,17 +6,22 @@
   <span
     matPrefix
     (click)="onClickPrefixHandler($event)"
+    (keydown)="onClickPrefixHandler($event)"
     class="prefixElement"
     *ngIf="prefix && !prefixIconSrc"
+    id="prefixElement"
   >
     {{ prefix }}</span
   >
   <img
     matPrefix
     (click)="onClickPrefixHandler($event)"
+    (keydown)="onClickPrefixHandler($event)"
     class="prefixElement"
     *ngIf="prefixIconSrc"
     src="{{ prefixIconSrc }}"
+    [tabindex]="prefixIndex"
+    id="prefixElement"
   />
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
@@ -39,6 +44,7 @@
   <span
     matSuffix
     (click)="onClickSuffixHandler($event)"
+    (keydown)="onClickPrefixHandler($event)"
     class="suffixElement"
     *ngIf="suffix && !suffixIconSrc"
     >{{ suffix }}</span
@@ -46,9 +52,11 @@
   <img
     matSuffix
     (click)="onClickSuffixHandler($event)"
+    (keydown)="onClickPrefixHandler($event)"
     class="suffixElement"
     *ngIf="suffixIconSrc"
     src="{{ suffixIconSrc }}"
+    [tabindex]="suffixIndex"
   />
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>

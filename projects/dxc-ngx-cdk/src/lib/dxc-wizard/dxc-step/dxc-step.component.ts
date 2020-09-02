@@ -92,7 +92,8 @@ export class DxcStepComponent {
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
 
         &:focus {
-          outline: none;
+          padding: 2px;
+          outline: -webkit-focus-ring-color auto 1px;
         }
 
         &:hover {

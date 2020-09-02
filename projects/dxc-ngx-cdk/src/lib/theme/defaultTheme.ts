@@ -127,14 +127,15 @@ export const defaultTheme: Theme = {
   properties: {
     "button":{
       "primaryDisabledOpacity": 0.34,
-      "primaryActiveOpacity": 0.64,
+      "primaryActiveOpacity": "A3",
 
       "secondaryDisabledOpacity": 0.34,
-      "secondaryActiveOpacity": 0.64,
+      "secondaryHoverOpacity": "14",
+      "secondaryActiveOpacity": "29",
       "secondaryBackgroundColor": "transparent",
 
       "textDisabledOpacity": 0.34,
-      "textActiveOpacity": 0.64,
+      "textActiveOpacity": "A3",
       "textBackgroundColor": "transparent",
 
       "focusColor": colors.blue
@@ -184,7 +185,9 @@ export const defaultTheme: Theme = {
       "disabledLabelColor": 0.34,
       "disabledUnderlinedColor": 0.34,
       "disabledAssistiveTextColor": 0.34,
-      "invalidColor": colors.darkRed
+      "invalidColor": colors.darkRed,
+      "disabled": 0.34,
+      "focusColor": colors.blue
     },
     "box":{
       "backgroundColor": colors.white
@@ -226,8 +229,9 @@ export const defaultTheme: Theme = {
       "totalCircleOpacity": 0.34
     },
     "header":{
-      "hoverHamburguerColor": colors.darkGrey,
-      "overlayColor": colors.black + "b3"
+      "hoverHamburguerColor": "29",
+      "overlayColor": colors.black + "b3",
+      "focusColor": colors.blue
     },
     "tabs":{
       "backgroundColor": "57",

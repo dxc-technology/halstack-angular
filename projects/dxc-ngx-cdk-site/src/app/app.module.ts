@@ -45,6 +45,7 @@ import { HeadingModule } from './pages/heading/heading.module';
 import { ScullyLibModule } from '@scullyio/ng-lib-v8';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
 import { AssetsPipeModule } from './pipe/assets.pipe.module';
+import { TextAreaModule } from './pages/text-area/text-area.module';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { AssetsPipeModule } from './pipe/assets.pipe.module';
     SpinnerModule,
     SwitchModule,
     TextInputModule,
+    TextAreaModule,
     DropdownModule,
     DialogModule,
     TabbedSectionInfoModule,

@@ -29,7 +29,7 @@ import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplet
 import { ButtonModesComponent } from "../examples/button/button-modes/button-modes.component";
 import { ButtonWithIconComponent } from "../examples/button/button-with-icon/button-with-icon.component";
 import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
-import { ButtonDarkThemeComponent } from "../examples/button/button-dark-theme/button-dark-theme.component";
+import { ButtonDefaultComponent } from "../examples/button/button-default/button-default.component";
 import { ButtonSizedComponent } from "../examples/button/button-sized/button-sized.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
@@ -265,6 +265,17 @@ import { PaginatorThemeComponent } from '../examples/paginator/paginator-theme/p
 import { PaginatorApiComponent } from '../examples/paginator/paginator-api/paginator-api.component';
 import { TabsThemeComponent } from '../examples/tabs/tabs-theme/tabs-theme.component';
 import { TabsApiComponent } from '../examples/tabs/tabs-api/tabs-api.component';
+import { TextAreaApiComponent } from '../examples/text-area/text-area-api/text-area-api.component';
+import { TextAreaPropertiesTableComponent } from '../examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
+import { TextAreaThemeComponent } from '../examples/text-area/text-area-theme/text-area-theme.component';
+import { TextAreaExampleComponent } from '../examples/text-area/text-area-example/text-area-example.component';
+import { TextAreaDefaultComponent } from '../examples/text-area/text-area-default/text-area-default.component';
+import { TextAreaImportComponent } from '../examples/text-area/text-area-import/text-area-import.component';
+import { TextAreaDisabledComponent } from '../examples/text-area/text-area-disabled/text-area-disabled.component';
+import { TextAreaFillParentComponent } from '../examples/text-area/text-area-fill-parent/text-area-fill-parent.component';
+import { TextAreaInvalidComponent } from '../examples/text-area/text-area-invalid/text-area-invalid.component';
+import { TextAreaRequiredComponent } from '../examples/text-area/text-area-required/text-area-required.component';
+import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -300,7 +311,7 @@ import { TabsApiComponent } from '../examples/tabs/tabs-api/tabs-api.component';
     ButtonModesComponent,
     ButtonWithIconComponent,
     ButtonExampleComponent,
-    ButtonDarkThemeComponent,
+    ButtonDefaultComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
@@ -509,6 +520,17 @@ import { TabsApiComponent } from '../examples/tabs/tabs-api/tabs-api.component';
     SwitchThemeComponent,
     TextInputApiComponent,
     TextInputThemeComponent,
+    TextAreaApiComponent,
+    TextAreaPropertiesTableComponent,
+    TextAreaThemeComponent,
+    TextAreaExampleComponent,
+    TextAreaDefaultComponent,
+    TextAreaImportComponent,
+    TextAreaDisabledComponent,
+    TextAreaFillParentComponent,
+    TextAreaInvalidComponent,
+    TextAreaRequiredComponent,
+    TextAreaUncontrolledComponent,
     TagApiComponent,
     TagThemeComponent,
     DateApiComponent,

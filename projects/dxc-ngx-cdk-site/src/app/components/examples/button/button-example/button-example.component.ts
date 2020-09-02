@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ExampleService } from 'src/app/service/example.service';
 import { ButtonFilledParentComponent } from '../button-filled-parent/button-filled-parent.component';
 import { ButtonSizedComponent } from '../button-sized/button-sized.component';
-import { ButtonDarkThemeComponent } from '../button-dark-theme/button-dark-theme.component';
+import { ButtonDefaultComponent } from '../button-default/button-default.component';
 import { ButtonWithIconComponent } from '../button-with-icon/button-with-icon.component';
 import { ButtonModesComponent } from '../button-modes/button-modes.component';
 import { Example } from '../../../../model/example';
@@ -30,10 +30,10 @@ export class ButtonExampleComponent implements OnInit {
 
   private createExamples() {
     this.exampleService
-    .getCodeExample("button/button-dark-theme/button-dark-theme.component").subscribe(resp1 => {
+    .getCodeExample("button/button-default/button-default.component").subscribe(resp1 => {
       this.examples.push(this.exampleService.generateExample({
         title: 'Button Primary Mode',
-        component: ButtonDarkThemeComponent,
+        component: ButtonDefaultComponent,
         selector: "example1",
         examples: [
           resp1[0],

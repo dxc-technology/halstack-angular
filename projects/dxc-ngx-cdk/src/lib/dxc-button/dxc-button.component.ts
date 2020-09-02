@@ -188,13 +188,17 @@ export class DxcButtonComponent {
         }
         &:disabled {
           opacity: var(--button-primaryDisabledOpacity);
+          color:var(--button-primaryFontColor) !important;
         }
         &:focus:not([disabled]){
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--button-focusColor);
         }
         &:active:not([disabled]) {
-          opacity: var(--button-primaryActiveOpacity);
+          background: var(--button-primaryActiveOpacity);
+        }
+        &:active:hover{
+          background: var(--button-primaryActiveHoverOpacity);
         }
     `;
   }
@@ -205,17 +209,23 @@ export class DxcButtonComponent {
         background-color: var(--button-secondaryBackgroundColor); 
         &:hover:not([disabled]) {
           border-color: var(--button-hoverColor); 
+          background: var(--button-secondaryHoverOpacity);
           color:var(--button-secondaryHoverFontColor);
         }
         &:disabled {
-          opacity: var(--button-secondaryDisabledOpacity); 
+          opacity: var(--button-secondaryDisabledOpacity);
+          color:var(--button-secondaryFontColor) !important; 
         }
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--button-focusColor);
         }
-        &:active {
-          opacity: var(--button-secondaryActiveOpacity);
+        &:active:not([disabled]) {
+          background: var(--button-secondaryActiveOpacity);
+          border-color: var(--button-color); 
+        }
+        &:active:hover{
+          background: var(--button-secondaryActiveHoverOpacity);
           border-color: var(--button-hoverColor); 
         }
     `;
@@ -230,16 +240,18 @@ export class DxcButtonComponent {
         }
         &:disabled {
           opacity: var(--button-textDisabledOpacity); 
+          color: var(--button-textFontColor) !important;
         }
         &:focus {
-          background: var(--button-hoverColor);
-          color: var(--button-textHoverFontColor);
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--button-focusColor);
         }
         &:active {
-          opacity: var(--button-textActiveOpacity);
-          background: var(--button-hoverColor);
+          background: var(--button-textActiveOpacity);
+          color: var(--button-textFontColor);
+        }
+        &:active:hover{
+          background: var(--button-textActiveHoverOpacity);
           color: var(--button-textHoverFontColor);
         }
     `;

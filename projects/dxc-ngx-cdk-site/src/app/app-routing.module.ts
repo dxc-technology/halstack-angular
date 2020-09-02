@@ -34,6 +34,7 @@ import { LinkComponent } from './pages/link/link.component';
 import { HeadingComponent } from './pages/heading/heading.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { ChipComponent } from './pages/chip/chip.component';
+import { TextAreaComponent } from './pages/text-area/text-area.component';
 
 let routes: Routes = [];
 
@@ -104,6 +105,10 @@ let routes: Routes = [];
   {
     path: 'components/input',
     component: TextInputComponent
+  },
+  {
+    path: 'components/textarea',
+    component: TextAreaComponent
   },
   {
     path: 'components/footer',

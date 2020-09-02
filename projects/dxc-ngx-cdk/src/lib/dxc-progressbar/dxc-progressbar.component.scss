@@ -28,9 +28,9 @@
     right: 0;
     bottom: 0;
     position: fixed;
-    opacity: 1;
+    opacity: var(--progressbar-overlayOpacity);
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #000000b3;
+    background-color: var(--progressbar-overlayColor);
   }
   .overlayed {
     height: 100%;
@@ -67,7 +67,7 @@
     min-width: 685px;
     margin-bottom: 8px;
     display: flex;
-    color: var(--progressbar-text);
+    color: white;
     .label {
       display: block;
       text-align: left;
@@ -84,7 +84,7 @@
     }
   }
   .notOverlayed {
-    color: var(--black, black);
+    color: var(--progressbar-text);
   }
   mat-progress-bar {
     ::ng-deep {

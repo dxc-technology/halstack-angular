@@ -42,17 +42,17 @@ export const customTheme: Theme = {
     "checkbox":{
       "color": colors.yellow,
       "checkColor": colors.black,
-      "fontColor": colors.black
+      
     },
     "radio":{
       "color": colors.black,
-      "fontColor": colors.black
+      "fontColor": "inherit"
     },
     "select":{
       "selectedOptionBackgroundColor": colors.lightGrey
     },
     "slider":{
-      "color": colors.black
+      "color": "inherit"
     },
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey
@@ -126,14 +126,15 @@ export const defaultTheme: Theme = {
   properties: {
     "button":{
       "primaryDisabledOpacity": 0.34,
-      "primaryActiveOpacity": 0.64,
+      "primaryActiveOpacity": "A3",
 
       "secondaryDisabledOpacity": 0.34,
-      "secondaryActiveOpacity": 0.64,
+      "secondaryHoverOpacity": "14",
+      "secondaryActiveOpacity": "29",
       "secondaryBackgroundColor": "transparent",
 
       "textDisabledOpacity": 0.34,
-      "textActiveOpacity": 0.64,
+      "textActiveOpacity": "A3",
       "textBackgroundColor": "transparent",
 
       "focusColor": colors.blue
@@ -141,6 +142,7 @@ export const defaultTheme: Theme = {
     "checkbox":{
       "opacityDisabled": 0.34,
       "opacityDisabledCheckColor": 0.34,
+      "fontColor": "inherit",
       // "text": readableColor(colors.black)
       "focusColor": colors.blue
     },
@@ -168,7 +170,8 @@ export const defaultTheme: Theme = {
       "uncheckedThumbBackgroundColor": colors.white,
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
-      "requiredColor": colors.darkRed
+      "requiredColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "link":{
       "fontColor": colors.blue,
@@ -179,11 +182,9 @@ export const defaultTheme: Theme = {
     "text":{
       "color": colors.black,
       "placeholderColor": colors.lightGrey,
-      "disabledFontColor": 0.34,
-      "disabledLabelColor": 0.34,
-      "disabledUnderlinedColor": 0.34,
-      "disabledAssistiveTextColor": 0.34,
-      "invalidColor": colors.darkRed
+      "disabled": 0.34,
+      "invalidColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "box":{
       "backgroundColor": colors.white

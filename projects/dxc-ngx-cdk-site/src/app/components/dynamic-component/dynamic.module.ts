@@ -29,7 +29,7 @@ import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplet
 import { ButtonModesComponent } from "../examples/button/button-modes/button-modes.component";
 import { ButtonWithIconComponent } from "../examples/button/button-with-icon/button-with-icon.component";
 import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
-import { ButtonDarkThemeComponent } from "../examples/button/button-dark-theme/button-dark-theme.component";
+import { ButtonDefaultComponent } from "../examples/button/button-default/button-default.component";
 import { ButtonSizedComponent } from "../examples/button/button-sized/button-sized.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
@@ -311,7 +311,7 @@ import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-u
     ButtonModesComponent,
     ButtonWithIconComponent,
     ButtonExampleComponent,
-    ButtonDarkThemeComponent,
+    ButtonDefaultComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,

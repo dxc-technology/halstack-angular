@@ -142,6 +142,12 @@ export class DxcSwitchComponent implements OnChanges {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
         }
+        &.cdk-focused:not(.mat-disabled){
+          .mat-slide-toggle-bar{
+            outline: 2px solid var(--switch-focusColor);
+            outline-offset: 7px;
+          } 
+        }
       }
       mat-slide-toggle.mat-checked {
         .mat-slide-toggle-thumb {

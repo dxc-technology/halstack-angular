@@ -172,7 +172,7 @@ export class DxcFooterComponent implements OnChanges {
         display: inline-flex;
         flex-wrap: wrap;
         max-width: ${responsive ? "100%" : "60%"};
-        width: ${responsive ? "100%" : "60%"};
+        width: ${responsive ? "100%" : "auto"};
         text-align: ${responsive ? "center" : ""};
         margin: ${responsive ? "40px 0 40px 0" : ""};
         .point {

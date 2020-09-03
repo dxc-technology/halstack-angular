@@ -1,7 +1,7 @@
 <img
   (click)="handlePrefrixClick()"
-  tabindex="0"
-  (keydown)="handlePrefrixClick()"
+  [tabindex]="prefixTabIndex"
+  (keydown)="handlePrefrixKey($event)"
   class="prefixIcon"
   *ngIf="prefixIconSrc"
   src="{{ prefixIconSrc }}"
@@ -9,8 +9,8 @@
 <span class="labelContainer">{{ label }}</span>
 <img
   (click)="handleSuffixClick()"
-  tabindex="0"
-  (keydown)="handleSuffixClick()"
+  [tabindex]="suffixTabIndex"
+  (keydown)="handleSuffixKey($event)"
   class="suffixIcon"
   *ngIf="suffixIconSrc"
   src="{{ suffixIconSrc }}"

@@ -28,6 +28,9 @@ export class DxcChipComponent implements OnChanges {
   @Output() suffixIconClick = new EventEmitter<any>();
   @Output() prefixIconClick = new EventEmitter<any>();
 
+  prefixTabIndex = 0;
+  suffixTabIndex = 0;
+
   defaultInputs = new BehaviorSubject<any>({
     label: "",
     suffixIconSrc: null,
@@ -42,13 +45,21 @@ export class DxcChipComponent implements OnChanges {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-    ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+
+    if(this.prefixIconClick.observers.length === 0) {
+      this.prefixTabIndex = -1;
+    }
+
+    if(this.suffixIconClick.observers.length === 0) {
+      this.suffixTabIndex = -1;
+    }
   }
 
   handlePrefrixClick() {
@@ -57,6 +68,20 @@ export class DxcChipComponent implements OnChanges {
 
   handleSuffixClick() {
     this.suffixIconClick.emit();
+  }
+
+  handlePrefrixKey($event) {
+    if ($event.keyCode && $event.keyCode === 32) {
+      $event.preventDefault();
+      this.prefixIconClick.emit();
+    }
+  }
+
+  handleSuffixKey($event) {
+    if ($event.keyCode && $event.keyCode === 32) {
+      $event.preventDefault();
+      this.suffixIconClick.emit();
+    }
   }
 
   getDynamicStyle(inputs) {
@@ -87,7 +112,11 @@ export class DxcChipComponent implements OnChanges {
         height: 24px;
         width: 24px;
         &:hover {
-          cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
+          cursor: ${inputs.disabled
+            ? "not-allowed"
+            : this.prefixIconClick.observers.length > 0
+            ? "pointer"
+            : "default"};
         }
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
@@ -99,7 +128,11 @@ export class DxcChipComponent implements OnChanges {
         height: 24px;
         width: 24px;
         &:hover {
-          cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
+          cursor: ${inputs.disabled
+            ? "not-allowed"
+            : this.suffixIconClick.observers.length > 0
+            ? "pointer"
+            : "default"};
         }
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;

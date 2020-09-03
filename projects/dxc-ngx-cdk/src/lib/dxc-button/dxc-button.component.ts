@@ -183,7 +183,7 @@ export class DxcButtonComponent {
         background: var(--button-color); 
         color:var(--button-primaryFontColor);
         &:hover:not([disabled]) {
-            background: var(--button-primaryHoverBackgroundColor);
+            background: var(--button-hoverColor);
             color:var(--button-primaryHoverFontColor);
         }
         &:disabled {

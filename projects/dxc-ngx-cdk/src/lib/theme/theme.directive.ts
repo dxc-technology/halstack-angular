@@ -102,6 +102,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--sidenav-arrowBackground": theme.properties["sidenav"]["arrowBackground"],
       "--sidenav-arrowColor": theme.properties["sidenav"]["arrowColor"],
       "--sidenav-arrowContainerOpacity": theme.properties["sidenav"]["arrowContainerOpacity"],
+      "--sidenav-focusColor": theme.properties["sidenav"]["focusColor"],
       "--autocomplete-selectedOptionBackgroundColor": theme.properties["autocomplete"]["selectedOptionBackgroundColor"],
       "--autocomplete-hoverOptionBackgroundColor": theme.properties["autocomplete"]["selectedOptionBackgroundColor"] + theme.properties["autocomplete"]["hoverOptionBackgroundColor"],
       "--autocomplete-hoverOptionColor": theme.properties["autocomplete"]["hoverOptionColor"],

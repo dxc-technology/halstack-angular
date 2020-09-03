@@ -211,7 +211,8 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "sidenav":{
-      "arrowContainerOpacity": 0.80
+      "arrowContainerOpacity": 0.80,
+      "focusColor": colors.blue
     },
     "progressbar":{
       "text": "inherit",

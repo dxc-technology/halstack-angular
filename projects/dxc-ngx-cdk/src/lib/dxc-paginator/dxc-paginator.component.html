@@ -1,42 +1,44 @@
 <div class="paginator-container">
-    <div class="labels-container">
-        <span class="total-items-container">
-            {{minItemsPerPage}} to {{maxItemsPerPage}} of {{totalItems}}
-        </span>
-        <dxc-button *ngIf="showFirst"
-                mode="text"
-                (onClick)="onFirstHandler($event)"
-                size="small"
-                [margin]="buttonMargin"
-                [iconSrc]="firstImgSrc"
-                [disabled]="currentPageInternal === 1"
-        ></dxc-button>
-        <dxc-button *ngIf="showPrev"
-                mode="text"
-                (onClick)="onPrevHandler($event)"
-                size="small"
-                [margin]="buttonMargin"
-                [iconSrc]="prevImgSrc"
-                [disabled]="currentPageInternal === 1"
-        ></dxc-button>
-        <span>
-                 Page: {{ currentPageInternal }} of {{ totalPages }}
-        </span>
-        <dxc-button *ngIf="showNext"
-                mode="text"
-                (onClick)="onNextHandler($event)"
-                size="small"
-                [margin]="buttonMargin"
-                [iconSrc]="nextImgSrc"
-                [disabled]="currentPageInternal === totalPages"
-        ></dxc-button>
-        <dxc-button *ngIf="showLast"
-                mode="text"
-                (onClick)="onLastHandler($event)"
-                size="small"
-                [margin]="buttonMargin"
-                [iconSrc]="lastImgSrc"
-                [disabled]="currentPageInternal === totalPages"
-        ></dxc-button>
-    </div>
+  <div class="labels-container">
+    <span class="total-items-container">
+      {{ minItemsPerPage }} to {{ maxItemsPerPage }} of {{ totalItems }}
+    </span>
+    <dxc-button
+      *ngIf="showFirst"
+      mode="secondary"
+      (onClick)="onFirstHandler($event)"
+      size="small"
+      [margin]="buttonMargin"
+      [iconSrc]="firstImgSrc"
+      [disabled]="currentPageInternal === 1"
+    ></dxc-button>
+    <dxc-button
+      *ngIf="showPrev"
+      mode="secondary"
+      (onClick)="onPrevHandler($event)"
+      size="small"
+      [margin]="buttonMargin"
+      [iconSrc]="prevImgSrc"
+      [disabled]="currentPageInternal === 1"
+    ></dxc-button>
+    <span> Page: {{ currentPageInternal }} of {{ totalPages }} </span>
+    <dxc-button
+      *ngIf="showNext"
+      mode="secondary"
+      (onClick)="onNextHandler($event)"
+      size="small"
+      [margin]="buttonMargin"
+      [iconSrc]="nextImgSrc"
+      [disabled]="currentPageInternal === totalPages"
+    ></dxc-button>
+    <dxc-button
+      *ngIf="showLast"
+      mode="secondary"
+      (onClick)="onLastHandler($event)"
+      size="small"
+      [margin]="buttonMargin"
+      [iconSrc]="lastImgSrc"
+      [disabled]="currentPageInternal === totalPages"
+    ></dxc-button>
+  </div>
 </div>

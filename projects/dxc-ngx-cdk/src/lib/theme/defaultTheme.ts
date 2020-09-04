@@ -31,7 +31,6 @@ export const customTheme: Theme = {
 
       "primaryFontColor": colors.black,
       "primaryHoverFontColor": colors.yellow,
-      "primaryHoverBackgroundColor": colors.black,
 
       "secondaryFontColor": colors.black,
       "secondaryHoverFontColor": colors.black,
@@ -212,7 +211,8 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "sidenav":{
-      "arrowContainerOpacity": 0.80
+      "arrowContainerOpacity": 0.80,
+      "focusColor": colors.blue
     },
     "progressbar":{
       "text": "inherit",
@@ -236,6 +236,9 @@ export const defaultTheme: Theme = {
       "hoverHamburguerColor": "29",
       "overlayColor": colors.black + "b3",
       "focusColor": colors.blue
+    },
+    "heading":{
+      "fontColor": "inherit",
     },
     "tabs":{
       "backgroundColor": "57",

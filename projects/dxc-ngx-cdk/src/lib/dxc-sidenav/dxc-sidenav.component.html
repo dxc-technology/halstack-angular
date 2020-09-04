@@ -1,7 +1,13 @@
 <div [class]="className">
   <div #sidenavContainer class="sidenavContainerClass">
     <ng-content></ng-content>
-    <div *ngIf="displayArrow || isResponsive" class="sidenavArrow" (click)="arrowClicked()">
+    <div
+      tabindex="0"
+      *ngIf="displayArrow || isResponsive"
+      class="sidenavArrow"
+      (keydown)="arrowKey($event)"
+      (click)="arrowClicked()"
+    >
       <span class="sidenavArrowImage">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -38,7 +38,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--button-hoverColor": theme.properties["button"]["hoverColor"],
       "--button-primaryFontColor": theme.properties["button"]["primaryFontColor"],
       "--button-primaryHoverFontColor": theme.properties["button"]["primaryHoverFontColor"],
-      "--button-primaryHoverBackgroundColor": theme.properties["button"]["primaryHoverBackgroundColor"],
       "--button-secondaryFontColor": theme.properties["button"]["secondaryFontColor"],
       "--button-secondaryHoverFontColor": theme.properties["button"]["secondaryHoverFontColor"],
       "--button-textFontColor": theme.properties["button"]["textFontColor"],
@@ -103,6 +102,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--sidenav-arrowBackground": theme.properties["sidenav"]["arrowBackground"],
       "--sidenav-arrowColor": theme.properties["sidenav"]["arrowColor"],
       "--sidenav-arrowContainerOpacity": theme.properties["sidenav"]["arrowContainerOpacity"],
+      "--sidenav-focusColor": theme.properties["sidenav"]["focusColor"],
       "--autocomplete-selectedOptionBackgroundColor": theme.properties["autocomplete"]["selectedOptionBackgroundColor"],
       "--autocomplete-hoverOptionBackgroundColor": theme.properties["autocomplete"]["selectedOptionBackgroundColor"] + theme.properties["autocomplete"]["hoverOptionBackgroundColor"],
       "--autocomplete-hoverOptionColor": theme.properties["autocomplete"]["hoverOptionColor"],
@@ -185,7 +185,8 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--spinner-trackColor": theme.properties["spinner"]["trackColor"],
       "--spinner-color": theme.properties["spinner"]["color"],
       "--spinner-overlayColor": theme.properties["spinner"]["overlayColor"],
-      "--spinner-overlayOpacity": theme.properties["spinner"]["overlayOpacity"]
+      "--spinner-overlayOpacity": theme.properties["spinner"]["overlayOpacity"],
+      "--heading-fontColor": theme.properties["heading"]["fontColor"]
     }
     for (const key in obj) {
       document.body.style.setProperty(key, obj[key]);

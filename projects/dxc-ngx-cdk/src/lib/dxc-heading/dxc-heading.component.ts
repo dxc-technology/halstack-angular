@@ -23,8 +23,6 @@ export class DxcHeadingComponent {
   @Input() margin: string;
 
   @HostBinding("class") className;
-  @HostBinding("class.light") isLight: boolean = true;
-  @HostBinding("class.dark") isDark: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     theme: "light",
@@ -38,26 +36,12 @@ export class DxcHeadingComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     if (this.level == null) {
       this.level = 1;
     }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
-    }
     if (this.level == null) {
       this.level = 1;
     }
@@ -77,9 +61,7 @@ export class DxcHeadingComponent {
       }
 
       font-family: "Open Sans", sans-serif;
-      color: ${inputs.theme === "light"
-        ? "var(--lightThemeHeading, #000000DE)"
-        : "var(--darkThemeHeading, #FFFFFF)"};
+      color: var(--heading-fontColor);
 
       h1 {
         font-size: 60px;

@@ -191,6 +191,7 @@ export class DxcTabsComponent implements OnChanges {
           .dxc-tab-label span {
             color: var(--tabs-selectedColor);
             opacity: 1;
+            white-space: normal;
           }
         }
       }

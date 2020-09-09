@@ -130,7 +130,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--tabs-focusColor": theme.properties["tabs"]["focusColor"],
       "--wizard-selectedBackgroundColor": theme.properties["wizard"]["selectedBackgroundColor"],
       "--wizard-selectedFont": theme.properties["wizard"]["selectedFont"],
-      "--wizard-borderColor": theme.properties["wizard"]["borderColor"],
       "--wizard-fontColor": theme.properties["wizard"]["fontColor"],
       "--wizard-lineColor": theme.properties["wizard"]["lineColor"],
       "--wizard-disabledBackground": theme.properties["wizard"]["disabledBackground"],

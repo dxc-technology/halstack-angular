@@ -101,8 +101,7 @@ export const customTheme: Theme = {
     },
     "wizard":{
       "selectedBackgroundColor": colors.yellow,
-      "selectedFont": colors.black,
-      "borderColor": colors.black
+      "selectedFont": colors.black
     },
     "accordion":{
       "arrowColor": colors.darkGrey

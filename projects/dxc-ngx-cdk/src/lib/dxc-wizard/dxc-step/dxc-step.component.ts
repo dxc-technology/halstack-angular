@@ -117,7 +117,7 @@ export class DxcStepComponent {
         height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
 
         ${!inputs.isCurrent && !inputs.disabled
-          ? `border: 2px solid var(--wizard-borderColor);`
+          ? `border: 2px solid #000000;`
           : ""}
 
         ${inputs.disabled

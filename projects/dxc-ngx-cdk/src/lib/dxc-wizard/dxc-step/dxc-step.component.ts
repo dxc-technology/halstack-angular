@@ -99,6 +99,17 @@ export class DxcStepComponent {
         &:focus {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;
+          margin: ${inputs.isFirst
+          ? inputs.mode === "vertical"
+            ? "1px 1px 25px 1px"
+            : "1px 25px 1px 1px"
+          : inputs.isLast
+          ? inputs.mode === "vertical"
+            ? "25px 1px 1px 1px"
+            : "1px 1px 1px 25px"
+          : inputs.mode === "vertical"
+          ? "25px 1px"
+          : "1px 25px"};
         }
 
         &:hover {

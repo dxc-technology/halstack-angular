@@ -83,8 +83,8 @@ export const customTheme: Theme = {
       "lineColor": colors.yellow
     },
     "spinner":{
-      "trackColor": colors.yellow,
-      "color": colors.white
+      "trackCircleColor": colors.yellow,
+      "totalCircleColor": colors.white
     },
     "header":{
       "backgroundColor": colors.black,

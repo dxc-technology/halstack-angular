@@ -66,8 +66,8 @@ export const customTheme: Theme = {
       "pickerSelectedDateColor": colors.yellow
     },
     "sidenav":{
-      "color": colors.grey,
-      "arrowBackground": colors.lightGrey,
+      "backgroundColor": colors.grey,
+      "arrowContainerColor": colors.lightGrey,
       "arrowColor": colors.black
     },
     "progressbar":{

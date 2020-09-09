@@ -132,7 +132,7 @@ export class DxcSidenavComponent implements OnInit {
         .sidenavArrow {
           width: 42px;
           height: 42px;
-          background-color: var(--sidenav-arrowBackground);
+          background-color: var(--sidenav-arrowContainerColor);
           opacity: var(--sidenav-arrowContainerOpacity);
           border-radius: 50%;
           display: flex;
@@ -178,7 +178,7 @@ export class DxcSidenavComponent implements OnInit {
         dxc-sidenav-menu {
           display: flex;
           flex-direction: column;
-          background-color: var(--sidenav-color);
+          background-color: var(--sidenav-backgroundColor);
           width: ${inputs.innerWidth <= responsiveSizes.tablet
             ? "60%"
             : "300px"};

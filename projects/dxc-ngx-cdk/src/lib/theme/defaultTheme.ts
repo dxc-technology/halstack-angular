@@ -71,8 +71,8 @@ export const customTheme: Theme = {
       "arrowColor": colors.black
     },
     "progressbar":{
-      "trackColor": colors.yellow,
-      "color": colors.black
+      "trackLine": colors.yellow,
+      "totalLine": colors.black
     },
     "autocomplete":{
       "selectedOptionBackgroundColor": colors.lightGrey,

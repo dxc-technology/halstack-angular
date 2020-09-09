@@ -52,7 +52,7 @@
       z-index: 1;
       width: auto;
       .mat-progress-bar-fill::after {
-        background-color: var(--progressbar-trackColor);
+        background-color: var(--progressbar-trackLine);
       }
       .mat-progress-bar-background {
         fill: transparent;
@@ -89,7 +89,7 @@
   mat-progress-bar {
     ::ng-deep {
       .mat-progress-bar-buffer {
-        background-color: var(--progressbar-color);
+        background-color: var(--progressbar-totalLine);
         opacity: var(--progressbar-totalLineOpacity);
       }
     }

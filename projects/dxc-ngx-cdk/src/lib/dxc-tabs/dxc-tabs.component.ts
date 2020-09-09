@@ -126,14 +126,22 @@ export class DxcTabsComponent implements OnChanges {
         max-width: 180px;
         padding-right: 20px;
         padding-left: 20px;
-        opacity: 1;
+        opacity: var(--tabs-notSelectedOpacity);
         min-width: 180px;
-
+        background: var(--tabs-backgroundColor) 0% 0% no-repeat padding-box;
+        .dxc-tab-label span:not(.show-dot) {
+          letter-spacing: 1.43px;
+          opacity: 1;
+          white-space: normal;
+        }
+        .dxc-tab-label span {
+          color: var(--tabs-fontColor);
+          opacity: 1;
+        }
         &.cdk-focused{
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--tabs-focusColor);
         }
-
         .mat-tab-label-content {
           font-size: 16px;
           display: inline-grid;
@@ -159,6 +167,7 @@ export class DxcTabsComponent implements OnChanges {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          min-width: 180px;
         }
         .only-icon {
           .dxc-tab-label {
@@ -171,27 +180,23 @@ export class DxcTabsComponent implements OnChanges {
           opacity: 0.5 !important;
           cursor: not-allowed;
         }
-      }
-      .filled-tabs {
-        .mat-tab-label {
-          .dxc-tab-label span:not(.show-dot) {
-            letter-spacing: 1.43px;
+        &.mat-tab-disabled {
+          opacity: var(--tabs-disabled) !important;
+          cursor: not-allowed;
+          pointer-events: all !important;
+        }
+        &.mat-tab-label-active {
+          background-color: var(--tabs-selectedBackgroundColor);
+          opacity: 1 !important;
+          .dxc-tab-label span {
+            color: var(--tabs-selectedColor);
             opacity: 1;
-            white-space: normal;
-          }
-          &:hover {
-            opacity: 0.8;
           }
         }
       }
       &.label-icons {
         .mat-tab-list .mat-tab-label {
           height: 76px;
-        }
-      }
-      .underlined-tabs {
-        .mat-tab-label:not(.mat-tab-label-active) {
-          opacity: 0.5;
         }
       }
     `;

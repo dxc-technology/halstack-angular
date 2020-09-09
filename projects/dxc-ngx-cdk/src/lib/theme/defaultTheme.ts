@@ -245,7 +245,8 @@ export const defaultTheme: Theme = {
       "underlineColor": colors.lightGrey,
       "fontColor": colors.black,
       "disabled": 0.34,
-      "focusColor": colors.blue
+      "focusColor": colors.blue,
+      "notSelectedOpacity": 0.64
     },
     "wizard":{
       "fontColor": "inherit",

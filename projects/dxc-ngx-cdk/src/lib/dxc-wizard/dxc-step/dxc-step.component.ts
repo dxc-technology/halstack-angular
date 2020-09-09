@@ -99,6 +99,7 @@ export class DxcStepComponent {
         &:focus {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--wizard-focusColor);
         }
 
         &:hover {

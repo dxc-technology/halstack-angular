@@ -134,6 +134,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--wizard-lineColor": theme.properties["wizard"]["lineColor"],
       "--wizard-disabledBackground": theme.properties["wizard"]["disabledBackground"],
       "--wizard-disabledText": theme.properties["wizard"]["disabledText"],
+      "--wizard-focusColor": theme.properties["wizard"]["focusColor"],
       "--accordion-arrowColor": theme.properties["accordion"]["arrowColor"],
       "--accordion-fontColor": theme.properties["accordion"]["fontColor"],
       "--accordion-backgroundColor": theme.properties["accordion"]["backgroundColor"],

@@ -250,7 +250,8 @@ export const defaultTheme: Theme = {
       "fontColor": "inherit",
       "lineColor": colors.lightGrey,
       "disabledBackground": colors.darkWhite,
-      "disabledText": "inherit"
+      "disabledText": "inherit",
+      "focusColor": colors.blue
     },
     "accordion":{
       "fontColor": colors.darkGrey,

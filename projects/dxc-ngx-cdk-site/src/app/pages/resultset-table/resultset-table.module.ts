@@ -14,6 +14,7 @@ import { ResultsetTableImportComponent } from '../../components/examples/results
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
+import { ResultsetTableApiComponent } from '../../components/examples/resultset-table/resultset-table-api/resultset-table-api.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ResultsetTableDirectivesComponent } from '../../components/examples/res
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     ResultsetTableDirectivesComponent,
-    ResultsetTableImportComponent
+    ResultsetTableImportComponent,
+    ResultsetTableApiComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { ResultsetTableDirectivesComponent } from '../../components/examples/res
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     ResultsetTableDirectivesComponent,
-    ResultsetTableImportComponent
+    ResultsetTableImportComponent,
+    ResultsetTableApiComponent
   ],
   entryComponents: [
     ExampleViewerComponent

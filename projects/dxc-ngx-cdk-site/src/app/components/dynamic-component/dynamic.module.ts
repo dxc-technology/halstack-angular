@@ -170,7 +170,6 @@ import { WizardVerticalComponent } from '../examples/wizard/wizard-vertical/wiza
 import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
 import { HeadingDefaultComponent } from '../examples/heading/heading-default/heading-default.component';
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
-import { HeadingDarkComponent } from '../examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../examples/heading/heading-weights/heading-weights.component';
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
@@ -276,6 +275,8 @@ import { TextAreaFillParentComponent } from '../examples/text-area/text-area-fil
 import { TextAreaInvalidComponent } from '../examples/text-area/text-area-invalid/text-area-invalid.component';
 import { TextAreaRequiredComponent } from '../examples/text-area/text-area-required/text-area-required.component';
 import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
+import { HeadingThemeComponent } from '../examples/heading/heading-theme/heading-theme.component';
+import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api.component';
 import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-theme.component';
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
@@ -461,7 +462,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingDarkComponent,
     HeadingWeightsComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
@@ -560,8 +560,10 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     PaginatorThemeComponent,
     TabsApiComponent,
     TabsThemeComponent,
+    HeadingApiComponent,
+    HeadingThemeComponent,
     UploadApiComponent,
-    UploadThemeComponent
+    UploadThemeComponent,
     ResultsetTableApiComponent,
     ResultsetTableThemeComponent
   ]

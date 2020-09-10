@@ -11,11 +11,12 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { HeadingTablePropertiesComponent } from "../../components/examples/heading/properties/heading-table-properties/heading-table-properties.component";
 import { HeadingDefaultComponent } from '../../components/examples/heading/heading-default/heading-default.component';
 import { HeadingExampleComponent } from '../../components/examples/heading/heading-example/heading-example.component';
-import { HeadingDarkComponent } from '../../components/examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../../components/examples/heading/heading-weights/heading-weights.component';
 import { HeadingImportComponent } from '../../components/examples/heading/heading-import/heading-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { HeadingThemeComponent } from '../../components/examples/heading/heading-theme/heading-theme.component';
+import { HeadingApiComponent } from '../../components/examples/heading/heading-api/heading-api.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingDarkComponent,
     HeadingWeightsComponent,
-    HeadingImportComponent
+    HeadingImportComponent,
+    HeadingApiComponent,
+    HeadingThemeComponent
   ],
   imports: [
     CommonModule,
@@ -43,9 +45,10 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingDarkComponent,
     HeadingWeightsComponent,
-    HeadingImportComponent
+    HeadingImportComponent,
+    HeadingApiComponent,
+    HeadingThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

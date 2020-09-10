@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Example } from '../../../../model/example';
 import { ExampleService } from 'src/app/service/example.service';
 import { HeadingDefaultComponent } from '../heading-default/heading-default.component';
-import { HeadingDarkComponent } from '../heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../heading-weights/heading-weights.component';
 
 @Component({
@@ -38,25 +37,11 @@ export class HeadingExampleComponent implements OnInit {
     });
 
     this.exampleService
-    .getCodeExample("heading/heading-dark/heading-dark.component").subscribe(resp1 => {
-      this.examples.push(this.exampleService.generateExample({
-        title: 'Dark Headings',
-        component: HeadingDarkComponent,
-        selector: "example2",
-        examples: [
-          resp1[0],
-          resp1[1],
-          resp1[2]
-        ]
-      }));
-    });
-
-    this.exampleService
     .getCodeExample("heading/heading-weights/heading-weights.component").subscribe(resp1 => {
       this.examples.push(this.exampleService.generateExample({
         title: 'Headings with different weights',
         component: HeadingWeightsComponent,
-        selector: "example3",
+        selector: "example2",
         examples: [
           resp1[0],
           resp1[1],

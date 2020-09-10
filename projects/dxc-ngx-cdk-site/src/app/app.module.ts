@@ -46,7 +46,6 @@ import { ScullyLibModule } from '@scullyio/ng-lib-v8';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
 import { AssetsPipeModule } from './pipe/assets.pipe.module';
 import { TextAreaModule } from './pages/text-area/text-area.module';
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -277,6 +277,7 @@ import { TextAreaInvalidComponent } from '../examples/text-area/text-area-invali
 import { TextAreaRequiredComponent } from '../examples/text-area/text-area-required/text-area-required.component';
 import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
+import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -557,7 +558,8 @@ import { ResultsetTableApiComponent } from '../examples/resultset-table/resultse
     PaginatorThemeComponent,
     TabsApiComponent,
     TabsThemeComponent,
-    ResultsetTableApiComponent
+    ResultsetTableApiComponent,
+    ResultsetTableThemeComponent
   ]
 })
 export class DynamicModule {}

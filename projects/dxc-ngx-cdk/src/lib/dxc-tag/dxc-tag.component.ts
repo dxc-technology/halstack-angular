@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostBinding, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostBinding, SimpleChanges, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CssUtils } from '../utils';
 import { css } from "emotion";
@@ -35,6 +35,8 @@ export class DxcTagComponent implements OnInit {
 
   shadowDepth:string;
 
+  @ViewChildren("dxcBox", { read: ElementRef }) dxcBox: QueryList<ElementRef>;
+
   styledLink: string = css`
     text-decoration: none;
   `;
@@ -69,6 +71,16 @@ export class DxcTagComponent implements OnInit {
     this.tagContent = `${this.setTagContentDynamicStyle(this.defaultInputs.getValue())}`;
     this.iconContainer = `${this.setIconContainerDynamicStyle(this.defaultInputs.getValue())}`;
     this.shadowDepth = this.getShadowDepth();
+  }
+
+  ngAfterViewInit() {
+    this.setStyleDxcBox();
+  }
+
+  setStyleDxcBox() {
+    this.dxcBox.toArray().forEach(el => {
+      (el.nativeElement as HTMLElement).style.border = "0px solid";
+    });
   }
 
   mouseEnter(){
@@ -137,5 +149,6 @@ export class DxcTagComponent implements OnInit {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    border: 0px solid !important;
   `;
 }

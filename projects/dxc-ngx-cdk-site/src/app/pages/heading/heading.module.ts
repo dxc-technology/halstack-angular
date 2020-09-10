@@ -11,7 +11,6 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { HeadingTablePropertiesComponent } from "../../components/examples/heading/properties/heading-table-properties/heading-table-properties.component";
 import { HeadingDefaultComponent } from '../../components/examples/heading/heading-default/heading-default.component';
 import { HeadingExampleComponent } from '../../components/examples/heading/heading-example/heading-example.component';
-import { HeadingDarkComponent } from '../../components/examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../../components/examples/heading/heading-weights/heading-weights.component';
 import { HeadingImportComponent } from '../../components/examples/heading/heading-import/heading-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
@@ -25,7 +24,6 @@ import { HeadingApiComponent } from '../../components/examples/heading/heading-a
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingDarkComponent,
     HeadingWeightsComponent,
     HeadingImportComponent,
     HeadingApiComponent,
@@ -47,7 +45,6 @@ import { HeadingApiComponent } from '../../components/examples/heading/heading-a
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingDarkComponent,
     HeadingWeightsComponent,
     HeadingImportComponent,
     HeadingApiComponent,

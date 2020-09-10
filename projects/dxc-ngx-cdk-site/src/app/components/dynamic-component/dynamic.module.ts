@@ -170,7 +170,6 @@ import { WizardVerticalComponent } from '../examples/wizard/wizard-vertical/wiza
 import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
 import { HeadingDefaultComponent } from '../examples/heading/heading-default/heading-default.component';
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
-import { HeadingDarkComponent } from '../examples/heading/heading-dark/heading-dark.component';
 import { HeadingWeightsComponent } from '../examples/heading/heading-weights/heading-weights.component';
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
@@ -459,7 +458,6 @@ import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api
     HeadingTablePropertiesComponent,
     HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingDarkComponent,
     HeadingWeightsComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/model/sections';
-import {UploadTablePropertiesComponent} from '../../components/examples/upload/properties/upload-table-properties.component';
 import {UploadExampleComponent} from '../../components/examples/upload/upload-example/upload-example.component';
-import { UploadImportComponent } from '../../components/examples/upload/upload-import/upload-import.component';
+import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
+import { UploadThemeComponent } from '../../components/examples/upload/upload-theme/upload-theme.component';
 
 @Component({
   selector: 'app-upload',
@@ -21,8 +21,8 @@ export class UploadComponent implements OnInit {
 
    ngOnInit() { 
     this.sections.push( 
-      {id:0, label: 'PROPERTIES',selector: 'examples-properties-upload', component: UploadTablePropertiesComponent},
-      {id:1, label: 'MODULE', selector: 'upload-import', component: UploadImportComponent},
+      {id:0, label: 'API',selector: 'upload-api', component: UploadApiComponent},
+      {id:1, label: 'THEMING', selector: 'upload-theme', component: UploadThemeComponent},
       {id:2, label: 'EXAMPLES', selector: 'examples-component-upload', component: UploadExampleComponent}
     );
   }

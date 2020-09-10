@@ -278,6 +278,8 @@ import { TextAreaRequiredComponent } from '../examples/text-area/text-area-requi
 import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
 import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-theme.component';
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
+import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
+import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -560,6 +562,8 @@ import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.com
     TabsThemeComponent,
     UploadApiComponent,
     UploadThemeComponent
+    ResultsetTableApiComponent,
+    ResultsetTableThemeComponent
   ]
 })
 export class DynamicModule {}

@@ -16,6 +16,8 @@ import { HeadingWeightsComponent } from '../../components/examples/heading/headi
 import { HeadingImportComponent } from '../../components/examples/heading/heading-import/heading-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { HeadingThemeComponent } from '../../components/examples/heading/heading-theme/heading-theme.component';
+import { HeadingApiComponent } from '../../components/examples/heading/heading-api/heading-api.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     HeadingExampleComponent,
     HeadingDarkComponent,
     HeadingWeightsComponent,
-    HeadingImportComponent
+    HeadingImportComponent,
+    HeadingApiComponent,
+    HeadingThemeComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +49,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     HeadingExampleComponent,
     HeadingDarkComponent,
     HeadingWeightsComponent,
-    HeadingImportComponent
+    HeadingImportComponent,
+    HeadingApiComponent,
+    HeadingThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { AlertExampleComponent } from 'src/app/components/examples/alert/alert-example/alert-example.component';
-import { AlertComponentPropertiesComponent } from '../../components/examples/alert/properties/alert-properties/alert-properties.component';
-import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
+import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
+import { AlertThemeComponent } from '../../components/examples/alert/alert-theme/alert-theme.component';
 
 @Component({
   selector: "app-alert",
@@ -22,8 +22,8 @@ export class AlertComponent implements OnInit{
 
    ngOnInit() { 
     this.sections.push( 
-      {id:0, label: 'PROPERTIES',selector: 'examples-properties-buttons', component: AlertComponentPropertiesComponent},
-      {id:1, label: 'MODULE',selector: 'alert-import', component: AlertImportComponent},
+      {id:0, label: 'API',selector: 'alert-api', component: AlertApiComponent},
+      {id:1, label: 'THEMING',selector: 'alert-theme', component: AlertThemeComponent},
       {id:2, label: 'EXAMPLES', selector: 'examples-component-buttons', component: AlertExampleComponent}
       );
   }

@@ -275,6 +275,8 @@ import { TextAreaFillParentComponent } from '../examples/text-area/text-area-fil
 import { TextAreaInvalidComponent } from '../examples/text-area/text-area-invalid/text-area-invalid.component';
 import { TextAreaRequiredComponent } from '../examples/text-area/text-area-required/text-area-required.component';
 import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
+import { AlertThemeComponent } from '../examples/alert/alert-theme/alert-theme.component';
+import { AlertApiComponent } from '../examples/alert/alert-api/alert-api.component';
 import { HeadingThemeComponent } from '../examples/heading/heading-theme/heading-theme.component';
 import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api.component';
 import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-theme.component';
@@ -560,6 +562,8 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     PaginatorThemeComponent,
     TabsApiComponent,
     TabsThemeComponent,
+    AlertApiComponent,
+    AlertThemeComponent,
     HeadingApiComponent,
     HeadingThemeComponent,
     UploadApiComponent,

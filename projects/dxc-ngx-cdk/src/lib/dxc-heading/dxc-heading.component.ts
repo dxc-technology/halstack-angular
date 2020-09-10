@@ -16,7 +16,6 @@ import {
   providers: [CssUtils],
 })
 export class DxcHeadingComponent {
-  @Input() theme: string;
   @Input() level: number;
   @Input() text: string;
   @Input() weight: string;
@@ -25,7 +24,6 @@ export class DxcHeadingComponent {
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
     level: 1,
     text: null,
     weight: null,

@@ -63,7 +63,7 @@ button.mat-icon-button {
     width: 100px;
     border: none;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     &:hover {
         cursor: pointer;

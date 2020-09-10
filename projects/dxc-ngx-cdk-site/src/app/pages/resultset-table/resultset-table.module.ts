@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResultsetTableComponent } from './resultset-table.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule, DxcLinkModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
@@ -14,6 +14,8 @@ import { ResultsetTableImportComponent } from '../../components/examples/results
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
+import { ResultsetTableApiComponent } from '../../components/examples/resultset-table/resultset-table-api/resultset-table-api.component';
+import { ResultsetTableThemeComponent } from '../../components/examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ResultsetTableDirectivesComponent } from '../../components/examples/res
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     ResultsetTableDirectivesComponent,
-    ResultsetTableImportComponent
+    ResultsetTableImportComponent,
+    ResultsetTableApiComponent,
+    ResultsetTableThemeComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +37,7 @@ import { ResultsetTableDirectivesComponent } from '../../components/examples/res
     DxcResultsetTableModule,
     DxcButtonModule,
     DxcTagModule,
+    DxcLinkModule,
     ComponentsSidenavModule,
     CodePlaygroundModule,
     ComponentsSidenavModule
@@ -43,7 +48,9 @@ import { ResultsetTableDirectivesComponent } from '../../components/examples/res
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     ResultsetTableDirectivesComponent,
-    ResultsetTableImportComponent
+    ResultsetTableImportComponent,
+    ResultsetTableApiComponent,
+    ResultsetTableThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

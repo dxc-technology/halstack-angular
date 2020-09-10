@@ -96,7 +96,7 @@ export const customTheme: Theme = {
     "tabs":{
       "selectedBackgroundColor": colors.white,
       "selectedUnderlinedColor": colors.black,
-      "selectedColor": colors.black
+      "selectedFontColor": colors.black
     },
     "wizard":{
       "selectedBackgroundColor": colors.yellow,

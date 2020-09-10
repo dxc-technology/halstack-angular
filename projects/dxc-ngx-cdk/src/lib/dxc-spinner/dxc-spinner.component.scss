@@ -112,7 +112,7 @@
   .mat-progress-spinner.backCircle {
     ::ng-deep {
       circle {
-        stroke: var(--spinner-color);
+        stroke: var(--spinner-totalCircleColor);
         opacity: var(--spinner-totalCircleOpacity);
       }
     }
@@ -121,7 +121,7 @@
   .mat-progress-spinner.spinner {
     ::ng-deep {
       circle {
-        stroke: var(--spinner-trackColor);
+        stroke: var(--spinner-trackCircleColor);
       }
     }
   }

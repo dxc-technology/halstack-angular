@@ -107,6 +107,10 @@ export class DxcChipComponent implements OnChanges {
         text-overflow: ellipsis;
         color: var(--chip-fontColor);
       }
+      img{
+        max-width: 24px;
+        max-height: 24px;
+      }
       .prefixIcon {
         margin-right: 10px;
         height: 24px;

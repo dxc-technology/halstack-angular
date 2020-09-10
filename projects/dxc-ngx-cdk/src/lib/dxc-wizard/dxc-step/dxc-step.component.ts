@@ -110,6 +110,7 @@ export class DxcStepComponent {
           : inputs.mode === "vertical"
           ? "25px 1px"
           : "1px 25px"};
+          outline-color: var(--wizard-focusColor);
         }
 
         &:hover {
@@ -128,7 +129,7 @@ export class DxcStepComponent {
         height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
 
         ${!inputs.isCurrent && !inputs.disabled
-          ? `border: 2px solid var(--wizard-borderColor);`
+          ? `border: 2px solid #000000;`
           : ""}
 
         ${inputs.disabled

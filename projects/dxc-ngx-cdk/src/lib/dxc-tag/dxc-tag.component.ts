@@ -149,6 +149,5 @@ export class DxcTagComponent implements OnInit {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    border: 0px solid !important;
   `;
 }

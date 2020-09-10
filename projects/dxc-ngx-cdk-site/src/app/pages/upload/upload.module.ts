@@ -13,6 +13,8 @@ import { UploadImportComponent } from '../../components/examples/upload/upload-i
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { UploadThemeComponent } from '../../components/examples/upload/upload-theme/upload-theme.component';
+import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     UploadTablePropertiesComponent,
     UploadExampleComponent,
     UploadDefaultComponent,
-    UploadImportComponent
+    UploadImportComponent,
+    UploadApiComponent,
+    UploadThemeComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     UploadTablePropertiesComponent,
     UploadExampleComponent,
     UploadDefaultComponent,
-    UploadImportComponent
+    UploadImportComponent,
+    UploadApiComponent,
+    UploadThemeComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

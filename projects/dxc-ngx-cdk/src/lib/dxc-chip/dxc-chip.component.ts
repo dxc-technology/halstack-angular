@@ -97,7 +97,6 @@ export class DxcChipComponent implements OnChanges {
       background-color: var(--chip-backgroundColor);
       padding: 10px 20px;
       width: fit-content;
-      border: 1px solid var(--chip-outlinedColor);
       .labelContainer {
         font-size: 16px;
         font-family: "Open Sans", sans-serif;
@@ -112,7 +111,7 @@ export class DxcChipComponent implements OnChanges {
         max-height: 24px;
       }
       .prefixIcon {
-        margin-right: 10px;
+        ${this.label ? "margin-right: 10px;" : ""};
         height: 24px;
         width: 24px;
         &:hover {
@@ -128,7 +127,7 @@ export class DxcChipComponent implements OnChanges {
         }
       }
       .suffixIcon {
-        margin-left: 10px;
+        ${this.label ? "margin-left: 10px;" : ""};
         height: 24px;
         width: 24px;
         &:hover {

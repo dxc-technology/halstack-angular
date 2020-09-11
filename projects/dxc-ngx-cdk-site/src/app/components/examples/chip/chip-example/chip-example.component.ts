@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef } from "@angular/core";
 import { Example } from "src/app/model/example";
 import { ExampleService } from "src/app/service/example.service";
 import { ChipBasicComponent } from "../chip-basic/chip-basic.component";
-import { ChipDisabledComponent } from '../chip-disabled/chip-disabled.component';
+import { ChipIconComponent } from '../chip-icon/chip-icon.component';
 
 @Component({
   selector: "chip-example",
@@ -32,7 +32,7 @@ export class ChipExampleComponent implements OnInit {
       .subscribe((resp1) => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Basic Chip",
+            title: "Default Chip",
             component: ChipBasicComponent,
             selector: "example1",
             examples: [resp1[0], resp1[1], resp1[2]],
@@ -40,12 +40,12 @@ export class ChipExampleComponent implements OnInit {
         );
       });
     this.exampleService
-      .getCodeExample("chip/chip-disabled/chip-disabled.component")
+      .getCodeExample("chip/chip-icon/chip-icon.component")
       .subscribe((resp1) => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Disabled Chip",
-            component: ChipDisabledComponent,
+            title: "Chip with icons",
+            component: ChipIconComponent,
             selector: "example2",
             examples: [resp1[0], resp1[1], resp1[2]],
           })

@@ -154,7 +154,6 @@ import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch
 import { LinkDefaultComponent } from '../examples/link/link-default/link-default.component';
 import { LinkExampleComponent } from '../examples/link/link-example/link-example.component';
 import { LinkUndercoratedComponent } from '../examples/link/link-undercorated/link-undercorated.component';
-import { LinkThemedComponent } from '../examples/link/link-themed/link-themed.component';
 import { LinkIconComponent } from '../examples/link/link-icon/link-icon.component';
 import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
 import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sidenav-example.component';
@@ -448,7 +447,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     LinkDefaultComponent,
     LinkExampleComponent,
     LinkUndercoratedComponent,
-    LinkThemedComponent,
     LinkIconComponent,
     LinkTablePropertiesComponent,
     SidenavExampleComponent,

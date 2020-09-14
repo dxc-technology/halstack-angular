@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcSpinnerModule, DxcTableModule,DxcButtonModule,DxcTagModule } from '@dxc-technology/halstack-angular';
+import { DxcSpinnerModule, DxcTableModule,DxcButtonModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
 import { SpinnerComponent } from './spinner.component';
 import { SpinnerDeterminedComponent } from '../../components/examples/spinner/spinner-determined/spinner-determined.component';
 import { SpinnerExampleComponent } from '../../components/examples/spinner/spinner-example/spinner-example.component';
@@ -42,7 +42,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    ColorPreviewModule
+    ColorPreviewModule,
+    DxcChipModule
   ],
   exports: [
     SpinnerDeterminedComponent,

@@ -5,7 +5,8 @@ import {
   DxcTableModule,
   DXCInputTextModule,
   DxcLinkModule,
-  DxcTagModule
+  DxcTagModule,
+  DxcChipModule
 } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
@@ -44,7 +45,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CodePlaygroundModule,
     DxcTagModule,
     ComponentsSidenavModule,
-    ColorPreviewModule
+    ColorPreviewModule,
+    DxcChipModule
   ],
   exports: [
     AutocompleteComponent,

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeadingComponent } from './heading.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcHeadingModule, DxcTableModule,DxcTagModule } from "@dxc-technology/halstack-angular";
+import { DxcHeadingModule, DxcTableModule,DxcTagModule,DxcChipModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
@@ -38,7 +38,8 @@ import { HeadingApiComponent } from '../../components/examples/heading/heading-a
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    DxcChipModule
   ],
   exports:[
     HeadingComponent,

@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcRadioModule,DxcTagModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcRadioModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +49,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       DxcTagModule,
       CodePlaygroundModule,
       ComponentsSidenavModule,
-      ColorPreviewModule
+      ColorPreviewModule,
+      DxcChipModule
     ],
     exports: [
         RadioComponent,

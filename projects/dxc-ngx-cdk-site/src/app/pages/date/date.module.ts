@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DateComponent } from './date.component';
-import { DxcDateModule, DxcTableModule, DxcTagModule } from '@dxc-technology/halstack-angular';
+import { DxcDateModule, DxcTableModule, DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
@@ -40,7 +40,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       DxcTagModule,
       CodePlaygroundModule,
       ComponentsSidenavModule,
-      ColorPreviewModule
+      ColorPreviewModule,
+      DxcChipModule
     ],
     exports: [
       DateComponent,

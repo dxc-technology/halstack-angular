@@ -44,7 +44,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    ColorPreviewModule
+    ColorPreviewModule,
+    DxcChipModule
   ],
   exports: [
     ChipComponent,

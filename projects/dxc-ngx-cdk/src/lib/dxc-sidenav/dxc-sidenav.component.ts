@@ -36,6 +36,7 @@ export class DxcSidenavComponent implements OnInit {
   }
   private _displayArrow = true;
 
+  isClicked: boolean = false;
   innerWidth;
   isResponsive;
   isShown: boolean;
@@ -71,6 +72,7 @@ export class DxcSidenavComponent implements OnInit {
 
   public arrowClicked() {
     this.isShown = !this.isShown;
+    this.isClicked = true;
     this.updateCss();
   }
 
@@ -152,7 +154,9 @@ export class DxcSidenavComponent implements OnInit {
               ? "translateX(-" + inputs.innerWidth * 0.6 + "px) !important"
               : "translateX(-297px) !important"
             : ""};
-          transition: transform 0.4s ease-in-out;
+          transition: ${this.isClicked 
+            ? "transform 0.4s ease-in-out;" 
+            : ""};
           cursor: pointer;
           z-index: ${inputs.mode === "overlay" || this.isResponsive
             ? "401"
@@ -170,7 +174,9 @@ export class DxcSidenavComponent implements OnInit {
             transform: ${inputs.isShown
               ? "rotate(-180deg)"
               : "rotate(0deg) !important"};
-            transition: margin 0.4s ease-in, transform 0.4s ease-in-out;
+            transition: ${this.isClicked 
+              ? "margin 0.4s ease-in, transform 0.4s ease-in-out; " 
+              : ""};
             fill: var(--sidenav-arrowColor);
           }
         }
@@ -194,8 +200,9 @@ export class DxcSidenavComponent implements OnInit {
             : ""};
           opacity: ${inputs.isShown ? "1" : "0"};
           visibility: ${inputs.isShown ? "visible" : "hidden"};
-          transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out,
-            visibility 0.4s ease-in-out;
+          transition: ${this.isClicked 
+            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;" 
+            : ""};
         }
 
         dxc-sidenav-content {
@@ -210,7 +217,9 @@ export class DxcSidenavComponent implements OnInit {
             : !inputs.isResponsive
             ? "-300px"
             : "-60%"};
-          transition: margin 0.4s ease-in-out;
+          transition: ${this.isClicked 
+            ? "margin 0.4s ease-in-out;" 
+            : ""};
           width: ${inputs.isShown &&
           inputs.mode === "push" &&
           !inputs.isResponsive

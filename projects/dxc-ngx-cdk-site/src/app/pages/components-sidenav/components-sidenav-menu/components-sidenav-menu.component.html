@@ -98,11 +98,6 @@
             (click)="navigateTo('components/card')">Card</a>
           </div>
           <div class="menu-item">
-            <a [ngClass]="{'active': 'components/chip' ? 
-            router.isActive(router.createUrlTree(['components/chip']).toString(), true) : false}"
-            (click)="navigateTo('components/chip')">Chip</a>
-          </div>
-          <div class="menu-item">
             <a [ngClass]="{'active': 'components/sidenav' ? 
             router.isActive(router.createUrlTree(['components/sidenav']).toString(), true) : false}"
             (click)="navigateTo('components/sidenav')">Sidenav</a>
@@ -129,6 +124,11 @@
             <a [ngClass]="{'active': 'components/alert' ? 
             router.isActive(router.createUrlTree(['components/alert']).toString(), true) : false}"
             (click)="navigateTo('components/alert')">Alert</a>
+          </div>
+          <div class="menu-item">
+            <a [ngClass]="{'active': 'components/chip' ? 
+            router.isActive(router.createUrlTree(['components/chip']).toString(), true) : false}"
+            (click)="navigateTo('components/chip')">Chip</a>
           </div>
           <div class="menu-item">
             <a [ngClass]="{'active': 'components/dialog' ? 

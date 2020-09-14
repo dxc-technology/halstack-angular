@@ -57,7 +57,6 @@ export const customTheme: Theme = {
     },
     "chip":{
       "backgroundColor": colors.darkWhite,
-      "outlinedColor": colors.black,
       "fontColor": colors.black
     },
     "date":{

@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcSwitchModule, DxcTableModule,DxcTagModule } from '@dxc-technology/halstack-angular';
+import { DxcSwitchModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
 import { SwitchComponent } from './switch.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,7 +39,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    ColorPreviewModule
+    ColorPreviewModule,
+    DxcChipModule
   ],
   exports: [
     SwitchExampleComponent,

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResultsetTableComponent } from './resultset-table.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule, DxcLinkModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule, DxcLinkModule,DxcChipModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
@@ -40,7 +40,8 @@ import { ResultsetTableThemeComponent } from '../../components/examples/resultse
     DxcLinkModule,
     ComponentsSidenavModule,
     CodePlaygroundModule,
-    ComponentsSidenavModule
+    ComponentsSidenavModule,
+    DxcChipModule
   ],
   exports: [
     ResultsetTableComponent,

@@ -1,6 +1,6 @@
 <div [class]="styleDxcTag" (mouseenter) ="mouseEnter()"  (mouseleave) ="mouseLeave()" 
       (click)="onClickHandler($event)">
-    <dxc-box *ngIf="linkHref == null" [size]="size" [shadowDepth]="shadowDepth" >   
+    <dxc-box *ngIf="linkHref == null" [size]="size" [shadowDepth]="shadowDepth" #dxcBox>   
         <div [class]="tagContent">
                 <div [class]="iconContainer">
                     <img src="{{iconSrc}}" class="tagIcon">
@@ -12,7 +12,7 @@
     </dxc-box>
     <div *ngIf="linkHref!=null">
         <a [class]="styledLink" href="{{linkHref}}">
-            <dxc-box [size]="size" [shadowDepth]="shadowDepth" >   
+            <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>   
                 <div [class]="tagContent">
                         <div [class]="iconContainer">
                             <img src="{{iconSrc}}" class="tagIcon">

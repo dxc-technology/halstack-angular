@@ -17,7 +17,7 @@ import { ChipBasicComponent } from "src/app/components/examples/chip/chip-basic/
 import { ChipExampleComponent } from "src/app/components/examples/chip/chip-example/chip-example.component";
 import { ChipTablePropertiesComponent } from "src/app/components/examples/chip/properties/box-table-properties/chip-table-properties.component";
 import { ChipImportComponent } from "src/app/components/examples/chip/chip-import/chip-import.component";
-import { ChipDisabledComponent } from 'src/app/components/examples/chip/chip-disabled/chip-disabled.component';
+import { ChipIconComponent } from 'src/app/components/examples/chip/chip-icon/chip-icon.component';
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
@@ -26,7 +26,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   declarations: [
     ChipComponent,
     ChipBasicComponent,
-    ChipDisabledComponent,
+    ChipIconComponent,
     ChipExampleComponent,
     ChipTablePropertiesComponent,
     ChipImportComponent,
@@ -49,7 +49,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   exports: [
     ChipComponent,
     ChipBasicComponent,
-    ChipDisabledComponent,
+    ChipIconComponent,
     ChipExampleComponent,
     ChipTablePropertiesComponent,
     ChipImportComponent,

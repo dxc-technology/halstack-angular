@@ -47,7 +47,7 @@ import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/ch
 import { CheckboxSizedComponent } from "../examples/checkbox/checkbox-sized/checkbox-sized.component";
 import { CheckboxExampleComponent } from "../examples/checkbox/checkbox-example/checkbox-example.component";
 import { ChipBasicComponent } from '../examples/chip/chip-basic/chip-basic.component';
-import { ChipDisabledComponent } from '../examples/chip/chip-disabled/chip-disabled.component';
+import { ChipIconComponent } from '../examples/chip/chip-icon/chip-icon.component';
 import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example.component';
 import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
 import { ChipTablePropertiesComponent } from '../examples/chip/properties/box-table-properties/chip-table-properties.component';
@@ -335,7 +335,7 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     CheckboxUncontrolledComponent,
     CheckboxSizedComponent,
     ChipBasicComponent,
-    ChipDisabledComponent,
+    ChipIconComponent,
     ChipExampleComponent,
     ChipImportComponent,
     ChipTablePropertiesComponent,

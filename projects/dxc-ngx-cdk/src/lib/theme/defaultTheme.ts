@@ -56,7 +56,7 @@ export const customTheme: Theme = {
       "checkedTrackBackgroundColor": colors.darkGrey
     },
     "chip":{
-      "backgroundColor": colors.lightGrey,
+      "backgroundColor": colors.darkWhite,
       "outlinedColor": colors.black,
       "fontColor": colors.black
     },

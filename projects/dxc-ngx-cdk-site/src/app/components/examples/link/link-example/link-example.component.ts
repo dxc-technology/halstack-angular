@@ -4,7 +4,6 @@ import { ExampleService } from 'src/app/service/example.service';
 import { LinkDefaultComponent } from '../link-default/link-default.component';
 import { LinkIconComponent } from '../link-icon/link-icon.component';
 import { LinkDisabledComponent } from '../link-disabled/link-disabled.component';
-import { LinkThemedComponent } from '../link-themed/link-themed.component';
 import { LinkUndercoratedComponent } from '../link-undercorated/link-undercorated.component';
 
 @Component({
@@ -56,25 +55,11 @@ export class LinkExampleComponent implements OnInit {
       });
 
       this.exampleService
-      .getCodeExample("link/link-themed/link-themed.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Dark themed Link',
-          component: LinkThemedComponent,
-          selector: "example3",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-
-      this.exampleService
       .getCodeExample("link/link-disabled/link-disabled.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Disabled Link',
           component: LinkDisabledComponent,
-          selector: "example4",
+          selector: "example3",
           examples: [
             resp1[0],
             resp1[1],
@@ -88,7 +73,7 @@ export class LinkExampleComponent implements OnInit {
         this.examples.push(this.exampleService.generateExample({
           title: 'Link with icon',
           component: LinkIconComponent,
-          selector: "example5",
+          selector: "example4",
           examples: [
             resp1[0],
             resp1[1],

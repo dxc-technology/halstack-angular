@@ -38,4 +38,7 @@ export class AutocompleteAsyncUncontrolledComponent implements OnInit {
     this.autocompleteAsync = this.autocompleteAsync.bind(this);
   }
 
+  onChange($event){
+    console.log('Onchange has been triggered');
+  }
 }

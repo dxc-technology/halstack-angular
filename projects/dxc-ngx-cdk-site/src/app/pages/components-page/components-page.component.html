@@ -12,7 +12,7 @@
                 text="Autocomplete"
                 href=""
                 [underlined]="underlined"
-                (click)="!!navigateToRoute('autocomplete')"
+                (click)="navigateToRoute('autocomplete'); $event.preventDefault()"
               ></dxc-link>
             </li>
             <li>
@@ -20,14 +20,14 @@
                 text="Button"
                 href=""
                 [underlined]="underlined"
-                (click)="!!navigateToRoute('button')"
+                (click)="navigateToRoute('button'); $event.preventDefault()"
               ></dxc-link>
             </li>
             <li>
               <dxc-link
                 href=""
                 [underlined]="underlined"
-                (click)="!!navigateToRoute('checkbox')"
+                (click)="navigateToRoute('checkbox'); $event.preventDefault()"
                 text="Checkbox"
               ></dxc-link>
             </li>
@@ -36,7 +36,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('date')"
+                (click)="navigateToRoute('date'); $event.preventDefault()"
                 text="Date"
                 [underlined]="underlined"
               ></dxc-link>
@@ -44,7 +44,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('radio')"
+                (click)="navigateToRoute('radio'); $event.preventDefault()"
                 text="Radio Button"
                 [underlined]="underlined"
               ></dxc-link>
@@ -52,7 +52,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('select')"
+                (click)="navigateToRoute('select'); $event.preventDefault()"
                 text="Select"
                 [underlined]="underlined"
               ></dxc-link>
@@ -62,7 +62,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('slider')"
+                (click)="navigateToRoute('slider'); $event.preventDefault()"
                 text="Slider"
                 [underlined]="underlined"
               ></dxc-link>
@@ -70,7 +70,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('switch')"
+                (click)="navigateToRoute('switch'); $event.preventDefault()"
                 text="Switch"
                 [underlined]="underlined"
               ></dxc-link>
@@ -78,7 +78,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('input')"
+                (click)="navigateToRoute('input'); $event.preventDefault()"
                 text="Text field"
                 [underlined]="underlined"
               ></dxc-link>
@@ -94,7 +94,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('footer')"
+                (click)="navigateToRoute('footer'); $event.preventDefault()"
                 text="Footer"
                 [underlined]="underlined"
               ></dxc-link>
@@ -102,7 +102,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('header')"
+                (click)="navigateToRoute('header'); $event.preventDefault()"
                 text="Header"
                 [underlined]="underlined"
               ></dxc-link>
@@ -110,7 +110,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('tabs')"
+                (click)="navigateToRoute('tabs'); $event.preventDefault()"
                 text="Tabs"
                 [underlined]="underlined"
               ></dxc-link>
@@ -120,7 +120,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('wizard')"
+                (click)="navigateToRoute('wizard'); $event.preventDefault()"
                 text="Wizard"
                 [underlined]="underlined"
               ></dxc-link>
@@ -136,7 +136,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('box')"
+                (click)="navigateToRoute('box'); $event.preventDefault()"
                 text="Box"
                 [underlined]="underlined"
               ></dxc-link>
@@ -144,7 +144,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('card')"
+                (click)="navigateToRoute('card'); $event.preventDefault()"
                 text="Card"
                 [underlined]="underlined"
                 >Card</dxc-link
@@ -153,7 +153,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('sidenav')"
+                (click)="navigateToRoute('sidenav'); $event.preventDefault()"
                 text="Sidenav"
                 [underlined]="underlined"
               ></dxc-link>
@@ -163,7 +163,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('tabbed-section')"
+                (click)="navigateToRoute('tabbed-section'); $event.preventDefault()"
                 text="Tabbed Sections"
                 [underlined]="underlined"
               ></dxc-link>
@@ -171,7 +171,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('tag')"
+                (click)="navigateToRoute('tag'); $event.preventDefault()"
                 text="Tag"
                 [underlined]="underlined"
               ></dxc-link>
@@ -187,7 +187,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('accordion')"
+                (click)="navigateToRoute('accordion'); $event.preventDefault()"
                 text="Accordion"
                 [underlined]="underlined"
               ></dxc-link>
@@ -195,7 +195,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('alert')"
+                (click)="navigateToRoute('alert'); $event.preventDefault()"
                 text="Alert"
                 [underlined]="underlined"
               ></dxc-link>
@@ -203,7 +203,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('dialog')"
+                (click)="navigateToRoute('dialog'); $event.preventDefault()"
                 text="Dialog"
                 [underlined]="underlined"
               ></dxc-link>
@@ -213,7 +213,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('dropdown')"
+                (click)="navigateToRoute('dropdown'); $event.preventDefault()"
                 text="Dropdown"
                 [underlined]="underlined"
               ></dxc-link>
@@ -221,7 +221,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('heading')"
+                (click)="navigateToRoute('heading'); $event.preventDefault()"
                 text="Heading"
                 [underlined]="underlined"
               ></dxc-link>
@@ -229,7 +229,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('link')"
+                (click)="navigateToRoute('link'); $event.preventDefault()"
                 text="Link"
                 [underlined]="underlined"
               ></dxc-link>
@@ -239,7 +239,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('paginator')"
+                (click)="navigateToRoute('paginator'); $event.preventDefault()"
                 text="Paginator"
                 [underlined]="underlined"
               ></dxc-link>
@@ -247,7 +247,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('progressbar')"
+                (click)="navigateToRoute('progressbar'); $event.preventDefault()"
                 text="Progressbar"
                 [underlined]="underlined"
                 >Progressbar</dxc-link
@@ -256,7 +256,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('resultsettable')"
+                (click)="navigateToRoute('resultsettable'); $event.preventDefault()"
                 text="Resultset Table"
                 [underlined]="underlined"
               ></dxc-link>
@@ -266,7 +266,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('spinner')"
+                (click)="navigateToRoute('spinner'); $event.preventDefault()"
                 text="Spinner"
                 [underlined]="underlined"
               ></dxc-link>
@@ -274,7 +274,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('table')"
+                (click)="navigateToRoute('table'); $event.preventDefault()"
                 text="Table"
                 [underlined]="underlined"
               ></dxc-link>
@@ -282,7 +282,7 @@
             <li>
               <dxc-link
                 href=""
-                (click)="!!navigateToRoute('upload')"
+                (click)="navigateToRoute('upload'); $event.preventDefault()"
                 text="Upload"
                 [underlined]="underlined"
               ></dxc-link>

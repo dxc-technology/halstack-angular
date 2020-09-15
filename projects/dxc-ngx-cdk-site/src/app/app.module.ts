@@ -102,12 +102,7 @@ import { AssetsPipeModule } from './pipe/assets.pipe.module';
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },
-    { provide: 'ExampleService', useClass: ExampleService },
-    {
-      provide: APP_BASE_HREF,
-      useFactory: (s: PlatformLocation) => s.getBaseHrefFromDOM(),
-      deps: [PlatformLocation]
-    }
+    { provide: 'ExampleService', useClass: ExampleService }
 
   ],
   bootstrap: [AppComponent],

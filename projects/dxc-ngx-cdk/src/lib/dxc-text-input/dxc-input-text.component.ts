@@ -151,12 +151,10 @@ export class DxcTextInputComponent
     this._valueChangeTrack = true;
 
     if (this.onClickSuffix.observers.length === 0) {
-      this.suffixIndex = -1;
       this.suffixPointer = false;
     }
 
     if (this.onClickPrefix.observers.length === 0) {
-      this.prefixIndex = -1;
       this.prefixPointer = false;
     }
   }
@@ -235,21 +233,11 @@ export class DxcTextInputComponent
   }
 
   public onClickSuffixHandler($event: any): void {
-    if ($event.keyCode && $event.keyCode === 32) {
-      $event.preventDefault();
-      this.onClickSuffix.emit($event);
-    } else if (!$event.keyCode) {
-      this.onClickSuffix.emit($event);
-    }
+    this.onClickSuffix.emit($event);
   }
 
   public onClickPrefixHandler($event: any): void {
-    if ($event.keyCode && $event.keyCode === 32) {
-      $event.preventDefault();
-      this.onClickPrefix.emit($event);
-    } else if (!$event.keyCode) {
-      this.onClickPrefix.emit($event);
-    }
+    this.onClickPrefix.emit($event);
   }
 
   private setCursorSelection(input: ElementRef) {

@@ -2,8 +2,6 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Example } from '../model/example';
 import { forkJoin } from 'rxjs';
-import { Router } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +13,14 @@ export class ExampleService {
   rootExamplesPath = 'assets/examples/';
 
 
-  constructor(private http: HttpClient, @Inject(APP_BASE_HREF) public baseHref: string) {
+  constructor(private http: HttpClient) {
 
   }
 
   getCodeExample(examplePath){
-      const html =  this.getContentTab(`${this.baseHref}${this.rootExamplesPath}${examplePath}.html`);
-      const ts =  this.getContentTab(`${this.baseHref}${this.rootExamplesPath}${examplePath}.ts`);
-      const css =  this.getContentTab(`${this.baseHref}${this.rootExamplesPath}${examplePath}.scss`);
+      const html =  this.getContentTab(`${this.rootExamplesPath}${examplePath}.html`);
+      const ts =  this.getContentTab(`${this.rootExamplesPath}${examplePath}.ts`);
+      const css =  this.getContentTab(`${this.rootExamplesPath}${examplePath}.scss`);
       return forkJoin([html, ts, css]);
   }
 
@@ -30,7 +28,7 @@ export class ExampleService {
     let result = [];
 
     files.forEach(file => {
-      result.push(this.getContentTab(` ${this.baseHref}${this.rootExamplesPath}${file}.properties`))
+      result.push(this.getContentTab(`${this.rootExamplesPath}${file}.properties`))
     });
 
    return forkJoin(result);

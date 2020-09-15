@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 })
 export class ComponentsSidenavMenuComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   navigateTo(route) {
     this.router.navigate([route]);

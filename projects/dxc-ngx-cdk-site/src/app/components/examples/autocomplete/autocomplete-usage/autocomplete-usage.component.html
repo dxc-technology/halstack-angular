@@ -5,7 +5,7 @@
     text="text field"
     href=""
     [underlined]="underlined"
-    (click)="!!navigateToRoute()"
+    (click)="navigateToRoute(); $event.preventDefault()"
   ></dxc-link>
   ´s ones
 </p>

@@ -36,7 +36,7 @@ const getVersionsInS3Bucket = async () => {
 
 const removeBucket = (version) => {
    return new Promise((resolve, reject) => {
-    console.log(`Removin s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
+    console.log(`Removing s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
     exec(
       `aws s3 rm s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
       (error, stdout, stderr) => {

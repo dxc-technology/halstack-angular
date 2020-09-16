@@ -11,13 +11,10 @@ import { SelectComponent } from './select.component';
 import { SelectDefaultComponent } from '../../components/examples/select/select-default/select-default.component';
 import { SelectExampleComponent } from 'src/app/components/examples/select/select-example/select-example.component';
 import { SelectIconsComponent } from '../../components/examples/select/select-icons/select-icons.component';
-import { SelectInvalidComponent } from 'src/app/components/examples/select/select-invalid/select-invalid.component';
 import { SelectPropertiesComponent } from '../../components/examples/select/properties/select-properties/select-properties.component';
 import { SelectMultipleComponent } from '../../components/examples/select/select-multiple/select-multiple.component';
 import { SelectSizedComponent } from '../../components/examples/select/select-sized/select-sized.component';
 import { SelectUncontrolledComponent } from '../../components/examples/select/select-uncontrolled/select-uncontrolled.component';
-import { SelectUncontrolledMultipleComponent } from '../../components/examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
-import { SelectAssistiveComponent } from '../../components/examples/select/select-assistive/select-assistive.component';
 import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
@@ -32,13 +29,10 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       SelectDefaultComponent,
       SelectExampleComponent,
       SelectIconsComponent,
-      SelectInvalidComponent,
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
       SelectUncontrolledComponent,
-      SelectUncontrolledMultipleComponent,
-      SelectAssistiveComponent,
       SelectImportComponent,
       SelectApiComponent,
       SelectThemeComponent
@@ -62,11 +56,9 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       SelectDefaultComponent,
       SelectExampleComponent,
       SelectIconsComponent,
-      SelectInvalidComponent,
       SelectMultipleComponent,
       SelectPropertiesComponent,
       SelectSizedComponent,
-      SelectAssistiveComponent,
       SelectImportComponent,
       SelectApiComponent,
       SelectThemeComponent

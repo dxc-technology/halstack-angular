@@ -26,7 +26,6 @@ export class SelectMultipleComponent {
   constructor() {}
 
   onChange(event) {
-    this.multipleSelected = event.filter(item => (item!='2'));
     console.log(event);
   }
 

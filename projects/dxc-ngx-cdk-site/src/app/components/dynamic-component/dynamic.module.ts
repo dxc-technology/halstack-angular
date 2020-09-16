@@ -67,10 +67,8 @@ import { RadioSizedComponent } from "../examples/radio/radio-sized/radio-sized.c
 import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
 import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
 import { SelectIconsComponent } from "../examples/select/select-icons/select-icons.component";
-import { SelectInvalidComponent } from '../examples/select/select-invalid/select-invalid.component';
 import { SelectMultipleComponent } from "../examples/select/select-multiple/select-multiple.component";
 import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
-import { SelectUncontrolledMultipleComponent } from '../examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
 import { SliderDefaultComponent } from "../examples/slider/slider-default/slider-default.component";
@@ -176,7 +174,6 @@ import { HeaderDirectivesComponent } from '../examples/header/header-directives/
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
-import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
@@ -360,10 +357,8 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     SelectUncontrolledComponent,
     SelectExampleComponent,
     SelectIconsComponent,
-    SelectInvalidComponent,
     SelectMultipleComponent,
     SelectPropertiesComponent,
-    SelectUncontrolledMultipleComponent,
     SelectSizedComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
@@ -463,7 +458,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
-    SelectAssistiveComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     ResultsetTableDirectivesComponent,

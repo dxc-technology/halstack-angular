@@ -6,9 +6,6 @@ import { SelectIconsComponent } from "../select-icons/select-icons.component";
 import { SelectMultipleComponent } from "../select-multiple/select-multiple.component";
 import { SelectSizedComponent } from "../select-sized/select-sized.component";
 import { SelectUncontrolledComponent } from "../select-uncontrolled/select-uncontrolled.component";
-import { SelectUncontrolledMultipleComponent } from "../select-uncontrolled-multiple/select-uncontrolled-multiple.component";
-import { SelectInvalidComponent } from "../select-invalid/select-invalid.component";
-import { SelectAssistiveComponent } from "../select-assistive/select-assistive.component";
 
 @Component({
   selector: "app-select-example",
@@ -67,24 +64,9 @@ export class SelectExampleComponent implements OnInit {
       .subscribe((resp1) => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Controlled Multiple Select",
+            title: "Multiple Select",
             component: SelectMultipleComponent,
             selector: "example3",
-            examples: [resp1[0], resp1[1], resp1[2]],
-          })
-        );
-      });
-
-    this.exampleService
-      .getCodeExample(
-        "select/select-uncontrolled-multiple/select-uncontrolled-multiple.component"
-      )
-      .subscribe((resp1) => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Uncontrolled Multiple Select",
-            component: SelectUncontrolledMultipleComponent,
-            selector: "example4",
             examples: [resp1[0], resp1[1], resp1[2]],
           })
         );
@@ -97,7 +79,7 @@ export class SelectExampleComponent implements OnInit {
           this.exampleService.generateExample({
             title: "Select With Icons",
             component: SelectIconsComponent,
-            selector: "example5",
+            selector: "example4",
             examples: [resp1[0], resp1[1], resp1[2]],
           })
         );
@@ -110,31 +92,7 @@ export class SelectExampleComponent implements OnInit {
           this.exampleService.generateExample({
             title: "Select Sized",
             component: SelectSizedComponent,
-            selector: "example6",
-            examples: [resp1[0], resp1[1], resp1[2]],
-          })
-        );
-      });
-    this.exampleService
-      .getCodeExample("select/select-assistive/select-assistive.component")
-      .subscribe((resp1) => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Select with Assistive Text",
-            component: SelectAssistiveComponent,
-            selector: "example7",
-            examples: [resp1[0], resp1[1], resp1[2]],
-          })
-        );
-      });
-    this.exampleService
-      .getCodeExample("select/select-invalid/select-invalid.component")
-      .subscribe((resp1) => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Select Invalid",
-            component: SelectInvalidComponent,
-            selector: "example8",
+            selector: "example5",
             examples: [resp1[0], resp1[1], resp1[2]],
           })
         );

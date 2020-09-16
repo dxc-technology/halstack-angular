@@ -1,17 +1,20 @@
 <div id="radio-label-position-examples-container">
 
    <dxc-radio
-      label="Radio"
+      label="Label before"
       name="radioLabel1"
       labelPosition="before"
       [checked]="checked1"
       (onChange)="onChange1()"
+      margin="medium"
     ></dxc-radio>
     <dxc-radio 
-        label="Radio" 
+        label="Label after" 
         name="radioLabel2"
         [checked]="checked2" 
-        (onChange)="onChange2()" >
+        (onChange)="onChange2()"
+        margin="medium" >
     </dxc-radio>
+    
 </div>
     

@@ -29,7 +29,6 @@ import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplet
 import { ButtonModesComponent } from "../examples/button/button-modes/button-modes.component";
 import { ButtonWithIconComponent } from "../examples/button/button-with-icon/button-with-icon.component";
 import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
-import { ButtonDefaultComponent } from "../examples/button/button-default/button-default.component";
 import { ButtonSizedComponent } from "../examples/button/button-sized/button-sized.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
@@ -208,7 +207,6 @@ import { TextInputImportComponent } from '../examples/text-input/text-input-impo
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
 import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
-import { ButtonTextModeComponent } from '../examples/button/button-text-mode/button-text-mode.component';
 import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
@@ -317,7 +315,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     ButtonModesComponent,
     ButtonWithIconComponent,
     ButtonExampleComponent,
-    ButtonDefaultComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
@@ -502,7 +499,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     UploadImportComponent,
     WizardImportComponent,
     DropdownHoverComponent,
-    ButtonTextModeComponent,
     ButtonThemeComponent,
     ButtonApiComponent,
     CheckboxApiComponent,

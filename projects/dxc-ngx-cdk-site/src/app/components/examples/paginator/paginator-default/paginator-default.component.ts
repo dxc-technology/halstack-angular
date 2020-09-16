@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginatorDefaultComponent implements OnInit {
 
-  paginationActions : Array<string> = ['prev', 'next', 'first'];
+  paginationActions : Array<string> = ['prev', 'next', 'first', 'last'];
 
   page : number = 1;
   totalItems : number = 27;

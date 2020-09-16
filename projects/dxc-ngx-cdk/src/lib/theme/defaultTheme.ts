@@ -44,7 +44,6 @@ export const customTheme: Theme = {
     },
     "radio":{
       "color": colors.black,
-      "fontColor": colors.black
     },
     "select":{
       "selectedOptionBackgroundColor": colors.lightGrey
@@ -57,6 +56,7 @@ export const customTheme: Theme = {
     },
     "chip":{
       "backgroundColor": colors.darkWhite,
+      "outlinedColor": "",
       "fontColor": colors.black
     },
     "date":{
@@ -146,7 +146,8 @@ export const defaultTheme: Theme = {
       // "disabledDotColor": 0.34,
       // "disabledBorderColor": 0.34
       "disabled": 0.34,
-      "focusColor": colors.blue
+      "focusColor": colors.blue,
+      "fontColor": "inherit"
     },
     "select":{
       "color": colors.black,
@@ -279,6 +280,7 @@ export const defaultTheme: Theme = {
       "separatorColor": colors.lightGrey,
       "bodyBackgroundColor": colors.white,
       "bodyFontColor": colors.black
-    }
+    },
+    "paginator": {}
   }
 };

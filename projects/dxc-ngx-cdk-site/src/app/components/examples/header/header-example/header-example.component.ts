@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Example } from '../../../../model/example';
 import { ExampleService } from '../../../../service/example.service';
 import { HeaderDefaultComponent } from '../header-default/header-default.component';
-import { HeaderUnderlinedComponent } from '../header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../header-custom-content/header-custom-content.component';
 
 @Component({
@@ -40,25 +39,11 @@ export class HeaderExampleComponent implements OnInit {
       });
 
       this.exampleService
-      .getCodeExample("header/header-underlined/header-underlined.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Underlined Header',
-          component: HeaderUnderlinedComponent,
-          selector: "example2",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-
-      this.exampleService
       .getCodeExample("header/header-custom-content/header-custom-content.component").subscribe(resp1 => {
         this.examples.push(this.exampleService.generateExample({
           title: 'Custom content Header',
           component: HeaderCustomContentComponent,
-          selector: "example3",
+          selector: "example2",
           examples: [
             resp1[0],
             resp1[1],

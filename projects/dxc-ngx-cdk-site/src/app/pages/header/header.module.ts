@@ -10,7 +10,6 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../../components/examples/header/properties/header-table-properties/header-table-properties.component';
 import { HeaderDefaultComponent } from '../../components/examples/header/header-default/header-default.component';
-import { HeaderUnderlinedComponent } from '../../components/examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
@@ -29,7 +28,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     HeaderDefaultComponent,
-    HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
@@ -57,7 +55,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     HeaderDefaultComponent,
-    HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,

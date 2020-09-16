@@ -218,10 +218,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
         border-color: var(--date-pickerSelectedDateBackgroundColor);
         background-color: var(--date-pickerSelectedDateBackgroundColor);
         color: var(--date-pickerSelectedDateColor);
-        &:hover {
-          background-color: var(--date-pickerHoverDateTextColor);
-          opacity: var(--date-pickerHoverDateBackgroundColor);
-        }
         &.mat-calendar-body-today {
           border: none;
           box-shadow: none;

@@ -91,7 +91,6 @@ import { TextInputTablePropertiesComponent } from "../examples/text-input/proper
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
 import { TextInputDefaultComponent } from "../examples/text-input/text-input-default/text-input-default.component";
 import { TextInputFillParentComponent } from "../examples/text-input/text-input-fill-parent/text-input-fill-parent.component";
-import { TextInputMultiComponent } from "../examples/text-input/text-input-multi/text-input-multi.component";
 import { TextInputSizedComponent } from "../examples/text-input/text-input-sized/text-input-sized.component";
 import { TextInputPrefixSuffixComponent } from "../examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component";
 import { FooterExampleComponent } from "../examples/footer/footer-example/footer-example.component";
@@ -277,6 +276,7 @@ import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-the
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
+import { TextInputMaskedComponent } from '../examples/text-input/text-input-masked/text-input-masked.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -387,7 +387,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputFillParentComponent,
-    TextInputMultiComponent,
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
     TextInputTablePropertiesComponent,
@@ -557,7 +556,8 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     UploadApiComponent,
     UploadThemeComponent,
     ResultsetTableApiComponent,
-    ResultsetTableThemeComponent
+    ResultsetTableThemeComponent,
+    TextInputMaskedComponent
   ]
 })
 export class DynamicModule {}

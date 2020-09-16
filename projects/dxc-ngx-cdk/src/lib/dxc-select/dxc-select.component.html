@@ -16,6 +16,8 @@
     [multiple]="multiple"
     [value]="renderedValue"
     disableRipple
+    (keydown)="openSelect($event)"
+    #dxcSelect
   >
     <mat-select-trigger>
       <ng-container *ngIf="renderedValue && onlyHasIcons">

@@ -6,6 +6,7 @@ import {
   HostBinding,
   OnChanges,
   SimpleChanges,
+  ViewChild,
 } from "@angular/core";
 import { isArray } from "util";
 import { css } from "emotion";
@@ -41,6 +42,8 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public assistiveText: string;
   @Input() public invalid: boolean = false;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+
+  @ViewChild('dxcSelect', {static: true}) dxcSelect;
 
   renderedValue: string | string[];
 
@@ -120,6 +123,12 @@ export class DxcSelectComponent implements OnChanges {
         this.labeltoShow.push(element[0].label);
       }
     });
+  }
+
+  openSelect($event: any) {
+    if($event.keyCode && ($event.keyCode === 40 || $event.keyCode === 38)) {
+      this.dxcSelect.open();
+    }
   }
 
   getInvalidStyles(inputs) {

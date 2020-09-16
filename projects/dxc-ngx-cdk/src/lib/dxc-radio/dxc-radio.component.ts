@@ -4,17 +4,17 @@ import {
   Input,
   Output,
   HostBinding,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
-import { CssUtils } from '../utils';
+import { CssUtils } from "../utils";
 
 @Component({
   selector: "dxc-radio",
   templateUrl: "./dxc-radio.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcRadioComponent implements OnInit {
   @Input() checked: boolean;
@@ -42,7 +42,7 @@ export class DxcRadioComponent implements OnInit {
     labelPosition: "after",
     margin: null,
     size: "fitContent",
-    value:null
+    value: null,
   });
 
   sizes = {
@@ -50,12 +50,12 @@ export class DxcRadioComponent implements OnInit {
     medium: "240px",
     large: "480px",
     fillParent: "100%",
-    fitContent: "unset"
+    fitContent: "unset",
   };
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.renderedChecked = this.checked;
-    
+
     this.labelPosition === "before" ? "before" : "after";
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -86,17 +86,17 @@ export class DxcRadioComponent implements OnInit {
   onValueChange($event: any) {
     this.onChange.emit($event.source.checked);
 
-    if (this.checked === undefined || this.checked === null){
+    if (this.checked === undefined || this.checked === null) {
       this.renderedChecked = $event.source.checked;
-    }else{
+    } else {
       $event.source.checked = this.renderedChecked;
       $event.source._inputElement.nativeElement.checked = this.renderedChecked;
-    }  
+    }
   }
 
-  setTextAlign(labelPosition){
-    if(labelPosition==="before") {
-      return css `
+  setTextAlign(labelPosition) {
+    if (labelPosition === "before") {
+      return css`
         text-align: end;
       `;
     }
@@ -107,13 +107,14 @@ export class DxcRadioComponent implements OnInit {
       display: inline-flex;
       ${this.utils.getMargins(inputs.margin)}
       ${this.calculateWidth(inputs)}
-      mat-radio-button{
+      mat-radio-button {
         width: 100%;
-        &.cdk-focused:not(.mat-radio-disabled){
+        &.cdk-focused:not(.mat-radio-disabled) {
           .mat-radio-label {
             .mat-radio-container {
               .mat-radio-outer-circle {
-              border-color: var(--radio-focusColor);
+                outline: -webkit-focus-ring-color auto 1px;
+                outline-color: var(--radio-focusColor);
               }
             }
           }
@@ -133,20 +134,20 @@ export class DxcRadioComponent implements OnInit {
           }
           .mat-radio-container {
             ${inputs.labelPosition === "after"
-            ? css`
-                margin-right: 15px;
-                margin-left: 15px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-              `
-            : inputs.labelPosition === "before"
-            ? css`
-                margin-left: 15px;
-                margin-right: 15px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-              `
-            : css``}
+              ? css`
+                  margin-right: 15px;
+                  margin-left: 15px;
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                `
+              : inputs.labelPosition === "before"
+              ? css`
+                  margin-left: 15px;
+                  margin-right: 15px;
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                `
+              : css``}
             .mat-radio-inner-circle {
               background-color: var(--radio-color);
             }
@@ -180,7 +181,7 @@ export class DxcRadioComponent implements OnInit {
     `;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.utils = null;
   }
 }

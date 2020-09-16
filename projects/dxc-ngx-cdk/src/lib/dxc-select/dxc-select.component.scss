@@ -20,14 +20,16 @@
       align-items: center;
       width: fit-content;
     }
-    &.mat-selected:not(.mat-option-multiple){
+    &.mat-selected:not(.mat-option-multiple) {
       background: var(--select-selectedOptionBackgroundColor);
     }
     &.mat-selected {
       background: var(--select-selectedOptionBackgroundColor);
     }
     &:hover:not(.mat-option-disabled) {
-      background: var(--select-hoverOptionBackgroundColor);
+      &:not(.mat-selected) {
+        background: var(--select-hoverOptionBackgroundColor);
+      }
     }
     &.mat-option-multiple {
       .mat-pseudo-checkbox {

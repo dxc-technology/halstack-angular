@@ -6,17 +6,17 @@ import {
   HostBinding,
   OnChanges,
   OnInit,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcSliderComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
@@ -27,14 +27,18 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   @Input() maxValue: number = 100;
   @Input() step: number = 1;
   @Input()
-  get showLimitsValues(): boolean { return this._showLimitsValues; }
+  get showLimitsValues(): boolean {
+    return this._showLimitsValues;
+  }
   set showLimitsValues(value: boolean) {
     this._showLimitsValues = coerceBooleanProperty(value);
   }
   private _showLimitsValues = false;
 
   @Input()
-  get showInput(): boolean { return this._showInput; }
+  get showInput(): boolean {
+    return this._showInput;
+  }
   set showInput(value: boolean) {
     this._showInput = coerceBooleanProperty(value);
   }
@@ -52,10 +56,10 @@ export class DxcSliderComponent implements OnInit, OnChanges {
 
   tickInterval: any;
   renderedValue: number;
-  
+
   minValueClass: any;
   maxValueClass: any;
-  inputMargin= {left: 'medium', top:'xxsmall'};
+  inputMargin = { left: "medium", top: "xxsmall" };
 
   defaultInputs = new BehaviorSubject<any>({
     minValue: 0,
@@ -68,14 +72,14 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     disabled: false,
     required: false,
     margin: null,
-    size: null
+    size: null,
   });
 
   sizes = {
     medium: "240px",
     large: "480px",
     fillParent: "100%",
-    fitContent: "unset"
+    fitContent: "unset",
   };
 
   constructor(private utils: CssUtils) {}
@@ -87,10 +91,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    
     this.tickInterval = this.step > 1 ? 1 : 0;
     this.isDisabled = this.disabled;
-    this.renderedValue = this.value
+    this.renderedValue = this.value;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -109,32 +112,32 @@ export class DxcSliderComponent implements OnInit, OnChanges {
    *  @param $event
    */
   public valueChanged($event: any): void {
-    let newValue = ($event.target ? $event.target.value : $event.value)*1;
-    newValue = (newValue < this.minValue ? this.minValue : newValue);
-    newValue = (newValue > this.maxValue ? this.maxValue : newValue);
-        
+    let newValue = ($event.target ? $event.target.value : $event.value) * 1;
+    newValue = newValue < this.minValue ? this.minValue : newValue;
+    newValue = newValue > this.maxValue ? this.maxValue : newValue;
+
     this.onChange.emit(newValue);
-    if (this.value === undefined || this.value === null){
+    if (this.value === undefined || this.value === null) {
       this.renderedValue = newValue;
-    }else{
+    } else {
       $event.value = this.renderedValue;
-      $event.source._value=this.renderedValue;
-      $event.source._percent=this.renderedValue/100;
+      $event.source._value = this.renderedValue;
+      $event.source._percent = this.renderedValue / 100;
     }
   }
 
   /**
    * controlled dxc-input behaviour
-   * 
+   *
    * @param $event
    */
   public inputValueChanged($event: any): void {
     let newValue = $event * 1;
-    newValue = (newValue < this.minValue ? this.minValue : newValue);
-    newValue = (newValue > this.maxValue ? this.maxValue : newValue);
-        
+    newValue = newValue < this.minValue ? this.minValue : newValue;
+    newValue = newValue > this.maxValue ? this.maxValue : newValue;
+
     this.onChange.emit(newValue);
-    if (this.value === undefined || this.value === null){
+    if (this.value === undefined || this.value === null) {
       this.renderedValue = newValue;
     }
   }
@@ -169,7 +172,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         }
       }
       mat-slider {
-        flex-grow: 1; 
+        flex-grow: 1;
         .mat-slider-ticks-container {
           height: 4px;
           top: -1px;
@@ -180,7 +183,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           height: 1px;
         }
         &:not(.mat-slider-disabled) {
-          .mat-slider-track-fill{
+          .mat-slider-track-fill {
             background-color: var(--slider-color);
           }
           .mat-slider-thumb {
@@ -192,7 +195,13 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             background-color: var(--slider-color) !important;
           }
           .mat-slider-ticks {
-            background-image: repeating-linear-gradient(to right,var(--slider-color) , var(--slider-color) 4px 4px, transparent 2px, #e2141400);
+            background-image: repeating-linear-gradient(
+              to right,
+              var(--slider-color),
+              var(--slider-color) 4px 4px,
+              transparent 2px,
+              #e2141400
+            );
             height: 4px;
           }
           &.mat-slider-sliding {
@@ -204,6 +213,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           &.cdk-focused:not(.mat-slider-sliding) {
             .mat-slider-thumb {
               transform: scale(0.7);
+              outline: -webkit-focus-ring-color auto 1px;
+              outline-color: var(--slider-focusColor);
             }
             .mat-slider-focus-ring {
               width: 0px;
@@ -228,31 +239,37 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             opacity: var(--slider-disabledtotalLine) !important;
             background-color: var(--slider-color) !important;
           }
-          .mat-slider-track-fill{
+          .mat-slider-track-fill {
             opacity: var(--slider-disabledTrackLine) !important;
             background-color: var(--slider-color) !important;
           }
           .mat-slider-ticks {
             opacity: var(--slider-disabledDotsBackgroundColor) !important;
-            background-image: repeating-linear-gradient(to right,var(--slider-color) , var(--slider-color) 4px 4px, transparent 2px, #e2141400);
+            background-image: repeating-linear-gradient(
+              to right,
+              var(--slider-color),
+              var(--slider-color) 4px 4px,
+              transparent 2px,
+              #e2141400
+            );
             height: 4px;
           }
         }
       }
-
     `;
   }
 
-  getMinLabelContainerClass() { 
-    return css`    
+  getMinLabelContainerClass() {
+    return css`
       font-size: 16px;
       margin-right: 15px;
-    `;}
+    `;
+  }
 
-  getMaxLabelContainerClass(inputs: any) { 
-    return css`    
+  getMaxLabelContainerClass(inputs: any) {
+    return css`
       font-size: 16px;
       margin-left: ${inputs.step === 1 ? "15px" : "20px"};
-    `;}
-    
+    `;
+  }
 }

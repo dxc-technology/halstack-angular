@@ -160,7 +160,8 @@ export const defaultTheme: Theme = {
       "disabledThumbBackgroundColor": 0.34,
       "disabledDotsBackgroundColor": 0.34,
       "disabledTrackLine": 0.34,
-      "disabledtotalLine": 0.34
+      "disabledtotalLine": 0.34,
+      "focusColor": colors.blue
     },
     "switch":{
       "checkedThumbBackgroundColor": colors.white,

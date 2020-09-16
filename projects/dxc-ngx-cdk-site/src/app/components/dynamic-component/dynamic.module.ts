@@ -29,7 +29,6 @@ import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplet
 import { ButtonModesComponent } from "../examples/button/button-modes/button-modes.component";
 import { ButtonWithIconComponent } from "../examples/button/button-with-icon/button-with-icon.component";
 import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
-import { ButtonDefaultComponent } from "../examples/button/button-default/button-default.component";
 import { ButtonSizedComponent } from "../examples/button/button-sized/button-sized.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
@@ -68,10 +67,8 @@ import { RadioSizedComponent } from "../examples/radio/radio-sized/radio-sized.c
 import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
 import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
 import { SelectIconsComponent } from "../examples/select/select-icons/select-icons.component";
-import { SelectInvalidComponent } from '../examples/select/select-invalid/select-invalid.component';
 import { SelectMultipleComponent } from "../examples/select/select-multiple/select-multiple.component";
 import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
-import { SelectUncontrolledMultipleComponent } from '../examples/select/select-uncontrolled-multiple/select-uncontrolled-multiple.component';
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
 import { SliderDefaultComponent } from "../examples/slider/slider-default/slider-default.component";
@@ -94,7 +91,6 @@ import { TextInputTablePropertiesComponent } from "../examples/text-input/proper
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
 import { TextInputDefaultComponent } from "../examples/text-input/text-input-default/text-input-default.component";
 import { TextInputFillParentComponent } from "../examples/text-input/text-input-fill-parent/text-input-fill-parent.component";
-import { TextInputMultiComponent } from "../examples/text-input/text-input-multi/text-input-multi.component";
 import { TextInputSizedComponent } from "../examples/text-input/text-input-sized/text-input-sized.component";
 import { TextInputPrefixSuffixComponent } from "../examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component";
 import { FooterExampleComponent } from "../examples/footer/footer-example/footer-example.component";
@@ -136,7 +132,6 @@ import { TabsContentComponent } from "../examples/tabs/tabs-content/tabs-content
 import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
 import { HeaderDefaultComponent } from '../examples/header/header-default/header-default.component';
-import { HeaderUnderlinedComponent } from '../examples/header/header-underlined/header-underlined.component';
 import { HeaderCustomContentComponent } from '../examples/header/header-custom-content/header-custom-content.component';
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
 import { UploadDefaultComponent } from "../examples/upload/upload-default/upload-default.component";
@@ -177,7 +172,6 @@ import { HeaderDirectivesComponent } from '../examples/header/header-directives/
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
-import { SelectAssistiveComponent } from '../examples/select/select-assistive/select-assistive.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
@@ -208,7 +202,6 @@ import { TextInputImportComponent } from '../examples/text-input/text-input-impo
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
 import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
-import { ButtonTextModeComponent } from '../examples/button/button-text-mode/button-text-mode.component';
 import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
@@ -282,6 +275,7 @@ import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-the
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
+import { TextInputMaskedComponent } from '../examples/text-input/text-input-masked/text-input-masked.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -317,7 +311,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     ButtonModesComponent,
     ButtonWithIconComponent,
     ButtonExampleComponent,
-    ButtonDefaultComponent,
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
@@ -363,10 +356,8 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     SelectUncontrolledComponent,
     SelectExampleComponent,
     SelectIconsComponent,
-    SelectInvalidComponent,
     SelectMultipleComponent,
     SelectPropertiesComponent,
-    SelectUncontrolledMultipleComponent,
     SelectSizedComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
@@ -395,7 +386,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     TextInputDefaultComponent,
     TextInputUncontrolledComponent,
     TextInputFillParentComponent,
-    TextInputMultiComponent,
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
     TextInputTablePropertiesComponent,
@@ -438,7 +428,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     HeaderDefaultComponent,
-    HeaderUnderlinedComponent,
     HeaderCustomContentComponent,
     UploadTablePropertiesComponent,
     UploadExampleComponent,
@@ -466,7 +455,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
-    SelectAssistiveComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     ResultsetTableDirectivesComponent,
@@ -502,7 +490,6 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     UploadImportComponent,
     WizardImportComponent,
     DropdownHoverComponent,
-    ButtonTextModeComponent,
     ButtonThemeComponent,
     ButtonApiComponent,
     CheckboxApiComponent,
@@ -567,7 +554,8 @@ import { ResultsetTableThemeComponent } from '../examples/resultset-table/result
     UploadApiComponent,
     UploadThemeComponent,
     ResultsetTableApiComponent,
-    ResultsetTableThemeComponent
+    ResultsetTableThemeComponent,
+    TextInputMaskedComponent
   ]
 })
 export class DynamicModule {}

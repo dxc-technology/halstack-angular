@@ -10,7 +10,6 @@ import { TextInputTablePropertiesComponent } from '../../components/examples/tex
 import { TextInputDefaultComponent } from '../../components/examples/text-input/text-input-default/text-input-default.component';
 import { TextInputExampleComponent } from '../../components/examples/text-input/text-input-example/text-input-example.component';
 import { TextInputFillParentComponent } from '../../components/examples/text-input/text-input-fill-parent/text-input-fill-parent.component';
-import { TextInputMultiComponent } from '../../components/examples/text-input/text-input-multi/text-input-multi.component';
 import { TextInputPrefixSuffixComponent } from '../../components/examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component';
 import { TextInputSizedComponent } from '../../components/examples/text-input/text-input-sized/text-input-sized.component';
 import { TextInputUncontrolledComponent } from '../../components/examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
@@ -20,6 +19,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TextInputThemeComponent } from '../../components/examples/text-input/text-input-theme/text-input-theme.component';
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
+import { TextInputMaskedComponent } from '../../components/examples/text-input/text-input-masked/text-input-masked.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +28,13 @@ import { TextInputApiComponent } from '../../components/examples/text-input/text
     TextInputUncontrolledComponent,
     TextInputExampleComponent,
     TextInputFillParentComponent,
-    TextInputMultiComponent,
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
     TextInputTablePropertiesComponent,
     TextInputImportComponent,
     TextInputApiComponent,
-    TextInputThemeComponent
+    TextInputThemeComponent,
+    TextInputMaskedComponent
   ],
   imports: [
     CommonModule,
@@ -55,13 +55,13 @@ import { TextInputApiComponent } from '../../components/examples/text-input/text
     TextInputUncontrolledComponent,
     TextInputExampleComponent,
     TextInputFillParentComponent,
-    TextInputMultiComponent,
     TextInputPrefixSuffixComponent,
     TextInputSizedComponent,
     TextInputTablePropertiesComponent,
     TextInputImportComponent,
     TextInputApiComponent,
-    TextInputThemeComponent
+    TextInputThemeComponent,
+    TextInputMaskedComponent
   ],
   entryComponents: [
     ExampleViewerComponent

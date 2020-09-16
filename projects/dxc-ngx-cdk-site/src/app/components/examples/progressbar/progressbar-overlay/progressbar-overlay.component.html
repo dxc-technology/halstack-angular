@@ -2,5 +2,12 @@
   label="SHOW PROGRESS BAR FOR 3 SECONDS"
   (onClick)="showProgressbar()"
   margin="medium"
+  mode="primary"
 ></dxc-button>
-<dxc-progressbar *ngIf="isVisible" margin="medium" label="Loading..." overlay="true"></dxc-progressbar>
+
+<dxc-progressbar 
+  *ngIf="isVisible" 
+  margin="medium" 
+  label="Loading..." 
+  overlay="true">
+</dxc-progressbar>

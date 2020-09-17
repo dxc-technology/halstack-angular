@@ -25,7 +25,6 @@ export class DxcCardComponent implements OnInit {
   @Input() imagePadding: any;
   @Input() imageCover: boolean;
   @Input() imageBgColor: string;
-  @Input() outlined: boolean;
   @Input() margin: any;
   @Input() linkHref: string;
 
@@ -41,7 +40,6 @@ export class DxcCardComponent implements OnInit {
     imagePadding: null,
     imageCover: false,
     imageBgColor: "black",
-    outlined: false,
     margin: null,
     linkHref: null
   });

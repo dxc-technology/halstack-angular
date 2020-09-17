@@ -24,7 +24,7 @@ export class ComponentsPageComponent implements OnInit {
     desktop: "1440"
   }
   underlined = false;
-  bottomMargin={bottom: 'medium'};
+  boxMargin={bottom: 'small'};
   boxPadding = 'small';
 
 

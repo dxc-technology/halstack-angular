@@ -74,11 +74,6 @@ The API properties are the following:
         <td>If true, the component will be disabled.</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' |'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available button themes.</td>
-    </tr>
-    <tr>
         <td>@Output<br>onClick: EventEmitter</td>
         <td></td>
         <td>This event will be triggered when the user clicks panel. The state of the panel(opened/closed) should be passed as a parameter.</td>

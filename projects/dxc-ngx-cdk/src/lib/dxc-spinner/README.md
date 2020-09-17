@@ -47,11 +47,6 @@ The API properties are the following:
         <td>Text to be placed inside the spinner.</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' |'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available toggle themes.</td>
-    </tr>
-    <tr>
         <td>@Input<br>overlay: boolean</td>
         <td>true</td>
         <td>If true, the spinner will be over a darker background</td>

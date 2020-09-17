@@ -19,7 +19,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   @Input() assistiveText: string;
   @Input() disabled: boolean = false;
   @Output() onClick = new EventEmitter<any>();
-  @Input() theme: string;
   @Input() margin: any;
   @Input() padding: any;
   @Input()
@@ -30,8 +29,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   private _isExpanded;
   
   @HostBinding("class") className;
-  @HostBinding('class.light') isLight: boolean = true;
-  @HostBinding('class.dark') isDark: boolean = false;
 
   @ViewChild('matExpansionPanel', {static: true}) _matExpansionPanel:any;
   renderedIsExpanded: boolean;
@@ -52,13 +49,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   public ngOnChanges(changes: SimpleChanges) :void { 
     if(this.iconPosition !== 'after'){
       this.iconPosition='before';
-    }
-    if (this.theme === "dark") {
-      this.isLight = false;
-      this.isDark = true;
-    } else {
-      this.isLight = true;
-      this.isDark = false;
     }
     this.renderedIsExpanded = this.isExpanded;
     const inputs = Object.keys(changes).reduce((result, item)=> {

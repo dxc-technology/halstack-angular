@@ -41,11 +41,6 @@
         <td>Text to be placed next to the date component.</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' | 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
-    </tr>
-    <tr>
         <td>@Input<br>name: string</td>
         <td></td>
         <td>Name attribute of the input element.</td>

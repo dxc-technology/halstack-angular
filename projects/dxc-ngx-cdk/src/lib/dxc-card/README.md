@@ -58,9 +58,4 @@ The API properties are the following:
         <td><code>'default'</code></td>
         <td>Uses on of the available card modes.</td>
     </tr>
-    <tr>
-        <td>@Input<br>theme: 'light' |'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available card themes.</td>
-    </tr>
 </table>

@@ -61,12 +61,6 @@ Add the following selector to any template:
         <td><code>false</code></td>
         <td>Value to bind disabled property for slider</td>
     </tr>
-      <tr>
-        <td>@Input<br>theme: 'light' |
- 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
-    </tr>
     <tr>
         <td>@Input<br>value: number</td>
         <td><code>0</code></td>

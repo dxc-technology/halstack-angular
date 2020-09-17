@@ -9,11 +9,6 @@
         <td>Description</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' | 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
-    </tr>
-    <tr>
         <td>@Input<br>underline: boolean</td>
         <td><code>false</code></td>
         <td>Wether a contrast line should appear at the bottom of the header.</td>

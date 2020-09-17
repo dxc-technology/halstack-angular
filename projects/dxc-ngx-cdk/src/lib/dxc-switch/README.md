@@ -59,11 +59,6 @@ export class AppModule {}
         <td>Whether the label should appear after or before the switch.</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' | 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
-    </tr>
-    <tr>
         <td>@Input<br>disabled: boolean</td>
         <td><code>false</code></td>
         <td>If true, the component will be disabled.</td>

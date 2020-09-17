@@ -49,11 +49,6 @@ The API properties are the following:
         <td>Uses on of the available button modes.</td>
     </tr>
     <tr>
-        <td>@Input<br>theme: 'light' |'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available button themes.</td>
-    </tr>
-    <tr>
         <td>@Input<br>label: string</td>
         <td><code>''</code></td>
         <td>Text to be placed next to the button.</td>

@@ -9,7 +9,7 @@ import { customTheme } from '../assets/styles/themesProperties';
 })
 export class AppComponent {
   title = "angular-dxc-site";
-  headerPadding = { left: "medium", right: "small" };
+  headerPadding = { left: "medium", right: "medium" };
 
   constructor(
     @Inject("ThemeService") private themeService: ThemeService

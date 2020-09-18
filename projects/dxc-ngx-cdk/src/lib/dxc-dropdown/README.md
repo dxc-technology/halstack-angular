@@ -15,7 +15,7 @@ The DXC Dropdown Component is a collapsible menu where choices are listed.
 ></dxc-dropdown>
 ```
 
-Include the **DXCDropdownModule** into **app.module.ts** to use the dialog component:
+Include the **DXCDropdownModule** into **app.module.ts** to use the dropdown component:
 
 ```ts
 import { NgModule } from "@angular/core";
@@ -31,7 +31,7 @@ import { DXCDropdownModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 <table>
     <tr style="background-color: grey">

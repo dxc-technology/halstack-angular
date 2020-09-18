@@ -13,7 +13,7 @@ The DXC Chip Component is a compact element that displays short information.
 ></dxc-chip>
 ```
 
-Include the **DxcChipModule** into **app.module.ts** to use the checkbox component:
+Include the **DxcChipModule** into **app.module.ts** to use the chip component:
 
 ```ts
 import { NgModule } from "@angular/core";
@@ -29,7 +29,7 @@ import { DxcChipModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 <table>
   <tr style="background-color: grey">

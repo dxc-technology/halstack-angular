@@ -1,0 +1,80 @@
+# DXC Sidenav Component
+
+## Overview
+
+The DXC Sidenav Component is a side container of the page for navegation.
+
+## Usage
+
+```html
+<dxc-sidenav padding="medium" displayArrow="true"> 
+    <dxc-sidenav-menu> Lorem </dxc-sidenav-menu>
+    <dxc-sidenav-content> Ipsum </dxc-sidenav-content>
+</dxc-sidenav>
+
+```
+
+Include the **DxcSideNavModule** into **app.module.ts** to use the sidenav component:
+
+```ts
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { DxcSideNavModule } from '@dxc-technology/halstack-angular';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [DxcSideNavModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+## API reference
+
+The API properties are the following:
+
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>@Input<br>mode: 'overlay' | 'push'</td>
+        <td>
+        <code>'push'</code>
+        </td>
+        <td>
+        Default action over the content of the page, overlay the content or push
+        to the right.
+        </td>
+    </tr>
+    <tr>
+        <td>@Input<br>padding: string | object</td>
+        <td></td>
+        <td>
+        Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall'
+        | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+        object with 'top', 'bottom', 'left' and 'right' properties in order to
+        specify different padding sizes.
+        </td>
+    </tr>
+    <tr>
+        <td>@Input<br>arrowPosition: 'absolute' | 'fixed'</td>
+        <td><code>'absolute'</code></td>
+        <td>Position of the arrow.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>arrowDistance: string</td>
+        <td></td>
+        <td>Distance from the top of the arrow.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>displayArrow: boolean</td>
+        <td>
+        <code>true</code>
+        </td>
+        <td>If false, the arrow button is hidden.</td>
+    </tr>
+</table>

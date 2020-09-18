@@ -17,7 +17,7 @@ The DXC Date Component is an element to select a date.
 ></dxc-date>
 ```
 
-Include the **DxcDateModule** into **app.module.ts** to use the checkbox component:
+Include the **DxcDateModule** into **app.module.ts** to use the date component:
 
 ```ts
 import { NgModule } from "@angular/core";
@@ -33,7 +33,7 @@ import { DxcDateModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 <table>
     <tr style="background-color: grey">

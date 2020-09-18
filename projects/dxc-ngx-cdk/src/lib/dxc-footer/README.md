@@ -31,7 +31,7 @@ import { DxcFooterModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## Props
+## API reference
 
 <table>
     <tr style="background-color: grey">

@@ -12,7 +12,7 @@ The DXC Box Component is a container.
 </dxc-box>
 ```
 
-Include the **DxcBoxModule** into **app.module.ts** to use the alert component:
+Include the **DxcBoxModule** into **app.module.ts** to use the box component:
 
 ```ts
 import { NgModule } from "@angular/core";
@@ -28,7 +28,7 @@ import { DxcBoxModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 The API properties are the following:
 

@@ -31,7 +31,7 @@ import { DXCAlertModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 The API properties are the following:
 

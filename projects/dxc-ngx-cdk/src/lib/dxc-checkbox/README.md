@@ -31,7 +31,7 @@ import { DxcCheckboxModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 <table>
   <tr style="background-color: grey">

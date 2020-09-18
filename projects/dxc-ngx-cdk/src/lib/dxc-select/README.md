@@ -1,38 +1,96 @@
 # DXC Select Component
 
-## Props
+## Overview
+
+The DXC Select Component allows the user to select a value from a list of options.
+
+## Usage
+
+```html
+<dxc-select
+  [options]="optionsWithoutIcon"
+  (onChange)="onChange($event)"
+  label="Controlled Select"
+  margin="medium"
+  [value]="inputValue"
+></dxc-select>
+```
+
+Include the **DXCSelectModule** into **app.module.ts** to use the select component:
+
+```ts
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { DXCSelectModule } from '@dxc-technology/halstack-angular';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [DXCSelectModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+## API reference
+
+The API properties are the following:
 
 <table>
     <tr style="background-color: grey">
-        <td>Name</td>
-        <td>Default</td>
-        <td>Description</td>
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>@Input<br>options: object[]</td>
-        <td><code>[]</code></td>
-        <td>An array of objects representing the selectable options. Each object has the following properties:
-            <ul>
-                <li><b>value</b>: Option inner value</li>
-                <li><b>label</b>: Option display value</li>
-                <li><b>iconSrc</b>: URL of the icon that will be placed next to the option label</li>
-            </ul>
+        <td>
+        <code>[]</code>
+        </td>
+        <td>
+        An array of objects representing the selectable options. Each object has
+        the following properties:
+        <ul>
+            <li><b>value</b>: String with the option inner value.</li>
+            <li><b>label</b>: String with the option display value.</li>
+            <li>
+            <b>iconSrc</b>: URL of the icon that will be placed next to the option
+            label.
+            </li>
+        </ul>
         </td>
     </tr>
     <tr>
-        <td>@Input<br>iconPosition: 'before' | 'after'</td>
-        <td><code>'before'</code></td>
-        <td>In case options include an icon, whether the icon should appear after or before the label.</td>
+        <td>@Input<br>iconPosition: string ('before' | 'after')</td>
+        <td>
+        <code>'before'</code>
+        </td>
+        <td>
+        In case options include an icon, whether the icon should appear after or
+        before the label.
+        </td>
     </tr>
     <tr>
         <td>@Input<br>value: string | string[]</td>
-        <td><code>[]</code></td>
-        <td>The key of the selected value/values. If the select component doesn't allow multiple selection, value must be a string. If the select component allows multiple selection, value must be an array of strings</td>
+        <td></td>
+        <td>
+        The key(s) of the selected value(s). If the select component doesn't allow
+        multiple selection, value must be a string. If the select component allows
+        multiple selection, value must be an array of strings. If undefined, the
+        component will be uncontrolled and the value will be managed internally by
+        the component.
+        </td>
     </tr>
     <tr>
         <td>@Input<br>multiple: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the select component will support multiple selection. In that case, value must be an array of strings with the keys of the selected values, otherwise value must be a string.</td>
+        <td>
+        <code>false</code>
+        </td>
+        <td>
+        If true, the select component will support multiple selection. In that
+        case, value must be an array of strings with the keys of the selected
+        values.
+        </td>
     </tr>
     <tr>
         <td>@Input<br>label: string</td>
@@ -46,22 +104,56 @@
     </tr>
     <tr>
         <td>@Input<br>disabled: boolean</td>
-        <td><code>false</code></td>
+        <td>
+        <code>false</code>
+        </td>
         <td>If true, the component will be disabled.</td>
     </tr>
     <tr>
         <td>@Input<br>required: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, a red asterisk will appear before the label to indicate to the user that the field is required.</td>
+        <td>
+        <code>false</code>
+        </td>
+        <td>
+        If true, the component will change its appearence, showing that the value
+        is required.
+        </td>
     </tr>
     <tr>
-        <td>@Input<br>disableRipple: boolean</td>
+        <td>@Input<br>invalid: boolean</td>
         <td><code>false</code></td>
-        <td>If true, the ripple effect will be disabled.</td>
+        <td>
+        If true, the input will change its appearence showing that the value is
+        invalid.
+        </td>
     </tr>
     <tr>
-        <td>@Output<br>valueChange: function</td>
+        <td>@Output<br>onChange: EventEmitter</td>
         <td></td>
-        <td>This event will be triggered when the selection changes. The string with the key of the selected value will be passed as a parameter. If multiple selection is allowed, an array of keys will be passed</td>
+        <td>
+        This function will be called every time the selection changes. The string
+        with the key of the selected value will be passed as a parameter to this
+        function. If multiple selection is allowed, an array of keys will be
+        passed
+        </td>
+    </tr>
+    <tr>
+        <td>@Input<br>margin: any (string | object)</td>
+        <td></td>
+        <td>
+        Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
+        'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+        object with 'top', 'bottom', 'left' and 'right' properties in order to
+        specify different margin sizes.
+        </td>
+    </tr>
+    <tr>
+        <td>@Input<br>size: any (string | object)</td>
+        <td>
+        <code>'medium'</code>
+        </td>
+        <td>
+        Size of the component ('small' | 'medium' | 'large' | 'fillParent').
+        </td>
     </tr>
 </table>

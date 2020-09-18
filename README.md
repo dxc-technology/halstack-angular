@@ -39,10 +39,12 @@ Install the library dependencies.
 npm install
 ```
 
-Build the cdk library on the root application folder.
+Build the cdk library on the library root folder.
 
 ````bash
 npm run build-lib
+npm run post-build-lib
+npm run package
 ````
 
 Or if you want it to automatically detect changes:
@@ -68,7 +70,7 @@ npm install
 Start the application
 
 ````bash
-ng serve
+npm run start
 ````
 
 ## Running the test
@@ -78,7 +80,6 @@ You run the tests from the library folder `projects/dxc-ngx-cdk`.
 ```bash
 cd projects/dxc-ngx-cdk/
 ```
-
 
 For running the tests after the library dependencies has been installed
 

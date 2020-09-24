@@ -29,7 +29,7 @@ export class DxcButtonComponent {
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({
-    mode: "secondary",
+    mode: "primary",
     disabled: false,
     label: null,
     iconSrc: null,

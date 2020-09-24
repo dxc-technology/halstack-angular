@@ -40,7 +40,7 @@ The API properties are the following:
     <tr>
       <td>@Input<br>mode: string ('primary' | 'secondary' | 'text')</td>
       <td>
-        <code>'secondary'</code>
+        <code>'primary'</code>
       </td>
       <td>Uses on of the available button modes.</td>
     </tr>

@@ -22,11 +22,11 @@ export class ThemeService {
   }
 
   registerTheme(theme: Theme) {
-    if(this.theme !== undefined){
-      for(const key in this.theme.properties){
-        if(theme.properties.hasOwnProperty(key)){
-          for(const token in this.theme.properties[key]){
-            if(theme.properties[key].hasOwnProperty(token) && !defaultTheme.properties[key][token]){
+    if (theme !== undefined) {
+      for (const key in this.theme.properties) {
+        if (theme.properties.hasOwnProperty(key)) {
+          for (const token in this.theme.properties[key]) {
+            if (theme.properties[key].hasOwnProperty(token) && !defaultTheme.properties[key][token]) {
               this.theme.properties[key][token] = theme.properties[key][token];
             }
           }
@@ -38,13 +38,13 @@ export class ThemeService {
 
   private setDefaultTheme(newTheme: Theme) {
     this.theme = newTheme;
-    for(const key in defaultTheme.properties){
-      if(this.theme.properties.hasOwnProperty(key)){
-        for(const token in defaultTheme.properties[key]){
+    for (const key in defaultTheme.properties) {
+      if (this.theme.properties.hasOwnProperty(key)) {
+        for (const token in defaultTheme.properties[key]) {
           this.theme.properties[key][token] = defaultTheme.properties[key][token];
         }
       }
-      else{
+      else {
         this.theme.properties[key] = defaultTheme.properties[key];
       }
 

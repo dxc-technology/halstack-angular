@@ -49,7 +49,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
     value: null,
     format: "dd-MM-yyyy",
     label: null,
-    theme: "light",
     iconSrc: null,
     name: null,
     disabled: false,

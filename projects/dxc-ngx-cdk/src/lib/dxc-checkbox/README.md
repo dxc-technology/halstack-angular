@@ -7,11 +7,12 @@ The DXC Checkbox Component provides to the user the ability to select a true, fa
 ## Usage
 
 ```html
-<dxc-checkbox
-  [(checked)]="checked"
-  labelPosition="before"
-  text="Checkbox 1"
-></dxc-checkbox>
+<dxc-checkbox 
+    [checked]="checked" 
+    label="Checkbox " 
+    (onChange)="onChange($event)" 
+    margin="medium">
+</dxc-checkbox>
 ```
 
 Include the **DxcCheckboxModule** into **app.module.ts** to use the checkbox component:
@@ -30,62 +31,91 @@ import { DxcCheckboxModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## API
+## API reference
 
 <table>
-    <tr style="background-color: grey">
-        <td>Name</td>
-        <td>Default</td>
-        <td>Description</td>
-    </tr>
-    <tr>
-        <td>@Input<br>checked: boolean</td>
-        <td>false</td>
-        <td>If true, the component is checked.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>value: any</td>
-        <td></td>
-        <td>Will be passed to the value attribute of the html input element. When inside a form, this value will be only submitted if the checkbox is checked </td>
-    </tr>
-    <tr>
-        <td>@Input<br>label: string</td>
-        <td></td>
-        <td>Text to be placed next to the checkbox.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>labelPosition: 'before' | 'after'</td>
-        <td><code>'before'</code></td>
-        <td>Whether the label should appear after or before the checkbox.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>theme: 'light' | 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>disabled: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the component will be disabled.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>disableRipple: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the ripple effect will be disabled.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>required: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the component will be marked as required.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>name: string</td>
-        <td></td>
-        <td>Name attribute of the input element.</td>
-    </tr>
-    <tr>
-        <td>@Output<br>checkedChange: EventEmitter</td>
-        <td></td>
-        <td>This event will be triggered when the checkbox changes its value. The new value will be passed as a parameter.</td>
-    </tr>
+  <tr style="background-color: grey">
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>@Input<br>checked: boolean</td>
+    <td><code>'false'</code></td>
+    <td>
+      If true, the component is checked. If undefined the component will be
+      uncontrolled and the value will be managed internally by the
+      component.
+    </td>
+  </tr>
+  <tr>
+    <td>@Input<br>value: string</td>
+    <td></td>
+    <td>
+      Will be passed to the value attribute of the html input element. When
+      inside a form, this value will be only submitted if the checkbox is
+      checked.
+    </td>
+  </tr>
+  <tr>
+    <td>@Input<br>label: string</td>
+    <td></td>
+    <td>Text to be placed next to the checkbox.</td>
+  </tr>
+  <tr>
+    <td>@Input<br>labelPosition: 'before' | 'after'</td>
+    <td>
+      <code>'before'</code>
+    </td>
+    <td>Whether the label should appear after or before the checkbox.</td>
+  </tr>
+  <tr>
+    <td>@Input<br>name: string</td>
+    <td></td>
+    <td>Name attribute of the input element.</td>
+  </tr>
+  <tr>
+    <td>@Input<br>disabled: boolean</td>
+    <td>
+      <code>false</code>
+    </td>
+    <td>If true, the component will be disabled.</td>
+  </tr>
+  <tr>
+    <td>@Input<br>required: boolean</td>
+    <td>
+      <code>false</code>
+    </td>
+    <td>
+      If true, the checkbox will change its appearence, showing that the
+      value is required.
+    </td>
+  </tr>
+  <tr>
+    <td>@Output<br>onChange: EventEmitter</td>
+    <td></td>
+    <td>
+      This function will be called when the user clicks the checkbox. The
+      new value will be passed as a parameter.
+    </td>
+  </tr>
+  <tr>
+    <td>@Input<br>margin: any (string | object)</td>
+    <td></td>
+    <td>
+      Size of the margin to be applied to the component ('xxsmall' |
+      'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You
+      can pass an object with 'top', 'bottom', 'left' and 'right' properties
+      in order to specify different margin sizes.
+    </td>
+  </tr>
+  <tr>
+    <td>@Input<br>size: any (string | object)</td>
+    <td>
+      <code>'fitContent'</code>
+    </td>
+    <td>
+      Size of the component ('small' | 'medium' | 'large' | 'fillParent' | 'fitContent').
+    </td>
+  </tr>
 </table>

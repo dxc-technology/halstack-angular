@@ -96,7 +96,6 @@ import { TextAreaModule } from './pages/text-area/text-area.module';
     SliderModule,
     HeadingModule,
     ResultsetTableModule,
-    ThemeModule,
     ScullyLibModule
   ],
   providers: [

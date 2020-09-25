@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DXC Dialog Component is a collapsible panel.
+The DXC Dialog Component is a container that informs the user about a task or displays information.
 
 ## Usage
 
@@ -13,16 +13,7 @@ The DXC Dialog Component is a collapsible panel.
   [isVisible]="false"
   (onClose)="onClick($event)"
 >
-  Lorem ipsum dolor sit amet consectetur adipiscing elit curae, sodales ac
-  sapien consequat augue vitae id suscipit rhoncus, nunc auctor nisl faucibus
-  mattis dapibus sociis. Senectus sociis viverra laoreet ligula habitant nullam
-  potenti lectus tortor sodales, vulputate semper erat mauris fringilla natoque
-  diam praesent scelerisque eget, mattis facilisi dapibus nibh interdum donec
-  condimentum venenatis sollicitudin. Sociosqu taciti class diam placerat
-  aliquam imperdiet tempus, metus natoque euismod convallis dictum ac dapibus
-  suscipit, a molestie pulvinar gravida viverra faucibus. Dis ad quis tincidunt
-  facilisi neque nunc, ligula odio rhoncus non nibh elementum, massa lacinia
-  mollis inceptos molestie.
+  Lorem ipsum dolor sit amet consectetur adipiscing elit curae, sodales.
 </dxc-dialog>
 ```
 
@@ -42,37 +33,53 @@ import { DxcDialogModule } from '@dxc-technology/halstack-angular';
 export class AppModule {}
 ```
 
-## Props
+## API reference
 
 <table>
-    <tr style="background-color: grey">
-        <td>Name</td>
-        <td>Default</td>
-        <td>Description</td>
-    </tr>
-    <tr>
-        <td>@Input<br>isVisible: boolean</td>
-        <td>true</td>
-        <td>If true, the modal should be visible</td>
-    </tr>
-    <tr>
-        <td>@Input<br>isCloseVisible: boolean</td>
-        <td>true</td>
-        <td>If true, the close button should be visible</td>
-    </tr>
-    <tr>
-        <td>@Output<br>onClose: function</td>
-        <td></td>
-        <td>This event will be triggered when the user clicks the close button. If there is no function we should close the modal by default</td>
-    </tr>
-    <tr>
-        <td>@Input<br>overlay: boolean</td>
-        <td>true</td>
-        <td>If true, the modal will be over a darker background</td>
-    </tr>
+  <tr style="background-color: grey">
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>@Input<br>isCloseVisible: boolean</td>
+    <td>
+      <code>true</code>
+    </td>
+    <td>If true, the close 'x' button will be visible.</td>
+  </tr>
+  <tr>
+    <td>@Output<br>onCloseClick: EventEmitter</td>
+    <td></td>
+    <td>
+      This function will be called when the user clicks the close 'x' button.
+      The user has the responsibility of hidding the modal.
+    </td>
+  </tr>
+  <tr>
+    <td>@Output<br>onBackgroundClick: EventEmitter</td>
+    <td></td>
+    <td>
+      This function will be called when the user clicks background of the modal
+      button. The user has the responsibility of hidding the modal.
+    </td>
+  </tr>
+  <tr>
+    <td>@Input<br>overlay: boolean</td>
+    <td>
+      <code>true</code>
+    </td>
+    <td>If true, the dialog will be displayed over a darker background.</td>
+  </tr>
+  <tr>
+    <td>@Input<br>padding: any (string | object)</td>
+    <td></td>
+    <td>
+      Size of the padding to be applied to the component ('xxsmall' | 'xsmall' |
+      'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+      object with 'top', 'bottom', 'left' and 'right' properties in order to
+      specify different padding sizes.
+    </td>
+  </tr>
     
 </table>
-
-```
-
-```

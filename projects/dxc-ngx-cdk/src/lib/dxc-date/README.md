@@ -1,49 +1,63 @@
 # DXC Date Component
 
-## Props
+## Overview
+
+The DXC Date Component is an element to select a date.
+
+## Usage
+
+```html
+<dxc-date
+    label="Input label"
+    [value]="inputValue"
+    assistiveText="assistive text"
+    (onInputChange)="onChange($event)"
+    [invalid]="isInvalidDate"
+    margin="medium"
+></dxc-date>
+```
+
+Include the **DxcDateModule** into **app.module.ts** to use the date component:
+
+```ts
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcDateModule } from '@dxc-technology/halstack-angular';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [DxcDateModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+## API reference
 
 <table>
     <tr style="background-color: grey">
-        <td>Name</td>
-        <td>Default</td>
-        <td>Description</td>
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
     </tr>
     <tr>
-        <td>@Input<br>value: date</td>
+        <td>@Input<br>value: any</td>
         <td></td>
-        <td>The value of the date component. Must be a Date object.</td>
+        <td>The value of the input element.</td>
     </tr>
-     <tr>
-        <td>@Input<br>min: date</td>
-        <td></td>
-        <td>The min date to be able to select using datepicker</td>
-    </tr>
-    <tr>
-     <tr>
-        <td>@Input<br>max: date</td>
-        <td></td>
-        <td>The max date to be able to select using datepicker</td>
-    </tr>
-    <tr>
     <tr>
         <td>@Input<br>format: string</td>
         <td></td>
-        <td>The format in which the date value will be displayed. User must use this format when editing the input.</td>
-    </tr>
-       <tr>
-        <td>@Input<br>showMask: boolean</td>
-        <td> false</td>
-        <td>Boolean to show or not the mask</td>
+        <td>
+            The format in which the date value will be displayed. User must use
+            this format when editing the input.
+        </td>
     </tr>
     <tr>
         <td>@Input<br>label: string</td>
         <td></td>
         <td>Text to be placed next to the date component.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>theme: 'light' | 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
     </tr>
     <tr>
         <td>@Input<br>name: string</td>
@@ -57,13 +71,20 @@
     </tr>
     <tr>
         <td>@Input<br>disabled: boolean</td>
-        <td><code>false</code></td>
+        <td>
+            <code>false</code>
+        </td>
         <td>If true, the component will be disabled.</td>
     </tr>
     <tr>
         <td>@Input<br>required: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, a red asterisk will appear before the label to indicate to the user that the field is required.</td>
+        <td>
+            <code>false</code>
+        </td>
+        <td>
+            If true, a red asterisk will appear before the label to indicate to
+            the user that the field is required.
+        </td>
     </tr>
     <tr>
         <td>@Input<br>assistiveText: string</td>
@@ -72,26 +93,49 @@
     </tr>
     <tr>
         <td>@Input<br>invalid: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the input will change its appearence, showing that the value is not valid.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>disableRipple: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the ripple effect will be disabled.</td>
-    </tr>
-    <tr>
-        <td>@Output<br>valueChange: function</td>
-        <td></td>
-        <td>This event will be triggered when the user inputs a valid date in the given format. This is, when he selects a date from the date picker or when he types a letter completing a valid date. The new date object will be passed as a parameter.<br>
+        <td>
+            <code>false</code>
+        </td>
+        <td>
+            If true, the input will change its appearence, showing that the value
+            is not valid.
         </td>
     </tr>
     <tr>
-        <td>@Output<br>inputChange: function</td>
+        <td>@Output<br>onChange: EventEmitter</td>
         <td></td>
-        <td>This event will be triggered when the user types within the input. A string with the current value will be passed as a parameter.<br>
+        <td>
+            This function will be called when the user types within the input. 
+            An object including the current sring value and the date value 
+            (if the string typed is a valid date) will be passed to this function. 
+            An example of this object is: {{'{'}} stringValue: value, dateValue: date {{'}'}}.
         </td>
     </tr>
+    <tr>
+        <td>@Output<br>onBlur: EventEmitter</td>
+        <td></td>
+        <td>
+            This function will be called when the the input loses the focus. 
+            The input value will be passed as a parameter.
+        </td>
+    </tr>
+    <tr>
+        <td>@Input<br>margin: any (string | object)</td>
+        <td></td>
+        <td>
+            Size of the margin to be applied to the component ('xxsmall' |
+            'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You
+            can pass an object with 'top', 'bottom', 'left' and 'right' properties
+            in order to specify different margin sizes.
+        </td>
+    </tr>
+    <tr>
+        <td>@Input<br>size: any (string | object)</td>
+        <td>
+            <code>'medium'</code>
+        </td>
+        <td>Size of the component ('medium' | 'large' | 'fillParent').</td>
+    </tr>   
 </table>
 
 ## Available date formats

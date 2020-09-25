@@ -1,32 +1,32 @@
-# DXC Input Text Component
+# DXC Textarea Component
 
 ## Overview
 
-The DXC Input Text Component allows the user to introduce text.
+The DXC Textarea Component allows the user to introduce text with multiline.
 
 ## Usage
 
 ```html
-<dxc-input-text
-    label="Input label"
-    [value]="inputValue"
-    assistiveText="assistive text"
-    (onChange)="onChange($event)"
-    (onBlur)="onBlur($event)"
-    margin="medium">
-</dxc-input-text>
+<dxc-textarea
+  label="Textarea label"
+  [value]="inputValue"
+  assistiveText="assistive text"
+  (onChange)="onChange($event)"
+  margin="medium"
+  required="true">
+</dxc-textarea>
 ```
 
-Include the **DXCInputTextModule** into **app.module.ts** to use the input text component:
+Include the **DXCTextareaModule** into **app.module.ts** to use the textarea component:
 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DXCInputTextModule } from '@dxc-technology/halstack-angular';
+import { DXCTextareaModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DXCInputTextModule],
+  imports: [DXCTextareaModule],
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -44,7 +44,10 @@ export class AppModule {}
     <tr>
         <td>@Input<br>value: string</td>
         <td></td>
-        <td>Value of the input element.</td>
+        <td>
+        Value of the input element. If undefined, the component will be
+        uncontrolled and the value will be managed internally by the component.
+        </td>
     </tr>
     <tr>
         <td>@Input<br>label: string</td>
@@ -57,40 +60,19 @@ export class AppModule {}
         <td>Assistive text to be placed bellow the input.</td>
     </tr>
     <tr>
-        <td>@Input<br>prefix: string</td>
-        <td></td>
-        <td>
-        Prefix to be placed before the input value. Use prefixIconSrc in case the
-        prefix is an icon.
-        </td>
-    </tr>
-    <tr>
-        <td>@Input<br>suffix: string</td>
-        <td></td>
-        <td>
-        Suffix to be placed after the input value. Use suffixIconSrc in case the
-        suffix is an icon.
-        </td>
-    </tr>
-    <tr>
-        <td>@Input<br>prefixIconSrc: string</td>
-        <td></td>
-        <td>Path of the icon to be placed before the input value.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>suffixIconSrc: string</td>
-        <td></td>
-        <td>Path of the icon to be placed after the input value.</td>
-    </tr>
-    <tr>
         <td>@Input<br>name: string</td>
         <td></td>
         <td>Name attribute of the input element.</td>
     </tr>
     <tr>
+        <td>@Input<br>numRows: number</td>
+        <td>4</td>
+        <td>Number of rows of the textarea.</td>
+    </tr>
+    <tr>
         <td>@Input<br>placeholder: string</td>
         <td></td>
-        <td>Text to be put as placeholder in the input.</td>
+        <td>Text to be put as placeholder in the textarea.</td>
     </tr>
     <tr>
         <td>@Input<br>disabled: boolean</td>
@@ -103,13 +85,6 @@ export class AppModule {}
         <td>
         If true, the input will change its appearence showing that the value is
         required.
-        </td>
-    </tr>
-    <tr>
-        <td>@Input<br>isMasked: boolean</td>
-        <td><code>false</code></td>
-        <td>
-        If true, a mask will be displayed.
         </td>
     </tr>
     <tr>
@@ -137,20 +112,6 @@ export class AppModule {}
         </td>
     </tr>
     <tr>
-        <td>@Output<br>onClickPrefix: EventEmitter</td>
-        <td></td>
-        <td>
-        This function will be called when the prefix (text or icon) is clicked.
-        </td>
-    </tr>
-    <tr>
-        <td>@Output<br>onClickSuffix: EventEmitter</td>
-        <td></td>
-        <td>
-        This function will be called when the suffix (text or icon) is clicked.
-        </td>
-    </tr>
-    <tr>
         <td>@Input<br>margin: any (string | object)</td>
         <td></td>
         <td>
@@ -165,26 +126,6 @@ export class AppModule {}
         <td><code>'medium'</code></td>
         <td>
         Size of the component ('small' | 'medium' | 'large' | 'fillParent').
-        </td>
-    </tr>
-    <tr>
-        <td>@Input<br>
-        autocompleteOptions: any ([string] | function: Observable &lt;Array&gt;)
-        </td>
-        <td><code></code></td>
-        <td>
-        It can be either an array or a function:
-        <ul>
-            <li>
-            <b>Array</b>: Array of options that will be filtered by the component.
-            </li>
-            <li>
-            <b>Function</b>: This function will be called when the user changes
-            the value and when the component is initialized, this function will receive 
-            the new value as parameter and should return one Observable on which we subscribe 
-            to get the suggestions array.
-            </li>
-        </ul>
         </td>
     </tr>
 </table>

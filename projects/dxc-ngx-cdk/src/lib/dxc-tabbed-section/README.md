@@ -1,15 +1,45 @@
-# DXC Tabs Component
+# DXC Tabbed Section Component
 
-## Tab Group Props
+## Overview
+
+The DXC Tabbed Section Component is a layout to organize content with tabs.
+
+## Usage
+
+```html
+<dxc-tabbed-section [sections]="sections" tabsMode="underlined" >
+    <div id="section1-selector0" style="height: 200px;">Section 1</div>
+    <div id="section2-selector1" style="height: 200px;">Section 2</div>
+    <div id="section3-selector2" style="height: 200px;">Section 3</div>
+</dxc-tabbed-section>
+```
+
+Include the **DxcTabbedSectionModule** into **app.module.ts** to use the tabbed section component:
+
+```ts
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcTabbedSectionModule } from '@dxc-technology/halstack-angular';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [DxcTabbedSectionModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+## API reference
 
 <table>
     <tr style="background-color: grey">
-        <td>Name</td>
-        <td>Default</td>
-        <td>Description</td>
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
     </tr>
     <tr>
-        <td>sections: object[]</td>
+        <td>@Input<br>sections: object[]</td>
         <td><code>[]</code></td>
         <td>
           An array of objects representing the tabs/sections. Each of them has
@@ -19,7 +49,7 @@
               <b>tabLabel</b>: Tab label.
             </li>
             <li>
-              <b>section</b>: React component for the section that will be
+              <b>section</b>: Angular component for the section that will be
               linked to the tab. Each section will be rendered right bellow the
               previous one, and clicking in the tab will scroll the user to its associated
               section.
@@ -28,23 +58,25 @@
         </td>
     </tr>
     <tr>
-        <td>tabsMode: 'filled' | 'underlined'</td>
+        <td>@Input<br>tabsMode: string ('filled' | 'underlined')</td>
         <td><code>'filled'</code></td>
         <td>Uses one of the available component modes.</td>
     </tr>
     <tr>
-        <td>tabsTheme: 'light' | 'dark'</td>
-        <td><code>'light'</code></td>
-        <td>Uses one of the available component themes.</td>
-    </tr>
-    <tr>
-        <td>disableTabsRipple: boolean</td>
-        <td><code>false</code></td>
-        <td>If true, the ripple effect will be disabled.</td>
-    </tr> 
-    <tr>
-        <td>stickAtPx: number</td>
+        <td>@Input<br>stickAtPx: number</td>
         <td>0</td>
         <td>The number of pixels from the top of the parent container, where the tabs will stick when scrolling.</td>
     </tr>
 </table>
+
+## Usage Notes
+
+The dxc-tabbed-section component is based on material desing tabbed component and styled using the emotion JS to CSS library. When nesting several material tabbed components you may find conflicts depending on how you decide to implememnt it. In case this happens, it is necesary to define a default style for each of this nested material-tab-group elements in order to avoid the dxc-tabbed-section style to apply to each of them. An Example of this style definition as follows:
+
+```css
+ .mat-tab-group {
+      z-index: 10;
+      position: initial;
+      top: unset;
+  }
+```

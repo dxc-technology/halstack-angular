@@ -10,7 +10,6 @@ import { EventEmitter, Inject } from '@angular/core';
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { ThemeService } from "../theme/theme.service";
 
 @Component({
   selector: "dxc-switch",
@@ -21,7 +20,6 @@ export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
   @Input() checked: boolean;
   @Input() value: any;
-  @Input() theme: string;
   @Input() disabled: boolean | string;
   @Input() required: boolean | string;
   @Input() label: string;

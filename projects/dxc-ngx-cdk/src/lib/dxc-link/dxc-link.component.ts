@@ -29,7 +29,6 @@ export class DxcLinkComponent {
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({
-    theme: "light",
     underlined: true,
     inheritColor: false,
     disabled: false,

@@ -30,7 +30,6 @@ export class DxcStepComponent {
   @Input() isLast: boolean;
 
   @Input() mode: string;
-  @Input() theme: string;
   @Input() currentStep: number;
 
   validIcon = "assets/valid_icon.svg";

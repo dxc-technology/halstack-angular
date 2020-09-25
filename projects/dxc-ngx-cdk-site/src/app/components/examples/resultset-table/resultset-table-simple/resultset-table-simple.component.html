@@ -4,7 +4,7 @@
         {{item['id']}}
     </td>
   </ng-container>
-  <ng-container dxcColumnDef="name" isSortable="true">
+  <ng-container dxcColumnDef="name" [sortable]="{isSortable:true, propertyName:'name'}">
     <td *dxcCellDef="let item">
         {{item['name']}}
     </td>
@@ -14,7 +14,7 @@
         {{item['city']}}
     </td>
   </ng-container>
-  <ng-container dxcColumnDef="actions" isSortable="true">
+  <ng-container dxcColumnDef="actions" [sortable]="{isSortable:true, propertyName:'actions'}">
     <td *dxcCellDef="let item">
         <dxc-button *ngIf="item['actions'] === true" label="Delete"></dxc-button>
     </td>

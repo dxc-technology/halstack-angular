@@ -8,4 +8,4 @@ import { DxcAlertComponent } from './dxc-alert.component';
   imports: [CommonModule, MatSnackBarModule],
   exports: [DxcAlertComponent]
 })
-export class DXCAlertModule {}
+export class DxcAlertModule {}

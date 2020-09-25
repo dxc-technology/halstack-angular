@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DXCUploadModule,DxcTagModule, DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcUploadModule,DxcTagModule, DxcChipModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
@@ -31,7 +31,7 @@ import { UploadApiComponent } from '../../components/examples/upload/upload-api/
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    DXCUploadModule,
+    DxcUploadModule,
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,

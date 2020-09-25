@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AlertImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCAlertModule } from '@dxc-technology/halstack-angular';
+  import { DxcAlertModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCAlertModule,
+      DxcAlertModule,
     ]
   })
   export class AppComponent { }

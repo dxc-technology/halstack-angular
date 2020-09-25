@@ -9,7 +9,7 @@ import {
 import { DxcDateComponent } from "./dxc-date.component";
 import { CommonModule } from "@angular/common";
 import { MAT_MOMENT_DATE_FORMATS,MomentDateAdapter, MatMomentDateModule } from "@angular/material-moment-adapter";
-import { DXCInputTextModule } from '../dxc-text-input/dxc-input-text.module';
+import { DxcInputTextModule } from '../dxc-text-input/dxc-input-text.module';
 import { MdePopoverModule } from '@material-extended/mde';
 import { DxcBoxModule } from '../dxc-box/dxc-box.module';
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -24,7 +24,7 @@ import { ThemeModule } from '../theme/theme.module';
     MatDatepickerModule,
     MatMomentDateModule,
     FormsModule,
-    DXCInputTextModule,
+    DxcInputTextModule,
     DxcBoxModule,
     ThemeModule,
     MdePopoverModule,

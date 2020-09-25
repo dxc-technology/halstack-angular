@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class UploadImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCUploadModule } from '@dxc-technology/halstack-angular';
+  import { DxcUploadModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCUploadModule,
+      DxcUploadModule,
     ]
   })
   export class AppComponent { }

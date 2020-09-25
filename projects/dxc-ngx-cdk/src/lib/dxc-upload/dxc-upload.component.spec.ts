@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcUploadComponent } from "./dxc-upload.component";
-import { DXCUploadModule } from "./dxc-upload.module";
+import { DxcUploadModule } from "./dxc-upload.module";
 import { screen, waitFor } from "@testing-library/dom";
 
 describe("DxcUpload tests", () => {
@@ -8,7 +8,7 @@ describe("DxcUpload tests", () => {
     const { getByText } = await render(DxcUploadComponent, {
       componentProperties: {},
       excludeComponentDeclaration: true,
-      imports: [DXCUploadModule]
+      imports: [DxcUploadModule]
     });
 
     expect(getByText("There are no files to upload"));
@@ -18,7 +18,7 @@ describe("DxcUpload tests", () => {
     const dxcUpload = await render(DxcUploadComponent, {
       componentProperties: {},
       excludeComponentDeclaration: true,
-      imports: [DXCUploadModule]
+      imports: [DxcUploadModule]
     });
     dxcUpload.detectChanges();
 
@@ -47,7 +47,7 @@ describe("DxcUpload tests", () => {
     const dxcUpload = await render(DxcUploadComponent, {
       componentProperties: {uploadCallback: fileUpload},
       excludeComponentDeclaration: true,
-      imports: [DXCUploadModule]
+      imports: [DxcUploadModule]
     });
     dxcUpload.detectChanges();
 
@@ -78,7 +78,7 @@ describe("DxcUpload tests", () => {
     const dxcUpload = await render(DxcUploadComponent, {
       componentProperties: {uploadCallback: fileUpload},
       excludeComponentDeclaration: true,
-      imports: [DXCUploadModule]
+      imports: [DxcUploadModule]
     });
     dxcUpload.detectChanges();
 

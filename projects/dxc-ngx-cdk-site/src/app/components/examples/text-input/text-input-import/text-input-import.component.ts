@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class TextInputImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCInputTextModule } from '@dxc-technology/halstack-angular';
+  import { DxcInputTextModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCInputTextModule,
+      DxcInputTextModule,
     ]
   })
   export class AppComponent { }

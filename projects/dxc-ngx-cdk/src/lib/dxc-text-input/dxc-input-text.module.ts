@@ -18,4 +18,4 @@ import { DxcTextInputComponent } from './dxc-input-text.component';
   ],
   exports: [DxcTextInputComponent]
 })
-export class DXCInputTextModule {}
+export class DxcInputTextModule {}

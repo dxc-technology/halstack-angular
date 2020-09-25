@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCHeaderModule } from '@dxc-technology/halstack-angular';
+  import { DxcHeaderModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCHeaderModule,
+      DxcHeaderModule,
     ]
   })
   export class AppComponent { }

@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DXCDropdownModule,DxcTagModule, DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcDropdownModule,DxcTagModule, DxcChipModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
 import { DropdownTablePropertiesComponent } from "src/app/components/examples/dropdown/properties/dropdown-table-properties.component";
@@ -36,7 +36,7 @@ import { DropdownApiComponent } from '../../components/examples/dropdown/dropdow
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    DXCDropdownModule,
+    DxcDropdownModule,
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,

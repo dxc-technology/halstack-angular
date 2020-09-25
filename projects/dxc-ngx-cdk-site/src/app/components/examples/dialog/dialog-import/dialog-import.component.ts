@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class DialogImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCDialogModule } from '@dxc-technology/halstack-angular';
+  import { DxcDialogModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCDialogModule,
+      DxcDialogModule,
     ]
   })
   export class AppComponent { }

@@ -12,4 +12,4 @@ import { ClosableDirective } from './directives/closable.directive';
   ],
   exports: [DxcHeaderComponent,ClosableDirective]
 })
-export class DXCHeaderModule {}
+export class DxcHeaderModule {}

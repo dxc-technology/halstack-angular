@@ -2,7 +2,7 @@ import { render, fireEvent } from "@testing-library/angular";
 import { DxcSliderComponent } from "./dxc-slider.component";
 import { screen, waitFor, waitForElement } from "@testing-library/dom";
 import { MatSliderModule } from "@angular/material";
-import { DXCInputTextModule } from '../dxc-text-input/dxc-input-text.module';
+import { DxcInputTextModule } from '../dxc-text-input/dxc-input-text.module';
 import { TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ describe("DxcSlider tests", () => {
   test("should render dxc-slider", async () => {
     const { getByText } = await render(DxcSliderComponent, {
         componentProperties: { showLimitsValues:true },
-        imports: [MatSliderModule,DXCInputTextModule]
+        imports: [MatSliderModule,DxcInputTextModule]
     });
     expect(getByText("100")).toBeTruthy();
   });
@@ -28,7 +28,7 @@ describe("DxcSlider tests", () => {
         onChange: { emit: onChangeFunction } as any,
         showInput: true 
       },
-      imports: [MatSliderModule,DXCInputTextModule]
+      imports: [MatSliderModule,DxcInputTextModule]
     });
     const input = <HTMLInputElement>(slider.getByRole("combobox"));
     fireEvent.input(input, { target: { value: value } });
@@ -49,7 +49,7 @@ describe("DxcSlider tests", () => {
         onChange: { emit: onChangeFunction } as any,
         showInput: true 
       },
-      imports: [MatSliderModule,DXCInputTextModule]
+      imports: [MatSliderModule,DxcInputTextModule]
     });
     const input = <HTMLInputElement>(slider.getByRole("combobox"));
     fireEvent.input(input, { target: { value: value } });
@@ -70,7 +70,7 @@ describe("DxcSlider tests", () => {
         showInput: true,
         disabled:true 
       },
-      imports: [MatSliderModule,DXCInputTextModule]
+      imports: [MatSliderModule,DxcInputTextModule]
     });
     const input = <HTMLInputElement>(slider.getByRole("combobox"));
     fireEvent.input(input, { target: { value: value } });
@@ -94,7 +94,7 @@ describe("DxcSlider tests", () => {
         showInput: true,
         disabled:true 
       },
-      imports: [MatSliderModule,DXCInputTextModule]
+      imports: [MatSliderModule,DxcInputTextModule]
     });
     const input = <HTMLInputElement>(slider.getByRole("slider"));
     fireEvent.mouseUp(input);

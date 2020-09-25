@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcButtonModule, DXCAlertModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcButtonModule, DxcAlertModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
 import { AlertChildrenComponent } from '../../components/examples/alert/alert-children/alert-children.component';
 import { AlertComponent } from './alert.component';
 import { AlertExampleComponent } from '../../components/examples/alert/alert-example/alert-example.component';
@@ -42,7 +42,7 @@ import { AlertApiComponent } from '../../components/examples/alert/alert-api/ale
     ],
   imports: [
     BrowserModule,
-    DXCAlertModule,
+    DxcAlertModule,
     DxcButtonModule,
     TabbedSectionModule,
     ExampleViewerModule,

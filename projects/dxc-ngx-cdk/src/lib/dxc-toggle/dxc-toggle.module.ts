@@ -11,4 +11,4 @@ import { DxcToggleComponent } from "./dxc-toggle.component";
   ],
   exports: [DxcToggleComponent]
 })
-export class DXCToggleModule {}
+export class DxcToggleModule {}

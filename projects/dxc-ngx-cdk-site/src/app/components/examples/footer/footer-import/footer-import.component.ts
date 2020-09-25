@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class FooterImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCFooterModule } from '@dxc-technology/halstack-angular';
+  import { DxcFooterModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCFooterModule,
+      DxcFooterModule,
     ]
   })
   export class AppComponent { }

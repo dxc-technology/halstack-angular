@@ -12,4 +12,4 @@ import { DxcDropdownComponent } from "./dxc-dropdown.component";
   ],
   exports: [DxcDropdownComponent]
 })
-export class DXCDropdownModule {}
+export class DxcDropdownModule {}

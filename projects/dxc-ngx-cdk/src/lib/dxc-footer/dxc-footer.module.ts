@@ -8,4 +8,4 @@ import { DxcFooterComponent } from './dxc-footer.component';
   imports: [CommonModule, MatToolbarModule],
   exports: [DxcFooterComponent]
 })
-export class DXCFooterModule {}
+export class DxcFooterModule {}

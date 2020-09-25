@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class SelectImportComponent implements OnInit {
 
   bindCode = `
-  import { DXCSelectModule } from '@dxc-technology/halstack-angular';
+  import { DxcSelectModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DXCSelectModule,
+      DxcSelectModule,
     ]
   })
   export class AppComponent { }

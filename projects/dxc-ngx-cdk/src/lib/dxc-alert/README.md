@@ -15,16 +15,16 @@ The DXC Alert Component is an important message for the user.
 </dxc-alert>
 ```
 
-Include the **DXCAlertModule** into **app.module.ts** to use the alert component:
+Include the **DxcAlertModule** into **app.module.ts** to use the alert component:
 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DXCAlertModule } from '@dxc-technology/halstack-angular';
+import { DxcAlertModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DXCAlertModule],
+  imports: [DxcAlertModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -46,4 +46,4 @@ import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
     DxcTransactionComponent
   ]
 })
-export class DXCUploadModule {}
+export class DxcUploadModule {}

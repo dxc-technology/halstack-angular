@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcRadioModule, DXCSelectModule, DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcRadioModule, DxcSelectModule, DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -44,7 +44,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       TabbedSectionModule,
       ExampleViewerModule,
       DxcTableModule,
-      DXCSelectModule,
+      DxcSelectModule,
       DxcTagModule,
       CodePlaygroundModule,
       ComponentsSidenavModule,

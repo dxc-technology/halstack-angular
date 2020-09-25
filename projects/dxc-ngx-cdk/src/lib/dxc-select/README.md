@@ -16,16 +16,16 @@ The DXC Select Component allows the user to select a value from a list of option
 ></dxc-select>
 ```
 
-Include the **DXCSelectModule** into **app.module.ts** to use the select component:
+Include the **DxcSelectModule** into **app.module.ts** to use the select component:
 
 ```ts
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { DXCSelectModule } from '@dxc-technology/halstack-angular';
+import { DxcSelectModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DXCSelectModule],
+  imports: [DxcSelectModule],
   providers: [],
   bootstrap: [AppComponent]
 })

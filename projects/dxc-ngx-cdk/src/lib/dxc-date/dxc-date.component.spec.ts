@@ -16,7 +16,7 @@ import {
 } from "@angular/material-moment-adapter";
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
-import { DXCInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
 
 describe("DxcDate", () => {
   const newMockDate = new Date("1995/12/03");
@@ -32,7 +32,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
 
@@ -62,7 +62,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
 
@@ -91,7 +91,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
 
@@ -127,7 +127,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
 
@@ -162,7 +162,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
 
@@ -200,7 +200,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
     dxcDate.detectChanges();
@@ -235,7 +235,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
     dxcDate.detectChanges();
@@ -272,7 +272,7 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DXCInputTextModule
+        DxcInputTextModule
       ]
     });
     dxcDate.detectChanges();

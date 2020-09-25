@@ -18,4 +18,4 @@ import { ThemeModule } from '../theme/theme.module';
   ],
   exports: [DxcSelectComponent]
 })
-export class DXCSelectModule {}
+export class DxcSelectModule {}

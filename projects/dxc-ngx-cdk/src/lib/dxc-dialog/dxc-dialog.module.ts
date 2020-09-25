@@ -9,4 +9,4 @@ import { DxcDialogComponent } from "./dxc-dialog.component";
   ],
   exports: [DxcDialogComponent]
 })
-export class DXCDialogModule {}
+export class DxcDialogModule {}

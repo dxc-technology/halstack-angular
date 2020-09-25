@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import {
   DxcTableModule,
-  DXCInputTextModule,
+  DxcInputTextModule,
   DxcLinkModule,
   DxcTagModule,
   DxcChipModule
@@ -39,7 +39,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    DXCInputTextModule,
+    DxcInputTextModule,
     ExampleViewerModule,
     DxcLinkModule,
     CodePlaygroundModule,

@@ -11,16 +11,16 @@ The DXC Header Component is a navegation container used at the top of the app.
 </dxc-header>
 ```
 
-Include the **DXCHeaderModule** into **app.module.ts** to use the header component:
+Include the **DxcHeaderModule** into **app.module.ts** to use the header component:
 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DXCHeaderModule } from '@dxc-technology/halstack-angular';
+import { DxcHeaderModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DXCHeaderModule],
+  imports: [DxcHeaderModule],
   providers: [],
   bootstrap: [AppComponent]
 })

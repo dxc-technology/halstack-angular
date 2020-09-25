@@ -17,16 +17,16 @@ The DXC Input Text Component allows the user to introduce text.
 </dxc-input-text>
 ```
 
-Include the **DXCInputTextModule** into **app.module.ts** to use the input text component:
+Include the **DxcInputTextModule** into **app.module.ts** to use the input text component:
 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DXCInputTextModule } from '@dxc-technology/halstack-angular';
+import { DxcInputTextModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DXCInputTextModule],
+  imports: [DxcInputTextModule],
   providers: [],
   bootstrap: [AppComponent]
 })

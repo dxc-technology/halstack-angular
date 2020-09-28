@@ -33,6 +33,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -96,5 +98,24 @@ export class AppModule {}
         <td>@Input<br>size: any (string | object)</td>
         <td><code>'fitContent'	</code></td>
         <td>Size of the component ('large' | 'fillParent' | 'fitContent').</td>
+    </tr>
+</table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>backgroundColor</td>
+        <td><code>#FFFFFF</code></td>
+        <td>Applies to token backgroundColor.</td>
+    </tr>
+    <tr>
+        <td>fontColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token textColor.</td>
     </tr>
 </table>

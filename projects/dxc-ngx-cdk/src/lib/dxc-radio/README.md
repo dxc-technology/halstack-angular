@@ -124,3 +124,17 @@ The API properties are the following:
         </td>
     </tr>
 </table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token dotColor and borderColor.</td>
+    </tr>
+</table>

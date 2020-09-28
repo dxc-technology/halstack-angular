@@ -1,5 +1,9 @@
 # DXC Button Component
 
+## Overview
+
+The DXC Button Component is clickable element.
+
 ## Usage
 
 ```html
@@ -93,5 +97,70 @@ The API properties are the following:
         Size of the component ('small' | 'medium' | 'large' | 'fillParent' |
         'fitContent').
       </td>
+    </tr>
+</table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+      <th>Name</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>
+        <code>#FFED00</code>
+      </td>
+      <td>Applies to token primaryBackgroundColor and secondaryOutlinedColor in primary and secondary mode.</td>
+    </tr>
+    <tr>
+      <td>hoverColor</td>
+      <td>
+        <code>#000000</code>
+      </td>
+      <td>Applies to token hoverBackgroundColor, hoverOutlinedColor and hoverBackgroundColor in primary, secondary and text mode.</td>
+    </tr>
+    <tr>
+      <td>primaryFontColor</td>
+      <td>
+        <code>#000000</code>
+      </td>
+      <td>Applies to token primaryTextColor in primary mode.</td>
+    </tr>
+    <tr>
+      <td>primaryHoverFontColor</td>
+      <td>        
+        <code>#FFED00</code>
+      </td>
+      <td>Applies to token hoverTextColor in primary mode.</td>
+    </tr>
+    <tr>
+      <td>secondaryFontColor</td>
+      <td>
+        <code>#000000</code>
+      </td>
+      <td>Applies to token secondaryTextColor secondary mode.</td>
+    </tr>
+    <tr>
+      <td>secondaryHoverFontColor</td>
+        <td>
+          <code>#000000</code>
+        </td>
+      <td>Applies to token hoverTextColor in secondary mode.</td>
+    </tr>
+    <tr>
+      <td>textFontColor</td>
+      <td>
+        <code>#000000</code>
+      </td>
+      <td>Applies to token textTextColor in text mode.</td>
+    </tr>
+    <tr>
+      <td>textHoverFontColor</td>
+      <td>
+        <code>#FFFFFF</code>
+      </td>
+      <td>Applies to token hoverTextColor in text mode.</td>
     </tr>
 </table>

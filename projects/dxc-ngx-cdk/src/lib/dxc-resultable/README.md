@@ -38,6 +38,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -122,3 +124,5 @@ Directives are used to add functionality and new syntax into HTML components. Th
     </tr>
 </table>
 
+## Theming
+As the resultset table component is composed by a table component, the tokens for customization are the same. You can find them [here](../dxc-table/README.md).

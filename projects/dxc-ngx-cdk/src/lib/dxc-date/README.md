@@ -35,6 +35,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -155,3 +157,22 @@ export enum Formats {
   "YYYY.MM.DD"
 }
 ```
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>pickerSelectedDateColor</td>
+        <td><code>#FFED00</code></td>
+        <td>Applies to token pickerSelectedDateColor.</td>
+    </tr>
+    <tr>
+        <td>pickerSelectedDateBackgroundColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token pickerSelectedDateBackgroundColor.</td>
+    </tr>
+</table>

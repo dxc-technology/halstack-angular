@@ -10,17 +10,20 @@ export class OverviewInstallComponent implements OnInit {
 
   npmCode : String;
   yarnCode : String;
+  assetsCode : String;
 
   files: Array<String>;
 
   constructor(@Inject("ExampleService") private exampleService: ExampleService) { 
     this.files = [
       'overview/overview-install/overview-install-npm',
-      'overview/overview-install/overview-install-yarn'
+      'overview/overview-install/overview-install-yarn',
+      'overview/overview-install/overview-install-assets'
     ]
 
     this.npmCode = "Loading...";
     this.yarnCode = "Loading...";
+    this.assetsCode = "Loading...";
   }
   ngOnInit() {
     this.getExampleFiles();
@@ -31,6 +34,7 @@ export class OverviewInstallComponent implements OnInit {
       .getExampleFiles(this.files).subscribe((response : Array<String>) => {
          this.npmCode = response[0];
          this.yarnCode = response[1];
+         this.assetsCode = response[2];
         });
   };
 

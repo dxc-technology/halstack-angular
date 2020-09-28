@@ -62,6 +62,8 @@ export class AppModule {}
 
 ### Tab properties
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -90,3 +92,26 @@ export class AppModule {}
     </tr>
 </table>
 
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>selectedUnderlinedColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token selectedUnderlinedColor.</td>
+    </tr>
+    <tr>
+        <td>selectedFontColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token selectedColor.</td>
+    </tr>
+    <tr>
+        <td>selectedBackgroundColor</td>
+        <td><code>#FFFFFF</code></td>
+        <td>Applies to token selectedBackgroundColor.</td>
+    </tr>
+</table>

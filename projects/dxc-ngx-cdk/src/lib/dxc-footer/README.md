@@ -33,6 +33,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -112,5 +114,29 @@ export class AppModule {}
             'xxlarge'). You can pass an object with 'top', 'bottom', 'left' and
             'right' properties in order to specify different padding sizes.
         </td>
+    </tr>
+</table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>fontColor</td>
+        <td><code>#FFFFFF</code></td>
+        <td>Applies to token textColor.</td>
+    </tr>
+    <tr>
+        <td>backgroundColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token backgroundColor.</td>
+    </tr>
+    <tr>
+        <td>lineColor</td>
+        <td><code>#FFED00</code></td>
+        <td>Applies to token lineColor.</td>
     </tr>
 </table>

@@ -103,3 +103,6 @@ The API properties are the following:
         <td>Size of the component ('large' | 'fillParent' | 'fitContent').</td>
     </tr>
 </table>
+
+## Theming
+Not available tokens.

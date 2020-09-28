@@ -157,3 +157,17 @@ The API properties are the following:
         </td>
     </tr>
 </table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>selectedOptionBackgroundColor</td>
+        <td><code>#D9D9D9</code></td>
+        <td>Applies to token selectedOptionBackgroundColor.</td>
+    </tr>
+</table>

@@ -32,6 +32,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -86,3 +88,6 @@ export class AppModule {}
         <td>Size of the component ('small' | 'medium' | 'large' | 'fillParent' | 'fitContent').</td>
     </tr>
 </table>
+
+## Theming
+Not available tokens.

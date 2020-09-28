@@ -37,6 +37,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>
@@ -85,5 +87,24 @@ export class AppModule {}
         <td>@Output<br>lastFunction: EventEmitter</td>
         <td></td>
         <td>This function will be called when the user clicks the button to go to the last page.</td>
+    </tr>
+</table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>paginatorBackgroundColor</td>
+        <td><code>#EEEEEE</code></td>
+        <td>Applies to token paginatorBackgroundColor.</td>
+    </tr>
+    <tr>
+        <td>paginatorFontColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token paginatorTextColor.</td>
     </tr>
 </table>

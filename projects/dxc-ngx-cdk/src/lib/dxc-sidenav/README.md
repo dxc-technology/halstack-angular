@@ -78,3 +78,27 @@ The API properties are the following:
         <td>If false, the arrow button is hidden.</td>
     </tr>
 </table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>backgroundColor</td>
+        <td><code>#F8F8F8</code></td>
+        <td>Applies to token backgroundColor.</td>
+    </tr>
+    <tr>
+        <td>selectedOptionBackgroundColor</td>
+        <td><code>#D9D9D9</code></td>
+        <td>Applies to token selectedOptionBackgroundColor.</td>
+    </tr>
+    <tr>
+        <td>arrowColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token arrowColor.</td>
+    </tr>
+</table>

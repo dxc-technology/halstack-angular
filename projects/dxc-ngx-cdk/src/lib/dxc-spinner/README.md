@@ -80,3 +80,21 @@ The API properties are the following:
     </tr>
 </table>
 
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>totalCircleColor</td>
+        <td><code>#FFFFFF</code></td>
+        <td>Applies to token totalCircle.</td>
+    </tr>
+    <tr>
+        <td>trackCircleColor</td>
+        <td><code>#FFED00</code></td>
+        <td>Applies to token trackLine.</td>
+    </tr>
+</table>

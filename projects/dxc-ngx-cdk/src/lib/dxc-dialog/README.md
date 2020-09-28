@@ -35,6 +35,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
   <tr style="background-color: grey">
     <th>Name</th>
@@ -81,5 +83,7 @@ export class AppModule {}
       specify different padding sizes.
     </td>
   </tr>
-    
 </table>
+
+## Theming
+Not available tokens.

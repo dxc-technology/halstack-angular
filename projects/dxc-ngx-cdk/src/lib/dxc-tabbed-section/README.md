@@ -69,6 +69,9 @@ export class AppModule {}
     </tr>
 </table>
 
+## Theming
+Not available tokens.
+
 ## Usage Notes
 
 The dxc-tabbed-section component is based on material desing tabbed component and styled using the emotion JS to CSS library. When nesting several material tabbed components you may find conflicts depending on how you decide to implememnt it. In case this happens, it is necesary to define a default style for each of this nested material-tab-group elements in order to avoid the dxc-tabbed-section style to apply to each of them. An Example of this style definition as follows:

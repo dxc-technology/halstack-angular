@@ -33,6 +33,8 @@ export class AppModule {}
 
 ## API reference
 
+The API properties are the following:
+
 <table>
   <tr style="background-color: grey">
     <th>Name</th>
@@ -118,4 +120,23 @@ export class AppModule {}
       Size of the component ('small' | 'medium' | 'large' | 'fillParent' | 'fitContent').
     </td>
   </tr>
+</table>
+
+## Theming
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td><code>#FFED00</code></td>
+        <td>Applies to token backgroundColorChecked and borderColor.</td>
+    </tr>
+    <tr>
+        <td>checkColor</td>
+        <td><code>#000000</code></td>
+        <td>Applies to token checkColor.</td>
+    </tr>
 </table>

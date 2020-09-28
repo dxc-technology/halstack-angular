@@ -20,7 +20,6 @@ import { TableInfoComponent } from '../table/table-info.component';
 import { TabsInfoComponent } from '../tabs/tabs-info.component';
 import { TabbedSectionComponent } from '../tabbed-section/tabbed-section.component';
 import { TagInfoComponent } from '../tag-info/tag-info.component';
-import { ToggleInfoComponent } from '../toggle/toggle-info.component';
 import { AllComponent } from '../all/all.component';
 import { DxcUploadComponent } from '../../../../../dxc-ngx-cdk/src/lib/dxc-upload/dxc-upload.component';
 
@@ -157,11 +156,6 @@ export class HeaderInfoComponent {
         name: 'Tags',
         route: 'tags',
         component: TagInfoComponent
-    },
-    {
-        name: 'Toggle',
-        route: 'toggle',
-        component: ToggleInfoComponent
     },
     {
         name: 'Upload',

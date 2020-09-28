@@ -8,7 +8,6 @@ import { CheckboxInfoComponent } from "./pages/checkbox/checkbox-info.component"
 import { DateInfoComponent } from "./pages/date/date-info.component";
 import { DialogInfoComponent } from "./pages/dialog/dialog-info.component";
 import { HeaderInfoComponent } from "./pages/header/header-info.component";
-import { ToggleInfoComponent } from "./pages/toggle/toggle-info.component";
 import { TextInputInfoComponent } from "./pages/inputText/text-input-info.component";
 import { SelectInfoComponent } from "./pages/select/select-info.component";
 import { SpinnerInfoComponent } from "./pages/spinner/spinner.component";
@@ -37,7 +36,7 @@ import { ResultsetTableComponent } from "./pages/resultset-table/resultset-table
 import { CommonModule } from "@angular/common";
 import {
   DxcAccordionModule,
-  DXCAlertModule,
+  DxcAlertModule,
   DxcBoxModule,
   DxcButtonModule,
   DxcCardModule,
@@ -51,7 +50,6 @@ import {
   DxcSelectModule,
   DxcSpinnerModule,
   DxcSwitchModule,
-  DxcToggleModule,
   DxcTabsModule,
   DxcUploadModule,
   DxcTableModule,
@@ -68,6 +66,7 @@ import {
   DxcHeadingModule,
   DxcResultsetTableModule,
   DxcTextareaModule,
+  ThemeModule
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
@@ -83,7 +82,6 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
     DialogInfoComponent,
     HeaderInfoComponent,
     RadioInfoComponent,
-    ToggleInfoComponent,
     AccordionComponent,
     AlertComponent,
     BoxComponent,
@@ -113,7 +111,7 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
     CommonModule,
     BrowserAnimationsModule,
     DxcAccordionModule,
-    DXCAlertModule,
+    DxcAlertModule,
     DxcBoxModule,
     DxcButtonModule,
     DxcCardModule,
@@ -128,7 +126,6 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
     DxcSideNavModule,
     DxcSpinnerModule,
     DxcSwitchModule,
-    DxcToggleModule,
     DxcTabsModule,
     DxcUploadModule,
     DxcTableModule,
@@ -144,6 +141,7 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
     DxcHeadingModule,
     DxcResultsetTableModule,
     DxcTextareaModule,
+    ThemeModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

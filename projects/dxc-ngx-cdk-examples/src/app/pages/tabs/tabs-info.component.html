@@ -1,22 +1,14 @@
 <div>
   <h3>Uncontrolled tabs</h3>
-  <dxc-tabs theme="dark">
+  <dxc-tabs>
     <dxc-tab label="Tab 1" (onClick)="uncontrolledTabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 2" (onClick)="uncontrolledTabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 3" (onClick)="uncontrolledTabClicked($event)"></dxc-tab>
   </dxc-tabs>
 </div>
 <div style="width: 320px">
-  <h3>Light theme tabs</h3>
+  <h3>Tab index</h3>
   <dxc-tabs margin="small" [activeTabIndex]="tabId">
-    <dxc-tab label="Tab 1" (onClick)="tabClicked($event)"></dxc-tab>
-    <dxc-tab label="Tab 2" (onClick)="tabClicked($event)"></dxc-tab>
-    <dxc-tab label="Tab 3" (onClick)="tabClicked($event)"></dxc-tab>
-  </dxc-tabs>
-</div>
-<div>
-  <h3>Dark theme tabs</h3>
-  <dxc-tabs theme="dark" [activeTabIndex]="tabId">
     <dxc-tab label="Tab 1" (onClick)="tabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 2" (onClick)="tabClicked($event)"></dxc-tab>
     <dxc-tab label="Tab 3" (onClick)="tabClicked($event)"></dxc-tab>

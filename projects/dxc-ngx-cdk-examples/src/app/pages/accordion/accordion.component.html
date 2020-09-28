@@ -12,7 +12,7 @@
     </dxc-accordion>
   </div>
   <div className="test-case" id="light-theme-default">
-    <h4>Light theme - Default Accordion</h4>
+    <h4>Default Accordion</h4>
     <dxc-accordion 
     label="Accordion" 
     [isExpanded]="isExpanded" 
@@ -25,64 +25,7 @@
     </dxc-accordion>
   </div>
 
-  <div className="test-case" id="light-theme-alternative">
-    <h4>Light theme - Alternative Accordion</h4>
-    <dxc-accordion
-      label="Accordion"
-      mode="alternative"
-      [isExpanded]="isExpanded"
-      (onClick)="changeIsExpanded($event)"
-      padding="medium"
-    >
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
-    </dxc-accordion>
-  </div>
   <div>
-    <h4>Dark theme - Default Accordion</h4>
-    <div
-      style="
-        background: #000000;
-        padding: 25px 0px 25px 0px
-      "
-      className="test-case"
-      id="dark-theme-default"
-    >
-      <dxc-accordion
-        label="Accordion"
-        theme="dark"
-        [isExpanded]="isExpanded"
-        (onClick)="changeIsExpanded($event)"
-        padding="medium"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </div>
-      </dxc-accordion>
-    </div>
-  </div>
-
-  <div>
-    <h4>Dark theme - Alternative Accordion</h4>
-    <div style="background: #000000; padding: 25px 0px 25px 0px"
-    className="test-case" id="dark-theme-alternative" >
-    <dxc-accordion
-      label="Accordion"
-      theme="dark"
-      mode="alternative"
-      [isExpanded]="isExpanded"
-      (onClick)="changeIsExpanded($event)"
-      padding="medium"
-    >
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
-    </dxc-accordion>
-  </div>
 
   <div className="test-case" id="icon-before-default">
     <h4>Icon before - Default Accordion</h4>
@@ -90,24 +33,6 @@
       label="Accordion"
       iconPosition="before"
       iconSrc="{{homeLogo}}"
-      [isExpanded]="isExpanded"
-      (onClick)="changeIsExpanded($event)"
-      padding="medium"
-    >
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
-    </dxc-accordion>
-  </div>
-
-  <div className="test-case" id="icon-before-alternative">
-    <h4>Icon before - Alternative Accordion</h4>
-    <dxc-accordion
-      label="Accordion"
-      mode="alternative"
-      iconPosition="before"
-      iconSrc="{{facebookLogo}}"
       [isExpanded]="isExpanded"
       (onClick)="changeIsExpanded($event)"
       padding="medium"
@@ -136,45 +61,10 @@
     </dxc-accordion>
   </div>
 
-  <div className="test-case" id="icon-after-alternative">
-    <h4>Icon after - Alternative Accordion</h4>
-    <dxc-accordion
-      label="Accordion"
-      iconPosition="after"
-      mode="alternative"
-      iconSrc="{{facebookLogo}}"
-      [isExpanded]="isExpanded"
-      (onClick)="changeIsExpanded($event)"
-      padding="medium"
-    >
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
-    </dxc-accordion>
-  </div>
-
   <div className="test-case" id="disabled-default">
     <h4>Disabled - Default Accordion</h4>
     <dxc-accordion
       label="Accordion"
-      disabled="true"
-      [isExpanded]="isExpanded"
-      (onClick)="changeIsExpanded($event)"
-      padding="medium"
-    >
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
-    </dxc-accordion>
-  </div>
-
-  <div className="test-case" id="disabled-alternative">
-    <h4>Disabled - Alternative Accordion</h4>
-    <dxc-accordion
-      label="Accordion"
-      mode="alternative"
       disabled="true"
       [isExpanded]="isExpanded"
       (onClick)="changeIsExpanded($event)"
@@ -221,23 +111,6 @@
     <h4>Assistive text - Default Accordion</h4>
     <dxc-accordion
       label="Accordion"
-      assistiveText="Assistive text"
-      (onClick)="changeIsExpanded($event)"
-      [isExpanded]="isExpanded"
-      padding="medium"
-    >
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
-    </dxc-accordion>
-  </div>
-
-  <div className="test-case" id="assistive-text-alternative">
-    <h4>Assistive text - Alternative Accordion</h4>
-    <dxc-accordion
-      label="Accordion"
-      mode="alternative"
       assistiveText="Assistive text"
       (onClick)="changeIsExpanded($event)"
       [isExpanded]="isExpanded"
@@ -488,25 +361,6 @@
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </div>
-      </dxc-accordion>
-    </div>
-  </div>
-
-  <div>
-    <div className="test-case" id="expanded-alternative-accordion">
-      <h4>Expanded accordion - Alternative Accordion</h4>
-      <dxc-accordion
-        label="Accordion"
-        mode="alternative"
-        [isExpanded]="isExpanded"
-        (onClick)="changeIsExpanded($event)"
-        padding="medium"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada l.
         </div>
       </dxc-accordion>
     </div>

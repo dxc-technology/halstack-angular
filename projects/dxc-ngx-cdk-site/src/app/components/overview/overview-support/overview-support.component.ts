@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewSupportComponent implements OnInit {
 
-  imgGithub:string;
+  imgGithub: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.imgGithub = 'assets/img/github-logo.png';
+    this.imgGithub = 'assets/img/github-logo.svg';
   }
 
 }

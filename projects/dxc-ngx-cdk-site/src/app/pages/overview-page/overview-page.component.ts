@@ -14,24 +14,24 @@ export class OverviewPageComponent implements OnInit {
 
   sections: Array<Section>;
 
-  imgDxc:string;
+  imgDxc: string;
 
-  imgGithub:string;
+  imgGithub: string;
 
-  constructor(){
+  constructor() {
     this.sections = new Array<Section>();
   }
 
   ngOnInit() {
-     this.imgGithub = 'assets/img/github-logo.png';
-     this.imgDxc = 'assets/img/dxclogo.png';
+    this.imgGithub = 'assets/img/github-logo.svg';
+    this.imgDxc = 'assets/img/dxclogo.png';
 
-     this.sections.push(
-      {id: 0, label: 'INSTALL',selector: 'app-overview-install', component: OverviewInstallComponent},
-      {id: 1, label: 'USE COMPONENTS', selector: 'app-overview-use', component: OverviewUseComponent},
-      {id: 2, label: 'CUSTOM THEMES', selector: 'app-overview-themes', component: OverviewThemesComponent},
-      {id: 3, label: 'SUPPORT', selector: 'app-overview-support', component: OverviewSupportComponent}
-      );
+    this.sections.push(
+      { id: 0, label: 'INSTALL', selector: 'app-overview-install', component: OverviewInstallComponent },
+      { id: 1, label: 'USE COMPONENTS', selector: 'app-overview-use', component: OverviewUseComponent },
+      { id: 2, label: 'CUSTOM THEMES', selector: 'app-overview-themes', component: OverviewThemesComponent },
+      { id: 3, label: 'SUPPORT', selector: 'app-overview-support', component: OverviewSupportComponent }
+    );
   }
 
 

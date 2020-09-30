@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DXC Button Component is clickable element.
+The DXC Button Component is a clickable element.
 
 ## Usage
 

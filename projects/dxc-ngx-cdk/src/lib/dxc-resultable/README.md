@@ -86,14 +86,8 @@ Directives are used to add functionality and new syntax into HTML components. Th
         <td>sortable: object[]</td>
         <td>
             <code>
-            <ul class="ul-code">
-                <li>
-                    isSortable:false
-                </li>
-                <li>
-                    propertyName:''
-                </li>
-            </ul>
+                <p>isSortable:false</p>
+                <p>propertyName:''</p>
             </code>
         </td>
         <td>

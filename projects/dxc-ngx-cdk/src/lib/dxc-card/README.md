@@ -11,8 +11,7 @@ The DXC Card Component is a container which basically has an image and some cont
   (onClick)="onClick($event)"
   [imagePosition]="'after'"
   [imageSrc]="person"
-  [mode]="'default'"
->
+  [mode]="'default'">
   <span>Card Example</span>
 </dxc-card>
 ```

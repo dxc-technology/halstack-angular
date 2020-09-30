@@ -46,16 +46,12 @@ The API properties are the following:
   </tr>
   <tr>
     <td>@Input<br>suffixIconSrc: string</td>
-    <td>
-      <code></code>
-    </td>
+    <td></td>
     <td>Path of the icon to be placed after the label.</td>
   </tr>
   <tr>
     <td>@Input<br>prefixIconSrc: string</td>
-    <td>
-      <code></code>
-    </td>
+    <td></td>
     <td>Path of the icon to be placed before the label.</td>
   </tr>
   <tr>
@@ -77,16 +73,14 @@ The API properties are the following:
   </tr>
   <tr>
     <td>@Output<br>suffixIconClick: EventEmitter</td>
-    <td>
-    </td>
+    <td></td>
     <td>
      Event that will be emitted when the suffix icon is clicked.
     </td>
   </tr>
   <tr>
     <td>@Output<br>prefixIconClick: EventEmitter</td>
-    <td>
-    </td>
+    <td></td>
     <td>
       Event that will be emitted when the prefix icon is clicked.
     </td>

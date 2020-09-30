@@ -16,7 +16,6 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.setTheme();
     
   }
 
@@ -37,16 +36,4 @@ export class AppComponent {
     return true;
   }
 
-  async setTheme() {
-
-    this.http.get('../assets/styles/themesProperties.json').
-    subscribe(
-      resp=> {
-        const remoteTheme = {properties: JSON.parse(JSON.stringify(resp))};
-        this.themeService.registerTheme(remoteTheme);
-      }
-    );
-
-    
-  }
 }

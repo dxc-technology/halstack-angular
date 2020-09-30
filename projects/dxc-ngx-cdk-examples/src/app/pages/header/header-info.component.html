@@ -3,66 +3,20 @@
   <dxc-header></dxc-header>
 </div>
 
-<div>
-  <h4>Dark theme</h4>
-  <div style="background-color: black" className="test-case" id="dark-theme">
-    <dxc-header theme="dark" logoSrc="./assets/images/dxcassure_blk.png">
-      <div id="responsive">
-        <a isClosable>test</a>
-      </div>
-
-      <div id="unresponsive" *ngFor="let component of components; index as i" class="nav-item">
-        <a [routerLink]="component.route">{{ component.name }}</a>
-      </div>    
-    </dxc-header>
-  </div>
-</div>
-
-<div className="test-case" id="underlined-header" id="underlined">
-  <h4>Underlined Header</h4>
-  <dxc-header [underline]="underlined" >
-  </dxc-header>
-</div>
-
 <div className="test-case" id="custom-header">
   <h4>Header with custom content</h4>
   <dxc-header logoSrc="./assets/images/invision.png">
-    <dxc-toggle label="Toggle" margin="xsmall"> </dxc-toggle>
     <dxc-dropdown
       [options]="options"
       label="Dropdown"
       margin="xsmall"
-      theme="dark"
     >
     </dxc-dropdown>
     <dxc-button
-      mode="basic"
       label="Button"
       margin="xsmall"
     >
     </dxc-button>
-    <dxc-toggle label="Toggle" margin="xsmall"> </dxc-toggle>
-    <dxc-dropdown
-      [options]="options"
-      label="Dropdown"
-      margin="xsmall"
-      theme="dark"
-    >
-    </dxc-dropdown>
-    <dxc-button
-      mode="basic"
-      label="Button"
-      margin="xsmall"
-    >
-    </dxc-button>
-    <dxc-toggle label="Toggle" margin="xsmall"> </dxc-toggle>
-    <dxc-dropdown
-      [options]="options"
-      label="Dropdown"
-      margin="xsmall"
-      theme="dark"
-    >
-    </dxc-dropdown>
   </dxc-header>
 </div>
 

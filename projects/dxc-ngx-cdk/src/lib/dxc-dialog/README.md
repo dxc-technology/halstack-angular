@@ -11,8 +11,7 @@ The DXC Dialog Component is a container that informs the user about a task or di
   [overlay]="false"
   [isCloseVisible]="true"
   [isVisible]="false"
-  (onClose)="onClick($event)"
->
+  (onClose)="onClick($event)">
   Lorem ipsum dolor sit amet consectetur adipiscing elit curae, sodales.
 </dxc-dialog>
 ```

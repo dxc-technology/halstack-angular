@@ -10,7 +10,7 @@ The DXC Alert Component is an important message for the user.
 <dxc-alert
   type="confirm"
   mode="inline"
-  inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+  inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   margin="medium">
 </dxc-alert>
 ```

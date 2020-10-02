@@ -169,7 +169,6 @@ export class DxcButtonComponent {
   }
 
   getModeStyle(){
-    if(this.mode === "primary"){
     if(this.mode === "secondary"){
       return this.getSecondaryStyle();
     } else if(this.mode === "text"){

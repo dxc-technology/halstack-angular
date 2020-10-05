@@ -45,7 +45,7 @@ jobs:
       run: cd ./projects/dxc-ngx-cdk && npm run test
     
     - name: Build angular release cdk site
-      run: cd . && npm run build-release-cdk-site -- --baseHref=/tools/angular/${{steps.split.outputs._0}}          
+      run: cd . && npm run build-release-cdk-site -- --baseHref=/tools/angular/${{steps.split.outputs._0}}
           
     - name: Publish RELEASE to npm
       run: |
@@ -54,8 +54,10 @@ jobs:
         npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-        TAG_NAME: ${{ github.event.release.tag_name }} 
+        TAG_NAME: ${{ github.event.release.tag_name }}        
 
     - name: Move RELEASE docs to S3
       run: node scripts/release-docs.js $TAG_NAME
+      env:
+        TAG_NAME: ${{ github.event.release.tag_name }}
     

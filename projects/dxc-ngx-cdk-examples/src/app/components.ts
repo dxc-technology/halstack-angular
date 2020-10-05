@@ -9,7 +9,6 @@ import { SelectInfoComponent } from './pages/select/select-info.component';
 import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
-import { ToggleInfoComponent } from './pages/toggle/toggle-info.component';
 import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
@@ -29,6 +28,7 @@ import { WizardComponent } from './pages/wizard/wizard.component';
 import { UploadComponent } from './pages/upload/upload.component';
 import { HeadingInfoComponent } from './pages/heading/heading-info.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
+import { TextareaInfoComponent } from './pages/textarea/textarea-info.component';
 
 export const Components = [
     {
@@ -167,9 +167,9 @@ export const Components = [
         component: TagInfoComponent
     },
     {
-        name: 'Toggle',
-        route: 'toggle',
-        component: ToggleInfoComponent
+        name: 'Textarea',
+        route: 'textarea',
+        component: TextareaInfoComponent
     },
     {
         name: 'Upload',

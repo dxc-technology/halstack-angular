@@ -40,32 +40,6 @@
             </dxc-link>
         </div>
     </div>
-    <div 
-        style="background: black"
-        className="test-case" 
-        id="default-dark-link">
-        <h4 style="color: white">Dark theme - Default Link</h4>
-        <dxc-link
-            href="#"
-            theme="dark"
-            text="Link"
-        >
-        </dxc-link>
-    </div>
-    <div
-        style="background: black"
-        className="test-case" 
-        id="default-dark-link">
-        <h4 style="color: white">Dark theme - Not underlined and Inherited color</h4>
-        <dxc-link
-            href="#"
-            [underlined]="!underlined"
-            theme="dark"
-            [inheritColor]="inheritColor"
-            text="Link"
-        >
-        </dxc-link>
-    </div>
     <div>
         <h4>Margin</h4>
         <div className="test-case" id="margin-xxsmall">
@@ -131,7 +105,6 @@
             <p>
                 This is a text with an <dxc-link
                     href="#"
-                    theme="light"
                     iconPosition="after"
                     iconSrc="./assets/images/home.svg"
                     text="Icon after"
@@ -143,7 +116,6 @@
             <p>
                 This is a text with an <dxc-link
                     href="#"
-                    theme="light"
                     iconPosition="before"
                     iconSrc="./assets/images/home.svg"
                     [inheritColor]="inheritColor"
@@ -159,22 +131,8 @@
         <div className="test-case" id="disabled-ligth">
             <dxc-link
                 href="#"
-                theme="light"
                 [underlined]="underlined"
                 [disabled]="disabled"
-                text="Disabled link"
-            >
-            </dxc-link>
-        </div>
-        <div
-            style="background: black"
-            className="test-case" 
-            id="disabled-dark">
-            <dxc-link
-                href="#"
-                [underlined]="!underlined"
-                [disabled]="disabled"
-                theme="dark"
                 text="Disabled link"
             >
             </dxc-link>

@@ -2,8 +2,7 @@
   <h4>Sizes</h4>
   <div class="test-case" id="small-size">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="Small"
     (onClick)="onClick"
     size="small"
@@ -12,8 +11,7 @@
   </div>
   <div class="test-case" id="medium-size">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="Medium"
     (onClick)="onClick"
     size="medium"
@@ -22,8 +20,7 @@
   </div>
   <div class="test-case" id="large-size">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="Large"
     (onClick)="onClick"
     size="large"
@@ -32,8 +29,7 @@
   </div>
   <div class="test-case" id="fitContent-size">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="Fit Content"
     (onClick)="onClick"
     size="fitContent"
@@ -42,8 +38,7 @@
   </div>
   <div class="test-case" id="fillParent-size" style="width: 500px">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="Fill Parent"
     (onClick)="onClick"
     size="fillParent"
@@ -55,8 +50,7 @@
   <h4>Margins</h4>
   <div class="test-case" id="xxsmall-margin">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="xxsmall"
     (onClick)="onClick"
     size="large"
@@ -65,8 +59,7 @@
   </div>
   <div class="test-case" id="xsmall-margin">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="xsmall"
     (onClick)="onClick"
     size="large"
@@ -75,8 +68,7 @@
   </div>
   <div class="test-case" id="small-margin">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="small"
     (onClick)="onClick"
     size="large"
@@ -85,8 +77,7 @@
   </div>
   <div class="test-case" id="medium-margin">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="medium"
     (onClick)="onClick"
     size="large"
@@ -95,8 +86,7 @@
   </div>
   <div class="test-case" id="large-margin">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="large"
     (onClick)="onClick"
     size="large"
@@ -105,8 +95,7 @@
   </div>
   <div class="test-case" id="xlarge-margin">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="xlarge"
     (onClick)="onClick"
     size="large"
@@ -115,8 +104,7 @@
   </div>
   <div class="test-case" id="xxlarge">
   <dxc-button
-    mode="basic"
-    theme="light"
+    mode="primary"
     label="xxlarge"
     (onClick)="onClick"
     size="large"
@@ -125,22 +113,21 @@
   </div>
 </div>
 <div>
-  <div class="test-case" id="basic-single-line">
-    <h4>Basic button single line</h4>
+  <div class="test-case" id="primary-single-line">
+    <h4>Primary button single line</h4>
     <dxc-button
-      mode="basic"
+      mode="primary"
       label="Button"
       (onClick)="onClick"
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="basic-max-line-icon-after">
+  <div class="test-case" id="primary-max-line-icon-after">
     <h4>
-      Basic button size medium - Label max size single line icon after
+      Primary button size medium - Label max size single line icon after
     </h4>
     <dxc-button
-      mode="basic"
-      theme="light"
+      mode="primary"
       label="But"
       iconPosition="after"
       (onClick)="onClick"
@@ -149,13 +136,12 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="basic-max-line-icon-before">
+  <div class="test-case" id="primary-max-line-icon-before">
     <h4>
-      Basic button size medium - Label max size single line icon before
+      Primary button size medium - Label max size single line icon before
     </h4>
     <dxc-button
-      mode="basic"
-      theme="light"
+      mode="primary"
       label="But"
       iconPosition="before"
       (onClick)="onClick"
@@ -164,13 +150,12 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="basic-min-multiline-icon-after">
+  <div class="test-case" id="primary-min-multiline-icon-after">
     <h4>
-      Basic button size medium - Label min size multi line icon after
+      Primary button size medium - Label min size multi line icon after
     </h4>
     <dxc-button
-      mode="basic"
-      theme="light"
+      mode="primary"
       label="ButL"
       iconPosition="after"
       (onClick)="onClick"
@@ -179,53 +164,37 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="basic-min-multiline-icon-before">
+  <div class="test-case" id="primary-min-multiline-icon-before">
     <h4>
-      Basic button size medium - Label min size multi line icon before
+      Primary button size medium - Label min size multi line icon before
     </h4>
     <dxc-button
-      mode="basic"
-      theme="light"
+      mode="primary"
       label="ButM"
       iconPosition="before"
       (onClick)="onClick"
       iconSrc="./assets/images/home.svg"
       size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div
-    class="test-case"
-    style= "background: black"
-    id="basic-dark-theme"
-  >
-    <h4 style="color: white">Basic button dark theme</h4>
-    <dxc-button
-      mode="basic"
-      label="Button"
-      theme="dark"
-      (onClick)="onClick"
       margin="xsmall"
     ></dxc-button>
   </div>
 </div>
 <div>
-  <div class="test-case" id="raised-single-line">
-    <h4>Raised button single line</h4>
+  <div class="test-case" id="secondary-single-line">
+    <h4>Secondary button single line</h4>
     <dxc-button
-      mode="raised"
+      mode="secondary"
       label="Button"
       (onClick)="onClick"
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="raised-max-line-icon-after">
+  <div class="test-case" id="secondary-max-line-icon-after">
     <h4>
-      Raised button size medium - Label max size single line icon after
+      Secondary button size medium - Label max size single line icon after
     </h4>
     <dxc-button
-      mode="raised"
-      theme="light"
+      mode="secondary"
       label="But"
       iconPosition="after"
       (onClick)="onClick"
@@ -234,13 +203,12 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="raised-max-line-icon-before">
+  <div class="test-case" id="secondary-max-line-icon-before">
     <h4>
-      Raised button size medium - Label max size single line icon before
+      Secondary button size medium - Label max size single line icon before
     </h4>
     <dxc-button
-      mode="raised"
-      theme="light"
+      mode="secondary"
       label="But"
       iconPosition="before"
       (onClick)="onClick"
@@ -249,13 +217,12 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="raised-min-multiline-icon-after">
+  <div class="test-case" id="secondary-min-multiline-icon-after">
     <h4>
-      Raised button size medium - Label min size multi line icon after
+      Secondary button size medium - Label min size multi line icon after
     </h4>
     <dxc-button
-      mode="raised"
-      theme="light"
+      mode="secondary"
       label="ButL"
       iconPosition="after"
       (onClick)="onClick"
@@ -264,53 +231,37 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="raised-min-multiline-icon-before">
+  <div class="test-case" id="secondary-min-multiline-icon-before">
     <h4>
-      Raised button size medium - Label min size multi line icon before
+      Secondary button size medium - Label min size multi line icon before
     </h4>
     <dxc-button
-      mode="raised"
-      theme="light"
+      mode="secondary"
       label="ButM"
       iconPosition="before"
       (onClick)="onClick"
       iconSrc="./assets/images/home.svg"
       size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div
-    class="test-case"
-    style="background: black"
-    id="raised-dark-theme"
-  >
-    <h4 style="color: white">Raised button dark theme</h4>
-    <dxc-button
-      mode="raised"
-      label="Button"
-      theme="dark"
-      (onClick)="onClick"
       margin="xsmall"
     ></dxc-button>
   </div>
 </div>
 <div>
-  <div class="test-case" id="flat-single-line">
-    <h4>Flat button single line</h4>
+  <div class="test-case" id="text-single-line">
+    <h4>Text button single line</h4>
     <dxc-button
-      mode="flat"
+      mode="text"
       label="Button"
       (onClick)="onClick"
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="flat-max-line-icon-after">
+  <div class="test-case" id="text-max-line-icon-after">
     <h4>
-      Flat button size medium - Label max size single line icon after
+      Text button size medium - Label max size single line icon after
     </h4>
     <dxc-button
-      mode="flat"
-      theme="light"
+      mode="text"
       label="But"
       iconPosition="after"
       (onClick)="onClick"
@@ -319,13 +270,12 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="flat-max-line-icon-before">
+  <div class="test-case" id="text-max-line-icon-before">
     <h4>
-      Flat button size medium - Label max size single line icon before
+      Text button size medium - Label max size single line icon before
     </h4>
     <dxc-button
-      mode="flat"
-      theme="light"
+      mode="text"
       label="But"
       iconPosition="before"
       (onClick)="onClick"
@@ -334,13 +284,12 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="flat-min-multiline-icon-after">
+  <div class="test-case" id="text-min-multiline-icon-after">
     <h4>
-      Flat button size medium - Label min size multi line icon after
+      Text button size medium - Label min size multi line icon after
     </h4>
     <dxc-button
-      mode="flat"
-      theme="light"
+      mode="text"
       label="ButL"
       iconPosition="after"
       (onClick)="onClick"
@@ -349,118 +298,17 @@
       margin="xsmall"
     ></dxc-button>
   </div>
-  <div class="test-case" id="flat-min-multiline-icon-before">
+  <div class="test-case" id="text-min-multiline-icon-before">
     <h4>
-      Flat button size medium - Label min size multi line icon before
+      Text button size medium - Label min size multi line icon before
     </h4>
     <dxc-button
-      mode="flat"
-      theme="light"
+      mode="text"
       label="ButM"
       iconPosition="before"
       (onClick)="onClick"
       iconSrc="./assets/images/home.svg"
       size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div
-    class="test-case"
-    style="background: black"
-    id="flat-dark-theme"
-  >
-    <h4 style="color: white">Flat button dark theme</h4>
-    <dxc-button
-      mode="flat"
-      label="Button"
-      theme="dark"
-      (onClick)="onClick"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-</div>
-<div>
-  <div class="test-case" id="outlined-single-line">
-    <h4>Outlined button single line</h4>
-    <dxc-button
-      mode="outlined"
-      label="Button"
-      (onClick)="onClick"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div class="test-case" id="outlined-max-line-icon-after">
-    <h4>
-      Outlined button size medium - Label max size single line icon after
-    </h4>
-    <dxc-button
-      mode="outlined"
-      theme="light"
-      label="But"
-      iconPosition="after"
-      (onClick)="onClick"
-      iconSrc="./assets/images/home.svg"
-      size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div class="test-case" id="outlined-max-line-icon-before">
-    <h4>
-      Outlined button size medium - Label max size single line icon before
-    </h4>
-    <dxc-button
-      mode="outlined"
-      theme="light"
-      label="But"
-      iconPosition="before"
-      (onClick)="onClick"
-      iconSrc="./assets/images/home.svg"
-      size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div class="test-case" id="outlined-min-multiline-icon-after">
-    <h4>
-      Outlined button size medium - Label min size multi line icon after
-    </h4>
-    <dxc-button
-      mode="outlined"
-      theme="light"
-      label="ButL"
-      iconPosition="after"
-      (onClick)="onClick"
-      iconSrc="./assets/images/home.svg"
-      size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div class="test-case" id="outlined-min-multiline-icon-before">
-    <h4>
-      Outlined button size medium - Label min size multi line icon before
-    </h4>
-
-    <dxc-button
-      mode="outlined"
-      theme="light"
-      label="ButM"
-      iconPosition="before"
-      (onClick)="onClick"
-      iconSrc="./assets/images/home.svg"
-      size="medium"
-      margin="xsmall"
-    ></dxc-button>
-  </div>
-  <div
-    class="test-case"
-    style="background: black"
-    id="outlined-dark-theme"
-  >
-    <h4 style="color: white">Outlined button dark theme</h4>
-    <dxc-button
-      mode="outlined"
-      label="Button"
-      theme="dark"
-      (onClick)="onClick"
       margin="xsmall"
     ></dxc-button>
   </div>

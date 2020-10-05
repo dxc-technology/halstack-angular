@@ -49,7 +49,7 @@ jobs:
           
     - name: Publish RELEASE to npm
       run: |
-        sed -i "s#\"version\": \"0.0.0\"#\"version\": \"${TAG_NAME}\"#" ./projects/dxc-ngx-cdk/package.json
+        sed -i "s#\"version\": \"0.0.0\"#\"version\": \"${TAG_NAME}\"#" ./dist/dxc-ngx-cdk/package.json
         cd ./dist/dxc-ngx-cdk
         npm publish --access public
       env:

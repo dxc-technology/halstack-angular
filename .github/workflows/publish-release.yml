@@ -60,4 +60,3 @@ jobs:
       run: node scripts/release-docs.js $TAG_NAME
       env:
         TAG_NAME: ${{ github.event.release.tag_name }}
-    

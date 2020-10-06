@@ -137,12 +137,12 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         background-color: var(--dropdown-scrollBarThumbColor);
         border-radius: 3px;
       }
-      ${this.iconPosition === "after"
+      ${this.optionsIconPosition === "after"
         ? css`
             img {
               width: 20px;
               height: 20px;
-              margin-right: 10px;
+              margin-left: 10px;
               vertical-align: middle;
             }
           `
@@ -314,7 +314,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         vertical-align: middle;
         ${this.calculateWidth(inputs)}
       }
-
       .dxc-arrow {
         width: 0;
         height: 0;
@@ -343,15 +342,42 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         width: 100%;
       }
       .mat-select-arrow-wrapper {
-        display: table-cell;
         vertical-align: middle;
-      }
-      img{
-        width: 20px;
-        height: 20px;
+        display: inline-flex;
+        margin-left: 10px;
         margin-right: 10px;
-        vertical-align: middle;
       }
+
+      ${this.iconPosition === "after"
+        ? css`
+            .btn-img-text{
+              display: flex;
+              flex-grow: unset;
+              width: fit-content;
+              flex-direction: row-reverse;
+              align-items: center;
+            }
+            img {
+              width: 20px;
+              height: 20px;
+              margin-left: 10px;
+              vertical-align: middle;
+            }
+          `
+        : css`
+            .btn-img-text{
+              display: flex;
+              flex-grow: unset;
+              width: fit-content;
+              align-items: center;
+            }
+            img {
+              width: 20px;
+              height: 20px;
+              margin-right: 10px;
+              vertical-align: middle;
+            }
+          `}
     `;
   }
   buttonEnter(trigger) {

@@ -348,34 +348,30 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         margin-right: 10px;
       }
 
+      .buttonContent{
+        display: flex;
+        flex-grow: unset;
+        width: fit-content;
+        align-items: center;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+
       ${this.iconPosition === "after"
         ? css`
-            .btn-img-text{
-              display: flex;
-              flex-grow: unset;
-              width: fit-content;
+            .buttonContent{
               flex-direction: row-reverse;
-              align-items: center;
             }
             img {
-              width: 20px;
-              height: 20px;
               margin-left: 10px;
-              vertical-align: middle;
             }
           `
         : css`
-            .btn-img-text{
-              display: flex;
-              flex-grow: unset;
-              width: fit-content;
-              align-items: center;
-            }
             img {
-              width: 20px;
-              height: 20px;
               margin-right: 10px;
-              vertical-align: middle;
             }
           `}
     `;

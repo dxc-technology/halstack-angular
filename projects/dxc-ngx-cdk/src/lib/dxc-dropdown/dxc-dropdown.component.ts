@@ -137,21 +137,20 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         background-color: var(--dropdown-scrollBarThumbColor);
         border-radius: 3px;
       }
+      img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
       ${this.optionsIconPosition === "after"
         ? css`
             img {
-              width: 20px;
-              height: 20px;
               margin-left: 10px;
-              vertical-align: middle;
             }
           `
         : css`
             img {
-              width: 20px;
-              height: 20px;
               margin-right: 10px;
-              vertical-align: middle;
             }
           `}
 

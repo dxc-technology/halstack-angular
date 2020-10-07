@@ -9,19 +9,19 @@ import {
   ViewChild,
   AfterViewChecked,
   ChangeDetectionStrategy,
-  Renderer2
+  Renderer2,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { ElementRef, HostListener } from "@angular/core";
+import { MatMenuTrigger } from "@angular/material";
 
 @Component({
   selector: "dxc-dropdown",
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./dxc-dropdown.component.html",
-  styleUrls: [
-    "./dxc-dropdown.component.scss"
-  ],
+  styleUrls: ["./dxc-dropdown.component.scss"],
   providers: [CssUtils],
 })
 export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
@@ -33,7 +33,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Input() public optionsIconPosition: string = "before";
   @Input() public margin: any;
   @Input() public size: any;
-  @Input() public expandOnHover:boolean;
+  @Input() public expandOnHover: boolean;
   @Input() public showCaret: boolean = true;
 
   @Input() public iconSrc: string;
@@ -41,6 +41,16 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild("dropdownButton", { static: true }) dropdownButton;
+  @ViewChild(MatMenuTrigger, { static: false }) menu: MatMenuTrigger;
+
+  @HostListener("document:click", ["$event"])
+  clickout(event) {
+    if (!this._element.nativeElement.contains(event.target)) {
+      if (this.menuOpened === "opened") {
+        this.menu.closeMenu();
+      }
+    }
+  }
 
   menuOptions: string;
   triggerStyles: string;
@@ -57,7 +67,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     label: null,
     margin: null,
     size: "fitContent",
-    expandOnHover:false
+    expandOnHover: false,
   });
 
   public onlyHasIcons: boolean;
@@ -67,7 +77,12 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   menuOpen: boolean = false;
   btnTrigger: any;
   private width: string = "";
-  constructor(private utils: CssUtils,private ren: Renderer2) {}
+
+  constructor(
+    private utils: CssUtils,
+    private ren: Renderer2,
+    private _element: ElementRef
+  ) {}
   sizes = {
     small: "60px",
     medium: "240px",
@@ -265,16 +280,16 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
             padding: 10px 15px;
           `
         : ""};
-     
+
       border: none;
       .menu-buttom-label {
         color: var(--dropdown-fontColor);
       }
       .arrow-down {
-        border-top: 5px solid var(--dropdown-fontColor);;
+        border-top: 5px solid var(--dropdown-fontColor);
       }
       .arrow-up {
-        border-bottom: 5px solid var(--dropdown-fontColor);;
+        border-bottom: 5px solid var(--dropdown-fontColor);
       }
 
       ${this.menuOpened === "opened"
@@ -283,13 +298,13 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
             border-bottom-right-radius: 0px;
             background-color: var(--dropdown-hoverBackgroundColor);
           `
-        :  css`
+        : css`
             background-color: var(--dropdown-backgroundColor);
-      `}
+          `}
     `;
   }
 
-  updateCss(){
+  updateCss() {
     this.triggerStyles = this.triggerButtonStyles(
       this.defaultInputs.getValue()
     );
@@ -347,7 +362,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         margin-right: 10px;
       }
 
-      .buttonContent{
+      .buttonContent {
         display: flex;
         flex-grow: unset;
         width: fit-content;
@@ -361,7 +376,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
 
       ${this.iconPosition === "after"
         ? css`
-            .buttonContent{
+            .buttonContent {
               flex-direction: row-reverse;
             }
             img {
@@ -376,63 +391,80 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     `;
   }
   buttonEnter(trigger) {
-    if(this.expandOnHover){
+    if (this.expandOnHover) {
       setTimeout(() => {
-        if(this.btnTrigger && this.btnTrigger != trigger){
+        if (this.btnTrigger && this.btnTrigger != trigger) {
           this.btnTrigger.closeMenu();
           this.btnTrigger = trigger;
           this.menuOpen = false;
           trigger.openMenu();
-        }
-        else if (!this.menuOpen) {
+        } else if (!this.menuOpen) {
           this.enterButton = true;
-          this.btnTrigger = trigger
-          trigger.openMenu()
-        }
-        else {
+          this.btnTrigger = trigger;
+          trigger.openMenu();
+        } else {
           this.enterButton = true;
-          this.btnTrigger = trigger
+          this.btnTrigger = trigger;
         }
-      })
+      });
     }
   }
 
   buttonLeave(trigger, button) {
-    if(this.expandOnHover){
+    if (this.expandOnHover) {
       setTimeout(() => {
         if (this.enterButton && !this.menuOpen) {
           trigger.closeMenu();
-          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
-          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
-        } if (!this.menuOpen) {
+          this.ren.removeClass(
+            button["_elementRef"].nativeElement,
+            "cdk-focused"
+          );
+          this.ren.removeClass(
+            button["_elementRef"].nativeElement,
+            "cdk-program-focused"
+          );
+        }
+        if (!this.menuOpen) {
           trigger.closeMenu();
-          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
-          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+          this.ren.removeClass(
+            button["_elementRef"].nativeElement,
+            "cdk-focused"
+          );
+          this.ren.removeClass(
+            button["_elementRef"].nativeElement,
+            "cdk-program-focused"
+          );
         } else {
           this.enterButton = false;
         }
-      }, 100)
+      }, 100);
     }
   }
 
   menuenter() {
-    if(this.expandOnHover){
+    if (this.expandOnHover) {
       this.menuOpen = true;
     }
   }
 
   menuLeave(trigger, button) {
-    if(this.expandOnHover){
+    if (this.expandOnHover) {
       setTimeout(() => {
         if (!this.enterButton) {
           this.menuOpen = false;
           trigger.closeMenu();
-          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
-          this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+          this.ren.removeClass(
+            button["_elementRef"].nativeElement,
+            "cdk-focused"
+          );
+          this.ren.removeClass(
+            button["_elementRef"].nativeElement,
+            "cdk-program-focused"
+          );
         } else {
           this.menuOpen = false;
         }
-      }, 80)
+      }, 80);
     }
   }
 }

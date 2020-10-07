@@ -78,7 +78,8 @@ export const customTheme: Theme = {
     "footer":{
       "backgroundColor": colors.black,
       "fontColor": colors.white,
-      "lineColor": colors.yellow
+      "lineColor": colors.yellow,
+      "logo": "http://localhost:9000/themes/DXC/logo/footer",
     },
     "spinner":{
       "trackCircleColor": colors.yellow,

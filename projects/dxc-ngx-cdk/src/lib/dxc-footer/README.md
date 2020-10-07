@@ -139,4 +139,9 @@ The API properties are the following:
         <td><code>#FFED00</code></td>
         <td>Applies to token lineColor.</td>
     </tr>
+    <tr>
+        <td>logo</td>
+        <td>DXC Logo</td>
+        <td>Applies to logo token.</td>
+    </tr>
 </table>

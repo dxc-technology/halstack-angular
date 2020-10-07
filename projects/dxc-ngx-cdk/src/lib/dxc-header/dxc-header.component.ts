@@ -147,7 +147,7 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   getLogoResponsiveDxc(){
-    return "assets/dxc_logo_black.png";
+    return document.body.getAttribute("header-logoResponsive");
   }
 
   getDynamicStyle(inputs) {

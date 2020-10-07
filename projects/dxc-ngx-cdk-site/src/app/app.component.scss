@@ -34,14 +34,10 @@ code {
 }
 
 .header-link {
-  color: white;
+  color: black;
   text-decoration: none;
-  margin-left: 100px;
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 1px;
-  &.active-route {
-     color:  #FFED00;
-  }
 }
 
 .logo-32 {

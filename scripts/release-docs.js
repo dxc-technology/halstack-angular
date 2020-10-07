@@ -4,7 +4,7 @@ const AWS = require("aws-sdk");
 const BUCKET_NAME = "design-system-angular-cdk-site";
 const DIRECTORY = "tools/angular/";
 
-const processListObjectsResponse = (response) => {
+const processListObjectsResponse = (response, filterFunction) => {
   return response.CommonPrefixes.map((commonPrefix) => {
     const prefix = commonPrefix.Prefix;
     return prefix.substring(
@@ -12,11 +12,11 @@ const processListObjectsResponse = (response) => {
       prefix.length - 1
     );
   })
-    .filter((version) => version !== "next" && version !== "latest")
+    .filter(filterFunction !== null ? filterFunction : (version) => version !== "next" && version !== "latest" )
     .map((version) => Number(version));
 };
 
-const getVersionsInS3Bucket = async () => {
+const getVersionsInS3Bucket = async (filterFunction) => {
   const params = {
     Bucket: BUCKET_NAME,
     Prefix: DIRECTORY,
@@ -28,7 +28,7 @@ const getVersionsInS3Bucket = async () => {
       if (error) {
         reject(new Error(error));
       } else {
-        resolve(processListObjectsResponse(data));
+        resolve(processListObjectsResponse(data,filterFunction));
       }
     });
   });
@@ -95,13 +95,39 @@ const deploy = async () => {
   const majorVersionToDeploy = Number(
     versionToDeploy.substring(0, versionToDeploy.indexOf("."))
   );
-  const existingVersionsInBucket = await getVersionsInS3Bucket();
+  const existingVersionsInBucket = await getVersionsInS3Bucket(null);
   const isNewLatest = !existingVersionsInBucket.includes(majorVersionToDeploy);
+  const listAvailableVersions = await getVersionsInS3Bucket((version) => version !== "latest");
+  await updateAvailableVersions(listAvailableVersions,majorVersionToDeploy);
   await removeBucket(majorVersionToDeploy);
   await moveToBucket(majorVersionToDeploy);
   if (isNewLatest) {
     await updateRedirectionToLatest(majorVersionToDeploy);
   }
+};
+
+const updateAvailableVersions = async (versions, currentVersion) => {
+  const versionItems = versions.map((version) => {
+    return { 
+      versionNumber: version, 
+      versionURL: `https://developer.dxc.com/tools/angular/${version}`, 
+      current: version === currentVersion
+    }
+  })
+  return new Promise((resolve, reject) => {
+    exec(
+      `echo '${JSON.stringify(versionItems)}' | aws s3 cp - s3://${BUCKET_NAME}/${DIRECTORY}versions.json`,
+      (error, stdout, stderr) => {
+        if (error) {
+          throw new Error(error.message);
+        }
+        if (stderr) {
+          throw new Error(stderr);
+        }
+        resolve(stdout);
+      }
+    );
+  });
 };
 
 deploy();

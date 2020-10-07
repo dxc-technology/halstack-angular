@@ -22,6 +22,7 @@ import { spaces, responsiveSizes } from "../variables";
 export class DxcHeaderComponent implements OnChanges {
   @HostBinding("class") className;
   @Input() logoSrc: string;
+  @Input() logoResponsiveSrc: string;
   @Input() margin: any;
   @Input() padding: any;
 
@@ -37,6 +38,7 @@ export class DxcHeaderComponent implements OnChanges {
 
   defaultInputs = new BehaviorSubject<any>({
     logoSrc: null,
+    logoResponsiveSrc: null,
     margin: null,
     padding: null,
     isResponsive: false,
@@ -142,6 +144,10 @@ export class DxcHeaderComponent implements OnChanges {
 
   getLogoDxc() {
     return document.body.getAttribute("header-logo");
+  }
+
+  getLogoResponsiveDxc(){
+    return "assets/dxc_logo_black.png";
   }
 
   getDynamicStyle(inputs) {

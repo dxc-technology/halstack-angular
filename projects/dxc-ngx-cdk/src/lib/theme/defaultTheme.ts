@@ -78,7 +78,8 @@ export const customTheme: Theme = {
     "footer":{
       "backgroundColor": colors.black,
       "fontColor": colors.white,
-      "lineColor": colors.yellow
+      "lineColor": colors.yellow,
+      "logo": "assets/dxc_logo_wht.png",
     },
     "spinner":{
       "trackCircleColor": colors.yellow,
@@ -91,6 +92,8 @@ export const customTheme: Theme = {
       "backgroundColorMenu": colors.lightGrey,
       "fontColorMenu": colors.black,
       "hamburguerColor": colors.white,
+      "logo": "assets/dxc_logo_white.png",
+      "logoResponsive": "assets/dxc_logo_black.png",
     },
     "tabs":{
       "selectedBackgroundColor": colors.white,

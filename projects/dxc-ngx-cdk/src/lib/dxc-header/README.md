@@ -42,7 +42,7 @@ The API properties are the following:
         <td>
             <code>'default'</code>
         </td>
-        <td>The path of an icon to replace the default dxc logo.</td>
+        <td>The path of an icon to replace the theme logo.</td>
     </tr>
     <tr>
         <td>@Output<br>onClick: EventEmitter</td>
@@ -188,5 +188,15 @@ Here is an example of its used:
           <code>#FFFFFF</code>
         </td>
       <td>Applies to token hamburguerColor and hoverHamburguerColor (0.16 opacity).</td>
+    </tr>
+    <tr>
+        <td>logo</td>
+        <td>DXC Logo</td>
+        <td>Applies to logo token.</td>
+    </tr>
+    <tr>
+        <td>logoResponsive</td>
+        <td>DXC Logo</td>
+        <td>Applies to logoResponsive token.</td>
     </tr>
 </table>

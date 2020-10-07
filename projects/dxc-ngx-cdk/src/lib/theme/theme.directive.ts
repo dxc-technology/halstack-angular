@@ -30,6 +30,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
   updateTheme(theme: Theme) {
     this.theme = theme;
     this.setPropertiesCss(this.theme);
+    this.setVariableLinks(this.theme);
   }
 
   setPropertiesCss(theme: Theme){
@@ -192,6 +193,15 @@ export class ThemeDirective implements OnInit, OnDestroy {
     for (const key in obj) {
       document.body.style.setProperty(key, obj[key]);
     }
+  }
+
+  setVariableLinks(theme: Theme):void {
+    const footerLogo = theme.properties["footer"]["logo"];
+    const headerLogo = theme.properties["header"]["logo"];
+    const headerLogoResponsive = theme.properties["header"]["logoResponsive"];
+    document.body.setAttribute("footer-logo", footerLogo);
+    document.body.setAttribute("header-logo", headerLogo);
+    document.body.setAttribute("header-logoResponsive", headerLogoResponsive);
   }
 
   private getTheme():void {

@@ -14,6 +14,8 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { ElementRef, HostListener } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material';
 
 @Component({
   selector: "dxc-dropdown",
@@ -22,7 +24,7 @@ import { CssUtils } from "../utils";
   styleUrls: [
     "./dxc-dropdown.component.scss"
   ],
-  providers: [CssUtils],
+  providers: [CssUtils]
 })
 export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @HostBinding("class") className;
@@ -41,6 +43,16 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild("dropdownButton", { static: true }) dropdownButton;
+  @ViewChild(MatMenuTrigger,{static:false}) menu: MatMenuTrigger;
+
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(!this._element.nativeElement.contains(event.target)) {
+      if(this.menuOpened === "opened"){
+        this.menu.closeMenu();
+      }
+    }
+  }
 
   menuOptions: string;
   triggerStyles: string;
@@ -67,7 +79,8 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   menuOpen: boolean = false;
   btnTrigger: any;
   private width: string = "";
-  constructor(private utils: CssUtils,private ren: Renderer2) {}
+
+  constructor(private utils: CssUtils,private ren: Renderer2,private _element: ElementRef) { }
   sizes = {
     small: "60px",
     medium: "240px",

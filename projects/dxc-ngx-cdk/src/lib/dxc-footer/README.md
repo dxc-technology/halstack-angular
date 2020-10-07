@@ -44,7 +44,7 @@ The API properties are the following:
     <tr>
         <td>@Input<br>logoSrc: string</td>
         <td></td>
-        <td>The path of an icon to replace the default dxc logo.</td>
+        <td>The path of an icon to replace the theme logo.</td>
     </tr>
     <tr>
         <td>@Input<br>socialLinks: object[]</td>

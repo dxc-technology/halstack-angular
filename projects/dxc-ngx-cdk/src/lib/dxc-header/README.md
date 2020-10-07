@@ -42,7 +42,7 @@ The API properties are the following:
         <td>
             <code>'default'</code>
         </td>
-        <td>The path of an icon to replace the default dxc logo.</td>
+        <td>The path of an icon to replace the theme logo.</td>
     </tr>
     <tr>
         <td>@Output<br>onClick: EventEmitter</td>

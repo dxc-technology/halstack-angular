@@ -91,6 +91,8 @@ export const customTheme: Theme = {
       "backgroundColorMenu": colors.lightGrey,
       "fontColorMenu": colors.black,
       "hamburguerColor": colors.white,
+      "logo": "http://localhost:9000/themes/DXC/logo/header",
+      "logoResponsive": "http://localhost:9000/themes/DXC/logo/responsiveHeader",
     },
     "tabs":{
       "selectedBackgroundColor": colors.white,

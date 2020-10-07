@@ -43,6 +43,15 @@ code {
   }
 }
 
+.headerContent{
+  display: flex;
+  align-items: center;
+}
+
+.selectContainer{
+  width: 120px;
+}
+
 .header-link {
   color: white;
   text-decoration: none;

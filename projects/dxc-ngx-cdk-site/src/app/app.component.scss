@@ -33,13 +33,24 @@ code {
     monospace;
 }
 
-.header-link {
+.header-link-responsive {
   color: black;
   text-decoration: none;
   font-size: 18px;
   letter-spacing: 1px;
   &.active-route {
     font-weight: 600;
+  }
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 100px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  &.active-route {
+     color:  #FFED00;
   }
 }
 

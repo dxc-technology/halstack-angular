@@ -14,6 +14,7 @@ export class AppComponent {
   headerPadding = { left: "medium", right: "medium" };
   versions: Array<any> = [];
   selectedVersion;
+  suscription;
 
   constructor(
     @Inject("ThemeService") private themeService: ThemeService,
@@ -24,7 +25,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.themeService.registerTheme(customTheme);
 
-    this.http.get(portal.url
+    this.suscription = this.http.get(portal.url
     ).subscribe(
       (resp: Array<any>) => {
         this.versions = resp.map((item) => { return { label: `${item.versionNumber}`, value: item.versionNumber, url: item.versionURL } });
@@ -38,5 +39,11 @@ export class AppComponent {
   selectVersion(value) {
     this.selectedVersion = value;
     window.location.href = this.versions.find((v) => v.value.toString() === this.selectedVersion).url;
+  }
+
+  ngOnDestroy(): void {
+    if (this.suscription !== null) {
+      this.suscription.unsubscribe();
+    }
   }
 }

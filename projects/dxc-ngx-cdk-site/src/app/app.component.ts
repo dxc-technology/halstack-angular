@@ -24,20 +24,23 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.themeService.registerTheme(customTheme);
-
     this.suscription = this.http.get(portal.url
     ).subscribe(
       (resp: Array<any>) => {
-        this.versions = resp.map((item) => { return { label: `${item.versionNumber}`, value: item.versionNumber, url: item.versionURL } });
-        const currentVersion = resp.find(filterItem => filterItem.current === true);
-        this.selectedVersion = `${currentVersion.versionNumber}`;
+        this.versions = resp.map((item) => { return { label: `${item.versionNumber}`, value: item.versionNumber, url: item.versionURL, current: item.current } });
+        this.calculateCurrentVersion();
       },
       err => console.error('Failed when retrieve versions.json from AWS', err));
 
   }
 
+  private calculateCurrentVersion() {
+    const versionUrl = window.location.pathname;
+    this.selectedVersion = versionUrl.split('/')[3] !== '' ? versionUrl.split('/')[3] : this.versions.find(item2Find => item2Find.current === true).label;
+  }
+
+
   selectVersion(value) {
-    this.selectedVersion = value;
     window.location.href = this.versions.find((v) => v.value.toString() === this.selectedVersion).url;
   }
 

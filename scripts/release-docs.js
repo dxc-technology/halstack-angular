@@ -12,7 +12,7 @@ const processListObjectsResponse = (response, filterFunction) => {
       prefix.length - 1
     );
   })
-    .filter(filterFunction !== null ? filterFunction : (version) => version !== "next" && version !== "latest" )
+    .filter(filterFunction !== null ? filterFunction : (version) => version !== "next" && version !== "latest")
     .map((version) => Number(version));
 };
 
@@ -28,14 +28,14 @@ const getVersionsInS3Bucket = async (filterFunction) => {
       if (error) {
         reject(new Error(error));
       } else {
-        resolve(processListObjectsResponse(data,filterFunction));
+        resolve(processListObjectsResponse(data, filterFunction));
       }
     });
   });
 };
 
 const removeBucket = (version) => {
-   return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     console.log(`Removing s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
     exec(
       `aws s3 rm s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
@@ -49,7 +49,7 @@ const removeBucket = (version) => {
         resolve(stdout);
       }
     );
-  }); 
+  });
 };
 
 const moveToBucket = (version) => {
@@ -57,7 +57,7 @@ const moveToBucket = (version) => {
     console.log(`Moving to s3://${BUCKET_NAME}/${DIRECTORY}${version}/`);
     exec(
       `aws s3 cp ./dist/angular-dxc-site s3://${BUCKET_NAME}/${DIRECTORY}${version}/ --recursive`,
-      {maxBuffer: 1024 * 1024 * 10},
+      { maxBuffer: 1024 * 1024 * 10 },
       (error, stdout, stderr) => {
         if (error) {
           throw new Error(error.message);
@@ -66,8 +66,8 @@ const moveToBucket = (version) => {
           throw new Error(stderr);
         }
         resolve(stdout);
-      }            
-      
+      }
+
     );
   });
 };
@@ -98,7 +98,7 @@ const deploy = async () => {
   const existingVersionsInBucket = await getVersionsInS3Bucket(null);
   const isNewLatest = !existingVersionsInBucket.includes(majorVersionToDeploy);
   const listAvailableVersions = await getVersionsInS3Bucket((version) => version !== "latest");
-  await updateAvailableVersions(listAvailableVersions,majorVersionToDeploy);
+  await updateAvailableVersions(listAvailableVersions, majorVersionToDeploy);
   await removeBucket(majorVersionToDeploy);
   await moveToBucket(majorVersionToDeploy);
   if (isNewLatest) {
@@ -108,10 +108,10 @@ const deploy = async () => {
 
 const updateAvailableVersions = async (versions, currentVersion) => {
   const versionItems = versions.map((version) => {
-    const currentItem = version === null ? "next" : version;
-    return { 
-      versionNumber: currentItem, 
-      versionURL: `https://developer.dxc.com/tools/angular/${currentItem}`, 
+    const currentItem = isNaN(version) ? "next" : version;
+    return {
+      versionNumber: currentItem,
+      versionURL: `https://developer.dxc.com/tools/angular/${currentItem}`,
       current: currentItem === currentVersion
     }
   })

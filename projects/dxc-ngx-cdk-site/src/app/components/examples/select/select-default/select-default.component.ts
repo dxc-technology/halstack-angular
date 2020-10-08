@@ -7,7 +7,7 @@ import { Component,OnInit } from '@angular/core';
 })
 export class SelectDefaultComponent implements OnInit{
 
-  inputValue: number;
+  inputValue;
   optionsWithoutIcon = [
     {
       value: 1,
@@ -26,7 +26,7 @@ export class SelectDefaultComponent implements OnInit{
   constructor() {}
   
   ngOnInit() {
-    this.inputValue = 1;
+    this.inputValue = "1";
   }
 
   onChange(value) {

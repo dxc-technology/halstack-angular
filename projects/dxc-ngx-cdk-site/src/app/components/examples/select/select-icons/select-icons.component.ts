@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SelectIconsComponent {
 
-  inputValue:number;
+  inputValue;
   optionsWithIcons = [
     {
       value: 1,

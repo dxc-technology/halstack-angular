@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SelectSizedComponent {
 
-  inputValue:number;
+  inputValue;
   optionsWithOnlyIcons = [
     {
       value: 1,

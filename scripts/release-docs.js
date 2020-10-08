@@ -108,10 +108,11 @@ const deploy = async () => {
 
 const updateAvailableVersions = async (versions, currentVersion) => {
   const versionItems = versions.map((version) => {
+    const currentItem = version === null ? "next" : version;
     return { 
-      versionNumber: version, 
-      versionURL: `https://developer.dxc.com/tools/angular/${version}`, 
-      current: version === currentVersion
+      versionNumber: currentItem, 
+      versionURL: `https://developer.dxc.com/tools/angular/${currentItem}`, 
+      current: currentItem === currentVersion
     }
   })
   return new Promise((resolve, reject) => {

@@ -1,4 +1,3 @@
-
 name: Publish Release
 
 on:
@@ -10,44 +9,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: jungwinter/split@v1
-      id: split
-      with:
-        seperator: '.'
-        msg: ${{ github.event.release.tag_name }}
+      - uses: jungwinter/split@v1
+        id: split
+        with:
+          seperator: '.'
+          msg: ${{ github.event.release.tag_name }}
 
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Install Node.js 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
-        registry-url: https://registry.npmjs.org/
-    
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
-        role-to-assume: ${{ secrets.AWS_ROLE_SANDBOX }}
-        role-duration-seconds: 6000
-        role-skip-session-tagging: true
+      - name: Install Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+          registry-url: https://registry.npmjs.org/
 
-    - name: Install lib dependencies
-      run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib
-    
-    - name: Install app dependencies
-      run: cd . && npm install 
-    
-    - name: Test library
-      run: cd ./projects/dxc-ngx-cdk && npm run test
-    
-    - name: Build angular release cdk site
-      run: cd . && npm run build-release-cdk-site -- --baseHref=/tools/angular/${{steps.split.outputs._0}}/
-          
-    - name: Move RELEASE docs to S3
-      run: node scripts/release-docs.js $TAG_NAME
-      env:
-        TAG_NAME: ${{ github.event.release.tag_name }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+          role-to-assume: ${{ secrets.AWS_ROLE_SANDBOX }}
+          role-duration-seconds: 6000
+          role-skip-session-tagging: true
+
+      - name: Install lib dependencies
+        run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install && npm run generate-lib
+
+      - name: Install app dependencies
+        run: cd . && npm install
+
+      - name: Test library
+        run: cd ./projects/dxc-ngx-cdk && npm run test
+
+      - name: Build angular release cdk site
+        run: cd . && npm run build-release-cdk-site -- --baseHref=/tools/angular/${{steps.split.outputs._0}}/
+
+      - name: Publish RELEASE to npm
+        run: |
+          sed -i "s#\"version\": \"0.0.0\"#\"version\": \"${TAG_NAME}\"#" ./dist/dxc-ngx-cdk/package.json
+          cd ./dist/dxc-ngx-cdk
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: Move RELEASE docs to S3
+        run: node scripts/release-docs.js $TAG_NAME
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}

@@ -55,10 +55,10 @@ npm run build-lib:watch
 
 ### Example Application
 
-Contained in `halstack-angular` folder.
+Contained in `projects/dxc-ngx-cdk-examples` folder.
 
 ````bash
-cd halstack-angular
+cd projects/dxc-ngx-cdk-examples
 ````
 
 Install the application dependencies. The Assure Angular CDK dependency is linked to the local lib file in `dist/dxc-ngx-cdk`. This one must have been previously built as shown before.

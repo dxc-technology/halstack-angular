@@ -2,7 +2,7 @@
   theme
   disableRipple
   [checked]="renderedChecked"
-  [labelPosition]="labelPosition ? labelPosition :  'before'"
+  [labelPosition]="labelPosition ? labelPosition : 'before'"
   [value]="value"
   [disabled]="disabled"
   [required]="required"
@@ -10,9 +10,9 @@
   [id]="id"
   (change)="onValueChange($event)"
   data-testid="dxcCheckbox"
-  >
+>
   <span *ngIf="label" class="checkboxLabel">
-    <span *ngIf="required" class="mat-checkbox-required" >*</span>
+    <span *ngIf="required" class="mat-checkbox-required">*</span>
     <span>{{ label }}</span>
   </span>
 </mat-checkbox>

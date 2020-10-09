@@ -100,7 +100,7 @@ export class DxcCheckboxComponent implements OnInit {
     }
   }
 
-  calculateWidth(margin, size) {
+  calculateWidth(size) {
     if (size === "fillParent") {
       return css`
         width: ${this.sizes[size]};
@@ -122,17 +122,14 @@ export class DxcCheckboxComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
-      ${this.calculateWidth(
-        inputs.margin,
-        inputs.size
-      )}
+      ${this.calculateWidth(inputs.size)}
       display: inline-flex;
       vertical-align: top;
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
       .mat-checkbox-checked.mat-accent .mat-checkbox-background {
         background: var(--checkbox-color) !important;
       }
-      
+
       .mat-checkbox:not(.mat-checkbox-disabled).mat-accent
         .mat-checkbox-ripple
         .mat-ripple-element {

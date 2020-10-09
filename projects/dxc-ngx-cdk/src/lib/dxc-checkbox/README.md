@@ -7,11 +7,12 @@ The DXC Checkbox Component provides to the user the ability to select a true, fa
 ## Usage
 
 ```html
-<dxc-checkbox 
-    [checked]="checked" 
-    label="Checkbox " 
-    (onChange)="onChange($event)" 
-    margin="medium">
+<dxc-checkbox
+  [checked]="checked"
+  label="Checkbox "
+  (onChange)="onChange($event)"
+  margin="medium"
+>
 </dxc-checkbox>
 ```
 
@@ -20,13 +21,13 @@ Include the **DxcCheckboxModule** into **app.module.ts** to use the checkbox com
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcCheckboxModule } from '@dxc-technology/halstack-angular';
+import { DxcCheckboxModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcCheckboxModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -123,6 +124,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

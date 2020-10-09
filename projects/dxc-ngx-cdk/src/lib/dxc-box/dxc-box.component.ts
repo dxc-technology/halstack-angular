@@ -1,41 +1,47 @@
-import { Component, OnInit, Input, SimpleChanges, HostBinding } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  HostBinding,
+} from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
-import { CssUtils } from '../utils';
+import { CssUtils } from "../utils";
 @Component({
-  selector: 'dxc-box',
-  templateUrl: './dxc-box.component.html',
-  styleUrls: ['./dxc-box.component.css'],
-  providers : [CssUtils]
+  selector: "dxc-box",
+  templateUrl: "./dxc-box.component.html",
+  providers: [CssUtils],
 })
 export class DxcBoxComponent implements OnInit {
   @HostBinding("class") className;
   @Input() shadowDepth: number;
-  @Input() display:string;
+  @Input() display: string;
   @Input() margin: any;
   @Input() padding: any;
   @Input() size: string;
 
-
-   sizes = {
+  sizes = {
     small: "60px",
     medium: "240px",
     large: "480px",
     fillParent: "100%",
-    fitContent: "fit-content"
+    fitContent: "fit-content",
   };
 
   defaultInputs = new BehaviorSubject<any>({
-    display: 'inline-flex',
-    shadowDepth : '2',
+    display: "inline-flex",
+    shadowDepth: "2",
     margin: null,
     padding: null,
-    size: null
+    size: null,
   });
 
   calculateWidth(inputs) {
-    if (inputs.size === undefined || inputs.size === null){
-      return css`width:unset`
+    if (inputs.size === undefined || inputs.size === null) {
+      return css`
+        width: unset;
+      `;
     }
 
     if (inputs.size !== "fitContent") {
@@ -47,16 +53,15 @@ export class DxcBoxComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      const inputs = Object.keys(changes).reduce((result, item)=> {
+    const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
-    this.defaultInputs.next({ ... this.defaultInputs.getValue(), ... inputs});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-
-  constructor(private utils: CssUtils) { }
+  constructor(private utils: CssUtils) {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -71,10 +76,10 @@ export class DxcBoxComponent implements OnInit {
       background-color: var(--box-backgroundColor);
       border-color: transparent;
       color: "#000000";
-  
-      ${this.utils.getBoxShadow(inputs.shadowDepth) }
-      ${this.utils.getMargins(inputs.margin) }
-      ${this.utils.getPaddings(inputs.padding) }
+
+      ${this.utils.getBoxShadow(inputs.shadowDepth)}
+      ${this.utils.getMargins(inputs.margin)}
+      ${this.utils.getPaddings(inputs.padding)}
       ${this.calculateWidth(inputs)}
     `;
   }

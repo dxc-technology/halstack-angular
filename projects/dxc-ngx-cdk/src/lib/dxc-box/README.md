@@ -7,9 +7,7 @@ The DXC Box Component is a container.
 ## Usage
 
 ```html
-<dxc-box margin="medium" padding="medium">
-  Box Content
-</dxc-box>
+<dxc-box margin="medium" padding="medium"> Box Content </dxc-box>
 ```
 
 Include the **DxcBoxModule** into **app.module.ts** to use the box component:
@@ -17,13 +15,13 @@ Include the **DxcBoxModule** into **app.module.ts** to use the box component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcBoxModule } from '@dxc-technology/halstack-angular';
+import { DxcBoxModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcBoxModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -83,4 +81,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

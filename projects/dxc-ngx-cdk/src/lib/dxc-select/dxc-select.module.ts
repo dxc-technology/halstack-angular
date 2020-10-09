@@ -1,12 +1,9 @@
 import { NgModule } from "@angular/core";
-import {
-  MatFormFieldModule,
-  MatSelectModule
-} from "@angular/material";
+import { MatFormFieldModule, MatSelectModule } from "@angular/material";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { DxcSelectComponent } from './dxc-select.component';
-import { ThemeModule } from '../theme/theme.module';
+import { DxcSelectComponent } from "./dxc-select.component";
+import { ThemeModule } from "../theme/theme.module";
 @NgModule({
   declarations: [DxcSelectComponent],
   imports: [
@@ -14,8 +11,8 @@ import { ThemeModule } from '../theme/theme.module';
     MatSelectModule,
     MatFormFieldModule,
     ThemeModule,
-    FormsModule
+    FormsModule,
   ],
-  exports: [DxcSelectComponent]
+  exports: [DxcSelectComponent],
 })
 export class DxcSelectModule {}

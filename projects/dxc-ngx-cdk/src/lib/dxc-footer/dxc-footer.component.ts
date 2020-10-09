@@ -4,7 +4,7 @@ import {
   HostBinding,
   OnChanges,
   SimpleChanges,
-  HostListener
+  HostListener,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -15,7 +15,7 @@ import { responsiveSizes } from "../variables";
   selector: "dxc-footer",
   templateUrl: "./dxc-footer.component.html",
   styleUrls: ["./dxc-footer.component.scss"],
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;
@@ -40,7 +40,7 @@ export class DxcFooterComponent implements OnChanges {
     copyright: "",
     logoSrc: null,
     margin: null,
-    padding: null
+    padding: null,
   });
 
   @HostListener("window:resize", ["$event"])
@@ -107,7 +107,8 @@ export class DxcFooterComponent implements OnChanges {
       this.isResponsive = false;
     }
     this.footerContainerStyle = `${this.setFooterContainerStyle(
-      this.defaultInputs.getValue(), this.isResponsive
+      this.defaultInputs.getValue(),
+      this.isResponsive
     )}`;
     this.footerFooterStyle = `${this.setFooterFooterStyle(this.isResponsive)}`;
     this.bottomLinksLength = this.bottomLinks.length - 1;
@@ -120,7 +121,8 @@ export class DxcFooterComponent implements OnChanges {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.footerContainerStyle = `${this.setFooterContainerStyle(
-      this.defaultInputs.getValue(), this.isResponsive
+      this.defaultInputs.getValue(),
+      this.isResponsive
     )}`;
     this.childComponentsStyle = `${this.setChildComponentsStyle(
       this.defaultInputs.getValue()

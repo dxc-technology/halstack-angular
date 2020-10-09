@@ -8,10 +8,11 @@ The DXC Footer Component is a navegation container used at the bottom of the app
 
 ```html
 <dxc-footer
-      copyright="© DXC Technology 2019. All rights reserved."
-      [bottomLinks]="bottomLinks"
-      [socialLinks]="socialLinks"
-      margin="medium">
+  copyright="© DXC Technology 2019. All rights reserved."
+  [bottomLinks]="bottomLinks"
+  [socialLinks]="socialLinks"
+  margin="medium"
+>
 </dxc-footer>
 ```
 
@@ -20,13 +21,13 @@ Include the **DxcFooterModule** into **app.module.ts** to use the footer compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcFooterModule } from '@dxc-technology/halstack-angular';
+import { DxcFooterModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcFooterModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -118,6 +119,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

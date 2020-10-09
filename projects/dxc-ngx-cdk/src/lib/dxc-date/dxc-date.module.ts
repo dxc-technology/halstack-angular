@@ -4,21 +4,23 @@ import {
   MatDatepickerModule,
   MAT_DATE_FORMATS,
   DateAdapter,
-  MAT_DATE_LOCALE
+  MAT_DATE_LOCALE,
 } from "@angular/material";
 import { DxcDateComponent } from "./dxc-date.component";
 import { CommonModule } from "@angular/common";
-import { MAT_MOMENT_DATE_FORMATS,MomentDateAdapter, MatMomentDateModule } from "@angular/material-moment-adapter";
-import { DxcInputTextModule } from '../dxc-text-input/dxc-input-text.module';
-import { MdePopoverModule } from '@material-extended/mde';
-import { DxcBoxModule } from '../dxc-box/dxc-box.module';
-import { ClickOutsideModule } from 'ng-click-outside';
-import { ThemeModule } from '../theme/theme.module';
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MatMomentDateModule,
+} from "@angular/material-moment-adapter";
+import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { MdePopoverModule } from "@material-extended/mde";
+import { DxcBoxModule } from "../dxc-box/dxc-box.module";
+import { ClickOutsideModule } from "ng-click-outside";
+import { ThemeModule } from "../theme/theme.module";
 
 @NgModule({
-  declarations: [
-    DxcDateComponent
-  ],
+  declarations: [DxcDateComponent],
   imports: [
     CommonModule,
     MatDatepickerModule,
@@ -28,14 +30,16 @@ import { ThemeModule } from '../theme/theme.module';
     DxcBoxModule,
     ThemeModule,
     MdePopoverModule,
-    ClickOutsideModule
+    ClickOutsideModule,
   ],
   providers: [
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS}
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ],
-  exports: [
-    DxcDateComponent
-  ]
+  exports: [DxcDateComponent],
 })
 export class DxcDateModule {}

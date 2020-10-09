@@ -4,12 +4,12 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  OnChanges
+  OnChanges,
 } from "@angular/core";
 import * as textMask from "vanilla-text-mask/dist/vanillaTextMask.js";
 
 @Directive({
-  selector: `[dxcMask]`
+  selector: `[dxcMask]`,
 })
 export class DXCMaskDirective implements OnInit, OnDestroy, OnChanges {
   @Input() dxcMask: any;
@@ -18,7 +18,7 @@ export class DXCMaskDirective implements OnInit, OnDestroy, OnChanges {
     mask: [],
     showMask: false,
     guide: true,
-    placeholderChar: "_"
+    placeholderChar: "_",
   };
   maskedInputController: any;
   constructor(private element: ElementRef) {}
@@ -27,7 +27,7 @@ export class DXCMaskDirective implements OnInit, OnDestroy, OnChanges {
     this.createRegExFromFormat();
     this.maskedInputController = textMask.maskInput({
       inputElement: this.element.nativeElement,
-      ...this.maskConfig
+      ...this.maskConfig,
     });
   }
 
@@ -46,7 +46,10 @@ export class DXCMaskDirective implements OnInit, OnDestroy, OnChanges {
   private createRegExFromFormat(): void {
     this.maskConfig.showMask = this.dxcMask.showMask || false;
     for (let i = 0; i < this.dxcMask.format.length; i++) {
-      if (this.dxcMask.format[i].toUpperCase() === this.dxcMask.format[i].toLowerCase()) {
+      if (
+        this.dxcMask.format[i].toUpperCase() ===
+        this.dxcMask.format[i].toLowerCase()
+      ) {
         this.maskConfig.mask.push(this.dxcMask.format[i]);
       } else {
         this.maskConfig.mask.push(new RegExp("\\d"));

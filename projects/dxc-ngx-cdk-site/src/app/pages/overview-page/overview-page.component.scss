@@ -15,7 +15,7 @@ div.overview-header-titles {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #000000;
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 h1.overview-header-title {
@@ -23,7 +23,7 @@ h1.overview-header-title {
   font-size: 35px;
   line-height: 40px;
 }
-  
+
 h2.overview-header-subtitle {
   margin: 0px;
   font-size: 25px;
@@ -68,17 +68,22 @@ a {
   font-weight: normal;
 }
 
+.overview-doc-subtitle-section {
+  font-size: 20px;
+  font-weight: normal;
+}
+
 .code-section {
-  display: block; 
-  overflow-x: auto; 
-  padding: 0.5em; 
-  color: rgb(0, 0, 0); 
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: rgb(0, 0, 0);
   background: rgb(248, 248, 255);
 }
 
 .overview-viewer-source {
-  border: 1px solid rgba(0,0,0,.03);
-  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
   margin: 4px;
 }
 

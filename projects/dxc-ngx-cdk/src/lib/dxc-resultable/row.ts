@@ -8,7 +8,6 @@
 
 import {
   Directive,
-  IterableChanges,
   IterableDiffer,
   IterableDiffers,
   OnChanges,
@@ -17,10 +16,10 @@ import {
   TemplateRef,
   ViewContainerRef,
   Inject,
-  Optional
-} from '@angular/core';
-import {DXC_RESULTSET_TABLE} from './tokens';
-import { DxcCellDef } from './directives/dxc-cell-def.directive';
+  Optional,
+} from "@angular/core";
+import { DXC_RESULTSET_TABLE } from "./tokens";
+import { DxcCellDef } from "./directives/dxc-cell-def.directive";
 
 /**
  * The row template that can be used by the mat-table. Should not be used outside of the
@@ -40,31 +39,32 @@ export abstract class BaseRowDef implements OnChanges {
   protected _columnsDiffer: IterableDiffer<any>;
 
   constructor(
-      /** @docs-private */ public template: TemplateRef<any>, protected _differs: IterableDiffers) {
-  }
+    /** @docs-private */ public template: TemplateRef<any>,
+    protected _differs: IterableDiffers
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     // Create a new columns differ if one does not yet exist. Initialize it based on initial value
     // of the columns property or an empty array if none is provided.
     if (!this._columnsDiffer) {
-      const columns = (changes['columns'] && changes['columns'].currentValue) || [];
+      const columns =
+        (changes["columns"] && changes["columns"].currentValue) || [];
       this._columnsDiffer = this._differs.find(columns).create();
       this._columnsDiffer.diff(columns);
     }
   }
-
 }
 
-  /**
-   * Data row definition for the CDK table.
-   * Captures the header row's template and other row properties such as the columns to display and
-   * a when predicate that describes when this row should be used.
-   */
-  @Directive({
-    selector: '[dxcRowDef]',
-    inputs: ['columns: dxcRowDefColumns', 'when: dxcRowDefWhen'],
-  })
-  export class DxcRowDef<T> extends BaseRowDef {
+/**
+ * Data row definition for the CDK table.
+ * Captures the header row's template and other row properties such as the columns to display and
+ * a when predicate that describes when this row should be used.
+ */
+@Directive({
+  selector: "[dxcRowDef]",
+  inputs: ["columns: dxcRowDefColumns", "when: dxcRowDefWhen"],
+})
+export class DxcRowDef<T> extends BaseRowDef {
   /**
    * Function that should return true if this row template should be used for the provided index
    * and row data. If left undefined, this row will be considered the default row template to use
@@ -78,7 +78,8 @@ export abstract class BaseRowDef implements OnChanges {
   constructor(
     template: TemplateRef<any>,
     _differs: IterableDiffers,
-    @Inject(DXC_RESULTSET_TABLE) @Optional() public _table?: any) {
+    @Inject(DXC_RESULTSET_TABLE) @Optional() public _table?: any
+  ) {
     super(template, _differs);
   }
 }
@@ -111,7 +112,7 @@ export interface DxcCellOutletRowContext<T> {
  * Outlet for rendering cells inside of a row or header row.
  * @docs-private
  */
-@Directive({selector: '[cdkCellOutlet]'})
+@Directive({ selector: "[cdkCellOutlet]" })
 export class DxcCellOutlet implements OnDestroy {
   /** The ordered list of cells to render within this outlet's view container */
   cells: DxcCellDef[];
@@ -126,7 +127,7 @@ export class DxcCellOutlet implements OnDestroy {
    * a handle to provide that component's cells and context. After init, the CdkCellOutlet will
    * construct the cells with the provided context.
    */
-  static mostRecentCellOutlet: DxcCellOutlet|null = null;
+  static mostRecentCellOutlet: DxcCellOutlet | null = null;
 
   constructor(public _viewContainer: ViewContainerRef) {
     DxcCellOutlet.mostRecentCellOutlet = this;

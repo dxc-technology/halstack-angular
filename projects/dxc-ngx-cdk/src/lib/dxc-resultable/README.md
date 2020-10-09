@@ -23,15 +23,15 @@ The DXC Resultset Table Component show information in cells and columns with a p
 Include the **DxcResultsetTableModule** into **app.module.ts** to use the resultset table component:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DxcResultsetTableModule } from '@dxc-technology/halstack-angular';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcResultsetTableModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcResultsetTableModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -74,6 +74,7 @@ The API properties are the following:
 </table>
 
 ## Directives
+
 Directives are used to add functionality and new syntax into HTML components. The following directives are customized and you can use them on this component.
 
 <table>
@@ -119,4 +120,5 @@ Directives are used to add functionality and new syntax into HTML components. Th
 </table>
 
 ## Theming
+
 As the resultset table component is composed by a table component, the tokens for customization are the same. You can find them [here](../dxc-table/README.md).

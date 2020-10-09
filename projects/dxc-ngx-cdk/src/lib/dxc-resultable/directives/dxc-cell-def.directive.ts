@@ -1,4 +1,4 @@
-import { Directive, TemplateRef } from '@angular/core';
+import { Directive, TemplateRef } from "@angular/core";
 
 export interface CellDef {
   template: TemplateRef<any>;
@@ -8,7 +8,7 @@ export interface CellDef {
  * Cell definition for a CDK table.
  * Captures the template of a column's data row cell as well as cell-specific properties.
  */
-@Directive({selector: '[dxcCellDef]'})
+@Directive({ selector: "[dxcCellDef]" })
 export class DxcCellDef implements CellDef {
   constructor(public template: TemplateRef<any>) {}
 }

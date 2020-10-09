@@ -28,7 +28,9 @@ export function getTableDuplicateColumnNameError(name: string) {
  * @docs-private
  */
 export function getTableMultipleDefaultRowDefsError() {
-  return Error(`There can only be one default row without a when predicate function.`);
+  return Error(
+    `There can only be one default row without a when predicate function.`
+  );
 }
 
 /**
@@ -36,8 +38,10 @@ export function getTableMultipleDefaultRowDefsError() {
  * @docs-private
  */
 export function getTableMissingMatchingRowDefError(data: any) {
-  return Error(`Could not find a matching row definition for the` +
-      `provided row data: ${JSON.stringify(data)}`);
+  return Error(
+    `Could not find a matching row definition for the` +
+      `provided row data: ${JSON.stringify(data)}`
+  );
 }
 
 /**
@@ -45,8 +49,10 @@ export function getTableMissingMatchingRowDefError(data: any) {
  * @docs-private
  */
 export function getTableMissingRowDefsError() {
-  return Error('Missing definitions for header, footer, and row; ' +
-      'cannot determine which columns should be rendered.');
+  return Error(
+    "Missing definitions for header, footer, and row; " +
+      "cannot determine which columns should be rendered."
+  );
 }
 
 /**
@@ -54,7 +60,9 @@ export function getTableMissingRowDefsError() {
  * @docs-private
  */
 export function getTableUnknownDataSourceError() {
-  return Error(`Provided data source did not match an array, Observable, or DataSource`);
+  return Error(
+    `Provided data source did not match an array, Observable, or DataSource`
+  );
 }
 
 /**

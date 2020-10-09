@@ -103,9 +103,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     ) {
       this.width = this.dropdownButton._elementRef.nativeElement.offsetWidth;
 
-      this.menuOptions = `${this.setDxcMenuOptionsStyle(
-        this.defaultInputs.getValue()
-      )}`;
+      this.menuOptions = `${this.setDxcMenuOptionsStyle()}`;
     }
   }
 
@@ -132,7 +130,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     }
   }
 
-  setDxcMenuOptionsStyle(inputs: any) {
+  setDxcMenuOptionsStyle() {
     return css`
       border-color: var(--dropdown-dropdownBackgroundColor);
       margin-top: -2px;
@@ -216,9 +214,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     ) {
       this.width = this.dropdownButton._elementRef.nativeElement.offsetWidth;
 
-      this.menuOptions = `${this.setDxcMenuOptionsStyle(
-        this.defaultInputs.getValue()
-      )}`;
+      this.menuOptions = `${this.setDxcMenuOptionsStyle()}`;
     }
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;

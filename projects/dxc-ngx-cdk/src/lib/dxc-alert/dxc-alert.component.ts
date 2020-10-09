@@ -7,7 +7,7 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
@@ -18,7 +18,7 @@ import { colors } from "../variables";
   selector: "dxc-alert",
   templateUrl: "./dxc-alert.component.html",
   styleUrls: ["./dxc-alert.component.scss"],
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcAlertComponent implements OnChanges {
   @HostBinding("class") className;
@@ -36,14 +36,14 @@ export class DxcAlertComponent implements OnChanges {
     small: "42px",
     medium: "120px",
     large: "240px",
-    fitContent: "unset"
+    fitContent: "unset",
   };
 
   defaultInputs = new BehaviorSubject<any>({
     mode: "inline",
     margin: null,
     type: "info",
-    size: "fitContent"
+    size: "fitContent",
   });
 
   constructor(private utils: CssUtils) {}
@@ -65,26 +65,23 @@ export class DxcAlertComponent implements OnChanges {
   getDynamicStyle(inputs) {
     return css`
       .container {
-      font-size: 12px;
-      overflow: hidden;
-      box-shadow: 0px 3px 6px #00000012;
-      border-radius: 4px;
-      font-family: "Open Sans", sans-serif;
-      z-index: 300;
-      ${this.utils.getMargins(inputs.margin)}
-      ${this.utils.calculateWidth(this.sizes, inputs)}
+        font-size: 12px;
+        overflow: hidden;
+        box-shadow: 0px 3px 6px #00000012;
+        border-radius: 4px;
+        font-family: "Open Sans", sans-serif;
+        z-index: 300;
+        ${this.utils.getMargins(inputs.margin)}
+        ${this.utils.calculateWidth(this.sizes, inputs)}
       cursor: default;
-      ${
-        inputs.mode && inputs.mode === "modal"
+        ${inputs.mode && inputs.mode === "modal"
           ? css`
               justify-content: center;
               align-items: center;
             `
-          : css``
+          : css``}
+        ${this.setBackgroundColorByAlertType(inputs.type)}
       }
-      ${this.setBackgroundColorByAlertType(inputs.type)}
-      }
-
     `;
   }
 
@@ -124,10 +121,6 @@ export class DxcAlertComponent implements OnChanges {
       this.content.nativeElement.children.length > 0
     ) {
       this.content.nativeElement.classList.add("content");
-      // this.content.nativeElement.parentElement.setAttribute('style','min-width: 348px; max-width: 590px;min-height: 92px;');
-
-    }else{
-      // this.content.nativeElement.parentElement.setAttribute('style','min-width: 590px;max-width: 810px;min-height: 48px;');
     }
   }
 }

@@ -1,36 +1,41 @@
-  <dxc-input-text
-    disableRipple
-    [label]="label"
-    [required]="required"
-    [value]="renderedValue"
-    [invalid]="invalid"
-    [assistiveText]="assistiveText"
-    [suffixIconSrc]="calendarIconSrc"
-    (onChange)="onInputChangeHandler($event)"
-    (onBlur)="onBlurHandler($event)"
-    (onClickSuffix)="openCalendar($event)"
-    [margin]="margin"
-    [size]="size"
-    [placeholder]="format"
-    [mdePopoverTriggerFor]="dxcPopover"
-    mdePopoverTriggerOn="none"
-    [mdePopoverOffsetX]="popOverOffsetX"
-    [mdePopoverPositionX]="'before'"
-    [disabled]="disabled"
-  ></dxc-input-text>
+<dxc-input-text
+  disableRipple
+  [label]="label"
+  [required]="required"
+  [value]="renderedValue"
+  [invalid]="invalid"
+  [assistiveText]="assistiveText"
+  [suffixIconSrc]="calendarIconSrc"
+  (onChange)="onInputChangeHandler($event)"
+  (onBlur)="onBlurHandler($event)"
+  (onClickSuffix)="openCalendar($event)"
+  [margin]="margin"
+  [size]="size"
+  [placeholder]="format"
+  [mdePopoverTriggerFor]="dxcPopover"
+  mdePopoverTriggerOn="none"
+  [mdePopoverOffsetX]="popOverOffsetX"
+  [mdePopoverPositionX]="'before'"
+  [disabled]="disabled"
+></dxc-input-text>
 
-  <mde-popover #dxcPopover="mdePopover" [mdePopoverOverlapTrigger]="false"
-    [mdePopoverCloseOnClick]="false" [mdePopoverArrowWidth]="0" >
-    <div [class]="calendarDynamicStyle">
-      <dxc-box theme size="fillParent" padding="xsmall" >
-        <mat-calendar #dxcCalendar
-          [selected]="dateValue"
-          (selectedChange)="onSelectedChangeHandler($event)"
-          (yearSelected)="onSelectingDateHandler()"
-          (monthSelected)="onSelectingDateHandler()"
-          (clickOutside)="onClickOutsideHandler()"
-          >
-        </mat-calendar>
-      </dxc-box>
-    </div>
-  </mde-popover>
+<mde-popover
+  #dxcPopover="mdePopover"
+  [mdePopoverOverlapTrigger]="false"
+  [mdePopoverCloseOnClick]="false"
+  [mdePopoverArrowWidth]="0"
+>
+  <div [class]="calendarDynamicStyle">
+    <dxc-box theme size="fillParent" padding="xsmall">
+      <mat-calendar
+        #dxcCalendar
+        [selected]="dateValue"
+        (selectedChange)="onSelectedChangeHandler($event)"
+        (yearSelected)="onSelectingDateHandler()"
+        (monthSelected)="onSelectingDateHandler()"
+        (clickOutside)="onClickOutsideHandler()"
+      >
+      </mat-calendar>
+    </dxc-box>
+  </div>
+</mde-popover>

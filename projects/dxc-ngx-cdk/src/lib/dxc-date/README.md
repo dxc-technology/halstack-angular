@@ -8,12 +8,12 @@ The DXC Date Component is an element to select a date.
 
 ```html
 <dxc-date
-    label="Input label"
-    [value]="inputValue"
-    assistiveText="assistive text"
-    (onInputChange)="onChange($event)"
-    [invalid]="isInvalidDate"
-    margin="medium"
+  label="Input label"
+  [value]="inputValue"
+  assistiveText="assistive text"
+  (onInputChange)="onChange($event)"
+  [invalid]="isInvalidDate"
+  margin="medium"
 ></dxc-date>
 ```
 
@@ -22,13 +22,13 @@ Include the **DxcDateModule** into **app.module.ts** to use the date component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcDateModule } from '@dxc-technology/halstack-angular';
+import { DxcDateModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcDateModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -154,11 +154,12 @@ export enum Formats {
   "MM-DD-YYYY",
   "DD.MM.YYYY",
   "MM.DD.YYYY",
-  "YYYY.MM.DD"
+  "YYYY.MM.DD",
 }
 ```
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

@@ -15,20 +15,19 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 
 import * as momentImported from "moment";
-import { MatCalendar } from '@angular/material/datepicker';
-import { Moment } from 'moment';
-import { MdePopoverTrigger } from '@material-extended/mde';
+import { MatCalendar } from "@angular/material/datepicker";
+import { Moment } from "moment";
+import { MdePopoverTrigger } from "@material-extended/mde";
 const moment = momentImported;
 
 @Component({
   selector: "dxc-date",
   templateUrl: "./dxc-date.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcDateComponent implements OnChanges, OnInit {
-
   @Input() value: any;
-  @Input() format: string = 'dd-MM-yyyy';
+  @Input() format: string = "dd-MM-yyyy";
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() name: string;
@@ -56,7 +55,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     assistiveText: null,
     invalid: false,
     margin: null,
-    size: "medium"
+    size: "medium",
   });
 
   renderedValue: string;
@@ -66,10 +65,13 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   calendarDynamicStyle: any;
 
-  @ViewChild(MdePopoverTrigger, {static: false}) _dxcTrigger: MdePopoverTrigger;
-  @ViewChild('dxcCalendar', {static: false}) _dxcCalendar: MatCalendar<Moment>;
+  @ViewChild(MdePopoverTrigger, { static: false })
+  _dxcTrigger: MdePopoverTrigger;
+  @ViewChild("dxcCalendar", { static: false }) _dxcCalendar: MatCalendar<
+    Moment
+  >;
 
-  private _sizes = ['medium', 'large', 'fillParent'];
+  private _sizes = ["medium", "large", "fillParent"];
 
   private _isOpenClicked: boolean = false;
   private _isCalendarOpened: boolean = false;
@@ -78,15 +80,19 @@ export class DxcDateComponent implements OnChanges, OnInit {
   constructor(private utils: CssUtils) {}
 
   private calculateComponentValues(): void {
-    this.size = this.size ? this._sizes.find(item => item===this.size) : 'medium';
-    this.popOverOffsetX = this.size==='fillParent' ? null : '130';
+    this.size = this.size
+      ? this._sizes.find((item) => item === this.size)
+      : "medium";
+    this.popOverOffsetX = this.size === "fillParent" ? null : "130";
 
     this.isDisabled = this.disabled;
-    this.format = this.format ? this.format : this.defaultInputs.getValue().format;
+    this.format = this.format
+      ? this.format
+      : this.defaultInputs.getValue().format;
 
     this.renderedValue = this.value;
     this.dateValue = this.getMomentValue(this.renderedValue, this.format);
-    this.calendarIconSrc =  "assets/calendar.svg";
+    this.calendarIconSrc = "assets/calendar.svg";
   }
 
   public ngOnInit(): void {
@@ -109,13 +115,13 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
-  onInputChangeHandler(value: string){
+  onInputChangeHandler(value: string) {
     if (this._isCalendarOpened) this.closeCalendar();
     let _dateValue = this.getMomentValue(value, this.format);
     let _dateReturn = {
       stringValue: value,
-      dateValue: _dateValue.isValid() ? _dateValue.toDate() : null
-    }
+      dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
+    };
     this.onInputChange.emit(_dateReturn);
 
     if (!this.value) {
@@ -128,8 +134,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
     let _stringValue = this.getDateStringValue(value, this.format);
     let _dateReturn = {
       stringValue: _stringValue,
-      dateValue: value.isValid() ? value.toDate() : null
-    }
+      dateValue: value.isValid() ? value.toDate() : null,
+    };
     this.onInputChange.emit(_dateReturn);
     if (!this.value) {
       this.dateValue = value;
@@ -138,24 +144,26 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.closeCalendar();
   }
 
-  onBlurHandler(value: string){
+  onBlurHandler(value: string) {
     this.onBlur.emit(value);
   }
 
   public onClickOutsideHandler() {
     if (this._isCalendarOpened) {
-        if (!this._isOpenClicked && !this._isSelectingDate) {
+      if (!this._isOpenClicked && !this._isSelectingDate) {
         this.closeCalendar();
       } else {
-        this._isOpenClicked=false;
-        this._isSelectingDate=false;
+        this._isOpenClicked = false;
+        this._isSelectingDate = false;
       }
     }
   }
 
   public openCalendar(event: any) {
-    this._dxcCalendar.activeDate = this.dateValue.isValid() ? this.dateValue : moment();
-    this._dxcCalendar.currentView='month';
+    this._dxcCalendar.activeDate = this.dateValue.isValid()
+      ? this.dateValue
+      : moment();
+    this._dxcCalendar.currentView = "month";
     this._dxcTrigger.openPopover();
     this.resetCalendarState(true);
   }
@@ -166,22 +174,22 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
 
   public onSelectingDateHandler() {
-    this._isSelectingDate=true;
+    this._isSelectingDate = true;
   }
 
   private resetCalendarState(value: boolean = false) {
-    this._isOpenClicked=this._isCalendarOpened=this._isSelectingDate=value;
+    this._isOpenClicked = this._isCalendarOpened = this._isSelectingDate = value;
   }
 
-  private getMomentValue(value:string, format:string){
+  private getMomentValue(value: string, format: string) {
     return moment(value, format.toUpperCase(), true);
   }
 
-  private getDateStringValue(value:Moment, format:string){
+  private getDateStringValue(value: Moment, format: string) {
     return value.format(format.toUpperCase());
   }
 
-  getCalendarContentStyle () {
+  getCalendarContentStyle() {
     return css`
       width: 297px;
       background: var(--date-pickerBackgroundColor);
@@ -229,7 +237,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
-          background-color:  var(--date-pickerHoverDateBackgroundColor) !important;
+          background-color: var(
+            --date-pickerHoverDateBackgroundColor
+          ) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
         mat-year-view .mat-calendar-body-cell-content {
@@ -245,7 +255,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
           }
         }
       }
-     `;
+    `;
   }
   getDynamicStyle(inputs) {
     return css`
@@ -255,17 +265,17 @@ export class DxcDateComponent implements OnChanges, OnInit {
       .disabled {
         cursor: not-allowed !important;
       }
-      .mat-form-field{
-        .mat-form-field-wrapper{
-          .mat-form-field-underline{
+      .mat-form-field {
+        .mat-form-field-wrapper {
+          .mat-form-field-underline {
             &:focus {
               outline: -webkit-focus-ring-color auto 1px;
               outline-color: var(--date-focusColor);
             }
           }
         }
-        img{
-          cursor:pointer;
+        img {
+          cursor: pointer;
         }
       }
     `;

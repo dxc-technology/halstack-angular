@@ -1,13 +1,12 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcCheckboxComponent } from "./dxc-checkbox.component";
-import { screen } from "@testing-library/dom";
 import { MatCheckboxModule } from "@angular/material";
 
 describe("DxcCheckbox tests", () => {
   test("should render dxc-checkbox", async () => {
     const { getByText } = await render(DxcCheckboxComponent, {
       componentProperties: { label: "test-checkbox" },
-      imports: [MatCheckboxModule]
+      imports: [MatCheckboxModule],
     });
 
     expect(getByText("test-checkbox"));
@@ -18,9 +17,9 @@ describe("DxcCheckbox tests", () => {
     const dxcCheckbox = await render(DxcCheckboxComponent, {
       componentProperties: {
         label: "test-checkbox",
-        onChange: { emit: onClickFunction } as any
+        onChange: { emit: onClickFunction } as any,
       },
-      imports: [MatCheckboxModule]
+      imports: [MatCheckboxModule],
     });
     expect(dxcCheckbox);
 
@@ -38,9 +37,9 @@ describe("DxcCheckbox tests", () => {
       componentProperties: {
         label: "test-checkbox",
         checked: true,
-        onChange: { emit: onClickFunction } as any
+        onChange: { emit: onClickFunction } as any,
       },
-      imports: [MatCheckboxModule]
+      imports: [MatCheckboxModule],
     });
     expect(dxcCheckbox);
 

@@ -1,14 +1,11 @@
-import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material';
-import { DxcCardComponent } from './dxc-card.component';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { MatCardModule } from "@angular/material";
+import { DxcCardComponent } from "./dxc-card.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [DxcCardComponent],
-  imports: [
-    CommonModule, 
-    MatCardModule,
-  ],
-  exports: [DxcCardComponent]
+  imports: [CommonModule, MatCardModule],
+  exports: [DxcCardComponent],
 })
 export class DxcCardModule {}

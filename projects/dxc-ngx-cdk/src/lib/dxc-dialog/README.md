@@ -11,7 +11,8 @@ The DXC Dialog Component is a container that informs the user about a task or di
   [overlay]="false"
   [isCloseVisible]="true"
   [isVisible]="false"
-  (onClose)="onClick($event)">
+  (onClose)="onClick($event)"
+>
   Lorem ipsum dolor sit amet consectetur adipiscing elit curae, sodales.
 </dxc-dialog>
 ```
@@ -21,13 +22,13 @@ Include the **DxcDialogModule** into **app.module.ts** to use the dialog compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcDialogModule } from '@dxc-technology/halstack-angular';
+import { DxcDialogModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcDialogModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -85,4 +86,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

@@ -7,12 +7,12 @@ import {
   MatDatepickerModule,
   MAT_DATE_FORMATS,
   DateAdapter,
-  MAT_DATE_LOCALE
+  MAT_DATE_LOCALE,
 } from "@angular/material";
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
-  MatMomentDateModule
+  MatMomentDateModule,
 } from "@angular/material-moment-adapter";
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
@@ -32,8 +32,8 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
 
     expect(getByText("test-date"));
@@ -46,14 +46,14 @@ describe("DxcDate", () => {
         {
           provide: DateAdapter,
           useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE]
+          deps: [MAT_DATE_LOCALE],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
       componentProperties: {
         label: "test-date",
         onInputChange: { emit: onChangeFunction } as any,
-        value: newValue
+        value: newValue,
       },
       imports: [
         MatMomentDateModule,
@@ -62,8 +62,8 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
 
     dxcDate.detectChanges();
@@ -71,18 +71,19 @@ describe("DxcDate", () => {
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
-    expect(screen.getByText("3").classList.contains("mat-calendar-body-selected")).toBeTruthy();
-    
+    expect(
+      screen.getByText("3").classList.contains("mat-calendar-body-selected")
+    ).toBeTruthy();
   });
 
   test("dxc-date value change and default format", async () => {
-    const onChangeFunction = jest.fn(x => {
+    const onChangeFunction = jest.fn((x) => {
       x;
     });
     const dxcDate = await render(DxcDateComponent, {
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any
+        onInputChange: { emit: onChangeFunction } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -91,8 +92,8 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
 
     const input = <HTMLInputElement>dxcDate.getByRole("combobox");
@@ -100,7 +101,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChangeFunction).toHaveBeenCalledWith({
       stringValue: newValue,
-      dateValue: newMockDate
+      dateValue: newMockDate,
     });
   });
 
@@ -111,14 +112,14 @@ describe("DxcDate", () => {
         {
           provide: DateAdapter,
           useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE]
+          deps: [MAT_DATE_LOCALE],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
       componentProperties: {
         label: "test-date",
         onInputChange: { emit: onChangeFunction } as any,
-        format: "YYYY/MM/DD"
+        format: "YYYY/MM/DD",
       },
       imports: [
         MatMomentDateModule,
@@ -127,8 +128,8 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
 
     const input = <HTMLInputElement>dxcDate.getByRole("combobox");
@@ -136,24 +137,26 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: "1995/12/03" } });
     expect(onChangeFunction).toHaveBeenCalledWith({
       stringValue: "1995/12/03",
-      dateValue: newMockDate
+      dateValue: newMockDate,
     });
     dxcDate.detectChanges();
     const calendarIcon = dxcDate.getByRole("img");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
-    expect(screen.getByText("3").classList.contains("mat-calendar-body-selected")).toBeTruthy();
+    expect(
+      screen.getByText("3").classList.contains("mat-calendar-body-selected")
+    ).toBeTruthy();
   });
 
   test("dxc-date invalid value", async () => {
-    const onChangeFunction = jest.fn(x => {
+    const onChangeFunction = jest.fn((x) => {
       x;
     });
     const dxcDate = await render(DxcDateComponent, {
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any
+        onInputChange: { emit: onChangeFunction } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -162,8 +165,8 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
 
     const invalidValue = "03-12-199_";
@@ -173,7 +176,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: invalidValue } });
     expect(onChangeFunction).toHaveBeenCalledWith({
       dateValue: null,
-      stringValue: invalidValue
+      stringValue: invalidValue,
     });
   });
 
@@ -184,14 +187,14 @@ describe("DxcDate", () => {
         {
           provide: DateAdapter,
           useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE]
+          deps: [MAT_DATE_LOCALE],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
       componentProperties: {
         label: "test-date",
         onInputChange: { emit: onChangeFunction } as any,
-        value: newValue
+        value: newValue,
       },
       imports: [
         MatMomentDateModule,
@@ -200,15 +203,18 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
     dxcDate.detectChanges();
     const calendarIcon = dxcDate.getByRole("img");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     fireEvent.click(screen.getByText("4"));
-    expect(onChangeFunction).toHaveBeenCalledWith({stringValue: '04-12-1995', dateValue: new Date("1995/12/04")});
+    expect(onChangeFunction).toHaveBeenCalledWith({
+      stringValue: "04-12-1995",
+      dateValue: new Date("1995/12/04"),
+    });
   });
 
   test("onChange function is called when the user selects from the calendar, the stringValue received by the function is the date with the correct format", async () => {
@@ -218,15 +224,15 @@ describe("DxcDate", () => {
         {
           provide: DateAdapter,
           useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE]
+          deps: [MAT_DATE_LOCALE],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
       componentProperties: {
         label: "test-date",
         onInputChange: { emit: onChangeFunction } as any,
         value: "12-03-1995",
-        format: "MM-DD-YYYY"
+        format: "MM-DD-YYYY",
       },
       imports: [
         MatMomentDateModule,
@@ -235,18 +241,23 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
     dxcDate.detectChanges();
     const calendarIcon = dxcDate.getByRole("img");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
-    expect(screen.getByText("3").classList.contains("mat-calendar-body-selected")).toBeTruthy();
+    expect(
+      screen.getByText("3").classList.contains("mat-calendar-body-selected")
+    ).toBeTruthy();
     fireEvent.click(screen.getByText("4"));
     dxcDate.detectChanges();
-    expect(onChangeFunction).toHaveBeenCalledWith({stringValue: '12-04-1995', dateValue: new Date("1995/12/04")});
+    expect(onChangeFunction).toHaveBeenCalledWith({
+      stringValue: "12-04-1995",
+      dateValue: new Date("1995/12/04"),
+    });
   });
 
   test("If the user types something, if controlled and without onChange, the value doesn´t change", async () => {
@@ -256,14 +267,14 @@ describe("DxcDate", () => {
         {
           provide: DateAdapter,
           useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE]
+          deps: [MAT_DATE_LOCALE],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
       componentProperties: {
         label: "test-date",
         onInputChange: { emit: onChangeFunction } as any,
-        value: newValue
+        value: newValue,
       },
       imports: [
         MatMomentDateModule,
@@ -272,21 +283,28 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        DxcInputTextModule
-      ]
+        DxcInputTextModule,
+      ],
     });
     dxcDate.detectChanges();
     const calendarIcon = dxcDate.getByRole("img");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
-    expect(screen.getByText("3").classList.contains("mat-calendar-body-selected")).toBeTruthy();
+    expect(
+      screen.getByText("3").classList.contains("mat-calendar-body-selected")
+    ).toBeTruthy();
     fireEvent.click(screen.getByText("4"));
     dxcDate.detectChanges();
-    expect(onChangeFunction).toHaveBeenCalledWith({stringValue: '04-12-1995', dateValue: new Date("1995/12/04")});
+    expect(onChangeFunction).toHaveBeenCalledWith({
+      stringValue: "04-12-1995",
+      dateValue: new Date("1995/12/04"),
+    });
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
-    expect(screen.getByText("3").classList.contains("mat-calendar-body-selected")).toBeTruthy();
+    expect(
+      screen.getByText("3").classList.contains("mat-calendar-body-selected")
+    ).toBeTruthy();
   });
 });

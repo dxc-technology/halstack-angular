@@ -14,7 +14,6 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-chip",
   templateUrl: "./dxc-chip.component.html",
-  styleUrls: ["./dxc-chip.component.scss"],
   providers: [CssUtils],
 })
 export class DxcChipComponent implements OnChanges {
@@ -53,11 +52,11 @@ export class DxcChipComponent implements OnChanges {
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
 
-    if(this.prefixIconClick.observers.length === 0) {
+    if (this.prefixIconClick.observers.length === 0) {
       this.prefixTabIndex = -1;
     }
 
-    if(this.suffixIconClick.observers.length === 0) {
+    if (this.suffixIconClick.observers.length === 0) {
       this.suffixTabIndex = -1;
     }
   }
@@ -107,7 +106,7 @@ export class DxcChipComponent implements OnChanges {
         text-overflow: ellipsis;
         color: var(--chip-fontColor);
       }
-      img{
+      img {
         max-width: 24px;
         max-height: 24px;
       }

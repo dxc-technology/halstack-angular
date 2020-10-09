@@ -11,7 +11,8 @@ The DXC Card Component is a container which basically has an image and some cont
   (onClick)="onClick($event)"
   [imagePosition]="'after'"
   [imageSrc]="person"
-  [mode]="'default'">
+  [mode]="'default'"
+>
   <span>Card Example</span>
 </dxc-card>
 ```
@@ -21,13 +22,13 @@ Include the **DxcCardModule** into **app.module.ts** to use the card component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcButtonModule } from '@dxc-technology/halstack-angular';
+import { DxcButtonModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcCardModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -104,4 +105,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

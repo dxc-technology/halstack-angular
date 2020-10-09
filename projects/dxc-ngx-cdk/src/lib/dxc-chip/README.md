@@ -7,10 +7,7 @@ The DXC Chip Component is a compact element that displays short information.
 ## Usage
 
 ```html
-<dxc-chip
-  label="Default Chip"
-  margin="small"
-></dxc-chip>
+<dxc-chip label="Default Chip" margin="small"></dxc-chip>
 ```
 
 Include the **DxcChipModule** into **app.module.ts** to use the chip component:
@@ -18,13 +15,13 @@ Include the **DxcChipModule** into **app.module.ts** to use the chip component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcChipModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcChipModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -88,6 +85,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

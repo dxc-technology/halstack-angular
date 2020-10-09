@@ -1,20 +1,47 @@
-<mat-accordion [ngClass] = "[mode === 'alternative' ? 'alternative': 'default']">
-  <mat-expansion-panel #matExpansionPanel [ngClass] = "[disabled ? 'disabled': '']" [disabled]="disabled" [expanded]="renderedIsExpanded">
-    <mat-expansion-panel-header (click)="onClickHandler($event)" [expandedHeight]="'48px'">
-      <mat-panel-title [ngClass]="iconPosition === 'after' ? 'after' : 'before'">
-        <span *ngIf="label">{{label}}</span>
-        <img [src]="iconSrc" *ngIf="iconSrc">
+<mat-accordion>
+  <mat-expansion-panel
+    #matExpansionPanel
+    [ngClass]="[disabled ? 'disabled' : '']"
+    [disabled]="disabled"
+    [expanded]="renderedIsExpanded"
+  >
+    <mat-expansion-panel-header
+      (click)="onClickHandler($event)"
+      [expandedHeight]="'48px'"
+    >
+      <mat-panel-title
+        [ngClass]="iconPosition === 'after' ? 'after' : 'before'"
+      >
+        <span *ngIf="label">{{ label }}</span>
+        <img [src]="iconSrc" *ngIf="iconSrc" />
       </mat-panel-title>
       <mat-panel-description>
-        <span *ngIf="assistiveText">{{assistiveText}}</span>
+        <span *ngIf="assistiveText">{{ assistiveText }}</span>
       </mat-panel-description>
       <span class="caret-indicator">
-        <svg class="up" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-        <svg class="down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
+        <svg
+          class="up"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+        <svg
+          class="down"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          <path fill="none" d="M0 0h24v24H0V0z" />
+        </svg>
       </span>
     </mat-expansion-panel-header>
 
     <ng-content></ng-content>
-
   </mat-expansion-panel>
 </mat-accordion>

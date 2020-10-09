@@ -1,5 +1,4 @@
 import { render, fireEvent } from "@testing-library/angular";
-import { screen } from "@testing-library/dom";
 import { DxcDialogComponent } from "./dxc-dialog.component";
 
 describe("DxcDialog tests", () => {
@@ -8,7 +7,7 @@ describe("DxcDialog tests", () => {
   test("should render dxc-dialog", async () => {
     const dxcDialog = await render(DxcDialogComponent, {
       template: `<dxc-dialog>${projection}</dxc-dialog>`,
-      componentProperties: {}
+      componentProperties: {},
     });
 
     expect(dxcDialog.getByText(projection));
@@ -18,7 +17,7 @@ describe("DxcDialog tests", () => {
     const onCloseClickFunction = jest.fn();
     const dxcDialog = await render(DxcDialogComponent, {
       template: `<dxc-dialog (onCloseClick)="onCloseClickFunction()">${projection}</dxc-dialog>`,
-      componentProperties: {onCloseClickFunction}
+      componentProperties: { onCloseClickFunction },
     });
 
     expect(dxcDialog.getByText(projection));
@@ -30,7 +29,7 @@ describe("DxcDialog tests", () => {
     const onCloseClickFunction = jest.fn();
     const dxcDialog = await render(DxcDialogComponent, {
       template: `<dxc-dialog (onBackgroundClick)="onCloseClickFunction()">${projection}</dxc-dialog>`,
-      componentProperties: {onCloseClickFunction}
+      componentProperties: { onCloseClickFunction },
     });
 
     expect(dxcDialog.getByText(projection));

@@ -53,6 +53,7 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
 
       - name: Move RELEASE docs to S3
         run: node scripts/release-docs.js $TAG_NAME

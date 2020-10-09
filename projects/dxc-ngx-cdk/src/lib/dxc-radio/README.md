@@ -8,27 +8,28 @@ The DXC Radio Component allows the user to select an option.
 
 ```html
 <dxc-radio
-    label="Radio label"
-    name="radioSimple1"
-    [checked]="checked"
-    (onChange)="onChange($event)"
-    margin="medium"
-    labelPosition="before">
+  label="Radio label"
+  name="radioSimple1"
+  [checked]="checked"
+  (onChange)="onChange($event)"
+  margin="medium"
+  labelPosition="before"
+>
 </dxc-radio>
 ```
 
 Include the **DxcRadioModule** into **app.module.ts** to use the radio component:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DxcRadioModule } from '@dxc-technology/halstack-angular';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcRadioModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcRadioModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -126,6 +127,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

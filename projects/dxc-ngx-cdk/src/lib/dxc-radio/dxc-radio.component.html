@@ -1,6 +1,6 @@
 <mat-radio-button
   disableRipple
-  [labelPosition]="labelPosition ? labelPosition :  'after'"
+  [labelPosition]="labelPosition ? labelPosition : 'after'"
   [disabled]="disabled"
   [name]="name"
   [required]="required"
@@ -8,8 +8,11 @@
   [checked]="renderedChecked"
   [value]="value"
 >
-<span *ngIf="label" [ngClass] = "labelPosition === 'before' ? 'label-before' : 'label-after'">
-  <span *ngIf="required" class="mat-radio-required" >*</span>
-  <span>{{label}}</span>
-</span>
+  <span
+    *ngIf="label"
+    [ngClass]="labelPosition === 'before' ? 'label-before' : 'label-after'"
+  >
+    <span *ngIf="required" class="mat-radio-required">*</span>
+    <span>{{ label }}</span>
+  </span>
 </mat-radio-button>

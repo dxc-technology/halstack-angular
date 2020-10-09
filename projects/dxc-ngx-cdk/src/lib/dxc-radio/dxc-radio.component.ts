@@ -164,17 +164,6 @@ export class DxcRadioComponent implements OnInit {
           .mat-radio-label {
             cursor: not-allowed;
             opacity: var(--radio-disabled);
-            /* .mat-radio-label-content {
-                opacity: var(--radio-disabledDotColor);
-            } */
-            /* .mat-radio-container {
-              .mat-radio-inner-circle {
-                opacity: var(--radio-disabledDotColor);
-              }
-              .mat-radio-outer-circle {
-                opacity: var(--radio-disabledBorderColor);
-              }
-            } */
           }
         }
       }

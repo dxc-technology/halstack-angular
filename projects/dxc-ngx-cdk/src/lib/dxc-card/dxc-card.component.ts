@@ -7,7 +7,7 @@ import {
   ViewChild,
   ElementRef,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -17,7 +17,7 @@ import { CssUtils } from "../utils";
   selector: "dxc-card",
   templateUrl: "./dxc-card.component.html",
   styleUrls: [],
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcCardComponent implements OnInit {
   @Input() imageSrc: string;
@@ -41,7 +41,7 @@ export class DxcCardComponent implements OnInit {
     imageCover: false,
     imageBgColor: "black",
     margin: null,
-    linkHref: null
+    linkHref: null,
   });
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -74,23 +74,20 @@ export class DxcCardComponent implements OnInit {
     this.onClick.emit($event);
   }
 
-  applyTheme(theme, href, outlined) {
+  applyTheme(href, outlined) {
     return css`
-        mat-card {
-          background-color: var(--card-backgroundColor);
-          color: black;
-          ${!outlined
-            ? this.utils.getBoxShadow("1")
-            : this.utils.getBoxShadow(0)}
-        }
+      mat-card {
+        background-color: var(--card-backgroundColor);
+        color: black;
+        ${!outlined ? this.utils.getBoxShadow("1") : this.utils.getBoxShadow(0)}
+      }
 
-        mat-card:hover {
-          ${!outlined
-            ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
-            : this.utils.getBoxShadow("1")}
-        }
-      `;
-    
+      mat-card:hover {
+        ${!outlined
+          ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
+          : this.utils.getBoxShadow("1")}
+      }
+    `;
   }
 
   getCursor(href) {
@@ -102,7 +99,7 @@ export class DxcCardComponent implements OnInit {
       return css``;
     }
   }
-  
+
   getShadowDepthOnHover(href) {
     if (this.onClick.observers.length > 0 || href) {
       return "2";
@@ -129,7 +126,13 @@ export class DxcCardComponent implements OnInit {
         img {
           height: 100%;
           ${this.utils.calculateWidthWithSize("140px", inputs.imagePadding)}
-          ${inputs.imageCover ? css`object-fit: cover` : css`object-fit: contain`};
+          ${inputs.imageCover
+            ? css`
+                object-fit: cover;
+              `
+            : css`
+                object-fit: contain;
+              `};
         }
 
         .imageContainer {
@@ -182,7 +185,7 @@ export class DxcCardComponent implements OnInit {
         }
       }
 
-      ${this.applyTheme(inputs.theme, inputs.linkHref, inputs.outlined)}
+      ${this.applyTheme(inputs.linkHref, inputs.outlined)}
     `;
   }
 }

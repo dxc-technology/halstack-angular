@@ -146,7 +146,7 @@ export class DxcHeaderComponent implements OnChanges {
     return document.body.getAttribute("header-logo");
   }
 
-  getLogoResponsiveDxc(){
+  getLogoResponsiveDxc() {
     return document.body.getAttribute("header-logoResponsive");
   }
 

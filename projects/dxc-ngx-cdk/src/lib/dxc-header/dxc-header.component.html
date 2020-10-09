@@ -1,11 +1,18 @@
 <mat-toolbar [ngClass]="underline ? 'underlined' : ''">
   <mat-toolbar-row>
     <a class="headerAnchor" (click)="onClickHandler($event)">
-      <img [src]="getLogoDxc()" *ngIf="!logoSrc"/>
+      <img [src]="getLogoDxc()" *ngIf="!logoSrc" />
       <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
     <div class="hamburger">
-      <span id="hamburguer" tabindex="0" (keydown)="showMenuKey($event)" (click)="showMenu()" *ngIf="isResponsive" class="hamburgerItem">
+      <span
+        id="hamburguer"
+        tabindex="0"
+        (keydown)="showMenuKey($event)"
+        (click)="showMenu()"
+        *ngIf="isResponsive"
+        class="hamburgerItem"
+      >
         <div class="hamburgerIcon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
@@ -19,7 +26,7 @@
     </div>
 
     <div *ngIf="!isResponsive" class="content">
-            <ng-content select="[id=unresponsive]"></ng-content>
+      <ng-content select="[id=unresponsive]"></ng-content>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -29,7 +36,13 @@
       <img [src]="getLogoResponsiveDxc()" *ngIf="!logoResponsiveSrc" />
       <img *ngIf="logoResponsiveSrc" src="{{ logoResponsiveSrc }}" />
     </a>
-    <div class="closeIcon" (keydown)="showMenuKey($event)" (click)="showMenu()" id="closeIcon" tabindex="0">
+    <div
+      class="closeIcon"
+      (keydown)="showMenuKey($event)"
+      (click)="showMenu()"
+      id="closeIcon"
+      tabindex="0"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

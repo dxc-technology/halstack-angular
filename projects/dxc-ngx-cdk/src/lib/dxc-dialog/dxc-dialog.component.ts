@@ -4,7 +4,7 @@ import {
   Output,
   HostBinding,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -13,7 +13,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-dialog",
   templateUrl: "./dxc-dialog.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcDialogComponent {
   @Input() overlay: boolean = true;
@@ -27,7 +27,7 @@ export class DxcDialogComponent {
   defaultInputs = new BehaviorSubject<any>({
     overlay: true,
     isCloseVisible: true,
-    padding: null
+    padding: null,
   });
 
   constructor(private utils: CssUtils) {}
@@ -54,13 +54,12 @@ export class DxcDialogComponent {
     this.onBackgroundClick.emit($event);
   }
 
-  private overlayStyle(overlay:boolean){
-    if(overlay === true){
+  private overlayStyle(overlay: boolean) {
+    if (overlay === true) {
       return css`
         background-color: var(--dialog-overlayColor);
       `;
-    }
-    else 
+    } else
       return css`
         background-color: transparent;
       `;
@@ -97,7 +96,11 @@ export class DxcDialogComponent {
             overflow: unset;
             max-width: 80%;
             min-width: 800px;
-            ${inputs.isCloseVisible ? css`min-height: 72px;` : css``}
+            ${inputs.isCloseVisible
+              ? css`
+                  min-height: 72px;
+                `
+              : css``}
             box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
             ${this.utils.getPaddings(inputs.padding)}
             display: flex;

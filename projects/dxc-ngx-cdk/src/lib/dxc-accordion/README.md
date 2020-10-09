@@ -12,7 +12,8 @@ The DXC Accordion Component is a collapsible panel.
   iconPosition="before"
   (onClick)="accordionClicked()"
   padding="medium"
-  margin="medium">
+  margin="medium"
+>
   <div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
     malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -25,13 +26,13 @@ Include the **DxcAccordionModule** into **app.module.ts** to use the accordion c
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcAccordionModule } from '@dxc-technology/halstack-angular';
+import { DxcAccordionModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcAccordionModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -105,6 +106,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

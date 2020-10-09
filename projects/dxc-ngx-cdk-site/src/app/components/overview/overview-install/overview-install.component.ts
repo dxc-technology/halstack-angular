@@ -8,22 +8,24 @@ import { ExampleService } from 'src/app/service/example.service';
 })
 export class OverviewInstallComponent implements OnInit {
 
-  npmCode : String;
-  yarnCode : String;
-  assetsCode : String;
+  npmCode: string;
+  yarnCode: string;
+  assetsCode: string;
+  tsCode: string;
+  files: Array<string>;
 
-  files: Array<String>;
-
-  constructor(@Inject("ExampleService") private exampleService: ExampleService) { 
+  constructor(@Inject("ExampleService") private exampleService: ExampleService) {
     this.files = [
       'overview/overview-install/overview-install-npm',
       'overview/overview-install/overview-install-yarn',
-      'overview/overview-install/overview-install-assets'
+      'overview/overview-install/overview-install-assets',
+      'overview/overview-install/overview-install-ts'
     ]
 
     this.npmCode = "Loading...";
     this.yarnCode = "Loading...";
     this.assetsCode = "Loading...";
+    this.tsCode = "Loading ...";
   }
   ngOnInit() {
     this.getExampleFiles();
@@ -31,11 +33,12 @@ export class OverviewInstallComponent implements OnInit {
 
   private getExampleFiles() {
     this.exampleService
-      .getExampleFiles(this.files).subscribe((response : Array<String>) => {
-         this.npmCode = response[0];
-         this.yarnCode = response[1];
-         this.assetsCode = response[2];
-        });
+      .getExampleFiles(this.files).subscribe((response: Array<string>) => {
+        this.npmCode = response[0];
+        this.yarnCode = response[1];
+        this.assetsCode = response[2];
+        this.tsCode = response[3];
+      });
   };
 
 }

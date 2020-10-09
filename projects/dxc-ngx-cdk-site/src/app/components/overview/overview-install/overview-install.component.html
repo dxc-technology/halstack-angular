@@ -1,43 +1,67 @@
 <div class="section">
-    <h2 class="overview-doc-subtitle">Install</h2>
-    <p>
-        DXC Angular Components is a library made for Angular applications. In order to use it,
-        you need to include it in an existing Angular project.
-    </p>
-    <p>
-        If you are creating a Angular application from scratch, we recommend using
-        <a href="https://angular.io/guide/setup-local" target="_blank">Angular setup</a>
-        to set it up with minimum configuration.
-    </p>
-    <p>
-        DXC Angular Components is distributed as an npm package. To use it in an
-        existing project:
-    </p>
-    <div class="overview-viewer-source" >
-        <mat-tab-group animationDuration="1000ms">
-            <mat-tab label="NPM">
-                <app-code-playground [code]="npmCode" type="CONSOLE" >
-                </app-code-playground>
-            </mat-tab>
-            <mat-tab label="YARN">
-                <app-code-playground [code]="yarnCode" type="CONSOLE" >
-                </app-code-playground>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
-    <p>
-        The CDK uses Angular Material so if it's not added, the components
-        will not work as expected.
-    </p>
-    <p>
-        Furthermore, it is mandatory to add in your angular.json the library assets as well as the 
-        indigo pink pre-built theme from Angular Material:
-    </p>
-    <app-code-playground [code]="assetsCode" type="CONSOLE" >
-    </app-code-playground>
-    <p>
-        Lastly, it is also needed our ThemeModule in your app so our default theme can be 
-        applied with the theme directive. 
-        For more information, please go to <i>Custom Themes</i> tab.
-    </p>
+  <h2 class="overview-doc-subtitle">Install</h2>
+  <p>
+    DXC Angular Components is a library made for Angular applications. In order
+    to use it, you need to include it in an existing Angular project.
+  </p>
+  <p>
+    If you are creating a Angular application from scratch, we recommend using
+    <a href="https://angular.io/guide/setup-local" target="_blank"
+      >Angular setup</a
+    >
+    to set it up with minimum configuration.
+  </p>
+  <p>
+    DXC Angular Components is distributed as an npm package. To use it in an
+    existing project:
+  </p>
+  <div class="overview-viewer-source">
+    <mat-tab-group animationDuration="1000ms">
+      <mat-tab label="NPM">
+        <app-code-playground [code]="npmCode" type="CONSOLE">
+        </app-code-playground>
+      </mat-tab>
+      <mat-tab label="YARN">
+        <app-code-playground [code]="yarnCode" type="CONSOLE">
+        </app-code-playground>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <h3 class="overview-doc-subtitle-section">PeerDependencies</h3>
+  <p>
+    it has defined a peerDependencies in the package.json. As you know, this
+    section of depedencies are not installed automatically by npm. System will
+    warn you if you run npm install and it does not find this dependency.
+  </p>
+  <p>
+    The versions must be compatible, so if a peerDependency is listed as 2.x,
+    you can’t install 1.x . It all follows semantic versioning. Angular can use
+    TypeScript path mapping for peer dependencies. How
+    <a
+      href="https://angular.io/guide/creating-libraries#use-typescript-path-mapping-for-peer-dependencies"
+      target="_blank"
+      >Angular</a
+    >
+    does it?
+  </p>
+  <app-code-playground [code]="tsCode" type="CONSOLE"> </app-code-playground>
+
+  <h3 class="overview-doc-subtitle-section">Material</h3>
+
+  <p>
+    The CDK uses Angular Material so if it's not added, the components will not
+    work as expected.
+  </p>
+  <p>
+    Furthermore, it is mandatory to add in your angular.json the library assets
+    as well as the indigo pink pre-built theme from Angular Material:
+  </p>
+  <app-code-playground [code]="assetsCode" type="CONSOLE">
+  </app-code-playground>
+  <p>
+    Lastly, it is also needed our ThemeModule in your app so our default theme
+    can be applied with the theme directive. For more information, please go to
+    <i>Custom Themes</i> tab.
+  </p>
 </div>

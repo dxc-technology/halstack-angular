@@ -18,7 +18,7 @@
         display: block;
         font: 14px Open Sans;
         padding: 4px 53px 20px;
-        overflow: auto;  
+        overflow: auto;
         height: calc(100% - 48px - 24px);
         ::ng-deep {
           span {
@@ -80,7 +80,7 @@
       .closeIcon {
         display: flex;
         justify-content: flex-end;
-        
+
         svg {
           cursor: pointer;
           width: 20px;
@@ -109,15 +109,15 @@
     }
   }
   .infoHeader {
-    background-color: #CEE0F5;
+    background-color: #cee0f5;
   }
   .warningHeader {
-    background-color: #FCF2BD;
+    background-color: #fcf2bd;
   }
   .errorHeader {
-    background-color: #F9CFCF;
+    background-color: #f9cfcf;
   }
   .confirmHeader {
-    background-color: #DBF1C4;
+    background-color: #dbf1c4;
   }
 }

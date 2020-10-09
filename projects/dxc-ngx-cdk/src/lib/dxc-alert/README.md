@@ -11,7 +11,8 @@ The DXC Alert Component is an important message for the user.
   type="confirm"
   mode="inline"
   inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  margin="medium">
+  margin="medium"
+>
 </dxc-alert>
 ```
 
@@ -20,13 +21,13 @@ Include the **DxcAlertModule** into **app.module.ts** to use the alert component
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcAlertModule } from '@dxc-technology/halstack-angular';
+import { DxcAlertModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcAlertModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -105,4 +106,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

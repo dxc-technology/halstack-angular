@@ -1,14 +1,7 @@
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  HostBinding,
-  SimpleChanges,
-} from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "dxc-heading",

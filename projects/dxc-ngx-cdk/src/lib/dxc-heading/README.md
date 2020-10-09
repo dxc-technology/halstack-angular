@@ -7,10 +7,7 @@ The DXC Header Component is a navegation container used at the top of the app.
 ## Usage
 
 ```html
-<dxc-heading 
-    text="Title for main section" 
-    [level]="1">
-</dxc-heading>
+<dxc-heading text="Title for main section" [level]="1"> </dxc-heading>
 ```
 
 Include the **DxcHeadingModule** into **app.module.ts** to use the heading component:
@@ -18,13 +15,13 @@ Include the **DxcHeadingModule** into **app.module.ts** to use the heading compo
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcHeadingModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcHeadingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -69,4 +66,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

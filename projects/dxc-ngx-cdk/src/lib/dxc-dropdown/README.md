@@ -8,10 +8,10 @@ The DXC Dropdown Component is a collapsible menu where choices are listed.
 
 ```html
 <dxc-dropdown
-    label="Default Dropdown"
-    [options]="optionsWithoutIcon"
-    size="medium"
-    margin="small"
+  label="Default Dropdown"
+  [options]="optionsWithoutIcon"
+  size="medium"
+  margin="small"
 ></dxc-dropdown>
 ```
 
@@ -20,13 +20,13 @@ Include the **DxcDropdownModule** into **app.module.ts** to use the dropdown com
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcDropdownModule } from '@dxc-technology/halstack-angular';
+import { DxcDropdownModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcDropdownModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -102,6 +102,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

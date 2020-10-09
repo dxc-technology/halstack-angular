@@ -1,14 +1,7 @@
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  HostBinding,
-  SimpleChanges,
-} from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "dxc-link",
@@ -68,22 +61,18 @@ export class DxcLinkComponent {
         padding-bottom: 2px;
         text-decoration: none;
 
-        ${
-          inputs.underlined
-            ? `padding-bottom: 1px !important;
+        ${inputs.underlined
+          ? `padding-bottom: 1px !important;
         border-bottom: 1px solid;`
-            : ``
-        }
+          : ``}
 
         ${inputs.disabled ? "pointer-events: none;" : ""}
 
-        color: ${
-          inputs.disabled
-            ? "var(--link-disabledColor)"
-            : !inputs.inheritColor
-            ? "var(--link-fontColor)"
-            : `inherit`
-        } !important;
+        color: ${inputs.disabled
+          ? "var(--link-disabledColor)"
+          : !inputs.inheritColor
+          ? "var(--link-fontColor)"
+          : `inherit`} !important;
 
         ${this.getStateStyles(inputs)}
 

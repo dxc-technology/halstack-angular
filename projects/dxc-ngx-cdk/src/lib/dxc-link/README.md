@@ -7,7 +7,8 @@ The DXC Link Component is a clickable text with a route.
 ## Usage
 
 ```html
-This is a text with a <dxc-link href="#" text="Link"></dxc-link> to another page.
+This is a text with a <dxc-link href="#" text="Link"></dxc-link> to another
+page.
 ```
 
 Include the **DxcLinkModule** into **app.module.ts** to use the link component:
@@ -15,13 +16,13 @@ Include the **DxcLinkModule** into **app.module.ts** to use the link component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcLinkModule } from '@dxc-technology/halstack-angular';
+import { DxcLinkModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcLinkModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -113,4 +114,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

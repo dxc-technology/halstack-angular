@@ -4,7 +4,7 @@ import {
   HostBinding,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -13,7 +13,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-button",
   templateUrl: "./dxc-button.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcButtonComponent {
   @Input() mode: string;
@@ -35,7 +35,7 @@ export class DxcButtonComponent {
     iconSrc: null,
     iconPosition: "before",
     margin: null,
-    size: "fitContent"
+    size: "fitContent",
   });
 
   constructor(private utils: CssUtils) {}
@@ -65,7 +65,7 @@ export class DxcButtonComponent {
     medium: "120px",
     large: "240px",
     fillParent: "100%",
-    fitContent: "unset"
+    fitContent: "unset",
   };
 
   setPadding(size) {
@@ -168,92 +168,92 @@ export class DxcButtonComponent {
     `;
   }
 
-  getModeStyle(){
-    if(this.mode === "secondary"){
+  getModeStyle() {
+    if (this.mode === "secondary") {
       return this.getSecondaryStyle();
-    } else if(this.mode === "text"){
+    } else if (this.mode === "text") {
       return this.getTextStyle();
     } else {
       return this.getPrimaryStyle();
     }
   }
 
-  getPrimaryStyle(){
+  getPrimaryStyle() {
     return css`
-        background: var(--button-color); 
-        color:var(--button-primaryFontColor);
-        &:hover:not([disabled]) {
-            background: var(--button-hoverColor);
-            color:var(--button-primaryHoverFontColor);
-        }
-        &:disabled {
-          opacity: var(--button-primaryDisabledOpacity);
-          color:var(--button-primaryFontColor) !important;
-        }
-        &:focus:not([disabled]){
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--button-focusColor);
-        }
-        &:active:not([disabled]) {
-          background: var(--button-primaryActiveOpacity);
-        }
-        &:active:hover{
-          background: var(--button-primaryActiveHoverOpacity);
-        }
+      background: var(--button-color);
+      color: var(--button-primaryFontColor);
+      &:hover:not([disabled]) {
+        background: var(--button-hoverColor);
+        color: var(--button-primaryHoverFontColor);
+      }
+      &:disabled {
+        opacity: var(--button-primaryDisabledOpacity);
+        color: var(--button-primaryFontColor) !important;
+      }
+      &:focus:not([disabled]) {
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: var(--button-focusColor);
+      }
+      &:active:not([disabled]) {
+        background: var(--button-primaryActiveOpacity);
+      }
+      &:active:hover {
+        background: var(--button-primaryActiveHoverOpacity);
+      }
     `;
   }
-  getSecondaryStyle(){
-    return css `
-        border: 2px solid var(--button-color); 
-        color:var(--button-secondaryFontColor);
-        background-color: var(--button-secondaryBackgroundColor); 
-        &:hover:not([disabled]) {
-          border-color: var(--button-hoverColor); 
-          background: var(--button-secondaryHoverOpacity);
-          color:var(--button-secondaryHoverFontColor);
-        }
-        &:disabled {
-          opacity: var(--button-secondaryDisabledOpacity);
-          color:var(--button-secondaryFontColor) !important; 
-        }
-        &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--button-focusColor);
-        }
-        &:active:not([disabled]) {
-          background: var(--button-secondaryActiveOpacity);
-          border-color: var(--button-color); 
-        }
-        &:active:hover{
-          background: var(--button-secondaryActiveHoverOpacity);
-          border-color: var(--button-hoverColor); 
-        }
+  getSecondaryStyle() {
+    return css`
+      border: 2px solid var(--button-color);
+      color: var(--button-secondaryFontColor);
+      background-color: var(--button-secondaryBackgroundColor);
+      &:hover:not([disabled]) {
+        border-color: var(--button-hoverColor);
+        background: var(--button-secondaryHoverOpacity);
+        color: var(--button-secondaryHoverFontColor);
+      }
+      &:disabled {
+        opacity: var(--button-secondaryDisabledOpacity);
+        color: var(--button-secondaryFontColor) !important;
+      }
+      &:focus {
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: var(--button-focusColor);
+      }
+      &:active:not([disabled]) {
+        background: var(--button-secondaryActiveOpacity);
+        border-color: var(--button-color);
+      }
+      &:active:hover {
+        background: var(--button-secondaryActiveHoverOpacity);
+        border-color: var(--button-hoverColor);
+      }
     `;
   }
-  getTextStyle(){
-    return css `
-        background-color: var(--button-textBackgroundColor);
+  getTextStyle() {
+    return css`
+      background-color: var(--button-textBackgroundColor);
+      color: var(--button-textFontColor);
+      &:hover:not([disabled]) {
+        background: var(--button-hoverColor);
+        color: var(--button-textHoverFontColor);
+      }
+      &:disabled {
+        opacity: var(--button-textDisabledOpacity);
+        color: var(--button-textFontColor) !important;
+      }
+      &:focus {
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: var(--button-focusColor);
+      }
+      &:active {
+        background: var(--button-textActiveOpacity);
         color: var(--button-textFontColor);
-        &:hover:not([disabled]) {
-          background: var(--button-hoverColor);
-          color: var(--button-textHoverFontColor);
-        }
-        &:disabled {
-          opacity: var(--button-textDisabledOpacity); 
-          color: var(--button-textFontColor) !important;
-        }
-        &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--button-focusColor);
-        }
-        &:active {
-          background: var(--button-textActiveOpacity);
-          color: var(--button-textFontColor);
-        }
-        &:active:hover{
-          background: var(--button-textActiveHoverOpacity);
-          color: var(--button-textHoverFontColor);
-        }
+      }
+      &:active:hover {
+        background: var(--button-textActiveHoverOpacity);
+        color: var(--button-textHoverFontColor);
+      }
     `;
   }
 }

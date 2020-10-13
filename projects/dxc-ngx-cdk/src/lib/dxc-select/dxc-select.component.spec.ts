@@ -5,28 +5,28 @@ import { screen } from "@testing-library/dom";
 
 const optionsMock = [
   {
-    value: 'pepe',
-    label: "Amazon"
+    value: "pepe",
+    label: "Amazon",
   },
   {
-    value: 'martin',
-    label: "Ebay"
+    value: "martin",
+    label: "Ebay",
   },
   {
-    value: '3',
-    label: "Apple"
+    value: "3",
+    label: "Apple",
   },
   {
-    value: '4',
-    label: "Google"
-  }
+    value: "4",
+    label: "Google",
+  },
 ];
 
 describe("DxcSelect tests", () => {
   test("should render dxc-select", async () => {
     const { getByText } = await render(DxcSelectComponent, {
       componentProperties: { label: "test-select", options: optionsMock },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
 
     expect(getByText("test-select"));
@@ -38,9 +38,9 @@ describe("DxcSelect tests", () => {
       componentProperties: {
         label: "test-select",
         options: optionsMock,
-        onChange: { emit: changeMock } as any
+        onChange: { emit: changeMock } as any,
       },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
     dxcSelect.detectChanges();
     fireEvent.click(dxcSelect.getByText("test-select"));
@@ -57,9 +57,9 @@ describe("DxcSelect tests", () => {
       componentProperties: {
         label: "test-select",
         options: optionsMock,
-        onChange: { emit: changeMock } as any
+        onChange: { emit: changeMock } as any,
       },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
     dxcSelect.detectChanges();
     fireEvent.click(dxcSelect.getByText("test-select"));
@@ -77,9 +77,9 @@ describe("DxcSelect tests", () => {
         label: "test-select",
         options: optionsMock,
         value: "pepe",
-        onChange: { emit: changeMock } as any
+        onChange: { emit: changeMock } as any,
       },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
     dxcSelect.detectChanges();
     expect(dxcSelect.getByText("Amazon"));
@@ -92,9 +92,9 @@ describe("DxcSelect tests", () => {
         label: "test-select",
         options: optionsMock,
         value: "pepe",
-        onChange: { emit: changeMock } as any
+        onChange: { emit: changeMock } as any,
       },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
     dxcSelect.detectChanges();
     fireEvent.click(dxcSelect.getByText("Amazon"));
@@ -113,9 +113,9 @@ describe("DxcSelect tests", () => {
         label: "test-select",
         options: optionsMock,
         multiple: true,
-        onChange: { emit: changeMock } as any
+        onChange: { emit: changeMock } as any,
       },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
     dxcSelect.detectChanges();
     fireEvent.click(dxcSelect.getByText("test-select"));
@@ -136,9 +136,9 @@ describe("DxcSelect tests", () => {
         options: optionsMock,
         multiple: true,
         value: ["pepe", "martin"],
-        onChange: { emit: changeMock } as any
+        onChange: { emit: changeMock } as any,
       },
-      imports: [MatSelectModule]
+      imports: [MatSelectModule],
     });
     dxcSelect.detectChanges();
     dxcSelect.getByText("Amazon,Ebay");

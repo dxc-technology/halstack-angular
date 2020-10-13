@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/angular';
+import { render } from '@testing-library/angular';
 import { DxcLinkComponent } from './dxc-link.component';
 
 describe('DxcLink tests', () => {

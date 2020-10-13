@@ -1,13 +1,12 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcRadioComponent } from "./dxc-radio.component";
-import { screen } from "@testing-library/dom";
 import { MatRadioModule } from "@angular/material";
 
 describe("DxcRadio tests", () => {
   test("should render dxc-radio", async () => {
     const { getByText } = await render(DxcRadioComponent, {
       componentProperties: { label: "test-radio" },
-      imports: [MatRadioModule]
+      imports: [MatRadioModule],
     });
 
     expect(getByText("test-radio"));
@@ -18,9 +17,9 @@ describe("DxcRadio tests", () => {
     const dxcRadio = await render(DxcRadioComponent, {
       componentProperties: {
         label: "test-radio",
-        onChange: { emit: onClickFunction } as any
+        onChange: { emit: onClickFunction } as any,
       },
-      imports: [MatRadioModule]
+      imports: [MatRadioModule],
     });
     expect(dxcRadio);
 
@@ -38,9 +37,9 @@ describe("DxcRadio tests", () => {
       componentProperties: {
         label: "test-radio",
         checked: false,
-        onChange: { emit: onClickFunction } as any
+        onChange: { emit: onClickFunction } as any,
       },
-      imports: [MatRadioModule]
+      imports: [MatRadioModule],
     });
     expect(dxcRadio);
 

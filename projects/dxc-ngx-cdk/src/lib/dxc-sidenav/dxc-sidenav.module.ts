@@ -3,19 +3,18 @@ import { DxcSidenavComponent } from "./dxc-sidenav.component";
 import { DxcSidenavMenuComponent } from "./dxc-sidenav-menu/dxc-sidenav-menu.component";
 import { DxcSidenavContentComponent } from "./dxc-sidenav-content/dxc-sidenav-content.component";
 import { CommonModule } from "@angular/common";
-import { CssUtils } from "../utils";
 
 @NgModule({
   declarations: [
     DxcSidenavComponent,
     DxcSidenavMenuComponent,
-    DxcSidenavContentComponent
+    DxcSidenavContentComponent,
   ],
   imports: [CommonModule],
   exports: [
     DxcSidenavComponent,
     DxcSidenavMenuComponent,
-    DxcSidenavContentComponent
-  ]
+    DxcSidenavContentComponent,
+  ],
 })
 export class DxcSideNavModule {}

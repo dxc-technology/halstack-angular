@@ -7,8 +7,7 @@ The DXC Header Component is a navegation container used at the top of the app.
 ## Usage
 
 ```html
-<dxc-header margin="medium" padding="medium">
-</dxc-header>
+<dxc-header margin="medium" padding="medium"> </dxc-header>
 ```
 
 Include the **DxcHeaderModule** into **app.module.ts** to use the header component:
@@ -16,13 +15,13 @@ Include the **DxcHeaderModule** into **app.module.ts** to use the header compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcHeaderModule } from '@dxc-technology/halstack-angular';
+import { DxcHeaderModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcHeaderModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -97,11 +96,11 @@ Directives are used to add functionality and new syntax into HTML components. Th
 Here is an example of its used:
 
 ```html
-  <dxc-header>
-    <div id="responsive">
-      <a isClosable>test</a>
-    </div>  
-  </dxc-header>
+<dxc-header>
+  <div id="responsive">
+    <a isClosable>test</a>
+  </div>
+</dxc-header>
 ```
 
 ## Responsive
@@ -126,21 +125,22 @@ You can make your header responsive. You need to specify with the id attribute w
 Here is an example of its used:
 
 ```html
-  <dxc-header>
-    <div id="unresponsive">
-        <a>Overview</a>
-        <a>Components</a>
-    </div>
-    <div id="responsive">
-      <ul style="list-style: none;">
-        <li><a>Overview</a></li>
-        <li><a>Components</a></li>
-      </ul>
-    </div>
-  </dxc-header>
+<dxc-header>
+  <div id="unresponsive">
+    <a>Overview</a>
+    <a>Components</a>
+  </div>
+  <div id="responsive">
+    <ul style="list-style: none;">
+      <li><a>Overview</a></li>
+      <li><a>Components</a></li>
+    </ul>
+  </div>
+</dxc-header>
 ```
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
       <th>Name</th>

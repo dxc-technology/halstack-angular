@@ -2,7 +2,15 @@
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/dxc-ngx-cdk",
   "lib": {
-    "entryFile": "src/public-api.ts"
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "emotion": "emotion",
+      "moment": "momentImported",
+      "@material-extended/mde": "mde",
+      "ng-click-outside": "ngClickOutside",
+      "util": "util",
+      "events": "events"
+    }
   },
   "whitelistedNonPeerDependencies": ["."]
 }

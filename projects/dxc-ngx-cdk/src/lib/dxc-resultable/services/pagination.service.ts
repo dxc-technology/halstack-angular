@@ -1,30 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PaginationService {
+  start = 0;
 
-  start= 0;
-
-  end = 5; 
+  end = 5;
 
   constructor() {}
 
-  calculatePagination(pageNumber: number,itemsPerPage: number,  callback){
-    if (pageNumber === 0){
-      callback({start:0, end: 5});
+  calculatePagination(pageNumber: number, itemsPerPage: number, callback) {
+    if (pageNumber === 0) {
+      callback({ start: 0, end: 5 });
     }
-    this.start = pageNumber * itemsPerPage - itemsPerPage;    
-    this.end = pageNumber * itemsPerPage;    
-    callback({start: this.start , end: this.end});
+    this.start = pageNumber * itemsPerPage - itemsPerPage;
+    this.end = pageNumber * itemsPerPage;
+    callback({ start: this.start, end: this.end });
   }
 
-  getCurrentStart(){
+  getCurrentStart() {
     return this.start;
   }
 
-  getCurrentEnd(){
+  getCurrentEnd() {
     return this.end;
   }
 }

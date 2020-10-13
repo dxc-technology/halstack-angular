@@ -1,4 +1,6 @@
-<mat-hint class="assistiveText" *ngIf="hasAssistiveText()">{{assistiveText}}</mat-hint>
+<mat-hint class="assistiveText" *ngIf="hasAssistiveText()">{{
+  assistiveText
+}}</mat-hint>
 <mat-form-field>
   <mat-label>{{ label }}</mat-label>
   <mat-select
@@ -8,7 +10,9 @@
         ? 'dxc-panel-select-class panel-icons'
         : !onlyHasIcons && multiple
         ? 'dxc-panel-select-class multiple'
-        : onlyHasIcons && multiple ? 'dxc-panel-select-class panel-icons multiple' : 'dxc-panel-select-class'
+        : onlyHasIcons && multiple
+        ? 'dxc-panel-select-class panel-icons multiple'
+        : 'dxc-panel-select-class'
     "
     (selectionChange)="valueChanged($event)"
     [required]="required"
@@ -30,12 +34,16 @@
         *ngIf="renderedValue && !onlyHasIcons"
         [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
       >
-        <img *ngIf="iconsToShow[0] && !this.multiple && iconsToShow.length === 1" src="{{ iconsToShow[0] }}" />
+        <img
+          *ngIf="iconsToShow[0] && !this.multiple && iconsToShow.length === 1"
+          src="{{ iconsToShow[0] }}"
+        />
         <span>{{ labeltoShow }}</span>
-    </div>
+      </div>
     </mat-select-trigger>
 
-    <mat-option theme
+    <mat-option
+      theme
       *ngFor="let option of options; index as i"
       value="{{ option.value }}"
       [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
@@ -44,5 +52,5 @@
       <span *ngIf="option.label">{{ option.label }}</span>
     </mat-option>
   </mat-select>
-  <input type="hidden" name="name" value="{{renderedValue}}" />
+  <input type="hidden" name="name" value="{{ renderedValue }}" />
 </mat-form-field>

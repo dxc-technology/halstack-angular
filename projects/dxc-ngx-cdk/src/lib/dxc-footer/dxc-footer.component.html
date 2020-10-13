@@ -1,40 +1,46 @@
 <div [class]="footerContainerStyle">
-    <div [class]="footerHeaderStyle">
-      <img class="logo" [src]="getLogoDxc()" *ngIf="!logoSrc"/>
-      <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
-            <div>
-              <div [class]="socialLinksStyle" *ngFor="let link of socialLinks; index as i">
-                <a
-                  [class]="socialIconStyle"
-                  [class.spacing]="i != 0"
-                  ngClass
-                  *ngIf="link.logoSrc"
-                  href="{{ link.href }}"
-                >
-                  <img [class]="socialIconImageStyle" src="{{ link.logoSrc }}" />
-                </a>
-              </div>
-            </div>
-    </div>
+  <div [class]="footerHeaderStyle">
+    <img class="logo" [src]="getLogoDxc()" *ngIf="!logoSrc" />
+    <img class="logo" *ngIf="logoSrc" src="{{ logoSrc }}" />
     <div>
-        <div [class]="childComponentsStyle">
-            <ng-content></ng-content>
-        </div>
-        <div [class]="footerFooterStyle">
-                <div class="bottomLinksStyle">
-                  <span *ngFor="let bottomLink of bottomLinks; index as i">
-                    <a *ngIf="bottomLink.text" href="{{ bottomLink.href }}" [class]="bottomLinkStyle">
-                      <span>
-                        {{ bottomLink.text }}
-                      </span>
-                      <span *ngIf="i != bottomLinksLength" class="point">·</span>
-                    </a>
-                  </span>
-                </div>
-                <div class="copyrightStyle">
-                  {{ copyright }}
-                </div>
-        </div>
+      <div
+        [class]="socialLinksStyle"
+        *ngFor="let link of socialLinks; index as i"
+      >
+        <a
+          [class]="socialIconStyle"
+          [class.spacing]="i != 0"
+          ngClass
+          *ngIf="link.logoSrc"
+          href="{{ link.href }}"
+        >
+          <img [class]="socialIconImageStyle" src="{{ link.logoSrc }}" />
+        </a>
+      </div>
     </div>
-    
+  </div>
+  <div>
+    <div [class]="childComponentsStyle">
+      <ng-content></ng-content>
+    </div>
+    <div [class]="footerFooterStyle">
+      <div class="bottomLinksStyle">
+        <span *ngFor="let bottomLink of bottomLinks; index as i">
+          <a
+            *ngIf="bottomLink.text"
+            href="{{ bottomLink.href }}"
+            [class]="bottomLinkStyle"
+          >
+            <span>
+              {{ bottomLink.text }}
+            </span>
+            <span *ngIf="i != bottomLinksLength" class="point">·</span>
+          </a>
+        </span>
+      </div>
+      <div class="copyrightStyle">
+        {{ copyright }}
+      </div>
+    </div>
+  </div>
 </div>

@@ -7,10 +7,7 @@ The DXC ProgressBar Component inform users about the status of ongoing processes
 ## Usage
 
 ```html
-<dxc-progressbar 
-    margin="medium" 
-    showValue="true" 
-    label="Loading...">
+<dxc-progressbar margin="medium" showValue="true" label="Loading...">
 </dxc-progressbar>
 ```
 
@@ -19,13 +16,13 @@ Include the **DxcProgressBar** into **app.module.ts** to use the progress bar co
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcProgressBar } from '@dxc-technology/halstack-angular';
+import { DxcProgressBar } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcProgressBar],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -80,6 +77,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

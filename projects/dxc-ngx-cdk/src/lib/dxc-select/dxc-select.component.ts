@@ -16,9 +16,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-select",
   templateUrl: "./dxc-select.component.html",
-  styleUrls: [
-    "./dxc-select.component.scss"
-  ],
+  styleUrls: ["./dxc-select.component.scss"],
   providers: [CssUtils],
 })
 export class DxcSelectComponent implements OnChanges {
@@ -43,7 +41,7 @@ export class DxcSelectComponent implements OnChanges {
   @Input() public invalid: boolean = false;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
-  @ViewChild('dxcSelect', {static: true}) dxcSelect;
+  @ViewChild("dxcSelect", { static: true }) dxcSelect;
 
   renderedValue: string | string[];
 
@@ -126,7 +124,7 @@ export class DxcSelectComponent implements OnChanges {
   }
 
   openSelect($event: any) {
-    if($event.keyCode && ($event.keyCode === 40 || $event.keyCode === 38)) {
+    if ($event.keyCode && ($event.keyCode === 40 || $event.keyCode === 38)) {
       this.dxcSelect.open();
     }
   }
@@ -172,11 +170,11 @@ export class DxcSelectComponent implements OnChanges {
           color: var(--select-selectedOptionBackgroundColor);
         }
         .mat-form-field-appearance-legacy .mat-form-field-underline {
-            background-color: var(--select-color);
-            height: 1px;
+          background-color: var(--select-color);
+          height: 1px;
         }
       }
-      `;
+    `;
   }
 
   public hasAssistiveText() {

@@ -19,15 +19,15 @@ The DXC Select Component allows the user to select a value from a list of option
 Include the **DxcSelectModule** into **app.module.ts** to use the select component:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DxcSelectModule } from '@dxc-technology/halstack-angular';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcSelectModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcSelectModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -159,6 +159,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  HostBinding,
-  Output,
-  EventEmitter,
-  SimpleChanges,
-} from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -14,9 +6,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-progressbar",
   templateUrl: "./dxc-progressbar.component.html",
-  styleUrls: [
-    "./dxc-progressbar.component.scss",
-  ],
+  styleUrls: ["./dxc-progressbar.component.scss"],
   providers: [CssUtils],
 })
 export class DxcProgressbarComponent {

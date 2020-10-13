@@ -1,11 +1,11 @@
-import { render, fireEvent } from '@testing-library/angular';
-import { DxcResultTable } from './table';
-import { DxcResultsetTableModule } from './table-module';
+import { render, fireEvent } from "@testing-library/angular";
+import { DxcResultTable } from "./table";
+import { DxcResultsetTableModule } from "./table-module";
 
-describe('DxcResultset Table tests', () => {
-  test('should render dxc-resultset-table', async () => {
+describe("DxcResultset Table tests", () => {
+  test("should render dxc-resultset-table", async () => {
     const { getByText } = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table [collectionResource]="[{user:'user1',email:'user1@gmail.com'}]" [margin]="xxsmall">
+      template: `  <dxc-resultset-table [collectionResource]="[{user:'user1',email:'user1@gmail.com'}]" [margin]="xxsmall">
                         <ng-container dxcColumnDef="user">
                             <td *dxcCellDef="let item">
                                 {{item['user']}}
@@ -17,15 +17,15 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     expect(getByText("user1")).toBeTruthy();
   });
 
-  test('should show data from next page', async () => {
+  test("should show data from next page", async () => {
     const table = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table 
+      template: `  <dxc-resultset-table 
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -44,9 +44,9 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     table.detectChanges();
     expect(table.getByText("user1")).toBeTruthy();
     expect(table.getByText("pepe")).toBeTruthy();
@@ -61,7 +61,7 @@ describe('DxcResultset Table tests', () => {
 
   test("should show data from last page", async () => {
     const table = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table 
+      template: `  <dxc-resultset-table 
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -80,9 +80,9 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     table.detectChanges();
     expect(table.getByText("user1")).toBeTruthy();
     const lastButton = table.getAllByRole("button")[3];
@@ -95,7 +95,7 @@ describe('DxcResultset Table tests', () => {
 
   test("should show data from previous page", async () => {
     const table = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table 
+      template: `  <dxc-resultset-table 
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -114,9 +114,9 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     table.detectChanges();
     expect(table.getByText("user1")).toBeTruthy();
     const lastButton = table.getAllByRole("button")[3];
@@ -135,7 +135,7 @@ describe('DxcResultset Table tests', () => {
 
   test("should show data from first page", async () => {
     const table = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table 
+      template: `  <dxc-resultset-table 
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -154,9 +154,9 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     table.detectChanges();
     expect(table.getByText("user1")).toBeTruthy();
     const lastButton = table.getAllByRole("button")[3];
@@ -175,7 +175,7 @@ describe('DxcResultset Table tests', () => {
 
   test("should sort data by column", async () => {
     const table = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table 
+      template: `  <dxc-resultset-table 
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -194,9 +194,9 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     table.detectChanges();
     expect(table.getByText("user1")).toBeTruthy();
     expect(table.getByText("pepe")).toBeTruthy();
@@ -214,7 +214,7 @@ describe('DxcResultset Table tests', () => {
 
   test("should not sort data that is not sortable", async () => {
     const table = await render(DxcResultTable, {
-        template:`  <dxc-resultset-table 
+      template: `  <dxc-resultset-table 
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -233,9 +233,9 @@ describe('DxcResultset Table tests', () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
-       imports: [DxcResultsetTableModule],
-       excludeComponentDeclaration: true
-    })
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
     table.detectChanges();
     expect(table.getByText("user1")).toBeTruthy();
     expect(table.getByText("pepe")).toBeTruthy();
@@ -245,5 +245,4 @@ describe('DxcResultset Table tests', () => {
     expect(table.getByText("user1")).toBeTruthy();
     expect(table.getByText("pepe")).toBeTruthy();
   });
-
 });

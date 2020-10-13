@@ -1,24 +1,19 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  EventEmitter
-} from "@angular/core";
-import { CssUtils } from '../utils';
+import { Component, Input, OnChanges, EventEmitter } from "@angular/core";
+import { CssUtils } from "../utils";
 import { css } from "emotion";
-import { SimpleChanges, HostBinding } from '@angular/core';
+import { SimpleChanges, HostBinding } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "dxc-upload",
   templateUrl: "./dxc-upload.component.html",
   styleUrls: ["./dxc-upload.component.scss"],
-  providers : [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcUploadComponent implements OnChanges {
   private files = [];
 
-   uploadedFiles = [];
+  uploadedFiles = [];
 
   newFile = new EventEmitter<any>();
 
@@ -26,30 +21,34 @@ export class DxcUploadComponent implements OnChanges {
   @Input() margin: any;
   @HostBinding("class") className;
 
-  styleDxcUpload:string;
+  styleDxcUpload: string;
 
   defaultInputs = new BehaviorSubject<any>({
-    margin: null
+    margin: null,
   });
 
-  constructor(private utils: CssUtils) { }
+  constructor(private utils: CssUtils) {}
 
   ngOnInit() {
-    this.className = `${this.setDxcUploadDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.setDxcUploadDynamicStyle(
+      this.defaultInputs.getValue()
+    )}`;
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.setDxcUploadDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.setDxcUploadDynamicStyle(
+      this.defaultInputs.getValue()
+    )}`;
   }
 
   addFiles($event) {
     const aux = this;
-    Array.from($event).forEach(file => {
+    Array.from($event).forEach((file) => {
       this.getPreview(file);
     });
   }
@@ -57,7 +56,7 @@ export class DxcUploadComponent implements OnChanges {
   getPreview(file) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = event => {
+    reader.onload = (event) => {
       if (!file.type.includes("image") || file.type.includes("image/svg")) {
         const fileToPush = {};
         fileToPush["status"] = "pending";
@@ -77,15 +76,15 @@ export class DxcUploadComponent implements OnChanges {
   getFilesToUpload() {
     const aux = this;
     return this.files
-      .filter(function(file) {
+      .filter(function (file) {
         return file.status === "pending";
       })
-      .map(function(file) {
+      .map(function (file) {
         const fileInfo = {};
         fileInfo["name"] = file.fileData.name;
         fileInfo["format"] = file.fileData.type;
         fileInfo["image"] = file.image;
-        fileInfo["removeFile"] = function() {
+        fileInfo["removeFile"] = function () {
           const index = aux.files.indexOf(file, 0);
           if (index > -1) {
             aux.files.splice(index, 1);
@@ -98,10 +97,10 @@ export class DxcUploadComponent implements OnChanges {
   getUploadedFiles() {
     const aux = this;
     this.uploadedFiles = this.files
-      .filter(function(file) {
+      .filter(function (file) {
         return file.status !== "pending";
       })
-      .map(function(file) {
+      .map(function (file) {
         const fileInfo = {};
         fileInfo["name"] = file.fileData.name;
         fileInfo["format"] = file.fileData.type;
@@ -112,13 +111,13 @@ export class DxcUploadComponent implements OnChanges {
   }
 
   getSuccessfullyUploadedFiles() {
-    return this.files.filter(function(file) {
+    return this.files.filter(function (file) {
       return file.status === "success";
     }).length;
   }
 
   toUploadVisibility() {
-    const pending = this.files.filter(function(file) {
+    const pending = this.files.filter(function (file) {
       return file.status === "pending";
     });
 
@@ -130,7 +129,7 @@ export class DxcUploadComponent implements OnChanges {
   }
 
   uploadedVisibility() {
-    const pending = this.files.filter(function(file) {
+    const pending = this.files.filter(function (file) {
       return file.status !== "pending";
     });
 
@@ -143,18 +142,18 @@ export class DxcUploadComponent implements OnChanges {
 
   handleUpload() {
     const aux = this;
-    this.files.forEach(file => {
+    this.files.forEach((file) => {
       if (file.status === "pending") {
         file.status = "processing";
         this.uploadCallback(file)
           .then(() => {
             file.status = "success";
-            aux.getUploadedFiles()
+            aux.getUploadedFiles();
           })
-          .catch(err => {
+          .catch((err) => {
             file.status = "error";
             file.errorMessage = err;
-            aux.getUploadedFiles()
+            aux.getUploadedFiles();
           })
           .finally();
         this.getUploadedFiles();

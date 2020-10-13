@@ -7,10 +7,7 @@ The DXC Upload Component is a component to upload files.
 ## Usage
 
 ```html
-<dxc-upload 
-  [uploadCallback]="fileUpload" 
-  margin="xlarge">
-</dxc-upload>
+<dxc-upload [uploadCallback]="fileUpload" margin="xlarge"> </dxc-upload>
 ```
 
 Include the **DxcUploadModule** into **app.module.ts** to use the upload component:
@@ -18,13 +15,13 @@ Include the **DxcUploadModule** into **app.module.ts** to use the upload compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcUploadModule } from '@dxc-technology/halstack-angular';
+import { DxcUploadModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcUploadModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```

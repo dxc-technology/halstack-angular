@@ -1,6 +1,9 @@
 <div
   id="dropZone"
-  [ngClass]="[hoveringWithFile === true ? 'hovering' : 'notHovering', summaryVisible === true ? 'summaryVisible': '']"
+  [ngClass]="[
+    hoveringWithFile === true ? 'hovering' : 'notHovering',
+    summaryVisible === true ? 'summaryVisible' : ''
+  ]"
   (drop)="drop($event)"
   (dragleave)="dragLeave($event)"
   (dragover)="dragOver($event)"
@@ -32,7 +35,7 @@
       type="file"
       multiple="true"
       (change)="onFileInput($event)"
-      style="display:none;"
+      style="display: none"
     />
   </div>
   <div *ngIf="hoveringWithFile" class="droppingZone dropZone">

@@ -8,7 +8,7 @@ describe("DxcUpload tests", () => {
     const { getByText } = await render(DxcUploadComponent, {
       componentProperties: {},
       excludeComponentDeclaration: true,
-      imports: [DxcUploadModule]
+      imports: [DxcUploadModule],
     });
 
     expect(getByText("There are no files to upload"));
@@ -18,13 +18,13 @@ describe("DxcUpload tests", () => {
     const dxcUpload = await render(DxcUploadComponent, {
       componentProperties: {},
       excludeComponentDeclaration: true,
-      imports: [DxcUploadModule]
+      imports: [DxcUploadModule],
     });
     dxcUpload.detectChanges();
 
     const inputEl = dxcUpload.getByTestId("fileInput");
     const file = new File(["foo"], "foo.txt", {
-      type: "text/plain"
+      type: "text/plain",
     });
 
     fireEvent.change(inputEl, { target: { files: [file] } });
@@ -37,23 +37,21 @@ describe("DxcUpload tests", () => {
   });
 
   test("function callback in dxc-upload", async () => {
-    const fileUpload = jest.fn(file => {
-      const result = new Promise(resolve =>
-        setTimeout(resolve, 8000)
-      );
+    const fileUpload = jest.fn((file) => {
+      const result = new Promise((resolve) => setTimeout(resolve, 8000));
       return result;
     });
 
     const dxcUpload = await render(DxcUploadComponent, {
-      componentProperties: {uploadCallback: fileUpload},
+      componentProperties: { uploadCallback: fileUpload },
       excludeComponentDeclaration: true,
-      imports: [DxcUploadModule]
+      imports: [DxcUploadModule],
     });
     dxcUpload.detectChanges();
 
     const inputEl = dxcUpload.getByTestId("fileInput");
     const file = new File(["foo"], "foo.txt", {
-      type: "text/plain"
+      type: "text/plain",
     });
 
     fireEvent.change(inputEl, { target: { files: [file] } });
@@ -63,32 +61,34 @@ describe("DxcUpload tests", () => {
       screen.getByTestId("filesToUpload");
       expect(screen.getByText("foo.txt"));
       fireEvent.click(screen.getByText("Upload"));
-      expect(fileUpload).toHaveBeenCalledWith({ status: 'processing', fileData: file, image: null });
+      expect(fileUpload).toHaveBeenCalledWith({
+        status: "processing",
+        fileData: file,
+        image: null,
+      });
     });
   });
 
   test("function callback multiple times in dxc-upload", async () => {
-    const fileUpload = jest.fn(file => {
-      const result = new Promise(resolve =>
-        setTimeout(resolve, 8000)
-      );
+    const fileUpload = jest.fn((file) => {
+      const result = new Promise((resolve) => setTimeout(resolve, 8000));
       return result;
     });
 
     const dxcUpload = await render(DxcUploadComponent, {
-      componentProperties: {uploadCallback: fileUpload},
+      componentProperties: { uploadCallback: fileUpload },
       excludeComponentDeclaration: true,
-      imports: [DxcUploadModule]
+      imports: [DxcUploadModule],
     });
     dxcUpload.detectChanges();
 
     const inputEl = dxcUpload.getByTestId("fileInput");
     const file = new File(["foo"], "foo.txt", {
-      type: "text/plain"
+      type: "text/plain",
     });
 
-    const file2 = new File(['(⌐□_□)'], 'chucknorris.txt', {
-      type: "text/plain"
+    const file2 = new File(["(⌐□_□)"], "chucknorris.txt", {
+      type: "text/plain",
     });
 
     fireEvent.change(inputEl, { target: { files: [file, file2] } });

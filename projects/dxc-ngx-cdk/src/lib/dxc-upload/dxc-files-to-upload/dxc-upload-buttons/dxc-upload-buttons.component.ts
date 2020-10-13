@@ -3,7 +3,7 @@ import { Component, Output, OnChanges, EventEmitter } from "@angular/core";
 @Component({
   selector: "dxc-upload-buttons",
   templateUrl: "./dxc-upload-buttons.component.html",
-  styleUrls: ["./dxc-upload-buttons.component.scss"]
+  styleUrls: ["./dxc-upload-buttons.component.scss"],
 })
 export class DxcUploadButtonsComponent implements OnChanges {
   @Output() onAddFile = new EventEmitter<any>();
@@ -14,7 +14,7 @@ export class DxcUploadButtonsComponent implements OnChanges {
 
   public ngOnChanges(): void {}
 
-  margins = {right: "medium", left:"small"}
+  margins = { right: "medium", left: "small" };
 
   onFileInput(event) {
     this.onAddFile.emit(event.target.files);

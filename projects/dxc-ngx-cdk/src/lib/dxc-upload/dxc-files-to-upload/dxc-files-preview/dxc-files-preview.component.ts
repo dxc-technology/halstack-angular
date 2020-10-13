@@ -1,14 +1,8 @@
-import {
-  Component,
-  Output,
-  OnChanges,
-  EventEmitter,
-  Input
-} from "@angular/core";
+import { Component, Output, EventEmitter, Input } from "@angular/core";
 @Component({
   selector: "dxc-files-preview",
   templateUrl: "./dxc-files-preview.component.html",
-  styleUrls: ["./dxc-files-preview.component.scss"]
+  styleUrls: ["./dxc-files-preview.component.scss"],
 })
 export class DxcFilesPreviewComponent {
   @Output() showOverlay = new EventEmitter<any>();
@@ -21,5 +15,4 @@ export class DxcFilesPreviewComponent {
     event.stopPropagation();
     this.showOverlay.emit(true);
   }
-  
 }

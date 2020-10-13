@@ -1,8 +1,6 @@
-import { render, fireEvent } from "@testing-library/angular";
-import { screen } from "@testing-library/dom";
+import { render } from "@testing-library/angular";
 import { DxcTableComponent } from "./dxc-table.component";
-import { TestBed } from "@angular/core/testing";
-import { DxcTableModule } from './dxc-table.module';
+import { DxcTableModule } from "./dxc-table.module";
 
 describe("DxcTable tests", () => {
   test("should render dxc-table", async () => {
@@ -24,9 +22,9 @@ describe("DxcTable tests", () => {
                         <td>cell 6</td>
                     </tr>
                     </dxc-table>`,
-      componentProperties: { },
+      componentProperties: {},
       imports: [DxcTableModule],
-      excludeComponentDeclaration: true
+      excludeComponentDeclaration: true,
     });
     table.detectChanges();
     expect(table.getByText("header 1")).toBeTruthy();
@@ -38,5 +36,5 @@ describe("DxcTable tests", () => {
     expect(table.getByText("cell 4")).toBeTruthy();
     expect(table.getByText("cell 5")).toBeTruthy();
     expect(table.getByText("cell 6")).toBeTruthy();
-    });
+  });
 });

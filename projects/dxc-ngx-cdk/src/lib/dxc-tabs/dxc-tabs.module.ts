@@ -4,12 +4,12 @@ import {
   MatFormFieldModule,
   MatTabsModule,
   MatTab,
-  MatTabGroup
+  MatTabGroup,
 } from "@angular/material";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { DxcTabsComponent } from './dxc-tabs.component';
-import { DxcTabComponent } from './dxc-tab/dxc-tab.component';
+import { DxcTabsComponent } from "./dxc-tabs.component";
+import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
 
 @NgModule({
   declarations: [DxcTabsComponent, DxcTabComponent],
@@ -18,9 +18,9 @@ import { DxcTabComponent } from './dxc-tab/dxc-tab.component';
     MatInputModule,
     MatTabsModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
   ],
-  exports: [DxcTabsComponent,DxcTabComponent],
-  entryComponents:[MatTab,MatTabGroup]
+  exports: [DxcTabsComponent, DxcTabComponent],
+  entryComponents: [MatTab, MatTabGroup],
 })
 export class DxcTabsModule {}

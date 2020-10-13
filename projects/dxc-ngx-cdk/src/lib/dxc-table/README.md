@@ -31,13 +31,13 @@ Include the **DxcTableModule** into **app.module.ts** to use the table component
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcTableModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcTableModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -65,6 +65,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

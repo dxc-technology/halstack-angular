@@ -8,11 +8,11 @@ The DXC Switch Component provides to the user the ability to select a true, fals
 
 ```html
 <dxc-switch
-    [checked]="checked"
-    (onChange)="onChange($event)"
-    labelPosition="after"
-    label="Label after"
-    margin="medium"
+  [checked]="checked"
+  (onChange)="onChange($event)"
+  labelPosition="after"
+  label="Label after"
+  margin="medium"
 ></dxc-switch>
 ```
 
@@ -21,13 +21,13 @@ Include the **DxcSwitchModule** into **app.module.ts** to use the switch compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcSwitchModule } from '@dxc-technology/halstack-angular';
+import { DxcSwitchModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcSwitchModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -125,6 +125,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

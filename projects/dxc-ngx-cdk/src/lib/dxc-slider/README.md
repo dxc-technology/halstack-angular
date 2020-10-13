@@ -8,29 +8,29 @@ The DXC Slider Component is an element to select from a range of values.
 
 ```html
 <dxc-slider
-    minValue="0"
-    maxValue="100"
-    showLimitsValues="true"
-    name="input"
-    step="1"
-    margin="medium"
-    [value]="inputValue"
-    (onChange)="onChange($event)"
+  minValue="0"
+  maxValue="100"
+  showLimitsValues="true"
+  name="input"
+  step="1"
+  margin="medium"
+  [value]="inputValue"
+  (onChange)="onChange($event)"
 ></dxc-slider>
 ```
 
 Include the **DxcSliderModule** into **app.module.ts** to use the slider component:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DxcSliderModule } from '@dxc-technology/halstack-angular';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcSliderModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcSliderModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -143,6 +143,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  HostBinding,
-  Output,
-  EventEmitter,
-  SimpleChanges
-} from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -15,7 +7,7 @@ import { CssUtils } from "../utils";
   selector: "dxc-table",
   templateUrl: "./dxc-table.component.html",
   styleUrls: [],
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcTableComponent {
   @Input() margin;
@@ -40,9 +32,9 @@ export class DxcTableComponent {
 
   getDynamicStyle(inputs) {
     return css`
-      div#divTable{
+      div#divTable {
         ${this.utils.getMargins(inputs.margin)}
-      }  
+      }
 
       table {
         border-collapse: collapse;
@@ -81,7 +73,6 @@ export class DxcTableComponent {
         & th:nth-child(3) {
           border-radius: 0px 4px 0px 0px;
         }
-
       }
     `;
   }

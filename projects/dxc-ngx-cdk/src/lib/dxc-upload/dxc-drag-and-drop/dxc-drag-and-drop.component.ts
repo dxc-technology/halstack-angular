@@ -1,14 +1,21 @@
-import { Component, Output, HostBinding, OnChanges, EventEmitter, Input } from "@angular/core";
+import {
+  Component,
+  Output,
+  HostBinding,
+  OnChanges,
+  EventEmitter,
+  Input,
+} from "@angular/core";
 @Component({
   selector: "dxc-drag-and-drop",
   templateUrl: "./dxc-drag-and-drop.component.html",
-  styleUrls: ["./dxc-drag-and-drop.component.scss"]
+  styleUrls: ["./dxc-drag-and-drop.component.scss"],
 })
 export class DxcDragAndDropComponent implements OnChanges {
   hoveringWithFile = false;
   @Output() onAddFile = new EventEmitter<any>();
   @Input() summaryVisible = false;
-  @HostBinding('class.reduced') reduced: boolean = false;
+  @HostBinding("class.reduced") reduced: boolean = false;
 
   public ngOnInit() {}
 

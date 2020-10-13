@@ -5,5 +5,9 @@
   >
 </div>
 <div *ngFor="let file of filesSummary; index as i" class="filesSummary">
-  <dxc-transaction  matTooltip="{{file.errorMessage}}" [file]="file" id="i"></dxc-transaction>
+  <dxc-transaction
+    matTooltip="{{ file.errorMessage }}"
+    [file]="file"
+    id="i"
+  ></dxc-transaction>
 </div>

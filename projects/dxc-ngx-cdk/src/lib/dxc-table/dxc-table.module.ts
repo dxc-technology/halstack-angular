@@ -5,11 +5,7 @@ import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [DxcTableComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule
-  ],
-  exports: [DxcTableComponent]
+  imports: [CommonModule, MatButtonModule, MatIconModule],
+  exports: [DxcTableComponent],
 })
 export class DxcTableModule {}

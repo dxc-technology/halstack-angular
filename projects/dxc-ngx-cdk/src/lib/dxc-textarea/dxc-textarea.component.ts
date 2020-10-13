@@ -9,14 +9,12 @@ import {
   SimpleChanges,
   OnChanges,
   AfterViewChecked,
-  ElementRef,
-  ViewChild
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-textarea",
@@ -42,7 +40,9 @@ export class DxcTextareaComponent
   @Input() public size: string;
 
   @Input()
-  get numRows(): number { return this._numRows; }
+  get numRows(): number {
+    return this._numRows;
+  }
   set numRows(value: number) {
     this._numRows = coerceNumberProperty(value);
   }

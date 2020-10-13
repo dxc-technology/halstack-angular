@@ -3,7 +3,7 @@ import {
   OnInit,
   Input,
   HostBinding,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -12,10 +12,8 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-spinner",
   templateUrl: "./dxc-spinner.component.html",
-  styleUrls: [
-    "./dxc-spinner.component.scss"
-  ],
-  providers: [CssUtils]
+  styleUrls: ["./dxc-spinner.component.scss"],
+  providers: [CssUtils],
 })
 export class DxcSpinnerComponent {
   type: string = "indeterminate";
@@ -25,7 +23,7 @@ export class DxcSpinnerComponent {
   @Input() overlay: boolean;
   @Input() mode: string = "large";
   @Input() margin: any;
-  
+
   @HostBinding("class") className;
 
   @HostBinding("class.overlay") isOverlayed: boolean = false;
@@ -34,7 +32,7 @@ export class DxcSpinnerComponent {
 
   defaultInputs = new BehaviorSubject<any>({
     showValue: false,
-    mode: "large"
+    mode: "large",
   });
 
   constructor(private utils: CssUtils) {}
@@ -44,10 +42,10 @@ export class DxcSpinnerComponent {
       if (this.value <= 100 && this.value >= 0) {
         this.type = "determinate";
       } else {
-        if(this.value > 100) {
+        if (this.value > 100) {
           this.type = "determinate";
           this.value = 100;
-        } else if(this.value < 0){
+        } else if (this.value < 0) {
           this.type = "determinate";
           this.value = 0;
         } else {

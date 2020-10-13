@@ -7,10 +7,10 @@ The DXC Tabbed Section Component is a layout to organize content with tabs.
 ## Usage
 
 ```html
-<dxc-tabbed-section [sections]="sections" tabsMode="underlined" >
-    <div id="section1-selector0" style="height: 200px;">Section 1</div>
-    <div id="section2-selector1" style="height: 200px;">Section 2</div>
-    <div id="section3-selector2" style="height: 200px;">Section 3</div>
+<dxc-tabbed-section [sections]="sections" tabsMode="underlined">
+  <div id="section1-selector0" style="height: 200px;">Section 1</div>
+  <div id="section2-selector1" style="height: 200px;">Section 2</div>
+  <div id="section3-selector2" style="height: 200px;">Section 3</div>
 </dxc-tabbed-section>
 ```
 
@@ -19,13 +19,13 @@ Include the **DxcTabbedSectionModule** into **app.module.ts** to use the tabbed 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcTabbedSectionModule } from '@dxc-technology/halstack-angular';
+import { DxcTabbedSectionModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcTabbedSectionModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -70,6 +70,7 @@ export class AppModule {}
 </table>
 
 ## Theming
+
 Not available tokens.
 
 ## Usage Notes
@@ -77,9 +78,9 @@ Not available tokens.
 The dxc-tabbed-section component is based on material desing tabbed component and styled using the emotion JS to CSS library. When nesting several material tabbed components you may find conflicts depending on how you decide to implememnt it. In case this happens, it is necesary to define a default style for each of this nested material-tab-group elements in order to avoid the dxc-tabbed-section style to apply to each of them. An Example of this style definition as follows:
 
 ```css
- .mat-tab-group {
-      z-index: 10;
-      position: initial;
-      top: unset;
-  }
+.mat-tab-group {
+  z-index: 10;
+  position: initial;
+  top: unset;
+}
 ```

@@ -1,16 +1,14 @@
 import { NgModule } from "@angular/core";
-import { MatTabsModule, MatIconModule } from '@angular/material';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { MatTabsModule, MatIconModule } from "@angular/material";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
-import { DxcTabbedSectionComponent } from './dxc-tabbed-section.component';
-import { ScrollSpyModule } from '../scroll-spy/scroll-spy.module';
-import { DxcTabsModule } from '../dxc-tabs/dxc-tabs.module';
+import { DxcTabbedSectionComponent } from "./dxc-tabbed-section.component";
+import { ScrollSpyModule } from "../scroll-spy/scroll-spy.module";
+import { DxcTabsModule } from "../dxc-tabs/dxc-tabs.module";
 
 @NgModule({
-  declarations: [    
-    DxcTabbedSectionComponent
-    ],
+  declarations: [DxcTabbedSectionComponent],
   imports: [
     ReactiveFormsModule,
     FormsModule,
@@ -18,10 +16,8 @@ import { DxcTabsModule } from '../dxc-tabs/dxc-tabs.module';
     MatTabsModule,
     MatIconModule,
     ScrollSpyModule,
-    DxcTabsModule
+    DxcTabsModule,
   ],
-  exports: [
-    DxcTabbedSectionComponent
-  ]
+  exports: [DxcTabbedSectionComponent],
 })
 export class DxcTabbedSectionModule {}

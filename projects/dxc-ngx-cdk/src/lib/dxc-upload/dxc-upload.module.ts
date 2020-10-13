@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatButtonModule, MatTooltipModule } from "@angular/material";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DxcUploadComponent } from "./dxc-upload.component";
 import { DxcDragAndDropComponent } from "./dxc-drag-and-drop/dxc-drag-and-drop.component";
 import { DxcFilesToUploadComponent } from "./dxc-files-to-upload/dxc-files-to-upload.component";
@@ -12,8 +12,7 @@ import { DxcTransactionsComponent } from "./dxc-transactions/dxc-transactions.co
 import { DxcTransactionComponent } from "./dxc-transactions/dxc-transaction/dxc-transaction.component";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcSpinnerModule } from "../dxc-spinner/dxc-spinner.module";
-import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
-
+import { MatProgressSpinnerModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -24,7 +23,7 @@ import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
     DxcUploadButtonsComponent,
     DxcFilesToUploadComponent,
     DxcTransactionsComponent,
-    DxcTransactionComponent
+    DxcTransactionComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +32,7 @@ import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
     DxcButtonModule,
     DxcSpinnerModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [
     DxcUploadComponent,
@@ -43,7 +42,7 @@ import { MatProgressSpinnerModule, MatIconModule } from '@angular/material';
     DxcUploadButtonsComponent,
     DxcFilesToUploadComponent,
     DxcTransactionsComponent,
-    DxcTransactionComponent
-  ]
+    DxcTransactionComponent,
+  ],
 })
 export class DxcUploadModule {}

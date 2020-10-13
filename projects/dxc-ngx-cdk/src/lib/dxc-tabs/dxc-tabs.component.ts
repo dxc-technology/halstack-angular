@@ -6,23 +6,21 @@ import {
   ViewChild,
   ContentChildren,
   QueryList,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
 import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
 import { MatTab, MatTabGroup } from "@angular/material/tabs";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
-import { ElementRef } from '@angular/core';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
+import { ElementRef } from "@angular/core";
 
 @Component({
   selector: "dxc-tabs",
   templateUrl: "./dxc-tabs.component.html",
-  styleUrls: [
-    "./dxc-tabs.component.scss"
-  ],
-  providers: [CssUtils]
+  styleUrls: ["./dxc-tabs.component.scss"],
+  providers: [CssUtils],
 })
 export class DxcTabsComponent implements OnChanges {
   @HostBinding("class") className;
@@ -33,7 +31,9 @@ export class DxcTabsComponent implements OnChanges {
   @Input() margin: any;
 
   @Input()
-  get activeTabIndex(): number { return this._activeTabIndex; }
+  get activeTabIndex(): number {
+    return this._activeTabIndex;
+  }
   set activeTabIndex(value: number) {
     this._activeTabIndex = coerceNumberProperty(value);
   }
@@ -47,18 +47,17 @@ export class DxcTabsComponent implements OnChanges {
   protected tabs: QueryList<DxcTabComponent>;
   defaultInputs = new BehaviorSubject<any>({
     mode: "filled",
-    margin: null
+    margin: null,
   });
-  
-  constructor(private utils: CssUtils,private _element: ElementRef) {
-  }
+
+  constructor(private utils: CssUtils, private _element: ElementRef) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.renderedActiveTabIndex = this.activeTabIndex;
     if (this.tabs && this.tabs.length > 0) {
       this.generateTabs();
     }
-    
+
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -103,21 +102,23 @@ export class DxcTabsComponent implements OnChanges {
     this.tabGroup.ngAfterContentInit();
   }
 
-  insertUnderline(){
-    let tabList = this._element.nativeElement.getElementsByClassName("mat-tab-list")[0];
-    tabList.insertAdjacentHTML('beforeend', '<div class="underline"></div>');
+  insertUnderline() {
+    let tabList = this._element.nativeElement.getElementsByClassName(
+      "mat-tab-list"
+    )[0];
+    tabList.insertAdjacentHTML("beforeend", '<div class="underline"></div>');
   }
 
   getDynamicStyle(inputs) {
     return css`
-      .mat-tab-list .underline{
+      .mat-tab-list .underline {
         height: 2px;
         width: 100%;
         background-color: var(--tabs-underlineColor);
       }
       .mat-tab-group {
         ${this.utils.getMargins(inputs.margin)}
-        .mat-tab-header{
+        .mat-tab-header {
           background-color: white;
         }
       }
@@ -138,7 +139,7 @@ export class DxcTabsComponent implements OnChanges {
           color: var(--tabs-fontColor);
           opacity: 1;
         }
-        &.cdk-focused{
+        &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--tabs-focusColor);
         }

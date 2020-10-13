@@ -1,13 +1,12 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcSwitchComponent } from "./dxc-switch.component";
-import { screen } from "@testing-library/dom";
 import { MatSlideToggleModule } from "@angular/material";
 
 describe("DxcSwitch tests", () => {
   test("should render dxc-switch", async () => {
     const dxcSwitch = await render(DxcSwitchComponent, {
       componentProperties: { label: "test-switch" },
-      imports: [MatSlideToggleModule]
+      imports: [MatSlideToggleModule],
     });
 
     expect(dxcSwitch.getByText("test-switch"));
@@ -18,9 +17,9 @@ describe("DxcSwitch tests", () => {
     const dxcSwitch = await render(DxcSwitchComponent, {
       componentProperties: {
         label: "test-switch",
-        onChange: { emit: onClickFunction } as any
+        onChange: { emit: onClickFunction } as any,
       },
-      imports: [MatSlideToggleModule]
+      imports: [MatSlideToggleModule],
     });
     const input = <HTMLInputElement>dxcSwitch.getByRole("switch");
     expect(input.checked).toBeFalsy();
@@ -35,9 +34,9 @@ describe("DxcSwitch tests", () => {
       componentProperties: {
         label: "test-switch",
         checked: true,
-        onChange: { emit: onClickFunction } as any
+        onChange: { emit: onClickFunction } as any,
       },
-      imports: [MatSlideToggleModule]
+      imports: [MatSlideToggleModule],
     });
     const input = <HTMLInputElement>dxcSwitch.getByRole("switch");
     expect(input.checked).toBeTruthy();

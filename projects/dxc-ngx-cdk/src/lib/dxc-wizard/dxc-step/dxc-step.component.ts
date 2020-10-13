@@ -1,16 +1,5 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  ViewChild,
-  HostBinding,
-  SimpleChanges,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-} from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 import { css } from "emotion";
-import { CssUtils } from "../../utils";
 import { BehaviorSubject } from "rxjs";
 
 @Component({
@@ -47,7 +36,7 @@ export class DxcStepComponent {
     currentStep: 0,
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor() {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -99,16 +88,16 @@ export class DxcStepComponent {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;
           margin: ${inputs.isFirst
-          ? inputs.mode === "vertical"
-            ? "1px 1px 25px 1px"
-            : "1px 25px 1px 1px"
-          : inputs.isLast
-          ? inputs.mode === "vertical"
-            ? "25px 1px 1px 1px"
-            : "1px 1px 1px 25px"
-          : inputs.mode === "vertical"
-          ? "25px 1px"
-          : "1px 25px"};
+            ? inputs.mode === "vertical"
+              ? "1px 1px 25px 1px"
+              : "1px 25px 1px 1px"
+            : inputs.isLast
+            ? inputs.mode === "vertical"
+              ? "25px 1px 1px 1px"
+              : "1px 1px 1px 25px"
+            : inputs.mode === "vertical"
+            ? "25px 1px"
+            : "1px 25px"};
           outline-color: var(--wizard-focusColor);
         }
 

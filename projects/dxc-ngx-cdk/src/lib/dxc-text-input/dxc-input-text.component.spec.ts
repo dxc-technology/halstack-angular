@@ -5,21 +5,21 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { screen, waitFor } from "@testing-library/dom";
 import { of } from "rxjs";
 import { delay } from "rxjs/internal/operators";
-import { switchMap, timeout } from "rxjs/operators";
+import { switchMap } from "rxjs/operators";
 
 describe("DxcTextInputComponent", () => {
   test("should render dxc-input-text", async () => {
     const { getByText } = await render(DxcTextInputComponent, {
       componentProperties: {
         label: "test-input",
-        assistiveText: "assistive text"
+        assistiveText: "assistive text",
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(getByText("test-input"));
@@ -34,14 +34,14 @@ describe("DxcTextInputComponent", () => {
       componentProperties: {
         label: "test-input",
         onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any
+        onBlur: { emit: onBlurFunction } as any,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     const input = <HTMLInputElement>getByRole("combobox");
@@ -61,14 +61,14 @@ describe("DxcTextInputComponent", () => {
         label: "test-input",
         value: defaultValue,
         onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any
+        onBlur: { emit: onBlurFunction } as any,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     const input = <HTMLInputElement>dxcText.getByRole("combobox");
@@ -86,14 +86,14 @@ describe("DxcTextInputComponent", () => {
         assistiveText: "assistive text",
         prefix: "pr",
         suffix: "su",
-        onClickPrefix: { emit: onClickFunction } as any
+        onClickPrefix: { emit: onClickFunction } as any,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(getByText("pr"));
@@ -109,14 +109,14 @@ describe("DxcTextInputComponent", () => {
         assistiveText: "assistive text",
         prefix: "pr",
         suffix: "su",
-        onClickSuffix: { emit: onClickFunction } as any
+        onClickSuffix: { emit: onClickFunction } as any,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(getByText("su"));
@@ -131,14 +131,14 @@ describe("DxcTextInputComponent autocomplete tests", () => {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
-        autocompleteOptions: ["One", "Two", "Three"]
+        autocompleteOptions: ["One", "Two", "Three"],
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(dxcInput.getByText("test-input"));
@@ -155,14 +155,14 @@ describe("DxcTextInputComponent autocomplete tests", () => {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
-        autocompleteOptions: ["One", "Two", "Three"]
+        autocompleteOptions: ["One", "Two", "Three"],
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(dxcInput.getByText("test-input"));
@@ -185,14 +185,14 @@ describe("DxcTextInputComponent autocomplete tests", () => {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
-        autocompleteOptions: autocompleteFunction
+        autocompleteOptions: autocompleteFunction,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(dxcInput.getByText("test-input"));
@@ -207,21 +207,21 @@ describe("DxcTextInputComponent autocomplete tests", () => {
   test("should use autocomplete function returning an observable", async () => {
     const autocompleteFunction = jest.fn(() => {
       return of(["One", "Two", "Three"]).pipe(
-        switchMap(options => of(options).pipe(delay(1000)))
+        switchMap((options) => of(options).pipe(delay(1000)))
       );
     });
     const dxcInput = await render(DxcTextInputComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
-        autocompleteOptions: autocompleteFunction
+        autocompleteOptions: autocompleteFunction,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     expect(dxcInput.getByText("test-input"));

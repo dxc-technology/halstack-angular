@@ -7,10 +7,7 @@ The DXC Spinner Component inform users about the status of ongoing processes.
 ## Usage
 
 ```html
-<dxc-spinner 
-    margin="medium" 
-    label="Loading...">
-</dxc-spinner>
+<dxc-spinner margin="medium" label="Loading..."> </dxc-spinner>
 ```
 
 Include the **DxcSpinnerModule** into **app.module.ts** to use the spinner component:
@@ -18,13 +15,13 @@ Include the **DxcSpinnerModule** into **app.module.ts** to use the spinner compo
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcSpinnerModule } from '@dxc-technology/halstack-angular';
+import { DxcSpinnerModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcSpinnerModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -81,6 +78,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

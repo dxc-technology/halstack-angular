@@ -1,11 +1,11 @@
 <div class="uploadButtons" (dragenter)="dragEnter($event)">
   <div class="dragAndDropLabel">
-      <svg
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill=#666666
+      fill="#666666"
     >
       <path d="M0 0h24v24H0z" fill="none" />
       <path
@@ -24,7 +24,7 @@
     type="file"
     multiple="true"
     (change)="onFileInput($event)"
-    style="display:none;"
+    style="display: none"
   />
   <dxc-button
     (onClick)="onUploadHandler()"

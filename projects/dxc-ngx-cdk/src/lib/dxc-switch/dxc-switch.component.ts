@@ -4,9 +4,9 @@ import {
   Input,
   Output,
   HostBinding,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
-import { EventEmitter, Inject } from '@angular/core';
+import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -14,7 +14,7 @@ import { CssUtils } from "../utils";
 @Component({
   selector: "dxc-switch",
   templateUrl: "./dxc-switch.component.html",
-  providers: [CssUtils]
+  providers: [CssUtils],
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
@@ -31,7 +31,7 @@ export class DxcSwitchComponent implements OnChanges {
 
   @Output() onChange: EventEmitter<any>;
 
-  renderedChecked : boolean;
+  renderedChecked: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -43,7 +43,7 @@ export class DxcSwitchComponent implements OnChanges {
     id: null,
     labelPosition: "before",
     margin: null,
-    size: "fitContent"
+    size: "fitContent",
   });
 
   sizes = {
@@ -51,7 +51,7 @@ export class DxcSwitchComponent implements OnChanges {
     medium: "240px",
     large: "480px",
     fillParent: "100%",
-    fitContent: "unset"
+    fitContent: "unset",
   };
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -76,9 +76,9 @@ export class DxcSwitchComponent implements OnChanges {
 
   onChangeHandler($event: any) {
     this.onChange.emit($event.checked);
-    if (this.checked === undefined || this.checked === null){
+    if (this.checked === undefined || this.checked === null) {
       this.renderedChecked = $event.checked;
-    }else{
+    } else {
       $event.checked = this.renderedChecked;
       $event.source._checked = this.renderedChecked;
       $event.source._inputElement.nativeElement.checked = this.renderedChecked;
@@ -103,7 +103,7 @@ export class DxcSwitchComponent implements OnChanges {
       `;
     }
   }
-  
+
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
@@ -140,11 +140,11 @@ export class DxcSwitchComponent implements OnChanges {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
         }
-        &.cdk-focused:not(.mat-disabled){
-          .mat-slide-toggle-bar{
+        &.cdk-focused:not(.mat-disabled) {
+          .mat-slide-toggle-bar {
             outline: 2px solid var(--switch-focusColor);
             outline-offset: 7px;
-          } 
+          }
         }
       }
       mat-slide-toggle.mat-checked {

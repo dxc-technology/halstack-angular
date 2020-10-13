@@ -7,10 +7,11 @@ The DXC Wizard Component shows a layout where the user needs to go through sever
 ## Usage
 
 ```html
-<dxc-wizard 
-    [currentStep]="currentStep"
-    (onStepClick)="onStepClick($event)"
-    [steps]="steps">
+<dxc-wizard
+  [currentStep]="currentStep"
+  (onStepClick)="onStepClick($event)"
+  [steps]="steps"
+>
 </dxc-wizard>
 ```
 
@@ -19,13 +20,13 @@ Include the **DxcWizardModule** into **app.module.ts** to use the wizard compone
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcWizardModule } from '@dxc-technology/halstack-angular';
+import { DxcWizardModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcWizardModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -88,6 +89,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

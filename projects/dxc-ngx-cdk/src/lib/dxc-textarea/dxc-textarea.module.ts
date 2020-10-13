@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DxcTextareaComponent } from './dxc-textarea.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatInputModule, MatAutocompleteModule } from '@angular/material';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTextareaAutosize } from '@angular/material';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { DxcTextareaComponent } from "./dxc-textarea.component";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { MatInputModule, MatAutocompleteModule } from "@angular/material";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @NgModule({
   declarations: [DxcTextareaComponent],
@@ -14,8 +13,8 @@ import { MatTextareaAutosize } from '@angular/material';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
-  exports: [DxcTextareaComponent]
+  exports: [DxcTextareaComponent],
 })
-export class DxcTextareaModule { }
+export class DxcTextareaModule {}

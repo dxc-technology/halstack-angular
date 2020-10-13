@@ -2,10 +2,6 @@ import { render, fireEvent } from "@testing-library/angular";
 import { DxcTextareaComponent } from "./dxc-textarea.component";
 import { MatInputModule, MatAutocompleteModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { screen, waitFor } from "@testing-library/dom";
-import { of } from "rxjs";
-import { delay } from "rxjs/internal/operators";
-import { switchMap } from "rxjs/operators";
 
 describe("DxcTextareaComponent", () => {
   test("should render dxc-textarea", async () => {
@@ -61,14 +57,14 @@ describe("DxcTextareaComponent", () => {
         label: "test-textarea",
         value: defaultValue,
         onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any
+        onBlur: { emit: onBlurFunction } as any,
       },
       imports: [
         MatInputModule,
         MatAutocompleteModule,
         FormsModule,
-        ReactiveFormsModule
-      ]
+        ReactiveFormsModule,
+      ],
     });
 
     const input = <HTMLInputElement>dxcText.getByRole("textbox");

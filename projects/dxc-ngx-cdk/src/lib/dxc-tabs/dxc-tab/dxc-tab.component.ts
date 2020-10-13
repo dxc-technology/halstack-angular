@@ -3,17 +3,15 @@ import {
   Input,
   OnChanges,
   ViewChild,
-  HostBinding,
-  SimpleChange,
   Output,
   EventEmitter,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { MatTab } from "@angular/material";
 
 @Component({
   selector: "dxc-tab",
-  templateUrl: "./dxc-tab.component.html"
+  templateUrl: "./dxc-tab.component.html",
 })
 export class DxcTabComponent implements OnChanges {
   //Default values
@@ -28,9 +26,7 @@ export class DxcTabComponent implements OnChanges {
   @ViewChild(MatTab, { static: false })
   public matTab: MatTab;
 
-  constructor(  private cdRef: ChangeDetectorRef) {
-
-  }
+  constructor(private cdRef: ChangeDetectorRef) {}
 
   public ngOnChanges(): void {
     this.getLabelClass();
@@ -47,7 +43,6 @@ export class DxcTabComponent implements OnChanges {
   public onClickHandler(): void {
     this.onClick.emit(this.id);
   }
-
 
   getLabelClass() {
     if (this.iconSrc && this.label) {

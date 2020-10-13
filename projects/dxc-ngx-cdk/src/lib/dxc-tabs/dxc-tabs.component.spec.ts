@@ -1,7 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcTabsComponent } from "./dxc-tabs.component";
-import { TestBed } from "@angular/core/testing";
 import { DxcTabsModule } from './dxc-tabs.module';
 
 describe("DxcTabs tests", () => {

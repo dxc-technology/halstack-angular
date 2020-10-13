@@ -8,9 +8,9 @@ The DXC Tabs Component provides the user a navegation element with different gro
 
 ```html
 <dxc-tabs margin="small" [activeTabIndex]="activeTabIndex">
-    <dxc-tab label="Tab 1" (onClick)="tabClicked($event)"></dxc-tab>
-    <dxc-tab label="Tab 2" (onClick)="tabClicked($event)"></dxc-tab>
-    <dxc-tab label="Tab 3" (onClick)="tabClicked($event)"></dxc-tab>
+  <dxc-tab label="Tab 1" (onClick)="tabClicked($event)"></dxc-tab>
+  <dxc-tab label="Tab 2" (onClick)="tabClicked($event)"></dxc-tab>
+  <dxc-tab label="Tab 3" (onClick)="tabClicked($event)"></dxc-tab>
 </dxc-tabs>
 ```
 
@@ -19,13 +19,13 @@ Include the **DxcTabsModule** into **app.module.ts** to use the tabs component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcTabsModule } from '@dxc-technology/halstack-angular';
+import { DxcTabsModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcTabsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -93,6 +93,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

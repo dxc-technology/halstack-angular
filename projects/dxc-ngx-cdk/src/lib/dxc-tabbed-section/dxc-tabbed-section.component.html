@@ -1,18 +1,24 @@
 <div [class]="styledDxcSectionTabbedGroup">
-    <dxc-tabs 
-        [mode]="tabsMode" 
-        disableRipple
-        id="dxcTabbedSection"
-        [activeTabIndex]="tabId"
-        >
-        <dxc-tab 
-            *ngFor="let currentSection of sections; let i = index" 
-            [label]="currentSection.label" 
-            (onClick)="scroll(currentSection.selector + i)">
-        </dxc-tab>
-    </dxc-tabs>
-    <div id="parentTabbedContainer" scroll-spy [spiedTags]="['DIV']" 
-        (sectionChange)="onSectionChange($event)" [offset]="offset">
-            <ng-content></ng-content>
-    </div>
+  <dxc-tabs
+    [mode]="tabsMode"
+    disableRipple
+    id="dxcTabbedSection"
+    [activeTabIndex]="tabId"
+  >
+    <dxc-tab
+      *ngFor="let currentSection of sections; let i = index"
+      [label]="currentSection.label"
+      (onClick)="scroll(currentSection.selector + i)"
+    >
+    </dxc-tab>
+  </dxc-tabs>
+  <div
+    id="parentTabbedContainer"
+    scroll-spy
+    [spiedTags]="['DIV']"
+    (sectionChange)="onSectionChange($event)"
+    [offset]="offset"
+  >
+    <ng-content></ng-content>
+  </div>
 </div>

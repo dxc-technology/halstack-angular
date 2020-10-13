@@ -8,12 +8,13 @@ The DXC Input Text Component allows the user to introduce text.
 
 ```html
 <dxc-input-text
-    label="Input label"
-    [value]="inputValue"
-    assistiveText="assistive text"
-    (onChange)="onChange($event)"
-    (onBlur)="onBlur($event)"
-    margin="medium">
+  label="Input label"
+  [value]="inputValue"
+  assistiveText="assistive text"
+  (onChange)="onChange($event)"
+  (onBlur)="onBlur($event)"
+  margin="medium"
+>
 </dxc-input-text>
 ```
 
@@ -22,13 +23,13 @@ Include the **DxcInputTextModule** into **app.module.ts** to use the input text 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcInputTextModule } from '@dxc-technology/halstack-angular';
+import { DxcInputTextModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcInputTextModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -192,4 +193,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 No available tokens.

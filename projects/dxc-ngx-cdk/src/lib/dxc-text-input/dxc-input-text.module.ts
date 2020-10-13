@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { DxcTextInputComponent } from './dxc-input-text.component';
+import { DxcTextInputComponent } from "./dxc-input-text.component";
 
 @NgModule({
   declarations: [DxcTextInputComponent],
@@ -14,8 +14,8 @@ import { DxcTextInputComponent } from './dxc-input-text.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
-  exports: [DxcTextInputComponent]
+  exports: [DxcTextInputComponent],
 })
 export class DxcInputTextModule {}

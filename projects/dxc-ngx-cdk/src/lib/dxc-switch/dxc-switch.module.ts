@@ -6,11 +6,7 @@ import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [DxcSwitchComponent],
-  imports: [
-    CommonModule,
-    MatSlideToggleModule,
-    FormsModule
-  ],
-  exports: [DxcSwitchComponent]
+  imports: [CommonModule, MatSlideToggleModule, FormsModule],
+  exports: [DxcSwitchComponent],
 })
 export class DxcSwitchModule {}

@@ -7,10 +7,7 @@ The DXC Tag Component provides a label with information.
 ## Usage
 
 ```html
-<dxc-tag  
-    margin="medium" 
-    iconSrc="{{dxcLogoPath}}"
-    label="DXC TECHNOLOGY">
+<dxc-tag margin="medium" iconSrc="{{dxcLogoPath}}" label="DXC TECHNOLOGY">
 </dxc-tag>
 ```
 
@@ -19,13 +16,13 @@ Include the **DxcTagModule** into **app.module.ts** to use the tag component:
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcTagModule } from '@dxc-technology/halstack-angular';
+import { DxcTagModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcTagModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -90,4 +87,5 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 Not available tokens.

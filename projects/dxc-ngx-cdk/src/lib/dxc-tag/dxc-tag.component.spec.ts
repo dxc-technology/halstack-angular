@@ -6,7 +6,7 @@ describe("DxcTag tests", () => {
   test("should render dxc-tag", async () => {
     const { getByText } = await render(DxcTagComponent, {
       componentProperties: { label: "test-tag" },
-      imports: [DxcBoxModule]
+      imports: [DxcBoxModule],
     });
 
     expect(getByText("test-tag"));
@@ -17,7 +17,7 @@ describe("DxcTag tests", () => {
     const { getByText } = await render(DxcTagComponent, {
       template: `<dxc-tag label="test-tag" (onClick)="onClickFunction($event)"></dxc-tag>`,
       componentProperties: { onClickFunction },
-      imports: [DxcBoxModule]
+      imports: [DxcBoxModule],
     });
 
     expect(getByText("test-tag"));

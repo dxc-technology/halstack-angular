@@ -7,25 +7,24 @@ The DXC Sidenav Component is a side container of the page for navegation.
 ## Usage
 
 ```html
-<dxc-sidenav padding="medium" displayArrow="true"> 
-    <dxc-sidenav-menu> Lorem </dxc-sidenav-menu>
-    <dxc-sidenav-content> Ipsum </dxc-sidenav-content>
+<dxc-sidenav padding="medium" displayArrow="true">
+  <dxc-sidenav-menu> Lorem </dxc-sidenav-menu>
+  <dxc-sidenav-content> Ipsum </dxc-sidenav-content>
 </dxc-sidenav>
-
 ```
 
 Include the **DxcSideNavModule** into **app.module.ts** to use the sidenav component:
 
 ```ts
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { DxcSideNavModule } from '@dxc-technology/halstack-angular';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
+import { DxcSideNavModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [DxcSideNavModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -80,6 +79,7 @@ The API properties are the following:
 </table>
 
 ## Theming
+
 <table>
     <tr style="background-color: grey">
         <th>Name</th>

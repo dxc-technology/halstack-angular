@@ -1,29 +1,13 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  HostBinding,
-  SimpleChange,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef
-} from "@angular/core";
-import { MatTab } from "@angular/material";
+import { Component, OnChanges } from "@angular/core";
 
 @Component({
   selector: "dxc-sidenav-menu",
-  templateUrl: "./dxc-sidenav-menu.component.html"
+  templateUrl: "./dxc-sidenav-menu.component.html",
 })
 export class DxcSidenavMenuComponent implements OnChanges {
+  constructor() {}
 
-  constructor(  private cdRef: ChangeDetectorRef) {
+  public ngOnChanges(): void {}
 
-  }
-
-  public ngOnChanges(): void {
-  }
-
-  public ngAfterViewInit() {
-  }
-
+  public ngAfterViewInit() {}
 }

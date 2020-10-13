@@ -1,13 +1,23 @@
-<div class="spinnerContainer" [ngClass] = "{'overlayed': mode === 'overlay', 'smaller': mode === 'small', 'larger': mode === 'large'}">
-  <div
-    class="backOverlay"
-    *ngIf="mode === 'overlay'"
-  ></div>
+<div
+  class="spinnerContainer"
+  [ngClass]="{
+    overlayed: mode === 'overlay',
+    smaller: mode === 'small',
+    larger: mode === 'large'
+  }"
+>
+  <div class="backOverlay" *ngIf="mode === 'overlay'"></div>
   <mat-progress-spinner class="backCircle" value="100"></mat-progress-spinner>
   <mat-progress-spinner value="{{ value }}" mode="{{ type }}" class="spinner">
   </mat-progress-spinner>
-  <div *ngIf="mode!=='small'" [ngClass]="{'notOverlayed': mode !== 'overlay'}" class="labelsContainer">
-    <p class="label">{{label}}</p>
-    <p class="value" *ngIf="(value || value === 0) && showValue">{{ value }}%</p>
+  <div
+    *ngIf="mode !== 'small'"
+    [ngClass]="{ notOverlayed: mode !== 'overlay' }"
+    class="labelsContainer"
+  >
+    <p class="label">{{ label }}</p>
+    <p class="value" *ngIf="(value || value === 0) && showValue">
+      {{ value }}%
+    </p>
   </div>
 </div>

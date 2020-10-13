@@ -5,11 +5,7 @@ import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [DxcSpinnerComponent],
-  imports: [
-    CommonModule,
-    MatProgressSpinnerModule,
-    MatIconModule
-  ],
-  exports: [DxcSpinnerComponent]
+  imports: [CommonModule, MatProgressSpinnerModule, MatIconModule],
+  exports: [DxcSpinnerComponent],
 })
 export class DxcSpinnerModule {}

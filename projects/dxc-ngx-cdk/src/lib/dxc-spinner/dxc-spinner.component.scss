@@ -103,7 +103,7 @@
       opacity: var(--spinner-overlayOpacity);
     }
     .labelsContainer {
-      color: var(--white,white);
+      color: var(--white, white);
       &.notOverlayed {
         color: var(--spinner-text);
       }

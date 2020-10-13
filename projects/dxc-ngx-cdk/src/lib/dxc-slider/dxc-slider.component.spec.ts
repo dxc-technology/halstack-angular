@@ -1,17 +1,14 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcSliderComponent } from "./dxc-slider.component";
-import { screen, waitFor, waitForElement } from "@testing-library/dom";
 import { MatSliderModule } from "@angular/material";
-import { DxcInputTextModule } from '../dxc-text-input/dxc-input-text.module';
-import { TestBed } from '@angular/core/testing';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { TestBed } from "@angular/core/testing";
 
 describe("DxcSlider tests", () => {
   test("should render dxc-slider", async () => {
     const { getByText } = await render(DxcSliderComponent, {
-        componentProperties: { showLimitsValues:true },
-        imports: [MatSliderModule,DxcInputTextModule]
+      componentProperties: { showLimitsValues: true },
+      imports: [MatSliderModule, DxcInputTextModule],
     });
     expect(getByText("100")).toBeTruthy();
   });
@@ -20,85 +17,83 @@ describe("DxcSlider tests", () => {
     const onChangeFunction = jest.fn();
     const value = 22;
     TestBed.overrideComponent(DxcSliderComponent, {
-      set: { selector: "slider" }
+      set: { selector: "slider" },
     });
     const slider = await render(DxcSliderComponent, {
-      componentProperties: {  
-        showLimitsValues:true, 
+      componentProperties: {
+        showLimitsValues: true,
         onChange: { emit: onChangeFunction } as any,
-        showInput: true 
+        showInput: true,
       },
-      imports: [MatSliderModule,DxcInputTextModule]
+      imports: [MatSliderModule, DxcInputTextModule],
     });
-    const input = <HTMLInputElement>(slider.getByRole("combobox"));
+    const input = <HTMLInputElement>slider.getByRole("combobox");
     fireEvent.input(input, { target: { value: value } });
-    expect(onChangeFunction).toHaveBeenCalledWith(value);     
+    expect(onChangeFunction).toHaveBeenCalledWith(value);
   });
-  
 
   test("Controlled dxc-slider", async () => {
     const onChangeFunction = jest.fn();
     const value = 22;
     TestBed.overrideComponent(DxcSliderComponent, {
-      set: { selector: "slider" }
+      set: { selector: "slider" },
     });
     const slider = await render(DxcSliderComponent, {
-      componentProperties: {  
+      componentProperties: {
         value: 45,
-        showLimitsValues:true, 
+        showLimitsValues: true,
         onChange: { emit: onChangeFunction } as any,
-        showInput: true 
+        showInput: true,
       },
-      imports: [MatSliderModule,DxcInputTextModule]
+      imports: [MatSliderModule, DxcInputTextModule],
     });
-    const input = <HTMLInputElement>(slider.getByRole("combobox"));
+    const input = <HTMLInputElement>slider.getByRole("combobox");
     fireEvent.input(input, { target: { value: value } });
-    expect(onChangeFunction).toHaveBeenCalledWith(value); 
+    expect(onChangeFunction).toHaveBeenCalledWith(value);
   });
 
   test("Disabled dxc-slider", async () => {
     const onChangeFunction = jest.fn();
     const value = 22;
     TestBed.overrideComponent(DxcSliderComponent, {
-      set: { selector: "slider" }
+      set: { selector: "slider" },
     });
     const slider = await render(DxcSliderComponent, {
-      componentProperties: {  
+      componentProperties: {
         value: 45,
-        showLimitsValues:true, 
+        showLimitsValues: true,
         onChange: { emit: onChangeFunction } as any,
         showInput: true,
-        disabled:true 
+        disabled: true,
       },
-      imports: [MatSliderModule,DxcInputTextModule]
+      imports: [MatSliderModule, DxcInputTextModule],
     });
-    const input = <HTMLInputElement>(slider.getByRole("combobox"));
+    const input = <HTMLInputElement>slider.getByRole("combobox");
     fireEvent.input(input, { target: { value: value } });
     expect(onChangeFunction).toHaveBeenCalledWith(value);
-    
-    input.hasAttribute("disabled")
-    expect(input.value).toBe("45");     
+
+    input.hasAttribute("disabled");
+    expect(input.value).toBe("45");
   });
 
   test("DragEnd dxc-slider", async () => {
     const onDragEndFunction = jest.fn();
     const value = 22;
     TestBed.overrideComponent(DxcSliderComponent, {
-      set: { selector: "slider" }
+      set: { selector: "slider" },
     });
     const slider = await render(DxcSliderComponent, {
-      componentProperties: {  
+      componentProperties: {
         value: 45,
-        showLimitsValues:true, 
+        showLimitsValues: true,
         onDragEnd: { emit: onDragEndFunction } as any,
         showInput: true,
-        disabled:true 
+        disabled: true,
       },
-      imports: [MatSliderModule,DxcInputTextModule]
+      imports: [MatSliderModule, DxcInputTextModule],
     });
-    const input = <HTMLInputElement>(slider.getByRole("slider"));
+    const input = <HTMLInputElement>slider.getByRole("slider");
     fireEvent.mouseUp(input);
-    expect(onDragEndFunction).toHaveBeenCalled(); 
+    expect(onDragEndFunction).toHaveBeenCalled();
   });
-
 });

@@ -5,26 +5,22 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
-  ContentChildren,
-  QueryList
 } from "@angular/core";
 import { css } from "emotion";
-import { BehaviorSubject } from 'rxjs';
-import { CssUtils } from '../utils';
-import { DxcStepComponent } from './dxc-step/dxc-step.component';
+import { BehaviorSubject } from "rxjs";
+import { CssUtils } from "../utils";
 
 @Component({
-  selector: 'dxc-wizard',
-  templateUrl: './dxc-wizard.component.html',
-  styleUrls: ['./dxc-wizard.component.css'],
-  providers: [CssUtils]
+  selector: "dxc-wizard",
+  templateUrl: "./dxc-wizard.component.html",
+  providers: [CssUtils],
 })
 export class DxcWizardComponent {
   @Input() mode: string;
   @Input() currentStep: number;
   @Input() margin: any;
   @Input() steps: Array<any>;
-  @Output()  onStepClick = new EventEmitter<any>();
+  @Output() onStepClick = new EventEmitter<any>();
 
   innerCurrentStep: number;
 
@@ -34,11 +30,10 @@ export class DxcWizardComponent {
     mode: "horizontal",
     currentStep: 0,
     margin: null,
-    steps: null
+    steps: null,
   });
 
-
-  constructor(private utils: CssUtils) { }
+  constructor(private utils: CssUtils) {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -55,19 +50,22 @@ export class DxcWizardComponent {
   }
 
   public handleStepClick(i) {
-    if (this.currentStep == null) { this.innerCurrentStep = i; }
-    
-    if (this.onStepClick) { this.onStepClick.emit(i); }
+    if (this.currentStep == null) {
+      this.innerCurrentStep = i;
+    }
+
+    if (this.onStepClick) {
+      this.onStepClick.emit(i);
+    }
   }
 
   getDynamicStyle(inputs) {
     return css`
-        ${this.utils.getMargins(inputs.margin)}
-        display: inline-flex;
-        flex-direction: ${inputs.mode === "vertical" ? "column" : "row"};
-        justify-content: center;
-        ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
+      ${this.utils.getMargins(inputs.margin)}
+      display: inline-flex;
+      flex-direction: ${inputs.mode === "vertical" ? "column" : "row"};
+      justify-content: center;
+      ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
     `;
   }
-
 }

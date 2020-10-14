@@ -42,7 +42,7 @@ export const customTheme: Theme = {
     },
     "checkbox":{
       "color": colors.dxcBlue,
-      "checkColor": colors.black,
+      "checkColor": colors.white,
     },
     "radio":{
       "color": colors.black,

@@ -138,7 +138,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>checkColor</td>
-        <td><code>#000000</code></td>
+        <td><code>#FFFFFF</code></td>
         <td>Applies to token checkColor.</td>
     </tr>
 </table>

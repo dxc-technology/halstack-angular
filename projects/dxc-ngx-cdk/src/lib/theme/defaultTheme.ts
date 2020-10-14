@@ -20,7 +20,9 @@ const colors = {
   purple: "#8800F6",
   blue: "#005FCC",
   linkBlue: "#006BF6",
-  grey: "#F8F8F8"
+  grey: "#F8F8F8",
+  dxcPurple: "#6F2C91",
+  dxcBlue: "#0067B3"
 };
 
 export const customTheme: Theme = {
@@ -78,7 +80,7 @@ export const customTheme: Theme = {
     "footer":{
       "backgroundColor": colors.black,
       "fontColor": colors.white,
-      "lineColor": colors.yellow,
+      "lineColor": colors.dxcBlue,
       "logo": "assets/dxc_logo_wht.png",
     },
     "spinner":{
@@ -86,23 +88,23 @@ export const customTheme: Theme = {
       "totalCircleColor": colors.white
     },
     "header":{
-      "backgroundColor": colors.black,
+      "backgroundColor": colors.white,
       "underlinedColor": colors.black,
-      "fontColor": colors.white,
-      "backgroundColorMenu": colors.lightGrey,
+      "fontColor": colors.black,
+      "backgroundColorMenu": colors.white,
       "fontColorMenu": colors.black,
-      "hamburguerColor": colors.white,
-      "logo": "assets/dxc_logo_white.png",
+      "hamburguerColor": colors.black,
+      "logo": "assets/dxc_logo_black.png",
       "logoResponsive": "assets/dxc_logo_black.png",
     },
     "tabs":{
       "selectedBackgroundColor": colors.white,
-      "selectedUnderlinedColor": colors.black,
+      "selectedUnderlinedColor": colors.dxcPurple,
       "selectedFontColor": colors.black
     },
     "wizard":{
-      "selectedBackgroundColor": colors.yellow,
-      "selectedFont": colors.black
+      "selectedBackgroundColor": colors.dxcPurple,
+      "selectedFont": colors.white
     },
     "accordion":{
       "arrowColor": colors.darkGrey

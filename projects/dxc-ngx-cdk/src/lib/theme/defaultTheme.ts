@@ -114,7 +114,7 @@ export const customTheme: Theme = {
       "fontColor": colors.black
     },
     "table":{
-      "headerBackgroundColor": colors.black,
+      "headerBackgroundColor": colors.dxcPurple,
       "headerFontColor": colors.white
     },
     "paginator":{

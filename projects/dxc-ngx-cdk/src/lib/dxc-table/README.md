@@ -74,7 +74,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>headerBackgroundColor</td>
-        <td><code>#000000</code></td>
+        <td><code>#6F2C91</code></td>
         <td>Applies to token headerBackgroundColor.</td>
     </tr>
     <tr>

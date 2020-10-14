@@ -86,7 +86,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>trackLine</td>
-        <td><code>#FFED00</code></td>
+        <td><code>#6F2C91</code></td>
         <td>Applies to token trackLine.</td>
     </tr>
     <tr>

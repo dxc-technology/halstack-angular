@@ -21,28 +21,28 @@ const colors = {
   blue: "#005FCC",
   linkBlue: "#006BF6",
   grey: "#F8F8F8",
-  dxcPurple: "#6F2C91",
-  dxcBlue: "#0067B3"
+  dxcBlue:"#0067B3",
+  dxcPurple:"#6F2C91"
 };
 
 export const customTheme: Theme = {
   properties: {
     "button":{
-      "color": colors.yellow,
+      "color": colors.dxcPurple,
       "hoverColor": colors.black,
 
-      "primaryFontColor": colors.black,
-      "primaryHoverFontColor": colors.yellow,
+      "primaryFontColor": colors.white,
+      "primaryHoverFontColor": colors.white,
 
       "secondaryFontColor": colors.black,
       "secondaryHoverFontColor": colors.black,
 
-      "textFontColor": colors.black,
+      "textFontColor": colors.dxcPurple,
       "textHoverFontColor": colors.white
     },
     "checkbox":{
-      "color": colors.yellow,
-      "checkColor": colors.black,
+      "color": colors.dxcBlue,
+      "checkColor": colors.white,
     },
     "radio":{
       "color": colors.black,
@@ -51,10 +51,10 @@ export const customTheme: Theme = {
       "selectedOptionBackgroundColor": colors.lightGrey
     },
     "slider":{
-      "color": colors.black
+      "color": colors.dxcBlue
     },
     "switch":{
-      "checkedTrackBackgroundColor": colors.darkGrey
+      "checkedTrackBackgroundColor": colors.dxcPurple
     },
     "chip":{
       "backgroundColor": colors.darkWhite,
@@ -62,8 +62,8 @@ export const customTheme: Theme = {
       "fontColor": colors.black
     },
     "date":{
-      "pickerSelectedDateBackgroundColor": colors.black,
-      "pickerSelectedDateColor": colors.yellow
+      "pickerSelectedDateBackgroundColor": colors.dxcPurple,
+      "pickerSelectedDateColor": colors.white
     },
     "sidenav":{
       "backgroundColor": colors.grey,
@@ -71,7 +71,7 @@ export const customTheme: Theme = {
       "arrowColor": colors.black
     },
     "progressbar":{
-      "trackLine": colors.yellow,
+      "trackLine": colors.dxcPurple,
       "totalLine": colors.black
     },
     "autocomplete":{
@@ -84,7 +84,7 @@ export const customTheme: Theme = {
       "logo": "assets/dxc_logo_wht.png",
     },
     "spinner":{
-      "trackCircleColor": colors.yellow,
+      "trackCircleColor": colors.dxcPurple,
       "totalCircleColor": colors.white
     },
     "header":{
@@ -114,7 +114,7 @@ export const customTheme: Theme = {
       "fontColor": colors.black
     },
     "table":{
-      "headerBackgroundColor": colors.black,
+      "headerBackgroundColor": colors.dxcPurple,
       "headerFontColor": colors.white
     },
     "paginator":{
@@ -173,7 +173,8 @@ export const defaultTheme: Theme = {
       "uncheckedThumbBackgroundColor": colors.white,
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
-      "requiredColor": colors.darkRed
+      "requiredColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "link":{
       "fontColor": colors.blue,

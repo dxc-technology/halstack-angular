@@ -133,12 +133,12 @@ The API properties are the following:
     </tr>
     <tr>
         <td>color</td>
-        <td><code>#FFED00</code></td>
+        <td><code>#0067B3</code></td>
         <td>Applies to token backgroundColorChecked and borderColor.</td>
     </tr>
     <tr>
         <td>checkColor</td>
-        <td><code>#000000</code></td>
+        <td><code>#FFFFFF</code></td>
         <td>Applies to token checkColor.</td>
     </tr>
 </table>

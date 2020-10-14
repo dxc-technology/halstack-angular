@@ -111,7 +111,7 @@ The API properties are the following:
     <tr>
       <td>color</td>
       <td>
-        <code>#FFED00</code>
+        <code>#6F2C91</code>
       </td>
       <td>Applies to token primaryBackgroundColor and secondaryOutlinedColor in primary and secondary mode.</td>
     </tr>
@@ -125,14 +125,14 @@ The API properties are the following:
     <tr>
       <td>primaryFontColor</td>
       <td>
-        <code>#000000</code>
+        <code>#FFFFFF</code>
       </td>
       <td>Applies to token primaryTextColor in primary mode.</td>
     </tr>
     <tr>
       <td>primaryHoverFontColor</td>
       <td>        
-        <code>#FFED00</code>
+        <code>#FFFFFF</code>
       </td>
       <td>Applies to token hoverTextColor in primary mode.</td>
     </tr>
@@ -153,7 +153,7 @@ The API properties are the following:
     <tr>
       <td>textFontColor</td>
       <td>
-        <code>#000000</code>
+        <code>#6F2C91</code>
       </td>
       <td>Applies to token textTextColor in text mode.</td>
     </tr>

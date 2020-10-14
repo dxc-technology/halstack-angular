@@ -168,12 +168,12 @@ export enum Formats {
     </tr>
     <tr>
         <td>pickerSelectedDateColor</td>
-        <td><code>#FFED00</code></td>
+        <td><code>#FFFFFF</code></td>
         <td>Applies to token pickerSelectedDateColor.</td>
     </tr>
     <tr>
         <td>pickerSelectedDateBackgroundColor</td>
-        <td><code>#000000</code></td>
+        <td><code>#6F2C91</code></td>
         <td>Applies to token pickerSelectedDateBackgroundColor.</td>
     </tr>
 </table>

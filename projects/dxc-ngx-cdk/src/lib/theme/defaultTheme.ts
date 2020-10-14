@@ -54,7 +54,7 @@ export const customTheme: Theme = {
       "color": colors.dxcBlue
     },
     "switch":{
-      "checkedTrackBackgroundColor": colors.darkGrey
+      "checkedTrackBackgroundColor": colors.dxcPurple
     },
     "chip":{
       "backgroundColor": colors.darkWhite,
@@ -62,8 +62,8 @@ export const customTheme: Theme = {
       "fontColor": colors.black
     },
     "date":{
-      "pickerSelectedDateBackgroundColor": colors.black,
-      "pickerSelectedDateColor": colors.yellow
+      "pickerSelectedDateBackgroundColor": colors.dxcPurple,
+      "pickerSelectedDateColor": colors.white
     },
     "sidenav":{
       "backgroundColor": colors.grey,
@@ -173,7 +173,8 @@ export const defaultTheme: Theme = {
       "uncheckedThumbBackgroundColor": colors.white,
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
-      "requiredColor": colors.darkRed
+      "requiredColor": colors.darkRed,
+      "focusColor": colors.blue
     },
     "link":{
       "fontColor": colors.blue,

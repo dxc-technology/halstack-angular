@@ -140,10 +140,11 @@ export class DxcSwitchComponent implements OnChanges {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
         }
-        &.cdk-focused:not(.mat-disabled) {
-          .mat-slide-toggle-bar {
-            outline: 2px solid var(--switch-focusColor);
-            outline-offset: 7px;
+        .mat-slide-toggle-thumb {
+          &:focus:not(.mat-disabled) {
+            outline: -webkit-focus-ring-color auto 1px;
+            outline-color: var(--slider-focusColor);
+            outline-offset: 2px;
           }
         }
       }
@@ -175,6 +176,7 @@ export class DxcSwitchComponent implements OnChanges {
         }
         .mat-slide-toggle-bar {
           opacity: var(--switch-disabledBackgroundColor) !important;
+          background-color: var(--switch-uncheckedTrackBackgroundColor) !important;
         }
       }
     `;

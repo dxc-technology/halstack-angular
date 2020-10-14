@@ -134,7 +134,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>checkedTrackBackgroundColor</td>
-        <td><code>#666666</code></td>
+        <td><code>#6F2C91</code></td>
         <td>Applies to token checkedtrackBackgroundColor.</td>
     </tr>
 </table>

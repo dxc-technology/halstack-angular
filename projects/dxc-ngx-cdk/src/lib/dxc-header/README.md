@@ -150,7 +150,7 @@ Here is an example of its used:
     <tr>
       <td>backgroundColor</td>
       <td>
-        <code>#000000</code>
+        <code>#FFFFFF</code>
       </td>
       <td>Applies to token backgroundColor.</td>
     </tr>
@@ -164,14 +164,14 @@ Here is an example of its used:
     <tr>
       <td>fontColor</td>
       <td>
-        <code>#FFFFFF</code>
+        <code>#000000</code>
       </td>
       <td>Applies to token textColor.</td>
     </tr>
     <tr>
       <td>backgroundColorMenu</td>
       <td>        
-        <code>#D9D9D9</code>
+        <code>#FFFFFF</code>
       </td>
       <td>Applies to token backgroundColorMenu.</td>
     </tr>
@@ -185,7 +185,7 @@ Here is an example of its used:
     <tr>
       <td>hamburguerColor</td>
         <td>
-          <code>#FFFFFF</code>
+          <code>#000000</code>
         </td>
       <td>Applies to token hamburguerColor and hoverHamburguerColor (0.16 opacity).</td>
     </tr>

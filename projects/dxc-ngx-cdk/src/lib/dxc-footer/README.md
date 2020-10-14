@@ -138,7 +138,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>lineColor</td>
-        <td><code>#FFED00</code></td>
+        <td><code>#0067B3</code></td>
         <td>Applies to token lineColor.</td>
     </tr>
     <tr>

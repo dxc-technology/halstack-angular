@@ -98,12 +98,12 @@ The API properties are the following:
     </tr>
     <tr>
         <td>selectedBackgroundColor</td>
-        <td><code>#FFED00</code></td>
+        <td><code>#6F2C91</code></td>
         <td>Applies to token selectedBackgroundColor.</td>
     </tr>
     <tr>
         <td>selectedFont</td>
-        <td><code>#000000</code></td>
+        <td><code>#FFFFFF</code></td>
         <td>Applies to token selectedFont.</td>
     </tr>
 </table>

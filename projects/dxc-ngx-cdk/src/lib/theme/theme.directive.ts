@@ -77,6 +77,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--slider-disabledDotsBackgroundColor": theme.properties["slider"]["disabledDotsBackgroundColor"],
       "--slider-disabledTrackLine": theme.properties["slider"]["disabledTrackLine"],
       "--slider-disabledtotalLine": theme.properties["slider"]["disabledtotalLine"],
+      "--slider-focusColor": theme.properties["slider"]["focusColor"],
       "--switch-checkedTrackBackgroundColor": theme.properties["switch"]["checkedTrackBackgroundColor"],
       "--switch-checkedThumbBackgroundColor": theme.properties["switch"]["checkedThumbBackgroundColor"],
       "--switch-uncheckedThumbBackgroundColor": theme.properties["switch"]["uncheckedThumbBackgroundColor"],

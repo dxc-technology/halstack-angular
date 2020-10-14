@@ -51,7 +51,7 @@ export const customTheme: Theme = {
       "selectedOptionBackgroundColor": colors.lightGrey
     },
     "slider":{
-      "color": colors.black
+      "color": colors.dxcBlue
     },
     "switch":{
       "checkedTrackBackgroundColor": colors.darkGrey

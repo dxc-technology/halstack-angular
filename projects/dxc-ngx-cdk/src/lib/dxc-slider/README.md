@@ -152,7 +152,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>color</td>
-        <td><code>#000000</code></td>
+        <td><code>#0067B3</code></td>
         <td>Applies to token thumbBackgroundColor, dotsBackgroundColor and trackLine.</td>
     </tr>
 </table>

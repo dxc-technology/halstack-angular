@@ -210,11 +210,12 @@ export class DxcSliderComponent implements OnInit, OnChanges {
               transform: scale(1);
             }
           }
-          &.cdk-focused:not(.mat-slider-sliding) {
+          &:focus:not(.mat-slider-sliding) {
             .mat-slider-thumb {
               transform: scale(0.7);
               outline: -webkit-focus-ring-color auto 1px;
               outline-color: var(--slider-focusColor);
+              outline-offset: 3px;
             }
             .mat-slider-focus-ring {
               width: 0px;

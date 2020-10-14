@@ -71,7 +71,7 @@ export const customTheme: Theme = {
       "arrowColor": colors.black
     },
     "progressbar":{
-      "trackLine": colors.yellow,
+      "trackLine": colors.dxcPurple,
       "totalLine": colors.black
     },
     "autocomplete":{
@@ -84,7 +84,7 @@ export const customTheme: Theme = {
       "logo": "assets/dxc_logo_wht.png",
     },
     "spinner":{
-      "trackCircleColor": colors.yellow,
+      "trackCircleColor": colors.dxcPurple,
       "totalCircleColor": colors.white
     },
     "header":{

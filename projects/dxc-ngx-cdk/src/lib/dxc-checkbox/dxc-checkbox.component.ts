@@ -144,6 +144,7 @@ export class DxcCheckboxComponent implements OnInit {
               .mat-checkbox-background {
                 outline: -webkit-focus-ring-color auto 1px;
                 outline-color: var(--checkbox-focusColor);
+                outline-offset: 3px;
               }
             }
           }

@@ -20,26 +20,28 @@ const colors = {
   purple: "#8800F6",
   blue: "#005FCC",
   linkBlue: "#006BF6",
-  grey: "#F8F8F8"
+  grey: "#F8F8F8",
+  dxcBlue:"#0067B3",
+  dxcPurple:"#6F2C91"
 };
 
 export const customTheme: Theme = {
   properties: {
     "button":{
-      "color": colors.yellow,
+      "color": colors.dxcPurple,
       "hoverColor": colors.black,
 
-      "primaryFontColor": colors.black,
-      "primaryHoverFontColor": colors.yellow,
+      "primaryFontColor": colors.white,
+      "primaryHoverFontColor": colors.white,
 
       "secondaryFontColor": colors.black,
       "secondaryHoverFontColor": colors.black,
 
-      "textFontColor": colors.black,
+      "textFontColor": colors.dxcPurple,
       "textHoverFontColor": colors.white
     },
     "checkbox":{
-      "color": colors.yellow,
+      "color": colors.dxcBlue,
       "checkColor": colors.black,
     },
     "radio":{

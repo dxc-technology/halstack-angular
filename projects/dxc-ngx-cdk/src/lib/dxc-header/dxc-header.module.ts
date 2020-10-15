@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatToolbarModule } from "@angular/material";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { CommonModule } from "@angular/common";
 import { DxcHeaderComponent } from "./dxc-header.component";
 import { ClosableDirective } from "./directives/closable.directive";

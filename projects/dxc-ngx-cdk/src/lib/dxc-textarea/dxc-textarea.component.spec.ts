@@ -1,6 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcTextareaComponent } from "./dxc-textarea.component";
-import { MatInputModule, MatAutocompleteModule } from "@angular/material";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 describe("DxcTextareaComponent", () => {

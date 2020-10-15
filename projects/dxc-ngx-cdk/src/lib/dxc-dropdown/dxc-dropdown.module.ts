@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MatMenuModule, MatButtonModule } from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
+import { MatMenuModule } from "@angular/material/menu";
 import { CommonModule } from "@angular/common";
 import { DxcDropdownComponent } from "./dxc-dropdown.component";
 

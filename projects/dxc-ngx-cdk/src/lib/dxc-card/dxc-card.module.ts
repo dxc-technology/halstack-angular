@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatCardModule } from "@angular/material";
+import { MatCardModule } from "@angular/material/card";
 import { DxcCardComponent } from "./dxc-card.component";
 import { CommonModule } from "@angular/common";
 

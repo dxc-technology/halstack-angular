@@ -1,14 +1,9 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcDateComponent } from "./dxc-date.component";
-import {
-  MatNativeDateModule,
-  MatInputModule,
-  MatDatepickerModule,
-  MAT_DATE_FORMATS,
-  DateAdapter,
-  MAT_DATE_LOCALE,
-} from "@angular/material";
+import { MatNativeDateModule, MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from "@angular/material/core";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatInputModule } from "@angular/material/input";
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,

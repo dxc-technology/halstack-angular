@@ -1,7 +1,8 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcDropdownComponent } from "./dxc-dropdown.component";
-import { MatMenuModule, MatButtonModule } from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
+import { MatMenuModule } from "@angular/material/menu";
 
 describe("DxcDropdown tests", () => {
   const mockOptions = [

@@ -15,7 +15,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { ElementRef, HostListener } from "@angular/core";
-import { MatMenuTrigger } from "@angular/material";
+import { MatMenuTrigger } from "@angular/material/menu";
 
 @Component({
   selector: "dxc-dropdown",

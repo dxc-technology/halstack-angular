@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MatExpansionModule, MatIconModule } from "@angular/material";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatIconModule } from "@angular/material/icon";
 import { DxcAccordionComponent } from "./dxc-accordion.component";
 import { CommonModule } from "@angular/common";
 

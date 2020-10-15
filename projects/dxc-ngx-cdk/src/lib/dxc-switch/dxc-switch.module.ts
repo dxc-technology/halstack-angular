@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatSlideToggleModule } from "@angular/material";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { FormsModule } from "@angular/forms";
 import { DxcSwitchComponent } from "./dxc-switch.component";
 import { CommonModule } from "@angular/common";

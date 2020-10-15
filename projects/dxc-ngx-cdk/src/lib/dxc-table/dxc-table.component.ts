@@ -15,7 +15,7 @@ export class DxcTableComponent {
 
   defaultInputs = new BehaviorSubject<any>({});
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils) { }
 
   public ngOnChanges(changes: SimpleChanges): void {
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -70,7 +70,7 @@ export class DxcTableComponent {
           border-radius: 4px 0px 0px 0px;
         }
 
-        & th:nth-child(3) {
+        & th:last-of-type {
           border-radius: 0px 4px 0px 0px;
         }
       }

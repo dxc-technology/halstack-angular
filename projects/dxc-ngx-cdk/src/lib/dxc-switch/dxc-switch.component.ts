@@ -176,7 +176,6 @@ export class DxcSwitchComponent implements OnChanges {
         }
         .mat-slide-toggle-bar {
           opacity: var(--switch-disabledBackgroundColor) !important;
-          background-color: var(--switch-uncheckedTrackBackgroundColor) !important;
         }
       }
     `;

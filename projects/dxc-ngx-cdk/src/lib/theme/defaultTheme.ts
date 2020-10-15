@@ -72,7 +72,7 @@ export const customTheme: Theme = {
     },
     "progressbar":{
       "trackLine": colors.dxcPurple,
-      "totalLine": colors.black
+      "totalLine": colors.darkGrey
     },
     "autocomplete":{
       "selectedOptionBackgroundColor": colors.lightGrey,

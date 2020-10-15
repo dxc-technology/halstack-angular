@@ -22,7 +22,7 @@
             "main": "projects/dxc-ngx-cdk-site/src/main.ts",
             "polyfills": "projects/dxc-ngx-cdk-site/src/polyfills.ts",
             "tsConfig": "projects/dxc-ngx-cdk-site/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/dxc-ngx-cdk-site/src/favicon.ico",
               "projects/dxc-ngx-cdk-site/src/assets",
@@ -63,7 +63,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": false,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": false,
@@ -161,20 +160,25 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/dxc-angular-cdk-examples",
             "index": "projects/dxc-ngx-cdk-examples/src/index.html",
             "main": "projects/dxc-ngx-cdk-examples/src/main.ts",
             "polyfills": "projects/dxc-ngx-cdk-examples/src/polyfills.ts",
             "tsConfig": "projects/dxc-ngx-cdk-examples/tsconfig.app.json",
-            "assets": ["projects/dxc-ngx-cdk-examples/src/favicon.ico", "projects/dxc-ngx-cdk-examples/src/assets", 
+            "assets": [
+              "projects/dxc-ngx-cdk-examples/src/favicon.ico",
+              "projects/dxc-ngx-cdk-examples/src/assets",
               {
-              "glob": "**/*",
-              "input": "./node_modules/@dxc-technology/halstack-angular/lib/assets",
-              "output": "./assets/"
-              }],
-            "styles": ["projects/dxc-ngx-cdk-examples/src/styles.scss"],
-            "scripts": [],
-            "es5BrowserSupport": true
+                "glob": "**/*",
+                "input": "./node_modules/@dxc-technology/halstack-angular/lib/assets",
+                "output": "./assets/"
+              }
+            ],
+            "styles": [
+              "projects/dxc-ngx-cdk-examples/src/styles.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -198,6 +202,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }

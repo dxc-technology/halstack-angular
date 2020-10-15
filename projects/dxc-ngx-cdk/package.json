@@ -66,6 +66,7 @@
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2",
     "tsickle": "^0.37.0",
+    "tslib": "^2.0.0",
     "vanilla-text-mask": "^5.1.1",
     "zone.js": "~0.9.1"
   },
@@ -92,7 +93,6 @@
     "protractor": "5.4.0",
     "ts-node": "7.0.0",
     "tsickle": "^0.37.0",
-    "tslib": "^1.10.0",
     "tslint": "5.15.0",
     "typescript": "3.5.3",
     "start-server-and-test": "^1.10.6"

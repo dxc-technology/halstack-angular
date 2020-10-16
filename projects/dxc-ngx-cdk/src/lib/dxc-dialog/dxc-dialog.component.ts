@@ -127,17 +127,6 @@ export class DxcDialogComponent {
             }
             .content {
               overflow-y: auto;
-              &::-webkit-scrollbar {
-                width: 3px;
-              }
-              &::-webkit-scrollbar-track {
-                background-color: var(--dialog-scrollBarTrackColor);
-                border-radius: 3px;
-              }
-              &::-webkit-scrollbar-thumb {
-                background-color: var(--dialog-scrollBarThumbColor);
-                border-radius: 3px;
-              }
               ::-webkit-scrollbar {
                 width: 3px;
               }

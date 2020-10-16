@@ -154,6 +154,17 @@ export class DxcTextareaComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: var(--textarea-scrollBarTrackColor);
+        border-radius: 3px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--textarea-scrollBarThumbColor);
+        border-radius: 3px;
+      }
       &.disabled {
         cursor: default;
       }
@@ -163,60 +174,61 @@ export class DxcTextareaComponent
         textarea {
           min-height: 22px;
           text-overflow: ellipsis;
+          color: var(--textarea-fontColor);
         }
         &.disabled {
           pointer-events: none;
           .mat-hint {
-            opacity: var(--inputText-disabledAssistiveTextColor);
+            opacity: var(--textarea-disabled);
           }
           .mat-form-field-underline {
-            opacity: var(--inputText-disabledUnderlinedColor);
+            opacity: var(--textarea-disabled);
           }
           .mat-form-field-empty mat-label {
-            opacity: var(--inputText-disabledLabelColor);
+            opacity: var(--textarea-disabled);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            opacity: var(--inputText-disabledLabelColor);
+            opacity: var(--textarea-disabled);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            opacity: var(--inputText-disabledLabelColor);
+            opacity: var(--textarea-disabled);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                opacity: var(--inputText-disabledFontColor);
+                opacity: var(--textarea-disabled);
               }
             }
           }
         }
       }
       .mat-hint {
-        color: var(--inputText-color);
+        color: var(--textarea-fontColor);
       }
       .mat-form-field-underline {
-        background-color: var(--inputText-color);
+        background-color: var(--textarea-fontColor);
       }
       label.mat-form-field-label {
-        color: var(--inputText-color);
+        color: var(--textarea-fontColor);
       }
       input::placeholder {
-        color: var(--inputText-placeholderColor);
+        color: var(--textarea-placeholderColor);
       }
       &.invalid {
         .mat-hint {
-          color: var(--inputText-invalidColor);
+          color: var(--textarea-invalidColor);
         }
         .mat-form-field-underline {
-          background-color: var(--inputText-invalidColor);
+          background-color: var(--textarea-invalidColor);
         }
         .mat-form-field-empty mat-label {
-          color: var(--inputText-color);
+          color: var(--textarea-fontColor);
         }
         &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--inputText-invalidColor);
+          color: var(--textarea-invalidColor);
         }
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--inputText-invalidColor);
+          color: var(--textarea-invalidColor);
         }
       }
       .mat-form-field {
@@ -235,7 +247,7 @@ export class DxcTextareaComponent
             justify-content: flex-end;
             display: flex;
             span {
-              color: var(--inputText-invalidColor);
+              color: var(--textarea-invalidColor);
             }
           }
         }

@@ -105,7 +105,7 @@
     .labelsContainer {
       color: var(--white, white);
       &.notOverlayed {
-        color: var(--spinner-text);
+        color: var(--spinner-fontColor);
       }
     }
   }

@@ -126,6 +126,14 @@ export const customTheme: Theme = {
 
 export const defaultTheme: Theme = {
   properties: {
+    "alert": {
+      "overlayColor": colors.black,
+      "overlayOpacity": 0.80,
+      "infoColor": colors.lightBlue,
+      "confirmColor": colors.lightGreen,
+      "warningColor": colors.lightYellow,
+      "errorColor": colors.lightPink
+    },
     "button":{
       "primaryDisabledOpacity": 0.34,
       "primaryActiveOpacity": "A3",
@@ -144,7 +152,7 @@ export const defaultTheme: Theme = {
     "checkbox":{
       "opacityDisabled": 0.34,
       "opacityDisabledCheckColor": 0.34,
-      "fontColor": "inherit",
+      "fontColor": colors.black,
       "focusColor": colors.blue
     },
     "radio":{
@@ -158,6 +166,9 @@ export const defaultTheme: Theme = {
       "color": colors.black,
       "invalidColor": colors.darkRed,
       "focusColor": colors.blue,
+      "scrollBarThumbColor": colors.darkGrey,
+      "scrollBarTrackColor": colors.lightGrey,
+      "disabled": 0.34,
       "hoverOptionBackgroundColor": "57"
     },
     "slider":{
@@ -174,13 +185,17 @@ export const defaultTheme: Theme = {
       "uncheckedTrackBackgroundColor": colors.lightGrey,
       "disabledBackgroundColor": 0.34,
       "requiredColor": colors.darkRed,
-      "focusColor": colors.blue
+      "focusColor": colors.blue,
+      "fontColor": colors.black
     },
     "link":{
       "fontColor": colors.blue,
-      "visitedColor": colors.purple,
       "disabledColor": colors.lightGrey,
-      "hoverColor": colors.linkBlue
+      "hoverFontColor": colors.linkBlue,
+      "visitedFontColor": colors.purple,
+      "visitedUnderlinedBackgroundColor": colors.purple,
+      "underlinedBackgroundColor": colors.blue,
+      "disabledUnderlinedBackgroundColor": colors.lightGrey,
     },
     "text":{
     },
@@ -211,7 +226,7 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "progressbar":{
-      "text": "inherit",
+      "fontColor": "inherit",
       "totalLineOpacity": 0.34,
       "overlayColor": colors.black,
       "overlayOpacity": 0.8
@@ -221,19 +236,15 @@ export const defaultTheme: Theme = {
       "hoverOptionColor": colors.black,
       "scrollBarThumbColor": colors.darkGrey,
       "scrollBarTrackColor": colors.lightGrey,
-      "color": colors.black,
+      "fontColor": colors.black,
       "placeholderColor": colors.lightGrey,
-      "disabledFontColor": 0.34,
-      "disabledLabelColor": 0.34,
-      "disabledUnderlinedColor": 0.34,
-      "disabledAssistiveTextColor": 0.34,
       "invalidColor": colors.darkRed,
       "disabled": 0.34,
       "focusColor": colors.blue
     },
     "footer":{},
     "spinner":{
-      "text": "inherit",
+      "fontColor": "inherit",
       "overlayColor": colors.black,
       "overlayOpacity": 0.8
     },
@@ -257,7 +268,9 @@ export const defaultTheme: Theme = {
       "fontColor": "inherit",
       "lineColor": colors.lightGrey,
       "disabledBackground": colors.darkWhite,
-      "disabledText": "inherit",
+      "disabledFont": colors.darkGrey,
+      "notVisitedOpacity": 0.64,
+      "disabled": 0.34,
       "focusColor": colors.blue
     },
     "accordion":{
@@ -288,6 +301,14 @@ export const defaultTheme: Theme = {
       "bodyBackgroundColor": colors.white,
       "bodyFontColor": colors.black
     },
-    "paginator": {}
+    "paginator": {},
+    "textarea":{
+      "fontColor": colors.black,
+      "placeholderColor": colors.lightGrey,
+      "disabled": 0.34,
+      "invalidColor": colors.darkRed,
+      "scrollBarThumbColor": colors.darkGrey,
+      "scrollBarTrackColor": colors.lightGrey,
+    }
   }
 };

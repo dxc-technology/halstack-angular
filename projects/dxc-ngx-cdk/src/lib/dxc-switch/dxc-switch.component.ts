@@ -109,6 +109,7 @@ export class DxcSwitchComponent implements OnChanges {
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
       display: inline-flex;
+      color: var(--switch-fontColor);
       mat-slide-toggle {
         margin-top: 5px;
         margin-bottom: 5px;
@@ -158,12 +159,12 @@ export class DxcSwitchComponent implements OnChanges {
       }
       mat-slide-toggle.mat-disabled:not(.mat-checked) {
         .mat-slide-toggle-bar {
-          opacity: var(--switch-disabledBackgroundColor) !important;
+          opacity: var(--switch-disabled) !important;
         }
       }
       mat-slide-toggle.mat-disabled {
         .mat-slide-toggle-content {
-          opacity: var(--switch-disabledBackgroundColor) !important;
+          opacity: var(--switch-disabled) !important;
         }
       }
       .mat-slide-toggle.mat-disabled {
@@ -175,7 +176,7 @@ export class DxcSwitchComponent implements OnChanges {
           cursor: not-allowed;
         }
         .mat-slide-toggle-bar {
-          opacity: var(--switch-disabledBackgroundColor) !important;
+          opacity: var(--switch-disabled) !important;
         }
       }
     `;

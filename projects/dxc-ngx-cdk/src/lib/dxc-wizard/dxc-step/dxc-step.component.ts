@@ -148,7 +148,7 @@ export class DxcStepComponent {
           ? "var(--wizard-fontColor)"
           : inputs.isCurrent
           ? "var(--wizard-fontColor)"
-          : "var(--wizard-disabledText)"};
+          : "var(--wizard-disabledFont)"};
         opacity: 1;
         margin: 0;
       }
@@ -165,7 +165,7 @@ export class DxcStepComponent {
         margin-left: 10px;
         color: ${inputs.position <= inputs.currentStep
           ? "var(--wizard-fontColor)"
-          : "var(--wizard-disabledText)"};
+          : "var(--wizard-disabledFont)"};
       }
 
       .label {
@@ -173,8 +173,8 @@ export class DxcStepComponent {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
         color: inherit;
-        ${inputs.position > inputs.currentStep && `opacity: 0.64;`}
-        ${inputs.disabled && `opacity: 0.34;`}
+        ${inputs.position > inputs.currentStep && `opacity: var(--wizard-notVisitedOpacity);`}
+        ${inputs.disabled && `opacity: var(--wizard-disabled);`}
         margin: 0;
       }
 

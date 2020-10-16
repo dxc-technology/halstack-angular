@@ -290,6 +290,7 @@ export class DxcTextInputComponent
         input {
           min-height: 22px;
           text-overflow: ellipsis;
+          color: var(--inputText-fontColor);
         }
         img {
           width: 20px;
@@ -322,16 +323,16 @@ export class DxcTextInputComponent
         }
       }
       .mat-hint {
-        color: var(--inputText-color);
+        color: var(--inputText-fontColor);
       }
       .mat-form-field-underline {
-        background-color: var(--inputText-color);
+        background-color: var(--inputText-fontColor);
         /* .mat-form-field-ripple{
           height: 0px;
         } */
       }
       label.mat-form-field-label {
-        color: var(--inputText-color);
+        color: var(--inputText-fontColor);
       }
       input::placeholder {
         color: var(--inputText-placeholderColor);
@@ -344,7 +345,7 @@ export class DxcTextInputComponent
           background-color: var(--inputText-invalidColor);
         }
         .mat-form-field-empty mat-label {
-          color: var(--inputText-color);
+          color: var(--inputText-fontColor);
         }
         &.mat-focused .mat-form-field-empty mat-label {
           color: var(--inputText-invalidColor);

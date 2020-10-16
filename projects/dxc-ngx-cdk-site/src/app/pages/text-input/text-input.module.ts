@@ -20,6 +20,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { TextInputThemeComponent } from '../../components/examples/text-input/text-input-theme/text-input-theme.component';
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
 import { TextInputMaskedComponent } from '../../components/examples/text-input/text-input-masked/text-input-masked.component';
+import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { TextInputMaskedComponent } from '../../components/examples/text-input/t
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    ColorPreviewModule
   ],
   exports: [
     TextInputComponent,

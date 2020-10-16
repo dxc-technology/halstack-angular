@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./text-input-table-properties.component.scss']
 })
 export class TextInputTablePropertiesComponent implements OnInit {
-
+  underlined = false;
+  
   @Input()
   tablePropertiesExample: Array<DataPropertiesTable>;
 

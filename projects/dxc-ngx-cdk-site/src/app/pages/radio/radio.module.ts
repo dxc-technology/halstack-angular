@@ -14,7 +14,7 @@ import { RadioGroupComponent } from '../../components/examples/radio/radio-group
 import { RadioLabelPositionComponent } from '../../components/examples/radio/radio-label-position/radio-label-position.component';
 import { RadioSimpleComponent } from '../../components/examples/radio/radio-simple/radio-simple.component';
 import { RadioSizedComponent } from '../../components/examples/radio/radio-sized/radio-sized.component';
-import { MatRadioModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
 import { RadioUncontrolledComponent } from '../../components/examples/radio/radio-uncontrolled/radio-uncontrolled.component';
 import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';

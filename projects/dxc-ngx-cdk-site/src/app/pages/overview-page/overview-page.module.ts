@@ -7,7 +7,8 @@ import { OverviewInstallComponent } from 'src/app/components/overview/overview-i
 import { OverviewSupportComponent } from 'src/app/components/overview/overview-support/overview-support.component';
 import { OverviewUseComponent } from 'src/app/components/overview/overview-use/overview-use.component';
 import { RouterModule } from '@angular/router';
-import { MatIconModule, MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CodePlaygroundModule } from 'src/app/components/code-playground/code-playground.module';
 import { TabbedSectionModule } from 'src/app/components/tabbed-section/tabbed-section.module';

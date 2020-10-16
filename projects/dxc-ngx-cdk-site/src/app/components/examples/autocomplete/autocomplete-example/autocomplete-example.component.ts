@@ -73,7 +73,7 @@ export class AutocompleteExampleComponent implements OnInit {
       .subscribe(resp => {
         this.examples.push(
           this.exampleService.generateExample({
-            title: "Asynchronous Unontrolled Autocomplete",
+            title: "Asynchronous Uncontrolled Autocomplete",
             component: AutocompleteAsyncUncontrolledComponent,
             selector: "example4",
             examples: [resp[0], resp[1], resp[2]]

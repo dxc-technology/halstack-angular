@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class ResultsetTableThemeComponent implements OnInit {
 
+  underlined = false;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {

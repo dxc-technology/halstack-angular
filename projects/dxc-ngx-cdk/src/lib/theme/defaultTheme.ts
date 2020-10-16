@@ -74,7 +74,7 @@ export const customTheme: Theme = {
       "trackLine": colors.dxcPurple,
       "totalLine": colors.darkGrey
     },
-    "autocomplete":{
+    "inputText":{
       "selectedOptionBackgroundColor": colors.lightGrey,
     },
     "footer":{
@@ -183,15 +183,6 @@ export const defaultTheme: Theme = {
       "hoverColor": colors.linkBlue
     },
     "text":{
-      "color": colors.black,
-      "placeholderColor": colors.lightGrey,
-      "disabledFontColor": 0.34,
-      "disabledLabelColor": 0.34,
-      "disabledUnderlinedColor": 0.34,
-      "disabledAssistiveTextColor": 0.34,
-      "invalidColor": colors.darkRed,
-      "disabled": 0.34,
-      "focusColor": colors.blue
     },
     "box":{
       "backgroundColor": colors.white
@@ -225,11 +216,20 @@ export const defaultTheme: Theme = {
       "overlayColor": colors.black,
       "overlayOpacity": 0.8
     },
-    "autocomplete":{
+    "inputText":{
       "hoverOptionBackgroundColor": "57",
       "hoverOptionColor": colors.black,
       "scrollBarThumbColor": colors.darkGrey,
-      "scrollBarTrackColor": colors.lightGrey
+      "scrollBarTrackColor": colors.lightGrey,
+      "color": colors.black,
+      "placeholderColor": colors.lightGrey,
+      "disabledFontColor": 0.34,
+      "disabledLabelColor": 0.34,
+      "disabledUnderlinedColor": 0.34,
+      "disabledAssistiveTextColor": 0.34,
+      "invalidColor": colors.darkRed,
+      "disabled": 0.34,
+      "focusColor": colors.blue
     },
     "footer":{},
     "spinner":{

@@ -167,56 +167,56 @@ export class DxcTextareaComponent
         &.disabled {
           pointer-events: none;
           .mat-hint {
-            opacity: var(--text-disabledAssistiveTextColor);
+            opacity: var(--inputText-disabledAssistiveTextColor);
           }
           .mat-form-field-underline {
-            opacity: var(--text-disabledUnderlinedColor);
+            opacity: var(--inputText-disabledUnderlinedColor);
           }
           .mat-form-field-empty mat-label {
-            opacity: var(--text-disabledLabelColor);
+            opacity: var(--inputText-disabledLabelColor);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            opacity: var(--text-disabledLabelColor);
+            opacity: var(--inputText-disabledLabelColor);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            opacity: var(--text-disabledLabelColor);
+            opacity: var(--inputText-disabledLabelColor);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                opacity: var(--text-disabledFontColor);
+                opacity: var(--inputText-disabledFontColor);
               }
             }
           }
         }
       }
       .mat-hint {
-        color: var(--text-color);
+        color: var(--inputText-color);
       }
       .mat-form-field-underline {
-        background-color: var(--text-color);
+        background-color: var(--inputText-color);
       }
       label.mat-form-field-label {
-        color: var(--text-color);
+        color: var(--inputText-color);
       }
       input::placeholder {
-        color: var(--text-placeholderColor);
+        color: var(--inputText-placeholderColor);
       }
       &.invalid {
         .mat-hint {
-          color: var(--text-invalidColor);
+          color: var(--inputText-invalidColor);
         }
         .mat-form-field-underline {
-          background-color: var(--text-invalidColor);
+          background-color: var(--inputText-invalidColor);
         }
         .mat-form-field-empty mat-label {
-          color: var(--text-color);
+          color: var(--inputText-color);
         }
         &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--text-invalidColor);
+          color: var(--inputText-invalidColor);
         }
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--text-invalidColor);
+          color: var(--inputText-invalidColor);
         }
       }
       .mat-form-field {
@@ -235,7 +235,7 @@ export class DxcTextareaComponent
             justify-content: flex-end;
             display: flex;
             span {
-              color: var(--text-invalidColor);
+              color: var(--inputText-invalidColor);
             }
           }
         }

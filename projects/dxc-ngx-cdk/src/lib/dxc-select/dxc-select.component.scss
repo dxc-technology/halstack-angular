@@ -57,7 +57,7 @@
   mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
     background: var(--checkbox-color);
     &::after {
-      color: var(--select-color);
+      color: var(--checkbox-checkColor) !important;
       top: 2.4px;
       left: 1px;
       width: 12px;

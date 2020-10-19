@@ -220,6 +220,9 @@ export class DxcTextareaComponent
         }
         .mat-form-field-underline {
           background-color: var(--textarea-invalidColor);
+          .mat-form-field-ripple {
+            background-color: var(--textarea-invalidColor);
+          }
         }
         .mat-form-field-empty mat-label {
           color: var(--textarea-fontColor);
@@ -229,6 +232,13 @@ export class DxcTextareaComponent
         }
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
           color: var(--textarea-invalidColor);
+        }
+        .mat-form-field {
+          &.mat-form-field-should-float {
+            mat-label {
+              color: var(--textarea-invalidColor);
+            }
+          }
         }
       }
       .mat-form-field {

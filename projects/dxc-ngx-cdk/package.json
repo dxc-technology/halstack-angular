@@ -62,10 +62,8 @@
     "moment": "^2.24.0",
     "ng-click-outside": "^6.0.0",
     "ng-mocks": "^10.0.0",
-    "ng-packagr": "^5.4.0",
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2",
-    "tsickle": "^0.37.0",
     "vanilla-text-mask": "^5.1.1",
     "zone.js": "~0.9.1"
   },
@@ -92,9 +90,9 @@
     "protractor": "5.4.0",
     "start-server-and-test": "^1.10.6",
     "ts-node": "7.0.0",
-    "tsickle": "^0.37.0",
+    "tsickle": "^0.37.1",
     "tslib": "^2.0.3",
     "tslint": "5.15.0",
-    "typescript": "3.5.3"
+    "typescript": "^3.6.5"
   }
 }

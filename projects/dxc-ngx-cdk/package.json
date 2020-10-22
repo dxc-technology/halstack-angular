@@ -90,11 +90,11 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "ng-packagr": "^5.4.0",
     "protractor": "5.4.0",
+    "start-server-and-test": "^1.10.6",
     "ts-node": "7.0.0",
     "tsickle": "^0.37.0",
-    "tslib": "^1.10.0",
+    "tslib": "^2.0.3",
     "tslint": "5.15.0",
-    "typescript": "3.5.3",
-    "start-server-and-test": "^1.10.6"
+    "typescript": "3.5.3"
   }
 }

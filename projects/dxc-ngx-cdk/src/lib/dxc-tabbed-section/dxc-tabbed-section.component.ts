@@ -4,8 +4,8 @@ import {
   ViewChild,
   Input,
   SimpleChanges,
+  EventEmitter
 } from "@angular/core";
-import { EventEmitter } from "events";
 import { css } from "emotion";
 import { DxcTabsComponent } from "../dxc-tabs/dxc-tabs.component";
 import { BehaviorSubject } from "rxjs";

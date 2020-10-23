@@ -8,7 +8,6 @@ import {
   SimpleChanges,
   ViewChild,
 } from "@angular/core";
-import { isArray } from "util";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -113,7 +112,7 @@ export class DxcSelectComponent implements OnChanges {
   public getIconAndLabelByValue(value: any) {
     this.iconsToShow = [];
     this.labeltoShow = [];
-    const multipleValue = isArray(value) ? value : [value];
+    const multipleValue = Array.isArray(value) ? value : [value];
     multipleValue.map((value) => {
       const element = this.options.filter((item) => item.value == value);
       if (element !== undefined && element[0]) {

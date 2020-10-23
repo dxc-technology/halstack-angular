@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { of, Subject, BehaviorSubject } from "rxjs";
-import { delay } from "rxjs/internal/operators";
+import { delay } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
 
 @Component({

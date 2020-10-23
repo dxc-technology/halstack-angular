@@ -5,7 +5,7 @@ import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { screen, waitFor } from "@testing-library/dom";
 import { of } from "rxjs";
-import { delay } from "rxjs/internal/operators";
+import { delay } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
 
 describe("DxcTextInputComponent", () => {

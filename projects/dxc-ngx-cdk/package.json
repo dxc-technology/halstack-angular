@@ -52,12 +52,13 @@
     "@angular/platform-browser-dynamic": "9.1.12",
     "@angular/router": "9.1.12",
     "@material-extended/mde": "^2.2.2",
+    "ng-click-outside": "^7.0.0",
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.7",
-    "@angular-devkit/build-ng-packagr": "~0.1000.7",
+    "@angular-devkit/build-angular": "^0.901.12",
+    "@angular-devkit/build-ng-packagr": "0.901.12",
     "@angular/cli": "9.1.12",
     "@angular/compiler-cli": "9.1.12",
     "@angular/language-service": "9.1.12",
@@ -81,6 +82,6 @@
     "tsickle": "^0.37.1",
     "tslib": "^2.0.3",
     "tslint": "5.15.0",
-    "typescript": "^3.9.7"
+    "typescript": "^3.6.5"
   }
 }

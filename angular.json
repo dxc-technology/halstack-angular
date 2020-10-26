@@ -17,12 +17,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "preserveSymlinks": true,
             "outputPath": "dist/angular-dxc-site",
             "index": "projects/dxc-ngx-cdk-site/src/index.html",
             "main": "projects/dxc-ngx-cdk-site/src/main.ts",
             "polyfills": "projects/dxc-ngx-cdk-site/src/polyfills.ts",
             "tsConfig": "projects/dxc-ngx-cdk-site/tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "projects/dxc-ngx-cdk-site/src/favicon.ico",
               "projects/dxc-ngx-cdk-site/src/assets",
@@ -160,7 +161,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
+            "aot": false,
             "outputPath": "dist/dxc-angular-cdk-examples",
             "index": "projects/dxc-ngx-cdk-examples/src/index.html",
             "main": "projects/dxc-ngx-cdk-examples/src/main.ts",
@@ -189,7 +190,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
+              "aot": false,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

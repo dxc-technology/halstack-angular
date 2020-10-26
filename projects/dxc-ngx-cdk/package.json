@@ -52,6 +52,7 @@
     "@angular/platform-browser-dynamic": "9.1.12",
     "@angular/router": "9.1.12",
     "@material-extended/mde": "^2.2.2",
+    "emotion": "10.0.27",
     "ng-click-outside": "^7.0.0",
     "ngx-mask": "^8.0.2",
     "rxjs": "~6.5.2"

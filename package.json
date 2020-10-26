@@ -35,7 +35,6 @@
     "@scullyio/ng-lib-v8": "0.0.21",
     "@scullyio/scully": "latest",
     "@types/jest": "^25.2.1",
-    "@dxc-technology/halstack-angular": "file:dist/dxc-ngx-cdk",
     "aws-sdk": "^2.718.0",
     "babel-jest": "^24.8.0",
     "emotion": "10.0.27",

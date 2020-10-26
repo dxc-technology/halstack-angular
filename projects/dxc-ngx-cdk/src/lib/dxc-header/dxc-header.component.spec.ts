@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcHeaderComponent } from "./dxc-header.component";
-import { MatToolbarModule } from "@angular/material";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { TestBed } from "@angular/core/testing";
 
 describe("DxcHeader tests", () => {

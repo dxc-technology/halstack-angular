@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MatProgressSpinnerModule, MatIconModule } from "@angular/material";
+import { MatIconModule } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { DxcSpinnerComponent } from "./dxc-spinner.component";
 import { CommonModule } from "@angular/common";
 

@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcSelectComponent } from "./dxc-select.component";
-import { MatSelectModule } from "@angular/material";
+import { MatSelectModule } from "@angular/material/select";
 import { screen } from "@testing-library/dom";
 
 const optionsMock = [

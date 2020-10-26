@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MatFormFieldModule, MatSelectModule } from "@angular/material";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from "@angular/material/select";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcSelectComponent } from "./dxc-select.component";

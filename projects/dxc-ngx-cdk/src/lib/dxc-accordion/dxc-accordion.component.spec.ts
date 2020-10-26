@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcAccordionComponent } from "./dxc-accordion.component";
-import { MatExpansionModule } from "@angular/material";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { TestBed } from "@angular/core/testing";
 
 describe("DxcAccordion tests", () => {

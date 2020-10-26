@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatSnackBarModule } from "@angular/material";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CommonModule } from "@angular/common";
 import { DxcAlertComponent } from "./dxc-alert.component";
 

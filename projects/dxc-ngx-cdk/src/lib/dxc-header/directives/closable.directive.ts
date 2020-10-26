@@ -13,7 +13,7 @@ import { DxcHeaderComponent } from "../dxc-header.component";
 export class ClosableDirective {
   parent: DxcHeaderComponent;
 
-  @HostListener("click") click($event) {
+  @HostListener("click") click() {
     this.parent.showMenu();
   }
 

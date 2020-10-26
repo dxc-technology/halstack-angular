@@ -7,7 +7,7 @@ import {
   EventEmitter,
   ChangeDetectorRef,
 } from "@angular/core";
-import { MatTab } from "@angular/material";
+import { MatTab } from "@angular/material/tabs";
 
 @Component({
   selector: "dxc-tab",

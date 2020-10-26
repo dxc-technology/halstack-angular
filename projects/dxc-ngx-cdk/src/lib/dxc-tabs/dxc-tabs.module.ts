@@ -1,11 +1,7 @@
 import { NgModule } from "@angular/core";
-import {
-  MatInputModule,
-  MatFormFieldModule,
-  MatTabsModule,
-  MatTab,
-  MatTabGroup,
-} from "@angular/material";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatTabsModule, MatTab, MatTabGroup } from "@angular/material/tabs";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTabsComponent } from "./dxc-tabs.component";

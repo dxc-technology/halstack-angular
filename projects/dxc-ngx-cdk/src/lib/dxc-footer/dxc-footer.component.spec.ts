@@ -1,6 +1,6 @@
 import { render } from "@testing-library/angular";
 import { DxcFooterComponent } from "./dxc-footer.component";
-import { MatToolbarModule } from "@angular/material";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 describe("DxcFooter tests", () => {
   test("should render dxc-footer", async () => {

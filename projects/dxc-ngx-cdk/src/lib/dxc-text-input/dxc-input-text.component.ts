@@ -9,7 +9,7 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
 } from "@angular/core";
-import { ErrorStateMatcher } from "@angular/material";
+import { ErrorStateMatcher } from "@angular/material/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";

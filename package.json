@@ -42,7 +42,6 @@
     "jest-preset-angular": "^7.1.1",
     "moment": "^2.24.0",
     "ng-packagr": "^10.0.0",
-    "ngx-mask": "^8.0.2",
     "ngx-monaco-editor": "8.1.1",
     "rxjs": "~6.5.2",
     "vanilla-text-mask": "^5.1.1",

@@ -36,7 +36,6 @@
     "@angular/platform-browser-dynamic": "10.2.0",
     "@angular/router": "10.2.0",
     "@material-extended/mde": "^2.2.2",
-    "ngx-mask": "^10.0.0",
     "rxjs": "~6.5.2"
   },
   "dependencies": {

@@ -32,6 +32,11 @@
             (click)="navigateTo('components/date')">Date</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/input' ? 
+            router.isActive(router.createUrlTree(['components/input']).toString(), true) : false}"
+            (click)="navigateTo('components/input')">Input Text</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/radio' ? 
             router.isActive(router.createUrlTree(['components/radio']).toString(), true) : false}"
             (click)="navigateTo('components/radio')">Radio Button</a>
@@ -50,11 +55,6 @@
             <a [ngClass]="{'active': 'components/switch' ? 
             router.isActive(router.createUrlTree(['components/switch']).toString(), true) : false}"
             (click)="navigateTo('components/switch')">Switch</a>
-          </div>
-          <div class="menu-item">
-            <a [ngClass]="{'active': 'components/input' ? 
-            router.isActive(router.createUrlTree(['components/input']).toString(), true) : false}"
-            (click)="navigateTo('components/input')">Text field</a>
           </div>
           <div class="menu-item">
             <a [ngClass]="{'active': 'components/textarea' ? 

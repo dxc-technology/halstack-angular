@@ -268,7 +268,7 @@ export class DxcTextInputComponent
         cursor: ${this.prefixPointer ? "pointer" : "default"};
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--text-focusColor);
+          outline-color: var(--inputText-focusColor);
         }
       }
       .suffixElement {
@@ -277,7 +277,7 @@ export class DxcTextInputComponent
         cursor: ${this.suffixPointer ? "pointer" : "default"};
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--text-focusColor);
+          outline-color: var(--inputText-focusColor);
         }
       }
       &.disabled {
@@ -290,6 +290,7 @@ export class DxcTextInputComponent
         input {
           min-height: 22px;
           text-overflow: ellipsis;
+          color: var(--inputText-fontColor);
         }
         img {
           width: 20px;
@@ -298,59 +299,59 @@ export class DxcTextInputComponent
         &.disabled {
           pointer-events: none;
           .mat-hint {
-            opacity: var(--text-disabled);
+            opacity: var(--inputText-disabled);
           }
           .mat-form-field-underline {
-            opacity: var(--text-disabled);
+            opacity: var(--inputText-disabled);
           }
           .mat-form-field-empty mat-label {
-            opacity: var(--text-disabled);
+            opacity: var(--inputText-disabled);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            opacity: var(--text-disabled);
+            opacity: var(--inputText-disabled);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            opacity: var(--text-disabled);
+            opacity: var(--inputText-disabled);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                opacity: var(--text-disabled);
+                opacity: var(--inputText-disabled);
               }
             }
           }
         }
       }
       .mat-hint {
-        color: var(--text-color);
+        color: var(--inputText-fontColor);
       }
       .mat-form-field-underline {
-        background-color: var(--text-color);
+        background-color: var(--inputText-fontColor);
         /* .mat-form-field-ripple{
           height: 0px;
         } */
       }
       label.mat-form-field-label {
-        color: var(--text-color);
+        color: var(--inputText-fontColor);
       }
       input::placeholder {
-        color: var(--text-placeholderColor);
+        color: var(--inputText-placeholderColor);
       }
       .mat-form-field-invalid {
         .mat-hint {
-          color: var(--text-invalidColor);
+          color: var(--inputText-invalidColor);
         }
         .mat-form-field-underline {
-          background-color: var(--text-invalidColor);
+          background-color: var(--inputText-invalidColor);
         }
         .mat-form-field-empty mat-label {
-          color: var(--text-color);
+          color: var(--inputText-fontColor);
         }
         &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--text-invalidColor);
+          color: var(--inputText-invalidColor);
         }
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--text-invalidColor);
+          color: var(--inputText-invalidColor);
         }
       }
       .mat-form-field {
@@ -369,7 +370,7 @@ export class DxcTextInputComponent
             justify-content: flex-end;
             display: flex;
             span {
-              color: var(--text-invalidColor);
+              color: var(--inputText-invalidColor);
             }
           }
         }
@@ -395,27 +396,27 @@ export class DxcTextInputComponent
         width: 3px;
       }
       &::-webkit-scrollbar-track {
-        background-color: var(--autocomplete-scrollBarTrackColor);
+        background-color: var(--inputText-scrollBarTrackColor);
         opacity: 0.34;
         border-radius: 3px;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: var(--autocomplete-scrollBarThumbColor);
+        background-color: var(--inputText-scrollBarThumbColor);
         border-radius: 3px;
       }
       .mat-option {
-        color: var(--autocomplete-hoverOptionColor);
+        color: var(--inputText-hoverOptionColor);
       }
       .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
         background-color: var(
-          --autocomplete-selectedOptionBackgroundColor
+          --inputText-selectedOptionBackgroundColor
         ) !important;
-        color: var(--autocomplete-hoverOptionColor);
+        color: var(--inputText-hoverOptionColor);
       }
       .mat-option:hover:not(.mat-option-disabled),
       .mat-option:focus:not(.mat-option-disabled) {
-        background-color: var(--autocomplete-hoverOptionBackgroundColor);
-        color: var(--autocomplete-hoverOptionColor);
+        background-color: var(--inputText-hoverOptionBackgroundColor);
+        color: var(--inputText-hoverOptionColor);
       }
       .errorOption {
         .mat-option-text {

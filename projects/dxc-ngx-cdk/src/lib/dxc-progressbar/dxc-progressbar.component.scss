@@ -83,7 +83,7 @@
     }
   }
   .notOverlayed {
-    color: var(--progressbar-text);
+    color: var(--progressbar-fontColor);
   }
   mat-progress-bar {
     ::ng-deep {

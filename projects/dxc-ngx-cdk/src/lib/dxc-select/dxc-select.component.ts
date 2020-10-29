@@ -135,6 +135,18 @@ export class DxcSelectComponent implements OnChanges {
         /* .assistiveText {
           color: var(--select-invalidColor) !important;
         } */
+        &::-webkit-scrollbar {
+          width: 3px;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: var(--select-scrollBarTrackColor);
+          opacity: 0.34;
+          border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--select-scrollBarThumbColor);
+          border-radius: 3px;
+        }
         .mat-form-field {
           .mat-hint {
             color: var(--select-invalidColor) !important;

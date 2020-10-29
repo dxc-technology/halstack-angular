@@ -61,10 +61,7 @@ export class DxcLinkComponent {
         padding-bottom: 2px;
         text-decoration: none;
 
-        ${inputs.underlined
-          ? `padding-bottom: 1px !important;
-        border-bottom: 1px solid;`
-          : ``}
+        ${this.getUnderlineStyles(inputs)}
 
         ${inputs.disabled ? "pointer-events: none;" : ""}
 
@@ -90,10 +87,30 @@ export class DxcLinkComponent {
     `;
   }
 
+  private getUnderlineStyles(inputs){
+    if(inputs.underlined){
+      if(!inputs.disabled){
+        return css`
+          padding-bottom: 1px !important;
+          border-bottom: 1px solid var(--link-underlinedBackgroundColor);
+      `;
+      }
+      else{
+        return css`
+          padding-bottom: 1px !important;
+          border-bottom: 1px solid var(--link-disabledUnderlinedBackgroundColor);
+      `;
+      }
+    }
+    else{
+      return css``;
+    }
+  }
+
   private getStateStyles(inputs) {
     return css`
       &:hover {
-        color: var(--link-hoverColor) !important;
+        color: var(--link-hoverFontColor) !important;
         text-decoration: none;
         padding-bottom: 1px !important;
         border-bottom: 1px solid;
@@ -101,9 +118,14 @@ export class DxcLinkComponent {
       }
 
       &:visited {
+        ${inputs.underlined
+          ? `padding-bottom: 1px !important;
+            border-bottom: 1px solid var(--link-visitedUnderlinedBackgroundColor);`
+          : ``}
         ${inputs.disabled
-          ? `color: var(--link-disabledColor) !important;`
-          : `color: var(--link-visitedColor) !important;`}
+          ? `color: var(--link-disabledColor) !important;
+            border-bottom: 1px solid var(--link-disabledUnderlinedBackgroundColor);`
+          : `color: var(--link-visitedFontColor) !important;`}
       }
     `;
   }

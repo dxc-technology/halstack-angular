@@ -89,23 +89,23 @@ export class DxcAlertComponent implements OnChanges {
     switch (type) {
       case "info":
         return css`
-          background-color: ${colors.lightBlue};
+          background-color: var(--alert-infoColor);
         `;
       case "confirm":
         return css`
-          background-color: ${colors.lightGreen};
+          background-color: var(--alert-confirmColor);
         `;
       case "warning":
         return css`
-          background-color: ${colors.lightYellow};
+          background-color:  var(--alert-warningColor);
         `;
       case "error":
         return css`
-          background-color: ${colors.lightPink};
+          background-color: var(--alert-errorColor);
         `;
       default:
         return css`
-          background-color: ${colors.lightPink};
+          background-color: var(--alert-errorColor);
         `;
     }
   }

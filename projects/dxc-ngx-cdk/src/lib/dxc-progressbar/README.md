@@ -91,7 +91,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>totalLine</td>
-        <td><code>#000000</code></td>
+        <td><code>#666666</code></td>
         <td>Applies to token totalLine.</td>
     </tr>
 </table>

@@ -2,9 +2,11 @@
  * Public API Surface of foo
  */
 export * from './lib/scroll-spy/scroll-spy.module'
+export * from './lib/scroll-spy/scroll-spy.directive'
 
 export * from './lib/theme/theme.service';
 export * from './lib/theme/theme.module';
+export * from './lib/theme/theme.directive';
 
 export * from './lib/dxc-accordion/dxc-accordion.component';
 export * from './lib/dxc-accordion/dxc-accordion.module';
@@ -69,6 +71,7 @@ export * from './lib/dxc-switch/dxc-switch.module';
 
 export * from './lib/dxc-tabs/dxc-tabs.component';
 export * from './lib/dxc-tabs/dxc-tabs.module';
+export * from './lib/dxc-tabs/dxc-tab/dxc-tab.component';
 
 export * from './lib/dxc-text-input/dxc-input-text.component';
 export * from './lib/dxc-text-input/dxc-input-text.module';
@@ -78,6 +81,13 @@ export * from './lib/dxc-textarea/dxc-textarea.module';
 
 export * from './lib/dxc-upload/dxc-upload.component';
 export * from './lib/dxc-upload/dxc-upload.module';
+export * from './lib/dxc-upload/dxc-drag-and-drop/dxc-drag-and-drop.component';
+export * from './lib/dxc-upload/dxc-files-to-upload/dxc-files-preview/dxc-file-preview/dxc-file-preview.component';
+export * from './lib/dxc-upload/dxc-files-to-upload/dxc-files-preview/dxc-files-preview.component';
+export * from './lib/dxc-upload/dxc-files-to-upload/dxc-upload-buttons/dxc-upload-buttons.component';
+export * from './lib/dxc-upload/dxc-files-to-upload/dxc-files-to-upload.component';
+export * from './lib/dxc-upload/dxc-transactions/dxc-transaction/dxc-transaction.component';
+export * from './lib/dxc-upload/dxc-transactions/dxc-transactions.component';
 
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';
@@ -87,6 +97,7 @@ export * from './lib/dxc-paginator/dxc-paginator.module';
 
 export * from './lib/dxc-wizard/dxc-wizard.component';
 export * from './lib/dxc-wizard/dxc-wizard.module';
+export * from './lib/dxc-wizard/dxc-step/dxc-step.component';
 
 export * from './lib/dxc-link/dxc-link.component';
 export * from './lib/dxc-link/dxc-link.module';
@@ -106,3 +117,4 @@ export * from './lib/dxc-resultable/components/dxc-header-row/dxc-header-row.com
 export * from './lib/dxc-resultable/components/dxc-row/dxc-row.component';
 export * from './lib/dxc-resultable/directives/dxc-cell-def.directive';
 export * from './lib/dxc-resultable/directives/dxc-column-def.directive';
+export * from './lib/dxc-resultable/directives/sorting.directive';

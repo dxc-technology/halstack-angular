@@ -7,6 +7,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./autocomplete-usage.component.scss"]
 })
 export class AutocompleteUsageComponent implements OnInit {
+
+  underline:boolean = true;
+
   navigateToRoute() {
     this.router.navigate(
       ["components/input"]

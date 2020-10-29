@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcCardComponent } from "./dxc-card.component";
-import { MatCardModule } from "@angular/material";
+import { MatCardModule } from "@angular/material/card";
 
 describe("DxcCardComponent tests", () => {
   test("should render dxc-card", async () => {

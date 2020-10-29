@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MatButtonModule, MatIconModule } from "@angular/material";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
 import { DxcTableComponent } from "./dxc-table.component";
 import { CommonModule } from "@angular/common";
 

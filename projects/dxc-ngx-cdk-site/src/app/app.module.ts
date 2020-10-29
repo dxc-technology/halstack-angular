@@ -42,7 +42,6 @@ import { WizardModule } from './pages/wizard/wizard.module';
 import { SidenavModule } from './pages/sidenav/sidenav.module';
 import { LinkModule } from './pages/link/link.module';
 import { HeadingModule } from './pages/heading/heading.module';
-import { ScullyLibModule } from '@scullyio/ng-lib-v8';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
 import { TextAreaModule } from './pages/text-area/text-area.module';
 @NgModule({
@@ -96,7 +95,6 @@ import { TextAreaModule } from './pages/text-area/text-area.module';
     SliderModule,
     HeadingModule,
     ResultsetTableModule,
-    ScullyLibModule,
     DxcSelectModule
   ],
   providers: [

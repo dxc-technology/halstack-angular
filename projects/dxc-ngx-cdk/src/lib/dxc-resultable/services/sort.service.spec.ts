@@ -68,7 +68,7 @@ describe("SortService", () => {
       providers: [SortService],
     }).compileComponents();
     fixture = TestBed.createComponent(TestHeaderComponent);
-    sort = TestBed.get(SortService);
+    sort = TestBed.inject(SortService);
     component = fixture.componentInstance;
     spyDefaultIcon = jest.spyOn(sort, "getDefaultIcon");
     spyAscIcon = jest.spyOn(sort, "getAscIcon");

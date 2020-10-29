@@ -758,12 +758,7 @@ export class DxcResultTable<T>
 
   //It is needed to give a unique id to the resultset table
   setClassName() {
-    this.className = Math.round(Math.random() * 100000000000);
-    let element = document.getElementsByClassName(this.className)[0];
-    while (element != undefined) {
-      this.className = Math.round(Math.random() * 100000000000);
-      element = document.getElementsByClassName(this.className)[0];
-    }
+    this.className = `${Math.round(Math.random() * 100)}`;
   }
 }
 

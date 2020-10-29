@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatToolbarModule } from "@angular/material";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { CommonModule } from "@angular/common";
 import { DxcFooterComponent } from "./dxc-footer.component";
 

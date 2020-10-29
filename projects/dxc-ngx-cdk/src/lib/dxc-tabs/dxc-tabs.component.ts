@@ -14,7 +14,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
-import { ElementRef } from "@angular/core";
+import { ElementRef, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: "dxc-tabs",
@@ -50,7 +50,7 @@ export class DxcTabsComponent implements OnChanges {
     margin: null,
   });
 
-  constructor(private utils: CssUtils, private _element: ElementRef) {}
+  constructor(private utils: CssUtils, private _element: ElementRef, private cdRef: ChangeDetectorRef) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.renderedActiveTabIndex = this.activeTabIndex;
@@ -85,6 +85,7 @@ export class DxcTabsComponent implements OnChanges {
     this.generateTabs();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.insertUnderline();
+    this.cdRef.detectChanges();
   }
 
   private generateTabs() {
@@ -99,7 +100,6 @@ export class DxcTabsComponent implements OnChanges {
     list.reset([matTabsFromQueryList]);
     this.tabGroup._tabs = list;
     this.setActiveTab();
-    this.tabGroup.ngAfterContentInit();
   }
 
   insertUnderline() {

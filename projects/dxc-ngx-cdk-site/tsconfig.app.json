@@ -1,15 +1,20 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": { 
+      "@angular/*": [ "../../node_modules/@angular/*" ],
+      "@dxc-technology/halstack-angular": [ "../../dist/dxc-ngx-cdk/*" ],
+    },
   },
   "files": [
     "src/main.ts",
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "src/test.ts",

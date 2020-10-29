@@ -9,7 +9,7 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
 } from "@angular/core";
-import { ErrorStateMatcher } from "@angular/material";
+import { ErrorStateMatcher } from "@angular/material/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -150,13 +150,18 @@ export class DxcTextInputComponent
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this._valueChangeTrack = true;
 
-    if (this.onClickSuffix.observers.length === 0) {
-      this.suffixPointer = false;
+    if(this.onClickSuffix.observers !== undefined){
+      if (this.onClickSuffix.observers.length === 0) {
+        this.suffixPointer = false;
+      }
     }
 
-    if (this.onClickPrefix.observers.length === 0) {
-      this.prefixPointer = false;
+    if(this.onClickPrefix.observers !== undefined){
+      if (this.onClickPrefix.observers.length === 0) {
+        this.prefixPointer = false;
+      }
     }
+
   }
 
   public onChanged($event: any): void {

@@ -7,7 +7,7 @@ describe("PaginationService", () => {
     TestBed.configureTestingModule({
       providers: [PaginationService],
     }).compileComponents();
-    service = TestBed.get(PaginationService);
+    service = TestBed.inject(PaginationService);
   });
 
   test("should be created", () => {

@@ -1,6 +1,8 @@
 import { css } from "emotion";
 import { spaces } from "./variables";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class CssUtils {
   getMargins(margin) {
     return margin && typeof margin !== "object"

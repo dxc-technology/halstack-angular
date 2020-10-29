@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "scripts": {
-    "build-lib": "ng build",
-    "build-lib-prod": "ng build --prod",
+    "build-lib": "ng build dxc-ngx-cdk",
+    "build-lib-prod": "ng build --prod dxc-ngx-cdk",
     "package": "cd ./../../dist/dxc-ngx-cdk && npm pack",
     "post-build-lib": "cp -R ./src/assets ./../../dist/dxc-ngx-cdk/lib/assets && npm run copy-styles-lib && npm run copy-md-lib",
     "copy-styles-lib": "cp -R ./src/lib/styles ./../../dist/dxc-ngx-cdk/lib/styles ",
@@ -25,7 +25,7 @@
   },
   "peerDepencies": {
     "@angular/animations": "10.2.0",
-    "@angular/cdk": "^10.2.5",
+    "@angular/cdk": "10.2.5",
     "@angular/common": "10.2.0",
     "@angular/compiler": "10.2.0",
     "@angular/core": "10.2.0",

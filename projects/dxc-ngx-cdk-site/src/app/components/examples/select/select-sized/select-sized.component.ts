@@ -10,15 +10,15 @@ export class SelectSizedComponent {
   inputValue;
   optionsWithOnlyIcons = [
     {
-      value: 1,
+      value: "1",
       iconSrc: "assets/img/facebook-bl.svg"
     },
     {
-      value: 2,
+      value: "2",
       iconSrc: "assets/img/twitter-bl.svg"
     },
     {
-      value: 3,
+      value: "3",
       iconSrc: "assets/img/linkedin-bl.svg"
     }
   ];

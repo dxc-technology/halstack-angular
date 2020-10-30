@@ -45,12 +45,12 @@
     <mat-option
       theme
       *ngFor="let option of options; index as i"
-      value="{{ option.value }}"
+      [value]="option.value"
       [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
     >
       <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
       <span *ngIf="option.label">{{ option.label }}</span>
     </mat-option>
   </mat-select>
-  <input type="hidden" name="name" value="{{ renderedValue }}" />
+  <input type="hidden" name="name" [value]="renderedValue" />
 </mat-form-field>

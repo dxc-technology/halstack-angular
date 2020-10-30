@@ -8,7 +8,6 @@ import {
   SimpleChanges,
   ViewChild,
 } from "@angular/core";
-import { isArray } from "util";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -92,12 +91,10 @@ export class DxcSelectComponent implements OnChanges {
 
   public valueChanged($event: any): void {
     this.onChange.emit($event.value);
+    this.renderedValue = $event.value;
     if (this.value === undefined || this.value === null) {
-      this.renderedValue = $event.value;
       this.getIconAndLabelByValue(this.renderedValue);
     } else {
-      $event.source._selectionModel.clear();
-      this.renderedValue = $event.value;
       $event.source.writeValue(this.renderedValue);
     }
   }
@@ -113,7 +110,7 @@ export class DxcSelectComponent implements OnChanges {
   public getIconAndLabelByValue(value: any) {
     this.iconsToShow = [];
     this.labeltoShow = [];
-    const multipleValue = isArray(value) ? value : [value];
+    const multipleValue = Array.isArray(value) ? value : [value];
     multipleValue.map((value) => {
       const element = this.options.filter((item) => item.value == value);
       if (element !== undefined && element[0]) {
@@ -129,12 +126,9 @@ export class DxcSelectComponent implements OnChanges {
     }
   }
 
-  getInvalidStyles(inputs) {
-    if (inputs.invalid) {
+  getInvalidStyles() {
+    if (this.invalid) {
       return css`
-        /* .assistiveText {
-          color: var(--select-invalidColor) !important;
-        } */
         &::-webkit-scrollbar {
           width: 3px;
         }
@@ -173,7 +167,7 @@ export class DxcSelectComponent implements OnChanges {
     return css`
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
-      ${this.getInvalidStyles(inputs)}
+      ${this.getInvalidStyles()}
       ::ng-deep {
         .mat-form-field-label:not(.mat-form-field-empty) {
           color: var(--select-color);

@@ -10,17 +10,17 @@ export class SelectIconsComponent {
   inputValue;
   optionsWithIcons = [
     {
-      value: 1,
+      value: "1",
       label: "Facebook",
       iconSrc: "assets/img/facebook-bl.svg"
     },
     {
-      value: 2,
+      value: "2",
       label: "Twitter",
       iconSrc: "assets/img/twitter-bl.svg"
     },
     {
-      value: 3,
+      value: "3",
       label: "Linkedin",
       iconSrc: "assets/img/linkedin-bl.svg"
     }

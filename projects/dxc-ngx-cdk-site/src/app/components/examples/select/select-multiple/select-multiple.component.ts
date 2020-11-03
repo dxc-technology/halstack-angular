@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SelectMultipleComponent {
 
-  multipleSelected = '';
+  multipleSelected = [''];
   optionsWithoutIcon = [
     {
       value: "1",
@@ -26,7 +26,7 @@ export class SelectMultipleComponent {
   constructor() {}
 
   onChange(event) {
-    console.log(event);
+    this.multipleSelected = event;
   }
 
 }

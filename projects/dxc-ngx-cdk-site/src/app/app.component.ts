@@ -41,7 +41,7 @@ export class AppComponent {
 
 
   selectVersion(value) {
-    window.location.href = this.versions.find((v) => v.label === value).url;
+    window.location.href = this.versions.find((v) => v.label === value.toString()).url;
   }
 
   ngOnDestroy(): void {

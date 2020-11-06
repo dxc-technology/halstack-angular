@@ -16,7 +16,7 @@
     "generate-lib-win": "npm run build-lib && npm run post-build-lib-win && npm run package",
     "generate-lib-prod-win": "npm run build-lib-prod && npm run post-build-lib-win && npm run package",
     "test": "jest --config ./jest.lib.config.js",
-    "build-lib:watch": "ng build --watch"
+    "build-lib:watch": "ng build --watch dxc-ngx-cdk"
   },
   "author": {
     "name": "DXC Technology",

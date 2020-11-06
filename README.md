@@ -55,27 +55,27 @@ npm run generate-lib
 
 Contained in `projects\dxc-ngx-cdk-examples` folder.
 
-````bash
+```bash
 cd projects/dxc-ngx-cdk-examples
-````
+```
 
 Install the application dependencies.
 
-````bash
+```bash
 npm install
-````
+```
 
 The Assure Angular CDK needs to be linked to the application (from the folder `dist\dxc-ngx-cdk`). This one must have been previously built as shown before.
 
-````bash
+```bash
 npm run link-lib
-````
+```
 
 Start the application
 
-````bash
+```bash
 npm run start
-````
+```
 
 If you are watching for changes, anytime you make a change to the library or the app, `angular cli` will live-reload your local dev server so you can iterate on your component in real-time.
 

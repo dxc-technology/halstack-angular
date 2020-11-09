@@ -9,6 +9,7 @@
     "build-next-cdk-site": "ng build angular-dxc-site --prod --baseHref=/tools/angular/next/",
     "build-release-cdk-site": "ng build angular-dxc-site --prod ",
     "link-lib": "cd ./projects/dxc-ngx-cdk-site && npm link ../../dist/dxc-ngx-cdk",
+    "unlink-lib": "cd ./dist/dxc-ngx-cdk && npm unlink",
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",

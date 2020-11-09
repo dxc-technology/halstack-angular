@@ -7,7 +7,6 @@
       "emotion": "emotion",
       "moment": "momentImported",
       "@material-extended/mde": "mde",
-      "ng-click-outside": "ngClickOutside",
       "util": "util",
       "events": "events"
     }

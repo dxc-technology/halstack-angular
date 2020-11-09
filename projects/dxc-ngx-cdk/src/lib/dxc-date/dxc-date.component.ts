@@ -153,19 +153,26 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   @HostListener('document:click', ['$event'])
   public onClickOutsideHandler(event) {
-    if (event.target.offsetParent !== null) {
+    if (event.target.offsetParent !== null && event.target.offsetParent.getAttribute("class") !== null) {
         if(!event.target.offsetParent.getAttribute("class").includes('mde-popover-panel')
         && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-period')
         && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-table')){
-          if (this._isCalendarOpened) {
-            if (!this._isOpenClicked && !this._isSelectingDate) {
-              this.closeCalendar();
-            } else {
-              this._isOpenClicked = false;
-              this._isSelectingDate = false;
-            }
-          }
+          this.checkOpenCalendar();
         }
+    }
+    else if (event.target.offsetParent !== null && !event.target.offsetParent.getAttribute("class")){
+      this.checkOpenCalendar();
+    }
+  }
+
+  private checkOpenCalendar(){
+    if (this._isCalendarOpened) {
+      if (!this._isOpenClicked && !this._isSelectingDate) {
+        this.closeCalendar();
+      } else {
+        this._isOpenClicked = false;
+        this._isSelectingDate = false;
+      }
     }
   }
 

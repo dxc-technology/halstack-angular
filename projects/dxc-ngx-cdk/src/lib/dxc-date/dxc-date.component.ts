@@ -18,6 +18,7 @@ import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
+import { HostListener } from '@angular/core';
 const moment = momentImported;
 
 @Component({
@@ -43,6 +44,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
+
+  @HostListener('document:click', ['$event'])
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -77,7 +80,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
-  constructor(private utils: CssUtils) {}
+  constructor() {}
 
   private calculateComponentValues(): void {
     this.size = this.size
@@ -148,14 +151,21 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.onBlur.emit(value);
   }
 
-  public onClickOutsideHandler() {
-    if (this._isCalendarOpened) {
-      if (!this._isOpenClicked && !this._isSelectingDate) {
-        this.closeCalendar();
-      } else {
-        this._isOpenClicked = false;
-        this._isSelectingDate = false;
-      }
+  @HostListener('document:click', ['$event'])
+  public onClickOutsideHandler(event) {
+    if (event.target.offsetParent !== null) {
+        if(!event.target.offsetParent.getAttribute("class").includes('mde-popover-panel')
+        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-period')
+        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-table')){
+          if (this._isCalendarOpened) {
+            if (!this._isOpenClicked && !this._isSelectingDate) {
+              this.closeCalendar();
+            } else {
+              this._isOpenClicked = false;
+              this._isSelectingDate = false;
+            }
+          }
+        }
     }
   }
 

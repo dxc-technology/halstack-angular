@@ -16,7 +16,7 @@
     "generate-lib-win": "npm run build-lib && npm run post-build-lib-win && npm run package",
     "generate-lib-prod-win": "npm run build-lib-prod && npm run post-build-lib-win && npm run package",
     "test": "jest --config ./jest.lib.config.js",
-    "build-lib:watch": "ng build dxc-ngx-cdk --watch"
+    "build-lib:watch": "ng build --watch dxc-ngx-cdk"
   },
   "author": {
     "name": "DXC Technology",
@@ -35,56 +35,16 @@
     "@angular/platform-browser": "10.2.0",
     "@angular/platform-browser-dynamic": "10.2.0",
     "@angular/router": "10.2.0",
-    "@material-extended/mde": "^2.2.2",
     "rxjs": "~6.5.2"
   },
   "dependencies": {
-    "@angular/animations": "10.2.0",
-    "@angular/cdk": "^10.2.5",
-    "@angular/common": "10.2.0",
-    "@angular/compiler": "10.2.0",
-    "@angular/core": "10.2.0",
-    "@angular/forms": "10.2.0",
-    "@angular/material": "10.2.5",
-    "@angular/material-moment-adapter": "10.2.5",
-    "@angular/platform-browser": "10.2.0",
-    "@angular/platform-browser-dynamic": "10.2.0",
-    "@angular/router": "10.2.0",
-    "@material-extended/mde": "^2.2.2",
     "@testing-library/angular": "^10.1.2",
-    "emotion": "10.0.27",
     "jest": "^24.9.0",
     "jest-preset-angular": "^7.1.1",
-    "ng-click-outside": "^7.0.0",
     "ng-mocks": "^10.4.0",
-    "rxjs": "~6.5.2",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1002.0",
-    "@angular-devkit/build-ng-packagr": "0.1002.0",
-    "@angular/cli": "10.2.0",
-    "@angular/compiler-cli": "10.2.0",
-    "@angular/language-service": "10.2.0",
-    "@babel/core": "^7.4.5",
-    "@types/node": "^12.11.1",
-    "babel-loader": "^8.0.6",
-    "codelyzer": "^5.1.2",
-    "cypress": "^3.7.0",
-    "cypress-image-snapshot": "^3.1.1",
-    "jasmine-core": "3.4.0",
-    "jasmine-spec-reporter": "4.2.1",
-    "karma": "4.1.0",
-    "karma-chrome-launcher": "2.2.0",
-    "karma-coverage-istanbul-reporter": "2.0.1",
-    "karma-jasmine": "2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
-    "ng-packagr": "^5.4.0",
-    "protractor": "5.4.0",
-    "start-server-and-test": "^1.10.6",
-    "ts-node": "7.0.0",
-    "tsickle": "^0.37.1",
-    "tslint": "5.15.0",
-    "typescript": "^3.6.5"
+    "@types/node": "^12.11.1"
   }
 }

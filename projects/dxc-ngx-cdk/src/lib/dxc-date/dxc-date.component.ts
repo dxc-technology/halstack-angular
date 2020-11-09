@@ -160,7 +160,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
           this.checkOpenCalendar();
         }
     }
-    else if (event.target.offsetParent !== null && !event.target.offsetParent.getAttribute("class")){
+    else{
       this.checkOpenCalendar();
     }
   }

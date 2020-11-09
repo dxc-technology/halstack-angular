@@ -27,10 +27,10 @@ The project is divided in two main folders. One is for the actual library, and t
 
 ### Library
 
-Contained in the `projects/dxc-ngx-cdk`.
+Contained in the `projects\dxc-ngx-cdk`.
 
 ```bash
-cd projects/dxc-ngx-cdk/
+cd projects\dxc-ngx-cdk
 ```
 
 Install the library dependencies.
@@ -39,50 +39,51 @@ Install the library dependencies.
 npm install
 ```
 
-Build the cdk library on the library root folder.
+Run the build process into `dist` folder, detecting and automatically building changes in src.
 
-````bash
-npm run build-lib
-npm run post-build-lib
-npm run package
-````
-
-Or if you want it to automatically detect changes:
-
-````bash
+```bash
 npm run build-lib:watch
-````
+```
+
+Or if there is no need to watch for changes, run the build process and pack it to generate the library.
+
+```bash
+npm run generate-lib
+```
 
 ### Example Application
 
-Contained in `projects/dxc-ngx-cdk-examples` folder.
+Contained in `projects\dxc-ngx-cdk-examples` folder.
 
-````bash
+```bash
 cd projects/dxc-ngx-cdk-examples
-````
+```
 
-Install the application dependencies. The Assure Angular CDK dependency is linked to the local lib file in `dist/dxc-ngx-cdk`. This one must have been previously built as shown before.
+Install the application dependencies.
 
-````bash
+```bash
 npm install
-````
+```
+
+The Assure Angular CDK needs to be linked to the application (from the folder `dist\dxc-ngx-cdk`). This one must have been previously built as shown before.
+
+```bash
+npm run link-lib
+```
 
 Start the application
 
-````bash
+```bash
 npm run start
-````
+```
+
+If you are watching for changes, anytime you make a change to the library or the app, `angular cli` will live-reload your local dev server so you can iterate on your component in real-time.
 
 ## Running the test
 
-You run the tests from the library folder `projects/dxc-ngx-cdk`.
+Run the tests from the library folder `projects\dxc-ngx-cdk` after the library dependencies have been installed.
 
 ```bash
-cd projects/dxc-ngx-cdk/
-```
-
-For running the tests after the library dependencies has been installed
-
-```bash
+cd projects\dxc-ngx-cdk
 npm run test
 ```

@@ -101,7 +101,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public ngOnInit(): void {
     this.calculateComponentValues();
 
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle()}`;
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
@@ -114,7 +114,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
 
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle()}`;
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
@@ -176,7 +176,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     }
   }
 
-  public openCalendar(event: any) {
+  public openCalendar() {
     this._dxcCalendar.activeDate = this.dateValue.isValid()
       ? this.dateValue
       : moment();
@@ -274,7 +274,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
     `;
   }
-  getDynamicStyle(inputs) {
+  getDynamicStyle() {
     return css`
       &.disabled {
         cursor: not-allowed !important;

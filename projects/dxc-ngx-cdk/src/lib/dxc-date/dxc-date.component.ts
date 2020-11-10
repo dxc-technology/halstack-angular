@@ -39,7 +39,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() margin: any;
   @Input() size: string;
 
-  @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
@@ -125,7 +125,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: value,
       dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
-    this.onInputChange.emit(_dateReturn);
+    this.onChange.emit(_dateReturn);
 
     if (!this.value) {
       this.renderedValue = value;
@@ -139,7 +139,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: _stringValue,
       dateValue: value.isValid() ? value.toDate() : null,
     };
-    this.onInputChange.emit(_dateReturn);
+    this.onChange.emit(_dateReturn);
     if (!this.value) {
       this.dateValue = value;
       this.renderedValue = _stringValue;

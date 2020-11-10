@@ -11,7 +11,7 @@ The DXC Date Component is an element to select a date.
   label="Input label"
   [value]="inputValue"
   assistiveText="assistive text"
-  (onInputChange)="onChange($event)"
+  (onChange)="onChange($event)"
   [invalid]="isInvalidDate"
   margin="medium"
 ></dxc-date>

@@ -47,7 +47,7 @@ describe("DxcDate", () => {
       ],
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
         value: newValue,
       },
       imports: [
@@ -78,7 +78,7 @@ describe("DxcDate", () => {
     const dxcDate = await render(DxcDateComponent, {
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -113,7 +113,7 @@ describe("DxcDate", () => {
       ],
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
         format: "YYYY/MM/DD",
       },
       imports: [
@@ -151,7 +151,7 @@ describe("DxcDate", () => {
     const dxcDate = await render(DxcDateComponent, {
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -175,7 +175,7 @@ describe("DxcDate", () => {
     });
   });
 
-  test("onInputChange function is called when the user selects from the calendar", async () => {
+  test("onChange function is called when the user selects from the calendar", async () => {
     const onChangeFunction = jest.fn();
     const dxcDate = await render(DxcDateComponent, {
       providers: [
@@ -188,7 +188,7 @@ describe("DxcDate", () => {
       ],
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
         value: newValue,
       },
       imports: [
@@ -225,7 +225,7 @@ describe("DxcDate", () => {
       ],
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
         value: "12-03-1995",
         format: "MM-DD-YYYY",
       },
@@ -268,7 +268,7 @@ describe("DxcDate", () => {
       ],
       componentProperties: {
         label: "test-date",
-        onInputChange: { emit: onChangeFunction } as any,
+        onChange: { emit: onChangeFunction } as any,
         value: newValue,
       },
       imports: [

@@ -27,7 +27,7 @@ export class AppComponent {
     this.suscription = this.http.get(portal.url
     ).subscribe(
       (resp: Array<any>) => {
-        this.versions = resp.map((item) => { return { label: `${item.versionNumber}`, value: item.versionNumber, url: item.versionURL, current: item.current } });
+        this.versions = resp.map((item) => { return { label: `${item.versionNumber}`, value: `${item.versionNumber}`, url: item.versionURL, current: item.current } });
         this.calculateCurrentVersion();
       },
       err => console.error('Failed when retrieve versions.json from AWS', err));
@@ -41,7 +41,7 @@ export class AppComponent {
 
 
   selectVersion(value) {
-    window.location.href = this.versions.find((v) => v.label === value.toString()).url;
+    window.location.href = this.versions.find((v) => v.label === value).url;
   }
 
   ngOnDestroy(): void {

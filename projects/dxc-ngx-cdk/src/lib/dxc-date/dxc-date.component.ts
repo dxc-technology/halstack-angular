@@ -39,7 +39,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() margin: any;
   @Input() size: string;
 
-  @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
@@ -101,7 +101,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public ngOnInit(): void {
     this.calculateComponentValues();
 
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle()}`;
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
@@ -114,7 +114,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
 
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle()}`;
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
@@ -125,7 +125,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: value,
       dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
-    this.onInputChange.emit(_dateReturn);
+    this.onChange.emit(_dateReturn);
 
     if (!this.value) {
       this.renderedValue = value;
@@ -139,7 +139,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: _stringValue,
       dateValue: value.isValid() ? value.toDate() : null,
     };
-    this.onInputChange.emit(_dateReturn);
+    this.onChange.emit(_dateReturn);
     if (!this.value) {
       this.dateValue = value;
       this.renderedValue = _stringValue;
@@ -176,7 +176,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     }
   }
 
-  public openCalendar(event: any) {
+  public openCalendar() {
     this._dxcCalendar.activeDate = this.dateValue.isValid()
       ? this.dateValue
       : moment();
@@ -274,7 +274,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
     `;
   }
-  getDynamicStyle(inputs) {
+  getDynamicStyle() {
     return css`
       &.disabled {
         cursor: not-allowed !important;

@@ -9,7 +9,6 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
 } from "@angular/core";
-import { ErrorStateMatcher } from "@angular/material/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -19,7 +18,6 @@ import {
   AfterViewChecked,
   ChangeDetectorRef,
 } from "@angular/core";
-import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "dxc-input-text",
@@ -99,9 +97,6 @@ export class DxcTextInputComponent
     isMasked: false,
   });
 
-  public formControl = new FormControl();
-  public matcher = new InvalidStateMatcher();
-
   constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
@@ -130,16 +125,10 @@ export class DxcTextInputComponent
     } else {
       this.type = "text";
     }
-    if (this.isMasked) {
-      this.type = "password";
-    } else {
-      this.type = "text";
-    }
     this.isDisabled = this.disabled;
 
     this.renderedValue = this.value || "";
     this.label = this.label || "";
-    this.matcher.setInvalid(this.invalid);
 
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -327,38 +316,23 @@ export class DxcTextInputComponent
           }
         }
       }
-      .mat-hint {
-        color: var(--inputText-fontColor);
-      }
-      .mat-form-field-underline {
-        background-color: var(--inputText-fontColor);
-        /* .mat-form-field-ripple{
-          height: 0px;
-        } */
-      }
+
       label.mat-form-field-label {
         color: var(--inputText-fontColor);
       }
       input::placeholder {
         color: var(--inputText-placeholderColor);
       }
-      .mat-form-field-invalid {
-        .mat-hint {
-          color: var(--inputText-invalidColor);
-        }
-        .mat-form-field-underline {
-          background-color: var(--inputText-invalidColor);
-        }
-        .mat-form-field-empty mat-label {
-          color: var(--inputText-fontColor);
-        }
-        &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--inputText-invalidColor);
-        }
-        .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--inputText-invalidColor);
-        }
-      }
+      ${this.invalid
+        ? this.getInvalidStyle()
+        : css`
+          .mat-hint {
+            color: var(--inputText-fontColor);
+          }
+          .mat-form-field-underline {
+            background-color: var(--inputText-fontColor);
+          }
+      `}
       .mat-form-field {
         &.mat-form-field-should-float {
           .mat-form-field-infix {
@@ -391,6 +365,33 @@ export class DxcTextInputComponent
         .mat-form-field-infix {
           border-top: unset;
         }
+      }
+    `;
+  }
+
+  getInvalidStyle(){
+    return css`
+      .mat-hint {
+        color: var(--inputText-invalidColor);
+      }
+      .mat-form-field-ripple {
+        background-color: var(--inputText-invalidColor) !important;
+      }
+      .mat-form-field-underline {
+        background-color: var(--inputText-invalidColor);
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-invalidColor);
+        }
+      }
+      .mat-form-field-empty mat-label {
+        color: var(--inputText-fontColor);
+      }
+      &.mat-focused .mat-form-field-empty mat-label {
+        color: var(--inputText-invalidColor);
+      }
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+        color: var(--inputText-invalidColor);
       }
     `;
   }
@@ -431,17 +432,5 @@ export class DxcTextInputComponent
         }
       }
     `;
-  }
-}
-
-/** Error when invalid control is dirty, touched, or submitted. */
-class InvalidStateMatcher implements ErrorStateMatcher {
-  private invalid: boolean;
-  isErrorState(): boolean {
-    return this.invalid;
-  }
-
-  public setInvalid(invalid: boolean): void {
-    this.invalid = invalid;
   }
 }

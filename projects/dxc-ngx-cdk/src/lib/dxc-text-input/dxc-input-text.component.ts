@@ -434,14 +434,3 @@ export class DxcTextInputComponent
     `;
   }
 }
-
-// export class InvalidStateMatcher implements ErrorStateMatcher {
-//   private invalid: boolean;
-//   isErrorState(): boolean {
-//     return this.invalid;
-//   }
-
-//   public setInvalid(invalid: boolean): void {
-//     this.invalid = invalid;
-//   }
-// }

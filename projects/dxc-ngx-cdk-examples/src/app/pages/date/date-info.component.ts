@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'date-info',

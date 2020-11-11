@@ -8,7 +8,7 @@
   [suffixIconSrc]="calendarIconSrc"
   (onChange)="onInputChangeHandler($event)"
   (onBlur)="onBlurHandler($event)"
-  (onClickSuffix)="openCalendar($event)"
+  (onClickSuffix)="openCalendar()"
   [margin]="margin"
   [size]="size"
   [placeholder]="format"
@@ -33,7 +33,6 @@
         (selectedChange)="onSelectedChangeHandler($event)"
         (yearSelected)="onSelectingDateHandler()"
         (monthSelected)="onSelectingDateHandler()"
-        (clickOutside)="onClickOutsideHandler()"
       >
       </mat-calendar>
     </dxc-box>

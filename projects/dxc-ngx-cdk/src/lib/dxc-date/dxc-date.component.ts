@@ -18,6 +18,7 @@ import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
+import { HostListener } from '@angular/core';
 const moment = momentImported;
 
 @Component({
@@ -38,11 +39,13 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() margin: any;
   @Input() size: string;
 
-  @Output() public onInputChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
+
+  @HostListener('document:click', ['$event'])
 
   defaultInputs = new BehaviorSubject<any>({
     value: null,
@@ -77,7 +80,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
-  constructor(private utils: CssUtils) {}
+  constructor() {}
 
   private calculateComponentValues(): void {
     this.size = this.size
@@ -98,7 +101,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   public ngOnInit(): void {
     this.calculateComponentValues();
 
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle()}`;
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
@@ -111,7 +114,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
 
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle()}`;
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
@@ -122,7 +125,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: value,
       dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
-    this.onInputChange.emit(_dateReturn);
+    this.onChange.emit(_dateReturn);
 
     if (!this.value) {
       this.renderedValue = value;
@@ -136,7 +139,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: _stringValue,
       dateValue: value.isValid() ? value.toDate() : null,
     };
-    this.onInputChange.emit(_dateReturn);
+    this.onChange.emit(_dateReturn);
     if (!this.value) {
       this.dateValue = value;
       this.renderedValue = _stringValue;
@@ -148,7 +151,21 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.onBlur.emit(value);
   }
 
-  public onClickOutsideHandler() {
+  @HostListener('document:click', ['$event'])
+  public onClickOutsideHandler(event) {
+    if (event.target.offsetParent !== null && event.target.offsetParent.getAttribute("class") !== null) {
+        if(!event.target.offsetParent.getAttribute("class").includes('mde-popover-panel')
+        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-period')
+        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-table')){
+          this.checkOpenCalendar();
+        }
+    }
+    else{
+      this.checkOpenCalendar();
+    }
+  }
+
+  private checkOpenCalendar(){
     if (this._isCalendarOpened) {
       if (!this._isOpenClicked && !this._isSelectingDate) {
         this.closeCalendar();
@@ -159,7 +176,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     }
   }
 
-  public openCalendar(event: any) {
+  public openCalendar() {
     this._dxcCalendar.activeDate = this.dateValue.isValid()
       ? this.dateValue
       : moment();
@@ -257,7 +274,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
     `;
   }
-  getDynamicStyle(inputs) {
+  getDynamicStyle() {
     return css`
       &.disabled {
         cursor: not-allowed !important;

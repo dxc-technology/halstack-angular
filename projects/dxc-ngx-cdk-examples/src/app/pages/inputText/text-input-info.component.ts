@@ -9,7 +9,7 @@ import { switchMap } from "rxjs/operators";
   styleUrls: ["./text-input-info.component.scss"]
 })
 export class TextInputInfoComponent {
-  inputValue = "";
+  inputValue = "Testing";
 
   options = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"];
   filteredOptions = new BehaviorSubject(this.options);

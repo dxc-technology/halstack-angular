@@ -92,6 +92,7 @@ export * from './lib/dxc-upload/dxc-transactions/dxc-transactions.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';
 
+export * from './lib/dxc-toggleGroup/dxc-toggle/dxc-toggle.component';
 export * from './lib/dxc-toggleGroup/dxc-toggleGroup.component';
 export * from './lib/dxc-toggleGroup/dxc-toggleGroup.module';
 

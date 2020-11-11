@@ -96,16 +96,22 @@ export class DxcToggleGroupComponent implements OnInit {
           selectedValues.push(this.options[index].value);
         });
       } else {
-        this.selectedOptions.map((index) => {
-          if (index !== $event) {
-            selectedValues.push(this.options[index].value);
-          }
-        });
+        if (this.multiple) {
+          this.selectedOptions.map((index) => {
+            if (index !== $event) {
+              selectedValues.push(this.options[index].value);
+            }
+          });
+        }
         if (!this.selectedOptions.includes($event)) {
           selectedValues.push(this.options[$event].value);
         }
       }
-      this.onChange.emit(selectedValues);
+      if (this.multiple) {
+        this.onChange.emit(selectedValues);
+      } else {
+        this.onChange.emit(selectedValues[0] || selectedValues);
+      }
     }
   }
 

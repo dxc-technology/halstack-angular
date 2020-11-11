@@ -1,3 +1,8 @@
 <div>
-    <dxc-toggleGroup margin="medium" [value]="selected" [options]="options"></dxc-toggleGroup>
+  <dxc-toggleGroup
+    (onChange)="onChange($event)"
+    margin="medium"
+    [value]="selected"
+    [options]="options"
+  ></dxc-toggleGroup>
 </div>

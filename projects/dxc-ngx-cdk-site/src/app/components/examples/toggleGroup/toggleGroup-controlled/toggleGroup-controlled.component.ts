@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-toggleGroup-default',
-  templateUrl: './toggleGroup-default.component.html',
-  styleUrls: ['./toggleGroup-default.component.scss']
+  selector: 'app-toggleGroup-controlled',
+  templateUrl: './toggleGroup-controlled.component.html',
+  styleUrls: ['./toggleGroup-controlled.component.scss']
 })
-export class ToggleGroupDefaultComponent implements OnInit {
+export class ToggleGroupControlledComponent implements OnInit {
 
   options = [
     {
@@ -33,6 +33,8 @@ export class ToggleGroupDefaultComponent implements OnInit {
       value: 6
     }
   ];
+
+  selected=3;
 
   constructor() { }
 

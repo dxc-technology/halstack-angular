@@ -25,7 +25,7 @@ export class DxcToggleGroupComponent implements OnInit {
   @Input() public options: {
     label?: string;
     iconSrc?: string;
-    value:string;
+    value: string;
   }[];
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
@@ -36,6 +36,7 @@ export class DxcToggleGroupComponent implements OnInit {
   defaultInputs = new BehaviorSubject<any>({
     multiple: false,
     disabled: false,
+    margin: null,
   });
   constructor(private utils: CssUtils) {}
 
@@ -64,13 +65,13 @@ export class DxcToggleGroupComponent implements OnInit {
 
   getSelectedByValue() {
     this.selectedOptions = [];
-    this.options.map((option, index)=>{
-      if(Array.isArray(this.value)) {
-        if(this.value.includes(option.value)) {
+    this.options.map((option, index) => {
+      if (Array.isArray(this.value)) {
+        if (this.value.includes(option.value)) {
           this.selectedOptions.push(index);
         }
       } else {
-        if(this.value === option.value) {
+        if (this.value === option.value) {
           this.selectedOptions.push(index);
         }
       }
@@ -79,7 +80,7 @@ export class DxcToggleGroupComponent implements OnInit {
 
   public valueChanged($event: any): void {
     if (!this.disabled) {
-      this.onChange.emit(this.options[$event].value);
+      const selectedValues = [];
       if (!this.value) {
         if (this.selectedOptions && this.selectedOptions.includes($event)) {
           const index = this.selectedOptions.indexOf($event);
@@ -91,8 +92,20 @@ export class DxcToggleGroupComponent implements OnInit {
             this.selectedOptions = [$event];
           }
         }
+        this.selectedOptions.map((index) => {
+          selectedValues.push(this.options[index].value);
+        });
+      } else {
+        this.selectedOptions.map((index) => {
+          if (index !== $event) {
+            selectedValues.push(this.options[index].value);
+          }
+        });
+        if (!this.selectedOptions.includes($event)) {
+          selectedValues.push(this.options[$event].value);
+        }
       }
-      console.log(this);
+      this.onChange.emit(selectedValues);
     }
   }
 
@@ -129,7 +142,7 @@ export class DxcToggleGroupComponent implements OnInit {
     }
   }
 
-  setDxcToggleGroupDynamicStyle(input: any) {
+  setDxcToggleGroupDynamicStyle(inputs: any) {
     return css`
       display: flex;
       align-items: center;
@@ -137,6 +150,7 @@ export class DxcToggleGroupComponent implements OnInit {
       width: fit-content;
       border-radius: 4px;
       overflow: hidden;
+      ${this.utils.getMargins(inputs.margin)}
 
       .toggleContainer {
         height: 100%;

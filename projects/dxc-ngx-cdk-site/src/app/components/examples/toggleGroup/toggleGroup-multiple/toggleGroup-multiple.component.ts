@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-toggleGroup-default',
-  templateUrl: './toggleGroup-default.component.html',
-  styleUrls: ['./toggleGroup-default.component.scss']
+  selector: 'app-toggleGroup-multiple',
+  templateUrl: './toggleGroup-multiple.component.html',
+  styleUrls: ['./toggleGroup-multiple.component.scss']
 })
-export class ToggleGroupDefaultComponent implements OnInit {
+export class ToggleGroupMultipleComponent implements OnInit {
 
   options = [
     {

@@ -103,8 +103,8 @@ export const customTheme: Theme = {
       "selectedFontColor": colors.black
     },
     "toggle": {
-      "color": colors.white,
-      "hoverColor": colors.lightGrey,
+      "color": colors.lightGrey,
+      "hoverColor": colors.darkWhite,
       "fontColor": colors.black,
       "hoverFontColor": colors.black,
 

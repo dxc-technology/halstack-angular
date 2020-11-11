@@ -61,6 +61,11 @@
             router.isActive(router.createUrlTree(['components/textarea']).toString(), true) : false}"
             (click)="navigateTo('components/textarea')">Textarea</a>
           </div>
+          <div class="menu-item">
+            <a [ngClass]="{'active': 'components/toggleGroup' ? 
+            router.isActive(router.createUrlTree(['components/toggleGroup']).toString(), true) : false}"
+            (click)="navigateTo('components/toggleGroup')">ToggleGroup</a>
+          </div>
         </div>
         <div class="menu-title">Navigation</div>
         <div class="menu-items">

@@ -35,6 +35,7 @@ import { HeadingComponent } from './pages/heading/heading.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { TextAreaComponent } from './pages/text-area/text-area.component';
+import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 
 let routes: Routes = [];
 
@@ -109,6 +110,10 @@ let routes: Routes = [];
   {
     path: 'components/textarea',
     component: TextAreaComponent
+  },
+  {
+    path: 'components/toggleGroup',
+    component: ToggleGroupComponent
   },
   {
     path: 'components/footer',

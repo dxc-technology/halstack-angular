@@ -1,4 +1,4 @@
-<div class="dxcToggle">
-  <img [src]="iconSrc" *ngIf="iconSrc" />
-  <span *ngIf="!iconSrc"> {{ label }} </span>
+<div class="toggleContent" (click)="onClickHandler()">
+  <img class="icon" [src]="iconSrc" *ngIf="iconSrc" />
+  <span class="label" *ngIf="!iconSrc"> {{ label }} </span>
 </div>

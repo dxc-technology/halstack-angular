@@ -102,6 +102,17 @@ export const customTheme: Theme = {
       "selectedUnderlinedColor": colors.dxcPurple,
       "selectedFontColor": colors.black
     },
+    "toggle": {
+      "color": colors.white,
+      "hoverColor": colors.lightGrey,
+      "fontColor": colors.black,
+      "hoverFontColor": colors.black,
+
+      "selectedColor": colors.dxcPurple,
+      "selectedHoverColor": colors.black,
+      "selectedFontColor": colors.white,
+      "selectedHoverFontColor": colors.white,
+    },
     "wizard":{
       "selectedBackgroundColor": colors.dxcPurple,
       "selectedFont": colors.white
@@ -263,6 +274,9 @@ export const defaultTheme: Theme = {
       "disabled": 0.34,
       "focusColor": colors.blue,
       "notSelectedOpacity": 0.64
+    },
+    "toggle": {
+      "disabled": 0.34
     },
     "wizard":{
       "fontColor": "inherit",

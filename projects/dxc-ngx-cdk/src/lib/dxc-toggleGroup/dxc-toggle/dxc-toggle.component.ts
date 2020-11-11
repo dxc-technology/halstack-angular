@@ -6,8 +6,6 @@ import {
     EventEmitter,
     SimpleChanges
   } from "@angular/core";
-  import { BehaviorSubject } from "rxjs";
-  import { css } from "emotion";
   
   @Component({
     selector: "dxc-toggle",
@@ -17,12 +15,16 @@ import {
 
     @Input() label: string;
     @Input() iconSrc: string = undefined;
-    @Input() selected: boolean;
+    @Input() index;
+    @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}
   
     ngOnInit(){
+    }
 
+    onClickHandler() {
+      this.onClick.emit(this.index);
     }
   }
   

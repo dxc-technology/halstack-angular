@@ -115,6 +115,8 @@ import { TagActionComponent } from "../examples/tag/tag-action/tag-action.compon
 import { TagLinkComponent } from "../examples/tag/tag-link/tag-link.component";
 import { TagDefaultComponent } from "../examples/tag/tag-default/tag-default.component";
 import { TagExampleComponent } from "../examples/tag/tag-example/tag-example.component";
+import { ToggleGroupDefaultComponent } from "../examples/toggleGroup/toggleGroup-default/toggleGroup-default.component";
+import { ToggleGroupExampleComponent } from "../examples/toggleGroup/toggleGroup-example/toggleGroup-example.component";
 import { SelectSizedComponent } from "../examples/select/select-sized/select-sized.component";
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
@@ -555,7 +557,9 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     UploadThemeComponent,
     ResultsetTableApiComponent,
     ResultsetTableThemeComponent,
-    TextInputMaskedComponent
+    TextInputMaskedComponent,
+    ToggleGroupDefaultComponent,
+    ToggleGroupExampleComponent
   ]
 })
 export class DynamicModule {}

@@ -122,3 +122,8 @@ export * from './lib/dxc-resultable/components/dxc-row/dxc-row.component';
 export * from './lib/dxc-resultable/directives/dxc-cell-def.directive';
 export * from './lib/dxc-resultable/directives/dxc-column-def.directive';
 export * from './lib/dxc-resultable/directives/sorting.directive';
+
+export * from './lib/dxc-standard/dxc-standard.component';
+export * from './lib/dxc-standard/dxc-standard.module';
+export * from './lib/dxc-standard/dxc-main/dxc-main.component';
+export * from './lib/dxc-standard/dxc-main/dxc-main.module';

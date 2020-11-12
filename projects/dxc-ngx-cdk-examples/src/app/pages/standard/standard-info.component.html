@@ -1,0 +1,53 @@
+<div className="test-case" id="standard">
+    <h2>Basic standard layout</h2>
+    <dxc-standard>
+        <dxc-header> </dxc-header>
+        <dxc-main>
+            <dxc-button
+                mode="primary"
+                label="Button"
+            ></dxc-button>
+        </dxc-main>
+        <dxc-footer
+            copyright="© DXC Technology 2019. All rights reserved."
+            [bottomLinks]="bottom"
+            [socialLinks]="social"
+        ></dxc-footer>
+    </dxc-standard>
+</div>
+
+<div className="test-case" id="standard-not-render">
+    <h2>Standard layout different positions</h2>
+    <dxc-standard>
+        <dxc-footer
+            copyright="© DXC Technology 2019. All rights reserved."
+            [bottomLinks]="bottom"
+            [socialLinks]="social"
+            margin="large"
+        ></dxc-footer>
+        <dxc-main>
+            <dxc-button
+                mode="primary"
+                label="Button"
+            ></dxc-button>
+        </dxc-main>
+    </dxc-standard>
+</div>
+
+<div className="test-case" id="standard-not-render">
+    <h2>Not render standard layout components</h2>
+    <dxc-standard>
+        <dxc-dropdown
+            label="Dropdown"
+        ></dxc-dropdown>
+        <dxc-button
+            mode="primary"
+            label="Button"
+        ></dxc-button>
+        <dxc-footer
+            copyright="© DXC Technology 2019. All rights reserved."
+            [bottomLinks]="bottom"
+            [socialLinks]="social"
+        ></dxc-footer>
+    </dxc-standard>
+</div>

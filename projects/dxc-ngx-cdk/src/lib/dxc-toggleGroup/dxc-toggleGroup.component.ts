@@ -14,7 +14,7 @@ import { css } from "emotion";
 @Component({
   selector: "dxc-toggleGroup",
   templateUrl: "./dxc-toggleGroup.component.html",
-  styleUrls: ["./dxc-toggleGroup.component.scss"],
+  styleUrls: [],
   providers: [CssUtils],
 })
 export class DxcToggleGroupComponent implements OnInit {
@@ -25,7 +25,7 @@ export class DxcToggleGroupComponent implements OnInit {
   @Input() public options: {
     label?: string;
     iconSrc?: string;
-    value: string;
+    value: any;
   }[];
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
@@ -66,17 +66,6 @@ export class DxcToggleGroupComponent implements OnInit {
   getSelectedByValue() {
     this.selectedOptions = [];
     if (this.value !== "") {
-      // this.options.map((option, index) => {
-      //   if (Array.isArray(this.value)) {
-      //     if (this.value.includes(option.value)) {
-      //       this.selectedOptions.push(index);
-      //     }
-      //   } else {
-      //     if (this.value === option.value) {
-      //       this.selectedOptions.push(index);
-      //     }
-      //   }
-      // });
       if (Array.isArray(this.value)) {
         this.selectedOptions = this.value;
       } else {
@@ -88,7 +77,18 @@ export class DxcToggleGroupComponent implements OnInit {
   public valueChanged($event: any): void {
     if (!this.disabled) {
       const selectedValues = [];
-      if (!this.value || this.value !== "") {
+      if (this.value || this.value === "") {
+        if (this.multiple) {
+          this.selectedOptions.map((value) => {
+            if (value !== $event) {
+              selectedValues.push(value);
+            }
+          });
+        }
+        if (!this.selectedOptions.includes($event)) {
+          selectedValues.push($event);
+        }
+      } else {
         if (this.selectedOptions && this.selectedOptions.includes($event)) {
           const index = this.selectedOptions.indexOf($event);
           this.selectedOptions.splice(index, 1);
@@ -102,17 +102,6 @@ export class DxcToggleGroupComponent implements OnInit {
         this.selectedOptions.map((value) => {
           selectedValues.push(value);
         });
-      } else {
-        if (this.multiple) {
-          this.selectedOptions.map((value) => {
-            if (value !== $event) {
-              selectedValues.push(value);
-            }
-          });
-        }
-        if (!this.selectedOptions.includes($event)) {
-          selectedValues.push($event);
-        }
       }
       if (this.multiple) {
         this.onChange.emit(selectedValues);

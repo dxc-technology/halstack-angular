@@ -36,7 +36,6 @@ export class ToggleGroupControlledComponent implements OnInit {
   selected = 3;
 
   onChange($event) {
-    console.log($event);
     this.selected = $event;
   }
 

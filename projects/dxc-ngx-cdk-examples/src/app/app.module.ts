@@ -66,10 +66,13 @@ import {
   DxcHeadingModule,
   DxcResultsetTableModule,
   DxcTextareaModule,
-  ThemeModule
+  ThemeModule,
+  DxcStandardModule,
+  DxcMainModule,
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
+import { StandardInfoComponent } from './pages/standard/standard-info.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +108,7 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
     HeadingInfoComponent,
     ResultsetTableComponent,
     UploadComponent,
+    StandardInfoComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -141,7 +145,9 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
     DxcHeadingModule,
     DxcResultsetTableModule,
     DxcTextareaModule,
-    ThemeModule
+    ThemeModule,
+    DxcStandardModule,
+    DxcMainModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

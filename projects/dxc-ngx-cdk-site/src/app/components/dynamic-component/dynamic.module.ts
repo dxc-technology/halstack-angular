@@ -115,6 +115,15 @@ import { TagActionComponent } from "../examples/tag/tag-action/tag-action.compon
 import { TagLinkComponent } from "../examples/tag/tag-link/tag-link.component";
 import { TagDefaultComponent } from "../examples/tag/tag-default/tag-default.component";
 import { TagExampleComponent } from "../examples/tag/tag-example/tag-example.component";
+import { ToggleGroupApiComponent } from '../examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
+import { ToggleGroupTablePropertiesComponent } from "../examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component";
+import { ToggleGroupImportComponent } from '../examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
+import { ToggleGroupControlledComponent } from "../examples/toggleGroup/toggleGroup-controlled/toggleGroup-controlled.component";
+import { ToggleGroupDefaultComponent } from "../examples/toggleGroup/toggleGroup-default/toggleGroup-default.component";
+import { ToggleGroupDisabledComponent } from "../examples/toggleGroup/toggleGroup-disabled/toggleGroup-disabled.component";
+import { ToggleGroupExampleComponent } from "../examples/toggleGroup/toggleGroup-example/toggleGroup-example.component";
+import { ToggleGroupMultipleComponent } from "../examples/toggleGroup/toggleGroup-multiple/toggleGroup-multiple.component";
+import { ToggleGroupThemeComponent } from "../examples/toggleGroup/toggleGroup-theme/toggleGroup-theme.component";
 import { SelectSizedComponent } from "../examples/select/select-sized/select-sized.component";
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
@@ -555,7 +564,16 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     UploadThemeComponent,
     ResultsetTableApiComponent,
     ResultsetTableThemeComponent,
-    TextInputMaskedComponent
+    TextInputMaskedComponent,
+    ToggleGroupControlledComponent,
+    ToggleGroupDefaultComponent,
+    ToggleGroupDisabledComponent,
+    ToggleGroupExampleComponent,
+    ToggleGroupMultipleComponent,
+    ToggleGroupImportComponent,
+    ToggleGroupTablePropertiesComponent,
+    ToggleGroupApiComponent,
+    ToggleGroupThemeComponent
   ]
 })
 export class DynamicModule {}

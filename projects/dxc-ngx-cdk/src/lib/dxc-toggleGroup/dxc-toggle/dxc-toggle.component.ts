@@ -15,7 +15,7 @@ import {
 
     @Input() label: string;
     @Input() iconSrc: string = undefined;
-    @Input() index;
+    @Input() value;
     @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
 
     constructor() {}
@@ -24,7 +24,7 @@ import {
     }
 
     onClickHandler() {
-      this.onClick.emit(this.index);
+      this.onClick.emit(this.value);
     }
   }
   

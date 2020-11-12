@@ -20,15 +20,15 @@ export class ToggleGroupControlledComponent implements OnInit {
       value: 3,
     },
     {
-      label: "Facebook",
+      label: "Instagram",
       value: 4,
     },
     {
-      label: "Twitter",
+      label: "Discord",
       value: 5,
     },
     {
-      label: "Linkedin",
+      label: "Tiktok",
       value: 6,
     },
   ];
@@ -37,9 +37,7 @@ export class ToggleGroupControlledComponent implements OnInit {
 
   onChange($event) {
     console.log($event);
-    if ($event !== 1) {
-      this.selected = $event;
-    }
+    this.selected = $event;
   }
 
   constructor() {}

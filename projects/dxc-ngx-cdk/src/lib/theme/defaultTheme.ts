@@ -103,13 +103,13 @@ export const customTheme: Theme = {
       "selectedFontColor": colors.black
     },
     "toggle": {
-      "color": colors.lightGrey,
-      "hoverColor": colors.darkWhite,
-      "fontColor": colors.black,
-      "hoverFontColor": colors.black,
+      "unselectedBackgroundColor": colors.lightGrey,
+      "unselectedHoverBackgroundColor": colors.darkWhite,
+      "unselectedFontColor": colors.black,
+      "unselectedHoverFontColor": colors.black,
 
-      "selectedColor": colors.dxcPurple,
-      "selectedHoverColor": colors.black,
+      "selectedBackgroundColor": colors.dxcPurple,
+      "selectedHoverBackgroundColor": colors.black,
       "selectedFontColor": colors.white,
       "selectedHoverFontColor": colors.white,
     },

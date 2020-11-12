@@ -1,10 +1,10 @@
 
-  <span [ngClass]="{ disabled: disabled }" class="toggleContainer" *ngFor="let option of options; index as i">
+  <span [ngClass]="{ disabled: disabled }" class="toggleContainer" *ngFor="let option of options;">
     <dxc-toggle
-      [ngClass]="{ selected: selectedOptions.includes(i) }"
+      [ngClass]="{ selected: selectedOptions.includes(option.value) }"
       [label]="option.label"
       [iconSrc]="option.iconSrc"
-      [index]="i"
+      [value]="option.value"
       (onClick)="valueChanged($event)"
     >
     </dxc-toggle>

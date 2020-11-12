@@ -41,7 +41,7 @@ export class DxcToggleGroupComponent implements OnInit {
   constructor(private utils: CssUtils) {}
 
   ngOnInit() {
-    if (this.value) {
+    if (this.value || this.value === "") {
       this.getSelectedByValue();
     }
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
@@ -58,30 +58,37 @@ export class DxcToggleGroupComponent implements OnInit {
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
-    if (this.value) {
+    if (this.value || this.value === "") {
       this.getSelectedByValue();
     }
   }
 
   getSelectedByValue() {
     this.selectedOptions = [];
-    this.options.map((option, index) => {
+    if (this.value !== "") {
+      // this.options.map((option, index) => {
+      //   if (Array.isArray(this.value)) {
+      //     if (this.value.includes(option.value)) {
+      //       this.selectedOptions.push(index);
+      //     }
+      //   } else {
+      //     if (this.value === option.value) {
+      //       this.selectedOptions.push(index);
+      //     }
+      //   }
+      // });
       if (Array.isArray(this.value)) {
-        if (this.value.includes(option.value)) {
-          this.selectedOptions.push(index);
-        }
+        this.selectedOptions = this.value;
       } else {
-        if (this.value === option.value) {
-          this.selectedOptions.push(index);
-        }
+        this.selectedOptions.push(this.value);
       }
-    });
+    }
   }
 
   public valueChanged($event: any): void {
     if (!this.disabled) {
       const selectedValues = [];
-      if (!this.value) {
+      if (!this.value || this.value !== "") {
         if (this.selectedOptions && this.selectedOptions.includes($event)) {
           const index = this.selectedOptions.indexOf($event);
           this.selectedOptions.splice(index, 1);
@@ -92,25 +99,25 @@ export class DxcToggleGroupComponent implements OnInit {
             this.selectedOptions = [$event];
           }
         }
-        this.selectedOptions.map((index) => {
-          selectedValues.push(this.options[index].value);
+        this.selectedOptions.map((value) => {
+          selectedValues.push(value);
         });
       } else {
         if (this.multiple) {
-          this.selectedOptions.map((index) => {
-            if (index !== $event) {
-              selectedValues.push(this.options[index].value);
+          this.selectedOptions.map((value) => {
+            if (value !== $event) {
+              selectedValues.push(value);
             }
           });
         }
         if (!this.selectedOptions.includes($event)) {
-          selectedValues.push(this.options[$event].value);
+          selectedValues.push($event);
         }
       }
       if (this.multiple) {
         this.onChange.emit(selectedValues);
       } else {
-        this.onChange.emit(selectedValues[0] || selectedValues);
+        this.onChange.emit(selectedValues[0] || "");
       }
     }
   }
@@ -132,14 +139,14 @@ export class DxcToggleGroupComponent implements OnInit {
             cursor: pointer;
           }
           &:hover {
-            background: var(--toggle-hoverColor);
-            color: var(--toggle-hoverFontColor);
+            background: var(--toggle-unselectedHoverBackgroundColor);
+            color: var(--toggle-unselectedHoverFontColor);
           }
           &.selected {
-            background: var(--toggle-selectedColor);
+            background: var(--toggle-selectedBackgroundColor);
             color: var(--toggle-selectedFontColor);
             &:hover {
-              background: var(--toggle-selectedHoverColor);
+              background: var(--toggle-selectedHoverBackgroundColor);
               color: var(--toggle-selectedHoverFontColor);
             }
           }
@@ -165,8 +172,8 @@ export class DxcToggleGroupComponent implements OnInit {
         dxc-toggle {
           height: 100%;
           display: flex;
-          background: var(--toggle-color);
-          color: var(--toggle-fontColor);
+          background: var(--toggle-unselectedBackgroundColor);
+          color: var(--toggle-unselectedFontColor);
 
           .toggleContent {
             height: 100%;

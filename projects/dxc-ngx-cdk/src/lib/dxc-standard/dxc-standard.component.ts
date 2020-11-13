@@ -46,6 +46,10 @@ export class DxcStandardComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
       dxc-header{
         width: 100%;
       }
@@ -59,6 +63,7 @@ export class DxcStandardComponent implements OnInit {
       }
       dxc-footer{
         width: 100%;
+        margin-top: auto;
       }
     `;
   }

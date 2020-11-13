@@ -9,11 +9,11 @@ import { CssUtils } from "../utils";
 import { HostListener, ViewChild, ElementRef } from '@angular/core';
 import { responsiveSizes } from "../variables";
 @Component({
-  selector: "dxc-standard",
-  templateUrl: "./dxc-standard.component.html",
+  selector: "dxc-standard-layout",
+  templateUrl: "./dxc-standard-layout.component.html",
   providers: [CssUtils],
 })
-export class DxcStandardComponent implements OnInit {
+export class DxcStandardLayoutComponent implements OnInit {
   @HostBinding("class") className;
 
   innerWidth;
@@ -53,14 +53,25 @@ export class DxcStandardComponent implements OnInit {
       dxc-header{
         width: 100%;
       }
-      .main{
-        max-width: 1320px;
-        margin: ${
-          inputs.innerWidth <= responsiveSizes.mobileLarge ? "36px 6.4% 48px 6.4%" : 
-          inputs.innerWidth > responsiveSizes.mobileLarge && inputs.innerWidth <= responsiveSizes.tablet ? "48px 9.6% 64px 9.6%" : 
-          "65px 15.6% 80px 15.6%"
-        };
+      .content{
+        display: flex;
+        .sidenav:not(:empty){
+          width: 100px;
+          flex: 0 0 100px;
+          min-height: 100vh;
+          background-color: yellow;
+        }
+        .main{
+          max-width: 1320px;
+          width: 100%;
+          margin: ${
+            inputs.innerWidth <= responsiveSizes.mobileLarge ? "36px 6.4% 48px 6.4%" : 
+            inputs.innerWidth > responsiveSizes.mobileLarge && inputs.innerWidth <= responsiveSizes.laptop ? "48px 9.6% 64px 9.6%" : 
+            "65px 15.6% 80px 15.6%"
+          };
+        }
       }
+
       dxc-footer{
         width: 100%;
         margin-top: auto;

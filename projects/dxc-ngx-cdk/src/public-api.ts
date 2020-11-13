@@ -119,7 +119,11 @@ export * from './lib/dxc-resultable/directives/dxc-cell-def.directive';
 export * from './lib/dxc-resultable/directives/dxc-column-def.directive';
 export * from './lib/dxc-resultable/directives/sorting.directive';
 
-export * from './lib/dxc-standard/dxc-standard.component';
-export * from './lib/dxc-standard/dxc-standard.module';
-export * from './lib/dxc-standard/dxc-main/dxc-main.component';
-export * from './lib/dxc-standard/dxc-main/dxc-main.module';
+export * from './lib/dxc-standard-layout/dxc-standard-layout.component';
+export * from './lib/dxc-standard-layout/dxc-standard-layout.module';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-layout-main.component';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-layout-main.module';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.component';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.module';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav-menu/dxc-standard-layout-sidenav-menu.component';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav-content/dxc-standard-layout-sidenav-content.component';

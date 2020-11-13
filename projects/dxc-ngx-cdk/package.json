@@ -57,6 +57,7 @@
     "jest": "^24.9.0",
     "jest-preset-angular": "^7.1.1",
     "ng-mocks": "^10.4.0",
+    "moment": "^2.24.0",
     "rxjs": "~6.5.2",
     "tslib": "^2.0.0"
   },

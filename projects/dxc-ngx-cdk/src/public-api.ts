@@ -125,5 +125,3 @@ export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-l
 export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-layout-main.module';
 export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.component';
 export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.module';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav-menu/dxc-standard-layout-sidenav-menu.component';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav-content/dxc-standard-layout-sidenav-content.component';

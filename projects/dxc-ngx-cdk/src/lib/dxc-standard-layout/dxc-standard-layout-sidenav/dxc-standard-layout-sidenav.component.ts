@@ -7,12 +7,16 @@ import {
   ViewChild,
   ElementRef,
   ChangeDetectorRef,
+  OnChanges,
+  EventEmitter,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../../utils";
 import { responsiveSizes } from "../../variables";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { BtnArrowService } from './services/btnArrow.service';   
+import { Output } from '@angular/core';
 
 @Component({
   selector: "dxc-standard-layout-sidenav",
@@ -20,10 +24,8 @@ import { coerceBooleanProperty } from "@angular/cdk/coercion";
   styleUrls: ["./dxc-standard-layout-sidenav.component.scss"],
   providers: [CssUtils],
 })
-export class DxcStandardLayoutSidenavComponent implements OnInit {
+export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   className;
-  // @Input() arrowDistance: string;
-  // @Input() arrowPosition: string = "absolute";
   @Input() mode: string = "overlay";
   // @Input() padding: any;
   // @Input()
@@ -35,10 +37,10 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
   // }
   displayArrow = true;
 
-  isClicked: boolean = true;
+  isClicked: boolean = false;
   innerWidth;
-  isResponsive;
-  isShown: boolean;
+  isResponsive = true;
+  isShown: boolean = true;
 
   defaultInputs = new BehaviorSubject<any>({
     displayArrow: true,
@@ -47,14 +49,15 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef) {}
+  @Output() updateValue = new EventEmitter<boolean>();
+
+  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef, private _arrowService: BtnArrowService) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    // if (this.isResponsive === false && this.displayArrow === false) {
-    //   this.isShown = true;
-    // }
-    this.isShown = true;
+    if (this.isResponsive === false && this.displayArrow === false) {
+      this.isShown = true;
+    }
     this.updateCss();
   }
 
@@ -71,6 +74,8 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
   public arrowClicked() {
     this.isShown = !this.isShown;
     this.isClicked = true;
+    this._arrowService.showMenu(this.isShown);
+    this.updateValue.emit(this.isShown);
     this.updateCss();
   }
 
@@ -100,22 +105,20 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
 
   updateCss() {
     this.innerWidth = this.sidenav.nativeElement.clientWidth;
-    this.isResponsive = true;
-    this.isShown = true;
-    // if (this.innerWidth <= responsiveSizes.tablet) {
-    //   this.isResponsive = true;
-    // } else {
-    //   this.isResponsive = false;
-    //   if (!this.displayArrow && !this.isShown) {
-    //     this.isShown = true;
-    //   }
-    // }
-    // this.isShown =
-    //   this.isShown !== undefined
-    //     ? this.isShown
-    //     : this.innerWidth <= responsiveSizes.tablet
-    //     ? false
-    //     : true;
+    if (this.innerWidth <= responsiveSizes.tablet) {
+      this.isResponsive = true;
+    } else {
+      this.isResponsive = false;
+      if (!this.displayArrow && !this.isShown) {
+        this.isShown = true;
+      }
+    }
+    this.isShown =
+      this.isShown !== undefined
+        ? this.isShown
+        : this.innerWidth <= responsiveSizes.tablet
+        ? false
+        : true;
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
@@ -127,11 +130,32 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
+      min-height: 100vh;
+      height: 100%;
       .sidenavContainerClass {
         display: flex;
         position: relative;
-
-        /* .sidenavArrow {
+        height: inherit;
+        width: 100%;
+        .sidenavMenu{
+          width: inherit;
+          height: inherit;
+          background-color: var(--sidenav-backgroundColor);
+          z-index: ${inputs.mode === "overlay" || inputs.isResponsive
+            ? "400"
+            : "auto"};
+          transform: ${inputs.isShown
+            ? "translateX(0)"
+            : !inputs.isShown
+            ? "translateX(-100%) !important"
+            : ""};
+          opacity: ${inputs.isShown ? "1" : "0"};
+          visibility: ${inputs.isShown ? "visible" : "hidden"};
+          transition: ${this.isClicked
+            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;"
+            : ""};
+        }
+        .sidenavArrow {
           width: 42px;
           height: 42px;
           background-color: var(--sidenav-arrowContainerColor);
@@ -142,17 +166,15 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
           justify-content: center;
           position: ${inputs.arrowPosition === "fixed" ? "fixed" : "absolute"};
           left: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "calc(60% - 21px)"
+            ? "calc(100% - 21px)"
             : "279px"};
-          top: ${inputs.arrowDistance
-            ? inputs.arrowDistance
-            : "calc(50% - 21px)"};
+          top: calc(50% - 21px);
           transform: ${inputs.isShown
             ? "translateX(0)"
             : !inputs.isShown
             ? inputs.innerWidth <= responsiveSizes.tablet
-              ? "translateX(-" + inputs.innerWidth * 0.6 + "px) !important"
-              : "translateX(-297px) !important"
+              ? "translateX(-" + inputs.innerWidth + "px) !important"
+              : "translateX(-300px) !important"
             : ""};
           transition: ${this.isClicked ? "transform 0.4s ease-in-out;" : ""};
           cursor: pointer;
@@ -177,50 +199,24 @@ export class DxcStandardLayoutSidenavComponent implements OnInit {
               : ""};
             fill: var(--sidenav-arrowColor);
           }
-        } */
-
-        dxc-sidenav-menu {
-          display: flex;
-          flex-direction: column;
-          background-color: var(--sidenav-backgroundColor);
-          /* width: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "60%"
-            : "300px"};
-          box-sizing: border-box;
-          ${this.utils.getPaddings(inputs.padding)}
-          z-index: ${inputs.mode === "overlay" || inputs.isResponsive
-            ? "400"
-            : "auto"};
-          transform: ${inputs.isShown
-            ? "translateX(0)"
-            : !inputs.isShown
-            ? "translateX(-100%) !important"
-            : ""};
-          opacity: ${inputs.isShown ? "1" : "0"};
-          visibility: ${inputs.isShown ? "visible" : "hidden"};
-          transition: ${this.isClicked
-            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;"
-            : ""}; */
         }
-
-        /* dxc-sidenav-content {
+        /* dxc-standard-layout-main {
           box-sizing: border-box;
           flex-grow: 1;
           height: 100%;
-          ${this.utils.getPaddings(inputs.padding)}
           margin-left: ${inputs.isShown &&
-          inputs.mode === "push" &&
-          !inputs.isResponsive
-            ? ""
-            : !inputs.isResponsive
-            ? "-300px"
-            : "-60%"};
+            inputs.mode === "push" &&
+            !inputs.isResponsive
+              ? ""
+              : !inputs.isResponsive
+              ? "-300px"
+              : "-60%"};
           transition: ${this.isClicked ? "margin 0.4s ease-in-out;" : ""};
           width: ${inputs.isShown &&
-          inputs.mode === "push" &&
-          !inputs.isResponsive
-            ? "calc(100% - 300px)"
-            : "calc(100%)"};
+            inputs.mode === "push" &&
+            !inputs.isResponsive
+              ? "calc(100% - 300px)"
+              : "calc(100%)"};
         } */
       }
     `;

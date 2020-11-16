@@ -1,7 +1,9 @@
 <div [class]="className">
   <div #sidenavContainer class="sidenavContainerClass">
-    <ng-content></ng-content>
-    <!-- <div
+    <div class="sidenavMenu">
+      <ng-content></ng-content>
+    </div>
+    <div
       tabindex="0"
       *ngIf="displayArrow || isResponsive"
       class="sidenavArrow"
@@ -22,6 +24,6 @@
           />
         </svg>
       </span>
-    </div> -->
+    </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 <div [class]="className">
     <ng-content select="dxc-header"></ng-content>
     <div class="content">
-        <div class="sidenav" #sidenav (updateValue)="onValueUpdated($event)">
-            <ng-content select="dxc-standard-layout-sidenav" (updateValue)="onValueUpdated($event)"></ng-content>
+        <div class="sidenav" #sidenav>
+            <ng-content select="dxc-standard-layout-sidenav"></ng-content>
         </div>
         <div class="main">
             <ng-content select="dxc-standard-layout-main"></ng-content>

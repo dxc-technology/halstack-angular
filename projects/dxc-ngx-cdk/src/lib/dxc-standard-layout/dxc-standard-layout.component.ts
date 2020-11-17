@@ -7,12 +7,11 @@ import {
   OnChanges,
   SimpleChanges
 } from "@angular/core";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { HostListener, ViewChild, ElementRef, QueryList, ChangeDetectorRef } from '@angular/core';
 import { responsiveSizes } from "../variables";
-import { BtnArrowService } from './dxc-standard-layout-sidenav/services/btnArrow.service';   
 import { DxcStandardLayoutSidenavComponent } from './dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.component';
 @Component({
   selector: "dxc-standard-layout",
@@ -25,34 +24,27 @@ export class DxcStandardLayoutComponent implements OnInit, AfterViewInit {
   innerWidth;
   isSidenav: boolean = false;
   isMenuShown: boolean = true;
+  isModePush: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     innerWidth,
-    isMenuShown: true
+    isMenuShown: true,
+    isModePush: false
   });
 
   @ViewChild('sidenav') sidenav: ElementRef;
-  @ContentChildren(DxcStandardLayoutSidenavComponent) components : QueryList<DxcStandardLayoutSidenavComponent>;
-  subscription: any;
+  @ContentChildren(DxcStandardLayoutSidenavComponent) componentSidenav : QueryList<DxcStandardLayoutSidenavComponent>;
 
   updateCss() {
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       innerWidth: this.innerWidth,
-      isSidenav: this.isSidenav,
+      isModePush: this.isModePush,
       isMenuShown: this.isMenuShown
     })}`;
   }
 
-  constructor(private cdr: ChangeDetectorRef, private service: BtnArrowService) {
-    this.subscription = this.service.isMenuShown.subscribe(isShown => {
-      this.isMenuShown = isShown;
-    });
-   }
-
-   ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -65,10 +57,6 @@ export class DxcStandardLayoutComponent implements OnInit, AfterViewInit {
     this.updateCss();
   }
 
-  onValueUpdated(newValue) {
-    console.log("newVlaue:", newValue)
-  }
-
   ngAfterViewInit() {
     // if(this.components.toArray().length > 0){ // da error de: Expression has changed after it was checked
     //   this.isSidenav = true;
@@ -79,8 +67,13 @@ export class DxcStandardLayoutComponent implements OnInit, AfterViewInit {
     // this.components.toArray().forEach(component => {
     //   console.log(component);
     // });
-    this.components.toArray().forEach((compo) => {
-      compo.updateValue.subscribe((bar) => console.log("bar:",bar));           
+
+    this.componentSidenav.toArray().forEach((component) => {
+      component.isMenuShown.subscribe((isShown) => {
+        console.log("isShown:",isShown);
+        this.isMenuShown = isShown;
+        this.updateCss();
+      });        
   });
   }
 
@@ -98,20 +91,19 @@ export class DxcStandardLayoutComponent implements OnInit, AfterViewInit {
         position: relative;
         .sidenav{
           min-height: 100vh;
-          width: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "60%"
-            : "300px"};
-          flex: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "0 0 60%"
-            : "0 0 300px"}
         }
         .sidenav:empty{
           flex: 0 0 0 !important;
         }
         .main{
+          transition: margin 0.4s ease-in-out;
           max-width: 1320px;
           width: 100%;
-          margin: ${this.getStyleMarginsMain(inputs)};
+          margin: ${
+            inputs.innerWidth <= responsiveSizes.mobileLarge ? "36px 6.4% 48px 6.4%" : 
+            inputs.innerWidth > responsiveSizes.mobileLarge && inputs.innerWidth <= responsiveSizes.laptop ? "48px 9.6% 64px 9.6%" : 
+            inputs.isMenuShown ? "64px 30px 80px 5.4%" : "64px 100px 80px 15.6%"
+          };
         }
       }
       dxc-footer{
@@ -121,13 +113,30 @@ export class DxcStandardLayoutComponent implements OnInit, AfterViewInit {
     `;
   }
 
+  getStyleWidthSidenav(inputs){
+    if(this.isMenuShown){
+      if(inputs.innerWidth <= responsiveSizes.tablet){
+        return "60%";
+      }
+      else {
+        return "300px";
+      }
+    }
+    else {
+      return "0px";
+    }
+  }
+
   getStyleMarginsMain(inputs){
-    if(inputs.isSidenav){
+    // inputs.innerWidth <= responsiveSizes.mobileLarge ? "36px 6.4% 48px 6.4%" : 
+    // inputs.innerWidth > responsiveSizes.mobileLarge && inputs.innerWidth <= responsiveSizes.laptop ? "48px 9.6% 64px 9.6%" : 
+    // inputs.isMenuShown ? "64px 30px 80px 5.4%" : "64px 100px 80px 15.6%"
+    if(inputs.innerWidth <= responsiveSizes.mobileLarge){
       return css `
         ${
             inputs.innerWidth <= responsiveSizes.mobileLarge ? "36px 6.4% 48px 6.4%" : 
             inputs.innerWidth > responsiveSizes.mobileLarge && inputs.innerWidth <= responsiveSizes.laptop ? "48px 9.6% 64px 9.6%" : 
-            "64px 8.6% 80px 5.4%"
+            inputs.isShown ? "64px 8.6% 80px 5.4%" : "64px 15.6% 80px 15.6%"
           };
       `;
     }
@@ -136,7 +145,7 @@ export class DxcStandardLayoutComponent implements OnInit, AfterViewInit {
         ${
             inputs.innerWidth <= responsiveSizes.mobileLarge ? "36px 6.4% 48px 6.4%" : 
             inputs.innerWidth > responsiveSizes.mobileLarge && inputs.innerWidth <= responsiveSizes.laptop ? "48px 9.6% 64px 9.6%" : 
-            "64px 15.6% 80px 15.6%"
+            inputs.isShown ? "64px 8.6% 80px 5.4%" : "64px 15.6% 80px 15.6%"
           };
       `;
     }

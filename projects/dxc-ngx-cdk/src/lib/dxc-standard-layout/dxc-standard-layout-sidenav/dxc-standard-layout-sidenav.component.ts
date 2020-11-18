@@ -127,12 +127,12 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   getDynamicStyle(inputs) {
     return css`
       min-height: 100vh;
-      z-index: ${inputs.mode === "overlay" || inputs.isResponsive
+      z-index: ${inputs.mode === "overlay" && this.displayArrow
         ? "400"
         : "auto"};
-      position: ${inputs.mode === "overlay" || inputs.isResponsive
-      ? "absolute"
-      : "relative"};
+      position: ${inputs.mode === "overlay" && this.displayArrow
+        ? "absolute"
+        : "relative"};
       height: 100vh;
       .sidenavContainerClass {
         display: flex;
@@ -156,6 +156,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
             : "width 0.4s ease-in-out"};
         }
         .sidenavArrow {
+          visibility: ${!this.displayArrow ? "hidden" : "visible"};
           width: 42px;
           height: 42px;
           background-color: var(--sidenav-arrowContainerColor);

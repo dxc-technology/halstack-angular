@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { DxcStandardLayoutComponent } from "./dxc-standard-layout.component";
 import { CommonModule } from "@angular/common";
-import { BtnArrowService } from './dxc-standard-layout-sidenav/services/btnArrow.service';
 import { ObserversModule } from '@angular/cdk/observers';
 
 @NgModule({
@@ -11,6 +10,6 @@ import { ObserversModule } from '@angular/cdk/observers';
     ObserversModule
   ],
   exports: [DxcStandardLayoutComponent],
-  providers:[BtnArrowService]
+  providers:[]
 })
 export class DxcStandardLayoutModule {}

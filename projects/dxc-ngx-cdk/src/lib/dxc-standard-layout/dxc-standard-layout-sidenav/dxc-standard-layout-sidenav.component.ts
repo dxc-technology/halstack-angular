@@ -9,23 +9,23 @@ import {
   ChangeDetectorRef,
   OnChanges,
   EventEmitter,
+  HostBinding,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../../utils";
 import { responsiveSizes } from "../../variables";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
-import { BtnArrowService } from './services/btnArrow.service';   
+import { coerceBooleanProperty } from "@angular/cdk/coercion"; 
 import { Output } from '@angular/core';
 
 @Component({
   selector: "dxc-standard-layout-sidenav",
   templateUrl: "./dxc-standard-layout-sidenav.component.html",
-  styleUrls: ["./dxc-standard-layout-sidenav.component.scss"],
+  styleUrls: [],
   providers: [CssUtils],
 })
 export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
-  className;
+  @HostBinding("class") sidenavStyles;
   @Input() mode: string = "overlay";
   @Input() padding: any;
   @Input()
@@ -52,7 +52,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
 
   @Output() isMenuShown = new EventEmitter<boolean>();
 
-  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef, private _arrowService: BtnArrowService) {}
+  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -64,7 +64,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.isMenuShown.emit(this.isShown);
-    this.className = `${this.getDynamicStyle({
+    this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
       innerWidth: this.innerWidth,
@@ -99,11 +99,6 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
     }
   }
 
-  ngAfterViewInit() {
-    this.updateCss();
-    this.cdr.detectChanges();
-  }
-
   updateCss() {
     this.innerWidth = this.sidenav.nativeElement.clientWidth;
     if (this.innerWidth <= responsiveSizes.tablet) {
@@ -120,7 +115,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
         : this.innerWidth <= responsiveSizes.tablet
         ? false
         : true;
-    this.className = `${this.getDynamicStyle({
+    this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
       innerWidth: this.innerWidth,
@@ -132,7 +127,13 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   getDynamicStyle(inputs) {
     return css`
       min-height: 100vh;
-      height: 100%;
+      z-index: ${inputs.mode === "overlay" || inputs.isResponsive
+        ? "400"
+        : "auto"};
+      position: ${inputs.mode === "overlay" || inputs.isResponsive
+      ? "absolute"
+      : "relative"};
+      height: 100vh;
       .sidenavContainerClass {
         display: flex;
         position: relative;
@@ -143,9 +144,6 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
             : "0px"};
           height: inherit;
           background-color: var(--sidenav-backgroundColor);
-          z-index: ${inputs.mode === "overlay" || inputs.isResponsive
-            ? "400"
-            : "auto"};
           transform: ${inputs.isShown
             ? "translateX(0)"
             : !inputs.isShown

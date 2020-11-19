@@ -6,9 +6,7 @@ import {
   HostListener,
   ViewChild,
   ElementRef,
-  ChangeDetectorRef,
   OnChanges,
-  EventEmitter,
   HostBinding,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
@@ -16,7 +14,7 @@ import { css } from "emotion";
 import { CssUtils } from "../../utils";
 import { responsiveSizes } from "../../variables";
 import { coerceBooleanProperty } from "@angular/cdk/coercion"; 
-import { Output } from '@angular/core';
+import { SidenavService } from './services/sidenav.service';
 
 @Component({
   selector: "dxc-standard-layout-sidenav",
@@ -40,7 +38,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   firstClick: boolean = false; //remove animation on first load
   innerWidth;
   isResponsive = true;
-  isShown: boolean = true;
+  isShown: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     displayArrow: true,
@@ -50,9 +48,8 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  @Output() isMenuShown = new EventEmitter<boolean>();
-
-  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef) {}
+  constructor(private sidenavService: SidenavService) {
+  }
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -63,7 +60,10 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.isMenuShown.emit(this.isShown);
+    if(this.mode === "push"){
+      this.sidenavService.setPushMode();
+    }
+    this.sidenavService.showMenu(this.isShown);
     this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
@@ -76,7 +76,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   public arrowClicked() {
     this.isShown = !this.isShown;
     this.firstClick = true;
-    this.isMenuShown.emit(this.isShown);
+    this.sidenavService.showMenu(this.isShown);
     this.updateCss();
   }
 
@@ -100,9 +100,9 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   }
 
   updateCss() {
-    this.innerWidth = this.sidenav.nativeElement.clientWidth;
+    this.innerWidth = window.innerWidth;
     if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true;
+      this.isResponsive = true; //la resolucion es baja
     } else {
       this.isResponsive = false;
       if (!this.displayArrow && !this.isShown) {
@@ -126,18 +126,17 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      min-height: 100vh;
-      z-index: ${inputs.mode === "overlay" && this.displayArrow
+      z-index: ${(inputs.mode === "overlay" && this.displayArrow) || inputs.isResponsive
         ? "400"
         : "auto"};
-      position: ${inputs.mode === "overlay" && this.displayArrow
+      position: ${(inputs.mode === "overlay" && this.displayArrow) || inputs.isResponsive
         ? "absolute"
         : "relative"};
-      height: 100vh;
+      height: 100%;
       .sidenavContainerClass {
         display: flex;
         position: relative;
-        height: inherit;
+        height: 100%;
         .sidenavMenu{
           width: ${inputs.isShown
             ? "300px"
@@ -165,10 +164,8 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
           display: flex;
           align-items: center;
           justify-content: center;
-          position: ${inputs.arrowPosition === "fixed" ? "fixed" : "absolute"};
-          left: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "calc(100% - 21px)"
-            : "279px"};
+          position: absolute;
+          left: calc(100% - 21px);
           top: calc(50% - 21px);
           transition: ${this.firstClick ? "transform 0.4s ease-in-out;" : ""};
           cursor: pointer;

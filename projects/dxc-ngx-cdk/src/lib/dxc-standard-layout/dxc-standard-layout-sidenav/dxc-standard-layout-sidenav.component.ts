@@ -13,8 +13,8 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../../utils";
 import { responsiveSizes } from "../../variables";
-import { coerceBooleanProperty } from "@angular/cdk/coercion"; 
-import { SidenavService } from './services/sidenav.service';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { SidenavService } from "./services/sidenav.service";
 
 @Component({
   selector: "dxc-standard-layout-sidenav",
@@ -24,7 +24,7 @@ import { SidenavService } from './services/sidenav.service';
 })
 export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   @HostBinding("class") sidenavStyles;
-  @Input() mode: string = "overlay";
+  @Input() mode: string = "push";
   @Input() padding: any;
   @Input()
   get displayArrow(): boolean {
@@ -42,14 +42,16 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
 
   defaultInputs = new BehaviorSubject<any>({
     displayArrow: true,
-    padding: null
+    padding: null,
   });
 
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private sidenavService: SidenavService) {
-  }
+  constructor(
+    private utils: CssUtils,
+    private sidenavService: SidenavService
+  ) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -60,10 +62,7 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if(this.mode === "push"){
-      this.sidenavService.setPushMode();
-    }
-    this.sidenavService.showMenu(this.isShown);
+    this.updateState();
     this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
@@ -99,10 +98,11 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
     }
   }
 
-  updateCss() {
+  updateState() {
     this.innerWidth = window.innerWidth;
+    this.sidenavService.setPushMode(this.mode === "push");
     if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true; //la resolucion es baja
+      this.isResponsive = true;
     } else {
       this.isResponsive = false;
       if (!this.displayArrow && !this.isShown) {
@@ -115,6 +115,11 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
         : this.innerWidth <= responsiveSizes.tablet
         ? false
         : true;
+    this.sidenavService.showMenu(this.isShown);
+  }
+
+  updateCss() {
+    this.updateState();
     this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
@@ -126,22 +131,26 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      z-index: ${(inputs.mode === "overlay" && this.displayArrow) || inputs.isResponsive
+      z-index: ${(inputs.mode === "overlay" && this.displayArrow) ||
+      inputs.isResponsive
         ? "400"
         : "auto"};
-      position: ${(inputs.mode === "overlay" && this.displayArrow) || inputs.isResponsive
+      position: ${(inputs.mode === "overlay" && this.displayArrow) ||
+      inputs.isResponsive
         ? "absolute"
         : "relative"};
-      height: 100%;
       .sidenavContainerClass {
         display: flex;
         position: relative;
-        height: 100%;
-        .sidenavMenu{
+        height: 100vh;
+        .sidenavMenu {
+          ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
           width: ${inputs.isShown
-            ? "300px"
+            ? "calc(300px" +
+              this.utils.getPaddingOrMargin(null, inputs.padding) +
+              ")"
             : "0px"};
-          height: inherit;
+          overflow-y: scroll;
           background-color: var(--sidenav-backgroundColor);
           transform: ${inputs.isShown
             ? "translateX(0)"
@@ -153,6 +162,17 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
           transition: ${this.firstClick
             ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out;"
             : "width 0.4s ease-in-out"};
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          &::-webkit-scrollbar-track {
+            background-color: #d9d9d9;
+            border-radius: 3px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: #666666;
+            border-radius: 3px;
+          }
         }
         .sidenavArrow {
           visibility: ${!this.displayArrow ? "hidden" : "visible"};

@@ -140,8 +140,9 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
         ? "absolute"
         : "relative"};
       .sidenavContainerClass {
+        background-color: var(--sidenav-backgroundColor);
         display: flex;
-        position: relative;
+        position: sticky;
         height: 100vh;
         .sidenavMenu {
           ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
@@ -151,7 +152,6 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
               ")"
             : "0px"};
           overflow-y: scroll;
-          background-color: var(--sidenav-backgroundColor);
           transform: ${inputs.isShown
             ? "translateX(0)"
             : !inputs.isShown

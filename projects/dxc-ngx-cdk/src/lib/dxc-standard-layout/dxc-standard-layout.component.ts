@@ -89,7 +89,8 @@ export class DxcStandardLayoutComponent implements OnInit {
           transition: margin 0.4s ease-in-out;
           width: 100%;
           margin: ${this.getStyleMarginsMain(inputs)};
-          height: calc(100vh - ${this.getMainVerticalPadding(inputs)});
+          height: 100%;
+          min-height: calc(100vh - ${this.getMainVerticalPadding(inputs)});
         }
       }
       dxc-standard-layout-main {

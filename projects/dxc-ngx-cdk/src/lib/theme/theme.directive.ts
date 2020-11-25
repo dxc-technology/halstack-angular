@@ -209,6 +209,15 @@ export class ThemeDirective implements OnInit, OnDestroy {
       "--textarea-invalidColor": theme.properties["textarea"]["invalidColor"],
       "--textarea-scrollBarThumbColor": theme.properties["textarea"]["scrollBarThumbColor"],
       "--textarea-scrollBarTrackColor": theme.properties["textarea"]["scrollBarTrackColor"],
+      "--toggle-disabled": theme.properties["toggle"]["disabled"],
+      "--toggle-unselectedBackgroundColor": theme.properties["toggle"]["unselectedBackgroundColor"],
+      "--toggle-unselectedHoverBackgroundColor": theme.properties["toggle"]["unselectedHoverBackgroundColor"],
+      "--toggle-unselectedFontColor": theme.properties["toggle"]["unselectedFontColor"],
+      "--toggle-unselectedHoverFontColor": theme.properties["toggle"]["unselectedHoverFontColor"],
+      "--toggle-selectedBackgroundColor": theme.properties["toggle"]["selectedBackgroundColor"],
+      "--toggle-selectedHoverBackgroundColor": theme.properties["toggle"]["selectedHoverBackgroundColor"],
+      "--toggle-selectedFontColor": theme.properties["toggle"]["selectedFontColor"],
+      "--toggle-selectedHoverFontColor": theme.properties["toggle"]["selectedHoverFontColor"],
     }
     for (const key in obj) {
       document.body.style.setProperty(key, obj[key]);

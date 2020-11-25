@@ -49,7 +49,7 @@
               "projects/dxc-ngx-cdk-site/src/styles.scss"
             ],
             "scripts": [],
-            "baseHref" : "/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
@@ -92,9 +92,9 @@
               "browserTarget": "angular-dxc-site:build:production"
             }
           },
-          "assets": [ 
+          "assets": [
             "projects/dxc-ngx-cdk-site/src/assets"
-            ]
+          ]
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -222,9 +222,9 @@
               "browserTarget": "dxc-angular-cdk:build:production"
             }
           },
-          "assets": [ 
+          "assets": [
             "projects/dxc-ngx-cdk-examples/src/assets"
-            ]
+          ]
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -238,16 +238,26 @@
             "main": "projects/dxc-ngx-cdk-examples/src/test.ts",
             "tsConfig": "projects/dxc-ngx-cdk-examples/tsconfig.spec.json",
             "karmaConfig": "projects/dxc-ngx-cdk-examples/karma.conf.js",
-            "styles": ["projects/dxc-ngx-cdk-examples/src/styles.scss"],
+            "styles": [
+              "projects/dxc-ngx-cdk-examples/src/styles.scss"
+            ],
             "scripts": [],
-            "assets": ["projects/dxc-ngx-cdk-examples/src/favicon.ico", "projects/dxc-ngx-cdk-examples/src/assets"]
+            "assets": [
+              "projects/dxc-ngx-cdk-examples/src/favicon.ico",
+              "projects/dxc-ngx-cdk-examples/src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["projects/dxc-ngx-cdk-examples/tsconfig.app.json", "projects/dxc-ngx-cdk-examples/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "projects/dxc-ngx-cdk-examples/tsconfig.app.json",
+              "projects/dxc-ngx-cdk-examples/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -263,7 +273,7 @@
           "options": {
             "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.json",
             "project": "projects/dxc-ngx-cdk/ng-package.json"
-          },          
+          },
           "configurations": {
             "production": {
               "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.prod.json"
@@ -291,7 +301,10 @@
           }
         }
       }
-
-    }},
-  "defaultProject": "angular-dxc-site"
+    }
+  },
+  "defaultProject": "angular-dxc-site",
+  "cli": {
+    "analytics": false
+  }
 }

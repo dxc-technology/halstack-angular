@@ -44,6 +44,8 @@ import { LinkModule } from './pages/link/link.module';
 import { HeadingModule } from './pages/heading/heading.module';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
 import { TextAreaModule } from './pages/text-area/text-area.module';
+import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +97,8 @@ import { TextAreaModule } from './pages/text-area/text-area.module';
     SliderModule,
     HeadingModule,
     ResultsetTableModule,
-    DxcSelectModule
+    DxcSelectModule,
+    ToggleGroupModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatButtonModule } from "@angular/material/button";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DxcUploadComponent } from "./dxc-upload.component";
 import { DxcDragAndDropComponent } from "./dxc-drag-and-drop/dxc-drag-and-drop.component";
 import { DxcFilesToUploadComponent } from "./dxc-files-to-upload/dxc-files-to-upload.component";
@@ -32,7 +31,6 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatTooltipModule,
     DxcButtonModule,
     DxcSpinnerModule,
-    BrowserAnimationsModule,
     MatProgressSpinnerModule,
   ],
   exports: [

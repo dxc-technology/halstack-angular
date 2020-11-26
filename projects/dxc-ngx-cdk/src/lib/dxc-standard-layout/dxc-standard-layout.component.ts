@@ -1,11 +1,17 @@
-import { Component, OnInit, HostBinding, ContentChildren } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  HostBinding,
+  ContentChildren,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { HostListener, QueryList } from "@angular/core";
 import { responsiveSizes } from "../variables";
-import { DxcStandardLayoutSidenavComponent } from "./dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.component";
 import { SidenavService } from "./dxc-standard-layout-sidenav/services/sidenav.service";
+import { DxcHeaderComponent } from "../dxc-header/dxc-header.component";
 @Component({
   selector: "dxc-standard-layout",
   templateUrl: "./dxc-standard-layout.component.html",
@@ -17,16 +23,20 @@ export class DxcStandardLayoutComponent implements OnInit {
   innerWidth;
   isMenuShown;
   isModePush;
+  customHeader;
 
   defaultInputs = new BehaviorSubject<any>({
     innerWidth,
     isModePush: true,
   });
 
-  @ContentChildren(DxcStandardLayoutSidenavComponent)
-  componentSidenav: QueryList<DxcStandardLayoutSidenavComponent>;
+  @ContentChildren(DxcHeaderComponent)
+  dxcHeader: QueryList<DxcHeaderComponent>;
 
-  constructor(private service: SidenavService) {
+  constructor(
+    private service: SidenavService,
+    private cdRef: ChangeDetectorRef
+  ) {
     this.service.isMenuShown.subscribe((value) => {
       this.isMenuShown = value;
       this.updateCss();
@@ -48,6 +58,12 @@ export class DxcStandardLayoutComponent implements OnInit {
     this.updateCss();
   }
 
+  ngAfterViewChecked() {
+    console.log(this.dxcHeader);
+    this.customHeader = this.dxcHeader.length === 0;
+    this.cdRef.detectChanges();
+  }
+
   updateCss() {
     this.layoutStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
@@ -58,7 +74,7 @@ export class DxcStandardLayoutComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      z-index:400;
+      z-index: 400;
       position: absolute;
       top: 0;
       left: 0;
@@ -78,6 +94,9 @@ export class DxcStandardLayoutComponent implements OnInit {
             min-height: 68px !important;
           }
         }
+      }
+      dxc-standard-layout-header {
+        width: 100%;
       }
       .content {
         display: flex;
@@ -127,7 +146,7 @@ export class DxcStandardLayoutComponent implements OnInit {
     ) {
       return "48px - 64px";
     } else {
-      return "64px - 80px"
+      return "64px - 80px";
     }
   }
 }

@@ -126,6 +126,5 @@ export * from './lib/dxc-resultable/directives/sorting.directive';
 export * from './lib/dxc-standard-layout/dxc-standard-layout.component';
 export * from './lib/dxc-standard-layout/dxc-standard-layout.module';
 export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-layout-main.component';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-layout-main.module';
 export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.component';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.module';
+export * from './lib/dxc-standard-layout/dxc-standard-layout-header/dxc-standard-layout-header.component';

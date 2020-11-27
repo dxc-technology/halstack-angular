@@ -12,6 +12,9 @@ import { HostListener, QueryList } from "@angular/core";
 import { responsiveSizes } from "../variables";
 import { SidenavService } from "./dxc-standard-layout-sidenav/services/sidenav.service";
 import { DxcHeaderComponent } from "../dxc-header/dxc-header.component";
+import { DxcStandardLayoutHeaderComponent } from './dxc-standard-layout-header/dxc-standard-layout-header.component';
+import { DxcFooterComponent } from '../dxc-footer/dxc-footer.component';
+import { DxcStandardLayoutFooterComponent } from './dxc-standard-layout-footer/dxc-standard-layout-footer.component';
 @Component({
   selector: "dxc-standard-layout",
   templateUrl: "./dxc-standard-layout.component.html",
@@ -23,7 +26,12 @@ export class DxcStandardLayoutComponent implements OnInit {
   innerWidth;
   isMenuShown;
   isModePush;
+
   customHeader;
+  defaultHeader = false;
+
+  customFooter;
+  defaultFooter = false;
 
   defaultInputs = new BehaviorSubject<any>({
     innerWidth,
@@ -32,6 +40,15 @@ export class DxcStandardLayoutComponent implements OnInit {
 
   @ContentChildren(DxcHeaderComponent)
   dxcHeader: QueryList<DxcHeaderComponent>;
+
+  @ContentChildren(DxcStandardLayoutHeaderComponent)
+  dxcCustomHeader: QueryList<DxcStandardLayoutHeaderComponent>;
+
+  @ContentChildren(DxcFooterComponent)
+  dxcFooter: QueryList<DxcFooterComponent>;
+
+  @ContentChildren(DxcStandardLayoutFooterComponent)
+  dxcCustomFooter: QueryList<DxcStandardLayoutFooterComponent>;
 
   constructor(
     private service: SidenavService,
@@ -59,8 +76,21 @@ export class DxcStandardLayoutComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    console.log(this.dxcHeader);
-    this.customHeader = this.dxcHeader.length === 0;
+    if(this.dxcHeader.length === 0 && this.dxcCustomHeader.length !== 0) {
+      this.customHeader = "customHeader";
+    } else if(this.dxcHeader.length === 1) {
+      this.customHeader = "customDxcHeader";
+    } else if(this.dxcHeader.length === 0 && this.dxcCustomHeader.length === 0) {
+      this.defaultHeader = true;
+    }
+
+    if(this.dxcFooter.length === 0 && this.dxcCustomFooter.length !== 0) {
+      this.customFooter = "customFooter";
+    } else if(this.dxcFooter.length === 1) {
+      this.customFooter = "customDxcFooter";
+    } else if(this.dxcFooter.length === 0 && this.dxcCustomFooter.length === 0) {
+      this.defaultFooter = true;
+    }
     this.cdRef.detectChanges();
   }
 

@@ -55,9 +55,6 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    if (this.isResponsive === false && this.displayArrow === false) {
-      this.isShown = true;
-    }
     this.updateCss();
   }
 
@@ -103,6 +100,9 @@ export class DxcStandardLayoutSidenavComponent implements OnInit, OnChanges {
     this.sidenavService.setPushMode(this.mode === "push");
     if (this.innerWidth <= responsiveSizes.tablet) {
       this.isResponsive = true;
+      if (!this.displayArrow) {
+        this.displayArrow = true;
+      }
     } else {
       this.isResponsive = false;
       if (!this.displayArrow && !this.isShown) {

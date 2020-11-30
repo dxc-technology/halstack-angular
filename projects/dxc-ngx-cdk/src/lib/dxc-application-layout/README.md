@@ -1,35 +1,35 @@
-# DXC Standard Layout Component
+# DXC Application Layout Component
 
 ## Overview
 
-The DXC Standard Layout Component is a container.
+The DXC Application Layout Component is a container.
 
 ## Usage
 
 ```html
-<dxc-standard>
+<dxc-application-layout>
     <dxc-header></dxc-header>
-    <dxc-main>
+    <dxc-application-layout-main>
       <dxc-button label="Button"></dxc-button>
-    </dxc-main>
+    </dxc-application-layout-main>
     <dxc-footer
         copyright="© DXC Technology 2019. All rights reserved."
         [bottomLinks]="bottom"
         [socialLinks]="social"
     ></dxc-footer>
-</dxc-standard>
+</dxc-application-layout>
 ```
 
-Include the **DxcStandardModule** into **app.module.ts** to use the standard layout component:
+Include the **DxcApplicationLayoutModule** into **app.module.ts** to use the application layout component:
 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DxcStandardModule } from "@dxc-technology/halstack-angular";
+import { DxcApplicationLayoutComponent } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DxcStandardModule],
+  imports: [DxcApplicationLayoutComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

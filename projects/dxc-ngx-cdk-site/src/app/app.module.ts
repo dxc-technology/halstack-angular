@@ -9,6 +9,7 @@ import { ThemeService, DxcHeaderModule,DxcFooterModule, ThemeModule,DxcSelectMod
 import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
 import { AlertModule } from './pages/alert/alert.module';
+import { ApplicationLayoutModule } from './pages/application-layout/app-layout.module';
 import { AutocompleteModule } from './pages/autocomplete/autocomplete.module';
 import { BoxModule } from './pages/box/box.module';
 import { ButtonModule } from './pages/button/button.module';
@@ -64,6 +65,7 @@ import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
     DxcFooterModule,
     AccordionModule,
     AlertModule,
+    ApplicationLayoutModule,
     AutocompleteModule,
     BoxModule,
     ButtonModule,

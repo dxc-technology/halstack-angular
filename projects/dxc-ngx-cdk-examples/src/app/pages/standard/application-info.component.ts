@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'standard-info',
-  templateUrl: './standard-info.component.html',
-  styleUrls: ['./standard-info.component.scss']
+  selector: 'application-info',
+  templateUrl: './application-info.component.html',
+  styleUrls: ['./application-info.component.scss']
 })
-export class StandardInfoComponent {
+export class ApplicationInfoComponent {
 
   constructor()  {}
+
+  showCode=false;
+
+  changeShowCode() {
+    this.showCode= !this.showCode;
+  }
 
   social = [
     {

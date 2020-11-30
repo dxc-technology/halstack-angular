@@ -1,0 +1,14 @@
+<ng-content *ngIf="customHeader === 'customDxcHeader'" select="dxc-header"></ng-content>
+<ng-content *ngIf="customHeader === 'customHeader'" select="dxc-application-layout-header"></ng-content>
+<dxc-header *ngIf="defaultHeader"></dxc-header>
+<div class="content">
+  <div class="sidenav" >
+    <ng-content select="dxc-application-layout-sidenav"></ng-content>
+  </div>
+  <div class="main">
+    <ng-content select="dxc-application-layout-main"></ng-content>
+  </div>
+</div>
+<ng-content *ngIf="customFooter === 'customDxcFooter'" select="dxc-footer"></ng-content>
+<ng-content *ngIf="customFooter === 'customFooter'" select="dxc-application-layout-footer"></ng-content>
+<dxc-footer *ngIf="defaultFooter"></dxc-footer>

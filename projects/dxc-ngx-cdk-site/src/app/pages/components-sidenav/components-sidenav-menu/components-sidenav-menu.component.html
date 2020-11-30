@@ -93,6 +93,11 @@
         <div class="menu-title">Layout</div>
         <div class="menu-items">
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/applicationLayout' ? 
+            router.isActive(router.createUrlTree(['components/applicationLayout']).toString(), true) : false}"
+            (click)="navigateTo('components/applicationLayout')">Application Layout</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/box' ? 
             router.isActive(router.createUrlTree(['components/box']).toString(), true) : false}"
             (click)="navigateTo('components/box')">Box</a>

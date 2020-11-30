@@ -4,6 +4,7 @@ import { OverviewPageComponent } from "./pages/overview-page/overview-page.compo
 import { ComponentsPageComponent } from "./pages/components-page/components-page.component";
 import { AccordionComponent } from "./pages/accordion/accordion.component";
 import { AlertComponent } from "./pages/alert/alert.component";
+import { ApplicationLayoutComponent } from './pages/application-layout/app-layout.component';
 import { AutocompleteComponent } from "./pages/autocomplete/autocomplete.component"
 import { BoxComponent } from "./pages/box/box.component";
 import { ButtonComponent } from "./pages/button/button.component";
@@ -54,6 +55,10 @@ let routes: Routes = [];
   {
     path: 'components/alert',
     component: AlertComponent
+  },
+  {
+    path: 'components/applicationLayout',
+    component: ApplicationLayoutComponent
   },
   {
     path: 'components/autocomplete',

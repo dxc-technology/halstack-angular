@@ -6,24 +6,26 @@ import {
   HostListener,
   ViewChild,
   ElementRef,
-  ChangeDetectorRef,
+  OnChanges,
+  HostBinding,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
-import { CssUtils } from "../utils";
-import { responsiveSizes } from "../variables";
+import { CssUtils } from "../../utils";
+import { responsiveSizes } from "../../variables";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { SidenavService } from "./services/sidenav.service";
 
 @Component({
-  selector: "dxc-sidenav",
-  templateUrl: "./dxc-sidenav.component.html",
-  styleUrls: ["./dxc-sidenav.component.scss"],
+  selector: "dxc-application-layout-sidenav",
+  templateUrl: "./dxc-application-layout-sidenav.component.html",
+  styleUrls: [],
   providers: [CssUtils],
 })
-export class DxcSidenavComponent implements OnInit {
-  className;
+export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
+  @HostBinding("class") sidenavStyles;
   @Input() arrowDistance: string;
-  @Input() mode: string = "overlay";
+  @Input() mode: string = "push";
   @Input() padding: any;
   @Input()
   get displayArrow(): boolean {
@@ -32,34 +34,34 @@ export class DxcSidenavComponent implements OnInit {
   set displayArrow(value: boolean) {
     this._displayArrow = coerceBooleanProperty(value);
   }
-  private _displayArrow = true;
+  _displayArrow = true;
 
-  isClicked: boolean = false;
+  firstClick: boolean = false; //remove animation on first load
   innerWidth;
-  isResponsive;
+  isResponsive = true;
   isShown: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
-    arrowDistance: "",
-    padding: null,
     displayArrow: true,
+    padding: null,
   });
 
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private utils: CssUtils,
+    private sidenavService: SidenavService
+  ) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    if (this.isResponsive === false && this.displayArrow === false) {
-      this.isShown = true;
-    }
     this.updateCss();
   }
 
   ngOnInit() {
-    this.className = `${this.getDynamicStyle({
+    this.updateState();
+    this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
       innerWidth: this.innerWidth,
@@ -70,7 +72,8 @@ export class DxcSidenavComponent implements OnInit {
 
   public arrowClicked() {
     this.isShown = !this.isShown;
-    this.isClicked = true;
+    this.firstClick = true;
+    this.sidenavService.showMenu(this.isShown);
     this.updateCss();
   }
 
@@ -93,15 +96,14 @@ export class DxcSidenavComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit() {
-    this.updateCss();
-    this.cdr.detectChanges();
-  }
-
-  updateCss() {
-    this.innerWidth = this.sidenav.nativeElement.clientWidth;
+  updateState() {
+    this.innerWidth = window.innerWidth;
+    this.sidenavService.setPushMode(this.mode === "push");
     if (this.innerWidth <= responsiveSizes.tablet) {
       this.isResponsive = true;
+      if (!this.displayArrow) {
+        this.displayArrow = true;
+      }
     } else {
       this.isResponsive = false;
       if (!this.displayArrow && !this.isShown) {
@@ -114,7 +116,12 @@ export class DxcSidenavComponent implements OnInit {
         : this.innerWidth <= responsiveSizes.tablet
         ? false
         : true;
-    this.className = `${this.getDynamicStyle({
+    this.sidenavService.showMenu(this.isShown);
+  }
+
+  updateCss() {
+    this.updateState();
+    this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
       innerWidth: this.innerWidth,
@@ -125,11 +132,51 @@ export class DxcSidenavComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
+      z-index: ${(inputs.mode === "overlay" && this.displayArrow) ||
+      inputs.isResponsive
+        ? "400"
+        : "auto"};
+      position: ${(inputs.mode === "overlay" && this.displayArrow) ||
+      inputs.isResponsive
+        ? "absolute"
+        : "relative"};
       .sidenavContainerClass {
+        background-color: var(--sidenav-backgroundColor);
         display: flex;
-        position: relative;
-
+        position: sticky;
+        height: 100vh;
+        .sidenavMenu {
+          ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
+          width: ${inputs.isShown
+            ? "calc(300px" +
+              this.utils.getPaddingOrMargin(null, inputs.padding) +
+              ")"
+            : "0px"};
+          overflow-y: scroll;
+          transform: ${inputs.isShown
+            ? "translateX(0)"
+            : !inputs.isShown
+            ? "translateX(-100%) !important"
+            : ""};
+          opacity: ${inputs.isShown ? "1" : "0"};
+          visibility: ${inputs.isShown ? "visible" : "hidden"};
+          transition: ${this.firstClick
+            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out;"
+            : "width 0.4s ease-in-out"};
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          &::-webkit-scrollbar-track {
+            background-color: #d9d9d9;
+            border-radius: 3px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: #666666;
+            border-radius: 3px;
+          }
+        }
         .sidenavArrow {
+          visibility: ${!this.displayArrow ? "hidden" : "visible"};
           width: 42px;
           height: 42px;
           background-color: var(--sidenav-arrowContainerColor);
@@ -139,20 +186,13 @@ export class DxcSidenavComponent implements OnInit {
           align-items: center;
           justify-content: center;
           position: fixed;
-          left: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "calc(60% - 21px)"
-            : "279px"};
+          left: ${this.isShown ? "calc(300px - 21px)" : "calc(0px - 21px)"};
           top: ${inputs.arrowDistance
             ? inputs.arrowDistance
             : "calc(50% - 21px)"};
-          transform: ${inputs.isShown
-            ? "translateX(0)"
-            : !inputs.isShown
-            ? inputs.innerWidth <= responsiveSizes.tablet
-              ? "translateX(-" + inputs.innerWidth * 0.6 + "px) !important"
-              : "translateX(-297px) !important"
+          transition: ${this.firstClick
+            ? "transform 0.4s ease-in-out, left 0.4s ease-in-out;"
             : ""};
-          transition: ${this.isClicked ? "transform 0.4s ease-in-out;" : ""};
           cursor: pointer;
           z-index: ${inputs.mode === "overlay" || this.isResponsive
             ? "401"
@@ -170,55 +210,11 @@ export class DxcSidenavComponent implements OnInit {
             transform: ${inputs.isShown
               ? "rotate(-180deg)"
               : "rotate(0deg) !important"};
-            transition: ${this.isClicked
+            transition: ${this.firstClick
               ? "margin 0.4s ease-in, transform 0.4s ease-in-out; "
               : ""};
             fill: var(--sidenav-arrowColor);
           }
-        }
-
-        dxc-sidenav-menu {
-          display: flex;
-          flex-direction: column;
-          background-color: var(--sidenav-backgroundColor);
-          width: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "60%"
-            : "300px"};
-          box-sizing: border-box;
-          ${this.utils.getPaddings(inputs.padding)}
-          z-index: ${inputs.mode === "overlay" || inputs.isResponsive
-            ? "400"
-            : "auto"};
-          transform: ${inputs.isShown
-            ? "translateX(0)"
-            : !inputs.isShown
-            ? "translateX(-100%) !important"
-            : ""};
-          opacity: ${inputs.isShown ? "1" : "0"};
-          visibility: ${inputs.isShown ? "visible" : "hidden"};
-          transition: ${this.isClicked
-            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;"
-            : ""};
-        }
-
-        dxc-sidenav-content {
-          box-sizing: border-box;
-          flex-grow: 1;
-          height: 100%;
-          ${this.utils.getPaddings(inputs.padding)}
-          margin-left: ${inputs.isShown &&
-          inputs.mode === "push" &&
-          !inputs.isResponsive
-            ? ""
-            : !inputs.isResponsive
-            ? "-300px"
-            : "-60%"};
-          transition: ${this.isClicked ? "margin 0.4s ease-in-out;" : ""};
-          width: ${inputs.isShown &&
-          inputs.mode === "push" &&
-          !inputs.isResponsive
-            ? "calc(100% - 300px)"
-            : "calc(100%)"};
         }
       }
     `;

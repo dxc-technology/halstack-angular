@@ -20,6 +20,7 @@ import { AlertSuccessComponent } from "../examples/alert/alert-success/alert-suc
 import { AlertWarningComponent } from "../examples/alert/alert-warning/alert-warning.component";
 import { AlertErrorComponent } from '../examples/alert/alert-error/alert-error.component';
 import { AlertClosableComponent } from '../examples/alert/alert-closable/alert-closable.component';
+import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
 import { AutocompleteAsyncControlledComponent } from '../examples/autocomplete/autocomplete-asynchronous-controlled/autocomplete-asynchronous-controlled.component';
 import { AutocompleteAsyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-asynchronous-uncontrolled/autocomplete-asynchronous-uncontrolled.component';
 import { AutocompleteExampleComponent } from '../examples/autocomplete/autocomplete-example/autocomplete-example.component';
@@ -308,6 +309,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     AlertWarningComponent,
     AlertErrorComponent,
     AlertClosableComponent,
+    ApplicationLayoutApiComponent,
     AutocompleteAsyncControlledComponent,
     AutocompleteAsyncUncontrolledComponent,
     AutocompleteExampleComponent,

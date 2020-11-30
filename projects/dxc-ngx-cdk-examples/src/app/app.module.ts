@@ -67,7 +67,7 @@ import {
   DxcResultsetTableModule,
   DxcTextareaModule,
   ThemeModule,
-  DxcStandardLayoutModule,
+  DxcApplicationLayoutModule,
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
@@ -145,7 +145,7 @@ import { StandardInfoComponent } from './pages/standard/standard-info.component'
     DxcResultsetTableModule,
     DxcTextareaModule,
     ThemeModule,
-    DxcStandardLayoutModule
+    DxcApplicationLayoutModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

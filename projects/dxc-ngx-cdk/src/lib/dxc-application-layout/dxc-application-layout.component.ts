@@ -10,17 +10,17 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { HostListener, QueryList } from "@angular/core";
 import { responsiveSizes } from "../variables";
-import { SidenavService } from "./dxc-standard-layout-sidenav/services/sidenav.service";
+import { SidenavService } from "./dxc-application-layout-sidenav/services/sidenav.service";
 import { DxcHeaderComponent } from "../dxc-header/dxc-header.component";
-import { DxcStandardLayoutHeaderComponent } from './dxc-standard-layout-header/dxc-standard-layout-header.component';
+import { DxcApplicationLayoutHeaderComponent } from './dxc-application-layout-header/dxc-application-layout-header.component';
 import { DxcFooterComponent } from '../dxc-footer/dxc-footer.component';
-import { DxcStandardLayoutFooterComponent } from './dxc-standard-layout-footer/dxc-standard-layout-footer.component';
+import { DxcApplicationLayoutFooterComponent } from './dxc-application-layout-footer/dxc-application-layout-footer.component';
 @Component({
-  selector: "dxc-standard-layout",
-  templateUrl: "./dxc-standard-layout.component.html",
+  selector: "dxc-application-layout",
+  templateUrl: "./dxc-application-layout.component.html",
   providers: [CssUtils, SidenavService],
 })
-export class DxcStandardLayoutComponent implements OnInit {
+export class DxcApplicationLayoutComponent implements OnInit {
   @HostBinding("class") layoutStyles;
 
   innerWidth;
@@ -41,14 +41,14 @@ export class DxcStandardLayoutComponent implements OnInit {
   @ContentChildren(DxcHeaderComponent)
   dxcHeader: QueryList<DxcHeaderComponent>;
 
-  @ContentChildren(DxcStandardLayoutHeaderComponent)
-  dxcCustomHeader: QueryList<DxcStandardLayoutHeaderComponent>;
+  @ContentChildren(DxcApplicationLayoutHeaderComponent)
+  dxcCustomHeader: QueryList<DxcApplicationLayoutHeaderComponent>;
 
   @ContentChildren(DxcFooterComponent)
   dxcFooter: QueryList<DxcFooterComponent>;
 
-  @ContentChildren(DxcStandardLayoutFooterComponent)
-  dxcCustomFooter: QueryList<DxcStandardLayoutFooterComponent>;
+  @ContentChildren(DxcApplicationLayoutFooterComponent)
+  dxcCustomFooter: QueryList<DxcApplicationLayoutFooterComponent>;
 
   constructor(
     private service: SidenavService,
@@ -125,7 +125,7 @@ export class DxcStandardLayoutComponent implements OnInit {
           }
         }
       }
-      dxc-standard-layout-header {
+      dxc-application-layout-header {
         width: 100%;
       }
       .content {
@@ -141,7 +141,7 @@ export class DxcStandardLayoutComponent implements OnInit {
           min-height: calc(100vh - ${this.getMainVerticalPadding(inputs)});
         }
       }
-      dxc-standard-layout-main {
+      dxc-application-layout-main {
         width: 100%;
         max-width: 1320px;
       }

@@ -123,8 +123,8 @@ export * from './lib/dxc-resultable/directives/dxc-cell-def.directive';
 export * from './lib/dxc-resultable/directives/dxc-column-def.directive';
 export * from './lib/dxc-resultable/directives/sorting.directive';
 
-export * from './lib/dxc-standard-layout/dxc-standard-layout.component';
-export * from './lib/dxc-standard-layout/dxc-standard-layout.module';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-main/dxc-standard-layout-main.component';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-sidenav/dxc-standard-layout-sidenav.component';
-export * from './lib/dxc-standard-layout/dxc-standard-layout-header/dxc-standard-layout-header.component';
+export * from './lib/dxc-application-layout/dxc-application-layout.component';
+export * from './lib/dxc-application-layout/dxc-application-layout.module';
+export * from './lib/dxc-application-layout/dxc-application-layout-main/dxc-application-layout-main.component';
+export * from './lib/dxc-application-layout/dxc-application-layout-sidenav/dxc-application-layout-sidenav.component';
+export * from './lib/dxc-application-layout/dxc-application-layout-header/dxc-application-layout-header.component';

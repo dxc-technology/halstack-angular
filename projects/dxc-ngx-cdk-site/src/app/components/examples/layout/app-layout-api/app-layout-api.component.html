@@ -1,0 +1,87 @@
+<h2 class="subtitle-api">Children</h2>
+
+<p>
+  This component has no props. It has children and it follows the design
+  guidelines available
+  <dxc-link
+    href="https://developer.dxc.com/design/principles/layout"
+    underlined="false"
+    text="here"
+  ></dxc-link>
+  .
+</p>
+
+<dxc-heading
+  text="DxcApplicationLayoutHeader"
+  [level]="4"
+  weight="bold"
+></dxc-heading>
+<p>
+  Everything in this component will be displayed as a header, at the top of the
+  screen. If you want to show a
+  <dxc-link
+    text="DxcHeader"
+    href=""
+    underlined="false"
+    (click)="navigateToRoute('header'); $event.preventDefault()"
+  ></dxc-link
+  >, as a shortcut, you can directly use it without DxcApplicationLayoutHeader.
+  This is optional and if it is not specified, the DxcHeader will be shown by
+  default.
+</p>
+
+<dxc-heading
+  text="DxcApplicationLayoutFooter"
+  [level]="4"
+  weight="bold"
+></dxc-heading>
+<p>
+  Everything in this component will be displayed as a footer, at the bottom of
+  the screen. If you want to show a
+  <dxc-link
+    text="DxcFooter"
+    href=""
+    underlined="false"
+    (click)="navigateToRoute('footer'); $event.preventDefault()"
+  ></dxc-link
+  >, as a shortcut, you can directly use it without DxcApplicationLayoutFooter.
+  This is optional and if it is not specified, the DxcFooter will be shown by
+  default.
+</p>
+
+<dxc-heading
+  text="DxcApplicationLayoutSidenav"
+  [level]="4"
+  weight="bold"
+></dxc-heading>
+<p>
+  Everything in this component will be displayed as content inside a sidenav at
+  the left. This is optional and if not specified, the sidenav will not be
+  shown. Check
+  <dxc-link
+    text="DxcSidenav"
+    href=""
+    underlined="false"
+    (click)="navigateToRoute('sidenav'); $event.preventDefault()"
+  ></dxc-link>
+  for more information regarding its props. This also applies to the themming.
+</p>
+
+<dxc-heading
+  text="DxcApplicationLayoutMain"
+  [level]="4"
+  weight="bold"
+></dxc-heading>
+<p>
+  Everything in this component will be displayed as content inside the main container at
+  the center.
+</p>
+
+<h2 class="subtitle-api">Module</h2>
+
+<p>
+  To be able to use this component, you should import the module in the page you
+  want to use it from your Angular project. You have the following example:
+</p>
+
+<app-code-playground [code]="bindCode" type="TS"></app-code-playground>

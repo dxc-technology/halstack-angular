@@ -4,11 +4,11 @@ import {
 } from "@angular/core";
 import { CssUtils } from "../../utils";
 @Component({
-  selector: "dxc-standard-layout-main",
-  templateUrl: "./dxc-standard-layout-main.component.html",
+  selector: "dxc-application-layout-main",
+  templateUrl: "./dxc-application-layout-main.component.html",
   providers: [CssUtils],
 })
-export class DxcStandardLayoutMainComponent implements OnInit {
+export class DxcApplicationLayoutMainComponent implements OnInit {
 
   constructor() {}
 

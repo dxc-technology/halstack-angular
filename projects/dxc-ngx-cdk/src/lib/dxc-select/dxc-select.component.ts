@@ -168,17 +168,15 @@ export class DxcSelectComponent implements OnChanges {
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
       ${this.getInvalidStyles()}
-      ::ng-deep {
-        .mat-form-field-label:not(.mat-form-field-empty) {
-          color: var(--select-color);
-        }
-        .mat-form-field-label.mat-form-field-empty {
-          color: var(--select-selectedOptionBackgroundColor);
-        }
-        .mat-form-field-appearance-legacy .mat-form-field-underline {
-          background-color: var(--select-color);
-          height: 1px;
-        }
+      .mat-form-field-label {
+        color: var(--select-color);
+      }
+      .mat-form-field-label.mat-form-field-empty {
+        color: var(--select-color);
+      }
+      .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: var(--select-color);
+        height: 1px;
       }
     `;
   }

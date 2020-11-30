@@ -29,7 +29,7 @@ import { UploadComponent } from './pages/upload/upload.component';
 import { HeadingInfoComponent } from './pages/heading/heading-info.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { TextareaInfoComponent } from './pages/textarea/textarea-info.component';
-import { StandardInfoComponent } from './pages/standard/standard-info.component';
+import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 
 export const Components = [
     {
@@ -145,7 +145,7 @@ export const Components = [
     {
         name: 'Standard Layout',
         route: 'standard',
-        component: StandardInfoComponent
+        component: ApplicationInfoComponent
     },
     {
         name: 'Switch',

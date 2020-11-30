@@ -23,7 +23,6 @@ import { coerceBooleanProperty } from "@angular/cdk/coercion";
 export class DxcSidenavComponent implements OnInit {
   className;
   @Input() arrowDistance: string;
-  @Input() arrowPosition: string = "absolute";
   @Input() mode: string = "overlay";
   @Input() padding: any;
   @Input()
@@ -139,7 +138,7 @@ export class DxcSidenavComponent implements OnInit {
           display: flex;
           align-items: center;
           justify-content: center;
-          position: ${inputs.arrowPosition === "fixed" ? "fixed" : "absolute"};
+          position: fixed;
           left: ${inputs.innerWidth <= responsiveSizes.tablet
             ? "calc(60% - 21px)"
             : "279px"};

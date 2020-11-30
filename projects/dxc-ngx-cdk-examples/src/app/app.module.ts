@@ -71,7 +71,8 @@ import {
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
-import { StandardInfoComponent } from './pages/standard/standard-info.component';
+import { ApplicationInfoComponent } from './pages/standard/application-info.component';
+
 
 @NgModule({
   declarations: [
@@ -107,7 +108,7 @@ import { StandardInfoComponent } from './pages/standard/standard-info.component'
     HeadingInfoComponent,
     ResultsetTableComponent,
     UploadComponent,
-    StandardInfoComponent,
+    ApplicationInfoComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -24,6 +24,7 @@ import { SidenavService } from "./services/sidenav.service";
 })
 export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   @HostBinding("class") sidenavStyles;
+  @Input() arrowDistance: string;
   @Input() mode: string = "push";
   @Input() padding: any;
   @Input()
@@ -184,10 +185,14 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           display: flex;
           align-items: center;
           justify-content: center;
-          position: absolute;
-          left: calc(100% - 21px);
-          top: calc(50% - 21px);
-          transition: ${this.firstClick ? "transform 0.4s ease-in-out;" : ""};
+          position: fixed;
+          left: ${this.isShown ? "calc(300px - 21px)" : "calc(0px - 21px)"};
+          top: ${inputs.arrowDistance
+            ? inputs.arrowDistance
+            : "calc(50% - 21px)"};
+          transition: ${this.firstClick
+            ? "transform 0.4s ease-in-out, left 0.4s ease-in-out;"
+            : ""};
           cursor: pointer;
           z-index: ${inputs.mode === "overlay" || this.isResponsive
             ? "401"

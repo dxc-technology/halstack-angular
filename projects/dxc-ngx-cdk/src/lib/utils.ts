@@ -72,6 +72,7 @@ export class CssUtils {
       `;
     }
   }
+ 
   getPaddingOrMargin(size, paddingOrMargin) {
     let finalPaddingOrMargin = "";
     if (paddingOrMargin && typeof paddingOrMargin !== "object") {
@@ -111,6 +112,27 @@ export class CssUtils {
     }
     return css`
       width: calc(${size} ${paddings});
+    `;
+  }
+
+  calculateHeightWithSize(size, padding) {
+    let paddings = "";
+    if (padding) {
+      paddings =
+        padding && typeof padding !== "object"
+          ? " - " + spaces[padding] + " - " + spaces[padding]
+          : padding && size
+          ? padding["top"] === undefined && padding["bottom"]
+            ? " - " + spaces[padding["bottom"]]
+            : padding["bottom"] === undefined && padding["top"]
+            ? " - " + spaces[padding["top"]]
+            : padding["bottom"] && padding["top"]
+            ? " - " + spaces[padding["bottom"]] + " - " + spaces[padding["top"]]
+            : ""
+          : "";
+    }
+    return css`
+      height: calc(${size} ${paddings});
     `;
   }
 

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ApplicationLayoutApiComponent } from '../../components/examples/layout/app-layout-api/app-layout-api.component';
+import { ApplicationLayoutExamplesComponent } from '../../components/examples/layout/app-layout-examples/app-layout-examples.component';
 
 @Component({
   selector: "app-layout",
@@ -21,7 +22,7 @@ export class ApplicationLayoutComponent implements OnInit{
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'API',selector: 'app-layout-api', component: ApplicationLayoutApiComponent},
-      // {id:1, label: 'EXAMPLES',selector: 'app-layout-examples', component: ApplicationLayoutApiExamples},
+      {id:1, label: 'EXAMPLES',selector: 'app-layout-examples', component: ApplicationLayoutExamplesComponent},
       );
   }
   

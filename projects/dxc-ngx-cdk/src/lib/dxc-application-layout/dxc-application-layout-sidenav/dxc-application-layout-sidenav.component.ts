@@ -144,7 +144,8 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
         background-color: var(--sidenav-backgroundColor);
         display: flex;
         position: sticky;
-        height: 100vh;
+        top: 0;
+        ${this.utils.calculateHeightWithSize('100vh', inputs.padding)}
         .sidenavMenu {
           ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
           width: ${inputs.isShown
@@ -152,7 +153,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
               this.utils.getPaddingOrMargin(null, inputs.padding) +
               ")"
             : "0px"};
-          overflow-y: scroll;
+          overflow-y: auto;
           transform: ${inputs.isShown
             ? "translateX(0)"
             : !inputs.isShown
@@ -161,7 +162,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           opacity: ${inputs.isShown ? "1" : "0"};
           visibility: ${inputs.isShown ? "visible" : "hidden"};
           transition: ${this.firstClick
-            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out;"
+            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out, padding 0.4s ease-in-out;"
             : "width 0.4s ease-in-out"};
           &::-webkit-scrollbar {
             width: 3px;

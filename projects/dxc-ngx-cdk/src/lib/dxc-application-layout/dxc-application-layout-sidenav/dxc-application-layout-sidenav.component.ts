@@ -140,7 +140,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
       inputs.isResponsive
         ? "absolute"
         : "relative"};
-      height: ${inputs.mode === "overlay" ? "100%" : ""};
+      height: ${inputs.mode === "overlay" || inputs.isResponsive ? "100%" : ""};
       .sidenavContainerClass {
         background-color: var(--sidenav-backgroundColor);
         display: flex;

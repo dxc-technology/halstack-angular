@@ -140,12 +140,13 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
       inputs.isResponsive
         ? "absolute"
         : "relative"};
+      height: ${inputs.mode === "overlay" ? "100%" : ""};
       .sidenavContainerClass {
         background-color: var(--sidenav-backgroundColor);
         display: flex;
         position: sticky;
         top: 0;
-        ${this.utils.calculateHeightWithSize('100vh', inputs.padding)}
+        height: 100vh;
         .sidenavMenu {
           ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
           width: ${inputs.isShown

@@ -12,6 +12,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-tag",
@@ -30,6 +31,14 @@ export class DxcTagComponent implements OnInit {
   @Input() labelPosition: string;
   @Input() linkHref: string;
   @Input() margin: any;
+  @Input()
+  get newWindow(): boolean {
+    return this._newWindow;
+  }
+  set newWindow(value: boolean) {
+    this._newWindow = coerceBooleanProperty(value);
+  }
+  private _newWindow;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -57,6 +66,7 @@ export class DxcTagComponent implements OnInit {
     linkHref: null,
     labelPosition: "after",
     margin: null,
+    newWindow: false,
   });
   constructor(private utils: CssUtils) {}
 

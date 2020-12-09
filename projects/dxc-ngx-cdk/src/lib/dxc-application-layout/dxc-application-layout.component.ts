@@ -135,7 +135,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
           display: flex;
           justify-content: center;
           transition: margin 0.4s ease-in-out;
-          width: 100%;
+          width: ${this.calculateMainWidth(inputs)};
           margin: ${this.getStyleMarginsMain(inputs)};
           height: 100%;
           min-height: calc(100vh - ${this.getMainVerticalPadding(inputs)});
@@ -164,6 +164,21 @@ export class DxcApplicationLayoutComponent implements OnInit {
       return this.isMenuShown && this.isModePush
         ? "64px 8.6% 80px 5.4%"
         : "64px 15.6% 80px 15.6%";
+    }
+  }
+
+  calculateMainWidth(inputs) {
+    if (inputs.innerWidth <= responsiveSizes.mobileLarge) {
+      return "calc(100% - 6.4% - 6.4%)";
+    } else if (
+      inputs.innerWidth > responsiveSizes.mobileLarge &&
+      inputs.innerWidth <= responsiveSizes.laptop
+    ) {
+      return "calc(100% - 9.6% - 9.6%)";
+    } else {
+      return this.isMenuShown && this.isModePush
+      ? "calc(100% - 8.6% - 5.4%)"
+      : "calc(100% - 15.6% - 15.6%)";
     }
   }
 

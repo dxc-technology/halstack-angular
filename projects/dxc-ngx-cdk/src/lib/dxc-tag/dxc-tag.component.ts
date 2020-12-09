@@ -24,7 +24,6 @@ export class DxcTagComponent implements OnInit {
   isHovered = false;
 
   @Input() size: string;
-
   @Input() iconSrc: string;
   @Input() iconBgColor: string;
   @Input() label: string;
@@ -56,6 +55,15 @@ export class DxcTagComponent implements OnInit {
 
   styledLink: string = css`
     text-decoration: none;
+  `;
+
+  styledButton: string = css`
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline:0;
+    font-family: inherit;
   `;
 
   defaultInputs = new BehaviorSubject<any>({

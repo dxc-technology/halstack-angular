@@ -111,6 +111,11 @@ The API properties are the following:
             You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
         </td>
     </tr>
+    <tr>
+        <td>@Output<br>onClick: EventEmitter</td>
+        <td></td>
+        <td>This function will be called when the user clicks the link.</td>
+    </tr>
 </table>
 
 ## Theming

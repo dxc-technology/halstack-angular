@@ -1,13 +1,35 @@
-<a [href]="href" [target]="newWindow ? '_blank' : '_self'">
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition === 'before'"
-    class="icon-before"
-  />
-  {{ text }}
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition === 'after'"
-    class="icon-after"
-  />
-</a>
+<div [class]="styledLink" (click)="onClickHandler($event)">
+  <button *ngIf="isClickDefined == true" [class]="styledButton">
+    <a [href]="href" [target]="newWindow ? '_blank' : '_self'">
+      <img
+        src="{{ iconSrc }}"
+        *ngIf="iconSrc && iconPosition === 'before'"
+        class="icon-before"
+      />
+      {{ text }}
+      <img
+        src="{{ iconSrc }}"
+        *ngIf="iconSrc && iconPosition === 'after'"
+        class="icon-after"
+      />
+    </a>
+  </button>
+
+  <a
+    [href]="href"
+    [target]="newWindow ? '_blank' : '_self'"
+    *ngIf="isClickDefined == false"
+  >
+    <img
+      src="{{ iconSrc }}"
+      *ngIf="iconSrc && iconPosition === 'before'"
+      class="icon-before"
+    />
+    {{ text }}
+    <img
+      src="{{ iconSrc }}"
+      *ngIf="iconSrc && iconPosition === 'after'"
+      class="icon-after"
+    />
+  </a>
+</div>

@@ -10,6 +10,9 @@ import { HeadingThemeComponent } from '../../components/examples/heading/heading
   styleUrls: ['./heading.component.scss']
 })
 export class HeadingComponent implements OnInit {
+  headingMargin = {
+    bottom: "medium",
+  };
 
   sections: Array<Section>;
   tagImg: string;

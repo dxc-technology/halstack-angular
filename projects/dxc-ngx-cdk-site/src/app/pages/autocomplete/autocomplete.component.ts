@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/model/sections';
-// import { TextInputTablePropertiesComponent } from '../../components/examples/text-input/properties/text-input-table-properties/text-input-table-properties.component';
 import { AutocompleteExampleComponent } from 'src/app/components/examples/autocomplete/autocomplete-example/autocomplete-example.component';
 import { AutocompleteUsageComponent } from 'src/app/components/examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
 import { AutocompleteThemeComponent } from '../../components/examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
@@ -11,6 +10,10 @@ import { AutocompleteThemeComponent } from '../../components/examples/autocomple
   styleUrls: []
 })
 export class AutocompleteComponent implements OnInit {
+
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

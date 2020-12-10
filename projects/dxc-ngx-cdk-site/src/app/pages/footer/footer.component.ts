@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
-import { FooterTablePropertiesComponent } from '../../components/examples/footer/properties/footer-table-properties/footer-table-properties.component';
 import { FooterExampleComponent } from '../../components/examples/footer/footer-example/footer-example.component';
-import { FooterImportComponent } from '../../components/examples/footer/footer-import/footer-import.component';
 import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
 import { FooterThemeComponent } from '../../components/examples/footer/footer-theme/footer-theme.component';
 
@@ -12,6 +10,9 @@ import { FooterThemeComponent } from '../../components/examples/footer/footer-th
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  headingMargin = {
+    bottom: "medium",
+  };
 
   sections: Array<Section>;
   tagImg: string;

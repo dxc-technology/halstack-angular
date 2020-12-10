@@ -20,6 +20,7 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
 import { LinkActionComponent } from '../../components/examples/link/link-action/link-action.component';
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LinkThemeComponent } from '../../components/examples/link/link-theme/li
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports:[
     LinkComponent,

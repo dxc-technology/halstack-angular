@@ -11,6 +11,9 @@ import { AlertThemeComponent } from '../../components/examples/alert/alert-theme
   providers: []
 })
 export class AlertComponent implements OnInit{
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

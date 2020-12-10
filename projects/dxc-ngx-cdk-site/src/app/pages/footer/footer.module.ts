@@ -17,6 +17,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
 import { FooterThemeComponent } from '../../components/examples/footer/footer-theme/footer-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { FooterThemeComponent } from '../../components/examples/footer/footer-th
       CodePlaygroundModule,
       ComponentsSidenavModule,
       ColorPreviewModule,
-      DxcChipModule
+      DxcChipModule,
+      DxcHeadingModule
     ],
     exports: [
         FooterComponent,

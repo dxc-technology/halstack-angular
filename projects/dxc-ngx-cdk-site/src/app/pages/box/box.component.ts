@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { BoxExampleComponent } from 'src/app/components/examples/box/box-example/box-example.component';
-import { BoxTablePropertiesComponent } from '../../components/examples/box/properties/box-table-properties/box-table-properties.component';
-import { BoxImportComponent } from '../../components/examples/box/box-import/box-import.component';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
 
@@ -13,6 +11,9 @@ import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-t
   providers: []
 })
 export class BoxComponent implements OnInit{
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

@@ -20,6 +20,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
 import { AccordionThemeComponent } from '../../components/examples/accordion/accordion-theme/accordion-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AccordionThemeComponent } from '../../components/examples/accordion/acc
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ], 
   exports: [
     AccordionComponent,

@@ -18,6 +18,7 @@ import { DropdownHoverComponent } from '../../components/examples/dropdown/dropd
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { DropdownThemeComponent } from '../../components/examples/dropdown/dropdown-theme/dropdown-theme.component';
 import { DropdownApiComponent } from '../../components/examples/dropdown/dropdown-api/dropdown-api.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DropdownApiComponent } from '../../components/examples/dropdown/dropdow
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     DropdownTablePropertiesComponent,

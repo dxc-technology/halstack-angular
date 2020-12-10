@@ -21,6 +21,7 @@ import { HeaderImportComponent } from '../../components/examples/header/header-i
 import { HeaderThemeComponent } from '../../components/examples/header/header-theme/header-theme.component';
 import { HeaderApiComponent } from '../../components/examples/header/header-api/header-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       ComponentsSidenavModule,
       CodePlaygroundModule,
       ColorPreviewModule,
-      DxcChipModule
+      DxcChipModule,
+      DxcHeadingModule
   ],
   exports: [
     HeaderComponent,

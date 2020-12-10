@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ApplicationLayoutApiComponent } from '../../components/examples/layout/app-layout-api/app-layout-api.component';
 import { ApplicationLayoutExamplesComponent } from '../../components/examples/layout/app-layout-examples/app-layout-examples.component';
@@ -11,6 +11,10 @@ import { ApplicationLayoutThemeComponent } from '../../components/examples/layou
   providers: []
 })
 export class ApplicationLayoutComponent implements OnInit{
+
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

@@ -15,6 +15,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../../components/examples/card/card-theme/card-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CardThemeComponent } from '../../components/examples/card/card-theme/ca
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     CardActionComponent,

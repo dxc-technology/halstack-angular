@@ -13,6 +13,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-t
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     BoxExampleComponent,

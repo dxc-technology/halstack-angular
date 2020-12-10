@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
-import { DatePropertiesComponent } from '../../components/examples/date/properties/date-properties/date-properties.component';
 import { DateExampleComponent } from '../../components/examples/date/date-example/date-example.component';
-import { DateImportComponent } from '../../components/examples/date/date-import/date-import.component';
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
 import { DateThemeComponent } from '../../components/examples/date/date-theme/date-theme.component';
 
@@ -12,6 +10,9 @@ import { DateThemeComponent } from '../../components/examples/date/date-theme/da
   styleUrls: ['./date.component.scss']
 })
 export class DateComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

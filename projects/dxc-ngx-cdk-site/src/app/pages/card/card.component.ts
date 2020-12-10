@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { CardExampleComponent } from '../../components/examples/card/card-example/card-example.component';
-import { CardTablePropertiesComponent } from '../../components/examples/card/properties/card-table-properties/card-table-properties.component';
-import { CardImportComponent } from '../../components/examples/card/card-import/card-import.component';
 import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../../components/examples/card/card-theme/card-theme.component';
 
@@ -13,6 +11,9 @@ import { CardThemeComponent } from '../../components/examples/card/card-theme/ca
   providers: []
 })
 export class CardComponent implements OnInit{
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

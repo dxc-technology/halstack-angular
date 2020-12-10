@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ButtonExampleComponent } from 'src/app/components/examples/button/button-example/button-example.component';
-import { ButtonTablePropertiesComponent } from '../../components/examples/button/properties/button-table-properties/button-table-properties.component';
-import { ButtonImportComponent } from '../../components/examples/button/button-import/button-import.component';
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
 import { ButtonThemeComponent } from '../../components/examples/button/button-theme/button-theme.component';
 
@@ -13,6 +11,9 @@ import { ButtonThemeComponent } from '../../components/examples/button/button-th
   providers: []
 })
 export class ButtonComponent implements OnInit{
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

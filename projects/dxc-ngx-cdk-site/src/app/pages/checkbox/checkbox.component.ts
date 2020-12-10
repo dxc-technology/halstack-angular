@@ -10,6 +10,10 @@ import { CheckboxThemeComponent } from 'src/app/components/examples/checkbox/che
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
+  
   sections: Array<Section>;
   tagImg: string;
 

@@ -1,7 +1,14 @@
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  Input,
+  HostBinding,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from "@angular/core";
 
 @Component({
   selector: "dxc-link",
@@ -19,7 +26,24 @@ export class DxcLinkComponent {
   @Input() newWindow: boolean;
   @Input() margin: string;
 
+  @Output() onClick = new EventEmitter<any>();
+
   @HostBinding("class") className;
+
+  isClickDefined = false;
+
+  styledLink: string = css`
+    display: inline;
+  `;
+
+  styledButton: string = css`
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: 0;
+    font-family: inherit;
+  `;
 
   defaultInputs = new BehaviorSubject<any>({
     underlined: true,
@@ -36,6 +60,7 @@ export class DxcLinkComponent {
   constructor(private utils: CssUtils) {}
 
   ngOnInit() {
+    this.isClickDefined = this.onClick.observers.length > 0;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
@@ -47,6 +72,10 @@ export class DxcLinkComponent {
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+  public onClickHandler($event: any): void {
+    this.onClick.emit($event);
   }
 
   getDynamicStyle(inputs) {
@@ -87,22 +116,20 @@ export class DxcLinkComponent {
     `;
   }
 
-  private getUnderlineStyles(inputs){
-    if(inputs.underlined){
-      if(!inputs.disabled){
+  private getUnderlineStyles(inputs) {
+    if (inputs.underlined) {
+      if (!inputs.disabled) {
         return css`
           padding-bottom: 1px !important;
           border-bottom: 1px solid var(--link-underlinedBackgroundColor);
-      `;
-      }
-      else{
+        `;
+      } else {
         return css`
           padding-bottom: 1px !important;
           border-bottom: 1px solid var(--link-disabledUnderlinedBackgroundColor);
-      `;
+        `;
       }
-    }
-    else{
+    } else {
       return css``;
     }
   }

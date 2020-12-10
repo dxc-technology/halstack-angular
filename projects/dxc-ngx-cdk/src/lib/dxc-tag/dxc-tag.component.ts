@@ -12,6 +12,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-tag",
@@ -23,13 +24,20 @@ export class DxcTagComponent implements OnInit {
   isHovered = false;
 
   @Input() size: string;
-
   @Input() iconSrc: string;
   @Input() iconBgColor: string;
   @Input() label: string;
   @Input() labelPosition: string;
   @Input() linkHref: string;
   @Input() margin: any;
+  @Input()
+  get newWindow(): boolean {
+    return this._newWindow;
+  }
+  set newWindow(value: boolean) {
+    this._newWindow = coerceBooleanProperty(value);
+  }
+  private _newWindow;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -49,6 +57,15 @@ export class DxcTagComponent implements OnInit {
     text-decoration: none;
   `;
 
+  styledButton: string = css`
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline:0;
+    font-family: inherit;
+  `;
+
   defaultInputs = new BehaviorSubject<any>({
     size: "fitContent",
     iconSrc: null,
@@ -57,6 +74,7 @@ export class DxcTagComponent implements OnInit {
     linkHref: null,
     labelPosition: "after",
     margin: null,
+    newWindow: false,
   });
   constructor(private utils: CssUtils) {}
 

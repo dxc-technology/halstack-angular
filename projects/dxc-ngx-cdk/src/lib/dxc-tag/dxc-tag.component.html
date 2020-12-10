@@ -4,8 +4,26 @@
   (mouseleave)="mouseLeave()"
   (click)="onClickHandler($event)"
 >
+  <button
+    *ngIf="isClickDefined == true && linkHref == null"
+    [class]="styledButton"
+  >
+    <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
+      <div [class]="tagContent">
+        <div [class]="iconContainer">
+          <img src="{{ iconSrc }}" class="tagIcon" />
+        </div>
+        <div
+          [class]="tagLabel"
+          *ngIf="size !== 'small' && (label !== undefined || label !== null)"
+        >
+          {{ label }}
+        </div>
+      </div>
+    </dxc-box>
+  </button>
   <dxc-box
-    *ngIf="linkHref == null"
+    *ngIf="linkHref == null && isClickDefined == false"
     [size]="size"
     [shadowDepth]="shadowDepth"
     #dxcBox
@@ -22,8 +40,13 @@
       </div>
     </div>
   </dxc-box>
+
   <div *ngIf="linkHref != null">
-    <a [class]="styledLink" href="{{ linkHref }}">
+    <a
+      [class]="styledLink"
+      href="{{ linkHref }}"
+      [target]="newWindow ? '_blank' : '_self'"
+    >
       <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
         <div [class]="tagContent">
           <div [class]="iconContainer">

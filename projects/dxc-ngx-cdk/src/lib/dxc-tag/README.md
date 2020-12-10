@@ -84,6 +84,15 @@ The API properties are the following:
         <td><code>'medium'</code></td>
         <td>Size of the component ('small' | 'medium' | 'large' | 'fillParent' | 'fitContent').</td>
     </tr>
+    <tr>
+        <td>@Input<br>newWindow: boolean</td>
+        <td>
+            <code>false</code>
+        </td>
+        <td>
+            If true, the page is opened in a new browser tab.
+        </td>
+    </tr>
 </table>
 
 ## Theming

@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import {
   DxcButtonModule,
-  DxcAlertModule,
   DxcTableModule,
   DxcTagModule,
   DxcChipModule,
@@ -10,7 +9,8 @@ import {
 } from "@dxc-technology/halstack-angular";
 import { ApplicationLayoutComponent } from "./app-layout.component";
 import { ApplicationLayoutApiComponent } from "../../components/examples/layout/app-layout-api/app-layout-api.component";
-import { ApplicationLayoutExamplesComponent } from '../../components/examples/layout/app-layout-examples/app-layout-examples.component';
+import { ApplicationLayoutThemeComponent } from "../../components/examples/layout/app-layout-theme/app-layout-theme.component";
+import { ApplicationLayoutExamplesComponent } from "../../components/examples/layout/app-layout-examples/app-layout-examples.component";
 
 import { BrowserModule } from "@angular/platform-browser";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
@@ -20,7 +20,12 @@ import { ComponentsSidenavModule } from "../components-sidenav/components-sidena
 import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
 
 @NgModule({
-  declarations: [ApplicationLayoutComponent, ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent],
+  declarations: [
+    ApplicationLayoutComponent,
+    ApplicationLayoutApiComponent,
+    ApplicationLayoutExamplesComponent,
+    ApplicationLayoutThemeComponent,
+  ],
   imports: [
     BrowserModule,
     DxcButtonModule,
@@ -32,7 +37,7 @@ import { CodePlaygroundModule } from "../../components/code-playground/code-play
     ComponentsSidenavModule,
     DxcChipModule,
     DxcLinkModule,
-    DxcHeadingModule
+    DxcHeadingModule,
   ],
   exports: [ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent],
   entryComponents: [],

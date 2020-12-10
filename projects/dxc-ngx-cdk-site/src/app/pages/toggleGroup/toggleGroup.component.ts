@@ -21,8 +21,8 @@ export class ToggleGroupComponent implements OnInit {
 
    ngOnInit() { 
     this.sections.push( 
-      {id:0, label: 'API',selector: 'tag-api', component: ToggleGroupApiComponent},
-      {id:1, label: 'THEMING', selector: 'tag-theme', component: ToggleGroupThemeComponent},
+      {id:0, label: 'API',selector: 'toggle-api', component: ToggleGroupApiComponent},
+      {id:1, label: 'THEMING', selector: 'toggle-theme', component: ToggleGroupThemeComponent},
       {id:2, label: 'EXAMPLES', selector: 'examples-component-Toggle', component: ToggleGroupExampleComponent}
     );
   }

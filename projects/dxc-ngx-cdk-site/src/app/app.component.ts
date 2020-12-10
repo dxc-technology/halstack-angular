@@ -10,7 +10,7 @@ import portal from '../assets/portal.json';
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = "angular-dxc-site";
+  title = "DXC Angular Components";
   headerPadding = { left: "medium", right: "medium" };
   versions: Array<any> = [];
   selectedVersion;

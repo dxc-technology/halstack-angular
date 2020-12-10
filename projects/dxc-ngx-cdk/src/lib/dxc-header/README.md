@@ -37,6 +37,15 @@ The API properties are the following:
         <th>Description</th>
     </tr>
     <tr>
+        <td>@Input<br>underlined: boolean</td>
+        <td>
+            <code>true</code>
+        </td>
+        <td>
+            Wether a contrast line should appear at the bottom of the header.
+        </td>
+    </tr>
+    <tr>
         <td>@Input<br>logoSrc: string</td>
         <td>
             <code>'default'</code>

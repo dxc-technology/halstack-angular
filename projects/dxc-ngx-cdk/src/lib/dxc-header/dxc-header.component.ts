@@ -13,6 +13,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { spaces, responsiveSizes } from "../variables";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-header",
@@ -25,6 +26,14 @@ export class DxcHeaderComponent implements OnChanges {
   @Input() logoResponsiveSrc: string;
   @Input() margin: any;
   @Input() padding: any;
+  @Input()
+  get underlined(): boolean {
+    return this._underlined;
+  }
+  set underlined(value: boolean) {
+    this._underlined = coerceBooleanProperty(value);
+  }
+  private _underlined;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -32,7 +41,6 @@ export class DxcHeaderComponent implements OnChanges {
   isMenuVisible = false;
   innerWidth;
   innerHeight;
-  underline: boolean = true;
 
   responsiveMenu: string;
 
@@ -45,6 +53,7 @@ export class DxcHeaderComponent implements OnChanges {
     isMenuVisible: false,
     innerWidth,
     innerHeight,
+    underlined:false,
   });
 
   @HostListener("window:resize", ["$event"])

@@ -44,6 +44,14 @@
             <li>
               <dxc-link
                 href=""
+                (click)="navigateToRoute('input'); $event.preventDefault()"
+                text="Input Text"
+                [underlined]="underlined"
+              ></dxc-link>
+            </li>
+            <li>
+              <dxc-link
+                href=""
                 (click)="navigateToRoute('radio'); $event.preventDefault()"
                 text="Radio Button"
                 [underlined]="underlined"
@@ -65,6 +73,8 @@
                 [underlined]="underlined"
               ></dxc-link>
             </li>
+          </ul>
+          <ul class="last">
             <li>
               <dxc-link
                 href=""
@@ -73,21 +83,19 @@
                 [underlined]="underlined"
               ></dxc-link>
             </li>
-          </ul>
-          <ul class="last">
             <li>
               <dxc-link
                 href=""
-                (click)="navigateToRoute('input'); $event.preventDefault()"
-                text="Text field"
+                (click)="navigateToRoute('textarea'); $event.preventDefault()"
+                text="Textarea"
                 [underlined]="underlined"
               ></dxc-link>
             </li>
             <li>
               <dxc-link
                 href=""
-                (click)="navigateToRoute('input'); $event.preventDefault()"
-                text="Textarea"
+                (click)="navigateToRoute('toggleGroup'); $event.preventDefault()"
+                text="Toggle Group"
                 [underlined]="underlined"
               ></dxc-link>
             </li>

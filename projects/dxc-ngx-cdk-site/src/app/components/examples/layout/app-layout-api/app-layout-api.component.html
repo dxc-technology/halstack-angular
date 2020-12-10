@@ -26,21 +26,6 @@
   default.
 </p>
 
-<dxc-heading text="DxcApplicationLayoutFooter" [level]="4"></dxc-heading>
-<p>
-  Everything in this component will be displayed as a footer, at the bottom of
-  the screen. If you want to show a
-  <dxc-link
-    text="DxcFooter"
-    href=""
-    underlined="false"
-    (click)="navigateToRoute('footer'); $event.preventDefault()"
-  ></dxc-link
-  >, as a shortcut, you can directly use it without DxcApplicationLayoutFooter.
-  This is optional and if it is not specified, the DxcFooter will be shown by
-  default.
-</p>
-
 <dxc-heading text="DxcApplicationLayoutSidenav" [level]="4"></dxc-heading>
 <p>
   Everything in this component will be displayed as content inside a sidenav at
@@ -67,5 +52,22 @@
   To be able to use this component, you should import the module in the page you
   want to use it from your Angular project. You have the following example:
 </p>
+
+<dxc-heading text="DxcApplicationLayoutFooter" [level]="4"></dxc-heading>
+<p>
+  This component has to be a child of DxcApplicationLayoutMain.
+  Everything in this component will be displayed as a footer, at the bottom of
+  the screen. If you want to show a
+  <dxc-link
+    text="DxcFooter"
+    href=""
+    underlined="false"
+    (click)="navigateToRoute('footer'); $event.preventDefault()"
+  ></dxc-link
+  >, as a shortcut, you can directly use it without DxcApplicationLayoutFooter.
+  This is optional and if it is not specified, the DxcFooter will be shown by
+  default.
+</p>
+
 
 <app-code-playground [code]="bindCode" type="TS"></app-code-playground>

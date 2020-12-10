@@ -1,9 +1,9 @@
 <components-sidenav>
   <div class="container-content">
     <div [ngClass]="responsiveClass" *ngIf="default">
-      <h1 class="title-components">Components</h1>
+      <dxc-heading [level]="1" weight="normal" text="Components" [margin]="componentsMargin"></dxc-heading>
 
-      <h2 class="subtitle-components">Forms</h2>
+      <dxc-heading [level]="3" weight="normal" text="Forms"></dxc-heading>
       <div class="components-intro">
         <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
           <ul>
@@ -103,7 +103,7 @@
         </dxc-box>
       </div>
 
-      <h2 class="subtitle-components">Navigation</h2>
+      <dxc-heading [level]="3" weight="normal" text="Navigation"></dxc-heading>
       <div class="components-intro">
         <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
           <ul class="last">
@@ -143,7 +143,7 @@
         </dxc-box>
       </div>
 
-      <h2 class="subtitle-components">Layout</h2>
+      <dxc-heading [level]="3" weight="normal" text="Layout"></dxc-heading>
       <div class="components-intro">
         <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
           <ul>
@@ -194,7 +194,7 @@
         </dxc-box>
       </div>
 
-      <h2 class="subtitle-components">Utilities</h2>
+      <dxc-heading [level]="3" weight="normal" text="Utilities"></dxc-heading>
       <div class="components-intro">
         <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
           <ul>

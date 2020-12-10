@@ -9,6 +9,10 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class ComponentsPageComponent implements OnInit {
 
+  componentsMargin = {
+    bottom: 'large'
+  }
+
   components: Array<any>;
   default:boolean;
 
@@ -24,7 +28,7 @@ export class ComponentsPageComponent implements OnInit {
     desktop: "1440"
   }
   underlined = false;
-  boxMargin={bottom: 'small'};
+  boxMargin={ top: "small", bottom: 'small'};
   boxPadding = 'small';
 
 

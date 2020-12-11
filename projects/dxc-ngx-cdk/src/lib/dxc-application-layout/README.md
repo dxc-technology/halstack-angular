@@ -11,12 +11,12 @@ The DXC Application Layout Component is a container.
     <dxc-header></dxc-header>
     <dxc-application-layout-main>
       <dxc-button label="Button"></dxc-button>
-    </dxc-application-layout-main>
-    <dxc-footer
+      <dxc-footer
         copyright="© DXC Technology 2019. All rights reserved."
         [bottomLinks]="bottom"
         [socialLinks]="social"
     ></dxc-footer>
+    </dxc-application-layout-main>
 </dxc-application-layout>
 ```
 

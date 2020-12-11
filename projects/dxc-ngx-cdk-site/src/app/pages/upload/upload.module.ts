@@ -15,6 +15,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { UploadThemeComponent } from '../../components/examples/upload/upload-theme/upload-theme.component';
 import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UploadApiComponent } from '../../components/examples/upload/upload-api/
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     UploadComponent,

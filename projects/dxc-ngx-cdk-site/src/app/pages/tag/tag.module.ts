@@ -17,6 +17,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
 import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-t
     ExampleViewerModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     TagComponent,

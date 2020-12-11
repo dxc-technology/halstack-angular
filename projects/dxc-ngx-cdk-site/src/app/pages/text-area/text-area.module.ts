@@ -19,6 +19,7 @@ import { TextAreaFillParentComponent } from '../../components/examples/text-area
 import { TextAreaInvalidComponent } from '../../components/examples/text-area/text-area-invalid/text-area-invalid.component';
 import { TextAreaRequiredComponent } from '../../components/examples/text-area/text-area-required/text-area-required.component';
 import { TextAreaUncontrolledComponent } from '../../components/examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TextAreaUncontrolledComponent } from '../../components/examples/text-ar
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     TextAreaComponent,

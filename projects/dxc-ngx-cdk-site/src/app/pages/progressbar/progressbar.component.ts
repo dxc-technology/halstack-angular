@@ -10,6 +10,10 @@ import { ProgressbarThemeComponent } from '../../components/examples/progressbar
   styleUrls: ["./progressbar.component.scss"]
 })
 export class ProgressbarComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
+  
   sections: Array<Section>;
   tagImg: string;
 

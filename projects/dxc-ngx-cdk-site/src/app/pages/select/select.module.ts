@@ -21,6 +21,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
       CodePlaygroundModule,
       ComponentsSidenavModule,
       ColorPreviewModule, 
-      DxcChipModule
+      DxcChipModule,
+      DxcHeadingModule
     ],
     exports: [
       SelectComponent,

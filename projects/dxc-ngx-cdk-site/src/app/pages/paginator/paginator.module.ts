@@ -16,6 +16,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { PaginatorApiComponent } from '../../components/examples/paginator/paginator-api/paginator-api.component';
 import { PaginatorThemeComponent } from '../../components/examples/paginator/paginator-theme/paginator-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     PaginatorComponent,

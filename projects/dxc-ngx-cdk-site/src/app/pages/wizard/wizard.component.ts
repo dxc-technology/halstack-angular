@@ -10,6 +10,9 @@ import { WizardThemeComponent } from '../../components/examples/wizard/wizard-th
   styleUrls: ['./wizard.component.scss']
 })
 export class WizardComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

@@ -23,6 +23,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
 import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     SliderComponent,

@@ -18,6 +18,7 @@ import { ToggleGroupTablePropertiesComponent } from 'src/app/components/examples
 import { ToggleGroupImportComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
 import { ToggleGroupThemeComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-theme/toggleGroup-theme.component';
 import { ColorPreviewModule } from 'src/app/components/color-preview/color-preview.module';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ColorPreviewModule } from 'src/app/components/color-preview/color-previ
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     ToggleGroupApiComponent,

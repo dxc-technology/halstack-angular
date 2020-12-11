@@ -10,6 +10,10 @@ import { TextAreaExampleComponent } from "../../components/examples/text-area/te
   styleUrls: ["./text-area.component.scss"],
 })
 export class TextAreaComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
+  
   sections: Array<Section>;
   tagImg: string;
 

@@ -15,6 +15,7 @@ import { TabbedSectionImportComponent } from '../../components/examples/tabbed-s
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TabbedSectionApiComponent } from '../../components/examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 import { TabbedSectionThemeComponent } from '../../components/examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
+import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TabbedSectionThemeComponent } from '../../components/examples/tabbed-se
     CodePlaygroundModule,
     DxcTagModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     TabbedSectionInfoComponent,

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { SwitchExampleComponent } from '../../components/examples/switch/switch-example/switch-example.component';
 import { SwitchApiComponent } from '../../components/examples/switch/switch-api/switch-api.component';
@@ -11,6 +11,9 @@ import { SwitchThemeComponent } from '../../components/examples/switch/switch-th
   providers: []
 })
 export class SwitchComponent implements OnInit{
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

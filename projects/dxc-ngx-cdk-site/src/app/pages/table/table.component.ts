@@ -10,6 +10,9 @@ import { TableThemeComponent } from '../../components/examples/table/table-theme
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

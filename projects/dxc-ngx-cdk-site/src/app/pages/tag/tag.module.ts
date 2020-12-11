@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
@@ -17,7 +17,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
 import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-theme.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

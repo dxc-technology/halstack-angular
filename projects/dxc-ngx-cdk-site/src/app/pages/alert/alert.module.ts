@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcButtonModule, DxcAlertModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcButtonModule, DxcAlertModule, DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { AlertChildrenComponent } from '../../components/examples/alert/alert-children/alert-children.component';
 import { AlertComponent } from './alert.component';
 import { AlertExampleComponent } from '../../components/examples/alert/alert-example/alert-example.component';
@@ -21,8 +21,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
 import { AlertThemeComponent } from '../../components/examples/alert/alert-theme/alert-theme.component';
 import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
-
 
 @NgModule({
   declarations: [

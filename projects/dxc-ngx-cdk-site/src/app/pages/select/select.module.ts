@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcRadioModule, DxcSelectModule, DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcSelectModule, DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 
 @NgModule({

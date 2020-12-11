@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcCheckboxModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcCheckboxModule, DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { CheckboxComponent } from './checkbox.component';
 import { CheckboxLabelPositionComponent } from '../../components/examples/checkbox/checkbox-label-position/checkbox-label-position.component';
 import { CheckboxPropertiesComponent } from '../../components/examples/checkbox/properties/checkbox-properties/checkbox-properties.component';
@@ -20,7 +20,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { CheckboxApiComponent } from '../../components/examples/checkbox/checkbox-api/checkbox-api.component';
 import { CheckboxThemeComponent } from '../../components/examples/checkbox/checkbox-theme/checkbox-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 @NgModule({
     declarations: [
       CheckboxComponent,

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { WizardComponent } from './wizard.component';
-import { DxcTableModule, DxcWizardModule,DxcTagModule, DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcWizardModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
@@ -20,7 +20,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { WizardThemeComponent } from '../../components/examples/wizard/wizard-theme/wizard-theme.component';
 import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/wizard-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

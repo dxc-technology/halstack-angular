@@ -3,6 +3,7 @@ import {
   DxcTableModule,
   DxcTagModule,
   DxcChipModule,
+  DxcHeadingModule
 } from "@dxc-technology/halstack-angular";
 import { ChipComponent } from "./chip.component";
 import { BrowserModule } from "@angular/platform-browser";
@@ -21,7 +22,6 @@ import { ChipIconComponent } from 'src/app/components/examples/chip/chip-icon/ch
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

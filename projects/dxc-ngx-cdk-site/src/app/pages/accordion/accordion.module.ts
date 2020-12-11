@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionComponent } from './accordion.component';
-import { DxcTableModule, DxcAccordionModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcAccordionModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { AccordionTablePropertiesComponent } from 'src/app/components/examples/accordion/properties/accordion-table-properties/accordion-table-properties.component';
 import { ExampleViewerComponent } from 'src/app/components/example-viewer/example-viewer.component';
@@ -20,7 +20,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
 import { AccordionThemeComponent } from '../../components/examples/accordion/accordion-theme/accordion-theme.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcInputTextModule, DxcLinkModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcInputTextModule, DxcLinkModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TextInputComponent } from './text-input.component';
@@ -21,7 +21,6 @@ import { TextInputThemeComponent } from '../../components/examples/text-input/te
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
 import { TextInputMaskedComponent } from '../../components/examples/text-input/text-input-masked/text-input-masked.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

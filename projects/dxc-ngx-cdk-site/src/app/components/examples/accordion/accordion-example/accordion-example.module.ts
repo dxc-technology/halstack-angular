@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionExampleComponent } from './accordion-example.component';
 import { ExampleViewerModule } from 'src/app/components/example-viewer/example-viewer.module';
-
+import { DxcHeadingModule } from '@dxc-technology/halstack-angular';
 @NgModule({
   declarations: [
     AccordionExampleComponent
@@ -11,7 +11,8 @@ import { ExampleViewerModule } from 'src/app/components/example-viewer/example-v
   imports: [
     CommonModule, 
     BrowserModule,
-    ExampleViewerModule
+    ExampleViewerModule,
+    DxcHeadingModule
   ],
   exports: [
     AccordionExampleComponent

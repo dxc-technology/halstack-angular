@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SliderComponent } from './slider.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcSliderModule, DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcSliderModule, DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { SliderPropertiesComponent } from '../../components/examples/slider/properties/slider-properties/slider-properties.component';
@@ -23,7 +23,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
 import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

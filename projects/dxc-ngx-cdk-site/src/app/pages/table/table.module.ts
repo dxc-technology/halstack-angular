@@ -5,7 +5,7 @@ import { ExampleViewerModule } from '../../components/example-viewer/example-vie
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
-import { DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TableSimpleComponent } from '../../components/examples/table/table-simple/table-simple.component';
 import { TableExampleComponent } from '../../components/examples/table/table-example/table-example.component';
 import { TablePropertiesComponent } from '../../components/examples/table/properties/table-properties/table-properties.component';
@@ -16,7 +16,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { TableThemeComponent } from '../../components/examples/table/table-theme/table-theme.component';
 import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LinkComponent } from './link.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcLinkModule, DxcTableModule,DxcTagModule,DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcLinkModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
@@ -20,7 +20,6 @@ import { LinkDisabledComponent } from '../../components/examples/link/link-disab
 import { LinkActionComponent } from '../../components/examples/link/link-action/link-action.component';
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

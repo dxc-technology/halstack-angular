@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DxcTabsModule,DxcTagModule, DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcTabsModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
@@ -17,7 +17,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { TabsThemeComponent } from '../../components/examples/tabs/tabs-theme/tabs-theme.component';
 import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

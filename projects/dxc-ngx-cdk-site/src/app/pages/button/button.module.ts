@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcButtonModule, DxcTableModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcButtonModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { ButtonComponent } from './button.component';
 import { ButtonModesComponent } from '../../components/examples/button/button-modes/button-modes.component';
 import { ButtonWithIconComponent } from '../../components/examples/button/button-with-icon/button-with-icon.component';
@@ -18,7 +18,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ButtonThemeComponent } from '../../components/examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

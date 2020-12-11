@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcSwitchModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcSwitchModule, DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { SwitchComponent } from './switch.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +17,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SwitchApiComponent } from '../../components/examples/switch/switch-api/switch-api.component';
 import { SwitchThemeComponent } from '../../components/examples/switch/switch-theme/switch-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { DxcFooterModule, DxcTableModule,DxcTagModule, DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcFooterModule, DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { FooterComponent } from './footer.component';
 import { FooterExampleComponent } from '../../components/examples/footer/footer-example/footer-example.component';
@@ -17,7 +17,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
 import { FooterThemeComponent } from '../../components/examples/footer/footer-theme/footer-theme.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
     declarations: [

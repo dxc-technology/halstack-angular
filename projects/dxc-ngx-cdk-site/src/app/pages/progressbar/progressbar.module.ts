@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DxcProgressbarModule, DxcButtonModule,DxcTagModule,DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcProgressbarModule, DxcButtonModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
 import { ProgressbarComponent } from "./progressbar.component";
@@ -17,7 +17,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
 import { ProgressbarThemeComponent } from '../../components/examples/progressbar/progressbar-theme/progressbar-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

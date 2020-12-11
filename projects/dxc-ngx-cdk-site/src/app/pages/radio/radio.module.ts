@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcRadioModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcRadioModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { RadioThemeComponent } from '../../components/examples/radio/radio-theme/radio-theme.component';
 import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
     declarations: [

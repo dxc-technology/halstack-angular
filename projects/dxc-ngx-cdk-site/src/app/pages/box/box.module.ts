@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcBoxModule, DxcTableModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcBoxModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { BoxComponent } from './box.component';
 import { BoxBasicComponent } from '../../components/examples/box/box-basic/box-basic.component';
 import { BoxExampleComponent } from '../../components/examples/box/box-example/box-example.component';
@@ -13,7 +13,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

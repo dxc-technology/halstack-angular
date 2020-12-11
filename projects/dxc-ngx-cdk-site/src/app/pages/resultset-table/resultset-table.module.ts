@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResultsetTableComponent } from './resultset-table.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule, DxcLinkModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcResultsetTableModule,DxcButtonModule,DxcTagModule, DxcLinkModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
@@ -16,7 +16,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { ResultsetTableApiComponent } from '../../components/examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ResultsetTableThemeComponent } from '../../components/examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
-import { DxcHeadingModule } from '../../../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 
 @NgModule({
   declarations: [

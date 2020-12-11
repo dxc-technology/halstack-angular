@@ -1,1 +1,12 @@
-<ng-content></ng-content>
+<div class="main">
+  <ng-content></ng-content>
+</div>
+<ng-content
+  *ngIf="customFooter === 'customDxcFooter'"
+  select="dxc-footer"
+></ng-content>
+<ng-content
+  *ngIf="customFooter === 'customFooter'"
+  select="dxc-application-layout-footer"
+></ng-content>
+<dxc-footer *ngIf="defaultFooter"></dxc-footer>

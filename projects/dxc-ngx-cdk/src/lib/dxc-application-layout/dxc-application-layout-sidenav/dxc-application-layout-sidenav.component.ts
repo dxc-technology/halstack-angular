@@ -144,8 +144,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
         background-color: var(--sidenav-backgroundColor);
         display: flex;
         position: sticky;
-        top: 0;
-        height: 100vh;
+        height: 100%;
         .sidenavMenu {
           ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
           width: ${inputs.isShown

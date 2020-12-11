@@ -5,10 +5,6 @@
   <div class="sidenav" >
     <ng-content select="dxc-application-layout-sidenav"></ng-content>
   </div>
-  <div class="main">
-    <ng-content select="dxc-application-layout-main"></ng-content>
-  </div>
+  <ng-content select="dxc-application-layout-main"></ng-content>
 </div>
-<ng-content *ngIf="customFooter === 'customDxcFooter'" select="dxc-footer"></ng-content>
-<ng-content *ngIf="customFooter === 'customFooter'" select="dxc-application-layout-footer"></ng-content>
-<dxc-footer *ngIf="defaultFooter"></dxc-footer>
+

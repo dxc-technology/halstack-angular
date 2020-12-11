@@ -140,10 +140,6 @@ export class DxcApplicationLayoutComponent implements OnInit {
         flex-direction: column;
         transition: width 0.4s ease-in-out;
         .main {
-          max-width: 1320px;
-          width: ${this.calculateMainWidth(inputs)};
-          margin: ${this.getStyleMarginsMain(inputs)};
-          transition: margin 0.4s ease-in-out;
         }
       }
       dxc-footer {
@@ -153,49 +149,6 @@ export class DxcApplicationLayoutComponent implements OnInit {
         overflow: hidden;
       }
     `;
-  }
-
-  getStyleMarginsMain(inputs) {
-    if (inputs.innerWidth <= responsiveSizes.mobileLarge) {
-      return "36px 6.4% 48px 6.4%";
-    } else if (
-      inputs.innerWidth > responsiveSizes.mobileLarge &&
-      inputs.innerWidth <= responsiveSizes.laptop
-    ) {
-      return "48px 9.6% 64px 9.6%";
-    } else {
-      return this.isMenuShown && this.isModePush
-        ? "64px 8.6% 80px 5.4%"
-        : "64px 15.6% 80px 15.6%";
-    }
-  }
-
-  calculateMainWidth(inputs) {
-    if (inputs.innerWidth <= responsiveSizes.mobileLarge) {
-      return "calc(100% - 6.4% - 6.4%)";
-    } else if (
-      inputs.innerWidth > responsiveSizes.mobileLarge &&
-      inputs.innerWidth <= responsiveSizes.laptop
-    ) {
-      return "calc(100% - 9.6% - 9.6%)";
-    } else {
-      return this.isMenuShown && this.isModePush
-        ? "calc(100% - 8.6% - 5.4%)"
-        : "calc(100% - 15.6% - 15.6%)";
-    }
-  }
-
-  getMainVerticalPadding(inputs) {
-    if (inputs.innerWidth <= responsiveSizes.mobileLarge) {
-      return "36px - 48px";
-    } else if (
-      inputs.innerWidth > responsiveSizes.mobileLarge &&
-      inputs.innerWidth <= responsiveSizes.laptop
-    ) {
-      return "48px - 64px";
-    } else {
-      return "64px - 80px";
-    }
   }
   
 }

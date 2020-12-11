@@ -125,6 +125,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
       .content {
         display: flex;
         position: relative;
+        height: fit-content;
       }
       dxc-application-layout-sidenav {
         .sidenavContainerClass {
@@ -134,19 +135,19 @@ export class DxcApplicationLayoutComponent implements OnInit {
       }
       dxc-application-layout-main {
         width: 100%;
-        height: 100%;
+        height: fit-content;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         flex-direction: column;
         transition: width 0.4s ease-in-out;
         .main {
+          padding-top: 68px;
         }
       }
       dxc-footer {
         width: 100%;
         margin-top: auto;
-        max-height: 128px;
-        overflow: hidden;
       }
     `;
   }

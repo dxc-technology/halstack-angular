@@ -57,6 +57,11 @@
     <td>If true, the component will be disabled.</td>
   </tr>
   <tr>
+    <td>labelFormatCallback: (value: number) => string | number</td>
+    <td></td>
+    <td>Function used to format minimum and maximum labels.</td>
+  </tr>
+  <tr>
     <td>valueChange: EventEmitter</td>
     <td></td>
     <td>
@@ -66,15 +71,7 @@
     </td>
   </tr>
   <tr>
-      <td>inputBlur: EventEmitter</td>
-      <td></td>
-      <td>
-        This function will be called when the slider lost the focus. The new value will be passed as a parameter when
-        this function is executed.
-      </td>
-    </tr>
-  <tr>
-    <td>dragEnd: EventEmitter</td>
+    <td>onDragEnd: EventEmitter</td>
     <td></td>
     <td>
       This function will be called when the slider changes its value, but

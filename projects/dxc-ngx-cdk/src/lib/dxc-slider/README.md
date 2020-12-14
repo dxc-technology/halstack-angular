@@ -96,6 +96,11 @@ The API properties are the following:
         <td><code>false</code></td>
         <td>If true, the component will be disabled.</td>
     </tr>
+        <tr>
+        <td>@Input<br>labelFormatCallback: (value: number) => string | number</td>
+        <td></td>
+        <td>Function used to format minimum and maximum labels.</td>
+    </tr>
     <tr>
         <td>@Output<br>valueChange: EventEmitter</td>
         <td></td>
@@ -106,15 +111,7 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
-        <td>@Output<br>inputBlur: EventEmitter</td>
-        <td></td>
-        <td>
-            This function will be called when the slider lost the focus. The new value will be passed as a parameter when
-            this function is executed.
-        </td>
-        </tr>
-    <tr>
-        <td>@Output<br>dragEnd: EventEmitter</td>
+        <td>@Output<br>onDragEnd: EventEmitter</td>
         <td></td>
         <td>
         This function will be called when the slider changes its value, but

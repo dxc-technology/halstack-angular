@@ -3,6 +3,7 @@ import {
   DxcTableModule,
   DxcTagModule,
   DxcChipModule,
+  DxcHeadingModule
 } from "@dxc-technology/halstack-angular";
 import { ChipComponent } from "./chip.component";
 import { BrowserModule } from "@angular/platform-browser";
@@ -45,7 +46,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     ChipComponent,

@@ -10,6 +10,9 @@ import { PaginatorThemeComponent } from '../../components/examples/paginator/pag
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

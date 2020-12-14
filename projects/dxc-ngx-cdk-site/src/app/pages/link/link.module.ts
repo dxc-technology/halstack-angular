@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LinkComponent } from './link.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcLinkModule, DxcTableModule,DxcTagModule,DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcLinkModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
@@ -17,6 +17,7 @@ import { LinkImportComponent } from '../../components/examples/link/link-import/
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { LinkDisabledComponent } from '../../components/examples/link/link-disabled/link-disabled.component';
+import { LinkActionComponent } from '../../components/examples/link/link-action/link-action.component';
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
 
@@ -29,6 +30,7 @@ import { LinkThemeComponent } from '../../components/examples/link/link-theme/li
     LinkIconComponent,
     LinkTablePropertiesComponent,
     LinkDisabledComponent,
+    LinkActionComponent,
     LinkImportComponent,
     LinkApiComponent,
     LinkThemeComponent
@@ -43,7 +45,8 @@ import { LinkThemeComponent } from '../../components/examples/link/link-theme/li
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports:[
     LinkComponent,
@@ -53,6 +56,7 @@ import { LinkThemeComponent } from '../../components/examples/link/link-theme/li
     LinkIconComponent,
     LinkTablePropertiesComponent,
     LinkDisabledComponent,
+    LinkActionComponent,
     LinkImportComponent,
     LinkApiComponent,
     LinkThemeComponent

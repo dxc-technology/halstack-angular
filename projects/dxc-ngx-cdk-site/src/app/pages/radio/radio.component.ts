@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
-import { RadioPropertiesComponent } from 'src/app/components/examples/radio/properties/radio-properties/radio-properties.component';
 import { RadioExampleComponent } from '../../components/examples/radio/radio-example/radio-example.component';
-import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
 import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
 import { RadioThemeComponent } from '../../components/examples/radio/radio-theme/radio-theme.component';
 
@@ -12,6 +10,9 @@ import { RadioThemeComponent } from '../../components/examples/radio/radio-theme
   styleUrls: ['./radio.component.scss']
 })
 export class RadioComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

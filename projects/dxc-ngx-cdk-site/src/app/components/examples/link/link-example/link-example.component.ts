@@ -5,6 +5,7 @@ import { LinkDefaultComponent } from '../link-default/link-default.component';
 import { LinkIconComponent } from '../link-icon/link-icon.component';
 import { LinkDisabledComponent } from '../link-disabled/link-disabled.component';
 import { LinkUndercoratedComponent } from '../link-undercorated/link-undercorated.component';
+import { LinkActionComponent } from '../link-action/link-action.component';
 
 @Component({
   selector: 'link-example',
@@ -74,6 +75,20 @@ export class LinkExampleComponent implements OnInit {
           title: 'Link with icon',
           component: LinkIconComponent,
           selector: "example4",
+          examples: [
+            resp1[0],
+            resp1[1],
+            resp1[2]
+          ]
+        }));
+      });
+
+      this.exampleService
+      .getCodeExample("link/link-action/link-action.component").subscribe(resp1 => {
+        this.examples.push(this.exampleService.generateExample({
+          title: 'Link with action',
+          component: LinkActionComponent,
+          selector: "example5",
           examples: [
             resp1[0],
             resp1[1],

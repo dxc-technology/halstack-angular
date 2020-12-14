@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcBoxModule, DxcTableModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcBoxModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { BoxComponent } from './box.component';
 import { BoxBasicComponent } from '../../components/examples/box/box-basic/box-basic.component';
 import { BoxExampleComponent } from '../../components/examples/box/box-example/box-example.component';
@@ -33,7 +33,8 @@ import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-t
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     BoxExampleComponent,

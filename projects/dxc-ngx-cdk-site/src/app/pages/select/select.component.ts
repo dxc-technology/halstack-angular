@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
-import { SelectPropertiesComponent } from "../../components/examples/select/properties/select-properties/select-properties.component";
 import { SelectExampleComponent } from "../../components/examples/select/select-example/select-example.component";
-import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
 import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
 
@@ -12,6 +10,10 @@ import { SelectThemeComponent } from '../../components/examples/select/select-th
   styleUrls: ["./select.component.scss"]
 })
 export class SelectComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
+
   sections: Array<Section>;
   tagImg: string;
 

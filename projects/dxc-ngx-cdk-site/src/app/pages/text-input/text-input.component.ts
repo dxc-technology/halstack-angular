@@ -10,6 +10,9 @@ import { TextInputThemeComponent } from '../../components/examples/text-input/te
   styleUrls: ['./text-input.component.scss']
 })
 export class TextInputComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

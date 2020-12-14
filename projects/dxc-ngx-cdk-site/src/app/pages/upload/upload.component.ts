@@ -10,6 +10,9 @@ import { UploadThemeComponent } from '../../components/examples/upload/upload-th
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DxcProgressbarModule, DxcButtonModule,DxcTagModule,DxcChipModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcProgressbarModule, DxcButtonModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
 import { ProgressbarComponent } from "./progressbar.component";
@@ -42,7 +42,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CodePlaygroundModule,
     ComponentsSidenavModule,
     ColorPreviewModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     ProgressbarTablePropertiesComponent,

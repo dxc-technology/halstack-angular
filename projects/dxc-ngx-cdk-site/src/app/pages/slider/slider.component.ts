@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
-import { SliderPropertiesComponent } from '../../components/examples/slider/properties/slider-properties/slider-properties.component';
 import { SliderExampleComponent } from '../../components/examples/slider/slider-example/slider-example.component';
-import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
 import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
 import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 
@@ -12,6 +10,9 @@ import { SliderThemeComponent } from '../../components/examples/slider/slider-th
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

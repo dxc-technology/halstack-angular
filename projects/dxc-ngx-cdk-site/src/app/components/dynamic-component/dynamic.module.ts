@@ -21,6 +21,7 @@ import { AlertWarningComponent } from "../examples/alert/alert-warning/alert-war
 import { AlertErrorComponent } from '../examples/alert/alert-error/alert-error.component';
 import { AlertClosableComponent } from '../examples/alert/alert-closable/alert-closable.component';
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
+import { ApplicationLayoutThemeComponent } from '../examples/layout/app-layout-theme/app-layout-theme.component';
 import { ApplicationLayoutExamplesComponent } from '../examples/layout/app-layout-examples/app-layout-examples.component';
 import { AutocompleteAsyncControlledComponent } from '../examples/autocomplete/autocomplete-asynchronous-controlled/autocomplete-asynchronous-controlled.component';
 import { AutocompleteAsyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-asynchronous-uncontrolled/autocomplete-asynchronous-uncontrolled.component';
@@ -183,6 +184,7 @@ import { HeaderDirectivesComponent } from '../examples/header/header-directives/
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
+import { LinkActionComponent } from '../examples/link/link-action/link-action.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
@@ -312,6 +314,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     AlertClosableComponent,
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
+    ApplicationLayoutThemeComponent,
     AutocompleteAsyncControlledComponent,
     AutocompleteAsyncUncontrolledComponent,
     AutocompleteExampleComponent,
@@ -472,6 +475,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     HeaderExampleResponsiveComponent,
     ResultsetTableDirectivesComponent,
     LinkDisabledComponent,
+    LinkActionComponent,
     ResultsetTableDirectivesComponent,
     AccordionImportComponent,
     AlertImportComponent,

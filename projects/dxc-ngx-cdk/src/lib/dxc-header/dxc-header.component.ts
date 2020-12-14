@@ -292,6 +292,8 @@ export class DxcHeaderComponent implements OnChanges {
 
       justify-content: flex-start;
 
+      overflow-y: auto;
+
       .responsiveMenu-Header {
         display: flex;
         flex-direction: row;

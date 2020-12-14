@@ -1,29 +1,29 @@
 <div class="section">
-    <h2 class="overview-doc-subtitle">Use Components</h2>
-    <p>
-        All available components provided by the CDK are listed in the
-        <a routerLinkActive="active" routerLink="/components" >components screen</a> 
-        .The API for every component is fully documented and accompanied with
-        a set of examples with a live code editor.
-    </p>
-    <p>
-        After having installed the npm package you will be able to import the CDK components and
-        use them in you application.
-    </p>
-    <div class="overview-viewer-source" >
-        <mat-tab-group animationDuration="1000ms">
-            <mat-tab label="HTML">
-                <app-code-playground [code]="htmlCode" type="HTML" >
-                </app-code-playground>
-            </mat-tab>
-            <mat-tab label="Module TS"> 
-                <app-code-playground [code]="tsModuleCode" type="TS" >
-                </app-code-playground>
-            </mat-tab>
-            <mat-tab label="Component TS"> 
-                <app-code-playground [code]="tsComponentCode" type="TS" >
-                </app-code-playground>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
+  <dxc-heading [level]="3" weight="normal" text="Use Components"></dxc-heading>
+  <p>
+    All available components provided by the CDK are listed in the
+    <a routerLinkActive="active" routerLink="/components">components screen</a>
+    .The API for every component is fully documented and accompanied with a set
+    of examples with a live code editor.
+  </p>
+  <p>
+    After having installed the npm package you will be able to import the CDK
+    components and use them in you application.
+  </p>
+  <div class="overview-viewer-source">
+    <mat-tab-group animationDuration="1000ms">
+      <mat-tab label="HTML">
+        <app-code-playground [code]="htmlCode" type="HTML">
+        </app-code-playground>
+      </mat-tab>
+      <mat-tab label="Module TS">
+        <app-code-playground [code]="tsModuleCode" type="TS">
+        </app-code-playground>
+      </mat-tab>
+      <mat-tab label="Component TS">
+        <app-code-playground [code]="tsComponentCode" type="TS">
+        </app-code-playground>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </div>

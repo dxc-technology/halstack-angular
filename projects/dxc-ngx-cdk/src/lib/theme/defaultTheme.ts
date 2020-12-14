@@ -94,8 +94,8 @@ export const customTheme: Theme = {
       "backgroundColorMenu": colors.white,
       "fontColorMenu": colors.black,
       "hamburguerColor": colors.black,
-      "logo": "assets/dxc_logo_black.png",
-      "logoResponsive": "assets/dxc_logo_black.png",
+      "logo": "assets/dxc_logo_blk_rgb.svg",
+      "logoResponsive": "assets/dxc_logo_blk_rgb.svg",
     },
     "tabs":{
       "selectedBackgroundColor": colors.white,

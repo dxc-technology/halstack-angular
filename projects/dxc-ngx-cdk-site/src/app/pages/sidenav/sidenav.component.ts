@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
-import { SidenavTablePropertiesComponent } from "../../components/examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component";
 import { SidenavExampleComponent } from "../../components/examples/sidenav/sidenav-example/sidenav-example.component";
-import { SidenavImportComponent } from "../../components/examples/sidenav/sidenav-import/sidenav-import.component";
 import { SidenavApiComponent } from "../../components/examples/sidenav/sidenav-api/sidenav-api.component";
 import { SidenavThemeComponent } from "../../components/examples/sidenav/sidenav-theme/sidenav-theme.component";
 
@@ -12,6 +10,10 @@ import { SidenavThemeComponent } from "../../components/examples/sidenav/sidenav
   styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
+
   sections: Array<Section>;
   tagImg: string;
 

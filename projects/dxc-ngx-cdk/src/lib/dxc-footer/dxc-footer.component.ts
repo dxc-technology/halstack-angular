@@ -130,7 +130,9 @@ export class DxcFooterComponent implements OnChanges {
       this.defaultInputs.getValue()
     )}`;
     this.footerFooterStyle = `${this.setFooterFooterStyle(this.isResponsive)}`;
-    this.bottomLinksLength = this.bottomLinks.length - 1;
+    if (this.bottomLinks) {
+      this.bottomLinksLength = this.bottomLinks.length - 1;
+    }
   }
 
   getLogoDxc() {

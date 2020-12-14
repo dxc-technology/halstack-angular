@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
-import { LinkTablePropertiesComponent } from "../../components/examples/link/properties/link-table-properties/link-table-properties.component";
 import { LinkExampleComponent } from "../../components/examples/link/link-example/link-example.component";
-import { LinkImportComponent } from '../../components/examples/link/link-import/link-import.component';
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
 
@@ -12,6 +10,9 @@ import { LinkThemeComponent } from '../../components/examples/link/link-theme/li
   styleUrls: ['./link.component.scss']
 })
 export class LinkComponent implements OnInit {
+  headingMargin = {
+    bottom: "medium",
+  };
 
   sections: Array<Section>;
   tagImg: string;

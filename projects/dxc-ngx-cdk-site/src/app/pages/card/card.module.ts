@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcCardModule, DxcTableModule,DxcTagModule,DxcChipModule } from '@dxc-technology/halstack-angular';
+import { DxcCardModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { CardComponent } from './card.component';
 import { CardActionComponent } from '../../components/examples/card/card-action/card-action.component';
 import { CardDefaultComponent } from '../../components/examples/card/card-default/card-default.component';
@@ -37,7 +37,8 @@ import { CardThemeComponent } from '../../components/examples/card/card-theme/ca
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     CardActionComponent,

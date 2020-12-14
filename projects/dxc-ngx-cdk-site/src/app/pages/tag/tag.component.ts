@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/model/sections';
-import { TagTablePropertiesComponent } from '../../components/examples/tag/properties/tag-table-properties/tag-table-properties.component';
 import { TagExampleComponent } from '../../components/examples/tag/tag-example/tag-example.component';
-import { TagImportComponent } from '../../components/examples/tag/tag-import/tag-import.component';
 import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
 import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-theme.component';
 
@@ -12,6 +10,9 @@ import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-t
   styleUrls: ['./tag.component.scss']
 })
 export class TagComponent implements OnInit {
+  headingMargin = {
+    bottom: 'medium'
+  }
 
   sections: Array<Section>;
   tagImg: string;

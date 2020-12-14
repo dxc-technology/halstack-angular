@@ -1,5 +1,5 @@
 <div class="section">
-  <h2 class="overview-doc-subtitle">Install</h2>
+  <dxc-heading [level]="3" weight="normal" text="Install"></dxc-heading>
   <p>
     DXC Angular Components is a library made for Angular applications. In order
     to use it, you need to include it in an existing Angular project.
@@ -28,7 +28,12 @@
     </mat-tab-group>
   </div>
 
-  <h3 class="overview-doc-subtitle-section">PeerDependencies</h3>
+  <dxc-heading
+    [level]="4"
+    weight="normal"
+    text="PeerDependencies"
+    [margin]="headingMargin"
+  ></dxc-heading>
   <p>
     It has defined a peerDependencies in the package.json. As you know, this
     section of depedencies are not installed automatically by npm. System will
@@ -47,7 +52,12 @@
   </p>
   <app-code-playground [code]="tsCode" type="CONSOLE"> </app-code-playground>
 
-  <h3 class="overview-doc-subtitle-section">Material</h3>
+  <dxc-heading
+    [level]="4"
+    weight="normal"
+    text="Material"
+    [margin]="headingMargin"
+  ></dxc-heading>
 
   <p>
     The CDK uses Angular Material so if it's not added, the components will not

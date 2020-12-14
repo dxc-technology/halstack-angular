@@ -44,11 +44,6 @@ export class AppModule {}
         <td>The index of the active tab.</td>
     </tr>
     <tr>
-        <td>@Output<br>activeTabIndexChange: EventEmitter</td>
-        <td></td>
-        <td>This function will be called when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
-    </tr>
-    <tr>
         <td>@Input<br>margin: any (string | object)</td>
         <td></td>
         <td>

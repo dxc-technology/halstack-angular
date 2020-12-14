@@ -19,7 +19,7 @@ export class DxcTabComponent implements OnChanges {
   @Input() iconSrc: string;
   @Input() disabled: boolean = false;
   @Input() id: number;
-  @Output() onClick = new EventEmitter<any>();
+  @Output() onTabClick = new EventEmitter<any>();
 
   showDotIndicator: boolean = false;
   labelClass: string;
@@ -41,7 +41,7 @@ export class DxcTabComponent implements OnChanges {
   }
 
   public onClickHandler(): void {
-    this.onClick.emit(this.id);
+    this.onTabClick.emit(this.id);
   }
 
   getLabelClass() {

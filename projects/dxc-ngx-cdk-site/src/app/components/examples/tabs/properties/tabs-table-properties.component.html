@@ -1,21 +1,20 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
-    <tr>
-        <th>Name</th>
-        <th>Default</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>activeTabIndex: number</td>
-        <td><code>0</code></td>
-        <td>The index of the active tab.</td>
-    </tr>
-    <tr>
-        <td>activeTabIndexChange: EventEmitter</td>
-        <td></td>
-        <td>This function will be called when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
-    </tr>
-    
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>activeTabIndex: number</td>
+    <td><code>0</code></td>
+    <td>The index of the active tab.</td>
+  </tr>
   <tr>
     <td>margin: any (string | object)</td>
     <td></td>
@@ -26,34 +25,36 @@
       specify different margin sizes.
     </td>
   </tr>
-
 </dxc-table>
 
 <dxc-table>
-    <h3>Tab Properties</h3>
-    <tr>
-        <th>Name</th>
-        <th>Default</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>label: string</td>
-        <td></td>
-        <td>Text to be placed within the tab.</td>
-    </tr>
-    <tr>
-        <td>iconSrc: string</td>
-        <td></td>
-        <td>The path of an icon to be placed within the tab.</td>
-    </tr>
-    <tr>
-        <td>disabled: boolean</td>
-        <td><code>false</code></td>
-        <td>Whether the tab is disabled.</td>
-    </tr>
-	<tr>
-        <td>onTabClick: EventEmitter</td>
-        <td><code>false</code></td>
-        <td>This function will be called when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
-    </tr>
+  <h3>Tab Properties</h3>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>label: string</td>
+    <td></td>
+    <td>Text to be placed within the tab.</td>
+  </tr>
+  <tr>
+    <td>iconSrc: string</td>
+    <td></td>
+    <td>The path of an icon to be placed within the tab.</td>
+  </tr>
+  <tr>
+    <td>disabled: boolean</td>
+    <td><code>false</code></td>
+    <td>Whether the tab is disabled.</td>
+  </tr>
+  <tr>
+    <td>onTabClick: EventEmitter</td>
+    <td><code>false</code></td>
+    <td>
+      This function will be called when the user clicks on a tab. The index of
+      the clicked tab will be passed as a parameter.
+    </td>
+  </tr>
 </dxc-table>

@@ -50,6 +50,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   @Input() required: boolean;
   @Input() margin: any;
   @Input() size: string;
+  @Input() labelFormatCallback: (value: number) => string | number;
 
   @Output() onDragEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
@@ -60,6 +61,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   minValueClass: any;
   maxValueClass: any;
   inputMargin = { left: "medium", top: "xxsmall" };
+
+  minValueLabel: any;
+  maxValueLabel: any;
 
   defaultInputs = new BehaviorSubject<any>({
     minValue: 0,
@@ -86,7 +90,14 @@ export class DxcSliderComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.renderedValue = this.value;
-
+    if (this.labelFormatCallback) {
+      this.minValueLabel = this.labelFormatCallback(this.minValue!).toString();
+      this.maxValueLabel = this.labelFormatCallback(this.maxValue!).toString();
+    }
+    else{
+      this.minValueLabel = this.minValue;
+      this.maxValueLabel = this.maxValue;
+    }
     this.updateStyles(this.defaultInputs.getValue());
   }
 

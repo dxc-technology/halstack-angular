@@ -25,9 +25,9 @@ describe("DxcTabs tests", () => {
       const clickFunction = jest.fn();
       const tabs = await render(DxcTabsComponent, {
         template: `<dxc-tabs theme="dark">
-                    <dxc-tab label="Tab1" (onClick)="clickFunction($event)"></dxc-tab>
-                    <dxc-tab label="Tab2" (onClick)="clickFunction($event)"></dxc-tab>
-                    <dxc-tab label="Tab3" (onClick)="clickFunction($event)"></dxc-tab>
+                    <dxc-tab label="Tab1" (onTabClick)="clickFunction($event)"></dxc-tab>
+                    <dxc-tab label="Tab2" (onTabClick)="clickFunction($event)"></dxc-tab>
+                    <dxc-tab label="Tab3" (onTabClick)="clickFunction($event)"></dxc-tab>
                   </dxc-tabs>`,
         componentProperties: { clickFunction },
         imports: [DxcTabsModule],
@@ -49,9 +49,9 @@ describe("DxcTabs tests", () => {
       const clickFunction = jest.fn();
       const tabs = await render(DxcTabsComponent, {
         template: `<dxc-tabs theme="dark" [activeTabIndex]="0">
-                    <dxc-tab label="Tab1" (onClick)="clickFunction($event)"></dxc-tab>
-                    <dxc-tab label="Tab2" (onClick)="clickFunction($event)"></dxc-tab>
-                    <dxc-tab label="Tab3" (onClick)="clickFunction($event)"></dxc-tab>
+                    <dxc-tab label="Tab1" (onTabClick)="clickFunction($event)"></dxc-tab>
+                    <dxc-tab label="Tab2" (onTabClick)="clickFunction($event)"></dxc-tab>
+                    <dxc-tab label="Tab3" (onTabClick)="clickFunction($event)"></dxc-tab>
                   </dxc-tabs>`,
         componentProperties: { clickFunction },
         imports: [DxcTabsModule],

@@ -15,5 +15,9 @@ export class SliderUncontrolledComponent implements OnInit {
   onUncontrolledChange(value) {
     console.debug("uncontrolled change: " + value);
   }
+  
+  formatLabel(value: number) {
+    return `${value}$`;
+  }
 
 }

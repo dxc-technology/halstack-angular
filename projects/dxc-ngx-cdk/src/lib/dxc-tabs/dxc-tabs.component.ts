@@ -129,7 +129,7 @@ export class DxcTabsComponent implements OnChanges {
         padding-left: 20px;
         opacity: var(--tabs-notSelectedOpacity);
         min-width: 180px;
-        background: var(--tabs-backgroundColor) 0% 0% no-repeat padding-box;
+        background: var(--tabs-backgroundColor) 0% 0% no-repeat;
         .dxc-tab-label span:not(.show-dot) {
           letter-spacing: 1.43px;
           opacity: 1;

@@ -37,7 +37,7 @@ The API properties are the following:
       <th>Description</th>
     </tr>
     <tr>
-      <td>@Output<br>uploadCallback: EventEmitter</td>
+      <td>@Output<br>uploadCallback: Function</td>
       <td></td>
       <td>
         This function will be called when the user clicks the 'Upload' button for

@@ -7,8 +7,8 @@ import {
   AfterViewInit,
   OnDestroy
 } from "@angular/core";
-import {ComponentPortal, DomPortalHost, CdkPortal} from '@angular/cdk/portal';
-import { ViewChild } from '@angular/core';
+import { ComponentPortal, DomPortalHost, CdkPortal } from '@angular/cdk/portal';
+import { ViewChild, ViewContainerRef } from '@angular/core';
 
 
 @Component({
@@ -16,24 +16,25 @@ import { ViewChild } from '@angular/core';
   template: "",
   providers: []
 })
-export class DynamicComponentComponent implements AfterViewInit,OnDestroy {
+export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
 
-  
+
   @Input()
   component;
 
   @Input()
   selector;
 
-  @ViewChild(CdkPortal, {static:false}) cdkPortal;
+  @ViewChild(CdkPortal, { static: false }) cdkPortal;
 
   private portalHost: DomPortalHost;
   private portal;
-  
+
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver, 
-     private injector: Injector,
-     private appRef: ApplicationRef
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private injector: Injector,
+    private appRef: ApplicationRef,
+    public viewContainerRef: ViewContainerRef
   ) {
   }
 
@@ -43,25 +44,26 @@ export class DynamicComponentComponent implements AfterViewInit,OnDestroy {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    
+
     const selector = (document.querySelector('#' + this.selector));
     // if (selector!==null){
-      this.portalHost = new DomPortalHost(
-        selector,
-        this.componentFactoryResolver,
-        this.appRef,
-        this.injector
-      );
+    this.portalHost = new DomPortalHost(
+      selector,
+      this.componentFactoryResolver,
+      this.appRef,
+      this.injector
+    );
+    debugger;
     this.portal = new ComponentPortal(this.component);
-    if (this.portalHost!= undefined)
+    if (this.portalHost != undefined)
       this.portalHost.attach(this.portal);
     // }
-    
+
   }
 
   ngOnDestroy(): void {
     this.portalHost.detach();
   }
 
-  
+
 }

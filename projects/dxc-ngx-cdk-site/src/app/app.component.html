@@ -72,6 +72,15 @@
             >Design Guidelines</a
           >
         </li>
+        <li style="width: 100px;">
+          <dxc-select
+            (onChange)="selectVersion($event)"
+            [options]="versions"
+            size="fillParent"
+            [value]="selectedVersion"
+          >
+          </dxc-select>
+        </li>
         <li style="margin: 10px 0px; padding: 0">
           <a
             class="header-link-responsive"

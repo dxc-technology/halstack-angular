@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DxcHeaderModule, DxcTableModule, DxcButtonModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcHeaderModule, DxcTableModule, DxcButtonModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
@@ -9,8 +9,6 @@ import { HeaderComponent } from './header.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../../components/examples/header/properties/header-table-properties/header-table-properties.component';
-import { HeaderDefaultComponent } from '../../components/examples/header/header-default/header-default.component';
-import { HeaderCustomContentComponent } from '../../components/examples/header/header-custom-content/header-custom-content.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 import { HeaderDirectivesComponent } from '../../components/examples/header/header-directives/header-directives.component';
@@ -27,8 +25,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     HeaderComponent,
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
-    HeaderDefaultComponent,
-    HeaderCustomContentComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     HeaderImportComponent,
@@ -36,27 +32,25 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     HeaderThemeComponent
   ],
   imports: [
-      BrowserModule,
-      FormsModule,
-      CommonModule,
-      DxcHeaderModule,
-      DxcButtonModule,
-      TabbedSectionModule,
-      ExampleViewerModule,
-      DxcTableModule,
-      DxcTagModule,
-      ComponentsSidenavModule,
-      CodePlaygroundModule,
-      ColorPreviewModule,
-      DxcChipModule,
-      DxcHeadingModule
+    BrowserModule,
+    FormsModule,
+    CommonModule,
+    DxcHeaderModule,
+    DxcButtonModule,
+    TabbedSectionModule,
+    ExampleViewerModule,
+    DxcTableModule,
+    DxcTagModule,
+    ComponentsSidenavModule,
+    CodePlaygroundModule,
+    ColorPreviewModule,
+    DxcChipModule,
+    DxcHeadingModule
   ],
   exports: [
     HeaderComponent,
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
-    HeaderDefaultComponent,
-    HeaderCustomContentComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     HeaderImportComponent,

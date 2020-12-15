@@ -143,8 +143,6 @@ import { TabsExampleComponent } from "../examples/tabs/tabs-example/tabs-example
 import { TabsContentComponent } from "../examples/tabs/tabs-content/tabs-content.component";
 import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
-import { HeaderDefaultComponent } from '../examples/header/header-default/header-default.component';
-import { HeaderCustomContentComponent } from '../examples/header/header-custom-content/header-custom-content.component';
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
 import { UploadDefaultComponent } from "../examples/upload/upload-default/upload-default.component";
 import { UploadExampleComponent } from "../examples/upload/upload-example/upload-example.component";
@@ -443,8 +441,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TabsUncontrolledComponent,
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
-    HeaderDefaultComponent,
-    HeaderCustomContentComponent,
     UploadTablePropertiesComponent,
     UploadExampleComponent,
     UploadDefaultComponent,
@@ -584,4 +580,4 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     ToggleGroupThemeComponent
   ]
 })
-export class DynamicModule {}
+export class DynamicModule { }

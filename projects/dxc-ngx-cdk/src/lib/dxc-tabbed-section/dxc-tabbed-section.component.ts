@@ -20,8 +20,6 @@ import {
 })
 export class DxcTabbedSectionComponent implements OnInit {
   //input attributes
-  @Input() tabsMode: string = "filled";
-
   @Input()
   get stickAtPx(): number {
     return this._stickAtPx;
@@ -53,8 +51,6 @@ export class DxcTabbedSectionComponent implements OnInit {
   offset: number = 0;
 
   defaultInputs = new BehaviorSubject<any>({
-    tabsMode: "filled",
-    disableTabsRipple: "false",
     stickAtPx: 0,
   });
 

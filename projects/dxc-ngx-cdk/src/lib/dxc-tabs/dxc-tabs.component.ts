@@ -27,7 +27,6 @@ export class DxcTabsComponent implements OnChanges {
   @HostBinding("class.label-icons") allTabWithLabelAndIcon: boolean = false;
 
   //Default values
-  @Input() mode: string = "filled";
   @Input() margin: any;
 
   @Input()
@@ -46,7 +45,6 @@ export class DxcTabsComponent implements OnChanges {
   @ContentChildren(DxcTabComponent)
   protected tabs: QueryList<DxcTabComponent>;
   defaultInputs = new BehaviorSubject<any>({
-    mode: "filled",
     margin: null,
   });
 

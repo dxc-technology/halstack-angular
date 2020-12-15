@@ -7,7 +7,7 @@ The DXC Tabbed Section Component is a layout to organize content with tabs.
 ## Usage
 
 ```html
-<dxc-tabbed-section [sections]="sections" tabsMode="underlined">
+<dxc-tabbed-section [sections]="sections">
   <div id="section1-selector0" style="height: 200px;">Section 1</div>
   <div id="section2-selector1" style="height: 200px;">Section 2</div>
   <div id="section3-selector2" style="height: 200px;">Section 3</div>
@@ -56,11 +56,6 @@ export class AppModule {}
             </li>
           </ul>
         </td>
-    </tr>
-    <tr>
-        <td>@Input<br>tabsMode: string ('filled' | 'underlined')</td>
-        <td><code>'filled'</code></td>
-        <td>Uses one of the available component modes.</td>
     </tr>
     <tr>
         <td>@Input<br>stickAtPx: number</td>

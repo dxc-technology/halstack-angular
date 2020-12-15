@@ -1,5 +1,5 @@
-<div theme class="header-container">
-  <dxc-header [padding]="headerPadding" underlined="true">
+<dxc-application-layout>
+  <dxc-header [underlined]="true">
     <div id="unresponsive" class="headerContent">
       <div class="selectContainer">
         <dxc-select
@@ -101,23 +101,29 @@
       </ul>
     </div>
   </dxc-header>
-</div>
-<div theme class="body-container">
-  <div class="container-content">
-    <div class="styled-container">
-      <router-outlet #routerOutlet="outlet"></router-outlet>
+  <dxc-application-layout-sidenav padding="medium" *ngIf="hasSideNav | async">
+    <div class="sidenavContent" style="text-align: left; height: 100%">
+      <components-sidenav-menu></components-sidenav-menu>
     </div>
-  </div>
-</div>
-<div theme class="portal-footer">
-  <dxc-footer
-    logoSrc="assets/dxc_logo_wht.png"
-    [bottomLinks]="[
-      { text: 'Twitter', href: 'https://twitter.com/DXCTechnology' },
-      { text: 'Facebook', href: 'https://www.facebook.com/DXCTechnology/' },
-      { text: 'Instagram', href: 'https://www.instagram.com/dxctechnology/' }
-    ]"
-    [copyright]="'© DXC Technology 2019. All rights reserved.'"
-  >
-  </dxc-footer>
-</div>
+  </dxc-application-layout-sidenav>
+  <dxc-application-layout-main>
+    <div theme class="body-container">
+      <div class="container-content">
+        <div class="styled-container">
+          <router-outlet #routerOutlet="outlet"></router-outlet>
+        </div>
+      </div>
+    </div>
+
+    <dxc-footer
+      logoSrc="assets/dxc_logo_wht.png"
+      [bottomLinks]="[
+        { text: 'Twitter', href: 'https://twitter.com/DXCTechnology' },
+        { text: 'Facebook', href: 'https://www.facebook.com/DXCTechnology/' },
+        { text: 'Instagram', href: 'https://www.instagram.com/dxctechnology/' }
+      ]"
+      [copyright]="'© DXC Technology 2019. All rights reserved.'"
+    >
+    </dxc-footer>
+  </dxc-application-layout-main>
+</dxc-application-layout>

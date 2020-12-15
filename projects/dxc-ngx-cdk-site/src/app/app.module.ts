@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ThemeService, DxcHeaderModule,DxcFooterModule, ThemeModule,DxcSelectModule } from '@dxc-technology/halstack-angular';
+import { ThemeService, DxcHeaderModule, DxcFooterModule, ThemeModule, DxcSelectModule, DxcApplicationLayoutModule } from '@dxc-technology/halstack-angular';
 import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
 import { AlertModule } from './pages/alert/alert.module';
@@ -46,6 +46,9 @@ import { HeadingModule } from './pages/heading/heading.module';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
 import { TextAreaModule } from './pages/text-area/text-area.module';
 import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
+import { DxcLinkModule } from '../../../dxc-ngx-cdk/src/lib/dxc-link/dxc-link.module';
+import { DxcHeadingModule } from '../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
+import { DxcBoxModule } from '../../../dxc-ngx-cdk/src/lib/dxc-box/dxc-box.module';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
     OverviewPageModule,
     DxcHeaderModule,
     DxcFooterModule,
+    DxcLinkModule,
+    DxcHeadingModule,
+    DxcBoxModule,
     AccordionModule,
     AlertModule,
     ApplicationLayoutModule,
@@ -100,7 +106,8 @@ import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
     HeadingModule,
     ResultsetTableModule,
     DxcSelectModule,
-    ToggleGroupModule
+    ToggleGroupModule,
+    DxcApplicationLayoutModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

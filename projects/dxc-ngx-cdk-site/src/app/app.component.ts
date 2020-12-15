@@ -3,6 +3,8 @@ import { ThemeService } from "@dxc-technology/halstack-angular";
 import { customTheme } from '../assets/styles/themesProperties';
 import { HttpClient } from '@angular/common/http';
 import portal from '../assets/portal.json';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: "app-root",
@@ -15,15 +17,25 @@ export class AppComponent {
   versions: Array<any> = [];
   selectedVersion;
   suscription;
+  hasSideNav = new BehaviorSubject(false);
 
   constructor(
     @Inject("ThemeService") private themeService: ThemeService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
+
   }
 
   ngOnInit(): void {
     this.themeService.registerTheme(customTheme);
+    this.router.events.subscribe((event: any) => {
+      if (event?.url !== null && event?.url !== undefined) {
+        event?.url.indexOf('/components') >= 0 ? this.hasSideNav.next(true) : this.hasSideNav.next(false);
+      }
+    }
+    );
+
     this.suscription = this.http.get(portal.url
     ).subscribe(
       (resp: Array<any>) => {

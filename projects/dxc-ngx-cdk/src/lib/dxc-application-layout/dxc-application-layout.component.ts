@@ -9,12 +9,10 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { HostListener, QueryList } from "@angular/core";
-import { responsiveSizes } from "../variables";
 import { SidenavService } from "./dxc-application-layout-sidenav/services/sidenav.service";
 import { DxcHeaderComponent } from "../dxc-header/dxc-header.component";
 import { DxcApplicationLayoutHeaderComponent } from "./dxc-application-layout-header/dxc-application-layout-header.component";
-import { DxcFooterComponent } from "../dxc-footer/dxc-footer.component";
-import { DxcApplicationLayoutFooterComponent } from "./dxc-application-layout-footer/dxc-application-layout-footer.component";
+
 @Component({
   selector: "dxc-application-layout",
   templateUrl: "./dxc-application-layout.component.html",
@@ -100,7 +98,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
       display: flex;
       flex-direction: column;
       height: 100vh;
-      dxc-header {
+       dxc-header {
         width: 100%;
         max-height: 68px;
         mat-toolbar {
@@ -112,7 +110,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
             height: 68px !important;
           }
         }
-      }
+      } 
       dxc-application-layout-header {
         width: 100%;
         position: fixed;
@@ -151,5 +149,5 @@ export class DxcApplicationLayoutComponent implements OnInit {
       }
     `;
   }
-  
+
 }

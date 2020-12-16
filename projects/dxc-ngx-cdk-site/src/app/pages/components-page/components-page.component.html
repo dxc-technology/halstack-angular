@@ -154,6 +154,14 @@
           <li>
             <dxc-link
               href=""
+              (click)="navigateToRoute('applicationLayout'); $event.preventDefault()"
+              text="Application Layout"
+              [underlined]="underlined"
+            ></dxc-link>
+          </li>
+          <li>
+            <dxc-link
+              href=""
               (click)="navigateToRoute('box'); $event.preventDefault()"
               text="Box"
               [underlined]="underlined"
@@ -176,6 +184,8 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
+        </ul>
+        <ul class="last">
           <li>
             <dxc-link
               href=""
@@ -186,8 +196,6 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
-        </ul>
-        <ul class="last">
           <li>
             <dxc-link
               href=""

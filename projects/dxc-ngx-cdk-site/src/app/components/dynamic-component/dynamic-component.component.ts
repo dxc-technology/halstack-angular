@@ -53,7 +53,6 @@ export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
       this.appRef,
       this.injector
     );
-    debugger;
     this.portal = new ComponentPortal(this.component);
     if (this.portalHost != undefined)
       this.portalHost.attach(this.portal);

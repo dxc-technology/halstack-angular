@@ -1,6 +1,5 @@
 <div [class]="styledDxcSectionTabbedGroup">
   <dxc-tabs
-    [mode]="tabsMode"
     disableRipple
     id="dxcTabbedSection"
     [activeTabIndex]="tabId"
@@ -8,7 +7,7 @@
     <dxc-tab
       *ngFor="let currentSection of sections; let i = index"
       [label]="currentSection.label"
-      (onClick)="scroll(currentSection.selector + i)"
+      (onTabClick)="scroll(currentSection.selector + i)"
     >
     </dxc-tab>
   </dxc-tabs>

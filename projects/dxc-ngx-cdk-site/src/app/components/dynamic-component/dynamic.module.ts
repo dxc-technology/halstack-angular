@@ -167,9 +167,7 @@ import { WizardDefaultComponent } from '../examples/wizard/wizard-default/wizard
 import { WizardUncontrolledComponent } from '../examples/wizard/wizard-uncontrolled/wizard-uncontrolled.component';
 import { WizardVerticalComponent } from '../examples/wizard/wizard-vertical/wizard-vertical.component';
 import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
-import { HeadingDefaultComponent } from '../examples/heading/heading-default/heading-default.component';
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
-import { HeadingWeightsComponent } from '../examples/heading/heading-weights/heading-weights.component';
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
@@ -451,9 +449,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     WizardUncontrolledComponent,
     WizardVerticalComponent,
     HeadingTablePropertiesComponent,
-    HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingWeightsComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,

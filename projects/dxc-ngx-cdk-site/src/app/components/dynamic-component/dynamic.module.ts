@@ -5,7 +5,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AccordionExampleComponent } from "../examples/accordion/accordion-example/accordion-example.component";
 import { AccordionTablePropertiesComponent } from "../examples/accordion/properties/accordion-table-properties/accordion-table-properties.component";
-import { AlertChildrenComponent } from "../examples/alert/alert-children/alert-children.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';

@@ -3,7 +3,6 @@ import { DxcButtonModule, DxcAlertModule, DxcTableModule,DxcTagModule, DxcChipMo
 import { AlertComponent } from './alert.component';
 import { AlertExampleComponent } from '../../components/examples/alert/alert-example/alert-example.component';
 import { AlertComponentPropertiesComponent } from '../../components/examples/alert/properties/alert-properties/alert-properties.component';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
@@ -42,9 +41,6 @@ import { AlertApiComponent } from '../../components/examples/alert/alert-api/ale
     AlertImportComponent,
     AlertApiComponent,
     AlertThemeComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
   ]
 })
 export class AlertModule {}

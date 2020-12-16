@@ -10,15 +10,11 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
-import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
-import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
-import { ChipBasicComponent } from "src/app/components/examples/chip/chip-basic/chip-basic.component";
 import { ChipExampleComponent } from "src/app/components/examples/chip/chip-example/chip-example.component";
 import { ChipTablePropertiesComponent } from "src/app/components/examples/chip/properties/box-table-properties/chip-table-properties.component";
 import { ChipImportComponent } from "src/app/components/examples/chip/chip-import/chip-import.component";
-import { ChipIconComponent } from 'src/app/components/examples/chip/chip-icon/chip-icon.component';
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
@@ -26,8 +22,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 @NgModule({
   declarations: [
     ChipComponent,
-    ChipBasicComponent,
-    ChipIconComponent,
     ChipExampleComponent,
     ChipTablePropertiesComponent,
     ChipImportComponent,
@@ -40,7 +34,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CommonModule,
     DxcChipModule,
     TabbedSectionModule,
-    ExampleViewerModule,
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,
@@ -51,14 +44,11 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   ],
   exports: [
     ChipComponent,
-    ChipBasicComponent,
-    ChipIconComponent,
     ChipExampleComponent,
     ChipTablePropertiesComponent,
     ChipImportComponent,
     ChipApiComponent,
     ChipThemeComponent
-  ],
-  entryComponents: [ExampleViewerComponent],
+  ]
 })
 export class ChipModule {}

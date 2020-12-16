@@ -1,9 +1,46 @@
-<dxc-heading [level]="3" weight="normal" text="Examples" [margin]="{bottom:'small'}"></dxc-heading>
-<div *ngIf="examples && examples.length > 0">
-  <div *ngFor="let example of examples">
-    <app-example-viewer
-      [item]="example"
-      [id]="example.selector"
-    ></app-example-viewer>
-  </div>
-</div>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="Examples"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+
+<dxc-heading
+  text="Default Chip"
+  [level]="5"
+  [margin]="{ bottom: 'medium' }"
+></dxc-heading>
+
+<iframe
+  src="https://codesandbox.io/embed/defaultchip-5i2i2?fontsize=14&hidenavigation=1&theme=dark"
+  style="
+    width: 100%;
+    height: 500px;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+  "
+  title="DefaultChip"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+<dxc-heading
+  text="Chip with icons"
+  [level]="5"
+  [margin]="{ top: 'medium', bottom: 'medium' }"
+></dxc-heading>
+
+<iframe
+  src="https://codesandbox.io/embed/chipwithicons-g5c7p?fontsize=14&hidenavigation=1&theme=dark"
+  style="
+    width: 100%;
+    height: 500px;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+  "
+  title="ChipWithIcons"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>

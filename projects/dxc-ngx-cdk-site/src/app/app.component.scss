@@ -22,7 +22,7 @@ header {
 .body-container {
   display: flex;
   flex-direction: column;
-  background: white; 
+  background: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -43,12 +43,12 @@ code {
   }
 }
 
-.headerContent{
+.headerContent {
   display: flex;
   align-items: center;
 }
 
-.selectContainer{
+.selectContainer {
   width: 120px;
 }
 
@@ -59,32 +59,12 @@ code {
   font-size: 14px;
   letter-spacing: 1px;
   &.active-route {
-     color:  #6F2C91;
+    color: #6f2c91;
   }
 }
 
 .logo-32 {
- width: 32px;
- height: 32px;
- vertical-align: top;
-}
-
-.container-content {
-  background: white;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  border: 1px #cccccc;
-  display: flex;
-  min-height: calc(100vh - 64px - 119px);
-}
-
-.styled-container {
-  width: 100%;
-}
-
-.section {
-  padding-bottom: 60px;
-  padding-top: 30px;
+  width: 32px;
+  height: 32px;
+  vertical-align: top;
 }

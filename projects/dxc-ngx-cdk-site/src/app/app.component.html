@@ -110,7 +110,11 @@
       </ul>
     </div>
   </dxc-header>
-  <dxc-application-layout-sidenav padding="medium" *ngIf="hasSideNav | async">
+  <dxc-application-layout-sidenav
+    [displayArrow]="false"
+    padding="medium"
+    *ngIf="hasSideNav | async"
+  >
     <div class="sidenavContent" style="text-align: left; height: 100%">
       <components-sidenav-menu></components-sidenav-menu>
     </div>

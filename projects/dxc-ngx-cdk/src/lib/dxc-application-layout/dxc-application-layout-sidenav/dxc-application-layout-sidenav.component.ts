@@ -51,7 +51,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   constructor(
     private utils: CssUtils,
     private sidenavService: SidenavService
-  ) {}
+  ) { }
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -113,8 +113,8 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
       this.isShown !== undefined
         ? this.isShown
         : this.innerWidth <= responsiveSizes.tablet
-        ? false
-        : true;
+          ? false
+          : true;
     this.sidenavService.showMenu(this.isShown);
   }
 
@@ -132,11 +132,11 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   getDynamicStyle(inputs) {
     return css`
       z-index: ${(inputs.mode === "overlay" && this.displayArrow) ||
-      inputs.isResponsive
+        inputs.isResponsive
         ? "400"
         : "auto"};
       position: ${(inputs.mode === "overlay" && this.displayArrow) ||
-      inputs.isResponsive
+        inputs.isResponsive
         ? "absolute"
         : "relative"};
       height: ${inputs.mode === "overlay" || inputs.isResponsive ? "100%" : ""};
@@ -148,30 +148,31 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
         .sidenavMenu {
           ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
           width: ${inputs.isShown
-            ? "calc(300px" +
-              this.utils.getPaddingOrMargin(null, inputs.padding) +
-              ")"
-            : "0px"};
+        ? "calc(300px" +
+        this.utils.getPaddingOrMargin(null, inputs.padding) +
+        ")"
+        : "0px"};
           overflow-y: auto;
+          overflow-x: hidden;
           transform: ${inputs.isShown
-            ? "translateX(0)"
-            : !inputs.isShown
-            ? "translateX(-100%) !important"
-            : ""};
+        ? "translateX(0)"
+        : !inputs.isShown
+          ? "translateX(-100%) !important"
+          : ""};
           opacity: ${inputs.isShown ? "1" : "0"};
           visibility: ${inputs.isShown ? "visible" : "hidden"};
           transition: ${this.firstClick
-            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out, padding 0.4s ease-in-out;"
-            : "width 0.4s ease-in-out"};
+        ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out, padding 0.4s ease-in-out;"
+        : "width 0.4s ease-in-out"};
           &::-webkit-scrollbar {
-            width: 3px;
+            width: 2px;
           }
           &::-webkit-scrollbar-track {
             background-color: #d9d9d9;
             border-radius: 3px;
           }
           &::-webkit-scrollbar-thumb {
-            background-color: #666666;
+            background-color: #66666626;
             border-radius: 3px;
           }
         }
@@ -189,12 +190,12 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           left: ${this.isShown ? "calc(300px - 21px)" : "calc(0px - 21px)"};
           top: calc(50% - 21px);
           transition: ${this.firstClick
-            ? "transform 0.4s ease-in-out, left 0.4s ease-in-out;"
-            : ""};
+        ? "transform 0.4s ease-in-out, left 0.4s ease-in-out;"
+        : ""};
           cursor: pointer;
           z-index: ${inputs.mode === "overlay" || this.isResponsive
-            ? "401"
-            : "auto"};
+        ? "401"
+        : "auto"};
           &:focus {
             outline: -webkit-focus-ring-color auto 1px;
             outline-color: var(--sidenav-focusColor);
@@ -206,11 +207,11 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
             align-items: center;
             margin-left: ${inputs.isShown ? "0px" : "10px"};
             transform: ${inputs.isShown
-              ? "rotate(-180deg)"
-              : "rotate(0deg) !important"};
+        ? "rotate(-180deg)"
+        : "rotate(0deg) !important"};
             transition: ${this.firstClick
-              ? "margin 0.4s ease-in, transform 0.4s ease-in-out; "
-              : ""};
+        ? "margin 0.4s ease-in, transform 0.4s ease-in-out; "
+        : ""};
             fill: var(--sidenav-arrowColor);
           }
         }

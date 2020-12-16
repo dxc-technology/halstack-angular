@@ -1,4 +1,4 @@
-<dxc-application-layout>
+<dxc-application-layout theme>
   <dxc-header [underlined]="true">
     <div id="unresponsive" class="headerContent">
       <div class="selectContainer">
@@ -72,7 +72,7 @@
             >Design Guidelines</a
           >
         </li>
-        <li style="width: 100px;">
+        <li style="width: 100px">
           <dxc-select
             (onChange)="selectVersion($event)"
             [options]="versions"
@@ -116,23 +116,16 @@
     </div>
   </dxc-application-layout-sidenav>
   <dxc-application-layout-main>
-    <div theme class="body-container">
-      <div class="container-content">
-        <div class="styled-container">
-          <router-outlet #routerOutlet="outlet"></router-outlet>
-        </div>
-      </div>
-    </div>
-
-    <dxc-footer
-      logoSrc="assets/dxc_logo_wht.png"
-      [bottomLinks]="[
-        { text: 'Twitter', href: 'https://twitter.com/DXCTechnology' },
-        { text: 'Facebook', href: 'https://www.facebook.com/DXCTechnology/' },
-        { text: 'Instagram', href: 'https://www.instagram.com/dxctechnology/' }
-      ]"
-      [copyright]="'© DXC Technology 2019. All rights reserved.'"
-    >
-    </dxc-footer>
+    <router-outlet #routerOutlet="outlet"></router-outlet>
   </dxc-application-layout-main>
+  <dxc-footer
+    logoSrc="assets/dxc_logo_wht.png"
+    [bottomLinks]="[
+      { text: 'Twitter', href: 'https://twitter.com/DXCTechnology' },
+      { text: 'Facebook', href: 'https://www.facebook.com/DXCTechnology/' },
+      { text: 'Instagram', href: 'https://www.instagram.com/dxctechnology/' }
+    ]"
+    [copyright]="'© DXC Technology 2019. All rights reserved.'"
+  >
+  </dxc-footer>
 </dxc-application-layout>

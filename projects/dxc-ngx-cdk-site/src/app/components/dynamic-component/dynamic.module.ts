@@ -5,16 +5,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AccordionExampleComponent } from "../examples/accordion/accordion-example/accordion-example.component";
 import { AccordionTablePropertiesComponent } from "../examples/accordion/properties/accordion-table-properties/accordion-table-properties.component";
-import { AlertChildrenComponent } from "../examples/alert/alert-children/alert-children.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
-import { AlertInfoComponent } from "../examples/alert/alert-info/alert-info.component";
-import { AlertModalComponent } from "../examples/alert/alert-modal/alert-modal.component";
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
-import { AlertSizedComponent } from "../examples/alert/alert-sized/alert-sized.component";
-import { AlertSuccessComponent } from "../examples/alert/alert-success/alert-success.component";
-import { AlertWarningComponent } from "../examples/alert/alert-warning/alert-warning.component";
-import { AlertErrorComponent } from '../examples/alert/alert-error/alert-error.component';
-import { AlertClosableComponent } from '../examples/alert/alert-closable/alert-closable.component';
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
 import { ApplicationLayoutThemeComponent } from '../examples/layout/app-layout-theme/app-layout-theme.component';
 import { ApplicationLayoutExamplesComponent } from '../examples/layout/app-layout-examples/app-layout-examples.component';
@@ -43,8 +35,6 @@ import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/che
 import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/checkbox-simple.component";
 import { CheckboxSizedComponent } from "../examples/checkbox/checkbox-sized/checkbox-sized.component";
 import { CheckboxExampleComponent } from "../examples/checkbox/checkbox-example/checkbox-example.component";
-import { ChipBasicComponent } from '../examples/chip/chip-basic/chip-basic.component';
-import { ChipIconComponent } from '../examples/chip/chip-icon/chip-icon.component';
 import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example.component';
 import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
 import { ChipTablePropertiesComponent } from '../examples/chip/properties/box-table-properties/chip-table-properties.component';
@@ -95,15 +85,10 @@ import { FooterExampleComponent } from "../examples/footer/footer-example/footer
 import { FooterTablePropertiesComponent } from "../examples/footer/properties/footer-table-properties/footer-table-properties.component";
 import { FooterDefaultComponent } from "../examples/footer/footer-default/footer-default.component";
 import { FooterCustomContentComponent } from "../examples/footer/footer-custom-content/footer-custom-content.component";
-import { DropdownDefaultComponent } from "../examples/dropdown/dropdown-default/dropdown-default.component";
 import { DropdownTablePropertiesComponent } from "../examples/dropdown/properties/dropdown-table-properties.component";
 import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example/dropdown-example.component";
-import { DropdownIconsComponent } from "../examples/dropdown/dropdown-icons/dropdown-icons.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
 import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog-example.component";
-import { DialogDefaultComponent } from "../examples/dialog/dialog-default/dialog-default.component";
-import { DialogModalComponent } from "../examples/dialog/dialog-modal/dialog-modal.component";
-import { DialogCloseComponent } from "../examples/dialog/dialog-close/dialog-close.component";
 import { TableSimpleComponent } from "../examples/table/table-simple/table-simple.component";
 import { TableExampleComponent } from "../examples/table/table-example/table-example.component";
 import { TablePropertiesComponent } from "../examples/table/properties/table-properties/table-properties.component";
@@ -148,10 +133,7 @@ import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrol
 import { SwitchUncontrolledComponent } from '../examples/switch/switch-uncontrolled/switch-uncontrolled.component';
 import { TabsUncontrolledComponent } from '../examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
 import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch-default.component';
-import { LinkDefaultComponent } from '../examples/link/link-default/link-default.component';
 import { LinkExampleComponent } from '../examples/link/link-example/link-example.component';
-import { LinkUndercoratedComponent } from '../examples/link/link-undercorated/link-undercorated.component';
-import { LinkIconComponent } from '../examples/link/link-icon/link-icon.component';
 import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
 import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sidenav-example.component';
 import { SidenavTablePropertiesComponent } from '../examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component';
@@ -164,17 +146,13 @@ import { WizardDefaultComponent } from '../examples/wizard/wizard-default/wizard
 import { WizardUncontrolledComponent } from '../examples/wizard/wizard-uncontrolled/wizard-uncontrolled.component';
 import { WizardVerticalComponent } from '../examples/wizard/wizard-vertical/wizard-vertical.component';
 import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
-import { HeadingDefaultComponent } from '../examples/heading/heading-default/heading-default.component';
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
-import { HeadingWeightsComponent } from '../examples/heading/heading-weights/heading-weights.component';
 import { ResultsetTableSimpleComponent } from '../examples/resultset-table/resultset-table-simple/resultset-table-simple.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
-import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
-import { LinkActionComponent } from '../examples/link/link-action/link-action.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
@@ -204,7 +182,6 @@ import { TagImportComponent } from '../examples/tag/tag-import/tag-import.compon
 import { TextInputImportComponent } from '../examples/text-input/text-input-import/text-input-import.component';
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
-import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
 import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
@@ -287,16 +264,8 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
   entryComponents: [
     AccordionExampleComponent,
     AccordionTablePropertiesComponent,
-    AlertChildrenComponent,
     AlertExampleComponent,
-    AlertInfoComponent,
-    AlertModalComponent,
     AlertComponentPropertiesComponent,
-    AlertSizedComponent,
-    AlertSuccessComponent,
-    AlertWarningComponent,
-    AlertErrorComponent,
-    AlertClosableComponent,
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
     ApplicationLayoutThemeComponent,
@@ -328,8 +297,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     CheckboxSimpleComponent,
     CheckboxUncontrolledComponent,
     CheckboxSizedComponent,
-    ChipBasicComponent,
-    ChipIconComponent,
     ChipExampleComponent,
     ChipImportComponent,
     ChipTablePropertiesComponent,
@@ -392,13 +359,8 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TextInputTablePropertiesComponent,
     DropdownTablePropertiesComponent,
     DropdownExampleComponent,
-    DropdownDefaultComponent,
-    DropdownIconsComponent,
     DialogTablePropertiesComponent,
     DialogExampleComponent,
-    DialogDefaultComponent,
-    DialogModalComponent,
-    DialogCloseComponent,
     TableSimpleComponent,
     TableExampleComponent,
     TablePropertiesComponent,
@@ -429,10 +391,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     UploadExampleComponent,
     UploadDefaultComponent,
     PaginatorTablePropertiesComponent,
-    LinkDefaultComponent,
     LinkExampleComponent,
-    LinkUndercoratedComponent,
-    LinkIconComponent,
     LinkTablePropertiesComponent,
     SidenavExampleComponent,
     SidenavTablePropertiesComponent,
@@ -445,17 +404,13 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     WizardUncontrolledComponent,
     WizardVerticalComponent,
     HeadingTablePropertiesComponent,
-    HeadingDefaultComponent,
     HeadingExampleComponent,
-    HeadingWeightsComponent,
     ResultsetTableSimpleComponent,
     ResultsetTableExampleComponent,
     ResultsetTablePropertiesComponent,
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     ResultsetTableDirectivesComponent,
-    LinkDisabledComponent,
-    LinkActionComponent,
     ResultsetTableDirectivesComponent,
     AccordionImportComponent,
     AlertImportComponent,
@@ -486,7 +441,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TextInputImportComponent,
     UploadImportComponent,
     WizardImportComponent,
-    DropdownHoverComponent,
     ButtonThemeComponent,
     ButtonApiComponent,
     CheckboxApiComponent,

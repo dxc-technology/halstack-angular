@@ -5,7 +5,6 @@ import { AccordionComponent } from './accordion.component';
 import { DxcTableModule, DxcAccordionModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { AccordionTablePropertiesComponent } from 'src/app/components/examples/accordion/properties/accordion-table-properties/accordion-table-properties.component';
-import { ExampleViewerComponent } from 'src/app/components/example-viewer/example-viewer.component';
 import { ExampleViewerModule } from 'src/app/components/example-viewer/example-viewer.module';
 import { AccordionExampleModule } from '../../components/examples/accordion/accordion-example/accordion-example.module';
 import { AccordionImportComponent } from '../../components/examples/accordion/accordion-import/accordion-import.component';
@@ -45,9 +44,6 @@ import { AccordionThemeComponent } from '../../components/examples/accordion/acc
     AccordionImportComponent,
     AccordionApiComponent,
     AccordionThemeComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
   ]
 })
 export class AccordionModule { }

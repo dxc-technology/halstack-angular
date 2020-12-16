@@ -101,9 +101,6 @@ import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example
 import { DropdownIconsComponent } from "../examples/dropdown/dropdown-icons/dropdown-icons.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
 import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog-example.component";
-import { DialogDefaultComponent } from "../examples/dialog/dialog-default/dialog-default.component";
-import { DialogModalComponent } from "../examples/dialog/dialog-modal/dialog-modal.component";
-import { DialogCloseComponent } from "../examples/dialog/dialog-close/dialog-close.component";
 import { TableSimpleComponent } from "../examples/table/table-simple/table-simple.component";
 import { TableExampleComponent } from "../examples/table/table-example/table-example.component";
 import { TablePropertiesComponent } from "../examples/table/properties/table-properties/table-properties.component";
@@ -399,9 +396,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     DropdownIconsComponent,
     DialogTablePropertiesComponent,
     DialogExampleComponent,
-    DialogDefaultComponent,
-    DialogModalComponent,
-    DialogCloseComponent,
     TableSimpleComponent,
     TableExampleComponent,
     TablePropertiesComponent,

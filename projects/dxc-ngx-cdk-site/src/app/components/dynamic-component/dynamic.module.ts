@@ -89,7 +89,6 @@ import { DropdownTablePropertiesComponent } from "../examples/dropdown/propertie
 import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example/dropdown-example.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
 import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog-example.component";
-import { TableSimpleComponent } from "../examples/table/table-simple/table-simple.component";
 import { TableExampleComponent } from "../examples/table/table-example/table-example.component";
 import { TablePropertiesComponent } from "../examples/table/properties/table-properties/table-properties.component";
 import { TagTablePropertiesComponent } from "../examples/tag/properties/tag-table-properties/tag-table-properties.component";
@@ -360,7 +359,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     DropdownExampleComponent,
     DialogTablePropertiesComponent,
     DialogExampleComponent,
-    TableSimpleComponent,
     TableExampleComponent,
     TablePropertiesComponent,
     TabbedSectionDefaultComponent,

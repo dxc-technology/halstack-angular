@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
-import { TableSimpleComponent } from '../../components/examples/table/table-simple/table-simple.component';
 import { TableExampleComponent } from '../../components/examples/table/table-example/table-example.component';
 import { TablePropertiesComponent } from '../../components/examples/table/properties/table-properties/table-properties.component';
 import { TableImportComponent } from '../../components/examples/table/table-import/table-import.component';
@@ -21,7 +18,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   declarations: [
     TableComponent,
     TableExampleComponent,
-    TableSimpleComponent,
     TablePropertiesComponent,
     TableImportComponent,
     TableApiComponent,
@@ -32,7 +28,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
     ComponentsSidenavModule,
@@ -43,14 +38,10 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   exports: [
     TableComponent,
     TableExampleComponent,
-    TableSimpleComponent,
     TablePropertiesComponent,
     TableImportComponent,
     TableApiComponent,
     TableThemeComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
   ]
 })
 export class TableModule { }

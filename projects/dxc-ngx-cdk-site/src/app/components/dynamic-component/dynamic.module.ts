@@ -5,11 +5,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AccordionExampleComponent } from "../examples/accordion/accordion-example/accordion-example.component";
 import { AccordionTablePropertiesComponent } from "../examples/accordion/properties/accordion-table-properties/accordion-table-properties.component";
-import { AccordionDefaultComponent } from "../examples/accordion/accordion-default/accordion-default.component";
-import { AccordionDisabledComponent } from "../examples/accordion/accordion-disabled/accordion-disabled.component";
-import { AccordionAssistiveComponent } from "../examples/accordion/accordion-assistive/accordion-assistive.component";
-import { AccordionIconComponent } from "../examples/accordion/accordion-icon/accordion-icon.component";
-import { AccordionControlledComponent } from '../examples/accordion/accordion-controlled/accordion-controlled.component';
 import { AlertChildrenComponent } from "../examples/alert/alert-children/alert-children.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
 import { AlertInfoComponent } from "../examples/alert/alert-info/alert-info.component";
@@ -295,11 +290,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
   entryComponents: [
     AccordionExampleComponent,
     AccordionTablePropertiesComponent,
-    AccordionDefaultComponent,
-    AccordionDisabledComponent,
-    AccordionControlledComponent,
-    AccordionAssistiveComponent,
-    AccordionIconComponent,
     AlertChildrenComponent,
     AlertExampleComponent,
     AlertInfoComponent,

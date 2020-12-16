@@ -95,10 +95,8 @@ import { FooterExampleComponent } from "../examples/footer/footer-example/footer
 import { FooterTablePropertiesComponent } from "../examples/footer/properties/footer-table-properties/footer-table-properties.component";
 import { FooterDefaultComponent } from "../examples/footer/footer-default/footer-default.component";
 import { FooterCustomContentComponent } from "../examples/footer/footer-custom-content/footer-custom-content.component";
-import { DropdownDefaultComponent } from "../examples/dropdown/dropdown-default/dropdown-default.component";
 import { DropdownTablePropertiesComponent } from "../examples/dropdown/properties/dropdown-table-properties.component";
 import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example/dropdown-example.component";
-import { DropdownIconsComponent } from "../examples/dropdown/dropdown-icons/dropdown-icons.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
 import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog-example.component";
 import { TableSimpleComponent } from "../examples/table/table-simple/table-simple.component";
@@ -204,7 +202,6 @@ import { TagImportComponent } from '../examples/tag/tag-import/tag-import.compon
 import { TextInputImportComponent } from '../examples/text-input/text-input-import/text-input-import.component';
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
-import { DropdownHoverComponent } from '../examples/dropdown/dropdown-hover/dropdown-hover.component';
 import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
@@ -392,8 +389,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TextInputTablePropertiesComponent,
     DropdownTablePropertiesComponent,
     DropdownExampleComponent,
-    DropdownDefaultComponent,
-    DropdownIconsComponent,
     DialogTablePropertiesComponent,
     DialogExampleComponent,
     TableSimpleComponent,
@@ -486,7 +481,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TextInputImportComponent,
     UploadImportComponent,
     WizardImportComponent,
-    DropdownHoverComponent,
     ButtonThemeComponent,
     ButtonApiComponent,
     CheckboxApiComponent,

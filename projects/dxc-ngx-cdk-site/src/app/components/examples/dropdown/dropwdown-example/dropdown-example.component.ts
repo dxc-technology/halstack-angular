@@ -1,70 +1,13 @@
-import { Component, OnInit, Inject, ChangeDetectorRef } from "@angular/core";
-import { Example } from "src/app/model/example";
-import { ExampleService } from "src/app/service/example.service";
-import {DropdownDefaultComponent} from '../dropdown-default/dropdown-default.component';
-import {DropdownIconsComponent} from '../dropdown-icons/dropdown-icons.component';
-import { DropdownHoverComponent } from '../dropdown-hover/dropdown-hover.component';
+import { Component, OnInit } from "@angular/core";
+
 @Component({
   selector: "app-dropdown-example",
   templateUrl: "./dropdown-example.component.html",
   styleUrls: ["./dropdown-example.component.scss"]
 })
 export class DropdownExampleComponent implements OnInit {
-  examples: Array<Example>;
+  constructor() {}
 
-  constructor(
-    private cdRef: ChangeDetectorRef,
-    @Inject("ExampleService") private exampleService: ExampleService
-  ) {
-    this.examples = new Array();
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.createExamples();
-  }
-
-  ngAfterViewChecked() {
-    this.cdRef.detectChanges();
-  }
-  createExamples() {
-    this.exampleService
-      .getCodeExample("dropdown/dropdown-default/dropdown-default.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Default dropdown",
-            component: DropdownDefaultComponent,
-            selector: "example1",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-      this.exampleService
-      .getCodeExample("dropdown/dropdown-hover/dropdown-hover.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Default Dropdown with expand on hover",
-            component: DropdownHoverComponent,
-            selector: "example2",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-
-      // Still fix for icons size is needed. Commented till then
-      this.exampleService
-      .getCodeExample("dropdown/dropdown-icons/dropdown-icons.component")
-      .subscribe(resp1 => {
-        this.examples.push(
-          this.exampleService.generateExample({
-            title: "Dropdown with icons",
-            component: DropdownIconsComponent,
-            selector: "example3",
-            examples: [resp1[0], resp1[1], resp1[2]]
-          })
-        );
-      });
-  }
 }

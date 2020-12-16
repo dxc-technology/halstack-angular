@@ -136,10 +136,7 @@ import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrol
 import { SwitchUncontrolledComponent } from '../examples/switch/switch-uncontrolled/switch-uncontrolled.component';
 import { TabsUncontrolledComponent } from '../examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
 import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch-default.component';
-import { LinkDefaultComponent } from '../examples/link/link-default/link-default.component';
 import { LinkExampleComponent } from '../examples/link/link-example/link-example.component';
-import { LinkUndercoratedComponent } from '../examples/link/link-undercorated/link-undercorated.component';
-import { LinkIconComponent } from '../examples/link/link-icon/link-icon.component';
 import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
 import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sidenav-example.component';
 import { SidenavTablePropertiesComponent } from '../examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component';
@@ -159,8 +156,6 @@ import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/p
 import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
-import { LinkDisabledComponent } from '../examples/link/link-disabled/link-disabled.component';
-import { LinkActionComponent } from '../examples/link/link-action/link-action.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
@@ -402,10 +397,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     UploadExampleComponent,
     UploadDefaultComponent,
     PaginatorTablePropertiesComponent,
-    LinkDefaultComponent,
     LinkExampleComponent,
-    LinkUndercoratedComponent,
-    LinkIconComponent,
     LinkTablePropertiesComponent,
     SidenavExampleComponent,
     SidenavTablePropertiesComponent,
@@ -425,8 +417,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     HeaderDirectivesComponent,
     HeaderExampleResponsiveComponent,
     ResultsetTableDirectivesComponent,
-    LinkDisabledComponent,
-    LinkActionComponent,
     ResultsetTableDirectivesComponent,
     AccordionImportComponent,
     AlertImportComponent,

@@ -12,14 +12,7 @@ import { AccordionIconComponent } from "../examples/accordion/accordion-icon/acc
 import { AccordionControlledComponent } from '../examples/accordion/accordion-controlled/accordion-controlled.component';
 import { AlertChildrenComponent } from "../examples/alert/alert-children/alert-children.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
-import { AlertInfoComponent } from "../examples/alert/alert-info/alert-info.component";
-import { AlertModalComponent } from "../examples/alert/alert-modal/alert-modal.component";
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
-import { AlertSizedComponent } from "../examples/alert/alert-sized/alert-sized.component";
-import { AlertSuccessComponent } from "../examples/alert/alert-success/alert-success.component";
-import { AlertWarningComponent } from "../examples/alert/alert-warning/alert-warning.component";
-import { AlertErrorComponent } from '../examples/alert/alert-error/alert-error.component';
-import { AlertClosableComponent } from '../examples/alert/alert-closable/alert-closable.component';
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
 import { ApplicationLayoutThemeComponent } from '../examples/layout/app-layout-theme/app-layout-theme.component';
 import { ApplicationLayoutExamplesComponent } from '../examples/layout/app-layout-examples/app-layout-examples.component';
@@ -300,16 +293,8 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     AccordionControlledComponent,
     AccordionAssistiveComponent,
     AccordionIconComponent,
-    AlertChildrenComponent,
     AlertExampleComponent,
-    AlertInfoComponent,
-    AlertModalComponent,
     AlertComponentPropertiesComponent,
-    AlertSizedComponent,
-    AlertSuccessComponent,
-    AlertWarningComponent,
-    AlertErrorComponent,
-    AlertClosableComponent,
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
     ApplicationLayoutThemeComponent,

@@ -12,6 +12,8 @@ import { HostListener, QueryList } from "@angular/core";
 import { SidenavService } from "./dxc-application-layout-sidenav/services/sidenav.service";
 import { DxcHeaderComponent } from "../dxc-header/dxc-header.component";
 import { DxcApplicationLayoutHeaderComponent } from "./dxc-application-layout-header/dxc-application-layout-header.component";
+import { DxcFooterComponent } from '../dxc-footer/dxc-footer.component';
+import { DxcApplicationLayoutFooterComponent } from './dxc-application-layout-footer/dxc-application-layout-footer.component';
 
 @Component({
   selector: "dxc-application-layout",
@@ -28,6 +30,9 @@ export class DxcApplicationLayoutComponent implements OnInit {
   customHeader;
   defaultHeader = false;
 
+  customFooter;
+  defaultFooter = false;
+
   defaultInputs = new BehaviorSubject<any>({
     innerWidth,
     isModePush: true,
@@ -39,11 +44,16 @@ export class DxcApplicationLayoutComponent implements OnInit {
   @ContentChildren(DxcApplicationLayoutHeaderComponent)
   dxcCustomHeader: QueryList<DxcApplicationLayoutHeaderComponent>;
 
+  @ContentChildren(DxcFooterComponent)
+  dxcFooter: QueryList<DxcFooterComponent>;
+
+  @ContentChildren(DxcApplicationLayoutFooterComponent)
+  dxcCustomFooter: QueryList<DxcApplicationLayoutFooterComponent>;
+
 
   constructor(
     private service: SidenavService,
-    private cdRef: ChangeDetectorRef
-  ) {
+    private cdRef: ChangeDetectorRef) {
     this.service.isMenuShown.subscribe((value) => {
       this.isMenuShown = value;
       this.updateCss();
@@ -76,10 +86,21 @@ export class DxcApplicationLayoutComponent implements OnInit {
     ) {
       this.defaultHeader = true;
     }
+
+    if (this.dxcFooter.length === 0 && this.dxcCustomFooter.length !== 0) {
+      this.customFooter = "customFooter";
+    } else if (this.dxcFooter.length === 1) {
+      this.customFooter = "customDxcFooter";
+    } else if (this.dxcFooter.length === 0 && this.dxcCustomFooter.length === 0) {
+      this.defaultFooter = true;
+    }
     this.cdRef.detectChanges();
   }
 
   updateCss() {
+    console.debug(`Modo push: ${this.isModePush}`);
+    console.debug(`Menu shown: ${this.isMenuShown}`);
+
     this.layoutStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       innerWidth: this.innerWidth,
@@ -124,6 +145,11 @@ export class DxcApplicationLayoutComponent implements OnInit {
         display: flex;
         position: relative;
         height: fit-content;
+
+        .main{
+          width: 100%;
+          padding-top: 68px;
+        }
       }
       dxc-application-layout-sidenav {
         .sidenavContainerClass {
@@ -138,14 +164,16 @@ export class DxcApplicationLayoutComponent implements OnInit {
         display: flex;
         justify-content: center;
         flex-direction: column;
-        transition: width 0.4s ease-in-out;
         .main {
           padding-top: 68px;
+
+          margin-left: ${(this.isMenuShown && this.isModePush ? "" : "-297px")};
         }
       }
       dxc-footer {
         width: 100%;
-        margin-top: auto;
+        margin-left: ${((this.isModePush && !this.isMenuShown) || !this.isModePush) ? "-300px" : ""};
+        transition: margin 0.4s ease-in-out;
       }
     `;
   }

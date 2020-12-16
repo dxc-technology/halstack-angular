@@ -110,9 +110,6 @@ import { ToggleGroupThemeComponent } from "../examples/toggleGroup/toggleGroup-t
 import { SelectSizedComponent } from "../examples/select/select-sized/select-sized.component";
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
-import { ProgressbarDeterminedComponent } from "../examples/progressbar/progressbar-determined/progressbar-determined.component";
-import { ProgressbarUndeterminedComponent } from "../examples/progressbar/progressbar-undetermined/progressbar-undetermined.component";
-import { ProgressbarOverlayComponent } from "../examples/progressbar/progressbar-overlay/progressbar-overlay.component";
 import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
 import { TabbedSectionDefaultComponent } from '../examples/tabbed-section/tabbed-section-default/tabbed-section-default.component';
 import { TabbedSectionExampleComponent } from '../examples/tabbed-section/tabbed-section-example/tabbed-section-example.component';
@@ -381,9 +378,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TagTablePropertiesComponent,
     ProgressbarTablePropertiesComponent,
     ProgressbarExampleComponent,
-    ProgressbarDeterminedComponent,
-    ProgressbarUndeterminedComponent,
-    ProgressbarOverlayComponent,
     ProgressbarThemeComponent,
     ProgressbarApiComponent,
     TabsTablePropertiesComponent,

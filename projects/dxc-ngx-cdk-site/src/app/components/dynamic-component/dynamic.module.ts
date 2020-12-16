@@ -66,12 +66,8 @@ import { SliderUnlimitedComponent } from "../examples/slider/slider-unlimited/sl
 import { SliderSizedComponent } from "../examples/slider/slider-sized/slider-sized.component";
 import { SliderInputComponent } from "../examples/slider/slider-input/slider-input.component";
 import { SliderContinuousComponent } from "../examples/slider/slider-continuous/slider-continuous.component";
-import { SpinnerDeterminedComponent } from "../examples/spinner/spinner-determined/spinner-determined.component";
 import { SpinnerExampleComponent } from "../examples/spinner/spinner-example/spinner-example.component";
-import { SpinnerSmallComponent } from "../examples/spinner/spinner-small/spinner-small.component";
 import { SpinnerTablePropertiesComponent } from "../examples/spinner/properties/spinner-table-properties/spinner-table-properties.component";
-import { SpinnerUndeterminedComponent } from "../examples/spinner/spinner-undetermined/spinner-undetermined.component";
-import { SpinnerOverlayComponent } from '../examples/spinner/spinner-overlay/spinner-overlay.component';
 import { SwitchExampleComponent } from "../examples/switch/switch-example/switch-example.component";
 import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-label.component";
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
@@ -340,12 +336,8 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     SliderInputComponent,
     SliderSizedComponent,
     SliderUnlimitedComponent,
-    SpinnerDeterminedComponent,
     SpinnerExampleComponent,
-    SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerUndeterminedComponent,
-    SpinnerOverlayComponent,
     SpinnerApiComponent,
     SpinnerThemeComponent,
     SwitchExampleComponent,

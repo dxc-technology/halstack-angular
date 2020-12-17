@@ -1,16 +1,12 @@
 import { NgModule } from "@angular/core";
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { DxcFooterModule, DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { FooterComponent } from './footer.component';
 import { FooterExampleComponent } from '../../components/examples/footer/footer-example/footer-example.component';
 import { FooterTablePropertiesComponent } from '../../components/examples/footer/properties/footer-table-properties/footer-table-properties.component';
-import { FooterDefaultComponent } from '../../components/examples/footer/footer-default/footer-default.component';
-import { FooterCustomContentComponent } from '../../components/examples/footer/footer-custom-content/footer-custom-content.component';
 import { FooterImportComponent } from '../../components/examples/footer/footer-import/footer-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
@@ -23,8 +19,6 @@ import { FooterThemeComponent } from '../../components/examples/footer/footer-th
         FooterComponent,
         FooterExampleComponent,
         FooterTablePropertiesComponent,
-        FooterDefaultComponent,
-        FooterCustomContentComponent,
         FooterImportComponent,
         FooterApiComponent,
         FooterThemeComponent
@@ -35,7 +29,6 @@ import { FooterThemeComponent } from '../../components/examples/footer/footer-th
       CommonModule,
       DxcFooterModule,
       TabbedSectionModule,
-      ExampleViewerModule,
       DxcTableModule,
       DxcTagModule,
       CodePlaygroundModule,
@@ -48,14 +41,9 @@ import { FooterThemeComponent } from '../../components/examples/footer/footer-th
         FooterComponent,
         FooterExampleComponent,
         FooterTablePropertiesComponent,
-        FooterDefaultComponent,
-        FooterCustomContentComponent,
         FooterImportComponent,
         FooterApiComponent,
         FooterThemeComponent
-    ],
-    entryComponents: [
-      ExampleViewerComponent
     ]
   })
   export class FooterModule {}

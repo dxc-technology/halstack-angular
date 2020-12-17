@@ -4,9 +4,7 @@ import { DxcHeaderModule, DxcTableModule, DxcButtonModule, DxcTagModule, DxcChip
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { HeaderComponent } from './header.component';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../../components/examples/header/properties/header-table-properties/header-table-properties.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
@@ -38,7 +36,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     DxcHeaderModule,
     DxcButtonModule,
     TabbedSectionModule,
-    ExampleViewerModule,
     DxcTableModule,
     DxcTagModule,
     ComponentsSidenavModule,
@@ -56,9 +53,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     HeaderImportComponent,
     HeaderApiComponent,
     HeaderThemeComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
   ]
 })
 export class HeaderModule { }

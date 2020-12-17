@@ -70,8 +70,6 @@ import { TextInputSizedComponent } from "../examples/text-input/text-input-sized
 import { TextInputPrefixSuffixComponent } from "../examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component";
 import { FooterExampleComponent } from "../examples/footer/footer-example/footer-example.component";
 import { FooterTablePropertiesComponent } from "../examples/footer/properties/footer-table-properties/footer-table-properties.component";
-import { FooterDefaultComponent } from "../examples/footer/footer-default/footer-default.component";
-import { FooterCustomContentComponent } from "../examples/footer/footer-custom-content/footer-custom-content.component";
 import { DropdownTablePropertiesComponent } from "../examples/dropdown/properties/dropdown-table-properties.component";
 import { DropdownExampleComponent } from "../examples/dropdown/dropwdown-example/dropdown-example.component";
 import { DialogTablePropertiesComponent } from "../examples/dialog/properties/dialog-table-properties.component";
@@ -276,8 +274,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     DateUncontrolledComponent,
     FooterExampleComponent,
     FooterTablePropertiesComponent,
-    FooterDefaultComponent,
-    FooterCustomContentComponent,
     OverviewInstallComponent,
     OverviewUseComponent,
     OverviewSupportComponent,

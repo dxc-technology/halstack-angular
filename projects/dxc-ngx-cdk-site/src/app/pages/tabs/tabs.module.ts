@@ -7,10 +7,7 @@ import { ExampleViewerModule } from "src/app/components/example-viewer/example-v
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
 import { TabsComponent } from "./tabs.component";
 import { TabsTablePropertiesComponent } from "src/app/components/examples/tabs/properties/tabs-table-properties.component";
-import { TabsDefaultComponent } from "../../components/examples/tabs/tabs-default/tabs-default.component";
 import { TabsExampleComponent } from "../../components/examples/tabs/tabs-example/tabs-example.component";
-import { TabsContentComponent } from "../../components/examples/tabs/tabs-content/tabs-content.component";
-import { TabsUncontrolledComponent } from '../../components/examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
 import { TabsImportComponent } from '../../components/examples/tabs/tabs-import/tabs-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
@@ -22,10 +19,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   declarations: [
     TabsComponent,
     TabsTablePropertiesComponent,
-    TabsDefaultComponent,
     TabsExampleComponent,
-    TabsContentComponent,
-    TabsUncontrolledComponent,
     TabsImportComponent,
     TabsApiComponent,
     TabsThemeComponent
@@ -47,9 +41,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   exports: [
     TabsComponent,
     TabsTablePropertiesComponent,
-    TabsDefaultComponent,
     TabsExampleComponent,
-    TabsContentComponent,
     TabsImportComponent,
     TabsApiComponent,
     TabsThemeComponent

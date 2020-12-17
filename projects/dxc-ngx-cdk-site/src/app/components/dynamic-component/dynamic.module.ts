@@ -84,10 +84,6 @@ import { DialogExampleComponent } from "../examples/dialog/dialog-example/dialog
 import { TableExampleComponent } from "../examples/table/table-example/table-example.component";
 import { TablePropertiesComponent } from "../examples/table/properties/table-properties/table-properties.component";
 import { TagTablePropertiesComponent } from "../examples/tag/properties/tag-table-properties/tag-table-properties.component";
-import { TagSizedComponent } from "../examples/tag/tag-sized/tag-sized.component";
-import { TagActionComponent } from "../examples/tag/tag-action/tag-action.component";
-import { TagLinkComponent } from "../examples/tag/tag-link/tag-link.component";
-import { TagDefaultComponent } from "../examples/tag/tag-default/tag-default.component";
 import { TagExampleComponent } from "../examples/tag/tag-example/tag-example.component";
 import { ToggleGroupApiComponent } from '../examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
 import { ToggleGroupTablePropertiesComponent } from "../examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component";
@@ -346,10 +342,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     TabbedSectionApiComponent,
     TabbedSectionThemeComponent,
     TagExampleComponent,
-    TagDefaultComponent,
-    TagLinkComponent,
-    TagActionComponent,
-    TagSizedComponent,
     TagTablePropertiesComponent,
     ProgressbarTablePropertiesComponent,
     ProgressbarExampleComponent,

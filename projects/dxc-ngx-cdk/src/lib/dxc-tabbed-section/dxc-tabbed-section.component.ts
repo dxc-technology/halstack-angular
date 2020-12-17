@@ -99,7 +99,7 @@ export class DxcTabbedSectionComponent implements OnInit {
       #dxcTabbedSection .mat-tab-group {
         ${input.stickAtPx
         ? css`
-              z-index: 500;
+              z-index: 300;
               position: sticky;
               top: ${+input.stickAtPx}px;
             `

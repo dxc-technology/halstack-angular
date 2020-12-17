@@ -106,7 +106,6 @@ import { SelectSizedComponent } from "../examples/select/select-sized/select-siz
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
 import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
-import { TabbedSectionDefaultComponent } from '../examples/tabbed-section/tabbed-section-default/tabbed-section-default.component';
 import { TabbedSectionExampleComponent } from '../examples/tabbed-section/tabbed-section-example/tabbed-section-example.component';
 import { TabbedSectionNotesComponent } from '../examples/tabbed-section/properties/tabbed-section-notes/tabbed-section-notes.component';
 import { TabsTablePropertiesComponent } from "../examples/tabs/properties/tabs-table-properties.component";
@@ -352,7 +351,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     DialogExampleComponent,
     TableExampleComponent,
     TablePropertiesComponent,
-    TabbedSectionDefaultComponent,
     TabbedSectionExampleComponent,
     TabbedSectionNotesComponent,
     TabbedSectionTablePropertiesComponent,

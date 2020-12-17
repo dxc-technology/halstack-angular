@@ -10,11 +10,7 @@ import { AlertComponentPropertiesComponent } from "../examples/alert/properties/
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
 import { ApplicationLayoutThemeComponent } from '../examples/layout/app-layout-theme/app-layout-theme.component';
 import { ApplicationLayoutExamplesComponent } from '../examples/layout/app-layout-examples/app-layout-examples.component';
-import { AutocompleteAsyncControlledComponent } from '../examples/autocomplete/autocomplete-asynchronous-controlled/autocomplete-asynchronous-controlled.component';
-import { AutocompleteAsyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-asynchronous-uncontrolled/autocomplete-asynchronous-uncontrolled.component';
 import { AutocompleteExampleComponent } from '../examples/autocomplete/autocomplete-example/autocomplete-example.component';
-import { AutocompleteSyncControlledComponent } from '../examples/autocomplete/autocomplete-synchronous-controlled/autocomplete-synchronous-controlled.component';
-import { AutocompleteSyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-synchronous-uncontrolled/autocomplete-synchronous-uncontrolled.component';
 import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { BoxExampleComponent } from "../examples/box/box-example/box-example.component";
@@ -244,11 +240,7 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
     ApplicationLayoutThemeComponent,
-    AutocompleteAsyncControlledComponent,
-    AutocompleteAsyncUncontrolledComponent,
     AutocompleteExampleComponent,
-    AutocompleteSyncControlledComponent,
-    AutocompleteSyncUncontrolledComponent,
     AutocompleteUsageComponent,
     BoxExampleComponent,
     BoxTablePropertiesComponent,

@@ -24,10 +24,7 @@ import { ButtonTablePropertiesComponent } from "../examples/button/properties/bu
 import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
 import { BoxExampleComponent } from "../examples/box/box-example/box-example.component";
 import { BoxTablePropertiesComponent } from "../examples/box/properties/box-table-properties/box-table-properties.component";
-import { CardActionComponent } from "../examples/card/card-action/card-action.component";
-import { CardDefaultComponent } from "../examples/card/card-default/card-default.component";
 import { CardExampleComponent } from "../examples/card/card-example/card-example.component";
-import { CardLinkedComponent } from "../examples/card/card-linked/card-linked.component";
 import { CardTablePropertiesComponent } from "../examples/card/properties/card-table-properties/card-table-properties.component";
 import { CheckboxLabelPositionComponent } from "../examples/checkbox/checkbox-label-position/checkbox-label-position.component";
 import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/checkbox-properties/checkbox-properties.component";
@@ -275,10 +272,7 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     ButtonFilledParentComponent,
     ButtonSizedComponent,
     ButtonTablePropertiesComponent,
-    CardActionComponent,
-    CardDefaultComponent,
     CardExampleComponent,
-    CardLinkedComponent,
     CardTablePropertiesComponent,
     CardApiComponent,
     CardThemeComponent,

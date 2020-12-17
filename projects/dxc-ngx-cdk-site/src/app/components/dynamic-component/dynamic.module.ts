@@ -17,10 +17,7 @@ import { BoxExampleComponent } from "../examples/box/box-example/box-example.com
 import { BoxTablePropertiesComponent } from "../examples/box/properties/box-table-properties/box-table-properties.component";
 import { CardExampleComponent } from "../examples/card/card-example/card-example.component";
 import { CardTablePropertiesComponent } from "../examples/card/properties/card-table-properties/card-table-properties.component";
-import { CheckboxLabelPositionComponent } from "../examples/checkbox/checkbox-label-position/checkbox-label-position.component";
 import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/checkbox-properties/checkbox-properties.component";
-import { CheckboxSimpleComponent } from "../examples/checkbox/checkbox-simple/checkbox-simple.component";
-import { CheckboxSizedComponent } from "../examples/checkbox/checkbox-sized/checkbox-sized.component";
 import { CheckboxExampleComponent } from "../examples/checkbox/checkbox-example/checkbox-example.component";
 import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example.component';
 import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
@@ -98,7 +95,6 @@ import { UploadExampleComponent } from "../examples/upload/upload-example/upload
 import { PaginatorTablePropertiesComponent } from '../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component';
 import { TextInputUncontrolledComponent } from '../examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
 import { SelectUncontrolledComponent } from '../examples/select/select-uncontrolled/select-uncontrolled.component';
-import { CheckboxUncontrolledComponent } from '../examples/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component';
 import { RadioUncontrolledComponent } from '../examples/radio/radio-uncontrolled/radio-uncontrolled.component';
 import { DateUncontrolledComponent } from '../examples/date/date-uncontrolled/date-uncontrolled.component';
 import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrolled/slider-uncontrolled.component';
@@ -245,11 +241,7 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     CardApiComponent,
     CardThemeComponent,
     CheckboxExampleComponent,
-    CheckboxLabelPositionComponent,
     CheckboxPropertiesComponent,
-    CheckboxSimpleComponent,
-    CheckboxUncontrolledComponent,
-    CheckboxSizedComponent,
     ChipExampleComponent,
     ChipImportComponent,
     ChipTablePropertiesComponent,

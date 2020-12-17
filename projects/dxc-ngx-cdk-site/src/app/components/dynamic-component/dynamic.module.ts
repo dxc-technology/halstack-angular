@@ -110,9 +110,6 @@ import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sid
 import { SidenavTablePropertiesComponent } from '../examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component';
 import { WizardExampleComponent } from '../examples/wizard/wizard-example/wizard-example.component';
 import { WizardTablePropertiesComponent } from '../examples/wizard/properties/wizard-table-properties/wizard-table-properties.component';
-import { WizardDefaultComponent } from '../examples/wizard/wizard-default/wizard-default.component';
-import { WizardUncontrolledComponent } from '../examples/wizard/wizard-uncontrolled/wizard-uncontrolled.component';
-import { WizardVerticalComponent } from '../examples/wizard/wizard-vertical/wizard-vertical.component';
 import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
 import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
 import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
@@ -337,9 +334,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     SidenavTablePropertiesComponent,
     WizardExampleComponent,
     WizardTablePropertiesComponent,
-    WizardDefaultComponent,
-    WizardUncontrolledComponent,
-    WizardVerticalComponent,
     HeadingTablePropertiesComponent,
     HeadingExampleComponent,
     ResultsetTableExampleComponent,

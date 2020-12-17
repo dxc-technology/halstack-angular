@@ -22,7 +22,6 @@ import { ButtonExampleComponent } from "../examples/button/button-example/button
 import { ButtonSizedComponent } from "../examples/button/button-sized/button-sized.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
-import { BoxBasicComponent } from "../examples/box/box-basic/box-basic.component";
 import { BoxExampleComponent } from "../examples/box/box-example/box-example.component";
 import { BoxTablePropertiesComponent } from "../examples/box/properties/box-table-properties/box-table-properties.component";
 import { CardActionComponent } from "../examples/card/card-action/card-action.component";
@@ -268,7 +267,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     AutocompleteSyncControlledComponent,
     AutocompleteSyncUncontrolledComponent,
     AutocompleteUsageComponent,
-    BoxBasicComponent,
     BoxExampleComponent,
     BoxTablePropertiesComponent,
     ButtonModesComponent,

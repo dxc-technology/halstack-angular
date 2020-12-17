@@ -40,16 +40,6 @@ The API properties are the following:
         <th>Description</th>
     </tr>
     <tr>
-        <td>@Input<br>mode: 'overlay' | 'push'</td>
-        <td>
-        <code>'push'</code>
-        </td>
-        <td>
-        Default action over the content of the page, overlay the content or push
-        to the right.
-        </td>
-    </tr>
-    <tr>
         <td>@Input<br>padding: string | object</td>
         <td></td>
         <td>
@@ -58,23 +48,6 @@ The API properties are the following:
         object with 'top', 'bottom', 'left' and 'right' properties in order to
         specify different padding sizes.
         </td>
-    </tr>
-    <tr>
-        <td>@Input<br>arrowPosition: 'absolute' | 'fixed'</td>
-        <td><code>'absolute'</code></td>
-        <td>Position of the arrow.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>arrowDistance: string</td>
-        <td></td>
-        <td>Distance from the top of the arrow.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>displayArrow: boolean</td>
-        <td>
-        <code>true</code>
-        </td>
-        <td>If false, the arrow button is hidden.</td>
     </tr>
 </table>
 

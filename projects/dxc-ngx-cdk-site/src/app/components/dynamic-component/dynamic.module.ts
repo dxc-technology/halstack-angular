@@ -90,9 +90,7 @@ import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-sectio
 import { TabbedSectionExampleComponent } from '../examples/tabbed-section/tabbed-section-example/tabbed-section-example.component';
 import { TabbedSectionNotesComponent } from '../examples/tabbed-section/properties/tabbed-section-notes/tabbed-section-notes.component';
 import { TabsTablePropertiesComponent } from "../examples/tabs/properties/tabs-table-properties.component";
-import { TabsDefaultComponent } from "../examples/tabs/tabs-default/tabs-default.component";
 import { TabsExampleComponent } from "../examples/tabs/tabs-example/tabs-example.component";
-import { TabsContentComponent } from "../examples/tabs/tabs-content/tabs-content.component";
 import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
@@ -105,7 +103,6 @@ import { RadioUncontrolledComponent } from '../examples/radio/radio-uncontrolled
 import { DateUncontrolledComponent } from '../examples/date/date-uncontrolled/date-uncontrolled.component';
 import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrolled/slider-uncontrolled.component';
 import { SwitchUncontrolledComponent } from '../examples/switch/switch-uncontrolled/switch-uncontrolled.component';
-import { TabsUncontrolledComponent } from '../examples/tabs/tabs-uncontrolled/tabs-uncontrolled.component';
 import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch-default.component';
 import { LinkExampleComponent } from '../examples/link/link-example/link-example.component';
 import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
@@ -328,10 +325,7 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ProgressbarThemeComponent,
     ProgressbarApiComponent,
     TabsTablePropertiesComponent,
-    TabsDefaultComponent,
     TabsExampleComponent,
-    TabsContentComponent,
-    TabsUncontrolledComponent,
     HeaderExampleComponent,
     HeaderTablePropertiesComponent,
     UploadTablePropertiesComponent,

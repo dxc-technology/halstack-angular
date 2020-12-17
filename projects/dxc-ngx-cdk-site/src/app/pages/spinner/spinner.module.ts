@@ -1,16 +1,10 @@
 import { NgModule } from "@angular/core";
 import { DxcSpinnerModule, DxcTableModule,DxcButtonModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { SpinnerComponent } from './spinner.component';
-import { SpinnerDeterminedComponent } from '../../components/examples/spinner/spinner-determined/spinner-determined.component';
 import { SpinnerExampleComponent } from '../../components/examples/spinner/spinner-example/spinner-example.component';
-import { SpinnerSmallComponent } from '../../components/examples/spinner/spinner-small/spinner-small.component';
 import { SpinnerTablePropertiesComponent } from '../../components/examples/spinner/properties/spinner-table-properties/spinner-table-properties.component';
-import { SpinnerUndeterminedComponent } from '../../components/examples/spinner/spinner-undetermined/spinner-undetermined.component';
-import { SpinnerOverlayComponent } from '../../components/examples/spinner/spinner-overlay/spinner-overlay.component';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { SpinnerImportComponent } from '../../components/examples/spinner/spinner-import/spinner-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
@@ -22,12 +16,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 @NgModule({
   declarations: [
     SpinnerComponent,
-    SpinnerDeterminedComponent,
     SpinnerExampleComponent,
-    SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerUndeterminedComponent,
-    SpinnerOverlayComponent,
     SpinnerImportComponent,
     SpinnerApiComponent,
     SpinnerThemeComponent
@@ -35,7 +25,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
   imports: [
     BrowserModule,
     TabbedSectionModule,
-    ExampleViewerModule,
     DxcSpinnerModule,
     DxcTableModule,
     DxcButtonModule,
@@ -47,18 +36,11 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     DxcHeadingModule
   ],
   exports: [
-    SpinnerDeterminedComponent,
     SpinnerExampleComponent,
-    SpinnerSmallComponent,
     SpinnerTablePropertiesComponent,
-    SpinnerUndeterminedComponent,
-    SpinnerOverlayComponent,
     SpinnerImportComponent,
     SpinnerApiComponent,
     SpinnerThemeComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
   ]
 })
 export class SpinnerModule {}

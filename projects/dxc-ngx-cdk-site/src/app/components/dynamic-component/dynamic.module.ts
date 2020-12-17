@@ -16,12 +16,7 @@ import { AutocompleteExampleComponent } from '../examples/autocomplete/autocompl
 import { AutocompleteSyncControlledComponent } from '../examples/autocomplete/autocomplete-synchronous-controlled/autocomplete-synchronous-controlled.component';
 import { AutocompleteSyncUncontrolledComponent } from '../examples/autocomplete/autocomplete-synchronous-uncontrolled/autocomplete-synchronous-uncontrolled.component';
 import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
-import { ButtonModesComponent } from "../examples/button/button-modes/button-modes.component";
-import { ButtonWithIconComponent } from "../examples/button/button-with-icon/button-with-icon.component";
-import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
-import { ButtonSizedComponent } from "../examples/button/button-sized/button-sized.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
-import { ButtonFilledParentComponent } from "../examples/button/button-filled-parent/button-filled-parent.component";
 import { BoxExampleComponent } from "../examples/box/box-example/box-example.component";
 import { BoxTablePropertiesComponent } from "../examples/box/properties/box-table-properties/box-table-properties.component";
 import { CardExampleComponent } from "../examples/card/card-example/card-example.component";
@@ -237,6 +232,7 @@ import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.com
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
 import { TextInputMaskedComponent } from '../examples/text-input/text-input-masked/text-input-masked.component';
+import { ButtonExampleComponent } from '../examples/button/button-example/button-example.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -258,12 +254,8 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     AutocompleteUsageComponent,
     BoxExampleComponent,
     BoxTablePropertiesComponent,
-    ButtonModesComponent,
-    ButtonWithIconComponent,
-    ButtonExampleComponent,
-    ButtonFilledParentComponent,
-    ButtonSizedComponent,
     ButtonTablePropertiesComponent,
+    ButtonExampleComponent,
     CardExampleComponent,
     CardTablePropertiesComponent,
     CardApiComponent,

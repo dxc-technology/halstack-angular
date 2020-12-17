@@ -23,9 +23,7 @@ import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example
 import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
 import { ChipTablePropertiesComponent } from '../examples/chip/properties/box-table-properties/chip-table-properties.component';
 import { DatePropertiesComponent } from "../examples/date/properties/date-properties/date-properties.component";
-import { DateSizedComponent } from "../examples/date/date-sized/date-sized.component";
 import { DateExampleComponent } from "../examples/date/date-example/date-example.component";
-import { DateSimpleComponent } from "../examples/date/date-simple/date-simple.component";
 import { OverviewInstallComponent } from "../overview/overview-install/overview-install.component";
 import { OverviewUseComponent } from "../overview/overview-use/overview-use.component";
 import { OverviewSupportComponent } from "../overview/overview-support/overview-support.component";
@@ -96,7 +94,6 @@ import { PaginatorTablePropertiesComponent } from '../examples/paginator/propert
 import { TextInputUncontrolledComponent } from '../examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
 import { SelectUncontrolledComponent } from '../examples/select/select-uncontrolled/select-uncontrolled.component';
 import { RadioUncontrolledComponent } from '../examples/radio/radio-uncontrolled/radio-uncontrolled.component';
-import { DateUncontrolledComponent } from '../examples/date/date-uncontrolled/date-uncontrolled.component';
 import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrolled/slider-uncontrolled.component';
 import { SwitchUncontrolledComponent } from '../examples/switch/switch-uncontrolled/switch-uncontrolled.component';
 import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch-default.component';
@@ -247,9 +244,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ChipTablePropertiesComponent,
     DatePropertiesComponent,
     DateExampleComponent,
-    DateSizedComponent,
-    DateSimpleComponent,
-    DateUncontrolledComponent,
     FooterExampleComponent,
     FooterTablePropertiesComponent,
     OverviewInstallComponent,

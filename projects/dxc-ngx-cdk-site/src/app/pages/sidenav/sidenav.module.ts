@@ -5,13 +5,8 @@ import { SidenavComponent } from './sidenav.component';
 import { DxcSideNavModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 
 import { SidenavTablePropertiesComponent } from '../../components/examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component';
-import { SidenavDefaultComponent } from '../../components/examples/sidenav/sidenav-default/sidenav-default.component';
-import { SidenavContentComponent } from '../../components/examples/sidenav/sidenav-content/sidenav-content.component';
-import { SidenavNoArrowComponent } from '../../components/examples/sidenav/sidenav-no-arrow/sidenav-no-arrow.component';
 import { SidenavExampleComponent } from '../../components/examples/sidenav/sidenav-example/sidenav-example.component';
 import { SidenavImportComponent } from '../../components/examples/sidenav/sidenav-import/sidenav-import.component';
 
@@ -26,9 +21,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     SidenavComponent,
     SidenavExampleComponent,
     SidenavTablePropertiesComponent,
-    SidenavDefaultComponent,
-    SidenavContentComponent,
-    SidenavNoArrowComponent,
     SidenavImportComponent,
     SidenavApiComponent,
     SidenavThemeComponent
@@ -38,7 +30,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     CommonModule,
     DxcSideNavModule,
     TabbedSectionModule,
-    ExampleViewerModule,
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,
@@ -51,15 +42,9 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     SidenavComponent,
     SidenavExampleComponent,
     SidenavTablePropertiesComponent,
-    SidenavDefaultComponent,
-    SidenavContentComponent,
-    SidenavNoArrowComponent,
     SidenavImportComponent,
     SidenavApiComponent,
     SidenavThemeComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
   ]
 })
 export class SidenavModule { }

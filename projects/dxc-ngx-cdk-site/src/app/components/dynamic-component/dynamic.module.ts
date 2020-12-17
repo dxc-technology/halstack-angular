@@ -127,9 +127,6 @@ import { LinkExampleComponent } from '../examples/link/link-example/link-example
 import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
 import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sidenav-example.component';
 import { SidenavTablePropertiesComponent } from '../examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component';
-import { SidenavDefaultComponent } from '../examples/sidenav/sidenav-default/sidenav-default.component';
-import { SidenavContentComponent } from '../examples/sidenav/sidenav-content/sidenav-content.component';
-import { SidenavNoArrowComponent } from '../examples/sidenav/sidenav-no-arrow/sidenav-no-arrow.component';
 import { WizardExampleComponent } from '../examples/wizard/wizard-example/wizard-example.component';
 import { WizardTablePropertiesComponent } from '../examples/wizard/properties/wizard-table-properties/wizard-table-properties.component';
 import { WizardDefaultComponent } from '../examples/wizard/wizard-default/wizard-default.component';
@@ -374,9 +371,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     LinkTablePropertiesComponent,
     SidenavExampleComponent,
     SidenavTablePropertiesComponent,
-    SidenavDefaultComponent,
-    SidenavContentComponent,
-    SidenavNoArrowComponent,
     WizardExampleComponent,
     WizardTablePropertiesComponent,
     WizardDefaultComponent,

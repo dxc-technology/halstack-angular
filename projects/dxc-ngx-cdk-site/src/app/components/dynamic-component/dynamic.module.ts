@@ -121,7 +121,6 @@ import { TabsContentComponent } from "../examples/tabs/tabs-content/tabs-content
 import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
-import { UploadDefaultComponent } from "../examples/upload/upload-default/upload-default.component";
 import { UploadExampleComponent } from "../examples/upload/upload-example/upload-example.component";
 import { PaginatorTablePropertiesComponent } from '../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component';
 import { TextInputUncontrolledComponent } from '../examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
@@ -388,7 +387,6 @@ import { TextInputMaskedComponent } from '../examples/text-input/text-input-mask
     HeaderTablePropertiesComponent,
     UploadTablePropertiesComponent,
     UploadExampleComponent,
-    UploadDefaultComponent,
     PaginatorTablePropertiesComponent,
     LinkExampleComponent,
     LinkTablePropertiesComponent,

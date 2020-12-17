@@ -1,7 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Example } from 'src/app/model/example';
-import { ExampleService } from 'src/app/service/example.service';
-import {UploadDefaultComponent} from '../upload-default/upload-default.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-upload-example',
@@ -9,31 +6,8 @@ import {UploadDefaultComponent} from '../upload-default/upload-default.component
   styleUrls: ['./upload-example.component.scss']
 })
 export class UploadExampleComponent implements OnInit {
+  constructor() {}
 
-  examples: Array<Example>;
+  ngOnInit() {}
 
-  constructor(@Inject("ExampleService") private exampleService: ExampleService) { 
-    this.examples =  new Array();
-  }
-
-  ngOnInit() {
-    this.createExamples();
-  }
-
-  private createExamples() {
-    this.exampleService
-      .getCodeExample("upload/upload-default/upload-default.component").subscribe(resp1 => {
-        this.examples.push(this.exampleService.generateExample({
-          title: 'Default Upload',
-          component: UploadDefaultComponent,
-          selector: "upload_example_1",
-          examples: [
-            resp1[0],
-            resp1[1],
-            resp1[2]
-          ]
-        }));
-      });
-
-  }
 }

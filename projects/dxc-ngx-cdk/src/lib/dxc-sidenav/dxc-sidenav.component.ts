@@ -12,7 +12,6 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-sidenav",
@@ -30,10 +29,13 @@ export class DxcSidenavComponent implements OnInit {
     padding: null,
   });
 
-  @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private utils: CssUtils,
+    private cdr: ChangeDetectorRef,
+    private elementRef: ElementRef
+  ) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -53,9 +55,7 @@ export class DxcSidenavComponent implements OnInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    if (this.sidenav) {
-      this.updateCss();
-    }
+    this.updateCss();
   }
 
   ngAfterViewInit() {
@@ -64,7 +64,7 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   updateCss() {
-    this.innerWidth = this.sidenav.nativeElement.clientWidth;
+    this.innerWidth = this.elementRef.nativeElement.clientWidth;
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       innerWidth: this.innerWidth,
@@ -73,30 +73,14 @@ export class DxcSidenavComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      .sidenavContainerClass {
-        display: flex;
-        position: relative;
-
-        dxc-sidenav-menu {
-          display: flex;
-          flex-direction: column;
-          background-color: var(--sidenav-backgroundColor);
-          width: ${inputs.innerWidth <= responsiveSizes.tablet
-            ? "60%"
-            : "300px"};
-          box-sizing: border-box;
-          ${this.utils.getPaddings(inputs.padding)}
-          z-index: auto;
-        }
-
-        dxc-sidenav-content {
-          box-sizing: border-box;
-          flex-grow: 1;
-          height: 100%;
-          ${this.utils.getPaddings(inputs.padding)}
-          width: calc(100%);
-        }
-      }
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      background-color: var(--sidenav-backgroundColor);
+      width: 300px;
+      box-sizing: border-box;
+      ${this.utils.getPaddings(inputs.padding)}
+      z-index: auto;
     `;
   }
 }

@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "title": "Default Link",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/defaultlink-pho3x?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DefaultLink"
+            }
+        },
+        {
+            "title": "Undecorated link with new window",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/undecoratedlink-wmcto?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "UndecoratedLink"
+            }
+        },
+        {
+            "title": "Disabled Link",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/disabledlink-hc0bc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DisabledLink"
+            }
+        },
+        {
+            "title": "Link with icon",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/linkwithicon-kn1xu?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "LinkWithIcon"
+            }
+        },
+        {
+            "title": "Link with action",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/linkwithaction-4mkj4?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "LinkWithAction"
+            }
+        }
+    ]
+}

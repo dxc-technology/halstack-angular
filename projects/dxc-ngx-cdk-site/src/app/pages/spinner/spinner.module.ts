@@ -12,6 +12,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-api/spinner-api.component';
 import { SpinnerThemeComponent } from '../../components/examples/spinner/spinner-theme/spinner-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     SpinnerExampleComponent,

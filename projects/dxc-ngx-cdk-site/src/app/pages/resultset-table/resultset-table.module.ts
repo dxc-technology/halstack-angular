@@ -13,6 +13,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { ResultsetTableApiComponent } from '../../components/examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ResultsetTableThemeComponent } from '../../components/examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ResultsetTableThemeComponent } from '../../components/examples/resultse
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     ResultsetTableComponent,

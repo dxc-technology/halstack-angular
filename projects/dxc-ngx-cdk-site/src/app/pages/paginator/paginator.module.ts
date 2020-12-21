@@ -13,6 +13,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { PaginatorApiComponent } from '../../components/examples/paginator/paginator-api/paginator-api.component';
 import { PaginatorThemeComponent } from '../../components/examples/paginator/paginator-theme/paginator-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     PaginatorComponent,

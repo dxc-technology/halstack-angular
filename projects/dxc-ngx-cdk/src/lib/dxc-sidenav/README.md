@@ -8,8 +8,7 @@ The DXC Sidenav Component is a side container of the page for navegation.
 
 ```html
 <dxc-sidenav padding="medium" displayArrow="true">
-  <dxc-sidenav-menu> Lorem </dxc-sidenav-menu>
-  <dxc-sidenav-content> Ipsum </dxc-sidenav-content>
+    Lorem Ipsum
 </dxc-sidenav>
 ```
 

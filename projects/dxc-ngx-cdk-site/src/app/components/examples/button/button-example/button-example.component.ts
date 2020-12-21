@@ -1,6 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ExampleService } from 'src/app/service/example.service';
-import { Example } from '../../../../model/example';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-button-example',

@@ -55,10 +55,6 @@ import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-lab
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
 import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
-import { TextInputDefaultComponent } from "../examples/text-input/text-input-default/text-input-default.component";
-import { TextInputFillParentComponent } from "../examples/text-input/text-input-fill-parent/text-input-fill-parent.component";
-import { TextInputSizedComponent } from "../examples/text-input/text-input-sized/text-input-sized.component";
-import { TextInputPrefixSuffixComponent } from "../examples/text-input/text-input-prefix-suffix/text-input-prefix-suffix.component";
 import { FooterExampleComponent } from "../examples/footer/footer-example/footer-example.component";
 import { FooterTablePropertiesComponent } from "../examples/footer/properties/footer-table-properties/footer-table-properties.component";
 import { DropdownTablePropertiesComponent } from "../examples/dropdown/properties/dropdown-table-properties.component";
@@ -91,7 +87,6 @@ import { HeaderTablePropertiesComponent } from '../examples/header/properties/he
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
 import { UploadExampleComponent } from "../examples/upload/upload-example/upload-example.component";
 import { PaginatorTablePropertiesComponent } from '../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component';
-import { TextInputUncontrolledComponent } from '../examples/text-input/text-input-uncontrolled/text-input-uncontrolled.component';
 import { SelectUncontrolledComponent } from '../examples/select/select-uncontrolled/select-uncontrolled.component';
 import { RadioUncontrolledComponent } from '../examples/radio/radio-uncontrolled/radio-uncontrolled.component';
 import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrolled/slider-uncontrolled.component';
@@ -212,7 +207,6 @@ import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-the
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
-import { TextInputMaskedComponent } from '../examples/text-input/text-input-masked/text-input-masked.component';
 import { ButtonExampleComponent } from '../examples/button/button-example/button-example.component';
 
 @NgModule({
@@ -284,11 +278,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     SwitchTablePropertiesComponent,
     SwitchUncontrolledComponent,
     TextInputExampleComponent,
-    TextInputDefaultComponent,
-    TextInputUncontrolledComponent,
-    TextInputFillParentComponent,
-    TextInputPrefixSuffixComponent,
-    TextInputSizedComponent,
     TextInputTablePropertiesComponent,
     DropdownTablePropertiesComponent,
     DropdownExampleComponent,
@@ -422,7 +411,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     UploadThemeComponent,
     ResultsetTableApiComponent,
     ResultsetTableThemeComponent,
-    TextInputMaskedComponent,
     ToggleGroupControlledComponent,
     ToggleGroupDefaultComponent,
     ToggleGroupDisabledComponent,

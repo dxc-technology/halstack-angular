@@ -34,7 +34,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Input() public margin: any;
   @Input() public size: any;
   @Input() public expandOnHover: boolean;
-  @Input() public showCaret: boolean = true;
+  @Input() public caretHidden: boolean = false;
 
   @Input() public iconSrc: string;
   @Input() public label: string = "";
@@ -62,7 +62,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
     iconPosition: "before",
     optionsIconPosition: "before",
     mode: "basic",
-    showCaret: true,
+    caretHidden: false,
     iconSrc: null,
     label: null,
     margin: null,
@@ -271,7 +271,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         cursor: pointer;
       }
 
-      ${this.label === "" && !this.showCaret
+      ${this.label === "" && this.caretHidden
         ? css`
             padding: 10px 15px;
           `

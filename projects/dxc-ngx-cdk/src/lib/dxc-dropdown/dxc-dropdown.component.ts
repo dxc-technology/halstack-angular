@@ -271,7 +271,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         cursor: pointer;
       }
 
-      ${this.label === "" && !this.caretHidden
+      ${this.label === "" && this.caretHidden
         ? css`
             padding: 10px 15px;
           `

@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "title": "Default Dropdown",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/fervent-heyrovsky-bvpz4?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DefaultDropdown"
+            }
+        },
+        {
+            "title": "Default Dropdown with expand on hover",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/defaultdropdownhover-8hry4?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DefaultDropdownHover"
+            }
+        },
+        {
+            "title": "Dropdown with icons",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/dropdownwithicons-ljgwu?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DropdownWithIcons"
+            }
+        }
+    ]
+}

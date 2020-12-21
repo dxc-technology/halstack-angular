@@ -13,6 +13,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { TableThemeComponent } from '../../components/examples/table/table-theme/table-theme.component';
 import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     TableComponent,

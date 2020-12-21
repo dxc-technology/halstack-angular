@@ -12,6 +12,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { UploadThemeComponent } from '../../components/examples/upload/upload-theme/upload-theme.component';
 import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UploadApiComponent } from '../../components/examples/upload/upload-api/
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     UploadComponent,

@@ -13,6 +13,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { DialogApiComponent } from '../../components/examples/dialog/dialog-api/dialog-api.component';
 import { DialogThemeComponent } from '../../components/examples/dialog/dialog-theme/dialog-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
+    CodesandboxViewerModule,
     DxcHeadingModule
   ],
   exports: [

@@ -12,6 +12,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
 import { AlertThemeComponent } from '../../components/examples/alert/alert-theme/alert-theme.component';
 import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AlertApiComponent } from '../../components/examples/alert/alert-api/ale
     DxcButtonModule,
     TabbedSectionModule,
     ExampleViewerModule,
+    CodesandboxViewerModule,
     DxcTableModule,
     DxcTagModule,
     CodePlaygroundModule,

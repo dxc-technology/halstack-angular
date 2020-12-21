@@ -11,6 +11,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LinkThemeComponent } from '../../components/examples/link/link-theme/li
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports:[
     LinkComponent,

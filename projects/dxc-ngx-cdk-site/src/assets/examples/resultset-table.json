@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "title": "Resultset Table",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/resultsettable-dvk5f?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "ResultsetTable"
+            }
+        }
+    ]
+}

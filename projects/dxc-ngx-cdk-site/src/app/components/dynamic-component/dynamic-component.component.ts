@@ -39,11 +39,13 @@ export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('ngOnInit DynamicComponent');
   }
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
+    console.log('ngAfterViewInit DynamicComponent');
 
     const selector = (document.querySelector('#' + this.selector));
     // if (selector!==null){

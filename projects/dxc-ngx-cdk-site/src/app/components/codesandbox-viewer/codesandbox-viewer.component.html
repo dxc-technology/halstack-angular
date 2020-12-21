@@ -1,0 +1,30 @@
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="Examples"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+
+<div *ngIf="examples">
+  <div *ngFor="let example of examples; first as isFirst">
+    <dxc-heading
+      [text]="example.title"
+      [level]="5"
+      [margin]="getMargin(isFirst)"
+    ></dxc-heading>
+
+    <iframe
+      [src]="example.iframe.src"
+      style="
+        width: 100%;
+        height: 500px;
+        border: 0;
+        border-radius: 4px;
+        overflow: hidden;
+      "
+      title="{{ example.iframe.title }}"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+    ></iframe>
+  </div>
+</div>

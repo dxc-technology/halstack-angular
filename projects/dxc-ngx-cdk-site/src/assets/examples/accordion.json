@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "title": "Default Accordion",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/defaultaccordion-l94dh?fontsize=14&hidenavigation=1&theme=dark",
+                "title": "DefaultAccordion"
+            }
+        },
+        {
+            "title": "Controlled Accordion",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/controlledaccordion-ckwrb?fontsize=14&hidenavigation=1&theme=dark",
+                "title": "ControlledAccordion"
+            }
+        },
+        {
+            "title": "Accordion with Assistive Text",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/assistivetextaccordion-jvolv?fontsize=14&hidenavigation=1&theme=dark",
+                "title": "AssistiveTextAccordion"
+            }
+        },
+        {
+            "title": "Accordion with Icon",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/iconaccordion-1herc?fontsize=14&hidenavigation=1&theme=dark",
+                "title": "IconAccordion"
+            }
+        },
+        {
+            "title": "Disabled Accordion",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/disabledaccordion-g4h2e?fontsize=14&hidenavigation=1&theme=dark",
+                "title": "DisabledAccordion"
+            }
+        }
+    ]
+}

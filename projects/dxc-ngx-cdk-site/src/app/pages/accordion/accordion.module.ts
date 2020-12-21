@@ -6,7 +6,7 @@ import { DxcTableModule, DxcAccordionModule,DxcTagModule,DxcChipModule,DxcHeadin
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { AccordionTablePropertiesComponent } from 'src/app/components/examples/accordion/properties/accordion-table-properties/accordion-table-properties.component';
 import { ExampleViewerModule } from 'src/app/components/example-viewer/example-viewer.module';
-import { AccordionExampleModule } from '../../components/examples/accordion/accordion-example/accordion-example.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 import { AccordionImportComponent } from '../../components/examples/accordion/accordion-import/accordion-import.component';
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
@@ -14,10 +14,12 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
 import { AccordionThemeComponent } from '../../components/examples/accordion/accordion-theme/accordion-theme.component';
+import { AccordionExampleComponent } from '../../components/examples/accordion/accordion-example/accordion-example.component';
 
 @NgModule({
   declarations: [
     AccordionComponent,
+    AccordionExampleComponent,
     AccordionTablePropertiesComponent,
     AccordionImportComponent,
     AccordionApiComponent,
@@ -29,7 +31,7 @@ import { AccordionThemeComponent } from '../../components/examples/accordion/acc
     DxcTableModule,
     TabbedSectionModule,
     DxcAccordionModule,
-    AccordionExampleModule,
+    CodesandboxViewerModule,
     ExampleViewerModule,
     DxcTagModule,
     CodePlaygroundModule,
@@ -39,6 +41,7 @@ import { AccordionThemeComponent } from '../../components/examples/accordion/acc
     DxcHeadingModule
   ], 
   exports: [
+    AccordionComponent,
     AccordionComponent,
     AccordionTablePropertiesComponent,
     AccordionImportComponent,

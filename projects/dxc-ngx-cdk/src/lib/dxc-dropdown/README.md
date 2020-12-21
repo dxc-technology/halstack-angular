@@ -78,8 +78,8 @@ The API properties are the following:
         <td>Name attribute of the input element.</td>
     </tr>
     <tr>
-        <td>@Input<br>showCaret: boolean</td>
-        <td><code>true</code></td>
+        <td>@Input<br>caretHidden: boolean</td>
+        <td><code>false</code></td>
         <td>Whether the arrow next to the label is displayed or not.</td>
     </tr>
     <tr>

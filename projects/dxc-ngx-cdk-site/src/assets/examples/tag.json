@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "title": "Basic Tag",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/basictag-xc2xj?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "BasicTag"
+            }
+        },
+        {
+            "title": "Tag with link",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/tagwithlink-qlc3d?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "TagWithLink"
+            }
+        },
+        {
+            "title": "Tag with action",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/tagwithaction-6dpxf?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "TagWithAction"
+            }
+        },
+        {
+            "title": "Sized Tag",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/sizedtag-52mpe?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "SizedTag"
+            }
+        }
+    ]
+}

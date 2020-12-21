@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "title": "Basic Box",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/basicbox-ozfv8?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "BasicBox"
+            }
+        }
+    ]
+}

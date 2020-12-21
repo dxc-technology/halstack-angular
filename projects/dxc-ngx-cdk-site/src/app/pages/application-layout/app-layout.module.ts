@@ -18,6 +18,7 @@ import { ExampleViewerModule } from "../../components/example-viewer/example-vie
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 
 import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CodePlaygroundModule } from "../../components/code-playground/code-play
     DxcChipModule,
     DxcLinkModule,
     DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent],
   entryComponents: [],

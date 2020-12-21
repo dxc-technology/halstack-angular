@@ -10,6 +10,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
 import { CardThemeComponent } from '../../components/examples/card/card-theme/card-theme.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CardThemeComponent } from '../../components/examples/card/card-theme/ca
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     CardTablePropertiesComponent,

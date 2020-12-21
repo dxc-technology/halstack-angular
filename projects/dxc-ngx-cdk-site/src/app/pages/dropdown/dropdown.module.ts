@@ -13,6 +13,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { DropdownThemeComponent } from '../../components/examples/dropdown/dropdown-theme/dropdown-theme.component';
 import { DropdownApiComponent } from '../../components/examples/dropdown/dropdown-api/dropdown-api.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DropdownApiComponent } from '../../components/examples/dropdown/dropdow
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     DropdownTablePropertiesComponent,

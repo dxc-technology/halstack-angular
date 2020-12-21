@@ -12,6 +12,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
 import { ProgressbarThemeComponent } from '../../components/examples/progressbar/progressbar-theme/progressbar-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     ProgressbarTablePropertiesComponent,

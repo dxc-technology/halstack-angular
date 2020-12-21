@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "title": "Default Upload",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/defaultupload-ekt5i?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DefaultUpload"
+            }
+        }
+    ]
+}

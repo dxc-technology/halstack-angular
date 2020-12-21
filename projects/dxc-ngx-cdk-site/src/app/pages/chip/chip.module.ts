@@ -18,6 +18,7 @@ import { ChipImportComponent } from "src/app/components/examples/chip/chip-impor
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     ChipComponent,

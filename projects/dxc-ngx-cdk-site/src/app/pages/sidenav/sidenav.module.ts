@@ -15,6 +15,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SidenavApiComponent } from '../../components/examples/sidenav/sidenav-api/sidenav-api.component';
 import { SidenavThemeComponent } from '../../components/examples/sidenav/sidenav-theme/sidenav-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
+    CodesandboxViewerModule,
     DxcHeadingModule
   ],
   exports:[

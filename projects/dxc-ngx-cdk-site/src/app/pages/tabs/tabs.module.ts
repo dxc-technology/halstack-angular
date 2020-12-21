@@ -14,6 +14,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { TabsThemeComponent } from '../../components/examples/tabs/tabs-theme/tabs-theme.component';
 import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     TabsComponent,

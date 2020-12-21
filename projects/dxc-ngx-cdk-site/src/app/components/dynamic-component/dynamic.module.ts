@@ -30,10 +30,6 @@ import { OverviewSupportComponent } from "../overview/overview-support/overview-
 import { OverviewThemesComponent } from '../overview/overview-themes/overview-themes.component';
 import { RadioExampleComponent } from "../examples/radio/radio-example/radio-example.component";
 import { RadioPropertiesComponent } from "../examples/radio/properties/radio-properties/radio-properties.component";
-import { RadioSimpleComponent } from "../examples/radio/radio-simple/radio-simple.component";
-import { RadioLabelPositionComponent } from "../examples/radio/radio-label-position/radio-label-position.component";
-import { RadioGroupComponent } from "../examples/radio/radio-group/radio-group.component";
-import { RadioSizedComponent } from "../examples/radio/radio-sized/radio-sized.component";
 import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
 import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
 import { SelectIconsComponent } from "../examples/select/select-icons/select-icons.component";
@@ -88,7 +84,6 @@ import { UploadTablePropertiesComponent } from "../examples/upload/properties/up
 import { UploadExampleComponent } from "../examples/upload/upload-example/upload-example.component";
 import { PaginatorTablePropertiesComponent } from '../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component';
 import { SelectUncontrolledComponent } from '../examples/select/select-uncontrolled/select-uncontrolled.component';
-import { RadioUncontrolledComponent } from '../examples/radio/radio-uncontrolled/radio-uncontrolled.component';
 import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrolled/slider-uncontrolled.component';
 import { SwitchUncontrolledComponent } from '../examples/switch/switch-uncontrolled/switch-uncontrolled.component';
 import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch-default.component';
@@ -245,11 +240,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     OverviewSupportComponent,
     OverviewThemesComponent,
     RadioPropertiesComponent,
-    RadioSimpleComponent,
-    RadioUncontrolledComponent,
-    RadioLabelPositionComponent,
-    RadioGroupComponent,
-    RadioSizedComponent,
     RadioExampleComponent,
     SelectDefaultComponent,
     SelectUncontrolledComponent,

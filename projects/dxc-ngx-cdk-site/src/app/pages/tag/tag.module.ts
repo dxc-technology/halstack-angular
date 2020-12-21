@@ -11,6 +11,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
 import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-theme.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-t
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     TagComponent,

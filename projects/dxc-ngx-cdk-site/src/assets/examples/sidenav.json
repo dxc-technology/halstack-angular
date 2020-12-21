@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "title": "Default Sidenav",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/defaultsidenav-yjtuu?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "DefaultSidenav"
+            }
+        }
+    ]
+}

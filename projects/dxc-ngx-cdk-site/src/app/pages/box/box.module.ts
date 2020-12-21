@@ -10,6 +10,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
 import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-t
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     BoxExampleComponent,

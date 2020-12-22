@@ -12,6 +12,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { WizardThemeComponent } from '../../components/examples/wizard/wizard-theme/wizard-theme.component';
 import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/wizard-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports:[
     WizardComponent,

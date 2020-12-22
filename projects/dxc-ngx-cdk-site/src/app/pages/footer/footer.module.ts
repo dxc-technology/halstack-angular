@@ -13,6 +13,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
 import { FooterThemeComponent } from '../../components/examples/footer/footer-theme/footer-theme.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { FooterThemeComponent } from '../../components/examples/footer/footer-th
       ComponentsSidenavModule,
       ColorPreviewModule,
       DxcChipModule,
-      DxcHeadingModule
+      DxcHeadingModule,
+      CodesandboxViewerModule
     ],
     exports: [
         FooterComponent,

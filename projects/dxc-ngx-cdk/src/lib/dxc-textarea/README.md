@@ -69,7 +69,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>@Input<br>numRows: number</td>
-        <td>4</td>
+        <td><code>4</code></td>
         <td>Number of rows of the textarea.</td>
     </tr>
     <tr>

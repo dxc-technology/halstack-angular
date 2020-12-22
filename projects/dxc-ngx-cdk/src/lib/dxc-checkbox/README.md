@@ -44,7 +44,7 @@ The API properties are the following:
   </tr>
   <tr>
     <td>@Input<br>checked: boolean</td>
-    <td><code>'false'</code></td>
+    <td><code>false</code></td>
     <td>
       If true, the component is checked. If undefined the component will be
       uncontrolled and the value will be managed internally by the

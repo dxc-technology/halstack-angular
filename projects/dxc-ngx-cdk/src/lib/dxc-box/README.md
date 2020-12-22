@@ -38,7 +38,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>@Input<br>shadowDepth: number (0 | 1 | 2)</td>
-        <td></td>
+        <td><code>2</code></td>
         <td>The size of the shadow to be displayed around the box.</td>
     </tr>
     <tr>

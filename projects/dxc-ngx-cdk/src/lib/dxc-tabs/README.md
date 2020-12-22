@@ -82,7 +82,7 @@ The API properties are the following:
     </tr>
 	<tr>
         <td>@Output<br>onTabClick: EventEmitter</td>
-        <td><code>false</code></td>
+        <td></td>
         <td>This function will be called when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
     </tr>
 </table>

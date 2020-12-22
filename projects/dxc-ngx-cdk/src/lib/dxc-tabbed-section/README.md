@@ -59,7 +59,7 @@ export class AppModule {}
     </tr>
     <tr>
         <td>@Input<br>stickAtPx: number</td>
-        <td>0</td>
+        <td><code>0</code></td>
         <td>The number of pixels from the top of the parent container, where the tabs will stick when scrolling.</td>
     </tr>
 </table>

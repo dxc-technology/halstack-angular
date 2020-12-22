@@ -51,7 +51,7 @@ The API properties are the following:
     <tr>
         <td>@Input<br>currentStep: number</td>
         <td>
-            <code>'0'</code>
+            <code>0</code>
         </td>
         <td>Defines which step is marked as the current. The numeration starts in 0.</td>
     </tr>

@@ -89,7 +89,7 @@ The API properties are the following:
   </tr>
   <tr>
     <td>@Input<br>imageCover: boolean</td>
-    <td><code>'false'</code></td>
+    <td><code>false</code></td>
     <td>Whether the image must cover the whole image area of the card.</td>
   </tr>
   <tr>

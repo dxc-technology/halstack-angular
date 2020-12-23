@@ -12,6 +12,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-card",
@@ -23,7 +24,14 @@ export class DxcCardComponent implements OnInit {
   @Input() imageSrc: string;
   @Input() imagePosition: string;
   @Input() imagePadding: any;
-  @Input() imageCover: boolean;
+  @Input()
+  get imageCover(): boolean {
+    return this._imageCover;
+  }
+  set imageCover(value: boolean) {
+    this._imageCover = coerceBooleanProperty(value);
+  }
+  private _imageCover = false;
   @Input() imageBgColor: string;
   @Input() margin: any;
   @Input() linkHref: string;

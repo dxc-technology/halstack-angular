@@ -10,6 +10,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-toggleGroup",
@@ -18,8 +19,22 @@ import { css } from "emotion";
   providers: [CssUtils],
 })
 export class DxcToggleGroupComponent implements OnInit {
-  @Input() public multiple: boolean = false;
-  @Input() public disabled: boolean = false;
+  @Input()
+  get multiple(): boolean {
+    return this._multiple;
+  }
+  set multiple(value: boolean) {
+    this._multiple = coerceBooleanProperty(value);
+  }
+  private _multiple = false;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
   @Input() public margin: any;
   @Input() public value: any;
   @Input() public options: {

@@ -10,6 +10,7 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-radio",
@@ -17,11 +18,32 @@ import { CssUtils } from "../utils";
   providers: [CssUtils],
 })
 export class DxcRadioComponent implements OnInit {
-  @Input() checked: boolean;
-  @Input() disabled: boolean | string;
+  @Input()
+  get checked(): boolean {
+    return this._checked;
+  }
+  set checked(value: boolean) {
+    this._checked = coerceBooleanProperty(value);
+  }
+  private _checked;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
   @Input() label: string;
   @Input() name: string;
-  @Input() required: boolean | string;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required;
   @Input() labelPosition: string;
   @Input() margin: string;
   @Input() size: string;

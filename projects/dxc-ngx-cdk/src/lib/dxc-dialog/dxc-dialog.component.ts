@@ -9,6 +9,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-dialog",
@@ -16,8 +17,22 @@ import { CssUtils } from "../utils";
   providers: [CssUtils],
 })
 export class DxcDialogComponent {
-  @Input() overlay: boolean = true;
-  @Input() isCloseVisible: boolean = true;
+  @Input()
+  get overlay(): boolean {
+    return this._overlay;
+  }
+  set overlay(value: boolean) {
+    this._overlay = coerceBooleanProperty(value);
+  }
+  private _overlay;
+  @Input()
+  get isCloseVisible(): boolean {
+    return this._isCloseVisible;
+  }
+  set isCloseVisible(value: boolean) {
+    this._isCloseVisible = coerceBooleanProperty(value);
+  }
+  private _isCloseVisible = true;
   @Input() padding: any;
   @Output() onCloseClick = new EventEmitter<any>();
   @Output() onBackgroundClick = new EventEmitter<any>();

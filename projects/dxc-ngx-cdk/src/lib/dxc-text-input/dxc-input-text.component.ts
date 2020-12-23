@@ -12,6 +12,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   ElementRef,
   OnInit,
@@ -34,10 +35,38 @@ export class DxcTextInputComponent
   @Input() public suffix: string;
   @Input() public prefixIconSrc: string;
   @Input() public suffixIconSrc: string;
-  @Input() public disabled: boolean = false;
-  @Input() public required: boolean = false;
-  @Input() public invalid: boolean = false;
-  @Input() public isMasked: boolean;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required = false;
+  @Input()
+  get invalid(): boolean {
+    return this._invalid;
+  }
+  set invalid(value: boolean) {
+    this._invalid = coerceBooleanProperty(value);
+  }
+  private _invalid = false;
+  @Input()
+  get isMasked(): boolean {
+    return this._isMasked;
+  }
+  set isMasked(value: boolean) {
+    this._isMasked = coerceBooleanProperty(value);
+  }
+  private _isMasked;
   @Input() public label: String;
   @Input() public assistiveText: string;
   @Input() public name: string;

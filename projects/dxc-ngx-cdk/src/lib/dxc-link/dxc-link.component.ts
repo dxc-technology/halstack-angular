@@ -1,6 +1,7 @@
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   Component,
   Input,
@@ -16,14 +17,42 @@ import {
   providers: [CssUtils],
 })
 export class DxcLinkComponent {
-  @Input() underlined: boolean;
-  @Input() inheritColor: boolean;
-  @Input() disabled: boolean;
+  @Input()
+  get underlined(): boolean {
+    return this._underlined;
+  }
+  set underlined(value: boolean) {
+    this._underlined = coerceBooleanProperty(value);
+  }
+  private _underlined = true;
+  @Input()
+  get inheritColor(): boolean {
+    return this._inheritColor;
+  }
+  set inheritColor(value: boolean) {
+    this._inheritColor = coerceBooleanProperty(value);
+  }
+  private _inheritColor;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
   @Input() text: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;
   @Input() href: string;
-  @Input() newWindow: boolean;
+  @Input()
+  get newWindow(): boolean {
+    return this._newWindow;
+  }
+  set newWindow(value: boolean) {
+    this._newWindow = coerceBooleanProperty(value);
+  }
+  private _newWindow;
   @Input() margin: string;
 
   @Output() onClick = new EventEmitter<any>();

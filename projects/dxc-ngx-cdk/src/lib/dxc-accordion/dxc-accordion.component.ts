@@ -26,7 +26,14 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   @Input() iconSrc: string;
   @Input() iconPosition: string;
   @Input() assistiveText: string;
-  @Input() disabled: boolean = false;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
   @Output() onClick = new EventEmitter<any>();
   @Input() margin: any;
   @Input() padding: any;

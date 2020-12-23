@@ -3,28 +3,28 @@
         {
             "title": "Button Modes",
             "iframe": {
-                "src": "https://codesandbox.io/embed/button-modes-or4l3?fontsize=14&hidenavigation=1&theme=dark",
+                "src": "https://codesandbox.io/embed/button-modes-or4l3?fontsize=14&hidenavigation=1&module=%2fsrc%2fapp%2fapp.component.html&theme=dark",
                 "title": "button-modes"
             }
         },
         {
             "title": "Button with Icon",
             "iframe": {
-                "src": "https://codesandbox.io/embed/button-with-icon-udncb?fontsize=14&hidenavigation=1&theme=dark",
+                "src": "https://codesandbox.io/embed/button-with-icon-udncb?fontsize=14&hidenavigation=1&module=%2fsrc%2fapp%2fapp.component.html&theme=dark",
                 "title": "button-with-icon"
             }
         },
         {
             "title": "Sized Button",
             "iframe": {
-                "src": "https://codesandbox.io/embed/sized-button-joccq?fontsize=14&hidenavigation=1&theme=dark",
+                "src": "https://codesandbox.io/embed/sized-button-joccq?fontsize=14&hidenavigation=1&module=%2fsrc%2fapp%2fapp.component.html&theme=dark",
                 "title": "sized-button"
             }
         },
         {
             "title": "Fill Parent Button",
             "iframe": {
-                "src": "https://codesandbox.io/embed/fill-parent-button-hezj1?fontsize=14&hidenavigation=1&theme=dark",
+                "src": "https://codesandbox.io/embed/fill-parent-button-hezj1?fontsize=14&hidenavigation=1&module=%2fsrc%2fapp%2fapp.component.html&theme=dark",
                 "title": "fill-parent-button"
             }
         }

@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "title": "Controlled Textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/s/controlled-text-area-tcs06?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "controlled-text-area"
+            }
+        },
+        {
+            "title": "Disabled Textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/s/disabled-text-area-enl4w?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "disabled-text-area"
+            }
+        },
+        {
+            "title": "Invalid Textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/s/invalid-text-area-rh5x1?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "invalid-text-area"
+            }
+        },
+        {
+            "title": "Required Textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/s/required-text-area-hwlsl?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "required-text-area"
+            }
+        },
+        {
+            "title": "Sized Slider",
+            "iframe": {
+                "src": "https://codesandbox.io/s/sized-slider-3dsnh?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "sized-slider"
+            }
+        },
+        {
+            "title": "Uncontrolled Textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/s/uncontrolled-text-area-qx2bh?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "uncontrolled-text-area"
+            }
+        },
+        {
+            "title": "Fill Parent Textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/s/fill-parent-text-area-eq764?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "fill-parent-text-area"
+            }
+        }
+    ]
+}

@@ -19,6 +19,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { AutocompleteThemeComponent } from '../../components/examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     TabbedSectionModule,
     DxcInputTextModule,
     ExampleViewerModule,
+    CodesandboxViewerModule,
     DxcLinkModule,
     CodePlaygroundModule,
     DxcTagModule,

@@ -30,24 +30,13 @@ import { OverviewSupportComponent } from "../overview/overview-support/overview-
 import { OverviewThemesComponent } from '../overview/overview-themes/overview-themes.component';
 import { RadioExampleComponent } from "../examples/radio/radio-example/radio-example.component";
 import { RadioPropertiesComponent } from "../examples/radio/properties/radio-properties/radio-properties.component";
-import { SelectDefaultComponent } from "../examples/select/select-default/select-default.component";
 import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
-import { SelectIconsComponent } from "../examples/select/select-icons/select-icons.component";
-import { SelectMultipleComponent } from "../examples/select/select-multiple/select-multiple.component";
 import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
-import { SliderDefaultComponent } from "../examples/slider/slider-default/slider-default.component";
-import { SliderDisabledComponent } from "../examples/slider/slider-disabled/slider-disabled.component";
-import { SliderDiscreteComponent } from "../examples/slider/slider-discrete/slider-discrete.component";
-import { SliderUnlimitedComponent } from "../examples/slider/slider-unlimited/slider-unlimited.component";
-import { SliderSizedComponent } from "../examples/slider/slider-sized/slider-sized.component";
-import { SliderInputComponent } from "../examples/slider/slider-input/slider-input.component";
-import { SliderContinuousComponent } from "../examples/slider/slider-continuous/slider-continuous.component";
 import { SpinnerExampleComponent } from "../examples/spinner/spinner-example/spinner-example.component";
 import { SpinnerTablePropertiesComponent } from "../examples/spinner/properties/spinner-table-properties/spinner-table-properties.component";
 import { SwitchExampleComponent } from "../examples/switch/switch-example/switch-example.component";
-import { SwitchLabelComponent } from "../examples/switch/switch-label/switch-label.component";
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
 import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
 import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
@@ -64,13 +53,8 @@ import { TagExampleComponent } from "../examples/tag/tag-example/tag-example.com
 import { ToggleGroupApiComponent } from '../examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
 import { ToggleGroupTablePropertiesComponent } from "../examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component";
 import { ToggleGroupImportComponent } from '../examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
-import { ToggleGroupControlledComponent } from "../examples/toggleGroup/toggleGroup-controlled/toggleGroup-controlled.component";
-import { ToggleGroupDefaultComponent } from "../examples/toggleGroup/toggleGroup-default/toggleGroup-default.component";
-import { ToggleGroupDisabledComponent } from "../examples/toggleGroup/toggleGroup-disabled/toggleGroup-disabled.component";
 import { ToggleGroupExampleComponent } from "../examples/toggleGroup/toggleGroup-example/toggleGroup-example.component";
-import { ToggleGroupMultipleComponent } from "../examples/toggleGroup/toggleGroup-multiple/toggleGroup-multiple.component";
 import { ToggleGroupThemeComponent } from "../examples/toggleGroup/toggleGroup-theme/toggleGroup-theme.component";
-import { SelectSizedComponent } from "../examples/select/select-sized/select-sized.component";
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
 import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
@@ -83,10 +67,6 @@ import { HeaderTablePropertiesComponent } from '../examples/header/properties/he
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
 import { UploadExampleComponent } from "../examples/upload/upload-example/upload-example.component";
 import { PaginatorTablePropertiesComponent } from '../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component';
-import { SelectUncontrolledComponent } from '../examples/select/select-uncontrolled/select-uncontrolled.component';
-import { SliderUncontrolledComponent } from '../examples/slider/slider-uncontrolled/slider-uncontrolled.component';
-import { SwitchUncontrolledComponent } from '../examples/switch/switch-uncontrolled/switch-uncontrolled.component';
-import { SwitchDefaultComponent } from '../examples/switch/switch-default/switch-default.component';
 import { LinkExampleComponent } from '../examples/link/link-example/link-example.component';
 import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
 import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sidenav-example.component';
@@ -187,13 +167,7 @@ import { TextAreaApiComponent } from '../examples/text-area/text-area-api/text-a
 import { TextAreaPropertiesTableComponent } from '../examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
 import { TextAreaThemeComponent } from '../examples/text-area/text-area-theme/text-area-theme.component';
 import { TextAreaExampleComponent } from '../examples/text-area/text-area-example/text-area-example.component';
-import { TextAreaDefaultComponent } from '../examples/text-area/text-area-default/text-area-default.component';
 import { TextAreaImportComponent } from '../examples/text-area/text-area-import/text-area-import.component';
-import { TextAreaDisabledComponent } from '../examples/text-area/text-area-disabled/text-area-disabled.component';
-import { TextAreaFillParentComponent } from '../examples/text-area/text-area-fill-parent/text-area-fill-parent.component';
-import { TextAreaInvalidComponent } from '../examples/text-area/text-area-invalid/text-area-invalid.component';
-import { TextAreaRequiredComponent } from '../examples/text-area/text-area-required/text-area-required.component';
-import { TextAreaUncontrolledComponent } from '../examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
 import { AlertThemeComponent } from '../examples/alert/alert-theme/alert-theme.component';
 import { AlertApiComponent } from '../examples/alert/alert-api/alert-api.component';
 import { HeadingThemeComponent } from '../examples/heading/heading-theme/heading-theme.component';
@@ -241,32 +215,16 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     OverviewThemesComponent,
     RadioPropertiesComponent,
     RadioExampleComponent,
-    SelectDefaultComponent,
-    SelectUncontrolledComponent,
     SelectExampleComponent,
-    SelectIconsComponent,
-    SelectMultipleComponent,
     SelectPropertiesComponent,
-    SelectSizedComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
-    SliderContinuousComponent,
-    SliderDefaultComponent,
-    SliderDisabledComponent,
-    SliderDiscreteComponent,
-    SliderUncontrolledComponent,
-    SliderInputComponent,
-    SliderSizedComponent,
-    SliderUnlimitedComponent,
     SpinnerExampleComponent,
     SpinnerTablePropertiesComponent,
     SpinnerApiComponent,
     SpinnerThemeComponent,
     SwitchExampleComponent,
-    SwitchDefaultComponent,
-    SwitchLabelComponent,
     SwitchTablePropertiesComponent,
-    SwitchUncontrolledComponent,
     TextInputExampleComponent,
     TextInputTablePropertiesComponent,
     DropdownTablePropertiesComponent,
@@ -361,13 +319,7 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     TextAreaPropertiesTableComponent,
     TextAreaThemeComponent,
     TextAreaExampleComponent,
-    TextAreaDefaultComponent,
     TextAreaImportComponent,
-    TextAreaDisabledComponent,
-    TextAreaFillParentComponent,
-    TextAreaInvalidComponent,
-    TextAreaRequiredComponent,
-    TextAreaUncontrolledComponent,
     TagApiComponent,
     TagThemeComponent,
     DateApiComponent,
@@ -401,11 +353,7 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     UploadThemeComponent,
     ResultsetTableApiComponent,
     ResultsetTableThemeComponent,
-    ToggleGroupControlledComponent,
-    ToggleGroupDefaultComponent,
-    ToggleGroupDisabledComponent,
     ToggleGroupExampleComponent,
-    ToggleGroupMultipleComponent,
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupApiComponent,

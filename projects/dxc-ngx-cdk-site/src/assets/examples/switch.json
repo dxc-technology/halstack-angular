@@ -1,0 +1,25 @@
+{
+    "data": [
+        {
+            "title": "Label Position Switch",
+            "iframe": {
+                "src": "https://codesandbox.io/s/label-position-switch-roffc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "label-position-switch"
+            }
+        },
+        {
+            "title": "Uncontrolled Switch",
+            "iframe": {
+                "src": "https://codesandbox.io/s/uncontrolled-switch-i3iuw?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "uncontrolled-switch"
+            }
+        },
+        {
+            "title": "Controlled Switch",
+            "iframe": {
+                "src": "https://codesandbox.io/s/controlled-switch-gm689?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "controlled-switch"
+            }
+        }
+    ]
+}

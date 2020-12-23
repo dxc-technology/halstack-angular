@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcLinkModule,DxcTagModule, DxcTextareaModule, DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcLinkModule, DxcTagModule, DxcTextareaModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TextAreaComponent } from './text-area.component';
@@ -12,13 +12,8 @@ import { TextAreaApiComponent } from '../../components/examples/text-area/text-a
 import { TextAreaPropertiesTableComponent } from '../../components/examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
 import { TextAreaThemeComponent } from '../../components/examples/text-area/text-area-theme/text-area-theme.component';
 import { TextAreaExampleComponent } from '../../components/examples/text-area/text-area-example/text-area-example.component';
-import { TextAreaDefaultComponent } from '../../components/examples/text-area/text-area-default/text-area-default.component';
 import { TextAreaImportComponent } from '../../components/examples/text-area/text-area-import/text-area-import.component';
-import { TextAreaDisabledComponent } from '../../components/examples/text-area/text-area-disabled/text-area-disabled.component';
-import { TextAreaFillParentComponent } from '../../components/examples/text-area/text-area-fill-parent/text-area-fill-parent.component';
-import { TextAreaInvalidComponent } from '../../components/examples/text-area/text-area-invalid/text-area-invalid.component';
-import { TextAreaRequiredComponent } from '../../components/examples/text-area/text-area-required/text-area-required.component';
-import { TextAreaUncontrolledComponent } from '../../components/examples/text-area/text-area-uncontrolled/text-area-uncontrolled.component';
+import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -27,14 +22,7 @@ import { TextAreaUncontrolledComponent } from '../../components/examples/text-ar
     TextAreaPropertiesTableComponent,
     TextAreaThemeComponent,
     TextAreaExampleComponent,
-    TextAreaDefaultComponent,
-    TextAreaImportComponent,
-    TextAreaDisabledComponent,
-    TextAreaFillParentComponent,
-    TextAreaInvalidComponent,
-    TextAreaRequiredComponent,
-    TextAreaUncontrolledComponent,
-  ],
+    TextAreaImportComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -42,6 +30,7 @@ import { TextAreaUncontrolledComponent } from '../../components/examples/text-ar
     TabbedSectionModule,
     DxcTextareaModule,
     ExampleViewerModule,
+    CodesandboxViewerModule,
     DxcLinkModule,
     DxcTagModule,
     CodePlaygroundModule,
@@ -55,14 +44,7 @@ import { TextAreaUncontrolledComponent } from '../../components/examples/text-ar
     TextAreaPropertiesTableComponent,
     TextAreaThemeComponent,
     TextAreaExampleComponent,
-    TextAreaDefaultComponent,
-    TextAreaImportComponent,
-    TextAreaDisabledComponent,
-    TextAreaFillParentComponent,
-    TextAreaInvalidComponent,
-    TextAreaRequiredComponent,
-    TextAreaUncontrolledComponent,
-  ],
+    TextAreaImportComponent],
   entryComponents: [
     ExampleViewerComponent
   ]

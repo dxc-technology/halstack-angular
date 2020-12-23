@@ -8,6 +8,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-spinner",
@@ -19,8 +20,14 @@ export class DxcSpinnerComponent {
   type: string = "indeterminate";
   @Input() value: number;
   @Input() label: string;
-  @Input() showValue: boolean = false;
-  @Input() overlay: boolean;
+  @Input()
+  get showValue(): boolean {
+    return this._showValue;
+  }
+  set showValue(value: boolean) {
+    this._showValue = coerceBooleanProperty(value);
+  }
+  private _showValue = false;
   @Input() mode: string = "large";
   @Input() margin: any;
 
@@ -32,7 +39,7 @@ export class DxcSpinnerComponent {
 
   defaultInputs = new BehaviorSubject<any>({
     showValue: false,
-    mode: "large",
+    mode: "large"
   });
 
   constructor(private utils: CssUtils) {}

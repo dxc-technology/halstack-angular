@@ -46,8 +46,22 @@ export class DxcSliderComponent implements OnInit, OnChanges {
 
   @Input() value: number;
   @Input() name: string;
-  @Input() disabled: boolean;
-  @Input() required: boolean;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required;
   @Input() margin: any;
   @Input() size: string;
   @Input() labelFormatCallback: (value: number) => string | number;

@@ -16,6 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { ElementRef, HostListener } from "@angular/core";
 import { MatMenuTrigger } from "@angular/material/menu";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-dropdown",
@@ -33,8 +34,22 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @Input() public optionsIconPosition: string = "before";
   @Input() public margin: any;
   @Input() public size: any;
-  @Input() public expandOnHover: boolean;
-  @Input() public caretHidden: boolean = false;
+  @Input()
+  get expandOnHover(): boolean {
+    return this._expandOnHover;
+  }
+  set expandOnHover(value: boolean) {
+    this._expandOnHover = coerceBooleanProperty(value);
+  }
+  private _expandOnHover;
+  @Input()
+  get caretHidden(): boolean {
+    return this._caretHidden;
+  }
+  set caretHidden(value: boolean) {
+    this._caretHidden = coerceBooleanProperty(value);
+  }
+  private _caretHidden;
 
   @Input() public iconSrc: string;
   @Input() public label: string = "";

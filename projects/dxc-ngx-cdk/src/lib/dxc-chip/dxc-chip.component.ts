@@ -10,6 +10,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-chip",
@@ -21,7 +22,14 @@ export class DxcChipComponent implements OnChanges {
   @Input() label: string;
   @Input() suffixIconSrc: string;
   @Input() prefixIconSrc: string;
-  @Input() disabled: boolean;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
   @Input() margin: any;
 
   @Output() suffixIconClick = new EventEmitter<any>();

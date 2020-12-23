@@ -14,7 +14,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
-import { coerceNumberProperty } from "@angular/cdk/coercion";
+import { coerceNumberProperty, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-textarea",
@@ -33,9 +33,30 @@ export class DxcTextareaComponent
   @Input() public assistiveText: string;
   @Input() public name: string;
   @Input() public placeholder: string;
-  @Input() public disabled: boolean = false;
-  @Input() public required: boolean = false;
-  @Input() public invalid: boolean = false;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required = false;
+  @Input()
+  get invalid(): boolean {
+    return this._invalid;
+  }
+  set invalid(value: boolean) {
+    this._invalid = coerceBooleanProperty(value);
+  }
+  private _invalid = false;
   @Input() public margin: any;
   @Input() public size: string;
 

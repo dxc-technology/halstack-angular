@@ -11,6 +11,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-select",
@@ -22,22 +23,50 @@ export class DxcSelectComponent implements OnChanges {
   @HostBinding("class") className;
   @HostBinding("class.select-icons") onlyHasIcons: boolean = false;
 
-  @Input() public multiple: boolean;
+  @Input()
+  get multiple(): boolean {
+    return this._multiple;
+  }
+  set multiple(value: boolean) {
+    this._multiple = coerceBooleanProperty(value);
+  }
+  private _multiple;
   @Input() public value: string | string[];
   @Input() public options: {
     label?: string;
     value: string;
     iconSrc?: string;
   }[];
-  @Input() public disabled: boolean = false;
-  @Input() public required: boolean = false;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required = false;
   @Input() public name: string;
   @Input() public iconPosition: string = "before";
   @Input() public label: string;
   @Input() public margin: any;
   @Input() public size: string = "medium";
   @Input() public assistiveText: string;
-  @Input() public invalid: boolean = false;
+  @Input()
+  get invalid(): boolean {
+    return this._invalid;
+  }
+  set invalid(value: boolean) {
+    this._invalid = coerceBooleanProperty(value);
+  }
+  private _invalid = false;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild("dxcSelect", { static: true }) dxcSelect;
@@ -54,6 +83,7 @@ export class DxcSelectComponent implements OnChanges {
     iconPosition: "before",
     label: "",
     size: "medium",
+    invalid: false
   });
 
   sizes = {

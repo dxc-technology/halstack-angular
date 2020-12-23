@@ -10,6 +10,7 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-switch",
@@ -18,10 +19,31 @@ import { CssUtils } from "../utils";
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
-  @Input() checked: boolean;
+  @Input()
+  get checked(): boolean {
+    return this._checked;
+  }
+  set checked(value: boolean) {
+    this._checked = coerceBooleanProperty(value);
+  }
+  private _checked;
   @Input() value: any;
-  @Input() disabled: boolean | string;
-  @Input() required: boolean | string;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required;
   @Input() label: string;
   @Input() name: string;
   @Input() id: string;

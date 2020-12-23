@@ -2,6 +2,7 @@ import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-progressbar",
@@ -13,8 +14,22 @@ export class DxcProgressbarComponent {
   mode: string = "indeterminate";
   @Input() value: number;
   @Input() label: string;
-  @Input() showValue: boolean;
-  @Input() overlay: boolean = false;
+  @Input()
+  get showValue(): boolean {
+    return this._showValue;
+  }
+  set showValue(value: boolean) {
+    this._showValue = coerceBooleanProperty(value);
+  }
+  private _showValue;
+  @Input()
+  get overlay(): boolean {
+    return this._overlay;
+  }
+  set overlay(value: boolean) {
+    this._overlay = coerceBooleanProperty(value);
+  }
+  private _overlay = false;
   @Input() margin: any;
 
   @HostBinding("class") className;
@@ -23,6 +38,7 @@ export class DxcProgressbarComponent {
   defaultInputs = new BehaviorSubject<any>({
     showValue: false,
     mode: "large",
+    overlay: false,
   });
 
   constructor(private utils: CssUtils) {}

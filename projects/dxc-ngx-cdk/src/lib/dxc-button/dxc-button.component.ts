@@ -9,6 +9,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-button",
@@ -17,7 +18,14 @@ import { CssUtils } from "../utils";
 })
 export class DxcButtonComponent {
   @Input() mode: string;
-  @Input() disabled: boolean;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;

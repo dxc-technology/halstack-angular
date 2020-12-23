@@ -19,6 +19,7 @@ import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { HostListener } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 const moment = momentImported;
 
 @Component({
@@ -32,10 +33,31 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() name: string;
-  @Input() disabled: boolean;
-  @Input() required: boolean;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required;
   @Input() assistiveText: string;
-  @Input() invalid: boolean;
+  @Input()
+  get invalid(): boolean {
+    return this._invalid;
+  }
+  set invalid(value: boolean) {
+    this._invalid = coerceBooleanProperty(value);
+  }
+  private _invalid;
   @Input() margin: any;
   @Input() size: string;
 

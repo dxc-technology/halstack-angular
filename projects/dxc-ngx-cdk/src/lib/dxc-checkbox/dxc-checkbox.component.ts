@@ -10,6 +10,7 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-checkbox",
@@ -18,9 +19,30 @@ import { CssUtils } from "../utils";
 })
 export class DxcCheckboxComponent implements OnInit {
   @Input() value: string;
-  @Input() checked: boolean;
-  @Input() disabled: boolean | string;
-  @Input() required: boolean | string;
+  @Input()
+  get checked(): boolean {
+    return this._checked;
+  }
+  set checked(value: boolean) {
+    this._checked = coerceBooleanProperty(value);
+  }
+  private _checked;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
+  @Input()
+  get required(): boolean {
+    return this._required;
+  }
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value);
+  }
+  private _required;
   @Input() label: string;
   @Input() name: string;
   @Input() id: string;
@@ -75,15 +97,7 @@ export class DxcCheckboxComponent implements OnInit {
     this.renderedChecked = this.checked;
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.required === "") {
-      this.required = true;
-    } else if (this.required === "false") {
-      this.required = false;
-    } else if (this.required === "true") {
-      this.required = true;
-    }
-
-    if (this.disabled === "" || this.disabled === true) {
+    if (this.disabled) {
       this.required = false;
     }
   }

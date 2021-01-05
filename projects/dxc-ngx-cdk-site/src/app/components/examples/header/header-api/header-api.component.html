@@ -1,6 +1,36 @@
-<dxc-heading [level]="3" weight="normal" text="API" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="API"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 
 <header-table-properties></header-table-properties>
+
+<dxc-heading
+  [level]="4"
+  text="Children"
+  [margin]="{ bottom: 'small', top: 'small' }"
+></dxc-heading>
+
+<dxc-heading
+  [level]="5"
+  text="DxcHeaderDropdown"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+<p>
+  This is a dropdown meant to be used in the header. If you want to
+  show a
+  <dxc-link
+    text=" DxcDropdown"
+    href=""
+    underlined="false"
+    (click)="navigateToRoute(); $event.preventDefault()"
+  ></dxc-link>
+  , as a shortcut, you can also use it as a direct child of the DxcHeader
+  without the tags, but we recommend to use it with the tags since some styles
+  will be applied for a better fit in the header.
+</p>
 
 <header-import></header-import>
 

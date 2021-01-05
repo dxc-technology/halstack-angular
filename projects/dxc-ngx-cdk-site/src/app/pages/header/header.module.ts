@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DxcHeaderModule, DxcTableModule, DxcButtonModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcHeaderModule, DxcTableModule, DxcButtonModule, DxcTagModule, DxcChipModule, DxcHeadingModule, DxcLinkModule } from '@dxc-technology/halstack-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
@@ -44,7 +44,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    DxcLinkModule
   ],
   exports: [
     HeaderComponent,

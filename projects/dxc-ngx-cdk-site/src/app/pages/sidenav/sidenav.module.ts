@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { SidenavComponent } from './sidenav.component';
-import { DxcSideNavModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
+import { DxcSideNavModule, DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule, DxcLinkModule } from "@dxc-technology/halstack-angular";
 
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 
@@ -38,7 +38,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ColorPreviewModule,
     DxcChipModule,
     CodesandboxViewerModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    DxcLinkModule
   ],
   exports:[
     SidenavComponent,

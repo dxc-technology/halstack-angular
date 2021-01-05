@@ -1,5 +1,61 @@
-<dxc-heading [level]="3" weight="normal" text="API" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="API"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 
 <sidenav-table-properties></sidenav-table-properties>
+
+<dxc-heading
+  [level]="4"
+  text="Children"
+  [margin]="{ bottom: 'small', top: 'small' }"
+></dxc-heading>
+<p>
+  This component includes different children that are customized
+  following the 
+  <dxc-link
+    text=" design guidelines"
+    href="https://developer.dxc.com/design/components/sidenav"
+    [underlined]="false"
+  ></dxc-link>
+  .
+</p>
+<dxc-heading
+  [level]="5"
+  text="DxcSidenavTitle"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+<p>The content will be showed as the main title in the sidenav.</p>
+<dxc-heading
+  [level]="5"
+  text="DxcSidenavSubtitle"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+<p>The content will be showed as a subtitle.</p>
+<dxc-heading
+  [level]="5"
+  text="DxcSidenavLink"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+<p>Customized link that allows the navigation.</p>
+<dxc-table>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>href: string</td>
+    <td></td>
+    <td>Page to be opened when the user clicks on the link.</td>
+  </tr>
+  <tr>
+    <td>onClick: EventEmitter</td>
+    <td></td>
+    <td>This function will be called when the user clicks the link.</td>
+  </tr>
+</dxc-table>
 
 <sidenav-import></sidenav-import>

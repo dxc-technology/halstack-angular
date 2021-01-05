@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header-api',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderApiComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {}
+
+  navigateToRoute() {
+    this.router.navigate(
+      ["components/dropdown"]
+    );
+  }
 
   ngOnInit(): void {
   }

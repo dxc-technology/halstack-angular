@@ -13,6 +13,13 @@
                 "src": "https://codesandbox.io/embed/customheader-hqzfc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "CustomHeader"
             }
+        },
+        {
+            "title": "Header with DxcHeaderDropdown",
+            "iframe": {
+                "src": "https://codesandbox.io/s/headerwithchilddropdown-ox7t7?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "HeaderWithChildDropdown"
+            }
         }
     ]
 }

@@ -83,7 +83,7 @@ The API properties are the following:
         <td>Whether the arrow next to the label is displayed or not.</td>
     </tr>
     <tr>
-        <td>@Input<br>selectOption: EventEmitter</td>
+        <td>@Input<br>onSelectOption: EventEmitter</td>
         <td></td>
         <td>This event will be triggered when the selection changes. The string with the key of the selected value will be passed as a parameter.</td>
     </tr>

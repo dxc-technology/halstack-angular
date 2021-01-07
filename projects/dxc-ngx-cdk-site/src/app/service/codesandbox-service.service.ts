@@ -35,7 +35,8 @@ export class CodesandboxServiceService {
           {
             src: this._sanitizer.bypassSecurityTrustResourceUrl(item.iframe.src),
             title: item.iframe.title
-          }
+          },
+          visible: false
         }));
       }
       return examples;

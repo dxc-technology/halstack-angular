@@ -1,0 +1,35 @@
+.exampleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c1c1c1;
+  margin-bottom: 36px;
+  padding: 0px 10px;
+  &:not(.first) {
+    margin-top: 36px;
+  }
+  .visibilityButton {
+    width: 100px;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    span {
+      font-size: 12px;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      height: auto;
+      line-height: normal;
+      font-family: Open Sans, sans-serif;
+    }
+  }
+}

@@ -15,6 +15,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { DateThemeComponent } from '../../components/examples/date/date-theme/date-theme.component';
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    CodesandboxViewerModule
   ],
   exports: [
     DateComponent,

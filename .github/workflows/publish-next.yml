@@ -49,6 +49,9 @@ jobs:
       - name: Build angular cdk site
         run: cd . && npm run build-next-cdk-site
 
+      - name: Scully static angular cdk site
+        run: cd . && npm run scully:next
+
       - name: Publish next to npm
         run: |
           sed -i "s#\"version\": \"0.0.0\"#\"version\": \"0.0.0-${GITHUB_SHA:0:7}\"#" ./dist/dxc-ngx-cdk/package.json
@@ -60,4 +63,4 @@ jobs:
       - name: Publish angular cdk site next version in S3
         run: |
           aws s3 rm s3://design-system-angular-cdk-site/tools/angular/next/ --recursive
-          aws s3 cp ./dist/angular-dxc-site s3://design-system-angular-cdk-site/tools/angular/next/ --recursive
+          aws s3 cp ./dist/static s3://design-system-angular-cdk-site/tools/angular/next/ --recursive

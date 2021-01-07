@@ -16,7 +16,10 @@
     "cy:open": "cypress open",
     "cy:fast": "cypress run --env updateSnapshots=true --spec  './cypress/integration/fast-visual-regression.js' --config video=false ",
     "cypress:ci": "start-server-and-test start http://localhost:4200 cy:fast",
-    "gzip": "gzipper compress ./dist/angular-dxc-site ./dist/angular-dxc-site-gzip"
+    "gzip": "gzipper compress ./dist/angular-dxc-site ./dist/angular-dxc-site-gzip",
+    "scully": "scully",
+    "scully:next": "scully --configFile scully.angular-dxc-site.next.config",
+    "scully:serve": "scully serve"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +36,9 @@
     "@angular/router": "10.2.0",
     "@babel/preset-env": "^7.4.5",
     "@material-extended/mde": "^2.2.2",
+    "@scullyio/init": "^1.0.1",
+    "@scullyio/ng-lib": "^1.0.0",
+    "@scullyio/scully": "^1.0.0",
     "@types/jest": "^25.2.1",
     "aws-sdk": "^2.718.0",
     "babel-jest": "^24.8.0",
@@ -54,6 +60,7 @@
     "@angular/language-service": "10.2.0",
     "@babel/core": "^7.4.5",
     "@schematics/angular": "^10.2.1",
+    "@scullyio/scully-plugin-base-href-rewrite": "^1.0.0-beta.0",
     "@types/jasmine": "3.3.8",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "^12.11.1",

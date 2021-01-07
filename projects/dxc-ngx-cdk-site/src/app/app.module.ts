@@ -49,6 +49,7 @@ import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
 import { DxcLinkModule } from '../../../dxc-ngx-cdk/src/lib/dxc-link/dxc-link.module';
 import { DxcHeadingModule } from '../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 import { DxcBoxModule } from '../../../dxc-ngx-cdk/src/lib/dxc-box/dxc-box.module';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +106,8 @@ import { DxcBoxModule } from '../../../dxc-ngx-cdk/src/lib/dxc-box/dxc-box.modul
     ResultsetTableModule,
     DxcSelectModule,
     ToggleGroupModule,
-    DxcApplicationLayoutModule
+    DxcApplicationLayoutModule,
+    ScullyLibModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

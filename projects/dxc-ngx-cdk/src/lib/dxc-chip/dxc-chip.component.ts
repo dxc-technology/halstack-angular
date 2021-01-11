@@ -114,9 +114,10 @@ export class DxcChipComponent implements OnChanges {
         text-overflow: ellipsis;
         color: var(--chip-fontColor);
       }
-      img {
+      dxc-svg {
         max-width: 24px;
         max-height: 24px;
+        display: flex;
       }
       .prefixIcon {
         ${this.label ? "margin-right: 10px;" : ""};

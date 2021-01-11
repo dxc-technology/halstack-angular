@@ -11,7 +11,7 @@
     <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
       <div [class]="tagContent">
         <div [class]="iconContainer">
-          <img src="{{ iconSrc }}" class="tagIcon" />
+          <dxc-svg class="tagIcon"  *ngIf="iconSrc" [src]="iconSrc"></dxc-svg>
         </div>
         <div
           [class]="tagLabel"
@@ -30,7 +30,7 @@
   >
     <div [class]="tagContent">
       <div [class]="iconContainer">
-        <img src="{{ iconSrc }}" class="tagIcon" />
+        <dxc-svg class="tagIcon" *ngIf="iconSrc" [src]="iconSrc"></dxc-svg>
       </div>
       <div
         [class]="tagLabel"
@@ -50,7 +50,7 @@
       <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
         <div [class]="tagContent">
           <div [class]="iconContainer">
-            <img src="{{ iconSrc }}" class="tagIcon" />
+            <dxc-svg class="tagIcon" *ngIf="iconSrc" [src]="iconSrc"></dxc-svg>
           </div>
           <div
             [class]="tagLabel"

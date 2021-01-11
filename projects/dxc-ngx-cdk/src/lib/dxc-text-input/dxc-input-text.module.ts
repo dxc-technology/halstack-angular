@@ -5,6 +5,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTextInputComponent } from "./dxc-input-text.component";
+import { DxcSvgModule } from '../dxc-svg/dxc-svg.module';
 
 @NgModule({
   declarations: [DxcTextInputComponent],
@@ -15,6 +16,7 @@ import { DxcTextInputComponent } from "./dxc-input-text.component";
     MatFormFieldModule,
     FormsModule,
     MatAutocompleteModule,
+    DxcSvgModule
   ],
   exports: [DxcTextInputComponent],
 })

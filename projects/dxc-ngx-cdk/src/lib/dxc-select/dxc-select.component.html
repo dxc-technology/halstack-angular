@@ -26,7 +26,7 @@
     <mat-select-trigger>
       <ng-container *ngIf="renderedValue && onlyHasIcons">
         <div *ngFor="let icon of iconsToShow">
-          <img src="{{ icon }}" />
+          <dxc-svg [src]="icon"></dxc-svg>
         </div>
       </ng-container>
 
@@ -34,10 +34,10 @@
         *ngIf="renderedValue && !onlyHasIcons"
         [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
       >
-        <img
+        <dxc-svg
           *ngIf="iconsToShow[0] && !this.multiple && iconsToShow.length === 1"
           src="{{ iconsToShow[0] }}"
-        />
+        ></dxc-svg>
         <span>{{ labeltoShow }}</span>
       </div>
     </mat-select-trigger>
@@ -48,7 +48,7 @@
       [value]="option.value"
       [ngClass]="iconPosition === 'after' ? 'icon-after' : 'icon-before'"
     >
-      <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
+      <dxc-svg  *ngIf="option.iconSrc" src="{{ option.iconSrc }}"></dxc-svg>
       <span *ngIf="option.label">{{ option.label }}</span>
     </mat-option>
   </mat-select>

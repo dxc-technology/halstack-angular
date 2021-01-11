@@ -4,15 +4,15 @@
   [disabled]="disabled"
   (click)="onClickHandler($event)"
 >
-  <img
-    src="{{ iconSrc }}"
+  <dxc-svg
     *ngIf="iconSrc && iconPosition === 'before'"
     class="icon-before"
-  />
-  <span *ngIf="label">{{ label }}</span>
-  <img
     src="{{ iconSrc }}"
+  ></dxc-svg>
+  <span *ngIf="label">{{ label }}</span>
+  <dxc-svg
     *ngIf="iconSrc && iconPosition !== 'before'"
     class="icon-after"
-  />
+    src="{{ iconSrc }}"
+  ></dxc-svg>
 </button>

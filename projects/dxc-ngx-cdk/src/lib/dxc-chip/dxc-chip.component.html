@@ -1,17 +1,17 @@
-<img
+<dxc-svg
   (click)="handlePrefrixClick()"
   [tabindex]="prefixTabIndex"
   (keydown)="handlePrefrixKey($event)"
   class="prefixIcon"
   *ngIf="prefixIconSrc"
   src="{{ prefixIconSrc }}"
-/>
+></dxc-svg>
 <span class="labelContainer">{{ label }}</span>
-<img
+<dxc-svg
   (click)="handleSuffixClick()"
   [tabindex]="suffixTabIndex"
   (keydown)="handleSuffixKey($event)"
   class="suffixIcon"
   *ngIf="suffixIconSrc"
   src="{{ suffixIconSrc }}"
-/>
+></dxc-svg>

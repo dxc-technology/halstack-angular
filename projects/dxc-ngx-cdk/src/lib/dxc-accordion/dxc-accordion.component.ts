@@ -100,6 +100,15 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
           ${this.cssUtils.getPaddings(inputs.padding)}
         }
       }
+      dxc-svg {
+        display: flex;
+        svg {
+          height: 15px;
+          width: 15px;
+          z-index: 20;
+          fill: currentColor;
+        }
+      }
     `;
   }
 }

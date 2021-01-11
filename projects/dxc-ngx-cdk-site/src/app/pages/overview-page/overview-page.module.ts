@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
-import { DxcBoxModule, DxcBoxComponent, DxcTagModule, DxcTagComponent, DxcHeadingComponent, DxcHeadingModule } from "@dxc-technology/halstack-angular"
+import { DxcBoxModule, DxcBoxComponent, DxcTagModule, DxcTagComponent, DxcHeadingComponent, DxcHeadingModule, DxcButtonModule } from "@dxc-technology/halstack-angular"
 import { BrowserModule } from '@angular/platform-browser';
 import { OverviewPageComponent} from "./overview-page.component"
 import { OverviewInstallComponent } from 'src/app/components/overview/overview-install/overview-install.component';
@@ -34,7 +34,8 @@ import { OverviewThemesComponent } from 'src/app/components/overview/overview-th
     MatTabsModule,
     FormsModule,
     CodePlaygroundModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    DxcButtonModule
   ],
   exports: [
   ],

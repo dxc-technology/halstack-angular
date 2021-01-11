@@ -197,7 +197,7 @@ export class DxcHeaderComponent implements OnChanges {
         border-bottom: 2px solid var(--header-underlinedColor);
       }
       .dxc-logo,
-      img {
+      dxc-svg {
         max-height: 32px;
         width: auto;
         vertical-align: middle;

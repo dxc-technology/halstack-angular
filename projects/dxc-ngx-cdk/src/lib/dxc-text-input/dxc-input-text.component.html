@@ -12,14 +12,14 @@
   >
     {{ prefix }}</span
   >
-  <img
+  <dxc-svg
     matPrefix
     (click)="onClickPrefixHandler($event)"
     class="prefixElement"
     *ngIf="prefixIconSrc"
     src="{{ prefixIconSrc }}"
     id="prefixElement"
-  />
+  ></dxc-svg>
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
     matInput
@@ -43,13 +43,14 @@
     *ngIf="suffix && !suffixIconSrc"
     >{{ suffix }}</span
   >
-  <img
+
+  <dxc-svg
     matSuffix
     (click)="onClickSuffixHandler($event)"
     class="suffixElement"
     *ngIf="suffixIconSrc"
     src="{{ suffixIconSrc }}"
-  />
+  ></dxc-svg>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>
 

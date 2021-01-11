@@ -1,17 +1,17 @@
 <div [class]="styledLink" (click)="onClickHandler($event)">
   <button *ngIf="isClickDefined == true" [class]="styledButton">
     <a [href]="href" [target]="newWindow ? '_blank' : '_self'">
-      <img
+      <dxc-svg
         src="{{ iconSrc }}"
         *ngIf="iconSrc && iconPosition === 'before'"
         class="icon-before"
-      />
+      ></dxc-svg>
       {{ text }}
-      <img
+      <dxc-svg
         src="{{ iconSrc }}"
         *ngIf="iconSrc && iconPosition === 'after'"
         class="icon-after"
-      />
+      ></dxc-svg>
     </a>
   </button>
 
@@ -20,16 +20,18 @@
     [target]="newWindow ? '_blank' : '_self'"
     *ngIf="isClickDefined == false"
   >
-    <img
+    <dxc-svg
       src="{{ iconSrc }}"
       *ngIf="iconSrc && iconPosition === 'before'"
       class="icon-before"
-    />
+    ></dxc-svg>
+
     {{ text }}
-    <img
+
+    <dxc-svg
       src="{{ iconSrc }}"
       *ngIf="iconSrc && iconPosition === 'after'"
       class="icon-after"
-    />
+    ></dxc-svg>
   </a>
 </div>

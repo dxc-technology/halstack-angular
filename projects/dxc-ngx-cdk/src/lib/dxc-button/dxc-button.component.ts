@@ -108,10 +108,14 @@ export class DxcButtonComponent {
         letter-spacing: 1px;
         border: 2px solid transparent;
         ${this.getModeStyle()}
-        img {
-          height: 15px;
-          width: 15px;
-          z-index: 20;
+        dxc-svg {
+          display: flex;
+          svg {
+            height: 15px;
+            width: 15px;
+            z-index: 20;
+            fill: currentColor;
+          }
         }
         span.mat-button-wrapper {
           text-transform: uppercase;

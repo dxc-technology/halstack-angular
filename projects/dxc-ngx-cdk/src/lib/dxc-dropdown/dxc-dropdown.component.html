@@ -12,7 +12,7 @@
   (click)="updateCss()"
 >
   <div class="buttonContent">
-    <img *ngIf="iconSrc" src="{{ iconSrc }}" />
+    <dxc-svg *ngIf="iconSrc" [src]="iconSrc"></dxc-svg>
     <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
   </div>
 
@@ -38,7 +38,7 @@
       class="option"
     >
       <div>
-        <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
+        <dxc-svg *ngIf="option.iconSrc" [src]="option.iconSrc"></dxc-svg>
         <span *ngIf="option.label" class="label-span">{{ option.label }}</span>
       </div>
     </button>

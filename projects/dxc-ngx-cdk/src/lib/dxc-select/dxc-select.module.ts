@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcSelectComponent } from "./dxc-select.component";
 import { ThemeModule } from "../theme/theme.module";
+import { DxcSvgModule } from '../dxc-svg/dxc-svg.module';
 @NgModule({
   declarations: [DxcSelectComponent],
   imports: [
@@ -13,6 +14,7 @@ import { ThemeModule } from "../theme/theme.module";
     MatFormFieldModule,
     ThemeModule,
     FormsModule,
+    DxcSvgModule
   ],
   exports: [DxcSelectComponent],
 })

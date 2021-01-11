@@ -148,9 +148,13 @@ export class DxcTabsComponent implements OnChanges {
           text-transform: uppercase;
           letter-spacing: 1.43px;
           z-index: 1;
-          img {
+          dxc-svg {
             width: 22px;
             height: 22px;
+            display: flex;
+            svg{
+              fill: currentColor;
+            }
           }
         }
         .icon-text {

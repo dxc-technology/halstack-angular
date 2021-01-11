@@ -188,6 +188,11 @@ export class DxcTagComponent implements OnInit {
       display: inline-flex;
       width: 48px;
       justify-content: center;
+      dxc-svg {
+        display: flex;
+        height: 24px;
+        width: 24px;
+      }
       ${input.iconBgColor
         ? css`
             background: ${input.iconBgColor};

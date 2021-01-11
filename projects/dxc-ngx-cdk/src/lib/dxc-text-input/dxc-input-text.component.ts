@@ -315,9 +315,13 @@ export class DxcTextInputComponent
           text-overflow: ellipsis;
           color: var(--inputText-fontColor);
         }
-        img {
+        dxc-svg {
           width: 20px;
           height: 20px;
+          display: flex;
+          svg {
+            fill: currentcolor;
+          }
         }
         &.disabled {
           pointer-events: none;

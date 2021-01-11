@@ -13,7 +13,10 @@
         [ngClass]="iconPosition === 'after' ? 'after' : 'before'"
       >
         <span *ngIf="label">{{ label }}</span>
-        <img [src]="iconSrc" *ngIf="iconSrc" />
+        <dxc-svg
+          *ngIf="iconSrc"
+          [src]="iconSrc"
+        ></dxc-svg>
       </mat-panel-title>
       <mat-panel-description>
         <span *ngIf="assistiveText">{{ assistiveText }}</span>

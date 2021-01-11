@@ -193,6 +193,12 @@ export class DxcToggleGroupComponent implements OnInit {
               height: 24px;
               margin: 10px 12px;
             }
+            dxc-svg {
+              display: flex;
+              svg {
+                fill: currentColor;
+              }
+            }
           }
         }
       }

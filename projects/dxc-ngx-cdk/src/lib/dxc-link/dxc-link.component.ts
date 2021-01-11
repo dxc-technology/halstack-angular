@@ -131,9 +131,10 @@ export class DxcLinkComponent {
 
         ${this.getStateStyles(inputs)}
 
-        img {
+        dxc-svg {
           width: 16px;
           height: 16px;
+          display: flex;
         }
         .icon-before {
           margin-right: 6px;

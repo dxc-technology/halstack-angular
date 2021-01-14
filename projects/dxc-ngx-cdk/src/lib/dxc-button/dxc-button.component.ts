@@ -5,11 +5,15 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
+  ContentChildren,
+  QueryList,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { DxcButtonIconComponent } from './dxc-button-icon/dxc-button-icon.component';
 
 @Component({
   selector: "dxc-button",
@@ -36,6 +40,9 @@ export class DxcButtonComponent {
 
   @HostBinding("class") className;
 
+  @ContentChildren(DxcButtonIconComponent)
+  dxcButtonIcon: QueryList<DxcButtonIconComponent>;
+
   defaultInputs = new BehaviorSubject<any>({
     mode: "primary",
     disabled: false,
@@ -46,7 +53,14 @@ export class DxcButtonComponent {
     size: "fitContent",
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
+
+  ngAfterViewChecked() {
+    if (this.dxcButtonIcon.length !== 0) {
+      this.iconSrc = "";
+    }
+    this.cdRef.detectChanges();
+  }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.iconPosition !== "after") {
@@ -108,16 +122,14 @@ export class DxcButtonComponent {
         letter-spacing: 1px;
         border: 2px solid transparent;
         ${this.getModeStyle()}
-        img {
-          height: 15px;
-          width: 15px;
-          z-index: 20;
-        }
         span.mat-button-wrapper {
           text-transform: uppercase;
           display: flex;
           align-items: center;
           justify-content: center;
+          ${this.iconPosition === "after"
+          ? "flex-direction: row-reverse;"
+          : "flex-direction: row;"}
 
           & > span {
             display: block;
@@ -128,13 +140,21 @@ export class DxcButtonComponent {
             text-overflow: ellipsis;
             text-align: center;
           }
-          .icon-before {
-            margin-right: 10px;
+          dxc-button-icon {
+            display: flex;
           }
-          .icon-after {
-            margin-left: 10px;
+          img,
+          svg {
+            ${this.iconPosition === "before"
+              ? "margin-right: 10px;"
+              : "margin-left: 10px;"}
+            height: 15px;
+            width: 15px;
+            z-index: 20;
           }
-
+          svg {
+            fill: currentColor;
+          }
           mat-icon {
             font-size: 20px;
             width: auto;

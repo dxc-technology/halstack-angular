@@ -6,13 +6,8 @@
 >
   <img
     src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition === 'before'"
-    class="icon-before"
+    *ngIf="iconSrc"
   />
+  <ng-content select="dxc-button-icon"></ng-content>
   <span *ngIf="label">{{ label }}</span>
-  <img
-    src="{{ iconSrc }}"
-    *ngIf="iconSrc && iconPosition !== 'before'"
-    class="icon-after"
-  />
 </button>

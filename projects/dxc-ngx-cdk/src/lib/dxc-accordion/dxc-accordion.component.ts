@@ -8,11 +8,14 @@ import {
   SimpleChanges,
   ViewChild,
   OnChanges,
+  ContentChildren,
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { DxcAccordionIconComponent } from './dxc-accordion-icon/dxc-accordion-icon.component';
+import { QueryList } from '@angular/core';
 
 @Component({
   selector: "dxc-accordion",
@@ -51,6 +54,9 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   @ViewChild("matExpansionPanel", { static: true }) _matExpansionPanel: any;
   renderedIsExpanded: boolean;
 
+  @ContentChildren(DxcAccordionIconComponent)
+  dxcAccordionIcon: QueryList<DxcAccordionIconComponent>;
+
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
     padding: null,
@@ -60,6 +66,9 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   constructor(private cssUtils: CssUtils) {}
 
   ngOnInit() {
+    if(this.dxcAccordionIcon.length == 0){
+      this.iconSrc = "";
+    }
     this.renderedIsExpanded = this.isExpanded || false;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

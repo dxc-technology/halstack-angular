@@ -14,6 +14,7 @@
       >
         <span *ngIf="label">{{ label }}</span>
         <img [src]="iconSrc" *ngIf="iconSrc" />
+        <ng-content select="dxc-accordion-icon"></ng-content>
       </mat-panel-title>
       <mat-panel-description>
         <span *ngIf="assistiveText">{{ assistiveText }}</span>

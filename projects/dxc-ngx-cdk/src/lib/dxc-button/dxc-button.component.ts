@@ -152,9 +152,6 @@ export class DxcButtonComponent {
             width: 15px;
             z-index: 20;
           }
-          svg {
-            fill: currentColor;
-          }
           mat-icon {
             font-size: 20px;
             width: auto;

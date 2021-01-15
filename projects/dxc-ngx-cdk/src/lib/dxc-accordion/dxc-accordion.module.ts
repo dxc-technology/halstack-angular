@@ -8,6 +8,6 @@ import { DxcAccordionIconComponent } from './dxc-accordion-icon/dxc-accordion-ic
 @NgModule({
   declarations: [DxcAccordionComponent, DxcAccordionIconComponent],
   imports: [CommonModule, MatExpansionModule, MatIconModule],
-  exports: [DxcAccordionComponent],
+  exports: [DxcAccordionComponent, DxcAccordionIconComponent],
 })
 export class DxcAccordionModule {}

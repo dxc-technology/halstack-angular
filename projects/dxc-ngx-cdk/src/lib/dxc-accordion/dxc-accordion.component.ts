@@ -9,13 +9,14 @@ import {
   ViewChild,
   OnChanges,
   ContentChildren,
+  AfterViewInit
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from './dxc-accordion-icon/dxc-accordion-icon.component';
-import { QueryList } from '@angular/core';
+import { QueryList, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: "dxc-accordion",
@@ -23,7 +24,7 @@ import { QueryList } from '@angular/core';
   styleUrls: ["./dxc-accordion.component.scss"],
   providers: [CssUtils],
 })
-export class DxcAccordionComponent implements OnInit, OnChanges {
+export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() mode: string;
   @Input() label: string;
   @Input() iconSrc: string;
@@ -63,12 +64,16 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
     disabled: false,
   });
 
-  constructor(private cssUtils: CssUtils) {}
+  constructor(private cssUtils: CssUtils,private cdRef: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    if(this.dxcAccordionIcon.length == 0){
+  ngAfterViewInit(): void {
+    if(this.dxcAccordionIcon.length !== 0){
       this.iconSrc = "";
     }
+    this.cdRef.detectChanges();
+  }
+
+  ngOnInit() {
     this.renderedIsExpanded = this.isExpanded || false;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

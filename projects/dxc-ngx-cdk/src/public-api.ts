@@ -10,6 +10,7 @@ export * from './lib/theme/theme.directive';
 
 export * from './lib/dxc-accordion/dxc-accordion.component';
 export * from './lib/dxc-accordion/dxc-accordion.module';
+export * from './lib/dxc-accordion/dxc-accordion-icon/dxc-accordion-icon.component';
 
 export * from './lib/dxc-alert/dxc-alert.component';
 export * from './lib/dxc-alert/dxc-alert.module';

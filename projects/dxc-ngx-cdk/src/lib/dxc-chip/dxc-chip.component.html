@@ -11,6 +11,7 @@
   (click)="handlePrefrixClick()"
   [tabindex]="prefixTabIndex"
   (keydown)="handlePrefrixKey($event)"
+  *ngIf="dxcChipPrefixIcon.length !== 0"
 >
   <ng-content select="dxc-chip-prefix-icon"></ng-content>
 </span>
@@ -21,6 +22,7 @@
   [tabindex]="suffixTabIndex"
   (keydown)="handleSuffixKey($event)"
   class="suffixIcon"
+  *ngIf="dxcChipSuffixIcon.length !== 0"
 >
   <ng-content select="dxc-chip-suffix-icon"></ng-content>
 </span>

@@ -30,6 +30,7 @@ import { HeadingInfoComponent } from './pages/heading/heading-info.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { TextareaInfoComponent } from './pages/textarea/textarea-info.component';
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
+import { ChipComponent } from './pages/chip/chip.component';
 
 export const Components = [
     {
@@ -61,6 +62,11 @@ export const Components = [
         name: 'Checkbox',
         route: 'checkbox',
         component:  CheckboxInfoComponent
+    },
+    {
+        name: 'Chip',
+        route: 'chip',
+        component:  ChipComponent
     },
     {
         name: 'Date',

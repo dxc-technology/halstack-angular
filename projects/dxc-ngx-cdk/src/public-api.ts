@@ -19,9 +19,11 @@ export * from './lib/dxc-box/dxc-box.component';
 export * from './lib/dxc-box/dxc-box.module';
 
 export * from './lib/dxc-button/dxc-button.component';
+export * from './lib/dxc-button/dxc-button-icon/dxc-button-icon.component';
 export * from './lib/dxc-button/dxc-button.module';
 
 export * from './lib/dxc-card/dxc-card.component';
+export * from './lib/dxc-card/dxc-card-image/dxc-card-image.component';
 export * from './lib/dxc-card/dxc-card.module';
 
 export * from './lib/dxc-checkbox/dxc-checkbox.component';

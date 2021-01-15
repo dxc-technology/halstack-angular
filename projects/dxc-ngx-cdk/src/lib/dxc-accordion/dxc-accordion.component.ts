@@ -8,11 +8,15 @@ import {
   SimpleChanges,
   ViewChild,
   OnChanges,
+  ContentChildren,
+  AfterViewInit
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { DxcAccordionIconComponent } from './dxc-accordion-icon/dxc-accordion-icon.component';
+import { QueryList, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: "dxc-accordion",
@@ -20,7 +24,7 @@ import { coerceBooleanProperty } from "@angular/cdk/coercion";
   styleUrls: ["./dxc-accordion.component.scss"],
   providers: [CssUtils],
 })
-export class DxcAccordionComponent implements OnInit, OnChanges {
+export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() mode: string;
   @Input() label: string;
   @Input() iconSrc: string;
@@ -51,13 +55,23 @@ export class DxcAccordionComponent implements OnInit, OnChanges {
   @ViewChild("matExpansionPanel", { static: true }) _matExpansionPanel: any;
   renderedIsExpanded: boolean;
 
+  @ContentChildren(DxcAccordionIconComponent)
+  dxcAccordionIcon: QueryList<DxcAccordionIconComponent>;
+
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
     padding: null,
     disabled: false,
   });
 
-  constructor(private cssUtils: CssUtils) {}
+  constructor(private cssUtils: CssUtils,private cdRef: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    if(this.dxcAccordionIcon.length !== 0){
+      this.iconSrc = "";
+    }
+    this.cdRef.detectChanges();
+  }
 
   ngOnInit() {
     this.renderedIsExpanded = this.isExpanded || false;

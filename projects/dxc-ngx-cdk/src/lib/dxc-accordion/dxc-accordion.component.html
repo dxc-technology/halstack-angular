@@ -13,7 +13,8 @@
         [ngClass]="iconPosition === 'after' ? 'after' : 'before'"
       >
         <span *ngIf="label">{{ label }}</span>
-        <img [src]="iconSrc" *ngIf="iconSrc" />
+        <img [src]="iconSrc" *ngIf="iconSrc" class="imageIcon" />
+        <ng-content select="dxc-accordion-icon"></ng-content>
       </mat-panel-title>
       <mat-panel-description>
         <span *ngIf="assistiveText">{{ assistiveText }}</span>

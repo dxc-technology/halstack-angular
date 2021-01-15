@@ -6,7 +6,25 @@
   *ngIf="prefixIconSrc"
   src="{{ prefixIconSrc }}"
 />
+<span
+  class="prefixIcon"
+  (click)="handlePrefrixClick()"
+  [tabindex]="prefixTabIndex"
+  (keydown)="handlePrefrixKey($event)"
+>
+  <ng-content select="dxc-chip-prefix-icon"></ng-content>
+</span>
+
 <span class="labelContainer">{{ label }}</span>
+<span
+  (click)="handleSuffixClick()"
+  [tabindex]="suffixTabIndex"
+  (keydown)="handleSuffixKey($event)"
+  class="suffixIcon"
+>
+  <ng-content select="dxc-chip-suffix-icon"></ng-content>
+</span>
+
 <img
   (click)="handleSuffixClick()"
   [tabindex]="suffixTabIndex"

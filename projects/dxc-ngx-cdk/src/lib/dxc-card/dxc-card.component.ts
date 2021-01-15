@@ -8,11 +8,15 @@ import {
   ElementRef,
   EventEmitter,
   SimpleChanges,
+  ContentChildren,
+  QueryList,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { DxcCardImageComponent } from './dxc-card-image/dxc-card-image.component';
 
 @Component({
   selector: "dxc-card",
@@ -42,6 +46,9 @@ export class DxcCardComponent implements OnInit {
 
   @ViewChild("content", { static: false }) content: ElementRef;
 
+  @ContentChildren(DxcCardImageComponent)
+  dxcCardImage: QueryList<DxcCardImageComponent>;
+
   defaultInputs = new BehaviorSubject<any>({
     imageSrc: null,
     imagePosition: "before",
@@ -61,7 +68,7 @@ export class DxcCardComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -76,6 +83,11 @@ export class DxcCardComponent implements OnInit {
       this.content.nativeElement.classList.add("childComponents");
       this.content.nativeElement.parentElement.classList.add("hasChildren");
     }
+
+    if (this.dxcCardImage.length !== 0) {
+      this.imageSrc = "";
+    }
+    this.cdRef.detectChanges();
   }
 
   public onClickHandler($event: any): void {
@@ -131,7 +143,7 @@ export class DxcCardComponent implements OnInit {
           overflow: hidden;
           width: 260px;
         }
-        img {
+        img, svg {
           height: 100%;
           ${this.utils.calculateWidthWithSize("140px", inputs.imagePadding)}
           ${inputs.imageCover
@@ -173,7 +185,7 @@ export class DxcCardComponent implements OnInit {
 
       mat-card.before {
         .imageContainer {
-          img {
+          img, svg {
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
           }
@@ -184,7 +196,7 @@ export class DxcCardComponent implements OnInit {
 
       mat-card.after {
         .imageContainer {
-          img {
+          img, svg {
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
           }

@@ -3,15 +3,11 @@
     <a [href]="href" [target]="newWindow ? '_blank' : '_self'">
       <img
         src="{{ iconSrc }}"
-        *ngIf="iconSrc && iconPosition === 'before'"
-        class="icon-before"
+        *ngIf="iconSrc"
+        class="icon"
       />
+      <ng-content></ng-content>
       {{ text }}
-      <img
-        src="{{ iconSrc }}"
-        *ngIf="iconSrc && iconPosition === 'after'"
-        class="icon-after"
-      />
     </a>
   </button>
 
@@ -22,14 +18,10 @@
   >
     <img
       src="{{ iconSrc }}"
-      *ngIf="iconSrc && iconPosition === 'before'"
-      class="icon-before"
+      *ngIf="iconSrc"
+      class="icon"
     />
+    <ng-content></ng-content>
     {{ text }}
-    <img
-      src="{{ iconSrc }}"
-      *ngIf="iconSrc && iconPosition === 'after'"
-      class="icon-after"
-    />
   </a>
 </div>

@@ -110,6 +110,7 @@ export * from './lib/dxc-wizard/dxc-step/dxc-step.component';
 
 export * from './lib/dxc-link/dxc-link.component';
 export * from './lib/dxc-link/dxc-link.module';
+export * from './lib/dxc-link/dxc-link-icon/dxc-link-icon.component';
 
 export * from './lib/dxc-sidenav/dxc-sidenav.component';
 export * from './lib/dxc-sidenav/dxc-sidenav.module';

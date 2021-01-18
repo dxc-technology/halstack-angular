@@ -73,6 +73,7 @@ export * from './lib/dxc-switch/dxc-switch.module';
 export * from './lib/dxc-tabs/dxc-tabs.component';
 export * from './lib/dxc-tabs/dxc-tabs.module';
 export * from './lib/dxc-tabs/dxc-tab/dxc-tab.component';
+export * from './lib/dxc-tabs/dxc-tab/dxc-tab-icon/dxc-tab-icon.component';
 
 export * from './lib/dxc-text-input/dxc-input-text.component';
 export * from './lib/dxc-text-input/dxc-input-text.module';

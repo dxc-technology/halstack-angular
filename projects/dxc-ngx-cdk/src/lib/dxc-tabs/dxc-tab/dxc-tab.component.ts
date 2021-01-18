@@ -6,8 +6,11 @@ import {
   Output,
   EventEmitter,
   ChangeDetectorRef,
+  ContentChildren,
 } from "@angular/core";
 import { MatTab } from "@angular/material/tabs";
+import { DxcTabIconComponent } from './dxc-tab-icon/dxc-tab-icon.component';
+import { QueryList } from '@angular/core';
 
 @Component({
   selector: "dxc-tab",
@@ -26,6 +29,11 @@ export class DxcTabComponent implements OnChanges {
   @ViewChild(MatTab, { static: false })
   public matTab: MatTab;
 
+  @ContentChildren(DxcTabIconComponent)
+  dxcTabIcon: QueryList<DxcTabIconComponent>;
+
+  tabIcon: boolean = false;
+
   constructor(private cdRef: ChangeDetectorRef) {}
 
   public ngOnChanges(): void {
@@ -37,6 +45,14 @@ export class DxcTabComponent implements OnChanges {
   }
 
   public ngAfterViewInit() {
+    if(this.dxcTabIcon.length !== 0){
+      this.iconSrc = "";
+    }
+    else{
+       this.tabIcon = true;
+       this.getLabelClass();
+    }
+    this.cdRef.detectChanges();
     this.matTab.disabled = this.disabled;
   }
 
@@ -45,9 +61,9 @@ export class DxcTabComponent implements OnChanges {
   }
 
   getLabelClass() {
-    if (this.iconSrc && this.label) {
+    if ((this.iconSrc || this.tabIcon) && this.label) {
       this.labelClass = "icon-text";
-    } else if (!this.iconSrc) {
+    } else if (!this.iconSrc && !this.tabIcon) {
       this.labelClass = "only-text";
     } else {
       this.labelClass = "only-icon";

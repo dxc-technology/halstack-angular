@@ -6,9 +6,10 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTabsComponent } from "./dxc-tabs.component";
 import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
+import { DxcTabIconComponent } from './dxc-tab/dxc-tab-icon/dxc-tab-icon.component';
 
 @NgModule({
-  declarations: [DxcTabsComponent, DxcTabComponent],
+  declarations: [DxcTabsComponent, DxcTabComponent, DxcTabIconComponent],
   imports: [
     CommonModule,
     MatInputModule,
@@ -16,7 +17,7 @@ import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
     MatFormFieldModule,
     FormsModule,
   ],
-  exports: [DxcTabsComponent, DxcTabComponent],
+  exports: [DxcTabsComponent, DxcTabComponent,DxcTabIconComponent],
   entryComponents: [MatTab, MatTabGroup],
 })
 export class DxcTabsModule {}

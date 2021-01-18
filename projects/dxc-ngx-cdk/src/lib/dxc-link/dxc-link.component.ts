@@ -1,7 +1,7 @@
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   Component,
   Input,
@@ -9,7 +9,11 @@ import {
   SimpleChanges,
   Output,
   EventEmitter,
+  ChangeDetectorRef,
+  ContentChildren,
+  QueryList,
 } from "@angular/core";
+import { DxcLinkIconComponent } from './dxc-link-icon/dxc-link-icon.component';
 
 @Component({
   selector: "dxc-link",
@@ -61,6 +65,9 @@ export class DxcLinkComponent {
 
   isClickDefined = false;
 
+  @ContentChildren(DxcLinkIconComponent)
+  dxcLinkIcon: QueryList<DxcLinkIconComponent>;
+
   styledLink: string = css`
     display: inline;
   `;
@@ -86,11 +93,18 @@ export class DxcLinkComponent {
     margin: null,
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.isClickDefined = this.onClick.observers.length > 0;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+  ngAfterViewChecked() {
+    if (this.dxcLinkIcon.length !== 0) {
+      this.iconSrc = "";
+    }
+    this.cdRef.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -118,6 +132,9 @@ export class DxcLinkComponent {
         font-size: 16px;
         padding-bottom: 2px;
         text-decoration: none;
+        ${inputs.iconPosition === "before"
+        ? ""
+        : "flex-direction: row-reverse;"}
 
         ${this.getUnderlineStyles(inputs)}
 
@@ -131,15 +148,12 @@ export class DxcLinkComponent {
 
         ${this.getStateStyles(inputs)}
 
-        img {
+        img,svg {
           width: 16px;
           height: 16px;
-        }
-        .icon-before {
-          margin-right: 6px;
-        }
-        .icon-after {
-          margin-left: 6px;
+          ${inputs.iconPosition === "before"
+            ? "margin-right: 6px;"
+            : "margin-left: 6px;"}
         }
       }
     `;

@@ -19,9 +19,11 @@ export * from './lib/dxc-box/dxc-box.component';
 export * from './lib/dxc-box/dxc-box.module';
 
 export * from './lib/dxc-button/dxc-button.component';
+export * from './lib/dxc-button/dxc-button-icon/dxc-button-icon.component';
 export * from './lib/dxc-button/dxc-button.module';
 
 export * from './lib/dxc-card/dxc-card.component';
+export * from './lib/dxc-card/dxc-card-image/dxc-card-image.component';
 export * from './lib/dxc-card/dxc-card.module';
 
 export * from './lib/dxc-checkbox/dxc-checkbox.component';
@@ -29,6 +31,8 @@ export * from './lib/dxc-checkbox/dxc-checkbox.module';
 
 export * from './lib/dxc-chip/dxc-chip.component';
 export * from './lib//dxc-chip/dxc-chip.module';
+export * from './lib/dxc-chip/dxc-chip-prefix-icon/dxc-chip-prefix-icon.component';
+export * from './lib/dxc-chip/dxc-chip-suffix-icon/dxc-chip-suffix-icon.component';
 
 export * from './lib/dxc-date/dxc-date.component';
 export * from './lib/dxc-date/dxc-date.module';
@@ -107,6 +111,7 @@ export * from './lib/dxc-wizard/dxc-step/dxc-step.component';
 
 export * from './lib/dxc-link/dxc-link.component';
 export * from './lib/dxc-link/dxc-link.module';
+export * from './lib/dxc-link/dxc-link-icon/dxc-link-icon.component';
 
 export * from './lib/dxc-sidenav/dxc-sidenav.component';
 export * from './lib/dxc-sidenav/dxc-sidenav.module';

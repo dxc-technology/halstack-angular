@@ -6,11 +6,15 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
+  ContentChildren,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectorRef, QueryList } from '@angular/core';
+import { DxcChipPrefixIconComponent } from './dxc-chip-prefix-icon/dxc-chip-prefix-icon.component';
+import { DxcChipSuffixIconComponent } from './dxc-chip-suffix-icon/dxc-chip-suffix-icon.component';
 
 @Component({
   selector: "dxc-chip",
@@ -35,6 +39,12 @@ export class DxcChipComponent implements OnChanges {
   @Output() suffixIconClick = new EventEmitter<any>();
   @Output() prefixIconClick = new EventEmitter<any>();
 
+  @ContentChildren(DxcChipPrefixIconComponent)
+  dxcChipPrefixIcon: QueryList<DxcChipPrefixIconComponent>;
+
+  @ContentChildren(DxcChipSuffixIconComponent)
+  dxcChipSuffixIcon: QueryList<DxcChipSuffixIconComponent>;
+
   prefixTabIndex = 0;
   suffixTabIndex = 0;
 
@@ -46,7 +56,17 @@ export class DxcChipComponent implements OnChanges {
     magin: "",
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    if(this.dxcChipPrefixIcon.length !== 0){
+      this.prefixIconSrc = "";
+    }
+    if(this.dxcChipSuffixIcon.length !== 0){
+      this.suffixIconSrc = "";
+    }
+    this.cdRef.detectChanges();
+  }
 
   public ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;

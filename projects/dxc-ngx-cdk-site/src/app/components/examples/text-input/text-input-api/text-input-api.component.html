@@ -3,4 +3,59 @@
 
 <text-input-table-properties></text-input-table-properties>
 
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Children"
+  [margin]="{ bottom: 'small', top: 'small' }"
+></dxc-heading>
+
+<dxc-heading
+  [level]="5"
+  weight="normal"
+  text="DxcInputPrefixIcon"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+<p>
+  This component displays what is inside as the prefix icon. Only img or svg elements will be displayed.
+</p>
+<dxc-table>
+    <tr>
+      <th>Name</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>onClickPrefix: EventEmitter</td>
+      <td></td>
+      <td>
+        This function will be called when the prefix is clicked.
+      </td>
+    </tr>
+  </dxc-table>
+
+<dxc-heading
+  [level]="5"
+  weight="normal"
+  text="DxcInputSuffixIcon"
+  [margin]="{ bottom: 'small', top: 'small' }"
+></dxc-heading>
+<p>
+  This component displays what is inside as the suffix icon. Only img or svg elements will be displayed.
+</p>
+<dxc-table>
+    <tr>
+      <th>Name</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>onClickSuffix: EventEmitter</td>
+      <td></td>
+      <td>
+        This function will be called when the suffix is clicked.
+      </td>
+    </tr>
+  </dxc-table>
+
 <text-input-import></text-input-import>

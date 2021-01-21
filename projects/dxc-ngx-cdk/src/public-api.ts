@@ -55,6 +55,7 @@ export * from './lib/dxc-table/dxc-table.module';
 
 export * from './lib/dxc-tag/dxc-tag.component';
 export * from './lib/dxc-tag/dxc-tag.module';
+export * from './lib/dxc-tag/dxc-tag-icon/dxc-tag-icon.component';
 
 export * from './lib/dxc-progressbar/dxc-progressbar.component';
 export * from './lib/dxc-progressbar/dxc-progressbar.module';

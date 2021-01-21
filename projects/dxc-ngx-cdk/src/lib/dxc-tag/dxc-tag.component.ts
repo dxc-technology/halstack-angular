@@ -13,6 +13,8 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { ContentChildren, ChangeDetectorRef } from '@angular/core';
+import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';
 
 @Component({
   selector: "dxc-tag",
@@ -53,6 +55,9 @@ export class DxcTagComponent implements OnInit {
 
   @ViewChildren("dxcBox", { read: ElementRef }) dxcBox: QueryList<ElementRef>;
 
+  @ContentChildren(DxcTagIconComponent)
+  dxcTagIcon: QueryList<DxcTagIconComponent>;
+
   styledLink: string = css`
     text-decoration: none;
   `;
@@ -76,7 +81,7 @@ export class DxcTagComponent implements OnInit {
     margin: null,
     newWindow: false,
   });
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.isClickDefined = this.onClick.observers.length > 0;
@@ -111,7 +116,11 @@ export class DxcTagComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    if(this.dxcTagIcon.length !== 0){
+      this.iconSrc = "";
+    }
     this.setStyleDxcBox();
+    this.cdRef.detectChanges();
   }
 
   setStyleDxcBox() {
@@ -195,6 +204,13 @@ export class DxcTagComponent implements OnInit {
         : css`
             background: black;
           `}
+      dxc-tag-icon{
+        height: 43px;
+        img,svg{
+          padding: 10px 12px;
+          height: 23px;
+        }
+      }
     `;
   }
 

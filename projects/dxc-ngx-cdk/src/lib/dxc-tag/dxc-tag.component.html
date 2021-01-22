@@ -11,7 +11,8 @@
     <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
       <div [class]="tagContent">
         <div [class]="iconContainer">
-          <img src="{{ iconSrc }}" class="tagIcon" />
+          <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container> 
+          <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc"/>
         </div>
         <div
           [class]="tagLabel"
@@ -30,7 +31,8 @@
   >
     <div [class]="tagContent">
       <div [class]="iconContainer">
-        <img src="{{ iconSrc }}" class="tagIcon" />
+        <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container> 
+        <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc"/>
       </div>
       <div
         [class]="tagLabel"
@@ -50,7 +52,8 @@
       <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
         <div [class]="tagContent">
           <div [class]="iconContainer">
-            <img src="{{ iconSrc }}" class="tagIcon" />
+            <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container> 
+            <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc"/>
           </div>
           <div
             [class]="tagLabel"
@@ -63,3 +66,4 @@
     </a>
   </div>
 </div>
+<ng-template #dxcTagIcon><ng-content select="dxc-tag-icon"></ng-content></ng-template>

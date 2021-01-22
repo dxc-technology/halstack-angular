@@ -40,7 +40,7 @@ export class TextInputInfoComponent {
   }
 
   onSuffixClick() {
-    console.debug("onSuffixClick Clicked");
+    console.log("onSuffixClick Clicked");
   }
 
   autocompleteAsync(inputValue) {

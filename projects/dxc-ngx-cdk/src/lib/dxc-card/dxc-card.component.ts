@@ -16,7 +16,6 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { DxcCardImageComponent } from './dxc-card-image/dxc-card-image.component';
 
 @Component({
   selector: "dxc-card",
@@ -45,9 +44,6 @@ export class DxcCardComponent implements OnInit {
   @HostBinding("class") className;
 
   @ViewChild("content", { static: false }) content: ElementRef;
-
-  @ContentChildren(DxcCardImageComponent)
-  dxcCardImage: QueryList<DxcCardImageComponent>;
 
   defaultInputs = new BehaviorSubject<any>({
     imageSrc: null,
@@ -84,9 +80,6 @@ export class DxcCardComponent implements OnInit {
       this.content.nativeElement.parentElement.classList.add("hasChildren");
     }
 
-    if (this.dxcCardImage.length !== 0) {
-      this.imageSrc = "";
-    }
     this.cdRef.detectChanges();
   }
 

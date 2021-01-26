@@ -5,9 +5,11 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTextInputComponent } from "./dxc-input-text.component";
+import { DxcInputPrefixIconComponent } from './dxc-input-prefix-icon/dxc-input-prefix-icon.component';
+import { DxcInputSuffixIconComponent } from './dxc-input-suffix-icon/dxc-input-suffix-icon.component';
 
 @NgModule({
-  declarations: [DxcTextInputComponent],
+  declarations: [DxcTextInputComponent, DxcInputPrefixIconComponent, DxcInputSuffixIconComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -16,6 +18,6 @@ import { DxcTextInputComponent } from "./dxc-input-text.component";
     FormsModule,
     MatAutocompleteModule,
   ],
-  exports: [DxcTextInputComponent],
+  exports: [DxcTextInputComponent, DxcInputPrefixIconComponent, DxcInputSuffixIconComponent],
 })
 export class DxcInputTextModule {}

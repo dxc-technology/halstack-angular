@@ -8,17 +8,21 @@ import {
   SimpleChanges,
   ChangeDetectionStrategy,
   ViewChild,
+  ContentChildren,
+  QueryList,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   ElementRef,
   OnInit,
   AfterViewChecked,
   ChangeDetectorRef,
 } from "@angular/core";
+import { DxcInputPrefixIconComponent } from "./dxc-input-prefix-icon/dxc-input-prefix-icon.component";
+import { DxcInputSuffixIconComponent } from "./dxc-input-suffix-icon/dxc-input-suffix-icon.component";
 
 @Component({
   selector: "dxc-input-text",
@@ -82,10 +86,8 @@ export class DxcTextInputComponent
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
-  prefixIndex = 0;
-  suffixIndex = 0;
-  prefixPointer = true;
-  suffixPointer = true;
+  prefixPointer = false;
+  suffixPointer = false;
 
   loading = new BehaviorSubject(false);
   isError = new BehaviorSubject(false);
@@ -96,6 +98,12 @@ export class DxcTextInputComponent
   dxcAutocompleteMenu = this.getAutoCompleteStyle();
 
   @ViewChild("dxcSingleInput", { static: false }) singleInput: ElementRef;
+
+  @ContentChildren(DxcInputPrefixIconComponent)
+  dxcInputPrefixIcon: QueryList<DxcInputPrefixIconComponent>;
+
+  @ContentChildren(DxcInputSuffixIconComponent)
+  dxcInputSuffixIcon: QueryList<DxcInputSuffixIconComponent>;
 
   selectionStart: number = 0;
   selectionEnd: number = 0;
@@ -130,7 +138,6 @@ export class DxcTextInputComponent
 
   ngOnInit() {
     this.renderedValue = this.value || "";
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.bindAutocompleteOptions();
     this.autocompleteFunction("");
   }
@@ -146,6 +153,16 @@ export class DxcTextInputComponent
       this._valueChangeTrack = false;
       this.setCursorSelection(this.singleInput);
     }
+
+    if (this.dxcInputPrefixIcon && this.dxcInputPrefixIcon.length !== 0) {
+      this.prefixIconSrc = "";
+    }
+
+    if (this.dxcInputSuffixIcon && this.dxcInputSuffixIcon.length !== 0) {
+      this.suffixIconSrc = "";
+    }
+
+    this.ref.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -167,19 +184,19 @@ export class DxcTextInputComponent
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this._valueChangeTrack = true;
-
-    if(this.onClickSuffix.observers !== undefined){
-      if (this.onClickSuffix.observers.length === 0) {
-        this.suffixPointer = false;
-      }
+    if (
+      this.onClickSuffix.observers !== undefined &&
+      this.onClickSuffix.observers.length !== 0
+    ) {
+      this.suffixPointer = true;
     }
 
-    if(this.onClickPrefix.observers !== undefined){
-      if (this.onClickPrefix.observers.length === 0) {
-        this.prefixPointer = false;
-      }
+    if (
+      this.onClickPrefix.observers !== undefined &&
+      this.onClickPrefix.observers.length !== 0
+    ) {
+      this.prefixPointer = true;
     }
-
   }
 
   public onChanged($event: any): void {
@@ -286,6 +303,11 @@ export class DxcTextInputComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
+      dxc-input-prefix-icon,
+      dxc-input-suffix-icon {
+        display: flex;
+        cursor: ${this.prefixPointer ? "pointer" : "default"};
+      }
       .prefixElement {
         margin-right: 12px;
         cursor: ${this.prefixPointer ? "pointer" : "default"};
@@ -315,7 +337,8 @@ export class DxcTextInputComponent
           text-overflow: ellipsis;
           color: var(--inputText-fontColor);
         }
-        img {
+        img,
+        svg {
           width: 20px;
           height: 20px;
         }
@@ -355,13 +378,13 @@ export class DxcTextInputComponent
       ${this.invalid
         ? this.getInvalidStyle()
         : css`
-          .mat-hint {
-            color: var(--inputText-fontColor);
-          }
-          .mat-form-field-underline {
-            background-color: var(--inputText-fontColor);
-          }
-      `}
+            .mat-hint {
+              color: var(--inputText-fontColor);
+            }
+            .mat-form-field-underline {
+              background-color: var(--inputText-fontColor);
+            }
+          `}
       .mat-form-field {
         &.mat-form-field-should-float {
           .mat-form-field-infix {
@@ -387,6 +410,7 @@ export class DxcTextInputComponent
         }
         .mat-form-field-infix {
           padding-top: 6px;
+          display: flex;
         }
       }
       .mat-form-field-flex {
@@ -398,7 +422,7 @@ export class DxcTextInputComponent
     `;
   }
 
-  getInvalidStyle(){
+  getInvalidStyle() {
     return css`
       .mat-hint {
         color: var(--inputText-invalidColor);

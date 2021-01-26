@@ -12,7 +12,7 @@
   (click)="updateCss()"
 >
   <div class="buttonContent">
-    <img *ngIf="iconSrc" src="{{ iconSrc }}" />
+    <ng-content select="dxc-dropdown-icon"></ng-content>
     <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
   </div>
 
@@ -31,16 +31,6 @@
     (mouseenter)="menuenter()"
     (mouseleave)="menuLeave(menuTrigger, dropdownButton)"
   >
-    <button
-      *ngFor="let option of options; index as i"
-      mat-menu-item
-      (click)="selectedOption(option)"
-      class="option"
-    >
-      <div>
-        <img *ngIf="option.iconSrc" src="{{ option.iconSrc }}" />
-        <span *ngIf="option.label" class="label-span">{{ option.label }}</span>
-      </div>
-    </button>
+    <ng-content></ng-content>
   </span>
 </mat-menu>

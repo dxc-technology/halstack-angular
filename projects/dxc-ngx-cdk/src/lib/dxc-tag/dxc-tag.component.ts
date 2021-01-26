@@ -182,7 +182,7 @@ export class DxcTagComponent implements OnInit {
       display: inline-flex;
       align-items: center;
       background-color: var(--tag-backgroundColor);
-
+      ${this.utils.calculateWidth(this.sizes, input)};
       ${input.labelPosition &&
       input.labelPosition != null &&
       input.labelPosition === "before"

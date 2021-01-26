@@ -23,4 +23,8 @@ export class DropdownInfoComponent {
     }
   ];
 
+  selected($event) {
+    console.log($event);
+  }
+
 }

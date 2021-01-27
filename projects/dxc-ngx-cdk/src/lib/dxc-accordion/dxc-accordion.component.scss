@@ -64,10 +64,11 @@
               color: var(--accordion-hoverFontColor);
             }
           }
-          svg.up {
-            display: none;
+          .caret-indicator{
+            transform: rotate(0deg);
+            transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
           }
-          svg.down {
+          svg {
             fill: var(--accordion-arrowColor);
           }
           .mat-expansion-panel-header-title,
@@ -79,10 +80,11 @@
             .mat-expansion-panel-header-description {
               color: var(--accordion-hoverFontColor);
             }
-            svg.down {
-              display: none;
+            .caret-indicator{
+              transform: rotate(-180deg);
+              transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
             }
-            svg.up {
+            svg {
               display: block;
               fill: var(--accordion-arrowColor);
             }
@@ -99,10 +101,7 @@
         mat-expansion-panel-header {
           opacity: var(--accordion-disabled);
           padding: 8px 30px;
-          svg.up {
-            display: none;
-          }
-          svg.down {
+          svg {
             fill: var(--accordion-arrowColor);
           }
         }

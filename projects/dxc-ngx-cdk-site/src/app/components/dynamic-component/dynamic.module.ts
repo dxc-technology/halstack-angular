@@ -5,6 +5,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AccordionExampleComponent } from "../examples/accordion/accordion-example/accordion-example.component";
 import { AccordionTablePropertiesComponent } from "../examples/accordion/properties/accordion-table-properties/accordion-table-properties.component";
+import { AccordionGroupExampleComponent } from "../examples/accordion-group/accordion-group-example/accordion-group-example.component";
+import { AccordionGroupTablePropertiesComponent } from "../examples/accordion-group/properties/accordion-group-table-properties/accordion-group-table-properties.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
@@ -81,6 +83,7 @@ import { HeaderDirectivesComponent } from '../examples/header/header-directives/
 import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
 import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
+import { AccordionGroupImportComponent } from '../examples/accordion-group/accordion-group-import/accordion-group-import.component';
 import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
 import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
 import { ButtonImportComponent } from '../examples/button/button-import/button-import.component';
@@ -153,6 +156,8 @@ import { WizardThemeComponent } from '../examples/wizard/wizard-theme/wizard-the
 import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.component';
 import { AccordionApiComponent } from '../examples/accordion/accordion-api/accordion-api.component';
 import { AccordionThemeComponent } from '../examples/accordion/accordion-theme/accordion-theme.component';
+import { AccordionGroupApiComponent } from '../examples/accordion-group/accordion-group-api/accordion-group-api.component';
+import { AccordionGroupThemeComponent } from '../examples/accordion-group/accordion-group-theme/accordion-group-theme.component';
 import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.component';
 import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-theme.component';
 import { DropdownThemeComponent } from '../examples/dropdown/dropdown-theme/dropdown-theme.component';
@@ -185,6 +190,8 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
   entryComponents: [
     AccordionExampleComponent,
     AccordionTablePropertiesComponent,
+    AccordionGroupExampleComponent,
+    AccordionGroupTablePropertiesComponent,
     AlertExampleComponent,
     AlertComponentPropertiesComponent,
     ApplicationLayoutApiComponent,
@@ -266,6 +273,7 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ResultsetTableDirectivesComponent,
     ResultsetTableDirectivesComponent,
     AccordionImportComponent,
+    AccordionGroupImportComponent,
     AlertImportComponent,
     BoxImportComponent,
     ButtonImportComponent,
@@ -335,6 +343,8 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     WizardThemeComponent,
     AccordionApiComponent,
     AccordionThemeComponent,
+    AccordionGroupApiComponent,
+    AccordionGroupThemeComponent,
     DialogApiComponent,
     DialogThemeComponent,
     DropdownApiComponent,

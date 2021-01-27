@@ -50,6 +50,7 @@ import { DxcLinkModule } from '../../../dxc-ngx-cdk/src/lib/dxc-link/dxc-link.mo
 import { DxcHeadingModule } from '../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
 import { DxcBoxModule } from '../../../dxc-ngx-cdk/src/lib/dxc-box/dxc-box.module';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { AccordionGroupModule } from './pages/accordion-group/accordion-group.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,8 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
     DxcSelectModule,
     ToggleGroupModule,
     DxcApplicationLayoutModule,
-    ScullyLibModule
+    ScullyLibModule,
+    AccordionGroupModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

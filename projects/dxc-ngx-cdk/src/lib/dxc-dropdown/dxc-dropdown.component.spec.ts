@@ -1,31 +1,22 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcDropdownComponent } from "./dxc-dropdown.component";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatButtonModule } from "@angular/material/button";
+import { DxcDropdownModule } from './dxc-dropdown.module';
 
 describe("DxcDropdown tests", () => {
-  const mockOptions = [
-    {
-      value: 1,
-      label: "Facebook",
-    },
-    {
-      value: 2,
-      label: "Twitter",
-    },
-    {
-      value: 3,
-      label: "Linkedin",
-    },
-  ];
+
   test("should render dxc-dropdown", async () => {
     const dxcDropdown = await render(DxcDropdownComponent, {
+      template: `<dxc-dropdown label="dropdown">,
+                  <dxc-dropdown-option>Facebook</dxc-dropdown-option>
+                  <dxc-dropdown-option>Twitter</dxc-dropdown-option>
+                  <dxc-dropdown-option>Linkedin</dxc-dropdown-option>
+                </dxc-dropdown>`,
       componentProperties: {
         label: "dropdown",
-        options: mockOptions,
       },
-      imports: [MatMenuModule, MatButtonModule],
+      imports: [DxcDropdownModule],
+      excludeComponentDeclaration: true,
     });
 
     expect(dxcDropdown.getByText("dropdown"));
@@ -33,11 +24,16 @@ describe("DxcDropdown tests", () => {
 
   test("should render options in dxc-dropdown", async () => {
     const dxcDropdown = await render(DxcDropdownComponent, {
+      template: `<dxc-dropdown label="dropdown">,
+                  <dxc-dropdown-option (onSelectOption)="onSelect()">Facebook</dxc-dropdown-option>
+                  <dxc-dropdown-option (onSelectOption)="onSelect()">Twitter</dxc-dropdown-option>
+                  <dxc-dropdown-option (onSelectOption)="onSelect()">Linkedin</dxc-dropdown-option>
+                </dxc-dropdown>`,
       componentProperties: {
         label: "dropdown",
-        options: mockOptions,
       },
-      imports: [MatMenuModule, MatButtonModule],
+      imports: [DxcDropdownModule],
+      excludeComponentDeclaration: true,
     });
 
     expect(dxcDropdown.getByText("dropdown"));
@@ -47,21 +43,28 @@ describe("DxcDropdown tests", () => {
   });
 
   test("options interaction in dxc-dropdown", async () => {
-    const onSelect = jest.fn();
+    const onSelect = jest.fn((i) => {});
+    const optionValue = "Facebook";
     const dxcDropdown = await render(DxcDropdownComponent, {
+      template: `<dxc-dropdown label="dropdown">,
+                  <dxc-dropdown-option [value]="optionValue" (onSelectOption)="onSelect($event)">Facebook</dxc-dropdown-option>
+                  <dxc-dropdown-option (onSelectOption)="onSelect()">Twitter</dxc-dropdown-option>
+                  <dxc-dropdown-option (onSelectOption)="onSelect()">Linkedin</dxc-dropdown-option>
+                </dxc-dropdown>`,
       componentProperties: {
-        label: "dropdown",
-        options: mockOptions,
-        onSelectOption: { emit: onSelect } as any,
+        onSelect,
+        optionValue
       },
-      imports: [MatMenuModule, MatButtonModule],
+      imports: [DxcDropdownModule],
+      excludeComponentDeclaration: true,
     });
 
     expect(dxcDropdown.getByText("dropdown"));
     fireEvent.click(dxcDropdown.getByText("dropdown"));
     dxcDropdown.detectChanges();
     expect(screen.getByText("Facebook"));
+    expect(screen.getByText("Twitter"));
     fireEvent.click(screen.getByText("Facebook"));
-    expect(onSelect).toHaveBeenCalledWith(1);
+    expect(onSelect).toHaveBeenCalledWith("Facebook");
   });
 });

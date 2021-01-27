@@ -126,6 +126,9 @@ export class DxcTagComponent implements OnInit {
   setStyleDxcBox() {
     this.dxcBox.toArray().forEach((el) => {
       (el.nativeElement as HTMLElement).style.border = "0px solid";
+      if(!this.label && this.size == "small"){
+        (el.nativeElement as HTMLElement).style.width = "48px"
+      }
     });
   }
 
@@ -194,6 +197,7 @@ export class DxcTagComponent implements OnInit {
 
   setIconContainerDynamicStyle(input: any) {
     return css`
+      height: 43px;
       display: inline-flex;
       width: 48px;
       justify-content: center;
@@ -205,7 +209,6 @@ export class DxcTagComponent implements OnInit {
             background: black;
           `}
       dxc-tag-icon{
-        height: 43px;
         img,svg{
           padding: 10px 12px;
           height: 23px;

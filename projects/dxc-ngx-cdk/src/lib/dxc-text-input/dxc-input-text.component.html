@@ -20,6 +20,7 @@
     src="{{ prefixIconSrc }}"
     id="prefixElement"
   />
+  <ng-content select="dxc-input-prefix-icon"></ng-content>
   <mat-label *ngIf="label">{{ label }}</mat-label>
   <input
     matInput
@@ -50,6 +51,7 @@
     *ngIf="suffixIconSrc"
     src="{{ suffixIconSrc }}"
   />
+  <ng-content select="dxc-input-suffix-icon"></ng-content>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>
 

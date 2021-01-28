@@ -16,7 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { ElementRef, HostListener } from "@angular/core";
 import { MatMenuTrigger } from "@angular/material/menu";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-dropdown",
@@ -28,7 +28,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   @HostBinding("class") className;
 
-  @Input() public options: { label?: string; value: any; iconSrc?: string }[];
   @Input() public name: string;
   @Input() public iconPosition: string = "before";
   @Input() public optionsIconPosition: string = "before";
@@ -51,7 +50,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   }
   private _caretHidden;
 
-  @Input() public iconSrc: string;
   @Input() public label: string = "";
   @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
 
@@ -71,21 +69,18 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   triggerStyles: string;
 
   defaultInputs = new BehaviorSubject<any>({
-    options: null,
     disableRipple: false,
     name: null,
     iconPosition: "before",
     optionsIconPosition: "before",
     mode: "basic",
     caretHidden: false,
-    iconSrc: null,
     label: null,
     margin: null,
     size: "fitContent",
     expandOnHover: false,
   });
 
-  public onlyHasIcons: boolean;
   public arrowClass: string = "down";
   public menuOpened: string = "closed";
   enterButton: boolean = false;
@@ -165,19 +160,20 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         background-color: var(--dropdown-scrollBarThumbColor);
         border-radius: 3px;
       }
-      img {
+      img,
+      svg {
         width: 20px;
         height: 20px;
         vertical-align: middle;
       }
       ${this.optionsIconPosition === "after"
         ? css`
-            img {
+            dxc-dropdown-icon {
               margin-left: 10px;
             }
           `
         : css`
-            img {
+            dxc-dropdown-icon {
               margin-right: 10px;
             }
           `}
@@ -215,7 +211,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.hasOptionsOnlyIcons();
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -244,14 +239,6 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   }
   public selectedOption(option: any): void {
     this.onSelectOption.emit(option.value);
-  }
-
-  public hasOptionsOnlyIcons() {
-    if (this.options) {
-      this.onlyHasIcons = this.options.every(
-        (option) => option.iconSrc && !option.label
-      );
-    }
   }
 
   calculateWidth(inputs) {
@@ -379,7 +366,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         width: fit-content;
         align-items: center;
       }
-      img {
+      img, svg {
         width: 20px;
         height: 20px;
         vertical-align: middle;
@@ -390,12 +377,12 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
             .buttonContent {
               flex-direction: row-reverse;
             }
-            img {
+            dxc-dropdown-icon {
               margin-left: 10px;
             }
           `
         : css`
-            img {
+            dxc-dropdown-icon {
               margin-right: 10px;
             }
           `}

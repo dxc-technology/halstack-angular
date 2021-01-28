@@ -3,9 +3,9 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dxc-technology/halstack-angular/blob/master/CONTRIBUTING.md)
 ![Publish Next Version](https://github.com/dxc-technology/halstack-angular/workflows/Publish%20Next%20Version/badge.svg)
 ![Publish Release](https://github.com/dxc-technology/halstack-angular/workflows/Publish%20Release/badge.svg)
-# Assure Angular CDK
+# Halstack Angular CDK
  
-Assure Angular CDK is a npm library of reusable Angular components, made with the purpose of helping Angular developers with the task of implementing User Interfaces following the DXC Design Guidelines.
+Halstack Angular CDK is a npm library of reusable Angular components, made with the purpose of helping Angular developers with the task of implementing User Interfaces following the DXC Design Guidelines.
 
 - It increases visual and behavioral consistency across the applications using the library.
   
@@ -13,7 +13,7 @@ Assure Angular CDK is a npm library of reusable Angular components, made with th
 
 ## Usage
 
-Assure Angular CDK is a set of reusable components distributed as a npm library. See the [documentation site](https://developer.dxc.com/tools/angular/) for details on how to use it.
+Halstack Angular CDK is a set of reusable components distributed as a npm library. See the [documentation site](https://developer.dxc.com/tools/angular/) for details on how to use it.
 
 ## Contributing
 
@@ -65,7 +65,7 @@ Install the application dependencies.
 npm install
 ```
 
-The Assure Angular CDK needs to be linked to the application (from the folder `dist\dxc-ngx-cdk`). This one must have been previously built as shown before.
+The Halstack Angular CDK needs to be linked to the application (from the folder `dist\dxc-ngx-cdk`). This one must have been previously built as shown before.
 
 ```bash
 npm run link-lib

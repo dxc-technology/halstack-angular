@@ -47,9 +47,9 @@ export class DxcTabComponent implements OnChanges {
   public ngAfterViewInit() {
     if(this.dxcTabIcon.length !== 0){
       this.iconSrc = "";
+      this.tabIcon = true;
     }
     else{
-       this.tabIcon = true;
        this.getLabelClass();
     }
     this.cdRef.detectChanges();

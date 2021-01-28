@@ -37,6 +37,7 @@ import { ResultsetTableComponent } from './pages/resultset-table/resultset-table
 import { ChipComponent } from './pages/chip/chip.component';
 import { TextAreaComponent } from './pages/text-area/text-area.component';
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
+import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 
 let routes: Routes = [];
 
@@ -51,6 +52,10 @@ let routes: Routes = [];
   {
     path: 'components/accordion',
     component: AccordionComponent
+  },
+  {
+    path: 'components/accordion-group',
+    component: AccordionGroupComponent
   },
   {
     path: 'components/alert',

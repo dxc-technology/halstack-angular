@@ -223,6 +223,14 @@
           <li>
             <dxc-link
               href=""
+              (click)="navigateToRoute('accordion-group'); $event.preventDefault()"
+              text="Accordion Group"
+              [underlined]="underlined"
+            ></dxc-link>
+          </li>
+          <li>
+            <dxc-link
+              href=""
               (click)="navigateToRoute('alert'); $event.preventDefault()"
               text="Alert"
               [underlined]="underlined"
@@ -236,6 +244,8 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
+        </ul>
+        <ul>
           <li>
             <dxc-link
               href=""
@@ -244,8 +254,6 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
-        </ul>
-        <ul>
           <li>
             <dxc-link
               href=""
@@ -270,6 +278,8 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
+        </ul>
+        <ul>
           <li>
             <dxc-link
               href=""
@@ -278,15 +288,13 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
-        </ul>
-        <ul>
           <li>
             <dxc-link
               href=""
               (click)="navigateToRoute('progressbar'); $event.preventDefault()"
               text="Progressbar"
               [underlined]="underlined"
-              >Progressbar</dxc-link
+              ></dxc-link
             >
           </li>
           <li>
@@ -307,6 +315,8 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
+        </ul>
+        <ul class="last">
           <li>
             <dxc-link
               href=""
@@ -315,8 +325,6 @@
               [underlined]="underlined"
             ></dxc-link>
           </li>
-        </ul>
-        <ul class="last">
           <li>
             <dxc-link
               href=""

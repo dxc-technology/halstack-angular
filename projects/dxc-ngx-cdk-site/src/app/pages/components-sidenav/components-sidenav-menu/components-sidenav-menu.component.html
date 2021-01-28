@@ -131,6 +131,11 @@
             (click)="navigateTo('components/accordion')">Accordion</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/accordion-group' ? 
+            router.isActive(router.createUrlTree(['components/accordion-group']).toString(), true) : false}"
+            (click)="navigateTo('components/accordion-group')">Accordion Group</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/alert' ? 
             router.isActive(router.createUrlTree(['components/alert']).toString(), true) : false}"
             (click)="navigateTo('components/alert')">Alert</a>

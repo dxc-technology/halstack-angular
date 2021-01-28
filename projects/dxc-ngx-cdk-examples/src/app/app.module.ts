@@ -36,6 +36,7 @@ import { ResultsetTableComponent } from "./pages/resultset-table/resultset-table
 import { CommonModule } from "@angular/common";
 import {
   DxcAccordionModule,
+  DxcAccordionGroupModule,
   DxcAlertModule,
   DxcBoxModule,
   DxcButtonModule,
@@ -149,7 +150,8 @@ import { ChipComponent } from './pages/chip/chip.component';
     DxcTextareaModule,
     ThemeModule,
     DxcApplicationLayoutModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcAccordionGroupModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

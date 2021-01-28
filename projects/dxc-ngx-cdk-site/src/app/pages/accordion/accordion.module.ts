@@ -42,7 +42,6 @@ import { AccordionExampleComponent } from '../../components/examples/accordion/a
   ], 
   exports: [
     AccordionComponent,
-    AccordionComponent,
     AccordionTablePropertiesComponent,
     AccordionImportComponent,
     AccordionApiComponent,

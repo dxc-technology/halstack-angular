@@ -12,6 +12,9 @@ export * from './lib/dxc-accordion/dxc-accordion.component';
 export * from './lib/dxc-accordion/dxc-accordion.module';
 export * from './lib/dxc-accordion/dxc-accordion-icon/dxc-accordion-icon.component';
 
+export * from './lib/dxc-accordionGroup/dxc-accordionGroup.component';
+export * from './lib/dxc-accordionGroup/dxc-accordionGroup.module';
+
 export * from './lib/dxc-alert/dxc-alert.component';
 export * from './lib/dxc-alert/dxc-alert.module';
 

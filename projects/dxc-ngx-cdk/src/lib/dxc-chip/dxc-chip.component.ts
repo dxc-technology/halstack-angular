@@ -134,7 +134,7 @@ export class DxcChipComponent implements OnChanges {
         text-overflow: ellipsis;
         color: var(--chip-fontColor);
       }
-      img {
+      img,svg {
         max-width: 24px;
         max-height: 24px;
       }

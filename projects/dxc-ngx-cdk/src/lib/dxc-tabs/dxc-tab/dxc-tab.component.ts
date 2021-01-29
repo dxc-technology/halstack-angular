@@ -59,17 +59,11 @@ export class DxcTabComponent implements OnChanges {
   }
 
   getLabelClass() {
-    console.log("this.iconSrc: ",this.iconSrc);
-    console.log("this.tabIcon: ",this.tabIcon);
-    console.log("this.label: ",this.label);
     if ((this.iconSrc || this.tabIcon) && this.label) {
-      console.log("icon-text");
       this.labelClass = "icon-text";
     } else if (!this.iconSrc && !this.tabIcon) {
-      console.log("text");
       this.labelClass = "only-text";
     } else {
-      console.log("icon");
       this.labelClass = "only-icon";
     }
   }

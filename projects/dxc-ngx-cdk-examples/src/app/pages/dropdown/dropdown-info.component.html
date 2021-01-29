@@ -1,6 +1,6 @@
 <div>
   <!-- <h3>Sizes</h3> -->
-  <dxc-dropdown label="Medium" size="medium" margin="small" iconPosition="after">
+  <dxc-dropdown label="Medium" size="medium" margin="small" iconPosition="after" (onSelectOption)="selected($event)">
     <dxc-dropdown-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -14,8 +14,7 @@
         />
       </svg>
     </dxc-dropdown-icon>
-    <dxc-dropdown-option value="1" (onSelectOption)="selected($event)">
-      testing label 1
+    <dxc-dropdown-option label="testing label 1" value="1">
       <dxc-dropdown-icon>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,8 +29,8 @@
         </svg>
       </dxc-dropdown-icon>
     </dxc-dropdown-option>
-    <dxc-dropdown-option>testing label 2</dxc-dropdown-option>
-    <dxc-dropdown-option>testing label 3</dxc-dropdown-option>
+    <dxc-dropdown-option label="testing label 2" value="2"></dxc-dropdown-option>
+    <dxc-dropdown-option label="testing label 3" value="3"></dxc-dropdown-option>
   </dxc-dropdown>
   <!-- <div>
     <dxc-dropdown

@@ -5,15 +5,20 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
+  ContentChildren,
+  QueryList,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
+import { ChangeDetectorRef } from "@angular/core";
+import { WizardService } from "./services/wizard.service";
 
 @Component({
   selector: "dxc-wizard",
   templateUrl: "./dxc-wizard.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, WizardService],
 })
 export class DxcWizardComponent {
   @Input() mode: string;
@@ -22,25 +27,51 @@ export class DxcWizardComponent {
   @Input() steps: Array<any>;
   @Output() onStepClick = new EventEmitter<any>();
 
+  @ContentChildren(DxcWizardStepComponent)
+  dxcWizardSteps: QueryList<DxcWizardStepComponent>;
+
   innerCurrentStep: number;
 
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({
     mode: "horizontal",
-    currentStep: 0,
+    currentStep: null,
     margin: null,
     steps: null,
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(
+    private utils: CssUtils,
+    private cdRef: ChangeDetectorRef,
+    private service: WizardService
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.service.setSteps(this.dxcWizardSteps);
+    this.service.newCurrentStep.subscribe((value) =>
+      this.handleStepClick(value)
+    );
+    this.dxcWizardSteps.changes.subscribe(() => {
+      this.service.setSteps(this.dxcWizardSteps);
+    });
+  }
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    if (this.currentStep) {
+      this.service.innerCurrentStep.next(this.currentStep);
+    } else {
+      this.service.innerCurrentStep.next(0);
+    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.innerCurrentStep = this.currentStep || 0;
+    if (this.currentStep) {
+      this.service.innerCurrentStep.next(this.currentStep);
+    } else {
+      this.service.innerCurrentStep.next(0);
+    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -51,7 +82,7 @@ export class DxcWizardComponent {
 
   public handleStepClick(i) {
     if (this.currentStep == null) {
-      this.innerCurrentStep = i;
+      this.service.innerCurrentStep.next(i);
     }
 
     if (this.onStepClick) {

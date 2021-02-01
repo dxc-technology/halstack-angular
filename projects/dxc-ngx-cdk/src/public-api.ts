@@ -114,7 +114,7 @@ export * from './lib/dxc-paginator/dxc-paginator.module';
 
 export * from './lib/dxc-wizard/dxc-wizard.component';
 export * from './lib/dxc-wizard/dxc-wizard.module';
-export * from './lib/dxc-wizard/dxc-step/dxc-step.component';
+export * from './lib/dxc-wizard/dxc-wizard-step/dxc-wizard-step.component';
 
 export * from './lib/dxc-link/dxc-link.component';
 export * from './lib/dxc-link/dxc-link.module';

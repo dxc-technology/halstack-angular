@@ -1,45 +1,72 @@
-import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  Input,
+  HostBinding,
+  SimpleChanges,
+  ContentChildren,
+  QueryList,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
+import { DxcWizardIconComponent } from "../dxc-wizard-icon/dxc-wizard-icon.component";
+import { WizardService } from "../services/wizard.service";
 
 @Component({
-  selector: "dxc-step",
-  templateUrl: "./dxc-step.component.html",
+  selector: "dxc-wizard-step",
+  templateUrl: "./dxc-wizard-step.component.html",
 })
-export class DxcStepComponent {
+export class DxcWizardStepComponent {
   @Input() label: string;
   @Input() description: string;
-  @Input() iconSrc: string;
   @Input() disabled: boolean;
   @Input() valid: boolean;
 
   @Input() position: number;
   @Input() isCurrent: boolean;
   @Input() isFirst: boolean;
-  @Input() isLast: boolean;
+  @Input() isLast: boolean = false;
 
   @Input() mode: string;
   @Input() currentStep: number;
 
+  @ContentChildren(DxcWizardIconComponent)
+  dxcWizardIcon: QueryList<DxcWizardIconComponent>;
+
   validIcon = "assets/valid_icon.svg";
   invalidIcon = "assets/invalid_icon.svg";
+  containsIcon = false;
 
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({
     label: null,
     description: null,
-    iconSrc: null,
     disabled: false,
     valid: null,
     mode: "horizontal",
     currentStep: 0,
   });
 
-  constructor() {}
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private service: WizardService
+  ) {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit dxc-wizard-step ", this.position);
+    this.containsIcon = this.dxcWizardIcon.length != 0;
+    this.cdRef.detectChanges();
+    console.log("detectChanges");
+  }
+
+  public setIsLast(value: boolean): void {
+    console.log("setIsLast", value);
+    this.isLast = value;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -51,9 +78,13 @@ export class DxcStepComponent {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  public ngDoCheck() {
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  public handleStepClick() {
+    this.service.newCurrentStep.next(this.position);
   }
+
+  // public ngDoCheck() {
+  //   this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  // }
 
   getDynamicStyle(inputs) {
     return css`
@@ -173,7 +204,8 @@ export class DxcStepComponent {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
         color: inherit;
-        ${inputs.position > inputs.currentStep && `opacity: var(--wizard-notVisitedOpacity);`}
+        ${inputs.position > inputs.currentStep &&
+        `opacity: var(--wizard-notVisitedOpacity);`}
         ${inputs.disabled && `opacity: var(--wizard-disabled);`}
         margin: 0;
       }

@@ -1,4 +1,4 @@
-<dxc-step
+<!-- <dxc-step
   *ngFor="let step of steps; let i = index"
   [label]="step.label"
   [description]="step.description"
@@ -13,4 +13,5 @@
   [currentStep]="innerCurrentStep"
   (click)="!step.disabled ? handleStepClick(i) : ''"
 >
-</dxc-step>
+</dxc-step> -->
+<ng-content></ng-content>

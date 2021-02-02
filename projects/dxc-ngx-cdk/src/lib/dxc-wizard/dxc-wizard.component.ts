@@ -88,6 +88,23 @@ export class DxcWizardComponent {
       flex-direction: ${inputs.mode === "vertical" ? "column" : "row"};
       justify-content: center;
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
+
+      .current {
+        .iconContainer {
+          width: "36px";
+          height: "36px";
+
+          background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat
+            padding-box;
+          p {
+            color: var(--wizard-selectedFont) !important;
+          }
+        }
+
+        .number {
+          color: "var(--wizard-fontColor)";
+        }
+      }
     `;
   }
 }

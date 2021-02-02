@@ -73,15 +73,17 @@ export class DxcWizardStepComponent {
     this.cdRef.detectChanges();
   }
 
+  @HostBinding('class.current') get validCurrent() { return this.isCurrent; }
+
   public setIsCurrent(value: boolean): void {
     console.log("setIsCurrent", value);
     this.isCurrent = value;
-    this.defaultInputs.next({
-      ...this.defaultInputs.getValue(),
-      isCurrent: value,
-    });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.cdRef.detectChanges();
+    // this.defaultInputs.next({
+    //   ...this.defaultInputs.getValue(),
+    //   isCurrent: value,
+    // });
+    // this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    // this.cdRef.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

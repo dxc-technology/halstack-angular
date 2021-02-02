@@ -2,127 +2,104 @@ import { render, fireEvent } from "@testing-library/angular";
 import { DxcToggleGroupComponent } from "./dxc-toggleGroup.component";
 import { DxcToggleGroupModule } from "./dxc-toggleGroup.module";
 
-const optionsMock = [
-  {
-    value: "pepe",
-    label: "Amazon",
-  },
-  {
-    value: "martin",
-    label: "Ebay",
-  },
-  {
-    value: "3",
-    label: "Apple",
-  },
-  {
-    value: "4",
-    label: "Google",
-  },
-];
-
 describe("DxcToggleGroup tests", () => {
-  test("should render dxc-toggleGroup", async () => {
-    const { getByText } = await render(DxcToggleGroupComponent, {
-      componentProperties: { options: optionsMock },
-      excludeComponentDeclaration: true,
-      imports: [DxcToggleGroupModule],
-    });
-
-    expect(getByText("Amazon"));
-    expect(getByText("Google"));
-  });
-
-  test("dxc-toggleGroup uncontrolled functionality", async () => {
-    const changeMock = jest.fn();
+  test("should render dxc-togglegroup", async () => {
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
+      template: `<dxc-togglegroup>,
+                  <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+                  <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+                  <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+                </dxc-togglegroup>`,
       componentProperties: {
-        options: optionsMock,
-        onChange: { emit: changeMock } as any,
       },
-      excludeComponentDeclaration: true,
       imports: [DxcToggleGroupModule],
+      excludeComponentDeclaration: true,
     });
 
-    expect(dxcToggleGroup.getByText("Amazon"));
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
-    expect(changeMock).toHaveBeenCalledWith("pepe");
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
-    expect(changeMock).toHaveBeenCalledWith("");
+    expect(dxcToggleGroup.getByText("Facebook"));
   });
 
   test("dxc-toggleGroup uncontrolled multiple functionality", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
+      template: `<dxc-togglegroup multiple="true" (onChange)="changeMock($event)">,
+                  <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+                  <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+                  <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+                </dxc-togglegroup>`,
       componentProperties: {
-        options: optionsMock,
-        onChange: { emit: changeMock } as any,
-        multiple: true
+        changeMock
       },
-      excludeComponentDeclaration: true,
       imports: [DxcToggleGroupModule],
+      excludeComponentDeclaration: true,
     });
 
-    expect(dxcToggleGroup.getByText("Amazon"));
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
-    expect(changeMock).toHaveBeenCalledWith(["pepe"]);
-    fireEvent.click(dxcToggleGroup.getByText("Apple"));
-    expect(changeMock).toHaveBeenCalledWith(["pepe", "3"]);
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
-    expect(changeMock).toHaveBeenCalledWith(["3"]);
+    expect(dxcToggleGroup.getByText("Facebook"));
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
+    expect(changeMock).toHaveBeenCalledWith(["1"]);
+    fireEvent.click(dxcToggleGroup.getByText("Twitter"));
+    expect(changeMock).toHaveBeenCalledWith(["1", "2"]);
   });
 
   test("dxc-toggleGroup controlled functionality", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
+      template: `<dxc-togglegroup value="1" (onChange)="changeMock($event)">,
+                  <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+                  <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+                  <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+                </dxc-togglegroup>`,
       componentProperties: {
-        options: optionsMock,
-        onChange: { emit: changeMock } as any,
-        value: "pepe"
+        changeMock
       },
-      excludeComponentDeclaration: true,
       imports: [DxcToggleGroupModule],
+      excludeComponentDeclaration: true,
     });
 
-    fireEvent.click(dxcToggleGroup.getByText("Google"));
-    expect(changeMock).toHaveBeenCalledWith("4");
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
+    fireEvent.click(dxcToggleGroup.getByText("Twitter"));
+    expect(changeMock).toHaveBeenCalledWith("2");
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
     expect(changeMock).toHaveBeenCalledWith("");
   });
 
   test("dxc-toggleGroup controlled multiple functionality", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
+      template: `<dxc-togglegroup multiple="true" value="1" (onChange)="changeMock($event)">,
+                  <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+                  <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+                  <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+                </dxc-togglegroup>`,
       componentProperties: {
-        options: optionsMock,
-        onChange: { emit: changeMock } as any,
-        value: "pepe",
-        multiple: true
+        changeMock
       },
-      excludeComponentDeclaration: true,
       imports: [DxcToggleGroupModule],
+      excludeComponentDeclaration: true,
     });
 
-    fireEvent.click(dxcToggleGroup.getByText("Google"));
-    expect(changeMock).toHaveBeenCalledWith(["pepe", "4"]);
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
-    expect(changeMock).toHaveBeenCalledWith([]);
+    fireEvent.click(dxcToggleGroup.getByText("Twitter"));
+    expect(changeMock).toHaveBeenCalledWith(["1", "2"]);
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
+    expect(changeMock).toHaveBeenCalledWith("");
   });
 
   test("dxc-toggleGroup disabled", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
+      template: `<dxc-togglegroup disabled="true" (onChange)="changeMock($event)">,
+                  <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+                  <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+                  <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+                </dxc-togglegroup>`,
       componentProperties: {
-        options: optionsMock,
-        onChange: { emit: changeMock } as any,
-        disabled: true
+        changeMock
       },
-      excludeComponentDeclaration: true,
       imports: [DxcToggleGroupModule],
+      excludeComponentDeclaration: true,
     });
 
-    expect(dxcToggleGroup.getByText("Amazon"));
-    fireEvent.click(dxcToggleGroup.getByText("Amazon"));
+    expect(dxcToggleGroup.getByText("Facebook"));
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
     expect(changeMock).toHaveBeenCalledTimes(0);
   });
 });

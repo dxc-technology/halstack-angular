@@ -3,11 +3,12 @@ import { MatIconModule } from "@angular/material/icon";
 import { CommonModule } from "@angular/common";
 import { DxcToggleGroupComponent } from "./dxc-toggleGroup.component";
 import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
+import { DxcToggleIconComponent } from './dxc-toggle-icon/dxc-toggle-icon.component';
 
 @NgModule({
-  declarations: [DxcToggleGroupComponent, DxcToggleComponent],
+  declarations: [DxcToggleGroupComponent, DxcToggleComponent, DxcToggleIconComponent],
   imports: [CommonModule, MatIconModule],
-  exports: [DxcToggleGroupComponent, DxcToggleComponent],
+  exports: [DxcToggleGroupComponent, DxcToggleComponent, DxcToggleIconComponent],
   entryComponents: [],
 })
 export class DxcToggleGroupModule {}

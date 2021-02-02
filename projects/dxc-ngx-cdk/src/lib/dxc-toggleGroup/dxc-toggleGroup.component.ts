@@ -10,13 +10,14 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { ToggleGroupService } from "./services/toggleGroup.service";
 
 @Component({
-  selector: "dxc-toggleGroup",
+  selector: "dxc-togglegroup",
   templateUrl: "./dxc-toggleGroup.component.html",
   styleUrls: [],
-  providers: [CssUtils],
+  providers: [CssUtils, ToggleGroupService],
 })
 export class DxcToggleGroupComponent implements OnInit {
   @Input()
@@ -37,11 +38,6 @@ export class DxcToggleGroupComponent implements OnInit {
   private _disabled = false;
   @Input() public margin: any;
   @Input() public value: any;
-  @Input() public options: {
-    label?: string;
-    iconSrc?: string;
-    value: any;
-  }[];
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
 
   selectedOptions = [];
@@ -53,7 +49,7 @@ export class DxcToggleGroupComponent implements OnInit {
     disabled: false,
     margin: null,
   });
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private service: ToggleGroupService) {}
 
   ngOnInit() {
     if (this.value || this.value === "") {
@@ -62,6 +58,20 @@ export class DxcToggleGroupComponent implements OnInit {
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
+  }
+
+  ngAfterViewInit() {
+    this.service.values.subscribe((valuesSelected) => {
+      if (valuesSelected && valuesSelected[0]) {
+        this.selectedOptions = valuesSelected;
+      } else {
+        this.selectedOptions = [];
+      }
+    });
+
+    this.service.selected.subscribe((selected) => {
+      this.valueChanged(selected);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -87,40 +97,46 @@ export class DxcToggleGroupComponent implements OnInit {
         this.selectedOptions.push(this.value);
       }
     }
+    this.service.setValues(this.selectedOptions);
   }
 
-  public valueChanged($event: any): void {
+  public valueChanged(newSelected: any): void {
     if (!this.disabled) {
       const selectedValues = [];
       if (this.value || this.value === "") {
         if (this.multiple) {
           this.selectedOptions.map((value) => {
-            if (value !== $event) {
+            if (newSelected && value !== newSelected) {
               selectedValues.push(value);
             }
           });
         }
-        if (!this.selectedOptions.includes($event)) {
-          selectedValues.push($event);
+        if (!this.selectedOptions.includes(newSelected)) {
+          selectedValues.push(newSelected);
         }
       } else {
-        if (this.selectedOptions && this.selectedOptions.includes($event)) {
-          const index = this.selectedOptions.indexOf($event);
+        if (
+          newSelected &&
+          this.selectedOptions &&
+          this.selectedOptions.includes(newSelected)
+        ) {
+          const index = this.selectedOptions.indexOf(newSelected);
           this.selectedOptions.splice(index, 1);
         } else {
-          if (this.multiple) {
-            this.selectedOptions.push($event);
+          if (this.multiple && newSelected) {
+            this.selectedOptions.push(newSelected);
           } else {
-            this.selectedOptions = [$event];
+            this.selectedOptions = [newSelected];
           }
         }
         this.selectedOptions.map((value) => {
           selectedValues.push(value);
         });
+        this.service.setValues(selectedValues);
       }
-      if (this.multiple) {
+      if (newSelected && this.multiple && selectedValues && selectedValues[0]) {
         this.onChange.emit(selectedValues);
-      } else {
+      } else if (newSelected){
         this.onChange.emit(selectedValues[0] || "");
       }
     }
@@ -169,30 +185,29 @@ export class DxcToggleGroupComponent implements OnInit {
       overflow: hidden;
       ${this.utils.getMargins(inputs.margin)}
 
-      .toggleContainer {
-        height: 100%;
-
-        ${this.disabledStyles()}
+      ${this.disabledStyles()}
         dxc-toggle {
+        height: 100%;
+        display: flex;
+        background: var(--toggle-unselectedBackgroundColor);
+        color: var(--toggle-unselectedFontColor);
+
+        .toggleContent {
           height: 100%;
           display: flex;
-          background: var(--toggle-unselectedBackgroundColor);
-          color: var(--toggle-unselectedFontColor);
-
-          .toggleContent {
-            height: 100%;
+          align-items: center;
+          .label {
+            margin: 12px 30px;
+            letter-spacing: 1.25px;
+            font: normal 14px "Open Sans", sans-serif;
+          }
+          dxc-toggle-icon {
             display: flex;
-            align-items: center;
-            .label {
-              margin: 12px 30px;
-              letter-spacing: 1.25px;
-              font: normal 14px Open Sans;
-            }
-            .icon {
-              width: 24px;
-              height: 24px;
-              margin: 10px 12px;
-            }
+          }
+          .icon {
+            width: 24px;
+            height: 24px;
+            margin: 10px 12px;
           }
         }
       }

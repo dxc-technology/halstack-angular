@@ -1,14 +1,18 @@
 <div>
   <h3>Default wizard</h3>
   <dxc-wizard>
+    <dxc-wizard-step></dxc-wizard-step>
+    <dxc-wizard-step></dxc-wizard-step>
+    <dxc-wizard-step></dxc-wizard-step>
+    <dxc-wizard-step valid="false"></dxc-wizard-step>
+  </dxc-wizard>
+</div>
+<div>
+  <h3>Controlled wizard</h3>
+  <dxc-wizard [currentStep]="currentStep" (onStepClick)="myOnStepClick($event)">
     <dxc-wizard-step>
       <dxc-wizard-icon>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="currentColor">
           <path d="M0 0h24v24H0z" fill="none" />
           <path
             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
@@ -16,25 +20,81 @@
         </svg>
       </dxc-wizard-icon>
     </dxc-wizard-step>
-    <dxc-wizard-step></dxc-wizard-step>
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <svg fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          />
+        </svg>
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <img src="./assets/images/home.svg" />
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <img src="./assets/images/home.svg" />
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
   </dxc-wizard>
 </div>
-<!-- <div>
-    <h3>Controlled wizard</h3>
-    <dxc-wizard 
-        [currentStep]="currentStep"
-        (onStepClick)="myOnStepClick($event)"
-        [steps]="stepsExample2">
-    </dxc-wizard>
-</div>
 <div>
-    <h3>Vertical wizards</h3>
-    <dxc-wizard 
-        mode="vertical"
-        [steps]="stepsExample4">
-    </dxc-wizard>
-    <dxc-wizard 
-        mode="vertical"
-        [steps]="stepsExample2">
-    </dxc-wizard>
-</div> -->
+  <h3>Vertical wizards</h3>
+  <dxc-wizard mode="vertical">
+    <dxc-wizard-step
+      label="First step"
+      description="My step description"
+      valid="false"
+    ></dxc-wizard-step>
+    <dxc-wizard-step
+      label="Second step"
+      description="Another step description"
+      valid
+    ></dxc-wizard-step>
+    <dxc-wizard-step
+      label="Third step"
+      description="Almost finished"
+    ></dxc-wizard-step>
+    <dxc-wizard-step
+      label="Forth step"
+      description="Disabled step"
+      disabled
+    ></dxc-wizard-step>
+  </dxc-wizard>
+  <dxc-wizard mode="vertical">
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <svg fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          />
+        </svg>
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <svg fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          />
+        </svg>
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <img src="./assets/images/home.svg" />
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
+    <dxc-wizard-step>
+      <dxc-wizard-icon>
+        <img src="./assets/images/home.svg" />
+      </dxc-wizard-icon>
+    </dxc-wizard-step>
+  </dxc-wizard>
+</div>

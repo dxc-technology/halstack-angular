@@ -16,7 +16,16 @@ export class DxcWizardIconComponent {
 
   getDynamicStyle() {
     return css`
+      width: 19px;
+      height: 19px;
+      overflow: hidden;
       display: flex;
+      justify-content: center;
+      align-items: center;
+      svg,
+      img {
+        height: 100%;
+      }
     `;
   }
 }

@@ -12,7 +12,6 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
-import { ChangeDetectorRef } from "@angular/core";
 import { WizardService } from "./services/wizard.service";
 
 @Component({
@@ -24,13 +23,13 @@ export class DxcWizardComponent {
   @Input() mode: string;
   @Input() currentStep: number;
   @Input() margin: any;
-  @Input() steps: Array<any>;
+  // @Input() steps: Array<any>;
   @Output() onStepClick = new EventEmitter<any>();
 
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;
 
-  innerCurrentStep: number;
+  // innerCurrentStep: number;
 
   @HostBinding("class") className;
 
@@ -41,37 +40,29 @@ export class DxcWizardComponent {
     steps: null,
   });
 
-  constructor(
-    private utils: CssUtils,
-    private cdRef: ChangeDetectorRef,
-    private service: WizardService
-  ) {}
+  constructor(private utils: CssUtils, private service: WizardService) {}
 
   ngAfterViewInit(): void {
     this.service.setSteps(this.dxcWizardSteps);
-    this.service.newCurrentStep.subscribe((value) =>
-      this.handleStepClick(value)
-    );
+    this.service.newCurrentStep.subscribe((value) => {
+      if (value || value === 0) {
+        this.handleStepClick(value);
+      }
+    });
     this.dxcWizardSteps.changes.subscribe(() => {
       this.service.setSteps(this.dxcWizardSteps);
     });
   }
 
   ngOnInit() {
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.currentStep) {
-      this.service.innerCurrentStep.next(this.currentStep);
-    } else {
-      this.service.innerCurrentStep.next(0);
-    }
+    // this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    // this.service.innerCurrentStep.next(this.currentStep || 0);
+    // this.service.mode.next(this.mode || "horizontal");
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.currentStep) {
-      this.service.innerCurrentStep.next(this.currentStep);
-    } else {
-      this.service.innerCurrentStep.next(0);
-    }
+    this.service.innerCurrentStep.next(this.currentStep || 0);
+    this.service.mode.next(this.mode || "horizontal");
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;

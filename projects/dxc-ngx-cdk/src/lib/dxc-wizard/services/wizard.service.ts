@@ -9,31 +9,30 @@ import { DxcWizardStepComponent } from "../dxc-wizard-step/dxc-wizard-step.compo
 export class WizardService {
   constructor() {
     this.innerCurrentStep.subscribe((newCurrent) => {
-      if (this.steps) {
+      if (this.steps && (newCurrent || newCurrent === 0)) {
         this.steps.forEach((element, index) => {
-          element.isCurrent = index === newCurrent;
+          element.setIsCurrent(index === newCurrent);
         });
       }
     });
   }
 
   public steps: QueryList<DxcWizardStepComponent> = undefined;
-  public innerCurrentStep: BehaviorSubject<number> = new BehaviorSubject(
-    undefined
-  );
+  public innerCurrentStep: BehaviorSubject<number> = new BehaviorSubject(0);
   public newCurrentStep: BehaviorSubject<number> = new BehaviorSubject(
     undefined
   );
+  public mode: BehaviorSubject<string> = new BehaviorSubject("horizontal");
 
   public setSteps(steps: QueryList<DxcWizardStepComponent>): void {
     this.steps = steps;
     if (this.steps) {
       this.steps.forEach((element, index) => {
         element.isFirst = index === 0;
-        //element.isLast = index === this.steps.length - 1;
         element.setIsLast(index === this.steps.length - 1);
-        element.position = index + 1;
-        element.isCurrent = index === this.innerCurrentStep.value;
+        element.position = index;
+        element.setIsCurrent(index === this.innerCurrentStep.value);
+        //element.currentStep = this.innerCurrentStep.value;
       });
     }
   }

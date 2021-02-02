@@ -22,13 +22,13 @@ export class DxcWizardStepComponent {
   @Input() disabled: boolean;
   @Input() valid: boolean;
 
+  //Props controlled by father component
   @Input() position: number;
   @Input() isCurrent: boolean;
   @Input() isFirst: boolean;
-  @Input() isLast: boolean = false;
-
-  @Input() mode: string;
-  @Input() currentStep: number;
+  @Input() isLast: boolean;
+  private mode: string;
+  @Input() childCurrentStep: number;
 
   @ContentChildren(DxcWizardIconComponent)
   dxcWizardIcon: QueryList<DxcWizardIconComponent>;
@@ -45,7 +45,7 @@ export class DxcWizardStepComponent {
     disabled: false,
     valid: null,
     mode: "horizontal",
-    currentStep: 0,
+    childCurrentStep: 0,
   });
 
   constructor(
@@ -59,14 +59,29 @@ export class DxcWizardStepComponent {
 
   ngAfterViewInit(): void {
     console.log("ngAfterViewInit dxc-wizard-step ", this.position);
-    this.containsIcon = this.dxcWizardIcon.length != 0;
+    this.containsIcon = this.dxcWizardIcon.length !== 0;
+    this.service.mode.subscribe((value) => {
+      if (value) {
+        this.mode = value;
+      }
+    });
     this.cdRef.detectChanges();
-    console.log("detectChanges");
   }
 
   public setIsLast(value: boolean): void {
-    console.log("setIsLast", value);
     this.isLast = value;
+    this.cdRef.detectChanges();
+  }
+
+  public setIsCurrent(value: boolean): void {
+    console.log("setIsCurrent", value);
+    this.isCurrent = value;
+    this.defaultInputs.next({
+      ...this.defaultInputs.getValue(),
+      isCurrent: value,
+    });
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.cdRef.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -74,17 +89,20 @@ export class DxcWizardStepComponent {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
-    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.defaultInputs.next({
+      ...this.defaultInputs.getValue(),
+      ...inputs,
+      mode: this.mode,
+    });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   public handleStepClick() {
-    this.service.newCurrentStep.next(this.position);
+    if (this.position || this.position === 0) {
+      console.log(this.position);
+      this.service.newCurrentStep.next(this.position);
+    }
   }
-
-  // public ngDoCheck() {
-  //   this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-  // }
 
   getDynamicStyle(inputs) {
     return css`
@@ -167,13 +185,8 @@ export class DxcWizardStepComponent {
         align-items: center;
       }
 
-      .icon {
-        width: 19px;
-        height: 19px;
-      }
-
       .number {
-        font: Normal 16px/22px Open Sans;
+        font: Normal 16px/22px "Open Sans", sans-serif;
         letter-spacing: 0.77px;
         color: ${!inputs.isCurrent && !inputs.disabled
           ? "var(--wizard-fontColor)"
@@ -194,17 +207,17 @@ export class DxcWizardStepComponent {
 
       .infoContainer {
         margin-left: 10px;
-        color: ${inputs.position <= inputs.currentStep
+        color: ${inputs.position <= inputs.childCurrentStep
           ? "var(--wizard-fontColor)"
           : "var(--wizard-disabledFont)"};
       }
 
       .label {
         text-align: left;
-        font: Normal 16px/22px Open Sans;
+        font: Normal 16px/22px "Open Sans", sans-serif;
         letter-spacing: 0.77px;
         color: inherit;
-        ${inputs.position > inputs.currentStep &&
+        ${inputs.position > inputs.childCurrentStep &&
         `opacity: var(--wizard-notVisitedOpacity);`}
         ${inputs.disabled && `opacity: var(--wizard-disabled);`}
         margin: 0;
@@ -212,7 +225,7 @@ export class DxcWizardStepComponent {
 
       .description {
         text-align: left;
-        font: Normal 12px/17px Open Sans;
+        font: Normal 12px/17px "Open Sans", sans-serif;
         letter-spacing: 0.58px;
         color: inherit;
         margin: 0;

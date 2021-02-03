@@ -13,6 +13,7 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
 import { WizardService } from "./services/wizard.service";
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: "dxc-wizard",
@@ -20,7 +21,7 @@ import { WizardService } from "./services/wizard.service";
   providers: [CssUtils, WizardService],
 })
 export class DxcWizardComponent {
-  @Input() mode: string;
+  @Input() mode: string = "horizontal";
   @Input() currentStep: number;
   @Input() margin: any;
   // @Input() steps: Array<any>;
@@ -40,7 +41,7 @@ export class DxcWizardComponent {
     steps: null,
   });
 
-  constructor(private utils: CssUtils, private service: WizardService) {}
+  constructor(private cdRef: ChangeDetectorRef,private utils: CssUtils, private service: WizardService) {}
 
   ngAfterViewInit(): void {
     this.service.setSteps(this.dxcWizardSteps);
@@ -52,23 +53,27 @@ export class DxcWizardComponent {
     this.dxcWizardSteps.changes.subscribe(() => {
       this.service.setSteps(this.dxcWizardSteps);
     });
+    this.cdRef.detectChanges();
   }
 
   ngOnInit() {
-    // this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     // this.service.innerCurrentStep.next(this.currentStep || 0);
-    // this.service.mode.next(this.mode || "horizontal");
+    this.service.mode.next(this.mode);
+    this.cdRef.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.service.innerCurrentStep.next(this.currentStep || 0);
-    this.service.mode.next(this.mode || "horizontal");
+    this.service.mode.next(this.mode);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+
+    this.cdRef.detectChanges();
   }
 
   public handleStepClick(i) {
@@ -104,7 +109,7 @@ export class DxcWizardComponent {
         .number {
           color: "var(--wizard-fontColor)";
         }
-      }
+      } 
     `;
   }
 }

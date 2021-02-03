@@ -23,7 +23,7 @@ export class DxcWizardStepComponent {
   @Input() valid: boolean;
 
   //Props controlled by father component
-  @Input() position: number;
+  @Input() position: number = 0;
   @Input() isCurrent: boolean;
   @Input() isFirst: boolean;
   @Input() isLast: boolean;
@@ -38,6 +38,7 @@ export class DxcWizardStepComponent {
   containsIcon = false;
 
   @HostBinding("class") className;
+  @HostBinding('class.current') get validCurrent() { return this.isCurrent; }
 
   defaultInputs = new BehaviorSubject<any>({
     label: null,
@@ -46,6 +47,7 @@ export class DxcWizardStepComponent {
     valid: null,
     mode: "horizontal",
     childCurrentStep: 0,
+    position: 0
   });
 
   constructor(
@@ -73,8 +75,6 @@ export class DxcWizardStepComponent {
     this.cdRef.detectChanges();
   }
 
-  @HostBinding('class.current') get validCurrent() { return this.isCurrent; }
-
   public setIsCurrent(value: boolean): void {
     console.log("setIsCurrent", value);
     this.isCurrent = value;
@@ -83,7 +83,7 @@ export class DxcWizardStepComponent {
     //   isCurrent: value,
     // });
     // this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    // this.cdRef.detectChanges();
+    this.cdRef.detectChanges();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

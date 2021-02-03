@@ -38,7 +38,6 @@ export class DxcWizardStepComponent {
   mode: string = "horizontal";
 
   @HostBinding("class") className;
-
   @HostBinding('class.current') get validCurrent() { return this.isCurrent; }
 
   defaultInputs = new BehaviorSubject<any>({

@@ -19,7 +19,7 @@ export class WizardComponent implements OnInit {
     this.stepsExample2 = new Array<any>();
     this.stepsExample3 = new Array<any>();
     this.stepsExample4 = new Array<any>();
-    this.currentStep = 1;
+    this.currentStep = 0;
   }
 
   ngOnInit() {

@@ -76,13 +76,11 @@ export class DxcWizardComponent {
   }
 
   public handleStepClick(i) {
-    if (this.currentStep || this.currentStep === 0) {
-      this.onStepClick.emit(i);
-    } else {
+    if (!(this.currentStep || this.currentStep === 0)) {
       this.service.innerCurrentStep.next(i);
-      this.onStepClick.emit(i);
+      
     }
-    
+    this.onStepClick.emit(i);
   }
 
   getDynamicStyle(inputs) {

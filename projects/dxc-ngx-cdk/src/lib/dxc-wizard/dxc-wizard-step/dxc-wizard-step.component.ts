@@ -24,7 +24,6 @@ export class DxcWizardStepComponent {
 
   //Props controlled by father component
   @Input() position: number = 0;
-  @Input() isCurrent: boolean;
   @Input() isFirst: boolean;
   @Input() isLast: boolean;
   @Input() childCurrentStep: number;
@@ -38,7 +37,7 @@ export class DxcWizardStepComponent {
   mode: string = "horizontal";
 
   @HostBinding("class") className;
-  @HostBinding('class.current') get validCurrent() { return this.isCurrent; }
+  isCurrent: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     label: null,
@@ -79,11 +78,6 @@ export class DxcWizardStepComponent {
   public setIsCurrent(value: boolean): void {
     console.log("setIsCurrent", value);
     this.isCurrent = value;
-    this.defaultInputs.next({
-      ...this.defaultInputs.getValue(),
-      isCurrent: value,
-    });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.cdRef.detectChanges();
   }
 

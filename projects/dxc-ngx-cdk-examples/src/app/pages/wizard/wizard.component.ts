@@ -79,7 +79,10 @@ export class WizardComponent implements OnInit {
 
   public myOnStepClick(i) {
     console.log("MyOnStepClick", i);
-    this.currentStep++;
+    // this.currentStep++;
+  }
+  public myOnStepClick2(i) {
+    console.log("MyOnStepClick", i);
   }
 
 }

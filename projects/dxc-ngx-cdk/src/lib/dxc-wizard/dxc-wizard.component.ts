@@ -30,6 +30,8 @@ export class DxcWizardComponent {
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;
 
+  selectedStep: number;
+
   // innerCurrentStep: number;
 
   @HostBinding("class") className;
@@ -58,13 +60,12 @@ export class DxcWizardComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    // this.service.innerCurrentStep.next(this.currentStep || 0);
-    this.service.mode.next(this.mode);
-    this.cdRef.detectChanges();
+    this.service.innerCurrentStep.next(this.currentStep);
+    this.service.mode.next(this.mode || "horizontal");
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.service.innerCurrentStep.next(this.currentStep || 0);
+    this.service.innerCurrentStep.next(this.currentStep);
     this.service.mode.next(this.mode);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -77,13 +78,10 @@ export class DxcWizardComponent {
   }
 
   public handleStepClick(i) {
-    if (this.currentStep == null) {
+    if (this.currentStep || this.currentStep === 0) {
       this.service.innerCurrentStep.next(i);
     }
-
-    if (this.onStepClick) {
-      this.onStepClick.emit(i);
-    }
+    this.onStepClick.emit(i);
   }
 
   getDynamicStyle(inputs) {

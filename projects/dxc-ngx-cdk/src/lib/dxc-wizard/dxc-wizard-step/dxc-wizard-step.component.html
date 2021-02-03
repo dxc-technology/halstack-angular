@@ -1,4 +1,4 @@
-<button class="step" [disabled]="disabled" (click)="!disabled ? handleStepClick() : ''">
+<button class="step" [ngClass]="{current: isCurrent}" [disabled]="disabled" (click)="!disabled ? handleStepClick() : ''">
   <div class="stepHeader">
     <div class="iconContainer">
       <!-- <img class="icon" *ngIf="iconSrc; else numberBlock" [src]="iconSrc" /> -->

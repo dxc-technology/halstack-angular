@@ -22,7 +22,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class DxcWizardComponent {
   @Input() mode: string = "horizontal";
-  @Input() currentStep: number = 0;
+  @Input() currentStep: number;
   @Input() margin: any;
   // @Input() steps: Array<any>;
   @Output() onStepClick = new EventEmitter<any>();
@@ -58,7 +58,7 @@ export class DxcWizardComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.service.innerCurrentStep.next(this.currentStep);
+    this.service.innerCurrentStep.next(this.currentStep || 0);
     this.service.mode.next(this.mode || "horizontal");
   }
 
@@ -77,9 +77,12 @@ export class DxcWizardComponent {
 
   public handleStepClick(i) {
     if (this.currentStep || this.currentStep === 0) {
+      this.onStepClick.emit(i);
+    } else {
       this.service.innerCurrentStep.next(i);
+      this.onStepClick.emit(i);
     }
-    this.onStepClick.emit(i);
+    
   }
 
   getDynamicStyle(inputs) {

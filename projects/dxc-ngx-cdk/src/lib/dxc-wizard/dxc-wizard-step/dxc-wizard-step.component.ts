@@ -54,7 +54,9 @@ export class DxcWizardStepComponent {
     private service: WizardService
   ) {
     this.service.mode.subscribe((value) => {
-      this.mode = value;
+      if (value) {
+        this.mode = value;
+      }
     });
   }
 
@@ -68,6 +70,7 @@ export class DxcWizardStepComponent {
 
   ngAfterViewInit(): void {
     this.containsIcon = this.dxcWizardIcon.length !== 0;
+   
     this.cdRef.detectChanges();
   }
 

@@ -58,7 +58,7 @@ export class DxcWizardComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    // this.service.innerCurrentStep.next(this.currentStep || 0);
+    this.service.innerCurrentStep.next(this.currentStep || 0);
     this.service.mode.next(this.mode);
     this.cdRef.detectChanges();
   }
@@ -95,7 +95,7 @@ export class DxcWizardComponent {
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
 
       dxc-wizard-step {
-        .current {
+        &.current {
           .iconContainer {
             width: "36px";
             height: "36px";

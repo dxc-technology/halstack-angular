@@ -22,15 +22,13 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class DxcWizardComponent {
   @Input() mode: string = "horizontal";
-  @Input() currentStep: number;
+  @Input() currentStep: number = 0;
   @Input() margin: any;
   // @Input() steps: Array<any>;
   @Output() onStepClick = new EventEmitter<any>();
 
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;
-
-  selectedStep: number;
 
   // innerCurrentStep: number;
 
@@ -93,7 +91,7 @@ export class DxcWizardComponent {
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
 
       dxc-wizard-step {
-        &.current {
+        .current {
           .iconContainer {
             width: "36px";
             height: "36px";

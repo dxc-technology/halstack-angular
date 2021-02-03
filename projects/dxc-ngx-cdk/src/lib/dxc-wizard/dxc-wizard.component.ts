@@ -95,7 +95,6 @@ export class DxcWizardComponent {
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
 
       dxc-wizard-step {
-        background: #Fabada;
         .current {
           .iconContainer {
             width: "36px";

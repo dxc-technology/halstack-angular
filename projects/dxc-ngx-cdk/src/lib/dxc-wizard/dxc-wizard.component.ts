@@ -93,7 +93,7 @@ export class DxcWizardComponent {
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
 
       dxc-wizard-step {
-        .current {
+        &.current {
           .iconContainer {
             width: "36px";
             height: "36px";

@@ -13,7 +13,7 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
 import { WizardService } from "./services/wizard.service";
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef } from "@angular/core";
 
 @Component({
   selector: "dxc-wizard",
@@ -24,13 +24,10 @@ export class DxcWizardComponent {
   @Input() mode: string = "horizontal";
   @Input() currentStep: number;
   @Input() margin: any;
-  // @Input() steps: Array<any>;
   @Output() onStepClick = new EventEmitter<any>();
 
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;
-
-  // innerCurrentStep: number;
 
   @HostBinding("class") className;
 
@@ -38,10 +35,13 @@ export class DxcWizardComponent {
     mode: "horizontal",
     currentStep: null,
     margin: null,
-    steps: null,
   });
 
-  constructor(private cdRef: ChangeDetectorRef,private utils: CssUtils, private service: WizardService) {}
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private utils: CssUtils,
+    private service: WizardService
+  ) {}
 
   ngAfterViewInit(): void {
     this.service.setSteps(this.dxcWizardSteps);
@@ -64,7 +64,7 @@ export class DxcWizardComponent {
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.service.innerCurrentStep.next(this.currentStep);
-    this.service.mode.next(this.mode);
+    this.service.mode.next(this.mode || "horizontal");
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -78,7 +78,6 @@ export class DxcWizardComponent {
   public handleStepClick(i) {
     if (!(this.currentStep || this.currentStep === 0)) {
       this.service.innerCurrentStep.next(i);
-      
     }
     this.onStepClick.emit(i);
   }
@@ -91,24 +90,54 @@ export class DxcWizardComponent {
       justify-content: center;
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
 
+      svg,
+      img {
+        width: 19px;
+        height: 19px;
+        vertical-align: middle;
+      }
+
       dxc-wizard-step {
-        .current {
+        :not(.current, .disabled) {
           .iconContainer {
-            width: "36px";
-            height: "36px";
-
-            background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat
-              padding-box;
-            p {
-              color: var(--wizard-selectedFont) !important;
-            }
+            width: 32px;
+            height: 32px;
+            border: 2px solid #000000;
           }
-
           .number {
-            color: "var(--wizard-fontColor)";
+            color: var(--wizard-fontColor);
           }
         }
-      } 
+
+        .current,
+        .disabled {
+          .iconContainer {
+            width: 36px;
+            height: 36px;
+            border: none;
+          }
+        }
+
+        .current {
+          .iconContainer {
+            background: var(--wizard-selectedBackgroundColor);
+            color: var(--wizard-selectedFont);
+          }
+          .number {
+            color: var(--wizard-fontColor);
+          }
+        }
+
+        .disabled {
+          .iconContainer {
+            background: var(--wizard-disabledBackground);
+            color: var(--wizard-disabledFont);
+          }
+          .number {
+            color: var(--wizard-disabledFont);
+          }
+        }
+      }
     `;
   }
 }

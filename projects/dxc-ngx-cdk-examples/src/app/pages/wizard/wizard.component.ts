@@ -13,6 +13,7 @@ export class WizardComponent implements OnInit {
   stepsExample4: Array<any>;
 
   currentStep: number;
+  currentStep2: number;
 
   constructor() { 
     this.stepsExample1 = new Array<any>();
@@ -20,6 +21,7 @@ export class WizardComponent implements OnInit {
     this.stepsExample3 = new Array<any>();
     this.stepsExample4 = new Array<any>();
     this.currentStep = 0;
+    this.currentStep2 = 1;
   }
 
   ngOnInit() {
@@ -79,7 +81,7 @@ export class WizardComponent implements OnInit {
 
   public myOnStepClick(i) {
     console.log("MyOnStepClick", i);
-    // this.currentStep++;
+    this.currentStep++;
   }
   public myOnStepClick2(i) {
     console.log("MyOnStepClick", i);

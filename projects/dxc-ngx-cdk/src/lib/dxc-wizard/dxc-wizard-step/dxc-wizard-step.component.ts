@@ -23,10 +23,11 @@ export class DxcWizardStepComponent {
   @Input() valid: boolean;
 
   //Props controlled by father component
-  @Input() position: number = 0;
-  @Input() isFirst: boolean;
-  @Input() isLast: boolean;
-  @Input() childCurrentStep: number;
+  public position: number = 0;
+  public isFirst: boolean;
+  public isLast: boolean;
+  public isCurrent: boolean = false;
+  public mode: string = "horizontal";
 
   @ContentChildren(DxcWizardIconComponent)
   dxcWizardIcon: QueryList<DxcWizardIconComponent>;
@@ -34,18 +35,15 @@ export class DxcWizardStepComponent {
   validIcon = "assets/valid_icon.svg";
   invalidIcon = "assets/invalid_icon.svg";
   containsIcon = false;
-  mode: string = "horizontal";
 
   @HostBinding("class") className;
-  isCurrent: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     label: null,
     description: null,
     disabled: false,
     valid: null,
-    childCurrentStep: 0,
-    position: 0
+    position: 0,
   });
 
   constructor(
@@ -69,7 +67,6 @@ export class DxcWizardStepComponent {
 
   ngAfterViewInit(): void {
     this.containsIcon = this.dxcWizardIcon.length !== 0;
-   
     this.cdRef.detectChanges();
   }
 
@@ -79,7 +76,6 @@ export class DxcWizardStepComponent {
   }
 
   public setIsCurrent(value: boolean): void {
-    console.log("setIsCurrent", value);
     this.isCurrent = value;
     this.cdRef.detectChanges();
   }
@@ -99,7 +95,6 @@ export class DxcWizardStepComponent {
 
   public handleStepClick() {
     if (this.position || this.position === 0) {
-      console.log(this.position);
       this.service.newCurrentStep.next(this.position);
     }
   }
@@ -162,23 +157,6 @@ export class DxcWizardStepComponent {
       }
 
       .iconContainer {
-        width: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
-        height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
-
-        ${!inputs.isCurrent && !inputs.disabled
-          ? `border: 2px solid #000000;`
-          : ""}
-
-        ${inputs.disabled
-          ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
-          : ""}
-
-        ${inputs.isCurrent &&
-        `background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box; 
-          p {
-            color: var(--wizard-selectedFont) !important;
-          }`}
-
         border-radius: 45px;
         display: flex;
         justify-content: center;
@@ -188,11 +166,6 @@ export class DxcWizardStepComponent {
       .number {
         font: Normal 16px/22px "Open Sans", sans-serif;
         letter-spacing: 0.77px;
-        color: ${!inputs.isCurrent && !inputs.disabled
-          ? "var(--wizard-fontColor)"
-          : inputs.isCurrent
-          ? "var(--wizard-fontColor)"
-          : "var(--wizard-disabledFont)"};
         opacity: 1;
         margin: 0;
       }

@@ -29,7 +29,6 @@ export class WizardService {
     this.steps = steps;
     if (this.steps) {
       this.steps.forEach((element, index) => {
-        console.log(index);
         element.isFirst = index === 0;
         element.setIsLast(index === this.steps.length - 1);
         element.position = index;

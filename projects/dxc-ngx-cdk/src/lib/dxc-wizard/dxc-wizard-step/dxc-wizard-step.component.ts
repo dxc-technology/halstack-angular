@@ -1,3 +1,4 @@
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   Component,
   Input,
@@ -19,8 +20,22 @@ import { WizardService } from "../services/wizard.service";
 export class DxcWizardStepComponent {
   @Input() label: string;
   @Input() description: string;
-  @Input() disabled: boolean;
-  @Input() valid: boolean;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
+  @Input()
+  get valid(): boolean {
+    return this._valid;
+  }
+  set valid(value: boolean) {
+    this._valid = coerceBooleanProperty(value);
+  }
+  private _valid;
 
   //Props controlled by father component
   public position: number = 0;

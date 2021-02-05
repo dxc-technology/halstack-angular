@@ -49,9 +49,7 @@ export class DxcTabComponent implements OnChanges {
       this.iconSrc = "";
       this.tabIcon = true;
     }
-    else{
-       this.getLabelClass();
-    }
+    this.getLabelClass();
     this.cdRef.detectChanges();
     this.matTab.disabled = this.disabled;
   }

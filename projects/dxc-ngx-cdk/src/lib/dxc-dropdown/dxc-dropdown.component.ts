@@ -17,15 +17,16 @@ import { CssUtils } from "../utils";
 import { ElementRef, HostListener } from "@angular/core";
 import { MatMenuTrigger } from "@angular/material/menu";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { DropdownService } from "./services/dropdown.service";
 
 @Component({
   selector: "dxc-dropdown",
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./dxc-dropdown.component.html",
   styleUrls: ["./dxc-dropdown.component.scss"],
-  providers: [CssUtils],
+  providers: [CssUtils, DropdownService],
 })
-export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
+export class DxcDropdownComponent implements OnChanges {
   @HostBinding("class") className;
 
   @Input() public name: string;
@@ -91,7 +92,8 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   constructor(
     private utils: CssUtils,
     private ren: Renderer2,
-    private _element: ElementRef
+    private _element: ElementRef,
+    private service: DropdownService
   ) {}
   sizes = {
     small: "60px",
@@ -104,7 +106,7 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
     if (
       this.dropdownButton &&
       this.dropdownButton._elementRef &&
@@ -115,6 +117,12 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
 
       this.menuOptions = `${this.setDxcMenuOptionsStyle()}`;
     }
+
+    this.service.selected.subscribe((value) => {
+      if (value) {
+        this.onSelectOption.emit(value);
+      }
+    });
   }
 
   iconPositionAfter(iconPositionAfter) {
@@ -366,7 +374,8 @@ export class DxcDropdownComponent implements OnChanges, AfterViewChecked {
         width: fit-content;
         align-items: center;
       }
-      img, svg {
+      img,
+      svg {
         width: 20px;
         height: 20px;
         vertical-align: middle;

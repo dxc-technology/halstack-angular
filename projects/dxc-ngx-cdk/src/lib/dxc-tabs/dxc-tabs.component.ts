@@ -161,7 +161,7 @@ export class DxcTabsComponent implements OnChanges {
           justify-content: center;
         }
         .only-text {
-          min-height: 48px;
+          min-height: 46px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -169,6 +169,7 @@ export class DxcTabsComponent implements OnChanges {
           min-width: 180px;
         }
         .only-icon {
+          min-height: 64px;
           .dxc-tab-label {
             margin-top: 4px;
             display: grid;

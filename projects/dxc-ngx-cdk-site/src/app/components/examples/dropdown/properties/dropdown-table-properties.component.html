@@ -13,7 +13,7 @@
     <tr>
         <td>iconSrc: string</td>
         <td></td>
-        <td>URL of the icon that will be placed next to the dropdown label.</td> 
+        <td><b>Deprecated.</b> URL of the icon that will be placed next to the dropdown label.</td> 
     </tr>
     <tr>
         <td>iconPosition: 'before' | 'after'</td>
@@ -46,5 +46,10 @@
         <td>size: any (string | object)</td>
         <td><code>'fitContent'	</code></td>
         <td>Size of the component ('large' | 'fillParent' | 'fitContent').</td>
+    </tr>
+    <tr>
+        <td>onSelectOption: EventEmitter</td>
+        <td></td>
+        <td>This event will be triggered when the selection changes. The value of the selected value will be passed as a parameter.</td>
     </tr>
 </dxc-table>

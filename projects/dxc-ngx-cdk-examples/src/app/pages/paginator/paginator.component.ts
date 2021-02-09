@@ -11,7 +11,9 @@ export class PaginatorComponent implements OnInit {
 
   page : number = 1;
   totalItems : number = 27;
-  itemsPerPage : number =10;
+  itemsPerPage : number = 5;
+
+  options = [{label:"10", value:10}, {label:"20", value:20} ]
 
   constructor() { }
 
@@ -22,5 +24,10 @@ export class PaginatorComponent implements OnInit {
     console.log(page);
     this.page = page;
     console.log('navigate: ' + operation);
+  }
+
+  itemsPerPageEvent($event) {
+    console.log($event);
+    this.itemsPerPage = $event;
   }
 }

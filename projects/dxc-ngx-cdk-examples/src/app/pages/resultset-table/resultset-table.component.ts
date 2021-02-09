@@ -11,6 +11,8 @@ export class ResultsetTableComponent implements OnInit {
 
   data: Array<any>;
 
+  itemsPerPage = "5";
+  
   constructor() {
 
     this.data = [
@@ -70,6 +72,12 @@ export class ResultsetTableComponent implements OnInit {
         }
       ]
     };
+
+    options = [{label:"2", value:2}, {label:"10", value:10} ];
+    itemsPerPageEvent($event) {
+      console.log($event);
+      this.itemsPerPage = $event;
+    }
 
     ngOnInit(){
 

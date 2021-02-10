@@ -199,10 +199,7 @@ export class DxcResultTable<T>
 
   @Input() margin: string;
 
-  @Input() public itemsPerPageOptions: {
-    label: string;
-    value: any;
-  }[];
+  @Input() public itemsPerPageOptions: number[];
 
   @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 

@@ -51,10 +51,7 @@ export class DxcPaginatorComponent implements OnInit {
   }
   private _paginationActions;
 
-  @Input() public itemsPerPageOptions: {
-    label: string;
-    value: any;
-  }[];
+  @Input() public itemsPerPageOptions: number[];
 
   @Output() firstFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() nextFunction: EventEmitter<any> = new EventEmitter<any>();
@@ -73,6 +70,10 @@ export class DxcPaginatorComponent implements OnInit {
   currentPageInternal: number;
   minItemsPerPage: number;
   maxItemsPerPage: number;
+  selectOptions: {
+    label: string;
+    value: any;
+  }[];
 
   showFirst: boolean = false;
   showLast: boolean = false;
@@ -84,7 +85,7 @@ export class DxcPaginatorComponent implements OnInit {
     itemsPerPage: 5,
     totalItems: 1,
     paginationActions: 0,
-    itemsPerPageOptions: []
+    itemsPerPageOptions: [],
   });
 
   constructor() {
@@ -99,12 +100,22 @@ export class DxcPaginatorComponent implements OnInit {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    this.selectOptions = [];
+    if (this.itemsPerPageOptions) {
+      this.itemsPerPageOptions.map((value) => {
+        const option = { label: value.toString(), value: value };
+        this.selectOptions.push(option);
+      });
+    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.calculateInternalValues({ ...this.defaultInputs.getValue(), ...inputs });
+    this.calculateInternalValues({
+      ...this.defaultInputs.getValue(),
+      ...inputs,
+    });
   }
 
   public onFirstHandler($event: any): void {

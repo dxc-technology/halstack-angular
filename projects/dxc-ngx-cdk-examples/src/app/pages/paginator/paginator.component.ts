@@ -13,7 +13,7 @@ export class PaginatorComponent implements OnInit {
   totalItems : number = 27;
   itemsPerPage : number = 5;
 
-  options = [{label:"10", value:10}, {label:"20", value:20} ]
+  options = [10, 20, 30]
 
   constructor() { }
 

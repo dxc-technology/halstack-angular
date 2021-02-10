@@ -73,7 +73,7 @@ export class ResultsetTableComponent implements OnInit {
       ]
     };
 
-    options = [{label:"2", value:2}, {label:"10", value:10} ];
+    options = [10, 20, 30 ];
     itemsPerPageEvent($event) {
       console.log($event);
       this.itemsPerPage = $event;

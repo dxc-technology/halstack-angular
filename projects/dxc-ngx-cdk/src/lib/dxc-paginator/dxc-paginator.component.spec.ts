@@ -251,8 +251,7 @@ describe("DxcPaginator tests", () => {
 
   test("Paginator renders with items per page options", async () => {
     const itemsPerPageOptions = [
-      { label: "10", value: 10 },
-      { label: "20", value: 20 },
+      10, 20
     ];
 
     const paginator = await render(DxcPaginatorComponent, {
@@ -268,8 +267,7 @@ describe("DxcPaginator tests", () => {
   test("Paginator change value", async () => {
     const changeMock = jest.fn();
     const itemsPerPageOptions = [
-      { label: "10", value: 10 },
-      { label: "20", value: 20 },
+      10, 20
     ];
 
     const paginator = await render(DxcPaginatorComponent, {

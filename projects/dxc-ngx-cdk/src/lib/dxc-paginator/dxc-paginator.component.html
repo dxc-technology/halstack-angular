@@ -1,5 +1,15 @@
 <div class="paginator-container">
   <div class="labels-container">
+    <span *ngIf="itemsPerPageOptions" class="items-per-page">
+      Items per page
+      <dxc-select
+        (onChange)="onItemsPerPageHandler($event)"
+        [value]="itemsPerPage"
+        [margin]="selectMargin"
+        size="small"
+        [options]="itemsPerPageOptions"
+      ></dxc-select>
+    </span>
     <span class="total-items-container">
       {{ minItemsPerPage }} to {{ maxItemsPerPage }} of {{ totalItems }}
     </span>

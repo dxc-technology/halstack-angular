@@ -51,12 +51,19 @@ export class DxcPaginatorComponent implements OnInit {
   }
   private _paginationActions;
 
+  @Input() public itemsPerPageOptions: {
+    label: string;
+    value: any;
+  }[];
+
   @Output() firstFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() nextFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() prevFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() lastFunction: EventEmitter<any> = new EventEmitter<any>();
+  @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 
   buttonMargin = { left: "xxsmall", right: "xxsmall" };
+  selectMargin = { left: "xxsmall", right: "small" };
   firstImgSrc = "assets/previousPage.svg";
   prevImgSrc = "assets/previous.svg";
   nextImgSrc = "assets/next.svg";
@@ -77,6 +84,7 @@ export class DxcPaginatorComponent implements OnInit {
     itemsPerPage: 5,
     totalItems: 1,
     paginationActions: 0,
+    itemsPerPageOptions: []
   });
 
   constructor() {
@@ -96,7 +104,7 @@ export class DxcPaginatorComponent implements OnInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.calculateInternalValues(this.defaultInputs.getValue());
+    this.calculateInternalValues({ ...this.defaultInputs.getValue(), ...inputs });
   }
 
   public onFirstHandler($event: any): void {
@@ -113,6 +121,10 @@ export class DxcPaginatorComponent implements OnInit {
 
   public onLastHandler($event: any): void {
     this.lastFunction.emit(this.totalPages);
+  }
+
+  public onItemsPerPageHandler($event: any): void {
+    this.itemsPerPageFunction.emit($event);
   }
 
   private setButtonVisibility(paginationActions: Array<string>) {

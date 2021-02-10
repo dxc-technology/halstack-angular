@@ -9,6 +9,8 @@
         (firstFunction)="navigate($event, 'first')"
         (lastFunction)="navigate($event, 'last')"
         [paginationActions]="paginationActions"
+        [itemsPerPageOptions]="options"
+        (itemsPerPageFunction)="itemsPerPageEvent($event)"
         >
     </dxc-paginator>
 </div>

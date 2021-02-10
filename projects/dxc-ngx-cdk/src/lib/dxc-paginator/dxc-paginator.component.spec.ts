@@ -1,13 +1,16 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcPaginatorComponent } from "./dxc-paginator.component";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
+import { screen } from "@testing-library/dom";
+import { DxcPaginatorModule } from "./dxc-paginator.module";
 
 describe("DxcPaginator tests", () => {
   test("should render default dxc-paginator", async () => {
     const paginator = await render(DxcPaginatorComponent, {
       template: `<dxc-paginator></dxc-paginator>`,
       componentProperties: {},
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     expect(paginator.getByText("1 to 1 of 1")).toBeTruthy();
     expect(paginator.getByText("Page: 1 of 1")).toBeTruthy();
@@ -20,7 +23,8 @@ describe("DxcPaginator tests", () => {
     const paginator = await render(DxcPaginatorComponent, {
       template: `<dxc-paginator [itemsPerPage]=${perPage} [totalItems]=${total} [currentPage]=${current}></dxc-paginator>`,
       componentProperties: {},
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     expect(paginator.getByText("Page: 1 of 2")).toBeTruthy();
     expect(paginator.getByText("1 to 10 of 20")).toBeTruthy();
@@ -31,7 +35,8 @@ describe("DxcPaginator tests", () => {
     const paginator = await render(DxcPaginatorComponent, {
       template: `<dxc-paginator [totalItems]=${total}></dxc-paginator>`,
       componentProperties: {},
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     expect(paginator.getByText("1 to 5 of 20")).toBeTruthy();
     expect(paginator.getByText("Page: 1 of 4")).toBeTruthy();
@@ -46,7 +51,8 @@ describe("DxcPaginator tests", () => {
     const paginator = await render(DxcPaginatorComponent, {
       template: `<dxc-paginator [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page}></dxc-paginator>`,
       componentProperties: {},
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     expect(paginator.getByText("11 to 20 of 27")).toBeTruthy();
     expect(paginator.getByText("Page: 2 of 3")).toBeTruthy();
@@ -62,7 +68,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     expect(paginator.getByText("1 to 10 of 27")).toBeTruthy();
     const nextButton = paginator.getAllByRole("button");
@@ -80,7 +87,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const btn = paginator.getAllByRole("button");
     fireEvent.click(btn[0]);
@@ -97,7 +105,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const btn = paginator.getAllByRole("button");
     fireEvent.click(btn[0]);
@@ -114,7 +123,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const btn = paginator.getAllByRole("button");
     fireEvent.click(btn[0]);
@@ -131,7 +141,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const nextButton = paginator.getAllByRole("button");
     expect(nextButton[0].hasAttribute("disabled")).toBe(true);
@@ -147,7 +158,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const btn = paginator.getAllByRole("button");
     expect(btn[0].hasAttribute("disabled")).toBe(true);
@@ -163,7 +175,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const btn = paginator.getAllByRole("button");
     expect(btn[0].hasAttribute("disabled")).toBe(true);
@@ -179,7 +192,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const btn = paginator.getAllByRole("button");
     expect(btn[0].hasAttribute("disabled")).toBe(true);
@@ -197,7 +211,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const firstButton = paginator.getAllByRole("button")[0];
     const prevButton = paginator.getAllByRole("button")[1];
@@ -221,7 +236,8 @@ describe("DxcPaginator tests", () => {
       componentProperties: {
         navegateFunction,
       },
-      imports: [DxcButtonModule],
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
     });
     const firstButton = paginator.getAllByRole("button")[0];
     const prevButton = paginator.getAllByRole("button")[1];
@@ -231,5 +247,45 @@ describe("DxcPaginator tests", () => {
     expect(prevButton.hasAttribute("disabled")).toBeTruthy();
     expect(nextButton.hasAttribute("disabled")).toBeFalsy();
     expect(lastButton.hasAttribute("disabled")).toBeFalsy();
+  });
+
+  test("Paginator renders with items per page options", async () => {
+    const itemsPerPageOptions = [
+      { label: "10", value: 10 },
+      { label: "20", value: 20 },
+    ];
+
+    const paginator = await render(DxcPaginatorComponent, {
+      template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" currentPage="2"></dxc-paginator>`,
+      componentProperties: { itemsPerPageOptions: itemsPerPageOptions },
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
+    });
+    expect(screen.getByText("Items per page")).toBeTruthy();
+    expect(screen.getByRole("combobox")).toBeTruthy();
+  });
+
+  test("Paginator change value", async () => {
+    const changeMock = jest.fn();
+    const itemsPerPageOptions = [
+      { label: "10", value: 10 },
+      { label: "20", value: 20 },
+    ];
+
+    const paginator = await render(DxcPaginatorComponent, {
+      template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" (itemsPerPageFunction)="changeMock($event)" currentPage="2"></dxc-paginator>`,
+      componentProperties: {
+        itemsPerPageOptions,
+        changeMock
+      },
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
+    });
+    expect(screen.getByText("Items per page")).toBeTruthy();
+    const selectComponent = <HTMLInputElement>screen.getByRole("combobox");
+    fireEvent.click(selectComponent);
+    paginator.detectChanges();
+    fireEvent.click(screen.getByText("20"));
+    expect(changeMock).toHaveBeenCalledWith(20);
   });
 });

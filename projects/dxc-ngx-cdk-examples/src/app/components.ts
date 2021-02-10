@@ -31,6 +31,7 @@ import { ResultsetTableComponent } from './pages/resultset-table/resultset-table
 import { TextareaInfoComponent } from './pages/textarea/textarea-info.component';
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
+import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
 
 export const Components = [
     {
@@ -182,6 +183,11 @@ export const Components = [
         name: 'Textarea',
         route: 'textarea',
         component: TextareaInfoComponent
+    },
+    {
+        name: 'ToggleGroup',
+        route: 'togglegroup',
+        component: ToggleGroupInfoComponent
     },
     {
         name: 'Upload',

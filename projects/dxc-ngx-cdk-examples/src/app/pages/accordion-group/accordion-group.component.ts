@@ -8,6 +8,8 @@ export class AccordionGroupComponent implements OnInit {
 
   homeLogo = './assets/images/home.svg';
   facebookLogo = './assets/images/facebook.svg';
+
+  isExpanded: any = 1;
   
   constructor() { }
 
@@ -15,15 +17,16 @@ export class AccordionGroupComponent implements OnInit {
   }
 
   changeIsExpanded($event){
-    console.log($event);
+    console.log("changeIsExpanded:",$event);
   }
 
   uncontrolledIsExpanded($event){
     console.log('uncontrolled: ' + $event);
   }
 
-  onCloseControlled($event){
-    // setIndexClose((prevValue) => {return prevValue === i ? null : i});
+  onCloseControlled($value){
+    console.log("onCloseControlled:",$value);
+    this.isExpanded = this.isExpanded === $value ? null : $value;
   }
 
 }

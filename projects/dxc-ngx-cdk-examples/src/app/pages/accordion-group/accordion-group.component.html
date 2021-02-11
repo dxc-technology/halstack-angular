@@ -1,35 +1,10 @@
 <div>
-  <!-- <div className="test-case" id="default-accordion">
-    <h4>Accordion Group Uncontrolled Basic </h4>
-    <dxc-accordion-group margin="medium">
-      <dxc-accordion
-        label="Label 1"
-        padding="medium"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </div>
-      </dxc-accordion>
-      <dxc-accordion
-        label="Label 2"
-        padding="medium"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </div>
-      </dxc-accordion>
-    </dxc-accordion-group>
-  </div> -->
   <div className="test-case" id="default-accordion">
-    <h4>Accordion Group Uncontrolled with undefined ActiveIndex</h4>
-    <dxc-accordion-group margin="medium" [indexActive]="undefined">
+    <h4>Accordion Group Uncontrolled Basic </h4>
+    <dxc-accordion-group>
       <dxc-accordion
         label="Label 1"
         padding="medium"
-        margin="medium"
-        
       >
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -47,11 +22,11 @@
       </dxc-accordion>
     </dxc-accordion-group>
   </div>
-  <!-- <div className="test-case" id="default-accordion">
-    <h4>Accordion Group on Close Controlled</h4>
-    <dxc-accordion-group margin="medium" indexActive="undefined" onActiveChange="onCloseControlled($event)">
+  <div className="test-case" id="default-accordion">
+    <h4>Accordion Group Uncontrolled with undefined ActiveIndex</h4>
+    <dxc-accordion-group margin="medium" [indexActive]="undefined">
       <dxc-accordion
-        label="Label 1"
+        label="Label 3"
         padding="medium"
       >
         <div>
@@ -60,7 +35,31 @@
         </div>
       </dxc-accordion>
       <dxc-accordion
-        label="Label 2"
+        label="Label 4"
+        padding="medium"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+    </dxc-accordion-group>
+  </div>
+  <div className="test-case" id="default-accordion">
+    <h4>Accordion Group on Close Controlled</h4>
+    <dxc-accordion-group margin="medium" [indexActive]="isExpanded" (onActiveChange)="onCloseControlled($event)">
+      <dxc-accordion
+        label="Label 5"
+        padding="medium"
+        margin="large"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+      <dxc-accordion
+        label="Label 6"
         padding="medium"
       >
         <div>
@@ -73,9 +72,9 @@
 
   <div className="test-case" id="default-accordion">
     <h4>Accordion Group Controlled with static index active</h4>
-    <dxc-accordion-group margin="medium" indexActive="0">
+    <dxc-accordion-group margin="medium" [indexActive]="0">
       <dxc-accordion
-        label="Label 1"
+        label="Label 7"
         padding="medium"
       >
         <div>
@@ -84,7 +83,31 @@
         </div>
       </dxc-accordion>
       <dxc-accordion
-        label="Label 2"
+        label="Label 8"
+        padding="medium"
+        disabled
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+    </dxc-accordion-group>
+  </div>
+  <div className="test-case" id="default-accordion">
+    <h4>Accordion Group Controlled with static index active and function</h4>
+    <dxc-accordion-group margin="medium" [indexActive]="null" (onActiveChange)="changeIsExpanded($event)">
+      <dxc-accordion
+        label="Label 9"
+        padding="medium"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+      <dxc-accordion
+        label="Label 10"
         padding="medium"
       >
         <div>
@@ -93,5 +116,51 @@
         </div>
       </dxc-accordion>
     </dxc-accordion-group>
-  </div> -->
+  </div>
+  <div className="test-case" id="default-accordion">
+    <h4>Accordion Group Uncontrolled with funtion onActiveChange</h4>
+    <dxc-accordion-group margin="medium" (onActiveChange)="changeIsExpanded($event)">
+      <dxc-accordion
+        label="Label 11"
+        padding="medium"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+      <dxc-accordion
+        label="Label 12"
+        padding="medium"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+    </dxc-accordion-group>
+  </div>
+  <div className="test-case" id="default-accordion">
+    <h4>Disabled Accordion Group</h4>
+    <dxc-accordion-group margin="medium" (onActiveChange)="changeIsExpanded($event)" [disabled]="true">
+      <dxc-accordion
+        label="Label 13"
+        padding="medium"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+      <dxc-accordion
+        label="Label 14"
+        padding="medium"
+      >
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
+    </dxc-accordion-group>
+  </div>
 </div>

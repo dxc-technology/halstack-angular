@@ -25,19 +25,20 @@ import {
 @Component({
   selector: "dxc-accordion-group",
   templateUrl: "./dxc-accordionGroup.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, AccordionService],
 })
 export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   @Input() margin: any;
-  @Input() 
+  @Input()
   get indexActive(): any {
     return this._indexActive;
   }
   set indexActive(value: any) {
-    if(value === undefined){
+    if (value === undefined || value === "undefined") {
       this._indexActive = undefined;
-    }
-    else{
+    } else if (value === null || value === "null") {
+      this._indexActive = null;
+    } else {
       this._indexActive = coerceNumberProperty(value);
     }
   }
@@ -79,6 +80,12 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     this.accordionContent = `${this.getDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
+    if (
+      this.indexActive !== undefined &&
+      this.accordionService.accordionActive.getValue() !== this.indexActive
+    ) {
+      this.accordionService.accordionActive.next(this.indexActive);
+    }
   }
 
   ngOnInit() {
@@ -88,31 +95,53 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   }
 
   ngAfterContentInit() {
-    console.log("this.indexActive:", this.indexActive);
     if (this.indexActive === undefined) {
       this.uncontrolledAccordionGroup();
     } else {
-      // this.controlledAccordionGroup();
+      this.controlledAccordionGroup();
     }
   }
 
   uncontrolledAccordionGroup() {
     this.dxcAccordion.forEach((instance, index) => {
       this.setDisabledAccordion(instance);
-      instance.margin = "";
-      console.log("instance:",instance);
-      instance.onClick.subscribe((event) => {
-        if (event) {
-          this.accordionService.accordionActive.next(index);
-        } else if (
-          this.accordionService.accordionActive.getValue() === index &&
-          !event
-        ) {
-          this.accordionService.accordionActive.next(undefined);
+      instance.onClickHandler = (event: any) => {
+        if (!instance.disabled) {
+          instance.renderedIsExpanded = !instance.renderedIsExpanded;
         }
+        this.accordionService.accordionActive.next(
+          instance.renderedIsExpanded
+            ? index
+            : (this.accordionService.accordionActive.getValue() === index &&
+                !instance.renderedIsExpanded) && undefined
+        );
+      };
+    });
+    this.accordionService.accordionActive.subscribe((value) => {
+      this.dxcAccordion.forEach((instance, index) => {
+        if (value === index) {
+          this.onActiveChange.emit(index);
+        }
+        this.setIsExpanded(instance, value === index);
       });
     });
+  }
 
+  controlledAccordionGroup() {
+    this.accordionService.accordionActive.next(this.indexActive);
+    this.dxcAccordion.forEach((instance, index) => {
+      this.setDisabledAccordion(instance);
+      if (index === this.accordionService.accordionActive.getValue()) {
+        this.setIsExpanded(instance, true);
+      }
+      instance.onClickHandler = ($event: any) => {
+        this.onActiveChange.emit(index);
+        this.setIsExpanded(
+          instance,
+          this.accordionService.accordionActive.getValue() === index
+        );
+      };
+    });
     this.accordionService.accordionActive.subscribe((value) => {
       this.dxcAccordion.forEach((instance, index) => {
         this.setIsExpanded(instance, value === index);
@@ -120,36 +149,12 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     });
   }
 
-  // controlledAccordionGroup() {
-  //   // if (index === this.indexActive) {
-  //   //   this.accordionService.setAccordionActive(instance);
-  //   // }
-
-  //   this.dxcAccordion.forEach((instance, index) => {
-  //     this.setDisabledAccordion(instance);
-  //     instance.margin = "";
-  //     instance.onClick.subscribe((event) => {
-  //       if (event) {
-  //         this.accordionService.accordionActive.next(index);
-  //       } else if (
-  //         this.accordionService.accordionActive.getValue() === index &&
-  //         !event
-  //       ) {
-  //         this.accordionService.accordionActive.next(undefined);
-  //       }
-  //     });
-  //   });
-
-  //   this.accordionService.accordionActive.subscribe((value) => {
-  //     this.dxcAccordion.forEach((instance, index) => {
-  //       this.setIsExpanded(instance, value === index);
-  //     });
-  //   });
-  // }
-
   private setIsExpanded(instance: DxcAccordionComponent, value: boolean) {
     instance.isExpanded = value;
     instance.renderedIsExpanded = value;
+    instance.renderedIsExpanded === true
+      ? instance._matExpansionPanel.open()
+      : instance._matExpansionPanel.close();
   }
 
   private setDisabledAccordion(instance: DxcAccordionComponent) {
@@ -158,13 +163,12 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     }
   }
 
-  public handlerActiveChange(instance: DxcAccordionComponent) {
-
-  }
-
   getDynamicStyle(inputs) {
     return css`
       ${this.cssUtils.getMargins(inputs.margin)}
+      dxc-accordion {
+        margin: 0px;
+      }
     `;
   }
 }

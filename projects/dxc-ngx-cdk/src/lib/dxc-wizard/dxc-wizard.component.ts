@@ -33,7 +33,7 @@ export class DxcWizardComponent {
     steps: null,
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils) { }
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;

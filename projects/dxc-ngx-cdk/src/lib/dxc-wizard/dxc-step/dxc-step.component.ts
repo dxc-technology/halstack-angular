@@ -36,7 +36,7 @@ export class DxcStepComponent {
     currentStep: 0,
   });
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -70,16 +70,16 @@ export class DxcStepComponent {
         justify-content: flex-start;
         align-items: center;
         margin: ${inputs.isFirst
-          ? inputs.mode === "vertical"
-            ? "0 0 25px 0"
-            : "0 25px 0 0"
-          : inputs.isLast
+        ? inputs.mode === "vertical"
+          ? "0 0 25px 0"
+          : "0 25px 0 0"
+        : inputs.isLast
           ? inputs.mode === "vertical"
             ? "25px 0 0 0"
             : "0 0 0 25px"
           : inputs.mode === "vertical"
-          ? "25px 0"
-          : "0 25px"};
+            ? "25px 0"
+            : "0 25px"};
 
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
@@ -88,14 +88,14 @@ export class DxcStepComponent {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;
           margin: ${inputs.isFirst
-            ? inputs.mode === "vertical"
-              ? "1px 1px 25px 1px"
-              : "1px 25px 1px 1px"
-            : inputs.isLast
-            ? inputs.mode === "vertical"
-              ? "25px 1px 1px 1px"
-              : "1px 1px 1px 25px"
-            : inputs.mode === "vertical"
+        ? inputs.mode === "vertical"
+          ? "1px 1px 25px 1px"
+          : "1px 25px 1px 1px"
+        : inputs.isLast
+          ? inputs.mode === "vertical"
+            ? "25px 1px 1px 1px"
+            : "1px 1px 1px 25px"
+          : inputs.mode === "vertical"
             ? "25px 1px"
             : "1px 25px"};
           outline-color: var(--wizard-focusColor);
@@ -117,15 +117,15 @@ export class DxcStepComponent {
         height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
 
         ${!inputs.isCurrent && !inputs.disabled
-          ? `border: 2px solid #000000;`
-          : ""}
+        ? `border: 2px solid #000000;`
+        : ""}
 
         ${inputs.disabled
-          ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
-          : ""}
+        ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
+        : ""}
 
         ${inputs.isCurrent &&
-        `background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box; 
+      `background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box; 
           p {
             color: var(--wizard-selectedFont) !important;
           }`}
@@ -145,8 +145,8 @@ export class DxcStepComponent {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
         color: ${!inputs.isCurrent && !inputs.disabled
-          ? "var(--wizard-fontColor)"
-          : inputs.isCurrent
+        ? "var(--wizard-fontColor)"
+        : inputs.isCurrent
           ? "var(--wizard-fontColor)"
           : "var(--wizard-disabledFont)"};
         opacity: 1;
@@ -164,8 +164,8 @@ export class DxcStepComponent {
       .infoContainer {
         margin-left: 10px;
         color: ${inputs.position <= inputs.currentStep
-          ? "var(--wizard-fontColor)"
-          : "var(--wizard-disabledFont)"};
+        ? "var(--wizard-fontColor)"
+        : "var(--wizard-disabledFont)"};
       }
 
       .label {
@@ -173,7 +173,12 @@ export class DxcStepComponent {
         font: Normal 16px/22px Open Sans;
         letter-spacing: 0.77px;
         color: inherit;
+<<<<<<< Updated upstream:projects/dxc-ngx-cdk/src/lib/dxc-wizard/dxc-step/dxc-step.component.ts
         ${inputs.position > inputs.currentStep && `opacity: var(--wizard-notVisitedOpacity);`}
+=======
+        ${inputs.position > inputs.currentStep &&
+      `opacity: var(--wizard-notVisitedOpacity);`}
+>>>>>>> Stashed changes:projects/dxc-ngx-cdk/src/lib/dxc-wizard/dxc-wizard-step/dxc-wizard-step.component.ts
         ${inputs.disabled && `opacity: var(--wizard-disabled);`}
         margin: 0;
       }

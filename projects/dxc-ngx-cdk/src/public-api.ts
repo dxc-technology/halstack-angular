@@ -67,6 +67,9 @@ export * from './lib/dxc-radio/dxc-radio.module';
 export * from './lib/dxc-select/dxc-select.component';
 export * from './lib/dxc-select/dxc-select.module';
 
+export * from './lib/select-compound/select-module';
+export * from './lib/select-compound/option/option.module';
+
 export * from './lib/dxc-slider/dxc-slider.component';
 export * from './lib/dxc-slider/dxc-slider.module';
 

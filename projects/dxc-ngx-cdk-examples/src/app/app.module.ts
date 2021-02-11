@@ -68,7 +68,9 @@ import {
   DxcTextareaModule,
   ThemeModule,
   DxcApplicationLayoutModule,
-  DxcChipModule
+  DxcChipModule,
+  MatSelectModule,
+  MatOptionModule
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
@@ -149,9 +151,11 @@ import { ChipComponent } from './pages/chip/chip.component';
     DxcTextareaModule,
     ThemeModule,
     DxcApplicationLayoutModule,
-    DxcChipModule
+    DxcChipModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

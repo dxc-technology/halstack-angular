@@ -33,6 +33,7 @@ import { SidenavInfoComponent } from "./pages/sidenav/sidenav-info.component";
 import { WizardComponent } from "./pages/wizard/wizard.component";
 import { HeadingInfoComponent } from "./pages/heading/heading-info.component";
 import { ResultsetTableComponent } from "./pages/resultset-table/resultset-table.component";
+import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 import { CommonModule } from "@angular/common";
 import {
   DxcAccordionModule,
@@ -114,7 +115,8 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
     ResultsetTableComponent,
     UploadComponent,
     ApplicationInfoComponent,
-    ChipComponent
+    ChipComponent,
+    AccordionGroupComponent
   ],
   imports: [
     AppRoutingModule,

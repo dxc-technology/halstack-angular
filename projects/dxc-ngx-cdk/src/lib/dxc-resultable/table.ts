@@ -38,6 +38,8 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
   ComponentFactoryResolver,
+  Output,
+  EventEmitter,
 } from "@angular/core";
 import {
   BehaviorSubject,
@@ -148,11 +150,13 @@ export const CDK_TABLE_TEMPLATE = `
     <dxc-paginator *ngIf="totalItems !== null"
       [totalItems]="totalItems"
       [itemsPerPage]="itemsPerPage"
+      [itemsPerPageOptions]="itemsPerPageOptions"
       [currentPage]="page"
       (nextFunction)="navigate($event, 'next')"
       (prevFunction)="navigate($event, 'prev')"
       (firstFunction)="navigate($event, 'first')"
       (lastFunction)="navigate($event, 'last')"
+      (itemsPerPageFunction)="handleItemsPerPageSelect($event)"
     ></dxc-paginator>
 
 
@@ -194,6 +198,10 @@ export class DxcResultTable<T>
   private _collectionResource;
 
   @Input() margin: string;
+
+  @Input() public itemsPerPageOptions: number[];
+
+  @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 
   collectionData: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
 
@@ -365,6 +373,11 @@ export class DxcResultTable<T>
       });
   }
 
+  ngOnChanges() {
+    this.page = 1;
+    this.navigate(this.page, "");
+  }
+
   ngAfterContentChecked() {
     // Cache the row and column definitions gathered by ContentChildren and programmatic injection.
     //this._cacheRowDefs();
@@ -388,6 +401,10 @@ export class DxcResultTable<T>
     if (isDataSource(this.dataSource)) {
       this.dataSource.disconnect(this);
     }
+  }
+
+  handleItemsPerPageSelect($event) {
+    this.itemsPerPageFunction.emit($event);
   }
 
   renderHeaders() {
@@ -618,13 +635,15 @@ export class DxcResultTable<T>
       renderIndex++
     ) {
       const viewRef = viewContainer.get(renderIndex) as RowViewRef<T>;
-      const context = viewRef.context as RowContext<T>;
-      context.count = count;
-      context.first = renderIndex === 0;
-      context.last = renderIndex === count - 1;
-      context.even = renderIndex % 2 === 0;
-      context.odd = !context.even;
-      context.index = this._renderRows[renderIndex].dataIndex;
+      if (viewRef.context) {
+        const context = viewRef.context as RowContext<T>;
+        context.count = count;
+        context.first = renderIndex === 0;
+        context.last = renderIndex === count - 1;
+        context.even = renderIndex % 2 === 0;
+        context.odd = !context.even;
+        context.index = this._renderRows[renderIndex].dataIndex;
+      }
     }
   }
 

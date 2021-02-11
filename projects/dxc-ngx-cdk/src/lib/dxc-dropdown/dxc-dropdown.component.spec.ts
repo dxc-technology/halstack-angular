@@ -8,9 +8,9 @@ describe("DxcDropdown tests", () => {
   test("should render dxc-dropdown", async () => {
     const dxcDropdown = await render(DxcDropdownComponent, {
       template: `<dxc-dropdown label="dropdown">,
-                  <dxc-dropdown-option>Facebook</dxc-dropdown-option>
-                  <dxc-dropdown-option>Twitter</dxc-dropdown-option>
-                  <dxc-dropdown-option>Linkedin</dxc-dropdown-option>
+                  <dxc-dropdown-option label="Facebook"></dxc-dropdown-option>
+                  <dxc-dropdown-option label="Twitter"></dxc-dropdown-option>
+                  <dxc-dropdown-option label="Linkedin"></dxc-dropdown-option>
                 </dxc-dropdown>`,
       componentProperties: {
         label: "dropdown",
@@ -25,9 +25,9 @@ describe("DxcDropdown tests", () => {
   test("should render options in dxc-dropdown", async () => {
     const dxcDropdown = await render(DxcDropdownComponent, {
       template: `<dxc-dropdown label="dropdown">,
-                  <dxc-dropdown-option (onSelectOption)="onSelect()">Facebook</dxc-dropdown-option>
-                  <dxc-dropdown-option (onSelectOption)="onSelect()">Twitter</dxc-dropdown-option>
-                  <dxc-dropdown-option (onSelectOption)="onSelect()">Linkedin</dxc-dropdown-option>
+                  <dxc-dropdown-option label="Facebook"></dxc-dropdown-option>
+                  <dxc-dropdown-option label="Twitter"></dxc-dropdown-option>
+                  <dxc-dropdown-option label="Linkedin"></dxc-dropdown-option>
                 </dxc-dropdown>`,
       componentProperties: {
         label: "dropdown",
@@ -46,10 +46,10 @@ describe("DxcDropdown tests", () => {
     const onSelect = jest.fn((i) => {});
     const optionValue = "Facebook";
     const dxcDropdown = await render(DxcDropdownComponent, {
-      template: `<dxc-dropdown label="dropdown">,
-                  <dxc-dropdown-option [value]="optionValue" (onSelectOption)="onSelect($event)">Facebook</dxc-dropdown-option>
-                  <dxc-dropdown-option (onSelectOption)="onSelect()">Twitter</dxc-dropdown-option>
-                  <dxc-dropdown-option (onSelectOption)="onSelect()">Linkedin</dxc-dropdown-option>
+      template: `<dxc-dropdown (onSelectOption)="onSelect($event)" label="dropdown">,
+                  <dxc-dropdown-option label="Facebook" [value]="optionValue" ></dxc-dropdown-option>
+                  <dxc-dropdown-option label="Twitter"></dxc-dropdown-option>
+                  <dxc-dropdown-option label="Linkedin"></dxc-dropdown-option>
                 </dxc-dropdown>`,
       componentProperties: {
         onSelect,

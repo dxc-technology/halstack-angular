@@ -1,4 +1,5 @@
 <div class="toggleContent" (click)="onClickHandler()">
-  <img class="icon" [src]="iconSrc" *ngIf="iconSrc" />
-  <span class="label" *ngIf="!iconSrc"> {{ label }} </span>
+  <!-- <img class="icon" [src]="iconSrc" *ngIf="iconSrc" /> -->
+  <ng-content select="dxc-toggle-icon"></ng-content>
+  <span class="label" *ngIf="label"> {{ label }} </span>
 </div>

@@ -12,6 +12,9 @@ export * from './lib/dxc-accordion/dxc-accordion.component';
 export * from './lib/dxc-accordion/dxc-accordion.module';
 export * from './lib/dxc-accordion/dxc-accordion-icon/dxc-accordion-icon.component';
 
+export * from './lib/dxc-accordionGroup/dxc-accordionGroup.component';
+export * from './lib/dxc-accordionGroup/dxc-accordionGroup.module';
+
 export * from './lib/dxc-alert/dxc-alert.component';
 export * from './lib/dxc-alert/dxc-alert.module';
 
@@ -105,6 +108,7 @@ export * from './lib/dxc-upload/dxc-transactions/dxc-transactions.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.component';
 export * from './lib/dxc-tabbed-section/dxc-tabbed-section.module';
 
+export * from './lib/dxc-toggleGroup/dxc-toggle-icon/dxc-toggle-icon.component';
 export * from './lib/dxc-toggleGroup/dxc-toggle/dxc-toggle.component';
 export * from './lib/dxc-toggleGroup/dxc-toggleGroup.component';
 export * from './lib/dxc-toggleGroup/dxc-toggleGroup.module';
@@ -114,7 +118,7 @@ export * from './lib/dxc-paginator/dxc-paginator.module';
 
 export * from './lib/dxc-wizard/dxc-wizard.component';
 export * from './lib/dxc-wizard/dxc-wizard.module';
-export * from './lib/dxc-wizard/dxc-step/dxc-step.component';
+export * from './lib/dxc-wizard/dxc-wizard-step/dxc-wizard-step.component';
 
 export * from './lib/dxc-link/dxc-link.component';
 export * from './lib/dxc-link/dxc-link.module';

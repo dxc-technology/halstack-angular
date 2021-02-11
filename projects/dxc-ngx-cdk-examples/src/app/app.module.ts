@@ -36,6 +36,7 @@ import { ResultsetTableComponent } from "./pages/resultset-table/resultset-table
 import { CommonModule } from "@angular/common";
 import {
   DxcAccordionModule,
+  DxcAccordionGroupModule,
   DxcAlertModule,
   DxcBoxModule,
   DxcButtonModule,
@@ -66,6 +67,7 @@ import {
   DxcHeadingModule,
   DxcResultsetTableModule,
   DxcTextareaModule,
+  DxcToggleGroupModule,
   ThemeModule,
   DxcApplicationLayoutModule,
   DxcChipModule,
@@ -76,6 +78,7 @@ import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
+import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,7 @@ import { ChipComponent } from './pages/chip/chip.component';
     SpinnerInfoComponent,
     SwitchInfoComponent,
     TableInfoComponent,
+    ToggleGroupInfoComponent,
     AllComponent,
     TagInfoComponent,
     ProgressInfoComponent,
@@ -149,11 +153,13 @@ import { ChipComponent } from './pages/chip/chip.component';
     DxcHeadingModule,
     DxcResultsetTableModule,
     DxcTextareaModule,
+    DxcToggleGroupModule,
     ThemeModule,
     DxcApplicationLayoutModule,
     DxcChipModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    DxcAccordionGroupModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

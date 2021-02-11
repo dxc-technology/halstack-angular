@@ -245,4 +245,62 @@ describe("DxcResultset Table tests", () => {
     expect(table.getByText("user1")).toBeTruthy();
     expect(table.getByText("pepe")).toBeTruthy();
   });
+
+  test("should update dxc-resultset-table", async () => {
+    const data = [
+      {
+        user: "user1",
+        email: "user1@gmail.com",
+      },
+      {
+        user: "pepe",
+        email: "user2@gmail.com",
+      },
+      {
+        user: "user555",
+        email: "user2@gmail.com",
+      },
+      {
+        user: "aida",
+        email: "user2@gmail.com",
+      },
+      {
+        user: "user75",
+        email: "user2@gmail.com",
+      },
+      {
+        user:'aida',
+        email:'test@gmail.com'
+      }
+    ];
+    const itemsPerPage = 5;
+    const table = await render(DxcResultTable, {
+      template: `  <dxc-resultset-table [collectionResource]="data" [itemsPerPage]="itemsPerPage" [margin]="xxsmall">
+                        <ng-container dxcColumnDef="user">
+                            <td *dxcCellDef="let item">
+                                {{item['user']}}
+                            </td>
+                        </ng-container>
+                        <ng-container dxcColumnDef="email">
+                            <td *dxcCellDef="let item">
+                                {{item['email']}}
+                            </td>
+                        </ng-container>
+                    </dxc-resultset-table>`,
+      imports: [DxcResultsetTableModule],
+      componentProperties: {
+          data,
+          itemsPerPage
+      },
+      excludeComponentDeclaration: true,
+    });
+    expect(table.getByText("user75")).toBeTruthy();
+    expect(table.getAllByRole("row").length).toBe(5);
+    const nextButton = table.getAllByRole("button")[2];
+    fireEvent.click(nextButton);
+    table.detectChanges();
+    expect(table.getAllByRole("row").length).toBe(1);
+    table.rerender({ itemsPerPage: 10 });
+    expect(table.getAllByRole("row").length).toBe(6);
+  });
 });

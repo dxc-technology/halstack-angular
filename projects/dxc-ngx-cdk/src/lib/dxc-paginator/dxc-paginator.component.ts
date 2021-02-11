@@ -51,12 +51,16 @@ export class DxcPaginatorComponent implements OnInit {
   }
   private _paginationActions;
 
+  @Input() public itemsPerPageOptions: number[];
+
   @Output() firstFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() nextFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() prevFunction: EventEmitter<any> = new EventEmitter<any>();
   @Output() lastFunction: EventEmitter<any> = new EventEmitter<any>();
+  @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 
   buttonMargin = { left: "xxsmall", right: "xxsmall" };
+  selectMargin = { left: "xxsmall", right: "small" };
   firstImgSrc = "assets/previousPage.svg";
   prevImgSrc = "assets/previous.svg";
   nextImgSrc = "assets/next.svg";
@@ -66,6 +70,10 @@ export class DxcPaginatorComponent implements OnInit {
   currentPageInternal: number;
   minItemsPerPage: number;
   maxItemsPerPage: number;
+  selectOptions: {
+    label: string;
+    value: any;
+  }[];
 
   showFirst: boolean = false;
   showLast: boolean = false;
@@ -77,6 +85,7 @@ export class DxcPaginatorComponent implements OnInit {
     itemsPerPage: 5,
     totalItems: 1,
     paginationActions: 0,
+    itemsPerPageOptions: [],
   });
 
   constructor() {
@@ -91,12 +100,22 @@ export class DxcPaginatorComponent implements OnInit {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    this.selectOptions = [];
+    if (this.itemsPerPageOptions) {
+      this.itemsPerPageOptions.map((value) => {
+        const option = { label: value.toString(), value: value };
+        this.selectOptions.push(option);
+      });
+    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.calculateInternalValues(this.defaultInputs.getValue());
+    this.calculateInternalValues({
+      ...this.defaultInputs.getValue(),
+      ...inputs,
+    });
   }
 
   public onFirstHandler($event: any): void {
@@ -113,6 +132,10 @@ export class DxcPaginatorComponent implements OnInit {
 
   public onLastHandler($event: any): void {
     this.lastFunction.emit(this.totalPages);
+  }
+
+  public onItemsPerPageHandler($event: any): void {
+    this.itemsPerPageFunction.emit($event);
   }
 
   private setButtonVisibility(paginationActions: Array<string>) {

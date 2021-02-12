@@ -13,7 +13,7 @@ import {
   ContentChildren,
   QueryList,
 } from "@angular/core";
-import { DxcLinkIconComponent } from './dxc-link-icon/dxc-link-icon.component';
+import { DxcLinkIconComponent } from "./dxc-link-icon/dxc-link-icon.component";
 
 @Component({
   selector: "dxc-link",
@@ -72,14 +72,7 @@ export class DxcLinkComponent {
     display: inline;
   `;
 
-  styledButton: string = css`
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: 0;
-    font-family: inherit;
-  `;
+  styledButton: string;
 
   defaultInputs = new BehaviorSubject<any>({
     underlined: true,
@@ -98,6 +91,9 @@ export class DxcLinkComponent {
   ngOnInit() {
     this.isClickDefined = this.onClick.observers.length > 0;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.styledButton = `${this.getDynamicStyledButton(
+      this.defaultInputs.getValue()
+    )}`;
   }
 
   ngAfterViewChecked() {
@@ -115,10 +111,15 @@ export class DxcLinkComponent {
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.styledButton = `${this.getDynamicStyledButton(
+      this.defaultInputs.getValue()
+    )}`;
   }
 
   public onClickHandler($event: any): void {
-    this.onClick.emit($event);
+    if (!this.disabled) {
+      this.onClick.emit($event);
+    }
   }
 
   getDynamicStyle(inputs) {
@@ -133,8 +134,8 @@ export class DxcLinkComponent {
         padding-bottom: 2px;
         text-decoration: none;
         ${inputs.iconPosition === "before"
-        ? ""
-        : "flex-direction: row-reverse;"}
+          ? ""
+          : "flex-direction: row-reverse;"}
 
         ${this.getUnderlineStyles(inputs)}
 
@@ -156,6 +157,17 @@ export class DxcLinkComponent {
             : "margin-left: 6px;"}
         }
       }
+    `;
+  }
+
+  getDynamicStyledButton(inputs) {
+    return css`
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: ${inputs.disabled ? "default" : "pointer"};
+      outline: 0;
+      font-family: inherit;
     `;
   }
 

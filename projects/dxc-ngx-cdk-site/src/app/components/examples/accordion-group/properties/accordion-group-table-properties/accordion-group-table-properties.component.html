@@ -1,19 +1,117 @@
-
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
-    <tr>
-        <th>Name</th>
-        <th>Default</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>margin: any (string | object)</td>
-        <td></td>
-        <td>
-            Size of the margin to be applied to the component ('xxsmall' |
-            'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You
-            can pass an object with 'top', 'bottom', 'left' and 'right' properties
-            in order to specify different margin sizes.
-        </td>
-    </tr>
-</dxc-table>  
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>indexActive: number</td>
+    <td></td>
+    <td>
+      The index of the active accordion. If undefined, the component will be
+      uncontrolled and the active accordion will be managed internally by the
+      component. If null, the component will be controlled and all accordions
+      will be closed.
+    </td>
+  </tr>
+  <tr>
+    <td>disabled: boolean</td>
+    <td><code>false</code></td>
+    <td>If true, the component will be disabled.</td>
+  </tr>
+  <tr>
+    <td>onActiveChange: function</td>
+    <td></td>
+    <td>
+      This function will be called when the user clicks on an accordion. The
+      index of the clicked accordion will be passed as a parameter.
+    </td>
+  </tr>
+  <tr>
+    <td>margin: string | object</td>
+    <td></td>
+    <td>
+      Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
+      'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+      object with 'top', 'bottom', 'left' and 'right' properties in order to
+      specify different margin sizes.
+    </td>
+  </tr>
+</dxc-table>
+
+<dxc-heading
+  [level]="5"
+  weight="normal"
+  text="Accordion Properties"
+  [margin]="{ bottom: 'small', top: 'small' }"
+></dxc-heading>
+<p>
+  Customized accordion that allows this accordion group component. Accordion
+  component can be checked
+  <dxc-link
+    text="here"
+    [underlined]="true"
+    (click)="navigateToRoute(); $event.preventDefault()"
+  ></dxc-link
+  >.
+</p>
+<dxc-table>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>label: string</td>
+    <td></td>
+    <td>The panel label.</td>
+  </tr>
+  <tr>
+    <td>icon: node</td>
+    <td></td>
+    <td>Element used as the icon that will be placed next to panel label.</td>
+  </tr>
+  <tr>
+    <td>iconSrc: string</td>
+    <td></td>
+    <td>
+      <b>Deprecated.</b> URL of the icon that will be placed next to panel
+      label.
+    </td>
+  </tr>
+  <tr>
+    <td>iconPosition: 'before' | 'after'</td>
+    <td>
+      <code>'before'</code>
+    </td>
+    <td>Whether the icon should appear after or before the label.</td>
+  </tr>
+  <tr>
+    <td>assistiveText: string</td>
+    <td></td>
+    <td>Assistive text to be placed on the right side of the panel.</td>
+  </tr>
+  <tr>
+    <td>disabled: boolean</td>
+    <td>
+      <code>false</code>
+    </td>
+    <td>If true, the component will be disabled.</td>
+  </tr>
+  <tr>
+    <td>padding: string | object</td>
+    <td></td>
+    <td>
+      Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall'
+      | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+      object with 'top', 'bottom', 'left' and 'right' properties in order to
+      specify different padding sizes.
+    </td>
+  </tr>
+</dxc-table>

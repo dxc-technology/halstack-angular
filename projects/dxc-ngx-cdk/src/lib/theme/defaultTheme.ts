@@ -281,7 +281,7 @@ export const defaultTheme: Theme = {
     "wizard":{
       "fontColor": "inherit",
       "lineColor": colors.lightGrey,
-      "disabledBackground": colors.darkWhite,
+      "disabledBackground": colors.lightGrey,
       "disabledFont": colors.darkGrey,
       "notVisitedOpacity": 0.64,
       "disabled": 0.34,

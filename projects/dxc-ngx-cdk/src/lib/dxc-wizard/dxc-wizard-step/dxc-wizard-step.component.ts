@@ -207,7 +207,6 @@ export class DxcWizardStepComponent {
         color: inherit;
         ${inputs.position > inputs.childCurrentStep &&
         `opacity: var(--wizard-notVisitedOpacity);`}
-        ${inputs.disabled && `opacity: var(--wizard-disabled);`}
         margin: 0;
       }
 

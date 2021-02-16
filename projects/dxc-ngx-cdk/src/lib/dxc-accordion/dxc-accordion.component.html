@@ -8,6 +8,7 @@
     <mat-expansion-panel-header
       (click)="onClickHandler($event)"
       [expandedHeight]="'48px'"
+      [ngClass]="(containsIcon || iconSrc) ? 'containsIcon' : ''"
     >
       <mat-panel-title
         [ngClass]="iconPosition === 'after' ? 'after' : 'before'"

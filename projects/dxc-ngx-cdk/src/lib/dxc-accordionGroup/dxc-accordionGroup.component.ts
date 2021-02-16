@@ -112,8 +112,9 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
         this.accordionService.accordionActive.next(
           instance.renderedIsExpanded
             ? index
-            : (this.accordionService.accordionActive.getValue() === index &&
-                !instance.renderedIsExpanded) && undefined
+            : this.accordionService.accordionActive.getValue() === index &&
+                !instance.renderedIsExpanded &&
+                undefined
         );
       };
     });
@@ -163,11 +164,75 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     }
   }
 
+  getNestedAccordionStyle() {
+    return css`
+      dxc-accordion {
+        margin: 0px;
+        width: 100%;
+        .mat-accordion .mat-expansion-panel:last-of-type,
+        .mat-accordion .mat-expansion-panel:first-of-type {
+          border-radius: 4px;
+        }
+      }
+    `;
+  }
+
+  getNestedAccordionGroupStyle() {
+    return css`
+      dxc-accordion-group {
+        dxc-accordion {
+          mat-expansion-panel {
+            mat-expansion-panel-header {
+              padding: 0px 16px 0px 16px;
+            }
+          }
+        }
+      }
+    `;
+  }
+
   getDynamicStyle(inputs) {
     return css`
       ${this.cssUtils.getMargins(inputs.margin)}
       dxc-accordion {
         margin: 0px;
+        .mat-accordion .mat-expansion-panel:last-of-type,
+        .mat-accordion .mat-expansion-panel:first-of-type {
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+        .mat-accordion .mat-expansion-panel:first-of-type {
+          border-top-right-radius: 0px;
+          border-top-left-radius: 0px;
+        }
+        ${this.getNestedAccordionStyle()}
+        ${this.getNestedAccordionGroupStyle()}
+        div.mat-expansion-panel-content {
+          div.mat-expansion-panel-body {
+            margin-left: 48px;
+            dxc-accordion {
+              margin-left: -16px;
+            }
+          }
+        }
+      }
+      dxc-accordion:first-of-type {
+        .mat-accordion .mat-expansion-panel:last-of-type,
+        .mat-accordion .mat-expansion-panel:first-of-type {
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+      }
+      dxc-accordion:last-of-type {
+        .mat-accordion .mat-expansion-panel:last-of-type,
+        .mat-accordion .mat-expansion-panel:first-of-type {
+          border-bottom-right-radius: 4px;
+          border-bottom-left-radius: 4px;
+          border-top-right-radius: 0px;
+          border-top-left-radius: 0px;
+        }
       }
     `;
   }

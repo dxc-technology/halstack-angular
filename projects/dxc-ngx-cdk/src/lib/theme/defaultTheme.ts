@@ -118,7 +118,8 @@ export const customTheme: Theme = {
       "selectedFont": colors.white
     },
     "accordion":{
-      "arrowColor": colors.darkGrey
+      "arrowColor": colors.dxcPurple,
+      "fontColor": colors.darkGrey
     },
     "dropdown":{
       "backgroundColor": colors.white,
@@ -288,11 +289,10 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "accordion":{
-      "fontColor": colors.darkGrey,
       "backgroundColor": colors.white,
-      "hoverBackgroundColor": "57",
-      "hoverFontColor": colors.black,
-      "disabled": 0.34
+      "hoverBackgroundColor": 0.53,
+      "disabledFontColor": 0.40,
+      "focusOutline": colors.dxcPurple
     },
     "dialog":{
       "overlayColor": colors.black + "CC",

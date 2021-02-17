@@ -16,7 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
-import { QueryList, ChangeDetectorRef } from '@angular/core';
+import { QueryList, ChangeDetectorRef } from "@angular/core";
 
 @Component({
   selector: "dxc-accordion",
@@ -27,7 +27,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() mode: string;
   @Input() label: string;
   @Input() iconSrc: string;
-  @Input() iconPosition: string;
   @Input() assistiveText: string;
   @Input()
   get disabled(): boolean {
@@ -81,9 +80,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.iconPosition !== "after") {
-      this.iconPosition = "before";
-    }
     this.renderedIsExpanded = this.isExpanded;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -117,14 +113,14 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           font: normal normal normal 16px/22px "Open Sans", sans-serif;
           display: flex;
           cursor: default;
-          ${inputs.padding ? this.cssUtils.getPaddings(inputs.padding) : `padding:0px;`}
+          ${inputs.padding
+            ? this.cssUtils.getPaddings(inputs.padding)
+            : `padding:0px;`}
           margin: 16px 16px 16px 32px;
-        }
-      }
-      mat-expansion-panel-header {
-        &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--accordion-focusOutline);
+          dxc-accordion {
+            margin-left: -16px;
+            width: auto;
+          }
         }
       }
       mat-expansion-panel {
@@ -182,11 +178,15 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           max-height: 64px;
           background: transparent;
           padding: 0px 16px 0px 32px;
-          &.containsIcon{
+          &.containsIcon {
             padding: 0px 16px 0px 16px;
           }
+          &:focus {
+            outline: -webkit-focus-ring-color auto 1px;
+            outline-color: var(--accordion-focusOutline);
+          }
           &:hover {
-            background-color: var(--accordion-hoverBackgroundColor);
+            background-color: var(--accordion-hoverBackgroundColor) !important;
             .mat-expansion-panel-header-title {
               font: normal normal 600 16px/22px "Open Sans", sans-serif;
             }
@@ -219,9 +219,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             border-bottom-right-radius: 0px;
           }
         }
-        .mat-expansion-panel-body{
-
-        }
       }
       mat-expansion-panel.disabled {
         cursor: not-allowed;
@@ -231,7 +228,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             color: var(--accordion-disabledFontColor);
           }
           padding: 0px 16px 0px 32px;
-          &.containsIcon{
+          &.containsIcon {
             padding: 0px 16px 0px 16px;
           }
           svg {

@@ -11,7 +11,7 @@
       [ngClass]="(containsIcon || iconSrc) ? 'containsIcon' : ''"
     >
       <mat-panel-title
-        [ngClass]="iconPosition === 'after' ? 'after' : 'before'"
+        [ngClass]="'before'"
       >
         <span *ngIf="label">{{ label }}</span>
         <img [src]="iconSrc" *ngIf="iconSrc" class="imageIcon" />

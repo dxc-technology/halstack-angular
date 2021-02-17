@@ -167,6 +167,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   getNestedAccordionStyle() {
     return css`
       dxc-accordion {
+        margin-left: -16px;
         margin: 0px;
         width: 100%;
         .mat-accordion .mat-expansion-panel:last-of-type,
@@ -180,6 +181,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   getNestedAccordionGroupStyle() {
     return css`
       dxc-accordion-group {
+        margin-left: -16px;
         dxc-accordion {
           mat-expansion-panel {
             mat-expansion-panel-header {
@@ -210,9 +212,6 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
         div.mat-expansion-panel-content {
           div.mat-expansion-panel-body {
             margin-left: 48px;
-            dxc-accordion {
-              margin-left: -16px;
-            }
           }
         }
       }

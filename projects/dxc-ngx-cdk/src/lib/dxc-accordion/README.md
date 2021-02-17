@@ -58,11 +58,6 @@ The API properties are the following:
         <td>URL of the icon that will be placed next to the button label.</td>
     </tr>
     <tr>
-        <td>@Input<br>iconPosition: 'before' | 'after'</td>
-        <td></td>
-        <td>Whether the icon should appear after or before the label.</td>
-    </tr>
-    <tr>
         <td>@Input<br>assistiveText: string</td>
         <td></td>
         <td>Assistive text to be placed on the right side of the panel.</td>

@@ -290,8 +290,8 @@ export const defaultTheme: Theme = {
     },
     "accordion":{
       "backgroundColor": colors.white,
-      "hoverBackgroundColor": 0.53,
-      "disabledFontColor": 0.40,
+      "hoverBackgroundColor": "1A",
+      "disabledFontColor": "66",
       "focusOutline": colors.dxcPurple
     },
     "dialog":{

@@ -17,6 +17,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { DxcAccordionComponent } from "../dxc-accordion/dxc-accordion.component";
 import { AccordionService } from "./services/accordionService.service";
+import { ChangeDetectorRef } from "@angular/core";
 import {
   coerceNumberProperty,
   coerceBooleanProperty,
@@ -68,7 +69,8 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
 
   constructor(
     private cssUtils: CssUtils,
-    private accordionService: AccordionService
+    private accordionService: AccordionService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -100,6 +102,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     } else {
       this.controlledAccordionGroup();
     }
+    this.cdRef.detectChanges();
   }
 
   uncontrolledAccordionGroup() {
@@ -167,27 +170,11 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   getNestedAccordionStyle() {
     return css`
       dxc-accordion {
-        margin-left: -16px;
         margin: 0px;
         width: 100%;
         .mat-accordion .mat-expansion-panel:last-of-type,
         .mat-accordion .mat-expansion-panel:first-of-type {
           border-radius: 4px;
-        }
-      }
-    `;
-  }
-
-  getNestedAccordionGroupStyle() {
-    return css`
-      dxc-accordion-group {
-        margin-left: -16px;
-        dxc-accordion {
-          mat-expansion-panel {
-            mat-expansion-panel-header {
-              padding: 0px 16px 0px 16px;
-            }
-          }
         }
       }
     `;
@@ -208,11 +195,8 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
           border-top-left-radius: 0px;
         }
         ${this.getNestedAccordionStyle()}
-        ${this.getNestedAccordionGroupStyle()}
-        div.mat-expansion-panel-content {
-          div.mat-expansion-panel-body {
-            margin-left: 48px;
-          }
+        dxc-accordion-group {
+          width: 100%;
         }
       }
       dxc-accordion:first-of-type {

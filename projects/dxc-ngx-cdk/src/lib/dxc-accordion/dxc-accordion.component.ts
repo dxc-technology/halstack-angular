@@ -16,7 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
-import { QueryList, ChangeDetectorRef } from "@angular/core";
+import { QueryList, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: "dxc-accordion",
@@ -49,14 +49,13 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   private _isExpanded;
 
   @HostBinding("class") className;
+  @HostBinding("class.isNested") isNested: boolean = false;
 
   @ViewChild("matExpansionPanel", { static: true }) _matExpansionPanel: any;
   renderedIsExpanded: boolean;
 
   @ContentChildren(DxcAccordionIconComponent)
   dxcAccordionIcon: QueryList<DxcAccordionIconComponent>;
-
-  containsIcon: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
@@ -68,7 +67,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.dxcAccordionIcon.length !== 0) {
-      this.containsIcon = true;
       this.iconSrc = "";
     }
     this.cdRef.detectChanges();
@@ -107,7 +105,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
       ${this.cssUtils.getMargins(inputs.margin)}
       min-width: 280px;
       display: block;
-      width: 100%;
       div.mat-expansion-panel-content {
         div.mat-expansion-panel-body {
           font: normal normal normal 16px/22px "Open Sans", sans-serif;
@@ -116,10 +113,9 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           ${inputs.padding
             ? this.cssUtils.getPaddings(inputs.padding)
             : `padding:0px;`}
-          margin: 16px 16px 16px 32px;
+          margin: 16px 16px 16px 16px;
           dxc-accordion {
-            margin-left: -16px;
-            width: auto;
+            width: 100%;
           }
         }
       }
@@ -177,10 +173,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
         mat-expansion-panel-header {
           max-height: 64px;
           background: transparent;
-          padding: 0px 16px 0px 32px;
-          &.containsIcon {
-            padding: 0px 16px 0px 16px;
-          }
+          padding: 0px 16px 0px 16px;
           &:focus {
             outline: -webkit-focus-ring-color auto 1px;
             outline-color: var(--accordion-focusOutline);
@@ -227,12 +220,9 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           .mat-expansion-panel-header-description {
             color: var(--accordion-disabledFontColor);
           }
-          padding: 0px 16px 0px 32px;
-          &.containsIcon {
-            padding: 0px 16px 0px 16px;
-          }
+          padding: 0px 16px 0px 16px;
           svg {
-            fill: var(--accordion-arrowColor);
+            fill: var(--accordion-disabledFontColor);
           }
         }
       }

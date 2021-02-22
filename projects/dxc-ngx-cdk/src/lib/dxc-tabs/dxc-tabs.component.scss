@@ -6,4 +6,7 @@
       }
     }
   }
+  ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label:hover:not(.mat-tab-disabled)  {
+    background-color: var(--tabs-hoverBackgroundColor);
+  }
 }

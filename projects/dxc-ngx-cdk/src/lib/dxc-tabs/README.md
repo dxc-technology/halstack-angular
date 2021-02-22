@@ -43,6 +43,11 @@ export class AppModule {}
         <td><code>0</code></td>
         <td>The index of the active tab.</td>
     </tr>
+        <tr>
+        <td>@Input<br>iconPosition: string ('top' | 'left')</td>
+        <td><code>'left'</code></td>
+        <td>Position of icons in tabs.</td>
+    </tr>
     <tr>
         <td>@Input<br>margin: any (string | object)</td>
         <td></td>

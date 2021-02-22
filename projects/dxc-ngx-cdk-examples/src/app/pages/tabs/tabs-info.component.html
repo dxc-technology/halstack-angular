@@ -1,7 +1,7 @@
 <div>
   <h3>Uncontrolled tabs</h3>
-  <dxc-tabs>
-    <dxc-tab label="Tab 1" (onTabClick)="uncontrolledTabClicked($event)" >
+  <dxc-tabs iconPosition="top">
+    <dxc-tab label="Tab 1" (onTabClick)="uncontrolledTabClicked($event)">
       <dxc-tab-icon>
         <svg
           version="1.1"
@@ -26,11 +26,49 @@
         </svg>
       </dxc-tab-icon>
     </dxc-tab>
-    <dxc-tab label="Tab 2" (onTabClick)="uncontrolledTabClicked($event)"></dxc-tab>
-    <dxc-tab label="Tab 3" (onTabClick)="uncontrolledTabClicked($event)"></dxc-tab>
+    <dxc-tab
+      label="Tab 2"
+      (onTabClick)="uncontrolledTabClicked($event)"
+    ></dxc-tab>
+    <dxc-tab
+      label="Tab 3"
+      (onTabClick)="uncontrolledTabClicked($event)"
+    ></dxc-tab>
   </dxc-tabs>
 </div>
-<div style="width: 320px">
+<div>
+  <h3>Tabs with left icon</h3>
+  <dxc-tabs iconPosition="left">
+    <dxc-tab label="Tab 1">
+      <dxc-tab-icon>
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="24px"
+          height="24px"
+          viewBox="0 0 24 24"
+          enable-background="new 0 0 24 24"
+          xml:space="preserve"
+        >
+          <g id="Bounding_Box">
+            <rect fill="none" width="24" height="24" />
+          </g>
+          <g id="Master">
+            <path
+              d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h5v-6h4v6h5v-8h3L19,9.3z M10,10c0-1.1,0.9-2,2-2s2,0.9,2,2H10z"
+            />
+          </g>
+        </svg>
+      </dxc-tab-icon>
+    </dxc-tab>
+    <dxc-tab label="Tab 2"></dxc-tab>
+    <dxc-tab label="Tab 3"></dxc-tab>
+  </dxc-tabs>
+</div>
+<div style="width: 500px">
   <h3>Tab index</h3>
   <dxc-tabs margin="small" [activeTabIndex]="tabId">
     <dxc-tab label="Tab 1" (onTabClick)="tabClicked($event)"></dxc-tab>
@@ -41,9 +79,9 @@
 <div>
   <h3>Tabs with static index</h3>
   <dxc-tabs [activeTabIndex]="1">
-    <dxc-tab label="Tab 1" ></dxc-tab>
+    <dxc-tab label="Tab 1"></dxc-tab>
     <dxc-tab label="Tab 2"></dxc-tab>
-    <dxc-tab label="Tab 3"></dxc-tab>
+    <dxc-tab label="Tab 3" [disabled]="true"></dxc-tab>
   </dxc-tabs>
 </div>
 <div>

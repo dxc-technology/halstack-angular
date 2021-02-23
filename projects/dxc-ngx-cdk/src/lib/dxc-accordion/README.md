@@ -110,7 +110,12 @@ The API properties are the following:
     </tr>
     <tr>
         <td>arrowColor</td>
+        <td><code>#6F2C91</code></td>
+        <td>Applies to token arrowColor, hoverBackgroundColor and focusOutline.</td>
+    </tr>    
+    <tr>
+        <td>fontColor</td>
         <td><code>#666666</code></td>
-        <td>Applies to token arrowColor and hoverBackgroundColor.</td>
+        <td>Applies to token fontColor and disabledColor.</td>
     </tr>
 </table>

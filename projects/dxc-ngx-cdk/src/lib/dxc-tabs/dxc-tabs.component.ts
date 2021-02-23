@@ -16,12 +16,27 @@ import { CssUtils } from "../utils";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { ElementRef, ChangeDetectorRef } from "@angular/core";
 import { TabService } from "./services/tab.service";
+import {
+  MatRipple,
+  MAT_RIPPLE_GLOBAL_OPTIONS,
+  RippleGlobalOptions,
+} from "@angular/material/core";
 
+const globalRippleConfig: RippleGlobalOptions = {
+  animation: {
+    enterDuration: 0,
+    exitDuration: 0,
+  },
+};
 @Component({
   selector: "dxc-tabs",
   templateUrl: "./dxc-tabs.component.html",
   styleUrls: ["./dxc-tabs.component.scss"],
-  providers: [CssUtils, TabService],
+  providers: [
+    CssUtils,
+    TabService,
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
+  ],
 })
 export class DxcTabsComponent implements OnChanges {
   @HostBinding("class") className;
@@ -40,6 +55,8 @@ export class DxcTabsComponent implements OnChanges {
   }
   private _activeTabIndex;
   renderedActiveTabIndex: number;
+
+  @ViewChild(MatRipple) ripple: MatRipple;
 
   @ViewChild("tabGroup", { static: true })
   public tabGroup: MatTabGroup;
@@ -93,13 +110,6 @@ export class DxcTabsComponent implements OnChanges {
     this.generateTabs();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.insertUnderline();
-    // const element = document.getElementsByClassName(".mat-tab-label");
-    // element[0].addEventListener("mousedown", () => {
-    //   console.log("clicked mouse down element");
-    // });
-    // element[0].addEventListener("mousedown", () => {
-    //   console.log("clicked mouse down element");
-    // });
     this.cdRef.detectChanges();
   }
 
@@ -122,13 +132,6 @@ export class DxcTabsComponent implements OnChanges {
       "mat-tab-list"
     )[0];
     tabList.insertAdjacentHTML("beforeend", '<div class="underline"></div>');
-  }
-
-  mousedown() {
-    console.log("OMG It's a Mouse down!!!");
-  }
-  mouseup() {
-    console.log("OMG It's a Mouse up!!!");
   }
 
   getDynamicStyle(inputs) {
@@ -174,6 +177,9 @@ export class DxcTabsComponent implements OnChanges {
         }
         dxc-tab-icon {
           fill: var(--tabs-fontColor);
+        }
+        .mat-ripple-element{
+          background-color: var(--tabs-pressedBackgroundColor);
         }
         .mat-tab-label-content {
           font-size: 16px;

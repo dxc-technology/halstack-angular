@@ -3,7 +3,7 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { DxcAccordionGroupComponent } from "./dxc-accordionGroup.component";
 import { CommonModule } from "@angular/common";
 import { MatIconModule } from "@angular/material/icon";
-import { DxcAccordionModule } from "../dxc-accordion/dxc-accordion.module";
+import { DxcAccordionModule } from '../dxc-accordion/dxc-accordion.module';
 
 @NgModule({
   declarations: [DxcAccordionGroupComponent],
@@ -11,7 +11,7 @@ import { DxcAccordionModule } from "../dxc-accordion/dxc-accordion.module";
     CommonModule,
     MatExpansionModule,
     MatIconModule,
-    DxcAccordionModule,
+    DxcAccordionModule
   ],
   exports: [DxcAccordionGroupComponent],
 })

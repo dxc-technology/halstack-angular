@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionGroupComponent } from './accordion-group.component';
-import { DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule,DxcTagModule,DxcChipModule,DxcHeadingModule, DxcLinkModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from 'src/app/components/example-viewer/example-viewer.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
@@ -36,7 +36,8 @@ import { AccordionGroupThemeComponent } from '../../components/examples/accordio
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    DxcLinkModule
   ], 
   exports: [
     AccordionGroupComponent,

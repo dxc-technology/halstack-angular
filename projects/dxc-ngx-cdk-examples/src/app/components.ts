@@ -32,12 +32,18 @@ import { TextareaInfoComponent } from './pages/textarea/textarea-info.component'
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
+import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 
 export const Components = [
     {
         name: 'Accordion',
         route: 'accordion',
         component: AccordionComponent
+    },
+    {
+        name: 'Accordion Group',
+        route: 'accordion-group',
+        component: AccordionGroupComponent
     },
     {
         name: 'Alert',

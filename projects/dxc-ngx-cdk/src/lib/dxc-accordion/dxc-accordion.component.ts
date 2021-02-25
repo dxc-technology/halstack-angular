@@ -16,7 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
-import { QueryList, ChangeDetectorRef } from '@angular/core';
+import { QueryList, ChangeDetectorRef, ElementRef } from '@angular/core';
 
 @Component({
   selector: "dxc-accordion",
@@ -63,7 +63,11 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     disabled: false,
   });
 
-  constructor(private cssUtils: CssUtils, private cdRef: ChangeDetectorRef) {}
+  constructor(private cssUtils: CssUtils, private cdRef: ChangeDetectorRef,private elementRef: ElementRef) {}
+
+  getElement(){
+    return this.elementRef;
+  }
 
   ngAfterViewInit(): void {
     if (this.dxcAccordionIcon.length !== 0) {
@@ -108,7 +112,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
       div.mat-expansion-panel-content {
         div.mat-expansion-panel-body {
           font: normal normal normal 16px/22px "Open Sans", sans-serif;
-          display: flex;
           cursor: default;
           ${inputs.padding
             ? this.cssUtils.getPaddings(inputs.padding)

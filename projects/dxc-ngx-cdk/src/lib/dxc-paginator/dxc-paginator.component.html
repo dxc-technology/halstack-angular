@@ -7,8 +7,13 @@
         [value]="itemsPerPage"
         [margin]="selectMargin"
         size="small"
-        [options]="selectOptions"
-      ></dxc-select>
+      >
+        <dxc-option
+          *ngFor="let option of selectOptions"
+          [label]="option.label"
+          [value]="option.value"
+        ></dxc-option>
+      </dxc-select>
     </span>
     <span class="total-items-container">
       {{ minItemsPerPage }} to {{ maxItemsPerPage }} of {{ totalItems }}

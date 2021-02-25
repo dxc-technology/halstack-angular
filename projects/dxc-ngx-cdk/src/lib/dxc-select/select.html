@@ -7,6 +7,8 @@
  Using `aria-owns` re-parents the select overlay so that it works again.
  See https://github.com/angular/components/issues/20694
 -->
+<span class="assistiveText">{{assistiveText}}</span>
+<label class="selectLabel">{{label}}</label>
 <div cdk-overlay-origin
      [attr.aria-owns]="panelOpen ? id + '-panel' : null"
      class="mat-select-trigger"
@@ -20,9 +22,9 @@
       <ng-content select="mat-select-trigger" *ngSwitchCase="true"></ng-content>
     </span>
   </div>
-
   <div class="mat-select-arrow-wrapper"><div class="mat-select-arrow"></div></div>
 </div>
+<div class="underline" [ngClass]="{'opened': panelOpen}"></div>
 
 <ng-template
   cdk-connected-overlay
@@ -44,7 +46,7 @@
       #panel
       role="listbox"
       tabindex="-1"
-      class="mat-select-panel {{ _getPanelTheme() }}"
+      class="mat-select-panel"
       [attr.id]="id + '-panel'"
       [attr.aria-multiselectable]="multiple"
       [attr.aria-label]="ariaLabel || null"

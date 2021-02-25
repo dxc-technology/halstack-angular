@@ -1,5 +1,5 @@
 <div>
-  <h4>Uncontrolled Select</h4>
+  <!-- <h4>Uncontrolled Select</h4>
   <div className="test-case" id="uncontrolled">
     <dxc-select
       (onChange)="onUncontrolledChange($event)"
@@ -10,17 +10,40 @@
       assistiveText="Assistive text"
     ></dxc-select>
   </div>
-  <h4>Compund select</h4>
+  <h4>Compund select</h4> -->
 
   <div>
-    <mat-form-field>
-      <mat-select>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-        <mat-option value="option3">Option 3</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <dxc-select label="label" assistiveText="assistiveText" multiple="true" margin="medium">
+        <dxc-option value="option1" label ="Sushi"></dxc-option>
+        <dxc-option value="option2" label ="Pizza" disabled></dxc-option>
+        <dxc-option value="option3" label ="Burritos"></dxc-option>
+      </dxc-select>
   </div>
+
+  <div>
+      <dxc-select label="label" assistiveText="assistiveText" (onChange)="onMultipleChange($event)" [value]="multipleValue" multiple="true">
+        <dxc-option value="option21"label ="Sushi"></dxc-option>
+        <dxc-option value="option22" label ="Pizza" disabled></dxc-option>
+        <dxc-option value="option23" label ="Burritos"></dxc-option>
+      </dxc-select>
+  </div>
+
+  <!-- <div>
+      <dxc-select label="label" assistiveText="assistiveText" (onChange)="onChange($event)" [value]="value">
+        <dxc-option value="option1">Sushi</dxc-option>
+        <dxc-option value="option2" disabled>Pizza</dxc-option>
+        <dxc-option value="option3">Burritos</dxc-option>
+      </dxc-select>
+  </div>
+
+  
+  <div>
+    <dxc-select label="label" assistiveText="assistiveText">
+      <dxc-option value="option1">Sushi</dxc-option>
+      <dxc-option value="option2" disabled>Pizza</dxc-option>
+      <dxc-option value="option3">Burritos</dxc-option>
+    </dxc-select>
+</div> -->
   <!-- <div className="test-case" id="multiple-uncontrolled">
     <h4>Multiple Uncontrolled Select</h4>
     <dxc-select

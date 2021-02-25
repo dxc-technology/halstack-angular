@@ -16,6 +16,7 @@ import { InjectionToken } from '@angular/core';
 export interface MatOptionParentComponent {
   disableRipple?: boolean;
   multiple?: boolean;
+  controlled?: boolean;
 }
 
 /**

@@ -11,26 +11,28 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
-import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelect, MatSelectTrigger } from './select';
-import { MatOptionModule } from './option/option.module';
+import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER, DxcSelect, MatSelectTrigger } from './select';
+import { DxcOptionModule } from './option/option.module';
 import { MatCommonModule } from './common-behaviors/common-module';
-
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
     CommonModule,
     OverlayModule,
-    MatOptionModule,
-    MatCommonModule
+    DxcOptionModule,
+    MatCommonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     CdkScrollableModule,
     MatFormFieldModule,
-    MatSelect,
+    DxcSelect,
     MatSelectTrigger,
-    MatOptionModule
+    DxcOptionModule
   ],
-  declarations: [MatSelect, MatSelectTrigger],
+  declarations: [DxcSelect, MatSelectTrigger],
   providers: [MAT_SELECT_SCROLL_STRATEGY_PROVIDER]
 })
-export class MatSelectModule { }
+export class DxcSelectModule { }

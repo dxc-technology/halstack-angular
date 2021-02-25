@@ -72,8 +72,6 @@ import {
   ThemeModule,
   DxcApplicationLayoutModule,
   DxcChipModule,
-  MatSelectModule,
-  MatOptionModule
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
@@ -159,8 +157,6 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
     ThemeModule,
     DxcApplicationLayoutModule,
     DxcChipModule,
-    MatSelectModule,
-    MatOptionModule,
     DxcAccordionGroupModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],

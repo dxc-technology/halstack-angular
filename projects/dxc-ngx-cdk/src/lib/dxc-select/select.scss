@@ -23,6 +23,7 @@ $mat-select-placeholder-arrow-space: 2 *
   cursor: pointer;
   position: relative;
   box-sizing: border-box;
+  height: 20px;
 
   .mat-select-disabled & {
     @include user-select(none);
@@ -37,6 +38,7 @@ $mat-select-placeholder-arrow-space: 2 *
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .mat-select-value-text {
@@ -161,3 +163,4 @@ $mat-select-placeholder-arrow-space: 2 *
   white-space: pre;
   width: 1px;
 }
+

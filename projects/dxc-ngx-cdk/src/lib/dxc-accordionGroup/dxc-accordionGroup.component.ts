@@ -109,21 +109,27 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   setClassNamesAccordions() {
     this.dxcAccordion.forEach((instance, index) => {
       if (this.dxcAccordion.length === 1 && index === 0) {
-        instance.getElement().nativeElement.classList.add("one");
+        instance.className += " one";
       } else if (this.dxcAccordion.length > 1) {
         if (index === 0) {
-          instance.getElement().nativeElement.classList.add("first");
+          instance.className += " first";
         } else if (index === this.dxcAccordion.length - 1) {
-          instance.getElement().nativeElement.classList.add("last");
+          instance.className += " last";
         } else {
-          instance.getElement().nativeElement.classList.add("middle");
+          instance.className += " middle";
         }
       }
-      let singleAccordions = instance.getElement().nativeElement.querySelectorAll('dxc-accordion');
-      singleAccordions.forEach(element => {
-        if(element !== null){
-          if(element.parentElement?.className.includes("mat-expansion-panel-body")){
-            element.classList.add("single");
+      let singleAccordions = instance
+        .getElement()
+        .nativeElement.querySelectorAll("dxc-accordion");
+      singleAccordions.forEach((element) => {
+        if (element !== null) {
+          if (
+            element.parentElement?.className.includes(
+              "mat-expansion-panel-body"
+            )
+          ) {
+            element.className += " single";
           }
         }
       });
@@ -191,7 +197,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
       instance.disabled = true;
     }
   }
-  
+
   getDynamicStyle(inputs) {
     return css`
       ${this.cssUtils.getMargins(inputs.margin)}
@@ -202,7 +208,8 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
           width: 100%;
         }
       }
-      dxc-accordion.one, dxc-accordion.single {
+      dxc-accordion.one,
+      dxc-accordion.single {
         .mat-accordion .mat-expansion-panel {
           border-radius: 4px !important;
         }

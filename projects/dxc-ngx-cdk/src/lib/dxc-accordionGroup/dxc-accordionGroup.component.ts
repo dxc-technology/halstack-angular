@@ -119,20 +119,6 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
           instance.className += " middle";
         }
       }
-      let singleAccordions = instance
-        .getElement()
-        .nativeElement.querySelectorAll("dxc-accordion");
-      singleAccordions.forEach((element) => {
-        if (element !== null) {
-          if (
-            element.parentElement?.className.includes(
-              "mat-expansion-panel-body"
-            )
-          ) {
-            element.className += " single";
-          }
-        }
-      });
     });
   }
 
@@ -209,7 +195,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
         }
       }
       dxc-accordion.one,
-      dxc-accordion.single {
+      dxc-accordion:not(.first):not(.middle):not(.last) {
         .mat-accordion .mat-expansion-panel {
           border-radius: 4px !important;
         }

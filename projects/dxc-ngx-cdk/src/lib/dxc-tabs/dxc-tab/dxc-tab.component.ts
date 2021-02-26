@@ -11,6 +11,7 @@ import {
 import { MatTab } from "@angular/material/tabs";
 import { DxcTabIconComponent } from './dxc-tab-icon/dxc-tab-icon.component';
 import { QueryList } from '@angular/core';
+import { TabService } from '../services/tab.service';
 
 @Component({
   selector: "dxc-tab",
@@ -34,7 +35,16 @@ export class DxcTabComponent implements OnChanges {
 
   tabIcon: boolean = false;
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  iconPosition: string;
+
+  constructor(private cdRef: ChangeDetectorRef, private service: TabService) {
+    this.service.iconPosition.subscribe((value) => {
+      if (value) {
+        this.iconPosition = value;
+        this.getLabelClass();
+      }
+    });
+  }
 
   public ngOnChanges(): void {
     this.getLabelClass();
@@ -60,7 +70,12 @@ export class DxcTabComponent implements OnChanges {
 
   getLabelClass() {
     if ((this.iconSrc || this.tabIcon) && this.label) {
-      this.labelClass = "icon-text";
+      if(this.iconPosition === "top"){
+        this.labelClass = "icon-top";
+      }
+      else{
+        this.labelClass = "icon-left";
+      }
     } else if (!this.iconSrc && !this.tabIcon) {
       this.labelClass = "only-text";
     } else {

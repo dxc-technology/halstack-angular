@@ -49,7 +49,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   private _isExpanded;
 
   @HostBinding("class") className;
-  @HostBinding("class.isNested") isNested: boolean = false;
 
   @ViewChild("matExpansionPanel", { static: true }) _matExpansionPanel: any;
   renderedIsExpanded: boolean;

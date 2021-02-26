@@ -17,6 +17,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { DxcAccordionComponent } from "../dxc-accordion/dxc-accordion.component";
 import { AccordionService } from "./services/accordionService.service";
+import { ChangeDetectorRef } from "@angular/core";
 import {
   coerceNumberProperty,
   coerceBooleanProperty,
@@ -68,7 +69,8 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
 
   constructor(
     private cssUtils: CssUtils,
-    private accordionService: AccordionService
+    private accordionService: AccordionService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -100,6 +102,32 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     } else {
       this.controlledAccordionGroup();
     }
+    this.setClassNamesAccordions();
+    this.cdRef.detectChanges();
+  }
+
+  setClassNamesAccordions() {
+    this.dxcAccordion.forEach((instance, index) => {
+      if (this.dxcAccordion.length === 1 && index === 0) {
+        instance.getElement().nativeElement.classList.add("one");
+      } else if (this.dxcAccordion.length > 1) {
+        if (index === 0) {
+          instance.getElement().nativeElement.classList.add("first");
+        } else if (index === this.dxcAccordion.length - 1) {
+          instance.getElement().nativeElement.classList.add("last");
+        } else {
+          instance.getElement().nativeElement.classList.add("middle");
+        }
+      }
+      let singleAccordions = instance.getElement().nativeElement.querySelectorAll('dxc-accordion');
+      singleAccordions.forEach(element => {
+        if(element !== null){
+          if(element.parentElement?.className.includes("mat-expansion-panel-body")){
+            element.classList.add("single");
+          }
+        }
+      });
+    });
   }
 
   uncontrolledAccordionGroup() {
@@ -112,8 +140,9 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
         this.accordionService.accordionActive.next(
           instance.renderedIsExpanded
             ? index
-            : (this.accordionService.accordionActive.getValue() === index &&
-                !instance.renderedIsExpanded) && undefined
+            : this.accordionService.accordionActive.getValue() === index &&
+                !instance.renderedIsExpanded &&
+                undefined
         );
       };
     });
@@ -162,12 +191,45 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
       instance.disabled = true;
     }
   }
-
+  
   getDynamicStyle(inputs) {
     return css`
       ${this.cssUtils.getMargins(inputs.margin)}
       dxc-accordion {
         margin: 0px;
+        width: 100%;
+        dxc-accordion-group {
+          width: 100%;
+        }
+      }
+      dxc-accordion.one, dxc-accordion.single {
+        .mat-accordion .mat-expansion-panel {
+          border-radius: 4px !important;
+        }
+      }
+      dxc-accordion.first {
+        .mat-accordion .mat-expansion-panel {
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+      }
+      dxc-accordion.middle {
+        .mat-accordion .mat-expansion-panel {
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+          border-top-right-radius: 0px;
+          border-top-left-radius: 0px;
+        }
+      }
+      dxc-accordion.last {
+        .mat-accordion .mat-expansion-panel {
+          border-bottom-right-radius: 4px;
+          border-bottom-left-radius: 4px;
+          border-top-right-radius: 0px;
+          border-top-left-radius: 0px;
+        }
       }
     `;
   }

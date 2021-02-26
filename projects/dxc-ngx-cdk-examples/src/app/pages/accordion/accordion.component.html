@@ -4,7 +4,6 @@
     <dxc-accordion
       label="Accordion"
       (onClick)="uncontrolledIsExpanded($event)"
-      padding="medium"
     >
       <dxc-accordion-icon>
         <svg
@@ -29,10 +28,12 @@
           </g>
         </svg>
       </dxc-accordion-icon>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </div>
+      <dxc-accordion label="Label 1" padding="medium">
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </div>
+      </dxc-accordion>
     </dxc-accordion>
   </div>
   <div className="test-case" id="light-theme-default">
@@ -41,7 +42,6 @@
       label="Accordion"
       [isExpanded]="isExpanded"
       (onClick)="changeIsExpanded($event)"
-      padding="medium"
     >
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -52,27 +52,9 @@
 
   <div>
     <div className="test-case" id="icon-before-default">
-      <h4>Icon before - Default Accordion</h4>
+      <h4>Icon - Default Accordion</h4>
       <dxc-accordion
         label="Accordion"
-        iconPosition="before"
-        iconSrc="{{ homeLogo }}"
-        [isExpanded]="isExpanded"
-        (onClick)="changeIsExpanded($event)"
-        padding="medium"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </div>
-      </dxc-accordion>
-    </div>
-
-    <div className="test-case" id="icon-after-default">
-      <h4>Icon after - Default Accordion</h4>
-      <dxc-accordion
-        label="Accordion"
-        iconPosition="after"
         iconSrc="{{ homeLogo }}"
         [isExpanded]="isExpanded"
         (onClick)="changeIsExpanded($event)"

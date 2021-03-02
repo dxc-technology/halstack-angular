@@ -249,41 +249,41 @@ describe("DxcPaginator tests", () => {
     expect(lastButton.hasAttribute("disabled")).toBeFalsy();
   });
 
-  test("Paginator renders with items per page options", async () => {
-    const itemsPerPageOptions = [
-      10, 20
-    ];
+  // test("Paginator renders with items per page options", async () => {
+  //   const itemsPerPageOptions = [
+  //     10, 20
+  //   ];
 
-    const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" currentPage="2"></dxc-paginator>`,
-      componentProperties: { itemsPerPageOptions: itemsPerPageOptions },
-      imports: [DxcPaginatorModule],
-      excludeComponentDeclaration: true,
-    });
-    expect(screen.getByText("Items per page")).toBeTruthy();
-    expect(screen.getByRole("combobox")).toBeTruthy();
-  });
+  //   const paginator = await render(DxcPaginatorComponent, {
+  //     template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" currentPage="2"></dxc-paginator>`,
+  //     componentProperties: { itemsPerPageOptions: itemsPerPageOptions },
+  //     imports: [DxcPaginatorModule],
+  //     excludeComponentDeclaration: true,
+  //   });
+  //   expect(screen.getByText("Items per page")).toBeTruthy();
+  //   expect(screen.getByRole("combobox")).toBeTruthy();
+  // });
 
-  test("Paginator change value", async () => {
-    const changeMock = jest.fn();
-    const itemsPerPageOptions = [
-      10, 20
-    ];
+  // test("Paginator change value", async () => {
+  //   const changeMock = jest.fn();
+  //   const itemsPerPageOptions = [
+  //     10, 20
+  //   ];
 
-    const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" (itemsPerPageFunction)="changeMock($event)" currentPage="2"></dxc-paginator>`,
-      componentProperties: {
-        itemsPerPageOptions,
-        changeMock
-      },
-      imports: [DxcPaginatorModule],
-      excludeComponentDeclaration: true,
-    });
-    expect(screen.getByText("Items per page")).toBeTruthy();
-    const selectComponent = <HTMLInputElement>screen.getByRole("combobox");
-    fireEvent.click(selectComponent);
-    paginator.detectChanges();
-    fireEvent.click(screen.getByText("20"));
-    expect(changeMock).toHaveBeenCalledWith(20);
-  });
+  //   const paginator = await render(DxcPaginatorComponent, {
+  //     template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" (itemsPerPageFunction)="changeMock($event)" currentPage="2"></dxc-paginator>`,
+  //     componentProperties: {
+  //       itemsPerPageOptions,
+  //       changeMock
+  //     },
+  //     imports: [DxcPaginatorModule],
+  //     excludeComponentDeclaration: true,
+  //   });
+  //   expect(screen.getByText("Items per page")).toBeTruthy();
+  //   const selectComponent = <HTMLInputElement>screen.getByRole("combobox");
+  //   fireEvent.click(selectComponent);
+  //   paginator.detectChanges();
+  //   fireEvent.click(screen.getByText("20"));
+  //   expect(changeMock).toHaveBeenCalledWith(20);
+  // });
 });

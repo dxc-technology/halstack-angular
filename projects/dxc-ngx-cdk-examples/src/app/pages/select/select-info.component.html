@@ -1,5 +1,5 @@
 <div>
-  <h4>Uncontrolled Select</h4>
+  <!-- <h4>Uncontrolled Select</h4>
   <div className="test-case" id="uncontrolled">
     <dxc-select
       (onChange)="onUncontrolledChange($event)"
@@ -10,7 +10,93 @@
       assistiveText="Assistive text"
     ></dxc-select>
   </div>
-  <div className="test-case" id="multiple-uncontrolled">
+  <h4>Compund select</h4> -->
+
+  <div>
+    <dxc-select
+      label="label"
+
+      multiple="true"
+      margin="medium"
+      iconPosition="after"
+    >
+      <dxc-select-option value="option1" label="Sushi"
+        ><dxc-option-icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            /></svg></dxc-option-icon
+      ></dxc-select-option>
+      <dxc-select-option value="option2" label="Pizza" disabled></dxc-select-option>
+      <dxc-select-option value="option3" label="Burritos"></dxc-select-option>
+    </dxc-select>
+  </div>
+
+  <div>
+    <dxc-select
+      label="label"
+      assistiveText="assistiveText"
+      (onChange)="onMultipleChange($event)"
+      [value]="multipleValue"
+      multiple="true"
+    >
+      <dxc-select-option value="option21" label="Sushi"></dxc-select-option>
+      <dxc-select-option value="option22" label="Pizza" disabled></dxc-select-option>
+      <dxc-select-option value="option23" label="Burritos"></dxc-select-option>
+    </dxc-select>
+  </div>
+
+  <div>
+    <dxc-select
+      label="label"
+      assistiveText="assistiveText"
+      (onChange)="onChange($event)"
+      [value]="value"
+    >
+      <dxc-select-option value="option31" label="Sushi"
+        ><dxc-option-icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            /></svg></dxc-option-icon
+      ></dxc-select-option>
+      <dxc-select-option value="option32" label="Pizza" disabled></dxc-select-option>
+      <dxc-select-option value="option33" label="Burritos"></dxc-select-option>
+    </dxc-select>
+  </div>
+
+  <div>
+    <dxc-select label="label" assistiveText="assistiveText">
+      <dxc-select-option value="option41" label="Sushi"
+        ><dxc-option-icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            /></svg></dxc-option-icon
+      ></dxc-select-option>
+      <dxc-select-option value="option42" label="Pizza" disabled></dxc-select-option>
+      <dxc-select-option value="option43" label="Burritos"></dxc-select-option>
+    </dxc-select>
+  </div>
+  <!-- <div className="test-case" id="multiple-uncontrolled">
     <h4>Multiple Uncontrolled Select</h4>
     <dxc-select
       (onChange)="onMultipleUncontrolledChange($event)"
@@ -442,5 +528,5 @@
       label="Disabled Icons"
       [options]="optionsWithIcon"
     ></dxc-select>
-  </div>
+  </div> -->
 </div>

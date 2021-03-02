@@ -139,9 +139,14 @@ export class SelectInfoComponent {
 
   multipleSelected = '';
 
+  multipleValue = [];
+
+  value = "";
+
   onChange($event) {
-    this.inputValue= $event;
-    console.log('change: ' + $event);
+    // this.inputValue = $event;
+    console.log('event emitted: ' + $event);
+    this.value = $event;
   }
 
   onUncontrolledChange(value) {
@@ -149,8 +154,8 @@ export class SelectInfoComponent {
   }
 
   onMultipleChange($event) {
-    this.multipleSelected = $event;
-    console.log('multiple change: ' + $event);
+    this.multipleValue = $event;
+    console.log('new multiple value: ' + this.multipleValue);
   }
   
   onMultipleUncontrolledChange(value) {

@@ -67,8 +67,8 @@ export * from './lib/dxc-progressbar/dxc-progressbar.module';
 export * from './lib/dxc-radio/dxc-radio.component';
 export * from './lib/dxc-radio/dxc-radio.module';
 
-export * from './lib/dxc-select/dxc-select.component';
-export * from './lib/dxc-select/dxc-select.module';
+export * from './lib/dxc-select/select';
+export * from './lib/dxc-select/select-module';
 
 export * from './lib/dxc-slider/dxc-slider.component';
 export * from './lib/dxc-slider/dxc-slider.module';

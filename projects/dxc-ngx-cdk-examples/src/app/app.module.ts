@@ -71,7 +71,7 @@ import {
   DxcToggleGroupModule,
   ThemeModule,
   DxcApplicationLayoutModule,
-  DxcChipModule
+  DxcChipModule,
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
@@ -162,4 +162,4 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

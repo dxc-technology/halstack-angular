@@ -14,13 +14,29 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
-import { ElementRef, ChangeDetectorRef } from '@angular/core';
+import { ElementRef, ChangeDetectorRef } from "@angular/core";
+import { TabService } from "./services/tab.service";
+import {
+  MatRipple,
+  MAT_RIPPLE_GLOBAL_OPTIONS,
+  RippleGlobalOptions,
+} from "@angular/material/core";
 
+const globalRippleConfig: RippleGlobalOptions = {
+  animation: {
+    enterDuration: 0,
+    exitDuration: 0,
+  },
+};
 @Component({
   selector: "dxc-tabs",
   templateUrl: "./dxc-tabs.component.html",
   styleUrls: ["./dxc-tabs.component.scss"],
-  providers: [CssUtils],
+  providers: [
+    CssUtils,
+    TabService,
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
+  ],
 })
 export class DxcTabsComponent implements OnChanges {
   @HostBinding("class") className;
@@ -28,6 +44,7 @@ export class DxcTabsComponent implements OnChanges {
 
   //Default values
   @Input() margin: any;
+  @Input() iconPosition: string;
 
   @Input()
   get activeTabIndex(): number {
@@ -39,6 +56,8 @@ export class DxcTabsComponent implements OnChanges {
   private _activeTabIndex;
   renderedActiveTabIndex: number;
 
+  @ViewChild(MatRipple) ripple: MatRipple;
+
   @ViewChild("tabGroup", { static: true })
   public tabGroup: MatTabGroup;
 
@@ -46,11 +65,18 @@ export class DxcTabsComponent implements OnChanges {
   protected tabs: QueryList<DxcTabComponent>;
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
+    iconPosition: null,
   });
 
-  constructor(private utils: CssUtils, private _element: ElementRef, private cdRef: ChangeDetectorRef) {}
+  constructor(
+    private utils: CssUtils,
+    private _element: ElementRef,
+    private cdRef: ChangeDetectorRef,
+    private service: TabService
+  ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
+    this.service.iconPosition.next(this.iconPosition || "left");
     this.renderedActiveTabIndex = this.activeTabIndex;
     if (this.tabs && this.tabs.length > 0) {
       this.generateTabs();
@@ -65,6 +91,7 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   ngOnInit() {
+    this.service.iconPosition.next(this.iconPosition || "left");
     this.renderedActiveTabIndex = this.activeTabIndex;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
@@ -109,10 +136,13 @@ export class DxcTabsComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
+      .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        box-shadow: none;
+      }
       .mat-tab-list .underline {
-        height: 2px;
+        height: 1px;
         width: 100%;
-        background-color: var(--tabs-underlineColor);
+        background-color: var(--tabs-divider);
       }
       .mat-tab-group {
         ${this.utils.getMargins(inputs.margin)}
@@ -120,13 +150,16 @@ export class DxcTabsComponent implements OnChanges {
           background-color: white;
         }
       }
+      .mat-tab-list .mat-tab-labels {
+        justify-content: center;
+      }
       .mat-tab-list .mat-tab-label {
         height: auto !important;
-        max-width: 180px;
-        padding-right: 20px;
-        padding-left: 20px;
-        opacity: var(--tabs-notSelectedOpacity);
-        min-width: 180px;
+        /* max-width: 360px; */
+        padding-right: 16px;
+        padding-left: 16px;
+        opacity: 1 !important;
+        /* min-width: 90px; */
         background: var(--tabs-backgroundColor) 0% 0% no-repeat;
         .dxc-tab-label span:not(.show-dot) {
           letter-spacing: 1.43px;
@@ -140,6 +173,13 @@ export class DxcTabsComponent implements OnChanges {
         &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--tabs-focusColor);
+          background-color: var(--tabs-hoverBackgroundColor) !important;
+        }
+        dxc-tab-icon {
+          fill: var(--tabs-fontColor);
+        }
+        .mat-ripple-element{
+          background-color: var(--tabs-pressedBackgroundColor);
         }
         .mat-tab-label-content {
           font-size: 16px;
@@ -148,13 +188,25 @@ export class DxcTabsComponent implements OnChanges {
           text-transform: uppercase;
           letter-spacing: 1.43px;
           z-index: 1;
-          img,svg {
+          img,
+          svg {
             width: 22px;
             height: 22px;
           }
         }
-        .icon-text {
-          min-height: 78px;
+        .icon-left {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          dxc-tab-icon {
+            padding-right: 12px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+          }
+        }
+        .icon-top {
+          min-height: 72px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -166,7 +218,7 @@ export class DxcTabsComponent implements OnChanges {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          min-width: 180px;
+          /* min-width: 90px; */
         }
         .only-icon {
           min-height: 64px;
@@ -175,23 +227,23 @@ export class DxcTabsComponent implements OnChanges {
             display: grid;
           }
         }
-
         &.mat-tab-disabled {
-          opacity: 0.5 !important;
-          cursor: not-allowed;
-        }
-        &.mat-tab-disabled {
-          opacity: var(--tabs-disabled) !important;
+          .dxc-tab-label span {
+            color: var(--tabs-disabledFontColor) !important;
+          }
           cursor: not-allowed;
           pointer-events: all !important;
         }
         &.mat-tab-label-active {
-          background-color: var(--tabs-selectedBackgroundColor);
+          /* background-color: var(--tabs-backgroundColor); */
           opacity: 1 !important;
           .dxc-tab-label span {
             color: var(--tabs-selectedFontColor);
             opacity: 1;
             white-space: normal;
+          }
+          dxc-tab-icon {
+            fill: var(--tabs-selectedIconColor);
           }
         }
       }

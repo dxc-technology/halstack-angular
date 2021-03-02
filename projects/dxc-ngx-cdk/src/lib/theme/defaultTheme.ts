@@ -98,9 +98,7 @@ export const customTheme: Theme = {
       "logoResponsive": "assets/dxc_logo_blk_rgb.svg",
     },
     "tabs":{
-      "selectedBackgroundColor": colors.white,
-      "selectedUnderlinedColor": colors.dxcPurple,
-      "selectedFontColor": colors.black
+      "selectedFontColor": colors.dxcPurple
     },
     "toggle": {
       "unselectedBackgroundColor": colors.lightGrey,
@@ -118,7 +116,8 @@ export const customTheme: Theme = {
       "selectedFont": colors.white
     },
     "accordion":{
-      "arrowColor": colors.darkGrey
+      "arrowColor": colors.dxcPurple,
+      "fontColor": colors.darkGrey
     },
     "dropdown":{
       "backgroundColor": colors.white,
@@ -268,12 +267,15 @@ export const defaultTheme: Theme = {
       "fontColor": "inherit",
     },
     "tabs":{
-      "backgroundColor": "57",
-      "underlineColor": colors.lightGrey,
-      "fontColor": colors.black,
-      "disabled": 0.34,
-      "focusColor": colors.blue,
-      "notSelectedOpacity": 0.64
+      "backgroundColor": colors.white,
+      "fontColor": colors.darkGrey,
+      "disabledFontColor": "33",
+      "focusColor": colors.dxcPurple,
+      "selectedUnderlinedColor": colors.dxcPurple,
+      "divider": "33",
+      "selectedIconColor": colors.dxcPurple,
+      "hoverBackgroundColor": "1A",
+      "pressedBackgroundColor": "33"
     },
     "toggle": {
       "disabled": 0.34
@@ -288,11 +290,10 @@ export const defaultTheme: Theme = {
       "focusColor": colors.blue
     },
     "accordion":{
-      "fontColor": colors.darkGrey,
       "backgroundColor": colors.white,
-      "hoverBackgroundColor": "57",
-      "hoverFontColor": colors.black,
-      "disabled": 0.34
+      "hoverBackgroundColor": "1A",
+      "disabledFontColor": "66",
+      "focusOutline": colors.dxcPurple
     },
     "dialog":{
       "overlayColor": colors.black + "CC",

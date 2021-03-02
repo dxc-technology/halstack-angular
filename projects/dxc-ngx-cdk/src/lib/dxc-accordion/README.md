@@ -58,11 +58,6 @@ The API properties are the following:
         <td>URL of the icon that will be placed next to the button label.</td>
     </tr>
     <tr>
-        <td>@Input<br>iconPosition: 'before' | 'after'</td>
-        <td></td>
-        <td>Whether the icon should appear after or before the label.</td>
-    </tr>
-    <tr>
         <td>@Input<br>assistiveText: string</td>
         <td></td>
         <td>Assistive text to be placed on the right side of the panel.</td>
@@ -115,7 +110,12 @@ The API properties are the following:
     </tr>
     <tr>
         <td>arrowColor</td>
+        <td><code>#6F2C91</code></td>
+        <td>Applies to token arrowColor, hoverBackgroundColor and focusOutline.</td>
+    </tr>    
+    <tr>
+        <td>fontColor</td>
         <td><code>#666666</code></td>
-        <td>Applies to token arrowColor and hoverBackgroundColor.</td>
+        <td>Applies to token fontColor and disabledColor.</td>
     </tr>
 </table>

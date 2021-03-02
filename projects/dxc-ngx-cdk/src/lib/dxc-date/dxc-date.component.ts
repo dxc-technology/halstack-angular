@@ -102,7 +102,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
-  constructor() {}
+  constructor() { }
 
   private calculateComponentValues(): void {
     this.size = this.size
@@ -175,19 +175,19 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   @HostListener('document:click', ['$event'])
   public onClickOutsideHandler(event) {
-    if (event.target.offsetParent !== null && event.target.offsetParent.getAttribute("class") !== null) {
-        if(!event.target.offsetParent.getAttribute("class").includes('mde-popover-panel')
+    if (event.target.offsetParent && event.target.offsetParent?.getAttribute("class")) {
+      if (!event.target.offsetParent.getAttribute("class").includes('mde-popover-panel')
         && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-period')
-        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-table')){
-          this.checkOpenCalendar();
-        }
+        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-table')) {
+        this.checkOpenCalendar();
+      }
     }
-    else{
+    else {
       this.checkOpenCalendar();
     }
   }
 
-  private checkOpenCalendar(){
+  private checkOpenCalendar() {
     if (this._isCalendarOpened) {
       if (!this._isOpenClicked && !this._isSelectingDate) {
         this.closeCalendar();

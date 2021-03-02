@@ -98,9 +98,6 @@ export class DxcApplicationLayoutComponent implements OnInit {
   }
 
   updateCss() {
-    console.debug(`Modo push: ${this.isModePush}`);
-    console.debug(`Menu shown: ${this.isMenuShown}`);
-
     this.layoutStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       innerWidth: this.innerWidth,

@@ -1272,7 +1272,6 @@ export abstract class _MatSelectBase<C>
         border-top-width: 0.84375em;
         border-top-style: solid;
         border-top-color: transparent;
-        margin-top: ${!this.assistiveText ? "5px": "0px"};
       }
 
       .assistiveText {

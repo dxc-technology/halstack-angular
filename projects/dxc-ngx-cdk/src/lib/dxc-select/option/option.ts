@@ -20,9 +20,9 @@ import {
   OnDestroy,
   Optional,
   Output,
-  QueryList,
   ViewEncapsulation,
   Directive,
+  HostBinding,
 } from "@angular/core";
 import { FocusOptions, FocusableOption, FocusOrigin } from "@angular/cdk/a11y";
 import { Subject } from "rxjs";
@@ -31,6 +31,7 @@ import {
   MAT_OPTION_PARENT_COMPONENT,
 } from "./option-parent";
 import { SelectService } from "../services/select.service";
+import { css } from "emotion";
 
 /**
  * Option IDs need to be unique across components, so this counter exists outside of
@@ -102,12 +103,21 @@ export class _MatOptionBase
   /** Emits when the state of the option changes and any parents have to be notified. */
   readonly _stateChanges = new Subject<void>();
 
+  private iconPosition = "";
+
+  @HostBinding("class") className = `${this.getDynamicStyle()}`;
+
   constructor(
     private _element: ElementRef<HTMLElement>,
     private _changeDetectorRef: ChangeDetectorRef,
     private _parent: MatOptionParentComponent,
     private service: SelectService
-  ) {}
+  ) {
+    this.service.iconPosition.subscribe((position) => {
+      this.iconPosition = position;
+      this.className = `${this.getDynamicStyle()}`;
+    });
+  }
 
   /**
    * Whether or not the option is currently active and ready to be selected.
@@ -132,7 +142,6 @@ export class _MatOptionBase
   select(): void {
     if (!this._selected) {
       this._selected = true;
-      console.log("option select event");
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
@@ -142,7 +151,6 @@ export class _MatOptionBase
   deselect(): void {
     if (this._selected) {
       this._selected = false;
-      console.log("option deselect event");
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
@@ -207,7 +215,6 @@ export class _MatOptionBase
    */
   _selectViaInteraction(): void {
     if (!this.disabled) {
-      console.log("option selected");
       if (this.controlled && this.multiple) {
         this.service.selected.next(new MatOptionSelectionChange(this, true));
       } else {
@@ -254,6 +261,22 @@ export class _MatOptionBase
     }
   }
 
+  getDynamicStyle() {
+    return css`
+      .mat-option-text {
+        display: flex;
+        justify-content: ${this.iconPosition == "after" ? "flex-end" : "flex-start"};
+        flex-direction: ${this.iconPosition == "after" ? "row-reverse" : "row"};
+      }
+
+      dxc-option-icon {
+        ${this.iconPosition == "after"
+          ? "margin-left: 15px"
+          : "margin-right: 15px"};
+      }
+    `;
+  }
+
   ngOnDestroy() {
     this._stateChanges.complete();
   }
@@ -272,8 +295,8 @@ export class _MatOptionBase
  * Single option inside of a `<mat-select>` element.
  */
 @Component({
-  selector: "dxc-option",
-  exportAs: "DxcOption",
+  selector: "dxc-select-option",
+  exportAs: "DxcSelectOption",
   host: {
     role: "option",
     "[attr.tabindex]": "_getTabIndex()",
@@ -293,7 +316,7 @@ export class _MatOptionBase
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DxcOption extends _MatOptionBase {
+export class DxcSelectOption extends _MatOptionBase {
   constructor(
     element: ElementRef<HTMLElement>,
     changeDetectorRef: ChangeDetectorRef,

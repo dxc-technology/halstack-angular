@@ -58,7 +58,8 @@ export const matSelectAnimations: {
       opacity: 1,
       minWidth: 'calc(100% + 32px)', // 32px = 2 * 16px padding
       transform: 'scaleY(1)',
-      marginTop: '48px'
+      marginTop: '48px',
+      marginLeft: '40px'
     })),
     state('showing-multiple', style({
       opacity: 1,

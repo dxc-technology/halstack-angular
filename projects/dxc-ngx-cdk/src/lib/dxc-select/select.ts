@@ -96,7 +96,7 @@ import {
 } from "./common-behaviors/error-state";
 import {
   _MatOptionBase,
-  DxcOption,
+  DxcSelectOption,
   MatOptionSelectionChange,
   _getOptionScrollPosition,
 } from "./option/option";
@@ -212,7 +212,7 @@ export const MAT_SELECT_SCROLL_STRATEGY_PROVIDER = {
 export class MatSelectChange {
   constructor(
     /** Reference to the select that emitted the change event. */
-    public source: DxcSelect,
+    public source: DxcSelectComponent,
     /** Current value of the select that emitted the event. */
     public value: any
   ) {}
@@ -315,10 +315,10 @@ export abstract class _MatSelectBase<C>
   _ariaDescribedby: string;
 
   /** Deals with the selection logic. */
-  _selectionModel: SelectionModel<DxcOption>;
+  _selectionModel: SelectionModel<DxcSelectOption>;
 
   /** Manages keyboard events for options in the panel. */
-  _keyManager: ActiveDescendantKeyManager<DxcOption>;
+  _keyManager: ActiveDescendantKeyManager<DxcSelectOption>;
 
   /** `View -> model callback called when value changes` */
   _onChange: (value: any) => void = () => {};
@@ -374,6 +374,12 @@ export abstract class _MatSelectBase<C>
     this.stateChanges.next();
   }
   private _placeholder: string;
+
+  @Input()
+  name: string = "";
+
+  @Input()
+  iconPosition: string = "before";
 
   /** Whether the component is required. */
   @Input()
@@ -443,16 +449,12 @@ export abstract class _MatSelectBase<C>
       }
 
       this._value = newValue;
-      if(this.multiple && this._value && this._value.length > 0) {
+      if (this.multiple && this._value && this._value.length > 0) {
         this.floatingLabel = true;
-      } else if(!this.multiple && this._value) {
+      } else if (!this.multiple && this._value) {
         this.floatingLabel = true;
       } else {
-        if(this.panelOpen) {
-          this.floatingLabel = true;
-        } else {
-          this.floatingLabel = false;
-        }
+        this.floatingLabel = false;
       }
     }
   }
@@ -609,7 +611,7 @@ export abstract class _MatSelectBase<C>
   }
 
   ngOnInit() {
-    this._selectionModel = new SelectionModel<DxcOption>(this.multiple);
+    this._selectionModel = new SelectionModel<DxcSelectOption>(this.multiple);
     this.stateChanges.next();
 
     // We need `distinctUntilChanged` here, because some browsers will
@@ -621,6 +623,7 @@ export abstract class _MatSelectBase<C>
 
     this._controlled = this.value ? true : false;
     this.className = `${this.getDynamicStyle()}`;
+    this.service.iconPosition.next(this.iconPosition);
   }
 
   ngAfterContentInit() {
@@ -758,7 +761,7 @@ export abstract class _MatSelectBase<C>
   }
 
   /** The currently selected option. */
-  get selected(): DxcOption | DxcOption[] {
+  get selected(): DxcSelectOption | DxcSelectOption[] {
     return this.multiple
       ? this._selectionModel.selected
       : this._selectionModel.selected[0];
@@ -828,7 +831,7 @@ export abstract class _MatSelectBase<C>
         // We set a duration on the live announcement, because we want the live element to be
         // cleared after a while so that users can't navigate to it using the arrow keys.
         this._liveAnnouncer.announce(
-          (selectedOption as DxcOption).viewValue,
+          (selectedOption as DxcSelectOption).viewValue,
           10000
         );
       }
@@ -969,8 +972,8 @@ export abstract class _MatSelectBase<C>
    * Finds and selects and option based on its value.
    * @returns Option that has the corresponding value.
    */
-  private _selectValue(value: any): DxcOption | undefined {
-    const correspondingOption = this.options.find((option: DxcOption) => {
+  private _selectValue(value: any): DxcSelectOption | undefined {
+    const correspondingOption = this.options.find((option: DxcSelectOption) => {
       try {
         // Treat null as a special reset value.
         return option.value != null && this._compareWith(option.value, value);
@@ -988,7 +991,9 @@ export abstract class _MatSelectBase<C>
 
   /** Sets up a key manager to listen to keyboard events on the overlay panel. */
   private _initKeyManager() {
-    this._keyManager = new ActiveDescendantKeyManager<DxcOption>(this.options)
+    this._keyManager = new ActiveDescendantKeyManager<DxcSelectOption>(
+      this.options
+    )
       .withTypeAhead(this._typeaheadDebounceInterval)
       .withVerticalOrientation()
       .withHorizontalOrientation(this._isRtl() ? "rtl" : "ltr")
@@ -1063,7 +1068,7 @@ export abstract class _MatSelectBase<C>
   }
 
   /** Invoked when an option is clicked. */
-  private _onSelect(option: DxcOption, isUserInput: boolean): void {
+  private _onSelect(option: DxcSelectOption, isUserInput: boolean): void {
     const wasSelected = this._selectionModel.isSelected(option);
 
     if (this.controlled && !this._multiple && isUserInput) {
@@ -1098,24 +1103,25 @@ export abstract class _MatSelectBase<C>
         this._keyManager.setActiveItem(option);
 
         if (this.multiple) {
-          if (this.value && this.value.includes(option.value)) {
-            const index = this.value.indexOf(option.value);
-            this.value.splice(index, 1);
-          } else if (this.value) {
-            this.value.push(option.value);
-          } else {
-            const newValue = [];
-            newValue.push(option.value);
-            this.value = newValue;
+          let options = [];
+          if (this.value) {
+            this.value.map((value) => {
+              options.push(value);
+            });
           }
-          console.log(this.value);
+          if (this.value && this.value.includes(option.value)) {
+            const index = options.indexOf(option.value);
+            options.splice(index, 1);
+          } else {
+            options.push(option.value);
+          }
+          this.value = options;
           this._sortValues();
           this.focus();
         } else {
           this.value = option.value;
         }
         if (wasSelected !== this._selectionModel.isSelected(option)) {
-          console.log("propagate");
           this._propagateChanges();
         }
       }
@@ -1137,12 +1143,12 @@ export abstract class _MatSelectBase<C>
     let valueToEmit: any = null;
 
     if (this.multiple) {
-      valueToEmit = (this.selected as DxcOption[]).map(
+      valueToEmit = (this.selected as DxcSelectOption[]).map(
         (option) => option.value
       );
     } else {
       valueToEmit = this.selected
-        ? (this.selected as DxcOption).value
+        ? (this.selected as DxcSelectOption).value
         : fallbackValue;
     }
 
@@ -1240,8 +1246,8 @@ export abstract class _MatSelectBase<C>
   }
 
   floatingStyles() {
-    if(this.panelOpen || this.floatingLabel) {
-      return "translateY(-1em) scale(0.75) perspective(100px) translateZ(0.001px)"
+    if (this.panelOpen || this.floatingLabel) {
+      return "translateY(-1em) scale(0.75) perspective(100px) translateZ(0.001px)";
     }
     return "perspective(100px)";
   }
@@ -1259,13 +1265,14 @@ export abstract class _MatSelectBase<C>
       }
 
       div.underline.opened {
-        border-bottom: 2px solid var(--inputText-fontColor);
+        border-bottom: 2px solid var(--select-focusColor);
       }
 
       .mat-select-trigger {
         border-top-width: 0.84375em;
         border-top-style: solid;
         border-top-color: transparent;
+        margin-top: ${!this.assistiveText ? "5px": "0px"};
       }
 
       .assistiveText {
@@ -1277,8 +1284,11 @@ export abstract class _MatSelectBase<C>
       .selectLabel {
         position: absolute;
         top: 30px;
-        left: 0;
+        left: ${this.panelOpen || this.floatingLabel ? "-4px" : "0px"};
         transform: ${this.floatingStyles()};
+        color: ${this.panelOpen
+          ? "var(--select-focusColor)"
+          : "var(--inputText-fontColor)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1287,7 +1297,11 @@ export abstract class _MatSelectBase<C>
       .dxcPanel {
         transform: translateX(0px) translateY(42px) !important;
       }
-      
+
+      dxc-option.mat-active,
+      dxc-option:hover {
+        background: var(--select-selectedOptionBackgroundColor);
+      }
     `;
   }
 
@@ -1302,7 +1316,7 @@ export abstract class _MatSelectBase<C>
 
 @Component({
   selector: "dxc-select",
-  exportAs: "DxcSelect",
+  exportAs: "DxcSelectComponent",
   templateUrl: "select.html",
   styleUrls: ["select.scss"],
   inputs: ["disabled", "disableRipple", "tabIndex"],
@@ -1340,13 +1354,13 @@ export abstract class _MatSelectBase<C>
     matSelectAnimations.transformPanel,
   ],
   providers: [
-    { provide: MatFormFieldControl, useExisting: DxcSelect },
-    { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelect },
+    { provide: MatFormFieldControl, useExisting: DxcSelectComponent },
+    { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelectComponent },
     SelectService,
     CssUtils,
   ],
 })
-export class DxcSelect
+export class DxcSelectComponent
   extends _MatSelectBase<MatSelectChange>
   implements OnInit {
   /** The scroll position of the overlay panel, calculated to center the selected option. */
@@ -1368,8 +1382,8 @@ export class DxcSelect
    */
   _offsetY = 0;
 
-  @ContentChildren(DxcOption, { descendants: true })
-  options: QueryList<DxcOption>;
+  @ContentChildren(DxcSelectOption, { descendants: true })
+  options: QueryList<DxcSelectOption>;
 
   @ContentChild(MAT_SELECT_TRIGGER) customTrigger: MatSelectTrigger;
 

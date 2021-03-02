@@ -1,17 +1,10 @@
-<!-- <mat-pseudo-checkbox
-  *ngIf="multiple"
-  class="mat-option-pseudo-checkbox"
-  [state]="selected ? 'checked' : 'unchecked'"
-  [disabled]="disabled"
-></mat-pseudo-checkbox> -->
-
 <dxc-checkbox
   *ngIf="multiple"
   [checked]="selected"
   [disabled]="disabled"
 ></dxc-checkbox>
 
-<span class="mat-option-text">{{label}}</span>
+<span class="mat-option-text"><ng-content select="dxc-option-icon"></ng-content>{{label}}</span>
 
 <div
   class="mat-option-ripple"

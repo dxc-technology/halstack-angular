@@ -11,14 +11,15 @@ import { CommonModule } from '@angular/common';
 import { MatRippleModule } from '../ripple/index';
 import { MatPseudoCheckboxModule } from '../selection/index';
 import { MatCommonModule } from '../common-behaviors/common-module';
-import { DxcOption } from './option';
+import { DxcSelectOption } from './option';
 import { DxcCheckboxModule } from '../../dxc-checkbox/dxc-checkbox.module';
+import { DxcOptionIconComponent } from './dxc-option-icon/dxc-option-icon.component';
 
 
 @NgModule({
   imports: [MatRippleModule, CommonModule, MatCommonModule, MatPseudoCheckboxModule, DxcCheckboxModule],
-  exports: [DxcOption],
-  declarations: [DxcOption]
+  exports: [DxcSelectOption, DxcOptionIconComponent],
+  declarations: [DxcSelectOption, DxcOptionIconComponent]
 })
 export class DxcOptionModule { }
 

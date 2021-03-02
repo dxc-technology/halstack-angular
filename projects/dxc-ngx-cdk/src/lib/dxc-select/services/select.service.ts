@@ -10,5 +10,7 @@ export class SelectService {
 
   /** This value is used when a new option is chosen in a controlled and multiple select */
   public selected: BehaviorSubject<any> = new BehaviorSubject(null);
+
+  public iconPosition: BehaviorSubject<string> = new BehaviorSubject("before");
   
 }

@@ -1,6 +1,9 @@
-.items-per-page {
+.items-per-page, .go-to-page {
   display: flex;
   align-items: center;
+  span {
+    white-space: nowrap;
+  }
 }
 
 .pagination {

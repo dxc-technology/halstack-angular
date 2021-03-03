@@ -12,6 +12,8 @@ export class ResultsetTableComponent implements OnInit {
   data: Array<any>;
 
   itemsPerPage = "5";
+
+  falseShowGoToPage = false;
   
   constructor() {
 

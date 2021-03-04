@@ -90,6 +90,11 @@ The API properties are the following:
         <td></td>
         <td>This function will be called when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
     </tr>
+    <tr>
+        <td>@Output<br>onTabHover: EventEmitter</td>
+        <td></td>
+        <td>This function will be called when the user is on hover on a tab.</td>
+    </tr>
 </table>
 
 ## Theming

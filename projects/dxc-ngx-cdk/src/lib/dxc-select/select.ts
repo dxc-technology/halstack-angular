@@ -1282,14 +1282,17 @@ export abstract class _MatSelectBase<C>
 
       .selectLabel {
         position: absolute;
-        top: 30px;
-        left: ${this.panelOpen || this.floatingLabel ? "-4px" : "0px"};
+        width: ${this.sizes[this.size]};
+        top: ${this.assistiveText ? "30px" : "10px"};
+        left: ${this.panelOpen || this.floatingLabel ? "-12%" : "0px"};
         transform: ${this.floatingStyles()};
         color: ${this.panelOpen
           ? "var(--select-focusColor)"
           : "var(--inputText-fontColor)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+          left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+          top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
       }
 

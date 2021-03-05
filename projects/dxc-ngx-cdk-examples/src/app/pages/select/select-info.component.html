@@ -14,11 +14,11 @@
 
   <div>
     <dxc-select
-      label="label"
-
+      label="label "
       multiple="true"
       margin="medium"
       iconPosition="after"
+      size="large"
     >
       <dxc-select-option value="option1" label="Sushi"
         ><dxc-option-icon
@@ -40,7 +40,20 @@
 
   <div>
     <dxc-select
-      label="label"
+      label="label label labe label"
+      (onChange)="onMultipleChange($event)"
+      [value]="multipleValue"
+      multiple="true"
+    >
+      <dxc-select-option value="option21" label="Sushi"></dxc-select-option>
+      <dxc-select-option value="option22" label="Pizza" disabled></dxc-select-option>
+      <dxc-select-option value="option23" label="Burritos"></dxc-select-option>
+    </dxc-select>
+  </div>
+
+  <div>
+    <dxc-select
+      label="label label labe label"
       assistiveText="assistiveText"
       (onChange)="onMultipleChange($event)"
       [value]="multipleValue"

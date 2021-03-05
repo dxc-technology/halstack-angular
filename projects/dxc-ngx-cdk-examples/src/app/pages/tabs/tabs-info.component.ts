@@ -19,4 +19,8 @@ export class TabsInfoComponent {
   uncontrolledTabClicked(tabId) {
     console.log("Uncontrolled Tab clicked " + tabId);
   }
+
+  hover(){
+    console.log("Hover in tab");
+  }
 }

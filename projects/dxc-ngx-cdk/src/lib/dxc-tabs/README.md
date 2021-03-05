@@ -90,6 +90,11 @@ The API properties are the following:
         <td></td>
         <td>This function will be called when the user clicks on a tab. The index of the clicked tab will be passed as a parameter.</td>
     </tr>
+    <tr>
+        <td>@Output<br>onTabHover: EventEmitter</td>
+        <td></td>
+        <td>This function will be called when the user is on hover on a tab.</td>
+    </tr>
 </table>
 
 ## Theming
@@ -101,18 +106,8 @@ The API properties are the following:
         <th>Description</th>
     </tr>
     <tr>
-        <td>selectedUnderlinedColor</td>
-        <td><code>#6F2C91</code></td>
-        <td>Applies to token selectedUnderlinedColor.</td>
-    </tr>
-    <tr>
         <td>selectedFontColor</td>
-        <td><code>#000000</code></td>
-        <td>Applies to token selectedColor.</td>
-    </tr>
-    <tr>
-        <td>selectedBackgroundColor</td>
-        <td><code>#FFFFFF</code></td>
-        <td>Applies to token selectedBackgroundColor.</td>
+        <td><code>#6F2C91</code></td>
+        <td>Applies to token selectedFontColor, selectedIconColor, selectedUnderlinedColor, focusColor, hoverBackgroundColor and pressedBackgroundColor.</td>
     </tr>
 </table>

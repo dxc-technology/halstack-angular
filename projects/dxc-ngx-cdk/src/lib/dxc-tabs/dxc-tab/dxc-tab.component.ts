@@ -9,10 +9,9 @@ import {
   ContentChildren,
 } from "@angular/core";
 import { MatTab } from "@angular/material/tabs";
-import { DxcTabIconComponent } from './dxc-tab-icon/dxc-tab-icon.component';
-import { QueryList } from '@angular/core';
-import { TabService } from '../services/tab.service';
-
+import { DxcTabIconComponent } from "./dxc-tab-icon/dxc-tab-icon.component";
+import { QueryList } from "@angular/core";
+import { TabService } from "../services/tab.service";
 @Component({
   selector: "dxc-tab",
   templateUrl: "./dxc-tab.component.html",
@@ -24,6 +23,7 @@ export class DxcTabComponent implements OnChanges {
   @Input() disabled: boolean = false;
   @Input() id: number;
   @Output() onTabClick = new EventEmitter<any>();
+  @Output() onTabHover = new EventEmitter<any>();
 
   showDotIndicator: boolean = false;
   labelClass: string;
@@ -55,7 +55,7 @@ export class DxcTabComponent implements OnChanges {
   }
 
   public ngAfterViewInit() {
-    if(this.dxcTabIcon.length !== 0){
+    if (this.dxcTabIcon.length !== 0) {
       this.iconSrc = "";
       this.tabIcon = true;
     }
@@ -68,12 +68,15 @@ export class DxcTabComponent implements OnChanges {
     this.onTabClick.emit(this.id);
   }
 
+  public onHoverHandler(): void {
+    this.onTabHover.emit();
+  }
+
   getLabelClass() {
     if ((this.iconSrc || this.tabIcon) && this.label) {
-      if(this.iconPosition === "top"){
+      if (this.iconPosition === "top") {
         this.labelClass = "icon-top";
-      }
-      else{
+      } else {
         this.labelClass = "icon-left";
       }
     } else if (!this.iconSrc && !this.tabIcon) {

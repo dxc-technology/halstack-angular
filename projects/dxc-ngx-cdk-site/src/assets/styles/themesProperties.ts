@@ -81,11 +81,6 @@ export const customTheme: Theme = {
       "headerBackgroundColor": "#6f2c91",
       "headerFontColor": "#FFFFFF"
     },
-    "tabs": {
-      "selectedBackgroundColor": "#ffffff",
-      "selectedUnderlinedColor": "#6f2c91",
-      "selectedFontColor": "#000000"
-    },
     "wizard": {
       "selectedBackgroundColor": "#6f2c91",
       "selectedFont": "#ffffff"

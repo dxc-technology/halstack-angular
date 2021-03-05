@@ -63,6 +63,7 @@ export class DxcTabsComponent implements OnChanges {
 
   @ContentChildren(DxcTabComponent)
   protected tabs: QueryList<DxcTabComponent>;
+
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
     iconPosition: null,
@@ -111,6 +112,8 @@ export class DxcTabsComponent implements OnChanges {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.insertUnderline();
     this.cdRef.detectChanges();
+    this.setEventListeners();
+    this.cdRef.detectChanges();
   }
 
   private generateTabs() {
@@ -125,6 +128,20 @@ export class DxcTabsComponent implements OnChanges {
     list.reset([matTabsFromQueryList]);
     this.tabGroup._tabs = list;
     this.setActiveTab();
+  }
+
+  setEventListeners() {
+    let tabLabels = this._element.nativeElement.getElementsByClassName("mat-tab-label");
+    if (tabLabels?.length > 0) {
+      this.tabs.map((tab, index) => {
+        tabLabels[index].addEventListener("click", function () {
+          tab.onClickHandler();
+        });
+        tabLabels[index].addEventListener("mouseenter", function () {
+          tab.onHoverHandler();
+        });
+      });
+    }
   }
 
   insertUnderline() {
@@ -162,13 +179,13 @@ export class DxcTabsComponent implements OnChanges {
         /* min-width: 90px; */
         background: var(--tabs-backgroundColor) 0% 0% no-repeat;
         .dxc-tab-label span:not(.show-dot) {
-          letter-spacing: 1.43px;
           opacity: 1;
           white-space: normal;
         }
         .dxc-tab-label span {
           color: var(--tabs-fontColor);
           opacity: 1;
+          font: normal normal 600 16px/22px "Open Sans", sans-serif;
         }
         &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;
@@ -178,15 +195,13 @@ export class DxcTabsComponent implements OnChanges {
         dxc-tab-icon {
           fill: var(--tabs-fontColor);
         }
-        .mat-ripple-element{
+        .mat-ripple-element {
           background-color: var(--tabs-pressedBackgroundColor);
         }
         .mat-tab-label-content {
           font-size: 16px;
           display: inline-grid;
           text-align: -webkit-center;
-          text-transform: uppercase;
-          letter-spacing: 1.43px;
           z-index: 1;
           img,
           svg {

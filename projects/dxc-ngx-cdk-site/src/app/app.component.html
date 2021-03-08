@@ -1,13 +1,20 @@
 <dxc-application-layout theme>
-  <dxc-header [underlined]="true" [padding]="{ right: 'medium', left: 'medium' }">
+  <dxc-header
+    [underlined]="true"
+    [padding]="{ right: 'medium', left: 'medium' }"
+  >
     <div id="unresponsive" class="headerContent">
       <div class="selectContainer">
         <dxc-select
           (onChange)="selectVersion($event)"
-          [options]="versions"
           size="fillParent"
           [value]="selectedVersion"
         >
+          <dxc-option
+            *ngFor="let version of versions"
+            label="version.label"
+            value="version.value"
+          ></dxc-option>
         </dxc-select>
       </div>
       <a
@@ -75,10 +82,14 @@
         <li style="width: 100px">
           <dxc-select
             (onChange)="selectVersion($event)"
-            [options]="versions"
             size="fillParent"
             [value]="selectedVersion"
           >
+            <dxc-option
+              *ngFor="let version of versions"
+              label="version.label"
+              value="version.value"
+            ></dxc-option>
           </dxc-select>
         </li>
         <li style="margin: 10px 0px; padding: 0">

@@ -152,10 +152,8 @@ export const CDK_TABLE_TEMPLATE = `
       [itemsPerPage]="itemsPerPage"
       [itemsPerPageOptions]="itemsPerPageOptions"
       [currentPage]="page"
-      (nextFunction)="navigate($event, 'next')"
-      (prevFunction)="navigate($event, 'prev')"
-      (firstFunction)="navigate($event, 'first')"
-      (lastFunction)="navigate($event, 'last')"
+      [showGoToPage]="showGoToPage"
+      (onGoToPage)="navigate($event)"
       (itemsPerPageFunction)="handleItemsPerPageSelect($event)"
     ></dxc-paginator>
 
@@ -200,6 +198,8 @@ export class DxcResultTable<T>
   @Input() margin: string;
 
   @Input() public itemsPerPageOptions: number[];
+
+  @Input() public showGoToPage: boolean = true;
 
   @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 
@@ -684,7 +684,7 @@ export class DxcResultTable<T>
   }
 
   /** Calculate pagination for the data displayed in the table after click event */
-  navigate(page: number, operation: string) {
+  navigate(page: number, operation?: string) {
     this.page = page;
     this.paginationService.calculatePagination(
       this.page,

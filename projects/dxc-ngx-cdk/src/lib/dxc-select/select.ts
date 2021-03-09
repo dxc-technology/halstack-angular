@@ -1255,7 +1255,9 @@ export abstract class _MatSelectBase<C>
   getDynamicStyle() {
     return css`
       ${this.utils.getMargins(this.margin)}
-      ${this.utils.calculateWidth(this.sizes, this)}
+      &.mat-select {
+        ${this.utils.calculateWidth(this.sizes, this)}
+      }
       height: 66.5px;
       position: relative;
       div.underline {

@@ -4,13 +4,11 @@
         [totalItems]="totalItems"
         [itemsPerPage]="itemsPerPage"
         [currentPage]="page"
-        (nextFunction)="navigate($event, 'next')"
-        (prevFunction)="navigate($event, 'prev')"
-        (firstFunction)="navigate($event, 'first')"
-        (lastFunction)="navigate($event, 'last')"
         [paginationActions]="paginationActions"
         [itemsPerPageOptions]="options"
+        goToPage="true"
         (itemsPerPageFunction)="itemsPerPageEvent($event)"
+        (onGoToPage)="navigate($event)"
         >
     </dxc-paginator>
 </div>

@@ -105,7 +105,7 @@ export class _MatOptionBase
 
   private iconPosition = "";
 
-  @HostBinding("class") className = `${this.getDynamicStyle()}`;
+  @HostBinding("class") className = `mat-option ${this.getDynamicStyle()}`;
 
   constructor(
     private _element: ElementRef<HTMLElement>,
@@ -115,7 +115,7 @@ export class _MatOptionBase
   ) {
     this.service.iconPosition.subscribe((position) => {
       this.iconPosition = position;
-      this.className = `${this.getDynamicStyle()}`;
+      this.className = `mat-option ${this.getDynamicStyle()}`;
     });
   }
 

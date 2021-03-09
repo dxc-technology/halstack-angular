@@ -21,13 +21,11 @@ export class PaginatorComponent implements OnInit {
   }
 
   navigate(page:number, operation?:string){
-    console.log(page);
     this.page = page;
     console.log('navigate: ' + operation);
   }
 
   itemsPerPageEvent($event) {
-    console.log($event);
     this.itemsPerPage = $event;
     this.page = 1;
   }

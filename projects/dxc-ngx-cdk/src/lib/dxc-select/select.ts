@@ -622,7 +622,7 @@ export abstract class _MatSelectBase<C>
       .subscribe(() => this._panelDoneAnimating(this.panelOpen));
 
     this._controlled = this.value ? true : false;
-    this.className = `${this.getDynamicStyle()}`;
+    this.className = `mat-select ${this.getDynamicStyle()}`;
     this.service.iconPosition.next(this.iconPosition);
   }
 
@@ -664,7 +664,7 @@ export abstract class _MatSelectBase<C>
       this.updateErrorState();
     }
 
-    this.className = `${this.getDynamicStyle()}`;
+    this.className = `mat-select ${this.getDynamicStyle()}`;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -677,7 +677,7 @@ export abstract class _MatSelectBase<C>
     if (changes["typeaheadDebounceInterval"] && this._keyManager) {
       this._keyManager.withTypeAhead(this._typeaheadDebounceInterval);
     }
-    this.className = `${this.getDynamicStyle()}`;
+    this.className = `mat-select ${this.getDynamicStyle()}`;
   }
 
   ngOnDestroy() {
@@ -1260,10 +1260,9 @@ export abstract class _MatSelectBase<C>
       }
       height: 66.5px;
       position: relative;
-      div.underline {
-        width: 100%;
-        height: 1px;
-        border-bottom: 1px solid var(--inputText-fontColor);
+
+      .mat-select-value {
+        height: 32px;
       }
 
       div.underline.opened {
@@ -1274,6 +1273,7 @@ export abstract class _MatSelectBase<C>
         border-top-width: 0.84375em;
         border-top-style: solid;
         border-top-color: transparent;
+        border-bottom: ${this.panelOpen ? "2px solid var(--select-focusColor)" : "1px solid var(--inputText-fontColor)"};
       }
 
       .assistiveText {

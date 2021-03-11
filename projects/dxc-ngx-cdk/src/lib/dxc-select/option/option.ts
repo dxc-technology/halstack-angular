@@ -108,7 +108,7 @@ export class _MatOptionBase
   @HostBinding("class") className = `mat-option ${this.getDynamicStyle()}`;
 
   constructor(
-    private _element: ElementRef<HTMLElement>,
+    public _element: ElementRef<HTMLElement>,
     private _changeDetectorRef: ChangeDetectorRef,
     private _parent: MatOptionParentComponent,
     private service: SelectService
@@ -273,6 +273,10 @@ export class _MatOptionBase
         ${this.iconPosition == "after"
           ? "margin-left: 15px"
           : "margin-right: 15px"};
+        
+        img, svg {
+          width: 24px;
+        }
       }
     `;
   }

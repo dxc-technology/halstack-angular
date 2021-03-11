@@ -4,7 +4,9 @@
   [disabled]="disabled"
 ></dxc-checkbox>
 
-<span class="mat-option-text"><ng-content select="dxc-option-icon"></ng-content>{{label}}</span>
+<span class="mat-option-text">
+  <ng-content select="dxc-option-icon"></ng-content><span>{{label}}</span>
+</span>
 
 <div
   class="mat-option-ripple"

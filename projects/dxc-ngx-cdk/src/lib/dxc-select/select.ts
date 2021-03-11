@@ -458,7 +458,7 @@ export abstract class _MatSelectBase<C>
       }
     }
   }
-  private _value: any;
+  private _value: any = undefined;
 
   private _controlled: boolean = false;
   get controlled(): any {
@@ -621,7 +621,7 @@ export abstract class _MatSelectBase<C>
       .pipe(distinctUntilChanged(), takeUntil(this._destroy))
       .subscribe(() => this._panelDoneAnimating(this.panelOpen));
 
-    this._controlled = this.value ? true : false;
+    this._controlled = this.value !== undefined ? true : false;
     this.className = `mat-select ${this.getDynamicStyle()}`;
     this.service.iconPosition.next(this.iconPosition);
   }
@@ -954,6 +954,8 @@ export abstract class _MatSelectBase<C>
     } else {
       const correspondingOption = this._selectValue(value);
 
+      this.checkSelectIcons(correspondingOption);
+
       // Shift focus to the active item. Note that we shouldn't do this in multiple
       // mode, because we don't know what option the user interacted with last.
       if (correspondingOption) {
@@ -1067,6 +1069,30 @@ export abstract class _MatSelectBase<C>
       });
   }
 
+  checkSelectIcons(option: DxcSelectOption) {
+    if (
+      option &&
+      option._element &&
+      option._element.nativeElement.childNodes[1]["firstElementChild"]
+        .tagName === "DXC-OPTION-ICON"
+    ) {
+      const trigger = this._elementRef.nativeElement.getElementsByClassName(
+        "mat-select-trigger"
+      )[0];
+      if (trigger.firstChild.tagName === "DXC-OPTION-ICON") {
+        trigger.firstChild.remove();
+      }
+      this._elementRef.nativeElement
+        .getElementsByClassName("mat-select-value")[0]
+        .insertAdjacentHTML(
+          "beforeBegin",
+          option._element.nativeElement.getElementsByClassName(
+            "mat-option-text"
+          )[0]["firstChild"]["outerHTML"]
+        );
+    }
+  }
+
   /** Invoked when an option is clicked. */
   private _onSelect(option: DxcSelectOption, isUserInput: boolean): void {
     const wasSelected = this._selectionModel.isSelected(option);
@@ -1088,6 +1114,10 @@ export abstract class _MatSelectBase<C>
       }
       this.onChange.emit(optionsToEmit);
     } else if (isUserInput) {
+      // uncontrolled
+      // if (!this.multiple) {
+      //   this.checkSelectIcons(option);
+      // }
       if (option.value == null && !this._multiple) {
         option.deselect();
         this._selectionModel.clear();
@@ -1273,7 +1303,9 @@ export abstract class _MatSelectBase<C>
         border-top-width: 0.84375em;
         border-top-style: solid;
         border-top-color: transparent;
-        border-bottom: ${this.panelOpen ? "2px solid var(--select-focusColor)" : "1px solid var(--inputText-fontColor)"};
+        border-bottom: ${this.panelOpen
+          ? "2px solid var(--select-focusColor)"
+          : "1px solid var(--inputText-fontColor)"};
       }
 
       .assistiveText {
@@ -1305,6 +1337,14 @@ export abstract class _MatSelectBase<C>
       dxc-option.mat-active,
       dxc-option:hover {
         background: var(--select-selectedOptionBackgroundColor);
+      }
+      dxc-option-icon {
+        display: flex;
+        margin-right: 5px;
+        img,
+        svg {
+          width: 24px;
+        }
       }
     `;
   }

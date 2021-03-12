@@ -101,13 +101,6 @@ export class DxcApplicationLayoutComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  ngAfterViewInit() {
-    if (this.customFooter === "customDxcFooter") {
-      const customFooter = this.dxcFooter.first.element.nativeElement;
-      console.log(customFooter.offsetHeight);
-    }
-  }
-
   updateCss() {
     this.layoutStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),

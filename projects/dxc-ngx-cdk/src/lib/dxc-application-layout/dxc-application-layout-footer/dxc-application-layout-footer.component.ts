@@ -1,5 +1,6 @@
 import {
   Component,
+  ElementRef,
   OnInit,
 } from "@angular/core";
 import { CssUtils } from "../../utils";
@@ -10,7 +11,7 @@ import { CssUtils } from "../../utils";
 })
 export class DxcApplicationLayoutFooterComponent implements OnInit {
 
-  constructor() {}
+  constructor(public element: ElementRef) {}
 
   ngOnInit() {
   }

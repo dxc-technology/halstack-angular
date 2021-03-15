@@ -113,7 +113,6 @@ export class DxcChipComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      opacity: ${inputs.disabled ? "var(--chip-disabled)" : "1"};
       height: 22px;
       ${this.utils.getMargins(inputs.margin)}
       display: flex;
@@ -121,10 +120,10 @@ export class DxcChipComponent implements OnChanges {
       flex-wrap: nowrap;
       text-overflow: ellipsis;
       border-radius: 48px;
-      background-color: var(--chip-backgroundColor);
+      background-color: ${inputs.disabled ? "var(--chip-disabledBackgroundColor)" : "var(--chip-backgroundColor)"};
       padding: 10px 20px;
       width: fit-content;
-      border: 1px solid var(--chip-outlinedColor);
+      border: ${inputs.disabled ? "1px solid var(--chip-disabledBackgroundColor)" : "1px solid var(--chip-outlinedColor)"};
       .labelContainer {
         font-size: 16px;
         font-family: "Open Sans", sans-serif;
@@ -132,13 +131,14 @@ export class DxcChipComponent implements OnChanges {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: var(--chip-fontColor);
+        color: ${inputs.disabled ? "var(--chip-disabledFontColor)" : "var(--chip-fontColor)"};
       }
       img,svg {
         max-width: 24px;
         max-height: 24px;
       }
       .prefixIcon {
+        opacity: ${inputs.disabled ? "0.34" : "1"};
         ${this.label ? "margin-right: 10px;" : ""};
         height: 24px;
         width: 24px;
@@ -155,6 +155,7 @@ export class DxcChipComponent implements OnChanges {
         }
       }
       .suffixIcon {
+        opacity: ${inputs.disabled ? "0.34" : "1"};
         ${this.label ? "margin-left: 10px;" : ""};
         height: 24px;
         width: 24px;

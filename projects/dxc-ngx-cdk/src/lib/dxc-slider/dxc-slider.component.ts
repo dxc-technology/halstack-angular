@@ -216,8 +216,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             border-color: var(--slider-color) !important;
           }
           .mat-slider-track-background {
-            opacity: var(--slider-totalLine) !important;
-            background-color: var(--slider-color) !important;
+            background-color: var(--slider-totalLine) !important;
           }
           .mat-slider-ticks {
             background-image: repeating-linear-gradient(
@@ -257,24 +256,20 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         &.mat-slider-disabled {
           .mat-slider-thumb {
             transform: scale(0.7) !important;
-            border-color: var(--slider-color) !important;
-            background-color: var(--slider-color);
-            opacity: var(--slider-disabledThumbBackgroundColor);
+            border-color: var(--slider-disabledThumbBackgroundColor) !important;
+            background-color: var(--slider-disabledThumbBackgroundColor);
           }
           .mat-slider-track-background {
-            opacity: var(--slider-disabledtotalLine) !important;
-            background-color: var(--slider-color) !important;
+            background-color: var(--slider-disabledtotalLine) !important;
           }
           .mat-slider-track-fill {
-            opacity: var(--slider-disabledTrackLine) !important;
-            background-color: var(--slider-color) !important;
+            background-color: var(--slider-disabledTrackLine) !important;
           }
           .mat-slider-ticks {
-            opacity: var(--slider-disabledDotsBackgroundColor) !important;
             background-image: repeating-linear-gradient(
               to right,
-              var(--slider-color),
-              var(--slider-color) 4px 4px,
+              var(--slider-disabledDotsBackgroundColor),
+              var(--slider-disabledDotsBackgroundColor) 4px 4px,
               transparent 2px,
               #e2141400
             );

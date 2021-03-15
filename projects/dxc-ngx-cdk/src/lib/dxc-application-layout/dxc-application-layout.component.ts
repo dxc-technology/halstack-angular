@@ -133,13 +133,14 @@ export class DxcApplicationLayoutComponent implements OnInit {
       dxc-application-layout-header {
         width: 100%;
         z-index: 500;
-        max-height: 68px;
-        overflow: hidden;
       }
       .content {
         display: flex;
         position: relative;
-        height: 100%;
+        height: fit-content;
+        .sidenav {
+          background-color: var(--sidenav-backgroundColor);
+        }
       }
       div.main {
         width: 100%;
@@ -155,7 +156,6 @@ export class DxcApplicationLayoutComponent implements OnInit {
         }
       }
       dxc-application-layout-sidenav {
-        background-color: var(--sidenav-backgroundColor);
         .sidenavContainerClass {
           max-height: 100vh;
         }

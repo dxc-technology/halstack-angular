@@ -155,6 +155,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
         }
       }
       dxc-application-layout-sidenav {
+        background-color: var(--sidenav-backgroundColor);
         .sidenavContainerClass {
           max-height: 100vh;
         }

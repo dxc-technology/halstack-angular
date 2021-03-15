@@ -27,7 +27,7 @@
     right: 0;
     bottom: 0;
     position: fixed;
-    opacity: var(--progressbar-overlayOpacity);
+    opacity: 0.8;
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     background-color: var(--progressbar-overlayColor);
   }
@@ -89,7 +89,6 @@
     ::ng-deep {
       .mat-progress-bar-buffer {
         background-color: var(--progressbar-totalLine);
-        opacity: var(--progressbar-totalLineOpacity);
       }
     }
   }

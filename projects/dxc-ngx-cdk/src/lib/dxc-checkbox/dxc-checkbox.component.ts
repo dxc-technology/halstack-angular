@@ -141,7 +141,7 @@ export class DxcCheckboxComponent implements OnInit {
       vertical-align: top;
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
       .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-        background: var(--checkbox-color) !important;
+        background: var(--checkbox-backgroundColorChecked) !important;
       }
 
       .mat-checkbox:not(.mat-checkbox-disabled).mat-accent
@@ -183,12 +183,12 @@ export class DxcCheckboxComponent implements OnInit {
             .mat-checkbox-background,
             .mat-checkbox-frame {
               border-radius: 4px;
-              border-color: var(--checkbox-color);
+              border-color: var(--checkbox-borderColor);
             }
 
             .mat-checkbox-background {
               svg path {
-                stroke: var(--checkbox-checkColor) !important;
+                stroke: var(--checkbox-checkColor);
                 stroke-width: 3px;
               }
             }
@@ -197,10 +197,18 @@ export class DxcCheckboxComponent implements OnInit {
         &.mat-checkbox-disabled {
           cursor: not-allowed;
           .mat-checkbox-inner-container {
-            opacity: var(--checkbox-opacityDisabled);
+            .mat-checkbox-frame{
+              border-color: var(--checkbox-disabledBorderColor) !important;
+            }
+            .mat-checkbox-background{
+              background: var(--checkbox-disabledBackgroundColorChecked) !important;
+              svg path {
+                stroke: var(--checkbox-disabledCheckColor) !important;
+              }
+            }
           }
           label.mat-checkbox-layout span.mat-checkbox-label {
-            opacity: var(--checkbox-opacityDisabledCheckColor);
+            color: var(--checkbox-disabledFontColor) !important;
           }
         }
       }

@@ -137,7 +137,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
       .content {
         display: flex;
         position: relative;
-        height: fit-content;
+        height: 100%;
         .sidenav {
           background-color: var(--sidenav-backgroundColor);
         }

@@ -146,10 +146,15 @@ export class DxcToggleGroupComponent implements OnInit {
     if (this.disabled) {
       return css`
         dxc-toggle {
+          background: var(--toggle-disabledUnselectedBackgroundColor) !important;
+          color: var(--toggle-disabledUnselectedFontColor) !important;
           &:hover {
             cursor: not-allowed;
           }
-          opacity: var(--toggle-disabled);
+          &.selected {
+            background: var(--toggle-disabledSelectedBackgroundColor) !important;
+            color: var(--toggle-disabledSelectedFontColor) !important;
+          }
         }
       `;
     } else {
@@ -159,7 +164,7 @@ export class DxcToggleGroupComponent implements OnInit {
             cursor: pointer;
           }
           &:hover {
-            background: var(--toggle-unselectedHoverBackgroundColor);
+            background: var(--toggle-unselectedBackgroundHoverColor);
             color: var(--toggle-unselectedHoverFontColor);
           }
           &.selected {

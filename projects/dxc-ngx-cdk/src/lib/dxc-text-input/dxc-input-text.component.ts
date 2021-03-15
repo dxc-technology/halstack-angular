@@ -345,24 +345,24 @@ export class DxcTextInputComponent
         &.disabled {
           pointer-events: none;
           .mat-hint {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-underline {
-            opacity: var(--inputText-disabled);
+            background-color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-empty mat-label {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                opacity: var(--inputText-disabled);
+                color: var(--inputText-disabledFontColor);
               }
             }
           }

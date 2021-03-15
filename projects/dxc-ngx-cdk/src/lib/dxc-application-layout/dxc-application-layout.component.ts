@@ -144,9 +144,9 @@ export class DxcApplicationLayoutComponent implements OnInit {
         display: flex;
         position: relative;
         height: 100%;
+        margin-top: 64px;
         .sidenav {
           background-color: var(--sidenav-backgroundColor);
-          margin-top: 64px;
         }
       }
       div.main {
@@ -156,7 +156,6 @@ export class DxcApplicationLayoutComponent implements OnInit {
         justify-content: space-between;
         dxc-application-layout-main {
           transition: width 0.4s ease-in-out;
-          margin-top: 64px;
           width: 100%;
           height: fit-content;
           display: flex;

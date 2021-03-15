@@ -122,24 +122,31 @@ export class DxcApplicationLayoutComponent implements OnInit {
       height: 100vh;
       dxc-header {
         width: 100%;
-        max-height: 68px;
+        max-height: 64px;
         mat-toolbar {
           z-index: 500;
           mat-toolbar-row {
-            height: 68px !important;
+            height: 64px !important;
           }
         }
       }
       dxc-application-layout-header {
         width: 100%;
         z-index: 500;
+        max-height: 64px;
+        overflow: hidden;
+      }
+      dxc-application-layout-header, dxc-header {
+        position: fixed;
+        z-index: 400;
       }
       .content {
         display: flex;
         position: relative;
-        height: fit-content;
+        height: 100%;
         .sidenav {
           background-color: var(--sidenav-backgroundColor);
+          margin-top: 64px;
         }
       }
       div.main {
@@ -148,6 +155,8 @@ export class DxcApplicationLayoutComponent implements OnInit {
         flex-direction: column;
         justify-content: space-between;
         dxc-application-layout-main {
+          transition: width 0.4s ease-in-out;
+          margin-top: 64px;
           width: 100%;
           height: fit-content;
           display: flex;
@@ -156,8 +165,10 @@ export class DxcApplicationLayoutComponent implements OnInit {
         }
       }
       dxc-application-layout-sidenav {
+        ${this.isModePush && this.isMenuShown ? "width: 300px; height: 100%; display: block;" : ""}
         .sidenavContainerClass {
           max-height: 100vh;
+          position: fixed;
         }
       }
       dxc-footer {

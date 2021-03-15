@@ -145,14 +145,12 @@ export class DxcApplicationLayoutComponent implements OnInit {
         width: 100%;
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
         justify-content: space-between;
         dxc-application-layout-main {
           width: 100%;
           height: fit-content;
           display: flex;
           align-items: center;
-          flex-wrap: wrap;
           flex-direction: column;
         }
       }

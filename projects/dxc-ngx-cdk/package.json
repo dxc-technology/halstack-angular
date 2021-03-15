@@ -37,7 +37,8 @@
     "@angular/router": "10.2.0",
     "rxjs": "~6.5.2",
     "moment": "^2.24.0",
-    "ng-packagr": "^10.1.0"
+    "ng-packagr": "^10.1.0",
+    "rgb-hex": "^3.0.0"
   },
   "dependencies": {
     "@angular/animations": "10.2.0",
@@ -59,6 +60,7 @@
     "jest-preset-angular": "^7.1.1",
     "moment": "^2.24.0",
     "ng-mocks": "^10.4.0",
+    "rgb-hex": "^3.0.0",
     "rxjs": "~6.5.2",
     "tslib": "^2.0.0"
   },
@@ -85,6 +87,7 @@
     "tsickle": "^0.37.1",
     "tslint": "5.15.0",
     "typescript": "^3.6.5",
-    "@types/node": "^12.11.1"
+    "@types/node": "^12.11.1",
+    "rgb-hex": "^3.0.0"
   }
 }

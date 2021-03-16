@@ -20,14 +20,13 @@ export class PaginatorComponent implements OnInit {
   ngOnInit() {
   }
 
-  navigate(page:number, operation:string){
-    console.log(page);
+  navigate(page:number, operation?:string){
     this.page = page;
     console.log('navigate: ' + operation);
   }
 
   itemsPerPageEvent($event) {
-    console.log($event);
     this.itemsPerPage = $event;
+    this.page = 1;
   }
 }

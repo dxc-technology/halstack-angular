@@ -5,9 +5,11 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
+  HostBinding,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
+import { css } from "emotion";
 
 @Component({
   selector: "dxc-paginator",
@@ -53,11 +55,12 @@ export class DxcPaginatorComponent implements OnInit {
 
   @Input() public itemsPerPageOptions: number[];
 
-  @Output() firstFunction: EventEmitter<any> = new EventEmitter<any>();
-  @Output() nextFunction: EventEmitter<any> = new EventEmitter<any>();
-  @Output() prevFunction: EventEmitter<any> = new EventEmitter<any>();
-  @Output() lastFunction: EventEmitter<any> = new EventEmitter<any>();
+  @Input() public showGoToPage: boolean = false;
+
+  @Output() onGoToPage: EventEmitter<any> = new EventEmitter<any>();
   @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
+
+  @HostBinding("class") className;
 
   buttonMargin = { left: "xxsmall", right: "xxsmall" };
   selectMargin = { left: "xxsmall", right: "small" };
@@ -97,6 +100,7 @@ export class DxcPaginatorComponent implements OnInit {
   ngOnInit() {
     this.calculateInternalValues(this.defaultInputs.getValue());
     this.setButtonVisibility(this.paginationActions);
+    this.className = `${this.getDynamicStyle()}`;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -116,26 +120,31 @@ export class DxcPaginatorComponent implements OnInit {
       ...this.defaultInputs.getValue(),
       ...inputs,
     });
+    this.className = `${this.getDynamicStyle()}`;
   }
 
   public onFirstHandler($event: any): void {
-    this.firstFunction.emit(1);
+    this.onGoToPage.emit(1);
   }
 
   public onNextHandler($event: any): void {
-    this.nextFunction.emit(+this.currentPage + 1);
+    this.onGoToPage.emit(+this.currentPage + 1);
   }
 
   public onPrevHandler($event: any): void {
-    this.prevFunction.emit(+this.currentPage - 1);
+    this.onGoToPage.emit(+this.currentPage - 1);
   }
 
   public onLastHandler($event: any): void {
-    this.lastFunction.emit(this.totalPages);
+    this.onGoToPage.emit(this.totalPages);
   }
 
   public onItemsPerPageHandler($event: any): void {
     this.itemsPerPageFunction.emit($event);
+  }
+
+  goToPageHandler($event: any) {
+    this.onGoToPage.emit($event);
   }
 
   private setButtonVisibility(paginationActions: Array<string>) {
@@ -176,5 +185,13 @@ export class DxcPaginatorComponent implements OnInit {
       this.minItemsPerPage - 1 + +input.itemsPerPage > +input.totalItems
         ? input.totalItems
         : this.minItemsPerPage - 1 + +input.itemsPerPage;
+  }
+
+  getDynamicStyle() {
+    return css`
+      .mat-select-trigger {
+        margin-top: 10px;
+      }
+    `;
   }
 }

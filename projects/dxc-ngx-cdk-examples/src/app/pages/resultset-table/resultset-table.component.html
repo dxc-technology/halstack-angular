@@ -6,6 +6,7 @@
     [itemsPerPageOptions]="options"
     (itemsPerPageFunction)="itemsPerPageEvent($event)"
     [collectionResource]="data"
+    goToPage="true"
   >
     <ng-container dxcColumnDef="user">
       <td *dxcCellDef="let item">
@@ -26,6 +27,7 @@
     itemsPerPage="1"
     [collectionResource]="data"
     margin="xsmall"
+    [showGoToPage]="falseShowGoToPage"
   >
     <ng-container
       dxcColumnDef="user"

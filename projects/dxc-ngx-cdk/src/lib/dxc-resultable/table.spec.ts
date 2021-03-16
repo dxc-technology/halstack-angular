@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/angular";
+import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcResultTable } from "./table";
 import { DxcResultsetTableModule } from "./table-module";
 
@@ -26,6 +26,7 @@ describe("DxcResultset Table tests", () => {
   test("should show data from next page", async () => {
     const table = await render(DxcResultTable, {
       template: `  <dxc-resultset-table 
+                    [showGoToPage]="falseShowGoToPage"
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -44,6 +45,7 @@ describe("DxcResultset Table tests", () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
+      componentProperties: {falseShowGoToPage: false},
       imports: [DxcResultsetTableModule],
       excludeComponentDeclaration: true,
     });
@@ -62,6 +64,7 @@ describe("DxcResultset Table tests", () => {
   test("should show data from last page", async () => {
     const table = await render(DxcResultTable, {
       template: `  <dxc-resultset-table 
+                    [showGoToPage]="falseShowGoToPage"
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -80,6 +83,7 @@ describe("DxcResultset Table tests", () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
+      componentProperties: {falseShowGoToPage: false},
       imports: [DxcResultsetTableModule],
       excludeComponentDeclaration: true,
     });
@@ -96,6 +100,7 @@ describe("DxcResultset Table tests", () => {
   test("should show data from previous page", async () => {
     const table = await render(DxcResultTable, {
       template: `  <dxc-resultset-table 
+                    [showGoToPage]="falseShowGoToPage"
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -114,6 +119,7 @@ describe("DxcResultset Table tests", () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
+      componentProperties: {falseShowGoToPage: false},
       imports: [DxcResultsetTableModule],
       excludeComponentDeclaration: true,
     });
@@ -136,6 +142,7 @@ describe("DxcResultset Table tests", () => {
   test("should show data from first page", async () => {
     const table = await render(DxcResultTable, {
       template: `  <dxc-resultset-table 
+                    [showGoToPage]="falseShowGoToPage"
                     [collectionResource]="[
                         {user:'user1',email:'user1@gmail.com'},
                         {user:'pepe',email:'user2@gmail.com'},
@@ -154,6 +161,7 @@ describe("DxcResultset Table tests", () => {
                             </td>
                         </ng-container>
                     </dxc-resultset-table>`,
+      componentProperties: {falseShowGoToPage: false},
       imports: [DxcResultsetTableModule],
       excludeComponentDeclaration: true,
     });
@@ -269,9 +277,9 @@ describe("DxcResultset Table tests", () => {
         email: "user2@gmail.com",
       },
       {
-        user:'aida',
-        email:'test@gmail.com'
-      }
+        user: "aida",
+        email: "test@gmail.com",
+      },
     ];
     const itemsPerPage = 5;
     const table = await render(DxcResultTable, {
@@ -289,8 +297,8 @@ describe("DxcResultset Table tests", () => {
                     </dxc-resultset-table>`,
       imports: [DxcResultsetTableModule],
       componentProperties: {
-          data,
-          itemsPerPage
+        data,
+        itemsPerPage,
       },
       excludeComponentDeclaration: true,
     });
@@ -302,5 +310,46 @@ describe("DxcResultset Table tests", () => {
     expect(table.getAllByRole("row").length).toBe(1);
     table.rerender({ itemsPerPage: 10 });
     expect(table.getAllByRole("row").length).toBe(6);
+  });
+
+  test("should navigate to the page", async () => {
+    const table = await render(DxcResultTable, {
+      template: `  <dxc-resultset-table 
+                    showGoToPage="true"
+                    [collectionResource]="[
+                        {user:'user1',email:'user1@gmail.com'},
+                        {user:'pepe',email:'user2@gmail.com'},
+                        {user:'user3',email:'user5@gmail.com'},
+                        {user:'aida2',email:'test@gmail.com'},
+                        {user:'user5',email:'user5@gmail.com'},
+                        {user:'aida',email:'test@gmail.com'},
+                        {user:'user6',email:'user5@gmail.com'},
+                        {user:'aida6',email:'test@gmail.com'}
+                    ]" 
+                    [itemsPerPage]="2">
+                        <ng-container dxcColumnDef="user">
+                            <td *dxcCellDef="let item">
+                                {{item['user']}}
+                            </td>
+                        </ng-container>
+                        <ng-container dxcColumnDef="email">
+                            <td *dxcCellDef="let item">
+                                {{item['email']}}
+                            </td>
+                        </ng-container>
+                    </dxc-resultset-table>`,
+      imports: [DxcResultsetTableModule],
+      excludeComponentDeclaration: true,
+    });
+    table.detectChanges();
+    expect(table.getByText("Go to page")).toBeTruthy();
+    expect(table.getByText("pepe")).toBeTruthy();
+    const trigger = table.getByRole("trigger");
+    fireEvent.click(trigger);
+    table.detectChanges();
+    fireEvent.click(screen.getByText("3"));
+    table.detectChanges();
+    expect(table.getByText("user5")).toBeTruthy();
+    expect(table.getByText("aida")).toBeTruthy();
   });
 });

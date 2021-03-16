@@ -1,7 +1,7 @@
 <div class="paginator-container">
   <div class="labels-container">
     <span *ngIf="itemsPerPageOptions" class="items-per-page">
-      Items per page
+      <span>Items per page</span>
       <dxc-select
         (onChange)="onItemsPerPageHandler($event)"
         [value]="itemsPerPage"
@@ -15,9 +15,11 @@
         ></dxc-select-option>
       </dxc-select>
     </span>
+
     <span class="total-items-container">
       {{ minItemsPerPage }} to {{ maxItemsPerPage }} of {{ totalItems }}
     </span>
+
     <dxc-button
       *ngIf="showFirst"
       mode="secondary"
@@ -36,7 +38,22 @@
       [iconSrc]="prevImgSrc"
       [disabled]="currentPageInternal === 1"
     ></dxc-button>
-    <span> Page: {{ currentPageInternal }} of {{ totalPages }} </span>
+    <span *ngIf="!showGoToPage"> Page: {{ currentPageInternal }} of {{ totalPages }} </span>
+    <span *ngIf="showGoToPage" class="go-to-page">
+      <span>Go to page</span>
+      <dxc-select
+        (onChange)="goToPageHandler($event)"
+        [value]="currentPage"
+        [margin]="selectMargin"
+        size="small"
+      >
+        <dxc-select-option
+          *ngFor="let item of [].constructor(totalPages); let i = index"
+          [label]="i + 1"
+          [value]="i + 1"
+        ></dxc-select-option>
+      </dxc-select>
+    </span>
     <dxc-button
       *ngIf="showNext"
       mode="secondary"

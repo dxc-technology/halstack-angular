@@ -1,15 +1,15 @@
 import { Component, Inject } from "@angular/core";
 import { ThemeService } from "@dxc-technology/halstack-angular";
-import { customTheme } from '../assets/styles/themesProperties';
-import { HttpClient } from '@angular/common/http';
-import portal from '../assets/portal.json';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { customTheme } from "../assets/styles/themesProperties";
+import { HttpClient } from "@angular/common/http";
+import portal from "../assets/portal.json";
+import { ActivatedRoute, Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
   title = "DXC Angular Components";
@@ -23,34 +23,41 @@ export class AppComponent {
     @Inject("ThemeService") private themeService: ThemeService,
     private http: HttpClient,
     private router: Router
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.themeService.registerTheme(customTheme);
     this.router.events.subscribe((event: any) => {
       if (event?.url !== null && event?.url !== undefined) {
-        event?.url.indexOf('/components') >= 0 ? this.hasSideNav.next(true) : this.hasSideNav.next(false);
+        event?.url.indexOf("/components") >= 0
+          ? this.hasSideNav.next(true)
+          : this.hasSideNav.next(false);
       }
-    }
-    );
+    });
 
-    this.suscription = this.http.get(portal.url
-    ).subscribe(
+    this.suscription = this.http.get(portal.url).subscribe(
       (resp: Array<any>) => {
-        this.versions = resp.map((item) => { return { label: `${item.versionNumber}`, value: `${item.versionNumber}`, url: item.versionURL, current: item.current } });
+        this.versions = resp.map((item) => {
+          return {
+            label: `${item.versionNumber}`,
+            value: `${item.versionNumber}`,
+            url: item.versionURL,
+            current: item.current,
+          };
+        });
         this.calculateCurrentVersion();
       },
-      err => console.error('Failed when retrieve versions.json from AWS', err));
-
+      (err) => console.error("Failed when retrieve versions.json from AWS", err)
+    );
   }
 
   private calculateCurrentVersion() {
     const versionUrl = window.location.pathname;
-    this.selectedVersion = versionUrl.split('/')[3] !== '' ? versionUrl.split('/')[3] : this.versions.find(item2Find => item2Find.current === true).label;
+    this.selectedVersion =
+      versionUrl.split("/")[3] !== ""
+        ? versionUrl.split("/")[3]
+        : this.versions.find((item2Find) => item2Find.current === true).label;
   }
-
 
   selectVersion(value) {
     window.location.href = this.versions.find((v) => v.label === value).url;

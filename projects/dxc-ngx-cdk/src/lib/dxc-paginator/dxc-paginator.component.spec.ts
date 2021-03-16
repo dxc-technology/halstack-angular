@@ -64,7 +64,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 27;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (nextFunction)="navegateFunction($event,'next')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['next']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'next')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['next']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -83,7 +83,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (prevFunction)="navegateFunction($event,'prev')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['prev']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'prev')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['prev']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -101,7 +101,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 30;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (firstFunction)="navegateFunction($event,'first')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['first']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'first')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['first']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -119,7 +119,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (lastFunction)="navegateFunction($event,'last')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['last']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'last')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['last']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -137,7 +137,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (nextFunction)="navegateFunction($event,'next')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['next']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'next')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['next']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -154,7 +154,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (prevFunction)="navegateFunction($event,'prev')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['prev']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'prev')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['prev']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -171,7 +171,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (firstFunction)="navegateFunction($event,'first')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['first']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'first')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['first']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -188,7 +188,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (lastFunction)="navegateFunction($event,'last')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['last']" ></dxc-paginator>`,
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'last')" [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} [paginationActions]="['last']" ></dxc-paginator>`,
       componentProperties: {
         navegateFunction,
       },
@@ -205,7 +205,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (nextFunction)="navegateFunction($event,'next')" (lastFunction)="navegateFunction($event,'last')" 
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'next')" (lastFunction)="navegateFunction($event,'last')" 
       (firstFunction)="navegateFunction($event,'first')" (prevFunction)="navegateFunction($event,'prev')" 
       [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} ></dxc-paginator>`,
       componentProperties: {
@@ -230,7 +230,7 @@ describe("DxcPaginator tests", () => {
     const totalItems: number = 20;
     const itemsPerPage: number = 10;
     const paginator = await render(DxcPaginatorComponent, {
-      template: `<dxc-paginator (nextFunction)="navegateFunction($event,'next')" (lastFunction)="navegateFunction($event,'last')" 
+      template: `<dxc-paginator (onGoToPage)="navegateFunction($event,'next')" (lastFunction)="navegateFunction($event,'last')" 
       (firstFunction)="navegateFunction($event,'first')" (prevFunction)="navegateFunction($event,'prev')" 
       [itemsPerPage]=${itemsPerPage} [totalItems]=${totalItems} [currentPage]=${page} ></dxc-paginator>`,
       componentProperties: {
@@ -249,41 +249,63 @@ describe("DxcPaginator tests", () => {
     expect(lastButton.hasAttribute("disabled")).toBeFalsy();
   });
 
-  // test("Paginator renders with items per page options", async () => {
-  //   const itemsPerPageOptions = [
-  //     10, 20
-  //   ];
+  test("Paginator renders with items per page options", async () => {
+    const itemsPerPageOptions = [
+      10, 20
+    ];
 
-  //   const paginator = await render(DxcPaginatorComponent, {
-  //     template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" currentPage="2"></dxc-paginator>`,
-  //     componentProperties: { itemsPerPageOptions: itemsPerPageOptions },
-  //     imports: [DxcPaginatorModule],
-  //     excludeComponentDeclaration: true,
-  //   });
-  //   expect(screen.getByText("Items per page")).toBeTruthy();
-  //   expect(screen.getByRole("combobox")).toBeTruthy();
-  // });
+    const paginator = await render(DxcPaginatorComponent, {
+      template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" currentPage="2"></dxc-paginator>`,
+      componentProperties: { itemsPerPageOptions: itemsPerPageOptions },
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
+    });
+    expect(screen.getByText("Items per page")).toBeTruthy();
+    expect(screen.getByRole("combobox")).toBeTruthy();
+  });
 
-  // test("Paginator change value", async () => {
-  //   const changeMock = jest.fn();
-  //   const itemsPerPageOptions = [
-  //     10, 20
-  //   ];
+  test("Paginator change items per page value", async () => {
+    const changeMock = jest.fn();
+    const itemsPerPageOptions = [
+      10, 20
+    ];
 
-  //   const paginator = await render(DxcPaginatorComponent, {
-  //     template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" (itemsPerPageFunction)="changeMock($event)" currentPage="2"></dxc-paginator>`,
-  //     componentProperties: {
-  //       itemsPerPageOptions,
-  //       changeMock
-  //     },
-  //     imports: [DxcPaginatorModule],
-  //     excludeComponentDeclaration: true,
-  //   });
-  //   expect(screen.getByText("Items per page")).toBeTruthy();
-  //   const selectComponent = <HTMLInputElement>screen.getByRole("combobox");
-  //   fireEvent.click(selectComponent);
-  //   paginator.detectChanges();
-  //   fireEvent.click(screen.getByText("20"));
-  //   expect(changeMock).toHaveBeenCalledWith(20);
-  // });
+    const paginator = await render(DxcPaginatorComponent, {
+      template: `<dxc-paginator itemsPerPage="10" [itemsPerPageOptions]="itemsPerPageOptions" totalItems="27" (itemsPerPageFunction)="changeMock($event)" currentPage="2"></dxc-paginator>`,
+      componentProperties: {
+        itemsPerPageOptions,
+        changeMock
+      },
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
+    });
+    expect(screen.getByText("Items per page")).toBeTruthy();
+    fireEvent.click(paginator.getByRole("trigger"));
+    paginator.detectChanges();
+    fireEvent.click(screen.getByText("20"));
+    expect(changeMock).toHaveBeenCalledWith(20);
+  });
+
+  test("Paginator renders with go to page options", async () => {
+    const changeMock = jest.fn();
+    const itemsPerPageOptions = [
+      10, 20
+    ];
+
+    const paginator = await render(DxcPaginatorComponent, {
+      template: `<dxc-paginator showGoToPage="true" itemsPerPage="10" totalItems="27" (onGoToPage)="changeMock($event)" currentPage="2"></dxc-paginator>`,
+      componentProperties: {
+        itemsPerPageOptions,
+        changeMock
+      },
+      imports: [DxcPaginatorModule],
+      excludeComponentDeclaration: true,
+    });
+    
+    expect(screen.getByText("Go to page")).toBeTruthy();
+    fireEvent.click(paginator.getByRole("trigger"));
+    paginator.detectChanges();
+    fireEvent.click(screen.getByText("3"));
+    expect(changeMock).toHaveBeenCalledWith(3);
+  });
 });

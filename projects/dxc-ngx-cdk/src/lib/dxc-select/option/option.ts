@@ -105,17 +105,17 @@ export class _MatOptionBase
 
   private iconPosition = "";
 
-  @HostBinding("class") className = `${this.getDynamicStyle()}`;
+  @HostBinding("class") className = `mat-option ${this.getDynamicStyle()}`;
 
   constructor(
-    private _element: ElementRef<HTMLElement>,
+    public _element: ElementRef<HTMLElement>,
     private _changeDetectorRef: ChangeDetectorRef,
     private _parent: MatOptionParentComponent,
     private service: SelectService
   ) {
     this.service.iconPosition.subscribe((position) => {
       this.iconPosition = position;
-      this.className = `${this.getDynamicStyle()}`;
+      this.className = `mat-option ${this.getDynamicStyle()}`;
     });
   }
 
@@ -273,6 +273,10 @@ export class _MatOptionBase
         ${this.iconPosition == "after"
           ? "margin-left: 15px"
           : "margin-right: 15px"};
+        
+        img, svg {
+          width: 24px;
+        }
       }
     `;
   }

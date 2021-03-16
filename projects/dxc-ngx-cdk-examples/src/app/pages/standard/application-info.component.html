@@ -20,7 +20,6 @@
           molestie tincidunt dignissim. Vestibulum sed aliquet sem, sed egestas
           mauris.
         </p>
-        
       </div>
     </dxc-application-layout-sidenav>
     <dxc-application-layout-main>
@@ -30,6 +29,7 @@
         label="Button"
         (onClick)="changeShowCode()"
       ></dxc-button>
+      <!-- 
       <iframe
         *ngIf="showCode"
         src="https://codesandbox.io/embed/dxc-technologyhalstack-angularbutton-tr47c?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark"
@@ -44,7 +44,7 @@
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
       ></iframe>
-
+      -->
       <div class="customContent">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac
@@ -166,7 +166,7 @@
           eros, nec finibus risus lorem sit amet elit. Morbi consectetur ante
           molestie tincidunt dignissim. Vestibulum sed aliquet sem, sed egestas
           mauris.
-        </p><p>
+        </p>--> <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac
           vehicula justo. Aliquam at nunc ac risus blandit dapibus ut eget
           lectus. Proin et diam eu lacus ornare porta et nec dolor. Morbi eget
@@ -178,16 +178,16 @@
           mauris.
         </p>
       </div>
-      <dxc-footer
-        copyright="© DXC Technology 2019. All rights reserved."
-        [bottomLinks]="bottom"
-        [socialLinks]="social"
-      ></dxc-footer>
-      <dxc-application-layout-footer>
-        <div style="height: 200px; width: 100%; background: #fabada">
-          CustomFooter
-        </div>
-      </dxc-application-layout-footer>
     </dxc-application-layout-main>
+    <dxc-footer
+      copyright="© DXC Technology 2019. All rights reserved."
+      [bottomLinks]="bottom"
+      [socialLinks]="social"
+    ></dxc-footer>
+    <dxc-application-layout-footer>
+      <div style="height: 200px; width: 100%; background: #fabada">
+        CustomFooter
+      </div>
+    </dxc-application-layout-footer>
   </dxc-application-layout>
 </div>

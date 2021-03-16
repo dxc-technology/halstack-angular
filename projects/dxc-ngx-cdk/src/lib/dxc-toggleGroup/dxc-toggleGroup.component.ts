@@ -52,15 +52,15 @@ export class DxcToggleGroupComponent implements OnInit {
   constructor(private utils: CssUtils, private service: ToggleGroupService) {}
 
   ngOnInit() {
-    if (this.value || this.value === "") {
-      this.getSelectedByValue();
-    }
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
   }
 
   ngAfterViewInit() {
+    if (this.value || this.value === "") {
+      this.getSelectedByValue();
+    }
     this.service.values.subscribe((valuesSelected) => {
       if (valuesSelected && valuesSelected[0]) {
         this.selectedOptions = valuesSelected;

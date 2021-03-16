@@ -202,9 +202,9 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     //RADIO
     proccessedTokens["--radio-color"] =
       theme?.radio?.color ?? tokens["--radio-color"];
-    proccessedTokens["--select-disabledColor"] =
-      this.addOpacity(theme?.select?.color, 0.34) ??
-      tokens["--select-disabledColor"];
+    proccessedTokens["--radio-disabledColor"] =
+      this.addOpacity(theme?.radio?.color, 0.34) ??
+      tokens["--radio-disabledColor"];
 
     //SELECT
     proccessedTokens["--select-selectedOptionBackgroundColor"] =
@@ -213,6 +213,18 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--select-hoverOptionBackgroundColor"] =
       this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
       tokens["--select-selectedOptionBackgroundColor"];
+    proccessedTokens["--select-color"] =
+      theme?.select?.color ?? tokens["--select-color"];
+    proccessedTokens["--select-invalidColor"] =
+      theme?.select?.invalidColor ?? tokens["--select-invalidColor"];
+    proccessedTokens["--select-focusColor"] =
+      theme?.select?.focusColor ?? tokens["--select-focusColor"];
+    proccessedTokens["--select-hoveredOptionBackgroundColor"] =
+      this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
+      tokens["--select-hoveredOptionBackgroundColor"];
+    proccessedTokens["--select-disabledColor"] =
+      this.addOpacity(theme?.select?.color, 0.34) ??
+      tokens["--select-disabledColor"];
 
     //SIDENAV
     proccessedTokens["--sidenav-backgroundColor"] =

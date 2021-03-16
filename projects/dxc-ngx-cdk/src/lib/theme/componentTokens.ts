@@ -195,10 +195,10 @@ export const componentTokens = {
   "--select-color": globalTokens.black,
   "--select-invalidColor": globalTokens.darkRed,
   "--select-focusColor": globalTokens.blue,
-  "--select-disabled": 0.34,
+  "--select-disabledColor": globalTokens.lighterBlack,
   "--select-scrollBarThumbColor": globalTokens.darkGrey,
   "--select-scrollBarTrackColor": globalTokens.lightGrey,
-  "--select-hoverOptionBackgroundColor": globalTokens.lighterGrey,
+  "--select-hoverOptionBackgroundColor": globalTokens.lightWhite,
 
   //SIDENAV
   "--sidenav-backgroundColor": globalTokens.lighterGrey,

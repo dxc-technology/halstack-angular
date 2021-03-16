@@ -69,28 +69,28 @@ export const componentTokens = {
   "--box-backgroundColor": globalTokens.white,
 
   //BUTTON
-  //Themable
-  "--button-color": globalTokens.purple,
-  "--button-hoverColor": globalTokens.black,
+  "--button-primaryBackgroundColor": globalTokens.purple,
+  "--button-primaryHoverBackgroundColor": globalTokens.black,
   "--button-primaryFontColor": globalTokens.white,
   "--button-primaryHoverFontColor": globalTokens.white,
+  "--button-disabledPrimaryBackgroundColor": globalTokens.lighterPurple,
+  "--button-primaryActiveBackgroundColor": globalTokens.mediumBlack,
+  "--button-disabledPrimaryFontColor": globalTokens.white,
   "--button-secondaryFontColor": globalTokens.black,
   "--button-secondaryHoverFontColor": globalTokens.black,
+  "--button-secondaryBackgroundColor": globalTokens.transparent,
+  "--button-secondaryOutlinedColor": globalTokens.purple,
+  "--button-hoverOutlinedColor": globalTokens.black,
+  "--button-secondaryActiveBackgroundColor": globalTokens.mediumGreyBlack,
+  "--button-secondaryHoverBackgroundColor": globalTokens.darkWhite,
+  "--button-disabledSecondaryOutlinedColor": globalTokens.lighterPurple,
+  "--button-disabledSecondaryFontColor": globalTokens.lighterBlack,
+  "--button-textHoverBackgroundColor": globalTokens.black,
+  "--button-textActiveBackgroundColor": globalTokens.mediumBlack,
   "--button-textFontColor": globalTokens.purple,
   "--button-textHoverFontColor": globalTokens.white,
-  //No Themable
-  "--button-primaryDisabledOpacity": globalTokens.lighterPurple,
-  "--button-primaryActiveOpacity": globalTokens.mediumPurple,
-  "--button-primaryActiveHoverOpacity": globalTokens.darkGrey,
-  "--button-secondaryDisabledOpacity": 0.34,
-  "--button-secondaryActiveOpacity": globalTokens.lightPurple,
-  "--button-secondaryActiveHoverOpacity": globalTokens.lightGrey,
-  "--button-secondaryHoverOpacity": globalTokens.lightGrey,
-  "--button-secondaryBackgroundColor": globalTokens.transparent,
-  "--button-textDisabledOpacity": 0.34,
-  "--button-textActiveOpacity": globalTokens.mediumPurple,
-  "--button-textActiveHoverOpacity": globalTokens.darkGrey,
   "--button-textBackgroundColor": globalTokens.transparent,
+  "--button-disabledTextFontColor": globalTokens.lighterPurple,
   "--button-focusColor": globalTokens.blue,
 
   //CARD
@@ -116,16 +116,13 @@ export const componentTokens = {
   "--chip-disabledFontColor": globalTokens.lighterBlack,
 
   //DATE
-  //Themable
   "--date-pickerSelectedDateBackgroundColor": globalTokens.purple,
   "--date-pickerSelectedDateColor": globalTokens.white,
-  //No Themable
   "--date-pickerBackgroundColor": globalTokens.white,
-  "--date-pickerTextColor": globalTokens.black,
   "--date-pickerActualDate": globalTokens.lightGrey,
+  "--date-pickerFontColor": globalTokens.black,
+  "--date-pickerHoverDateFontColor": globalTokens.black,
   "--date-pickerHoverDateBackgroundColor": globalTokens.mediumPurple,
-  "--date-pickerHoverDateTextColor": globalTokens.black,
-  "--date-invalidColor": globalTokens.darkRed,
   "--date-focusColor": globalTokens.blue,
 
   //DIALOG
@@ -280,11 +277,9 @@ export const componentTokens = {
   "--toggle-disabledUnselectedFontColor": globalTokens.lightGrey,
 
   //WIZARD
-  //Themable
   "--wizard-selectedBackgroundColor": globalTokens.purple,
   "--wizard-selectedFont": globalTokens.white,
-  // borderColor: globalTokens.black,
-  //No Themable
+  "--wizard-borderColor": globalTokens.black,
   "--wizard-fontColor": globalTokens.inherit,
   "--wizard-lineColor": globalTokens.lightGrey,
   "--wizard-disabledBackground": globalTokens.lightGrey,

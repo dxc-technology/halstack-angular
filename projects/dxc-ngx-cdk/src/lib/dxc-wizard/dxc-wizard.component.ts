@@ -126,6 +126,9 @@ export class DxcWizardComponent {
           .number {
             color: var(--wizard-fontColor);
           }
+          .label, .description {
+            color: black;
+          }
         }
 
         .disabled {

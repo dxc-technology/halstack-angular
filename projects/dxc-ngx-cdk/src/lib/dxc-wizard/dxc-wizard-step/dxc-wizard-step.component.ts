@@ -75,6 +75,10 @@ export class DxcWizardStepComponent {
   ngOnInit() {
     this.defaultInputs.next({
       ...this.defaultInputs.getValue(),
+      position: this.position,
+      isFirst: this.isFirst,
+      isLast: this.isLast,
+      isCurrent: this.isCurrent,
       mode: this.mode,
     });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -103,6 +107,10 @@ export class DxcWizardStepComponent {
     this.defaultInputs.next({
       ...this.defaultInputs.getValue(),
       ...inputs,
+      position: this.position,
+      isFirst: this.isFirst,
+      isLast: this.isLast,
+      isCurrent: this.isCurrent,
       mode: this.mode,
     });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;

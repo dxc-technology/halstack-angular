@@ -18,8 +18,8 @@ import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
-import { HostListener } from '@angular/core';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { HostListener } from "@angular/core";
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 const moment = momentImported;
 
 @Component({
@@ -67,8 +67,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
-  @HostListener('document:click', ['$event'])
-
+  @HostListener("document:click", ["$event"])
   defaultInputs = new BehaviorSubject<any>({
     value: null,
     format: "dd-MM-yyyy",
@@ -92,9 +91,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   @ViewChild(MdePopoverTrigger, { static: false })
   _dxcTrigger: MdePopoverTrigger;
-  @ViewChild("dxcCalendar", { static: false }) _dxcCalendar: MatCalendar<
-    Moment
-  >;
+  @ViewChild("dxcCalendar", { static: false })
+  _dxcCalendar: MatCalendar<Moment>;
 
   private _sizes = ["medium", "large", "fillParent"];
 
@@ -102,7 +100,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
   private calculateComponentValues(): void {
     this.size = this.size
@@ -173,16 +171,26 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.onBlur.emit(value);
   }
 
-  @HostListener('document:click', ['$event'])
+  @HostListener("document:click", ["$event"])
   public onClickOutsideHandler(event) {
-    if (event.target.offsetParent && event.target.offsetParent?.getAttribute("class")) {
-      if (!event.target.offsetParent.getAttribute("class").includes('mde-popover-panel')
-        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-period')
-        && !event.target.offsetParent.getAttribute("class").includes('mat-calendar-table')) {
+    if (
+      event.target.offsetParent &&
+      event.target.offsetParent?.getAttribute("class")
+    ) {
+      if (
+        !event.target.offsetParent
+          .getAttribute("class")
+          .includes("mde-popover-panel") &&
+        !event.target.offsetParent
+          .getAttribute("class")
+          .includes("mat-calendar-period") &&
+        !event.target.offsetParent
+          .getAttribute("class")
+          .includes("mat-calendar-table")
+      ) {
         this.checkOpenCalendar();
       }
-    }
-    else {
+    } else {
       this.checkOpenCalendar();
     }
   }
@@ -260,6 +268,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
       .mat-calendar-period-button {
         font-size: 16px;
       }
+      .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+        border-color: var(--date-pickerActualDate);
+      }
       .mat-calendar-body-selected {
         border-color: var(--date-pickerSelectedDateBackgroundColor);
         background-color: var(--date-pickerSelectedDateBackgroundColor);
@@ -272,13 +283,13 @@ export class DxcDateComponent implements OnChanges, OnInit {
       mat-month-view .mat-calendar-body-cell-content {
         width: 28px;
         height: 28px;
+        color: var(--date-pickerFontColor) !important;
       }
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
-          background-color: var(
-            --date-pickerHoverDateBackgroundColor
-          ) !important;
+          background-color: var(--date-pickerHoverDateBackgroundColor) !important;
+          color: var(--date-pickerHoverDateFontColor) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
         mat-year-view .mat-calendar-body-cell-content {

@@ -56,6 +56,7 @@ describe("DxcToggleGroup tests", () => {
       excludeComponentDeclaration: true,
     });
 
+    dxcToggleGroup.detectChanges();
     fireEvent.click(dxcToggleGroup.getByText("Twitter"));
     expect(changeMock).toHaveBeenCalledWith("2");
     fireEvent.click(dxcToggleGroup.getByText("Facebook"));
@@ -77,6 +78,7 @@ describe("DxcToggleGroup tests", () => {
       excludeComponentDeclaration: true,
     });
 
+    dxcToggleGroup.detectChanges();
     fireEvent.click(dxcToggleGroup.getByText("Twitter"));
     expect(changeMock).toHaveBeenCalledWith(["1", "2"]);
     fireEvent.click(dxcToggleGroup.getByText("Facebook"));

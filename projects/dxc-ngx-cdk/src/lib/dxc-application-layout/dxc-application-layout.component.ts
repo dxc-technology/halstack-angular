@@ -140,7 +140,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
         position: fixed;
         z-index: 400;
       }
-      .content {
+      .application-content {
         display: flex;
         position: relative;
         height: 100%;

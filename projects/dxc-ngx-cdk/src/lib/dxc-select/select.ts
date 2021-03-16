@@ -1291,6 +1291,22 @@ export abstract class _MatSelectBase<C>
       height: 66.5px;
       position: relative;
 
+      &.mat-select-disabled {
+        cursor: not-allowed;
+        .mat-select-trigger {
+          cursor: not-allowed;
+          border-bottom: 1px solid var(--select-disabledColor) !important;
+        }
+        .assistiveText {
+          color: var(--select-disabledColor) !important;
+        }
+        .selectLabel{
+          color: var(--select-disabledColor) !important;
+        }
+        .mat-select-arrow{
+          color: var(--select-disabledColor) !important;
+        }
+      }
       .mat-select-value {
         height: 32px;
       }
@@ -1308,7 +1324,7 @@ export abstract class _MatSelectBase<C>
           : "1px solid var(--inputText-fontColor)"};
       }
 
-      .assistiveText {
+      .assistiveText:not(.mat-select-disabled) {
         color: var(--inputText-fontColor);
         font-size: 15px;
         font-family: "Open Sans", sans-serif;

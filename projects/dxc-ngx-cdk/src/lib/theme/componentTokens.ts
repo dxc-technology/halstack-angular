@@ -11,7 +11,6 @@ const globalTokens = {
   lightGreen: "#DBF1C4",
   blue: "#005FCC",
   lighterGrey: "#F8F8F8",
-  red: "#D0011B",
   violet: "#8800F6",
   darkBlue: "#006BF6",
   inherit: "inherit",
@@ -32,6 +31,7 @@ const globalTokens = {
   mediumGreyBlack: "#dbdbdb",
   lightWhite: "#f2f2f2",
   softGrey: "#cecece",
+  softBlack: "#565656",
 };
 
 export const componentTokens = {
@@ -48,7 +48,7 @@ export const componentTokens = {
   "--tabs-backgroundColor": globalTokens.white,
   "--tabs-fontColor": globalTokens.darkGrey,
   "--tabs-disabledFontColor": globalTokens.mediumGrey,
-  "--tabs-focusColor": globalTokens.purple,
+  "--tabs-focusOutline": globalTokens.purple,
   "--tabs-selectedUnderlinedColor": globalTokens.purple,
   "--tabs-divider": globalTokens.mediumGrey,
   "--tabs-selectedIconColor": globalTokens.purple,
@@ -111,7 +111,7 @@ export const componentTokens = {
   "--chip-backgroundColor": globalTokens.darkWhite,
   "--chip-outlinedColor": "",
   "--chip-fontColor": globalTokens.black,
-  "--chip-focusColor": globalTokens.blue,
+  "--chip-focusColor": globalTokens.blue, //no esta en react
   "--chip-disabledBackgroundColor": globalTokens.mediumWhite,
   "--chip-disabledFontColor": globalTokens.lighterBlack,
 
@@ -122,12 +122,11 @@ export const componentTokens = {
   "--date-pickerActualDate": globalTokens.lightGrey,
   "--date-pickerFontColor": globalTokens.black,
   "--date-pickerHoverDateFontColor": globalTokens.black,
-  "--date-pickerHoverDateBackgroundColor": globalTokens.mediumPurple,
+  "--date-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
   "--date-focusColor": globalTokens.blue,
 
   //DIALOG
   "--dialog-overlayColor": globalTokens.black,
-  "--dialog-separator": globalTokens.lightGrey,
   "--dialog-backgroundColor": globalTokens.white,
   "--dialog-scrollBarThumbColor": globalTokens.darkGrey,
   "--dialog-scrollBarTrackColor": globalTokens.lightGrey,
@@ -155,21 +154,31 @@ export const componentTokens = {
   "--header-backgroundColorMenu": globalTokens.white,
   "--header-fontColorMenu": globalTokens.black,
   "--header-hamburguerColor": globalTokens.black,
-  "--header-hoverHamburguerColor": globalTokens.mediumGrey,
-  "--header-overlayColor": globalTokens.black,
+  "--header-hoverHamburguerColor": globalTokens.mediumGreyBlack,
+  "--header-overlayColor": globalTokens.softBlack,
   "--header-focusColor": globalTokens.blue,
 
   //HEADING
   "--heading-fontColor": globalTokens.inherit,
 
+  //INPUT TEXT
+  "--inputText-selectedOptionBackgroundColor": globalTokens.lightGrey,
+  "--inputText-placeholderColor": globalTokens.lightGrey,
+  "--inputText-error": globalTokens.darkRed,
+  "--inputText-focusColor": globalTokens.blue,
+  "--inputText-fontColor": globalTokens.black,
+  "--inputText-scrollBarThumbColor": globalTokens.darkGrey,
+  "--inputText-scrollBarTrackColor": globalTokens.lightGrey,
+  "--inputText-disabledFontColor": globalTokens.lighterBlack,
+
   //LINK
   "--link-fontColor": globalTokens.blue,
-  "--link-visitedFontColor": globalTokens.purple,
+  "--link-visitedFontColor": globalTokens.violet,
   "--link-disabledColor": globalTokens.lightGrey,
   "--link-hoverFontColor": globalTokens.darkBlue,
   "--link-underlinedBackgroundColor": globalTokens.blue,
   "--link-disabledUnderlinedBackgroundColor": globalTokens.lightGrey,
-  "--link-visitedUnderlinedBackgroundColor": globalTokens.purple,
+  "--link-visitedUnderlinedBackgroundColor": globalTokens.violet,
 
   //PAGINATOR
   "--paginator-paginatorBackgroundColor": globalTokens.darkWhite,
@@ -177,23 +186,21 @@ export const componentTokens = {
 
   //PROGRESSBAR
   "--progressbar-trackLine": globalTokens.purple,
-  "--progressbar-totalLine": globalTokens.lightGrey,
+  "--progressbar-totalLine": globalTokens.softGrey,
   "--progressbar-overlayColor": globalTokens.black,
   "--progressbar-fontColor": globalTokens.inherit,
 
   //RADIO
   "--radio-color": globalTokens.black,
-  "--radio-disabledColor": globalTokens.mediumGrey,
+  "--radio-disabledColor": globalTokens.lighterBlack,
   "--radio-fontColor": globalTokens.inherit,
-  "--radio-disabledFontColor": globalTokens.mediumGrey,
+  "--radio-disabledFontColor": globalTokens.lighterBlack,
   "--radio-focusColor": globalTokens.blue,
 
   //SELECT
-  //Themable
   "--select-selectedOptionBackgroundColor": globalTokens.lightGrey,
-  //No Themable
   "--select-color": globalTokens.black,
-  "--select-invalidColor": globalTokens.darkRed,
+  "--select-error": globalTokens.darkRed,
   "--select-focusColor": globalTokens.blue,
   "--select-disabledColor": globalTokens.lighterBlack,
   "--select-scrollBarThumbColor": globalTokens.darkGrey,
@@ -206,12 +213,14 @@ export const componentTokens = {
   "--sidenav-arrowColor": globalTokens.black,
 
   //SLIDER
-  "--slider-color": globalTokens.blue,
-  "--slider-totalLine": globalTokens.lightBlue,
-  "--slider-disabledThumbBackgroundColor": globalTokens.lightBlue,
-  "--slider-disabledDotsBackgroundColor": globalTokens.lightBlue,
-  "--slider-disabledTrackLine": globalTokens.lightBlue,
-  "--slider-disabledtotalLine": globalTokens.lightBlue,
+  "--slider-thumbBackgroundColor": globalTokens.mediumBlue,
+  "--slider-dotsBackgroundColor": globalTokens.mediumBlue,
+  "--slider-trackLine": globalTokens.mediumBlue,
+  "--slider-totalLine": globalTokens.softBlue,
+  "--slider-disabledThumbBackgroundColor": globalTokens.softBlue,
+  "--slider-disabledDotsBackgroundColor": globalTokens.softBlue,
+  "--slider-disabledTrackLine": globalTokens.softBlue,
+  "--slider-disabledtotalLine": globalTokens.softBlue,
   "--slider-focusColor": globalTokens.blue,
 
   //SPINNER
@@ -221,16 +230,16 @@ export const componentTokens = {
   "--spinner-fontColor": globalTokens.inherit,
 
   //SWITCH
-  "--switch-checkedTrackBackgroundColor": globalTokens.darkGrey,
+  "--switch-checkedTrackBackgroundColor": globalTokens.purple,
   "--switch-checkedThumbBackgroundColor": globalTokens.white,
   "--switch-uncheckedThumbBackgroundColor": globalTokens.white,
   "--switch-uncheckedTrackBackgroundColor": globalTokens.lightGrey,
   "--switch-requiredColor": globalTokens.darkRed,
-  "--switch-focusColor": globalTokens.blue,
+  "--switch-focusColor": globalTokens.blue, // añadir al componente
   "--switch-fontColor": globalTokens.black,
-  "--switch-disabledCheckedTrackBackgroundColor": globalTokens.softGrey,
+  "--switch-disabledCheckedTrackBackgroundColor": globalTokens.lighterPurple,
   "--switch-disabledUncheckedTrackBackgroundColor": globalTokens.lightWhite,
-  "--switch-disabledFontColor":globalTokens.lighterBlack,
+  "--switch-disabledFontColor": globalTokens.lighterBlack,
 
   //TABLE
   "--table-headerBackgroundColor": globalTokens.purple,
@@ -242,38 +251,26 @@ export const componentTokens = {
   //TAG
   "--tag-backgroundColor": globalTokens.white,
 
-  //TEXT INPUT
-  "--inputText-selectedOptionBackgroundColor": globalTokens.lightGrey,
-  "--inputText-placeholderColor": globalTokens.lightGrey,
-  "--inputText-invalidColor": globalTokens.darkRed,
-  "--inputText-focusColor": globalTokens.blue,
-  "--inputText-fontColor": globalTokens.black,
-  "--inputText-hoverOptionBackgroundColor": globalTokens.lighterGrey,
-  "--inputText-hoverOptionColor": globalTokens.black,
-  "--inputText-scrollBarThumbColor": globalTokens.darkGrey,
-  "--inputText-scrollBarTrackColor": globalTokens.lightGrey,
-  "--inputText-disabledFontColor": globalTokens.lighterBlack,
-
   //TEXTAREA
   "--textarea-fontColor": globalTokens.black,
   "--textarea-placeholderColor": globalTokens.lightGrey,
   "--textarea-disabledFontColor": globalTokens.lighterBlack,
-  "--textarea-invalidColor": globalTokens.darkRed,
+  "--textarea-error": globalTokens.darkRed,
   "--textarea-scrollBarThumbColor": globalTokens.darkGrey,
   "--textarea-scrollBarTrackColor": globalTokens.lightGrey,
 
   //TOGGLE GROUP
   "--toggle-unselectedBackgroundColor": globalTokens.lightGrey,
-  "--toggle-unselectedHoverBackgroundColor": globalTokens.darkWhite,
+  "--toggle-unselectedBackgroundHoverColor": globalTokens.darkWhite,
   "--toggle-unselectedFontColor": globalTokens.black,
   "--toggle-unselectedHoverFontColor": globalTokens.black,
   "--toggle-selectedBackgroundColor": globalTokens.purple,
   "--toggle-selectedHoverBackgroundColor": globalTokens.black,
   "--toggle-selectedFontColor": globalTokens.white,
   "--toggle-selectedHoverFontColor": globalTokens.white,
-  "--toggle-disabledSelectedBackgroundColor": globalTokens.mediumPurple,
+  "--toggle-disabledSelectedBackgroundColor": globalTokens.lighterPurple,
   "--toggle-disabledSelectedFontColor": globalTokens.white,
-  "--toggle-disabledUnselectedBackgroundColor": globalTokens.lighterGrey,
+  "--toggle-disabledUnselectedBackgroundColor": globalTokens.lighterPurple,
   "--toggle-disabledUnselectedFontColor": globalTokens.lightGrey,
 
   //WIZARD

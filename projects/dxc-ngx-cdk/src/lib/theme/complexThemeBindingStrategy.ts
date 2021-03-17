@@ -51,7 +51,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.tabs?.selectedFontColor ?? tokens["--tabs-selectedFontColor"];
     proccessedTokens["--tabs-selectedUnderlinedColor"] =
       theme?.tabs?.selectedFontColor ?? tokens["--tabs-selectedFontColor"];
-    proccessedTokens["--tabs-focusColor"] =
+    proccessedTokens["--tabs-focusOutline"] =
       theme?.tabs?.selectedFontColor ?? tokens["--tabs-selectedFontColor"];
     proccessedTokens["--tabs-hoverBackgroundColor"] =
       this.addLightness(theme?.tabs?.selectedFontColor, 58) ??
@@ -176,13 +176,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--header-backgroundColorMenu"] =
       theme?.header?.backgroundColorMenu ??
       tokens["--header-backgroundColorMenu"];
-    proccessedTokens["--header-fontColorMenu"] =
-      theme?.header?.fontColorMenu ?? tokens["--header-fontColorMenu"];
     proccessedTokens["--header-hamburguerColor"] =
       theme?.header?.hamburguerColor ?? tokens["--header-hamburguerColor"];
     proccessedTokens["--header-hoverHamburguerColor"] =
       this.addOpacity(theme?.header?.hamburguerColor, 0.16) ??
       tokens["--header-hamburguerColor"];
+
+    //INPUT TEXT
+    proccessedTokens["--inputText-selectedOptionBackgroundColor"] =
+      this.addOpacity(theme?.inputText?.selectedOptionBackgroundColor, 0.34) ??
+      tokens["--inputText-selectedOptionBackgroundColor"];
 
     //PAGINATOR
     proccessedTokens["--paginator-paginatorBackgroundColor"] =
@@ -198,13 +201,22 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--progressbar-totalLine"] =
       this.addOpacity(theme?.progressbar?.totalLine, 0.34) ??
       tokens["--progressbar-totalLine"];
+    proccessedTokens["--progressbar-fontColor"] =
+      theme?.progressbar?.fontColor ?? tokens["--progressbar-fontColor"];
 
     //RADIO
     proccessedTokens["--radio-color"] =
       theme?.radio?.color ?? tokens["--radio-color"];
+    proccessedTokens["--radio-fontColor"] =
+      theme?.radio?.fontColor ?? tokens["--radio-fontColor"];
+    proccessedTokens["--radio-focusColor"] =
+      theme?.radio?.focusColor ?? tokens["--radio-focusColor"];
     proccessedTokens["--radio-disabledColor"] =
       this.addOpacity(theme?.radio?.color, 0.34) ??
       tokens["--radio-disabledColor"];
+    proccessedTokens["--radio-disabledFontColor"] =
+      this.addOpacity(theme?.radio?.fontColor, 0.34) ??
+      tokens["--radio-disabledFontColor"];
 
     //SELECT
     proccessedTokens["--select-selectedOptionBackgroundColor"] =
@@ -212,13 +224,19 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--select-selectedOptionBackgroundColor"];
     proccessedTokens["--select-hoverOptionBackgroundColor"] =
       this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
-      tokens["--select-selectedOptionBackgroundColor"];
+      tokens["--select-hoverOptionBackgroundColor"];
     proccessedTokens["--select-color"] =
       theme?.select?.color ?? tokens["--select-color"];
-    proccessedTokens["--select-invalidColor"] =
-      theme?.select?.invalidColor ?? tokens["--select-invalidColor"];
+    proccessedTokens["--select-error"] =
+      theme?.select?.error ?? tokens["--select-error"];
     proccessedTokens["--select-focusColor"] =
       theme?.select?.focusColor ?? tokens["--select-focusColor"];
+    proccessedTokens["--select-scrollBarTrackColor "] =
+      theme?.select?.scrollBarTrackColor ??
+      tokens["--select-scrollBarTrackColor "];
+    proccessedTokens["--select-scrollBarThumbColor "] =
+      theme?.select?.scrollBarThumbColor ??
+      tokens["--select-scrollBarThumbColor "];
     proccessedTokens["--select-hoveredOptionBackgroundColor"] =
       this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
       tokens["--select-hoveredOptionBackgroundColor"];
@@ -236,8 +254,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.sidenav?.arrowColor ?? tokens["--sidenav-arrowColor"];
 
     //SLIDER
-    proccessedTokens["--slider-color"] =
-      theme?.slider?.color ?? tokens["--slider-color"];
     proccessedTokens["--slider-totalLine"] =
       this.addOpacity(theme?.slider?.color, 0.34) ??
       tokens["--slider-totalLine"];
@@ -285,17 +301,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--textarea-disabledFontColor"] =
       this.addOpacity(tokens["--textarea-fontColor"], 0.34) ??
       tokens["--textarea-disabledFontColor"];
-
-    //TEXT INPUT
-    proccessedTokens["--inputText-selectedOptionBackgroundColor"] =
-      theme?.inputText?.selectedOptionBackgroundColor ??
-      tokens["--inputText-selectedOptionBackgroundColor"];
-    proccessedTokens["--inputText-hoverOptionBackgroundColor"] =
-      this.addOpacity(theme?.inputText?.selectedOptionBackgroundColor, 0.34) ??
-      tokens["--inputText-selectedOptionBackgroundColor"];
-    proccessedTokens["--inputText-disabledFontColor"] =
-      this.addOpacity(tokens["--inputText-fontColor"], 0.34) ??
-      tokens["--inputText-disabledFontColor"];
 
     //TOGGLE GROUP
     proccessedTokens["--toggle-unselectedBackgroundColor"] =

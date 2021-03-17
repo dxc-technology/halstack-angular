@@ -507,6 +507,9 @@ export abstract class _MatSelectBase<C>
   /** Size margin of the element. */
   @Input() margin: any;
 
+  /** Invalid state of the element. */
+  @Input() invalid: any;
+
   /** Combined stream of all of the child options' change events. */
   readonly optionSelectionChanges: Observable<MatOptionSelectionChange> = defer(
     () => {
@@ -1300,17 +1303,31 @@ export abstract class _MatSelectBase<C>
         .assistiveText {
           color: var(--select-disabledColor) !important;
         }
-        .selectLabel{
+        .selectLabel {
           color: var(--select-disabledColor) !important;
         }
-        .mat-select-arrow{
+        .mat-select-arrow {
           color: var(--select-disabledColor) !important;
+        }
+      }
+      &.mat-select-invalid {
+        .assistiveText {
+          color: var(--select-error) !important;
+        }
+        .mat-select-trigger {
+          border-bottom: 1px solid var(--select-error) !important;
+        }
+        .selectLabel {
+          color: var(--select-error) !important;
         }
       }
       .mat-select-value {
         height: 32px;
+        color: var(--select-color);
       }
-
+      .mat-select-arrow {
+        color: var(--select-color);
+      }
       div.underline.opened {
         border-bottom: 2px solid var(--select-focusColor);
       }
@@ -1321,11 +1338,13 @@ export abstract class _MatSelectBase<C>
         border-top-color: transparent;
         border-bottom: ${this.panelOpen
           ? "2px solid var(--select-focusColor)"
-          : "1px solid var(--inputText-fontColor)"};
+          : "1px solid var(--select-color)"};
       }
-
+      &.mat-select-disabled .mat-select-value {
+        color: var(--select-disabledColor);
+      }
       .assistiveText:not(.mat-select-disabled) {
-        color: var(--inputText-fontColor);
+        color: var(--select-color);
         font-size: 15px;
         font-family: "Open Sans", sans-serif;
       }
@@ -1338,16 +1357,12 @@ export abstract class _MatSelectBase<C>
         transform: ${this.floatingStyles()};
         color: ${this.panelOpen
           ? "var(--select-focusColor)"
-          : "var(--inputText-fontColor)"};
+          : "var(--select-color)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-      }
-
-      .dxcPanel {
-        transform: translateX(0px) translateY(42px) !important;
       }
 
       dxc-option.mat-active,
@@ -1379,7 +1394,7 @@ export abstract class _MatSelectBase<C>
   exportAs: "DxcSelectComponent",
   templateUrl: "select.html",
   styleUrls: ["select.scss"],
-  inputs: ["disabled", "disableRipple", "tabIndex"],
+  inputs: ["disabled", "disableRipple", "tabIndex", "invalid"],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -1397,11 +1412,11 @@ export abstract class _MatSelectBase<C>
     "[attr.aria-label]": "ariaLabel || null",
     "[attr.aria-required]": "required.toString()",
     "[attr.aria-disabled]": "disabled.toString()",
-    "[attr.aria-invalid]": "errorState",
+    "[attr.aria-invalid]": "invalid?.toString()",
     "[attr.aria-describedby]": "_ariaDescribedby || null",
     "[attr.aria-activedescendant]": "_getAriaActiveDescendant()",
     "[class.mat-select-disabled]": "disabled",
-    "[class.mat-select-invalid]": "errorState",
+    "[class.mat-select-invalid]": "invalid",
     "[class.mat-select-required]": "required",
     "[class.mat-select-empty]": "empty",
     "[class.mat-select-multiple]": "multiple",

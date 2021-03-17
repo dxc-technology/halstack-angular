@@ -263,18 +263,34 @@ export class _MatOptionBase
 
   getDynamicStyle() {
     return css`
+      &.mat-option:not(.mat-option-disabled) {
+        color: var(--select-color) !important;
+      }
       .mat-option-text {
         display: flex;
-        justify-content: ${this.iconPosition == "after" ? "flex-end" : "flex-start"};
+        justify-content: ${this.iconPosition == "after"
+          ? "flex-end"
+          : "flex-start"};
         flex-direction: ${this.iconPosition == "after" ? "row-reverse" : "row"};
       }
-
+      &.mat-option.mat-active {
+        background: var(--select-selectedOptionBackgroundColor) !important;
+        color: var(--select-color) !important;
+      }
+      &.mat-option:hover:not(.mat-option-disabled),
+      &.mat-option:focus:not(.mat-option-disabled) {
+        background: var(--select-hoverOptionBackgroundColor) !important;
+      }
+      &.mat-option-disabled {
+        color: var(--select-disabledColor) !important;
+      }
       dxc-option-icon {
         ${this.iconPosition == "after"
           ? "margin-left: 15px"
           : "margin-right: 15px"};
-        
-        img, svg {
+
+        img,
+        svg {
           width: 24px;
         }
       }

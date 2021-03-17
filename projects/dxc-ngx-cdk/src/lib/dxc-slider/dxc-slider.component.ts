@@ -209,11 +209,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         }
         &:not(.mat-slider-disabled) {
           .mat-slider-track-fill {
-            background-color: var(--slider-color);
+            background-color: var(--slider-trackLine);
           }
           .mat-slider-thumb {
-            background-color: var(--slider-color);
-            border-color: var(--slider-color) !important;
+            background-color: var(--slider-thumbBackgroundColor);
+            border-color: var(--slider-thumbBackgroundColor) !important;
           }
           .mat-slider-track-background {
             background-color: var(--slider-totalLine) !important;
@@ -221,8 +221,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           .mat-slider-ticks {
             background-image: repeating-linear-gradient(
               to right,
-              var(--slider-color),
-              var(--slider-color) 4px 4px,
+              var(--slider-dotsBackgroundColor),
+              var(--slider-dotsBackgroundColor) 4px 4px,
               transparent 2px,
               #e2141400
             );

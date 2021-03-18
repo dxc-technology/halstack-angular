@@ -235,7 +235,7 @@ export const componentTokens = {
   "--switch-uncheckedThumbBackgroundColor": globalTokens.white,
   "--switch-uncheckedTrackBackgroundColor": globalTokens.lightGrey,
   "--switch-requiredColor": globalTokens.darkRed,
-  "--switch-focusColor": globalTokens.blue, // añadir al componente
+  "--switch-focusColor": globalTokens.blue,
   "--switch-fontColor": globalTokens.black,
   "--switch-disabledCheckedTrackBackgroundColor": globalTokens.lighterPurple,
   "--switch-disabledUncheckedTrackBackgroundColor": globalTokens.lightWhite,

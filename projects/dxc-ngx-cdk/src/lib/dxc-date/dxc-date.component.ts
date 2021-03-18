@@ -274,7 +274,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       .mat-calendar-body-selected {
         border-color: var(--date-pickerSelectedDateBackgroundColor);
         background-color: var(--date-pickerSelectedDateBackgroundColor);
-        color: var(--date-pickerSelectedDateColor);
+        color: var(--date-pickerSelectedDateColor) !important;
         &.mat-calendar-body-today {
           border: none;
           box-shadow: none;
@@ -283,7 +283,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       mat-month-view .mat-calendar-body-cell-content {
         width: 28px;
         height: 28px;
-        color: var(--date-pickerFontColor) !important;
+        color: var(--date-pickerFontColor);
       }
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {

@@ -162,11 +162,12 @@ export class DxcSwitchComponent implements OnChanges {
         span.mat-slide-toggle-content {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
+          color: var(--switch-fontColor);
         }
         .mat-slide-toggle-thumb {
           &:focus:not(.mat-disabled) {
             outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--slider-focusColor);
+            outline-color: var(--switch-focusColor);
             outline-offset: 2px;
           }
         }

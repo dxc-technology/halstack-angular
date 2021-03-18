@@ -231,12 +231,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.select?.error ?? tokens["--select-error"];
     proccessedTokens["--select-focusColor"] =
       theme?.select?.focusColor ?? tokens["--select-focusColor"];
-    proccessedTokens["--select-scrollBarTrackColor "] =
+    proccessedTokens["--select-scrollBarTrackColor"] =
       theme?.select?.scrollBarTrackColor ??
-      tokens["--select-scrollBarTrackColor "];
-    proccessedTokens["--select-scrollBarThumbColor "] =
+      tokens["--select-scrollBarTrackColor"];
+    proccessedTokens["--select-scrollBarThumbColor"] =
       theme?.select?.scrollBarThumbColor ??
-      tokens["--select-scrollBarThumbColor "];
+      tokens["--select-scrollBarThumbColor"];
     proccessedTokens["--select-hoveredOptionBackgroundColor"] =
       this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
       tokens["--select-hoveredOptionBackgroundColor"];
@@ -266,9 +266,15 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--slider-disabledTrackLine"] =
       this.addOpacity(theme?.slider?.color, 0.34) ??
       tokens["--slider-disabledTrackLine"];
-    proccessedTokens["--slider-disabledtotalLine"] =
+    proccessedTokens["--slider-disabledtotalLine"] = //en react no está
       this.addOpacity(theme?.slider?.color, 0.34) ??
       tokens["--slider-disabledtotalLine"];
+    proccessedTokens["--sidenav-thumbBackgroundColor"] =
+      theme?.sidenav?.color ?? tokens["--sidenav-thumbBackgroundColor"];
+    proccessedTokens["--sidenav-dotsBackgroundColor"] =
+      theme?.sidenav?.color ?? tokens["--sidenav-dotsBackgroundColor"];
+    proccessedTokens["--sidenav-trackLine"] =
+      theme?.sidenav?.color ?? tokens["--sidenav-trackLine"];
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =
@@ -280,12 +286,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--switch-checkedTrackBackgroundColor"] =
       theme?.switch?.checkedTrackBackgroundColor ??
       tokens["--switch-checkedTrackBackgroundColor"];
-    proccessedTokens["--switch-disabledUncheckedTrackBackgroundColor"] =
-      this.addOpacity(theme?.switch?.uncheckedTrackBackgroundColor, 0.34) ??
-      tokens["--switch-disabledUncheckedTrackBackgroundColor"];
-    proccessedTokens["--switch-disabledFontColor"] =
-      this.addOpacity(theme?.switch?.fontColor, 0.34) ??
-      tokens["--switch-disabledFontColor"];
     proccessedTokens["--switch-disabledCheckedTrackBackgroundColor"] =
       this.addOpacity(theme?.switch?.checkedTrackBackgroundColor, 0.34) ??
       tokens["--switch-disabledCheckedTrackBackgroundColor"];
@@ -296,11 +296,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--table-headerBackgroundColor"];
     proccessedTokens["--table-headerFontColor"] =
       theme?.table?.headerFontColor ?? tokens["--table-headerFontColor"];
-
-    //TEXTAREA
-    proccessedTokens["--textarea-disabledFontColor"] =
-      this.addOpacity(tokens["--textarea-fontColor"], 0.34) ??
-      tokens["--textarea-disabledFontColor"];
 
     //TOGGLE GROUP
     proccessedTokens["--toggle-unselectedBackgroundColor"] =
@@ -326,18 +321,18 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--toggle-selectedHoverFontColor"] =
       theme?.toggle?.selectedHoverFontColor ??
       tokens["--toggle-selectedHoverFontColor"];
-    proccessedTokens["--inputText-disabledSelectedBackgroundColor"] =
+    proccessedTokens["--toggle-disabledSelectedBackgroundColor"] =
       this.addOpacity(theme?.toggle?.selectedBackgroundColor, 0.34) ??
-      tokens["--inputText-disabledSelectedBackgroundColor"];
-    proccessedTokens["--inputText-disabledSelectedFontColor"] =
+      tokens["--toggle-disabledSelectedBackgroundColor"];
+    proccessedTokens["--toggle-disabledSelectedFontColor"] =
       this.addOpacity(theme?.toggle?.selectedFontColor, 0.34) ??
-      tokens["--inputText-disabledSelectedFontColor"];
-    proccessedTokens["--inputText-disabledUnselectedBackgroundColor"] =
+      tokens["--toggle-disabledSelectedFontColor"];
+    proccessedTokens["--toggle-disabledUnselectedBackgroundColor"] =
       this.addOpacity(theme?.toggle?.unselectedBackgroundColor, 0.34) ??
-      tokens["--inputText-disabledUnselectedBackgroundColor"];
-    proccessedTokens["--inputText-disabledUnselectedFontColor"] =
+      tokens["--toggle-disabledUnselectedBackgroundColor"];
+    proccessedTokens["--toggle-disabledUnselectedFontColor"] =
       this.addOpacity(theme?.toggle?.unselectedFontColor, 0.34) ??
-      tokens["--inputText-disabledUnselectedFontColor"];
+      tokens["--toggle-disabledUnselectedFontColor"];
 
     //WIZARD
     proccessedTokens["--wizard-selectedBackgroundColor"] =

@@ -188,7 +188,7 @@ export class DxcCheckboxComponent implements OnInit {
 
             .mat-checkbox-background {
               svg path {
-                stroke: var(--checkbox-checkColor);
+                stroke: var(--checkbox-checkColor) !important;
                 stroke-width: 3px;
               }
             }

@@ -167,9 +167,6 @@ export class DxcTabsComponent implements OnChanges {
           background-color: white;
         }
       }
-      .mat-tab-list .mat-tab-labels {
-        justify-content: center;
-      }
       .mat-tab-list .mat-tab-label {
         height: auto !important;
         /* max-width: 360px; */

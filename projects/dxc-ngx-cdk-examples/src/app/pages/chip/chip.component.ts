@@ -14,4 +14,8 @@ export class ChipComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(){
+    console.log("Click");
+  }
+
 }

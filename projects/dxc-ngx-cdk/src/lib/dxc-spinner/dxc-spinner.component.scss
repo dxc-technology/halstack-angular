@@ -103,7 +103,6 @@
       opacity: 0.8;
     }
     .labelsContainer {
-      color: var(--white, white);
       &.notOverlayed {
         color: var(--spinner-fontColor);
       }
@@ -113,7 +112,6 @@
     ::ng-deep {
       circle {
         stroke: var(--spinner-totalCircleColor);
-        opacity: var(--spinner-totalCircleOpacity);
       }
     }
   }

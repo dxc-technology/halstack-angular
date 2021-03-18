@@ -225,19 +225,9 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--select-hoverOptionBackgroundColor"] =
       this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
       tokens["--select-hoverOptionBackgroundColor"];
-    proccessedTokens["--select-color"] =
-      theme?.select?.color ?? tokens["--select-color"];
-    proccessedTokens["--select-focusColor"] =
-      theme?.select?.focusColor ?? tokens["--select-focusColor"];
-    proccessedTokens["--select-scrollBarTrackColor"] =
-      theme?.select?.scrollBarTrackColor ??
-      tokens["--select-scrollBarTrackColor"];
-    proccessedTokens["--select-scrollBarThumbColor"] =
-      theme?.select?.scrollBarThumbColor ??
-      tokens["--select-scrollBarThumbColor"];
-    proccessedTokens["--select-hoveredOptionBackgroundColor"] =
+    proccessedTokens["--select-hoverOptionBackgroundColor"] =
       this.addOpacity(theme?.select?.selectedOptionBackgroundColor, 0.34) ??
-      tokens["--select-hoveredOptionBackgroundColor"];
+      tokens["--select-hoverOptionBackgroundColor"];
     proccessedTokens["--select-disabledColor"] =
       this.addOpacity(theme?.select?.color, 0.34) ??
       tokens["--select-disabledColor"];
@@ -264,21 +254,18 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--slider-disabledTrackLine"] =
       this.addOpacity(theme?.slider?.color, 0.34) ??
       tokens["--slider-disabledTrackLine"];
-    proccessedTokens["--slider-disabledtotalLine"] = //en react no está
-      this.addOpacity(theme?.slider?.color, 0.34) ??
-      tokens["--slider-disabledtotalLine"];
-    proccessedTokens["--sidenav-thumbBackgroundColor"] =
-      theme?.sidenav?.color ?? tokens["--sidenav-thumbBackgroundColor"];
-    proccessedTokens["--sidenav-dotsBackgroundColor"] =
-      theme?.sidenav?.color ?? tokens["--sidenav-dotsBackgroundColor"];
-    proccessedTokens["--sidenav-trackLine"] =
-      theme?.sidenav?.color ?? tokens["--sidenav-trackLine"];
+    proccessedTokens["--slider-thumbBackgroundColor"] =
+      theme?.slider?.color ?? tokens["--slider-thumbBackgroundColor"];
+    proccessedTokens["--slider-dotsBackgroundColor"] =
+      theme?.slider?.color ?? tokens["--slider-dotsBackgroundColor"];
+    proccessedTokens["--slider-trackLine"] =
+      theme?.slider?.color ?? tokens["--slider-trackLine"];
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =
-      theme?.spinner?.trackCircleColor ?? tokens["--slider-trackCircleColor"];
+      theme?.spinner?.trackCircleColor ?? tokens["--spinner-trackCircleColor"];
     proccessedTokens["--spinner-totalCircleColor"] =
-      theme?.spinner?.totalCircleColor ?? tokens["--slider-totalCircleColor"];
+      theme?.spinner?.totalCircleColor ?? tokens["--spinner-totalCircleColor"];
 
     //SWITCH
     proccessedTokens["--switch-checkedTrackBackgroundColor"] =

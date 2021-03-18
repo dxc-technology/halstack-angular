@@ -227,8 +227,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--select-hoverOptionBackgroundColor"];
     proccessedTokens["--select-color"] =
       theme?.select?.color ?? tokens["--select-color"];
-    proccessedTokens["--select-error"] =
-      theme?.select?.error ?? tokens["--select-error"];
     proccessedTokens["--select-focusColor"] =
       theme?.select?.focusColor ?? tokens["--select-focusColor"];
     proccessedTokens["--select-scrollBarTrackColor"] =

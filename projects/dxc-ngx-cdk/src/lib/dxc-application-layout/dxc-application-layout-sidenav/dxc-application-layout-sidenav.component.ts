@@ -181,7 +181,6 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           width: 42px;
           height: 42px;
           background-color: var(--sidenav-arrowContainerColor);
-          opacity: var(--sidenav-arrowContainerOpacity);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -196,10 +195,6 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           z-index: ${inputs.mode === "overlay" || this.isResponsive
         ? "401"
         : "auto"};
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--sidenav-focusColor);
-          }
           .sidenavArrowImage {
             height: 18px;
             width: 18px;

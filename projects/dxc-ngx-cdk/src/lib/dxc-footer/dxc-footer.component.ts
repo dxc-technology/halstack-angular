@@ -151,7 +151,7 @@ export class DxcFooterComponent implements OnChanges {
   setChildComponentsStyle(inputs: any) {
     return css`
       min-height: 15px;
-      color: #fff;
+      color: var(--footer-fontColor);
       overflow: hidden;
       ${this.utils.getPaddings(inputs.padding)}
     `;

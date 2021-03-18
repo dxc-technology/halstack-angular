@@ -109,6 +109,24 @@
       <dxc-select-option value="option43" label="Burritos"></dxc-select-option>
     </dxc-select>
   </div>
+
+  <div>
+    <h4>Disabled</h4>
+    <dxc-select
+      label="label label labe label"
+      assistiveText="assistiveText"
+      (onChange)="onMultipleChange($event)"
+      [value]="multipleValue"
+      multiple="true"
+      disabled
+    >
+      <dxc-select-option value="option21" label="Sushi" disabled></dxc-select-option>
+      <dxc-select-option value="option22" label="Pizza" disabled></dxc-select-option>
+      <dxc-select-option value="option23" label="Burritos" disabled></dxc-select-option>
+    </dxc-select>
+  </div>
+
+
   <!-- <div className="test-case" id="multiple-uncontrolled">
     <h4>Multiple Uncontrolled Select</h4>
     <dxc-select

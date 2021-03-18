@@ -122,6 +122,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
         }
       }
       mat-expansion-panel {
+        background-color: var(--accordion-backgroundColor) !important;
         box-shadow: 0px 6px 10px #00000024 !important;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1607843137254902);
         mat-expansion-panel-header {
@@ -172,6 +173,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
         }
       }
       mat-expansion-panel:not(.disabled) {
+        background-color: var(--accordion-backgroundColor) !important;
         mat-expansion-panel-header {
           max-height: 64px;
           background: transparent;

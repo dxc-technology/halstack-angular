@@ -1,6 +1,12 @@
 <div>
   <!-- <h3>Sizes</h3> -->
-  <dxc-dropdown label="Medium" size="medium" margin="small" iconPosition="after" (onSelectOption)="selected($event)">
+  <dxc-dropdown
+    label="Medium"
+    size="medium"
+    margin="small"
+    iconPosition="after"
+    (onSelectOption)="selected($event)"
+  >
     <dxc-dropdown-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -29,18 +35,28 @@
         </svg>
       </dxc-dropdown-icon>
     </dxc-dropdown-option>
-    <dxc-dropdown-option label="testing label 2" value="2"></dxc-dropdown-option>
-    <dxc-dropdown-option label="testing label 3" value="3"></dxc-dropdown-option>
+    <dxc-dropdown-option
+      label="testing label 2"
+      value="2"
+    ></dxc-dropdown-option>
+    <dxc-dropdown-option
+      label="testing label 3"
+      value="3"
+    ></dxc-dropdown-option>
   </dxc-dropdown>
-  <!-- <div>
-    <dxc-dropdown
-      label=""
-      [options]="optionsWithoutIcon"
-      size="small"
-      margin="small"
-    ></dxc-dropdown>
-  </div>
   <div>
+    <dxc-dropdown label="" margin="small" label="Test">
+      <dxc-dropdown-option
+        label="testing label 2"
+        value="1"
+      ></dxc-dropdown-option>
+      <dxc-dropdown-option
+        label="testing label 3"
+        value="1"
+      ></dxc-dropdown-option>
+    </dxc-dropdown>
+  </div>
+  <!-- <div>
     <dxc-dropdown
       label="Medium"
       [options]="optionsWithoutIcon"

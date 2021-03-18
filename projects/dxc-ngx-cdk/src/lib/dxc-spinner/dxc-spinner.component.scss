@@ -100,7 +100,7 @@
   .spinnerContainer {
     .backOverlay {
       background-color: var(--spinner-overlayColor);
-      opacity: var(--spinner-overlayOpacity);
+      opacity: 0.8;
     }
     .labelsContainer {
       color: var(--white, white);

@@ -200,24 +200,24 @@ export class DxcTextareaComponent
         &.disabled {
           pointer-events: none;
           .mat-hint {
-            opacity: var(--textarea-disabled);
+            color: var(--textarea-disabledFontColor);
           }
           .mat-form-field-underline {
-            opacity: var(--textarea-disabled);
+            background-color: var(--textarea-disabledFontColor);
           }
           .mat-form-field-empty mat-label {
-            opacity: var(--textarea-disabled);
+            color: var(--textarea-disabledFontColor);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            opacity: var(--textarea-disabled);
+            color: var(--textarea-disabledFontColor);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            opacity: var(--textarea-disabled);
+            color: var(--textarea-disabledFontColor);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                opacity: var(--textarea-disabled);
+                color: var(--textarea-disabledFontColor);
               }
             }
           }
@@ -237,27 +237,27 @@ export class DxcTextareaComponent
       }
       &.invalid {
         .mat-hint {
-          color: var(--textarea-invalidColor);
+          color: var(--textarea-error);
         }
         .mat-form-field-underline {
-          background-color: var(--textarea-invalidColor);
+          background-color: var(--textarea-error);
           .mat-form-field-ripple {
-            background-color: var(--textarea-invalidColor);
+            background-color: var(--textarea-error);
           }
         }
         .mat-form-field-empty mat-label {
           color: var(--textarea-fontColor);
         }
         &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--textarea-invalidColor);
+          color: var(--textarea-error);
         }
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--textarea-invalidColor);
+          color: var(--textarea-error);
         }
         .mat-form-field {
           &.mat-form-field-should-float {
             mat-label {
-              color: var(--textarea-invalidColor);
+              color: var(--textarea-error);
             }
           }
         }
@@ -278,7 +278,7 @@ export class DxcTextareaComponent
             justify-content: flex-end;
             display: flex;
             span {
-              color: var(--textarea-invalidColor);
+              color: var(--textarea-error);
             }
           }
         }

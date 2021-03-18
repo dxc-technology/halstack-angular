@@ -73,6 +73,7 @@ export class DxcDialogComponent {
     if (overlay === true) {
       return css`
         background-color: var(--dialog-overlayColor);
+        opacity: 0.8 !important;
       `;
     } else
       return css`

@@ -1,7 +1,21 @@
-<button class="step" [ngClass]="{current: isCurrent, disabled: disabled}" [disabled]="disabled" (click)="!disabled ? handleStepClick() : ''">
+<button
+  class="step"
+  [ngClass]="{
+    current: isCurrent,
+    disabled: disabled,
+    last: isLast,
+    first: isFirst,
+    visited: isVisited
+  }"
+  [disabled]="disabled"
+  (click)="!disabled ? handleStepClick() : ''"
+>
   <div class="stepHeader">
     <div class="iconContainer">
-      <ng-content select="dxc-wizard-icon" *ngIf="containsIcon; else numberBlock"></ng-content>
+      <ng-content
+        select="dxc-wizard-icon"
+        *ngIf="containsIcon; else numberBlock"
+      ></ng-content>
       <ng-template #numberBlock>
         <p class="number">{{ position + 1 }}</p>
       </ng-template>

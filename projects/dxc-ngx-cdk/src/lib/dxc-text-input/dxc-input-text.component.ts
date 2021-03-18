@@ -345,24 +345,24 @@ export class DxcTextInputComponent
         &.disabled {
           pointer-events: none;
           .mat-hint {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-underline {
-            opacity: var(--inputText-disabled);
+            background-color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-empty mat-label {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            opacity: var(--inputText-disabled);
+            color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                opacity: var(--inputText-disabled);
+                color: var(--inputText-disabledFontColor);
               }
             }
           }
@@ -401,7 +401,7 @@ export class DxcTextInputComponent
             justify-content: flex-end;
             display: flex;
             span {
-              color: var(--inputText-invalidColor);
+              color: var(--inputText-error);
             }
           }
         }
@@ -425,26 +425,26 @@ export class DxcTextInputComponent
   getInvalidStyle() {
     return css`
       .mat-hint {
-        color: var(--inputText-invalidColor);
+        color: var(--inputText-error);
       }
       .mat-form-field-ripple {
-        background-color: var(--inputText-invalidColor) !important;
+        background-color: var(--inputText-error) !important;
       }
       .mat-form-field-underline {
-        background-color: var(--inputText-invalidColor);
+        background-color: var(--inputText-error);
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-invalidColor);
+          outline-color: var(--inputText-error);
         }
       }
       .mat-form-field-empty mat-label {
         color: var(--inputText-fontColor);
       }
       &.mat-focused .mat-form-field-empty mat-label {
-        color: var(--inputText-invalidColor);
+        color: var(--inputText-error);
       }
       .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-        color: var(--inputText-invalidColor);
+        color: var(--inputText-error);
       }
     `;
   }
@@ -467,14 +467,12 @@ export class DxcTextInputComponent
         color: var(--inputText-hoverOptionColor);
       }
       .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
-        background-color: var(
-          --inputText-selectedOptionBackgroundColor
-        ) !important;
+        background-color: var(--inputText-selectedOptionBackgroundColor) !important;
         color: var(--inputText-hoverOptionColor);
       }
       .mat-option:hover:not(.mat-option-disabled),
       .mat-option:focus:not(.mat-option-disabled) {
-        background-color: var(--inputText-hoverOptionBackgroundColor);
+        background-color: var(--inputText-selectedOptionBackgroundColor);
         color: var(--inputText-hoverOptionColor);
       }
       .errorOption {

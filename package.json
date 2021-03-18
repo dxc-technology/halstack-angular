@@ -50,7 +50,8 @@
     "ngx-monaco-editor": "8.1.1",
     "rxjs": "~6.5.2",
     "vanilla-text-mask": "^5.1.1",
-    "zone.js": "~0.10.3"
+    "zone.js": "~0.10.3",
+    "rgb-hex": "^3.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1002.0",
@@ -78,6 +79,7 @@
     "ts-node": "7.0.0",
     "tslib": "^2.0.0",
     "tslint": "~6.1.0",
-    "typescript": "^3.6.5"
+    "typescript": "^3.6.5",
+    "rgb-hex": "^3.0.0"
   }
 }

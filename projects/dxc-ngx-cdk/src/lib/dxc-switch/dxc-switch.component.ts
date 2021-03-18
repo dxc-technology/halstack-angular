@@ -10,7 +10,7 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-switch",
@@ -162,16 +162,17 @@ export class DxcSwitchComponent implements OnChanges {
         span.mat-slide-toggle-content {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
+          color: var(--switch-fontColor);
         }
         .mat-slide-toggle-thumb {
           &:focus:not(.mat-disabled) {
             outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--slider-focusColor);
+            outline-color: var(--switch-focusColor);
             outline-offset: 2px;
           }
         }
       }
-      mat-slide-toggle.mat-checked {
+      mat-slide-toggle.mat-checked:not(.mat-disabled) {
         .mat-slide-toggle-thumb {
           background-color: var(--switch-checkedThumbBackgroundColor);
         }
@@ -181,12 +182,15 @@ export class DxcSwitchComponent implements OnChanges {
       }
       mat-slide-toggle.mat-disabled:not(.mat-checked) {
         .mat-slide-toggle-bar {
-          opacity: var(--switch-disabled) !important;
+          background-color: var(--switch-disabledUncheckedTrackBackgroundColor) !important;
         }
       }
       mat-slide-toggle.mat-disabled {
         .mat-slide-toggle-content {
-          opacity: var(--switch-disabled) !important;
+          color: var(--switch-disabledFontColor) !important;
+        }
+        .mat-slide-toggle-bar {
+          background-color: var(--switch-disabledCheckedTrackBackgroundColor) !important;
         }
       }
       .mat-slide-toggle.mat-disabled {
@@ -196,9 +200,6 @@ export class DxcSwitchComponent implements OnChanges {
         }
         .mat-slide-toggle-thumb {
           cursor: not-allowed;
-        }
-        .mat-slide-toggle-bar {
-          opacity: var(--switch-disabled) !important;
         }
       }
     `;

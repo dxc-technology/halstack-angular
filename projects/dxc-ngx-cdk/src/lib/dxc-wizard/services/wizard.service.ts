@@ -19,7 +19,7 @@ export class WizardService {
     this.innerCurrentStep.subscribe((newCurrent) => {
       if (this.steps && (newCurrent || newCurrent === 0)) {
         this.steps.forEach((element, index) => {
-          element.setIsCurrent(index === newCurrent);
+          element.setIsCurrent(index === newCurrent, newCurrent);
         });
       }
     });
@@ -32,7 +32,7 @@ export class WizardService {
         element.isFirst = index === 0;
         element.setIsLast(index === this.steps.length - 1);
         element.position = index;
-        element.setIsCurrent(index === this.innerCurrentStep.value);
+        element.setIsCurrent(index === this.innerCurrentStep.value, this.innerCurrentStep.value);
       });
     }
   }

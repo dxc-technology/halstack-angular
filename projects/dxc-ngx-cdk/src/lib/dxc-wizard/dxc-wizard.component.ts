@@ -102,7 +102,7 @@ export class DxcWizardComponent {
           .iconContainer {
             width: 32px;
             height: 32px;
-            border: 2px solid #000000;
+            border: 2px solid var(--wizard-borderColor);
           }
           .number {
             color: var(--wizard-fontColor);

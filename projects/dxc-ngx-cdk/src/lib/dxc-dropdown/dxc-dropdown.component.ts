@@ -272,21 +272,15 @@ export class DxcDropdownComponent implements OnChanges {
       display: inline-flex;
       align-items: center;
       border-radius: 2px;
-
-      &:focus {
-        outline: none;
-      }
-
       &:hover {
         cursor: pointer;
+        background-color: var(--dropdown-hoverBackgroundColor) !important;
       }
-
       ${this.label === "" && this.caretHidden
         ? css`
             padding: 10px 15px;
           `
         : ""};
-
       border: none;
       .menu-buttom-label {
         color: var(--dropdown-fontColor);
@@ -323,6 +317,10 @@ export class DxcDropdownComponent implements OnChanges {
       ${this.calculateWidth(inputs)}
       align-items: center;
       opacity: 1;
+      .cdk-focused {
+        outline: -webkit-focus-ring-color auto 1px !important;
+        outline-color: var(--dropdown-focusColor) !important;
+      }
       .menu-buttom-label {
         font-size: 16px;
         text-overflow: ellipsis;

@@ -43,6 +43,7 @@ export class DxcWizardStepComponent {
   public isLast: boolean;
   public isCurrent: boolean = false;
   public mode: string = "horizontal";
+  public isVisited: boolean = false;
 
   @ContentChildren(DxcWizardIconComponent)
   dxcWizardIcon: QueryList<DxcWizardIconComponent>;
@@ -58,7 +59,6 @@ export class DxcWizardStepComponent {
     description: null,
     disabled: false,
     valid: null,
-    position: 0,
   });
 
   constructor(
@@ -90,8 +90,11 @@ export class DxcWizardStepComponent {
     this.cdRef.detectChanges();
   }
 
-  public setIsCurrent(value: boolean): void {
+  public setIsCurrent(value: boolean, newCurrent: number): void {
     this.isCurrent = value;
+    this.position <= newCurrent
+      ? (this.isVisited = true)
+      : (this.isVisited = false);
     this.cdRef.detectChanges();
   }
 
@@ -118,95 +121,91 @@ export class DxcWizardStepComponent {
     return css`
       display: inline-flex;
       ${inputs.mode === "vertical" ? "" : "align-items: center;"}
-      flex-grow: ${inputs.isLast ? "0" : "1"};
+      flex-grow: 1;
       flex-direction: ${inputs.mode === "vertical" ? "column" : "row"};
       ${inputs.mode === "vertical" ? "width: 100%;" : ""}
-
+      .last {
+        flex-grow: 0;
+        margin: ${inputs.mode === "vertical"
+          ? "25px 0 0 0"
+          : "0 0 0 25px"} !important;
+        &:focus {
+          margin: ${inputs.mode === "vertical"
+            ? "25px 1px 1px 1px"
+            : "1px 1px 1px 25px"} !important;
+        }
+      }
+      .first {
+        margin: ${inputs.mode === "vertical"
+          ? "0 0 25px 0"
+          : "0 25px 0 0"} !important;
+        &:focus {
+          margin: ${inputs.mode === "vertical"
+            ? "1px 1px 25px 1px"
+            : "1px 25px 1px 1px"} !important;
+        }
+      }
       .step {
         border: none;
         background: inherit;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin: ${inputs.isFirst
-        ? inputs.mode === "vertical"
-          ? "0 0 25px 0"
-          : "0 25px 0 0"
-        : inputs.isLast
-          ? inputs.mode === "vertical"
-            ? "25px 0 0 0"
-            : "0 0 0 25px"
-          : inputs.mode === "vertical"
-            ? "25px 0"
-            : "0 25px"};
-
+        margin: ${inputs.mode === "vertical" ? "25px 0" : "0 25px"};
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
-
         &:focus {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;
-          margin: ${inputs.isFirst
-        ? inputs.mode === "vertical"
-          ? "1px 1px 25px 1px"
-          : "1px 25px 1px 1px"
-        : inputs.isLast
-          ? inputs.mode === "vertical"
-            ? "25px 1px 1px 1px"
-            : "1px 1px 1px 25px"
-          : inputs.mode === "vertical"
-            ? "25px 1px"
-            : "1px 25px"};
+          margin: ${inputs.mode === "vertical" ? "25px 1px" : "1px 25px"};
           outline-color: var(--wizard-focusColor);
         }
-
         &:hover {
           ${inputs.disabled ? "" : "cursor: pointer;"}
         }
       }
-
       .stepHeader {
         position: relative;
         display: inline-flex;
         padding-bottom: 3px;
       }
-
-      .iconContainer {
-        width: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
-        height: ${!inputs.isCurrent && !inputs.disabled ? "32px" : "36px"};
-
-        ${!inputs.isCurrent && !inputs.disabled
-        ? `border: 2px solid #000000;`
-        : ""}
-
+      .iconContainer:not(.current) {
+        width: ${!inputs.disabled ? "32px" : "36px"};
+        height: ${!inputs.disabled ? "32px" : "36px"};
+        ${!inputs.disabled ? `border: 2px solid #000000;` : ""}
         ${inputs.disabled
-        ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
-        : ""}
-
-        ${inputs.isCurrent &&
-      `background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat padding-box; 
-          p {
-            color: var(--wizard-selectedFont) !important;
-          }`}
-
+          ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
+          : ""}
+      }
+      .current .iconContainer {
+        width: 36px;
+        height: 36px;
+        background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat
+          padding-box;
+        p {
+          color: var(--wizard-selectedFont) !important;
+        }
+      }
+      .iconContainer {
         border-radius: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-
+      .number:not(.current) {
+        color: ${!inputs.disabled
+          ? "var(--wizard-fontColor)"
+          : "var(--wizard-disabledFont)"};
+      }
+      .current .number {
+        color: var(--wizard-fontColor);
+      }
       .number {
         font: Normal 16px/22px "Open Sans", sans-serif;
         letter-spacing: 0.77px;
-        color: ${!inputs.isCurrent && !inputs.disabled
-        ? "var(--wizard-fontColor)"
-        : inputs.isCurrent
-          ? "var(--wizard-fontColor)"
-          : "var(--wizard-disabledFont)"};
         opacity: 1;
         margin: 0;
       }
-
       .validityIcon {
         width: 18px;
         height: 18px;
@@ -214,24 +213,22 @@ export class DxcWizardStepComponent {
         bottom: 0px;
         right: 0px;
       }
-
+      .infoContainer:not(.visited){
+        color: var(--wizard-disabledFont);
+      }
+      .visited .infoContainer{
+        color: var(--wizard-fontColor);
+      }
       .infoContainer {
         margin-left: 10px;
-        color: ${inputs.position <= inputs.currentStep
-        ? "var(--wizard-fontColor)"
-        : "var(--wizard-disabledFont)"};
       }
-
       .label {
         text-align: left;
         font: Normal 16px/22px "Open Sans", sans-serif;
         letter-spacing: 0.77px;
         color: inherit;
-        ${inputs.position > inputs.childCurrentStep &&
-        `opacity: var(--wizard-notVisitedOpacity);`}
         margin: 0;
       }
-
       .description {
         text-align: left;
         font: Normal 12px/17px "Open Sans", sans-serif;
@@ -239,7 +236,6 @@ export class DxcWizardStepComponent {
         color: inherit;
         margin: 0;
       }
-
       .stepSeparator {
         width: ${inputs.mode === "horizontal" ? "" : "0"};
         height: ${inputs.mode === "horizontal" ? "0" : ""};

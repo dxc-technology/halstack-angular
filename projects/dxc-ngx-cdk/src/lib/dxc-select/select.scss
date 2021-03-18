@@ -104,9 +104,20 @@ $mat-select-placeholder-arrow-space: 2 *
   min-width: 100%; // prevents some animation twitching and test inconsistencies in IE11
   border-radius: 4px;
   outline: 0;
-
   @include cdk-high-contrast(active, off) {
     outline: solid 1px;
+  }
+  &::-webkit-scrollbar {
+    width: 3px;
+    margin: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: var(--select-scrollBarTrackColor);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: var(--select-scrollBarThumbColor);
   }
 }
 
@@ -163,4 +174,3 @@ $mat-select-placeholder-arrow-space: 2 *
   white-space: pre;
   width: 1px;
 }
-

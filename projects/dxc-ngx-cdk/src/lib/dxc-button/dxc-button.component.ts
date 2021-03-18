@@ -205,53 +205,49 @@ export class DxcButtonComponent {
 
   getPrimaryStyle() {
     return css`
-      background: var(--button-color);
+      background: var(--button-primaryBackgroundColor);
       color: var(--button-primaryFontColor);
       &:hover:not([disabled]) {
-        background: var(--button-hoverColor);
+        background: var(--button-primaryHoverBackgroundColor);
         color: var(--button-primaryHoverFontColor);
       }
       &:disabled {
-        opacity: var(--button-primaryDisabledOpacity);
-        color: var(--button-primaryFontColor) !important;
+        background: var(--button-disabledPrimaryBackgroundColor);
+        color: var(--button-disabledPrimaryFontColor) !important;
       }
       &:focus:not([disabled]) {
         outline: -webkit-focus-ring-color auto 1px;
         outline-color: var(--button-focusColor);
       }
       &:active:not([disabled]) {
-        background: var(--button-primaryActiveOpacity);
-      }
-      &:active:hover {
-        background: var(--button-primaryActiveHoverOpacity);
+        background: var(--button-primaryActiveBackgroundColor);
       }
     `;
   }
   getSecondaryStyle() {
     return css`
-      border: 2px solid var(--button-color);
+      border: 2px solid var(--button-secondaryOutlinedColor);
       color: var(--button-secondaryFontColor);
       background-color: var(--button-secondaryBackgroundColor);
       &:hover:not([disabled]) {
-        border-color: var(--button-hoverColor);
-        background: var(--button-secondaryHoverOpacity);
+        border-color: var(--button-hoverOutlinedColor);
+        background: var(--button-secondaryHoverBackgroundColor);
         color: var(--button-secondaryHoverFontColor);
       }
       &:disabled {
-        opacity: var(--button-secondaryDisabledOpacity);
-        color: var(--button-secondaryFontColor) !important;
+        border-color: var(--button-disabledSecondaryOutlinedColor);
+        color: var(--button-disabledSecondaryFontColor) !important;
       }
       &:focus {
         outline: -webkit-focus-ring-color auto 1px;
         outline-color: var(--button-focusColor);
+        background-color: var(--button-secondaryBackgroundColor);
+        color: var(--button-secondaryHoverFontColor); 
       }
       &:active:not([disabled]) {
-        background: var(--button-secondaryActiveOpacity);
-        border-color: var(--button-color);
-      }
-      &:active:hover {
-        background: var(--button-secondaryActiveHoverOpacity);
-        border-color: var(--button-hoverColor);
+        background: var(--button-secondaryActiveBackgroundColor);
+        border-color: var(--button-secondaryOutlinedColor);
+        color: var(--button-secondaryHoverFontColor); 
       }
     `;
   }
@@ -260,23 +256,20 @@ export class DxcButtonComponent {
       background-color: var(--button-textBackgroundColor);
       color: var(--button-textFontColor);
       &:hover:not([disabled]) {
-        background: var(--button-hoverColor);
+        background: var(--button-textHoverBackgroundColor);
         color: var(--button-textHoverFontColor);
       }
       &:disabled {
-        opacity: var(--button-textDisabledOpacity);
-        color: var(--button-textFontColor) !important;
+        color: var(--button-disabledTextFontColor) !important;
       }
       &:focus {
         outline: -webkit-focus-ring-color auto 1px;
         outline-color: var(--button-focusColor);
+        background-color: var(--button-textBackgroundColor);
+        color: var(--button-textFontColor); 
       }
-      &:active {
-        background: var(--button-textActiveOpacity);
-        color: var(--button-textFontColor);
-      }
-      &:active:hover {
-        background: var(--button-textActiveHoverOpacity);
+      &:active:not([disabled]) {
+        background-color: var(--button-textActiveBackgroundColor);
         color: var(--button-textHoverFontColor);
       }
     `;

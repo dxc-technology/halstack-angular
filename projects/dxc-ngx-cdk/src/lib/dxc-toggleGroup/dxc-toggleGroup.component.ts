@@ -6,6 +6,7 @@ import {
   EventEmitter,
   SimpleChanges,
   HostBinding,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -49,18 +50,22 @@ export class DxcToggleGroupComponent implements OnInit {
     disabled: false,
     margin: null,
   });
-  constructor(private utils: CssUtils, private service: ToggleGroupService) {}
+  constructor(
+    private utils: CssUtils,
+    private service: ToggleGroupService,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    if (this.value || this.value === "") {
-      this.getSelectedByValue();
-    }
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
   }
 
   ngAfterViewInit() {
+    if (this.value || this.value === "") {
+      this.getSelectedByValue();
+    }
     this.service.values.subscribe((valuesSelected) => {
       if (valuesSelected && valuesSelected[0]) {
         this.selectedOptions = valuesSelected;
@@ -98,6 +103,7 @@ export class DxcToggleGroupComponent implements OnInit {
       }
     }
     this.service.setValues(this.selectedOptions);
+    this.cdRef.detectChanges();
   }
 
   public valueChanged(newSelected: any): void {
@@ -136,9 +142,10 @@ export class DxcToggleGroupComponent implements OnInit {
       }
       if (newSelected && this.multiple && selectedValues && selectedValues[0]) {
         this.onChange.emit(selectedValues);
-      } else if (newSelected){
+      } else if (newSelected) {
         this.onChange.emit(selectedValues[0] || "");
       }
+      this.cdRef.detectChanges();
     }
   }
 

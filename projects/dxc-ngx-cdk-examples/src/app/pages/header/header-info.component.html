@@ -6,17 +6,23 @@
 <div className="test-case" id="custom-header">
   <h4>Header with custom content</h4>
   <dxc-header logoSrc="./assets/images/invision.png">
-    <dxc-dropdown
-      [options]="options"
-      label="Dropdown"
-      margin="xsmall"
-    >
-    </dxc-dropdown>
-    <dxc-button
-      label="Button"
-      margin="xsmall"
-    >
-    </dxc-button>
+    <div id="unresponsive">
+      <dxc-dropdown label="Dropdown" size="medium">
+        <dxc-dropdown-option label="testing label 1" value="1">
+        </dxc-dropdown-option>
+        <dxc-dropdown-option
+          label="testing label 2"
+          value="2"
+        ></dxc-dropdown-option>
+        <dxc-dropdown-option
+          label="testing label 3"
+          value="3"
+        ></dxc-dropdown-option>
+      </dxc-dropdown>
+    </div>
+    <div id="responsive">
+      <dxc-button label="Button" margin="xsmall"> </dxc-button>
+    </div>
   </dxc-header>
 </div>
 
@@ -58,7 +64,9 @@
   <div className="test-case" id="xxsmall-padding">
     <h5>xxsmall padding</h5>
     <dxc-header [padding]="paddingXxSmall" logoSrc="./assets/images/yahoo.png">
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
   <div className="test-case" id="xsmall-padding">
@@ -67,37 +75,52 @@
       [padding]="paddingXSmall"
       logoSrc="./assets/images/invision.png"
     >
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
   <div className="test-case" id="small-padding">
     <h5>Small padding</h5>
-    <dxc-header [padding]="paddingSmall" logoSrc="./assets/images/skyscanner.jpeg">
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+    <dxc-header
+      [padding]="paddingSmall"
+      logoSrc="./assets/images/skyscanner.jpeg"
+    >
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
   <div className="test-case" id="medium-padding">
     <h5>Medium padding</h5>
     <dxc-header [padding]="paddingMedium">
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
   <div className="test-case" id="large-padding">
     <h5>Large padding</h5>
     <dxc-header [padding]="paddingLarge">
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
   <div className="test-case" id="xlarge-padding">
     <h5>xlarge padding</h5>
     <dxc-header [padding]="paddingXLarge">
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
   <div className="test-case" id="xxlarge-padding">
     <h5>xxlarge padding</h5>
     <dxc-header [padding]="paddingXxLarge" logoSrc="./assets/images/yahoo.png">
-      <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      <div id="unresponsive">
+        <dxc-button label="Custom Button" (onClick)="(onClick)"></dxc-button>
+      </div>
     </dxc-header>
   </div>
 </div>

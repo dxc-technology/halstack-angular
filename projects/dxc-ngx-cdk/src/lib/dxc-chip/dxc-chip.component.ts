@@ -11,10 +11,10 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectorRef, QueryList } from '@angular/core';
-import { DxcChipPrefixIconComponent } from './dxc-chip-prefix-icon/dxc-chip-prefix-icon.component';
-import { DxcChipSuffixIconComponent } from './dxc-chip-suffix-icon/dxc-chip-suffix-icon.component';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { ChangeDetectorRef, QueryList } from "@angular/core";
+import { DxcChipPrefixIconComponent } from "./dxc-chip-prefix-icon/dxc-chip-prefix-icon.component";
+import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
 
 @Component({
   selector: "dxc-chip",
@@ -56,13 +56,13 @@ export class DxcChipComponent implements OnChanges {
     magin: "",
   });
 
-  constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
-    if(this.dxcChipPrefixIcon.length !== 0){
+    if (this.dxcChipPrefixIcon.length !== 0) {
       this.prefixIconSrc = "";
     }
-    if(this.dxcChipSuffixIcon.length !== 0){
+    if (this.dxcChipSuffixIcon.length !== 0) {
       this.suffixIconSrc = "";
     }
     this.cdRef.detectChanges();
@@ -120,10 +120,14 @@ export class DxcChipComponent implements OnChanges {
       flex-wrap: nowrap;
       text-overflow: ellipsis;
       border-radius: 48px;
-      background-color: ${inputs.disabled ? "var(--chip-disabledBackgroundColor)" : "var(--chip-backgroundColor)"};
+      background-color: ${inputs.disabled
+        ? "var(--chip-disabledBackgroundColor)"
+        : "var(--chip-backgroundColor)"};
       padding: 10px 20px;
       width: fit-content;
-      border: ${inputs.disabled ? "1px solid var(--chip-disabledBackgroundColor)" : "1px solid var(--chip-outlinedColor)"};
+      border: ${inputs.disabled
+        ? "1px solid var(--chip-disabledBackgroundColor)"
+        : "1px solid var(--chip-outlinedColor)"};
       .labelContainer {
         font-size: 16px;
         font-family: "Open Sans", sans-serif;
@@ -131,9 +135,12 @@ export class DxcChipComponent implements OnChanges {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: ${inputs.disabled ? "var(--chip-disabledFontColor)" : "var(--chip-fontColor)"};
+        color: ${inputs.disabled
+          ? "var(--chip-disabledFontColor)"
+          : "var(--chip-fontColor)"};
       }
-      img,svg {
+      img,
+      svg {
         max-width: 24px;
         max-height: 24px;
       }
@@ -150,8 +157,9 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--chip-focusColor);
+          ${!inputs.disabled
+            ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
+            : "outline: none;"};
         }
       }
       .suffixIcon {
@@ -167,8 +175,9 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--chip-focusColor);
+          ${!inputs.disabled
+            ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
+            : "outline: none;"};
         }
       }
     `;

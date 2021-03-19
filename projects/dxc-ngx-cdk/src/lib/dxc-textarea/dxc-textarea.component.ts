@@ -14,7 +14,10 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
-import { coerceNumberProperty, coerceBooleanProperty } from '@angular/cdk/coercion';
+import {
+  coerceNumberProperty,
+  coerceBooleanProperty,
+} from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-textarea",
@@ -199,6 +202,9 @@ export class DxcTextareaComponent
         }
         &.disabled {
           pointer-events: none;
+          textarea {
+            color: var(--textarea-disabledFontColor);
+          }
           .mat-hint {
             color: var(--textarea-disabledFontColor);
           }

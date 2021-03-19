@@ -62,7 +62,7 @@ describe("DxcDate", () => {
     });
 
     dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("img");
+    const calendarIcon = dxcDate.getByRole("calendarIcon");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
@@ -135,7 +135,7 @@ describe("DxcDate", () => {
       dateValue: newMockDate,
     });
     dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("img");
+    const calendarIcon = dxcDate.getByRole("calendarIcon");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
@@ -202,7 +202,7 @@ describe("DxcDate", () => {
       ],
     });
     dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("img");
+    const calendarIcon = dxcDate.getByRole("calendarIcon");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     fireEvent.click(screen.getByText("4"));
@@ -240,7 +240,7 @@ describe("DxcDate", () => {
       ],
     });
     dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("img");
+    const calendarIcon = dxcDate.getByRole("calendarIcon");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
@@ -282,7 +282,7 @@ describe("DxcDate", () => {
       ],
     });
     dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("img");
+    const calendarIcon = dxcDate.getByRole("calendarIcon");
     fireEvent.click(calendarIcon);
     dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));

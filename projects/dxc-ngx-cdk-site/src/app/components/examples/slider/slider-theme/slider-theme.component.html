@@ -1,18 +1,27 @@
-<dxc-heading [level]="3" weight="normal" text="Theming" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="Theming"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
-    <tr>
-      <th>Name</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td>color</td>
-      <td>
-        <div class="default-color">
-          <color-preview color="#0067B3"></color-preview>
-          <code>#0067B3</code>
-        </div>
-      </td>
-      <td>Applies to token thumbBackgroundColor, dotsBackgroundColor and trackLine.</td>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>baseColor</td>
+    <td>
+      <div class="default-color">
+        <color-preview color="#0067B3"></color-preview>
+        <code>#0067B3</code>
+      </div>
+    </td>
+    <td>
+      Applies to token thumbBackgroundColor, dotsBackgroundColor, trackLine,
+      totalLine, disabledThumbBackgroundColor, disableddotsBackgroundColor and
+      disabledTrackLine.
+    </td>
+  </tr>
 </dxc-table>

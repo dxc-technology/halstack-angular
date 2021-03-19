@@ -185,10 +185,10 @@ export const componentTokens = {
   "--paginator-paginatorFontColor": globalTokens.black,
 
   //PROGRESSBAR
-  "--progressbar-trackLine": globalTokens.purple,
-  "--progressbar-totalLine": globalTokens.softGrey,
-  "--progressbar-overlayColor": globalTokens.black,
-  "--progressbar-fontColor": globalTokens.inherit,
+  "--progressBar-trackLine": globalTokens.purple,
+  "--progressBar-totalLine": globalTokens.softGrey,
+  "--progressBar-overlayColor": globalTokens.black,
+  "--progressBar-fontColor": globalTokens.inherit,
 
   //RADIO
   "--radio-color": globalTokens.black,

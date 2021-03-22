@@ -133,19 +133,19 @@ describe("SortService", () => {
 
   test("should return default icon for the given header", () => {
     let columnName = "user";
-    let icon = `<svg id="icon_default-${columnName}" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>`;
+    let icon = `<svg id="icon_default-${columnName}" class="iconHeader" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/></svg>`;
     expect(sort.getDefaultIcon(columnName)).toBe(icon);
   });
 
   test("should return asc icon for the given header", () => {
     let columnName = "user";
-    let icon = `<svg id="icon_asc-${columnName}" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>`;
+    let icon = `<svg id="icon_asc-${columnName}" class="iconHeader" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>`;
     expect(sort.getAscIcon(columnName)).toBe(icon);
   });
 
   test("should return desc icon for the given header", () => {
     let columnName = "user";
-    let icon = `<svg id="icon_desc-${columnName}" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>`;
+    let icon = `<svg id="icon_desc-${columnName}" class="iconHeader" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>`;
     expect(sort.getDescIcon(columnName)).toBe(icon);
   });
 
@@ -155,7 +155,7 @@ describe("SortService", () => {
     component.columnName = component.parentClassName = component.value = "User";
     mockedDirectiveInstance.elementRef = fixture.debugElement;
     let iconDefault =
-      '<svg id="icon_default-User" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"></path></svg>';
+      '<svg id="icon_default-User" class="iconHeader" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0z" fill="none"></path><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"></path></svg>';
     spyDefaultIcon.mockImplementation(() => iconDefault);
     sort.setDefaultIconSort(mockedDirectiveInstance);
     expect(spyDefaultIcon).toHaveBeenCalled();
@@ -170,7 +170,7 @@ describe("SortService", () => {
     component.columnName = component.parentClassName = component.value = "User";
     mockedDirectiveInstance.elementRef = fixture.debugElement;
     let iconAsc =
-      '<svg id="icon_asc-User" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg>';
+      '<svg id="icon_asc-User" class="iconHeader" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg>';
     spyAscIcon.mockImplementation(() => iconAsc);
     sort.setAscIconSort(mockedDirectiveInstance);
     expect(spyAscIcon).toHaveBeenCalled();
@@ -185,7 +185,7 @@ describe("SortService", () => {
     component.columnName = component.parentClassName = component.value = "User";
     mockedDirectiveInstance.elementRef = fixture.debugElement;
     let iconDesc =
-      '<svg id="icon_desc-User" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path></svg>';
+      '<svg id="icon_desc-User" class="iconHeader" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path></svg>';
     spyDescIcon.mockImplementation(() => iconDesc);
     sort.setDescIconSort(mockedDirectiveInstance);
     expect(spyDescIcon).toHaveBeenCalled();

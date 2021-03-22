@@ -2,6 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  ElementRef,
 } from "@angular/core";
 import { SortService } from "../../services/sort.service";
 
@@ -11,6 +12,7 @@ import { SortService } from "../../services/sort.service";
     ordering="{{ isSortable }}"
     id="header-{{ columnName }}-{{ parentClassName }}"
     propertyname="{{ propertyName }}"
+    [ngClass]="[isSortable ? 'isSortable' : '']"
   >
     {{ columnName }}
     <span
@@ -18,6 +20,7 @@ import { SortService } from "../../services/sort.service";
       *ngIf="isSortable"
     ></span>
   </div>`,
+  styleUrls: ["./dxc-header-row-component.scss"],
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   providers: [SortService],
@@ -34,33 +37,20 @@ export class DxcHeaderRowComponent {
   parentClassName: any;
   propertyName: string;
 
-  constructor(private sortService: SortService) {}
+  constructor(
+    private sortService: SortService,
+    public elementRef: ElementRef
+  ) {}
 
   ngAfterViewInit() {
     this.setSortIcon();
-    this.setStyle();
-  }
-
-  /** Set style for sort header */
-  private setStyle() {
-    if (this.isSortable) {
-      let divHeader = document.getElementById(
-        `header-${this.columnName}-${this.parentClassName}`
-      );
-      divHeader.style.cursor = "pointer";
-      divHeader.style.width = "fit-content";
-    }
   }
 
   /** Paint icon for sorting depending on header state (up for asc, down for desc and default) */
   setSortIcon() {
     if (this.isSortable) {
-      let divHeader = document.getElementById(
-        `header-${this.columnName}-${this.parentClassName}`
-      );
-      let spanIcon = document.getElementById(
-        `iconSort-${this.columnName}-${this.parentClassName}`
-      );
+      let divHeader = this.elementRef.nativeElement;
+      let spanIcon = (divHeader as HTMLElement).getElementsByTagName("span")[0];
       switch (this.state) {
         case "up":
           let up = this.sortService.getAscIcon(this.columnName);

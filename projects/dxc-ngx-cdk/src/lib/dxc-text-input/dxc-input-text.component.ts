@@ -310,6 +310,7 @@ export class DxcTextInputComponent
       }
       .prefixElement {
         margin-right: 12px;
+        fill: ${this.suffixPointer ? "pointer" : "default"};
         cursor: ${this.prefixPointer ? "pointer" : "default"};
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
@@ -327,6 +328,12 @@ export class DxcTextInputComponent
       }
       &.disabled {
         cursor: default;
+        .prefixElement {
+          fill: var(--inputText-disabledFontColor);
+        }
+        .suffixElement {
+          fill: var(--inputText-disabledFontColor);
+        }
       }
       .mat-form-field {
         line-height: unset;
@@ -467,7 +474,9 @@ export class DxcTextInputComponent
         color: var(--inputText-hoverOptionColor);
       }
       .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
-        background-color: var(--inputText-selectedOptionBackgroundColor) !important;
+        background-color: var(
+          --inputText-selectedOptionBackgroundColor
+        ) !important;
         color: var(--inputText-hoverOptionColor);
       }
       .mat-option:hover:not(.mat-option-disabled),

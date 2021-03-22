@@ -84,7 +84,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   renderedValue: string;
   dateValue: Moment;
-  calendarIconSrc: string;
   popOverOffsetX: any;
 
   calendarDynamicStyle: any;
@@ -115,7 +114,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
     this.renderedValue = this.value;
     this.dateValue = this.getMomentValue(this.renderedValue, this.format);
-    this.calendarIconSrc = "assets/calendar.svg";
   }
 
   public ngOnInit(): void {
@@ -288,7 +286,9 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
-          background-color: var(--date-pickerHoverDateBackgroundColor) !important;
+          background-color: var(
+            --date-pickerHoverDateBackgroundColor
+          ) !important;
           color: var(--date-pickerHoverDateFontColor) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
@@ -324,8 +324,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
             }
           }
         }
-        img {
-          cursor: pointer;
+      }
+      &:not(.disabled) {
+        dxc-input-suffix-icon {
+          cursor: pointer !important;
         }
       }
     `;

@@ -1,18 +1,27 @@
-<dxc-heading [level]="3" weight="normal" text="Theming" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="Theming"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
-    <tr>
-      <th>Name</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-        <td>selectedFontColor</td>
-        <td>
-            <div class="default-color">
-            <color-preview color="#6F2C91"></color-preview>
-            <code>#6F2C91</code>
-            </div>
-        </td>
-        <td>Applies to token selectedFontColor, selectedIconColor, selectedUnderlinedColor, focusColor, hoverBackgroundColor and pressedBackgroundColor.</td>
-    </tr>
-  </dxc-table>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>baseColor</td>
+    <td>
+      <div class="default-color">
+        <color-preview color="#6F2C91"></color-preview>
+        <code>#6F2C91</code>
+      </div>
+    </td>
+    <td>
+      Applies to token selectedFontColor, selectedIconColor,
+      selectedUnderlineColor, focusOutline, hoverBackgroundColor and
+      pressedBackgroundColor.
+    </td>
+  </tr>
+</dxc-table>

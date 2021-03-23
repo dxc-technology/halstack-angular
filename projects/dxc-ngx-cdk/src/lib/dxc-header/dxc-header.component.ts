@@ -254,9 +254,8 @@ export class DxcHeaderComponent implements OnChanges {
         width: 100vw;
         height: ${inputs.innerHeight}px;
         background-color: var(--header-overlayColor);
-        opacity: 0.8;
+        opacity: 0.7 !important;
         visibility: ${inputs.isMenuVisible ? "visible" : "hidden"};
-        opacity: ${inputs.isMenuVisible ? "1" : "0"};
         display: ${inputs.innerWidth <= responsiveSizes.mobileLarge
           ? "none"
           : ""};

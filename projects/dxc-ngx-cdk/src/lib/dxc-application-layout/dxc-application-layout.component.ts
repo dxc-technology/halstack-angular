@@ -138,7 +138,7 @@ export class DxcApplicationLayoutComponent implements OnInit {
       }
       dxc-application-layout-header, dxc-header {
         position: fixed;
-        z-index: 400;
+        z-index: 500;
       }
       .application-content {
         display: flex;

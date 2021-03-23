@@ -131,10 +131,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      z-index: ${(inputs.mode === "overlay" && this.displayArrow) ||
-        inputs.isResponsive
-        ? "400"
-        : "auto"};
+      z-index: 400;
       position: ${(inputs.mode === "overlay" && this.displayArrow) ||
         inputs.isResponsive
         ? "absolute"

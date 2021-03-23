@@ -61,7 +61,6 @@ export const customTheme = {
   },
   sidenav: {
     baseColor: "#F8F8F8",
-    arrowBaseColor: "#D9D9D9",
     arrowAccentColor: "#000000",
   },
   slider: {

@@ -221,7 +221,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--sidenav-backgroundColor"] =
       theme?.sidenav?.baseColor ?? tokens["--sidenav-backgroundColor"];
     proccessedTokens["--sidenav-arrowContainerColor"] =
-      this.addOpacity(theme?.sidenav?.arrowBaseColor, 0.34) ??
+      this.addOpacity(theme?.sidenav?.arrowBaseColor, 0.80) ??
       tokens["--sidenav-arrowContainerColor"];
     proccessedTokens["--sidenav-arrowColor"] =
       theme?.sidenav?.arrowAccentColor ?? tokens["--sidenav-arrowColor"];

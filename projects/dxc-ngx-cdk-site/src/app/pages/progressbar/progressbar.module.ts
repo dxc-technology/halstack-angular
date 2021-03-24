@@ -10,7 +10,6 @@ import { ProgressbarImportComponent } from '../../components/examples/progressba
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
-import { ProgressbarThemeComponent } from '../../components/examples/progressbar/progressbar-theme/progressbar-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -21,7 +20,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ProgressbarExampleComponent,
     ProgressbarImportComponent,
     ProgressbarApiComponent,
-    ProgressbarThemeComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +42,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ProgressbarComponent,
     ProgressbarImportComponent,
     ProgressbarApiComponent,
-    ProgressbarThemeComponent
   ]
 })
 export class ProgressbarModule {}

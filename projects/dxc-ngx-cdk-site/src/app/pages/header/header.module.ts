@@ -8,13 +8,10 @@ import { HeaderComponent } from './header.component';
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderTablePropertiesComponent } from '../../components/examples/header/properties/header-table-properties/header-table-properties.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-
 import { HeaderDirectivesComponent } from '../../components/examples/header/header-directives/header-directives.component';
 import { HeaderExampleResponsiveComponent } from '../../components/examples/header/responsive/header-example-responsive/header-example-responsive.component';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { HeaderImportComponent } from '../../components/examples/header/header-import/header-import.component';
-import { HeaderThemeComponent } from '../../components/examples/header/header-theme/header-theme.component';
 import { HeaderApiComponent } from '../../components/examples/header/header-api/header-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
@@ -28,7 +25,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     HeaderExampleResponsiveComponent,
     HeaderImportComponent,
     HeaderApiComponent,
-    HeaderThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +51,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     HeaderExampleResponsiveComponent,
     HeaderImportComponent,
     HeaderApiComponent,
-    HeaderThemeComponent
   ]
 })
 export class HeaderModule { }

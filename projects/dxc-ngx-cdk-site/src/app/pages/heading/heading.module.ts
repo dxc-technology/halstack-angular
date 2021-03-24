@@ -9,7 +9,6 @@ import { HeadingExampleComponent } from '../../components/examples/heading/headi
 import { HeadingImportComponent } from '../../components/examples/heading/heading-import/heading-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { HeadingThemeComponent } from '../../components/examples/heading/heading-theme/heading-theme.component';
 import { HeadingApiComponent } from '../../components/examples/heading/heading-api/heading-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -20,7 +19,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     HeadingExampleComponent,
     HeadingImportComponent,
     HeadingApiComponent,
-    HeadingThemeComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +38,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     HeadingExampleComponent,
     HeadingImportComponent,
     HeadingApiComponent,
-    HeadingThemeComponent
   ]
 })
 export class HeadingModule { }

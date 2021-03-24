@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { DateExampleComponent } from '../../components/examples/date/date-example/date-example.component';
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
-import { DateThemeComponent } from '../../components/examples/date/date-theme/date-theme.component';
 
 @Component({
   selector: 'app-date',
@@ -25,8 +24,7 @@ export class DateComponent implements OnInit {
   ngOnInit() {
     this.sections.push( 
       {id: 0, label: 'API',selector: 'date-api', component: DateApiComponent},
-      {id: 1, label: 'THEMING',selector: 'date-theme', component: DateThemeComponent},
-      {id: 2, label: 'EXAMPLES',selector: 'examples-component-dates', component: DateExampleComponent}
+      {id: 1, label: 'EXAMPLES',selector: 'examples-component-dates', component: DateExampleComponent}
 
       );
 

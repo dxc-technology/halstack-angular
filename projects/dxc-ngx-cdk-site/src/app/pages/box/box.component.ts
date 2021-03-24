@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { BoxExampleComponent } from 'src/app/components/examples/box/box-example/box-example.component';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
-import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
 
 @Component({
   selector: "app-box",
@@ -26,8 +25,7 @@ export class BoxComponent implements OnInit{
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'API',selector: 'box-api', component: BoxApiComponent},
-      {id:1, label: 'THEMING',selector: 'box-theme', component: BoxThemeComponent},
-      {id:2, label: 'EXAMPLES', selector: 'examples-component-box', component: BoxExampleComponent}
+      {id:1, label: 'EXAMPLES', selector: 'examples-component-box', component: BoxExampleComponent}
       );
   }
   

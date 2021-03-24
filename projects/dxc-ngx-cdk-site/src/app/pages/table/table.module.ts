@@ -7,10 +7,8 @@ import { DxcTableModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from '@dx
 import { TableExampleComponent } from '../../components/examples/table/table-example/table-example.component';
 import { TablePropertiesComponent } from '../../components/examples/table/properties/table-properties/table-properties.component';
 import { TableImportComponent } from '../../components/examples/table/table-import/table-import.component';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { TableThemeComponent } from '../../components/examples/table/table-theme/table-theme.component';
 import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
@@ -21,8 +19,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TableExampleComponent,
     TablePropertiesComponent,
     TableImportComponent,
-    TableApiComponent,
-    TableThemeComponent
+    TableApiComponent
   ],
   imports: [
     CommonModule,
@@ -42,8 +39,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TableExampleComponent,
     TablePropertiesComponent,
     TableImportComponent,
-    TableApiComponent,
-    TableThemeComponent
+    TableApiComponent
   ]
 })
 export class TableModule { }

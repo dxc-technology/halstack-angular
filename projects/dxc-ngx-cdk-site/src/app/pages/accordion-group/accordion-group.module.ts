@@ -13,7 +13,6 @@ import { AccordionGroupExampleComponent } from '../../components/examples/accord
 import { AccordionGroupTablePropertiesComponent } from '../../components/examples/accordion-group/properties/accordion-group-table-properties/accordion-group-table-properties.component';
 import { AccordionGroupImportComponent } from '../../components/examples/accordion-group/accordion-group-import/accordion-group-import.component';
 import { AccordionGroupApiComponent } from '../../components/examples/accordion-group/accordion-group-api/accordion-group-api.component';
-import { AccordionGroupThemeComponent } from '../../components/examples/accordion-group/accordion-group-theme/accordion-group-theme.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { AccordionGroupThemeComponent } from '../../components/examples/accordio
     AccordionGroupTablePropertiesComponent,
     AccordionGroupImportComponent,
     AccordionGroupApiComponent,
-    AccordionGroupThemeComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +42,6 @@ import { AccordionGroupThemeComponent } from '../../components/examples/accordio
     AccordionGroupTablePropertiesComponent,
     AccordionGroupImportComponent,
     AccordionGroupApiComponent,
-    AccordionGroupThemeComponent
   ]
 })
 export class AccordionGroupModule { }

@@ -13,7 +13,6 @@ import { SelectImportComponent } from '../../components/examples/select/select-i
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
-import { SelectThemeComponent } from '../../components/examples/select/select-theme/select-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -25,7 +24,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     SelectPropertiesComponent,
     SelectImportComponent,
     SelectApiComponent,
-    SelectThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +46,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     SelectExampleComponent,
     SelectPropertiesComponent,
     SelectImportComponent,
-    SelectApiComponent,
-    SelectThemeComponent
+    SelectApiComponent
   ],
   entryComponents: [
     ExampleViewerComponent

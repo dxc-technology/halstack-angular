@@ -10,10 +10,8 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { CheckboxExampleComponent } from '../../components/examples/checkbox/checkbox-example/checkbox-example.component';
 import { CheckboxImportComponent } from '../../components/examples/checkbox/checkbox-import/checkbox-import.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { CheckboxApiComponent } from '../../components/examples/checkbox/checkbox-api/checkbox-api.component';
-import { CheckboxThemeComponent } from '../../components/examples/checkbox/checkbox-theme/checkbox-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CheckboxPropertiesComponent } from '../../components/examples/checkbox/properties/checkbox-properties/checkbox-properties.component';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
@@ -24,7 +22,6 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     CheckboxPropertiesComponent,
     CheckboxImportComponent,
     CheckboxApiComponent,
-    CheckboxThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +45,6 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     CheckboxPropertiesComponent,
     CheckboxImportComponent,
     CheckboxApiComponent,
-    CheckboxThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

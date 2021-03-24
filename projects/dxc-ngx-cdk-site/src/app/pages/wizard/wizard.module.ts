@@ -9,7 +9,6 @@ import { WizardExampleComponent } from '../../components/examples/wizard/wizard-
 import { WizardImportComponent } from '../../components/examples/wizard/wizard-import/wizard-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { WizardThemeComponent } from '../../components/examples/wizard/wizard-theme/wizard-theme.component';
 import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/wizard-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
@@ -20,8 +19,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     WizardExampleComponent,
     WizardTablePropertiesComponent,
     WizardImportComponent,
-    WizardApiComponent,
-    WizardThemeComponent
+    WizardApiComponent
   ],
   imports: [
     CommonModule,
@@ -42,8 +40,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     WizardExampleComponent,
     WizardTablePropertiesComponent,
     WizardImportComponent,
-    WizardApiComponent,
-    WizardThemeComponent
+    WizardApiComponent
   ]
 })
 export class WizardModule { }

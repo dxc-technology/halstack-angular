@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import { SpinnerExampleComponent } from "../../components/examples/spinner/spinner-example/spinner-example.component";
 import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-api/spinner-api.component';
-import { SpinnerThemeComponent } from '../../components/examples/spinner/spinner-theme/spinner-theme.component';
 
 @Component({
   selector: "app-spinner",
@@ -33,12 +32,6 @@ export class SpinnerComponent implements OnInit {
       },
       {
         id: 1,
-        label: "THEMING",
-        selector: "spinner-theme",
-        component: SpinnerThemeComponent,
-      },
-      {
-        id: 2,
         label: "EXAMPLES",
         selector: "spinner-example",
         component: SpinnerExampleComponent,

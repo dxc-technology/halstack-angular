@@ -13,7 +13,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
-import { AccordionThemeComponent } from '../../components/examples/accordion/accordion-theme/accordion-theme.component';
 import { AccordionExampleComponent } from '../../components/examples/accordion/accordion-example/accordion-example.component';
 
 @NgModule({
@@ -22,8 +21,7 @@ import { AccordionExampleComponent } from '../../components/examples/accordion/a
     AccordionExampleComponent,
     AccordionTablePropertiesComponent,
     AccordionImportComponent,
-    AccordionApiComponent,
-    AccordionThemeComponent
+    AccordionApiComponent
   ],
   imports: [
     CommonModule,
@@ -44,8 +42,7 @@ import { AccordionExampleComponent } from '../../components/examples/accordion/a
     AccordionComponent,
     AccordionTablePropertiesComponent,
     AccordionImportComponent,
-    AccordionApiComponent,
-    AccordionThemeComponent
+    AccordionApiComponent
   ]
 })
 export class AccordionModule { }

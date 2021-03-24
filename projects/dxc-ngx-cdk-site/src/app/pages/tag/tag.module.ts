@@ -10,7 +10,6 @@ import { TagImportComponent } from '../../components/examples/tag/tag-import/tag
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
-import { TagThemeComponent } from '../../components/examples/tag/tag-theme/tag-theme.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
@@ -19,8 +18,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TagExampleComponent,
     TagTablePropertiesComponent,
     TagImportComponent,
-    TagApiComponent,
-    TagThemeComponent
+    TagApiComponent
   ],
   imports: [
     CommonModule,
@@ -39,8 +37,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TagExampleComponent,
     TagTablePropertiesComponent,
     TagImportComponent,
-    TagApiComponent,
-    TagThemeComponent
+    TagApiComponent
   ]
 })
 export class TagModule { }

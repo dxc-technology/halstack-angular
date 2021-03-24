@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { PaginatorExampleComponent } from '../../components/examples/paginator/paginator-example/paginator-example.component';
 import { PaginatorApiComponent } from '../../components/examples/paginator/paginator-api/paginator-api.component';
-import { PaginatorThemeComponent } from '../../components/examples/paginator/paginator-theme/paginator-theme.component';
 
 @Component({
   selector: 'app-paginator',
@@ -25,8 +24,7 @@ export class PaginatorComponent implements OnInit {
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'API',selector: 'paginator-api', component: PaginatorApiComponent},
-      {id:1, label: 'THEMING', selector: 'paginator-theme', component: PaginatorThemeComponent},
-      {id:2, label: 'EXAMPLES', selector: 'examples-component-paginator', component: PaginatorExampleComponent}
+      {id:1, label: 'EXAMPLES', selector: 'examples-component-paginator', component: PaginatorExampleComponent}
     );
   }
 

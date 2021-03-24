@@ -12,7 +12,6 @@ import { DateImportComponent } from '../../components/examples/date/date-import/
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { DateThemeComponent } from '../../components/examples/date/date-theme/date-theme.component';
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
@@ -24,7 +23,6 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     DatePropertiesComponent,
     DateImportComponent,
     DateApiComponent,
-    DateThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +44,6 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     DateExampleComponent,
     DateImportComponent,
     DateApiComponent,
-    DateThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

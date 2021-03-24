@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import {ProgressbarExampleComponent} from '../../components/examples/progressbar/progressbar-example/progressbar-example.component';
 import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
-import { ProgressbarThemeComponent } from '../../components/examples/progressbar/progressbar-theme/progressbar-theme.component';
 
 @Component({
   selector: "app-progressbar",
@@ -29,16 +28,9 @@ export class ProgressbarComponent implements OnInit {
         label: "API",
         selector: "progressbar-api",
         component: ProgressbarApiComponent
-      }
-      ,
-      {
-        id: 1,
-        label: "THEMING",
-        selector: "progressbar-theme",
-        component: ProgressbarThemeComponent
       },
       {
-        id: 2,
+        id: 1,
         label: "EXAMPLES",
         selector: "progressbar-example",
         component: ProgressbarExampleComponent

@@ -12,7 +12,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ResultsetTableDirectivesComponent } from '../../components/examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
 import { ResultsetTableApiComponent } from '../../components/examples/resultset-table/resultset-table-api/resultset-table-api.component';
-import { ResultsetTableThemeComponent } from '../../components/examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
@@ -22,8 +21,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ResultsetTablePropertiesComponent,
     ResultsetTableDirectivesComponent,
     ResultsetTableImportComponent,
-    ResultsetTableApiComponent,
-    ResultsetTableThemeComponent
+    ResultsetTableApiComponent
   ],
   imports: [
     CommonModule,
@@ -47,8 +45,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ResultsetTablePropertiesComponent,
     ResultsetTableDirectivesComponent,
     ResultsetTableImportComponent,
-    ResultsetTableApiComponent,
-    ResultsetTableThemeComponent
+    ResultsetTableApiComponent
   ]
 })
 export class ResultsetTableModule { }

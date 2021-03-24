@@ -11,7 +11,6 @@ import { TabsExampleComponent } from "../../components/examples/tabs/tabs-exampl
 import { TabsImportComponent } from '../../components/examples/tabs/tabs-import/tabs-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { TabsThemeComponent } from '../../components/examples/tabs/tabs-theme/tabs-theme.component';
 import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
@@ -22,8 +21,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TabsTablePropertiesComponent,
     TabsExampleComponent,
     TabsImportComponent,
-    TabsApiComponent,
-    TabsThemeComponent
+    TabsApiComponent
   ],
   imports: [
     CommonModule,
@@ -45,8 +43,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TabsTablePropertiesComponent,
     TabsExampleComponent,
     TabsImportComponent,
-    TabsApiComponent,
-    TabsThemeComponent
+    TabsApiComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

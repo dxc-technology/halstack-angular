@@ -9,7 +9,6 @@ import { BoxImportComponent } from '../../components/examples/box/box-import/box
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
-import { BoxThemeComponent } from '../../components/examples/box/box-theme/box-theme.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     BoxTablePropertiesComponent,
     BoxImportComponent,
     BoxApiComponent,
-    BoxThemeComponent
     ],
   imports: [
     BrowserModule,
@@ -38,7 +36,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     BoxTablePropertiesComponent,
     BoxImportComponent,
     BoxApiComponent,
-    BoxThemeComponent
   ]
 })
 export class BoxModule {}

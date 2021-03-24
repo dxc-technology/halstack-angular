@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "src/app/model/sections";
 import { TextAreaApiComponent } from "../../components/examples/text-area/text-area-api/text-area-api.component";
-import { TextAreaThemeComponent } from "../../components/examples/text-area/text-area-theme/text-area-theme.component";
 import { TextAreaExampleComponent } from "../../components/examples/text-area/text-area-example/text-area-example.component";
 
 @Component({
@@ -32,12 +31,6 @@ export class TextAreaComponent implements OnInit {
       },
       {
         id: 1,
-        label: "THEMING",
-        selector: "text-area-theme",
-        component: TextAreaThemeComponent,
-      },
-      {
-        id: 2,
         label: "EXAMPLES",
         selector: 'examples-component-input',
         component: TextAreaExampleComponent,

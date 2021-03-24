@@ -10,7 +10,6 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TextAreaApiComponent } from '../../components/examples/text-area/text-area-api/text-area-api.component';
 import { TextAreaPropertiesTableComponent } from '../../components/examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
-import { TextAreaThemeComponent } from '../../components/examples/text-area/text-area-theme/text-area-theme.component';
 import { TextAreaExampleComponent } from '../../components/examples/text-area/text-area-example/text-area-example.component';
 import { TextAreaImportComponent } from '../../components/examples/text-area/text-area-import/text-area-import.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
@@ -20,7 +19,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TextAreaComponent,
     TextAreaApiComponent,
     TextAreaPropertiesTableComponent,
-    TextAreaThemeComponent,
     TextAreaExampleComponent,
     TextAreaImportComponent],
   imports: [
@@ -42,7 +40,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TextAreaComponent,
     TextAreaApiComponent,
     TextAreaPropertiesTableComponent,
-    TextAreaThemeComponent,
     TextAreaExampleComponent,
     TextAreaImportComponent],
   entryComponents: [

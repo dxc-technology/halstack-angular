@@ -12,7 +12,6 @@ import { ToggleGroupExampleComponent } from '../../components/examples/toggleGro
 import { ToggleGroupApiComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
 import { ToggleGroupTablePropertiesComponent } from 'src/app/components/examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component';
 import { ToggleGroupImportComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
-import { ToggleGroupThemeComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-theme/toggleGroup-theme.component';
 import { ColorPreviewModule } from 'src/app/components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -22,8 +21,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupComponent,
-    ToggleGroupExampleComponent,
-    ToggleGroupThemeComponent
+    ToggleGroupExampleComponent
   ],
   imports: [
     CommonModule,
@@ -44,8 +42,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupComponent,
-    ToggleGroupExampleComponent,
-    ToggleGroupThemeComponent
+    ToggleGroupExampleComponent
   ],
   entryComponents: [
     ExampleViewerComponent

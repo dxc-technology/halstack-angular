@@ -17,7 +17,6 @@ import { AutocompleteExampleComponent } from "../../components/examples/autocomp
 import { AutocompleteUsageComponent } from "../../components/examples/autocomplete/autocomplete-usage/autocomplete-usage.component";
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { AutocompleteThemeComponent } from '../../components/examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -26,7 +25,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     AutocompleteComponent,
     AutocompleteExampleComponent,
     AutocompleteUsageComponent,
-    AutocompleteThemeComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +46,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     AutocompleteComponent,
     AutocompleteExampleComponent,
     AutocompleteUsageComponent,
-    AutocompleteThemeComponent
   ],
   entryComponents: [ExampleViewerComponent]
 })

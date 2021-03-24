@@ -10,10 +10,8 @@ import { TextInputTablePropertiesComponent } from '../../components/examples/tex
 import { TextInputExampleComponent } from '../../components/examples/text-input/text-input-example/text-input-example.component';
 import { TextInputImportComponent } from '../../components/examples/text-input/text-input-import/text-input-import.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { TextInputThemeComponent } from '../../components/examples/text-input/text-input-theme/text-input-theme.component';
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
@@ -24,7 +22,7 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     TextInputTablePropertiesComponent,
     TextInputImportComponent,
     TextInputApiComponent,
-    TextInputThemeComponent],
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -47,7 +45,6 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     TextInputTablePropertiesComponent,
     TextInputImportComponent,
     TextInputApiComponent,
-    TextInputThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

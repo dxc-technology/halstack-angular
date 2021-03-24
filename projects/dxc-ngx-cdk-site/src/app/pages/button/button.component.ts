@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ButtonExampleComponent } from 'src/app/components/examples/button/button-example/button-example.component';
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
-import { ButtonThemeComponent } from '../../components/examples/button/button-theme/button-theme.component';
 
 @Component({
   selector: "app-button",
@@ -26,8 +25,7 @@ export class ButtonComponent implements OnInit{
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'API',selector: 'button-api', component: ButtonApiComponent},
-      {id:1, label: 'THEMING',selector: 'button-theme', component: ButtonThemeComponent},
-      {id:2, label: 'EXAMPLES', selector: 'examples-component-buttons', component: ButtonExampleComponent}
+      {id:1, label: 'EXAMPLES', selector: 'examples-component-buttons', component: ButtonExampleComponent}
       );
   }
   

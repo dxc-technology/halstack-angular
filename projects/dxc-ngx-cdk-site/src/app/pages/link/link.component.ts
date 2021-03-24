@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
 import { LinkExampleComponent } from "../../components/examples/link/link-example/link-example.component";
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
-import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
 
 @Component({
   selector: 'app-link',
@@ -32,12 +31,6 @@ export class LinkComponent implements OnInit {
       },
       {
         id: 1,
-        label: "THEMING",
-        selector: "link-theme",
-        component: LinkThemeComponent
-      },
-      {
-        id: 2,
         label: "EXAMPLES",
         selector: "examples-component-link",
         component: LinkExampleComponent

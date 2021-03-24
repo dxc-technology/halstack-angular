@@ -10,7 +10,6 @@ import { LinkImportComponent } from '../../components/examples/link/link-import/
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
-import { LinkThemeComponent } from '../../components/examples/link/link-theme/link-theme.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     LinkTablePropertiesComponent,
     LinkImportComponent,
     LinkApiComponent,
-    LinkThemeComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +39,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     LinkTablePropertiesComponent,
     LinkImportComponent,
     LinkApiComponent,
-    LinkThemeComponent
   ]
 })
 export class LinkModule { }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ApplicationLayoutApiComponent } from '../../components/examples/layout/app-layout-api/app-layout-api.component';
 import { ApplicationLayoutExamplesComponent } from '../../components/examples/layout/app-layout-examples/app-layout-examples.component';
-import { ApplicationLayoutThemeComponent } from '../../components/examples/layout/app-layout-theme/app-layout-theme.component';
 
 @Component({
   selector: "app-layout",
@@ -27,8 +26,7 @@ export class ApplicationLayoutComponent implements OnInit{
    ngOnInit() { 
     this.sections.push( 
       {id:0, label: 'API',selector: 'app-layout-api', component: ApplicationLayoutApiComponent},
-      {id:1, label: 'THEMING',selector: 'layout-theme', component: ApplicationLayoutThemeComponent},
-      {id:2, label: 'EXAMPLES',selector: 'app-layout-examples', component: ApplicationLayoutExamplesComponent},
+      {id:1, label: 'EXAMPLES',selector: 'app-layout-examples', component: ApplicationLayoutExamplesComponent},
       );
   }
   

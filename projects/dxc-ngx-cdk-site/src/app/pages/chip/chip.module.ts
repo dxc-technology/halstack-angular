@@ -16,7 +16,6 @@ import { ChipExampleComponent } from "src/app/components/examples/chip/chip-exam
 import { ChipTablePropertiesComponent } from "src/app/components/examples/chip/properties/box-table-properties/chip-table-properties.component";
 import { ChipImportComponent } from "src/app/components/examples/chip/chip-import/chip-import.component";
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
-import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -27,7 +26,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ChipTablePropertiesComponent,
     ChipImportComponent,
     ChipApiComponent,
-    ChipThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +48,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ChipTablePropertiesComponent,
     ChipImportComponent,
     ChipApiComponent,
-    ChipThemeComponent
   ]
 })
 export class ChipModule {}

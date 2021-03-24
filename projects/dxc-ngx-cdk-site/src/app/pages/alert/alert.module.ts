@@ -10,7 +10,6 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
-import { AlertThemeComponent } from '../../components/examples/alert/alert-theme/alert-theme.component';
 import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -21,7 +20,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     AlertComponentPropertiesComponent,
     AlertImportComponent,
     AlertApiComponent,
-    AlertThemeComponent
     ],
   imports: [
     BrowserModule,
@@ -42,7 +40,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     AlertComponentPropertiesComponent,
     AlertImportComponent,
     AlertApiComponent,
-    AlertThemeComponent
   ]
 })
 export class AlertModule {}

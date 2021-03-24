@@ -12,7 +12,6 @@ import { SliderImportComponent } from '../../components/examples/slider/slider-i
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
-import { SliderThemeComponent } from '../../components/examples/slider/slider-theme/slider-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -22,8 +21,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderImportComponent,
-    SliderApiComponent,
-    SliderThemeComponent
+    SliderApiComponent
   ],
   imports: [
     CommonModule,
@@ -45,8 +43,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderImportComponent,
-    SliderApiComponent,
-    SliderThemeComponent
+    SliderApiComponent
   ],
   entryComponents: [
     ExampleViewerComponent

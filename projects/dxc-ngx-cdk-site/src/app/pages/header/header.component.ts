@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderApiComponent } from '../../components/examples/header/header-api/header-api.component';
-import { HeaderThemeComponent } from '../../components/examples/header/header-theme/header-theme.component';
 
 @Component({
   selector: 'app-header',
@@ -26,9 +25,7 @@ export class HeaderComponent implements OnInit {
     this.sections.push( 
       {id:0, label: 'API',selector: 'header-api', 
         component: HeaderApiComponent},
-      {id:1, label: 'THEMING',selector: 'header-theme', 
-        component: HeaderThemeComponent},
-      {id:4, label: 'EXAMPLES', selector:'examples-components-header',component: HeaderExampleComponent});
+      {id:1, label: 'EXAMPLES', selector:'examples-components-header',component: HeaderExampleComponent});
   }
 
 }

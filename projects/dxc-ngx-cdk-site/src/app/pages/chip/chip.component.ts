@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ChipExampleComponent } from 'src/app/components/examples/chip/chip-example/chip-example.component';
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
-import { ChipThemeComponent } from '../../components/examples/chip/chip-theme/chip-theme.component';
 
 @Component({
   selector: 'app-chip',
@@ -27,8 +26,7 @@ export class ChipComponent implements OnInit {
 
     this.sections.push( 
       {id: 0, label: 'API',selector: 'chip-api', component: ChipApiComponent},
-      {id: 1, label: 'THEMING',selector: 'chip-theme', component: ChipThemeComponent},
-      {id: 2,label: 'EXAMPLES', selector: 'examples-component-chip', component: ChipExampleComponent}
+      {id: 1,label: 'EXAMPLES', selector: 'examples-component-chip', component: ChipExampleComponent}
       );
   }
   

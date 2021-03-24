@@ -14,7 +14,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { RadioThemeComponent } from '../../components/examples/radio/radio-theme/radio-theme.component';
 import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
@@ -25,7 +24,6 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     RadioExampleComponent,
     RadioPropertiesComponent,
     RadioApiComponent,
-    RadioThemeComponent,
     RadioImportComponent
   ],
   imports: [
@@ -51,7 +49,6 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     RadioPropertiesComponent,
     RadioImportComponent,
     RadioApiComponent,
-    RadioThemeComponent
   ],
   entryComponents: [
     ExampleViewerComponent

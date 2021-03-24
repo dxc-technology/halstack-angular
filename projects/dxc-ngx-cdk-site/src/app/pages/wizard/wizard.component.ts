@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from "../../model/sections";
 import { WizardExampleComponent } from "../../components/examples/wizard/wizard-example/wizard-example.component";
 import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/wizard-api.component';
-import { WizardThemeComponent } from '../../components/examples/wizard/wizard-theme/wizard-theme.component';
 
 @Component({
   selector: 'app-wizard',
@@ -32,12 +31,6 @@ export class WizardComponent implements OnInit {
       },
       {
         id: 1,
-        label: "THEMING",
-        selector: "wizard-theme",
-        component: WizardThemeComponent
-      },
-      {
-        id: 2,
         label: "EXAMPLES",
         selector: "wizard-example",
         component: WizardExampleComponent

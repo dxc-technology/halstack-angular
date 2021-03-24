@@ -10,7 +10,6 @@ import { AccordionGroupTablePropertiesComponent } from "../examples/accordion-gr
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
 import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
-import { ApplicationLayoutThemeComponent } from '../examples/layout/app-layout-theme/app-layout-theme.component';
 import { ApplicationLayoutExamplesComponent } from '../examples/layout/app-layout-examples/app-layout-examples.component';
 import { AutocompleteExampleComponent } from '../examples/autocomplete/autocomplete-example/autocomplete-example.component';
 import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
@@ -56,7 +55,6 @@ import { ToggleGroupApiComponent } from '../examples/toggleGroup/toggleGroup-api
 import { ToggleGroupTablePropertiesComponent } from "../examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component";
 import { ToggleGroupImportComponent } from '../examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
 import { ToggleGroupExampleComponent } from "../examples/toggleGroup/toggleGroup-example/toggleGroup-example.component";
-import { ToggleGroupThemeComponent } from "../examples/toggleGroup/toggleGroup-theme/toggleGroup-theme.component";
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
 import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
@@ -112,75 +110,42 @@ import { TagImportComponent } from '../examples/tag/tag-import/tag-import.compon
 import { TextInputImportComponent } from '../examples/text-input/text-input-import/text-input-import.component';
 import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
 import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
-import { ButtonThemeComponent } from '../examples/button/button-theme/button-theme.component';
 import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
 import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
-import { CheckboxThemeComponent } from '../examples/checkbox/checkbox-theme/checkbox-theme.component';
 import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.component';
-import { RadioThemeComponent } from '../examples/radio/radio-theme/radio-theme.component';
 import { LinkApiComponent } from '../examples/link/link-api/link-api.component';
-import { LinkThemeComponent } from '../examples/link/link-theme/link-theme.component';
-import { SliderThemeComponent } from '../examples/slider/slider-theme/slider-theme.component';
 import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
 import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
-import { SelectThemeComponent } from '../examples/select/select-theme/select-theme.component';
 import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
-import { BoxThemeComponent } from '../examples/box/box-theme/box-theme.component';
 import { TagApiComponent } from '../examples/tag/tag-api/tag-api.component';
-import { TagThemeComponent } from '../examples/tag/tag-theme/tag-theme.component';
 import { CardApiComponent } from '../examples/card/card-api/card-api.component';
-import { CardThemeComponent } from '../examples/card/card-theme/card-theme.component';
 import { ChipApiComponent } from '../examples/chip/chip-api/chip-api.component';
-import { ChipThemeComponent } from '../examples/chip/chip-theme/chip-theme.component';
 import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
-import { SwitchThemeComponent } from '../examples/switch/switch-theme/switch-theme.component';
 import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
 import { ColorPreviewComponent } from '../color-preview/color-preview.component';
-import { TextInputThemeComponent } from '../examples/text-input/text-input-theme/text-input-theme.component';
-import { DateThemeComponent } from '../examples/date/date-theme/date-theme.component';
 import { DateApiComponent } from '../examples/date/date-api/date-api.component';
 import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
-import { SidenavThemeComponent } from '../examples/sidenav/sidenav-theme/sidenav-theme.component';
-import { ProgressbarThemeComponent } from '../examples/progressbar/progressbar-theme/progressbar-theme.component';
 import { ProgressbarApiComponent } from '../examples/progressbar/progressbar-api/progressbar-api.component';
 import { TabbedSectionApiComponent } from '../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
-import { TabbedSectionThemeComponent } from '../examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
-import { AutocompleteThemeComponent } from '../examples/autocomplete/autocomplete-theme/autocomplete-theme.component';
-import { FooterThemeComponent } from '../examples/footer/footer-theme/footer-theme.component';
 import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
 import { SpinnerApiComponent } from '../examples/spinner/spinner-api/spinner-api.component';
-import { SpinnerThemeComponent } from '../examples/spinner/spinner-theme/spinner-theme.component';
-import { HeaderThemeComponent } from '../examples/header/header-theme/header-theme.component';
 import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
-import { WizardThemeComponent } from '../examples/wizard/wizard-theme/wizard-theme.component';
 import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.component';
 import { AccordionApiComponent } from '../examples/accordion/accordion-api/accordion-api.component';
-import { AccordionThemeComponent } from '../examples/accordion/accordion-theme/accordion-theme.component';
 import { AccordionGroupApiComponent } from '../examples/accordion-group/accordion-group-api/accordion-group-api.component';
-import { AccordionGroupThemeComponent } from '../examples/accordion-group/accordion-group-theme/accordion-group-theme.component';
 import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.component';
-import { DialogThemeComponent } from '../examples/dialog/dialog-theme/dialog-theme.component';
-import { DropdownThemeComponent } from '../examples/dropdown/dropdown-theme/dropdown-theme.component';
 import { DropdownApiComponent } from '../examples/dropdown/dropdown-api/dropdown-api.component';
-import { TableThemeComponent } from '../examples/table/table-theme/table-theme.component';
 import { TableApiComponent } from '../examples/table/table-api/table-api.component';
-import { PaginatorThemeComponent } from '../examples/paginator/paginator-theme/paginator-theme.component';
 import { PaginatorApiComponent } from '../examples/paginator/paginator-api/paginator-api.component';
-import { TabsThemeComponent } from '../examples/tabs/tabs-theme/tabs-theme.component';
 import { TabsApiComponent } from '../examples/tabs/tabs-api/tabs-api.component';
 import { TextAreaApiComponent } from '../examples/text-area/text-area-api/text-area-api.component';
 import { TextAreaPropertiesTableComponent } from '../examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
-import { TextAreaThemeComponent } from '../examples/text-area/text-area-theme/text-area-theme.component';
 import { TextAreaExampleComponent } from '../examples/text-area/text-area-example/text-area-example.component';
 import { TextAreaImportComponent } from '../examples/text-area/text-area-import/text-area-import.component';
-import { AlertThemeComponent } from '../examples/alert/alert-theme/alert-theme.component';
 import { AlertApiComponent } from '../examples/alert/alert-api/alert-api.component';
-import { HeadingThemeComponent } from '../examples/heading/heading-theme/heading-theme.component';
 import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api.component';
-import { UploadThemeComponent } from '../examples/upload/upload-theme/upload-theme.component';
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
-import { ResultsetTableThemeComponent } from '../examples/resultset-table/resultset-table-theme/resultset-table-theme.component';
 import { ButtonExampleComponent } from '../examples/button/button-example/button-example.component';
 
 @NgModule({
@@ -196,7 +161,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     AlertComponentPropertiesComponent,
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
-    ApplicationLayoutThemeComponent,
     AutocompleteExampleComponent,
     AutocompleteUsageComponent,
     BoxExampleComponent,
@@ -206,7 +170,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     CardExampleComponent,
     CardTablePropertiesComponent,
     CardApiComponent,
-    CardThemeComponent,
     CheckboxExampleComponent,
     CheckboxPropertiesComponent,
     ChipExampleComponent,
@@ -229,7 +192,6 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     SpinnerExampleComponent,
     SpinnerTablePropertiesComponent,
     SpinnerApiComponent,
-    SpinnerThemeComponent,
     SwitchExampleComponent,
     SwitchTablePropertiesComponent,
     TextInputExampleComponent,
@@ -244,12 +206,10 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     TabbedSectionNotesComponent,
     TabbedSectionTablePropertiesComponent,
     TabbedSectionApiComponent,
-    TabbedSectionThemeComponent,
     TagExampleComponent,
     TagTablePropertiesComponent,
     ProgressbarTablePropertiesComponent,
     ProgressbarExampleComponent,
-    ProgressbarThemeComponent,
     ProgressbarApiComponent,
     TabsTablePropertiesComponent,
     TabsExampleComponent,
@@ -302,72 +262,42 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     TextInputImportComponent,
     UploadImportComponent,
     WizardImportComponent,
-    ButtonThemeComponent,
     ButtonApiComponent,
     CheckboxApiComponent,
-    CheckboxThemeComponent,
     RadioApiComponent,
-    RadioThemeComponent,
     LinkApiComponent,
-    LinkThemeComponent,
-    SliderThemeComponent,
     SliderApiComponent,
     SelectApiComponent,
-    SelectThemeComponent,
     BoxApiComponent,
-    BoxThemeComponent,
     ChipApiComponent,
-    ChipThemeComponent,
     ColorPreviewComponent,
     SwitchApiComponent,
-    SwitchThemeComponent,
     TextInputApiComponent,
-    TextInputThemeComponent,
     TextAreaApiComponent,
     TextAreaPropertiesTableComponent,
-    TextAreaThemeComponent,
     TextAreaExampleComponent,
     TextAreaImportComponent,
     TagApiComponent,
-    TagThemeComponent,
     DateApiComponent,
-    DateThemeComponent,
     SidenavApiComponent,
-    SidenavThemeComponent,
-    AutocompleteThemeComponent,
     FooterApiComponent,
-    FooterThemeComponent,
     HeaderApiComponent,
-    HeaderThemeComponent,
     WizardApiComponent,
-    WizardThemeComponent,
     AccordionApiComponent,
-    AccordionThemeComponent,
     AccordionGroupApiComponent,
-    AccordionGroupThemeComponent,
     DialogApiComponent,
-    DialogThemeComponent,
     DropdownApiComponent,
-    DropdownThemeComponent,
     TableApiComponent,
-    TableThemeComponent,
     PaginatorApiComponent,
-    PaginatorThemeComponent,
     TabsApiComponent,
-    TabsThemeComponent,
     AlertApiComponent,
-    AlertThemeComponent,
     HeadingApiComponent,
-    HeadingThemeComponent,
     UploadApiComponent,
-    UploadThemeComponent,
     ResultsetTableApiComponent,
-    ResultsetTableThemeComponent,
     ToggleGroupExampleComponent,
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupApiComponent,
-    ToggleGroupThemeComponent
   ]
 })
 export class DynamicModule { }

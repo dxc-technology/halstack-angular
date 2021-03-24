@@ -9,7 +9,6 @@ import {
 } from "@dxc-technology/halstack-angular";
 import { ApplicationLayoutComponent } from "./app-layout.component";
 import { ApplicationLayoutApiComponent } from "../../components/examples/layout/app-layout-api/app-layout-api.component";
-import { ApplicationLayoutThemeComponent } from "../../components/examples/layout/app-layout-theme/app-layout-theme.component";
 import { ApplicationLayoutExamplesComponent } from "../../components/examples/layout/app-layout-examples/app-layout-examples.component";
 
 import { BrowserModule } from "@angular/platform-browser";
@@ -25,7 +24,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ApplicationLayoutComponent,
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
-    ApplicationLayoutThemeComponent,
   ],
   imports: [
     BrowserModule,

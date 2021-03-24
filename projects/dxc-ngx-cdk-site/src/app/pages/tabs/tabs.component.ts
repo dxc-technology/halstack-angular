@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import {TabsExampleComponent} from '../../components/examples/tabs/tabs-example/tabs-example.component';
 import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
-import { TabsThemeComponent } from '../../components/examples/tabs/tabs-theme/tabs-theme.component';
 
 @Component({
   selector: "app-tabs",
@@ -29,16 +28,9 @@ export class TabsComponent implements OnInit {
         label: "API",
         selector: "tabs-api",
         component: TabsApiComponent
-      }
-      ,
-      {
-        id: 1,
-        label: "THEMING",
-        selector: "tabs-theme",
-        component: TabsThemeComponent
       },
       {
-        id: 2,
+        id: 1,
         label: "EXAMPLES",
         selector: "app-tabs-example",
         component: TabsExampleComponent

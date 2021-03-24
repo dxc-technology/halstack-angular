@@ -9,7 +9,6 @@ import { CardImportComponent } from '../../components/examples/card/card-import/
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
-import { CardThemeComponent } from '../../components/examples/card/card-theme/card-theme.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     CardTablePropertiesComponent,
     CardImportComponent,
     CardApiComponent,
-    CardThemeComponent
     ],
   imports: [
     BrowserModule,
@@ -37,7 +35,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     CardTablePropertiesComponent,
     CardImportComponent,
     CardApiComponent,
-    CardThemeComponent
   ]
 })
 export class CardModule {}

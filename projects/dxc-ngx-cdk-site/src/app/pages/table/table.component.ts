@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { TableExampleComponent } from '../../components/examples/table/table-example/table-example.component';
 import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
-import { TableThemeComponent } from '../../components/examples/table/table-theme/table-theme.component';
 
 @Component({
   selector: 'app-table',
@@ -25,8 +24,7 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.sections.push( 
       {id: 0, label: 'API', selector: 'table-api', component: TableApiComponent},
-      {id: 1, label: 'THEMING', selector: 'table-theme', component: TableThemeComponent},
-      {id: 2, label: 'EXAMPLES', selector: 'examples-component-table', component: TableExampleComponent}
+      {id: 1, label: 'EXAMPLES', selector: 'examples-component-table', component: TableExampleComponent}
     );
   }
 

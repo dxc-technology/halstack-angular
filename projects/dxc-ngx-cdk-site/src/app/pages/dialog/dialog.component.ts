@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import { DialogExampleComponent } from "../../components/examples/dialog/dialog-example/dialog-example.component";
 import { DialogApiComponent } from "../../components/examples/dialog/dialog-api/dialog-api.component";
-import { DialogThemeComponent } from "../../components/examples/dialog/dialog-theme/dialog-theme.component";
 
 @Component({
   selector: "app-dialog",
@@ -32,12 +31,6 @@ export class DialogComponent implements OnInit {
       },
       {
         id: 1,
-        label: "THEMING",
-        selector: "dialog-theme",
-        component: DialogThemeComponent,
-      },
-      {
-        id: 2,
         label: "EXAMPLES",
         selector: "examples-component-dates",
         component: DialogExampleComponent,

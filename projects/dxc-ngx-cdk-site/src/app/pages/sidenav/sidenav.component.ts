@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
 import { SidenavExampleComponent } from "../../components/examples/sidenav/sidenav-example/sidenav-example.component";
 import { SidenavApiComponent } from "../../components/examples/sidenav/sidenav-api/sidenav-api.component";
-import { SidenavThemeComponent } from "../../components/examples/sidenav/sidenav-theme/sidenav-theme.component";
 
 @Component({
   selector: "app-sidenav",
@@ -32,12 +31,6 @@ export class SidenavComponent implements OnInit {
       },
       {
         id: 1,
-        label: "THEMING",
-        selector: "sidenav-theme",
-        component: SidenavThemeComponent,
-      },
-      {
-        id: 2,
         label: "EXAMPLES",
         selector: "sidenav-example",
         component: SidenavExampleComponent,

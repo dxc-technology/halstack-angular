@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { FooterExampleComponent } from '../../components/examples/footer/footer-example/footer-example.component';
 import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
-import { FooterThemeComponent } from '../../components/examples/footer/footer-theme/footer-theme.component';
 
 @Component({
   selector: 'app-footer',
@@ -25,8 +24,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
     this.sections.push( 
       {id:0, label: 'API',selector: 'footer-api', component: FooterApiComponent},
-      {id:1, label: 'THEMING', selector: 'footer-theme', component: FooterThemeComponent},
-      {id:2, label: 'EXAMPLES', selector: 'examples-component-footer', component: FooterExampleComponent}
+      {id:1, label: 'EXAMPLES', selector: 'examples-component-footer', component: FooterExampleComponent}
       );
   }
 

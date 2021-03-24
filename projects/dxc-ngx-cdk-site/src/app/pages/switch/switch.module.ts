@@ -11,7 +11,6 @@ import { SwitchImportComponent } from '../../components/examples/switch/switch-i
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { SwitchApiComponent } from '../../components/examples/switch/switch-api/switch-api.component';
-import { SwitchThemeComponent } from '../../components/examples/switch/switch-theme/switch-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -22,7 +21,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     SwitchTablePropertiesComponent,
     SwitchImportComponent,
     SwitchApiComponent,
-    SwitchThemeComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +41,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     SwitchTablePropertiesComponent,
     SwitchImportComponent,
     SwitchApiComponent,
-    SwitchThemeComponent,
   ],
   entryComponents: [
     ExampleViewerComponent

@@ -7,10 +7,8 @@ import { UploadComponent } from "./upload.component";
 import { UploadTablePropertiesComponent } from "src/app/components/examples/upload/properties/upload-table-properties.component";
 import {UploadExampleComponent} from "../../components/examples/upload/upload-example/upload-example.component";
 import { UploadImportComponent } from '../../components/examples/upload/upload-import/upload-import.component';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { UploadThemeComponent } from '../../components/examples/upload/upload-theme/upload-theme.component';
 import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -21,7 +19,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     UploadExampleComponent,
     UploadImportComponent,
     UploadApiComponent,
-    UploadThemeComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +39,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     UploadExampleComponent,
     UploadImportComponent,
     UploadApiComponent,
-    UploadThemeComponent
   ]
 })
 export class UploadModule {}

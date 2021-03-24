@@ -7,11 +7,9 @@ import { DialogTablePropertiesComponent } from "src/app/components/examples/dial
 import { DialogExampleComponent } from "../../components/examples/dialog/dialog-example/dialog-example.component";
 import { DialogComponent } from "./dialog.component";
 import { DialogImportComponent } from '../../components/examples/dialog/dialog-import/dialog-import.component';
-
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { DialogApiComponent } from '../../components/examples/dialog/dialog-api/dialog-api.component';
-import { DialogThemeComponent } from '../../components/examples/dialog/dialog-theme/dialog-theme.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
@@ -22,7 +20,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     DialogComponent,
     DialogImportComponent,
     DialogApiComponent,
-    DialogThemeComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +42,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     DialogComponent,
     DialogImportComponent,
     DialogApiComponent,
-    DialogThemeComponent
   ]
 })
 export class DialogModule {}

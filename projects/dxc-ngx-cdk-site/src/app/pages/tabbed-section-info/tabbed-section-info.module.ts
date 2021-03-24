@@ -11,7 +11,6 @@ import { CodePlaygroundModule } from 'src/app/components/code-playground/code-pl
 import { TabbedSectionImportComponent } from '../../components/examples/tabbed-section/tabbed-section-import/tabbed-section-import.component';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TabbedSectionApiComponent } from '../../components/examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
-import { TabbedSectionThemeComponent } from '../../components/examples/tabbed-section/tabbed-section-theme/tabbed-section-theme.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TabbedSectionNotesComponent,
     TabbedSectionImportComponent,
     TabbedSectionApiComponent,
-    TabbedSectionThemeComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +42,6 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TabbedSectionNotesComponent,
     TabbedSectionImportComponent,
     TabbedSectionApiComponent,
-    TabbedSectionThemeComponent
   ]
 })
 export class TabbedSectionInfoModule { }

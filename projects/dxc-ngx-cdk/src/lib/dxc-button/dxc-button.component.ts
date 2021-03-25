@@ -13,7 +13,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
-import { DxcButtonIconComponent } from './dxc-button-icon/dxc-button-icon.component';
+import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.component";
 
 @Component({
   selector: "dxc-button",
@@ -127,8 +127,8 @@ export class DxcButtonComponent {
           align-items: center;
           justify-content: center;
           ${this.iconPosition === "after"
-          ? "flex-direction: row-reverse;"
-          : "flex-direction: row;"}
+            ? "flex-direction: row-reverse;"
+            : "flex-direction: row;"}
 
           & > span {
             display: block;
@@ -206,10 +206,8 @@ export class DxcButtonComponent {
     return css`
       background: var(--button-primaryBackgroundColor);
       color: var(--button-primaryFontColor);
-      span.mat-button-wrapper {
-        .mat-button-ripple .mat-ripple{
-          border: 2px solid transparent;
-        }
+      span.mat-button-ripple {
+        border: 2px solid transparent;
       }
       &:hover:not([disabled]) {
         background: var(--button-primaryHoverBackgroundColor);
@@ -232,10 +230,8 @@ export class DxcButtonComponent {
     return css`
       color: var(--button-secondaryFontColor);
       background-color: var(--button-secondaryBackgroundColor);
-      span.mat-button-wrapper {
-        .mat-button-ripple .mat-ripple{
-          border: 2px solid var(--button-secondaryOutlinedColor);
-        }
+      span.mat-button-ripple {
+        border: 2px solid var(--button-secondaryOutlinedColor);
       }
       &:hover:not([disabled]) {
         border-color: var(--button-hoverOutlinedColor);
@@ -250,12 +246,12 @@ export class DxcButtonComponent {
         outline: -webkit-focus-ring-color auto 1px;
         outline-color: var(--button-focusColor);
         background-color: var(--button-secondaryBackgroundColor);
-        color: var(--button-secondaryHoverFontColor); 
+        color: var(--button-secondaryHoverFontColor);
       }
       &:active:not([disabled]) {
         background: var(--button-secondaryActiveBackgroundColor);
         border-color: var(--button-secondaryOutlinedColor);
-        color: var(--button-secondaryHoverFontColor); 
+        color: var(--button-secondaryHoverFontColor);
       }
     `;
   }
@@ -263,10 +259,8 @@ export class DxcButtonComponent {
     return css`
       background-color: var(--button-textBackgroundColor);
       color: var(--button-textFontColor);
-      span.mat-button-wrapper {
-        .mat-button-ripple .mat-ripple{
-          border: 2px solid transparent;
-        }
+      span.mat-button-ripple {
+        border: 2px solid transparent;
       }
       &:hover:not([disabled]) {
         background: var(--button-textHoverBackgroundColor);
@@ -279,7 +273,7 @@ export class DxcButtonComponent {
         outline: -webkit-focus-ring-color auto 1px;
         outline-color: var(--button-focusColor);
         background-color: var(--button-textBackgroundColor);
-        color: var(--button-textFontColor); 
+        color: var(--button-textFontColor);
       }
       &:active:not([disabled]) {
         background-color: var(--button-textActiveBackgroundColor);

@@ -15,7 +15,7 @@ export class DxcTableComponent {
 
   defaultInputs = new BehaviorSubject<any>({});
 
-  constructor(private utils: CssUtils) { }
+  constructor(private utils: CssUtils) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -34,6 +34,18 @@ export class DxcTableComponent {
     return css`
       div#divTable {
         ${this.utils.getMargins(inputs.margin)}
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--table-scrollBarThumbColor);
+          border-radius: 6px;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: var(--table-scrollBarTrackColor);
+          border-radius: 6px;
+        }
       }
 
       table {

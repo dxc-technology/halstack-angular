@@ -110,7 +110,7 @@ export class DxcButtonComponent {
       vertical-align: middle;
       ${this.utils.calculateWidth(this.sizes, inputs)}
       button {
-        padding: 10px 28px;
+        padding: 12px 30px;
         ${this.setPadding(inputs.size)}
         border-radius: 4px;
         width: 100%;
@@ -120,7 +120,6 @@ export class DxcButtonComponent {
         font-weight: 500;
         white-space: normal;
         letter-spacing: 1px;
-        border: 2px solid transparent;
         ${this.getModeStyle()}
         span.mat-button-wrapper {
           text-transform: uppercase;
@@ -207,6 +206,11 @@ export class DxcButtonComponent {
     return css`
       background: var(--button-primaryBackgroundColor);
       color: var(--button-primaryFontColor);
+      span.mat-button-wrapper {
+        .mat-button-ripple .mat-ripple{
+          border: 2px solid transparent;
+        }
+      }
       &:hover:not([disabled]) {
         background: var(--button-primaryHoverBackgroundColor);
         color: var(--button-primaryHoverFontColor);
@@ -226,9 +230,13 @@ export class DxcButtonComponent {
   }
   getSecondaryStyle() {
     return css`
-      border: 2px solid var(--button-secondaryOutlinedColor);
       color: var(--button-secondaryFontColor);
       background-color: var(--button-secondaryBackgroundColor);
+      span.mat-button-wrapper {
+        .mat-button-ripple .mat-ripple{
+          border: 2px solid var(--button-secondaryOutlinedColor);
+        }
+      }
       &:hover:not([disabled]) {
         border-color: var(--button-hoverOutlinedColor);
         background: var(--button-secondaryHoverBackgroundColor);
@@ -255,6 +263,11 @@ export class DxcButtonComponent {
     return css`
       background-color: var(--button-textBackgroundColor);
       color: var(--button-textFontColor);
+      span.mat-button-wrapper {
+        .mat-button-ripple .mat-ripple{
+          border: 2px solid transparent;
+        }
+      }
       &:hover:not([disabled]) {
         background: var(--button-textHoverBackgroundColor);
         color: var(--button-textHoverFontColor);

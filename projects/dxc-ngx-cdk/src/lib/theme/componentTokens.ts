@@ -247,6 +247,8 @@ export const componentTokens = {
   "--table-separatorColor": globalTokens.lightGrey,
   "--table-bodyBackgroundColor": globalTokens.white,
   "--table-bodyFontColor": globalTokens.black,
+  "--table-scrollBarThumbColor": globalTokens.darkGrey,
+  "--table-scrollBarTrackColor": globalTokens.lightGrey,
 
   //TAG
   "--tag-backgroundColor": globalTokens.white,

@@ -184,9 +184,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           }
           &:hover {
             background-color: var(--accordion-hoverBackgroundColor) !important;
-            .mat-expansion-panel-header-title {
-              font: normal normal 600 16px/22px "Open Sans", sans-serif;
-            }
           }
           .caret-indicator {
             transform: rotate(-180deg);
@@ -200,9 +197,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             color: var(--accordion-fontColor);
           }
           &.mat-expanded {
-            .mat-expansion-panel-header-title {
-              font: normal normal 600 16px/22px "Open Sans", sans-serif;
-            }
             .caret-indicator {
               transform: rotate(0deg);
               transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;

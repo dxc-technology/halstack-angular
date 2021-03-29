@@ -74,7 +74,7 @@
       var(--border-weight) var(--dash-size),
       var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
       var(--border-weight) var(--dash-size);
-    background-color: #0000000f;
+    background-color: var(--upload-backgroundDragColor);
   }
   .droppingZone {
     --border-color: #666666;
@@ -139,7 +139,7 @@
       var(--border-weight) var(--dash-size),
       var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
       var(--border-weight) var(--dash-size);
-    background-color: #0000000f;
+    background-color: var(--upload-backgroundDragColor);
   }
   h6 {
     margin: 0px;
@@ -149,7 +149,7 @@
   }
   .dropLabel {
     font-style: italic;
-    color: #666666;
+    color: var(--upload-fontColor) !important;
     margin-bottom: 20px;
   }
 }

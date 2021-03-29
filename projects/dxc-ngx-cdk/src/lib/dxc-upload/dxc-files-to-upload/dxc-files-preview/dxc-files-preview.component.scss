@@ -6,11 +6,11 @@
     width: 3px;
   }
   ::-webkit-scrollbar-track {
-    background-color: #d9d9d9;
+    background-color: var(--upload-scrollBarTrackColor);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: #666666;
+    background-color: var(--upload-scrollBarThumbColor);
     border-radius: 3px;
   }
   .previewContainer {

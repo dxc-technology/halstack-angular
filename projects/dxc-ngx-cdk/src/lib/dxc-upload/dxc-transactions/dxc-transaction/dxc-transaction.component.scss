@@ -16,11 +16,11 @@
   }
   .previewIcon {
     margin-right: 16px;
-    fill: #c9c9c9;
+    fill: var(--upload-accentColor);
   }
   .errorIcon {
     svg {
-      fill: #d0011b;
+      fill: var(--upload-errorColor);
     }
   }
   .fileName {
@@ -33,6 +33,6 @@
     }
   }
   .fileName.errorLabel {
-    color: #d0011b;
+    color: var(--upload-errorColor);
   }
 }

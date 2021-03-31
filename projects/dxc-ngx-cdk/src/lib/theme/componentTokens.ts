@@ -111,7 +111,6 @@ export const componentTokens = {
   "--chip-backgroundColor": globalTokens.darkWhite,
   "--chip-outlinedColor": "",
   "--chip-fontColor": globalTokens.black,
-  "--chip-focusColor": globalTokens.blue, //no esta en react
   "--chip-disabledBackgroundColor": globalTokens.mediumWhite,
   "--chip-disabledFontColor": globalTokens.lighterBlack,
 
@@ -165,7 +164,7 @@ export const componentTokens = {
   "--inputText-selectedOptionBackgroundColor": globalTokens.lightGrey,
   "--inputText-placeholderColor": globalTokens.lightGrey,
   "--inputText-error": globalTokens.darkRed,
-  "--inputText-focusColor": globalTokens.blue,
+  "--inputText-focusColor": globalTokens.black,
   "--inputText-fontColor": globalTokens.black,
   "--inputText-scrollBarThumbColor": globalTokens.darkGrey,
   "--inputText-scrollBarTrackColor": globalTokens.lightGrey,
@@ -201,7 +200,7 @@ export const componentTokens = {
   "--select-selectedOptionBackgroundColor": globalTokens.lightGrey,
   "--select-color": globalTokens.black,
   "--select-error": globalTokens.darkRed,
-  "--select-focusColor": globalTokens.blue,
+  "--select-focusColor": globalTokens.black,
   "--select-disabledColor": globalTokens.lighterBlack,
   "--select-scrollBarThumbColor": globalTokens.darkGrey,
   "--select-scrollBarTrackColor": globalTokens.lightGrey,

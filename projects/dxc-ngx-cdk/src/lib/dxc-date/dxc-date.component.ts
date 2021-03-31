@@ -328,6 +328,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
       &:not(.disabled) {
         dxc-input-suffix-icon {
           cursor: pointer !important;
+          &:focus {
+            outline: -webkit-focus-ring-color auto 1px;
+            outline-color: var(--date-focusColor);
+          }
         }
       }
     `;

@@ -241,6 +241,9 @@ export class DxcButtonComponent {
       &:disabled {
         border-color: var(--button-disabledSecondaryOutlinedColor);
         color: var(--button-disabledSecondaryFontColor) !important;
+        span.mat-button-ripple {
+          border: 2px solid var(--button-disabledSecondaryOutlinedColor);
+        }
       }
       &:focus {
         outline: -webkit-focus-ring-color auto 1px;

@@ -2,12 +2,12 @@
   padding: 25px 60px 25px 40px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid var(--upload-accentColor);
   .removeIcon {
     display: none;
   }
   &:hover {
-    background-color: #eeeeee;
+    background-color: var(--upload-fileHoverColor);
     .removeIcon {
       display: flex;
       align-items: center;
@@ -39,7 +39,7 @@
     .fileFormat {
       font-size: 12px;
       letter-spacing: 1.88px;
-      color: #00000099;
+      color: var(--upload-fontColor);
     }
   }
 }

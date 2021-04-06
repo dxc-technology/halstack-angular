@@ -275,6 +275,16 @@ export const componentTokens = {
   "--toggle-disabledUnselectedBackgroundColor": globalTokens.lighterPurple,
   "--toggle-disabledUnselectedFontColor": globalTokens.lightGrey,
 
+  //UPLOAD
+  "--upload-fontColor": globalTokens.darkGrey,
+  "--upload-shadowColor": globalTokens.lightWhite,
+  "--upload-backgroundDragColor": globalTokens.lightWhite,
+  "--upload-accentColor": globalTokens.lightGrey,
+  "--upload-fileHoverColor": globalTokens.darkWhite,
+  "--upload-scrollBarThumbColor": globalTokens.darkGrey,
+  "--upload-scrollBarTrackColor": globalTokens.lightGrey,
+  "--upload-errorColor": globalTokens.darkRed,
+
   //WIZARD
   "--wizard-selectedBackgroundColor": globalTokens.purple,
   "--wizard-selectedFont": globalTokens.white,

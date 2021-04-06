@@ -157,9 +157,7 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          ${!inputs.disabled
-            ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
-            : "outline: none;"};
+          outline: none;
         }
       }
       .suffixIcon {
@@ -175,9 +173,7 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          ${!inputs.disabled
-            ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
-            : "outline: none;"};
+          outline: none;
         }
       }
     `;

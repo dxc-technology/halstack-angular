@@ -335,6 +335,14 @@ export class DxcTextInputComponent
           fill: var(--inputText-disabledFontColor);
         }
       }
+      .mat-form-field.mat-focused .mat-form-field-label {
+        color: var(--inputText-focusColor) !important;
+      }
+      .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: ${this.invalid
+          ? "var(--inputText-error) !important"
+          : "var(--inputText-focusColor) !important"};
+      }
       .mat-form-field {
         line-height: unset;
         width: 100%;
@@ -355,7 +363,7 @@ export class DxcTextInputComponent
             color: var(--inputText-disabledFontColor);
           }
           .mat-form-field-underline {
-            background-color: var(--inputText-disabledFontColor);
+            background-color: var(--inputText-disabledFontColor) !important;
           }
           .mat-form-field-empty mat-label {
             color: var(--inputText-disabledFontColor);
@@ -389,7 +397,7 @@ export class DxcTextInputComponent
               color: var(--inputText-fontColor);
             }
             .mat-form-field-underline {
-              background-color: var(--inputText-fontColor);
+              background-color: var(--inputText-fontColor) !important;
             }
           `}
       .mat-form-field {
@@ -438,14 +446,14 @@ export class DxcTextInputComponent
         background-color: var(--inputText-error) !important;
       }
       .mat-form-field-underline {
-        background-color: var(--inputText-error);
+        background-color: var(--inputText-fontColor) !important;
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--inputText-error);
         }
       }
-      .mat-form-field-empty mat-label {
-        color: var(--inputText-fontColor);
+      .mat-form-field.mat-form-field-should-float mat-label {
+        color: var(--inputText-error) !important;
       }
       &.mat-focused .mat-form-field-empty mat-label {
         color: var(--inputText-error);

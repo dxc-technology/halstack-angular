@@ -30,6 +30,7 @@ export class DxcTextareaComponent
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
   @HostBinding("class.invalid") isInvalid: boolean = false;
+  @HostBinding("class.required") isRequired: boolean = false;
 
   @Input() public value: string;
   @Input() public label: String;
@@ -123,6 +124,7 @@ export class DxcTextareaComponent
   public ngOnChanges(changes: SimpleChanges): void {
     this.isDisabled = this.disabled;
     this.isInvalid = this.invalid;
+    this.isRequired = this.required;
 
     this.renderedValue = this.value || "";
     this.label = this.label || "";
@@ -241,12 +243,34 @@ export class DxcTextareaComponent
       input::placeholder {
         color: var(--textarea-placeholderColor);
       }
+      &.required {
+        .mat-hint {
+          color: var(--textarea-fontColor);
+        }
+        .mat-form-field-underline {
+          background-color: var(--textarea-fontColor);
+        }
+        label.mat-form-field-label {
+          color: var(--textarea-fontColor);
+        }
+        input::placeholder {
+          color: var(--textarea-placeholderColor);
+        }
+        .mat-form-field-ripple{
+          background-color: var(--textarea-fontColor);
+        }
+        .mat-input-element{
+          caret-color: var(--textarea-fontColor);
+        }
+        .mat-form-field-required-marker{
+          color: var(--textarea-error) !important;
+        }
+      }
       &.invalid {
         .mat-hint {
           color: var(--textarea-error);
         }
         .mat-form-field-underline {
-          background-color: var(--textarea-error);
           .mat-form-field-ripple {
             background-color: var(--textarea-error);
           }
@@ -260,12 +284,18 @@ export class DxcTextareaComponent
         .mat-form-field-label:not(.mat-form-field-empty) mat-label {
           color: var(--textarea-error);
         }
+        .mat-label{
+          color: var(--textarea-error) !important;
+        }
         .mat-form-field {
           &.mat-form-field-should-float {
             mat-label {
               color: var(--textarea-error);
             }
           }
+        }
+        label.mat-form-field-label {
+          color: var(--textarea-error);
         }
       }
       .mat-form-field {
@@ -284,7 +314,7 @@ export class DxcTextareaComponent
             justify-content: flex-end;
             display: flex;
             span {
-              color: var(--textarea-error);
+              color: var(--textarea-fontColor);
             }
           }
         }

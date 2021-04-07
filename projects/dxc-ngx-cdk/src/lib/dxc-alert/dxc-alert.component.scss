@@ -67,7 +67,7 @@
         display: flex;
         align-items: center;
         .icon {
-          padding: 12px;
+          padding: 14px 12px;
           display: inline-flex;
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
@@ -105,7 +105,7 @@
     }
     .content {
       display: block;
-      font: 14px "Open Sans", sans-serif;
+      font: 12px "Open Sans", sans-serif;
       padding: 4px 53px 20px;
     }
   }

@@ -10,7 +10,6 @@
 >
   <div class="imageContainer">
     <img *ngIf="imageSrc" src="{{ imageSrc }}" />
-    <ng-content select="dxc-card-image"></ng-content>
   </div>
   <div class="content" #content>
     <ng-content></ng-content>

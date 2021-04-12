@@ -303,6 +303,7 @@ export class DxcTextInputComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
+      font-family: "Open Sans", sans-serif;
       dxc-input-prefix-icon,
       dxc-input-suffix-icon {
         display: flex;
@@ -344,6 +345,7 @@ export class DxcTextInputComponent
           : "var(--inputText-focusColor) !important"};
       }
       .mat-form-field {
+        font-family: "Open Sans", sans-serif;
         line-height: unset;
         width: 100%;
         max-height: 74px;
@@ -398,6 +400,9 @@ export class DxcTextInputComponent
             }
             .mat-form-field-underline {
               background-color: var(--inputText-fontColor) !important;
+              .mat-form-field-ripple {
+                background-color: var(--inputText-fontColor) !important;
+              }
             }
           `}
       .mat-form-field {

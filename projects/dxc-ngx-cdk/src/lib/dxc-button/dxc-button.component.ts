@@ -12,7 +12,10 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.component";
 
 @Component({
@@ -35,6 +38,14 @@ export class DxcButtonComponent {
   @Input() iconPosition: string;
   @Input() margin: any;
   @Input() size: string;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -51,6 +62,7 @@ export class DxcButtonComponent {
     iconPosition: "before",
     margin: null,
     size: "fitContent",
+    tabIndexValue: null
   });
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}

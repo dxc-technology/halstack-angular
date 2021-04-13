@@ -10,6 +10,7 @@
   (mouseenter)="buttonEnter(menuTrigger)"
   (mouseleave)="buttonLeave(menuTrigger, dropdownButton)"
   (click)="updateCss()"
+  [tabindex]="tabIndexValue"
 >
   <div class="buttonContent">
     <ng-content select="dxc-dropdown-icon"></ng-content>

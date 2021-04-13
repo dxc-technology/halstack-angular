@@ -7,7 +7,6 @@ import {
   OnChanges,
   SimpleChanges,
   ViewChild,
-  AfterViewChecked,
   ChangeDetectionStrategy,
   Renderer2,
 } from "@angular/core";
@@ -16,7 +15,10 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { ElementRef, HostListener } from "@angular/core";
 import { MatMenuTrigger } from "@angular/material/menu";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { DropdownService } from "./services/dropdown.service";
 
 @Component({
@@ -50,6 +52,14 @@ export class DxcDropdownComponent implements OnChanges {
     this._caretHidden = coerceBooleanProperty(value);
   }
   private _caretHidden;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Input() public label: string = "";
   @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
@@ -80,6 +90,7 @@ export class DxcDropdownComponent implements OnChanges {
     margin: null,
     size: "fitContent",
     expandOnHover: false,
+    tabIndexValue: -1,
   });
 
   public arrowClass: string = "down";
@@ -320,6 +331,12 @@ export class DxcDropdownComponent implements OnChanges {
       .cdk-focused {
         outline: -webkit-focus-ring-color auto 1px !important;
         outline-color: var(--dropdown-focusColor) !important;
+      }
+      .cdk-keyboard-focused {
+        .mat-button-focus-overlay {
+          background: var(--dropdown-backgroundColor);
+          opacity: 0;
+        }
       }
       .menu-buttom-label {
         font-size: 16px;

@@ -12,6 +12,7 @@
         role="closeIcon"
         *ngIf="isCloseVisible"
         (click)="onCloseHandler($event)"
+        [tabindex]="tabIndexValue"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

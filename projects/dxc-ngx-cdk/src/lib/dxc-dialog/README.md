@@ -83,6 +83,13 @@ The API properties are the following:
       specify different padding sizes.
     </td>
   </tr>
+  <tr>
+    <td>@Input<br>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>
+      Tabindex value given to the close button.
+    </td>
+  </tr>
 </table>
 
 ## Theming

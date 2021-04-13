@@ -102,6 +102,13 @@ The API properties are the following:
       in order to specify different margin sizes.
     </td>
   </tr>
+  <tr>
+    <td>@Input<br>tabIndexValue: number</td>
+    <td></td>
+    <td>
+      Value of the tabindex.
+    </td>
+  </tr>
 </table>
 
 ## Theming

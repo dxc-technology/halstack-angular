@@ -89,6 +89,7 @@
           *ngIf="isCloseVisible || mode == 'modal'"
           (click)="onCloseHandler($event)"
           data-testId="closeIcon"
+          [tabindex]="tabIndexValue"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

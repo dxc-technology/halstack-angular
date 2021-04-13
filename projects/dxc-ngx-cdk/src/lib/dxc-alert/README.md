@@ -103,6 +103,13 @@ The API properties are the following:
         </td>
         <td>Size of the component ('large' | 'fillParent' | 'fitContent').</td>
     </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td></td>
+      <td>
+        Tabindex value given to the close button.
+      </td>
+    </tr>
 </table>
 
 ## Theming

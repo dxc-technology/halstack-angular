@@ -11,7 +11,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { ChangeDetectorRef, QueryList } from "@angular/core";
 import { DxcChipPrefixIconComponent } from "./dxc-chip-prefix-icon/dxc-chip-prefix-icon.component";
 import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
@@ -23,6 +23,8 @@ import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suff
 })
 export class DxcChipComponent implements OnChanges {
   @HostBinding("class") className;
+  @HostBinding("class.hasTabIndexPrefix") hasTabIndexPrefix: boolean = false;
+  @HostBinding("class.hasTabIndexSuffix") hasTabIndexSuffix: boolean = false;
   @Input() label: string;
   @Input() suffixIconSrc: string;
   @Input() prefixIconSrc: string;
@@ -45,8 +47,22 @@ export class DxcChipComponent implements OnChanges {
   @ContentChildren(DxcChipSuffixIconComponent)
   dxcChipSuffixIcon: QueryList<DxcChipSuffixIconComponent>;
 
-  prefixTabIndex = 0;
-  suffixTabIndex = 0;
+  @Input()
+  get prefixTabIndex(): number {
+    return this._prefixTabIndex;
+  }
+  set prefixTabIndex(value: number) {
+    this._prefixTabIndex = coerceNumberProperty(value);
+  }
+  private _prefixTabIndex;
+  @Input()
+  get suffixTabIndex(): number {
+    return this._suffixTabIndex;
+  }
+  set suffixTabIndex(value: number) {
+    this._suffixTabIndex = coerceNumberProperty(value);
+  }
+  private _suffixTabIndex;
 
   defaultInputs = new BehaviorSubject<any>({
     label: "",
@@ -54,6 +70,8 @@ export class DxcChipComponent implements OnChanges {
     prefixIconSrc: null,
     disabled: false,
     magin: "",
+    prefixTabIndex: -1,
+    suffixTabIndex: -1
   });
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
@@ -79,12 +97,10 @@ export class DxcChipComponent implements OnChanges {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-
-    if (this.prefixIconClick.observers.length === 0) {
+    if (this.prefixIconClick.observers.length <= 0) {
       this.prefixTabIndex = -1;
     }
-
-    if (this.suffixIconClick.observers.length === 0) {
+    if (this.suffixIconClick.observers.length <= 0) {
       this.suffixTabIndex = -1;
     }
   }
@@ -157,7 +173,7 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          outline: none;
+          ${this.prefixTabIndex === -1 || inputs.disabled ? "outline: none;" : ""};
         }
       }
       .suffixIcon {
@@ -173,7 +189,7 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          outline: none;
+          ${this.suffixTabIndex === -1 || inputs.disabled ? "outline: none;" : ""};
         }
       }
     `;

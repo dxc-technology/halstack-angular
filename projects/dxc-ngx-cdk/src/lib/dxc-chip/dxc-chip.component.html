@@ -17,6 +17,7 @@
 </span>
 
 <span class="labelContainer">{{ label }}</span>
+
 <span
   (click)="handleSuffixClick()"
   [tabindex]="suffixTabIndex"
@@ -26,7 +27,6 @@
 >
   <ng-content select="dxc-chip-suffix-icon"></ng-content>
 </span>
-
 <img
   (click)="handleSuffixClick()"
   [tabindex]="suffixTabIndex"

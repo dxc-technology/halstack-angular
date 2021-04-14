@@ -6,11 +6,14 @@ import {
   HostBinding,
   SimpleChanges,
 } from "@angular/core";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, ElementRef } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-switch",
@@ -50,6 +53,14 @@ export class DxcSwitchComponent implements OnChanges {
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue = -1;
 
   @Output() onChange: EventEmitter<any>;
 
@@ -66,6 +77,7 @@ export class DxcSwitchComponent implements OnChanges {
     labelPosition: "before",
     margin: null,
     size: "fitContent",
+    tabIndexValue: -1,
   });
 
   sizes = {
@@ -143,10 +155,6 @@ export class DxcSwitchComponent implements OnChanges {
         span.mat-slide-toggle-required {
           color: var(--switch-requiredColor);
         }
-        .mat-slide-toggle-ripple {
-          height: 0px;
-          width: 0px;
-        }
         div.mat-slide-toggle-thumb {
           height: 24px;
           width: 24px;
@@ -182,7 +190,9 @@ export class DxcSwitchComponent implements OnChanges {
       }
       mat-slide-toggle.mat-disabled:not(.mat-checked) {
         .mat-slide-toggle-bar {
-          background-color: var(--switch-disabledUncheckedTrackBackgroundColor) !important;
+          background-color: var(
+            --switch-disabledUncheckedTrackBackgroundColor
+          ) !important;
         }
       }
       mat-slide-toggle.mat-disabled {
@@ -190,8 +200,23 @@ export class DxcSwitchComponent implements OnChanges {
           color: var(--switch-disabledFontColor) !important;
         }
         .mat-slide-toggle-bar {
-          background-color: var(--switch-disabledCheckedTrackBackgroundColor) !important;
+          background-color: var(
+            --switch-disabledCheckedTrackBackgroundColor
+          ) !important;
         }
+      }
+      .mat-slide-toggle:not(.mat-disabled).cdk-focused
+        .mat-slide-toggle-persistent-ripple {
+        opacity: 1;
+        outline: solid 2px;
+        margin: 5px;
+        height: 29px;
+        width: 30px;
+        outline-color: var(--switch-focusColor);
+      }
+      .mat-slide-toggle.mat-checked .mat-ripple-element,
+      .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
+        background-color: transparent;
       }
       .mat-slide-toggle.mat-disabled {
         opacity: 1;

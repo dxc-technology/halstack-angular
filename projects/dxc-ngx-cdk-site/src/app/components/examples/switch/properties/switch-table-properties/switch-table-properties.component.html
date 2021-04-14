@@ -1,4 +1,9 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -10,8 +15,7 @@
     <td><code>false</code></td>
     <td>
       If true, the component is checked. If undefined, the component will be
-      uncontrolled and the value will be managed internally by the
-      component.
+      uncontrolled and the value will be managed internally by the component.
     </td>
   </tr>
   <tr>
@@ -19,8 +23,7 @@
     <td></td>
     <td>
       Will be passed to the value attribute of the html input element. When
-      inside a form, this value will be only submitted if the switch is
-      checked.
+      inside a form, this value will be only submitted if the switch is checked.
     </td>
   </tr>
   <tr>
@@ -53,26 +56,26 @@
       <code>false</code>
     </td>
     <td>
-      If true, the switch will change its appearence, showing that the value
-      is required.
+      If true, the switch will change its appearence, showing that the value is
+      required.
     </td>
   </tr>
   <tr>
     <td>onChange: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user clicks the radio. The new
-      value will be passed as a parameter.
+      This function will be called when the user clicks the radio. The new value
+      will be passed as a parameter.
     </td>
   </tr>
   <tr>
     <td>margin: any (string | object)</td>
     <td></td>
     <td>
-      Size of the margin to be applied to the component ('xxsmall' |
-      'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You
-      can pass an object with 'top', 'bottom', 'left' and 'right' properties
-      in order to specify different margin sizes.
+      Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
+      'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+      object with 'top', 'bottom', 'left' and 'right' properties in order to
+      specify different margin sizes.
     </td>
   </tr>
   <tr>
@@ -84,5 +87,10 @@
       Size of the component ('small' | 'medium' | 'large' | 'fillParent' |
       'fitContent').
     </td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td></td>
+    <td>Value of the tabindex.</td>
   </tr>
 </dxc-table>

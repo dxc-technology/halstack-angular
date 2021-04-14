@@ -68,6 +68,13 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td></td>
+      <td>
+        Tabindex value given to the hamburger button.
+      </td>
+    </tr>
+    <tr>
         <td>@Input<br>margin: string</td>
         <td></td>
         <td>

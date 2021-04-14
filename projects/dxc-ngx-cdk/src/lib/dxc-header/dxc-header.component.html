@@ -7,7 +7,7 @@
     <div class="hamburger">
       <span
         id="hamburguer"
-        tabindex="0"
+        [tabindex]="tabIndexValue"
         (keydown)="showMenuKey($event)"
         (click)="showMenu()"
         *ngIf="isResponsive"

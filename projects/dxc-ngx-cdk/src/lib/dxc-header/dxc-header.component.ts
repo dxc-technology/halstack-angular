@@ -13,7 +13,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { spaces, responsiveSizes } from "../variables";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-header",
@@ -34,6 +34,14 @@ export class DxcHeaderComponent implements OnChanges {
     this._underlined = coerceBooleanProperty(value);
   }
   private _underlined;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -54,6 +62,7 @@ export class DxcHeaderComponent implements OnChanges {
     innerWidth,
     innerHeight,
     underlined:false,
+    tabIndexValue: -1,
   });
 
   @HostListener("window:resize", ["$event"])
@@ -218,7 +227,7 @@ export class DxcHeaderComponent implements OnChanges {
       }
       .hamburger {
         color: var(--header-fontColor);
-        padding: ${this.utils.getPaddings(inputs.padding)};
+        ${this.utils.getPaddings(inputs.padding)}
         .hamburgerItem {
           display: flex;
           flex-direction: column;

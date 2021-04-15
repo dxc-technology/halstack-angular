@@ -10,8 +10,10 @@ The DXC Wizard Component shows a layout where the user needs to go through sever
 <dxc-wizard
   [currentStep]="currentStep"
   (onStepClick)="onStepClick($event)"
-  [steps]="steps"
 >
+    <dxc-wizard-step></dxc-wizard-step>
+    <dxc-wizard-step></dxc-wizard-step>
+    <dxc-wizard-step disabled="true"></dxc-wizard-step>
 </dxc-wizard>
 ```
 
@@ -63,28 +65,48 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
-        <td>@Input<br>steps: object[]</td>
-        <td>
-            <code>[]</code>
-        </td>
-        <td>
-            An array of objects representing the steps. Each of them has the following properties:
-            <ul>
-                <li>label: Step label.</li>
-                <li>description: Step description.</li>
-                <li>iconSrc: URL of the icon to be displayed in the step.</li>
-                <li>disabled: Whether the step is disabled or not.</li>
-                <li>valid: Whether the step is valid or not.</li>
-            </ul>
-        </td>
-    </tr>
-    <tr>
         <td>@Input<br>margin: string | object</td>
         <td></td>
         <td>
             Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
             You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
         </td>
+    </tr>
+</table>
+
+### Children
+#### DxcWizardStep
+This component displays what is inside as a step of the wizard.
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>@Input<br>label: string</td>
+        <td></td>
+        <td>Step label.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>description: string</td>
+        <td></td>
+        <td>Description that will be placed next to the step.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>disabled: boolean</td>
+        <td></td>
+        <td>Whether the step is disabled or not.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>valid: boolean</td>
+        <td></td>
+        <td>Whether the step is valid or not.</td>
+    </tr>
+    <tr>
+        <td>@Input<br>tabIndexValue: number</td>
+        <td></td>
+        <td>Value of the tabindex.</td>
     </tr>
 </table>
 

@@ -1,4 +1,9 @@
-<dxc-heading [level]="3" weight="normal" text="API" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="API"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 
 <wizard-table-properties></wizard-table-properties>
 
@@ -15,38 +20,45 @@
   text="DxcWizardStep"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
-<p>
-  This component displays what is inside as a step of the wizard.
-</p>
+<p>This component displays what is inside as a step of the wizard.</p>
 
-<dxc-heading [level]="5" weight="light" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="5"
+  weight="light"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
-    <tr>
-        <th>Name</th>
-        <th>Default</th>
-        <th>Description</th>
-    </tr>
-    
-    <tr>
-        <td>label: string</td>
-        <td></td>
-        <td>Step label.</td>
-    </tr>
-    <tr>
-        <td>description: string</td>
-        <td></td>
-        <td>Description that will be placed next to the step.</td>
-    </tr>
-    <tr>
-        <td>disabled: boolean</td>
-        <td></td>
-        <td>Whether the step is disabled or not.</td>
-    </tr>
-    <tr>
-        <td>valid: boolean</td>
-        <td></td>
-        <td>Whether the step is valid or not.</td>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>label: string</td>
+    <td></td>
+    <td>Step label.</td>
+  </tr>
+  <tr>
+    <td>description: string</td>
+    <td></td>
+    <td>Description that will be placed next to the step.</td>
+  </tr>
+  <tr>
+    <td>disabled: boolean</td>
+    <td></td>
+    <td>Whether the step is disabled or not.</td>
+  </tr>
+  <tr>
+    <td>valid: boolean</td>
+    <td></td>
+    <td>Whether the step is valid or not.</td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td></td>
+    <td>Value of the tabindex.</td>
+  </tr>
 </dxc-table>
 
 <dxc-heading
@@ -56,7 +68,8 @@
   [margin]="{ bottom: 'small', top: 'small' }"
 ></dxc-heading>
 <p>
-  This component displays what is inside as an icon. If can be used as a child of the step.
+  This component displays what is inside as an icon. If can be used as a child
+  of the step.
 </p>
 
 <wizard-import></wizard-import>

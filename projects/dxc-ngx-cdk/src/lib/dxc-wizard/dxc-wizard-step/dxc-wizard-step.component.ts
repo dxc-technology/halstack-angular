@@ -1,4 +1,4 @@
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import {
   Component,
   Input,
@@ -36,6 +36,14 @@ export class DxcWizardStepComponent {
     this._valid = coerceBooleanProperty(value);
   }
   private _valid;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   //Props controlled by father component
   public position: number = 0;
@@ -59,6 +67,7 @@ export class DxcWizardStepComponent {
     description: null,
     disabled: false,
     valid: null,
+    tabIndexValue: -1,
   });
 
   constructor(
@@ -154,6 +163,7 @@ export class DxcWizardStepComponent {
         margin: ${inputs.mode === "vertical" ? "25px 0" : "0 25px"};
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
+        outline-color: var(--wizard-focusColor);
         &:focus {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;

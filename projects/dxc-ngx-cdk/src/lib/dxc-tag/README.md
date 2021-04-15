@@ -93,6 +93,13 @@ The API properties are the following:
             If true, the page is opened in a new browser tab.
         </td>
     </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td></td>
+      <td>
+        Value of the tabindex.
+      </td>
+    </tr>
 </table>
 
 ## Theming

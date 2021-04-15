@@ -112,6 +112,13 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td></td>
+      <td>
+        Value of the tabindex.
+      </td>
+    </tr>
+    <tr>
         <td>@Output<br>onClick: EventEmitter</td>
         <td></td>
         <td>This function will be called when the user clicks the link.</td>

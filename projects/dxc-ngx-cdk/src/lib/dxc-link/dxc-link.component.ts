@@ -1,7 +1,7 @@
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import {
   Component,
   Input,
@@ -58,6 +58,14 @@ export class DxcLinkComponent {
   }
   private _newWindow;
   @Input() margin: string;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -84,6 +92,7 @@ export class DxcLinkComponent {
     href: null,
     newWindow: false,
     margin: null,
+    tabIndexValue: 0
   });
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
@@ -108,7 +117,6 @@ export class DxcLinkComponent {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
-
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.styledButton = `${this.getDynamicStyledButton(

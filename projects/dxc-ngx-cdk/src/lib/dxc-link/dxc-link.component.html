@@ -1,6 +1,6 @@
 <div [class]="styledLink" (click)="onClickHandler($event)">
   <button *ngIf="isClickDefined == true" [class]="styledButton">
-    <a [href]="href" [target]="newWindow ? '_blank' : '_self'">
+    <a [href]="href" [target]="newWindow ? '_blank' : '_self'"  [tabindex]="disabled ? -1 : tabIndexValue">
       <img
         src="{{ iconSrc }}"
         *ngIf="iconSrc"
@@ -15,6 +15,7 @@
     [href]="href"
     [target]="newWindow ? '_blank' : '_self'"
     *ngIf="isClickDefined == false"
+    [tabindex]="disabled ? -1 : tabIndexValue"
   >
     <img
       src="{{ iconSrc }}"

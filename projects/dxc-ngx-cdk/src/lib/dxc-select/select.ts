@@ -1346,7 +1346,7 @@ export abstract class _MatSelectBase<C>
       .assistiveText:not(.mat-select-disabled) {
         color: var(--select-color);
         font-size: 15px;
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--fontFamily);
       }
 
       .selectLabel {

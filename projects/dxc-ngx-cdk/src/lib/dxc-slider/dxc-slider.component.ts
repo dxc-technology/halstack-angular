@@ -283,6 +283,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   getMinLabelContainerClass() {
     return css`
       font-size: 16px;
+      font-family: var(--fontFamily);
       margin-right: 15px;
     `;
   }
@@ -290,6 +291,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   getMaxLabelContainerClass(inputs: any) {
     return css`
       font-size: 16px;
+      font-family: var(--fontFamily);
       margin-left: ${inputs.step === 1 ? "15px" : "20px"};
     `;
   }

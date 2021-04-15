@@ -116,6 +116,7 @@ export class DxcButtonComponent {
         width: 100%;
         min-height: 43px;
         line-height: 19px;
+        font-family: var(--fontFamily);
         font-size: 14px;
         font-weight: 500;
         white-space: normal;

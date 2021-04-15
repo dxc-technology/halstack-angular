@@ -188,6 +188,7 @@ export class DxcDropdownComponent implements OnChanges {
 
       .mat-menu-content {
         margin-top: "2px";
+        font-family: var(--fontFamily);
         .mat-menu-item {
           color: var(--dropdown-dropdownFontColor);
           background-color: var(--dropdown-dropdownBackgroundColor);

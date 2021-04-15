@@ -69,7 +69,7 @@ export class DxcAlertComponent implements OnChanges {
         overflow: hidden;
         box-shadow: 0px 3px 6px #00000012;
         border-radius: 4px;
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--fontFamily);
         z-index: 300;
         ${this.utils.getMargins(inputs.margin)}
         ${this.utils.calculateWidth(this.sizes, inputs)}

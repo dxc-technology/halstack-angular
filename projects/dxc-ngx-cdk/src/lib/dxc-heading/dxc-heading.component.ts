@@ -51,7 +51,7 @@ export class DxcHeadingComponent {
         ${this.utils.getMargins(inputs.margin)}
       }
 
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--fontFamily);
       color: var(--heading-fontColor);
 
       h1 {

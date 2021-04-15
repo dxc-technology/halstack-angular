@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     .uploadedLabel {
-      font: 20px "Open Sans";
+      font: 20px var(--fontFamily);
       letter-spacing: 0.26px;
       color: #000000de;
       margin-bottom: 4px;

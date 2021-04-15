@@ -61,7 +61,7 @@
   .labelContainer {
     z-index: 1;
     font-size: 12px;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--fontFamily);
     max-width: 100%;
     min-width: 685px;
     margin-bottom: 8px;

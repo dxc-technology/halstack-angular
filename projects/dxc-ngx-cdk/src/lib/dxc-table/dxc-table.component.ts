@@ -71,6 +71,7 @@ export class DxcTableComponent {
         }
 
         & th {
+          font-family: var(--fontFamily);
           text-align: left;
           font-size: 14px;
           font-weight: 500;

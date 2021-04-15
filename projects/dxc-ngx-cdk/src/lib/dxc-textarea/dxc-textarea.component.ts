@@ -180,7 +180,7 @@ export class DxcTextareaComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--fontFamily);
       &::-webkit-scrollbar {
         width: 3px;
       }
@@ -196,7 +196,7 @@ export class DxcTextareaComponent
         cursor: default;
       }
       .mat-form-field {
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--fontFamily);
         line-height: unset;
         width: 100%;
         textarea {

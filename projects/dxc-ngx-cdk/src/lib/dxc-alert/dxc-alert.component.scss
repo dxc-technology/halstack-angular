@@ -16,7 +16,7 @@
       height: auto;
       .contentContainer.content {
         display: block;
-        font: 14px "Open Sans", sans-serif;
+        font: 14px var(--fontFamily);
         padding: 4px 53px 20px;
         overflow: auto;
         height: calc(100% - 48px - 24px);
@@ -74,7 +74,7 @@
         }
         .mainLabel {
           padding: 0px 10px 0px 0px;
-          font: Bold 12px "Open Sans", sans-serif;
+          font: Bold 12px var(--fontFamily);
           font-weight: bold;
         }
       }
@@ -89,12 +89,12 @@
         }
       }
       .spacer {
-        font: 12px "Open Sans", sans-serif;
+        font: 12px var(--fontFamily);
         font-weight: bolder;
         margin-right: 10px;
       }
       .inlineText {
-        font: 12px "Open Sans", sans-serif;
+        font: 12px var(--fontFamily);
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -105,7 +105,7 @@
     }
     .content {
       display: block;
-      font: 12px "Open Sans", sans-serif;
+      font: 12px var(--fontFamily);
       padding: 4px 53px 20px;
     }
   }

@@ -173,6 +173,7 @@ export class DxcCheckboxComponent implements OnInit {
             width: calc(100% - 50px);
             word-break: break-word;
             color: var(--checkbox-fontColor);
+            font-family: var(--fontFamily);
           }
 
           .mat-checkbox-inner-container {

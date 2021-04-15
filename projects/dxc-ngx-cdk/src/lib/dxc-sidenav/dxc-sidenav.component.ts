@@ -154,13 +154,13 @@ export class DxcSidenavComponent implements OnInit {
           border-radius: 3px;
         }
         dxc-sidenav-title {
-          font: 24px / 33px "Open Sans";
+          font: 24px / 33px var(--fontFamily);
           letter-spacing: 0px;
           color: rgba(0, 0, 0, 0.87);
           margin: 15px 0px;
         }
         dxc-sidenav-subtitle {
-          font: 12px / 17px "Open Sans";
+          font: 12px / 17px var(--fontFamily);
           letter-spacing: 1.88px;
           color: rgba(0, 0, 0, 0.6);
           text-transform: uppercase;
@@ -168,7 +168,7 @@ export class DxcSidenavComponent implements OnInit {
         }
         dxc-sidenav-link {
           text-decoration: none;
-          font: 14px / 19px "Open Sans";
+          font: 14px / 19px var(--fontFamily);
           letter-spacing: 0.24px;
           color: rgba(0, 0, 0, 0.6);
           margin: 6px 18px;

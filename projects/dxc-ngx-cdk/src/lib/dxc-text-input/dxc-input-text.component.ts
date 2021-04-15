@@ -303,7 +303,7 @@ export class DxcTextInputComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--fontFamily);
       dxc-input-prefix-icon,
       dxc-input-suffix-icon {
         display: flex;
@@ -345,7 +345,7 @@ export class DxcTextInputComponent
           : "var(--inputText-focusColor) !important"};
       }
       .mat-form-field {
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--fontFamily);
         line-height: unset;
         width: 100%;
         max-height: 74px;

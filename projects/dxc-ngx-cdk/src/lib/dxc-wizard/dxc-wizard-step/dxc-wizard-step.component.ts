@@ -201,7 +201,7 @@ export class DxcWizardStepComponent {
         color: var(--wizard-fontColor);
       }
       .number {
-        font: Normal 16px/22px "Open Sans", sans-serif;
+        font: Normal 16px/22px var(--fontFamily);
         letter-spacing: 0.77px;
         opacity: 1;
         margin: 0;
@@ -224,14 +224,14 @@ export class DxcWizardStepComponent {
       }
       .label {
         text-align: left;
-        font: Normal 16px/22px "Open Sans", sans-serif;
+        font: Normal 16px/22px var(--fontFamily);
         letter-spacing: 0.77px;
         color: inherit;
         margin: 0;
       }
       .description {
         text-align: left;
-        font: Normal 12px/17px "Open Sans", sans-serif;
+        font: Normal 12px/17px var(--fontFamily);
         letter-spacing: 0.58px;
         color: inherit;
         margin: 0;

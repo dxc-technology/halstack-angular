@@ -131,6 +131,7 @@ export class DxcSwitchComponent implements OnChanges {
       ${this.utils.getMargins(inputs.margin)}
       ${this.utils.calculateWidth(this.sizes, inputs)}
       display: inline-flex;
+      font-family: var(--fontFamily);
       color: var(--switch-fontColor);
       mat-slide-toggle {
         margin-top: 5px;

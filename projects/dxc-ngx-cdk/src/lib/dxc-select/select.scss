@@ -126,6 +126,7 @@ $mat-select-placeholder-arrow-space: 2 *
   .mat-optgroup-label,
   .mat-option {
     font-size: inherit;
+    font-family: var(--fontFamily);
     line-height: $mat-select-item-height;
     height: $mat-select-item-height;
   }

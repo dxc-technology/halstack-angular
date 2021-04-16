@@ -72,6 +72,14 @@ export class DxcTextareaComponent
     this._numRows = coerceNumberProperty(value);
   }
   private _numRows;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
@@ -102,6 +110,7 @@ export class DxcTextareaComponent
     invalid: false,
     margin: null,
     size: "medium",
+    tabIndexValue: 0
   });
 
   public formControl = new FormControl();

@@ -102,6 +102,20 @@ The API properties are the following:
         <td>Function used to format minimum and maximum labels.</td>
     </tr>
     <tr>
+      <td>@Input<br>tabIndexSliderValue: number</td>
+      <td></td>
+      <td>
+        Tabindex value given to the thumb of the slider.
+      </td>
+    </tr>
+    <tr>
+      <td>@Input<br>tabIndexInputValue: number</td>
+      <td></td>
+      <td>
+        Tabindex value given to input number.
+      </td>
+    </tr>
+    <tr>
         <td>@Output<br>valueChange: EventEmitter</td>
         <td></td>
         <td>

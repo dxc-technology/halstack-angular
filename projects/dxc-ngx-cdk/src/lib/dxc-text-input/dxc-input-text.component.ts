@@ -413,11 +413,16 @@ export class DxcTextInputComponent
       }
       &.disabled {
         cursor: not-allowed;
-        .prefixElement {
-          fill: var(--inputText-disabledFontColor);
+        dxc-input-prefix-icon,
+        dxc-input-suffix-icon {
+          .containerIcon {
+            fill: var(--inputText-disabledFontColor);
+          }
         }
+        .prefixElement,
         .suffixElement {
           fill: var(--inputText-disabledFontColor);
+          color: var(--inputText-disabledFontColor);
         }
       }
       .mat-form-field.mat-focused .mat-form-field-label {

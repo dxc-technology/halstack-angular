@@ -1,5 +1,6 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 import { Input } from '@angular/core';
+import { InputTextService } from '../services/inputText.service';
 import {
   Component,
   EventEmitter,
@@ -29,11 +30,18 @@ export class DxcInputPrefixIconComponent implements OnChanges {
     this.onClickPrefix.emit();
   }
 
-  constructor() {}
+  isDisabled: boolean = false;
+
+  constructor(private service: InputTextService) {}
 
   public ngOnChanges(): void {}
 
   ngOnInit() {
+    this.service.isDisabled.subscribe((value) => {
+      if (value) {
+        this.isDisabled = value;
+      }
+    });
     if(this.onClickPrefix.observers.length > 0){
       this.hasOnClick = true;
     }

@@ -26,12 +26,13 @@ import {
 } from "@angular/core";
 import { DxcInputPrefixIconComponent } from "./dxc-input-prefix-icon/dxc-input-prefix-icon.component";
 import { DxcInputSuffixIconComponent } from "./dxc-input-suffix-icon/dxc-input-suffix-icon.component";
+import { InputTextService } from './services/inputText.service';
 
 @Component({
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CssUtils],
+  providers: [CssUtils, InputTextService],
 })
 export class DxcTextInputComponent
   implements OnInit, OnChanges, AfterViewChecked {
@@ -165,7 +166,7 @@ export class DxcTextInputComponent
     tabIndexValue: 0,
   });
 
-  constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {}
+  constructor(private utils: CssUtils, private ref: ChangeDetectorRef, private service: InputTextService) {}
 
   ngOnInit() {
     this.renderedValue = this.value || "";
@@ -206,6 +207,8 @@ export class DxcTextInputComponent
 
     this.renderedValue = this.value || "";
     this.label = this.label || "";
+
+    this.service.setIsDisabled(this.disabled);
 
     if (
       this.onClickSuffix.observers !== undefined &&

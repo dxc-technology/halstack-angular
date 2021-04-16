@@ -14,7 +14,10 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import {
   ElementRef,
   OnInit,
@@ -81,6 +84,31 @@ export class DxcTextInputComponent
   @Input() public margin: any;
   @Input() public size: string;
 
+  @Input()
+  get tabIndexPreffixValue(): number {
+    return this._tabIndexPreffixValue;
+  }
+  set tabIndexPreffixValue(value: number) {
+    this._tabIndexPreffixValue = coerceNumberProperty(value);
+  }
+  private _tabIndexPreffixValue;
+  @Input()
+  get tabIndexSuffixValue(): number {
+    return this._tabIndexSuffixValue;
+  }
+  set tabIndexSuffixValue(value: number) {
+    this._tabIndexSuffixValue = coerceNumberProperty(value);
+  }
+  private _tabIndexSuffixValue;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
+
   @Output() public onClickSuffix: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onClickPrefix: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
@@ -132,6 +160,9 @@ export class DxcTextInputComponent
     margin: null,
     size: "medium",
     isMasked: false,
+    tabIndexPreffixValue: -1,
+    tabIndexSuffixValue: -1,
+    tabIndexValue: 0,
   });
 
   constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {}
@@ -176,14 +207,6 @@ export class DxcTextInputComponent
     this.renderedValue = this.value || "";
     this.label = this.label || "";
 
-    const inputs = Object.keys(changes).reduce((result, item) => {
-      result[item] = changes[item].currentValue;
-      return result;
-    }, {});
-
-    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this._valueChangeTrack = true;
     if (
       this.onClickSuffix.observers !== undefined &&
       this.onClickSuffix.observers.length !== 0
@@ -197,6 +220,15 @@ export class DxcTextInputComponent
     ) {
       this.prefixPointer = true;
     }
+
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      result[item] = changes[item].currentValue;
+      return result;
+    }, {});
+
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this._valueChangeTrack = true;
   }
 
   public onChanged($event: any): void {
@@ -296,6 +328,44 @@ export class DxcTextInputComponent
     `;
   }
 
+  getStyleOnClickPrefixIcon() {
+    if (this.prefixPointer) {
+      return css`
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-focusColor);
+        }
+        cursor: pointer;
+      `;
+    } else {
+      return css`
+        &:focus {
+          outline: none;
+        }
+        cursor: default;
+      `;
+    }
+  }
+
+  getStyleOnClickSuffixIcon() {
+    if (this.suffixPointer) {
+      return css`
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-focusColor);
+        }
+        cursor: pointer;
+      `;
+    } else {
+      return css`
+        &:focus {
+          outline: none;
+        }
+        cursor: default;
+      `;
+    }
+  }
+
   getDynamicStyle(inputs) {
     return css`
       min-height: 34px;
@@ -306,28 +376,43 @@ export class DxcTextInputComponent
       dxc-input-prefix-icon,
       dxc-input-suffix-icon {
         display: flex;
-        cursor: ${this.prefixPointer ? "pointer" : "default"};
+        cursor: default;
+        &:focus {
+          outline: none;
+        }
+        .containerIcon {
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      dxc-input-prefix-icon {
+        margin-right: 12px;
+      }
+      dxc-input-suffix-icon {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+      .onClickIconElement {
+        cursor: pointer !important;
+        .containerIcon {
+          &:focus {
+            outline: -webkit-focus-ring-color auto 1px !important;
+            outline-color: var(--inputText-focusColor) !important;
+          }
+        }
       }
       .prefixElement {
         margin-right: 12px;
-        fill: ${this.suffixPointer ? "pointer" : "default"};
-        cursor: ${this.prefixPointer ? "pointer" : "default"};
-        &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-focusColor);
-        }
+        ${this.getStyleOnClickPrefixIcon()}
       }
       .suffixElement {
         margin-left: 8px;
         margin-right: 8px;
-        cursor: ${this.suffixPointer ? "pointer" : "default"};
-        &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-focusColor);
-        }
+        ${this.getStyleOnClickSuffixIcon()}
       }
       &.disabled {
-        cursor: default;
+        cursor: not-allowed;
         .prefixElement {
           fill: var(--inputText-disabledFontColor);
         }

@@ -9,6 +9,7 @@
     class="prefixElement"
     *ngIf="prefix && !prefixIconSrc"
     id="prefixElement"
+    [tabIndex]="prefixPointer ? tabIndexPreffixValue : -1"
   >
     {{ prefix }}</span
   >
@@ -19,6 +20,7 @@
     *ngIf="prefixIconSrc"
     src="{{ prefixIconSrc }}"
     id="prefixElement"
+    [tabIndex]="prefixPointer ? tabIndexPreffixValue : -1"
   />
   <ng-content select="dxc-input-prefix-icon"></ng-content>
   <mat-label *ngIf="label">{{ label }}</mat-label>
@@ -36,12 +38,14 @@
     [matAutocomplete]="auto"
     [attr.aria-label]="label"
     [attr.aria-disabled]="disabled"
+    [tabIndex]="disabled ? -1 : tabIndexValue"
   />
   <span
     matSuffix
     (click)="onClickSuffixHandler($event)"
     class="suffixElement"
     *ngIf="suffix && !suffixIconSrc"
+    [tabIndex]="suffixPointer ? tabIndexSuffixValue : -1"
     >{{ suffix }}</span
   >
   <img
@@ -50,6 +54,7 @@
     class="suffixElement"
     *ngIf="suffixIconSrc"
     src="{{ suffixIconSrc }}"
+    [tabIndex]="suffixPointer ? tabIndexSuffixValue : -1"
   />
   <ng-content select="dxc-input-suffix-icon"></ng-content>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>

@@ -419,6 +419,7 @@ export class DxcResultTable<T>
         );
         viewRef.instance.columnName = key;
         viewRef.instance.isSortable = value.sortable.isSortable; //Save if header is sortable in the created component
+        viewRef.instance.tabIndexValue = value.tabIndexValue;
         viewRef.instance.state = this.getMapStateHeaders().get(key); //Get header's current state for sorting and save it in the created component
         viewRef.instance.parentClassName = this.className; // just in case there are more tables in the page
         viewRef.instance.propertyName = value.sortable.propertyName;

@@ -117,6 +117,13 @@ Directives are used to add functionality and new syntax into HTML components. Th
             Cell definition. It selects the value from the array.
         </td>
     </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex for the sortable icon.
+      </td>
+    </tr>
 </table>
 
 ## Theming

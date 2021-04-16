@@ -10,7 +10,7 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-checkbox",
@@ -49,6 +49,14 @@ export class DxcCheckboxComponent implements OnInit {
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onChange: EventEmitter<any>;
 

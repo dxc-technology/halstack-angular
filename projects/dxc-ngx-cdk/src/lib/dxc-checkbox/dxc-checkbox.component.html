@@ -1,5 +1,4 @@
 <mat-checkbox
-  theme
   disableRipple
   [checked]="renderedChecked"
   [labelPosition]="labelPosition ? labelPosition : 'before'"
@@ -10,6 +9,7 @@
   [id]="id"
   (change)="onValueChange($event)"
   data-testid="dxcCheckbox"
+  [tabIndex]="tabIndexValue"
 >
   <span *ngIf="label" class="checkboxLabel">
     <span *ngIf="required" class="mat-checkbox-required">*</span>

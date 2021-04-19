@@ -70,14 +70,14 @@ The API properties are the following:
   </tr>
   <tr>
     <td>@Input<br>suffixTabIndex: number</td>
-    <td></td>
+    <td><code>0</code></td>
     <td>
       Tabindex value given to the suffix icon.
     </td>
   </tr>
   <tr>
     <td>@Input<br>prefixTabIndex: number</td>
-    <td></td>
+    <td><code>0</code></td>
     <td>
       Tabindex value given to the prefix icon.
     </td>

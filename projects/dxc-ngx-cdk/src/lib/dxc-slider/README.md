@@ -103,14 +103,14 @@ The API properties are the following:
     </tr>
     <tr>
       <td>@Input<br>tabIndexSliderValue: number</td>
-      <td></td>
+      <td><code>0</code></td>
       <td>
         Tabindex value given to the thumb of the slider.
       </td>
     </tr>
     <tr>
       <td>@Input<br>tabIndexInputValue: number</td>
-      <td></td>
+      <td><code>0</code></td>
       <td>
         Tabindex value given to input number.
       </td>

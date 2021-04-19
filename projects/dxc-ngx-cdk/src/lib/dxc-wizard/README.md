@@ -105,7 +105,7 @@ This component displays what is inside as a step of the wizard.
     </tr>
     <tr>
         <td>@Input<br>tabIndexValue: number</td>
-        <td></td>
+        <td><code>0</code></td>
         <td>Value of the tabindex.</td>
     </tr>
 </table>

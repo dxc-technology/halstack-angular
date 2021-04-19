@@ -125,21 +125,21 @@ The API properties are the following:
     </tr>
     <tr>
       <td>@Input<br>tabIndexValue: number</td>
-      <td></td>
+      <td><code>0</code></td>
       <td>
         Tabindex value given to the input.
       </td>
     </tr>
     <tr>
       <td>@Input<br>tabIndexPreffixValue: number</td>
-      <td></td>
+      <td><code>0</code></td>
       <td>
         <b>Deprecated.</b> Tabindex value given to the preffix icon.
       </td>
     </tr>
     <tr>
       <td>@Input<br>tabIndexSuffixValue: number</td>
-      <td></td>
+      <td><code>0</code></td>
       <td>
         <b>Deprecated.</b> Tabindex value given to the suffix icon.
       </td>

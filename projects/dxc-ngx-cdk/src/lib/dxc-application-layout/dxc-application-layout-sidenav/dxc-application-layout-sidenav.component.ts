@@ -206,9 +206,6 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
         : ""};
             fill: var(--sidenav-arrowColor);
           }
-          &:focus {
-            outline: none;
-          }
         }
       }
     `;

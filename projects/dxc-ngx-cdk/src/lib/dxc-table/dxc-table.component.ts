@@ -58,11 +58,13 @@ export class DxcTableComponent {
         & td {
           background-color: var(--table-bodyBackgroundColor);
           color: var(--table-bodyFontColor);
-          min-height: 48px;
+          min-height: 60px;
+          text-align: left;
+
         }
 
         & th {
-          padding: 16px 20px 16px 40px;
+          padding: 15px 20px 15px 40px;
           min-height: 60px;
         }
 
@@ -73,7 +75,7 @@ export class DxcTableComponent {
         & th {
           font-family: var(--fontFamily);
           text-align: left;
-          font-size: 14px;
+          font-size: 20px;
           font-weight: 500;
           background-color: var(--table-headerBackgroundColor);
           color: var(--table-headerFontColor);

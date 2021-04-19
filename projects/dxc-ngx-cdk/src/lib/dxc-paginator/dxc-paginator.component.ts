@@ -53,6 +53,15 @@ export class DxcPaginatorComponent implements OnInit {
   }
   private _paginationActions;
 
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
+
   @Input() public itemsPerPageOptions: number[];
 
   @Input() public showGoToPage: boolean = false;
@@ -89,6 +98,7 @@ export class DxcPaginatorComponent implements OnInit {
     totalItems: 1,
     paginationActions: 0,
     itemsPerPageOptions: [],
+    tabIndexValue: 0
   });
 
   constructor() {

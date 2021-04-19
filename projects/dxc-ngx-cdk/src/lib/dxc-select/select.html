@@ -10,6 +10,7 @@
 <span class="assistiveText">{{assistiveText}}</span>
 <label class="selectLabel">{{label}}</label>
 <div cdk-overlay-origin
+     [tabIndex]="disabled ? -1 : tabIndexValue"
      [attr.aria-owns]="panelOpen ? id + '-panel' : null"
      class="mat-select-trigger"
      (click)="toggle()"

@@ -200,7 +200,7 @@ export const componentTokens = {
   "--select-selectedOptionBackgroundColor": globalTokens.lightGrey,
   "--select-color": globalTokens.black,
   "--select-error": globalTokens.darkRed,
-  "--select-focusColor": globalTokens.black,
+  "--select-focusColor": globalTokens.blue,
   "--select-disabledColor": globalTokens.lighterBlack,
   "--select-scrollBarThumbColor": globalTokens.darkGrey,
   "--select-scrollBarTrackColor": globalTokens.lightGrey,

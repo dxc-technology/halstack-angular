@@ -1,3 +1,4 @@
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 import {
   Component,
   Output,
@@ -15,6 +16,14 @@ export class DxcDragAndDropComponent implements OnChanges {
   hoveringWithFile = false;
   @Output() onAddFile = new EventEmitter<any>();
   @Input() summaryVisible = false;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
   @HostBinding("class.reduced") reduced: boolean = false;
 
   public ngOnInit() {}

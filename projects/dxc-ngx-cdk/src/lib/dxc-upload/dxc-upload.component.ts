@@ -3,6 +3,7 @@ import { CssUtils } from "../utils";
 import { css } from "emotion";
 import { SimpleChanges, HostBinding } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-upload",
@@ -19,12 +20,21 @@ export class DxcUploadComponent implements OnChanges {
 
   @Input() public uploadCallback: Function;
   @Input() margin: any;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
   @HostBinding("class") className;
 
   styleDxcUpload: string;
 
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
+    tabIndexValue: 0
   });
 
   constructor(private utils: CssUtils) {}

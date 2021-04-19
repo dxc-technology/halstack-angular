@@ -18,6 +18,7 @@
     (onClick)="fileInput.click()"
     mode="text"
     label="Choose File"
+    [tabIndexValue]="tabIndexValue"
   ></dxc-button>
   <input
     #fileInput
@@ -32,5 +33,6 @@
     label="Upload"
     [margin]="margins"
     iconSrc="assets/cloud_upload-24px.svg"
+    [tabIndexValue]="tabIndexValue"
   ></dxc-button>
 </div>

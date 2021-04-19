@@ -13,6 +13,7 @@
           ngClass
           *ngIf="link.logoSrc"
           href="{{ link.href }}"
+          [tabIndex]="link.tabIndexValue"
         >
           <img [class]="socialIconImageStyle" src="{{ link.logoSrc }}" />
         </a>
@@ -30,6 +31,7 @@
             *ngIf="bottomLink.text"
             href="{{ bottomLink.href }}"
             [class]="bottomLinkStyle"
+            [tabIndex]="bottomLink.tabIndexValue"
           >
             <span>
               {{ bottomLink.text }}

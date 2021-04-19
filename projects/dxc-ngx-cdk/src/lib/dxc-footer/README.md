@@ -63,6 +63,9 @@ The API properties are the following:
             <li>
                 <b>href</b>: URL of the page the link goes to
             </li>
+            <li>
+                <b>tabIndexValue</b>: Value of the tabindex.
+            </li>
             </ul>
         </td>
     </tr>
@@ -81,6 +84,9 @@ The API properties are the following:
             </li>
             <li>
                 <b>href</b>: URL of the page the link goes to
+            </li>
+            <li>
+                <b>tabIndexValue</b>: Value of the tabindex.
             </li>
             </ul>
         </td>

@@ -16,13 +16,13 @@ import {
   })
   export class DxcInputSuffixIconComponent implements OnChanges {
     @Input()
-    get tabIndexSuffixValue(): number {
-      return this._tabIndexSuffixValue;
+    get tabIndexValue(): number {
+      return this._tabIndexValue;
     }
-    set tabIndexSuffixValue(value: number) {
-      this._tabIndexSuffixValue = coerceNumberProperty(value);
+    set tabIndexValue(value: number) {
+      this._tabIndexValue = coerceNumberProperty(value);
     }
-    private _tabIndexSuffixValue;
+    private _tabIndexValue;
     @Output() public onClickSuffix: EventEmitter<any> = new EventEmitter<any>();
     @HostBinding("class.onClickIconElement") hasOnClick: boolean = false;
 

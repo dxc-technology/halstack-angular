@@ -16,13 +16,13 @@ import {
 })
 export class DxcInputPrefixIconComponent implements OnChanges {
   @Input()
-  get tabIndexPreffixValue(): number {
-    return this._tabIndexPreffixValue;
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
   }
-  set tabIndexPreffixValue(value: number) {
-    this._tabIndexPreffixValue = coerceNumberProperty(value);
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexPreffixValue = 0;
+  private _tabIndexValue;
   @Output() public onClickPrefix: EventEmitter<any> = new EventEmitter<any>();
   @HostBinding("class.onClickIconElement") hasOnClick: boolean = false;
 

@@ -19,7 +19,7 @@ import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { HostListener } from "@angular/core";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 const moment = momentImported;
 
 @Component({
@@ -60,6 +60,22 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private _invalid;
   @Input() margin: any;
   @Input() size: string;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
+  @Input()
+  get tabIndexIconValue(): number {
+    return this._tabIndexIconValue;
+  }
+  set tabIndexIconValue(value: number) {
+    this._tabIndexIconValue = coerceNumberProperty(value);
+  }
+  private _tabIndexIconValue;
 
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
@@ -80,6 +96,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
     invalid: false,
     margin: null,
     size: "medium",
+    tabIndexValue: 0,
+    tabIndexIconValue: 0
   });
 
   renderedValue: string;

@@ -180,7 +180,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.header?.hamburguerColor ?? tokens["--header-hamburguerColor"];
     proccessedTokens["--header-hoverHamburguerColor"] =
       this.setOpacity(theme?.header?.hamburguerColor, 0.16) ??
-      tokens["--header-hamburguerColor"];
+      tokens["--header-hoverHamburguerColor"];
 
     //INPUT TEXT
     proccessedTokens["--inputText-selectedOptionBackgroundColor"] =

@@ -1,5 +1,9 @@
-  
-<dxc-heading [level]="3" weight="normal" text="API" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="API"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 
 <toggleGroup-table-properties></toggleGroup-table-properties>
 
@@ -16,28 +20,34 @@
   text="DxcToggle"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
-<p>
-  This component displays what is inside as an toggle of the Toggle group.
-</p>
+<p>This component displays what is inside as an toggle of the Toggle group.</p>
 
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
-    <tr>
-        <th>Name</th>
-        <th>Default</th>
-        <th>Description</th>
-    </tr>
-    
-    <tr>
-        <td>value: any</td>
-        <td></td>
-        <td>Value of the option.</td>
-    </tr>
-
-    <tr>
-      <td>label: string</td>
-      <td></td>
-      <td>Label displayed in the option.</td>
+  <tr>
+    <th>Name</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>value: any</td>
+    <td></td>
+    <td>Value of the option.</td>
+  </tr>
+  <tr>
+    <td>label: string</td>
+    <td></td>
+    <td>Label displayed in the option.</td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex.</td>
   </tr>
 </dxc-table>
 
@@ -48,8 +58,8 @@
   [margin]="{ bottom: 'small', top: 'small' }"
 ></dxc-heading>
 <p>
-  This component displays what is inside as an icon. If can be used as a child of the toggle component.
+  This component displays what is inside as an icon. If can be used as a child
+  of the toggle component.
 </p>
-
 
 <toggleGroup-import></toggleGroup-import>

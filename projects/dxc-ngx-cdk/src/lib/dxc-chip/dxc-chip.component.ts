@@ -48,21 +48,13 @@ export class DxcChipComponent implements OnChanges {
   dxcChipSuffixIcon: QueryList<DxcChipSuffixIconComponent>;
 
   @Input()
-  get prefixTabIndex(): number {
-    return this._prefixTabIndex;
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
   }
-  set prefixTabIndex(value: number) {
-    this._prefixTabIndex = coerceNumberProperty(value);
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _prefixTabIndex;
-  @Input()
-  get suffixTabIndex(): number {
-    return this._suffixTabIndex;
-  }
-  set suffixTabIndex(value: number) {
-    this._suffixTabIndex = coerceNumberProperty(value);
-  }
-  private _suffixTabIndex;
+  private _tabIndexValue;
 
   defaultInputs = new BehaviorSubject<any>({
     label: "",
@@ -70,8 +62,7 @@ export class DxcChipComponent implements OnChanges {
     prefixIconSrc: null,
     disabled: false,
     magin: "",
-    prefixTabIndex: -1,
-    suffixTabIndex: -1
+    tabIndexValue: -1,
   });
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
@@ -98,10 +89,10 @@ export class DxcChipComponent implements OnChanges {
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     if (this.prefixIconClick.observers.length <= 0) {
-      this.prefixTabIndex = -1;
+      this.tabIndexValue = -1;
     }
     if (this.suffixIconClick.observers.length <= 0) {
-      this.suffixTabIndex = -1;
+      this.tabIndexValue = -1;
     }
   }
 
@@ -173,7 +164,7 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          ${this.prefixTabIndex === -1 || inputs.disabled ? "outline: none;" : ""};
+          ${this.tabIndexValue === -1 || inputs.disabled ? "outline: none;" : ""};
         }
       }
       .suffixIcon {

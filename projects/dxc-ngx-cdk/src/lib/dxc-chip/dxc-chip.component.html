@@ -1,6 +1,6 @@
 <img
   (click)="handlePrefrixClick()"
-  [tabindex]="prefixTabIndex"
+  [tabindex]="tabIndexValue"
   (keydown)="handlePrefrixKey($event)"
   class="prefixIcon"
   *ngIf="prefixIconSrc"
@@ -9,7 +9,7 @@
 <span
   class="prefixIcon"
   (click)="handlePrefrixClick()"
-  [tabindex]="prefixTabIndex"
+  [tabindex]="tabIndexValue"
   (keydown)="handlePrefrixKey($event)"
   *ngIf="dxcChipPrefixIcon.length !== 0"
 >
@@ -20,7 +20,7 @@
 
 <span
   (click)="handleSuffixClick()"
-  [tabindex]="suffixTabIndex"
+  [tabindex]="tabIndexValue"
   (keydown)="handleSuffixKey($event)"
   class="suffixIcon"
   *ngIf="dxcChipSuffixIcon.length !== 0"
@@ -29,7 +29,7 @@
 </span>
 <img
   (click)="handleSuffixClick()"
-  [tabindex]="suffixTabIndex"
+  [tabindex]="tabIndexValue"
   (keydown)="handleSuffixKey($event)"
   class="suffixIcon"
   *ngIf="suffixIconSrc"

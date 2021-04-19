@@ -145,11 +145,6 @@ The API properties are the following:
         Value of the tabindex.
       </td>
     </tr>
-    <tr>
-        <td>@Input<br>tabIndexIconValue: number</td>
-        <td><code>0</code></td>
-        <td>Tabindex value given to the calendar icon.</td>
-  </tr>
 </table>
 
 ## Available date formats

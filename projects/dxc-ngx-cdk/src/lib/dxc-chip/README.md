@@ -69,17 +69,10 @@ The API properties are the following:
     </td>
   </tr>
   <tr>
-    <td>@Input<br>suffixTabIndex: number</td>
+    <td>@Input<br>tabIndexValue: number</td>
     <td><code>0</code></td>
     <td>
-      Tabindex value given to the suffix icon.
-    </td>
-  </tr>
-  <tr>
-    <td>@Input<br>prefixTabIndex: number</td>
-    <td><code>0</code></td>
-    <td>
-      Tabindex value given to the prefix icon.
+      Value of the tabindex.
     </td>
   </tr>
   <tr>

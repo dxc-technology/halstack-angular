@@ -84,23 +84,6 @@ export class DxcTextInputComponent
 
   @Input() public margin: any;
   @Input() public size: string;
-
-  @Input()
-  get tabIndexPreffixValue(): number {
-    return this._tabIndexPreffixValue;
-  }
-  set tabIndexPreffixValue(value: number) {
-    this._tabIndexPreffixValue = coerceNumberProperty(value);
-  }
-  private _tabIndexPreffixValue;
-  @Input()
-  get tabIndexSuffixValue(): number {
-    return this._tabIndexSuffixValue;
-  }
-  set tabIndexSuffixValue(value: number) {
-    this._tabIndexSuffixValue = coerceNumberProperty(value);
-  }
-  private _tabIndexSuffixValue;
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -161,8 +144,6 @@ export class DxcTextInputComponent
     margin: null,
     size: "medium",
     isMasked: false,
-    tabIndexPreffixValue: -1,
-    tabIndexSuffixValue: -1,
     tabIndexValue: 0,
   });
 

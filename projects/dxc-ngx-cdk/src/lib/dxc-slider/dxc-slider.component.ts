@@ -65,21 +65,13 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   @Input() size: string;
   @Input() labelFormatCallback: (value: number) => string | number;
   @Input()
-  get tabIndexSliderValue(): number {
-    return this._tabIndexSliderValue;
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
   }
-  set tabIndexSliderValue(value: number) {
-    this._tabIndexSliderValue = coerceNumberProperty(value);
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexSliderValue;
-  @Input()
-  get tabIndexInputValue(): number {
-    return this._tabIndexInputValue;
-  }
-  set tabIndexInputValue(value: number) {
-    this._tabIndexInputValue = coerceNumberProperty(value);
-  }
-  private _tabIndexInputValue;
+  private _tabIndexValue;
 
   @Output() onDragEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
@@ -106,8 +98,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     required: false,
     margin: null,
     size: null,
-    tabIndexSliderValue: 0,
-    tabIndexInputValue: 0,
+    tabIndexValue: 0,
   });
 
   sizes = {

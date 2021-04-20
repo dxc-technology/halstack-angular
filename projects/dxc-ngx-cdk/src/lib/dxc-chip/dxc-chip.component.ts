@@ -180,7 +180,7 @@ export class DxcChipComponent implements OnChanges {
             : "default"};
         }
         &:focus {
-          ${this.suffixTabIndex === -1 || inputs.disabled ? "outline: none;" : ""};
+          ${this.tabIndexValue === -1 || inputs.disabled ? "outline: none;" : ""};
         }
       }
     `;

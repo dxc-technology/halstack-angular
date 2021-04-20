@@ -274,8 +274,8 @@ export const componentTokens = {
   "--toggle-selectedHoverFontColor": globalTokens.white,
   "--toggle-disabledSelectedBackgroundColor": globalTokens.lighterPurple,
   "--toggle-disabledSelectedFontColor": globalTokens.white,
-  "--toggle-disabledUnselectedBackgroundColor": globalTokens.lighterPurple,
-  "--toggle-disabledUnselectedFontColor": globalTokens.lightGrey,
+  "--toggle-disabledUnselectedBackgroundColor": globalTokens.lightWhite,
+  "--toggle-disabledUnselectedFontColor": globalTokens.lighterBlack,
 
   //UPLOAD
   "--upload-fontColor": globalTokens.darkGrey,

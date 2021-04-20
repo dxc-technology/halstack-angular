@@ -1,6 +1,6 @@
 <mat-toolbar [ngClass]="underlined ? 'underlined' : ''">
   <mat-toolbar-row>
-    <a class="headerAnchor" (click)="onClickHandler($event)">
+    <a class="headerAnchor" (click)="onClickHandler($event)" [tabindex]="isClickDefined ? tabIndexValue : -1">
       <img [src]="getLogoDxc()" *ngIf="!logoSrc" />
       <img *ngIf="logoSrc" src="{{ logoSrc }}" />
     </a>
@@ -32,7 +32,7 @@
 </mat-toolbar>
 <div [class]="responsiveMenu">
   <div class="responsiveMenu-Header">
-    <a class="headerAnchor" (click)="onClickHandler($event)">
+    <a class="headerAnchor" (click)="onClickHandler($event)" [tabindex]="isClickDefined ? tabIndexValue : -1">
       <img [src]="getLogoResponsiveDxc()" *ngIf="!logoResponsiveSrc" />
       <img *ngIf="logoResponsiveSrc" src="{{ logoResponsiveSrc }}" />
     </a>
@@ -41,7 +41,7 @@
       (keydown)="showMenuKey($event)"
       (click)="showMenu()"
       id="closeIcon"
-      tabindex="0"
+      [tabIndex]="tabIndexValue"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

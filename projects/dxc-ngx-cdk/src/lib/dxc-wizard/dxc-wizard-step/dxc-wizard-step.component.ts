@@ -36,14 +36,6 @@ export class DxcWizardStepComponent {
     this._valid = coerceBooleanProperty(value);
   }
   private _valid;
-  @Input()
-  get tabIndexValue(): number {
-    return this._tabIndexValue;
-  }
-  set tabIndexValue(value: number) {
-    this._tabIndexValue = coerceNumberProperty(value);
-  }
-  private _tabIndexValue;
 
   //Props controlled by father component
   public position: number = 0;
@@ -52,6 +44,7 @@ export class DxcWizardStepComponent {
   public isCurrent: boolean = false;
   public mode: string = "horizontal";
   public isVisited: boolean = false;
+  public tabIndexValue: number = 0;
 
   @ContentChildren(DxcWizardIconComponent)
   dxcWizardIcon: QueryList<DxcWizardIconComponent>;
@@ -67,7 +60,6 @@ export class DxcWizardStepComponent {
     description: null,
     disabled: false,
     valid: null,
-    tabIndexValue: -1,
   });
 
   constructor(
@@ -77,6 +69,11 @@ export class DxcWizardStepComponent {
     this.service.mode.subscribe((value) => {
       if (value) {
         this.mode = value;
+      }
+    });
+    this.service.tabIndexValue.subscribe((value) => {
+      if (value) {
+        this.tabIndexValue = value;
       }
     });
   }

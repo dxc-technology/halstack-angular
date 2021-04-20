@@ -10,7 +10,7 @@
     "copy-styles-lib": "cp -R ./src/lib/styles ./../../dist/dxc-ngx-cdk/lib/styles ",
     "copy-md-lib": "cp ./../../README.md ./../../dist/dxc-ngx-cdk/",
     "post-build-lib-win": "xcopy .\\src\\assets .\\..\\..\\dist\\dxc-ngx-cdk\\lib\\assets /Y /I && npm run copy-styles-lib-win",
-    "copy-styles-lib-win": "xcopy .\\src\\lib\\styles .\\..\\..\\dist\\dxc-ngx-cdk\\lib\\styles /Y /I",
+    "copy-styles-lib-win": "xcopy .\\src\\lib\\styles .\\..\\..\\dist\\dxc-ngx-cdk\\lib\\styles /Y /I /E",
     "generate-lib": "npm run build-lib && npm run post-build-lib && npm run package",
     "generate-lib-prod": "npm run build-lib-prod && npm run post-build-lib && npm run package",
     "generate-lib-win": "npm run build-lib && npm run post-build-lib-win && npm run package",

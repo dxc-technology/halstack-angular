@@ -10,6 +10,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-footer",
@@ -20,13 +21,21 @@ import { responsiveSizes } from "../variables";
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;
 
-  @Input() socialLinks: { href?: string; logoSrc?: string; tabIndexValue?: number }[];
-  @Input() bottomLinks: { href?: string; text?: string; tabIndexValue?: number }[];
+  @Input() socialLinks: { href?: string; logoSrc?: string }[];
+  @Input() bottomLinks: { href?: string; text?: string }[];
 
   @Input() copyright: string;
   @Input() margin: any;
   @Input() padding: any;
   @Input() logoSrc: string;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   defaultImglogo: string;
   innerWidth;

@@ -11,7 +11,10 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { ChangeDetectorRef, QueryList } from "@angular/core";
 import { DxcChipPrefixIconComponent } from "./dxc-chip-prefix-icon/dxc-chip-prefix-icon.component";
 import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
@@ -88,7 +91,10 @@ export class DxcChipComponent implements OnChanges {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.prefixIconClick.observers.length <= 0 && this.suffixIconClick.observers.length <= 0) {
+    if (
+      this.prefixIconClick.observers.length <= 0 &&
+      this.suffixIconClick.observers.length <= 0
+    ) {
       this.tabIndexValue = -1;
     }
   }
@@ -113,6 +119,44 @@ export class DxcChipComponent implements OnChanges {
       $event.preventDefault();
       this.suffixIconClick.emit();
     }
+  }
+
+  getDisabledStyleSuffixIcon(disabled) {
+    if (disabled) {
+      if (this.suffixIconClick.observers.length > 0) {
+        return css`
+          cursor: not-allowed;
+        `;
+      }
+    } else {
+      if (this.suffixIconClick.observers.length > 0) {
+        return css`
+          cursor: pointer;
+        `;
+      }
+    }
+    return css`
+      cursor: default;
+    `;
+  }
+
+  getDisabledStylePrefixIcon(disabled) {
+    if (disabled) {
+      if (this.prefixIconClick.observers.length > 0) {
+        return css`
+          cursor: not-allowed;
+        `;
+      }
+    } else {
+      if (this.prefixIconClick.observers.length > 0) {
+        return css`
+          cursor: pointer;
+        `;
+      }
+    }
+    return css`
+      cursor: default;
+    `;
   }
 
   getDynamicStyle(inputs) {
@@ -154,14 +198,12 @@ export class DxcChipComponent implements OnChanges {
         height: 24px;
         width: 24px;
         &:hover {
-          cursor: ${inputs.disabled
-            ? "not-allowed"
-            : this.prefixIconClick.observers.length > 0
-            ? "pointer"
-            : "default"};
+          ${this.getDisabledStylePrefixIcon(inputs.disabled)};
         }
         &:focus {
-          ${this.tabIndexValue === -1 || inputs.disabled ? "outline: none;" : ""};
+          ${this.tabIndexValue === -1 || inputs.disabled
+            ? "outline: none;"
+            : ""};
         }
       }
       .suffixIcon {
@@ -170,14 +212,12 @@ export class DxcChipComponent implements OnChanges {
         height: 24px;
         width: 24px;
         &:hover {
-          cursor: ${inputs.disabled
-            ? "not-allowed"
-            : this.suffixIconClick.observers.length > 0
-            ? "pointer"
-            : "default"};
+          ${this.getDisabledStyleSuffixIcon(inputs.disabled)};
         }
         &:focus {
-          ${this.tabIndexValue === -1 || inputs.disabled ? "outline: none;" : ""};
+          ${this.tabIndexValue === -1 || inputs.disabled
+            ? "outline: none;"
+            : ""};
         }
       }
     `;

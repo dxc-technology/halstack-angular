@@ -49,8 +49,8 @@ export class DxcHeaderComponent implements OnChanges {
   isMenuVisible = false;
   innerWidth;
   innerHeight;
-
   responsiveMenu: string;
+  isClickDefined = false;
 
   defaultInputs = new BehaviorSubject<any>({
     logoSrc: null,
@@ -62,7 +62,7 @@ export class DxcHeaderComponent implements OnChanges {
     innerWidth,
     innerHeight,
     underlined:false,
-    tabIndexValue: -1,
+    tabIndexValue: 0,
   });
 
   @HostListener("window:resize", ["$event"])
@@ -104,6 +104,7 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   public ngOnInit() {
+    this.isClickDefined = this.onClick.observers.length > 0;
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {
@@ -175,6 +176,8 @@ export class DxcHeaderComponent implements OnChanges {
       ${this.getBottomMargin(inputs.margin)}
       .headerAnchor {
         display: flex;
+        cursor: ${this.isClickDefined ? "pointer" : "default"};
+        ${!this.isClickDefined ? "outline:none;" : ""};
       }
       .mat-toolbar {
         font-size: unset;
@@ -210,10 +213,6 @@ export class DxcHeaderComponent implements OnChanges {
         max-height: 32px;
         width: auto;
         vertical-align: middle;
-
-        &:hover {
-          cursor: pointer;
-        }
       }
       .content {
         display: flex;

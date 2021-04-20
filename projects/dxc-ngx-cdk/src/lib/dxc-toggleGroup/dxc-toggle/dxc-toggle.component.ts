@@ -11,7 +11,6 @@ import {
 } from "@angular/core";
 import { DxcToggleIconComponent } from "../dxc-toggle-icon/dxc-toggle-icon.component";
 import { ToggleGroupService } from "../services/toggleGroup.service";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-toggle",
@@ -21,14 +20,6 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
 export class DxcToggleComponent implements OnInit {
   @Input() label: string;
   @Input() value;
-  @Input()
-  get tabIndexValue(): number {
-    return this._tabIndexValue;
-  }
-  set tabIndexValue(value: number) {
-    this._tabIndexValue = coerceNumberProperty(value);
-  }
-  private _tabIndexValue;
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
 
   @HostBinding("class.selected") get valid() {
@@ -39,11 +30,18 @@ export class DxcToggleComponent implements OnInit {
   dxcToggleIcon: QueryList<DxcToggleIconComponent>;
 
   selected: boolean = false;
+  tabIndexValue: number = 0;
 
   constructor(
     private service: ToggleGroupService,
     private cdRef: ChangeDetectorRef
-  ) {}
+  ) {
+    this.service.tabIndexValue.subscribe((value) => {
+      if (value) {
+        this.tabIndexValue = value;
+      }
+    });
+  }
 
   ngAfterViewInit() {
     if (this.dxcToggleIcon.length !== 0) {

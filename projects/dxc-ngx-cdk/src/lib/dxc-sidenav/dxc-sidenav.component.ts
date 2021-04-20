@@ -13,13 +13,14 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "./../variables";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import { SidenavService } from './services/sidenav.service';
 
 @Component({
   selector: "dxc-sidenav",
   templateUrl: "./dxc-sidenav.component.html",
   styleUrls: ["./dxc-sidenav.component.scss"],
-  providers: [CssUtils],
+  providers: [CssUtils, SidenavService],
 })
 export class DxcSidenavComponent implements OnInit {
   @HostBinding("class") sidenavStyles;
@@ -33,6 +34,14 @@ export class DxcSidenavComponent implements OnInit {
     this._displayArrow = coerceBooleanProperty(value);
   }
   _displayArrow = true;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   firstClick: boolean = false; //remove animation on first load
   innerWidth;
@@ -47,7 +56,7 @@ export class DxcSidenavComponent implements OnInit {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private service: SidenavService) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -81,6 +90,7 @@ export class DxcSidenavComponent implements OnInit {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    this.service.setTabIndexValue(this.tabIndexValue);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;

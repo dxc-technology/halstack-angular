@@ -9,7 +9,7 @@
   [id]="id"
   (change)="onValueChange($event)"
   data-testid="dxcCheckbox"
-  [tabIndex]="tabIndexValue"
+  [tabIndex]="disabled ? -1 : tabIndexValue"
 >
   <span *ngIf="label" class="checkboxLabel">
     <span *ngIf="required" class="mat-checkbox-required">*</span>

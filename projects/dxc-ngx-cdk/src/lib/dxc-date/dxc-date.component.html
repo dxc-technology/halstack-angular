@@ -15,9 +15,9 @@
   [mdePopoverOffsetX]="popOverOffsetX"
   [mdePopoverPositionX]="'before'"
   [disabled]="disabled"
-  [tabIndexValue]="tabIndexValue"
+  [tabIndexValue]="disabled ? -1 : tabIndexValue"
 >
-  <dxc-input-suffix-icon (onClickSuffix)="openCalendar()" [tabIndexValue]="tabIndexValue">
+  <dxc-input-suffix-icon (onClickSuffix)="openCalendar()" [tabIndexValue]="disabled ? -1 : tabIndexValue">
     <svg
       role="calendarIcon"
       xmlns="http://www.w3.org/2000/svg"

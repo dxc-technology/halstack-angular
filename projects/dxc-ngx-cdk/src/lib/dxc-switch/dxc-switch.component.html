@@ -6,7 +6,7 @@
   [name]="name"
   [id]="id"
   (change)="onChangeHandler($event)"
-  [tabIndex]="tabIndexValue"
+  [tabIndex]="disabled ? -1 : tabIndexValue"
 >
   <span
     *ngIf="label"

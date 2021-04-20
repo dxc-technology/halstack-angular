@@ -60,7 +60,7 @@ export class DxcSwitchComponent implements OnChanges {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue = -1;
+  private _tabIndexValue;
 
   @Output() onChange: EventEmitter<any>;
 
@@ -77,7 +77,7 @@ export class DxcSwitchComponent implements OnChanges {
     labelPosition: "before",
     margin: null,
     size: "fitContent",
-    tabIndexValue: -1,
+    tabIndexValue: 0,
   });
 
   sizes = {

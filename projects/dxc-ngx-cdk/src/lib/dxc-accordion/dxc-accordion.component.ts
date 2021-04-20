@@ -68,7 +68,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     margin: null,
     padding: null,
     disabled: false,
-    tabIndexValue: null
+    tabIndexValue: 0
   });
 
   constructor(

@@ -104,7 +104,7 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   public ngOnInit() {
-    this.isClickDefined = this.onClick.observers.length > 0;
+    this.isClickDefined = this.onClick.observers?.length > 0;
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {

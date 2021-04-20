@@ -46,7 +46,7 @@ export class DxcCardComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue = -1;
+  private _tabIndexValue;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -62,7 +62,7 @@ export class DxcCardComponent implements OnInit {
     imageBgColor: "black",
     margin: null,
     linkHref: null,
-    tabIndexValue: -1,
+    tabIndexValue: 0,
   });
 
   public ngOnChanges(changes: SimpleChanges): void {

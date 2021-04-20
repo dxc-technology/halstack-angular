@@ -62,7 +62,7 @@ export class DxcButtonComponent {
     iconPosition: "before",
     margin: null,
     size: "fitContent",
-    tabIndexValue: null
+    tabIndexValue: 0
   });
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}

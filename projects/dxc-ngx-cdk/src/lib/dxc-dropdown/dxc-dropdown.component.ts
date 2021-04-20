@@ -90,7 +90,7 @@ export class DxcDropdownComponent implements OnChanges {
     margin: null,
     size: "fitContent",
     expandOnHover: false,
-    tabIndexValue: -1,
+    tabIndexValue: 0,
   });
 
   public arrowClass: string = "down";

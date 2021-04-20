@@ -52,7 +52,7 @@ export class DxcAlertComponent implements OnChanges {
     margin: null,
     type: "info",
     size: "fitContent",
-    tabIndexValue: null
+    tabIndexValue: 0
   });
 
   constructor(private utils: CssUtils) {}

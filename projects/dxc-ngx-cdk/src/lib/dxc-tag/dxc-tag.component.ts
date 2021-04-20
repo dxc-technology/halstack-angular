@@ -90,7 +90,7 @@ export class DxcTagComponent implements OnInit {
     labelPosition: "after",
     margin: null,
     newWindow: false,
-    tabIndexValue: -1
+    tabIndexValue: 0
   });
   constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
 

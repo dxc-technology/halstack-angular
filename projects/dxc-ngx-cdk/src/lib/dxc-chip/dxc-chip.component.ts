@@ -88,10 +88,7 @@ export class DxcChipComponent implements OnChanges {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.prefixIconClick.observers.length <= 0) {
-      this.tabIndexValue = -1;
-    }
-    if (this.suffixIconClick.observers.length <= 0) {
+    if (this.prefixIconClick.observers.length <= 0 && this.suffixIconClick.observers.length <= 0) {
       this.tabIndexValue = -1;
     }
   }

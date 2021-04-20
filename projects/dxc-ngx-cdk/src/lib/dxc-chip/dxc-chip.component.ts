@@ -137,7 +137,7 @@ export class DxcChipComponent implements OnChanges {
         : "1px solid var(--chip-outlinedColor)"};
       .labelContainer {
         font-size: 16px;
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--fontFamily);
         line-height: 24px;
         white-space: nowrap;
         overflow: hidden;

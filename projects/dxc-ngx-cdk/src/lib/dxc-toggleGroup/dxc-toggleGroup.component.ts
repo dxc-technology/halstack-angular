@@ -224,7 +224,7 @@ export class DxcToggleGroupComponent implements OnInit {
           .label {
             margin: 12px 30px;
             letter-spacing: 1.25px;
-            font: normal 14px "Open Sans", sans-serif;
+            font: normal 14px  font-family: var(--fontFamily);
           }
           dxc-toggle-icon {
             display: flex;

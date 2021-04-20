@@ -175,7 +175,7 @@ export class DxcLinkComponent {
       padding: 0;
       cursor: ${inputs.disabled ? "default" : "pointer"};
       outline: 0;
-      font-family: inherit;
+      font-family: var(--fontFamily);
     `;
   }
 

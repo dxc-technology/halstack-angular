@@ -249,6 +249,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       background: var(--date-pickerBackgroundColor);
 
       .mat-calendar {
+        font-family: var(--fontFamily);
         width: 100%;
       }
       .mat-calendar-content {

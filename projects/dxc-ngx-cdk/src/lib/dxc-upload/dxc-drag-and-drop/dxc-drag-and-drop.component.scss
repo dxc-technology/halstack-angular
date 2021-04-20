@@ -146,9 +146,11 @@
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
+    font-family: var(--fontFamily);
   }
   .dropLabel {
     font-style: italic;
+    font-family: var(--fontFamily);
     color: var(--upload-fontColor) !important;
     margin-bottom: 20px;
   }

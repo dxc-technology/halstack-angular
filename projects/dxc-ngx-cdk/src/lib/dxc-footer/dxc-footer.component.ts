@@ -151,7 +151,7 @@ export class DxcFooterComponent implements OnChanges {
   setFooterContainerStyle(input: any, responsive) {
     return css`
       padding: ${responsive ? "20px" : "20px 60px 20px 20px"};
-      font-family: "Open Sans", sans-serif;
+      font-family: var(--fontFamily);
       background-color: var(--footer-backgroundColor);
       ${this.utils.getTopMargin(input.margin)}
     `;
@@ -175,6 +175,7 @@ export class DxcFooterComponent implements OnChanges {
 
       .copyrightStyle {
         color: var(--footer-fontColor);
+        font-family: var(--fontFamily);
         font-size: 12px;
         max-width: ${responsive ? "100%" : "40%"};
         width: ${responsive ? "100%" : "40%"};

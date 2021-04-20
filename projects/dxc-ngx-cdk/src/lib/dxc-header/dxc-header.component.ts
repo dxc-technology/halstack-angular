@@ -221,7 +221,7 @@ export class DxcHeaderComponent implements OnChanges {
         flex-wrap: wrap;
         width: 100%;
         overflow: hidden;
-        font-family: "Open Sans", sans-serif;
+        font-family: var(--fontFamily);
         ${this.utils.getPaddings(inputs.padding)}
       }
       .hamburger {

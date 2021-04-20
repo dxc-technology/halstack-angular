@@ -150,6 +150,7 @@ export class DxcRadioComponent implements OnInit {
             width: calc(100% - 50px);
             ${this.setTextAlign(inputs.labelPosition)}
             color: var(--radio-fontColor);
+            font-family: var(--fontFamily);
           }
           .mat-radio-required {
             margin-right: 1px;
@@ -192,6 +193,7 @@ export class DxcRadioComponent implements OnInit {
             }
             .mat-radio-label-content{
               color: var(--radio-disabledFontColor);
+              font-family: var(--fontFamily);
             }
             cursor: not-allowed;
           }

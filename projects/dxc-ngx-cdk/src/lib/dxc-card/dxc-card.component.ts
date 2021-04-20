@@ -140,6 +140,7 @@ export class DxcCardComponent implements OnInit {
       mat-card {
         ${this.utils.getMargins(inputs.margin)}
         ${this.getCursor(inputs.linkHref)}
+        font-family: var(--fontFamily);
         font-size: 14px;
         display: inline-flex;
         width: 400px;

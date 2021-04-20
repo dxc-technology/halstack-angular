@@ -78,6 +78,7 @@ export class DxcTagComponent implements OnInit {
     cursor: pointer;
     outline: 0;
     font-family: inherit;
+    font-family: var(--fontFamily);
   `;
 
   defaultInputs = new BehaviorSubject<any>({

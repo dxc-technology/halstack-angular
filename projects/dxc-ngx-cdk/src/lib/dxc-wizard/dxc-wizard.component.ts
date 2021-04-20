@@ -116,6 +116,7 @@ export class DxcWizardComponent {
           }
           .number {
             color: var(--wizard-fontColor);
+            font-family: var(--fontFamily);
           }
         }
 

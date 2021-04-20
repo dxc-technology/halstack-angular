@@ -189,6 +189,7 @@ export class DxcTextareaComponent
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
       display: inline-flex;
+      font-family: var(--fontFamily);
       &::-webkit-scrollbar {
         width: 3px;
       }
@@ -204,6 +205,7 @@ export class DxcTextareaComponent
         cursor: default;
       }
       .mat-form-field {
+        font-family: var(--fontFamily);
         line-height: unset;
         width: 100%;
         textarea {
@@ -242,6 +244,12 @@ export class DxcTextareaComponent
       }
       .mat-hint {
         color: var(--textarea-fontColor);
+      }
+      .mat-form-field.mat-focused .mat-form-field-label{
+        color: var(--inputText-focusColor) !important;
+      }
+      .mat-form-field.mat-focused .mat-form-field-ripple{
+        background-color: var(--inputText-focusColor);
       }
       .mat-form-field-underline {
         background-color: var(--textarea-fontColor);

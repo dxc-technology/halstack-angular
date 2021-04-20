@@ -21,12 +21,14 @@ div.overview-header-titles {
 h1.overview-header-title {
   margin: 0px;
   font-size: 35px;
+  font-family: var(--fontFamily);
   line-height: 40px;
 }
 
 h2.overview-header-subtitle {
   margin: 0px;
   font-size: 25px;
+  font-family: var(--fontFamily);
   line-height: 20px;
   color: #474747;
   font-weight: normal;

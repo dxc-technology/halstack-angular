@@ -182,7 +182,8 @@ export class DxcTabsComponent implements OnChanges {
         .dxc-tab-label span {
           color: var(--tabs-fontColor);
           opacity: 1;
-          font: normal normal 600 16px/22px "Open Sans", sans-serif;
+          font: normal normal 600 16px/22px var(--fontFamily);
+          ;
         }
         &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;

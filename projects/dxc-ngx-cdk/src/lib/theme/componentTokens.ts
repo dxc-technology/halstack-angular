@@ -32,9 +32,12 @@ const globalTokens = {
   lightWhite: "#f2f2f2",
   softGrey: "#cecece",
   softBlack: "#565656",
+  fontFamily: "'Open Sans', sans-serif",
 };
 
 export const componentTokens = {
+
+  "--fontFamily": globalTokens.fontFamily,
   //ACCORDION
   "--accordion-arrowColor": globalTokens.purple,
   "--accordion-fontColor": globalTokens.darkGrey,

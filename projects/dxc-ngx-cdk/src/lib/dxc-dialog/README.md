@@ -87,7 +87,7 @@ The API properties are the following:
     <td>@Input<br>tabIndexValue: number</td>
     <td><code>0</code></td>
     <td>
-      Tabindex value given to the close button.
+      Value of the tabindex given to the close 'x' button.
     </td>
   </tr>
 </table>

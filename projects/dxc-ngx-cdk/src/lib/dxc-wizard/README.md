@@ -58,6 +58,11 @@ The API properties are the following:
         <td>Defines which step is marked as the current. The numeration starts in 0.</td>
     </tr>
     <tr>
+        <td>@Input<br>tabIndexValue: number</td>
+        <td><code>0</code></td>
+        <td>Value of the tabindex that is given to all the steps.</td>
+    </tr>
+    <tr>
         <td>@Output<br>onStepClick: EventEmitter</td>
         <td></td>
         <td>
@@ -102,11 +107,6 @@ This component displays what is inside as a step of the wizard.
         <td>@Input<br>valid: boolean</td>
         <td></td>
         <td>Whether the step is valid or not.</td>
-    </tr>
-    <tr>
-        <td>@Input<br>tabIndexValue: number</td>
-        <td><code>0</code></td>
-        <td>Value of the tabindex.</td>
     </tr>
 </table>
 

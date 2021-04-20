@@ -71,7 +71,7 @@ The API properties are the following:
       <td>@Input<br>tabIndexValue: number</td>
       <td><code>0</code></td>
       <td>
-        Tabindex value given to the hamburger button.
+        Value of the tabindex for all interactuable elements, except those inside the custom area.
       </td>
     </tr>
     <tr>

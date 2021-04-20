@@ -106,7 +106,7 @@ The API properties are the following:
     <td>@Input<br>tabIndexValue: number</td>
     <td><code>0</code></td>
     <td>
-      Value of the tabindex.
+      Value of the tabindex given when there is an href.
     </td>
   </tr>
 </table>

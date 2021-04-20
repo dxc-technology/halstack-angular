@@ -63,9 +63,6 @@ The API properties are the following:
             <li>
                 <b>href</b>: URL of the page the link goes to
             </li>
-            <li>
-                <b>tabIndexValue</b>: Value of the tabindex.
-            </li>
             </ul>
         </td>
     </tr>
@@ -84,9 +81,6 @@ The API properties are the following:
             </li>
             <li>
                 <b>href</b>: URL of the page the link goes to
-            </li>
-            <li>
-                <b>tabIndexValue</b>: Value of the tabindex.
             </li>
             </ul>
         </td>
@@ -121,6 +115,13 @@ The API properties are the following:
             'xxlarge'). You can pass an object with 'top', 'bottom', 'left' and
             'right' properties in order to specify different padding sizes.
         </td>
+    </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex for all interactuable elements, except those inside the custom area.
+      </td>
     </tr>
 </table>
 

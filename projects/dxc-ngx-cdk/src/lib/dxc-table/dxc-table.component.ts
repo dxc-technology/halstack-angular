@@ -65,7 +65,7 @@ export class DxcTableComponent {
         }
 
         & th {
-          padding: 15px 20px 15px 40px;
+          padding: 14px 20px 12px 40px;
           height: 60px;
         }
 

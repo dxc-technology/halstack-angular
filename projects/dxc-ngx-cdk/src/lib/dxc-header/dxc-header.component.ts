@@ -13,7 +13,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { spaces, responsiveSizes } from "../variables";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-header",
@@ -34,6 +34,14 @@ export class DxcHeaderComponent implements OnChanges {
     this._underlined = coerceBooleanProperty(value);
   }
   private _underlined;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -41,8 +49,8 @@ export class DxcHeaderComponent implements OnChanges {
   isMenuVisible = false;
   innerWidth;
   innerHeight;
-
   responsiveMenu: string;
+  isClickDefined = false;
 
   defaultInputs = new BehaviorSubject<any>({
     logoSrc: null,
@@ -54,6 +62,7 @@ export class DxcHeaderComponent implements OnChanges {
     innerWidth,
     innerHeight,
     underlined:false,
+    tabIndexValue: 0,
   });
 
   @HostListener("window:resize", ["$event"])
@@ -95,6 +104,7 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   public ngOnInit() {
+    this.isClickDefined = this.onClick.observers?.length > 0;
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {
@@ -166,6 +176,8 @@ export class DxcHeaderComponent implements OnChanges {
       ${this.getBottomMargin(inputs.margin)}
       .headerAnchor {
         display: flex;
+        cursor: ${this.isClickDefined ? "pointer" : "default"};
+        ${!this.isClickDefined ? "outline:none;" : ""};
       }
       .mat-toolbar {
         font-size: unset;
@@ -201,10 +213,6 @@ export class DxcHeaderComponent implements OnChanges {
         max-height: 32px;
         width: auto;
         vertical-align: middle;
-
-        &:hover {
-          cursor: pointer;
-        }
       }
       .content {
         display: flex;
@@ -218,7 +226,7 @@ export class DxcHeaderComponent implements OnChanges {
       }
       .hamburger {
         color: var(--header-fontColor);
-        padding: ${this.utils.getPaddings(inputs.padding)};
+        ${this.utils.getPaddings(inputs.padding)}
         .hamburgerItem {
           display: flex;
           flex-direction: column;

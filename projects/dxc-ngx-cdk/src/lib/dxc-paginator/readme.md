@@ -69,6 +69,13 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex.
+      </td>
+    </tr>
+    <tr>
         <td>@Output<br>nextFunction: EventEmitter</td>
         <td></td>
         <td>This function will be called when the user clicks the button to go to the next page.</td>

@@ -1,5 +1,4 @@
 <mat-slide-toggle
-  disableRipple
   [checked]="renderedChecked"
   [labelPosition]="labelPosition ? labelPosition : 'before'"
   [disabled]="disabled"
@@ -7,6 +6,7 @@
   [name]="name"
   [id]="id"
   (change)="onChangeHandler($event)"
+  [tabIndex]="disabled ? -1 : tabIndexValue"
 >
   <span
     *ngIf="label"

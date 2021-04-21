@@ -11,7 +11,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { ToggleGroupService } from "./services/toggleGroup.service";
 
 @Component({
@@ -37,6 +37,14 @@ export class DxcToggleGroupComponent implements OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
   @Input() public margin: any;
   @Input() public value: any;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
@@ -49,6 +57,7 @@ export class DxcToggleGroupComponent implements OnInit {
     multiple: false,
     disabled: false,
     margin: null,
+    tabIndexValue: 0
   });
   constructor(
     private utils: CssUtils,
@@ -91,6 +100,7 @@ export class DxcToggleGroupComponent implements OnInit {
     if (this.value || this.value === "") {
       this.getSelectedByValue();
     }
+    this.service.setTabIndexValue(this.disabled ? -1 : this.tabIndexValue);
   }
 
   getSelectedByValue() {
@@ -155,6 +165,9 @@ export class DxcToggleGroupComponent implements OnInit {
         dxc-toggle {
           background: var(--toggle-disabledUnselectedBackgroundColor) !important;
           color: var(--toggle-disabledUnselectedFontColor) !important;
+          .toggleContent{
+            outline: none;
+          }
           &:hover {
             cursor: not-allowed;
           }

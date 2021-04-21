@@ -39,6 +39,11 @@ The API properties are the following:
         <th>Description</th>
     </tr>
     <tr>
+        <td>@Input<br>tabIndexValue: number</td>
+        <td><code>0</code></td>
+        <td>Value of the tabindex given to DxcSidenavLink children.</td>
+  </tr>
+    <tr>
         <td>@Input<br>padding: string | object</td>
         <td></td>
         <td>

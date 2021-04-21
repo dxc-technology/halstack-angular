@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { ContentChildren, ChangeDetectorRef } from '@angular/core';
 import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';
 
@@ -40,6 +40,14 @@ export class DxcTagComponent implements OnInit {
     this._newWindow = coerceBooleanProperty(value);
   }
   private _newWindow;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onClick = new EventEmitter<any>();
 
@@ -60,6 +68,7 @@ export class DxcTagComponent implements OnInit {
 
   styledLink: string = css`
     text-decoration: none;
+    outline: none;
   `;
 
   styledButton: string = css`
@@ -67,7 +76,7 @@ export class DxcTagComponent implements OnInit {
     border: none;
     padding: 0;
     cursor: pointer;
-    outline:0;
+    outline: 0;
     font-family: inherit;
     font-family: var(--fontFamily);
   `;
@@ -81,6 +90,7 @@ export class DxcTagComponent implements OnInit {
     labelPosition: "after",
     margin: null,
     newWindow: false,
+    tabIndexValue: 0
   });
   constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
 

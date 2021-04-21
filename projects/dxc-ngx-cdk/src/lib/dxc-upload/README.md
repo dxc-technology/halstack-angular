@@ -37,6 +37,13 @@ The API properties are the following:
       <th>Description</th>
     </tr>
     <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex given to every interactuable elements.
+      </td>
+    </tr>
+    <tr>
       <td>@Output<br>uploadCallback: Function</td>
       <td></td>
       <td>

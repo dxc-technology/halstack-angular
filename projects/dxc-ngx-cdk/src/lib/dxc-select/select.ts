@@ -406,6 +406,15 @@ export abstract class _MatSelectBase<C>
   }
   private _multiple: boolean = false;
 
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
+
   /** Whether to center the active option over the trigger. */
   @Input()
   get disableOptionCentering(): boolean {
@@ -1299,6 +1308,7 @@ export abstract class _MatSelectBase<C>
         .mat-select-trigger {
           cursor: not-allowed;
           border-bottom: 1px solid var(--select-disabledColor) !important;
+          outline: none !important;
         }
         .assistiveText {
           color: var(--select-disabledColor) !important;
@@ -1329,16 +1339,18 @@ export abstract class _MatSelectBase<C>
         color: var(--select-color);
       }
       div.underline.opened {
-        border-bottom: 2px solid var(--select-focusColor);
+        border-bottom: 2px solid var(--select-color);
       }
 
       .mat-select-trigger {
         border-top-width: 0.84375em;
         border-top-style: solid;
         border-top-color: transparent;
-        border-bottom: ${this.panelOpen
-          ? "2px solid var(--select-focusColor)"
-          : "1px solid var(--select-color)"};
+        border-bottom: 1px solid var(--select-color);
+        :focus{
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--select-focusColor);
+        }
       }
       &.mat-select-disabled .mat-select-value {
         color: var(--select-disabledColor);
@@ -1352,12 +1364,10 @@ export abstract class _MatSelectBase<C>
       .selectLabel {
         position: absolute;
         width: ${this.sizes[this.size]};
-        top: ${this.assistiveText ? "30px" : "10px"};
+        top: ${this.assistiveText ? "37px" : "17px"};
         left: ${this.panelOpen || this.floatingLabel ? "-12%" : "0px"};
         transform: ${this.floatingStyles()};
-        color: ${this.panelOpen
-          ? "var(--select-focusColor)"
-          : "var(--select-color)"};
+        color: var(--select-color);
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -1406,7 +1416,6 @@ export abstract class _MatSelectBase<C>
     "aria-haspopup": "true",
     class: "mat-select",
     "[attr.id]": "id",
-    "[attr.tabindex]": "tabIndex",
     "[attr.aria-controls]": 'panelOpen ? id + "-panel" : null',
     "[attr.aria-expanded]": "panelOpen",
     "[attr.aria-label]": "ariaLabel || null",

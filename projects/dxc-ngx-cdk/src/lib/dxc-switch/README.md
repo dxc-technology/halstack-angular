@@ -122,6 +122,13 @@ The API properties are the following:
         'fitContent').
         </td>
     </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex.
+      </td>
+    </tr>
 </table>
 
 ## Theming

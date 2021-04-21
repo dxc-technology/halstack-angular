@@ -98,6 +98,13 @@ The API properties are the following:
             in order to specify different padding sizes.
         </td>
     </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex.
+      </td>
+    </tr>
 </table>
 
 ## Theming

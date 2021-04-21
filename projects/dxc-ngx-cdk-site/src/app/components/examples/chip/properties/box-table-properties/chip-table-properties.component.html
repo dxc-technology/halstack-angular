@@ -1,4 +1,9 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -37,24 +42,21 @@
   <tr>
     <td>disabled: boolean</td>
     <td><code>false</code></td>
-    <td>
-      If true, the component will be disabled.
-    </td>
+    <td>If true, the component will be disabled.</td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex, it also applies to prefix and suffix icons when a function is given.</td>
   </tr>
   <tr>
     <td>suffixIconClick: EventEmitter</td>
-    <td>
-    </td>
-    <td>
-     Event that will be emitted when the suffix icon is clicked.
-    </td>
+    <td></td>
+    <td>Event that will be emitted when the suffix icon is clicked.</td>
   </tr>
   <tr>
     <td>prefixIconClick: EventEmitter</td>
-    <td>
-    </td>
-    <td>
-      Event that will be emitted when the prefix icon is clicked.
-    </td>
+    <td></td>
+    <td>Event that will be emitted when the prefix icon is clicked.</td>
   </tr>
 </dxc-table>

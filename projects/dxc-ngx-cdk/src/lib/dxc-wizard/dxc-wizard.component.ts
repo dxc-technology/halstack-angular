@@ -14,6 +14,7 @@ import { CssUtils } from "../utils";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
 import { WizardService } from "./services/wizard.service";
 import { ChangeDetectorRef } from "@angular/core";
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-wizard",
@@ -24,6 +25,14 @@ export class DxcWizardComponent {
   @Input() mode: string = "horizontal";
   @Input() currentStep: number;
   @Input() margin: any;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
   @Output() onStepClick = new EventEmitter<any>();
 
   @ContentChildren(DxcWizardStepComponent)
@@ -60,6 +69,7 @@ export class DxcWizardComponent {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.service.innerCurrentStep.next(this.currentStep || 0);
     this.service.mode.next(this.mode || "horizontal");
+    this.service.tabIndexValue.next(this.tabIndexValue);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

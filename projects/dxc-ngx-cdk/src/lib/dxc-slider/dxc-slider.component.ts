@@ -11,8 +11,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
-
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
@@ -65,6 +64,14 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   @Input() margin: any;
   @Input() size: string;
   @Input() labelFormatCallback: (value: number) => string | number;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onDragEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
@@ -91,6 +98,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     required: false,
     margin: null,
     size: null,
+    tabIndexValue: 0,
   });
 
   sizes = {
@@ -206,6 +214,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         .mat-slider-track-background,
         .mat-slider-wrapper {
           height: 1px;
+        }
+        .mat-slider-focus-ring{
+          background-color: transparent;
         }
         &:not(.mat-slider-disabled) {
           .mat-slider-track-fill {

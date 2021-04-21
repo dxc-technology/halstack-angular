@@ -7,6 +7,7 @@
         [value]="itemsPerPage"
         [margin]="selectMargin"
         size="small"
+        [tabIndexValue]="tabIndexValue"
       >
         <dxc-select-option
           *ngFor="let option of selectOptions"
@@ -28,6 +29,7 @@
       [margin]="buttonMargin"
       [iconSrc]="firstImgSrc"
       [disabled]="currentPageInternal === 1"
+      [tabIndexValue]="tabIndexValue"
     ></dxc-button>
     <dxc-button
       *ngIf="showPrev"
@@ -37,6 +39,7 @@
       [margin]="buttonMargin"
       [iconSrc]="prevImgSrc"
       [disabled]="currentPageInternal === 1"
+      [tabIndexValue]="tabIndexValue"
     ></dxc-button>
     <span *ngIf="!showGoToPage"> Page: {{ currentPageInternal }} of {{ totalPages }} </span>
     <span *ngIf="showGoToPage" class="go-to-page">
@@ -46,6 +49,7 @@
         [value]="currentPage"
         [margin]="selectMargin"
         size="small"
+        [tabIndexValue]="tabIndexValue"
       >
         <dxc-select-option
           *ngFor="let item of [].constructor(totalPages); let i = index"
@@ -62,6 +66,7 @@
       [margin]="buttonMargin"
       [iconSrc]="nextImgSrc"
       [disabled]="currentPageInternal === totalPages"
+      [tabIndexValue]="tabIndexValue"
     ></dxc-button>
     <dxc-button
       *ngIf="showLast"
@@ -71,6 +76,7 @@
       [margin]="buttonMargin"
       [iconSrc]="lastImgSrc"
       [disabled]="currentPageInternal === totalPages"
+      [tabIndexValue]="tabIndexValue"
     ></dxc-button>
   </div>
 </div>

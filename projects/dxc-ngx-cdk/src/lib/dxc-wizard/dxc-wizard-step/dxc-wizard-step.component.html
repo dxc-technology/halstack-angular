@@ -9,6 +9,7 @@
   }"
   [disabled]="disabled"
   (click)="!disabled ? handleStepClick() : ''"
+  [tabindex]="disabled ? -1 : tabIndexValue"
 >
   <div class="stepHeader">
     <div class="iconContainer">

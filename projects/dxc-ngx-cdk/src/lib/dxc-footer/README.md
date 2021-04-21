@@ -116,6 +116,13 @@ The API properties are the following:
             'right' properties in order to specify different padding sizes.
         </td>
     </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex for all interactuable elements, except those inside the custom area.
+      </td>
+    </tr>
 </table>
 
 ## Theming

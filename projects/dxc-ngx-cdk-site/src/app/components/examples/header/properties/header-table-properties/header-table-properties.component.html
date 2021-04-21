@@ -1,4 +1,9 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -31,6 +36,11 @@
       The right section of the header. Can be used to render custom content in
       this area.
     </td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex for all interactuable elements, except those inside the custom area.</td>
   </tr>
   <tr>
     <td>margin: string</td>

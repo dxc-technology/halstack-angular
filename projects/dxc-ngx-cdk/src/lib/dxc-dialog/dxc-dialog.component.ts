@@ -9,7 +9,7 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-dialog",
@@ -34,6 +34,14 @@ export class DxcDialogComponent {
   }
   private _isCloseVisible = true;
   @Input() padding: any;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
   @Output() onCloseClick = new EventEmitter<any>();
   @Output() onBackgroundClick = new EventEmitter<any>();
 
@@ -43,6 +51,7 @@ export class DxcDialogComponent {
     overlay: true,
     isCloseVisible: true,
     padding: null,
+    tabIndexValue: 0
   });
 
   constructor(private utils: CssUtils) {}

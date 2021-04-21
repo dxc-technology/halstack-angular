@@ -78,12 +78,12 @@ The API properties are the following:
     <tr>
         <td>@Input<br>prefixIconSrc: string</td>
         <td></td>
-        <td>Path of the icon to be placed before the input value.</td>
+        <td><b>Deprecated.</b> Path of the icon to be placed before the input value.</td>
     </tr>
     <tr>
         <td>@Input<br>suffixIconSrc: string</td>
         <td></td>
-        <td>Path of the icon to be placed after the input value.</td>
+        <td><b>Deprecated.</b> Path of the icon to be placed after the input value.</td>
     </tr>
     <tr>
         <td>@Input<br>name: string</td>
@@ -122,6 +122,13 @@ The API properties are the following:
         If true, the input will change its appearence showing that the value is
         invalid.
         </td>
+    </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex, it also applies to prefix and suffix when a function is given.
+      </td>
     </tr>
     <tr>
         <td>@Output<br>onChange: EventEmitter</td>
@@ -190,6 +197,47 @@ The API properties are the following:
         </ul>
         </td>
     </tr>
+</table>
+
+### Children
+#### DxcInputPrefixIcon
+
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>@Input<br>tabIndexValue: number</td>
+        <td><code>0</code></td>
+        <td>Tabindex value given to the preffix icon.</td>
+  </tr>
+    <tr>
+        <td>@Output<br>onClickPrefix: EventEmitter</td>
+        <td></td>
+        <td>This function will be called when the prefix is clicked.</td>
+  </tr>
+</table>
+
+#### DxcInputSuffixIcon
+
+<table>
+    <tr style="background-color: grey">
+        <th>Name</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>@Input<br>tabIndexValue: number</td>
+        <td><code>0</code></td>
+        <td>Tabindex value given to the suffix icon.</td>
+  </tr>
+    <tr>
+        <td>@Output<br>onClickPrefix: EventEmitter</td>
+        <td></td>
+        <td>This function will be called when the prefix is clicked.</td>
+  </tr>
 </table>
 
 ## Theming

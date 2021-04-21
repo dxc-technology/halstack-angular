@@ -121,6 +121,13 @@ The API properties are the following:
       Size of the component ('small' | 'medium' | 'large' | 'fillParent' | 'fitContent').
     </td>
   </tr>
+  <tr>
+    <td>@Input<br>tabIndexValue: number</td>
+    <td></td>
+    <td>
+      Value of the tabindex.
+    </td>
+  </tr>
 </table>
 
 ## Theming

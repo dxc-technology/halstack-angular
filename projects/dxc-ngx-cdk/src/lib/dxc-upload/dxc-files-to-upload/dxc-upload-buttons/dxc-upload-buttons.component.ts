@@ -1,4 +1,5 @@
-import { Component, Output, OnChanges, EventEmitter } from "@angular/core";
+import { Component, Output, OnChanges, EventEmitter, Input } from '@angular/core';
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-upload-buttons",
@@ -6,6 +7,14 @@ import { Component, Output, OnChanges, EventEmitter } from "@angular/core";
   styleUrls: ["./dxc-upload-buttons.component.scss"],
 })
 export class DxcUploadButtonsComponent implements OnChanges {
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
   @Output() onAddFile = new EventEmitter<any>();
   @Output() upload = new EventEmitter<any>();
   @Output() showOverlay = new EventEmitter<any>();

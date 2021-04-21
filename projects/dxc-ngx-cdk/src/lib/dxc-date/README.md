@@ -137,7 +137,14 @@ The API properties are the following:
             <code>'medium'</code>
         </td>
         <td>Size of the component ('medium' | 'large' | 'fillParent').</td>
-    </tr>   
+    </tr>
+    <tr>
+      <td>@Input<br>tabIndexValue: number</td>
+      <td><code>0</code></td>
+      <td>
+        Value of the tabindex.
+      </td>
+    </tr>
 </table>
 
 ## Available date formats

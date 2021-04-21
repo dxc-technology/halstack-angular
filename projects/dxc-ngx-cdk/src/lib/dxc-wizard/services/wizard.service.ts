@@ -14,6 +14,7 @@ export class WizardService {
     undefined
   );
   public mode: BehaviorSubject<string> = new BehaviorSubject(undefined);
+  public tabIndexValue: BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor() {
     this.innerCurrentStep.subscribe((newCurrent) => {

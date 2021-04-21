@@ -19,6 +19,7 @@
     [formControl]="formControl"
     [attr.aria-label]="label"
     [attr.aria-disabled]="disabled"
+    [tabIndex]="disabled ? -1 : tabIndexValue"
   >
   </textarea>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>

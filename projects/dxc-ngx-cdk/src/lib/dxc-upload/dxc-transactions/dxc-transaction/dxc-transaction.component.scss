@@ -28,9 +28,6 @@
     max-width: 75%;
     overflow: hidden;
     white-space: nowrap;
-    &:hover {
-      cursor: pointer;
-    }
   }
   .fileName.errorLabel {
     color: var(--upload-errorColor);

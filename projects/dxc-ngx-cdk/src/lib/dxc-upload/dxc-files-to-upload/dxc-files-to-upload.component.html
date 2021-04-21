@@ -10,10 +10,12 @@
   *ngIf="filesToUpload"
   (showOverlay)="showOverlay()"
   [filesList]="filesToUpload"
+  [tabIndexValue]="tabIndexValue"
 ></dxc-files-preview>
 <dxc-upload-buttons
   *ngIf="filesToUpload"
   (showOverlay)="showOverlay()"
   (onAddFile)="addFiles($event)"
   (upload)="handleUploadEvent()"
+  [tabIndexValue]="tabIndexValue"
 ></dxc-upload-buttons>

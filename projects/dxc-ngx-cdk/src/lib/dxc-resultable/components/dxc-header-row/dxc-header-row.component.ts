@@ -18,6 +18,7 @@ import { SortService } from "../../services/sort.service";
     <span
       id="iconSort-{{ columnName }}-{{ parentClassName }}"
       *ngIf="isSortable"
+      [tabIndex]="tabIndexValue"
     ></span>
   </div>`,
   styleUrls: ["./dxc-header-row-component.scss"],
@@ -28,6 +29,7 @@ import { SortService } from "../../services/sort.service";
 export class DxcHeaderRowComponent {
   columnName: string;
   isSortable: boolean;
+  tabIndexValue: number;
 
   defaultSort: string;
   ascSort: string;

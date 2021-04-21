@@ -30,11 +30,18 @@ export class DxcToggleComponent implements OnInit {
   dxcToggleIcon: QueryList<DxcToggleIconComponent>;
 
   selected: boolean = false;
+  tabIndexValue: number = 0;
 
   constructor(
     private service: ToggleGroupService,
     private cdRef: ChangeDetectorRef
-  ) {}
+  ) {
+    this.service.tabIndexValue.subscribe((value) => {
+      if (value) {
+        this.tabIndexValue = value;
+      }
+    });
+  }
 
   ngAfterViewInit() {
     if (this.dxcToggleIcon.length !== 0) {

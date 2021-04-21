@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { colors } from "../variables";
+import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: "dxc-alert",
@@ -27,6 +27,14 @@ export class DxcAlertComponent implements OnChanges {
   @Input() inlineText: string;
   @Input() margin: any;
   @Input() size: string;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue;
 
   @Output() onClose = new EventEmitter<any>();
   isCloseVisible = false;
@@ -44,6 +52,7 @@ export class DxcAlertComponent implements OnChanges {
     margin: null,
     type: "info",
     size: "fitContent",
+    tabIndexValue: 0
   });
 
   constructor(private utils: CssUtils) {}

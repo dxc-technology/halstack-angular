@@ -1,4 +1,4 @@
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import {
   Component,
   Input,
@@ -44,6 +44,7 @@ export class DxcWizardStepComponent {
   public isCurrent: boolean = false;
   public mode: string = "horizontal";
   public isVisited: boolean = false;
+  public tabIndexValue: number = 0;
 
   @ContentChildren(DxcWizardIconComponent)
   dxcWizardIcon: QueryList<DxcWizardIconComponent>;
@@ -68,6 +69,11 @@ export class DxcWizardStepComponent {
     this.service.mode.subscribe((value) => {
       if (value) {
         this.mode = value;
+      }
+    });
+    this.service.tabIndexValue.subscribe((value) => {
+      if (value) {
+        this.tabIndexValue = value;
       }
     });
   }
@@ -154,6 +160,7 @@ export class DxcWizardStepComponent {
         margin: ${inputs.mode === "vertical" ? "25px 0" : "0 25px"};
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
+        outline-color: var(--wizard-focusColor);
         &:focus {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;

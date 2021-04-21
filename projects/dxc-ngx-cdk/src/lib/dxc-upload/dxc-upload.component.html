@@ -7,6 +7,7 @@
   *ngIf="toUploadVisibility()"
   [summaryVisible]="uploadedVisibility()"
   (onAddFile)="addFiles($event)"
+  [tabIndexValue]="tabIndexValue"
 ></dxc-drag-and-drop>
 <dxc-files-to-upload
   data-testid="filesToUpload"
@@ -15,4 +16,5 @@
   [filesToUpload]="getFilesToUpload()"
   (onAddFile)="addFiles($event)"
   (upload)="handleUpload()"
+  [tabIndexValue]="tabIndexValue"
 ></dxc-files-to-upload>

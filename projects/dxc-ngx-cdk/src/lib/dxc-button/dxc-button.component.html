@@ -3,6 +3,7 @@
   mat-button
   [disabled]="disabled"
   (click)="onClickHandler($event)"
+  [tabindex]="disabled ? -1 : tabIndexValue"
 >
   <img
     src="{{ iconSrc }}"

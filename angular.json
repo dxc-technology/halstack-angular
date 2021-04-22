@@ -45,9 +45,9 @@
               }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "./node_modules/@dxc-technology/halstack-angular/lib/styles/fonts/fonts.scss",
+              "./node_modules/@dxc-technology/halstack-angular/lib/styles/themes/theme.scss",
               "projects/dxc-ngx-cdk-site/src/styles.scss"
+
             ],
             "scripts": [],
             "baseHref": "/"
@@ -115,8 +115,9 @@
               "projects/dxc-ngx-cdk-site/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@dxc-technology/halstack-angular/lib/styles/themes/theme.scss",
               "projects/dxc-ngx-cdk-site/src/styles.scss"
+
             ],
             "scripts": []
           }

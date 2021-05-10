@@ -1373,6 +1373,10 @@ export abstract class _MatSelectBase<C>
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        .select-required {
+          color: var(--select-required);
+        }
       }
 
       dxc-option.mat-active,

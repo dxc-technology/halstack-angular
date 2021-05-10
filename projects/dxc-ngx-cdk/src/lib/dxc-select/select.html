@@ -8,7 +8,10 @@
  See https://github.com/angular/components/issues/20694
 -->
 <span class="assistiveText">{{assistiveText}}</span>
-<label class="selectLabel">{{label}}</label>
+<label class="selectLabel">
+  <span *ngIf="required" class="select-required">*</span>
+  <span>{{label}}</span>
+</label>
 <div cdk-overlay-origin
      [tabIndex]="disabled ? -1 : tabIndexValue"
      [attr.aria-owns]="panelOpen ? id + '-panel' : null"

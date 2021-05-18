@@ -9,6 +9,8 @@ import {
   EventEmitter,
   SimpleChanges,
   ChangeDetectorRef,
+  Inject,
+  Optional
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -17,6 +19,7 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-card",
@@ -77,10 +80,15 @@ export class DxcCardComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef,
+    @Optional() @Inject("bgService") public bgProviderService: BackgroundProviderService) {
+  }
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.bgProviderService?.$changeColor?.subscribe(resp => {
+      console.log(resp);
+    });
   }
 
   ngAfterContentChecked() {
@@ -102,11 +110,11 @@ export class DxcCardComponent implements OnInit {
 
   applyTheme(href, outlined) {
     return css`
-      mat-card {
-        background-color: var(--card-backgroundColor);
-        color: black;
-        ${!outlined ? this.utils.getBoxShadow("1") : this.utils.getBoxShadow(0)}
-      }
+    mat-card {
+      background-color: var(--card-backgroundColor);
+      color: black;
+      ${!outlined ? this.utils.getBoxShadow("1") : this.utils.getBoxShadow(0)}
+    }
 
       mat-card:hover {
         ${!outlined

@@ -78,6 +78,7 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
+import { BackgroundProviderModule } from "projects/dxc-ngx-cdk/src/public-api";
 
 @NgModule({
   declarations: [
@@ -157,7 +158,8 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
     ThemeModule,
     DxcApplicationLayoutModule,
     DxcChipModule,
-    DxcAccordionGroupModule
+    DxcAccordionGroupModule,
+    BackgroundProviderModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

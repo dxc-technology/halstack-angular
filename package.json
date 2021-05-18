@@ -48,10 +48,11 @@
     "moment": "^2.24.0",
     "ng-packagr": "^10.1.0",
     "ngx-monaco-editor": "8.1.1",
+    "rgb-hex": "^3.0.0",
     "rxjs": "~6.5.2",
+    "tinycolor2": "^1.4.2",
     "vanilla-text-mask": "^5.1.1",
-    "zone.js": "~0.10.3",
-    "rgb-hex": "^3.0.0"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1002.0",

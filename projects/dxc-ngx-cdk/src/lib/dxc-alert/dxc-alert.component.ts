@@ -41,9 +41,9 @@ export class DxcAlertComponent implements OnChanges {
   @ViewChild("contents", { static: true }) content: ElementRef;
 
   sizes = {
-    small: "42px",
-    medium: "120px",
-    large: "240px",
+    small: "280px",
+    medium: "480px",
+    large: "820px",
     fitContent: "unset",
   };
 

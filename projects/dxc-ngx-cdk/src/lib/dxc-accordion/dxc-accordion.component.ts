@@ -155,8 +155,8 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             display: flex;
             align-items: center;
             .imageIcon {
-              width: 20px;
-              height: 20px;
+              width: 24px;
+              height: 24px;
             }
             &.after {
               flex-direction: row;
@@ -177,8 +177,8 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
               display: flex;
               svg,
               img {
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
               }
             }
           }

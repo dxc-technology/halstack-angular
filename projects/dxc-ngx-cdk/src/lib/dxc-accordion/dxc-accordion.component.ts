@@ -14,7 +14,10 @@ import {
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
 
@@ -68,7 +71,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     margin: null,
     padding: null,
     disabled: false,
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
   constructor(
@@ -135,7 +138,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
         }
       }
       .mat-expansion-panel:not(.mat-expanded)
-        .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused{
+        .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused {
         background: transparent !important;
       }
       mat-expansion-panel {
@@ -186,6 +189,14 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             font: italic normal 300 16px/22px var(--fontFamily);
             justify-content: flex-end;
             margin-right: 24px;
+            overflow: hidden;
+            span {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              text-align: end;
+              width: 100%;
+            }
           }
         }
       }

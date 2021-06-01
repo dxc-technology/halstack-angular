@@ -559,6 +559,9 @@ export class DxcTextInputComponent
       }
       .mat-option {
         color: var(--inputText-hoverOptionColor);
+        .mat-option-text{
+          font-family: var(--fontFamily);
+        }
       }
       .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
         background-color: var(

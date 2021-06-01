@@ -10,6 +10,8 @@ import {
   OnChanges,
   ContentChildren,
   AfterViewInit,
+  Optional,
+  Inject,
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
@@ -17,13 +19,15 @@ import { css } from "emotion";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
+import { SassUtilsService } from "../service/sass-utils.service";
 
 @Component({
   selector: "dxc-accordion",
   templateUrl: "./dxc-accordion.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, SassUtilsService],
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
+  currentBackgroundColor: string;
   @Input() mode: string;
   @Input() label: string;
   @Input() iconSrc: string;
@@ -74,7 +78,8 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   constructor(
     private cssUtils: CssUtils,
     private cdRef: ChangeDetectorRef,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private sassUtils: SassUtilsService
   ) {}
 
   getElement() {
@@ -91,6 +96,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() {
     this.renderedIsExpanded = this.isExpanded || false;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.currentBackgroundColor = this.sassUtils.readProperty("--accordion-backgroundColor");
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

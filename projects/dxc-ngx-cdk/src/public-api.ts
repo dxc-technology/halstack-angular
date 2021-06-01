@@ -8,6 +8,7 @@ export * from './lib/theme/theme.service';
 export * from './lib/theme/theme.module';
 export * from './lib/theme/theme.directive';
 
+export * from './lib/background-provider/service/background-provider.service';
 export * from './lib/background-provider/background-provider.module';
 
 export * from './lib/dxc-accordion/dxc-accordion.component';

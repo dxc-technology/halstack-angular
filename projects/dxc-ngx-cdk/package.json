@@ -37,7 +37,7 @@
     "@angular/router": "10.2.0",
     "rxjs": "~6.5.2",
     "moment": "^2.24.0",
-    "ng-packagr": "^10.1.0",
+    "ng-packagr": ">=10.1.1",
     "rgb-hex": "^3.0.0"
   },
   "dependencies": {

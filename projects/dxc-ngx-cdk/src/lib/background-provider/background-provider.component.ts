@@ -2,8 +2,6 @@ import {
   Component,
   OnInit,
   Input,
-  Host,
-  InjectionToken,
   Inject
 } from "@angular/core";
 import  { BackgroundProviderService}  from "./service/background-provider.service";
@@ -32,7 +30,6 @@ export class BackgroundProvider implements OnInit {
 
   private setType() {
     const colorType = this.checkColorType(this.color) ;
-    debugger;
     this.bgProviderService.changeBackgroundColor(colorType);
   }
 

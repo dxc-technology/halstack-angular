@@ -33,7 +33,9 @@
         </svg>
       </span>
     </mat-expansion-panel-header>
+    <background-provider color="{{currentBackgroundColor}}">
+      <ng-content></ng-content>
+    </background-provider>
 
-    <ng-content></ng-content>
   </mat-expansion-panel>
 </mat-accordion>

@@ -155,7 +155,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.dropdown?.baseColor, 0.8) ??
       tokens["--dropdown-hoverBackgroundColor"];
     proccessedTokens["--dropdown-hoverBackgroundOption"] =
-      this.setOpacity(theme?.dropdown?.baseColor, 0.34) ??
+      // this.setOpacity(theme?.dropdown?.baseColor, 0.34) ??
       tokens["--dropdown-hoverBackgroundOption"];
 
     //FOOTER

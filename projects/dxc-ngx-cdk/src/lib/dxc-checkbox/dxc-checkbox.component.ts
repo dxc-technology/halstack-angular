@@ -10,7 +10,10 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-checkbox",
@@ -176,16 +179,18 @@ export class DxcCheckboxComponent implements OnInit {
           align-items: center;
           width: 100%;
           white-space: normal;
-
           span.mat-checkbox-label {
-            width: calc(100% - 50px);
-            word-break: break-word;
+            word-break: normal;
             color: var(--checkbox-fontColor);
             font-family: var(--fontFamily);
+            display: flex;
+            justify-content: flex-end;
           }
 
           .mat-checkbox-inner-container {
-            margin: 10px 15px;
+            margin: ${inputs.labelPosition === "after"
+              ? "10px 15px 10px 0px;"
+              : "10px 0px 10px 15px;"};
             width: 20px;
             height: 20px;
 
@@ -206,7 +211,7 @@ export class DxcCheckboxComponent implements OnInit {
         &.mat-checkbox-disabled {
           cursor: not-allowed;
           .mat-checkbox-inner-container {
-            .mat-checkbox-frame{
+            .mat-checkbox-frame {
               border-color: var(--checkbox-disabledBorderColor) !important;
             }
           }
@@ -216,11 +221,13 @@ export class DxcCheckboxComponent implements OnInit {
         }
         &.mat-checkbox-disabled.mat-checkbox-checked {
           .mat-checkbox-inner-container {
-            .mat-checkbox-frame{
+            .mat-checkbox-frame {
               border-color: var(--checkbox-disabledBorderColor) !important;
             }
-            .mat-checkbox-background{
-              background: var(--checkbox-disabledBackgroundColorChecked) !important;
+            .mat-checkbox-background {
+              background: var(
+                --checkbox-disabledBackgroundColorChecked
+              ) !important;
               svg path {
                 stroke: var(--checkbox-disabledCheckColor) !important;
               }

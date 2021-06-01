@@ -138,7 +138,7 @@ export const componentTokens = {
   "--dropdown-fontColor": globalTokens.black,
   "--dropdown-dropdownBackgroundColor": globalTokens.white,
   "--dropdown-dropdownFontColor": globalTokens.black,
-  "--dropdown-hoverBackgroundOption": globalTokens.white,
+  "--dropdown-hoverBackgroundOption": globalTokens.lightGrey,
   "--dropdown-hoverBackgroundColor": globalTokens.white,
   "--dropdown-scrollBarThumbColor": globalTokens.darkGrey,
   "--dropdown-scrollBarTrackColor": globalTokens.lightGrey,

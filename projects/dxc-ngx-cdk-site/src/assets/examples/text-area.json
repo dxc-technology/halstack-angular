@@ -29,13 +29,6 @@
             }
         },
         {
-            "title": "Sized Slider",
-            "iframe": {
-                "src": "https://codesandbox.io/s/sized-slider-3dsnh?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "sized-slider"
-            }
-        },
-        {
             "title": "Uncontrolled Textarea",
             "iframe": {
                 "src": "https://codesandbox.io/s/uncontrolled-text-area-qx2bh?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",

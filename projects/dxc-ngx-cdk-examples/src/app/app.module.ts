@@ -73,7 +73,6 @@ import {
   DxcApplicationLayoutModule,
   DxcChipModule,
   BackgroundProviderModule,
-  BackgroundProviderService
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";

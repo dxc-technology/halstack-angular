@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   Input,
-  Inject
+  Optional
 } from "@angular/core";
 import  { BackgroundProviderService}  from "./service/background-provider.service";
 import { TinyColor } from '@ctrl/tinycolor';
@@ -10,15 +10,15 @@ import { TinyColor } from '@ctrl/tinycolor';
 @Component({
   selector: "background-provider",
   template: "<div><ng-content></ng-content></div>",
-  providers: [{ provide: "bgService", useClass: BackgroundProviderService }]
+  providers: [BackgroundProviderService]
 
 })
-export class BackgroundProvider implements OnInit {
+export class BackgroundProviderComponent implements OnInit {
   @Input() color: string;
 
 
   constructor(
-    @Inject("bgService") public bgProviderService: BackgroundProviderService
+    @Optional() private bgProviderService: BackgroundProviderService
   ) {}
 
    ngOnInit() {

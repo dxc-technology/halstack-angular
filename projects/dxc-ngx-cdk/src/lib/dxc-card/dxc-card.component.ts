@@ -81,14 +81,11 @@ export class DxcCardComponent implements OnInit {
   }
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef,
-    @Optional() @Inject("bgService") public bgProviderService: BackgroundProviderService) {
+    @Optional() public bgProviderService?: BackgroundProviderService) {
   }
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.bgProviderService?.$changeColor?.subscribe(resp => {
-      console.log(resp);
-    });
   }
 
   ngAfterContentChecked() {

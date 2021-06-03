@@ -474,8 +474,6 @@ export abstract class _MatSelectBase<C>
     return this._controlled;
   }
 
-  @Input() public assistiveText = "";
-
   @Input() public label = "";
 
   private floatingLabel = false;
@@ -1289,7 +1287,7 @@ export abstract class _MatSelectBase<C>
 
   floatingStyles() {
     if (this.panelOpen || this.floatingLabel) {
-      return "translateY(-1em) scale(0.75) perspective(100px) translateZ(0.001px)";
+      return "translateY(-1em) perspective(100px) translateZ(0.001px)";
     }
     return "perspective(100px)";
   }
@@ -1363,17 +1361,22 @@ export abstract class _MatSelectBase<C>
 
       .selectLabel {
         position: absolute;
-        width: ${this.sizes[this.size]};
-        top: ${this.assistiveText ? "37px" : "17px"};
-        left: ${this.panelOpen || this.floatingLabel ? "-12%" : "0px"};
+        width: calc(100% - 24px);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        left: 0px;
+        top: ${this.panelOpen || this.floatingLabel ? "10px" : "19px"};
+        font-size: ${this.panelOpen || this.floatingLabel ? "12px" : "16px"};
         transform: ${this.floatingStyles()};
         color: var(--select-color);
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
-          width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-
+          width 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+          font-size 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+          
         .select-required {
           color: var(--select-required);
         }

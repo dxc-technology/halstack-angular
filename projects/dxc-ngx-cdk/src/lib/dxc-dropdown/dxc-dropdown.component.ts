@@ -65,13 +65,15 @@ export class DxcDropdownComponent implements OnChanges {
   @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild("dropdownButton", { static: true }) dropdownButton;
-  @ViewChild(MatMenuTrigger, { static: false }) menu: MatMenuTrigger;
+  @ViewChild(MatMenuTrigger, { static: false }) menuTrigger: MatMenuTrigger;
+
+  
 
   @HostListener("document:click", ["$event"])
   clickout(event) {
     if (!this._element.nativeElement.contains(event.target)) {
       if (this.menuOpened === "opened") {
-        this.menu.closeMenu();
+        this.menuTrigger.closeMenu();
       }
     }
   }
@@ -211,6 +213,11 @@ export class DxcDropdownComponent implements OnChanges {
             background-color: var(--dropdown-hoverBackgroundOption);
             border-color: var(--dropdown-hoverBackgroundOption);
           }
+          &.cdk-focused {
+            color: var(--dropdown-dropdownFontColor);
+            background-color: var(--dropdown-hoverBackgroundOption);
+            border-color: var(--dropdown-hoverBackgroundOption);
+          }
         }
         padding-top: 0px !important;
         padding-bottom: 0px !important;
@@ -320,6 +327,7 @@ export class DxcDropdownComponent implements OnChanges {
     this.triggerStyles = this.triggerButtonStyles(
       this.defaultInputs.getValue()
     );
+    this.menuOpened === "opened" && this.service.focusFirstItem();
   }
 
   getDynamicStyle(inputs) {

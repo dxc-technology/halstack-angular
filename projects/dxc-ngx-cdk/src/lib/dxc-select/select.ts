@@ -476,6 +476,8 @@ export abstract class _MatSelectBase<C>
 
   @Input() public label = "";
 
+  @Input() public assistiveText = "";
+
   private floatingLabel = false;
 
   /** Aria label of the select. If not specified, the placeholder will be used as label. */
@@ -1353,10 +1355,12 @@ export abstract class _MatSelectBase<C>
       &.mat-select-disabled .mat-select-value {
         color: var(--select-disabledColor);
       }
+      .assistiveText {
+        font-size: 12px;
+        font-family: var(--fontFamily);
+      }
       .assistiveText:not(.mat-select-disabled) {
         color: var(--select-color);
-        font-size: 15px;
-        font-family: var(--fontFamily);
       }
 
       .selectLabel {

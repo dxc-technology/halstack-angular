@@ -70,7 +70,6 @@ const globalTokens = {
 };
 
 export const componentTokens = {
-
   "--fontFamily": globalTokens.type_sans,
   //ACCORDION
   "--accordion-backgroundColor": globalTokens.white,
@@ -137,9 +136,7 @@ export const componentTokens = {
   "--tabs-hoverBackgroundColor": globalTokens.lightPurple,
   "--tabs-pressedBackgroundColor": globalTokens.mediumPurple,
 
-
-
-  //------------Sin Hacer---------------------
+  //------------Without new design---------------------
 
   //ALERT
   "--alert-infoColor": globalTokens.lightBlue,
@@ -154,7 +151,6 @@ export const componentTokens = {
   "--alert-fontTextTransform": globalTokens.type_uppercase,
   "--alert-fontWeight": globalTokens.type_bold,
 
-
   //BOX
   "--box-backgroundColor": globalTokens.white,
 
@@ -162,11 +158,11 @@ export const componentTokens = {
   "--button-primaryBackgroundColor": globalTokens.purple,
   "--button-primaryBackgroundColorOnDark": "#581B81",
   "--button-primaryHoverBackgroundColor": globalTokens.black,
-  "--button-primaryHoverBackgroundColorOnDark":"#581B81",
+  "--button-primaryHoverBackgroundColorOnDark": "#581B81",
   "--button-primaryFontColor": globalTokens.white,
   "--button-primaryFontColorOnDark": "#000000",
   "--button-primaryHoverFontColor": globalTokens.white,
-  "--button-primaryHoverFontColorOnDark":"#000000",
+  "--button-primaryHoverFontColorOnDark": "#000000",
   "--button-disabledPrimaryBackgroundColor": globalTokens.lighterPurple,
   "--button-primaryActiveBackgroundColor": globalTokens.mediumBlack,
   "--button-primaryActiveBackgroundColorOnDark": "#581B81",
@@ -433,14 +429,58 @@ export const componentTokens = {
   "--upload-errorColor": globalTokens.darkRed,
 
   //WIZARD
-  "--wizard-selectedBackgroundColor": globalTokens.purple,
-  "--wizard-selectedFont": globalTokens.white,
-  "--wizard-borderColor": globalTokens.black,
-  "--wizard-fontColor": globalTokens.inherit,
-  "--wizard-lineColor": globalTokens.lightGrey,
-  "--wizard-disabledBackground": globalTokens.lightGrey,
-  "--wizard-disabledFont": globalTokens.darkGrey,
   "--wizard-focusColor": globalTokens.blue,
+  "--wizard-disabledBackgroundColor": globalTokens.lightGrey,
+  "--wizard-disabledFontColor": globalTokens.darkGrey,
+  "--wizard-stepContainerFontSize": globalTokens.type_scale_03,
+  "--wizard-stepContainerFontFamily": globalTokens.type_sans,
+  "--wizard-stepContainerFontStyle": globalTokens.type_normal,
+  "--wizard-stepContainerFontWeight": globalTokens.type_regular,
+  "--wizard-stepContainerLetterSpacing": globalTokens.type_spacing_wide_02,
+  "--wizard-stepContainerFontColor": globalTokens.black,
+  "--wizard-stepContainerSelectedFontColor": globalTokens.white,
+  "--wizard-stepContainerSelectedBackgroundColor": globalTokens.purple,
+  "--wizard-stepContainerBackgroundColor": globalTokens.white,
+  "--wizard-stepContainerIconSize": "19px",
+  "--wizard-labelFontSize": globalTokens.type_scale_03,
+  "--wizard-labelFontFamily": globalTokens.type_sans,
+  "--wizard-labelFontStyle": globalTokens.type_normal,
+  "--wizard-labelFontWeight": globalTokens.type_regular,
+  "--wizard-labelLetterSpacing": globalTokens.type_spacing_normal,
+  "--wizard-labelFontTextTransform": "none",
+  "--wizard-labelTextAlign": "left",
+  "--wizard-labelFontColor": globalTokens.darkGrey,
+  "--wizard-labelActiveFontColor": globalTokens.black,
+  "--wizard-descriptionFontSize": globalTokens.type_scale_01, 
+  "--wizard-descriptionFontFamily": globalTokens.type_sans,
+  "--wizard-descriptionFontStyle": globalTokens.type_normal,
+  "--wizard-descriptionFontWeight": globalTokens.type_regular,
+  "--wizard-descriptionLetterSpacing": globalTokens.type_spacing_wide_01,
+  "--wizard-descriptionFontTextTransform": "none",
+  "--wizard-descriptionFontColor": globalTokens.darkGrey,
+  "--wizard-descriptionActiveFontColor": globalTokens.black,
+  "--wizard-descriptionTextAlign": "left",
+  "--wizard-circleBorderThickness": "2px",
+  "--wizard-circleBorderStyle": "solid",
+  "--wizard-circleBorderRadius": "45px",
+  "--wizard-circleBorderColor": globalTokens.black,
+  "--wizard-circleSelectedWidth": "32px",
+  "--wizard-circleSelectedHeight": "32px",
+  "--wizard-circleSelectedBorderThickness": "2px",
+  "--wizard-circleSelectedBorderStyle": "solid",
+  "--wizard-circleSelectedBorderRadius": "45px",
+  "--wizard-circleSelectedBorderColor": globalTokens.purple,
+  "--wizard-circleDisabledWidth": "32px",
+  "--wizard-circleDisabledHeight": "32px",
+  "--wizard-circleDisabledBorderThickness": "2px",
+  "--wizard-circleDisabledBorderStyle": "solid",
+  "--wizard-circleDisabledBorderRadius": "45px",
+  "--wizard-circleDisabledBorderColor": globalTokens.lightGrey,
+  "--wizard-circleWidth": "32px",
+  "--wizard-circleHeight": "32px",
+  "--wizard-separatorBorderThickness": "1px",
+  "--wizard-separatorBorderStyle": "solid",
+  "--wizard-separatorColor": globalTokens.lightGrey
 };
 
 export const componentIcons = {

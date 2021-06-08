@@ -20,6 +20,13 @@
                 "src": "https://codesandbox.io/embed/tabswithcontent-kfhk0?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "TabsWithContent"
             }
+        },
+        {
+          "title": "Add tabs dynamically",
+          "iframe": {
+              "src": "https://codesandbox.io/s/addtabsdynamically-n1fcj?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+              "title": "AddTabsDynamically"
+          }
         }
     ]
 }

@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { BackgroundProvider } from "./background-provider.component";
+import { BackgroundProviderComponent } from "./background-provider.component";
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [ BackgroundProvider ],
+  declarations: [ BackgroundProviderComponent ],
   exports: [
-    BackgroundProvider],
+    BackgroundProviderComponent],
 })
 export class BackgroundProviderModule {}

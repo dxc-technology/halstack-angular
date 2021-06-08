@@ -10,13 +10,20 @@ import { Subject } from "rxjs";
 import { BindingContext } from "./bindingContext";
 import { ComplexThemeBindingStrategy } from "./complexThemeBindingStrategy";
 import { componentIcons } from "./componentTokens";
+import { AdvancedThemeBindingStrategy } from "./advancedThemeBindingStrategy";
+
+
+interface Theme {
+  theme:any,
+  advanced: boolean
+}
 
 @Directive({
   selector: "[theme]",
 })
 export class ThemeDirective implements OnInit, OnDestroy {
   private _destroy$ = new Subject();
-  theme: any;
+  theme: Theme;
 
   constructor(
     @Optional() @Inject("ThemeService") private _themeService: ThemeService
@@ -31,15 +38,15 @@ export class ThemeDirective implements OnInit, OnDestroy {
     this._destroy$.complete();
   }
 
-  updateTheme(theme: any) {
+  updateTheme(theme: Theme) {
     this.theme = theme;
     this.setPropertiesCss(this.theme);
     this.setVariableLinks(this.theme);
   }
 
-  setPropertiesCss(theme: any) {
-    const ctx = new BindingContext(new ComplexThemeBindingStrategy());
-    let processedTokens = ctx.bindProperties(theme);
+  setPropertiesCss(theme: Theme) {
+    const ctx = new BindingContext(!theme.advanced ? new ComplexThemeBindingStrategy():  new AdvancedThemeBindingStrategy() );
+    let processedTokens = ctx.bindProperties(theme.theme);
     for (const key in processedTokens) {
       document.body.style.setProperty(key, processedTokens[key]);
     }
@@ -61,7 +68,11 @@ export class ThemeDirective implements OnInit, OnDestroy {
       this.updateTheme(active);
 
       this._themeService.themeChange.subscribe((theme: any) => {
-        this.updateTheme(theme);
+        this.updateTheme({theme: theme, advanced: false});
+      });
+
+      this._themeService.themeAdvanceChange.subscribe((theme: any) => {
+        this.updateTheme({theme: theme, advanced: true});
       });
     }
   }

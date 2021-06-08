@@ -27,6 +27,7 @@ import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
   providers: [CssUtils],
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
+  currentBackgroundColor: string;
   @Input() mode: string;
   @Input() label: string;
   @Input() iconSrc: string;

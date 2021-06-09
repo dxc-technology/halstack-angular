@@ -123,11 +123,17 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     return css`
       cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
       ${this.cssUtils.getMargins(inputs.margin)}
-      min-width: 280px;
+      min-width: var(--accordion-minWidth);
       display: block;
+      color: ${inputs.disabled
+        ? "var(--accordion-disabledFontColor)"
+        : "var(--accordion-fontColorBase)"};
       div.mat-expansion-panel-content {
         div.mat-expansion-panel-body {
-          font: normal normal normal 16px/22px var(--fontFamily);
+          font-family: var(--accordion-customContentFontFamily);
+          font-size: var(--accordion-customContentFontSize);
+          font-weight: var(--accordion-customContentFontWeight);
+          color: var(--accordion-customContentFontColor);
           cursor: default;
           ${inputs.padding
             ? this.cssUtils.getPaddings(inputs.padding)
@@ -144,11 +150,27 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
       }
       mat-expansion-panel {
         background-color: var(--accordion-backgroundColor) !important;
-        box-shadow: 0px 6px 10px #00000024 !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1607843137254902);
+        box-shadow: var(--accordion-boxShadowOffsetX)
+          var(--accordion-boxShadowOffsetY) var(--accordion-boxShadowBlur)
+          var(--accordion-boxShadowColor) !important;
+        color: var(--accordion-fontColorBase);
         mat-expansion-panel-header {
-          height: 48px;
-          font-size: 16px;
+          padding-right: var(--accordion-headerPaddingRight);
+          padding-left: var(--accordion-headerPaddingLeft);
+          padding-top: var(--accordion-headerPaddingTop);
+          padding-bottom: var(--accordion-headerPaddingBottom);
+          min-height: var(--accordion-minHeight);
+          .mat-expansion-panel-header-title {
+            font-family: var(--accordion-titleFontFamily);
+            font-size: var(--accordion-titleFontSize);
+            font-weight: var(--accordion-titleFontWeight);
+            font-style: var(--accordion-titleFontStyle);
+            color: var(--accordion-titleFontColor);
+            margin-right: var(--accordion-titleMarginRight);
+            margin-left: var(--accordion-titleMarginLeft);
+            margin-top: var(--accordion-titleMarginTop);
+            margin-bottom: var(--accordion-titleMarginBottom);
+          }
           span.mat-expansion-indicator {
             display: none;
           }
@@ -187,10 +209,20 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             }
           }
           mat-panel-description {
-            font: italic normal 300 16px/22px var(--fontFamily);
             justify-content: flex-end;
             margin-right: 24px;
             overflow: hidden;
+            font-family: var(--accordion-assistiveTextFontFamily);
+            font-size: var(--accordion-assistiveTextFontSize);
+            font-weight: var(--accordion-assistiveTextFontWeight);
+            font-style: var(--accordion-assistiveTextFontStyle);
+            color: var(--accordion-assistiveTextFontColor);
+            letter-spacing: var(assistiveTextLetterSpacing);
+            min-width: var(--accordion-assistiveTextMinWidth);
+            margin-right: var(--accordion-assistiveTextMarginRight);
+            margin-left: var(--accordion-assistiveTextMarginLeft);
+            margin-top: var(--accordion-assistiveTextMarginTop);
+            margin-bottom: var(--accordion-assistiveTextMarginBottom);
             span {
               overflow: hidden;
               text-overflow: ellipsis;
@@ -200,46 +232,41 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
             }
           }
         }
-      }
-      mat-expansion-panel:not(.disabled) {
-        background-color: var(--accordion-backgroundColor) !important;
-        mat-expansion-panel-header {
-          max-height: 64px;
-          background: transparent;
-          padding: 0px 16px 0px 16px;
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--accordion-focusOutline);
-          }
-          &:hover {
-            background-color: var(--accordion-hoverBackgroundColor) !important;
-          }
-          .caret-indicator {
-            transform: rotate(-180deg);
-            transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-          }
-          svg {
-            fill: var(--accordion-arrowColor);
-          }
-          .mat-expansion-panel-header-title,
-          .mat-expansion-panel-header-description {
-            color: var(--accordion-fontColor);
-          }
-          &.mat-expanded {
+        &:not(.disabled) {
+          mat-expansion-panel-header {
+            &:focus {
+              outline: -webkit-focus-ring-color
+                var(--accordion-headerFocusBorderStyle)
+                var(--accordion-headerFocusBorderThickness);
+              outline-color: var(--accordion-focusOutline);
+            }
+            &:hover {
+              background-color: var(
+                --accordion-hoverBackgroundColor
+              ) !important;
+            }
             .caret-indicator {
-              transform: rotate(0deg);
+              transform: rotate(-180deg);
               transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
             }
+
             svg {
               display: block;
               fill: var(--accordion-arrowColor);
             }
-            border-bottom: 1px solid #00000029;
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
+
+            &.mat-expanded {
+              .caret-indicator {
+                transform: rotate(0deg);
+                transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+              }
+              border-bottom-left-radius: 0px;
+              border-bottom-right-radius: 0px;
+            }
           }
         }
       }
+
       mat-expansion-panel.disabled {
         cursor: not-allowed;
         mat-expansion-panel-header {
@@ -247,7 +274,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           .mat-expansion-panel-header-description {
             color: var(--accordion-disabledFontColor);
           }
-          padding: 0px 16px 0px 16px;
           svg {
             fill: var(--accordion-disabledFontColor);
           }

@@ -4,11 +4,11 @@
     [ngClass]="[disabled ? 'disabled' : '']"
     [disabled]="disabled"
     [expanded]="renderedIsExpanded"
-    [tabindex]="disabled ? -1 : tabIndexValue"
   >
     <mat-expansion-panel-header
       (click)="onClickHandler($event)"
       [expandedHeight]="'48px'"
+      [tabindex]="disabled ? -1 : tabIndexValue"
     >
       <mat-panel-title
         [ngClass]="'before'"

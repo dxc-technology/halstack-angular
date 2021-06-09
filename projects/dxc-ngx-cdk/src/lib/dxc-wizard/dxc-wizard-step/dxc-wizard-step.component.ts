@@ -1,4 +1,7 @@
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import {
   Component,
   Input,
@@ -176,40 +179,63 @@ export class DxcWizardStepComponent {
         display: inline-flex;
         padding-bottom: 3px;
       }
+      svg,
+      img {
+        width: var(--wizard-stepContainerIconSize);
+        height: var(--wizard-stepContainerIconSize);
+        vertical-align: middle;
+      }
       .iconContainer:not(.current) {
-        width: ${!inputs.disabled ? "32px" : "36px"};
-        height: ${!inputs.disabled ? "32px" : "36px"};
-        ${!inputs.disabled ? `border: 2px solid #000000;` : ""}
-        ${inputs.disabled
-          ? "background: var(--wizard-disabledBackground) 0% 0% no-repeat padding-box;"
-          : ""}
+        width: var(--wizard-circleWidth);
+        height: var(--wizard-circleHeight);
+        border: var(--wizard-circleBorderThickness)
+          var(--wizard-circleBorderStyle) var(--wizard-circleBorderColor);
+        border-radius: var(--wizard-circleBorderRadius);
+        background: var(--wizard-stepContainerBackgroundColor);
       }
       .current .iconContainer {
-        width: 36px;
-        height: 36px;
-        background: var(--wizard-selectedBackgroundColor) 0% 0% no-repeat
-          padding-box;
-        p {
-          color: var(--wizard-selectedFont) !important;
+        width: var(--wizard-circleSelectedWidth);
+        height: var(--wizard-circleSelectedHeight);
+        border: var(--wizard-circleSelectedBorderThickness)
+          var(--wizard-circleSelectedBorderStyle)
+          var(--wizard-circleSelectedBorderColor);
+        border-radius: var(--wizard-circleSelectedBorderRadius);
+        background: var(--wizard-stepContainerSelectedBackgroundColor);
+        .number {
+          color: var(--wizard-stepContainerSelectedFontColor) !important;
+        }
+        svg,
+        img {
+          fill: var(--wizard-stepContainerSelectedFontColor);
         }
       }
       .iconContainer {
-        border-radius: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-      .number:not(.current) {
-        color: ${!inputs.disabled
-          ? "var(--wizard-fontColor)"
-          : "var(--wizard-disabledFont)"};
-      }
-      .current .number {
-        color: var(--wizard-fontColor);
+      .disabled {
+        .iconContainer {
+          background: var(--wizard-disabledBackgroundColor);
+          color: var(--wizard-disabledFontColor);
+          width: var(--wizard-circleDisabledWidth);
+          height: var(--wizard-circleDisabledHeight);
+          border: var(--wizard-circleDisabledBorderThickness)
+            var(--wizard-circleDisabledBorderStyle)
+            var(--wizard-circleDisabledBorderColor);
+          border-radius: var(--wizard-circleDisabledBorderRadius);
+        }
+        .number {
+          color: var(--wizard-disabledFontColor);
+        }
       }
       .number {
-        font: Normal 16px/22px var(--fontFamily);
-        letter-spacing: 0.77px;
+        color: var(--wizard-stepContainerFontColor);
+        font-family: var(--wizard-stepContainerFontFamily);
+        font-weight: var(--wizard-stepContainerFontWeight);
+        font-style: var(--wizard-stepContainerFontStyle);
+        letter-spacing: var(--wizard-stepContainerLetterSpacing);
+        font-size: var(--wizard-stepContainerFontSize);
         opacity: 1;
         margin: 0;
       }
@@ -220,34 +246,46 @@ export class DxcWizardStepComponent {
         bottom: 0px;
         right: 0px;
       }
-      .infoContainer:not(.visited){
-        color: var(--wizard-disabledFont);
-      }
-      .visited .infoContainer{
-        color: var(--wizard-fontColor);
-      }
       .infoContainer {
         margin-left: 10px;
       }
+      :not(.visited) .label {
+        color: var(--wizard-labelFontColor);
+      }
+      .visited .infoContainer .label {
+        color: var(--wizard-labelActiveFontColor);
+      }
       .label {
-        text-align: left;
-        font: Normal 16px/22px var(--fontFamily);
-        letter-spacing: 0.77px;
-        color: inherit;
+        text-align: var(--wizard-labelTextAlign);
+        text-transform: var(--wizard-labelFontTextTransform);
+        font-size: var(--wizard-labelFontSize);
+        font-family: var(--wizard-labelFontFamily);
+        font-weight: var(--wizard-labelFontWeight);
+        font-style: var(--wizard-labelFontStyle);
+        letter-spacing: var(--wizard-labelLetterSpacing);
         margin: 0;
       }
+      :not(.visited) .description {
+        color: var(--wizard-descriptionFontColor);
+      }
+      .visited .infoContainer .description {
+        color: var(--wizard-descriptionActiveFontColor);
+      }
       .description {
-        text-align: left;
-        font: Normal 12px/17px var(--fontFamily);
-        letter-spacing: 0.58px;
-        color: inherit;
+        text-align: var(--wizard-descriptionTextAlign);
+        text-transform: var(--wizard-descriptionFontTextTransform);
+        font-size: var(--wizard-descriptionFontSize);
+        font-family: var(--wizard-descriptionFontFamily);
+        font-weight: var(--wizard-descriptionFontWeight);
+        font-style: var(--wizard-descriptionFontStyle);
+        letter-spacing: var(--wizard-descriptionLetterSpacing);
         margin: 0;
       }
       .stepSeparator {
         width: ${inputs.mode === "horizontal" ? "" : "0"};
         height: ${inputs.mode === "horizontal" ? "0" : ""};
         ${inputs.mode === "vertical" ? "margin: 0 18px;" : ""}
-        border: 1px solid var(--wizard-lineColor);
+        border: var(--wizard-separatorBorderThickness) var(--wizard-separatorBorderStyle) var(--wizard-separatorColor);
         opacity: 1;
         flex-grow: 1;
       }

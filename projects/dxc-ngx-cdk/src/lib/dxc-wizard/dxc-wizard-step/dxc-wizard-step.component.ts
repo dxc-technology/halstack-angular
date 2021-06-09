@@ -204,6 +204,10 @@ export class DxcWizardStepComponent {
         .number {
           color: var(--wizard-stepContainerSelectedFontColor) !important;
         }
+        svg,
+        img {
+          fill: var(--wizard-stepContainerSelectedFontColor);
+        }
       }
       .iconContainer {
         display: flex;

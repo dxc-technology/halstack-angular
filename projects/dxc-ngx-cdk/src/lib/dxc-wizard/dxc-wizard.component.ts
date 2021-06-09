@@ -99,56 +99,6 @@ export class DxcWizardComponent {
       flex-direction: ${inputs.mode === "vertical" ? "column" : "row"};
       justify-content: center;
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
-
-      svg,
-      img {
-        width: 19px;
-        height: 19px;
-        vertical-align: middle;
-      }
-
-      dxc-wizard-step {
-        :not(.current, .disabled) {
-          .iconContainer {
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--wizard-borderColor);
-          }
-          .number {
-            color: var(--wizard-fontColor);
-            font-family: var(--fontFamily);
-          }
-        }
-
-        .current,
-        .disabled {
-          .iconContainer {
-            width: 36px;
-            height: 36px;
-            border: none;
-          }
-        }
-
-        .current {
-          .iconContainer {
-            background: var(--wizard-selectedBackgroundColor);
-            color: var(--wizard-selectedFont);
-          }
-          .number {
-            color: var(--wizard-fontColor);
-          }
-        }
-
-        .disabled {
-          .iconContainer {
-            background: var(--wizard-disabledBackground);
-            color: var(--wizard-disabledFont);
-          }
-          .number {
-            color: var(--wizard-disabledFont);
-          }
-        }
-      }
     `;
   }
 }

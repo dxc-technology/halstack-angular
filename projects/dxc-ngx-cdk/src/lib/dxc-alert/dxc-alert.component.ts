@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-alert",
@@ -52,7 +52,7 @@ export class DxcAlertComponent implements OnChanges {
     margin: null,
     type: "info",
     size: "fitContent",
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
   constructor(private utils: CssUtils) {}
@@ -74,11 +74,10 @@ export class DxcAlertComponent implements OnChanges {
   getDynamicStyle(inputs) {
     return css`
       .container {
-        font-size: 12px;
         overflow: hidden;
-        box-shadow: 0px 3px 6px #00000012;
-        border-radius: 4px;
-        font-family: var(--fontFamily);
+        box-shadow: var(--alert-boxShadowOffsetX) var(--alert-boxShadowOffsetY)
+          var(--alert-boxShadowBlur) var(--alert-boxShadowColor);
+        border-radius: var(--alert-borderRadius);
         z-index: 300;
         ${this.utils.getMargins(inputs.margin)}
         ${this.utils.calculateWidth(this.sizes, inputs)}
@@ -102,11 +101,11 @@ export class DxcAlertComponent implements OnChanges {
         `;
       case "confirm":
         return css`
-          background-color: var(--alert-confirmColor);
+          background-color: var(--alert-successColor);
         `;
       case "warning":
         return css`
-          background-color:  var(--alert-warningColor);
+          background-color: var(--alert-warningColor);
         `;
       case "error":
         return css`

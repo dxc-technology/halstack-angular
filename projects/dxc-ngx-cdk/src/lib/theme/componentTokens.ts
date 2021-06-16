@@ -88,7 +88,7 @@ export const componentTokens = {
   "--accordion-titleMarginLeft": "0px",
   "--accordion-titleMarginTop": "0px",
   "--accordion-titleMarginBottom": "0px",
-  //AssistiveText 
+  //AssistiveText
   "--accordion-assistiveTextFontFamily": globalTokens.type_sans,
   "--accordion-assistiveTextFontSize": globalTokens.type_scale_03,
   "--accordion-assistiveTextFontWeight": globalTokens.type_light,
@@ -133,6 +133,56 @@ export const componentTokens = {
   "--accordion-accordionGroupSeparatorBorderRadius": "0px",
   "--accordion-accordionGroupSeparatorBorderStyle": "solid",
 
+  //ALERT
+  "--alert-infoColor": globalTokens.lightBlue,
+  "--alert-successColor": globalTokens.lightGreen,
+  "--alert-warningColor": globalTokens.lightYellow,
+  "--alert-errorColor": globalTokens.lightPink,
+  "--alert-overlayColor": globalTokens.black,
+  "--alert-overlayOpacity": "0.8",
+  "--alert-focusColor": globalTokens.blue, //ponerlo en el componente
+  // Title
+  "--alert-height": "48px",
+  "--alert-titleFontFamily": globalTokens.type_sans,
+  "--alert-titleFontSize": globalTokens.type_scale_01,
+  "--alert-titleFontColor": globalTokens.black,
+  "--alert-titleFontWeight": globalTokens.type_bold,
+  "--alert-titleFontStyle": globalTokens.type_normal,
+  "--alert-titleTextTransform": globalTokens.type_uppercase,
+  "--alert-titlePaddingRight": "10px",
+  "--alert-titlePaddingLeft": "12px",
+  "--alert-titlePaddingTop": "0px",
+  "--alert-titlePaddingBottom": "0px",
+  //Content
+  "--alert-contentFontFamily": globalTokens.type_sans,
+  "--alert-contentFontSize": globalTokens.type_scale_01,
+  "--alert-contentFontColor": globalTokens.black,
+  "--alert-contentFontWeight": globalTokens.type_normal,
+  "--alert-contentPaddingLeft": "46px",
+  "--alert-contentPaddingRight": "12px",
+  "--alert-contentPaddingTop": "8px",
+  "--alert-contentPaddingBottom": "20px",
+  //InlineText
+  "--alert-inlineTextPaddingLeft": "10px",
+  "--alert-inlineTextPaddingRight": "22px",
+  "--alert-inlineTextPaddingTop": "0px",
+  "--alert-inlineTextPaddingBottom": "0px",
+  //Icon
+  "--alert-iconPaddingLeft": "12px",
+  "--alert-iconPaddingRight": "0px",
+  "--alert-iconPaddingTop": "0px",
+  "--alert-iconPaddingBottom": "0px",
+  "--alert-iconSize": "20px",
+  //Box/Border
+  "--alert-boxShadowOffsetX": "0px",
+  "--alert-boxShadowOffsetY": "3px",
+  "--alert-boxShadowBlur": "6px",
+  "--alert-boxShadowColor": "#00000012",
+  "--alert-borderRadius": "4px",
+  "--alert-borderStyle": globalTokens.type_no_line,
+  "--alert-borderThickness": "0px",
+  "--alert-borderColor": globalTokens.transparent,
+
   //TABS
   "--tabs-selectedFontColor": globalTokens.purple,
   "--tabs-backgroundColor": globalTokens.white,
@@ -146,19 +196,6 @@ export const componentTokens = {
   "--tabs-pressedBackgroundColor": globalTokens.mediumPurple,
 
   //------------Without new design---------------------
-
-  //ALERT
-  "--alert-infoColor": globalTokens.lightBlue,
-  "--alert-confirmColor": globalTokens.lightGreen,
-  "--alert-warningColor": globalTokens.lightYellow,
-  "--alert-errorColor": globalTokens.lightPink,
-  "--alert-overlayColor": globalTokens.black,
-  "--alert-focusColor": globalTokens.blue, //ponerlo en el componente
-  "--alert-fontFamily": globalTokens.type_sans,
-  "--alert-fontSizeBase": globalTokens.type_scale_root,
-  "--alert-fontSize": globalTokens.type_scale_01,
-  "--alert-fontTextTransform": globalTokens.type_uppercase,
-  "--alert-fontWeight": globalTokens.type_bold,
 
   //BOX
   "--box-backgroundColor": globalTokens.white,
@@ -460,7 +497,7 @@ export const componentTokens = {
   "--wizard-labelTextAlign": "left",
   "--wizard-labelFontColor": globalTokens.darkGrey,
   "--wizard-labelActiveFontColor": globalTokens.black,
-  "--wizard-descriptionFontSize": globalTokens.type_scale_01, 
+  "--wizard-descriptionFontSize": globalTokens.type_scale_01,
   "--wizard-descriptionFontFamily": globalTokens.type_sans,
   "--wizard-descriptionFontStyle": globalTokens.type_normal,
   "--wizard-descriptionFontWeight": globalTokens.type_regular,
@@ -489,7 +526,7 @@ export const componentTokens = {
   "--wizard-circleHeight": "32px",
   "--wizard-separatorBorderThickness": "1px",
   "--wizard-separatorBorderStyle": "solid",
-  "--wizard-separatorColor": globalTokens.lightGrey
+  "--wizard-separatorColor": globalTokens.lightGrey,
 };
 
 export const componentIcons = {

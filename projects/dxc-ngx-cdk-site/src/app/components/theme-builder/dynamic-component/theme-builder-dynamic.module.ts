@@ -6,6 +6,10 @@ import { CommonModule } from '@angular/common';
 import { AccordionPreviewComponent } from '../../../pages/theme-builder/previews/accordion-preview/accordion-preview.component';
 import { AlertPreviewComponent } from '../../../pages/theme-builder/previews/alert-preview/alert-preview.component';
 import { WizardPreviewComponent } from '../../../pages/theme-builder/previews/wizard-preview/wizard-preview.component';
+import { BoxPreviewComponent } from '../../../pages/theme-builder/previews/box-preview/box-preview.component';
+import { ButtonPreviewComponent } from '../../../pages/theme-builder/previews/button-preview/button-preview.component';
+import { CardPreviewComponent } from '../../../pages/theme-builder/previews/card-preview/card-preview.component';
+import { CheckboxPreviewComponent } from '../../../pages/theme-builder/previews/checkbox-preview/checkbox-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -14,7 +18,11 @@ import { WizardPreviewComponent } from '../../../pages/theme-builder/previews/wi
   entryComponents: [
     AccordionPreviewComponent,
     AlertPreviewComponent,
-    WizardPreviewComponent
+    WizardPreviewComponent,
+    BoxPreviewComponent,
+    ButtonPreviewComponent,
+    CardPreviewComponent,
+    CheckboxPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

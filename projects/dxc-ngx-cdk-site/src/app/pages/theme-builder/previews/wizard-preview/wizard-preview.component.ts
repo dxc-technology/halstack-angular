@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-wizard-preview',
-  templateUrl: './wizard-preview.component.html',
-  styleUrls: ['./wizard-preview.component.scss']
+  templateUrl: './wizard-preview.component.html'
 })
 export class WizardPreviewComponent implements OnInit {
 

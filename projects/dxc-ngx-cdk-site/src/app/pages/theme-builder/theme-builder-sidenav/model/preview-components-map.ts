@@ -1,8 +1,10 @@
 import { AccordionPreviewComponent } from '../../previews/accordion-preview/accordion-preview.component';
 import { AlertPreviewComponent } from '../../previews/alert-preview/alert-preview.component';
 import { WizardPreviewComponent } from '../../previews/wizard-preview/wizard-preview.component';
-
-
+import { BoxPreviewComponent } from '../../previews/box-preview/box-preview.component';
+import { ButtonPreviewComponent } from '../../previews/button-preview/button-preview.component';
+import { CardPreviewComponent } from '../../previews/card-preview/card-preview.component';
+import { CheckboxPreviewComponent } from '../../previews/checkbox-preview/checkbox-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -12,6 +14,10 @@ export interface PreviewThemeBuilderComponent{
 const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'accordion', component: AccordionPreviewComponent},
   {name: 'alert', component: AlertPreviewComponent},
+  {name: 'box', component: BoxPreviewComponent},
+  {name: 'button', component: ButtonPreviewComponent},
+  {name: 'card', component: CardPreviewComponent},
+  {name: 'checkbox', component: CheckboxPreviewComponent},
   {name: 'wizard', component: WizardPreviewComponent}
 ];
 

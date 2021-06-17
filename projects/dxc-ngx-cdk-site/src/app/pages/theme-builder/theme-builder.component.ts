@@ -17,6 +17,7 @@ export class ThemeBuilderComponentPage implements OnInit, Stylable {
   css`
   .tbMainContainer{
     display: flex;
+    justify-content: space-between;
   }`;
 
 }

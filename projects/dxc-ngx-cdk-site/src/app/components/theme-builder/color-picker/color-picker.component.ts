@@ -50,6 +50,8 @@ export class ColorPickerComponent implements OnInit {
     }
 
     .propertyName{
+      border-radius: 10px;
+      cursor: pointer;
       margin-left: 10px;
       font: normal 12px/17px Open Sans;
       ${this.backgroundType === 'dark'

@@ -38,17 +38,21 @@ import { ChipComponent } from './pages/chip/chip.component';
 import { TextAreaComponent } from './pages/text-area/text-area.component';
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
+import { ThemeBuilderPageModule } from './pages/theme-builder/theme-buider.module';
 
 let routes: Routes = [];
 
   routes.push({ path: '', redirectTo: 'overview', pathMatch: 'full' }),
   routes.push({ path: 'overview', component: OverviewPageComponent }),
   routes.push({ path: 'guidelines', component: DesignGuidelinesPageComponent }),
-
+  routes.push({
+    path: 'theme-builder',
+    loadChildren: () => import('./pages/theme-builder/theme-buider.module').then(m => m.ThemeBuilderPageModule)
+  }),
   routes.push({
     path: 'components',
     component: ComponentsPageComponent,
-  }, 
+  },
   {
     path: 'components/accordion',
     component: AccordionComponent
@@ -83,7 +87,7 @@ let routes: Routes = [];
   },
   {
     path: 'components/table',
-    component: TableComponent 
+    component: TableComponent
   },
   {
     path: 'components/checkbox',
@@ -139,11 +143,11 @@ let routes: Routes = [];
   },
   {
     path: 'components/select',
-    component: SelectComponent 
+    component: SelectComponent
   },
   {
     path: 'components/slider',
-    component: SliderComponent 
+    component: SliderComponent
   },
   {
     path: 'components/tag',

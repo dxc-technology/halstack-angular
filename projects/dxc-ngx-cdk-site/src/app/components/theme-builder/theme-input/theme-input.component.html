@@ -1,0 +1,14 @@
+<div class="tbPropertyContainer" id="property-{{propertyName}}">
+  <div class="tbPropertyName">{{makeReadable(propertyName)}}</div>
+  <ng-container [ngSwitch]="tokenType">
+    <div [ngSwitchCase]="'color'">
+        Inner content 1
+    </div>
+    <div [ngSwitchCase]="'image'">
+        Inner content 2
+    </div>
+    <div ngSwitchDefault>
+        Inner content 4
+    </div>
+</ng-container>
+</div>

@@ -9,14 +9,15 @@ import {
 } from "@angular/core";
 import { ComponentPortal, CdkPortal, DomPortalOutlet } from '@angular/cdk/portal';
 import { ViewChild, ViewContainerRef } from '@angular/core';
+import { ThemeBuilderService } from "../service/theme-builder.service";
 
 
 @Component({
-  selector: "app-dynamic-component",
+  selector: "tb-dynamic-component",
   template: "",
   providers: []
 })
-export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
+export class ThemeBuilderDynamicComponentComponent implements AfterViewInit, OnDestroy {
 
 
   @Input()
@@ -34,13 +35,24 @@ export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector,
     private appRef: ApplicationRef,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private themeBuilderService: ThemeBuilderService
   ) {
   }
 
 
   ngAfterViewInit(): void {
-    const selector = (document.querySelector('#' + this.selector));
+    this.themeBuilderService.themeBuilderComponent$.subscribe((resp)=> {
+      if (this.portalHost)
+        this.portalHost.detach();
+      this.attachComponentToDom(this.selector, resp.component);
+    })
+
+  }
+
+  private attachComponentToDom(select: string, component: any) {
+
+    const selector = (document.querySelector('#' + select));
     // if (selector!==null){
     this.portalHost = new DomPortalOutlet(
       selector,
@@ -48,10 +60,10 @@ export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
       this.appRef,
       this.injector
     );
-    this.portal = new ComponentPortal(this.component);
-    if (this.portalHost != undefined)
+    this.portal = new ComponentPortal(component);
+    if (this.portalHost != undefined) {
       this.portalHost.attach(this.portal);
-    // }
+    }
 
   }
 

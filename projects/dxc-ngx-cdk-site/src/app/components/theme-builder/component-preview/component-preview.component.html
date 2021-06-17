@@ -1,4 +1,4 @@
-<div theme class="tbComponentPreviewContainer" *ngIf="themeBuilderService.themeBuilderComponent$ | async as currentComponent">
+<div class="tbComponentPreviewContainer" *ngIf="themeBuilderService.themeBuilderComponent$ | async as currentComponent">
   <div class="tbComponentHeader">
     <dxc-heading [level]="4" margin="xsmall" [text]="getComponentTitle(currentComponent.name)"></dxc-heading>
   </div>

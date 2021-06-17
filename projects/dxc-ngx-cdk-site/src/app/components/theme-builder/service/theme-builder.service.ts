@@ -11,7 +11,7 @@ export interface ThemeBuilderContext {
   providedIn: "root",
 })
 export class ThemeBuilderService {
-  changeCustomTheme$ = new BehaviorSubject(null);
+  changeCustomThemeProperty$ = new BehaviorSubject(null);
 
   currentThemeComponent$ = new BehaviorSubject(null);
 
@@ -29,6 +29,6 @@ export class ThemeBuilderService {
   };
 
   onChangeCustomTheme = (propertyName: string, propertyValue: string) =>
-    this.changeCustomTheme$.next({ propertyName, propertyValue });
+    this.changeCustomThemeProperty$.next({ propertyName, propertyValue });
 
 }

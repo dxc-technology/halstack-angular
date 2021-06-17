@@ -15,19 +15,19 @@ export class ThemeInputComponent implements OnInit {
   propertyValue: string;
 
   @Input()
-  tokenType: string;
+  propertyType: string;
 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.getDynamicStyle();
+    this.className = this.getDynamicStyle();
   }
 
 
   getDynamicStyle(){
     return css`
-    .tBropertyContainer{
+    .tbPropertyContainer{
       display: flex;
       align-items: center;
       justify-content: flex-start;

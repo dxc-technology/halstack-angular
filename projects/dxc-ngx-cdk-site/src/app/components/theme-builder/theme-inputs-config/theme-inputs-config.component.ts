@@ -1,14 +1,19 @@
-import { Component, OnInit, HostBinding, Input, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  HostBinding,
+  Input,
+  OnDestroy,
+} from "@angular/core";
 import { css } from "emotion";
 import { Stylable } from "../model/stylable";
-import { ThemeBuilderService } from '../service/theme-builder.service';
+import { ThemeBuilderService } from "../service/theme-builder.service";
 
 interface ComponentInputs {
   propertyName: string;
   propertyValue: string;
   propertyType: string;
 }
-
 
 @Component({
   selector: "tb-theme-inputs-config",
@@ -17,25 +22,25 @@ interface ComponentInputs {
 })
 export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
   @HostBinding("class") className;
-  defaultInputs: any;
-
 
   subscription: any;
 
   componentInputs: Array<ComponentInputs>;
 
-  constructor( private  themeBuilderService: ThemeBuilderService) {
-    this.subscription =  this.themeBuilderService.currentThemeComponent$.subscribe((resp) => {
-      const currentComponent = resp.component;
-      const currentSchema = resp.schema;
-      console.dir(currentComponent);
-      console.dir(currentSchema);
-
-    });
-
+  constructor(private themeBuilderService: ThemeBuilderService) {
+    this.subscription =
+      this.themeBuilderService.currentThemeComponent$.subscribe((resp) => {
+        this.componentInputs = [];
+        const keys = Object.keys(resp.component);
+        keys.forEach((currentKey) => {
+          this.componentInputs.push({
+            propertyName: currentKey,
+            propertyValue: resp.component[currentKey],
+            propertyType: resp.schema[currentKey] || 'default',
+          });
+        });
+      });
   }
-
-
 
   getDynamicStyle = () => {
     return css`
@@ -94,8 +99,7 @@ export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
     this.className = this.getDynamicStyle();
   }
 
-
-  ngOnDestroy():void{
+  ngOnDestroy(): void {
     this.subscription.destroy();
   }
 }

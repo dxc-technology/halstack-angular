@@ -47,13 +47,11 @@ export class ColorPickerComponent implements OnInit {
     .propertyContainer{
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      position: relative;
-      margin: 7px 0;
     }
 
     .propertyName{
-      font: normal 13px Open Sans;
+      margin-left: 10px;
+      font: normal 12px/17px Open Sans;
       ${this.backgroundType === 'dark'
       ? css`
           color: #FFFFFF;
@@ -61,8 +59,6 @@ export class ColorPickerComponent implements OnInit {
       : css`
         color: #000000;
       `}
-
-      width: 60%;
       line-height: 13px;
     }
     `;

@@ -1,14 +1,14 @@
 <div class="tbPropertyContainer" id="property-{{propertyName}}">
   <div class="tbPropertyName">{{makeReadable(propertyName)}}</div>
-  <ng-container [ngSwitch]="tokenType">
-    <div [ngSwitchCase]="'color'">
-        Inner content 1
+  <ng-container [ngSwitch]="propertyType">
+    <div *ngSwitchCase="'color'">
+      <builder-color-picker [colorName]="propertyValue" [propertyName]="propertyName"></builder-color-picker>
     </div>
-    <div [ngSwitchCase]="'image'">
-        Inner content 2
+    <div *ngSwitchCase="'image'">
+      Inner content 2
     </div>
-    <div ngSwitchDefault>
-        Inner content 4
+    <div *ngSwitchDefault>
+      <builder-default-input [propertyValue]="propertyValue" [propertyName]="propertyName"></builder-default-input>
     </div>
-</ng-container>
+  </ng-container>
 </div>

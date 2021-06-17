@@ -21,6 +21,8 @@ export class ThemeBuilderSidenavComponent implements OnInit {
 
   componentMenuItems: Array<string>;
 
+  selectedComponent: string;
+
   type: string;
 
   constructor(
@@ -29,6 +31,7 @@ export class ThemeBuilderSidenavComponent implements OnInit {
   ) {
     this.currentTheme = simpleTheme;
     this.currentSchemaTheme = simpleSchema;
+    this.selectedComponent = 'accordion';
     this.componentMenuItems = this.extractMenuComponentItems(this.currentTheme);
   }
 
@@ -38,6 +41,7 @@ export class ThemeBuilderSidenavComponent implements OnInit {
       currentComponent.name,
       currentComponent.component
     );
+    this.selectedComponent = componentName;
     this.themeBuilderService.onChangeThemeComponent(
       this.currentTheme[componentName],
       this.currentSchemaTheme[componentName]
@@ -53,6 +57,11 @@ export class ThemeBuilderSidenavComponent implements OnInit {
       this.currentSchemaTheme = advancedSchema;
     }
     this.componentMenuItems = this.extractMenuComponentItems(this.currentTheme);
+    console.log(this.selectedComponent);
+    this.themeBuilderService.onChangeThemeComponent(
+      this.currentTheme[this.selectedComponent],
+      this.currentSchemaTheme[this.selectedComponent]
+    );
   };
 
   ngOnInit() {

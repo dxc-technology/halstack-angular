@@ -1,5 +1,6 @@
 import { AccordionPreviewComponent } from '../../previews/accordion-preview/accordion-preview.component';
 import { AlertPreviewComponent } from '../../previews/alert-preview/alert-preview.component';
+import { WizardPreviewComponent } from '../../previews/wizard-preview/wizard-preview.component';
 
 
 export interface PreviewThemeBuilderComponent{
@@ -10,7 +11,8 @@ export interface PreviewThemeBuilderComponent{
 
 const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'accordion', component: AccordionPreviewComponent},
-  {name: 'alert', component: AlertPreviewComponent}
+  {name: 'alert', component: AlertPreviewComponent},
+  {name: 'wizard', component: WizardPreviewComponent}
 ];
 
 

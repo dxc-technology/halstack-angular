@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import { AccordionPreviewComponent } from '../../../pages/theme-builder/previews/accordion-preview/accordion-preview.component';
 import { AlertPreviewComponent } from '../../../pages/theme-builder/previews/alert-preview/alert-preview.component';
+import { WizardPreviewComponent } from '../../../pages/theme-builder/previews/wizard-preview/wizard-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -12,7 +13,8 @@ import { AlertPreviewComponent } from '../../../pages/theme-builder/previews/ale
   exports: [ThemeBuilderDynamicComponentComponent],
   entryComponents: [
     AccordionPreviewComponent,
-    AlertPreviewComponent
+    AlertPreviewComponent,
+    WizardPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

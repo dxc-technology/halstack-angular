@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Stylable } from '../../../../components/theme-builder/model/stylable';
+import { Component, OnInit } from "@angular/core";
+import { Stylable } from "../../../../components/theme-builder/model/stylable";
 
 @Component({
-  selector: 'app-alert-preview',
-  templateUrl: './alert-preview.component.html',
-  styleUrls: ['./alert-preview.component.scss']
+  selector: "app-alert-preview",
+  templateUrl: "./alert-preview.component.html",
+  styleUrls: ["./alert-preview.component.scss"],
 })
 export class AlertPreviewComponent implements OnInit {
+  visible = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  handleVisible() {
+    this.visible = !this.visible;
   }
 }

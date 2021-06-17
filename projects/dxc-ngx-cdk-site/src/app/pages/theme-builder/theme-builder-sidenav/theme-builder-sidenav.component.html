@@ -1,11 +1,14 @@
 <div class="sidenav">
   <div class="sidenav-title">
-
     <h1 class="sidenav-title">Theme Builder</h1>
-
   </div>
   <div>
-    <dxc-select label="Type" margin="small" size="fillParent" (onChange)="onThemeTypeChange($event)">
+    <dxc-select
+      label="Type"
+      margin="small"
+      size="fillParent"
+      (onChange)="onThemeTypeChange($event)"
+    >
       <dxc-select-option value="default" label="Default"></dxc-select-option>
       <dxc-select-option value="advance" label="Advanced"></dxc-select-option>
     </dxc-select>
@@ -15,12 +18,26 @@
       <div class="menu">
         <div class="menu-title">Components</div>
         <div class="menu-items">
-          <div class="menu-item" *ngFor="let currentMenuItem of componentMenuItems">
-            <a  [ngClass]="{'active': 'components/' + currentMenuItem ?
-            router.isActive(router.createUrlTree(['components/accordion']).toString(), true) : false}"
-              (click)="renderTo(currentMenuItem)">{{currentMenuItem}}</a>
+          <div
+            class="menu-item"
+            *ngFor="let currentMenuItem of componentMenuItems"
+          >
+            <a
+              [ngClass]="{
+                active:
+                  'components/' + currentMenuItem
+                    ? router.isActive(
+                        router
+                          .createUrlTree(['components/accordion'])
+                          .toString(),
+                        true
+                      )
+                    : false
+              }"
+              (click)="renderTo(currentMenuItem)"
+              >{{ currentMenuItem }}</a
+            >
           </div>
-
         </div>
       </div>
     </div>

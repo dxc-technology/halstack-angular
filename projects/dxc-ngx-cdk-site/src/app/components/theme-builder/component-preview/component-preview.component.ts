@@ -15,7 +15,7 @@ export class ComponentPreviewComponent implements OnInit, Stylable {
   capitalizeText = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
   ngOnInit(): void {
-     this.className = this.getDynamicStyle();
+    this.className = this.getDynamicStyle();
   }
 
   getComponentTitle = (name: string) =>
@@ -23,9 +23,9 @@ export class ComponentPreviewComponent implements OnInit, Stylable {
 
   getDynamicStyle = () =>
     css`
+      width: 100%;
       .tbComponentPreviewContainer {
         flex-grow: 1;
-
         /* width */
         ::-webkit-scrollbar {
           width: 8px;
@@ -49,11 +49,12 @@ export class ComponentPreviewComponent implements OnInit, Stylable {
           background: #555;
         }
       }
-      .tbPreviewContainer{
+      .tbPreviewContainer {
         margin-left: 8%;
         padding-right: 8%;
+        margin-bottom: 25px;
       }
-      .tbComponentHeader{
+      .tbComponentHeader {
         margin: 36px 8% 0 8%;
         display: flex;
       }

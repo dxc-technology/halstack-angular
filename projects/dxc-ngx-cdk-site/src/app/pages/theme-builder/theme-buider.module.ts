@@ -13,7 +13,8 @@ import {
   DxcBoxModule,
   DxcHeadingModule,
   DxcCardModule,
-  DxcCheckboxModule
+  DxcCheckboxModule,
+  DxcChipModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -22,6 +23,7 @@ import { ButtonPreviewComponent } from './previews/button-preview/button-preview
 import { CardPreviewComponent } from './previews/card-preview/card-preview.component';
 import { ThemeModule } from '../../../../../dxc-ngx-cdk/src/lib/theme/theme.module';
 import { CheckboxPreviewComponent } from './previews/checkbox-preview/checkbox-preview.component';
+import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { CheckboxPreviewComponent } from './previews/checkbox-preview/checkbox-p
     ButtonPreviewComponent,
     CardPreviewComponent,
     CheckboxPreviewComponent,
+    ChipPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,8 @@ import { CheckboxPreviewComponent } from './previews/checkbox-preview/checkbox-p
     DxcBoxModule,
     DxcHeadingModule,
     DxcCardModule,
-    DxcCheckboxModule
+    DxcCheckboxModule,
+    DxcChipModule
   ],
   exports: [],
   entryComponents: [],

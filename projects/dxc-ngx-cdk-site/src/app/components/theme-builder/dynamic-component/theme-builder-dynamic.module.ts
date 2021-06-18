@@ -10,6 +10,7 @@ import { BoxPreviewComponent } from '../../../pages/theme-builder/previews/box-p
 import { ButtonPreviewComponent } from '../../../pages/theme-builder/previews/button-preview/button-preview.component';
 import { CardPreviewComponent } from '../../../pages/theme-builder/previews/card-preview/card-preview.component';
 import { CheckboxPreviewComponent } from '../../../pages/theme-builder/previews/checkbox-preview/checkbox-preview.component';
+import { ChipPreviewComponent } from '../../../pages/theme-builder/previews/chip-preview/chip-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -22,7 +23,8 @@ import { CheckboxPreviewComponent } from '../../../pages/theme-builder/previews/
     BoxPreviewComponent,
     ButtonPreviewComponent,
     CardPreviewComponent,
-    CheckboxPreviewComponent
+    CheckboxPreviewComponent,
+    ChipPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

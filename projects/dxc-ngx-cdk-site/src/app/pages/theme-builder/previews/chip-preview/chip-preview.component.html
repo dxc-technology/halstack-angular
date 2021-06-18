@@ -1,0 +1,29 @@
+<div>
+  <tbuilder-component-mode text="Default">
+    <dxc-chip label="Default Chip" margin="xsmall"></dxc-chip>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="With Suffix">
+    <dxc-chip
+      [suffixIconSrc]="iconPath"
+      label="Chip with suffix"
+      margin="xsmall"
+    ></dxc-chip>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="With Prefix">
+    <dxc-chip
+      [prefixIconSrc]="iconPath"
+      label="Chip with prefix"
+      margin="xsmall"
+    ></dxc-chip>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Only Icon">
+    <dxc-chip [prefixIconSrc]="iconPath" margin="xsmall"></dxc-chip>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Disabled">
+    <dxc-chip label="Chip disabled" margin="xsmall" [disabled]="true"></dxc-chip>
+  </tbuilder-component-mode>
+</div>

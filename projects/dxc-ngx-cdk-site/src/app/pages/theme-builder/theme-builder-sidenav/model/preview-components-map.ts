@@ -16,6 +16,7 @@ import { InputTextPreviewComponent } from '../../previews/input-text-preview/inp
 import { LinkPreviewComponent } from '../../previews/link-preview/link-preview.component';
 import { PaginatorPreviewComponent } from '../../previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from '../../previews/progress-bar-preview/progress-bar-preview.component';
+import { RadioPreviewComponent } from '../../previews/radio-preview/radio-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -40,7 +41,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'link', component: LinkPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},
-  {name: 'radio', component: DialogPreviewComponent},
+  {name: 'radio', component: RadioPreviewComponent},
   {name: 'select', component: DialogPreviewComponent},
   {name: 'sidenav', component: DialogPreviewComponent},
   {name: 'slider', component: DialogPreviewComponent},

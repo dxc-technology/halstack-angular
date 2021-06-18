@@ -55,6 +55,7 @@ import { InputTextPreviewComponent } from './previews/input-text-preview/input-t
 import { LinkPreviewComponent } from './previews/link-preview/link-preview.component';
 import { PaginatorPreviewComponent } from './previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from './previews/progress-bar-preview/progress-bar-preview.component';
+import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ProgressBarPreviewComponent } from './previews/progress-bar-preview/pro
     LinkPreviewComponent,
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
+    RadioPreviewComponent,
   ],
   imports: [
     CommonModule,

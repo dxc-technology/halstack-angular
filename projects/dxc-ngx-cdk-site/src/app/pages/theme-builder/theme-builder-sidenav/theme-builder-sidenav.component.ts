@@ -35,8 +35,6 @@ export class ThemeBuilderSidenavComponent implements OnInit {
 
   type: string;
 
-  changeThemeComponentPropertySubscription: any;
-
   constructor(
     public router: Router,
     private themeBuilderService: ThemeBuilderService,
@@ -46,7 +44,10 @@ export class ThemeBuilderSidenavComponent implements OnInit {
     this.complexTheme = advancedTheme;
     this.currentTheme = this.defaultTheme;
     this.currentSchemaTheme = simpleSchema;
-    this.selectedThemeComponent = { componentName : "accordion", themeType: 'default' };
+    this.selectedThemeComponent = {
+      componentName: "accordion",
+      themeType: "default",
+    };
     this.componentMenuItems = this.extractMenuComponentItems(this.currentTheme);
   }
 
@@ -94,53 +95,59 @@ export class ThemeBuilderSidenavComponent implements OnInit {
       this.currentSchemaTheme["accordion"]
     );
 
-    this.changeThemeComponentPropertySubscription =
-      this.themeBuilderService.changeCustomThemeProperty$.subscribe((resp) => {
+    this.themeBuilderService.changeCustomThemeProperty$.subscribe((resp) => {
+      if (resp) {
+        const key = this.selectedThemeComponent.componentName;
+        const attributeKey = resp.propertyName;
 
-        if (resp){
-          const key = this.selectedThemeComponent.componentName;
-          const attributeKey = resp.propertyName;
-
-          if (this.selectedThemeComponent.themeType === "default") {
-            this.bindThemeProperty({isAdvance: false, key, attributeKey, value: resp.propertyValue });
-            this.registerChangesOnTheme(false);
-          } else {
-            this.bindThemeProperty({isAdvance: true, key, attributeKey, value: resp.propertyValue });
-            this.registerChangesOnTheme(true);
-          }
-
+        if (this.selectedThemeComponent.themeType === "default") {
+          this.bindThemeProperty({
+            isAdvance: false,
+            key,
+            attributeKey,
+            value: resp.propertyValue,
+          });
+          this.registerChangesOnTheme(false);
+        } else {
+          this.bindThemeProperty({
+            isAdvance: true,
+            key,
+            attributeKey,
+            value: resp.propertyValue,
+          });
+          this.registerChangesOnTheme(true);
         }
-      });
+      }
+    });
   }
 
   private extractMenuComponentItems(items: any): Array<string> {
     return Object.keys(items);
   }
 
-  private bindThemeProperty(properties){
-    const {isAdvance, key, attributeKey , value} = properties;
-    if (isAdvance){
+  private bindThemeProperty(properties) {
+    const { isAdvance, key, attributeKey, value } = properties;
+    if (isAdvance) {
       this.complexTheme = {
         ...this.complexTheme,
-        [key]: { ...this.complexTheme[key],  [attributeKey]: value },
+        [key]: { ...this.complexTheme[key], [attributeKey]: value },
       };
-    }else{
+    } else {
       this.defaultTheme = {
         ...this.defaultTheme,
-        [key]: { ... this.defaultTheme[key], [attributeKey]: value },
+        [key]: { ...this.defaultTheme[key], [attributeKey]: value },
       };
     }
   }
 
-  private registerChangesOnTheme(isAdvance: boolean){
-    if (isAdvance){
+  private registerChangesOnTheme(isAdvance: boolean) {
+    if (isAdvance) {
       this.themeService.registerAdvancedTheme(this.complexTheme);
-    }else{
+    } else {
       this.themeService.registerTheme(this.defaultTheme);
     }
-  }  
-
+  }
   ngOnDestroy(): void {
-    this.changeThemeComponentPropertySubscription.destroy();
+    this.themeBuilderService.destroyChangeCustomThemeProperty();
   }
 }

@@ -42,7 +42,6 @@ export class ThemeBuilderSidenavComponent implements OnInit {
     private themeBuilderService: ThemeBuilderService,
     @Inject("ThemeService") private themeService: ThemeService
   ) {
-    console.log('Entra en el constructor')
     this.defaultTheme = simpleTheme;
     this.complexTheme = advancedTheme;
     this.currentTheme = this.defaultTheme;
@@ -99,34 +98,47 @@ export class ThemeBuilderSidenavComponent implements OnInit {
       this.themeBuilderService.changeCustomThemeProperty$.subscribe((resp) => {
 
         if (resp){
-
           const key = this.selectedThemeComponent.componentName;
           const attributeKey = resp.propertyName;
+
           if (this.selectedThemeComponent.themeType === "default") {
-
-            this.defaultTheme = {
-              ...this.defaultTheme,
-              [key]: { ... this.defaultTheme[key], [attributeKey]: resp.propertyValue },
-            };
-
-            this.themeService.registerTheme(this.defaultTheme);
+            this.bindThemeProperty({isAdvance: false, key, attributeKey, value: resp.propertyValue });
+            this.registerChangesOnTheme(false);
           } else {
-
-            this.complexTheme = {
-              ...this.complexTheme,
-              [key]: { ...this.complexTheme[key],  [attributeKey]: resp.propertyValue },
-            };
-
-            this.themeService.registerAdvancedTheme(this.complexTheme);
+            this.bindThemeProperty({isAdvance: true, key, attributeKey, value: resp.propertyValue });
+            this.registerChangesOnTheme(true);
           }
-        }
 
+        }
       });
   }
 
   private extractMenuComponentItems(items: any): Array<string> {
     return Object.keys(items);
   }
+
+  private bindThemeProperty(properties){
+    const {isAdvance, key, attributeKey , value} = properties;
+    if (isAdvance){
+      this.complexTheme = {
+        ...this.complexTheme,
+        [key]: { ...this.complexTheme[key],  [attributeKey]: value },
+      };
+    }else{
+      this.defaultTheme = {
+        ...this.defaultTheme,
+        [key]: { ... this.defaultTheme[key], [attributeKey]: value },
+      };
+    }
+  }
+
+  private registerChangesOnTheme(isAdvance: boolean){
+    if (isAdvance){
+      this.themeService.registerAdvancedTheme(this.complexTheme);
+    }else{
+      this.themeService.registerTheme(this.defaultTheme);
+    }
+  }  
 
   ngOnDestroy(): void {
     this.changeThemeComponentPropertySubscription.destroy();

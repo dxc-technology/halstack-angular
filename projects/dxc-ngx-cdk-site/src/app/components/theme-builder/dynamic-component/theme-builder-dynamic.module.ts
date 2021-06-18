@@ -20,6 +20,7 @@ import { HeadingPreviewComponent } from '../../../pages/theme-builder/previews/h
 import { InputTextPreviewComponent } from '../../../pages/theme-builder/previews/input-text-preview/input-text-preview.component';
 import { LinkPreviewComponent } from '../../../pages/theme-builder/previews/link-preview/link-preview.component';
 import { PaginatorPreviewComponent } from '../../../pages/theme-builder/previews/paginator-preview/paginator-preview.component';
+import { ProgressBarPreviewComponent } from '../../../pages/theme-builder/previews/progress-bar-preview/progress-bar-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -42,7 +43,8 @@ import { PaginatorPreviewComponent } from '../../../pages/theme-builder/previews
     HeadingPreviewComponent,
     InputTextPreviewComponent,
     LinkPreviewComponent,
-    PaginatorPreviewComponent
+    PaginatorPreviewComponent,
+    ProgressBarPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

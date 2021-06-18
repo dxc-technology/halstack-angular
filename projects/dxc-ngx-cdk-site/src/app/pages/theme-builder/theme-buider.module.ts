@@ -49,6 +49,7 @@ import { DatePreviewComponent } from './previews/date-preview/date-preview.compo
 import { DialogPreviewComponent } from './previews/dialog-preview/dialog-preview.component';
 import { DropdownPreviewComponent } from './previews/dropdown-preview/dropdown-preview.component';
 import { FooterPreviewComponent } from './previews/footer-preview/footer-preview.component';
+import { HeaderPreviewComponent } from './previews/header-preview/header-preview.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { FooterPreviewComponent } from './previews/footer-preview/footer-preview
     DialogPreviewComponent,
     DropdownPreviewComponent,
     FooterPreviewComponent,
+    HeaderPreviewComponent,
   ],
   imports: [
     CommonModule,

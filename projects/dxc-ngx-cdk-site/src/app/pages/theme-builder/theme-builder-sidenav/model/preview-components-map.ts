@@ -10,6 +10,7 @@ import { DatePreviewComponent } from '../../previews/date-preview/date-preview.c
 import { DialogPreviewComponent } from '../../previews/dialog-preview/dialog-preview.component';
 import { DropdownPreviewComponent } from '../../previews/dropdown-preview/dropdown-preview.component';
 import { FooterPreviewComponent } from '../../previews/footer-preview/footer-preview.component';
+import { HeaderPreviewComponent } from '../../previews/header-preview/header-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -28,7 +29,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'dialog', component: DialogPreviewComponent},
   {name: 'dropdown', component: DropdownPreviewComponent},
   {name: 'footer', component: FooterPreviewComponent},
-  {name: 'header', component: DialogPreviewComponent},
+  {name: 'header', component: HeaderPreviewComponent},
   {name: 'heading', component: DialogPreviewComponent},
   {name: 'inputText', component: DialogPreviewComponent},
   {name: 'link', component: DialogPreviewComponent},

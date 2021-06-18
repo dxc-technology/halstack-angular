@@ -6,6 +6,7 @@ import { ButtonPreviewComponent } from '../../previews/button-preview/button-pre
 import { CardPreviewComponent } from '../../previews/card-preview/card-preview.component';
 import { CheckboxPreviewComponent } from '../../previews/checkbox-preview/checkbox-preview.component';
 import { ChipPreviewComponent } from '../../previews/chip-preview/chip-preview.component';
+import { DatePreviewComponent } from '../../previews/date-preview/date-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -20,6 +21,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'card', component: CardPreviewComponent},
   {name: 'checkbox', component: CheckboxPreviewComponent},
   {name: 'chip', component: ChipPreviewComponent},
+  {name: 'date', component: DatePreviewComponent},
   {name: 'wizard', component: WizardPreviewComponent}
 ];
 

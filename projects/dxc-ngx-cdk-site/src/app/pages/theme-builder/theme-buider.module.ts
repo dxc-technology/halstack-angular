@@ -14,7 +14,28 @@ import {
   DxcHeadingModule,
   DxcCardModule,
   DxcCheckboxModule,
-  DxcChipModule
+  DxcChipModule,
+  DxcDateModule,
+  DxcDialogModule,
+  DxcDropdownModule,
+  DxcFooterModule,
+  DxcHeaderModule,
+  DxcInputTextModule,
+  DxcLinkModule,
+  DxcPaginatorModule,
+  DxcProgressbarModule,
+  DxcRadioModule,
+  DxcSelectModule,
+  DxcSideNavModule,
+  DxcSliderModule,
+  DxcSpinnerModule,
+  DxcSwitchModule,
+  DxcTagModule,
+  DxcTableModule,
+  DxcTabsModule,
+  DxcTextareaModule,
+  DxcToggleGroupModule,
+  DxcUploadModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -24,6 +45,7 @@ import { CardPreviewComponent } from './previews/card-preview/card-preview.compo
 import { ThemeModule } from '../../../../../dxc-ngx-cdk/src/lib/theme/theme.module';
 import { CheckboxPreviewComponent } from './previews/checkbox-preview/checkbox-preview.component';
 import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.component';
+import { DatePreviewComponent } from './previews/date-preview/date-preview.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +58,7 @@ import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.compo
     CardPreviewComponent,
     CheckboxPreviewComponent,
     ChipPreviewComponent,
+    DatePreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +74,28 @@ import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.compo
     DxcHeadingModule,
     DxcCardModule,
     DxcCheckboxModule,
-    DxcChipModule
+    DxcChipModule,
+    DxcDateModule,
+    DxcDialogModule,
+    DxcDropdownModule,
+    DxcFooterModule,
+    DxcHeaderModule,
+    DxcInputTextModule,
+    DxcLinkModule,
+    DxcPaginatorModule,
+    DxcProgressbarModule,
+    DxcRadioModule,
+    DxcSelectModule,
+    DxcSideNavModule,
+    DxcSliderModule,
+    DxcSpinnerModule,
+    DxcSwitchModule,
+    DxcTagModule,
+    DxcTableModule,
+    DxcTabsModule,
+    DxcTextareaModule,
+    DxcToggleGroupModule,
+    DxcUploadModule
   ],
   exports: [],
   entryComponents: [],

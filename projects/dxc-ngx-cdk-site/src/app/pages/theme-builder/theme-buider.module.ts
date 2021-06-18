@@ -48,6 +48,7 @@ import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.compo
 import { DatePreviewComponent } from './previews/date-preview/date-preview.component';
 import { DialogPreviewComponent } from './previews/dialog-preview/dialog-preview.component';
 import { DropdownPreviewComponent } from './previews/dropdown-preview/dropdown-preview.component';
+import { FooterPreviewComponent } from './previews/footer-preview/footer-preview.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { DropdownPreviewComponent } from './previews/dropdown-preview/dropdown-p
     DatePreviewComponent,
     DialogPreviewComponent,
     DropdownPreviewComponent,
+    FooterPreviewComponent,
   ],
   imports: [
     CommonModule,

@@ -14,6 +14,7 @@ import { ChipPreviewComponent } from '../../../pages/theme-builder/previews/chip
 import { DatePreviewComponent } from '../../../pages/theme-builder/previews/date-preview/date-preview.component';
 import { DialogPreviewComponent } from '../../../pages/theme-builder/previews/dialog-preview/dialog-preview.component';
 import { DropdownPreviewComponent } from '../../../pages/theme-builder/previews/dropdown-preview/dropdown-preview.component';
+import { FooterPreviewComponent } from '../../../pages/theme-builder/previews/footer-preview/footer-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -30,7 +31,8 @@ import { DropdownPreviewComponent } from '../../../pages/theme-builder/previews/
     ChipPreviewComponent,
     DatePreviewComponent,
     DialogPreviewComponent,
-    DropdownPreviewComponent
+    DropdownPreviewComponent,
+    FooterPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

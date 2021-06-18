@@ -50,6 +50,7 @@ import { DialogPreviewComponent } from './previews/dialog-preview/dialog-preview
 import { DropdownPreviewComponent } from './previews/dropdown-preview/dropdown-preview.component';
 import { FooterPreviewComponent } from './previews/footer-preview/footer-preview.component';
 import { HeaderPreviewComponent } from './previews/header-preview/header-preview.component';
+import { HeadingPreviewComponent } from './previews/heading-preview/heading-preview.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { HeaderPreviewComponent } from './previews/header-preview/header-preview
     DropdownPreviewComponent,
     FooterPreviewComponent,
     HeaderPreviewComponent,
+    HeadingPreviewComponent,
   ],
   imports: [
     CommonModule,

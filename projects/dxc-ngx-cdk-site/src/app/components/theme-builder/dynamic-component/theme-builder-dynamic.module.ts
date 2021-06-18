@@ -16,6 +16,7 @@ import { DialogPreviewComponent } from '../../../pages/theme-builder/previews/di
 import { DropdownPreviewComponent } from '../../../pages/theme-builder/previews/dropdown-preview/dropdown-preview.component';
 import { FooterPreviewComponent } from '../../../pages/theme-builder/previews/footer-preview/footer-preview.component';
 import { HeaderPreviewComponent } from '../../../pages/theme-builder/previews/header-preview/header-preview.component';
+import { HeadingPreviewComponent } from '../../../pages/theme-builder/previews/heading-preview/heading-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -34,7 +35,8 @@ import { HeaderPreviewComponent } from '../../../pages/theme-builder/previews/he
     DialogPreviewComponent,
     DropdownPreviewComponent,
     FooterPreviewComponent,
-    HeaderPreviewComponent
+    HeaderPreviewComponent,
+    HeadingPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

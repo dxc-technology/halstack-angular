@@ -17,6 +17,7 @@ import { DropdownPreviewComponent } from '../../../pages/theme-builder/previews/
 import { FooterPreviewComponent } from '../../../pages/theme-builder/previews/footer-preview/footer-preview.component';
 import { HeaderPreviewComponent } from '../../../pages/theme-builder/previews/header-preview/header-preview.component';
 import { HeadingPreviewComponent } from '../../../pages/theme-builder/previews/heading-preview/heading-preview.component';
+import { InputTextPreviewComponent } from '../../../pages/theme-builder/previews/input-text-preview/input-text-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -36,7 +37,8 @@ import { HeadingPreviewComponent } from '../../../pages/theme-builder/previews/h
     DropdownPreviewComponent,
     FooterPreviewComponent,
     HeaderPreviewComponent,
-    HeadingPreviewComponent
+    HeadingPreviewComponent,
+    InputTextPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

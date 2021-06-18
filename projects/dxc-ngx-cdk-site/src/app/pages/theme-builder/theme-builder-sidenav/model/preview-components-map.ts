@@ -12,6 +12,7 @@ import { DropdownPreviewComponent } from '../../previews/dropdown-preview/dropdo
 import { FooterPreviewComponent } from '../../previews/footer-preview/footer-preview.component';
 import { HeaderPreviewComponent } from '../../previews/header-preview/header-preview.component';
 import { HeadingPreviewComponent } from '../../previews/heading-preview/heading-preview.component';
+import { InputTextPreviewComponent } from '../../previews/input-text-preview/input-text-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -32,7 +33,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'footer', component: FooterPreviewComponent},
   {name: 'header', component: HeaderPreviewComponent},
   {name: 'heading', component: HeadingPreviewComponent},
-  {name: 'inputText', component: DialogPreviewComponent},
+  {name: 'inputText', component: InputTextPreviewComponent},
   {name: 'link', component: DialogPreviewComponent},
   {name: 'paginator', component: DialogPreviewComponent},
   {name: 'progressBar', component: DialogPreviewComponent},

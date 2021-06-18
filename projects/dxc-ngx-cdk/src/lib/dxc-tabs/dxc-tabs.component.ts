@@ -36,7 +36,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     CssUtils,
     TabService,
     { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
-  ],
+  ]
 })
 export class DxcTabsComponent implements OnChanges {
   @HostBinding("class") className;
@@ -73,7 +73,7 @@ export class DxcTabsComponent implements OnChanges {
     private utils: CssUtils,
     private _element: ElementRef,
     private cdRef: ChangeDetectorRef,
-    private service: TabService
+    private service: TabService,
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -108,12 +108,30 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   public ngAfterViewInit() {
+
     this.generateTabs();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.insertUnderline();
     this.cdRef.detectChanges();
     this.setEventListeners();
     this.cdRef.detectChanges();
+
+    this.tabs.changes.subscribe(value => {
+      const matTabsFromQueryList = value.map((tab, index) => {
+        if (tab.label && tab.iconSrc) {
+          this.allTabWithLabelAndIcon = true;
+        }
+        tab.id = index;
+        return tab.matTab;
+      });
+      const list = new QueryList<MatTab>();
+      list.reset([matTabsFromQueryList]);
+      this.tabGroup._tabs = list;
+      this.setActiveTab();
+      this.cdRef.detectChanges();
+    });
+
+
   }
 
   private generateTabs() {
@@ -268,3 +286,4 @@ export class DxcTabsComponent implements OnChanges {
     `;
   }
 }
+

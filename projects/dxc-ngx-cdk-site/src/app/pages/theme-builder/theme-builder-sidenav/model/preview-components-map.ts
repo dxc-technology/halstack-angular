@@ -14,6 +14,7 @@ import { HeaderPreviewComponent } from '../../previews/header-preview/header-pre
 import { HeadingPreviewComponent } from '../../previews/heading-preview/heading-preview.component';
 import { InputTextPreviewComponent } from '../../previews/input-text-preview/input-text-preview.component';
 import { LinkPreviewComponent } from '../../previews/link-preview/link-preview.component';
+import { PaginatorPreviewComponent } from '../../previews/paginator-preview/paginator-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -36,7 +37,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'heading', component: HeadingPreviewComponent},
   {name: 'inputText', component: InputTextPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
-  {name: 'paginator', component: DialogPreviewComponent},
+  {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: DialogPreviewComponent},
   {name: 'radio', component: DialogPreviewComponent},
   {name: 'select', component: DialogPreviewComponent},

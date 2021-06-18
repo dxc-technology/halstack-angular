@@ -19,6 +19,7 @@ import { HeaderPreviewComponent } from '../../../pages/theme-builder/previews/he
 import { HeadingPreviewComponent } from '../../../pages/theme-builder/previews/heading-preview/heading-preview.component';
 import { InputTextPreviewComponent } from '../../../pages/theme-builder/previews/input-text-preview/input-text-preview.component';
 import { LinkPreviewComponent } from '../../../pages/theme-builder/previews/link-preview/link-preview.component';
+import { PaginatorPreviewComponent } from '../../../pages/theme-builder/previews/paginator-preview/paginator-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -40,7 +41,8 @@ import { LinkPreviewComponent } from '../../../pages/theme-builder/previews/link
     HeaderPreviewComponent,
     HeadingPreviewComponent,
     InputTextPreviewComponent,
-    LinkPreviewComponent
+    LinkPreviewComponent,
+    PaginatorPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

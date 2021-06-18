@@ -53,6 +53,7 @@ import { HeaderPreviewComponent } from './previews/header-preview/header-preview
 import { HeadingPreviewComponent } from './previews/heading-preview/heading-preview.component';
 import { InputTextPreviewComponent } from './previews/input-text-preview/input-text-preview.component';
 import { LinkPreviewComponent } from './previews/link-preview/link-preview.component';
+import { PaginatorPreviewComponent } from './previews/paginator-preview/paginator-preview.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { LinkPreviewComponent } from './previews/link-preview/link-preview.compo
     HeadingPreviewComponent,
     InputTextPreviewComponent,
     LinkPreviewComponent,
+    PaginatorPreviewComponent,
   ],
   imports: [
     CommonModule,

@@ -23,12 +23,11 @@ interface ComponentInputs {
 export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
   @HostBinding("class") className;
 
-  subscription: any;
+
 
   componentInputs: Array<ComponentInputs>;
 
   constructor(private themeBuilderService: ThemeBuilderService) {
-    this.subscription =
       this.themeBuilderService.currentThemeComponent$.subscribe((resp) => {
         this.componentInputs = [];
         const keys = Object.keys(resp.component);
@@ -100,6 +99,10 @@ export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.destroy();
+    this.themeBuilderService.destroyCurrentThemeComponent();
+  }
+
+  trackByFuntion(index, item) {
+    return index;
   }
 }

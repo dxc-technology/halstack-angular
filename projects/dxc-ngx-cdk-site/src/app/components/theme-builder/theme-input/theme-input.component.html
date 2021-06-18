@@ -2,13 +2,44 @@
   <div class="tbPropertyName">{{makeReadable(propertyName)}}</div>
   <ng-container [ngSwitch]="propertyType">
     <div *ngSwitchCase="'color'">
-      <builder-color-picker [colorName]="propertyValue" [propertyName]="propertyName"></builder-color-picker>
+      <tb-color-picker [colorName]="propertyValue" [propertyName]="propertyName"></tb-color-picker>
     </div>
     <div *ngSwitchCase="'image'">
-      Inner content 2
+      <tb-logo-image [logoSrc]="propertyValue" [propertyName]="propertyName"></tb-logo-image>
     </div>
+    <div *ngSwitchCase="'length'">
+      <tb-length-input [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-length-input>
+    </div>
+    <div *ngSwitchCase="'fFamily'">
+      <tb-font-family [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-font-family>
+    </div>
+    <div *ngSwitchCase="'fWeight'">
+      <tb-font-weight [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-font-weight>
+    </div>
+    <div *ngSwitchCase="'fStyle'">
+      <tb-font-style [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-font-style>
+    </div>
+    <div *ngSwitchCase="'fTextTransform'">
+      <tb-font-text-transform [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-font-text-transform>
+    </div>
+    <div *ngSwitchCase="'bStyle'">
+      <tb-border-style [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-border-style>
+    </div>
+    <div *ngSwitchCase="'bWidth'">
+      <tb-border-width-input [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-border-width-input>
+    </div>
+    <div *ngSwitchCase="'alphaValue'">
+      <tb-alpha-value-input [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-alpha-value-input>
+    </div>
+    <div *ngSwitchCase="'integer'">
+      <tb-integer [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-integer>
+    </div>
+    <div *ngSwitchCase="'textAlign'">
+      <tb-text-align [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-text-align>
+    </div>
+
     <div *ngSwitchDefault>
-      <builder-default-input [propertyValue]="propertyValue" [propertyName]="propertyName"></builder-default-input>
+      <tb-default-input [propertyValue]="propertyValue" [propertyName]="propertyName"></tb-default-input>
     </div>
   </ng-container>
 </div>

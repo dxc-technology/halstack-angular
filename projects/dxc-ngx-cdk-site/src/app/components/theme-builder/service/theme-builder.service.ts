@@ -6,7 +6,6 @@ export interface ThemeBuilderContext {
   name: string;
 }
 
-
 @Injectable({
   providedIn: "root",
 })
@@ -20,15 +19,22 @@ export class ThemeBuilderService {
   constructor() {}
 
   selectThemeBuilderComponent = (name: string, component: any) => {
-    this.themeBuilderComponent$.next({name, component});
+    this.themeBuilderComponent$.next({ name, component });
   };
-
 
   onChangeThemeComponent = (component: any, schema: any) => {
-    this.currentThemeComponent$.next({component, schema});
+    this.currentThemeComponent$.next({ component, schema });
   };
 
-  onChangeCustomTheme = (propertyName: string, propertyValue: string) =>
+  onChangeCustomThemeProperty = (propertyName: string, propertyValue: string) =>
     this.changeCustomThemeProperty$.next({ propertyName, propertyValue });
 
+  destroyChangeCustomThemeProperty = () =>
+    this.changeCustomThemeProperty$.unsubscribe();
+
+  destroyCurrentThemeComponent = () =>
+    this.currentThemeComponent$.unsubscribe();
+
+  destroyThemeBuilderComponent = () =>
+    this.themeBuilderComponent$.unsubscribe();
 }

@@ -1,12 +1,11 @@
 import { Component, OnInit, HostBinding, Input, ViewContainerRef } from '@angular/core';
 import { css } from 'emotion';
-import { ThemeBuilderService } from '../service/theme-builder.service';
+import { ThemeBuilderService } from '../../service/theme-builder.service';
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-  selector: 'builder-color-picker',
-  templateUrl: './color-picker.component.html',
-  styleUrls: ['./color-picker.component.scss']
+  selector: 'tb-color-picker',
+  templateUrl: './color-picker.component.html'
 })
 export class ColorPickerComponent implements OnInit {
   @HostBinding("class") className;
@@ -34,7 +33,7 @@ export class ColorPickerComponent implements OnInit {
   onColorPickerChange = (color:string) => {
     this.backgroundType = this.checkColorType(color);
     this.className = this.getDynamicStyle();
-    this.themeBuilderService.onChangeCustomTheme(this.propertyName, color);
+    this.themeBuilderService.onChangeCustomThemeProperty(this.propertyName, color);
   }
 
   private checkColorType(color:string):string{
@@ -65,5 +64,4 @@ export class ColorPickerComponent implements OnInit {
     }
     `;
   }
-
 }

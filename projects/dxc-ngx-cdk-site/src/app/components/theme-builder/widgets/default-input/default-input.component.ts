@@ -1,12 +1,11 @@
 import { Component, Input, OnInit, HostBinding } from '@angular/core';
 import { css } from 'emotion';
-import { Stylable } from '../model/stylable';
-import { ThemeBuilderService } from '../service/theme-builder.service';
+import { Stylable } from '../../model/stylable';
+import { ThemeBuilderService } from '../../service/theme-builder.service';
 
 @Component({
-  selector: 'builder-default-input',
-  templateUrl: './default-input.component.html',
-  styleUrls: ['./default-input.component.scss']
+  selector: 'tb-default-input',
+  templateUrl: './default-input.component.html'
 })
 export class DefaultInputComponent implements OnInit, Stylable {
   @HostBinding("class") className;
@@ -20,8 +19,7 @@ export class DefaultInputComponent implements OnInit, Stylable {
 
 
   onChangeValue = ($event) => {
-    console.log($event.target.value);
-    this.themeBuilderService.onChangeCustomTheme(this.propertyValue, $event.target.value);
+    this.themeBuilderService.onChangeCustomThemeProperty(this.propertyName, $event.target.value);
   }
 
   ngOnInit(): void {

@@ -46,6 +46,7 @@ import { ThemeModule } from '../../../../../dxc-ngx-cdk/src/lib/theme/theme.modu
 import { CheckboxPreviewComponent } from './previews/checkbox-preview/checkbox-preview.component';
 import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.component';
 import { DatePreviewComponent } from './previews/date-preview/date-preview.component';
+import { DialogPreviewComponent } from './previews/dialog-preview/dialog-preview.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { DatePreviewComponent } from './previews/date-preview/date-preview.compo
     CheckboxPreviewComponent,
     ChipPreviewComponent,
     DatePreviewComponent,
+    DialogPreviewComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,54 @@
+<div>
+  <tbuilder-component-mode text="Default Dialog">
+    <dxc-button
+      label="Open dialog"
+      (onClick)="openDialog1()"
+      margin="xsmall"
+      mode="primary"
+    ></dxc-button>
+    <dxc-dialog
+      *ngIf="visible1"
+      [isCloseVisible]="true"
+      (onCloseClick)="openDialog1()"
+      overlay="false"
+    >
+      Close Icon
+    </dxc-dialog>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Modal Dialog">
+    <dxc-button
+      label="Open dialog"
+      (onClick)="openDialog2()"
+      margin="xsmall"
+      mode="primary"
+    ></dxc-button>
+    <dxc-dialog
+      *ngIf="visible2"
+      (onBackgroundClick)="openDialog2()"
+      [isCloseVisible]="false"
+    >
+      Overlay close
+    </dxc-dialog>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Close Button Dialog">
+    <dxc-button
+      label="Open dialog"
+      (onClick)="openDialog3()"
+      margin="xsmall"
+      mode="primary"
+    ></dxc-button>
+    <dxc-dialog
+      (onCloseClick)="openDialog3()"
+      *ngIf="visible3"
+      padding="xsmall"
+    >
+      <dxc-button
+        label="Close"
+        (onClick)="openDialog3()"
+        margin="xsmall"
+      ></dxc-button>
+    </dxc-dialog>
+  </tbuilder-component-mode>
+</div>

@@ -12,6 +12,7 @@ import { CardPreviewComponent } from '../../../pages/theme-builder/previews/card
 import { CheckboxPreviewComponent } from '../../../pages/theme-builder/previews/checkbox-preview/checkbox-preview.component';
 import { ChipPreviewComponent } from '../../../pages/theme-builder/previews/chip-preview/chip-preview.component';
 import { DatePreviewComponent } from '../../../pages/theme-builder/previews/date-preview/date-preview.component';
+import { DialogPreviewComponent } from '../../../pages/theme-builder/previews/dialog-preview/dialog-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -26,7 +27,8 @@ import { DatePreviewComponent } from '../../../pages/theme-builder/previews/date
     CardPreviewComponent,
     CheckboxPreviewComponent,
     ChipPreviewComponent,
-    DatePreviewComponent
+    DatePreviewComponent,
+    DialogPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

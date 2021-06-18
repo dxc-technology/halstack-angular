@@ -4,8 +4,9 @@ import { ThemeBuilderModule } from '../../components/theme-builder/theme-builder
 import { ThemeBuilderComponentPage } from './theme-builder.component';
 import { ThemeBuilderPageRoutingModule } from './theme-builder-routing.module';
 import { AccordionPreviewComponent } from './previews/accordion-preview/accordion-preview.component';
-import { DxcAccordionModule, DxcAlertModule } from '@dxc-technology/halstack-angular';
+import { DxcAccordionModule, DxcAlertModule, DxcWizardModule, DxcButtonModule, DxcAccordionGroupModule, ThemeModule } from '@dxc-technology/halstack-angular';
 import { AlertPreviewComponent } from './previews/alert-preview/alert-preview.component';
+import { WizardPreviewComponent } from './previews/wizard-preview/wizard-preview.component';
 
 
 @NgModule({

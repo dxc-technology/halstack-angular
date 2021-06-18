@@ -13,6 +13,7 @@ import { CheckboxPreviewComponent } from '../../../pages/theme-builder/previews/
 import { ChipPreviewComponent } from '../../../pages/theme-builder/previews/chip-preview/chip-preview.component';
 import { DatePreviewComponent } from '../../../pages/theme-builder/previews/date-preview/date-preview.component';
 import { DialogPreviewComponent } from '../../../pages/theme-builder/previews/dialog-preview/dialog-preview.component';
+import { DropdownPreviewComponent } from '../../../pages/theme-builder/previews/dropdown-preview/dropdown-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -28,7 +29,8 @@ import { DialogPreviewComponent } from '../../../pages/theme-builder/previews/di
     CheckboxPreviewComponent,
     ChipPreviewComponent,
     DatePreviewComponent,
-    DialogPreviewComponent
+    DialogPreviewComponent,
+    DropdownPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

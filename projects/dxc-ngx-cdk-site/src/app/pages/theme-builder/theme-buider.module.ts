@@ -47,6 +47,7 @@ import { CheckboxPreviewComponent } from './previews/checkbox-preview/checkbox-p
 import { ChipPreviewComponent } from './previews/chip-preview/chip-preview.component';
 import { DatePreviewComponent } from './previews/date-preview/date-preview.component';
 import { DialogPreviewComponent } from './previews/dialog-preview/dialog-preview.component';
+import { DropdownPreviewComponent } from './previews/dropdown-preview/dropdown-preview.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { DialogPreviewComponent } from './previews/dialog-preview/dialog-preview
     ChipPreviewComponent,
     DatePreviewComponent,
     DialogPreviewComponent,
+    DropdownPreviewComponent,
   ],
   imports: [
     CommonModule,

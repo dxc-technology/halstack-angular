@@ -52,6 +52,7 @@ import { FooterPreviewComponent } from './previews/footer-preview/footer-preview
 import { HeaderPreviewComponent } from './previews/header-preview/header-preview.component';
 import { HeadingPreviewComponent } from './previews/heading-preview/heading-preview.component';
 import { InputTextPreviewComponent } from './previews/input-text-preview/input-text-preview.component';
+import { LinkPreviewComponent } from './previews/link-preview/link-preview.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { InputTextPreviewComponent } from './previews/input-text-preview/input-t
     HeaderPreviewComponent,
     HeadingPreviewComponent,
     InputTextPreviewComponent,
+    LinkPreviewComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,55 @@
+<div>
+  <tbuilder-component-mode text="Default">
+    <p>
+      This is a text with a <dxc-link href="#" text="Link"></dxc-link> to
+      another page.
+    </p>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Undecorated">
+    <p>
+      This is a text with a
+      <dxc-link
+        href="#"
+        [underlined]="!underlined"
+        text="Link"
+        [newWindow]="newWindow"
+        [inheritColor]="inheritColor"
+      ></dxc-link>
+      to another page in a new window.
+    </p>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Disabled">
+    <p>
+      This is a text with a
+      <dxc-link href="#" disabled="true" text="disabled Link"> </dxc-link> .
+    </p>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Link With Action">
+    <p>
+      This is a text with an
+      <dxc-link href="#" iconPosition="after" text="Icon after">
+        <dxc-link-icon>
+          <img src="assets/img/home.svg" />
+        </dxc-link-icon>
+      </dxc-link>
+      the link.
+    </p>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Icon">
+    <p>
+      This is a text with
+      <dxc-link
+        href="#"
+        text="action Link"
+        (onClick)="onClick()"
+        [underlined]="false"
+      >
+      </dxc-link>
+      .
+    </p>
+  </tbuilder-component-mode>
+</div>

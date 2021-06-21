@@ -60,6 +60,7 @@ import { SelectPreviewComponent } from './previews/select-preview/select-preview
 import { SidenavPreviewComponent } from './previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from './previews/slider-preview/slider-preview.component';
 import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-preview.component';
+import { SwitchPreviewComponent } from './previews/switch-preview/switch-preview.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-prev
     SidenavPreviewComponent,
     SliderPreviewComponent,
     SpinnerPreviewComponent,
+    SwitchPreviewComponent,
   ],
   imports: [
     CommonModule,

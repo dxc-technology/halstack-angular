@@ -21,6 +21,7 @@ import { SelectPreviewComponent } from '../../previews/select-preview/select-pre
 import { SidenavPreviewComponent } from '../../previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from '../../previews/slider-preview/slider-preview.component';
 import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-preview.component';
+import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -50,7 +51,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'sidenav', component: SidenavPreviewComponent},
   {name: 'slider', component: SliderPreviewComponent},
   {name: 'spinner', component: SpinnerPreviewComponent},
-  {name: 'switch', component: DialogPreviewComponent},
+  {name: 'switch', component: SwitchPreviewComponent},
   {name: 'tag', component: DialogPreviewComponent},
   {name: 'table', component: DialogPreviewComponent},
   {name: 'tabs', component: DialogPreviewComponent},

@@ -30,6 +30,7 @@ export class ComponentModeComponent implements OnInit, Stylable {
               background-color: transparent;
             `}
         padding-bottom: 10px;
+        padding-left: 10px;
       }
 
       .previewsContainer {

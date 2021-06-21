@@ -56,6 +56,16 @@ import { LinkPreviewComponent } from './previews/link-preview/link-preview.compo
 import { PaginatorPreviewComponent } from './previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from './previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.component';
+import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
+import { SidenavPreviewComponent } from './previews/sidenav-preview/sidenav-preview.component';
+import { SliderPreviewComponent } from './previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-preview.component';
+import { SwitchPreviewComponent } from './previews/switch-preview/switch-preview.component';
+import { TagPreviewComponent } from './previews/tag-preview/tag-preview.component';
+import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.component';
+import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
+import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/toggle-group-preview.component';
+import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
 
 @NgModule({
@@ -80,6 +90,16 @@ import { TablePreviewComponent } from './previews/table-preview/table-preview.co
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
+    SelectPreviewComponent,
+    SidenavPreviewComponent,
+    SliderPreviewComponent,
+    SpinnerPreviewComponent,
+    SwitchPreviewComponent,
+    TagPreviewComponent,
+    TabsPreviewComponent,
+    TextareaPreviewComponent,
+    ToggleGroupPreviewComponent,
+    UploadPreviewComponent,
     TablePreviewComponent,
   ],
   imports: [

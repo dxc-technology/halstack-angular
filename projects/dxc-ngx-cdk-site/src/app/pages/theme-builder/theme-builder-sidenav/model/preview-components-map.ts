@@ -17,6 +17,16 @@ import { LinkPreviewComponent } from '../../previews/link-preview/link-preview.c
 import { PaginatorPreviewComponent } from '../../previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from '../../previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from '../../previews/radio-preview/radio-preview.component';
+import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
+import { SidenavPreviewComponent } from '../../previews/sidenav-preview/sidenav-preview.component';
+import { SliderPreviewComponent } from '../../previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-preview.component';
+import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-preview.component';
+import { TagPreviewComponent } from '../../previews/tag-preview/tag-preview.component';
+import { TabsPreviewComponent } from '../../previews/tabs-preview/tabs-preview.component';
+import { TextareaPreviewComponent } from '../../previews/textarea-preview/textarea-preview.component';
+import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview/toggle-group-preview.component';
+import { UploadPreviewComponent } from '../../previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
@@ -43,17 +53,17 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},
-  {name: 'select', component: DialogPreviewComponent},
-  {name: 'sidenav', component: DialogPreviewComponent},
-  {name: 'slider', component: DialogPreviewComponent},
-  {name: 'spinner', component: DialogPreviewComponent},
-  {name: 'switch', component: DialogPreviewComponent},
-  {name: 'tag', component: DialogPreviewComponent},
+  {name: 'select', component: SelectPreviewComponent},
+  {name: 'sidenav', component: SidenavPreviewComponent},
+  {name: 'slider', component: SliderPreviewComponent},
+  {name: 'spinner', component: SpinnerPreviewComponent},
+  {name: 'switch', component: SwitchPreviewComponent},
+  {name: 'tag', component: TagPreviewComponent},
   {name: 'table', component: TablePreviewComponent},
-  {name: 'tabs', component: DialogPreviewComponent},
-  {name: 'textarea', component: DialogPreviewComponent},
-  {name: 'toggleGroup', component: DialogPreviewComponent},
-  {name: 'upload', component: DialogPreviewComponent},
+  {name: 'tabs', component: TabsPreviewComponent},
+  {name: 'textarea', component: TextareaPreviewComponent},
+  {name: 'toggleGroup', component: ToggleGroupPreviewComponent},
+  {name: 'upload', component: UploadPreviewComponent},
   {name: 'wizard', component: WizardPreviewComponent}
 ];
 

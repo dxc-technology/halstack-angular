@@ -45,7 +45,7 @@
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
   <div style="background: black">
-    <tbuilder-component-mode text="Default">
+    <tbuilder-component-mode text="Default" mode="dark">
       <dxc-checkbox
         [checked]="checked1"
         label="Label"
@@ -55,7 +55,7 @@
       </dxc-checkbox>
     </tbuilder-component-mode>
 
-    <tbuilder-component-mode text="Label Position">
+    <tbuilder-component-mode text="Label Position" mode="dark">
       <dxc-checkbox
         [checked]="checked2"
         label="Label before"
@@ -74,7 +74,7 @@
       </dxc-checkbox>
     </tbuilder-component-mode>
 
-    <tbuilder-component-mode text="Disabled">
+    <tbuilder-component-mode text="Disabled" mode="dark">
       <dxc-checkbox [checked]="false" label="Disabled" margin="xsmall" disabled>
       </dxc-checkbox>
       <dxc-checkbox

@@ -1,0 +1,34 @@
+<div>
+  <tbuilder-component-mode text="Undeterminate Default">
+    <dxc-spinner margin="xsmall" label="Loading..."></dxc-spinner>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Determinate Default">
+    <dxc-spinner
+      margin="xsmall"
+      showValue="true"
+      value="50"
+      label="Loading..."
+    ></dxc-spinner>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Small">
+    <dxc-spinner mode="small" margin="xsmall"></dxc-spinner>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="With Overlay">
+    <dxc-button
+      mode="primary"
+      label="Show Spinner for 3 seconds"
+      (onClick)="showModal()"
+      margin="xsmall"
+    ></dxc-button>
+
+    <dxc-spinner
+      *ngIf="isVisible"
+      margin="xsmall"
+      label="Loading..."
+      mode="overlay"
+    ></dxc-spinner>
+  </tbuilder-component-mode>
+</div>

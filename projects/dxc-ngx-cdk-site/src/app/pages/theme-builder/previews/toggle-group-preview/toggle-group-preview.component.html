@@ -1,0 +1,41 @@
+<div>
+  <tbuilder-component-mode text="Default">
+    <dxc-togglegroup margin="xsmall">
+      <dxc-toggle label="Facebook" value="test1"> </dxc-toggle>
+      <dxc-toggle label="Twitter" value="test2"></dxc-toggle>
+      <dxc-toggle label="Linkedin" value="test3"></dxc-toggle>
+    </dxc-togglegroup>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Disabled">
+    <dxc-togglegroup disabled="true" margin="xsmall">
+      <dxc-toggle label="Facebook" value="test1"> </dxc-toggle>
+      <dxc-toggle label="Twitter" value="test2"></dxc-toggle>
+      <dxc-toggle label="Linkedin" value="test3">
+        <dxc-toggle-icon>
+          <img src="./assets/img/linkedin.svg" />
+        </dxc-toggle-icon>
+      </dxc-toggle>
+    </dxc-togglegroup>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Multiple With Icons">
+    <dxc-togglegroup multiple="true" margin="xsmall">
+      <dxc-toggle label="test 1" value="test1">
+        <dxc-toggle-icon>
+          <img src="./assets/img/facebook.svg" />
+        </dxc-toggle-icon>
+      </dxc-toggle>
+      <dxc-toggle value="test2">
+        <dxc-toggle-icon>
+          <img src="./assets/img/twitter.svg" />
+        </dxc-toggle-icon>
+      </dxc-toggle>
+      <dxc-toggle value="test3" disabled>
+        <dxc-toggle-icon>
+          <img src="./assets/img/linkedin.svg" />
+        </dxc-toggle-icon>
+      </dxc-toggle>
+    </dxc-togglegroup>
+  </tbuilder-component-mode>
+</div>

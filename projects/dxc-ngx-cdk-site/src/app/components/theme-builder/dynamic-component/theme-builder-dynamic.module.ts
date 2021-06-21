@@ -22,6 +22,16 @@ import { LinkPreviewComponent } from '../../../pages/theme-builder/previews/link
 import { PaginatorPreviewComponent } from '../../../pages/theme-builder/previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from '../../../pages/theme-builder/previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from '../../../pages/theme-builder/previews/radio-preview/radio-preview.component';
+import { SelectPreviewComponent } from '../../../pages/theme-builder/previews/select-preview/select-preview.component';
+import { SidenavPreviewComponent } from '../../../pages/theme-builder/previews/sidenav-preview/sidenav-preview.component';
+import { SliderPreviewComponent } from '../../../pages/theme-builder/previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from '../../../pages/theme-builder/previews/spinner-preview/spinner-preview.component';
+import { SwitchPreviewComponent } from '../../../pages/theme-builder/previews/switch-preview/switch-preview.component';
+import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-preview/tag-preview.component';
+import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
+import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/textarea-preview/textarea-preview.component';
+import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
+import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
 
 @NgModule({
@@ -48,6 +58,16 @@ import { TablePreviewComponent } from '../../../pages/theme-builder/previews/tab
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
+    SelectPreviewComponent,
+    SidenavPreviewComponent,
+    SliderPreviewComponent,
+    SpinnerPreviewComponent,
+    SwitchPreviewComponent,
+    TagPreviewComponent,
+    TabsPreviewComponent,
+    TextareaPreviewComponent,
+    ToggleGroupPreviewComponent,
+    UploadPreviewComponent,
     TablePreviewComponent
   ]
 })

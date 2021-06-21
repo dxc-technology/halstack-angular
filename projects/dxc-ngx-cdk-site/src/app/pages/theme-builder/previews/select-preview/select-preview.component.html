@@ -1,0 +1,128 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div>
+    <tbuilder-component-mode text="Default">
+      <dxc-select label="Default Select" margin="xsmall">
+        <dxc-select-option
+          *ngFor="let option of optionsWithoutIcon"
+          [label]="option.label"
+          [value]="option.value"
+        ></dxc-select-option>
+      </dxc-select>
+
+      <dxc-select label="Default Select" margin="xsmall" required>
+        <dxc-select-option
+          *ngFor="let option of optionsWithoutIcon"
+          [label]="option.label"
+          [value]="option.value"
+        ></dxc-select-option>
+      </dxc-select>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Multiple">
+      <dxc-select
+        label="Multiple Select"
+        multiple="true"
+        margin="xsmall"
+        [value]="multipleSelected"
+        size="medium"
+        (onChange)="onChange($event)"
+      >
+        <dxc-select-option
+          *ngFor="let element of optionsWithoutIcon"
+          [label]="element.label"
+          [value]="element.value"
+        >
+        </dxc-select-option>
+      </dxc-select>
+
+      <dxc-select
+        label="Invalid Select"
+        multiple="true"
+        margin="xsmall"
+        [value]="multipleSelected"
+        size="medium"
+        (onChange)="onChange($event)"
+        [invalid]="true"
+      >
+        <dxc-select-option
+          *ngFor="let element of optionsWithoutIcon"
+          [label]="element.label"
+          [value]="element.value"
+        >
+        </dxc-select-option>
+      </dxc-select>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-select label="Default Select" margin="xsmall" [disabled]="true">
+        <dxc-select-option
+          *ngFor="let option of optionsWithoutIcon"
+          [label]="option.label"
+          [value]="option.value"
+        ></dxc-select-option>
+      </dxc-select>
+    </tbuilder-component-mode>
+  </div>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div style="background: black">
+    <tbuilder-component-mode text="Default">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        [checked]="checked1"
+        (onChange)="onChange1($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op2"
+        [checked]="checked2"
+        (onChange)="onChange2($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op3"
+        [checked]="checked3"
+        (onChange)="onChange3($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        [checked]="true"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op2"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op3"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+  </div>
+</div>

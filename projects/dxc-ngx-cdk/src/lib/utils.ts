@@ -21,6 +21,13 @@ export class CssUtils {
         `;
   }
 
+  getMarginValue = (margin, type) => {
+    const marginSize = spaces[margin[type]] || "0px";
+     return marginSize;
+  }
+
+
+
   getTopMargin(margin) {
     return margin && typeof margin !== "object"
       ? css`
@@ -72,7 +79,7 @@ export class CssUtils {
       `;
     }
   }
- 
+
   getPaddingOrMargin(size, paddingOrMargin) {
     let finalPaddingOrMargin = "";
     if (paddingOrMargin && typeof paddingOrMargin !== "object") {

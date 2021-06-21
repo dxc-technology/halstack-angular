@@ -35,7 +35,7 @@ import {
   DxcTabsModule,
   DxcTextareaModule,
   DxcToggleGroupModule,
-  DxcUploadModule
+  DxcUploadModule,
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -56,6 +56,7 @@ import { LinkPreviewComponent } from './previews/link-preview/link-preview.compo
 import { PaginatorPreviewComponent } from './previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from './previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.component';
+import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.co
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
+    TablePreviewComponent,
   ],
   imports: [
     CommonModule,

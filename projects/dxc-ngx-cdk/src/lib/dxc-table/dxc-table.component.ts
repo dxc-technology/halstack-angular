@@ -33,10 +33,11 @@ export class DxcTableComponent {
   getDynamicStyle(inputs) {
     return css`
       div#divTable {
-        ${this.utils.getMargins(inputs.margin)}
+        ${this.utils.getMargins(this.margin)}
+        width: ${this.calculateWidth(this.margin)};
         overflow-x: auto;
         &::-webkit-scrollbar {
-          height: 6px;
+          width: 8px;
         }
         &::-webkit-scrollbar-thumb {
           background-color: var(--table-scrollBarThumbColor);
@@ -52,44 +53,56 @@ export class DxcTableComponent {
         border-collapse: collapse;
         width: 100%;
         & tr {
-          border-bottom: 1px solid var(--table-separatorColor);
-
+          border-bottom: var(--table-rowSeparatorThickness)
+            var(--table-rowSeparatorStyle) var(--table-rowSeparatorColor);
         }
 
         & td {
-          background-color: var(--table-bodyBackgroundColor);
-          color: var(--table-bodyFontColor);
-          height: 60px;
-          text-align: left;
-
+          background-color: var(--table-dataBackgroundColor);
+          font-family: var(--table-dataFontFamily);
+          font-size: var(--table-dataFontSize);
+          font-style: var(--table-dataFontStyle);
+          font-weight: var(--table-dataFontWeight);
+          color: var(--table-dataFontColor);
+          text-transform: var(--table-dataFontTextTransform);
+          text-align: var(--table-dataTextAlign);
+          line-height: var(--table-dataTextLineHeight);
+          text-align: var(--table-dataTextAlign);
+          padding: var(--table-dataPaddingTop) var(--table-dataPaddingRight)
+            var(--table-dataPaddingBottom) var(--table-dataPaddingLeft);
         }
 
         & th {
-          padding: 14px 20px 12px 40px;
-          height: 60px;
-        }
-
-        & td {
-          padding: 14px 20px 12px 40px;
-        }
-
-        & th {
-          font-family: var(--fontFamily);
-          text-align: left;
-          font-size: 20px;
-          font-weight: normal;
           background-color: var(--table-headerBackgroundColor);
+          font-family: var(--table-headerFontFamily);
+          font-size: var(--table-headerFontSize);
+          font-style: var(--table-headerFontStyle);
+          font-weight: var(--table-headerFontWeight);
           color: var(--table-headerFontColor);
+          text-transform: var(--table-headerFontTextTransform);
+          text-align: var(--table-headerTextAlign);
+          line-height: var(--table-headerTextLineHeight);
+          padding: var(--table-headerPaddingTop) var(--table-headerPaddingRight)
+            var(--table-headerPaddingBottom) var(--table-headerPaddingLeft);
         }
 
         & th:first-child {
-          border-radius: 4px 0px 0px 0px;
+          border-top-left-radius: var(--table-headerBorderRadius);
         }
 
         & th:last-of-type {
-          border-radius: 0px 4px 0px 0px;
+          border-top-right-radius: var(--table-headerBorderRadius);
         }
       }
     `;
   }
+
+  private calculateWidth = (margin: any) => {
+
+
+
+    return `calc(100% - ${this.utils.getMarginValue(margin, "left")} - ${this.utils.getMarginValue(
+      margin,"right")})`;
+  }
+
 }

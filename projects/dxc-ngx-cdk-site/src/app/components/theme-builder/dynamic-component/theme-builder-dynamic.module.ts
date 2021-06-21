@@ -23,6 +23,7 @@ import { PaginatorPreviewComponent } from '../../../pages/theme-builder/previews
 import { ProgressBarPreviewComponent } from '../../../pages/theme-builder/previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from '../../../pages/theme-builder/previews/radio-preview/radio-preview.component';
 import { SelectPreviewComponent } from '../../../pages/theme-builder/previews/select-preview/select-preview.component';
+import { SidenavPreviewComponent } from '../../../pages/theme-builder/previews/sidenav-preview/sidenav-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -48,7 +49,8 @@ import { SelectPreviewComponent } from '../../../pages/theme-builder/previews/se
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
-    SelectPreviewComponent
+    SelectPreviewComponent,
+    SidenavPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

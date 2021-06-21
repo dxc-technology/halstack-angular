@@ -57,6 +57,7 @@ import { PaginatorPreviewComponent } from './previews/paginator-preview/paginato
 import { ProgressBarPreviewComponent } from './previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.component';
 import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
+import { SidenavPreviewComponent } from './previews/sidenav-preview/sidenav-preview.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { SelectPreviewComponent } from './previews/select-preview/select-preview
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
     SelectPreviewComponent,
+    SidenavPreviewComponent,
   ],
   imports: [
     CommonModule,

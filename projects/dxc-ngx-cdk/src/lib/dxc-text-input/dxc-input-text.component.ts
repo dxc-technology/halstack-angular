@@ -417,6 +417,7 @@ export class DxcTextInputComponent
         background-color: ${this.invalid
           ? "var(--inputText-error) !important"
           : "var(--inputText-focusColor) !important"};
+        height: 2px !important;
       }
       .mat-form-field {
         font-family: var(--fontFamily);
@@ -476,6 +477,7 @@ export class DxcTextInputComponent
               background-color: var(--inputText-fontColor) !important;
               .mat-form-field-ripple {
                 background-color: var(--inputText-fontColor) !important;
+                height: 0px;
               }
             }
           `}
@@ -523,6 +525,7 @@ export class DxcTextInputComponent
       }
       .mat-form-field-ripple {
         background-color: var(--inputText-error) !important;
+        height: 0px !important;
       }
       .mat-form-field-underline {
         background-color: var(--inputText-fontColor) !important;

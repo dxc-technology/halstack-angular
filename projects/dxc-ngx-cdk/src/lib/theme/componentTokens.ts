@@ -353,7 +353,7 @@ export const componentTokens = {
   "--inputText-selectedOptionBackgroundColor": globalTokens.lightGrey,
   "--inputText-placeholderColor": globalTokens.lightGrey,
   "--inputText-error": globalTokens.darkRed,
-  "--inputText-focusColor": globalTokens.black,
+  "--inputText-focusColor": globalTokens.blue,
   "--inputText-fontColor": globalTokens.black,
   "--inputText-scrollBarThumbColor": globalTokens.darkGrey,
   "--inputText-scrollBarTrackColor": globalTokens.lightGrey,

@@ -120,18 +120,22 @@
       </ul>
     </div>
   </dxc-header>
-  <dxc-application-layout-sidenav
-    [displayArrow]="false"
+    <dxc-application-layout-sidenav
+    *ngIf="($sideNav | async)?.hasSideNav"
+    [displayArrow]="isArrowVisible(($sideNav | async)?.page)"
     padding="medium"
-    *ngIf="hasSideNav | async"
+
   >
     <div class="sidenavContent" style="text-align: left; height: 100%">
-      <components-sidenav-menu></components-sidenav-menu>
+      <components-sidenav-menu *ngIf="($sideNav | async)?.page === 'components'"></components-sidenav-menu>
+      <theme-builder-sidenav *ngIf="($sideNav | async)?.page === 'theme-builder'"></theme-builder-sidenav>
+
     </div>
   </dxc-application-layout-sidenav>
   <dxc-application-layout-main>
     <router-outlet #routerOutlet="outlet"></router-outlet>
   </dxc-application-layout-main>
+
   <dxc-footer
     logoSrc="assets/dxc_logo_wht.png"
     [bottomLinks]="[

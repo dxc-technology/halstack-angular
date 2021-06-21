@@ -1,0 +1,123 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div>
+    <tbuilder-component-mode text="Default">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        [checked]="checked1"
+        (onChange)="onChange1($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op2"
+        [checked]="checked2"
+        (onChange)="onChange2($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op3"
+        [checked]="checked3"
+        (onChange)="onChange3($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        [checked]="true"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op2"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op3"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+  </div>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div style="background: black">
+    <tbuilder-component-mode text="Default">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        [checked]="checked1"
+        (onChange)="onChange1($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op2"
+        [checked]="checked2"
+        (onChange)="onChange2($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op3"
+        [checked]="checked3"
+        (onChange)="onChange3($event)"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        [checked]="true"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op2"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op3"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<select class="tbStyledSelect" (change)="onChangeSelectValue($event)">
+  <option *ngFor="let currentOption of styleOptions; trackBy: trackByFunction" [value]="currentOption"
+    [selected]="isOptionSelected(currentOption)"> {{currentOption}}</option>
+</select>

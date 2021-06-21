@@ -17,7 +17,7 @@ export class AppComponent {
   versions: Array<any> = [];
   selectedVersion;
   suscription;
-  hasSideNav = new BehaviorSubject(false);
+  $sideNav = new BehaviorSubject({hasSideNav: false, page: ''});
 
   constructor(
     @Inject("ThemeService") private themeService: ThemeService,
@@ -30,8 +30,8 @@ export class AppComponent {
     this.router.events.subscribe((event: any) => {
       if (event?.url !== null && event?.url !== undefined) {
         event?.url.indexOf("/components") >= 0
-          ? this.hasSideNav.next(true)
-          : this.hasSideNav.next(false);
+          ? this.$sideNav.next({hasSideNav: true, page: 'components'})
+          : ( event?.url.indexOf("/theme-builder") >= 0 ? this.$sideNav.next({hasSideNav: true, page: 'theme-builder'}) : this.$sideNav.next({hasSideNav: false, page: ''}));
       }
     });
 
@@ -62,6 +62,8 @@ export class AppComponent {
   selectVersion(value) {
     window.location.href = this.versions.find((v) => v.label === value).url;
   }
+
+  isArrowVisible = (page: string) => page === 'components' ? false : true;
 
   ngOnDestroy(): void {
     if (this.suscription !== null) {

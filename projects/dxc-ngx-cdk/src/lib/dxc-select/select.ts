@@ -269,7 +269,8 @@ export abstract class _MatSelectBase<C>
     HasTabIndex,
     MatFormFieldControl<any>,
     CanUpdateErrorState,
-    CanDisableRipple {
+    CanDisableRipple
+{
   /** All of the defined select options. */
   abstract options: QueryList<_MatOptionBase>;
 
@@ -1088,9 +1089,10 @@ export abstract class _MatSelectBase<C>
       option._element.nativeElement.childNodes[1]["firstElementChild"]
         .tagName === "DXC-OPTION-ICON"
     ) {
-      const trigger = this._elementRef.nativeElement.getElementsByClassName(
-        "mat-select-trigger"
-      )[0];
+      const trigger =
+        this._elementRef.nativeElement.getElementsByClassName(
+          "mat-select-trigger"
+        )[0];
       if (trigger.firstChild.tagName === "DXC-OPTION-ICON") {
         trigger.firstChild.remove();
       }
@@ -1303,64 +1305,10 @@ export abstract class _MatSelectBase<C>
       height: 66.5px;
       position: relative;
 
-      &.mat-select-disabled {
-        cursor: not-allowed;
-        .mat-select-trigger {
-          cursor: not-allowed;
-          border-bottom: 1px solid var(--select-disabledColor) !important;
-          outline: none !important;
-        }
-        .assistiveText {
-          color: var(--select-disabledColor) !important;
-        }
-        .selectLabel {
-          color: var(--select-disabledColor) !important;
-        }
-        .mat-select-arrow {
-          color: var(--select-disabledColor) !important;
-        }
-      }
-      &.mat-select-invalid {
-        .assistiveText {
-          color: var(--select-error) !important;
-        }
-        .mat-select-trigger {
-          border-bottom: 1px solid var(--select-error) !important;
-        }
-        .selectLabel {
-          color: var(--select-error) !important;
-        }
-      }
-      .mat-select-value {
-        height: 32px;
-        color: var(--select-color);
-      }
-      .mat-select-arrow {
-        color: var(--select-color);
-      }
-      div.underline.opened {
-        border-bottom: 2px solid var(--select-color);
-      }
-
-      .mat-select-trigger {
-        border-top-width: 0.84375em;
-        border-top-style: solid;
-        border-top-color: transparent;
-        border-bottom: 1px solid var(--select-color);
-        :focus{
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--select-focusColor);
-        }
-      }
-      &.mat-select-disabled .mat-select-value {
-        color: var(--select-disabledColor);
-      }
       .assistiveText {
         font-size: 12px;
         font-family: var(--fontFamily);
-      }
-      .assistiveText:not(.mat-select-disabled) {
-        color: var(--select-color);
+        color: ${this.invalid ? "var(--select-error)" : "var(--select-color)"};
       }
 
       .selectLabel {
@@ -1373,14 +1321,16 @@ export abstract class _MatSelectBase<C>
         top: ${this.panelOpen || this.floatingLabel ? "10px" : "19px"};
         font-size: ${this.panelOpen || this.floatingLabel ? "12px" : "16px"};
         transform: ${this.floatingStyles()};
-        color: var(--select-color);
+        color: ${this.invalid && (this.panelOpen || this.floatingLabel)
+          ? "var(--select-error)"
+          : "var(--select-color)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           width 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           font-size 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-          
+
         .select-required {
           color: var(--select-required);
         }
@@ -1398,6 +1348,51 @@ export abstract class _MatSelectBase<C>
           width: 24px;
         }
       }
+
+      .mat-select-value {
+        height: 32px;
+      }
+
+      .mat-select-trigger {
+        border-top-width: 0.84375em;
+        border-top-style: solid;
+        border-top-color: transparent;
+        border-bottom: 1px solid var(--select-color);
+        :focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--select-focusColor);
+        }
+      }
+
+      ${this.disabled
+        ? `cursor: not-allowed;
+      .mat-select-trigger {
+        cursor: not-allowed;
+        border-bottom: 1px solid var(--select-disabledColor) !important;
+        outline: none !important;
+      }
+      .assistiveText {
+        color: var(--select-disabledColor) !important;
+      }
+      .selectLabel {
+        color: var(--select-disabledColor) !important;
+      }
+      .mat-select-arrow {
+        color: var(--select-disabledColor) !important;
+      }
+      .mat-select-value {
+        color: var(--select-disabledColor);
+      }`
+        : `.mat-select-value {
+        color: var(--select-color);
+      }
+      .mat-select-arrow {
+        color: var(--select-color);
+      }
+      div.underline.opened {
+        border-bottom: 2px solid var(--select-color);
+      }
+      `}
     `;
   }
 
@@ -1457,7 +1452,8 @@ export abstract class _MatSelectBase<C>
 })
 export class DxcSelectComponent
   extends _MatSelectBase<MatSelectChange>
-  implements OnInit {
+  implements OnInit
+{
   /** The scroll position of the overlay panel, calculated to center the selected option. */
   private _scrollTop = 0;
 
@@ -1529,7 +1525,8 @@ export class DxcSelectComponent
       .pipe(takeUntil(this._destroy))
       .subscribe(() => {
         if (this.panelOpen) {
-          this._triggerRect = this.trigger.nativeElement.getBoundingClientRect();
+          this._triggerRect =
+            this.trigger.nativeElement.getBoundingClientRect();
           this._changeDetectorRef.markForCheck();
         }
       });
@@ -1599,7 +1596,8 @@ export class DxcSelectComponent
    * content width in order to constrain the panel within the viewport.
    */
   private _calculateOverlayOffsetX(): void {
-    const overlayRect = this.overlayDir.overlayRef.overlayElement.getBoundingClientRect();
+    const overlayRect =
+      this.overlayDir.overlayRef.overlayElement.getBoundingClientRect();
     const viewportSize = this._viewportRuler.getViewportSize();
     const isRtl = this._isRtl();
     const paddingWidth = this.multiple

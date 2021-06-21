@@ -317,7 +317,7 @@ export class DxcTextInputComponent
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-focusColor);
+          outline-color: var(--inputText-focusOutlineColor);
         }
         cursor: pointer;
       `;
@@ -336,7 +336,7 @@ export class DxcTextInputComponent
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-focusColor);
+          outline-color: var(--inputText-focusOutlineColor);
         }
         cursor: pointer;
       `;
@@ -383,7 +383,7 @@ export class DxcTextInputComponent
         .containerIcon {
           &:focus {
             outline: -webkit-focus-ring-color auto 1px !important;
-            outline-color: var(--inputText-focusColor) !important;
+            outline-color: var(--inputText-focusOutlineColor) !important;
           }
         }
       }

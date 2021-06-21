@@ -23,6 +23,7 @@ import { SliderPreviewComponent } from '../../previews/slider-preview/slider-pre
 import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-preview.component';
 import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../previews/tag-preview/tag-preview.component';
+import { TabsPreviewComponent } from '../../previews/tabs-preview/tabs-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -55,7 +56,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'switch', component: SwitchPreviewComponent},
   {name: 'tag', component: TagPreviewComponent},
   {name: 'table', component: DialogPreviewComponent},
-  {name: 'tabs', component: DialogPreviewComponent},
+  {name: 'tabs', component: TabsPreviewComponent},
   {name: 'textarea', component: DialogPreviewComponent},
   {name: 'toggleGroup', component: DialogPreviewComponent},
   {name: 'upload', component: DialogPreviewComponent},

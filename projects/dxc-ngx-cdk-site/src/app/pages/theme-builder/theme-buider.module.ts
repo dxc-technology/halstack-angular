@@ -62,6 +62,7 @@ import { SliderPreviewComponent } from './previews/slider-preview/slider-preview
 import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-preview.component';
 import { SwitchPreviewComponent } from './previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from './previews/tag-preview/tag-preview.component';
+import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { TagPreviewComponent } from './previews/tag-preview/tag-preview.componen
     SpinnerPreviewComponent,
     SwitchPreviewComponent,
     TagPreviewComponent,
+    TabsPreviewComponent,
   ],
   imports: [
     CommonModule,

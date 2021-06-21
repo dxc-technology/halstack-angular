@@ -20,7 +20,7 @@ export class SpinnerPreviewComponent implements OnInit {
   }
 
   fetchData = () => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
       }, 3000);

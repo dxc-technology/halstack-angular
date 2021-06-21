@@ -28,6 +28,7 @@ import { SliderPreviewComponent } from '../../../pages/theme-builder/previews/sl
 import { SpinnerPreviewComponent } from '../../../pages/theme-builder/previews/spinner-preview/spinner-preview.component';
 import { SwitchPreviewComponent } from '../../../pages/theme-builder/previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-preview/tag-preview.component';
+import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -58,7 +59,8 @@ import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-p
     SliderPreviewComponent,
     SpinnerPreviewComponent,
     SwitchPreviewComponent,
-    TagPreviewComponent
+    TagPreviewComponent,
+    TabsPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

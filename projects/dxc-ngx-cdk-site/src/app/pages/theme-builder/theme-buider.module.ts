@@ -64,6 +64,7 @@ import { SwitchPreviewComponent } from './previews/switch-preview/switch-preview
 import { TagPreviewComponent } from './previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.component';
 import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
+import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/toggle-group-preview.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-p
     TagPreviewComponent,
     TabsPreviewComponent,
     TextareaPreviewComponent,
+    ToggleGroupPreviewComponent,
   ],
   imports: [
     CommonModule,

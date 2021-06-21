@@ -30,6 +30,7 @@ import { SwitchPreviewComponent } from '../../../pages/theme-builder/previews/sw
 import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
 import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/textarea-preview/textarea-preview.component';
+import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -62,7 +63,8 @@ import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/
     SwitchPreviewComponent,
     TagPreviewComponent,
     TabsPreviewComponent,
-    TextareaPreviewComponent
+    TextareaPreviewComponent,
+    ToggleGroupPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

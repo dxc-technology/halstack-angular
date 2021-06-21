@@ -25,6 +25,7 @@ import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-pre
 import { TagPreviewComponent } from '../../previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../previews/tabs-preview/tabs-preview.component';
 import { TextareaPreviewComponent } from '../../previews/textarea-preview/textarea-preview.component';
+import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview/toggle-group-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -59,7 +60,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'table', component: DialogPreviewComponent},
   {name: 'tabs', component: TabsPreviewComponent},
   {name: 'textarea', component: TextareaPreviewComponent},
-  {name: 'toggleGroup', component: DialogPreviewComponent},
+  {name: 'toggleGroup', component: ToggleGroupPreviewComponent},
   {name: 'upload', component: DialogPreviewComponent},
   {name: 'wizard', component: WizardPreviewComponent}
 ];

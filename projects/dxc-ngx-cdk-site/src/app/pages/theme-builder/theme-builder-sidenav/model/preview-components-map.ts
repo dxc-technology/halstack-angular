@@ -17,6 +17,12 @@ import { LinkPreviewComponent } from '../../previews/link-preview/link-preview.c
 import { PaginatorPreviewComponent } from '../../previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from '../../previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from '../../previews/radio-preview/radio-preview.component';
+import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
+import { SidenavPreviewComponent } from '../../previews/sidenav-preview/sidenav-preview.component';
+import { SliderPreviewComponent } from '../../previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-preview.component';
+import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-preview.component';
+import { TagPreviewComponent } from '../../previews/tag-preview/tag-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -42,12 +48,12 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},
-  {name: 'select', component: DialogPreviewComponent},
-  {name: 'sidenav', component: DialogPreviewComponent},
-  {name: 'slider', component: DialogPreviewComponent},
-  {name: 'spinner', component: DialogPreviewComponent},
-  {name: 'switch', component: DialogPreviewComponent},
-  {name: 'tag', component: DialogPreviewComponent},
+  {name: 'select', component: SelectPreviewComponent},
+  {name: 'sidenav', component: SidenavPreviewComponent},
+  {name: 'slider', component: SliderPreviewComponent},
+  {name: 'spinner', component: SpinnerPreviewComponent},
+  {name: 'switch', component: SwitchPreviewComponent},
+  {name: 'tag', component: TagPreviewComponent},
   {name: 'table', component: DialogPreviewComponent},
   {name: 'tabs', component: DialogPreviewComponent},
   {name: 'textarea', component: DialogPreviewComponent},

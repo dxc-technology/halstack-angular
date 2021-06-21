@@ -20,6 +20,7 @@ import { RadioPreviewComponent } from '../../previews/radio-preview/radio-previe
 import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
 import { SidenavPreviewComponent } from '../../previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from '../../previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -48,7 +49,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'select', component: SelectPreviewComponent},
   {name: 'sidenav', component: SidenavPreviewComponent},
   {name: 'slider', component: SliderPreviewComponent},
-  {name: 'spinner', component: DialogPreviewComponent},
+  {name: 'spinner', component: SpinnerPreviewComponent},
   {name: 'switch', component: DialogPreviewComponent},
   {name: 'tag', component: DialogPreviewComponent},
   {name: 'table', component: DialogPreviewComponent},

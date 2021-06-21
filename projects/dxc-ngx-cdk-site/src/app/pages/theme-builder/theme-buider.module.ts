@@ -59,6 +59,7 @@ import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.co
 import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
 import { SidenavPreviewComponent } from './previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from './previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-preview.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { SliderPreviewComponent } from './previews/slider-preview/slider-preview
     SelectPreviewComponent,
     SidenavPreviewComponent,
     SliderPreviewComponent,
+    SpinnerPreviewComponent,
   ],
   imports: [
     CommonModule,

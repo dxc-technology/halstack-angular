@@ -25,6 +25,7 @@ import { RadioPreviewComponent } from '../../../pages/theme-builder/previews/rad
 import { SelectPreviewComponent } from '../../../pages/theme-builder/previews/select-preview/select-preview.component';
 import { SidenavPreviewComponent } from '../../../pages/theme-builder/previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from '../../../pages/theme-builder/previews/slider-preview/slider-preview.component';
+import { SpinnerPreviewComponent } from '../../../pages/theme-builder/previews/spinner-preview/spinner-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -52,7 +53,8 @@ import { SliderPreviewComponent } from '../../../pages/theme-builder/previews/sl
     RadioPreviewComponent,
     SelectPreviewComponent,
     SidenavPreviewComponent,
-    SliderPreviewComponent
+    SliderPreviewComponent,
+    SpinnerPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

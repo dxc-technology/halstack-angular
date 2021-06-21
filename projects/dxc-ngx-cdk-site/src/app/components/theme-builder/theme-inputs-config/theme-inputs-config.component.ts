@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   HostBinding,
-  Input,
   OnDestroy,
 } from "@angular/core";
 import { css } from "emotion";
@@ -18,7 +17,6 @@ interface ComponentInputs {
 @Component({
   selector: "tb-theme-inputs-config",
   templateUrl: "./theme-inputs-config.component.html",
-  styleUrls: ["./theme-inputs-config.component.scss"],
 })
 export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
   @HostBinding("class") className;

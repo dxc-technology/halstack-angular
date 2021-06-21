@@ -2,8 +2,7 @@ import { Component, Input, OnInit, HostBinding } from '@angular/core';
 import { css } from 'emotion';
 @Component({
   selector: 'tb-theme-input',
-  templateUrl: './theme-input.component.html',
-  styleUrls: ['./theme-input.component.scss']
+  templateUrl: './theme-input.component.html'
 })
 export class ThemeInputComponent implements OnInit {
   @HostBinding("class") className;

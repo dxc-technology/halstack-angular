@@ -1,0 +1,75 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div>
+    <tbuilder-component-mode text="Default">
+      <dxc-switch
+        [checked]="checked1"
+        label="Label before"
+        (onChange)="onChange1($event)"
+        margin="xsmall"
+      ></dxc-switch>
+
+      <dxc-switch
+        [checked]="checked2"
+        labelPosition="after"
+        label="Label after"
+        (onChange)="onChange2($event)"
+        margin="xsmall"
+      ></dxc-switch>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-switch
+        [checked]="true"
+        label="Label before"
+        margin="xsmall"
+        disabled
+      ></dxc-switch>
+
+      <dxc-switch
+        [checked]="false"
+        labelPosition="after"
+        label="Label after"
+        margin="xsmall"
+        disabled
+      ></dxc-switch>
+    </tbuilder-component-mode>
+  </div>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div style="background: black">
+    <tbuilder-component-mode text="Default">
+      <dxc-switch
+        [checked]="checked1"
+        label="Label before"
+        (onChange)="onChange1($event)"
+        margin="xsmall"
+      ></dxc-switch>
+
+      <dxc-switch
+        [checked]="checked2"
+        labelPosition="after"
+        label="Label after"
+        (onChange)="onChange2($event)"
+        margin="xsmall"
+      ></dxc-switch>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-switch
+        [checked]="true"
+        label="Label before"
+        margin="xsmall"
+        disabled
+      ></dxc-switch>
+
+      <dxc-switch
+        [checked]="false"
+        labelPosition="after"
+        label="Label after"
+        margin="xsmall"
+        disabled
+      ></dxc-switch>
+    </tbuilder-component-mode>
+  </div>
+</div>

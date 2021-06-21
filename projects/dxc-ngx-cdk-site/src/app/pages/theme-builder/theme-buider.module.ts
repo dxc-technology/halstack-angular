@@ -65,6 +65,7 @@ import { TagPreviewComponent } from './previews/tag-preview/tag-preview.componen
 import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.component';
 import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
 import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/toggle-group-preview.component';
+import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/tog
     TabsPreviewComponent,
     TextareaPreviewComponent,
     ToggleGroupPreviewComponent,
+    UploadPreviewComponent,
   ],
   imports: [
     CommonModule,

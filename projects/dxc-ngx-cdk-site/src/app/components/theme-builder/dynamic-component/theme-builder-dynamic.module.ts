@@ -31,6 +31,7 @@ import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-p
 import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
 import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/textarea-preview/textarea-preview.component';
 import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
+import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -64,7 +65,8 @@ import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previe
     TagPreviewComponent,
     TabsPreviewComponent,
     TextareaPreviewComponent,
-    ToggleGroupPreviewComponent
+    ToggleGroupPreviewComponent,
+    UploadPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

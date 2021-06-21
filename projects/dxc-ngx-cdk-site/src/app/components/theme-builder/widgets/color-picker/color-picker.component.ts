@@ -49,7 +49,7 @@ export class ColorPickerComponent implements OnInit {
     }
 
     .propertyName{
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       margin-left: 10px;
       font: normal 12px/17px Open Sans;

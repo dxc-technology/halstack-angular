@@ -1,18 +1,12 @@
-import {
-  Component,
-  OnInit,
-  HostBinding,
-  Input,
-} from "@angular/core";
+import { Component, OnInit, HostBinding, Input } from "@angular/core";
 import { Stylable } from "../../model/stylable";
 import { ThemeBuilderService } from "../../service/theme-builder.service";
 import { css } from "emotion";
 @Component({
-  selector: 'tb-font-text-transform',
-  templateUrl: './font-text-transform.component.html'
+  selector: "tb-font-text-transform",
+  templateUrl: "./font-text-transform.component.html",
 })
 export class FontTextTransformComponent implements OnInit, Stylable {
-
   transformOptions: Array<string>;
 
   @HostBinding("class") className;
@@ -41,10 +35,10 @@ export class FontTextTransformComponent implements OnInit, Stylable {
     currentOption === this.propertyValue;
 
   getDynamicStyle = () => css`
-  .tbStyledSelect {
-    font: normal 12px/17px Open Sans;
-  height: 23px;
-  }
-`;
-
+    .tbStyledSelect {
+      font: normal 12px/17px Open Sans;
+      height: 23px;
+      width: 143px;
+    }
+  `;
 }

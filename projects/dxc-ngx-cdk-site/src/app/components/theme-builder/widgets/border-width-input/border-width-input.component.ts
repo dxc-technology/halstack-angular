@@ -46,7 +46,7 @@ export class BorderWidthInputComponent implements OnInit, Stylable {
     }
     .tbStyledInput {
       font: normal 12px/17px Open Sans;
-      width: 75px;
+      width: 100px;
     }
 
     .tbStyledLabel {

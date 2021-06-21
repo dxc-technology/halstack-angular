@@ -52,9 +52,10 @@ export class FontWeightComponent implements OnInit, Stylable {
     currentOption === this.propertyValue;
 
   getDynamicStyle = () => css`
-    .tbStyledSelect {
+   .tbStyledSelect {
       font: normal 12px/17px Open Sans;
       height: 23px;
+      width: 143px;
     }
   `;
 }

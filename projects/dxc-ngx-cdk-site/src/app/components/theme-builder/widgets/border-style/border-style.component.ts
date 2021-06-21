@@ -49,6 +49,7 @@ export class BorderStyleComponent implements OnInit, Stylable {
     .tbStyledSelect {
       font: normal 12px/17px Open Sans;
       height: 23px;
+      width: 143px;
     }
   `;
 }

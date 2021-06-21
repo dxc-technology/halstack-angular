@@ -24,6 +24,7 @@ import { ProgressBarPreviewComponent } from '../../../pages/theme-builder/previe
 import { RadioPreviewComponent } from '../../../pages/theme-builder/previews/radio-preview/radio-preview.component';
 import { SelectPreviewComponent } from '../../../pages/theme-builder/previews/select-preview/select-preview.component';
 import { SidenavPreviewComponent } from '../../../pages/theme-builder/previews/sidenav-preview/sidenav-preview.component';
+import { SliderPreviewComponent } from '../../../pages/theme-builder/previews/slider-preview/slider-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -50,7 +51,8 @@ import { SidenavPreviewComponent } from '../../../pages/theme-builder/previews/s
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
     SelectPreviewComponent,
-    SidenavPreviewComponent
+    SidenavPreviewComponent,
+    SliderPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

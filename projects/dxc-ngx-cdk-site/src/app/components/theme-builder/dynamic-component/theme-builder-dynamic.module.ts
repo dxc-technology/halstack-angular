@@ -29,6 +29,7 @@ import { SpinnerPreviewComponent } from '../../../pages/theme-builder/previews/s
 import { SwitchPreviewComponent } from '../../../pages/theme-builder/previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
+import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/textarea-preview/textarea-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -60,7 +61,8 @@ import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs
     SpinnerPreviewComponent,
     SwitchPreviewComponent,
     TagPreviewComponent,
-    TabsPreviewComponent
+    TabsPreviewComponent,
+    TextareaPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

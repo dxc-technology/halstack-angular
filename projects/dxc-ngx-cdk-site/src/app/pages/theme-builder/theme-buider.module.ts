@@ -63,6 +63,7 @@ import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-prev
 import { SwitchPreviewComponent } from './previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from './previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.component';
+import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.compo
     SwitchPreviewComponent,
     TagPreviewComponent,
     TabsPreviewComponent,
+    TextareaPreviewComponent,
   ],
   imports: [
     CommonModule,

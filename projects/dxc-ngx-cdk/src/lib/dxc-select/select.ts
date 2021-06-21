@@ -1298,6 +1298,9 @@ export abstract class _MatSelectBase<C>
 
   getDynamicStyle() {
     return css`
+      .mat-select-arrow-wrapper {
+        ${this.panelOpen ? "transform: rotate(180deg)" : "transform: rotate(0deg)"};
+      }
       ${this.utils.getMargins(this.margin)}
       &.mat-select {
         ${this.utils.calculateWidth(this.sizes, this)}
@@ -1320,6 +1323,7 @@ export abstract class _MatSelectBase<C>
         left: 0px;
         top: ${this.panelOpen || this.floatingLabel ? "10px" : "19px"};
         font-size: ${this.panelOpen || this.floatingLabel ? "12px" : "16px"};
+        font-family: var(--fontFamily);
         transform: ${this.floatingStyles()};
         color: ${this.invalid && (this.panelOpen || this.floatingLabel)
           ? "var(--select-error)"
@@ -1334,11 +1338,6 @@ export abstract class _MatSelectBase<C>
         .select-required {
           color: var(--select-required);
         }
-      }
-
-      dxc-option.mat-active,
-      dxc-option:hover {
-        background: var(--select-selectedOptionBackgroundColor);
       }
       dxc-option-icon {
         display: flex;

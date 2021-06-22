@@ -183,6 +183,36 @@ export const componentTokens = {
   "--alert-borderThickness": "0px",
   "--alert-borderColor": globalTokens.transparent,
 
+  //BOX
+  "--box-backgroundColor": globalTokens.white,
+  
+  "--box-fontFamily": globalTokens.type_sans,
+  "--box-fontSize": globalTokens.type_scale_02,
+  "--box-fontWeight": globalTokens.type_normal,
+  "--box-fontColor": globalTokens.black,
+  "--box-letterSpacing": globalTokens.type_spacing_wide_01,
+
+  "--box-borderRadius": "4px",
+  "--box-borderThickness": "0px",
+  "--box-borderColor": globalTokens.transparent,
+  "--box-borderStyle": globalTokens.type_no_line,
+
+  "--box-noneShadowDepthShadowOffsetX": "none",
+  "--box-noneShadowDepthShadowOffsetY": "none",
+  "--box-noneShadowDepthShadowBlur": "none",
+  "--box-noneShadowDepthShadowSpread": "none",
+  "--box-noneShadowDepthShadowColor": globalTokens.transparent,
+  "--box-oneShadowDepthShadowOffsetX": "0px",
+  "--box-oneShadowDepthShadowOffsetY": "2px",
+  "--box-oneShadowDepthShadowBlur": "1px",
+  "--box-oneShadowDepthShadowSpread": "-1px",
+  "--box-oneShadowDepthShadowColor": "#00000033",
+  "--box-twoShadowDepthShadowOffsetX": "0px",
+  "--box-twoShadowDepthShadowOffsetY": "3px",
+  "--box-twoShadowDepthShadowBlur": "3px",
+  "--box-twoShadowDepthShadowSpread": "-2px",
+  "--box-twoShadowDepthShadowColor": "#00000033",
+
   //TABS
   "--tabs-selectedFontColor": globalTokens.purple,
   "--tabs-backgroundColor": globalTokens.white,
@@ -196,9 +226,6 @@ export const componentTokens = {
   "--tabs-pressedBackgroundColor": globalTokens.mediumPurple,
 
   //------------Without new design---------------------
-
-  //BOX
-  "--box-backgroundColor": globalTokens.white,
 
   //BUTTON
   "--button-primaryBackgroundColor": globalTokens.purple,

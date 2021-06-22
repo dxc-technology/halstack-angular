@@ -36,6 +36,7 @@ export class ComponentModeComponent implements OnInit, Stylable {
       .previewsContainer {
         display: block;
         padding-left: 10px;
+        width: 100%;
       }
 
       .modeTitle {

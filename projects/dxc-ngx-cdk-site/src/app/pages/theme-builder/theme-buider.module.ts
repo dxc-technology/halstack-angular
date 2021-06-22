@@ -35,7 +35,8 @@ import {
   DxcTabsModule,
   DxcTextareaModule,
   DxcToggleGroupModule,
-  DxcUploadModule
+  DxcUploadModule,
+  DxcResultsetTableModule,
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -66,6 +67,8 @@ import { TabsPreviewComponent } from './previews/tabs-preview/tabs-preview.compo
 import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
 import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
+import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
+
 
 @NgModule({
   declarations: [
@@ -99,6 +102,7 @@ import { UploadPreviewComponent } from './previews/upload-preview/upload-preview
     TextareaPreviewComponent,
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
+    TablePreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -132,6 +136,7 @@ import { UploadPreviewComponent } from './previews/upload-preview/upload-preview
     DxcSwitchModule,
     DxcTagModule,
     DxcTableModule,
+    DxcResultsetTableModule,
     DxcTabsModule,
     DxcTextareaModule,
     DxcToggleGroupModule,

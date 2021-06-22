@@ -380,6 +380,8 @@ export class DxcTextInputComponent
       }
       .onClickIconElement {
         cursor: pointer !important;
+        height: 20px;
+        width: 20px;
         .containerIcon {
           &:focus {
             outline: -webkit-focus-ring-color auto 1px !important;
@@ -441,6 +443,8 @@ export class DxcTextInputComponent
           }
           .mat-form-field-underline {
             background-color: var(--inputText-disabledFontColor) !important;
+            bottom: unset;
+            transform: none;
           }
           .mat-form-field-empty mat-label {
             color: var(--inputText-disabledFontColor);
@@ -474,6 +478,8 @@ export class DxcTextInputComponent
               color: var(--inputText-fontColor);
             }
             .mat-form-field-underline {
+              bottom: unset;
+              transform: none;
               background-color: var(--inputText-fontColor) !important;
               .mat-form-field-ripple {
                 background-color: var(--inputText-fontColor) !important;
@@ -528,6 +534,8 @@ export class DxcTextInputComponent
         height: 0px !important;
       }
       .mat-form-field-underline {
+        bottom: unset;
+        transform: none;
         background-color: var(--inputText-fontColor) !important;
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;

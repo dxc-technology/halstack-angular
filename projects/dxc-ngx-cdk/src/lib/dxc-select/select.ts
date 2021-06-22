@@ -1299,7 +1299,9 @@ export abstract class _MatSelectBase<C>
   getDynamicStyle() {
     return css`
       .mat-select-arrow-wrapper {
-        ${this.panelOpen ? "transform: rotate(180deg)" : "transform: rotate(0deg)"};
+        ${this.panelOpen
+          ? "transform: rotate(180deg)"
+          : "transform: rotate(0deg)"};
       }
       ${this.utils.getMargins(this.margin)}
       &.mat-select {
@@ -1307,12 +1309,6 @@ export abstract class _MatSelectBase<C>
       }
       height: 66.5px;
       position: relative;
-
-      .assistiveText {
-        font-size: 12px;
-        font-family: var(--fontFamily);
-        color: ${this.invalid ? "var(--select-error)" : "var(--select-color)"};
-      }
 
       .selectLabel {
         position: absolute;
@@ -1356,20 +1352,47 @@ export abstract class _MatSelectBase<C>
         border-top-width: 0.84375em;
         border-top-style: solid;
         border-top-color: transparent;
-        border-bottom: 1px solid var(--select-color);
         :focus {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--select-focusColor);
         }
       }
 
+      .underline {
+        height: ${this.value ? "1.2px" : "1px"};
+        background-color: var(--select-color);
+        position: absolute;
+        bottom: ${this.value ? "19.5px" : "18.5px"};
+        width: 100%;
+      }
+
+      .assistiveText {
+        font-size: 12px;
+        font-family: var(--fontFamily);
+        color: ${this.invalid ? "var(--select-error)" : "var(--select-color)"};
+
+        position: absolute;
+        width: 100%;
+        bottom: -3px;
+        left: 0px;
+        margin-top: 6px;
+      }
+
       ${this.disabled
         ? `cursor: not-allowed;
       .mat-select-trigger {
         cursor: not-allowed;
-        border-bottom: 1px solid var(--select-disabledColor) !important;
         outline: none !important;
       }
+
+      .underline {
+        height: 1px;
+        background-color: var(--select-disabledColor);
+        position: absolute;
+        bottom: ${this.value ? "19.5px" : "18.5px"};
+        width: 100%;
+      }
+
       .assistiveText {
         color: var(--select-disabledColor) !important;
       }

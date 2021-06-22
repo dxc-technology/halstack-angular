@@ -39,6 +39,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'alert', component: AlertPreviewComponent},
   {name: 'box', component: BoxPreviewComponent},
   {name: 'button', component: ButtonPreviewComponent},
+  {name: 'box', component: BoxPreviewComponent},
   {name: 'card', component: CardPreviewComponent},
   {name: 'checkbox', component: CheckboxPreviewComponent},
   {name: 'chip', component: ChipPreviewComponent},

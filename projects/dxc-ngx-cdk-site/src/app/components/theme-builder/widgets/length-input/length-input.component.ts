@@ -45,7 +45,7 @@ export class LengthInputComponent implements OnInit, Stylable {
   }
 
   ngOnInit(): void {
-    this.unitValue =
+    this.unitValue = this.propertyValue === "none" ? "px" :
       this.propertyValue.match(/[a-zA-Z]+|%/g) &&
       this.propertyValue.match(/[a-zA-Z]+|%/g)[0];
     this.value = this.propertyValue.match(/-?[0-9]+(.[0-9]+)?/g);

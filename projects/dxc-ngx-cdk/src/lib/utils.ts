@@ -69,7 +69,7 @@ export class CssUtils {
     if (inputs.padding) {
       paddings = this.getPaddingOrMargin(sizes, inputs.padding);
     }
-    if(paddings || margins) {
+    if (paddings || margins) {
       return css`
         width: calc(${width} ${paddings} ${margins});
       `;
@@ -179,19 +179,27 @@ export class CssUtils {
     switch (shadowDepth) {
       case "1":
         return css`
-          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: var(--box-oneShadowDepthShadowOffsetX)
+            var(--box-oneShadowDepthShadowOffsetY)
+            var(--box-oneShadowDepthShadowBlur)
+            var(--box-oneShadowDepthShadowSpread)
+            var(--box-oneShadowDepthShadowColor);
         `;
       case "2":
         return css`
-          box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
-            0px 3px 4px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--box-twoShadowDepthShadowOffsetX)
+        var(--box-twoShadowDepthShadowOffsetY)
+        var(--box-twoShadowDepthShadowBlur)
+        var(--box-twoShadowDepthShadowSpread)
+        var(--box-twoShadowDepthShadowColor);
         `;
       default:
         return css`
-          box-shadow: none;
+        box-shadow: var(--box-noneShadowDepthShadowOffsetX)
+        var(--box-noneShadowDepthShadowOffsetY)
+        var(--box-noneShadowDepthShadowBlur)
+        var(--box-noneShadowDepthShadowSpread)
+        var(--box-noneShadowDepthShadowColor);
         `;
     }
   }

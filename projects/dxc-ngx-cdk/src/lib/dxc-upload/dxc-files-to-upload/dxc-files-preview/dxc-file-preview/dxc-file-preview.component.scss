@@ -2,11 +2,14 @@
   padding: 25px 60px 25px 40px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--upload-accentColor);
+  border-bottom: var(--upload-fileUnderlineThickness) solid var(--upload-fileUnderlineColor);
   .removeIcon {
     display: flex;
     align-items: center;
     cursor: pointer;
+    fill: var(--upload-fileDeleteIconColor);
+    width: var(--upload-fileDeleteIconWidth);
+    height: var(--upload-fileDeleteIconHeight);
   }
   &:hover {
     background-color: var(--upload-fileHoverColor);
@@ -33,11 +36,22 @@
         white-space: nowrap;
       }
     }
+    .fileName{
+      font-size: var(--upload-fileNameFontSize);
+      font-style: var(--upload-fileNameFontStyle);
+      font-weight: var(--upload-fileNameFontWeight);
+      text-transform: var(--upload-fileNameFontTextTransform);
+      color: var(--upload-fileNameFontColor);
+      font-family: var(--upload-fontFamily);
+    }
     .fileFormat {
-      font-size: 12px;
-      font-family: var(--fontFamily);
+      font-size: var(--upload-fileTypeFontSize);
+      font-family: var(--upload-fontFamily);
       letter-spacing: 1.88px;
-      color: var(--upload-fontColor);
+      color: var(--upload-fileTypeFontColor);
+      font-style: var(--upload-fileTypeFontStyle);
+      font-weight: var(--upload-fileTypeFontWeight);
+      text-transform: var(--upload-fileTypeFontTextTransform);
     }
   }
 }

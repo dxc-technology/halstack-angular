@@ -228,6 +228,9 @@ export class DxcWizardStepComponent {
         .number {
           color: var(--wizard-disabledFontColor);
         }
+        .infoContainer .label, .infoContainer .description {
+          color: var(--wizard-disabledFontColor);
+        }
       }
       .number {
         color: var(--wizard-stepContainerFontColor);

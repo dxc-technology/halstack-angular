@@ -20,17 +20,25 @@
     display: flex;
     flex-direction: column;
     .uploadedLabel {
-      font: 20px var(--fontFamily);
+      font-family: var(--upload-fontFamily);
       letter-spacing: 0.26px;
-      color: #000000de;
+      color: var(--upload-filesUploadedTitleFontColor);
       margin-bottom: 4px;
+      font-size: var(--upload-filesUploadedTitleFontSize);
+      font-style: var(--upload-filesUploadedTitleFontStyle);
+      font-weight: var(--upload-filesUploadedTitleFontWeight);
+      text-transform: var(--upload-filesUploadedTitleFontTextTransform);
     }
     .successCount {
-      font-size: 12px;
-      color: var(--upload-fontColor);
       span {
-        font-weight: bold;
+        font-weight: var(--upload-filesUploadedNumberFontWeight);
       }
+      font-family: var(--upload-fontFamily);
+      color: var(--upload-filesUploadedSubtitleFontColor);
+      font-size: var(--upload-filesUploadedSubtitleFontSize);
+      font-style: var(--upload-filesUploadedSubtitleFontStyle);
+      font-weight: var(--upload-filesUploadedSubtitleFontWeight);
+      text-transform: var(--upload-filesUploadedSubtitleFontTextTransform);
     }
   }
 }

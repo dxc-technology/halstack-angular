@@ -34,8 +34,8 @@ export class DxcTableComponent {
     return css`
       div#divTable {
         ${this.utils.getMargins(this.margin)}
-        width: ${this.calculateWidth(this.margin)};
-        overflow-x: auto;
+        ${this.calculateWidth(this.margin)};
+        overflow-y: auto;
         &::-webkit-scrollbar {
           width: 8px;
         }
@@ -98,11 +98,8 @@ export class DxcTableComponent {
   }
 
   private calculateWidth = (margin: any) => {
-
-
-
-    return `calc(100% - ${this.utils.getMarginValue(margin, "left")} - ${this.utils.getMarginValue(
-      margin,"right")})`;
+    return margin ?`width: calc(100% - ${this.utils.getMarginValue(margin, "left")} - ${this.utils.getMarginValue(
+      margin,"right")})`: '';
   }
 
 }

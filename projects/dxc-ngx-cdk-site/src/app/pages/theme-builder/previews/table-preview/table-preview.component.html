@@ -1,4 +1,4 @@
-<div class="tablePreviewContainer">
+<div class="container">
   <tbuilder-component-mode text="default">
     <dxc-table [margin]="tableDefaultMargin">
       <tr>
@@ -17,6 +17,106 @@
         <td>cell 6</td>
       </tr>
     </dxc-table>
-
   </tbuilder-component-mode>
+  <tbuilder-component-mode text="Resultset Table">
+    <dxc-resultset-table
+    itemsPerPage="2"
+    [collectionResource]="data">
+    <ng-container dxcColumnDef="id">
+      <td *dxcCellDef="let item">
+        {{item['id']}}
+      </td>
+    </ng-container>
+    <ng-container
+      dxcColumnDef="name"
+      [sortable]="{isSortable:true, propertyName:'name'}"
+    >
+      <td *dxcCellDef="let item">
+        {{item['name']}}
+      </td>
+    </ng-container>
+    <ng-container dxcColumnDef="city">
+      <td *dxcCellDef="let item">
+        {{item['city']}}
+      </td>
+    </ng-container>
+    <ng-container
+      dxcColumnDef="actions"º
+      [sortable]="{isSortable:true, propertyName:'actions'}"
+    >
+      <td *dxcCellDef="let item">
+        <dxc-button
+          *ngIf="item['actions'] === true"
+          label="Delete"
+        ></dxc-button>
+      </td>
+    </ng-container>
+  </dxc-resultset-table>
+  </tbuilder-component-mode>
+  <tbuilder-component-mode text="With scroll">
+    <div class="tablePreviewContainer">
+      <dxc-table [margin]="tableDefaultMargin">
+        <tr>
+          <th>header<br/>subheader</th>
+          <th>header<br/>subheader</th>
+          <th>header<br/>subheader</th>
+          </tr>
+          <tr>
+          <td>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </td>
+          <td>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </td>
+          <td>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur.
+          </td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+          <tr>
+          <td>cell data</td>
+          <td>cell data</td>
+          <td>cell data</td>
+          </tr>
+      </dxc-table>
+    </div>
+  </tbuilder-component-mode>
+
 </div>

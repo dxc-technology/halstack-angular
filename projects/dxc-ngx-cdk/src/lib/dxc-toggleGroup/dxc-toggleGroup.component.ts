@@ -11,7 +11,10 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { ToggleGroupService } from "./services/toggleGroup.service";
 
 @Component({
@@ -57,7 +60,7 @@ export class DxcToggleGroupComponent implements OnInit {
     multiple: false,
     disabled: false,
     margin: null,
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
   constructor(
     private utils: CssUtils,
@@ -163,17 +166,32 @@ export class DxcToggleGroupComponent implements OnInit {
     if (this.disabled) {
       return css`
         dxc-toggle {
-          background: var(--toggle-disabledUnselectedBackgroundColor) !important;
-          color: var(--toggle-disabledUnselectedFontColor) !important;
-          .toggleContent{
+          background: var(
+            --toggleGroup-disabledUnselectedBackgroundColor
+          ) !important;
+          color: var(--toggleGroup-disabledUnselectedFontColor) !important;
+          .toggleContent {
+            &:focus {
+              outline: none !important;
+            }
             outline: none;
+            .icon img,
+            .icon svg {
+              fill: var(--toggleGroup-disabledUnselectedFontColor) !important;
+            }
           }
           &:hover {
             cursor: not-allowed;
           }
           &.selected {
-            background: var(--toggle-disabledSelectedBackgroundColor) !important;
-            color: var(--toggle-disabledSelectedFontColor) !important;
+            background: var(
+              --toggleGroup-disabledSelectedBackgroundColor
+            ) !important;
+            color: var(--toggleGroup-disabledSelectedFontColor) !important;
+            .icon img,
+            .icon svg {
+              fill: var(--toggleGroup-disabledSelectedFontColor) !important;
+            }
           }
         }
       `;
@@ -182,17 +200,27 @@ export class DxcToggleGroupComponent implements OnInit {
         dxc-toggle {
           &:hover {
             cursor: pointer;
-          }
-          &:hover {
-            background: var(--toggle-unselectedBackgroundHoverColor);
-            color: var(--toggle-unselectedHoverFontColor);
+            background: var(--toggleGroup-unselectedBackgroundHoverColor);
+            color: var(--toggleGroup-unselectedHoverFontColor);
+            .icon img,
+            .icon svg {
+              fill: var(--toggleGroup-unselectedHoverFontColor) !important;
+            }
           }
           &.selected {
-            background: var(--toggle-selectedBackgroundColor);
-            color: var(--toggle-selectedFontColor);
+            background: var(--toggleGroup-selectedBackgroundColor);
+            color: var(--toggleGroup-selectedFontColor);
+            .icon img,
+            .icon svg {
+              fill: var(--toggleGroup-selectedFontColor) !important;
+            }
             &:hover {
-              background: var(--toggle-selectedHoverBackgroundColor);
-              color: var(--toggle-selectedHoverFontColor);
+              background: var(--toggleGroup-selectedBackgroundHoverColor);
+              color: var(--toggleGroup-selectedHoverFontColor);
+              .icon img,
+              .icon svg {
+                fill: var(--toggleGroup-selectedHoverFontColor) !important;
+              }
             }
           }
         }
@@ -214,25 +242,40 @@ export class DxcToggleGroupComponent implements OnInit {
         dxc-toggle {
         height: 100%;
         display: flex;
-        background: var(--toggle-unselectedBackgroundColor);
-        color: var(--toggle-unselectedFontColor);
+        background: var(--toggleGroup-unselectedBackgroundColor);
+        color: var(--toggleGroup-unselectedFontColor);
 
         .toggleContent {
+          &:focus {
+            outline: var(--toggleGroup-focusColor) auto 1px;
+          }
           height: 100%;
           display: flex;
           align-items: center;
           .label {
-            margin: 12px 30px;
-            letter-spacing: 1.25px;
-            font: normal 14px  font-family: var(--fontFamily);
-          }
-          dxc-toggle-icon {
-            display: flex;
+            padding-left: var(--toggleGroup-labelPaddingLeft);
+            padding-right: var(--toggleGroup-labelPaddingRight);
+            padding-bottom: var(--toggleGroup-labelPaddingBottom);
+            padding-top: var(--toggleGroup-labelPaddingTop);
+            letter-spacing: var(--toggleGroup-fontLetterSpacing);
+            font-family: var(--toggleGroup-fontFamily);
+            font-size: var(--toggleGroup-fontSize);
+            font-style: var(--toggle-fontStyle);
+            font-weight: var(--toggleGroup-fontWeight);
+            text-transform: var(--toggleGroup-fontTextTransform);
           }
           .icon {
-            width: 24px;
-            height: 24px;
-            margin: 10px 12px;
+            display: flex;
+            img,
+            svg {
+              width: var(--toggleGroup-iconSize);
+              height: var(--toggleGroup-iconSize);
+              padding-left: var(--toggleGroup-iconPaddingLeft);
+              padding-right: var(--toggleGroup-iconPaddingRight);
+              padding-bottom: var(--toggleGroup-iconPaddingBottom);
+              padding-top: var(--toggleGroup-iconPaddingTop);
+              fill: var(--toggleGroup-unselectedFontColor);
+            }
           }
         }
       }

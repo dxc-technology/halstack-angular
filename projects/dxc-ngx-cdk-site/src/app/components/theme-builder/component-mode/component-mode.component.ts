@@ -34,8 +34,7 @@ export class ComponentModeComponent implements OnInit, Stylable {
       }
 
       .previewsContainer {
-        display: flex;
-        justify-content: flex-start;
+        display: block;
         padding-left: 10px;
       }
 

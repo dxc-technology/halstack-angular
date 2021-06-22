@@ -6,10 +6,17 @@
     margin-right: 50px;
     .dragAreaLabel {
       margin-left: 5px;
-      font-size: 12px;
-      font-style: italic;
-      font-family: var(--fontFamily);
-      color: #666666;
+      font-size: var(--upload-dragAndDropAreaTextFontSize);
+      font-style: var(--upload-dragAndDropAreaTextFontStyle);
+      font-weight: var(--upload-dragAndDropAreaTextFontWeight);
+      text-transform: var(--upload-dragAndDropAreaTextFontTextTransform);
+      color: var(--upload-dragAndDropAreaTextFontColor);
+      font-family: var(--upload-fontFamily);
+    }
+    svg{
+      fill: var(--upload-dragAndDropAreaIconColor);
+      height: var(--upload-dragAndDropAreaIconHeight);
+      width: var(--upload-dragAndDropAreaIconWidth);
     }
   }
   .uploadButtons {

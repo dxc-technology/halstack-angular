@@ -5,7 +5,7 @@
   height: 30px;
   max-width: 95%;
   label {
-    font-family: var(--fontFamily);
+    font-family: var(--upload-fontFamily);
     letter-spacing: 0.49px;
     font-size: 16px;
   }
@@ -16,7 +16,11 @@
   }
   .previewIcon {
     margin-right: 16px;
-    fill: var(--upload-accentColor);
+    fill: var(--upload-fileUploadedIconColor);
+    svg{
+      width: var(--upload-fileUploadedIconWidth);
+      height: var(--upload-fileUploadedIconHeight);
+    }
   }
   .errorIcon {
     svg {
@@ -28,6 +32,12 @@
     max-width: 75%;
     overflow: hidden;
     white-space: nowrap;
+    font-size: var(--upload-fileNameFontSize);
+    font-style: var(--upload-fileNameFontStyle);
+    font-weight: var(--upload-fileNameFontWeight);
+    text-transform: var(--upload-fileNameFontTextTransform);
+    color: var(--upload-fileNameFontColor);
+    font-family: var(--upload-fontFamily);
   }
   .fileName.errorLabel {
     color: var(--upload-errorColor);

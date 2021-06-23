@@ -498,7 +498,8 @@ export const componentTokens = {
   "--tag-fontTextTransform":  globalTokens.type_uppercase,
   "--tag-height": "43px",
   "--tag-iconSectionWidth": "48px",
-  "--tag-iconSize": "24px",
+  "--tag-iconHeight": "24px",
+  "--tag-iconWidth": "24px",
 
   //TEXTAREA
   "--textarea-fontColor": globalTokens.black,

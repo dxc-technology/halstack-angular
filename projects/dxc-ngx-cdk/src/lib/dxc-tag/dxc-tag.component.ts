@@ -219,8 +219,8 @@ export class DxcTagComponent implements OnInit {
       dxc-tag-icon{
         img,svg{
           padding: 10px 12px;
-          height: var(--tag-iconSize);
-          width: var(--tag-iconSize);
+          height: var(--tag-iconHeight);
+          width: var(--tag-iconWidth);
           fill: var(--tag-iconColor);
         }
       }

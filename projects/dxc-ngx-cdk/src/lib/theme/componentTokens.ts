@@ -493,7 +493,12 @@ export const componentTokens = {
   "--table-sortIconColor": globalTokens.white,
 
   //TAG
-  "--tag-backgroundColor": globalTokens.white,
+  "--tag-iconColor": globalTokens.white,
+  "--tag-fontStyle": globalTokens.type_normal,
+  "--tag-fontTextTransform":  globalTokens.type_uppercase,
+  "--tag-height": "43px",
+  "--tag-iconSectionWidth": "48px",
+  "--tag-iconSize": "24px",
 
   //TEXTAREA
   "--textarea-fontColor": globalTokens.black,

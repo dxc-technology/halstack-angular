@@ -77,8 +77,6 @@ export class DxcTagComponent implements OnInit {
     padding: 0;
     cursor: pointer;
     outline: 0;
-    font-family: inherit;
-    font-family: var(--fontFamily);
   `;
 
   defaultInputs = new BehaviorSubject<any>({
@@ -138,7 +136,7 @@ export class DxcTagComponent implements OnInit {
     this.dxcBox.toArray().forEach((el) => {
       (el.nativeElement as HTMLElement).style.border = "0px solid";
       if(!this.label && this.size == "small"){
-        (el.nativeElement as HTMLElement).style.width = "48px"
+        (el.nativeElement as HTMLElement).style.width = "var(--tag-iconSectionWidth)"
       }
     });
   }
@@ -192,7 +190,6 @@ export class DxcTagComponent implements OnInit {
     return css`
       display: inline-flex;
       align-items: center;
-      background-color: var(--tag-backgroundColor);
       ${this.utils.calculateWidth(this.sizes, input)};
       ${input.labelPosition &&
       input.labelPosition != null &&
@@ -208,9 +205,9 @@ export class DxcTagComponent implements OnInit {
 
   setIconContainerDynamicStyle(input: any) {
     return css`
-      height: 43px;
+      height: var(--tag-height);
       display: inline-flex;
-      width: 48px;
+      width: var(--tag-iconSectionWidth);
       justify-content: center;
       ${input.iconBgColor
         ? css`
@@ -222,7 +219,9 @@ export class DxcTagComponent implements OnInit {
       dxc-tag-icon{
         img,svg{
           padding: 10px 12px;
-          height: 23px;
+          height: var(--tag-iconSize);
+          width: var(--tag-iconSize);
+          fill: var(--tag-iconColor);
         }
       }
     `;
@@ -230,10 +229,9 @@ export class DxcTagComponent implements OnInit {
 
   tagLabel: string = css`
     padding: 0px 30px;
-    font-size: 14px;
-    text-transform: uppercase;
+    text-transform: var(--tag-fontTextTransform);
+    font-style: var(--tag-fontStyle);
     letter-spacing: 1px;
-    color: black;
     flex-grow: 1;
     text-align: center;
     text-overflow: ellipsis;

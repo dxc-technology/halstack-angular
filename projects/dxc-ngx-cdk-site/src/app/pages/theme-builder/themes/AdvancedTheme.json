@@ -747,7 +747,7 @@
     "thumbFocusColorOnDark": "#1489FB",
     "thumbHeight": "24px",
     "thumbWidth": "24px",
-    "thumbShift": "40%",
+    "thumbShift": "-2px",
     "trackHeight": "12px",
     "trackWidth": "60px",
     "spaceBetweenLabelSwitch": "0px"

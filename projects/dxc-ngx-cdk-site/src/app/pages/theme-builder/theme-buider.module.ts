@@ -37,6 +37,7 @@ import {
   DxcToggleGroupModule,
   DxcUploadModule,
   DxcResultsetTableModule,
+  BackgroundProviderModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -140,7 +141,8 @@ import { TablePreviewComponent } from './previews/table-preview/table-preview.co
     DxcTabsModule,
     DxcTextareaModule,
     DxcToggleGroupModule,
-    DxcUploadModule
+    DxcUploadModule,
+    BackgroundProviderModule
   ],
   exports: [],
   entryComponents: [],

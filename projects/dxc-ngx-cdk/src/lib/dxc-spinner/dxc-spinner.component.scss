@@ -35,6 +35,29 @@
     &.overlayed {
       width: 140px;
       height: 140px;
+      .labelsContainer {
+        p {
+          &.label {
+            text-align: var(--spinner-overlayLabelTextAlign);
+            font-family: var(--spinner-overlayLabelFontFamily);
+            font-size: var(--spinner-overlayLabelFontSize);
+            font-weight: var(--spinner-overlayLabelFontWeight);
+            font-style: var(--spinner-overlayLabelFontStyle);
+            color: var(--spinner-overlayLabelFontColor);
+            text-transform: var(--spinner-overlayLabelFontTextTransform);
+            letter-spacing: var(--spinner-overlayLabelLetterSpacing);
+          }
+          &.value {
+            text-align: var(--spinner-overlayProgressValueTextAlign);
+            font-family: var(--spinner-overlayProgressValueFontFamily);
+            font-size: var(--spinner-overlayProgressValueFontSize);
+            font-weight: var(--spinner-overlayProgressValueFontWeight);
+            font-style: var(--spinner-overlayProgressValueFontStyle);
+            color: var(--spinner-overlayProgressValueFontColor);
+            letter-spacing: var(--spinner-overlayProgressValueLetterSpacing);
+          }
+        }
+      }
     }
     &.notOverlayed {
       height: auto;
@@ -76,8 +99,6 @@
       margin: 0 auto;
       display: block;
       width: 110px;
-      font-family: var(--fontFamily);
-      font-size: 12px;
       p {
         margin: 0;
         &.label,
@@ -86,8 +107,25 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          text-align: center;
-          text-transform: uppercase;
+        }
+        &.label {
+          text-align: var(--spinner-labelTextAlign);
+          font-family: var(--spinner-labelFontFamily);
+          font-size: var(--spinner-labelFontSize);
+          font-weight: var(--spinner-labelFontWeight);
+          font-style: var(--spinner-labelFontStyle);
+          color: var(--spinner-labelFontColor);
+          text-transform: var(--spinner-labelFontTextTransform);
+          letter-spacing: var(--spinner-labelLetterSpacing);
+        }
+        &.value {
+          text-align: var(--spinner-progressValueTextAlign);
+          font-family: var(--spinner-progressValueFontFamily);
+          font-size: var(--spinner-progressValueFontSize);
+          font-weight: var(--spinner-progressValueFontWeight);
+          font-style: var(--spinner-progressValueFontStyle);
+          color: var(--spinner-progressValueFontColor);
+          letter-spacing: var(--spinner-progressValueLetterSpacing);
         }
       }
     }
@@ -100,14 +138,8 @@
   }
   .spinnerContainer {
     .backOverlay {
-      background-color: var(--spinner-overlayColor);
-      opacity: 0.8;
-    }
-    .labelsContainer {
-      color: #FFFFFF;
-      &.notOverlayed {
-        color: var(--spinner-fontColor);
-      }
+      background-color: var(--spinner-overlayBackgroundColor);
+      opacity: var(--spinner-overlayOpacity);
     }
   }
   .mat-progress-spinner.backCircle {

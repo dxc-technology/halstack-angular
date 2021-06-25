@@ -196,11 +196,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--paginator-paginatorFontColor"];
 
     //PROGRESSBAR
-    proccessedTokens["--progressBar-trackLine"] =
-      theme?.progressBar?.accentColor ?? tokens["--progressBar-trackLine"];
-    proccessedTokens["--progressBar-totalLine"] =
+    proccessedTokens["--progressBar-trackLineColor"] =
+      theme?.progressBar?.accentColor ?? tokens["--progressBar-trackLineColor"];
+    proccessedTokens["--progressBar-totalLineColor"] =
       this.setOpacity(theme?.progressBar?.baseColor, 0.34) ??
-      tokens["--progressBar-totalLine"];
+      tokens["--progressBar-totalLineColor"];
 
     //RADIO
     proccessedTokens["--radio-color"] =

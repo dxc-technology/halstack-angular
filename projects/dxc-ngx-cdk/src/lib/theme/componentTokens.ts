@@ -400,10 +400,24 @@ export const componentTokens = {
   "--paginator-paginatorFontColor": globalTokens.black,
 
   //PROGRESSBAR
-  "--progressBar-trackLine": globalTokens.purple,
-  "--progressBar-totalLine": globalTokens.softGrey,
+  "--progressBar-trackLineColor": globalTokens.purple,
+  "--progressBar-totalLineColor": globalTokens.softGrey,
   "--progressBar-overlayColor": globalTokens.black,
-  "--progressBar-fontColor": globalTokens.inherit,
+  "--progressBar-labelFontFamily": globalTokens.type_sans,
+  "--progressBar-labelFontSize": globalTokens.type_scale_01,
+  "--progressBar-labelFontStyle": globalTokens.type_normal,
+  "--progressBar-labelFontWeight": globalTokens.type_regular,
+  "--progressBar-labelFontColor": globalTokens.black,
+  "--progressBar-labelFontTextTransform": globalTokens.type_uppercase,
+  "--progressBar-valueFontFamily": globalTokens.type_sans,
+  "--progressBar-valueFontSize": globalTokens.type_scale_01,
+  "--progressBar-valueFontStyle": globalTokens.type_normal,
+  "--progressBar-valueFontWeight": globalTokens.type_regular,
+  "--progressBar-valueFontColor": globalTokens.black,
+  "--progressBar-valueFontTextTransform": globalTokens.type_uppercase,
+  "--progressBar-thickness": "9px",
+  "--progressBar-borderRadius": "5px",
+  "--progressBar-overlayOpacity": "0.8",
 
   //RADIO
   "--radio-color": globalTokens.black,

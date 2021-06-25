@@ -616,7 +616,7 @@
     "titleFontWeight": "400",
     "titleFontColor": "#000000de",
     "titleFontTextTransform": "none",
-    "titleFontLetterSpacing": "0",
+    "titleFontLetterSpacing": "0em",
     "subtitleFontFamily": "Open Sans, sans-serif",
     "subtitleFontSize": "0.75rem",
     "subtitleFontStyle": "normal",

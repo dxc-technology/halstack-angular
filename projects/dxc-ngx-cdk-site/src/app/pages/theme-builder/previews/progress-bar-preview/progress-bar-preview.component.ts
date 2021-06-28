@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-progress-bar-preview',
-  templateUrl: './progress-bar-preview.component.html'
+  selector: "app-progress-bar-preview",
+  templateUrl: "./progress-bar-preview.component.html",
 })
 export class ProgressBarPreviewComponent implements OnInit {
+  isVisible = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  showProgressbar() {
+    this.isVisible = !this.isVisible;
+    setTimeout(() => {
+      this.isVisible = false;
+    }, 3000);
   }
-
 }

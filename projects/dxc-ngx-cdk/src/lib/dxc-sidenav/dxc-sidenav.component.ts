@@ -13,8 +13,11 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "./../variables";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
-import { SidenavService } from './services/sidenav.service';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
+import { SidenavService } from "./services/sidenav.service";
 
 @Component({
   selector: "dxc-sidenav",
@@ -152,37 +155,56 @@ export class DxcSidenavComponent implements OnInit {
         ")"};
         overflow-y: auto;
         overflow-x: hidden;
+        font-family: var(--sidenav-customContentFontFamily);
+        font-size: var(--sidenav-customContentFontSize);
+        font-style: var(--sidenav-customContentFontStyle);
+        font-weight: var(--sidenav-customContentFontWeight);
+        color: var(--sidenav-customContentFontColor);
         &::-webkit-scrollbar {
           width: 2px;
         }
         &::-webkit-scrollbar-track {
-          background-color: #d9d9d9;
+          background-color: var(--sidenav-scrollBarTrackColor);
           border-radius: 3px;
         }
         &::-webkit-scrollbar-thumb {
-          background-color: #66666626;
+          background-color: var(--sidenav-scrollBarThumbColor);
           border-radius: 3px;
         }
         dxc-sidenav-title {
-          font: 24px / 33px var(--fontFamily);
-          letter-spacing: 0px;
-          color: rgba(0, 0, 0, 0.87);
           margin: 15px 0px;
+          font-family: var(--sidenav-titleFontFamily);
+          font-size: var(--sidenav-titleFontSize);
+          font-style: var(--sidenav-titleFontStyle);
+          font-weight: var(--sidenav-titleFontWeight);
+          color: var(--sidenav-titleFontColor);
+          text-transform: var(--sidenav-titleFontTextTransform);
+          letter-spacing: var(--sidenav-titleFontLetterSpacing);
         }
         dxc-sidenav-subtitle {
-          font: 12px / 17px var(--fontFamily);
-          letter-spacing: 1.88px;
-          color: rgba(0, 0, 0, 0.6);
-          text-transform: uppercase;
           margin-top: 15px;
+          font-family: var(--sidenav-subtitleFontFamily);
+          font-size: var(--sidenav-subtitleFontSize);
+          font-style: var(--sidenav-subtitleFontStyle);
+          font-weight: var(--sidenav-subtitleFontWeight);
+          color: var(--sidenav-subtitleFontColor);
+          text-transform: var(--sidenav-subtitleFontTextTransform);
+          letter-spacing: var(--sidenav-subtitleFontLetterSpacing);
         }
         dxc-sidenav-link {
-          text-decoration: none;
-          font: 14px / 19px var(--fontFamily);
-          letter-spacing: 0.24px;
-          color: rgba(0, 0, 0, 0.6);
-          margin: 6px 18px;
+          margin-top: var(--sidenav-linkMarginTop);
+          margin-right: var(--sidenav-linkMarginRight);
+          margin-bottom: var(--sidenav-linkMarginBottom);
+          margin-left: var(--sidenav-linkMarginLeft);
           cursor: pointer;
+          font-family: var(--sidenav-linkFontFamily);
+          font-size: var(--sidenav-linkFontSize);
+          font-style: var(--sidenav-linkFontStyle);
+          font-weight: var(--sidenav-linkFontWeight);
+          color: var(--sidenav-linkFontColor);
+          text-transform: var(--sidenav-linkFontTextTransform);
+          letter-spacing: var(--sidenav-linkFontLetterSpacing);
+          text-decoration: var(--sidenav-linkTextDecoration);
           a {
             text-decoration: inherit;
             color: inherit;

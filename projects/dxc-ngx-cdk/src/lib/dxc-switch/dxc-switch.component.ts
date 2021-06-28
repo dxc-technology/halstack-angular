@@ -6,7 +6,7 @@ import {
   HostBinding,
   SimpleChanges,
 } from "@angular/core";
-import { EventEmitter, ElementRef } from "@angular/core";
+import { EventEmitter, ElementRef, Optional } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -14,6 +14,7 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-switch",
@@ -22,6 +23,8 @@ import {
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
+  @HostBinding("class.dark") darkBackground = false;
+  @HostBinding("class.light") lightBackground = true;
   @Input()
   get checked(): boolean {
     return this._checked;
@@ -102,9 +105,21 @@ export class DxcSwitchComponent implements OnChanges {
   ngOnInit() {
     this.renderedChecked = this.checked;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
   }
 
-  constructor(private utils: CssUtils) {
+  constructor(
+    private utils: CssUtils,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {
     this.onChange = new EventEmitter();
   }
 
@@ -138,72 +153,157 @@ export class DxcSwitchComponent implements OnChanges {
     }
   }
 
-  getDynamicStyle(inputs) {
+  getDarkStyle() {
     return css`
-      ${this.utils.getMargins(inputs.margin)}
-      ${this.utils.calculateWidth(this.sizes, inputs)}
-      display: inline-flex;
-      font-family: var(--fontFamily);
-      color: var(--switch-fontColor);
-      mat-slide-toggle {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        display: inline-flex;
-        height: auto;
+      &.dark {
+        .mat-slide-toggle-thumb:not(.mat-checked) {
+          background-color: var(--switch-uncheckedThumbBackgroundColorOnDark);
+        }
+        div.mat-slide-toggle-bar {
+          background-color: var(--switch-uncheckedTrackBackgroundColorOnDark);
+        }
+        span.mat-slide-toggle-content {
+          color: var(--switch-labelFontColorOnDark);
+        }
+        .mat-checked:not(.mat-disabled) {
+          .mat-slide-toggle-thumb {
+            background-color: var(--switch-checkedThumbBackgroundColorOnDark);
+          }
+          .mat-slide-toggle-bar {
+            background-color: var(--switch-checkedTrackBackgroundColorOnDark);
+          }
+        }
+        .mat-disabled {
+          &.mat-checked .mat-slide-toggle-thumb {
+            background-color: var(
+              --switch-disabledCheckedThumbBackgroundColorOnDark
+            ) !important;
+          }
+          &:not(.mat-checked) {
+            .mat-slide-toggle-thumb {
+              background-color: var(
+                --switch-disabledUncheckedThumbBackgroundColorOnDark
+              ) !important;
+            }
+            .mat-slide-toggle-bar {
+              background-color: var(
+                --switch-disabledUncheckedTrackBackgroundColorOnDark
+              ) !important;
+            }
+          }
+          .mat-slide-toggle-content {
+            color: var(--switch-disabledLabelFontColorOnDark) !important;
+          }
+          .mat-slide-toggle-bar {
+            background-color: var(
+              --switch-disabledCheckedTrackBackgroundColorOnDark
+            ) !important;
+          }
+        }
+        .mat-slide-toggle:not(.mat-disabled).cdk-focused
+          .mat-slide-toggle-persistent-ripple {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-offset: 2px;
+          outline-color: var(--switch-thumbFocusColorOnDark);
+        }
+      }
+    `;
+  }
+
+  getLightStyle() {
+    return css`
+      &.light {
         .mat-slide-toggle-thumb:not(.mat-checked) {
           background-color: var(--switch-uncheckedThumbBackgroundColor);
         }
         span.mat-slide-toggle-required {
           color: var(--switch-requiredColor);
         }
+        div.mat-slide-toggle-bar {
+          background-color: var(--switch-uncheckedTrackBackgroundColor);
+        }
+        span.mat-slide-toggle-content {
+          color: var(--switch-labelFontColor);
+        }
+        .mat-checked:not(.mat-disabled) {
+          .mat-slide-toggle-thumb {
+            background-color: var(--switch-checkedThumbBackgroundColor);
+          }
+          .mat-slide-toggle-bar {
+            background-color: var(--switch-checkedTrackBackgroundColor);
+          }
+        }
+        .mat-disabled {
+          &.mat-checked .mat-slide-toggle-thumb {
+            background-color: var(
+              --switch-disabledCheckedThumbBackgroundColor
+            ) !important;
+          }
+          &:not(.mat-checked) {
+            .mat-slide-toggle-thumb {
+              background-color: var(
+                --switch-disabledUncheckedThumbBackgroundColor
+              ) !important;
+            }
+            .mat-slide-toggle-bar {
+              background-color: var(
+                --switch-disabledUncheckedTrackBackgroundColor
+              ) !important;
+            }
+          }
+          .mat-slide-toggle-content {
+            color: var(--switch-disabledLabelFontColor) !important;
+          }
+          .mat-slide-toggle-bar {
+            background-color: var(
+              --switch-disabledCheckedTrackBackgroundColor
+            ) !important;
+          }
+        }
+        .mat-slide-toggle:not(.mat-disabled).cdk-focused
+          .mat-slide-toggle-persistent-ripple {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-offset: 2px;
+          outline-color: var(--switch-thumbFocusColor);
+        }
+      }
+    `;
+  }
+
+  getDynamicStyle(inputs) {
+    return css`
+      ${this.utils.getMargins(inputs.margin)}
+      ${this.utils.calculateWidth(this.sizes, inputs)}
+      display: inline-flex;
+      ${this.getLightStyle()}
+      ${this.getDarkStyle()}
+      mat-slide-toggle {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: inline-flex;
+        height: auto;
+        span.mat-slide-toggle-required {
+          color: var(--switch-requiredColor);
+        }
         div.mat-slide-toggle-thumb {
-          height: 24px;
-          width: 24px;
+          height: var(--switch-thumbHeight);
+          width: var(--switch-thumbWidth);
           position: absolute;
           top: -3px;
-          right: -2px;
+          right: var(--switch-thumbShift);
         }
         div.mat-slide-toggle-bar {
-          height: 12px;
+          height: var(--switch-trackHeight);
           margin: 15px;
-          background-color: var(--switch-uncheckedTrackBackgroundColor);
+          left: var(--switch-spaceBetweenLabelSwitch);
         }
         span.mat-slide-toggle-content {
           white-space: normal;
           ${this.setTextAlign(inputs.labelPosition)}
-          color: var(--switch-fontColor);
-        }
-        .mat-slide-toggle-thumb {
-          &:focus:not(.mat-disabled) {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--switch-focusColor);
-            outline-offset: 2px;
-          }
-        }
-      }
-      mat-slide-toggle.mat-checked:not(.mat-disabled) {
-        .mat-slide-toggle-thumb {
-          background-color: var(--switch-checkedThumbBackgroundColor);
-        }
-        .mat-slide-toggle-bar {
-          background-color: var(--switch-checkedTrackBackgroundColor);
-        }
-      }
-      mat-slide-toggle.mat-disabled:not(.mat-checked) {
-        .mat-slide-toggle-bar {
-          background-color: var(
-            --switch-disabledUncheckedTrackBackgroundColor
-          ) !important;
-        }
-      }
-      mat-slide-toggle.mat-disabled {
-        .mat-slide-toggle-content {
-          color: var(--switch-disabledFontColor) !important;
-        }
-        .mat-slide-toggle-bar {
-          background-color: var(
-            --switch-disabledCheckedTrackBackgroundColor
-          ) !important;
+          font-family: var(--switch-labelFontFamily);
+          font-size: var(--switch-labelFontSize);
+          font-style: var(--switch-labelFontStyle);
+          font-weight: var(--switch-labelFontWeight);
         }
       }
       .mat-slide-toggle:not(.mat-disabled).cdk-focused
@@ -213,7 +313,6 @@ export class DxcSwitchComponent implements OnChanges {
         margin: 5px;
         height: 29px;
         width: 30px;
-        outline-color: var(--switch-focusColor);
       }
       .mat-slide-toggle.mat-checked .mat-ripple-element,
       .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
@@ -226,6 +325,9 @@ export class DxcSwitchComponent implements OnChanges {
         }
         .mat-slide-toggle-thumb {
           cursor: not-allowed;
+        }
+        .mat-slide-toggle-content {
+          font-style: var(--switch-disabledLabelFontStyle);
         }
       }
     `;

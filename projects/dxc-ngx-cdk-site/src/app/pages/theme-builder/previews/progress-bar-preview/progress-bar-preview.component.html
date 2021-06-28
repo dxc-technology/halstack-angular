@@ -13,4 +13,21 @@
     >
     </dxc-progressbar>
   </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="With Overlay">
+    <dxc-button
+      label="SHOW PROGRESS BAR FOR 3 SECONDS"
+      (onClick)="showProgressbar()"
+      margin="xsmall"
+      mode="primary"
+    ></dxc-button>
+
+    <dxc-progressbar
+      *ngIf="isVisible"
+      margin="medium"
+      label="Loading..."
+      overlay="true"
+    >
+    </dxc-progressbar>
+  </tbuilder-component-mode>
 </div>

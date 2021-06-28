@@ -196,11 +196,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--paginator-paginatorFontColor"];
 
     //PROGRESSBAR
-    proccessedTokens["--progressBar-trackLine"] =
-      theme?.progressBar?.accentColor ?? tokens["--progressBar-trackLine"];
-    proccessedTokens["--progressBar-totalLine"] =
+    proccessedTokens["--progressBar-trackLineColor"] =
+      theme?.progressBar?.accentColor ?? tokens["--progressBar-trackLineColor"];
+    proccessedTokens["--progressBar-totalLineColor"] =
       this.setOpacity(theme?.progressBar?.baseColor, 0.34) ??
-      tokens["--progressBar-totalLine"];
+      tokens["--progressBar-totalLineColor"];
 
     //RADIO
     proccessedTokens["--radio-color"] =
@@ -268,41 +268,41 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.table?.textColor ?? tokens["--table-headerFontColor"];
 
     //TOGGLE GROUP
-    proccessedTokens["--toggle-unselectedBackgroundColor"] =
+    proccessedTokens["--toggleGroup-unselectedBackgroundColor"] =
       theme?.toggle?.unselectedBaseColor ??
-      tokens["--toggle-unselectedBackgroundColor"];
-    proccessedTokens["--toggle-unselectedBackgroundHoverColor"] =
+      tokens["--toggleGroup-unselectedBackgroundColor"];
+    proccessedTokens["--toggleGroup-unselectedBackgroundHoverColor"] =
       theme?.toggle?.unselectedHoverBaseColor ??
-      tokens["--toggle-unselectedBackgroundHoverColor"];
-    proccessedTokens["--toggle-unselectedFontColor"] =
+      tokens["--toggleGroup-unselectedBackgroundHoverColor"];
+    proccessedTokens["--toggleGroup-unselectedFontColor"] =
       theme?.toggle?.unselectedTextColor ??
-      tokens["--toggle-unselectedFontColor"];
-    proccessedTokens["--toggle-unselectedHoverFontColor"] =
+      tokens["--toggleGroup-unselectedFontColor"];
+    proccessedTokens["--toggleGroup-unselectedHoverFontColor"] =
       theme?.toggle?.unselectedHoverTextColor ??
-      tokens["--toggle-unselectedHoverFontColor"];
-    proccessedTokens["--toggle-selectedBackgroundColor"] =
+      tokens["--toggleGroup-unselectedHoverFontColor"];
+    proccessedTokens["--toggleGroup-selectedBackgroundColor"] =
       theme?.toggle?.selectedBaseColor ??
-      tokens["--toggle-selectedBackgroundColor"];
-    proccessedTokens["--toggle-selectedHoverBackgroundColor"] =
+      tokens["--toggleGroup-selectedBackgroundColor"];
+    proccessedTokens["--toggleGroup-selectedBackgroundHoverColor"] =
       theme?.toggle?.selectedHoverBaseColor ??
-      tokens["--toggle-selectedHoverBackgroundColor"];
-    proccessedTokens["--toggle-selectedFontColor"] =
-      theme?.toggle?.selectedTextColor ?? tokens["--toggle-selectedFontColor"];
-    proccessedTokens["--toggle-selectedHoverFontColor"] =
+      tokens["--toggleGroup-selectedBackgroundHoverColor"];
+    proccessedTokens["--toggleGroup-selectedFontColor"] =
+      theme?.toggle?.selectedTextColor ?? tokens["--toggleGroup-selectedFontColor"];
+    proccessedTokens["--toggleGroup-selectedHoverFontColor"] =
       theme?.toggle?.selectedHoverTextColor ??
-      tokens["--toggle-selectedHoverFontColor"];
-    proccessedTokens["--toggle-disabledSelectedBackgroundColor"] =
+      tokens["--toggleGroup-selectedHoverFontColor"];
+    proccessedTokens["--toggleGroup-disabledSelectedBackgroundColor"] =
       this.setOpacity(theme?.toggle?.selectedBaseColor, 0.34) ??
-      tokens["--toggle-disabledSelectedBackgroundColor"];
-    proccessedTokens["--toggle-disabledSelectedFontColor"] =
+      tokens["--toggleGroup-disabledSelectedBackgroundColor"];
+    proccessedTokens["--toggleGroup-disabledSelectedFontColor"] =
       this.setOpacity(theme?.toggle?.selectedTextColor, 0.34) ??
-      tokens["--toggle-disabledSelectedFontColor"];
-    proccessedTokens["--toggle-disabledUnselectedBackgroundColor"] =
+      tokens["--toggleGroup-disabledSelectedFontColor"];
+    proccessedTokens["--toggleGroup-disabledUnselectedBackgroundColor"] =
       this.setOpacity(theme?.toggle?.unselectedBaseColor, 0.34) ??
-      tokens["--toggle-disabledUnselectedBackgroundColor"];
-    proccessedTokens["--toggle-disabledUnselectedFontColor"] =
+      tokens["--toggleGroup-disabledUnselectedBackgroundColor"];
+    proccessedTokens["--toggleGroup-disabledUnselectedFontColor"] =
       this.setOpacity(theme?.toggle?.unselectedTextColor, 0.34) ??
-      tokens["--toggle-disabledUnselectedFontColor"];
+      tokens["--toggleGroup-disabledUnselectedFontColor"];
 
     //WIZARD
     proccessedTokens["--wizard-selectedBackgroundColor"] =

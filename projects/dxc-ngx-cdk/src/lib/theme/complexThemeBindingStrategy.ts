@@ -188,12 +188,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--inputText-selectedOptionBackgroundColor"];
 
     //PAGINATOR
-    proccessedTokens["--paginator-paginatorBackgroundColor"] =
+    proccessedTokens["--paginator-backgroundColor"] =
       theme?.paginator?.baseColor ??
-      tokens["--paginator-paginatorBackgroundColor"];
-    proccessedTokens["--paginator-paginatorFontColor"] =
+      tokens["--paginator-backgroundColor"];
+    proccessedTokens["--paginator-fontColor"] =
       theme?.paginator?.accentColor ??
-      tokens["--paginator-paginatorFontColor"];
+      tokens["--paginator-fontColor"];
 
     //PROGRESSBAR
     proccessedTokens["--progressBar-trackLineColor"] =

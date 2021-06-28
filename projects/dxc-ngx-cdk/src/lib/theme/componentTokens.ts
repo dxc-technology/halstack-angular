@@ -396,8 +396,22 @@ export const componentTokens = {
   "--link-visitedUnderlinedBackgroundColor": globalTokens.violet,
 
   //PAGINATOR
-  "--paginator-paginatorBackgroundColor": globalTokens.darkWhite,
-  "--paginator-paginatorFontColor": globalTokens.black,
+  "--paginator-backgroundColor": globalTokens.darkWhite,
+  "--paginator-fontColor": globalTokens.black,
+  "--paginator-fontFamily": globalTokens.type_sans,
+  "--paginator-fontSize": globalTokens.type_scale_02,
+  "--paginator-fontStyle": globalTokens.type_normal,
+  "--paginator-fontWeight": globalTokens.type_regular,
+  "--paginator-height": "64px",
+  "--paginator-width": "100%",
+  "--paginator-marginRight": "40px",
+  "--paginator-marginLeft": "20px",
+  "--paginator-itemsPerPageSelectorMarginLeft": "0px",
+  "--paginator-itemsPerPageSelectorMarginRight": "30px",
+  "--paginator-pageSelectorMarginRight": "30px",
+  "--paginator-pageSelectorMarginLeft": "0px",
+  "--paginator-totalItemsContainerMarginRight": "30px",
+  "--paginator-totalItemsContainerMarginLeft": "0px",
 
   //PROGRESSBAR
   "--progressBar-trackLineColor": globalTokens.purple,

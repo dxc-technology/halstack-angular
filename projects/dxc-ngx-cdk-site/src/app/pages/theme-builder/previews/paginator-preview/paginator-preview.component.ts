@@ -9,6 +9,7 @@ export class PaginatorPreviewComponent implements OnInit {
   page: number = 1;
   totalItems: number = 27;
   itemsPerPage: number = 10;
+  itemsPerPageOptions = [10,15];
 
   constructor() {}
 

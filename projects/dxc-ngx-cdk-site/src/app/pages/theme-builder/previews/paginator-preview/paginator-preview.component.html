@@ -3,12 +3,14 @@
     <dxc-paginator
       [totalItems]="totalItems"
       [itemsPerPage]="itemsPerPage"
+      [itemsPerPageOptions]="itemsPerPageOptions"
       [currentPage]="page"
       (nextFunction)="navigate($event, 'next')"
       (prevFunction)="navigate($event, 'prev')"
       (firstFunction)="navigate($event, 'first')"
       (lastFunction)="navigate($event, 'last')"
       [paginationActions]="paginationActions"
+      [showGoToPage]="true"
     >
     </dxc-paginator>
   </tbuilder-component-mode>

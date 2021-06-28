@@ -1,7 +1,10 @@
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import {
   Component,
   Input,
@@ -83,7 +86,7 @@ export class DxcLinkComponent {
   styledButton: string;
 
   defaultInputs = new BehaviorSubject<any>({
-    underlined: true,
+    underlined: false,
     inheritColor: false,
     disabled: false,
     text: null,
@@ -92,7 +95,7 @@ export class DxcLinkComponent {
     href: null,
     newWindow: false,
     margin: null,
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
@@ -134,35 +137,33 @@ export class DxcLinkComponent {
     return css`
       a {
         ${this.utils.getMargins(inputs.margin)}
-
         display: inline-flex;
         align-items: center;
         max-width: 100%;
-        font-size: 16px;
+        font-size: var(--link-fontSize);
         padding-bottom: 2px;
         text-decoration: none;
+        font-family: var(--link-fontFamily);
+        font-style: var(--link-fontStyle);
+        font-weight: var(--link-fontWeight);
         ${inputs.iconPosition === "before"
           ? ""
           : "flex-direction: row-reverse;"}
 
         ${this.getUnderlineStyles(inputs)}
 
-        ${inputs.disabled ? "pointer-events: none;" : ""}
-
-        color: ${inputs.disabled
-          ? "var(--link-disabledColor)"
-          : !inputs.inheritColor
+        color: ${!inputs.inheritColor
           ? "var(--link-fontColor)"
           : `inherit`} !important;
 
         ${this.getStateStyles(inputs)}
 
         img,svg {
-          width: 16px;
-          height: 16px;
+          width: var(--link-iconSize);
+          height: var(--link-iconSize);
           ${inputs.iconPosition === "before"
-            ? "margin-right: 6px;"
-            : "margin-left: 6px;"}
+            ? "margin-right: var(--link-iconGutter);"
+            : "margin-left: var(--link-iconGutter);"}
         }
       }
     `;
@@ -175,7 +176,11 @@ export class DxcLinkComponent {
       padding: 0;
       cursor: ${inputs.disabled ? "default" : "pointer"};
       outline: 0;
-      font-family: var(--fontFamily);
+      font-family: var(--link-fontFamily);
+      font-size: var(--link-fontSize);
+      text-decoration: none;
+      font-style: var(--link-fontStyle);
+      font-weight: var(--link-fontWeight);
     `;
   }
 
@@ -183,13 +188,9 @@ export class DxcLinkComponent {
     if (inputs.underlined) {
       if (!inputs.disabled) {
         return css`
-          padding-bottom: 1px !important;
-          border-bottom: 1px solid var(--link-underlinedBackgroundColor);
-        `;
-      } else {
-        return css`
-          padding-bottom: 1px !important;
-          border-bottom: 1px solid var(--link-disabledUnderlinedBackgroundColor);
+          padding-bottom: var(--link-underlineSpacing) !important;
+          border-bottom: var(--link-underlineThickness)
+            var(--link-underlineStyle) var(--link-underlinedBackgroundColor);
         `;
       }
     } else {
@@ -198,25 +199,43 @@ export class DxcLinkComponent {
   }
 
   private getStateStyles(inputs) {
-    return css`
-      &:hover {
-        color: var(--link-hoverFontColor) !important;
-        text-decoration: none;
-        padding-bottom: 1px !important;
-        border-bottom: 1px solid;
-        cursor: pointer;
-      }
+    if (inputs.disabled) {
+      return css`
+        pointer-events: none;
+        color: var(--link-disabledColor) !important;
+      `;
+    } else {
+      return css`
+        &:hover {
+          color: var(--link-hoverFontColor) !important;
+          padding-bottom: var(--link-underlineSpacing) !important;
+          border-bottom: var(--link-underlineThickness)
+            var(--link-underlineStyle) var(--link-hoverUnderlineColor);
+          cursor: pointer;
+        }
 
-      &:visited {
-        ${inputs.underlined
-          ? `padding-bottom: 1px !important;
-            border-bottom: 1px solid var(--link-visitedUnderlinedBackgroundColor);`
-          : ``}
-        ${inputs.disabled
-          ? `color: var(--link-disabledColor) !important;
-            border-bottom: 1px solid var(--link-disabledUnderlinedBackgroundColor);`
-          : `color: var(--link-visitedFontColor) !important;`}
-      }
-    `;
+        &:focus {
+          outline-color: var(--link-focusColor);
+          color: var(--link-focusColor) !important;
+          padding-bottom: var(--link-underlineSpacing) !important;
+          border-bottom: var(--link-underlineThickness)
+            var(--link-underlineStyle) var(--link-focusColor);
+        }
+
+        &:active {
+          color: var(--link-activeFontColor) !important;
+          padding-bottom: var(--link-underlineSpacing) !important;
+          border-bottom: var(--link-underlineThickness)
+            var(--link-underlineStyle) var(--link-activeUnderlineColor);
+        }
+
+        &:visited {
+          color: var(--link-visitedFontColor) !important;
+          padding-bottom: var(--link-underlineSpacing) !important;
+          border-bottom: var(--link-underlineThickness)
+            var(--link-underlineStyle) var(--link-visitedUnderlineColor);
+        }
+      `;
+    }
   }
 }

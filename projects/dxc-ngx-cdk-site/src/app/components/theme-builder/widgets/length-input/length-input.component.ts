@@ -53,18 +53,18 @@ export class LengthInputComponent implements OnInit, Stylable {
   }
 
   onChangeInputValue = (event) => {
-    const val = event.target.value;
+    this.value = event.target.value;
     this.themeBuilderService.onChangeCustomThemeProperty(
       this.propertyName,
-      val + this.unitValue
+      this.value + (this.unitValue ? this.unitValue : 'px')
     );
   };
 
   onChangeSelectValue = (event) => {
-    const val = event.target.value;
+    this.unitValue = event.target.value;
     this.themeBuilderService.onChangeCustomThemeProperty(
       this.propertyName,
-      this.value + val
+      this.value + (this.unitValue ? this.unitValue : 'px')
     );
   };
 

@@ -20,7 +20,7 @@ export class DxcTabComponent implements OnChanges {
   //Default values
   @Input() label: string;
   @Input() iconSrc: string;
-  @Input() disabled: boolean = false;
+  @Input() disabled: boolean;
   @Input() id: number;
   @Output() onTabClick = new EventEmitter<any>();
   @Output() onTabHover = new EventEmitter<any>();
@@ -60,12 +60,16 @@ export class DxcTabComponent implements OnChanges {
       this.tabIcon = true;
     }
     this.getLabelClass();
-    this.cdRef.detectChanges();
     this.matTab.disabled = this.disabled;
+    this.cdRef.detectChanges();
   }
 
   public onClickHandler(): void {
-    this.onTabClick.emit(this.id);
+    if (!this.matTab.disabled) {
+      this.onTabClick.emit(this.id);
+    } else {
+      this.matTab.isActive = false;
+    }
   }
 
   public onHoverHandler(): void {

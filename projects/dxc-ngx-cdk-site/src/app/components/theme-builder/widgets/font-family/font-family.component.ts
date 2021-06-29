@@ -32,24 +32,22 @@ export class FontFamilyComponent implements OnInit, Stylable {
   ngOnInit(): void {
     this.value = this.propertyValue.split(", ")[0];
     this.unitValue = this.propertyValue.split(", ")[1];
-    console.log(this.unitValue);
     this.className = this.getDynamicStyle();
   }
 
   onChangeInputValue = (event) => {
-    const val = event.target.value;
+    this.value = event.target.value;
     this.themeBuilderService.onChangeCustomThemeProperty(
       this.propertyName,
-      `${val}, ${this.unitValue}`
+      `${this.value}, ${this.unitValue}`
     );
   };
 
   onChangeSelectValue = (event) => {
-    const val = event.target.value;
-    console.log(`${this.propertyValue.split(",")[0]}, ${val}`);
+    this.unitValue = event.target.value;
     this.themeBuilderService.onChangeCustomThemeProperty(
       this.propertyName,
-      `${this.propertyValue.split(",")[0]}, ${val}`
+      `${this.value}, ${this.unitValue}`
     );
   };
 

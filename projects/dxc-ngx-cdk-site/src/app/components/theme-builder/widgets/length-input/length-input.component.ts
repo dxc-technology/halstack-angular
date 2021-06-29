@@ -45,6 +45,8 @@ export class LengthInputComponent implements OnInit, Stylable {
   }
 
   ngOnInit(): void {
+    console.log(this.propertyValue.match(/[a-zA-Z]+|%/g) &&
+    this.propertyValue.match(/[a-zA-Z]+|%/g)[0]);
     this.unitValue = this.propertyValue === "none" ? "px" :
       this.propertyValue.match(/[a-zA-Z]+|%/g) &&
       this.propertyValue.match(/[a-zA-Z]+|%/g)[0];
@@ -54,17 +56,19 @@ export class LengthInputComponent implements OnInit, Stylable {
 
   onChangeInputValue = (event) => {
     const val = event.target.value;
+    this.value = val;
     this.themeBuilderService.onChangeCustomThemeProperty(
       this.propertyName,
-      val + this.unitValue
+      val + (this.unitValue ? this.unitValue : 'px')
     );
   };
 
   onChangeSelectValue = (event) => {
     const val = event.target.value;
+    this.unitValue = val;
     this.themeBuilderService.onChangeCustomThemeProperty(
       this.propertyName,
-      this.value + val
+      this.value + (val ? val : 'px')
     );
   };
 

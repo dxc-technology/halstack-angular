@@ -1,15 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostBinding, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-tabs-preview",
   templateUrl: "./tabs-preview.component.html",
 })
 export class TabsPreviewComponent implements OnInit {
+  @HostBinding("class") className;
+
   activeTabIndex1: number;
 
   constructor() {}
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+  }
 
   tabClicked1(event) {
     this.activeTabIndex1 = event;

@@ -187,6 +187,10 @@ export class DxcTabsComponent implements OnChanges {
         .mat-tab-header {
           background-color: white;
         }
+        .mat-ink-bar{
+          background-color: var(--tabs-selectedUnderlineColor);
+          height: var(--tabs-selectedUnderlineThickness);
+        }
       }
       .mat-tab-list .mat-tab-label {
         height: auto !important;
@@ -207,7 +211,7 @@ export class DxcTabsComponent implements OnChanges {
           opacity: 1;
           font-family: var(--tabs-fontFamily);
           font-size:  var(--tabs-fontSize);
-          font-style: var(--tabs-fontSize)fontStyle);
+          font-style: var(--tabs-fontStyle);
           font-weight: var(--tabs-fontWeight);
         }
         &.cdk-focused {
@@ -219,6 +223,7 @@ export class DxcTabsComponent implements OnChanges {
           fill: var(--tabs-fontColor);
         }
         .mat-ripple-element {
+          font-weight: var(--tabs-pressedFontWeight) !important;
           background-color: var(--tabs-pressedBackgroundColor);
         }
         .mat-tab-label-content {
@@ -288,6 +293,7 @@ export class DxcTabsComponent implements OnChanges {
           dxc-tab-icon {
             fill: var(--tabs-selectedIconColor);
           }
+
         }
       }
       &.label-icons {

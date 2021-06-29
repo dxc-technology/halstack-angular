@@ -50,7 +50,6 @@ export class DxcTabComponent implements OnChanges {
     this.getLabelClass();
     if (this.matTab) {
       this.matTab.disabled = this.disabled;
-      console.log("ngOnChanges matTab is disabled? ", this.matTab.disabled);
       this.cdRef.detectChanges();
     }
   }
@@ -62,7 +61,6 @@ export class DxcTabComponent implements OnChanges {
     }
     this.getLabelClass();
     this.matTab.disabled = this.disabled;
-    console.log("ngAfterViewInit matTab is disabled? ", this.matTab.disabled);
     this.cdRef.detectChanges();
   }
 

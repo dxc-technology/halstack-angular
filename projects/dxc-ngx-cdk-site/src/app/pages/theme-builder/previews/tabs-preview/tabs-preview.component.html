@@ -8,9 +8,9 @@
   </tbuilder-component-mode>
 
   <tbuilder-component-mode text="Disabled">
-    <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1">
+    <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1" iconPosition="top">
       <dxc-tab label="Tab 1" (onTabClick)="tabClicked1($event)"></dxc-tab>
-      <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)" [disabled] = "true">
+      <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)" [disabled] = "true" >
         <dxc-tab-icon>
           <svg
             version="1.1"

@@ -223,6 +223,13 @@ export class DxcSliderComponent implements OnInit, OnChanges {
       font-style: var(--slider-fontStyle);
       font-weight: var(--slider-fontWeight);
       letter-spacing: var(--slider-fontLetterSpacing);
+
+      .mat-slider-has-ticks .mat-slider-wrapper::after {
+        height: var(--slider-dotsSize);
+        border-left-width: 2px;
+        top: var(--slider-dotsVerticalPosition);
+      }
+
       &.disabled {
         cursor: not-allowed;
         input {
@@ -238,7 +245,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           height: var(--slider-dotsSize);
           top: var(--slider-dotsVerticalPosition);
         }
-        .mat-slider-track-wrapper{
+        .mat-slider-track-wrapper {
           top: var(--slider-lineVerticalPosition);
         }
         .mat-slider-track-wrapper,
@@ -313,11 +320,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     return css`
       &.dark {
         color: var(--slider-fontColorOnDark);
+        .mat-slider-has-ticks .mat-slider-wrapper::after {
+          border-color: var(--slider-dotsBackgroundColorOnDark);
+        }
         mat-slider {
           &:not(.mat-slider-disabled) {
-            .mat-slider-horizontal .mat-slider-wrapper::after{
-              border-color: var(--slider-dotsBackgroundColorOnDark);
-            }
             .mat-slider-track-fill {
               background-color: var(--slider-trackLineOnDark);
             }
@@ -332,7 +339,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
               background-image: repeating-linear-gradient(
                 to right,
                 var(--slider-dotsBackgroundColorOnDark),
-                var(--slider-dotsBackgroundColorOnDark) var(--slider-dotsSize) var(--slider-dotsSize),
+                var(--slider-dotsBackgroundColorOnDark) var(--slider-dotsSize)
+                  var(--slider-dotsSize),
                 transparent 2px,
                 #e2141400
               );
@@ -355,7 +363,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           }
         }
         &.disabled {
-          .mat-slider-horizontal .mat-slider-wrapper::after{
+          .mat-slider-horizontal .mat-slider-wrapper::after {
             border-color: var(--slider-disabledDotsBackgroundColorOnDark);
           }
           .mat-slider-thumb {
@@ -376,7 +384,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             background-image: repeating-linear-gradient(
               to right,
               var(--slider-disabledDotsBackgroundColorOnDark),
-              var(--slider-disabledDotsBackgroundColorOnDark) var(--slider-dotsSize) var(--slider-dotsSize),
+              var(--slider-disabledDotsBackgroundColorOnDark)
+                var(--slider-dotsSize) var(--slider-dotsSize),
               transparent 2px,
               #e2141400
             );
@@ -390,11 +399,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     return css`
       &.light {
         color: var(--slider-fontColor);
+        .mat-slider-has-ticks .mat-slider-wrapper::after {
+          border-color: var(--slider-dotsBackgroundColor);
+        }
         mat-slider {
           &:not(.mat-slider-disabled) {
-            .mat-slider-horizontal .mat-slider-wrapper::after{
-              border-color: var(--slider-dotsBackgroundColor);
-            }
             .mat-slider-track-fill {
               background-color: var(--slider-trackLineColor);
             }
@@ -409,7 +418,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
               background-image: repeating-linear-gradient(
                 to right,
                 var(--slider-dotsBackgroundColor),
-                var(--slider-dotsBackgroundColor) var(--slider-dotsSize) var(--slider-dotsSize),
+                var(--slider-dotsBackgroundColor) var(--slider-dotsSize)
+                  var(--slider-dotsSize),
                 transparent 2px,
                 #e2141400
               );
@@ -430,7 +440,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           }
         }
         &.disabled {
-          .mat-slider-horizontal .mat-slider-wrapper::after{
+          .mat-slider-horizontal .mat-slider-wrapper::after {
             border-color: var(--slider-disabledDotsBackgroundColorOnDark);
           }
           .mat-slider-thumb {
@@ -447,7 +457,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             background-image: repeating-linear-gradient(
               to right,
               var(--slider-disabledDotsBackgroundColorOnDark),
-              var(--slider-disabledDotsBackgroundColorOnDark) var(--slider-dotsSize) var(--slider-dotsSize),
+              var(--slider-disabledDotsBackgroundColorOnDark)
+                var(--slider-dotsSize) var(--slider-dotsSize),
               transparent 2px,
               #e2141400
             );

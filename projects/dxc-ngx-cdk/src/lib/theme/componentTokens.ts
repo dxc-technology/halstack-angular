@@ -331,10 +331,6 @@ export const componentTokens = {
 
   "--checkbox-focusColor": globalTokens.blue,
 
-  
-
-  //------------Without new design---------------------
-
   //CHIP
   "--chip-backgroundColor": globalTokens.darkWhite,
   "--chip-outlinedColor": "",
@@ -354,9 +350,32 @@ export const componentTokens = {
 
   //DIALOG
   "--dialog-overlayColor": globalTokens.black,
+  "--dialog-overlayOpacity": "0.8",
   "--dialog-backgroundColor": globalTokens.white,
+
   "--dialog-scrollBarThumbColor": globalTokens.darkGrey,
   "--dialog-scrollBarTrackColor": globalTokens.lightGrey,
+
+  "--dialog-fontFamily": globalTokens.type_sans,
+  "--dialog-fontSize": globalTokens.type_scale_03,
+  "--dialog-fontWeight": globalTokens.type_regular,
+  "--dialog-fontColor": globalTokens.black,
+
+  "--dialog-closeIconWidth": "34px",
+  "--dialog-closeIconHeight": "34px",
+  "--dialog-closeIconTopPosition": "20px",
+  "--dialog-closeIconRightPosition": "20px",
+  "--dialog-closeIconBackgroundColor": "none",
+  "--dialog-closeIconColor": globalTokens.black,
+  "--dialog-closeIconBorderColor": globalTokens.type_no_line,
+  "--dialog-closeIconBorderThickness": "0px",
+  "--dialog-closeIconBorderStyle": "solid",
+  "--dialog-closeIconBorderRadius": "0px",
+
+  "--dialog-boxShadowOffsetX": "0px",
+  "--dialog-boxShadowOffsetY": "1px",
+  "--dialog-boxShadowBlur": "3px",
+  "--dialog-boxShadowColor": "rgba(0, 0, 0, 0.2)",
 
   //DROPDOWN
   "--dropdown-backgroundColor": globalTokens.white,

@@ -330,6 +330,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             }
             .mat-slider-track-background {
               background-color: var(--slider-totalLineOnDark) !important;
+              opacity: 0.38;
             }
             .mat-slider-thumb {
               background-color: var(--slider-thumbBackgroundColorOnDark);

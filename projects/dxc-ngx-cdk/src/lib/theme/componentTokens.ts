@@ -213,46 +213,6 @@ export const componentTokens = {
   "--box-twoShadowDepthShadowSpread": "-2px",
   "--box-twoShadowDepthShadowColor": "#00000033",
 
-  //TABS
-  "--tabs-fontFamily": globalTokens.type_sans,
-  "--tabs-fontSize": globalTokens.type_scale_03,
-  "--tabs-fontStyle": globalTokens.type_normal,
-  "--tabs-fontWeight": globalTokens.type_semibold,
-  "--tabs-fontTextTransform": "none",
-  "--tabs-selectedBackgroundColor": globalTokens.white,
-  "--tabs-selectedFontColor": globalTokens.purple,
-  "--tabs-selectedIconColor": globalTokens.purple,
-  "--tabs-selectedUnderlineColor": globalTokens.purple,
-  "--tabs-selectedUnderlineThickness": "",
-  "--tabs-unselectedBackgroundColor": globalTokens.white,
-  "--tabs-unselectedFontColor": globalTokens.darkGrey,
-  "--tabs-unselectedIconColor": globalTokens.darkGrey,
-  "--tabs-disabledFontColor": globalTokens.mediumGrey,
-  "--tabs-disabledIconColor": globalTokens.mediumGrey,
-  "--tabs-disabledFontStyle": globalTokens.type_normal,
-  "--tabs-hoverBackgroundColor": globalTokens.lightPurple,
-  "--tabs-pressedBackgroundColor": globalTokens.mediumPurple,
-  "--tabs-pressedFontWeight": globalTokens.type_semibold,
-  "--tabs-dividerColor": globalTokens.mediumGrey,
-  "--tabs-dividerThickness": "1px",
-  "--tabs-focusOutline": globalTokens.purple,
-  "--tabs-scrollButtonsWidth": "48px",
-  "--tabs-badgeBackgroundColor": globalTokens.darkRed,
-  "--tabs-badgeFontFamily": globalTokens.type_sans,
-  "--tabs-badgeFontSize": "10px",
-  "--tabs-badgeFontStyle": globalTokens.type_normal,
-  "--tabs-badgeFontWeight": "500",
-  "--tabs-badgeFontColor": globalTokens.white,
-  "--tabs-badgeLetterSpacing": globalTokens.type_spacing_wide_02,
-  "--tabs-badgeWidth": "16px",
-  "--tabs-badgeHeight": "16px",
-  "--tabs-badgeRadius": "10px",
-  "--tabs-badgeWidthWithNotificationNumber": "23px",
-  "--tabs-badgeHeightWithNotificationNumber": "17px",
-  "--tabs-badgeRadiusWithNotificationNumber": "10px",
-
-  //------------Without new design---------------------
-
   //BUTTON
   "--button-primaryBackgroundColor": globalTokens.purple,
   "--button-primaryBackgroundColorOnDark": "#581B81",
@@ -336,18 +296,44 @@ export const componentTokens = {
   "--button-minHeight": "43px",
 
   //CARD
-  "--card-backgroundColor": globalTokens.white,
+  "--card-height": "220px",
+  "--card-width": "400px",
 
-  //CHECKBOX
+   //CHECKBOX
   "--checkbox-borderColor": globalTokens.mediumBlue,
-  "--checkbox-checkColor": globalTokens.white,
+  "--checkbox-borderHoverColor": "#7BB0D6",
+  "--checkbox-borderColorOnDark": globalTokens.white,
+  "--checkbox-borderHoverColorOnDark": globalTokens.lighterBlack,
+
   "--checkbox-backgroundColorChecked": globalTokens.mediumBlue,
-  "--checkbox-fontColor": globalTokens.inherit,
-  "--checkbox-focusColor": globalTokens.blue,
+  "--checkbox-backgroundHoverColorChecked": "#7BB0D6",
+  "--checkbox-backgroundColorCheckedOnDark": globalTokens.white,
+  "--checkbox-backgroundHoverColorCheckedOnDark": globalTokens.lighterBlack,
+
+  "--checkbox-checkColor": globalTokens.white,
+  "--checkbox-checkColorOnDark": globalTokens.mediumBlue,
+  
+  "--checkbox-fontColor": "inherit",
+  "--checkbox-fontColorOnDark": globalTokens.white,
+  "--checkbox-fontFamily": globalTokens.type_sans,
+  "--checkbox-fontSize": globalTokens.type_scale_03,
+  "--checkbox-fontWeight": globalTokens.type_regular,
+  "--checkbox-checkLabelSpacing": globalTokens.fontSize10,
+
   "--checkbox-disabledBackgroundColorChecked": globalTokens.softBlue,
+  "--checkbox-disabledBackgroundColorCheckedOnDark": globalTokens.mediumGrey,
   "--checkbox-disabledBorderColor": globalTokens.softBlue,
+  "--checkbox-disabledBorderColorOnDark": globalTokens.mediumGrey,
   "--checkbox-disabledCheckColor": globalTokens.white,
+  "--checkbox-disabledCheckColorOnDark": globalTokens.white,
   "--checkbox-disabledFontColor": globalTokens.lighterBlack,
+  "--checkbox-disabledFontColorOnDark": "#575757",
+
+  "--checkbox-focusColor": globalTokens.blue,
+
+  
+
+  //------------Without new design---------------------
 
   //CHIP
   "--chip-backgroundColor": globalTokens.darkWhite,
@@ -709,6 +695,44 @@ export const componentTokens = {
   "--table-scrollBarThumbColor": globalTokens.darkGrey,
   "--table-scrollBarTrackColor": globalTokens.lightGrey,
   "--table-sortIconColor": globalTokens.white,
+
+  //TABS
+  "--tabs-fontFamily": globalTokens.type_sans,
+  "--tabs-fontSize": globalTokens.type_scale_03,
+  "--tabs-fontStyle": globalTokens.type_normal,
+  "--tabs-fontWeight": globalTokens.type_semibold,
+  "--tabs-fontTextTransform": "none",
+  "--tabs-selectedBackgroundColor": globalTokens.white,
+  "--tabs-selectedFontColor": globalTokens.purple,
+  "--tabs-selectedIconColor": globalTokens.purple,
+  "--tabs-selectedUnderlineColor": globalTokens.purple,
+  "--tabs-selectedUnderlineThickness": "",
+  "--tabs-unselectedBackgroundColor": globalTokens.white,
+  "--tabs-unselectedFontColor": globalTokens.darkGrey,
+  "--tabs-unselectedIconColor": globalTokens.darkGrey,
+  "--tabs-disabledFontColor": globalTokens.mediumGrey,
+  "--tabs-disabledIconColor": globalTokens.mediumGrey,
+  "--tabs-disabledFontStyle": globalTokens.type_normal,
+  "--tabs-hoverBackgroundColor": globalTokens.lightPurple,
+  "--tabs-pressedBackgroundColor": globalTokens.mediumPurple,
+  "--tabs-pressedFontWeight": globalTokens.type_semibold,
+  "--tabs-dividerColor": globalTokens.mediumGrey,
+  "--tabs-dividerThickness": "1px",
+  "--tabs-focusOutline": globalTokens.purple,
+  "--tabs-scrollButtonsWidth": "48px",
+  "--tabs-badgeBackgroundColor": globalTokens.darkRed,
+  "--tabs-badgeFontFamily": globalTokens.type_sans,
+  "--tabs-badgeFontSize": "10px",
+  "--tabs-badgeFontStyle": globalTokens.type_normal,
+  "--tabs-badgeFontWeight": "500",
+  "--tabs-badgeFontColor": globalTokens.white,
+  "--tabs-badgeLetterSpacing": globalTokens.type_spacing_wide_02,
+  "--tabs-badgeWidth": "16px",
+  "--tabs-badgeHeight": "16px",
+  "--tabs-badgeRadius": "10px",
+  "--tabs-badgeWidthWithNotificationNumber": "23px",
+  "--tabs-badgeHeightWithNotificationNumber": "17px",
+  "--tabs-badgeRadiusWithNotificationNumber": "10px",
 
   //TAG
   "--tag-iconColor": globalTokens.white,

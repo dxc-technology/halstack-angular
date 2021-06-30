@@ -496,9 +496,20 @@ export const componentTokens = {
   //RADIO
   "--radio-color": globalTokens.black,
   "--radio-disabledColor": globalTokens.lighterBlack,
-  "--radio-fontColor": globalTokens.inherit,
+  "--radio-fontColor": globalTokens.black,
   "--radio-disabledFontColor": globalTokens.lighterBlack,
   "--radio-focusColor": globalTokens.blue,
+  "--radio-circleLabelSpacing": "10px",
+  "--radio-circleSize": "20px",
+  "--radio-colorOnDark": globalTokens.white,
+  "--radio-disabledColorOnDark": "#575757",
+  "--radio-disabledFontColorOnDark": "#575757",
+  "--radio-focusColorOnDark": "#1682FF",
+  "--radio-fontColorOnDark": globalTokens.white,
+  "--radio-fontFamily": globalTokens.type_sans,
+  "--radio-fontSize": globalTokens.type_scale_root,
+  "--radio-fontStyle": globalTokens.type_normal,
+  "--radio-fontWeight": globalTokens.type_regular,
 
   //SELECT
   "--select-selectedOptionBackgroundColor": globalTokens.lightGrey,

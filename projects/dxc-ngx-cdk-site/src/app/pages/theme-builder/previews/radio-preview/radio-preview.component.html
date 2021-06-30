@@ -1,6 +1,6 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div>
+  <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
       <dxc-radio
         label="Option1"
@@ -26,46 +26,43 @@
         [checked]="checked3"
         (onChange)="onChange3($event)"
         margin="xsmall"
-        labelPosition="before"
+        labelPosition="after"
       >
       </dxc-radio>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
       <dxc-radio
-        label="Option1"
-        name="op1"
-        [checked]="true"
+        label="Disabled1"
+        [checked]="disabledCheck"
         margin="xsmall"
         labelPosition="before"
         disabled
       >
       </dxc-radio>
       <dxc-radio
-        label="Option2"
-        name="op2"
+        label="Disabled2"
         margin="xsmall"
         labelPosition="before"
         disabled
       >
       </dxc-radio>
       <dxc-radio
-        label="Option3"
-        name="op3"
+        label="Disabled3"
         margin="xsmall"
         labelPosition="before"
         disabled
       >
       </dxc-radio>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div style="background: black">
+  <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">
       <dxc-radio
-        label="Option1"
-        name="op1"
+        label="Dark1"
+        name="dark1"
         [checked]="checked1"
         (onChange)="onChange1($event)"
         margin="xsmall"
@@ -73,8 +70,8 @@
       >
       </dxc-radio>
       <dxc-radio
-        label="Option2"
-        name="op2"
+        label="Dark2"
+        name="dark2"
         [checked]="checked2"
         (onChange)="onChange2($event)"
         margin="xsmall"
@@ -82,8 +79,8 @@
       >
       </dxc-radio>
       <dxc-radio
-        label="Option3"
-        name="op3"
+        label="Dark3"
+        name="dark3"
         [checked]="checked3"
         (onChange)="onChange3($event)"
         margin="xsmall"
@@ -94,30 +91,27 @@
 
     <tbuilder-component-mode text="Disabled" mode="dark">
       <dxc-radio
-        label="Option1"
-        name="op1"
-        [checked]="true"
+        label="DisabledDark1"
+        [checked]="disabledCheck"
         margin="xsmall"
         labelPosition="before"
         disabled
       >
       </dxc-radio>
       <dxc-radio
-        label="Option2"
-        name="op2"
+        label="DisabledDark2"
         margin="xsmall"
         labelPosition="before"
         disabled
       >
       </dxc-radio>
       <dxc-radio
-        label="Option3"
-        name="op3"
+        label="DisabledDark3"
         margin="xsmall"
         labelPosition="before"
         disabled
       >
       </dxc-radio>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 </div>

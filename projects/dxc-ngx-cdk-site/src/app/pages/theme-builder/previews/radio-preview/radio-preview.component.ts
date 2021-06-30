@@ -9,6 +9,8 @@ export class RadioPreviewComponent implements OnInit {
   checked2: boolean = false;
   checked3: boolean = false;
 
+  disabledCheck: boolean = true;
+
   constructor() {}
 
   ngOnInit(): void {}

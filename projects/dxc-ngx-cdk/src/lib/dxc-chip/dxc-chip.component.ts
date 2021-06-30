@@ -161,39 +161,59 @@ export class DxcChipComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      height: 22px;
       ${this.utils.getMargins(inputs.margin)}
-      display: flex;
-      max-width: calc(100% - 40px);
-      flex-wrap: nowrap;
-      text-overflow: ellipsis;
-      border-radius: 48px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--chip-borderRadius);
+      max-width: calc(100% - 40px - ${this.utils.getMarginValue(inputs.margin, "left")} - ${this.utils.getMarginValue(
+        inputs.margin,"right")});
       background-color: ${inputs.disabled
         ? "var(--chip-disabledBackgroundColor)"
         : "var(--chip-backgroundColor)"};
-      padding: 10px 20px;
-      width: fit-content;
+
+      border-width: var(--chip-borderThickness);
+      border-style: var(--chip-borderStyle);
+      border-color: var(--chip-borderColor);
+      padding-top: var(--chip-contentPaddingTop);
+      padding-bottom: var(--chip-contentPaddingBottom);
+      padding-left: var(--chip-contentPaddingLeft);
+      padding-right: var(--chip-contentPaddingRight);
+      ${inputs.disabled ? "cursor: not-allowed"
+      : ""};
+
       border: ${inputs.disabled
         ? "1px solid var(--chip-disabledBackgroundColor)"
         : "1px solid var(--chip-outlinedColor)"};
+
       .labelContainer {
-        font-size: 16px;
-        font-family: var(--fontFamily);
-        line-height: 24px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: var(--chip-fontSize);
+        font-family: var(--chip-fontFamily);
+        font-weight: var(--chip-fontWeight);
+        font-style: var(--chip-fontStyle);
         color: ${inputs.disabled
           ? "var(--chip-disabledFontColor)"
           : "var(--chip-fontColor)"};
+        cursor: ${inputs.disabled
+          ? "not-allowed"
+          : "default"};
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
       }
+
+
+      .iconContainer {
+        opacity: ${inputs.disabled ? "0.34" : "1"};
+      }
+
       img,
       svg {
         max-width: 24px;
         max-height: 24px;
       }
       .prefixIcon {
-        opacity: ${inputs.disabled ? "0.34" : "1"};
+
         ${this.label ? "margin-right: 10px;" : ""};
         height: 24px;
         width: 24px;

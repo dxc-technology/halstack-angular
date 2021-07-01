@@ -9,7 +9,10 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-dialog",
@@ -51,7 +54,7 @@ export class DxcDialogComponent {
     overlay: true,
     isCloseVisible: true,
     padding: null,
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
   constructor(private utils: CssUtils) {}
@@ -82,7 +85,7 @@ export class DxcDialogComponent {
     if (overlay === true) {
       return css`
         background-color: var(--dialog-overlayColor);
-        opacity: 0.8 !important;
+        opacity: var(--dialog-overlayOpacity) !important;
       `;
     } else
       return css`
@@ -135,22 +138,32 @@ export class DxcDialogComponent {
             position: relative;
             overflow-y: auto;
             border-radius: 4px;
-            color: rgba(0, 0, 0, 0.87);
             transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
             background-color: var(--dialog-backgroundColor);
             .closeIcon {
               display: flex;
               justify-content: flex-end;
               position: absolute;
-              top: 20px;
-              right: 20px;
+              top: var(--dialog-closeIconTopPosition);
+              right: var(--dialog-closeIconRightPosition);
+              color: var(--dialog-closeIconColor);
               svg {
                 cursor: pointer;
-                width: 34px;
-                height: 34px;
+                background-color: var(--dialog-closeIconBackgroundColor);
+                width: var(--dialog-closeIconWidth);
+                height: var(--dialog-closeIconHeight);
+                border-radius: var(--dialog-closeIconBorderRadius);
+                border-width: var(--dialog-closeIconBorderThickness);
+                border-style: var(--dialog-closeIconBorderStyle);
+                border-color: var(--dialog-closeIconBorderColor);
               }
             }
-            .content {
+            .content, .content *{
+              font-family: var(--dialog-fontFamily);
+              font-size: var(--dialog-fontSize);
+              font-weight: var(--dialog-fontWeight);
+              color: var(--dialog-fontColor);
+
               overflow-y: auto;
               ::-webkit-scrollbar {
                 width: 3px;

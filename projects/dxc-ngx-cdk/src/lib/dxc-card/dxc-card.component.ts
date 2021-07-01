@@ -108,8 +108,6 @@ export class DxcCardComponent implements OnInit {
   applyTheme(href, outlined) {
     return css`
     mat-card {
-      background-color: var(--card-backgroundColor);
-      color: black;
       ${!outlined ? this.utils.getBoxShadow("1") : this.utils.getBoxShadow(0)}
     }
 
@@ -148,8 +146,8 @@ export class DxcCardComponent implements OnInit {
         font-family: var(--fontFamily);
         font-size: 14px;
         display: inline-flex;
-        width: 400px;
-        height: 220px;
+        width: var(--card-width);
+        height: var(--card-height);
         padding: 0px;
         ${this.tabIndexValue === -1 ? "outline:none;" : ""}
         .content {

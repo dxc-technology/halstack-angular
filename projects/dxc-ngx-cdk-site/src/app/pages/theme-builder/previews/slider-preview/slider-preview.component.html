@@ -1,6 +1,6 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div>
+  <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
       <dxc-slider
         minValue="0"
@@ -19,9 +19,11 @@
         maxValue="100"
         showLimitsValues="true"
         name="input"
+        value="50"
         step="1"
         margin="xsmall"
         size="large"
+        marks="true"
         disabled
       ></dxc-slider>
     </tbuilder-component-mode>
@@ -53,10 +55,10 @@
         margin="xsmall"
       ></dxc-slider>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div style="background: black">
+  <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">
       <dxc-slider
         minValue="0"
@@ -75,9 +77,11 @@
         maxValue="100"
         showLimitsValues="true"
         name="input"
+        value="50"
         step="1"
         margin="xsmall"
         size="large"
+        marks="true"
         disabled
       ></dxc-slider>
     </tbuilder-component-mode>
@@ -109,5 +113,5 @@
         margin="xsmall"
       ></dxc-slider>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 </div>

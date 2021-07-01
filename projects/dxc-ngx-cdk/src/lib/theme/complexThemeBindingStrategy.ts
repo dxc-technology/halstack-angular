@@ -227,24 +227,24 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.sidenav?.arrowAccentColor ?? tokens["--sidenav-arrowColor"];
 
     //SLIDER
-    proccessedTokens["--slider-totalLine"] =
+    proccessedTokens["--slider-totalLineColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
-      tokens["--slider-totalLine"];
+      tokens["--slider-totalLineColor"];
     proccessedTokens["--slider-disabledThumbBackgroundColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
       tokens["--slider-disabledThumbBackgroundColor"];
     proccessedTokens["--slider-disabledDotsBackgroundColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
       tokens["--slider-disabledDotsBackgroundColor"];
-    proccessedTokens["--slider-disabledTrackLine"] =
+    proccessedTokens["--slider-disabledTrackLineColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
-      tokens["--slider-disabledTrackLine"];
+      tokens["--slider-disabledTrackLineColor"];
     proccessedTokens["--slider-thumbBackgroundColor"] =
       theme?.slider?.baseColor ?? tokens["--slider-thumbBackgroundColor"];
     proccessedTokens["--slider-dotsBackgroundColor"] =
       theme?.slider?.baseColor ?? tokens["--slider-dotsBackgroundColor"];
-    proccessedTokens["--slider-trackLine"] =
-      theme?.slider?.baseColor ?? tokens["--slider-trackLine"];
+    proccessedTokens["--slider-trackLineColor"] =
+      theme?.slider?.baseColor ?? tokens["--slider-trackLineColor"];
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =

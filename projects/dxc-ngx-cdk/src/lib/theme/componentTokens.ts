@@ -333,10 +333,25 @@ export const componentTokens = {
 
   //CHIP
   "--chip-backgroundColor": globalTokens.darkWhite,
-  "--chip-outlinedColor": "",
+  "--chip-borderColor": "transparent",
   "--chip-fontColor": globalTokens.black,
   "--chip-disabledBackgroundColor": globalTokens.mediumWhite,
   "--chip-disabledFontColor": globalTokens.lighterBlack,
+  "--chip-fontFamily": globalTokens.type_sans,
+  "--chip-fontSize": globalTokens.type_scale_03,
+  "--chip-fontWeight": "400",
+  "--chip-fontStyle": "normal",
+  "--chip-borderRadius": "50px",
+  "--chip-borderThickness": "2px",
+  "--chip-borderStyle": "solid",
+  "--chip-height": "18px",
+  "--chip-contentPaddingLeft": "20px",
+  "--chip-contentPaddingRight": "20px",
+  "--chip-contentPaddingTop": "10px",
+  "--chip-contentPaddingBottom": "10px",
+  "--chip-iconSize": "24px",
+  "--chip-iconPaddingLeft": "0px",
+  "--chip-iconPaddingRight": "0px",
 
   //DATE
   "--date-pickerSelectedDateBackgroundColor": globalTokens.purple,

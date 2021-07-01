@@ -165,81 +165,94 @@ export class DxcChipComponent implements OnChanges {
       display: inline-flex;
       align-items: center;
       border-radius: var(--chip-borderRadius);
-      max-width: calc(100% - 40px - ${this.utils.getMarginValue(inputs.margin, "left")} - ${this.utils.getMarginValue(
-        inputs.margin,"right")});
-      background-color: ${inputs.disabled
-        ? "var(--chip-disabledBackgroundColor)"
-        : "var(--chip-backgroundColor)"};
+      max-width: calc(100% - 40px - ${this.utils.getMarginValue(
+        inputs.margin,
+        "left"
+      )} - ${this.utils.getMarginValue(inputs.margin, "right")});
+      background-color: ${
+        inputs.disabled
+          ? "var(--chip-disabledBackgroundColor)"
+          : "var(--chip-backgroundColor)"
+      };
 
       border-width: var(--chip-borderThickness);
       border-style: var(--chip-borderStyle);
       border-color: var(--chip-borderColor);
+
       padding-top: var(--chip-contentPaddingTop);
       padding-bottom: var(--chip-contentPaddingBottom);
       padding-left: var(--chip-contentPaddingLeft);
       padding-right: var(--chip-contentPaddingRight);
-      ${inputs.disabled ? "cursor: not-allowed"
-      : ""};
+      ${inputs.disabled ? "cursor: not-allowed" : ""};
+      cursor: ${inputs.disabled ? "not-allowed" : "default"};
 
-      border: ${inputs.disabled
-        ? "1px solid var(--chip-disabledBackgroundColor)"
-        : "1px solid var(--chip-outlinedColor)"};
 
       .labelContainer {
         font-size: var(--chip-fontSize);
         font-family: var(--chip-fontFamily);
         font-weight: var(--chip-fontWeight);
         font-style: var(--chip-fontStyle);
-        color: ${inputs.disabled
-          ? "var(--chip-disabledFontColor)"
-          : "var(--chip-fontColor)"};
-        cursor: ${inputs.disabled
-          ? "not-allowed"
-          : "default"};
+        color: ${
+          inputs.disabled
+            ? "var(--chip-disabledFontColor)"
+            : "var(--chip-fontColor)"
+        };
+         ${inputs.disabled ? "cursor: not-allowed" : "default"};
+        text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
-
       }
 
 
       .iconContainer {
         opacity: ${inputs.disabled ? "0.34" : "1"};
+        width: var(--chip-iconSize);
+        height: var(--chip-iconSize);
+        overflow: hidden;
+        padding-left: var(--chip-iconPaddingLeft);
+        padding-right: var(--chip-iconPaddingRight);
+        ${this.dxcChipPrefixIcon?.length !== 0 ? `margin-right: ${this.getMarginRight()}` :
+        `margin-left: ${this.getMarginLeft()}`}
+        img,
+        svg {
+          height: 100%;
+          width: 100%;
+        }
       }
 
-      img,
-      svg {
-        max-width: 24px;
-        max-height: 24px;
-      }
+
       .prefixIcon {
+        cursor: ${inputs.disabled ? "not-allowed" : "default"};
+        ${this.label || this.suffixIconSrc ? "margin-right: 10px;" : (this.prefixIconSrc ?  "5px" : "")};
+        height: var(--chip-iconSize);
+        width: var(--chip-iconSize);
+        padding-left: var(--chip-iconPaddingLeft);
+        padding-right: var(--chip-iconPaddingRight);
 
-        ${this.label ? "margin-right: 10px;" : ""};
-        height: 24px;
-        width: 24px;
-        &:hover {
-          ${this.getDisabledStylePrefixIcon(inputs.disabled)};
-        }
-        &:focus {
-          ${this.tabIndexValue === -1 || inputs.disabled
-            ? "outline: none;"
-            : ""};
-        }
       }
       .suffixIcon {
-        opacity: ${inputs.disabled ? "0.34" : "1"};
-        ${this.label ? "margin-left: 10px;" : ""};
-        height: 24px;
-        width: 24px;
-        &:hover {
-          ${this.getDisabledStyleSuffixIcon(inputs.disabled)};
-        }
-        &:focus {
-          ${this.tabIndexValue === -1 || inputs.disabled
-            ? "outline: none;"
-            : ""};
-        }
+        cursor: ${inputs.disabled ? "not-allowed" : "default"};
+        ${this.label || this.suffixIconSrc ? "margin-left: 10px;" : (this.prefixIconSrc ?  "5px" : "")};
+        height: var(--chip-iconSize);
+        width: var(--chip-iconSize);
+        padding-left: var(--chip-iconPaddingLeft);
+        padding-right: var(--chip-iconPaddingRight);
+
       }
     `;
   }
+
+  private getMarginLeft = () =>
+    ((this.label ||
+      this.dxcChipPrefixIcon?.length !== 0 ||
+      this.prefixIconSrc) &&
+      "10px") ||
+    ((this.dxcChipPrefixIcon?.length !== 0 || this.prefixIconSrc) && "0");
+
+  private getMarginRight = () =>
+    ((this.label ||
+      this.dxcChipSuffixIcon?.length !== 0 ||
+      this.suffixIconSrc) &&
+      "10px") ||
+    ((this.dxcChipPrefixIcon?.length !== 0 || this.prefixIconSrc) && "0");
 }

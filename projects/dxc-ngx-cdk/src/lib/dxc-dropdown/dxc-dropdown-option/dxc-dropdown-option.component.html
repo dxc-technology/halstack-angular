@@ -1,6 +1,6 @@
 <button mat-menu-item (keydown)="arrowKey($event)" (click)="selectedOption()" class="option">
   <div>
     <ng-content select="dxc-dropdown-icon"></ng-content>
-    {{label}}
+    <span>{{label}}</span>
   </div>
 </button>

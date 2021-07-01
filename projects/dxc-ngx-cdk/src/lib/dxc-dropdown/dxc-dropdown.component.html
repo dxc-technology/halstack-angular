@@ -10,16 +10,20 @@
   (mouseenter)="buttonEnter(menuTrigger)"
   (mouseleave)="buttonLeave(menuTrigger, dropdownButton)"
   (click)="updateCss()"
-  [tabindex]="tabIndexValue"
+  [tabIndex]="disabled ? -1 : tabIndexValue"
+  [disabled]="disabled"
 >
   <div class="buttonContent">
     <ng-content select="dxc-dropdown-icon"></ng-content>
     <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
   </div>
 
-  <div class="mat-select-arrow-wrapper" *ngIf="!caretHidden">
-    <div class="dxc-arrow arrow-{{ arrowClass }}"></div>
+  <div class="arrow-container" *ngIf="!caretHidden">
+    <div class="mat-select-arrow-wrapper">
+      <div class="dxc-arrow arrow-{{ arrowClass }}"></div>
+    </div>
   </div>
+
 </button>
 
 <mat-menu

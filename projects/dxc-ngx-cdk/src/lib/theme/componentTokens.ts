@@ -312,7 +312,7 @@ export const componentTokens = {
 
   "--checkbox-checkColor": globalTokens.white,
   "--checkbox-checkColorOnDark": globalTokens.mediumBlue,
-  
+
   "--checkbox-fontColor": "inherit",
   "--checkbox-fontColorOnDark": globalTokens.white,
   "--checkbox-fontFamily": globalTokens.type_sans,
@@ -978,7 +978,7 @@ export const componentIcons = {
     logo: "assets/dxc_logo_wht.png",
   },
   header: {
-    logo: "assets/dxc_logo_blk_rgb.svg",
-    logoResponsive: "assets/dxc_logo_blk_rgb.svg",
+    logo: "assets/DXC_Logo_Black_RGB.svg",
+    logoResponsive: "assets/DXC_Logo_Black_RGB.svg",
   },
 };

@@ -429,8 +429,38 @@ export const componentTokens = {
 
   //FOOTER
   "--footer-backgroundColor": globalTokens.black,
-  "--footer-fontColor": globalTokens.white,
-  "--footer-lineColor": globalTokens.mediumBlue,
+  "--footer-fontColorBase": globalTokens.white,
+  "--footer-minHeight": "124px",
+
+  "--footer-bottomLinksDividerColor": "#1489fb",
+  "--footer-bottomLinksDividerThickness": "2px",
+  "--footer-bottomLinksDividerStyle": "solid",
+  "--footer-bottomLinksDividerSpacing": "6px",
+  "--footer-bottomLinksFontFamily": "Open Sans, sans-serif",
+  "--footer-bottomLinksFontSize": "0.75rem",
+  "--footer-bottomLinksFontStyle": "normal",
+  "--footer-bottomLinksFontWeight": "400",
+  "--footer-bottomLinksFontColor": "",
+  "--footer-bottomLinksTextDecoration": "none",
+
+  "--footer-copyrightFontFamily": "Open Sans, sans-serif",
+  "--footer-copyrightFontSize": "0.75rem",
+  "--footer-copyrightFontStyle": "normal",
+  "--footer-copyrightFontWeight": "400",
+  "--footer-copyrightFontColor": "",
+
+  "--footer-customContentFontFamily": "Open Sans, sans-serif",
+  "--footer-customContentFontSize": "16px",
+  "--footer-customContentFontStyle": "normal",
+  "--footer-customContentFontWeight": "400",
+  "--footer-customContentFontColor": "",
+
+  "--footer-logo": "assets/dxc-logo-wh.svg",
+  "--footer-logoHeight": "32px",
+  "--footer-logoWidth": "auto",
+
+  "--footer-socialIconSize": "24px",
+  "--footer-socialIconsGutter": "16px",
 
   //HEADER
   "--header-backgroundColor": globalTokens.white,
@@ -975,7 +1005,7 @@ export const componentTokens = {
 
 export const componentIcons = {
   footer: {
-    logo: "assets/dxc_logo_wht.png",
+    logo: "assets/dxc-logo-wh.svg",
   },
   header: {
     logo: "assets/dxc_logo_blk_rgb.svg",

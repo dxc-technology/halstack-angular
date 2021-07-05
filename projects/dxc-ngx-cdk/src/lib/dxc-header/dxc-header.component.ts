@@ -172,6 +172,8 @@ export class DxcHeaderComponent implements OnChanges {
   getDynamicStyle(inputs) {
     return css`
       display: block;
+      font-size: var(--header-fontSizeBase);
+      font-family: var(--header-fontFamily);
       width: 100%;
       ${this.getBottomMargin(inputs.margin)}
       .headerAnchor {
@@ -200,11 +202,11 @@ export class DxcHeaderComponent implements OnChanges {
       }
       .mat-toolbar-row {
         background: var(--header-backgroundColor);
-        color: var(--header-fontColor);
+        color: var(--header-fontColorBase);
       }
       .underlined {
         .mat-toolbar-row {
-          color: var(--header-fontColor);
+          color: var(--header-fontColorBase);
         }
         border-bottom: 2px solid var(--header-underlinedColor);
       }

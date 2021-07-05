@@ -64,7 +64,7 @@ export class DxcChipComponent implements OnChanges {
     suffixIconSrc: null,
     prefixIconSrc: null,
     disabled: false,
-    magin: "",
+    margin: "",
     tabIndexValue: 0,
   });
 

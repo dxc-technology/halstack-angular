@@ -1,8 +1,8 @@
 .defaultImgLogo {
-  content: url("../../assets/dxc_logo_wht.png");
+  content: url(var(--footer-logo));
 }
 
 .logo {
-  height: 34px;
-  width: auto;
+  height: var(--footer-logoHeight);
+  width: var(--footer-logoWidth);
 }

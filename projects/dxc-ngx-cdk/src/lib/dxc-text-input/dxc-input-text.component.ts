@@ -10,6 +10,7 @@ import {
   ViewChild,
   ContentChildren,
   QueryList,
+  Optional,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -26,7 +27,8 @@ import {
 } from "@angular/core";
 import { DxcInputPrefixIconComponent } from "./dxc-input-prefix-icon/dxc-input-prefix-icon.component";
 import { DxcInputSuffixIconComponent } from "./dxc-input-suffix-icon/dxc-input-suffix-icon.component";
-import { InputTextService } from './services/inputText.service';
+import { InputTextService } from "./services/inputText.service";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-input-text",
@@ -35,9 +37,13 @@ import { InputTextService } from './services/inputText.service';
   providers: [CssUtils, InputTextService],
 })
 export class DxcTextInputComponent
-  implements OnInit, OnChanges, AfterViewChecked {
+  implements OnInit, OnChanges, AfterViewChecked
+{
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
+  @HostBinding("class.light") lightBackground: boolean = true;
+  @HostBinding("class.dark") darkBackground: boolean = false;
+  @HostBinding("class.prefixIcon") hasPrefixIcon: boolean = false;
 
   @Input() public prefix: string;
   @Input() public suffix: string;
@@ -147,12 +153,31 @@ export class DxcTextInputComponent
     tabIndexValue: 0,
   });
 
-  constructor(private utils: CssUtils, private ref: ChangeDetectorRef, private service: InputTextService) {}
+  constructor(
+    private utils: CssUtils,
+    private ref: ChangeDetectorRef,
+    private service: InputTextService,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {}
 
   ngOnInit() {
     this.renderedValue = this.value || "";
     this.bindAutocompleteOptions();
     this.autocompleteFunction("");
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
+    this.service.hasPrefixIcon.subscribe((value) => {
+      if (value) {
+        this.hasPrefixIcon = value;
+      }
+    });
   }
 
   private bindAutocompleteOptions() {
@@ -312,41 +337,77 @@ export class DxcTextInputComponent
     `;
   }
 
-  getStyleOnClickPrefixIcon() {
+  getNoIconStyle() {
+    return css`
+      &:focus {
+        outline: none;
+      }
+      cursor: default;
+    `;
+  }
+
+  getOnClickPrefixIconStyle() {
+    return css`
+      &:focus {
+        outline: none;
+      }
+      cursor: default;
+    `;
+  }
+
+  getStyleOnClickPrefixIconLight() {
     if (this.prefixPointer) {
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-focusColor);
+          outline-color: var(--inputText-fontColorBase);
         }
         cursor: pointer;
       `;
     } else {
-      return css`
-        &:focus {
-          outline: none;
-        }
-        cursor: default;
-      `;
+      this.getNoIconStyle();
     }
   }
 
-  getStyleOnClickSuffixIcon() {
+  getStyleOnClickSuffixIconLight() {
     if (this.suffixPointer) {
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-focusColor);
+          outline-color: var(--inputText-fontColorBase);
         }
         cursor: pointer;
       `;
     } else {
+      this.getNoIconStyle();
+    }
+  }
+
+  getStyleOnClickPrefixIconDark() {
+    if (this.prefixPointer) {
       return css`
         &:focus {
-          outline: none;
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-fontColorBaseOnDark);
         }
-        cursor: default;
+        cursor: pointer;
       `;
+    } else {
+      this.getNoIconStyle();
+    }
+  }
+
+  getStyleOnClickSuffixIconDark() {
+    if (this.suffixPointer) {
+      return css`
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-fontColorBaseOnDark);
+        }
+        cursor: pointer;
+      `;
+    } else {
+      this.getNoIconStyle();
     }
   }
 
@@ -356,8 +417,16 @@ export class DxcTextInputComponent
       max-height: 74px;
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
+      ${this.getLightStyle()}
+      ${this.getDarkStyle()}
       display: inline-flex;
-      font-family: var(--fontFamily);
+      font-family: var(--inputText-fontFamilyBase);
+      &.prefixIcon {
+        .mat-form-field .mat-form-field-label-wrapper .mat-form-field-label {
+          margin-left: 32px;
+          width: 100%;
+        }
+      }
       dxc-input-prefix-icon,
       dxc-input-suffix-icon {
         display: flex;
@@ -380,54 +449,36 @@ export class DxcTextInputComponent
       }
       .onClickIconElement {
         cursor: pointer !important;
-        .containerIcon {
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px !important;
-            outline-color: var(--inputText-focusColor) !important;
-          }
-        }
       }
       .prefixElement {
         margin-right: 12px;
-        ${this.getStyleOnClickPrefixIcon()}
       }
       .suffixElement {
         margin-left: 8px;
         margin-right: 8px;
-        ${this.getStyleOnClickSuffixIcon()}
       }
-      &.disabled {
-        cursor: not-allowed;
-        dxc-input-prefix-icon,
-        dxc-input-suffix-icon {
-          .containerIcon {
-            fill: var(--inputText-disabledFontColor);
-          }
-        }
-        .prefixElement,
-        .suffixElement {
-          fill: var(--inputText-disabledFontColor);
-          color: var(--inputText-disabledFontColor);
-        }
+      .mat-form-field-prefix span {
+        font-size: var(--inputText-prefixLabelFontSize);
+        font-style: var(--inputText-prefixLabelFontStyle);
+        font-weight: var(--inputText-prefixLabelFontWeight);
       }
-      .mat-form-field.mat-focused .mat-form-field-label {
-        color: var(--inputText-focusColor) !important;
+      .mat-form-field-suffix span {
+        font-size: var(--inputText-suffixLabelFontSize);
+        font-style: var(--inputText-suffixLabelFontStyle);
+        font-weight: var(--inputText-suffixLabelFontWeight);
       }
       .mat-form-field.mat-focused .mat-form-field-ripple {
-        background-color: ${this.invalid
-          ? "var(--inputText-error) !important"
-          : "var(--inputText-focusColor) !important"};
-        height: 2px !important;
+        height: calc(var(--inputText-underlineThickness) * 2) !important;
       }
       .mat-form-field {
-        font-family: var(--fontFamily);
+        font-family: var(--inputText-fontFamilyBase);
         line-height: unset;
         width: 100%;
         max-height: 74px;
         input {
+          font-size: var(--inputText-fontSizeBase);
           min-height: 22px;
           text-overflow: ellipsis;
-          color: var(--inputText-fontColor);
         }
         img,
         svg {
@@ -436,6 +487,166 @@ export class DxcTextInputComponent
         }
         &.disabled {
           pointer-events: none;
+        }
+      }
+      .mat-form-field {
+        &.mat-form-field-should-float {
+          .mat-form-field-infix {
+            padding-bottom: 7px;
+          }
+          mat-label {
+            font-size: var(--inputText-labelFontSize);
+          }
+        }
+        .mat-form-field-label-wrapper {
+          display: flex;
+          .mat-form-field-label {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            display: flex;
+          }
+        }
+        .mat-form-field-subscript-wrapper {
+          margin-top: 6px;
+        }
+        .mat-form-field-infix {
+          padding-top: 6px;
+          display: flex;
+        }
+      }
+      .mat-form-field-flex {
+        align-items: center;
+        .mat-form-field-infix {
+          font-size: var(--inputText-labelFontSize);
+          border-top: unset;
+        }
+      }
+      .mat-hint {
+        font-family: var(--inputText-fontFamilyBase);
+        font-size: var(--inputText-assistiveTextFontSize);
+        font-style: var(--inputText-assistiveTextFontStyle);
+        font-weight: var(--inputText-assistiveTextFontWeight);
+      }
+      .mat-form-field-appearance-standard .mat-form-field-underline{
+        height: var(--inputText-underlineThickness);
+      }
+    `;
+  }
+
+  getInvalidLightStyle() {
+    return css`
+      .mat-hint {
+        color: var(--inputText-errorColor);
+      }
+      .mat-form-field-ripple {
+        background-color: var(--inputText-errorColor) !important;
+        height: 0px !important;
+      }
+      .mat-form-field-underline {
+        background-color: var(--inputText-underlineColor) !important;
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-errorColor);
+        }
+      }
+      .mat-form-field.mat-form-field-should-float mat-label {
+        color: var(--inputText-errorColor) !important;
+      }
+      &.mat-focused .mat-form-field-empty mat-label {
+        color: var(--inputText-errorColor);
+      }
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+        color: var(--inputText-errorColor);
+      }
+    `;
+  }
+
+  getInvalidDarkStyle() {
+    return css`
+      .mat-hint {
+        color: var(--inputText-errorColorOnDark);
+      }
+      .mat-form-field-ripple {
+        background-color: var(--inputText-errorColorOnDark) !important;
+        height: 0px !important;
+      }
+      .mat-form-field-underline {
+        background-color: var(--inputText-underlineColorOnDark) !important;
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--inputText-errorColorOnDark);
+        }
+      }
+      .mat-form-field.mat-form-field-should-float mat-label {
+        color: var(--inputText-errorColorOnDark) !important;
+      }
+      &.mat-focused .mat-form-field-empty mat-label {
+        color: var(--inputText-errorColorOnDark);
+      }
+      .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+        color: var(--inputText-errorColorOnDark);
+      }
+    `;
+  }
+
+  getAutoCompleteStyle() {
+    return css`
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: var(--inputText-scrollBarTrackColor);
+        opacity: 0.34;
+        border-radius: 3px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--inputText-scrollBarThumbColor);
+        border-radius: 3px;
+      }
+      .mat-option {
+        color: var(--inputText-fontColorBase);
+        .mat-option-text {
+          font-family: var(--inputText-fontFamilyBase);
+          font-size: var(--inputText-fontSizeBase);
+        }
+      }
+      .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
+        background-color: var(
+          --inputText-selectedOptionBackgroundColor
+        ) !important;
+        color: var(--inputText-fontColorBase);
+      }
+      .mat-option:hover:not(.mat-option-disabled),
+      .mat-option:focus:not(.mat-option-disabled) {
+        background-color: var(--inputText-selectedOptionBackgroundColor);
+        color: var(--inputText-hoverOptionColor);
+      }
+      .errorOption {
+        .mat-option-text {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    `;
+  }
+
+  getLightStyle() {
+    return css`
+      &.light {
+        &.disabled {
+          cursor: not-allowed;
+          dxc-input-prefix-icon,
+          dxc-input-suffix-icon {
+            .containerIcon {
+              fill: var(--inputText-disabledFontColor);
+            }
+          }
+          .prefixElement,
+          .suffixElement {
+            fill: var(--inputText-disabledFontColor);
+            color: var(--inputText-disabledFontColor);
+          }
           .mat-hint {
             color: var(--inputText-disabledFontColor);
           }
@@ -459,129 +670,194 @@ export class DxcTextInputComponent
             }
           }
         }
-      }
-
-      label.mat-form-field-label {
-        color: var(--inputText-fontColor);
-      }
-      input::placeholder {
-        color: var(--inputText-placeholderColor);
-      }
-      ${this.invalid
-        ? this.getInvalidStyle()
-        : css`
-            .mat-hint {
-              color: var(--inputText-fontColor);
+        .onClickIconElement {
+          .containerIcon {
+            &:focus {
+              outline: -webkit-focus-ring-color auto 1px !important;
+              outline-color: var(--inputText-fontColorBase) !important;
             }
-            .mat-form-field-underline {
-              background-color: var(--inputText-fontColor) !important;
-              .mat-form-field-ripple {
-                background-color: var(--inputText-fontColor) !important;
-                height: 0px;
+          }
+        }
+        .mat-form-field.mat-focused .mat-form-field-label {
+          color: var(--inputText-fontColorBase) !important;
+        }
+        .mat-form-field.mat-focused .mat-form-field-ripple {
+          background-color: ${this.invalid
+            ? "var(--inputText-errorColor) !important"
+            : "var(--inputText-underlineFocusColor) !important"};
+        }
+        .mat-form-field {
+          input {
+            color: var(--inputText-fontColorBase);
+          }
+        }
+        dxc-input-suffix-icon {
+          color: var(--inputText-suffixIconColor);
+        }
+        dxc-input-prefix-icon {
+          color: var(--inputText-prefixIconColor);
+        }
+        .mat-form-field-prefix span {
+          color: var(--inputText-prefixLabelFontColor);
+        }
+        .mat-form-field-suffix span {
+          color: var(--inputText-suffixLabelFontColor);
+        }
+        label.mat-form-field-label {
+          color: var(--inputText-fontColorBase);
+        }
+        input::placeholder {
+          color: var(--inputText-fontColorBase);
+        }
+        .mat-form-field {
+          .mat-form-field-label-wrapper {
+            .mat-form-field-label {
+              span {
+                color: var(--inputText-errorColor);
               }
             }
-          `}
-      .mat-form-field {
-        &.mat-form-field-should-float {
-          .mat-form-field-infix {
-            padding-bottom: 7px;
-          }
-          mat-label {
-            font-size: 15px;
           }
         }
-        .mat-form-field-label-wrapper {
-          display: flex;
-          .mat-form-field-label {
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-            display: flex;
-            span {
-              color: var(--inputText-error);
+        ${this.invalid
+          ? this.getInvalidLightStyle()
+          : css`
+              .mat-hint {
+                color: var(--inputText-assistiveTextFontColor);
+              }
+              .mat-form-field-underline {
+                background-color: var(--inputText-underlineColor) !important;
+                .mat-form-field-ripple {
+                  height: 0px;
+                  background-color: var(--inputText-underlineFocusColor) !important;
+                }
+              }
+            `}
+        .prefixElement {
+          ${this.getStyleOnClickPrefixIconLight()}
+          color: var(--inputText-prefixIconColor);
+          fill: var(--inputText-prefixIconColor);
+        }
+        .suffixElement {
+          ${this.getStyleOnClickSuffixIconLight()}
+          color: var(--inputText-suffixIconColor);
+          fill: var(--inputText-suffixIconColor);
+        }
+      }
+    `;
+  }
+
+  getDarkStyle() {
+    return css`
+      &.dark {
+        &.disabled {
+          cursor: not-allowed;
+          dxc-input-prefix-icon,
+          dxc-input-suffix-icon {
+            .containerIcon {
+              fill: var(--inputText-disabledFontColorOnDark);
+            }
+          }
+          .prefixElement,
+          .suffixElement {
+            fill: var(--inputText-disabledFontColorOnDark);
+            color: var(--inputText-disabledFontColorOnDark);
+          }
+          .mat-hint {
+            color: var(--inputText-disabledFontColorOnDark);
+          }
+          .mat-form-field-underline {
+            background-color: var(
+              --inputText-disabledFontColorOnDark
+            ) !important;
+          }
+          .mat-form-field-empty mat-label {
+            color: var(--inputText-disabledFontColorOnDark);
+          }
+          &.mat-focused .mat-form-field-empty mat-label {
+            color: var(--inputText-disabledFontColorOnDark);
+          }
+          .mat-form-field-label:not(.mat-form-field-empty) mat-label {
+            color: var(--inputText-disabledFontColorOnDark);
+          }
+          .mat-form-field-wrapper {
+            .mat-form-field-flex {
+              .mat-form-field-infix input {
+                color: var(--inputText-disabledFontColorOnDark);
+              }
             }
           }
         }
-        .mat-form-field-subscript-wrapper {
-          margin-top: 6px;
+        .onClickIconElement {
+          .containerIcon {
+            &:focus {
+              outline: -webkit-focus-ring-color auto 1px !important;
+              outline-color: var(--inputText-fontColorBaseOnDark) !important;
+            }
+          }
         }
-        .mat-form-field-infix {
-          padding-top: 6px;
-          display: flex;
+        .mat-form-field.mat-focused .mat-form-field-label {
+          color: var(--inputText-fontColorBaseOnDark) !important;
         }
-      }
-      .mat-form-field-flex {
-        align-items: center;
-        .mat-form-field-infix {
-          border-top: unset;
+        .mat-form-field.mat-focused .mat-form-field-ripple {
+          background-color: ${this.invalid
+            ? "var(--inputText-errorColorOnDark) !important"
+            : "var(--inputText-underlineFocusColorOnDark) !important"};
         }
-      }
-    `;
-  }
-
-  getInvalidStyle() {
-    return css`
-      .mat-hint {
-        color: var(--inputText-error);
-      }
-      .mat-form-field-ripple {
-        background-color: var(--inputText-error) !important;
-        height: 0px !important;
-      }
-      .mat-form-field-underline {
-        background-color: var(--inputText-fontColor) !important;
-        &:focus {
-          outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-error);
+        .mat-form-field {
+          input {
+            color: var(--inputText-fontColorBaseOnDark);
+          }
         }
-      }
-      .mat-form-field.mat-form-field-should-float mat-label {
-        color: var(--inputText-error) !important;
-      }
-      &.mat-focused .mat-form-field-empty mat-label {
-        color: var(--inputText-error);
-      }
-      .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-        color: var(--inputText-error);
-      }
-    `;
-  }
-
-  getAutoCompleteStyle() {
-    return css`
-      &::-webkit-scrollbar {
-        width: 3px;
-      }
-      &::-webkit-scrollbar-track {
-        background-color: var(--inputText-scrollBarTrackColor);
-        opacity: 0.34;
-        border-radius: 3px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--inputText-scrollBarThumbColor);
-        border-radius: 3px;
-      }
-      .mat-option {
-        color: var(--inputText-hoverOptionColor);
-        .mat-option-text{
-          font-family: var(--fontFamily);
+        dxc-input-suffix-icon {
+          color: var(--inputText-suffixIconColorOnDark);
         }
-      }
-      .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
-        background-color: var(
-          --inputText-selectedOptionBackgroundColor
-        ) !important;
-        color: var(--inputText-hoverOptionColor);
-      }
-      .mat-option:hover:not(.mat-option-disabled),
-      .mat-option:focus:not(.mat-option-disabled) {
-        background-color: var(--inputText-selectedOptionBackgroundColor);
-        color: var(--inputText-hoverOptionColor);
-      }
-      .errorOption {
-        .mat-option-text {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+        dxc-input-prefix-icon {
+          color: var(--inputText-prefixIconColorOnDark);
+        }
+        .mat-form-field-prefix span {
+          color: var(--inputText-prefixLabelFontColorOnDark);
+        }
+        .mat-form-field-suffix span {
+          color: var(--inputText-suffixLabelFontColorOnDark);
+        }
+        label.mat-form-field-label {
+          color: var(--inputText-fontColorBaseOnDark);
+        }
+        input::placeholder {
+          color: var(--inputText-fontColorBaseOnDark);
+        }
+        .mat-form-field {
+          .mat-form-field-label-wrapper {
+            .mat-form-field-label {
+              span {
+                color: var(--inputText-errorColorOnDark);
+              }
+            }
+          }
+        }
+        ${this.invalid
+          ? this.getInvalidDarkStyle()
+          : css`
+              .mat-hint {
+                color: var(--inputText-assistiveTextFontColorOnDark);
+              }
+              .mat-form-field-underline {
+                background-color: var(
+                  --inputText-underlineColorOnDark
+                ) !important;
+                .mat-form-field-ripple {
+                  height: 0px;
+                  background-color: var(
+                    --inputText-underlineColorOnDark
+                  ) !important;
+                }
+              }
+            `}
+        .prefixElement {
+          ${this.getStyleOnClickPrefixIconDark()}
+        }
+        .suffixElement {
+          ${this.getStyleOnClickSuffixIconDark()}
         }
       }
     `;

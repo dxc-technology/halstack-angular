@@ -688,6 +688,7 @@ export class DxcTextInputComponent
         }
         .mat-form-field {
           input {
+            caret-color: var(--inputText-fontColorBase);
             color: var(--inputText-fontColorBase);
           }
         }
@@ -805,6 +806,7 @@ export class DxcTextInputComponent
         }
         .mat-form-field {
           input {
+            caret-color: var(--inputText-fontColorBaseOnDark);
             color: var(--inputText-fontColorBaseOnDark);
           }
         }

@@ -828,7 +828,7 @@
     "errorColorOnDark": "color",
     "assistiveTextFontFamily": "fFamily",
     "assistiveTextFontSize": "length",
-    "assistiveTextFontStyle": "normal",
+    "assistiveTextFontStyle": "fStyle",
     "assistiveTextFontWeight": "fWeight",
     "assistiveTextFontColor": "color",
     "assistiveTextFontColorOnDark": "color",

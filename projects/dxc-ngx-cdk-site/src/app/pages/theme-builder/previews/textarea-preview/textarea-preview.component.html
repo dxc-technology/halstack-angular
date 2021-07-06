@@ -1,6 +1,6 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div>
+  <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
       <dxc-textarea
         label="Textarea label"
@@ -16,6 +16,7 @@
         assistiveText="assistive text"
         margin="xsmall"
         disabled="true"
+        value="test"
       >
       </dxc-textarea>
     </tbuilder-component-mode>
@@ -39,10 +40,10 @@
       >
       </dxc-textarea>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div style="background: black">
+  <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">
       <dxc-textarea
         label="Textarea label"
@@ -58,6 +59,7 @@
         assistiveText="assistive text"
         margin="xsmall"
         disabled="true"
+        value="test"
       >
       </dxc-textarea>
     </tbuilder-component-mode>
@@ -81,5 +83,5 @@
       >
       </dxc-textarea>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 </div>

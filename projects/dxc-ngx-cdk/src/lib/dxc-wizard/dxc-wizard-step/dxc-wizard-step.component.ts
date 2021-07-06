@@ -136,22 +136,22 @@ export class DxcWizardStepComponent {
       .last {
         flex-grow: 0;
         margin: ${inputs.mode === "vertical"
-          ? "25px 0 0 0"
-          : "0 0 0 25px"} !important;
+          ? "24px 0 0 0"
+          : "0 0 0 24px"} !important;
         &:focus {
           margin: ${inputs.mode === "vertical"
-            ? "25px 1px 1px 1px"
-            : "1px 1px 1px 25px"} !important;
+            ? "24px 1px 1px 1px"
+            : "1px 1px 1px 24px"} !important;
         }
       }
       .first {
         margin: ${inputs.mode === "vertical"
-          ? "0 0 25px 0"
-          : "0 25px 0 0"} !important;
+          ? "0 0 24px 0"
+          : "0 24px 0 0"} !important;
         &:focus {
           margin: ${inputs.mode === "vertical"
-            ? "1px 1px 25px 1px"
-            : "1px 25px 1px 1px"} !important;
+            ? "1px 1px 24px 1px"
+            : "1px 24px 1px 1px"} !important;
         }
       }
       .step {
@@ -160,14 +160,14 @@ export class DxcWizardStepComponent {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin: ${inputs.mode === "vertical" ? "25px 0" : "0 25px"};
+        margin: ${inputs.mode === "vertical" ? "24px 0" : "0 24px"};
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
         outline-color: var(--wizard-focusColor);
         &:focus {
           padding: 2px;
           outline: -webkit-focus-ring-color auto 1px;
-          margin: ${inputs.mode === "vertical" ? "25px 1px" : "1px 25px"};
+          margin: ${inputs.mode === "vertical" ? "24px 1px" : "1px 24px"};
           outline-color: var(--wizard-focusColor);
         }
         &:hover {
@@ -177,7 +177,7 @@ export class DxcWizardStepComponent {
       .stepHeader {
         position: relative;
         display: inline-flex;
-        padding-bottom: 3px;
+        padding-bottom: 4px;
       }
       svg,
       img {
@@ -246,11 +246,11 @@ export class DxcWizardStepComponent {
         width: 18px;
         height: 18px;
         position: absolute;
-        bottom: 0px;
-        right: 0px;
+        top: 22.5px;
+        left: 22.5px;
       }
       .infoContainer {
-        margin-left: 10px;
+        margin-left: 12px;
       }
       :not(.visited) .label {
         color: var(--wizard-labelFontColor);

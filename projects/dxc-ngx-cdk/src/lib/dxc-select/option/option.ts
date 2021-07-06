@@ -105,6 +105,8 @@ export class _MatOptionBase
 
   private iconPosition = "";
 
+  checkboxMargin = {right:"xsmall"}
+
   @HostBinding("class") className = `mat-option ${this.getDynamicStyle()}`;
 
   constructor(
@@ -274,12 +276,16 @@ export class _MatOptionBase
         flex-direction: ${this.iconPosition == "after" ? "row-reverse" : "row"};
       }
       &.mat-option.mat-active {
-        background: var(--select-selectedOptionBackgroundColor) !important;
-        color: var(--select-color) !important;
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: var(--select-focusColor);
+        background: white;
       }
-      &.mat-option:hover:not(.mat-option-disabled),
-      &.mat-option:focus:not(.mat-option-disabled) {
+      &.mat-option:hover:not(.mat-option-disabled) {
         background: var(--select-hoverOptionBackgroundColor) !important;
+      }
+      &.mat-option:focus:not(.mat-option-disabled) {
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: var(--select-focusColor);
       }
       &.mat-option-disabled {
         color: var(--select-disabledColor) !important;
@@ -292,6 +298,15 @@ export class _MatOptionBase
         img,
         svg {
           width: 24px;
+        }
+      }
+      mat-checkbox.cdk-focused {
+        label.mat-checkbox-layout {
+          .mat-checkbox-inner-container {
+            .mat-checkbox-background {
+              outline: none !important;
+            }
+          }
         }
       }
     `;
@@ -322,6 +337,7 @@ export class _MatOptionBase
     "[attr.tabindex]": "_getTabIndex()",
     "[class.mat-selected]": "selected",
     "[class.mat-option-multiple]": "multiple",
+    "[class.mat-focused]": "focus",
     "[class.mat-active]": "active",
     "[id]": "id",
     "[attr.aria-selected]": "_getAriaSelected()",

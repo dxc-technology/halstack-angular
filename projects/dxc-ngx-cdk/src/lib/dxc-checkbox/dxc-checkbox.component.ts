@@ -5,19 +5,25 @@ import {
   Output,
   HostBinding,
   SimpleChanges,
+  forwardRef
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: "dxc-checkbox",
   templateUrl: "./dxc-checkbox.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcCheckboxComponent),
+    multi: true
+  }],
 })
-export class DxcCheckboxComponent implements OnInit {
+export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() value: string;
   @Input()
   get checked(): boolean {
@@ -44,11 +50,13 @@ export class DxcCheckboxComponent implements OnInit {
   }
   private _required;
   @Input() label: string;
+  @Input() ariaLabelledBy: string;
   @Input() name: string;
   @Input() id: string;
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
+  @Input() customHandler: boolean = true;
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -101,6 +109,26 @@ export class DxcCheckboxComponent implements OnInit {
     this.onChange = new EventEmitter();
   }
 
+  onTouched = () => { };
+  onChecked = (value) => { this.checked = value; };
+
+  writeValue(val: boolean): void {
+    this.renderedChecked = val;
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChecked = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(boolV): void {
+    this.disabled = boolV;
+  }
+
   ngOnInit() {
     this.renderedChecked = this.checked;
 
@@ -111,11 +139,12 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   onValueChange($event: any) {
-    this.onChange.emit($event.checked);
-
     if (this.checked === undefined || this.checked === null) {
       this.renderedChecked = $event.checked;
+      this.onChecked(this.renderedChecked);
+      this.onChange.emit($event.checked);
     } else {
+      this.onChange.emit($event.checked);
       $event.source.checked = this.renderedChecked;
       $event.source._checked = this.renderedChecked;
       $event.source._inputElement.nativeElement.checked = this.renderedChecked;

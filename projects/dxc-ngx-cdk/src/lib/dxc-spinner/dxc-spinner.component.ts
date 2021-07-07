@@ -4,12 +4,14 @@ import {
   Input,
   HostBinding,
   SimpleChanges,
+  Injector
 } from "@angular/core";
 import { css } from "emotion";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-
+import { LoaderService } from './../services/spinner/loader.service';
+import { LoaderState } from './dxc-spinner.interface';
 @Component({
   selector: "dxc-spinner",
   templateUrl: "./dxc-spinner.component.html",
@@ -20,6 +22,7 @@ export class DxcSpinnerComponent {
   type: string = "indeterminate";
   @Input() value: number;
   @Input() label: string;
+  @Input() alwaysShow = true;
   @Input()
   get showValue(): boolean {
     return this._showValue;
@@ -37,12 +40,19 @@ export class DxcSpinnerComponent {
   @HostBinding("class.small") isSmall: boolean = false;
   @HostBinding("class.large") isLarge: boolean = true;
 
+  private loaderService;
+
   defaultInputs = new BehaviorSubject<any>({
     showValue: false,
     mode: "large"
   });
 
-  constructor(private utils: CssUtils) {}
+  private subscription: Subscription;
+  show = false;
+
+  constructor(private utils: CssUtils, private injector: Injector,) {
+    this.loaderService = this.injector.get(LoaderService);
+   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.value || this.value === 0) {
@@ -89,6 +99,10 @@ export class DxcSpinnerComponent {
     if (this.value) {
       this.type = "determinate";
     }
+    this.subscription = this.loaderService.loaderState
+      .subscribe((state: LoaderState) => {
+        this.show = state.show;
+      });
   }
 
   getDynamicStyle(inputs) {

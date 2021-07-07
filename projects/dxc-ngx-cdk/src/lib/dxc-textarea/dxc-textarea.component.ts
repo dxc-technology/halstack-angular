@@ -9,30 +9,38 @@ import {
   SimpleChanges,
   OnChanges,
   AfterViewChecked,
+  forwardRef
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { FormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
-import {
-  coerceNumberProperty,
-  coerceBooleanProperty,
-} from "@angular/cdk/coercion";
+import { coerceNumberProperty, coerceBooleanProperty } from "@angular/cdk/coercion";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: "dxc-textarea",
   templateUrl: "./dxc-textarea.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CssUtils],
+  providers: [CssUtils, {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcTextareaComponent),
+    multi: true
+  }],
 })
 export class DxcTextareaComponent
-  implements OnInit, OnChanges, AfterViewChecked {
+implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
   @HostBinding("class.invalid") isInvalid: boolean = false;
   @HostBinding("class.required") isRequired: boolean = false;
 
   @Input() public value: string;
+  @Input() public autosizeMaxRows = 5;
+  @Input() public autosizeMinRows = 2;
+  @Input() public textareaAutosize = true;
+
+  @Input() public maxLength: number;
+  @Input() public arialabelledby: string;
   @Input() public label: String;
   @Input() public assistiveText: string;
   @Input() public name: string;
@@ -87,7 +95,7 @@ export class DxcTextareaComponent
   renderedValue = "";
   private _valueChangeTrack: boolean;
   options;
-  type: string;
+  type: string = 'textarea';
 
   clicked: boolean = false;
 
@@ -122,12 +130,32 @@ export class DxcTextareaComponent
   ngOnInit() {
     this.renderedValue = this.value || "";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.onChangeRegister(this.renderedValue);
   }
 
   ngAfterViewChecked(): void {
     if (this._valueChangeTrack) {
       this._valueChangeTrack = false;
     }
+  }
+
+  public onTouched: () => void = () => { };
+  public onChangeRegister = (val) => { };
+
+  writeValue(val: any): void {
+    this.renderedValue = val || "";
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(boolv: boolean): void {
+    this.disabled = boolv;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -137,7 +165,7 @@ export class DxcTextareaComponent
 
     this.renderedValue = this.value || "";
     this.label = this.label || "";
-
+    this.onChangeRegister(this.renderedValue);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -156,6 +184,7 @@ export class DxcTextareaComponent
     } else {
       $event.target.value = this.renderedValue;
     }
+    this.onChangeRegister(this.renderedValue);
   }
 
   /**

@@ -1,0 +1,49 @@
+
+<mat-form-field [class.disabled]="disabled" appearance="standard">
+  <span
+    matPrefix
+    (click)="onClickPrefixHandler($event)"
+    class="prefixElement"
+    *ngIf="prefix && !prefixIconSrc">
+    {{ prefix }}</span
+  >
+  <img
+    matPrefix
+    (click)="onClickPrefixHandler($event)"
+    class="prefixElement"
+    *ngIf="prefixIconSrc"
+    src="{{ prefixIconSrc }}"
+  />
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input
+    *ngIf="!multiline"
+    matInput
+    #dxcSingleInput
+    [value]="renderedValue"
+    (input)="onChanged($event)"
+    (blur)="onBlurHandle($event)"
+    (click)="onClickHandle($event)"
+    [required]="required"
+    [name]="name"
+    [type]="type"
+    [errorStateMatcher]="matcher"
+    [placeholder]="placeholder"
+    [attr.allowDecimal]="allowDecimal"
+    numbersOnly
+    />
+  <span
+    matSuffix
+    (click)="onClickSuffixHandler($event)"
+    class="suffixElement"
+    *ngIf="suffix && !suffixIconSrc"
+    >{{ suffix }}</span
+  >
+  <img
+    matSuffix
+    (click)="onClickSuffixHandler($event)"
+    class="suffixElement"
+    *ngIf="suffixIconSrc"
+    src="{{ suffixIconSrc }}"
+  />
+  <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
+</mat-form-field>

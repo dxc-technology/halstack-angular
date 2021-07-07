@@ -1,0 +1,17 @@
+<div class="toolbarcontainer p-1">
+  <dxc-button *ngIf="allowSearch" size="small" id="search-1" matTooltip="Search" class="search-button" mode="secondary" >
+    <dxc-button-icon>
+        <mat-icon class="mat-icon material-icons" attr.aria-label="Search">search</mat-icon>
+        <input type="search" class="search-input-box" autocomplete="off" placeholder="Search" (input)="onInput($event)">
+    </dxc-button-icon>
+  </dxc-button>
+  <ng-container *ngFor="let btn of toolBarList; index as i; first as isFirst; last as isLast;">
+    <dxc-button size="small" mode="secondary" (onClick)="onclick(btn)" *ngIf="configService.configservice.ButtonIcon[btn.rel.toLowerCase()] !== undefined &&
+    configService.configservice.ButtonIcon[btn.rel] !=='' && !btn.hidden" [matTooltip]="configService.configservice.Resource[btn.rel.toLowerCase()]">
+      <dxc-button-icon>
+        <mat-icon aria-hidden="false" [attr.aria-label]="configService.configservice.Resource[btn.rel.toLowerCase()]">
+          {{configService.configservice.ButtonIcon[btn.rel]}}</mat-icon>
+      </dxc-button-icon>
+    </dxc-button>
+  </ng-container>
+</div>

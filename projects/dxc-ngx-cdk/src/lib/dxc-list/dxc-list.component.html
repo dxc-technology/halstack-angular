@@ -1,0 +1,13 @@
+<div class="card-body list-card h-100 p-1">
+  <ul class="list-unstyled mb-0" role="tablist">
+    <ng-container *ngFor="let item of list  | sortBy: sortOrder: sortField">
+      <li id="{{item?.name || item?.id}}" role="tab" [attr.aria-label]="item?.title || item?.label" class="leftMenuItem"
+        [class.highlightsection]="currentselection?.name === item?.name" (click)="selected(item)">
+        <mat-icon *ngIf="item?.iconname != null && item?.iconName != ''" class="material-icons left-material-icons-fdm">
+          {{item?.iconname || item?.iconName}}</mat-icon>
+        <a href="javascript:void(0);" target="_self" class="btn-link-list" matTooltip="{{item?.title || item?.label}}" [matTooltipPosition]="infoToolTipPos"
+          [class.highlightext]="currentselection?.name === item?.name">{{item?.title || item?.label}}</a>
+      </li>
+    </ng-container>
+  </ul>
+</div>

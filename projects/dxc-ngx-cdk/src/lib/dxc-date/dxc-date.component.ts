@@ -8,28 +8,65 @@ import {
   OnInit,
   ViewChild,
   SimpleChanges,
+  forwardRef
 } from "@angular/core";
-
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-
 import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { HostListener } from "@angular/core";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import { DatePipe } from '@angular/common';
+import { DateHelper } from '../helpers/date/date-helper';
+import { ConfigurationsetupService } from './../services/startup/configurationsetup.service';
+import { MessageService } from './../services/toaster/message.service';
 const moment = momentImported;
 
 @Component({
   selector: "dxc-date",
   templateUrl: "./dxc-date.component.html",
-  providers: [CssUtils],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcDateComponent),
+    multi: true
+  }, CssUtils]
 })
-export class DxcDateComponent implements OnChanges, OnInit {
-  @Input() value: any;
+export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor {
+  @Input()
+  get value() {
+    return this.userDate;
+  }
+  set value(val: string) {
+    if (val && val != '') {
+      let date = (this.customOutput == true) ? this.helper.dateLostFocus(val, this.format) : val;
+      this.renderedValue = date;
+      this.date = date;
+      if (date == '') {
+        this.userDate = '';
+        date = null;
+      }
+
+      let ustDate = '';
+      if (date != null && date != '') {
+        ustDate = (this.customOutput == true) ? this.helper.convertDateToUserFormat(moment(date, this.format.toUpperCase()).toDate()) : date;
+      }
+      this.userDate = ustDate;
+      this.onChangeRegister(this.value);
+    }
+    else {
+      this.userDate = val;
+      this.renderedValue = val;
+      this.date = val;
+      this.onChangeRegister(this.value);
+    }
+    this.calculateComponentValues();
+  }
   @Input() format: string = "dd-MM-yyyy";
+  @Input() customOutput = false;
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() name: string;
@@ -94,7 +131,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
   renderedValue: string;
   dateValue: Moment;
   popOverOffsetX: any;
-
+  userDate: string = '';
+  date: string = '';
   calendarDynamicStyle: any;
 
   @ViewChild(MdePopoverTrigger, { static: false })
@@ -108,7 +146,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
-  constructor() {}
+  constructor(private config: ConfigurationsetupService, private messageService: MessageService, private helper: DateHelper, private datePipe: DatePipe) { }
 
   private calculateComponentValues(): void {
     this.size = this.size
@@ -121,7 +159,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       ? this.format
       : this.defaultInputs.getValue().format;
 
-    this.renderedValue = this.value;
+    this.renderedValue = this.date;
     this.dateValue = this.getMomentValue(this.renderedValue, this.format);
   }
 
@@ -152,11 +190,32 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: value,
       dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
-    this.onChange.emit(_dateReturn);
-
-    if (!this.value) {
-      this.renderedValue = value;
+    if (!this.customOutput) {
+      this.onChange.emit(_dateReturn);
+    }
+    if (!this.value || !this.customOutput) {
+      this.value = value;
       this.dateValue = _dateValue;
+      if (this.customOutput) {
+        this.onChange.emit(this.value);
+      }
+    }
+
+    if (this.customOutput == true) {
+      if (_dateReturn.dateValue instanceof Date) {
+        this.value = this.datePipe.transform(_dateReturn.dateValue, this.format);
+      }
+
+      else if (_dateReturn.stringValue.length > 10) {
+        this.value = _dateReturn.stringValue.substring(0, 10);
+      }
+      else if (_dateReturn.stringValue.length == 0) {
+        this.value = '';
+      }
+      else {
+        this.value = _dateReturn.stringValue;
+        return false;
+      }
     }
   }
 
@@ -166,16 +225,39 @@ export class DxcDateComponent implements OnChanges, OnInit {
       stringValue: _stringValue,
       dateValue: value.isValid() ? value.toDate() : null,
     };
-    this.onChange.emit(_dateReturn);
-    if (!this.value) {
+    if (!this.customOutput) {
+      this.onChange.emit(_dateReturn);
+    }
+    if (!this.value || this.customOutput) {
       this.dateValue = value;
-      this.renderedValue = _stringValue;
+      this.value = _stringValue;
+      if (this.customOutput) {
+        this.onChange.emit(this.value);
+      }
     }
     this.closeCalendar();
   }
 
   onBlurHandler(value: string) {
+    if (this.customOutput == true) {
+      if (value != '' && value != null) {
+        this.value = value;
+      }
+      else {
+        this.value = '';
+      }
+      this.onChangeRegister(this.value);
+    }
     this.onBlur.emit(value);
+  }
+
+  onKeyPress($event) {
+    var keyCode = $event.keyCode || $event.charCode;
+    var value = String.fromCharCode(keyCode);
+    if (!$event.ctrlKey && !value.match(/^[0-9\/]+$/) && keyCode != 9 && keyCode != 37 &&
+      keyCode != 39 && keyCode != 8 && keyCode != 46 && keyCode != 35 && keyCode != 36) {
+      $event.preventDefault();
+    }
   }
 
   @HostListener("document:click", ["$event"])
@@ -229,6 +311,38 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   public onSelectingDateHandler() {
     this._isSelectingDate = true;
+  }
+
+  public onTouched: () => void = () => { };
+  onChangeRegister = (val) => { };
+
+  writeValue(val: any): void {
+    if (val && val != '') {
+      this.value = this.helper.convertDateToControlFormat(val, this.format);
+    }
+    else {
+      this.value = null;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(value): void {
+    this.disabled = value;
+  }
+
+  formAtDateStrtoObj = (dateStr: string, format: string) => {
+    if (dateStr) {
+      if (dateStr.toString().length == 10) {
+        return moment(dateStr, format.toUpperCase()).toDate();
+      }
+    }
   }
 
   private resetCalendarState(value: boolean = false) {

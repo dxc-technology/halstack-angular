@@ -215,7 +215,7 @@ export class MatSelectChange {
     public source: DxcSelectComponent,
     /** Current value of the select that emitted the event. */
     public value: any
-  ) {}
+  ) { }
 }
 
 // Boilerplate for applying mixins to MatSelect.
@@ -226,15 +226,15 @@ class MatSelectBase {
     public _defaultErrorStateMatcher: ErrorStateMatcher,
     public _parentForm: NgForm,
     public ngControl: NgControl
-  ) {}
+  ) { }
 }
 const _MatSelectMixinBase: CanDisableCtor &
   HasTabIndexCtor &
   CanDisableRippleCtor &
   CanUpdateErrorStateCtor &
   typeof MatSelectBase = mixinDisableRipple(
-  mixinTabIndex(mixinDisabled(mixinErrorState(MatSelectBase)))
-);
+    mixinTabIndex(mixinDisabled(mixinErrorState(MatSelectBase)))
+  );
 
 /**
  * Injection token that can be used to reference instances of `MatSelectTrigger`. It serves as
@@ -252,24 +252,24 @@ export const MAT_SELECT_TRIGGER = new InjectionToken<MatSelectTrigger>(
   selector: "mat-select-trigger",
   providers: [{ provide: MAT_SELECT_TRIGGER, useExisting: MatSelectTrigger }],
 })
-export class MatSelectTrigger {}
+export class MatSelectTrigger { }
 
 /** Base class with all of the `MatSelect` functionality. */
 @Directive()
 export abstract class _MatSelectBase<C>
   extends _MatSelectMixinBase
   implements
-    AfterContentInit,
-    OnChanges,
-    OnDestroy,
-    OnInit,
-    DoCheck,
-    ControlValueAccessor,
-    CanDisable,
-    HasTabIndex,
-    MatFormFieldControl<any>,
-    CanUpdateErrorState,
-    CanDisableRipple {
+  AfterContentInit,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  DoCheck,
+  ControlValueAccessor,
+  CanDisable,
+  HasTabIndex,
+  MatFormFieldControl<any>,
+  CanUpdateErrorState,
+  CanDisableRipple {
   /** All of the defined select options. */
   abstract options: QueryList<_MatOptionBase>;
 
@@ -300,7 +300,8 @@ export abstract class _MatSelectBase<C>
   private _panelOpen = false;
 
   /** Comparison function to specify which option is displayed. Defaults to object equality. */
-  private _compareWith = (o1: any, o2: any) => o1 === o2;
+  //private _compareWith = (o1: any, o2: any) => o1 === o2;
+  private _compareWith = (o1: any, o2: any) => o1 == o2;
 
   /** Unique id for this input. */
   private _uid = `mat-select-${nextUniqueId++}`;
@@ -321,10 +322,10 @@ export abstract class _MatSelectBase<C>
   _keyManager: ActiveDescendantKeyManager<DxcSelectOption>;
 
   /** `View -> model callback called when value changes` */
-  _onChange: (value: any) => void = () => {};
+  _onChange: (value: any) => void = () => { };
 
   /** `View -> model callback called when select has been touched` */
-  _onTouched = () => {};
+  _onTouched = () => { };
 
   /** ID for the DOM node containing the select's value. */
   _valueId = `mat-select-value-${nextUniqueId++}`;
@@ -474,6 +475,8 @@ export abstract class _MatSelectBase<C>
     return this._controlled;
   }
 
+  @Input() public customHandler: boolean = true;
+
   @Input() public assistiveText = "";
 
   @Input() public label = "";
@@ -554,14 +557,14 @@ export abstract class _MatSelectBase<C>
   @Output("opened")
   readonly _openedStream: Observable<void> = this.openedChange.pipe(
     filter((o) => o),
-    map(() => {})
+    map(() => { })
   );
 
   /** Event emitted when the select has been closed. */
   @Output("closed")
   readonly _closedStream: Observable<void> = this.openedChange.pipe(
     filter((o) => !o),
-    map(() => {})
+    map(() => { })
   );
 
   /** Event emitted when the selected value has been changed by the user. */
@@ -634,6 +637,9 @@ export abstract class _MatSelectBase<C>
       .subscribe(() => this._panelDoneAnimating(this.panelOpen));
 
     this._controlled = this.value !== undefined ? true : false;
+    if (this.customHandler === false) {
+      this._controlled = false;
+    }
     this.className = `mat-select ${this.getDynamicStyle()}`;
     this.service.iconPosition.next(this.iconPosition);
   }

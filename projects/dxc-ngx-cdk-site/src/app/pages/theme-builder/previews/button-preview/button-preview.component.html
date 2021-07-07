@@ -1,6 +1,6 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div>
+  <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Primary">
       <dxc-button label="Button" margin="xxsmall"></dxc-button>
       <dxc-button label="Button" margin="xxsmall">
@@ -73,10 +73,10 @@
         disabled
       ></dxc-button>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div style="background: black">
+  <background-provider color="#000000">
     <tbuilder-component-mode text="Primary" mode="dark">
       <dxc-button label="Button" margin="xxsmall"></dxc-button>
       <dxc-button label="Button" margin="xxsmall">
@@ -149,5 +149,5 @@
         disabled
       ></dxc-button>
     </tbuilder-component-mode>
-  </div>
+  </background-provider>
 </div>

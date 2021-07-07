@@ -311,6 +311,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--wizard-selectedFont"] =
       theme?.wizard?.textColor ?? tokens["--wizard-selectedFont"];
 
+    //Others
+    for (const key in theme.customs) {
+      proccessedTokens[key] = theme.customs[key];
+    }
+
     return proccessedTokens;
   }
 }

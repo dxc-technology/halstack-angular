@@ -17,7 +17,7 @@
       </dxc-select>
     </span>
 
-    <span class="total-items-container">
+    <span class="total-items-container" *ngIf="showDefaultCounter">
       {{ minItemsPerPage }} to {{ maxItemsPerPage }} of {{ totalItems }}
     </span>
 
@@ -67,7 +67,8 @@
       [iconSrc]="nextImgSrc"
       [disabled]="currentPageInternal === totalPages"
       [tabIndexValue]="tabIndexValue"
-    ></dxc-button>
+    >
+  </dxc-button>
     <dxc-button
       *ngIf="showLast"
       mode="secondary"
@@ -77,6 +78,7 @@
       [iconSrc]="lastImgSrc"
       [disabled]="currentPageInternal === totalPages"
       [tabIndexValue]="tabIndexValue"
-    ></dxc-button>
+    >
+  </dxc-button>
   </div>
 </div>

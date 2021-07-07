@@ -63,9 +63,8 @@ export class DxcPaginatorComponent implements OnInit {
   private _tabIndexValue;
 
   @Input() public itemsPerPageOptions: number[];
-
   @Input() public showGoToPage: boolean = false;
-
+  @Input() public showDefaultCounter: boolean = true;
   @Output() onGoToPage: EventEmitter<any> = new EventEmitter<any>();
   @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 

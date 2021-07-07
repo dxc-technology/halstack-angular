@@ -1,0 +1,18 @@
+<div class="row ml-0 mr-0 mt-2">
+  <span class="col-md col-sm padding-zero">
+    <label id="cl_{{id}}" for="{{text}}" class="control-label text-decoration label-mx-width" matTooltip="{{text}}"
+      attr.aria-label="{{text}}" [class.borderlineformat]="required && requiredFormat === requiredFormatList.BORDER"
+      [class.underlineformat]="required && requiredFormat === requiredFormatList.UNDERLINE">{{text}}</label>
+    <span class="col-md col-sm label-accociate padding-zero">
+      <span class="required label-required-icon" *ngIf="required && requiredFormat === requiredFormatList.STAR">*</span>
+      <span class="label-help-container">
+        <sup id="info_{{id}}" class="icon-dxc-wrapper" *ngIf="infoToolTip" tabindex="0"
+          [attr.aria-label]="infoToolTipText" role="info">
+          <mat-icon #tooltip1="matTooltip" class="mat-icon material-icons infoicon label-icon"
+            [matTooltip]="infoToolTipText" [matTooltipPosition]="infoToolTipPos">info</mat-icon>
+        </sup>
+      </span>
+    </span>
+  </span>
+
+</div>

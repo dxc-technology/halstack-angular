@@ -1,0 +1,260 @@
+table {
+  width: 100%;
+  height: 50%;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.highlight {
+  background: whitesmoke;
+}
+
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+
+table {
+  width: 100%;
+}
+
+button {
+  margin: 2px 2px;
+}
+
+.container {
+  position: relative;
+  width: 300px;
+}
+
+td {
+  position: relative !important;
+}
+
+.container>img {
+  border: solid 1px red;
+}
+
+.container>td>div {
+  display: block;
+  visibility: hidden;
+  top: 0;
+  position: absolute;
+  /* width: 300px; */
+  text-align: center;
+  background: #ffffff26;
+}
+
+.cell-focus:focus>div,
+.container:focus-within>td>div,
+.container:hover>td>div {
+  visibility: visible;
+}
+
+.table-icons {
+  margin-top: -8%;
+}
+
+.row-create {
+  float: right;
+  right: 1%;
+  position: absolute;
+}
+
+.expand-row-class {
+  display: flex;
+  position: absolute;
+  right: 4%;
+  float: right
+}
+
+.display-flex-d {
+  display: flex;
+}
+
+.button-margin {
+  margin-right: 20%;
+}
+
+.cell-position {
+  position: relative !important;
+}
+
+.form-width {
+  width: 100%;
+}
+
+.form-height {
+  max-height: 400px;
+}
+
+.group-button {
+  display: inline-flex;
+  float: right;
+  width: 10%;
+}
+
+.close-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.mandatory-Field {
+  color: red;
+  float: left;
+}
+
+.save-icon-align {
+  margin-right: -1px;
+}
+
+.crud-scroll {
+  overflow: auto;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.crud-scroll .mat-cell:focus,
+.crud-scroll .mat-row:focus,
+.crud-scroll .mat-header-cell:focus {
+  outline: solid;
+  outline-color: #499fea !important;
+  outline-width: 2px;
+}
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type{
+  padding-right: 2%;
+}
+
+.cellIcon{
+  border:none;
+  background:transparent;
+}
+
+.green-icon {
+  color: green;
+}
+
+.red-icon {
+  color: red;
+}
+
+.subsection-heading{
+  background: #d9d9d9;
+  top: 7px;
+}
+
+.link--btn-next:before {
+  top: 3px !Important;
+  width: 30px !Important;
+  height: 30px !Important;
+  left: 14px !Important;
+}
+
+.link--btn-next:after {
+  margin: -1rem 1.3rem -1rem 1.3rem;
+  top: 27px !Important;
+  left: 5px !Important; 
+}
+
+.supp-grid-scroll
+{
+  height: calc(100vh - 150px) !Important;
+  overflow-y: auto;
+}
+
+.gridBtnPostion {
+    text-align: center;
+    overflow: hidden;
+    width: 80px;
+    position: absolute;
+    height: 30px;
+    background-color: #f8f8f8;    
+    border-left: 0px;
+    left: -70px;
+    float: left;  
+    margin-top: 14px;
+}
+ 
+  .iconPostion {
+      position: absolute;
+      left: 0px;
+      width: 100%;
+      white-space: nowrap;
+  }
+  .cellContentPostion {
+    padding-left:60px; 
+    padding-top:14px;
+    float:left;
+  }
+  .iconProp {
+      font-size: 20px;    
+      margin: 0px 5px;
+      border: 1px solid rgba(34,36,38,.15);
+      border-radius: 0.2rem;
+      color: #776d6d;
+  }
+  .example-element-row:hover > td > div {
+    left: 9px;
+  }
+   
+  .link-decoration{
+    color: #3a3a3a;
+    text-decoration: none;
+    cursor: auto;
+  }
+  .crud-col{
+    min-width: 150px;
+  }
+  

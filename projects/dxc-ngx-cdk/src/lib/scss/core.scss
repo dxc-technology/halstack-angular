@@ -1,0 +1,32 @@
+@import './breakpoint';
+@import './mixin';
+
+.searchcontainer {
+  width: 200px;
+// 576px window width and more
+  @include sm {
+    width: 100px;
+  }
+// 992px window width and more
+  @include lg {
+    width: 500px;
+  }
+}
+
+// .mat-form-field-infix {
+//   display: block;
+//   position: relative;
+//   flex: auto;
+//   min-width: 0;
+//   width: 100% !important;
+// }
+
+// input.mat-chip-input {
+//   width: 1150px;
+//   margin: 4px;
+//   flex: 1 0 150px;
+// }
+dxc-dialog::ng-deep .container {
+  width: 600px;
+  margin: 30px auto;
+}

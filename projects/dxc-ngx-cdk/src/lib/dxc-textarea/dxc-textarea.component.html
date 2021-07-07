@@ -16,10 +16,15 @@
     [rows]="numRows"
     [type]="type"
     [placeholder]="placeholder"
-    [formControl]="formControl"
     [attr.aria-label]="label"
+    [attr.aria-labelledby]="arialabelledby"
     [attr.aria-disabled]="disabled"
     [tabIndex]="disabled ? -1 : tabIndexValue"
+    [matAutosizeMaxRows]="autosizeMaxRows" 
+    [attr.maxlength]="maxLength"
+    [matAutosizeMinRows]="autosizeMinRows" 
+    [matTextareaAutosize]="textareaAutosize"
+    matTextareaAutosize
   >
   </textarea>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>

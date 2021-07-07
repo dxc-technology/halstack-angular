@@ -1,0 +1,7 @@
+@mixin paddingTop($property) {
+    padding-top: $property;
+}
+
+.row-icon-padding-top7 {
+    @include paddingTop('7px')
+}

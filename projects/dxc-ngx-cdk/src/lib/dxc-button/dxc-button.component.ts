@@ -38,6 +38,7 @@ export class DxcButtonComponent {
   @Input() iconPosition: string;
   @Input() margin: any;
   @Input() size: string;
+  @Input() border:boolean = true;
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -105,7 +106,7 @@ export class DxcButtonComponent {
   setPadding(size) {
     if (size === "small") {
       return css`
-        padding: 11px;
+        padding: 11px 11px 6px;
         min-width: calc(100% - 22px);
       `;
     }
@@ -219,9 +220,7 @@ export class DxcButtonComponent {
     return css`
       background: var(--button-primaryBackgroundColor);
       color: var(--button-primaryFontColor);
-      span.mat-button-ripple {
-        border: 2px solid transparent;
-      }
+      ${this.border == true ? `span.mat-button-ripple { border: 2px solid transparent;}` : ``}
       &:hover:not([disabled]) {
         background: var(--button-primaryHoverBackgroundColor);
         color: var(--button-primaryHoverFontColor);
@@ -243,9 +242,9 @@ export class DxcButtonComponent {
     return css`
       color: var(--button-secondaryFontColor);
       background-color: var(--button-secondaryBackgroundColor);
-      span.mat-button-ripple {
+      ${this.border == true ? `span.mat-button-ripple {
         border: 2px solid var(--button-secondaryOutlinedColor);
-      }
+      }` : ``}
       &:hover:not([disabled]) {
         border-color: var(--button-hoverOutlinedColor);
         background: var(--button-secondaryHoverBackgroundColor);
@@ -254,9 +253,9 @@ export class DxcButtonComponent {
       &:disabled {
         border-color: var(--button-disabledSecondaryOutlinedColor);
         color: var(--button-disabledSecondaryFontColor) !important;
-        span.mat-button-ripple {
+        ${this.border == true ? `span.mat-button-ripple {
           border: 2px solid var(--button-disabledSecondaryOutlinedColor);
-        }
+        }` : ``}
       }
       &:focus {
         outline: -webkit-focus-ring-color auto 1px;
@@ -275,9 +274,9 @@ export class DxcButtonComponent {
     return css`
       background-color: var(--button-textBackgroundColor);
       color: var(--button-textFontColor);
-      span.mat-button-ripple {
+      ${this.border == true ? `span.mat-button-ripple {
         border: 2px solid transparent;
-      }
+      }` : ``}
       &:hover:not([disabled]) {
         background: var(--button-textHoverBackgroundColor);
         color: var(--button-textHoverFontColor);

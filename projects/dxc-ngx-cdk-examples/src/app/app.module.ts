@@ -1,5 +1,6 @@
-import { NgModule } from "@angular/core";
+import { NgModule, APP_INITIALIZER } from "@angular/core";
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ButtonInfoComponent } from "./pages/button/button-info.component";
@@ -72,13 +73,23 @@ import {
   ThemeModule,
   DxcApplicationLayoutModule,
   DxcChipModule,
-} from "@dxc-technology/halstack-angular";
+  DxcCommonModule,
+  DxcLocalStorageModule,
+  DxcModalFormModule
+} from 'dxc-ngx-cdk';
+//} from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
-import { BackgroundProviderModule } from "projects/dxc-ngx-cdk/src/public-api";
+import { AppInitializer } from './app-initializer.service';
+
+export function startupServiceFactory(startupService: AppInitializer) {
+  return (): Promise<any> => {
+    return startupService.loadConfig();
+  };
+}
 
 @NgModule({
   declarations: [
@@ -159,9 +170,29 @@ import { BackgroundProviderModule } from "projects/dxc-ngx-cdk/src/public-api";
     DxcApplicationLayoutModule,
     DxcChipModule,
     DxcAccordionGroupModule,
-    BackgroundProviderModule
+    DxcCommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DxcLocalStorageModule.forRoot({
+      prefix: '',
+      delimiter: ''
+    }),
+    DxcModalFormModule
   ],
-  providers: [{ provide: "ThemeService", useClass: ThemeService }],
+  
+  providers: [AppInitializer,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: startupServiceFactory,
+      deps: [AppInitializer],
+      multi: true
+
+    },
+    {
+      provide: 'ThemeService', useClass:
+        ThemeService
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

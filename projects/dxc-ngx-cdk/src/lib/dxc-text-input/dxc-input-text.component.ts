@@ -10,6 +10,7 @@ import {
   ViewChild,
   ContentChildren,
   QueryList,
+  forwardRef
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -27,15 +28,20 @@ import {
 import { DxcInputPrefixIconComponent } from "./dxc-input-prefix-icon/dxc-input-prefix-icon.component";
 import { DxcInputSuffixIconComponent } from "./dxc-input-suffix-icon/dxc-input-suffix-icon.component";
 import { InputTextService } from './services/inputText.service';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: "dxc-input-text",
   templateUrl: "./dxc-input-text.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CssUtils, InputTextService],
+  providers: [CssUtils, InputTextService, {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcTextInputComponent),
+    multi: true
+  }],
 })
 export class DxcTextInputComponent
-  implements OnInit, OnChanges, AfterViewChecked {
+  implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
@@ -97,6 +103,7 @@ export class DxcTextInputComponent
   @Output() public onClickPrefix: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onKeyPress: EventEmitter<any> = new EventEmitter<any>();
 
   prefixPointer = false;
   suffixPointer = false;
@@ -147,10 +154,35 @@ export class DxcTextInputComponent
     tabIndexValue: 0,
   });
 
-  constructor(private utils: CssUtils, private ref: ChangeDetectorRef, private service: InputTextService) {}
+  constructor(private utils: CssUtils, private ref: ChangeDetectorRef, private service: InputTextService) { }
+
+  public onTouched: () => void = () => { };
+  public onChangeRegister = (val) => { };
+
+  onInputKeyPress($event):void {
+    this.onKeyPress.emit($event);
+  }
+
+
+  writeValue(val: any): void {
+    this.renderedValue = val || "";
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(boolv: boolean): void {
+    this.disabled = boolv;
+  }
 
   ngOnInit() {
     this.renderedValue = this.value || "";
+    this.onChangeRegister(this.renderedValue);
     this.bindAutocompleteOptions();
     this.autocompleteFunction("");
   }
@@ -187,6 +219,7 @@ export class DxcTextInputComponent
     this.isDisabled = this.disabled;
 
     this.renderedValue = this.value || "";
+    this.onChangeRegister(this.renderedValue);
     this.label = this.label || "";
 
     this.service.setIsDisabled(this.disabled);
@@ -223,6 +256,7 @@ export class DxcTextInputComponent
     this.autocompleteFunction($event.target.value);
     if (this.value === undefined || this.value === null) {
       this.renderedValue = $event.target.value;
+      this.onChangeRegister(this.renderedValue);
     } else {
       $event.target.value = this.renderedValue;
     }
@@ -232,6 +266,7 @@ export class DxcTextInputComponent
     this.onChange.emit($event);
     if (this.value === undefined || this.value === null) {
       this.renderedValue = $event;
+      this.onChangeRegister(this.renderedValue);
     } else {
       this.singleInput.nativeElement.value = this.renderedValue;
     }
@@ -415,8 +450,8 @@ export class DxcTextInputComponent
       }
       .mat-form-field.mat-focused .mat-form-field-ripple {
         background-color: ${this.invalid
-          ? "var(--inputText-error) !important"
-          : "var(--inputText-focusColor) !important"};
+        ? "var(--inputText-error) !important"
+        : "var(--inputText-focusColor) !important"};
       }
       .mat-form-field {
         font-family: var(--fontFamily);

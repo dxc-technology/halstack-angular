@@ -73,12 +73,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--button-primaryHoverFontColor"] =
       theme?.button?.primaryHoverTextColor ??
       tokens["--button-primaryHoverFontColor"];
-    proccessedTokens["--button-disabledPrimaryFontColor"] =
+    proccessedTokens["--button-primaryDisabledFontColor"] =
       this.setOpacity(theme?.button?.primaryTextColor, 0.34) ??
-      tokens["--button-disabledPrimaryFontColor"];
-    proccessedTokens["--button-disabledPrimaryBackgroundColor"] =
+      tokens["--button-primaryDisabledFontColor"];
+    proccessedTokens["--button-primaryDisabledBackgroundColor"] =
       this.setOpacity(theme?.button?.baseColor, 0.34) ??
-      tokens["--button-disabledPrimaryBackgroundColor"];
+      tokens["--button-primaryDisabledBackgroundColor"];
     proccessedTokens["--button-secondaryOutlinedColor"] =
       theme?.button?.baseColor ?? tokens["--button-secondaryOutlinedColor"];
     proccessedTokens["--button-secondaryFontColor"] =
@@ -87,12 +87,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--button-secondaryHoverFontColor"] =
       theme?.button?.secondaryHoverTextColor ??
       tokens["--button-secondaryHoverFontColor"];
-    proccessedTokens["--button-disabledSecondaryOutlinedColor"] =
+    proccessedTokens["--button-secondaryDisabledOutlinedColor"] =
       this.setOpacity(theme?.button?.baseColor, 0.34) ??
-      tokens["--button-disabledSecondaryOutlinedColor"];
-    proccessedTokens["--button-disabledSecondaryFontColor"] =
+      tokens["--button-secondaryDisabledOutlinedColor"];
+    proccessedTokens["--button-secondaryDisabledFontColor"] =
       this.setOpacity(theme?.button?.secondaryTextColor, 0.34) ??
-      tokens["--button-disabledSecondaryFontColor"];
+      tokens["--button-secondaryDisabledFontColor"];
     proccessedTokens["--button-textHoverBackgroundColor"] =
       theme?.button?.hoverBaseColor ?? tokens["--button-textHoverBackgroundColor"];
     proccessedTokens["--button-textFontColor"] =
@@ -100,9 +100,9 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--button-textHoverFontColor"] =
       theme?.button?.hoverTextColor ??
       tokens["--button-textHoverFontColor"];
-    proccessedTokens["--button-disabledTextFontColor"] =
+    proccessedTokens["--button-textDisabledFontColor"] =
       this.setOpacity(theme?.button?.textFontColor, 0.34) ??
-      tokens["--button-disabledTextFontColor"];
+      tokens["--button-textDisabledFontColor"];
 
     //CHECKBOX
     proccessedTokens["--checkbox-borderColor"] =

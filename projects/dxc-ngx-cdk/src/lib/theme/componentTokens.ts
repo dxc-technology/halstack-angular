@@ -362,6 +362,14 @@ export const componentTokens = {
   "--date-pickerHoverDateFontColor": globalTokens.black,
   "--date-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
   "--date-focusColor": globalTokens.blue,
+  "--date-pickerHoverHeaderColor": "#0000001F",
+  "--date-pickerYearColor": globalTokens.black,
+  "--date-pickerLabelColor": globalTokens.lighterBlack,
+  "--date-pickerWeekLabelColor": globalTokens.lighterBlack,
+  "--date-pickerBackgroundColorMonthArrows": globalTokens.transparent,
+  "--date-fontFamily": globalTokens.type_sans,
+  "--date-pickerHeight": "300px",
+  "--date-pickerWidth": "290px",
 
   //DIALOG
   "--dialog-overlayColor": globalTokens.black,

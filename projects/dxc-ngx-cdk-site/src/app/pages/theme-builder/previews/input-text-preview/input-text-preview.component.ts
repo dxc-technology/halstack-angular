@@ -19,4 +19,6 @@ export class InputTextPreviewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onClickSuffix(){}
 }

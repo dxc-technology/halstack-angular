@@ -1,6 +1,6 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div>
+  <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
       <dxc-date
         label="Date of birth"
@@ -10,10 +10,32 @@
       >
       </dxc-date>
     </tbuilder-component-mode>
-  </div>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-date
+        label="Date of birth"
+        format="dd-MM-yyyy"
+        margin="xsmall"
+        assistiveText="Assistive Text"
+        disabled
+      >
+      </dxc-date>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Invalid">
+      <dxc-date
+        label="Date of birth"
+        format="dd-MM-yyyy"
+        margin="xsmall"
+        assistiveText="Assistive Text"
+        invalid
+      >
+      </dxc-date>
+    </tbuilder-component-mode>
+  </background-provider>
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div style="background: black">
+  <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">
       <dxc-date
         label="Date of birth"
@@ -23,5 +45,27 @@
       >
       </dxc-date>
     </tbuilder-component-mode>
-  </div>
+
+    <tbuilder-component-mode text="Disabled" mode="dark">
+      <dxc-date
+        label="Date of birth"
+        format="dd-MM-yyyy"
+        margin="xsmall"
+        assistiveText="Assistive Text"
+        disabled
+      >
+      </dxc-date>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Invalid" mode="dark">
+      <dxc-date
+        label="Date of birth"
+        format="dd-MM-yyyy"
+        margin="xsmall"
+        assistiveText="Assistive Text"
+        invalid
+      >
+      </dxc-date>
+    </tbuilder-component-mode>
+  </background-provider>
 </div>

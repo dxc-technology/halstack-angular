@@ -492,7 +492,7 @@ export class DxcTextInputComponent
       .mat-form-field {
         &.mat-form-field-should-float {
           .mat-form-field-infix {
-            padding-bottom: 7px;
+            padding-bottom: 6px;
           }
           mat-label {
             font-size: var(--inputText-labelFontSize);
@@ -507,7 +507,7 @@ export class DxcTextInputComponent
           }
         }
         .mat-form-field-subscript-wrapper {
-          margin-top: 6px;
+          margin-top: 7px;
         }
         .mat-form-field-infix {
           padding-top: 6px;
@@ -575,6 +575,7 @@ export class DxcTextInputComponent
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--inputText-errorColorOnDark);
+          outline-style: solid !important;
         }
       }
       .mat-form-field.mat-form-field-should-float mat-label {
@@ -673,8 +674,8 @@ export class DxcTextInputComponent
         .onClickIconElement {
           .containerIcon {
             &:focus {
-              outline: -webkit-focus-ring-color auto 1px !important;
-              outline-color: var(--inputText-fontColorBase) !important;
+              outline: -webkit-focus-ring-color auto 1px;
+              outline-color: var(--inputText-fontColorBase);
             }
           }
         }
@@ -791,8 +792,8 @@ export class DxcTextInputComponent
         .onClickIconElement {
           .containerIcon {
             &:focus {
-              outline: -webkit-focus-ring-color auto 1px !important;
-              outline-color: var(--inputText-fontColorBaseOnDark) !important;
+              outline: -webkit-focus-ring-color auto 1px;
+              outline-color: var(--inputText-fontColorBaseOnDark);
             }
           }
         }
@@ -812,9 +813,11 @@ export class DxcTextInputComponent
         }
         dxc-input-suffix-icon {
           color: var(--inputText-suffixIconColorOnDark);
+          fill: var(--inputText-suffixIconColorOnDark);
         }
         dxc-input-prefix-icon {
           color: var(--inputText-prefixIconColorOnDark);
+          fill: var(--inputText-prefixIconColorOnDark);
         }
         .mat-form-field-prefix span {
           color: var(--inputText-prefixLabelFontColorOnDark);

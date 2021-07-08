@@ -4,6 +4,7 @@
   [disabled]="disabled"
   (click)="onClickHandler($event)"
   [tabindex]="disabled ? -1 : tabIndexValue"
+  [type]="type"
 >
   <img
     src="{{ iconSrc }}"

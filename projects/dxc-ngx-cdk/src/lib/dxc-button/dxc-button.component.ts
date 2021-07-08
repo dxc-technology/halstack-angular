@@ -38,6 +38,7 @@ export class DxcButtonComponent {
   @Input() iconPosition: string;
   @Input() margin: any;
   @Input() size: string;
+  @Input() type: string = "button";
   @Input() border:boolean = true;
   @Input()
   get tabIndexValue(): number {

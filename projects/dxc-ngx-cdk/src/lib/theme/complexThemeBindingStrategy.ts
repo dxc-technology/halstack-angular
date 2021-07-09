@@ -183,9 +183,9 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--header-hoverHamburguerColor"];
 
     //INPUT TEXT
-    proccessedTokens["--inputText-selectedOptionBackgroundColor"] =
+    proccessedTokens["--inputText-optionHoverBackgroundColor"] =
       this.setOpacity(theme?.inputText?.selectedBaseColor, 0.34) ??
-      tokens["--inputText-selectedOptionBackgroundColor"];
+      tokens["--inputText-optionHoverBackgroundColor"];
 
     //PAGINATOR
     proccessedTokens["--paginator-backgroundColor"] =

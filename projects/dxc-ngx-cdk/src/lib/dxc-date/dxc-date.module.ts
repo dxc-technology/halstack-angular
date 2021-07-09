@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
-
+import { MatIconModule } from "@angular/material/icon";
 import { DxcDateComponent } from "./dxc-date.component";
 import { CommonModule } from "@angular/common";
 import {
@@ -21,6 +21,7 @@ import { DatePipe } from '@angular/common';
   imports: [
     CommonModule,
     MatDatepickerModule,
+    MatIconModule,
     MatMomentDateModule,
     FormsModule,
     DxcInputTextModule,

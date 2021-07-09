@@ -34,7 +34,7 @@
     @include mat-private-theme-overridable-elevation(4, $config);
 
     .mat-option.mat-selected:not(.mat-option-multiple) {
-      background: mat-color($background, hover, 0.12);
+      background: var(--select-selectedOptionBackgroundColor);
     }
   }
 
@@ -68,10 +68,6 @@
   // The unit-less line-height from the font config.
   $line-height: mat-line-height($config, input);
 
-  .mat-select {
-    font-family: mat-font-family($config);
-  }
-
   .mat-select-trigger {
     height: $line-height * 1em;
   }
@@ -85,15 +81,5 @@
     $color: mat-get-color-config($theme);
     $density: mat-get-density-config($theme);
     $typography: mat-get-typography-config($theme);
-
-    @if $color != null {
-      @include mat-select-color($color);
-    }
-    @if $density != null {
-      @include _mat-select-density($density);
-    }
-    @if $typography != null {
-      @include mat-select-typography($typography);
-    }
   }
 }

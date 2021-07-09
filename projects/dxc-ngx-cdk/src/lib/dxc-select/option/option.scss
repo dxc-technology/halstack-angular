@@ -4,7 +4,6 @@
 @import "../a11y/a11y";
 
 .mat-option {
-  @include mat-menu-item-base();
   position: relative;
   cursor: pointer;
   outline: none;
@@ -14,6 +13,14 @@
   box-sizing: border-box;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
+  padding-left: var(--select-optionPaddingLeft);
+  padding-right: var(--select-optionPaddingRight);
+  padding-top: var(--select-optionPaddingTop);
+  padding-bottom: var(--select-optionPaddingBottom);
+
+  dxc-checkbox {
+    margin-right: var(--select-checkboxOptionSpacing);
+  }
 
   &[aria-disabled="true"] {
     @include user-select(none);
@@ -32,7 +39,7 @@
       // by the `overflow: hidden` on the panel wrapping the options, whereas a border
       // will push the element inwards. This could be done using `outline-offset: -1px`,
       // however the property isn't supported on IE11.
-      border: solid $high-contrast-border-width currentColor;
+
       margin: 0;
     }
 
@@ -54,6 +61,13 @@
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  span {
+    font-family: var(--select-fontFamily);
+    color: var(--select-optionsFontColor);
+    font-size: var(--select-optionsFontSize);
+    font-style: var(--select-optionsFontStyle);
+
+  }
 }
 
 // Increase specificity because ripple styles are part of the `mat-core` mixin and can
@@ -67,19 +81,16 @@
   pointer-events: none;
 }
 
-.mat-option-pseudo-checkbox {
-  $margin: $mat-menu-side-padding / 2;
-  margin-right: $margin;
-
-  [dir="rtl"] & {
-    margin-left: $margin;
-    margin-right: 0;
-  }
-}
-
 .mat-option-text {
   dxc-option-icon {
     display: flex;
     align-items: center;
+    color: var(--select-iconColor);
+    svg, img {
+      height: var(--select-iconSize);
+      width: var(--select-iconSize);
+
+
+    }
   }
 }

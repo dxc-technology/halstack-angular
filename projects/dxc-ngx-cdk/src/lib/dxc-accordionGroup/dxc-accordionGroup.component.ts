@@ -197,13 +197,13 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
       dxc-accordion.one,
       dxc-accordion:not(.first):not(.middle):not(.last) {
         .mat-accordion .mat-expansion-panel {
-          border-radius: 4px !important;
+          border-radius: var(--accordion-borderRadius) !important;
         }
       }
       dxc-accordion.first {
         .mat-accordion .mat-expansion-panel {
-          border-top-right-radius: 4px;
-          border-top-left-radius: 4px;
+          border-top-right-radius: var(--accordion-borderRadius);
+          border-top-left-radius: var(--accordion-borderRadius);
           border-bottom-right-radius: 0px;
           border-bottom-left-radius: 0px;
         }
@@ -218,8 +218,8 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
       }
       dxc-accordion.last {
         .mat-accordion .mat-expansion-panel {
-          border-bottom-right-radius: 4px;
-          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: var(--accordion-borderRadius);
+          border-bottom-left-radius: var(--accordion-borderRadius);
           border-top-right-radius: 0px;
           border-top-left-radius: 0px;
         }

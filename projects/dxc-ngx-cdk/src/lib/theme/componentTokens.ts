@@ -554,7 +554,7 @@ export const componentTokens = {
   "--heading-level5LetterSpacing": globalTokens.type_spacing_wide_01,
 
   //INPUT TEXT
-  "--inputText-selectedOptionBackgroundColor": globalTokens.lightGrey,
+  "--inputText-optionHoverBackgroundColor": globalTokens.lightGrey,
   "--inputText-scrollBarThumbColor": globalTokens.darkGrey,
   "--inputText-scrollBarTrackColor": globalTokens.lightGrey,
   "--inputText-assistiveTextFontColor": globalTokens.black,
@@ -591,6 +591,8 @@ export const componentTokens = {
   "--inputText-underlineFocusColor": globalTokens.black,
   "--inputText-underlineFocusColorOnDark": globalTokens.white,
   "--inputText-underlineThickness": "1px",
+  "--inputText-optionActiveBackgroundColor": "#D9D9D9",
+  "--inputText-optionFocusColor": "#005FCC",
 
   //LINK
   "--link-fontColor": globalTokens.blue,
@@ -1096,7 +1098,7 @@ export const componentTokens = {
   "--wizard-stepContainerSelectedFontColor": globalTokens.white,
   "--wizard-stepContainerSelectedBackgroundColor": globalTokens.purple,
   "--wizard-stepContainerBackgroundColor": globalTokens.white,
-  "--wizard-stepContainerIconSize": "19px",
+  "--wizard-stepContainerIconSize": "20px",
   "--wizard-labelFontSize": globalTokens.type_scale_03,
   "--wizard-labelFontFamily": globalTokens.type_sans,
   "--wizard-labelFontStyle": globalTokens.type_normal,

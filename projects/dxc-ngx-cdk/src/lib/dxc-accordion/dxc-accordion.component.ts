@@ -144,16 +144,29 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           }
         }
       }
+      .mat-accordion .mat-expansion-panel:last-of-type{
+        border-bottom-right-radius: var(--accordion-borderRadius);
+        border-bottom-left-radius: var(--accordion-borderRadius);
+      }
+      .mat-accordion .mat-expansion-panel:first-of-type{
+        border-top-right-radius: var(--accordion-borderRadius);
+        border-top-left-radius: var(--accordion-borderRadius);
+      }
+
       .mat-expansion-panel:not(.mat-expanded)
         .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused {
         background: transparent !important;
       }
-      mat-expansion-panel {
+      .mat-expansion-panel {
+        border-radius: var(--accordion-borderRadius);
+
+
         background-color: var(--accordion-backgroundColor) !important;
         box-shadow: var(--accordion-boxShadowOffsetX)
           var(--accordion-boxShadowOffsetY) var(--accordion-boxShadowBlur)
           var(--accordion-boxShadowColor) !important;
         color: var(--accordion-fontColorBase);
+
         mat-expansion-panel-header {
           padding-right: var(--accordion-headerPaddingRight);
           padding-left: var(--accordion-headerPaddingLeft);

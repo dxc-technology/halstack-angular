@@ -527,7 +527,7 @@ export class DxcTextInputComponent
         font-style: var(--inputText-assistiveTextFontStyle);
         font-weight: var(--inputText-assistiveTextFontWeight);
       }
-      .mat-form-field-appearance-standard .mat-form-field-underline{
+      .mat-form-field-appearance-standard .mat-form-field-underline {
         height: var(--inputText-underlineThickness);
       }
     `;
@@ -592,6 +592,7 @@ export class DxcTextInputComponent
 
   getAutoCompleteStyle() {
     return css`
+      padding: 0px 2px;
       &::-webkit-scrollbar {
         width: 3px;
       }
@@ -606,21 +607,26 @@ export class DxcTextInputComponent
       }
       .mat-option {
         color: var(--inputText-fontColorBase);
+        height: 36px;
         .mat-option-text {
           font-family: var(--inputText-fontFamilyBase);
           font-size: var(--inputText-fontSizeBase);
         }
       }
       .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
-        background-color: var(
-          --inputText-selectedOptionBackgroundColor
-        ) !important;
         color: var(--inputText-fontColorBase);
       }
-      .mat-option:hover:not(.mat-option-disabled),
-      .mat-option:focus:not(.mat-option-disabled) {
-        background-color: var(--inputText-selectedOptionBackgroundColor);
+      .mat-option:hover:not(.mat-option-disabled) {
+        background-color: var(--inputText-optionHoverBackgroundColor);
         color: var(--inputText-hoverOptionColor);
+      }
+      .mat-option:focus:not(.mat-option-disabled) {
+        outline: -webkit-focus-ring-color auto 2px;
+        outline-color: var(--inputText-optionFocusColor);
+        outline-style: solid !important;
+      }
+      .mat-option:active:not(.mat-option-disabled) {
+        background-color: var(--inputText-optionActiveBackgroundColor);
       }
       .errorOption {
         .mat-option-text {
@@ -730,7 +736,9 @@ export class DxcTextInputComponent
                 background-color: var(--inputText-underlineColor) !important;
                 .mat-form-field-ripple {
                   height: 0px;
-                  background-color: var(--inputText-underlineFocusColor) !important;
+                  background-color: var(
+                    --inputText-underlineFocusColor
+                  ) !important;
                 }
               }
             `}

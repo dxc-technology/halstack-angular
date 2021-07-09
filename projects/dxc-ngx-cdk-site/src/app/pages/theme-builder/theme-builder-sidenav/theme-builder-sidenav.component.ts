@@ -150,4 +150,7 @@ export class ThemeBuilderSidenavComponent implements OnInit {
   ngOnDestroy(): void {
     this.themeBuilderService.destroyChangeCustomThemeProperty();
   }
+
+  capitalizeFirstLetter = (menuItem: string) => menuItem.charAt(0).toUpperCase() + menuItem.slice(1);
+
 }

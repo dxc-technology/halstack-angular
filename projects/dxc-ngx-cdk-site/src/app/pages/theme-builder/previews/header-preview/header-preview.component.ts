@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderPreviewComponent implements OnInit {
 
+  buttonMargin = {right: "small", left: "small"};
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }

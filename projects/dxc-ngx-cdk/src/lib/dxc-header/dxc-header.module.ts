@@ -5,10 +5,11 @@ import { DxcHeaderComponent } from "./dxc-header.component";
 import { ClosableDirective } from "./directives/closable.directive";
 import { DxcDropdownModule } from '../dxc-dropdown/dxc-dropdown.module';
 import { DxcHeaderDropdownComponent } from './dxc-header-dropdown/dxc-header-dropdown.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [DxcHeaderComponent, DxcHeaderDropdownComponent, ClosableDirective],
-  imports: [CommonModule, MatToolbarModule, DxcDropdownModule],
+  imports: [CommonModule, MatToolbarModule, DxcDropdownModule, PipesModule],
   exports: [DxcHeaderComponent, DxcHeaderDropdownComponent, ClosableDirective],
 })
 export class DxcHeaderModule {}

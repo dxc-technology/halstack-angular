@@ -172,8 +172,8 @@ export class DxcButtonComponent {
           img,
           svg {
             ${this.iconPosition === "before"
-              ? "margin-right: 10px;"
-              : "margin-left: 10px;"}
+              ? "margin-right: 8px;"
+              : "margin-left: 8px;"}
             height: var(--button-iconSize);
             width: var(--button-iconSize);
             z-index: 20;
@@ -308,7 +308,7 @@ export class DxcButtonComponent {
             color: var(--button-primaryDisabledFontColor) !important;
           }
           &:focus:not([disabled]) {
-            outline: -webkit-focus-ring-color auto 1px;
+            outline: -webkit-focus-ring-color auto 2px;
             outline-color: var(--button-focusColor);
           }
           &:active:not([disabled]) {
@@ -337,7 +337,7 @@ export class DxcButtonComponent {
             color: var(--button-primaryDisabledFontColorOnDark) !important;
           }
           &:focus:not([disabled]) {
-            outline: -webkit-focus-ring-color auto 1px;
+            outline: -webkit-focus-ring-color auto 2px;
             outline-color: var(--button-focusColor);
           }
           &:active:not([disabled]) {
@@ -371,7 +371,7 @@ export class DxcButtonComponent {
             }
           }
           &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
+            outline: -webkit-focus-ring-color auto 2px;
             outline-color: var(--button-focusColor);
             background-color: var(--button-secondaryBackgroundColor);
             color: var(--button-secondaryHoverFontColor);

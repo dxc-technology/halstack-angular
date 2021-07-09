@@ -215,6 +215,7 @@ export class DxcLinkComponent {
         }
 
         &:focus {
+          outline: -webkit-focus-ring-color auto 2px;
           outline-color: var(--link-focusColor);
           color: var(--link-focusColor) !important;
           padding-bottom: var(--link-underlineSpacing) !important;

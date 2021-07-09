@@ -1003,8 +1003,7 @@
     "circleDisabledBorderColor": "color",
     "circleWidth": "length",
     "circleHeight": "length",
-    "stepContainerIconHeight": "length",
-    "stepContainerIconWidth": "length",
+    "stepContainerIconSize": "length",
     "separatorBorderThickness": "bWidth",
     "separatorBorderStyle": "bStyle",
     "separatorColor": "color"

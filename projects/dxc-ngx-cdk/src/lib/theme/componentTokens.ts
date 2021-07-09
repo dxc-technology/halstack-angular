@@ -1096,7 +1096,7 @@ export const componentTokens = {
   "--wizard-stepContainerSelectedFontColor": globalTokens.white,
   "--wizard-stepContainerSelectedBackgroundColor": globalTokens.purple,
   "--wizard-stepContainerBackgroundColor": globalTokens.white,
-  "--wizard-stepContainerIconSize": "19px",
+  "--wizard-stepContainerIconSize": "20px",
   "--wizard-labelFontSize": globalTokens.type_scale_03,
   "--wizard-labelFontFamily": globalTokens.type_sans,
   "--wizard-labelFontStyle": globalTokens.type_normal,

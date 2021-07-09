@@ -195,7 +195,7 @@
     "focusColor": "#005FCC",
     "labelFontLineHeight": "1em",
     "labelLetterSpacing": "0.025em",
-    "iconSize": "20px",		
+    "iconSize": "20px",
     "height": "40px"
   },
   "card": {
@@ -367,7 +367,7 @@
     "fontFamilyBase": "Open Sans, sans-serif",
     "fontSizeBase": "16px",
     "hamburguerFocusColor": "#005FCC",
-    "hamburguerFontFamily": "",
+    "hamburguerFontFamily": "Open Sans",
     "hamburguerFontStyle": "normal",
     "hamburguerFontColor": "",
     "hamburguerFontSize": "10px",

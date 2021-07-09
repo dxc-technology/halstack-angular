@@ -12,5 +12,7 @@ export class SelectService {
   public selected: BehaviorSubject<any> = new BehaviorSubject(null);
 
   public iconPosition: BehaviorSubject<string> = new BehaviorSubject("before");
+
+  public isDarkTheme:boolean = false;
   
 }

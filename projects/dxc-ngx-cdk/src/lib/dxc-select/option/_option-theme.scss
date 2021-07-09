@@ -48,12 +48,6 @@
 
 @mixin mat-option-typography($config-or-theme) {
   $config: mat-get-typography-config($config-or-theme);
-  .mat-option {
-    font: {
-      family: mat-font-family($config);
-      size: mat-font-size($config, subheading-2);
-    }
-  }
 }
 
 @mixin _mat-option-density($config-or-theme) {}

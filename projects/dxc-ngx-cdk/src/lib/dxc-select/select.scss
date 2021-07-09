@@ -99,15 +99,16 @@ $mat-select-placeholder-arrow-space: 2 *
 
 .mat-select-panel {
   @include mat-menu-base();
+  background: var(--select-optionsBackgroundColor);
   padding-top: 0;
   padding-bottom: 0;
   max-height: $mat-select-panel-max-height;
   min-width: 100%; // prevents some animation twitching and test inconsistencies in IE11
-  border-radius: 4px;
+  border-color: var(--select-optionsBorderColor);
+  border-style: var(--select-optionsBorderStyle);
+  border-width: var(--select-optionsBorderThickness);
   outline: 0;
-  @include cdk-high-contrast(active, off) {
-    outline: solid 1px;
-  }
+
   &::-webkit-scrollbar {
     width: 3px;
     margin: 5px;
@@ -127,7 +128,7 @@ $mat-select-placeholder-arrow-space: 2 *
   .mat-optgroup-label,
   .mat-option {
     font-size: inherit;
-    font-family: var(--fontFamily);
+    font-family: var(--select-fontFamily);
     line-height: $mat-select-item-height;
     height: $mat-select-item-height;
   }

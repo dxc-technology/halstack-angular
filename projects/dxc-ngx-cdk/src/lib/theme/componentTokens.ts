@@ -672,15 +672,56 @@ export const componentTokens = {
   "--radio-fontWeight": globalTokens.type_regular,
 
   //SELECT
+
+  "--select-fontFamily": "Open Sans, sans-serif",
+
+  "--select-labelFontSize": globalTokens.type_scale_03,
+  "--select-labelFontStyle": "normal",
+  "--select-labelFontWeight": "400",
+
+  "--select-assistiveTextFontColor": globalTokens.black,
+  "--select-assistiveTextFontColorOnDark": globalTokens.white,
+  "--select-assistiveTextFontSize": globalTokens.type_scale_01,
+  "--select-assistiveTextFontStyle": globalTokens.type_normal,
+  "--select-assistiveTextFontWeight": globalTokens.type_regular,
+
+  "--select-optionsBackgroundColor": globalTokens.white,
+  "--select-optionsBorderColor": globalTokens.type_no_line,
+  "--select-optionsBorderThickness": "0px",
+  "--select-optionsBorderStyle": "solid",
+  "--select-optionsFontColor": "",
+  "--select-optionsFontSize": globalTokens.type_scale_root,
+  "--select-optionsFontStyle": globalTokens.type_normal,
+  "--select-optionsFontWeight": globalTokens.type_regular,
+  
+  "--select-iconOptionSpacing": "12px",
+  "--select-iconColor": "",
+  "--select-iconSize": "20px",
   "--select-selectedOptionBackgroundColor": globalTokens.lightGrey,
+  "--select-selectedOptionBackgroundColorOnDark": globalTokens.lightGrey,
+  "--select-hoveredOptionBackgroundColor": globalTokens.lightWhite,
+  "--select-hoveredOptionBackgroundColorOnDark": globalTokens.lightWhite,
+  "--select-optionPaddingBottom": "6px",
+  "--select-optionPaddingTop": "6px",
+  "--select-optionPaddingLeft": "16px",
+  "--select-optionPaddingRight": "16px",
+  "--select-checkboxOptionSpacing": "12px",
+  
   "--select-color": globalTokens.black,
-  "--select-error": globalTokens.darkRed,
+  "--select-colorOnDark": globalTokens.white,
+  "--select-errorColor": globalTokens.darkRed,
+  "--select-errorColorOnDark": "#FE344F",
+  
   "--select-required": globalTokens.darkRed,
+  
   "--select-focusColor": globalTokens.blue,
+  "--select-focusColorOnDark": globalTokens.blue,
+  
   "--select-disabledColor": globalTokens.lighterBlack,
+  "--select-disabledColorOnDark": "#575757",
+  
   "--select-scrollBarThumbColor": globalTokens.darkGrey,
   "--select-scrollBarTrackColor": globalTokens.lightGrey,
-  "--select-hoverOptionBackgroundColor": globalTokens.lightWhite,
 
   //SIDENAV
   "--sidenav-backgroundColor": globalTokens.lighterGrey,

@@ -205,6 +205,9 @@ export class DxcCheckboxComponent implements OnInit {
           white-space: normal;
           span.mat-checkbox-label {
             span.checkboxLabel {
+              margin: ${inputs.labelPosition === "after"
+              ? "0px 0px 0px 2px;"
+              : "0px 2px 0px 0px;"};
               word-break: normal;
               color: var(--checkbox-fontColor);
               font-family: var(--checkbox-fontFamily) !important;

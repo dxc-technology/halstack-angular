@@ -3,9 +3,12 @@
     <dxc-header margin="xsmall" underlined="true" style="position:relative;">
       <div id="responsive">
         <dxc-button label="Custom Button"> </dxc-button>
+        <p>Header text</p>
       </div>
-      <div id="unresponsive">
-        <dxc-button mode="primary" label="Custom Button"></dxc-button>
+      <div id="unresponsive" style="display: flex;
+      align-items: center;">
+        <p>Header text</p>
+        <dxc-button mode="primary" label="Custom Button" [margin]="buttonMargin"></dxc-button>
       </div>
     </dxc-header>
   </tbuilder-component-mode>

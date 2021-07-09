@@ -2,6 +2,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { Stylable } from '../../model/stylable';
 import { css } from 'emotion';
 import { ThemeBuilderService } from '../../service/theme-builder.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'tb-logo-image',
   templateUrl: './logo-config.component.html'
@@ -16,14 +17,18 @@ export class LogoConfigComponent implements OnInit, Stylable {
 
   @HostBinding("class") className;
 
-  constructor(private themeBuilderService: ThemeBuilderService) {
-
-   }
+  constructor(private themeBuilderService: ThemeBuilderService, private sanitizer: DomSanitizer) {
+  }
 
   changeLogoSrc = (event) => {
-    const url = URL.createObjectURL(event.target.files[0]);
+    const url =  URL.createObjectURL(event.target.files[0]);
     this.themeBuilderService.onChangeCustomThemeProperty(this.propertyName, url);
+    this.logoSrc = url;
   };
+
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+}
 
 
   getDynamicStyle = () => css`

@@ -52,12 +52,12 @@ export class ThemeDirective implements OnInit, OnDestroy {
     }
   }
 
-  setVariableLinks(theme: any): void {
+  setVariableLinks(themeObj: any): void {
 
-    const footerLogo = theme.theme?.footer?.logo ?? componentIcons.footer.logo;
-    const headerLogo = theme.theme?.header?.logo ?? componentIcons.header.logo;
+    const footerLogo = themeObj.theme?.footer?.logo ?? componentIcons.footer.logo;
+    const headerLogo = themeObj.theme?.header?.logo ?? componentIcons.header.logo;
     const headerLogoResponsive =
-      theme?.theme?.header?.logoResponsive ?? componentIcons.header.logoResponsive;
+    themeObj?.theme?.header?.logoResponsive ?? componentIcons.header.logoResponsive;
     console.debug(`Logo del header ${headerLogo}`);
     document.body.setAttribute("footer-logo", footerLogo);
     document.body.setAttribute("header-logo", headerLogo);

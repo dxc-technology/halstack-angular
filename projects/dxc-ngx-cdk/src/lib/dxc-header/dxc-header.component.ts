@@ -163,9 +163,6 @@ export class DxcHeaderComponent implements OnChanges {
 
    getLogoDxc() {
     const pic = document.body.getAttribute("header-logo");
-    // if (pic && pic.startsWith('blob')){
-    //   return URL.createObjectURL(pic);
-    // }
     return pic;
   }
 

@@ -694,6 +694,7 @@
     "progressValueTextAlign": "textAlign",
     "overlayBackgroundColor": "color",
     "overlayOpacity": "alphaValue",
+    "overlayTrackCircleColor": "color",
     "overlayLabelFontFamily": "fFamily",
     "overlayLabelFontSize": "length",
     "overlayLabelFontStyle": "fStyle",

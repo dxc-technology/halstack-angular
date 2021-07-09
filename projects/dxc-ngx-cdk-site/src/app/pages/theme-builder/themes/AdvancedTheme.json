@@ -377,7 +377,7 @@
     "hamburguerHoverColor": "#dbdbdb",
     "hamburguerTextTransform": "uppercase",
     "logo": "assets/DXC_Logo_Black_RGB.svg",
-    "logoResponsive": "assets/dxc_logo_blk_rgb.svg",
+    "logoResponsive": "assets/DXC_Logo_Black_RGB.svg",
     "logoHeight": "32px",
     "logoWidth": "auto",
     "menuBackgroundColor": "#ffffff",

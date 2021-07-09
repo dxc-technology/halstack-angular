@@ -111,6 +111,8 @@ import { SelectService } from "./services/select.service";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+
 let nextUniqueId = 0;
 
 /**
@@ -598,7 +600,8 @@ export abstract class _MatSelectBase<C>
     private utils: CssUtils,
     @Optional()
     @Inject(MAT_SELECT_CONFIG)
-    private _defaultOptions?: MatSelectConfig
+    private _defaultOptions?: MatSelectConfig,
+    @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     super(elementRef, _defaultErrorStateMatcher, _parentForm, ngControl);
 
@@ -637,6 +640,13 @@ export abstract class _MatSelectBase<C>
     this._controlled = this.value !== undefined ? true : false;
     this.className = `mat-select ${this.getDynamicStyle()}`;
     this.service.iconPosition.next(this.iconPosition);
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.service.isDarkTheme = true;
+      } else if (value === "light") {
+        this.service.isDarkTheme = false;
+      }
+    });
   }
 
   ngAfterContentInit() {
@@ -1318,19 +1328,24 @@ export abstract class _MatSelectBase<C>
         white-space: nowrap;
         left: 0px;
         top: ${this.panelOpen || this.floatingLabel ? "10px" : "19px"};
-        font-size: ${this.panelOpen || this.floatingLabel ? "12px" : "16px"};
-        font-family: var(--fontFamily);
         transform: ${this.floatingStyles()};
-        color: ${this.invalid && (this.panelOpen || this.floatingLabel)
-          ? "var(--select-error)"
-          : "var(--select-color)"};
+        color: ${this.invalid
+          ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
+          : this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           width 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           font-size 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-
+        span {
+          font-size: ${this.panelOpen || this.floatingLabel
+            ? "calc(var(--select-labelFontSize) * 0.75)"
+            : "var(--select-labelFontSize)"};
+          font-family: var(--select-fontFamily);
+          font-style: var(--select-labelFontStyle);
+          font-weight: var(--select-labelFontWeight);
+        }
         .select-required {
           color: var(--select-required);
         }
@@ -1346,6 +1361,9 @@ export abstract class _MatSelectBase<C>
 
       .mat-select-value {
         height: 32px;
+        span {
+          font-family: var(--select-fontFamily);
+        }
       }
 
       .mat-select-trigger {
@@ -1354,22 +1372,28 @@ export abstract class _MatSelectBase<C>
         border-top-color: transparent;
         :focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--select-focusColor);
+          outline-color: ${this.service.isDarkTheme ?  "var(--select-focusColorOnDark)" : "var(--select-focusColor)"};
         }
       }
 
       .underline {
-        height: ${this.value ? "1.2px" : "1px"};
-        background-color: var(--select-color);
+        height: 1px;
+        background-color: ${this.invalid
+          ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
+          : this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
         position: absolute;
         bottom: ${this.value ? "19.5px" : "18.5px"};
         width: 100%;
       }
 
       .assistiveText {
-        font-size: 12px;
-        font-family: var(--fontFamily);
-        color: ${this.invalid ? "var(--select-error)" : "var(--select-color)"};
+        font-size: var(--select-assistiveTextFontSize);
+        font-family: var(--select-fontFamily);
+        font-style: var(--select-assistiveTextFontStyle);
+        font-weight: var(--select-assistiveTextFontWeight);
+        color: ${this.invalid
+          ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
+          : this.service.isDarkTheme ?  "var(--select-assistiveTextFontColorOnDark)" : "var(--select-assistiveTextFontColor)"};
 
         position: absolute;
         width: 100%;
@@ -1387,32 +1411,32 @@ export abstract class _MatSelectBase<C>
 
       .underline {
         height: 1px;
-        background-color: var(--select-disabledColor);
+        background-color:${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"};
         position: absolute;
         bottom: ${this.value ? "19.5px" : "18.5px"};
         width: 100%;
       }
 
       .assistiveText {
-        color: var(--select-disabledColor) !important;
+        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"} !important;
       }
       .selectLabel {
-        color: var(--select-disabledColor) !important;
+        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"} !important;
       }
       .mat-select-arrow {
-        color: var(--select-disabledColor) !important;
+        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"} !important;
       }
-      .mat-select-value {
-        color: var(--select-disabledColor);
+      .mat-select-value span {
+        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"};
       }`
-        : `.mat-select-value {
-        color: var(--select-color);
+        : `.mat-select-value span {
+        color: ${this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
       }
       .mat-select-arrow {
-        color: var(--select-color);
+        color: ${this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
       }
       div.underline.opened {
-        border-bottom: 2px solid var(--select-color);
+        border-bottom: 2px solid ${this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
       }
       `}
     `;

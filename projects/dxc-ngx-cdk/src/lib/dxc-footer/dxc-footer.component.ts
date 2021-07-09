@@ -171,6 +171,9 @@ export class DxcFooterComponent implements OnChanges {
       justify-content: space-between;
       flex-direction: ${responsive ? "column" : "row"};
       align-items: ${responsive ? "center" : "flex-end"};
+      border-top: var(--footer-bottomLinksDividerThickness)
+        var(--footer-bottomLinksDividerStyle)
+        var(--footer-bottomLinksDividerColor);
 
       .copyrightStyle {
         color: var(--footer-copyrightFontColor);
@@ -185,16 +188,13 @@ export class DxcFooterComponent implements OnChanges {
 
       .bottomLinksStyle {
         padding-top: var(--footer-bottomLinksDividerSpacing);
-        border-top: var(--footer-bottomLinksDividerThickness)
-          var(--footer-bottomLinksDividerStyle)
-          var(--footer-bottomLinksDividerColor);
         display: inline-flex;
         flex-wrap: wrap;
         max-width: ${responsive ? "100%" : "60%"};
         width: ${responsive ? "100%" : "auto"};
         text-align: ${responsive ? "center" : ""};
         margin: ${responsive ? "40px 0 40px 0" : ""};
-        color:var(--footer-bottomLinksFontColor);
+        color: var(--footer-bottomLinksFontColor);
         .point {
           margin: 0px 10px;
           font-family: var(--footer-bottomLinksFontFamily);
@@ -203,7 +203,8 @@ export class DxcFooterComponent implements OnChanges {
           font-weight: var(--footer-bottomLinksFontWeight);
           color: var(--footer-bottomLinksFontColor);
         }
-        a, a *{
+        a,
+        a * {
           text-decoration: var(--footer-bottomLinksTextDecoration);
           font-size: var(--footer-bottomLinksFontSize);
           font-family: var(--footer-bottomLinksFontFamily);

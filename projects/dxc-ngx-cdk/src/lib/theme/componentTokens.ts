@@ -441,7 +441,7 @@ export const componentTokens = {
   "--footer-minHeight": "124px",
 
   "--footer-bottomLinksDividerColor": "#1489fb",
-  "--footer-bottomLinksDividerThickness": "2px",
+  "--footer-bottomLinksDividerThickness": "1px",
   "--footer-bottomLinksDividerStyle": "solid",
   "--footer-bottomLinksDividerSpacing": "6px",
   "--footer-bottomLinksFontFamily": "Open Sans, sans-serif",

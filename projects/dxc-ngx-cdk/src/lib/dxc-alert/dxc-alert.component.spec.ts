@@ -10,7 +10,7 @@ describe("DxcAlertComponent tests", () => {
     });
 
     expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("INFORMATION"));
+    expect(dxcAlert.getByText("information"));
   });
 
   test("should render dxc-alert warning", async () => {
@@ -21,7 +21,7 @@ describe("DxcAlertComponent tests", () => {
     });
 
     expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("WARNING"));
+    expect(dxcAlert.getByText("warning"));
   });
 
   test("should render dxc-alert error", async () => {
@@ -32,7 +32,7 @@ describe("DxcAlertComponent tests", () => {
     });
 
     expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("ERROR"));
+    expect(dxcAlert.getByText("error"));
   });
 
   test("should render dxc-alert confirm", async () => {
@@ -43,7 +43,7 @@ describe("DxcAlertComponent tests", () => {
     });
 
     expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("SUCCESS"));
+    expect(dxcAlert.getByText("success"));
   });
 
   test("should dxc-alert call onClose", async () => {

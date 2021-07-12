@@ -238,12 +238,20 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
 
   public openCalendar() {
-    this._dxcCalendar.activeDate = this.dateValue.isValid()
-      ? this.dateValue
-      : moment();
-    this._dxcCalendar.currentView = "month";
-    this._dxcTrigger.openPopover();
-    this.resetCalendarState(true);
+    if (this._isCalendarOpened) {
+      if (!this._isOpenClicked && !this._isSelectingDate) {
+        this.closeCalendar();
+      } else {
+        this._isOpenClicked = false;
+      }
+    } else {
+      this._dxcCalendar.activeDate = this.dateValue.isValid()
+        ? this.dateValue
+        : moment();
+      this._dxcCalendar.currentView = "month";
+      this._dxcTrigger.openPopover();
+      this.resetCalendarState(true);
+    }
   }
 
   public closeCalendar() {

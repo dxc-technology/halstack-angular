@@ -186,6 +186,7 @@ export class DxcHeaderComponent implements OnChanges {
         font-size: unset;
         .mat-toolbar-row {
           min-height: var(--header-minHeight);
+          padding: 0 24px;
         }
         &.underlined {
 
@@ -207,7 +208,7 @@ export class DxcHeaderComponent implements OnChanges {
       }
       .dxc-logo,
       img {
-        max-height: 32px;
+        height: 40px;
         width: auto;
         vertical-align: middle;
       }

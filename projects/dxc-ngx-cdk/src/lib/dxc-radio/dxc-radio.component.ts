@@ -213,8 +213,10 @@ export class DxcRadioComponent implements OnInit {
             .mat-radio-label {
               .mat-radio-container {
                 .mat-radio-outer-circle {
-                  outline: -webkit-focus-ring-color auto 1px;
+                  outline: -webkit-focus-ring-color auto 2px;
                   outline-color: var(--radio-focusColorOnDark);
+                  outline-offset: 2px;
+                  outline-style: solid;
                 }
               }
             }
@@ -256,8 +258,10 @@ export class DxcRadioComponent implements OnInit {
             .mat-radio-label {
               .mat-radio-container {
                 .mat-radio-outer-circle {
-                  outline: -webkit-focus-ring-color auto 1px;
+                  outline: -webkit-focus-ring-color auto 2px;
                   outline-color: var(--radio-focusColor);
+                  outline-offset: 2px;
+                  outline-style: solid;
                 }
               }
             }

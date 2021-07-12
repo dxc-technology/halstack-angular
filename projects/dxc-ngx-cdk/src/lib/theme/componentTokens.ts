@@ -401,11 +401,11 @@ export const componentTokens = {
   "--checkbox-focusColor": globalTokens.blue,
 
   //CHIP
-  "--chip-backgroundColor": globalTokens.darkWhite,
+  "--chip-backgroundColor": "#e6e6e6",
   "--chip-borderColor": "transparent",
   "--chip-fontColor": globalTokens.hal_black,
-  "--chip-disabledBackgroundColor": globalTokens.mediumWhite,
-  "--chip-disabledFontColor": globalTokens.lighterBlack,
+  "--chip-disabledBackgroundColor": globalTokens.hal_grey_l_95,
+  "--chip-disabledFontColor": "#999999",
   "--chip-fontFamily": globalTokens.type_sans,
   "--chip-fontSize": globalTokens.type_scale_03,
   "--chip-fontWeight": "400",
@@ -414,13 +414,16 @@ export const componentTokens = {
   "--chip-borderThickness": "2px",
   "--chip-borderStyle": "solid",
   "--chip-height": "18px",
-  "--chip-contentPaddingLeft": "20px",
-  "--chip-contentPaddingRight": "20px",
+  "--chip-contentPaddingLeft": "16px",
+  "--chip-contentPaddingRight": "16px",
   "--chip-contentPaddingTop": "10px",
   "--chip-contentPaddingBottom": "10px",
   "--chip-iconSize": "24px",
   "--chip-iconPaddingLeft": "0px",
   "--chip-iconPaddingRight": "0px",
+  "--chip-iconColor": globalTokens.hal_black,
+  "--chip-disabledIconColor": "#999999", 
+  "--chip-focusColor": globalTokens.blue,
 
   //DATE
   "--date-pickerSelectedDateBackgroundColor": globalTokens.purple,

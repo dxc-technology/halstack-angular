@@ -230,11 +230,11 @@
     "focusColor": "#005FCC"
   },
   "chip": {
-    "backgroundColor": "#eeeeee",
+    "backgroundColor": "#e6e6e6",
     "borderColor": "transparent",
     "fontColor": "#000000",
-    "disabledBackgroundColor": "#f9f9f9",
-    "disabledFontColor": "#b1b1b1",
+    "disabledBackgroundColor": "#f2f2f2",
+    "disabledFontColor": "#999999",
     "fontFamily": "Open Sans, sans-serif",
     "fontSize": "1rem",
     "fontWeight": "400",
@@ -243,13 +243,16 @@
     "borderThickness": "2px",
     "borderStyle": "solid",
     "height": "18px",
-    "contentPaddingLeft": "20px",
-    "contentPaddingRight": "20px",
+    "contentPaddingLeft": "16px",
+    "contentPaddingRight": "16px",
     "contentPaddingTop": "10px",
     "contentPaddingBottom": "10px",
     "iconSize": "24px",
     "iconPaddingLeft": "0px",
-    "iconPaddingRight": "0px"
+    "iconPaddingRight": "0px",
+    "iconColor": "#000000",
+    "disabledIconColor": "#999999",
+    "focusColor": "#005FCC"
   },
   "date": {
     "pickerSelectedDateBackgroundColor": "#6f2c91",

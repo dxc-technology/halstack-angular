@@ -248,8 +248,11 @@
     "contentPaddingTop": "length",
     "contentPaddingBottom": "length",
     "iconSize": "length",
-    "iconPaddingLeft": "lenght",
-    "iconPaddingRight": "lenght"
+    "iconPaddingLeft": "length",
+    "iconPaddingRight": "length",
+    "iconColor": "color",
+    "disabledIconColor": "color",
+    "focusColor": "color"
   },
   "date": {
     "pickerSelectedDateBackgroundColor": "color",

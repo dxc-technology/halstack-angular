@@ -5,25 +5,56 @@
 
   <tbuilder-component-mode text="With Suffix">
     <dxc-chip
-      [suffixIconSrc]="iconPath"
       label="Chip with suffix"
       margin="xsmall"
+      (suffixIconClick)="onClick()"
+    >
+      <dxc-chip-suffix-icon>
+        <svg height="24" viewBox="0 0 24 24" width="24" fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          ></path>
+        </svg> </dxc-chip-suffix-icon
     ></dxc-chip>
   </tbuilder-component-mode>
 
   <tbuilder-component-mode text="With Prefix">
-    <dxc-chip
-      [prefixIconSrc]="iconPath"
-      label="Chip with prefix"
-      margin="xsmall"
-    ></dxc-chip>
+    <dxc-chip label="Chip with prefix" margin="xsmall" (prefixIconClick)="onClick()"
+      ><dxc-chip-prefix-icon>
+        <svg height="24" viewBox="0 0 24 24" width="24" fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          ></path>
+        </svg>
+      </dxc-chip-prefix-icon>
+    </dxc-chip>
   </tbuilder-component-mode>
 
   <tbuilder-component-mode text="Only Icon">
-    <dxc-chip [prefixIconSrc]="iconPath" margin="xsmall"></dxc-chip>
+    <dxc-chip margin="xsmall">
+      <dxc-chip-prefix-icon>
+        <svg height="24" viewBox="0 0 24 24" width="24" fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          ></path>
+        </svg>
+      </dxc-chip-prefix-icon>
+    </dxc-chip>
   </tbuilder-component-mode>
 
   <tbuilder-component-mode text="Disabled">
-    <dxc-chip [prefixIconSrc]="iconPath" label="Chip disabled" margin="xsmall" [disabled]="true"></dxc-chip>
+    <dxc-chip label="Chip disabled" margin="xsmall" [disabled]="true">
+      <dxc-chip-prefix-icon>
+        <svg height="24" viewBox="0 0 24 24" width="24" fill="currentColor">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          ></path>
+        </svg>
+      </dxc-chip-prefix-icon>
+    </dxc-chip>
   </tbuilder-component-mode>
 </div>

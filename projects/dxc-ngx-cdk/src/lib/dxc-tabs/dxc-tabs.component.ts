@@ -134,6 +134,10 @@ export class DxcTabsComponent implements OnChanges {
 
   }
 
+  private hasLabelAndIcon(){
+    return this.tabs && this.tabs.filter(tab=>  tab.label!== null && tab.iconSrc!== null).length > 0;
+  }
+
   private generateTabs() {
     const matTabsFromQueryList = this.tabs.map((tab, index) => {
       if (tab.label && tab.iconSrc) {
@@ -193,7 +197,7 @@ export class DxcTabsComponent implements OnChanges {
         }
       }
       .mat-tab-list .mat-tab-label {
-        height: auto !important;
+        height: ${this.getTabHeight()} !important;
         padding-right: 16px;
         padding-left: 16px;
         min-width: 90px;
@@ -302,6 +306,10 @@ export class DxcTabsComponent implements OnChanges {
         }
       }
     `;
+  }
+
+  getTabHeight(){
+    return ((!this.hasLabelAndIcon || (this.hasLabelAndIcon && this.defaultInputs.value.iconPosition !== "top")) && "48px") || "72px";
   }
 }
 

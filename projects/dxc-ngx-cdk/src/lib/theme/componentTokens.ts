@@ -659,7 +659,7 @@ export const componentTokens = {
   "--radio-fontColor": globalTokens.black,
   "--radio-disabledFontColor": globalTokens.lighterBlack,
   "--radio-focusColor": globalTokens.blue,
-  "--radio-circleLabelSpacing": "10px",
+  "--radio-circleLabelSpacing": "12px",
   "--radio-circleSize": "20px",
   "--radio-colorOnDark": globalTokens.white,
   "--radio-disabledColorOnDark": "#575757",

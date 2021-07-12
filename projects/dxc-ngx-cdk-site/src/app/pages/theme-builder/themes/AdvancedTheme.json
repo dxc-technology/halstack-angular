@@ -539,7 +539,7 @@
     "overlayOpacity": "0.8"
   },
   "radio": {
-    "circleLabelSpacing": "10px",
+    "circleLabelSpacing": "12px",
     "circleSize": "20px",
     "color": "#000000",
     "colorOnDark": "#FFFFFF",

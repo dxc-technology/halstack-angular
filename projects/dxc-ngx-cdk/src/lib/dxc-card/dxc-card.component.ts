@@ -21,6 +21,20 @@ import {
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
+export interface DxcCardInputs{
+  imageSrc: string;
+  imagePosition: string;
+  imagePadding: string | Object;
+  imageCover: boolean;
+  imageBgColor: string;
+  margin: string | Object,
+  outlined: boolean;
+  contentPadding: string | Object,
+  linkHref: string | Object;
+  tabIndexValue: number;
+}
+
+
 @Component({
   selector: "dxc-card",
   templateUrl: "./dxc-card.component.html",
@@ -39,8 +53,12 @@ export class DxcCardComponent implements OnInit {
     this._imageCover = coerceBooleanProperty(value);
   }
   private _imageCover = false;
+
+
+  @Input() outlined: boolean;
   @Input() imageBgColor: string;
   @Input() margin: any;
+  @Input() contentPadding: any;
   @Input() linkHref: string;
   @Input()
   get tabIndexValue(): number {
@@ -51,19 +69,23 @@ export class DxcCardComponent implements OnInit {
   }
   private _tabIndexValue;
 
+  private isHovered: boolean;
+
   @Output() onClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
 
   @ViewChild("content", { static: false }) content: ElementRef;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<DxcCardInputs>({
     imageSrc: null,
     imagePosition: "before",
     imagePadding: null,
     imageCover: false,
     imageBgColor: "black",
     margin: null,
+    outlined: false,
+    contentPadding: null,
     linkHref: null,
     tabIndexValue: 0,
   });
@@ -108,15 +130,21 @@ export class DxcCardComponent implements OnInit {
   applyTheme(href, outlined) {
     return css`
     mat-card {
-      ${!outlined ? this.utils.getBoxShadow("1") : this.utils.getBoxShadow(0)}
+      ${this.utils.getBoxShadow(0, true)}
     }
 
       mat-card:hover {
-        ${!outlined
-          ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
-          : this.utils.getBoxShadow("1")}
+        ${this.utils.getBoxShadow(0, true)}
       }
     `;
+  }
+
+  changeIsHovered(isHovered: boolean){
+    this.isHovered = isHovered;
+  }
+
+  getShadowDepth(){
+    return this.defaultInputs.value.outlined ? "0" : (this.isHovered && (this.onClick.observers.length > 0 && this.linkHref !== '') ? "2" : "1");
   }
 
   getCursor(href) {
@@ -140,19 +168,21 @@ export class DxcCardComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
+      ${this.utils.getMargins(inputs.margin)}
+      ${this.getCursor(inputs.linkHref)}
+      width: var(--card-width);
+      height: var(--card-height);
+
       mat-card {
-        ${this.utils.getMargins(inputs.margin)}
-        ${this.getCursor(inputs.linkHref)}
         font-family: var(--fontFamily);
         font-size: 14px;
         display: inline-flex;
-        width: var(--card-width);
-        height: var(--card-height);
         padding: 0px;
         ${this.tabIndexValue === -1 ? "outline:none;" : ""}
         .content {
           overflow: hidden;
           width: 260px;
+          ${this.utils.getPaddings(inputs.contentPadding)}
         }
         img,
         svg {
@@ -218,8 +248,9 @@ export class DxcCardComponent implements OnInit {
           border-bottom-right-radius: 4px;
         }
       }
-
       ${this.applyTheme(inputs.linkHref, inputs.outlined)}
     `;
+
+
   }
 }

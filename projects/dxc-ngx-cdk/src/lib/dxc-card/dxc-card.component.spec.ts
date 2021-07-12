@@ -1,6 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcCardComponent } from "./dxc-card.component";
 import { MatCardModule } from "@angular/material/card";
+import { DxcBoxModule } from '../dxc-box/dxc-box.module';
 
 describe("DxcCardComponent tests", () => {
   test("should render dxc-card", async () => {
@@ -8,7 +9,7 @@ describe("DxcCardComponent tests", () => {
     const dxcCard = await render(DxcCardComponent, {
       template: `<dxc-card>${projection}</dxc-card>`,
       componentProperties: {},
-      imports: [MatCardModule],
+      imports: [MatCardModule, DxcBoxModule],
     });
 
     expect(dxcCard.getByText(projection));
@@ -20,7 +21,7 @@ describe("DxcCardComponent tests", () => {
     const dxcCard = await render(DxcCardComponent, {
       template: `<dxc-card (onClick)="onClickFunction($event)">${projection}</dxc-card>`,
       componentProperties: { onClickFunction },
-      imports: [MatCardModule],
+      imports: [MatCardModule, DxcBoxModule],
     });
 
     expect(dxcCard.getByText(projection));

@@ -73,11 +73,8 @@ export class DxcBoxComponent implements OnInit {
       border: var(--box-borderThickness) solid;
       border-radius: var(--box-borderRadius);
       border-color: var(--box-borderColor);
-
       overflow: hidden;
-
       background-color: var(--box-backgroundColor);
-
       color: var(--box-fontColor);
       font-family: var(--box-fontFamily);
       font-weight: var(--box-fontWeight);

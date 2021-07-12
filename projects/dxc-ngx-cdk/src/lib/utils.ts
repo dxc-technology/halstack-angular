@@ -175,7 +175,7 @@ export class CssUtils {
     return value;
   }
 
-  getBoxShadow(shadowDepth) {
+  getBoxShadow(shadowDepth, isImportant:boolean = false) {
     switch (shadowDepth) {
       case "1":
         return css`
@@ -183,24 +183,27 @@ export class CssUtils {
             var(--box-oneShadowDepthShadowOffsetY)
             var(--box-oneShadowDepthShadowBlur)
             var(--box-oneShadowDepthShadowSpread)
-            var(--box-oneShadowDepthShadowColor);
-        `;
+            var(--box-oneShadowDepthShadowColor) ${this.isPropertyImportant(isImportant)};`;
       case "2":
         return css`
         box-shadow: var(--box-twoShadowDepthShadowOffsetX)
         var(--box-twoShadowDepthShadowOffsetY)
         var(--box-twoShadowDepthShadowBlur)
         var(--box-twoShadowDepthShadowSpread)
-        var(--box-twoShadowDepthShadowColor);
-        `;
+        var(--box-twoShadowDepthShadowColor) ${this.isPropertyImportant(isImportant)};
+        ` ;
       default:
         return css`
         box-shadow: var(--box-noneShadowDepthShadowOffsetX)
         var(--box-noneShadowDepthShadowOffsetY)
         var(--box-noneShadowDepthShadowBlur)
         var(--box-noneShadowDepthShadowSpread)
-        var(--box-noneShadowDepthShadowColor);
+        var(--box-noneShadowDepthShadowColor) ${this.isPropertyImportant(isImportant)};
         `;
     }
+  }
+
+  private isPropertyImportant(isImportant){
+    return isImportant ? ' !important': '';
   }
 }

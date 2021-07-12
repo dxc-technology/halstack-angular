@@ -1,5 +1,9 @@
-<mat-card
+
+<dxc-box [shadowDepth]="getShadowDepth()">
+  <mat-card
   (click)="onClickHandler($event)"
+  (mouseEnter)="changeIsHovered(true)"
+  (mouseLeave)="changeIsHovered(false)"
   [ngClass]="[
     imagePosition === 'before'
       ? 'before'
@@ -16,3 +20,5 @@
     <ng-content></ng-content>
   </div>
 </mat-card>
+
+</dxc-box>

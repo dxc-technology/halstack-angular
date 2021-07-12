@@ -1,0 +1,117 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#FFFFFF">
+    <tbuilder-component-mode text="Default">
+      <dxc-radio
+        label="Option1"
+        name="op1"
+        value="1"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option2"
+        name="op1"
+        value="2"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Option3"
+        name="op1"
+        value="3"
+        margin="xsmall"
+        labelPosition="after"
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-radio
+        label="Disabled1"
+        name="disable"
+        value="4"
+        [checked]="disabledCheck"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Disabled2"
+        name="disable"
+        value="5"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Disabled3"
+        name="disable"
+        value="6"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+  </background-provider>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#000000">
+    <tbuilder-component-mode text="Default" mode="dark">
+      <dxc-radio
+        label="Dark1"
+        name="dark"
+        value="1"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Dark2"
+        name="dark"
+        value="2"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="Dark3"
+        name="dark"
+        value="3"
+        margin="xsmall"
+        labelPosition="before"
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled" mode="dark">
+      <dxc-radio
+        label="DisabledDark1"
+        [checked]="disabledCheck"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="DisabledDark2"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+      <dxc-radio
+        label="DisabledDark3"
+        margin="xsmall"
+        labelPosition="before"
+        disabled
+      >
+      </dxc-radio>
+    </tbuilder-component-mode>
+  </background-provider>
+</div>

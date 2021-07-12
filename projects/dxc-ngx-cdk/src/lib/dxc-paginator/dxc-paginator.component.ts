@@ -206,6 +206,9 @@ export class DxcPaginatorComponent implements OnInit {
         background-color: transparent !important;
         opacity: 0.3 !important;
       }
+      dxc-select{
+        margin-right: 0px;
+      }
     `;
   }
 }

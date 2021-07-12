@@ -51,6 +51,9 @@ import { DxcHeadingModule } from '../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-h
 import { DxcBoxModule } from '../../../dxc-ngx-cdk/src/lib/dxc-box/dxc-box.module';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { AccordionGroupModule } from './pages/accordion-group/accordion-group.module';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +66,7 @@ import { AccordionGroupModule } from './pages/accordion-group/accordion-group.mo
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ColorPickerModule,
     OverviewPageModule,
     DxcHeaderModule,
     DxcFooterModule,
@@ -109,7 +113,8 @@ import { AccordionGroupModule } from './pages/accordion-group/accordion-group.mo
     ToggleGroupModule,
     DxcApplicationLayoutModule,
     ScullyLibModule,
-    AccordionGroupModule
+    AccordionGroupModule,
+    ThemeBuilderSidenavModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

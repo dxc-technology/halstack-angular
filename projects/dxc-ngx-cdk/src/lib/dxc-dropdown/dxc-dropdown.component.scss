@@ -2,5 +2,8 @@
   max-height: 200px;
   .mat-menu-panel {
     border-radius: unset;
+    min-width: 100%;
+    margin-top: 1px;
+    margin-bottom: 2px;
   }
 }

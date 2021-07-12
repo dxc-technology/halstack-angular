@@ -16,10 +16,7 @@
       height: auto;
       .contentContainer.content {
         display: block;
-        font: 14px var(--fontFamily);
-        padding: 4px 53px 20px;
         overflow: auto;
-        height: calc(100% - 48px - 24px);
         ::ng-deep {
           span {
             display: block;
@@ -46,18 +43,20 @@
     outline: none;
     opacity: 1;
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
-    border-radius: 4px;
+    box-shadow: var(--alert-boxShadowColor) var(--alert-boxShadowOffsetX)
+      var(--alert-boxShadowOffsetY) var(--alert-boxShadowBlur);
+    border-radius: var(--alert-borderRadius);
+    border-style: var(--alert-borderStyle);
+    border-width: var(--alert-borderThickness);
     z-index: 1;
     .alertHeader {
-      max-height: 100%;
+      height: var(--alert-height);
       position: relative;
-      color: rgba(0, 0, 0, 0.87);
+      color: var(--alert-titleFontColor);
       transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       display: flex;
       align-items: center;
       .inlineContainer {
-        padding-right: 12px;
         display: flex;
         flex-grow: 1;
         overflow: hidden;
@@ -67,15 +66,25 @@
         display: flex;
         align-items: center;
         .icon {
-          padding: 12px 12px;
+          padding-left: var(--alert-iconPaddingLeft);
+          padding-right: var(--alert-iconPaddingRight);
+          padding-top: var(--alert-iconPaddingTop);
+          padding-bottom: var(--alert-iconPaddingBottom);
           display: inline-flex;
+          width: var(--alert-iconSize);
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
         }
         .mainLabel {
-          padding: 0px 10px 0px 0px;
-          font: Bold 12px var(--fontFamily);
-          font-weight: bold;
+          padding-left: var(--alert-titlePaddingLeft);
+          padding-right: var(--alert-titlePaddingRight);
+          padding-top: var(--alert-titlePaddingTop);
+          padding-bottom: var(--alert-titlePaddingBottom);
+          font-family: var(--alert-titleFontFamily);
+          font-weight: var(--alert-titleFontWeight);
+          font-style: var(--alert-titleFontStyle);
+          font-size: var(--alert-titleFontSize);
+          text-transform: var(--alert-titleTextTransform);
         }
       }
       .closeIcon {
@@ -89,15 +98,19 @@
         }
       }
       .spacer {
-        font: 12px var(--fontFamily);
-        font-weight: bolder;
-        margin-right: 10px;
+        font-family: var(--alert-titleFontFamily);
+        font-size: var(--alert-titleFontSize);
       }
       .inlineText {
-        font: 12px var(--fontFamily);
+        font-family: var(--alert-titleFontFamily);
+        font-size: var(--alert-titleFontSize);
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        padding-left: var(--alert-inlineTextPaddingLeft);
+        padding-right: var(--alert-inlineTextPaddingRight);
+        padding-top: var(--alert-inlineTextPaddingTop);
+        padding-bottom: var(--alert-inlineTextPaddingBottom);
       }
     }
     .contentContainer:not(.content) {
@@ -105,8 +118,10 @@
     }
     .content {
       display: block;
-      font: 12px var(--fontFamily);
-      padding: 4px 53px 20px;
+      font-family: var(--fontFamily);
+      font-size: var(--alert-contentFontSize);
+      padding: var(--alert-contentPaddingTop) var(--alert-contentPaddingRight)
+        var(--alert-contentPaddingBottom) var(--alert-contentPaddingLeft);
     }
   }
 }

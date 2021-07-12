@@ -2,8 +2,22 @@
   display: flex;
   align-items: center;
   span {
-    white-space: nowrap;
+    font-family: var(--paginator-fontFamily);
+    color: var(--paginator-fontColor);
+    font-size: var(--paginator-fontSize);
+    font-style: var(--paginator-fontStyle);
+    font-weight: var(--paginator-fontWeight);
   }
+}
+
+.go-to-page{
+  margin-right: var(--paginator-pageSelectorMarginRight);
+  margin-left: var(--paginator-pageSelectorMarginLeft);
+}
+
+.items-per-page{
+  margin-right: var(--paginator-itemsPerPageSelectorMarginRight);
+  margin-left: var(--paginator-itemsPerPageSelectorMarginLeft);
 }
 
 .pagination {
@@ -16,13 +30,19 @@
 
 .paginator-container {
   display: flex;
-  height: 64px;
-  background-color: var(--paginator-paginatorBackgroundColor);
-  color: var(--paginator-paginatorFontColor);
+  height: var(--paginator-height);
+  background-color: var(--paginator-backgroundColor);
+  width: var(--paginator-width);
 }
 
 .total-items-container {
-  margin-right: 30px;
+  margin-right: var(--paginator-totalItemsContainerMarginRight);
+  margin-left: var(--paginator-totalItemsContainerMarginLeft);
+  font-family: var(--paginator-fontFamily);
+  color: var(--paginator-fontColor);
+  font-size: var(--paginator-fontSize);
+  font-style: var(--paginator-fontStyle);
+  font-weight: var(--paginator-fontWeight);
 }
 
 .labels-container {
@@ -30,7 +50,6 @@
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  margin: 0 40px 0 20px;
-  font-size: 14px;
-  font-family: var(--fontFamily);
+  margin-right: var(--paginator-marginRight);
+  margin-left: var(--paginator-marginLeft);
 }

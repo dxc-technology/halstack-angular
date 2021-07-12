@@ -10,6 +10,11 @@
     justify-content: center;
     min-height: 400px;
     border-radius: 4px;
+    svg{
+      width: var(--upload-dragAndDropIconWidth);
+      height: var(--upload-dragAndDropIconHeight);
+      fill: var(--upload-dragAndDropIconColor);
+    }
   }
   .summaryVisible {
     --border-color: #666666;
@@ -74,7 +79,7 @@
       var(--border-weight) var(--dash-size),
       var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
       var(--border-weight) var(--dash-size);
-    background-color: var(--upload-backgroundDragColor);
+    background-color: var(--upload-draggingAreaBackgroundColor);
   }
   .droppingZone {
     --border-color: #666666;
@@ -139,19 +144,40 @@
       var(--border-weight) var(--dash-size),
       var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
       var(--border-weight) var(--dash-size);
-    background-color: var(--upload-backgroundDragColor);
+
+    .dropLabel {
+      font-size: var(--upload-dragAndDropDraggingStateFontSize);
+      font-style: var(--upload-dragAndDropDraggingStateFontStyle);
+      font-weight: var(--upload-dragAndDropDraggingStateFontWeight);
+      text-transform: var(--upload-dragAndDropTextDraggingStateFontTextTransform);
+      color: var(--upload-dragAndDropTextDraggingStateFontColor);
+    }
+    svg{
+      fill: var(--upload-dragAndDropDraggingStateIconColor);
+      height: var(--upload-dragAndDropDraggingStateIconHeight);
+      width: var(--upload-dragAndDropDraggingStateIconWidth);
+    }
   }
   h6 {
     margin: 0px;
-    font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
-    font-family: var(--fontFamily);
+    font-size: var(--upload-dragAndDropTitleFontSize);
+    font-style: var(--upload-dragAndDropTitleFontStyle);
+    font-weight: var(--upload-dragAndDropTitleFontWeight);
+    text-transform: var(--upload-dragAndDropTitleFontTextTransform);
+    color: var(--upload-dragAndDropTitleFontColor);
   }
   .dropLabel {
-    font-style: italic;
-    font-family: var(--fontFamily);
-    color: var(--upload-fontColor) !important;
     margin-bottom: 20px;
+    font-size: var(--upload-dragAndDropDescriptionFontSize);
+    font-style: var(--upload-dragAndDropDescriptionFontStyle);
+    font-weight: var(--upload-dragAndDropDescriptionFontWeight);
+    text-transform: var(--upload-dragAndDropTextDescriptionFontTextTransform);
+    color: var(--upload-dragAndDropTextDescriptionFontColor);
   }
+  h6, .dropLabel{
+    font-family: var(--upload-fontFamily) !important;
+  }
+
 }

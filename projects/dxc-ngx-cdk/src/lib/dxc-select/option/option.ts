@@ -281,7 +281,10 @@ export class _MatOptionBase
         background: white;
       }
       &.mat-option:hover:not(.mat-option-disabled) {
-        background: var(--select-hoverOptionBackgroundColor) !important;
+        background: ${this.service.isDarkTheme ? "var(--select-hoveredOptionBackgroundColorOnDark)": "var(--select-hoveredOptionBackgroundColor)"} !important;
+      }
+      &.mat-option.mat-selected:not(.mat-option-disabled) {
+        background: ${this.service.isDarkTheme ? "var(--select-selectedOptionBackgroundColorOnDark)": "var(--select-selectedOptionBackgroundColor)"};
       }
       &.mat-option:focus:not(.mat-option-disabled) {
         outline: -webkit-focus-ring-color auto 1px;
@@ -292,12 +295,12 @@ export class _MatOptionBase
       }
       dxc-option-icon {
         ${this.iconPosition == "after"
-          ? "margin-left: 15px"
-          : "margin-right: 15px"};
-
+          ? "margin-left: var(--select-iconOptionSpacing)"
+          : "margin-right: var(--select-iconOptionSpacing)"};
+        color: var(--select-iconColor);
         img,
         svg {
-          width: 24px;
+          width: var(--select-iconSize);
         }
       }
       mat-checkbox.cdk-focused {

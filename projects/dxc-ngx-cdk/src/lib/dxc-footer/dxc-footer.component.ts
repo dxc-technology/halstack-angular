@@ -10,7 +10,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-footer",
@@ -81,8 +81,8 @@ export class DxcFooterComponent implements OnChanges {
 
   socialIconImageStyle: string = css`
     display: inline-flex;
-    height: 25px;
-    width: 25px;
+    height: var(--footer-socialIconSize);
+    width: var(--footer-socialIconSize);
   `;
 
   childComponentsStyle: string;
@@ -91,7 +91,7 @@ export class DxcFooterComponent implements OnChanges {
 
   socialLinksStyle: string = css`
     display: inline-flex;
-    margin-left: 15px;
+    margin-left: var(--footer-socialIconsGutter);
     &:first-child {
       margin-left: 0px;
     }
@@ -150,18 +150,17 @@ export class DxcFooterComponent implements OnChanges {
 
   setFooterContainerStyle(input: any, responsive) {
     return css`
-      padding: ${responsive ? "20px" : "20px 60px 20px 20px"};
-      font-family: var(--fontFamily);
+      padding: ${responsive ? "20px" : "24px 36px"};
       background-color: var(--footer-backgroundColor);
+      min-height: var(--footer-minHeight);
+      color: var(--footer-fontColorBase);
       ${this.utils.getTopMargin(input.margin)}
     `;
   }
 
   setChildComponentsStyle(inputs: any) {
     return css`
-      min-height: 15px;
-      color: var(--footer-fontColor);
-      overflow: hidden;
+      min-height: 16px;
       ${this.utils.getPaddings(inputs.padding)}
     `;
   }
@@ -172,33 +171,46 @@ export class DxcFooterComponent implements OnChanges {
       justify-content: space-between;
       flex-direction: ${responsive ? "column" : "row"};
       align-items: ${responsive ? "center" : "flex-end"};
+      border-top: var(--footer-bottomLinksDividerThickness)
+        var(--footer-bottomLinksDividerStyle)
+        var(--footer-bottomLinksDividerColor);
 
       .copyrightStyle {
-        color: var(--footer-fontColor);
-        font-family: var(--fontFamily);
-        font-size: 12px;
+        color: var(--footer-copyrightFontColor);
+        font-family: var(--footer-copyrightFontFamily);
+        font-style: var(--footer-copyrightFontStyle);
+        font-size: var(--footer-copyrightFontSize);
+        font-weight: var(--footer-copyrightFontWeight);
         max-width: ${responsive ? "100%" : "40%"};
         width: ${responsive ? "100%" : "40%"};
         text-align: ${responsive ? "center" : "right"};
       }
 
       .bottomLinksStyle {
-        padding-top: 6px;
-        border-top: 2px solid var(--footer-lineColor);
+        padding-top: var(--footer-bottomLinksDividerSpacing);
         display: inline-flex;
         flex-wrap: wrap;
         max-width: ${responsive ? "100%" : "60%"};
         width: ${responsive ? "100%" : "auto"};
         text-align: ${responsive ? "center" : ""};
         margin: ${responsive ? "40px 0 40px 0" : ""};
+        color: var(--footer-bottomLinksFontColor);
         .point {
           margin: 0px 10px;
-          color: var(--footer-fontColor);
+          font-family: var(--footer-bottomLinksFontFamily);
+          font-size: var(--footer-bottomLinksFontSize);
+          font-style: var(--footer-bottomLinksFontStyle);
+          font-weight: var(--footer-bottomLinksFontWeight);
+          color: var(--footer-bottomLinksFontColor);
         }
-        a {
-          text-decoration: none;
-          color: var(--footer-fontColor);
-          font-size: 12px;
+        a,
+        a * {
+          text-decoration: var(--footer-bottomLinksTextDecoration);
+          font-size: var(--footer-bottomLinksFontSize);
+          font-family: var(--footer-bottomLinksFontFamily);
+          font-style: var(--footer-bottomLinksFontStyle);
+          font-weight: var(--footer-bottomLinksFontWeight);
+          color: var(--footer-bottomLinksFontColor);
         }
       }
     `;

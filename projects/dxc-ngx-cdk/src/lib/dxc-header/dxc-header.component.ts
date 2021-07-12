@@ -161,8 +161,9 @@ export class DxcHeaderComponent implements OnChanges {
     `;
   }
 
-  getLogoDxc() {
-    return document.body.getAttribute("header-logo");
+   getLogoDxc() {
+    const pic = document.body.getAttribute("header-logo");
+    return pic;
   }
 
   getLogoResponsiveDxc() {
@@ -171,74 +172,82 @@ export class DxcHeaderComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      display: block;
-      width: 100%;
+
+      font-size: var(--header-fontSizeBase);
+      font-family: var(--header-fontFamily);
+
+
       ${this.getBottomMargin(inputs.margin)}
       .headerAnchor {
-        display: flex;
-        cursor: ${this.isClickDefined ? "pointer" : "default"};
-        ${!this.isClickDefined ? "outline:none;" : ""};
+        cursor: ${this.isClickDefined ? "pointer;" : "default; "};
+        ${!this.isClickDefined ? "outline: none;" : ""};
       }
       .mat-toolbar {
         font-size: unset;
         .mat-toolbar-row {
-          min-height: 64px;
+          min-height: var(--header-minHeight);
+          padding: 0 24px;
         }
         &.underlined {
-          min-height: 62px;
+
           .mat-toolbar-row {
-            min-height: 62px;
+            border-bottom: ${inputs.underlined ?
+              `var(--header-underlinedThickness) var(--header-underlinedStyle) var(--header-underlinedColor);`: 'unset;'};
           }
         }
       }
       mat-toolbar-row.mat-toolbar-row,
       .mat-toolbar-row {
-        padding: 0 0px 0 20px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        height: auto;
       }
       .mat-toolbar-row {
         background: var(--header-backgroundColor);
-        color: var(--header-fontColor);
-      }
-      .underlined {
-        .mat-toolbar-row {
-          color: var(--header-fontColor);
-        }
-        border-bottom: 2px solid var(--header-underlinedColor);
+        color: var(--header-fontColorBase);
       }
       .dxc-logo,
       img {
-        max-height: 32px;
+        height: 40px;
         width: auto;
         vertical-align: middle;
       }
+
       .content {
+
+        width: calc(100% - 186px);
         display: flex;
+        align-items: center;
+        flex-grow: 1;
         justify-content: flex-end;
+        ${this.utils.getPaddings(inputs.padding)}
+        font-family: var(--header-customContentFontFamily, --header-fontFamilyBase);
+        font-style: var(--header-customContentFontStyle);
+        font-size: var(--header-customContentFontSize, --header-fontSizeBase);
+        font-weight: var(--header-customContentFontWeight);
+        color: var(--header-customContentFontColor, --header-fontColorBase);
+
         align-items: center;
         flex-wrap: wrap;
-        width: 100%;
         overflow: hidden;
-        font-family: var(--fontFamily);
-        ${this.utils.getPaddings(inputs.padding)}
       }
       .hamburger {
         color: var(--header-fontColor);
         ${this.utils.getPaddings(inputs.padding)}
+
         .hamburgerItem {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           width: 54px;
+          cursor: pointer;
           &:hover {
             cursor: pointer;
-            background-color: var(--header-hoverHamburguerColor);
+            background-color: var(--header-hamburguerHoverColor);
           }
           &:focus {
-            outline: var(--header-focusColor) solid 1px;
+            outline: var(--header-hamburguerFocusColor) auto 1px;
           }
           .hamburgerIcon {
             width: 24px;
@@ -248,27 +257,29 @@ export class DxcHeaderComponent implements OnChanges {
             }
           }
           .hamburgerTitle {
-            font-size: 10px;
-            text-transform: uppercase;
-            font-weight: 600;
-            line-height: 14px;
+            font-family: var(--header-hamburguerFontFamily, --header-fontFamilyBase);
+            font-style: var(--header-hamburguerFontStyle);
+            font-size: var(--header-hamburguerFontSize);
+            text-transform: var(--header-hamburguerTextTransform);
+            font-weight: var(--header-hamburguerFontWeight);
+            color: var(--header-hamburguerFontColor, --header-fontColorBase);
           }
         }
       }
       .overlay {
+
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
-        height: ${inputs.innerHeight}px;
+        height:  ${inputs.innerHeight}px;
         background-color: var(--header-overlayColor);
-        opacity: 0.7 !important;
-        visibility: ${inputs.isMenuVisible ? "visible" : "hidden"};
+        opacity: var(--header-overlayOpacity) !important;
         display: ${inputs.innerWidth <= responsiveSizes.mobileLarge
           ? "none"
           : ""};
         transition: opacity 0.2s 0.2s ease-in-out;
-        z-index: 900;
+        z-index: var(--header-overlayZindex);
       }
     `;
   }
@@ -278,18 +289,17 @@ export class DxcHeaderComponent implements OnChanges {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: space-evenly;
-      background-color: var(--header-backgroundColorMenu);
+      justify-content: flex-start;
+      background-color: var(--header-menuBackgroundColor);
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 1000;
+      z-index: var(--header-menuZindex);
 
-      color: var(--header-fontColorMenu);
       width: ${inputs.innerWidth <= responsiveSizes.laptop &&
       inputs.innerWidth > responsiveSizes.mobileLarge
-        ? "calc(60vw - 40px)"
-        : "calc(100vw - 40px)"};
+        ? "var(--header-menuTabletWidth)"
+        : "var(--header-menuMobileWidth)"};
       height: ${inputs.innerHeight}px;
       padding: 20px;
 
@@ -297,10 +307,7 @@ export class DxcHeaderComponent implements OnChanges {
       transition-property: transform, opacity;
       transition-duration: 0.6s;
       transition-timing-function: ease-in-out;
-
-      justify-content: flex-start;
-
-      overflow-y: auto;
+      box-sizing: border-box;
 
       .responsiveMenu-Header {
         display: flex;
@@ -308,6 +315,8 @@ export class DxcHeaderComponent implements OnChanges {
         justify-content: space-between;
         width: 100%;
         .closeIcon {
+
+          cursor: pointer;
           display: flex;
           justify-content: flex-end;
           width: 24px;
@@ -315,7 +324,7 @@ export class DxcHeaderComponent implements OnChanges {
             cursor: pointer;
           }
           &:focus {
-            outline: var(--header-focusColor) solid 1px;
+            outline: var(--header-hamburguerFocusColor) solid 1px;
           }
           svg {
             fill: var(--header-fontColorMenu);

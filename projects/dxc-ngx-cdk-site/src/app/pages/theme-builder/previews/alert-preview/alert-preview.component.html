@@ -1,0 +1,69 @@
+<div>
+  <tbuilder-component-mode text="Information Alert">
+    <dxc-alert
+      type="info"
+      mode="inline"
+      margin="xsmall"
+      inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      malesuada lacus ex.
+    </dxc-alert>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Success Alert">
+    <dxc-alert
+      type="confirm"
+      mode="inline"
+      margin="xsmall"
+      inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      malesuada lacus ex.
+    </dxc-alert>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Warning Alert">
+    <dxc-alert
+      type="warning"
+      mode="inline"
+      margin="xsmall"
+      inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      malesuada lacus ex.
+    </dxc-alert>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Error Alert">
+    <dxc-alert
+      type="error"
+      mode="inline"
+      margin="xsmall"
+      inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      malesuada lacus ex.
+    </dxc-alert>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Modal Alert">
+    <dxc-button
+      label="overlay Alert"
+      margin="xsmall"
+      (onClick)="handleVisible()"
+      mode="primary"
+    >
+    </dxc-button>
+
+    <dxc-alert
+      *ngIf="visible"
+      type="info"
+      mode="modal"
+      inlineText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
+      margin="medium"
+      (onClose)="handleVisible()"
+    >
+    </dxc-alert>
+  </tbuilder-component-mode>
+</div>

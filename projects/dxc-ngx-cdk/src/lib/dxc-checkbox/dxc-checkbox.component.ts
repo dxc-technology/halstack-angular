@@ -6,7 +6,7 @@ import {
   HostBinding,
   SimpleChanges,
 } from "@angular/core";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Optional } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -14,6 +14,8 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
+
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-checkbox",
@@ -64,6 +66,8 @@ export class DxcCheckboxComponent implements OnInit {
   @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
+  @HostBinding("class.dark") darkBackground = false;
+  @HostBinding("class.light") lightBackground = true;
 
   renderedChecked: boolean;
 
@@ -100,7 +104,10 @@ export class DxcCheckboxComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils) {
+  constructor(
+    private utils: CssUtils,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {
     this.onChange = new EventEmitter();
   }
 
@@ -111,6 +118,15 @@ export class DxcCheckboxComponent implements OnInit {
     if (this.disabled) {
       this.required = false;
     }
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
   }
 
   onValueChange($event: any) {
@@ -155,6 +171,14 @@ export class DxcCheckboxComponent implements OnInit {
         background: var(--checkbox-backgroundColorChecked) !important;
       }
 
+      .mat-checkbox-checked .mat-checkbox-inner-container {
+        &:hover {
+          .mat-checkbox-background {
+            background: var(--checkbox-backgroundHoverColorChecked) !important;
+          }
+        }
+      }
+
       .mat-checkbox:not(.mat-checkbox-disabled).mat-accent
         .mat-checkbox-ripple
         .mat-ripple-element {
@@ -180,17 +204,24 @@ export class DxcCheckboxComponent implements OnInit {
           width: 100%;
           white-space: normal;
           span.mat-checkbox-label {
-            word-break: normal;
-            color: var(--checkbox-fontColor);
-            font-family: var(--fontFamily);
-            display: flex;
-            justify-content: flex-end;
+            span.checkboxLabel {
+              margin: ${inputs.labelPosition === "after"
+              ? "0px 0px 0px 2px;"
+              : "0px 2px 0px 0px;"};
+              word-break: normal;
+              color: var(--checkbox-fontColor);
+              font-family: var(--checkbox-fontFamily) !important;
+              font-size: var(--checkbox-fontSize);
+              font-weight: var(--checkbox-fontWeight);
+              display: flex;
+              justify-content: flex-end;
+            }
           }
 
           .mat-checkbox-inner-container {
             margin: ${inputs.labelPosition === "after"
-              ? "10px 15px 10px 0px;"
-              : "10px 0px 10px 15px;"};
+              ? "10px var(--checkbox-checkLabelSpacing) 10px 0px;"
+              : "10px 0px 10px var(--checkbox-checkLabelSpacing);"};
             width: 20px;
             height: 20px;
 
@@ -204,6 +235,13 @@ export class DxcCheckboxComponent implements OnInit {
               svg path {
                 stroke: var(--checkbox-checkColor) !important;
                 stroke-width: 3px;
+              }
+            }
+
+            &:hover {
+              .mat-checkbox-background,
+              .mat-checkbox-frame {
+                border-color: var(--checkbox-borderHoverColor);
               }
             }
           }
@@ -230,6 +268,76 @@ export class DxcCheckboxComponent implements OnInit {
               ) !important;
               svg path {
                 stroke: var(--checkbox-disabledCheckColor) !important;
+              }
+            }
+          }
+        }
+      }
+      &.dark {
+        .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+        .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+          background: var(--checkbox-backgroundColorCheckedOnDark) !important;
+        }
+
+        .mat-checkbox-checked .mat-checkbox-inner-container {
+          &:hover {
+            .mat-checkbox-background {
+              background: var(--checkbox-backgroundHoverColorCheckedOnDark) !important;
+            }
+          }
+        }
+        
+        label.mat-checkbox-layout {
+          span.mat-checkbox-label {
+            span.checkboxLabel {
+              color: var(--checkbox-fontColorOnDark);
+            }
+          }
+          .mat-checkbox-inner-container {
+            .mat-checkbox-background,
+            .mat-checkbox-frame {
+              border-color: var(--checkbox-borderColorOnDark);
+            }
+            .mat-checkbox-background {
+              svg path {
+                stroke: var(--checkbox-checkColorOnDark) !important;
+              }
+            }
+
+            &:hover {
+              .mat-checkbox-background,
+              .mat-checkbox-frame {
+                border-color: var(--checkbox-borderHoverColorOnDark);
+              }
+            }
+          }
+        }
+
+        .mat-checkbox-disabled {
+          .mat-checkbox-inner-container {
+            .mat-checkbox-frame {
+              border-color: var(
+                --checkbox-disabledBorderColorOnDark
+              ) !important;
+            }
+          }
+          span.checkboxLabel {
+            color: var(--checkbox-disabledFontColorOnDark) !important;
+          }
+        }
+        .mat-checkbox-disabled.mat-checkbox-checked {
+          .mat-checkbox-inner-container {
+            .mat-checkbox-frame {
+              border-color: var(
+                --checkbox-disabledBorderColorOnDark
+              ) !important;
+            }
+            .mat-checkbox-background {
+              background: var(
+                --checkbox-disabledBackgroundColorCheckedOnDark
+              ) !important;
+              svg path {
+                stroke: var(--checkbox-disabledCheckColorOnDark) !important;
               }
             }
           }

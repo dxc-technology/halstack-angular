@@ -9,6 +9,7 @@ import {
   SimpleChanges,
   OnChanges,
   AfterViewChecked,
+  Optional,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -18,6 +19,7 @@ import {
   coerceNumberProperty,
   coerceBooleanProperty,
 } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-textarea",
@@ -26,11 +28,14 @@ import {
   providers: [CssUtils],
 })
 export class DxcTextareaComponent
-  implements OnInit, OnChanges, AfterViewChecked {
+  implements OnInit, OnChanges, AfterViewChecked
+{
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
   @HostBinding("class.invalid") isInvalid: boolean = false;
   @HostBinding("class.required") isRequired: boolean = false;
+  @HostBinding("class.light") lightBackground: boolean = true;
+  @HostBinding("class.dark") darkBackground: boolean = false;
 
   @Input() public value: string;
   @Input() public label: String;
@@ -110,18 +115,30 @@ export class DxcTextareaComponent
     invalid: false,
     margin: null,
     size: "medium",
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
   public formControl = new FormControl();
 
-  constructor(private utils: CssUtils) {
+  constructor(
+    private utils: CssUtils,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {
     this.numRows = 4;
   }
 
   ngOnInit() {
     this.renderedValue = this.value || "";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
   }
 
   ngAfterViewChecked(): void {
@@ -188,140 +205,66 @@ export class DxcTextareaComponent
       height: auto;
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
+      ${this.getLightStyle()}
+      ${this.getDarkStyle()}
       display: inline-flex;
-      font-family: var(--fontFamily);
-      &::-webkit-scrollbar {
-        width: 3px;
-      }
-      &::-webkit-scrollbar-track {
-        background-color: var(--textarea-scrollBarTrackColor);
-        border-radius: 3px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--textarea-scrollBarThumbColor);
-        border-radius: 3px;
-      }
       &.disabled {
         cursor: default;
       }
       .mat-form-field {
-        font-family: var(--fontFamily);
         line-height: unset;
         width: 100%;
         textarea {
           min-height: 22px;
           text-overflow: ellipsis;
-          color: var(--textarea-fontColor);
+          font-family: var(--textarea-customContentFontFamily);
+          font-size: var(--textarea-customContentFontSize);
+          font-style: var(--textarea-customContentFontStyle);
+          font-weight: var(--textarea-customContentFontWeight);
+          letter-spacing: var(--textarea-customContentLetterSpacing);
+          line-height: var(--textarea-customContentLineHeight);
+        }
+        textarea::-webkit-scrollbar {
+          width: 3px;
+        }
+        textarea::-webkit-scrollbar-track{
+          opacity: 0.34;
+        }
+        textarea::-webkit-scrollbar-track,
+        textarea::-webkit-scrollbar-thumb {
+          border-radius: 3px;
         }
         &.disabled {
           pointer-events: none;
-          textarea {
-            color: var(--textarea-disabledFontColor);
-          }
-          .mat-hint {
-            color: var(--textarea-disabledFontColor);
-          }
-          .mat-form-field-underline {
-            background-color: var(--textarea-disabledFontColor);
-          }
-          .mat-form-field-empty mat-label {
-            color: var(--textarea-disabledFontColor);
-          }
-          &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--textarea-disabledFontColor);
-          }
-          .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            color: var(--textarea-disabledFontColor);
-          }
-          .mat-form-field-wrapper {
-            .mat-form-field-flex {
-              .mat-form-field-infix input {
-                color: var(--textarea-disabledFontColor);
-              }
-            }
-          }
+        }
+      }
+      .mat-form-field.mat-focused .mat-form-field-ripple {
+        height: 2px !important;
+      }
+      .mat-form-field-underline {
+        .mat-form-field-ripple {
+          height: 0px;
         }
       }
       .mat-hint {
-        color: var(--textarea-fontColor);
+        font-family: var(--textarea-assistiveTextFontFamily);
+        font-size: var(--textarea-assistiveTextFontSize);
+        font-style: var(--textarea-assistiveTextFontStyle);
+        font-weight: var(--textarea-assistiveTextFontWeight);
+        letter-spacing: var(--textarea-assistiveTextLetterSpacing);
       }
-      .mat-form-field.mat-focused .mat-form-field-label{
-        color: var(--inputText-focusColor) !important;
-      }
-      .mat-form-field.mat-focused .mat-form-field-ripple{
-        background-color: var(--inputText-focusColor);
-      }
-      .mat-form-field-underline {
-        background-color: var(--textarea-fontColor);
-      }
-      label.mat-form-field-label {
-        color: var(--textarea-fontColor);
-      }
-      input::placeholder {
-        color: var(--textarea-placeholderColor);
-      }
-      &.required {
-        .mat-hint {
-          color: var(--textarea-fontColor);
-        }
-        .mat-form-field-underline {
-          background-color: var(--textarea-fontColor);
-        }
-        label.mat-form-field-label {
-          color: var(--textarea-fontColor);
-        }
-        input::placeholder {
-          color: var(--textarea-placeholderColor);
-        }
-        .mat-form-field-ripple{
-          background-color: var(--textarea-fontColor);
-        }
-        .mat-input-element{
-          caret-color: var(--textarea-fontColor);
-        }
-        .mat-form-field-required-marker{
-          color: var(--textarea-error) !important;
-        }
-      }
-      &.invalid {
-        .mat-hint {
-          color: var(--textarea-error);
-        }
-        .mat-form-field-underline {
-          .mat-form-field-ripple {
-            background-color: var(--textarea-error);
-          }
-        }
-        .mat-form-field-empty mat-label {
-          color: var(--textarea-fontColor);
-        }
-        &.mat-focused .mat-form-field-empty mat-label {
-          color: var(--textarea-error);
-        }
-        .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-          color: var(--textarea-error);
-        }
-        .mat-label{
-          color: var(--textarea-error) !important;
-        }
-        .mat-form-field {
-          &.mat-form-field-should-float {
-            mat-label {
-              color: var(--textarea-error);
-            }
-          }
-        }
-        label.mat-form-field-label {
-          color: var(--textarea-error);
-        }
+      .mat-form-field.mat-form-field-should-float mat-label,
+      .mat-form-field-label {
+        font-family: var(--textarea-labelFontFamily);
+        font-size: var(--textarea-labelFontSize);
+        font-style: var(--textarea-labelFontStyle);
+        font-weight: var(--textarea-labelFontWeight);
+        letter-spacing: var(--textarea-labelLetterSpacing);
       }
       .mat-form-field {
         &.mat-form-field-should-float {
           .mat-form-field-infix {
             padding-bottom: 7px;
-          }
-          mat-label {
-            font-size: 15px;
           }
         }
         .mat-form-field-label-wrapper {
@@ -330,9 +273,6 @@ export class DxcTextareaComponent
             flex-direction: row-reverse;
             justify-content: flex-end;
             display: flex;
-            span {
-              color: var(--textarea-fontColor);
-            }
           }
         }
         .mat-form-field-subscript-wrapper {
@@ -346,6 +286,170 @@ export class DxcTextareaComponent
         align-items: center;
         .mat-form-field-infix {
           border-top: unset;
+        }
+      }
+    `;
+  }
+
+  getLightStyle() {
+    return css`
+      &.light {
+        .mat-form-field {
+          textarea {
+            color: var(--textarea-customContentFontColor);
+            caret-color: var(--textarea-customContentFontColor);
+          }
+          textarea::-webkit-scrollbar-track {
+            background-color: var(--textarea-scrollBarTrackColor);
+            opacity: 0.34;
+          }
+          textarea::-webkit-scrollbar-thumb {
+            background-color: var(--textarea-scrollBarThumbColor);
+          }
+          &.disabled {
+            textarea,
+            .mat-hint,
+            .mat-form-field-empty mat-label,
+            .mat-form-field-label:not(.mat-form-field-empty) mat-label,
+            &.mat-focused .mat-form-field-empty mat-label {
+              color: var(--textarea-disabledFontColor);
+            }
+            .mat-form-field-underline {
+              background-color: var(--textarea-disabledFontColor);
+            }
+            .mat-form-field-wrapper {
+              .mat-form-field-flex {
+                .mat-form-field-infix input {
+                  color: var(--textarea-disabledFontColor);
+                }
+              }
+            }
+          }
+        }
+        .mat-hint {
+          color: var(--textarea-assistiveTextFontColor);
+        }
+        label.mat-form-field-label {
+          color: var(--textarea-labelFontColor);
+        }
+        .mat-form-field.mat-focused .mat-form-field-ripple {
+          background-color: var(--textarea-labelFontColor);
+        }
+        .mat-form-field-underline {
+          background-color: var(--textarea-labelFontColor);
+        }
+        input::placeholder {
+          color: var(--textarea-customContentFontColor);
+        }
+        &.required {
+          .mat-form-field-required-marker {
+            color: var(--textarea-errorColor) !important;
+          }
+          .mat-form-field.mat-focused .mat-form-field-ripple,
+          .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+            background-color: var(--textarea-labelFontColor);
+          }
+        }
+        &.invalid {
+          .mat-hint {
+            color: var(--textarea-errorColor);
+          }
+          .mat-form-field-ripple {
+            background-color: var(--textarea-errorColor) !important;
+            height: 0px !important;
+          }
+          &.mat-focused .mat-form-field-empty mat-label {
+            color: var(--textarea-errorColor) !important;
+          }
+          .mat-form-field {
+            &.mat-form-field-should-float {
+              mat-label {
+                color: var(--textarea-errorColor);
+              }
+            }
+          }
+        }
+      }
+    `;
+  }
+
+  getDarkStyle() {
+    return css`
+      &.dark {
+        .mat-form-field {
+          textarea {
+            color: var(--textarea-customContentFontColorOnDark);
+            caret-color: var(--textarea-customContentFontColorOnDark);
+          }
+          textarea::-webkit-scrollbar-track {
+            background-color: var(--textarea-scrollBarTrackColorOnDark);
+            opacity: 0.34;
+          }
+          textarea::-webkit-scrollbar-thumb {
+            background-color: var(--textarea-scrollBarThumbColorOnDark);
+          }
+          &.disabled {
+            textarea,
+            .mat-hint,
+            .mat-form-field-empty mat-label,
+            .mat-form-field-label:not(.mat-form-field-empty) mat-label,
+            &.mat-focused .mat-form-field-empty mat-label {
+              color: var(--textarea-disabledFontColorOnDark);
+            }
+            .mat-form-field-underline {
+              background-color: var(--textarea-disabledFontColorOnDark);
+            }
+            .mat-form-field-wrapper {
+              .mat-form-field-flex {
+                .mat-form-field-infix input {
+                  color: var(--textarea-disabledFontColorOnDark);
+                }
+              }
+            }
+          }
+        }
+        .mat-hint {
+          color: var(--textarea-assistiveTextFontColorOnDark);
+        }
+        label.mat-form-field-label {
+          color: var(--textarea-labelFontColorOnDark);
+        }
+        .mat-form-field.mat-focused .mat-form-field-ripple {
+          background-color: var(--textarea-labelFontColorOnDark);
+        }
+        .mat-form-field-underline {
+          background-color: var(--textarea-labelFontColorOnDark);
+        }
+        input::placeholder {
+          color: var(--textarea-customContentFontColorOnDark);
+        }
+        &.required {
+          .mat-form-field-required-marker {
+            color: var(--textarea-errorColorOnDark) !important;
+          }
+          .mat-form-field.mat-focused .mat-form-field-ripple,
+          .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+            background-color: var(--textarea-labelFontColorOnDark);
+          }
+        }
+        &.invalid {
+          .mat-hint {
+            color: var(--textarea-errorColorOnDark);
+          }
+          .mat-form-field-ripple {
+            background-color: var(--textarea-errorColorOnDark) !important;
+            height: 0px !important;
+          }
+          &.mat-focused .mat-form-field-empty mat-label {
+            color: var(--textarea-errorColorOnDark) !important;
+          }
+          .mat-form-field {
+            &.mat-form-field-should-float {
+              mat-label {
+                color: var(--textarea-errorColorOnDark);
+              }
+            }
+          }
         }
       }
     `;

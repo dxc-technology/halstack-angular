@@ -1,0 +1,7 @@
+<div class="tbLengthInputContainer">
+  <input class="tbStyledInput" type="text" [value]="value" (change)="onChangeInputValue($event)" />
+  <select class="tbStyledSelect" (change)="onChangeSelectValue($event)">
+    <option *ngFor="let currentOption of unitOptions; trackBy: trackByFunction" [value]="currentOption"
+      [selected]="isOptionSelected(currentOption)"> {{currentOption}}</option>
+  </select>
+</div>

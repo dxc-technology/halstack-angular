@@ -64,7 +64,7 @@ export class DxcChipComponent implements OnChanges {
     suffixIconSrc: null,
     prefixIconSrc: null,
     disabled: false,
-    magin: "",
+    margin: "",
     tabIndexValue: 0,
   });
 
@@ -132,6 +132,9 @@ export class DxcChipComponent implements OnChanges {
       if (this.suffixIconClick.observers.length > 0) {
         return css`
           cursor: pointer;
+          &:focus {
+            outline-color: var(--chip-focusColor);
+          }
         `;
       }
     }
@@ -151,6 +154,9 @@ export class DxcChipComponent implements OnChanges {
       if (this.prefixIconClick.observers.length > 0) {
         return css`
           cursor: pointer;
+          &:focus {
+            outline-color: var(--chip-focusColor);
+          }
         `;
       }
     }
@@ -161,65 +167,106 @@ export class DxcChipComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-      height: 22px;
       ${this.utils.getMargins(inputs.margin)}
-      display: flex;
-      max-width: calc(100% - 40px);
-      flex-wrap: nowrap;
-      text-overflow: ellipsis;
-      border-radius: 48px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--chip-borderRadius);
+      max-width: calc(
+        100% - 40px - ${this.utils.getMarginValue(inputs.margin, "left")} -
+          ${this.utils.getMarginValue(inputs.margin, "right")}
+      );
+      min-height: 20px;
       background-color: ${inputs.disabled
         ? "var(--chip-disabledBackgroundColor)"
         : "var(--chip-backgroundColor)"};
-      padding: 10px 20px;
-      width: fit-content;
-      border: ${inputs.disabled
-        ? "1px solid var(--chip-disabledBackgroundColor)"
-        : "1px solid var(--chip-outlinedColor)"};
+
+      border-width: var(--chip-borderThickness);
+      border-style: var(--chip-borderStyle);
+      border-color: var(--chip-borderColor);
+
+      padding-top: var(--chip-contentPaddingTop);
+      padding-bottom: var(--chip-contentPaddingBottom);
+      padding-left: var(--chip-contentPaddingLeft);
+      padding-right: var(--chip-contentPaddingRight);
+      ${inputs.disabled ? "cursor: not-allowed" : ""};
+      cursor: ${inputs.disabled ? "not-allowed" : "default"};
+
       .labelContainer {
-        font-size: 16px;
-        font-family: var(--fontFamily);
-        line-height: 24px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: var(--chip-fontSize);
+        font-family: var(--chip-fontFamily);
+        font-weight: var(--chip-fontWeight);
+        font-style: var(--chip-fontStyle);
         color: ${inputs.disabled
           ? "var(--chip-disabledFontColor)"
           : "var(--chip-fontColor)"};
+        ${inputs.disabled ? "cursor: not-allowed" : "default"};
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
-      img,
-      svg {
-        max-width: 24px;
-        max-height: 24px;
-      }
+
       .prefixIcon {
-        opacity: ${inputs.disabled ? "0.34" : "1"};
-        ${this.label ? "margin-right: 10px;" : ""};
-        height: 24px;
-        width: 24px;
-        &:hover {
-          ${this.getDisabledStylePrefixIcon(inputs.disabled)};
-        }
-        &:focus {
-          ${this.tabIndexValue === -1 || inputs.disabled
-            ? "outline: none;"
-            : ""};
+        cursor: ${inputs.disabled
+          ? "not-allowed"
+          : this.prefixIconClick.observers.length > 0
+          ? "pointer"
+          : "default"};
+        color: ${inputs.disabled
+          ? "var(--chip-disabledIconColor)"
+          : "var(--chip-iconColor)"};
+        ${this.label || this.suffixIconSrc
+          ? "margin-right: 8px;"
+          : this.prefixIconSrc
+          ? "5px"
+          : ""};
+        height: var(--chip-iconSize);
+        width: var(--chip-iconSize);
+        padding-left: var(--chip-iconPaddingLeft);
+        padding-right: var(--chip-iconPaddingRight);
+        &:focus-within {
+          ${this.prefixIconClick.observers.length > 0
+            ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
+            : "outline: none"};
         }
       }
       .suffixIcon {
-        opacity: ${inputs.disabled ? "0.34" : "1"};
-        ${this.label ? "margin-left: 10px;" : ""};
-        height: 24px;
-        width: 24px;
-        &:hover {
-          ${this.getDisabledStyleSuffixIcon(inputs.disabled)};
-        }
-        &:focus {
-          ${this.tabIndexValue === -1 || inputs.disabled
-            ? "outline: none;"
-            : ""};
+        cursor: ${inputs.disabled
+          ? "not-allowed"
+          : this.suffixIconClick.observers.length > 0
+          ? "pointer"
+          : "default"};
+        color: ${inputs.disabled
+          ? "var(--chip-disabledIconColor)"
+          : "var(--chip-iconColor)"};
+        ${this.label || this.suffixIconSrc
+          ? "margin-left: 8px;"
+          : this.prefixIconSrc
+          ? "5px"
+          : ""};
+        height: var(--chip-iconSize);
+        width: var(--chip-iconSize);
+        padding-left: var(--chip-iconPaddingLeft);
+        padding-right: var(--chip-iconPaddingRight);
+        &:focus-within {
+          ${this.suffixIconClick.observers.length > 0
+            ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
+            : "outline: none"};
         }
       }
     `;
   }
+
+  private getMarginLeft = () =>
+    ((this.label ||
+      this.dxcChipPrefixIcon?.length !== 0 ||
+      this.prefixIconSrc) &&
+      "10px") ||
+    ((this.dxcChipPrefixIcon?.length !== 0 || this.prefixIconSrc) && "0");
+
+  private getMarginRight = () =>
+    ((this.label ||
+      this.dxcChipSuffixIcon?.length !== 0 ||
+      this.suffixIconSrc) &&
+      "10px") ||
+    ((this.dxcChipPrefixIcon?.length !== 0 || this.prefixIconSrc) && "0");
 }

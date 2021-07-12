@@ -1,0 +1,13 @@
+<div class="configContainer">
+  <h3 class="configContainerTitle">
+    Theme inputs
+  </h3>
+  <div class="configContainerInputList">
+    <tb-theme-input *ngFor="let currentComponent of componentInputs; trackBy: trackByFunction"
+      [propertyName]="currentComponent.propertyName"
+      [propertyValue]="currentComponent.propertyValue"
+      [propertyType]="currentComponent.propertyType"
+    ></tb-theme-input>
+  </div>
+
+</div>

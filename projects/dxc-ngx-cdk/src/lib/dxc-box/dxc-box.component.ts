@@ -70,12 +70,17 @@ export class DxcBoxComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: ${inputs.display};
-      border: 1px solid;
-      border-radius: 4px;
+      border: var(--box-borderThickness) solid;
+      border-radius: var(--box-borderRadius);
+      border-color: var(--box-borderColor);
       overflow: hidden;
       background-color: var(--box-backgroundColor);
-      border-color: transparent;
-      color: "#000000";
+      color: var(--box-fontColor);
+      font-family: var(--box-fontFamily);
+      font-weight: var(--box-fontWeight);
+      font-style: var(--box-font);
+      font-size: var(--box-fontSize);
+      letter-spacing: var(--box-letterSpacing);
 
       ${this.utils.getBoxShadow(inputs.shadowDepth)}
       ${this.utils.getMargins(inputs.margin)}

@@ -43,7 +43,7 @@ The API properties are the following:
             <code>true</code>
         </td>
         <td>
-            If true, the text is underlined.
+            Deprecated. If true, the text is underlined.
         </td>
     </tr>
     <tr>

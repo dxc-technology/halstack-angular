@@ -1,0 +1,117 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#FFFFFF">
+    <tbuilder-component-mode text="Default">
+      <dxc-slider
+        minValue="0"
+        maxValue="100"
+        showLimitsValues="true"
+        name="input"
+        step="1"
+        margin="xsmall"
+        size="large"
+      ></dxc-slider>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-slider
+        minValue="0"
+        maxValue="100"
+        showLimitsValues="true"
+        name="input"
+        value="50"
+        step="1"
+        margin="xsmall"
+        size="large"
+        marks="true"
+        disabled
+      ></dxc-slider>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With Marks">
+      <dxc-slider
+        minValue="0"
+        maxValue="100"
+        showLimitsValues="true"
+        name="input"
+        step="10"
+        marks="true"
+        margin="xsmall"
+        size="large"
+      ></dxc-slider>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With Input">
+      <dxc-slider
+        minValue="0"
+        maxValue="50"
+        showLimitsValues="true"
+        showInput="true"
+        name="input"
+        step="5"
+        [value]="value"
+        marks="true"
+        size="large"
+        margin="xsmall"
+      ></dxc-slider>
+    </tbuilder-component-mode>
+  </background-provider>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#000000">
+    <tbuilder-component-mode text="Default" mode="dark">
+      <dxc-slider
+        minValue="0"
+        maxValue="100"
+        showLimitsValues="true"
+        name="input"
+        step="1"
+        margin="xsmall"
+        size="large"
+      ></dxc-slider>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled" mode="dark">
+      <dxc-slider
+        minValue="0"
+        maxValue="100"
+        showLimitsValues="true"
+        name="input"
+        value="50"
+        step="1"
+        margin="xsmall"
+        size="large"
+        marks="true"
+        disabled
+      ></dxc-slider>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With Marks" mode="dark">
+      <dxc-slider
+        minValue="0"
+        maxValue="100"
+        showLimitsValues="true"
+        name="input"
+        step="10"
+        marks="true"
+        margin="xsmall"
+        size="large"
+      ></dxc-slider>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With Input" mode="dark">
+      <dxc-slider
+        minValue="0"
+        maxValue="50"
+        showLimitsValues="true"
+        showInput="true"
+        name="input"
+        step="5"
+        [value]="value"
+        marks="true"
+        size="large"
+        margin="xsmall"
+      ></dxc-slider>
+    </tbuilder-component-mode>
+  </background-provider>
+</div>

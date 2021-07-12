@@ -5,12 +5,14 @@ import {
   Output,
   HostBinding,
   SimpleChanges,
+  Optional,
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-radio",
@@ -52,6 +54,8 @@ export class DxcRadioComponent implements OnInit {
   @Output() onChange: EventEmitter<any>;
 
   @HostBinding("class") className;
+  @HostBinding("class.dark") darkBackground = false;
+  @HostBinding("class.light") lightBackground = true;
 
   renderedChecked: boolean;
 
@@ -87,7 +91,10 @@ export class DxcRadioComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils) {
+  constructor(
+    private utils: CssUtils,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {
     this.onChange = new EventEmitter();
   }
 
@@ -102,6 +109,15 @@ export class DxcRadioComponent implements OnInit {
 
   ngOnInit() {
     this.renderedChecked = this.checked;
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
@@ -129,18 +145,10 @@ export class DxcRadioComponent implements OnInit {
       display: inline-flex;
       ${this.utils.getMargins(inputs.margin)}
       ${this.calculateWidth(inputs)}
+      ${this.getDarkStyle()}
+      ${this.getLightStyle()}
       mat-radio-button {
         width: 100%;
-        &.cdk-focused:not(.mat-radio-disabled) {
-          .mat-radio-label {
-            .mat-radio-container {
-              .mat-radio-outer-circle {
-                outline: -webkit-focus-ring-color auto 1px;
-                outline-color: var(--radio-focusColor);
-              }
-            }
-          }
-        }
         .mat-radio-label {
           white-space: normal;
           display: inline-flex;
@@ -149,53 +157,138 @@ export class DxcRadioComponent implements OnInit {
             padding: 0px !important;
             width: calc(100% - 50px);
             ${this.setTextAlign(inputs.labelPosition)}
-            color: var(--radio-fontColor);
-            font-family: var(--fontFamily);
+            font-family: var(--radio-fontFamily);
+            font-size: var(--radio-fontSize);
+            font-style: var(--radio-fontStyle);
+            font-weight: var(--radio-fontWeight);
+            width: 100%;
           }
           .mat-radio-required {
             margin-right: 1px;
           }
           .mat-radio-container {
+            height: var(--radio-circleSize);
+            width: var(--radio-circleSize);
             ${inputs.labelPosition === "after"
               ? css`
-                  margin-right: 15px;
-                  margin-left: 15px;
+                  margin-right: var(--radio-circleLabelSpacing);
                   margin-top: 10px;
                   margin-bottom: 10px;
                 `
               : inputs.labelPosition === "before"
               ? css`
-                  margin-left: 15px;
-                  margin-right: 15px;
+                  margin-left: var(--radio-circleLabelSpacing);
                   margin-top: 10px;
                   margin-bottom: 10px;
                 `
               : css``}
-            .mat-radio-inner-circle {
-              background-color: var(--radio-color);
-            }
-            .mat-radio-outer-circle {
-              border-color: var(--radio-color);
-            }
             .mat-radio-frame {
               border-radius: 4px;
+            }
+            .mat-radio-outer-circle,
+            .mat-radio-inner-circle {
+              height: var(--radio-circleSize);
+              width: var(--radio-circleSize);
+            }
+            .mat-ripple-element{
+              background-color: transparent;
             }
           }
         }
 
         &.mat-radio-disabled {
           .mat-radio-label {
-            .mat-radio-outer-circle{
-              border-color: var(--radio-disabledColor);
-            }
-            .mat-radio-inner-circle{
-              background-color: var(--radio-disabledColor);
-            }
-            .mat-radio-label-content{
-              color: var(--radio-disabledFontColor);
-              font-family: var(--fontFamily);
-            }
             cursor: not-allowed;
+          }
+        }
+      }
+    `;
+  }
+
+  getDarkStyle() {
+    return css`
+      &.dark {
+        mat-radio-button {
+          &.cdk-focused:not(.mat-radio-disabled) {
+            .mat-radio-label {
+              .mat-radio-container {
+                .mat-radio-outer-circle {
+                  outline: -webkit-focus-ring-color auto 2px;
+                  outline-color: var(--radio-focusColorOnDark);
+                  outline-offset: 2px;
+                  outline-style: solid;
+                }
+              }
+            }
+          }
+          .mat-radio-label-content {
+            color: var(--radio-fontColorOnDark);
+          }
+          .mat-radio-container {
+            .mat-radio-inner-circle {
+              background-color: var(--radio-colorOnDark);
+            }
+            .mat-radio-outer-circle {
+              border-color: var(--radio-colorOnDark);
+            }
+          }
+          &.mat-radio-disabled {
+            .mat-radio-label {
+              .mat-radio-outer-circle {
+                border-color: var(--radio-disabledColorOnDark);
+              }
+              .mat-radio-inner-circle {
+                background-color: var(--radio-disabledColorOnDark);
+              }
+              .mat-radio-label-content {
+                color: var(--radio-disabledFontColorOnDark);
+              }
+            }
+          }
+        }
+      }
+    `;
+  }
+
+  getLightStyle() {
+    return css`
+      &.light {
+        mat-radio-button {
+          &.cdk-focused:not(.mat-radio-disabled) {
+            .mat-radio-label {
+              .mat-radio-container {
+                .mat-radio-outer-circle {
+                  outline: -webkit-focus-ring-color auto 2px;
+                  outline-color: var(--radio-focusColor);
+                  outline-offset: 2px;
+                  outline-style: solid;
+                }
+              }
+            }
+          }
+          .mat-radio-label-content {
+            color: var(--radio-fontColor);
+          }
+          .mat-radio-container {
+            .mat-radio-inner-circle {
+              background-color: var(--radio-color);
+            }
+            .mat-radio-outer-circle {
+              border-color: var(--radio-color);
+            }
+          }
+          &.mat-radio-disabled {
+            .mat-radio-label {
+              .mat-radio-outer-circle {
+                border-color: var(--radio-disabledColor);
+              }
+              .mat-radio-inner-circle {
+                background-color: var(--radio-disabledColor);
+              }
+              .mat-radio-label-content {
+                color: var(--radio-disabledFontColor);
+              }
+            }
           }
         }
       }

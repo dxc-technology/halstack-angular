@@ -1,0 +1,140 @@
+<div>
+  <tbuilder-component-mode text="Default">
+    <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1">
+      <dxc-tab label="Tab 1" (onTabClick)="tabClicked1($event)"></dxc-tab>
+      <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)"></dxc-tab>
+      <dxc-tab label="Tab 3" (onTabClick)="tabClicked1($event)"></dxc-tab>
+    </dxc-tabs>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Disabled">
+    <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1" iconPosition="top">
+      <dxc-tab label="Tab 1" (onTabClick)="tabClicked1($event)"></dxc-tab>
+      <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)" [disabled] = "true" >
+        <dxc-tab-icon>
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            enable-background="new 0 0 24 24"
+            xml:space="preserve"
+          >
+            <g id="Bounding_Box">
+              <rect fill="none" width="24" height="24" />
+            </g>
+            <g id="Master">
+              <path
+                d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h5v-6h4v6h5v-8h3L19,9.3z M10,10c0-1.1,0.9-2,2-2s2,0.9,2,2H10z"
+              />
+            </g>
+          </svg>
+        </dxc-tab-icon>
+      </dxc-tab>
+      <dxc-tab label="Tab 3" (onTabClick)="tabClicked1($event)"></dxc-tab>
+    </dxc-tabs>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Icons">
+    <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1" iconPosition="top">
+      <dxc-tab label="Tab 1" (onTabClick)="tabClicked1($event)">
+        <dxc-tab-icon>
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            enable-background="new 0 0 24 24"
+            xml:space="preserve"
+          >
+            <g id="Bounding_Box">
+              <rect fill="none" width="24" height="24" />
+            </g>
+            <g id="Master">
+              <path
+                d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h5v-6h4v6h5v-8h3L19,9.3z M10,10c0-1.1,0.9-2,2-2s2,0.9,2,2H10z"
+              />
+            </g>
+          </svg>
+        </dxc-tab-icon>
+      </dxc-tab>
+      <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)">
+        <dxc-tab-icon>
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            enable-background="new 0 0 24 24"
+            xml:space="preserve"
+          >
+            <g id="Bounding_Box">
+              <rect fill="none" width="24" height="24" />
+            </g>
+            <g id="Master">
+              <path
+                d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h5v-6h4v6h5v-8h3L19,9.3z M10,10c0-1.1,0.9-2,2-2s2,0.9,2,2H10z"
+              />
+            </g>
+          </svg>
+        </dxc-tab-icon>
+      </dxc-tab>
+      <dxc-tab label="Tab 3" (onTabClick)="tabClicked1($event)" >
+        <dxc-tab-icon>
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            enable-background="new 0 0 24 24"
+            xml:space="preserve"
+          >
+            <g id="Bounding_Box">
+              <rect fill="none" width="24" height="24" />
+            </g>
+            <g id="Master">
+              <path
+                d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h5v-6h4v6h5v-8h3L19,9.3z M10,10c0-1.1,0.9-2,2-2s2,0.9,2,2H10z"
+              />
+            </g>
+          </svg>
+        </dxc-tab-icon>
+      </dxc-tab>
+    </dxc-tabs>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Large Tab With Scroll Buttons">
+    <div style="width: 500px">
+      <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1">
+        <dxc-tab label="Tab 1" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 3" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 4" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 5" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 6" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 7" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 8" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 9" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 10" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 11" (onTabClick)="tabClicked1($event)"></dxc-tab>
+        <dxc-tab label="Tab 12" (onTabClick)="tabClicked1($event)"></dxc-tab>
+      </dxc-tabs>
+    </div>
+  </tbuilder-component-mode>
+</div>

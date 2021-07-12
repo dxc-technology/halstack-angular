@@ -7,7 +7,7 @@ import {
   AfterViewInit,
   OnDestroy
 } from "@angular/core";
-import { ComponentPortal, DomPortalHost, CdkPortal } from '@angular/cdk/portal';
+import { ComponentPortal, CdkPortal, DomPortalOutlet } from '@angular/cdk/portal';
 import { ViewChild, ViewContainerRef } from '@angular/core';
 
 
@@ -27,7 +27,7 @@ export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild(CdkPortal, { static: false }) cdkPortal;
 
-  private portalHost: DomPortalHost;
+  private portalHost: DomPortalOutlet;
   private portal;
 
   constructor(
@@ -38,18 +38,11 @@ export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
   ) {
   }
 
-  ngOnInit(): void {
-    console.log('ngOnInit DynamicComponent');
-  }
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    console.log('ngAfterViewInit DynamicComponent');
-
     const selector = (document.querySelector('#' + this.selector));
     // if (selector!==null){
-    this.portalHost = new DomPortalHost(
+    this.portalHost = new DomPortalOutlet(
       selector,
       this.componentFactoryResolver,
       this.appRef,

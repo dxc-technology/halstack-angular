@@ -45,5 +45,6 @@ export class DxcInputPrefixIconComponent implements OnChanges {
     if(this.onClickPrefix.observers.length > 0){
       this.hasOnClick = true;
     }
+    this.service.setHasPrefixIcon(true);
   }
 }

@@ -27,7 +27,6 @@ export class CodesandboxViewer implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("On init in CodesandboxViewer");
     this.subscriptor = this.codesandboxService
       .getExamples(this.path)
       .subscribe((resp) => {
@@ -52,8 +51,6 @@ export class CodesandboxViewer implements OnInit {
   }
 
   OnDestroy() {
-    console.log("On destroy in CodesandboxViewer");
-
     this.subscriptor.unsubscribe();
   }
 }

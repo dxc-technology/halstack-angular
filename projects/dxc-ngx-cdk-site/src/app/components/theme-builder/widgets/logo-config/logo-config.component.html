@@ -1,0 +1,4 @@
+<div class="tbUploadContainer">
+  <img class="tbLogoImage" [src]="sanitizeImageUrl(logoSrc)" />
+  <input class="tbCustomUpload" type="file" id="logo" name="img" accept="image/*" (change)="changeLogoSrc($event)" />
+</div>

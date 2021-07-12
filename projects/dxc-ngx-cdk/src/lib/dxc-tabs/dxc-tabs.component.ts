@@ -134,6 +134,10 @@ export class DxcTabsComponent implements OnChanges {
 
   }
 
+  private hasLabelAndIcon(){
+    return this.tabs && this.tabs.filter(tab=>  tab.label!== null && tab.iconSrc!== null).length > 0;
+  }
+
   private generateTabs() {
     const matTabsFromQueryList = this.tabs.map((tab, index) => {
       if (tab.label && tab.iconSrc) {
@@ -175,24 +179,33 @@ export class DxcTabsComponent implements OnChanges {
         box-shadow: none;
       }
       .mat-tab-list .underline {
-        height: 1px;
+        height: var(--tabs-dividerThickness);
         width: 100%;
-        background-color: var(--tabs-divider);
+        background-color: var(--tabs-dividerColor);
       }
       .mat-tab-group {
+        position: relative;
+        display: flex;
+        flex-direction: column;
         ${this.utils.getMargins(inputs.margin)}
         .mat-tab-header {
           background-color: white;
         }
+        .mat-ink-bar{
+          background-color: var(--tabs-selectedUnderlineColor);
+          height: var(--tabs-selectedUnderlineThickness);
+        }
       }
       .mat-tab-list .mat-tab-label {
-        height: auto !important;
-        /* max-width: 360px; */
+        height: ${this.getTabHeight()} !important;
         padding-right: 16px;
         padding-left: 16px;
+        min-width: 90px;
+        max-width: 360px;
+        text-transform: var(--tabs-fontTextTransform) !important;
         opacity: 1 !important;
-        /* min-width: 90px; */
-        background: var(--tabs-backgroundColor) 0% 0% no-repeat;
+        color: var(--tabs-unselectedFontColor);
+        background: var(--tabs-unselectedBackgroundColor) 0% 0% no-repeat;
         .dxc-tab-label span:not(.show-dot) {
           opacity: 1;
           white-space: normal;
@@ -200,8 +213,10 @@ export class DxcTabsComponent implements OnChanges {
         .dxc-tab-label span {
           color: var(--tabs-fontColor);
           opacity: 1;
-          font: normal normal 600 16px/22px var(--fontFamily);
-          ;
+          font-family: var(--tabs-fontFamily);
+          font-size:  var(--tabs-fontSize);
+          font-style: var(--tabs-fontStyle);
+          font-weight: var(--tabs-fontWeight);
         }
         &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;
@@ -212,6 +227,7 @@ export class DxcTabsComponent implements OnChanges {
           fill: var(--tabs-fontColor);
         }
         .mat-ripple-element {
+          font-weight: var(--tabs-pressedFontWeight) !important;
           background-color: var(--tabs-pressedBackgroundColor);
         }
         .mat-tab-label-content {
@@ -219,6 +235,7 @@ export class DxcTabsComponent implements OnChanges {
           display: inline-grid;
           text-align: -webkit-center;
           z-index: 1;
+
           img,
           svg {
             width: 22px;
@@ -249,7 +266,6 @@ export class DxcTabsComponent implements OnChanges {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          /* min-width: 90px; */
         }
         .only-icon {
           min-height: 64px;
@@ -261,12 +277,17 @@ export class DxcTabsComponent implements OnChanges {
         &.mat-tab-disabled {
           .dxc-tab-label span {
             color: var(--tabs-disabledFontColor) !important;
+            font-style: var(--tabs-disabledFontStyle);
           }
+          dxc-tab-icon {
+            fill: var(--tabs-disabledIconColor);
+          }
+          opacity: 0.5 !important;
           cursor: not-allowed;
           pointer-events: all !important;
         }
         &.mat-tab-label-active {
-          /* background-color: var(--tabs-backgroundColor); */
+          background-color: var(--tabs-selectedBackgroundColor);
           opacity: 1 !important;
           .dxc-tab-label span {
             color: var(--tabs-selectedFontColor);
@@ -276,6 +297,7 @@ export class DxcTabsComponent implements OnChanges {
           dxc-tab-icon {
             fill: var(--tabs-selectedIconColor);
           }
+
         }
       }
       &.label-icons {
@@ -284,6 +306,10 @@ export class DxcTabsComponent implements OnChanges {
         }
       }
     `;
+  }
+
+  getTabHeight(){
+    return ((!this.hasLabelAndIcon || (this.hasLabelAndIcon && this.defaultInputs.value.iconPosition !== "top")) && "48px") || "72px";
   }
 }
 

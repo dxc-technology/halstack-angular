@@ -8,6 +8,7 @@ import {
   OnInit,
   ViewChild,
   SimpleChanges,
+  ElementRef,
 } from "@angular/core";
 
 import { css } from "emotion";
@@ -19,7 +20,10 @@ import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { HostListener } from "@angular/core";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 const moment = momentImported;
 
 @Component({
@@ -88,7 +92,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
     invalid: false,
     margin: null,
     size: "medium",
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
   renderedValue: string;
@@ -101,6 +105,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
   _dxcTrigger: MdePopoverTrigger;
   @ViewChild("dxcCalendar", { static: false })
   _dxcCalendar: MatCalendar<Moment>;
+
+  @ViewChild("dxcCalendar", { read: ElementRef }) calendar: ElementRef;
 
   private _sizes = ["medium", "large", "fillParent"];
 
@@ -145,6 +151,22 @@ export class DxcDateComponent implements OnChanges, OnInit {
     this.calendarDynamicStyle = `${this.getCalendarContentStyle()}`;
   }
 
+  setTabIndex() {
+    Array.from(
+      this.calendar.nativeElement.getElementsByClassName(
+        "mat-calendar-body-cell-content"
+      )
+    ).forEach((el: Element) => el.setAttribute("tabindex", "0"));
+  }
+
+  removeRippleCalendarControls() {
+    Array.from(
+      this.calendar.nativeElement
+        .getElementsByClassName("mat-calendar-header")[0]
+        .getElementsByClassName("mat-button-ripple mat-ripple")
+    ).forEach((el: Element) => el.remove());
+  }
+
   onInputChangeHandler(value: string) {
     if (this._isCalendarOpened) this.closeCalendar();
     let _dateValue = this.getMomentValue(value, this.format);
@@ -180,6 +202,8 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   @HostListener("document:click", ["$event"])
   public onClickOutsideHandler(event) {
+    this.setTabIndex();
+    this.removeRippleCalendarControls();
     if (
       event.target.offsetParent &&
       event.target.offsetParent?.getAttribute("class")
@@ -232,7 +256,10 @@ export class DxcDateComponent implements OnChanges, OnInit {
   }
 
   private resetCalendarState(value: boolean = false) {
-    this._isOpenClicked = this._isCalendarOpened = this._isSelectingDate = value;
+    this._isOpenClicked =
+      this._isCalendarOpened =
+      this._isSelectingDate =
+        value;
   }
 
   private getMomentValue(value: string, format: string) {
@@ -245,9 +272,11 @@ export class DxcDateComponent implements OnChanges, OnInit {
 
   getCalendarContentStyle() {
     return css`
-      width: 297px;
-      background: var(--date-pickerBackgroundColor);
-
+      width: var(--date-pickerWidth);
+      dxc-box {
+        background: var(--date-pickerBackgroundColor);
+        height: var(--date-pickerHeight);
+      }
       .mat-calendar {
         font-family: var(--fontFamily);
         width: 100%;
@@ -288,10 +317,68 @@ export class DxcDateComponent implements OnChanges, OnInit {
           box-shadow: none;
         }
       }
+      .mat-calendar-body-cell-content,
+      .mat-button-wrapper,
+      .mat-calendar-body-label,
+      .mat-calendar-table-header,
+      th {
+        font-family: var(--date-fontFamily);
+      }
+
+      .mat-calendar-previous-button,
+      .mat-calendar-next-button {
+        background: var(--date-pickerBackgroundColorMonthArrows);
+      }
+
+      .mat-calendar-table-header {
+        color: var(--date-pickerWeekLabelColor);
+      }
+
+      .mat-calendar-body-label {
+        color: var(--date-pickerLabelColor);
+      }
+
+      .mat-calendar-period-button {
+        color: var(--date-pickerYearColor);
+      }
+
+      .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+        > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+      .cdk-keyboard-focused
+        .mat-calendar-body-active
+        > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+      .cdk-program-focused
+        .mat-calendar-body-active
+        > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+        background-color: transparent;
+      }
+
       mat-month-view .mat-calendar-body-cell-content {
         width: 28px;
         height: 28px;
         color: var(--date-pickerFontColor);
+      }
+
+      td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content:focus,
+      .mat-calendar-previous-button:focus,
+      .mat-calendar-next-button:focus,
+      .mat-calendar-period-button:focus {
+        outline: -webkit-focus-ring-color auto 1px;
+        outline-color: var(--date-focusColor);
+      }
+
+      .mat-button-focus-overlay {
+        background: none;
+      }
+
+      .mat-calendar-period-button:hover,
+      .mat-calendar-previous-button:hover,
+      .mat-calendar-next-button:hover {
+        background: var(--date-pickerHoverHeaderColor);
+      }
+
+      .mat-button-wrapper {
+        font-weight: bold;
       }
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
@@ -338,11 +425,15 @@ export class DxcDateComponent implements OnChanges, OnInit {
       &:not(.disabled) {
         dxc-input-suffix-icon {
           cursor: pointer !important;
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--date-focusColor);
-          }
         }
+        .onClickIconElement .containerIcon:focus {
+          outline: -webkit-focus-ring-color auto 2px !important;
+          outline-color: var(--date-focusColor) !important;
+          outline-style: solid !important;
+        }
+      }
+      dxc-input-suffix-icon {
+        height: 20px;
       }
     `;
   }

@@ -1,6 +1,7 @@
 import { render } from "@testing-library/angular";
 import { DxcFooterComponent } from "./dxc-footer.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { PipesModule } from '../pipes/pipes.module';
 
 describe("DxcFooter tests", () => {
   test("should render dxc-footer", async () => {
@@ -16,7 +17,7 @@ describe("DxcFooter tests", () => {
         copyright: text,
         bottomLinks: bottom,
       },
-      imports: [MatToolbarModule],
+      imports: [MatToolbarModule, PipesModule],
     });
     expect(footer.getByText(text)).toBeTruthy();
   });

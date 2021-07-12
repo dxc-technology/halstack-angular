@@ -7,11 +7,17 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
+  Optional,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
@@ -20,6 +26,8 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
 export class DxcSliderComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
+  @HostBinding("class.dark") darkBackground = false;
+  @HostBinding("class.light") lightBackground = true;
 
   //Default values
   @Input() minValue: number = 0;
@@ -108,15 +116,26 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     fitContent: "unset",
   };
 
-  constructor(private utils: CssUtils) {}
+  constructor(
+    private utils: CssUtils,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {}
 
   ngOnInit() {
     this.renderedValue = this.value;
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
     if (this.labelFormatCallback) {
       this.minValueLabel = this.labelFormatCallback(this.minValue!).toString();
       this.maxValueLabel = this.labelFormatCallback(this.maxValue!).toString();
-    }
-    else{
+    } else {
       this.minValueLabel = this.minValue;
       this.maxValueLabel = this.maxValue;
     }
@@ -198,6 +217,19 @@ export class DxcSliderComponent implements OnInit, OnChanges {
       align-items: center;
       ${this.calculateWidth(inputs)}
       ${this.utils.getMargins(inputs.margin)}
+      ${this.getDarkStyle()}
+      ${this.getLightStyle()}
+      font-family: var(--slider-fontFamily);
+      font-style: var(--slider-fontStyle);
+      font-weight: var(--slider-fontWeight);
+      letter-spacing: var(--slider-fontLetterSpacing);
+
+      .mat-slider-has-ticks .mat-slider-wrapper::after {
+        height: var(--slider-dotsSize);
+        border-left-width: 2px;
+        top: var(--slider-dotsVerticalPosition);
+      }
+
       &.disabled {
         cursor: not-allowed;
         input {
@@ -206,50 +238,43 @@ export class DxcSliderComponent implements OnInit, OnChanges {
       }
       mat-slider {
         flex-grow: 1;
+        .mat-slider-track-fill {
+          height: 100%;
+        }
         .mat-slider-ticks-container {
-          height: 4px;
-          top: -1px;
+          height: var(--slider-dotsSize);
+          top: var(--slider-dotsVerticalPosition);
+        }
+        .mat-slider-track-wrapper {
+          top: var(--slider-lineVerticalPosition);
         }
         .mat-slider-track-wrapper,
         .mat-slider-track-background,
         .mat-slider-wrapper {
-          height: 1px;
+          height: var(--slider-lineThickness);
         }
-        .mat-slider-focus-ring{
+        .mat-slider-focus-ring {
           background-color: transparent;
         }
+        .mat-slider-thumb {
+          width: var(--slider-thumbWidth);
+          height: var(--slider-thumbHeight);
+          bottom: var(--slider-thumbVerticalPosition);
+        }
         &:not(.mat-slider-disabled) {
-          .mat-slider-track-fill {
-            background-color: var(--slider-trackLine);
-          }
-          .mat-slider-thumb {
-            background-color: var(--slider-thumbBackgroundColor);
-            border-color: var(--slider-thumbBackgroundColor) !important;
-          }
-          .mat-slider-track-background {
-            background-color: var(--slider-totalLine) !important;
-          }
           .mat-slider-ticks {
-            background-image: repeating-linear-gradient(
-              to right,
-              var(--slider-dotsBackgroundColor),
-              var(--slider-dotsBackgroundColor) 4px 4px,
-              transparent 2px,
-              #e2141400
-            );
-            height: 4px;
+            height: var(--slider-dotsSize);
           }
           &.mat-slider-sliding {
             .mat-slider-thumb {
               cursor: grabbing;
-              transform: scale(1);
+              transform: scale(var(--slider-draggedThumbScale));
             }
           }
           &:focus:not(.mat-slider-sliding) {
             .mat-slider-thumb {
               transform: scale(0.7);
               outline: -webkit-focus-ring-color auto 1px;
-              outline-color: var(--slider-focusColor);
               outline-offset: 3px;
             }
             .mat-slider-focus-ring {
@@ -263,28 +288,16 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             }
           }
         }
-
         &.mat-slider-disabled {
           .mat-slider-thumb {
             transform: scale(0.7) !important;
-            border-color: var(--slider-disabledThumbBackgroundColor) !important;
-            background-color: var(--slider-disabledThumbBackgroundColor);
-          }
-          .mat-slider-track-background {
-            background-color: var(--slider-disabledtotalLine) !important;
-          }
-          .mat-slider-track-fill {
-            background-color: var(--slider-disabledTrackLine) !important;
+            bottom: var(--slider-disabledThumbVerticalPosition);
           }
           .mat-slider-ticks {
-            background-image: repeating-linear-gradient(
-              to right,
-              var(--slider-disabledDotsBackgroundColor),
-              var(--slider-disabledDotsBackgroundColor) 4px 4px,
-              transparent 2px,
-              #e2141400
-            );
-            height: 4px;
+            height: var(--slider-dotsSize);
+          }
+          .mat-slider-ticks-container {
+            top: var(--slider-disabledDotsVerticalPosition);
           }
         }
       }
@@ -293,17 +306,166 @@ export class DxcSliderComponent implements OnInit, OnChanges {
 
   getMinLabelContainerClass() {
     return css`
-      font-size: 16px;
-      font-family: var(--fontFamily);
       margin-right: 15px;
     `;
   }
 
   getMaxLabelContainerClass(inputs: any) {
     return css`
-      font-size: 16px;
-      font-family: var(--fontFamily);
       margin-left: ${inputs.step === 1 ? "15px" : "20px"};
+    `;
+  }
+
+  getDarkStyle() {
+    return css`
+      &.dark {
+        color: var(--slider-fontColorOnDark);
+        .mat-slider-has-ticks .mat-slider-wrapper::after {
+          border-color: var(--slider-dotsBackgroundColorOnDark);
+        }
+        mat-slider {
+          &:not(.mat-slider-disabled) {
+            .mat-slider-track-fill {
+              background-color: var(--slider-trackLineOnDark);
+            }
+            .mat-slider-track-background {
+              background-color: var(--slider-totalLineOnDark) !important;
+              opacity: 0.38;
+            }
+            .mat-slider-thumb {
+              background-color: var(--slider-thumbBackgroundColorOnDark);
+              border-color: var(--slider-thumbBackgroundColorOnDark) !important;
+            }
+            .mat-slider-ticks {
+              background-image: repeating-linear-gradient(
+                to right,
+                var(--slider-dotsBackgroundColorOnDark),
+                var(--slider-dotsBackgroundColorOnDark) var(--slider-dotsSize)
+                  var(--slider-dotsSize),
+                transparent 2px,
+                #e2141400
+              );
+            }
+            &.mat-slider-sliding {
+              .mat-slider-thumb {
+                background-color: var(
+                  --slider-draggedThumbBackgroundColorOnDark
+                );
+                border-color: var(
+                  --slider-draggedThumbBackgroundColorOnDark
+                ) !important;
+              }
+            }
+            &:focus:not(.mat-slider-sliding) {
+              .mat-slider-thumb {
+                outline-color: var(--slider-focusColorOnDark);
+              }
+            }
+          }
+        }
+        &.disabled {
+          .mat-slider-horizontal .mat-slider-wrapper::after {
+            border-color: var(--slider-disabledDotsBackgroundColorOnDark);
+          }
+          .mat-slider-thumb {
+            border-color: var(
+              --slider-disabledThumbBackgroundColorOnDark
+            ) !important;
+            background-color: var(--slider-disabledThumbBackgroundColorOnDark);
+          }
+          .mat-slider-track-background {
+            background-color: var(
+              --slider-disabledTotalLineColorOnDark
+            ) !important;
+          }
+          .mat-slider-track-fill {
+            background-color: var(--slider-disabledTrackLineOnDark) !important;
+          }
+          .mat-slider-ticks {
+            background-image: repeating-linear-gradient(
+              to right,
+              var(--slider-disabledDotsBackgroundColorOnDark),
+              var(--slider-disabledDotsBackgroundColorOnDark)
+                var(--slider-dotsSize) var(--slider-dotsSize),
+              transparent 2px,
+              #e2141400
+            );
+          }
+        }
+      }
+    `;
+  }
+
+  getLightStyle() {
+    return css`
+      &.light {
+        color: var(--slider-fontColor);
+        .mat-slider-has-ticks .mat-slider-wrapper::after {
+          border-color: var(--slider-dotsBackgroundColor);
+        }
+        mat-slider {
+          &:not(.mat-slider-disabled) {
+            .mat-slider-track-fill {
+              background-color: var(--slider-trackLineColor);
+            }
+            .mat-slider-track-background {
+              background-color: var(--slider-totalLineColor) !important;
+            }
+            .mat-slider-thumb {
+              background-color: var(--slider-thumbBackgroundColor);
+              border-color: var(--slider-thumbBackgroundColor) !important;
+            }
+            .mat-slider-ticks {
+              background-image: repeating-linear-gradient(
+                to right,
+                var(--slider-dotsBackgroundColor),
+                var(--slider-dotsBackgroundColor) var(--slider-dotsSize)
+                  var(--slider-dotsSize),
+                transparent 2px,
+                #e2141400
+              );
+            }
+            &.mat-slider-sliding {
+              .mat-slider-thumb {
+                background-color: var(--slider-draggedThumbBackgroundColor);
+                border-color: var(
+                  --slider-draggedThumbBackgroundColor
+                ) !important;
+              }
+            }
+            &:focus:not(.mat-slider-sliding) {
+              .mat-slider-thumb {
+                outline-color: var(--slider-focusColor);
+              }
+            }
+          }
+        }
+        &.disabled {
+          .mat-slider-horizontal .mat-slider-wrapper::after {
+            border-color: var(--slider-disabledDotsBackgroundColorOnDark);
+          }
+          .mat-slider-thumb {
+            border-color: var(--slider-disabledThumbBackgroundColor) !important;
+            background-color: var(--slider-disabledThumbBackgroundColor);
+          }
+          .mat-slider-track-background {
+            background-color: var(--slider-disabledTotalLineColor) !important;
+          }
+          .mat-slider-track-fill {
+            background-color: var(--slider-disabledTrackLineColor) !important;
+          }
+          .mat-slider-ticks {
+            background-image: repeating-linear-gradient(
+              to right,
+              var(--slider-disabledDotsBackgroundColorOnDark),
+              var(--slider-disabledDotsBackgroundColorOnDark)
+                var(--slider-dotsSize) var(--slider-dotsSize),
+              transparent 2px,
+              #e2141400
+            );
+          }
+        }
+      }
     `;
   }
 }

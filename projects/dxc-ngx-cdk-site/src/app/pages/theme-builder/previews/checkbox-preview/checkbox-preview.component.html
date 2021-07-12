@@ -1,0 +1,89 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <div>
+    <tbuilder-component-mode text="Default">
+      <dxc-checkbox
+        [checked]="checked1"
+        label="Label"
+        margin="xsmall"
+        (onChange)="onChange1($event)"
+      >
+      </dxc-checkbox>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Label Position">
+      <dxc-checkbox
+        [checked]="checked2"
+        label="Label before"
+        margin="xsmall"
+        (onChange)="onChange2($event)"
+      >
+      </dxc-checkbox>
+
+      <dxc-checkbox
+        [checked]="checked3"
+        label="Label after"
+        labelPosition="after"
+        margin="xsmall"
+        (onChange)="onChange3($event)"
+      >
+      </dxc-checkbox>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-checkbox [checked]="false" label="Disabled" margin="xsmall" disabled>
+      </dxc-checkbox>
+      <dxc-checkbox
+        [checked]="true"
+        label="Disabled Checked"
+        margin="xsmall"
+        disabled
+      >
+      </dxc-checkbox>
+    </tbuilder-component-mode>
+  </div>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#000000">
+    <tbuilder-component-mode text="Default" mode="dark">
+      <dxc-checkbox
+        [checked]="checked1"
+        label="Label"
+        margin="xsmall"
+        (onChange)="onChange1($event)"
+      >
+      </dxc-checkbox>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Label Position" mode="dark">
+      <dxc-checkbox
+        [checked]="checked2"
+        label="Label before"
+        margin="xsmall"
+        (onChange)="onChange2($event)"
+      >
+      </dxc-checkbox>
+
+      <dxc-checkbox
+        [checked]="checked3"
+        label="Label after"
+        labelPosition="after"
+        margin="xsmall"
+        (onChange)="onChange3($event)"
+      >
+      </dxc-checkbox>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled" mode="dark">
+      <dxc-checkbox [checked]="false" label="Disabled" margin="xsmall" disabled>
+      </dxc-checkbox>
+      <dxc-checkbox
+        [checked]="true"
+        label="Disabled Checked"
+        margin="xsmall"
+        disabled
+      >
+      </dxc-checkbox>
+    </tbuilder-component-mode>
+  </background-provider>
+</div>

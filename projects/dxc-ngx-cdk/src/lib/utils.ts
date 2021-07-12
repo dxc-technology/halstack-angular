@@ -21,6 +21,13 @@ export class CssUtils {
         `;
   }
 
+  getMarginValue = (margin, type) => {
+    const marginSize = spaces[margin[type]] || "0px";
+     return marginSize;
+  }
+
+
+
   getTopMargin(margin) {
     return margin && typeof margin !== "object"
       ? css`
@@ -62,7 +69,7 @@ export class CssUtils {
     if (inputs.padding) {
       paddings = this.getPaddingOrMargin(sizes, inputs.padding);
     }
-    if(paddings || margins) {
+    if (paddings || margins) {
       return css`
         width: calc(${width} ${paddings} ${margins});
       `;
@@ -72,7 +79,7 @@ export class CssUtils {
       `;
     }
   }
- 
+
   getPaddingOrMargin(size, paddingOrMargin) {
     let finalPaddingOrMargin = "";
     if (paddingOrMargin && typeof paddingOrMargin !== "object") {
@@ -168,24 +175,35 @@ export class CssUtils {
     return value;
   }
 
-  getBoxShadow(shadowDepth) {
+  getBoxShadow(shadowDepth, isImportant:boolean = false) {
     switch (shadowDepth) {
       case "1":
         return css`
-          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-            0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-        `;
+          box-shadow: var(--box-oneShadowDepthShadowOffsetX)
+            var(--box-oneShadowDepthShadowOffsetY)
+            var(--box-oneShadowDepthShadowBlur)
+            var(--box-oneShadowDepthShadowSpread)
+            var(--box-oneShadowDepthShadowColor) ${this.isPropertyImportant(isImportant)};`;
       case "2":
         return css`
-          box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
-            0px 3px 4px 0px rgba(0, 0, 0, 0.14),
-            0px 1px 8px 0px rgba(0, 0, 0, 0.12);
-        `;
+        box-shadow: var(--box-twoShadowDepthShadowOffsetX)
+        var(--box-twoShadowDepthShadowOffsetY)
+        var(--box-twoShadowDepthShadowBlur)
+        var(--box-twoShadowDepthShadowSpread)
+        var(--box-twoShadowDepthShadowColor) ${this.isPropertyImportant(isImportant)};
+        ` ;
       default:
         return css`
-          box-shadow: none;
+        box-shadow: var(--box-noneShadowDepthShadowOffsetX)
+        var(--box-noneShadowDepthShadowOffsetY)
+        var(--box-noneShadowDepthShadowBlur)
+        var(--box-noneShadowDepthShadowSpread)
+        var(--box-noneShadowDepthShadowColor) ${this.isPropertyImportant(isImportant)};
         `;
     }
+  }
+
+  private isPropertyImportant(isImportant){
+    return isImportant ? ' !important': '';
   }
 }

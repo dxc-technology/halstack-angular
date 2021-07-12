@@ -60,14 +60,20 @@ export class DxcDropdownComponent implements OnChanges {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled;
 
   @Input() public label: string = "";
   @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild("dropdownButton", { static: true }) dropdownButton;
   @ViewChild(MatMenuTrigger, { static: false }) menuTrigger: MatMenuTrigger;
-
-  
 
   @HostListener("document:click", ["$event"])
   clickout(event) {
@@ -138,105 +144,6 @@ export class DxcDropdownComponent implements OnChanges {
     });
   }
 
-  iconPositionAfter(iconPositionAfter) {
-    if (iconPositionAfter) {
-      return css`
-        div {
-          display: flex;
-          flex-grow: unset;
-          width: fit-content;
-          flex-direction: row-reverse;
-          align-items: center;
-        }
-      `;
-    } else {
-      return css`
-        div {
-          display: flex;
-          flex-grow: unset;
-          width: fit-content;
-          align-items: center;
-        }
-      `;
-    }
-  }
-
-  setDxcMenuOptionsStyle() {
-    return css`
-      border-color: var(--dropdown-dropdownBackgroundColor);
-      margin-top: -2px;
-      border-top-left-radius: 0px !important;
-      border-top-right-radius: 0px !important;
-      border-bottom-left-radius: 4px !important;
-      border-bottom-right-radius: 4px !important;
-      overflow-x: hidden;
-      &::-webkit-scrollbar {
-        width: 3px;
-      }
-      &::-webkit-scrollbar-track {
-        background-color: var(--dropdown-scrollBarTrackColor);
-        border-radius: 3px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--dropdown-scrollBarThumbColor);
-        border-radius: 3px;
-      }
-      img,
-      svg {
-        width: 20px;
-        height: 20px;
-        vertical-align: middle;
-      }
-      ${this.optionsIconPosition === "after"
-        ? css`
-            dxc-dropdown-icon {
-              margin-left: 10px;
-            }
-          `
-        : css`
-            dxc-dropdown-icon {
-              margin-right: 10px;
-            }
-          `}
-
-      .mat-menu-content {
-        margin-top: "2px";
-        font-family: var(--fontFamily);
-        .mat-menu-item {
-          color: var(--dropdown-dropdownFontColor);
-          background-color: var(--dropdown-dropdownBackgroundColor);
-          border-color: var(--dropdown-dropdownBackgroundColor);
-        }
-        .mat-menu-item {
-          &:hover {
-            color: var(--dropdown-dropdownFontColor);
-            background-color: var(--dropdown-hoverBackgroundOption);
-            border-color: var(--dropdown-hoverBackgroundOption);
-          }
-          &.cdk-focused {
-            color: var(--dropdown-dropdownFontColor);
-            background-color: var(--dropdown-hoverBackgroundOption);
-            border-color: var(--dropdown-hoverBackgroundOption);
-          }
-        }
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-        width: ${this.width + "px"};
-      }
-      .mat-menu-item {
-        ${this.iconPositionAfter(this.optionsIconPosition === "after")}
-        padding-left: 18px;
-        padding-right: 13px;
-        span {
-          text-overflow: ellipsis;
-          vertical-align: middle;
-          font-size: 16px;
-        }
-      }
-      max-width: none;
-    `;
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -264,6 +171,7 @@ export class DxcDropdownComponent implements OnChanges {
     this.arrowClass = this.arrowClass === "down" ? "up" : "down";
     this.menuOpened = this.menuOpened === "opened" ? "closed" : "opened";
   }
+
   public selectedOption(option: any): void {
     this.onSelectOption.emit(option.value);
   }
@@ -282,52 +190,165 @@ export class DxcDropdownComponent implements OnChanges {
     `;
   }
 
+  updateCss() {
+    this.triggerStyles = this.triggerButtonStyles(
+      this.defaultInputs.getValue()
+    );
+    this.menuOpened === "opened" && this.service.focusFirstItem();
+  }
+
+  iconPositionAfter(iconPositionAfter) {
+    if (iconPositionAfter) {
+      return css`
+        div {
+          display: flex;
+          flex-grow: unset;
+          width: fit-content;
+          flex-direction: row-reverse;
+          align-items: center;
+        }
+      `;
+    } else {
+      return css`
+        div {
+          display: flex;
+          flex-grow: unset;
+          width: fit-content;
+          align-items: center;
+        }
+      `;
+    }
+  }
+
+  setDxcMenuOptionsStyle() {
+    return css`
+      border-color: var(--dropdown-borderColor);
+      border-radius: var(--dropdown-borderRadius) !important;
+      border-width: var(--dropdown-borderThickness);
+      border-style: var(--dropdown-borderStyle);
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 3px;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: var(--dropdown-scrollBarTrackColor);
+        border-radius: 3px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--dropdown-scrollBarThumbColor);
+        border-radius: 3px;
+      }
+      img,
+      svg {
+        width: var(--dropdown-iconSize);
+        height: var(--dropdown-iconSize);
+        vertical-align: middle;
+        fill: var(--dropdown-iconColor);
+      }
+      ${this.optionsIconPosition === "after"
+        ? css`
+            dxc-dropdown-icon {
+              margin-left: var(--dropdown-iconOptionSpacing);
+            }
+          `
+        : css`
+            dxc-dropdown-icon {
+              margin-right: var(--dropdown-iconOptionSpacing);
+            }
+          `}
+      .mat-menu-content {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        width: ${this.width + "px"};
+        .mat-menu-item {
+          ${this.iconPositionAfter(this.optionsIconPosition === "after")}
+          background-color: var(--dropdown-optionsListBackgroundColor);
+          border-color: var(--dropdown-optionsListBackgroundColor);
+          line-height: var(--dropdown-optionsHeight);
+          height: var(--dropdown-optionsHeight);
+          span {
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            color: var(--dropdown-optionsFontColor);
+            font-family: var(--dropdown-fontFamily);
+            font-size: var(--dropdown-optionsFontSize);
+            font-style: var(--dropdown-optionsFontStyle);
+            font-weight: var(--dropdown-optionsFontWeight);
+          }
+          &:hover {
+            background-color: var(--dropdown-optionsListHoverBackgroundColor);
+            border-color: var(--dropdown-optionsListHoverBackgroundColor);
+          }
+          &.cdk-focused {
+            outline: -webkit-focus-ring-color auto 2px !important;
+            outline-color: var(--dropdown-focusColor) !important;
+          }
+          &:active {
+            background-color: var(--dropdown-optionsListActiveBackgroundColor);
+            border-color: var(--dropdown-optionsListActiveBackgroundColor);
+          }
+        }
+      }
+      max-width: none;
+    `;
+  }
+
   triggerButtonStyles(inputs) {
     return css`
       ${this.calculateWidth(inputs)}
-      min-height: 46px;
-      padding-left: 13px;
-      padding-right: 13px;
+      min-height: var(--dropdown-minHeight);
+      padding: 0px 16px;
       display: inline-flex;
       align-items: center;
-      border-radius: 2px;
-      &:hover {
+      border-color: var(--dropdown-borderColor);
+      border-radius: var(--dropdown-borderRadius);
+      border-width: var(--dropdown-borderThickness);
+      border-style: var(--dropdown-borderStyle);
+      background-color: var(--dropdown-buttonBackgroundColor);
+      &:hover:not(.mat-button-disabled) {
         cursor: pointer;
-        background-color: var(--dropdown-hoverBackgroundColor) !important;
+        background-color: var(--dropdown-buttonHoverBackgroundColor) !important;
+      }
+      &:active:not(.mat-button-disabled) {
+        background-color: var(
+          --dropdown-activeButtonBackgroundColor
+        ) !important;
       }
       ${this.label === "" && this.caretHidden
         ? css`
             padding: 10px 15px;
           `
         : ""};
-      border: none;
       .menu-buttom-label {
-        color: var(--dropdown-fontColor);
+        color: var(--dropdown-buttonFontColor);
+        font-family: var(--dropdown-fontFamily);
+        font-size: var(--dropdown-buttonFontSize);
+        font-style: var(--dropdown-buttonFontStyle);
+        font-weight: var(--dropdown-buttonFontWeight);
+        margin-right: 12px;
       }
       .arrow-down {
-        border-top: 5px solid var(--dropdown-fontColor);
+        border-top: 5px solid var(--dropdown-buttonFontColor);
       }
       .arrow-up {
-        border-bottom: 5px solid var(--dropdown-fontColor);
+        border-bottom: 5px solid var(--dropdown-buttonFontColor);
       }
-
-      ${this.menuOpened === "opened"
-        ? css`
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-            background-color: var(--dropdown-hoverBackgroundColor);
-          `
-        : css`
-            background-color: var(--dropdown-backgroundColor);
-          `}
+      &.mat-button-disabled {
+        cursor: not-allowed;
+        background-color: var(
+          --dropdown-disabledButtonBackgroundColor
+        ) !important;
+        .menu-buttom-label {
+          color: var(--dropdown-disabledButtonFontColor);
+        }
+        .arrow-down {
+          border-top: 5px solid var(--dropdown-disabledButtonFontColor);
+        }
+        .arrow-up {
+          border-bottom: 5px solid var(--dropdown-disabledButtonFontColor);
+        }
+      }
     `;
-  }
-
-  updateCss() {
-    this.triggerStyles = this.triggerButtonStyles(
-      this.defaultInputs.getValue()
-    );
-    this.menuOpened === "opened" && this.service.focusFirstItem();
   }
 
   getDynamicStyle(inputs) {
@@ -338,12 +359,11 @@ export class DxcDropdownComponent implements OnChanges {
       align-items: center;
       opacity: 1;
       .cdk-focused {
-        outline: -webkit-focus-ring-color auto 1px !important;
+        outline: -webkit-focus-ring-color auto 2px !important;
         outline-color: var(--dropdown-focusColor) !important;
       }
       .cdk-keyboard-focused {
         .mat-button-focus-overlay {
-          background: var(--dropdown-backgroundColor);
           opacity: 0;
         }
       }
@@ -363,7 +383,6 @@ export class DxcDropdownComponent implements OnChanges {
         height: 0;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        margin: 0 4px;
       }
       .mat-button-wrapper {
         display: flex;
@@ -386,12 +405,21 @@ export class DxcDropdownComponent implements OnChanges {
         width: 100%;
       }
       .mat-select-arrow-wrapper {
-        vertical-align: middle;
-        display: inline-flex;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 7px;
+        margin-right: 7px;
+        margin-top: 1px;
       }
-
+      .arrow-container {
+        width: 24px;
+        display: flex;
+        height: 24px;
+        align-items: center;
+        justify-content: center;
+        margin-left: var(--dropdown-caretIconMarginLeft);
+        margin-right: var(--dropdown-caretIconMarginRight);
+        margin-top: var(--dropdown-caretIconMarginTop);
+        margin-bottom: var(--dropdown-caretIconMarginBottom);
+      }
       .buttonContent {
         display: flex;
         flex-grow: unset;
@@ -400,9 +428,10 @@ export class DxcDropdownComponent implements OnChanges {
       }
       img,
       svg {
-        width: 20px;
-        height: 20px;
+        width: var(--dropdown-iconSize);
+        height: var(--dropdown-iconSize);
         vertical-align: middle;
+        fill: var(--dropdown-iconColor);
       }
 
       ${this.iconPosition === "after"
@@ -411,16 +440,17 @@ export class DxcDropdownComponent implements OnChanges {
               flex-direction: row-reverse;
             }
             dxc-dropdown-icon {
-              margin-left: 10px;
+              margin-right: var(--dropdown-iconOptionSpacing);
             }
           `
         : css`
             dxc-dropdown-icon {
-              margin-right: 10px;
+              margin-right: var(--dropdown-iconOptionSpacing);
             }
           `}
     `;
   }
+
   buttonEnter(trigger) {
     if (this.expandOnHover) {
       setTimeout(() => {

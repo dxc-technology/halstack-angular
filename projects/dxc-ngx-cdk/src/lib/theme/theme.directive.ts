@@ -10,13 +10,20 @@ import { Subject } from "rxjs";
 import { BindingContext } from "./bindingContext";
 import { ComplexThemeBindingStrategy } from "./complexThemeBindingStrategy";
 import { componentIcons } from "./componentTokens";
+import { AdvancedThemeBindingStrategy } from "./advancedThemeBindingStrategy";
+
+
+interface Theme {
+  theme:any,
+  advanced: boolean
+}
 
 @Directive({
   selector: "[theme]",
 })
 export class ThemeDirective implements OnInit, OnDestroy {
   private _destroy$ = new Subject();
-  theme: any;
+  theme: Theme;
 
   constructor(
     @Optional() @Inject("ThemeService") private _themeService: ThemeService
@@ -31,25 +38,27 @@ export class ThemeDirective implements OnInit, OnDestroy {
     this._destroy$.complete();
   }
 
-  updateTheme(theme: any) {
+  updateTheme(theme: Theme) {
     this.theme = theme;
     this.setPropertiesCss(this.theme);
     this.setVariableLinks(this.theme);
   }
 
-  setPropertiesCss(theme: any) {
-    const ctx = new BindingContext(new ComplexThemeBindingStrategy());
-    let processedTokens = ctx.bindProperties(theme);
+  setPropertiesCss(theme: Theme) {
+    const ctx = new BindingContext(!theme.advanced ? new ComplexThemeBindingStrategy():  new AdvancedThemeBindingStrategy() );
+    let processedTokens = ctx.bindProperties(theme.theme);
     for (const key in processedTokens) {
       document.body.style.setProperty(key, processedTokens[key]);
     }
   }
 
-  setVariableLinks(theme: any): void {
-    const footerLogo = theme?.footer?.logo ?? componentIcons.footer.logo;
-    const headerLogo = theme?.header?.logo ?? componentIcons.header.logo;
+  setVariableLinks(themeObj: any): void {
+
+    const footerLogo = themeObj.theme?.footer?.logo ?? componentIcons.footer.logo;
+    const headerLogo = themeObj.theme?.header?.logo ?? componentIcons.header.logo;
     const headerLogoResponsive =
-      theme?.header?.logoResponsive ?? componentIcons.header.logoResponsive;
+    themeObj?.theme?.header?.logoResponsive ?? componentIcons.header.logoResponsive;
+    console.debug(`Logo del header ${headerLogo}`);
     document.body.setAttribute("footer-logo", footerLogo);
     document.body.setAttribute("header-logo", headerLogo);
     document.body.setAttribute("header-logoResponsive", headerLogoResponsive);
@@ -61,7 +70,11 @@ export class ThemeDirective implements OnInit, OnDestroy {
       this.updateTheme(active);
 
       this._themeService.themeChange.subscribe((theme: any) => {
-        this.updateTheme(theme);
+        this.updateTheme({theme: theme, advanced: false});
+      });
+
+      this._themeService.themeAdvanceChange.subscribe((theme: any) => {
+        this.updateTheme({theme: theme, advanced: true});
       });
     }
   }

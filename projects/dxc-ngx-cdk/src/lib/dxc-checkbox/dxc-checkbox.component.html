@@ -5,14 +5,15 @@
   [value]="value"
   [disabled]="disabled"
   [required]="required"
+  [aria-label]="label"
   [name]="name"
   [id]="id"
   (change)="onValueChange($event)"
   data-testid="dxcCheckbox"
   [tabIndex]="disabled ? -1 : tabIndexValue"
 >
-  <span *ngIf="label" class="checkboxLabel">
+  <span *ngIf="label">
     <span *ngIf="required" class="mat-checkbox-required">*</span>
-    <span>{{ label }}</span>
+    <span class="checkboxLabel">{{ label }}</span>
   </span>
 </mat-checkbox>

@@ -1,0 +1,7 @@
+<div class="tbFontFamilyContainer">
+  <input class="tbStyledInput" type="text" [value]="value" (change)="onChangeInputValue($event)" />
+  <select class="tbStyledSelect" (change)="onChangeSelectValue($event)">
+    <option *ngFor="let currentOption of fontFamilyOptions; trackBy: trackByFunction" [value]="currentOption"
+      [selected]="isOptionSelected(currentOption)"> {{currentOption}}</option>
+  </select>
+</div>

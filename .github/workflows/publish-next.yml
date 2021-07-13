@@ -63,9 +63,9 @@ jobs:
       - name: CompressFiles
         uses: stefh/ghaction-CompressFiles@v1
         with:
-        path: './dist/static'
-        extensions: '.js,.css,.html,.ttf,.ico,.txt'
-        tools: 'gzip'
+          path: './dist/static'
+          extensions: '.js,.css,.html,.ttf,.ico,.txt'
+          tools: 'gzip'
 
       - name: Publish angular cdk site next version in S3
         run: |

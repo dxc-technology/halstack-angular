@@ -119,7 +119,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     return css`
       cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
       ${this.cssUtils.getMargins(inputs.margin)}
-      min-width: 280px;
+      min-width: 160px;
       display: block;
       div.mat-expansion-panel-content {
         div.mat-expansion-panel-body {

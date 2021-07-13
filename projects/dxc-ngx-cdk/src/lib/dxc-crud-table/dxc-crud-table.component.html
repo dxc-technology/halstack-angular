@@ -45,9 +45,33 @@
           *ngIf="column && column.toLowerCase() !=='action' && element[column].toLowerCase() == 'false'">
           <mat-icon class="red-icon">close</mat-icon>
         </button>
-        <div class="row gridBtnPostion" *ngIf="first">
+        <div class="row gridBtnPostion" *ngIf="first" [ngClass]="element.status ? 'search-column-width': ''">
           <span class="iconPostion">
-            <span class="material-icons iconProp"
+		  
+		
+		 <span class="material-icons iconProp icon playPause"
+              *ngIf="isIconRequired && !element.error" [ngClass]="element.status ? 'green-icon': 'red-icon'"
+              (click)="element.status=!element.status">{{element.status ? 'check' : 'close' }}</span>
+		
+		 <span class="material-icons iconProp" *ngIf="isEditIconRequired && element.status" (click)="editRow(j, element)" >mode_edit</span>
+           
+		   
+		   
+		  <span class="material-icons iconProp"
+              *ngIf="!element.error && element.status && isEditIconRequired" [ngClass]="element.required ? 'green-icon': ''"
+              (click)="element.required=!element.required">star</span>
+		  
+		  
+			<span class="material-icons iconProp"
+              *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
+              (click)="moveUp(element)">arrow_upward</span>
+			  
+			  <span class="material-icons iconProp"
+              *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
+              (click)="moveDown(element)">arrow_downward</span>
+			
+			
+			<span class="material-icons iconProp"
               *ngIf="isEditRequired && element[uniqueIdentifier] != '' && (!isEditForm || !showPopup)"
               (click)="expandRow(j, element)">mode_edit</span>
             <span class="material-icons iconProp"
@@ -55,30 +79,32 @@
               (click)="deleteRow(element)">delete</span>
           </span>
         </div>
-        <a tabindex="0" href="javascript:void(0);" [ngClass]="{'cellContentPostion': first, 'link-decoration' : true}"
+        <a tabindex="0" href="javascript:void(0);" [ngClass]="{'cellContentPostion': first, 'link-decoration' : true} && (element.status ? 'search-column-padding': 'column-padding')"
           *ngIf="(column && column.toLowerCase() !=='action' && element[column] && element[column].toLowerCase() != 'false' && element[column].toLowerCase() != 'true')"
           (click)="onRowSelection(element)">
           <span [ngSwitch]="columns?.length">
-            <div class="crud-col" *ngSwitchCase="1">
+            <div class="crud-col" *ngSwitchCase="1" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
               {{element[column]}}
+			  <mat-icon *ngIf="element.required" class="green-icon table-label">
+	               starrate</mat-icon> 
             </div>
-            <div class="crud-col" *ngSwitchDefault>
+            <div class="crud-col" *ngSwitchDefault [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
               <div *ngIf="element[column].length > 30; then thenBlock else elseBlock"></div>
               <ng-template #thenBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
+                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{(element[column] | formatter:formatColumns[column]).substring(0,30)}}
                   <span matTooltip="{{element[column]}}">...</span>
                 </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
+                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{element[column].substring(0,30)}}
                   <span matTooltip="{{element[column]}}">...</span>
                 </div>
               </ng-template>
               <ng-template #elseBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
+                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{(element[column] | formatter:formatColumns[column])}}
                 </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
+                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{element[column]}}
                 </div>
               </ng-template>

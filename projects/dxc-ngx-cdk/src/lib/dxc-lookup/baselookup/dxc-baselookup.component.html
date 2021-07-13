@@ -5,7 +5,7 @@
     <div id="multichips">
       <mat-chip-list disabled="{{disabled ? true : false}}" id="multichips" #chipList [attr.aria-label]="label">
         <mat-chip *ngFor="let item of result" [selectable]="selectable" [removable]="removable" (removed)="remove(item)"
-          >
+        [matTooltip]="lookupDisplayFn(item)" [matTooltipDisabled]="false">
           <span [attr.tabindex]="disabled ? -1 : 0" role=""
             [attr.aria-label]="removeiconarialabel + ', ' + lookupDisplayFn(item)">
             {{lookupDisplayFn(item)}}</span>
@@ -19,7 +19,7 @@
       <mat-chip *ngIf="displayValue !==''" [style.width.px]="chipwidth" [style.display]="'block'"
         [style.background-color]="'#fafafa'" [selectable]="selectable" [removable]="removable"
         (removed)="remove(result)" (mouseenter)="chipmouseEnter()" (focus)="chipmouseEnter()"
-        (mouseleave)="chipmouseLeave()">
+        (mouseleave)="chipmouseLeave()" [matTooltip]="lookupDisplayFn(result)" [matTooltipDisabled]="false">
         <span [attr.tabindex]="disabled ? -1 : 0"
           [attr.aria-label]="removeiconarialabel + ', ' + lookupDisplayFn(result)" class="w-75 float-left">
           <label class="text-truncate">

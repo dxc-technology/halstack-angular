@@ -60,14 +60,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
-      - name: CompressFiles
-        uses: stefh/ghaction-CompressFiles@v1
-        with:
-          path: './dist/static'
-          extensions: '.js,.css,.html,.ttf,.ico,.txt'
-          tools: 'gzip'
-
       - name: Publish angular cdk site next version in S3
         run: |
           aws s3 rm s3://design-system-angular-cdk-site/tools/angular/next/ --recursive
-          aws s3 cp ./dist/static s3://design-system-angular-cdk-site/tools/angular/next/ --exclude='*.json' --recursive --content-encoding gzip
+          aws s3 cp ./dist/static s3://design-system-angular-cdk-site/tools/angular/next/ --recursive

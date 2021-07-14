@@ -3,7 +3,7 @@ import * as Color from "color";
 import rgbHex from "rgb-hex";
 
 export class ComplexThemeBindingStrategy implements MappingStrategy {
-  constructor() {}
+  constructor() { }
 
   setLightness(hexColor: String, newLightness: number) {
     if (hexColor) {
@@ -34,7 +34,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--accordion-arrowColor"] =
       theme?.accordion?.accentColor ?? tokens["--accordion-arrowColor"];
     proccessedTokens["--accordion-hoverBackgroundColor"] =
-      this.setLightness(theme?.accordion?.accentColor, 53) ??
+      this.setLightness(theme?.accordion?.accentColor, 0.20) ??
       tokens["--accordion-hoverBackgroundColor"];
     proccessedTokens["--accordion-fontColor"] =
       theme?.accordion?.textColor ?? tokens["--accordion-fontColor"];
@@ -43,6 +43,8 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--accordion-disabledFontColor"] =
       this.setLightness(theme?.accordion?.textColor, 35) ??
       tokens["--accordion-disabledFontColor"];
+    proccessedTokens["--accordion-backgroundColor"] =
+    theme?.accordion?.baseColor ?? tokens["--accordion-backgroundColor"];
 
     //TABS
     proccessedTokens["--tabs-selectedFontColor"] =

@@ -93,6 +93,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
   @Input() isPopupVisible = false;
   @Input() isEditRequired = false;
   @Input() isDeleteRequired = false;
+  @Input() isIconRequired = false;
+  @Input() isEditIconRequired = false;
   @Input() uniqueIdentifier = '';
   @Input() resource: { [key: string]: string };
   @Input() columnWidth: { [key: string]: string };
@@ -666,6 +668,28 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight);
     this.formControlUpdater.emit({ action: EAction.ONPANELCLOSE});
   }
+  editRow = (index, row) => {
+    this.formControlUpdater.emit({ action: EAction.ONCUSTOMEDIT, data: row });
+   
+  }
+  
+   moveUp(element) {
+    const index: number = this.dataSource.data.indexOf(element);
+    if (index > 0) {
+      this.move(index, index - 1);
+    }
+
+
+  }
+
+  moveDown(element) {
+    const index: number = this.dataSource.data.indexOf(element);
+    if (index < this.dataSource.data.length) {
+      this.move(index, index + 1);
+    }
+
+  }
+  
 
   expandRow = (index, row) => {
     if (this.isPopupVisible) {
@@ -954,6 +978,14 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     }
   }
 
+  move(origin, destination) {
+    var temp = this.dataSource.data[destination];
+    this.dataSource.data[destination] = this.dataSource.data[origin];
+    this.dataSource.data[origin] = temp;
+    const data = this.dataSource.data;
+    this.dataSource.data = [...data];
+  }
+  
   addRowFields(col: any, crudFormModel: any) {
     if (col && col.name.toLowerCase() !== 'action') {
       if (col && col.name.toLowerCase() === this.uniqueIdentifier.toLowerCase()) {

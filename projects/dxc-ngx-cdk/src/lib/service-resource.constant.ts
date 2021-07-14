@@ -23,6 +23,9 @@ export const indexListUrl = '{formname}/{tablename}/indexes';
 export const indexCreateUrl = '{formname}/{tablename}/indexes';
 export const fieldListUrl = '{formname}/{tablename}/controls';
 export const fieldCreateUrl = '{formname}/{tablename}/controls/{controlId}';
+export const flmaxrateURL = 'flmaxrates';
+export const flmaxrateUpdateandDeleteURL = 'flmaxrates/{id}';
+
 
 export enum ServiceRequest {
   CLAIMSERVER = 'CLAIMSERVER',

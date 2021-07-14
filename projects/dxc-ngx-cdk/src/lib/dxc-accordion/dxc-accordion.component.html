@@ -17,8 +17,8 @@
         <img [src]="iconSrc" *ngIf="iconSrc" class="imageIcon" />
         <ng-content select="dxc-accordion-icon"></ng-content>
       </mat-panel-title>
-      <mat-panel-description>
-        <span *ngIf="assistiveText">{{ assistiveText }}</span>
+      <mat-panel-description *ngIf="assistiveText">
+        <span>{{ assistiveText }}</span>
       </mat-panel-description>
       <span class="caret-indicator">
         <svg

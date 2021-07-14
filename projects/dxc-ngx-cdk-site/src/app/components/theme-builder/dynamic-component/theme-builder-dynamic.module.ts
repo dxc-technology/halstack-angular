@@ -33,6 +33,7 @@ import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/
 import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
+import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previews/new-input-text-preview/new-input-text-preview.component';
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -54,6 +55,7 @@ import { TablePreviewComponent } from '../../../pages/theme-builder/previews/tab
     HeaderPreviewComponent,
     HeadingPreviewComponent,
     InputTextPreviewComponent,
+    NewInputTextPreviewComponent,
     LinkPreviewComponent,
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,

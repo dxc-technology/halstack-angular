@@ -38,7 +38,7 @@ import { ChipComponent } from './pages/chip/chip.component';
 import { TextAreaComponent } from './pages/text-area/text-area.component';
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
-import { ThemeBuilderPageModule } from './pages/theme-builder/theme-buider.module';
+import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
 
 let routes: Routes = [];
 
@@ -47,7 +47,7 @@ let routes: Routes = [];
   routes.push({ path: 'guidelines', component: DesignGuidelinesPageComponent }),
   routes.push({
     path: 'theme-builder',
-    loadChildren: () => import('./pages/theme-builder/theme-buider.module').then(m => m.ThemeBuilderPageModule)
+    loadChildren: () => import('./pages/theme-builder/theme-builder.module').then(m => m.ThemeBuilderPageModule)
   }),
   routes.push({
     path: 'components',

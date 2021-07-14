@@ -135,7 +135,7 @@ const globalTokens = {
   border_radius_02: "4px",
 
   border_solid: "solid",
-  border_none: "none",  
+  border_none: "none",
 };
 
 export const componentTokens = {
@@ -422,7 +422,7 @@ export const componentTokens = {
   "--chip-iconPaddingLeft": "0px",
   "--chip-iconPaddingRight": "0px",
   "--chip-iconColor": globalTokens.hal_black,
-  "--chip-disabledIconColor": "#999999", 
+  "--chip-disabledIconColor": "#999999",
   "--chip-focusColor": globalTokens.blue,
 
   //DATE
@@ -665,6 +665,49 @@ export const componentTokens = {
   "--inputText-underlineThickness": "1px",
   "--inputText-optionActiveBackgroundColor": "#D9D9D9",
   "--inputText-optionFocusColor": "#005FCC",
+
+  // NEW INPUT TEXT
+
+
+    // SIN IMPLEMENTAR
+    "--input-disabledColor": globalTokens.lighterBlack,
+    "--input-disabledColorOnDark": "#575757",
+    "--input-prefixIconColor": globalTokens.hal_black,
+    "--input-prefixIconColorOnDark": globalTokens.hal_white,
+    "--input-prefixLabelFontColor": globalTokens.hal_black,
+    "--input-prefixLabelFontColorOnDark": globalTokens.hal_white,
+    "--input-prefixLabelFontSize": globalTokens.type_scale_03,
+    "--input-prefixLabelFontStyle": globalTokens.type_normal,
+    "--input-prefixLabelFontWeight": globalTokens.type_regular,
+    "--input-suffixIconColor": globalTokens.hal_black,
+    "--input-suffixIconColorOnDark": globalTokens.hal_white,
+    "--input-suffixLabelFontColor": globalTokens.hal_black,
+    "--input-suffixLabelFontColorOnDark": globalTokens.hal_white,
+    "--input-suffixLabelFontSize": globalTokens.type_scale_03,
+    "--input-suffixLabelFontStyle": globalTokens.type_normal,
+    "--input-suffixLabelFontWeight": globalTokens.type_regular,
+
+    // IMPLEMENTADO
+    "--input-fontFamily": globalTokens.type_sans,
+    "--input-labelFontColor": globalTokens.hal_black,
+    // labelFontColorOnDark: globalTokens.hal_white,
+    "--input-labelFontSize": globalTokens.type_scale_02,
+    "--input-labelFontStyle": globalTokens.type_normal,
+    "--input-labelFontWeight": globalTokens.type_semibold,
+    "--input-optionalLabelFontWeight": globalTokens.type_regular,
+    "--input-helperTextFontColor": globalTokens.hal_black,
+    // helperTextFontColorOnDark: globalTokens.hal_white,
+    "--input-helperTextFontSize": globalTokens.type_scale_01,
+    "--input-helperTextFontStyle": globalTokens.type_normal,
+    "--input-helperTextFontWeight": globalTokens.type_regular,
+    "--input-customContentFontColor": globalTokens.hal_black,
+    // customContentFontColorOnDark: globalTokens.hal_white,
+    "--input-customContentFontSize": globalTokens.type_scale_03,
+    "--input-customContentFontStyle": globalTokens.type_normal,
+    "--input-customContentFontWeight": globalTokens.type_regular,
+    "--input-errorColor": globalTokens.hal_red_s_41,
+    // errorColorOnDark: "#FE344F",
+
 
   //LINK
   "--link-fontColor": globalTokens.blue,

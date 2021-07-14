@@ -28,6 +28,7 @@ import { TextareaPreviewComponent } from '../../previews/textarea-preview/textar
 import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
+import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -49,6 +50,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'header', component: HeaderPreviewComponent},
   {name: 'heading', component: HeadingPreviewComponent},
   {name: 'inputText', component: InputTextPreviewComponent},
+  {name: 'newInputText', component: NewInputTextPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},

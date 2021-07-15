@@ -20,7 +20,6 @@ import { CssUtils } from "../utils";
 })
 export class DxcNewInputTextComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
-  @HostBinding("class.disabled") isDisabled = false;
 
   @Input()
   label: string;
@@ -103,11 +102,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.isDisabled = this.disabled;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.isDisabled = this.disabled;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -120,7 +117,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     this.onChange.emit(event.target.value);
   }
 
-  hanleDefaultClearAction(event) {
+  handleDefaultClearAction(event) {
     this.onDefaultClearAction.emit(event.target.value);
   }
 
@@ -134,50 +131,60 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   getDisabledStyle() {
     return css`
-      &.disabled {
-        .inputLabel,
-        .inputOptionalLabel,
-        .helperText,
-        .inputText,
-        .inputPrefix, 
-        .inputPrefix,
-        .inputSuffix, 
-        .inputErrorMessage, 
-        .inputErrorIcon, 
-        .inputText::placeholder {
-          color: var(--input-disabledColor);
+      .inputLabel,
+      .inputOptionalLabel {
+        color: var(--input-disabledLabelFontColor);
+      }
+      .helperText {
+        color: var(--input-disabledHelperTextLabelFontColor);
+      }
+      .inputText::placeholder {
+        color: var(--input-disabledPlaceholderFontColor);
+      }
+      .inputErrorMessage,
+      .inputErrorIcon {
+        color: var(--input-disabledErrorFontColor);
+      }
+      .inputText{
+        color: var(--input-disabledInputTextFontColor);
+      }
+      .inputText,
+      .inputAction {
+        cursor: not-allowed;
+      }
+      .inputContainer,
+      .inputContainer:hover,
+      .inputContainer:focus-within {
+        border: 1px solid var(--input-disabledBorderColor);
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+      .inputContainer {
+        background-color: var(--input-disabledBackgroundColor);
+      }
+      .inputAction {
+        &:hover,
+        &:active {
+          background-color: transparent;
         }
-        .inputText, .inputAction {
-          cursor: not-allowed;
+        &:focus,
+        &:focus-visible,
+        &:active {
+          border: 1px solid transparent;
+          box-shadow: inset 0 0 0 0px transparent;
         }
-        .inputContainer,
-        .inputContainer:hover,
-        .inputContainer:focus-within {
-          border: 1px solid var(--input-disabledColor);
-          box-shadow: none;
-          cursor: not-allowed;
-        }
-        .inputAction {
-          &:hover,
-          &:active {
-            background-color: transparent;
-          }
-          &:focus,
-          &:focus-visible,
-          &:active {
-            border: 1px solid transparent;
-            box-shadow: inset 0 0 0 0px transparent;
-          }
-        }
-        .inputErrorIcon svg, .inputAction svg{
-          fill: var(--input-disabledColor);
-        }
-        .inputPrefix {
-          border-right: 1px solid var(--input-disabledColor);
-        }
-        .inputSuffix {
-          border-left: 1px solid var(--input-disabledColor);
-        }
+      }
+      .inputAction svg {
+        fill: var(--input-disabledActionIconColor);
+      }
+      .inputErrorIcon svg{
+        fill: var(--input-disabledErrorFontColor);
+      }
+      .inputPrefix {
+        border-right: 1px solid var(--input-disabledPrefixFontColor);
+      }
+      .inputSuffix {
+        border-left: 1px solid var(--input-disabledSuffixFontColor);
       }
     `;
   }
@@ -187,7 +194,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       display: flex;
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
-      ${this.getDisabledStyle()}
       .inputLabel, .inputOptionalLabel {
         color: var(--input-labelFontColor);
         font-family: var(--input-fontFamily);
@@ -330,6 +336,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         color: var(--input-errorColor);
         line-height: 1.5em;
       }
+      ${inputs.disabled ? this.getDisabledStyle() : ""}
     `;
   }
 }

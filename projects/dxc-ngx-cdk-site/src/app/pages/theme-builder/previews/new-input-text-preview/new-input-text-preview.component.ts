@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-new-input-text-preview',
-  templateUrl: './new-input-text-preview.component.html'
+  selector: "app-new-input-text-preview",
+  templateUrl: "./new-input-text-preview.component.html",
 })
 export class NewInputTextPreviewComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  controlledValue = "controlled value";
 
-  ngOnInit(): void {
+  changeValue(event) {
+    if (!event.includes("x")) {
+      this.controlledValue = event;
+    }
   }
 
+  ngOnInit(): void {}
 }

@@ -6,6 +6,9 @@
       label="Input label"
       helperText="helper text"
       margin="small"
+      [value]="controlledValue"
+      (onChange)="changeValue($event)"
+      clearable="true"
     ></dxc-new-input-text>
     <dxc-new-input-text
       placeholder="placeholder"

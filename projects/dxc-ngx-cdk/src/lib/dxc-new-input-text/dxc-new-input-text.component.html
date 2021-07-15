@@ -6,12 +6,13 @@
 <div class="inputContainer">
   <span *ngIf="prefix" class="inputPrefix">{{ prefix }}</span>
   <input
+    #inputRef
     type="text"
     class="inputText"
     [id]="random"
     [placeholder]="placeholder"
     [value]="value"
-    (change)="handleOnChange($event)"
+    (input)="handleOnChange($event)"
     [name]="name"
     (blur)="handleOnBlur($event)"
     [disabled]="disabled"

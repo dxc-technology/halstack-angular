@@ -8,6 +8,9 @@ import {
   Output,
   OnChanges,
   SimpleChanges,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -67,6 +70,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   random: string;
 
+  private controlled: boolean;
+
   defaultInputs = new BehaviorSubject<any>({
     placeholder: "",
     error: "",
@@ -91,17 +96,18 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   @Output()
   onActionClick = new EventEmitter<any>();
 
-  onDefaultClearAction = new EventEmitter<any>();
+  @ViewChild("inputRef", { static: false }) inputRef: ElementRef;
 
   size: string;
 
   tabIndex: number;
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.controlled = this.value ? true : false;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -115,10 +121,20 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   handleOnChange(event) {
     this.onChange.emit(event.target.value);
+    if (this.controlled) {
+      console.log(this.value);
+      event.target.value = this.value;
+      this.cdRef.detectChanges();
+    }
   }
 
   handleDefaultClearAction(event) {
-    this.onDefaultClearAction.emit(event.target.value);
+    this.onChange.emit("");
+    if (!this.controlled) {
+      this.value = "";
+      this.inputRef.nativeElement.value = this.value;
+      this.cdRef.detectChanges();
+    }
   }
 
   handleActionOnClick(event) {
@@ -127,6 +143,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   handleOnBlur(event) {
     this.onBlur.emit(event.target.value);
+    if (!this.controlled) {
+      this.value = event.target.value;
+      this.cdRef.detectChanges();
+    }
   }
 
   getDisabledStyle() {
@@ -138,47 +158,30 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       .helperText {
         color: var(--input-disabledHelperTextLabelFontColor);
       }
-      .inputText::placeholder {
-        color: var(--input-disabledPlaceholderFontColor);
-      }
       .inputErrorMessage,
       .inputErrorIcon {
         color: var(--input-disabledErrorFontColor);
       }
       .inputText{
-        color: var(--input-disabledInputTextFontColor);
-      }
-      .inputText,
-      .inputAction {
         cursor: not-allowed;
+        color: var(--input-disabledInputTextFontColor);
+        &::placeholder {
+          color: var(--input-disabledPlaceholderFontColor);
+        }
       }
       .inputContainer,
-      .inputContainer:hover,
-      .inputContainer:focus-within {
+      .inputContainer:hover{
         border: 1px solid var(--input-disabledBorderColor);
         box-shadow: none;
         cursor: not-allowed;
-      }
-      .inputContainer {
         background-color: var(--input-disabledBackgroundColor);
       }
       .inputAction {
-        &:hover,
-        &:active {
-          background-color: transparent;
+        pointer-events: none;
+        cursor: not-allowed;
+        svg {
+          fill: var(--input-disabledActionIconColor);
         }
-        &:focus,
-        &:focus-visible,
-        &:active {
-          border: 1px solid transparent;
-          box-shadow: inset 0 0 0 0px transparent;
-        }
-      }
-      .inputAction svg {
-        fill: var(--input-disabledActionIconColor);
-      }
-      .inputErrorIcon svg{
-        fill: var(--input-disabledErrorFontColor);
       }
       .inputPrefix {
         border-right: 1px solid var(--input-disabledPrefixFontColor);
@@ -254,8 +257,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       }
 
       .inputAction {
-        height: calc(calc(1rem * 1.5) - calc(1px * 2));
-        width: calc(calc(1rem * 1.5) - calc(1px * 2));
+        height: 24px;
+        width: auto;
         margin: 0 calc(1rem * 0.25) 0 calc(1rem * 0.25);
         font-size: 1rem;
         font-family: var(--input-fontFamily);

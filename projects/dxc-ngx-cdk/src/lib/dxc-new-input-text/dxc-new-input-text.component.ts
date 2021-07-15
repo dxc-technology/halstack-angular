@@ -1,3 +1,4 @@
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   Component,
   EventEmitter,
@@ -19,6 +20,7 @@ import { CssUtils } from "../utils";
 })
 export class DxcNewInputTextComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
+  @HostBinding("class.disabled") isDisabled = false;
 
   @Input()
   label: string;
@@ -35,7 +37,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   hasAction = () => this.onActionClick.observers.length;
 
   @Input()
-  disabled = false;
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
 
   @Input()
   prefix = "";
@@ -72,7 +80,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     value: "",
     name: "",
     label: "",
-    margin: ""
+    margin: "",
   });
 
   @Output()
@@ -95,9 +103,11 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.isDisabled = this.disabled;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.isDisabled = this.disabled;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -122,12 +132,62 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     this.onBlur.emit(event.target.value);
   }
 
+  getDisabledStyle() {
+    return css`
+      &.disabled {
+        .inputLabel,
+        .inputOptionalLabel,
+        .helperText,
+        .inputText,
+        .inputPrefix, 
+        .inputPrefix,
+        .inputSuffix, 
+        .inputErrorMessage, 
+        .inputErrorIcon, 
+        .inputText::placeholder {
+          color: var(--input-disabledColor);
+        }
+        .inputText, .inputAction {
+          cursor: not-allowed;
+        }
+        .inputContainer,
+        .inputContainer:hover,
+        .inputContainer:focus-within {
+          border: 1px solid var(--input-disabledColor);
+          box-shadow: none;
+          cursor: not-allowed;
+        }
+        .inputAction {
+          &:hover,
+          &:active {
+            background-color: transparent;
+          }
+          &:focus,
+          &:focus-visible,
+          &:active {
+            border: 1px solid transparent;
+            box-shadow: inset 0 0 0 0px transparent;
+          }
+        }
+        .inputErrorIcon svg, .inputAction svg{
+          fill: var(--input-disabledColor);
+        }
+        .inputPrefix {
+          border-right: 1px solid var(--input-disabledColor);
+        }
+        .inputSuffix {
+          border-left: 1px solid var(--input-disabledColor);
+        }
+      }
+    `;
+  }
+
   getDynamicStyle(inputs) {
-    console.log(this.utils.getMargins(inputs.margin));
     return css`
       display: flex;
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
+      ${this.getDisabledStyle()}
       .inputLabel, .inputOptionalLabel {
         color: var(--input-labelFontColor);
         font-family: var(--input-fontFamily);

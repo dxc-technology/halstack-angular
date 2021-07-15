@@ -14,6 +14,7 @@
     (change)="handleOnChange($event)"
     [name]="name"
     (blur)="handleOnBlur($event)"
+    [disabled]="disabled"
   />
   <span *ngIf="error" class="inputErrorIcon">
     <svg
@@ -32,6 +33,7 @@
     *ngIf="clearable"
     class="inputAction"
     (click)="hanleDefaultClearAction($event)"
+    [disabled]="disabled"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +51,7 @@
     *ngIf="hasAction()"
     class="inputAction"
     (click)="handleActionOnClick($event)"
+    [disabled]="disabled"
   >
     <!-- //TODO: Adding a directive or pipe filtering content is a svg tag-->
     <ng-content></ng-content>

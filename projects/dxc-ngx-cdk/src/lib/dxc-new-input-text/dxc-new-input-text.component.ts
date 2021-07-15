@@ -178,7 +178,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       }
       .inputAction {
         pointer-events: none;
-        cursor: not-allowed;
         svg {
           fill: var(--input-disabledActionIconColor);
         }
@@ -233,27 +232,27 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         padding: 0 calc(1rem * 0.5);
 
         &:hover {
-          border-color: #a46ede;
+          border-color: var(--input-borderColor);
           box-shadow: none;
         }
         &:focus-within {
-          border: 1px solid #a46ede;
-          box-shadow: inset 0 0 0 1px #a46ede;
+          border: 1px solid var(--input-borderColor);
+          box-shadow: inset 0 0 0 1px var(--input-borderColor);
         }
       }
 
       .inputText {
-        height: 100%;
+        height: calc(100% - 2px);
         width: 100%;
         background: none;
         border: none;
         outline: none;
         padding: 0 calc(1rem * 0.5);
-        color: var(--input-customContentFontColor);
+        color: var(--input-inputTextFontColor);
         font-family: var(--input-fontFamily);
-        font-size: var(--input-customContentFontSize);
-        font-style: var(--input-customContentFontStyle);
-        font-weight: var(--input-customContentFontWeight);
+        font-size: var(--input-inputTextFontSize);
+        font-style: var(--input-inputTextFontStyle);
+        font-weight: var(--input-inputTextFontWeight);
       }
 
       .inputAction {
@@ -270,25 +269,25 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         cursor: pointer;
         background-color: transparent;
         padding: 0;
-
+        color: var(--input-actionIconColor);
         &:hover {
-          background-color: #f2f2f2;
+          background-color: var(--input-actionBackgroundColor);
         }
         &:focus {
-          border: 1px solid #a46ede;
-          box-shadow: inset 0 0 0 1px #a46ede;
+          border: 1px solid var(--input-actionBorderColor);
+          box-shadow: inset 0 0 0 1px var(--input-actionBorderColor);
           outline: none;
         }
         &:focus-visible {
-          border: 1px solid #a46ede;
-          box-shadow: inset 0 0 0 1px #a46ede;
+          border: 1px solid var(--input-actionBorderColor);
+          box-shadow: inset 0 0 0 1px var(--input-actionBorderColor);
           outline: none;
         }
         &:active {
-          border: 1px solid #a46ede;
-          box-shadow: inset 0 0 0 1px #a46ede;
+          border: 1px solid var(--input-actionBorderColor);
+          box-shadow: inset 0 0 0 1px var(--input-actionBorderColor);
           outline: none;
-          background-color: #d9d9d9;
+          background-color: var(--input-actionHoverbackgroundColor);
         }
         svg {
           line-height: 18px;
@@ -316,27 +315,34 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       .inputSuffix {
         height: calc(1rem * 1.5);
         line-height: calc(1rem * 1.5);
-        font-size: 1rem;
         font-family: var(--input-fontFamily);
         pointer-events: none;
-        color: #666666;
       }
       .inputPrefix {
-        border-right: 1px solid #999999;
+        border-right: 1px solid var(--input-prefixBorderColor);
         padding: 0 calc(1rem * 0.5) 0 0;
+        color: var(--input-prefixFontColor);
+        font-size: var(--input-prefixFontSize);
+        font-style: var(--input-prefixFontStyle);
+        font-weight: var(--input-prefixFontWeight);
       }
 
       .inputSuffix {
-        border-left: 1px solid #999999;
+        border-left: 1px solid var(--input-suffixBorderColor);
         margin-left: calc(1rem * 0.25);
         padding: 0 0 0 calc(1rem * 0.5);
+        color: var(--input-suffixFontColor);
+        font-size: var(--input-suffixFontSize);
+        font-style: var(--input-suffixFontStyle);
+        font-weight: var(--input-suffixFontWeight);
       }
 
       .inputErrorMessage {
         font-family: var(--input-fontFamily);
-        font-size: 0.75rem;
-        font-weight: 400;
         color: var(--input-errorColor);
+        font-size: var(--input-errorFontSize);
+        font-style: var(--input-errorFontStyle);
+        font-weight: var(--input-errorFontWeight);
         line-height: 1.5em;
       }
       ${inputs.disabled ? this.getDisabledStyle() : ""}

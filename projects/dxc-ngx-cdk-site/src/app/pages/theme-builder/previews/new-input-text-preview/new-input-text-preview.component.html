@@ -1,8 +1,40 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <tbuilder-component-mode text="Default">
-    <dxc-new-input-text label="Input label" helperText="assistive text" margin="xsmall"></dxc-new-input-text>
-    <dxc-new-input-text label="Input label" suffix="$" prefix="+34" helperText="assistive text" margin="xsmall">
+    <dxc-new-input-text
+      placeholder="placeholder"
+      label="Input label"
+      helperText="helper text"
+      margin="small"
+    ></dxc-new-input-text>
+    <dxc-new-input-text
+      placeholder="placeholder"
+      label="Input label"
+      suffix="$"
+      prefix="+34"
+      helperText="helper text"
+      margin="xsmall"
+    >
+    </dxc-new-input-text>
+    <dxc-new-input-text
+      placeholder="placeholder"
+      error="Very important error"
+      label="Input label"
+      suffix="$"
+      prefix="+34"
+      helperText="helper text"
+      margin="xsmall"
+    ></dxc-new-input-text>
+    <dxc-new-input-text
+      placeholder="placeholder"
+      clearable="true"
+      error="Very important error"
+      label="Input label"
+      suffix="$"
+      prefix="+34"
+      helperText="helper text"
+      margin="xsmall"
+    >
     </dxc-new-input-text>
   </tbuilder-component-mode>
 </div>

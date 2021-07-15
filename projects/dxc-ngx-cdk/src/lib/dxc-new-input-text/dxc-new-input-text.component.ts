@@ -22,10 +22,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   @Input()
   label: string;
+
   @Input()
   name: string;
+
   @Input()
-  value: string = '';
+  value: string = "";
+
   @Input()
   helperText: string;
 
@@ -52,6 +55,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   @Input()
   placeholder = "";
 
+  @Input()
+  margin: Object | string;
+
   random: string;
 
   defaultInputs = new BehaviorSubject<any>({
@@ -66,6 +72,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     value: "",
     name: "",
     label: "",
+    margin: ""
   });
 
   @Output()
@@ -80,8 +87,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   onDefaultClearAction = new EventEmitter<any>();
 
   size: string;
-
-  margin: Object | string;
 
   tabIndex: number;
 
@@ -118,6 +123,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   }
 
   getDynamicStyle(inputs) {
+    console.log(this.utils.getMargins(inputs.margin));
     return css`
       display: flex;
       flex-direction: column;
@@ -190,7 +196,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         border: 1px solid transparent;
         border-radius: 4px;
         display: flex;
-        align-content: center;
+        align-items: center;
         justify-content: center;
         cursor: pointer;
         background-color: transparent;
@@ -226,22 +232,15 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         width: calc(24px - (1px * 2));
         margin-right: calc(1rem * 0.5);
         display: flex;
-        align-content: center;
+        align-items: center;
         justify-content: center;
         pointer-events: none;
+        color: var(--input-errorColor);
 
         svg {
           font-size: 1.25rem;
           line-height: 22px;
         }
-      }
-
-      .inputErrorMessage {
-        font-family: var(--input-fontFamily);
-        font-size: 0.75rem;
-        font-weight: 400;
-        color: var(--input-errorColor);
-        line-height: 1.5em;
       }
 
       .inputPrefix,
@@ -252,17 +251,24 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         font-family: var(--input-fontFamily);
         pointer-events: none;
         color: #666666;
-
       }
-      .inputPrefix{
+      .inputPrefix {
         border-right: 1px solid #999999;
         padding: 0 calc(1rem * 0.5) 0 0;
       }
 
-      .inputSuffix{
+      .inputSuffix {
         border-left: 1px solid #999999;
         margin-left: calc(1rem * 0.25);
         padding: 0 0 0 calc(1rem * 0.5);
+      }
+
+      .inputErrorMessage {
+        font-family: var(--input-fontFamily);
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: var(--input-errorColor);
+        line-height: 1.5em;
       }
     `;
   }

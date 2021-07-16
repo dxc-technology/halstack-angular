@@ -257,7 +257,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
       .inputAction {
         height: 24px;
-        width: auto;
+        max-width: 24px;
         margin: 0 calc(1rem * 0.25) 0 calc(1rem * 0.25);
         font-size: 1rem;
         font-family: var(--input-fontFamily);

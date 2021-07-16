@@ -56,7 +56,7 @@
     [disabled]="disabled"
   >
     <!-- //TODO: Adding a directive or pipe filtering content is a svg tag-->
-    <ng-content></ng-content>
+    <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
   <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
 </div>

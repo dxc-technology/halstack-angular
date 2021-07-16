@@ -178,6 +178,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       }
       .inputAction {
         pointer-events: none;
+        color: var(--input-disabledActionIconColor);
         svg {
           fill: var(--input-disabledActionIconColor);
         }
@@ -345,6 +346,11 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         font-weight: var(--input-errorFontWeight);
         line-height: 1.5em;
       }
+
+      dxc-new-input-text-action{
+        display: flex;
+      }
+
       ${inputs.disabled ? this.getDisabledStyle() : ""}
     `;
   }

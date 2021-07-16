@@ -15,5 +15,9 @@ export class NewInputTextPreviewComponent implements OnInit {
     }
   }
 
+  click(){
+    console.log("click");
+  }
+
   ngOnInit(): void {}
 }

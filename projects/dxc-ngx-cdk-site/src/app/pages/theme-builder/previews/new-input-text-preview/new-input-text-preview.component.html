@@ -10,6 +10,7 @@
       (onChange)="changeValue($event)"
       clearable="true"
       (onActionClick)="click()"
+      [autocompleteOptions]= "options"
     >
       <dxc-new-input-text-action>
         <svg

@@ -9,13 +9,24 @@ export class NewInputTextPreviewComponent implements OnInit {
 
   controlledValue = "controlled value";
 
+  options: Array<any> = [
+    "Albania",
+    "Andorra",
+    "Armenia",
+    "Austria",
+    "Azerbaijan",
+    "Belarus",
+    "Belgium",
+    "Bosnia and Herzegovina",
+  ];
+
   changeValue(event) {
     if (!event.includes("x")) {
       this.controlledValue = event;
     }
   }
 
-  click(){
+  click() {
     console.log("click");
   }
 

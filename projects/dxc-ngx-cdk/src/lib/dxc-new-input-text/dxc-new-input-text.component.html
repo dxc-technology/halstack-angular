@@ -9,6 +9,7 @@
     role="combobox"
     (focus)="handleOnFocus($event)"
     (focusout)="handleOnFocusOut($event)"
+    (keydown)="handleOnKeyDown($event)"
     #inputRef
     type="text"
     class="inputText"
@@ -19,6 +20,7 @@
     [name]="name"
     (blur)="handleOnBlur($event)"
     [disabled]="disabled"
+    autocomplete="off"
   />
   <span *ngIf="error" class="inputErrorIcon">
     <svg
@@ -64,15 +66,14 @@
   <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
 </div>
 <div class="optionsContainer" *ngIf="autoSuggestVisible">
-  <ul
-    role="listbox"
-    class="options"
-    [id]="autoSuggestId"
-  >
-    <div><li id="lb1-al" role="option">Alabama</li></div>
-    <div><li id="lb1-al" role="option">Alabama</li></div>
-    <div><li id="lb1-al" role="option">Alabama</li></div>
-    <div><li id="lb1-al" role="option">Alabama</li></div>
+  <ul role="listbox" class="options" [id]="autoSuggestId">
+    <li
+      *ngFor="let item of autocompleteOptions; let i = index"
+      role="option"
+      [ngClass]="{'selected': selectedOption === i}"
+    >
+      {{ item }}
+    </li>
   </ul>
 </div>
 <span *ngIf="error" class="inputErrorMessage">{{ error }}</span>

@@ -1,3 +1,4 @@
+import { keyframes } from "@angular/animations";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   Component,
@@ -15,11 +16,12 @@ import {
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { DxcNewInputTextService } from "./services/dxc-new-input-text.service";
 
 @Component({
   selector: "dxc-new-input-text",
   templateUrl: "./dxc-new-input-text.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, DxcNewInputTextService],
 })
 export class DxcNewInputTextComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
@@ -68,6 +70,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   @Input()
   margin: Object | string;
 
+  @Input()
+  autocompleteOptions: Array<any> = [];
+
   random: string;
   autoSuggestId: string;
 
@@ -86,6 +91,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     name: "",
     label: "",
     margin: "",
+    autocompleteOptions: [],
   });
 
   @Output()
@@ -105,16 +111,27 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   autoSuggestVisible: boolean = false;
 
-  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
+  selectedOption: number;
+
+  constructor(
+    private utils: CssUtils,
+    private cdRef: ChangeDetectorRef,
+    private service: DxcNewInputTextService
+  ) {}
 
   ngOnInit(): void {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.autoSuggestId = this.random + "-listBox";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.controlled = this.value ? true : false;
+    this.service.setOptionsLength(this.autocompleteOptions.length);
+    this.service.selected.subscribe((value) => {
+      this.selectedOption = value;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.service.setOptionsLength(this.autocompleteOptions.length);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -154,16 +171,34 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   }
 
   handleOnFocus(event) {
-    //TODO: if there are options
-    console.log(this.autoSuggestVisible);
-    this.autoSuggestVisible = true;
-    this.cdRef.detectChanges();
+    if(this.autocompleteOptions.length){
+      console.log(this.autoSuggestVisible);
+      this.autoSuggestVisible = true;
+      this.cdRef.detectChanges();
+    }
   }
 
   handleOnFocusOut(event) {
     if (this.autoSuggestVisible) {
+      this.service.selected.next(-1);
       this.autoSuggestVisible = false;
       this.cdRef.detectChanges();
+    }
+  }
+
+  handleOnKeyDown(event) {
+    event.preventDefault();
+    switch (event.key) {
+      case "ArrowDown":
+        this.service.onArrowDown();
+        break;
+      case "ArrowUp":
+        this.service.onArrowUp();
+        break;
+      case "Enter":
+        break;
+      case "Escape":
+        break;
     }
   }
 
@@ -252,9 +287,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         border-radius: 4px;
         margin: 4px 0;
         padding-right: 12px;
-        ${inputs.prefix
-          ? `padding-left: 12px;`
-          : ""};
+        ${inputs.prefix ? `padding-left: 12px;` : ""};
         &:hover {
           border-color: var(--input-borderColor);
           box-shadow: none;
@@ -409,10 +442,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
             cursor: pointer;
             &:hover {
-              background-color: #F2F2F2
+              background-color: #f2f2f2;
             }
             &:active {
-              background-color: #CCCCCC;
+              background-color: #cccccc;
+            }
+            &.selected{
+              background-color: #fabada;
             }
           }
 

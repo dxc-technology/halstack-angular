@@ -162,7 +162,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       .inputErrorIcon {
         color: var(--input-disabledErrorFontColor);
       }
-      .inputText{
+      .inputText {
         cursor: not-allowed;
         color: var(--input-disabledInputTextFontColor);
         &::placeholder {
@@ -170,7 +170,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         }
       }
       .inputContainer,
-      .inputContainer:hover{
+      .inputContainer:hover {
         border: 1px solid var(--input-disabledBorderColor);
         box-shadow: none;
         cursor: not-allowed;
@@ -204,6 +204,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         font-style: var(--input-labelFontStyle);
         font-weight: var(--input-labelFontWeight);
         line-height: 1.75em;
+        height: 24px;
       }
       .inputOptionalLabel {
         font-weight: var(--input-optionalLabelFontWeight);
@@ -216,12 +217,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         font-style: var(--input-helperTextFontStyle);
         font-weight: var(--input-helperTextFontWeight);
         line-height: 1.5em;
+        height: 18px;
       }
 
       .inputContainer {
         display: flex;
         align-items: center;
-        height: calc(calc(1rem * 2.5) - calc(1px * 2));
+        height: 38px;
         border: ${this.error
           ? `1px solid var(--input-errorColor)`
           : "1px solid #666666"};
@@ -229,9 +231,11 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
           ? `box-shadow: inset 0 0 0 1px var(--input-errorColor);`
           : ""};
         border-radius: 4px;
-        margin: calc(1rem * 0.25) 0;
-        padding: 0 calc(1rem * 0.5);
-
+        margin: 4px 0;
+        padding-right: 12px;
+        ${inputs.prefix
+          ? `padding-left: 12px;`
+          : ""};
         &:hover {
           border-color: var(--input-borderColor);
           box-shadow: none;
@@ -248,7 +252,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         background: none;
         border: none;
         outline: none;
-        padding: 0 calc(1rem * 0.5);
+        padding-left: 16px;
         color: var(--input-inputTextFontColor);
         font-family: var(--input-fontFamily);
         font-size: var(--input-inputTextFontSize);
@@ -259,7 +263,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       .inputAction {
         height: 24px;
         max-width: 24px;
-        margin: 0 calc(1rem * 0.25) 0 calc(1rem * 0.25);
+        margin-left: 4px;
         font-size: 1rem;
         font-family: var(--input-fontFamily);
         border: 1px solid transparent;
@@ -297,18 +301,19 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         }
       }
       .inputErrorIcon {
-        height: calc(24px - (1px * 2));
-        width: calc(24px - (1px * 2));
-        margin-right: calc(1rem * 0.5);
+        height: 18px;
+        width: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
         pointer-events: none;
         color: var(--input-errorColor);
-
+        padding-left: 4px;
         svg {
           font-size: 1.25rem;
           line-height: 22px;
+          height: 18px;
+          width: 18px;
         }
       }
 
@@ -330,7 +335,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
       .inputSuffix {
         border-left: 1px solid var(--input-suffixBorderColor);
-        margin-left: calc(1rem * 0.25);
+        margin-left: 4px;
         padding: 0 0 0 calc(1rem * 0.5);
         color: var(--input-suffixFontColor);
         font-size: var(--input-suffixFontSize);
@@ -345,9 +350,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         font-style: var(--input-errorFontStyle);
         font-weight: var(--input-errorFontWeight);
         line-height: 1.5em;
+        height: 18px;
       }
 
-      dxc-new-input-text-action{
+      dxc-new-input-text-action {
         display: flex;
       }
 

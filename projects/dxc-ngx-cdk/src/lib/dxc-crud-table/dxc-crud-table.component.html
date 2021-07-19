@@ -33,7 +33,8 @@
     <ng-container matColumnDef="{{column}}"
       *ngFor="let column of columns;  let i = index; let last = last; let first = first;">
       <th tabindex="0" mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap">
-        <span [ngClass]="{'cellContentPostion': first}" *ngIf="(column && column.toLowerCase() !=='action' && resource)">
+        <span [ngClass]="{'cellContentPostion': first}"
+          *ngIf="(column && column.toLowerCase() !=='action' && resource)">
           {{resource[column]}}</span>
       </th>
       <td mat-cell *matCellDef="let element; let j = index" class="cell-position cell-focus pr-3 px-2">
@@ -47,31 +48,27 @@
         </button>
         <div class="row gridBtnPostion" *ngIf="first" [ngClass]="element.status ? 'search-column-width': ''">
           <span class="iconPostion">
-		  
-		
-		 <span class="material-icons iconProp icon playPause"
-              *ngIf="isIconRequired && !element.error" [ngClass]="element.status ? 'green-icon': 'red-icon'"
+            <span class="material-icons iconProp icon playPause" *ngIf="isIconRequired && !element.error"
+              [ngClass]="element.status ? 'green-icon': 'red-icon'"
               (click)="element.status=!element.status">{{element.status ? 'check' : 'close' }}</span>
-		
-		 <span class="material-icons iconProp" *ngIf="isEditIconRequired && element.status" (click)="editRow(j, element)" >mode_edit</span>
-           
-		   
-		   
-		  <span class="material-icons iconProp"
-              *ngIf="!element.error && element.status && isEditIconRequired" [ngClass]="element.required ? 'green-icon': ''"
-              (click)="element.required=!element.required">star</span>
-		  
-		  
-			<span class="material-icons iconProp"
-              *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
+
+            <span class="material-icons iconProp" *ngIf="isEditIconRequired && element.status"
+              (click)="editRow(j, element)">mode_edit</span>
+
+
+
+            <span class="material-icons iconProp" *ngIf="!element.error && element.status && isEditIconRequired"
+              [ngClass]="element.required ? 'green-icon': ''" (click)="element.required=!element.required">star</span>
+
+
+            <span class="material-icons iconProp" *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
               (click)="moveUp(element)">arrow_upward</span>
-			  
-			  <span class="material-icons iconProp"
-              *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
+
+            <span class="material-icons iconProp" *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
               (click)="moveDown(element)">arrow_downward</span>
-			
-			
-			<span class="material-icons iconProp"
+
+
+            <span class="material-icons iconProp"
               *ngIf="isEditRequired && element[uniqueIdentifier] != '' && (!isEditForm || !showPopup)"
               (click)="expandRow(j, element)">mode_edit</span>
             <span class="material-icons iconProp"
@@ -79,32 +76,39 @@
               (click)="deleteRow(element)">delete</span>
           </span>
         </div>
-        <a tabindex="0" href="javascript:void(0);" [ngClass]="{'cellContentPostion': first, 'link-decoration' : true} && (element.status ? 'search-column-padding': 'column-padding')"
+        <a tabindex="0" href="javascript:void(0);"
+          [ngClass]="{'cellContentPostion': first, 'link-decoration' : true} && (element.status ? 'search-column-padding': 'column-padding')"
           *ngIf="(column && column.toLowerCase() !=='action' && element[column] && element[column].toLowerCase() != 'false' && element[column].toLowerCase() != 'true')"
           (click)="onRowSelection(element)">
           <span [ngSwitch]="columns?.length">
-            <div class="crud-col" *ngSwitchCase="1" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
+            <div class="crud-col" *ngSwitchCase="1"
+              [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
               {{element[column]}}
-			  <mat-icon *ngIf="element.required" class="green-icon table-label">
-	               starrate</mat-icon> 
+              <mat-icon *ngIf="element.required" class="green-icon table-label">
+                starrate</mat-icon>
             </div>
-            <div class="crud-col" *ngSwitchDefault [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
+            <div class="crud-col" *ngSwitchDefault
+              [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
               <div *ngIf="element[column].length > 30; then thenBlock else elseBlock"></div>
               <ng-template #thenBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
+                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]"
+                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{(element[column] | formatter:formatColumns[column]).substring(0,30)}}
                   <span matTooltip="{{element[column]}}">...</span>
                 </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
+                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])"
+                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{element[column].substring(0,30)}}
                   <span matTooltip="{{element[column]}}">...</span>
                 </div>
               </ng-template>
               <ng-template #elseBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
+                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]"
+                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{(element[column] | formatter:formatColumns[column])}}
                 </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])" [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
+                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])"
+                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
                   {{element[column]}}
                 </div>
               </ng-template>
@@ -156,7 +160,8 @@
                         [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                       </dxc-input-text>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.dropdown">
@@ -173,7 +178,8 @@
                         </dxc-select-option>
                       </dxc-select>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.dxcDate">
@@ -181,11 +187,12 @@
                     </dxc-label>
                     <div>
                       <!--arialabelledby="cl_{{editField.name}}" [label]="resource[editField.label]" -->
-                      <dxc-date [customOutput]="true" [format]="editField.format"
-                        id="{{editField.name}}" [required]="editField.required" [iconSrc]="editField.iconSrc"
+                      <dxc-date [customOutput]="true" [format]="editField.format" id="{{editField.name}}"
+                        [required]="editField.required" [iconSrc]="editField.iconSrc"
                         formControlName="{{editField.name}}"></dxc-date>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.checkbox">
@@ -197,7 +204,8 @@
                         formControlName="{{editField.name}}">
                       </dxc-checkbox>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.codeLookup">
@@ -210,7 +218,8 @@
                         [resourcerequest]="resourceRequest" [gridstaterequest]="gridStateRequest"
                         formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.supplementalGrid">
@@ -223,7 +232,8 @@
                         [resourcerequest]="resourceRequest" [gridstaterequest]="editField.supplementalgridstateRequest"
                         formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.orghLookup">
@@ -237,7 +247,8 @@
                         formControlName="{{editField.name}}">
                       </dxc-orghlookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.crudLookup">
@@ -250,7 +261,8 @@
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
                         [lookuptype]="lookupType.MULTI" formControlName="{{editField.name}}"></dxc-crud-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.userLookup">
@@ -266,7 +278,8 @@
                         formControlName="{{editField.name}}">
                       </dxc-user-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.textArea">
@@ -278,7 +291,8 @@
                         [attr.aria-disabled]="editField.disabled">
                       </dxc-textarea>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                 </ng-container>
@@ -379,7 +393,8 @@
                         [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                       </dxc-input-text>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-2 mb-4" *ngSwitchCase="fieldsType.dropdown">
@@ -396,7 +411,8 @@
                         </dxc-select-option>
                       </dxc-select>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.dxcDate">
@@ -404,11 +420,12 @@
                     </dxc-label>
                     <div>
                       <!--arialabelledby="cl_{{editField.name}}" [label]="resource[editField.label]"-->
-                      <dxc-date [customOutput]="true"  [format]="editField.format"
-                        id="{{editField.name}}" [required]="editField.required" [iconSrc]="editField.iconSrc"
+                      <dxc-date [customOutput]="true" [format]="editField.format" id="{{editField.name}}"
+                        [required]="editField.required" [iconSrc]="editField.iconSrc"
                         formControlName="{{editField.name}}"></dxc-date>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-2 mb-4" *ngSwitchCase="fieldsType.checkbox">
@@ -420,7 +437,8 @@
                         formControlName="{{editField.name}}">
                       </dxc-checkbox>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.codeLookup">
@@ -433,7 +451,8 @@
                         [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
                         [gridstaterequest]="gridStateRequest" formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.supplementalGrid">
@@ -447,7 +466,8 @@
                         [gridstaterequest]="editField.supplementalgridstateRequest"
                         formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.orghLookup">
@@ -461,7 +481,8 @@
                         [gridStateRequest]="orghgridStateRequest" formControlName="{{editField.name}}">
                       </dxc-orghlookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.crudLookup">
@@ -474,7 +495,8 @@
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
                         [lookuptype]="lookupType.MULTI" formControlName="{{editField.name}}"></dxc-crud-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.userLookup">
@@ -490,7 +512,8 @@
                         formControlName="{{editField.name}}">
                       </dxc-user-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                   <div class="col-md-{{editField.columnSize}} mb-4" *ngSwitchCase="fieldsType.textArea">
@@ -502,7 +525,8 @@
                         [attr.aria-disabled]="editField.disabled">
                       </dxc-textarea>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                      [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation"></dxc-show-errors>
+                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
+                      </dxc-show-errors>
                     </div>
                   </div>
                 </ng-container>

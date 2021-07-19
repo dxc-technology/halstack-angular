@@ -1,6 +1,6 @@
 {
   "name": "@dxc-technology/halstack-angular",
-  "version": "0.0.0",
+  "version": "21.3.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "scripts": {
     "build-lib": "ng build dxc-ngx-cdk",
@@ -90,5 +90,6 @@
     "typescript": "^3.6.5",
     "@types/node": "^12.11.1",
     "rgb-hex": "^3.0.0"
-  }
+  },
+  "publishConfig":{"registry":"https://artifactory.dxc.com/artifactory/api/npm/AssureClaims-NPM/"}
 }

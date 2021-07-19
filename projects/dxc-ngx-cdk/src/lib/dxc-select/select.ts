@@ -793,7 +793,7 @@ export abstract class _MatSelectBase<C>
 
     if (this._multiple) {
       const selectedOptions = this._selectionModel.selected.map(
-        (option) => option.viewValue
+        (option) => option.label
       );
 
       if (this._isRtl()) {
@@ -804,7 +804,7 @@ export abstract class _MatSelectBase<C>
       return selectedOptions.join(", ");
     }
 
-    return this._selectionModel.selected[0].viewValue;
+    return this._selectionModel.selected[0].label;
   }
 
   /** Whether the element is in RTL mode. */

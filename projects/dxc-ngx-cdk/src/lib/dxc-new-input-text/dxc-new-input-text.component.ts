@@ -69,6 +69,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   margin: Object | string;
 
   random: string;
+  autoSuggestId: string;
 
   private controlled: boolean;
 
@@ -102,10 +103,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   tabIndex: number;
 
+  autoSuggestVisible: boolean = false;
+
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
+    this.autoSuggestId = this.random + "-listBox";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.controlled = this.value ? true : false;
   }
@@ -145,6 +149,20 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     this.onBlur.emit(event.target.value);
     if (!this.controlled) {
       this.value = event.target.value;
+      this.cdRef.detectChanges();
+    }
+  }
+
+  handleOnFocus(event) {
+    //TODO: if there are options
+    console.log(this.autoSuggestVisible);
+    this.autoSuggestVisible = true;
+    this.cdRef.detectChanges();
+  }
+
+  handleOnFocusOut(event) {
+    if (this.autoSuggestVisible) {
+      this.autoSuggestVisible = false;
       this.cdRef.detectChanges();
     }
   }
@@ -194,6 +212,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
+      position: relative;
       display: flex;
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
@@ -358,6 +377,59 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       }
 
       ${inputs.disabled ? this.getDisabledStyle() : ""}
+
+      .optionsContainer {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: ${this.error ? "83%" : "100%"};
+        background-color: white;
+        box-sizing: border-box;
+        border: 1px solid #707070;
+        border-radius: 4px;
+        width: 100%;
+        z-index: 1;
+        .options {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          overflow: auto;
+          overflow-x: hidden;
+          max-height: 12em;
+          li {
+            font-family: var(--input-fontFamily);
+            font-size: var(--input-inputFontSize);
+            font-style: var(--input-inputFontStyle);
+            font-weight: var(--input-inputFontWeight);
+            line-height: 1.75em;
+
+            padding-top: calc((39px - 1.75em) / 2);
+            padding-bottom: calc((39px - 1.75em) / 2);
+            padding-left: 1em;
+
+            cursor: pointer;
+            &:hover {
+              background-color: #F2F2F2
+            }
+            &:active {
+              background-color: #CCCCCC;
+            }
+          }
+
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          &::-webkit-scrollbar-track {
+            background-color: var(--inputText-scrollBarTrackColor);
+            opacity: 0.34;
+            border-radius: 3px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: var(--inputText-scrollBarThumbColor);
+            border-radius: 3px;
+          }
+        }
+      }
     `;
   }
 }

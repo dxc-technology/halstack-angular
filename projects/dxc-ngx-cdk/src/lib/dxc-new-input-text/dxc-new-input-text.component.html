@@ -6,6 +6,9 @@
 <div class="inputContainer">
   <span *ngIf="prefix" class="inputPrefix">{{ prefix }}</span>
   <input
+    role="combobox"
+    (focus)="handleOnFocus($event)"
+    (focusout)="handleOnFocusOut($event)"
     #inputRef
     type="text"
     class="inputText"
@@ -59,5 +62,17 @@
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
   <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
+</div>
+<div class="optionsContainer" *ngIf="autoSuggestVisible">
+  <ul
+    role="listbox"
+    class="options"
+    [id]="autoSuggestId"
+  >
+    <div><li id="lb1-al" role="option">Alabama</li></div>
+    <div><li id="lb1-al" role="option">Alabama</li></div>
+    <div><li id="lb1-al" role="option">Alabama</li></div>
+    <div><li id="lb1-al" role="option">Alabama</li></div>
+  </ul>
 </div>
 <span *ngIf="error" class="inputErrorMessage">{{ error }}</span>

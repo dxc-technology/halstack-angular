@@ -1,4 +1,3 @@
-import { keyframes } from "@angular/animations";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   Component,
@@ -134,7 +133,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       ) {
         this.optionsRef.nativeElement.children[
           this.selectedOption
-        ].scrollIntoView({ block: "nearest", inline: "nearest" });
+        ].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
       }
     });
   }
@@ -152,7 +151,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   handleOnChange(event) {
     this.onChange.emit(event.target.value);
     if (this.controlled) {
-      console.log(this.value);
       event.target.value = this.value;
       this.cdRef.detectChanges();
     }
@@ -193,7 +191,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         this.autosuggestVisible = false;
         this.cdRef.detectChanges();
       }
-    }, 250);
+    }, 200);
   }
 
   handleOnClickOption(event) {
@@ -213,6 +211,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       case "Enter":
         break;
       case "Escape":
+        this.handleOnFocusOut(event);
         break;
     }
   }

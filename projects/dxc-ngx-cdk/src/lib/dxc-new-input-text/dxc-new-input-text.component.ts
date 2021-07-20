@@ -298,6 +298,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       }
 
       .inputContainer {
+        position: relative;
         display: flex;
         align-items: center;
         height: 38px;
@@ -441,7 +442,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         }
         position: absolute;
         left: 0;
-        top: ${this.error ? "83%" : "100%"};
+        top: calc(100% + 4px);
         background-color: white;
         box-sizing: border-box;
         border: 1px solid #707070;

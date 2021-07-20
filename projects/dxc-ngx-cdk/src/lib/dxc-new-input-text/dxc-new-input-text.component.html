@@ -64,21 +64,22 @@
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
   <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
-</div>
-<ul
-  #autoSuggestOptions
-  [ngClass]="{ visible: autosuggestVisible }"
-  role="listbox"
-  class="options"
-  [id]="autoSuggestId"
->
-  <li
-    *ngFor="let item of autocompleteOptions; let i = index"
-    role="option"
-    [ngClass]="{ selected: selectedOption === i }"
-    (click)="handleOnClickOption(item)"
+  <ul
+    #autoSuggestOptions
+    [ngClass]="{ visible: autosuggestVisible }"
+    role="listbox"
+    class="options"
+    [id]="autoSuggestId"
   >
-    {{ item }}
-  </li>
-</ul>
+    <li
+      *ngFor="let item of autocompleteOptions; let i = index"
+      role="option"
+      [ngClass]="{ selected: selectedOption === i }"
+      (click)="handleOnClickOption(item)"
+    >
+      {{ item }}
+    </li>
+  </ul>
+</div>
+
 <span *ngIf="error" class="inputErrorMessage">{{ error }}</span>

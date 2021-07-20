@@ -123,7 +123,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.autoSuggestId = this.random + "-listBox";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if(this.value === undefined) {
+    if (this.value === undefined) {
       this.value = "";
       this.controlled = true;
     } else {
@@ -138,7 +138,11 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       ) {
         this.optionsRef.nativeElement.children[
           this.selectedOption
-        ].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        ].scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "nearest",
+        });
       }
     });
   }
@@ -430,7 +434,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
 
       ${inputs.disabled ? this.getDisabledStyle() : ""}
 
-      .optionsContainer {
+      .options {
         display: none;
         &.visible {
           display: block;
@@ -444,48 +448,46 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
         border-radius: 4px;
         width: 100%;
         z-index: 1;
-        .options {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-          overflow: auto;
-          overflow-x: hidden;
-          max-height: 12em;
-          li {
-            font-family: var(--input-fontFamily);
-            font-size: var(--input-inputFontSize);
-            font-style: var(--input-inputFontStyle);
-            font-weight: var(--input-inputFontWeight);
-            line-height: 1.75em;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: auto;
+        overflow-x: hidden;
+        max-height: 12em;
+        li {
+          font-family: var(--input-fontFamily);
+          font-size: var(--input-inputFontSize);
+          font-style: var(--input-inputFontStyle);
+          font-weight: var(--input-inputFontWeight);
+          line-height: 1.75em;
 
-            padding-top: calc((39px - 1.75em) / 2);
-            padding-bottom: calc((39px - 1.75em) / 2);
-            padding-left: 1em;
+          padding-top: calc((39px - 1.75em) / 2);
+          padding-bottom: calc((39px - 1.75em) / 2);
+          padding-left: 1em;
 
-            cursor: pointer;
-            &:hover {
-              background-color: #f2f2f2;
-            }
-            &:active {
-              background-color: #cccccc;
-            }
-            &.selected {
-              background-color: #fabada;
-            }
+          cursor: pointer;
+          &:hover {
+            background-color: #f2f2f2;
           }
+          &:active {
+            background-color: #cccccc;
+          }
+          &.selected {
+            background-color: #fabada;
+          }
+        }
 
-          &::-webkit-scrollbar {
-            width: 3px;
-          }
-          &::-webkit-scrollbar-track {
-            background-color: var(--inputText-scrollBarTrackColor);
-            opacity: 0.34;
-            border-radius: 3px;
-          }
-          &::-webkit-scrollbar-thumb {
-            background-color: var(--inputText-scrollBarThumbColor);
-            border-radius: 3px;
-          }
+        &::-webkit-scrollbar {
+          width: 3px;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: var(--inputText-scrollBarTrackColor);
+          opacity: 0.34;
+          border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--inputText-scrollBarThumbColor);
+          border-radius: 3px;
         }
       }
     `;

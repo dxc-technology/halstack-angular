@@ -65,16 +65,20 @@
   </button>
   <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
 </div>
-<div class="optionsContainer" [ngClass]="{'visible': autosuggestVisible}">
-  <ul #autoSuggestOptions role="listbox" class="options" [id]="autoSuggestId">
-    <li
-      *ngFor="let item of autocompleteOptions; let i = index"
-      role="option"
-      [ngClass]="{'selected': selectedOption === i}"
-      (click)="handleOnClickOption(item)"
-    >
-      {{ item }}
-    </li>
-  </ul>
-</div>
+<ul
+  #autoSuggestOptions
+  [ngClass]="{ visible: autosuggestVisible }"
+  role="listbox"
+  class="options"
+  [id]="autoSuggestId"
+>
+  <li
+    *ngFor="let item of autocompleteOptions; let i = index"
+    role="option"
+    [ngClass]="{ selected: selectedOption === i }"
+    (click)="handleOnClickOption(item)"
+  >
+    {{ item }}
+  </li>
+</ul>
 <span *ngIf="error" class="inputErrorMessage">{{ error }}</span>

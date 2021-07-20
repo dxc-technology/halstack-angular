@@ -9,8 +9,8 @@
 
   <tbuilder-component-mode text="Disabled">
     <dxc-tabs margin="xsmall" [activeTabIndex]="activeTabIndex1" iconPosition="top">
-      <dxc-tab label="Tab 1" (onTabClick)="tabClicked1($event)"></dxc-tab>
-      <dxc-tab label="Tab 2" (onTabClick)="tabClicked1($event)" [disabled] = "true" >
+      <dxc-tab notificationNumber="99" label="Tab 1" (onTabClick)="tabClicked1($event)"></dxc-tab>
+      <dxc-tab [notificationNumber]="trueNotificationNumber" label="Tab 2" (onTabClick)="tabClicked1($event)" [disabled] = "true" >
         <dxc-tab-icon>
           <svg
             version="1.1"
@@ -35,7 +35,7 @@
           </svg>
         </dxc-tab-icon>
       </dxc-tab>
-      <dxc-tab label="Tab 3" (onTabClick)="tabClicked1($event)"></dxc-tab>
+      <dxc-tab notificationNumber="150" label="Tab 3" (onTabClick)="tabClicked1($event)"></dxc-tab>
     </dxc-tabs>
   </tbuilder-component-mode>
 

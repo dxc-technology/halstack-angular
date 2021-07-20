@@ -8,6 +8,7 @@ export class TabsPreviewComponent implements OnInit {
   @HostBinding("class") className;
 
   activeTabIndex1: number;
+  trueNotificationNumber = true;
 
   constructor() {}
 

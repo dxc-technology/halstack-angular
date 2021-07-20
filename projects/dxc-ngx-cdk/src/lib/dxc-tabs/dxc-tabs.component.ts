@@ -236,6 +236,12 @@ export class DxcTabsComponent implements OnChanges {
           text-align: -webkit-center;
           z-index: 1;
 
+          dxc-badge {
+            position: absolute;
+            top: 12px;
+            right: 4px;
+          }
+
           img,
           svg {
             width: 22px;

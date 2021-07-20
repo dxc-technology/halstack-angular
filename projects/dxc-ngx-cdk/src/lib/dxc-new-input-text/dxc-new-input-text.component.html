@@ -73,12 +73,12 @@
   [id]="autoSuggestId"
 >
   <li
-    *ngFor="let item of autocompleteOptions; let i = index"
+    *ngFor="let item of autocompleteOptions | filterOptions: value; let i = index"
     role="option"
     [ngClass]="{ selected: selectedOption === i }"
     (click)="handleOnClickOption(item)"
+    [innerHtml]="item | boldOptions: value"
   >
-    {{ item }}
   </li>
 </ul>
 <span *ngIf="error" class="inputErrorMessage">{{ error }}</span>

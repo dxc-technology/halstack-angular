@@ -51,6 +51,7 @@
     (onChange)="changeValue($event)"
     clearable="true"
     (onActionClick)="click()"
+    [autocompleteOptions]= "options"
   >
     <dxc-new-input-text-action>
       <svg
@@ -92,6 +93,7 @@
       prefix="+34"
       helperText="helper text"
       margin="xsmall"
+      [autocompleteOptions]= "options"
     >
     </dxc-new-input-text>
 
@@ -103,6 +105,7 @@
       prefix="+34"
       helperText="helper text"
       margin="xsmall"
+      [autocompleteOptions]= "options"
     ></dxc-new-input-text>
     <dxc-new-input-text
       placeholder="placeholder"
@@ -114,6 +117,7 @@
       helperText="helper text"
       margin="xsmall"
       (onActionClick)="click()"
+      [autocompleteOptions]= "options"
     >
       <dxc-new-input-text-action>
         <svg
@@ -161,6 +165,7 @@
       margin="xsmall"
       disabled="true"
       (onActionClick)="click()"
+      [autocompleteOptions]= "options"
     >
     <dxc-new-input-text-action>
       <svg

@@ -397,7 +397,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
       if (Object.keys(this.claimsForm.controls).length) {
         return;
       }
-
       this.isEditForm = false;
       this.selectedRowIndex = -1;
       let crudFormModel = {};
@@ -442,7 +441,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
         };
       }
       else {
-
         dataToEmit = {
           action: EAction.ONLOAD,
           columns: this.editableFields,
@@ -668,6 +666,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight);
     this.formControlUpdater.emit({ action: EAction.ONPANELCLOSE});
   }
+  
   editRow = (index, row) => {
     this.formControlUpdater.emit({ action: EAction.ONCUSTOMEDIT, data: row });
    
@@ -996,8 +995,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
         crudFormModel[col.name] = '';
         if (col.fieldType == this.fieldsType.dropdown) {
           crudFormModel[(col as IDropdownProperties).viewValue] = '';
-          this.claimsForm.addControl(col.name, new FormControl((col as IDropdownProperties).options.length < 1 ? '' : col.multiple ? [(col as IDropdownProperties).options[0].value] : (col as IDropdownProperties).options[0].value,
-            (col.required && col.required == true) ? Validators.required : null));
+          this.claimsForm.addControl(col.name, new FormControl(col.multiple ? [] : '', (col.required && col.required == true) ? Validators.required : null));
 
           if ((col as IDropdownProperties).isApplyChangeEvent) {
             const control = col as IDropdownProperties;

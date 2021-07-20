@@ -5,38 +5,38 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class DxcNewInputTextService {
-  constructor() {}
+  constructor() {
 
-  public selected: BehaviorSubject<number> = new BehaviorSubject(-1);
+  }
+
+  public onFocused: BehaviorSubject<number> = new BehaviorSubject(-1);
   // public options: BehaviorSubject<Array<any>> = new BehaviorSubject(null);
   // public filteredOptions: BehaviorSubject<number> = new BehaviorSubject(null);
 
   private optionsLength: number = -1;
 
   public setSelectedIndex(selected): void {
-    this.selected.next(selected);
+    this.onFocused.next(selected);
   }
 
   public setOptionsLength(length): void {
     this.optionsLength = length;
   }
 
-  // public setOptions(selected): void {
-  //   this.options.next(selected);
-  // }
-
   public onArrowDown(): void {
-    if (this.selected.value < this.optionsLength - 1) {
-      this.selected.next(this.selected.value + 1);
+    if (this.onFocused.value < this.optionsLength - 1) {
+      this.onFocused.next(this.onFocused.value + 1);
     }
-    console.log("down: ", this.selected.value);
   }
 
   public onArrowUp(): void {
-    if (this.selected.value > 0) {
-      this.selected.next(this.selected.value - 1);
+    if (this.onFocused.value > 0) {
+      this.onFocused.next(this.onFocused.value - 1);
     }
-    console.log("up: ", this.selected.value);
+  }
+
+  public onEnter(): void {
+    
   }
 
   // autocompleteFunction(value) {

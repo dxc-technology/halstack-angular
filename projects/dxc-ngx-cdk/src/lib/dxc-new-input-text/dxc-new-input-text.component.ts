@@ -104,12 +104,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   onActionClick = new EventEmitter<any>();
 
   @ViewChild("inputRef", { static: false }) inputRef: ElementRef;
+  @ViewChild("autoSuggestOptions", { static: false }) optionsRef: ElementRef;
 
   size: string;
 
   tabIndex: number;
 
-  autoSuggestVisible: boolean = false;
+  autosuggestVisible: boolean = false;
 
   selectedOption: number;
 
@@ -125,8 +126,16 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.controlled = this.value ? true : false;
     this.service.setOptionsLength(this.autocompleteOptions.length);
-    this.service.selected.subscribe((value) => {
+    this.service.onFocused.subscribe((value) => {
       this.selectedOption = value;
+      if (
+        this.optionsRef &&
+        this.optionsRef.nativeElement.children[this.selectedOption]
+      ) {
+        this.optionsRef.nativeElement.children[
+          this.selectedOption
+        ].scrollIntoView({ block: "nearest", inline: "nearest" });
+      }
     });
   }
 
@@ -171,28 +180,34 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   }
 
   handleOnFocus(event) {
-    if(this.autocompleteOptions.length){
-      console.log(this.autoSuggestVisible);
-      this.autoSuggestVisible = true;
+    if (this.autocompleteOptions.length) {
+      this.autosuggestVisible = true;
       this.cdRef.detectChanges();
     }
   }
 
   handleOnFocusOut(event) {
-    if (this.autoSuggestVisible) {
-      this.service.selected.next(-1);
-      this.autoSuggestVisible = false;
-      this.cdRef.detectChanges();
-    }
+    setTimeout(() => {
+      if (this.autosuggestVisible) {
+        this.service.onFocused.next(-1);
+        this.autosuggestVisible = false;
+        this.cdRef.detectChanges();
+      }
+    }, 250);
+  }
+
+  handleOnClickOption(event) {
+    console.log(event);
   }
 
   handleOnKeyDown(event) {
-    event.preventDefault();
     switch (event.key) {
       case "ArrowDown":
+        event.preventDefault();
         this.service.onArrowDown();
         break;
       case "ArrowUp":
+        event.preventDefault();
         this.service.onArrowUp();
         break;
       case "Enter":
@@ -412,7 +427,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
       ${inputs.disabled ? this.getDisabledStyle() : ""}
 
       .optionsContainer {
-        display: block;
+        display: none;
+        &.visible {
+          display: block;
+        }
         position: absolute;
         left: 0;
         top: ${this.error ? "83%" : "100%"};
@@ -447,7 +465,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
             &:active {
               background-color: #cccccc;
             }
-            &.selected{
+            &.selected {
               background-color: #fabada;
             }
           }

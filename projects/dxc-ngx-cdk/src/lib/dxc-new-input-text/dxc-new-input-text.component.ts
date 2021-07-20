@@ -32,7 +32,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
   name: string;
 
   @Input()
-  value: string = "";
+  value: string;
 
   @Input()
   helperText: string;
@@ -86,7 +86,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     prefix: "",
     disabled: false,
     helperText: "",
-    value: "",
+    value: undefined,
     name: "",
     label: "",
     margin: "",
@@ -123,7 +123,12 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.autoSuggestId = this.random + "-listBox";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.controlled = this.value ? true : false;
+    if(this.value === undefined) {
+      this.value = "";
+      this.controlled = true;
+    } else {
+      this.controlled = false;
+    }
     this.service.setOptionsLength(this.autocompleteOptions.length);
     this.service.onFocused.subscribe((value) => {
       this.selectedOption = value;

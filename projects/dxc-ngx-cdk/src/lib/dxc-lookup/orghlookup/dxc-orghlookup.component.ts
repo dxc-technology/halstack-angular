@@ -72,7 +72,7 @@ const orghLevel: Array<OrghEntity> = [
   }]
 })
 //extends BaseComponent
-export class DxcOrghlookupComponent 
+export class DxcOrghlookupComponent
   implements ControlValueAccessor, OnInit, OnChanges {
 
 
@@ -82,7 +82,7 @@ export class DxcOrghlookupComponent
   @ViewChild('drawer', { static: false }) sidenav: MatSidenav;
   @Input('id') id: string;
   @Input('lookuptype') lookupType: ELookupType = ELookupType.SINGLE;
-  @Input('allowmultipleselection') allowMultipleSelection = this.lookupType === ELookupType.SINGLE ? false : true;
+  @Input('allowmultipleselection') allowMultipleSelection = this.lookupType == ELookupType.SINGLE ? false : true;
   @Input('removeiconarialabel') removeiconarialabel: string;
   @Input('mode') mode: Mode = Mode.GRID;
   @Input('gridmode') gridMode: GridMode = GridMode.MODAl;
@@ -93,7 +93,7 @@ export class DxcOrghlookupComponent
   @Input() allowTreeView = true;
   @Input() gridStateRequest: IRequest;
   @Input('resourcerequest') resourceRequest: IRequest;
-    @Input('level') level: string;
+  @Input('level') level: string;
   @Output() action = new EventEmitter<EAction>();
   @Input('disabled') disabled: false;
   @Output()
@@ -101,7 +101,7 @@ export class DxcOrghlookupComponent
 
   @Output()
   treeresultChange: EventEmitter<TreeNode | Array<TreeNode>> = new EventEmitter<TreeNode | Array<TreeNode>>();
-  isSearch : boolean = false;
+  isSearch: boolean = false;
 
   @Input()
   get treeresult() {
@@ -110,20 +110,17 @@ export class DxcOrghlookupComponent
 
   set treeresult(val: TreeNode) {
     if (val !== undefined) {
-		if(this.lookupType === ELookupType.MULTI)
-		{
-			if(this.treeResultValue == undefined)
-					{
-						this.treeResultValue =[];
-					}
-					
-					
-		
-		}
-	else
-	{
-		this.treeResultValue = val;
-	}
+      if (this.lookupType == ELookupType.MULTI) {
+        if (this.treeResultValue == undefined) {
+          this.treeResultValue = [];
+        }
+
+
+
+      }
+      else {
+        this.treeResultValue = val;
+      }
       if (val !== undefined) {
 
         if (val.name !== 'Organization Hierarchy') {
@@ -137,7 +134,7 @@ export class DxcOrghlookupComponent
       }
       switch (this.lookupType) {
         case ELookupType.SINGLE:
-		 const targetValue: Code = { shortCode: '', desc: '', id: -1, table: '' };
+          const targetValue: Code = { shortCode: '', desc: '', id: -1, table: '' };
           if (val !== undefined && val.id >= 0) {
             targetValue.id = val.id;
             targetValue.desc = val.lastName;
@@ -146,30 +143,29 @@ export class DxcOrghlookupComponent
           this.currentSelectedNode = val.id <= 0 ? undefined : val;
           this.showSelected(targetValue, true);
           break;
-          case ELookupType.MULTI:
-          
-          const filteredValue = this.treeResultValue.filter((x) => (x.id === val.id));
+        case ELookupType.MULTI:
+
+          const filteredValue = this.treeResultValue.filter((x) => (x.id == val.id));
           if (!filteredValue && val.id > 0) {
             this.treeResultValue.push(val);
           }
-        
-		
-		const targetValues: Code = { shortCode: '', desc: '', id: -1, table: '' };
+
+
+          const targetValues: Code = { shortCode: '', desc: '', id: -1, table: '' };
           if (val !== undefined && val.id >= 0) {
-          targetValues.id = val.id;
-           targetValues.desc = val.lastName;
-           targetValues.shortCode = val.abbreviation;
-       }
+            targetValues.id = val.id;
+            targetValues.desc = val.lastName;
+            targetValues.shortCode = val.abbreviation;
+          }
           this.currentSelectedNode = val.id <= 0 ? undefined : val;
-           if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value === this.allowedlevel) {
-		  if(targetValues.id > 0)
-		  {
-			 this.showSelected(targetValues, true); 
-		  }
-    }
-         
-		  
-		
+          if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value == this.allowedlevel) {
+            if (targetValues.id > 0) {
+              this.showSelected(targetValues, true);
+            }
+          }
+
+
+
           break;
         default:
           break;
@@ -177,7 +173,7 @@ export class DxcOrghlookupComponent
     } else {
       switch (this.lookupType) {
         case ELookupType.SINGLE:
-         
+
           const targetValue: Code = { shortCode: '', desc: '', id: -1, table: '' };
           this.currentLevel = '';
           this.treeResultValue = targetValue;
@@ -235,7 +231,7 @@ export class DxcOrghlookupComponent
   errorText = '';
 
   constructor(private helper: DxcOrghlookupService, private messageService: MessageService) {
-   // super();
+    // super();
   }
 
   ngOnInit() {
@@ -259,21 +255,20 @@ export class DxcOrghlookupComponent
       this.defaultParamsConfiguration = this.defaultParamsConfiguration.set(keys[i], this.treeRequest.params.get(keys[i]));
     }
     this.initializeParams();
-	
-	if (this.lookupType === ELookupType.SINGLE) {
+
+    if (this.lookupType == ELookupType.SINGLE) {
       this.allowMultipleSelection = false;
     }
-	else
-	{
-		this.allowMultipleSelection = true;
-	}
+    else {
+      this.allowMultipleSelection = true;
+    }
 
   }
 
   ngOnChanges(changes: SimpleChanges) {
   }
 
-  closePopup(){
+  closePopup() {
     this.isPanelOpen1 = !this.isPanelOpen1;
     this.isSearch = false;
   }
@@ -292,7 +287,7 @@ export class DxcOrghlookupComponent
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
       const l = this.orghLevel[i];
-      if (defaultlevelCode.toLowerCase() === l.shortCode.toLowerCase()) {
+      if (defaultlevelCode.toLowerCase() == l.shortCode.toLowerCase()) {
         this.defaultOrghLevel = l.value;
         break;
       }
@@ -304,7 +299,7 @@ export class DxcOrghlookupComponent
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
       const l = this.orghLevel[i];
-      if (allowedlevelCode.toLowerCase() === l.shortCode.toLowerCase()) {
+      if (allowedlevelCode.toLowerCase() == l.shortCode.toLowerCase()) {
         this.allowedlevel = l.value;
       }
     }
@@ -326,7 +321,7 @@ export class DxcOrghlookupComponent
     switch (value) {
       case EAction.ADD:
         if (this.allowMultipleSelection) {
-          this.selectednodes = (this.selectednodes === undefined) ? [] : this.selectednodes;
+          this.selectednodes = (this.selectednodes == undefined) ? [] : this.selectednodes;
           (this.selectednodes as Array<Code>).push(this.result);
         } else {
           (this.selectednodes as Code) = this.result;
@@ -340,7 +335,7 @@ export class DxcOrghlookupComponent
           lstParams = lstParams.delete('defaultlevel');
         //this.lisRequest.params = lstParams.append('defaultlevel', 'DT');
         for (let i = 0; i < this.orghLevel.length; i++) {
-          if (this.allowedlevel === this.orghLevel[i].value) {
+          if (this.allowedlevel == this.orghLevel[i].value) {
             this.lisRequest.params = lstParams.append('defaultlevel', this.orghLevel[i].shortCode);
           }
         }
@@ -352,22 +347,20 @@ export class DxcOrghlookupComponent
           this.gridView();
         }
 
-		if(this.level != undefined)
-		{
-			let levelParams = new HttpParams();
-        levelParams = this.treeRequest.params;
-        if (levelParams.has('allowedlevel'))
-		{
-          levelParams = levelParams.delete('allowedlevel');
-		}
-	  this.treeRequest.params = levelParams.append('allowedlevel', this.level);
-		}
-		let keys = this.treeRequest.params.keys();
-    let parmasConfig = new HttpParams();
-    for (let i = 0; i < keys.length; i++) {
-      this.defaultParamsConfiguration = this.defaultParamsConfiguration.set(keys[i], this.treeRequest.params.get(keys[i]));
-    }
-		
+        if (this.level != undefined) {
+          let levelParams = new HttpParams();
+          levelParams = this.treeRequest.params;
+          if (levelParams.has('allowedlevel')) {
+            levelParams = levelParams.delete('allowedlevel');
+          }
+          this.treeRequest.params = levelParams.append('allowedlevel', this.level);
+        }
+        let keys = this.treeRequest.params.keys();
+        let parmasConfig = new HttpParams();
+        for (let i = 0; i < keys.length; i++) {
+          this.defaultParamsConfiguration = this.defaultParamsConfiguration.set(keys[i], this.treeRequest.params.get(keys[i]));
+        }
+
         this.resetSearch();
         this.helper.multiLingualResource(this.resourceRequest).subscribe((response) => {
           this.resource = response._embedded.pageResources;
@@ -375,16 +368,16 @@ export class DxcOrghlookupComponent
         this.isPanelOpen1 = true;
         break;
       case EAction.REMOVE:
-        if (this.lookupType === ELookupType.SINGLE) {
+        if (this.lookupType == ELookupType.SINGLE) {
           this.result = { shortCode: '', id: 0, desc: '' } as Code;
           this.registerOnChangeFn(this.result);
         }
-	if (this.lookupType  === ELookupType.MULTI) {
+        if (this.lookupType == ELookupType.MULTI) {
           //this.result = { shortCode: '', id: 0, desc: '' } as Code;
-	  const index = this.result.indexOf(value);
-        if (index >= 0) {
-          this.result.splice(index, 1);
-        }
+          const index = this.result.indexOf(value);
+          if (index >= 0) {
+            this.result.splice(index, 1);
+          }
           this.registerOnChangeFn(this.result);
         }
         break;
@@ -400,7 +393,7 @@ export class DxcOrghlookupComponent
     if (val) {
       this.resultValue = val;
     } else {
-      this.resultValue = this.lookupType === ELookupType.MULTI ? [] : {};
+      this.resultValue = this.lookupType == ELookupType.MULTI ? [] : {};
     }
   }
 
@@ -424,40 +417,39 @@ export class DxcOrghlookupComponent
 
   resultFormatfn = (code: any) => {
     let result: ICodes = { id: 0, shortCode: '', desc: '' };
-	   switch (this.lookupType) {
-        case ELookupType.SINGLE:
-	  
-    
-    if (code && (code.shortCode || code.desc)) {
-      result.id = code.id;
-      result.shortCode = code.shortCode;
-      result.desc = code.desc;
-    } else if (code && code.lastName) {
-      result.id = parseInt(code.entityid);
-      result.shortCode = code.abbreviation;
-      result.desc = code.lastName;
-    } else {
-      result = code;
+    switch (this.lookupType) {
+      case ELookupType.SINGLE:
+        if (code && (code.shortCode || code.desc)) {
+          result.id = code.id;
+          result.shortCode = code.shortCode;
+          result.desc = code.desc;
+        } else if (code && code.lastName) {
+          result.id = parseInt(code.entityid);
+          result.shortCode = code.abbreviation;
+          result.desc = code.lastName;
+        } else {
+          result = code;
+        }
+        break;
+      case ELookupType.MULTI:
+        code = code[0];
+        if (code && (code.shortCode || code.desc)) {
+          result.id = code.id;
+          result.shortCode = code.shortCode;
+          result.desc = code.desc;
+        } else if (code && code.lastName) {
+          result.id = parseInt(code.entityid);
+          result.shortCode = code.abbreviation;
+          result.desc = code.lastName;
+        } else {
+          result = code;
+        }
+        break;
     }
-	break;
-	case ELookupType.MULTI:
-	  code = code[0];
-   if (code && (code.shortCode || code.desc)) {
-      result.id = code.id;
-      result.shortCode = code.shortCode;
-      result.desc = code.desc;
-    } else if (code && code.lastName) {
-      result.id = parseInt(code.entityid);
-      result.shortCode = code.abbreviation;
-      result.desc = code.lastName;
-    } else {
-      result = code;
-    }
-	break;
-	   }
     return result;
   }
-escapefromChild(){
+
+  escapefromChild() {
     this.sidenav.opened = true;
     this.search();
   }
@@ -466,7 +458,7 @@ escapefromChild(){
     if (this.sidenav.opened) {
       this.isSearch = true;
       let params = new HttpParams();
-      params = params.append('format', this.currentView === View.TREE ? 'ux' : 'list');
+      params = params.append('format', this.currentView == View.TREE ? 'ux' : 'list');
       //Start Not required while search
       params = params.append('defaultlevel', 'DT');
       //End Not required while search
@@ -477,9 +469,9 @@ escapefromChild(){
       params = params.append('stateid', (this.state !== undefined && this.state.id >= 0) ?
         this.state.id.toString() : '0');
       //Start Not required while search
-      if (this.currentView === View.TREE) {
+      if (this.currentView == View.TREE) {
         for (let i = 0; i < this.orghLevel.length; i++) {
-          if (this.defaultOrghLevel === this.orghLevel[i].value) {
+          if (this.defaultOrghLevel == this.orghLevel[i].value) {
             params = params.set('defaultlevel', this.orghLevel[i].shortCode);
             break;
           }
@@ -491,7 +483,7 @@ escapefromChild(){
       }
       params = params.append('allowedlevel', 'DT');
       for (let i = 0; i < this.orghLevel.length; i++) {
-        if (this.allowedlevel === this.orghLevel[i].value) {
+        if (this.allowedlevel == this.orghLevel[i].value) {
           params = params.set('allowedlevel', this.orghLevel[i].shortCode);
         }
       }
@@ -503,7 +495,7 @@ escapefromChild(){
         params = params.append('nodeid', this.currentSelectedNode.id.toString());
       }
       this.treeRequest.params = params;
-      if (this.currentView === View.TREE) {
+      if (this.currentView == View.TREE) {
         this.reloadTree = true;
         setTimeout(() => {
           this.reloadTree = false;
@@ -528,32 +520,30 @@ escapefromChild(){
     switch (event) {
       case EAction.SELECT:
 
-        if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value === this.allowedlevel) {
-          
-		  if (this.allowMultipleSelection && this.result.length > 0) {
-        let list: any = [];
-        list = this.selectednodes;
-			let selectedValue = list[list.length -1];			 
-          const filteredValue = this.result.filter((x) => (x.id === selectedValue.id));
-          if (filteredValue.length === 0) {
-            
-			this.result.push(selectedValue); 
+        if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value == this.allowedlevel) {
+
+          if (this.allowMultipleSelection && this.result.length > 0) {
+            let list: any = [];
+            list = this.selectednodes;
+            let selectedValue = list[list.length - 1];
+            const filteredValue = this.result.filter((x) => (x.id == selectedValue.id));
+            if (filteredValue.length == 0) {
+
+              this.result.push(selectedValue);
+            }
+
           }
-		 
-    }
-    else
-    {
-      this.result = this.selectednodes;
-    }
+          else {
+            this.result = this.selectednodes;
+          }
           if (this.isfromlookup) { this.isPanelOpen1 = false; }
 
           if (this.result && this.result.id > 0) {
             this.registerOnChangeFn(this.result);
           }
-		  else if(this.allowMultipleSelection && this.result.length > 0)
-			{
-			this.registerOnChangeFn(this.result);
-			}
+          else if (this.allowMultipleSelection && this.result.length > 0) {
+            this.registerOnChangeFn(this.result);
+          }
         }
         break;
       case EAction.REMOVE:
@@ -582,7 +572,7 @@ escapefromChild(){
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
       const l = this.orghLevel[i];
-      if (defaultlevelCode.toLowerCase() === l.shortCode.toLowerCase()) {
+      if (defaultlevelCode.toLowerCase() == l.shortCode.toLowerCase()) {
         this.defaultOrghLevel = l.value;
         break;
       }
@@ -594,7 +584,7 @@ escapefromChild(){
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
       const l = this.orghLevel[i];
-      if (allowedlevelCode.toLowerCase() === l.shortCode.toLowerCase()) {
+      if (allowedlevelCode.toLowerCase() == l.shortCode.toLowerCase()) {
         this.allowedlevel = l.value;
       }
     }
@@ -602,17 +592,18 @@ escapefromChild(){
     // this.effdatefilter = false;
     this.searchSpecificBranch = false;
   }
+
   searchClickFn = (event) => {
     switch (event) {
       case SEARCHEVENT.DEFAULTLEVEl:
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.orghLevel.length; i++) {
           const currentLevel = this.orghLevel[i].value;
-          if (currentLevel === this.defaultOrghLevel) {
+          if (currentLevel == this.defaultOrghLevel) {
             let allowedLevelValue = this.treeRequest.params.has('allowedlevel') ? this.treeRequest.params.get('allowedlevel') : 'DT';
             this.treeRequest.params = new HttpParams()
               .set('defaultlevel', this.orghLevel[i].shortCode)
-              .set('format', this.currentView === View.TREE ? 'ux' : 'list')
+              .set('format', this.currentView == View.TREE ? 'ux' : 'list')
               .set('allowedlevel', allowedLevelValue)
               .set('isfromlookup', 'true')
               .set('effdatefilter', 'false');
@@ -659,7 +650,7 @@ escapefromChild(){
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
-      if (this.defaultOrghLevel === this.orghLevel[i].value) {
+      if (this.defaultOrghLevel == this.orghLevel[i].value) {
         params = params.set('defaultlevel', this.orghLevel[i].shortCode);
         break;
       }
@@ -667,7 +658,7 @@ escapefromChild(){
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
-      if (this.allowedlevel === this.orghLevel[i].value) {
+      if (this.allowedlevel == this.orghLevel[i].value) {
         params = params.set('allowedlevel', this.orghLevel[i].shortCode);
         break;
       }
@@ -696,7 +687,7 @@ escapefromChild(){
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
-      if (this.allowedlevel === this.orghLevel[i].value) {
+      if (this.allowedlevel == this.orghLevel[i].value) {
         params = params.set('allowedlevel', this.orghLevel[i].shortCode);
         break;
       }
@@ -711,11 +702,10 @@ escapefromChild(){
   gridEventResponse = (ev) => {
     switch (ev.eventtype) {
       case EventType.CLICK:
-
-        if (this.defaultOrghLevel === this.allowedlevel && (getNodeLevelName(this.orghLevel, this.orghLevelSearch, 'level').value === this.allowedlevel && this.currentView === View.GRID)) {
+        if (this.defaultOrghLevel == this.allowedlevel && (getNodeLevelName(this.orghLevel, this.orghLevelSearch, 'level').value == this.allowedlevel && this.currentView == View.GRID)) {
           switch (this.lookupType) {
             case ELookupType.SINGLE:
-	    case ELookupType.MULTI:
+            case ELookupType.MULTI:
               const targetValue: Code = { shortCode: '', desc: '', id: -1, table: '' };
               if (ev.data !== undefined && ev.data.entityid >= 0) {
                 targetValue.id = ev.data.entityid as number;
@@ -750,7 +740,7 @@ escapefromChild(){
       if (this.isfromlookup) {
         if (this.allowMultipleSelection) {
           if (selected) {
-            this.selectednodes = (this.selectednodes === undefined) ? [] : this.selectednodes;
+            this.selectednodes = (this.selectednodes == undefined) ? [] : this.selectednodes;
             (this.selectednodes as Array<Code>).push(node);
           } else {
             if (this.selectednodes !== undefined) {
@@ -773,7 +763,7 @@ escapefromChild(){
     params = params.append('lookupstring', this.textSearch);
     params = params.append('stateid', (this.state !== undefined && this.state.id >= 0) ?
       this.state.id.toString() : '0');
-    if (this.currentSelectedNode && this.currentView === View.TREE) {
+    if (this.currentSelectedNode && this.currentView == View.TREE) {
       params = params.append('treenode', this.currentSelectedNode.code);
       params = params.append('nodeid', this.currentSelectedNode.id.toString());
     }
@@ -788,18 +778,17 @@ function getNodeLevelName(options, value, key = 'level') {
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < options.length; i++) {
         const opt = options[i];
-        if (opt.shortCode === value) {
+        if (opt.shortCode == value) {
           level = opt;
           break;
         }
       }
       break;
     case 'level':
-
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < options.length; i++) {
         const opt = options[i];
-        if (opt.value === value) {
+        if (opt.value == value) {
           level = opt;
           break;
         }

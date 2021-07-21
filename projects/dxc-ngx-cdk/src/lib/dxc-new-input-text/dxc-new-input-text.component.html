@@ -8,7 +8,7 @@
   <input
     role="combobox"
     (focus)="handleOnFocus($event)"
-    (focusout)="handleOnFocusOut($event)"
+    (focusout)="debouncedFocusOut($event)"
     (keydown)="handleOnKeyDown($event)"
     #inputRef
     type="text"

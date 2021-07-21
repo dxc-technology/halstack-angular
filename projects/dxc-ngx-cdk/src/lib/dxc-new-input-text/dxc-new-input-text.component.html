@@ -7,18 +7,18 @@
   <span *ngIf="prefix" class="inputPrefix">{{ prefix }}</span>
   <input
     role="combobox"
-    (focus)="handleOnFocus($event)"
-    (focusout)="debouncedFocusOut($event)"
+    (focus)="handleOnFocus()"
+    (focusout)="debouncedFocusOut()"
     (keydown)="handleOnKeyDown($event)"
+    (blur)="handleOnBlur($event)"
+    (input)="handleOnChange($event)"
     #inputRef
     type="text"
     class="inputText"
     [id]="random"
     [placeholder]="placeholder"
     [value]="value"
-    (input)="handleOnChange($event)"
     [name]="name"
-    (blur)="handleOnBlur($event)"
     [disabled]="disabled"
     autocomplete="off"
   />
@@ -38,7 +38,7 @@
   <button
     *ngIf="clearable"
     class="inputAction"
-    (click)="handleDefaultClearAction($event)"
+    (click)="handleDefaultClearAction()"
     [disabled]="disabled"
   >
     <svg

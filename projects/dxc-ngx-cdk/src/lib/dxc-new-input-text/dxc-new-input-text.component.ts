@@ -16,8 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { DxcNewInputTextService } from "./services/dxc-new-input-text.service";
 import { OnDestroy } from "@angular/core";
-import { DxcNewInputTextHelper } from './dxc-new-input-text.helper';
-
+import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
 
 @Component({
   selector: "dxc-new-input-text",
@@ -124,7 +123,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     private helper: DxcNewInputTextHelper
   ) {
     this.debouncedFocusOut = this.helper.debounced(
-      ($event) => this.handleOnFocusOut($event),
+      () => this.handleOnFocusOut(),
       200
     );
   }
@@ -135,12 +134,14 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit(): void {
     this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
     this.autoSuggestId = this.random + "-listBox";
-    this.className = `${this.helper.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.helper.getDynamicStyle(
+      this.defaultInputs.getValue()
+    )}`;
     if (this.value === undefined) {
       this.value = "";
-      this.controlled = true;
-    } else {
       this.controlled = false;
+    } else {
+      this.controlled = true;
     }
     this.service.setOptionsLength(this.autocompleteOptions.length);
     this.service.onFocused.subscribe((value) => {
@@ -167,25 +168,27 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.helper.getDynamicStyle(this.defaultInputs.getValue())}`;
+    this.className = `${this.helper.getDynamicStyle(
+      this.defaultInputs.getValue()
+    )}`;
   }
 
   handleOnChange(event) {
     this.onChange.emit(event.target.value);
     if (this.controlled) {
+      console.log("controlled cambios");
       event.target.value = this.value;
       this.cdRef.detectChanges();
     }
   }
 
-  handleDefaultClearAction(event) {
+  handleDefaultClearAction() {
     this.onChange.emit("");
     if (!this.controlled) {
       this.value = "";
       this.inputRef.nativeElement.value = this.value;
       this.cdRef.detectChanges();
     }
-    this.handleOnFocusOut(event);
   }
 
   handleActionOnClick(event) {
@@ -200,14 +203,14 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  handleOnFocus(event) {
+  handleOnFocus() {
     if (this.autocompleteOptions.length) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();
     }
   }
 
-  handleOnFocusOut(event) {
+  handleOnFocusOut() {
     if (this.autosuggestVisible) {
       this.service.onFocused.next(-1);
       this.autosuggestVisible = false;
@@ -216,13 +219,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnClickOption(event) {
-    this.value = event;
-    this.handleOnFocusOut(event);
-  }
-
-  handleEscapeKey(event){
-    this.handleOnFocusOut(event);
-    this.value = "";
+    this.onChange.emit("");
+    if (!this.controlled) {
+      this.value = event;
+      this.inputRef.nativeElement.value = this.value;
+      this.cdRef.detectChanges();
+    }
+    this.handleOnFocusOut();
   }
 
   handleOnKeyDown(event) {
@@ -230,17 +233,20 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       case "ArrowDown":
         event.preventDefault();
         this.service.onArrowDown();
+        this.handleOnFocus();
         break;
       case "ArrowUp":
         event.preventDefault();
         this.service.onArrowUp();
+        this.handleOnFocus();
         break;
       case "Enter":
         break;
       case "Escape":
-        this.handleEscapeKey(event)
+        event.preventDefault();
+        this.handleDefaultClearAction();
+        this.handleOnFocusOut();
         break;
     }
   }
-
 }

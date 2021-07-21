@@ -39,6 +39,9 @@ export class DxcNewInputTextService {
     else if(this.onFocused.value === 0){
       this.onFocused.next(this.optionsLength - 1);
     }
+    else if(this.onFocused.value < 0) {
+      this.onFocused.next(this.optionsLength - 1);
+    }
   }
 
   public onEnter(): void {

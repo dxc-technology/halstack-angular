@@ -185,6 +185,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       this.inputRef.nativeElement.value = this.value;
       this.cdRef.detectChanges();
     }
+    this.handleOnFocusOut(event);
   }
 
   handleActionOnClick(event) {
@@ -215,7 +216,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnClickOption(event) {
-    console.log(event);
+    this.value = event;
+    this.handleOnFocusOut(event);
+  }
+
+  handleEscapeKey(event){
+    this.handleOnFocusOut(event);
+    this.value = "";
   }
 
   handleOnKeyDown(event) {
@@ -231,10 +238,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       case "Enter":
         break;
       case "Escape":
-        this.handleOnFocusOut(event);
+        this.handleEscapeKey(event)
         break;
     }
   }
-
 
 }

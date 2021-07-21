@@ -179,10 +179,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   handleOnChange(event) {
     this.onChange.emit(event.target.value);
     if (this.controlled) {
-      console.log("controlled cambios");
       event.target.value = this.value;
       this.cdRef.detectChanges();
+    } else {
+      this.value = event.target.value;
+      this.cdRef.detectChanges();
     }
+    this.service.setSelectedIndex(-1);
   }
 
   handleDefaultClearAction() {
@@ -231,7 +234,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.handleOnFocusOut();
   }
 
-  handleEnterKey(){
+  handleEnterKey() {
     this.value = this.filteredOptions[this.selectedOption];
     this.handleOnFocusOut();
   }

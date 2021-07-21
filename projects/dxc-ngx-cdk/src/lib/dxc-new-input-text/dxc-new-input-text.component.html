@@ -72,13 +72,16 @@
     [id]="autoSuggestId"
   >
     <li
-      *ngFor="let item of autocompleteOptions | filterOptions: value; let i = index"
+      *ngFor="
+        let item of autocompleteOptions | filterOptions: value;
+        let i = index
+      "
       role="option"
       [ngClass]="{ selected: selectedOption === i }"
       (click)="handleOnClickOption(item)"
       [innerHtml]="item | boldOptions: value"
-    >
-    </li>
+    ></li>
+    <li *ngIf="filteredOptions.length === 0">No results found.</li>
   </ul>
 </div>
 

@@ -27,11 +27,17 @@ export class DxcNewInputTextService {
     if (this.onFocused.value < this.optionsLength - 1) {
       this.onFocused.next(this.onFocused.value + 1);
     }
+    else if(this.onFocused.value === this.optionsLength - 1){
+      this.onFocused.next(0);
+    }
   }
 
   public onArrowUp(): void {
     if (this.onFocused.value > 0) {
       this.onFocused.next(this.onFocused.value - 1);
+    }
+    else if(this.onFocused.value === 0){
+      this.onFocused.next(this.optionsLength - 1);
     }
   }
 

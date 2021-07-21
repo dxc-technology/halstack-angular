@@ -116,6 +116,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   selectedOption: number;
 
+  filteredOptions: Array<string>;
+
   constructor(
     private utils: CssUtils,
     private cdRef: ChangeDetectorRef,
@@ -143,7 +145,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.controlled = true;
     }
-    this.service.setOptionsLength(this.autocompleteOptions.length);
     this.service.onFocused.subscribe((value) => {
       this.selectedOption = value;
       if (
@@ -159,10 +160,12 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         });
       }
     });
+    this.service.filteredOptions.subscribe((filteredArray) => {
+      this.filteredOptions = filteredArray;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.service.setOptionsLength(this.autocompleteOptions.length);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -228,6 +231,11 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.handleOnFocusOut();
   }
 
+  handleEnterKey(){
+    this.value = this.filteredOptions[this.selectedOption];
+    this.handleOnFocusOut();
+  }
+
   handleOnKeyDown(event) {
     switch (event.key) {
       case "ArrowDown":
@@ -241,6 +249,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.handleOnFocus();
         break;
       case "Enter":
+        this.handleEnterKey();
         break;
       case "Escape":
         event.preventDefault();

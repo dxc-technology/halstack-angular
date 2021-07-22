@@ -125,7 +125,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     private helper: DxcNewInputTextHelper
   ) {
     this.debouncedFocusOut = this.helper.debounced(
-      () => this.handleOnFocusOut(),
+      () => this.handleEnterKey(),
       200
     );
   }
@@ -216,7 +216,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  handleOnFocusOut() {
+  handleOnClose() {
     if (this.autosuggestVisible) {
       this.service.onFocused.next(-1);
       this.autosuggestVisible = false;
@@ -225,18 +225,29 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnClickOption(event) {
-    this.onChange.emit("");
+    this.onChange.emit(event);
     if (!this.controlled) {
       this.value = event;
       this.inputRef.nativeElement.value = this.value;
       this.cdRef.detectChanges();
     }
-    this.handleOnFocusOut();
+    this.handleOnClose();
   }
 
   handleEnterKey() {
-    this.value = this.filteredOptions[this.selectedOption];
-    this.handleOnFocusOut();
+    if (this.selectedOption >= 0) {
+      this.onChange.emit(this.filteredOptions[this.selectedOption]);
+      if (!this.controlled) {
+        this.value = this.filteredOptions[this.selectedOption];
+        this.inputRef.nativeElement.value = this.value;
+        this.cdRef.detectChanges();
+      }
+    }
+    this.handleOnClose();
+  }
+
+  handleMouseDown(event) {
+    event.preventDefault();
   }
 
   handleOnKeyDown(event) {
@@ -257,7 +268,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       case "Escape":
         event.preventDefault();
         this.handleDefaultClearAction();
-        this.handleOnFocusOut();
+        this.handleOnClose();
         break;
     }
   }

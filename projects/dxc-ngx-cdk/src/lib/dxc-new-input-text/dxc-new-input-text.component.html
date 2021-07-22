@@ -36,7 +36,7 @@
     </svg>
   </span>
   <button
-    *ngIf="clearable"
+    *ngIf="clearable && !disabled"
     class="inputAction"
     (click)="handleDefaultClearAction()"
     [disabled]="disabled"
@@ -55,7 +55,7 @@
     </svg>
   </button>
   <button
-    *ngIf="hasAction()"
+    *ngIf="hasAction() && !disabled"
     class="inputAction"
     (click)="handleActionOnClick($event)"
     [disabled]="disabled"
@@ -78,7 +78,8 @@
       "
       role="option"
       [ngClass]="{ selected: selectedOption === i }"
-      (click)="handleOnClickOption(item)"
+      (mousedown)="handleMouseDown($event)"
+      (mouseup)="handleOnClickOption(item)"
       [innerHtml]="item | boldOptions: value"
     ></li>
     <li *ngIf="filteredOptions.length === 0">No results found.</li>

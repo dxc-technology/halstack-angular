@@ -67,6 +67,17 @@ export class DxcNewInputTextHelper{
       display: flex;
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
+
+      .overlay:not(.overlayVisible) {
+        display: none;
+      }
+      .overlay.overlayVisible {
+        display: block;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index
+      }
       .inputLabel, .inputOptionalLabel {
         color: var(--input-labelFontColor);
         font-family: var(--input-fontFamily);
@@ -247,7 +258,7 @@ export class DxcNewInputTextHelper{
         list-style: none;
         overflow: auto;
         overflow-x: hidden;
-        max-height: 12em;
+        max-height: 160px;
         li {
           font-family: var(--input-fontFamily);
           font-size: var(--input-inputFontSize);

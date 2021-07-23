@@ -162,7 +162,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
   columnsarray = [];
   editablefieldsArray = [];
   userName: string;
-  gridGlobalRequiredValidation : string;
+  gridGlobalRequiredValidation: string;
   topNode = [{
     name: 'Organization Hierarchy',
     text: 'Organization Hierarchy',
@@ -599,11 +599,11 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
             if (response || response == true || response.msgStatus.msgStatusCd === 'Success') {
               this.claimsForm.markAsPristine();
               this.claimsForm.markAsUntouched();
-
-              this.getData();
-              // if (selectedRowIndex > -1)
-              //   this.dataSource.data = data;
-              // else this.getData();
+              if (this.sourceRequest)
+                this.getData();
+              else if (selectedRowIndex > -1)
+                this.dataSource.data = data;
+              else this.getData();
 
               selectedRowIndex = -1;
               // After save Event Emitter
@@ -664,15 +664,15 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
       this.isEditForm = false;
     }
     this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight);
-    this.formControlUpdater.emit({ action: EAction.ONPANELCLOSE});
+    this.formControlUpdater.emit({ action: EAction.ONPANELCLOSE });
   }
-  
+
   editRow = (index, row) => {
     this.formControlUpdater.emit({ action: EAction.ONCUSTOMEDIT, data: row });
-   
+
   }
-  
-   moveUp(element) {
+
+  moveUp(element) {
     const index: number = this.dataSource.data.indexOf(element);
     if (index > 0) {
       this.move(index, index - 1);
@@ -688,13 +688,13 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     }
 
   }
-  
+
 
   expandRow = (index, row) => {
     if (this.isPopupVisible) {
       this.showPopup = true;
     }
-    
+
     this.isEditForm = true;
     if (this.dataNodeName === 'fieldlist') {
 
@@ -879,7 +879,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
         let filteredRecord = (dropdownFieldProp.options as Array<{ label: '', value: '', iconSrc: '' }>).filter(option => { return option.value == row[dropdownFieldProp.name] });
         this.expandedElement[col.name] = row[col.name];
         this.expandedElement[dropdownFieldProp.viewValue] = filteredRecord.length > 0 ? filteredRecord[0].label : '';
-        this.expandedElement[dropdownFieldProp.valueProperty] = row[dropdownFieldProp.valueProperty];
+        let selectedValue = dropdownFieldProp.multiple && filteredRecord.length > 0 ? filteredRecord : row[dropdownFieldProp.valueProperty];
+        this.expandedElement[dropdownFieldProp.valueProperty] = selectedValue;
       } else if (col.fieldType == EFieldsType.codeLookup || col.fieldType == EFieldsType.supplementalGrid) {
 
         if (row && Array.isArray(row[col.name])) {
@@ -984,7 +985,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     const data = this.dataSource.data;
     this.dataSource.data = [...data];
   }
-  
+
   addRowFields(col: any, crudFormModel: any) {
     if (col && col.name.toLowerCase() !== 'action') {
       if (col && col.name.toLowerCase() === this.uniqueIdentifier.toLowerCase()) {

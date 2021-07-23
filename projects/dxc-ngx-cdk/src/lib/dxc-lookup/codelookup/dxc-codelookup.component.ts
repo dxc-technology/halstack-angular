@@ -6,10 +6,11 @@ import { HttpParams } from '@angular/common/http';
 import { ELookupType, Mode, GridMode } from '../../models/lookup/lookup';
 import { ICodes } from '../../models/lookup/lookup.model';
 import { DxcBaselookupComponent } from '../baselookup/dxc-baselookup.component';
-//import { BaseComponent } from '../../basecomponent';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-
+import { LookupService } from '../../services/lookup/lookup.service';
+import { GridHelper } from '../../helpers/grid/helper';
+import { MessageService } from './../../services/toaster/message.service';
+import { GridService } from '../../services/grid/grid.service';
 
 @Component({
   selector: 'dxc-code-lookup',
@@ -21,8 +22,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     multi: true
   }]
 })
-//extends BaseComponent 
-export class DxcCodeLookupComponent implements
+export class DxcCodeLookupComponent extends DxcBaselookupComponent<ICodes | Array<ICodes>> implements
   ControlValueAccessor, OnInit, OnDestroy {
   resultValue: ICodes | Array<ICodes>;
   defaulttoolbar = true;
@@ -64,17 +64,22 @@ export class DxcCodeLookupComponent implements
 
   registerOnChangeFn = (val) => { this.result = val; };
   registerOnTouchFn = () => { };
-
-  constructor(private config: ConfigurationsetupService) {
-    //super();
+  configs: ConfigurationsetupService = null;
+  constructor(public config: ConfigurationsetupService,
+    public lookupService: LookupService,
+    public commonServiceEvent: GridHelper,
+    public messageService: MessageService,
+    public gridService: GridService) {
+    super(config, lookupService, commonServiceEvent, messageService, gridService);
+    this.configs = config;
   }
 
   ngOnChange() {
   }
 
   ngOnInit() {
-    if (this.config.configservice.Settings && this.config.configservice.Settings.typeaheadOthers) {
-      this.typeAheadLength = parseInt(this.config.configservice.Settings.typeaheadOthers);
+    if (this.configs.configservice.Settings && this.configs.configservice.Settings.typeaheadOthers) {
+      this.typeAheadLength = parseInt(this.configs.configservice.Settings.typeaheadOthers);
     }
 
     if (this.lookupType === ELookupType.SINGLE) {
@@ -109,7 +114,7 @@ export class DxcCodeLookupComponent implements
     this.disabled = boolV;
   }
 
-  lookupEvent = (action: EAction) => {
+  lookupEvents = (action: EAction) => {
     switch (action) {
       case EAction.ADD:
         this.registerOnChangeFn(this.result);

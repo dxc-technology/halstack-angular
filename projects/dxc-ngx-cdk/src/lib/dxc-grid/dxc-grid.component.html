@@ -10,13 +10,10 @@
                   (resultSet)="searchCall($event)" (searchEvent)="searchChange($event)">
                 </dxc-search>
               </div>
-              <div class="w-50">
-                <dxc-paginator *ngIf="allowPaging && displayPanel" [showDefaultCounter]="false" [showGoToPage]="false" [totalItems]="additionalParams.totalCount"
+              <div class="container">
+                <dxc-paginator *ngIf="allowPaging && displayPanel" [customDataOnPaging]="true" [showGoToPage]="false" [totalItems]="additionalParams.totalCount"
                   [itemsPerPage]="additionalParams.pageSize" [currentPage]="page"
-                  (nextFunction)="pagingCall($event,  pagingAction.Next)"
-                  (prevFunction)="pagingCall($event, pagingAction.Prev)"
-                  (firstFunction)="pagingCall($event,  pagingAction.First)"
-                  (lastFunction)="pagingCall($event,  pagingAction.Last)" [paginationActions]="paginationActions"
+                  (onGoToPage)="pagingCall($event)" [paginationActions]="paginationActions"
                   class="float-right pt-2">
                 </dxc-paginator>
 
@@ -83,7 +80,7 @@
             (columnResized)="onColumnResized($event)" (filterChanged)="onFilterChanged($event)"
             (sortChanged)="onSortChanged($event)" (filterModified)="onFilterModified($event);"
             [frameworkComponents]="frameworkComponents" [components]="components"
-            (selectionChanged)="onSelectionChanged($event)" [rowSelection]="rowSelection"
+            (selectionChanged)="onSelectionChanged($event)" [rowSelection]="rowSelectionType"
             [suppressRowClickSelection]="true" [defaultColDef]="defaultColDef"
             (firstDataRendered)="onFirstDataRendered($event)" [floatingFilter]="false">
           </ag-grid-angular>

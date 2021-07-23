@@ -6,6 +6,11 @@
   margin-bottom: 0px;
 }
 
+.leftMenuItem:focus-within .btn-link-list,
+.leftMenuItem:hover .btn-link-list, .highlightsection .btn-link-list{
+  box-shadow: 0 2px 0 0px var(--high-light-text-color) !important;
+}
+
 .highlightsection {
   font-size: 13px;
   border-left: 3px solid #499fea;

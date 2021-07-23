@@ -186,7 +186,11 @@ export class DxcOrghlookupSearchComponent implements OnInit {
   controlEvent = (controlName: string, value: any) => {
     switch (controlName.toLowerCase()) {
       case 'searchspecificbranch':
+        this.searchSpecificBranch = value;
         this.searchClick.emit(SEARCHEVENT.SPECIFICBRANCH);
+        break;
+      case 'effectivedate':
+        this.sChkFilter = value;
         break;
       case 'defaultorghlevel':
         this.defaultOrghLevel = value;
@@ -197,10 +201,25 @@ export class DxcOrghlookupSearchComponent implements OnInit {
         break;
     }
   }
+
+  textInputChange = (controlName: string, value: any) => {
+    switch (controlName.toLowerCase()) {
+      case 'textsearch':
+        this.textSearch = value;
+        break;
+      case 'orghcity':
+        this.orghCity = value;
+        break;
+      case 'orghzipcode':
+        this.orghZipCode = value;
+        break;
+    }
+  }
+
   SearchMain() {
     this.searchMainClick.emit();
   }
- 
+
   orghLevelSearchFn = (value) => {
     this.orghLevelSearch = value;
   }
@@ -218,7 +237,7 @@ export class DxcOrghlookupSearchComponent implements OnInit {
 
     for (let i = 0; i < this.orghLevel.length; i++) {
       const l = this.orghLevel[i];
-      if (defaultlevelCode.toLowerCase() === l.shortCode.toLowerCase()) {
+      if (defaultlevelCode.toLowerCase() == l.shortCode.toLowerCase()) {
         this.defaultOrghLevel = l.value;
         break;
       }
@@ -229,7 +248,7 @@ export class DxcOrghlookupSearchComponent implements OnInit {
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.orghLevel.length; i++) {
       const l = this.orghLevel[i];
-      if (allowedlevelCode.toLowerCase() === l.shortCode.toLowerCase()) {
+      if (allowedlevelCode.toLowerCase() == l.shortCode.toLowerCase()) {
         //this.allowedlevel = l.value;
       }
     }
@@ -237,6 +256,7 @@ export class DxcOrghlookupSearchComponent implements OnInit {
     // this.effdatefilter = false;
     //this.searchSpecificBranch = false;
   }
+
   @HostListener("document:keyup.esc")
   onkeyup() {
     this.escapeClose.emit();

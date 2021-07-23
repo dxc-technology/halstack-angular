@@ -107,7 +107,7 @@ export class DxcButtonComponent {
   setPadding(size) {
     if (size === "small") {
       return css`
-        padding: 11px 11px 6px;
+        padding: 11px;
         min-width: calc(100% - 22px);
       `;
     }
@@ -239,6 +239,7 @@ export class DxcButtonComponent {
       }
     `;
   }
+
   getSecondaryStyle() {
     return css`
       color: var(--button-secondaryFontColor);
@@ -271,6 +272,7 @@ export class DxcButtonComponent {
       }
     `;
   }
+
   getTextStyle() {
     return css`
       background-color: var(--button-textBackgroundColor);

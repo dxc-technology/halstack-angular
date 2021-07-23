@@ -1,8 +1,8 @@
-<dxc-baselookup [id]="gridId" [lookuptype]="lookupType" (lookupEvent)="lookupEvent($event)"
+<dxc-baselookup [id]="gridId" [lookuptype]="lookupType" (lookupEvent)="lookupEvents($event)"
   [customtoolbar]="true" [mode]="mode" [label]="label" [key]="key" [required]="required" [(result)]="result"
   [gridmode]="gridMode" [removeiconarialabel]="removeiconarialabel" [sourcerequest]="gridRequest" [gridstaterequest]="gridStateRequest"
   [defaulttoolbar]="lookupType === lookupTypeValues.SINGLE ? false : true" [enablequicklookup]="enableQuickLookup"
-  [quicklookuprequest]="quickLookupRequest" [setSelectionResult]="setResult" [disabled]="disabled" [node]="rowIdentity"
+  [quicklookuprequest]="quickLookupRequest" [setSelectionResult]="setResults" [disabled]="disabled" [node]="rowIdentity"
   [lookupGridEvent]="gridEventResponse" [resourcerequest]="resourceRequest" [displayfn]="displayFn" #baseLookup>
   <ng-container content="toolbar">
     <mat-tab-group animationDuration="900ms" class="hidden-tab-content tabs-holder" [(selectedIndex)]="selectedIndex"

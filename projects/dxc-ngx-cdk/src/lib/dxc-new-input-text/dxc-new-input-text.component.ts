@@ -21,7 +21,7 @@ import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
 @Component({
   selector: "dxc-new-input-text",
   templateUrl: "./dxc-new-input-text.component.html",
-  providers: [DxcNewInputTextService, DxcNewInputTextHelper],
+  providers: [DxcNewInputTextService, DxcNewInputTextHelper,CssUtils],
 })
 export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;

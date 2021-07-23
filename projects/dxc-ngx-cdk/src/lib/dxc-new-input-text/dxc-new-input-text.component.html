@@ -22,7 +22,7 @@
     [disabled]="disabled"
     autocomplete="off"
   />
-  <span *ngIf="error" class="inputErrorIcon">
+  <span *ngIf="error" class="inputErrorIcon" aria-label="Error">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -40,6 +40,7 @@
     class="inputAction"
     (click)="handleDefaultClearAction()"
     [disabled]="disabled"
+    aria-label="Clear"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -59,6 +60,7 @@
     class="inputAction"
     (click)="handleActionOnClick($event)"
     [disabled]="disabled"
+    aria-label="Action"
   >
     <!-- //TODO: Adding a directive or pipe filtering content is a svg tag-->
     <ng-content select="dxc-new-input-text-action"></ng-content>

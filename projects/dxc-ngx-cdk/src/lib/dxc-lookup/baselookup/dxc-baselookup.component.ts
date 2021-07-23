@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
 import { COMMA, ENTER, T } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent, MatAutocomplete, MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Observable, of, observable } from 'rxjs';
+import { Observable, of, observable, Subscription } from 'rxjs';
 import { map, startWith, debounceTime, distinctUntilChanged, switchMap, filter, catchError, finalize } from 'rxjs/operators';
 import { LookupService } from '../../services/lookup/lookup.service';
 import { EventType, RowSelectionType, IEventResponse } from '../../models/grid/grid.model';
@@ -58,8 +58,8 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   @Input('overridemodal') overrideModal = false;
   @Input('allowServerFilter') allowServerFilter: true;
   @Input() disabled = false;
-  @Input('displayfn') displayFn: (input: any) => '';
-  @Input('resultformatfn') resultFormatfn: (input: any) => T;
+  @Input('displayfn') displayFn: (input: T) => string;
+  @Input('resultformatfn') resultFormatfn: (input: T) => T;
   @Input() node = '';
   @Input('setSelectionResult') setSelectionResult: (input: any, result: any) => [{}];
   @Input('lookupGridEvent') lookupGridEvent: (input: any) => boolean;
@@ -107,8 +107,13 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   calcRight = undefined;
   calcBottom = undefined;
   showGrid = true;
-
-  constructor(private config: ConfigurationsetupService, private lookupService: LookupService, private commonServiceEvent: GridHelper, private messageService: MessageService, private gridService: GridService) {
+  showList: boolean = false;
+  panelClosingSubscribe: Subscription = null;
+  constructor(public config: ConfigurationsetupService,
+    public lookupService: LookupService,
+    public commonServiceEvent: GridHelper,
+    public messageService: MessageService,
+    public gridService: GridService) {
     console.log('this.type', this.lookupType);
   }
 
@@ -130,6 +135,8 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
       }
     }
     this.lookupEvent.emit(Action.ONLOAD);
+    this.showList = true;
+    this.lookupDisplayFn(this.result);
   }
 
   ngOnChanges() {
@@ -144,6 +151,8 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
 
   ngOnDestroy() {
     this.codeRequest = null;
+    if (this.panelClosingSubscribe)
+      this.panelClosingSubscribe.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -151,7 +160,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
       this.calcWidth();
     }
     if (this.searchInputAutoTrigger) {
-      this.searchInputAutoTrigger.panelClosingActions.subscribe(
+      this.panelClosingSubscribe = this.searchInputAutoTrigger.panelClosingActions.subscribe(
         (result) => {
           let selectedOption = undefined;
           if (this.searchInputAutoTrigger.activeOption && this.searchInputAutoTrigger.autocomplete) {
@@ -204,23 +213,21 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
 
   addColumn = (event) => {
 
-   const filteredValue = this.result.filter((x) => x.desc === this.lookupCtrl.value);
-            
+    const filteredValue = this.result.filter((x) => x.desc === this.lookupCtrl.value);
+
     if ((!filteredValue || filteredValue.length === 0) && this.lookupCtrl.value != '' && this.lookupCtrl.value != null) {
-      if(this.result.length < this.maximumColumns)
-		{
-		  this.result.push({ shortCode:'', desc: this.lookupCtrl.value });
-		}
-		
-		else
-		{
-			this.messageService.Error('You have reached the maximum allowable columns limit. No more columns can be added to the Grid');
-			
-		}
+      if (this.result.length < this.maximumColumns) {
+        this.result.push({ shortCode: '', desc: this.lookupCtrl.value });
+      }
+
+      else {
+        this.messageService.Error('You have reached the maximum allowable columns limit. No more columns can be added to the Grid');
+
+      }
 
     }
-	this.lookupCtrl.setValue(null);
-        this.lookupEvent.emit(Action.ADD);
+    this.lookupCtrl.setValue(null);
+    this.lookupEvent.emit(Action.ADD);
 
   }
 
@@ -284,7 +291,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
     let selectedOption: Array<T> | T = [];
     this.lookupType === ELookupType.MULTI ? selectedOption.push(event.option.value) : selectedOption = event.option.value;
     if (this.resultFormatfn) {
-      this.result = this.resultFormatfn(selectedOption);
+      this.result = this.resultFormatfn(selectedOption as T);
     } else {
       this.result = (selectedOption as T);
     }
@@ -308,6 +315,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
       this.displayValue = this.displayFn(item);
       return this.displayValue;
     }
+    return '';
   }
 
   resultLookupDisplayFn = (item: T) => {
@@ -416,32 +424,22 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
             val.forEach(element => {
 
               const filteredValue = this.resultValue.filter((x) => (x.id === element.id));
-                if (!filteredValue || filteredValue.length === 0) {
-                  this.resultValue.push(element);
-                  this.lookupDisplayFn(element);
-                }
-              
-
-             
-
+              if (!filteredValue || filteredValue.length === 0) {
+                this.resultValue.push(element);
+                this.lookupDisplayFn(element);
+              }
             });
-	    if (val.length === 0) {
+            if (val.length === 0) {
               this.resultValue = [];
             }
-
           } else {
             const filteredValue = this.resultValue.filter((x) => x.id === val.id);
-              if ((!filteredValue) || (filteredValue && filteredValue.length <= 0)) {
-				  
-	       if (val.id != undefined && val.id > 0) 
-	       {
+            if ((!filteredValue) || (filteredValue && filteredValue.length <= 0)) {
+              if (val.id != undefined && val.id > 0) {
                 this.resultValue.push(val);
                 this.lookupDisplayFn(val);
-	       }
               }
-           
-
-            
+            }
           }
           break;
         default:
@@ -461,7 +459,6 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
         if (value.length >= this.typeAheadLength) {
           return this._filter(value);
         } else {
-
           this.filteredOptions = new Observable<T[]>();
           setTimeout(() => {
             this.filteredOptions = this.filterFn;

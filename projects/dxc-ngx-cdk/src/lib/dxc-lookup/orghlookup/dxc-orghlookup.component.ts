@@ -5,12 +5,17 @@ import { HttpParams } from '@angular/common/http';
 import { ICodes } from './../../models/lookup/lookup.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //import { BaseComponent } from './../../basecomponent';
+import { DxcBaselookupComponent } from '../baselookup/dxc-baselookup.component';
 import { IRequest, EAction, EMethod, OrghEntity } from './../../models/startup/configuration.model';
 import { TreeNode } from '../../dxc-tree/dxc-tree.interface';
 import { Component, OnInit, Input, forwardRef, Output, EventEmitter, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { ELookupType, Mode, GridMode, EUserLookupOptions, Code } from '../../models/lookup/lookup';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SEARCHEVENT } from './orghlookup-search/dxc-orghlookup-search.component';
+import { LookupService } from '../../services/lookup/lookup.service';
+import { GridHelper } from '../../helpers/grid/helper';
+import { GridService } from '../../services/grid/grid.service';
+import { ConfigurationsetupService } from './../../services/startup/configurationsetup.service';
 
 enum View {
   GRID,
@@ -71,8 +76,7 @@ const orghLevel: Array<OrghEntity> = [
     multi: true
   }]
 })
-//extends BaseComponent
-export class DxcOrghlookupComponent
+export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<Code>>
   implements ControlValueAccessor, OnInit, OnChanges {
 
 
@@ -230,9 +234,14 @@ export class DxcOrghlookupComponent
   treeData: any;
   errorText = '';
 
-  constructor(private helper: DxcOrghlookupService, private messageService: MessageService) {
-    // super();
-  }
+  constructor(public helper: DxcOrghlookupService, 
+     public config: ConfigurationsetupService,
+     public lookupService: LookupService, 
+     public commonServiceEvent: GridHelper, 
+     public messageService: MessageService, 
+     public gridService: GridService) {
+      super(config, lookupService, commonServiceEvent, messageService, gridService);
+    }
 
   ngOnInit() {
     this.topNode = [{
@@ -265,7 +274,7 @@ export class DxcOrghlookupComponent
 
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
   }
 
   closePopup() {
@@ -317,7 +326,7 @@ export class DxcOrghlookupComponent
 
   }
 
-  lookupEvent = (value) => {
+  lookupEvents = (value):void  => {
     switch (value) {
       case EAction.ADD:
         if (this.allowMultipleSelection) {
@@ -415,7 +424,7 @@ export class DxcOrghlookupComponent
     }
   }
 
-  resultFormatfn = (code: any) => {
+  resultFormatfns = (code: any) => {
     let result: ICodes = { id: 0, shortCode: '', desc: '' };
     switch (this.lookupType) {
       case ELookupType.SINGLE:

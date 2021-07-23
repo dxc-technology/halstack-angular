@@ -27,6 +27,10 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import * as XLSX from 'xlsx';
+import { DxcBaselookupComponent } from '../dxc-lookup/baselookup/dxc-baselookup.component';
+import { ICodes } from '../models/lookup/lookup.model';
+import { MessageService } from './../services/toaster/message.service';
+import { LookupService } from '../services/lookup/lookup.service';
 //import { BaseComponent } from '../basecomponent';
 import { delay, filter } from 'rxjs/operators';
 @Component({
@@ -35,8 +39,7 @@ import { delay, filter } from 'rxjs/operators';
   styleUrls: ['./dxc-grid.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-//extends BaseComponent
-export class GridComponent implements AfterViewInit, OnDestroy {
+export class GridComponent extends DxcBaselookupComponent<any> implements AfterViewInit, OnDestroy {
   @ViewChild('assuregrid', { read: ElementRef, static: false }) field: ElementRef;
   @ViewChild('searchcomp', { static: false }) searchComp: DxcSearchComponent;
 
@@ -86,7 +89,7 @@ export class GridComponent implements AfterViewInit, OnDestroy {
   @Input('serversidesort') allowServerSideSort = false;
   @Input('clientsidesort') allowClientSideSort = false;
   @Input('allowrowselection') allowRowSelection = false;
-  @Input('rowselection') rowSelection = RowSelectionType.SINGLE;
+  @Input('rowselection') rowSelectionType = RowSelectionType.SINGLE;
   @Input('width') width = 0;
   @Input('label') label = '';
   @Input('sharedparameter') sharedParameter = '';
@@ -94,14 +97,15 @@ export class GridComponent implements AfterViewInit, OnDestroy {
   // tslint:disable-next-line: no-output-rename
   @Output('gridEvent') gridEvent: EventEmitter<IEventResponse> = new EventEmitter<IEventResponse>();
   inputValue = '';
-
   constructor(
-    private gridService: GridService,
-    private commonServiceEvent: GridHelper,
-    private resizeService: DxcResizeService,
-    private config: ConfigurationsetupService,
-    private changeDetecorRef: ChangeDetectorRef) {
-    //super();
+    public gridService: GridService,
+    public commonServiceEvent: GridHelper,
+    public resizeService: DxcResizeService,
+    public config: ConfigurationsetupService,
+    public changeDetecorRef: ChangeDetectorRef,
+    public messageService: MessageService,
+    public lookupService: LookupService) {
+    super(config, lookupService, commonServiceEvent, messageService, gridService);
   }
 
   ngOnInit() {
@@ -141,7 +145,7 @@ export class GridComponent implements AfterViewInit, OnDestroy {
     if (this.allowRowSelection) {
       this.defaultColDef.checkboxSelection = isFirstColumn;
     };
-    if (this.allowRowSelection && this.rowSelection == RowSelectionType.MULTI) {
+    if (this.allowRowSelection && this.rowSelectionType == RowSelectionType.MULTI) {
       this.defaultColDef.headerCheckboxSelection = isFirstColumn;
     };
 
@@ -356,22 +360,23 @@ export class GridComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  pagingCall = (pageNumber: number, action: PagingAction) => {
+  pagingCall = ($event) => {
+    let action = $event.eventHandler;
     let recordFetchLink: IRequest = {
       url: '',
       methodtype: EMethod.GET
     }
-    switch (action) {
-      case this.pagingAction.First:
+    switch (action.toLowerCase()) {
+      case 'first':
         recordFetchLink.url = this.links.first.href;
         break;
-      case this.pagingAction.Next:
+      case 'next':
         recordFetchLink.url = this.links.next.href;
         break;
-      case this.pagingAction.Prev:
+      case 'prev':
         recordFetchLink.url = this.links.prev.href;
         break;
-      case this.pagingAction.Last:
+      case 'last':
         recordFetchLink.url = this.links.last.href;
         break;
       default:
@@ -383,8 +388,8 @@ export class GridComponent implements AfterViewInit, OnDestroy {
     }
 
 
-    this.page = pageNumber;
-    this.nextRecord(recordFetchLink, pageNumber);
+    this.page = $event.pageNumber;
+    this.nextRecord(recordFetchLink, $event.pageNumber);
   }
 
   searchCall = (searchCriteria: Array<IFilter>) => {

@@ -64,7 +64,7 @@ export class DxcPaginatorComponent implements OnInit {
 
   @Input() public itemsPerPageOptions: number[];
   @Input() public showGoToPage: boolean = false;
-  @Input() public showDefaultCounter: boolean = true;
+  @Input() public customDataOnPaging: boolean = true;
   @Output() onGoToPage: EventEmitter<any> = new EventEmitter<any>();
   @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
 
@@ -133,19 +133,35 @@ export class DxcPaginatorComponent implements OnInit {
   }
 
   public onFirstHandler($event: any): void {
-    this.onGoToPage.emit(1);
+    let params: any = 1;
+    if (this.customDataOnPaging) {
+      params = { 'pageNumber': 1, 'eventHandler': 'First' }
+    }
+    this.onGoToPage.emit(params);
   }
 
   public onNextHandler($event: any): void {
-    this.onGoToPage.emit(+this.currentPage + 1);
+    let params: any = +this.currentPage + 1;
+    if (this.customDataOnPaging) {
+      params = { 'pageNumber': +this.currentPage + 1, 'eventHandler': 'Next' }
+    }
+    this.onGoToPage.emit(params);
   }
 
   public onPrevHandler($event: any): void {
-    this.onGoToPage.emit(+this.currentPage - 1);
+    let params: any = +this.currentPage - 1;
+    if (this.customDataOnPaging) {
+      params = { 'pageNumber': +this.currentPage - 1, 'eventHandler': 'Prev' }
+    }
+    this.onGoToPage.emit(params);
   }
 
   public onLastHandler($event: any): void {
-    this.onGoToPage.emit(this.totalPages);
+    let params: any = this.totalPages;
+    if (this.customDataOnPaging) {
+      params = { 'pageNumber': this.totalPages, 'eventHandler': 'Last' }
+    }
+    this.onGoToPage.emit(params);
   }
 
   public onItemsPerPageHandler($event: any): void {

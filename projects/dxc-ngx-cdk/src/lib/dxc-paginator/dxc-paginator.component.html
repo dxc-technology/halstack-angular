@@ -17,7 +17,7 @@
       </dxc-select>
     </span>
 
-    <span class="total-items-container" *ngIf="showDefaultCounter">
+    <span class="total-items-container">
       {{ minItemsPerPage }} to {{ maxItemsPerPage }} of {{ totalItems }}
     </span>
 
@@ -41,7 +41,7 @@
       [disabled]="currentPageInternal === 1"
       [tabIndexValue]="tabIndexValue"
     ></dxc-button>
-    <span *ngIf="!showGoToPage"> Page: {{ currentPageInternal }} of {{ totalPages }} </span>
+    <span class="text-nowrap" *ngIf="!showGoToPage"> Page: {{ currentPageInternal }} of {{ totalPages }} </span>
     <span *ngIf="showGoToPage" class="go-to-page">
       <span>Go to page</span>
       <dxc-select

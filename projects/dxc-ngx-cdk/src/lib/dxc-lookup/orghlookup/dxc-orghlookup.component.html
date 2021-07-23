@@ -1,8 +1,8 @@
-<dxc-baselookup [id]="id" [lookuptype]="lookupType" (lookupEvent)="lookupEvent($event)"
+<dxc-baselookup [id]="id" [lookuptype]="lookupType" (lookupEvent)="lookupEvents($event)"
   [customtoolbar]="true" [defaulttoolbar]="false" [custompanel]="true" [mode]="mode" [label]="label" [key]="key"
   [required]="required" [(result)]="result" [gridmode]="gridMode" [sourcerequest]="lisRequest" [overridemodal]="true"
   [resourcerequest]="resourceRequest" [displayfn]="displayFn" [removeiconarialabel]="removeiconarialabel"
-  [resultformatfn]="resultFormatfn" node="orgHierarchy" [disabled]="disabled" #appFoo>
+  [resultformatfn]="resultFormatfns" node="orgHierarchy" [disabled]="disabled" #appFoo>
 </dxc-baselookup>
 <dxc-dialog #activationdialog arialabelledby="lblOrgDialogHeader" *ngIf="isPanelOpen1" isCloseVisible="true"
   (onCloseClick)="closePopup()">

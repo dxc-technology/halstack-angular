@@ -6,8 +6,12 @@ import { HttpParams } from '@angular/common/http';
 import { ELookupType, Mode, GridMode } from '../../models/lookup/lookup';
 import { DxcBaselookupComponent } from '../baselookup/dxc-baselookup.component';
 //import { BaseComponent } from '../../basecomponent';
+import { ICodes } from '../../models/lookup/lookup.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
+import { LookupService } from '../../services/lookup/lookup.service';
+import { GridHelper } from '../../helpers/grid/helper';
+import { MessageService } from './../../services/toaster/message.service';
+import { GridService } from '../../services/grid/grid.service';
 
 
 @Component({
@@ -20,8 +24,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     multi: true
   }]
 })
-//extends BaseComponent 
-export class DxcCrudLookupComponent implements
+export class DxcCrudLookupComponent extends DxcBaselookupComponent<ICodes | Array<ICodes>> implements
   ControlValueAccessor, OnInit, OnDestroy {
   resultValue: any | Array<any>;
   defaulttoolbar = true;
@@ -64,9 +67,13 @@ export class DxcCrudLookupComponent implements
   registerOnChangeFn = (val) => { this.result = val; };
   registerOnTouchFn = () => { };
 
-  constructor(private config: ConfigurationsetupService) {
-    //super();
-  }
+  constructor(public config: ConfigurationsetupService,
+    public lookupService: LookupService, 
+    public commonServiceEvent: GridHelper, 
+    public messageService: MessageService, 
+    public gridService: GridService) {
+      super(config, lookupService, commonServiceEvent, messageService, gridService);
+    }
 
   ngOnChange() {
   }
@@ -101,7 +108,7 @@ export class DxcCrudLookupComponent implements
     this.disabled = boolV;
   }
 
-  lookupEvent = (action: EAction) => {
+  lookupEvents = (action: EAction) => {
     switch (action) {
       case EAction.ADD:
         this.registerOnChangeFn(this.result);

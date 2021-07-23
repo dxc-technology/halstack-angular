@@ -12,6 +12,8 @@ import { LookupService } from '../../services/lookup/lookup.service';
 import { Observable } from 'rxjs';
 import { MessageService } from './../../services/toaster/message.service';
 import { Action } from 'rxjs/internal/scheduler/Action';
+import { GridService } from '../../services/grid/grid.service';
+import { ConfigurationsetupService } from './../../services/startup/configurationsetup.service';
 
 @Component({
   selector: 'dxc-user-lookup',
@@ -25,10 +27,9 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 
   }]
 })
-//extends BaseComponent 
-export class DxcUserLookupComponent implements ControlValueAccessor {
+export class DxcUserLookupComponent extends DxcBaselookupComponent<IUsers | Array<IUsers>> implements ControlValueAccessor {
 
-  @ViewChild('baseLookup', { static: false }) baseLookup: DxcBaselookupComponent<IUsers | Array<IUsers>>;;
+  @ViewChild('baseLookup', { static: false }) baseLookup: DxcBaselookupComponent<IUsers | Array<IUsers>>;
 
   @Input('id') id: string;
   @Input('lookuptype') lookupType: ELookupType = ELookupType.MULTI;
@@ -74,10 +75,15 @@ export class DxcUserLookupComponent implements ControlValueAccessor {
   resources: any;
   quickLookupRequest: IRequest;
   enableQuickLookup: boolean = false;
-  constructor(private commonServiceEvent: GridHelper, private lookupService: LookupService, private messageService: MessageService) {
-    //super();
-  }
 
+  constructor(
+     public config: ConfigurationsetupService,
+     public lookupService: LookupService,
+     public commonServiceEvent: GridHelper,
+     public messageService: MessageService,
+     public gridService: GridService) {
+    super(config, lookupService, commonServiceEvent, messageService, gridService);
+  }
   ngOnInit() {
     this.UpdateLookupOptions();
     this.GetLookupResources();
@@ -86,7 +92,7 @@ export class DxcUserLookupComponent implements ControlValueAccessor {
   registerOnChangeFn = (value) => { };
   registerOnTouchFn = () => { };
 
-  lookupEvent = (value) => {
+  lookupEvents = (value) => {
     switch (value) {
       case EAction.ADD:
         this.registerOnChangeFn(this.result);
@@ -201,7 +207,7 @@ export class DxcUserLookupComponent implements ControlValueAccessor {
     }
   }
 
-  setResult = (val, baseResult) => {
+  setResults = (val, baseResult) => {
     var resultValues = [];
     switch (this.lookupType) {
       case ELookupType.MULTI:
@@ -223,7 +229,7 @@ export class DxcUserLookupComponent implements ControlValueAccessor {
         }
         break;
       default:
-        resultValues = val != null && val.id > 0 ? val : { id: 0, groupId:0, name:''};
+        resultValues = val != null && val.id > 0 ? val : { id: 0, groupId: 0, name: '' };
         break;
     }
     return resultValues;

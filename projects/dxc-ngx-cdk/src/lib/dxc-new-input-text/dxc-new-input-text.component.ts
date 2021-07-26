@@ -119,7 +119,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   filteredOptions: Array<string>;
 
   constructor(
-    private utils: CssUtils,
     private cdRef: ChangeDetectorRef,
     private service: DxcNewInputTextService,
     private helper: DxcNewInputTextHelper
@@ -139,6 +138,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.className = `${this.helper.getDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
+
     if (this.value === undefined) {
       this.value = "";
       this.controlled = false;
@@ -178,23 +178,14 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnChange(event) {
     this.onChange.emit(event.target.value);
-    if (this.controlled) {
-      event.target.value = this.value;
-      this.cdRef.detectChanges();
-    } else {
-      this.value = event.target.value;
-      this.cdRef.detectChanges();
-    }
+    this.controlled ? event.target.value = this.value : this.value = event.target.value;
+    this.cdRef.detectChanges();
     this.service.setSelectedIndex(-1);
   }
 
   handleDefaultClearAction() {
     this.onChange.emit("");
-    if (!this.controlled) {
-      this.value = "";
-      this.inputRef.nativeElement.value = this.value;
-      this.cdRef.detectChanges();
-    }
+    this.handleInternalValue({value: "", nativeValue: this.value });
   }
 
   handleActionOnClick(event) {
@@ -203,6 +194,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnBlur(event) {
     this.onBlur.emit(event.target.value);
+    this.handleInternalValue({value: event.target.value, nativeValue: null });
     if (!this.controlled) {
       this.value = event.target.value;
       this.cdRef.detectChanges();
@@ -226,22 +218,14 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnClickOption(event) {
     this.onChange.emit(event);
-    if (!this.controlled) {
-      this.value = event;
-      this.inputRef.nativeElement.value = this.value;
-      this.cdRef.detectChanges();
-    }
+    this.handleInternalValue({value: event, nativeValue: this.value});
     this.handleOnClose();
   }
 
   handleEnterKey() {
     if (this.selectedOption >= 0) {
       this.onChange.emit(this.filteredOptions[this.selectedOption]);
-      if (!this.controlled) {
-        this.value = this.filteredOptions[this.selectedOption];
-        this.inputRef.nativeElement.value = this.value;
-        this.cdRef.detectChanges();
-      }
+      this.handleInternalValue({value: this.filteredOptions[this.selectedOption], nativeValue: this.value});
     }
     this.handleOnClose();
   }
@@ -270,6 +254,17 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.handleDefaultClearAction();
         this.handleOnClose();
         break;
+    }
+  }
+
+
+  private handleInternalValue({value, nativeValue}){
+    if (!this.controlled) {
+      this.value = value;
+      if (nativeValue){
+        this.inputRef.nativeElement.value = nativeValue;
+      }
+      this.cdRef.detectChanges();
     }
   }
 }

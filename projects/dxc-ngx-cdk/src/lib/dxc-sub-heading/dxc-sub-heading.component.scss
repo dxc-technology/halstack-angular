@@ -2,8 +2,8 @@
     font-size: 2rem;
     color: #6f2c91;
   }
-  .codrelhdrbg{
-    background: #d9d9d9;
+  .sub-header-bg{
+    background: var(--code-header-bg_color) !important;
   }  
   .codeRelMaparrow .mat-icon {
     position: relative;

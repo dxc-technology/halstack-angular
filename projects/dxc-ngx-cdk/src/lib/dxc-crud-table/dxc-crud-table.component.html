@@ -153,7 +153,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" [attr.aria-required]="{{editField.required}}"
+                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" attr.aria-required="{{editField.required}}"
                         aria-labelledby="cl_{{editField.name}}" sizes="fitContent" margin="small"
                         [attr.aria-disabled]="editField.disabled" [disabled]="editField.disabled"
                         formControlName="{{editField.name}}" [multiple]="editField.multiple"

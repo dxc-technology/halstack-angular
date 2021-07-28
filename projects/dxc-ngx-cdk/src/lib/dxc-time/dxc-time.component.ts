@@ -14,7 +14,10 @@ import { Component, OnInit, Input, forwardRef, Output, EventEmitter } from '@ang
 export class DxcTimeComponent implements OnInit, ControlValueAccessor {
   @Input() disabled = false;
   @Output() defaultTimeChange = new EventEmitter<string>();
-  @Input() arialabel = "";
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Input() iconarialabel = "";
   @Input()
   get format() {

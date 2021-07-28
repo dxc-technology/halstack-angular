@@ -16,6 +16,10 @@
   [mdePopoverOffsetX]="popOverOffsetX"
   [mdePopoverPositionX]="'before'"
   [disabled]="disabled"
+  [ariaLabel]="ariaLabel"
+  [ariaLabelledBy]="ariaLabelledBy"
+  [ariaDescribedBy]="ariaDescribedBy"
+  [ariaRequired]="ariaRequired"
   [tabIndexValue]="disabled ? -1 : tabIndexValue"
 >
   <dxc-input-suffix-icon (onClickSuffix)="openCalendar()" [tabIndexValue]="disabled ? -1 : tabIndexValue">

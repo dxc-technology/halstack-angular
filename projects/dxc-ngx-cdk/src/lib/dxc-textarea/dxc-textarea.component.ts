@@ -40,7 +40,10 @@ implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
   @Input() public textareaAutosize = true;
 
   @Input() public maxLength: number;
-  @Input() public arialabelledby: string;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Input() public label: String;
   @Input() public assistiveText: string;
   @Input() public name: string;

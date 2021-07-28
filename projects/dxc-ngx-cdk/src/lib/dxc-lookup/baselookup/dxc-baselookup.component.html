@@ -1,11 +1,11 @@
 <!-- <button mat-raised-button color="primary" (click)="open()">Primary</button> -->
-<mat-form-field [attr.tabindex]="disabled ? -1 : 0" class="example-chip-list" [attr.aria-label]="label" #lookupformfield
+<mat-form-field [attr.tabindex]="disabled ? -1 : 0" class="example-chip-list" role="list" [attr.aria-label]="ariaLabel || label" [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy" [attr.aria-required]="ariaRequired" #lookupformfield
   [class.disabled]="disabled">
   <ng-container *ngIf="lookupType === lookupTypeValues.MULTI">
     <div id="multichips">
       <mat-chip-list *ngIf="showList" disabled="{{disabled ? true : false}}" id="multichips" #chipList [attr.aria-label]="label">
-        <mat-chip *ngFor="let item of result" [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
-          <span [attr.tabindex]="disabled ? -1 : 0" role=""
+        <mat-chip *ngFor="let item of result" [selectable]="selectable" [removable]="removable" matTooltip="{{lookupDisplayFn(item)}}" (removed)="remove(item)" class="chip-w-80">
+          <span class="text-ellipsis" [attr.tabindex]="disabled ? -1 : 0" role=""
             [attr.aria-label]="removeiconarialabel + ', ' + lookupDisplayFn(item)">
             {{lookupDisplayFn(item)}}</span>
           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
@@ -15,11 +15,11 @@
   </ng-container>
   <ng-container *ngIf="lookupType === lookupTypeValues.SINGLE">
     <mat-chip-list disabled="{{disabled ? true : false}}" #chipList [attr.aria-label]="label">
-      <mat-chip *ngIf="showList && displayValue != ''"  [style.width.px]="chipwidth" [style.display]="'block'"
+      <mat-chip *ngIf="showList && displayValue != ''"  [style.width.px]="chipwidth" [style.display]="'block'" matTooltip="{{lookupDisplayFn(result)}}"
         [selectable]="selectable" [removable]="removable"
         (removed)="remove(result)" (mouseenter)="chipmouseEnter()" (focus)="chipmouseEnter()"
         (mouseleave)="chipmouseLeave()" >
-        <span [attr.tabindex]="disabled ? -1 : 0"
+        <span class="text-ellipsis" [attr.tabindex]="disabled ? -1 : 0"
           [attr.aria-label]="removeiconarialabel + ', ' + lookupDisplayFn(result)" class="w-75 float-left">
           <label class="text-truncate">
             {{lookupDisplayFn(result)}}
@@ -82,8 +82,8 @@
 
 <ng-template #estimateTemplate>
   <input [attr.id]="'lookupinput_'+id" [name]="id" matInput [class.disabled]="disabled" *ngIf="!hideTemplateBox" focus="true" placeholder="Search"
-    [attr.aria-label]="label" #searchInput [formControl]="lookupCtrl" #input="matAutocompleteTrigger"
-    [matAutocomplete]="auto" class="mat-input-element" [disabled]="disabled" />
+      #searchInput [formControl]="lookupCtrl" #input="matAutocompleteTrigger"
+    [matAutocomplete]="auto" class="mat-input-element"  [disabled]="disabled" />
   <!-- <span title="Search" value="?" type="submit" class="button" (click)="openPanelList($event)" style="right: 0;
       float: right;
       position: absolute;">
@@ -117,10 +117,10 @@
     <ng-container *ngSwitchCase="lookupModeValues.GRID">
       <div class="lookup-mode-container px-1">
         <input [attr.id]="'lookupinput_'+id" [name]="id" matInput focus="true" [class.disabled]="disabled" placeholder="Search"
-          [attr.aria-label]="label" #searchInput [formControl]="lookupCtrl" #input="matAutocompleteTrigger"
+          #searchInput [formControl]="lookupCtrl" #input="matAutocompleteTrigger"
           [matAutocomplete]="auto" class="mat-input-element" [disabled]="disabled">
         <div class="addcolumn-icon" *ngIf="addrequired" [attr.tabindex]="disabled ? -1 : 0" [class.disabled]="disabled"
-          role="button" aria-haspopup="true" [attr.aria-label]="label" (keyup.enter)="addColumn($event)"
+          role="button" aria-haspopup="true"[attr.aria-label]="ariaLabel || label" (keyup.enter)="addColumn($event)"
           (click)="addColumn($event)" [attr.disabled]="disabled">
           <mat-icon>add</mat-icon>
         </div>
@@ -142,7 +142,7 @@
 
 <ng-template #estimateMultiTemplate>
   <div style="display: flex; margin-top: -20px; border-bottom: .001em solid;">
-    <input [attr.id]="'lookupinput_'+id" [name]="id" matInput focus="true" [class.disabled]="disabled" placeholder="Search" [attr.aria-label]="label"
+    <input [attr.id]="'lookupinput_'+id" [name]="id" matInput focus="true" [class.disabled]="disabled" placeholder="Search"  
       #searchInput [formControl]="lookupCtrl" #input="matAutocompleteTrigger" [matAutocomplete]="auto"
       class="mat-input-element" [disabled]="disabled">
     <!-- <span title="Search" value="?" type="submit" class="button" (click)="openPanelList($event)" style="right: 0;">
@@ -195,7 +195,7 @@
     </dxc-grid>
   </div>
 </ng-template>
-<dxc-dialog #activationdialog arialabelledby="lblBaseLookupDialogHeader"
+<dxc-dialog #activationdialog ariaLabelledBy="lblBaseLookupDialogHeader"
   *ngIf="!overrideModal && isPanelOpen && gridMode === gridModeValues.MODAl" isCloseVisible="true"
   (onCloseClick)="isPanelOpen = !isPanelOpen">
   <div class="p-0">

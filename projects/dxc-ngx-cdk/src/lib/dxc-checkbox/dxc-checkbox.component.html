@@ -8,7 +8,9 @@
   [name]="name"
   [id]="id"
   (change)="onValueChange($event)"
-  [aria-labelledby]="ariaLabelledBy"
+  [aria-label]="ariaLabel || label"
+  [aria-labelledby]="ariaLabelledBy" 
+  [aria-describedby]="ariaDescribedBy"
   data-testid="dxcCheckbox"
   [tabIndex]="disabled ? -1 : tabIndexValue"
 >

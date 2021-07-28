@@ -5,6 +5,10 @@ import {
   HostBinding,
   EventEmitter,
   SimpleChanges,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  AfterViewInit
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -16,7 +20,19 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
   templateUrl: "./dxc-dialog.component.html",
   providers: [CssUtils],
 })
-export class DxcDialogComponent {
+export class DxcDialogComponent implements AfterViewInit {
+  @ViewChild('dialogboxstart', { read: ElementRef, static: false }) dialogboxstart: ElementRef;
+  @ViewChild('dialogboxreturn', { read: ElementRef, static: false }) dialogboxreturn: ElementRef;
+  @ViewChild('dialogboxend', { read: ElementRef, static: false }) dialogboxend: ElementRef;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @HostListener('keydown.escape')
+  escape() {
+    this.onCloseHandler(true);
+  }
+
+  @Input() closeButtonLabel: string = 'Close'
   @Input()
   get overlay(): boolean {
     return this._overlay;
@@ -54,7 +70,7 @@ export class DxcDialogComponent {
     tabIndexValue: 0
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils) { }
 
   public ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
@@ -76,6 +92,30 @@ export class DxcDialogComponent {
 
   public onBackgroundClickHandler($event: any): void {
     this.onBackgroundClick.emit($event);
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.dialogboxstart.nativeElement.focus();
+    }, 1);
+  }
+
+  startKeyPress($event: any) {
+    if ($event.shiftKey && $event.keyCode == 9 && $event.srcElement == this.dialogboxstart.nativeElement) {
+      if (this.dialogboxreturn.nativeElement.focus) {
+        this.dialogboxreturn.nativeElement.tabindex = "0";
+        this.dialogboxreturn.nativeElement.focus();
+      }
+    }
+  }
+
+  endFocus($event: any) {
+    if (this.dialogboxstart.nativeElement.focus)
+      this.dialogboxstart.nativeElement.focus();
+  }
+
+  returnFocusOut($event: any) {
+    this.dialogboxreturn.nativeElement.tabindex = "-1";
   }
 
   private overlayStyle(overlay: boolean) {
@@ -122,10 +162,10 @@ export class DxcDialogComponent {
             max-width: 80%;
             min-width: 800px;
             ${inputs.isCloseVisible
-              ? css`
+        ? css`
                   min-height: 72px;
                 `
-              : css``}
+        : css``}
             box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
             ${this.utils.getPaddings(inputs.padding)}
             display: flex;

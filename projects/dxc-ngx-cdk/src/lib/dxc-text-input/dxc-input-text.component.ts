@@ -49,6 +49,10 @@ export class DxcTextInputComponent
   @Input() public suffix: string;
   @Input() public prefixIconSrc: string;
   @Input() public suffixIconSrc: string;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Input()
   get disabled(): boolean {
     return this._disabled;

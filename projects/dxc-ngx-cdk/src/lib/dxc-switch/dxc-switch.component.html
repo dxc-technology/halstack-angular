@@ -7,6 +7,9 @@
   [id]="id"
   (change)="onChangeHandler($event)"
   [tabIndex]="disabled ? -1 : tabIndexValue"
+  [aria-label]="ariaLabel || label"
+  [aria-labelledby]="ariaLabelledBy" 
+  [attr.aria-describedby]="ariaDescribedBy"
 >
   <span
     *ngIf="label"

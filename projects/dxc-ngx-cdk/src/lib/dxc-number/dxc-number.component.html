@@ -29,6 +29,10 @@
     [errorStateMatcher]="matcher"
     [placeholder]="placeholder"
     [attr.allowDecimal]="allowDecimal"
+    [attr.aria-label]="ariaLabel || label"
+    [attr.aria-labelledby]="ariaLabelledBy" 
+    [attr.aria-describedby]="ariaDescribedBy"
+    [attr.aria-required]="ariaRequired"
     numbersOnly
     />
   <span

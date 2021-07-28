@@ -3,7 +3,8 @@
   [gridmode]="gridMode" [removeiconarialabel]="removeiconarialabel" [sourcerequest]="gridRequest" [gridstaterequest]="gridStateRequest"
   [defaulttoolbar]="lookupType === lookupTypeValues.SINGLE ? false : true" [enablequicklookup]="enableQuickLookup"
   [quicklookuprequest]="quickLookupRequest" [setSelectionResult]="setResults" [disabled]="disabled" [node]="rowIdentity"
-  [lookupGridEvent]="gridEventResponse" [resourcerequest]="resourceRequest" [displayfn]="displayFn" #baseLookup>
+  [lookupGridEvent]="gridEventResponse" [resourcerequest]="resourceRequest" [displayfn]="displayFn" [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"
+  [ariaDescribedBy]="ariaDescribedBy" [ariaRequired]="ariaRequired" #baseLookup>
   <ng-container content="toolbar">
     <mat-tab-group animationDuration="900ms" class="hidden-tab-content tabs-holder" [(selectedIndex)]="selectedIndex"
       (selectedTabChange)="tabSelection($event)">

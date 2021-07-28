@@ -48,6 +48,10 @@ export class DxcUserLookupComponent extends DxcBaselookupComponent<IUsers | Arra
   @Input('lookupresourcerequest') lookupResourceRequest: IRequest;
   @Input('disabled') disabled: false;
   @Input('userlookupoptions') userlookupoptions: Array<EUserLookupOptions> = [EUserLookupOptions.MyUsers, EUserLookupOptions.Users, EUserLookupOptions.Groups];
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Output()
   resultChange: EventEmitter<IUsers | Array<IUsers>> = new EventEmitter<IUsers | Array<IUsers>>();
 

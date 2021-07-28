@@ -40,6 +40,9 @@ export class DxcButtonComponent {
   @Input() size: string;
   @Input() type: string = "button";
   @Input() border:boolean = true;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;

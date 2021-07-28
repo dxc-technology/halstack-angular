@@ -44,6 +44,11 @@ export class DxcCrudLookupComponent extends DxcBaselookupComponent<ICodes | Arra
   @Input('isrequired') required: boolean;
 
   @Input('disabled') disabled: false;
+  
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
 
   @Output()
   resultChange: EventEmitter<any | Array<any>> = new EventEmitter<any | Array<any>>();

@@ -4,19 +4,21 @@
   <div class="col-md-1 float-right m-0 p-0 pt-2">
     <div id="addRowDv" class="example-flex-container display-flex-d float-right" *ngIf="isAddRequired">
       <div class="example-button-container mr-0">
-        <dxc-button size="small" mode="secondary" [title]="globalResource.add" (onClick)="addRow()">
+        <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.add" [ariaLabel]="globalResource.add"
+          (onClick)="addRow()">
           <dxc-button-icon>
             <span class="icon-dxc-wrapper">
-              <mat-icon class="mat-icon material-icons">add</mat-icon>
+              <mat-icon class="mat-icon material-icons" aria-hidden="true">add</mat-icon>
             </span>
           </dxc-button-icon>
         </dxc-button>
       </div>
       <div class="example-button-container">
-        <dxc-button size="small" mode="secondary" [title]="globalResource.tltrefresh" (onClick)="reload()">
+        <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.tltrefresh"
+          [ariaLabel]="globalResource.tltrefresh" (onClick)="reload()">
           <dxc-button-icon>
             <span class="icon-dxc-wrapper">
-              <mat-icon class="mat-icon material-icons">restore</mat-icon>
+              <mat-icon class="mat-icon material-icons" aria-hidden="true">restore</mat-icon>
             </span>
           </dxc-button-icon>
         </dxc-button>
@@ -24,9 +26,7 @@
     </div>
   </div>
 </mat-form-field>
-
 <!--  Add row -->
-
 <!-- Table -->
 <div class="crud-scroll" [style.max-height]="tableHeight">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
@@ -37,7 +37,39 @@
           *ngIf="(column && column.toLowerCase() !=='action' && resource)">
           {{resource[column]}}</span>
       </th>
-      <td mat-cell *matCellDef="let element; let j = index" class="cell-position cell-focus pr-3 px-2">
+      <td mat-cell *matCellDef="let element; let j = index" class="cell-position cell-focus pr-3 px-2" id="table-cell{{j}}">
+        <a href="javascript:void(0);" [ngClass]="{'cellContentPostion': first, 'link-decoration' : true}"
+          *ngIf="(column && column.toLowerCase() !=='action' && element[column] && element[column].toLowerCase() != 'false' && element[column].toLowerCase() != 'true')"
+          (click)="onRowSelection(element)" attr.aria-label="{{resource[column] + ' ' + element[column]}}">
+          <span [ngSwitch]="columns?.length">
+            <div class="crud-col" *ngSwitchCase="1">
+              {{element[column]}}
+              <mat-icon *ngIf="element.required" class="green-icon table-label">
+                starrate</mat-icon>
+            </div>
+            <div class="crud-col" *ngSwitchDefault>
+              <div *ngIf="element[column].length > 30; then thenBlock else elseBlock"></div>
+              <ng-template #thenBlock>
+                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
+                  {{(element[column] | formatter:formatColumns[column]).substring(0,30)}}
+                  <span matTooltip="{{element[column]}}">...</span>
+                </div>
+                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
+                  {{element[column].substring(0,30)}}
+                  <span matTooltip="{{element[column]}}">...</span>
+                </div>
+              </ng-template>
+              <ng-template #elseBlock>
+                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
+                  {{(element[column] | formatter:formatColumns[column])}}
+                </div>
+                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
+                  {{element[column]}}
+                </div>
+              </ng-template>
+            </div>
+          </span>
+        </a>
         <button aria-label="true" class="cellIcon"
           *ngIf="column && column.toLowerCase() !=='action' && element[column].toLowerCase() == 'true'">
           <mat-icon class="green-icon">check</mat-icon>
@@ -48,77 +80,28 @@
         </button>
         <div class="row gridBtnPostion" *ngIf="first" [ngClass]="element.status ? 'search-column-width': ''">
           <span class="iconPostion">
-            <span class="material-icons iconProp icon playPause" *ngIf="isIconRequired && !element.error"
-              [ngClass]="element.status ? 'green-icon': 'red-icon'"
-              (click)="element.status=!element.status">{{element.status ? 'check' : 'close' }}</span>
-
-            <span class="material-icons iconProp" *ngIf="isEditIconRequired && element.status"
-              (click)="editRow(j, element)">mode_edit</span>
-
-
-
-            <span class="material-icons iconProp" *ngIf="!element.error && element.status && isEditIconRequired"
-              [ngClass]="element.required ? 'green-icon': ''" (click)="element.required=!element.required">star</span>
-
-
-            <span class="material-icons iconProp" *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
-              (click)="moveUp(element)">arrow_upward</span>
-
-            <span class="material-icons iconProp" *ngIf="element.status" [ngClass]="element.action ? 'blink_me': ''"
-              (click)="moveDown(element)">arrow_downward</span>
-
-
-            <span class="material-icons iconProp"
+            <a href="javascript:void(0);" class="material-icons iconProp icon playPause" role="button" [attr.aria-label]="''" 
+              *ngIf="isIconRequired && !element.error" [ngClass]="element.status ? 'green-icon': 'red-icon'"
+              (click)="element.status=!element.status">{{element.status ? 'check' : 'close' }}</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="isEditIconRequired && element.status" role="button" [attr.aria-label]="''" 
+              (click)="editRow(j, element)">mode_edit</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [attr.aria-label]="''" 
+              *ngIf="!element.error && element.status && isEditIconRequired"
+              [ngClass]="element.required ? 'green-icon': ''" (click)="element.required=!element.required">star</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button" [attr.aria-label]="''" 
+              [ngClass]="element.action ? 'blink_me': ''" (click)="moveUp(element)">arrow_upward</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button" [attr.aria-label]="''" 
+              [ngClass]="element.action ? 'blink_me': ''" (click)="moveDown(element)">arrow_downward</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [matTooltip]="globalResource.gridRowEdit" [attr.aria-label]="globalResource.gridRowEdit" 
               *ngIf="isEditRequired && element[uniqueIdentifier] != '' && (!isEditForm || !showPopup)"
-              (click)="expandRow(j, element)">mode_edit</span>
-            <span class="material-icons iconProp"
+              (click)="expandRow(j, element)">mode_edit</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [matTooltip]="globalResource.gridRowDelete" [attr.aria-label]="globalResource.gridRowDelete" 
               *ngIf="isDeleteRequired && element[uniqueIdentifier] != '' && !isEditForm"
-              (click)="deleteRow(element)">delete</span>
+              (click)="deleteRow(element)">delete</a>
           </span>
         </div>
-        <a tabindex="0" href="javascript:void(0);"
-          [ngClass]="{'cellContentPostion': first, 'link-decoration' : true} && (element.status ? 'search-column-padding': 'column-padding')"
-          *ngIf="(column && column.toLowerCase() !=='action' && element[column] && element[column].toLowerCase() != 'false' && element[column].toLowerCase() != 'true')"
-          (click)="onRowSelection(element)">
-          <span [ngSwitch]="columns?.length">
-            <div class="crud-col" *ngSwitchCase="1"
-              [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
-              {{element[column]}}
-              <mat-icon *ngIf="element.required" class="green-icon table-label">
-                starrate</mat-icon>
-            </div>
-            <div class="crud-col" *ngSwitchDefault
-              [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
-              <div *ngIf="element[column].length > 30; then thenBlock else elseBlock"></div>
-              <ng-template #thenBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]"
-                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
-                  {{(element[column] | formatter:formatColumns[column]).substring(0,30)}}
-                  <span matTooltip="{{element[column]}}">...</span>
-                </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])"
-                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
-                  {{element[column].substring(0,30)}}
-                  <span matTooltip="{{element[column]}}">...</span>
-                </div>
-              </ng-template>
-              <ng-template #elseBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]"
-                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
-                  {{(element[column] | formatter:formatColumns[column])}}
-                </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])"
-                  [ngClass]="(element.status ? 'search-column-padding': 'column-padding')">
-                  {{element[column]}}
-                </div>
-              </ng-template>
-            </div>
-          </span>
-
-        </a>
       </td>
     </ng-container>
-
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="pr-3">
         <div class="example-element-detail" *ngIf="element == expandedElement && !isPopupVisible"
@@ -126,9 +109,10 @@
           <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll">
             <div class="example-flex-container display-flex-d float-right mt-2">
               <div class="example-button-container mr-0">
-                <dxc-button size="small" mode="secondary" name="saveBtn"
-                  [title]="saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText"
-                  (onClick)="rowsave(element)" class="save-icon-align">
+                <dxc-button size="small" mode="secondary"
+                  matTooltip="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}"
+                  ariaLabel="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}"
+                  name="saveBtn" (onClick)="rowsave(element)" class="save-icon-align">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper">
                       <mat-icon class="mat-icon material-icons">{{saveIconName}}</mat-icon>
@@ -137,11 +121,11 @@
                 </dxc-button>
               </div>
               <div class="example-button-container">
-                <dxc-button size="small" mode="secondary" [title]="globalResource.closes"
-                  (onClick)="closeExpandRow(element)">
+                <dxc-button size="small" mode="secondary" [ariaLabel]="globalResource.closes"
+                  [matTooltip]="globalResource.closes" (onClick)="closeExpandRow(element)">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper">
-                      <mat-icon class="mat-icon material-icons">cancel</mat-icon>
+                      <mat-icon class="mat-icon material-icons" [attr.aria-label]="globalResource.closes">cancel</mat-icon>
                     </span>
                   </dxc-button-icon>
                 </dxc-button>
@@ -154,9 +138,10 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}  multiline="{{editField.multiline}}""-->
-                      <dxc-input-text id="{{editField.name}}" formControlName="{{editField.name}}"
-                        [attr.aria-disabled]="editField.disabled" size="fillParent" [disabled]="editField.disabled"
+                      <!-- multiline="{{editField.multiline}}""-->
+                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}" [ariaRequired]="editField.required"
+                        formControlName="{{editField.name}}" [attr.aria-disabled]="editField.disabled" size="fillParent"
+                        [disabled]="editField.disabled"
                         [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                       </dxc-input-text>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
@@ -168,8 +153,8 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" -->
-                      <dxc-select [customHandler]='false' sizes="fitContent" margin="small"
+                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" [attr.aria-required]="{{editField.required}}"
+                        aria-labelledby="cl_{{editField.name}}" sizes="fitContent" margin="small"
                         [attr.aria-disabled]="editField.disabled" [disabled]="editField.disabled"
                         formControlName="{{editField.name}}" [multiple]="editField.multiple"
                         [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
@@ -186,9 +171,9 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" [label]="resource[editField.label]" -->
-                      <dxc-date [customOutput]="true" [format]="editField.format" id="{{editField.name}}"
-                        [required]="editField.required" [iconSrc]="editField.iconSrc"
+                      <!--[label]="resource[editField.label]" -->
+                      <dxc-date [customOutput]="true" ariaLabelledBy="cl_{{editField.name}}" [format]="editField.format"
+                        id="{{editField.name}}" [ariaRequired]="editField.required" [iconSrc]="editField.iconSrc"
                         formControlName="{{editField.name}}"></dxc-date>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -199,9 +184,9 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" [checked]="editField.checked"  -->
-                      <dxc-checkbox id="{{editField.name}}" [disabled]="editField.disabled" labelPosition="after"
-                        formControlName="{{editField.name}}">
+                      <!--[checked]="editField.checked"  -->
+                      <dxc-checkbox id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
+                        [disabled]="editField.disabled" labelPosition="after" formControlName="{{editField.name}}">
                       </dxc-checkbox>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -212,7 +197,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
                         [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
                         [resourcerequest]="resourceRequest" [gridstaterequest]="gridStateRequest"
@@ -226,7 +211,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
                         [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
                         [resourcerequest]="resourceRequest" [gridstaterequest]="editField.supplementalgridstateRequest"
@@ -240,7 +225,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-orghlookup [removeiconarialabel]="resource[editField.label]"
+                      <dxc-orghlookup [removeiconarialabel]="resource[editField.label]" [ariaRequired]="editField.required"
                         [label]="resource[editField.label]" [lookuptype]="editField.lookupType"
                         [level]="editField.level" [resourcerequest]="orghresourceRequest" [topnode]="topNode"
                         [treerequest]="treeSourceRequest" [gridStateRequest]="orghgridStateRequest"
@@ -255,7 +240,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-crud-lookup [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
+                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [addrequired]="editField.addrequired" [autosearchrequired]="editField.autosearchrequired"
                         [minimumColumns]="editField.minimumColumns" [maximumColumns]="editField.maximumColumns"
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
@@ -269,7 +254,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]"
                       id="lbl_{{editField.name}}"></dxc-label>
                     <div>
-                      <dxc-user-lookup [label]="resource[editField.label]"
+                      <dxc-user-lookup [label]="resource[editField.label]" [ariaRequired]="editField.required"
                         [userlookupoptions]="editField.userLookupOptions" id="{{editField.name}}"
                         [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
                         [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.SINGLE"
@@ -287,7 +272,7 @@
                     </dxc-label>
                     <div>
                       <!--maxLength={{editField.maxLength}} autosizeMaxRows="{{editField.autosizeMaxRows}}" textareaAutosize="{{editField.textareaAutosize}}"  autosizeMinRows="{{editField.autosizeMinRows}}"-->
-                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}"
+                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}" [ariaRequired]="editField.required"
                         [attr.aria-disabled]="editField.disabled">
                       </dxc-textarea>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
@@ -306,49 +291,37 @@
                 </div> -->
               </ng-container>
             </div>
-
           </form>
         </div>
       </td>
     </ng-container>
-
     <!--  Columns -->
     <!-- <ng-container *ngFor="let column of columns; let i = index" matColumnDef="{{column}}">
-  
       <td mat-cell *matCellDef="let data; let j = index" (click)="openEdit(data, j)">
-  
         <p *ngIf="j!==k">{{data[column]}}</p>
-  
         <mat-icon *ngIf="(column && column.toLowerCase()==='actions' && j!==k )" matTooltip="Delete row"
           class="material-icons" color="primary" (click)="openDialog(data)">delete</mat-icon>
         <mat-icon id='edit{{j}}' *ngIf="(column && column.toLowerCase()==='actions' && j!==k )" matTooltip="Edit row"
           class="material-icons" color="primary" (click)="openEdit(data, j)">editors</mat-icon>
-  
         <mat-icon *ngIf="(column && column.toLowerCase()==='actions' && j===k )" matTooltip="Update row"
           class="material-icons" color="primary" (click)="doneEdit(data)">done</mat-icon>
         <mat-icon *ngIf="(column && column.toLowerCase()==='actions' && j===k )" matTooltip="Cancel"
           class="material-icons" color="primary" (click)="closeEdit(data)">clear</mat-icon>
       </td>
-  
     </ng-container> -->
-
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
-    <tr mat-row *matRowDef="let element; columns: displayedColumns; when:isToShowRow"
-      class="container example-element-row" [class.example-expanded-row]="expandedElement === element">
+    <tr mat-row *matRowDef="let element; let rowIndex = index; columns: displayedColumns; when:isToShowRow"
+      class="container example-element-row" [class.example-expanded-row]="expandedElement === element" id="tableRowItem{{rowIndex}}">
     </tr>
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-
     <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id}">
-  
     </tr> -->
-
   </table>
 </div>
 <mat-paginator [pageSizeOptions]="paginationOptions" showFirstLastButtons *ngIf="allowpagination && loaded">
 </mat-paginator>
-<dxc-dialog #activationdialog arialabelledby="lblActivationCode" *ngIf="showPopup" isCloseVisible="true"
+<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" *ngIf="showPopup" isCloseVisible="true" [closeButtonLabel]="globalResource.closes"
   (onCloseClick)="onClosePopup()">
   <div>
     <div class="modal-header pb-2 pt-2">
@@ -361,8 +334,7 @@
     <div class="modal-body supp-grid-scroll">
       <div>
         <div class="row float-right mr-1 mb-2">
-
-          <dxc-button size="small" mode="secondary" id="rowsave" [title]="resource['saveButton']"
+          <dxc-button size="small" mode="secondary" id="rowsave" [ariaLabel]="resource['saveButton']"
             (onClick)="rowsave(suppgridForm)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">
@@ -374,11 +346,8 @@
       </div>
       <div class="">
         <div class="row float-left mx-2">
-
           <div *ngIf="this.editableFields.viewmode === viewMode" class="row">
             <ng-container *ngFor="let editField1 of editableFields.section ">
-
-
               <dxc-sub-heading class="col-md-12 px-0" [heading]="editField1.title">
               </dxc-sub-heading>
               <ng-container *ngFor="let editField of editField1.fields">
@@ -387,9 +356,10 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" multiline="{{editField.multiline}}"-->
-                      <dxc-input-text id="{{editField.name}}" formControlName="{{editField.name}}"
-                        [attr.aria-disabled]="editField.disabled" size="fillParent" [disabled]="editField.disabled"
+                      <!--multiline="{{editField.multiline}}"-->
+                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}" [ariaRequired]="editField.required"
+                        formControlName="{{editField.name}}" [attr.aria-disabled]="editField.disabled" size="fillParent"
+                        [disabled]="editField.disabled"
                         [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                       </dxc-input-text>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
@@ -401,8 +371,8 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" -->
-                      <dxc-select [customHandler]='false' sizes="fitContent" margin="small"
+                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" [attr.aria-required]="editField.required"
+                        aria-labelledby="cl_{{editField.name}}" sizes="fitContent" margin="small"
                         [attr.aria-disabled]="editField.disabled" [disabled]="editField.disabled"
                         formControlName="{{editField.name}}" [multiple]="editField.multiple"
                         [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
@@ -419,9 +389,9 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" [label]="resource[editField.label]"-->
-                      <dxc-date [customOutput]="true" [format]="editField.format" id="{{editField.name}}"
-                        [required]="editField.required" [iconSrc]="editField.iconSrc"
+                      <!--[label]="resource[editField.label]"-->
+                      <dxc-date [customOutput]="true" ariaLabelledBy="cl_{{editField.name}}" [format]="editField.format"
+                        id="{{editField.name}}" [ariaRequired]="editField.required" [iconSrc]="editField.iconSrc"
                         formControlName="{{editField.name}}"></dxc-date>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -432,9 +402,9 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <!--arialabelledby="cl_{{editField.name}}" [checked]="editField.checked" -->
-                      <dxc-checkbox id="{{editField.name}}" [disabled]="editField.disabled" labelPosition="after"
-                        formControlName="{{editField.name}}">
+                      <!--[checked]="editField.checked" -->
+                      <dxc-checkbox id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
+                        [disabled]="editField.disabled" labelPosition="after" formControlName="{{editField.name}}">
                       </dxc-checkbox>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -445,7 +415,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
                         [disabled]="editField.disabled" [lookuptype]="editField.lookupType"
                         [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
@@ -459,7 +429,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
                         [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
                         [allowServerFilter]="editField.allowServerFilter" [resourcerequest]="resourceRequest"
@@ -474,7 +444,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-orghlookup [removeiconarialabel]="resource[editField.label]"
+                      <dxc-orghlookup [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [label]="resource[editField.label]" [lookuptype]="editField.lookupType"
                         [disabled]="editField.disabled" [resourcerequest]="orghresourceRequest" [topnode]="topNode"
                         [level]="editField.level" [treerequest]="treeSourceRequest"
@@ -489,7 +459,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-crud-lookup [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
+                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
                         [addrequired]="editField.addrequired" [autosearchrequired]="editField.autosearchrequired"
                         [minimumColumns]="editField.minimumColumns" [maximumColumns]="editField.maximumColumns"
                         [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
@@ -503,7 +473,7 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]"
                       id="lbl_{{editField.name}}"></dxc-label>
                     <div>
-                      <dxc-user-lookup [label]="resource[editField.label]"
+                      <dxc-user-lookup [label]="resource[editField.label]" [ariaRequired]="editField.required"
                         [userlookupoptions]="editField.userLookupOptions" id="{{editField.name}}"
                         [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
                         [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.SINGLE"
@@ -521,7 +491,7 @@
                     </dxc-label>
                     <div>
                       <!--maxLength={{editField.maxLength}} autosizeMaxRows="{{editField.autosizeMaxRows}}" textareaAutosize="{{editField.textareaAutosize}}"  autosizeMinRows="{{editField.autosizeMinRows}}"-->
-                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}"
+                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}" [ariaRequired]="editField.required"
                         [attr.aria-disabled]="editField.disabled">
                       </dxc-textarea>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"

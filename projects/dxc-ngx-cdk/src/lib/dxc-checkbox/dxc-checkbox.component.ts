@@ -50,13 +50,17 @@ export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
   }
   private _required;
   @Input() label: string;
-  @Input() ariaLabelledBy: string;
   @Input() name: string;
   @Input() id: string;
   @Input() labelPosition: string;
   @Input() margin: any;
   @Input() size: any;
   @Input() customHandler: boolean = true;
+
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
+
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;

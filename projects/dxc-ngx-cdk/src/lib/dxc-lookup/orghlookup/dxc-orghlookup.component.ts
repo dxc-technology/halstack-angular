@@ -100,6 +100,10 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   @Input('level') level: string;
   @Output() action = new EventEmitter<EAction>();
   @Input('disabled') disabled: false;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Output()
   resultChange: EventEmitter<Code | Array<Code>> = new EventEmitter<Code | Array<Code>>();
 

@@ -67,7 +67,10 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   @Input('enablequicklookup') enableQuickLookup: boolean = true;
   @Input('quicklookuprequest') quickLookupRequest: IRequest;
   @Input('typeaheadlength') typeAheadLength = 0;
-
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
 
   @Output()
   resultChange: EventEmitter<T | Array<T>> = new EventEmitter<T | Array<T>>();

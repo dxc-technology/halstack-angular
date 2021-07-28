@@ -69,7 +69,11 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   @Input() customOutput = false;
   @Input() label: string;
   @Input() iconSrc: string;
-  @Input() name: string;
+  @Input() name: string; 
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Input()
   get disabled(): boolean {
     return this._disabled;

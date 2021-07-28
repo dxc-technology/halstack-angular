@@ -42,6 +42,10 @@ export class DxcCodeLookupComponent extends DxcBaselookupComponent<ICodes | Arra
   @Input('resourcerequest') resourceRequest: IRequest;
   @Input('disabled') disabled: false;
   @Input('typeaheadlength') typeAheadLength = 0;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
   @Output('lookupeventaction')
   lookupEventAction: EventEmitter<EAction> = new EventEmitter<EAction>();
   @Output()

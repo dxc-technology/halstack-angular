@@ -1,6 +1,5 @@
 import {
   Component,
-  OnChanges,
   HostBinding,
   Input,
   Output,
@@ -54,6 +53,11 @@ export class DxcNumberComponent implements OnInit, ControlValueAccessor {
   @Input() maxValue = -1;
   @Input() decimalPlace = 0;
   @Input() allowDecimal = false;
+  
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaRequired') ariaRequired: boolean = false;
 
   @Output() public onClickSuffix: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onClickPrefix: EventEmitter<any> = new EventEmitter<any>();

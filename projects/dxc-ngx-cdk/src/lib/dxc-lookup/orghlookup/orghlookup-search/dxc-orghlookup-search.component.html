@@ -31,7 +31,7 @@
         <dxc-label id="lbl_lblDefaultExpansion" [text]="resource?.lblDefaultExpansion.description"></dxc-label>
         <div>
           <!-- arialabelledby="lbl_lblDefaultExpansion"-->
-          <dxc-select [customHandler]="false" labelPosition="after" [value]="defaultOrghLevel"
+          <dxc-select [customHandler]="false" tabIndexValue="-1" tabindex="0" aria-labelledby="lbl_lblDefaultExpansion" labelPosition="after" [value]="defaultOrghLevel"
             (onChange)="controlEvent('defaultorghlevel', $event)" [disabled]="defaultOrghLevelDisabled">
             <dxc-select-option *ngFor="let level of orghLevel" value="{{level.value}}" label="{{level.label}}">
             </dxc-select-option>
@@ -48,8 +48,7 @@
       <div class="form-group col-md-3">
         <dxc-label id="lbl_lblSearchSelectedBranch" [text]="resource?.lblSearchSelectedBranch.description"></dxc-label>
         <div>
-          <!-- arialabelledby="lbl_lblSearchSelectedBranch" -->
-          <dxc-checkbox labelPosition="after" [(checked)]="searchSpecificBranch" 
+          <dxc-checkbox labelPosition="after" ariaLabelledBy="lbl_lblSearchSelectedBranch" [(checked)]="searchSpecificBranch" 
             (onChange)="controlEvent('searchSpecificBranch', $event)" [disabled]="searchSpecificBranchDisabled">
           </dxc-checkbox>
         </div>
@@ -57,16 +56,14 @@
       <div class="form-group col-md-3">
         <dxc-label id="lbl_lblFilterEffectiveDate" [text]="resource?.lblFilterEffectiveDate.description"></dxc-label>
         <div>
-          <!--arialabelledby="lbl_lblFilterEffectiveDate"-->
-          <dxc-checkbox labelPosition="after" [(checked)]="sChkFilter" (onChange)="controlEvent('effectiveDate', $event)" >
+          <dxc-checkbox labelPosition="after" ariaLabelledBy="lbl_lblFilterEffectiveDate" [(checked)]="sChkFilter" (onChange)="controlEvent('effectiveDate', $event)" >
           </dxc-checkbox>
         </div>
       </div>
       <div class="form-group col-md-3">
         <dxc-label id="lbl_lblSearchSpecific" [text]="resource?.lblSearchSpecific.description"></dxc-label>
         <div>
-          <!-- arialabelledby="lbl_lblSearchSpecific" [options]="orghLevel" -->
-          <dxc-select [customHandler]="false" labelPosition="after" [value]="orghLevelSearch"
+          <dxc-select [customHandler]="false" tabIndexValue="-1" tabindex="0" aria-labelledby="lbl_lblSearchSpecific" labelPosition="after" [value]="orghLevelSearch"
             (onChange)="orghLevelSearchFn($event)" [disabled]="orghLevelSearchDisabled">
             <dxc-select-option *ngFor="let level of orghLevel" value="{{level.value}}" label="{{level.label}}">
             </dxc-select-option>
@@ -78,15 +75,13 @@
       <div class="form-group col-md-3">
         <dxc-label id="lbl_lblSearchString" [text]="resource?.lblSearchString.description"></dxc-label>
         <div>
-          <!-- arialabelledby="lbl_lblSearchString" -->
-          <dxc-input-text size="fillParent" [(value)]="textSearch" (onChange)="textInputChange('textSearch', $event)"></dxc-input-text>
+          <dxc-input-text size="fillParent" ariaLabelledBy="lbl_lblSearchString" [(value)]="textSearch" (onChange)="textInputChange('textSearch', $event)"></dxc-input-text>
         </div>
       </div>
       <div class="form-group col-md-3">
         <dxc-label id="lbl_lblCity" [text]="resource?.lblCity.description"></dxc-label>
         <div>
-          <!-- arialabelledby="lbl_lblCity" -->
-          <dxc-input-text size="fillParent" [(value)]="orghCity" (onChange)="textInputChange('orghCity', $event)"></dxc-input-text>
+          <dxc-input-text size="fillParent" ariaLabelledBy="lbl_lblCity" [(value)]="orghCity" (onChange)="textInputChange('orghCity', $event)"></dxc-input-text>
         </div>
       </div>
       <div class="form-group col-md-3">
@@ -101,8 +96,7 @@
       <div class="form-group col-md-3">
         <dxc-label id="lbl_lblZipCode" [text]="resource?.lblZipCode.description"></dxc-label>
         <div>
-          <!-- arialabelledby="lbl_lblZipCode"  -->
-          <dxc-input-text [(value)]="orghZipCode" (onChange)="textInputChange('orghZipCode', $event)"></dxc-input-text>
+          <dxc-input-text [(value)]="orghZipCode" ariaLabelledBy="lbl_lblZipCode" (onChange)="textInputChange('orghZipCode', $event)"></dxc-input-text>
         </div>
       </div>
     </div>

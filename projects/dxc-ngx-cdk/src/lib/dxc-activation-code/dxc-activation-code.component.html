@@ -1,4 +1,4 @@
-<dxc-dialog #activationdialog arialabelledby="lblActivationCode" [isCloseVisible]="isCloseVisible"
+<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" [isCloseVisible]="isCloseVisible"
   (onCloseClick)="closeActivationDialog()">
   <div class="modal-content" style="position: inherit;">
     <div class="modal-header">
@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-md-11">
             <div>
-              <dxc-input-text id="activationCodeVal" arialabelledby="lbl_activationCodeVal" type="text"
+              <dxc-input-text id="activationCodeVal" ariaLabelledBy="lbl_activationCodeVal" type="text"
                 [isMasked]="'true'" formControlName="activationCodeVal" class="displayrow" size="fillParent"
                 [className]="activationCodeCtrl.errors?.required ? 'displayrow classinavlid' : 'displayrow classvalid'">
               </dxc-input-text>

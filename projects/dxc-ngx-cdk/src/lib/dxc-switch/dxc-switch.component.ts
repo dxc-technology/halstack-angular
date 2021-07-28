@@ -22,6 +22,9 @@ import {
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
   @Input()
   get checked(): boolean {
     return this._checked;

@@ -24,7 +24,7 @@
   />
   <ng-content select="dxc-input-prefix-icon"></ng-content>
   <mat-label *ngIf="label">{{ label }}</mat-label>
-  <input
+  <input *ngIf="options && options.length > 0"
     matInput
     #dxcSingleInput
     [value]="renderedValue"
@@ -37,8 +37,30 @@
     [type]="type"
     [placeholder]="placeholder"
     [matAutocomplete]="auto"
-    [attr.aria-label]="label"
     [attr.aria-disabled]="disabled"
+    [attr.aria-label]="ariaLabel || label"
+    [attr.aria-labelledby]="ariaLabelledBy" 
+    [attr.aria-describedby]="ariaDescribedBy"
+    [attr.aria-required]="ariaRequired"
+    [tabIndex]="disabled ? -1 : tabIndexValue"
+  />
+  <input *ngIf="!(options && options.length > 0)"
+    matInput
+    #dxcSingleInput
+    [value]="renderedValue"
+    (input)="onChanged($event)"
+    (blur)="onBlurHandle($event)"
+    (click)="onClickHandle($event)"
+    (keypress)="onInputKeyPress($event)"
+    [required]="required"
+    [name]="name"
+    [type]="type"
+    [placeholder]="placeholder"
+    [attr.aria-disabled]="disabled"
+    [attr.aria-label]="ariaLabel || label"
+    [attr.aria-labelledby]="ariaLabelledBy" 
+    [attr.aria-describedby]="ariaDescribedBy"
+    [attr.aria-required]="ariaRequired"
     [tabIndex]="disabled ? -1 : tabIndexValue"
   />
   <span

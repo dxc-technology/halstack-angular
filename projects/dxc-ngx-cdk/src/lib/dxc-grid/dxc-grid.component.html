@@ -11,29 +11,28 @@
                 </dxc-search>
               </div>
               <div class="container">
-                <dxc-paginator *ngIf="allowPaging && displayPanel" [customDataOnPaging]="true" [showGoToPage]="false" [totalItems]="additionalParams.totalCount"
-                  [itemsPerPage]="additionalParams.pageSize" [currentPage]="page"
-                  (onGoToPage)="pagingCall($event)" [paginationActions]="paginationActions"
+                <dxc-paginator *ngIf="allowPaging && displayPanel" [customDataOnPaging]="true" [showGoToPage]="false"
+                  [totalItems]="additionalParams.totalCount" [itemsPerPage]="additionalParams.pageSize"
+                  [currentPage]="page" (onGoToPage)="pagingCall($event)" [paginationActions]="paginationActions"
                   class="float-right pt-2">
                 </dxc-paginator>
 
               </div>
               <div [hidden]="!displayPanel" role="refresh">
-                <dxc-button  size="small" mode="secondary" id="gridrefresh" [title]="globalResource.tltrefresh"
+                <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.tltrefresh" id="gridrefresh"
                   (onClick)="gridActionChange(gridAction.REFRESH)">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper mt-2">
-                      <mat-icon class="mat-icon material-icons">refresh</mat-icon>
+                      <mat-icon class="mat-icon material-icons" aria-hidden="false" [attr.aria-label]="globalResource.tltrefresh">refresh</mat-icon>
                     </span>
                   </dxc-button-icon>
                 </dxc-button>
               </div>
               <div [hidden]="!displayPanel" role="setting">
-                <dxc-button  size="small" mode="secondary" id="gridsetting" [title]="globalResource['uxmdimenu.gridconfig']"
-                  [matMenuTriggerFor]="gridaction">
+                <dxc-button size="small" mode="secondary" id="gridsetting" [matTooltip]="globalResource['uxmdimenu.gridconfig']" [matMenuTriggerFor]="gridaction">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper mt-2">
-                      <mat-icon class="mat-icon material-icons">settings</mat-icon>
+                      <mat-icon class="mat-icon material-icons" aria-hidden="false" [attr.aria-label]="globalResource['uxmdimenu.gridconfig']">settings</mat-icon>
                     </span>
                   </dxc-button-icon>
                 </dxc-button>
@@ -43,8 +42,13 @@
                     </ng-template>
                     <ng-template #showBlock>
                       <!-- [options]="columnVisibiltyOptions" -->
-                      <dxc-select [customHandler]="false" (valueChange)="visibilityChange($event)"
-                        [(value)]="visibilitySelected" multiple="true" size="small" label=""></dxc-select>
+                      <dxc-select tabIndexValue="-1" tabindex="0" [customHandler]="false"
+                        (valueChange)="visibilityChange($event)" [(value)]="visibilitySelected" multiple="true"
+                        size="small" label="">
+                        <dxc-select-option *ngFor="let option of columnVisibiltyOptions" value="{{option.value}}"
+                          label="{{option.label}}">
+                        </dxc-select-option>
+                      </dxc-select>
                     </ng-template>
                     <ng-template #notShowBlock>
                       <a href="javascript:void(0);" target="_self" mat-menu-item
@@ -117,10 +121,10 @@
     <!-- <a target="_self" (click)="saveState()">
       <img matPrefix class="prefixElement image-icon" src="../assets/images/save-black-36dp.svg" />
     </a> -->
-    <dxc-button  size="small" mode="secondary" (onClick)="saveState()">
+    <dxc-button size="small" mode="secondary" (onClick)="saveState()">
       <dxc-button-icon>
         <span class="icon-dxc-wrapper">
-          <mat-icon class="mat-icon material-icons">save</mat-icon>
+          <mat-icon [attr.aria-label]="globalResource.save" class="mat-icon material-icons">save</mat-icon>
         </span>
       </dxc-button-icon>
     </dxc-button>

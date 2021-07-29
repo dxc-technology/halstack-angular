@@ -118,6 +118,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   filteredOptions: Array<string>;
 
+  fetchingError: boolean = false;
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private service: DxcNewInputTextService,

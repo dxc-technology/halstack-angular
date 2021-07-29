@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core';
-import { css } from 'emotion';
-import { CssUtils } from '../utils';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { css } from "emotion";
+import { CssUtils } from "../utils";
+import { Subject } from "rxjs";
+import { debounceTime } from "rxjs/operators";
 @Injectable()
-
-export class DxcNewInputTextHelper{
-
-  constructor(private utils: CssUtils) {
-
-  }
+export class DxcNewInputTextHelper {
+  constructor(private utils: CssUtils) {}
   debounced = (cb, time) => {
     const db = new Subject();
     const sub = db.pipe(debounceTime(time)).subscribe(cb);
@@ -18,7 +14,7 @@ export class DxcNewInputTextHelper{
     return func;
   };
 
-   getDisabledStyle() {
+  getDisabledStyle() {
     return css`
       .inputLabel,
       .inputOptionalLabel {
@@ -106,12 +102,16 @@ export class DxcNewInputTextHelper{
         display: flex;
         align-items: center;
         height: 38px;
-        border: ${inputs.error
-          ? `1px solid var(--input-errorColor)`
-          : "1px solid #666666"};
-        ${inputs.error
-          ? `box-shadow: inset 0 0 0 1px var(--input-errorColor);`
-          : ""};
+        border: ${
+          inputs.error
+            ? `1px solid var(--input-errorColor)`
+            : "1px solid #666666"
+        };
+        ${
+          inputs.error
+            ? `box-shadow: inset 0 0 0 1px var(--input-errorColor);`
+            : ""
+        };
         border-radius: 4px;
         margin: 4px 0;
         padding-right: 12px;
@@ -282,6 +282,26 @@ export class DxcNewInputTextHelper{
           }
         }
 
+        &.fetchingError{
+          border: 1px solid var(--input-errorColor);
+          li:hover{
+            background-color: #FFE3E6;
+          }
+          li{
+            align-items: center;
+            display: flex;
+            background-color: #FFE3E6;
+            svg{
+              height: 18px;
+              width: 18px;
+              fill: var(--input-errorColor);
+            }
+            span{
+              margin-left: 8px;
+            }
+          }
+        }
+
         &::-webkit-scrollbar {
           width: 3px;
         }
@@ -297,6 +317,4 @@ export class DxcNewInputTextHelper{
       }
     `;
   }
-
-
 }

@@ -6,37 +6,27 @@
 <div class="inputContainer">
   <span *ngIf="prefix" class="inputPrefix">{{ prefix }}</span>
   <input
-    role="combobox"
+    #inputRef
     (focus)="handleOnFocus()"
     (focusout)="debouncedFocusOut()"
     (keydown)="handleOnKeyDown($event)"
     (blur)="handleOnBlur($event)"
     (input)="handleOnChange($event)"
-    #inputRef
+    role="combobox"
     type="text"
     class="inputText"
+    autocomplete="off"
     [id]="random"
     [placeholder]="placeholder"
     [value]="value"
     [name]="name"
     [disabled]="disabled"
-    autocomplete="off"
+    [attr.aria-expanded]="autosuggestVisible"
+    [attr.aria-controls]="autoSuggestId"
+    [attr.aria-disabled]="disabled"
   />
-  <span *ngIf="error" class="inputErrorIcon" aria-label="Error">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="currentColor"
-    >
-      <path
-        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-      />
-    </svg>
-  </span>
   <button
-    *ngIf="clearable && !disabled"
+    *ngIf="clearable && !disabled && value"
     class="inputAction"
     (click)="handleDefaultClearAction()"
     [disabled]="disabled"
@@ -55,6 +45,19 @@
       />
     </svg>
   </button>
+  <span *ngIf="error" class="inputErrorIcon" aria-label="Error">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="currentColor"
+    >
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+      />
+    </svg>
+  </span>
   <button
     *ngIf="hasAction() && !disabled"
     class="inputAction"
@@ -69,9 +72,9 @@
   <ul
     #autoSuggestOptions
     [ngClass]="{ visible: autosuggestVisible }"
+    [id]="autoSuggestId"
     role="listbox"
     class="options"
-    [id]="autoSuggestId"
   >
     <li
       *ngFor="
@@ -79,10 +82,11 @@
         let i = index
       "
       role="option"
+      [attr.aria-selected]="selectedOption === i"
       [ngClass]="{ selected: selectedOption === i }"
+      [innerHtml]="item | boldOptions: value"
       (mousedown)="handleMouseDown($event)"
       (mouseup)="handleOnClickOption(item)"
-      [innerHtml]="item | boldOptions: value"
     ></li>
     <li *ngIf="filteredOptions.length === 0">No results found.</li>
   </ul>

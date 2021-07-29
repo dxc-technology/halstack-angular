@@ -278,7 +278,7 @@ export class DxcNewInputTextHelper{
             background-color: #cccccc;
           }
           &.selected {
-            background-color: #fabada;
+            background-color: #f2f2f2;
           }
         }
 

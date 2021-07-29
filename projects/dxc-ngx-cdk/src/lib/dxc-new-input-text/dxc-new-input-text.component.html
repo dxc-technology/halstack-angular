@@ -1,4 +1,4 @@
-<label class="inputLabel" htmlFor="{{ random }}">
+<label *ngIf="label" class="inputLabel" htmlFor="{{ random }}">
   {{ label }}
   <span *ngIf="optional" class="inputOptionalLabel">(Optional)</span>
 </label>

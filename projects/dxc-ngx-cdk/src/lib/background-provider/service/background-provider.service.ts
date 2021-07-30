@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Subject } from 'rxjs';
 
 @Injectable(
   {
-    providedIn: 'root'
+    providedIn: 'any'
   }
 )
 export class BackgroundProviderService {
 
-  $changeColor = new BehaviorSubject('');
+  $changeColor = new Subject();
 
   constructor() {}
 

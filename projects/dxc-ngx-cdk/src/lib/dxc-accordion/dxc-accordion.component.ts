@@ -104,6 +104,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.currentBackgroundColor = this.cssUtils.readProperty('--accordion-backgroundColor');
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

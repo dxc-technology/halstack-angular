@@ -9,6 +9,6 @@ export class AccordionPreviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
+ }
 
 }

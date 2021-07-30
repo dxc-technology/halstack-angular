@@ -75,8 +75,8 @@ export class DxcButtonComponent {
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {}
 
-  ngAfterViewChecked() {
-    if (this.dxcButtonIcon.length !== 0) {
+  ngAfterViewInit() {
+    if (this.dxcButtonIcon?.length !== 0) {
       this.iconSrc = "";
     }
     this.cdRef.detectChanges();
@@ -95,16 +95,18 @@ export class DxcButtonComponent {
   }
 
   ngOnInit() {
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.bgProviderService.$changeColor.subscribe((value) => {
       if (value === "dark") {
+        console.log('mode is dark');
         this.lightBackground = false;
         this.darkBackground = true;
       } else if (value === "light") {
+        console.log('mode is light');
         this.lightBackground = true;
         this.darkBackground = false;
       }
     });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   public onClickHandler($event: any): void {

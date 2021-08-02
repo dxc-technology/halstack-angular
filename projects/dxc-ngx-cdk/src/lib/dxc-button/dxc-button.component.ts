@@ -52,11 +52,14 @@ export class DxcButtonComponent {
   @Output() onClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
-  @HostBinding("class.light") lightBackground: boolean = true;
-  @HostBinding("class.dark") darkBackground: boolean = false;
+  // @HostBinding("class.light") lightBackground: boolean = true;
+  // @HostBinding("class.dark") darkBackground: boolean = false;
 
   @ContentChildren(DxcButtonIconComponent)
   dxcButtonIcon: QueryList<DxcButtonIconComponent>;
+
+  lightBackground: boolean = true;
+  darkBackground: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     mode: "primary",
@@ -73,7 +76,22 @@ export class DxcButtonComponent {
     private utils: CssUtils,
     private cdRef: ChangeDetectorRef,
     @Optional() public bgProviderService?: BackgroundProviderService
-  ) {}
+  ) {
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      setTimeout(() => {
+        if (value === "dark") {
+          this.lightBackground = false;
+          this.darkBackground = true;
+        } else if (value === "light") {
+          this.lightBackground = true;
+          this.darkBackground = false;
+        }
+        this.className = `${this.getDynamicStyle(
+          this.defaultInputs.getValue()
+        )}`;
+      }, 0);
+    });
+  }
 
   ngAfterViewInit() {
     if (this.dxcButtonIcon?.length !== 0) {
@@ -96,17 +114,6 @@ export class DxcButtonComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.bgProviderService.$changeColor.subscribe((value) => {
-      if (value === "dark") {
-        console.log('mode is dark');
-        this.lightBackground = false;
-        this.darkBackground = true;
-      } else if (value === "light") {
-        console.log('mode is light');
-        this.lightBackground = true;
-        this.darkBackground = false;
-      }
-    });
   }
 
   public onClickHandler($event: any): void {
@@ -233,8 +240,9 @@ export class DxcButtonComponent {
 
   getPrimaryStyle() {
     return css`
-      ${this.getPrimaryLightStyle()}
-      ${this.getPrimaryDarkStyle()}
+      ${this.lightBackground
+        ? this.getPrimaryLightStyle()
+        : this.getPrimaryDarkStyle()}
       button {
         padding-top: var(--button-primaryPaddingTop);
         padding-bottom: var(--button-primaryPaddingBottom);
@@ -253,8 +261,9 @@ export class DxcButtonComponent {
   }
   getSecondaryStyle() {
     return css`
-      ${this.getSecondaryLightStyle()}
-      ${this.getSecondaryDarkStyle()}
+      ${this.lightBackground
+        ? this.getSecondaryLightStyle()
+        : this.getSecondaryDarkStyle()}
       button {
         padding-top: var(--button-secondaryPaddingTop);
         padding-bottom: var(--button-secondaryPaddingBottom);
@@ -273,8 +282,9 @@ export class DxcButtonComponent {
   }
   getTextStyle() {
     return css`
-      ${this.getTextLightStyle()}
-      ${this.getTextDarkStyle()}
+      ${this.lightBackground
+        ? this.getTextLightStyle()
+        : this.getTextDarkStyle()}
       button {
         padding-top: var(--button-textPaddingTop);
         padding-bottom: var(--button-textPaddingBottom);
@@ -294,28 +304,26 @@ export class DxcButtonComponent {
 
   getPrimaryLightStyle() {
     return css`
-      &.light {
-        button {
-          background: var(--button-primaryBackgroundColor);
-          color: var(--button-primaryFontColor);
-          span.mat-button-ripple {
-            border-color: var(--button-primaryBorderColor);
-          }
-          &:hover:not([disabled]) {
-            background: var(--button-primaryHoverBackgroundColor);
-            color: var(--button-primaryHoverFontColor);
-          }
-          &:disabled {
-            background: var(--button-primaryDisabledBackgroundColor);
-            color: var(--button-primaryDisabledFontColor) !important;
-          }
-          &:focus:not([disabled]) {
-            outline: -webkit-focus-ring-color auto 2px;
-            outline-color: var(--button-focusColor);
-          }
-          &:active:not([disabled]) {
-            background: var(--button-primaryActiveBackgroundColor);
-          }
+      button {
+        background: var(--button-primaryBackgroundColor);
+        color: var(--button-primaryFontColor);
+        span.mat-button-ripple {
+          border-color: var(--button-primaryBorderColor);
+        }
+        &:hover:not([disabled]) {
+          background: var(--button-primaryHoverBackgroundColor);
+          color: var(--button-primaryHoverFontColor);
+        }
+        &:disabled {
+          background: var(--button-primaryDisabledBackgroundColor);
+          color: var(--button-primaryDisabledFontColor) !important;
+        }
+        &:focus:not([disabled]) {
+          outline: -webkit-focus-ring-color auto 2px;
+          outline-color: var(--button-focusColor);
+        }
+        &:active:not([disabled]) {
+          background: var(--button-primaryActiveBackgroundColor);
         }
       }
     `;
@@ -323,28 +331,26 @@ export class DxcButtonComponent {
 
   getPrimaryDarkStyle() {
     return css`
-      &.dark {
-        button {
-          background: var(--button-primaryBackgroundColorOnDark);
-          color: var(--button-primaryFontColorOnDark);
-          span.mat-button-ripple {
-            border-color: var(--button-primaryBorderColorOnDark);
-          }
-          &:hover:not([disabled]) {
-            background: var(--button-primaryHoverBackgroundColorOnDark);
-            color: var(--button-primaryHoverFontColorOnDark);
-          }
-          &:disabled {
-            background: var(--button-primaryDisabledBackgroundColorOnDark);
-            color: var(--button-primaryDisabledFontColorOnDark) !important;
-          }
-          &:focus:not([disabled]) {
-            outline: -webkit-focus-ring-color auto 2px;
-            outline-color: var(--button-focusColor);
-          }
-          &:active:not([disabled]) {
-            background: var(--button-primaryActiveBackgroundColorOnDark);
-          }
+      button {
+        background: var(--button-primaryBackgroundColorOnDark);
+        color: var(--button-primaryFontColorOnDark);
+        span.mat-button-ripple {
+          border-color: var(--button-primaryBorderColorOnDark);
+        }
+        &:hover:not([disabled]) {
+          background: var(--button-primaryHoverBackgroundColorOnDark);
+          color: var(--button-primaryHoverFontColorOnDark);
+        }
+        &:disabled {
+          background: var(--button-primaryDisabledBackgroundColorOnDark);
+          color: var(--button-primaryDisabledFontColorOnDark) !important;
+        }
+        &:focus:not([disabled]) {
+          outline: -webkit-focus-ring-color auto 2px;
+          outline-color: var(--button-focusColor);
+        }
+        &:active:not([disabled]) {
+          background: var(--button-primaryActiveBackgroundColorOnDark);
         }
       }
     `;
@@ -352,38 +358,36 @@ export class DxcButtonComponent {
 
   getSecondaryLightStyle() {
     return css`
-      &.light {
-        button {
-          color: var(--button-secondaryFontColor);
+      button {
+        color: var(--button-secondaryFontColor);
+        background-color: var(--button-secondaryBackgroundColor);
+        span.mat-button-ripple {
+          border-color: var(--button-secondaryOutlinedColor);
+        }
+        &:hover:not([disabled]) {
+          span.mat-button-ripple {
+            border-color: var(--button-secondaryHoverOutlinedColor);
+          }
+          background: var(--button-secondaryHoverBackgroundColor);
+          color: var(--button-secondaryHoverFontColor);
+        }
+        &:disabled {
+          color: var(--button-secondaryDisabledFontColor) !important;
+          span.mat-button-ripple {
+            border-color: var(--button-secondaryDisabledOutlinedColor);
+          }
+        }
+        &:focus {
+          outline: -webkit-focus-ring-color auto 2px;
+          outline-color: var(--button-focusColor);
           background-color: var(--button-secondaryBackgroundColor);
+          color: var(--button-secondaryHoverFontColor);
+        }
+        &:active:not([disabled]) {
+          background: var(--button-secondaryActiveBackgroundColor);
+          color: var(--button-secondaryHoverFontColor);
           span.mat-button-ripple {
             border-color: var(--button-secondaryOutlinedColor);
-          }
-          &:hover:not([disabled]) {
-            span.mat-button-ripple {
-              border-color: var(--button-secondaryHoverOutlinedColor);
-            }
-            background: var(--button-secondaryHoverBackgroundColor);
-            color: var(--button-secondaryHoverFontColor);
-          }
-          &:disabled {
-            color: var(--button-secondaryDisabledFontColor) !important;
-            span.mat-button-ripple {
-              border-color: var(--button-secondaryDisabledOutlinedColor);
-            }
-          }
-          &:focus {
-            outline: -webkit-focus-ring-color auto 2px;
-            outline-color: var(--button-focusColor);
-            background-color: var(--button-secondaryBackgroundColor);
-            color: var(--button-secondaryHoverFontColor);
-          }
-          &:active:not([disabled]) {
-            background: var(--button-secondaryActiveBackgroundColor);
-            color: var(--button-secondaryHoverFontColor);
-            span.mat-button-ripple {
-              border-color: var(--button-secondaryOutlinedColor);
-            }
           }
         }
       }
@@ -392,40 +396,38 @@ export class DxcButtonComponent {
 
   getSecondaryDarkStyle() {
     return css`
-      &.dark {
-        button {
-          color: var(--button-secondaryFontColorOnDark);
+      button {
+        color: var(--button-secondaryFontColorOnDark);
+        background-color: var(--button-secondaryBackgroundColorOnDark);
+        span.mat-button-ripple {
+          border-color: var(--button-secondaryOutlinedColorOnDark);
+        }
+        &:hover:not([disabled]) {
+          span.mat-button-ripple {
+            border-color: var(--button-secondaryHoverOutlinedColorOnDark);
+          }
+          background: var(--button-secondaryHoverBackgroundColorOnDark);
+          color: var(--button-secondaryHoverFontColorOnDark);
+        }
+        &:disabled {
+          border-color: var(--button-secondaryDisabledOutlinedColorOnDark);
+          color: var(--button-secondaryDisabledFontColorOnDark) !important;
+          span.mat-button-ripple {
+            border-color: var(--button-secondaryDisabledOutlinedColorOnDark);
+          }
+        }
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--button-focusColor);
           background-color: var(--button-secondaryBackgroundColorOnDark);
+          color: var(--button-secondaryHoverFontColorOnDark);
+        }
+        &:active:not([disabled]) {
           span.mat-button-ripple {
             border-color: var(--button-secondaryOutlinedColorOnDark);
           }
-          &:hover:not([disabled]) {
-            span.mat-button-ripple {
-              border-color: var(--button-secondaryHoverOutlinedColorOnDark);
-            }
-            background: var(--button-secondaryHoverBackgroundColorOnDark);
-            color: var(--button-secondaryHoverFontColorOnDark);
-          }
-          &:disabled {
-            border-color: var(--button-secondaryDisabledOutlinedColorOnDark);
-            color: var(--button-secondaryDisabledFontColorOnDark) !important;
-            span.mat-button-ripple {
-              border-color: var(--button-secondaryDisabledOutlinedColorOnDark);
-            }
-          }
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--button-focusColor);
-            background-color: var(--button-secondaryBackgroundColorOnDark);
-            color: var(--button-secondaryHoverFontColorOnDark);
-          }
-          &:active:not([disabled]) {
-            span.mat-button-ripple {
-              border-color: var(--button-secondaryOutlinedColorOnDark);
-            }
-            background: var(--button-secondaryActiveBackgroundColorOnDark);
-            color: var(--button-secondaryHoverFontColorOnDark);
-          }
+          background: var(--button-secondaryActiveBackgroundColorOnDark);
+          color: var(--button-secondaryHoverFontColorOnDark);
         }
       }
     `;
@@ -433,31 +435,29 @@ export class DxcButtonComponent {
 
   getTextLightStyle() {
     return css`
-      &.light {
-        button {
+      button {
+        background-color: var(--button-textBackgroundColor);
+        color: var(--button-textFontColor);
+        span.mat-button-ripple {
+          border-color: var(--button-textBorderColor);
+        }
+        &:hover:not([disabled]) {
+          background: var(--button-textHoverBackgroundColor);
+          color: var(--button-textHoverFontColor);
+        }
+        &:disabled {
+          color: var(--button-textDisabledFontColor) !important;
+          background: var(--button-textDisabledBackgroundColor);
+        }
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--button-focusColor);
           background-color: var(--button-textBackgroundColor);
           color: var(--button-textFontColor);
-          span.mat-button-ripple {
-            border-color: var(--button-textBorderColor);
-          }
-          &:hover:not([disabled]) {
-            background: var(--button-textHoverBackgroundColor);
-            color: var(--button-textHoverFontColor);
-          }
-          &:disabled {
-            color: var(--button-textDisabledFontColor) !important;
-            background: var(--button-textDisabledBackgroundColor);
-          }
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--button-focusColor);
-            background-color: var(--button-textBackgroundColor);
-            color: var(--button-textFontColor);
-          }
-          &:active:not([disabled]) {
-            background-color: var(--button-textActiveBackgroundColor);
-            color: var(--button-textHoverFontColor);
-          }
+        }
+        &:active:not([disabled]) {
+          background-color: var(--button-textActiveBackgroundColor);
+          color: var(--button-textHoverFontColor);
         }
       }
     `;
@@ -465,31 +465,29 @@ export class DxcButtonComponent {
 
   getTextDarkStyle() {
     return css`
-      &.dark {
-        button {
+      button {
+        background-color: var(--button-textBackgroundColorOnDark);
+        color: var(--button-textFontColorOnDark);
+        span.mat-button-ripple {
+          border-color: var(--button-textBorderColorOnDark);
+        }
+        &:hover:not([disabled]) {
+          background: var(--button-textHoverBackgroundColorOnDark);
+          color: var(--button-textHoverFontColorOnDark);
+        }
+        &:disabled {
+          color: var(--button-textDisabledFontColorOnDark) !important;
+          background: var(--button-textDisabledBackgroundColorOnDark);
+        }
+        &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+          outline-color: var(--button-focusColor);
           background-color: var(--button-textBackgroundColorOnDark);
           color: var(--button-textFontColorOnDark);
-          span.mat-button-ripple {
-            border-color: var(--button-textBorderColorOnDark);
-          }
-          &:hover:not([disabled]) {
-            background: var(--button-textHoverBackgroundColorOnDark);
-            color: var(--button-textHoverFontColorOnDark);
-          }
-          &:disabled {
-            color: var(--button-textDisabledFontColorOnDark) !important;
-            background: var(--button-textDisabledBackgroundColorOnDark);
-          }
-          &:focus {
-            outline: -webkit-focus-ring-color auto 1px;
-            outline-color: var(--button-focusColor);
-            background-color: var(--button-textBackgroundColorOnDark);
-            color: var(--button-textFontColorOnDark);
-          }
-          &:active:not([disabled]) {
-            background-color: var(--button-textActiveBackgroundColorOnDark);
-            color: var(--button-textHoverFontColorOnDark);
-          }
+        }
+        &:active:not([disabled]) {
+          background-color: var(--button-textActiveBackgroundColorOnDark);
+          color: var(--button-textHoverFontColorOnDark);
         }
       }
     `;

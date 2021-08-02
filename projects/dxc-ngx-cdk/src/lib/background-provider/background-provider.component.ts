@@ -17,9 +17,8 @@ import { TinyColor } from '@ctrl/tinycolor';
 export class BackgroundProviderComponent implements OnInit {
   @Input() color: string;
 
-
   constructor(
-    @Optional() @Self() private bgProviderService: BackgroundProviderService
+    @Optional() private bgProviderService: BackgroundProviderService
   ) {}
 
    ngOnInit() {
@@ -31,7 +30,7 @@ export class BackgroundProviderComponent implements OnInit {
 
   private setType() {
     const colorType = this.checkColorType(this.color) ;
-    this.bgProviderService.changeBackgroundColor(colorType);
+    this.bgProviderService.changeBackgroundColor(colorType ? colorType : null);
   }
 
   private checkColorType(color:string):string{

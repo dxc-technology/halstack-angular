@@ -1,16 +1,17 @@
-import { Component, OnInit, Optional, SkipSelf, Input } from '@angular/core';
-import { TinyColor } from '@ctrl/tinycolor';
-import  { BackgroundProviderService}  from "./service/background-provider.service";
+import { Component, OnInit, Optional, SkipSelf, Input } from "@angular/core";
+import { TinyColor } from "@ctrl/tinycolor";
+import { BackgroundProviderService } from "./service/background-provider.service";
 
 @Component({
-  selector: 'background-provider-inner',
-  template: '<div><ng-content></ng-content></div>'
+  selector: "background-provider-inner",
+  template: "<div><ng-content></ng-content></div>",
 })
 export class BackgroundProviderInnerComponent implements OnInit {
-
   @Input() color: string;
 
-  constructor(@Optional() @SkipSelf() public bgProviderService: BackgroundProviderService) {}
+  constructor(
+    @Optional() @SkipSelf() public bgProviderService: BackgroundProviderService
+  ) {}
 
   ngOnInit() {
     if (this.color) {
@@ -27,5 +28,4 @@ export class BackgroundProviderInnerComponent implements OnInit {
     const colorInstance = new TinyColor(color);
     return colorInstance.isDark() ? "dark" : "light";
   }
-
 }

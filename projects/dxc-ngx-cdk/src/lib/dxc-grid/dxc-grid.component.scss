@@ -197,3 +197,9 @@ margin:0px !Important;
    position: inherit; 
    z-index: 999;
 }
+
+::ng-deep .mat-chip-list-wrapper {
+  max-height: 55px;
+  height: 54px;
+  overflow-y: auto;
+}

@@ -1,4 +1,4 @@
-<mat-form-field *ngIf="isSearchable" class="col-md-12">
+<mat-form-field *ngIf="isSearchable" class="col-md-12 mt-4">
   <input *ngIf="isSearchable" class="col-md-8" matInput #search id="searchInput"
     (keyup)="applyFilter($event.target.value)" placeholder="Search here....">
   <div class="col-md-1 float-right m-0 p-0 pt-2">
@@ -37,10 +37,11 @@
           *ngIf="(column && column.toLowerCase() !=='action' && resource)">
           {{resource[column]}}</span>
       </th>
-      <td mat-cell *matCellDef="let element; let j = index" class="cell-position cell-focus pr-3 px-2" id="table-cell{{j}}">
+      <td mat-cell *matCellDef="let element; let j = index" class="cell-position cell-focus pr-3 px-2"
+        id="table-cell{{j}}">
         <a href="javascript:void(0);" [ngClass]="{'cellContentPostion': first, 'link-decoration' : true}"
           *ngIf="(column && column.toLowerCase() !=='action' && element[column] && element[column].toLowerCase() != 'false' && element[column].toLowerCase() != 'true')"
-          (click)="onRowSelection(element)" attr.aria-label="{{resource[column] + ' ' + element[column]}}">
+          (click)="onRowSelection(element)" attr.aria-label="{{resource[column] + ' ' + element[column]}}" matTooltip="{{resource[column] + ' ' + element[column]}}">
           <span [ngSwitch]="columns?.length">
             <div class="crud-col" *ngSwitchCase="1">
               {{element[column]}}
@@ -80,22 +81,27 @@
         </button>
         <div class="row gridBtnPostion" *ngIf="first" [ngClass]="element.status ? 'search-column-width': ''">
           <span class="iconPostion">
-            <a href="javascript:void(0);" class="material-icons iconProp icon playPause" role="button" [attr.aria-label]="''" 
-              *ngIf="isIconRequired && !element.error" [ngClass]="element.status ? 'green-icon': 'red-icon'"
+            <a href="javascript:void(0);" class="material-icons iconProp icon playPause" role="button"
+              [attr.aria-label]="''" *ngIf="isIconRequired && !element.error"
+              [ngClass]="element.status ? 'green-icon': 'red-icon'"
               (click)="element.status=!element.status">{{element.status ? 'check' : 'close' }}</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="isEditIconRequired && element.status" role="button" [attr.aria-label]="''" 
-              (click)="editRow(j, element)">mode_edit</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [attr.aria-label]="''" 
+            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="isEditIconRequired && element.status"
+              role="button" [attr.aria-label]="''" (click)="editRow(j, element)">mode_edit</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [attr.aria-label]="''"
               *ngIf="!element.error && element.status && isEditIconRequired"
               [ngClass]="element.required ? 'green-icon': ''" (click)="element.required=!element.required">star</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button" [attr.aria-label]="''" 
-              [ngClass]="element.action ? 'blink_me': ''" (click)="moveUp(element)">arrow_upward</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button" [attr.aria-label]="''" 
-              [ngClass]="element.action ? 'blink_me': ''" (click)="moveDown(element)">arrow_downward</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [matTooltip]="globalResource.gridRowEdit" [attr.aria-label]="globalResource.gridRowEdit" 
+            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button"
+              [attr.aria-label]="''" [ngClass]="element.action ? 'blink_me': ''"
+              (click)="moveUp(element)">arrow_upward</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button"
+              [attr.aria-label]="''" [ngClass]="element.action ? 'blink_me': ''"
+              (click)="moveDown(element)">arrow_downward</a>
+            <a href="javascript:void(0);" class="material-icons iconProp" role="button"
+              [matTooltip]="globalResource.gridRowEdit" [attr.aria-label]="globalResource.gridRowEdit"
               *ngIf="isEditRequired && element[uniqueIdentifier] != '' && (!isEditForm || !showPopup)"
               (click)="expandRow(j, element)">mode_edit</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [matTooltip]="globalResource.gridRowDelete" [attr.aria-label]="globalResource.gridRowDelete" 
+            <a href="javascript:void(0);" class="material-icons iconProp" role="button"
+              [matTooltip]="globalResource.gridRowDelete" [attr.aria-label]="globalResource.gridRowDelete"
               *ngIf="isDeleteRequired && element[uniqueIdentifier] != '' && !isEditForm"
               (click)="deleteRow(element)">delete</a>
           </span>
@@ -125,7 +131,8 @@
                   [matTooltip]="globalResource.closes" (onClick)="closeExpandRow(element)">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper">
-                      <mat-icon class="mat-icon material-icons" [attr.aria-label]="globalResource.closes">cancel</mat-icon>
+                      <mat-icon class="mat-icon material-icons" [attr.aria-label]="globalResource.closes">cancel
+                      </mat-icon>
                     </span>
                   </dxc-button-icon>
                 </dxc-button>
@@ -139,9 +146,9 @@
                     </dxc-label>
                     <div>
                       <!-- multiline="{{editField.multiline}}""-->
-                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}" [ariaRequired]="editField.required"
-                        formControlName="{{editField.name}}" [attr.aria-disabled]="editField.disabled" size="fillParent"
-                        [disabled]="editField.disabled"
+                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
+                        [ariaRequired]="editField.required" formControlName="{{editField.name}}"
+                        [attr.aria-disabled]="editField.disabled" size="fillParent" [disabled]="editField.disabled"
                         [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                       </dxc-input-text>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
@@ -153,10 +160,11 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" attr.aria-required="{{editField.required}}"
-                        aria-labelledby="cl_{{editField.name}}" sizes="fitContent" margin="small"
-                        [attr.aria-disabled]="editField.disabled" [disabled]="editField.disabled"
-                        formControlName="{{editField.name}}" [multiple]="editField.multiple"
+                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0"
+                        attr.aria-required="{{editField.required}}" aria-labelledby="cl_{{editField.name}}"
+                        sizes="fitContent" margin="small" [attr.aria-disabled]="editField.disabled"
+                        [disabled]="editField.disabled" formControlName="{{editField.name}}"
+                        [multiple]="editField.multiple"
                         [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                         <dxc-select-option *ngFor="let option of editField.options" value="{{option.value}}"
                           label="{{option.label}}">
@@ -197,11 +205,11 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
-                        [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
-                        [resourcerequest]="resourceRequest" [gridstaterequest]="gridStateRequest"
-                        formControlName="{{editField.name}}"></dxc-code-lookup>
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
+                        [gridmode]="GridModeValues.MODAl" [lookuptype]="editField.lookupType"
+                        [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
+                        [gridstaterequest]="gridStateRequest" formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
                       </dxc-show-errors>
@@ -211,10 +219,11 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
-                        [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
-                        [resourcerequest]="resourceRequest" [gridstaterequest]="editField.supplementalgridstateRequest"
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
+                        [gridmode]="GridModeValues.MODAl" [lookuptype]="editField.lookupType"
+                        [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
+                        [gridstaterequest]="editField.supplementalgridstateRequest"
                         formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -225,11 +234,11 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-orghlookup [removeiconarialabel]="resource[editField.label]" [ariaRequired]="editField.required"
-                        [label]="resource[editField.label]" [lookuptype]="editField.lookupType"
-                        [level]="editField.level" [resourcerequest]="orghresourceRequest" [topnode]="topNode"
-                        [treerequest]="treeSourceRequest" [gridStateRequest]="orghgridStateRequest"
-                        formControlName="{{editField.name}}">
+                      <dxc-orghlookup [removeiconarialabel]="resource[editField.label]"
+                        [ariaRequired]="editField.required" [label]="resource[editField.label]"
+                        [lookuptype]="editField.lookupType" [level]="editField.level"
+                        [resourcerequest]="orghresourceRequest" [topnode]="topNode" [treerequest]="treeSourceRequest"
+                        [gridStateRequest]="orghgridStateRequest" formControlName="{{editField.name}}">
                       </dxc-orghlookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -240,11 +249,12 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [addrequired]="editField.addrequired" [autosearchrequired]="editField.autosearchrequired"
-                        [minimumColumns]="editField.minimumColumns" [maximumColumns]="editField.maximumColumns"
-                        [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
-                        [lookuptype]="lookupType.MULTI" formControlName="{{editField.name}}"></dxc-crud-lookup>
+                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [addrequired]="editField.addrequired"
+                        [autosearchrequired]="editField.autosearchrequired" [minimumColumns]="editField.minimumColumns"
+                        [maximumColumns]="editField.maximumColumns" [label]="resource[editField.label]"
+                        [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.MULTI"
+                        formControlName="{{editField.name}}"></dxc-crud-lookup>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
                       </dxc-show-errors>
@@ -267,13 +277,15 @@
                       </dxc-show-errors>
                     </div>
                   </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.textArea">
+                  <div class="col-md-{{editField.columnSize ? editField.columnSize : '4'}} mb-4"
+                    *ngSwitchCase="fieldsType.textArea">
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
                       <!--maxLength={{editField.maxLength}} autosizeMaxRows="{{editField.autosizeMaxRows}}" textareaAutosize="{{editField.textareaAutosize}}"  autosizeMinRows="{{editField.autosizeMinRows}}"-->
-                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}" [ariaRequired]="editField.required"
-                        [attr.aria-disabled]="editField.disabled">
+                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}"
+                        [ariaRequired]="editField.required" [attr.aria-disabled]="editField.disabled"
+                        size="{{editField.size ? editField.size : 'fillParent'}}">
                       </dxc-textarea>
                       <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -311,7 +323,8 @@
     </ng-container> -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
     <tr mat-row *matRowDef="let element; let rowIndex = index; columns: displayedColumns; when:isToShowRow"
-      class="container example-element-row" [class.example-expanded-row]="expandedElement === element" id="tableRowItem{{rowIndex}}">
+      class="container example-element-row" [class.example-expanded-row]="expandedElement === element"
+      id="tableRowItem{{rowIndex}}">
     </tr>
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
     <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -321,8 +334,8 @@
 </div>
 <mat-paginator [pageSizeOptions]="paginationOptions" showFirstLastButtons *ngIf="allowpagination && loaded">
 </mat-paginator>
-<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" *ngIf="showPopup" isCloseVisible="true" [closeButtonLabel]="globalResource.closes"
-  (onCloseClick)="onClosePopup()">
+<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" *ngIf="showPopup" isCloseVisible="true"
+[closeButtonLabel]="globalResource?.closes" (onCloseClick)="onClosePopup()">
   <div>
     <div class="modal-header pb-2 pt-2">
       <h6 class="modal-title ml-2">
@@ -334,7 +347,7 @@
     <div class="modal-body supp-grid-scroll">
       <div>
         <div class="row float-right mr-1 mb-2">
-          <dxc-button size="small" mode="secondary" id="rowsave" [ariaLabel]="resource['saveButton']"
+          <dxc-button size="small" mode="secondary" id="rowsave" ariaLabel="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}" matTooltip="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}"
             (onClick)="rowsave(suppgridForm)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">
@@ -357,9 +370,9 @@
                     </dxc-label>
                     <div>
                       <!--multiline="{{editField.multiline}}"-->
-                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}" [ariaRequired]="editField.required"
-                        formControlName="{{editField.name}}" [attr.aria-disabled]="editField.disabled" size="fillParent"
-                        [disabled]="editField.disabled"
+                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
+                        [ariaRequired]="editField.required" formControlName="{{editField.name}}"
+                        [attr.aria-disabled]="editField.disabled" size="fillParent" [disabled]="editField.disabled"
                         [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                       </dxc-input-text>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
@@ -371,10 +384,11 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" [attr.aria-required]="editField.required"
-                        aria-labelledby="cl_{{editField.name}}" sizes="fitContent" margin="small"
-                        [attr.aria-disabled]="editField.disabled" [disabled]="editField.disabled"
-                        formControlName="{{editField.name}}" [multiple]="editField.multiple"
+                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0"
+                        [attr.aria-required]="editField.required" aria-labelledby="cl_{{editField.name}}"
+                        sizes="fitContent" margin="small" [attr.aria-disabled]="editField.disabled"
+                        [disabled]="editField.disabled" formControlName="{{editField.name}}"
+                        [multiple]="editField.multiple"
                         [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
                         <dxc-select-option *ngFor="let option of editField.options" value="{{option.value}}"
                           label="{{option.label}}">
@@ -415,11 +429,12 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
-                        [disabled]="editField.disabled" [lookuptype]="editField.lookupType"
-                        [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
-                        [gridstaterequest]="gridStateRequest" formControlName="{{editField.name}}"></dxc-code-lookup>
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
+                        [gridmode]="GridModeValues.MODAl" [disabled]="editField.disabled"
+                        [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
+                        [resourcerequest]="resourceRequest" [gridstaterequest]="gridStateRequest"
+                        formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
                       </dxc-show-errors>
@@ -429,11 +444,11 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
-                        [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
-                        [allowServerFilter]="editField.allowServerFilter" [resourcerequest]="resourceRequest"
-                        [gridstaterequest]="editField.supplementalgridstateRequest"
+                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
+                        [gridmode]="GridModeValues.MODAl" [lookuptype]="editField.lookupType"
+                        [sourcerequest]="editField.codeRequest" [allowServerFilter]="editField.allowServerFilter"
+                        [resourcerequest]="resourceRequest" [gridstaterequest]="editField.supplementalgridstateRequest"
                         formControlName="{{editField.name}}"></dxc-code-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -444,11 +459,12 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-orghlookup [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [label]="resource[editField.label]" [lookuptype]="editField.lookupType"
-                        [disabled]="editField.disabled" [resourcerequest]="orghresourceRequest" [topnode]="topNode"
-                        [level]="editField.level" [treerequest]="treeSourceRequest"
-                        [gridStateRequest]="orghgridStateRequest" formControlName="{{editField.name}}">
+                      <dxc-orghlookup [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
+                        [lookuptype]="editField.lookupType" [disabled]="editField.disabled"
+                        [resourcerequest]="orghresourceRequest" [topnode]="topNode" [level]="editField.level"
+                        [treerequest]="treeSourceRequest" [gridStateRequest]="orghgridStateRequest"
+                        formControlName="{{editField.name}}">
                       </dxc-orghlookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
@@ -459,11 +475,12 @@
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
-                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required" [removeiconarialabel]="resource[editField.label]"
-                        [addrequired]="editField.addrequired" [autosearchrequired]="editField.autosearchrequired"
-                        [minimumColumns]="editField.minimumColumns" [maximumColumns]="editField.maximumColumns"
-                        [label]="resource[editField.label]" [gridmode]="GridModeValues.MODAl"
-                        [lookuptype]="lookupType.MULTI" formControlName="{{editField.name}}"></dxc-crud-lookup>
+                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
+                        [removeiconarialabel]="resource[editField.label]" [addrequired]="editField.addrequired"
+                        [autosearchrequired]="editField.autosearchrequired" [minimumColumns]="editField.minimumColumns"
+                        [maximumColumns]="editField.maximumColumns" [label]="resource[editField.label]"
+                        [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.MULTI"
+                        formControlName="{{editField.name}}"></dxc-crud-lookup>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
                       </dxc-show-errors>
@@ -486,13 +503,13 @@
                       </dxc-show-errors>
                     </div>
                   </div>
-                  <div class="col-md-{{editField.columnSize}} mb-4" *ngSwitchCase="fieldsType.textArea">
+                  <div class="col-md-{{editField.columnSize ? editField.columnSize : '4'}} mb-4" *ngSwitchCase="fieldsType.textArea">
                     <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
                     </dxc-label>
                     <div>
                       <!--maxLength={{editField.maxLength}} autosizeMaxRows="{{editField.autosizeMaxRows}}" textareaAutosize="{{editField.textareaAutosize}}"  autosizeMinRows="{{editField.autosizeMinRows}}"-->
-                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}" [ariaRequired]="editField.required"
-                        [attr.aria-disabled]="editField.disabled">
+                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}"
+                        [ariaRequired]="editField.required" [attr.aria-disabled]="editField.disabled" size="{{editField.size ? editField.size : 'fillParent'}}">
                       </dxc-textarea>
                       <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
                         [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">

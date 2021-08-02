@@ -1,8 +1,8 @@
 <div class="toolbarcontainer p-1">
-  <dxc-button *ngIf="allowSearch" size="small" id="search-1" matTooltip="Search" class="search-button" mode="secondary" >
+  <dxc-button *ngIf="allowSearch" size="small" id="search-1" matTooltip="Search" class="search-button" mode="secondary" tabIndexValue="-1">
     <dxc-button-icon>
         <mat-icon class="mat-icon material-icons" attr.aria-label="Search">search</mat-icon>
-        <input type="search" class="search-input-box" autocomplete="off" placeholder="Search" (input)="onInput($event)">
+        <input type="search" class="search-input-box" autocomplete="off" placeholder="Search" (input)="onInput($event)" autofocus>
     </dxc-button-icon>
   </dxc-button>
   <ng-container *ngFor="let btn of toolBarList; index as i; first as isFirst; last as isLast;">

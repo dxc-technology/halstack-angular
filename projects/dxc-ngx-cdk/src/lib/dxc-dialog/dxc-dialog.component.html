@@ -5,7 +5,7 @@
     <div class="dialogContainer">
       <div class="content" tabindex="0" role="dialog" (keydown)="startKeyPress($event)" [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledBy" 
       [attr.aria-describedby]="ariaDescribedBy" #dialogboxstart>
-        <a href="javascript:void(0);" class="closeIcon" role="closeIcon" *ngIf="isCloseVisible" [attr.aria-label]="closeButtonLabel"
+        <a href="javascript:void(0);" class="closeIcon" *ngIf="isCloseVisible" [attr.aria-label]="closeButtonLabel" [matTooltip]="closeButtonLabel"
           (click)="onCloseHandler($event)" [tabindex]="tabIndexValue" role="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path

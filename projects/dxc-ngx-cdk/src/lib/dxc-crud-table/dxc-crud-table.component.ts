@@ -240,7 +240,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     this.maxCharsInColumn = this.maxChar; // maximum charatcters in a column
     this.dataSource.data = [];
     this.globalResource = this.config.configservice.Resource;
-    console.log(JSON.stringify(this.globalResource));
     this.saveIconName = this.createRequest ? 'save' : 'done';
     this.uniqueColumn = this.uniqueIdentifier;
     this.gridGlobalRequiredValidation = this.config.configservice.GlobalResource.gridGlobalRequiredValidation?.description;

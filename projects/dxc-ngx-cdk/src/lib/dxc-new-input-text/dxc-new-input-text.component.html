@@ -75,6 +75,7 @@
     [id]="autoSuggestId"
     role="listbox"
     class="options"
+    *ngIf="autocompleteOptions && autocompleteOptions.length > 0"
   >
     <li
       *ngFor="

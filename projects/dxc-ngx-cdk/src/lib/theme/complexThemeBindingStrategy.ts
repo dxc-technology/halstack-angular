@@ -44,7 +44,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setLightness(theme?.accordion?.textColor, 35) ??
       tokens["--accordion-disabledFontColor"];
     proccessedTokens["--accordion-backgroundColor"] =
-    theme?.accordion?.baseColor ?? tokens["--accordion-backgroundColor"];
+      theme?.accordion?.baseColor ?? tokens["--accordion-backgroundColor"];
 
     //TABS
     proccessedTokens["--tabs-selectedFontColor"] =
@@ -312,6 +312,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--wizard-selectedBackgroundColor"];
     proccessedTokens["--wizard-selectedFont"] =
       theme?.wizard?.textColor ?? tokens["--wizard-selectedFont"];
+
+    //THEME PALETTE
+    proccessedTokens["--theme-palette-borderColor"] =
+      theme?.themePalette?.baseColor ??
+      tokens["--theme-palette-borderColor"];
 
     //Others
     for (const key in theme.customs) {

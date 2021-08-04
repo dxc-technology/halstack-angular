@@ -241,6 +241,8 @@ export * from './lib/dxc-code-editor/dxc-code-editor.component';
 export * from './lib/dxc-text-editor/dxc-text-editor.module';
 export * from './lib/dxc-text-editor/dxc-text-editor.component';
 
+export * from './lib/dxc-theme-palette/dxc-theme-palette.module';
+export * from './lib/dxc-theme-palette/dxc-theme-palette.component';
 
 export * from './lib/dxc-localstorage/dxc-localstorage.module';
 

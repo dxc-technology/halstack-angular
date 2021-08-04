@@ -167,7 +167,6 @@ export class DxcTextInputComponent
     this.onKeyPress.emit($event);
   }
 
-
   writeValue(val: any): void {
     this.renderedValue = val || "";
   }

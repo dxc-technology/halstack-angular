@@ -15,7 +15,8 @@ export interface IConfig {
   Settings: { [key: string]: string };
   Resource: { [key: string]: string };
   GlobalResource?: { [key: string]: { description: string, type: string } };
-  ThemeColors?: Array<any>
+  ThemeColors?: Array<any>;
+  ThemeMode?: string;
 }
 
 

@@ -297,6 +297,9 @@ export const componentTokens = {
   "--wizard-disabledBackground": globalTokens.lightGrey,
   "--wizard-disabledFont": globalTokens.darkGrey,
   "--wizard-focusColor": globalTokens.blue,
+
+  //THEME PALETTE
+  "--theme-palette-borderColor": globalTokens.black
 };
 
 export const componentIcons = {

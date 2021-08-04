@@ -28,7 +28,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }],
 })
 export class DxcTextareaComponent
-implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
+  implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
   @HostBinding("class.invalid") isInvalid: boolean = false;
@@ -91,7 +91,7 @@ implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
-
+  private controlled = true;
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onBlur: EventEmitter<any> = new EventEmitter<any>();
 
@@ -147,6 +147,7 @@ implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
 
   writeValue(val: any): void {
     this.renderedValue = val || "";
+    this.controlled = false;
   }
 
   registerOnChange(fn: any): void {
@@ -165,8 +166,9 @@ implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
     this.isDisabled = this.disabled;
     this.isInvalid = this.invalid;
     this.isRequired = this.required;
-
-    this.renderedValue = this.value || "";
+    if (this.controlled) {
+      this.renderedValue = this.value || "";
+    }
     this.label = this.label || "";
     this.onChangeRegister(this.renderedValue);
     const inputs = Object.keys(changes).reduce((result, item) => {

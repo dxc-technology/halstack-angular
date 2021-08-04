@@ -256,6 +256,7 @@ export interface ITextAreaInputProperties extends IFieldsBaseProperties {
   value: string;
   maxLength: number;
   columnSize: number;
+  size?: string;
 }
 
 export interface IDateProperties extends IFieldsBaseProperties {

@@ -1,6 +1,6 @@
 <mat-form-field class="example-chip-list" #field (blur)="onBlur1($event)">
   <mat-chip-list #chipList aria-label="Filter selection">
-    <mat-chip *ngFor="let selectedFilter of resultDisplay" class="chipfilter" [selectable]="selectable"
+    <mat-chip *ngFor="let selectedFilter of resultDisplay" class="chipfilter" [matTooltip]="selectedFilter?.chipText" [selectable]="selectable"
       [removable]="removable" (removed)="remove(selectedFilter)">
       {{selectedFilter.chipText}}
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>

@@ -77,9 +77,19 @@ mat-form-field::ng-deep .mat-form-field-infix {
 }
 
 .chipfilter {
-  margin-bottom: 4%;
+  color: var(--text-muted-color) !important;
+  white-space: nowrap;
+  max-width: 95%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chipdxc {
   top: 50%
+}
+
+::ng-deep .mat-chip-list-wrapper {
+  max-height: 55px;
+  height: 54px;
+  overflow-y: auto;
 }

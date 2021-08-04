@@ -21,7 +21,7 @@ import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
 @Component({
   selector: "dxc-new-input-text",
   templateUrl: "./dxc-new-input-text.component.html",
-  providers: [DxcNewInputTextService, DxcNewInputTextHelper,CssUtils],
+  providers: [DxcNewInputTextService, DxcNewInputTextHelper, CssUtils],
 })
 export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;
@@ -167,6 +167,18 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
+  ngAfterViewInit(): void {
+    if (this.inputRef) {
+      console.log(this.inputRef);
+      if (this.autocompleteOptions.length) {
+        this.inputRef.nativeElement.attributes.role.value = "combobox";
+        this.inputRef.nativeElement.ariaExpanded = this.autosuggestVisible;
+        this.inputRef.nativeElement.ariaControls = this.autoSuggestId;
+      }
+      this.inputRef.nativeElement.ariaDisabled = this.disabled;
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -180,14 +192,17 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnChange(event) {
     this.onChange.emit(event.target.value);
-    this.controlled ? event.target.value = this.value : this.value = event.target.value;
+    this.controlled
+      ? (event.target.value = this.value)
+      : (this.value = event.target.value);
     this.cdRef.detectChanges();
     this.service.setSelectedIndex(-1);
   }
 
   handleDefaultClearAction() {
     this.onChange.emit("");
-    this.handleInternalValue({value: "", nativeValue: this.value });
+    this.handleInternalValue({ value: "", nativeValue: this.value });
+    this.inputRef.nativeElement.focus();
   }
 
   handleActionOnClick(event) {
@@ -196,7 +211,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnBlur(event) {
     this.onBlur.emit(event.target.value);
-    this.handleInternalValue({value: event.target.value, nativeValue: null });
+    this.handleInternalValue({ value: event.target.value, nativeValue: null });
     if (!this.controlled) {
       this.value = event.target.value;
       this.cdRef.detectChanges();
@@ -220,14 +235,17 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnClickOption(event) {
     this.onChange.emit(event);
-    this.handleInternalValue({value: event, nativeValue: this.value});
+    this.handleInternalValue({ value: event, nativeValue: this.value });
     this.handleOnClose();
   }
 
   handleEnterKey() {
     if (this.selectedOption >= 0) {
       this.onChange.emit(this.filteredOptions[this.selectedOption]);
-      this.handleInternalValue({value: this.filteredOptions[this.selectedOption], nativeValue: this.value});
+      this.handleInternalValue({
+        value: this.filteredOptions[this.selectedOption],
+        nativeValue: this.value,
+      });
     }
     this.handleOnClose();
   }
@@ -259,11 +277,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-
-  private handleInternalValue({value, nativeValue}){
+  private handleInternalValue({ value, nativeValue }) {
     if (!this.controlled) {
       this.value = value;
-      if (nativeValue){
+      if (nativeValue) {
         this.inputRef.nativeElement.value = nativeValue;
       }
       this.cdRef.detectChanges();

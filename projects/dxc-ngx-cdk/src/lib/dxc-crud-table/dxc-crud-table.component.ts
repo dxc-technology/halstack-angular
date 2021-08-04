@@ -984,6 +984,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, Afte
     this.dataSource.data[origin] = temp;
     const data = this.dataSource.data;
     this.dataSource.data = [...data];
+    this.onChangeRegister(this.dataSource.data);
   }
 
   addRowFields(col: any, crudFormModel: any) {

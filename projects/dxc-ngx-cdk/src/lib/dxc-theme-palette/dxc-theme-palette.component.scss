@@ -1,0 +1,32 @@
+.theme-colors {
+  width: 294px !important;
+}
+
+.theme-colors .theme-color {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  border-radius: 20px;
+  transition: background .25s;
+}
+
+.theme-colors .theme-color.active,
+.theme-colors .theme-color:hover {
+  background: transparent !important;
+  border-style: solid;
+  border-width: 3px;
+  border-color: transparent;
+}
+
+
+.menu-arrow-up {
+  right: 75px !important;
+}
+
+.theme-palette i {
+  display: none;
+}
+
+.theme-palette .active i {
+  display: block !important;
+}

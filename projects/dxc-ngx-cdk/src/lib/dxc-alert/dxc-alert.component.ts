@@ -13,12 +13,13 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-alert",
   templateUrl: "./dxc-alert.component.html",
   styleUrls: ["./dxc-alert.component.scss"],
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcAlertComponent implements OnChanges {
   @HostBinding("class") className;
@@ -39,6 +40,8 @@ export class DxcAlertComponent implements OnChanges {
   @Output() onClose = new EventEmitter<any>();
   isCloseVisible = false;
   @ViewChild("contents", { static: true }) content: ElementRef;
+
+  currentBackgroundColor: string;
 
   sizes = {
     small: "280px",
@@ -96,22 +99,27 @@ export class DxcAlertComponent implements OnChanges {
   setBackgroundColorByAlertType(type: string) {
     switch (type) {
       case "info":
+        this.currentBackgroundColor = this.utils.readProperty('--alert-infoColor');
         return css`
           background-color: var(--alert-infoColor);
         `;
       case "confirm":
+        this.currentBackgroundColor = this.utils.readProperty('--alert-successColor');
         return css`
           background-color: var(--alert-successColor);
         `;
       case "warning":
+        this.currentBackgroundColor = this.utils.readProperty('--alert-warningColor');
         return css`
           background-color: var(--alert-warningColor);
         `;
       case "error":
+        this.currentBackgroundColor = this.utils.readProperty('--alert-errorColor');
         return css`
           background-color: var(--alert-errorColor);
         `;
       default:
+        this.currentBackgroundColor = this.utils.readProperty('--alert-errorColor');
         return css`
           background-color: var(--alert-errorColor);
         `;

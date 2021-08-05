@@ -106,7 +106,9 @@
       </div>
     </div>
     <div #contents class="contentContainer">
-      <ng-content></ng-content>
+      <background-provider-inner color="{{currentBackgroundColor}}">
+        <ng-content></ng-content>
+      </background-provider-inner>
     </div>
   </div>
 </div>

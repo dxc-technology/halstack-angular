@@ -14,11 +14,12 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { spaces, responsiveSizes } from "../variables";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-header",
   templateUrl: "./dxc-header.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcHeaderComponent implements OnChanges {
   @HostBinding("class") className;
@@ -51,6 +52,8 @@ export class DxcHeaderComponent implements OnChanges {
   innerHeight;
   responsiveMenu: string;
   isClickDefined = false;
+
+  currentBackgroundColor: string;
 
   defaultInputs = new BehaviorSubject<any>({
     logoSrc: null,
@@ -86,6 +89,9 @@ export class DxcHeaderComponent implements OnChanges {
     } else {
       this.elRef.nativeElement.ownerDocument.body.style.overflow = null;
     }
+    this.currentBackgroundColor = this.utils.readProperty(
+      "--header-backgroundColor"
+    );
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,

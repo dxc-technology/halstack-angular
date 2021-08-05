@@ -52,8 +52,6 @@ export class DxcButtonComponent {
   @Output() onClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
-  // @HostBinding("class.light") lightBackground: boolean = true;
-  // @HostBinding("class.dark") darkBackground: boolean = false;
 
   @ContentChildren(DxcButtonIconComponent)
   dxcButtonIcon: QueryList<DxcButtonIconComponent>;

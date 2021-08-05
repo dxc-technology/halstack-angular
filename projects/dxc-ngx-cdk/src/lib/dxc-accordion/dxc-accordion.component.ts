@@ -20,11 +20,12 @@ import {
 } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
+import { BackgroundProviderComponent } from '../background-provider/background-provider.component';
 
 @Component({
   selector: "dxc-accordion",
   templateUrl: "./dxc-accordion.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderComponent],
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   currentBackgroundColor: string;

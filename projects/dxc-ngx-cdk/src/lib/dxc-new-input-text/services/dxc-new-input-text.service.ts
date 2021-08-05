@@ -7,13 +7,14 @@ import { BehaviorSubject } from "rxjs";
 export class DxcNewInputTextService {
   constructor() {}
 
-  public onFocused: BehaviorSubject<number> = new BehaviorSubject(-1);
+  public visualFocused: BehaviorSubject<number> = new BehaviorSubject(-1);
+  public activeOption: BehaviorSubject<number> = new BehaviorSubject(-1);
   public filteredOptions: BehaviorSubject<Array<string>> = new BehaviorSubject(
     null
   );
 
   public setSelectedIndex(selected): void {
-    this.onFocused.next(selected);
+    this.visualFocused.next(selected);
   }
 
   public setFilteredOptions(array): void {
@@ -21,20 +22,20 @@ export class DxcNewInputTextService {
   }
 
   public onArrowDown(): void {
-    if (this.onFocused.value < this.filteredOptions.value.length - 1) {
-      this.onFocused.next(this.onFocused.value + 1);
-    } else if (this.onFocused.value === this.filteredOptions.value.length - 1) {
-      this.onFocused.next(0);
+    if (this.visualFocused.value < this.filteredOptions.value.length - 1) {
+      this.visualFocused.next(this.visualFocused.value + 1);
+    } else if (this.visualFocused.value === this.filteredOptions.value.length - 1) {
+      this.visualFocused.next(0);
     }
   }
 
   public onArrowUp(): void {
-    if (this.onFocused.value > 0) {
-      this.onFocused.next(this.onFocused.value - 1);
-    } else if (this.onFocused.value === 0) {
-      this.onFocused.next(this.filteredOptions.value.length - 1);
-    } else if (this.onFocused.value < 0) {
-      this.onFocused.next(this.filteredOptions.value.length - 1);
+    if (this.visualFocused.value > 0) {
+      this.visualFocused.next(this.visualFocused.value - 1);
+    } else if (this.visualFocused.value === 0) {
+      this.visualFocused.next(this.filteredOptions.value.length - 1);
+    } else if (this.visualFocused.value < 0) {
+      this.visualFocused.next(this.filteredOptions.value.length - 1);
     }
   }
 

@@ -271,22 +271,16 @@ export class DxcNewInputTextHelper {
           padding-left: 1em;
 
           cursor: pointer;
-          &:hover {
-            background-color: #f2f2f2;
-          }
-          &:active {
-            background-color: #cccccc;
-          }
           &.selected {
             background-color: #f2f2f2;
+          }
+          &.active.selected {
+            background-color: #cccccc;
           }
         }
 
         &.fetchingError{
           border: 1px solid var(--input-errorColor);
-          li:hover{
-            background-color: #FFE3E6;
-          }
           li{
             align-items: center;
             display: flex;

@@ -8,7 +8,7 @@
   <input
     #inputRef
     (focus)="handleOnFocus()"
-    (focusout)="debouncedFocusOut()"
+    (focusout)="handleOnClose()"
     (keydown)="handleOnKeyDown($event)"
     (blur)="handleOnBlur($event)"
     (input)="handleOnChange($event)"
@@ -80,11 +80,12 @@
         let i = index
       "
       role="option"
-      [attr.aria-selected]="selectedOption === i"
-      [ngClass]="{ selected: selectedOption === i }"
+      [attr.aria-selected]="focusedOption === i"
+      [ngClass]="{ selected: focusedOption === i, active: focusedOption === i &&  activedOption === i}"
       [innerHtml]="item | boldOptions: value"
-      (mousedown)="handleMouseDown($event)"
+      (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
+      (mouseenter)="handleOnHover(i)"
     ></li>
     <li *ngIf="filteredOptions.length === 0">No results found.</li>
     <li *ngIf="fetchingError">

@@ -84,9 +84,11 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.dialogstart.nativeElement.focus();
-    }, 1);
+    if (this.enablePopupMode) {
+      setTimeout(() => {
+        this.dialogstart.nativeElement.focus();
+      }, 1);
+    }
   }
 
   closeThemePalette() {

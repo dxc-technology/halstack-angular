@@ -86,6 +86,7 @@
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
       (mouseenter)="handleOnHover(i)"
+      (mouseleave)="handleOnLeave()"
     ></li>
     <li *ngIf="filteredOptions.length === 0">No results found.</li>
     <li *ngIf="fetchingError">

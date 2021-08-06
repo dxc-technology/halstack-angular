@@ -237,6 +237,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
     this.service.activeOption.next(-1);
   }
+  
 
   handleEnterKey() {
     if (this.focusedOption >= 0) {
@@ -256,6 +257,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnHover(index) {
     this.service.visualFocused.next(index);
+  }
+
+  handleOnLeave() {
+    this.service.activeOption.next(-1);
   }
 
   handleOnKeyDown(event) {

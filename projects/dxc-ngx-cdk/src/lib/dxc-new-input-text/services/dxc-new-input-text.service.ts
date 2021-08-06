@@ -27,6 +27,9 @@ export class DxcNewInputTextService {
     } else if (this.visualFocused.value === this.filteredOptions.value.length - 1) {
       this.visualFocused.next(0);
     }
+    if(this.activeOption.value > 0) {
+      this.activeOption.next(-1);
+    }
   }
 
   public onArrowUp(): void {
@@ -36,6 +39,9 @@ export class DxcNewInputTextService {
       this.visualFocused.next(this.filteredOptions.value.length - 1);
     } else if (this.visualFocused.value < 0) {
       this.visualFocused.next(this.filteredOptions.value.length - 1);
+    }
+    if(this.activeOption.value > 0) {
+      this.activeOption.next(-1);
     }
   }
 

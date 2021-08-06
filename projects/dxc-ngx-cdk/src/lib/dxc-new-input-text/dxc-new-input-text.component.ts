@@ -279,9 +279,11 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.handleEnterKey();
         break;
       case "Escape":
-        event.preventDefault();
-        this.handleDefaultClearAction();
-        this.handleOnClose();
+        if(this.autocompleteOptions.length) {
+          event.preventDefault();
+          this.handleDefaultClearAction();
+          this.handleOnClose();
+        }
         break;
     }
   }

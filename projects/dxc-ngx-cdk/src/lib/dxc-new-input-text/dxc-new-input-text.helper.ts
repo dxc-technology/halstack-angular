@@ -64,6 +64,17 @@ export class DxcNewInputTextHelper {
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
 
+      dxc-new-input-text-action{
+        div {
+          width: 24px;
+          height: 24px;
+        }
+        svg{
+          width: 18px !important;
+          height: 100%;
+        }
+      }
+
       .overlay:not(.overlayVisible) {
         display: none;
       }

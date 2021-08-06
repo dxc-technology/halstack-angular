@@ -4,7 +4,7 @@
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="inputContainer">
-  <span *ngIf="prefix" class="inputPrefix">{{ prefix }}</span>
+  <span *ngIf="prefix && !disabled" class="inputPrefix">{{ prefix }}</span>
   <input
     #inputRef
     (focus)="handleOnFocus()"
@@ -42,7 +42,7 @@
       />
     </svg>
   </button>
-  <span *ngIf="error" class="inputErrorIcon" aria-label="Error">
+  <span *ngIf="error && !disabled" class="inputErrorIcon" aria-label="Error">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -65,7 +65,7 @@
     <!-- //TODO: Adding a directive or pipe filtering content is a svg tag-->
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
-  <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
+  <span *ngIf="suffix && !disabled" class="inputSuffix">{{ suffix }}</span>
   <ul
     #autoSuggestOptions
     [ngClass]="{ visible: autosuggestVisible, fetchingError: fetchingError }"
@@ -105,4 +105,4 @@
   </ul>
 </div>
 
-<span *ngIf="error" class="inputErrorMessage">{{ error }}</span>
+<span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>

@@ -18,12 +18,13 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { SidenavService } from "./services/sidenav.service";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-sidenav",
   templateUrl: "./dxc-sidenav.component.html",
   styleUrls: ["./dxc-sidenav.component.scss"],
-  providers: [CssUtils, SidenavService],
+  providers: [CssUtils, SidenavService, BackgroundProviderService],
 })
 export class DxcSidenavComponent implements OnInit {
   @HostBinding("class") sidenavStyles;
@@ -50,6 +51,8 @@ export class DxcSidenavComponent implements OnInit {
   innerWidth;
   isResponsive = true;
   isShown: boolean;
+
+  currentBackgroundColor: string;
 
   defaultInputs = new BehaviorSubject<any>({
     displayArrow: true,
@@ -94,6 +97,9 @@ export class DxcSidenavComponent implements OnInit {
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.service.setTabIndexValue(this.tabIndexValue);
+    this.currentBackgroundColor = this.utils.readProperty(
+      "--sidenav-backgroundColor"
+    );
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;

@@ -1,19 +1,22 @@
 import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { CssUtils } from "../utils";
 
 @Component({
   selector: "dxc-table",
   templateUrl: "./dxc-table.component.html",
   styleUrls: [],
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcTableComponent {
   @Input() margin;
   @HostBinding("class") className;
 
   defaultInputs = new BehaviorSubject<any>({});
+
+  currentBackgroundColor: string;
 
   constructor(private utils: CssUtils) {}
 
@@ -22,6 +25,9 @@ export class DxcTableComponent {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
+    this.currentBackgroundColor = this.utils.readProperty(
+      "--table-dataBackgroundColor"
+    );
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

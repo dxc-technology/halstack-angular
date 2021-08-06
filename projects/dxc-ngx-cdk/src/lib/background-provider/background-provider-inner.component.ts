@@ -4,7 +4,7 @@ import { BackgroundProviderService } from "./service/background-provider.service
 
 @Component({
   selector: "background-provider-inner",
-  template: "<div><ng-content></ng-content></div>",
+  template: "<ng-content></ng-content>",
 })
 export class BackgroundProviderInnerComponent implements OnInit {
   @Input() color: string;

@@ -1,6 +1,6 @@
 <div class="menu-arrow-up" *ngIf="enablePopupMode"></div>
 <div class="theme-colors theme-palette-border d-inline-block w-100" tabindex="{{disabled ? -1 : tabIndexValue}}"
-  (keydown)="startKeyPress($event)" [attr.aria-label]="themePaletteLabel" role="dialog" #dialogstart>
+  (keydown)="startKeyPress($event)" [attr.aria-label]="themePaletteLabel" role="{{enablePopupMode ? 'dialog' : 'region'" #dialogstart>
   <div class="container px-0 py-0">
     <div>
       <span class="float-left" *ngIf="showThemeToggle">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <span #returntoend tabindex="-1" (onblur)="returnFocusOut($event)"></span>
-      <span #dialogend tabindex="0" (focus)="endFocus($event)"></span>
+      <span #dialogend tabindex="{{enablePopupMode ? 0 : -1}}" (focus)="endFocus($event)"></span>
     </div>
   </div>
 </div>

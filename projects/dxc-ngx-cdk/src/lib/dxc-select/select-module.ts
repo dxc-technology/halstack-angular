@@ -15,6 +15,7 @@ import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelectTrigger, DxcSelectCompone
 import { DxcOptionModule } from './option/option.module';
 import { MatCommonModule } from './common-behaviors/common-module';
 import { MatInputModule } from '@angular/material/input';
+import { BackgroundProviderModule } from '../background-provider/background-provider.module';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
     DxcOptionModule,
     MatCommonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    BackgroundProviderModule
   ],
   exports: [
     CdkScrollableModule,

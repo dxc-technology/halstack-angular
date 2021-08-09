@@ -207,7 +207,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(input.getByText("Input label"));
     expect(input.getByText("helper text"));
     expect(screen.getByDisplayValue('test input value')).toBeTruthy();
-    fireEvent.click(input.getByRole('combobox'));
+    fireEvent.click(input.getByRole('textbox'));
     input.detectChanges();
     expect(onChange).not.toHaveBeenCalledWith("");
   });

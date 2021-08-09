@@ -1,4 +1,5 @@
 import { render, fireEvent } from "@testing-library/angular";
+import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 import { DxcAlertComponent } from "./dxc-alert.component";
 
 describe("DxcAlertComponent tests", () => {
@@ -7,6 +8,7 @@ describe("DxcAlertComponent tests", () => {
     const dxcAlert = await render(DxcAlertComponent, {
       template: `<dxc-alert>${projection}</dxc-alert>`,
       componentProperties: {},
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcAlert.getByText(projection));
@@ -18,6 +20,7 @@ describe("DxcAlertComponent tests", () => {
     const dxcAlert = await render(DxcAlertComponent, {
       template: `<dxc-alert type="warning">${projection}</dxc-alert>`,
       componentProperties: {},
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcAlert.getByText(projection));
@@ -29,6 +32,7 @@ describe("DxcAlertComponent tests", () => {
     const dxcAlert = await render(DxcAlertComponent, {
       template: `<dxc-alert type="error">${projection}</dxc-alert>`,
       componentProperties: {},
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcAlert.getByText(projection));
@@ -40,6 +44,7 @@ describe("DxcAlertComponent tests", () => {
     const dxcAlert = await render(DxcAlertComponent, {
       template: `<dxc-alert type="confirm">${projection}</dxc-alert>`,
       componentProperties: {},
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcAlert.getByText(projection));
@@ -52,6 +57,7 @@ describe("DxcAlertComponent tests", () => {
     const dxcAlert = await render(DxcAlertComponent, {
       template: `<dxc-alert (onClose)="onCloseFunction()">${projection}</dxc-alert>`,
       componentProperties: { onCloseFunction },
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcAlert.getByText(projection));

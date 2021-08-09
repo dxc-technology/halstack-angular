@@ -211,4 +211,76 @@ describe("DxcNewTextInputComponent", () => {
     input.detectChanges();
     expect(onChange).not.toHaveBeenCalledWith("");
   });
+
+  test("controlled dxc-input-text input change and blur", async () => {
+    const onInputFunction = jest.fn();
+    const onBlurFunction = jest.fn();
+    const newValue = "new value";
+    const defaultValue = "default value";
+    const dxcText = await render(DxcNewInputTextComponent, {
+      componentProperties: {
+        label: "test-input",
+        value: defaultValue,
+        onChange: { emit: onInputFunction } as any,
+        onBlur: { emit: onBlurFunction } as any,
+      },
+      providers: [DxcNewInputTextService],
+      declarations: [FilterOptionsPipe, BoldOptionsPipe],
+    });
+
+    const input = <HTMLInputElement>dxcText.getByRole("textbox");
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    fireEvent.blur(input);
+    expect(onBlurFunction).toHaveBeenCalledWith(defaultValue);
+    screen.getByDisplayValue(defaultValue);
+  });
+
+  test("uncontrolled dxc-input-text input change and blur", async () => {
+    const onInputFunction = jest.fn();
+    const onBlurFunction = jest.fn();
+    const newValue = "new value";
+    const { getByRole } = await render(DxcNewInputTextComponent, {
+      componentProperties: {
+        label: "test-input",
+        onChange: { emit: onInputFunction } as any,
+        onBlur: { emit: onBlurFunction } as any,
+      },
+      providers: [DxcNewInputTextService],
+      declarations: [FilterOptionsPipe, BoldOptionsPipe],
+    });
+
+    const input = <HTMLInputElement>getByRole("textbox");
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    fireEvent.blur(input);
+    expect(onBlurFunction).toHaveBeenCalledWith(newValue);
+    screen.getByDisplayValue(newValue);
+  });
+
+  test("controlled dxc-input-text input with clear, change and blur", async () => {
+    const onInputFunction = jest.fn();
+    const onBlurFunction = jest.fn();
+    const newValue = "new value";
+    const dxcInput = await render(DxcNewInputTextComponent, {
+      componentProperties: {
+        label: "test-input",
+        clearable: true,
+        value: "initial string",
+        onChange: { emit: onInputFunction } as any,
+        onBlur: { emit: onBlurFunction } as any,
+      },
+      providers: [DxcNewInputTextService],
+      declarations: [FilterOptionsPipe, BoldOptionsPipe],
+    });
+
+    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    fireEvent.blur(input);
+    expect(onBlurFunction).toHaveBeenCalledWith("initial string");
+    fireEvent.click(dxcInput.getByLabelText('Clear'));
+    expect(onInputFunction).toHaveBeenCalledWith("");
+    screen.getByDisplayValue("initial string");
+  });
 });

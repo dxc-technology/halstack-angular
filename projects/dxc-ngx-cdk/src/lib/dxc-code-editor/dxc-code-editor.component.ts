@@ -167,9 +167,7 @@ export class DxcCodeEditorComponent implements OnInit, ControlValueAccessor {
       const currentWord: string = token.string
     }, { completeSingle: false })
   }
-
-
-
+  
   writeValue(val: any): void {
     this.content = val;
   }

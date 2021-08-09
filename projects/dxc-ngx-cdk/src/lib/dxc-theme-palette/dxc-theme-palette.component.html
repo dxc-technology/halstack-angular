@@ -18,9 +18,9 @@
       <div class="px-2 py-0">
         <p class="text-muted mb-2">{{label}}</p>
         <div class="d-flex flex-row justify-content-between mb-3 theme-palette pr-3">
-          <span [ngClass]="{ active: colors.active}" role="button" tabindex="{{disabled ? -1 : tabIndexValue}}"
+          <span [ngClass]="{ active: colors.active}" role="button" attr.aria-checked="{{colors.active}}" role="radio" tabindex="{{disabled ? -1 : tabIndexValue}}"
             attr.aria-label="{{label + ' ' + colors.color}}" *ngFor="let colors of themeColors"
-            (click)="changeThemeColor(colors.color)"
+            (click)="changeThemeColor(colors.color)" (keyup.enter)="changeThemeColor(colors.color)"
             [ngStyle]="{'background-color': colors.color, 'border-color': colors.color}" class="theme-color">
             <i>
               <mat-icon aria-hidden="true" class="mat-icon material-icons mat-icon-no-color notranslate">

@@ -185,7 +185,7 @@ export class DxcTextInputComponent
 
   ngOnInit() {
     this.renderedValue = this.value || "";
-    this.onChangeRegister(this.renderedValue);
+    //this.onChangeRegister(this.renderedValue);
     this.bindAutocompleteOptions();
     this.autocompleteFunction("");
   }
@@ -323,6 +323,7 @@ export class DxcTextInputComponent
    *Executed when input lost the focus
    */
   public onBlurHandle($event: any): void {
+    this.onTouched();
     this.onBlur.emit(this.renderedValue);
   }
 

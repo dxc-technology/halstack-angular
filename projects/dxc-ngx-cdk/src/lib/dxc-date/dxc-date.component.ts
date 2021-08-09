@@ -250,7 +250,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       else {
         this.value = '';
       }
-      this.onChangeRegister(this.value);
+      //this.onChangeRegister(this.value);
     }
     this.onBlur.emit(value);
   }

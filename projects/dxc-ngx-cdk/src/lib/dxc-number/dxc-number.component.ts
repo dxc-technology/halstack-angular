@@ -183,6 +183,7 @@ export class DxcNumberComponent implements OnInit, ControlValueAccessor {
     this.renderedValue = this.allowDecimal ? parseFloat(this.renderedValue).toString() : parseInt(this.renderedValue).toString();
     //formatNumber(this.minValue, this.maxValue, this.allowDecimal, this.decimalPlace, this.renderedValue);
     this.onBlur.emit(this.renderedValue);
+    this.onTouched();
     this.onChangeRegister(this.renderedValue);
   }
 

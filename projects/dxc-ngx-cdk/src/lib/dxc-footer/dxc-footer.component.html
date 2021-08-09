@@ -22,7 +22,9 @@
   </div>
   <div>
     <div [class]="childComponentsStyle">
-      <ng-content></ng-content>
+      <background-provider-inner color="{{ currentBackgroundColor }}">
+        <ng-content></ng-content>
+      </background-provider-inner>
     </div>
     <div [class]="footerFooterStyle">
       <div class="bottomLinksStyle">

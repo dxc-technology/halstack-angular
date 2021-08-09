@@ -11,12 +11,13 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-footer",
   templateUrl: "./dxc-footer.component.html",
   styleUrls: ["./dxc-footer.component.scss"],
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;
@@ -42,6 +43,8 @@ export class DxcFooterComponent implements OnChanges {
   isResponsive;
 
   bottomLinksLength;
+
+  currentBackgroundColor: string;
 
   defaultInputs = new BehaviorSubject<any>({
     socialLinks: {},
@@ -107,6 +110,9 @@ export class DxcFooterComponent implements OnChanges {
 
   public ngOnInit() {
     this.innerWidth = window.innerWidth;
+    this.currentBackgroundColor = this.utils.readProperty(
+      "--footer-backgroundColor"
+    );
     this.childComponentsStyle = `${this.setChildComponentsStyle(
       this.defaultInputs.getValue()
     )}`;

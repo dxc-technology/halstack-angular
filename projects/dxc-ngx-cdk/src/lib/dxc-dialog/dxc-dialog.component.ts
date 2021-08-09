@@ -13,11 +13,12 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-dialog",
   templateUrl: "./dxc-dialog.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcDialogComponent {
   @Input()
@@ -50,6 +51,8 @@ export class DxcDialogComponent {
 
   @HostBinding("class") className;
 
+  currentBackgroundColor: string;
+
   defaultInputs = new BehaviorSubject<any>({
     overlay: true,
     isCloseVisible: true,
@@ -68,8 +71,10 @@ export class DxcDialogComponent {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
-
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.currentBackgroundColor = this.utils.readProperty(
+      "--dialog-backgroundColor"
+    );
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
@@ -158,12 +163,16 @@ export class DxcDialogComponent {
                 border-color: var(--dialog-closeIconBorderColor);
               }
             }
-            .content, .content *{
+            .content {
               font-family: var(--dialog-fontFamily);
               font-size: var(--dialog-fontSize);
               font-weight: var(--dialog-fontWeight);
               color: var(--dialog-fontColor);
-
+            }
+            .content,
+            .content > div,
+            .content > span,
+            .content > p {
               overflow-y: auto;
               ::-webkit-scrollbar {
                 width: 3px;

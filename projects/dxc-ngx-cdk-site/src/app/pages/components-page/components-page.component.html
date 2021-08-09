@@ -1,339 +1,199 @@
 <div class="container-content">
   <div [ngClass]="responsiveClass" *ngIf="default">
-    <dxc-heading
-      [level]="1"
-      weight="normal"
-      text="Components"
-      [margin]="componentsMargin"
-    ></dxc-heading>
+    <dxc-heading [level]="1" weight="normal" text="Components" [margin]="componentsMargin"></dxc-heading>
 
     <dxc-heading [level]="3" weight="normal" text="Forms"></dxc-heading>
     <div class="components-intro">
       <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
-        <ul>
-          <li>
-            <dxc-link
-              text="Autocomplete"
-              href=""
-              [underlined]="underlined"
-              (click)="navigateToRoute('autocomplete'); $event.preventDefault()"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              text="Button"
-              href=""
-              [underlined]="underlined"
-              (click)="navigateToRoute('button'); $event.preventDefault()"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              [underlined]="underlined"
-              (click)="navigateToRoute('checkbox'); $event.preventDefault()"
-              text="Checkbox"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('date'); $event.preventDefault()"
-              text="Date"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('input'); $event.preventDefault()"
-              text="Input Text"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('radio'); $event.preventDefault()"
-              text="Radio Button"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('select'); $event.preventDefault()"
-              text="Select"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('slider'); $event.preventDefault()"
-              text="Slider"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
-        <ul class="last">
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('switch'); $event.preventDefault()"
-              text="Switch"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('textarea'); $event.preventDefault()"
-              text="Textarea"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('toggleGroup'); $event.preventDefault()"
-              text="Toggle Group"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
+        <div style="display:flex">
+          <ul>
+            <li>
+              <dxc-link text="Autocomplete" href="" [underlined]="underlined"
+                (click)="navigateToRoute('autocomplete'); $event.preventDefault()"></dxc-link>
+            </li>
+            <li>
+              <dxc-link text="Button" href="" [underlined]="underlined"
+                (click)="navigateToRoute('button'); $event.preventDefault()"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" [underlined]="underlined" (click)="navigateToRoute('checkbox'); $event.preventDefault()"
+                text="Checkbox"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('date'); $event.preventDefault()" text="Date"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('input'); $event.preventDefault()" text="Input Text"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('radio'); $event.preventDefault()" text="Radio Button"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('select'); $event.preventDefault()" text="Select"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('slider'); $event.preventDefault()" text="Slider"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+          <ul class="last">
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('switch'); $event.preventDefault()" text="Switch"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('textarea'); $event.preventDefault()" text="Textarea"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('toggleGroup'); $event.preventDefault()" text="Toggle Group"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+        </div>
       </dxc-box>
     </div>
 
     <dxc-heading [level]="3" weight="normal" text="Navigation"></dxc-heading>
     <div class="components-intro">
       <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
-        <ul class="last">
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('footer'); $event.preventDefault()"
-              text="Footer"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('header'); $event.preventDefault()"
-              text="Header"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('tabs'); $event.preventDefault()"
-              text="Tabs"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('wizard'); $event.preventDefault()"
-              text="Wizard"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
+        <div style="display:flex">
+          <ul class="last">
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('footer'); $event.preventDefault()" text="Footer"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('header'); $event.preventDefault()" text="Header"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('tabs'); $event.preventDefault()" text="Tabs"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('wizard'); $event.preventDefault()" text="Wizard"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+        </div>
       </dxc-box>
+
     </div>
 
     <dxc-heading [level]="3" weight="normal" text="Layout"></dxc-heading>
     <div class="components-intro">
       <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
-        <ul>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('applicationLayout'); $event.preventDefault()"
-              text="Application Layout"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('box'); $event.preventDefault()"
-              text="Box"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('card'); $event.preventDefault()"
-              text="Card"
-              [underlined]="underlined"
-              >Card</dxc-link
-            >
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('sidenav'); $event.preventDefault()"
-              text="Sidenav"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
-        <ul class="last">
-          <li>
-            <dxc-link
-              href=""
-              (click)="
+        <div style="display:flex">
+          <ul>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('applicationLayout'); $event.preventDefault()"
+                text="Application Layout" [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('box'); $event.preventDefault()" text="Box"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('card'); $event.preventDefault()" text="Card"
+                [underlined]="underlined">Card</dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('sidenav'); $event.preventDefault()" text="Sidenav"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+          <ul class="last">
+            <li>
+              <dxc-link href="" (click)="
                 navigateToRoute('tabbed-section'); $event.preventDefault()
-              "
-              text="Tabbed Sections"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('tag'); $event.preventDefault()"
-              text="Tag"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
+              " text="Tabbed Sections" [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('tag'); $event.preventDefault()" text="Tag"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+        </div>
       </dxc-box>
     </div>
 
     <dxc-heading [level]="3" weight="normal" text="Utilities"></dxc-heading>
     <div class="components-intro">
-      <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin">
-        <ul>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('accordion'); $event.preventDefault()"
-              text="Accordion"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('accordion-group'); $event.preventDefault()"
-              text="Accordion Group"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('alert'); $event.preventDefault()"
-              text="Alert"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('chip'); $event.preventDefault()"
-              text="Chip"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('dialog'); $event.preventDefault()"
-              text="Dialog"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('dropdown'); $event.preventDefault()"
-              text="Dropdown"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('heading'); $event.preventDefault()"
-              text="Heading"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('link'); $event.preventDefault()"
-              text="Link"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('paginator'); $event.preventDefault()"
-              text="Paginator"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('progressbar'); $event.preventDefault()"
-              text="Progressbar"
-              [underlined]="underlined"
-              ></dxc-link
-            >
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="
+      <dxc-box [padding]="boxPadding" size="fillParent" [margin]="boxMargin" shadowDepth="1">
+        <div style="display:flex">
+          <ul>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('accordion'); $event.preventDefault()" text="Accordion"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('accordion-group'); $event.preventDefault()"
+                text="Accordion Group" [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('alert'); $event.preventDefault()" text="Alert"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('chip'); $event.preventDefault()" text="Chip"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('dialog'); $event.preventDefault()" text="Dialog"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('dropdown'); $event.preventDefault()" text="Dropdown"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('heading'); $event.preventDefault()" text="Heading"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('link'); $event.preventDefault()" text="Link"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('paginator'); $event.preventDefault()" text="Paginator"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('progressbar'); $event.preventDefault()" text="Progressbar"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="
                 navigateToRoute('resultsettable'); $event.preventDefault()
-              "
-              text="Resultset Table"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('spinner'); $event.preventDefault()"
-              text="Spinner"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
-        <ul class="last">
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('table'); $event.preventDefault()"
-              text="Table"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-          <li>
-            <dxc-link
-              href=""
-              (click)="navigateToRoute('upload'); $event.preventDefault()"
-              text="Upload"
-              [underlined]="underlined"
-            ></dxc-link>
-          </li>
-        </ul>
+              " text="Resultset Table" [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('spinner'); $event.preventDefault()" text="Spinner"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+          <ul class="last">
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('table'); $event.preventDefault()" text="Table"
+                [underlined]="underlined"></dxc-link>
+            </li>
+            <li>
+              <dxc-link href="" (click)="navigateToRoute('upload'); $event.preventDefault()" text="Upload"
+                [underlined]="underlined"></dxc-link>
+            </li>
+          </ul>
+        </div>
       </dxc-box>
     </div>
   </div>

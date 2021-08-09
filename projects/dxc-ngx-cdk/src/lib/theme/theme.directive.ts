@@ -58,7 +58,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
     const headerLogo = themeObj.theme?.header?.logo ?? componentIcons.header.logo;
     const headerLogoResponsive =
     themeObj?.theme?.header?.logoResponsive ?? componentIcons.header.logoResponsive;
-    console.debug(`Logo del header ${headerLogo}`);
     document.body.setAttribute("footer-logo", footerLogo);
     document.body.setAttribute("header-logo", headerLogo);
     document.body.setAttribute("header-logoResponsive", headerLogoResponsive);

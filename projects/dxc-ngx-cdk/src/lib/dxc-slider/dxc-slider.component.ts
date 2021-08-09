@@ -119,10 +119,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   constructor(
     private utils: CssUtils,
     @Optional() public bgProviderService?: BackgroundProviderService
-  ) {}
-
-  ngOnInit() {
-    this.renderedValue = this.value;
+  ) {
     this.bgProviderService.$changeColor.subscribe((value) => {
       if (value === "dark") {
         this.lightBackground = false;
@@ -132,6 +129,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         this.darkBackground = false;
       }
     });
+  }
+
+  ngOnInit() {
+    this.renderedValue = this.value;
+
     if (this.labelFormatCallback) {
       this.minValueLabel = this.labelFormatCallback(this.minValue!).toString();
       this.maxValueLabel = this.labelFormatCallback(this.maxValue!).toString();

@@ -96,6 +96,15 @@ export class DxcRadioComponent implements OnInit {
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.onChange = new EventEmitter();
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+    });
   }
 
   calculateWidth(inputs) {
@@ -109,15 +118,6 @@ export class DxcRadioComponent implements OnInit {
 
   ngOnInit() {
     this.renderedChecked = this.checked;
-    this.bgProviderService.$changeColor.subscribe((value) => {
-      if (value === "dark") {
-        this.lightBackground = false;
-        this.darkBackground = true;
-      } else if (value === "light") {
-        this.lightBackground = true;
-        this.darkBackground = false;
-      }
-    });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

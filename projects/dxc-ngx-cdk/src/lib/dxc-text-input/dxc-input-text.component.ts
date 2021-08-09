@@ -158,12 +158,7 @@ export class DxcTextInputComponent
     private ref: ChangeDetectorRef,
     private service: InputTextService,
     @Optional() public bgProviderService?: BackgroundProviderService
-  ) {}
-
-  ngOnInit() {
-    this.renderedValue = this.value || "";
-    this.bindAutocompleteOptions();
-    this.autocompleteFunction("");
+  ) {
     this.bgProviderService.$changeColor.subscribe((value) => {
       if (value === "dark") {
         this.lightBackground = false;
@@ -173,6 +168,13 @@ export class DxcTextInputComponent
         this.darkBackground = false;
       }
     });
+  }
+
+  ngOnInit() {
+    this.renderedValue = this.value || "";
+    this.bindAutocompleteOptions();
+    this.autocompleteFunction("");
+
     this.service.hasPrefixIcon.subscribe((value) => {
       if (value) {
         this.hasPrefixIcon = value;

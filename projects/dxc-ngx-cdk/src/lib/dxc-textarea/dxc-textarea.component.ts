@@ -125,11 +125,6 @@ export class DxcTextareaComponent
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.numRows = 4;
-  }
-
-  ngOnInit() {
-    this.renderedValue = this.value || "";
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.bgProviderService.$changeColor.subscribe((value) => {
       if (value === "dark") {
         this.lightBackground = false;
@@ -139,6 +134,12 @@ export class DxcTextareaComponent
         this.darkBackground = false;
       }
     });
+  }
+
+  ngOnInit() {
+    this.renderedValue = this.value || "";
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+
   }
 
   ngAfterViewChecked(): void {

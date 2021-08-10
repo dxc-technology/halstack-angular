@@ -17,6 +17,7 @@ import { CssUtils } from "../utils";
 import { DxcNewInputTextService } from "./services/dxc-new-input-text.service";
 import { OnDestroy } from "@angular/core";
 import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: "dxc-new-input-text",
@@ -34,6 +35,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   value: string;
+
+  @Input()
+  id: string;
 
   @Input()
   helperText: string;
@@ -73,7 +77,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   autocompleteOptions: Array<any> = [];
 
-  random: string;
   autoSuggestId: string;
 
   private controlled: boolean;
@@ -128,8 +131,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
-    this.random = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
-    this.autoSuggestId = this.random + "-listBox";
+    this.id = this.id || uuidv4();
+    this.autoSuggestId = this.id + "-listBox";
     this.className = `${this.helper.getDynamicStyle(
       this.defaultInputs.getValue()
     )}`;

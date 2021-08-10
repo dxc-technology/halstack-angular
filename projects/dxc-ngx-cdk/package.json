@@ -63,7 +63,8 @@
     "ng-mocks": "^10.4.0",
     "rgb-hex": "^3.0.0",
     "rxjs": "~6.5.2",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1002.0",

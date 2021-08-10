@@ -1,4 +1,4 @@
-<label *ngIf="label" class="inputLabel" htmlFor="{{ random }}">
+<label *ngIf="label" class="inputLabel" htmlFor="{{ id }}">
   {{ label }}
   <span *ngIf="optional" class="inputOptionalLabel">(Optional)</span>
 </label>
@@ -16,7 +16,7 @@
     class="inputText"
     autocomplete="off"
     role="textbox"
-    [id]="random"
+    [id]="id"
     [placeholder]="placeholder"
     [value]="value"
     [name]="name"

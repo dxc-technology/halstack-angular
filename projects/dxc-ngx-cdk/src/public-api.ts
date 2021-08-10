@@ -96,6 +96,9 @@ export * from './lib/dxc-new-input-text/dxc-new-input-text.component';
 export * from './lib/dxc-new-input-text/dxc-new-input-text.module';
 export * from './lib/dxc-new-input-text/dxc-new-input-text-action/dxc-new-input-text-action.component';
 
+export * from './lib/dxc-new-input-password/dxc-new-input-password.component';
+export * from './lib/dxc-new-input-password/dxc-new-input-password.module';
+
 export * from './lib/dxc-textarea/dxc-textarea.component';
 export * from './lib/dxc-textarea/dxc-textarea.module';
 

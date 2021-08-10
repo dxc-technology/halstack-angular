@@ -7,7 +7,6 @@
 </dxc-baselookup>
 <dxc-dialog #activationdialog ariaLabelledBy="lblOrgDialogHeader" *ngIf="isPanelOpen1" isCloseVisible="true"
   (onCloseClick)="closePopup()">
-  
    <div>
     <div class="modal-header pb-2 pt-2">
       <h6 class="modal-title ml-2">
@@ -17,28 +16,28 @@
   </div>
   <div class="modal-body">
     <div [ngClass]="isSearch === true ? 'mb-2 mt-2 btnhieghthdn float-right mr-1 ml-1':'mb-2 mt-2 btnhieght float-right mr-1 ml-1'">
-      <dxc-button  size="small" mode="secondary" id="search" [title]="resource?.ttsearch.description" (onClick)="search()">
+      <dxc-button  size="small" mode="secondary" id="search" [ariaLabel]="resource?.ttsearch.description" (onClick)="search()">
         <dxc-button-icon>
           <span class="icon-dxc-wrapper">
-            <mat-icon class="mat-icon material-icons">search</mat-icon>
+            <mat-icon class="mat-icon material-icons" [matTooltip]="resource?.ttsearch.description">search</mat-icon>
           </span>
         </dxc-button-icon>
       </dxc-button>
       <div class="float-md-right">
         <span class="mr-3 mb-2 d-inline-block float-md-left">
-          <dxc-button  size="small" mode="secondary" id="treeview" *ngIf="allowTreeView" [title]="resource?.tttreeview.description"
+          <dxc-button  size="small" mode="secondary" id="treeview" *ngIf="allowTreeView" [ariaLabel]="resource?.tttreeview.description"
             (onClick)="treeView(true)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">
-                <mat-icon class="mat-icon material-icons">account_tree</mat-icon>
+                <mat-icon class="mat-icon material-icons" [matTooltip]="resource?.tttreeview.description">account_tree</mat-icon>
               </span>
             </dxc-button-icon>
           </dxc-button>
-          <dxc-button  size="small" mode="secondary" id="gridview" *ngIf="allowTreeView" [title]="resource?.ttgridview.description"
+          <dxc-button  size="small" mode="secondary" id="gridview" *ngIf="allowTreeView" [ariaLabel]="resource?.ttgridview.description"
             (onClick)="gridView(true)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">
-                <mat-icon class="mat-icon material-icons">view_module</mat-icon>
+                <mat-icon class="mat-icon material-icons" [matTooltip]="resource?.ttgridview.description">view_module</mat-icon>
               </span>
             </dxc-button-icon>
           </dxc-button>

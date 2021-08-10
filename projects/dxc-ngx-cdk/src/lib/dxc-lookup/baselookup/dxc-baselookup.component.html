@@ -1,5 +1,5 @@
 <!-- <button mat-raised-button color="primary" (click)="open()">Primary</button> -->
-<mat-form-field [attr.tabindex]="disabled ? -1 : 0" class="example-chip-list" role="list" [attr.aria-label]="ariaLabel || label" [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy" [attr.aria-required]="ariaRequired" #lookupformfield
+<mat-form-field [attr.tabindex]="disabled ? -1 : 0" class="example-chip-list" [attr.aria-label]="ariaLabel || label" [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy" [attr.aria-required]="ariaRequired" #lookupformfield
   [class.disabled]="disabled">
   <ng-container *ngIf="lookupType === lookupTypeValues.MULTI">
     <div id="multichips">

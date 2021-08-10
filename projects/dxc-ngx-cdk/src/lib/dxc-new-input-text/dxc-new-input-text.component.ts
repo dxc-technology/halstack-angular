@@ -11,13 +11,15 @@ import {
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
+  Optional,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { DxcNewInputTextService } from "./services/dxc-new-input-text.service";
 import { OnDestroy } from "@angular/core";
 import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-new-input-text",
@@ -123,20 +125,37 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   fetchingError: boolean = false;
 
+  darkBackground: boolean = false;
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private service: DxcNewInputTextService,
-    private helper: DxcNewInputTextHelper
-  ) {}
+    private helper: DxcNewInputTextHelper,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      setTimeout(() => {
+        if (value === "dark") {
+          this.darkBackground = true;
+        } else if (value === "light") {
+          this.darkBackground = false;
+        }
+        this.className = `${this.helper.getDynamicStyle({
+          ...this.defaultInputs.getValue(),
+          darkBackground: this.darkBackground,
+        })}`;
+      }, 0);
+    });
+  }
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
     this.id = this.id || uuidv4();
     this.autoSuggestId = this.id + "-listBox";
-    this.className = `${this.helper.getDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
-
+    this.className = `${this.helper.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+      darkBackground: this.darkBackground,
+    })}`;
     if (this.value === undefined) {
       this.value = "";
       this.controlled = false;
@@ -183,9 +202,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.helper.getDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
+    this.className = `${this.helper.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+      darkBackground: this.darkBackground,
+    })}`;
   }
 
   handleOnChange(event) {
@@ -239,7 +259,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
     this.service.activeOption.next(-1);
   }
-  
 
   handleEnterKey() {
     if (this.focusedOption >= 0) {
@@ -281,7 +300,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.handleEnterKey();
         break;
       case "Escape":
-        if(this.autocompleteOptions.length) {
+        if (this.autocompleteOptions.length) {
           event.preventDefault();
           this.handleDefaultClearAction();
           this.handleOnClose();

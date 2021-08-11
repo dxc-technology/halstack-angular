@@ -87,7 +87,10 @@
     "borderRadius": "length",
     "borderStyle": "bStyle",
     "borderThickness": "bWidth",
-    "borderColor": "color",
+    "infoBorderColor": "color",
+    "successBorderColor": "color",
+    "warningBorderColor": "color",
+    "errorBorderColor": "color",
     "height": "length"
   },
   "box": {

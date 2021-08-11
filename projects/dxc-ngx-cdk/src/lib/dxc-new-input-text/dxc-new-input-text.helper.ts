@@ -17,11 +17,17 @@ export class DxcNewInputTextHelper {
   getDisabledStyle() {
     return css`
       .inputLabel,
-      .inputOptionalLabel,
-      .helperText,
-      .inputText,
-      .inputText::placeholder {
+      .inputOptionalLabel {
         color: var(--input-disabledLabelColor);
+      }
+      .helperText {
+        color: var(--input-disabledHelperTextFontColor);
+      }
+      .inputText {
+        color: var(--input-disabledValueFontColor);
+      }
+      .inputText::placeholder {
+        color: var(--input-disabledPlaceholderFontColor);
       }
       .inputSuffix {
         border-left: 1px solid var(--input-disabledSuffixColor);
@@ -42,7 +48,7 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer,
       .inputContainer:hover {
-        border: 1px solid var(--input-outlineDisabledColor);
+        border: 1px solid var(--input-disabledOutlineColor);
         box-shadow: none;
         cursor: not-allowed;
         background-color: var(--input-disabledContainerFillColor);
@@ -53,11 +59,17 @@ export class DxcNewInputTextHelper {
   getDisabledDarkStyle() {
     return css`
       .inputLabel,
-      .inputOptionalLabel,
-      .helperText,
-      .inputText,
-      .inputText::placeholder {
+      .inputOptionalLabel {
         color: var(--input-disabledLabelColorOnDark);
+      }
+      .helperText {
+        color: var(--input-disabledHelperTextFontColorOnDark);
+      }
+      .inputText {
+        color: var(--input-disabledValueFontColorOnDark);
+      }
+      .inputText::placeholder {
+        color: var(--input-disabledPlaceholderFontColorOnDark);
       }
       .inputSuffix {
         border-left: 1px solid var(--input-disabledSuffixColorOnDark);
@@ -78,7 +90,7 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer,
       .inputContainer:hover {
-        border: 1px solid var(--input-outlineDisabledColorOnDark);
+        border: 1px solid var(--input-disabledOutlineColorOnDark);
         box-shadow: none;
         cursor: not-allowed;
         background-color: var(--input-disabledContainerFillColorOnDark);
@@ -145,7 +157,7 @@ export class DxcNewInputTextHelper {
         border: ${
           inputs.error
             ? `1px solid var(--input-errorOutlineColor)`
-            : "1px solid var(--input-outlineEnabledColor)"
+            : "1px solid var(--input-enabledOutlineColor)"
         };
         ${
           inputs.error
@@ -173,14 +185,14 @@ export class DxcNewInputTextHelper {
         border: none;
         outline: none;
         padding-left: 16px;
-        color: var(--input-inputTextFontColor);
+        color: var(--input-valueFontColor);
         font-family: var(--input-fontFamily);
-        font-size: var(--input-inputTextFontSize);
-        font-style: var(--input-inputTextFontStyle);
-        font-weight: var(--input-inputTextFontWeight);
-        caret-color: var(--input-inputTextFontColor);
+        font-size: var(--input-valueFontSize);
+        font-style: var(--input-valueFontStyle);
+        font-weight: var(--input-valueFontWeight);
+        caret-color: var(--input-valueFontColor);
         &::placeholder {
-          color: var(--input-placeholderColor);
+          color: var(--input-placeholderFontColor);
         }
       }
 
@@ -198,7 +210,7 @@ export class DxcNewInputTextHelper {
         cursor: pointer;
         background-color: transparent;
         padding: 0;
-        color: var(--input-inputTextFontColor);
+        color: var(--input-valueFontColor);
         &:hover {
           background-color: var(--input-hoverActionBackgroundColor);
         }
@@ -371,17 +383,17 @@ export class DxcNewInputTextHelper {
         color: var(--input-helperTextFontColorOnDark);
       }
       .inputText {
-        color: var(--input-inputTextFontColorOnDark);
-        caret-color: var(--input-inputTextFontColorOnDark);
+        color: var(--input-valueFontColorOnDark);
+        caret-color: var(--input-valueFontColorOnDark);
         &::placeholder {
-          color: var(--input-placeholderColorOnDark);
+          color: var(--input-placeholderFontColorOnDark);
         }
       }
       .inputContainer{
         border: ${
           inputs.error
             ? `1px solid var(--input-errorOutlineColorOnDark)`
-            : "1px solid var(--input-outlineEnabledColorOnDark)"
+            : "1px solid var(--input-enabledOutlineColorOnDark)"
         };
         ${
           inputs.error
@@ -397,7 +409,7 @@ export class DxcNewInputTextHelper {
         }
       }
       .inputAction {
-        color: var(--input-inputTextFontColorOnDark);
+        color: var(--input-valueFontColorOnDark);
         &:hover {
           background-color: var(--input-hoverActionBackgroundColorOnDark);
         }

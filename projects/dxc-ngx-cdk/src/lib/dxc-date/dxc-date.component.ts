@@ -8,7 +8,8 @@ import {
   OnInit,
   ViewChild,
   SimpleChanges,
-  forwardRef
+  forwardRef,
+  ElementRef
 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { css } from "emotion";
@@ -69,10 +70,10 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   @Input() customOutput = false;
   @Input() label: string;
   @Input() iconSrc: string;
-  @Input() name: string; 
+  @Input() name: string;
   @Input('ariaLabel') ariaLabel: string = null;
   @Input('ariaLabelledBy') ariaLabelledBy: string = null;
-  @Input('ariaDescribedBy') ariaDescribedBy: string = null; 
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
   @Input('ariaRequired') ariaRequired: boolean = false;
   @Input()
   get disabled(): boolean {
@@ -138,7 +139,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   userDate: string = '';
   date: string = '';
   calendarDynamicStyle: any;
-
+  @ViewChild('calender', { read: ElementRef, static: false }) calender: ElementRef;
   @ViewChild(MdePopoverTrigger, { static: false })
   _dxcTrigger: MdePopoverTrigger;
   @ViewChild("dxcCalendar", { static: false })
@@ -305,6 +306,9 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       : moment();
     this._dxcCalendar.currentView = "month";
     this._dxcTrigger.openPopover();
+    setTimeout(() => {
+      this.calender.nativeElement.focus();
+    }, 100);
     this.resetCalendarState(true);
   }
 
@@ -365,7 +369,10 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
     return css`
       width: 297px;
       background: var(--date-pickerBackgroundColor);
-
+      .caln-btn button{
+        padding: 0px;
+        margin: 0px;
+      }
       .mat-calendar {
         font-family: var(--fontFamily);
         width: 100%;

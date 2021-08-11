@@ -141,7 +141,7 @@ const globalTokens = {
 export const componentTokens = {
   "--fontFamily": globalTokens.type_sans,
   //ACCORDION
-  "--accordion-backgroundColor": globalTokens.hal_black,
+  "--accordion-backgroundColor": globalTokens.hal_white,
   "--accordion-arrowColor": globalTokens.purple,
   "--accordion-hoverBackgroundColor": globalTokens.lightPurple,
   //Font

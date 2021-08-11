@@ -141,7 +141,7 @@ const globalTokens = {
 export const componentTokens = {
   "--fontFamily": globalTokens.type_sans,
   //ACCORDION
-  "--accordion-backgroundColor": globalTokens.hal_black,
+  "--accordion-backgroundColor": globalTokens.hal_white,
   "--accordion-arrowColor": globalTokens.purple,
   "--accordion-hoverBackgroundColor": globalTokens.lightPurple,
   //Font
@@ -218,7 +218,7 @@ export const componentTokens = {
   "--alert-titleFontWeight": globalTokens.type_bold,
   "--alert-titleFontStyle": globalTokens.type_normal,
   "--alert-titleTextTransform": globalTokens.type_uppercase,
-  "--alert-titlePaddingRight": "10px",
+  "--alert-titlePaddingRight": "8px",
   "--alert-titlePaddingLeft": "12px",
   "--alert-titlePaddingTop": "0px",
   "--alert-titlePaddingBottom": "0px",
@@ -227,13 +227,13 @@ export const componentTokens = {
   "--alert-contentFontSize": globalTokens.type_scale_01,
   "--alert-contentFontColor": globalTokens.hal_black,
   "--alert-contentFontWeight": globalTokens.type_normal,
-  "--alert-contentPaddingLeft": "46px",
+  "--alert-contentPaddingLeft": "48px",
   "--alert-contentPaddingRight": "12px",
   "--alert-contentPaddingTop": "8px",
   "--alert-contentPaddingBottom": "20px",
   //InlineText
-  "--alert-inlineTextPaddingLeft": "10px",
-  "--alert-inlineTextPaddingRight": "22px",
+  "--alert-inlineTextPaddingLeft": "8px",
+  "--alert-inlineTextPaddingRight": "8px",
   "--alert-inlineTextPaddingTop": "0px",
   "--alert-inlineTextPaddingBottom": "0px",
   //Icon
@@ -248,9 +248,12 @@ export const componentTokens = {
   "--alert-boxShadowBlur": "6px",
   "--alert-boxShadowColor": "#00000012",
   "--alert-borderRadius": "4px",
-  "--alert-borderStyle": globalTokens.type_no_line,
-  "--alert-borderThickness": "0px",
-  "--alert-borderColor": globalTokens.transparent,
+  "--alert-borderStyle": globalTokens.border_solid,
+  "--alert-borderThickness": "1px",
+  "--alert-infoBorderColor": globalTokens.hal_blue_s_35,
+  "--alert-successBorderColor": globalTokens.hal_green_s_39,
+  "--alert-warningBorderColor": globalTokens.hal_yellow_s_57,
+  "--alert-errorBorderColor": globalTokens.hal_red_s_41,
 
   //BOX
   "--box-backgroundColor": globalTokens.hal_white,

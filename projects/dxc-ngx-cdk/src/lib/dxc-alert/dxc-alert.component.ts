@@ -14,6 +14,7 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { BackgroundProviderInnerComponent } from "../background-provider/background-provider-inner.component";
 
 @Component({
   selector: "dxc-alert",
@@ -39,7 +40,8 @@ export class DxcAlertComponent implements OnChanges {
 
   @Output() onClose = new EventEmitter<any>();
   isCloseVisible = false;
-  @ViewChild("contents", { static: true }) content: ElementRef;
+  @ViewChild("contents", { static: true })
+  content: BackgroundProviderInnerComponent;
 
   currentBackgroundColor: string;
 
@@ -99,29 +101,41 @@ export class DxcAlertComponent implements OnChanges {
   setBackgroundColorByAlertType(type: string) {
     switch (type) {
       case "info":
-        this.currentBackgroundColor = this.utils.readProperty('--alert-infoColor');
+        this.currentBackgroundColor =
+          this.utils.readProperty("--alert-infoColor");
         return css`
           background-color: var(--alert-infoColor);
+          border-color: var(--alert-infoBorderColor);
         `;
       case "confirm":
-        this.currentBackgroundColor = this.utils.readProperty('--alert-successColor');
+        this.currentBackgroundColor = this.utils.readProperty(
+          "--alert-successColor"
+        );
         return css`
           background-color: var(--alert-successColor);
+          border-color: var(--alert-successBorderColor);
         `;
       case "warning":
-        this.currentBackgroundColor = this.utils.readProperty('--alert-warningColor');
+        this.currentBackgroundColor = this.utils.readProperty(
+          "--alert-warningColor"
+        );
         return css`
           background-color: var(--alert-warningColor);
+          border-color: var(--alert-warningBorderColor);
         `;
       case "error":
-        this.currentBackgroundColor = this.utils.readProperty('--alert-errorColor');
+        this.currentBackgroundColor =
+          this.utils.readProperty("--alert-errorColor");
         return css`
           background-color: var(--alert-errorColor);
+          border-color: var(--alert-errorBorderColor);
         `;
       default:
-        this.currentBackgroundColor = this.utils.readProperty('--alert-errorColor');
+        this.currentBackgroundColor =
+          this.utils.readProperty("--alert-errorColor");
         return css`
           background-color: var(--alert-errorColor);
+          border-color: var(--alert-errorBorderColor);
         `;
     }
   }
@@ -133,10 +147,12 @@ export class DxcAlertComponent implements OnChanges {
   ngAfterViewChecked() {
     if (
       this.content &&
-      this.content.nativeElement &&
-      this.content.nativeElement.children.length > 0
+      this.content.element &&
+      this.content.element.nativeElement &&
+      (this.content.element.nativeElement.children.length > 0 ||
+        this.content.element.nativeElement.innerText)
     ) {
-      this.content.nativeElement.classList.add("content");
+      this.content.element.nativeElement.classList.add("content");
     }
   }
 }

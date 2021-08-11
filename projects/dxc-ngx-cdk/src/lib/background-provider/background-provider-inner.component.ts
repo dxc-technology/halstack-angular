@@ -1,4 +1,4 @@
-import { Component, OnInit, Optional, SkipSelf, Input } from "@angular/core";
+import { Component, OnInit, Optional, SkipSelf, Input, ElementRef } from "@angular/core";
 import { TinyColor } from "@ctrl/tinycolor";
 import { BackgroundProviderService } from "./service/background-provider.service";
 
@@ -9,7 +9,7 @@ import { BackgroundProviderService } from "./service/background-provider.service
 export class BackgroundProviderInnerComponent implements OnInit {
   @Input() color: string;
 
-  constructor(
+  constructor( public element:ElementRef,
     @Optional() @SkipSelf() public bgProviderService: BackgroundProviderService
   ) {}
 

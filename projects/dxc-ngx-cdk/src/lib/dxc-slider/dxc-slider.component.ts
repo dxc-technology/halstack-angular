@@ -260,9 +260,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           height: var(--slider-thumbHeight);
           bottom: var(--slider-thumbVerticalPosition);
           &:hover{
-            width: 16px;
-            height: 16px;
-            bottom: -8px;
+            width: calc(var(--slider-thumbWidth) + 4px);
+            height: calc(var(--slider-thumbWidth) + 4px);
+            bottom: calc(var(--slider-thumbVerticalPosition) - 2px);
           }
         }
         &:not(.mat-slider-disabled) {
@@ -306,9 +306,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         }
         &.cdk-focused, &.mat-slider-sliding {
           .mat-slider-thumb {
-            width: 16px;
-            height: 16px;
-            bottom: -8px;
+            width: calc(var(--slider-thumbWidth) + 4px);
+            height: calc(var(--slider-thumbWidth) + 4px);
+            bottom: calc(var(--slider-thumbVerticalPosition) - 2px);
           }
         }
         

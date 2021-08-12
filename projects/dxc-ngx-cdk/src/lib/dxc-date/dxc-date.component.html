@@ -22,8 +22,15 @@
   [ariaRequired]="ariaRequired"
   [tabIndexValue]="disabled ? -1 : tabIndexValue"
 >
-  <dxc-input-suffix-icon (onClickSuffix)="openCalendar()" [tabIndexValue]="disabled ? -1 : tabIndexValue">
-    <mat-icon>calendar_today</mat-icon> 
+  <dxc-input-suffix-icon >
+    <dxc-button id="help" [tabIndexValue]="disabled ? -1 : tabIndexValue" class="caln-btn" size="small" [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy" [ariaDescribedBy]="ariaDescribedBy" [border]="false"
+        (onClick)="openCalendar()">
+        <dxc-button-icon>
+          <span class="icon-dxc-wrapper">
+            <mat-icon class="mat-icon material-icons">calendar_today</mat-icon>
+          </span>
+        </dxc-button-icon></dxc-button>   
+    <mat-icon></mat-icon> 
   </dxc-input-suffix-icon>
 </dxc-input-text>
 
@@ -34,7 +41,7 @@
   [mdePopoverArrowWidth]="0"
 >
   <div [class]="calendarDynamicStyle">
-    <dxc-box theme size="fillParent" padding="xsmall">
+    <dxc-box theme size="fillParent" padding="xsmall" tabindex="0" #calender>
       <mat-calendar
         #dxcCalendar
         [selected]="dateValue"

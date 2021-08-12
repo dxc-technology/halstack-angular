@@ -133,7 +133,7 @@ export class DxcTextareaComponent
   ngOnInit() {
     this.renderedValue = this.value || "";
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.onChangeRegister(this.renderedValue);
+    //this.onChangeRegister(this.renderedValue);
   }
 
   ngAfterViewChecked(): void {
@@ -168,9 +168,9 @@ export class DxcTextareaComponent
     this.isRequired = this.required;
     if (this.controlled) {
       this.renderedValue = this.value || "";
+      this.onChangeRegister(this.renderedValue);
     }
     this.label = this.label || "";
-    this.onChangeRegister(this.renderedValue);
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;

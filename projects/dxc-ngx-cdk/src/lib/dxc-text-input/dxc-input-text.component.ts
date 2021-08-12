@@ -163,7 +163,7 @@ export class DxcTextInputComponent
   public onTouched: () => void = () => { };
   public onChangeRegister = (val) => { };
 
-  onInputKeyPress($event):void {
+  onInputKeyPress($event): void {
     this.onKeyPress.emit($event);
   }
 
@@ -185,7 +185,7 @@ export class DxcTextInputComponent
 
   ngOnInit() {
     this.renderedValue = this.value || "";
-    this.onChangeRegister(this.renderedValue);
+    //this.onChangeRegister(this.renderedValue);
     this.bindAutocompleteOptions();
     this.autocompleteFunction("");
   }
@@ -221,8 +221,10 @@ export class DxcTextInputComponent
     }
     this.isDisabled = this.disabled;
 
-    this.renderedValue = this.value || "";
-    this.onChangeRegister(this.renderedValue);
+    if (changes.value != null) {
+      this.renderedValue = this.value || "";
+      this.onChangeRegister(this.renderedValue);
+    }
     this.label = this.label || "";
 
     this.service.setIsDisabled(this.disabled);
@@ -323,6 +325,7 @@ export class DxcTextInputComponent
    *Executed when input lost the focus
    */
   public onBlurHandle($event: any): void {
+    this.onTouched();
     this.onBlur.emit(this.renderedValue);
   }
 

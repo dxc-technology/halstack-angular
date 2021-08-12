@@ -24,7 +24,7 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
   @Input('themePaletteLabel') themePaletteLabel: string = '';
   @Input('closeLabel') closeLabel: string = '';
   @Input('colorShades') colorShades: Array<number> = [];
-  @Input() border:boolean = false;
+  @Input() border: boolean = false;
   @Input() public disabled: boolean = false;
 
   @Output() themeOpenChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -39,7 +39,8 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
 
   @HostListener('keydown.escape')
   escape() {
-    this.closeThemePalette();
+    if (this.enablePopupMode)
+      this.closeThemePalette();
   }
 
   defaultInputs = new BehaviorSubject<any>({
@@ -83,9 +84,11 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.dialogstart.nativeElement.focus();
-    }, 1);
+    if (this.enablePopupMode) {
+      setTimeout(() => {
+        this.dialogstart.nativeElement.focus();
+      }, 1);
+    }
   }
 
   closeThemePalette() {
@@ -103,21 +106,27 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   startKeyPress($event: any) {
-    if ($event.shiftKey && $event.keyCode == 9 && $event.srcElement == this.dialogstart.nativeElement) {
-      if (this.returntoend.nativeElement.focus) {
-        this.returntoend.nativeElement.tabindex = "0";
-        this.returntoend.nativeElement.focus();
+    if (this.enablePopupMode) {
+      if ($event.shiftKey && $event.keyCode == 9 && $event.srcElement == this.dialogstart.nativeElement) {
+        if (this.returntoend.nativeElement.focus) {
+          this.returntoend.nativeElement.tabindex = "0";
+          this.returntoend.nativeElement.focus();
+        }
       }
     }
   }
 
   endFocus($event: any) {
-    if (this.dialogstart.nativeElement.focus)
-      this.dialogstart.nativeElement.focus();
+    if (this.enablePopupMode) {
+      if (this.dialogstart.nativeElement.focus)
+        this.dialogstart.nativeElement.focus();
+    }
   }
 
   returnFocusOut($event: any) {
-    this.returntoend.nativeElement.tabindex = "-1";
+    if (this.enablePopupMode) {
+      this.returntoend.nativeElement.tabindex = "-1";
+    }
   }
 
   calculateWidth(inputs) {

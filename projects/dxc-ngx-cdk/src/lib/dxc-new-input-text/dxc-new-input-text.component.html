@@ -4,7 +4,7 @@
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="inputContainer">
-  <span *ngIf="prefix" class="inputPrefix">{{ prefix }}</span>
+  <ng-content select="dxc-input-text-prefix"></ng-content>
   <input
     #inputRef
     (focus)="handleOnFocus()"
@@ -62,10 +62,9 @@
     [disabled]="disabled"
     aria-label="Action"
   >
-    <!-- //TODO: Adding a directive or pipe filtering content is a svg tag-->
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
-  <span *ngIf="suffix" class="inputSuffix">{{ suffix }}</span>
+  <ng-content select="dxc-input-text-suffix"></ng-content>
   <ul
     #autoSuggestOptions
     [ngClass]="{ visible: autosuggestVisible, fetchingError: fetchingError }"
@@ -81,14 +80,17 @@
       "
       role="option"
       [attr.aria-selected]="focusedOption === i"
-      [ngClass]="{ selected: focusedOption === i, active: focusedOption === i &&  activedOption === i}"
+      [ngClass]="{
+        selected: focusedOption === i,
+        active: focusedOption === i && activedOption === i
+      }"
       [innerHtml]="item | boldOptions: value"
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
       (mouseenter)="handleOnHover(i)"
       (mouseleave)="handleOnLeave()"
     ></li>
-    <li *ngIf="filteredOptions.length === 0">No results found.</li>
+    <li *ngIf="filteredOptions.length === 0" class="sytemMessage">No results found.</li>
     <li *ngIf="fetchingError">
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -5,6 +5,7 @@
       <dxc-new-input-text
         placeholder="placeholder"
         helperText="helper text"
+        label="Input label"
         margin="xsmall"
         [value]="controlledValue"
         (onChange)="changeValue($event)"
@@ -31,13 +32,14 @@
       <dxc-new-input-text
         placeholder="placeholder"
         label="Input label"
-        [value]="controlledValue"
-        (onChange)="changeValue($event)"
+        helperText="helper text"
         clearable="true"
         margin="xsmall"
-        (onActionClick)="click()"
         [autocompleteOptions]="options"
+        (onActionClick)="click()"
       >
+        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
         <dxc-new-input-text-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,40 +55,21 @@
           </svg>
         </dxc-new-input-text-action>
       </dxc-new-input-text>
+    </tbuilder-component-mode>
 
-      <dxc-new-input-text
-        placeholder="placeholder"
-        label="Input label"
-        suffix="$"
-        prefix="+34"
-        helperText="helper text"
-        margin="xsmall"
-        [autocompleteOptions]="options"
-      >
-      </dxc-new-input-text>
-
-      <dxc-new-input-text
-        placeholder="placeholder"
-        error="Very important error"
-        label="Input label"
-        suffix="$"
-        prefix="+34"
-        helperText="helper text"
-        margin="xsmall"
-        [autocompleteOptions]="options"
-      ></dxc-new-input-text>
+    <tbuilder-component-mode text="Error">
       <dxc-new-input-text
         placeholder="placeholder"
         clearable="true"
         error="Very important error"
         label="Input label"
-        suffix="$"
-        prefix="+34"
         helperText="helper text"
         margin="xsmall"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
       >
+        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
         <dxc-new-input-text-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -111,14 +94,14 @@
         clearable="true"
         error="Very important error"
         label="Input label"
-        suffix="$"
-        prefix="+34"
         helperText="helper text"
         margin="xsmall"
         disabled="true"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
       >
+        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
         <dxc-new-input-text-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -152,6 +135,7 @@
       <dxc-new-input-text
         placeholder="placeholder"
         helperText="helper text"
+        label="Input label"
         margin="xsmall"
         [value]="controlledValue"
         (onChange)="changeValue($event)"
@@ -178,13 +162,13 @@
       <dxc-new-input-text
         placeholder="placeholder"
         label="Input label"
-        [value]="controlledValue"
-        (onChange)="changeValue($event)"
-        clearable="true"
+        helperText="helper text"
         margin="xsmall"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
       >
+        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
         <dxc-new-input-text-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -200,40 +184,21 @@
           </svg>
         </dxc-new-input-text-action>
       </dxc-new-input-text>
+    </tbuilder-component-mode>
 
-      <dxc-new-input-text
-        placeholder="placeholder"
-        label="Input label"
-        suffix="$"
-        prefix="+34"
-        helperText="helper text"
-        margin="xsmall"
-        [autocompleteOptions]="options"
-      >
-      </dxc-new-input-text>
-
-      <dxc-new-input-text
-        placeholder="placeholder"
-        error="Very important error"
-        label="Input label"
-        suffix="$"
-        prefix="+34"
-        helperText="helper text"
-        margin="xsmall"
-        [autocompleteOptions]="options"
-      ></dxc-new-input-text>
+    <tbuilder-component-mode text="Error" mode="dark">
       <dxc-new-input-text
         placeholder="placeholder"
         clearable="true"
         error="Very important error"
         label="Input label"
-        suffix="$"
-        prefix="+34"
         helperText="helper text"
         margin="xsmall"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
       >
+        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
         <dxc-new-input-text-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -258,14 +223,14 @@
         clearable="true"
         error="Very important error"
         label="Input label"
-        suffix="$"
-        prefix="+34"
         helperText="helper text"
         margin="xsmall"
         disabled="true"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
       >
+        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
         <dxc-new-input-text-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -56,12 +56,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   private _disabled = false;
 
   @Input()
-  prefix = "";
-
-  @Input()
-  suffix = "";
-
-  @Input()
   optional = false;
 
   @Input()
@@ -88,8 +82,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     error: "",
     clearable: false,
     optional: false,
-    suffix: "",
-    prefix: "",
     disabled: false,
     helperText: "",
     value: undefined,

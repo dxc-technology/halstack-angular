@@ -16,6 +16,14 @@ export class DxcNewInputTextHelper {
 
   getDisabledStyle() {
     return css`
+      dxc-input-text-prefix {
+        border-right: 1px solid var(--input-disabledPrefixColor);
+        color: var(--input-disabledPrefixColor);
+      }
+      dxc-input-text-suffix{
+        border-left: 1px solid var(--input-disabledSuffixColor);
+        color: var(--input-disabledSuffixColor);
+      }
       .inputLabel,
       .inputOptionalLabel {
         color: var(--input-disabledLabelColor);
@@ -28,14 +36,6 @@ export class DxcNewInputTextHelper {
       }
       .inputText::placeholder {
         color: var(--input-disabledPlaceholderFontColor);
-      }
-      .inputSuffix {
-        border-left: 1px solid var(--input-disabledSuffixColor);
-        color: var(--input-disabledSuffixColor);
-      }
-      .inputPrefix {
-        border-right: 1px solid var(--input-disabledPrefixColor);
-        color: var(--input-disabledPrefixColor);
       }
       .inputAction {
         pointer-events: none;
@@ -58,6 +58,14 @@ export class DxcNewInputTextHelper {
 
   getDisabledDarkStyle() {
     return css`
+      dxc-input-text-prefix {
+        border-right: 1px solid var(--input-disabledPrefixColorOnDark);
+        color: var(--input-disabledPrefixColorOnDark);
+      }
+      dxc-input-text-suffix{
+        border-left: 1px solid var(--input-disabledSuffixColorOnDark);
+        color: var(--input-disabledSuffixColorOnDark);
+      }
       .inputLabel,
       .inputOptionalLabel {
         color: var(--input-disabledLabelColorOnDark);
@@ -70,14 +78,6 @@ export class DxcNewInputTextHelper {
       }
       .inputText::placeholder {
         color: var(--input-disabledPlaceholderFontColorOnDark);
-      }
-      .inputSuffix {
-        border-left: 1px solid var(--input-disabledSuffixColorOnDark);
-        color: var(--input-disabledSuffixColorOnDark);
-      }
-      .inputPrefix {
-        border-right: 1px solid var(--input-disabledPrefixColorOnDark);
-        color: var(--input-disabledPrefixColorOnDark);
       }
       .inputAction {
         pointer-events: none;
@@ -114,6 +114,32 @@ export class DxcNewInputTextHelper {
           width: 18px !important;
           height: 100%;
         }
+      }
+
+      dxc-input-text-prefix, dxc-input-text-suffix{
+        height: calc(1rem * 1.5);
+        line-height: calc(1rem * 1.5);
+        font-family: var(--input-fontFamily);
+        pointer-events: none;
+      }
+
+      dxc-input-text-suffix{
+        border-left: 1px solid var(--input-suffixLabelColor);
+        margin-left: 4px;
+        padding: 0 0 0 calc(1rem * 0.5);
+        color: var(--input-suffixLabelColor);
+        font-size: var(--input-suffixFontSize);
+        font-style: var(--input-suffixFontStyle);
+        font-weight: var(--input-suffixFontWeight);
+      }
+
+      dxc-input-text-prefix{
+        border-right: 1px solid var(--input-prefixLabelColor);
+        padding: 0 calc(1rem * 0.5) 0 calc(1rem * 0.5);
+        color: var(--input-prefixLabelColor);
+        font-size: var(--input-prefixFontSize);
+        font-style: var(--input-prefixFontStyle);
+        font-weight: var(--input-prefixFontWeight);
       }
 
       .overlay:not(.overlayVisible) {
@@ -252,31 +278,6 @@ export class DxcNewInputTextHelper {
           width: 18px;
         }
       }
-
-      .inputPrefix,
-      .inputSuffix {
-        height: calc(1rem * 1.5);
-        line-height: calc(1rem * 1.5);
-        font-family: var(--input-fontFamily);
-        pointer-events: none;
-      }
-      .inputPrefix {
-        border-right: 1px solid var(--input-prefixLabelColor);
-        padding: 0 calc(1rem * 0.5) 0 0;
-        color: var(--input-prefixLabelColor);
-        font-size: var(--input-prefixFontSize);
-        font-style: var(--input-prefixFontStyle);
-        font-weight: var(--input-prefixFontWeight);
-      }
-      .inputSuffix {
-        border-left: 1px solid var(--input-suffixLabelColor);
-        margin-left: 4px;
-        padding: 0 0 0 calc(1rem * 0.5);
-        color: var(--input-suffixLabelColor);
-        font-size: var(--input-suffixFontSize);
-        font-style: var(--input-suffixFontStyle);
-        font-weight: var(--input-suffixFontWeight);
-      }
       .inputErrorMessage {
         font-family: var(--input-fontFamily);
         color: var(--input-errorMessageColor);
@@ -311,31 +312,41 @@ export class DxcNewInputTextHelper {
         overflow-x: hidden;
         max-height: 160px;
         li {
-          font-family: var(--input-fontFamily);
-          font-size: var(--input-inputFontSize);
-          font-style: var(--input-inputFontStyle);
-          font-weight: var(--input-inputFontWeight);
+          color: var(--input-listOptionFontColor);
+          font-family: var(--input-listOptionFontFamily);
+          font-size: var(--input-listOptionFontSize);
+          font-weight: var(--input-listOptionFontWeight);
           line-height: 1.75em;
-
           padding-top: calc((39px - 1.75em) / 2);
           padding-bottom: calc((39px - 1.75em) / 2);
           padding-left: 1em;
-
           cursor: pointer;
           &.selected {
-            background-color: #f2f2f2;
+            background-color: var(--input-hoverListOptionBackgroundColor);
           }
           &.active.selected {
-            background-color: #cccccc;
+            background-color: var(--input-activeListOptionBackgroundColor);
+          }
+        }
+
+        &.sytemMessage{
+          li{
+            color: var(--input-sytemMessageFontColor);
+            font-family: var(--input-sytemMessageFontFamily);
+            font-size: var(--input-sytemMessageFontSize);
+            font-weight: var(--input-sytemMessageFontWeight);
           }
         }
 
         &.fetchingError{
-          border: 1px solid var(--input-errorOutlineColor);
+          border: 1px solid var(--input-errorMessageBorderColor);
           li{
+            font-family: var(--input-errorMessageFontFamily);
+            font-size: var(--input-errorMessageFontSize);
+            font-weight: var(--input-errorMessageFontWeight);
             align-items: center;
             display: flex;
-            background-color: #FFE3E6;
+            background-color: var(--input-errorMessageBackgroundColor);
             svg{
               height: 18px;
               width: 18px;
@@ -375,6 +386,14 @@ export class DxcNewInputTextHelper {
 
   getDarkStyle(inputs) {
     return css`
+      dxc-input-text-prefix {
+        border-right: 1px solid var(--input-prefixLabelColorOnDark);
+        color: var(--input-prefixLabelColorOnDark);
+      }
+      dxc-input-text-suffix{
+        border-left: 1px solid var(--input-suffixLabelColorOnDark);
+        color: var(--input-suffixLabelColorOnDark);
+      }
       .inputLabel,
       .inputOptionalLabel {
         color: var(--input-labelFontColorOnDark);
@@ -389,17 +408,13 @@ export class DxcNewInputTextHelper {
           color: var(--input-placeholderFontColorOnDark);
         }
       }
-      .inputContainer{
-        border: ${
-          inputs.error
-            ? `1px solid var(--input-errorOutlineColorOnDark)`
-            : "1px solid var(--input-enabledOutlineColorOnDark)"
-        };
-        ${
-          inputs.error
-            ? `box-shadow: inset 0 0 0 1px var(--input-errorOutlineColorOnDark);`
-            : ""
-        };
+      .inputContainer {
+        border: ${inputs.error
+          ? `1px solid var(--input-errorOutlineColorOnDark)`
+          : "1px solid var(--input-enabledOutlineColorOnDark)"};
+        ${inputs.error
+          ? `box-shadow: inset 0 0 0 1px var(--input-errorOutlineColorOnDark);`
+          : ""};
         &:hover {
           border-color: var(--input-hoverOutlineColorOnDark);
         }
@@ -415,25 +430,20 @@ export class DxcNewInputTextHelper {
         }
         &:focus {
           border: 1px solid var(--input-focusActionBackgroundColorOnDark);
-          box-shadow: inset 0 0 0 1px var(--input-focusActionBackgroundColorOnDark);
+          box-shadow: inset 0 0 0 1px
+            var(--input-focusActionBackgroundColorOnDark);
         }
         &:focus-visible {
           border: 1px solid var(--input-focusActionBackgroundColorOnDark);
-          box-shadow: inset 0 0 0 1px var(--input-focusActionBackgroundColorOnDark);
+          box-shadow: inset 0 0 0 1px
+            var(--input-focusActionBackgroundColorOnDark);
         }
         &:active {
           border: 1px solid var(--input-activeActionBackgroundColorOnDark);
-          box-shadow: inset 0 0 0 1px var(--input-activeActionBackgroundColorOnDark);
+          box-shadow: inset 0 0 0 1px
+            var(--input-activeActionBackgroundColorOnDark);
           background-color: var(--input-activeActionBackgroundColorOnDark);
         }
-      }
-      .inputPrefix {
-        border-right: 1px solid var(--input-prefixLabelColorOnDark);
-        color: var(--input-prefixLabelColorOnDark);
-      }
-      .inputSuffix {
-        border-left: 1px solid var(--input-suffixLabelColorOnDark);
-        color: var(--input-suffixLabelColorOnDark);
       }
       .inputErrorIcon {
         color: var(--input-errorIconColorOnDark);

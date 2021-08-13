@@ -15,9 +15,7 @@ describe("DxcNewTextInputComponent", () => {
     const input = await render(DxcNewInputTextComponent, {
       componentProperties: {
         label: "test-input",
-        helperText: "helper-text",
-        prefix: "+34",
-        suffix: "$"
+        helperText: "helper-text"
       },
       imports: [CommonModule],
       providers: [DxcNewInputTextService],
@@ -26,8 +24,6 @@ describe("DxcNewTextInputComponent", () => {
 
     expect(input.getByText("test-input"));
     expect(input.getByText("helper-text"));
-    expect(input.getByText("+34"));
-    expect(input.getByText("$"));
   });
 
   test("should render error dxc-new-input-text", async () => {
@@ -35,8 +31,6 @@ describe("DxcNewTextInputComponent", () => {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
-        prefix: "+34",
-        suffix: "$",
         error: "Very important error"
       },
       imports: [CommonModule],
@@ -46,8 +40,6 @@ describe("DxcNewTextInputComponent", () => {
 
     expect(input.getByText("test-input"));
     expect(input.getByText("helper-text"));
-    expect(input.getByText("+34"));
-    expect(input.getByText("$"));
     expect(input.getByText("Very important error"));
     expect(input.getByLabelText('Error'));
   });

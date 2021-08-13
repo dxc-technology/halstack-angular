@@ -95,6 +95,8 @@ export * from './lib/dxc-text-input/dxc-input-suffix-icon/dxc-input-suffix-icon.
 export * from './lib/dxc-new-input-text/dxc-new-input-text.component';
 export * from './lib/dxc-new-input-text/dxc-new-input-text.module';
 export * from './lib/dxc-new-input-text/dxc-new-input-text-action/dxc-new-input-text-action.component';
+export * from './lib/dxc-new-input-text/dxc-input-text-prefix/dxc-input-text-prefix.component';
+export * from './lib/dxc-new-input-text/dxc-input-text-suffix/dxc-input-text-suffix.component';
 
 export * from './lib/dxc-new-input-password/dxc-new-input-password.component';
 export * from './lib/dxc-new-input-password/dxc-new-input-password.module';

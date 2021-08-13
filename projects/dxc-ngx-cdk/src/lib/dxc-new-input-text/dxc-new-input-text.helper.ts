@@ -327,6 +327,9 @@ export class DxcNewInputTextHelper {
           &.active.selected {
             background-color: var(--input-activeListOptionBackgroundColor);
           }
+          b{
+            font-weight: var(--input-listOptionTypedFontWeight);
+          }
         }
 
         &.sytemMessage{

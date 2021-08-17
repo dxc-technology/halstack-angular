@@ -125,7 +125,8 @@ export class DxcNewInputTextHelper {
 
       dxc-input-text-suffix{
         border-left: 1px solid var(--input-suffixLabelColor);
-        margin-left: 4px;
+        margin-right: calc(1rem * 0.5);
+        margin-left: calc(1rem * 0.25);
         padding: 0 0 0 calc(1rem * 0.5);
         color: var(--input-suffixLabelColor);
         font-size: var(--input-suffixFontSize);
@@ -135,7 +136,8 @@ export class DxcNewInputTextHelper {
 
       dxc-input-text-prefix{
         border-right: 1px solid var(--input-prefixLabelColor);
-        padding: 0 calc(1rem * 0.5) 0 calc(1rem * 0.5);
+        margin-left: calc(1rem * 0.25);
+        padding: 0 calc(1rem * 0.5) 0 0;
         color: var(--input-prefixLabelColor);
         font-size: var(--input-prefixFontSize);
         font-style: var(--input-prefixFontStyle);
@@ -191,9 +193,7 @@ export class DxcNewInputTextHelper {
             : ""
         };
         border-radius: 4px;
-        margin: 4px 0;
-        padding-right: 12px;
-        ${inputs.prefix ? `padding-left: 12px;` : ""};
+        padding: 0 calc(1rem * 0.5);
         &:hover {
           border-color: var(--input-hoverOutlineColor);
           box-shadow: none;
@@ -210,7 +210,7 @@ export class DxcNewInputTextHelper {
         background: none;
         border: none;
         outline: none;
-        padding-left: 16px;
+        padding: 0 calc(1rem * 0.5);
         color: var(--input-valueFontColor);
         font-family: var(--input-fontFamily);
         font-size: var(--input-valueFontSize);
@@ -225,7 +225,7 @@ export class DxcNewInputTextHelper {
       .inputAction {
         height: 24px;
         max-width: 24px;
-        margin-left: 4px;
+        padding: 3px;
         font-size: 1rem;
         font-family: var(--input-fontFamily);
         border: 1px solid transparent;
@@ -235,7 +235,6 @@ export class DxcNewInputTextHelper {
         justify-content: center;
         cursor: pointer;
         background-color: transparent;
-        padding: 0;
         color: var(--input-valueFontColor);
         &:hover {
           background-color: var(--input-hoverActionBackgroundColor);
@@ -258,22 +257,19 @@ export class DxcNewInputTextHelper {
         }
         svg {
           line-height: 18px;
-          width: 100%;
-          height: 100%;
         }
       }
       .inputErrorIcon {
         height: 18px;
         width: 18px;
+        margin-right: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         pointer-events: none;
         color: var(--input-errorIconColor);
-        padding-left: 4px;
         svg {
-          font-size: 1.25rem;
-          line-height: 22px;
+          line-height: 18px;
           height: 18px;
           width: 18px;
         }
@@ -291,6 +287,7 @@ export class DxcNewInputTextHelper {
       dxc-new-input-text-action {
         display: flex;
       }
+
       .options {
         display: none;
         &.visible {

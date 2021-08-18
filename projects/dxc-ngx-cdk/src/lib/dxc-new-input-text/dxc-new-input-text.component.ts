@@ -68,6 +68,15 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   placeholder = "";
 
   @Input()
+  pattern = "";
+
+  @Input()
+  maxLength;
+  
+  @Input()
+  minLength;
+
+  @Input()
   margin: Object | string;
 
   @Input()
@@ -189,6 +198,16 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // if (this.controlled) {
+    //   if (
+    //     (changes.value && changes.value.currentValue) ||
+    //     (changes.value.currentValue === "" &&
+    //       changes.value.currentValue !== this.inputRef.nativeElement.value)
+    //   ) {
+    //     console.log(this.inputRef);
+    //     this.inputRef.nativeElement.value = changes.value.currentValue;
+    //   }
+    // }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -201,17 +220,25 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnChange(event) {
-    this.onChange.emit(event.target.value);
-    this.controlled
-      ? (event.target.value = this.value)
-      : (this.value = event.target.value);
+    this.onChange.emit(event);
+    if (!this.controlled) {
+      this.value = event;
+    }
+    if (this.controlled) {
+      setTimeout(() => {
+        console.log(this.inputRef);
+        if (this.inputRef.nativeElement.value !== this.value) {
+          this.inputRef.nativeElement.value = this.value;
+        }
+      }, 0);
+    }
     this.cdRef.detectChanges();
     this.service.setSelectedIndex(-1);
   }
 
   handleDefaultClearAction() {
     this.onChange.emit("");
-    this.handleInternalValue({ value: "", nativeValue: this.value });
+    this.handleOnChange("");
     this.inputRef.nativeElement.focus();
   }
 
@@ -221,11 +248,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnBlur(event) {
     this.onBlur.emit(event.target.value);
-    this.handleInternalValue({ value: event.target.value, nativeValue: null });
-    if (!this.controlled) {
-      this.value = event.target.value;
-      this.cdRef.detectChanges();
-    }
   }
 
   handleOnFocus() {
@@ -246,7 +268,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   handleOnClickOption(event) {
     if (this.activedOption === this.focusedOption) {
       this.onChange.emit(event);
-      this.handleInternalValue({ value: event, nativeValue: this.value });
+      this.handleOnChange(event);
       this.handleOnClose();
     }
     this.service.activeOption.next(-1);
@@ -255,10 +277,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   handleEnterKey() {
     if (this.focusedOption >= 0) {
       this.onChange.emit(this.filteredOptions[this.focusedOption]);
-      this.handleInternalValue({
-        value: this.filteredOptions[this.focusedOption],
-        nativeValue: this.value,
-      });
+      this.handleOnChange(this.filteredOptions[this.focusedOption]);
     }
     this.handleOnClose();
   }
@@ -298,16 +317,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
           this.handleOnClose();
         }
         break;
-    }
-  }
-
-  private handleInternalValue({ value, nativeValue }) {
-    if (!this.controlled) {
-      this.value = value;
-      if (nativeValue) {
-        this.inputRef.nativeElement.value = nativeValue;
-      }
-      this.cdRef.detectChanges();
     }
   }
 }

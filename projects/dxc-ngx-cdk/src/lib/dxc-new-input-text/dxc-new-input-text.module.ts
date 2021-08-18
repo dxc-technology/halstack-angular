@@ -6,6 +6,7 @@ import { FilterOptionsPipe } from "./pipes/filter-options.pipe";
 import { BoldOptionsPipe } from "./pipes/bold-options.pipe";
 import { DxcInputTextPrefixComponent } from "./dxc-input-text-prefix/dxc-input-text-prefix.component";
 import { DxcInputTextSuffixComponent } from "./dxc-input-text-suffix/dxc-input-text-suffix.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { DxcInputTextSuffixComponent } from "./dxc-input-text-suffix/dxc-input-t
     DxcInputTextPrefixComponent,
     DxcInputTextSuffixComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [
     DxcNewInputTextComponent,
     DxcNewInputTextActionComponent,

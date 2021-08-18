@@ -1,17 +1,17 @@
 <div class="panel panel-info" panel-class="panel-info" is-open="isAccordianOpen">
 
   <div class="mb-2 mt-2 btnhieght">
-    <dxc-button  size="small" mode="secondary" id="search" [title]="resource?.ttsearch.description" (onClick)="SearchMain()">
+    <dxc-button  size="small" mode="secondary" id="search" [ariaLabel]="resource?.ttsearch.description" (onClick)="SearchMain()">
       <dxc-button-icon>
-        <span class="icon-dxc-wrapper">
-          <mat-icon class="mat-icon material-icons">search</mat-icon>
+        <span class="icon-dxc-wrapper" >
+          <mat-icon class="mat-icon material-icons" [matTooltip]="resource?.ttsearch.description">search</mat-icon>
         </span>
       </dxc-button-icon>
     </dxc-button>
-    <dxc-button  size="small" mode="secondary" id="resetsearch" [title]="resource?.ttreset.description" (onClick)="resetSearch()">
+    <dxc-button  size="small" mode="secondary" id="resetsearch" [ariaLabel]="resource?.ttreset.description" (onClick)="resetSearch()">
       <dxc-button-icon>
         <span class="icon-dxc-wrapper">
-          <mat-icon class="mat-icon material-icons">restore</mat-icon>
+          <mat-icon class="mat-icon material-icons" [matTooltip]="resource?.ttreset.description">restore</mat-icon>
         </span>
       </dxc-button-icon>
     </dxc-button>

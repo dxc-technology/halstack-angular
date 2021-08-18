@@ -53,11 +53,11 @@
               <ng-template #thenBlock>
                 <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
                   {{(element[column] | formatter:formatColumns[column]).substring(0,30)}}
-                  <span matTooltip="{{element[column]}}">...</span>
+                  <span>...</span>
                 </div>
                 <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
                   {{element[column].substring(0,30)}}
-                  <span matTooltip="{{element[column]}}">...</span>
+                  <span>...</span>
                 </div>
               </ng-template>
               <ng-template #elseBlock>

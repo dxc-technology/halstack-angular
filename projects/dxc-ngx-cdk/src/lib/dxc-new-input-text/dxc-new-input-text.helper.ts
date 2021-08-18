@@ -39,8 +39,9 @@ export class DxcNewInputTextHelper {
       }
       .inputAction {
         pointer-events: none;
-        color: var(--input-disabledActionColor);
-        fill: var(--input-disabledActionColor);
+        background-color: var(--input-disabledActionBackgroundColor);
+        color: var(--input-disabledActionIconColor);
+        fill: var(--input-disabledActionIconColor);
       }
       .inputText,
       .inputAction {
@@ -81,8 +82,9 @@ export class DxcNewInputTextHelper {
       }
       .inputAction {
         pointer-events: none;
-        color: var(--input-disabledActionColorOnDark);
-        fill: var(--input-disabledActionColorOnDark);
+        background-color: var(--input-disabledActionBackgroundColorOnDark);
+        color: var(--input-disabledActionIconColorOnDark);
+        fill: var(--input-disabledActionIconColorOnDark);
       }
       .inputText,
       .inputAction {
@@ -228,23 +230,27 @@ export class DxcNewInputTextHelper {
         padding: 3px;
         font-size: 1rem;
         font-family: var(--input-fontFamily);
-        border: 1px solid transparent;
+        border: 1px solid var(--input-actionBackgroundColor);
         border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        background-color: transparent;
-        color: var(--input-valueFontColor);
+        background-color: var(--input-actionBackgroundColor);
+        color: var(--input-actionIconColor);
         &:hover {
           background-color: var(--input-hoverActionBackgroundColor);
+          color: var(--input-hoverActionIconColor);
         }
         &:focus {
+          color: var(--input-focusActionIconColor);
+          background-color: var(--input-focusActionBackgroundColor);
           border: 1px solid var(--input-focusActionBackgroundColor);
           box-shadow: inset 0 0 0 1px var(--input-focusActionBackgroundColor);
           outline: none;
         }
         &:focus-visible {
+          background-color: var(--input-focusActionBackgroundColor);
           border: 1px solid var(--input-focusActionBackgroundColor);
           box-shadow: inset 0 0 0 1px var(--input-focusActionBackgroundColor);
           outline: none;
@@ -424,16 +430,21 @@ export class DxcNewInputTextHelper {
         }
       }
       .inputAction {
-        color: var(--input-valueFontColorOnDark);
+        border: 1px solid var(--input-actionBackgroundColorOnDark);
+        background-color: var(--input-actionBackgroundColorOnDark);
+        color: var(--input-actionIconColorOnDark);
         &:hover {
+          color: var(--input-hoverActionIconColorOnDark);
           background-color: var(--input-hoverActionBackgroundColorOnDark);
         }
         &:focus {
+          color: var(--input-focusActionIconColorOnDark);
           border: 1px solid var(--input-focusActionBackgroundColorOnDark);
           box-shadow: inset 0 0 0 1px
             var(--input-focusActionBackgroundColorOnDark);
         }
         &:focus-visible {
+          color: var(--input-focusActionIconColorOnDark);
           border: 1px solid var(--input-focusActionBackgroundColorOnDark);
           box-shadow: inset 0 0 0 1px
             var(--input-focusActionBackgroundColorOnDark);

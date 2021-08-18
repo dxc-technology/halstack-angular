@@ -438,12 +438,14 @@ export class DxcNewInputTextHelper {
           background-color: var(--input-hoverActionBackgroundColorOnDark);
         }
         &:focus {
+          background-color: var(--input-focusActionBackgroundColorOnDark);
           color: var(--input-focusActionIconColorOnDark);
           border: 1px solid var(--input-focusActionBackgroundColorOnDark);
           box-shadow: inset 0 0 0 1px
             var(--input-focusActionBackgroundColorOnDark);
         }
         &:focus-visible {
+          background-color: var(--input-focusActionBackgroundColorOnDark);
           color: var(--input-focusActionIconColorOnDark);
           border: 1px solid var(--input-focusActionBackgroundColorOnDark);
           box-shadow: inset 0 0 0 1px

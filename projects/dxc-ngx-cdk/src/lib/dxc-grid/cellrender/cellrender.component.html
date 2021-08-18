@@ -111,11 +111,11 @@
 
 <div *ngIf="params.colDef.field == 'isFavorite'">
   <div [ngSwitch]="gridAPIRow.isFavorite">
-    <a *ngSwitchCase="true" class="row-icon-padding-top7" href="javascript:void(0)" tabindex="0"
+    <a *ngSwitchCase="true" class="row-icon-padding-top7" href="javascript:void(0)" tabindex="0" aria-label="Mark Unfavorite"
       (click)="gridAPIRow.isFavorite = !gridAPIRow.isFavorite; invokeParentMethod();" title="Mark Unfavorite">
       <span class="material-icons">star</span>
     </a>
-    <a *ngSwitchCase="false" class="row-icon-padding-top7" href="javascript:void(0)" tabindex="0"
+    <a *ngSwitchCase="false" class="row-icon-padding-top7" href="javascript:void(0)" tabindex="0" aria-label="Mark Favorite"
       (click)="gridAPIRow.isFavorite = !gridAPIRow.isFavorite; invokeParentMethod();" title="Mark Favorite">
       <span class="material-icons">star_border</span>
     </a>

@@ -227,24 +227,6 @@ export class DxcNumberComponent implements OnInit, ControlValueAccessor {
         margin-right: 8px;
       }
 
-      textarea {
-        min-height: 76px;
-        max-height: 100px;
-        ${this.utils.calculateMinWidth(this.sizes, inputs.margin)}
-        max-width: 726px;
-        &::-webkit-scrollbar {
-          width: 3px;
-        }
-        &::-webkit-scrollbar-track {
-          background-color: var(--lightGrey, #D9D9D9);
-          border-radius: 3px;
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: var(--darkGrey, #666666);
-          border-radius: 3px;
-        }
-      }
-
       &.disabled {
         cursor: not-allowed;
       }

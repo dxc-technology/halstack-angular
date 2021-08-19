@@ -41,7 +41,7 @@
   [mdePopoverArrowWidth]="0"
 >
   <div [class]="calendarDynamicStyle">
-    <dxc-box theme size="fillParent" padding="xsmall" tabindex="0" #calender>
+    <dxc-box theme size="fillParent" padding="xsmall" tabindex="0" [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledBy"  role="dialog" #calender>
       <mat-calendar
         #dxcCalendar
         [selected]="dateValue"

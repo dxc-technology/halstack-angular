@@ -53,6 +53,8 @@ export class DxcTextInputComponent
   @Input('ariaLabelledBy') ariaLabelledBy: string = null;
   @Input('ariaDescribedBy') ariaDescribedBy: string = null;
   @Input('ariaRequired') ariaRequired: boolean = false;
+  @Input() public maxLength: number;
+  @Input() public minLength: number;
   @Input()
   get disabled(): boolean {
     return this._disabled;

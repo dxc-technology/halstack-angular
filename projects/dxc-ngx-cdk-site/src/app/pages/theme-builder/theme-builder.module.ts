@@ -39,7 +39,8 @@ import {
   DxcResultsetTableModule,
   BackgroundProviderModule,
   DxcNewInputTextModule,
-  DxcNewInputPasswordModule
+  DxcNewInputPasswordModule,
+  DxcInputNumberModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -133,6 +134,7 @@ import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/
     DxcInputTextModule,
     DxcNewInputTextModule,
     DxcNewInputPasswordModule,
+    DxcInputNumberModule,
     DxcLinkModule,
     DxcPaginatorModule,
     DxcProgressbarModule,

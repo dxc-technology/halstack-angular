@@ -1,5 +1,15 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <dxc-input-number
+    placeholder="placeholder"
+    label="Input label"
+    helperText="helper text"
+    minValue="10"
+    maxValue="100"
+    step="5"
+    [value]="numberValue"
+    (onChange)="numberOnChange($event)"
+  ></dxc-input-number>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
       <dxc-new-input-text

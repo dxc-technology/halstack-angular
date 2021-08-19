@@ -222,6 +222,10 @@ export class DxcNewInputTextHelper {
         &::placeholder {
           color: var(--input-placeholderFontColor);
         }
+        
+      }
+      input:invalid {
+        background-color: #FABADA;
       }
 
       .inputAction {

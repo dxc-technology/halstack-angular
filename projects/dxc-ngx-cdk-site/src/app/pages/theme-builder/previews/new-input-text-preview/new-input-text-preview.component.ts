@@ -9,6 +9,12 @@ export class NewInputTextPreviewComponent implements OnInit {
 
   controlledValue = "controlled value";
 
+  numberValue = "10";
+
+  numberOnChange(event) {
+    this.numberValue = event;
+  }
+
   options: Array<any> = [
     "Albania",
     "Andorra",

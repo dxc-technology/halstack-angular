@@ -50,7 +50,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'header', component: HeaderPreviewComponent},
   {name: 'heading', component: HeadingPreviewComponent},
   {name: 'inputText', component: InputTextPreviewComponent},
-  {name: 'newInputText', component: NewInputTextPreviewComponent},
+  {name: 'input', component: NewInputTextPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},

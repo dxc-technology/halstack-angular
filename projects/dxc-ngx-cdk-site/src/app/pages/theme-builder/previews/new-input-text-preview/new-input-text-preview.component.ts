@@ -7,9 +7,9 @@ import { Component, OnInit } from "@angular/core";
 export class NewInputTextPreviewComponent implements OnInit {
   constructor() {}
 
-  controlledValue = "controlled value";
+  controlledValue = "contr";
 
-  numberValue = "10";
+  numberValue = "12";
 
   numberOnChange(event) {
     this.numberValue = event;

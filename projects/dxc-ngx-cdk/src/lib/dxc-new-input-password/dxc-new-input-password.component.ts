@@ -41,6 +41,9 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   @Input()
   error = "";
+  
+  @Input()
+  pattern = "";
 
   @Input()
   margin: Object | string;

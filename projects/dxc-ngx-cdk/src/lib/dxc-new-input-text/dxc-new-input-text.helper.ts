@@ -224,9 +224,6 @@ export class DxcNewInputTextHelper {
         }
         
       }
-      input:invalid {
-        background-color: #FABADA;
-      }
 
       .inputAction {
         height: 24px;

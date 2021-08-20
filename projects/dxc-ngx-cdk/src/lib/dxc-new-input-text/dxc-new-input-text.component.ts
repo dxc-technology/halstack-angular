@@ -71,10 +71,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   pattern = "";
 
   @Input()
-  maxLength;
-  
-  @Input()
-  minLength;
+  length = {minLength: "", maxLength: ""};
 
   @Input()
   margin: Object | string;
@@ -109,7 +106,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   onActionClick = new EventEmitter<any>();
 
-  @ViewChild("inputRef", { static: false }) inputRef: ElementRef;
+  @ViewChild("inputRef", { static: true }) inputRef: ElementRef;
   @ViewChild("autoSuggestOptions", { static: false }) optionsRef: ElementRef;
 
   size: string;
@@ -198,16 +195,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // if (this.controlled) {
-    //   if (
-    //     (changes.value && changes.value.currentValue) ||
-    //     (changes.value.currentValue === "" &&
-    //       changes.value.currentValue !== this.inputRef.nativeElement.value)
-    //   ) {
-    //     console.log(this.inputRef);
-    //     this.inputRef.nativeElement.value = changes.value.currentValue;
-    //   }
-    // }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -226,9 +213,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
     if (this.controlled) {
       setTimeout(() => {
-        console.log(this.inputRef);
         if (this.inputRef.nativeElement.value !== this.value) {
           this.inputRef.nativeElement.value = this.value;
+          this.cdRef.detectChanges();
         }
       }, 0);
     }
@@ -268,7 +255,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   handleOnClickOption(event) {
     if (this.activedOption === this.focusedOption) {
       this.onChange.emit(event);
-      this.handleOnChange(event);
+      this.value = event;
       this.handleOnClose();
     }
     this.service.activeOption.next(-1);

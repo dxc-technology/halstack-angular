@@ -22,6 +22,10 @@
         clearable="true"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
+        pattern="[a-zA-Z]+"
+        (onError)="showError($event)"
+        [error]="errorMessage"
+        [length]="lengthLimit"
       >
         <dxc-new-input-text-action>
           <svg
@@ -49,6 +53,10 @@
         clearable="true"
         (onActionClick)="click()"
         [autocompleteOptions]="options"
+        (onError)="showError($event)"
+        [error]="errorMessage"
+        [length]="lengthLimit"
+        pattern="[a-zA-Z]+"
       >
         <dxc-new-input-text-action>
           <svg

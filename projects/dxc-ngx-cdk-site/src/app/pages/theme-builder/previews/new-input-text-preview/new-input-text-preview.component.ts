@@ -11,9 +11,13 @@ export class NewInputTextPreviewComponent implements OnInit {
 
   numberValue = "12";
 
+  errorMessage = "";
+
   numberOnChange(event) {
     this.numberValue = event;
   }
+
+  lengthLimit={min: 10, max: 15}
 
   options: Array<any> = [
     "Albania",
@@ -34,6 +38,11 @@ export class NewInputTextPreviewComponent implements OnInit {
 
   click() {
     console.log("click");
+  }
+
+  showError(event) {
+    this.errorMessage = event;
+    console.log(event);
   }
 
   ngOnInit(): void {}

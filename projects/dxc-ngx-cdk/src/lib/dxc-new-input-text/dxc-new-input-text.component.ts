@@ -71,13 +71,16 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   pattern = "";
 
   @Input()
-  length = {minLength: "", maxLength: ""};
+  length = { min: undefined, max: undefined };
 
   @Input()
   margin: Object | string;
 
   @Input()
   autocompleteOptions: Array<any> = [];
+
+  @Input()
+  strict: boolean = true;
 
   autoSuggestId: string;
 
@@ -99,6 +102,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   @Output()
   onChange = new EventEmitter<any>();
+
+  @Output()
+  onError = new EventEmitter<any>(true);
 
   @Output()
   onBlur = new EventEmitter<any>();
@@ -195,6 +201,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.strict && changes.value && this.validateLength();
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -235,6 +242,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnBlur(event) {
     this.onBlur.emit(event.target.value);
+    this.strict && this.validateOnBlur();
   }
 
   handleOnFocus() {
@@ -304,6 +312,47 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
           this.handleOnClose();
         }
         break;
+    }
+  }
+
+  validateLength() {
+    if (this.length.min && this.value && this.value.length < +this.length.min) {
+      this.onError.emit(
+        `Please lengthen this text to ${this.length.min} characters or more`
+      );
+    } else if (
+      this.length.max &&
+      this.value &&
+      this.value.length > +this.length.max
+    ) {
+      this.onError.emit(
+        `Please shorthen this text to ${this.length.max} characters or less`
+      );
+    } else {
+      this.onError.emit("");
+      console.log("change");
+    }
+  }
+
+  validateOnBlur() {
+    if (this.length.min && this.value && this.value.length < +this.length.min) {
+      this.onError.emit(
+        `Please lengthen this text to ${this.length.min} characters or more`
+      );
+    } else if (
+      this.length.max &&
+      this.value &&
+      this.value.length > +this.length.max
+    ) {
+      this.onError.emit(
+        `Please shorthen this text to ${this.length.max} characters or less`
+      );
+    } else if (this.inputRef.nativeElement.validity.patternMismatch) {
+      this.onError.emit(`Please use a valid pattern`);
+    }
+    else {
+      this.onError.emit("");
+      console.log("blur");
     }
   }
 }

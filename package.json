@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "build" : "ng build --project=dxc-ngx-cdk",
     "start": "ng serve angular-dxc-site --baseHref=/tools/angular/",
     "start:next": "ng serve angular-dxc-site --baseHref=/tools/angular/next/",
     "start-example": "ng serve dxc-angular-cdk",

@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/angular";
+import { render, fireEvent, waitFor } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { CommonModule } from "@angular/common";
 import { DxcNewInputPasswordComponent } from "./dxc-new-input-password.component";
@@ -57,12 +57,45 @@ describe("DxcNewInputPasswordComponent", () => {
     expect(input.getByText("Input label"));
     expect(input.getByText("helper text"));
     expect(screen.getByDisplayValue("password-test")).toBeTruthy();
-    expect(document.querySelector('input[type=password]')).toBeTruthy();
+    expect(document.querySelector("input[type=password]")).toBeTruthy();
     fireEvent.click(input.getByLabelText("Action"));
     input.detectChanges();
-    expect(document.querySelector('input[type=text]')).toBeTruthy();
+    expect(document.querySelector("input[type=text]")).toBeTruthy();
     fireEvent.click(input.getByLabelText("Action"));
     input.detectChanges();
-    expect(document.querySelector('input[type=password]')).toBeTruthy();
+    expect(document.querySelector("input[type=password]")).toBeTruthy();
+  });
+
+  test("controlled dxc-input-password onError pattern", async () => {
+    const onInputFunction = jest.fn();
+    const onBlurFunction = jest.fn();
+    const onErrorFunction = jest.fn();
+    const newValue = "new value";
+    const dxcInput = await render(DxcNewInputPasswordComponent, {
+      componentProperties: {
+        label: "test-input",
+        clearable: true,
+        value: "initial",
+        onChange: { emit: onInputFunction } as any,
+        onBlur: { emit: onBlurFunction } as any,
+        onError: { emit: onErrorFunction } as any,
+        pattern: ".{10,15}",
+      },
+      imports: [CommonModule, DxcNewInputTextModule],
+    });
+
+    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    waitFor(() => {
+      fireEvent.blur(input);
+      expect(onBlurFunction).toHaveBeenCalledWith("initial");
+      fireEvent.click(dxcInput.getByLabelText("Clear"));
+      expect(onInputFunction).toHaveBeenCalledWith(
+        "Please use a valid pattern"
+      );
+      expect(onErrorFunction).toHaveBeenCalled();
+      screen.getByDisplayValue("initial");
+    });
   });
 });

@@ -48,6 +48,9 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
   @Input()
   margin: Object | string;
 
+  @Input()
+  strict: boolean = true;
+
   defaultInputs = new BehaviorSubject<any>({
     error: "",
     optional: false,
@@ -56,6 +59,7 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
     name: "",
     label: "",
     margin: "",
+    strict: true
   });
 
   @Output()
@@ -63,6 +67,9 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   @Output()
   onBlur = new EventEmitter<any>();
+
+  @Output()
+  onError = new EventEmitter<any>(true);
 
   @ViewChild("dxcInput", { static: false }) dxcInputRef: DxcNewInputTextComponent;
 
@@ -113,6 +120,10 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
       this.value = event;
       this.cdRef.detectChanges();
     }
+  }
+
+  handleOnError(event) {
+    this.onError.emit(event);
   }
 
   handleMaskPassword(){

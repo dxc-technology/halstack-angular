@@ -9,15 +9,16 @@ import { BoldOptionsPipe } from "./pipes/bold-options.pipe";
 import { FilterOptionsPipe } from "./pipes/filter-options.pipe";
 import { DxcNewInputTextService } from "./services/dxc-new-input-text.service";
 import { DxcNewInputTextActionComponent } from "./dxc-new-input-text-action/dxc-new-input-text-action.component";
+import { FormsModule } from "@angular/forms";
 
 describe("DxcNewTextInputComponent", () => {
   test("should render dxc-new-input-text", async () => {
     const input = await render(DxcNewInputTextComponent, {
       componentProperties: {
         label: "test-input",
-        helperText: "helper-text"
+        helperText: "helper-text",
       },
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
@@ -31,9 +32,9 @@ describe("DxcNewTextInputComponent", () => {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
-        error: "Very important error"
+        error: "Very important error",
       },
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
@@ -41,7 +42,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(input.getByText("test-input"));
     expect(input.getByText("helper-text"));
     expect(input.getByText("Very important error"));
-    expect(input.getByLabelText('Error'));
+    expect(input.getByLabelText("Error"));
   });
 
   test("should show options", async () => {
@@ -58,7 +59,7 @@ describe("DxcNewTextInputComponent", () => {
           'Belgium'
         ]"
       ></dxc-new-input-text>`,
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
@@ -85,15 +86,15 @@ describe("DxcNewTextInputComponent", () => {
           'Belgium'
         ]"
       ></dxc-new-input-text>`,
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
 
     expect(input.getByText("Input label"));
     expect(input.getByText("helper text"));
-    const text1 = input.queryByText('Albania');
-    const text2 = input.queryByText('Andorra');
+    const text1 = input.queryByText("Albania");
+    const text2 = input.queryByText("Andorra");
     expect(text1).toBeNull();
     expect(text2).toBeNull();
     expect(input.getByText("Belgium"));
@@ -111,7 +112,7 @@ describe("DxcNewTextInputComponent", () => {
         clearable="true"
         (onChange)="onChange($event)"
       ></dxc-new-input-text>`,
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
       componentProperties: { onChange },
@@ -119,8 +120,8 @@ describe("DxcNewTextInputComponent", () => {
 
     expect(input.getByText("Input label"));
     expect(input.getByText("helper text"));
-    expect(screen.getByDisplayValue('test input value')).toBeTruthy();
-    fireEvent.click(input.getByLabelText('Clear'));
+    expect(screen.getByDisplayValue("test input value")).toBeTruthy();
+    fireEvent.click(input.getByLabelText("Clear"));
     input.detectChanges();
     expect(onChange).toHaveBeenCalledWith("");
   });
@@ -168,13 +169,17 @@ describe("DxcNewTextInputComponent", () => {
           </svg>
         </dxc-new-input-text-action>
       </dxc-new-input-text>`,
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService, DxcNewInputTextActionComponent],
-      declarations: [FilterOptionsPipe, BoldOptionsPipe, DxcNewInputTextActionComponent],
+      declarations: [
+        FilterOptionsPipe,
+        BoldOptionsPipe,
+        DxcNewInputTextActionComponent,
+      ],
       componentProperties: { click },
     });
 
-    fireEvent.click(input.getByLabelText('Action'));
+    fireEvent.click(input.getByLabelText("Action"));
     expect(click).toHaveBeenCalled();
   });
 
@@ -190,7 +195,7 @@ describe("DxcNewTextInputComponent", () => {
         disabled="true"
         (onChange)="onChange($event)"
       ></dxc-new-input-text>`,
-      imports: [CommonModule],
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
       componentProperties: { onChange },
@@ -198,8 +203,8 @@ describe("DxcNewTextInputComponent", () => {
 
     expect(input.getByText("Input label"));
     expect(input.getByText("helper text"));
-    expect(screen.getByDisplayValue('test input value')).toBeTruthy();
-    fireEvent.click(input.getByRole('textbox'));
+    expect(screen.getByDisplayValue("test input value")).toBeTruthy();
+    fireEvent.click(input.getByRole("textbox"));
     input.detectChanges();
     expect(onChange).not.toHaveBeenCalledWith("");
   });
@@ -216,6 +221,7 @@ describe("DxcNewTextInputComponent", () => {
         onChange: { emit: onInputFunction } as any,
         onBlur: { emit: onBlurFunction } as any,
       },
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
@@ -223,9 +229,11 @@ describe("DxcNewTextInputComponent", () => {
     const input = <HTMLInputElement>dxcText.getByRole("textbox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    fireEvent.blur(input);
-    expect(onBlurFunction).toHaveBeenCalledWith(defaultValue);
-    screen.getByDisplayValue(defaultValue);
+    waitFor(() => {
+      fireEvent.blur(input);
+      expect(onBlurFunction).toHaveBeenCalledWith(defaultValue);
+      screen.getByDisplayValue(defaultValue);
+    });
   });
 
   test("uncontrolled dxc-input-text input change and blur", async () => {
@@ -238,6 +246,7 @@ describe("DxcNewTextInputComponent", () => {
         onChange: { emit: onInputFunction } as any,
         onBlur: { emit: onBlurFunction } as any,
       },
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
@@ -262,6 +271,7 @@ describe("DxcNewTextInputComponent", () => {
         onChange: { emit: onInputFunction } as any,
         onBlur: { emit: onBlurFunction } as any,
       },
+      imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
@@ -269,10 +279,45 @@ describe("DxcNewTextInputComponent", () => {
     const input = <HTMLInputElement>dxcInput.getByRole("textbox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    fireEvent.blur(input);
-    expect(onBlurFunction).toHaveBeenCalledWith("initial string");
-    fireEvent.click(dxcInput.getByLabelText('Clear'));
-    expect(onInputFunction).toHaveBeenCalledWith("");
-    screen.getByDisplayValue("initial string");
+    waitFor(() => {
+      fireEvent.blur(input);
+      expect(onBlurFunction).toHaveBeenCalledWith("initial string");
+      fireEvent.click(dxcInput.getByLabelText("Clear"));
+      expect(onInputFunction).toHaveBeenCalledWith("");
+      screen.getByDisplayValue("initial string");
+    });
+  });
+
+  test("controlled dxc-input-text onError pattern", async () => {
+    const onInputFunction = jest.fn();
+    const onBlurFunction = jest.fn();
+    const onErrorFunction = jest.fn();
+    const newValue = "new value";
+    const dxcInput = await render(DxcNewInputTextComponent, {
+      componentProperties: {
+        label: "test-input",
+        clearable: true,
+        value: "initial",
+        onChange: { emit: onInputFunction } as any,
+        onBlur: { emit: onBlurFunction } as any,
+        onError: { emit: onErrorFunction } as any,
+        pattern: ".{10,15}",
+      },
+      imports: [CommonModule, FormsModule],
+      providers: [DxcNewInputTextService],
+      declarations: [FilterOptionsPipe, BoldOptionsPipe],
+    });
+
+    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    waitFor(() => {
+      fireEvent.blur(input);
+      expect(onBlurFunction).toHaveBeenCalledWith("initial");
+      fireEvent.click(dxcInput.getByLabelText("Clear"));
+      expect(onInputFunction).toHaveBeenCalledWith("Please use a valid pattern");
+      expect(onErrorFunction).toHaveBeenCalled();
+      screen.getByDisplayValue("initial");
+    });
   });
 });

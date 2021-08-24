@@ -330,7 +330,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       );
     } else {
       this.onError.emit("");
-      console.log("change");
     }
   }
 
@@ -352,7 +351,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
     else {
       this.onError.emit("");
-      console.log("blur");
     }
   }
 }

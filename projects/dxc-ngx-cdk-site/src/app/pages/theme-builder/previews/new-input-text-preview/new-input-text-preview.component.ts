@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 export class NewInputTextPreviewComponent implements OnInit {
   constructor() {}
 
-  controlledValue = "contr";
+  controlledValue = "c";
 
   numberValue = "12";
 
@@ -17,7 +17,7 @@ export class NewInputTextPreviewComponent implements OnInit {
     this.numberValue = event;
   }
 
-  lengthLimit={min: 10, max: 15}
+  lengthLimit={min: 2, max: 5}
 
   options: Array<any> = [
     "Albania",

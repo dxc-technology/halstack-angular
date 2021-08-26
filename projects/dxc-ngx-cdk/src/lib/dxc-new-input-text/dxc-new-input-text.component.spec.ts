@@ -311,13 +311,42 @@ describe("DxcNewTextInputComponent", () => {
     const input = <HTMLInputElement>dxcInput.getByRole("textbox");
     fireEvent.input(input, { target: { value: newValue } });
     expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    waitFor(() => {
+    await waitFor(() => {
       fireEvent.blur(input);
       expect(onBlurFunction).toHaveBeenCalledWith("initial");
       fireEvent.click(dxcInput.getByLabelText("Clear"));
-      expect(onInputFunction).toHaveBeenCalledWith("Please use a valid pattern");
-      expect(onErrorFunction).toHaveBeenCalled();
+      expect(onErrorFunction).toHaveBeenCalledWith(
+        "Please use a valid pattern"
+      );
       screen.getByDisplayValue("initial");
+    });
+  });
+
+  test("controlled dxc-input-text onError length", async () => {
+    const onInputFunction = jest.fn();
+    const onErrorFunction = jest.fn();
+    const newValue = "new value";
+    const lengthLimit = { min: 2, max: 5 };
+    const dxcInput = await render(DxcNewInputTextComponent, {
+      componentProperties: {
+        label: "test-input",
+        clearable: true,
+        onChange: { emit: onInputFunction } as any,
+        onError: { emit: onErrorFunction } as any,
+        length: lengthLimit,
+      },
+      imports: [CommonModule, FormsModule],
+      providers: [DxcNewInputTextService],
+      declarations: [FilterOptionsPipe, BoldOptionsPipe],
+    });
+
+    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
+    fireEvent.focus(input);
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    await waitFor(() => {
+      fireEvent.blur(input);
+      expect(onErrorFunction).toHaveBeenCalledWith("Please shorthen this text to 5 characters or less");
     });
   });
 });

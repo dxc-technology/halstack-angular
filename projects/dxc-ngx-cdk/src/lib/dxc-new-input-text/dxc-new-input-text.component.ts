@@ -131,6 +131,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   darkBackground: boolean = false;
 
+  isDirty: boolean = false;
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private service: DxcNewInputTextService,
@@ -201,7 +203,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.strict && changes.value && this.validateLength();
+    this.strict && changes.value && this.isDirty && this.validateLength();
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -246,6 +248,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnFocus() {
+    if(!this.isDirty) {
+      this.isDirty = true;
+    }
     if (this.autocompleteOptions.length) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();

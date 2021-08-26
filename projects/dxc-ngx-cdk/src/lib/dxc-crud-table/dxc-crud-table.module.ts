@@ -6,6 +6,7 @@ import { DxcDateModule } from './../dxc-date/dxc-date.module';
 import { DxcTextareaModule } from './../dxc-textarea/dxc-textarea.module';
 import { DxcCheckboxModule } from './../dxc-checkbox/dxc-checkbox.module';
 import { DxcPageErrorsModule } from './../dxc-page-errors/dxc-page-errors.module';
+import { DxcToolbarModule } from '../dxc-toolbar/dxc-toolbar.module';
 import { DxcButtonModule } from './../dxc-button/dxc-button.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -26,16 +27,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormatterPipe } from './data-formatter/formatter.pipe';
-// import { MatDatepickerModule } from '@angular/material/datepicker';
-// import { MatNativeDateModule } from '@angular/material/core';
+import { DxcCrudEdiatbleFieldsComponent } from './dxc-crud-ediatble-fields/dxc-crud-ediatble-fields.component';
+import { DxcCrudCellRenderComponent } from './dxc-crud-cell-render/dxc-crud-cell-render.component';
 
 @NgModule({
-  declarations: [DxcCrudTableComponent, FormatterPipe],
+  declarations: [DxcCrudTableComponent, FormatterPipe, DxcCrudEdiatbleFieldsComponent, DxcCrudCellRenderComponent],
   imports: [
     CommonModule, MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule, MatDialogModule,
     MatButtonModule, MatIconModule,
     MatGridListModule, MatSortModule, MatCardModule, MatTooltipModule, 
-    //MatDatepickerModule, MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
     DxcButtonModule,
@@ -49,7 +49,8 @@ import { FormatterPipe } from './data-formatter/formatter.pipe';
     DxcDialogModule,
     DxcDialogModule,
     DxcSubHeadingModule,
-    DxcPageErrorsModule
+    DxcPageErrorsModule,
+    DxcToolbarModule
   ],
   exports: [DxcCrudTableComponent]
 })

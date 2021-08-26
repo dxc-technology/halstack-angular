@@ -81,16 +81,6 @@ td {
   border: solid 1px red;
 }
 
-.container>td>div {
-  display: block;
-  visibility: hidden;
-  top: 0;
-  position: absolute;
-  /* width: 300px; */
-  text-align: center;
-  background: #ffffff26;
-}
-
 .cell-focus:focus>div,
 .container:focus-within>td>div,
 .container:hover>td>div {
@@ -140,12 +130,6 @@ td {
   width: 10%;
 }
 
-.close-icon {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 .mandatory-Field {
   color: red;
   float: left;
@@ -179,35 +163,9 @@ th.mat-header-cell:last-of-type {
   padding-right: 2%;
 }
 
-.cellIcon {
-  border: none;
-  background: transparent;
-}
-
-.green-icon {
-  color: green;
-}
-
-.red-icon {
-  color: red;
-}
-
 .subsection-heading {
   background: #d9d9d9;
   top: 7px;
-}
-
-.link--btn-next:before {
-  top: 3px !Important;
-  width: 30px !Important;
-  height: 30px !Important;
-  left: 14px !Important;
-}
-
-.link--btn-next:after {
-  margin: -1rem 1.3rem -1rem 1.3rem;
-  top: 27px !Important;
-  left: 5px !Important;
 }
 
 .supp-grid-scroll {
@@ -216,36 +174,30 @@ th.mat-header-cell:last-of-type {
 }
 
 .gridBtnPostion {
-  text-align: center;
-  overflow: hidden;
-  width: 80px;
-  position: absolute;
-  height: 30px;
   background-color: #f8f8f8;
-  border-left: 0px;
-  left: -70px;
+  border-left: 0;
+  max-width: 150px;
+  overflow: hidden;
+  text-align: center;
   float: left;
-  margin-top: 14px;
 }
 
 .iconPostion {
-  position: absolute;
   left: 0px;
-  width: 100%;
   white-space: nowrap;
 }
 
-.cellContentPostion {
-  padding-left: 60px;
-  float: left;
-}
-
-.iconProp {
+.iconProp,
+.icon-prop {
   font-size: 20px;
   margin: 0px 5px;
   border: 1px solid rgba(34, 36, 38, .15);
   border-radius: 0.2rem;
   color: #776d6d;
+}
+
+.font-size-25 {
+  font-size: 25px;
 }
 
 .iconProp:focus,
@@ -264,16 +216,14 @@ th.mat-header-cell:last-of-type {
   color: #3a3a3a;
   text-decoration: none;
   cursor: auto;
-  display: inline-block;
+  padding-top: 10px;
+  float: left;
 }
 
 .crud-col {
   min-width: 150px;
 }
 
-.search-column-width {
-  width: 22%;
-}
 
 .search-column-padding {
   padding-left: 19%;
@@ -281,4 +231,18 @@ th.mat-header-cell:last-of-type {
 
 .column-padding {
   padding-left: 8%;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.min-w-50 {
+  min-width: 50% !important;
+  width: auto !important;
+}
+
+.mobile-view {
+  max-height: 300px;
+  overflow-y: auto;
 }

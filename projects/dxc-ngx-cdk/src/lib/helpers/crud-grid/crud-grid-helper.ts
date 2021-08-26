@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class CrudGridHelper {
     calculateTableHeight = (dataSource: any) : string => {
         let rowsCount = dataSource.length;
-        let tableHeight = ((rowsCount * 48) + 57) + 'px';
+        let tableHeight = ((rowsCount * 48.5) + 57) + 'px';
         if(rowsCount > 10){
-          tableHeight = ((9 * 48) + 57)  + 'px';
+          tableHeight = ((9 * 48.5) + 57)  + 'px';
         }
         return tableHeight
     }

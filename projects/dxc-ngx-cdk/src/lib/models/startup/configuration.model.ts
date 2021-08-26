@@ -26,7 +26,7 @@ export enum RequiredFormat {
   BORDER
 }
 
-export  enum ViewMode {
+export enum ViewMode {
     NONE = 0,
     TAB = 1,
     ACCORDIAN = 2
@@ -106,7 +106,9 @@ export enum EAction {
   CHECKED,
   ONCUSTOMEDIT,
   UNCHECKED,
-  ONPANELCLOSE
+  ONPANELCLOSE,
+  ONROWCHECKED,
+  ONUNLOAD
 }
 
 export interface IRequest {
@@ -151,8 +153,12 @@ export interface OrghEntity {
 export interface Button {
   rel: string;
   title: string;
+  hidden?: boolean;
+  iconName?: string;
+  label?: string;
   type?: string;
   disabled?: boolean;
+  request?: IRequest;
 }
 
 export interface IDropdownOption {

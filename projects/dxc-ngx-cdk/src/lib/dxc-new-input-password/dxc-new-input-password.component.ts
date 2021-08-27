@@ -50,6 +50,9 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   @Input()
   strict: boolean = true;
+  
+  @Input()
+  length = { min: undefined, max: undefined };
 
   defaultInputs = new BehaviorSubject<any>({
     error: "",

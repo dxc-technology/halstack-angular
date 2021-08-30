@@ -159,6 +159,7 @@ export interface Button {
   type?: string;
   disabled?: boolean;
   request?: IRequest;
+  order: number;
 }
 
 export interface IDropdownOption {
@@ -175,7 +176,8 @@ export enum EFieldsType {
   textArea = 6,
   orghLookup = 7,
   crudLookup = 8,
-  supplementalGrid = 9
+  supplementalGrid = 9,
+  textEditor = 10
 }
 
 export interface ICodeLookupProperties extends IFieldsBaseProperties {
@@ -206,6 +208,13 @@ export interface IOrghLookupProperties extends IFieldsBaseProperties {
   orghresourceRequest: IRequest,
   level?: string,
   isApplyChangeEvent?: boolean
+}
+
+export interface ITextEditorproperties extends IFieldsBaseProperties {
+  id?: string,
+  result?: string,
+  planeText?: string,
+  columnSize: number,
 }
 
 export interface IUserLookupProperties extends IFieldsBaseProperties {

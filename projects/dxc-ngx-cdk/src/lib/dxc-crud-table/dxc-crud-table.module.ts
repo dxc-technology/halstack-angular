@@ -29,6 +29,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormatterPipe } from './data-formatter/formatter.pipe';
 import { DxcCrudEdiatbleFieldsComponent } from './dxc-crud-ediatble-fields/dxc-crud-ediatble-fields.component';
 import { DxcCrudCellRenderComponent } from './dxc-crud-cell-render/dxc-crud-cell-render.component';
+import { DxcTextEditorModule } from './../dxc-text-editor/dxc-text-editor.module'
 
 @NgModule({
   declarations: [DxcCrudTableComponent, FormatterPipe, DxcCrudEdiatbleFieldsComponent, DxcCrudCellRenderComponent],
@@ -50,7 +51,8 @@ import { DxcCrudCellRenderComponent } from './dxc-crud-cell-render/dxc-crud-cell
     DxcDialogModule,
     DxcSubHeadingModule,
     DxcPageErrorsModule,
-    DxcToolbarModule
+    DxcToolbarModule,
+    DxcTextEditorModule
   ],
   exports: [DxcCrudTableComponent]
 })

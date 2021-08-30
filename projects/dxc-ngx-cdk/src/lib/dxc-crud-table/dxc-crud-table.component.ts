@@ -2,7 +2,7 @@ import { DxcConfirmationDialogService } from './../dxc-confirmation-dialog/dxc-c
 import { ConfigurationsetupService } from './../services/startup/configurationsetup.service';
 import { FormGroup, FormControl, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MessageService } from './../services/toaster/message.service';
-import { IRequest, EFieldsType, ViewMode, IDropdownProperties, EMethod, EAction, ICheckboxProperties, IFormUpdateEventFormat, IOrghLookupProperties, ICodeLookupProperties } from './../models/startup/configuration.model';
+import { IRequest, EFieldsType, ViewMode, IDropdownProperties, ITextEditorproperties, EAction, ICheckboxProperties, IFormUpdateEventFormat, IOrghLookupProperties, ICodeLookupProperties } from './../models/startup/configuration.model';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef, AfterViewInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,6 +17,7 @@ import { DxcResizeService } from './../services/sizedetector/dxc-size-detector.s
 import { DateHelper } from '../helpers/date/date-helper';
 import { Button } from './../models/startup/configuration.model';
 import { delay, filter } from 'rxjs/operators';
+import { TextEditorService } from '../dxc-text-editor/text-editor/text-editor.service';
 
 @Component({
   selector: 'dxc-crud-table',
@@ -108,7 +109,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     private config: ConfigurationsetupService, private crudHelper: CrudGridHelper,
     private elRef: ElementRef,
     private dateHelper: DateHelper,
-    private resizeService: DxcResizeService) {
+    private resizeService: DxcResizeService,
+    private textEditorService: TextEditorService ) {
     this.resizeService.onResize$
       .pipe(delay(0))
       .subscribe(x => {
@@ -196,7 +198,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   rowChecked = ($event) => {
     if (this.expandedElement != null || this.isEditForm == true) {
-      this.messageService.Error("row selection not allowed in edit mode.");
+      this.messageService.Error(this.config.configservice.GlobalResource.rowSelectionError?.description);
       return;
     }
     $event.isSelected = !$event.isSelected;
@@ -211,7 +213,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   selectAllRow = () => {
     if (this.expandedElement != null || this.isEditForm == true) {
-      this.messageService.Error("row selection not allowed in edit mode.");
+      this.messageService.Error(this.config.configservice.GlobalResource.rowSelectionError?.description);
       return;
     }
     if (this.dataSource.data.filter(row => { return row['isSelected'] == true }).length < this.dataSource.data.length) {
@@ -257,10 +259,10 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           break;
         case this.editRel:
           if (selectedRows.length <= 0) {
-            this.messageService.Error('Please select a row to perform the operation');
+            this.messageService.Error(this.config.configservice.GlobalResource.selectRowError?.description);
           }
           else if (selectedRows.length > 1) {
-            this.messageService.Error('Only one row can be edit');
+            this.messageService.Error(this.config.configservice.GlobalResource.multiRowSelectError?.description);
           }
           else {
             this.expandRow(1, selectedRows[0]);
@@ -268,7 +270,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           break;
         case this.deleteRel:
           if (selectedRows.length <= 0) {
-            this.messageService.Error('Please select a row to perform the operation');
+            this.messageService.Error(this.config.configservice.GlobalResource.selectRowError?.description);
           }
           else {
             let deleteButton = this.gridToolbar.filter(buttons => { return buttons.rel == this.deleteRel });
@@ -753,7 +755,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.expandedElement[dropdownFieldProp.viewValue] = filteredRecord.length > 0 ? filteredRecord[0].label : '';
         let selectedValue = dropdownFieldProp.multiple && filteredRecord.length > 0 ? filteredRecord : row[dropdownFieldProp.valueProperty];
         this.expandedElement[dropdownFieldProp.valueProperty] = selectedValue;
-      } else if (col.fieldType == EFieldsType.codeLookup || col.fieldType == EFieldsType.supplementalGrid) {
+      } 
+      else if (col.fieldType == EFieldsType.codeLookup || col.fieldType == EFieldsType.supplementalGrid) {
 
         if (row && Array.isArray(row[col.name])) {
 
@@ -788,8 +791,13 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.expandedElement[col.name] = row[col.name];
         this.expandedElement[col.label] = row[col.name].name;
         this.expandedElement[col.valueProperty] = row[col.name].id;
-      } else if (col.fieldType == EFieldsType.dxcDate) {
+      } 
+      else if (col.fieldType == EFieldsType.dxcDate) {
         this.expandedElement[col.name] = row[col.name]; //// this.dateHelper.convertDateToControlFormat(row[col.name], (col as IDateProperties).format);
+      }
+      else if(col.fieldType == EFieldsType.textEditor){
+        this.expandedElement[col.name] = row[col.name];
+        this.expandedElement[col.planeText]=this.textEditorService.getPlaneText(row[col.name]);
       }
       else {
         this.expandedElement[col.name] = row[col.name];
@@ -833,6 +841,12 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
               formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
             });
           }
+        }
+
+        if (col.fieldType == this.fieldsType.textEditor) {
+          this.expandedElement[(col as ITextEditorproperties).planeText] = this.expandedElement[(col as ITextEditorproperties).planeText];
+		        this.claimsForm.addControl(col.name, new FormControl( this.expandedElement[col.name],
+            (col.required && col.required == true) ? Validators.required : null));
         }
 
         if (col.fieldType == this.fieldsType.dxcDate) {

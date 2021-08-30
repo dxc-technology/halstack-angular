@@ -66,8 +66,8 @@
     <ng-container *ngFor="let row of dataSource?.data;">
       <mat-card class="p-1 m-1">
         <mat-card-title class="d-inline-block">
-          <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="button"
-            *ngIf="rowSelection != 'none'" [matTooltip]="resource.selectRow" [attr.aria-label]="resource.selectRow"
+          <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox" [attr.aria-checked]="row.isSelected"
+            *ngIf="rowSelection != 'none'" [matTooltip]="globalResource.selectRow" [attr.aria-label]="globalResource.selectRowMessage"
             (click)="rowChecked(row)">
             <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
             <span class="position-absolute font-size-25 left-0" *ngIf="row.isSelected">done</span>
@@ -109,8 +109,8 @@
 </ng-template>
 
 <ng-template #selectAll>
-  <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="button"
-    [matTooltip]="globalResource.selectAllRow" [attr.aria-label]="globalResource.selectAllRow" (click)="selectAllRow()">
+  <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox" attr.aria-checked="{{selectedRowCount == dataSource.data?.length}}"
+    [matTooltip]="globalResource.selectAllRow" [attr.aria-label]="globalResource.selectAllRowMessage" (click)="selectAllRow()">
     <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
     <span class="position-absolute font-size-25 left-0"
       *ngIf="selectedRowCount > 0 && selectedRowCount != dataSource.data?.length">remove</span>

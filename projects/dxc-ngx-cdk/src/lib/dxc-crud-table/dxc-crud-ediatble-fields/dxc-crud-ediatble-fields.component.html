@@ -106,4 +106,12 @@
         [errormessages]="resource" [gridGlobalRequiredValidation]="validation">
       </dxc-show-errors>
     </div>
+    <div *ngSwitchCase="fieldsType.textEditor">
+      <dxc-text-editor id="{{field.name}}" [disabled]="field.disabled" 
+      formControlName="{{field.name}}" >
+      </dxc-text-editor>
+      <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"
+        [errormessages]="resource" [gridGlobalRequiredValidation]="validation">
+      </dxc-show-errors>
+    </div>
   </div>

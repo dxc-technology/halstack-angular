@@ -154,6 +154,7 @@ export * from './lib/services/sizedetector/dxc-size-detector.service';
 export * from './lib/services/sizedetector/dxc-size-detector.enum';
 export * from './lib/services/toaster/message.component';
 export * from './lib/services/toaster/message.service';
+export * from './lib/dxc-text-editor/text-editor/text-editor.service';
 
 export * from './lib/directives/pipes/search/dxc-search.pipe';
 export * from './lib/directives/pipes/search/dxc-search.module';

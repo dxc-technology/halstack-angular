@@ -77,7 +77,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   margin: Object | string;
 
   @Input()
-  autocompleteOptions: Array<any> = [];
+  autosuggestOptions: any;
 
   @Input()
   strict: boolean = true;
@@ -97,7 +97,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     name: "",
     label: "",
     margin: "",
-    autocompleteOptions: [],
+    autosuggestOptions: [],
   });
 
   @Output()
@@ -127,11 +127,17 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   filteredOptions: Array<string>;
 
-  fetchingError: boolean = false;
-
   darkBackground: boolean = false;
 
   isDirty: boolean = false;
+
+  options: Array<string> = [];
+
+  loading = new BehaviorSubject<boolean>(false);
+
+  fetchingError = new BehaviorSubject<boolean>(false);
+
+  autosuggestType: string;
 
   constructor(
     private cdRef: ChangeDetectorRef,
@@ -189,11 +195,24 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.service.filteredOptions.subscribe((filteredArray) => {
       this.filteredOptions = filteredArray;
     });
+    if (
+      this.autosuggestOptions &&
+      typeof this.autosuggestOptions === "function"
+    ) {
+      this.getAsyncSuggestions();
+      this.autosuggestType = "async";
+    } else if (
+      this.autosuggestOptions &&
+      Array.isArray(this.autosuggestOptions)
+    ) {
+      this.options = this.autosuggestOptions;
+      this.autosuggestType = "array";
+    }
   }
 
   ngAfterViewInit(): void {
     if (this.inputRef) {
-      if (this.autocompleteOptions.length) {
+      if (this.autosuggestOptions.length) {
         this.inputRef.nativeElement.attributes.role.value = "combobox";
         this.inputRef.nativeElement.ariaExpanded = this.autosuggestVisible;
         this.inputRef.nativeElement.ariaControls = this.autoSuggestId;
@@ -219,12 +238,18 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.onChange.emit(event);
     if (!this.controlled) {
       this.value = event;
+      if(this.autosuggestType === "async") {
+        this.getAsyncSuggestions();
+      }
     }
     if (this.controlled) {
       setTimeout(() => {
         if (this.inputRef.nativeElement.value !== this.value) {
           this.inputRef.nativeElement.value = this.value;
           this.cdRef.detectChanges();
+          if(this.autosuggestType === "async") {
+            this.getAsyncSuggestions();
+          }
         }
       }, 0);
     }
@@ -248,10 +273,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnFocus() {
-    if(!this.isDirty) {
+    if (!this.isDirty) {
       this.isDirty = true;
     }
-    if (this.autocompleteOptions.length) {
+    if (this.autosuggestOptions.length) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();
     }
@@ -311,7 +336,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.handleEnterKey();
         break;
       case "Escape":
-        if (this.autocompleteOptions.length) {
+        if (this.autosuggestOptions.length) {
           event.preventDefault();
           this.handleDefaultClearAction();
           this.handleOnClose();
@@ -353,9 +378,26 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       );
     } else if (this.inputRef.nativeElement.validity.patternMismatch) {
       this.onError.emit(`Please use a valid pattern`);
-    }
-    else {
+    } else {
       this.onError.emit("");
     }
+  }
+
+  getAsyncSuggestions() {
+    this.loading.next(true);
+    this.fetchingError.next(false);
+    this.autosuggestOptions(this.value).subscribe(
+      (autocompleteOptionsList) => {
+        console.log(this.options);
+        this.options = autocompleteOptionsList;
+        this.cdRef.markForCheck();
+        this.loading.next(false);
+      },
+      (err) => {
+        this.fetchingError.next(true);
+        this.loading.next(false);
+        this.cdRef.markForCheck();
+      }
+    );
   }
 }

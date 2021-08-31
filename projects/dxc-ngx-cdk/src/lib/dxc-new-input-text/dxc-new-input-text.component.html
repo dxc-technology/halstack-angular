@@ -68,15 +68,22 @@
   <ng-content select="dxc-input-text-suffix"></ng-content>
   <ul
     #autoSuggestOptions
-    [ngClass]="{ visible: autosuggestVisible, fetchingError: fetchingError }"
+    [ngClass]="{
+      visible: autosuggestVisible,
+      fetchingError: fetchingError.getValue()
+    }"
     [id]="autoSuggestId"
     role="listbox"
     class="options"
-    *ngIf="autocompleteOptions && autocompleteOptions.length > 0"
+    *ngIf="autosuggestOptions && autosuggestType"
   >
     <li
       *ngFor="
-        let item of autocompleteOptions | filterOptions: value;
+        let item of autosuggestType &&
+        autosuggestType === 'async' &&
+        !loading.getValue()
+          ? options
+          : (autosuggestOptions | filterOptions: value);
         let i = index
       "
       role="option"
@@ -85,14 +92,23 @@
         selected: focusedOption === i,
         active: focusedOption === i && activedOption === i
       }"
-      [innerHtml]="item | boldOptions: value"
+      [innerHtml]="autosuggestType === 'async' ? item : item | boldOptions: value"
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
       (mouseenter)="handleOnHover(i)"
       (mouseleave)="handleOnLeave()"
     ></li>
-    <li *ngIf="filteredOptions.length === 0" class="sytemMessage">No results found.</li>
-    <li *ngIf="fetchingError">
+    <li
+      *ngIf="
+        autosuggestType === 'array' &&
+        filteredOptions.length === 0 &&
+        !loading.getValue()
+      "
+      class="sytemMessage"
+    >
+      No results found.
+    </li>
+    <li *ngIf="fetchingError.getValue() && !loading.getValue()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -104,6 +120,9 @@
         />
       </svg>
       <span>Error fetching data</span>
+    </li>
+    <li *ngIf="loading.getValue()">
+      <span>Searching...</span>
     </li>
   </ul>
 </div>

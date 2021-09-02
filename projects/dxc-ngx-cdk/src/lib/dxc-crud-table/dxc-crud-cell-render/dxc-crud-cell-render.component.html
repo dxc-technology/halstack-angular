@@ -1,0 +1,37 @@
+<a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox" [attr.aria-checked]="rowData.isSelected"
+  *ngIf="isFirst && rowSelection != 'none'" [matTooltip]="resource.selectRow" [attr.aria-label]="resource.selectRowMessage"
+  (click)="rowChecked(rowData)">
+  <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
+  <span class="position-absolute font-size-25 left-0" *ngIf="rowData.isSelected">done</span>
+</a>
+<span
+  *ngIf="(formatColumns && formatColumns[columnName] && formatColumns[columnName].type == 'link'); then linkBlock else contentBlock">
+</span>
+
+<ng-template #linkBlock>
+  <ng-container *ngTemplateOutlet="contentBlock" tabindex="0" role="link"
+    attr.aria-label="{{gridResource[columnName] + ' - ' +  ((formatColumns && formatColumns[columnName]) ? (rowData[columnName] | formatter:formatColumns[columnName]) : rowData[columnName])}}"
+    (click)="rowClick(rowData)">
+  </ng-container>
+</ng-template>
+
+<ng-template #contentBlock>
+  <span class="d-inline-block" *ngIf="rowData[columnName] != null" [ngSwitch]="rowData[columnName].toLowerCase()"
+    tabindex="0" role="contentinfo"
+    attr.aria-hidden="{{(formatColumns && formatColumns[columnName] && formatColumns[columnName].type == 'link')}}"
+    attr.aria-label="{{gridResource[columnName] + ' - ' +  ((formatColumns && formatColumns[columnName]) ? (rowData[columnName] | formatter:formatColumns[columnName]) : rowData[columnName])}}">
+    <mat-icon class="green-icon cellIcon" *ngSwitchCase="'true'">check</mat-icon>
+    <mat-icon class="red-icon cellIcon" *ngSwitchCase="'false'">close</mat-icon>
+    <span *ngSwitchDefault>
+      <div class="crud-col" *ngIf="formatColumns && formatColumns[columnName]">
+        {{(rowData[columnName] | formatter:formatColumns[columnName])}}
+        <span
+          *ngIf="formatColumns[columnName].type == 'fixlength' && (rowData[columnName] != null || rowData[columnName] != '') && formatColumns[columnName].format != null && formatColumns[columnName].format['length'] > rowData[columnName].length"
+          [matTooltip]="rowData[columnName]">...</span>
+      </div>
+      <div class="crud-col" *ngIf="!(formatColumns && formatColumns[columnName])">
+        {{rowData[columnName]}}
+      </div>
+    </span>
+  </span>
+</ng-template>

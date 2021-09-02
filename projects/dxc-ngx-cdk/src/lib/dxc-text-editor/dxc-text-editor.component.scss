@@ -13,3 +13,8 @@ div[disabled]
   pointer-events: none;
   opacity: 0.7;
 }
+
+::ng-deep.fr-wrapper{
+  height: 266px!important;
+}
+

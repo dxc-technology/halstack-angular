@@ -4,6 +4,7 @@ import { DxcButtonModule } from './../dxc-button/dxc-button.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DxcToolbarComponent } from './dxc-toolbar.component';
+import { DxcSortModule } from '../directives/pipes/sort/dxc-sort.module';
 
 @NgModule({
   declarations: [DxcToolbarComponent],
@@ -11,7 +12,8 @@ import { DxcToolbarComponent } from './dxc-toolbar.component';
     CommonModule,
     MatIconModule,
     DxcButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DxcSortModule
   ],
   exports: [DxcToolbarComponent]
 })

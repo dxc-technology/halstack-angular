@@ -13,6 +13,9 @@ export class FormatterPipe implements PipeTransform {
         case 'date':
           returnValue = this.formatDate(value, args.format);
           break;
+        case 'fixlength':
+          returnValue = this.fixedLength(value, args.format);
+          break;
       }
     }
     return returnValue;
@@ -20,6 +23,10 @@ export class FormatterPipe implements PipeTransform {
 
   formatDate = (value, format) => {
     return this.dateHelper.convertDateToControlFormat(value, format);
+  }
+
+  fixedLength = (value, format) => {
+    return value.substring(format.start, format.lenght);
   }
 
 }

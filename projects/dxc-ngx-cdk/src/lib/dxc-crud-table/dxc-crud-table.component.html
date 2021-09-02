@@ -1,524 +1,147 @@
-<mat-form-field *ngIf="isSearchable" class="col-md-12 mt-4">
-  <input *ngIf="isSearchable" class="col-md-8" matInput #search id="searchInput"
-    (keyup)="applyFilter($event.target.value)" placeholder="Search here....">
-  <div class="col-md-1 float-right m-0 p-0 pt-2">
-    <div id="addRowDv" class="example-flex-container display-flex-d float-right" *ngIf="isAddRequired">
-      <div class="example-button-container mr-0">
-        <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.add" [ariaLabel]="globalResource.add"
-          (onClick)="addRow()">
-          <dxc-button-icon>
-            <span class="icon-dxc-wrapper">
-              <mat-icon class="mat-icon material-icons" aria-hidden="true">add</mat-icon>
-            </span>
-          </dxc-button-icon>
-        </dxc-button>
-      </div>
-      <div class="example-button-container">
-        <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.tltrefresh"
-          [ariaLabel]="globalResource.tltrefresh" (onClick)="reload()">
-          <dxc-button-icon>
-            <span class="icon-dxc-wrapper">
-              <mat-icon class="mat-icon material-icons" aria-hidden="true">restore</mat-icon>
-            </span>
-          </dxc-button-icon>
-        </dxc-button>
-      </div>
-    </div>
-  </div>
-</mat-form-field>
-<!--  Add row -->
-<!-- Table -->
-<div class="crud-scroll" [style.max-height]="tableHeight">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
-    <ng-container matColumnDef="{{column}}"
-      *ngFor="let column of columns;  let i = index; let last = last; let first = first;">
-      <th tabindex="0" mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap">
-        <span [ngClass]="{'cellContentPostion': first}"
-          *ngIf="(column && column.toLowerCase() !=='action' && resource)">
-          {{resource[column]}}</span>
-      </th>
-      <td mat-cell *matCellDef="let element; let j = index" class="cell-position cell-focus pr-3 px-2"
-        id="table-cell{{j}}">
-        <a href="javascript:void(0);" [ngClass]="{'cellContentPostion': first, 'link-decoration' : true}"
-          *ngIf="(column && column.toLowerCase() !=='action' && element[column] && element[column].toLowerCase() != 'false' && element[column].toLowerCase() != 'true')"
-          (click)="onRowSelection(element)" attr.aria-label="{{resource[column] + ' ' + element[column]}}" matTooltip="{{resource[column] + ' ' + element[column]}}">
-          <span [ngSwitch]="columns?.length">
-            <div class="crud-col" *ngSwitchCase="1">
-              {{element[column]}}
-              <mat-icon *ngIf="element.required" class="green-icon table-label">
-                starrate</mat-icon>
-            </div>
-            <div class="crud-col" *ngSwitchDefault>
-              <div *ngIf="element[column].length > 30; then thenBlock else elseBlock"></div>
-              <ng-template #thenBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
-                  {{(element[column] | formatter:formatColumns[column]).substring(0,30)}}
-                  <span>...</span>
-                </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
-                  {{element[column].substring(0,30)}}
-                  <span>...</span>
-                </div>
-              </ng-template>
-              <ng-template #elseBlock>
-                <div class="crud-col" *ngIf="formatColumns && formatColumns[column]">
-                  {{(element[column] | formatter:formatColumns[column])}}
-                </div>
-                <div class="crud-col" *ngIf="!(formatColumns && formatColumns[column])">
-                  {{element[column]}}
-                </div>
-              </ng-template>
-            </div>
-          </span>
-        </a>
-        <button aria-label="true" class="cellIcon"
-          *ngIf="column && column.toLowerCase() !=='action' && element[column].toLowerCase() == 'true'">
-          <mat-icon class="green-icon">check</mat-icon>
-        </button>
-        <button tabindex="0" aria-label="false" class="cellIcon"
-          *ngIf="column && column.toLowerCase() !=='action' && element[column].toLowerCase() == 'false'">
-          <mat-icon class="red-icon">close</mat-icon>
-        </button>
-        <div class="row gridBtnPostion" *ngIf="first" [ngClass]="element.status ? 'search-column-width': ''">
-          <span class="iconPostion">
-            <a href="javascript:void(0);" class="material-icons iconProp icon playPause" role="button"
-              [attr.aria-label]="''" *ngIf="isIconRequired && !element.error"
-              [ngClass]="element.status ? 'green-icon': 'red-icon'"
-              (click)="element.status=!element.status">{{element.status ? 'check' : 'close' }}</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="isEditIconRequired && element.status"
-              role="button" [attr.aria-label]="''" (click)="editRow(j, element)">mode_edit</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" role="button" [attr.aria-label]="''"
-              *ngIf="!element.error && element.status && isEditIconRequired"
-              [ngClass]="element.required ? 'green-icon': ''" (click)="element.required=!element.required">star</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button"
-              [attr.aria-label]="''" [ngClass]="element.action ? 'blink_me': ''"
-              (click)="moveUp(element)">arrow_upward</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" *ngIf="element.status" role="button"
-              [attr.aria-label]="''" [ngClass]="element.action ? 'blink_me': ''"
-              (click)="moveDown(element)">arrow_downward</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" role="button"
-              [matTooltip]="globalResource.gridRowEdit" [attr.aria-label]="globalResource.gridRowEdit"
-              *ngIf="isEditRequired && element[uniqueIdentifier] != '' && (!isEditForm || !showPopup)"
-              (click)="expandRow(j, element)">mode_edit</a>
-            <a href="javascript:void(0);" class="material-icons iconProp" role="button"
-              [matTooltip]="globalResource.gridRowDelete" [attr.aria-label]="globalResource.gridRowDelete"
-              *ngIf="isDeleteRequired && element[uniqueIdentifier] != '' && !isEditForm"
-              (click)="deleteRow(element)">delete</a>
-          </span>
-        </div>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="pr-3">
-        <div class="example-element-detail" *ngIf="element == expandedElement && !isPopupVisible"
-          [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-          <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll">
-            <div class="example-flex-container display-flex-d float-right mt-2">
-              <div class="example-button-container mr-0">
-                <dxc-button size="small" mode="secondary"
-                  matTooltip="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}"
-                  ariaLabel="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}"
-                  name="saveBtn" (onClick)="rowsave(element)" class="save-icon-align">
-                  <dxc-button-icon>
-                    <span class="icon-dxc-wrapper">
-                      <mat-icon class="mat-icon material-icons">{{saveIconName}}</mat-icon>
-                    </span>
-                  </dxc-button-icon>
-                </dxc-button>
-              </div>
-              <div class="example-button-container">
-                <dxc-button size="small" mode="secondary" [ariaLabel]="globalResource.closes"
-                  [matTooltip]="globalResource.closes" (onClick)="closeExpandRow(element)">
-                  <dxc-button-icon>
-                    <span class="icon-dxc-wrapper">
-                      <mat-icon class="mat-icon material-icons" [attr.aria-label]="globalResource.closes">cancel
-                      </mat-icon>
-                    </span>
-                  </dxc-button-icon>
-                </dxc-button>
-              </div>
-            </div>
-            <div *ngIf="this.editableFields.viewmode != viewMode" class="row col-md-12">
-              <ng-container *ngFor="let editField of editableFields">
-                <ng-container [ngSwitch]="editField.fieldType" *ngIf="editField.visible == true">
-                  <div class="col-md-{{editField.columnSize}} mb-4" *ngSwitchCase="fieldsType.textInput">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!-- multiline="{{editField.multiline}}""-->
-                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
-                        [ariaRequired]="editField.required" formControlName="{{editField.name}}"
-                        [attr.aria-disabled]="editField.disabled" size="fillParent" [disabled]="editField.disabled"
-                        [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
-                      </dxc-input-text>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.dropdown">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0"
-                        attr.aria-required="{{editField.required}}" aria-labelledby="cl_{{editField.name}}"
-                        sizes="fitContent" margin="small" [attr.aria-disabled]="editField.disabled"
-                        [disabled]="editField.disabled" formControlName="{{editField.name}}"
-                        [multiple]="editField.multiple"
-                        [className]="claimsForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
-                        <dxc-select-option *ngFor="let option of editField.options" value="{{option.value}}"
-                          label="{{option.label}}">
-                        </dxc-select-option>
-                      </dxc-select>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.dxcDate">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--[label]="resource[editField.label]" -->
-                      <dxc-date [customOutput]="true" ariaLabelledBy="cl_{{editField.name}}" [format]="editField.format"
-                        id="{{editField.name}}" [ariaRequired]="editField.required" [iconSrc]="editField.iconSrc"
-                        formControlName="{{editField.name}}"></dxc-date>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.checkbox">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--[checked]="editField.checked"  -->
-                      <dxc-checkbox id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
-                        [disabled]="editField.disabled" labelPosition="after" formControlName="{{editField.name}}">
-                      </dxc-checkbox>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.codeLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="editField.lookupType"
-                        [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
-                        [gridstaterequest]="gridStateRequest" formControlName="{{editField.name}}"></dxc-code-lookup>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.supplementalGrid">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="editField.lookupType"
-                        [sourcerequest]="editField.codeRequest" [resourcerequest]="resourceRequest"
-                        [gridstaterequest]="editField.supplementalgridstateRequest"
-                        formControlName="{{editField.name}}"></dxc-code-lookup>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.orghLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-orghlookup [removeiconarialabel]="resource[editField.label]"
-                        [ariaRequired]="editField.required" [label]="resource[editField.label]"
-                        [lookuptype]="editField.lookupType" [level]="editField.level"
-                        [resourcerequest]="orghresourceRequest" [topnode]="topNode" [treerequest]="treeSourceRequest"
-                        [gridStateRequest]="orghgridStateRequest" formControlName="{{editField.name}}">
-                      </dxc-orghlookup>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.crudLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [addrequired]="editField.addrequired"
-                        [autosearchrequired]="editField.autosearchrequired" [minimumColumns]="editField.minimumColumns"
-                        [maximumColumns]="editField.maximumColumns" [label]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.MULTI"
-                        formControlName="{{editField.name}}"></dxc-crud-lookup>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.userLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]"
-                      id="lbl_{{editField.name}}"></dxc-label>
-                    <div>
-                      <dxc-user-lookup [label]="resource[editField.label]" [ariaRequired]="editField.required"
-                        [userlookupoptions]="editField.userLookupOptions" id="{{editField.name}}"
-                        [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.SINGLE"
-                        [usergridrequest]="userGridRequest" [lookupresourcerequest]="lookupResourceRequest"
-                        [usergridstaterequest]="userGridStateRequest" [resourcerequest]="resourceRequest"
-                        formControlName="{{editField.name}}">
-                      </dxc-user-lookup>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-{{editField.columnSize ? editField.columnSize : '4'}} mb-4"
-                    *ngSwitchCase="fieldsType.textArea">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--maxLength={{editField.maxLength}} autosizeMaxRows="{{editField.autosizeMaxRows}}" textareaAutosize="{{editField.textareaAutosize}}"  autosizeMinRows="{{editField.autosizeMinRows}}"-->
-                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}"
-                        [ariaRequired]="editField.required" [attr.aria-disabled]="editField.disabled"
-                        size="{{editField.size ? editField.size : 'fillParent'}}">
-                      </dxc-textarea>
-                      <dxc-show-errors [control]="claimsForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                </ng-container>
-                <!-- <div class="col-md-4">
-                        <span *ngIf="this.requiredField.includes(editField)" class="mandatory-Field">*</span>
-                  <dxc-label [text]="resource[editField]"></dxc-label>
-                  <dxc-input-text formControlName="{{editField}}" aria-disabled="true" size="fillParent"
-                    [className]="claimsForm.get(editField).errors?.required ? 'classinavlid' : 'classvalid'">
-                  </dxc-input-text>
-                  <dxc-show-errors [control]="claimsForm.controls[editField]"></dxc-show-errors>
-                </div> -->
-              </ng-container>
-            </div>
-          </form>
-        </div>
-      </td>
-    </ng-container>
-    <!--  Columns -->
-    <!-- <ng-container *ngFor="let column of columns; let i = index" matColumnDef="{{column}}">
-      <td mat-cell *matCellDef="let data; let j = index" (click)="openEdit(data, j)">
-        <p *ngIf="j!==k">{{data[column]}}</p>
-        <mat-icon *ngIf="(column && column.toLowerCase()==='actions' && j!==k )" matTooltip="Delete row"
-          class="material-icons" color="primary" (click)="openDialog(data)">delete</mat-icon>
-        <mat-icon id='edit{{j}}' *ngIf="(column && column.toLowerCase()==='actions' && j!==k )" matTooltip="Edit row"
-          class="material-icons" color="primary" (click)="openEdit(data, j)">editors</mat-icon>
-        <mat-icon *ngIf="(column && column.toLowerCase()==='actions' && j===k )" matTooltip="Update row"
-          class="material-icons" color="primary" (click)="doneEdit(data)">done</mat-icon>
-        <mat-icon *ngIf="(column && column.toLowerCase()==='actions' && j===k )" matTooltip="Cancel"
-          class="material-icons" color="primary" (click)="closeEdit(data)">clear</mat-icon>
-      </td>
-    </ng-container> -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
-    <tr mat-row *matRowDef="let element; let rowIndex = index; columns: displayedColumns; when:isToShowRow"
-      class="container example-element-row" [class.example-expanded-row]="expandedElement === element"
-      id="tableRowItem{{rowIndex}}">
-    </tr>
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id}">
-    </tr> -->
-  </table>
+<div class="w-100 clearfix">
+  <dxc-toolbar [toolBarList]="gridToolbar" class="d-inline-block w-100" (onClick)="crudToolbarClick($event)"
+    [allowSearch]='allowSearch' (searchClick)="gridSearch($event)">
+  </dxc-toolbar>
+  <span *ngIf="isMobile; then mobileView else desktopView">
+  </span>
 </div>
-<mat-paginator [pageSizeOptions]="paginationOptions" showFirstLastButtons *ngIf="allowpagination && loaded">
-</mat-paginator>
-<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" *ngIf="showPopup" isCloseVisible="true"
-[closeButtonLabel]="globalResource?.closes" (onCloseClick)="onClosePopup()">
+
+<ng-template #desktopView>
+  <div class="crud-scroll clearfix" [style.max-height]="tableHeight">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+      <ng-container *ngFor="let column of columns; let i = index; let last = last; let first = first;"
+        matColumnDef="{{column}}">
+        <th tabindex="0" mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap">
+          <span *ngIf="first && rowSelection == 'multi'">
+            <ng-container *ngTemplateOutlet="selectAll">
+            </ng-container>
+          </span>
+          <span [ngClass]="{'cellContentPostion': first}" *ngIf="(column && resource)">
+            {{resource[column]}}</span>
+        </th>
+        <td mat-cell *matCellDef="let element; index as j" class="cell-position cell-focus pr-3 px-2"
+          id="table-cell{{j}}">
+          <dxc-crud-cell-render [rowData]="element" [columnName]="column" [gridResource]="resource" [isFirst]="first"
+            [rowSelection]="rowSelection" [resource]="globalResource" [formatColumns]="formatColumns"
+            (onRowClick)="onRowClick($event)" (onRowSelect)="rowChecked($event)"></dxc-crud-cell-render>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="pr-3">
+          <div class="example-element-detail" *ngIf="element == expandedElement && editMode == 'inline' "
+            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll">
+              <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
+                (onClick)="formToolbarClick($event, element)" [allowSearch]='false'>
+              </dxc-toolbar>
+              <div *ngIf="editableFields.viewmode != viewMode" class="row col-md-12">
+                <span *ngFor="let editField of editableFields" class="col-md-{{editField.columnSize || 3}} col-xs-12">
+                  <dxc-crud-ediatble-fields *ngIf="editField.visible == true" [formGroup]="claimsForm"
+                    [field]="editField" [resource]="resource" [validation]="validations">
+                  </dxc-crud-ediatble-fields>
+                </span>
+              </div>
+            </form>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns; when:isToShowRow"
+        class="container example-element-row" [class.example-expanded-row]="expandedElement === element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="pagingOptions" showFirstLastButtons *ngIf="allowPaging && loaded">
+  </mat-paginator>
+</ng-template>
+
+<ng-template #mobileView>
+  <div class="mobile-view">
+    <mat-card *ngIf="rowSelection == 'multi'" class="p-1 m-1">
+      <mat-card-title>
+        <ng-container *ngTemplateOutlet="selectAll"></ng-container>
+      </mat-card-title>
+    </mat-card>
+    <ng-container *ngFor="let row of dataSource?.data;">
+      <mat-card class="p-1 m-1">
+        <mat-card-title class="d-inline-block">
+          <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox" [attr.aria-checked]="row.isSelected"
+            *ngIf="rowSelection != 'none'" [matTooltip]="globalResource.selectRow" [attr.aria-label]="globalResource.selectRowMessage"
+            (click)="rowChecked(row)">
+            <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
+            <span class="position-absolute font-size-25 left-0" *ngIf="row.isSelected">done</span>
+          </a>
+        </mat-card-title>
+        <mat-card-content class="d-inline-block">
+          <ng-container *ngFor="let column of columns; let i = index; let last = last; let first = first;">
+            <div class="d-inline-block w-100 mb-1">
+              <span class="w-50 float-left p-1">
+                <b>{{resource[column]}}</b>
+              </span>
+              <span class="w-50 float-left p-1">
+                <dxc-crud-cell-render class="d-inline-block" [rowData]="row" [columnName]="column"
+                  [gridResource]="resource" [isFirst]="false" [rowSelection]="rowSelection" [resource]="globalResource"
+                  [formatColumns]="formatColumns" (onRowClick)="onRowClick($event)">
+                </dxc-crud-cell-render>
+              </span>
+            </div>
+          </ng-container>
+          <div class="example-element-detail" *ngIf="row == expandedElement && editMode == 'inline' "
+            [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
+            <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll">
+              <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
+                (onClick)="formToolbarClick($event, row)" [allowSearch]='false'>
+              </dxc-toolbar>
+              <div *ngIf="editableFields.viewmode != viewMode" class="row col-md-12">
+                <span *ngFor="let editField of editableFields" class="col-md-{{editField.columnSize || 3}} col-xs-12">
+                  <dxc-crud-ediatble-fields *ngIf="editField.visible == true" [formGroup]="claimsForm"
+                    [field]="editField" [resource]="resource" [validation]="validations">
+                  </dxc-crud-ediatble-fields>
+                </span>
+              </div>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #selectAll>
+  <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox" attr.aria-checked="{{selectedRowCount == dataSource.data?.length}}"
+    [matTooltip]="globalResource.selectAllRow" [attr.aria-label]="globalResource.selectAllRowMessage" (click)="selectAllRow()">
+    <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
+    <span class="position-absolute font-size-25 left-0"
+      *ngIf="selectedRowCount > 0 && selectedRowCount != dataSource.data?.length">remove</span>
+    <span class="position-absolute font-size-25 left-0" *ngIf="selectedRowCount == dataSource.data?.length">done</span>
+  </a>
+</ng-template>
+
+<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" *ngIf="isPopupOpen" isCloseVisible="true"
+  [closeButtonLabel]="globalResource?.closes" (onCloseClick)="onClosePopup()">
   <div>
     <div class="modal-header pb-2 pt-2">
       <h6 class="modal-title ml-2">
-        <dxc-label id="lblActivationCode" [text]="label"></dxc-label>
+        <dxc-label id="crud-grid-popup-header" [text]="label"></dxc-label>
       </h6>
     </div>
   </div>
   <form [formGroup]="suppgridForm">
     <div class="modal-body supp-grid-scroll">
-      <div>
-        <div class="row float-right mr-1 mb-2">
-          <dxc-button size="small" mode="secondary" id="rowsave" ariaLabel="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}" matTooltip="{{saveIconName == 'save' ? globalResource.save : globalResource.okayButtonText}}"
-            (onClick)="rowsave(suppgridForm)">
-            <dxc-button-icon>
-              <span class="icon-dxc-wrapper">
-                <mat-icon class="mat-icon material-icons">save</mat-icon>
-              </span>
-            </dxc-button-icon>
-          </dxc-button>
-        </div>
-      </div>
+      <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
+        (onClick)="formToolbarClick($event, suppgridForm)" [allowSearch]='false'>
+      </dxc-toolbar>
       <div class="">
         <div class="row float-left mx-2">
-          <div *ngIf="this.editableFields.viewmode === viewMode" class="row">
-            <ng-container *ngFor="let editField1 of editableFields.section ">
+          <div *ngIf="editableFields.viewmode === viewMode" class="row">
+            <ng-container *ngFor="let editField1 of editableFields.section">
               <dxc-sub-heading class="col-md-12 px-0" [heading]="editField1.title">
               </dxc-sub-heading>
-              <ng-container *ngFor="let editField of editField1.fields">
-                <ng-container [ngSwitch]="editField.fieldType" *ngIf="editField.visible == true">
-                  <div class="col-md-4 mb-4" *ngSwitchCase="fieldsType.textInput">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--multiline="{{editField.multiline}}"-->
-                      <dxc-input-text id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
-                        [ariaRequired]="editField.required" formControlName="{{editField.name}}"
-                        [attr.aria-disabled]="editField.disabled" size="fillParent" [disabled]="editField.disabled"
-                        [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
-                      </dxc-input-text>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-2 mb-4" *ngSwitchCase="fieldsType.dropdown">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0"
-                        [attr.aria-required]="editField.required" aria-labelledby="cl_{{editField.name}}"
-                        sizes="fitContent" margin="small" [attr.aria-disabled]="editField.disabled"
-                        [disabled]="editField.disabled" formControlName="{{editField.name}}"
-                        [multiple]="editField.multiple"
-                        [className]="suppgridForm.get(editField.name).errors?.required ? 'classinavlid' : 'classvalid'">
-                        <dxc-select-option *ngFor="let option of editField.options" value="{{option.value}}"
-                          label="{{option.label}}">
-                        </dxc-select-option>
-                      </dxc-select>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.dxcDate">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--[label]="resource[editField.label]"-->
-                      <dxc-date [customOutput]="true" ariaLabelledBy="cl_{{editField.name}}" [format]="editField.format"
-                        id="{{editField.name}}" [ariaRequired]="editField.required" [iconSrc]="editField.iconSrc"
-                        formControlName="{{editField.name}}"></dxc-date>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-2 mb-4" *ngSwitchCase="fieldsType.checkbox">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--[checked]="editField.checked" -->
-                      <dxc-checkbox id="{{editField.name}}" ariaLabelledBy="cl_{{editField.name}}"
-                        [disabled]="editField.disabled" labelPosition="after" formControlName="{{editField.name}}">
-                      </dxc-checkbox>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.codeLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [disabled]="editField.disabled"
-                        [lookuptype]="editField.lookupType" [sourcerequest]="editField.codeRequest"
-                        [resourcerequest]="resourceRequest" [gridstaterequest]="gridStateRequest"
-                        formControlName="{{editField.name}}"></dxc-code-lookup>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.supplementalGrid">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="editField.lookupType"
-                        [sourcerequest]="editField.codeRequest" [allowServerFilter]="editField.allowServerFilter"
-                        [resourcerequest]="resourceRequest" [gridstaterequest]="editField.supplementalgridstateRequest"
-                        formControlName="{{editField.name}}"></dxc-code-lookup>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.orghLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-orghlookup [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [label]="resource[editField.label]"
-                        [lookuptype]="editField.lookupType" [disabled]="editField.disabled"
-                        [resourcerequest]="orghresourceRequest" [topnode]="topNode" [level]="editField.level"
-                        [treerequest]="treeSourceRequest" [gridStateRequest]="orghgridStateRequest"
-                        formControlName="{{editField.name}}">
-                      </dxc-orghlookup>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.crudLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="editField.required"
-                        [removeiconarialabel]="resource[editField.label]" [addrequired]="editField.addrequired"
-                        [autosearchrequired]="editField.autosearchrequired" [minimumColumns]="editField.minimumColumns"
-                        [maximumColumns]="editField.maximumColumns" [label]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.MULTI"
-                        formControlName="{{editField.name}}"></dxc-crud-lookup>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4" *ngSwitchCase="fieldsType.userLookup">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]"
-                      id="lbl_{{editField.name}}"></dxc-label>
-                    <div>
-                      <dxc-user-lookup [label]="resource[editField.label]" [ariaRequired]="editField.required"
-                        [userlookupoptions]="editField.userLookupOptions" id="{{editField.name}}"
-                        [mode]="lookupMode.GRID" [removeiconarialabel]="resource[editField.label]"
-                        [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.SINGLE"
-                        [usergridrequest]="userGridRequest" [lookupresourcerequest]="lookupResourceRequest"
-                        [usergridstaterequest]="userGridStateRequest" [resourcerequest]="resourceRequest"
-                        formControlName="{{editField.name}}">
-                      </dxc-user-lookup>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                  <div class="col-md-{{editField.columnSize ? editField.columnSize : '4'}} mb-4" *ngSwitchCase="fieldsType.textArea">
-                    <dxc-label [required]="editField.required" [text]="resource[editField.label]" [id]="editField.name">
-                    </dxc-label>
-                    <div>
-                      <!--maxLength={{editField.maxLength}} autosizeMaxRows="{{editField.autosizeMaxRows}}" textareaAutosize="{{editField.textareaAutosize}}"  autosizeMinRows="{{editField.autosizeMinRows}}"-->
-                      <dxc-textarea id="{{editField.id}}" formControlName="{{editField.name}}"
-                        [ariaRequired]="editField.required" [attr.aria-disabled]="editField.disabled" size="{{editField.size ? editField.size : 'fillParent'}}">
-                      </dxc-textarea>
-                      <dxc-show-errors [control]="suppgridForm.controls[editField.name]" [fieldname]="editField.name"
-                        [errormessages]="resource" [gridGlobalRequiredValidation]="gridGlobalRequiredValidation">
-                      </dxc-show-errors>
-                    </div>
-                  </div>
-                </ng-container>
-
-              </ng-container>
+              <span *ngFor="let editField of editField1.fields" class="col-md-{{editField.columnSize || 3}} col-xs-12">
+                <dxc-crud-ediatble-fields *ngIf="editField.visible == true" [formGroup]="suppgridForm"
+                  [field]="editField" [resource]="resource" [validation]="validations"></dxc-crud-ediatble-fields>
+              </span>
             </ng-container>
           </div>
         </div>
@@ -526,4 +149,3 @@
     </div>
   </form>
 </dxc-dialog>
-<!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->

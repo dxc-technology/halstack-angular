@@ -13,6 +13,7 @@ export class DxcToolbarComponent implements OnInit {
   @Input() toolBarList: List<Button>;
   @Input() allowSearch = true;
   @Input() toolTipPos: string = 'below';
+  @Input() searchAccessKey: string = '';
   @Output() onClick: EventEmitter<Button>;
   @Output() searchClick: EventEmitter<string>;
 

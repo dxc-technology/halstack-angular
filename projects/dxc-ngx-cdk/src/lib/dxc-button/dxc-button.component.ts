@@ -39,6 +39,7 @@ export class DxcButtonComponent {
   @Input() margin: any;
   @Input() size: string;
   @Input() type: string = "button";
+  @Input() accessKey: string = "";
   @Input() border:boolean = true;
   @Input('ariaLabel') ariaLabel: string = null;
   @Input('ariaLabelledBy') ariaLabelledBy: string = null;

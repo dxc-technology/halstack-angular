@@ -103,6 +103,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   selectedRowCount: number = 0;
   isMobile: boolean = false;
   noRecord:string = 'No record';
+  filterValue: string = '';
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
     private confirmationDialogService: DxcConfirmationDialogService,
@@ -235,22 +236,25 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       return dataList.length > 0 ? true : false;
     };
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.filterValue = filterValue;
   }
 
   crudToolbarClick = ($event) => {
-    this.editFormToolbar = List([]);
+    this.editFormToolbar = List<Button>([]);
     this.editFormToolbar = this.editFormToolbar.push({
       rel: 'save',
       title: this.saveIconName == 'save' ? this.globalResource.save : this.globalResource.okayButtonText,
       iconName: this.saveIconName,
-      label: this.saveIconName == 'save' ? this.globalResource.save : this.globalResource.okayButtonText
+      label: this.saveIconName == 'save' ? this.globalResource.save : this.globalResource.okayButtonText,
+      accessKey: 's'
     });
     if (this.editableColumns?.viewmode != "TAB") {
       this.editFormToolbar = this.editFormToolbar.push({
         rel: 'close',
         title: this.globalResource.closes,
         iconName: 'cancel',
-        label: this.globalResource.closes
+        label: this.globalResource.closes,
+        accessKey: 'x'
       });
     }
     let selectedRows = this.getSelectedRow();

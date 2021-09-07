@@ -1,2 +1,3 @@
-    <div [attr.disabled]="disabled ? 'disabled' : null" id="editor" tabindex="0" [froalaEditor]="froalaOptions"
+    <div [attr.disabled]="disabled ? 'disabled' : null" id="editor" tabindex="0" [attr.aria-label]="ariaLabel"
+      [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy" [froalaEditor]="froalaOptions"
       [(froalaModel)]="result"></div>

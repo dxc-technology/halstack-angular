@@ -18,6 +18,15 @@
   color: var(--mat-input-element-color) !important;
 }
 
+.menu-arrow-up{
+  width: 13px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  position: absolute;
+  right: 9px;
+  bottom: 100%;
+}
+
 @media only screen and (max-width: 600px) {
   #search-1:focus-within input[type=search]:focus {
     width: 200px;

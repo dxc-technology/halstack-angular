@@ -161,7 +161,7 @@ export class DxcNumberComponent implements OnInit, ControlValueAccessor {
   public onChanged($event: any): void {
     this.clicked = false;
     this.renderedValue = $event.target.value;
-    //$event.target.value = formatNumber(this.minValue, this.maxValue, this.allowDecimal, this.decimalPlace, $event.target.value)
+    // $event.target.value = formatNumber(this.minValue, this.maxValue, this.allowDecimal, this.decimalPlace, $event.target.value)
     this.onChange.emit($event.target.value);
     this.renderedValue = $event.target.value;
     this.onChangeRegister(this.renderedValue);
@@ -180,8 +180,13 @@ export class DxcNumberComponent implements OnInit, ControlValueAccessor {
    *Executed when input lost the focus
    */
   public onBlurHandle($event: any): void {
-    this.renderedValue = this.allowDecimal ? parseFloat(this.renderedValue).toString() : parseInt(this.renderedValue).toString();
-    //formatNumber(this.minValue, this.maxValue, this.allowDecimal, this.decimalPlace, this.renderedValue);
+    this.renderedValue = formatNumber(this.minValue, this.maxValue, this.allowDecimal, this.decimalPlace, this.renderedValue);
+    //let number = this.allowDecimal ? parseFloat(this.renderedValue) : parseInt(this.renderedValue);
+    // if(isNaN(number)){
+    //   number = 0;
+    // }
+    // this.renderedValue = number.toString();
+    //
     this.onBlur.emit(this.renderedValue);
     this.onTouched();
     this.onChangeRegister(this.renderedValue);
@@ -312,13 +317,18 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
     {
       transformedInput = 0;
     }
+    if(decimalPlace>0){
+      transformedInput = parseFloat(parseFloat(transformedInput).toFixed(decimalPlace));
+      }
 
     if (maxValue && maxValue !== -1) {
+      if (parseFloat(transformedInput) < parseFloat(minValue)) {
+        transformedInput = parseFloat(minValue);
+      }
       if (parseFloat(transformedInput) > parseFloat(maxValue)) {
-        transformedInput = 0;
+        transformedInput = parseFloat(maxValue);
       }
     }
-
 
     if (transformedInput !== 0) {
       const transformedInputV = transformedInput.toString();

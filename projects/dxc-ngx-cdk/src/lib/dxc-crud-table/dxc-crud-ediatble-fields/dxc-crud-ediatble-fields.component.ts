@@ -81,7 +81,9 @@ export class DxcCrudEdiatbleFieldsComponent implements OnInit {
   // @Output() controlOnClick = new EventEmitter<any>();
   // @Output() controlOnChange = new EventEmitter<any>();
 
-  constructor(private config: ConfigurationsetupService) { }
+  constructor(private config: ConfigurationsetupService) {
+    this.setupControlsUrl();
+  }
 
   ngOnInit(): void {
   }

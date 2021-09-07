@@ -177,7 +177,8 @@ export enum EFieldsType {
   orghLookup = 7,
   crudLookup = 8,
   supplementalGrid = 9,
-  textEditor = 10
+  textEditor = 10,
+  number = 11
 }
 
 export interface ICodeLookupProperties extends IFieldsBaseProperties {
@@ -215,6 +216,14 @@ export interface ITextEditorproperties extends IFieldsBaseProperties {
   result?: string,
   planeText?: string,
   columnSize: number,
+}
+
+export interface INumberProperties extends IFieldsBaseProperties {
+  decimalPlace?: number,
+  allowDecimal?: boolean,
+  minValue?: number,
+  maxValue?: number,
+  maxLength?: number
 }
 
 export interface IUserLookupProperties extends IFieldsBaseProperties {
@@ -262,6 +271,7 @@ export interface ITextInputProperties extends IFieldsBaseProperties {
   type?: string;
   columnSize: number;
   maxLength?: number;
+  minLength?: number;
 }
 
 export interface ITextAreaInputProperties extends IFieldsBaseProperties {

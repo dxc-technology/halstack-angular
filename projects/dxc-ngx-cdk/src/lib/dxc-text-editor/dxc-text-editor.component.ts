@@ -18,7 +18,10 @@ export class DxcTextEditorComponent implements OnInit, ControlValueAccessor {
   @Input() disabled = false;
   @Output() resultChange = new EventEmitter<string>();
   @Output() onChange = new EventEmitter<string>();
-
+  @Input('ariaLabel') ariaLabel: string = null;
+  @Input('ariaLabelledBy') ariaLabelledBy: string = null;
+  @Input('ariaDescribedBy') ariaDescribedBy: string = null;
+  
   froalaOptions = {
     charCounterCount: true,
     autofocus: true,

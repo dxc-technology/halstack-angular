@@ -102,7 +102,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   editFormToolbar: List<any>;
   selectedRowCount: number = 0;
   isMobile: boolean = false;
-
+  noRecord:string = 'No record';
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
     private confirmationDialogService: DxcConfirmationDialogService,
@@ -110,7 +110,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     private elRef: ElementRef,
     private dateHelper: DateHelper,
     private resizeService: DxcResizeService,
-    private textEditorService: TextEditorService ) {
+    private textEditorService: TextEditorService) {
     this.resizeService.onResize$
       .pipe(delay(0))
       .subscribe(x => {
@@ -133,11 +133,13 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.globalResource = this.config.configservice.Resource;
     this.uniqueColumn = this.uniqueIdentifier;
     this.validations = this.config.configservice.GlobalResource.gridGlobalRequiredValidation?.description;
+    this.noRecord = this.config.configservice.GlobalResource.gridNoRecord?.description;
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.setTableHeight();
   }
 
   writeValue(val: any): void {
@@ -153,9 +155,9 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       this.data = val;
       this.dataSource.data = [...this.data];
       this.loaded = true;
-      this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data);
+      this.setTableHeight();
     }
-    if (this.editableColumns.viewmode != "TAB") {
+    if (this.editableColumns?.viewmode != "TAB") {
       this.fieldOptions = this.editableFields.map(obj => ({ ...obj }));
     }
     else {
@@ -243,7 +245,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       iconName: this.saveIconName,
       label: this.saveIconName == 'save' ? this.globalResource.save : this.globalResource.okayButtonText
     });
-    if (this.editableColumns.viewmode != "TAB") {
+    if (this.editableColumns?.viewmode != "TAB") {
       this.editFormToolbar = this.editFormToolbar.push({
         rel: 'close',
         title: this.globalResource.closes,
@@ -311,7 +313,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
   }
 
-
   reload = () => {
     this.bindOptions();
   }
@@ -322,75 +323,9 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.claimsForm = this.fb.group({});
     this.isEditForm = false;
     this.suppgridForm = this.fb.group({});
-
-    this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight);
+    this.selectedRowCount = 0;
+    this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight, this.dataSource.data, this.elRef);
     this.formControlUpdater.emit({ action: EAction.ONCLOSEPOPUP });
-  }
-
-  private addRow = () => {
-    if (this.editMode == 'popup') {
-      this.isPopupOpen = true;
-    }
-    if (Object.keys(this.claimsForm.controls).length) {
-      return;
-    }
-    this.isEditForm = false;
-    this.selectedRowIndex = -1;
-    let crudFormModel = {};
-    crudFormModel[this.uniqueIdentifier] = "";
-    this.claimsForm = this.fb.group({});
-    if (this.editableColumns.viewmode != "TAB") {
-      this.editableFields.forEach((col) => {
-        this.addRowFields(col, crudFormModel);
-      });
-    }
-    else {
-      this.editableFields.section.forEach((col1) => {
-        col1.fields.forEach((col) => {
-          this.addRowFields(col, crudFormModel);
-        });
-      });
-    }
-    this.registerFormValueChange(this.claimsForm);
-    const data = [...this.dataSource.data];
-    data.unshift(crudFormModel);
-
-    this.expandedElement = crudFormModel;
-    this.dataSource.data = [...data];
-    this.tableHeight = this.crudHelper.calculateFormHeight(true, this.tableHeight);
-    let dataToEmit: IFormUpdateEventFormat;
-
-
-    this.columnsarray = [];
-    if (this.editableColumns.viewmode === "TAB") {
-      this.editableFields.section.forEach((col1) => {
-        col1.fields.forEach((col) => {
-          this.columnsarray.push(col);
-        });
-      });
-      dataToEmit = {
-        action: EAction.ONLOAD,
-        columns: this.columnsarray,
-        data: this.dataSource.data,
-        error: { isError: false, msg: "" },
-        form: this.claimsForm,
-        control: this.columnsarray[0]
-      };
-    }
-    else {
-      dataToEmit = {
-        action: EAction.ONLOAD,
-        columns: this.editableFields,
-        data: this.dataSource.data,
-        error: { isError: false, msg: "" },
-        form: this.claimsForm,
-        control: this.editableFields.get(0)
-      };
-    }
-    this.formControlUpdater.emit(dataToEmit);
-
-    this.suppgridForm = this.claimsForm;
-    this.setFocus();
   }
 
   onRowClick = (row) => {
@@ -403,7 +338,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         if (response == true) {
           this.removeRowFromDataSource(row);
           this.data = [...this.dataSource.data];
-          this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data);
+          this.setTableHeight();
           if (this.parentForm.dirty) {
             this.formControlUpdater.emit({ action: EAction.DELETEANDSAVE, columns: this.editableFields, data: row });
           } else {
@@ -417,18 +352,11 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       });
     } else {
       this.removeRowFromDataSource(row);
-      this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data);
+      this.setTableHeight();
       this.onChangeRegister(this.dataSource.data);
       this.formControlUpdater.emit({ action: EAction.DELETE, columns: this.editableFields, data: row });
       this.setFocus('CrudSearchInput');
     }
-  }
-
-  private removeRowFromDataSource = (row) => {
-    const index = this.dataSource.data.indexOf(row);
-    this.dataSource.data.splice(index, 1);
-    const data = this.dataSource.data;
-    this.dataSource.data = [...data];
   }
 
   rowsave = (row) => {
@@ -441,10 +369,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
     // Befor Save Event Emitter
     let objDataToEmit: IFormUpdateEventFormat;
-
-
     this.columnsarray = [];
-    if (this.editableColumns.viewmode === "TAB") {
+    if (this.editableColumns?.viewmode === "TAB") {
       this.editableFields.section.forEach((col1) => {
         col1.fields.forEach((col) => {
           this.columnsarray.push(col);
@@ -460,7 +386,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       };
     }
     else {
-
       objDataToEmit = {
         action: EAction.BEFORESAVE,
         columns: this.editableFields,
@@ -470,8 +395,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         control: this.editableFields.get(0)
       };
     }
-
-
     this.formControlUpdater.emit(objDataToEmit);
     if (this.claimsForm.invalid) {
       return false;
@@ -485,7 +408,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           this.expandedElement[this.uniqueIdentifier] = -1;
         }
       }
-      if (this.editableColumns.viewmode != "TAB") {
+      if (this.editableColumns?.viewmode != "TAB") {
         this.editableFields.forEach((col) => {
           this.rowSaveFields(col);
         });
@@ -581,7 +504,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     } else {
       this.isEditForm = false;
     }
-    this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight);
+    this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight, this.dataSource.data, this.elRef);
     this.formControlUpdater.emit({ action: EAction.ONPANELCLOSE });
   }
 
@@ -601,7 +524,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.claimsForm = this.fb.group({});
     if (!(this.expandedElement === null)) {
       this.claimsForm.addControl(this.uniqueIdentifier, new FormControl(row[this.uniqueIdentifier]));
-      if (this.editableColumns.viewmode != "TAB") {
+      if (this.editableColumns?.viewmode != "TAB") {
         this.editableFields.forEach((col) => {
           this.expandRowFields(col);
         });
@@ -613,12 +536,12 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           });
         });
       }
-      this.tableHeight = this.crudHelper.calculateFormHeight(true, this.tableHeight);
+      this.tableHeight = this.crudHelper.calculateFormHeight(true, this.tableHeight, this.dataSource.data, this.elRef);
     }
     this.registerFormValueChange(this.claimsForm);
     let objDataToEmit: IFormUpdateEventFormat;
     this.columnsarray = [];
-    if (this.editableColumns.viewmode === "TAB") {
+    if (this.editableColumns?.viewmode === "TAB") {
       this.editableFields.section.forEach((col1) => {
         col1.fields.forEach((col) => {
           this.columnsarray.push(col);
@@ -661,7 +584,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       this.dataSource.data = [...this.data];
       this.dataSource.paginator = this.paginator;
       this.loaded = true;
-      this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data);
+      this.setTableHeight();
       this.onChangeRegister(this.dataSource.data);
     }
     if (this.displayedColumns.length === 0) {
@@ -685,13 +608,13 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       else {
         this.dataSource.data = response._embedded[this.dataNodeName];
       }
-      this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data);
+      this.setTableHeight();
       this.formControlUpdater.emit({ action: EAction.ONRENDER, data: this.dataSource.data });
     });
   }
 
   registerFormValueChange(formGroup: FormGroup) {
-    if (this.editMode == 'popup' && this.editableColumns.viewmode === "TAB") {
+    if (this.editMode == 'popup' && this.editableColumns?.viewmode === "TAB") {
       this.columnsarray = [];
 
       this.editableFields.section.forEach((col1) => {
@@ -755,7 +678,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.expandedElement[dropdownFieldProp.viewValue] = filteredRecord.length > 0 ? filteredRecord[0].label : '';
         let selectedValue = dropdownFieldProp.multiple && filteredRecord.length > 0 ? filteredRecord : row[dropdownFieldProp.valueProperty];
         this.expandedElement[dropdownFieldProp.valueProperty] = selectedValue;
-      } 
+      }
       else if (col.fieldType == EFieldsType.codeLookup || col.fieldType == EFieldsType.supplementalGrid) {
 
         if (row && Array.isArray(row[col.name])) {
@@ -791,13 +714,13 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.expandedElement[col.name] = row[col.name];
         this.expandedElement[col.label] = row[col.name].name;
         this.expandedElement[col.valueProperty] = row[col.name].id;
-      } 
+      }
       else if (col.fieldType == EFieldsType.dxcDate) {
         this.expandedElement[col.name] = row[col.name]; //// this.dateHelper.convertDateToControlFormat(row[col.name], (col as IDateProperties).format);
       }
-      else if(col.fieldType == EFieldsType.textEditor){
+      else if (col.fieldType == EFieldsType.textEditor) {
         this.expandedElement[col.name] = row[col.name];
-        this.expandedElement[col.planeText]=this.textEditorService.getPlaneText(row[col.name]);
+        this.expandedElement[col.planeText] = this.textEditorService.getPlaneText(row[col.name]);
       }
       else {
         this.expandedElement[col.name] = row[col.name];
@@ -845,7 +768,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
         if (col.fieldType == this.fieldsType.textEditor) {
           this.expandedElement[(col as ITextEditorproperties).planeText] = this.expandedElement[(col as ITextEditorproperties).planeText];
-		        this.claimsForm.addControl(col.name, new FormControl( this.expandedElement[col.name],
+          this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
             (col.required && col.required == true) ? Validators.required : null));
         }
 
@@ -928,73 +851,90 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
   }
 
+  trackTable = (index: number, item: any) =>{
+    return item;
+  }
+
+  private removeRowFromDataSource = (row) => {
+    const index = this.dataSource.data.indexOf(row);
+    this.dataSource.data.splice(index, 1);
+    const data = this.dataSource.data;
+    this.dataSource.data = [...data];
+  }
+
+  private addRow = () => {
+    if (this.editMode == 'popup') {
+      this.isPopupOpen = true;
+    }
+    if (Object.keys(this.claimsForm.controls).length) {
+      return;
+    }
+    this.isEditForm = false;
+    this.selectedRowIndex = -1;
+    let crudFormModel = {};
+    crudFormModel[this.uniqueIdentifier] = "";
+    this.claimsForm = this.fb.group({});
+    if (this.editableColumns?.viewmode != "TAB") {
+      this.editableFields.forEach((col) => {
+        this.addRowFields(col, crudFormModel);
+      });
+    }
+    else {
+      this.editableFields.section.forEach((col1) => {
+        col1.fields.forEach((col) => {
+          this.addRowFields(col, crudFormModel);
+        });
+      });
+    }
+    this.registerFormValueChange(this.claimsForm);
+    const data = [...this.dataSource.data];
+    data.unshift(crudFormModel);
+
+    this.expandedElement = crudFormModel;
+    this.dataSource.data = [...data];
+    this.tableHeight = this.crudHelper.calculateFormHeight(true, this.tableHeight, this.dataSource.data, this.elRef);
+    let dataToEmit: IFormUpdateEventFormat;
+
+
+    this.columnsarray = [];
+    if (this.editableColumns?.viewmode === "TAB") {
+      this.editableFields.section.forEach((col1) => {
+        col1.fields.forEach((col) => {
+          this.columnsarray.push(col);
+        });
+      });
+      dataToEmit = {
+        action: EAction.ONLOAD,
+        columns: this.columnsarray,
+        data: this.dataSource.data,
+        error: { isError: false, msg: "" },
+        form: this.claimsForm,
+        control: this.columnsarray[0]
+      };
+    }
+    else {
+      dataToEmit = {
+        action: EAction.ONLOAD,
+        columns: this.editableFields,
+        data: this.dataSource.data,
+        error: { isError: false, msg: "" },
+        form: this.claimsForm,
+        control: this.editableFields.get(0)
+      };
+    }
+    this.formControlUpdater.emit(dataToEmit);
+
+    this.suppgridForm = this.claimsForm;
+    this.setFocus();
+  }
+
   private getSelectedRow() {
     return this.dataSource.data.filter((row) => { return row['isSelected'] == true });
   }
 
-  // setDataSourceAttributes = () => {
-  //   this.dataSource.sort = this.sort;
-  // }
-
-  // openEdit(rowData: any, i: number) {
-  //   this.highlight(rowData);
-  // }
-
-  // closeEdit(rowData: any) {
-  //   this.selectedRowIndex = -1;
-  // }
-
-  // formatDate(date) {
-  //   var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  //   var day = date.getDate();
-  //   var monthIndex = date.getMonth();
-  //   var year = date.getFullYear();
-  //   return year + '-' + [monthIndex + 1] + '-' + day;
-  // }
-
-  // removeFromArray(elementToBeDeleted: string) {
-  //   const index: number = this.data.indexOf(elementToBeDeleted);
-  //   if (index !== -1) {
-  //     this.data.splice(index, 1);
-  //     this.dataSource.data = this.data;
-  //   }
-  // }
-
-  // highlight(row) {
-  //   this.selectedRowIndex = row.id;
-  // }
-  // UI_notifications(status: string, message: string) {
-  //   this.closeEdit('UI_notifications');
-  // }
-
-
-  // editRow = (index, row) => {
-  //   this.formControlUpdater.emit({ action: EAction.ONCUSTOMEDIT, data: row });
-  // }
-
-  // moveUp(element) {
-  //   const index: number = this.dataSource.data.indexOf(element);
-  //   if (index > 0) {
-  //     this.move(index, index - 1);
-  //   }
-  // }
-
-  // moveDown(element) {
-  //   const index: number = this.dataSource.data.indexOf(element);
-  //   if (index < this.dataSource.data.length) {
-  //     this.move(index, index + 1);
-  //   }
-
-  // }
-
-  // move(origin, destination) {
-  //   var temp = this.dataSource.data[destination];
-  //   this.dataSource.data[destination] = this.dataSource.data[origin];
-  //   this.dataSource.data[origin] = temp;
-  //   const data = this.dataSource.data;
-  //   this.dataSource.data = [...data];
-  //   this.onChangeRegister(this.dataSource.data);
-  // }
-
-
+  private setTableHeight() {
+    setTimeout(() => {
+      this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data, this.elRef);
+    }, 1000);
+  }
 }

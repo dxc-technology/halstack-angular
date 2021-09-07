@@ -2,7 +2,7 @@
     <dxc-label [required]="field.required" [text]="resource[field.label]" [id]="field.name">
     </dxc-label>
     <div *ngSwitchCase="fieldsType.textInput">
-      <dxc-input-text id="ctrl_{{field.name}}" [ariaLabelledBy]="field.name" [ariaRequired]="field.required"
+      <dxc-input-text id="ctrl_{{field.name}}" ariaLabelledBy="cl_{{field.name}}" [ariaRequired]="field.required"
         formControlName="{{field.name}}" [attr.aria-disabled]="field.disabled" size="fillParent"
         [disabled]="field.disabled" [maxLength]="field.maxLength" [minLength]="field.minLength"
         [className]="formGroup.get(field.name).errors?.required ? 'classinavlid' : 'classvalid'">
@@ -25,7 +25,7 @@
       </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.dxcDate">
-      <dxc-date [customOutput]="true" [ariaLabelledBy]="field.name" [format]="field.format"
+      <dxc-date [customOutput]="true" ariaLabelledBy="cl_{{field.name}}" [format]="field.format"
         id="ctrl_{{field.name}}" [ariaRequired]="field.required" [iconSrc]="field.iconSrc"
         formControlName="{{field.name}}"></dxc-date>
       <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"
@@ -34,7 +34,7 @@
     </div>
     <div *ngSwitchCase="fieldsType.number">
         <dxc-number id="ctrl_{{field.name}}" labelPosition="after" [decimalPlace]="field.decimalPlace"
-        [ariaLabelledBy]="field.name" [ariaRequired]="field.required" [attr.aria-disabled]="field.disabled" 
+        ariaLabelledBy="cl_{{field.name}}" [ariaRequired]="field.required" [attr.aria-disabled]="field.disabled" 
         [allowDecimal]="field.allowDecimal" [minValue]="field.minValue" [maxValue]="field.maxValue"
         id="{{field.name}}"  formControlName="{{field.name}}" [disabled]="field.disabled">
       </dxc-number>
@@ -43,7 +43,7 @@
       </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.checkbox">
-      <dxc-checkbox id="ctrl_{{field.name}}" [ariaLabelledBy]="field.name" [disabled]="field.disabled"
+      <dxc-checkbox id="ctrl_{{field.name}}" ariaLabelledBy="cl_{{field.name}}" [disabled]="field.disabled"
         labelPosition="after" formControlName="{{field.name}}">
       </dxc-checkbox>
       <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"
@@ -117,7 +117,7 @@
       </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.textEditor">
-      <dxc-text-editor id="ctrl_{{field.name}}" [disabled]="field.disabled" [ariaLabelledBy]="field.name" 
+      <dxc-text-editor id="ctrl_{{field.name}}" [disabled]="field.disabled" ariaLabelledBy="cl_{{field.name}}" 
       formControlName="{{field.name}}" >
       </dxc-text-editor>
       <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"

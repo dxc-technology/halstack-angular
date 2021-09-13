@@ -62,7 +62,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   clearable = false;
 
   @Input()
-  errorMessage = undefined;
+  error= undefined;
 
   @Input()
   placeholder = "";
@@ -77,7 +77,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   margin: Object | string;
 
   @Input()
-  autosuggestOptions: any;
+  suggestions: any;
 
   autoSuggestId: string;
 
@@ -94,7 +94,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     name: "",
     label: "",
     margin: "",
-    autosuggestOptions: [],
+    suggestions: [],
   });
 
   @Output()
@@ -135,8 +135,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   fetchingError = new BehaviorSubject<boolean>(false);
 
   autosuggestType: string;
-
-  error: string = "";
 
   constructor(
     private cdRef: ChangeDetectorRef,
@@ -195,23 +193,23 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       this.filteredOptions = filteredArray;
     });
     if (
-      this.autosuggestOptions &&
-      typeof this.autosuggestOptions === "function"
+      this.suggestions &&
+      typeof this.suggestions === "function"
     ) {
       this.getAsyncSuggestions();
       this.autosuggestType = "async";
     } else if (
-      this.autosuggestOptions &&
-      Array.isArray(this.autosuggestOptions)
+      this.suggestions &&
+      Array.isArray(this.suggestions)
     ) {
-      this.options = this.autosuggestOptions;
+      this.options = this.suggestions;
       this.autosuggestType = "array";
     }
   }
 
   ngAfterViewInit(): void {
     if (this.inputRef) {
-      if (this.autosuggestOptions.length) {
+      if (this.suggestions && this.suggestions.length) {
         this.inputRef.nativeElement.attributes.role.value = "combobox";
         this.inputRef.nativeElement.ariaExpanded = this.autosuggestVisible;
         this.inputRef.nativeElement.ariaControls = this.autoSuggestId;
@@ -277,7 +275,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     if (!this.isDirty) {
       this.isDirty = true;
     }
-    if (this.autosuggestOptions.length) {
+    if (this.suggestions && this.suggestions.length) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();
     }
@@ -337,7 +335,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.handleEnterKey();
         break;
       case "Escape":
-        if (this.autosuggestOptions.length) {
+        if (this.suggestions && this.suggestions.length) {
           event.preventDefault();
           this.handleDefaultClearAction();
           this.handleOnClose();
@@ -379,10 +377,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   getAsyncSuggestions() {
     this.loading.next(true);
     this.fetchingError.next(false);
-    this.autosuggestOptions(this.value).subscribe(
-      (autocompleteOptionsList) => {
+    this.suggestions(this.value).subscribe(
+      (suggestionsOptionsList) => {
         console.log(this.options);
-        this.options = autocompleteOptionsList;
+        this.options = suggestionsOptionsList;
         this.cdRef.markForCheck();
         this.loading.next(false);
       },

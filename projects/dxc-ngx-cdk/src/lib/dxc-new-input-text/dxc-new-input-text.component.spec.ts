@@ -53,7 +53,7 @@ describe("DxcNewTextInputComponent", () => {
         helperText="helper text"
         margin="small"
         clearable="true"
-        [autocompleteOptions]="[
+        [suggestions]="[
           'Albania',
           'Andorra',
           'Belgium'
@@ -80,7 +80,7 @@ describe("DxcNewTextInputComponent", () => {
         value="Belgium"
         margin="small"
         clearable="true"
-        [autocompleteOptions]="[
+        [suggestions]="[
           'Albania',
           'Andorra',
           'Belgium'

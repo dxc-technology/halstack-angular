@@ -21,7 +21,7 @@
         (onChange)="changeValue($event)"
         clearable="true"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
         pattern="[a-zA-Z]+"
         (onError)="showError($event)"
         [error]="errorMessage"
@@ -52,7 +52,7 @@
         (onChange)="changeValue($event)"
         clearable="true"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
         (onError)="showError($event)"
         [error]="errorMessage"
         [length]="lengthLimit"
@@ -80,7 +80,7 @@
         helperText="helper text"
         clearable="true"
         margin="xsmall"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
         (onActionClick)="click()"
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
@@ -111,7 +111,7 @@
         helperText="helper text"
         margin="xsmall"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
@@ -143,7 +143,7 @@
         margin="xsmall"
         disabled="true"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
@@ -187,7 +187,7 @@
         (onChange)="changeValue($event)"
         clearable="true"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
       >
         <dxc-new-input-text-action>
           <svg
@@ -211,7 +211,7 @@
         helperText="helper text"
         margin="xsmall"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
@@ -241,7 +241,7 @@
         helperText="helper text"
         margin="xsmall"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
@@ -273,7 +273,7 @@
         margin="xsmall"
         disabled="true"
         (onActionClick)="click()"
-        [autocompleteOptions]="options"
+        [suggestions]="options"
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>

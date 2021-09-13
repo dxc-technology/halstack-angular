@@ -75,7 +75,7 @@
     [id]="autoSuggestId"
     role="listbox"
     class="options"
-    *ngIf="autosuggestOptions && autosuggestType"
+    *ngIf="suggestions && autosuggestType"
   >
     <li
       *ngFor="
@@ -83,7 +83,7 @@
         autosuggestType === 'async' &&
         !loading.getValue()
           ? options
-          : (autosuggestOptions | filterOptions: value);
+          : (suggestions | filterOptions: value);
         let i = index
       "
       role="option"

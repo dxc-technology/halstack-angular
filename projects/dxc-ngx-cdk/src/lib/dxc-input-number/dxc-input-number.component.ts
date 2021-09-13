@@ -69,7 +69,7 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   clearable = false;
 
   @Input()
-  errorMessage = "";
+  error = "";
 
   @Input()
   placeholder = "";

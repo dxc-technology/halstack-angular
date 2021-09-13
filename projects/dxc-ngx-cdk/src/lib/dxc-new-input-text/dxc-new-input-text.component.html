@@ -65,6 +65,40 @@
   >
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
+  <button
+    #stepButtonMinus
+    *ngIf="isInputNumber"
+    class="inputAction"
+    [disabled]="disabled"
+    aria-label="Step"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 13H5v-2h14v2z" />
+    </svg>
+  </button>
+  <button
+    #stepButtonPlus
+    *ngIf="isInputNumber"
+    class="inputAction"
+    [disabled]="disabled"
+    aria-label="Step"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+    </svg>
+  </button>
   <ng-content select="dxc-input-text-suffix"></ng-content>
   <ul
     #autoSuggestOptions
@@ -92,7 +126,9 @@
         selected: focusedOption === i,
         active: focusedOption === i && activedOption === i
       }"
-      [innerHtml]="autosuggestType === 'async' ? item : item | boldOptions: value"
+      [innerHtml]="
+        autosuggestType === 'async' ? item : (item | boldOptions: value)
+      "
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
       (mouseenter)="handleOnHover(i)"

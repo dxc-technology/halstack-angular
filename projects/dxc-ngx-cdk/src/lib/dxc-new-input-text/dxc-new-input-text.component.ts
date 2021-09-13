@@ -111,6 +111,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild("inputRef", { static: true }) inputRef: ElementRef;
   @ViewChild("autoSuggestOptions", { static: false }) optionsRef: ElementRef;
+  @ViewChild("stepButtonMinus", { static: false }) stepButtonMinus: ElementRef;
+  @ViewChild("stepButtonPlus", { static: false }) stepButtonPlus: ElementRef;
 
   size: string;
 
@@ -135,6 +137,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   fetchingError = new BehaviorSubject<boolean>(false);
 
   autosuggestType: string;
+
+  isInputNumber: boolean = false;
 
   constructor(
     private cdRef: ChangeDetectorRef,

@@ -5,6 +5,7 @@
   (click)="onClickHandler($event)"
   [tabindex]="disabled ? -1 : tabIndexValue"
   [type]="type"
+  [attr.accesskey]="accessKey"
   attr.aria-label="{{ariaLabel || label}}"
   attr.aria-labelledby="{{ariaLabelledBy}}" 
   attr.aria-describedby="{{ariaDescribedBy}}"

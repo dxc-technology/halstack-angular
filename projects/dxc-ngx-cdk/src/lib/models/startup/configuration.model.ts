@@ -27,9 +27,9 @@ export enum RequiredFormat {
 }
 
 export enum ViewMode {
-    NONE = 0,
-    TAB = 1,
-    ACCORDIAN = 2
+  NONE = 0,
+  TAB = 1,
+  ACCORDIAN = 2
 }
 
 export interface IFormat {
@@ -160,10 +160,11 @@ export interface Button {
   disabled?: boolean;
   request?: IRequest;
   order: number;
+  accessKey?: string;
 }
 
 export interface IDropdownOption {
-  label?: string; value: any; fieldname?: any; iconSrc?: string 
+  label?: string; value: any; fieldname?: any; iconSrc?: string
 }
 
 export enum EFieldsType {
@@ -194,7 +195,7 @@ export interface ICodeLookupProperties extends IFieldsBaseProperties {
   allowServerFilter?: boolean,
   minimumColumns?: number,
   maximumColumns?: number
-  
+
 }
 
 export interface IOrghLookupProperties extends IFieldsBaseProperties {

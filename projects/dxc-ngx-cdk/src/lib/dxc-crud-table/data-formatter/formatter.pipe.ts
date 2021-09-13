@@ -16,6 +16,9 @@ export class FormatterPipe implements PipeTransform {
         case 'fixlength':
           returnValue = this.fixedLength(value, args.format);
           break;
+        case 'xsfilter':
+          returnValue = this.filterOnMobile(value, args.format)
+          break;
       }
     }
     return returnValue;
@@ -29,4 +32,21 @@ export class FormatterPipe implements PipeTransform {
     return value.substring(format.start, format.lenght);
   }
 
+  filterOnMobile = (value, format) => {
+    if (value && format && format.columns && format.filterValue) {
+      let returnValue = [];
+      for (var x = 0; x < value.length; x++) {
+        for (var y = 0; y < format.columns.length; y++) {
+          if (new RegExp(value[x][format.columns[y]], 'i').test(format.filterValue)) {
+            returnValue.push(value[x]);
+            break;
+          }
+        }
+      }
+      return returnValue;
+    }
+    else {
+      return value;
+    }
+  }
 }

@@ -62,7 +62,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   clearable = false;
 
   @Input()
-  error = "";
+  errorMessage = undefined;
 
   @Input()
   placeholder = "";
@@ -78,9 +78,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   autosuggestOptions: any;
-
-  @Input()
-  strict: boolean = true;
 
   autoSuggestId: string;
 
@@ -138,6 +135,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   fetchingError = new BehaviorSubject<boolean>(false);
 
   autosuggestType: string;
+
+  error: string = "";
 
   constructor(
     private cdRef: ChangeDetectorRef,
@@ -222,7 +221,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.strict && changes.value && this.isDirty && this.validateLength();
+    // let err = "";
+    // if(changes.value && this.isDirty) {
+    //   err = this.validateLength();
+    // }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -238,7 +240,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.onChange.emit(event);
     if (!this.controlled) {
       this.value = event;
-      if(this.autosuggestType === "async") {
+      if (this.autosuggestType === "async") {
         this.getAsyncSuggestions();
       }
     }
@@ -247,7 +249,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         if (this.inputRef.nativeElement.value !== this.value) {
           this.inputRef.nativeElement.value = this.value;
           this.cdRef.detectChanges();
-          if(this.autosuggestType === "async") {
+          if (this.autosuggestType === "async") {
             this.getAsyncSuggestions();
           }
         }
@@ -268,8 +270,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnBlur(event) {
-    this.onBlur.emit(event.target.value);
-    this.strict && this.validateOnBlur();
+    this.onBlur.emit({value: event.target.value, error: this.validateOnBlur()});
   }
 
   handleOnFocus() {
@@ -346,41 +347,33 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   validateLength() {
+    let err = "";
     if (this.length.min && this.value && this.value.length < +this.length.min) {
-      this.onError.emit(
-        `Please lengthen this text to ${this.length.min} characters or more`
-      );
+      err = `Please lengthen this text to ${this.length.min} characters or more`;
     } else if (
       this.length.max &&
       this.value &&
       this.value.length > +this.length.max
     ) {
-      this.onError.emit(
-        `Please shorthen this text to ${this.length.max} characters or less`
-      );
-    } else {
-      this.onError.emit("");
+      err = `Please shorthen this text to ${this.length.max} characters or less`;
     }
+    return err;
   }
 
   validateOnBlur() {
+    let err = "";
     if (this.length.min && this.value && this.value.length < +this.length.min) {
-      this.onError.emit(
-        `Please lengthen this text to ${this.length.min} characters or more`
-      );
+      err = `Please lengthen this text to ${this.length.min} characters or more`;
     } else if (
       this.length.max &&
       this.value &&
       this.value.length > +this.length.max
     ) {
-      this.onError.emit(
-        `Please shorthen this text to ${this.length.max} characters or less`
-      );
+      err = `Please shorthen this text to ${this.length.max} characters or less`;
     } else if (this.inputRef.nativeElement.validity.patternMismatch) {
-      this.onError.emit(`Please use a valid pattern`);
-    } else {
-      this.onError.emit("");
+      err = `Please use a valid pattern`;
     }
+    return err;
   }
 
   getAsyncSuggestions() {

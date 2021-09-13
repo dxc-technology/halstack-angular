@@ -6,8 +6,12 @@
   [margin]="margin"
   [clearable]="clearable"
   [value]="value"
-  [error]="error"
-  (onBlur) = "handleOnBlur($event)"
-  (onChange) = "handleOnChange($event)"
+  [errorMessage]="errorMessage"
+
+  [pattern]="pattern"
+  [length]="length"
+  (onBlur)="handleOnBlur($event)"
+  (onChange)="handleOnChange($event)"
+  (onError)="handleOnError($event)"
 >
 </dxc-new-input-text>

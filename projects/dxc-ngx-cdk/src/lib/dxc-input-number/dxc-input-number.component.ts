@@ -69,13 +69,22 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   clearable = false;
 
   @Input()
-  error = "";
+  errorMessage = "";
 
   @Input()
   placeholder = "";
 
   @Input()
   margin: Object | string;
+
+  @Input()
+  strict = true;
+
+  @Input()
+  pattern = "";
+
+  @Input()
+  length = { min: undefined, max: undefined };
 
   private controlled: boolean;
 
@@ -99,6 +108,9 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   @Output()
   onBlur = new EventEmitter<any>();
+
+  @Output()
+  onError = new EventEmitter<any>(true);
 
   @Output()
   onActionClick = new EventEmitter<any>();
@@ -154,14 +166,9 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     this.cdRef.detectChanges();
   }
 
-  // handleDefaultClearAction() {
-  //   this.onChange.emit("");
-  //   this.handleInternalValue({ value: "", nativeValue: this.value });
-  // }
-
-  // handleActionOnClick(event) {
-  //   this.onActionClick.emit(event.target.value);
-  // }
+  handleOnError(event) {
+    this.onError.emit(event);
+  }
 
   handleOnBlur(event) {
     this.onBlur.emit(event);
@@ -170,35 +177,8 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   handleOnKeyDown(event) {
     switch (
       event.key
-      // case "ArrowDown":
-      //   event.preventDefault();
-      //   this.service.onArrowDown();
-      //   this.handleOnFocus();
-      //   break;
-      // case "ArrowUp":
-      //   event.preventDefault();
-      //   this.service.onArrowUp();
-      //   this.handleOnFocus();
-      //   break;
-      // case "Enter":
-      //   this.handleEnterKey();
-      //   break;
-      // case "Escape":
-      //   event.preventDefault();
-      //   this.handleDefaultClearAction();
-      //   this.handleOnClose();
-      //   break;
+      
     ) {
-    }
-  }
-
-  private handleInternalValue({ value, nativeValue }) {
-    if (!this.controlled) {
-      this.value = value;
-      if (nativeValue) {
-        this.dxcInputRef["inputRef"].nativeElement.value = nativeValue;
-      }
-      this.cdRef.detectChanges();
     }
   }
 }

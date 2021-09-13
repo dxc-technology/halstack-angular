@@ -40,7 +40,7 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
   clearable = true;
 
   @Input()
-  error = "";
+  errorMessage = "";
   
   @Input()
   pattern = "";

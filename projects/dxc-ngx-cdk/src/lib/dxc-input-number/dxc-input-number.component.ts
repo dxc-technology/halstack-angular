@@ -241,6 +241,7 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else if (currentValue > this.maxValue) {
       this.value = this.maxValue;
     }
+    this.handleOnChange(this.value);
   }
 
   handleStepPlus(event) {
@@ -260,5 +261,6 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     ) {
       this.value = this.maxValue;
     }
+    this.handleOnChange(this.value);
   }
 }

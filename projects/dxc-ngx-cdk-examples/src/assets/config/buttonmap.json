@@ -1,0 +1,10 @@
+{
+  "save": "save",
+  "SAVE": "save",
+  "UNDO": "undo",
+  "undo": "undo",
+  "back": "keyboard_backspace",
+  "BACK": "keyboard_backspace",
+  "create": "add",
+  "CREATE": "add"
+}

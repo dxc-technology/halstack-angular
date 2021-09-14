@@ -33,6 +33,7 @@ import { ApplicationInfoComponent } from './pages/standard/application-info.comp
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
+import { CrudGridComponent } from './pages/crud-grid/crud-grid.component';
 
 export const Components = [
     {
@@ -74,6 +75,11 @@ export const Components = [
         name: 'Chip',
         route: 'chip',
         component:  ChipComponent
+    },
+    {
+        name: 'Crud Grid',
+        route: 'crudgrid',
+        component:  CrudGridComponent
     },
     {
         name: 'Date',

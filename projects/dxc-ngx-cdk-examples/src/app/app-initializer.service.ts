@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ConfigurationsetupService, RequiredFormat, LocalStorageService } from 'dxc-ngx-cdk';
+import { ConfigurationsetupService, RequiredFormat, LocalStorageService } from '@dxc-technology/halstack-angular';
 
 @Injectable({
   providedIn: 'root'

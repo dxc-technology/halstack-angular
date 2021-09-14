@@ -1,6 +1,6 @@
 <div class="w-100 clearfix">
-  <dxc-toolbar [toolBarList]="gridToolbar" class="d-inline-block w-100" searchAccessKey="s" (onClick)="crudToolbarClick($event)"
-    [allowSearch]='allowSearch' (searchClick)="gridSearch($event)">
+  <dxc-toolbar [toolBarList]="gridToolbar" class="d-inline-block w-100" searchAccessKey="s"
+    (onClick)="crudToolbarClick($event)" [allowSearch]='allowSearch' (searchClick)="gridSearch($event)">
   </dxc-toolbar>
   <span *ngIf="isMobile; then mobileView else desktopView">
   </span>
@@ -30,7 +30,8 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="pr-3">
           <div class="example-element-detail" *ngIf="element == expandedElement && editMode == 'inline' "
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-            <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll">
+            <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll edit-form" tabindex="0"
+              role="form" aria-lable="grid form">
               <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
                 (onClick)="formToolbarClick($event, element)" [allowSearch]='false'>
               </dxc-toolbar>
@@ -42,6 +43,8 @@
                   </dxc-crud-ediatble-fields>
                 </span>
               </div>
+              <span class="" tabindex="-1" (onblur)="returnFocusOut($event)"></span>
+              <span class="" tabindex="0" (focus)="endFocus($event)"></span>
             </form>
           </div>
         </td>
@@ -75,7 +78,7 @@
             <span class="position-absolute font-size-25 left-0" *ngIf="row.isSelected">done</span>
           </a>
         </mat-card-title>
-        <mat-card-content class="d-inline-block">
+        <mat-card-content class="d-inline-block p-0 m-0">
           <ng-container *ngFor="let column of columns; let i = index; let last = last; let first = first;">
             <div class="d-inline-block w-100 mb-1 xs-card-cell" *ngIf="isToShowRow(i, row)">
               <span class="w-50 float-left p-1">
@@ -91,18 +94,21 @@
           </ng-container>
           <div class="example-element-detail" *ngIf="row == expandedElement && editMode == 'inline' "
             [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
-            <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll">
+            <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll edit-form" tabindex="0"
+              role="form" aria-lable="grid form">
               <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
                 (onClick)="formToolbarClick($event, row)" [allowSearch]='false'>
               </dxc-toolbar>
-              <div *ngIf="editableFields.viewmode != viewMode" class="row col-md-12">
+              <div *ngIf="editableFields.viewmode != viewMode" class="row col-md-12 p-0 m-0">
                 <span *ngFor="let editField of editableFields"
-                  class="{{editField.visible == true ? 'col-md-'+(editField.columnSize || 3)+' col-xs-12' : 'd-none'}}">
+                  class="{{(editField.visible == true ? 'col-md-'+(editField.columnSize || 3)+' col-xs-12' : 'd-none') + ' p-0 m-0'}}">
                   <dxc-crud-ediatble-fields *ngIf="editField.visible == true" [formGroup]="claimsForm"
                     [field]="editField" [resource]="resource" [validation]="validations">
                   </dxc-crud-ediatble-fields>
                 </span>
               </div>
+              <span class="" tabindex="-1" (onblur)="returnFocusOut($event)"></span>
+              <span class="" tabindex="0" (focus)="endFocus($event)"></span>
             </form>
           </div>
         </mat-card-content>
@@ -125,7 +131,7 @@
   </a>
 </ng-template>
 
-<dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" *ngIf="isPopupOpen" isCloseVisible="true"
+<dxc-dialog #activationdialog ariaLabelledBy="crud-grid-popup-header" *ngIf="isPopupOpen" isCloseVisible="true"
   [closeButtonLabel]="globalResource?.closes" (onCloseClick)="onClosePopup()">
   <div>
     <div class="modal-header pb-2 pt-2">

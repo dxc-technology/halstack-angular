@@ -51,7 +51,7 @@
       </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.codeLookup">
-      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="field.required"
+      <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="field.required" ariaLabelledBy="cl_{{field.name}}" 
         [removeiconarialabel]="resource[field.label]" [label]="resource[field.label]"
         [gridmode]="GridModeValues.MODAl" [disabled]="field.disabled" [lookuptype]="field.lookupType"
         [sourcerequest]="field.codeRequest" [resourcerequest]="resourceRequest"
@@ -64,7 +64,7 @@
     <div *ngSwitchCase="fieldsType.supplementalGrid">
       <dxc-code-lookup [mode]="lookupMode.GRID" [ariaRequired]="field.required"
         [removeiconarialabel]="resource[field.label]" [label]="resource[field.label]"
-        [gridmode]="GridModeValues.MODAl" [lookuptype]="field.lookupType"
+        [gridmode]="GridModeValues.MODAl" [lookuptype]="field.lookupType" ariaLabelledBy="cl_{{field.name}}" 
         [allowServerFilter]="field.allowServerFilter" [sourcerequest]="field.codeRequest"
         [resourcerequest]="resourceRequest" [gridstaterequest]="field.supplementalgridstateRequest"
         formControlName="{{field.name}}"></dxc-code-lookup>
@@ -75,7 +75,7 @@
     <div *ngSwitchCase="fieldsType.orghLookup">
       <dxc-orghlookup [ariaRequired]="field.required" [removeiconarialabel]="resource[field.label]"
         [label]="resource[field.label]" [lookuptype]="field.lookupType" [disabled]="field.disabled"
-        [resourcerequest]="orghresourceRequest" [topnode]="topNode" [level]="field.level"
+        [resourcerequest]="orghresourceRequest" [topnode]="topNode" [level]="field.level" ariaLabelledBy="cl_{{field.name}}" 
         [treerequest]="treeSourceRequest" [gridStateRequest]="orghgridStateRequest"
         formControlName="{{field.name}}">
       </dxc-orghlookup>
@@ -85,7 +85,7 @@
     </div>
     <div *ngSwitchCase="fieldsType.crudLookup">
       <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="field.required"
-        [removeiconarialabel]="resource[field.label]" [addrequired]="field.addrequired"
+        [removeiconarialabel]="resource[field.label]" ariaLabelledBy="cl_{{field.name}}" 
         [autosearchrequired]="field.autosearchrequired" [minimumColumns]="field.minimumColumns"
         [maximumColumns]="field.maximumColumns" [label]="resource[field.label]"
         [gridmode]="GridModeValues.MODAl" [lookuptype]="lookupType.MULTI" formControlName="{{field.name}}">
@@ -95,7 +95,7 @@
       </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.userLookup">
-      <dxc-user-lookup [label]="resource[field.label]" [ariaRequired]="field.required"
+      <dxc-user-lookup [label]="resource[field.label]" [ariaRequired]="field.required" ariaLabelledBy="cl_{{field.name}}" 
         [userlookupoptions]="field.userLookupOptions" id="ctrl_{{field.name}}" [mode]="lookupMode.GRID"
         [removeiconarialabel]="resource[field.label]" [gridmode]="GridModeValues.MODAl"
         [lookuptype]="lookupType.SINGLE" [usergridrequest]="userGridRequest"
@@ -108,7 +108,7 @@
     </div>
     <div *ngSwitchCase="fieldsType.textArea">
       <dxc-textarea id="{{field.id}}" formControlName="{{field.name}}" [ariaRequired]="field.required"
-        [attr.aria-disabled]="field.disabled" maxLength={{field.maxLength}}
+        [attr.aria-disabled]="field.disabled" maxLength={{field.maxLength}} ariaLabelledBy="cl_{{field.name}}" 
         autosizeMaxRows="{{field.autosizeMaxRows}}" textareaAutosize="{{field.textareaAutosize}}"
         autosizeMinRows="{{field.autosizeMinRows}}" size="{{field.size ? field.size : 'fillParent'}}">
       </dxc-textarea>
@@ -118,7 +118,7 @@
     </div>
     <div *ngSwitchCase="fieldsType.textEditor">
       <dxc-text-editor id="ctrl_{{field.name}}" [disabled]="field.disabled" ariaLabelledBy="cl_{{field.name}}" 
-      formControlName="{{field.name}}" >
+      formControlName="{{field.name}}" [inlineToolbar]="field.inlineToolbar" [minHeight]="field.minHeight" [maxHeight]="field.maxHeight">
       </dxc-text-editor>
       <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"
         [errormessages]="resource" [gridGlobalRequiredValidation]="validation">

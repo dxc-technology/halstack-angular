@@ -16,6 +16,9 @@ export class DxcTextEditorComponent implements OnInit, ControlValueAccessor {
   @Input() id = '';
   @Input() result = '';
   @Input() disabled = false;
+  @Input() inlineToolbar: boolean = false;
+  @Input() minHeight: string = '265';
+  @Input() maxHeight: string = '265';
   @Output() resultChange = new EventEmitter<string>();
   @Output() onChange = new EventEmitter<string>();
   @Input('ariaLabel') ariaLabel: string = null;
@@ -24,10 +27,12 @@ export class DxcTextEditorComponent implements OnInit, ControlValueAccessor {
   
   froalaOptions = {
     charCounterCount: true,
+    toolbarInline: this.inlineToolbar,
     autofocus: true,
     tabSpaces: false,
     attribution: false,
-    height: '265',
+    heightMin: this.minHeight,
+    heightMax: this.maxHeight,
     key: 'mPD4tE1C1E1G2I2B1sGXd1WWTDSGXYOUKh1KINLb1OG1g1H-8D1B3D3C1E6D1G2B4D4A3==',
     htmlAllowedTags: ['font', 'a', 'abbr', "address",
       "area", "article", "aside", "audio", "b", "base",
@@ -53,6 +58,9 @@ export class DxcTextEditorComponent implements OnInit, ControlValueAccessor {
   public onChangeRegister = (val) => { };
 
   ngOnInit() {
+    this.froalaOptions.heightMin = this.minHeight;
+    this.froalaOptions.heightMax = this.maxHeight;
+    this.froalaOptions.toolbarInline = this.inlineToolbar;
   }
 
   onChanges = (value) => {
@@ -72,6 +80,7 @@ export class DxcTextEditorComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
+  
   setDisabledState(boolv: boolean): void {
     this.disabled = boolv;
   }

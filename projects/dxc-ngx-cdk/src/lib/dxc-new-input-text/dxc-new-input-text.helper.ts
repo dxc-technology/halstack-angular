@@ -20,13 +20,13 @@ export class DxcNewInputTextHelper {
         border-right: 1px solid var(--input-disabledPrefixColor);
         color: var(--input-disabledPrefixColor);
       }
-      dxc-input-text-suffix{
+      dxc-input-text-suffix {
         border-left: 1px solid var(--input-disabledSuffixColor);
         color: var(--input-disabledSuffixColor);
       }
       .inputLabel,
       .inputOptionalLabel {
-        color: var(--input-disabledLabelColor);
+        color: var(--input-disabledLabelFontColor);
       }
       .helperText {
         color: var(--input-disabledHelperTextFontColor);
@@ -49,7 +49,7 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer,
       .inputContainer:hover {
-        border: 1px solid var(--input-disabledOutlineColor);
+        border: 1px solid var(--input-disabledBorderColor);
         box-shadow: none;
         cursor: not-allowed;
         background-color: var(--input-disabledContainerFillColor);
@@ -63,13 +63,13 @@ export class DxcNewInputTextHelper {
         border-right: 1px solid var(--input-disabledPrefixColorOnDark);
         color: var(--input-disabledPrefixColorOnDark);
       }
-      dxc-input-text-suffix{
+      dxc-input-text-suffix {
         border-left: 1px solid var(--input-disabledSuffixColorOnDark);
         color: var(--input-disabledSuffixColorOnDark);
       }
       .inputLabel,
       .inputOptionalLabel {
-        color: var(--input-disabledLabelColorOnDark);
+        color: var(--input-disabledLabelFontColorOnDark);
       }
       .helperText {
         color: var(--input-disabledHelperTextFontColorOnDark);
@@ -92,7 +92,7 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer,
       .inputContainer:hover {
-        border: 1px solid var(--input-disabledOutlineColorOnDark);
+        border: 1px solid var(--input-disabledBorderColorOnDark);
         box-shadow: none;
         cursor: not-allowed;
         background-color: var(--input-disabledContainerFillColorOnDark);
@@ -126,21 +126,21 @@ export class DxcNewInputTextHelper {
       }
 
       dxc-input-text-suffix{
-        border-left: 1px solid var(--input-suffixLabelColor);
+        border-left: 1px solid var(--input-suffixColor);
         margin-right: calc(1rem * 0.5);
         margin-left: calc(1rem * 0.25);
         padding: 0 0 0 calc(1rem * 0.5);
-        color: var(--input-suffixLabelColor);
+        color: var(--input-suffixColor);
         font-size: var(--input-suffixFontSize);
         font-style: var(--input-suffixFontStyle);
         font-weight: var(--input-suffixFontWeight);
       }
 
       dxc-input-text-prefix{
-        border-right: 1px solid var(--input-prefixLabelColor);
+        border-right: 1px solid var(--input-prefixColor);
         margin-left: calc(1rem * 0.25);
         padding: 0 calc(1rem * 0.5) 0 0;
-        color: var(--input-prefixLabelColor);
+        color: var(--input-prefixColor);
         font-size: var(--input-prefixFontSize);
         font-style: var(--input-prefixFontStyle);
         font-weight: var(--input-prefixFontWeight);
@@ -186,23 +186,27 @@ export class DxcNewInputTextHelper {
         height: 38px;
         border: ${
           inputs.error
-            ? `1px solid var(--input-errorOutlineColor)`
-            : "1px solid var(--input-enabledOutlineColor)"
+            ? `1px solid var(--input-errorBorderColor)`
+            : "1px solid var(--input-enabledBorderColor)"
         };
         ${
           inputs.error
-            ? `box-shadow: inset 0 0 0 1px var(--input-errorOutlineColor);`
+            ? `box-shadow: inset 0 0 0 1px var(--input-errorBorderColor);`
             : ""
         };
         border-radius: 4px;
         padding: 0 calc(1rem * 0.5);
         &:hover {
-          border-color: var(--input-hoverOutlineColor);
-          box-shadow: none;
+          ${
+            inputs.error
+              ? `border-color: var(--input-hoverErrorBorderColor);
+                 box-shadow: inset 0 0 0 1px var(--input-hoverErrorBorderColor);`
+              : `border-color: var(--input-hoverBorderColor);`
+          };
         }
         &:focus-within {
-          border: 1px solid var(--input-focusOutlineColor);
-          box-shadow: inset 0 0 0 1px var(--input-focusOutlineColor);
+          border: 1px solid var(--input-focusBorderColor);
+          box-shadow: inset 0 0 0 1px var(--input-focusBorderColor);
         }
       }
 
@@ -245,15 +249,11 @@ export class DxcNewInputTextHelper {
         }
         &:focus {
           color: var(--input-focusActionIconColor);
-          background-color: var(--input-focusActionBackgroundColor);
-          border: 1px solid var(--input-focusActionBackgroundColor);
-          box-shadow: inset 0 0 0 1px var(--input-focusActionBackgroundColor);
+          border: 2px solid var(--input-focusActionBorderColor);
           outline: none;
         }
         &:focus-visible {
-          background-color: var(--input-focusActionBackgroundColor);
-          border: 1px solid var(--input-focusActionBackgroundColor);
-          box-shadow: inset 0 0 0 1px var(--input-focusActionBackgroundColor);
+          border: 2px solid var(--input-focusActionBorderColor);
           outline: none;
         }
         &:active {
@@ -261,6 +261,7 @@ export class DxcNewInputTextHelper {
           box-shadow: inset 0 0 0 1px var(--input-activeActionBackgroundColor);
           outline: none;
           background-color: var(--input-activeActionBackgroundColor);
+          color: var(--input-activeActionIconColor);
         }
         svg {
           line-height: 18px;
@@ -334,14 +335,11 @@ export class DxcNewInputTextHelper {
           b{
             font-weight: var(--input-listOptionTypedFontWeight);
           }
-        }
-
-        &.sytemMessage{
-          li{
-            color: var(--input-sytemMessageFontColor);
-            font-family: var(--input-sytemMessageFontFamily);
-            font-size: var(--input-sytemMessageFontSize);
-            font-weight: var(--input-sytemMessageFontWeight);
+          &.systemMessage{
+            color: var(--input-systemMessageFontColor);
+            font-family: var(--input-systemMessageFontFamily);
+            font-size: var(--input-systemMessageFontSize);
+            font-weight: var(--input-systemMessageFontWeight);
           }
         }
 
@@ -394,12 +392,12 @@ export class DxcNewInputTextHelper {
   getDarkStyle(inputs) {
     return css`
       dxc-input-text-prefix {
-        border-right: 1px solid var(--input-prefixLabelColorOnDark);
-        color: var(--input-prefixLabelColorOnDark);
+        border-right: 1px solid var(--input-prefixColorOnDark);
+        color: var(--input-prefixColorOnDark);
       }
-      dxc-input-text-suffix{
-        border-left: 1px solid var(--input-suffixLabelColorOnDark);
-        color: var(--input-suffixLabelColorOnDark);
+      dxc-input-text-suffix {
+        border-left: 1px solid var(--input-suffixColorOnDark);
+        color: var(--input-suffixColorOnDark);
       }
       .inputLabel,
       .inputOptionalLabel {
@@ -417,17 +415,20 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer {
         border: ${inputs.error
-          ? `1px solid var(--input-errorOutlineColorOnDark)`
-          : "1px solid var(--input-enabledOutlineColorOnDark)"};
+          ? `1px solid var(--input-errorBorderColorOnDark)`
+          : "1px solid var(--input-enabledBorderColorOnDark)"};
         ${inputs.error
-          ? `box-shadow: inset 0 0 0 1px var(--input-errorOutlineColorOnDark);`
+          ? `box-shadow: inset 0 0 0 1px var(--input-errorBorderColorOnDark);`
           : ""};
         &:hover {
-          border-color: var(--input-hoverOutlineColorOnDark);
+          ${inputs.error
+            ? `border-color: var(--input-hoverErrorBorderColorOnDark);
+                   box-shadow: inset 0 0 0 1px var(--input-hoverErrorBorderColorOnDark);`
+            : `border-color: var(--input-hoverBorderColorOnDark);`};
         }
         &:focus-within {
-          border: 1px solid var(--input-focusOutlineColorOnDark);
-          box-shadow: inset 0 0 0 1px var(--input-focusOutlineColorOnDark);
+          border: 1px solid var(--input-focusBorderColorOnDark);
+          box-shadow: inset 0 0 0 1px var(--input-focusBorderColorOnDark);
         }
       }
       .inputAction {
@@ -439,24 +440,19 @@ export class DxcNewInputTextHelper {
           background-color: var(--input-hoverActionBackgroundColorOnDark);
         }
         &:focus {
-          background-color: var(--input-focusActionBackgroundColorOnDark);
           color: var(--input-focusActionIconColorOnDark);
-          border: 1px solid var(--input-focusActionBackgroundColorOnDark);
-          box-shadow: inset 0 0 0 1px
-            var(--input-focusActionBackgroundColorOnDark);
+          border: 2px solid var(--input-focusActionBorderColorOnDark);
         }
         &:focus-visible {
-          background-color: var(--input-focusActionBackgroundColorOnDark);
           color: var(--input-focusActionIconColorOnDark);
-          border: 1px solid var(--input-focusActionBackgroundColorOnDark);
-          box-shadow: inset 0 0 0 1px
-            var(--input-focusActionBackgroundColorOnDark);
+          border: 2px solid var(--input-focusActionBorderColorOnDark);
         }
         &:active {
           border: 1px solid var(--input-activeActionBackgroundColorOnDark);
           box-shadow: inset 0 0 0 1px
             var(--input-activeActionBackgroundColorOnDark);
           background-color: var(--input-activeActionBackgroundColorOnDark);
+          color: var(--input-activeActionIconColorOnDark);
         }
       }
       .inputErrorIcon {

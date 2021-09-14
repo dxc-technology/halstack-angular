@@ -3,7 +3,7 @@ import { ConfigurationsetupService } from './../services/startup/configurationse
 import { FormGroup, FormControl, FormBuilder, Validators, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MessageService } from './../services/toaster/message.service';
 import { IRequest, EFieldsType, ViewMode, IDropdownProperties, ITextEditorproperties, EAction, ICheckboxProperties, IFormUpdateEventFormat, IOrghLookupProperties, ICodeLookupProperties } from './../models/startup/configuration.model';
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef, AfterViewInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef, AfterViewInit, OnDestroy, OnChanges, SimpleChanges, HostListener } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -105,6 +105,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   noRecord: string = 'No record';
   filterValue: string = '';
   referenceRow: any = null;
+  enableAccessKey: boolean;
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
     private confirmationDialogService: DxcConfirmationDialogService,
@@ -124,8 +125,12 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       });
   }
 
+  gridFocus($event) {
+    this.enableAccessKey = $event;
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.gridToolbar && changes.gridToolbar.currentValue.filter(buttons => { return (buttons.rel == this.deleteRel || buttons.rel == this.editRel) }).count() > 0 && this.rowSelection == 'none') {
+    if (changes.gridToolbar && changes.gridToolbar.currentValue && changes.gridToolbar.currentValue.filter(buttons => { return (buttons.rel == this.deleteRel || buttons.rel == this.editRel) }).count() > 0 && this.rowSelection == 'none') {
       this.rowSelection = 'single';
     }
   }
@@ -142,6 +147,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.setTableHeight();
+
   }
 
   writeValue(val: any): void {

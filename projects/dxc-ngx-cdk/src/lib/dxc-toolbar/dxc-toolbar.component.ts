@@ -12,6 +12,7 @@ import { Button } from './../models/startup/configuration.model';
 export class DxcToolbarComponent implements OnInit {
   @Input() toolBarList: List<Button>;
   @Input() allowSearch = true;
+  @Input() allowAccessKey = false;
   @Input() toolTipPos: string = 'below';
   @Input() searchAccessKey: string = '';
   @Output() onClick: EventEmitter<Button>;

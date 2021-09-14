@@ -1,5 +1,5 @@
-<div class="w-100 clearfix">
-  <dxc-toolbar [toolBarList]="gridToolbar" class="d-inline-block w-100" searchAccessKey="s"
+<div class="w-100 clearfix" tabindex="0" attr.aria-label="{{globalResource.gridContent}}" (focusin)="gridFocus(true)" (focusout)="gridFocus(false)">
+  <dxc-toolbar [toolBarList]="gridToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100" searchAccessKey="f"
     (onClick)="crudToolbarClick($event)" [allowSearch]='allowSearch' (searchClick)="gridSearch($event)">
   </dxc-toolbar>
   <span *ngIf="isMobile; then mobileView else desktopView">
@@ -31,8 +31,8 @@
           <div class="example-element-detail" *ngIf="element == expandedElement && editMode == 'inline' "
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll edit-form" tabindex="0"
-              role="form" aria-lable="grid form">
-              <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
+              role="form" attr.aria-label="{{globalResource.gridRowForm}}">
+              <dxc-toolbar [toolBarList]="editFormToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100"
                 (onClick)="formToolbarClick($event, element)" [allowSearch]='false'>
               </dxc-toolbar>
               <div *ngIf="editableFields.viewmode != viewMode" class="row col-md-12">
@@ -96,7 +96,7 @@
             [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
             <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll edit-form" tabindex="0"
               role="form" aria-lable="grid form">
-              <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
+              <dxc-toolbar [toolBarList]="editFormToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100"
                 (onClick)="formToolbarClick($event, row)" [allowSearch]='false'>
               </dxc-toolbar>
               <div *ngIf="editableFields.viewmode != viewMode" class="row col-md-12 p-0 m-0">
@@ -142,7 +142,7 @@
   </div>
   <form [formGroup]="suppgridForm">
     <div class="modal-body supp-grid-scroll">
-      <dxc-toolbar [toolBarList]="editFormToolbar" class="d-inline-block w-100"
+      <dxc-toolbar [toolBarList]="editFormToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100"
         (onClick)="formToolbarClick($event, suppgridForm)" [allowSearch]='false'>
       </dxc-toolbar>
       <div class="">

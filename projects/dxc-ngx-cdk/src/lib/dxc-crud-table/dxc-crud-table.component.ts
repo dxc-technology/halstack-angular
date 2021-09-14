@@ -102,8 +102,9 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   editFormToolbar: List<any>;
   selectedRowCount: number = 0;
   isMobile: boolean = false;
-  noRecord:string = 'No record';
+  noRecord: string = 'No record';
   filterValue: string = '';
+  referenceRow: any = null;
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
     private confirmationDialogService: DxcConfirmationDialogService,
@@ -201,7 +202,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   rowChecked = ($event) => {
     if (this.expandedElement != null || this.isEditForm == true) {
-      this.messageService.Error(this.config.configservice.GlobalResource.rowSelectionError?.description);
+      this.messageService.Info(this.config.configservice.GlobalResource.rowSelectionError?.description);
       return;
     }
     $event.isSelected = !$event.isSelected;
@@ -216,7 +217,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   selectAllRow = () => {
     if (this.expandedElement != null || this.isEditForm == true) {
-      this.messageService.Error(this.config.configservice.GlobalResource.rowSelectionError?.description);
+      this.messageService.Info(this.config.configservice.GlobalResource.rowSelectionError?.description);
       return;
     }
     if (this.dataSource.data.filter(row => { return row['isSelected'] == true }).length < this.dataSource.data.length) {
@@ -262,21 +263,23 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       switch ($event.rel) {
         case this.addRel:
           this.addRow();
+          this.setFocus('.edit-form');
           break;
         case this.editRel:
           if (selectedRows.length <= 0) {
-            this.messageService.Error(this.config.configservice.GlobalResource.selectRowError?.description);
+            this.messageService.Info(this.config.configservice.GlobalResource.selectRowError?.description);
           }
           else if (selectedRows.length > 1) {
-            this.messageService.Error(this.config.configservice.GlobalResource.multiRowSelectError?.description);
+            this.messageService.Info(this.config.configservice.GlobalResource.multiRowSelectError?.description);
           }
           else {
             this.expandRow(1, selectedRows[0]);
+            this.setFocus('.edit-form');
           }
           break;
         case this.deleteRel:
           if (selectedRows.length <= 0) {
-            this.messageService.Error(this.config.configservice.GlobalResource.selectRowError?.description);
+            this.messageService.Info(this.config.configservice.GlobalResource.selectRowError?.description);
           }
           else {
             let deleteButton = this.gridToolbar.filter(buttons => { return buttons.rel == this.deleteRel });
@@ -349,7 +352,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
             this.messageService.Success(this.resource.deleteSuccess);
             this.formControlUpdater.emit({ action: EAction.DELETEANDSAVE, columns: this.editableFields, data: row });
           }
-          this.setFocus('CrudSearchInput');
         } else {
           this.messageService.Error(response);
         }
@@ -359,7 +361,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       this.setTableHeight();
       this.onChangeRegister(this.dataSource.data);
       this.formControlUpdater.emit({ action: EAction.DELETE, columns: this.editableFields, data: row });
-      this.setFocus('CrudSearchInput');
     }
   }
 
@@ -459,14 +460,17 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
               // After save Event Emitter
               this.formControlUpdater.emit({ action: EAction.ADD, columns: this.editableFields, data: this.expandedElement });
               this.isPopupOpen = false;
-              this.setFocus('CrudSearchInput');
-
+              this.expandedElement = null;
+              this.claimsForm = this.fb.group({});
+              this.isEditForm = false;
+              this.getData();
             } else {
               this.messageService.Error(response);
+              this.updateOldData();
             }
           },
           (err) => {
-            this.getData();
+            this.updateOldData();
           }
         );
       }
@@ -475,18 +479,15 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.dataSource.data = data;
         // After save Event Emitter
         this.formControlUpdater.emit({ action: EAction.ADD, columns: this.editableFields, data: this.expandedElement });
-        this.setFocus('CrudSearchInput');
+        this.expandedElement = null;
         // For save and continue future implementation
         //this.addRow();
       }
       // for Save
-      this.expandedElement = null;
-      this.claimsForm = this.fb.group({});
     } else {
       this.messageService.Error(objDataToEmit.error.msg);
       return false;
     }
-    this.isEditForm = false;
   }
 
   closeExpandRow = (row) => {
@@ -513,6 +514,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   expandRow = (index, row) => {
+    this.referenceRow = Object.assign({}, row);
     if (this.editMode == 'popup') {
       this.isPopupOpen = true;
     }
@@ -572,7 +574,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
     this.formControlUpdater.emit(objDataToEmit);
     this.suppgridForm = this.claimsForm;
-    this.setFocus();
   }
 
   bindOptions = () => {
@@ -664,70 +665,71 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     return true;
   }
 
-  setFocus = (id: string = "saveBtn") => {
+  setFocus = (selector: string) => {
     setTimeout(() => {
-      let element = this.elRef.nativeElement.querySelector('#' + id);
+      let element = this.elRef.nativeElement.querySelector(selector);
       if (element)
-        this.elRef.nativeElement.querySelector('#' + id).focus();
-    }, 0);
+        this.elRef.nativeElement.querySelector(selector).focus();
+    }, 500);
   }
 
   rowSaveFields(col: any) {
     if (col && col.name.toLowerCase() != this.uniqueIdentifier.toLowerCase()) {
       let row = this.claimsForm.getRawValue();
-      if (col.fieldType == EFieldsType.dropdown) {
-        let dropdownFieldProp = (col as IDropdownProperties);
-        let filteredRecord = (dropdownFieldProp.options as Array<{ label: '', value: '', iconSrc: '' }>).filter(option => { return option.value == row[dropdownFieldProp.name] });
-        this.expandedElement[col.name] = row[col.name];
-        this.expandedElement[dropdownFieldProp.viewValue] = filteredRecord.length > 0 ? filteredRecord[0].label : '';
-        let selectedValue = dropdownFieldProp.multiple && filteredRecord.length > 0 ? filteredRecord : row[dropdownFieldProp.valueProperty];
-        this.expandedElement[dropdownFieldProp.valueProperty] = selectedValue;
-      }
-      else if (col.fieldType == EFieldsType.codeLookup || col.fieldType == EFieldsType.supplementalGrid) {
-
-        if (row && Array.isArray(row[col.name])) {
-
+      switch (col.fieldType) {
+        case EFieldsType.dropdown:
+          let dropdownFieldProp = (col as IDropdownProperties);
+          let filteredRecord = (dropdownFieldProp.options as Array<{ label: '', value: '', iconSrc: '' }>).filter(option => { return option.value == row[dropdownFieldProp.name] });
+          if (col.multiple) {
+            filteredRecord = (dropdownFieldProp.options as Array<{ label: '', value: '', iconSrc: '' }>).filter(option => { return row[dropdownFieldProp.name].indexOf(option.value) > -1 })
+          }
           this.expandedElement[col.name] = row[col.name];
-          this.expandedElement[col.label] = row[col.name].map(function (a) { return a.shortCode + " " + a.desc }).join(',');
-          row[col.name].forEach(element => {
-
-            const filteredValue = row[col.name].filter((x) => (x.id === element.id));
-            if (!filteredValue || filteredValue.length === 0) {
-              this.expandedElement[col.valueProperty].push(element);
-
-            }
-          });
-        }
-        else {
+          this.expandedElement[dropdownFieldProp.viewValue] = filteredRecord.length > 0 ? filteredRecord[0].label : '';
+          let selectedValue = dropdownFieldProp.multiple && filteredRecord.length > 0 ? filteredRecord : row[dropdownFieldProp.valueProperty];
+          this.expandedElement[dropdownFieldProp.valueProperty] = selectedValue;
+          break;
+        case EFieldsType.codeLookup:
+        case EFieldsType.supplementalGrid:
+          if (row && Array.isArray(row[col.name])) {
+            this.expandedElement[col.name] = row[col.name];
+            this.expandedElement[col.label] = row[col.name].map(function (a) { return a.shortCode + " " + a.desc }).join(',');
+            row[col.name].forEach(element => {
+              const filteredValue = row[col.name].filter((x) => (x.id === element.id));
+              if (!filteredValue || filteredValue.length === 0) {
+                this.expandedElement[col.valueProperty].push(element);
+              }
+            });
+          }
+          else {
+            this.expandedElement[col.name] = row[col.name];
+            this.expandedElement[col.label] = row[col.name].shortCode + " " + row[col.name].desc;
+            this.expandedElement[col.valueProperty] = row[col.name].id;
+          }
+          break;
+        case EFieldsType.orghLookup:
           this.expandedElement[col.name] = row[col.name];
           this.expandedElement[col.label] = row[col.name].shortCode + " " + row[col.name].desc;
           this.expandedElement[col.valueProperty] = row[col.name].id;
-
-        }
-      }
-      else if (col.fieldType == EFieldsType.orghLookup) {
-        this.expandedElement[col.name] = row[col.name];
-        this.expandedElement[col.label] = row[col.name].shortCode + " " + row[col.name].desc;
-        this.expandedElement[col.valueProperty] = row[col.name].id;
-      }
-      else if (col.fieldType == EFieldsType.crudLookup) {
-        this.expandedElement[col.name] = row[col.name];
-        this.expandedElement[col.label] = row[col.name].name;
-      }
-      else if (col.fieldType == EFieldsType.userLookup) {
-        this.expandedElement[col.name] = row[col.name];
-        this.expandedElement[col.label] = row[col.name].name;
-        this.expandedElement[col.valueProperty] = row[col.name].id;
-      }
-      else if (col.fieldType == EFieldsType.dxcDate) {
-        this.expandedElement[col.name] = row[col.name]; //// this.dateHelper.convertDateToControlFormat(row[col.name], (col as IDateProperties).format);
-      }
-      else if (col.fieldType == EFieldsType.textEditor) {
-        this.expandedElement[col.name] = row[col.name];
-        this.expandedElement[col.planeText] = this.textEditorService.getPlaneText(row[col.name]);
-      }
-      else {
-        this.expandedElement[col.name] = row[col.name];
+          break;
+        case EFieldsType.crudLookup:
+          this.expandedElement[col.name] = row[col.name];
+          this.expandedElement[col.label] = row[col.name].name;
+          break;
+        case EFieldsType.userLookup:
+          this.expandedElement[col.name] = row[col.name];
+          this.expandedElement[col.label] = row[col.name].name;
+          this.expandedElement[col.valueProperty] = row[col.name].id;
+          break;
+        case EFieldsType.dxcDate:
+          this.expandedElement[col.name] = row[col.name];
+          break;
+        case EFieldsType.textEditor:
+          this.expandedElement[col.name] = row[col.name];
+          this.expandedElement[col.planeText] = this.textEditorService.getPlaneText(row[col.name]);
+          break;
+        default:
+          this.expandedElement[col.name] = row[col.name];
+          break;
       }
     }
   }
@@ -855,8 +857,16 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
   }
 
-  trackTable = (index: number, item: any) =>{
+  trackTable = (index: number, item: any) => {
     return item;
+  }
+
+  endFocus($event: any) {
+    this.setFocus('.edit-form');
+  }
+
+  returnFocusOut($event: any) {
+    $event.nativeElement.tabindex = "-1";
   }
 
   private removeRowFromDataSource = (row) => {
@@ -864,6 +874,16 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.dataSource.data.splice(index, 1);
     const data = this.dataSource.data;
     this.dataSource.data = [...data];
+  }
+
+  private updateOldData() {
+    if (this.selectedRowIndex > -1) {
+      this.expandedElement = Object.assign({}, this.referenceRow);
+      let dataDef = [...this.dataSource.data];
+      dataDef[this.selectedRowIndex] = this.expandedElement;
+      this.dataSource.data[this.selectedRowIndex] = this.expandedElement;
+      this.dataSource.data = [...dataDef];
+    }
   }
 
   private addRow = () => {
@@ -929,7 +949,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.formControlUpdater.emit(dataToEmit);
 
     this.suppgridForm = this.claimsForm;
-    this.setFocus();
   }
 
   private getSelectedRow() {

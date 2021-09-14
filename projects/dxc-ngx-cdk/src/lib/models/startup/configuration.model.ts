@@ -217,6 +217,9 @@ export interface ITextEditorproperties extends IFieldsBaseProperties {
   result?: string,
   planeText?: string,
   columnSize: number,
+  inlineToolbar: boolean,
+  minHeight?: string,
+  maxHeight?: string,
 }
 
 export interface INumberProperties extends IFieldsBaseProperties {

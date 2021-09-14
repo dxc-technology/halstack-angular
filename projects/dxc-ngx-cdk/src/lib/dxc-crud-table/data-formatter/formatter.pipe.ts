@@ -37,7 +37,7 @@ export class FormatterPipe implements PipeTransform {
       let returnValue = [];
       for (var x = 0; x < value.length; x++) {
         for (var y = 0; y < format.columns.length; y++) {
-          if (new RegExp(value[x][format.columns[y]], 'i').test(format.filterValue)) {
+          if (new RegExp(format.filterValue, 'i').test(value[x][format.columns[y]])) {
             returnValue.push(value[x]);
             break;
           }

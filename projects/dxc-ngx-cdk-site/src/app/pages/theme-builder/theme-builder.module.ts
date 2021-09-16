@@ -40,7 +40,8 @@ import {
   BackgroundProviderModule,
   DxcNewInputTextModule,
   DxcNewInputPasswordModule,
-  DxcInputNumberModule
+  DxcInputNumberModule,
+  DxcNewDateModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -73,8 +74,7 @@ import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/tog
 import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
-
-
+import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +110,7 @@ import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/
     UploadPreviewComponent,
     TablePreviewComponent,
     NewInputTextPreviewComponent,
+    NewDatePreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -127,6 +128,7 @@ import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/
     DxcCheckboxModule,
     DxcChipModule,
     DxcDateModule,
+    DxcNewDateModule,
     DxcDialogModule,
     DxcDropdownModule,
     DxcFooterModule,

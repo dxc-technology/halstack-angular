@@ -47,9 +47,6 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   @Input()
   margin: Object | string;
-
-  @Input()
-  strict: boolean = true;
   
   @Input()
   length = { min: undefined, max: undefined };
@@ -61,8 +58,7 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
     value: undefined,
     name: "",
     label: "",
-    margin: "",
-    strict: true
+    margin: ""
   });
 
   @Output()
@@ -118,9 +114,9 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   handleOnBlur(event) {
     this.onBlur.emit(event);
-    this.handleInternalValue({value: event, nativeValue: null });
+    this.handleInternalValue({value: event.value, nativeValue: null });
     if (!this.controlled) {
-      this.value = event;
+      this.value = event.value;
       this.cdRef.detectChanges();
     }
   }

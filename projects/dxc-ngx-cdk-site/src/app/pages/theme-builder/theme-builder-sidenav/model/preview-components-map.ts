@@ -29,6 +29,7 @@ import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview
 import { UploadPreviewComponent } from '../../previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
+import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -44,6 +45,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'checkbox', component: CheckboxPreviewComponent},
   {name: 'chip', component: ChipPreviewComponent},
   {name: 'date', component: DatePreviewComponent},
+  {name: 'newDate', component: NewDatePreviewComponent},
   {name: 'dialog', component: DialogPreviewComponent},
   {name: 'dropdown', component: DropdownPreviewComponent},
   {name: 'footer', component: FooterPreviewComponent},

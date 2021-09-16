@@ -66,6 +66,42 @@
   >
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
+  <button
+    #stepButtonMinus
+    *ngIf="isInputNumber"
+    class="inputAction"
+    [disabled]="disabled"
+    aria-label="Step"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      fill="currentColor"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 13H5v-2h14v2z" />
+    </svg>
+  </button>
+  <button
+    #stepButtonPlus
+    *ngIf="isInputNumber"
+    class="inputAction"
+    [disabled]="disabled"
+    aria-label="Step"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      fill="currentColor"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+    </svg>
+  </button>
   <ng-content select="dxc-input-text-suffix"></ng-content>
   <ul
     #autoSuggestOptions
@@ -107,9 +143,9 @@
         filteredOptions.length === 0 &&
         !loading.getValue()
       "
-      class="sytemMessage"
+      class="systemMessage"
     >
-      No results found.
+      No results found
     </li>
     <li *ngIf="fetchingError.getValue() && !loading.getValue()">
       <svg

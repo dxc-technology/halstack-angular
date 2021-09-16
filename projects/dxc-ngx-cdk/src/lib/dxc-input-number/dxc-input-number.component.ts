@@ -1,4 +1,7 @@
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import {
   Component,
   EventEmitter,
@@ -15,11 +18,12 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { OnDestroy } from "@angular/core";
 import { DxcNewInputTextComponent } from "../dxc-new-input-text/dxc-new-input-text.component";
+import { DxcNewInputNumberHelper } from "./dxc-input-number.helper";
 
 @Component({
   selector: "dxc-input-number",
   templateUrl: "./dxc-input-number.component.html",
-  providers: [CssUtils],
+  providers: [DxcNewInputNumberHelper, CssUtils],
 })
 export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;
@@ -36,8 +40,6 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   helperText: string;
 
-  hasAction = () => this.onActionClick.observers.length;
-
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -48,13 +50,31 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   private _disabled = false;
 
   @Input()
-  minValue = "";
+  get minValue(): number {
+    return this._minValue;
+  }
+  set minValue(value: number) {
+    this._minValue = coerceNumberProperty(value);
+  }
+  private _minValue = null;
 
   @Input()
-  maxValue = "";
+  get maxValue(): number {
+    return this._maxValue;
+  }
+  set maxValue(value: number) {
+    this._maxValue = coerceNumberProperty(value);
+  }
+  private _maxValue = null;
 
   @Input()
-  step = "1";
+  get step(): number {
+    return this._step;
+  }
+  set step(value: number) {
+    this._step = coerceNumberProperty(value);
+  }
+  private _step = 1;
 
   @Input()
   prefix = "";
@@ -101,6 +121,9 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     name: "",
     label: "",
     margin: "",
+    step: 1,
+    minValue: null,
+    maxValue: null
   });
 
   @Output()
@@ -112,9 +135,6 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   @Output()
   onError = new EventEmitter<any>(true);
 
-  @Output()
-  onActionClick = new EventEmitter<any>();
-
   @ViewChild("dxcInputRef", { static: false })
   dxcInputRef: DxcNewInputTextComponent;
 
@@ -124,7 +144,10 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   tabIndex: number;
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private helper: DxcNewInputNumberHelper
+  ) {}
 
   ngOnDestroy(): void {}
 
@@ -137,6 +160,10 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.controlled = true;
     }
+
+    this.className = `${this.helper.getDynamicStyle(
+      this.defaultInputs.getValue()
+    )}`;
   }
 
   ngAfterViewInit(): void {
@@ -145,8 +172,23 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
       this.dxcInputRef.inputRef.nativeElement.min = this.minValue;
       this.dxcInputRef.inputRef.nativeElement.max = this.maxValue;
       this.dxcInputRef.inputRef.nativeElement.step = this.step;
+      this.dxcInputRef.isInputNumber = true;
     }
-
+    this.cdRef.detectChanges();
+    if (
+      this.dxcInputRef &&
+      this.dxcInputRef.stepButtonMinus &&
+      this.dxcInputRef.stepButtonPlus
+    ) {
+      this.dxcInputRef.stepButtonMinus.nativeElement.addEventListener(
+        "click",
+        this.handleStepMinus.bind(this)
+      );
+      this.dxcInputRef.stepButtonPlus.nativeElement.addEventListener(
+        "click",
+        this.handleStepPlus.bind(this)
+      );
+    }
     this.cdRef.detectChanges();
   }
 
@@ -156,6 +198,9 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
         ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
         : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
     }
+    this.className = `${this.helper.getDynamicStyle(
+      this.defaultInputs.getValue()
+    )}`;
   }
 
   handleOnChange(event) {
@@ -175,10 +220,47 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnKeyDown(event) {
-    switch (
-      event.key
-      
-    ) {
+    switch (event.key) {
     }
+  }
+
+  handleStepMinus(event) {
+    const currentValue = coerceNumberProperty(this.value);
+    if (
+      currentValue > this.minValue &&
+      currentValue - this.step <= this.minValue &&
+      currentValue < this.maxValue
+    ) {
+      this.value = this.minValue;
+    } else if (
+      currentValue > this.minValue &&
+      currentValue - this.step > this.minValue &&
+      currentValue <= this.maxValue
+    ) {
+      this.value = currentValue - this.step;
+    } else if (currentValue > this.maxValue) {
+      this.value = this.maxValue;
+    }
+    this.handleOnChange(this.value);
+  }
+
+  handleStepPlus(event) {
+    const currentValue = coerceNumberProperty(this.value);
+    if (currentValue < this.minValue) {
+      this.value = this.minValue;
+    } else if (
+      currentValue >= this.minValue &&
+      currentValue <= this.maxValue &&
+      currentValue + this.step <= this.maxValue
+    ) {
+      this.value = currentValue + this.step;
+    } else if (
+      currentValue > this.minValue &&
+      currentValue <= this.maxValue &&
+      currentValue + this.step > this.maxValue
+    ) {
+      this.value = this.maxValue;
+    }
+    this.handleOnChange(this.value);
   }
 }

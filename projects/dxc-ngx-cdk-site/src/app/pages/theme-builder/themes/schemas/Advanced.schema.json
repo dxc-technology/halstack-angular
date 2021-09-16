@@ -272,6 +272,24 @@
     "pickerHeight":"length",
     "pickerWidth":"length"
   },
+  "newDate": {
+    "pickerSelectedDateBackgroundColor": "color",
+    "pickerSelectedDateColor": "color",
+    "pickerBackgroundColor": "color",
+    "pickerFontColor": "color",
+    "pickerActualDate": "color",
+    "pickerHoverDateBackgroundColor": "color",
+    "pickerHoverDateFontColor": "color",
+    "pickerHoverHeaderColor": "color",
+    "pickerYearColor": "color",
+    "pickerLabelColor":"color",
+    "pickerWeekLabelColor": "color",
+    "pickerBackgroundColorMonthArrows": "color",
+    "focusColor": "color",
+    "fontFamily": "fFamily",
+    "pickerHeight":"length",
+    "pickerWidth":"length"
+  },
   "dialog": {
     "overlayColor": "color",
     "overlayOpacity": "alphaValue",

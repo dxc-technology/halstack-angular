@@ -272,6 +272,24 @@
     "pickerHeight":"300px",
     "pickerWidth":"290px"
   },
+  "newDate": {
+    "pickerSelectedDateBackgroundColor": "#6f2c91",
+    "pickerSelectedDateColor": "#ffffff",
+    "pickerBackgroundColor": "#ffffff",
+    "pickerFontColor": "#000000",
+    "pickerActualDate": "#D9D9D9",
+    "pickerHoverDateBackgroundColor": "#d0bddb",
+    "pickerHoverDateFontColor": "#000000",
+    "pickerHoverHeaderColor": "#0000001F",
+    "pickerYearColor": "#000000",
+    "pickerLabelColor": "#b1b1b1",
+    "pickerWeekLabelColor": "#b1b1b1",
+    "pickerBackgroundColorMonthArrows":"transparent",
+    "focusColor": "#005FCC",
+    "fontFamily": "Open Sans, sans-serif",
+    "pickerHeight":"300px",
+    "pickerWidth":"290px"
+  },
   "dialog": {
     "overlayColor": "#000000",
     "overlayOpacity": "0.8",

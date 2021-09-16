@@ -26,6 +26,10 @@
     "baseColor": "#6f2c91",
     "accentColor": "#ffffff"
   },
+  "newDate": {
+    "baseColor": "#6f2c91",
+    "accentColor": "#ffffff"
+  },
   "dropdown": {
     "baseColor": "#ffffff",
     "fontColor": "#000000"

@@ -34,6 +34,7 @@ import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previe
 import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previews/new-input-text-preview/new-input-text-preview.component';
+import { NewDatePreviewComponent } from "src/app/pages/theme-builder/previews/new-date-preview/new-date-preview.component";
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -70,7 +71,8 @@ import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previ
     TextareaPreviewComponent,
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
-    TablePreviewComponent
+    TablePreviewComponent,
+    NewDatePreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

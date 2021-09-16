@@ -447,6 +447,24 @@ export const componentTokens = {
   "--date-pickerHeight": "300px",
   "--date-pickerWidth": "290px",
 
+  //NEW DATE
+  "--newDate-pickerSelectedDateBackgroundColor": globalTokens.purple,
+  "--newDate-pickerSelectedDateColor": globalTokens.hal_white,
+  "--newDate-pickerBackgroundColor": globalTokens.hal_white,
+  "--newDate-pickerActualDate": globalTokens.lightGrey,
+  "--newDate-pickerFontColor": globalTokens.hal_black,
+  "--newDate-pickerHoverDateFontColor": globalTokens.hal_black,
+  "--newDate-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
+  "--newDate-focusColor": globalTokens.blue,
+  "--newDate-pickerHoverHeaderColor": "#0000001F",
+  "--newDate-pickerYearColor": globalTokens.hal_black,
+  "--newDate-pickerLabelColor": globalTokens.lighterBlack,
+  "--newDate-pickerWeekLabelColor": globalTokens.lighterBlack,
+  "--newDate-pickerBackgroundColorMonthArrows": globalTokens.transparent,
+  "--newDate-fontFamily": globalTokens.type_sans,
+  "--newDate-pickerHeight": "300px",
+  "--newDate-pickerWidth": "290px",
+
   //DIALOG
   "--dialog-overlayColor": globalTokens.hal_black,
   "--dialog-overlayOpacity": "0.8",

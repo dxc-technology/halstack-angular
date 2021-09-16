@@ -62,7 +62,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   clearable = false;
 
   @Input()
-  error= undefined;
+  error = undefined;
 
   @Input()
   placeholder = "";
@@ -136,6 +136,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   autosuggestType: string;
 
+  validationError: string = undefined;
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private service: DxcNewInputTextService,
@@ -192,16 +194,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.service.filteredOptions.subscribe((filteredArray) => {
       this.filteredOptions = filteredArray;
     });
-    if (
-      this.suggestions &&
-      typeof this.suggestions === "function"
-    ) {
+    if (this.suggestions && typeof this.suggestions === "function") {
       this.getAsyncSuggestions();
       this.autosuggestType = "async";
-    } else if (
-      this.suggestions &&
-      Array.isArray(this.suggestions)
-    ) {
+    } else if (this.suggestions && Array.isArray(this.suggestions)) {
       this.options = this.suggestions;
       this.autosuggestType = "array";
     }
@@ -219,10 +215,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // let err = "";
-    // if(changes.value && this.isDirty) {
-    //   err = this.validateLength();
-    // }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -235,7 +227,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnChange(event) {
-    this.onChange.emit(event);
+    if (this.value !== event && this.isDirty) {
+      this.validationError = this.validateLength(event);
+      this.onChange.emit({ value: event, error: this.validationError });
+    }
     if (!this.controlled) {
       this.value = event;
       if (this.autosuggestType === "async") {
@@ -247,9 +242,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         if (this.inputRef.nativeElement.value !== this.value) {
           this.inputRef.nativeElement.value = this.value;
           this.cdRef.detectChanges();
-          if (this.autosuggestType === "async") {
-            this.getAsyncSuggestions();
-          }
+        }
+        if (this.autosuggestType === "async") {
+          this.getAsyncSuggestions();
         }
       }, 0);
     }
@@ -258,9 +253,13 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleDefaultClearAction() {
-    this.onChange.emit("");
+    this.onChange.emit({ value: "" });
     this.handleOnChange("");
     this.inputRef.nativeElement.focus();
+    if (this.suggestions) {
+      this.autosuggestVisible = false;
+      this.cdRef.detectChanges();
+    }
   }
 
   handleActionOnClick(event) {
@@ -268,13 +267,25 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnBlur(event) {
-    this.onBlur.emit({value: event.target.value, error: this.validateOnBlur()});
+    const validationError = this.validateOnBlur();
+    if (validationError) {
+      this.validationError = validationError;
+      this.onBlur.emit({ value: event.target.value, error: validationError });
+    }
   }
 
   handleOnFocus() {
     if (!this.isDirty) {
       this.isDirty = true;
     }
+    this.inputRef.nativeElement.focus();
+    if (this.suggestions && this.suggestions.length) {
+      this.autosuggestVisible = true;
+      this.cdRef.detectChanges();
+    }
+  }
+
+  handleOnClick() {
     if (this.suggestions && this.suggestions.length) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();
@@ -291,7 +302,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnClickOption(event) {
     if (this.activedOption === this.focusedOption) {
-      this.onChange.emit(event);
+      this.onChange.emit({ value: event });
       this.value = event;
       this.handleOnClose();
     }
@@ -300,7 +311,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleEnterKey() {
     if (this.focusedOption >= 0) {
-      this.onChange.emit(this.filteredOptions[this.focusedOption]);
       this.handleOnChange(this.filteredOptions[this.focusedOption]);
     }
     this.handleOnClose();
@@ -344,34 +354,24 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  validateLength() {
-    let err = "";
-    if (this.length.min && this.value && this.value.length < +this.length.min) {
-      err = `Please lengthen this text to ${this.length.min} characters or more`;
-    } else if (
-      this.length.max &&
-      this.value &&
-      this.value.length > +this.length.max
-    ) {
-      err = `Please shorthen this text to ${this.length.max} characters or less`;
+  validateLength(value) {
+    return (this.length.min && value && value.length < +this.length.min) ||
+      (this.length.max && value && value.length > +this.length.max)
+      ? `Min length ${this.length.min}, Max length ${this.length.max}`
+      : null;
+  }
+
+  validateOnBlur() {
+    let err = this.validateLength(this.value);
+    if (!err && this.value && !this.patternMatch(this.pattern, this.value)) {
+      err = `Please use a valid pattern`;
     }
     return err;
   }
 
-  validateOnBlur() {
-    let err = "";
-    if (this.length.min && this.value && this.value.length < +this.length.min) {
-      err = `Please lengthen this text to ${this.length.min} characters or more`;
-    } else if (
-      this.length.max &&
-      this.value &&
-      this.value.length > +this.length.max
-    ) {
-      err = `Please shorthen this text to ${this.length.max} characters or less`;
-    } else if (this.inputRef.nativeElement.validity.patternMismatch) {
-      err = `Please use a valid pattern`;
-    }
-    return err;
+  patternMatch(pattern, value) {
+    const patternToMatch = new RegExp(pattern);
+    return patternToMatch.test(value);
   }
 
   getAsyncSuggestions() {

@@ -3,7 +3,7 @@
   <span *ngIf="optional" class="inputOptionalLabel">(Optional)</span>
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
-<div class="inputContainer">
+<div class="inputContainer" (click)="handleOnFocus()">
   <ng-content select="dxc-input-text-prefix"></ng-content>
   <input
     #inputRef
@@ -12,6 +12,7 @@
     (keydown)="handleOnKeyDown($event)"
     (blur)="handleOnBlur($event)"
     (ngModelChange)="handleOnChange($event)"
+    (click)="handleOnClick()"
     type="text"
     class="inputText"
     autocomplete="off"
@@ -23,6 +24,19 @@
     [disabled]="disabled"
     [pattern]="pattern"
   />
+  <span *ngIf="error && !disabled" class="inputErrorIcon" aria-label="Error">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="currentColor"
+    >
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+      />
+    </svg>
+  </span>
   <button
     *ngIf="clearable && !disabled && value"
     class="inputAction"
@@ -43,19 +57,6 @@
       />
     </svg>
   </button>
-  <span *ngIf="error && !disabled" class="inputErrorIcon" aria-label="Error">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="currentColor"
-    >
-      <path
-        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-      />
-    </svg>
-  </span>
   <button
     *ngIf="hasAction()"
     class="inputAction"
@@ -79,10 +80,10 @@
   >
     <li
       *ngFor="
-        let item of autosuggestType &&
-        autosuggestType === 'async' &&
-        !loading.getValue()
-          ? options
+        let item of autosuggestType && autosuggestType === 'async'
+          ? !loading.getValue()
+            ? options
+            : []
           : (suggestions | filterOptions: value);
         let i = index
       "
@@ -92,7 +93,9 @@
         selected: focusedOption === i,
         active: focusedOption === i && activedOption === i
       }"
-      [innerHtml]="autosuggestType === 'async' ? item : item | boldOptions: value"
+      [innerHtml]="
+        autosuggestType === 'async' ? item : (item | boldOptions: value)
+      "
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
       (mouseenter)="handleOnHover(i)"
@@ -128,3 +131,8 @@
 </div>
 
 <span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>
+<span
+  *ngIf="validationError && !disabled && !error"
+  class="inputErrorMessage"
+  >{{ validationError }}</span
+>

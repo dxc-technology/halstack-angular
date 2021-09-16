@@ -106,25 +106,21 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
   }
 
   handleOnChange(event) {
-    this.value = event;
-    this.onChange.emit(event);
-    this.controlled ? event = this.value : this.value = event;
+    this.value = event.value;
+    this.onChange.emit({ value: event.value});
+    this.controlled ? event.value = this.value : this.value = event.value;
     this.cdRef.detectChanges();
   }
 
   handleOnBlur(event) {
-    this.onBlur.emit(event);
+    this.onBlur.emit({ value: event.value});
     this.handleInternalValue({value: event.value, nativeValue: null });
     if (!this.controlled) {
       this.value = event.value;
       this.cdRef.detectChanges();
     }
   }
-
-  handleOnError(event) {
-    this.onError.emit(event);
-  }
-
+  
   handleMaskPassword(){
     this.hidden ? this.type = "text" : this.type = "password";
     this.hidden = !this.hidden;

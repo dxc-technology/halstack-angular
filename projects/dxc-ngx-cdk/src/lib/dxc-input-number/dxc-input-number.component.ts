@@ -123,7 +123,7 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     margin: "",
     step: 1,
     minValue: null,
-    maxValue: null
+    maxValue: null,
   });
 
   @Output()
@@ -204,19 +204,15 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnChange(event) {
-    this.onChange.emit(event);
+    this.onChange.emit({ value: event.value });
     this.controlled
       ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
       : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
     this.cdRef.detectChanges();
   }
 
-  handleOnError(event) {
-    this.onError.emit(event);
-  }
-
   handleOnBlur(event) {
-    this.onBlur.emit(event);
+    this.onBlur.emit({ value: event.value });
   }
 
   handleOnKeyDown(event) {
@@ -241,7 +237,7 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else if (currentValue > this.maxValue) {
       this.value = this.maxValue;
     }
-    this.handleOnChange(this.value);
+    this.handleOnChange({ value: this.value });
   }
 
   handleStepPlus(event) {
@@ -261,6 +257,6 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     ) {
       this.value = this.maxValue;
     }
-    this.handleOnChange(this.value);
+    this.handleOnChange({ value: this.value });
   }
 }

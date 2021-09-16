@@ -101,9 +101,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   onChange = new EventEmitter<any>();
 
   @Output()
-  onError = new EventEmitter<any>(true);
-
-  @Output()
   onBlur = new EventEmitter<any>();
 
   @Output()

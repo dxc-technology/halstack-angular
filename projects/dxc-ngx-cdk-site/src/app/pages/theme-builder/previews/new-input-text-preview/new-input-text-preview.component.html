@@ -13,7 +13,6 @@
         (onActionClick)="click()"
         [suggestions]="options"
         pattern="[a-zA-Z]+"
-        (onError)="showError($event)"
         [error]="errorMessage"
         [length]="lengthLimit"
       >
@@ -43,7 +42,6 @@
         clearable="true"
         (onActionClick)="click()"
         [suggestions]="options"
-        (onError)="showError($event)"
         [error]="errorMessage"
         [length]="lengthLimit"
         pattern="[a-zA-Z]+"

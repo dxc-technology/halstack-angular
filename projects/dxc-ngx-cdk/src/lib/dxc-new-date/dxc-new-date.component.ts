@@ -219,10 +219,6 @@ export class DxcNewDateComponent implements OnInit {
     this.onBlur.emit(value);
   }
 
-  handleOnError(value: string) {
-    this.onError.emit(value);
-  }
-
   onSelectedChangeHandler(value: Moment) {
     let _stringValue = this.getDateStringValue(value, this.format);
     let _dateReturn = {

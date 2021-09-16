@@ -14,7 +14,7 @@ export class NewInputTextPreviewComponent implements OnInit {
   errorMessage = "";
 
   numberOnChange(event) {
-    this.numberValue = event;
+    this.numberValue = event.value;
   }
 
   lengthLimit={min: 2, max: 5}
@@ -31,18 +31,13 @@ export class NewInputTextPreviewComponent implements OnInit {
   ];
 
   changeValue(event) {
-    if (!event.includes("x")) {
-      this.controlledValue = event;
+    if (!event.value.includes("x")) {
+      this.controlledValue = event.value;
     }
   }
 
   click() {
     console.log("click");
-  }
-
-  showError(event) {
-    this.errorMessage = event;
-    console.log(event);
   }
 
   ngOnInit(): void {}

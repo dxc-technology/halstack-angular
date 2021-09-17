@@ -54,12 +54,13 @@ import { AccordionGroupModule } from './pages/accordion-group/accordion-group.mo
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
 import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
+import { PasswordModule } from './pages/password/password.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DesignGuidelinesPageComponent
+    DesignGuidelinesPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,7 +119,8 @@ import { NewInputTextModule } from './pages/new-input-text/new-input-text.module
     ScullyLibModule,
     AccordionGroupModule,
     ThemeBuilderSidenavModule,
-    NewInputTextModule
+    NewInputTextModule,
+    PasswordModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

@@ -151,6 +151,10 @@ import { InputTextPropertiesComponent } from "../examples/input-text/input-text-
 import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
 import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
 import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
+import { PasswordPropertiesComponent } from "../examples/password/password-properties/password-properties.component";
+import { PasswordImportComponent } from "../examples/password/password-import/password-import.component";
+import { PasswordExampleComponent } from "../examples/password/password-example/password-example.component";
+import { PasswordApiComponent } from "../examples/password/password-api/password-api.component";
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -305,7 +309,11 @@ import { InputTextImportComponent } from "../examples/input-text/input-text-impo
     InputTextPropertiesComponent,
     InputTextApiComponent,
     InputTextExampleComponent,
-    InputTextImportComponent
+    InputTextImportComponent,
+    PasswordApiComponent,
+    PasswordExampleComponent,
+    PasswordImportComponent,
+    PasswordPropertiesComponent,
   ]
 })
 export class DynamicModule { }

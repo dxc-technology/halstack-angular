@@ -40,6 +40,7 @@ import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component'
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
 import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
+import { PasswordComponent } from "./pages/password/password.component";
 
 let routes: Routes = [];
 
@@ -193,6 +194,10 @@ let routes: Routes = [];
   {
     path: 'components/newInputText',
     component: NewInputTextComponent
+  },
+  {
+    path: 'components/password',
+    component: PasswordComponent
   },
   {
     path: 'components/resultsettable',

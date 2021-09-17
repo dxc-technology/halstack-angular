@@ -47,6 +47,11 @@
             (click)="navigateTo('components/radio')">Radio Button</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/password' ? 
+            router.isActive(router.createUrlTree(['components/password']).toString(), true) : false}"
+            (click)="navigateTo('components/password')">Password</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/select' ? 
             router.isActive(router.createUrlTree(['components/select']).toString(), true) : false}"
             (click)="navigateTo('components/select')">Select</a>

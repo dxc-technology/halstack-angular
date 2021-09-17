@@ -101,8 +101,8 @@ export * from './lib/dxc-new-input-text/dxc-new-input-text-action/dxc-new-input-
 export * from './lib/dxc-new-input-text/dxc-input-text-prefix/dxc-input-text-prefix.component';
 export * from './lib/dxc-new-input-text/dxc-input-text-suffix/dxc-input-text-suffix.component';
 
-export * from './lib/dxc-new-input-password/dxc-new-input-password.component';
-export * from './lib/dxc-new-input-password/dxc-new-input-password.module';
+export * from './lib/dxc-password/dxc-password.component';
+export * from './lib/dxc-password/dxc-password.module';
 
 export * from './lib/dxc-input-number/dxc-input-number.component';
 export * from './lib/dxc-input-number/dxc-input-number.module';

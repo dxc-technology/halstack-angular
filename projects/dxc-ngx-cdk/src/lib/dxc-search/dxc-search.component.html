@@ -1,7 +1,8 @@
 <mat-form-field class="example-chip-list" #field (blur)="onBlur1($event)">
+  <mat-label>{{resultDisplay.length > 0 ? 'Add more filter': 'Filter by column name....'}}</mat-label>
   <mat-chip-list class="chip-list" #chipList aria-label="Filter selection">
-    <mat-chip *ngFor="let selectedFilter of resultDisplay" class="chipfilter" [matTooltip]="selectedFilter?.chipText" [selectable]="selectable"
-      [removable]="removable" (removed)="remove(selectedFilter)">
+    <mat-chip *ngFor="let selectedFilter of resultDisplay" class="chipfilter" [matTooltip]="selectedFilter?.chipText"
+      [selectable]="selectable" [removable]="removable" (removed)="remove(selectedFilter)">
       {{selectedFilter.chipText}}
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
@@ -18,8 +19,7 @@
         style="padding-left: 5px;" />
 
     </div> -->
-    <input class="searchcontainer" (focus)="onFocus($event)" (blur)="onBlur($event)"
-      placeholder="{{resultDisplay.length > 0 ? 'Add more filter': 'Filter by column name....'}}" #filterInput
+    <input class="searchcontainer" (focus)="onFocus($event)" (blur)="onBlur($event)" matInput #filterInput
       [formControl]="searchCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
   </mat-chip-list>

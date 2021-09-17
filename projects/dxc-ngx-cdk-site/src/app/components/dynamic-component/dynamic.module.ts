@@ -147,6 +147,10 @@ import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ButtonExampleComponent } from '../examples/button/button-example/button-example.component';
+import { InputTextPropertiesComponent } from "../examples/input-text/input-text-properties/input-text-properties.component";
+import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
+import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
+import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -298,6 +302,10 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupApiComponent,
+    InputTextPropertiesComponent,
+    InputTextApiComponent,
+    InputTextExampleComponent,
+    InputTextImportComponent
   ]
 })
 export class DynamicModule { }

@@ -39,6 +39,7 @@ import { TextAreaComponent } from './pages/text-area/text-area.component';
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
+import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
 
 let routes: Routes = [];
 
@@ -188,6 +189,10 @@ let routes: Routes = [];
   {
     path: 'components/heading',
     component: HeadingComponent
+  },
+  {
+    path: 'components/newInputText',
+    component: NewInputTextComponent
   },
   {
     path: 'components/resultsettable',

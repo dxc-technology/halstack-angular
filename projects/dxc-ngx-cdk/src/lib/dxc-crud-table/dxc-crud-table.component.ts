@@ -485,6 +485,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.dataSource.data = data;
         // After save Event Emitter
         this.formControlUpdater.emit({ action: EAction.ADD, columns: this.editableFields, data: this.expandedElement });
+        this.claimsForm = this.fb.group({});
         this.expandedElement = null;
         // For save and continue future implementation
         //this.addRow();

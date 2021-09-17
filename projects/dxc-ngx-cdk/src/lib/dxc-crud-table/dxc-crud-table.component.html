@@ -7,7 +7,7 @@
 </div>
 <ng-template #desktopView>
   <div class="crud-scroll clearfix" [style.max-height]="tableHeight">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [trackBy]="trackTable" multiTemplateDataRows
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows
       #table>
       <ng-container *ngFor="let column of columns; let i = index; let last = last; let first = first;"
         matColumnDef="{{column}}">

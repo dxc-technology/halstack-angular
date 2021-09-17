@@ -305,8 +305,8 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
         break;
       }
     }
-
-
+    this.orghLevelSearch = this.level != undefined ? getNodeLevelName(this.orghLevel, this.level, 'code').value : this.orghLevelSearch;
+    this.defaultOrghLevel = this.level != undefined ? getNodeLevelName(this.orghLevel, this.level, 'code').value : this.defaultOrghLevel;
     const allowedlevelCode = this.treeRequest.params.get('allowedlevel') !== null ?
       this.treeRequest.params.get('allowedlevel') : 'DT';
     // tslint:disable-next-line: prefer-for-of
@@ -346,6 +346,7 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
         lstParams = this.lisRequest.params;
         if (lstParams.has('defaultlevel'))
           lstParams = lstParams.delete('defaultlevel');
+          this.allowedlevel = this.level != undefined ? getNodeLevelName(this.orghLevel, this.level, 'code').value : this.allowedlevel;
         //this.lisRequest.params = lstParams.append('defaultlevel', 'DT');
         for (let i = 0; i < this.orghLevel.length; i++) {
           if (this.allowedlevel == this.orghLevel[i].value) {
@@ -353,7 +354,8 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
           }
         }
         break;
-      case EAction.PANELOPEN:
+      case EAction.PANELOPEN:        
+        this.orghLevelSearch = this.level != undefined ? getNodeLevelName(this.orghLevel, this.level, 'code').value : this.orghLevelSearch;
         if (this.allowTreeView) {
           this.treeView();
         } else {
@@ -367,6 +369,12 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
             levelParams = levelParams.delete('allowedlevel');
           }
           this.treeRequest.params = levelParams.append('allowedlevel', this.level);
+          let defaultlevelParams = new HttpParams();
+          defaultlevelParams = this.treeRequest.params;
+          if (defaultlevelParams.has('defaultlevel')) {
+            defaultlevelParams = defaultlevelParams.delete('defaultlevel');
+          }
+          this.treeRequest.params = defaultlevelParams.append('defaultlevel', this.level);
         }
         let keys = this.treeRequest.params.keys();
         let parmasConfig = new HttpParams();

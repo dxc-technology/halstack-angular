@@ -75,15 +75,18 @@ import {
   DxcChipModule,
   DxcCommonModule,
   DxcLocalStorageModule,
-  DxcModalFormModule
-} from 'dxc-ngx-cdk';
-//} from "@dxc-technology/halstack-angular";
+  DxcModalFormModule,
+  DxcCrudTableModule,
+  DxcResizeService,
+  DxcSizeDetectorModule
+} from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
 import { AppInitializer } from './app-initializer.service';
+import { CrudGridComponent } from './pages/crud-grid/crud-grid.component';
 
 export function startupServiceFactory(startupService: AppInitializer) {
   return (): Promise<any> => {
@@ -128,7 +131,8 @@ export function startupServiceFactory(startupService: AppInitializer) {
     UploadComponent,
     ApplicationInfoComponent,
     ChipComponent,
-    AccordionGroupComponent
+    AccordionGroupComponent,
+    CrudGridComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -169,17 +173,19 @@ export function startupServiceFactory(startupService: AppInitializer) {
     ThemeModule,
     DxcApplicationLayoutModule,
     DxcChipModule,
+    DxcCrudTableModule,
     DxcAccordionGroupModule,
     DxcCommonModule,
     ReactiveFormsModule,
     FormsModule,
+    DxcSizeDetectorModule,
     DxcLocalStorageModule.forRoot({
       prefix: '',
       delimiter: ''
     }),
     DxcModalFormModule
   ],
-  
+
   providers: [AppInitializer,
     {
       provide: APP_INITIALIZER,
@@ -191,7 +197,7 @@ export function startupServiceFactory(startupService: AppInitializer) {
     {
       provide: 'ThemeService', useClass:
         ThemeService
-    }
+    }, DxcResizeService
   ],
   bootstrap: [AppComponent],
 })

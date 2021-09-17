@@ -28,6 +28,8 @@ header  {
         }
         .sidenav-links {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
             .nav-item {
                 margin-bottom: 5px;
                 padding-left: 0px;

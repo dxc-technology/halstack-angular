@@ -1,0 +1,10 @@
+<h3>Text Editor Control</h3>
+<dxc-modal-form [formName]="testForm" novalidate>
+  <div class="form-group" [formGroup]="testForm">
+    <dxc-crud-table #crudgridcomponent formControlName="crudDataList" [columns]="columns"
+      [editableColumns]="upsertFields"  [gridToolbar]="gridToolbarList"
+      [parentForm]="testForm" uniqueIdentifier="id" [resource]="message"
+      (formControlUpdater)="formControlUpdater($event)">
+    </dxc-crud-table>
+  </div>
+</dxc-modal-form>

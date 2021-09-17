@@ -1,0 +1,38 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+.mat-form-field {
+    box-shadow: none !important;
+}
+.mat-form-field {
+    line-height: 1.125 !important;
+    width: 100% !important;
+}
+.mat-form-field-wrapper {
+    box-shadow: none !important;
+}
+
+.mat-form-field-wrapper {
+    box-shadow: none !important;
+}
+.mat-form-field-wrapper {
+    padding-bottom: 1.34375em !important;
+}
+.mat-form-field-infix {
+    padding-top: 0px !important;
+    height: 32px !important;
+    padding-bottom: 1px !important;
+    border-top: unset;
+}
+.mat-input-element {
+    height: 33px !important;
+    margin: 0rem 0rem 0.8rem 0rem !important;
+}

@@ -1,0 +1,10 @@
+{
+  "debugging": false,
+
+  "API_ENDPOINTS": {
+    "CLAIMSERVER": "https://localhost:44328",
+    "CODESERVER": "https://localhost:44328",
+    "RESOURCESERVER": "https://localhost:44337",
+    "UTITILTYSERVER": "https://localhost:44337"
+  }
+}

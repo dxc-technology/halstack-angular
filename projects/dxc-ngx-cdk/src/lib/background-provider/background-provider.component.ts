@@ -32,7 +32,6 @@ export class BackgroundProvider implements OnInit {
 
   private setType() {
     const colorType = this.checkColorType(this.color) ;
-    debugger;
     this.bgProviderService.changeBackgroundColor(colorType);
   }
 

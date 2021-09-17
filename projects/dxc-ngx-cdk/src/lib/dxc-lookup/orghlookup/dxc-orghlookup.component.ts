@@ -122,15 +122,11 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
         if (this.treeResultValue == undefined) {
           this.treeResultValue = [];
         }
-
-
-
       }
       else {
         this.treeResultValue = val;
       }
       if (val !== undefined) {
-
         if (val.name !== 'Organization Hierarchy') {
           this.currentLevel = getNodeLevelName(this.orghLevel, val.code, 'code') ?
             getNodeLevelName(this.orghLevel, val.code, 'code').label : '';
@@ -138,7 +134,6 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
         else {
           this.currentLevel = this.resource.nonodeselect.description;
         }
-
       }
       switch (this.lookupType) {
         case ELookupType.SINGLE:
@@ -152,13 +147,10 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
           this.showSelected(targetValue, true);
           break;
         case ELookupType.MULTI:
-
           const filteredValue = this.treeResultValue.filter((x) => (x.id == val.id));
           if (!filteredValue && val.id > 0) {
             this.treeResultValue.push(val);
           }
-
-
           const targetValues: Code = { shortCode: '', desc: '', id: -1, table: '' };
           if (val !== undefined && val.id >= 0) {
             targetValues.id = val.id;
@@ -171,9 +163,6 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
               this.showSelected(targetValues, true);
             }
           }
-
-
-
           break;
         default:
           break;
@@ -181,7 +170,6 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
     } else {
       switch (this.lookupType) {
         case ELookupType.SINGLE:
-
           const targetValue: Code = { shortCode: '', desc: '', id: -1, table: '' };
           this.currentLevel = '';
           this.treeResultValue = targetValue;
@@ -416,6 +404,7 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
     } else {
       this.resultValue = this.lookupType == ELookupType.MULTI ? [] : {};
     }
+    this.selectednodes = this.resultValue;
   }
 
   registerOnChange(fn: any): void {
@@ -540,25 +529,20 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   actionChange = (event: EAction) => {
     switch (event) {
       case EAction.SELECT:
-
         if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value == this.allowedlevel) {
-
           if (this.allowMultipleSelection && this.result.length > 0) {
             let list: any = [];
             list = this.selectednodes;
             let selectedValue = list[list.length - 1];
             const filteredValue = this.result.filter((x) => (x.id == selectedValue.id));
             if (filteredValue.length == 0) {
-
               this.result.push(selectedValue);
             }
-
           }
           else {
             this.result = this.selectednodes;
           }
           if (this.isfromlookup) { this.isPanelOpen1 = false; }
-
           if (this.result && this.result.id > 0) {
             this.registerOnChangeFn(this.result);
           }

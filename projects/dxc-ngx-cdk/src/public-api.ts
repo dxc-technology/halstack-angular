@@ -230,6 +230,9 @@ export * from './lib/dxc-number/dxc-number.component';
 export * from './lib/dxc-time/dxc-time.module';
 export * from './lib/dxc-time/dxc-time.component';
 
+export * from './lib/dxc-chart/dxc-chart.module';
+export * from './lib/dxc-chart/dxc-chart.component';
+
 export * from './lib/dxc-list-search/dxc-list-search.module';
 export * from './lib/dxc-list-search/dxc-list-search.component';
 

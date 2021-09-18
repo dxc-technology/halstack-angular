@@ -91,5 +91,5 @@ mat-form-field::ng-deep .mat-form-field-infix {
 ::ng-deep .chip-list div  {
   max-height: 55px;
   height: 54px;
-  overflow-y: auto;
+  overflow-y: overlay;
 }

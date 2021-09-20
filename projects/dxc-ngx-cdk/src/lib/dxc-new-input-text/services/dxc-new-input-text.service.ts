@@ -22,12 +22,20 @@ export class DxcNewInputTextService {
   }
 
   public onArrowDown(): void {
-    if (this.visualFocused.value < this.filteredOptions.value.length - 1) {
+    if (
+      this.filteredOptions &&
+      this.filteredOptions.value &&
+      this.visualFocused.value < this.filteredOptions.value.length - 1
+    ) {
       this.visualFocused.next(this.visualFocused.value + 1);
-    } else if (this.visualFocused.value === this.filteredOptions.value.length - 1) {
+    } else if (
+      this.filteredOptions &&
+      this.filteredOptions.value &&
+      this.visualFocused.value === this.filteredOptions.value.length - 1
+    ) {
       this.visualFocused.next(0);
     }
-    if(this.activeOption.value > 0) {
+    if (this.activeOption.value > 0) {
       this.activeOption.next(-1);
     }
   }
@@ -35,12 +43,20 @@ export class DxcNewInputTextService {
   public onArrowUp(): void {
     if (this.visualFocused.value > 0) {
       this.visualFocused.next(this.visualFocused.value - 1);
-    } else if (this.visualFocused.value === 0) {
+    } else if (
+      this.filteredOptions &&
+      this.filteredOptions.value &&
+      this.visualFocused.value === 0
+    ) {
       this.visualFocused.next(this.filteredOptions.value.length - 1);
-    } else if (this.visualFocused.value < 0) {
+    } else if (
+      this.filteredOptions &&
+      this.filteredOptions.value &&
+      this.visualFocused.value < 0
+    ) {
       this.visualFocused.next(this.filteredOptions.value.length - 1);
     }
-    if(this.activeOption.value > 0) {
+    if (this.activeOption.value > 0) {
       this.activeOption.next(-1);
     }
   }

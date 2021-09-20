@@ -136,7 +136,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   autosuggestType: string;
 
   validationError: string = undefined;
-  
+
   isInputNumber: boolean = false;
 
   constructor(
@@ -280,14 +280,20 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       this.isDirty = true;
     }
     this.inputRef.nativeElement.focus();
-    if (this.suggestions && this.suggestions.length) {
+    if (
+      this.suggestions &&
+      (this.suggestions.length || this.autosuggestType === "async")
+    ) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();
     }
   }
 
   handleOnClick() {
-    if (this.suggestions && this.suggestions.length) {
+    if (
+      this.suggestions &&
+      (this.suggestions.length || this.autosuggestType === "async")
+    ) {
       this.autosuggestVisible = true;
       this.cdRef.detectChanges();
     }
@@ -335,7 +341,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       case "ArrowDown":
         event.preventDefault();
         this.service.onArrowDown();
-        this.handleOnFocus();
+        this.handleOnClick();
         break;
       case "ArrowUp":
         event.preventDefault();
@@ -380,7 +386,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.fetchingError.next(false);
     this.suggestions(this.value).subscribe(
       (suggestionsOptionsList) => {
-        console.log(this.options);
         this.options = suggestionsOptionsList;
         this.cdRef.markForCheck();
         this.loading.next(false);

@@ -229,8 +229,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnChange(event) {
     if (this.value !== event && this.isDirty) {
-      this.validationError = this.validateLength(event);
-      this.onChange.emit({ value: event, error: this.validationError });
+      this.onChange.emit(event);
     }
     if (!this.controlled) {
       this.value = event;
@@ -254,7 +253,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleDefaultClearAction() {
-    this.onChange.emit({ value: "" });
+    this.onChange.emit("");
     this.handleOnChange("");
     this.inputRef.nativeElement.focus();
     if (this.suggestions) {
@@ -269,10 +268,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnBlur(event) {
     const validationError = this.validateOnBlur();
-    if (validationError) {
-      this.validationError = validationError;
-      this.onBlur.emit({ value: event.target.value, error: validationError });
-    }
+    this.validationError = validationError;
+    this.onBlur.emit({ value: event.target.value, error: validationError });
   }
 
   handleOnFocus() {
@@ -309,7 +306,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   handleOnClickOption(event) {
     if (this.activedOption === this.focusedOption) {
-      this.onChange.emit({ value: event });
+      this.onChange.emit(event);
       this.value = event;
       this.handleOnClose();
     }

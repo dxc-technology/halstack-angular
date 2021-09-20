@@ -147,6 +147,14 @@ import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api
 import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
 import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
 import { ButtonExampleComponent } from '../examples/button/button-example/button-example.component';
+import { InputTextPropertiesComponent } from "../examples/input-text/input-text-properties/input-text-properties.component";
+import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
+import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
+import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
+import { PasswordPropertiesComponent } from "../examples/password/password-properties/password-properties.component";
+import { PasswordImportComponent } from "../examples/password/password-import/password-import.component";
+import { PasswordExampleComponent } from "../examples/password/password-example/password-example.component";
+import { PasswordApiComponent } from "../examples/password/password-api/password-api.component";
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -298,6 +306,14 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupApiComponent,
+    InputTextPropertiesComponent,
+    InputTextApiComponent,
+    InputTextExampleComponent,
+    InputTextImportComponent,
+    PasswordApiComponent,
+    PasswordExampleComponent,
+    PasswordImportComponent,
+    PasswordPropertiesComponent,
   ]
 })
 export class DynamicModule { }

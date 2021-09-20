@@ -14,14 +14,14 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { DxcNewInputTextComponent } from "../dxc-new-input-text/dxc-new-input-text.component";
 import { CssUtils } from "../utils";
-import { DxcNewInputPasswordHelper } from "./dxc-new-input-password.helper";
+import { DxcPasswordHelper } from "./dxc-password.helper";
 
 @Component({
-  selector: "dxc-new-input-password",
-  templateUrl: "./dxc-new-input-password.component.html",
-  providers: [DxcNewInputPasswordHelper, CssUtils],
+  selector: "dxc-password",
+  templateUrl: "./dxc-password.component.html",
+  providers: [DxcPasswordHelper, CssUtils],
 })
-export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
+export class DxcPasswordComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
 
   @Input()
@@ -53,10 +53,8 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   defaultInputs = new BehaviorSubject<any>({
     error: "",
-    optional: false,
     helperText: "",
     value: undefined,
-    name: "",
     label: "",
     margin: ""
   });
@@ -80,7 +78,7 @@ export class DxcNewInputPasswordComponent implements OnInit, OnChanges {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private helper: DxcNewInputPasswordHelper
+    private helper: DxcPasswordHelper
   ) {}
 
   ngOnInit(): void {

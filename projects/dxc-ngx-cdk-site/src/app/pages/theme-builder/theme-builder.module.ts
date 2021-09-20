@@ -39,7 +39,7 @@ import {
   DxcResultsetTableModule,
   BackgroundProviderModule,
   DxcNewInputTextModule,
-  DxcNewInputPasswordModule,
+  DxcPasswordModule,
   DxcInputNumberModule,
   DxcNewDateModule
 } from "@dxc-technology/halstack-angular";
@@ -135,7 +135,7 @@ import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-pr
     DxcHeaderModule,
     DxcInputTextModule,
     DxcNewInputTextModule,
-    DxcNewInputPasswordModule,
+    DxcPasswordModule,
     DxcInputNumberModule,
     DxcLinkModule,
     DxcPaginatorModule,

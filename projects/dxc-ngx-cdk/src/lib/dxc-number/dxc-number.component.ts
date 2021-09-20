@@ -89,7 +89,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   margin: Object | string;
 
   @Input()
-  strict = true;
+  tabIndex: number;
 
   private controlled: boolean;
 
@@ -123,8 +123,6 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   size: string;
 
   randomId: string;
-
-  tabIndex: number;
 
   constructor(
     private cdRef: ChangeDetectorRef,

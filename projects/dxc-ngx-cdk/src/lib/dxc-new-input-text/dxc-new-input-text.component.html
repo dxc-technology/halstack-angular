@@ -25,6 +25,7 @@
     [name]="name"
     [disabled]="disabled"
     [pattern]="pattern"
+    [tabindex]="tabIndex"
   />
   <span *ngIf="error && !disabled" class="inputErrorIcon" aria-label="Error">
     <svg
@@ -45,6 +46,7 @@
     (click)="handleDefaultClearAction()"
     [disabled]="disabled"
     aria-label="Clear"
+    [tabindex]="tabIndex"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +67,7 @@
     (click)="handleActionOnClick($event)"
     [disabled]="disabled"
     aria-label="Action"
+    [tabindex]="tabIndex"
   >
     <ng-content select="dxc-new-input-text-action"></ng-content>
   </button>
@@ -74,6 +77,7 @@
     class="inputAction"
     [disabled]="disabled"
     aria-label="Step"
+    [tabindex]="tabIndex"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -92,6 +96,7 @@
     class="inputAction"
     [disabled]="disabled"
     aria-label="Step"
+    [tabindex]="tabIndex"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

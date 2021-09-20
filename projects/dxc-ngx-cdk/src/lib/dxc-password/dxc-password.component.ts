@@ -51,12 +51,16 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   @Input()
   length = { min: undefined, max: undefined };
 
+  @Input()
+  tabIndex: number;
+
   defaultInputs = new BehaviorSubject<any>({
     error: "",
     helperText: "",
     value: undefined,
     label: "",
-    margin: ""
+    margin: "",
+    tabIndex: 0
   });
 
   @Output()

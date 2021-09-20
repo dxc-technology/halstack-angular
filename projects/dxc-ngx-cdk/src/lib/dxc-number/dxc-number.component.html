@@ -4,12 +4,11 @@
   [placeholder]="placeholder"
   [helperText]="helperText"
   [margin]="margin"
-  [clearable]="clearable"
   [value]="value"
   [error]="error"
-  [pattern]="pattern"
-  [length]="length"
   (onBlur)="handleOnBlur($event)"
   (onChange)="handleOnChange($event)"
 >
+  <ng-content select="dxc-input-text-suffix" ngProjectAs="dxc-input-text-suffix"></ng-content>
+  <ng-content select="dxc-input-text-prefix" ngProjectAs="dxc-input-text-prefix"></ng-content>
 </dxc-new-input-text>

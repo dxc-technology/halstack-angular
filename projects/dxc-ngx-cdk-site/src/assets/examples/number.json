@@ -1,0 +1,88 @@
+{
+    "data": [
+        {
+            "title": "Controlled Number",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/controlled-number-okhnl?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "controlled-number"
+            }
+        },
+        {
+            "title": "Uncontrolled Number",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/uncontrolled-number-39i8h?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "uncontrolled-number"
+            }
+        },
+        {
+            "title": "Number with helper text",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/number-helper-text-u0hlu?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "number-helper-text"
+            }
+        },
+        {
+            "title": "Number with placeholder",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/number-placeholder-m7hpw?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "number-placeholder"
+            }
+        },
+        {
+            "title": "Number with prefix",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/number-prefix-3804i?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "number-prefix"
+            }
+        },
+        {
+            "title": "Number with suffix",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/number-suffix-ls6ws?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "number-suffix"
+            }
+        },
+        {
+            "title": "Optional Number",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/optional-number-7ej83?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "optional-number"
+            }
+        },
+        {
+            "title": "Disabled Number",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/disabled-number-0qe07?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "disabled-number"
+            }
+        },
+        {
+            "title": "Invalid Number",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/invalid-number-yoi2o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "invalid-number"
+            }
+        },
+        {
+            "title": "Min, max and step",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/step-number-kf20o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "step-number"
+            }
+        },
+        {
+            "title": "Number with custom error messages",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/custom-error-number-hbckx?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "custom-error-number"
+            }
+        },
+        {
+            "title": "Fill parent size Number",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/size-number-r5fvt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "size-number"
+            }
+        }
+    ]
+}

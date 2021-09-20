@@ -155,6 +155,10 @@ import { PasswordPropertiesComponent } from "../examples/password/password-prope
 import { PasswordImportComponent } from "../examples/password/password-import/password-import.component";
 import { PasswordExampleComponent } from "../examples/password/password-example/password-example.component";
 import { PasswordApiComponent } from "../examples/password/password-api/password-api.component";
+import { NumberApiComponent } from "../examples/number/number-api/number-api.component";
+import { NumberImportComponent } from '../examples/number/number-import/number-import.component';
+import { NumberExampleComponent } from '../examples/number/number-example/number-example.component';
+import { NumberPropertiesComponent } from '../examples/number/number-properties/number-properties.component';
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -314,6 +318,10 @@ import { PasswordApiComponent } from "../examples/password/password-api/password
     PasswordExampleComponent,
     PasswordImportComponent,
     PasswordPropertiesComponent,
+    NumberApiComponent,
+    NumberImportComponent,
+    NumberExampleComponent,
+    NumberPropertiesComponent,
   ]
 })
 export class DynamicModule { }

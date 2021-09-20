@@ -42,6 +42,11 @@
             (click)="navigateTo('components/newInputText')">New Input Text</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/number' ? 
+            router.isActive(router.createUrlTree(['components/number']).toString(), true) : false}"
+            (click)="navigateTo('components/number')">Number</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/radio' ? 
             router.isActive(router.createUrlTree(['components/radio']).toString(), true) : false}"
             (click)="navigateTo('components/radio')">Radio Button</a>

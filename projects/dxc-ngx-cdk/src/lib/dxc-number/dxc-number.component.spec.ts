@@ -1,12 +1,12 @@
-import { DxcInputNumberComponent } from "./dxc-input-number.component";
+import { DxcNumberComponent } from "./dxc-number.component";
 
 import { render, fireEvent } from "@testing-library/angular";
 import { screen, waitFor } from "@testing-library/dom";
 import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
 
 describe("DxcInputNumberComponent", () => {
-  test("should render dxc-input-number", async () => {
-    const input = await render(DxcInputNumberComponent, {
+  test("should render dxc-number", async () => {
+    const input = await render(DxcNumberComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -18,8 +18,8 @@ describe("DxcInputNumberComponent", () => {
     expect(input.getByText("helper-text"));
   });
 
-  test("should render error dxc-input-number", async () => {
-    const input = await render(DxcInputNumberComponent, {
+  test("should render error dxc-number", async () => {
+    const input = await render(DxcNumberComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -35,13 +35,13 @@ describe("DxcInputNumberComponent", () => {
 
   test("should call onChange", async () => {
     const onChangeFunction = jest.fn();
-    const dxcNumber = await render(DxcInputNumberComponent, {
+    const dxcNumber = await render(DxcNumberComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
         step: "5",
-        minValue: "1",
-        maxValue: "100",
+        min: "1",
+        max: "100",
         onChange: { emit: onChangeFunction } as any,
       },
       imports: [DxcNewInputTextModule],
@@ -58,14 +58,14 @@ describe("DxcInputNumberComponent", () => {
 
   test("controlled input", async () => {
     const onChangeFunction = jest.fn();
-    const dxcNumber = await render(DxcInputNumberComponent, {
+    const dxcNumber = await render(DxcNumberComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
         step: "5",
         value: "4",
-        minValue: "1",
-        maxValue: "100",
+        min: "1",
+        max: "100",
         onChange: { emit: onChangeFunction } as any,
       },
       imports: [DxcNewInputTextModule],
@@ -83,14 +83,14 @@ describe("DxcInputNumberComponent", () => {
 
   test("should call onBlur", async () => {
     const mockFunction = jest.fn();
-    const dxcNumber = await render(DxcInputNumberComponent, {
+    const dxcNumber = await render(DxcNumberComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
         step: "5",
         value: "4",
-        minValue: "1",
-        maxValue: "100",
+        min: "1",
+        max: "100",
         onChange: { emit: mockFunction } as any,
         onBlur: { emit: mockFunction } as any,
       },

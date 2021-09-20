@@ -41,6 +41,7 @@ import { AccordionGroupComponent } from './pages/accordion-group/accordion-group
 import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
 import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
 import { PasswordComponent } from "./pages/password/password.component";
+import { NumberComponent } from "./pages/number/number.component";
 
 let routes: Routes = [];
 
@@ -198,6 +199,10 @@ let routes: Routes = [];
   {
     path: 'components/password',
     component: PasswordComponent
+  },
+  {
+    path: 'components/number',
+    component: NumberComponent
   },
   {
     path: 'components/resultsettable',

@@ -55,7 +55,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
 import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
 import { PasswordModule } from './pages/password/password.module';
-
+import { NumberModule } from './pages/number/number.module';
 
 @NgModule({
   declarations: [
@@ -120,7 +120,8 @@ import { PasswordModule } from './pages/password/password.module';
     AccordionGroupModule,
     ThemeBuilderSidenavModule,
     NewInputTextModule,
-    PasswordModule
+    PasswordModule,
+    NumberModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

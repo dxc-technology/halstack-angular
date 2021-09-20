@@ -18,14 +18,14 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { OnDestroy } from "@angular/core";
 import { DxcNewInputTextComponent } from "../dxc-new-input-text/dxc-new-input-text.component";
-import { DxcNewInputNumberHelper } from "./dxc-input-number.helper";
+import { DxcNumberHelper } from "./dxc-number.helper";
 
 @Component({
-  selector: "dxc-input-number",
-  templateUrl: "./dxc-input-number.component.html",
-  providers: [DxcNewInputNumberHelper, CssUtils],
+  selector: "dxc-number",
+  templateUrl: "./dxc-number.component.html",
+  providers: [DxcNumberHelper, CssUtils],
 })
-export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
+export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;
 
   @Input()
@@ -50,22 +50,22 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   private _disabled = false;
 
   @Input()
-  get minValue(): number {
-    return this._minValue;
+  get min(): number {
+    return this._min;
   }
-  set minValue(value: number) {
-    this._minValue = coerceNumberProperty(value);
+  set min(value: number) {
+    this._min = coerceNumberProperty(value);
   }
-  private _minValue = null;
+  private _min = null;
 
   @Input()
-  get maxValue(): number {
-    return this._maxValue;
+  get max(): number {
+    return this._max;
   }
-  set maxValue(value: number) {
-    this._maxValue = coerceNumberProperty(value);
+  set max(value: number) {
+    this._max = coerceNumberProperty(value);
   }
-  private _maxValue = null;
+  private _max = null;
 
   @Input()
   get step(): number {
@@ -77,16 +77,7 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   private _step = 1;
 
   @Input()
-  prefix = "";
-
-  @Input()
-  suffix = "";
-
-  @Input()
   optional = false;
-
-  @Input()
-  clearable = false;
 
   @Input()
   error = "";
@@ -100,21 +91,12 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   strict = true;
 
-  @Input()
-  pattern = "";
-
-  @Input()
-  length = { min: undefined, max: undefined };
-
   private controlled: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
     placeholder: "",
     error: "",
-    clearable: false,
     optional: false,
-    suffix: "",
-    prefix: "",
     disabled: false,
     helperText: "",
     value: undefined,
@@ -122,8 +104,8 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
     label: "",
     margin: "",
     step: 1,
-    minValue: null,
-    maxValue: null,
+    min: null,
+    max: null,
   });
 
   @Output()
@@ -146,7 +128,7 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private helper: DxcNewInputNumberHelper
+    private helper: DxcNumberHelper
   ) {}
 
   ngOnDestroy(): void {}
@@ -169,8 +151,8 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   ngAfterViewInit(): void {
     if (this.dxcInputRef && this.dxcInputRef.inputRef) {
       this.dxcInputRef.inputRef.nativeElement.attributes.type.value = "number";
-      this.dxcInputRef.inputRef.nativeElement.min = this.minValue;
-      this.dxcInputRef.inputRef.nativeElement.max = this.maxValue;
+      this.dxcInputRef.inputRef.nativeElement.min = this.min;
+      this.dxcInputRef.inputRef.nativeElement.max = this.max;
       this.dxcInputRef.inputRef.nativeElement.step = this.step;
       this.dxcInputRef.isInputNumber = true;
     }
@@ -223,39 +205,39 @@ export class DxcInputNumberComponent implements OnInit, OnChanges, OnDestroy {
   handleStepMinus(event) {
     const currentValue = coerceNumberProperty(this.value);
     if (
-      currentValue > this.minValue &&
-      currentValue - this.step <= this.minValue &&
-      currentValue < this.maxValue
+      currentValue > this.min &&
+      currentValue - this.step <= this.min &&
+      currentValue < this.max
     ) {
-      this.value = this.minValue;
+      this.value = this.min;
     } else if (
-      currentValue > this.minValue &&
-      currentValue - this.step > this.minValue &&
-      currentValue <= this.maxValue
+      currentValue > this.min &&
+      currentValue - this.step > this.min &&
+      currentValue <= this.max
     ) {
       this.value = currentValue - this.step;
-    } else if (currentValue > this.maxValue) {
-      this.value = this.maxValue;
+    } else if (currentValue > this.max) {
+      this.value = this.max;
     }
     this.handleOnChange({ value: this.value });
   }
 
   handleStepPlus(event) {
     const currentValue = coerceNumberProperty(this.value);
-    if (currentValue < this.minValue) {
-      this.value = this.minValue;
+    if (currentValue < this.min) {
+      this.value = this.min;
     } else if (
-      currentValue >= this.minValue &&
-      currentValue <= this.maxValue &&
-      currentValue + this.step <= this.maxValue
+      currentValue >= this.min &&
+      currentValue <= this.max &&
+      currentValue + this.step <= this.max
     ) {
       this.value = currentValue + this.step;
     } else if (
-      currentValue > this.minValue &&
-      currentValue <= this.maxValue &&
-      currentValue + this.step > this.maxValue
+      currentValue > this.min &&
+      currentValue <= this.max &&
+      currentValue + this.step > this.max
     ) {
-      this.value = this.maxValue;
+      this.value = this.max;
     }
     this.handleOnChange({ value: this.value });
   }

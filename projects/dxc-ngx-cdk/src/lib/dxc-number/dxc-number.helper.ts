@@ -3,7 +3,7 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 
 @Injectable()
-export class DxcNewInputNumberHelper {
+export class DxcNumberHelper {
   constructor(private utils: CssUtils) {}
 
   getDynamicStyle(inputs) {

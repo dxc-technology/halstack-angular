@@ -163,17 +163,20 @@
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Number">
-      <dxc-input-number
+      <dxc-number
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
-        minValue="10"
-        maxValue="100"
+        min="10"
+        max="100"
         step="5"
         [value]="numberValue"
         (onChange)="numberOnChange($event)"
         margin="xsmall"
-      ></dxc-input-number>
+      >
+      <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+      <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
+    </dxc-number>
     </tbuilder-component-mode>
   </background-provider>
 
@@ -306,17 +309,17 @@
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Number" mode="dark">
-      <dxc-input-number
+      <dxc-number
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
-        minValue="10"
-        maxValue="100"
+        min="10"
+        max="100"
         step="5"
         [value]="numberValue"
         (onChange)="numberOnChange($event)"
         margin="xsmall"
-      ></dxc-input-number>
+      ></dxc-number>
     </tbuilder-component-mode>
   </background-provider>
 </div>

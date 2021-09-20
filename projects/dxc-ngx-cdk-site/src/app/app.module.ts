@@ -56,6 +56,7 @@ import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-s
 import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
 import { PasswordModule } from './pages/password/password.module';
 import { NumberModule } from './pages/number/number.module';
+import { NewDateModule } from './pages/new-date/new-date.module';
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { NumberModule } from './pages/number/number.module';
     ThemeBuilderSidenavModule,
     NewInputTextModule,
     PasswordModule,
-    NumberModule
+    NumberModule,
+    NewDateModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

@@ -37,6 +37,11 @@
             (click)="navigateTo('components/input')">Input Text</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/newDate' ? 
+            router.isActive(router.createUrlTree(['components/newDate']).toString(), true) : false}"
+            (click)="navigateTo('components/newDate')">New Date</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/newInputText' ? 
             router.isActive(router.createUrlTree(['components/newInputText']).toString(), true) : false}"
             (click)="navigateTo('components/newInputText')">New Input Text</a>
@@ -47,14 +52,14 @@
             (click)="navigateTo('components/number')">Number</a>
           </div>
           <div class="menu-item">
-            <a [ngClass]="{'active': 'components/radio' ? 
-            router.isActive(router.createUrlTree(['components/radio']).toString(), true) : false}"
-            (click)="navigateTo('components/radio')">Radio Button</a>
-          </div>
-          <div class="menu-item">
             <a [ngClass]="{'active': 'components/password' ? 
             router.isActive(router.createUrlTree(['components/password']).toString(), true) : false}"
             (click)="navigateTo('components/password')">Password</a>
+          </div>
+          <div class="menu-item">
+            <a [ngClass]="{'active': 'components/radio' ? 
+            router.isActive(router.createUrlTree(['components/radio']).toString(), true) : false}"
+            (click)="navigateTo('components/radio')">Radio Button</a>
           </div>
           <div class="menu-item">
             <a [ngClass]="{'active': 'components/select' ? 

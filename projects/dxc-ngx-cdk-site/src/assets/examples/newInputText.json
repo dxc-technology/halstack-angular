@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "title": "Controlled Input",
+            "title": "Controlled input",
             "iframe": {
                 "src": "https://codesandbox.io/embed/controlled-input-wftnz?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "controlled-input"
             }
         },
         {
-            "title": "Uncontrolled Input",
+            "title": "Uncontrolled input",
             "iframe": {
                 "src": "https://codesandbox.io/embed/uncontrolled-input-s9oyz?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "uncontrolled-input"

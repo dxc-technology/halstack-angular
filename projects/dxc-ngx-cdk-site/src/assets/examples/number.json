@@ -1,14 +1,14 @@
 {
     "data": [
         {
-            "title": "Controlled Number",
+            "title": "Controlled number",
             "iframe": {
                 "src": "https://codesandbox.io/embed/controlled-number-okhnl?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "controlled-number"
             }
         },
         {
-            "title": "Uncontrolled Number",
+            "title": "Uncontrolled number",
             "iframe": {
                 "src": "https://codesandbox.io/embed/uncontrolled-number-39i8h?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "uncontrolled-number"
@@ -43,21 +43,21 @@
             }
         },
         {
-            "title": "Optional Number",
+            "title": "Optional number",
             "iframe": {
                 "src": "https://codesandbox.io/embed/optional-number-7ej83?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "optional-number"
             }
         },
         {
-            "title": "Disabled Number",
+            "title": "Disabled number",
             "iframe": {
                 "src": "https://codesandbox.io/embed/disabled-number-0qe07?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "disabled-number"
             }
         },
         {
-            "title": "Invalid Number",
+            "title": "Invalid number",
             "iframe": {
                 "src": "https://codesandbox.io/embed/invalid-number-yoi2o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "invalid-number"
@@ -78,7 +78,7 @@
             }
         },
         {
-            "title": "Fill parent size Number",
+            "title": "Fill parent size number",
             "iframe": {
                 "src": "https://codesandbox.io/embed/size-number-r5fvt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "size-number"

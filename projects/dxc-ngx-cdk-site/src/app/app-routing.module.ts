@@ -42,6 +42,7 @@ import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.modu
 import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
 import { PasswordComponent } from "./pages/password/password.component";
 import { NumberComponent } from "./pages/number/number.component";
+import { NewDateComponent } from "./pages/new-date/new-date.component";
 
 let routes: Routes = [];
 
@@ -203,6 +204,10 @@ let routes: Routes = [];
   {
     path: 'components/number',
     component: NumberComponent
+  },
+  {
+    path: 'components/newDate',
+    component: NewDateComponent
   },
   {
     path: 'components/resultsettable',

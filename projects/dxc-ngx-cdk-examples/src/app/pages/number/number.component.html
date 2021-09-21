@@ -1,0 +1,17 @@
+<div className="test-case" id="number">
+  <h4>Default controlled</h4>
+  <dxc-number
+    placeholder="placeholder"
+    label="Input label"
+    helperText="helper text"
+    min="10"
+    max="100"
+    step="5"
+    [value]="numberValue"
+    (onChange)="numberOnChange($event)"
+    margin="xsmall"
+  >
+    <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
+    <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
+  </dxc-number>
+</div>

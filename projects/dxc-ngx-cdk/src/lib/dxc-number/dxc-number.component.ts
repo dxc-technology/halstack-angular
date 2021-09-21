@@ -13,6 +13,7 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   ViewChild,
+  HostListener,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -124,6 +125,21 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   randomId: string;
 
+  isFocused: boolean = false;
+
+  @HostListener("window:keydown", ["$event"])
+  keyEvent(event: KeyboardEvent) {
+    if (this.isFocused) {
+      if (event.key === "ArrowUp") {
+        this.handleStepPlus();
+      }
+
+      if (event.key === "ArrowDown") {
+        this.handleStepMinus();
+      }
+    }
+  }
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private helper: DxcNumberHelper
@@ -168,6 +184,14 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
         "click",
         this.handleStepPlus.bind(this)
       );
+      this.dxcInputRef.inputRef.nativeElement.addEventListener(
+        "focus",
+        this.isFocus.bind(this)
+      );
+      this.dxcInputRef.inputRef.nativeElement.addEventListener(
+        "blur",
+        this.isBlur.bind(this)
+      );
     }
     this.cdRef.detectChanges();
   }
@@ -200,7 +224,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  handleStepMinus(event) {
+  handleStepMinus() {
     const currentValue = coerceNumberProperty(this.value);
     if (
       currentValue > this.min &&
@@ -218,9 +242,10 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
       this.value = this.max;
     }
     this.handleOnChange({ value: this.value });
+    this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
-  handleStepPlus(event) {
+  handleStepPlus() {
     const currentValue = coerceNumberProperty(this.value);
     if (currentValue < this.min) {
       this.value = this.min;
@@ -238,5 +263,14 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
       this.value = this.max;
     }
     this.handleOnChange({ value: this.value });
+    this.dxcInputRef.inputRef.nativeElement.focus();
+  }
+
+  isFocus() {
+    this.isFocused = true;
+  }
+
+  isBlur() {
+    this.isFocused = false;
   }
 }

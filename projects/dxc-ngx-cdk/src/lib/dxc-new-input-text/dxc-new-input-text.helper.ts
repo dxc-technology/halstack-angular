@@ -257,7 +257,7 @@ export class DxcNewInputTextHelper {
           outline: none;
         }
         &:active {
-          border: 1px solid var(--input-activeActionBackgroundColor);
+          border: 2px solid var(--input-focusActionBorderColor);
           box-shadow: inset 0 0 0 1px var(--input-activeActionBackgroundColor);
           outline: none;
           background-color: var(--input-activeActionBackgroundColor);
@@ -448,7 +448,7 @@ export class DxcNewInputTextHelper {
           border: 2px solid var(--input-focusActionBorderColorOnDark);
         }
         &:active {
-          border: 1px solid var(--input-activeActionBackgroundColorOnDark);
+          border: 2px solid var(--input-focusActionBorderColorOnDark);
           box-shadow: inset 0 0 0 1px
             var(--input-activeActionBackgroundColorOnDark);
           background-color: var(--input-activeActionBackgroundColorOnDark);

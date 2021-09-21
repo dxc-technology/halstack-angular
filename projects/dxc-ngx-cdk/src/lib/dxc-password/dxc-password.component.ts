@@ -108,9 +108,9 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   }
 
   handleOnChange(event) {
-    this.value = event.value;
-    this.onChange.emit({ value: event.value});
-    this.controlled ? event.value = this.value : this.value = event.value;
+    this.value = event;
+    this.onChange.emit(event);
+    this.controlled ? event = this.value : this.value = event;
     this.cdRef.detectChanges();
   }
 

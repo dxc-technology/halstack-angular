@@ -126,6 +126,8 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   tabIndex: number;
 
+  validationError: string = undefined;
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private helper: DxcNumberHelper
@@ -186,15 +188,27 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnChange(event) {
-    this.onChange.emit({ value: event.value });
+    this.onChange.emit(event);
     this.controlled
       ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-      : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
+      : (this.value = event);
     this.cdRef.detectChanges();
   }
 
   handleOnBlur(event) {
-    this.onBlur.emit({ value: event.value });
+    this.validationError = this.validateOnBlur();
+    this.onBlur.emit({ value: event.value, error: this.validationError });
+  }
+
+  validateOnBlur() {
+    let err;
+    const currentValue = coerceNumberProperty(this.value);
+    if (this.value && this.min && currentValue < this.min) {
+      err = `Value must be greater than or equal to ${this.min}.`;
+    } else if (this.value && this.max && currentValue > this.max) {
+      err = `Value must be less than or equal to ${this.max}.`;
+    }
+    return err;
   }
 
   handleOnKeyDown(event) {
@@ -203,42 +217,63 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleStepMinus(event) {
+    this.handleOnBlur({ value: this.value });
     const currentValue = coerceNumberProperty(this.value);
-    if (
-      currentValue > this.min &&
-      currentValue - this.step <= this.min &&
-      currentValue < this.max
+
+    if (this.min && currentValue < this.min && this.value !== "") {
+      this.value = currentValue;
+    } else if (this.max && currentValue > this.max) {
+      this.value = this.max;
+    } else if (
+      this.min &&
+      (currentValue === this.min ||
+        this.value === "" ||
+        (this.step && currentValue - this.step < this.min))
     ) {
       this.value = this.min;
     } else if (
-      currentValue > this.min &&
-      currentValue - this.step > this.min &&
-      currentValue <= this.max
+      (this.step && this.min && currentValue - this.step >= this.min) ||
+      (this.step && this.value !== "")
     ) {
       this.value = currentValue - this.step;
-    } else if (currentValue > this.max) {
-      this.value = this.max;
+    } else if (this.step && this.value === "") {
+      this.value = -this.step;
+    } else if (this.value === "") {
+      this.value = -1;
+    } else {
+      this.value = currentValue - 1;
     }
-    this.handleOnChange({ value: this.value });
+
+    this.handleOnChange(this.value);
   }
 
   handleStepPlus(event) {
+    this.handleOnBlur({ value: this.value });
     const currentValue = coerceNumberProperty(this.value);
-    if (currentValue < this.min) {
+
+    if (this.max && currentValue > this.max) {
+      this.value = currentValue;
+    } else if (this.min && (currentValue < this.min || this.value === "")) {
       this.value = this.min;
     } else if (
-      currentValue >= this.min &&
-      currentValue <= this.max &&
-      currentValue + this.step <= this.max
-    ) {
-      this.value = currentValue + this.step;
-    } else if (
-      currentValue > this.min &&
-      currentValue <= this.max &&
-      currentValue + this.step > this.max
+      this.max &&
+      (currentValue === this.max ||
+        (this.step && currentValue + this.step > this.max))
     ) {
       this.value = this.max;
+    } else if (
+      (this.step && this.max && currentValue + this.step <= this.max) ||
+      (this.step && this.value !== "")
+    ) {
+      this.value = currentValue + this.step;
+    } else if (this.step && this.value === "") {
+      this.value = this.step;
+    } else if (this.value === "") {
+      this.value = 1;
+    } else {
+      this.value = currentValue + 1;
     }
-    this.handleOnChange({ value: this.value });
+
+    this.handleOnChange(this.value);
   }
 }

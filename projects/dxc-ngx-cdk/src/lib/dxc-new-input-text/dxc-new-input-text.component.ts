@@ -263,6 +263,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleActionOnClick(event) {
+    this.handleOnBlur(event);
     this.onActionClick.emit(event.target.value);
   }
 

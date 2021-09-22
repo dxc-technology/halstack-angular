@@ -5,7 +5,7 @@
   [helperText]="helperText"
   [margin]="margin"
   [value]="value"
-  [error]="error"
+  [error]="error || validationError"
   (onBlur)="handleOnBlur($event)"
   (onChange)="handleOnChange($event)"
 >

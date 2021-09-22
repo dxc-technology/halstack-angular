@@ -13,6 +13,7 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   ViewChild,
+  HostListener,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -89,7 +90,10 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   margin: Object | string;
 
   @Input()
-  strict = true;
+  tabIndex: number;
+
+  @Input()
+  size: string;
 
   private controlled: boolean;
 
@@ -106,6 +110,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     step: 1,
     min: null,
     max: null,
+    size: "medium",
   });
 
   @Output()
@@ -120,11 +125,22 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild("dxcInputRef", { static: false })
   dxcInputRef: DxcNewInputTextComponent;
 
-  size: string;
-
   randomId: string;
 
-  tabIndex: number;
+  isFocused: boolean = false;
+
+  @HostListener("window:keydown", ["$event"])
+  keyEvent(event: KeyboardEvent) {
+    if (this.isFocused) {
+      if (event.key === "ArrowUp") {
+        this.handleStepPlus();
+      }
+
+      if (event.key === "ArrowDown") {
+        this.handleStepMinus();
+      }
+    }
+  }
 
   validationError: string = undefined;
 
@@ -172,6 +188,14 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
         "click",
         this.handleStepPlus.bind(this)
       );
+      this.dxcInputRef.inputRef.nativeElement.addEventListener(
+        "focus",
+        this.isFocus.bind(this)
+      );
+      this.dxcInputRef.inputRef.nativeElement.addEventListener(
+        "blur",
+        this.isBlur.bind(this)
+      );
     }
     this.cdRef.detectChanges();
   }
@@ -216,7 +240,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  handleStepMinus(event) {
+  handleStepMinus() {
     this.handleOnBlur({ value: this.value });
     const currentValue = coerceNumberProperty(this.value);
 
@@ -245,9 +269,10 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     this.handleOnChange(this.value);
+    this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
-  handleStepPlus(event) {
+  handleStepPlus() {
     this.handleOnBlur({ value: this.value });
     const currentValue = coerceNumberProperty(this.value);
 
@@ -273,7 +298,15 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.value = currentValue + 1;
     }
-
     this.handleOnChange(this.value);
+    this.dxcInputRef.inputRef.nativeElement.focus();
+  }
+
+  isFocus() {
+    this.isFocused = true;
+  }
+
+  isBlur() {
+    this.isFocused = false;
   }
 }

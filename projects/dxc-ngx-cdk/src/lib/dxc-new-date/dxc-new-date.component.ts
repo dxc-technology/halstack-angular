@@ -85,6 +85,9 @@ export class DxcNewDateComponent implements OnInit {
 
   @Input() size: string;
 
+  @Input()
+  tabIndex: number;
+
   defaultInputs = new BehaviorSubject<any>({
     error: "",
     clearable: false,
@@ -97,6 +100,7 @@ export class DxcNewDateComponent implements OnInit {
     margin: "",
     size: "medium",
     format: "dd-MM-yyyy",
+    tabIndex: 0
   });
 
   @Output()

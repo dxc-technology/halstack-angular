@@ -33,6 +33,10 @@ import { ApplicationInfoComponent } from './pages/standard/application-info.comp
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
+import { NewInpuTextComponent } from './pages/new-input-text/new-input-text.component';
+import { PasswordComponent } from './pages/password/password.component';
+import { NumberComponent } from './pages/number/number.component';
+import { NewDateComponent } from './pages/new-date/new-date.component';
 
 export const Components = [
     {
@@ -116,9 +120,29 @@ export const Components = [
         component:  LinkInfoComponent
     },
     {
+        name: 'New Date',
+        route: 'new_date',
+        component:  NewDateComponent
+    },
+    {
+        name: 'New Input Text',
+        route: 'new_input',
+        component:  NewInpuTextComponent
+    },
+    {
+        name: 'Number',
+        route: 'number',
+        component:  NumberComponent
+    },
+    {
         name: 'Paginator',
         route: 'paginator',
         component:  PaginatorComponent
+    },
+    {
+        name: 'Password',
+        route: 'password',
+        component:  PasswordComponent
     },
     {
         name: 'Progress Bar',

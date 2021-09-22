@@ -6,8 +6,10 @@
   [margin]="margin"
   [value]="value"
   [error]="error || validationError"
+  [size]="size"
   (onBlur)="handleOnBlur($event)"
   (onChange)="handleOnChange($event)"
+  [tabIndex]="tabIndex"
 >
   <ng-content select="dxc-input-text-suffix" ngProjectAs="dxc-input-text-suffix"></ng-content>
   <ng-content select="dxc-input-text-prefix" ngProjectAs="dxc-input-text-prefix"></ng-content>

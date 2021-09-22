@@ -5,6 +5,13 @@ import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 @Injectable()
 export class DxcNewInputTextHelper {
+
+  sizes = {
+    medium: "240px",
+    large: "480px",
+    fillParent: "100%",
+  };
+
   constructor(private utils: CssUtils) {}
   debounced = (cb, time) => {
     const db = new Subject();
@@ -13,6 +20,16 @@ export class DxcNewInputTextHelper {
     func.unsubscribe = () => sub.unsubscribe();
     return func;
   };
+
+  calculateWidth(inputs) {
+    console.log("inputs:",inputs);
+    if (inputs.size === "fillParent") {
+      return this.utils.calculateWidth(this.sizes, inputs);
+    }
+    return css`
+      width: ${this.sizes[inputs.size]};
+    `;
+  }
 
   getDisabledStyle() {
     return css`
@@ -106,6 +123,7 @@ export class DxcNewInputTextHelper {
       display: flex;
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
+      ${this.calculateWidth(inputs)}
 
       &.hasError {
         .inputContainer {
@@ -268,7 +286,7 @@ export class DxcNewInputTextHelper {
           outline: none;
         }
         &:active {
-          border: 1px solid var(--input-activeActionBackgroundColor);
+          border: 2px solid var(--input-focusActionBorderColor);
           box-shadow: inset 0 0 0 1px var(--input-activeActionBackgroundColor);
           outline: none;
           background-color: var(--input-activeActionBackgroundColor);
@@ -459,7 +477,7 @@ export class DxcNewInputTextHelper {
           border: 2px solid var(--input-focusActionBorderColorOnDark);
         }
         &:active {
-          border: 1px solid var(--input-activeActionBackgroundColorOnDark);
+          border: 2px solid var(--input-focusActionBorderColorOnDark);
           box-shadow: inset 0 0 0 1px
             var(--input-activeActionBackgroundColorOnDark);
           background-color: var(--input-activeActionBackgroundColorOnDark);

@@ -1,15 +1,13 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { DxcNewInputTextComponent } from "@dxc-technology/halstack-angular";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DxcNewInputTextComponent } from '@dxc-technology/halstack-angular';
 
 @Component({
-  selector: "app-new-input-text-preview",
-  templateUrl: "./new-input-text-preview.component.html",
+  selector: 'new-input-text',
+  templateUrl: './new-input-text.component.html'
 })
-export class NewInputTextPreviewComponent implements OnInit {
+export class NewInpuTextComponent implements OnInit {
 
   @ViewChild("dxcInputRef", { static: false }) dxcInputRef: DxcNewInputTextComponent;
-
-  constructor() {}
 
   controlledValue = "c";
 
@@ -48,5 +46,9 @@ export class NewInputTextPreviewComponent implements OnInit {
     this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
-  ngOnInit(): void {}
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

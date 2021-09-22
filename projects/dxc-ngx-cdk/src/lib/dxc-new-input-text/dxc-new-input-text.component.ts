@@ -82,6 +82,9 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   tabIndex: number;
 
+  @Input()
+  size: string;
+
   autoSuggestId: string;
 
   private controlled: boolean;
@@ -98,7 +101,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     label: "",
     margin: "",
     suggestions: [],
-    tabIndex: 0
+    tabIndex: 0,
+    size: "medium"
   });
 
   @Output()
@@ -114,8 +118,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild("autoSuggestOptions", { static: false }) optionsRef: ElementRef;
   @ViewChild("stepButtonMinus", { static: false }) stepButtonMinus: ElementRef;
   @ViewChild("stepButtonPlus", { static: false }) stepButtonPlus: ElementRef;
-
-  size: string;
 
   autosuggestVisible: boolean = false;
 

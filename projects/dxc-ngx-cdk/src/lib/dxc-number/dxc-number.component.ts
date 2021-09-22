@@ -92,6 +92,9 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   tabIndex: number;
 
+  @Input()
+  size: string;
+
   private controlled: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
@@ -107,6 +110,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     step: 1,
     min: null,
     max: null,
+    size: "medium"
   });
 
   @Output()
@@ -120,8 +124,6 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild("dxcInputRef", { static: false })
   dxcInputRef: DxcNewInputTextComponent;
-
-  size: string;
 
   randomId: string;
 

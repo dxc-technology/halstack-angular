@@ -22,7 +22,6 @@ export class DxcNewInputTextHelper {
   };
 
   calculateWidth(inputs) {
-    console.log("inputs:",inputs);
     if (inputs.size === "fillParent") {
       return this.utils.calculateWidth(this.sizes, inputs);
     }

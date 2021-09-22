@@ -103,7 +103,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     margin: "",
     suggestions: [],
     tabIndex: 0,
-    size: "medium"
+    size: "medium",
   });
 
   @Output()
@@ -271,8 +271,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleActionOnClick(event) {
-    this.handleOnBlur(event);
-    this.onActionClick.emit(event.target.value);
+    this.handleOnBlur({ target: { value: this.value } });
+    this.onActionClick.emit(this.value);
   }
 
   handleOnBlur(event) {

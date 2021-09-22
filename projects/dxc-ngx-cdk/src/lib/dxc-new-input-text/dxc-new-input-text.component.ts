@@ -28,6 +28,7 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
 })
 export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;
+  @HostBinding("class.hasError") hasError = false;
 
   @Input()
   label: string;
@@ -135,7 +136,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   autosuggestType: string;
 
-  validationError: string = undefined;
+  validationError: string = "";
 
   isInputNumber: boolean = false;
 
@@ -155,6 +156,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         this.className = `${this.helper.getDynamicStyle({
           ...this.defaultInputs.getValue(),
           darkBackground: this.darkBackground,
+          validationError: this.validationError,
         })}`;
       }, 0);
     });
@@ -167,6 +169,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       darkBackground: this.darkBackground,
+      validationError: this.validationError,
     })}`;
     if (this.value === undefined) {
       this.value = "";
@@ -224,6 +227,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       darkBackground: this.darkBackground,
+      validationError: this.validationError,
     })}`;
   }
 
@@ -270,6 +274,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   handleOnBlur(event) {
     const validationError = this.validateOnBlur();
     this.validationError = validationError;
+    this.hasError = this.validationError ? true : false;
     this.onBlur.emit({ value: event.target.value, error: validationError });
   }
 

@@ -107,6 +107,17 @@ export class DxcNewInputTextHelper {
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)}
 
+      &.hasError {
+        .inputContainer {
+          border: 1px solid var(--input-errorBorderColor);
+          box-shadow: inset 0 0 0 1px var(--input-errorBorderColor);
+          &:hover {
+            border-color: var(--input-hoverErrorBorderColor);
+            box-shadow: inset 0 0 0 1px var(--input-hoverErrorBorderColor);
+          }
+        }
+      }
+
       dxc-new-input-text-action{
         div {
           width: 24px;

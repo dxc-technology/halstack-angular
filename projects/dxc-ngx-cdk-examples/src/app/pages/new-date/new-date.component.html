@@ -9,26 +9,121 @@
   </dxc-new-date>
 </div>
 
-<div className="test-case" id="disabled-date">
-  <h4>Disabled</h4>
+<div className="test-case" id="size-date">
+  <h4>Sizes</h4>
+  <dxc-new-date label="Medium" format="dd-MM-yyyy" margin="xsmall">
+  </dxc-new-date>
+  <dxc-new-date label="Large" format="dd-MM-yyyy" margin="xsmall" size="large">
+  </dxc-new-date>
   <dxc-new-date
-    label="Date of birth"
+    label="Fill parent"
     format="dd-MM-yyyy"
     margin="xsmall"
-    helperText="helper text"
+    size="fillParent"
+  >
+  </dxc-new-date>
+</div>
+
+<div className="test-case" id="margin-date">
+  <h4>Margin</h4>
+  <dxc-new-date margin="xxsmall"> </dxc-new-date>
+  <dxc-new-date margin="xsmall"> </dxc-new-date>
+  <dxc-new-date margin="small"> </dxc-new-date>
+  <dxc-new-date margin="medium"> </dxc-new-date>
+  <dxc-new-date margin="large"> </dxc-new-date>
+  <dxc-new-date margin="xlarge"> </dxc-new-date>
+  <dxc-new-date margin="xxlarge"> </dxc-new-date>
+</div>
+
+<div className="test-case" id="controlled-date">
+  <h4>Controlled</h4>
+  <dxc-new-date [value]="inputValue" (onChange)="onChange()" margin="xsmall">
+  </dxc-new-date>
+  <dxc-new-date
+    label="With label + placeholder"
+    value="04-10-1996"
+    (onChange)="onChange()"
+    margin="xsmall"
+    placeholder
+  >
+  </dxc-new-date>
+  <dxc-new-date
+    label="With helper text"
+    value="04-10-1996"
+    (onChange)="onChange()"
+    margin="xsmall"
+    helperText="Some sample text"
+  >
+  </dxc-new-date>
+  <dxc-new-date
+    label="Disabled"
+    value="04-10-1996"
+    (onChange)="onChange()"
+    margin="xsmall"
     disabled
+  >
+  </dxc-new-date>
+  <dxc-new-date
+    label="Optional"
+    value="04-10-1996"
+    (onChange)="onChange()"
+    margin="xsmall"
+    optional
+  >
+  </dxc-new-date>
+</div>
+
+<div className="test-case" id="formats-date">
+  <h4>Formats</h4>
+  <dxc-new-date
+    label="With new format"
+    format="dd/MM/yy"
+    margin="xsmall"
+    placeholder
+  >
+  </dxc-new-date>
+  <dxc-new-date
+    label="With new format"
+    format="MM/dd/yyyy"
+    margin="xsmall"
+    placeholder
+  >
+  </dxc-new-date>
+  <dxc-new-date
+    label="With new format"
+    format="MM-dd-yyyy"
+    margin="xsmall"
+    placeholder
+  >
+  </dxc-new-date>
+</div>
+
+<div className="test-case" id="blur-date">
+  <h4>OnBlur</h4>
+  <dxc-new-date
+    label="With onBlur & onChange events"
+    [value]="inputValue"
+    (onChange)="onChange()"
+    (onBlur)="onBlur()"
+    margin="xsmall"
+    [error]="error"
   >
   </dxc-new-date>
 </div>
 
 <div className="test-case" id="error-date">
   <h4>Error</h4>
+  <dxc-new-date label="With error" margin="xsmall" error="An error was catched">
+  </dxc-new-date>
+</div>
+
+<div className="test-case" id="dark-date" style="background-color: black">
+  <h4>Dark</h4>
   <dxc-new-date
     label="Date of birth"
     format="dd-MM-yyyy"
     margin="xsmall"
     helperText="helper text"
-    error="Error date"
   >
   </dxc-new-date>
 </div>

@@ -54,6 +54,15 @@ export class DxcNewDateComponent implements OnInit {
   private _disabled = false;
 
   @Input()
+  get placeholder(): boolean {
+    return this._placeholder;
+  }
+  set placeholder(value: boolean) {
+    this._placeholder = coerceBooleanProperty(value);
+  }
+  private _placeholder = false;
+
+  @Input()
   get optional(): boolean {
     return this._optional;
   }
@@ -100,7 +109,8 @@ export class DxcNewDateComponent implements OnInit {
     margin: "",
     size: "medium",
     format: "dd-MM-yyyy",
-    tabIndex: 0
+    tabIndex: 0,
+    placeholder: false
   });
 
   @Output()
@@ -127,6 +137,8 @@ export class DxcNewDateComponent implements OnInit {
   @ViewChild("dxcCalendar", { read: ElementRef }) calendar: ElementRef;
 
   private _sizes = ["medium", "large", "fillParent"];
+
+  private _format = "dd-MM-yyyy";
 
   private _isOpenClicked: boolean = false;
   private _isCalendarOpened: boolean = false;

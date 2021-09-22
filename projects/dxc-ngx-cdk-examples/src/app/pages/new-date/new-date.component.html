@@ -118,12 +118,14 @@
 </div>
 
 <div className="test-case" id="dark-date" style="background-color: black">
-  <h4>Dark</h4>
-  <dxc-new-date
-    label="Date of birth"
-    format="dd-MM-yyyy"
-    margin="xsmall"
-    helperText="helper text"
-  >
-  </dxc-new-date>
+  <h4 style="color: white">Dark</h4>
+  <background-provider color="#000000">
+    <dxc-new-date
+      label="Date of birth"
+      format="dd-MM-yyyy"
+      margin="xsmall"
+      helperText="helper text"
+    >
+    </dxc-new-date>
+  </background-provider>
 </div>

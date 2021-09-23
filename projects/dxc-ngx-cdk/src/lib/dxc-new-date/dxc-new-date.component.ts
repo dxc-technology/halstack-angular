@@ -92,7 +92,7 @@ export class DxcNewDateComponent implements OnInit {
   @Input()
   margin: Object | string;
 
-  @Input() size: string;
+  @Input() size: string = "medium";
 
   @Input()
   tabIndex: number;
@@ -137,8 +137,6 @@ export class DxcNewDateComponent implements OnInit {
   @ViewChild("dxcCalendar", { read: ElementRef }) calendar: ElementRef;
 
   private _sizes = ["medium", "large", "fillParent"];
-
-  private _format = "dd-MM-yyyy";
 
   private _isOpenClicked: boolean = false;
   private _isCalendarOpened: boolean = false;

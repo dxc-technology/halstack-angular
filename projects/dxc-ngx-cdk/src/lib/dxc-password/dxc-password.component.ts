@@ -62,7 +62,7 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   tabIndex: number;
 
   @Input()
-  size: string;
+  size: string = "medium";
 
   defaultInputs = new BehaviorSubject<any>({
     error: "",

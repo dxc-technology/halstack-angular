@@ -204,7 +204,7 @@ export class DxcNewInputTextHelper {
         font-style: var(--input-helperTextFontStyle);
         font-weight: var(--input-helperTextFontWeight);
         line-height: 1.5em;
-        height: 18px;
+        min-height: 18px;
       }
 
       .inputContainer {

@@ -317,7 +317,7 @@ export class DxcNewInputTextHelper {
         font-style: var(--input-errorFontStyle);
         font-weight: var(--input-errorFontWeight);
         line-height: 1.5em;
-        height: 18px;
+        min-height: 18px;
       }
 
       dxc-new-input-text-action {

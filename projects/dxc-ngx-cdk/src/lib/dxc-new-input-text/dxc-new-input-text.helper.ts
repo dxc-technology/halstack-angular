@@ -191,7 +191,7 @@ export class DxcNewInputTextHelper {
         font-style: var(--input-labelFontStyle);
         font-weight: var(--input-labelFontWeight);
         line-height: 1.75em;
-        height: 24px;
+        min-height: 24px;
       }
       .inputOptionalLabel {
         font-weight: var(--input-optionalLabelFontWeight);

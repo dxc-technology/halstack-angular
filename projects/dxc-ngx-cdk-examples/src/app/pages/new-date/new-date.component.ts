@@ -8,6 +8,8 @@ export class NewDateComponent implements OnInit {
 
   inputValue = "01-01-1995";
 
+  value = "01-01-1995";
+
   error = "";
 
   constructor() { }
@@ -19,8 +21,12 @@ export class NewDateComponent implements OnInit {
     this.inputValue = value;
   }
 
+  onChangeValue(value){
+    this.value = value;
+  }
+  
   onBlur({ value, error }){
-    this.inputValue = value;
+    this.value = value;
     error ? this.error = "Fecha inválida." :  this.error = null;
   }
 

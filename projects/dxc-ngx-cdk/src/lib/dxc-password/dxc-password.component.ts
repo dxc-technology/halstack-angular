@@ -37,7 +37,14 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   helperText: string;
 
   @Input()
-  clearable = true;
+  get clearable(): boolean {
+    return this._clearable;
+  }
+  set clearable(value: boolean) {
+    this._clearable = coerceBooleanProperty(value);
+  }
+  private _clearable = false;
+
 
   @Input()
   error = "";
@@ -55,7 +62,7 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   tabIndex: number;
 
   @Input()
-  size: string;
+  size: string = "medium";
 
   defaultInputs = new BehaviorSubject<any>({
     error: "",
@@ -64,7 +71,8 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
     label: "",
     margin: "",
     tabIndex: 0,
-    size: "medium"
+    size: "medium",
+    clearable: false
   });
 
   @Output()

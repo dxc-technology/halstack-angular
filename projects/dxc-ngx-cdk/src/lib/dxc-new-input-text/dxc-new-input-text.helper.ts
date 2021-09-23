@@ -5,9 +5,9 @@ import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 @Injectable()
 export class DxcNewInputTextHelper {
-
   sizes = {
-    medium: "240px",
+    small: "240px",
+    medium: "360px",
     large: "480px",
     fillParent: "100%",
   };

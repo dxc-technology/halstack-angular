@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-number',
-  templateUrl: './number.component.html'
+  selector: "app-number",
+  templateUrl: "./number.component.html",
 })
 export class NumberComponent implements OnInit {
+  value = "";
 
-  numberValue = "12";
+  errorMessage = "";
 
-  numberOnChange(event) {
-    this.numberValue = event.value;
+  onChange(event) {
+    this.value = event;
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onBlur({ value, error }) {
+    this.value = value;
+    this.errorMessage = error ? "Custom error" : null;
   }
 
+  constructor() {}
+
+  ngOnInit(): void {}
 }

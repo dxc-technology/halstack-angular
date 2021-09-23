@@ -10,6 +10,8 @@
   (onBlur)="handleOnBlur($event)"
   (onChange)="handleOnChange($event)"
   [tabIndex]="tabIndex"
+  [disabled]="disabled"
+  [optional]="optional"
 >
   <ng-content select="dxc-input-text-suffix" ngProjectAs="dxc-input-text-suffix"></ng-content>
   <ng-content select="dxc-input-text-prefix" ngProjectAs="dxc-input-text-prefix"></ng-content>

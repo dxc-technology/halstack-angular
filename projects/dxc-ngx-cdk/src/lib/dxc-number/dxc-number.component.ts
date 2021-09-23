@@ -93,7 +93,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   tabIndex: number;
 
   @Input()
-  size: string;
+  size: string = "medium";
 
   private controlled: boolean;
 

@@ -1,25 +1,33 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DxcNewInputTextComponent } from '@dxc-technology/halstack-angular';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { DxcNewInputTextComponent } from "@dxc-technology/halstack-angular";
+import { of, throwError } from "rxjs";
+import { switchMap, delay } from "rxjs/operators";
 
 @Component({
-  selector: 'new-input-text',
-  templateUrl: './new-input-text.component.html'
+  selector: "new-input-text",
+  templateUrl: "./new-input-text.component.html",
 })
 export class NewInpuTextComponent implements OnInit {
+  @ViewChild("dxcInputRef", { static: false })
+  dxcInputRef: DxcNewInputTextComponent;
 
-  @ViewChild("dxcInputRef", { static: false }) dxcInputRef: DxcNewInputTextComponent;
+  constructor() {}
 
-  controlledValue = "c";
+  controlledValue = "Example text";
+
+  suggestionsValue = "";
+
+  suggestionsFValue = "";
 
   numberValue = "12";
 
   errorMessage = "";
 
   numberOnChange(event) {
-    this.numberValue = event.value;
+    this.numberValue = event;
   }
 
-  lengthLimit={min: 2, max: 5}
+  lengthLimit = { min: 5, max: 10 };
 
   options: Array<any> = [
     "Albania",
@@ -46,9 +54,47 @@ export class NewInpuTextComponent implements OnInit {
     this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  showError(event) {
+    this.errorMessage = event.error;
+    console.log(event.error);
   }
 
+  ngOnInit(): void {
+    this.callbackFunc = this.callbackFunc.bind(this);
+  }
+
+  //
+  onBlur({ value, error }) {
+    this.controlledValue = value;
+    this.errorMessage = error ? "BLUR error" : null;
+  }
+
+  onChange(value) {
+    this.controlledValue = value;
+  }
+
+  onChangeSuggestions(value) {
+    console.log("onChangeSuggestions value", value);
+    this.suggestionsValue = value;
+  }
+
+  onChangeFSuggestions({ value }) {
+    this.suggestionsFValue = value;
+  }
+
+  callbackFunc(newValue) {
+    this.options = this.options.filter((option) =>
+      option.toUpperCase().includes(newValue.toUpperCase())
+    );
+    return of(this.options).pipe(
+      switchMap((options) => of(options).pipe(delay(1000)))
+    );
+  }
+
+  errorCallbackFunc() {
+    return of(42).pipe(
+      delay(3000),
+      switchMap(() => throwError("err"))
+    );
+  }
 }

@@ -1,124 +1,130 @@
-import { render, fireEvent, waitFor } from "@testing-library/angular";
+import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
-import { CommonModule } from "@angular/common";
 import { DxcPasswordComponent } from "./dxc-password.component";
 import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
-import { FormsModule } from "@angular/forms";
+import userEvent from '@testing-library/user-event';
 
 describe("DxcPasswordComponent", () => {
   test("should render dxc-password", async () => {
-    const input = await render(DxcPasswordComponent, {
+    await render(DxcPasswordComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
       },
-      imports: [CommonModule, DxcNewInputTextModule],
+      imports: [DxcNewInputTextModule],
     });
 
-    expect(input.getByText("test-input"));
-    expect(input.getByText("helper-text"));
+    expect(screen.queryByText("test-input")).toBeInTheDocument();
+    expect(screen.queryByText("helper-text")).toBeInTheDocument();
   });
 
   test("should clear input password", async () => {
     const onChange = jest.fn();
-    const input = await render(DxcPasswordComponent, {
-      template: `<dxc-password
-            label="Input label"
-            helperText="helper text"
-            margin="small"
-            value="password-test"
-            (onChange)="onChange($event)"
-          ></dxc-password>`,
-      imports: [CommonModule, DxcNewInputTextModule],
-      componentProperties: { onChange },
+    await render(DxcPasswordComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        value: "password-test",
+        clearable: true,
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [DxcNewInputTextModule],
     });
 
-    expect(input.getByText("Input label"));
-    expect(input.getByText("helper text"));
+    const btn = screen.getByLabelText("Clear");
+
+    expect(screen.queryByText("test-input")).toBeInTheDocument();
     expect(screen.getByDisplayValue("password-test")).toBeTruthy();
-    fireEvent.click(input.getByLabelText("Clear"));
-    input.detectChanges();
+    fireEvent.click(btn);
     expect(onChange).toHaveBeenCalledWith("");
   });
 
   test("should mask input password", async () => {
     const onChange = jest.fn();
-    const input = await render(DxcPasswordComponent, {
-      template: `<dxc-password
-            label="Input label"
-            helperText="helper text"
-            margin="small"
-            value="password-test"
-            (onChange)="onChange($event)"
-          ></dxc-password>`,
-      imports: [CommonModule, DxcNewInputTextModule],
-      componentProperties: { onChange },
+    await render(DxcPasswordComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        value: "password-test",
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [DxcNewInputTextModule],
     });
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    const btn = screen.getByLabelText("Action");
 
-    expect(input.getByText("Input label"));
-    expect(input.getByText("helper text"));
     expect(screen.getByDisplayValue("password-test")).toBeTruthy();
-    expect(document.querySelector("input[type=password]")).toBeTruthy();
-    fireEvent.click(input.getByLabelText("Action"));
-    input.detectChanges();
-    expect(document.querySelector("input[type=text]")).toBeTruthy();
-    fireEvent.click(input.getByLabelText("Action"));
-    input.detectChanges();
-    expect(document.querySelector("input[type=password]")).toBeTruthy();
+    expect(input.type).toBe("password");
+    fireEvent.click(btn);
+    expect(input.type).toBe("text");
+    fireEvent.click(btn);
+    expect(input.type).toBe("password");
   });
 
-  test("controlled dxc-input-text onError pattern", async () => {
-    const onInputFunction = jest.fn();
-    const onBlurFunction = jest.fn();
-    const onErrorFunction = jest.fn();
-    const newValue = "new value";
-    const dxcInput = await render(DxcPasswordComponent, {
+  test("controlled dxc-input-text error pattern", async () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+
+    await render(DxcPasswordComponent, {
       componentProperties: {
         label: "test-input",
         clearable: true,
         value: "initial",
-        onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any,
-        onError: { emit: onErrorFunction } as any,
         pattern: ".{10,15}",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
-      imports: [CommonModule, DxcNewInputTextModule],
+      imports: [DxcNewInputTextModule],
     });
 
-    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    await waitFor(() => {
-      fireEvent.blur(input);
-      expect(onErrorFunction).toHaveBeenCalledWith(
-        "Please use a valid pattern"
-      );
-    });
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "initial" });
   });
 
   test("controlled dxc-input-text onError length", async () => {
-    const onInputFunction = jest.fn();
-    const onErrorFunction = jest.fn();
-    const newValue = "newaaaaaaaaa";
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
     const lengthLimit = { min: 2, max: 5 };
-    const dxcInput = await render(DxcPasswordComponent, {
+
+    await render(DxcPasswordComponent, {
       componentProperties: {
         label: "test-input",
         clearable: true,
-        onChange: { emit: onInputFunction } as any,
-        onError: { emit: onErrorFunction } as any,
-        length: lengthLimit
+        value: "initial",
+        length: lengthLimit,
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
-      imports: [CommonModule, DxcNewInputTextModule],
+      imports: [DxcNewInputTextModule],
     });
 
-    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
-    fireEvent.focus(input);
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    await waitFor(() => {
-      fireEvent.blur(input);
-      expect(onErrorFunction).toHaveBeenCalledWith("Please shorthen this text to 5 characters or less");
-    });
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ error: "Min length 2, Max length 5", value: "initial" });
   });
 });

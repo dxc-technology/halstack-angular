@@ -45,16 +45,15 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   }
   private _clearable = false;
 
-
   @Input()
   error = "";
-  
+
   @Input()
   pattern = "";
 
   @Input()
   margin: Object | string;
-  
+
   @Input()
   length = { min: undefined, max: undefined };
 
@@ -72,7 +71,7 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
     margin: "",
     tabIndex: 0,
     size: "medium",
-    clearable: false
+    clearable: false,
   });
 
   @Output()
@@ -84,7 +83,8 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   @Output()
   onError = new EventEmitter<any>(true);
 
-  @ViewChild("dxcInput", { static: false }) dxcInputRef: DxcNewInputTextComponent;
+  @ViewChild("dxcInput", { static: false })
+  dxcInputRef: DxcNewInputTextComponent;
 
   hidden: boolean = true;
 
@@ -99,16 +99,30 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.type = "password";
+
+    if (this.value === undefined) {
+      this.value = "";
+      this.controlled = false;
+    } else {
+      this.controlled = true;
+    }
+
     this.className = `${this.helper.getDynamicStyle(
       this.defaultInputs.getValue()
-    )}`;    
+    )}`;
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.dxcInputRef.inputRef.nativeElement.attributes.type.value = this.type;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (this.dxcInputRef && this.dxcInputRef.inputRef) {
+      this.controlled
+        ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
+        : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
+    }
+
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -120,31 +134,40 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   }
 
   handleOnChange(event) {
-    this.value = event;
-    this.onChange.emit(event);
-    this.controlled ? event = this.value : this.value = event;
+    if (this.value !== event) {
+      this.onChange.emit(event);
+    }
+    if (!this.controlled) {
+      this.value = event;
+    } else {
+      setTimeout(() => {
+        if (this.dxcInputRef.inputRef.nativeElement.value !== this.value) {
+          this.dxcInputRef.inputRef.nativeElement.value = this.value;
+          this.cdRef.detectChanges();
+        }
+      }, 0);
+    }
     this.cdRef.detectChanges();
   }
 
   handleOnBlur(event) {
     this.onBlur.emit({ value: event.value, error: event.error });
-    this.handleInternalValue({value: event.value, nativeValue: null });
     if (!this.controlled) {
       this.value = event.value;
       this.cdRef.detectChanges();
     }
   }
-  
-  handleMaskPassword(){
-    this.hidden ? this.type = "text" : this.type = "password";
+
+  handleMaskPassword() {
+    this.hidden ? (this.type = "text") : (this.type = "password");
     this.hidden = !this.hidden;
     this.dxcInputRef.inputRef.nativeElement.attributes.type.value = this.type;
   }
 
-  private handleInternalValue({value, nativeValue}){
+  private handleInternalValue({ value, nativeValue }) {
     if (!this.controlled) {
       this.value = value;
-      if (nativeValue){
+      if (nativeValue) {
         this.dxcInputRef.inputRef.nativeElement.value = nativeValue;
       }
       this.cdRef.detectChanges();

@@ -201,27 +201,27 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.dxcInputRef && this.dxcInputRef.inputRef) {
-      this.controlled
-        ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-        : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
-    }
     this.className = `${this.helper.getDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
   }
 
   handleOnChange(event) {
+    this.value = event;
     this.onChange.emit(event);
-    this.controlled
-      ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-      : (this.value = event);
     this.cdRef.detectChanges();
+    // this.controlled
+    //   ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
+    //   : (this.value = event);
   }
 
   handleOnBlur(event) {
     this.validationError = this.validateOnBlur();
     this.onBlur.emit({ value: event.value, error: this.validationError });
+    // if (!this.controlled) {
+    //   this.value = event.value;
+    //   this.cdRef.detectChanges();
+    // }
   }
 
   validateOnBlur() {
@@ -242,8 +242,68 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
 
   handleStepMinus() {
     this.handleOnBlur({ value: this.value });
-    const currentValue = coerceNumberProperty(this.value);
+    let currentValue;
+    if (this.value === null || this.value === undefined) {
+      currentValue = 0;
+    } else {
+      currentValue = coerceNumberProperty(this.value);
+    }
+    this.calculateMinus(currentValue);
+    if (this.controlled) {
+      if (this.dxcInputRef.inputRef.nativeElement.value !== this.value) {
+        this.dxcInputRef.inputRef.nativeElement.value = this.value;
+        this.cdRef.detectChanges();
+      }
+    }
+    this.handleOnChange(this.value);
+    this.dxcInputRef.inputRef.nativeElement.focus();
+  }
 
+  handleStepPlus() {
+    this.handleOnBlur({ value: this.value });
+    let currentValue;
+    if (this.value === null || this.value === undefined) {
+      currentValue = 0;
+    } else {
+      currentValue = coerceNumberProperty(this.value);
+    }
+    this.calculatePlus(currentValue);
+    if (this.controlled) {
+      if (this.dxcInputRef.inputRef.nativeElement.value !== this.value) {
+        this.dxcInputRef.inputRef.nativeElement.value = this.value;
+        this.cdRef.detectChanges();
+      }
+    }
+    this.handleOnChange(this.value);
+    this.dxcInputRef.inputRef.nativeElement.focus();
+  }
+
+  calculatePlus(currentValue: number) {
+    if (this.max && currentValue > this.max) {
+      this.value = currentValue;
+    } else if (this.min && (currentValue < this.min || this.value === "")) {
+      this.value = this.min;
+    } else if (
+      this.max &&
+      (currentValue === this.max ||
+        (this.step && currentValue + this.step > this.max))
+    ) {
+      this.value = this.max;
+    } else if (
+      (this.step && this.max && currentValue + this.step <= this.max) ||
+      (this.step && this.value !== "")
+    ) {
+      this.value = currentValue + this.step;
+    } else if (this.step && this.value === "") {
+      this.value = this.step;
+    } else if (this.value === "") {
+      this.value = 1;
+    } else {
+      this.value = currentValue + 1;
+    }
+  }
+
+  calculateMinus(currentValue: number) {
     if (this.min && currentValue < this.min && this.value !== "") {
       this.value = currentValue;
     } else if (this.max && currentValue > this.max) {
@@ -267,39 +327,6 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.value = currentValue - 1;
     }
-
-    this.handleOnChange(this.value);
-    this.dxcInputRef.inputRef.nativeElement.focus();
-  }
-
-  handleStepPlus() {
-    this.handleOnBlur({ value: this.value });
-    const currentValue = coerceNumberProperty(this.value);
-
-    if (this.max && currentValue > this.max) {
-      this.value = currentValue;
-    } else if (this.min && (currentValue < this.min || this.value === "")) {
-      this.value = this.min;
-    } else if (
-      this.max &&
-      (currentValue === this.max ||
-        (this.step && currentValue + this.step > this.max))
-    ) {
-      this.value = this.max;
-    } else if (
-      (this.step && this.max && currentValue + this.step <= this.max) ||
-      (this.step && this.value !== "")
-    ) {
-      this.value = currentValue + this.step;
-    } else if (this.step && this.value === "") {
-      this.value = this.step;
-    } else if (this.value === "") {
-      this.value = 1;
-    } else {
-      this.value = currentValue + 1;
-    }
-    this.handleOnChange(this.value);
-    this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
   isFocus() {

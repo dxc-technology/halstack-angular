@@ -127,7 +127,7 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   }
 
   handleOnBlur(event) {
-    this.onBlur.emit({ value: event.value });
+    this.onBlur.emit({ value: event.value, error: event.error });
     this.handleInternalValue({value: event.value, nativeValue: null });
     if (!this.controlled) {
       this.value = event.value;

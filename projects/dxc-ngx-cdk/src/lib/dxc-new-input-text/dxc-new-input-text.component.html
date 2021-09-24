@@ -27,7 +27,7 @@
     [pattern]="pattern"
     [tabindex]="tabIndex"
   />
-  <span *ngIf="error && !disabled" class="inputErrorIcon" aria-label="Error">
+  <span *ngIf="(error || validationError) && !disabled" class="inputErrorIcon" aria-label="Error">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"

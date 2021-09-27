@@ -92,8 +92,7 @@ export class ResourceRequestService {
   createEnitiyPath(href: string): string {
     return this.getServer(ServiceRequest.ENTITYSERVER, this.config.configservice) + '/' + href;
   }
-
-
+  
   private resourceRequest(request: IRequest): Observable<any> {
 
     switch (request.methodtype) {

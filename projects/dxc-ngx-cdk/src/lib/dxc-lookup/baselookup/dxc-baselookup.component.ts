@@ -56,7 +56,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   @Input('customtoolbar') customtoolbar: boolean = false;
   @Input('custompanel') customPanel = false;
   @Input('overridemodal') overrideModal = false;
-  @Input('allowServerFilter') allowServerFilter: true;
+  @Input('allowServerFilter') allowServerFilter: boolean = true;
   @Input() disabled = false;
   @Input('displayfn') displayFn: (input: T) => string;
   @Input('resultformatfn') resultFormatfn: (input: T) => T;

@@ -21,6 +21,7 @@ export class InterceptorService implements HttpInterceptor {
   private _logService;
   private _loaderService;
   private _prefixChild = '';
+  private requests: HttpRequest<any>[] = [];
   constructor(
     private http: HttpClient,
     private injector: Injector,
@@ -32,43 +33,48 @@ export class InterceptorService implements HttpInterceptor {
     this._loaderService = this.injector.get(LoaderService);
     this._logService = this.injector.get(MessageService);
   }
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this._prefixChild = this._localStorageService['prefixChild'] != null ? this._localStorageService['prefixChild'] : '';
     if (!request.url.endsWith('.json')) {
-      this._loaderService.show();
+      if (this.config && this.config.enableLoader == true) {
+        this.requests.push(request);
+        this._loaderService.show();
+      }
+      this.config.enableLoader = true;
       this.processRequest();
     }
 
- if (this.config && this.config.configservice && this.config.configservice.SERVER &&
+    if (this.config && this.config.configservice && this.config.configservice.SERVER &&
       Object.values(this.config.configservice.SERVER).findIndex(((
-      (x) => { return request.url.startsWith(x); })), request.url) > -1) {
-        const header = new HttpHeaders();
-        const headerJson = {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: 'bearer ' + this._localStorageService.get(`${this._prefixChild}session`) as string,
-          clientId: this._localStorageService.get('clientId') as string
-        };
-      
-        if(this._localStorageService.get('cognito-idToken')) {
+        (x) => { return request.url.startsWith(x); })), request.url) > -1) {
+      const header = new HttpHeaders();
+      const headerJson = {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'bearer ' + this._localStorageService.get(`${this._prefixChild}session`) as string,
+        clientId: this._localStorageService.get('clientId') as string
+      };
+
+      if (this._localStorageService.get('cognito-idToken')) {
         headerJson['cognito-idToken'] = this._localStorageService.get('cognito-idToken');
-        }
-      
-        const headersConfig = new HttpHeaders(headerJson);
-    
-        request = request.clone({
-          headers: headersConfig
-        });
+      }
+
+      const headersConfig = new HttpHeaders(headerJson);
+
+      request = request.clone({
+        headers: headersConfig
+      });
     }
 
     return next.handle(request).pipe(
       tap(ev => {
         let event = (ev as unknown as any);
         if (event.type !== 0 && !request.url.endsWith('.json')) {
-          this._loaderService.hide();
+          this.removeRequest(request);
           if (event.type === 4 && event['body'] !== undefined && event['body'] !== null
             && event['body'].errors !== undefined && event['body'].errors !== null) {
-              event['body'].errors.forEach(err => {
+            event['body'].errors.forEach(err => {
               if (err.type === 2) {
                 this._logService.Error(err.message, '');
               }
@@ -103,10 +109,10 @@ export class InterceptorService implements HttpInterceptor {
             try {
               if (error.error != null && !error.error.hasOwnProperty('message')) {
                 const message = error.error.Message === undefined ? error.error : error.error.Message;
-                this._loaderService.hide();
+                this.removeRequest(request);
                 this._logService.Error(message, '');
               } else {
-                this._loaderService.hide();
+                this.removeRequest(request);
               }
             } catch (ex) {
             }
@@ -200,15 +206,15 @@ export class InterceptorService implements HttpInterceptor {
                   newAccessToken: refreshedAccessToken,
                   oldAccessToken: vm._localStorageService.get('cognito-accesstoken')
                 }, {
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'bearer ' + vm._localStorageService.get(`${this._prefixChild}session`),
-                    'clientId': vm.
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'bearer ' + vm._localStorageService.get(`${this._prefixChild}session`),
+                  'clientId': vm.
                     _localStorageService.get('clientId'),
-                    'IsFromUX': 'true',
-                    'ViewId': vm._localStorageService.get('currentViewId')
-                  }
-                }).subscribe
+                  'IsFromUX': 'true',
+                  'ViewId': vm._localStorageService.get('currentViewId')
+                }
+              }).subscribe
                 (function (response) {
                   vm._localStorageService.set('session', refreshedAccessToken);
                   vm._localStorageService.set('cognito-idToken', refreshedIdToken);
@@ -226,7 +232,16 @@ export class InterceptorService implements HttpInterceptor {
     }
   }
 
+  removeRequest(req: HttpRequest<any>) {
+    const i = this.requests.indexOf(req);
+    if (i >= 0) {
+      this.requests.splice(i, 1);
+    }
+    this._loaderService.hide();
+  }
+
 }
+
 function SetCookie(cookieName, cookieValue, nDays) {
   var today = new Date();
   var expire = new Date();

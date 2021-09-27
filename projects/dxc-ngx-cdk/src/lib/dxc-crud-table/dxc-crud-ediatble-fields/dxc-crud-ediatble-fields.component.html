@@ -84,7 +84,7 @@
       </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.crudLookup">
-      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="field.required"
+      <dxc-crud-lookup [mode]="lookupMode.GRID" [ariaRequired]="field.required" [addrequired]="field.addrequired"
         [removeiconarialabel]="resource[field.label]" ariaLabelledBy="cl_{{field.name}}" 
         [autosearchrequired]="field.autosearchrequired" [minimumColumns]="field.minimumColumns"
         [maximumColumns]="field.maximumColumns" [label]="resource[field.label]"
@@ -96,9 +96,9 @@
     </div>
     <div *ngSwitchCase="fieldsType.userLookup">
       <dxc-user-lookup [label]="resource[field.label]" [ariaRequired]="field.required" ariaLabelledBy="cl_{{field.name}}" 
-        [userlookupoptions]="field.userLookupOptions" id="ctrl_{{field.name}}" [mode]="lookupMode.GRID"
-        [removeiconarialabel]="resource[field.label]" [gridmode]="GridModeValues.MODAl"
-        [lookuptype]="lookupType.SINGLE" [usergridrequest]="userGridRequest"
+        [userlookupoptions]="field.userLookupOptions" id="ctrl_{{field.name}}" [mode]="field.mode"
+        [removeiconarialabel]="resource[field.label]" [gridmode]="field.gridMode"
+        [lookuptype]="field.lookupType" [usergridrequest]="userGridRequest"
         [lookupresourcerequest]="lookupResourceRequest" [usergridstaterequest]="userGridStateRequest"
         [resourcerequest]="resourceRequest" formControlName="{{field.name}}">
       </dxc-user-lookup>

@@ -34,7 +34,7 @@ describe("DxcInputNumberComponent", () => {
 
   test("should call onChange", async () => {
     const onChange = jest.fn();
-    await render(DxcNumberComponent, {
+    const dxcNumber = await render(DxcNumberComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -49,14 +49,23 @@ describe("DxcInputNumberComponent", () => {
     });
 
     const btn = screen.getAllByRole("button");
+    const input = <HTMLInputElement>screen.getByRole("textbox");
 
     expect(screen.queryByText("test-input")).toBeInTheDocument();
+    input.focus();
+    expect(input).toHaveFocus();
     fireEvent.click(btn[1]);
+    dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith(10);
     fireEvent.click(btn[1]);
+    dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith(15);
+    fireEvent.click(btn[1]);
+    dxcNumber.detectChanges();
+    expect(onChange).toHaveBeenCalledWith(20);
     fireEvent.click(btn[0]);
-    expect(onChange).toHaveBeenCalledWith(10);
+    dxcNumber.detectChanges();
+    expect(onChange).toHaveBeenCalledWith(15);
   });
 
   test("controlled input", async () => {

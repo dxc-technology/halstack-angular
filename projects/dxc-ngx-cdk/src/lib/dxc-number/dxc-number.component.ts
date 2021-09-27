@@ -207,21 +207,20 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnChange(event) {
-    this.value = event;
-    this.onChange.emit(event);
     this.cdRef.detectChanges();
-    // this.controlled
-    //   ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-    //   : (this.value = event);
+    this.onChange.emit(event);
+    this.controlled
+      ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
+      : (this.value = event);
   }
 
   handleOnBlur(event) {
     this.validationError = this.validateOnBlur();
     this.onBlur.emit({ value: event.value, error: this.validationError });
-    // if (!this.controlled) {
-    //   this.value = event.value;
-    //   this.cdRef.detectChanges();
-    // }
+    if (!this.controlled) {
+      this.value = event.value;
+      this.cdRef.detectChanges();
+    }
   }
 
   validateOnBlur() {
@@ -235,11 +234,6 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     return err;
   }
 
-  handleOnKeyDown(event) {
-    switch (event.key) {
-    }
-  }
-
   handleStepMinus() {
     this.handleOnBlur({ value: this.value });
     let currentValue;
@@ -248,14 +242,8 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       currentValue = coerceNumberProperty(this.value);
     }
-    this.calculateMinus(currentValue);
-    if (this.controlled) {
-      if (this.dxcInputRef.inputRef.nativeElement.value !== this.value) {
-        this.dxcInputRef.inputRef.nativeElement.value = this.value;
-        this.cdRef.detectChanges();
-      }
-    }
-    this.handleOnChange(this.value);
+    let calculatedValue = this.calculateMinus(currentValue);
+    this.handleOnChange(calculatedValue);
     this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
@@ -267,66 +255,64 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       currentValue = coerceNumberProperty(this.value);
     }
-    this.calculatePlus(currentValue);
-    if (this.controlled) {
-      if (this.dxcInputRef.inputRef.nativeElement.value !== this.value) {
-        this.dxcInputRef.inputRef.nativeElement.value = this.value;
-        this.cdRef.detectChanges();
-      }
-    }
-    this.handleOnChange(this.value);
+    let calculatedValue = this.calculatePlus(currentValue);
+    this.handleOnChange(calculatedValue);
     this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
   calculatePlus(currentValue: number) {
+    let calculated = this.value;
     if (this.max && currentValue > this.max) {
-      this.value = currentValue;
+      calculated = currentValue;
     } else if (this.min && (currentValue < this.min || this.value === "")) {
-      this.value = this.min;
+      calculated = this.min;
     } else if (
       this.max &&
       (currentValue === this.max ||
         (this.step && currentValue + this.step > this.max))
     ) {
-      this.value = this.max;
+      calculated = this.max;
     } else if (
       (this.step && this.max && currentValue + this.step <= this.max) ||
       (this.step && this.value !== "")
     ) {
-      this.value = currentValue + this.step;
+      calculated = currentValue + this.step;
     } else if (this.step && this.value === "") {
-      this.value = this.step;
+      calculated = this.step;
     } else if (this.value === "") {
-      this.value = 1;
+      calculated = 1;
     } else {
-      this.value = currentValue + 1;
+      calculated = currentValue + 1;
     }
+    return calculated;
   }
 
   calculateMinus(currentValue: number) {
+    let calculated = this.value;
     if (this.min && currentValue < this.min && this.value !== "") {
-      this.value = currentValue;
+      calculated = currentValue;
     } else if (this.max && currentValue > this.max) {
-      this.value = this.max;
+      calculated = this.max;
     } else if (
       this.min &&
       (currentValue === this.min ||
         this.value === "" ||
         (this.step && currentValue - this.step < this.min))
     ) {
-      this.value = this.min;
+      calculated = this.min;
     } else if (
       (this.step && this.min && currentValue - this.step >= this.min) ||
       (this.step && this.value !== "")
     ) {
-      this.value = currentValue - this.step;
+      calculated = currentValue - this.step;
     } else if (this.step && this.value === "") {
-      this.value = -this.step;
+      calculated = -this.step;
     } else if (this.value === "") {
-      this.value = -1;
+      calculated = -1;
     } else {
-      this.value = currentValue - 1;
+      calculated = currentValue - 1;
     }
+    return calculated;
   }
 
   isFocus() {

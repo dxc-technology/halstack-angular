@@ -32,7 +32,7 @@ describe("DxcInputNumberComponent", () => {
     expect(screen.queryByText("important error")).toBeInTheDocument();
   });
 
-  test("should call onChange", async () => {
+  test("should call onChange in dxc-number", async () => {
     const onChange = jest.fn();
     const dxcNumber = await render(DxcNumberComponent, {
       componentProperties: {
@@ -48,27 +48,26 @@ describe("DxcInputNumberComponent", () => {
       imports: [DxcNewInputTextModule],
     });
 
-    const btn = screen.getAllByRole("button");
     const input = <HTMLInputElement>screen.getByRole("textbox");
 
     expect(screen.queryByText("test-input")).toBeInTheDocument();
     input.focus();
     expect(input).toHaveFocus();
-    fireEvent.click(btn[1]);
+    fireEvent.click(screen.getByLabelText("StepPlus"));
     dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith(10);
-    fireEvent.click(btn[1]);
+    fireEvent.click(screen.getByLabelText("StepPlus"));
     dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith(15);
-    fireEvent.click(btn[1]);
+    fireEvent.click(screen.getByLabelText("StepPlus"));
     dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith(20);
-    fireEvent.click(btn[0]);
+    fireEvent.click(screen.getByLabelText("StepMinus"));
     dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith(15);
   });
 
-  test("controlled input", async () => {
+  test("controlled dxc-number", async () => {
     const onChange = jest.fn();
     await render(DxcNumberComponent, {
       componentProperties: {
@@ -99,7 +98,7 @@ describe("DxcInputNumberComponent", () => {
     expect(screen.getByDisplayValue("4")).toBeTruthy();
   });
 
-  test("should call onBlur", async () => {
+  test("should call onBlur in dxc-number", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     await render(DxcNumberComponent, {

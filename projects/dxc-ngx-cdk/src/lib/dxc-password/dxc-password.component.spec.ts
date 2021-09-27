@@ -64,7 +64,7 @@ describe("DxcPasswordComponent", () => {
     expect(input.type).toBe("password");
   });
 
-  test("controlled dxc-input-text error pattern", async () => {
+  test("controlled dxc-password error pattern", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
 
@@ -95,7 +95,7 @@ describe("DxcPasswordComponent", () => {
     expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "initial" });
   });
 
-  test("controlled dxc-input-text onError length", async () => {
+  test("controlled dxc-password onError length", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     const lengthLimit = { min: 2, max: 5 };

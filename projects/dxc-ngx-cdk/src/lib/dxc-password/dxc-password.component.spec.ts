@@ -2,7 +2,6 @@ import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcPasswordComponent } from "./dxc-password.component";
 import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
-import userEvent from '@testing-library/user-event';
 
 describe("DxcPasswordComponent", () => {
   test("should render dxc-password", async () => {

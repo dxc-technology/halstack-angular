@@ -1,7 +1,4 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { DxcNewInputTextComponent } from "./dxc-new-input-text.component";
-
 import { render, fireEvent } from "@testing-library/angular";
 import { screen, waitFor } from "@testing-library/dom";
 import { CommonModule } from "@angular/common";
@@ -396,6 +393,6 @@ describe("DxcNewTextInputComponent", () => {
       expect(screen.getByDisplayValue(""));
     });
   });
-  });
+});
 
 

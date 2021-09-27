@@ -2,6 +2,7 @@ import { DxcNumberComponent } from "./dxc-number.component";
 
 import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
+import { waitFor } from "@testing-library/dom";
 
 describe("DxcInputNumberComponent", () => {
   test("should render dxc-number", async () => {
@@ -55,16 +56,24 @@ describe("DxcInputNumberComponent", () => {
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("StepPlus"));
     dxcNumber.detectChanges();
-    expect(onChange).toHaveBeenCalledWith(10);
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith(10);
+    });
     fireEvent.click(screen.getByLabelText("StepPlus"));
     dxcNumber.detectChanges();
-    expect(onChange).toHaveBeenCalledWith(15);
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith(15);
+    });
     fireEvent.click(screen.getByLabelText("StepPlus"));
     dxcNumber.detectChanges();
-    expect(onChange).toHaveBeenCalledWith(20);
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith(20);
+    });
     fireEvent.click(screen.getByLabelText("StepMinus"));
     dxcNumber.detectChanges();
-    expect(onChange).toHaveBeenCalledWith(15);
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith(15);
+    });
   });
 
   test("controlled dxc-number", async () => {

@@ -17,8 +17,7 @@
     (click)="handleOnClick()"
     type="text"
     class="inputText"
-    autocomplete="off"
-    role="textbox"
+    [attr.role]="suggestions ? 'combobox' : 'textbox'"
     [id]="id"
     [placeholder]="placeholder"
     [ngModel]="value"
@@ -26,8 +25,16 @@
     [disabled]="disabled"
     [pattern]="pattern"
     [tabindex]="tabIndex"
+    [attr.aria-activedescendant]="
+      suggestions && autosuggestVisible ? suggestions[focusedOption] : ''
+    "
+    [attr.aria-expanded]="autosuggestVisible"
   />
-  <span *ngIf="(error || validationError) && !disabled" class="inputErrorIcon" aria-label="Error">
+  <span
+    *ngIf="(error || validationError) && !disabled"
+    class="inputErrorIcon"
+    aria-label="Error"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -62,6 +69,7 @@
     </svg>
   </button>
   <button
+    #actionButton
     *ngIf="hasAction()"
     class="inputAction"
     (click)="handleActionOnClick($event)"
@@ -76,7 +84,7 @@
     *ngIf="isInputNumber"
     class="inputAction"
     [disabled]="disabled"
-    aria-label="Step"
+    aria-label="Decrement"
     [tabindex]="tabIndex"
   >
     <svg
@@ -95,7 +103,7 @@
     *ngIf="isInputNumber"
     class="inputAction"
     [disabled]="disabled"
-    aria-label="Step"
+    aria-label="Increment"
     [tabindex]="tabIndex"
   >
     <svg
@@ -141,6 +149,7 @@
       [innerHtml]="
         autosuggestType === 'async' ? item : (item | boldOptions: value)
       "
+      [id]="item"
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
       (mouseenter)="handleOnHover(i)"

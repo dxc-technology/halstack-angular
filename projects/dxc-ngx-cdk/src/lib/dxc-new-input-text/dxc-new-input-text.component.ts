@@ -119,6 +119,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild("autoSuggestOptions", { static: false }) optionsRef: ElementRef;
   @ViewChild("stepButtonMinus", { static: false }) stepButtonMinus: ElementRef;
   @ViewChild("stepButtonPlus", { static: false }) stepButtonPlus: ElementRef;
+  @ViewChild("actionButton", { static: false }) actionButton: ElementRef;
 
   autosuggestVisible: boolean = false;
 
@@ -213,10 +214,15 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.inputRef) {
+      console.log(
+        "this.suggestions && this.suggestions.length",
+        this.suggestions && this.suggestions.length
+      );
       if (this.suggestions && this.suggestions.length) {
         this.inputRef.nativeElement.attributes.role.value = "combobox";
-        this.inputRef.nativeElement.ariaExpanded = this.autosuggestVisible;
         this.inputRef.nativeElement.ariaControls = this.autoSuggestId;
+        this.inputRef.nativeElement.ariaAutocomplete = "list";
+        this.optionsRef.nativeElement.ariaLabel = this.label;
       }
       this.inputRef.nativeElement.ariaDisabled = this.disabled;
     }

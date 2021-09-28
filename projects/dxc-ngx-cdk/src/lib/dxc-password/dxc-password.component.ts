@@ -114,6 +114,10 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     this.dxcInputRef.inputRef.nativeElement.attributes.type.value = this.type;
+    this.dxcInputRef.actionButton.nativeElement.ariaExpanded = !this.hidden;
+    this.dxcInputRef.actionButton.nativeElement.ariaLabel = this.hidden
+      ? "Show"
+      : "Hide";
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -162,6 +166,10 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
     this.hidden ? (this.type = "text") : (this.type = "password");
     this.hidden = !this.hidden;
     this.dxcInputRef.inputRef.nativeElement.attributes.type.value = this.type;
+    this.dxcInputRef.actionButton.nativeElement.ariaExpanded = !this.hidden;
+    this.dxcInputRef.actionButton.nativeElement.ariaLabel = this.hidden
+      ? "Show"
+      : "Hide";
   }
 
   private handleInternalValue({ value, nativeValue }) {

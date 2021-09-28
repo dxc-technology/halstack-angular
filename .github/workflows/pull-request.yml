@@ -33,13 +33,13 @@ jobs:
       run: cd ./projects/dxc-ngx-cdk && npm run test-forms
 
     - name: Test library Navigation
-      run: npm run test-navigations
+      run: cd ./projects/dxc-ngx-cdk && npm run test-navigations
 
     - name: Test library Layout
-      run: npm run test-layout
+      run: cd ./projects/dxc-ngx-cdk && npm run test-layout
 
     - name: Test library Utilities
-      run: npm run test-utilities
+      run: cd ./projects/dxc-ngx-cdk && npm run test-utilities
 
     - name: Build angular cdk site
       run: cd . && npm run build-next-cdk-site

@@ -85,5 +85,5 @@ Run the tests from the library folder `projects\dxc-ngx-cdk` after the library d
 
 ```bash
 cd projects\dxc-ngx-cdk
-npm run test
+npm run test-all
 ```

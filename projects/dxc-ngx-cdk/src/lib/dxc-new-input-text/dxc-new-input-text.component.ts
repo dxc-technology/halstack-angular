@@ -272,22 +272,21 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleActionOnClick(event) {
-    this.handleOnBlur({ target: { value: this.value } });
+    this.handleOnBlur();
     this.onActionClick.emit(this.value);
   }
 
-  handleOnBlur(event) {
+  handleOnBlur() {
     const validationError = this.validateOnBlur();
     this.validationError = validationError;
     this.hasError = this.validationError ? true : false;
-    this.onBlur.emit({ value: event.target.value, error: validationError });
+    this.onBlur.emit({ value: this.value, error: validationError });
   }
 
   handleOnFocus() {
     if (!this.isDirty) {
       this.isDirty = true;
     }
-    this.inputRef.nativeElement.focus();
     if (
       this.suggestions &&
       (this.suggestions.length || this.autosuggestType === "async")

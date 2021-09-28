@@ -454,7 +454,7 @@ export const componentTokens = {
   "--newDate-pickerActualDate": globalTokens.lightGrey,
   "--newDate-pickerFontColor": globalTokens.hal_black,
   "--newDate-pickerHoverDateFontColor": globalTokens.hal_black,
-  "--newDate-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
+  "--newDate-pickerHoverDateBackgroundColor": globalTokens.lightPurple,
   "--newDate-focusColor": globalTokens.blue,
   "--newDate-pickerHoverHeaderColor": "#0000001F",
   "--newDate-pickerYearColor": globalTokens.hal_black,

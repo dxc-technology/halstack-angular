@@ -22,6 +22,7 @@ export class DxcTabComponent implements OnChanges {
   @Input() iconSrc: string;
   @Input() disabled: boolean;
   @Input() id: number;
+  @Input() notificationNumber: any;
   @Output() onTabClick = new EventEmitter<any>();
   @Output() onTabHover = new EventEmitter<any>();
 
@@ -37,6 +38,8 @@ export class DxcTabComponent implements OnChanges {
 
   iconPosition: string;
 
+  notificationValue: any;
+
   constructor(private cdRef: ChangeDetectorRef, private service: TabService) {
     this.service.iconPosition.subscribe((value) => {
       if (value) {
@@ -44,6 +47,13 @@ export class DxcTabComponent implements OnChanges {
         this.getLabelClass();
       }
     });
+  }
+
+  public ngOnInit(): void {
+    this.notificationValue =
+      typeof this.notificationNumber === "boolean"
+        ? ""
+        : this.notificationNumber;
   }
 
   public ngOnChanges(): void {

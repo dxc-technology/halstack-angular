@@ -203,6 +203,11 @@ export class CssUtils {
     }
   }
 
+  readProperty(name: string): string {
+    let bodyStyles = window.getComputedStyle(document.body);
+    return bodyStyles.getPropertyValue(name);
+}
+
   private isPropertyImportant(isImportant){
     return isImportant ? ' !important': '';
   }

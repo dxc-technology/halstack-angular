@@ -1,4 +1,5 @@
 import { render, fireEvent } from "@testing-library/angular";
+import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 import { DxcDialogComponent } from "./dxc-dialog.component";
 
 describe("DxcDialog tests", () => {
@@ -8,6 +9,7 @@ describe("DxcDialog tests", () => {
     const dxcDialog = await render(DxcDialogComponent, {
       template: `<dxc-dialog>${projection}</dxc-dialog>`,
       componentProperties: {},
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcDialog.getByText(projection));
@@ -18,6 +20,7 @@ describe("DxcDialog tests", () => {
     const dxcDialog = await render(DxcDialogComponent, {
       template: `<dxc-dialog (onCloseClick)="onCloseClickFunction()">${projection}</dxc-dialog>`,
       componentProperties: { onCloseClickFunction },
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcDialog.getByText(projection));
@@ -30,6 +33,7 @@ describe("DxcDialog tests", () => {
     const dxcDialog = await render(DxcDialogComponent, {
       template: `<dxc-dialog (onBackgroundClick)="onCloseClickFunction()">${projection}</dxc-dialog>`,
       componentProperties: { onCloseClickFunction },
+      imports: [BackgroundProviderModule],
     });
 
     expect(dxcDialog.getByText(projection));

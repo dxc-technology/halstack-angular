@@ -20,11 +20,12 @@ import {
 } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
+import { BackgroundProviderComponent } from '../background-provider/background-provider.component';
 
 @Component({
   selector: "dxc-accordion",
   templateUrl: "./dxc-accordion.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderComponent],
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   currentBackgroundColor: string;
@@ -104,6 +105,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.currentBackgroundColor = this.cssUtils.readProperty('--accordion-backgroundColor');
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

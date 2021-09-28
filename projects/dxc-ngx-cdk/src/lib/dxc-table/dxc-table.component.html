@@ -1,5 +1,7 @@
 <div id="divTable">
   <table>
-    <ng-content></ng-content>
+    <background-provider-inner color="{{ currentBackgroundColor }}">
+      <ng-content></ng-content>
+    </background-provider-inner>
   </table>
 </div>

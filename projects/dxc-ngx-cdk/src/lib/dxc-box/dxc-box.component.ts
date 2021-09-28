@@ -8,10 +8,11 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
+import { BackgroundProviderService } from '../background-provider/service/background-provider.service';
 @Component({
   selector: "dxc-box",
   templateUrl: "./dxc-box.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcBoxComponent implements OnInit {
   @HostBinding("class") className;
@@ -20,6 +21,7 @@ export class DxcBoxComponent implements OnInit {
   @Input() margin: any;
   @Input() padding: any;
   @Input() size: string;
+  currentBackgroundColor;
 
   sizes = {
     small: "60px",
@@ -57,6 +59,7 @@ export class DxcBoxComponent implements OnInit {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
+    this.currentBackgroundColor = this.utils.readProperty('--box-backgroundColor');
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

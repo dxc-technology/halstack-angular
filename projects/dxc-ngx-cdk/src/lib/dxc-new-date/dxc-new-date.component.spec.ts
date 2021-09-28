@@ -363,52 +363,52 @@ describe("DxcDate", () => {
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
   });
-});
 
-test("controlled dxc-date", async () => {
-  const onChange = jest.fn();
-  const onBlur = jest.fn();
-
-  await render(DxcNewDateComponent, {
-    componentProperties: {
-      label: "test-input",
-      value: "04-12-1995",
-      onChange: {
-        emit: onChange,
-      } as any,
-      onBlur: {
-        emit: onBlur,
-      } as any,
-    },
-    imports: [
-      MatMomentDateModule,
-      MatNativeDateModule,
-      MatInputModule,
-      MatDatepickerModule,
-      MdePopoverModule,
-      DxcBoxModule,
-      CommonModule,
-      DxcNewInputTextModule,
-    ],
-    providers: [
-      {
-        provide: DateAdapter,
-        useClass: MomentDateAdapter,
-        deps: [MAT_DATE_LOCALE],
+  test("controlled dxc-date", async () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+  
+    await render(DxcNewDateComponent, {
+      componentProperties: {
+        label: "test-input",
+        value: "04-12-1995",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
-      { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-    ],
+      imports: [
+        MatMomentDateModule,
+        MatNativeDateModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MdePopoverModule,
+        DxcBoxModule,
+        CommonModule,
+        DxcNewInputTextModule,
+      ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+      ],
+    });
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+  
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.input(input, { target: { value: "04-10-1996" } });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "04-10-1996",
+      date: new Date("1996/10/04"),
+    });
+    expect(screen.getByDisplayValue("04-12-1995"));
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "04-12-1995" });
   });
-  const input = <HTMLInputElement>screen.getByRole("textbox");
-
-  input.focus();
-  expect(input).toHaveFocus();
-  fireEvent.input(input, { target: { value: "04-10-1996" } });
-  expect(onChange).toHaveBeenCalledWith({
-    value: "04-10-1996",
-    date: new Date("1996/10/04"),
-  });
-  expect(screen.getByDisplayValue("04-12-1995"));
-  fireEvent.blur(input);
-  expect(onBlur).toHaveBeenCalledWith({ error: null, value: "04-12-1995" });
 });

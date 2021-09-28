@@ -54,22 +54,22 @@ describe("DxcInputNumberComponent", () => {
     expect(screen.queryByText("test-input")).toBeInTheDocument();
     input.focus();
     expect(input).toHaveFocus();
-    fireEvent.click(screen.getByLabelText("StepPlus"));
+    fireEvent.click(screen.getByLabelText("Increment"));
     dxcNumber.detectChanges();
     waitFor(() => {
       expect(onChange).toHaveBeenCalledWith(10);
     });
-    fireEvent.click(screen.getByLabelText("StepPlus"));
+    fireEvent.click(screen.getByLabelText("Increment"));
     dxcNumber.detectChanges();
     waitFor(() => {
       expect(onChange).toHaveBeenCalledWith(15);
     });
-    fireEvent.click(screen.getByLabelText("StepPlus"));
+    fireEvent.click(screen.getByLabelText("Increment"));
     dxcNumber.detectChanges();
     waitFor(() => {
       expect(onChange).toHaveBeenCalledWith(20);
     });
-    fireEvent.click(screen.getByLabelText("StepMinus"));
+    fireEvent.click(screen.getByLabelText("Decrement"));
     dxcNumber.detectChanges();
     waitFor(() => {
       expect(onChange).toHaveBeenCalledWith(15);

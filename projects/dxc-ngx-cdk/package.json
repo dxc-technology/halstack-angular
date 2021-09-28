@@ -16,6 +16,11 @@
     "generate-lib-win": "npm run build-lib && npm run post-build-lib-win && npm run package",
     "generate-lib-prod-win": "npm run build-lib-prod && npm run post-build-lib-win && npm run package",
     "test": "jest --config ./jest.lib.config.js",
+    "test-forms": "npm run test dxc-toggleGroup.component.spec.ts dxc-textarea.component.spec.ts dxc-switch.component.spec.ts dxc-slider.component.spec.ts dxc-select.component.spec.ts dxc-radio.component.spec.ts dxc-new-date.component.spec.ts dxc-input-text.component.spec.ts dxc-date.component.spec.ts dxc-number.component.spec.ts dxc-password.component.spec.ts dxc-new-input-text.component.spec.ts dxc-new-date.component.spec.ts dxc-button.component.spec.ts dxc-checkbox.component.spec.ts",
+    "test-navigations": "npm run test dxc-footer.component.spec.ts dxc-header.component.spec.ts dxc-tabs.component.spec.ts dxc-wizard.component.spec.ts",
+    "test-layout": "npm run test dxc-card.component.spec.ts dxc-sidenav.component.spec.ts dxc-tabbed-section.component.spec.ts dxc-tag.component.spec.ts",
+    "test-utilities": "npm run test dxc-upload.component.spec.ts dxc-spinner.component.spec.ts table.spec.ts dxc-table.component.spec.ts dxc-progressbar.component.spec.ts dxc-paginator.component.spec.ts dxc-link.component.spec.ts dxc-heading.component.spec.ts dxc-dropdown.component.spec.ts dxc-dialog.component.spec.ts dxc-accordion.component.spec.ts dxc-accordionGroup.component.spec.ts dxc-alert.component.spec.ts dxc-chip.component.spec.ts",
+    "test-all": "npm run test-forms && npm run test-navigations && npm run test-layout && npm run test-utilities",
     "build-lib:watch": "ng build --watch dxc-ngx-cdk"
   },
   "author": {

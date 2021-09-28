@@ -192,6 +192,10 @@ export class DxcNewDateComponent implements OnInit {
     this.calendarDynamicStyle = `${this.helper.getCalendarContentStyle()}`;
   }
 
+  ngAfterViewInit() {
+    this.dxcInputRef.actionButton.nativeElement.ariaLabel = "Choose Date";
+  }
+
   private calculateComponentValues(): void {
     this.size = this.size
       ? this._sizes.find((item) => item === this.size)

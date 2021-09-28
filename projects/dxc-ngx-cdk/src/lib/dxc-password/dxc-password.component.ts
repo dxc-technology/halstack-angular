@@ -137,21 +137,13 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
     )}`;
   }
 
+  
   handleOnChange(event) {
-    if (this.value !== event) {
-      this.onChange.emit(event);
-    }
-    if (!this.controlled) {
-      this.value = event;
-    } else {
-      setTimeout(() => {
-        if (this.dxcInputRef.inputRef.nativeElement.value !== this.value) {
-          this.dxcInputRef.inputRef.nativeElement.value = this.value;
-          this.cdRef.detectChanges();
-        }
-      }, 0);
-    }
     this.cdRef.detectChanges();
+    this.onChange.emit(event);
+    this.controlled
+      ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
+      : (this.value = event);
   }
 
   handleOnBlur(event) {
@@ -172,13 +164,4 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
       : "Hide";
   }
 
-  private handleInternalValue({ value, nativeValue }) {
-    if (!this.controlled) {
-      this.value = value;
-      if (nativeValue) {
-        this.dxcInputRef.inputRef.nativeElement.value = nativeValue;
-      }
-      this.cdRef.detectChanges();
-    }
-  }
 }

@@ -1,7 +1,4 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { DxcNewInputTextComponent } from "./dxc-new-input-text.component";
-
 import { render, fireEvent } from "@testing-library/angular";
 import { screen, waitFor } from "@testing-library/dom";
 import { CommonModule } from "@angular/common";
@@ -210,143 +207,192 @@ describe("DxcNewTextInputComponent", () => {
   });
 
   test("controlled dxc-input-text input change and blur", async () => {
-    const onInputFunction = jest.fn();
-    const onBlurFunction = jest.fn();
-    const newValue = "new value";
-    const defaultValue = "default value";
-    const dxcText = await render(DxcNewInputTextComponent, {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    await render(DxcNewInputTextComponent, {
       componentProperties: {
-        label: "test-input",
-        value: defaultValue,
-        onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any,
+        label: "Input label",
+        value: "initial",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
 
-    const input = <HTMLInputElement>dxcText.getByRole("textbox");
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.click(input);
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial" });
     waitFor(() => {
-      fireEvent.blur(input);
-      expect(onBlurFunction).toHaveBeenCalledWith(defaultValue);
-      screen.getByDisplayValue(defaultValue);
+      expect(screen.getByDisplayValue("initial"));
     });
   });
 
   test("uncontrolled dxc-input-text input change and blur", async () => {
-    const onInputFunction = jest.fn();
-    const onBlurFunction = jest.fn();
-    const newValue = "new value";
-    const { getByRole } = await render(DxcNewInputTextComponent, {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    await render(DxcNewInputTextComponent, {
       componentProperties: {
-        label: "test-input",
-        onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any,
+        label: "Input label",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
 
-    const input = <HTMLInputElement>getByRole("textbox");
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.click(input);
+    expect(screen.getByDisplayValue(""));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
     fireEvent.blur(input);
-    expect(onBlurFunction).toHaveBeenCalledWith(newValue);
-    screen.getByDisplayValue(newValue);
+    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "new value" });
+    waitFor(() => {
+      expect(screen.getByDisplayValue("new value"));
+    });
   });
 
   test("controlled dxc-input-text input with clear, change and blur", async () => {
-    const onInputFunction = jest.fn();
-    const onBlurFunction = jest.fn();
-    const newValue = "new value";
-    const dxcInput = await render(DxcNewInputTextComponent, {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    await render(DxcNewInputTextComponent, {
       componentProperties: {
         label: "test-input",
         clearable: true,
         value: "initial string",
-        onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any,
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
 
-    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.click(input);
+    expect(screen.getByDisplayValue("initial string"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
     waitFor(() => {
       fireEvent.blur(input);
-      expect(onBlurFunction).toHaveBeenCalledWith("initial string");
-      fireEvent.click(dxcInput.getByLabelText("Clear"));
-      expect(onInputFunction).toHaveBeenCalledWith("");
+      expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial string" });
+      fireEvent.click(screen.getByLabelText("Clear"));
+      expect(onChange).toHaveBeenCalledWith("");
       screen.getByDisplayValue("initial string");
     });
   });
 
   test("controlled dxc-input-text onError pattern", async () => {
-    const onInputFunction = jest.fn();
-    const onBlurFunction = jest.fn();
-    const onErrorFunction = jest.fn();
-    const newValue = "new value";
-    const dxcInput = await render(DxcNewInputTextComponent, {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    await render(DxcNewInputTextComponent, {
       componentProperties: {
-        label: "test-input",
+        label: "Input label",
         clearable: true,
         value: "initial",
-        onChange: { emit: onInputFunction } as any,
-        onBlur: { emit: onBlurFunction } as any,
-        onError: { emit: onErrorFunction } as any,
         pattern: ".{10,15}",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
 
-    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    await waitFor(() => {
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.click(input);
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "initial" });
+    waitFor(() => {
+      expect(screen.getByDisplayValue("initial"));
       fireEvent.blur(input);
-      expect(onBlurFunction).toHaveBeenCalledWith("initial");
-      fireEvent.click(dxcInput.getByLabelText("Clear"));
-      expect(onErrorFunction).toHaveBeenCalledWith(
-        "Please use a valid pattern"
-      );
-      screen.getByDisplayValue("initial");
+      expect(onBlur).toHaveBeenCalledWith({
+        error: "Please use a valid pattern",
+        value: "initial",
+      });
+      fireEvent.click(screen.getByLabelText("Clear"));
+      expect(onChange).toHaveBeenCalledWith("");
+      expect(screen.getByDisplayValue(""));
     });
   });
 
   test("controlled dxc-input-text onError length", async () => {
-    const onInputFunction = jest.fn();
-    const onErrorFunction = jest.fn();
-    const newValue = "new value";
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
     const lengthLimit = { min: 2, max: 5 };
-    const dxcInput = await render(DxcNewInputTextComponent, {
+    await render(DxcNewInputTextComponent, {
       componentProperties: {
-        label: "test-input",
+        label: "Input label",
+        value: "initial",
         clearable: true,
-        onChange: { emit: onInputFunction } as any,
-        onError: { emit: onErrorFunction } as any,
         length: lengthLimit,
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcNewInputTextService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
     });
-
-    const input = <HTMLInputElement>dxcInput.getByRole("textbox");
-    fireEvent.focus(input);
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onInputFunction).toHaveBeenCalledWith(newValue);
-    await waitFor(() => {
+  
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.click(input);
+    expect(screen.getByDisplayValue("initial"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    expect(onChange).toHaveBeenCalledWith("new value");
+    fireEvent.blur(input);
+    expect(onBlur).toHaveBeenCalledWith({ error: "Min length 2, Max length 5", value: "initial" });
+    waitFor(() => {
+      expect(screen.getByDisplayValue("initial"));
       fireEvent.blur(input);
-      expect(onErrorFunction).toHaveBeenCalledWith("Please shorthen this text to 5 characters or less");
+      expect(onBlur).toHaveBeenCalledWith({
+        error: "Min length 2, Max length 5",
+        value: "initial",
+      });
+      fireEvent.click(screen.getByLabelText("Clear"));
+      expect(onChange).toHaveBeenCalledWith("");
+      expect(screen.getByDisplayValue(""));
     });
   });
 });
+
+

@@ -250,8 +250,7 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
       if (this.autosuggestType === "async") {
         this.getAsyncSuggestions();
       }
-    }
-    if (this.controlled) {
+    } else {
       setTimeout(() => {
         if (this.inputRef.nativeElement.value !== this.value) {
           this.inputRef.nativeElement.value = this.value;

@@ -17,52 +17,52 @@ describe("DxcPasswordComponent", () => {
     expect(screen.queryByText("helper-text")).toBeInTheDocument();
   });
 
-  // test("should clear input password", async () => {
-  //   const onChange = jest.fn();
-  //   await render(DxcPasswordComponent, {
-  //     componentProperties: {
-  //       label: "test-input",
-  //       helperText: "helper-text",
-  //       value: "password-test",
-  //       clearable: true,
-  //       onChange: {
-  //         emit: onChange,
-  //       } as any,
-  //     },
-  //     imports: [DxcNewInputTextModule],
-  //   });
+  test("should clear input password", async () => {
+    const onChange = jest.fn();
+    await render(DxcPasswordComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        value: "password-test",
+        clearable: true,
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [DxcNewInputTextModule],
+    });
 
-  //   const btn = screen.getByLabelText("Clear");
+    const btn = screen.getByLabelText("Clear");
 
-  //   expect(screen.queryByText("test-input")).toBeInTheDocument();
-  //   expect(screen.getByDisplayValue("password-test")).toBeTruthy();
-  //   fireEvent.click(btn);
-  //   expect(onChange).toHaveBeenCalledWith("");
-  // });
+    expect(screen.queryByText("test-input")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("password-test")).toBeTruthy();
+    fireEvent.click(btn);
+    expect(onChange).toHaveBeenCalledWith("");
+  });
 
-  // test("should mask input password", async () => {
-  //   const onChange = jest.fn();
-  //   await render(DxcPasswordComponent, {
-  //     componentProperties: {
-  //       label: "test-input",
-  //       helperText: "helper-text",
-  //       value: "password-test",
-  //       onChange: {
-  //         emit: onChange,
-  //       } as any,
-  //     },
-  //     imports: [DxcNewInputTextModule],
-  //   });
-  //   const input = <HTMLInputElement>screen.getByRole("textbox");
-  //   const btn = screen.getByLabelText("Action");
+  test("should mask input password", async () => {
+    const onChange = jest.fn();
+    await render(DxcPasswordComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        value: "password-test",
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [DxcNewInputTextModule],
+    });
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    const btn = screen.getByLabelText("Action");
 
-  //   expect(screen.getByDisplayValue("password-test")).toBeTruthy();
-  //   expect(input.type).toBe("password");
-  //   fireEvent.click(btn);
-  //   expect(input.type).toBe("text");
-  //   fireEvent.click(btn);
-  //   expect(input.type).toBe("password");
-  // });
+    expect(screen.getByDisplayValue("password-test")).toBeTruthy();
+    expect(input.type).toBe("password");
+    fireEvent.click(btn);
+    expect(input.type).toBe("text");
+    fireEvent.click(btn);
+    expect(input.type).toBe("password");
+  });
 
   // test("controlled dxc-password error pattern", async () => {
   //   const onChange = jest.fn();

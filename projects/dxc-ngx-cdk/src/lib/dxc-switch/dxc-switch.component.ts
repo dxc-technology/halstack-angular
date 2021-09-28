@@ -105,6 +105,13 @@ export class DxcSwitchComponent implements OnChanges {
   ngOnInit() {
     this.renderedChecked = this.checked;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+  constructor(
+    private utils: CssUtils,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {
+    this.onChange = new EventEmitter();
     this.bgProviderService.$changeColor.subscribe((value) => {
       if (value === "dark") {
         this.lightBackground = false;
@@ -114,13 +121,6 @@ export class DxcSwitchComponent implements OnChanges {
         this.darkBackground = false;
       }
     });
-  }
-
-  constructor(
-    private utils: CssUtils,
-    @Optional() public bgProviderService?: BackgroundProviderService
-  ) {
-    this.onChange = new EventEmitter();
   }
 
   onChangeHandler($event: any) {

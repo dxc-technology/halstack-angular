@@ -3,6 +3,7 @@ import { screen } from "@testing-library/dom";
 import { DxcAccordionComponent } from "./dxc-accordion.component";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { TestBed } from "@angular/core/testing";
+import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 
 describe("DxcAccordion tests", () => {
   test("should render dxc-accordion", async () => {
@@ -11,7 +12,7 @@ describe("DxcAccordion tests", () => {
         label: "test-button",
         assistiveText: "assistiveText",
       },
-      imports: [MatExpansionModule],
+      imports: [MatExpansionModule, BackgroundProviderModule],
     });
 
     expect(getByText("test-button")).toBeTruthy();
@@ -27,7 +28,7 @@ describe("DxcAccordion tests", () => {
     await render(DxcAccordionComponent, {
       template: `<accordion label="test-accordion" assistiveText="assistiveText" (onClick)="onClickFunction($event)">${projection}</accordion>`,
       componentProperties: { onClickFunction },
-      imports: [MatExpansionModule],
+      imports: [MatExpansionModule, BackgroundProviderModule],
     });
 
     expect(screen.getByText("test-accordion")).toBeTruthy();
@@ -50,7 +51,7 @@ describe("DxcAccordion tests", () => {
     await render(DxcAccordionComponent, {
       template: `<accordion label="test-accordion" assistiveText="assistiveText" isExpanded="false" (onClick)="onClickFunction($event)">${projection}</accordion>`,
       componentProperties: { onClickFunction },
-      imports: [MatExpansionModule],
+      imports: [MatExpansionModule, BackgroundProviderModule],
     });
 
     expect(screen.getByText("test-accordion")).toBeTruthy();

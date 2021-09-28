@@ -109,15 +109,6 @@ export class DxcCheckboxComponent implements OnInit {
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.onChange = new EventEmitter();
-  }
-
-  ngOnInit() {
-    this.renderedChecked = this.checked;
-
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.disabled) {
-      this.required = false;
-    }
     this.bgProviderService.$changeColor.subscribe((value) => {
       if (value === "dark") {
         this.lightBackground = false;
@@ -127,6 +118,15 @@ export class DxcCheckboxComponent implements OnInit {
         this.darkBackground = false;
       }
     });
+  }
+
+  ngOnInit() {
+    this.renderedChecked = this.checked;
+
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    if (this.disabled) {
+      this.required = false;
+    }
   }
 
   onValueChange($event: any) {
@@ -286,7 +286,7 @@ export class DxcCheckboxComponent implements OnInit {
             }
           }
         }
-        
+
         label.mat-checkbox-layout {
           span.mat-checkbox-label {
             span.checkboxLabel {

@@ -256,6 +256,11 @@ export class DxcDropdownComponent implements OnChanges {
               margin-right: var(--dropdown-iconOptionSpacing);
             }
           `}
+      dxc-dropdown-icon {
+            img, svg{
+              fill: var(--dropdown-iconColor);
+            }
+       }
       .mat-menu-content {
         padding-top: 0px !important;
         padding-bottom: 0px !important;

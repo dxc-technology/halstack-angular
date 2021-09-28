@@ -32,6 +32,7 @@ import {
 } from "./option-parent";
 import { SelectService } from "../services/select.service";
 import { css } from "emotion";
+import { BackgroundProviderService } from '../../background-provider/service/background-provider.service';
 
 /**
  * Option IDs need to be unique across components, so this counter exists outside of

@@ -111,7 +111,7 @@ import { SelectService } from "./services/select.service";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 
-import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { BackgroundProviderService } from '../background-provider/service/background-provider.service';
 
 let nextUniqueId = 0;
 
@@ -228,7 +228,8 @@ class MatSelectBase {
     public _defaultErrorStateMatcher: ErrorStateMatcher,
     public _parentForm: NgForm,
     public ngControl: NgControl
-  ) {}
+  ) {
+  }
 }
 const _MatSelectMixinBase: CanDisableCtor &
   HasTabIndexCtor &
@@ -602,8 +603,18 @@ export abstract class _MatSelectBase<C>
     @Inject(MAT_SELECT_CONFIG)
     private _defaultOptions?: MatSelectConfig,
     @Optional() public bgProviderService?: BackgroundProviderService
+
   ) {
     super(elementRef, _defaultErrorStateMatcher, _parentForm, ngControl);
+
+    this.bgProviderService.$changeColor.subscribe((value) => {
+      console.log(`value of color in select: ${value}`);
+      if (value === "dark") {
+        this.service.isDarkTheme = true;
+      } else if (value === "light") {
+        this.service.isDarkTheme = false;
+      }
+    });
 
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
@@ -640,13 +651,7 @@ export abstract class _MatSelectBase<C>
     this._controlled = this.value !== undefined ? true : false;
     this.className = `mat-select ${this.getDynamicStyle()}`;
     this.service.iconPosition.next(this.iconPosition);
-    this.bgProviderService.$changeColor.subscribe((value) => {
-      if (value === "dark") {
-        this.service.isDarkTheme = true;
-      } else if (value === "light") {
-        this.service.isDarkTheme = false;
-      }
-    });
+
   }
 
   ngAfterContentInit() {
@@ -700,7 +705,8 @@ export abstract class _MatSelectBase<C>
     if (changes["typeaheadDebounceInterval"] && this._keyManager) {
       this._keyManager.withTypeAhead(this._typeaheadDebounceInterval);
     }
-    this.className = `mat-select ${this.getDynamicStyle()}`;
+    this.className =
+     `mat-select ${this.getDynamicStyle()}`;
   }
 
   ngOnDestroy() {
@@ -1459,6 +1465,7 @@ export abstract class _MatSelectBase<C>
   inputs: ["disabled", "disableRipple", "tabIndex", "invalid"],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+
   host: {
     role: "combobox",
     "aria-autocomplete": "none",
@@ -1493,7 +1500,7 @@ export abstract class _MatSelectBase<C>
     { provide: MatFormFieldControl, useExisting: DxcSelectComponent },
     { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelectComponent },
     SelectService,
-    CssUtils,
+    CssUtils
   ],
 })
 export class DxcSelectComponent

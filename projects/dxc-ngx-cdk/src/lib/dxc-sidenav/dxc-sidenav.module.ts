@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { DxcSidenavTitleComponent } from './dxc-sidenav-title/dxc-sidenav-title.component';
 import { DxcSidenavSubtitleComponent } from './dxc-sidenav-subtitle/dxc-sidenav-subtitle.component';
 import { DxcSidenavLinkComponent } from './dxc-sidenav-link/dxc-sidenav-link.component';
+import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { DxcSidenavLinkComponent } from './dxc-sidenav-link/dxc-sidenav-link.com
     DxcSidenavSubtitleComponent,
     DxcSidenavLinkComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, BackgroundProviderModule],
   exports: [
     DxcSidenavComponent,
     DxcSidenavTitleComponent,

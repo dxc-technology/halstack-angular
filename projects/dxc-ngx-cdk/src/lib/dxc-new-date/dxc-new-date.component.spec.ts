@@ -1,13 +1,18 @@
 import { render, fireEvent } from "@testing-library/angular";
-import { screen } from "@testing-library/dom";
+import { screen, waitFor } from "@testing-library/dom";
 import { DxcNewDateComponent } from "./dxc-new-date.component";
-import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
+import {
+  DateAdapter,
+  MatNativeDateModule,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from "@angular/material/core";
 import { MatInputModule } from "@angular/material/input";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
-  MatMomentDateModule
+  MatMomentDateModule,
 } from "@angular/material-moment-adapter";
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
@@ -28,8 +33,8 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
-        DxcNewInputTextModule
+        CommonModule,
+        DxcNewInputTextModule,
       ],
     });
 
@@ -37,20 +42,19 @@ describe("DxcDate", () => {
   });
 
   test("The input´s value is the same as the one received as a parameter", async () => {
-    const onChangeFunction = jest.fn();
-    const dxcDate = await render(DxcNewDateComponent, {
-      providers: [
-        {
-          provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
-        },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-      ],
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
-        value: newValue,
+        label: "test-input",
+        value: "03-12-1995",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -59,15 +63,26 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
+      ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
 
-    dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("calendarIcon");
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    const calendarIcon = screen.getByRole("calendarIcon");
+
+    input.focus();
+    expect(input).toHaveFocus();
+    expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.click(calendarIcon);
-    dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
@@ -75,13 +90,14 @@ describe("DxcDate", () => {
   });
 
   test("dxc-date value change and default format", async () => {
-    const onChangeFunction = jest.fn((x) => {
-      x;
-    });
-    const dxcDate = await render(DxcNewDateComponent, {
+    const onChange = jest.fn();
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
+        label: "test-input",
+        onChange: {
+          emit: onChange,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -90,23 +106,9 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
       ],
-    });
-
-    const input = <HTMLInputElement>dxcDate.getByRole("textbox");
-    expect(dxcDate.getByRole("textbox"));
-    fireEvent.input(input, { target: { value: newValue } });
-    expect(onChangeFunction).toHaveBeenCalledWith({
-      stringValue: newValue,
-      dateValue: newMockDate,
-    });
-  });
-
-  test("Calendar´s value is the same as the input´s date if it´s right (Depending on the format)", async () => {
-    const onChangeFunction = jest.fn();
-    const dxcDate = await render(DxcNewDateComponent, {
       providers: [
         {
           provide: DateAdapter,
@@ -115,10 +117,33 @@ describe("DxcDate", () => {
         },
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
+    });
+
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onChange).toHaveBeenCalledWith({
+      value: newValue,
+      date: newMockDate,
+    });
+    expect(screen.getByDisplayValue(newValue));
+  });
+
+  test("Calendar´s value is the same as the input´s date if it´s right (Depending on the format)", async () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
+        label: "test-input",
         format: "YYYY/MM/DD",
+        onChange: {
+          emit: onChange,
+        } as any,
+        onBlur: {
+          emit: onBlur,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -127,36 +152,53 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
+      ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
 
-    const input = <HTMLInputElement>dxcDate.getByRole("textbox");
-    expect(dxcDate.getByRole("textbox"));
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    const calendarIcon = screen.getByRole("calendarIcon");
+
+    input.focus();
+    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: "1995/12/03" } });
-    expect(onChangeFunction).toHaveBeenCalledWith({
-      stringValue: "1995/12/03",
-      dateValue: newMockDate,
+    expect(onChange).toHaveBeenCalledWith({
+      value: "1995/12/03",
+      date: newMockDate,
     });
-    dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("calendarIcon");
+    input.focus();
+    expect(input).toHaveFocus();
+    expect(screen.getByDisplayValue("1995/12/03"));
     fireEvent.click(calendarIcon);
-    dxcDate.detectChanges();
-    expect(screen.getByText("DEC 1995"));
-    expect(
-      screen.getByText("3").classList.contains("mat-calendar-body-selected")
-    ).toBeTruthy();
+    waitFor(() => {
+      expect(screen.getByText("DEC 1995"));
+    });
+    waitFor(() => {
+      expect(
+        screen.getByText("3").classList.contains("mat-calendar-body-selected")
+      ).toBeTruthy();
+    });
   });
 
   test("dxc-date invalid value", async () => {
-    const onChangeFunction = jest.fn((x) => {
-      x;
-    });
-    const dxcDate = await render(DxcNewDateComponent, {
+    const onChange = jest.fn();
+    const invalidValue = "03-12-199_";
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
+        label: "test-input",
+        onChange: {
+          emit: onChange,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -165,37 +207,39 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
       ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+      ],
     });
+    const input = <HTMLInputElement>screen.getByRole("textbox");
 
-    const invalidValue = "03-12-199_";
-
-    const input = <HTMLInputElement>dxcDate.getByRole("textbox");
-    expect(dxcDate.getByRole("textbox"));
+    input.focus();
+    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: invalidValue } });
-    expect(onChangeFunction).toHaveBeenCalledWith({
-      dateValue: null,
-      stringValue: invalidValue,
+    expect(onChange).toHaveBeenCalledWith({
+      value: invalidValue,
+      date: null,
     });
   });
 
   test("onChange function is called when the user selects from the calendar", async () => {
-    const onChangeFunction = jest.fn();
-    const dxcDate = await render(DxcNewDateComponent, {
-      providers: [
-        {
-          provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
-        },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-      ],
+    const onChange = jest.fn();
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
+        label: "test-input",
         value: newValue,
+        onChange: {
+          emit: onChange,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -204,37 +248,39 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
       ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+      ],
     });
-    dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("calendarIcon");
+    const calendarIcon = screen.getByRole("calendarIcon");
+
     fireEvent.click(calendarIcon);
-    dxcDate.detectChanges();
     fireEvent.click(screen.getByText("4"));
-    expect(onChangeFunction).toHaveBeenCalledWith({
-      stringValue: "04-12-1995",
-      dateValue: new Date("1995/12/04"),
+    expect(onChange).toHaveBeenCalledWith({
+      value: "04-12-1995",
+      date: new Date("1995/12/04"),
     });
   });
 
   test("onChange function is called when the user selects from the calendar, the stringValue received by the function is the date with the correct format", async () => {
-    const onChangeFunction = jest.fn();
-    const dxcDate = await render(DxcNewDateComponent, {
-      providers: [
-        {
-          provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
-        },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-      ],
+    const onChange = jest.fn();
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
+        label: "test-input",
         value: "12-03-1995",
         format: "MM-DD-YYYY",
+        onChange: {
+          emit: onChange,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -243,41 +289,42 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
       ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+      ],
     });
-    dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("calendarIcon");
+    const calendarIcon = screen.getByRole("calendarIcon");
+
     fireEvent.click(calendarIcon);
-    dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
     fireEvent.click(screen.getByText("4"));
-    dxcDate.detectChanges();
-    expect(onChangeFunction).toHaveBeenCalledWith({
-      stringValue: "12-04-1995",
-      dateValue: new Date("1995/12/04"),
+    expect(onChange).toHaveBeenCalledWith({
+      value: "12-04-1995",
+      date: new Date("1995/12/04"),
     });
   });
 
   test("If the user types something, if controlled and without onChange, the value doesn´t change", async () => {
-    const onChangeFunction = jest.fn();
-    const dxcDate = await render(DxcNewDateComponent, {
-      providers: [
-        {
-          provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
-        },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-      ],
+    const onChange = jest.fn();
+
+    await render(DxcNewDateComponent, {
       componentProperties: {
-        label: "test-date",
-        onChange: { emit: onChangeFunction } as any,
+        label: "test-input",
         value: newValue,
+        onChange: {
+          emit: onChange,
+        } as any,
       },
       imports: [
         MatMomentDateModule,
@@ -286,29 +333,82 @@ describe("DxcDate", () => {
         MatDatepickerModule,
         MdePopoverModule,
         DxcBoxModule,
-        CommonModule, 
+        CommonModule,
         DxcNewInputTextModule,
       ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+      ],
     });
-    dxcDate.detectChanges();
-    const calendarIcon = dxcDate.getByRole("calendarIcon");
+    const calendarIcon = screen.getByRole("calendarIcon");
+
     fireEvent.click(calendarIcon);
-    dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
     fireEvent.click(screen.getByText("4"));
-    dxcDate.detectChanges();
-    expect(onChangeFunction).toHaveBeenCalledWith({
-      stringValue: "04-12-1995",
-      dateValue: new Date("1995/12/04"),
+    expect(onChange).toHaveBeenCalledWith({
+      value: "04-12-1995",
+      date: new Date("1995/12/04"),
     });
     fireEvent.click(calendarIcon);
-    dxcDate.detectChanges();
     expect(screen.getByText("DEC 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
   });
+});
+
+test("controlled dxc-date", async () => {
+  const onChange = jest.fn();
+  const onBlur = jest.fn();
+
+  await render(DxcNewDateComponent, {
+    componentProperties: {
+      label: "test-input",
+      value: "04-12-1995",
+      onChange: {
+        emit: onChange,
+      } as any,
+      onBlur: {
+        emit: onBlur,
+      } as any,
+    },
+    imports: [
+      MatMomentDateModule,
+      MatNativeDateModule,
+      MatInputModule,
+      MatDatepickerModule,
+      MdePopoverModule,
+      DxcBoxModule,
+      CommonModule,
+      DxcNewInputTextModule,
+    ],
+    providers: [
+      {
+        provide: DateAdapter,
+        useClass: MomentDateAdapter,
+        deps: [MAT_DATE_LOCALE],
+      },
+      { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    ],
+  });
+  const input = <HTMLInputElement>screen.getByRole("textbox");
+
+  input.focus();
+  expect(input).toHaveFocus();
+  fireEvent.input(input, { target: { value: "04-10-1996" } });
+  expect(onChange).toHaveBeenCalledWith({
+    value: "04-10-1996",
+    date: new Date("1996/10/04"),
+  });
+  expect(screen.getByDisplayValue("04-12-1995"));
+  fireEvent.blur(input);
+  expect(onBlur).toHaveBeenCalledWith({ error: null, value: "04-12-1995" });
 });

@@ -1,5 +1,6 @@
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -110,7 +111,7 @@ export class DxcNewDateComponent implements OnInit {
     size: "medium",
     format: "dd-MM-yyyy",
     tabIndex: 0,
-    placeholder: false
+    placeholder: false,
   });
 
   @Output()
@@ -142,6 +143,8 @@ export class DxcNewDateComponent implements OnInit {
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
+  private controlled: boolean;
+
   @HostListener("document:click", ["$event"])
   public onClickOutsideHandler(event) {
     this.removeRippleCalendarControls();
@@ -167,9 +170,17 @@ export class DxcNewDateComponent implements OnInit {
     }
   }
 
-  constructor(private helper: DxcNewDateHelper) {}
+  constructor(
+    private helper: DxcNewDateHelper,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
+    if (this.dxcInputRef && this.dxcInputRef.inputRef) {
+      this.controlled
+        ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
+        : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
+    }
     this.calculateComponentValues();
 
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -186,6 +197,13 @@ export class DxcNewDateComponent implements OnInit {
 
   ngOnInit(): void {
     this.calculateComponentValues();
+    if (this.value === undefined) {
+      this.value = "";
+      this.controlled = false;
+    } else {
+      this.controlled = true;
+    }
+
     this.className = `${this.helper.getDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
@@ -218,10 +236,14 @@ export class DxcNewDateComponent implements OnInit {
     if (this._isCalendarOpened) this.closeCalendar();
     let _dateValue = this.getMomentValue(value, this.format);
     let _dateReturn = {
-      stringValue: value,
-      dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
+      value: value,
+      date: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
     this.onChange.emit(_dateReturn);
+
+    this.controlled
+      ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
+      : (this.value = value);
 
     if (!this.value) {
       this.renderedValue = value;
@@ -229,15 +251,19 @@ export class DxcNewDateComponent implements OnInit {
     }
   }
 
-  handleOnBlur(value: string) {
-    this.onBlur.emit(value);
+  handleOnBlur(event) {
+    this.onBlur.emit({ value: event.value, error: event.error });
+    if (!this.controlled) {
+      this.value = event.value;
+      this.cdRef.detectChanges();
+    }
   }
 
   onSelectedChangeHandler(value: Moment) {
     let _stringValue = this.getDateStringValue(value, this.format);
     let _dateReturn = {
-      stringValue: _stringValue,
-      dateValue: value.isValid() ? value.toDate() : null,
+      value: _stringValue,
+      date: value.isValid() ? value.toDate() : null,
     };
     this.onChange.emit(_dateReturn);
     if (!this.value) {

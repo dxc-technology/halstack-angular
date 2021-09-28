@@ -28,8 +28,8 @@ const globalTokens = {
   hal_purple_d_20: "#321353",
   purple: "#6f2c91",
   mediumPurple: "#ead8f3",
-  lightPurple: "#f5ebf9",
   lighterPurple: "#d0bddb",
+  lightPurple: "#f5ebf9",
   violet: "#8800F6",
 
   hal_blue_l_95: "#e6f4ff",
@@ -454,7 +454,7 @@ export const componentTokens = {
   "--newDate-pickerActualDate": globalTokens.lightGrey,
   "--newDate-pickerFontColor": globalTokens.hal_black,
   "--newDate-pickerHoverDateFontColor": globalTokens.hal_black,
-  "--newDate-pickerHoverDateBackgroundColor": globalTokens.lightPurple,
+  "--newDate-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
   "--newDate-focusColor": globalTokens.blue,
   "--newDate-pickerHoverHeaderColor": "#0000001F",
   "--newDate-pickerYearColor": globalTokens.hal_black,

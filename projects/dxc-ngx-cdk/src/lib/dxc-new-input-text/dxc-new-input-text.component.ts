@@ -296,6 +296,10 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
+  focusInput(){
+    this.inputRef.nativeElement.focus();
+  }
+
   handleOnClick() {
     if (
       this.suggestions &&

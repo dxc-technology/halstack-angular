@@ -18,7 +18,7 @@ export class NewInputTextPreviewComponent implements OnInit {
   errorMessage = "";
 
   numberOnChange(event) {
-    this.numberValue = event.value;
+    this.numberValue = event;
   }
 
   lengthLimit={min: 2, max: 5}

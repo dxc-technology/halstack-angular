@@ -4,7 +4,7 @@
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="inputContainer">
-  <span (click)="handleOnFocus()"
+  <span (click)="focusInput()"
     ><ng-content select="dxc-input-text-prefix"></ng-content
   ></span>
   <input
@@ -117,7 +117,7 @@
       <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
     </svg>
   </button>
-  <span (click)="handleOnFocus()">
+  <span (click)="focusInput()">
     <ng-content select="dxc-input-text-suffix"></ng-content>
   </span>
   <ul

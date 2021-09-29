@@ -55,6 +55,12 @@
   "input":{
 
   },
+  "number":{
+
+  },
+  "password":{
+
+  },
   "paginator": {
     "baseColor": "#eeeeee",
     "fontColor": "#000000"

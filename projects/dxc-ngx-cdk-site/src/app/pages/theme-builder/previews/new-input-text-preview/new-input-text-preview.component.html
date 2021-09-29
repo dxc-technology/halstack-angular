@@ -151,33 +151,6 @@
         </dxc-new-input-text-action>
       </dxc-new-input-text>
     </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Password">
-      <dxc-password
-        placeholder="placeholder"
-        label="Input label"
-        margin="xsmall"
-        [value]="controlledValue"
-      >
-      </dxc-password>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Number">
-      <dxc-number
-        placeholder="placeholder"
-        label="Input label"
-        helperText="helper text"
-        min="10"
-        max="100"
-        step="5"
-        [value]="numberValue"
-        (onChange)="numberOnChange($event)"
-        margin="xsmall"
-      >
-        <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-        <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-      </dxc-number>
-    </tbuilder-component-mode>
   </background-provider>
 
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
@@ -297,29 +270,6 @@
           </svg>
         </dxc-new-input-text-action>
       </dxc-new-input-text>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Password" mode="dark">
-      <dxc-password
-        placeholder="placeholder"
-        label="Input label"
-        margin="xsmall"
-      >
-      </dxc-password>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Number" mode="dark">
-      <dxc-number
-        placeholder="placeholder"
-        label="Input label"
-        helperText="helper text"
-        min="10"
-        max="100"
-        step="5"
-        [value]="numberValue"
-        (onChange)="numberOnChange($event)"
-        margin="xsmall"
-      ></dxc-number>
     </tbuilder-component-mode>
   </background-provider>
 </div>

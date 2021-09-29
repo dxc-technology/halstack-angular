@@ -9,7 +9,7 @@
     "customContentFontSize": "1rem",
     "customContentFontWeight": "300",
     "customContentFontColor": "#000000",
-    "customContentPanelHeight":"22px",
+    "customContentPanelHeight": "22px",
     "assistiveTextFontFamily": "Open Sans, sans-serif",
     "assistiveTextFontSize": "1rem",
     "assistiveTextFontWeight": "300",
@@ -17,8 +17,8 @@
     "assistiveTextFontColor": "#000000",
     "assistiveTextLetterSpacing": "0.025em",
     "assistiveTextMinWidth": "100px",
-    "assistiveTextPaddingLeft":"0px",
-    "assistiveTextPaddingRight":"0px",
+    "assistiveTextPaddingLeft": "0px",
+    "assistiveTextPaddingRight": "0px",
     "titleLabelFontFamily": "Open Sans, sans-serif",
     "titleLabelFontSize": "1rem",
     "titleLabelFontWeight": "400",
@@ -269,11 +269,11 @@
     "pickerYearColor": "#000000",
     "pickerLabelColor": "#b1b1b1",
     "pickerWeekLabelColor": "#b1b1b1",
-    "pickerBackgroundColorMonthArrows":"transparent",
+    "pickerBackgroundColorMonthArrows": "transparent",
     "focusColor": "#005FCC",
     "fontFamily": "Open Sans, sans-serif",
-    "pickerHeight":"300px",
-    "pickerWidth":"290px"
+    "pickerHeight": "300px",
+    "pickerWidth": "290px"
   },
   "newDate": {
     "pickerSelectedDateBackgroundColor": "#6f2c91",
@@ -287,11 +287,11 @@
     "pickerYearColor": "#000000",
     "pickerLabelColor": "#b1b1b1",
     "pickerWeekLabelColor": "#b1b1b1",
-    "pickerBackgroundColorMonthArrows":"transparent",
+    "pickerBackgroundColorMonthArrows": "transparent",
     "focusColor": "#005FCC",
     "fontFamily": "Open Sans, sans-serif",
-    "pickerHeight":"300px",
-    "pickerWidth":"290px"
+    "pickerHeight": "300px",
+    "pickerWidth": "290px"
   },
   "dialog": {
     "overlayColor": "#000000",
@@ -346,9 +346,9 @@
     "caretIconMarginTop": "0px",
     "caretIconMarginBottom": "0px",
     "optionsFontColor": "#000000",
-    "optionsFontSize":"1rem",
-    "optionsFontStyle":"normal",
-    "optionsFontWeight":"400",
+    "optionsFontSize": "1rem",
+    "optionsFontStyle": "normal",
+    "optionsFontWeight": "400",
     "iconSize": "20px",
     "iconOptionSpacing": "12px",
     "iconColor": "#000000"
@@ -504,7 +504,7 @@
     "underlineFocusColorOnDark": "#ffffff",
     "underlineThickness": "1px"
   },
-  "input":{
+  "input": {
     "disabledBorderColor": "#808080",
     "disabledBorderColorOnDark": "#999999",
     "disabledContainerFillColor": "#f2f2f2",
@@ -549,7 +549,7 @@
     "hoverBorderColorOnDark": "#a46ede",
     "focusBorderColor": "#0095ff",
     "focusBorderColorOnDark": "#0095ff",
-    "placeholderFontColor":  "#808080",
+    "placeholderFontColor": "#808080",
     "placeholderFontColorOnDark": "#f2f2f2",
     "valueFontColor": "#000000",
     "valueFontColorOnDark": "#ffffff",
@@ -604,6 +604,8 @@
     "hoverListOptionBackgroundColor": "#f2f2f2",
     "activeListOptionBackgroundColor": "#cccccc"
   },
+  "number": {},
+  "password": {},
   "link": {
     "fontColor": "#0067b3",
     "fontFamily": "inherit",

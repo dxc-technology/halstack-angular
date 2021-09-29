@@ -30,6 +30,8 @@ import { UploadPreviewComponent } from '../../previews/upload-preview/upload-pre
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
+import { NumberPreviewComponent } from '../../previews/number-preview/number-preview.component';
+import { PasswordPreviewComponent } from '../../previews/password-preview/password-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -54,6 +56,8 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'inputText', component: InputTextPreviewComponent},
   {name: 'input', component: NewInputTextPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
+  {name: 'number', component: NumberPreviewComponent},
+  {name: 'password', component: PasswordPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},

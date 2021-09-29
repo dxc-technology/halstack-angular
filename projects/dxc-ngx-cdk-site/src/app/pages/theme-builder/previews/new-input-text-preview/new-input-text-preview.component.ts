@@ -13,14 +13,8 @@ export class NewInputTextPreviewComponent implements OnInit {
 
   controlledValue = "c";
 
-  numberValue = "12";
-
   errorMessage = "";
-
-  numberOnChange(event) {
-    this.numberValue = event;
-  }
-
+  
   lengthLimit={min: 2, max: 5}
 
   options: Array<any> = [

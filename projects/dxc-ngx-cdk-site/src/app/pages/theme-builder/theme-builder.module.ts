@@ -75,6 +75,8 @@ import { UploadPreviewComponent } from './previews/upload-preview/upload-preview
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
+import { PasswordPreviewComponent } from './previews/password-preview/password-preview.component';
+import { NumberPreviewComponent } from './previews/number-preview/number-preview.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +113,8 @@ import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-pr
     TablePreviewComponent,
     NewInputTextPreviewComponent,
     NewDatePreviewComponent,
+    PasswordPreviewComponent,
+    NumberPreviewComponent,
   ],
   imports: [
     CommonModule,

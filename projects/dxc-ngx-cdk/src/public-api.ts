@@ -42,6 +42,9 @@ export * from './lib/dxc-chip/dxc-chip-suffix-icon/dxc-chip-suffix-icon.componen
 export * from './lib/dxc-date/dxc-date.component';
 export * from './lib/dxc-date/dxc-date.module';
 
+export * from './lib/dxc-new-date/dxc-new-date.component';
+export * from './lib/dxc-new-date/dxc-new-date.module';
+
 export * from './lib/dxc-dialog/dxc-dialog.component';
 export * from './lib/dxc-dialog/dxc-dialog.module';
 
@@ -91,6 +94,18 @@ export * from './lib/dxc-text-input/dxc-input-text.component';
 export * from './lib/dxc-text-input/dxc-input-text.module';
 export * from './lib/dxc-text-input/dxc-input-prefix-icon/dxc-input-prefix-icon.component';
 export * from './lib/dxc-text-input/dxc-input-suffix-icon/dxc-input-suffix-icon.component';
+
+export * from './lib/dxc-new-input-text/dxc-new-input-text.component';
+export * from './lib/dxc-new-input-text/dxc-new-input-text.module';
+export * from './lib/dxc-new-input-text/dxc-new-input-text-action/dxc-new-input-text-action.component';
+export * from './lib/dxc-new-input-text/dxc-input-text-prefix/dxc-input-text-prefix.component';
+export * from './lib/dxc-new-input-text/dxc-input-text-suffix/dxc-input-text-suffix.component';
+
+export * from './lib/dxc-password/dxc-password.component';
+export * from './lib/dxc-password/dxc-password.module';
+
+export * from './lib/dxc-number/dxc-number.component';
+export * from './lib/dxc-number/dxc-number.module';
 
 export * from './lib/dxc-textarea/dxc-textarea.component';
 export * from './lib/dxc-textarea/dxc-textarea.module';

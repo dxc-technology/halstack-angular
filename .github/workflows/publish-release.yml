@@ -47,7 +47,7 @@ jobs:
         run: cd . && npm run link-lib
 
       - name: Test library
-        run: cd ./projects/dxc-ngx-cdk && npm run test
+        run: cd ./projects/dxc-ngx-cdk && npm run test-all
 
       - name: Build angular release cdk site
         run: cd . && npm run build-release-cdk-site -- --baseHref=/tools/angular/${{steps.split.outputs._0}}/

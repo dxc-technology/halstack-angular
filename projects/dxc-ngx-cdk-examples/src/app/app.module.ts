@@ -73,12 +73,20 @@ import {
   DxcApplicationLayoutModule,
   DxcChipModule,
   BackgroundProviderModule,
+  DxcNewInputTextModule,
+  DxcNewDateModule,
+  DxcPasswordModule,
+  DxcNumberModule
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
+import { NewInpuTextComponent } from './pages/new-input-text/new-input-text.component';
+import { PasswordComponent } from './pages/password/password.component';
+import { NumberComponent } from './pages/number/number.component';
+import { NewDateComponent } from './pages/new-date/new-date.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +125,11 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
     UploadComponent,
     ApplicationInfoComponent,
     ChipComponent,
-    AccordionGroupComponent
+    AccordionGroupComponent,
+    NewInpuTextComponent,
+    PasswordComponent,
+    NumberComponent,
+    NewDateComponent
   ],
   imports: [
     AppRoutingModule,
@@ -159,7 +171,11 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
     DxcApplicationLayoutModule,
     DxcChipModule,
     DxcAccordionGroupModule,
-    BackgroundProviderModule
+    BackgroundProviderModule,
+    DxcNewInputTextModule,
+    DxcNewDateModule,
+    DxcPasswordModule,
+    DxcNumberModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

@@ -9,10 +9,10 @@ import { AccordionGroupExampleComponent } from "../examples/accordion-group/acco
 import { AccordionGroupTablePropertiesComponent } from "../examples/accordion-group/properties/accordion-group-table-properties/accordion-group-table-properties.component";
 import { AlertExampleComponent } from "../examples/alert/alert-example/alert-example.component";
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
-import { ApplicationLayoutApiComponent } from '../examples/layout/app-layout-api/app-layout-api.component';
-import { ApplicationLayoutExamplesComponent } from '../examples/layout/app-layout-examples/app-layout-examples.component';
-import { AutocompleteExampleComponent } from '../examples/autocomplete/autocomplete-example/autocomplete-example.component';
-import { AutocompleteUsageComponent } from '../examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
+import { ApplicationLayoutApiComponent } from "../examples/layout/app-layout-api/app-layout-api.component";
+import { ApplicationLayoutExamplesComponent } from "../examples/layout/app-layout-examples/app-layout-examples.component";
+import { AutocompleteExampleComponent } from "../examples/autocomplete/autocomplete-example/autocomplete-example.component";
+import { AutocompleteUsageComponent } from "../examples/autocomplete/autocomplete-usage/autocomplete-usage.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { BoxExampleComponent } from "../examples/box/box-example/box-example.component";
 import { BoxTablePropertiesComponent } from "../examples/box/properties/box-table-properties/box-table-properties.component";
@@ -20,15 +20,15 @@ import { CardExampleComponent } from "../examples/card/card-example/card-example
 import { CardTablePropertiesComponent } from "../examples/card/properties/card-table-properties/card-table-properties.component";
 import { CheckboxPropertiesComponent } from "../examples/checkbox/properties/checkbox-properties/checkbox-properties.component";
 import { CheckboxExampleComponent } from "../examples/checkbox/checkbox-example/checkbox-example.component";
-import { ChipExampleComponent } from '../examples/chip/chip-example/chip-example.component';
-import { ChipImportComponent } from '../examples/chip/chip-import/chip-import.component';
-import { ChipTablePropertiesComponent } from '../examples/chip/properties/box-table-properties/chip-table-properties.component';
+import { ChipExampleComponent } from "../examples/chip/chip-example/chip-example.component";
+import { ChipImportComponent } from "../examples/chip/chip-import/chip-import.component";
+import { ChipTablePropertiesComponent } from "../examples/chip/properties/box-table-properties/chip-table-properties.component";
 import { DatePropertiesComponent } from "../examples/date/properties/date-properties/date-properties.component";
 import { DateExampleComponent } from "../examples/date/date-example/date-example.component";
 import { OverviewInstallComponent } from "../overview/overview-install/overview-install.component";
 import { OverviewUseComponent } from "../overview/overview-use/overview-use.component";
 import { OverviewSupportComponent } from "../overview/overview-support/overview-support.component";
-import { OverviewThemesComponent } from '../overview/overview-themes/overview-themes.component';
+import { OverviewThemesComponent } from "../overview/overview-themes/overview-themes.component";
 import { RadioExampleComponent } from "../examples/radio/radio-example/radio-example.component";
 import { RadioPropertiesComponent } from "../examples/radio/properties/radio-properties/radio-properties.component";
 import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
@@ -51,103 +51,118 @@ import { TableExampleComponent } from "../examples/table/table-example/table-exa
 import { TablePropertiesComponent } from "../examples/table/properties/table-properties/table-properties.component";
 import { TagTablePropertiesComponent } from "../examples/tag/properties/tag-table-properties/tag-table-properties.component";
 import { TagExampleComponent } from "../examples/tag/tag-example/tag-example.component";
-import { ToggleGroupApiComponent } from '../examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
+import { ToggleGroupApiComponent } from "../examples/toggleGroup/toggleGroup-api/toggleGroup-api.component";
 import { ToggleGroupTablePropertiesComponent } from "../examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component";
-import { ToggleGroupImportComponent } from '../examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
+import { ToggleGroupImportComponent } from "../examples/toggleGroup/toggleGroup-import/toggleGroup-import.component";
 import { ToggleGroupExampleComponent } from "../examples/toggleGroup/toggleGroup-example/toggleGroup-example.component";
 import { ProgressbarTablePropertiesComponent } from "../examples/progressbar/properties/progressbar-table-properties.component";
 import { ProgressbarExampleComponent } from "../examples/progressbar/progressbar-example/progressbar-example.component";
-import { TabbedSectionTablePropertiesComponent } from '../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component';
-import { TabbedSectionExampleComponent } from '../examples/tabbed-section/tabbed-section-example/tabbed-section-example.component';
-import { TabbedSectionNotesComponent } from '../examples/tabbed-section/properties/tabbed-section-notes/tabbed-section-notes.component';
+import { TabbedSectionTablePropertiesComponent } from "../examples/tabbed-section/properties/tabbed-section-table-properties/tabbed-section-table-properties.component";
+import { TabbedSectionExampleComponent } from "../examples/tabbed-section/tabbed-section-example/tabbed-section-example.component";
+import { TabbedSectionNotesComponent } from "../examples/tabbed-section/properties/tabbed-section-notes/tabbed-section-notes.component";
 import { TabsTablePropertiesComponent } from "../examples/tabs/properties/tabs-table-properties.component";
 import { TabsExampleComponent } from "../examples/tabs/tabs-example/tabs-example.component";
-import { HeaderExampleComponent } from '../examples/header/header-example/header-example.component';
-import { HeaderTablePropertiesComponent } from '../examples/header/properties/header-table-properties/header-table-properties.component';
+import { HeaderExampleComponent } from "../examples/header/header-example/header-example.component";
+import { HeaderTablePropertiesComponent } from "../examples/header/properties/header-table-properties/header-table-properties.component";
 import { UploadTablePropertiesComponent } from "../examples/upload/properties/upload-table-properties.component";
 import { UploadExampleComponent } from "../examples/upload/upload-example/upload-example.component";
-import { PaginatorTablePropertiesComponent } from '../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component';
-import { LinkExampleComponent } from '../examples/link/link-example/link-example.component';
-import { LinkTablePropertiesComponent } from '../examples/link/properties/link-table-properties/link-table-properties.component';
-import { SidenavExampleComponent } from '../examples/sidenav/sidenav-example/sidenav-example.component';
-import { SidenavTablePropertiesComponent } from '../examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component';
-import { WizardExampleComponent } from '../examples/wizard/wizard-example/wizard-example.component';
-import { WizardTablePropertiesComponent } from '../examples/wizard/properties/wizard-table-properties/wizard-table-properties.component';
-import { HeadingTablePropertiesComponent } from '../examples/heading/properties/heading-table-properties/heading-table-properties.component';
-import { HeadingExampleComponent } from '../examples/heading/heading-example/heading-example.component';
-import { ResultsetTableExampleComponent } from '../examples/resultset-table/resultset-table-example/resultset-table-example.component';
-import { ResultsetTablePropertiesComponent } from '../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component';
-import { HeaderDirectivesComponent } from '../examples/header/header-directives/header-directives.component';
-import { HeaderExampleResponsiveComponent } from '../examples/header/responsive/header-example-responsive/header-example-responsive.component';
-import { ResultsetTableDirectivesComponent } from '../examples/resultset-table/resultset-table-directives/resultset-table-directives.component';
-import { AccordionImportComponent } from '../examples/accordion/accordion-import/accordion-import.component';
-import { AccordionGroupImportComponent } from '../examples/accordion-group/accordion-group-import/accordion-group-import.component';
-import { AlertImportComponent } from '../examples/alert/alert-import/alert-import.component';
-import { BoxImportComponent } from '../examples/box/box-import/box-import.component';
-import { ButtonImportComponent } from '../examples/button/button-import/button-import.component';
-import { CardImportComponent } from '../examples/card/card-import/card-import.component';
-import { CheckboxImportComponent } from '../examples/checkbox/checkbox-import/checkbox-import.component';
-import { DateImportComponent } from '../examples/date/date-import/date-import.component';
-import { DialogImportComponent } from '../examples/dialog/dialog-import/dialog-import.component';
-import { DropdownImportComponent } from '../examples/dropdown/dropdown-import/dropdown-import.component';
-import { FooterImportComponent } from '../examples/footer/footer-import/footer-import.component';
-import { HeaderImportComponent } from '../examples/header/header-import/header-import.component';
-import { HeadingImportComponent } from '../examples/heading/heading-import/heading-import.component';
-import { LinkImportComponent } from '../examples/link/link-import/link-import.component';
-import { PaginatorImportComponent } from '../examples/paginator/paginator-import/paginator-import.component';
-import { ProgressbarImportComponent } from '../examples/progressbar/progressbar-import/progressbar-import.component';
-import { RadioImportComponent } from '../examples/radio/radio-import/radio-import.component';
-import { ResultsetTableImportComponent } from '../examples/resultset-table/resultset-table-import/resultset-table-import.component';
-import { SelectImportComponent } from '../examples/select/select-import/select-import.component';
-import { SidenavImportComponent } from '../examples/sidenav/sidenav-import/sidenav-import.component';
-import { SliderImportComponent } from '../examples/slider/slider-import/slider-import.component';
-import { SpinnerImportComponent } from '../examples/spinner/spinner-import/spinner-import.component';
-import { SwitchImportComponent } from '../examples/switch/switch-import/switch-import.component';
-import { TabbedSectionImportComponent } from '../examples/tabbed-section/tabbed-section-import/tabbed-section-import.component';
-import { TableImportComponent } from '../examples/table/table-import/table-import.component';
-import { TabsImportComponent } from '../examples/tabs/tabs-import/tabs-import.component';
-import { TagImportComponent } from '../examples/tag/tag-import/tag-import.component';
-import { TextInputImportComponent } from '../examples/text-input/text-input-import/text-input-import.component';
-import { UploadImportComponent } from '../examples/upload/upload-import/upload-import.component';
-import { WizardImportComponent } from '../examples/wizard/wizard-import/wizard-import.component';
-import { ButtonApiComponent } from '../examples/button/button-api/button-api.component';
-import { CheckboxApiComponent } from '../examples/checkbox/checkbox-api/checkbox-api.component';
-import { RadioApiComponent } from '../examples/radio/radio-api/radio-api.component';
-import { LinkApiComponent } from '../examples/link/link-api/link-api.component';
-import { SliderApiComponent } from '../examples/slider/slider-api/slider-api.component';
-import { SelectApiComponent } from '../examples/select/select-api/select-api.component';
-import { BoxApiComponent } from '../examples/box/box-api/box-api.component';
-import { TagApiComponent } from '../examples/tag/tag-api/tag-api.component';
-import { CardApiComponent } from '../examples/card/card-api/card-api.component';
-import { ChipApiComponent } from '../examples/chip/chip-api/chip-api.component';
-import { SwitchApiComponent } from '../examples/switch/switch-api/switch-api.component';
-import { TextInputApiComponent } from '../examples/text-input/text-input-api/text-input-api.component';
-import { ColorPreviewComponent } from '../color-preview/color-preview.component';
-import { DateApiComponent } from '../examples/date/date-api/date-api.component';
-import { SidenavApiComponent } from '../examples/sidenav/sidenav-api/sidenav-api.component';
-import { ProgressbarApiComponent } from '../examples/progressbar/progressbar-api/progressbar-api.component';
-import { TabbedSectionApiComponent } from '../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
-import { FooterApiComponent } from '../examples/footer/footer-api/footer-api.component';
-import { SpinnerApiComponent } from '../examples/spinner/spinner-api/spinner-api.component';
-import { HeaderApiComponent } from '../examples/header/header-api/header-api.component';
-import { WizardApiComponent } from '../examples/wizard/wizard-api/wizard-api.component';
-import { AccordionApiComponent } from '../examples/accordion/accordion-api/accordion-api.component';
-import { AccordionGroupApiComponent } from '../examples/accordion-group/accordion-group-api/accordion-group-api.component';
-import { DialogApiComponent } from '../examples/dialog/dialog-api/dialog-api.component';
-import { DropdownApiComponent } from '../examples/dropdown/dropdown-api/dropdown-api.component';
-import { TableApiComponent } from '../examples/table/table-api/table-api.component';
-import { PaginatorApiComponent } from '../examples/paginator/paginator-api/paginator-api.component';
-import { TabsApiComponent } from '../examples/tabs/tabs-api/tabs-api.component';
-import { TextAreaApiComponent } from '../examples/text-area/text-area-api/text-area-api.component';
-import { TextAreaPropertiesTableComponent } from '../examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
-import { TextAreaExampleComponent } from '../examples/text-area/text-area-example/text-area-example.component';
-import { TextAreaImportComponent } from '../examples/text-area/text-area-import/text-area-import.component';
-import { AlertApiComponent } from '../examples/alert/alert-api/alert-api.component';
-import { HeadingApiComponent } from '../examples/heading/heading-api/heading-api.component';
-import { UploadApiComponent } from '../examples/upload/upload-api/upload-api.component';
-import { ResultsetTableApiComponent } from '../examples/resultset-table/resultset-table-api/resultset-table-api.component';
-import { ButtonExampleComponent } from '../examples/button/button-example/button-example.component';
-
+import { PaginatorTablePropertiesComponent } from "../examples/paginator/properties/paginator-table-properties/paginator-table-properties.component";
+import { LinkExampleComponent } from "../examples/link/link-example/link-example.component";
+import { LinkTablePropertiesComponent } from "../examples/link/properties/link-table-properties/link-table-properties.component";
+import { SidenavExampleComponent } from "../examples/sidenav/sidenav-example/sidenav-example.component";
+import { SidenavTablePropertiesComponent } from "../examples/sidenav/properties/sidenav-table-properties/sidenav-table-properties.component";
+import { WizardExampleComponent } from "../examples/wizard/wizard-example/wizard-example.component";
+import { WizardTablePropertiesComponent } from "../examples/wizard/properties/wizard-table-properties/wizard-table-properties.component";
+import { HeadingTablePropertiesComponent } from "../examples/heading/properties/heading-table-properties/heading-table-properties.component";
+import { HeadingExampleComponent } from "../examples/heading/heading-example/heading-example.component";
+import { ResultsetTableExampleComponent } from "../examples/resultset-table/resultset-table-example/resultset-table-example.component";
+import { ResultsetTablePropertiesComponent } from "../examples/resultset-table/properties/resultset-table-properties/resultset-table-properties.component";
+import { HeaderDirectivesComponent } from "../examples/header/header-directives/header-directives.component";
+import { HeaderExampleResponsiveComponent } from "../examples/header/responsive/header-example-responsive/header-example-responsive.component";
+import { ResultsetTableDirectivesComponent } from "../examples/resultset-table/resultset-table-directives/resultset-table-directives.component";
+import { AccordionImportComponent } from "../examples/accordion/accordion-import/accordion-import.component";
+import { AccordionGroupImportComponent } from "../examples/accordion-group/accordion-group-import/accordion-group-import.component";
+import { AlertImportComponent } from "../examples/alert/alert-import/alert-import.component";
+import { BoxImportComponent } from "../examples/box/box-import/box-import.component";
+import { ButtonImportComponent } from "../examples/button/button-import/button-import.component";
+import { CardImportComponent } from "../examples/card/card-import/card-import.component";
+import { CheckboxImportComponent } from "../examples/checkbox/checkbox-import/checkbox-import.component";
+import { DateImportComponent } from "../examples/date/date-import/date-import.component";
+import { DialogImportComponent } from "../examples/dialog/dialog-import/dialog-import.component";
+import { DropdownImportComponent } from "../examples/dropdown/dropdown-import/dropdown-import.component";
+import { FooterImportComponent } from "../examples/footer/footer-import/footer-import.component";
+import { HeaderImportComponent } from "../examples/header/header-import/header-import.component";
+import { HeadingImportComponent } from "../examples/heading/heading-import/heading-import.component";
+import { LinkImportComponent } from "../examples/link/link-import/link-import.component";
+import { PaginatorImportComponent } from "../examples/paginator/paginator-import/paginator-import.component";
+import { ProgressbarImportComponent } from "../examples/progressbar/progressbar-import/progressbar-import.component";
+import { RadioImportComponent } from "../examples/radio/radio-import/radio-import.component";
+import { ResultsetTableImportComponent } from "../examples/resultset-table/resultset-table-import/resultset-table-import.component";
+import { SelectImportComponent } from "../examples/select/select-import/select-import.component";
+import { SidenavImportComponent } from "../examples/sidenav/sidenav-import/sidenav-import.component";
+import { SliderImportComponent } from "../examples/slider/slider-import/slider-import.component";
+import { SpinnerImportComponent } from "../examples/spinner/spinner-import/spinner-import.component";
+import { SwitchImportComponent } from "../examples/switch/switch-import/switch-import.component";
+import { TabbedSectionImportComponent } from "../examples/tabbed-section/tabbed-section-import/tabbed-section-import.component";
+import { TableImportComponent } from "../examples/table/table-import/table-import.component";
+import { TabsImportComponent } from "../examples/tabs/tabs-import/tabs-import.component";
+import { TagImportComponent } from "../examples/tag/tag-import/tag-import.component";
+import { TextInputImportComponent } from "../examples/text-input/text-input-import/text-input-import.component";
+import { UploadImportComponent } from "../examples/upload/upload-import/upload-import.component";
+import { WizardImportComponent } from "../examples/wizard/wizard-import/wizard-import.component";
+import { ButtonApiComponent } from "../examples/button/button-api/button-api.component";
+import { CheckboxApiComponent } from "../examples/checkbox/checkbox-api/checkbox-api.component";
+import { RadioApiComponent } from "../examples/radio/radio-api/radio-api.component";
+import { LinkApiComponent } from "../examples/link/link-api/link-api.component";
+import { SliderApiComponent } from "../examples/slider/slider-api/slider-api.component";
+import { SelectApiComponent } from "../examples/select/select-api/select-api.component";
+import { BoxApiComponent } from "../examples/box/box-api/box-api.component";
+import { TagApiComponent } from "../examples/tag/tag-api/tag-api.component";
+import { CardApiComponent } from "../examples/card/card-api/card-api.component";
+import { ChipApiComponent } from "../examples/chip/chip-api/chip-api.component";
+import { SwitchApiComponent } from "../examples/switch/switch-api/switch-api.component";
+import { TextInputApiComponent } from "../examples/text-input/text-input-api/text-input-api.component";
+import { ColorPreviewComponent } from "../color-preview/color-preview.component";
+import { DateApiComponent } from "../examples/date/date-api/date-api.component";
+import { SidenavApiComponent } from "../examples/sidenav/sidenav-api/sidenav-api.component";
+import { ProgressbarApiComponent } from "../examples/progressbar/progressbar-api/progressbar-api.component";
+import { TabbedSectionApiComponent } from "../examples/tabbed-section/tabbed-section-api/tabbed-section-api.component";
+import { FooterApiComponent } from "../examples/footer/footer-api/footer-api.component";
+import { SpinnerApiComponent } from "../examples/spinner/spinner-api/spinner-api.component";
+import { HeaderApiComponent } from "../examples/header/header-api/header-api.component";
+import { WizardApiComponent } from "../examples/wizard/wizard-api/wizard-api.component";
+import { AccordionApiComponent } from "../examples/accordion/accordion-api/accordion-api.component";
+import { AccordionGroupApiComponent } from "../examples/accordion-group/accordion-group-api/accordion-group-api.component";
+import { DialogApiComponent } from "../examples/dialog/dialog-api/dialog-api.component";
+import { DropdownApiComponent } from "../examples/dropdown/dropdown-api/dropdown-api.component";
+import { TableApiComponent } from "../examples/table/table-api/table-api.component";
+import { PaginatorApiComponent } from "../examples/paginator/paginator-api/paginator-api.component";
+import { TabsApiComponent } from "../examples/tabs/tabs-api/tabs-api.component";
+import { TextAreaApiComponent } from "../examples/text-area/text-area-api/text-area-api.component";
+import { TextAreaPropertiesTableComponent } from "../examples/text-area/properties/text-area-properties-table/text-area-properties-table.component";
+import { TextAreaExampleComponent } from "../examples/text-area/text-area-example/text-area-example.component";
+import { TextAreaImportComponent } from "../examples/text-area/text-area-import/text-area-import.component";
+import { AlertApiComponent } from "../examples/alert/alert-api/alert-api.component";
+import { HeadingApiComponent } from "../examples/heading/heading-api/heading-api.component";
+import { UploadApiComponent } from "../examples/upload/upload-api/upload-api.component";
+import { ResultsetTableApiComponent } from "../examples/resultset-table/resultset-table-api/resultset-table-api.component";
+import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
+import { InputTextPropertiesComponent } from "../examples/input-text/input-text-properties/input-text-properties.component";
+import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
+import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
+import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
+import { PasswordPropertiesComponent } from "../examples/password/password-properties/password-properties.component";
+import { PasswordImportComponent } from "../examples/password/password-import/password-import.component";
+import { PasswordExampleComponent } from "../examples/password/password-example/password-example.component";
+import { PasswordApiComponent } from "../examples/password/password-api/password-api.component";
+import { NumberApiComponent } from "../examples/number/number-api/number-api.component";
+import { NumberImportComponent } from "../examples/number/number-import/number-import.component";
+import { NumberExampleComponent } from "../examples/number/number-example/number-example.component";
+import { NumberPropertiesComponent } from "../examples/number/number-properties/number-properties.component";
+import { NewDateApiComponent } from "../examples/new-date/date-api/date-api.component";
+import { NewDateImportComponent } from "../examples/new-date/date-import/date-import.component";
+import { NewDateExampleComponent } from "../examples/new-date/date-example/date-example.component";
+import { NewDatePropertiesComponent } from "../examples/new-date/date-properties/date-properties.component";
 @NgModule({
   declarations: [DynamicComponentComponent],
   imports: [BrowserModule, FormsModule, PortalModule],
@@ -298,6 +313,22 @@ import { ButtonExampleComponent } from '../examples/button/button-example/button
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupApiComponent,
-  ]
+    InputTextPropertiesComponent,
+    InputTextApiComponent,
+    InputTextExampleComponent,
+    InputTextImportComponent,
+    PasswordApiComponent,
+    PasswordExampleComponent,
+    PasswordImportComponent,
+    PasswordPropertiesComponent,
+    NumberApiComponent,
+    NumberImportComponent,
+    NumberExampleComponent,
+    NumberPropertiesComponent,
+    NewDateApiComponent,
+    NewDateImportComponent,
+    NewDateExampleComponent,
+    NewDatePropertiesComponent,
+  ],
 })
-export class DynamicModule { }
+export class DynamicModule {}

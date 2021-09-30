@@ -1,0 +1,192 @@
+<label *ngIf="label" class="inputLabel" htmlFor="{{ id }}">
+  {{ label }}
+  <span *ngIf="optional" class="inputOptionalLabel">(Optional)</span>
+</label>
+<span *ngIf="helperText" class="helperText">{{ helperText }}</span>
+<div class="inputContainer">
+  <span (click)="focusInput()"
+    ><ng-content select="dxc-input-text-prefix"></ng-content
+  ></span>
+  <input
+    #inputRef
+    (focus)="handleOnFocus()"
+    (focusout)="handleOnClose()"
+    (keydown)="handleOnKeyDown($event)"
+    (blur)="handleOnBlur()"
+    (ngModelChange)="handleOnChange($event)"
+    (click)="handleOnClick()"
+    type="text"
+    class="inputText"
+    [attr.role]="suggestions ? 'combobox' : 'textbox'"
+    [id]="id"
+    [placeholder]="placeholder"
+    [ngModel]="value"
+    [name]="name"
+    [disabled]="disabled"
+    [pattern]="pattern"
+    [tabindex]="tabIndex"
+    [attr.aria-activedescendant]="
+      suggestions && autosuggestVisible ? suggestions[focusedOption] : ''
+    "
+    [attr.aria-expanded]="autosuggestVisible"
+  />
+  <span
+    *ngIf="(error || validationError) && !disabled"
+    class="inputErrorIcon"
+    aria-label="Error"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="currentColor"
+    >
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+      />
+    </svg>
+  </span>
+  <button
+    *ngIf="clearable && !disabled && value"
+    class="inputAction"
+    (click)="handleDefaultClearAction()"
+    [disabled]="disabled"
+    aria-label="Clear"
+    [tabindex]="tabIndex"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path
+        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+      />
+    </svg>
+  </button>
+  <button
+    #actionButton
+    *ngIf="hasAction()"
+    class="inputAction"
+    (click)="handleActionOnClick($event)"
+    [disabled]="disabled"
+    aria-label="Action"
+    [tabindex]="tabIndex"
+  >
+    <ng-content select="dxc-new-input-text-action"></ng-content>
+  </button>
+  <button
+    #stepButtonMinus
+    *ngIf="isInputNumber"
+    class="inputAction"
+    [disabled]="disabled"
+    aria-label="Decrement"
+    [tabindex]="tabIndex"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      fill="currentColor"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 13H5v-2h14v2z" />
+    </svg>
+  </button>
+  <button
+    #stepButtonPlus
+    *ngIf="isInputNumber"
+    class="inputAction"
+    [disabled]="disabled"
+    aria-label="Increment"
+    [tabindex]="tabIndex"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      fill="currentColor"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+    </svg>
+  </button>
+  <span (click)="focusInput()">
+    <ng-content select="dxc-input-text-suffix"></ng-content>
+  </span>
+  <ul
+    #autoSuggestOptions
+    [ngClass]="{
+      visible: autosuggestVisible,
+      fetchingError: fetchingError.getValue()
+    }"
+    [id]="autoSuggestId"
+    role="listbox"
+    class="options"
+    *ngIf="suggestions && autosuggestType"
+  >
+    <li
+      *ngFor="
+        let item of autosuggestType && autosuggestType === 'async'
+          ? !loading.getValue()
+            ? options
+            : []
+          : (suggestions | filterOptions: value);
+        let i = index
+      "
+      role="option"
+      [attr.aria-selected]="focusedOption === i"
+      [ngClass]="{
+        selected: focusedOption === i,
+        active: focusedOption === i && activedOption === i
+      }"
+      [innerHtml]="
+        autosuggestType === 'async' ? item : (item | boldOptions: value)
+      "
+      [id]="item"
+      (mousedown)="handleMouseDown($event, i)"
+      (mouseup)="handleOnClickOption(item)"
+      (mouseenter)="handleOnHover(i)"
+      (mouseleave)="handleOnLeave()"
+    ></li>
+    <li
+      *ngIf="
+        autosuggestType === 'array' &&
+        filteredOptions.length === 0 &&
+        !loading.getValue()
+      "
+      class="systemMessage"
+    >
+      No results found
+    </li>
+    <li *ngIf="fetchingError.getValue() && !loading.getValue()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span>Error fetching data</span>
+    </li>
+    <li *ngIf="loading.getValue()">
+      <span>Searching...</span>
+    </li>
+  </ul>
+</div>
+
+<span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>
+<span
+  *ngIf="validationError && !disabled && !error"
+  class="inputErrorMessage"
+  >{{ validationError }}</span
+>

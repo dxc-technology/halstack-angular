@@ -37,7 +37,11 @@ import {
   DxcToggleGroupModule,
   DxcUploadModule,
   DxcResultsetTableModule,
-  BackgroundProviderModule
+  BackgroundProviderModule,
+  DxcNewInputTextModule,
+  DxcPasswordModule,
+  DxcNumberModule,
+  DxcNewDateModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -69,7 +73,10 @@ import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-p
 import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
-
+import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
+import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
+import { PasswordPreviewComponent } from './previews/password-preview/password-preview.component';
+import { NumberPreviewComponent } from './previews/number-preview/number-preview.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +111,10 @@ import { TablePreviewComponent } from './previews/table-preview/table-preview.co
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
     TablePreviewComponent,
+    NewInputTextPreviewComponent,
+    NewDatePreviewComponent,
+    PasswordPreviewComponent,
+    NumberPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -121,11 +132,15 @@ import { TablePreviewComponent } from './previews/table-preview/table-preview.co
     DxcCheckboxModule,
     DxcChipModule,
     DxcDateModule,
+    DxcNewDateModule,
     DxcDialogModule,
     DxcDropdownModule,
     DxcFooterModule,
     DxcHeaderModule,
     DxcInputTextModule,
+    DxcNewInputTextModule,
+    DxcPasswordModule,
+    DxcNumberModule,
     DxcLinkModule,
     DxcPaginatorModule,
     DxcProgressbarModule,

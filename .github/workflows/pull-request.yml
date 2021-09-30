@@ -29,8 +29,17 @@ jobs:
     - name: Link lib
       run: cd . && npm run link-lib
         
-    - name: Test library
-      run: cd ./projects/dxc-ngx-cdk && npm run test
+    - name: Test library Forms
+      run: cd ./projects/dxc-ngx-cdk && npm run test-forms
+
+    - name: Test library Navigation
+      run: cd ./projects/dxc-ngx-cdk && npm run test-navigations
+
+    - name: Test library Layout
+      run: cd ./projects/dxc-ngx-cdk && npm run test-layout
+
+    - name: Test library Utilities
+      run: cd ./projects/dxc-ngx-cdk && npm run test-utilities
 
     - name: Build angular cdk site
       run: cd . && npm run build-next-cdk-site

@@ -31,7 +31,9 @@
     "preserveSymlinks": true
 },
   "exclude": [
-    "test-import.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "include": [
+    "./test-import.ts"
+  ],
 }

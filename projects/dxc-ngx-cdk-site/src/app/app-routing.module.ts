@@ -38,7 +38,11 @@ import { ChipComponent } from './pages/chip/chip.component';
 import { TextAreaComponent } from './pages/text-area/text-area.component';
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
-import { ThemeBuilderPageModule } from './pages/theme-builder/theme-buider.module';
+import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
+import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
+import { PasswordComponent } from "./pages/password/password.component";
+import { NumberComponent } from "./pages/number/number.component";
+import { NewDateComponent } from "./pages/new-date/new-date.component";
 
 let routes: Routes = [];
 
@@ -47,7 +51,7 @@ let routes: Routes = [];
   routes.push({ path: 'guidelines', component: DesignGuidelinesPageComponent }),
   routes.push({
     path: 'theme-builder',
-    loadChildren: () => import('./pages/theme-builder/theme-buider.module').then(m => m.ThemeBuilderPageModule)
+    loadChildren: () => import('./pages/theme-builder/theme-builder.module').then(m => m.ThemeBuilderPageModule)
   }),
   routes.push({
     path: 'components',
@@ -188,6 +192,22 @@ let routes: Routes = [];
   {
     path: 'components/heading',
     component: HeadingComponent
+  },
+  {
+    path: 'components/newInputText',
+    component: NewInputTextComponent
+  },
+  {
+    path: 'components/password',
+    component: PasswordComponent
+  },
+  {
+    path: 'components/number',
+    component: NumberComponent
+  },
+  {
+    path: 'components/newDate',
+    component: NewDateComponent
   },
   {
     path: 'components/resultsettable',

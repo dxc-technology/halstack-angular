@@ -78,15 +78,15 @@ export class NewInpuTextComponent implements OnInit {
     this.suggestionsValue = value;
   }
 
-  onChangeFSuggestions({ value }) {
+  onChangeFSuggestions(value) {
     this.suggestionsFValue = value;
   }
 
   callbackFunc(newValue) {
-    this.options = this.options.filter((option) =>
+    const newOptions = this.options.filter((option) =>
       option.toUpperCase().includes(newValue.toUpperCase())
     );
-    return of(this.options).pipe(
+    return of(newOptions).pipe(
       switchMap((options) => of(options).pipe(delay(1000)))
     );
   }

@@ -692,7 +692,7 @@ export const componentTokens = {
   "--inputText-optionFocusColor": "#005FCC",
 
   // NEW INPUT TEXT
-  "--input-disabledBorderColor": globalTokens.color_grey_600,
+  "--input-disabledBorderColor": globalTokens.hal_grey_l_60,
   "--input-disabledBorderColorOnDark": globalTokens.hal_grey_l_60,
   "--input-disabledContainerFillColor": globalTokens.hal_grey_l_95,
   "--input-disabledContainerFillColorOnDark": globalTokens.hal_grey_s_40,
@@ -784,7 +784,7 @@ export const componentTokens = {
   "--input-systemMessageFontSize": globalTokens.type_scale_02,
   "--input-systemMessageFontWeight": globalTokens.type_regular,
   "--input-errorMessageFontFamily": globalTokens.type_sans,
-  "--input-errorMessageFontSize": globalTokens.type_scale_02,
+  "--input-errorMessageFontSize": globalTokens.type_scale_01,
   "--input-errorMessageFontWeight": globalTokens.type_regular,
   "--input-errorMessageBorderColor": globalTokens.hal_red_s_41,
   "--input-errorMessageBackgroundColor": globalTokens.hal_red_l_95,

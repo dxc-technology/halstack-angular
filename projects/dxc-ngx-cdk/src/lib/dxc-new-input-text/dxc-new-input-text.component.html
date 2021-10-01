@@ -26,9 +26,11 @@
     [pattern]="pattern"
     [tabindex]="tabIndex"
     [attr.aria-activedescendant]="
-      suggestions && autosuggestVisible ? suggestions[focusedOption] : ''
+      suggestions && autosuggestVisible && suggestions[focusedOption]
     "
-    [attr.aria-expanded]="autosuggestVisible"
+    [attr.aria-expanded]="suggestions && autosuggestVisible"
+    [attr.aria-controls]="suggestions && autoSuggestId"
+    [attr.aria-autocomplete]="suggestions && 'list'"
   />
   <span
     *ngIf="(error || validationError) && !disabled"

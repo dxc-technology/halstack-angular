@@ -41,7 +41,8 @@ import {
   DxcNewInputTextModule,
   DxcPasswordModule,
   DxcNumberModule,
-  DxcNewDateModule
+  DxcNewDateModule,
+  DxcNewTextareaModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -77,6 +78,7 @@ import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/
 import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
 import { PasswordPreviewComponent } from './previews/password-preview/password-preview.component';
 import { NumberPreviewComponent } from './previews/number-preview/number-preview.component';
+import { NewTextareaPreviewComponent } from './previews/new-textarea-preview/new-textarea-preview.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +117,7 @@ import { NumberPreviewComponent } from './previews/number-preview/number-preview
     NewDatePreviewComponent,
     PasswordPreviewComponent,
     NumberPreviewComponent,
+    NewTextareaPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -157,7 +160,8 @@ import { NumberPreviewComponent } from './previews/number-preview/number-preview
     DxcTextareaModule,
     DxcToggleGroupModule,
     DxcUploadModule,
-    BackgroundProviderModule
+    BackgroundProviderModule,
+    DxcNewTextareaModule
   ],
   exports: [],
   entryComponents: [],

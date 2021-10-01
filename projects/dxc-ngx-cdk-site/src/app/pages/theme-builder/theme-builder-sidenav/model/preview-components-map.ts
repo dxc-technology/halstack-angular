@@ -32,6 +32,7 @@ import { NewInputTextPreviewComponent } from '../../previews/new-input-text-prev
 import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
 import { NumberPreviewComponent } from '../../previews/number-preview/number-preview.component';
 import { PasswordPreviewComponent } from '../../previews/password-preview/password-preview.component';
+import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -56,6 +57,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'inputText', component: InputTextPreviewComponent},
   {name: 'input', component: NewInputTextPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
+  {name: 'newTextarea', component: NewTextareaPreviewComponent},
   {name: 'number', component: NumberPreviewComponent},
   {name: 'password', component: PasswordPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},

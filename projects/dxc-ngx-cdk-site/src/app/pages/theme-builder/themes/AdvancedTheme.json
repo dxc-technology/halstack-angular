@@ -604,6 +604,7 @@
     "hoverListOptionBackgroundColor": "#f2f2f2",
     "activeListOptionBackgroundColor": "#cccccc"
   },
+  "newTextarea": {},
   "number": {},
   "password": {},
   "link": {

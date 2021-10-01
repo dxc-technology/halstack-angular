@@ -37,6 +37,7 @@ import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previ
 import { NewDatePreviewComponent } from "src/app/pages/theme-builder/previews/new-date-preview/new-date-preview.component";
 import { PasswordPreviewComponent } from '../../../pages/theme-builder/previews/password-preview/password-preview.component';
 import { NumberPreviewComponent } from '../../../pages/theme-builder/previews/number-preview/number-preview.component';
+import { NewTextareaPreviewComponent } from "src/app/pages/theme-builder/previews/new-textarea-preview/new-textarea-preview.component";
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -76,7 +77,8 @@ import { NumberPreviewComponent } from '../../../pages/theme-builder/previews/nu
     TablePreviewComponent,
     NewDatePreviewComponent,
     PasswordPreviewComponent,
-    NumberPreviewComponent
+    NumberPreviewComponent,
+    NewTextareaPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

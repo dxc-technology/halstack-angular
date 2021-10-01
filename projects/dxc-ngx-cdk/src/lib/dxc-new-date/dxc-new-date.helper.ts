@@ -16,13 +16,16 @@ export class DxcNewDateHelper {
       dxc-box {
         background: var(--newDate-pickerBackgroundColor);
         height: var(--newDate-pickerHeight);
+        display: inline-block;
       }
       .mat-calendar {
         font-family: var(--fontFamily);
         width: 100%;
+        height: 100%;
       }
       .mat-calendar-content {
         height: 88%;
+        padding: 0 8px 0px 8px;
       }
       .mat-calendar-table {
         height: 100%;
@@ -38,6 +41,11 @@ export class DxcNewDateHelper {
           margin-left: 8px;
         }
       }
+      .mat-calendar-table-header-divider::after {
+        left: 0px;
+        right: 0px;
+      }
+
       .mat-calendar-table-header th {
         font-size: 12px;
       }

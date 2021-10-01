@@ -284,13 +284,16 @@ export class DxcDateComponent implements OnChanges, OnInit {
       dxc-box {
         background: var(--date-pickerBackgroundColor);
         height: var(--date-pickerHeight);
+        display: inline-block;
       }
       .mat-calendar {
         font-family: var(--fontFamily);
         width: 100%;
+        height: 100%;
       }
       .mat-calendar-content {
         height: 88%;
+        padding: 0 8px 0px 8px;
       }
       .mat-calendar-table {
         height: 100%;
@@ -308,6 +311,11 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
       .mat-calendar-table-header th {
         font-size: 12px;
+      }
+
+      .mat-calendar-table-header-divider::after {
+        left: 0px;
+        right: 0px;
       }
 
       .mat-calendar-period-button {

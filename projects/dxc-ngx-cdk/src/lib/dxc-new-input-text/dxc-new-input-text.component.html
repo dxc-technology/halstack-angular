@@ -159,8 +159,8 @@
     ></li>
     <li
       *ngIf="
-        autosuggestType === 'array' &&
-        filteredOptions.length === 0 &&
+        ((autosuggestType === 'array' && filteredOptions.length === 0) ||
+          (autosuggestType === 'async' && options.length === 0)) &&
         !loading.getValue()
       "
       class="systemMessage"

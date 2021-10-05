@@ -1,0 +1,102 @@
+{
+    "data": [
+        {
+            "title": "Controlled textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/controlled-textarea-3y35d?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "controlled-textarea"
+            }
+        },
+        {
+            "title": "Uncontrolled textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/uncontrolled-textarea-5bp9u?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "uncontrolled-textarea"
+            }
+        },
+        {
+            "title": "Textarea with helper text",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/textarea-helper-text-1shdt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "textarea-helper-text"
+            }
+        },
+        {
+            "title": "Textarea with placeholder",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/textarea-placeholder-ukkh7?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "textarea-placeholder"
+            }
+        },
+        {
+            "title": "Disabled textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/disabled-textarea-j4pwb?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "disabled-textarea"
+            }
+        },
+        {
+            "title": "Optional textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/optional-textarea-p3nec?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "optional-textarea"
+            }
+        },
+        {
+            "title": "Textarea with verticalGrow set to 'manual'",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/verticalgrow-manual-textarea-0mg9n?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "verticalGrow-manual-textarea"
+            }
+        },
+        {
+            "title": "Textarea with verticalGrow set to 'none'",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/verticalgrow-none-textarea-qd0le?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "verticalGrow-none-textarea"
+            }
+        },
+        {
+            "title": "Textarea with default rows",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/rows-textarea-ll64h?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "rows-textarea"
+            }
+        },
+        {
+            "title": "Invalid textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/invalid-textarea-o77gf?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "invalid-textarea"
+            }
+        },
+        {
+            "title": "Textarea with pattern constraint",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/pattern-textarea-dcchm?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "pattern-textarea"
+            }
+        },
+        {
+            "title": "Textarea with length constraint",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/length-textarea-h5mii?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "length-textarea"
+            }
+        },
+        {
+            "title": "Textarea with custom error messages",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/custom-error-textarea-pwv5k?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "custom-error-textarea"
+            }
+        },
+        {
+            "title": "Fill parent size textarea",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/fill-parent-textarea-ls3lo?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "fill-parent-textarea"
+            }
+        }
+    ]
+}

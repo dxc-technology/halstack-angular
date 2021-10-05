@@ -18,14 +18,28 @@ export class NewInputTextPreviewComponent implements OnInit {
   lengthLimit={min: 2, max: 5}
 
   options: Array<any> = [
+    "Afghanistan",
     "Albania",
+    "Algeria",
     "Andorra",
-    "Armenia",
-    "Austria",
-    "Azerbaijan",
-    "Belarus",
-    "Belgium",
-    "Bosnia and Herzegovina",
+    "Angola",
+    "Antigua and Barbuda",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Cabo Verde",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Cayman Islands, The",
+    "Central African Republic",
+    "Chad",
+    "Democratic Republic of the Congo",
+    "Dominican Republic",
+    "Dominica",
+    "Denmark",
+    "Djibouti",
   ];
 
   changeValue(event) {

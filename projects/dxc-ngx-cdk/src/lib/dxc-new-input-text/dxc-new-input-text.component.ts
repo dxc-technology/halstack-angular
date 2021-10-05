@@ -215,9 +215,6 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
   ngAfterViewInit(): void {
     if (this.inputRef) {
       if (this.suggestions && this.suggestions.length) {
-        this.inputRef.nativeElement.attributes.role.value = "combobox";
-        this.inputRef.nativeElement.ariaControls = this.autoSuggestId;
-        this.inputRef.nativeElement.ariaAutocomplete = "list";
         this.optionsRef.nativeElement.ariaLabel = this.label;
       }
       this.inputRef.nativeElement.ariaDisabled = this.disabled;

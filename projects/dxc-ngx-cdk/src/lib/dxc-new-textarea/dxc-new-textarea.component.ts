@@ -17,12 +17,14 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { BackgroundProviderService } from "../../public-api";
+import { CssUtils } from "../utils";
 import { DxcNewTextareaHelper } from "./dxc-new-textarea.helper";
+import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: "dxc-new-textarea",
   templateUrl: "./dxc-new-textarea.component.html",
-  providers: [DxcNewTextareaHelper],
+  providers: [DxcNewTextareaHelper, CssUtils],
 })
 export class DxcNewTextareaComponent implements OnInit {
   @HostBinding("class") className;
@@ -35,7 +37,7 @@ export class DxcNewTextareaComponent implements OnInit {
   name: string;
 
   @Input()
-  value: string = "";
+  value: string;
 
   @Input()
   id: string;
@@ -126,7 +128,7 @@ export class DxcNewTextareaComponent implements OnInit {
 
   validationError: string = "";
 
-  currentRows: number;
+  textareaId = `textarea-${uuidv4()}`;
 
   constructor(
     private cdRef: ChangeDetectorRef,

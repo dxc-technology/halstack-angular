@@ -57,6 +57,7 @@ import { NewInputTextModule } from './pages/new-input-text/new-input-text.module
 import { PasswordModule } from './pages/password/password.module';
 import { NumberModule } from './pages/number/number.module';
 import { NewDateModule } from './pages/new-date/new-date.module';
+import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { NewDateModule } from './pages/new-date/new-date.module';
     NewInputTextModule,
     PasswordModule,
     NumberModule,
-    NewDateModule
+    NewDateModule,
+    NewTextareaModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

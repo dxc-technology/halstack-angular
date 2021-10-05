@@ -163,6 +163,10 @@ import { NewDateApiComponent } from "../examples/new-date/date-api/date-api.comp
 import { NewDateImportComponent } from "../examples/new-date/date-import/date-import.component";
 import { NewDateExampleComponent } from "../examples/new-date/date-example/date-example.component";
 import { NewDatePropertiesComponent } from "../examples/new-date/date-properties/date-properties.component";
+import { NewTextareaApiComponent } from "../examples/new-textarea/new-textarea-api/new-textarea-api.component";
+import { NewTextareaImportComponent } from "../examples/new-textarea/new-textarea-import/new-textarea-import.component";
+import { NewTextareaExampleComponent } from "../examples/new-textarea/new-textarea-example/new-textarea-example.component";
+import { NewTextareaPropertiesComponent } from "../examples/new-textarea/new-textarea-properties/new-textarea-properties.component";
 @NgModule({
   declarations: [DynamicComponentComponent],
   imports: [BrowserModule, FormsModule, PortalModule],
@@ -329,6 +333,10 @@ import { NewDatePropertiesComponent } from "../examples/new-date/date-properties
     NewDateImportComponent,
     NewDateExampleComponent,
     NewDatePropertiesComponent,
+    NewTextareaApiComponent,
+    NewTextareaImportComponent,
+    NewTextareaExampleComponent,
+    NewTextareaPropertiesComponent
   ],
 })
 export class DynamicModule {}

@@ -1,15 +1,15 @@
-<label *ngIf="label" class="textareaLabel" htmlFor="{{ id }}">
+<label *ngIf="label" class="textareaLabel" htmlFor="{{ textareaId }}">
   {{ label }}
   <span *ngIf="optional" class="textareaOptionalLabel">(Optional)</span>
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <textarea
   #textareaRef
-  [id]="id"
+  [id]="textareaId"
   [name]="name"
   [placeholder]="placeholder"
-  [value]="value"
-  [rows]="currentRows"
+  [ngModel]="value"
+  [rows]="rows"
   (ngModelChange)="handleOnChange($event)"
   (blur)="handleOnBlur()"
   [disabled]="disabled"

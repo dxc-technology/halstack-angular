@@ -43,6 +43,7 @@ import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.com
 import { PasswordComponent } from "./pages/password/password.component";
 import { NumberComponent } from "./pages/number/number.component";
 import { NewDateComponent } from "./pages/new-date/new-date.component";
+import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
 
 let routes: Routes = [];
 
@@ -208,6 +209,10 @@ let routes: Routes = [];
   {
     path: 'components/newDate',
     component: NewDateComponent
+  },
+  {
+    path: 'components/newTextarea',
+    component: NewTextareaComponent
   },
   {
     path: 'components/resultsettable',

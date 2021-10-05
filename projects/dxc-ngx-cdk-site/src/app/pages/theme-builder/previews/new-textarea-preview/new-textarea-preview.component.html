@@ -4,6 +4,9 @@
       <tbuilder-component-mode text="Default">
         <dxc-new-textarea
             label="Test"
+            [pattern]="pattern"
+            
+            (onBlur)="onBlur($event)"
         >
         </dxc-new-textarea>
       </tbuilder-component-mode>

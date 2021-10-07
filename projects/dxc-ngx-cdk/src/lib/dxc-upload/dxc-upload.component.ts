@@ -92,6 +92,7 @@ export class DxcUploadComponent implements OnChanges {
       .map(function (file) {
         const fileInfo = {};
         fileInfo["name"] = file.fileData.name;
+        fileInfo["size"] = (file.fileData.size / (1024*1024)).toFixed(2);
         fileInfo["format"] = file.fileData.type;
         fileInfo["image"] = file.image;
         fileInfo["removeFile"] = function () {

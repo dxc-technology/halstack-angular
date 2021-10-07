@@ -17,15 +17,7 @@ export class DxcFilePreviewComponent {
   private _tabIndexValue;
   fileFormat = "default";
 
-  public ngOnInit() {
-    if (this.file.format.includes("image")) {
-      this.fileFormat = "image";
-    } else if (this.file.format.includes("video")) {
-      this.fileFormat = "video";
-    } else if (this.file.format.includes("audio")) {
-      this.fileFormat = "audio";
-    }
-  }
+  public ngOnInit() {}
 
   public onCloseHandler(): void {
     this.file.removeFile();

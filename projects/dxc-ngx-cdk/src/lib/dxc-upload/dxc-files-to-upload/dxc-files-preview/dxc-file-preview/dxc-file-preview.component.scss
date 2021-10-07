@@ -8,8 +8,10 @@
     align-items: center;
     cursor: pointer;
     fill: var(--upload-fileDeleteIconColor);
-    width: var(--upload-fileDeleteIconWidth);
-    height: var(--upload-fileDeleteIconHeight);
+    svg{
+      width: var(--upload-fileDeleteIconWidth);
+      height: var(--upload-fileDeleteIconHeight);
+    }
   }
   &:hover {
     background-color: var(--upload-fileHoverColor);
@@ -44,7 +46,7 @@
       color: var(--upload-fileNameFontColor);
       font-family: var(--upload-fontFamily);
     }
-    .fileFormat {
+    .fileSize {
       font-size: var(--upload-fileTypeFontSize);
       font-family: var(--upload-fontFamily);
       letter-spacing: 1.88px;

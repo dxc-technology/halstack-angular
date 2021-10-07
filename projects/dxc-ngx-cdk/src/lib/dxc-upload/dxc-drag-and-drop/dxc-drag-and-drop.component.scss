@@ -82,6 +82,7 @@
     background-color: var(--upload-draggingAreaBackgroundColor);
   }
   .droppingZone {
+    background-color: #f2f2f2;
     --border-color: #666666;
     --border-weight: 1px;
     --dash-size: 8px;
@@ -153,6 +154,7 @@
       color: var(--upload-dragAndDropTextDraggingStateFontColor);
     }
     svg{
+      margin-bottom: 15px;
       fill: var(--upload-dragAndDropDraggingStateIconColor);
       height: var(--upload-dragAndDropDraggingStateIconHeight);
       width: var(--upload-dragAndDropDraggingStateIconWidth);

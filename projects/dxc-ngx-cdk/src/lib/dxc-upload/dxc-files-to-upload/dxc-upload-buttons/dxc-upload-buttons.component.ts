@@ -23,7 +23,7 @@ export class DxcUploadButtonsComponent implements OnChanges {
 
   public ngOnChanges(): void {}
 
-  margins = { right: "medium", left: "small" };
+  margins = { left: "small" };
 
   onFileInput(event) {
     this.onAddFile.emit(event.target.files);

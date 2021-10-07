@@ -88,6 +88,7 @@ export const customTheme = {
     unselectedHoverTextColor: "#ff7979",
     selectedBaseColor: "#30da1b",
     selectedHoverBaseColor: "#ba9cba",
+    selectedActiveBaseColor: "#321353",
     selectedTextColor: "#d7da1b",
     selectedHoverTextColor: "#1effea",
   },

@@ -167,9 +167,9 @@ export class DxcToggleGroupComponent implements OnInit {
       return css`
         dxc-toggle {
           background: var(
-            --toggleGroup-disabledUnselectedBackgroundColor
+            --toggleGroup-unselectedDisabledBackgroundColor
           ) !important;
-          color: var(--toggleGroup-disabledUnselectedFontColor) !important;
+          color: var(--toggleGroup-unselectedDisabledFontColor) !important;
           .toggleContent {
             &:focus {
               outline: none !important;
@@ -177,7 +177,7 @@ export class DxcToggleGroupComponent implements OnInit {
             outline: none;
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-disabledUnselectedFontColor) !important;
+              fill: var(--toggleGroup-unselectedDisabledFontColor) !important;
             }
           }
           &:hover {
@@ -185,12 +185,12 @@ export class DxcToggleGroupComponent implements OnInit {
           }
           &.selected {
             background: var(
-              --toggleGroup-disabledSelectedBackgroundColor
+              --toggleGroup-selectedDisabledBackgroundColor
             ) !important;
-            color: var(--toggleGroup-disabledSelectedFontColor) !important;
+            color: var(--toggleGroup-selectedDisabledFontColor) !important;
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-disabledSelectedFontColor) !important;
+              fill: var(--toggleGroup-selectedDisabledFontColor) !important;
             }
           }
         }
@@ -200,12 +200,25 @@ export class DxcToggleGroupComponent implements OnInit {
         dxc-toggle {
           &:hover {
             cursor: pointer;
-            background: var(--toggleGroup-unselectedBackgroundHoverColor);
-            color: var(--toggleGroup-unselectedHoverFontColor);
+            background: var(--toggleGroup-unselectedHoverBackgroundColor);
+            color: var(--toggleGroup-unselectedFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-unselectedHoverFontColor) !important;
+              fill: var(--toggleGroup-unselectedFontColor) !important;
             }
+          }
+          &:active {
+            cursor: pointer;
+            background: var(--toggleGroup-unselectedActiveBackgroundColor);
+            color: var(--toggleGroup-selectedFontColor);
+            .icon img,
+            .icon svg {
+              fill: var(--toggleGroup-selectedFontColor) !important;
+            }
+          }
+          &:focus, &:focus-within, &:focus-visible {
+            outline: solid 2px var(--toggleGroup-focusColor) ;
+            outline-offset: -2px;
           }
           &.selected {
             background: var(--toggleGroup-selectedBackgroundColor);
@@ -214,12 +227,15 @@ export class DxcToggleGroupComponent implements OnInit {
             .icon svg {
               fill: var(--toggleGroup-selectedFontColor) !important;
             }
+            &:active {
+              background: var(--toggleGroup-selectedActiveBackgroundColor) !important;
+            }
             &:hover {
-              background: var(--toggleGroup-selectedBackgroundHoverColor);
+              background: var(--toggleGroup-selectedHoverBackgroundColor);
               color: var(--toggleGroup-selectedHoverFontColor);
               .icon img,
               .icon svg {
-                fill: var(--toggleGroup-selectedHoverFontColor) !important;
+                fill: var(--toggleGroup-selectedHoverFontColor);
               }
             }
           }
@@ -246,23 +262,20 @@ export class DxcToggleGroupComponent implements OnInit {
         color: var(--toggleGroup-unselectedFontColor);
 
         .toggleContent {
-          &:focus {
-            outline: var(--toggleGroup-focusColor) auto 1px;
+          &:focus, &:focus-within, &:focus-visible {
+            outline: none;
           }
-          height: 100%;
+          height: 40px;
           display: flex;
           align-items: center;
           .label {
             padding-left: var(--toggleGroup-labelPaddingLeft);
             padding-right: var(--toggleGroup-labelPaddingRight);
-            padding-bottom: var(--toggleGroup-labelPaddingBottom);
-            padding-top: var(--toggleGroup-labelPaddingTop);
             letter-spacing: var(--toggleGroup-fontLetterSpacing);
             font-family: var(--toggleGroup-fontFamily);
             font-size: var(--toggleGroup-fontSize);
             font-style: var(--toggle-fontStyle);
             font-weight: var(--toggleGroup-fontWeight);
-            text-transform: var(--toggleGroup-fontTextTransform);
           }
           .icon {
             display: flex;
@@ -272,8 +285,6 @@ export class DxcToggleGroupComponent implements OnInit {
               height: var(--toggleGroup-iconSize);
               padding-left: var(--toggleGroup-iconPaddingLeft);
               padding-right: var(--toggleGroup-iconPaddingRight);
-              padding-bottom: var(--toggleGroup-iconPaddingBottom);
-              padding-top: var(--toggleGroup-iconPaddingTop);
               fill: var(--toggleGroup-unselectedFontColor);
             }
           }

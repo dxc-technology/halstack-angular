@@ -271,38 +271,41 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--toggleGroup-unselectedBackgroundColor"] =
       theme?.toggle?.unselectedBaseColor ??
       tokens["--toggleGroup-unselectedBackgroundColor"];
-    proccessedTokens["--toggleGroup-unselectedBackgroundHoverColor"] =
+    proccessedTokens["--toggleGroup-unselectedHoverBackgroundColor"] =
       theme?.toggle?.unselectedHoverBaseColor ??
-      tokens["--toggleGroup-unselectedBackgroundHoverColor"];
+      tokens["--toggleGroup-unselectedHoverBackgroundColor"];
+      proccessedTokens["--toggleGroup-unselectedActiveBackgroundColor"] =
+      theme?.toggle?.unselectedActiveBaseColor ??
+      tokens["--toggleGroup-unselectedActiveBackgroundColor"];
     proccessedTokens["--toggleGroup-unselectedFontColor"] =
       theme?.toggle?.unselectedTextColor ??
       tokens["--toggleGroup-unselectedFontColor"];
-    proccessedTokens["--toggleGroup-unselectedHoverFontColor"] =
-      theme?.toggle?.unselectedHoverTextColor ??
-      tokens["--toggleGroup-unselectedHoverFontColor"];
     proccessedTokens["--toggleGroup-selectedBackgroundColor"] =
       theme?.toggle?.selectedBaseColor ??
       tokens["--toggleGroup-selectedBackgroundColor"];
-    proccessedTokens["--toggleGroup-selectedBackgroundHoverColor"] =
+    proccessedTokens["--toggleGroup-selectedHoverBackgroundColor"] =
       theme?.toggle?.selectedHoverBaseColor ??
-      tokens["--toggleGroup-selectedBackgroundHoverColor"];
+      tokens["--toggleGroup-selectedHoverBackgroundColor"];
+      proccessedTokens["--toggleGroup-selectedActiveBackgroundColor"] =
+      theme?.toggle?.selectedActiveBaseColor ??
+      tokens["--toggleGroup-selectedActiveBackgroundColor"];
     proccessedTokens["--toggleGroup-selectedFontColor"] =
       theme?.toggle?.selectedTextColor ?? tokens["--toggleGroup-selectedFontColor"];
     proccessedTokens["--toggleGroup-selectedHoverFontColor"] =
       theme?.toggle?.selectedHoverTextColor ??
       tokens["--toggleGroup-selectedHoverFontColor"];
-    proccessedTokens["--toggleGroup-disabledSelectedBackgroundColor"] =
+    proccessedTokens["--toggleGroup-selectedDisabledBackgroundColor"] =
       this.setOpacity(theme?.toggle?.selectedBaseColor, 0.34) ??
-      tokens["--toggleGroup-disabledSelectedBackgroundColor"];
-    proccessedTokens["--toggleGroup-disabledSelectedFontColor"] =
+      tokens["--toggleGroup-selectedDisabledBackgroundColor"];
+    proccessedTokens["--toggleGroup-selectedDisabledFontColor"] =
       this.setOpacity(theme?.toggle?.selectedTextColor, 0.34) ??
-      tokens["--toggleGroup-disabledSelectedFontColor"];
-    proccessedTokens["--toggleGroup-disabledUnselectedBackgroundColor"] =
+      tokens["--toggleGroup-selectedDisabledFontColor"];
+    proccessedTokens["--toggleGroup-unselectedDisabledBackgroundColor"] =
       this.setOpacity(theme?.toggle?.unselectedBaseColor, 0.34) ??
-      tokens["--toggleGroup-disabledUnselectedBackgroundColor"];
-    proccessedTokens["--toggleGroup-disabledUnselectedFontColor"] =
+      tokens["--toggleGroup-unselectedDisabledBackgroundColor"];
+    proccessedTokens["--toggleGroup-unselectedDisabledFontColor"] =
       this.setOpacity(theme?.toggle?.unselectedTextColor, 0.34) ??
-      tokens["--toggleGroup-disabledUnselectedFontColor"];
+      tokens["--toggleGroup-unselectedDisabledFontColor"];
 
     //WIZARD
     proccessedTokens["--wizard-selectedBackgroundColor"] =

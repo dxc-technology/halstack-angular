@@ -94,13 +94,12 @@
   },
   "toggleGroup": {
     "selectedBaseColor": "#6f2c91",
-    "selectedHoverBaseColor": "#000000",
+    "selectedHoverBaseColor": "#4b1c7d",
     "selectedFontColor": "#ffffff",
     "selectedHoverFontColor": "#ffffff",
     "unselectedBaseColor": "#D9D9D9",
     "unselectedHoverBaseColor": "#eeeeee",
-    "unselectedFontColor": "#000000",
-    "unselectedHoverFontColor": "#000000"
+    "unselectedFontColor": "#000000"
   },
   "wizard": {
     "baseColor": "#6f2c91",

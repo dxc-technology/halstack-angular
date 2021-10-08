@@ -4,7 +4,7 @@
     ><span>{{ successfulCount }}</span> files uploaded in total</span
   >
 </div>
-<div *ngFor="let file of filesSummary; index as i" class="filesSummary">
+<div *ngFor="let file of filesSummary; index as i; let first = first;" class="filesSummary" [class.first-item]="first">
   <dxc-transaction
     matTooltip="{{ file.errorMessage }}"
     [file]="file"

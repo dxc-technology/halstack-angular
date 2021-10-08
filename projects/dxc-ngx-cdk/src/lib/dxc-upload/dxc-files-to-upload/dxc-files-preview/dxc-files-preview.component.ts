@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from "@angular/core";
 import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { UploadService } from "../../services/upload.service";
 @Component({
   selector: "dxc-files-preview",
   templateUrl: "./dxc-files-preview.component.html",
@@ -17,7 +18,12 @@ export class DxcFilesPreviewComponent {
   }
   private _tabIndexValue;
 
-  public ngOnInit() {}
+  constructor(private service: UploadService){}
+
+  public ngOnInit() {
+    this.service.setSuccess(false);
+    this.service.setErrorMessage("");
+  }
 
   dragEnter(event) {
     event.preventDefault();

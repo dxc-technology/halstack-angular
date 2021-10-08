@@ -3,13 +3,14 @@ import { CssUtils } from "../utils";
 import { css } from "emotion";
 import { SimpleChanges, HostBinding } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
+import { UploadService } from "./services/upload.service";
 
 @Component({
   selector: "dxc-upload",
   templateUrl: "./dxc-upload.component.html",
   styleUrls: ["./dxc-upload.component.scss"],
-  providers: [CssUtils],
+  providers: [CssUtils, UploadService],
 })
 export class DxcUploadComponent implements OnChanges {
   private files = [];
@@ -34,10 +35,10 @@ export class DxcUploadComponent implements OnChanges {
 
   defaultInputs = new BehaviorSubject<any>({
     margin: null,
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
-  constructor(private utils: CssUtils) {}
+  constructor(private utils: CssUtils, private service: UploadService) {}
 
   ngOnInit() {
     this.className = `${this.setDxcUploadDynamicStyle(
@@ -57,7 +58,6 @@ export class DxcUploadComponent implements OnChanges {
   }
 
   addFiles($event) {
-    const aux = this;
     Array.from($event).forEach((file) => {
       this.getPreview(file);
     });
@@ -91,8 +91,13 @@ export class DxcUploadComponent implements OnChanges {
       })
       .map(function (file) {
         const fileInfo = {};
+        let sizeValue = file.fileData.size / (1024 * 1024);
+        let size;
+        sizeValue < 0.001
+          ? (size = `${(file.fileData.size / 1024).toFixed(2)} KB`)
+          : (size = `${sizeValue.toFixed(2)} MB`);
         fileInfo["name"] = file.fileData.name;
-        fileInfo["size"] = (file.fileData.size / (1024*1024)).toFixed(2);
+        fileInfo["size"] = size;
         fileInfo["format"] = file.fileData.type;
         fileInfo["image"] = file.image;
         fileInfo["removeFile"] = function () {
@@ -106,7 +111,6 @@ export class DxcUploadComponent implements OnChanges {
   }
 
   getUploadedFiles() {
-    const aux = this;
     this.uploadedFiles = this.files
       .filter(function (file) {
         return file.status !== "pending";
@@ -153,22 +157,32 @@ export class DxcUploadComponent implements OnChanges {
 
   handleUpload() {
     const aux = this;
+    let promises = [];
+    let errorMessage = "";
     this.files.forEach((file) => {
       if (file.status === "pending") {
         file.status = "processing";
-        this.uploadCallback(file)
-          .then(() => {
-            file.status = "success";
-            aux.getUploadedFiles();
-          })
-          .catch((err) => {
-            file.status = "error";
-            file.errorMessage = err;
-            aux.getUploadedFiles();
-          })
-          .finally();
+        promises.push(
+          this.uploadCallback(file)
+            .then(() => {
+              file.status = "success";
+              aux.getUploadedFiles();
+            })
+            .catch((err) => {
+              errorMessage = err;
+              file.status = "error";
+              file.errorMessage = err;
+              aux.getUploadedFiles();
+            })
+            .finally()
+        );
         this.getUploadedFiles();
       }
+    });
+    Promise.all(promises).then(() => {
+      errorMessage
+        ? this.service.setErrorMessage(errorMessage)
+        : this.service.setSuccess(true);
     });
   }
 

@@ -13,6 +13,7 @@ import { DxcTransactionComponent } from "./dxc-transactions/dxc-transaction/dxc-
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcSpinnerModule } from "../dxc-spinner/dxc-spinner.module";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { DxcAlertModule } from "../dxc-alert/dxc-alert.module";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     DxcButtonModule,
     DxcSpinnerModule,
     MatProgressSpinnerModule,
+    DxcAlertModule
   ],
   exports: [
     DxcUploadComponent,

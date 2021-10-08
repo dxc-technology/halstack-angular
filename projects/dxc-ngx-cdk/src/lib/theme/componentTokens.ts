@@ -1329,7 +1329,7 @@ export const componentTokens = {
   "--upload-filesUploadedTitleFontWeight": globalTokens.type_regular,
   "--upload-filesUploadedTitleFontTextTransform": "none",
   "--upload-filesUploadedTitleFontColor": globalTokens.hal_black,
-  "--upload-filesUploadedSubtitleFontSize": globalTokens.type_scale_01,
+  "--upload-filesUploadedSubtitleFontSize": globalTokens.type_scale_02,
   "--upload-filesUploadedSubtitleFontStyle": globalTokens.type_normal,
   "--upload-filesUploadedSubtitleFontWeight": globalTokens.type_regular,
   "--upload-filesUploadedSubtitleFontTextTransform": "none",

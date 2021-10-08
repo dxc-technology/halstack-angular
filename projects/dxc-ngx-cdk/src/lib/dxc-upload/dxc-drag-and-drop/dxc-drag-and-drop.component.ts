@@ -7,6 +7,7 @@ import {
   EventEmitter,
   Input,
 } from "@angular/core";
+import { UploadService } from '../services/upload.service';
 @Component({
   selector: "dxc-drag-and-drop",
   templateUrl: "./dxc-drag-and-drop.component.html",
@@ -24,9 +25,21 @@ export class DxcDragAndDropComponent implements OnChanges {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
+
+  visibleAlert = false;
+  errorMessage = "";
   @HostBinding("class.reduced") reduced: boolean = false;
 
-  public ngOnInit() {}
+  constructor(private service: UploadService){}
+
+  public ngOnInit() {
+    this.service.success.subscribe((value) => {
+      this.visibleAlert = value;
+    });
+    this.service.errorMessage.subscribe((value) => {
+      this.errorMessage = value;
+    });
+  }
 
   public ngOnChanges(): void {
     this.reduced = this.summaryVisible;
@@ -50,5 +63,11 @@ export class DxcDragAndDropComponent implements OnChanges {
 
   onFileInput(event) {
     this.onAddFile.emit(event.target.files);
+  }
+
+  handleVisibleAlert(){
+    this.visibleAlert = !this.visibleAlert;
+    this.service.setSuccess(this.visibleAlert);
+    this.service.setErrorMessage("");
   }
 }

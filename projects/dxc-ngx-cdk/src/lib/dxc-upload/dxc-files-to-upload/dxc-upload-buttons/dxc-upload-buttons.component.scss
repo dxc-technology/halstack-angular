@@ -19,6 +19,9 @@
       width: var(--upload-dragAndDropAreaIconWidth);
     }
   }
+  .buttonsContainer .uploadBtn{
+    margin-left: 8px;
+  }
   .uploadButtons {
     display: flex;
     align-items: center;

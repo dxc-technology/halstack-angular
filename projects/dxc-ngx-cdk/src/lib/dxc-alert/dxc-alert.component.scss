@@ -91,6 +91,7 @@
         display: flex;
         justify-content: flex-end;
         margin-right: 12px;
+        width: 100%;
         svg {
           cursor: pointer;
           width: 20px;
@@ -102,6 +103,7 @@
         font-size: var(--alert-titleFontSize);
       }
       .inlineText {
+        width: 100%;
         font-family: var(--alert-titleFontFamily);
         font-size: var(--alert-titleFontSize);
         text-overflow: ellipsis;

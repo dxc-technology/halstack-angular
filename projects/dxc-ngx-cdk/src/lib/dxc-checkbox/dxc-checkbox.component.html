@@ -14,6 +14,6 @@
 >
   <span *ngIf="label">
     <span *ngIf="required" class="mat-checkbox-required">*</span>
-    <span class="checkboxLabel">{{ label }}</span>
+    <span class="checkboxLabel" (mouseover)="hoverCheckbox()" (mouseout)="hoverCheckbox()">{{ label }}</span>
   </span>
 </mat-checkbox>

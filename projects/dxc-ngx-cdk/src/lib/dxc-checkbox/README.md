@@ -141,7 +141,7 @@ The API properties are the following:
     <tr>
         <td>color</td>
         <td><code>#0067B3</code></td>
-        <td>Applies to token backgroundColorChecked and borderColor.</td>
+        <td>Applies to token selectedBackgroundColor and borderColor.</td>
     </tr>
     <tr>
         <td>checkColor</td>

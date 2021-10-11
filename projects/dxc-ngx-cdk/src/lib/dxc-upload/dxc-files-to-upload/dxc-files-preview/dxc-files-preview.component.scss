@@ -1,7 +1,8 @@
 :host {
   display: block;
   width: inherit;
-  height: calc(400px - 73px);
+  height: 83%;
+  overflow-y: auto;
   ::-webkit-scrollbar {
     width: 3px;
   }
@@ -16,7 +17,7 @@
   .previewContainer {
     overflow-y: auto;
     display: block;
-    padding: 20px;
-    height: 287px;
+    padding: 24px;
+    height: inherit;
   }
 }

@@ -10,12 +10,11 @@
     font-size: 16px;
   }
   .fileStatus {
-    margin-left: 16px;
     display: flex;
     align-items: center;
   }
   .previewIcon {
-    margin-right: 16px;
+    margin-right: 8px;
     fill: var(--upload-fileUploadedIconColor);
     svg{
       width: var(--upload-fileUploadedIconWidth);
@@ -28,6 +27,7 @@
     }
   }
   .fileName {
+    margin-right: 16px;
     text-overflow: ellipsis;
     max-width: 75%;
     overflow: hidden;

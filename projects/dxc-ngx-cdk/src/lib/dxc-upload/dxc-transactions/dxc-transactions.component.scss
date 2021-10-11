@@ -13,7 +13,10 @@
     background-color: var(--upload-scrollBarThumbColor);
     border-radius: 3px;
   }
-  .filesSummary {
+  .filesSummary{
+    margin-top: 18px;
+  }
+  .filesSummary.first-item {
     margin-top: 30px;
   }
   .header {

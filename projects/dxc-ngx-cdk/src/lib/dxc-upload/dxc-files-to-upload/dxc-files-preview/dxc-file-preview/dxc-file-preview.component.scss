@@ -1,5 +1,6 @@
 :host {
-  padding: 25px 60px 25px 40px;
+  padding: 24px 40px 24px 24px;
+  height: 48px;
   display: flex;
   justify-content: space-between;
   border-bottom: var(--upload-fileUnderlineThickness) solid var(--upload-fileUnderlineColor);
@@ -8,8 +9,10 @@
     align-items: center;
     cursor: pointer;
     fill: var(--upload-fileDeleteIconColor);
-    width: var(--upload-fileDeleteIconWidth);
-    height: var(--upload-fileDeleteIconHeight);
+    svg{
+      width: var(--upload-fileDeleteIconWidth);
+      height: var(--upload-fileDeleteIconHeight);
+    }
   }
   &:hover {
     background-color: var(--upload-fileHoverColor);
@@ -19,11 +22,14 @@
     width: 90%;
     .previewImage {
       width: 70px;
-      height: 52px;
       display: flex;
       justify-content: center;
-      margin-right: 30px;
+      margin-right: 24px;
       object-fit: contain;
+      svg{
+        height: 48px;
+        width: 48px;
+      }
     }
     .labels {
       width: 85%;
@@ -44,7 +50,7 @@
       color: var(--upload-fileNameFontColor);
       font-family: var(--upload-fontFamily);
     }
-    .fileFormat {
+    .fileSize {
       font-size: var(--upload-fileTypeFontSize);
       font-family: var(--upload-fontFamily);
       letter-spacing: 1.88px;

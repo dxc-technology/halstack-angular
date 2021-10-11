@@ -109,11 +109,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.checkbox?.baseColor ?? tokens["--checkbox-borderColor"];
     proccessedTokens["--checkbox-checkColor"] =
       theme?.checkbox?.checkColor ?? tokens["--checkbox-checkColor"];
-    proccessedTokens["--checkbox-backgroundColorChecked"] =
-      theme?.checkbox?.baseColor ?? tokens["--checkbox-backgroundColorChecked"];
-    proccessedTokens["--checkbox-disabledBackgroundColorChecked"] =
+    proccessedTokens["--checkbox-selectedBackgroundColor"] =
+      theme?.checkbox?.baseColor ?? tokens["--checkbox-selectedBackgroundColor"];
+    proccessedTokens["--checkbox-selectedDisabledBackgroundColor"] =
       this.setOpacity(theme?.checkbox?.baseColor, 0.34) ??
-      tokens["--checkbox-disabledBackgroundColorChecked"];
+      tokens["--checkbox-selectedDisabledBackgroundColor"];
     proccessedTokens["--checkbox-disabledBorderColor"] =
       this.setOpacity(theme?.checkbox?.baseColor, 0.34) ??
       tokens["--checkbox-disabledBorderColor"];

@@ -68,6 +68,7 @@ export class DxcCheckboxComponent implements OnInit {
   @HostBinding("class") className;
   @HostBinding("class.dark") darkBackground = false;
   @HostBinding("class.light") lightBackground = true;
+  @HostBinding("class.hover") hover = false;
 
   renderedChecked: boolean;
 
@@ -160,6 +161,10 @@ export class DxcCheckboxComponent implements OnInit {
     }
   }
 
+  hoverCheckbox() {
+    this.hover = !this.hover;
+  }
+
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
@@ -168,13 +173,13 @@ export class DxcCheckboxComponent implements OnInit {
       vertical-align: top;
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
       .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-        background: var(--checkbox-backgroundColorChecked) !important;
+        background: var(--checkbox-selectedBackgroundColor) !important;
       }
 
       .mat-checkbox-checked .mat-checkbox-inner-container {
         &:hover {
           .mat-checkbox-background {
-            background: var(--checkbox-backgroundHoverColorChecked) !important;
+            background: var(--checkbox-selectedHoverBackgroundColor) !important;
           }
         }
       }
@@ -191,7 +196,7 @@ export class DxcCheckboxComponent implements OnInit {
           label.mat-checkbox-layout {
             .mat-checkbox-inner-container {
               .mat-checkbox-background {
-                outline: -webkit-focus-ring-color auto 1px;
+                outline: -webkit-focus-ring-color auto 2px;
                 outline-color: var(--checkbox-focusColor);
                 outline-offset: 3px;
               }
@@ -205,9 +210,6 @@ export class DxcCheckboxComponent implements OnInit {
           white-space: normal;
           span.mat-checkbox-label {
             span.checkboxLabel {
-              margin: ${inputs.labelPosition === "after"
-              ? "0px 0px 0px 2px;"
-              : "0px 2px 0px 0px;"};
               word-break: normal;
               color: var(--checkbox-fontColor);
               font-family: var(--checkbox-fontFamily) !important;
@@ -219,16 +221,19 @@ export class DxcCheckboxComponent implements OnInit {
           }
 
           .mat-checkbox-inner-container {
-            margin: ${inputs.labelPosition === "after"
-              ? "10px var(--checkbox-checkLabelSpacing) 10px 0px;"
-              : "10px 0px 10px var(--checkbox-checkLabelSpacing);"};
-            width: 20px;
-            height: 20px;
+            margin: ${
+              inputs.labelPosition === "after"
+                ? "2px calc(var(--checkbox-checkLabelSpacing) + 6px) 2px 2px;"
+                : "2px 2px 2px calc(var(--checkbox-checkLabelSpacing) + 2px);"
+            };
+            width: 18px;
+            height: 18px;
 
             .mat-checkbox-background,
             .mat-checkbox-frame {
-              border-radius: 4px;
+              border-radius: 2px;
               border-color: var(--checkbox-borderColor);
+              border-width: 2px;
             }
 
             .mat-checkbox-background {
@@ -241,7 +246,7 @@ export class DxcCheckboxComponent implements OnInit {
             &:hover {
               .mat-checkbox-background,
               .mat-checkbox-frame {
-                border-color: var(--checkbox-borderHoverColor);
+                border-color: var(--checkbox-hoverBorderColor);
               }
             }
           }
@@ -264,7 +269,7 @@ export class DxcCheckboxComponent implements OnInit {
             }
             .mat-checkbox-background {
               background: var(
-                --checkbox-disabledBackgroundColorChecked
+                --checkbox-selectedDisabledBackgroundColor
               ) !important;
               svg path {
                 stroke: var(--checkbox-disabledCheckColor) !important;
@@ -274,15 +279,30 @@ export class DxcCheckboxComponent implements OnInit {
         }
       }
       &.dark {
+        mat-checkbox {
+          &.cdk-focused:not(.mat-checkbox-disabled) {
+            label.mat-checkbox-layout {
+              .mat-checkbox-inner-container {
+                .mat-checkbox-background {
+                  outline: -webkit-focus-ring-color auto 2px;
+                  outline-color: var(--checkbox-focusColorOnDark);
+                  outline-offset: 3px;
+                }
+              }
+            }
+          }
+        }
         .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
         .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-          background: var(--checkbox-backgroundColorCheckedOnDark) !important;
+          background: var(--checkbox-selectedBackgroundColorOnDark) !important;
         }
 
         .mat-checkbox-checked .mat-checkbox-inner-container {
           &:hover {
             .mat-checkbox-background {
-              background: var(--checkbox-backgroundHoverColorCheckedOnDark) !important;
+              background: var(
+                --checkbox-selectedHoverBackgroundColorOnDark
+              ) !important;
             }
           }
         }
@@ -307,7 +327,7 @@ export class DxcCheckboxComponent implements OnInit {
             &:hover {
               .mat-checkbox-background,
               .mat-checkbox-frame {
-                border-color: var(--checkbox-borderHoverColorOnDark);
+                border-color: var(--checkbox-hoverBorderColorOnDark);
               }
             }
           }
@@ -334,13 +354,35 @@ export class DxcCheckboxComponent implements OnInit {
             }
             .mat-checkbox-background {
               background: var(
-                --checkbox-disabledBackgroundColorCheckedOnDark
+                --checkbox-selectedDisabledBackgroundColorOnDark
               ) !important;
               svg path {
                 stroke: var(--checkbox-disabledCheckColorOnDark) !important;
               }
             }
           }
+        }
+      }
+      &.hover:not(.dark) {
+        .mat-checkbox-checked .mat-checkbox-inner-container {
+          .mat-checkbox-background {
+            background: var(--checkbox-selectedHoverBackgroundColor) !important;
+          }
+        }
+        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background, 
+        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame {
+            border-color: var(--checkbox-hoverBorderColor);
+        }
+      }
+      &.hover {
+        .mat-checkbox-checked .mat-checkbox-inner-container {
+          .mat-checkbox-background {
+            background: var(--checkbox-selectedHoverBackgroundColorOnDark) !important;
+          }
+        }
+        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background, 
+        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame {
+            border-color: var(--checkbox-hoverBorderColorOnDark);
         }
       }
     `;

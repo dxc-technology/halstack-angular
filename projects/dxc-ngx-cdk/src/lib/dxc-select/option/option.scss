@@ -19,7 +19,9 @@
   padding-bottom: var(--select-optionPaddingBottom);
 
   dxc-checkbox {
-    margin-right: var(--select-checkboxOptionSpacing);
+    mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container{
+      margin-right: var(--select-checkboxOptionSpacing);
+    }
   }
 
   &[aria-disabled="true"] {

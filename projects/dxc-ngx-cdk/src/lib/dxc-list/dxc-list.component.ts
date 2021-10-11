@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 })
 export class DxcListComponent implements OnInit {
   @Input() list: any;
+  @Input('badgeNode') badgeNode: string = 'count';
+  @Input('badgeTypeNode') badgeTypeNode: string = 'type';
   @Input('sortorder') sortOrder = 'asc';
   @Input('sortfield') sortField = 'title';
   @Input('hrefcontent') hrefContent = '';

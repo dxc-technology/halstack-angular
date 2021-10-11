@@ -1050,8 +1050,6 @@ function SimpleCellRenderer(params) {
   return eDiv;
 }
 
-
-
 function buildColumnState(originalColumnState, columnState, sortState) {
   let colDef = Immutable.List([]);
   for (let i = 0; i < columnState.length; i++) {

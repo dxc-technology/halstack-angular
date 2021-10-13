@@ -45,15 +45,14 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   setPropertiesCss(theme: Theme) {
-    const ctx = new BindingContext(!theme.advanced ? new ComplexThemeBindingStrategy():  new AdvancedThemeBindingStrategy() );
+    const ctx = new BindingContext(!theme.advanced ? new ComplexThemeBindingStrategy():  new AdvancedThemeBindingStrategy());
     let processedTokens = ctx.bindProperties(theme.theme);
     for (const key in processedTokens) {
       document.body.style.setProperty(key, processedTokens[key]);
     }
   }
 
-  setVariableLinks(themeObj: any): void {
-
+  setVariableLinks(themeObj: Theme): void {
     const footerLogo = themeObj.theme?.footer?.logo ?? componentIcons.footer.logo;
     const headerLogo = themeObj.theme?.header?.logo ?? componentIcons.header.logo;
     const headerLogoResponsive =
@@ -66,7 +65,7 @@ export class ThemeDirective implements OnInit, OnDestroy {
   private getTheme(): void {
     if (this._themeService !== null && this._themeService !== undefined) {
       const active = this._themeService.getTheme();
-      this.updateTheme(active);
+      this.updateTheme({theme: active, advanced: false});
 
       this._themeService.themeChange.subscribe((theme: any) => {
         this.updateTheme({theme: theme, advanced: false});

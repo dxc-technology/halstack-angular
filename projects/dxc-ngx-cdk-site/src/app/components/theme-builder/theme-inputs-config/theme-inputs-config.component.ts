@@ -65,6 +65,7 @@ export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
         width: 350px;
         padding: 25px;
         overflow: auto;
+        height: 100%;
 
         /* width */
         ::-webkit-scrollbar {

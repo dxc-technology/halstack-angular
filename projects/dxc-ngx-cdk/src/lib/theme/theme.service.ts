@@ -15,6 +15,10 @@ export class ThemeService {
     return this.theme;
   }
 
+  getAdvancedTheme() {
+    return this.advancedTheme;
+  }
+
   registerTheme(theme: any) {
     this.theme = theme;
     this.themeChange.emit(theme);

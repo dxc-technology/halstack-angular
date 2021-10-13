@@ -7,7 +7,7 @@ import getBuilderPreviewComponentByName from "./model/preview-components-map";
 import advancedTheme from "./../themes/AdvancedTheme.json";
 import simpleTheme from "./../themes/DefaultTheme.json";
 import advancedSchema from "./../themes/schemas/Advanced.schema.json";
-import simpleSchema from "./../themes/schemas/Advanced.schema.json";
+import simpleSchema from "./../themes/schemas/Default.schema.json";
 import { ThemeService } from "@dxc-technology/halstack-angular";
 
 interface SelectedThemeType {

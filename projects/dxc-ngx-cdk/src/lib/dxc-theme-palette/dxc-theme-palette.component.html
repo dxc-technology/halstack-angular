@@ -3,34 +3,41 @@
   (keydown)="startKeyPress($event)" [attr.aria-label]="themePaletteLabel" role="{{enablePopupMode ? 'dialog' : 'region'" #dialogstart>
   <div class="container px-0 py-0">
     <div>
-      <span class="float-left" *ngIf="showThemeToggle">
+      <span class="float-left px-2" *ngIf="showThemeToggle">
+        <mat-icon class="mat-icon material-icons mat-icon-no-color float-left pt-3">
+            wb_sunny
+        </mat-icon>
         <dxc-switch [checked]="isDarkMode" (onChange)="themeChange($event)" [ariaLabel]="switchLabel"></dxc-switch>
+        <mat-icon class="mat-icon material-icons mat-icon-no-color float-right pt-3">
+            nightlight_round
+        </mat-icon>
       </span>
       <a href="javascript:void(0);" role="button" tabindex="{{disabled ? -1 : tabIndexValue}}" *ngIf="enablePopupMode"
-        [attr.aria-label]="closeLabel" class="mr-2 view-icon closeIcon menuclose float-right" [matTooltip]="closeLabel"
-        (click)="closeThemePalette()">
-        <mat-icon class="mat-icon material-icons mat-icon-no-color">
-          close
-        </mat-icon>
-      </a>
-    </div>
-    <div class="theme-colors float-left">
-      <div class="px-2 py-0">
-        <p class="text-muted mb-2">{{label}}</p>
-        <div class="d-flex flex-row justify-content-between mb-3 theme-palette pr-3">
-          <span [ngClass]="{ active: colors.active}" role="button" attr.aria-checked="{{colors.active}}" role="radio" tabindex="{{disabled ? -1 : tabIndexValue}}"
-            attr.aria-label="{{label + ' ' + colors.color}}" *ngFor="let colors of themeColors"
-            (click)="changeThemeColor(colors.color)" (keyup.enter)="changeThemeColor(colors.color)"
-            [ngStyle]="{'background-color': colors.color, 'border-color': colors.color}" class="theme-color">
-            <i>
-              <mat-icon aria-hidden="true" class="mat-icon material-icons mat-icon-no-color notranslate">
-                check</mat-icon>
-            </i>
-          </span>
-        </div>
-      </div>
-      <span #returntoend tabindex="-1" (onblur)="returnFocusOut($event)"></span>
-      <span #dialogend tabindex="{{enablePopupMode ? 0 : -1}}" (focus)="endFocus($event)"></span>
+  [attr.aria-label]="closeLabel" class="mr-2 view-icon closeIcon menuclose float-right" [matTooltip]="closeLabel"
+  (click)="closeThemePalette()">
+  <mat-icon class="mat-icon material-icons mat-icon-no-color">
+    close
+  </mat-icon>
+  </a>
+</div>
+<div class="theme-colors float-left">
+  <div class="px-2 py-0">
+    <p class="text-muted mb-2">{{label}}</p>
+    <div class="d-flex flex-row justify-content-between mb-3 theme-palette pr-3">
+      <span [ngClass]="{ active: colors.active}" role="button" attr.aria-checked="{{colors.active}}" role="radio"
+        tabindex="{{disabled ? -1 : tabIndexValue}}" attr.aria-label="{{label + ' ' + colors.color}}"
+        *ngFor="let colors of themeColors" (click)="changeThemeColor(colors.color)"
+        (keyup.enter)="changeThemeColor(colors.color)"
+        [ngStyle]="{'background-color': colors.color, 'border-color': colors.color}" class="theme-color">
+        <i>
+          <mat-icon aria-hidden="true" class="mat-icon material-icons mat-icon-no-color notranslate">
+            check</mat-icon>
+        </i>
+      </span>
     </div>
   </div>
+  <span #returntoend tabindex="-1" (onblur)="returnFocusOut($event)"></span>
+  <span #dialogend tabindex="{{enablePopupMode ? 0 : -1}}" (focus)="endFocus($event)"></span>
+</div>
+</div>
 </div>

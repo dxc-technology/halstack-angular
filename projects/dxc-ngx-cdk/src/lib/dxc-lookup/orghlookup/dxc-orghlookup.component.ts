@@ -16,6 +16,9 @@ import { LookupService } from '../../services/lookup/lookup.service';
 import { GridHelper } from '../../helpers/grid/helper';
 import { GridService } from '../../services/grid/grid.service';
 import { ConfigurationsetupService } from './../../services/startup/configurationsetup.service';
+import { DxcResizeService } from '../../services/sizedetector/dxc-size-detector.service';
+import { SCREEN_SIZE } from '../../services/sizedetector/dxc-size-detector.enum';
+import { delay } from 'rxjs/operators';
 
 enum View {
   GRID,
@@ -94,7 +97,7 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   @Input('isrequired') required: boolean;
   @Input() disableDefaultLevel = false;
   @Input() orghLevelSearchDisabled = false;
-  @Input() allowTreeView = true;
+  @Input() allowTreeView = false;
   @Input() gridStateRequest: IRequest;
   @Input('resourcerequest') resourceRequest: IRequest;
   @Input('level') level: string;
@@ -225,14 +228,28 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   registerOnTouchFn = () => { };
   treeData: any;
   errorText = '';
+  size: SCREEN_SIZE;
 
   constructor(public helper: DxcOrghlookupService, 
      public config: ConfigurationsetupService,
      public lookupService: LookupService, 
      public commonServiceEvent: GridHelper, 
      public messageService: MessageService, 
-     public gridService: GridService) {
+     public gridService: GridService,
+     public resizeSvc: DxcResizeService) {
       super(config, lookupService, commonServiceEvent, messageService, gridService);
+      this.resizeSvc.onResize$
+      .pipe(delay(0))
+      .subscribe(x => {
+        this.size = x;
+        if (x > 0) {
+          this.allowTreeView = true;
+        } else {
+          this.allowTreeView = false;
+          this.gridView();
+        }
+      });
+      
     }
 
   ngOnInit() {
@@ -272,6 +289,10 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   closePopup() {
     this.isPanelOpen1 = !this.isPanelOpen1;
     this.isSearch = false;
+  }
+
+  changedisplay = () => {
+    this.allowTreeView = !this.allowTreeView;
   }
 
   initializeParams() {
@@ -674,9 +695,21 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
 
     this.treeRequest.params = params;
     this.treeresult = undefined;
+    
+   if(this.size === 0)
+   {
+     this.allowTreeView = false;
+   }
+    
   }
 
   gridView = (isSwitch: boolean = false) => {
+
+    if(this.size >= 0)
+   {
+     this.allowTreeView = true;
+   }
+
     this.currentView = View.GRID;
     this.defaultOrghLevelDisabled = true;
     this.searchSpecificBranchDisabled = true;

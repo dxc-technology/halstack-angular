@@ -162,7 +162,9 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   hoverCheckbox() {
-    this.hover = !this.hover;
+    if(!this.disabled){
+      this.hover = !this.hover;
+    }
   }
 
   getDynamicStyle(inputs) {

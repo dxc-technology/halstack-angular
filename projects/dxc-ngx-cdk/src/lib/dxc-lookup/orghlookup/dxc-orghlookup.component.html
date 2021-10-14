@@ -23,9 +23,9 @@
           </span>
         </dxc-button-icon>
       </dxc-button>
-      <div class="float-md-right">
+      <div class="float-md-right d-none d-sm-block d-md-inline-block">
         <span class="mr-3 mb-2 d-inline-block float-md-left">
-          <dxc-button  size="small" mode="secondary" id="treeview" *ngIf="allowTreeView" [ariaLabel]="resource?.tttreeview.description"
+          <dxc-button size="small" mode="secondary" id="treeview" *ngIf="allowTreeView" [ariaLabel]="resource?.tttreeview.description"
             (onClick)="treeView(true)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">

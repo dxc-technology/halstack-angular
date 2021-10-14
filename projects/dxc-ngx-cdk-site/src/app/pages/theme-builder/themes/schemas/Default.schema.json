@@ -26,6 +26,10 @@
     "baseColor": "color",
     "accentColor": "color"
   },
+  "newDate": {
+    "baseColor": "color",
+    "accentColor": "color"
+  },
   "dropdown": {
     "baseColor": "color",
     "fontColor": "color"
@@ -47,9 +51,6 @@
   },
   "inputText": {
     "selectedBaseColor": "color"
-  },
-  "input":{
-
   },
   "paginator": {
     "baseColor": "color",

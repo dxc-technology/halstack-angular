@@ -178,11 +178,7 @@ export class DxcHeaderComponent implements OnChanges {
 
   getDynamicStyle(inputs) {
     return css`
-
-      font-size: var(--header-fontSizeBase);
       font-family: var(--header-fontFamily);
-
-
       ${this.getBottomMargin(inputs.margin)}
       .headerAnchor {
         cursor: ${this.isClickDefined ? "pointer;" : "default; "};
@@ -192,10 +188,12 @@ export class DxcHeaderComponent implements OnChanges {
         font-size: unset;
         .mat-toolbar-row {
           min-height: var(--header-minHeight);
-          padding: 0 24px;
+          padding-top: var(--header-paddingTop);
+          padding-right: var(--header-paddingRight);
+          padding-bottom: var(--header-paddingBottom);
+          padding-left: var(--header-paddingLeft);
         }
         &.underlined {
-
           .mat-toolbar-row {
             border-bottom: ${inputs.underlined ?
               `var(--header-underlinedThickness) var(--header-underlinedStyle) var(--header-underlinedColor);`: 'unset;'};
@@ -210,28 +208,26 @@ export class DxcHeaderComponent implements OnChanges {
       }
       .mat-toolbar-row {
         background: var(--header-backgroundColor);
-        color: var(--header-fontColorBase);
       }
       .dxc-logo,
       img {
-        height: 40px;
-        width: auto;
+        height: var(--header-logoHeight);
+        width: var(--header-logoWidth);
         vertical-align: middle;
       }
 
       .content {
-
         width: calc(100% - 186px);
         display: flex;
         align-items: center;
         flex-grow: 1;
         justify-content: flex-end;
         ${this.utils.getPaddings(inputs.padding)}
-        font-family: var(--header-customContentFontFamily, --header-fontFamilyBase);
+        font-family: var(--header-customContentFontFamily);
         font-style: var(--header-customContentFontStyle);
-        font-size: var(--header-customContentFontSize, --header-fontSizeBase);
+        font-size: var(--header-customContentFontSize);
         font-weight: var(--header-customContentFontWeight);
-        color: var(--header-customContentFontColor, --header-fontColorBase);
+        color: var(--header-customContentFontColor);
 
         align-items: center;
         flex-wrap: wrap;
@@ -263,12 +259,12 @@ export class DxcHeaderComponent implements OnChanges {
             }
           }
           .hamburgerTitle {
-            font-family: var(--header-hamburguerFontFamily, --header-fontFamilyBase);
+            font-family: var(--header-hamburguerFontFamily);
             font-style: var(--header-hamburguerFontStyle);
             font-size: var(--header-hamburguerFontSize);
             text-transform: var(--header-hamburguerTextTransform);
             font-weight: var(--header-hamburguerFontWeight);
-            color: var(--header-hamburguerFontColor, --header-fontColorBase);
+            color: var(--header-hamburguerFontColor);
           }
         }
       }
@@ -341,6 +337,11 @@ export class DxcHeaderComponent implements OnChanges {
       .menuContent {
         display: flex;
         flex-direction: column;
+        font-family: var(--header-menuCustomContentFontFamily);
+        font-style: var(--header-menuCustomContentFontStyle);
+        font-size: var(--header-menuCustomContentFontSize);
+        font-weight: var(--header-menuCustomContentFontWeight);
+        color: var(--header-menuCustomContentFontColor);
       }
     `;
   }

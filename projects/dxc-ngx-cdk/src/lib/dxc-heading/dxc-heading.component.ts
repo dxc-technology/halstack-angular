@@ -50,10 +50,6 @@ export class DxcHeadingComponent {
       .container {
         ${this.utils.getMargins(inputs.margin)}
       }
-
-      font-family: var(--heading-fontFamilyBase);
-      color: var(--heading-fontColorBase);
-
       h1,
       h2,
       h3,

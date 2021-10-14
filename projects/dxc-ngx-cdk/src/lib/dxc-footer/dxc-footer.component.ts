@@ -102,7 +102,6 @@ export class DxcFooterComponent implements OnChanges {
 
   bottomLinkStyle: string = css`
     text-decoration: none;
-    color: var(--white, white);
     font-size: 12px;
   `;
 
@@ -159,7 +158,6 @@ export class DxcFooterComponent implements OnChanges {
       padding: ${responsive ? "20px" : "24px 36px"};
       background-color: var(--footer-backgroundColor);
       min-height: var(--footer-minHeight);
-      color: var(--footer-fontColorBase);
       ${this.utils.getTopMargin(input.margin)}
     `;
   }
@@ -168,6 +166,11 @@ export class DxcFooterComponent implements OnChanges {
     return css`
       min-height: 16px;
       ${this.utils.getPaddings(inputs.padding)}
+      color: var(--footer-customContentFontColor);
+      font-family: var(--footer-customContentFontFamily);
+      font-style: var(--footer-customContentFontStyle);
+      font-size: var(--footer-customContentFontSize);
+      font-weight: var(--footer-customContentFontWeight);
     `;
   }
 

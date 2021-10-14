@@ -260,14 +260,14 @@ export class DxcCheckboxComponent implements OnInit {
               border-color: var(--checkbox-disabledBorderColor) !important;
             }
           }
-          label.mat-checkbox-layout span.mat-checkbox-label {
+          label.mat-checkbox-layout span.mat-checkbox-label span.checkboxLabel{
             color: var(--checkbox-disabledFontColor) !important;
           }
         }
         &.mat-checkbox-disabled.mat-checkbox-checked {
           .mat-checkbox-inner-container {
             .mat-checkbox-frame {
-              border-color: var(--checkbox-disabledBorderColor) !important;
+              border-color: transparent !important;
             }
             .mat-checkbox-background {
               background: var(

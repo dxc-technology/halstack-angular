@@ -36,7 +36,7 @@ const globalRippleConfig: RippleGlobalOptions = {
     CssUtils,
     TabService,
     { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
-  ]
+  ],
 })
 export class DxcTabsComponent implements OnChanges {
   @HostBinding("class") className;
@@ -73,7 +73,7 @@ export class DxcTabsComponent implements OnChanges {
     private utils: CssUtils,
     private _element: ElementRef,
     private cdRef: ChangeDetectorRef,
-    private service: TabService,
+    private service: TabService
   ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -108,7 +108,6 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   public ngAfterViewInit() {
-
     this.generateTabs();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.insertUnderline();
@@ -116,7 +115,7 @@ export class DxcTabsComponent implements OnChanges {
     this.setEventListeners();
     this.cdRef.detectChanges();
 
-    this.tabs.changes.subscribe(value => {
+    this.tabs.changes.subscribe((value) => {
       const matTabsFromQueryList = value.map((tab, index) => {
         if (tab.label && tab.iconSrc) {
           this.allTabWithLabelAndIcon = true;
@@ -130,12 +129,14 @@ export class DxcTabsComponent implements OnChanges {
       this.setActiveTab();
       this.cdRef.detectChanges();
     });
-
-
   }
 
-  private hasLabelAndIcon(){
-    return this.tabs && this.tabs.filter(tab=>  tab.label!== null && tab.iconSrc!== null).length > 0;
+  private hasLabelAndIcon() {
+    return (
+      this.tabs &&
+      this.tabs.filter((tab) => tab.label !== null && tab.iconSrc !== null)
+        .length > 0
+    );
   }
 
   private generateTabs() {
@@ -153,7 +154,8 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   setEventListeners() {
-    let tabLabels = this._element.nativeElement.getElementsByClassName("mat-tab-label");
+    let tabLabels =
+      this._element.nativeElement.getElementsByClassName("mat-tab-label");
     if (tabLabels?.length > 0) {
       this.tabs.map((tab, index) => {
         tabLabels[index].addEventListener("click", function () {
@@ -167,9 +169,8 @@ export class DxcTabsComponent implements OnChanges {
   }
 
   insertUnderline() {
-    let tabList = this._element.nativeElement.getElementsByClassName(
-      "mat-tab-list"
-    )[0];
+    let tabList =
+      this._element.nativeElement.getElementsByClassName("mat-tab-list")[0];
     tabList.insertAdjacentHTML("beforeend", '<div class="underline"></div>');
   }
 
@@ -191,7 +192,7 @@ export class DxcTabsComponent implements OnChanges {
         .mat-tab-header {
           background-color: white;
         }
-        .mat-ink-bar{
+        .mat-ink-bar {
           background-color: var(--tabs-selectedUnderlineColor);
           height: var(--tabs-selectedUnderlineThickness);
         }
@@ -214,7 +215,7 @@ export class DxcTabsComponent implements OnChanges {
           color: var(--tabs-fontColor);
           opacity: 1;
           font-family: var(--tabs-fontFamily);
-          font-size:  var(--tabs-fontSize);
+          font-size: var(--tabs-fontSize);
           font-style: var(--tabs-fontStyle);
           font-weight: var(--tabs-fontWeight);
         }
@@ -280,6 +281,18 @@ export class DxcTabsComponent implements OnChanges {
             display: grid;
           }
         }
+        &.mat-tab-label-active {
+          background-color: var(--tabs-selectedBackgroundColor);
+          opacity: 1 !important;
+          .dxc-tab-label span {
+            color: var(--tabs-selectedFontColor);
+            opacity: 1;
+            white-space: normal;
+          }
+          dxc-tab-icon {
+            fill: var(--tabs-selectedIconColor);
+          }
+        }
         &.mat-tab-disabled {
           .dxc-tab-label span {
             color: var(--tabs-disabledFontColor) !important;
@@ -292,19 +305,6 @@ export class DxcTabsComponent implements OnChanges {
           cursor: not-allowed;
           pointer-events: all !important;
         }
-        &.mat-tab-label-active {
-          background-color: var(--tabs-selectedBackgroundColor);
-          opacity: 1 !important;
-          .dxc-tab-label span {
-            color: var(--tabs-selectedFontColor);
-            opacity: 1;
-            white-space: normal;
-          }
-          dxc-tab-icon {
-            fill: var(--tabs-selectedIconColor);
-          }
-
-        }
       }
       &.label-icons {
         .mat-tab-list .mat-tab-label {
@@ -314,8 +314,13 @@ export class DxcTabsComponent implements OnChanges {
     `;
   }
 
-  getTabHeight(){
-    return ((!this.hasLabelAndIcon || (this.hasLabelAndIcon && this.defaultInputs.value.iconPosition !== "top")) && "48px") || "72px";
+  getTabHeight() {
+    return (
+      ((!this.hasLabelAndIcon ||
+        (this.hasLabelAndIcon &&
+          this.defaultInputs.value.iconPosition !== "top")) &&
+        "48px") ||
+      "72px"
+    );
   }
 }
-

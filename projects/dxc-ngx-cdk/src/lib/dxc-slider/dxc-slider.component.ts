@@ -222,12 +222,13 @@ export class DxcSliderComponent implements OnInit, OnChanges {
       letter-spacing: var(--slider-fontLetterSpacing);
 
       .mat-slider-has-ticks .mat-slider-wrapper::after {
-        height: var(--slider-dotsSize);
+        height: var(--slider-tickSize);
         border-left-width: 2px;
-        top: var(--slider-dotsVerticalPosition);
+        top: var(--slider-tickVerticalPosition);
       }
 
       &.disabled {
+        color: var(--slider-disabledFontColor) !important;
         cursor: not-allowed;
         input {
           cursor: not-allowed;
@@ -240,8 +241,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           height: 100%;
         }
         .mat-slider-ticks-container {
-          height: var(--slider-dotsSize);
-          top: var(--slider-dotsVerticalPosition);
+          height: var(--slider-tickSize);
+          top: var(--slider-tickVerticalPosition);
         }
         .mat-slider-track-wrapper {
           top: var(--slider-lineVerticalPosition);
@@ -263,11 +264,15 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             width: calc(var(--slider-thumbWidth) + 4px);
             height: calc(var(--slider-thumbWidth) + 4px);
             bottom: calc(var(--slider-thumbVerticalPosition) - 2px);
+            background-color: var(--slider-hoverThumbBackgroundColor);
+              border-color: var(
+                --slider-hoverThumbBackgroundColor
+              ) !important;
           }
         }
         &:not(.mat-slider-disabled) {
           .mat-slider-ticks {
-            height: var(--slider-dotsSize);
+            height: var(--slider-tickSize);
           }
           &.mat-slider-sliding {
             .mat-slider-thumb {
@@ -298,10 +303,10 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             bottom: var(--slider-disabledThumbVerticalPosition);
           }
           .mat-slider-ticks {
-            height: var(--slider-dotsSize);
+            height: var(--slider-tickSize);
           }
           .mat-slider-ticks-container {
-            top: var(--slider-disabledDotsVerticalPosition);
+            top: var(--slider-disabledTickVerticalPosition);
           }
         }
         &.cdk-focused, &.mat-slider-sliding {
@@ -337,7 +342,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     return css`
       color: var(--slider-fontColorOnDark);
       .mat-slider-has-ticks .mat-slider-wrapper::after {
-        border-color: var(--slider-tickMarkBackgroundColorOnDark);
+        border-color: var(--slider-tickBackgroundColorOnDark);
       }
       mat-slider {
         &:not(.mat-slider-disabled) {
@@ -351,13 +356,19 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           .mat-slider-thumb {
             background-color: var(--slider-thumbBackgroundColorOnDark);
             border-color: var(--slider-thumbBackgroundColorOnDark) !important;
+            &:hover{
+              background-color: var(--slider-hoverThumbBackgroundColorOnDark);
+                border-color: var(
+                  --slider-hoverThumbBackgroundColorOnDark
+                ) !important;
+            }
           }
           .mat-slider-ticks {
             background-image: repeating-linear-gradient(
               to right,
-              var(--slider-tickMarkBackgroundColorOnDark),
-              var(--slider-tickMarkBackgroundColorOnDark) var(--slider-dotsSize)
-                var(--slider-dotsSize),
+              var(--slider-tickBackgroundColorOnDark),
+              var(--slider-tickBackgroundColorOnDark) var(--slider-tickSize)
+                var(--slider-tickSize),
               transparent 2px,
               #e2141400
             );
@@ -372,6 +383,10 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           }
           &:focus:not(.mat-slider-sliding) {
             .mat-slider-thumb {
+              background-color: var(--slider-focusThumbBackgroundColorOnDark);
+              border-color: var(
+                --slider-focusThumbBackgroundColorOnDark
+              ) !important;
               outline-color: var(--slider-focusColorOnDark);
             }
           }
@@ -379,7 +394,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
       }
       &.disabled {
         .mat-slider-horizontal .mat-slider-wrapper::after {
-          border-color: var(--slider-disabledTickMarkBackgroundColorOnDark);
+          border-color: var(--slider-disabledTickBackgroundColorOnDark);
         }
         .mat-slider-thumb {
           border-color: var(
@@ -399,9 +414,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         .mat-slider-ticks {
           background-image: repeating-linear-gradient(
             to right,
-            var(--slider-disabledTickMarkBackgroundColorOnDark),
-            var(--slider-disabledTickMarkBackgroundColorOnDark)
-              var(--slider-dotsSize) var(--slider-dotsSize),
+            var(--slider-disabledTickBackgroundColorOnDark),
+            var(--slider-disabledTickBackgroundColorOnDark)
+              var(--slider-tickSize) var(--slider-tickSize),
             transparent 2px,
             #e2141400
           );
@@ -414,7 +429,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     return css`
       color: var(--slider-fontColor);
       .mat-slider-has-ticks .mat-slider-wrapper::after {
-        border-color: var(--slider-tickMarkBackgroundColor);
+        border-color: var(--slider-tickBackgroundColor);
       }
       mat-slider {
         &:not(.mat-slider-disabled) {
@@ -431,9 +446,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           .mat-slider-ticks {
             background-image: repeating-linear-gradient(
               to right,
-              var(--slider-tickMarkBackgroundColor),
-              var(--slider-tickMarkBackgroundColor) var(--slider-dotsSize)
-                var(--slider-dotsSize),
+              var(--slider-tickBackgroundColor),
+              var(--slider-tickBackgroundColor) var(--slider-tickSize)
+                var(--slider-tickSize),
               transparent 2px,
               #e2141400
             );
@@ -448,6 +463,10 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           }
           &:focus:not(.mat-slider-sliding) {
             .mat-slider-thumb {
+              background-color: var(--slider-focusThumbBackgroundColor);
+              border-color: var(
+                --slider-focusThumbBackgroundColor
+              ) !important;
               outline-color: var(--slider-focusColor);
             }
           }
@@ -455,7 +474,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
       }
       &.disabled {
         .mat-slider-horizontal .mat-slider-wrapper::after {
-          border-color: var(--slider-disabledTickMarkBackgroundColor);
+          border-color: var(--slider-disabledTickBackgroundColor);
         }
         .mat-slider-thumb {
           border-color: var(--slider-disabledThumbBackgroundColor) !important;
@@ -471,9 +490,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
         .mat-slider-ticks {
           background-image: repeating-linear-gradient(
             to right,
-            var(--slider-disabledTickMarkBackgroundColor),
-            var(--slider-disabledTickMarkBackgroundColor)
-              var(--slider-dotsSize) var(--slider-dotsSize),
+            var(--slider-disabledTickBackgroundColor),
+            var(--slider-disabledTickBackgroundColor)
+              var(--slider-tickSize) var(--slider-tickSize),
             transparent 2px,
             #e2141400
           );

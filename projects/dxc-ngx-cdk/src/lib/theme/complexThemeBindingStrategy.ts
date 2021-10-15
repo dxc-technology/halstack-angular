@@ -42,9 +42,24 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.accordion?.fontColor ?? tokens["--accordion-titleFontColor"];
     proccessedTokens["--accordion-focusOutline"] =
       theme?.accordion?.accentColor ?? tokens["--accordion-arrowColor"];
-    proccessedTokens["--accordion-disabledFontColor"] =
-      this.setLightness(theme?.accordion?.fontColor, 35) ??
-      tokens["--accordion-disabledFontColor"];
+    proccessedTokens["--accordion-titleLabelFontColor"] =
+      theme?.accordion?.fontColor ?? tokens["--accordion-titleLabelFontColor"];
+    proccessedTokens["--accordion-iconColor"] =
+      theme?.accordion?.accentColor ?? tokens["--accordion-iconColor"];
+    proccessedTokens["--accordion-focusBorderColor"] =
+      theme?.accordion?.accentColor ?? tokens["--accordion-focusBorderColor"];
+    proccessedTokens["--accordion-disabledAssistiveTextFontColor"] =
+      this.setLightness(theme?.accordion?.fontColor, 53) ??
+      tokens["--accordion-disabledAssistiveTextFontColor"];
+    proccessedTokens["--accordion-disabledTitleLabelFontColor"] =
+      this.setLightness(theme?.accordion?.fontColor, 53) ??
+      tokens["--accordion-disabledTitleLabelFontColor"];
+    proccessedTokens["--accordion-disabledArrowColor"] =
+      this.setLightness(theme?.accordion?.accentColor, 50) ??
+      tokens["--accordion-disabledArrowColor"];
+    proccessedTokens["--accordion-disabledIconColor"] =
+      this.setLightness(theme?.accordion?.accentColor, 50) ??
+      tokens["--accordion-disabledIconColor"];
 
     //BUTTON
     proccessedTokens["--button-primaryBackgroundColor"] =
@@ -234,9 +249,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--slider-disabledThumbBackgroundColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
       tokens["--slider-disabledThumbBackgroundColor"];
-    proccessedTokens["--slider-disabledDotsBackgroundColor"] =
-      this.setOpacity(theme?.slider?.baseColor, 0.34) ??
-      tokens["--slider-disabledDotsBackgroundColor"];
     proccessedTokens["--slider-disabledTrackLineColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
       tokens["--slider-disabledTrackLineColor"];
@@ -246,6 +258,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.slider?.baseColor ?? tokens["--slider-dotsBackgroundColor"];
     proccessedTokens["--slider-trackLineColor"] =
       theme?.slider?.baseColor ?? tokens["--slider-trackLineColor"];
+    proccessedTokens["--slider-tickBackgroundColor"] =
+      theme?.slider?.baseColor ?? tokens["--slider-tickBackgroundColor"];
+    proccessedTokens["--slider-disabledTickBackgroundColor"] =
+      this.setOpacity(theme?.slider?.baseColor, 0.34) ??
+      tokens["--slider-disabledTickBackgroundColor"];
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =
@@ -331,7 +348,8 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--wizard-circleSelectedBorderColor"] =
       theme?.wizard?.baseColor ?? tokens["--wizard-circleSelectedBorderColor"];
     proccessedTokens["--wizard-stepContainerSelectedFontColor"] =
-      theme?.wizard?.fontColor ?? tokens["--wizard-stepContainerSelectedFontColor"];
+      theme?.wizard?.fontColor ??
+      tokens["--wizard-stepContainerSelectedFontColor"];
 
     return proccessedTokens;
   }

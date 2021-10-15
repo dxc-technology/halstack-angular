@@ -927,7 +927,7 @@
     "selectedFontColor": "#6f2c91",
     "selectedIconColor": "#6f2c91",
     "selectedUnderlineColor": "#6f2c91",
-    "selectedUnderlineThickness": "",
+    "selectedUnderlineThickness": "2px",
     "unselectedBackgroundColor": "#ffffff",
     "unselectedFontColor": "#666666",
     "unselectedIconColor": "#666666",

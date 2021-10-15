@@ -199,9 +199,6 @@ export class DxcPaginatorComponent implements OnInit {
 
   getDynamicStyle() {
     return css`
-      .mat-select-trigger {
-        margin-top: 10px;
-      }
       .mat-button-disabled {
         background-color: transparent !important;
         opacity: 0.3 !important;

@@ -1156,7 +1156,7 @@ export const componentTokens = {
   "--tabs-selectedFontColor": globalTokens.purple,
   "--tabs-selectedIconColor": globalTokens.purple,
   "--tabs-selectedUnderlineColor": globalTokens.purple,
-  "--tabs-selectedUnderlineThickness": "",
+  "--tabs-selectedUnderlineThickness": "2px",
   "--tabs-unselectedBackgroundColor": globalTokens.hal_white,
   "--tabs-unselectedFontColor": globalTokens.hal_grey_s_40,
   "--tabs-unselectedIconColor": globalTokens.hal_grey_s_40,

@@ -22,7 +22,7 @@
     .mat-progress-spinner.spinner {
       ::ng-deep {
         circle {
-          stroke: var(--spinner-overlayTrackCircleColor);
+          stroke: var(--spinner-trackCircleColorOnDark);
         }
       }
     }

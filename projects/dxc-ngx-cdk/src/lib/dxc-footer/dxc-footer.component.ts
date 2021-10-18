@@ -166,11 +166,6 @@ export class DxcFooterComponent implements OnChanges {
     return css`
       min-height: 16px;
       ${this.utils.getPaddings(inputs.padding)}
-      color: var(--footer-customContentFontColor);
-      font-family: var(--footer-customContentFontFamily);
-      font-style: var(--footer-customContentFontStyle);
-      font-size: var(--footer-customContentFontSize);
-      font-weight: var(--footer-customContentFontWeight);
     `;
   }
 

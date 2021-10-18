@@ -223,12 +223,6 @@ export class DxcHeaderComponent implements OnChanges {
         flex-grow: 1;
         justify-content: flex-end;
         ${this.utils.getPaddings(inputs.padding)}
-        font-family: var(--header-customContentFontFamily);
-        font-style: var(--header-customContentFontStyle);
-        font-size: var(--header-customContentFontSize);
-        font-weight: var(--header-customContentFontWeight);
-        color: var(--header-customContentFontColor);
-
         align-items: center;
         flex-wrap: wrap;
         overflow: hidden;
@@ -337,11 +331,6 @@ export class DxcHeaderComponent implements OnChanges {
       .menuContent {
         display: flex;
         flex-direction: column;
-        font-family: var(--header-menuCustomContentFontFamily);
-        font-style: var(--header-menuCustomContentFontStyle);
-        font-size: var(--header-menuCustomContentFontSize);
-        font-weight: var(--header-menuCustomContentFontWeight);
-        color: var(--header-menuCustomContentFontColor);
       }
     `;
   }

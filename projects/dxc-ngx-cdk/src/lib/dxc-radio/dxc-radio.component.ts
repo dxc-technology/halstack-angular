@@ -149,7 +149,10 @@ export class DxcRadioComponent implements OnInit {
       ${this.getLightStyle()}
       mat-radio-button {
         width: 100%;
+        height: 24px;
         .mat-radio-label {
+          width: inherit;
+          height: inherit;
           white-space: normal;
           display: inline-flex;
           align-items: center;
@@ -172,14 +175,10 @@ export class DxcRadioComponent implements OnInit {
             ${inputs.labelPosition === "after"
               ? css`
                   margin-right: var(--radio-circleLabelSpacing);
-                  margin-top: 10px;
-                  margin-bottom: 10px;
                 `
               : inputs.labelPosition === "before"
               ? css`
                   margin-left: var(--radio-circleLabelSpacing);
-                  margin-top: 10px;
-                  margin-bottom: 10px;
                 `
               : css``}
             .mat-radio-frame {

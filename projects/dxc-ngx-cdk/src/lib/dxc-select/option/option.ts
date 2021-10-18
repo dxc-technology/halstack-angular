@@ -267,7 +267,7 @@ export class _MatOptionBase
   getDynamicStyle() {
     return css`
       &.mat-option:not(.mat-option-disabled) {
-        color: var(--select-color) !important;
+        color: var(--select-labelFontColor) !important;
       }
       .mat-option-text {
         display: flex;
@@ -282,7 +282,7 @@ export class _MatOptionBase
         background: white;
       }
       &.mat-option:hover:not(.mat-option-disabled) {
-        background: ${this.service.isDarkTheme ? "var(--select-hoveredOptionBackgroundColorOnDark)": "var(--select-hoveredOptionBackgroundColor)"} !important;
+        background: ${this.service.isDarkTheme ? "var(--select-hoverOptionBackgroundColorOnDark)": "var(--select-hoverOptionBackgroundColor)"} !important;
       }
       &.mat-option.mat-selected:not(.mat-option-disabled) {
         background: ${this.service.isDarkTheme ? "var(--select-selectedOptionBackgroundColorOnDark)": "var(--select-selectedOptionBackgroundColor)"};
@@ -295,13 +295,16 @@ export class _MatOptionBase
         color: var(--select-disabledColor) !important;
       }
       dxc-option-icon {
+        display: flex;
+        align-items: center;
         ${this.iconPosition == "after"
-          ? "margin-left: var(--select-iconOptionSpacing)"
-          : "margin-right: var(--select-iconOptionSpacing)"};
-        color: var(--select-iconColor);
+          ? "margin-left: var(--select-optionIconSpacing)"
+          : "margin-right: var(--select-optionIconSpacing)"};
+        color: var(--select-optionIconColor);
         img,
         svg {
-          width: var(--select-iconSize);
+          height: var(--select-optionIconSize);
+          width: var(--select-optionIconSize);
         }
       }
       mat-checkbox.cdk-focused {

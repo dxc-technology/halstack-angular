@@ -646,11 +646,13 @@
   "progressBar": {
     "trackLineColor": "#6f2c91",
     "totalLineColor": "#cecece",
+    "trackLineColorOnDark": "#a46ede",
     "labelFontFamily": "Open Sans, sans-serif",
     "labelFontSize": "0.75rem",
     "labelFontStyle": "normal",
     "labelFontWeight": "400",
     "labelFontColor": "#000000",
+    "labelFontColorOnDark": "#FFFFFF",
     "labelFontTextTransform": "uppercase",
     "valueFontFamily": "Open Sans, sans-serif",
     "valueFontSize": "0.75rem",

@@ -854,6 +854,7 @@ export const componentTokens = {
 
   //PROGRESSBAR
   "--progressBar-trackLineColor": globalTokens.purple,
+  "--progressBar-trackLineColorOnDark": globalTokens.hal_purple_l_65,
   "--progressBar-totalLineColor": globalTokens.softGrey,
   "--progressBar-overlayColor": globalTokens.hal_black,
   "--progressBar-labelFontFamily": globalTokens.type_sans,
@@ -861,6 +862,7 @@ export const componentTokens = {
   "--progressBar-labelFontStyle": globalTokens.type_normal,
   "--progressBar-labelFontWeight": globalTokens.type_regular,
   "--progressBar-labelFontColor": globalTokens.hal_black,
+  "--progressBar-labelFontColorOnDark": globalTokens.hal_white,
   "--progressBar-labelFontTextTransform": globalTokens.type_uppercase,
   "--progressBar-valueFontFamily": globalTokens.type_sans,
   "--progressBar-valueFontSize": globalTokens.type_scale_01,

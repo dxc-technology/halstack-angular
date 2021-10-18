@@ -2,12 +2,11 @@ import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
 @Component({
   selector: "dxc-progressbar",
   templateUrl: "./dxc-progressbar.component.html",
-  styleUrls: ["./dxc-progressbar.component.scss"],
   providers: [CssUtils],
 })
 export class DxcProgressbarComponent {
@@ -85,21 +84,99 @@ export class DxcProgressbarComponent {
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
-      .backOverlay {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: fixed;
-        opacity: 1;
-        ${inputs.overlay
-          ? css`
-              background-color: rgba(0, 0, 0, 0.7);
-            `
-          : css`
-              background-color: transparent;
-            `}
-        transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      display: block;
+      height: auto;
+      width: auto;
+      .progressContainer {
+        width: auto;
+      }
+      &.absolute {
+        position: absolute;
+        width: auto;
+        margin: 0px;
+        height: 100%;
+        mat-progress-bar {
+          width: 80%;
+        }
+        .labelContainer {
+          width: 80%;
+        }
+        .backOverlay {
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          position: fixed;
+          opacity: var(--progressBar-overlayOpacity);
+          transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+          background-color: var(--progressBar-overlayColor);
+        }
+        .overlayed {
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          top: 0;
+          left: 0;
+          flex-direction: column;
+          position: fixed;
+          z-index: 3120;
+          display: flex;
+          width: 100%;
+          .labelContainer .label,
+          .labelContainer .value {
+            color: var(--progressBar-labelFontColorOnDark);
+          }
+        }
+      }
+      mat-progress-bar {
+        border-radius: var(--progressBar-borderRadius);
+        height: var(--progressBar-thickness);
+        z-index: 1;
+        width: auto;
+        .mat-progress-bar-fill::after {
+          background-color: ${inputs.overlay
+            ? `var(--progressBar-trackLineColorOnDark);`
+            : `var(--progressBar-trackLineColor);`};
+        }
+        .mat-progress-bar-background {
+          fill: transparent;
+        }
+      }
+      .labelContainer {
+        z-index: 1;
+        width: auto;
+        margin-bottom: 8px;
+        display: flex;
+        .label {
+          display: block;
+          text-align: left;
+          width: 95%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          font-family: var(--progressBar-labelFontFamily);
+          font-size: var(--progressBar-labelFontSize);
+          font-style: var(--progressBar-labelFontStyle);
+          font-weight: var(--progressBar-labelFontWeight);
+          color: var(--progressBar-labelFontColor);
+          text-transform: var(--progressBar-labelFontTextTransform);
+        }
+        .value {
+          display: inline-flex;
+          justify-content: flex-end;
+          width: 5%;
+          font-family: var(--progressBar-valueFontFamily);
+          font-size: var(--progressBar-valueFontSize);
+          font-style: var(--progressBar-valueFontStyle);
+          font-weight: var(--progressBar-valueFontWeight);
+          color: var(--progressBar-valueFontColor);
+          text-transform: var(--progressBar-valueFontTextTransform);
+        }
+      }
+      mat-progress-bar {
+        .mat-progress-bar-buffer {
+          background-color: var(--progressBar-totalLineColor);
+        }
       }
     `;
   }

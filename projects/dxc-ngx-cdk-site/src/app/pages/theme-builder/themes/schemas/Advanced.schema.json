@@ -643,11 +643,13 @@
   "progressBar": {
     "trackLineColor": "color",
     "totalLineColor": "color",
+    "trackLineColorOnDark": "color",
     "labelFontFamily": "fFamily",
     "labelFontSize": "length",
     "labelFontStyle": "fStyle",
     "labelFontWeight": "fWeight",
     "labelFontColor": "color",
+    "labelFontColorOnDark": "color",
     "labelFontTextTransform": "fTextTransform",
     "valueFontFamily": "fFamily",
     "valueFontSize": "length",

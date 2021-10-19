@@ -48,6 +48,7 @@ export class ThemeBuilderSidenavComponent implements OnInit {
       componentName: "accordion",
       themeType: "default",
     };
+    themeService.registerTheme(this.defaultTheme);
     this.componentMenuItems = this.extractMenuComponentItems(this.currentTheme);
   }
 

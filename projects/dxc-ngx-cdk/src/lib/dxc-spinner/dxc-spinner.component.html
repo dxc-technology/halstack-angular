@@ -7,9 +7,26 @@
   }"
 >
   <div class="backOverlay" *ngIf="mode === 'overlay'"></div>
-  <mat-progress-spinner class="backCircle" value="100"></mat-progress-spinner>
-  <mat-progress-spinner value="{{ value }}" mode="{{ type }}" class="spinner">
-  </mat-progress-spinner>
+  <div class="backgroundSpinner">
+    <svg *ngIf="mode !== 'small'" #svgBackgroundLarge>
+      <circle #circleBackgroundLarge />
+    </svg>
+    <svg *ngIf="mode === 'small'" #svgBackgroundSmall>
+      <circle #circleBackgroundSmall />
+    </svg>
+  </div>
+
+  <div
+    [ngClass]="isIndeterminate ? 'spinnerIndeterminate' : 'spinnerDeterminate'"
+  >
+    <svg *ngIf="mode !== 'small'" #svgLarge>
+      <circle #circleLarge />
+    </svg>
+    <svg *ngIf="mode === 'small'" #svgSmall>
+      <circle #circleSmall />
+    </svg>
+  </div>
+
   <div
     *ngIf="mode !== 'small'"
     [ngClass]="{ notOverlayed: mode !== 'overlay' }"

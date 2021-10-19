@@ -32,7 +32,6 @@ import {
 } from "./option-parent";
 import { SelectService } from "../services/select.service";
 import { css } from "emotion";
-import { BackgroundProviderService } from '../../background-provider/service/background-provider.service';
 
 /**
  * Option IDs need to be unique across components, so this counter exists outside of
@@ -52,7 +51,8 @@ export class MatOptionSelectionChange {
 
 @Directive()
 export class _MatOptionBase
-  implements FocusableOption, AfterViewChecked, OnDestroy {
+  implements FocusableOption, AfterViewChecked, OnDestroy
+{
   private _selected = false;
   private _active = false;
   private _disabled = false;
@@ -106,9 +106,11 @@ export class _MatOptionBase
 
   private iconPosition = "";
 
-  checkboxMargin = {right:"xsmall"}
+  checkboxMargin = { right: "xsmall" };
 
   @HostBinding("class") className = `mat-option ${this.getDynamicStyle()}`;
+
+  backgroundColor = "";
 
   constructor(
     public _element: ElementRef<HTMLElement>,
@@ -120,6 +122,9 @@ export class _MatOptionBase
       this.iconPosition = position;
       this.className = `mat-option ${this.getDynamicStyle()}`;
     });
+    // this.service.isDarkThemeOption.subscribe((value) => {
+    //   this.backgroundColor = value;
+    // });
   }
 
   /**
@@ -266,6 +271,7 @@ export class _MatOptionBase
 
   getDynamicStyle() {
     return css`
+      height: ${this.multiple ? "48px" : "36px"};
       &.mat-option:not(.mat-option-disabled) {
         color: var(--select-labelFontColor) !important;
       }
@@ -275,6 +281,17 @@ export class _MatOptionBase
           ? "flex-end"
           : "flex-start"};
         flex-direction: ${this.iconPosition == "after" ? "row-reverse" : "row"};
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        span {
+          font-family: var(--select-fontFamily);
+          color: ${this.service.isDarkTheme
+            ? "var(--select-optionFontColorOnDark)"
+            : "var(--select-optionsFontColor)"};
+          font-size: var(--select-optionsFontSize);
+          font-style: var(--select-optionsFontStyle);
+        }
       }
       &.mat-option.mat-active {
         outline: -webkit-focus-ring-color auto 1px;
@@ -282,10 +299,14 @@ export class _MatOptionBase
         background: white;
       }
       &.mat-option:hover:not(.mat-option-disabled) {
-        background: ${this.service.isDarkTheme ? "var(--select-hoverOptionBackgroundColorOnDark)": "var(--select-hoverOptionBackgroundColor)"} !important;
+        background: ${this.service.isDarkTheme
+          ? "var(--select-hoverOptionBackgroundColorOnDark)"
+          : "var(--select-hoverOptionBackgroundColor)"} !important;
       }
       &.mat-option.mat-selected:not(.mat-option-disabled) {
-        background: ${this.service.isDarkTheme ? "var(--select-selectedOptionBackgroundColorOnDark)": "var(--select-selectedOptionBackgroundColor)"};
+        background: ${this.service.isDarkTheme
+          ? "var(--select-selectedOptionBackgroundColorOnDark)"
+          : "var(--select-selectedOptionBackgroundColor)"};
       }
       &.mat-option:focus:not(.mat-option-disabled) {
         outline: -webkit-focus-ring-color auto 1px;

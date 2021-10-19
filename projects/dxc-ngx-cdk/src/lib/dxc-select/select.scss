@@ -103,6 +103,7 @@ $mat-select-placeholder-arrow-space: 2 *
   padding-top: 0;
   padding-bottom: 0;
   max-height: $mat-select-panel-max-height;
+  max-width: calc(100% - 32px);
   min-width: 100%; // prevents some animation twitching and test inconsistencies in IE11
   border-color: var(--select-optionsBorderColor);
   border-style: var(--select-optionsBorderStyle);
@@ -129,8 +130,6 @@ $mat-select-placeholder-arrow-space: 2 *
   .mat-option {
     font-size: inherit;
     font-family: var(--select-fontFamily);
-    line-height: $mat-select-item-height;
-    height: $mat-select-item-height;
   }
 }
 

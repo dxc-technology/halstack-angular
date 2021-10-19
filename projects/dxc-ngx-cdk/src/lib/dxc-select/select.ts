@@ -614,6 +614,9 @@ export abstract class _MatSelectBase<C>
       } else if (value === "light") {
         this.service.isDarkTheme = false;
       }
+      this.service.isDarkThemeOption.next(this.utils.readProperty(
+        "--select-optionsBackgroundColor"
+      ));
     });
 
     if (this.ngControl) {
@@ -1358,7 +1361,7 @@ export abstract class _MatSelectBase<C>
       }
       dxc-option-icon {
         display: flex;
-        margin-right: 5px;
+        margin-right: 12px;
         img,
         svg {
           width: 24px;
@@ -1379,6 +1382,9 @@ export abstract class _MatSelectBase<C>
         :focus {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: ${this.service.isDarkTheme ?  "var(--select-focusColorOnDark)" : "var(--select-focusColor)"};
+        }
+        dxc-option-icon{
+          height: 100%;
         }
       }
 

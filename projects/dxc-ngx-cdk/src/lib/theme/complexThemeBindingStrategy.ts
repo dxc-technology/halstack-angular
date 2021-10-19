@@ -205,6 +205,8 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.inputText?.selectedBaseColor, 0.34) ??
       tokens["--inputText-optionHoverBackgroundColor"];
 
+    //hover y active para new input
+
     //PAGINATOR
     proccessedTokens["--paginator-backgroundColor"] =
       theme?.paginator?.baseColor ?? tokens["--paginator-backgroundColor"];
@@ -254,8 +256,8 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--slider-disabledTrackLineColor"];
     proccessedTokens["--slider-thumbBackgroundColor"] =
       theme?.slider?.baseColor ?? tokens["--slider-thumbBackgroundColor"];
-    proccessedTokens["--slider-dotsBackgroundColor"] =
-      theme?.slider?.baseColor ?? tokens["--slider-dotsBackgroundColor"];
+    proccessedTokens["--slider-tickBackgroundColor"] =
+      theme?.slider?.baseColor ?? tokens["--slider-tickBackgroundColor"];
     proccessedTokens["--slider-trackLineColor"] =
       theme?.slider?.baseColor ?? tokens["--slider-trackLineColor"];
     proccessedTokens["--slider-tickBackgroundColor"] =
@@ -263,6 +265,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--slider-disabledTickBackgroundColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
       tokens["--slider-disabledTickBackgroundColor"];
+
+    proccessedTokens["--slider-activeThumbBackgroundColor"] =
+      this.setLightness(theme?.slider?.baseColor, 20) ??
+      tokens["--slider-activeThumbBackgroundColor"];
+    proccessedTokens["--slider-hoverThumbBackgroundColor"] =
+      this.setLightness(theme?.slider?.baseColor, 20) ??
+      tokens["--slider-hoverThumbBackgroundColor"];
+    proccessedTokens["--slider-focusThumbBackgroundColor"] =
+      this.setLightness(theme?.slider?.baseColor, 20) ??
+      tokens["--slider-focusThumbBackgroundColor"];
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =

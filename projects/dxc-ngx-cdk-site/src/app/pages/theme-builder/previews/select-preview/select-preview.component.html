@@ -26,6 +26,20 @@
           [value]="option.value"
         ></dxc-select-option>
       </dxc-select>
+
+      <dxc-select
+        label="Icon Select"
+        margin="xsmall"
+        assistiveText="Assistive text"
+      >
+        <dxc-select-option
+          *ngFor="let option of optionsWithIconAndLabels"
+          [label]="option.label"
+          [value]="option.value"
+        >
+          <dxc-option-icon><img [src]="option.iconSrc" /></dxc-option-icon>
+        </dxc-select-option>
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Multiple">
@@ -107,6 +121,20 @@
           [label]="option.label"
           [value]="option.value"
         ></dxc-select-option>
+      </dxc-select>
+
+      <dxc-select
+        label="Icon Select"
+        margin="xsmall"
+        assistiveText="Assistive text"
+      >
+        <dxc-select-option
+          *ngFor="let option of optionsWithIconAndLabels"
+          [label]="option.label"
+          [value]="option.value"
+        >
+          <dxc-option-icon><img [src]="option.iconSrc" /></dxc-option-icon>
+        </dxc-select-option>
       </dxc-select>
     </tbuilder-component-mode>
 

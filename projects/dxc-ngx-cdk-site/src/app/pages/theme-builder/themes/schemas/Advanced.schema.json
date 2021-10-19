@@ -692,7 +692,7 @@
     "scrollBarThumbColor": "color",
     "scrollBarTrackColor": "color",
     "optionIconColor": "color",
-    "iconOptionSpacing": "length",
+    "optionIconSpacing": "length",
     "optionIconSize": "length",
     "selectedOptionBackgroundColor": "color",
     "selectedOptionBackgroundColorOnDark": "color",

@@ -895,11 +895,11 @@ export const componentTokens = {
   "--select-optionsBorderThickness": "0px",
   "--select-optionsBorderStyle": "solid",
   "--select-optionsFontColor": globalTokens.hal_black,
-  "--select-optionFontColorOnDark": globalTokens.hal_white, //añadir
+  "--select-optionFontColorOnDark": globalTokens.hal_white,
   "--select-optionsFontSize": globalTokens.type_scale_root,
   "--select-optionsFontStyle": globalTokens.type_normal,
   "--select-optionsFontWeight": globalTokens.type_regular,
-  "--select-iconOptionSpacing": "12px",
+  "--select-optionIconSpacing": "12px",
   "--select-optionIconColor": globalTokens.hal_black,
   "--select-optionIconColorOnDark": globalTokens.hal_white, //añadir
   "--select-optionIconSize": "20px",

@@ -680,7 +680,7 @@
     "hoverOptionBackgroundColor": "#f2f2f2",
     "hoverOptionBackgroundColorOnDark": "#f2f2f2",
     "optionIconColor": "#000000",
-    "iconOptionSpacing": "12px",
+    "optionIconSpacing": "12px",
     "optionIconSize": "20px",
     "labelFontSize": "1rem",
     "labelFontStyle": "normal",

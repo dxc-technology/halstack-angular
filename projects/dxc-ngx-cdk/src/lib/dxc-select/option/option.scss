@@ -54,24 +54,6 @@
   }
 }
 
-// Collapses unwanted whitespace created by newlines in code like the following:
-// <mat-option>
-//   {{value}}
-// </mat-option>
-.mat-option-text {
-  display: inline-block;
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  span {
-    font-family: var(--select-fontFamily);
-    color: var(--select-optionsFontColor);
-    font-size: var(--select-optionsFontSize);
-    font-style: var(--select-optionsFontStyle);
-
-  }
-}
-
 // Increase specificity because ripple styles are part of the `mat-core` mixin and can
 // potentially overwrite the absolute position of the container.
 .mat-option .mat-option-ripple {

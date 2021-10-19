@@ -64,10 +64,9 @@
           expand_more
         </span>
       </span> -->
-      <div class="mat-select-arrow-wrapper" [attr.tabindex]="disabled ? -1 : 0" [class.disabled]="disabled"
+      <div class="mat-select-arrow-wrapper mat-width" [attr.tabindex]="disabled ? -1 : 0" [class.disabled]="disabled"
         role="button" aria-haspopup="true" [attr.aria-label]="label" (keyup.enter)="open($event)" (click)="open($event)"
-        style="width:4%; right: 32px;float: right;
-      position: absolute;" [attr.disabled]="disabled">
+         [attr.disabled]="disabled">
         <div class="mat-select-arrow mat-select-padding"></div>
       </div>
       <mat-autocomplete #auto="matAutocomplete" (closed)="panelClose()" (opened)="panelOpen()"

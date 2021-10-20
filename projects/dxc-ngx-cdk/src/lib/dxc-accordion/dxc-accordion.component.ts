@@ -20,7 +20,7 @@ import {
 } from "@angular/cdk/coercion";
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
-import { BackgroundProviderComponent } from '../background-provider/background-provider.component';
+import { BackgroundProviderComponent } from "../background-provider/background-provider.component";
 
 @Component({
   selector: "dxc-accordion",
@@ -105,7 +105,9 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.currentBackgroundColor = this.cssUtils.readProperty('--accordion-backgroundColor');
+    this.currentBackgroundColor = this.cssUtils.readProperty(
+      "--accordion-backgroundColor"
+    );
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
@@ -125,13 +127,10 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     return css`
       cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
       ${this.cssUtils.getMargins(inputs.margin)}
-      min-width: var(--accordion-minWidth);
+      min-width: 280px;
       display: block;
       div.mat-expansion-panel-content {
         div.mat-expansion-panel-body {
-          font-family: var(--accordion-customContentFontFamily);
-          font-size: var(--accordion-customContentFontSize);
-          font-weight: var(--accordion-customContentFontWeight);
           cursor: default;
           ${inputs.padding
             ? this.cssUtils.getPaddings(inputs.padding)
@@ -142,11 +141,11 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           }
         }
       }
-      .mat-accordion .mat-expansion-panel:last-of-type{
+      .mat-accordion .mat-expansion-panel:last-of-type {
         border-bottom-right-radius: var(--accordion-borderRadius);
         border-bottom-left-radius: var(--accordion-borderRadius);
       }
-      .mat-accordion .mat-expansion-panel:first-of-type{
+      .mat-accordion .mat-expansion-panel:first-of-type {
         border-top-right-radius: var(--accordion-borderRadius);
         border-top-left-radius: var(--accordion-borderRadius);
       }
@@ -162,7 +161,8 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           var(--accordion-boxShadowOffsetY) var(--accordion-boxShadowBlur)
           var(--accordion-boxShadowColor) !important;
         mat-expansion-panel-header {
-          min-height: var(--accordion-minHeight);
+          min-height: 48px;
+          padding: 0 16px;
           .mat-expansion-panel-header-title {
             font-family: var(--accordion-titleLabelFontFamily);
             font-size: var(--accordion-titleLabelFontSize);
@@ -187,19 +187,13 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
               width: 24px;
               height: 24px;
             }
-            &.after {
-              flex-direction: row;
-              .imageIcon,
-              dxc-accordion-icon {
-                margin-left: 16px;
-              }
-            }
             &.before {
               flex-direction: row-reverse;
               justify-content: flex-end;
               .imageIcon,
               dxc-accordion-icon {
-                margin-right: 16px;
+                margin-right: var(--accordion-iconMarginRight);
+                margin-left: var(--accordion-iconMarginLeft);
               }
             }
             dxc-accordion-icon {
@@ -215,7 +209,6 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           }
           mat-panel-description {
             justify-content: flex-end;
-            margin-right: 24px;
             overflow: hidden;
             font-family: var(--accordion-assistiveTextFontFamily);
             font-size: var(--accordion-assistiveTextFontSize);
@@ -237,11 +230,13 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
         }
         &:not(.disabled) {
           mat-expansion-panel-header {
-            &:focus {
+            &:focus,
+            &:focus-visible {
               outline: -webkit-focus-ring-color
                 var(--accordion-focusBorderStyle)
                 var(--accordion-focusBorderThickness);
               outline-color: var(--accordion-focusBorderColor);
+              outline-offset: var(--accordion-focusBorderOffset);
             }
             &:hover {
               background-color: var(
@@ -277,8 +272,12 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
           .mat-expansion-panel-header-title {
             color: var(--accordion-disabledTitleLabelFontColor);
           }
-          dxc-accordion-icon{
-            fill: var(--accordion-disabledIconColor);
+          dxc-accordion-icon {
+            svg,
+            img {
+              fill: var(--accordion-disabledIconColor);
+              color: var(--accordion-disabledIconColor);
+            }
           }
           .caret-indicator svg {
             fill: var(--accordion-disabledArrowColor);

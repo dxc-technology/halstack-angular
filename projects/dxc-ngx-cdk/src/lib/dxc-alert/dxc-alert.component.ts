@@ -102,40 +102,55 @@ export class DxcAlertComponent implements OnChanges {
     switch (type) {
       case "info":
         this.currentBackgroundColor =
-          this.utils.readProperty("--alert-infoColor");
+          this.utils.readProperty("--alert-infoBackgroundColor");
         return css`
-          background-color: var(--alert-infoColor);
+          background-color: var(--alert-infoBackgroundColor);
           border-color: var(--alert-infoBorderColor);
+          .icon svg{
+            fill: var(--alert-infoIconColor);
+          }
         `;
       case "confirm":
         this.currentBackgroundColor = this.utils.readProperty(
-          "--alert-successColor"
+          "--alert-successBackgroundColor"
         );
         return css`
-          background-color: var(--alert-successColor);
+          background-color: var(--alert-successBackgroundColor);
           border-color: var(--alert-successBorderColor);
+          .icon svg{
+            fill: var(--alert-successIconColor);
+          }
         `;
       case "warning":
         this.currentBackgroundColor = this.utils.readProperty(
-          "--alert-warningColor"
+          "--alert-warningBackgroundColor"
         );
         return css`
-          background-color: var(--alert-warningColor);
+          background-color: var(--alert-warningBackgroundColor);
           border-color: var(--alert-warningBorderColor);
+          .icon svg{
+            fill: var(--alert-warningIconColor);
+          }
         `;
       case "error":
         this.currentBackgroundColor =
-          this.utils.readProperty("--alert-errorColor");
+          this.utils.readProperty("--alert-errorBackgroundColor");
         return css`
-          background-color: var(--alert-errorColor);
+          background-color: var(--alert-errorBackgroundColor);
           border-color: var(--alert-errorBorderColor);
+          .icon svg{
+            fill: var(--alert-errorIconColor);
+          }
         `;
       default:
         this.currentBackgroundColor =
-          this.utils.readProperty("--alert-errorColor");
+          this.utils.readProperty("--alert-errorBackgroundColor");
         return css`
-          background-color: var(--alert-errorColor);
+          background-color: var(--alert-errorBackgroundColor);
           border-color: var(--alert-errorBorderColor);
+          .icon svg{
+            fill: var(--alert-errorIconColor);
+          }
         `;
     }
   }

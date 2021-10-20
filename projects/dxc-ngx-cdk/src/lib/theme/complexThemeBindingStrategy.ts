@@ -5,7 +5,7 @@ import rgbHex from "rgb-hex";
 export class ComplexThemeBindingStrategy implements MappingStrategy {
   constructor() {}
 
-  setLightness(hexColor: String, newLightness: number) {
+  addLightness(hexColor: String, newLightness: number) {
     if (hexColor) {
       const color = Color(hexColor);
       const hslColor = color.hsl();
@@ -14,6 +14,19 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     }
     return null;
   }
+
+  subLightness (hexColor, newLightness) {
+    try {
+      if (hexColor) {
+        const color = Color(hexColor);
+        const hslColor = color.hsl();
+        const lightnessColor = hslColor.color[2];
+        return hslColor.lightness(lightnessColor - newLightness).hex();
+      }
+    } catch (e) {
+      return null;
+    }
+  };
 
   setOpacity(hexColor: String, newOpacity: number) {
     if (hexColor) {
@@ -30,79 +43,64 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     let proccessedTokens = tokens;
 
     //ACCORDION
-    proccessedTokens["--accordion-arrowColor"] =
+    proccessedTokens["--accordion-arrowColor"] = 
       theme?.accordion?.accentColor ?? tokens["--accordion-arrowColor"];
     proccessedTokens["--accordion-hoverBackgroundColor"] =
-      this.setLightness(theme?.accordion?.accentColor, 53) ??
+      this.setOpacity(theme?.accordion?.accentColor, 0.16) ??
       tokens["--accordion-hoverBackgroundColor"];
-    proccessedTokens["--accordion-assistiveTextFontColor"] =
+    proccessedTokens["--accordion-assistiveTextFontColor"] = 
       theme?.accordion?.fontColor ??
       tokens["--accordion-assistiveTextFontColor"];
-    proccessedTokens["--accordion-titleFontColor"] =
-      theme?.accordion?.fontColor ?? tokens["--accordion-titleFontColor"];
-    proccessedTokens["--accordion-focusOutline"] =
-      theme?.accordion?.accentColor ?? tokens["--accordion-arrowColor"];
-    proccessedTokens["--accordion-titleLabelFontColor"] =
+    proccessedTokens["--accordion-titleLabelFontColor"] = 
       theme?.accordion?.fontColor ?? tokens["--accordion-titleLabelFontColor"];
     proccessedTokens["--accordion-iconColor"] =
       theme?.accordion?.accentColor ?? tokens["--accordion-iconColor"];
     proccessedTokens["--accordion-focusBorderColor"] =
       theme?.accordion?.accentColor ?? tokens["--accordion-focusBorderColor"];
     proccessedTokens["--accordion-disabledAssistiveTextFontColor"] =
-      this.setLightness(theme?.accordion?.fontColor, 53) ??
+      this.setOpacity(theme?.accordion?.fontColor, 0.34) ??
       tokens["--accordion-disabledAssistiveTextFontColor"];
     proccessedTokens["--accordion-disabledTitleLabelFontColor"] =
-      this.setLightness(theme?.accordion?.fontColor, 53) ??
+      this.setOpacity(theme?.accordion?.fontColor, 0.34) ??
       tokens["--accordion-disabledTitleLabelFontColor"];
     proccessedTokens["--accordion-disabledArrowColor"] =
-      this.setLightness(theme?.accordion?.accentColor, 50) ??
+      this.setOpacity(theme?.accordion?.accentColor, 0.34) ??
       tokens["--accordion-disabledArrowColor"];
     proccessedTokens["--accordion-disabledIconColor"] =
-      this.setLightness(theme?.accordion?.accentColor, 50) ??
+      this.setOpacity(theme?.accordion?.accentColor, 0.34) ??
       tokens["--accordion-disabledIconColor"];
 
     //BUTTON
     proccessedTokens["--button-primaryBackgroundColor"] =
       theme?.button?.baseColor ?? tokens["--button-primaryBackgroundColor"];
-    proccessedTokens["--button-primaryHoverBackgroundColor"] =
-      theme?.button?.hoverBaseColor ??
-      tokens["--button-primaryHoverBackgroundColor"];
+      proccessedTokens["--button-secondaryFontColor"] =
+      theme?.button?.baseColor ?? tokens["--button-secondaryFontColor"];
+      proccessedTokens["--button-secondaryHoverBackgroundColor"] =
+      theme?.button?.baseColor ?? tokens["--button-secondaryHoverBackgroundColor"];
+      proccessedTokens["--button-textFontColor"] =
+      theme?.button?.baseColor ?? tokens["--button-textFontColor"];
     proccessedTokens["--button-primaryFontColor"] =
       theme?.button?.primaryFontColor ?? tokens["--button-primaryFontColor"];
-    proccessedTokens["--button-primaryHoverFontColor"] =
-      theme?.button?.primaryHoverFontColor ??
-      tokens["--button-primaryHoverFontColor"];
-    proccessedTokens["--button-primaryDisabledFontColor"] =
-      this.setOpacity(theme?.button?.primaryFontColor, 0.34) ??
-      tokens["--button-primaryDisabledFontColor"];
-    proccessedTokens["--button-primaryDisabledBackgroundColor"] =
-      this.setOpacity(theme?.button?.baseColor, 0.34) ??
-      tokens["--button-primaryDisabledBackgroundColor"];
-    proccessedTokens["--button-secondaryOutlinedColor"] =
-      theme?.button?.baseColor ?? tokens["--button-secondaryOutlinedColor"];
-    proccessedTokens["--button-secondaryFontColor"] =
-      theme?.button?.secondaryFontColor ??
-      tokens["--button-secondaryFontColor"];
+    proccessedTokens["--button-secondaryBorderColor"] =
+      theme?.button?.baseColor ?? tokens["--button-secondaryBorderColor"];
     proccessedTokens["--button-secondaryHoverFontColor"] =
       theme?.button?.secondaryHoverFontColor ??
       tokens["--button-secondaryHoverFontColor"];
-    proccessedTokens["--button-secondaryDisabledOutlinedColor"] =
-      this.setOpacity(theme?.button?.baseColor, 0.34) ??
-      tokens["--button-secondaryDisabledOutlinedColor"];
-    proccessedTokens["--button-secondaryDisabledFontColor"] =
-      this.setOpacity(theme?.button?.secondaryFontColor, 0.34) ??
-      tokens["--button-secondaryDisabledFontColor"];
-    proccessedTokens["--button-textHoverBackgroundColor"] =
-      theme?.button?.hoverBaseColor ??
+    proccessedTokens["--button-primaryHoverBackgroundColor"] =
+      this.subLightness(theme?.button?.baseColor, 8) ??
+      tokens["--button-primaryHoverBackgroundColor"];
+      proccessedTokens["--button-primaryActiveBackgroundColor"] =
+      this.subLightness(theme?.button?.baseColor, 18) ??
+      tokens["--button-primaryActiveBackgroundColor"];
+      proccessedTokens["--button-secondaryActiveBackgroundColor"] =
+      this.subLightness(theme?.button?.baseColor, 18) ??
+      tokens["--button-secondaryActiveBackgroundColor"];
+      proccessedTokens["--button-textHoverBackgroundColor"] =
+      this.addLightness(theme?.button?.baseColor, 57) ??
       tokens["--button-textHoverBackgroundColor"];
-    proccessedTokens["--button-textFontColor"] =
-      theme?.button?.textFontColor ?? tokens["--button-textFontColor"];
-    proccessedTokens["--button-textHoverFontColor"] =
-      theme?.button?.textHoverFontColor ??
-      tokens["--button-textHoverFontColor"];
-    proccessedTokens["--button-textDisabledFontColor"] =
-      this.setOpacity(theme?.button?.textFontColor, 0.34) ??
-      tokens["--button-textDisabledFontColor"];
+      proccessedTokens["--button-textActiveBackgroundColor"] =
+      this.addLightness(theme?.button?.baseColor, 52) ??
+      tokens["--button-textActiveBackgroundColor"];
 
     //CHECKBOX
     proccessedTokens["--checkbox-borderColor"] =
@@ -267,13 +265,13 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--slider-disabledTickBackgroundColor"];
 
     proccessedTokens["--slider-activeThumbBackgroundColor"] =
-      this.setLightness(theme?.slider?.baseColor, 20) ??
+      this.addLightness(theme?.slider?.baseColor, 20) ??
       tokens["--slider-activeThumbBackgroundColor"];
     proccessedTokens["--slider-hoverThumbBackgroundColor"] =
-      this.setLightness(theme?.slider?.baseColor, 20) ??
+      this.addLightness(theme?.slider?.baseColor, 20) ??
       tokens["--slider-hoverThumbBackgroundColor"];
     proccessedTokens["--slider-focusThumbBackgroundColor"] =
-      this.setLightness(theme?.slider?.baseColor, 20) ??
+      this.addLightness(theme?.slider?.baseColor, 20) ??
       tokens["--slider-focusThumbBackgroundColor"];
 
     //SPINNER
@@ -306,10 +304,10 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--tabs-focusOutline"] =
       theme?.tabs?.baseColor ?? tokens["--tabs-selectedFontColor"];
     proccessedTokens["--tabs-hoverBackgroundColor"] =
-      this.setLightness(theme?.tabs?.baseColor, 58) ??
+      this.addLightness(theme?.tabs?.baseColor, 58) ??
       tokens["--tabs-hoverBackgroundColor"];
     proccessedTokens["--tabs-pressedBackgroundColor"] =
-      this.setLightness(theme?.tabs?.baseColor, 53) ??
+      this.addLightness(theme?.tabs?.baseColor, 53) ??
       tokens["--tabs-pressedBackgroundColor"];
 
     //TOGGLE GROUP

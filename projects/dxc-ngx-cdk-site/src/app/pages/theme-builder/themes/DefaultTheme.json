@@ -4,14 +4,10 @@
     "fontColor": "#000000"
   },
   "button": {
-    "baseColor": "#6f2c91",
-    "hoverBaseColor": "#000000",
+    "baseColor": "#5f249f",
     "primaryFontColor": "#ffffff",
-    "primaryHoverFontColor": "#ffffff",
-    "secondaryFontColor": "#000000",
-    "secondaryHoverFontColor": "#000000",
-    "textFontColor": "#6f2c91",
-    "textHoverFontColor": "#ffffff"
+    "secondaryHoverFontColor": "#ffffff",
+    "textHoverBackgroundColor": "#F2EAFA"
   },
   "checkbox": {
     "baseColor": "#0067b3",

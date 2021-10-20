@@ -241,32 +241,25 @@ export const componentTokens = {
 
   //BOX
   "--box-backgroundColor": globalTokens.hal_white,
-
-  "--box-fontFamily": globalTokens.type_sans,
-  "--box-fontSize": globalTokens.type_scale_02,
-  "--box-fontWeight": globalTokens.type_normal,
-  "--box-fontColor": globalTokens.hal_black,
   "--box-letterSpacing": globalTokens.type_spacing_wide_01,
-
   "--box-borderRadius": "4px",
   "--box-borderThickness": "0px",
   "--box-borderColor": globalTokens.transparent,
   "--box-borderStyle": globalTokens.type_no_line,
-
   "--box-noneShadowDepthShadowOffsetX": "none",
   "--box-noneShadowDepthShadowOffsetY": "none",
   "--box-noneShadowDepthShadowBlur": "none",
   "--box-noneShadowDepthShadowSpread": "none",
   "--box-noneShadowDepthShadowColor": globalTokens.transparent,
   "--box-oneShadowDepthShadowOffsetX": "0px",
-  "--box-oneShadowDepthShadowOffsetY": "2px",
-  "--box-oneShadowDepthShadowBlur": "1px",
-  "--box-oneShadowDepthShadowSpread": "-1px",
+  "--box-oneShadowDepthShadowOffsetY": "3px",
+  "--box-oneShadowDepthShadowBlur": "6px",
+  "--box-oneShadowDepthShadowSpread": "0px",
   "--box-oneShadowDepthShadowColor": "#00000033",
   "--box-twoShadowDepthShadowOffsetX": "0px",
   "--box-twoShadowDepthShadowOffsetY": "3px",
-  "--box-twoShadowDepthShadowBlur": "3px",
-  "--box-twoShadowDepthShadowSpread": "-2px",
+  "--box-twoShadowDepthShadowBlur": "10px",
+  "--box-twoShadowDepthShadowSpread": "0px",
   "--box-twoShadowDepthShadowColor": "#00000033",
 
   //BUTTON

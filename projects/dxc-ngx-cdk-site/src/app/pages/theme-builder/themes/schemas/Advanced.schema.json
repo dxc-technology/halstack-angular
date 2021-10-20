@@ -98,10 +98,6 @@
   },
   "box": {
     "backgroundColor": "color",
-    "fontFamily": "fFamily",
-    "fontSize": "length",
-    "fontWeight": "fWeight",
-    "fontColor": "color",
     "letterSpacing": "length",
     "borderRadius": "length",
     "borderThickness": "bWidth",

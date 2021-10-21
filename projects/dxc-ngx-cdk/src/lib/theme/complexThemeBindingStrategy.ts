@@ -15,7 +15,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     return null;
   }
 
-  subLightness (hexColor, newLightness) {
+  subLightness(hexColor, newLightness) {
     try {
       if (hexColor) {
         const color = Color(hexColor);
@@ -26,7 +26,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     } catch (e) {
       return null;
     }
-  };
+  }
 
   setOpacity(hexColor: String, newOpacity: number) {
     if (hexColor) {
@@ -43,15 +43,15 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     let proccessedTokens = tokens;
 
     //ACCORDION
-    proccessedTokens["--accordion-arrowColor"] = 
+    proccessedTokens["--accordion-arrowColor"] =
       theme?.accordion?.accentColor ?? tokens["--accordion-arrowColor"];
     proccessedTokens["--accordion-hoverBackgroundColor"] =
       this.setOpacity(theme?.accordion?.accentColor, 0.16) ??
       tokens["--accordion-hoverBackgroundColor"];
-    proccessedTokens["--accordion-assistiveTextFontColor"] = 
+    proccessedTokens["--accordion-assistiveTextFontColor"] =
       theme?.accordion?.fontColor ??
       tokens["--accordion-assistiveTextFontColor"];
-    proccessedTokens["--accordion-titleLabelFontColor"] = 
+    proccessedTokens["--accordion-titleLabelFontColor"] =
       theme?.accordion?.fontColor ?? tokens["--accordion-titleLabelFontColor"];
     proccessedTokens["--accordion-iconColor"] =
       theme?.accordion?.accentColor ?? tokens["--accordion-iconColor"];
@@ -73,11 +73,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     //BUTTON
     proccessedTokens["--button-primaryBackgroundColor"] =
       theme?.button?.baseColor ?? tokens["--button-primaryBackgroundColor"];
-      proccessedTokens["--button-secondaryFontColor"] =
+    proccessedTokens["--button-secondaryFontColor"] =
       theme?.button?.baseColor ?? tokens["--button-secondaryFontColor"];
-      proccessedTokens["--button-secondaryHoverBackgroundColor"] =
-      theme?.button?.baseColor ?? tokens["--button-secondaryHoverBackgroundColor"];
-      proccessedTokens["--button-textFontColor"] =
+    proccessedTokens["--button-secondaryHoverBackgroundColor"] =
+      theme?.button?.baseColor ??
+      tokens["--button-secondaryHoverBackgroundColor"];
+    proccessedTokens["--button-textFontColor"] =
       theme?.button?.baseColor ?? tokens["--button-textFontColor"];
     proccessedTokens["--button-primaryFontColor"] =
       theme?.button?.primaryFontColor ?? tokens["--button-primaryFontColor"];
@@ -89,16 +90,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--button-primaryHoverBackgroundColor"] =
       this.subLightness(theme?.button?.baseColor, 8) ??
       tokens["--button-primaryHoverBackgroundColor"];
-      proccessedTokens["--button-primaryActiveBackgroundColor"] =
+    proccessedTokens["--button-primaryActiveBackgroundColor"] =
       this.subLightness(theme?.button?.baseColor, 18) ??
       tokens["--button-primaryActiveBackgroundColor"];
-      proccessedTokens["--button-secondaryActiveBackgroundColor"] =
+    proccessedTokens["--button-secondaryActiveBackgroundColor"] =
       this.subLightness(theme?.button?.baseColor, 18) ??
       tokens["--button-secondaryActiveBackgroundColor"];
-      proccessedTokens["--button-textHoverBackgroundColor"] =
+    proccessedTokens["--button-textHoverBackgroundColor"] =
       this.addLightness(theme?.button?.baseColor, 57) ??
       tokens["--button-textHoverBackgroundColor"];
-      proccessedTokens["--button-textActiveBackgroundColor"] =
+    proccessedTokens["--button-textActiveBackgroundColor"] =
       this.addLightness(theme?.button?.baseColor, 52) ??
       tokens["--button-textActiveBackgroundColor"];
 

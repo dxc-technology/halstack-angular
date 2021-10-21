@@ -208,9 +208,9 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--header-hamburguerHoverColor"];
 
     //INPUT TEXT
-    proccessedTokens["--inputText-optionHoverBackgroundColor"] =
+    proccessedTokens["--inputText-hoverOptionBackgroundColor"] =
       this.setOpacity(theme?.inputText?.selectedBaseColor, 0.34) ??
-      tokens["--inputText-optionHoverBackgroundColor"];
+      tokens["--inputText-hoverOptionBackgroundColor"];
 
     //hover y active para new input
 

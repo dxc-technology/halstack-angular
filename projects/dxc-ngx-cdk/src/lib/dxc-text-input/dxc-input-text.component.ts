@@ -362,7 +362,7 @@ export class DxcTextInputComponent
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-fontColorBase);
+          outline-color: #005FCC;
         }
         cursor: pointer;
       `;
@@ -376,7 +376,7 @@ export class DxcTextInputComponent
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-fontColorBase);
+          outline-color: #005FCC;
         }
         cursor: pointer;
       `;
@@ -390,7 +390,7 @@ export class DxcTextInputComponent
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-fontColorBaseOnDark);
+          outline-color: #005FCC;
         }
         cursor: pointer;
       `;
@@ -404,7 +404,7 @@ export class DxcTextInputComponent
       return css`
         &:focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: var(--inputText-fontColorBaseOnDark);
+          outline-color: #005FCC;
         }
         cursor: pointer;
       `;
@@ -422,7 +422,7 @@ export class DxcTextInputComponent
       ${this.getLightStyle()}
       ${this.getDarkStyle()}
       display: inline-flex;
-      font-family: var(--inputText-fontFamilyBase);
+      font-family: var(--inputText-fontFamily);
       &.prefixIcon {
         .mat-form-field .mat-form-field-label-wrapper .mat-form-field-label {
           margin-left: 32px;
@@ -473,12 +473,15 @@ export class DxcTextInputComponent
         height: calc(var(--inputText-underlineThickness) * 2) !important;
       }
       .mat-form-field {
-        font-family: var(--inputText-fontFamilyBase);
+        font-family: var(--inputText-fontFamily);
         line-height: unset;
         width: 100%;
         max-height: 74px;
         input {
-          font-size: var(--inputText-fontSizeBase);
+          color: var(--inputText-valueFontColor);
+          font-size: var(--inputText-valueFontSize);
+          font-style: var(--inputText-valueFontStyle);
+          font-weight: var(--inputText-valueFontWeight);
           min-height: 22px;
           text-overflow: ellipsis;
         }
@@ -498,6 +501,9 @@ export class DxcTextInputComponent
           }
           mat-label {
             font-size: var(--inputText-labelFontSize);
+            font-family: var(--inputText-fontFamily);
+            font-style: var(--inputText-labelFontStyle);
+            font-weight: var(--inputText-labelFontWeight);
           }
         }
         .mat-form-field-label-wrapper {
@@ -519,12 +525,16 @@ export class DxcTextInputComponent
       .mat-form-field-flex {
         align-items: center;
         .mat-form-field-infix {
+          color: var(--inputText-labelFontColor);
           font-size: var(--inputText-labelFontSize);
+          font-family: var(--inputText-fontFamily);
+          font-style: var(--inputText-labelFontStyle);
+          font-weight: var(--inputText-labelFontWeight);
           border-top: unset;
         }
       }
       .mat-hint {
-        font-family: var(--inputText-fontFamilyBase);
+        font-family: var(--inputText-fontFamily);
         font-size: var(--inputText-assistiveTextFontSize);
         font-style: var(--inputText-assistiveTextFontStyle);
         font-weight: var(--inputText-assistiveTextFontWeight);
@@ -595,6 +605,9 @@ export class DxcTextInputComponent
   getAutoCompleteStyle() {
     return css`
       padding: 0px 2px;
+      border-color: var(--inputText-optionBorderColor);
+      border-width: var(--inputText-optionBorderThickness);
+      border-style: var(--inputText-optionBorderStyle);
       &::-webkit-scrollbar {
         width: 3px;
       }
@@ -608,27 +621,35 @@ export class DxcTextInputComponent
         border-radius: 3px;
       }
       .mat-option {
-        color: var(--inputText-fontColorBase);
+        background-color: var(--inputText-optionBackgroundColor);
+        padding-bottom:  var(--inputText-optionPaddingBottom);
+        padding-top:  var(--inputText-optionPaddingTop);
         height: 36px;
         .mat-option-text {
-          font-family: var(--inputText-fontFamilyBase);
-          font-size: var(--inputText-fontSizeBase);
+          color: var(--inputText-optionFontColor);
+          font-family: var(--inputText-fontFamily);
+          font-size: var(--inputText-optionFontSize);
+          font-style: var(--inputText-optionFontStyle);
+          font-weight: var(--inputText-optionFontWeight);
         }
       }
       .mat-option.mat-selected:not(:hover):not(.mat-option-disabled) {
-        color: var(--inputText-fontColorBase);
+        color: var(--inputText-optionFontColor);
       }
       .mat-option:hover:not(.mat-option-disabled) {
-        background-color: var(--inputText-optionHoverBackgroundColor);
-        color: var(--inputText-hoverOptionColor);
+        background-color: var(--inputText-hoverOptionBackgroundColor);
+        .mat-option-text{
+          color: var(--inputText-hoverOptionColor);
+        }
       }
       .mat-option:focus:not(.mat-option-disabled) {
         outline: -webkit-focus-ring-color auto 2px;
-        outline-color: var(--inputText-optionFocusColor);
+        outline-color: #005FCC;
         outline-style: solid !important;
+        outline-offset: -1px;
       }
       .mat-option:active:not(.mat-option-disabled) {
-        background-color: var(--inputText-optionActiveBackgroundColor);
+        background-color: var(--inputText-selectedOptionBackgroundColor);
       }
       .errorOption {
         .mat-option-text {
@@ -648,33 +669,33 @@ export class DxcTextInputComponent
           dxc-input-prefix-icon,
           dxc-input-suffix-icon {
             .containerIcon {
-              fill: var(--inputText-disabledFontColor);
+              fill: var(--inputText-disabledColor);
             }
           }
           .prefixElement,
           .suffixElement {
-            fill: var(--inputText-disabledFontColor);
-            color: var(--inputText-disabledFontColor);
+            fill: var(--inputText-disabledColor);
+            color: var(--inputText-disabledColor);
           }
           .mat-hint {
-            color: var(--inputText-disabledFontColor);
+            color: var(--inputText-disabledColor);
           }
           .mat-form-field-underline {
-            background-color: var(--inputText-disabledFontColor) !important;
+            background-color: var(--inputText-disabledColor) !important;
           }
           .mat-form-field-empty mat-label {
-            color: var(--inputText-disabledFontColor);
+            color: var(--inputText-disabledColor);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--inputText-disabledFontColor);
+            color: var(--inputText-disabledColor);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            color: var(--inputText-disabledFontColor);
+            color: var(--inputText-disabledColor);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                color: var(--inputText-disabledFontColor);
+                color: var(--inputText-disabledColor);
               }
             }
           }
@@ -683,12 +704,12 @@ export class DxcTextInputComponent
           .containerIcon {
             &:focus {
               outline: -webkit-focus-ring-color auto 1px;
-              outline-color: var(--inputText-fontColorBase);
+              outline-color: #005FCC;
             }
           }
         }
         .mat-form-field.mat-focused .mat-form-field-label {
-          color: var(--inputText-fontColorBase) !important;
+          color: var(--inputText-labelFontColor) !important;
         }
         .mat-form-field.mat-focused .mat-form-field-ripple {
           background-color: ${this.invalid
@@ -697,8 +718,8 @@ export class DxcTextInputComponent
         }
         .mat-form-field {
           input {
-            caret-color: var(--inputText-fontColorBase);
-            color: var(--inputText-fontColorBase);
+            caret-color: var(--inputText-valueFontColor);
+            color: var(--inputText-valueFontColor);
           }
         }
         dxc-input-suffix-icon {
@@ -714,10 +735,10 @@ export class DxcTextInputComponent
           color: var(--inputText-suffixLabelFontColor);
         }
         label.mat-form-field-label {
-          color: var(--inputText-fontColorBase);
+          color: var(--inputText-labelFontColor);
         }
         input::placeholder {
-          color: var(--inputText-fontColorBase);
+          color: var(--inputText-labelFontColor);
         }
         .mat-form-field {
           .mat-form-field-label-wrapper {
@@ -766,35 +787,35 @@ export class DxcTextInputComponent
           dxc-input-prefix-icon,
           dxc-input-suffix-icon {
             .containerIcon {
-              fill: var(--inputText-disabledFontColorOnDark);
+              fill: var(--inputText-disabledColorOnDark);
             }
           }
           .prefixElement,
           .suffixElement {
-            fill: var(--inputText-disabledFontColorOnDark);
-            color: var(--inputText-disabledFontColorOnDark);
+            fill: var(--inputText-disabledColorOnDark);
+            color: var(--inputText-disabledColorOnDark);
           }
           .mat-hint {
-            color: var(--inputText-disabledFontColorOnDark);
+            color: var(--inputText-disabledColorOnDark);
           }
           .mat-form-field-underline {
             background-color: var(
-              --inputText-disabledFontColorOnDark
+              --inputText-disabledColorOnDark
             ) !important;
           }
           .mat-form-field-empty mat-label {
-            color: var(--inputText-disabledFontColorOnDark);
+            color: var(--inputText-disabledColorOnDark);
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--inputText-disabledFontColorOnDark);
+            color: var(--inputText-disabledColorOnDark);
           }
           .mat-form-field-label:not(.mat-form-field-empty) mat-label {
-            color: var(--inputText-disabledFontColorOnDark);
+            color: var(--inputText-disabledColorOnDark);
           }
           .mat-form-field-wrapper {
             .mat-form-field-flex {
               .mat-form-field-infix input {
-                color: var(--inputText-disabledFontColorOnDark);
+                color: var(--inputText-disabledColorOnDark);
               }
             }
           }
@@ -803,12 +824,12 @@ export class DxcTextInputComponent
           .containerIcon {
             &:focus {
               outline: -webkit-focus-ring-color auto 1px;
-              outline-color: var(--inputText-fontColorBaseOnDark);
+              outline-color: #005FCC;
             }
           }
         }
         .mat-form-field.mat-focused .mat-form-field-label {
-          color: var(--inputText-fontColorBaseOnDark) !important;
+          color: var(--inputText-labelFontColorOnDark) !important;
         }
         .mat-form-field.mat-focused .mat-form-field-ripple {
           background-color: ${this.invalid
@@ -817,9 +838,12 @@ export class DxcTextInputComponent
         }
         .mat-form-field {
           input {
-            caret-color: var(--inputText-fontColorBaseOnDark);
-            color: var(--inputText-fontColorBaseOnDark);
+            caret-color: var(--inputText-valueFontColorOnDark);
+            color: var(--inputText-valueFontColorOnDark);
           }
+        }
+        label.mat-form-field-label {
+          color: var(--inputText-labelFontColorOnDark);
         }
         dxc-input-suffix-icon {
           color: var(--inputText-suffixIconColorOnDark);
@@ -836,10 +860,10 @@ export class DxcTextInputComponent
           color: var(--inputText-suffixLabelFontColorOnDark);
         }
         label.mat-form-field-label {
-          color: var(--inputText-fontColorBaseOnDark);
+          color: var(--inputText-labelFontColorOnDark);
         }
         input::placeholder {
-          color: var(--inputText-fontColorBaseOnDark);
+          color: var(--inputText-labelFontColorOnDark);
         }
         .mat-form-field {
           .mat-form-field-label-wrapper {

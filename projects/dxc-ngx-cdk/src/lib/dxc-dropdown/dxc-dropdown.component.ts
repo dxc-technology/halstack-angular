@@ -240,57 +240,62 @@ export class DxcDropdownComponent implements OnChanges {
       }
       img,
       svg {
-        width: var(--dropdown-iconSize);
-        height: var(--dropdown-iconSize);
+        width: var(--dropdown-optionIconSize);
+        height: var(--dropdown-optionIconSize);
         vertical-align: middle;
-        fill: var(--dropdown-iconColor);
+        fill: var(--dropdown-optionIconColor);
       }
       ${this.optionsIconPosition === "after"
         ? css`
             dxc-dropdown-icon {
-              margin-left: var(--dropdown-iconOptionSpacing);
+              margin-left: var(--dropdown-optionIconSpacing);
             }
           `
         : css`
             dxc-dropdown-icon {
-              margin-right: var(--dropdown-iconOptionSpacing);
+              margin-right: var(--dropdown-optionIconSpacing);
             }
           `}
       dxc-dropdown-icon {
-            img, svg{
-              fill: var(--dropdown-iconColor);
-            }
-       }
+        img,
+        svg {
+          fill: var(--dropdown-optionIconColor);
+        }
+      }
       .mat-menu-content {
         padding-top: 0px !important;
         padding-bottom: 0px !important;
         width: ${this.width + "px"};
         .mat-menu-item {
           ${this.iconPositionAfter(this.optionsIconPosition === "after")}
-          background-color: var(--dropdown-optionsListBackgroundColor);
-          border-color: var(--dropdown-optionsListBackgroundColor);
-          line-height: var(--dropdown-optionsHeight);
-          height: var(--dropdown-optionsHeight);
+          background-color: var(--dropdown-optionBackgroundColor);
+          border-color: var(--dropdown-optionBackgroundColor);
+          line-height: 24px;
+          height: 36px;
+          padding-top: var(--dropdown-optionPaddingTop);
+          padding-right: var(--dropdown-optionPaddingRight);
+          padding-bottom: var(--dropdown-optionPaddingBottom);
+          padding-left: var(--dropdown-optionPaddingLeft);
           span {
             text-overflow: ellipsis;
             vertical-align: middle;
-            color: var(--dropdown-optionsFontColor);
-            font-family: var(--dropdown-fontFamily);
-            font-size: var(--dropdown-optionsFontSize);
-            font-style: var(--dropdown-optionsFontStyle);
-            font-weight: var(--dropdown-optionsFontWeight);
+            color: var(--dropdown-optionFontColor);
+            font-family: var(--dropdown-optionFontFamily);
+            font-size: var(--dropdown-optionFontSize);
+            font-style: var(--dropdown-optionFontStyle);
+            font-weight: var(--dropdown-optionFontWeight);
           }
           &:hover {
-            background-color: var(--dropdown-optionsListHoverBackgroundColor);
-            border-color: var(--dropdown-optionsListHoverBackgroundColor);
+            background-color: var(--dropdown-hoverOptionBackgroundColor);
+            border-color: var(--dropdown-hoverOptionBackgroundColor);
           }
           &.cdk-focused {
             outline: -webkit-focus-ring-color auto 2px !important;
             outline-color: var(--dropdown-focusColor) !important;
           }
           &:active {
-            background-color: var(--dropdown-optionsListActiveBackgroundColor);
-            border-color: var(--dropdown-optionsListActiveBackgroundColor);
+            background-color: var(--dropdown-activeOptionBackgroundColor);
+            border-color: var(--dropdown-activeOptionBackgroundColor);
           }
         }
       }
@@ -301,8 +306,11 @@ export class DxcDropdownComponent implements OnChanges {
   triggerButtonStyles(inputs) {
     return css`
       ${this.calculateWidth(inputs)}
-      min-height: var(--dropdown-minHeight);
-      padding: 0px 16px;
+      min-height: 40px;
+      padding-top: var(--dropdown-buttonPaddingTop);
+      padding-right: var(--dropdown-buttonPaddingRight);
+      padding-bottom: var(--dropdown-buttonPaddingBottom);
+      padding-left: var(--dropdown-buttonPaddingLeft);
       display: inline-flex;
       align-items: center;
       border-color: var(--dropdown-borderColor);
@@ -312,7 +320,7 @@ export class DxcDropdownComponent implements OnChanges {
       background-color: var(--dropdown-buttonBackgroundColor);
       &:hover:not(.mat-button-disabled) {
         cursor: pointer;
-        background-color: var(--dropdown-buttonHoverBackgroundColor) !important;
+        background-color: var(--dropdown-hoverButtonBackgroundColor) !important;
       }
       &:active:not(.mat-button-disabled) {
         background-color: var(
@@ -326,31 +334,35 @@ export class DxcDropdownComponent implements OnChanges {
         : ""};
       .menu-buttom-label {
         color: var(--dropdown-buttonFontColor);
-        font-family: var(--dropdown-fontFamily);
+        font-family: var(--dropdown-buttonFontFamily);
         font-size: var(--dropdown-buttonFontSize);
         font-style: var(--dropdown-buttonFontStyle);
         font-weight: var(--dropdown-buttonFontWeight);
-        margin-right: 12px;
       }
       .arrow-down {
-        border-top: 5px solid var(--dropdown-buttonFontColor);
+        border-top: 5px solid var(--dropdown-caretIconColor);
       }
       .arrow-up {
-        border-bottom: 5px solid var(--dropdown-buttonFontColor);
+        border-bottom: 5px solid var(--dropdown-caretIconColor);
       }
       &.mat-button-disabled {
         cursor: not-allowed;
-        background-color: var(
-          --dropdown-disabledButtonBackgroundColor
-        ) !important;
+        background-color: transparent;
+        border-color: var(--dropdown-disabledBorderColor);
+        .buttonContent {
+          img,
+          svg {
+            fill: var(--dropdown-disabledColor);
+          }
+        }
         .menu-buttom-label {
-          color: var(--dropdown-disabledButtonFontColor);
+          color: var(--dropdown-disabledColor);
         }
         .arrow-down {
-          border-top: 5px solid var(--dropdown-disabledButtonFontColor);
+          border-top: 5px solid var(--dropdown-disabledColor);
         }
         .arrow-up {
-          border-bottom: 5px solid var(--dropdown-disabledButtonFontColor);
+          border-bottom: 5px solid var(--dropdown-disabledColor);
         }
       }
     `;
@@ -415,42 +427,38 @@ export class DxcDropdownComponent implements OnChanges {
         margin-top: 1px;
       }
       .arrow-container {
-        width: 24px;
+        margin-left: var(--dropdown-caretIconSpacing);
+        width: var(--dropdown-caretIconSize);
         display: flex;
-        height: 24px;
+        height: var(--dropdown-caretIconSize);
         align-items: center;
         justify-content: center;
-        margin-left: var(--dropdown-caretIconMarginLeft);
-        margin-right: var(--dropdown-caretIconMarginRight);
-        margin-top: var(--dropdown-caretIconMarginTop);
-        margin-bottom: var(--dropdown-caretIconMarginBottom);
       }
       .buttonContent {
         display: flex;
         flex-grow: unset;
         width: fit-content;
         align-items: center;
+        img,
+        svg {
+          width: var(--dropdown-buttonIconSize);
+          height: var(--dropdown-buttonIconSize);
+          vertical-align: middle;
+          fill: var(--dropdown-buttonIconColor);
+        }
       }
-      img,
-      svg {
-        width: var(--dropdown-iconSize);
-        height: var(--dropdown-iconSize);
-        vertical-align: middle;
-        fill: var(--dropdown-iconColor);
-      }
-
       ${this.iconPosition === "after"
         ? css`
             .buttonContent {
               flex-direction: row-reverse;
-            }
-            dxc-dropdown-icon {
-              margin-right: var(--dropdown-iconOptionSpacing);
+              dxc-dropdown-icon {
+                margin-right: var(--dropdown-buttonIconSpacing);
+              }
             }
           `
         : css`
-            dxc-dropdown-icon {
-              margin-right: var(--dropdown-iconOptionSpacing);
+            .buttonContent dxc-dropdown-icon {
+              margin-right: var(--dropdown-buttonIconSpacing);
             }
           `}
     `;

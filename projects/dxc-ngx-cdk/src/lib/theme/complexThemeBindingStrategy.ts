@@ -160,12 +160,18 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.dropdown?.baseColor ?? tokens["--dropdown-buttonBackgroundColor"];
     proccessedTokens["--dropdown-buttonFontColor"] =
       theme?.dropdown?.fontColor ?? tokens["--dropdown-buttonFontColor"];
-    proccessedTokens["--dropdown-buttonHoverBackgroundColor"] =
+    proccessedTokens["--dropdown-hoverButtonBackgroundColor"] =
       this.setOpacity(theme?.dropdown?.baseColor, 0.8) ??
-      tokens["--dropdown-buttonHoverBackgroundColor"];
-    proccessedTokens["--dropdown-optionsListHoverBackgroundColor"] =
+      tokens["--dropdown-hoverButtonBackgroundColor"];
+    proccessedTokens["--dropdown-hoverOptionBackgroundColor"] =
       this.setOpacity(theme?.dropdown?.baseColor, 0.34) ??
-      tokens["--dropdown-optionsListHoverBackgroundColor"];
+      tokens["--dropdown-hoverOptionBackgroundColor"];
+      proccessedTokens["--dropdown-activeButtonBackgroundColor"] =
+      this.setOpacity(theme?.dropdown?.baseColor, 0.7) ??
+      tokens["--dropdown-activeButtonBackgroundColor"];    
+      proccessedTokens["--dropdown-activeOptionBackgroundColor"] =
+      this.setOpacity(theme?.dropdown?.baseColor, 0.7) ??
+      tokens["--dropdown-activeOptionBackgroundColor"];
 
     //FOOTER
     proccessedTokens["--footer-backgroundColor"] =

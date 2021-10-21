@@ -104,22 +104,24 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--button-textActiveBackgroundColor"];
 
     //CHECKBOX
-    proccessedTokens["--checkbox-borderColor"] =
+    proccessedTokens["--checkbox-borderColor"] = 
       theme?.checkbox?.baseColor ?? tokens["--checkbox-borderColor"];
-    proccessedTokens["--checkbox-checkColor"] =
+    proccessedTokens["--checkbox-checkColor"] = 
       theme?.checkbox?.checkColor ?? tokens["--checkbox-checkColor"];
-    proccessedTokens["--checkbox-selectedBackgroundColor"] =
+    proccessedTokens["--checkbox-backgroundColorChecked"] =
       theme?.checkbox?.baseColor ??
-      tokens["--checkbox-selectedBackgroundColor"];
-    // proccessedTokens["--checkbox-selectedDisabledBackgroundColor"] =
-    //   this.setOpacity(theme?.checkbox?.baseColor, 0.34) ??
-    //   tokens["--checkbox-selectedDisabledBackgroundColor"];
-    // proccessedTokens["--checkbox-disabledBorderColor"] =
-    //   this.setOpacity(theme?.checkbox?.baseColor, 0.34) ??
-    //   tokens["--checkbox-disabledBorderColor"];
-    // proccessedTokens["--checkbox-disabledCheckColor"] =
-    //   this.setOpacity(theme?.checkbox?.checkColor, 0.34) ??
-    //   tokens["--checkbox-disabledCheckColor"];
+      tokens["--checkbox-backgroundColorChecked"];
+    proccessedTokens["--checkbox-backgroundColorChecked"] =
+      theme?.checkbox?.baseColor ?? tokens["--checkbox-backgroundColorChecked"];
+    proccessedTokens["--checkbox-disabledBackgroundColorChecked"] =
+      this.setOpacity(theme?.checkbox?.baseColor, 0.34) ??
+      tokens["--checkbox-disabledBackgroundColorChecked"];
+    proccessedTokens["--checkbox-disabledBorderColor"] =
+      this.setOpacity(theme?.checkbox?.baseColor, 0.34) ??
+      tokens["--checkbox-disabledBorderColor"];
+    proccessedTokens["--checkbox-disabledCheckColor"] =
+      this.setOpacity(theme?.checkbox?.checkColor, 0.34) ??
+      tokens["--checkbox-disabledCheckColor"];
 
     //CHIP
     proccessedTokens["--chip-backgroundColor"] =

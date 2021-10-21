@@ -126,8 +126,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     //CHIP
     proccessedTokens["--chip-backgroundColor"] =
       theme?.chip?.baseColor ?? tokens["--chip-backgroundColor"];
-    proccessedTokens["--chip-borderColor"] =
-      theme?.chip?.accentColor ?? tokens["--chip-borderColor"];
     proccessedTokens["--chip-fontColor"] =
       theme?.chip?.fontColor ?? tokens["--chip-fontColor"];
     proccessedTokens["--chip-disabledBackgroundColor"] =

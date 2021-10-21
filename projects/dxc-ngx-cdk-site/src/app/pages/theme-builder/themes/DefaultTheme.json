@@ -40,8 +40,8 @@
     "fontColor": "#000000",
     "menuBaseColor": "#ffffff",
     "hamburguerColor": "#000000",
-    "logo": "",
-    "logoResponsive": ""
+    "logo": "assets/DXC_Logo_Black_RGB.svg",
+    "logoResponsive": "assets/DXC_Logo_Black_RGB.svg"
   },
   "inputText": {
     "selectedBaseColor": "#D9D9D9"

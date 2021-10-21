@@ -166,10 +166,10 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--dropdown-hoverOptionBackgroundColor"] =
       this.setOpacity(theme?.dropdown?.baseColor, 0.34) ??
       tokens["--dropdown-hoverOptionBackgroundColor"];
-      proccessedTokens["--dropdown-activeButtonBackgroundColor"] =
+    proccessedTokens["--dropdown-activeButtonBackgroundColor"] =
       this.setOpacity(theme?.dropdown?.baseColor, 0.7) ??
-      tokens["--dropdown-activeButtonBackgroundColor"];    
-      proccessedTokens["--dropdown-activeOptionBackgroundColor"] =
+      tokens["--dropdown-activeButtonBackgroundColor"];
+    proccessedTokens["--dropdown-activeOptionBackgroundColor"] =
       this.setOpacity(theme?.dropdown?.baseColor, 0.7) ??
       tokens["--dropdown-activeOptionBackgroundColor"];
 
@@ -198,11 +198,14 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.header?.fontColor ?? tokens["--header-hamburguerFontColor"];
     proccessedTokens["--header-menuBackgroundColor"] =
       theme?.header?.menuBaseColor ?? tokens["--header-menuBackgroundColor"];
-    proccessedTokens["--header-hamburguerColor"] =
-      theme?.header?.hamburguerColor ?? tokens["--header-hamburguerColor"];
+    proccessedTokens["--header-hamburguerIconColor"] =
+      theme?.header?.hamburguerColor ?? tokens["--header-hamburguerIconColor"];
     proccessedTokens["--header-hoverHamburguerColor"] =
       this.setOpacity(theme?.header?.hamburguerColor, 0.16) ??
       tokens["--header-hoverHamburguerColor"];
+    proccessedTokens["--header-hamburguerHoverColor"] =
+      this.setOpacity(theme?.header?.hamburguerColor, 0.16) ??
+      tokens["--header-hamburguerHoverColor"];
 
     //INPUT TEXT
     proccessedTokens["--inputText-optionHoverBackgroundColor"] =

@@ -249,7 +249,7 @@ export class DxcHeaderComponent implements OnChanges {
             width: 24px;
             height: 24px;
             svg path {
-              fill: var(--header-hamburguerColor) !important;
+              fill: var(--header-hamburguerIconColor) !important;
             }
           }
           .hamburgerTitle {

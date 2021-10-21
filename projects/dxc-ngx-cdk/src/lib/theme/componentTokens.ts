@@ -520,7 +520,7 @@ export const componentTokens = {
   "--header-hamburguerFontColor": globalTokens.hal_black,
   "--header-hamburguerFontSize": "10px",
   "--header-hamburguerFontWeight": globalTokens.type_semibold,
-  "--header-hamburguerColor": globalTokens.hal_black,
+  "--header-hamburguerIconColor": globalTokens.hal_black,
   "--header-hamburguerHoverColor": globalTokens.mediumGreyBlack,
   "--header-hamburguerTextTransform": globalTokens.type_uppercase,
   "--header-logoHeight": "40px",

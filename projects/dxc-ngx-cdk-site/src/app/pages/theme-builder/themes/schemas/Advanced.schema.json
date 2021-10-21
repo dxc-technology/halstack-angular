@@ -371,7 +371,7 @@
     "backgroundColor": "color",
     "underlinedColor": "color",
     "menuBackgroundColor": "color",
-    "hamburguerColor": "color",
+    "hamburguerIconColor": "color",
     "hamburguerHoverColor": "color",
     "overlayColor": "color",
     "hamburguerFocusColor": "color",

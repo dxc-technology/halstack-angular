@@ -343,6 +343,7 @@
     "focusColor": "color"
   },
   "footer": {
+    "height": "length",
     "backgroundColor": "color",
     "bottomLinksDividerColor": "color",
     "bottomLinksDividerThickness": "bWidth",
@@ -362,9 +363,9 @@
     "logo": "image",
     "logoHeight": "length",
     "logoWidth": "length",
-    "minHeight": "length",
-    "socialIconSize": "length",
-    "socialIconsGutter": "length"
+    "socialLinksSize": "length",
+    "socialLinksGutter": "length",
+    "socialLinksColor": "color"
   },
   "header": {
     "backgroundColor": "color",

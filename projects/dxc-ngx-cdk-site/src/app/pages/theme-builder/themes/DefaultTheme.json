@@ -32,7 +32,7 @@
     "baseColor": "#000000",
     "fontColor": "#ffffff",
     "accentColor": "#0067b3",
-    "logo": ""
+    "logo": "assets/dxc-logo-wh.svg"
   },
   "header": {
     "baseColor": "#ffffff",

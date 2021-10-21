@@ -182,8 +182,8 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.footer?.fontColor ?? tokens["--footer-bottomLinksFontColor"];
     proccessedTokens["--footer-copyrightFontColor"] =
       theme?.footer?.fontColor ?? tokens["--footer-copyrightFontColor"];
-    proccessedTokens["--footer-customContentFontColor"] =
-      theme?.footer?.fontColor ?? tokens["--footer-customContentFontColor"];
+    proccessedTokens["--footer-socialLinksColor"] =
+      theme?.footer?.fontColor ?? tokens["--footer-socialLinksColor"];
 
     //HEADER
     proccessedTokens["--header-backgroundColor"] =

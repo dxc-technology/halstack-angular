@@ -425,19 +425,10 @@ export const componentTokens = {
 
   //DIALOG
   "--dialog-overlayColor": globalTokens.hal_black,
-  "--dialog-overlayOpacity": "0.8",
+  "--dialog-overlayOpacity": "0.7",
   "--dialog-backgroundColor": globalTokens.hal_white,
-
-  "--dialog-scrollBarThumbColor": globalTokens.hal_grey_s_40,
-  "--dialog-scrollBarTrackColor": globalTokens.lightGrey,
-
-  "--dialog-fontFamily": globalTokens.type_sans,
-  "--dialog-fontSize": globalTokens.type_scale_03,
-  "--dialog-fontWeight": globalTokens.type_regular,
-  "--dialog-fontColor": globalTokens.hal_black,
-
-  "--dialog-closeIconWidth": "34px",
-  "--dialog-closeIconHeight": "34px",
+  "--dialog-closeIconWidth": "24px",
+  "--dialog-closeIconHeight": "24px",
   "--dialog-closeIconTopPosition": "20px",
   "--dialog-closeIconRightPosition": "20px",
   "--dialog-closeIconBackgroundColor": "none",
@@ -446,7 +437,6 @@ export const componentTokens = {
   "--dialog-closeIconBorderThickness": "0px",
   "--dialog-closeIconBorderStyle": globalTokens.border_solid,
   "--dialog-closeIconBorderRadius": "0px",
-
   "--dialog-boxShadowOffsetX": "0px",
   "--dialog-boxShadowOffsetY": "1px",
   "--dialog-boxShadowBlur": "3px",

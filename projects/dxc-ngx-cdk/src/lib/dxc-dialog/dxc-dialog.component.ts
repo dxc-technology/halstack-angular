@@ -163,12 +163,6 @@ export class DxcDialogComponent {
                 border-color: var(--dialog-closeIconBorderColor);
               }
             }
-            .content {
-              font-family: var(--dialog-fontFamily);
-              font-size: var(--dialog-fontSize);
-              font-weight: var(--dialog-fontWeight);
-              color: var(--dialog-fontColor);
-            }
             .content,
             .content > div,
             .content > span,
@@ -178,11 +172,11 @@ export class DxcDialogComponent {
                 width: 3px;
               }
               ::-webkit-scrollbar-track {
-                background-color: var(--dialog-scrollBarTrackColor);
+                background-color: #D9D9D9;
                 border-radius: 3px;
               }
               ::-webkit-scrollbar-thumb {
-                background-color: var(--dialog-scrollBarThumbColor);
+                background-color: #666666;
                 border-radius: 3px;
               }
             }

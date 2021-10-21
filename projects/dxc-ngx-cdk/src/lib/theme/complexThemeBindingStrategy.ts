@@ -104,13 +104,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--button-textActiveBackgroundColor"];
 
     //CHECKBOX
-    proccessedTokens["--checkbox-borderColor"] = 
+    proccessedTokens["--checkbox-borderColor"] =
       theme?.checkbox?.baseColor ?? tokens["--checkbox-borderColor"];
-    proccessedTokens["--checkbox-checkColor"] = 
+    proccessedTokens["--checkbox-checkColor"] =
       theme?.checkbox?.checkColor ?? tokens["--checkbox-checkColor"];
     proccessedTokens["--checkbox-backgroundColorChecked"] =
-      theme?.checkbox?.baseColor ??
-      tokens["--checkbox-backgroundColorChecked"];
+      theme?.checkbox?.baseColor ?? tokens["--checkbox-backgroundColorChecked"];
     proccessedTokens["--checkbox-backgroundColorChecked"] =
       theme?.checkbox?.baseColor ?? tokens["--checkbox-backgroundColorChecked"];
     proccessedTokens["--checkbox-disabledBackgroundColorChecked"] =
@@ -136,6 +135,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       tokens["--chip-disabledFontColor"];
 
     //DATE
+    proccessedTokens["--date-pickerSelectedDateBackgroundColor"] =
+      theme?.date?.baseColor ??
+      tokens["--date-pickerSelectedDateBackgroundColor"];
+    proccessedTokens["--date-pickerSelectedDateColor"] =
+      theme?.date?.accentColor ?? tokens["--date-pickerSelectedDateColor"];
+    proccessedTokens["--date-pickerHoverDateBackgroundColor"] =
+      this.setOpacity(theme?.date?.baseColor, 0.34) ??
+      tokens["--date-pickerHoverDateBackgroundColor"];
+
+    //NEWDATE
     proccessedTokens["--newDate-pickerSelectedDateBackgroundColor"] =
       theme?.newDate?.baseColor ??
       tokens["--newDate-pickerSelectedDateBackgroundColor"];
@@ -145,16 +154,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--newDate-pickerHoverDateBackgroundColor"] =
       this.setOpacity(theme?.newDate?.baseColor, 0.34) ??
       tokens["--newDate-pickerHoverDateBackgroundColor"];
-
-    //NEWDATE
-    proccessedTokens["--date-pickerSelectedDateBackgroundColor"] =
-      theme?.date?.baseColor ??
-      tokens["--date-pickerSelectedDateBackgroundColor"];
-    proccessedTokens["--date-pickerSelectedDateColor"] =
-      theme?.date?.accentColor ?? tokens["--date-pickerSelectedDateColor"];
-    proccessedTokens["--date-pickerHoverDateBackgroundColor"] =
-      this.setOpacity(theme?.date?.baseColor, 0.34) ??
-      tokens["--date-pickerHoverDateBackgroundColor"];
 
     //DROPDOWN
     proccessedTokens["--dropdown-buttonBackgroundColor"] =

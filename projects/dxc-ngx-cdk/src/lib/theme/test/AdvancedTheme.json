@@ -880,12 +880,11 @@
   },
   "toggleGroup": {
     "fontFamily": "Open Sans, sans-serif",
-    "fontSize": "0.875rem",
+    "fontSize": "1rem",
     "fontStyle": "normal",
     "fontWeight": "400",
-    "fontTextTransform": "uppercase",
     "fontLetterSpacing": "0.05em",
-    "focusColor": "#005FCC",
+    "focusColor": "#0095ff",
     "selectedBackgroundColor": "#5f249f",
     "selectedHoverBackgroundColor": "#4b1c7d",
     "selectedActiveBackgroundColor": "#321353",
@@ -899,11 +898,15 @@
     "selectedDisabledFontColor": "#cbacec",
     "unselectedDisabledBackgroundColor": "#f2f2f2",
     "unselectedDisabledFontColor": "#999999",
-    "iconSize": "20px",
+    "iconSize": "24px",
     "iconPaddingRight": "8px",
     "iconPaddingLeft": "8px",
+    "iconPaddingTop": "8px",
+    "iconPaddingBottom": "8px",
     "labelPaddingLeft": "24px",
-    "labelPaddingRight": "24px"
+    "labelPaddingRight": "24px",
+    "labelPaddingTop": "8px",
+    "labelPaddingBottom": "8px"
   },
   "upload": {
     "fontFamily": "Open Sans, sans-serif",

@@ -271,6 +271,8 @@ export class DxcToggleGroupComponent implements OnInit {
           .label {
             padding-left: var(--toggleGroup-labelPaddingLeft);
             padding-right: var(--toggleGroup-labelPaddingRight);
+            padding-top: var(--toggleGroup-labelPaddingTop);
+            padding-bottom: var(--toggleGroup-labelPaddingBottom);
             letter-spacing: var(--toggleGroup-fontLetterSpacing);
             font-family: var(--toggleGroup-fontFamily);
             font-size: var(--toggleGroup-fontSize);
@@ -285,6 +287,8 @@ export class DxcToggleGroupComponent implements OnInit {
               height: var(--toggleGroup-iconSize);
               padding-left: var(--toggleGroup-iconPaddingLeft);
               padding-right: var(--toggleGroup-iconPaddingRight);
+              padding-top: var(--toggleGroup-iconPaddingTop);
+              padding-bottom: var(--toggleGroup-iconPaddingBottom);
               fill: var(--toggleGroup-unselectedFontColor);
             }
           }

@@ -1020,7 +1020,11 @@
     "iconPaddingRight": "length",
     "iconPaddingLeft": "length",
     "labelPaddingLeft": "length",
-    "labelPaddingRight": "length"
+    "labelPaddingRight": "length",
+    "iconPaddingTop": "length",
+    "iconPaddingBottom": "length",
+    "labelPaddingTop": "length",
+    "labelPaddingBottom": "length"
   },
   "upload": {
     "fontFamily": "fFamily",

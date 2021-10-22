@@ -262,7 +262,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
           bottom: var(--slider-thumbVerticalPosition);
           &:hover{
             width: calc(var(--slider-thumbWidth) + 4px);
-            height: calc(var(--slider-thumbWidth) + 4px);
+            height: calc(var(--slider-thumbHeight) + 4px);
             bottom: calc(var(--slider-thumbVerticalPosition) - 2px);
             background-color: var(--slider-hoverThumbBackgroundColor);
               border-color: var(

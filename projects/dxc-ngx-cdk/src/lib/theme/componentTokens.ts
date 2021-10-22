@@ -987,7 +987,7 @@ export const componentTokens = {
   "--slider-activeThumbBackgroundColor": globalTokens.hal_blue_d_20,
   "--slider-activeThumbBackgroundColorOnDark": globalTokens.hal_blue_d_20,
   "--slider-hoverThumbBackgroundColor": globalTokens.hal_blue_d_20,
-  "--slider-hoverThumbBackgroundColorOnDark": globalTokens.hal_blue_l_50,
+  "--slider-hoverThumbBackgroundColorOnDark": globalTokens.hal_blue_d_20,
   "--slider-focusThumbBackgroundColor": globalTokens.hal_blue_s_35,
   "--slider-focusThumbBackgroundColorOnDark": globalTokens.hal_blue_l_50,
   "--slider-tickSize": "4px",

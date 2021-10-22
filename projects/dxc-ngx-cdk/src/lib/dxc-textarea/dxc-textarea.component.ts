@@ -218,12 +218,12 @@ export class DxcTextareaComponent
         textarea {
           min-height: 22px;
           text-overflow: ellipsis;
-          font-family: var(--textarea-customContentFontFamily);
-          font-size: var(--textarea-customContentFontSize);
-          font-style: var(--textarea-customContentFontStyle);
-          font-weight: var(--textarea-customContentFontWeight);
-          letter-spacing: var(--textarea-customContentLetterSpacing);
-          line-height: var(--textarea-customContentLineHeight);
+          font-weight: var(--textarea-valueFontWeight);
+          font-style: var(--textarea-valueFontStyle);
+          font-size: var(--textarea-valueFontSize);
+          line-height: var(--textarea-valueLineHeight);
+          letter-spacing: var(--textarea-valueLetterSpacing);
+          font-family: var(--textarea-fontFamily);
         }
         textarea::-webkit-scrollbar {
           width: 3px;
@@ -248,7 +248,7 @@ export class DxcTextareaComponent
         }
       }
       .mat-hint {
-        font-family: var(--textarea-assistiveTextFontFamily);
+        font-family: var(--textarea-fontFamily);
         font-size: var(--textarea-assistiveTextFontSize);
         font-style: var(--textarea-assistiveTextFontStyle);
         font-weight: var(--textarea-assistiveTextFontWeight);
@@ -256,7 +256,7 @@ export class DxcTextareaComponent
       }
       .mat-form-field.mat-form-field-should-float mat-label,
       .mat-form-field-label {
-        font-family: var(--textarea-labelFontFamily);
+        font-family: var(--textarea-fontFamily);
         font-size: var(--textarea-labelFontSize);
         font-style: var(--textarea-labelFontStyle);
         font-weight: var(--textarea-labelFontWeight);
@@ -297,8 +297,8 @@ export class DxcTextareaComponent
       &.light {
         .mat-form-field {
           textarea {
-            color: var(--textarea-customContentFontColor);
-            caret-color: var(--textarea-customContentFontColor);
+            color: var(--textarea-valueFontColor);
+            caret-color: var(--textarea-valueFontColor);
           }
           textarea::-webkit-scrollbar-track {
             background-color: var(--textarea-scrollBarTrackColor);
@@ -313,15 +313,15 @@ export class DxcTextareaComponent
             .mat-form-field-empty mat-label,
             .mat-form-field-label:not(.mat-form-field-empty) mat-label,
             &.mat-focused .mat-form-field-empty mat-label {
-              color: var(--textarea-disabledFontColor);
+              color: var(--textarea-disabledColor);
             }
             .mat-form-field-underline {
-              background-color: var(--textarea-disabledFontColor);
+              background-color: var(--textarea-disabledColor);
             }
             .mat-form-field-wrapper {
               .mat-form-field-flex {
                 .mat-form-field-infix input {
-                  color: var(--textarea-disabledFontColor);
+                  color: var(--textarea-disabledColor);
                 }
               }
             }
@@ -334,13 +334,14 @@ export class DxcTextareaComponent
           color: var(--textarea-labelFontColor);
         }
         .mat-form-field.mat-focused .mat-form-field-ripple {
-          background-color: var(--textarea-labelFontColor);
+          background-color: var(--textarea-underlineFocusColor);
         }
         .mat-form-field-underline {
-          background-color: var(--textarea-labelFontColor);
+          background-color: var(--textarea-underlineColor);
+          height: var(--textarea-underlineThickness);
         }
         input::placeholder {
-          color: var(--textarea-customContentFontColor);
+          color: var(--textarea-valueFontColor);
         }
         &.required {
           .mat-form-field-required-marker {
@@ -379,8 +380,8 @@ export class DxcTextareaComponent
       &.dark {
         .mat-form-field {
           textarea {
-            color: var(--textarea-customContentFontColorOnDark);
-            caret-color: var(--textarea-customContentFontColorOnDark);
+            color: var(--textarea-valueFontColorOnDark);
+            caret-color: var(--textarea-valueFontColorOnDark);
           }
           textarea::-webkit-scrollbar-track {
             background-color: var(--textarea-scrollBarTrackColorOnDark);
@@ -395,15 +396,15 @@ export class DxcTextareaComponent
             .mat-form-field-empty mat-label,
             .mat-form-field-label:not(.mat-form-field-empty) mat-label,
             &.mat-focused .mat-form-field-empty mat-label {
-              color: var(--textarea-disabledFontColorOnDark);
+              color: var(--textarea-disabledColorOnDark);
             }
             .mat-form-field-underline {
-              background-color: var(--textarea-disabledFontColorOnDark);
+              background-color: var(--textarea-disabledColorOnDark);
             }
             .mat-form-field-wrapper {
               .mat-form-field-flex {
                 .mat-form-field-infix input {
-                  color: var(--textarea-disabledFontColorOnDark);
+                  color: var(--textarea-disabledColorOnDark);
                 }
               }
             }
@@ -416,13 +417,13 @@ export class DxcTextareaComponent
           color: var(--textarea-labelFontColorOnDark);
         }
         .mat-form-field.mat-focused .mat-form-field-ripple {
-          background-color: var(--textarea-labelFontColorOnDark);
+          background-color: var(--textarea-underlineFocusColorOnDark);
         }
         .mat-form-field-underline {
-          background-color: var(--textarea-labelFontColorOnDark);
+          background-color: var(--textarea-underlineColorOnDark);
         }
         input::placeholder {
-          color: var(--textarea-customContentFontColorOnDark);
+          color: var(--textarea-valueFontColorOnDark);
         }
         &.required {
           .mat-form-field-required-marker {

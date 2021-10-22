@@ -332,8 +332,7 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
 
     if (transformedInput !== 0) {
       const transformedInputV = transformedInput.toString();
-      transformedInput = parseFloat(transformedInputV.replace(/\b(?:0*(0\.\d+)|0+)/g, '$1'));
-    }
+      transformedInput = parseFloat(transformedInputV.replace(/\b(?:0*(\.\d+)|0+)/g, '$1'));    }
 
     if (transformedInput === '')
       transformedInput = 0;

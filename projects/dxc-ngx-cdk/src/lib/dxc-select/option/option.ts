@@ -288,9 +288,9 @@ export class _MatOptionBase
           font-family: var(--select-fontFamily);
           color: ${this.service.isDarkTheme
             ? "var(--select-optionFontColorOnDark)"
-            : "var(--select-optionsFontColor)"};
-          font-size: var(--select-optionsFontSize);
-          font-style: var(--select-optionsFontStyle);
+            : "var(--select-optionFontColor)"};
+          font-size: var(--select-optionFontSize);
+          font-style: var(--select-optionFontStyle);
         }
       }
       &.mat-option.mat-active {

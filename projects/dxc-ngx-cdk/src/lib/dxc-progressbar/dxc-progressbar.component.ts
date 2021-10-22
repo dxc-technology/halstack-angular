@@ -13,6 +13,7 @@ export class DxcProgressbarComponent {
   mode: string = "indeterminate";
   @Input() value: number;
   @Input() label: string;
+  @Input() helperText: string;
   @Input()
   get showValue(): boolean {
     return this._showValue;
@@ -133,6 +134,8 @@ export class DxcProgressbarComponent {
         height: var(--progressBar-thickness);
         z-index: 1;
         width: auto;
+        margin-bottom: 8px;
+        margin-top: 8px;
         .mat-progress-bar-fill::after {
           background-color: ${inputs.overlay
             ? `var(--progressBar-trackLineColorOnDark);`
@@ -142,10 +145,18 @@ export class DxcProgressbarComponent {
           fill: transparent;
         }
       }
+      .helperText{
+        font-family: var(--progressBar-helperTextFontFamily);
+        font-size: var(--progressBar-helperTextFontSize);
+        font-style: var(--progressBar-helperTextFontStyle);
+        font-weight: var(--progressBar-helperTextFontWeight);
+        color: ${inputs.overlay
+          ? `var(--progressBar-helperTextFontColorOnDark);`
+          : `var(--progressBar-helperTextFontColor);`};
+      }
       .labelContainer {
         z-index: 1;
         width: auto;
-        margin-bottom: 8px;
         display: flex;
         .label {
           display: block;
@@ -169,7 +180,9 @@ export class DxcProgressbarComponent {
           font-size: var(--progressBar-valueFontSize);
           font-style: var(--progressBar-valueFontStyle);
           font-weight: var(--progressBar-valueFontWeight);
-          color: var(--progressBar-valueFontColor);
+          color: ${inputs.overlay
+            ? `var(--progressBar-valueFontColorOnDark);`
+            : `var(--progressBar-valueFontColor);`};
           text-transform: var(--progressBar-valueFontTextTransform);
         }
       }

@@ -212,7 +212,13 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.inputText?.selectedBaseColor, 0.34) ??
       tokens["--inputText-hoverOptionBackgroundColor"];
 
-    //hover y active para new input
+    //NEW INPUT TEXT
+    proccessedTokens["--input-hoverListOptionBackgroundColor"] =
+      theme?.input?.baseColor ??
+      tokens["--input-hoverListOptionBackgroundColor"];
+    proccessedTokens["--inputText-activeListOptionBackgroundColor"] =
+      this.subLightness(theme?.input?.baseColor, 15) ??
+      tokens["--inputText-activeListOptionBackgroundColor"];
 
     //PAGINATOR
     proccessedTokens["--paginator-backgroundColor"] =
@@ -224,8 +230,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--progressBar-trackLineColor"] =
       theme?.progressBar?.accentColor ?? tokens["--progressBar-trackLineColor"];
     proccessedTokens["--progressBar-totalLineColor"] =
-      this.setOpacity(theme?.progressBar?.baseColor, 0.34) ??
-      tokens["--progressBar-totalLineColor"];
+      theme?.progressBar?.baseColor ?? tokens["--progressBar-totalLineColor"];
 
     //RADIO
     proccessedTokens["--radio-color"] =

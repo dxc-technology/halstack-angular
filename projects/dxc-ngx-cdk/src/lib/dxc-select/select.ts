@@ -615,7 +615,7 @@ export abstract class _MatSelectBase<C>
         this.service.isDarkTheme = false;
       }
       this.service.isDarkThemeOption.next(this.utils.readProperty(
-        "--select-optionsBackgroundColor"
+        "--select-optionBackgroundColor"
       ));
     });
 

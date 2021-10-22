@@ -51,8 +51,8 @@
     "fontColor": "#000000"
   },
   "progressBar": {
-    "accentColor": "#6f2c91",
-    "baseColor": "#000000"
+    "accentColor": "#5f249f",
+    "baseColor": "#cecece"
   },
   "radio": {
     "baseColor": "#000000"

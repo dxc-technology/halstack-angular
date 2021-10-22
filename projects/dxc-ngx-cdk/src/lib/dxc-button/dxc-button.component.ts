@@ -181,9 +181,11 @@ export class DxcButtonComponent {
           }
           img,
           svg {
-            ${this.iconPosition === "before"
-              ? "margin-left: 8px;"
-              : "margin-right: 8px;"}
+            ${this.label
+              ? this.iconPosition === "before"
+                ? "margin-left: 8px;"
+                : "margin-right: 8px;"
+              : ""}
             height: 24px;
             width: 24px;
             z-index: 20;
@@ -407,7 +409,9 @@ export class DxcButtonComponent {
           color: var(--button-secondaryHoverFontColorOnDark);
         }
         &:disabled {
-          background-color: var(--button-secondaryDisabledBackgroundColorOnDark);
+          background-color: var(
+            --button-secondaryDisabledBackgroundColorOnDark
+          );
           border-color: var(--button-secondaryDisabledBorderColorOnDark);
           color: var(--button-secondaryDisabledFontColorOnDark) !important;
           span.mat-button-ripple {

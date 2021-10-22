@@ -823,6 +823,7 @@ export const componentTokens = {
   "--paginator-fontSize": globalTokens.type_scale_02,
   "--paginator-fontStyle": globalTokens.type_normal,
   "--paginator-fontWeight": globalTokens.type_regular,
+  "--paginator-fontTextTransform": "none",
   "--paginator-height": "64px",
   "--paginator-width": "100%",
   "--paginator-marginRight": "40px",

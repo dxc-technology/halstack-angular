@@ -521,6 +521,7 @@
     "fontSize": "0.875rem",
     "fontStyle": "normal",
     "fontWeight": "400",
+    "fontTextTransform": "none",
     "height": "64px",
     "width": "100%",
     "marginRight": "40px",

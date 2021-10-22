@@ -621,6 +621,7 @@
     "fontSize": "length",
     "fontWeight": "fWeight",
     "fontStyle": "fStyle",
+    "fontTextTransform": "fTextTransform",
     "height": "length",
     "width": "length",
     "itemsPerPageSelectorMarginLeft": "length",

@@ -194,12 +194,12 @@ export class DxcWizardStepComponent {
         background: var(--wizard-stepContainerBackgroundColor);
       }
       .current .iconContainer {
-        width: var(--wizard-circleSelectedWidth);
-        height: var(--wizard-circleSelectedHeight);
-        border: var(--wizard-circleSelectedBorderThickness)
-          var(--wizard-circleSelectedBorderStyle)
-          var(--wizard-circleSelectedBorderColor);
-        border-radius: var(--wizard-circleSelectedBorderRadius);
+        width: var(--wizard-selectedCircleWidth);
+        height: var(--wizard-selectedCircleHeight);
+        border: var(--wizard-selectedCircleBorderThickness)
+          var(--wizard-selectedCircleBorderStyle)
+          var(--wizard-selectedCircleBorderColor);
+        border-radius: var(--wizard-selectedCircleBorderRadius);
         background: var(--wizard-stepContainerSelectedBackgroundColor);
         .number {
           color: var(--wizard-stepContainerSelectedFontColor) !important;
@@ -218,12 +218,12 @@ export class DxcWizardStepComponent {
         .iconContainer {
           background: var(--wizard-disabledBackgroundColor);
           color: var(--wizard-disabledFontColor);
-          width: var(--wizard-circleDisabledWidth);
-          height: var(--wizard-circleDisabledHeight);
-          border: var(--wizard-circleDisabledBorderThickness)
-            var(--wizard-circleDisabledBorderStyle)
-            var(--wizard-circleDisabledBorderColor);
-          border-radius: var(--wizard-circleDisabledBorderRadius);
+          width: var(--wizard-disabledCircleWidth);
+          height: var(--wizard-disabledCircleHeight);
+          border: var(--wizard-disabledCircleBorderThickness)
+            var(--wizard-disabledCircleBorderStyle)
+            var(--wizard-disabledCircleBorderColor);
+          border-radius: var(--wizard-disabledCircleBorderRadius);
         }
         .number {
           color: var(--wizard-disabledFontColor);
@@ -256,7 +256,7 @@ export class DxcWizardStepComponent {
         color: var(--wizard-labelFontColor);
       }
       .visited .infoContainer .label {
-        color: var(--wizard-labelActiveFontColor);
+        color: var(--wizard-visitedLabelFontColor);
       }
       .label {
         text-align: var(--wizard-labelTextAlign);
@@ -272,7 +272,7 @@ export class DxcWizardStepComponent {
         color: var(--wizard-descriptionFontColor);
       }
       .visited .infoContainer .description {
-        color: var(--wizard-descriptionActiveFontColor);
+        color: var(--wizard-visitedDescriptionFontColor);
       }
       .description {
         text-align: var(--wizard-descriptionTextAlign);

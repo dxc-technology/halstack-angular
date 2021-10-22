@@ -73,26 +73,23 @@
     "baseColor": "#ffffff"
   },
   "switch": {
-    "checkedBaseColor": "#6f2c91"
+    "checkedBaseColor": "#5f249f"
   },
   "table": {
-    "baseColor": "#6f2c91",
+    "baseColor": "#5f249f",
     "fontColor": "#ffffff"
   },
   "tabs": {
-    "baseColor": "#6f2c91"
+    "baseColor": "#5f249f"
   },
   "toggleGroup": {
-    "selectedBaseColor": "#6f2c91",
-    "selectedHoverBaseColor": "#4b1c7d",
+    "selectedBaseColor": "#5f249f",
     "selectedFontColor": "#ffffff",
-    "selectedHoverFontColor": "#ffffff",
-    "unselectedBaseColor": "#D9D9D9",
-    "unselectedHoverBaseColor": "#eeeeee",
+    "unselectedBaseColor": "#e6e6e6",
     "unselectedFontColor": "#000000"
   },
   "wizard": {
-    "baseColor": "#6f2c91",
+    "baseColor": "#5f249f",
     "fontColor": "#ffffff"
   }
 }

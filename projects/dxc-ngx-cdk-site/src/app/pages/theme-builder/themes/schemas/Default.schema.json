@@ -84,11 +84,8 @@
   },
   "toggleGroup": {
     "selectedBaseColor": "color",
-    "selectedHoverBaseColor": "color",
     "selectedFontColor": "color",
-    "selectedHoverFontColor": "color",
     "unselectedBaseColor": "color",
-    "unselectedHoverBaseColor": "color",
     "unselectedFontColor": "color"
   },
   "wizard": {

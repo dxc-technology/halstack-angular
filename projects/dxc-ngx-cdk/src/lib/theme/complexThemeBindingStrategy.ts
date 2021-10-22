@@ -369,8 +369,8 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--wizard-stepContainerSelectedBackgroundColor"] =
       theme?.wizard?.baseColor ??
       tokens["--wizard-stepContainerSelectedBackgroundColor"];
-    proccessedTokens["--wizard-circleSelectedBorderColor"] =
-      theme?.wizard?.baseColor ?? tokens["--wizard-circleSelectedBorderColor"];
+    proccessedTokens["--wizard-selectedCircleBorderColor"] =
+      theme?.wizard?.baseColor ?? tokens["--wizard-selectedCircleBorderColor"];
     proccessedTokens["--wizard-stepContainerSelectedFontColor"] =
       theme?.wizard?.fontColor ??
       tokens["--wizard-stepContainerSelectedFontColor"];

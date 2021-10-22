@@ -272,21 +272,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.slider?.baseColor ?? tokens["--slider-tickBackgroundColor"];
     proccessedTokens["--slider-trackLineColor"] =
       theme?.slider?.baseColor ?? tokens["--slider-trackLineColor"];
-    proccessedTokens["--slider-tickBackgroundColor"] =
-      theme?.slider?.baseColor ?? tokens["--slider-tickBackgroundColor"];
     proccessedTokens["--slider-disabledTickBackgroundColor"] =
       this.setOpacity(theme?.slider?.baseColor, 0.34) ??
       tokens["--slider-disabledTickBackgroundColor"];
-
     proccessedTokens["--slider-activeThumbBackgroundColor"] =
-      this.addLightness(theme?.slider?.baseColor, 20) ??
+      this.subLightness(theme?.slider?.baseColor, 15) ??
       tokens["--slider-activeThumbBackgroundColor"];
     proccessedTokens["--slider-hoverThumbBackgroundColor"] =
-      this.addLightness(theme?.slider?.baseColor, 20) ??
+      this.subLightness(theme?.slider?.baseColor, 15) ??
       tokens["--slider-hoverThumbBackgroundColor"];
-    proccessedTokens["--slider-focusThumbBackgroundColor"] =
-      this.addLightness(theme?.slider?.baseColor, 20) ??
-      tokens["--slider-focusThumbBackgroundColor"];
+
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =
@@ -312,11 +307,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--tabs-selectedFontColor"] =
       theme?.tabs?.baseColor ?? tokens["--tabs-selectedFontColor"];
     proccessedTokens["--tabs-selectedIconColor"] =
-      theme?.tabs?.baseColor ?? tokens["--tabs-selectedFontColor"];
-    proccessedTokens["--tabs-selectedUnderlinedColor"] =
-      theme?.tabs?.baseColor ?? tokens["--tabs-selectedFontColor"];
+      theme?.tabs?.baseColor ?? tokens["--tabs-selectedIconColor"];
+    proccessedTokens["--tabs-selectedUnderlineColor"] =
+      theme?.tabs?.baseColor ?? tokens["--tabs-selectedUnderlineColor"];
     proccessedTokens["--tabs-focusOutline"] =
-      theme?.tabs?.baseColor ?? tokens["--tabs-selectedFontColor"];
+      theme?.tabs?.baseColor ?? tokens["--tabs-focusOutline"];
     proccessedTokens["--tabs-hoverBackgroundColor"] =
       this.addLightness(theme?.tabs?.baseColor, 58) ??
       tokens["--tabs-hoverBackgroundColor"];
@@ -329,10 +324,10 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.toggleGroup?.unselectedBaseColor ??
       tokens["--toggleGroup-unselectedBackgroundColor"];
     proccessedTokens["--toggleGroup-unselectedHoverBackgroundColor"] =
-      theme?.toggleGroup?.unselectedHoverBaseColor ??
+      this.subLightness(theme?.toggleGroup?.unselectedBaseColor, 8) ??
       tokens["--toggleGroup-unselectedHoverBackgroundColor"];
     proccessedTokens["--toggleGroup-unselectedActiveBackgroundColor"] =
-      theme?.toggleGroup?.unselectedActiveBaseColor ??
+      theme?.toggleGroup?.selectedBaseColor ??
       tokens["--toggleGroup-unselectedActiveBackgroundColor"];
     proccessedTokens["--toggleGroup-unselectedFontColor"] =
       theme?.toggleGroup?.unselectedFontColor ??
@@ -341,25 +336,22 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       theme?.toggleGroup?.selectedBaseColor ??
       tokens["--toggleGroup-selectedBackgroundColor"];
     proccessedTokens["--toggleGroup-selectedHoverBackgroundColor"] =
-      theme?.toggleGroup?.selectedHoverBaseColor ??
+      this.subLightness(theme?.toggleGroup?.selectedBaseColor, 8) ??
       tokens["--toggleGroup-selectedHoverBackgroundColor"];
     proccessedTokens["--toggleGroup-selectedActiveBackgroundColor"] =
-      theme?.toggleGroup?.selectedActiveBaseColor ??
+      this.subLightness(theme?.toggleGroup?.selectedBaseColor, 18) ??
       tokens["--toggleGroup-selectedActiveBackgroundColor"];
     proccessedTokens["--toggleGroup-selectedFontColor"] =
       theme?.toggleGroup?.selectedFontColor ??
       tokens["--toggleGroup-selectedFontColor"];
-    proccessedTokens["--toggleGroup-selectedHoverFontColor"] =
-      theme?.toggleGroup?.selectedHoverFontColor ??
-      tokens["--toggleGroup-selectedHoverFontColor"];
     proccessedTokens["--toggleGroup-selectedDisabledBackgroundColor"] =
-      this.setOpacity(theme?.toggleGroup?.selectedBaseColor, 0.34) ??
+      this.addLightness(theme?.toggleGroup?.selectedBaseColor, 57) ??
       tokens["--toggleGroup-selectedDisabledBackgroundColor"];
     proccessedTokens["--toggleGroup-selectedDisabledFontColor"] =
-      this.setOpacity(theme?.toggleGroup?.selectedFontColor, 0.34) ??
+      this.addLightness(theme?.toggleGroup?.selectedBaseColor, 42) ??
       tokens["--toggleGroup-selectedDisabledFontColor"];
     proccessedTokens["--toggleGroup-unselectedDisabledBackgroundColor"] =
-      this.setOpacity(theme?.toggleGroup?.unselectedBaseColor, 0.34) ??
+      this.addLightness(theme?.toggleGroup?.unselectedBaseColor, 5) ??
       tokens["--toggleGroup-unselectedDisabledBackgroundColor"];
     proccessedTokens["--toggleGroup-unselectedDisabledFontColor"] =
       this.setOpacity(theme?.toggleGroup?.unselectedFontColor, 0.34) ??
@@ -369,8 +361,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--wizard-stepContainerSelectedBackgroundColor"] =
       theme?.wizard?.baseColor ??
       tokens["--wizard-stepContainerSelectedBackgroundColor"];
-    proccessedTokens["--wizard-selectedCircleBorderColor"] =
-      theme?.wizard?.baseColor ?? tokens["--wizard-selectedCircleBorderColor"];
     proccessedTokens["--wizard-stepContainerSelectedFontColor"] =
       theme?.wizard?.fontColor ??
       tokens["--wizard-stepContainerSelectedFontColor"];

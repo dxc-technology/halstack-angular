@@ -10,12 +10,12 @@
     cursor: pointer;
     fill: var(--upload-fileDeleteIconColor);
     svg{
-      width: var(--upload-fileDeleteIconWidth);
-      height: var(--upload-fileDeleteIconHeight);
+      width: var(--upload-fileDeleteIconSize);
+      height: var(--upload-fileDeleteIconSize);
     }
   }
   &:hover {
-    background-color: var(--upload-fileHoverColor);
+    background-color: var(--upload-hoverFileColor);
   }
   .info {
     display: flex;

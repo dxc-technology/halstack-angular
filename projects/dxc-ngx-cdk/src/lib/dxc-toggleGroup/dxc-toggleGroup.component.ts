@@ -276,7 +276,7 @@ export class DxcToggleGroupComponent implements OnInit {
             letter-spacing: var(--toggleGroup-fontLetterSpacing);
             font-family: var(--toggleGroup-fontFamily);
             font-size: var(--toggleGroup-fontSize);
-            font-style: var(--toggle-fontStyle);
+            font-style: var(--toggleGroup-fontStyle);
             font-weight: var(--toggleGroup-fontWeight);
           }
           .icon {

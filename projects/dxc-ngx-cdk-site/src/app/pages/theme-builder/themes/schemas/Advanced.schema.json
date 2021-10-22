@@ -611,7 +611,7 @@
     "underlineStyle": "bStyle",
     "underlineThickness": "bWidth",
     "iconSize": "length",
-    "iconGutter": "length",
+    "iconSpacing": "length",
     "focusColor": "color"
   },
   "paginator": {

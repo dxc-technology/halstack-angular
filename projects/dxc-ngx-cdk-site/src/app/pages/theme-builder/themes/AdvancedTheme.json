@@ -604,7 +604,7 @@
     "fontStyle": "normal",
     "fontWeight": "400",
     "iconSize": "16px",
-    "iconGutter": "4px",
+    "iconSpacing": "4px",
     "underlineSpacing": "1px",
     "underlineStyle": "solid",
     "underlineThickness": "1px",

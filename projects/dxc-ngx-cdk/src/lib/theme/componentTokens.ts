@@ -806,7 +806,7 @@ export const componentTokens = {
   "--link-fontStyle": globalTokens.type_normal,
   "--link-fontWeight": globalTokens.type_regular,
   "--link-iconSize": "16px",
-  "--link-iconGutter": "4px",
+  "--link-iconSpacing": "4px",
   "--link-underlineSpacing": "1px",
   "--link-underlineStyle": "solid",
   "--link-underlineThickness": "1px",

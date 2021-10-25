@@ -152,7 +152,7 @@ export class DxcSidenavComponent implements OnInit {
       background-color: var(--sidenav-backgroundColor);
       position: sticky;
       display: flex;
-      .sidenavMenu {
+      background-provider-inner {
         display: flex;
         flex-direction: column;
         ${this.utils.getPaddings(inputs.padding)}

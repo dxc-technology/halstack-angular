@@ -595,8 +595,6 @@
     "activeListOptionBackgroundColor": "#cccccc"
   },
   "newTextarea": {},
-  "number": {},
-  "password": {},
   "link": {
     "fontColor": "#0067b3",
     "fontFamily": "inherit",

@@ -19,7 +19,6 @@ export class DxcNewDateHelper {
         display: inline-block;
       }
       .mat-calendar {
-        font-family: var(--fontFamily);
         width: 100%;
         height: 100%;
       }

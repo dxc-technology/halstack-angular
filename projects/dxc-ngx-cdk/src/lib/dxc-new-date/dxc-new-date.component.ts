@@ -179,7 +179,7 @@ export class DxcNewDateComponent implements OnInit {
     if (this.dxcInputRef && this.dxcInputRef.inputRef) {
       this.controlled
         ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-        : (this.value = this.dxcInputRef.inputRef.nativeElement.value);
+        : (this.renderedValue = this.dxcInputRef.inputRef.nativeElement.value);
     }
     this.calculateComponentValues();
 
@@ -258,7 +258,7 @@ export class DxcNewDateComponent implements OnInit {
   handleOnBlur(event) {
     this.onBlur.emit({ value: event.value, error: event.error });
     if (!this.controlled) {
-      this.value = event.value;
+      this.renderedValue = event.value;
       this.cdRef.detectChanges();
     }
   }

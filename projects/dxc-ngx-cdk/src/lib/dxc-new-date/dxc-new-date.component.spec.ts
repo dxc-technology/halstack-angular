@@ -130,6 +130,56 @@ describe("DxcDate", () => {
     expect(screen.getByDisplayValue(newValue));
   });
 
+  test("dxc-date cahnge value twice as uncontrolled", async () => {
+    const onChange = jest.fn();
+
+    await render(DxcNewDateComponent, {
+      componentProperties: {
+        label: "test-input",
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [
+        MatMomentDateModule,
+        MatNativeDateModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MdePopoverModule,
+        DxcBoxModule,
+        CommonModule,
+        DxcNewInputTextModule,
+      ],
+      providers: [
+        {
+          provide: DateAdapter,
+          useClass: MomentDateAdapter,
+          deps: [MAT_DATE_LOCALE],
+        },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+      ],
+    });
+
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.input(input, { target: { value: newValue } });
+    expect(onChange).toHaveBeenCalledWith({
+      value: newValue,
+      date: newMockDate,
+    });
+    expect(screen.getByDisplayValue(newValue));
+
+    input.focus();
+    expect(input).toHaveFocus();
+    fireEvent.input(input, { target: { value: "04-10-1996" } });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "04-10-1996",
+      date: new Date("1996/10/04"),
+    });
+    expect(screen.getByDisplayValue("04-10-1996"));
+  });
+
   test("Calendar´s value is the same as the input´s date if it´s right (Depending on the format)", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
@@ -367,7 +417,7 @@ describe("DxcDate", () => {
   test("controlled dxc-date", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-  
+
     await render(DxcNewDateComponent, {
       componentProperties: {
         label: "test-input",
@@ -399,7 +449,7 @@ describe("DxcDate", () => {
       ],
     });
     const input = <HTMLInputElement>screen.getByRole("textbox");
-  
+
     input.focus();
     expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: "04-10-1996" } });

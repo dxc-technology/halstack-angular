@@ -199,11 +199,11 @@ Here is an example of its used:
       <td>Applies to token textColorMenu.</td>
     </tr>
     <tr>
-      <td>hamburguerColor</td>
+      <td>hamburguerIconColor</td>
         <td>
           <code>#000000</code>
         </td>
-      <td>Applies to token hamburguerColor and hoverHamburguerColor (0.16 opacity).</td>
+      <td>Applies to token hamburguerIconColor and hoverhamburguerIconColor (0.16 opacity).</td>
     </tr>
     <tr>
         <td>logo</td>

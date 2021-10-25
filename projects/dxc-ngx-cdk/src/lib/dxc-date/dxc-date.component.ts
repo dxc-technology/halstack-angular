@@ -287,7 +287,6 @@ export class DxcDateComponent implements OnChanges, OnInit {
         display: inline-block;
       }
       .mat-calendar {
-        font-family: var(--fontFamily);
         width: 100%;
         height: 100%;
       }
@@ -322,7 +321,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
         font-size: 16px;
       }
       .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-        border-color: var(--date-pickerActualDate);
+        border-color: var(--date-pickerActualDateColor);
       }
       .mat-calendar-body-selected {
         border-color: var(--date-pickerSelectedDateBackgroundColor);
@@ -351,7 +350,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       }
 
       .mat-calendar-body-label {
-        color: var(--date-pickerLabelColor);
+        color: var(--date-pickerMonthColor);
       }
 
       .mat-calendar-period-button {
@@ -390,7 +389,7 @@ export class DxcDateComponent implements OnChanges, OnInit {
       .mat-calendar-period-button:hover,
       .mat-calendar-previous-button:hover,
       .mat-calendar-next-button:hover {
-        background: var(--date-pickerHoverHeaderColor);
+        background: #0000000a;
       }
 
       .mat-button-wrapper {

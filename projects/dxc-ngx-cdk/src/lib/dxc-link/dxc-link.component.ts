@@ -162,8 +162,8 @@ export class DxcLinkComponent {
           width: var(--link-iconSize);
           height: var(--link-iconSize);
           ${inputs.iconPosition === "before"
-            ? "margin-right: var(--link-iconGutter);"
-            : "margin-left: var(--link-iconGutter);"}
+            ? "margin-right: var(--link-iconSpacing);"
+            : "margin-left: var(--link-iconSpacing);"}
         }
       }
     `;

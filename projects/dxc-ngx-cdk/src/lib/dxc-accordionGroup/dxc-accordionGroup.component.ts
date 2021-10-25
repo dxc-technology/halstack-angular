@@ -206,6 +206,9 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
           border-top-left-radius: var(--accordion-borderRadius);
           border-bottom-right-radius: 0px;
           border-bottom-left-radius: 0px;
+          border-bottom: var(--accordion-accordionGroupSeparatorBorderThickness)
+            var(--accordion-accordionGroupSeparatorBorderStyle)
+            var(--accordion-accordionGroupSeparatorBorderColor);
         }
       }
       dxc-accordion.middle {
@@ -214,6 +217,9 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
           border-bottom-left-radius: 0px;
           border-top-right-radius: 0px;
           border-top-left-radius: 0px;
+          border-bottom: var(--accordion-accordionGroupSeparatorBorderThickness)
+            var(--accordion-accordionGroupSeparatorBorderStyle)
+            var(--accordion-accordionGroupSeparatorBorderColor);
         }
       }
       dxc-accordion.last {

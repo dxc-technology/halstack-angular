@@ -175,7 +175,7 @@ export class DxcChipComponent implements OnChanges {
         100% - 40px - ${this.utils.getMarginValue(inputs.margin, "left")} -
           ${this.utils.getMarginValue(inputs.margin, "right")}
       );
-      min-height: 20px;
+      min-height: 40px;
       background-color: ${inputs.disabled
         ? "var(--chip-disabledBackgroundColor)"
         : "var(--chip-backgroundColor)"};
@@ -183,7 +183,6 @@ export class DxcChipComponent implements OnChanges {
       border-width: var(--chip-borderThickness);
       border-style: var(--chip-borderStyle);
       border-color: var(--chip-borderColor);
-
       padding-top: var(--chip-contentPaddingTop);
       padding-bottom: var(--chip-contentPaddingBottom);
       padding-left: var(--chip-contentPaddingLeft);
@@ -215,14 +214,12 @@ export class DxcChipComponent implements OnChanges {
           ? "var(--chip-disabledIconColor)"
           : "var(--chip-iconColor)"};
         ${this.label || this.suffixIconSrc
-          ? "margin-right: 8px;"
+          ? "margin-right: var(--chip-iconSpacing);"
           : this.prefixIconSrc
           ? "5px"
           : ""};
         height: var(--chip-iconSize);
         width: var(--chip-iconSize);
-        padding-left: var(--chip-iconPaddingLeft);
-        padding-right: var(--chip-iconPaddingRight);
         &:focus-within {
           ${this.prefixIconClick.observers.length > 0
             ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"
@@ -239,14 +236,12 @@ export class DxcChipComponent implements OnChanges {
           ? "var(--chip-disabledIconColor)"
           : "var(--chip-iconColor)"};
         ${this.label || this.suffixIconSrc
-          ? "margin-left: 8px;"
+          ? "margin-left: var(--chip-iconSpacing);"
           : this.prefixIconSrc
           ? "5px"
           : ""};
         height: var(--chip-iconSize);
         width: var(--chip-iconSize);
-        padding-left: var(--chip-iconPaddingLeft);
-        padding-right: var(--chip-iconPaddingRight);
         &:focus-within {
           ${this.suffixIconClick.observers.length > 0
             ? "outline: -webkit-focus-ring-color auto 1px; outline-color: var(--chip-focusColor);"

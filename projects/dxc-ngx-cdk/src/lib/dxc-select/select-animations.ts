@@ -52,20 +52,20 @@ export const matSelectAnimations: {
       transform: 'scaleY(0.8)',
       minWidth: '100%',
       opacity: 0,
-      marginTop: '47px'
+      marginTop: '49px'
     })),
     state('showing', style({
       opacity: 1,
       minWidth: 'calc(100% + 32px)', // 32px = 2 * 16px padding
       transform: 'scaleY(1)',
-      marginTop: '47px',
+      marginTop: '49px',
       marginLeft: '32px'
     })),
     state('showing-multiple', style({
       opacity: 1,
       minWidth: 'calc(100% + 64px)', // 64px = 48px padding on the left + 16px padding on the right
       transform: 'scaleY(1)',
-      marginTop: '47px',
+      marginTop: '49px',
       marginLeft: '32px'
     })),
     transition('void => *', animate('120ms cubic-bezier(0, 0, 0.2, 1)')),

@@ -231,6 +231,10 @@ export class DxcTagComponent implements OnInit {
     padding: 0px 30px;
     text-transform: var(--tag-fontTextTransform);
     font-style: var(--tag-fontStyle);
+    font-family: var(--tag-fontFamily);
+    color: var(--tag-fontColor);
+    font-weight: var(--tag-fontWeight);
+    font-size: var(--tag-fontSize);
     letter-spacing: 1px;
     flex-grow: 1;
     text-align: center;

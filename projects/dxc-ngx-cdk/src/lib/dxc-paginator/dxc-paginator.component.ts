@@ -73,10 +73,6 @@ export class DxcPaginatorComponent implements OnInit {
 
   buttonMargin = { left: "xxsmall", right: "xxsmall" };
   selectMargin = { left: "xxsmall", right: "small" };
-  firstImgSrc = "assets/previousPage.svg";
-  prevImgSrc = "assets/previous.svg";
-  nextImgSrc = "assets/next.svg";
-  lastImgSrc = "assets/nextPage.svg";
 
   totalPages: number;
   currentPageInternal: number;

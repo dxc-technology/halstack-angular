@@ -13,10 +13,11 @@ import { MatCommonModule } from '../common-behaviors/common-module';
 import { DxcSelectOption } from './option';
 import { DxcCheckboxModule } from '../../dxc-checkbox/dxc-checkbox.module';
 import { DxcOptionIconComponent } from './dxc-option-icon/dxc-option-icon.component';
+import { BackgroundProviderModule } from "../../background-provider/background-provider.module";
 
 
 @NgModule({
-  imports: [MatRippleModule, CommonModule, MatCommonModule, DxcCheckboxModule],
+  imports: [MatRippleModule, CommonModule, MatCommonModule, DxcCheckboxModule, BackgroundProviderModule],
   exports: [DxcSelectOption, DxcOptionIconComponent],
   declarations: [DxcSelectOption, DxcOptionIconComponent]
 })

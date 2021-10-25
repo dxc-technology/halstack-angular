@@ -1,17 +1,12 @@
 {
   "accordion": {
-    "accentColor": "#6f2c91",
-    "fontColor": "#666666"
+    "accentColor": "#5f249f",
+    "fontColor": "#000000"
   },
   "button": {
-    "baseColor": "#6f2c91",
-    "hoverBaseColor": "#000000",
+    "baseColor": "#5f249f",
     "primaryFontColor": "#ffffff",
-    "primaryHoverFontColor": "#ffffff",
-    "secondaryFontColor": "#000000",
-    "secondaryHoverFontColor": "#000000",
-    "textFontColor": "#6f2c91",
-    "textHoverFontColor": "#ffffff"
+    "secondaryHoverFontColor": "#ffffff"
   },
   "checkbox": {
     "baseColor": "#0067b3",
@@ -19,7 +14,6 @@
   },
   "chip": {
     "baseColor": "#eeeeee",
-    "accentColor": "",
     "fontColor": "#000000"
   },
   "date": {
@@ -38,7 +32,7 @@
     "baseColor": "#000000",
     "fontColor": "#ffffff",
     "accentColor": "#0067b3",
-    "logo": ""
+    "logo": "assets/dxc-logo-wh.svg"
   },
   "header": {
     "baseColor": "#ffffff",
@@ -46,23 +40,22 @@
     "fontColor": "#000000",
     "menuBaseColor": "#ffffff",
     "hamburguerColor": "#000000",
-    "logo": "",
-    "logoResponsive": ""
+    "logo": "assets/DXC_Logo_Black_RGB.svg",
+    "logoResponsive": "assets/DXC_Logo_Black_RGB.svg"
   },
   "inputText": {
     "selectedBaseColor": "#D9D9D9"
   },
-  "input": {},
-  "newTextarea": {},
-  "number": {},
-  "password": {},
+  "newInputText": {
+    "selectedBaseColor": "#D9D9D9"
+  },
   "paginator": {
     "baseColor": "#eeeeee",
     "fontColor": "#000000"
   },
   "progressBar": {
-    "accentColor": "#FFED00",
-    "baseColor": "#000000"
+    "accentColor": "#5f249f",
+    "baseColor": "#cecece"
   },
   "radio": {
     "baseColor": "#000000"
@@ -72,37 +65,34 @@
   },
   "sidenav": {
     "baseColor": "#F8F8F8",
-    "arrowBaseColor": "#F8F8F8",
+    "arrowBaseColor": "#D9D9D9",
     "arrowAccentColor": "#000000"
   },
   "slider": {
     "baseColor": "#0067b3"
   },
   "spinner": {
-    "accentColor": "#6f2c91",
+    "accentColor": "#5F249F",
     "baseColor": "#ffffff"
   },
   "switch": {
-    "checkedBaseColor": "#6f2c91"
+    "checkedBaseColor": "#5f249f"
   },
   "table": {
-    "baseColor": "#6f2c91",
+    "baseColor": "#5f249f",
     "fontColor": "#ffffff"
   },
   "tabs": {
-    "baseColor": "#6f2c91"
+    "baseColor": "#5f249f"
   },
   "toggleGroup": {
-    "selectedBaseColor": "#6f2c91",
-    "selectedHoverBaseColor": "#4b1c7d",
+    "selectedBaseColor": "#5f249f",
     "selectedFontColor": "#ffffff",
-    "selectedHoverFontColor": "#ffffff",
-    "unselectedBaseColor": "#D9D9D9",
-    "unselectedHoverBaseColor": "#eeeeee",
+    "unselectedBaseColor": "#e6e6e6",
     "unselectedFontColor": "#000000"
   },
   "wizard": {
-    "baseColor": "#6f2c91",
+    "baseColor": "#5f249f",
     "fontColor": "#ffffff"
   }
 }

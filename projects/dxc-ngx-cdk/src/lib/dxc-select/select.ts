@@ -608,12 +608,14 @@ export abstract class _MatSelectBase<C>
     super(elementRef, _defaultErrorStateMatcher, _parentForm, ngControl);
 
     this.bgProviderService.$changeColor.subscribe((value) => {
-      console.log(`value of color in select: ${value}`);
       if (value === "dark") {
         this.service.isDarkTheme = true;
       } else if (value === "light") {
         this.service.isDarkTheme = false;
       }
+      this.service.isDarkThemeOption.next(this.utils.readProperty(
+        "--select-optionBackgroundColor"
+      ));
     });
 
     if (this.ngControl) {
@@ -1337,7 +1339,7 @@ export abstract class _MatSelectBase<C>
         transform: ${this.floatingStyles()};
         color: ${this.invalid
           ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
-          : this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
+          : this.service.isDarkTheme ?  "var(--select-labelFontColorOnDark)" : "var(--select-labelFontColor)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -1358,7 +1360,7 @@ export abstract class _MatSelectBase<C>
       }
       dxc-option-icon {
         display: flex;
-        margin-right: 5px;
+        margin-right: 12px;
         img,
         svg {
           width: 24px;
@@ -1380,13 +1382,16 @@ export abstract class _MatSelectBase<C>
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: ${this.service.isDarkTheme ?  "var(--select-focusColorOnDark)" : "var(--select-focusColor)"};
         }
+        dxc-option-icon{
+          height: 100%;
+        }
       }
 
       .underline {
-        height: 1px;
+        height: var(--select-underlineThickness);
         background-color: ${this.invalid
           ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
-          : this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
+          : this.service.isDarkTheme ?  "var(--select-underlineColorOnDark)" : "var(--select-underlineColor)"};
         position: absolute;
         bottom: ${this.value ? "19.5px" : "18.5px"};
         width: 100%;
@@ -1416,7 +1421,7 @@ export abstract class _MatSelectBase<C>
       }
 
       .underline {
-        height: 1px;
+        height: var(--select-underlineThickness);
         background-color:${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"};
         position: absolute;
         bottom: ${this.value ? "19.5px" : "18.5px"};
@@ -1434,15 +1439,18 @@ export abstract class _MatSelectBase<C>
       }
       .mat-select-value span {
         color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"};
+        font-size: var(--select-valueFontSize);
+        font-style: var(--select-valueFontStyle);
+        font-weight: var(--select-valueFontWeight);
       }`
         : `.mat-select-value span {
-        color: ${this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
+        color: ${this.service.isDarkTheme ?  "var(--select-valueFontColorOnDark)" : "var(--select-valueFontColor)"};
       }
       .mat-select-arrow {
-        color: ${this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
+        color: ${this.service.isDarkTheme ?  "var(--select-arrowColorOnDark)" : "var(--select-arrowColor)"};
       }
       div.underline.opened {
-        border-bottom: 2px solid ${this.service.isDarkTheme ?  "var(--select-colorOnDark)" : "var(--select-color)"};
+        border-bottom: 2px solid ${this.service.isDarkTheme ?  "var(--select-underlineFocusColorOnDark)" : "var(--select-underlineFocusColor)"};
       }
       `}
     `;

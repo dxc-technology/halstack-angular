@@ -174,7 +174,6 @@ export class DxcCardComponent implements OnInit {
       height: var(--card-height);
 
       mat-card {
-        font-family: var(--fontFamily);
         font-size: 14px;
         display: inline-flex;
         padding: 0px;

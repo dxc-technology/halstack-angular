@@ -152,7 +152,7 @@ export class DxcSidenavComponent implements OnInit {
       background-color: var(--sidenav-backgroundColor);
       position: sticky;
       display: flex;
-      .sidenavMenu {
+      background-provider-inner {
         display: flex;
         flex-direction: column;
         ${this.utils.getPaddings(inputs.padding)}
@@ -161,11 +161,6 @@ export class DxcSidenavComponent implements OnInit {
         ")"};
         overflow-y: auto;
         overflow-x: hidden;
-        font-family: var(--sidenav-customContentFontFamily);
-        font-size: var(--sidenav-customContentFontSize);
-        font-style: var(--sidenav-customContentFontStyle);
-        font-weight: var(--sidenav-customContentFontWeight);
-        color: var(--sidenav-customContentFontColor);
         &::-webkit-scrollbar {
           width: 2px;
         }

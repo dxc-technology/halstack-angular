@@ -19,7 +19,6 @@ export class DxcNewDateHelper {
         display: inline-block;
       }
       .mat-calendar {
-        font-family: var(--fontFamily);
         width: 100%;
         height: 100%;
       }
@@ -54,7 +53,7 @@ export class DxcNewDateHelper {
         font-size: 16px;
       }
       .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-        border-color: var(--newDate-pickerActualDate);
+        border-color: var(--newDate-pickerActualDateColor);
       }
       .mat-calendar-body-selected {
         border-color: var(--newDate-pickerSelectedDateBackgroundColor);
@@ -83,7 +82,7 @@ export class DxcNewDateHelper {
       }
 
       .mat-calendar-body-label {
-        color: var(--newDate-pickerLabelColor);
+        color: var(--newDate-pickerMonthColor);
       }
 
       .mat-calendar-period-button {
@@ -122,7 +121,7 @@ export class DxcNewDateHelper {
       .mat-calendar-period-button:hover,
       .mat-calendar-previous-button:hover,
       .mat-calendar-next-button:hover {
-        background: var(--newDate-pickerHoverHeaderColor);
+        background: #0000000a;
       }
 
       .mat-button-wrapper {

@@ -5,13 +5,8 @@
   },
   "button": {
     "baseColor": "color",
-    "hoverBaseColor": "color",
     "primaryFontColor": "color",
-    "primaryHoverFontColor": "color",
-    "secondaryFontColor": "color",
-    "secondaryHoverFontColor": "color",
-    "textFontColor": "color",
-    "textHoverFontColor": "color"
+    "secondaryHoverFontColor": "color"
   },
   "checkbox": {
     "baseColor": "color",
@@ -19,10 +14,13 @@
   },
   "chip": {
     "baseColor": "color",
-    "accentColor": "color",
     "fontColor": "color"
   },
   "date": {
+    "baseColor": "color",
+    "accentColor": "color"
+  },
+  "newDate": {
     "baseColor": "color",
     "accentColor": "color"
   },
@@ -48,8 +46,8 @@
   "inputText": {
     "selectedBaseColor": "color"
   },
-  "input":{
-
+  "newInputText": {
+    "selectedBaseColor": "color"
   },
   "paginator": {
     "baseColor": "color",
@@ -89,11 +87,8 @@
   },
   "toggleGroup": {
     "selectedBaseColor": "color",
-    "selectedHoverBaseColor": "color",
     "selectedFontColor": "color",
-    "selectedHoverFontColor": "color",
     "unselectedBaseColor": "color",
-    "unselectedHoverBaseColor": "color",
     "unselectedFontColor": "color"
   },
   "wizard": {

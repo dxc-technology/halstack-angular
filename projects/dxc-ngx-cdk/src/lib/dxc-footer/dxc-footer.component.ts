@@ -84,8 +84,10 @@ export class DxcFooterComponent implements OnChanges {
 
   socialIconImageStyle: string = css`
     display: inline-flex;
-    height: var(--footer-socialIconSize);
-    width: var(--footer-socialIconSize);
+    height: var(--footer-socialLinksSize);
+    width: var(--footer-socialLinksSize);
+    color: var(--footer-socialLinksColor);
+    fill: var(--footer-socialLinksColor);
   `;
 
   childComponentsStyle: string;
@@ -94,7 +96,7 @@ export class DxcFooterComponent implements OnChanges {
 
   socialLinksStyle: string = css`
     display: inline-flex;
-    margin-left: var(--footer-socialIconsGutter);
+    margin-left: var(--footer-socialLinksGutter);
     &:first-child {
       margin-left: 0px;
     }
@@ -102,7 +104,6 @@ export class DxcFooterComponent implements OnChanges {
 
   bottomLinkStyle: string = css`
     text-decoration: none;
-    color: var(--white, white);
     font-size: 12px;
   `;
 
@@ -158,9 +159,14 @@ export class DxcFooterComponent implements OnChanges {
     return css`
       padding: ${responsive ? "20px" : "24px 36px"};
       background-color: var(--footer-backgroundColor);
-      min-height: var(--footer-minHeight);
-      color: var(--footer-fontColorBase);
       ${this.utils.getTopMargin(input.margin)}
+      width: 100%;
+      box-sizing: border-box;
+      min-height: var(--footer-height);
+      display: flex;
+      flex-direction: column;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
     `;
   }
 

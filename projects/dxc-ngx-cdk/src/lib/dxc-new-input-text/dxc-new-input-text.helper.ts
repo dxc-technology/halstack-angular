@@ -33,31 +33,31 @@ export class DxcNewInputTextHelper {
   getDisabledStyle() {
     return css`
       dxc-input-text-prefix {
-        border-right: 1px solid var(--input-disabledPrefixColor);
-        color: var(--input-disabledPrefixColor);
+        border-right: 1px solid var(--newInputText-disabledPrefixColor);
+        color: var(--newInputText-disabledPrefixColor);
       }
       dxc-input-text-suffix {
-        border-left: 1px solid var(--input-disabledSuffixColor);
-        color: var(--input-disabledSuffixColor);
+        border-left: 1px solid var(--newInputText-disabledSuffixColor);
+        color: var(--newInputText-disabledSuffixColor);
       }
       .inputLabel,
       .inputOptionalLabel {
-        color: var(--input-disabledLabelFontColor);
+        color: var(--newInputText-disabledLabelFontColor);
       }
       .helperText {
-        color: var(--input-disabledHelperTextFontColor);
+        color: var(--newInputText-disabledHelperTextFontColor);
       }
       .inputText {
-        color: var(--input-disabledValueFontColor);
+        color: var(--newInputText-disabledValueFontColor);
       }
       .inputText::placeholder {
-        color: var(--input-disabledPlaceholderFontColor);
+        color: var(--newInputText-disabledPlaceholderFontColor);
       }
       .inputAction {
         pointer-events: none;
-        background-color: var(--input-disabledActionBackgroundColor);
-        color: var(--input-disabledActionIconColor);
-        fill: var(--input-disabledActionIconColor);
+        background-color: var(--newInputText-disabledActionBackgroundColor);
+        color: var(--newInputText-disabledActionIconColor);
+        fill: var(--newInputText-disabledActionIconColor);
       }
       .inputText,
       .inputAction {
@@ -65,10 +65,10 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer,
       .inputContainer:hover {
-        border: 1px solid var(--input-disabledBorderColor);
+        border: 1px solid var(--newInputText-disabledBorderColor);
         box-shadow: none;
         cursor: not-allowed;
-        background-color: var(--input-disabledContainerFillColor);
+        background-color: var(--newInputText-disabledContainerFillColor);
       }
     `;
   }
@@ -76,31 +76,31 @@ export class DxcNewInputTextHelper {
   getDisabledDarkStyle() {
     return css`
       dxc-input-text-prefix {
-        border-right: 1px solid var(--input-disabledPrefixColorOnDark);
-        color: var(--input-disabledPrefixColorOnDark);
+        border-right: 1px solid var(--newInputText-disabledPrefixColorOnDark);
+        color: var(--newInputText-disabledPrefixColorOnDark);
       }
       dxc-input-text-suffix {
-        border-left: 1px solid var(--input-disabledSuffixColorOnDark);
-        color: var(--input-disabledSuffixColorOnDark);
+        border-left: 1px solid var(--newInputText-disabledSuffixColorOnDark);
+        color: var(--newInputText-disabledSuffixColorOnDark);
       }
       .inputLabel,
       .inputOptionalLabel {
-        color: var(--input-disabledLabelFontColorOnDark);
+        color: var(--newInputText-disabledLabelFontColorOnDark);
       }
       .helperText {
-        color: var(--input-disabledHelperTextFontColorOnDark);
+        color: var(--newInputText-disabledHelperTextFontColorOnDark);
       }
       .inputText {
-        color: var(--input-disabledValueFontColorOnDark);
+        color: var(--newInputText-disabledValueFontColorOnDark);
       }
       .inputText::placeholder {
-        color: var(--input-disabledPlaceholderFontColorOnDark);
+        color: var(--newInputText-disabledPlaceholderFontColorOnDark);
       }
       .inputAction {
         pointer-events: none;
-        background-color: var(--input-disabledActionBackgroundColorOnDark);
-        color: var(--input-disabledActionIconColorOnDark);
-        fill: var(--input-disabledActionIconColorOnDark);
+        background-color: var(--newInputText-disabledActionBackgroundColorOnDark);
+        color: var(--newInputText-disabledActionIconColorOnDark);
+        fill: var(--newInputText-disabledActionIconColorOnDark);
       }
       .inputText,
       .inputAction {
@@ -108,10 +108,10 @@ export class DxcNewInputTextHelper {
       }
       .inputContainer,
       .inputContainer:hover {
-        border: 1px solid var(--input-disabledBorderColorOnDark);
+        border: 1px solid var(--newInputText-disabledBorderColorOnDark);
         box-shadow: none;
         cursor: not-allowed;
-        background-color: var(--input-disabledContainerFillColorOnDark);
+        background-color: var(--newInputText-disabledContainerFillColorOnDark);
       }
     `;
   }
@@ -126,11 +126,11 @@ export class DxcNewInputTextHelper {
 
       &.hasError {
         .inputContainer {
-          border: 1px solid var(--input-errorBorderColor);
-          box-shadow: inset 0 0 0 1px var(--input-errorBorderColor);
+          border: 1px solid var(--newInputText-errorBorderColor);
+          box-shadow: inset 0 0 0 1px var(--newInputText-errorBorderColor);
           &:hover {
-            border-color: var(--input-hoverErrorBorderColor);
-            box-shadow: inset 0 0 0 1px var(--input-hoverErrorBorderColor);
+            border-color: var(--newInputText-hoverErrorBorderColor);
+            box-shadow: inset 0 0 0 1px var(--newInputText-hoverErrorBorderColor);
           }
         }
       }
@@ -149,29 +149,29 @@ export class DxcNewInputTextHelper {
       dxc-input-text-prefix, dxc-input-text-suffix{
         height: calc(1rem * 1.5);
         line-height: calc(1rem * 1.5);
-        font-family: var(--input-fontFamily);
+        font-family: var(--newInputText-fontFamily);
         pointer-events: none;
       }
 
       dxc-input-text-suffix{
-        border-left: 1px solid var(--input-suffixColor);
+        border-left: 1px solid var(--newInputText-suffixColor);
         margin-right: calc(1rem * 0.5);
         margin-left: calc(1rem * 0.25);
         padding: 0 0 0 calc(1rem * 0.5);
-        color: var(--input-suffixColor);
-        font-size: var(--input-suffixFontSize);
-        font-style: var(--input-suffixFontStyle);
-        font-weight: var(--input-suffixFontWeight);
+        color: var(--newInputText-suffixColor);
+        font-size: var(--newInputText-suffixFontSize);
+        font-style: var(--newInputText-suffixFontStyle);
+        font-weight: var(--newInputText-suffixFontWeight);
       }
 
       dxc-input-text-prefix{
-        border-right: 1px solid var(--input-prefixColor);
+        border-right: 1px solid var(--newInputText-prefixColor);
         margin-left: calc(1rem * 0.25);
         padding: 0 calc(1rem * 0.5) 0 0;
-        color: var(--input-prefixColor);
-        font-size: var(--input-prefixFontSize);
-        font-style: var(--input-prefixFontStyle);
-        font-weight: var(--input-prefixFontWeight);
+        color: var(--newInputText-prefixColor);
+        font-size: var(--newInputText-prefixFontSize);
+        font-style: var(--newInputText-prefixFontStyle);
+        font-weight: var(--newInputText-prefixFontWeight);
       }
 
       .overlay:not(.overlayVisible) {
@@ -185,24 +185,24 @@ export class DxcNewInputTextHelper {
         z-index
       }
       .inputLabel, .inputOptionalLabel {
-        color: var(--input-labelFontColor);
-        font-family: var(--input-fontFamily);
-        font-size: var(--input-labelFontSize);
-        font-style: var(--input-labelFontStyle);
-        font-weight: var(--input-labelFontWeight);
+        color: var(--newInputText-labelFontColor);
+        font-family: var(--newInputText-fontFamily);
+        font-size: var(--newInputText-labelFontSize);
+        font-style: var(--newInputText-labelFontStyle);
+        font-weight: var(--newInputText-labelFontWeight);
         line-height: 1.75em;
         min-height: 24px;
       }
       .inputOptionalLabel {
-        font-weight: var(--input-optionalLabelFontWeight);
+        font-weight: var(--newInputText-optionalLabelFontWeight);
       }
 
       .helperText {
-        color: var(--input-helperTextFontColor);
-        font-family: var(--input-fontFamily);
-        font-size: var(--input-helperTextFontSize);
-        font-style: var(--input-helperTextFontStyle);
-        font-weight: var(--input-helperTextFontWeight);
+        color: var(--newInputText-helperTextFontColor);
+        font-family: var(--newInputText-fontFamily);
+        font-size: var(--newInputText-helperTextFontSize);
+        font-style: var(--newInputText-helperTextFontStyle);
+        font-weight: var(--newInputText-helperTextFontWeight);
         line-height: 1.5em;
         min-height: 18px;
       }
@@ -214,12 +214,12 @@ export class DxcNewInputTextHelper {
         height: 38px;
         border: ${
           inputs.error
-            ? `1px solid var(--input-errorBorderColor)`
-            : "1px solid var(--input-enabledBorderColor)"
+            ? `1px solid var(--newInputText-errorBorderColor)`
+            : "1px solid var(--newInputText-enabledBorderColor)"
         };
         ${
           inputs.error
-            ? `box-shadow: inset 0 0 0 1px var(--input-errorBorderColor);`
+            ? `box-shadow: inset 0 0 0 1px var(--newInputText-errorBorderColor);`
             : ""
         };
         border-radius: 4px;
@@ -227,14 +227,14 @@ export class DxcNewInputTextHelper {
         &:hover {
           ${
             inputs.error
-              ? `border-color: var(--input-hoverErrorBorderColor);
-                 box-shadow: inset 0 0 0 1px var(--input-hoverErrorBorderColor);`
-              : `border-color: var(--input-hoverBorderColor);`
+              ? `border-color: var(--newInputText-hoverErrorBorderColor);
+                 box-shadow: inset 0 0 0 1px var(--newInputText-hoverErrorBorderColor);`
+              : `border-color: var(--newInputText-hoverBorderColor);`
           };
         }
         &:focus-within {
-          border: 1px solid var(--input-focusBorderColor);
-          box-shadow: inset 0 0 0 1px var(--input-focusBorderColor);
+          border: 1px solid var(--newInputText-focusBorderColor);
+          box-shadow: inset 0 0 0 1px var(--newInputText-focusBorderColor);
         }
       }
 
@@ -245,14 +245,14 @@ export class DxcNewInputTextHelper {
         border: none;
         outline: none;
         padding: 0 calc(1rem * 0.5);
-        color: var(--input-valueFontColor);
-        font-family: var(--input-fontFamily);
-        font-size: var(--input-valueFontSize);
-        font-style: var(--input-valueFontStyle);
-        font-weight: var(--input-valueFontWeight);
-        caret-color: var(--input-valueFontColor);
+        color: var(--newInputText-valueFontColor);
+        font-family: var(--newInputText-fontFamily);
+        font-size: var(--newInputText-valueFontSize);
+        font-style: var(--newInputText-valueFontStyle);
+        font-weight: var(--newInputText-valueFontWeight);
+        caret-color: var(--newInputText-valueFontColor);
         &::placeholder {
-          color: var(--input-placeholderFontColor);
+          color: var(--newInputText-placeholderFontColor);
         }
         
       }
@@ -262,34 +262,34 @@ export class DxcNewInputTextHelper {
         max-width: 24px;
         padding: 3px;
         font-size: 1rem;
-        font-family: var(--input-fontFamily);
-        border: 1px solid var(--input-actionBackgroundColor);
+        font-family: var(--newInputText-fontFamily);
+        border: 1px solid var(--newInputText-actionBackgroundColor);
         border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        background-color: var(--input-actionBackgroundColor);
-        color: var(--input-actionIconColor);
+        background-color: var(--newInputText-actionBackgroundColor);
+        color: var(--newInputText-actionIconColor);
         &:hover {
-          background-color: var(--input-hoverActionBackgroundColor);
-          color: var(--input-hoverActionIconColor);
+          background-color: var(--newInputText-hoverActionBackgroundColor);
+          color: var(--newInputText-hoverActionIconColor);
         }
         &:focus {
-          color: var(--input-focusActionIconColor);
-          border: 2px solid var(--input-focusActionBorderColor);
+          color: var(--newInputText-focusActionIconColor);
+          border: 2px solid var(--newInputText-focusActionBorderColor);
           outline: none;
         }
         &:focus-visible {
-          border: 2px solid var(--input-focusActionBorderColor);
+          border: 2px solid var(--newInputText-focusActionBorderColor);
           outline: none;
         }
         &:active {
-          border: 2px solid var(--input-focusActionBorderColor);
-          box-shadow: inset 0 0 0 1px var(--input-activeActionBackgroundColor);
+          border: 2px solid var(--newInputText-focusActionBorderColor);
+          box-shadow: inset 0 0 0 1px var(--newInputText-activeActionBackgroundColor);
           outline: none;
-          background-color: var(--input-activeActionBackgroundColor);
-          color: var(--input-activeActionIconColor);
+          background-color: var(--newInputText-activeActionBackgroundColor);
+          color: var(--newInputText-activeActionIconColor);
         }
         svg {
           line-height: 18px;
@@ -303,7 +303,7 @@ export class DxcNewInputTextHelper {
         align-items: center;
         justify-content: center;
         pointer-events: none;
-        color: var(--input-errorIconColor);
+        color: var(--newInputText-errorIconColor);
         svg {
           line-height: 18px;
           height: 18px;
@@ -311,11 +311,11 @@ export class DxcNewInputTextHelper {
         }
       }
       .inputErrorMessage {
-        font-family: var(--input-fontFamily);
-        color: var(--input-errorMessageColor);
-        font-size: var(--input-errorFontSize);
-        font-style: var(--input-errorFontStyle);
-        font-weight: var(--input-errorFontWeight);
+        font-family: var(--newInputText-fontFamily);
+        color: var(--newInputText-errorMessageColor);
+        font-size: var(--newInputText-errorFontSize);
+        font-style: var(--newInputText-errorFontStyle);
+        font-weight: var(--newInputText-errorFontWeight);
         line-height: 1.5em;
         min-height: 18px;
       }
@@ -345,45 +345,45 @@ export class DxcNewInputTextHelper {
         overflow-x: hidden;
         max-height: 160px;
         li {
-          color: var(--input-listOptionFontColor);
-          font-family: var(--input-listOptionFontFamily);
-          font-size: var(--input-listOptionFontSize);
-          font-weight: var(--input-listOptionFontWeight);
+          color: var(--newInputText-listOptionFontColor);
+          font-family: var(--newInputText-listOptionFontFamily);
+          font-size: var(--newInputText-listOptionFontSize);
+          font-weight: var(--newInputText-listOptionFontWeight);
           line-height: 1.75em;
           padding-top: calc((39px - 1.75em) / 2);
           padding-bottom: calc((39px - 1.75em) / 2);
           padding-left: 1em;
           cursor: pointer;
           &.selected {
-            background-color: var(--input-hoverListOptionBackgroundColor);
+            background-color: var(--newInputText-hoverListOptionBackgroundColor);
           }
           &.active.selected {
-            background-color: var(--input-activeListOptionBackgroundColor);
+            background-color: var(--newInputText-activeListOptionBackgroundColor);
           }
           b{
-            font-weight: var(--input-listOptionTypedFontWeight);
+            font-weight: var(--newInputText-listOptionTypedFontWeight);
           }
           &.systemMessage{
-            color: var(--input-systemMessageFontColor);
-            font-family: var(--input-systemMessageFontFamily);
-            font-size: var(--input-systemMessageFontSize);
-            font-weight: var(--input-systemMessageFontWeight);
+            color: var(--newInputText-systemMessageFontColor);
+            font-family: var(--newInputText-systemMessageFontFamily);
+            font-size: var(--newInputText-systemMessageFontSize);
+            font-weight: var(--newInputText-systemMessageFontWeight);
           }
         }
 
         &.fetchingError{
-          border: 1px solid var(--input-errorMessageBorderColor);
+          border: 1px solid var(--newInputText-errorMessageBorderColor);
           li{
-            font-family: var(--input-errorMessageFontFamily);
-            font-size: var(--input-errorMessageFontSize);
-            font-weight: var(--input-errorMessageFontWeight);
+            font-family: var(--newInputText-errorMessageFontFamily);
+            font-size: var(--newInputText-errorMessageFontSize);
+            font-weight: var(--newInputText-errorMessageFontWeight);
             align-items: center;
             display: flex;
-            background-color: var(--input-errorMessageBackgroundColor);
+            background-color: var(--newInputText-errorMessageBackgroundColor);
             svg{
               height: 18px;
               width: 18px;
-              fill: var(--input-errorIconColor);
+              fill: var(--newInputText-errorIconColor);
             }
             span{
               margin-left: 8px;
@@ -420,74 +420,74 @@ export class DxcNewInputTextHelper {
   getDarkStyle(inputs) {
     return css`
       dxc-input-text-prefix {
-        border-right: 1px solid var(--input-prefixColorOnDark);
-        color: var(--input-prefixColorOnDark);
+        border-right: 1px solid var(--newInputText-prefixColorOnDark);
+        color: var(--newInputText-prefixColorOnDark);
       }
       dxc-input-text-suffix {
-        border-left: 1px solid var(--input-suffixColorOnDark);
-        color: var(--input-suffixColorOnDark);
+        border-left: 1px solid var(--newInputText-suffixColorOnDark);
+        color: var(--newInputText-suffixColorOnDark);
       }
       .inputLabel,
       .inputOptionalLabel {
-        color: var(--input-labelFontColorOnDark);
+        color: var(--newInputText-labelFontColorOnDark);
       }
       .helperText {
-        color: var(--input-helperTextFontColorOnDark);
+        color: var(--newInputText-helperTextFontColorOnDark);
       }
       .inputText {
-        color: var(--input-valueFontColorOnDark);
-        caret-color: var(--input-valueFontColorOnDark);
+        color: var(--newInputText-valueFontColorOnDark);
+        caret-color: var(--newInputText-valueFontColorOnDark);
         &::placeholder {
-          color: var(--input-placeholderFontColorOnDark);
+          color: var(--newInputText-placeholderFontColorOnDark);
         }
       }
       .inputContainer {
         border: ${inputs.error
-          ? `1px solid var(--input-errorBorderColorOnDark)`
-          : "1px solid var(--input-enabledBorderColorOnDark)"};
+          ? `1px solid var(--newInputText-errorBorderColorOnDark)`
+          : "1px solid var(--newInputText-enabledBorderColorOnDark)"};
         ${inputs.error
-          ? `box-shadow: inset 0 0 0 1px var(--input-errorBorderColorOnDark);`
+          ? `box-shadow: inset 0 0 0 1px var(--newInputText-errorBorderColorOnDark);`
           : ""};
         &:hover {
           ${inputs.error
-            ? `border-color: var(--input-hoverErrorBorderColorOnDark);
-                   box-shadow: inset 0 0 0 1px var(--input-hoverErrorBorderColorOnDark);`
-            : `border-color: var(--input-hoverBorderColorOnDark);`};
+            ? `border-color: var(--newInputText-hoverErrorBorderColorOnDark);
+                   box-shadow: inset 0 0 0 1px var(--newInputText-hoverErrorBorderColorOnDark);`
+            : `border-color: var(--newInputText-hoverBorderColorOnDark);`};
         }
         &:focus-within {
-          border: 1px solid var(--input-focusBorderColorOnDark);
-          box-shadow: inset 0 0 0 1px var(--input-focusBorderColorOnDark);
+          border: 1px solid var(--newInputText-focusBorderColorOnDark);
+          box-shadow: inset 0 0 0 1px var(--newInputText-focusBorderColorOnDark);
         }
       }
       .inputAction {
-        border: 1px solid var(--input-actionBackgroundColorOnDark);
-        background-color: var(--input-actionBackgroundColorOnDark);
-        color: var(--input-actionIconColorOnDark);
+        border: 1px solid var(--newInputText-actionBackgroundColorOnDark);
+        background-color: var(--newInputText-actionBackgroundColorOnDark);
+        color: var(--newInputText-actionIconColorOnDark);
         &:hover {
-          color: var(--input-hoverActionIconColorOnDark);
-          background-color: var(--input-hoverActionBackgroundColorOnDark);
+          color: var(--newInputText-hoverActionIconColorOnDark);
+          background-color: var(--newInputText-hoverActionBackgroundColorOnDark);
         }
         &:focus {
-          color: var(--input-focusActionIconColorOnDark);
-          border: 2px solid var(--input-focusActionBorderColorOnDark);
+          color: var(--newInputText-focusActionIconColorOnDark);
+          border: 2px solid var(--newInputText-focusActionBorderColorOnDark);
         }
         &:focus-visible {
-          color: var(--input-focusActionIconColorOnDark);
-          border: 2px solid var(--input-focusActionBorderColorOnDark);
+          color: var(--newInputText-focusActionIconColorOnDark);
+          border: 2px solid var(--newInputText-focusActionBorderColorOnDark);
         }
         &:active {
-          border: 2px solid var(--input-focusActionBorderColorOnDark);
+          border: 2px solid var(--newInputText-focusActionBorderColorOnDark);
           box-shadow: inset 0 0 0 1px
-            var(--input-activeActionBackgroundColorOnDark);
-          background-color: var(--input-activeActionBackgroundColorOnDark);
-          color: var(--input-activeActionIconColorOnDark);
+            var(--newInputText-activeActionBackgroundColorOnDark);
+          background-color: var(--newInputText-activeActionBackgroundColorOnDark);
+          color: var(--newInputText-activeActionIconColorOnDark);
         }
       }
       .inputErrorIcon {
-        color: var(--input-errorIconColorOnDark);
+        color: var(--newInputText-errorIconColorOnDark);
       }
       .inputErrorMessage {
-        color: var(--input-errorMessageColorOnDark);
+        color: var(--newInputText-errorMessageColorOnDark);
       }
     `;
   }

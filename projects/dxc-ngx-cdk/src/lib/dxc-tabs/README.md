@@ -108,6 +108,6 @@ The API properties are the following:
     <tr>
         <td>selectedFontColor</td>
         <td><code>#6F2C91</code></td>
-        <td>Applies to token selectedFontColor, selectedIconColor, selectedUnderlinedColor, focusColor, hoverBackgroundColor and pressedBackgroundColor.</td>
+        <td>Applies to token selectedFontColor, selectedIconColor, selectedUnderlineColor, focusColor, hoverBackgroundColor and pressedBackgroundColor.</td>
     </tr>
 </table>

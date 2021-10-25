@@ -20,7 +20,7 @@
 
   dxc-checkbox {
     mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container{
-      margin-right: var(--select-checkboxOptionSpacing);
+      margin-right: var(--select-optionCheckboxSpacing);
     }
   }
 
@@ -54,24 +54,6 @@
   }
 }
 
-// Collapses unwanted whitespace created by newlines in code like the following:
-// <mat-option>
-//   {{value}}
-// </mat-option>
-.mat-option-text {
-  display: inline-block;
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  span {
-    font-family: var(--select-fontFamily);
-    color: var(--select-optionsFontColor);
-    font-size: var(--select-optionsFontSize);
-    font-style: var(--select-optionsFontStyle);
-
-  }
-}
-
 // Increase specificity because ripple styles are part of the `mat-core` mixin and can
 // potentially overwrite the absolute position of the container.
 .mat-option .mat-option-ripple {
@@ -79,18 +61,4 @@
   // user content and we don't want to disable mouse events on the user content.
   // Pointer events can be safely disabled because the ripple trigger element is the host element.
   pointer-events: none;
-}
-
-.mat-option-text {
-  dxc-option-icon {
-    display: flex;
-    align-items: center;
-    color: var(--select-iconColor);
-    svg, img {
-      height: var(--select-iconSize);
-      width: var(--select-iconSize);
-
-
-    }
-  }
 }

@@ -25,23 +25,23 @@
     .uploadedLabel {
       font-family: var(--upload-fontFamily);
       letter-spacing: 0.26px;
-      color: var(--upload-filesUploadedTitleFontColor);
+      color: var(--upload-uploadedFilesTitleFontColor);
       margin-bottom: 4px;
-      font-size: var(--upload-filesUploadedTitleFontSize);
-      font-style: var(--upload-filesUploadedTitleFontStyle);
-      font-weight: var(--upload-filesUploadedTitleFontWeight);
-      text-transform: var(--upload-filesUploadedTitleFontTextTransform);
+      font-size: var(--upload-uploadedFilesTitleFontSize);
+      font-style: var(--upload-uploadedFilesTitleFontStyle);
+      font-weight: var(--upload-uploadedFilesTitleFontWeight);
+      text-transform: var(--upload-uploadedFilesTitleFontTextTransform);
     }
     .successCount {
       span {
-        font-weight: var(--upload-filesUploadedNumberFontWeight);
+        font-weight: var(--upload-uploadedFilesNumberFontWeight);
       }
       font-family: var(--upload-fontFamily);
-      color: var(--upload-filesUploadedSubtitleFontColor);
-      font-size: var(--upload-filesUploadedSubtitleFontSize);
-      font-style: var(--upload-filesUploadedSubtitleFontStyle);
-      font-weight: var(--upload-filesUploadedSubtitleFontWeight);
-      text-transform: var(--upload-filesUploadedSubtitleFontTextTransform);
+      color: var(--upload-uploadedFilesSubtitleFontColor);
+      font-size: var(--upload-uploadedFilesSubtitleFontSize);
+      font-style: var(--upload-uploadedFilesSubtitleFontStyle);
+      font-weight: var(--upload-uploadedFilesSubtitleFontWeight);
+      text-transform: var(--upload-uploadedFilesSubtitleFontTextTransform);
     }
   }
 }

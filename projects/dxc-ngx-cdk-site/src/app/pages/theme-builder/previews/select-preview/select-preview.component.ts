@@ -20,6 +20,24 @@ export class SelectPreviewComponent implements OnInit {
     },
   ];
 
+  optionsWithIconAndLabels = [
+    {
+      value: 1,
+      iconSrc: "assets/img/home.svg",
+      label: "Home"
+    },
+    {
+      value: 2,
+      iconSrc: "assets/img/home.svg",
+      label: "House"
+    },
+    {
+      value: 3,
+      iconSrc: "assets/img/home.svg",
+      label: "Home"
+    }
+  ];
+
   multipleSelected = [""];
 
   constructor() {}

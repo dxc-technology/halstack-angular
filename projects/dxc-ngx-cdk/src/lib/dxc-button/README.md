@@ -120,7 +120,7 @@ The API properties are the following:
       <td>
         <code>#6F2C91</code>
       </td>
-      <td>Applies to token primaryBackgroundColor and secondaryOutlinedColor in primary and secondary mode.</td>
+      <td>Applies to token primaryBackgroundColor and secondaryBorderColor in primary and secondary mode.</td>
     </tr>
     <tr>
       <td>hoverColor</td>

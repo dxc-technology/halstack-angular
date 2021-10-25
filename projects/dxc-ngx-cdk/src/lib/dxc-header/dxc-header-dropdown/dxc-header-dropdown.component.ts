@@ -46,7 +46,6 @@ export class DxcHeaderDropdownComponent implements OnChanges {
     return css`
       dxc-dropdown {
         .menu-buttom-label {
-          font-family: var(--fontFamily);
           color: var(--header-fontColor) !important;
         }
         button {

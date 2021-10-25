@@ -15,10 +15,10 @@
   }
   .previewIcon {
     margin-right: 8px;
-    fill: var(--upload-fileUploadedIconColor);
+    fill: var(--upload-uploadedFileIconColor);
     svg{
-      width: var(--upload-fileUploadedIconWidth);
-      height: var(--upload-fileUploadedIconHeight);
+      width: var(--upload-uploadedFileIconSize);
+      height: var(--upload-uploadedFileIconSize);
     }
   }
   .errorIcon {

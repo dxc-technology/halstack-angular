@@ -705,11 +705,6 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
 
   gridView = (isSwitch: boolean = false) => {
 
-    if(this.size >= 0)
-   {
-     this.allowTreeView = true;
-   }
-
     this.currentView = View.GRID;
     this.defaultOrghLevelDisabled = true;
     this.searchSpecificBranchDisabled = true;

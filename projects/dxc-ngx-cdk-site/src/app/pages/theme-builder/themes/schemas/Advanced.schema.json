@@ -494,7 +494,7 @@
     "optionBorderThickness": "bWidth",
     "optionBorderStyle": "bStyle"
   },
-  "input": {
+  "newInputText": {
     "disabledBorderColor": "color",
     "disabledBorderColorOnDark": "color",
     "disabledContainerFillColor": "color",

@@ -608,7 +608,6 @@ export abstract class _MatSelectBase<C>
     super(elementRef, _defaultErrorStateMatcher, _parentForm, ngControl);
 
     this.bgProviderService.$changeColor.subscribe((value) => {
-      console.log(`value of color in select: ${value}`);
       if (value === "dark") {
         this.service.isDarkTheme = true;
       } else if (value === "light") {

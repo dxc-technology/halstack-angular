@@ -214,11 +214,11 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
 
     //NEW INPUT TEXT
     proccessedTokens["--input-hoverListOptionBackgroundColor"] =
-      theme?.input?.baseColor ??
+      theme?.input?.selectedBaseColor ??
       tokens["--input-hoverListOptionBackgroundColor"];
-    proccessedTokens["--inputText-activeListOptionBackgroundColor"] =
-      this.subLightness(theme?.input?.baseColor, 15) ??
-      tokens["--inputText-activeListOptionBackgroundColor"];
+    proccessedTokens["--input-activeListOptionBackgroundColor"] =
+      this.subLightness(theme?.input?.selectedBaseColor, 15) ??
+      tokens["--input-activeListOptionBackgroundColor"];
 
     //PAGINATOR
     proccessedTokens["--paginator-backgroundColor"] =
@@ -281,7 +281,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--slider-hoverThumbBackgroundColor"] =
       this.subLightness(theme?.slider?.baseColor, 15) ??
       tokens["--slider-hoverThumbBackgroundColor"];
-
 
     //SPINNER
     proccessedTokens["--spinner-trackCircleColor"] =

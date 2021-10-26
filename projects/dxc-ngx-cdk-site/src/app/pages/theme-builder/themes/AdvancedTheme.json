@@ -256,7 +256,7 @@
     "pickerMonthColor": "#000000",
     "pickerWeekLabelColor": "#000000",
     "pickerBackgroundColorMonthArrows": "transparent",
-    "focusColor": "#005FCC",
+    "focusColor": "#0095ff",
     "fontFamily": "Open Sans, sans-serif",
     "pickerHeight": "316px",
     "pickerWidth": "290px"
@@ -273,7 +273,7 @@
     "pickerMonthColor": "#000000",
     "pickerWeekLabelColor": "#000000",
     "pickerBackgroundColorMonthArrows": "transparent",
-    "focusColor": "#005FCC",
+    "focusColor": "#0095ff",
     "fontFamily": "Open Sans, sans-serif",
     "pickerHeight": "316px",
     "pickerWidth": "290px"
@@ -340,7 +340,7 @@
     "borderColor": "transparent",
     "scrollBarThumbColor": "#666666",
     "scrollBarTrackColor": "#D9D9D9",
-    "focusColor": "#005FCC"
+    "focusColor": "#0095ff"
   },
   "footer": {
     "height": "124px",
@@ -613,7 +613,7 @@
     "visitedUnderlineColor": "#6f2c91",
     "activeFontColor": "#000000",
     "activeUnderlineColor": "#000000",
-    "focusColor": "#0067b3"
+    "focusColor": "#0095ff"
   },
   "paginator": {
     "backgroundColor": "#eeeeee",
@@ -672,7 +672,7 @@
     "disabledColorOnDark": "#575757",
     "disabledFontColor": "#b1b1b1",
     "disabledFontColorOnDark": "#575757",
-    "focusColor": "#005FCC",
+    "focusColor": "#0095ff",
     "focusColorOnDark": "#1682FF",
     "fontColor": "#000000",
     "fontColorOnDark": "#FFFFFF",
@@ -687,7 +687,7 @@
     "disabledColorOnDark": "#575757",
     "errorColor": "#D0011B",
     "errorColorOnDark": "#FE344F",
-    "focusColor": "#005FCC",
+    "focusColor": "#0095ff",
     "focusColorOnDark": "#1682FF",
     "fontFamily": "Open Sans, sans-serif",
     "hoverOptionBackgroundColor": "#f2f2f2",
@@ -1143,6 +1143,6 @@
     "separatorBorderThickness": "1px",
     "separatorBorderStyle": "solid",
     "separatorColor": "#D9D9D9",
-    "focusColor": "#005FCC"
+    "focusColor": "#0095ff"
   }
 }

@@ -397,7 +397,7 @@ export const componentTokens = {
   "--date-pickerFontColor": globalTokens.hal_black,
   "--date-pickerHoverDateFontColor": globalTokens.hal_black,
   "--date-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
-  "--date-focusColor": globalTokens.blue,
+  "--date-focusColor": globalTokens.hal_blue_l_50,
   "--date-pickerYearColor": globalTokens.hal_black,
   "--date-pickerMonthColor": globalTokens.hal_black,
   "--date-pickerWeekLabelColor": globalTokens.hal_black,
@@ -414,7 +414,7 @@ export const componentTokens = {
   "--newDate-pickerFontColor": globalTokens.hal_black,
   "--newDate-pickerHoverDateFontColor": globalTokens.hal_black,
   "--newDate-pickerHoverDateBackgroundColor": globalTokens.lighterPurple,
-  "--newDate-focusColor": globalTokens.blue,
+  "--newDate-focusColor": globalTokens.hal_blue_l_50,
   "--newDate-pickerYearColor": globalTokens.hal_black,
   "--newDate-pickerMonthColor": globalTokens.lighterBlack,
   "--newDate-pickerWeekLabelColor": globalTokens.lighterBlack,
@@ -485,7 +485,7 @@ export const componentTokens = {
   "--dropdown-borderColor": globalTokens.transparent,
   "--dropdown-scrollBarThumbColor": globalTokens.hal_grey_s_40,
   "--dropdown-scrollBarTrackColor": globalTokens.lightGrey,
-  "--dropdown-focusColor": globalTokens.blue,
+  "--dropdown-focusColor": globalTokens.hal_blue_l_50,
 
   //FOOTER
   "--footer-height": "124px",
@@ -814,7 +814,7 @@ export const componentTokens = {
   "--link-visitedUnderlineColor": globalTokens.purple,
   "--link-activeFontColor": globalTokens.hal_black,
   "--link-activeUnderlineColor": globalTokens.hal_black,
-  "--link-focusColor": globalTokens.hal_blue_s_35,
+  "--link-focusColor": globalTokens.hal_blue_l_50,
 
   //PAGINATOR
   "--paginator-backgroundColor": globalTokens.darkWhite,
@@ -869,7 +869,7 @@ export const componentTokens = {
   "--radio-disabledColor": globalTokens.lighterBlack,
   "--radio-fontColor": globalTokens.hal_black,
   "--radio-disabledFontColor": globalTokens.lighterBlack,
-  "--radio-focusColor": globalTokens.blue,
+  "--radio-focusColor": globalTokens.hal_blue_l_50,
   "--radio-circleLabelSpacing": "8px",
   "--radio-circleSize": "20px",
   "--radio-colorOnDark": globalTokens.hal_white,
@@ -919,7 +919,7 @@ export const componentTokens = {
   "--select-errorColor": globalTokens.hal_red_s_41,
   "--select-errorColorOnDark": globalTokens.hal_red_l_60,
   "--select-required": globalTokens.hal_red_s_41,
-  "--select-focusColor": globalTokens.blue,
+  "--select-focusColor": globalTokens.hal_blue_l_50,
   "--select-focusColorOnDark": "#1682FF",
   "--select-disabledColor": globalTokens.lighterBlack,
   "--select-disabledColorOnDark": "#575757",
@@ -1300,7 +1300,7 @@ export const componentTokens = {
   "--upload-uploadedFilesNumberFontWeight": globalTokens.type_bold,
 
   //WIZARD
-  "--wizard-focusColor": globalTokens.blue,
+  "--wizard-focusColor": globalTokens.hal_blue_l_50,
   "--wizard-disabledBackgroundColor": globalTokens.lightGrey,
   "--wizard-disabledFontColor": globalTokens.hal_grey_s_40,
   "--wizard-stepContainerFontSize": globalTokens.type_scale_03,

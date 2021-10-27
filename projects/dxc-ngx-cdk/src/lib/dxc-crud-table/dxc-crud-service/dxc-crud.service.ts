@@ -45,7 +45,18 @@ export class DxcCrudService {
   }
 
   deleteData(request: IRequest, identifier, row): Observable<any> {
-    const url = request.url.replace('{' + identifier + '}', row[identifier]);
+    let url = request.url.replace('{' + identifier + '}', row[identifier]);
+    const paramsPattern = /[^{\}]+(?=})/g;
+    let finds = [];
+    do {
+      var m = paramsPattern.exec(url);
+      if (m && m[0] && m[0] != '') {
+        finds.push(m[0])
+      }
+    } while (m);
+    finds.forEach(find => {
+      url = url.replace('{' + find + '}', row[find]);
+    });
     return this.callService.delete(url);
   }
 

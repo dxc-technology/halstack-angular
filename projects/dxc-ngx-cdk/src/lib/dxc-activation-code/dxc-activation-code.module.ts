@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DxcActivationcodeComponent } from './dxc-activation-code.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +16,8 @@ import { DxcActivationcodeComponent } from './dxc-activation-code.component';
     DxcInputTextModule,
     DxcLabelModule, DxcButtonModule,
     DxcDialogModule, DxcPageErrorsModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ],
   declarations: [DxcActivationcodeComponent],
   exports: [DxcActivationcodeComponent]

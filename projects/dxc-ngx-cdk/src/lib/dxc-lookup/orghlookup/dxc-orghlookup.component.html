@@ -25,7 +25,7 @@
       </dxc-button>
       <div class="float-md-right">
         <span class="mr-3 mb-2 d-inline-block float-md-left">
-          <dxc-button  size="small" mode="secondary" id="treeview" *ngIf="allowTreeView" [ariaLabel]="resource?.tttreeview.description"
+          <dxc-button size="small" mode="secondary" id="treeview" *ngIf="allowTreeView" [style.visibility]="(size > 0) && allowTreeView ? 'visible' : 'hidden'" [ariaLabel]="resource?.tttreeview.description"
             (onClick)="treeView(true)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">
@@ -33,7 +33,7 @@
               </span>
             </dxc-button-icon>
           </dxc-button>
-          <dxc-button  size="small" mode="secondary" id="gridview" *ngIf="allowTreeView" [ariaLabel]="resource?.ttgridview.description"
+          <dxc-button  size="small" mode="secondary" id="gridview" *ngIf="allowTreeView" [style.visibility]="(size > 0) && allowTreeView ? 'visible' : 'hidden'" [ariaLabel]="resource?.ttgridview.description"
             (onClick)="gridView(true)">
             <dxc-button-icon>
               <span class="icon-dxc-wrapper">

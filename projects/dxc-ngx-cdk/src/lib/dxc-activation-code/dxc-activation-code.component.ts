@@ -1,6 +1,7 @@
 import { DxcActivationcodeService } from './dxc-activationcode.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { ConfigurationsetupService } from '../services/startup/configurationsetup.service';
 
 interface IActivateCode {
   value: boolean;
@@ -29,9 +30,9 @@ export class DxcActivationcodeComponent implements OnInit {
   loadSpinner = false;
 
   @ViewChild('activationdialog', { read: ElementRef, static: false }) field: ElementRef;
+  globalResource: { [key: string]: string };
 
-
-  constructor(private helper: DxcActivationcodeService, private fb: FormBuilder) {
+  constructor(private helper: DxcActivationcodeService, private fb: FormBuilder, private config: ConfigurationsetupService) {
     this.onClose = new EventEmitter<IActivateCode>();
   }
 
@@ -39,6 +40,7 @@ export class DxcActivationcodeComponent implements OnInit {
     this.licenceActivationForm = this.fb.group({
       activationCodeVal: ['', Validators.required]
     });
+    this.globalResource = this.config.configservice.Resource;
     this.activationCode.moduleName = this.name;
     this.activationCode.value = this.value;
   }

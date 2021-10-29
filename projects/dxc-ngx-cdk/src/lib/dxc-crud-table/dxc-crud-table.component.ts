@@ -759,7 +759,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
             }
             else {
               this.expandedElement[col.name] = this.expandedElement[col.name];
-            }
+			  }
+			this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
             break;
           case this.fieldsType.dropdown:
             this.expandedElement[(col as IDropdownProperties).viewValue] = this.expandedElement[(col as IDropdownProperties).viewValue];
@@ -781,9 +782,11 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
               (col.required && col.required == true) ? Validators.required : null));
             break;
           case this.fieldsType.dxcDate:
+		    this.expandedElement[col.name] = this.expandedElement[col.name];
             this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
             break;
           default:
+		    this.expandedElement[col.name] = this.expandedElement[col.name];
             this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
               (col.required && col.required == true) ? Validators.required : null));
             break;

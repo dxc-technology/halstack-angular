@@ -59,6 +59,7 @@ export class DxcCrudEdiatbleFieldsComponent implements OnInit {
   fieldsType = EFieldsType;
   gridStateRequest: IRequest = GridStateRequest;
   userGridStateRequest: IRequest = UserGridStateRequest;
+  multiUserGridStateRequest: IRequest = UserGridStateRequest;
   resourceRequest: IRequest = ResourceRequest;
   lookupResourceRequest: IRequest = ResourceRequest;
   userGridRequest = UserGridRequest;
@@ -98,6 +99,10 @@ export class DxcCrudEdiatbleFieldsComponent implements OnInit {
     url = ''
     url = server + '/' + baseGridStatePath.replace('{gridid}', 'userlookuptextnew');
     this.userGridStateRequest.url = url;
+	
+	url = ''
+    url = server + '/' + baseGridStatePath.replace('{gridid}', 'userlookupmultitextnew');
+    this.multiUserGridStateRequest.url = url;
 
     url = '';
     server = this.config.getServer(ServiceRequest.RESOURCESERVER, this.config.configservice);

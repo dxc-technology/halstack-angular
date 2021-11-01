@@ -99,7 +99,7 @@
         [userlookupoptions]="field.userLookupOptions" id="ctrl_{{field.name}}" [mode]="field.mode"
         [removeiconarialabel]="resource[field.label]" [gridmode]="field.gridMode"
         [lookuptype]="field.lookupType" [usergridrequest]="userGridRequest"
-        [lookupresourcerequest]="lookupResourceRequest" [usergridstaterequest]="field.lookupType == 0  ? userGridStateRequest : multiUserGridStateRequest"
+        [lookupresourcerequest]="lookupResourceRequest" [usergridstaterequest]="field.lookupType == 'MULTI' ? multiUserGridStateRequest : userGridStateRequest"
         [resourcerequest]="resourceRequest" formControlName="{{field.name}}">
       </dxc-user-lookup>
       <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"

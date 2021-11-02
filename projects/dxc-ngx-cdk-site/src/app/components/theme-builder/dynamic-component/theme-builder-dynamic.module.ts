@@ -36,6 +36,7 @@ import { TablePreviewComponent } from '../../../pages/theme-builder/previews/tab
 import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from "src/app/pages/theme-builder/previews/new-date-preview/new-date-preview.component";
 import { NewTextareaPreviewComponent } from "src/app/pages/theme-builder/previews/new-textarea-preview/new-textarea-preview.component";
+import { FileInputPreviewComponent } from "src/app/pages/theme-builder/previews/file-input-preview/file-input-preview.component";
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -74,7 +75,8 @@ import { NewTextareaPreviewComponent } from "src/app/pages/theme-builder/preview
     UploadPreviewComponent,
     TablePreviewComponent,
     NewDatePreviewComponent,
-    NewTextareaPreviewComponent
+    NewTextareaPreviewComponent,
+    FileInputPreviewComponent
   ]
 })
 export class ThemeBuilderDynamicModule { }

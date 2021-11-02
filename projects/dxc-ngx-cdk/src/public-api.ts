@@ -53,6 +53,9 @@ export * from './lib/dxc-dropdown/dxc-dropdown.module';
 export * from './lib/dxc-dropdown/dxc-dropdown-option/dxc-dropdown-option.component';
 export * from './lib/dxc-dropdown/dxc-dropdown-icon/dxc-dropdown-icon.component';
 
+export * from './lib/dxc-file-input/dxc-file-input.component';
+export * from './lib/dxc-file-input/dxc-file-input.module';
+
 export * from './lib/dxc-footer/dxc-footer.component';
 export * from './lib/dxc-footer/dxc-footer.module';
 

@@ -342,6 +342,7 @@
     "scrollBarTrackColor": "#D9D9D9",
     "focusColor": "#0095ff"
   },
+  "fileInput":{},
   "footer": {
     "height": "124px",
     "backgroundColor": "#000000",

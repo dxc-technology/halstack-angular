@@ -42,7 +42,8 @@ import {
   DxcPasswordModule,
   DxcNumberModule,
   DxcNewDateModule,
-  DxcNewTextareaModule
+  DxcNewTextareaModule,
+  DxcFileInputModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -77,6 +78,7 @@ import { TablePreviewComponent } from './previews/table-preview/table-preview.co
 import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
 import { NewTextareaPreviewComponent } from './previews/new-textarea-preview/new-textarea-preview.component';
+import { FileInputPreviewComponent } from './previews/file-input-preview/file-input-preview.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +116,7 @@ import { NewTextareaPreviewComponent } from './previews/new-textarea-preview/new
     NewInputTextPreviewComponent,
     NewDatePreviewComponent,
     NewTextareaPreviewComponent,
+    FileInputPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -157,7 +160,8 @@ import { NewTextareaPreviewComponent } from './previews/new-textarea-preview/new
     DxcToggleGroupModule,
     DxcUploadModule,
     BackgroundProviderModule,
-    DxcNewTextareaModule
+    DxcNewTextareaModule,
+    DxcFileInputModule
   ],
   exports: [],
   entryComponents: [],

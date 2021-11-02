@@ -31,6 +31,7 @@ import { TablePreviewComponent } from '../../previews/table-preview/table-previe
 import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
 import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
+import { FileInputPreviewComponent } from '../../previews/file-input-preview/file-input-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -49,6 +50,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'newDate', component: NewDatePreviewComponent},
   {name: 'dialog', component: DialogPreviewComponent},
   {name: 'dropdown', component: DropdownPreviewComponent},
+  {name: 'fileInput', component: FileInputPreviewComponent},
   {name: 'footer', component: FooterPreviewComponent},
   {name: 'header', component: HeaderPreviewComponent},
   {name: 'heading', component: HeadingPreviewComponent},

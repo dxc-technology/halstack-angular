@@ -1,6 +1,14 @@
 <div>
   <tbuilder-component-mode text="File">
-    <dxc-file-input label="Label" helperText="helperText" showPreview="true" margin="xsmall" multiple="true"></dxc-file-input>
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      showPreview="true"
+      margin="xsmall"
+      multiple="true"
+      (callbackFile)="callback($event)"
+      [value]="value"
+    ></dxc-file-input>
     <dxc-file-input
       label="Label"
       helperText="helperText"

@@ -35,7 +35,7 @@
     ></dxc-button>
     <span *ngIf="mode !== 'file'" class="dropLabel">or drop files</span>
   </div>
-  <div *ngIf="files.length > 0 && !disabled && multiple" class="fileContainer">
+  <div *ngIf="files?.length > 0 && !disabled && multiple" class="fileContainer">
     <dxc-file
       *ngFor="let file of files"
       [file]="file"
@@ -44,7 +44,7 @@
       [mode]="mode"
     ></dxc-file>
   </div>
-  <div *ngIf="files.length > 0 && !disabled && !multiple" class="fileContainer">
+  <div *ngIf="files?.length > 0 && !disabled && !multiple" class="fileContainer">
     <dxc-file
       [file]="files[0]"
       [showPreview]="showPreview"

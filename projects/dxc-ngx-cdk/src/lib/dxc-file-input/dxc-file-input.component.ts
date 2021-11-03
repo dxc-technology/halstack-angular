@@ -31,6 +31,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   @Input() public mode: string = "file";
   @Input() public label: string;
   @Input() public helperText: string;
+  @Input() public value: Array<FileData>;
   @Input() public accept: any;
   @Input()
   get maxSize(): number {
@@ -72,14 +73,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled;
-  // @Input()
-  // get maxCount(): number {
-  //   return this._maxCount;
-  // }
-  // set maxCount(value: number) {
-  //   this._maxCount = coerceNumberProperty(value);
-  // }
-  // private _maxCount;
   @Input() public margin: any;
   @Input()
   get tabIndexValue(): number {
@@ -102,19 +95,36 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     minSize: null,
     multiple: true,
     showPreview: false,
-    // maxCount: null,
     disabled: false,
     margin: null,
     tabIndexValue: 0,
+    value: null
   });
 
   id: string;
   files: Array<FileData> = [];
   hoveringWithFile: boolean = false;
+  filesLoaded: boolean = false;
+  numberFiles: number = 0;
 
-  constructor(private utils: CssUtils, private service: FilesService) {}
+  constructor(private utils: CssUtils, private service: FilesService) {
+    this.service.files.subscribe(({files, event}) => {
+      if (files) {
+        this.files = files;
+        if ((this.numberFiles === this.files?.length && event === "add") || event === "remove") {
+          this.callbackFile.emit(this.files);
+        }
+        if(event === "remove"){
+          this.numberFiles = this.files.length;
+        }
+      }
+    });
+  }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    if(this.files !== this.value && this.value !== null && this.value){
+      this.files = this.value;
+    }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -125,11 +135,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.id = this.id || uuidv4();
-    this.service.files.subscribe((files) => {
-      if (files) {
-        this.files = files;
-      }
-    });
+    this.files = this.value;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
@@ -146,14 +152,15 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
-    Array.from(event.dataTransfer.files).forEach((file) => {
+    this.numberFiles = event.target.files.length;
+    Array.from(event.dataTransfer.files).map((file) => {
       this.getPreview(file);
     });
   }
 
   onFileInput(event) {
-    console.log("onFileInput event:", event);
-    Array.from(event.target.files).forEach((file) => {
+    this.numberFiles = event.target.files.length;
+    Array.from(event.target.files).map((file) => {
       this.getPreview(file);
     });
   }
@@ -165,19 +172,16 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       if (!file.type.includes("image") || file.type.includes("image/svg")) {
         let fileToAdd: FileData = {
           data: file,
-          status: "pending",
           image: null
         };
         this.service.addFile(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
-          status: "pending",
           image: event.target["result"]
         };
         this.service.addFile(fileToAdd);
       }
-     
     };
   }
 
@@ -250,17 +254,25 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           width: 320px;
           box-sizing: border-box;
           background: #ffffff 0% 0% no-repeat padding-box;
-          border: 1px dashed ${!inputs.disabled ? "#000000" : "#999999"};
-          border-radius: 6px;
+          border: var(--fileInput-dropBorderThickness)
+            var(--fileInput-dropBorderStyle)
+            ${!inputs.disabled
+              ? "var(--fileInput-dropBorderColor)"
+              : "var(--fileInput-disabledDropBorderColor)"};
+          border-radius: var(--fileInput-dropBorderRadius);
           .dropLabel {
             text-align: left;
-            font: normal normal normal 16px/22px Open Sans;
             letter-spacing: 0.49px;
-            color: ${!inputs.disabled ? "#000000" : "#999999"};
+            color: ${!inputs.disabled
+              ? "var(--fileInput-dropLabelFontColor)"
+              : "var(--fileInput-disabledDropLabelFontColor)"};
+            font-family: var(--fileInput-dropLabelFontFamily);
+            font-size: var(--fileInput-dropLabelFontSize);
+            font-weight: var(--fileInput-dropLabelFontWeight);
           }
           &.hovering {
             ${!inputs.disabled
-              ? "border: 2px solid #0095FF; background: #F5FBFF 0% 0% no-repeat padding-box;"
+              ? "border: 2px solid var(--fileInput-focusDropBorderColor); background: var(--fileInput-focusDropBackgroundColor) 0% 0% no-repeat padding-box;"
               : ""}
           }
         }
@@ -271,21 +283,34 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
       .errorMessage {
         text-align: left;
-        font: normal normal normal 12px/17px Open Sans;
         letter-spacing: 0.37px;
-        color: #d0011b;
+        color: var(--fileInput-errorMessageFontColor);
+        font-family: var(--fileInput-errorMessageFontFamily);
+        font-size: var(--fileInput-errorMessageFontSize);
+        font-weight: var(--fileInput-errorMessageFontWeight);
+        line-height: var(--fileInput-errorMessageLineHeight);
       }
       .label {
         text-align: left;
-        font: normal normal 600 14px/24px Open Sans;
         letter-spacing: 0px;
-        color: ${!inputs.disabled ? "#000000" : "#999999"};
+        color: ${!inputs.disabled
+          ? "var(--fileInput-labelFontColor)"
+          : "var(--fileInput-disabledLabelFontColor)"};
+        font-family: var(--fileInput-labelFontFamily);
+        font-size: var(--fileInput-labelFontSize);
+        font-weight: var(--fileInput-labelFontWeight);
+        line-height: var(--fileInput-labelLineHeight);
       }
       .helperText {
         text-align: left;
-        font: normal normal normal 12px/24px Open Sans;
         letter-spacing: 0px;
-        color: ${!inputs.disabled ? "#000000" : "#999999"};
+        color: ${!inputs.disabled
+          ? "var(--fileInput-helperTextFontColor)"
+          : "var(--fileInput-disabledHelperTextFontColor)"};
+        font-family: var(--fileInput-helperTextFontFamily);
+        font-size: var(--fileInput-helperTextFontSize);
+        font-weight: var(--fileInput-helperTextFontWeight);
+        line-height: var(--fileInput-helperTextLineHeight);
       }
     `;
   }

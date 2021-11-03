@@ -51,7 +51,6 @@ export class DxcFileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("this.file:",this.file);
     this.file.error !== null && this.file.error !== undefined
       ? (this.hasError = true)
       : (this.hasError = false);
@@ -59,18 +58,18 @@ export class DxcFileComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  checkFormat(){
-    if(this.file.data.type){
+  checkFormat() {
+    if (this.file.data.type) {
       if (this.file.data.type.includes("image")) {
         this.fileFormat = "image";
       } else if (this.file.data.type.includes("video")) {
         this.fileFormat = "video";
       } else if (this.file.data.type.includes("audio")) {
         this.fileFormat = "audio";
-      } else{
+      } else {
         this.fileFormat = "default";
       }
-    } else{
+    } else {
       this.fileFormat = "default";
     }
   }
@@ -83,15 +82,17 @@ export class DxcFileComponent implements OnInit {
     return css`
       height: ${!inputs.showPreview ? "40px" : "64px"};
       background: #ffffff 0% 0% no-repeat padding-box;
-      border: 1px solid #cccccc;
+      border: var(--fileInput-fileItemBorderThickness)
+        var(--fileInput-fileItemBorderStyle)
+        var(--fileInput-fileItemBorderColor);
       width: 320px;
-      border-radius: 4px;
+      border-radius: var(--fileInput-fileItemBorderRadius);
       padding: 8px;
       box-sizing: border-box;
       display: flex;
       flex-direction: row;
-      margin-top: ${inputs.multiple || inputs.mode !== 'file' ? "4px" : ""};
-      margin-left: ${!inputs.multiple && inputs.mode === 'file' ? "4px" : ""};
+      margin-top: ${inputs.multiple || inputs.mode !== "file" ? "4px" : ""};
+      margin-left: ${!inputs.multiple && inputs.mode === "file" ? "4px" : ""};
       .previewContainer {
         background-color: #e6e6e6;
         display: flex;
@@ -101,7 +102,8 @@ export class DxcFileComponent implements OnInit {
         box-sizing: border-box;
         height: 48px;
         width: 48px;
-        svg, img {
+        svg,
+        img {
           fill: #808080;
           height: 24px;
           width: 24px;
@@ -116,6 +118,7 @@ export class DxcFileComponent implements OnInit {
           flex-direction: row;
           justify-content: space-between;
           .fileName {
+            font-color: var(--fileInput-fileNameFontColor);
             padding-left: 8px;
             height: 24px;
             white-space: nowrap;
@@ -124,6 +127,10 @@ export class DxcFileComponent implements OnInit {
             display: block;
             overflow: hidden;
             box-sizing: border-box;
+            font-family: var(--fileInput-fileItemFontFamily);
+            font-size: var(--fileInput-fileItemFontSize);
+            font-weight: var(--fileInput-fileItemFontWeight);
+            line-height: var(--fileInput-fileItemLineHeight);
           }
           .fileIcons {
             display: flex;
@@ -147,10 +154,14 @@ export class DxcFileComponent implements OnInit {
                 cursor: pointer;
               }
               &:hover {
-                background-color: #f2f2f2;
+                background-color: var(
+                  --fileInput-hoverFileItemIconBackgroundColor
+                );
               }
               &:active {
-                background-color: #cccccc;
+                background-color: var(
+                  --fileInput-activeFileItemIconBackgroundColor
+                );
               }
             }
             .errorIcon {
@@ -166,8 +177,9 @@ export class DxcFileComponent implements OnInit {
       }
 
       &.error {
-        background: #fff5f6 0% 0% no-repeat padding-box;
-        border: 1px solid #d0011b;
+        background: var(--fileInput-errorFileItemBackgroundColor) 0% 0%
+          no-repeat padding-box;
+        border: 1px solid var(--fileInput-errorFileItemBorderColor);
         height: ${inputs.mode !== "file"
           ? "fit-content"
           : !inputs.multiple
@@ -184,9 +196,12 @@ export class DxcFileComponent implements OnInit {
           padding-left: 8px;
           .errorMessage {
             text-align: left;
-            font: normal normal normal 12px/17px Open Sans;
             letter-spacing: 0.37px;
-            color: #d0011b;
+            color: var(--fileInput-errorMessageFontColor);
+            font-family: var(--fileInput-errorMessageFontFamily);
+            font-size: var(--fileInput-errorMessageFontSize);
+            font-weight: var(--fileInput-errorMessageFontWeight);
+            line-height: var(--fileInput-errorMessageLineHeight);
           }
         }
       }

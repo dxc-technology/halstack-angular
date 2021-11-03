@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { FileData } from "../interfaces/file.interface";
+import { FilesData } from "../interfaces/files.interface";
 
 @Injectable({
   providedIn: "root",
@@ -8,17 +9,28 @@ import { FileData } from "../interfaces/file.interface";
 export class FilesService {
   constructor() {}
 
-  public files: BehaviorSubject<Array<FileData>> = new BehaviorSubject([]);
+  public files: BehaviorSubject<FilesData> = new BehaviorSubject({
+    files: [],
+    event: null,
+  });
 
   addFile(file: FileData) {
-    const currentValue = this.files.value;
+    const currentValue = this.files.value.files;
     const updatedValue = [...currentValue, file];
-    this.files.next(updatedValue);
+    this.files.next({
+      files: updatedValue,
+      event: "add",
+    });
   }
 
   removeFile(file: FileData) {
-    const array: Array<FileData> = this.files.getValue();
-    array.splice(array.indexOf(file), 1);
-    this.files.next(array);
+    const array: Array<FileData> = this.files.value.files.filter((item) => {
+      console.log(file);
+      return item.data.name !== file.data.name;
+    });
+    this.files.next({
+      files: array,
+      event: "remove",
+    });
   }
 }

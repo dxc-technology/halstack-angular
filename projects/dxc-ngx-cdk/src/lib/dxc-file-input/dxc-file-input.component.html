@@ -1,6 +1,13 @@
 <label class="label" htmlFor="{{ id }}">{{ label }}</label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="fileInputContainer">
+  <input
+    #fileInput
+    type="file"
+    [multiple]="multiple"
+    (change)="onFileInput($event)"
+    style="display: none"
+  />
   <dxc-button
     *ngIf="mode === 'file'"
     label="Select files"
@@ -9,13 +16,6 @@
     (onClick)="fileInput.click()"
     [tabIndexValue]="tabIndexValue"
   ></dxc-button>
-  <input
-    #fileInput
-    type="file"
-    [multiple]="multiple"
-    (change)="onFileInput($event)"
-    style="display: none"
-  />
   <div
     *ngIf="mode !== 'file'"
     class="dragDropArea"
@@ -44,7 +44,10 @@
       [mode]="mode"
     ></dxc-file>
   </div>
-  <div *ngIf="files?.length > 0 && !disabled && !multiple" class="fileContainer">
+  <div
+    *ngIf="files?.length > 0 && !disabled && !multiple"
+    class="fileContainer"
+  >
     <dxc-file
       [file]="files[0]"
       [showPreview]="showPreview"
@@ -57,8 +60,8 @@
   *ngIf="
     !multiple &&
     mode === 'file' &&
-    files[0].error !== null &&
-    files[0].error !== undefined &&
+    files[0]?.error !== null &&
+    files[0]?.error !== undefined &&
     !disabled
   "
   class="errorMessage"

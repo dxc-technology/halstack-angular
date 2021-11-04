@@ -152,7 +152,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
-    this.numberFiles = event.target.files.length;
+    this.numberFiles = event.dataTransfer.files.length;
     Array.from(event.dataTransfer.files).map((file) => {
       this.getPreview(file);
     });

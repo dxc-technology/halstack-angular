@@ -25,7 +25,6 @@ export class FilesService {
 
   removeFile(file: FileData) {
     const array: Array<FileData> = this.files.value.files.filter((item) => {
-      console.log(file);
       return item.data.name !== file.data.name;
     });
     this.files.next({

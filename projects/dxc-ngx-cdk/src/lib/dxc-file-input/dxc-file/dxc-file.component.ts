@@ -31,6 +31,11 @@ export class DxcFileComponent implements OnInit {
   }
   private _showPreview;
 
+  hasShowError: boolean  = false;
+  hasShowPreviewImage: boolean  = false;
+  hasShowPreviewIcon: boolean  = false;
+
+
   defaultInputs = new BehaviorSubject<any>({
     showPreview: false,
     multiple: false,
@@ -54,6 +59,9 @@ export class DxcFileComponent implements OnInit {
     this.file.error !== null && this.file.error !== undefined
       ? (this.hasError = true)
       : (this.hasError = false);
+    this.hasShowError = this.isErrorPrintable();
+    this.hasShowPreviewImage = this.isShowPreviewPrintable();
+    this.hasShowPreviewIcon = this.isShowPreviewPrintable(false);
     this.checkFormat();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
@@ -74,8 +82,16 @@ export class DxcFileComponent implements OnInit {
     }
   }
 
-  public onRemoveHandler($event: any): void {
+  onRemoveHandler($event: any): void {
     this.service.removeFile(this.file);
+  }
+
+  private isShowPreviewPrintable(containsImage = true){
+    return  containsImage  ? this.showPreview && this.file.image && this.multiple : this.showPreview && !this.file.image && this.multiple;
+  }
+
+  private isErrorPrintable(){
+    return this.hasError && ((this.multiple && this.mode === 'file') || this.mode !== 'file');
   }
 
   getDynamicStyle(inputs) {

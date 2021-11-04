@@ -3,6 +3,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   HostBinding,
@@ -18,6 +19,24 @@ import { CssUtils } from "../utils";
 import { v4 as uuidv4 } from "uuid";
 import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
+import { NgChanges } from "../typings/ng-onchange";
+import { ViewContainerRef, TemplateRef, ViewChild } from '@angular/core';
+
+interface FileInputProperties {
+    name: string,
+    mode: string,
+    label: string,
+    helperText: string,
+    accept: string,
+    maxSize: number,
+    minSize: number,
+    multiple: boolean,
+    showPreview: boolean,
+    disabled: boolean,
+    margin: string,
+    tabIndexValue: number,
+    value: FileData
+}
 
 @Component({
   selector: "dxc-file-input",
@@ -26,7 +45,6 @@ import { FilesService } from "./services/files.services";
 })
 export class DxcFileInputComponent implements OnChanges, OnInit {
   @HostBinding("class") className;
-
   @Input() public name: string;
   @Input() public mode: string = "file";
   @Input() public label: string;
@@ -85,7 +103,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
 
   @Output() callbackFile = new EventEmitter<any>();
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<FileInputProperties>({
     name: null,
     mode: "file",
     label: null,
@@ -121,34 +139,50 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     });
   }
 
-  public ngOnChanges(changes: SimpleChanges): void {
-    if(this.files !== this.value && this.value !== null && this.value){
-      this.files = this.value;
-    }
-    const inputs = Object.keys(changes).reduce((result, item) => {
-      result[item] = changes[item].currentValue;
-      return result;
-    }, {});
-    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-  }
-
   ngOnInit() {
     this.id = this.id || uuidv4();
     this.files = this.value;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
+
+  ngOnChanges(changes: NgChanges<DxcFileInputComponent>): void {
+    if(this.files !== this.value && this.value !== null && this.value){
+      this.files = this.value;
+    }
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      if (item !== 'value'){
+        result[item] = changes[item].currentValue;
+      }
+      return result;
+    }, {});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ... inputs });
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+
+  /**
+   * File drop y drop zone
+   * @param event
+   */
   dragOver(event) {
     event.preventDefault();
     this.hoveringWithFile = true;
   }
 
+   /**
+   * File drop y drop zone
+   * @param event
+   */
   dragLeave(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
   }
 
+   /**
+   * File drop y drop zone
+   * @param event
+   */
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
@@ -158,6 +192,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     });
   }
 
+  /**
+   * Common function for both file modes.
+   * @param event
+   */
   onFileInput(event) {
     this.numberFiles = event.target.files.length;
     Array.from(event.target.files).map((file) => {
@@ -165,6 +203,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     });
   }
 
+  /**
+   * Common function for both file modes.
+   * @param file
+   */
   getPreview(file) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -185,24 +227,41 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     };
   }
 
-  getModeStyle(inputs) {
+  /**
+   * Define the type of file component. Just for styling
+   * @param inputs
+   * @returns
+   */
+  getModeStyle(inputs: FileInputProperties) {
     if (inputs.mode === "filedrop") {
       return this.getFileDropStyle();
     } else if (inputs.mode === "dropzone") {
       return this.getDropZoneStyle();
     } else {
-      return this.getFileStyle();
+      return this.getFileStyle(inputs.multiple);
     }
   }
 
-  getFileStyle() {
+  /**
+   * Just for file mode.
+   * @param inputs
+   * @returns
+   */
+  getFileStyle(multiple: boolean) {
+    console.log(typeof multiple);
+    console.log('Condition ',multiple === false ? "row" : "column");
     return css`
       .fileInputContainer {
-        flex-direction: ${!this.multiple ? "row" : "column"};
+        flex-direction: ${multiple === false ? "row" : "column"};
       }
     `;
   }
 
+    /**
+   * Just for drop zone.
+   * @param inputs
+   * @returns
+   */
   getDropZoneStyle() {
     return css`
       .fileInputContainer {
@@ -220,7 +279,11 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
     `;
   }
-
+    /**
+   * Just for drop zone.
+   * @param inputs
+   * @returns
+   */
   getFileDropStyle() {
     return css`
       .fileInputContainer {
@@ -237,6 +300,11 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     `;
   }
 
+    /**
+   * Common functionality for styling
+   * @param inputs
+   * @returns
+   */
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}

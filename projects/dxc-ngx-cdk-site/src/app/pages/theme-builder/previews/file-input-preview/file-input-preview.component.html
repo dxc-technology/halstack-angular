@@ -3,21 +3,20 @@
     <dxc-file-input
       label="Label"
       helperText="helperText"
-      showPreview="true"
+      [showPreview]="true"
       margin="xsmall"
-      multiple="true"
       (callbackFile)="callback($event)"
       [value]="value"
-      multiple="false"
+      [multiple]="false"
     ></dxc-file-input>
-    <dxc-file-input
+    <!-- <dxc-file-input
       label="Label"
       helperText="helperText"
       disabled="true"
       margin="xsmall"
-    ></dxc-file-input>
+    ></dxc-file-input> -->
   </tbuilder-component-mode>
-
+<!--
   <tbuilder-component-mode text="Filedrop">
     <dxc-file-input
       label="Label"
@@ -48,5 +47,5 @@
       disabled="true"
       margin="xsmall"
     ></dxc-file-input>
-  </tbuilder-component-mode>
+  </tbuilder-component-mode> -->
 </div>

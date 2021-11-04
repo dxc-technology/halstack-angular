@@ -1,4 +1,4 @@
-<div class="previewContainer" *ngIf="showPreview && !file.image && multiple">
+<div class="previewContainer" *ngIf="hasShowPreviewIcon">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="24px"
@@ -48,7 +48,7 @@
     />
   </svg>
 </div>
-<div class="previewContainer" *ngIf="showPreview && file.image && multiple">
+<div class="previewContainer" *ngIf="hasShowPreviewImage">
     <img [src]="file.image" />
 </div>
 
@@ -87,7 +87,7 @@
   </div>
   <div class="errorContainer">
     <span
-      *ngIf="hasError && ((multiple && mode === 'file') || mode !== 'file')"
+      *ngIf="hasShowError"
       class="errorMessage"
       >{{ file.error }}</span
     >

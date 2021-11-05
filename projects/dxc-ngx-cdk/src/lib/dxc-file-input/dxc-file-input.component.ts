@@ -20,22 +20,22 @@ import { v4 as uuidv4 } from "uuid";
 import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
-import { ViewContainerRef, TemplateRef, ViewChild } from '@angular/core';
+import { ViewContainerRef, TemplateRef, ViewChild } from "@angular/core";
 
 interface FileInputProperties {
-    name: string,
-    mode: string,
-    label: string,
-    helperText: string,
-    accept: string,
-    maxSize: number,
-    minSize: number,
-    multiple: boolean,
-    showPreview: boolean,
-    disabled: boolean,
-    margin: string,
-    tabIndexValue: number,
-    value: FileData
+  name: string;
+  mode: string;
+  label: string;
+  helperText: string;
+  accept: string;
+  maxSize: number;
+  minSize: number;
+  multiple: boolean;
+  showPreview: boolean;
+  disabled: boolean;
+  margin: string;
+  tabIndexValue: number;
+  value: FileData;
 }
 
 @Component({
@@ -116,7 +116,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     disabled: false,
     margin: null,
     tabIndexValue: 0,
-    value: null
+    value: null,
   });
 
   id: string;
@@ -124,15 +124,24 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hoveringWithFile: boolean = false;
   filesLoaded: boolean = false;
   numberFiles: number = 0;
+  hasMultipleFiles: boolean = false;
+  hasSingleFile: boolean = false;
+  hasErrorSingleFile: boolean = false;
 
   constructor(private utils: CssUtils, private service: FilesService) {
-    this.service.files.subscribe(({files, event}) => {
+    this.service.files.subscribe(({ files, event }) => {
       if (files) {
         this.files = files;
-        if ((this.numberFiles === this.files?.length && event === "add") || event === "remove") {
+        this.hasErrorSingleFile = this.isErrorPrintable();
+        this.hasMultipleFiles = this.isMultipleFilesPrintables();
+        this.hasSingleFile = this.isMultipleFilesPrintables(true);
+        if (
+          (this.numberFiles === this.files?.length && event === "add") ||
+          event === "remove"
+        ) {
           this.callbackFile.emit(this.files);
         }
-        if(event === "remove"){
+        if (event === "remove") {
           this.numberFiles = this.files.length;
         }
       }
@@ -142,24 +151,25 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   ngOnInit() {
     this.id = this.id || uuidv4();
     this.files = this.value;
+    this.hasErrorSingleFile = this.isErrorPrintable();
+    this.hasMultipleFiles = this.isMultipleFilesPrintables();
+    this.hasSingleFile = this.isMultipleFilesPrintables(true);
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-
   ngOnChanges(changes: NgChanges<DxcFileInputComponent>): void {
-    if(this.files !== this.value && this.value !== null && this.value){
+    if (this.files !== this.value && this.value !== null && this.value) {
       this.files = this.value;
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
-      if (item !== 'value'){
+      if (item !== "value") {
         result[item] = changes[item].currentValue;
       }
       return result;
     }, {});
-    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ... inputs });
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
-
 
   /**
    * File drop y drop zone
@@ -170,7 +180,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.hoveringWithFile = true;
   }
 
-   /**
+  /**
    * File drop y drop zone
    * @param event
    */
@@ -179,7 +189,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.hoveringWithFile = false;
   }
 
-   /**
+  /**
    * File drop y drop zone
    * @param event
    */
@@ -214,17 +224,33 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       if (!file.type.includes("image") || file.type.includes("image/svg")) {
         let fileToAdd: FileData = {
           data: file,
-          image: null
+          image: null,
         };
         this.service.addFile(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
-          image: event.target["result"]
+          image: event.target["result"],
         };
         this.service.addFile(fileToAdd);
       }
     };
+  }
+
+  private isMultipleFilesPrintables(isSingle = false) {
+    return isSingle
+      ? this.files?.length > 0 && !this.disabled && !this.multiple
+      : this.files?.length > 0 && !this.disabled && this.multiple;
+  }
+
+  private isErrorPrintable() {
+    return (
+      !this.multiple &&
+      this.mode === "file" &&
+      this.files[0]?.error !== null &&
+      this.files[0]?.error !== undefined &&
+      !this.disabled
+    );
   }
 
   /**
@@ -248,8 +274,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @returns
    */
   getFileStyle(multiple: boolean) {
-    console.log(typeof multiple);
-    console.log('Condition ',multiple === false ? "row" : "column");
     return css`
       .fileInputContainer {
         flex-direction: ${multiple === false ? "row" : "column"};
@@ -257,7 +281,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     `;
   }
 
-    /**
+  /**
    * Just for drop zone.
    * @param inputs
    * @returns
@@ -279,7 +303,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
     `;
   }
-    /**
+  /**
    * Just for drop zone.
    * @param inputs
    * @returns
@@ -300,7 +324,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     `;
   }
 
-    /**
+  /**
    * Common functionality for styling
    * @param inputs
    * @returns

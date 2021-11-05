@@ -29,12 +29,11 @@ export class DxcFileComponent implements OnInit {
   set showPreview(value: boolean) {
     this._showPreview = coerceBooleanProperty(value);
   }
-  private _showPreview;
+  private _showPreview = false;
 
-  hasShowError: boolean  = false;
-  hasShowPreviewImage: boolean  = false;
-  hasShowPreviewIcon: boolean  = false;
-
+  hasShowError: boolean = false;
+  hasShowPreviewImage: boolean = false;
+  hasShowPreviewIcon: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     showPreview: false,
@@ -86,12 +85,25 @@ export class DxcFileComponent implements OnInit {
     this.service.removeFile(this.file);
   }
 
-  private isShowPreviewPrintable(containsImage = true){
-    return  containsImage  ? this.showPreview && this.file.image && this.multiple : this.showPreview && !this.file.image && this.multiple;
+  private isShowPreviewPrintable(containsImage = true) {
+    return containsImage
+      ? (this.showPreview && this.file.image && this.mode !== "file") ||
+          (this.showPreview &&
+            this.file.image &&
+            this.mode === "file" &&
+            this.multiple)
+      : (this.showPreview && !this.file.image && this.mode !== "file") ||
+          (this.showPreview &&
+            !this.file.image &&
+            this.mode === "file" &&
+            this.multiple);
   }
 
-  private isErrorPrintable(){
-    return this.hasError && ((this.multiple && this.mode === 'file') || this.mode !== 'file');
+  private isErrorPrintable() {
+    return (
+      this.hasError &&
+      ((this.multiple && this.mode === "file") || this.mode !== "file")
+    );
   }
 
   getDynamicStyle(inputs) {
@@ -128,7 +140,12 @@ export class DxcFileComponent implements OnInit {
       .infoContainer {
         display: flex;
         flex-direction: column;
-        width: ${inputs.showPreview ? "calc(100% - 48px)" : "100%"};
+        width: ${(inputs.showPreview &&
+          inputs.mode === "file" &&
+          !inputs.multiple) ||
+        !inputs.showPreview
+          ? "100% "
+          : "calc(100% - 48px)"};
         .fileContainer {
           display: flex;
           flex-direction: row;

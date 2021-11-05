@@ -589,7 +589,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       this.editableFields = this.fieldOptions.map(obj => ({ ...obj }));
       this.editableColumns = this.fieldOptions.map(obj => ({ ...obj }));
     }
-    this.claimsForm = this.fb.group({});
     if (this.sourceRequest) {
       this.getData();
     } else {
@@ -895,9 +894,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   private addRow = () => {
     if (this.editMode == 'popup') {
       this.isPopupOpen = true;
-    }
-    if (Object.keys(this.claimsForm.controls).length) {
-      return;
     }
     this.isEditForm = false;
     this.selectedRowIndex = -1;

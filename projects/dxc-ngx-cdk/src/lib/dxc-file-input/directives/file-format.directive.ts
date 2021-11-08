@@ -14,7 +14,7 @@ export class FileFormatDirective {
     let child;
     let xmlns = "http://www.w3.org/2000/svg";
     child = document.createElementNS(xmlns, "path");
-    switch (this.format) {
+    switch (this.categorizeFileFormat(this.format)) {
       case 'image':
         child.setAttributeNS(null, 'd', 'M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z');
         break;
@@ -29,5 +29,18 @@ export class FileFormatDirective {
         break;
     }
     this.elementRef.nativeElement.append(child);
+   }
+
+   private categorizeFileFormat(fileFormat:string){
+    if (fileFormat.includes("image")) {
+      return 'image';
+    } else if (fileFormat.includes("video")) {
+      return 'video';
+
+    } else if (fileFormat.includes("audio")) {
+      return 'audio';
+
+    }
+    return 'default';
    }
 }

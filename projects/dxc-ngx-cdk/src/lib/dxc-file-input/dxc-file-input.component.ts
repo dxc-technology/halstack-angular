@@ -243,20 +243,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.files[0]?.error !== undefined &&
     !this.disabled;
 
-  // /**
-  //  * Update the native component input file via DOM with a
-  //  * reference of the native element
-  //  * @param files
-  //  */
-  // private updateFileInputNative(files: File[]) {
-  //   const fileInput = this.fileInputNative.nativeElement;
-  //   let list = new DataTransfer();
-  //   for (let i = 0; i < files.length; i++) {
-  //     list.items.add(files[i]);
-  //   }
-  //   fileInput.files = list.files;
-  // }
-
   /**
    * Define the type of file component. Just for styling
    * @param inputs

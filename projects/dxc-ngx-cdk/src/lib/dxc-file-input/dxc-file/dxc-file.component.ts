@@ -41,8 +41,6 @@ export class DxcFileComponent implements OnInit {
     mode: null,
   });
 
-  fileFormat: string;
-
   constructor(private service: FilesService) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -63,25 +61,7 @@ export class DxcFileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.checkFormat();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-  }
-
-  checkFormat() {
-    if (this.file.data.type) {
-      if (this.file.data.type.includes("image")) {
-        this.fileFormat = "image";
-      } else if (this.file.data.type.includes("video")) {
-        this.fileFormat = "video";
-      } else if (this.file.data.type.includes("audio")) {
-        this.fileFormat = "audio";
-      } else {
-        this.fileFormat = "default";
-      }
-    } else {
-      this.fileFormat = "default";
-    }
   }
 
   onRemoveHandler($event: any): void {

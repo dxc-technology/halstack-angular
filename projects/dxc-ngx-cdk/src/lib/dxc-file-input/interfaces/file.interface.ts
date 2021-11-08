@@ -1,5 +1,5 @@
 export interface FileData{
     data: File;
-    error?: string;
-    image?;
+    error: string;
+    image;
 }

@@ -56,6 +56,6 @@
     ></dxc-file>
   </div>
 </div>
-<span *ngIf="hasErrorSingleFile" class="errorMessage">{{
-  files[0].error
-}}</span>
+
+<dxc-file-error  *ngIf="hasShowError" [error]="files[0].error"></dxc-file-error>
+

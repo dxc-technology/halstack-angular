@@ -46,6 +46,14 @@ export class DxcFileComponent implements OnInit {
   constructor(private service: FilesService) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
+    this.file.error !== null && this.file.error !== undefined
+    ? (this.hasError = true)
+    : (this.hasError = false);
+
+    this.hasShowError = this.isErrorPrintable();
+    this.hasShowPreviewImage = this.isShowPreviewPrintable();
+    this.hasShowPreviewIcon = this.isShowPreviewPrintable(false);
+
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -55,12 +63,7 @@ export class DxcFileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.file.error !== null && this.file.error !== undefined
-      ? (this.hasError = true)
-      : (this.hasError = false);
-    this.hasShowError = this.isErrorPrintable();
-    this.hasShowPreviewImage = this.isShowPreviewPrintable();
-    this.hasShowPreviewIcon = this.isShowPreviewPrintable(false);
+
     this.checkFormat();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

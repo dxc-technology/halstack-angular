@@ -1,3 +1,4 @@
+import { I } from "@angular/cdk/keycodes";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { FileData } from "../interfaces/file.interface";
@@ -10,13 +11,28 @@ export class FilesService {
   constructor() {}
 
   public files: BehaviorSubject<FilesData> = new BehaviorSubject({
-    files: [],
+    files: new Array<FileData>(),
     event: null,
   });
 
+
   addFile(file: FileData) {
-    const currentValue = this.files.value.files;
-    const updatedValue = [...currentValue, file];
+
+    // Check if exist
+    const existingFile = this.files.value.files.filter(item=>  item.data.name === file.data.name);
+    let updatedValue: FileData[];
+
+    if (existingFile.length > 0){
+      updatedValue =  this.files.value.files.map(item=>   {
+        if  (item.data.name === file.data.name){
+          item.data = file.data
+      }
+      return item;
+    } );
+    }else{
+      updatedValue = [...this.files.value.files , file];
+    }
+
     this.files.next({
       files: updatedValue,
       event: "add",
@@ -27,6 +43,7 @@ export class FilesService {
     const array: Array<FileData> = this.files.value.files.filter((item) => {
       return item.data.name !== file.data.name;
     });
+
     this.files.next({
       files: array,
       event: "remove",

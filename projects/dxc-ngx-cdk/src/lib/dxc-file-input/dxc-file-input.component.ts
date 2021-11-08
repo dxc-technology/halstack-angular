@@ -3,7 +3,6 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import {
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   HostBinding,
@@ -11,7 +10,6 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -44,6 +42,7 @@ interface FileInputProperties {
   providers: [CssUtils, FilesService],
 })
 export class DxcFileInputComponent implements OnChanges, OnInit {
+  @ViewChild("fileInput") fileInputNative;
   @HostBinding("class") className;
   @Input() public name: string;
   @Input() public mode: string = "file";
@@ -100,6 +99,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue = 0;
+  hasShowError: boolean = false;
 
   @Output() callbackFile = new EventEmitter<any>();
 
@@ -132,39 +132,29 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.service.files.subscribe(({ files, event }) => {
       if (files) {
         this.files = files;
-        this.hasErrorSingleFile = this.isErrorPrintable();
+        this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
         this.hasSingleFile = this.isMultipleFilesPrintables(true);
-        if (
-          (this.numberFiles === this.files?.length && event === "add") ||
-          event === "remove"
-        ) {
-          this.callbackFile.emit(this.files);
-        }
-        if (event === "remove") {
-          this.numberFiles = this.files.length;
-        }
+        this.callbackFile.emit(this.files);
       }
     });
   }
 
   ngOnInit() {
     this.id = this.id || uuidv4();
-    this.files = this.value;
-    this.hasErrorSingleFile = this.isErrorPrintable();
+    this.hasShowError = this.isErrorShow();
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
     this.hasSingleFile = this.isMultipleFilesPrintables(true);
+    this.files = this.value;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   ngOnChanges(changes: NgChanges<DxcFileInputComponent>): void {
     if (this.files !== this.value && this.value !== null && this.value) {
-      this.files = this.value;
+        this.files = this.value;
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
-      if (item !== "value") {
-        result[item] = changes[item].currentValue;
-      }
+      result[item] = changes[item].currentValue;
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
@@ -211,6 +201,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     Array.from(event.target.files).map((file) => {
       this.getPreview(file);
     });
+    event.target.value = '';
   }
 
   /**
@@ -225,12 +216,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         let fileToAdd: FileData = {
           data: file,
           image: null,
+          error: null
         };
         this.service.addFile(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
           image: event.target["result"],
+          error: null
         };
         this.service.addFile(fileToAdd);
       }
@@ -243,15 +236,26 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       : this.files?.length > 0 && !this.disabled && this.multiple;
   }
 
-  private isErrorPrintable() {
-    return (
-      !this.multiple &&
-      this.mode === "file" &&
-      this.files[0]?.error !== null &&
-      this.files[0]?.error !== undefined &&
-      !this.disabled
-    );
-  }
+  private isErrorShow = (): boolean =>
+    !this.multiple &&
+    this.mode === "file" &&
+    this.files[0]?.error !== null &&
+    this.files[0]?.error !== undefined &&
+    !this.disabled;
+
+  // /**
+  //  * Update the native component input file via DOM with a
+  //  * reference of the native element
+  //  * @param files
+  //  */
+  // private updateFileInputNative(files: File[]) {
+  //   const fileInput = this.fileInputNative.nativeElement;
+  //   let list = new DataTransfer();
+  //   for (let i = 0; i < files.length; i++) {
+  //     list.items.add(files[i]);
+  //   }
+  //   fileInput.files = list.files;
+  // }
 
   /**
    * Define the type of file component. Just for styling
@@ -373,15 +377,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           flex-direction: column;
         }
       }
-      .errorMessage {
-        text-align: left;
-        letter-spacing: 0.37px;
-        color: var(--fileInput-errorMessageFontColor);
-        font-family: var(--fileInput-errorMessageFontFamily);
-        font-size: var(--fileInput-errorMessageFontSize);
-        font-weight: var(--fileInput-errorMessageFontWeight);
-        line-height: var(--fileInput-errorMessageLineHeight);
-      }
       .label {
         text-align: left;
         letter-spacing: 0px;
@@ -406,4 +401,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
     `;
   }
+}
+function forEach() {
+  throw new Error("Function not implemented.");
 }

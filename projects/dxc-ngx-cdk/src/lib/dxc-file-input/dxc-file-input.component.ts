@@ -10,6 +10,7 @@ import {
   OnChanges,
   OnInit,
   Output,
+  ViewChild,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -18,7 +19,6 @@ import { v4 as uuidv4 } from "uuid";
 import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
-import { ViewContainerRef, TemplateRef, ViewChild } from "@angular/core";
 
 interface FileInputProperties {
   name: string;
@@ -26,8 +26,6 @@ interface FileInputProperties {
   label: string;
   helperText: string;
   accept: string;
-  maxSize: number;
-  minSize: number;
   multiple: boolean;
   showPreview: boolean;
   disabled: boolean;
@@ -50,22 +48,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   @Input() public helperText: string;
   @Input() public value: Array<FileData>;
   @Input() public accept: any;
-  @Input()
-  get maxSize(): number {
-    return this._maxSize;
-  }
-  set maxSize(value: number) {
-    this._maxSize = coerceNumberProperty(value);
-  }
-  private _maxSize;
-  @Input()
-  get minSize(): number {
-    return this._minSize;
-  }
-  set minSize(value: number) {
-    this._minSize = coerceNumberProperty(value);
-  }
-  private _minSize;
   @Input()
   get multiple(): boolean {
     return this._multiple;
@@ -109,8 +91,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     label: null,
     helperText: null,
     accept: null,
-    maxSize: null,
-    minSize: null,
     multiple: true,
     showPreview: false,
     disabled: false,
@@ -131,6 +111,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
       if (files) {
+        console.log("files:", files);
         this.files = files;
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
@@ -236,12 +217,37 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       : this.files?.length > 0 && !this.disabled && this.multiple;
   }
 
-  private isErrorShow = (): boolean =>
-    !this.multiple &&
+  // private isErrorShow = (): boolean =>
+  //   !this.multiple &&
+  //   this.mode === "file" &&
+  //   this.files[0]?.error !== null &&
+  //   this.files[0]?.error !== undefined &&
+  //   !this.disabled;
+
+  private isErrorShow() {
+    console.log("this.multiple:",this.multiple);
+    console.log("this.mode:",this.mode);
+    console.log("this..files[0]?.error:",this.files[0]?.error);
+    console.log("this..files[0]?.error:",this.files[0]?.error);
+    return !this.multiple &&
     this.mode === "file" &&
     this.files[0]?.error !== null &&
     this.files[0]?.error !== undefined &&
     !this.disabled;
+  }
+  // /**
+  //  * Update the native component input file via DOM with a
+  //  * reference of the native element
+  //  * @param files
+  //  */
+  // private updateFileInputNative(files: File[]) {
+  //   const fileInput = this.fileInputNative.nativeElement;
+  //   let list = new DataTransfer();
+  //   for (let i = 0; i < files.length; i++) {
+  //     list.items.add(files[i]);
+  //   }
+  //   fileInput.files = list.files;
+  // }
 
   /**
    * Define the type of file component. Just for styling

@@ -34,6 +34,7 @@ export class DxcFileComponent implements OnInit {
   hasShowError: boolean = false;
   hasShowPreviewImage: boolean = false;
   hasShowPreviewIcon: boolean = false;
+  hasShowPreview: boolean = false;
 
   defaultInputs = new BehaviorSubject<any>({
     showPreview: false,
@@ -45,12 +46,13 @@ export class DxcFileComponent implements OnInit {
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.file.error !== null && this.file.error !== undefined
-    ? (this.hasError = true)
-    : (this.hasError = false);
+      ? (this.hasError = true)
+      : (this.hasError = false);
 
     this.hasShowError = this.isErrorPrintable();
     this.hasShowPreviewImage = this.isShowPreviewPrintable();
     this.hasShowPreviewIcon = this.isShowPreviewPrintable(false);
+    this.hasShowPreview = this.isShowPreview();
 
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -66,6 +68,13 @@ export class DxcFileComponent implements OnInit {
 
   onRemoveHandler($event: any): void {
     this.service.removeFile(this.file);
+  }
+
+  private isShowPreview() {
+    return (
+      (this.showPreview && this.mode !== "file") ||
+      (this.showPreview && this.mode === "file" && this.multiple)
+    );
   }
 
   private isShowPreviewPrintable(containsImage = true) {

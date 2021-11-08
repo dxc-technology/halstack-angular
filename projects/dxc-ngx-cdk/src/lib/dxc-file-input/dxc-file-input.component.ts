@@ -111,7 +111,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
       if (files) {
-        console.log("files:", files);
         this.files = files;
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
@@ -132,7 +131,9 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
 
   ngOnChanges(changes: NgChanges<DxcFileInputComponent>): void {
     if (this.files !== this.value && this.value !== null && this.value) {
-        this.files = this.value;
+      this.value.forEach((file) => {
+        this.service.addFile(file);
+      });
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
@@ -167,10 +168,9 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
-    this.numberFiles = event.dataTransfer.files.length;
-    Array.from(event.dataTransfer.files).map((file) => {
-      this.getPreview(file);
-    });
+    if (this.multiple || (!this.multiple && this.files.length === 0)) {
+      this.getPreviewsFiles(event.dataTransfer.files);
+    }
   }
 
   /**
@@ -178,11 +178,21 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param event
    */
   onFileInput(event) {
-    this.numberFiles = event.target.files.length;
-    Array.from(event.target.files).map((file) => {
+    if (this.multiple || (!this.multiple && this.files.length === 0)) {
+      this.getPreviewsFiles(event.target.files);
+      event.target.value = "";
+    }
+  }
+
+  /**
+   * Common function for both file modes.
+   * @param eventFiles
+   */
+  getPreviewsFiles(eventFiles) {
+    this.numberFiles = eventFiles.length;
+    Array.from(eventFiles).map((file) => {
       this.getPreview(file);
     });
-    event.target.value = '';
   }
 
   /**
@@ -197,14 +207,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         let fileToAdd: FileData = {
           data: file,
           image: null,
-          error: null
+          error: null,
         };
         this.service.addFile(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
           image: event.target["result"],
-          error: null
+          error: null,
         };
         this.service.addFile(fileToAdd);
       }
@@ -217,24 +227,24 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       : this.files?.length > 0 && !this.disabled && this.multiple;
   }
 
-  // private isErrorShow = (): boolean =>
-  //   !this.multiple &&
-  //   this.mode === "file" &&
-  //   this.files[0]?.error !== null &&
-  //   this.files[0]?.error !== undefined &&
-  //   !this.disabled;
-
-  private isErrorShow() {
-    console.log("this.multiple:",this.multiple);
-    console.log("this.mode:",this.mode);
-    console.log("this..files[0]?.error:",this.files[0]?.error);
-    console.log("this..files[0]?.error:",this.files[0]?.error);
-    return !this.multiple &&
+  private isErrorShow = (): boolean =>
+    !this.multiple &&
     this.mode === "file" &&
     this.files[0]?.error !== null &&
     this.files[0]?.error !== undefined &&
     !this.disabled;
-  }
+
+  // private isErrorShow() {
+  //   console.log("this.multiple:",this.multiple);
+  //   console.log("this.mode:",this.mode);
+  //   console.log("this..files[0]?.error:",this.files[0]?.error);
+  //   console.log("this..files[0]?.error:",this.files[0]?.error);
+  //   return !this.multiple &&
+  //   this.mode === "file" &&
+  //   this.files[0]?.error !== null &&
+  //   this.files[0]?.error !== undefined &&
+  //   !this.disabled;
+  // }
   // /**
   //  * Update the native component input file via DOM with a
   //  * reference of the native element
@@ -337,6 +347,11 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         display: flex;
         dxc-button {
           width: fit-content;
+        }
+        input {
+          visibility: hidden;
+          height: 0px;
+          width: 0px;
         }
         .dragDropArea {
           width: 320px;

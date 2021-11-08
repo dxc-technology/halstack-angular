@@ -17,7 +17,6 @@ export class FilesService {
 
 
   addFile(file: FileData) {
-
     // Check if exist
     const existingFile = this.files.value.files.filter(item=>  item.data.name === file.data.name);
     let updatedValue: FileData[];
@@ -25,7 +24,8 @@ export class FilesService {
     if (existingFile.length > 0){
       updatedValue =  this.files.value.files.map(item=>   {
         if  (item.data.name === file.data.name){
-          item.data = file.data
+          item.data = file.data;
+          item.error = file.error;
       }
       return item;
     } );

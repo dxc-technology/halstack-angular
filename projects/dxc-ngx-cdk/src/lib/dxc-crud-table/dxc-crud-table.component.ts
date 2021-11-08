@@ -589,7 +589,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       this.editableFields = this.fieldOptions.map(obj => ({ ...obj }));
       this.editableColumns = this.fieldOptions.map(obj => ({ ...obj }));
     }
-    this.claimsForm = this.fb.group({});
     if (this.sourceRequest) {
       this.getData();
     } else {
@@ -747,50 +746,49 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.expandedElement[col.valueProperty] = 0;
         this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
           (col.required && col.required == true) ? Validators.required : null));
-      } else {
-        if (col.fieldType == this.fieldsType.codeLookup && !(this.expandedElement[col.name] instanceof Object)) {
-          this.expandedElement[col.name] = { id: parseInt(this.expandedElement[col.name]), shortCode: "", desc: this.expandedElement[col.label], codeTable: "", relatedShortCode: "" };
-        }
-        if (col.fieldType == this.fieldsType.supplementalGrid && !(this.expandedElement[col.name] instanceof Object)) {
-          this.expandedElement[col.name] = { id: parseInt(this.expandedElement[col.name]), shortCode: "", desc: this.expandedElement[col.label], codeTable: "", relatedShortCode: "" };
-        }
-        if (col.fieldType == this.fieldsType.orghLookup && !(this.expandedElement[col.name] instanceof Object)) {
-          this.expandedElement[col.name] = { id: parseInt(this.expandedElement[col.name]), shortCode: "", desc: this.expandedElement[col.label], codeTable: "", relatedShortCode: "" };
-        }
-        if (col.fieldType == this.fieldsType.crudLookup && !(this.expandedElement[col.name] instanceof Object)) {
-          this.expandedElement[col.name] = { id: parseInt(this.expandedElement[col.name]), shortCode: "", desc: this.expandedElement[col.label], codeTable: "", relatedShortCode: "" };
+      }
+      else {
+        switch (col.fieldType) {
+          case this.fieldsType.codeLookup:
+          case this.fieldsType.supplementalGrid:
+          case this.fieldsType.orghLookup:
+          case this.fieldsType.crudLookup:
+            if (!(this.expandedElement[col.name] instanceof Object)) {
+              this.expandedElement[col.name] = { id: parseInt(this.expandedElement[col.name]), shortCode: "", desc: this.expandedElement[col.label], codeTable: "", relatedShortCode: "" };
+            }
+            else {
+              this.expandedElement[col.name] = this.expandedElement[col.name];
+			  }
+			this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
+            break;
+          case this.fieldsType.dropdown:
+            this.expandedElement[(col as IDropdownProperties).viewValue] = this.expandedElement[(col as IDropdownProperties).viewValue];
+            this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
+              (col.required && col.required == true) ? Validators.required : null));
 
-        }
-        else
-          this.expandedElement[col.name] = this.expandedElement[col.name];
-
-        if (col.fieldType == this.fieldsType.dropdown) {
-          this.expandedElement[(col as IDropdownProperties).viewValue] = this.expandedElement[(col as IDropdownProperties).viewValue];
-          this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
-            (col.required && col.required == true) ? Validators.required : null));
-
-          if ((col as IDropdownProperties).isApplyChangeEvent) {
-            const control = col as IDropdownProperties;
-            const formControlUpdater = this.formControlUpdater;
-            this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
-              this.parentForm.markAsDirty();
-              formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
-            });
-          }
-        }
-
-        if (col.fieldType == this.fieldsType.textEditor) {
-          this.expandedElement[(col as ITextEditorproperties).planeText] = this.expandedElement[(col as ITextEditorproperties).planeText];
-          this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
-            (col.required && col.required == true) ? Validators.required : null));
-        }
-
-        if (col.fieldType == this.fieldsType.dxcDate) {
-          // // let date = this.dateHelper.convertDateToUserFormat(new Date(this.expandedElement[col.name]));
-          this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
-        } else {
-          this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
-            (col.required && col.required == true) ? Validators.required : null));
+            if ((col as IDropdownProperties).isApplyChangeEvent) {
+              const control = col as IDropdownProperties;
+              const formControlUpdater = this.formControlUpdater;
+              this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
+                this.parentForm.markAsDirty();
+                formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
+              });
+            }
+            break;
+          case this.fieldsType.textEditor:
+            this.expandedElement[(col as ITextEditorproperties).planeText] = this.expandedElement[(col as ITextEditorproperties).planeText];
+            this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
+              (col.required && col.required == true) ? Validators.required : null));
+            break;
+          case this.fieldsType.dxcDate:
+		    this.expandedElement[col.name] = this.expandedElement[col.name];
+            this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
+            break;
+          default:
+		    this.expandedElement[col.name] = this.expandedElement[col.name];
+            this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
+              (col.required && col.required == true) ? Validators.required : null));
+            break;
         }
       }
     }
@@ -804,61 +802,61 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           (col.required && col.required == true) ? Validators.required : null));
       } else {
         crudFormModel[col.name] = '';
-        if (col.fieldType == this.fieldsType.dropdown) {
-          crudFormModel[(col as IDropdownProperties).viewValue] = '';
-          this.claimsForm.addControl(col.name, new FormControl(col.multiple ? [] : '', (col.required && col.required == true) ? Validators.required : null));
+        switch (col.fieldType) {
+          case this.fieldsType.dropdown:
+            crudFormModel[(col as IDropdownProperties).viewValue] = '';
+            this.claimsForm.addControl(col.name, new FormControl(col.multiple ? [] : '', (col.required && col.required == true) ? Validators.required : null));
+            if ((col as IDropdownProperties).isApplyChangeEvent) {
+              const control = col as IDropdownProperties;
+              const formControlUpdater = this.formControlUpdater;
+              this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
+                this.parentForm.markAsDirty();
+                formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
+              });
+            }
+            break;
+          case this.fieldsType.checkbox:
+            this.claimsForm.addControl(col.name, new FormControl((col as ICheckboxProperties).checked,
+              (col.required && col.required == true) ? Validators.required : null));
+            break;
+          case this.fieldsType.crudLookup:
+            crudFormModel[col.name] = {};
+            this.claimsForm.addControl(col.name, new FormControl(crudFormModel[col.name],
+              (col.required && col.required == true) ? Validators.required : null));
+            break;
+          case this.fieldsType.codeLookup:
+          case this.fieldsType.supplementalGrid:
+            crudFormModel[col.name] = {};
+            this.claimsForm.addControl(col.name, new FormControl(crudFormModel[col.name],
+              (col.required && col.required == true) ? Validators.required : null));
 
-          if ((col as IDropdownProperties).isApplyChangeEvent) {
-            const control = col as IDropdownProperties;
-            const formControlUpdater = this.formControlUpdater;
-            this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
-              this.parentForm.markAsDirty();
-              formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
-            });
-          }
+            if ((col as ICodeLookupProperties).isApplyChangeEvent) {
+              const control = col as ICodeLookupProperties;
+              const formControlUpdater = this.formControlUpdater;
+              this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
+                this.parentForm.markAsDirty();
+                formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
+              });
+            }
+            break;
+          case this.fieldsType.orghLookup:
+            crudFormModel[col.name] = {};
+            this.claimsForm.addControl(col.name, new FormControl(crudFormModel[col.name],
+              (col.required && col.required == true) ? Validators.required : null));
 
-        } else if (col.fieldType == this.fieldsType.checkbox) {
-          this.claimsForm.addControl(col.name, new FormControl((col as ICheckboxProperties).checked,
-            (col.required && col.required == true) ? Validators.required : null));
-        }
-        else if (col.fieldType == this.fieldsType.crudLookup) {
-          crudFormModel[col.name] = {};
-          this.claimsForm.addControl(col.name, new FormControl(crudFormModel[col.name],
-            (col.required && col.required == true) ? Validators.required : null));
-        }
-        else if (col.fieldType == this.fieldsType.codeLookup || col.fieldType == this.fieldsType.supplementalGrid || col.fieldType == this.fieldsType.userLookup) {
-          crudFormModel[col.name] = {};
-          this.claimsForm.addControl(col.name, new FormControl(crudFormModel[col.name],
-            (col.required && col.required == true) ? Validators.required : null));
-
-          if ((col as ICodeLookupProperties).isApplyChangeEvent) {
-            const control = col as ICodeLookupProperties;
-            const formControlUpdater = this.formControlUpdater;
-            this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
-              this.parentForm.markAsDirty();
-              formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
-            });
-          }
-
-        }
-        else if (col.fieldType == this.fieldsType.orghLookup) {
-          crudFormModel[col.name] = {};
-          this.claimsForm.addControl(col.name, new FormControl(crudFormModel[col.name],
-            (col.required && col.required == true) ? Validators.required : null));
-
-          if ((col as IOrghLookupProperties).isApplyChangeEvent) {
-            const control = col as IOrghLookupProperties;
-            const formControlUpdater = this.formControlUpdater;
-            this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
-              this.parentForm.markAsDirty();
-              formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
-            });
-          }
-
-        }
-        else {
-          this.claimsForm.addControl(col.name, new FormControl('',
-            (col.required && col.required == true) ? Validators.required : null));
+            if ((col as IOrghLookupProperties).isApplyChangeEvent) {
+              const control = col as IOrghLookupProperties;
+              const formControlUpdater = this.formControlUpdater;
+              this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
+                this.parentForm.markAsDirty();
+                formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
+              });
+            }
+            break;
+          default:
+            this.claimsForm.addControl(col.name, new FormControl('',
+              (col.required && col.required == true) ? Validators.required : null));
+            break;
         }
       }
     }
@@ -896,9 +894,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   private addRow = () => {
     if (this.editMode == 'popup') {
       this.isPopupOpen = true;
-    }
-    if (Object.keys(this.claimsForm.controls).length) {
-      return;
     }
     this.isEditForm = false;
     this.selectedRowIndex = -1;

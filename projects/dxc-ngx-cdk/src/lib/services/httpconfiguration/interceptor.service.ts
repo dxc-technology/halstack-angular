@@ -233,11 +233,13 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   removeRequest(req: HttpRequest<any>) {
-    const i = this.requests.indexOf(req);
+    const i = this.requests.findIndex((current, index, list) => { return current?.url == req?.url })
     if (i >= 0) {
       this.requests.splice(i, 1);
     }
-    this._loaderService.hide();
+    if (this.requests == null || (this.requests != null && this.requests.length <= 0)) {
+      this._loaderService.hide();
+    }
   }
 
 }

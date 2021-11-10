@@ -1,0 +1,51 @@
+<div>
+  <tbuilder-component-mode text="File">
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      [showPreview]="true"
+      margin="xsmall"
+      (callbackFile)="callback($event)"
+      [value]="value"
+      [multiple]="false"
+    ></dxc-file-input>
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      disabled="true"
+      margin="xsmall"
+    ></dxc-file-input>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Filedrop">
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      mode="filedrop"
+      margin="xsmall"
+    ></dxc-file-input>
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      mode="filedrop"
+      disabled="true"
+      margin="xsmall"
+    ></dxc-file-input>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Dropzone">
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      mode="dropzone"
+      margin="xsmall"
+    ></dxc-file-input>
+    <dxc-file-input
+      label="Label"
+      helperText="helperText"
+      mode="dropzone"
+      disabled="true"
+      margin="xsmall"
+    ></dxc-file-input>
+  </tbuilder-component-mode>
+</div>

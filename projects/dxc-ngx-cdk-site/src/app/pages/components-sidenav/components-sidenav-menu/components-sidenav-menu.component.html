@@ -181,6 +181,11 @@
             (click)="navigateTo('components/dropdown')">Dropdown</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/fileInput' ? 
+            router.isActive(router.createUrlTree(['components/fileInput']).toString(), true) : false}"
+            (click)="navigateTo('components/fileInput')">File Input</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/heading' ? 
             router.isActive(router.createUrlTree(['components/heading']).toString(), true) : false}"
             (click)="navigateTo('components/heading')">Heading</a>

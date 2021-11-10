@@ -58,6 +58,7 @@ import { PasswordModule } from './pages/password/password.module';
 import { NumberModule } from './pages/number/number.module';
 import { NewDateModule } from './pages/new-date/new-date.module';
 import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
+import { FileInputModule } from './pages/file-input/file-input.module';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
     PasswordModule,
     NumberModule,
     NewDateModule,
-    NewTextareaModule
+    NewTextareaModule,
+    FileInputModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

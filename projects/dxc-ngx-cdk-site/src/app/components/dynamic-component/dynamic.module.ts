@@ -167,6 +167,11 @@ import { NewTextareaApiComponent } from "../examples/new-textarea/new-textarea-a
 import { NewTextareaImportComponent } from "../examples/new-textarea/new-textarea-import/new-textarea-import.component";
 import { NewTextareaExampleComponent } from "../examples/new-textarea/new-textarea-example/new-textarea-example.component";
 import { NewTextareaPropertiesComponent } from "../examples/new-textarea/new-textarea-properties/new-textarea-properties.component";
+import { FileInputApiComponent } from "../examples/file-input/file-input-api/file-input-api.component";
+import { FileInputExampleComponent } from "../examples/file-input/file-input-example/file-input-example.component";
+import { FileInputImportComponent } from "../examples/file-input/file-input-import/file-input-import.component";
+import { FileInputPropertiesComponent } from "../examples/file-input/file-input-properties/file-input-properties.component";
+
 @NgModule({
   declarations: [DynamicComponentComponent],
   imports: [BrowserModule, FormsModule, PortalModule],
@@ -336,7 +341,11 @@ import { NewTextareaPropertiesComponent } from "../examples/new-textarea/new-tex
     NewTextareaApiComponent,
     NewTextareaImportComponent,
     NewTextareaExampleComponent,
-    NewTextareaPropertiesComponent
+    NewTextareaPropertiesComponent,
+    FileInputApiComponent,
+    FileInputExampleComponent,
+    FileInputImportComponent,
+    FileInputPropertiesComponent,
   ],
 })
 export class DynamicModule {}

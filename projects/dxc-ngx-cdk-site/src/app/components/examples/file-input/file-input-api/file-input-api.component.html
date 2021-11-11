@@ -5,27 +5,38 @@
 <dxc-heading
   [level]="4"
   weight="normal"
-  text="Children"
+  text="Interfaces"
   [margin]="{ bottom: 'small', top: 'small' }"
 ></dxc-heading>
 
 <dxc-heading
   [level]="5"
   weight="normal"
-  text="DxcFile"
+  text="FileData"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
+<p>Object structure of the interface. It should be imported from the library.</p>
 <dxc-table>
   <tr>
     <th>Name</th>
-    <th>Default</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td>error: string</td>
-    <td></td>
+    <td>data: File</td>
     <td>
-        If it is defined, an error will be shown below the file name. If it is not defined, the error messages will be created and managed internally.
+        Data of the file.
+    </td>
+  </tr>
+  <tr>
+    <td>error: string</td>
+    <td>
+        Error that will be displayed in the file input.
+    </td>
+  </tr>
+  <tr>
+    <td>image: string | ArrayBuffer</td>
+    <td>
+      Image data of the file.
     </td>
   </tr>
 </dxc-table>

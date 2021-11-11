@@ -32,7 +32,7 @@ interface FileInputProperties {
   disabled: boolean;
   margin: string;
   tabIndexValue: number;
-  value: FileData;
+  value: Array<FileData>;
 }
 
 @Component({

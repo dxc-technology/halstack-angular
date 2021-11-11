@@ -177,9 +177,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
-    if (this.multiple || (!this.multiple && this.files.length === 0)) {
-      this.getPreviewsFiles(event.dataTransfer.files);
+    if (!this.multiple) {
+      this.service.emptyArrayFiles();
     }
+    this.getPreviewsFiles(event.dataTransfer.files);
   }
 
   /**
@@ -187,10 +188,11 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param event
    */
   onFileInput(event) {
-    if (this.multiple || (!this.multiple && this.files?.length === 0)) {
-      this.getPreviewsFiles(event.target.files);
-      event.target.value = "";
+    if (!this.multiple) {
+      this.service.emptyArrayFiles();
     }
+    this.getPreviewsFiles(event.target.files);
+    event.target.value = "";
   }
 
   /**
@@ -242,20 +244,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.files[0]?.error !== null &&
     this.files[0]?.error !== undefined &&
     !this.disabled;
-
-  // /**
-  //  * Update the native component input file via DOM with a
-  //  * reference of the native element
-  //  * @param files
-  //  */
-  // private updateFileInputNative(files: File[]) {
-  //   const fileInput = this.fileInputNative.nativeElement;
-  //   let list = new DataTransfer();
-  //   for (let i = 0; i < files.length; i++) {
-  //     list.items.add(files[i]);
-  //   }
-  //   fileInput.files = list.files;
-  // }
 
   /**
    * Define the type of file component. Just for styling

@@ -106,6 +106,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   filterValue: string = '';
   referenceRow: any = null;
   enableAccessKey: boolean;
+  
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
     private confirmationDialogService: DxcConfirmationDialogService,
@@ -160,6 +161,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   writeValue(val: any): void {
+    this.loaded = false;
     this.displayedColumns = this.columns;
     this.editableFields = this.editableColumns;
     this.claimsForm = this.fb.group({});
@@ -171,7 +173,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     } else {
       this.data = val;
       this.dataSource.data = [...this.data];
-      this.loaded = true;
+      setTimeout(() => {this.loaded = true;}, 200);
       this.setTableHeight();
     }
     if (this.editableColumns?.viewmode != "TAB") {
@@ -593,6 +595,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   bindOptions = () => {
+    this.loaded = false;
     this.displayedColumns = this.columns;
     if (this.editableFields.viewmode != this.viewMode) {
       this.editableFields = this.fieldOptions.map(obj => ({ ...obj }));
@@ -603,7 +606,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     } else {
       this.dataSource.data = [...this.data];
       this.dataSource.paginator = this.paginator;
-      this.loaded = true;
+      setTimeout(() => {this.loaded = true;}, 200);
       this.setTableHeight();
       this.onChangeRegister(this.dataSource.data);
     }
@@ -628,6 +631,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       else {
         this.dataSource.data = response._embedded[this.dataNodeName];
       }
+      setTimeout(() => {this.loaded = true;}, 200);
       this.setTableHeight();
       this.formControlUpdater.emit({ action: EAction.ONRENDER, data: this.dataSource.data });
     });
@@ -767,8 +771,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
             }
             else {
               this.expandedElement[col.name] = this.expandedElement[col.name];
-			  }
-			this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
+            }
+            this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
             break;
           case this.fieldsType.dropdown:
             this.expandedElement[(col as IDropdownProperties).viewValue] = this.expandedElement[(col as IDropdownProperties).viewValue];
@@ -790,11 +794,11 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
               (col.required && col.required == true) ? Validators.required : null));
             break;
           case this.fieldsType.dxcDate:
-		    this.expandedElement[col.name] = this.expandedElement[col.name];
+            this.expandedElement[col.name] = this.expandedElement[col.name];
             this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
             break;
           default:
-		    this.expandedElement[col.name] = this.expandedElement[col.name];
+            this.expandedElement[col.name] = this.expandedElement[col.name];
             this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],
               (col.required && col.required == true) ? Validators.required : null));
             break;

@@ -83,7 +83,8 @@ describe('DxcFileInputComponent', () => {
     fireEvent.change(inputEl, { target: { files: [file2] } });
     await waitFor(() => {
       fileInput.detectChanges();
-      expect(() => screen.getByText("chucknorris.txt")).toThrow();
+      expect(screen.getByText("chucknorris.txt"));
+      expect(() => screen.getByText("foo.txt")).toThrow();
     });
   });
 

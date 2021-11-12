@@ -596,6 +596,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   bindOptions = () => {
     this.loaded = false;
+    this.expandedElement = null;
+    this.isEditForm = false;
     this.displayedColumns = this.columns;
     if (this.editableFields.viewmode != this.viewMode) {
       this.editableFields = this.fieldOptions.map(obj => ({ ...obj }));

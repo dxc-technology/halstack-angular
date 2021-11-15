@@ -19,20 +19,20 @@
 
               </div>
               <div [hidden]="!displayPanel" role="refresh">
-                <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.tltrefresh" id="gridrefresh"
+                <dxc-button size="small" mode="secondary" [matTooltip]="globalResource.tltrefresh?.description" id="gridrefresh"
                   (onClick)="gridActionChange(gridAction.REFRESH)">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper mt-2">
-                      <mat-icon class="mat-icon material-icons" aria-hidden="false" [attr.aria-label]="globalResource.tltrefresh">refresh</mat-icon>
+                      <mat-icon class="mat-icon material-icons" aria-hidden="false" [attr.aria-label]="globalResource.tltrefresh?.description">refresh</mat-icon>
                     </span>
                   </dxc-button-icon>
                 </dxc-button>
               </div>
               <div [hidden]="!displayPanel" role="setting">
-                <dxc-button size="small" mode="secondary" id="gridsetting" [matTooltip]="globalResource['uxmdimenu.gridconfig']" [matMenuTriggerFor]="gridaction">
+                <dxc-button size="small" mode="secondary" id="gridsetting" [matTooltip]="globalResource['uxmdimenu.gridconfig']?.description" [matMenuTriggerFor]="gridaction">
                   <dxc-button-icon>
                     <span class="icon-dxc-wrapper mt-2">
-                      <mat-icon class="mat-icon material-icons" aria-hidden="false" [attr.aria-label]="globalResource['uxmdimenu.gridconfig']">settings</mat-icon>
+                      <mat-icon class="mat-icon material-icons" aria-hidden="false" [attr.aria-label]="globalResource['uxmdimenu.gridconfig']?.description">settings</mat-icon>
                     </span>
                   </dxc-button-icon>
                 </dxc-button>
@@ -52,13 +52,13 @@
                     </ng-template>
                     <ng-template #notShowBlock>
                       <a href="javascript:void(0);" target="_self" mat-menu-item
-                        (click)="gridActionChange(action.value)" *ngIf="!action.hide" [attr.label]="globalResource[action.name]
-                      && globalResource[action.name] !== '' ?
-                      globalResource[action.name]: action.label">
+                        (click)="gridActionChange(action.value)" *ngIf="!action.hide" [attr.label]="globalResource[action.name]?.description
+                      && globalResource[action.name]?.description !== '' ?
+                      globalResource[action.name]?.description: action.label">
                         <mat-icon aria-hidden="false" aria-label="action.label">{{action.iconName}}</mat-icon>
                         <ng-container
-                          *ngIf="globalResource[action.name] && globalResource[action.name] !== ''; else noresource">
-                          {{globalResource[action.name]}}
+                          *ngIf="globalResource[action.name]?.description && globalResource[action.name]?.description !== ''; else noresource">
+                          {{globalResource[action.name]?.description}}
                         </ng-container>
                         <ng-template #noresource>
                           {{action.label}}
@@ -124,7 +124,7 @@
     <dxc-button size="small" mode="secondary" (onClick)="saveState()">
       <dxc-button-icon>
         <span class="icon-dxc-wrapper">
-          <mat-icon [attr.aria-label]="globalResource.save" class="mat-icon material-icons">save</mat-icon>
+          <mat-icon [attr.aria-label]="globalResource.save?.description" class="mat-icon material-icons">save</mat-icon>
         </span>
       </dxc-button-icon>
     </dxc-button>

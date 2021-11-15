@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DateHelper } from '../../helpers/date/date-helper';
+import { DxcSafePipe } from '../../directives/pipes/safe/dxc-safe.pipe';
 @Pipe({
   name: 'formatter'
 })
 export class FormatterPipe implements PipeTransform {
-  constructor(private dateHelper: DateHelper) { }
+  constructor(private dateHelper: DateHelper, private dxcSafePipe: DxcSafePipe) { }
 
   transform(value: any, args: any): any {
     let returnValue = value;
@@ -19,9 +20,16 @@ export class FormatterPipe implements PipeTransform {
         case 'xsfilter':
           returnValue = this.filterOnMobile(value, args.format)
           break;
+        case 'safe':
+          returnValue = this.bindHtml(value, args.format)
+          break;
       }
     }
     return returnValue;
+  }
+
+  bindHtml = (value, format) => {
+    return this.dxcSafePipe.transform(value, format);
   }
 
   formatDate = (value, format) => {

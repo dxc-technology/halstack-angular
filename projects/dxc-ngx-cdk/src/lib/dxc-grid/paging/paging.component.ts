@@ -18,7 +18,7 @@ export class PagingComponent implements OnInit {
   minPageNumber = 0;
   maxPageNumber = 0;
   pageValue: number;
-  globalResource: { [key: string]: string };
+  globalResource: { [key: string]: { description: string, type: string } };
 
   constructor(private changeDetectionRef: ChangeDetectorRef, private config: ConfigurationsetupService) {
 
@@ -38,7 +38,7 @@ export class PagingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalResource = this.config.configservice.Resource;
+    this.globalResource = this.config.configservice.Resources;
     if (this.pageSize <= 0 || this.totalCount <= 0) {
           throw new Error(('Paging Configuration is missing.'));
       }

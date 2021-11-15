@@ -175,7 +175,7 @@
 <ng-template #gridTemplate let-gridwidth="width" let-gridclose="close">
   <div class="base-lookup-grid_height p-1">
     <div class="mb-2 mt-2 btnhieght text-right mr-3" *ngIf="defaulttoolbar">
-      <dxc-button  size="small" mode="secondary" id="rowdone" [title]="globalResource.tltokButton" (onClick)="rowSelection()">
+      <dxc-button  size="small" mode="secondary" id="rowdone" [title]="globalResource.tltokButton?.description" (onClick)="rowSelection()">
         <dxc-button-icon>
           <span class="icon-dxc-wrapper">
             <mat-icon class="mat-icon material-icons">done</mat-icon>

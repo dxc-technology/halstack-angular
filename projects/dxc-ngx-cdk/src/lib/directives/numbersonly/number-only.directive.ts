@@ -14,7 +14,7 @@ export class NumberDirective {
     isAllowDecimal = (isAllowDecimal === 'true');
 
     if (isAllowDecimal !== null && !isAllowDecimal) {
-      this._el.nativeElement.value = initalValue.replace(/[^0-9]*/g, '');
+      this._el.nativeElement.value = initalValue.replace(/[[+-]?^0-9]*/g, '');
     } else {
       this._el.nativeElement.value = initalValue.replace(/[^0-9\.]/g, '');
     }

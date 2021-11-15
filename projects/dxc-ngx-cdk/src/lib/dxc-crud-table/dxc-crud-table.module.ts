@@ -31,7 +31,8 @@ import { DxcCrudEdiatbleFieldsComponent } from './dxc-crud-ediatble-fields/dxc-c
 import { DxcCrudCellRenderComponent } from './dxc-crud-cell-render/dxc-crud-cell-render.component';
 import { DxcTextEditorModule } from './../dxc-text-editor/dxc-text-editor.module';
 import { DxcNumberModule } from './../dxc-number/dxc-number.module';
-
+import { DxcSafeModule} from '../directives/pipes/safe/dxc-safe.module';
+import { DxcSafePipe } from '../directives/pipes/safe/dxc-safe.pipe';
 @NgModule({
   declarations: [DxcCrudTableComponent, FormatterPipe, DxcCrudEdiatbleFieldsComponent, DxcCrudCellRenderComponent],
   imports: [
@@ -54,8 +55,10 @@ import { DxcNumberModule } from './../dxc-number/dxc-number.module';
     DxcPageErrorsModule,
     DxcToolbarModule,
     DxcTextEditorModule,
-    DxcNumberModule
+    DxcNumberModule,
+    DxcSafeModule
   ],
+  providers:[DxcSafePipe],
   exports: [DxcCrudTableComponent]
 })
 export class DxcCrudTableModule {

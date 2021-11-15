@@ -74,7 +74,7 @@ export class GridComponent extends DxcBaselookupComponent<any> implements AfterV
   hideGridSection = false;
   pagingAction = PagingAction;
   searchCriteria: Array<IFilter> = new Array<IFilter>();
-  globalResource: { [key: string]: string };
+  globalResource: { [key: string]: { description: string, type: string } };
   private gridReqURL = '';
   // private gridReqParams = new HttpParams();
   // tslint:disable-next-line: no-input-rename
@@ -111,7 +111,7 @@ export class GridComponent extends DxcBaselookupComponent<any> implements AfterV
   ngOnInit() {
     this.gridReqURL = this.gridRequest.url;
     // this.gridReqParams = this.gridRequest.params;
-    this.globalResource = this.config.configservice.Resource;
+    this.globalResource = this.config.configservice.Resources;
     this.resizeService.onResize$
       .pipe(delay(0))
       .subscribe(x => {

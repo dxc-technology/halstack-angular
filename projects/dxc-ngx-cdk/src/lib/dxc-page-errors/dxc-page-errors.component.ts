@@ -4,7 +4,7 @@ import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 @Component({
   selector: 'dxc-show-errors',
   template: `
-   <ul *ngIf="shouldShowErrors()">
+   <ul *ngIf="shouldShowErrors()" class="position-absolute">
      <li style="color: red" *ngFor="let error of listOfErrors()">{{error}}</li>
    </ul>
  `,

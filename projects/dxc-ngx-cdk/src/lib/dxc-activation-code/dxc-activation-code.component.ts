@@ -30,7 +30,7 @@ export class DxcActivationcodeComponent implements OnInit {
   loadSpinner = false;
 
   @ViewChild('activationdialog', { read: ElementRef, static: false }) field: ElementRef;
-  globalResource: { [key: string]: string };
+  globalResource: { [key: string]: { description: string, type: string } };
 
   constructor(private helper: DxcActivationcodeService, private fb: FormBuilder, private config: ConfigurationsetupService) {
     this.onClose = new EventEmitter<IActivateCode>();
@@ -40,7 +40,7 @@ export class DxcActivationcodeComponent implements OnInit {
     this.licenceActivationForm = this.fb.group({
       activationCodeVal: ['', Validators.required]
     });
-    this.globalResource = this.config.configservice.Resource;
+    this.globalResource = this.config.configservice.Resources;
     this.activationCode.moduleName = this.name;
     this.activationCode.value = this.value;
   }

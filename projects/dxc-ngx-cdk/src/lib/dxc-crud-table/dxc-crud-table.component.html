@@ -1,4 +1,4 @@
-<div class="w-100 clearfix" tabindex="0" attr.aria-label="{{globalResource.gridContent}}" (focusin)="gridFocus(true)" (focusout)="gridFocus(false)">
+<div class="w-100 clearfix" tabindex="0" attr.aria-label="{{globalResource.gridContent?.description}}" (focusin)="gridFocus(true)" (focusout)="gridFocus(false)">
   <dxc-toolbar [toolBarList]="gridToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100" searchAccessKey="f"
     (onClick)="crudToolbarClick($event)" [allowSearch]='allowSearch' (searchClick)="gridSearch($event)">
   </dxc-toolbar>
@@ -31,7 +31,7 @@
           <div class="example-element-detail" *ngIf="element == expandedElement && editMode == 'inline' "
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll edit-form" tabindex="0"
-              role="form" attr.aria-label="{{globalResource.gridRowForm}}">
+              role="form" attr.aria-label="{{globalResource.gridRowForm?.description}}">
               <dxc-toolbar [toolBarList]="editFormToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100"
                 (onClick)="formToolbarClick($event, element)" [allowSearch]='false'>
               </dxc-toolbar>
@@ -72,8 +72,8 @@
       <mat-card class="p-1 m-1">
         <mat-card-title class="w-100 text-center" *ngIf="isToShowRow(0, row)">
           <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox"
-            [attr.aria-checked]="row.isSelected" *ngIf="rowSelection != 'none'" [matTooltip]="globalResource.selectRow"
-            [attr.aria-label]="globalResource.selectRowMessage" (click)="rowChecked(row)">
+            [attr.aria-checked]="row.isSelected" *ngIf="rowSelection != 'none'" [matTooltip]="globalResource.selectRow?.description"
+            [attr.aria-label]="globalResource.selectRowMessage?.description" (click)="rowChecked(row)">
             <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
             <span class="position-absolute font-size-25 left-0" *ngIf="row.isSelected">done</span>
           </a>
@@ -118,8 +118,8 @@
 </ng-template>
 <ng-template #selectAll>
   <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox"
-    attr.aria-checked="{{selectedRowCount == dataSource.data?.length}}" [matTooltip]="globalResource.selectAllRow"
-    [attr.aria-label]="globalResource.selectAllRowMessage" (click)="selectAllRow()">
+    attr.aria-checked="{{selectedRowCount == dataSource.data?.length}}" [matTooltip]="globalResource.selectAllRow?.description"
+    [attr.aria-label]="globalResource.selectAllRowMessage?.description" (click)="selectAllRow()">
     <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
     <span class="position-absolute font-size-25 left-0"
       *ngIf="selectedRowCount > 0 && selectedRowCount != dataSource.data?.length">remove</span>
@@ -128,7 +128,7 @@
 </ng-template>
 
 <dxc-dialog #activationdialog ariaLabelledBy="crud-grid-popup-header" *ngIf="isPopupOpen" isCloseVisible="true"
-  [closeButtonLabel]="globalResource?.closes" (onCloseClick)="onClosePopup()">
+  [closeButtonLabel]="globalResource?.closes?.description" (onCloseClick)="onClosePopup()">
   <div>
     <div class="modal-header pb-2 pt-2">
       <h6 class="modal-title ml-2">

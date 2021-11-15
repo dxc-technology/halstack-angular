@@ -88,7 +88,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   dataSource = new MatTableDataSource(null);
   fieldsType = EFieldsType;
   viewMode = ViewMode[ViewMode.TAB];
-  globalResource: { [key: string]: string };
+  globalResource: { [key: string]: { description: string, type: string } };
   distributionValue: Code = { id: 0, desc: '', shortCode: '', table: '' };
   isEditForm = false;
   isPopupOpen = false;
@@ -147,10 +147,10 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   ngOnInit() {
     this.dataSource.data = [];
-    this.globalResource = this.config.configservice.Resource;
+    this.globalResource = this.config.configservice.Resources;
     this.uniqueColumn = this.uniqueIdentifier;
-    this.validations = this.config.configservice.GlobalResource.gridGlobalRequiredValidation?.description;
-    this.noRecord = this.config.configservice.GlobalResource.gridNoRecord?.description;
+    this.validations = this.config.configservice.Resources.gridGlobalRequiredValidation?.description;
+    this.noRecord = this.config.configservice.Resources.gridNoRecord?.description;
   }
 
   ngAfterViewInit() {
@@ -219,7 +219,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   rowChecked = ($event) => {
     if (this.expandedElement != null || this.isEditForm == true) {
-      this.messageService.Info(this.config.configservice.GlobalResource.rowSelectionError?.description);
+      this.messageService.Info(this.config.configservice.Resources.rowSelectionError?.description);
       return;
     }
     $event.isSelected = !$event.isSelected;
@@ -234,7 +234,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   selectAllRow = () => {
     if (this.expandedElement != null || this.isEditForm == true) {
-      this.messageService.Info(this.config.configservice.GlobalResource.rowSelectionError?.description);
+      this.messageService.Info(this.config.configservice.Resources.rowSelectionError?.description);
       return;
     }
     if (this.dataSource.data.filter(row => { return row['isSelected'] == true }).length < this.dataSource.data.length) {
@@ -261,17 +261,17 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.editFormToolbar = List<Button>([]);
     this.editFormToolbar = this.editFormToolbar.push({
       rel: 'save',
-      title: this.saveIconName == 'save' ? this.globalResource.save : this.globalResource.okayButtonText,
+      title: this.saveIconName == 'save' ? this.globalResource.save?.description : this.globalResource.okayButtonText?.description,
       iconName: this.saveIconName,
-      label: this.saveIconName == 'save' ? this.globalResource.save : this.globalResource.okayButtonText,
+      label: this.saveIconName == 'save' ? this.globalResource.save?.description : this.globalResource.okayButtonText?.description,
       accessKey: 's'
     });
     if (this.editableColumns?.viewmode != "TAB") {
       this.editFormToolbar = this.editFormToolbar.push({
         rel: 'close',
-        title: this.globalResource.closes,
+        title: this.globalResource.closes?.description,
         iconName: 'cancel',
-        label: this.globalResource.closes,
+        label: this.globalResource.closes?.description,
         accessKey: 'x'
       });
     }
@@ -284,10 +284,10 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           break;
         case this.editRel:
           if (selectedRows.length <= 0) {
-            this.messageService.Info(this.config.configservice.GlobalResource.selectRowError?.description);
+            this.messageService.Info(this.config.configservice.Resources.selectRowError?.description);
           }
           else if (selectedRows.length > 1) {
-            this.messageService.Info(this.config.configservice.GlobalResource.multiRowSelectError?.description);
+            this.messageService.Info(this.config.configservice.Resources.multiRowSelectError?.description);
           }
           else {
             this.expandRow(1, selectedRows[0]);
@@ -296,16 +296,16 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           break;
         case this.deleteRel:
           if (selectedRows.length <= 0) {
-            this.messageService.Info(this.config.configservice.GlobalResource.selectRowError?.description);
+            this.messageService.Info(this.config.configservice.Resources.selectRowError?.description);
           }
           else {
             let deleteButton = this.gridToolbar.filter(buttons => { return buttons.rel == this.deleteRel });
             let deleteRequest = (deleteButton.count() > 0 && deleteButton.get(0).request) ? deleteButton.get(0).request : null;
             const options = {
-              title: this.config.configservice.Resource.confirmation,
-              message: (this.parentForm.dirty && deleteRequest) ? this.config.configservice.Resource.crudGridDeleteSaveMsg : this.config.configservice.Resource.confirmDeleteMsg,
-              cancelText: this.config.configservice.Resource.cancelButtonText,
-              confirmText: this.config.configservice.Resource.confirmTitle
+              title: this.config.configservice.Resources.confirmation?.description,
+              message: (this.parentForm.dirty && deleteRequest) ? this.config.configservice.Resources.crudGridDeleteSaveMsg?.description : this.config.configservice.Resources.confirmDeleteMsg?.description,
+              cancelText: this.config.configservice.Resources.cancelButtonText?.description,
+              confirmText: this.config.configservice.Resources.confirmTitle?.description
             };
             this.confirmationDialogService.confirm(options);
             this.confirmationDialogService.confirmed().subscribe(confirmed => {

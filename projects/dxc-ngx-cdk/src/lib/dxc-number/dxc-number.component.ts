@@ -311,7 +311,7 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
       transformedInput = parseFloat(valString.replace(/[^0-9\.]/g, ''));
     } else {
       const valString = value.toString();
-      transformedInput = parseFloat(valString.replace(/[^0-9]/g, ''));
+      transformedInput = parseFloat(valString.replace(/[[+-]?^0-9]/g, ''));
     }
     if(isNaN(transformedInput))
     {
@@ -340,6 +340,6 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
     return transformedInput;
   }
   else {
-    return 0;
+    return minValue ? parseFloat(minValue) : 0;
   }
 }

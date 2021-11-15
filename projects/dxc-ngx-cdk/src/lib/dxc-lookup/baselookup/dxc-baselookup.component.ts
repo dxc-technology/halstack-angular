@@ -93,7 +93,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   @Input() isPanelOpen = false;
 
   @Output() isPanelOpenChange = new EventEmitter<boolean>();
-  globalResource: { [key: string]: string };
+  globalResource: { [key: string]: { description: string, type: string } };
   visible = true;
   selectable = true;
   removable = true;
@@ -125,7 +125,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
 
 
   ngOnInit() {
-    this.globalResource = this.config.configservice.Resource;
+    this.globalResource = this.config.configservice.Resources;
     if (this.lookupType === this.lookupTypeValues.SINGLE) {
       this.removable = false;
     }

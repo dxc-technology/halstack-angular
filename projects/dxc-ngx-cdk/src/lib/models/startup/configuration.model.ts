@@ -13,8 +13,7 @@ export interface IConfig {
   REQUIRED: RequiredFormat;
   ButtonIcon: { [key: string]: string };
   Settings: { [key: string]: string };
-  Resource: { [key: string]: string };
-  GlobalResource?: { [key: string]: { description: string, type: string } };
+  Resources: { [key: string]: { description: string, type: string } };
   ThemeColors?: Array<any>;
   ThemeMode?: string;
 }

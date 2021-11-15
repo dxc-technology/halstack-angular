@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DxcCrudCellRenderComponent implements OnInit {
 
   @Input() rowData: any = null;
-  @Input() resource: { [key: string]: string };
+  @Input() resource: { [key: string]: { description: string, type: string } };
   @Input() gridResource: { [key: string]: string };
   @Input() columnName: string = '';
   @Input() formatColumns: any;

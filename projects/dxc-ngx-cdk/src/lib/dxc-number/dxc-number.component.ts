@@ -321,14 +321,18 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
       transformedInput = parseFloat(parseFloat(transformedInput).toFixed(decimalPlace));
       }
 
-    if (maxValue && maxValue !== -1) {
+      if(minValue)
+      {
       if (parseFloat(transformedInput) < parseFloat(minValue)) {
-        transformedInput = parseFloat(minValue);
+      transformedInput = parseFloat(minValue);
       }
+      }
+      
+      if (maxValue && maxValue !== -1) {
       if (parseFloat(transformedInput) > parseFloat(maxValue)) {
-        transformedInput = parseFloat(maxValue);
+      transformedInput = parseFloat(maxValue);
       }
-    }
+      }
 
     if (transformedInput !== 0) {
       const transformedInputV = transformedInput.toString();
@@ -340,6 +344,6 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
     return transformedInput;
   }
   else {
-    return minValue ? parseFloat(minValue) : 0;
+    return 0;
   }
 }

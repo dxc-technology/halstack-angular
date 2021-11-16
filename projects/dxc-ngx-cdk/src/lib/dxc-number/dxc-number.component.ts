@@ -321,24 +321,18 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
       transformedInput = parseFloat(parseFloat(transformedInput).toFixed(decimalPlace));
       }
 
-    if(minValue && maxValue == -1)
-    {
-      if (parseFloat(transformedInput) < 0 && (parseFloat(transformedInput) < parseFloat(minValue))) {
-      transformedInput = parseFloat(minValue);
-      }
-      if (parseFloat(transformedInput) >= 0 && (parseFloat(transformedInput) > parseFloat(minValue))) {
-      transformedInput = parseFloat(minValue);
-      }
-    }
-
-    if (maxValue && maxValue !== -1) {
+      if(minValue)
+      {
       if (parseFloat(transformedInput) < parseFloat(minValue)) {
-        transformedInput = parseFloat(minValue);
+      transformedInput = parseFloat(minValue);
       }
+      }
+      
+      if (maxValue && maxValue !== -1) {
       if (parseFloat(transformedInput) > parseFloat(maxValue)) {
-        transformedInput = parseFloat(maxValue);
+      transformedInput = parseFloat(maxValue);
       }
-    }
+      }
 
     if (transformedInput !== 0) {
       const transformedInputV = transformedInput.toString();

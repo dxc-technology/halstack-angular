@@ -18,7 +18,7 @@ export class FileInputComponent implements OnInit {
 
   constructor(){
     this.sections = new Array<Section>();
-    this.tagImg = './assets/img/ready.svg';
+    this.tagImg = './assets/img/experimental.svg';
   }
 
   ngOnInit() {

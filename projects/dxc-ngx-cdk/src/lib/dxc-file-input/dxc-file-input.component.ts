@@ -3,6 +3,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -30,6 +31,8 @@ interface FileInputProperties {
   multiple: boolean;
   showPreview: boolean;
   disabled: boolean;
+  maxSize: number;
+  minSize: number;
   margin: string;
   tabIndexValue: number;
   value: Array<FileData>;
@@ -73,6 +76,22 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled;
+  @Input()
+  get minSize(): number {
+    return this._minSize;
+  }
+  set minSize(value: number) {
+    this._minSize = coerceNumberProperty(value);
+  }
+  private _minSize;
+  @Input()
+  get maxSize(): number {
+    return this._maxSize;
+  }
+  set maxSize(value: number) {
+    this._maxSize = coerceNumberProperty(value);
+  }
+  private _maxSize;
   @Input() public margin: any;
   @Input()
   get tabIndexValue(): number {
@@ -98,6 +117,8 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     margin: null,
     tabIndexValue: 0,
     value: null,
+    maxSize: null,
+    minSize: null,
   });
 
   id: string;
@@ -108,32 +129,36 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasMultipleFiles: boolean = false;
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
+  isControlled: boolean = false;
 
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
       if (files) {
-        this.files = files;
+        this.value = files;
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
-        this.hasSingleFile = this.isMultipleFilesPrintables(true);
-        this.callbackFile.emit(this.files);
+        this.hasSingleFile = this.isSingleFilesPrintables();
+        this.callbackFile.emit(this.value);
       }
     });
   }
 
   ngOnInit() {
     this.id = this.id || uuidv4();
+    this.value ? (this.isControlled = true) : (this.isControlled = false);
     this.hasShowError = this.isErrorShow();
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
-    this.hasSingleFile = this.isMultipleFilesPrintables(true);
+    this.hasSingleFile = this.isSingleFilesPrintables();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
   ngOnChanges(changes: NgChanges<DxcFileInputComponent>): void {
-    if(this.fileInputNative){
-      this.multiple ? this.fileInputNative.nativeElement.setAttribute("multiple", true) : this.fileInputNative.nativeElement.removeAttribute("multiple");
+    if (this.fileInputNative) {
+      this.multiple
+        ? this.fileInputNative.nativeElement.setAttribute("multiple", true)
+        : this.fileInputNative.nativeElement.removeAttribute("multiple");
     }
-    if (this.files !== this.value && this.value !== null && this.value) {
+    if (this.value !== null && this.value) {
       this.value.forEach((file) => {
         this.service.addFile(file);
       });
@@ -147,9 +172,21 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   }
 
   ngAfterViewInit(): void {
-    if(this.fileInputNative){
-      this.multiple ? this.fileInputNative.nativeElement.setAttribute("multiple", true) : this.fileInputNative.nativeElement.removeAttribute("multiple");
+    if (this.fileInputNative) {
+      this.multiple
+        ? this.fileInputNative.nativeElement.setAttribute("multiple", true)
+        : this.fileInputNative.nativeElement.removeAttribute("multiple");
     }
+  }
+
+  checkFileSize(file: File) {
+    if (file.size < this.minSize) {
+      return "File size must be greater than min size.";
+    }
+    if (file.size > this.maxSize) {
+      return "File size must be less than max size.";
+    }
+    return null;
   }
 
   /**
@@ -188,11 +225,13 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param event
    */
   onFileInput(event) {
-    if (!this.multiple) {
-      this.service.emptyArrayFiles();
+    if (this.callbackFile.observers?.length > 0) {
+      if (!this.multiple) {
+        this.service.emptyArrayFiles();
+      }
+      this.getPreviewsFiles(event.target.files);
+      event.target.value = "";
     }
-    this.getPreviewsFiles(event.target.files);
-    event.target.value = "";
   }
 
   /**
@@ -200,7 +239,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param eventFiles
    */
   getPreviewsFiles(eventFiles) {
-    this.numberFiles = eventFiles.length;
+    this.numberFiles = eventFiles?.length;
     Array.from(eventFiles).map((file) => {
       this.getPreview(file);
     });
@@ -218,14 +257,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         let fileToAdd: FileData = {
           data: file,
           image: null,
-          error: null,
+          error: this.checkFileSize(file),
         };
         this.service.addFile(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
           image: event.target["result"],
-          error: null,
+          error: this.checkFileSize(file),
         };
         this.service.addFile(fileToAdd);
       }
@@ -234,15 +273,19 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
 
   private isMultipleFilesPrintables(isSingle = false) {
     return isSingle
-      ? this.files?.length > 0 && !this.disabled && !this.multiple
-      : this.files?.length > 0 && !this.disabled && this.multiple;
+      ? this.value?.length > 0 && !this.disabled && !this.multiple
+      : this.value?.length > 0 && !this.disabled && this.multiple;
+  }
+
+  private isSingleFilesPrintables() {
+    return this.mode === "file" && this.value?.length === 1 && !this.multiple;
   }
 
   private isErrorShow = (): boolean =>
-    !this.multiple &&
+    this.value?.length === 1 &&
     this.mode === "file" &&
-    this.files[0]?.error !== null &&
-    this.files[0]?.error !== undefined &&
+    this.value[0]?.error &&
+    !this.multiple &&
     !this.disabled;
 
   /**
@@ -256,7 +299,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     } else if (inputs.mode === "dropzone") {
       return this.getDropZoneStyle();
     } else {
-      return this.getFileStyle(inputs.multiple);
+      return this.getFileStyle();
     }
   }
 
@@ -265,10 +308,12 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param inputs
    * @returns
    */
-  getFileStyle(multiple: boolean) {
+  getFileStyle() {
     return css`
       .fileInputContainer {
-        flex-direction: ${multiple === false ? "row" : "column"};
+        flex-direction: ${this.value?.length > 1 || this.multiple
+          ? "column"
+          : "row"};
       }
     `;
   }
@@ -335,9 +380,9 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           width: fit-content;
         }
         input {
-         visibility: hidden;
-         width: 0px;
-         height: 0px;
+          visibility: hidden;
+          width: 0px;
+          height: 0px;
         }
         .dragDropArea {
           width: 320px;
@@ -395,7 +440,4 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
     `;
   }
-}
-function forEach() {
-  throw new Error("Function not implemented.");
 }

@@ -381,8 +381,8 @@
     "errorMessageFontWeight": "400",
     "errorMessageLineHeight": "1.5em",
     "dropBorderStyle": "dashed",
-    "dropBorderThickness": "2px",
-    "dropBorderRadius": "4px",
+    "dropBorderThickness": "1px",
+    "dropBorderRadius": "6px",
     "fileItemBorderStyle": "solid",
     "fileItemBorderThickness": "1px",
     "fileItemBorderRadius": "4px"

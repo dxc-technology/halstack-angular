@@ -321,6 +321,16 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
       transformedInput = parseFloat(parseFloat(transformedInput).toFixed(decimalPlace));
       }
 
+    if(minValue && maxValue == -1)
+    {
+      if (parseFloat(transformedInput) < 0 && (parseFloat(transformedInput) < parseFloat(minValue))) {
+      transformedInput = parseFloat(minValue);
+      }
+      if (parseFloat(transformedInput) >= 0 && (parseFloat(transformedInput) > parseFloat(minValue))) {
+      transformedInput = parseFloat(minValue);
+      }
+    }
+
     if (maxValue && maxValue !== -1) {
       if (parseFloat(transformedInput) < parseFloat(minValue)) {
         transformedInput = parseFloat(minValue);
@@ -340,6 +350,6 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
     return transformedInput;
   }
   else {
-    return minValue ? parseFloat(minValue) : 0;
+    return 0;
   }
 }

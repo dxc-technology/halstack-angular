@@ -13,7 +13,7 @@
     </div>
     <div *ngSwitchCase="fieldsType.dropdown">
       <dxc-select [customHandler]='false' tabIndexValue="-1" tabindex="0" attr.aria-required="{{field.required}}"
-        aria-labelledby="{{field.name}}" sizes="fitContent" margin="small"
+        aria-labelledby="cl_{{field.name}}" sizes="fitContent" margin="small"
         [attr.aria-disabled]="field.disabled" [disabled]="field.disabled" formControlName="{{field.name}}"
         [multiple]="field.multiple"
         [className]="formGroup.get(field.name).errors?.required ? 'classinavlid' : 'classvalid'">

@@ -54,7 +54,7 @@ export class ThemeInputsConfigComponent implements OnInit, Stylable, OnDestroy {
 
       .configContainerTitle {
         font-size: 16px;
-        color: #6f2c91;
+        color: #5f249f;
         font-weight: 600;
         margin: 0px;
         padding: 11.5px 24px;

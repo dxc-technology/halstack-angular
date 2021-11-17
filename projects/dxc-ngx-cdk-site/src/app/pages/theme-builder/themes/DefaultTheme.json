@@ -17,11 +17,11 @@
     "fontColor": "#000000"
   },
   "date": {
-    "baseColor": "#6f2c91",
+    "baseColor": "#5f249f",
     "accentColor": "#ffffff"
   },
   "newDate": {
-    "baseColor": "#6f2c91",
+    "baseColor": "#5f249f",
     "accentColor": "#ffffff"
   },
   "dropdown": {

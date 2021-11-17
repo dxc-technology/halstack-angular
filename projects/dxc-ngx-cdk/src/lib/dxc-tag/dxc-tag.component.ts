@@ -82,7 +82,7 @@ export class DxcTagComponent implements OnInit {
   defaultInputs = new BehaviorSubject<any>({
     size: "fitContent",
     iconSrc: null,
-    iconBgColor: "black",
+    iconBgColor: "#5f249f",
     label: false,
     linkHref: null,
     labelPosition: "after",
@@ -209,13 +209,7 @@ export class DxcTagComponent implements OnInit {
       display: inline-flex;
       width: var(--tag-iconSectionWidth);
       justify-content: center;
-      ${input.iconBgColor
-        ? css`
-            background: ${input.iconBgColor};
-          `
-        : css`
-            background: black;
-          `}
+      background: ${input.iconBgColor};
       dxc-tag-icon{
         img,svg{
           padding: 10px 12px;

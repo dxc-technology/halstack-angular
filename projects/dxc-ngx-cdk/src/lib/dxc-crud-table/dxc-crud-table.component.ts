@@ -134,7 +134,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     if (changes.gridToolbar && changes.gridToolbar.currentValue && changes.gridToolbar.currentValue.filter(buttons => { return (buttons.rel == this.deleteRel || buttons.rel == this.editRel) }).count() > 0 && this.rowSelection == 'none') {
       this.rowSelection = 'single';
     }
-    if (changes.editableColumns?.currentValue != null && changes.editableColumns.currentValue.filter(({ fieldType }) => fieldType === EFieldsType.dropdown).size  > 0) {
+    if (changes.editableColumns?.currentValue != null) {
       this.editableFields = changes.editableColumns.currentValue;
       if (this.editableColumns?.viewmode != "TAB") {
         this.fieldOptions = this.editableFields.map(obj => ({ ...obj }));

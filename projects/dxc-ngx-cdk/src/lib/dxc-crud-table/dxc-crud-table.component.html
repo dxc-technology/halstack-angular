@@ -11,12 +11,12 @@
       #table>
       <ng-container *ngFor="let column of columns; let i = index; let last = last; let first = first;"
         matColumnDef="{{column}}">
-        <th tabindex="0" mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap">
+        <th mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap">
           <span *ngIf="first && rowSelection == 'multi'" class="float-left mr-2">
             <ng-container *ngTemplateOutlet="selectAll">
             </ng-container>
           </span>
-          <span [ngClass]="{'cellContentPostion': first}" *ngIf="(column && resource)">
+          <span tabindex="0" [ngClass]="{'cellContentPostion': first}" *ngIf="(column && resource)">
             {{resource[column]}}</span>
         </th>
         <td mat-cell *matCellDef="let element; index as j" class="cell-position cell-focus pr-3 px-2"
@@ -125,6 +125,9 @@
       *ngIf="selectedRowCount > 0 && selectedRowCount != dataSource.data?.length">remove</span>
     <span class="position-absolute font-size-25 left-0" *ngIf="selectedRowCount == dataSource.data?.length">done</span>
   </a>
+  <h6 class="text-center d-md-none d-sm-block">
+     <b>{{globalResource.selectAllRow?.description}}</b>
+  </h6>
 </ng-template>
 
 <dxc-dialog #activationdialog ariaLabelledBy="crud-grid-popup-header" *ngIf="isPopupOpen" isCloseVisible="true"

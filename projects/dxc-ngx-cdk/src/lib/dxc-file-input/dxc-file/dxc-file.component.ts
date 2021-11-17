@@ -1,4 +1,5 @@
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { C } from "@angular/cdk/keycodes";
 import {
   Component,
   HostBinding,
@@ -17,11 +18,11 @@ import { FilesService } from "../services/files.services";
 })
 export class DxcFileComponent implements OnInit {
   @HostBinding("class") className;
-  @HostBinding("class.error") hasError: boolean = false;
 
   @Input() file: FileData;
   @Input() multiple: boolean;
   @Input() mode: string;
+  @Input() updatable: boolean;
   @Input()
   get showPreview(): boolean {
     return this._showPreview;
@@ -31,6 +32,7 @@ export class DxcFileComponent implements OnInit {
   }
   private _showPreview = false;
 
+  hasError: boolean = false;
   hasShowError: boolean = false;
   hasShowPreviewImage: boolean = false;
   hasShowPreviewIcon: boolean = false;
@@ -45,10 +47,11 @@ export class DxcFileComponent implements OnInit {
   constructor(private service: FilesService) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.file.error !== null && this.file.error !== undefined
+    this.file.error !== null &&
+    this.file.error !== undefined &&
+    this.file.error.length !== 0
       ? (this.hasError = true)
       : (this.hasError = false);
-
     this.hasShowError = this.isErrorPrintable();
     this.hasShowPreviewImage = this.isShowPreviewPrintable();
     this.hasShowPreviewIcon = this.isShowPreviewPrintable(false);
@@ -66,8 +69,10 @@ export class DxcFileComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  onRemoveHandler($event: any): void {
-    this.service.removeFile(this.file);
+  onRemoveHandler(event: any): void {
+    if(this.updatable){
+      this.service.removeFile(this.file);
+    } 
   }
 
   private isShowPreview() {
@@ -100,12 +105,25 @@ export class DxcFileComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      height: ${!inputs.showPreview ? "40px" : "64px"};
-      background: #ffffff 0% 0% no-repeat padding-box;
+      height: ${this.hasError
+        ? inputs.mode !== "file"
+          ? "fit-content"
+          : !inputs.multiple
+          ? "40px"
+          : "fit-content"
+        : this.hasShowPreviewImage || this.hasShowPreviewIcon
+        ? "64px"
+        : "40px"};
+      background: ${this.hasError
+          ? "var(--fileInput-errorFileItemBackgroundColor)"
+          : "#ffffff"}
+        0% 0% no-repeat padding-box;
       border: var(--fileInput-fileItemBorderThickness)
-        var(--fileInput-fileItemBorderStyle)
-        var(--fileInput-fileItemBorderColor);
-      width: 320px;
+        var(--fileInput-fileItemBorderStyle);
+      border-color: ${this.hasError
+        ? "var(--fileInput-errorFileItemBorderColor)"
+        : "var(--fileInput-fileItemBorderColor)"};
+      width: ${inputs.multiple || inputs.mode !== "file" ? "320px" : "230px"};
       border-radius: var(--fileInput-fileItemBorderRadius);
       padding: 8px;
       box-sizing: border-box;
@@ -114,7 +132,7 @@ export class DxcFileComponent implements OnInit {
       margin-top: ${inputs.multiple || inputs.mode !== "file" ? "4px" : ""};
       margin-left: ${!inputs.multiple && inputs.mode === "file" ? "4px" : ""};
       .previewContainer {
-        background-color: #e6e6e6;
+        background-color: ${this.hasError ? "#ffc9ce" : "#e6e6e6"};
         display: flex;
         align-items: center;
         place-content: center;
@@ -124,7 +142,7 @@ export class DxcFileComponent implements OnInit {
         width: 48px;
         svg,
         img {
-          fill: #808080;
+          fill: ${this.hasError ? "#d0011b" : "#808080"};
           height: 24px;
           width: 24px;
         }
@@ -143,7 +161,7 @@ export class DxcFileComponent implements OnInit {
           flex-direction: row;
           justify-content: space-between;
           .fileName {
-            font-color: var(--fileInput-fileNameFontColor);
+            color: var(--fileInput-fileNameFontColor);
             padding-left: 8px;
             height: 24px;
             white-space: nowrap;
@@ -200,34 +218,18 @@ export class DxcFileComponent implements OnInit {
           }
         }
       }
-
-      &.error {
-        background: var(--fileInput-errorFileItemBackgroundColor) 0% 0%
-          no-repeat padding-box;
-        border: 1px solid var(--fileInput-errorFileItemBorderColor);
-        height: ${inputs.mode !== "file"
-          ? "fit-content"
-          : !inputs.multiple
-          ? "40px"
-          : "fit-content"};
-        .previewContainer {
-          background-color: #ffc9ce;
-          svg {
-            fill: #d0011b;
-          }
-        }
-        .infoContainer .errorContainer {
-          width: 50%;
-          padding-left: 8px;
-          .errorMessage {
-            text-align: left;
-            letter-spacing: 0.37px;
-            color: var(--fileInput-errorMessageFontColor);
-            font-family: var(--fileInput-errorMessageFontFamily);
-            font-size: var(--fileInput-errorMessageFontSize);
-            font-weight: var(--fileInput-errorMessageFontWeight);
-            line-height: var(--fileInput-errorMessageLineHeight);
-          }
+      .errorContainer {
+        width: 100%;
+        padding-left: 8px;
+        box-sizing: border-box;
+        .errorMessage {
+          text-align: left;
+          letter-spacing: 0.37px;
+          color: var(--fileInput-errorMessageFontColor);
+          font-family: var(--fileInput-errorMessageFontFamily);
+          font-size: var(--fileInput-errorMessageFontSize);
+          font-weight: var(--fileInput-errorMessageFontWeight);
+          line-height: var(--fileInput-errorMessageLineHeight);
         }
       }
     `;

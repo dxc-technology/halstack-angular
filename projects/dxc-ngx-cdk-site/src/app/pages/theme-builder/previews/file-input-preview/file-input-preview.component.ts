@@ -7,7 +7,31 @@ import { FileData } from '@dxc-technology/halstack-angular';
 })
 export class FileInputPreviewComponent implements OnInit {
 
-  value: Array<FileData> = [];
+  file = new File(["Employee Referral Bonus Amount"], "Employee Referral Bonus Amount.pdf", {
+    type: "text/plain",
+  });
+
+  file2 = new File(["PEC2"], "PEC2.odt", {
+    type: "application/vnd.oasis.opendocument.text",
+  });
+
+  file3 = new File(["Employee Referral Bonus Amount"], "Employee Referral Bonus Amount.pdf", {
+    type: "text/plain",
+  });
+
+  value: Array<FileData> = [
+    {
+      data: this.file,
+      image: "",
+      error: "errrorrrr"
+    },{
+      data: this.file2,
+      image: "",
+      error: "errrorrrr"
+    },
+  ];
+
+  value2: Array<FileData> = []
 
   constructor() { }
 
@@ -18,10 +42,22 @@ export class FileInputPreviewComponent implements OnInit {
     const files = event.map(file =>{
       return {
         ...file,
-        error: "there is a new error :)"
+        error: "errrorrrr"
       }
     });
     this.value = files;
+    console.log(this.value);
+  }
+
+  callback2(event){
+    const files = event.map(file =>{
+      return {
+        ...file,
+        error: "this is an error"
+      }
+    });
+    this.value2 = files;
+    console.log("this.value2:",this.value2);
   }
 
 }

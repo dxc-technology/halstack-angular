@@ -35,27 +35,17 @@
     ></dxc-button>
     <span *ngIf="mode !== 'file'" class="dropLabel">or drop files</span>
   </div>
-  <div *ngIf="hasMultipleFiles" class="fileContainer">
+  <div class="fileContainer">
     <dxc-file
-      *ngFor="let file of files"
+      *ngFor="let file of value"
       [file]="file"
       [showPreview]="showPreview"
-      [multiple]="multiple"
+      [multiple]="!hasSingleFile"
       [mode]="mode"
-    ></dxc-file>
-  </div>
-  <div
-    *ngIf="hasSingleFile"
-    class="fileContainer"
-  >
-    <dxc-file
-      [file]="files[0]"
-      [showPreview]="showPreview"
-      [multiple]="multiple"
-      [mode]="mode"
+      [updatable]="callbackFile?.observers?.length > 0"
     ></dxc-file>
   </div>
 </div>
 
-<dxc-file-error  *ngIf="hasShowError" [error]="files[0].error"></dxc-file-error>
+<dxc-file-error *ngIf="hasShowError" [error]="value[0]?.error"></dxc-file-error>
 

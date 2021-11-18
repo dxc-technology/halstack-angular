@@ -1,0 +1,21 @@
+<div>
+  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#FFFFFF">
+    <tbuilder-component-mode text="Default">
+      <dxc-new-select label="Label" helperText="HelperText"> </dxc-new-select>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Searchable">
+      <dxc-new-select label="Label" helperText="HelperText" searchable="true"> </dxc-new-select>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Multiple">
+      <dxc-new-select label="Label" helperText="HelperText" multiple="true" (onChange)="onChange($event)"> </dxc-new-select>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Error"> </tbuilder-component-mode>
+  </background-provider>
+
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#000000"> </background-provider>
+</div>

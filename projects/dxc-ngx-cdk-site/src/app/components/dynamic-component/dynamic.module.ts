@@ -171,6 +171,10 @@ import { FileInputApiComponent } from "../examples/file-input/file-input-api/fil
 import { FileInputExampleComponent } from "../examples/file-input/file-input-example/file-input-example.component";
 import { FileInputImportComponent } from "../examples/file-input/file-input-import/file-input-import.component";
 import { FileInputPropertiesComponent } from "../examples/file-input/file-input-properties/file-input-properties.component";
+import { NewSelectApiComponent } from "../examples/new-select/select-api/select-api.component";
+import { NewSelectExampleComponent } from "../examples/new-select/select-example/select-example.component";
+import { NewSelectImportComponent } from "../examples/new-select/select-import/select-import.component";
+import { NewSelectPropertiesComponent } from "../examples/new-select/select-properties/select-properties.component";
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -346,6 +350,10 @@ import { FileInputPropertiesComponent } from "../examples/file-input/file-input-
     FileInputExampleComponent,
     FileInputImportComponent,
     FileInputPropertiesComponent,
+    NewSelectApiComponent,
+    NewSelectExampleComponent,
+    NewSelectImportComponent,
+    NewSelectPropertiesComponent,
   ],
 })
 export class DynamicModule {}

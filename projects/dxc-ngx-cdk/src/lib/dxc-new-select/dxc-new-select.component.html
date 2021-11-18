@@ -1,0 +1,62 @@
+<label *ngIf="label" class="inputLabel" htmlFor="{{ id }}">
+  {{ label }}
+</label>
+<span *ngIf="helperText" class="helperText">{{ helperText }}</span>
+<div class="container" tabindex="0">
+  <input
+    *ngIf="searchable"
+    #inputRef
+    type="text"
+    [id]="id"
+    [placeholder]="placeholder"
+    [name]="name"
+    [disabled]="disabled"
+    [tabindex]="tabIndex"
+    autocomplete="off"
+  />
+  <div *ngIf="!searchable" class="valueContainer">
+    <div *ngIf="service.getSizeSelectedValues() > 0 && multiple">{{service.getSizeSelectedValues()}}</div>
+    <div *ngIf="service.getSizeSelectedValues() > 0 && multiple"></div>
+    <span
+      [ngClass]="{
+        notSelectedLabel:
+          service.selectedValues.getValue() === null ||
+          service.selectedValues.getValue() === undefined
+      }"
+      >{{ getLabelSelected() }}</span
+    >
+  </div>
+</div>
+
+<ul class="options" *ngIf="!multiple">
+  <li
+    *ngFor="let option of options"
+    tabindex="0"
+    (click)="handleOptionClick(option.value)"
+    [ngClass]="{
+      selected: this.service.selectedValues.getValue() === option.value
+    }"
+  >
+    <span class="label">{{ option.label }}</span>
+  </li>
+</ul>
+
+<ul class="options" *ngIf="multiple">
+  <li
+    *ngFor="let option of options"
+    tabindex="0"
+    (click)="handleOptionClick(option.value)"
+    [ngClass]="{
+      selected: isValueSelected(option.value)
+    }"
+  >
+    <dxc-checkbox
+      label="{{ option.label }}"
+      labelPosition="after"
+      [checked]="isValueSelected(option.value)"
+    >
+    </dxc-checkbox>
+  </li>
+</ul>
+
+<span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>

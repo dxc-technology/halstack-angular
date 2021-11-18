@@ -63,6 +63,9 @@
   "select": {
     "baseColor": "color"
   },
+  "newSelect": {
+    "baseColor": "color"
+  },
   "sidenav": {
     "baseColor": "color",
     "arrowBaseColor": "color",

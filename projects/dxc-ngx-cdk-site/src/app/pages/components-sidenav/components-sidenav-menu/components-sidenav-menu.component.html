@@ -47,6 +47,11 @@
             (click)="navigateTo('components/newInputText')">New Input Text</a>
           </div>
           <div class="menu-item">
+            <a [ngClass]="{'active': 'components/newSelect' ? 
+            router.isActive(router.createUrlTree(['components/newSelect']).toString(), true) : false}"
+            (click)="navigateTo('components/newSelect')">New Select</a>
+          </div>
+          <div class="menu-item">
             <a [ngClass]="{'active': 'components/newTextarea' ? 
             router.isActive(router.createUrlTree(['components/newTextarea']).toString(), true) : false}"
             (click)="navigateTo('components/newTextarea')">New Textarea</a>

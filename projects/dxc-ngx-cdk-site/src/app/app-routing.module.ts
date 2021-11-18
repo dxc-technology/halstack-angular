@@ -45,6 +45,7 @@ import { NumberComponent } from "./pages/number/number.component";
 import { NewDateComponent } from "./pages/new-date/new-date.component";
 import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
+import { NewSelectComponent } from "./pages/new-select/new-select.component";
 
 let routes: Routes = [];
 
@@ -218,6 +219,10 @@ let routes: Routes = [];
   {
     path: 'components/fileInput',
     component: FileInputComponent
+  },
+  {
+    path: 'components/newSelect',
+    component: NewSelectComponent
   },
   {
     path: 'components/resultsettable',

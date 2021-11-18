@@ -56,7 +56,7 @@ export class MessageService {
 
   Info(message: string, header?: string) {
     this.toastr.info(message, header, {
-    disableTimeOut: false,
+      timeOut: parseInt(this.config.configservice.Settings.toasterDisplayTime, 0),
       positionClass: 'toast-bottom-right',
     });
   }

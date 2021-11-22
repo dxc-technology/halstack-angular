@@ -13,10 +13,10 @@
     </dxc-togglegroup>
   </tbuilder-component-mode>
 
-  
+
   <tbuilder-component-mode text="Controlled and single">
-    <dxc-togglegroup value="1" margin="xsmall" (onChange)="callbackFunction($event)">
-        <dxc-toggle [label]="option.label" [value]="option.value" *ngFor="let option of controlledOptions"> </dxc-toggle>
+    <dxc-togglegroup [value]="singleValue" margin="xsmall" (onChange)="callbackFunction2($event)">
+        <dxc-toggle [label]="option.label" [value]="option.value" *ngFor="let option of controlledSingleOptions"> </dxc-toggle>
     </dxc-togglegroup>
   </tbuilder-component-mode>
 

@@ -66,7 +66,7 @@ describe("DxcToggleGroup tests", () => {
   test("dxc-toggleGroup controlled multiple functionality", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
-      template: `<dxc-togglegroup multiple="true" value="1" (onChange)="changeMock($event)">,
+      template: `<dxc-togglegroup [multiple]="true" [value]="1" (onChange)="changeMock($event)">,
                   <dxc-toggle label="Facebook" value="1"></dxc-toggle>
                   <dxc-toggle label="Twitter" value="2"></dxc-toggle>
                   <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
@@ -88,7 +88,7 @@ describe("DxcToggleGroup tests", () => {
   test("dxc-toggleGroup disabled", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(DxcToggleGroupComponent, {
-      template: `<dxc-togglegroup disabled="true" (onChange)="changeMock($event)">,
+      template: `<dxc-togglegroup [disabled]="true" (onChange)="changeMock($event)">,
                   <dxc-toggle label="Facebook" value="1"></dxc-toggle>
                   <dxc-toggle label="Twitter" value="2"></dxc-toggle>
                   <dxc-toggle label="Linkedin" value="3"></dxc-toggle>

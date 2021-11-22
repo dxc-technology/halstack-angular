@@ -6,7 +6,9 @@ import {
   EventEmitter,
   SimpleChanges,
   HostBinding,
-  ChangeDetectorRef,
+  QueryList,
+  ContentChildren,
+  ChangeDetectionStrategy,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -15,13 +17,15 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
-import { ToggleGroupService } from "./services/toggleGroup.service";
+import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: "dxc-togglegroup",
   templateUrl: "./dxc-toggleGroup.component.html",
   styleUrls: [],
-  providers: [CssUtils, ToggleGroupService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CssUtils],
 })
 export class DxcToggleGroupComponent implements OnInit {
   @Input()
@@ -51,8 +55,11 @@ export class DxcToggleGroupComponent implements OnInit {
   @Input() public margin: any;
   @Input() public value: any;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+  @ContentChildren(DxcToggleComponent)
+  toggleGroup: QueryList<DxcToggleComponent>;
 
   selectedOptions = [];
+  private isControlled: boolean = false;
 
   @HostBinding("class") styledDxcToggleGroup;
 
@@ -62,11 +69,7 @@ export class DxcToggleGroupComponent implements OnInit {
     margin: null,
     tabIndexValue: 0,
   });
-  constructor(
-    private utils: CssUtils,
-    private service: ToggleGroupService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
@@ -74,21 +77,30 @@ export class DxcToggleGroupComponent implements OnInit {
     )}`;
   }
 
-  ngAfterViewInit() {
-    if (this.value || this.value === "") {
-      this.getSelectedByValue();
-    }
-    this.service.values.subscribe((valuesSelected) => {
-      if (valuesSelected && valuesSelected[0]) {
-        this.selectedOptions = valuesSelected;
-      } else {
-        this.selectedOptions = [];
-      }
-    });
+  ngAfterContentInit() {
+    // reference to the dxc-toggles and manipulating them depending on the given data
+    if (this.toggleGroup) {
+      this.toggleGroup.forEach((item:DxcToggleComponent, index: number) => {
+        item.onClick.subscribe((value) => {
+          if (!this.disabled) {
+            this.valueChanged(value);
+            console.log('Selected options: ', this.selectedOptions, this.value);
+          }
+        });
+        item.onKeyPress.subscribe((value: string) => {
+          if (!this.disabled) {
+            this.valueChanged(value);
+          }
+        });
 
-    this.service.selected.subscribe((selected) => {
-      this.valueChanged(selected);
-    });
+        setTimeout(() => {
+          index === 0 ? item.isFirst = true : (index === this.toggleGroup.length - 1 ? item.isLast = true: item.isLast = false);
+          item.tabIndexValue = this.disabled ? -1 : this.tabIndexValue;
+          this.setToggleSelected(item);
+        });
+      });
+
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -101,64 +113,77 @@ export class DxcToggleGroupComponent implements OnInit {
       this.defaultInputs.getValue()
     )}`;
     if (this.value || this.value === "") {
-      this.getSelectedByValue();
+      this.isControlled = true;
+      this.changeSelectedToggle();
     }
-    this.service.setTabIndexValue(this.disabled ? -1 : this.tabIndexValue);
   }
 
-  getSelectedByValue() {
-    this.selectedOptions = [];
-    if (this.value !== "") {
-      if (Array.isArray(this.value)) {
-        this.selectedOptions = this.value;
-      } else {
-        this.selectedOptions.push(this.value);
-      }
-    }
-    this.service.setValues(this.selectedOptions);
-    this.cdRef.detectChanges();
-  }
 
-  public valueChanged(newSelected: any): void {
-    if (!this.disabled) {
-      const selectedValues = [];
-      if (this.value || this.value === "") {
-        if (this.multiple) {
-          this.selectedOptions.map((value) => {
-            if (newSelected && value !== newSelected) {
-              selectedValues.push(value);
-            }
-          });
-        }
-        if (!this.selectedOptions.includes(newSelected)) {
-          selectedValues.push(newSelected);
-        }
-      } else {
-        if (
-          newSelected &&
-          this.selectedOptions &&
-          this.selectedOptions.includes(newSelected)
-        ) {
-          const index = this.selectedOptions.indexOf(newSelected);
-          this.selectedOptions.splice(index, 1);
+
+  private valueChanged(selectedOption: any): void {
+    let newSelectedOptions = [];
+    //handle When value is defined
+    if (!this.isControlled) {
+      if (this.multiple) {
+        newSelectedOptions = this.selectedOptions.map((value) => value);
+        if (newSelectedOptions.includes(selectedOption)) {
+          const index = newSelectedOptions.indexOf(selectedOption);
+          newSelectedOptions.splice(index, 1);
         } else {
-          if (this.multiple && newSelected) {
-            this.selectedOptions.push(newSelected);
-          } else {
-            this.selectedOptions = [newSelected];
-          }
+          newSelectedOptions.push(selectedOption);
         }
-        this.selectedOptions.map((value) => {
-          selectedValues.push(value);
+        this.selectedOptions = newSelectedOptions;
+      } else {
+        this.selectedOptions = selectedOption === this.selectedOptions ? null : selectedOption;
+      }
+    } else if (this.multiple) {
+      newSelectedOptions = this.value.map((v) => v);
+      if (newSelectedOptions.includes(selectedOption)) {
+        const index = newSelectedOptions.indexOf(selectedOption);
+        newSelectedOptions.splice(index, 1);
+      } else newSelectedOptions.push(selectedOption);
+      this.value = newSelectedOptions;
+    }
+    this.changeSelectedToggle(this.multiple ? selectedOption : null);
+    // Emit the new selected values
+    this.callback();
+  }
+
+  private callback() {
+      this.onChange.emit(this.isControlled ? this.value: this.selectedOptions);
+  }
+
+  private changeSelectedToggle(selectedValue? :string) {
+    if (this.toggleGroup) {
+      if (selectedValue){
+        const filterToggles = this.toggleGroup.filter(item=> item.value === selectedValue);
+        filterToggles.forEach((item) => {
+          this.setToggleSelected(item);
+          console.log('Cambiando toggle selected property', item.value, item.selected);
         });
-        this.service.setValues(selectedValues);
+      }else {
+        this.toggleGroup.forEach((item) => {
+          this.setToggleSelected(item);
+          console.log('Cambiando toggle selected property', item.value, item.selected);
+        });
       }
-      if (newSelected && this.multiple && selectedValues && selectedValues[0]) {
-        this.onChange.emit(selectedValues);
-      } else if (newSelected) {
-        this.onChange.emit(selectedValues[0] || "");
+      this.ref.detectChanges();
+    }
+  }
+
+  private setToggleSelected(item: DxcToggleComponent) {
+    if (this.multiple) {
+      if (this.isControlled) {
+        item.selected = this.value.includes(item.value);
+      } else {
+        item.selected = this.selectedOptions.includes(item.value);
       }
-      this.cdRef.detectChanges();
+    } else {
+      if (this.isControlled) {
+        item.selected = item.value === this.value;
+      } else {
+        item.selected = item.value === this.selectedOptions;
+      }
     }
   }
 
@@ -216,8 +241,10 @@ export class DxcToggleGroupComponent implements OnInit {
               fill: var(--toggleGroup-selectedFontColor) !important;
             }
           }
-          &:focus, &:focus-within, &:focus-visible {
-            outline: solid 2px var(--toggleGroup-focusColor) ;
+          &:focus,
+          &:focus-within,
+          &:focus-visible {
+            outline: solid 2px var(--toggleGroup-focusColor);
             outline-offset: -2px;
           }
           &.selected {
@@ -228,7 +255,9 @@ export class DxcToggleGroupComponent implements OnInit {
               fill: var(--toggleGroup-selectedFontColor) !important;
             }
             &:active {
-              background: var(--toggleGroup-selectedActiveBackgroundColor) !important;
+              background: var(
+                --toggleGroup-selectedActiveBackgroundColor
+              ) !important;
             }
             &:hover {
               background: var(--toggleGroup-selectedHoverBackgroundColor);
@@ -248,24 +277,38 @@ export class DxcToggleGroupComponent implements OnInit {
     return css`
       display: flex;
       align-items: center;
-      height: 43px;
+      min-height: 40px;
+      opacity: 1px;
       width: fit-content;
       border-radius: 4px;
       overflow: hidden;
       ${this.utils.getMargins(inputs.margin)}
 
       ${this.disabledStyles()}
+      .first {
+        border-radius: 4px 0 0 4px !important;
+      }
+
+      .last {
+        border-radius: 0 4px 4px 0 !important;
+      }
         dxc-toggle {
         height: 100%;
+        width: 100%;
         display: flex;
         background: var(--toggleGroup-unselectedBackgroundColor);
         color: var(--toggleGroup-unselectedFontColor);
+        border-radius: 0;
+
 
         .toggleContent {
-          &:focus, &:focus-within, &:focus-visible {
+          &:focus,
+          &:focus-within,
+          &:focus-visible {
             outline: none;
           }
           height: 40px;
+          width: 100% !important;
           display: flex;
           align-items: center;
           .label {

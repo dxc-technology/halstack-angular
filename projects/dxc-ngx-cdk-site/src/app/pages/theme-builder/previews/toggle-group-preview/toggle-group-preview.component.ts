@@ -6,9 +6,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToggleGroupPreviewComponent implements OnInit {
 
-  constructor() { }
+
+  controlledOptions: Array<any>  = [{label: 'Goku', value:"1"},{label: 'Broli', value:"2"},{label: 'Vegeta', value:"3"}];
+  value: Array<string>;
+
+  constructor() {
+
+
+  }
 
   ngOnInit(): void {
+    this.value = ['1','2',];
   }
 
 }

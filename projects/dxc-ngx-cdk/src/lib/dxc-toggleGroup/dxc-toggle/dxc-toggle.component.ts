@@ -1,72 +1,49 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
   HostBinding,
-  ContentChildren,
-  QueryList,
-  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
-import { DxcToggleIconComponent } from "../dxc-toggle-icon/dxc-toggle-icon.component";
-import { ToggleGroupService } from "../services/toggleGroup.service";
 
 @Component({
   selector: "dxc-toggle",
   templateUrl: "./dxc-toggle.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })
-export class DxcToggleComponent implements OnInit {
+export class DxcToggleComponent {
   @Input() label: string;
   @Input() value;
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onKeyPress: EventEmitter<any> = new EventEmitter<any>();
+  isFirst: boolean = false;
+  isLast:boolean = false;
 
   @HostBinding("class.selected") get valid() {
     return this.selected;
   }
 
-  @ContentChildren(DxcToggleIconComponent)
-  dxcToggleIcon: QueryList<DxcToggleIconComponent>;
+  @HostBinding("class.first") get first() {
+    return this.isFirst;
+  }
+
+  @HostBinding("class.last") get last() {
+    return this.isLast;
+  }
 
   selected: boolean = false;
   tabIndexValue: number = 0;
 
-  constructor(
-    private service: ToggleGroupService,
-    private cdRef: ChangeDetectorRef
-  ) {
-    this.service.tabIndexValue.subscribe((value) => {
-      if (value) {
-        this.tabIndexValue = value;
-      }
-    });
-  }
-
-  ngAfterViewInit() {
-    if (this.dxcToggleIcon.length !== 0) {
-      this.label = null;
-      this.cdRef.detectChanges();
-    }
-  }
-
-  ngOnInit() {}
-
   onClickHandler() {
-    this.service.setSelected(this.value);
+    this.onClick.emit(this.value);
   }
 
-  ngOnChanges() {
-    this.service.values.subscribe((values) => {
-      if (values && values.includes(this.value) && this.selected === false) {
-        this.selected = true;
-      } else if (
-        values &&
-        !values.includes(this.value) &&
-        this.selected === true
-      ) {
-        this.selected = false;
-      }
-    });
-  }
+  onHandleKeyPressHandler(event) {
+    if ((event.code === "Enter" || event.code === "Space")){
+      this.onKeyPress.emit(this.value);
+    }
+  };
+
 }

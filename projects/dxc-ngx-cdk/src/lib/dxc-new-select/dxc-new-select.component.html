@@ -2,7 +2,7 @@
   {{ label }}
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
-<div class="container" tabindex="0">
+<div class="container" tabindex="0" (click)="handleSelectOpen()" #containerRef>
   <input
     *ngIf="searchable"
     #inputRef
@@ -15,48 +15,129 @@
     autocomplete="off"
   />
   <div *ngIf="!searchable" class="valueContainer">
-    <div *ngIf="service.getSizeSelectedValues() > 0 && multiple">{{service.getSizeSelectedValues()}}</div>
-    <div *ngIf="service.getSizeSelectedValues() > 0 && multiple"></div>
+    <div
+      *ngIf="service.getSizeSelectedValues() > 0 && multiple"
+      class="sizeContainer"
+    >
+      {{ service.getSizeSelectedValues() }}
+    </div>
+    <div
+      *ngIf="service.getSizeSelectedValues() > 0 && multiple"
+      class="removeContainer"
+      (click)="removeSelectedValues()"
+      tabindex="0"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        />
+      </svg>
+    </div>
     <span
       [ngClass]="{
-        notSelectedLabel:
-          service.selectedValues.getValue() === null ||
-          service.selectedValues.getValue() === undefined
+        notSelectedLabel: !(service.getSizeSelectedValues() > 0)
       }"
       >{{ getLabelSelected() }}</span
     >
   </div>
+  <div class="iconsContainer">
+    <span *ngIf="error && !disabled" class="errorIcon" aria-label="Error">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="currentColor"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+    </span>
+    <span
+      class="expandIcon"
+      [ngClass]="{
+        opened: this.isOpened
+      }"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="18px"
+        viewBox="0 0 24 24"
+        width="18px"
+        fill="#000000"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+      </svg>
+    </span>
+  </div>
 </div>
 
-<ul class="options" *ngIf="!multiple">
-  <li
-    *ngFor="let option of options"
-    tabindex="0"
-    (click)="handleOptionClick(option.value)"
-    [ngClass]="{
-      selected: this.service.selectedValues.getValue() === option.value
-    }"
-  >
-    <span class="label">{{ option.label }}</span>
+<ul
+  class="options"
+  *ngIf="!multiple"
+  [ngClass]="{
+    closed: !this.isOpened
+  }"
+>
+  <li *ngFor="let option of options">
+    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
+      <li>
+        <span class="groupLabel">{{ option.label }}</span>
+      </li>
+      <li *ngFor="let op of option.options">
+        <dxc-new-select-option
+          [multiple]="multiple"
+          [option]="op"
+          (optionClick)="handleOptionClick(op.value, $event)"
+          (optionMouseDown)="handleOptionMouseDown($event)"
+        ></dxc-new-select-option>
+      </li>
+    </ul>
+    <dxc-new-select-option
+      *ngIf="instanceOfOption(option)"
+      [multiple]="multiple"
+      [option]="option"
+      (optionClick)="handleOptionClick(option.value, $event)"
+      (optionMouseDown)="handleOptionMouseDown($event)"
+    ></dxc-new-select-option>
   </li>
 </ul>
 
-<ul class="options" *ngIf="multiple">
-  <li
-    *ngFor="let option of options"
-    tabindex="0"
-    (click)="handleOptionClick(option.value)"
-    [ngClass]="{
-      selected: isValueSelected(option.value)
-    }"
-  >
-    <dxc-checkbox
-      label="{{ option.label }}"
-      labelPosition="after"
+<ul
+  class="options"
+  *ngIf="multiple"
+  tabindex="-1"
+  [ngClass]="{
+    closed: !this.isOpened
+  }"
+>
+  <li *ngFor="let option of options">
+    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
+      <li>
+        <span class="groupLabel">{{ option.label }}</span>
+      </li>
+      <li *ngFor="let op of option.options">
+        <dxc-new-select-option
+          [multiple]="multiple"
+          [option]="op"
+          [checked]="isValueSelected(op.value)"
+          (optionClick)="handleOptionClick(op.value, $event)"
+          (optionMouseDown)="handleOptionMouseDown($event)"
+        ></dxc-new-select-option>
+      </li>
+    </ul>
+    <dxc-new-select-option
+      *ngIf="instanceOfOption(option)"
+      [multiple]="multiple"
+      [option]="option"
       [checked]="isValueSelected(option.value)"
-    >
-    </dxc-checkbox>
+      (optionClick)="handleOptionClick(option.value, $event)"
+      (optionMouseDown)="handleOptionMouseDown($event)"
+    ></dxc-new-select-option>
   </li>
 </ul>
 
-<span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>
+<span *ngIf="error && !disabled" class="errorMessage">{{ error }}</span>

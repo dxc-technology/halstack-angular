@@ -1,12 +1,15 @@
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import {
   Component,
+  ElementRef,
   EventEmitter,
   HostBinding,
+  HostListener,
   Input,
   OnInit,
   Output,
   SimpleChanges,
+  ViewChild,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -118,6 +121,7 @@ export class DxcNewSelectComponent implements OnInit {
   options = [
     { label: "label1", value: "1" },
     { label: "label2", value: "2" },
+    { label: "group", options: [{ label: "label3", value: "3" }] },
   ];
 
   defaultInputs = new BehaviorSubject<SelectProperties>({
@@ -145,10 +149,24 @@ export class DxcNewSelectComponent implements OnInit {
   onBlur = new EventEmitter<any>();
 
   id: string;
+  isOpened: boolean = false;
+
+  @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
+  @ViewChild("optionRef", { static: false }) optionRef: ElementRef;
+
+  @HostListener("document:click", ["$event"])
+  clickout(event) {
+    if (!this.ref.nativeElement.contains(event.target)) {
+      if (this.isOpened) {
+        this.isOpened = false;
+      }
+    }
+  }
 
   constructor(
     private helper: DxcNewSelectHelper,
-    public service: SelectService
+    public service: SelectService,
+    private ref: ElementRef
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -172,7 +190,16 @@ export class DxcNewSelectComponent implements OnInit {
     })}`;
   }
 
-  handleOptionClick(value) {
+  handleOptionMouseDown(event) {
+    event.preventDefault();
+  }
+
+  handleOptionClick(value, event) {
+    this.containerRef.nativeElement.focus();
+    event.preventDefault();
+    event.stopPropagation();
+    this.service.setVisualFocused(value);
+    this.containerRef.nativeElement.focus();
     if (this.multiple) {
       const arr: string[] = this.service.selectedValues.getValue() || [];
       const index = arr.indexOf(value);
@@ -186,9 +213,9 @@ export class DxcNewSelectComponent implements OnInit {
         this.service.setSelectedValues(arr);
       }
     } else {
-      console.log();
       this.service.setSelectedValues(value);
       this.onChange.emit(value);
+      this.isOpened = false;
     }
   }
 
@@ -196,23 +223,23 @@ export class DxcNewSelectComponent implements OnInit {
     if (!this.multiple) {
       if (this.service.getSizeSelectedValues() > 0) {
         const arr = this.options;
-        const selected = arr.find(
-          (op) => op.value === this.service.selectedValues.getValue()
-        );
+        let selected: Option = this.findOptions(arr);
         return selected.label;
       } else return "Choose an option";
     } else {
       if (this.service.getSizeSelectedValues() > 0) {
         const arr = this.options;
-        let a = [];
-        arr.map((op) => {
-          if (this.service.selectedValues.getValue().includes(op.value))
-            a.push(op.label);
-        });
-        let str = a.join(", ");
+        let arraylabels = [];
+        arraylabels = this.iterateOptions(arr);
+        let str = arraylabels.join(", ");
         return str;
       } else return "Choose options";
     }
+  }
+
+  removeSelectedValues() {
+    this.service.setSelectedValues([]);
+    this.onChange.emit([]);
   }
 
   public isValueSelected = (value): boolean =>
@@ -227,5 +254,44 @@ export class DxcNewSelectComponent implements OnInit {
         this.service.setSelectedValues(this.value);
       }
     }
+  }
+
+  findOptions(array: any){
+    let selected;
+    array.find((op) => {
+      if (
+        this.instanceOfOption(op) &&
+        op.value === this.service.selectedValues.getValue()
+      ) {
+        selected = op;
+      } else if (!this.instanceOfOption(op)) {
+        selected = this.findOptions(op.options);
+      }
+      return selected;
+    });
+    return selected;
+  }
+  
+  iterateOptions(array: any) {
+    let arraylabels = [];
+    array.map((op) => {
+      if (this.instanceOfOption(op)) {
+        if (this.service.selectedValues.getValue().includes(op.value)) {
+          arraylabels.push(op.label);
+        }
+      } else {
+        let optionsGroup = this.iterateOptions(op.options);
+        optionsGroup.map((element) => arraylabels.push(element));
+      }
+    });
+    return arraylabels;
+  }
+
+  instanceOfOption(option: any): option is Option {
+    return "value" in option;
+  }
+
+  handleSelectOpen() {
+    this.isOpened = !this.isOpened;
   }
 }

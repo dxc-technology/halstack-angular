@@ -1,0 +1,43 @@
+<div
+  #optionRef
+  *ngIf="option.value && !multiple"
+  class="optionLabel"
+  (click)="handleOptionClick($event)"
+  (mousedown)="handleOptionMouseDown($event)"
+  tabindex="-1"
+  [ngClass]="{
+    selected: service.selectedValues.getValue() === option.value,
+    focused: service.visualFocused.getValue().toString() === option.value
+  }"
+>
+  <span class="label">{{ option.label }}</span>
+  <span
+    class="checkIcon"
+    *ngIf="!multiple && this.service.selectedValues.getValue() === option.value"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="18px"
+      viewBox="0 0 24 24"
+      width="18px"
+      fill="#000000"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+    </svg>
+  </span>
+</div>
+
+<span
+  *ngIf="option.value && multiple"
+  (click)="handleOptionClick($event)"
+  (mousedown)="handleOptionMouseDown($event)"
+  class="checkboxContainer optionLabel"
+  [ngClass]="{
+    selected: isValueSelected(option.value),
+    focused: isFocused()
+  }"
+>
+  <dxc-checkbox [label]="option.label" labelPosition="after" [checked]="checked">
+  </dxc-checkbox>
+</span>

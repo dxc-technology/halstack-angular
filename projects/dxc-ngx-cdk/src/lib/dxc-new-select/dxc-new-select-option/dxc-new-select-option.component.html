@@ -5,10 +5,6 @@
   (click)="handleOptionClick($event)"
   (mousedown)="handleOptionMouseDown($event)"
   tabindex="-1"
-  [ngClass]="{
-    selected: service.selectedValues.getValue() === option.value,
-    focused: service.visualFocused.getValue().toString() === option.value
-  }"
 >
   <span class="label">{{ option.label }}</span>
   <span
@@ -33,10 +29,6 @@
   (click)="handleOptionClick($event)"
   (mousedown)="handleOptionMouseDown($event)"
   class="checkboxContainer optionLabel"
-  [ngClass]="{
-    selected: isValueSelected(option.value),
-    focused: isFocused()
-  }"
 >
   <dxc-checkbox [label]="option.label" labelPosition="after" [checked]="checked">
   </dxc-checkbox>

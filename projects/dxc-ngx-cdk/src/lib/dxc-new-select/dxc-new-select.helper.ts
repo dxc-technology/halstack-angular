@@ -64,6 +64,9 @@ export class DxcNewSelectHelper {
           display: flex;
           flex-direction: row;
           width: 100%;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
           .sizeContainer {
             width: 24px;
             height: 22px;
@@ -112,10 +115,13 @@ export class DxcNewSelectHelper {
             font: normal normal normal 16px/22px Open Sans;
             letter-spacing: 0px;
             color: #000000;
-            display: flex;
+            display: block;
             align-items: center;
             margin-left: 8px;
             width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
           }
           .notSelectedLabel {
             text-align: left;
@@ -166,6 +172,7 @@ export class DxcNewSelectHelper {
         padding: 4px 0px;
         position: absolute;
         margin-top: 90px;
+        z-index: 100;
         &.closed {
           visibility: hidden;
         }
@@ -176,7 +183,6 @@ export class DxcNewSelectHelper {
           letter-spacing: 0px;
           color: #000000;
           opacity: 1;
-          height: 32px;
           display: flex;
           align-items: center;
           box-sizing: border-box;
@@ -186,14 +192,31 @@ export class DxcNewSelectHelper {
             height: 100%;
             display: flex;
             align-items: center;
+            height: 32px;
+            :hover {
+              background-color: #f2f2f2;
+              cursor: pointer;
+            }
+            :active {
+              background-color: #e6e6e6;
+            }
+            &.selected {
+              background-color: #e6e6e6;
+              :hover {
+                background-color: #cccccc;
+              }
+              :active {
+                background-color: #bfbfbf;
+              }
+            }
             .optionLabel {
               display: flex;
               flex-direction: row;
               width: 100%;
-              padding: 2px 6px;
+              margin: 2px 8px;
               height: 100%;
               box-sizing: border-box;
-              border: 2px solid transparent;
+              border-bottom: 1px solid #E6E6E6;
               .label {
                 width: 100%;
                 height: 100%;
@@ -206,31 +229,14 @@ export class DxcNewSelectHelper {
                 margin-right: 8px;
                 align-items: center;
               }
-              :hover {
-                background-color: #f2f2f2;
-                cursor: pointer;
-              }
-              &.focused,
-              :active {
-                border: 2px solid #0095ff;
-              }
-              :active {
-                background-color: #e6e6e6;
-              }
-              &.selected {
-                background-color: #e6e6e6;
-                :hover {
-                  background-color: #cccccc;
-                }
-                :active {
-                  background-color: #bfbfbf;
-                }
-              }
             }
             .checkboxContainer {
               width: 100%;
               height: 100%;
               display: flex;
+            }
+            &.lastItem .optionLabel {
+              border-bottom: none;
             }
           }
           .optionsGroup {
@@ -238,7 +244,6 @@ export class DxcNewSelectHelper {
             display: flex;
             flex-direction: column;
             padding: 0px;
-            margin-top: 38px;
             width: 100%;
             .groupLabel {
               padding-left: 16px;
@@ -246,11 +251,14 @@ export class DxcNewSelectHelper {
               font: normal normal 600 14px/19px Open Sans;
               letter-spacing: 0px;
               color: #000000;
+              height: 32px;
+              display: flex;
+              align-items: center;
             }
             .optionLabel {
               padding: 2px 14px;
             }
-            dxc-checkbox{
+            dxc-checkbox {
               margin-left: 8px;
             }
           }

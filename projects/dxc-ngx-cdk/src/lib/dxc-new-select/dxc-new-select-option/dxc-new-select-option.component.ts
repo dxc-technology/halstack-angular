@@ -26,10 +26,6 @@ export class DxcNewSelectOptionComponent implements OnInit {
     this.optionMouseDown.emit(event);
   }
 
-  isFocused(){
-    return this.service.visualFocused.getValue().toString() === this.option.value;
-  }
-
   public isValueSelected = (value): boolean =>
     this.service.selectedValues.getValue() &&
     this.service.selectedValues.getValue().includes(value);

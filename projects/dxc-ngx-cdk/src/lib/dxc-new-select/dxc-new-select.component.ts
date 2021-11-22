@@ -121,7 +121,22 @@ export class DxcNewSelectComponent implements OnInit {
   options = [
     { label: "label1", value: "1" },
     { label: "label2", value: "2" },
-    { label: "group", options: [{ label: "label3", value: "3" }] },
+    {
+      label: "Group label 1",
+      options: [
+        { label: "label3", value: "3" },
+        { label: "label4", value: "4" },
+        { label: "label5", value: "5" },
+      ],
+    },
+    { label: "label6", value: "6" },
+    {
+      label: "Group label 2",
+      options: [
+        { label: "label7", value: "7" },
+        { label: "label8", value: "8" },
+      ],
+    },
   ];
 
   defaultInputs = new BehaviorSubject<SelectProperties>({
@@ -198,7 +213,6 @@ export class DxcNewSelectComponent implements OnInit {
     this.containerRef.nativeElement.focus();
     event.preventDefault();
     event.stopPropagation();
-    this.service.setVisualFocused(value);
     this.containerRef.nativeElement.focus();
     if (this.multiple) {
       const arr: string[] = this.service.selectedValues.getValue() || [];
@@ -256,7 +270,7 @@ export class DxcNewSelectComponent implements OnInit {
     }
   }
 
-  findOptions(array: any){
+  findOptions(array: any) {
     let selected;
     array.find((op) => {
       if (
@@ -271,7 +285,7 @@ export class DxcNewSelectComponent implements OnInit {
     });
     return selected;
   }
-  
+
   iterateOptions(array: any) {
     let arraylabels = [];
     array.map((op) => {
@@ -294,4 +308,10 @@ export class DxcNewSelectComponent implements OnInit {
   handleSelectOpen() {
     this.isOpened = !this.isOpened;
   }
+
+  public isSelected = (option): boolean =>
+    !this.multiple
+      ? this.service.selectedValues.getValue() === option.value
+      : this.service.selectedValues.getValue() &&
+        this.service.selectedValues.getValue().includes(option.value);
 }

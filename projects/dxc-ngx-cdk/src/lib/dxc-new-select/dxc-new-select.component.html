@@ -82,13 +82,17 @@
     closed: !this.isOpened
   }"
 >
-  <li *ngFor="let option of options">
+  <li *ngFor="let option of options; last as lastOption">
     <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
-      <li *ngFor="let op of option.options">
+      <li *ngFor="let op of option.options; last as lastOptionGroup">
         <dxc-new-select-option
+          [ngClass]="{
+            lastItem: lastOption && lastOptionGroup,
+            selected: isSelected(op)
+          }"
           [multiple]="multiple"
           [option]="op"
           (optionClick)="handleOptionClick(op.value, $event)"
@@ -98,6 +102,10 @@
     </ul>
     <dxc-new-select-option
       *ngIf="instanceOfOption(option)"
+      [ngClass]="{
+        lastItem: lastOption,
+        selected: isSelected(option)
+      }"
       [multiple]="multiple"
       [option]="option"
       (optionClick)="handleOptionClick(option.value, $event)"
@@ -114,13 +122,17 @@
     closed: !this.isOpened
   }"
 >
-  <li *ngFor="let option of options">
+  <li *ngFor="let option of options; last as lastOption">
     <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
-      <li *ngFor="let op of option.options">
+      <li *ngFor="let op of option.options; last as lastOptionGroup">
         <dxc-new-select-option
+          [ngClass]="{
+            lastItem: lastOption && lastOptionGroup,
+            selected: isSelected(op)
+          }"
           [multiple]="multiple"
           [option]="op"
           [checked]="isValueSelected(op.value)"
@@ -131,6 +143,10 @@
     </ul>
     <dxc-new-select-option
       *ngIf="instanceOfOption(option)"
+      [ngClass]="{
+        lastItem: lastOption,
+        selected: isSelected(option)
+      }"
       [multiple]="multiple"
       [option]="option"
       [checked]="isValueSelected(option.value)"

@@ -9,14 +9,9 @@ export class SelectService {
   constructor() { }
 
   public selectedValues: BehaviorSubject<any> = new BehaviorSubject(null);
-  public visualFocused: BehaviorSubject<number> = new BehaviorSubject(-1);
 
   public setSelectedValues(newValues): void {
     this.selectedValues.next(newValues);
-  }
-
-  public setVisualFocused(selected): void {
-    this.visualFocused.next(selected);
   }
 
   public getSizeSelectedValues(){

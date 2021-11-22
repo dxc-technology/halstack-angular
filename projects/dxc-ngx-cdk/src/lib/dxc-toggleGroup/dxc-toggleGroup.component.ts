@@ -113,6 +113,7 @@ export class DxcToggleGroupComponent implements OnInit {
       this.defaultInputs.getValue()
     )}`;
     if (this.value || this.value === "") {
+      console.log("ngOnChanges value:", this.value);
       this.isControlled = true;
       this.changeSelectedToggle();
     }
@@ -142,15 +143,16 @@ export class DxcToggleGroupComponent implements OnInit {
         const index = newSelectedOptions.indexOf(selectedOption);
         newSelectedOptions.splice(index, 1);
       } else newSelectedOptions.push(selectedOption);
-      this.value = newSelectedOptions;
+      //this.value = newSelectedOptions;
+      console.log("newSelectedOptions:",newSelectedOptions);
     }
     this.changeSelectedToggle(this.multiple ? selectedOption : null);
     // Emit the new selected values
-    this.callback();
-  }
-
-  private callback() {
-      this.onChange.emit(this.isControlled ? this.value: this.selectedOptions);
+    console.log("newSelectedOptions2:",newSelectedOptions);
+    console.log("selectedOptions:",this.selectedOptions);
+    console.log("this.isControlled:",this.isControlled);
+    console.log("this.isControlled ? newSelectedOptions: this.selectedOptions:",this.isControlled ? newSelectedOptions: this.selectedOptions);
+    this.onChange.emit(this.isControlled ? newSelectedOptions: this.selectedOptions);
   }
 
   private changeSelectedToggle(selectedValue? :string) {
@@ -180,6 +182,8 @@ export class DxcToggleGroupComponent implements OnInit {
       }
     } else {
       if (this.isControlled) {
+        console.log("item.value:", item.value);
+        console.log("this.value:", this.value);
         item.selected = item.value === this.value;
       } else {
         item.selected = item.value === this.selectedOptions;

@@ -19,4 +19,9 @@ export class ToggleGroupPreviewComponent implements OnInit {
     this.value = ['1','2',];
   }
 
+  callbackFunction(event){
+    console.log("callback function:", event);
+    this.value = event;
+  }
+
 }

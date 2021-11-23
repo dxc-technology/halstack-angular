@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { DxcNewSelectComponent } from './dxc-new-select.component';
 import { DxcCheckboxModule } from '../dxc-checkbox/dxc-checkbox.module';
 import { DxcNewSelectOptionComponent } from './dxc-new-select-option/dxc-new-select-option.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [DxcNewSelectComponent, DxcNewSelectOptionComponent],
   imports: [
     CommonModule,
     DxcCheckboxModule,
+    PipesModule
   ],
   exports: [
     DxcNewSelectComponent,

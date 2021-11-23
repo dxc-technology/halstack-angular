@@ -187,58 +187,6 @@ export class DxcNewSelectHelper {
           align-items: center;
           box-sizing: border-box;
           width: 100%;
-          dxc-new-select-option {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            height: 32px;
-            :hover {
-              background-color: #f2f2f2;
-              cursor: pointer;
-            }
-            :active {
-              background-color: #e6e6e6;
-            }
-            &.selected {
-              background-color: #e6e6e6;
-              :hover {
-                background-color: #cccccc;
-              }
-              :active {
-                background-color: #bfbfbf;
-              }
-            }
-            .optionLabel {
-              display: flex;
-              flex-direction: row;
-              width: 100%;
-              margin: 2px 8px;
-              height: 100%;
-              box-sizing: border-box;
-              border-bottom: 1px solid #E6E6E6;
-              .label {
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                margin-left: 8px;
-              }
-              .checkIcon {
-                display: flex;
-                margin-right: 8px;
-                align-items: center;
-              }
-            }
-            .checkboxContainer {
-              width: 100%;
-              height: 100%;
-              display: flex;
-            }
-            &.lastItem .optionLabel {
-              border-bottom: none;
-            }
-          }
           .optionsGroup {
             position: relative;
             display: flex;
@@ -258,8 +206,11 @@ export class DxcNewSelectHelper {
             .optionLabel {
               padding: 2px 14px;
             }
-            dxc-checkbox {
-              margin-left: 8px;
+          }
+          &.lastItem .optionsGroup li.lastItemGroup,
+          &.lastItem > dxc-new-select-option {
+            .optionLabel {
+              border-bottom: none;
             }
           }
         }

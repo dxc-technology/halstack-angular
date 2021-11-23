@@ -1,12 +1,24 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { Option } from "../interfaces/option.interface";
 import { SelectService } from "../services/select.service";
+import { css } from "emotion";
 
 @Component({
   selector: "dxc-new-select-option",
   templateUrl: "./dxc-new-select-option.component.html",
 })
 export class DxcNewSelectOptionComponent implements OnInit {
+  @HostBinding("class") className;
+
   @Input() option: Option;
   @Input() multiple: boolean;
   @Input() checked: boolean;
@@ -14,9 +26,30 @@ export class DxcNewSelectOptionComponent implements OnInit {
   @Output() optionClick: EventEmitter<any> = new EventEmitter();
   @Output() optionMouseDown: EventEmitter<any> = new EventEmitter();
 
+  defaultInputs = new BehaviorSubject<any>({
+    option: null,
+    multiple: false,
+    checked: null,
+  });
+
   constructor(public service: SelectService) {}
 
-  ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      result[item] = changes[item].currentValue;
+      return result;
+    }, {});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.className = `${this.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+    })}`;
+  }
+
+  ngOnInit(): void {
+    this.className = `${this.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+    })}`;
+  }
 
   handleOptionClick(event) {
     this.optionClick.emit(event);
@@ -29,4 +62,59 @@ export class DxcNewSelectOptionComponent implements OnInit {
   public isValueSelected = (value): boolean =>
     this.service.selectedValues.getValue() &&
     this.service.selectedValues.getValue().includes(value);
+
+  getDynamicStyle(inputs) {
+    return css`
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      height: 32px;
+      :hover {
+        background-color: #f2f2f2;
+        cursor: pointer;
+      }
+      :active {
+        background-color: #e6e6e6;
+      }
+      &.selected {
+        background-color: #e6e6e6;
+        :hover {
+          background-color: #cccccc;
+        }
+        :active {
+          background-color: #bfbfbf;
+        }
+      }
+      .optionLabel {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 2px 8px;
+        height: 100%;
+        box-sizing: border-box;
+        border-bottom: 1px solid #e6e6e6;
+        .label {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          margin-left: 8px;
+        }
+        .checkIcon {
+          display: flex;
+          margin-right: 8px;
+          align-items: center;
+        }
+      }
+      .checkboxContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+      dxc-checkbox {
+        margin-left: 8px;
+      }
+    `;
+  }
 }

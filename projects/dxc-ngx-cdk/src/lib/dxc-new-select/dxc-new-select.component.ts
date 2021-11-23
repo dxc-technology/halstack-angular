@@ -137,6 +137,7 @@ export class DxcNewSelectComponent implements OnInit {
         { label: "label8", value: "8" },
       ],
     },
+    { label: "label9", value: "9" },
   ];
 
   defaultInputs = new BehaviorSubject<SelectProperties>({

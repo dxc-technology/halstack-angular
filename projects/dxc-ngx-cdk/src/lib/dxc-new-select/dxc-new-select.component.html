@@ -82,15 +82,24 @@
     closed: !this.isOpened
   }"
 >
-  <li *ngFor="let option of options; last as lastOption">
+  <li
+    *ngFor="let option of options; last as lastOption"
+    [ngClass]="{
+      lastItem: lastOption
+    }"
+  >
     <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
-      <li *ngFor="let op of option.options; last as lastOptionGroup">
+      <li
+        *ngFor="let op of option.options; last as lastOptionGroup"
+        [ngClass]="{
+          lastItemGroup: lastOption && lastOptionGroup
+        }"
+      >
         <dxc-new-select-option
           [ngClass]="{
-            lastItem: lastOption && lastOptionGroup,
             selected: isSelected(op)
           }"
           [multiple]="multiple"
@@ -103,7 +112,6 @@
     <dxc-new-select-option
       *ngIf="instanceOfOption(option)"
       [ngClass]="{
-        lastItem: lastOption,
         selected: isSelected(option)
       }"
       [multiple]="multiple"
@@ -122,15 +130,24 @@
     closed: !this.isOpened
   }"
 >
-  <li *ngFor="let option of options; last as lastOption">
+  <li
+    *ngFor="let option of options; last as lastOption"
+    [ngClass]="{
+      lastItem: lastOption
+    }"
+  >
     <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
-      <li *ngFor="let op of option.options; last as lastOptionGroup">
+      <li
+        *ngFor="let op of option.options; last as lastOptionGroup"
+        [ngClass]="{
+          lastItemGroup: lastOption && lastOptionGroup
+        }"
+      >
         <dxc-new-select-option
           [ngClass]="{
-            lastItem: lastOption && lastOptionGroup,
             selected: isSelected(op)
           }"
           [multiple]="multiple"
@@ -144,7 +161,6 @@
     <dxc-new-select-option
       *ngIf="instanceOfOption(option)"
       [ngClass]="{
-        lastItem: lastOption,
         selected: isSelected(option)
       }"
       [multiple]="multiple"

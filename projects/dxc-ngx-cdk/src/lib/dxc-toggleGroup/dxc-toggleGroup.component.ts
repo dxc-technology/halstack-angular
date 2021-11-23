@@ -96,7 +96,6 @@ export class DxcToggleGroupComponent implements OnInit {
         });
 
         setTimeout(() => {
-          index === 0 ? item.isFirst = true : (index === this.toggleGroup.length - 1 ? item.isLast = true: item.isLast = false);
           item.tabIndexValue = this.disabled ? -1 : this.tabIndexValue;
           this.setToggleSelected(item);
         });
@@ -273,60 +272,7 @@ export class DxcToggleGroupComponent implements OnInit {
       border-radius: 4px;
       overflow: hidden;
       ${this.utils.getMargins(inputs.margin)}
-
       ${this.disabledStyles()}
-      .first {
-        border-radius: 4px 0 0 4px !important;
-      }
-
-      .last {
-        border-radius: 0 4px 4px 0 !important;
-      }
-        dxc-toggle {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        background: var(--toggleGroup-unselectedBackgroundColor);
-        color: var(--toggleGroup-unselectedFontColor);
-        border-radius: 0;
-
-
-        .toggleContent {
-          &:focus,
-          &:focus-within,
-          &:focus-visible {
-            outline: none;
-          }
-          height: 40px;
-          width: 100% !important;
-          display: flex;
-          align-items: center;
-          .label {
-            padding-left: var(--toggleGroup-labelPaddingLeft);
-            padding-right: var(--toggleGroup-labelPaddingRight);
-            padding-top: var(--toggleGroup-labelPaddingTop);
-            padding-bottom: var(--toggleGroup-labelPaddingBottom);
-            letter-spacing: var(--toggleGroup-fontLetterSpacing);
-            font-family: var(--toggleGroup-fontFamily);
-            font-size: var(--toggleGroup-fontSize);
-            font-style: var(--toggleGroup-fontStyle);
-            font-weight: var(--toggleGroup-fontWeight);
-          }
-          .icon {
-            display: flex;
-            img,
-            svg {
-              width: var(--toggleGroup-iconSize);
-              height: var(--toggleGroup-iconSize);
-              padding-left: var(--toggleGroup-iconPaddingLeft);
-              padding-right: var(--toggleGroup-iconPaddingRight);
-              padding-top: var(--toggleGroup-iconPaddingTop);
-              padding-bottom: var(--toggleGroup-iconPaddingBottom);
-              fill: var(--toggleGroup-unselectedFontColor);
-            }
-          }
-        }
-      }
     `;
   }
 }

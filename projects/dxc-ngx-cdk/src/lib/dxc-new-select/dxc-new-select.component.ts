@@ -146,7 +146,8 @@ export class DxcNewSelectComponent implements OnInit {
       ],
     },
     { label: "label9", value: "9" },
-    { label: "label10", value: "10" },
+    { label: "aida", value: "10" },
+    { label: "pepe", value: "11" },
   ];
 
   defaultInputs = new BehaviorSubject<SelectProperties>({
@@ -175,6 +176,7 @@ export class DxcNewSelectComponent implements OnInit {
 
   id: string;
   isOpened: boolean = false;
+  inputValue: string;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionRef", { static: false }) optionRef: ElementRef;
@@ -218,26 +220,28 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   handleOptionClick(option, event) {
-    this.containerRef.nativeElement.focus();
-    event.preventDefault();
-    event.stopPropagation();
-    this.containerRef.nativeElement.focus();
-    if (this.multiple) {
-      const arr: Option[] = this.service.selectedValues.getValue() || [];
-      const index = arr.indexOf(option);
-      if (index >= 0) {
-        arr.splice(index, 1);
+    if (!this.disabled) {
+      this.containerRef.nativeElement.focus();
+      event.preventDefault();
+      event.stopPropagation();
+      this.containerRef.nativeElement.focus();
+      if (this.multiple) {
+        const arr: Option[] = this.service.selectedValues.getValue() || [];
+        const index = arr.indexOf(option);
+        if (index >= 0) {
+          arr.splice(index, 1);
+        } else {
+          arr.push(option);
+        }
+        this.onChange.emit(arr);
+        if (!(this.value || this.value === "")) {
+          this.service.setSelectedValues(arr);
+        }
       } else {
-        arr.push(option);
+        this.service.setSelectedValues(option);
+        this.onChange.emit(option.value);
+        this.isOpened = false;
       }
-      this.onChange.emit(arr);
-      if (!(this.value || this.value === "")) {
-        this.service.setSelectedValues(arr);
-      }
-    } else {
-      this.service.setSelectedValues(option);
-      this.onChange.emit(option.value);
-      this.isOpened = false;
     }
   }
 
@@ -351,12 +355,16 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   handleSelectOpen() {
-    this.isOpened = !this.isOpened;
+    if (!this.disabled) {
+      this.isOpened = !this.isOpened;
+    }
   }
 
   isSelected(option): boolean {
     if (!this.multiple) {
-      return this.service.selectedValues?.getValue()?.value === option.value ?  true :  false;
+      return this.service.selectedValues?.getValue()?.value === option.value
+        ? true
+        : false;
     } else {
       if (this.service.getSizeSelectedValues() > 0) {
         const selected = this.service.selectedValues
@@ -365,5 +373,9 @@ export class DxcNewSelectComponent implements OnInit {
         return selected !== null && selected !== undefined;
       } else return false;
     }
+  }
+
+  handleOnChangeInput(value) {
+    this.inputValue = value;
   }
 }

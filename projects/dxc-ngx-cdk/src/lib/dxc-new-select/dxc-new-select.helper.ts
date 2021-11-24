@@ -30,8 +30,11 @@ export class DxcNewSelectHelper {
       ${this.calculateWidth(inputs)}
       .container {
         background: #ffffff 0% 0% no-repeat padding-box;
-        border: 1px solid ${inputs.error ? "#D0011B" : "#000000"};
-        ${inputs.error ? "box-shadow: inset 0 0 0 1px #D0011B;" : ""}
+        border: 1px solid
+          ${inputs.disabled ? "#999999" : inputs.error ? "#D0011B" : "#000000"};
+        ${inputs.error && !inputs.disabled
+          ? "box-shadow: inset 0 0 0 1px #D0011B;"
+          : ""}
         border-radius: 4px;
         opacity: 1;
         width: inherit;
@@ -42,7 +45,11 @@ export class DxcNewSelectHelper {
         align-items: center;
         height: 40px;
         outline: 0;
-        ${!inputs.searchable ? "cursor: pointer;" : ""}
+        cursor: ${inputs.disabled
+          ? "not-allowed"
+          : !inputs.searchable
+          ? "pointer"
+          : ""};
         justify-content: space-between;
         margin-top: 4px;
         margin-bottom: 4px;
@@ -58,9 +65,15 @@ export class DxcNewSelectHelper {
             outline: none;
           }
         }
+        :hover {
+          ${!inputs.error && !inputs.disabled
+            ? "border: 1px solid #5F249F;"
+            : ""}
+        }
         :focus-within {
-          border: 1px solid #0095ff;
-          box-shadow: inset 0 0 0 1px #0095ff;
+          ${!inputs.disabled
+            ? "border: 1px solid #0095ff; box-shadow: inset 0 0 0 1px #0095ff;"
+            : ""}
         }
         .valueContainer {
           display: flex;
@@ -112,7 +125,7 @@ export class DxcNewSelectHelper {
               box-shadow: inset 0 0 0 1px #0095ff;
             }
           }
-          .selectedOptionContainer{
+          .selectedOptionContainer {
             margin-left: 8px;
           }
           .notSelectedLabel {
@@ -145,6 +158,9 @@ export class DxcNewSelectHelper {
             transform: rotate(0deg);
             &.opened {
               transform: rotate(180deg);
+            }
+            svg{
+              fill: ${!inputs.disabled ? "#000000" : "#999999"};
             }
           }
         }
@@ -212,7 +228,9 @@ export class DxcNewSelectHelper {
         font-size: var(--newSelect-labelFontSize);
         font-style: var(--newSelect-labelFontStyle);
         font-weight: var(--newSelect-labelFontWeight);
-        color: var(--newSelect-labelFontColor);
+        color: ${inputs.disabled
+          ? "#999999"
+          : "var(--newSelect-labelFontColor)"};
         line-height: 24px;
       }
       .helperText {
@@ -220,7 +238,9 @@ export class DxcNewSelectHelper {
         font-size: var(--newSelect-helperTextFontSize);
         font-style: var(--newSelect-helperTextFontStyle);
         font-weight: var(--newSelect-helperTextFontWeight);
-        color: var(--newSelect-helperTextFontColor);
+        color: ${inputs.disabled
+          ? "#999999"
+          : "var(--newSelect-helperTextFontColor)"};
         line-height: 18px;
       }
       .errorMessage {

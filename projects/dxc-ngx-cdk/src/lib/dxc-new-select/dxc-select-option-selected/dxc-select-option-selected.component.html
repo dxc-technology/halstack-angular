@@ -1,13 +1,11 @@
-<div  class="labelsContainer">
-  <span *ngFor="let option of selectedOptions; last as last" class="labelsContainer">
-    <span class="labelItem">
-      <!-- <span
+<div class="labelsContainer" #labelsContainer>
+  <span *ngFor="let option of selectedOptions; last as last">
+      <span
         *ngIf="option?.icon"
         class="iconLabel"
         [innerHTML]="option.icon | safeHtml"
-      ></span> -->
-      {{ option.label }} <span *ngIf="!last">,</span>
-    </span>
+      ></span>
+      {{ option.label }} <span *ngIf="!last">, </span>
   </span>
   <span *ngIf="service.getSizeSelectedValues() == 0 && multiple">
     Choose options

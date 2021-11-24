@@ -10,8 +10,8 @@ export class SelectService {
 
   public selectedValues: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  public setSelectedValues(newValues): void {
-    this.selectedValues.next(newValues);
+  public setSelectedValues(newOptions): void {
+    this.selectedValues.next(newOptions);
   }
 
   public getSizeSelectedValues(){

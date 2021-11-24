@@ -35,11 +35,14 @@
       </svg>
     </div>
     <span
+      class="selectedOptionContainer"
       [ngClass]="{
         notSelectedLabel: !(service.getSizeSelectedValues() > 0)
       }"
-      >{{ getLabelSelected() }}</span
-    >
+      ><dxc-select-option-selected
+        [multiple]="multiple"
+      ></dxc-select-option-selected
+    ></span>
   </div>
   <div class="iconsContainer">
     <span *ngIf="error && !disabled" class="errorIcon" aria-label="Error">
@@ -104,7 +107,7 @@
           }"
           [multiple]="multiple"
           [option]="op"
-          (optionClick)="handleOptionClick(op.value, $event)"
+          (optionClick)="handleOptionClick(op, $event)"
           (optionMouseDown)="handleOptionMouseDown($event)"
         ></dxc-new-select-option>
       </li>
@@ -116,7 +119,7 @@
       }"
       [multiple]="multiple"
       [option]="option"
-      (optionClick)="handleOptionClick(option.value, $event)"
+      (optionClick)="handleOptionClick(option, $event)"
       (optionMouseDown)="handleOptionMouseDown($event)"
     ></dxc-new-select-option>
   </li>
@@ -153,7 +156,7 @@
           [multiple]="multiple"
           [option]="op"
           [checked]="isValueSelected(op.value)"
-          (optionClick)="handleOptionClick(op.value, $event)"
+          (optionClick)="handleOptionClick(op, $event)"
           (optionMouseDown)="handleOptionMouseDown($event)"
         ></dxc-new-select-option>
       </li>
@@ -166,7 +169,7 @@
       [multiple]="multiple"
       [option]="option"
       [checked]="isValueSelected(option.value)"
-      (optionClick)="handleOptionClick(option.value, $event)"
+      (optionClick)="handleOptionClick(option, $event)"
       (optionMouseDown)="handleOptionMouseDown($event)"
     ></dxc-new-select-option>
   </li>

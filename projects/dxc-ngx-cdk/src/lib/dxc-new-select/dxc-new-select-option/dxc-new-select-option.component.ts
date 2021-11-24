@@ -94,6 +94,11 @@ export class DxcNewSelectOptionComponent implements OnInit {
         height: 100%;
         box-sizing: border-box;
         border-bottom: 1px solid #e6e6e6;
+        .iconLabel {
+          display: flex;
+          align-items: center;
+          margin-left: ${!inputs.multiple ? "8px" : ''};
+        }
         .label {
           width: 100%;
           height: 100%;
@@ -111,6 +116,9 @@ export class DxcNewSelectOptionComponent implements OnInit {
         width: 100%;
         height: 100%;
         display: flex;
+        div{
+          display: flex;
+        }
       }
       dxc-checkbox {
         margin-left: 8px;

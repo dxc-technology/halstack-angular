@@ -44,6 +44,8 @@ export class DxcNewSelectHelper {
         outline: 0;
         ${!inputs.searchable ? "cursor: pointer;" : ""}
         justify-content: space-between;
+        margin-top: 4px;
+        margin-bottom: 4px;
         input {
           border: none;
           width: 100%;
@@ -110,18 +112,8 @@ export class DxcNewSelectHelper {
               box-shadow: inset 0 0 0 1px #0095ff;
             }
           }
-          span {
-            text-align: left;
-            font: normal normal normal 16px/22px Open Sans;
-            letter-spacing: 0px;
-            color: #000000;
-            display: block;
-            align-items: center;
+          .selectedOptionContainer{
             margin-left: 8px;
-            width: 100%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
           }
           .notSelectedLabel {
             text-align: left;
@@ -221,7 +213,7 @@ export class DxcNewSelectHelper {
         font-style: var(--newSelect-labelFontStyle);
         font-weight: var(--newSelect-labelFontWeight);
         color: var(--newSelect-labelFontColor);
-        margin-bottom: 4px;
+        line-height: 24px;
       }
       .helperText {
         font-family: var(--newSelect-fontFamily);
@@ -229,7 +221,7 @@ export class DxcNewSelectHelper {
         font-style: var(--newSelect-helperTextFontStyle);
         font-weight: var(--newSelect-helperTextFontWeight);
         color: var(--newSelect-helperTextFontColor);
-        margin-bottom: 4px;
+        line-height: 18px;
       }
       .errorMessage {
         font-family: var(--newSelect-fontFamily);
@@ -237,8 +229,21 @@ export class DxcNewSelectHelper {
         font: normal normal normal 12px/17px Open Sans;
         letter-spacing: 0px;
         color: #d0011b;
-        margin-top: 4px;
       }
     `;
   }
 }
+
+// span {
+//   text-align: left;
+//   font: normal normal normal 16px/22px Open Sans;
+//   letter-spacing: 0px;
+//   color: #000000;
+//   display: block;
+//   align-items: center;
+//   margin-left: 8px;
+//   width: 100%;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+//   overflow: hidden;
+// }

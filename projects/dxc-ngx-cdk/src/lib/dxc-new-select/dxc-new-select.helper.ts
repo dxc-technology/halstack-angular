@@ -127,6 +127,7 @@ export class DxcNewSelectHelper {
           }
           .selectedOptionContainer {
             margin-left: 8px;
+            width: 100%;
           }
           .notSelectedLabel {
             text-align: left;

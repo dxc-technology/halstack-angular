@@ -57,12 +57,14 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      span {
-        display: flex !important;
-      }
-      .labelsContainer {
-        flex-direction: row;
-        display: flex;
+      display: block;
+      width: calc(100% - 30px);
+      div.labelsContainer {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
       }
     `;
   }

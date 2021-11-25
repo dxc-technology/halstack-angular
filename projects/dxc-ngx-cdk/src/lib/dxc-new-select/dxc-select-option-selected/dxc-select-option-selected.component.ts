@@ -18,12 +18,14 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   @HostBinding("class") className;
 
   @Input() multiple: boolean;
+  @Input() disabled: boolean;
 
   subscriptor: any;
   selectedOptions: Array<Option> = [];
 
   defaultInputs = new BehaviorSubject<any>({
     multiple: false,
+    disabled: false,
   });
 
   constructor(public service: SelectService) {
@@ -68,6 +70,28 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
         white-space: nowrap;
         text-overflow: ellipsis;
         display: block;
+        .selectedOption {
+          text-align: left;
+          font: normal normal normal 16px/22px Open Sans;
+          letter-spacing: 0px;
+          color: ${inputs.disabled ? "#999999" : "#000000"};
+          .iconLabel{
+            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: row-reverse;
+          }
+          .comma{
+            margin-right: 4px;
+          }
+        }
+        .notSelectedLabel {
+          text-align: left;
+          font: normal normal normal 16px/22px Open Sans;
+          letter-spacing: 0px;
+          color: ${inputs.disabled ? "#999999" : "#666666"};;
+        }
       }
     `;
   }

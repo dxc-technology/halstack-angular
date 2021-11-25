@@ -133,12 +133,6 @@ export class DxcNewSelectHelper {
             margin-left: 8px;
             width: calc(100% - 60px);
           }
-          .notSelectedLabel {
-            text-align: left;
-            font: normal normal normal 16px/22px Open Sans;
-            letter-spacing: 0px;
-            color: #666666;
-          }
         }
         .iconsContainer {
           display: flex;
@@ -258,17 +252,3 @@ export class DxcNewSelectHelper {
     `;
   }
 }
-
-// span {
-//   text-align: left;
-//   font: normal normal normal 16px/22px Open Sans;
-//   letter-spacing: 0px;
-//   color: #000000;
-//   display: block;
-//   align-items: center;
-//   margin-left: 8px;
-//   width: 100%;
-//   text-overflow: ellipsis;
-//   white-space: nowrap;
-//   overflow: hidden;
-// }

@@ -1,5 +1,5 @@
 <div class="labelsContainer" #labelsContainer>
-  <span *ngFor="let option of selectedOptions; last as last">
+  <span *ngFor="let option of selectedOptions; last as last" class="selectedOption">
       <span
         *ngIf="option?.icon"
         class="iconLabel"

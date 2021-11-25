@@ -82,52 +82,56 @@ export class DxcNewSelectHelper {
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: hidden;
-          .sizeContainer {
-            width: 24px;
-            height: 22px;
-            background: #fafafa 0% 0% no-repeat padding-box;
+          .numberOfSelected {
             display: flex;
-            justify-content: center;
-            text-align: left;
-            font: normal normal 600 11px/15px Open Sans;
-            letter-spacing: 0.98px;
-            color: #000000;
-            border-bottom-left-radius: 4px;
-            border-top-left-radius: 4px;
-            align-items: center;
-            border-left: 1px solid #cccccc;
-            border-top: 1px solid #cccccc;
-            border-bottom: 1px solid #cccccc;
-          }
-          .removeContainer {
-            width: 24px;
-            height: 22px;
-            background: #ffffff 0% 0% no-repeat padding-box;
-            border: 1px solid #cccccc;
-            display: flex;
-            justify-content: center;
-            text-align: left;
-            font: normal normal 600 11px/15px Open Sans;
-            letter-spacing: 0.98px;
-            color: #000000;
-            border-bottom-right-radius: 4px;
-            border-top-right-radius: 4px;
-            align-items: center;
-            outline: none;
-            svg {
-              height: 16px;
-              width: 16px;
-              fill: #000000;
+            width: 50px;
+            .sizeContainer {
+              width: 24px;
+              height: 22px;
+              background: #fafafa 0% 0% no-repeat padding-box;
+              display: flex;
+              justify-content: center;
+              text-align: left;
+              font: normal normal 600 11px/15px Open Sans;
+              letter-spacing: 0.98px;
+              color: #000000;
+              border-bottom-left-radius: 4px;
+              border-top-left-radius: 4px;
+              align-items: center;
+              border-left: 1px solid #cccccc;
+              border-top: 1px solid #cccccc;
+              border-bottom: 1px solid #cccccc;
             }
-            :focus-visible,
-            :active {
-              border: 1px solid #0095ff;
-              box-shadow: inset 0 0 0 1px #0095ff;
+            .removeContainer {
+              width: 24px;
+              height: 22px;
+              background: #ffffff 0% 0% no-repeat padding-box;
+              border: 1px solid #cccccc;
+              display: flex;
+              justify-content: center;
+              text-align: left;
+              font: normal normal 600 11px/15px Open Sans;
+              letter-spacing: 0.98px;
+              color: #000000;
+              border-bottom-right-radius: 4px;
+              border-top-right-radius: 4px;
+              align-items: center;
+              outline: none;
+              svg {
+                height: 16px;
+                width: 16px;
+                fill: #000000;
+              }
+              :focus-visible,
+              :active {
+                border: 1px solid #0095ff;
+                box-shadow: inset 0 0 0 1px #0095ff;
+              }
             }
           }
           .selectedOptionContainer {
             margin-left: 8px;
-            width: 100%;
+            width: calc(100% - 60px);
           }
           .notSelectedLabel {
             text-align: left;

@@ -58,7 +58,10 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: block;
-      width: calc(100% - 30px);
+      max-width: 100%;
+      .selectedOption {
+        display: inline-flex;
+      }
       div.labelsContainer {
         width: 100%;
         overflow: hidden;

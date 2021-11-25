@@ -338,6 +338,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   reload = () => {
+    this.selectedRowCount = 0;
     this.bindOptions();
   }
 

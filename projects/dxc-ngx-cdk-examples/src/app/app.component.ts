@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Components } from './components';
 import { HttpClient } from '@angular/common/http';
-import { ThemeService } from '../../../dxc-ngx-cdk/src/lib/theme/theme.service';
+import { ThemeService } from '@dxc-technology/halstack-angular';
 
 ThemeService
 @Component({
@@ -13,10 +13,11 @@ export class AppComponent {
   components: Array<any>;
   constructor(private http: HttpClient, @Inject('ThemeService') private themeService: ThemeService) {
     this.components = Components;
+    //this.themeService.registerTheme({button: {baseColor:"#000000"}});
   }
 
   ngOnInit(): void {
-    
+
   }
 
   title = 'dxc-angular-cdk';

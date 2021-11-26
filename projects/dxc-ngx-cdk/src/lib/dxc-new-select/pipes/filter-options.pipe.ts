@@ -1,38 +1,47 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { Option } from "../interfaces/option.interface";
 import { OptionGroup } from "../interfaces/optionGroup.interface";
-import { SelectService } from "../services/select.service";
 
 @Pipe({ name: "filterOptions", pure: true })
 export class FilterOptionsPipe implements PipeTransform {
-  constructor(private service: SelectService) {}
+  constructor() {}
 
   public transform(
-    options: (Option | OptionGroup)[],
+    options: Option[] | OptionGroup[],
     inputValue: string
   ): Array<any> {
     const value = inputValue?.toLowerCase();
-    const newOptions = this.iterateOptions(options, value);
-    return newOptions?.length > 0 ? newOptions : options;
+    const array = options;
+    let newOptions = [];
+    if (array && array?.length > 0 && this.instanceOfOption(array[0])) {
+      const arrayOption = array as Option[];
+      if (arrayOption?.length > 0) {
+        newOptions = this.filterOptions(arrayOption, value);
+      }
+    } else if(array && array?.length > 0 && !this.instanceOfOption(array[0])){
+      const arrayOption = array as OptionGroup[];
+      if (arrayOption?.length > 0) {
+        arrayOption.map((op) => {
+          const arr = this.filterOptions(op.options, value);
+          if (arr?.length > 0) {
+            const newGroup: OptionGroup = {
+              label: op.label,
+              options: arr,
+            };
+            newOptions.push(newGroup);
+          }
+        });
+      }
+    }
+    return (newOptions?.length > 0 || inputValue?.length > 0) ? newOptions : options;
   }
 
-  private iterateOptions(array: (Option | OptionGroup)[], inputValue: string) {
+  private filterOptions(array: Option[], inputValue: string) {
     let newArray = [];
     array.map((op) => {
-      if (this.instanceOfOption(op)) {
-        const label = op.label.toLowerCase();
-        if (label.startsWith(inputValue)) {
-          newArray.push(op);
-        }
-      } else {
-        const optionsGroup = this.iterateOptions(op.options, inputValue);
-        if (optionsGroup?.length > 0) {
-          const newGroup: OptionGroup = {
-            label: op.label,
-            options: optionsGroup,
-          };
-          newArray.push(newGroup);
-        }
+      const label = op.label.toLowerCase();
+      if (label.startsWith(inputValue)) {
+        newArray.push(op);
       }
     });
     return newArray;

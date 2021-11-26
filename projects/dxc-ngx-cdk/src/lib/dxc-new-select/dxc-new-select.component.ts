@@ -33,7 +33,7 @@ interface SelectProperties {
   error: string;
   margin: Object | string;
   size: string;
-  options: (Option | OptionGroup)[];
+  options: Option[] | OptionGroup[];
   tabIndex: number;
 }
 
@@ -118,37 +118,7 @@ export class DxcNewSelectComponent implements OnInit {
   size: string;
 
   @Input()
-  options = [
-    {
-      label: "label1",
-      value: "1",
-      icon: '<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24" width="18px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><g><path d="M3,7v2h5v2H4v2h4v2H3v2h5c1.1,0,2-0.9,2-2v-1.5c0-0.83-0.67-1.5-1.5-1.5c0.83,0,1.5-0.67,1.5-1.5V9c0-1.1-0.9-2-2-2H3z M21,11v4c0,1.1-0.9,2-2,2h-5c-1.1,0-2-0.9-2-2V9c0-1.1,0.9-2,2-2h5c1.1,0,2,0.9,2,2h-7v6h5v-2h-2.5v-2H21z"/></g></g></svg>',
-    },
-    { label: "label2", value: "2" },
-    {
-      label: "Group label 1",
-      options: [
-        { label: "label3", value: "3" },
-        { label: "label4", value: "4" },
-        {
-          label: "label5",
-          value: "5",
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24" width="18px" fill="#000000"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><g><path d="M3,7v2h5v2H4v2h4v2H3v2h5c1.1,0,2-0.9,2-2v-1.5c0-0.83-0.67-1.5-1.5-1.5c0.83,0,1.5-0.67,1.5-1.5V9c0-1.1-0.9-2-2-2H3z M21,11v4c0,1.1-0.9,2-2,2h-5c-1.1,0-2-0.9-2-2V9c0-1.1,0.9-2,2-2h5c1.1,0,2,0.9,2,2h-7v6h5v-2h-2.5v-2H21z"/></g></g></svg>',
-        },
-      ],
-    },
-    { label: "label6", value: "6" },
-    {
-      label: "Group label 2",
-      options: [
-        { label: "label7", value: "7" },
-        { label: "label8", value: "8" },
-      ],
-    },
-    { label: "label9", value: "9" },
-    { label: "aida", value: "10" },
-    { label: "pepe", value: "11" },
-  ];
+  options: Option[] | OptionGroup[];
 
   defaultInputs = new BehaviorSubject<SelectProperties>({
     label: "",
@@ -177,9 +147,11 @@ export class DxcNewSelectComponent implements OnInit {
   id: string;
   isOpened: boolean = false;
   inputValue: string;
+  isInputVisible: boolean = true;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionRef", { static: false }) optionRef: ElementRef;
+  @ViewChild("inputRef", { static: false }) inputRef: ElementRef;
 
   @HostListener("document:click", ["$event"])
   clickout(event) {
@@ -237,31 +209,19 @@ export class DxcNewSelectComponent implements OnInit {
         if (!(this.value || this.value === "")) {
           this.service.setSelectedValues(arr);
         }
+        this.showInput();
+        this.setInputValue("");
+        this.isOpened = true;
       } else {
         this.service.setSelectedValues(option);
         this.onChange.emit(option.value);
         this.isOpened = false;
       }
+      if(this.searchable && !this.multiple){
+        this.isInputVisible = false;
+      }
     }
   }
-
-  // public getLabelSelected(): string {
-  //   if (!this.multiple) {
-  //     if (this.service.getSizeSelectedValues() > 0) {
-  //       const arr = this.options;
-  //       const selected: Option = this.findOptions(arr);
-  //       return selected.label;
-  //     } else return "Choose an option";
-  //   } else {
-  //     if (this.service.getSizeSelectedValues() > 0) {
-  //       const arr = this.options;
-  //       let arraylabels = [];
-  //       arraylabels = this.iterateOptions(arr);
-  //       const str = arraylabels.join(", ");
-  //       return str;
-  //     } else return "Choose options";
-  //   }
-  // }
 
   removeSelectedValues() {
     this.service.setSelectedValues([]);
@@ -293,61 +253,27 @@ export class DxcNewSelectComponent implements OnInit {
   findOptionByValue(value: any) {
     let selected;
     const array = this.options;
-    array.find((op) => {
-      if (this.instanceOfOption(op) && op.value === value) {
-        selected = op;
-      } else if (!this.instanceOfOption(op)) {
-        selected = this.findOptionByValue(op.options);
+    if (this.instanceOfOption(this.options[0])) {
+      const arrayOption = array as Option[];
+      if (arrayOption?.length > 0) {
+        selected = this.findOption(arrayOption, value);
       }
-      return selected;
-    });
-    return selected;
+    } else {
+      const arrayOption = array as OptionGroup[];
+      if (arrayOption?.length > 0) {
+        arrayOption.map((op) => {
+          selected = this.findOption(op.options, value);
+        });
+      }
+    }
   }
 
-  // findOptions(array: any) {
-  //   let selected;
-  //   array.find((op) => {
-  //     if (
-  //       this.instanceOfOption(op) &&
-  //       op.value === this.service.selectedValues.getValue()
-  //     ) {
-  //       selected = op;
-  //     } else if (!this.instanceOfOption(op)) {
-  //       selected = this.findOptions(op.options);
-  //     }
-  //     return selected;
-  //   });
-  //   return selected;
-  // }
-
-  // iterateOptions(array: any) {
-  //   let arraylabels = [];
-  //   array.map((op) => {
-  //     if (this.instanceOfOption(op)) {
-  //       if (this.service.selectedValues.getValue().includes(op.value)) {
-  //         arraylabels.push(op.label);
-  //       }
-  //     } else {
-  //       let optionsGroup = this.iterateOptions(op.options);
-  //       optionsGroup.map((element) => arraylabels.push(element));
-  //     }
-  //   });
-  //   return arraylabels;
-  // }
-
-  iterateOptions(array: any) {
-    let arrayOptions = [];
-    array.map((op) => {
-      if (this.instanceOfOption(op)) {
-        if (this.service.selectedValues.getValue().includes(op.value)) {
-          arrayOptions.push(op);
-        }
-      } else {
-        let optionsGroup = this.iterateOptions(op.options);
-        optionsGroup.map((element) => arrayOptions.push(element));
+  private findOption(options: Option[], value: string) {
+    options.find((op) => {
+      if (op.value === value) {
+        return op;
       }
     });
-    return arrayOptions;
   }
 
   instanceOfOption(option: any): option is Option {
@@ -357,6 +283,23 @@ export class DxcNewSelectComponent implements OnInit {
   handleSelectOpen() {
     if (!this.disabled) {
       this.isOpened = !this.isOpened;
+      this.showInput();
+      if (!this.multiple && this.isOpened) {
+        if (this.service.getSizeSelectedValues() === 1) {
+          // if (
+          //   this.optionsRef &&
+          //   this.optionsRef.nativeElement.children[this.focusedOption]
+          // ) {
+          //   this.optionsRef.nativeElement.children[
+          //     this.focusedOption
+          //   ].scrollIntoView({
+          //     behavior: "smooth",
+          //     block: "nearest",
+          //     inline: "nearest",
+          //   });
+          // }
+        }
+      }
     }
   }
 
@@ -377,5 +320,28 @@ export class DxcNewSelectComponent implements OnInit {
 
   handleOnChangeInput(value) {
     this.inputValue = value;
+  }
+
+  handleDefaultClearInput(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setInputValue("");
+  }
+
+  private setInputValue(value: string) {
+    if (this.inputRef) {
+      this.inputRef.nativeElement.value = value;
+      this.inputValue = value;
+    }
+    this.isOpened = false;
+  }
+
+  private showInput(){
+    if(this.searchable){
+      this.isInputVisible = true;
+      setTimeout(() => {
+        this.inputRef.nativeElement.focus();
+      });
+    }
   }
 }

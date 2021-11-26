@@ -3,21 +3,11 @@
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="container" tabindex="0" (click)="handleSelectOpen()" #containerRef>
-  <input
-    *ngIf="searchable"
-    #inputRef
-    type="text"
-    [id]="id"
-    [placeholder]="placeholder"
-    [name]="name"
-    [disabled]="disabled"
-    [tabindex]="tabIndex"
-    autocomplete="off"
-    (ngModelChange)="handleOnChangeInput($event)"
-    [ngModel]="inputValue"
-  />
-  <div *ngIf="!searchable" class="valueContainer">
-    <div class="numberOfSelected" *ngIf="service.getSizeSelectedValues() > 0 && multiple">
+  <div class="valueContainer" *ngIf="!searchable || (searchable && multiple)">
+    <div
+      class="numberOfSelected"
+      *ngIf="service.getSizeSelectedValues() > 0 && multiple"
+    >
       <div
         *ngIf="service.getSizeSelectedValues() > 0 && multiple"
         class="sizeContainer"
@@ -39,6 +29,7 @@
       </div>
     </div>
     <span
+      *ngIf="!searchable"
       class="selectedOptionContainer"
       [ngClass]="{
         notSelectedLabel: !(service.getSizeSelectedValues() > 0)
@@ -48,6 +39,50 @@
         [disabled]="disabled"
       ></dxc-select-option-selected
     ></span>
+  </div>
+  <div *ngIf="searchable" class="searchContainer">
+    <span class="searchGrid">
+      <dxc-select-option-selected
+        [multiple]="multiple"
+        [disabled]="disabled"
+        *ngIf="!multiple && !isInputVisible"
+      ></dxc-select-option-selected>
+      <input
+        #inputRef
+        *ngIf="isInputVisible"
+        type="text"
+        [id]="id"
+        [placeholder]="placeholder ? placeholder : 'Choose an option'"
+        [name]="name"
+        [disabled]="disabled"
+        [tabindex]="tabIndex"
+        autocomplete="off"
+        (ngModelChange)="handleOnChangeInput($event)"
+        [ngModel]="inputValue"
+      />
+    </span>
+
+    <button
+      *ngIf="inputValue?.length > 0 && !disabled"
+      class="inputClear"
+      (click)="handleDefaultClearInput($event)"
+      [disabled]="disabled"
+      aria-label="Clear"
+      [tabindex]="tabIndex"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+        />
+      </svg>
+    </button>
   </div>
   <div class="iconsContainer">
     <span *ngIf="error && !disabled" class="errorIcon" aria-label="Error">
@@ -85,10 +120,11 @@
 
 <ul
   class="options"
-  *ngIf="!multiple"
+  *ngIf="!multiple && options?.length > 0"
   [ngClass]="{
     closed: !this.isOpened
   }"
+  #optionsRef
 >
   <li
     *ngFor="
@@ -137,14 +173,20 @@
 
 <ul
   class="options"
-  *ngIf="multiple"
+  *ngIf="multiple && options?.length > 0"
   tabindex="-1"
   [ngClass]="{
     closed: !this.isOpened
   }"
+  #optionsRef
 >
   <li
-    *ngFor="let option of options; last as lastOption"
+    *ngFor="
+      let option of options && !searchable
+        ? options
+        : (options | filterOptions: inputValue);
+      last as lastOption
+    "
     [ngClass]="{
       lastItem: lastOption
     }"

@@ -2,8 +2,19 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-new-select label="Label" helperText="HelperText" margin="xsmall">
+      <dxc-new-select
+        label="Label"
+        helperText="HelperText"
+        margin="xsmall"
+        [options]="array1"
+      >
       </dxc-new-select>
+      <dxc-new-select
+        label="Label"
+        helperText="HelperText"
+        margin="xsmall"
+        [options]="array2"
+      ></dxc-new-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Searchable">
@@ -12,6 +23,24 @@
         helperText="HelperText"
         searchable="true"
         margin="xsmall"
+        [options]="array1"
+      >
+      </dxc-new-select>
+      <dxc-new-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
+        margin="xsmall"
+        [options]="array2"
+      >
+      </dxc-new-select>
+      <dxc-new-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
+        margin="xsmall"
+        [options]="array2"
+        [multiple]="true"
       >
       </dxc-new-select>
     </tbuilder-component-mode>
@@ -23,6 +52,16 @@
         multiple="true"
         (onChange)="onChange($event)"
         margin="xsmall"
+        [options]="array1"
+      >
+      </dxc-new-select>
+      <dxc-new-select
+        label="Label"
+        helperText="HelperText"
+        multiple="true"
+        (onChange)="onChange($event)"
+        margin="xsmall"
+        [options]="array2"
       >
       </dxc-new-select>
     </tbuilder-component-mode>
@@ -36,7 +75,18 @@
       >
       </dxc-new-select>
     </tbuilder-component-mode>
-    
+
+    <tbuilder-component-mode text="Error and multiple">
+      <dxc-new-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
+        margin="xsmall"
+        [multiple]="true"
+      >
+      </dxc-new-select>
+    </tbuilder-component-mode>
+
     <tbuilder-component-mode text="Disabled">
       <dxc-new-select
         label="Label"

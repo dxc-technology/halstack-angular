@@ -45,26 +45,10 @@ export class DxcNewSelectHelper {
         align-items: center;
         height: 40px;
         outline: 0;
-        cursor: ${inputs.disabled
-          ? "not-allowed"
-          : !inputs.searchable
-          ? "pointer"
-          : ""};
+        cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
         justify-content: space-between;
         margin-top: 4px;
         margin-bottom: 4px;
-        input {
-          border: none;
-          width: 100%;
-          padding: 0px;
-          margin-left: 8px;
-          height: 100%;
-          :focus-visible,
-          :focus,
-          :focus-within {
-            outline: none;
-          }
-        }
         :hover {
           ${!inputs.error && !inputs.disabled
             ? "border: 1px solid #5F249F;"
@@ -78,10 +62,10 @@ export class DxcNewSelectHelper {
         .valueContainer {
           display: flex;
           flex-direction: row;
-          width: 100%;
+          width: ${inputs.searchable && inputs.multiple ? "" : "100%"};
           text-overflow: ellipsis;
           white-space: nowrap;
-          overflow: hidden;
+          overflow: ${inputs.searchable && inputs.multiple ? "" : "hidden"};
           .numberOfSelected {
             display: flex;
             width: 50px;
@@ -158,8 +142,73 @@ export class DxcNewSelectHelper {
             &.opened {
               transform: rotate(180deg);
             }
-            svg{
+            svg {
               fill: ${!inputs.disabled ? "#000000" : "#999999"};
+            }
+          }
+        }
+        .searchContainer {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          align-items: center;
+          .searchGrid {
+            width: 100%;
+            display: flex;
+            margin-left: 8px;
+            input {
+              border: none;
+              width: 100%;
+              padding: 0px;
+              height: 100%;
+              text-align: left;
+              font: normal normal normal 16px/22px Open Sans;
+              letter-spacing: 0px;
+              color: #000000;
+              :focus-visible,
+              :focus,
+              :focus-within {
+                outline: none;
+              }
+            }
+          }
+          .inputClear {
+            height: 24px;
+            max-width: 24px;
+            padding: 3px;
+            font-size: 1rem;
+            font-family: var(--newSelect-fontFamily);
+            border: 2px solid transparent;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: transparent;
+            color: #000000;
+            &:hover {
+              background-color: var(--newInputText-hoverActionBackgroundColor);
+              color: var(--newInputText-hoverActionIconColor);
+            }
+            &:focus {
+              color: var(--newInputText-focusActionIconColor);
+              border: 2px solid var(--newInputText-focusActionBorderColor);
+              outline: none;
+            }
+            &:focus-visible {
+              border: 2px solid var(--newInputText-focusActionBorderColor);
+              outline: none;
+            }
+            &:active {
+              border: 2px solid var(--newInputText-focusActionBorderColor);
+              box-shadow: inset 0 0 0 1px
+                var(--newInputText-activeActionBackgroundColor);
+              outline: none;
+              background-color: var(--newInputText-activeActionBackgroundColor);
+              color: var(--newInputText-activeActionIconColor);
+            }
+            svg {
+              line-height: 18px;
             }
           }
         }
@@ -180,6 +229,7 @@ export class DxcNewSelectHelper {
         position: absolute;
         margin-top: 90px;
         z-index: 100;
+        max-height: 312px;
         &.closed {
           visibility: hidden;
         }
@@ -230,7 +280,7 @@ export class DxcNewSelectHelper {
         color: ${inputs.disabled
           ? "#999999"
           : "var(--newSelect-labelFontColor)"};
-        line-height: 24px;
+        line-height: 1.75em;
       }
       .helperText {
         font-family: var(--newSelect-fontFamily);
@@ -240,7 +290,7 @@ export class DxcNewSelectHelper {
         color: ${inputs.disabled
           ? "#999999"
           : "var(--newSelect-helperTextFontColor)"};
-        line-height: 18px;
+        line-height: 1.5em;
       }
       .errorMessage {
         font-family: var(--newSelect-fontFamily);

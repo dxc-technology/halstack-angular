@@ -11,9 +11,9 @@ ThemeService
 })
 export class AppComponent {
   components: Array<any>;
-  constructor(private http: HttpClient, @Inject('ThemeService') private themeService: ThemeService) {
+  constructor(private http: HttpClient) {
     this.components = Components;
-    //this.themeService.registerTheme({button: {baseColor:"#000000"}});
+    // this.themeService.registerTheme({button: {baseColor:"#000000"}});
   }
 
   ngOnInit(): void {

@@ -63,17 +63,16 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   private getTheme(): void {
-    if (this._themeService !== null && this._themeService !== undefined) {
-      const active = this._themeService.getTheme();
+      const active = this._themeService?.getTheme();
       this.updateTheme({theme: active, advanced: false});
 
       this._themeService.themeChange.subscribe((theme: any) => {
+        console.log(theme);
         this.updateTheme({theme: theme, advanced: false});
       });
 
       this._themeService.themeAdvanceChange.subscribe((theme: any) => {
         this.updateTheme({theme: theme, advanced: true});
       });
-    }
   }
 }

@@ -217,7 +217,7 @@ export class DxcNewSelectComponent implements OnInit {
         this.onChange.emit(option.value);
         this.isOpened = false;
       }
-      if(this.searchable && !this.multiple){
+      if (this.searchable && !this.multiple) {
         this.isInputVisible = false;
       }
     }
@@ -282,8 +282,7 @@ export class DxcNewSelectComponent implements OnInit {
 
   handleSelectOpen() {
     if (!this.disabled) {
-      this.isOpened = !this.isOpened;
-      this.showInput();
+      this.searchable ? this.showInput() : this.isOpened = !this.isOpened;
       if (!this.multiple && this.isOpened) {
         if (this.service.getSizeSelectedValues() === 1) {
           // if (
@@ -336,12 +335,11 @@ export class DxcNewSelectComponent implements OnInit {
     this.isOpened = false;
   }
 
-  private showInput(){
-    if(this.searchable){
-      this.isInputVisible = true;
-      setTimeout(() => {
-        this.inputRef.nativeElement.focus();
-      });
-    }
+  private showInput() {
+    this.isInputVisible = true;
+    setTimeout(() => {
+      this.inputRef.nativeElement.focus();
+      this.isOpened = !this.isOpened;
+    });
   }
 }

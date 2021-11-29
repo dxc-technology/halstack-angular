@@ -470,10 +470,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
               this.claimsForm.markAsUntouched();
               if (this.sourceRequest)
                 this.getData();
-              else if (selectedRowIndex > -1)
+              else
                 this.dataSource.data = data;
-              else this.getData();
-
               selectedRowIndex = -1;
               // After save Event Emitter
               this.formControlUpdater.emit({ action: EAction.ADD, columns: this.editableFields, data: this.expandedElement });
@@ -834,6 +832,12 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           case this.fieldsType.checkbox:
             this.claimsForm.addControl(col.name, new FormControl((col as ICheckboxProperties).checked,
               (col.required && col.required == true) ? Validators.required : null));
+              const control = col as ICheckboxProperties;
+                const formControlUpdater = this.formControlUpdater;
+                this.claimsForm.get(col.name).valueChanges.subscribe((data) => {
+                  this.parentForm.markAsDirty();
+                  formControlUpdater.emit({ action: EAction.CHANGE, columns: this.editableFields, data: data, control: control, form: this.claimsForm });
+                });
             break;
           case this.fieldsType.crudLookup:
             crudFormModel[col.name] = {};

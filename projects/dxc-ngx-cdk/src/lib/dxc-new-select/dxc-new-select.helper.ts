@@ -65,6 +65,7 @@ export class DxcNewSelectHelper {
           width: ${inputs.searchable && inputs.multiple ? "" : "100%"};
           text-overflow: ellipsis;
           white-space: nowrap;
+          margin-right: 4px;
           overflow: ${inputs.searchable && inputs.multiple ? "" : "hidden"};
           .numberOfSelected {
             display: flex;
@@ -152,6 +153,7 @@ export class DxcNewSelectHelper {
           flex-direction: row;
           width: 100%;
           align-items: center;
+          margin-right: 4px;
           .searchGrid {
             width: 100%;
             display: flex;
@@ -227,7 +229,7 @@ export class DxcNewSelectHelper {
         flex-direction: column;
         padding: 4px 0px;
         position: absolute;
-        margin-top: 90px;
+        margin-top: 92px;
         z-index: 100;
         max-height: 312px;
         &.closed {

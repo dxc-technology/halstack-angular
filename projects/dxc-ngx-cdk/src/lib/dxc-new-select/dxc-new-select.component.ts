@@ -262,14 +262,18 @@ export class DxcNewSelectComponent implements OnInit {
       const arrayOption = array as OptionGroup[];
       if (arrayOption?.length > 0) {
         arrayOption.map((op) => {
-          selected = this.findOption(op.options, value);
+          const found = this.findOption(op.options, value);
+          if (found !== undefined && found != null) {
+            selected = found;
+          }
         });
       }
     }
+    return selected;
   }
 
   private findOption(options: Option[], value: string) {
-    options.find((op) => {
+    return options.find((op) => {
       if (op.value === value) {
         return op;
       }
@@ -282,7 +286,7 @@ export class DxcNewSelectComponent implements OnInit {
 
   handleSelectOpen() {
     if (!this.disabled) {
-      this.searchable ? this.showInput() : this.isOpened = !this.isOpened;
+      this.searchable ? this.showInput() : (this.isOpened = !this.isOpened);
       if (!this.multiple && this.isOpened) {
         if (this.service.getSizeSelectedValues() === 1) {
           // if (
@@ -299,21 +303,6 @@ export class DxcNewSelectComponent implements OnInit {
           // }
         }
       }
-    }
-  }
-
-  isSelected(option): boolean {
-    if (!this.multiple) {
-      return this.service.selectedValues?.getValue()?.value === option.value
-        ? true
-        : false;
-    } else {
-      if (this.service.getSizeSelectedValues() > 0) {
-        const selected = this.service.selectedValues
-          .getValue()
-          .find((op) => op.value === option.value);
-        return selected !== null && selected !== undefined;
-      } else return false;
     }
   }
 
@@ -338,7 +327,7 @@ export class DxcNewSelectComponent implements OnInit {
   private showInput() {
     this.isInputVisible = true;
     setTimeout(() => {
-      this.inputRef.nativeElement.focus();
+      this.inputRef?.nativeElement.focus();
       this.isOpened = !this.isOpened;
     });
   }

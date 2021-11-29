@@ -18,6 +18,7 @@ import { css } from "emotion";
 })
 export class DxcNewSelectOptionComponent implements OnInit {
   @HostBinding("class") className;
+  @HostBinding("class.selected") selected = false;
 
   @Input() option: Option;
   @Input() multiple: boolean;
@@ -49,6 +50,9 @@ export class DxcNewSelectOptionComponent implements OnInit {
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
     })}`;
+    this.service.selectedValues.subscribe((values) =>{
+      this.selected = this.isSelected();
+    });
   }
 
   handleOptionClick(event) {
@@ -62,6 +66,21 @@ export class DxcNewSelectOptionComponent implements OnInit {
   public isValueSelected = (value): boolean =>
     this.service.selectedValues.getValue() &&
     this.service.selectedValues.getValue().includes(value);
+
+  isSelected(): boolean {
+    if (!this.multiple) {
+      return this.service.selectedValues?.getValue()?.value === this.option.value
+        ? true
+        : false;
+    } else {
+      if (this.service.getSizeSelectedValues() > 0) {
+        const selected = this.service.selectedValues
+          .getValue()
+          .find((op) => op.value === this.option.value);
+        return selected !== null && selected !== undefined;
+      } else return false;
+    }
+  }
 
   getDynamicStyle(inputs) {
     return css`
@@ -97,7 +116,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
         .iconLabel {
           display: flex;
           align-items: center;
-          margin-left: ${!inputs.multiple ? "8px" : ''};
+          margin-left: ${!inputs.multiple ? "8px" : ""};
         }
         .label {
           width: 100%;
@@ -116,7 +135,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
         width: 100%;
         height: 100%;
         display: flex;
-        div{
+        div {
           display: flex;
         }
       }

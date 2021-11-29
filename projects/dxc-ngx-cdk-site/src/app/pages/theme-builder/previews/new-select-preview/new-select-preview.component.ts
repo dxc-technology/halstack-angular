@@ -21,7 +21,7 @@ export class NewSelectPreviewComponent implements OnInit {
     { label: "pepe", value: "11" },
   ];
 
-  array2: OptionGroup[] = [ ////////PREGUNTAR CUANTOS UL TENEMOS QUE PONER EN EL HTML
+  array2: OptionGroup[] = [
     {
       label: "Group label 1",
       options: [
@@ -56,6 +56,8 @@ export class NewSelectPreviewComponent implements OnInit {
       ],
     },
   ];
+
+  arrayValue = ['1','2'];
 
   constructor() { }
 

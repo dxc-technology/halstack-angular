@@ -8,14 +8,10 @@
       class="numberOfSelected"
       *ngIf="service.getSizeSelectedValues() > 0 && multiple"
     >
-      <div
-        *ngIf="service.getSizeSelectedValues() > 0 && multiple"
-        class="sizeContainer"
-      >
+      <div class="sizeContainer">
         {{ service.getSizeSelectedValues() }}
       </div>
       <div
-        *ngIf="service.getSizeSelectedValues() > 0 && multiple"
         class="removeContainer"
         (click)="removeSelectedValues()"
         tabindex="0"
@@ -148,9 +144,6 @@
         }"
       >
         <dxc-new-select-option
-          [ngClass]="{
-            selected: isSelected(op)
-          }"
           [multiple]="multiple"
           [option]="op"
           (optionClick)="handleOptionClick(op, $event)"
@@ -160,9 +153,6 @@
     </ul>
     <dxc-new-select-option
       *ngIf="instanceOfOption(option)"
-      [ngClass]="{
-        selected: isSelected(option)
-      }"
       [multiple]="multiple"
       [option]="option"
       (optionClick)="handleOptionClick(option, $event)"
@@ -202,9 +192,6 @@
         }"
       >
         <dxc-new-select-option
-          [ngClass]="{
-            selected: isSelected(op)
-          }"
           [multiple]="multiple"
           [option]="op"
           [checked]="isValueSelected(op.value)"
@@ -215,9 +202,6 @@
     </ul>
     <dxc-new-select-option
       *ngIf="instanceOfOption(option)"
-      [ngClass]="{
-        selected: isSelected(option)
-      }"
       [multiple]="multiple"
       [option]="option"
       [checked]="isValueSelected(option.value)"

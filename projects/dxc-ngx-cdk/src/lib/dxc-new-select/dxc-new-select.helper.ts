@@ -172,6 +172,9 @@ export class DxcNewSelectHelper {
               :focus-within {
                 outline: none;
               }
+              &.hiddenInput{
+                visibility: hidden;
+              }
             }
           }
           .inputClear {
@@ -271,6 +274,15 @@ export class DxcNewSelectHelper {
             .optionLabel {
               border-bottom: none;
             }
+          }
+          .resultsNotFound{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 28px;
+            flex-direction: row;
+            margin: 2px 16px;
+            box-sizing: border-box;
           }
         }
       }

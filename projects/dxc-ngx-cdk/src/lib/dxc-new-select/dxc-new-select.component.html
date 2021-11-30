@@ -45,23 +45,26 @@
       ></dxc-select-option-selected>
       <input
         #inputRef
-        *ngIf="isInputVisible"
+        [ngClass]="{
+          hiddenInput: !isInputVisible
+        }"
         type="text"
         [id]="id"
-        [placeholder]="placeholder ? placeholder : 'Choose an option'"
+        [placeholder]="setPlaceholder()"
         [name]="name"
         [disabled]="disabled"
         [tabindex]="tabIndex"
         autocomplete="off"
         (ngModelChange)="handleOnChangeInput($event)"
         [ngModel]="inputValue"
+        (blur)="handleBlurInput()"
       />
     </span>
 
     <button
-      *ngIf="inputValue?.length > 0 && !disabled"
+      *ngIf="inputValue?.length > 0 && !disabled && isInputVisible"
       class="inputClear"
-      (click)="handleDefaultClearInput($event)"
+      (mousedown)="handleClearInput($event)"
       [disabled]="disabled"
       aria-label="Clear"
       [tabindex]="tabIndex"
@@ -158,6 +161,9 @@
       (optionClick)="handleOptionClick(option, $event)"
       (optionMouseDown)="handleOptionMouseDown($event)"
     ></dxc-new-select-option>
+  </li>
+  <li *ngIf="(options | filterOptions: inputValue).length === 0">
+    <span class="resultsNotFound">No results found.</span>
   </li>
 </ul>
 

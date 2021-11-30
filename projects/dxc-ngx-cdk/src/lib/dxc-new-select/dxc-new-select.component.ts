@@ -28,7 +28,6 @@ interface SelectProperties {
   placeholder: string;
   helperText: string;
   searchable: boolean;
-  readOnly: boolean;
   multiple: boolean;
   optional: boolean;
   disabled: boolean;
@@ -67,15 +66,6 @@ export class DxcNewSelectComponent implements OnInit {
     this._searchable = coerceBooleanProperty(value);
   }
   private _searchable = false;
-
-  @Input()
-  get readOnly(): boolean {
-    return this._readOnly;
-  }
-  set readOnly(value: boolean) {
-    this._readOnly = coerceBooleanProperty(value);
-  }
-  private _readOnly = false;
 
   @Input()
   get disabled(): boolean {
@@ -129,7 +119,6 @@ export class DxcNewSelectComponent implements OnInit {
     placeholder: "",
     helperText: "",
     searchable: false,
-    readOnly: false,
     multiple: false,
     optional: false,
     disabled: false,
@@ -338,7 +327,7 @@ export class DxcNewSelectComponent implements OnInit {
     this.inputValue = value;
   }
 
-  handleDefaultClearInput(event) {
+  handleClearInput(event) {
     event.preventDefault();
     event.stopPropagation();
     this.setInputValue("");
@@ -356,7 +345,29 @@ export class DxcNewSelectComponent implements OnInit {
     this.isInputVisible = true;
     setTimeout(() => {
       this.inputRef?.nativeElement.focus();
-      this.isOpened = !this.isOpened;
+      if (!this.multiple) {
+        this.isOpened = !this.isOpened;
+      } else {
+        this.isOpened = true;
+      }
     });
+  }
+
+  handleBlurInput() {
+    this.isInputVisible = false;
+  }
+
+  setPlaceholder() {
+    if (this.placeholder) {
+      return this.placeholder;
+    } else {
+      if (this.service.getSelectedValues()?.label && !this.multiple) {
+        return this.service.getSelectedValues()?.label;
+      } else if (!this.multiple && !this.service.getSelectedValues()?.label) {
+        return "Choose an option";
+      } else {
+        return "Choose options";
+      }
+    }
   }
 }

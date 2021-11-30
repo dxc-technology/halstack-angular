@@ -82,6 +82,18 @@ export class DxcNewSelectOptionComponent implements OnInit {
     }
   }
 
+  setSelectedStyles() {
+    return css`
+      background-color: #e6e6e6;
+      :hover {
+        background-color: #cccccc;
+      }
+      :active {
+        background-color: #bfbfbf;
+      }
+    `;
+  }
+
   getDynamicStyle(inputs) {
     return css`
       width: 100%;
@@ -96,14 +108,9 @@ export class DxcNewSelectOptionComponent implements OnInit {
       :active {
         background-color: #e6e6e6;
       }
+      ${inputs.checked && inputs.multiple ? this.setSelectedStyles() : ""}
       &.selected {
-        background-color: #e6e6e6;
-        :hover {
-          background-color: #cccccc;
-        }
-        :active {
-          background-color: #bfbfbf;
-        }
+        ${this.setSelectedStyles()}
       }
       .optionLabel {
         display: flex;

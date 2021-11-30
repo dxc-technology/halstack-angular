@@ -19,6 +19,11 @@ export class NewSelectPreviewComponent implements OnInit {
     { label: "label9", value: "9" },
     { label: "aida", value: "10" },
     { label: "pepe", value: "11" },
+    { label: "pepe", value: "12" },
+    { label: "pepe", value: "13" },
+    { label: "pepe", value: "14" },
+    { label: "pepe", value: "15" },
+    { label: "pepe", value: "16" },
   ];
 
   array2: OptionGroup[] = [

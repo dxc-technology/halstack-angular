@@ -50,7 +50,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
     })}`;
-    this.service.selectedValues.subscribe((values) =>{
+    this.service.selectedValues.subscribe((values) => {
       this.selected = this.isSelected();
     });
   }
@@ -64,18 +64,18 @@ export class DxcNewSelectOptionComponent implements OnInit {
   }
 
   public isValueSelected = (value): boolean =>
-    this.service.selectedValues.getValue() &&
-    this.service.selectedValues.getValue().includes(value);
+    this.service.getSelectedValues() &&
+    this.service.getSelectedValues().includes(value);
 
   isSelected(): boolean {
     if (!this.multiple) {
-      return this.service.selectedValues?.getValue()?.value === this.option.value
+      return this.service.getSelectedValues()?.value === this.option.value
         ? true
         : false;
     } else {
       if (this.service.getSizeSelectedValues() > 0) {
-        const selected = this.service.selectedValues
-          .getValue()
+        const selected = this.service
+          .getSelectedValues()
           .find((op) => op.value === this.option.value);
         return selected !== null && selected !== undefined;
       } else return false;

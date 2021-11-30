@@ -20,4 +20,8 @@ export class SelectService {
       }
       return 0;
   }
+
+  public getSelectedValues(){
+    return this.selectedValues.getValue();
+}
 }

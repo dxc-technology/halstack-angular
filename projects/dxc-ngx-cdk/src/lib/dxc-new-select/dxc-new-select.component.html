@@ -133,7 +133,7 @@
       lastItem: lastOption
     }"
   >
-    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
+    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup" #optionGroupRef>
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
@@ -181,7 +181,7 @@
       lastItem: lastOption
     }"
   >
-    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup">
+    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup" #optionGroupRef>
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>

@@ -8,8 +8,10 @@ import {
   Input,
   OnInit,
   Output,
+  QueryList,
   SimpleChanges,
   ViewChild,
+  ViewChildren,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -150,8 +152,9 @@ export class DxcNewSelectComponent implements OnInit {
   isInputVisible: boolean = true;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
-  @ViewChild("optionRef", { static: false }) optionRef: ElementRef;
+  @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
   @ViewChild("inputRef", { static: false }) inputRef: ElementRef;
+  @ViewChildren("optionGroupRef") optionGroupRef: QueryList<ElementRef>;
 
   @HostListener("document:click", ["$event"])
   clickout(event) {
@@ -198,7 +201,7 @@ export class DxcNewSelectComponent implements OnInit {
       event.stopPropagation();
       this.containerRef.nativeElement.focus();
       if (this.multiple) {
-        const arr: Option[] = this.service.selectedValues.getValue() || [];
+        const arr: Option[] = this.service.getSelectedValues() || [];
         const index = arr.indexOf(option);
         if (index >= 0) {
           arr.splice(index, 1);
@@ -229,8 +232,8 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   public isValueSelected = (value): boolean =>
-    this.service.selectedValues.getValue() &&
-    this.service.selectedValues.getValue().find((op) => op.value === value);
+    this.service.getSelectedValues() &&
+    this.service.getSelectedValues().find((op) => op.value === value);
 
   setDefaultValues() {
     if (this.value) {
@@ -287,22 +290,47 @@ export class DxcNewSelectComponent implements OnInit {
   handleSelectOpen() {
     if (!this.disabled) {
       this.searchable ? this.showInput() : (this.isOpened = !this.isOpened);
-      if (!this.multiple && this.isOpened) {
-        if (this.service.getSizeSelectedValues() === 1) {
-          // if (
-          //   this.optionsRef &&
-          //   this.optionsRef.nativeElement.children[this.focusedOption]
-          // ) {
-          //   this.optionsRef.nativeElement.children[
-          //     this.focusedOption
-          //   ].scrollIntoView({
-          //     behavior: "smooth",
-          //     block: "nearest",
-          //     inline: "nearest",
-          //   });
-          // }
+      this.isOpened && this.handleScrollSelected();
+    }
+  }
+
+  private handleScrollSelected() {
+    const array = this.options;
+    if (array && array?.length > 0 && !this.multiple) {
+      if (this.instanceOfOption(array[0]) && this.optionsRef) {
+        const arrayOption = array as Option[];
+        if (this.service.getSelectedValues()) {
+          const index = arrayOption.indexOf(this.service.getSelectedValues());
+          this.scrollByIndex(this.optionsRef, index);
+        }
+      } else if (!this.instanceOfOption(array[0]) && this.optionGroupRef) {
+        const arrayOption = array as OptionGroup[];
+        if (this.service.getSelectedValues()) {
+          let indexOption, indexGroup;
+          arrayOption.map((op, index) => {
+            const found = this.findOption(
+              op.options,
+              this.service.getSelectedValues().value
+            );
+            if (found !== undefined && found != null) {
+              indexOption = op.options.indexOf(found) + 1;
+              indexGroup = index;
+            }
+          });
+          const optionGroupElement = this.optionGroupRef.toArray()[indexGroup];
+          this.scrollByIndex(optionGroupElement, indexOption);
         }
       }
+    }
+  }
+
+  private scrollByIndex(element, index) {
+    if (element !== undefined && index !== undefined) {
+      element.nativeElement?.children[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
     }
   }
 

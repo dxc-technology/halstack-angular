@@ -14,7 +14,7 @@
   <span class="label">{{ option.label }}</span>
   <span
     class="checkIcon"
-    *ngIf="!multiple && this.service.selectedValues?.getValue()?.value === option.value"
+    *ngIf="!multiple && this.service.getSelectedValues()?.value === option.value"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

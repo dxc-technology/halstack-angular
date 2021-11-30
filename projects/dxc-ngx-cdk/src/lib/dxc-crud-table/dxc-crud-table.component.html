@@ -163,6 +163,6 @@
   </form>
 </dxc-dialog>
  
-<div *ngIf="loaded == true && (dataSource?.data == null || (dataSource?.data != null && dataSource.data.length <= 0))">
+<div tabindex="0" *ngIf="loaded == true && (dataSource?.data == null || (dataSource?.data != null && dataSource.data.length <= 0))">
   <h6 class="no-record p-2 text-center">{{noRecord}}</h6>
 </div>

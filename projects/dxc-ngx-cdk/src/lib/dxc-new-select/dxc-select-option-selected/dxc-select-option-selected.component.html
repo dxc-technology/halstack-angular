@@ -8,7 +8,7 @@
       class="iconLabel"
       [innerHTML]="option.icon | safeHtml"
     ></span>
-    {{ option.label }} <span *ngIf="!last" class="comma">,</span>
+    <span> {{ option.label }} <span *ngIf="!last" class="comma">,</span> </span>
   </span>
   <span
     *ngIf="service.getSizeSelectedValues() == 0 && multiple"

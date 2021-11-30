@@ -59,7 +59,7 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      display: block;
+      display: flex;
       max-width: 100%;
       .selectedOption {
         display: inline-flex;
@@ -69,18 +69,15 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        display: block;
+        display: inline-block;
         .selectedOption {
           text-align: left;
           font: normal normal normal 16px/22px Open Sans;
           letter-spacing: 0px;
           color: ${inputs.disabled ? "#999999" : "#000000"};
           .iconLabel{
-            margin-right: 8px;
             width: 24px;
             height: 24px;
-            display: flex;
-            flex-direction: row-reverse;
           }
           .comma{
             margin-right: 4px;

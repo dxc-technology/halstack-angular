@@ -1,4 +1,4 @@
-<div class="w-100 clearfix" tabindex="0" attr.aria-label="{{globalResource.gridContent?.description}}" (focusin)="gridFocus(true)" (focusout)="gridFocus(false)">
+<div class="w-100 clearfix" tabindex="0" attr.aria-label="{{globalResource.gridContent?.description}}" [attr.aria-describedby]="noRecord" (focusin)="gridFocus(true)" (focusout)="gridFocus(false)">
   <dxc-toolbar [toolBarList]="gridToolbar" [allowAccessKey]="enableAccessKey" class="d-inline-block w-100" searchAccessKey="f"
     (onClick)="crudToolbarClick($event)" [allowSearch]='allowSearch' (searchClick)="gridSearch($event)">
   </dxc-toolbar>
@@ -163,6 +163,6 @@
   </form>
 </dxc-dialog>
  
-<div *ngIf="loaded == true && (dataSource?.data == null || (dataSource?.data != null && dataSource.data.length <= 0))">
+<div id="noRecord" *ngIf="loaded == true && (dataSource?.data == null || (dataSource?.data != null && dataSource.data.length <= 0))">
   <h6 class="no-record p-2 text-center">{{noRecord}}</h6>
 </div>

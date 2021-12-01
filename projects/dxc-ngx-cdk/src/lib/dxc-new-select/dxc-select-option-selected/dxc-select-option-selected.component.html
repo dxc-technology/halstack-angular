@@ -1,25 +1,24 @@
 <div class="labelsContainer" #labelsContainer>
-  <span
-    *ngFor="let option of selectedOptions; last as last"
-    class="selectedOption"
-  >
+  <ng-container *ngIf="!(multiple && searchable)">
     <span
-      *ngIf="option?.icon"
-      class="iconLabel"
-      [innerHTML]="option.icon | safeHtml"
-    ></span>
-    <span> {{ option.label }} <span *ngIf="!last" class="comma">,</span> </span>
-  </span>
+      *ngFor="let option of selectedOptions; last as last"
+      class="selectedOption"
+    >
+      <span
+        *ngIf="option?.icon"
+        class="iconLabel"
+        [innerHTML]="option.icon | safeHtml"
+      ></span>
+      <span>
+        {{ option.label }} <span *ngIf="!last" class="comma">,</span>
+      </span>
+    </span>
+  </ng-container>
+
   <span
-    *ngIf="service.getSizeSelectedValues() == 0 && multiple"
+    *ngIf="service.getSizeSelectedValues() == 0 || (multiple && searchable)"
     class="notSelectedLabel"
   >
-    Choose options
-  </span>
-  <span
-    *ngIf="service.getSizeSelectedValues() == 0 && !multiple"
-    class="notSelectedLabel"
-  >
-    Choose an option
+    {{ placeholder }}
   </span>
 </div>

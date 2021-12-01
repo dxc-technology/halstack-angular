@@ -152,6 +152,7 @@ export class DxcNewSelectComponent implements OnInit {
       if (this.isOpened) {
         this.isOpened = false;
       }
+      this.setInputValue("");
     }
   }
 
@@ -187,7 +188,6 @@ export class DxcNewSelectComponent implements OnInit {
 
   handleOptionClick(option, event) {
     if (!this.disabled) {
-      this.containerRef.nativeElement.focus();
       event.preventDefault();
       event.stopPropagation();
       this.containerRef.nativeElement.focus();
@@ -204,7 +204,6 @@ export class DxcNewSelectComponent implements OnInit {
           this.service.setSelectedValues(arr);
         }
         this.showInput();
-        this.setInputValue("");
         this.isOpened = true;
       } else {
         this.onChange.emit(option.value);
@@ -213,13 +212,16 @@ export class DxcNewSelectComponent implements OnInit {
         }
         this.isOpened = false;
       }
+      this.setInputValue("");
       if (this.searchable && !this.multiple) {
         this.isInputVisible = false;
       }
     }
   }
 
-  removeSelectedValues() {
+  removeSelectedValues(event) {
+    event.preventDefault();
+    event.stopPropagation();
     if(!this.controlled) {
       this.service.setSelectedValues([]);
     }
@@ -344,7 +346,6 @@ export class DxcNewSelectComponent implements OnInit {
       this.inputRef.nativeElement.value = value;
       this.inputValue = value;
     }
-    this.isOpened = false;
   }
 
   private showInput() {

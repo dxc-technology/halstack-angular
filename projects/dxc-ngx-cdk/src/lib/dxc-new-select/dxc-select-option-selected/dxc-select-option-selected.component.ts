@@ -19,6 +19,8 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
 
   @Input() multiple: boolean;
   @Input() disabled: boolean;
+  @Input() searchable: boolean;
+  @Input() placeholder: string;
 
   subscriptor: any;
   selectedOptions: Array<Option> = [];
@@ -41,6 +43,7 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.setPlaceholder();
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -52,9 +55,22 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setPlaceholder();
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
     })}`;
+  }
+
+  private setPlaceholder(){
+    if(this.multiple){
+      if(!this.placeholder) {
+        this.placeholder = "Choose options";
+      }
+    } else {
+      if(!this.placeholder) {
+        this.placeholder = "Choose an option";
+      }
+    }
   }
 
   getDynamicStyle(inputs) {

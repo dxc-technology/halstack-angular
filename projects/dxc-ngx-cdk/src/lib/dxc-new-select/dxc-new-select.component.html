@@ -13,7 +13,7 @@
       </div>
       <div
         class="removeContainer"
-        (click)="removeSelectedValues()"
+        (click)="removeSelectedValues($event)"
         tabindex="0"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -41,7 +41,9 @@
       <dxc-select-option-selected
         [multiple]="multiple"
         [disabled]="disabled"
-        *ngIf="!multiple && !isInputVisible"
+        [placeholder]="placeholder"
+        [searchable]="searchable"
+        *ngIf="!isInputVisible"
       ></dxc-select-option-selected>
       <input
         #inputRef
@@ -214,6 +216,9 @@
       (optionClick)="handleOptionClick(option, $event)"
       (optionMouseDown)="handleOptionMouseDown($event)"
     ></dxc-new-select-option>
+  </li>
+  <li *ngIf="(options | filterOptions: inputValue).length === 0">
+    <span class="resultsNotFound">No results found.</span>
   </li>
 </ul>
 

@@ -6,9 +6,9 @@
 </a>
 
 <span class="float-left"
-  *ngIf="(formatColumns && formatColumns[columnName] && formatColumns[columnName].type == 'link'); then linkBlock else elseif1">
+  *ngIf="(formatColumns && formatColumns[columnName] && formatColumns[columnName].type == 'link'); then linkBlock else mainblock">
 </span>
-<ng-template #elseif1>
+<ng-template #mainblock>
   <ng-container *ngIf="(formatColumns && formatColumns[columnName] && formatColumns[columnName].type == 'button'); then buttonBlock else contentBlock"></ng-container>
 </ng-template>
 <ng-template #linkBlock>
@@ -20,7 +20,7 @@
 </ng-template>
 
 <ng-template #buttonBlock>
-  <button mat-button (click)="rowClick(rowData)">
+  <button mat-button [ngClass]="formatColumns[columnName].class" (click)="rowClick(rowData)">
     <ng-content *ngTemplateOutlet="contentBlock"></ng-content>
   </button> 
   </ng-template>
@@ -38,7 +38,7 @@
       close</mat-icon>
     <span *ngSwitchDefault>
       <div class="crud-col" *ngIf="formatColumns && formatColumns[columnName]">
-        <span [ngClass]="formatColumns[columnName].type == 'button' ? formatColumns[columnName].class : ''" [innerHtml]="rowData[columnName] | formatter:formatColumns[columnName]"></span>        
+        <span [innerHtml]="rowData[columnName] | formatter:formatColumns[columnName]"></span>        
         <span
           *ngIf="formatColumns[columnName].type == 'fixlength' && (rowData[columnName] != null || rowData[columnName] != '') && formatColumns[columnName].format != null && formatColumns[columnName].format['length'] > rowData[columnName].length"
           [matTooltip]="rowData[columnName]">...</span>

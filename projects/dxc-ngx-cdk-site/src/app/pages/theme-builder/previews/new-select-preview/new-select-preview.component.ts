@@ -64,12 +64,15 @@ export class NewSelectPreviewComponent implements OnInit {
 
   arrayValue = ['1','2'];
 
+  value = "1";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onChange(event){
+    this.value = event;
     // console.log("onchange:", event);
   }
 

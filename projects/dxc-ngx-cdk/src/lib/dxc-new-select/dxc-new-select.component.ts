@@ -139,6 +139,7 @@ export class DxcNewSelectComponent implements OnInit {
   isOpened: boolean = false;
   inputValue: string;
   isInputVisible: boolean = true;
+  controlled: boolean = false;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -177,6 +178,7 @@ export class DxcNewSelectComponent implements OnInit {
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
     })}`;
+    this.controlled = this.value || this.value === "" ? true : false;
   }
 
   handleOptionMouseDown(event) {
@@ -198,15 +200,17 @@ export class DxcNewSelectComponent implements OnInit {
           arr.push(option);
         }
         this.onChange.emit(arr);
-        if (!(this.value || this.value === "")) {
+        if (!this.controlled) {
           this.service.setSelectedValues(arr);
         }
         this.showInput();
         this.setInputValue("");
         this.isOpened = true;
       } else {
-        this.service.setSelectedValues(option);
         this.onChange.emit(option.value);
+        if (!this.controlled) {
+          this.service.setSelectedValues(option);
+        }
         this.isOpened = false;
       }
       if (this.searchable && !this.multiple) {
@@ -216,7 +220,9 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   removeSelectedValues() {
-    this.service.setSelectedValues([]);
+    if(!this.controlled) {
+      this.service.setSelectedValues([]);
+    }
     this.onChange.emit([]);
   }
 

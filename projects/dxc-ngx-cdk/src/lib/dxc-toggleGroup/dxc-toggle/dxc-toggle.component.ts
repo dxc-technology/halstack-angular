@@ -48,24 +48,23 @@ export class DxcToggleComponent implements OnInit {
 
   getDynamicStyle(){
     return css`
-      height: 100%;
-      width: 100%;
+
       display: flex;
       background: var(--toggleGroup-unselectedBackgroundColor);
       margin: 4px;
       color: var(--toggleGroup-unselectedFontColor);
-      border-radius: 4px;
-      ${this.label ? `padding-left: var(--toggleGroup-labelPaddingLeft);
-      padding-right: var(--toggleGroup-labelPaddingRight);
-      padding-top: var(--toggleGroup-labelPaddingTop);
-      padding-bottom: var(--toggleGroup-labelPaddingBottom); ` : `
-      padding-left: var(--toggleGroup-iconPaddingLeft);
-      padding-right: var(--toggleGroup-iconPaddingRight);
-      padding-top: var(--toggleGroup-iconPaddingTop);
-      padding-bottom: var(--toggleGroup-iconPaddingBottom);
-      `  }
+      border-radius: var(--toggleGroup-optionBorderRadius);
+      border-width: var(--toggleGroup-optionBorderThickness);
+      border-style: var(--toggleGroup-optionBorderStyle);
 
         .toggleContent {
+
+          ${this.label ? `padding-left: var(--toggleGroup-labelPaddingLeft);
+          padding-right: var(--toggleGroup-labelPaddingRight);` : `
+          padding-left: var(--toggleGroup-iconPaddingLeft);
+          padding-right: var(--toggleGroup-iconPaddingRight);
+          `  }
+
           &:focus,
           &:focus-within,
           &:focus-visible {
@@ -83,12 +82,15 @@ export class DxcToggleComponent implements OnInit {
             font-weight: var(--toggleGroup-fontWeight);
           }
           .icon {
+            ${this.label ? `margin-right: var(--toggleGroup-iconMarginRight);`: `` }
             display: flex;
-            img,
+            height: 24px;
+            overflow: hidden;
+            width: 24px;
             svg {
-              width: var(--toggleGroup-iconSize);
-              height: var(--toggleGroup-iconSize);
               fill: var(--toggleGroup-unselectedFontColor);
+              height: 100%;
+              width: 100%;
             }
           }
         }

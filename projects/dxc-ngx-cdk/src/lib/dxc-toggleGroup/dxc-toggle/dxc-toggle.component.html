@@ -1,4 +1,4 @@
-<div class="toggleContent" (click)="onClickHandler()"  (keypress)="onHandleKeyPressHandler($event)" [tabIndex]="tabIndexValue">
+<div class="toggleContent"  [attr.aria-checked]="selected" role="switch" (click)="onClickHandler()"  (keypress)="onHandleKeyPressHandler($event)" [tabIndex]="tabIndexValue">
   <!-- <img class="icon" [src]="iconSrc" *ngIf="iconSrc" /> -->
   <ng-content select="dxc-toggle-icon"></ng-content>
   <span class="label" *ngIf="label"> {{ label }} </span>

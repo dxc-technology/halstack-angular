@@ -19,6 +19,7 @@ import {
 } from "@angular/cdk/coercion";
 import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
 import { ChangeDetectorRef } from '@angular/core';
+import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: "dxc-togglegroup",
@@ -53,10 +54,15 @@ export class DxcToggleGroupComponent implements OnInit {
   }
   private _tabIndexValue;
   @Input() public margin: any;
+  @Input() label: string;
+  @Input() helperText: string;
+
   @Input() public value: any;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @ContentChildren(DxcToggleComponent)
   toggleGroup: QueryList<DxcToggleComponent>;
+
+  toggleGroupId: string;
 
   selectedOptions = [];
   private isControlled: boolean = false;
@@ -69,7 +75,9 @@ export class DxcToggleGroupComponent implements OnInit {
     margin: null,
     tabIndexValue: 0,
   });
-  constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {}
+  constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {
+      this.toggleGroupId = `file-input${ uuidv4()}`;
+  }
 
   ngOnInit() {
     if (this.value || this.value === "") {
@@ -180,18 +188,16 @@ export class DxcToggleGroupComponent implements OnInit {
     if (this.disabled) {
       return css`
         dxc-toggle {
-          background: var(
-            --toggleGroup-unselectedDisabledBackgroundColor
-          ) !important;
-          color: var(--toggleGroup-unselectedDisabledFontColor) !important;
+          background: var(--toggleGroup-unselectedDisabledBackgroundColor);
+          color: var(--toggleGroup-unselectedDisabledFontColor);
           .toggleContent {
             &:focus {
-              outline: none !important;
+              outline: none;
             }
             outline: none;
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-unselectedDisabledFontColor) !important;
+              fill: var(--toggleGroup-unselectedDisabledFontColor);
             }
           }
           &:hover {
@@ -199,12 +205,11 @@ export class DxcToggleGroupComponent implements OnInit {
           }
           &.selected {
             background: var(
-              --toggleGroup-selectedDisabledBackgroundColor
-            ) !important;
-            color: var(--toggleGroup-selectedDisabledFontColor) !important;
+              --toggleGroup-selectedDisabledBackgroundColor);
+            color: var(--toggleGroup-selectedDisabledFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-selectedDisabledFontColor) !important;
+              fill: var(--toggleGroup-selectedDisabledFontColor);
             }
           }
         }
@@ -212,22 +217,22 @@ export class DxcToggleGroupComponent implements OnInit {
     } else {
       return css`
         dxc-toggle {
+          color: var(--toggleGroup-unselectedFontColor);
           &:hover {
             cursor: pointer;
             background: var(--toggleGroup-unselectedHoverBackgroundColor);
-            color: var(--toggleGroup-unselectedFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-unselectedFontColor) !important;
+              fill: var(--toggleGroup-unselectedFontColor);
             }
           }
           &:active {
             cursor: pointer;
             background: var(--toggleGroup-unselectedActiveBackgroundColor);
-            color: var(--toggleGroup-selectedFontColor);
+            color: #ffffff;
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-selectedFontColor) !important;
+              fill: var(--toggleGroup-selectedFontColor);
             }
           }
           &:focus,
@@ -241,16 +246,16 @@ export class DxcToggleGroupComponent implements OnInit {
             color: var(--toggleGroup-selectedFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-selectedFontColor) !important;
+              fill: var(--toggleGroup-selectedFontColor);
             }
             &:active {
               background: var(
                 --toggleGroup-selectedActiveBackgroundColor
-              ) !important;
+              );
+              color: #ffffff;
             }
             &:hover {
               background: var(--toggleGroup-selectedHoverBackgroundColor);
-              color: var(--toggleGroup-selectedHoverFontColor);
               .icon img,
               .icon svg {
                 fill: var(--toggleGroup-selectedHoverFontColor);
@@ -264,15 +269,47 @@ export class DxcToggleGroupComponent implements OnInit {
 
   setDxcToggleGroupDynamicStyle(inputs: any) {
     return css`
-      display: flex;
-      align-items: center;
-      min-height: 40px;
-      opacity: 1px;
-      width: fit-content;
-      border-radius: 4px;
-      overflow: hidden;
-      ${this.utils.getMargins(inputs.margin)}
-      ${this.disabledStyles()}
+      display: inline-flex;
+      flex-direction: column;
+      ${this.utils.getMargins(inputs.margin)};
+      label{
+        color: ${this.disabled ? 'var(--toggleGroup-disabledLabelFontColor)' : 'var(--toggleGroup-labelFontColor)' };
+        font-family: var(--toggleGroup-labelFontFamily);
+        font-size: var(--toggleGroup-labelFontSize);
+        font-style: var(--toggleGroup-labelFontStyle);
+        font-weight: var(--toggleGroup-labelFontWeight);
+        line-height: var(--toggleGroup-labelLineHeight);
+
+      }
+
+
+    .helperText{
+      color: ${this.disabled ? 'var(--toggleGroup-disabledHelperTextFontColor)' : 'var(--toggleGroup-helperTextFontColor)' };
+      font-family: var(--toggleGroup-helperTextFontFamily);
+      font-size: var(--toggleGroup-helperTextFontSize);
+      font-style: var(--toggleGroup-helperTextFontStyle);
+      font-weight: var(--toggleGroup-helperTextFontWeight);
+      line-height: var(--toggleGroup-helperTextLineHeight);
+    }
+      .toggleContainer{
+        display: inline-flex;
+        flex-direction: row;
+        opacity: 1px;
+        height: calc(48px - 4px - 4px);
+        padding: 4px;
+        margin-top: var(--toggleGroup-containerMarginTop);
+        border-width: var(--toggleGroup-containerBorderThickness);
+        border-style: var(--toggleGroup-containerBorderStyle);
+        border-radius: var(--toggleGroup-containerBorderRadius);
+        border-color: var(--toggleGroup-containerBorderColor);
+        background-color: var(--toggleGroup-containerBackgroundColor);
+        padding: 4px;
+        margin-top: var(--toggleGroup-containerMarginTop);
+        align-items: center;
+        min-height: 40px;
+      }
+
+      ${this.disabledStyles()};
     `;
   }
 }

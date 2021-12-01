@@ -1,1 +1,9 @@
-<ng-content></ng-content>
+  <label *ngIf="label" [htmlFor]="toggleGroupId">
+    {{label}}
+  </label>
+  <span class="helperText" *ngIf="helperText" class="helperText">{{helperText}}</span>
+  <div class="toggleContainer" [id]="toggleGroupId">
+    <ng-content></ng-content>
+  </div>
+
+

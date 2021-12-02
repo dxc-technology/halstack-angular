@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { Option } from "../interfaces/option.interface";
 import { OptionGroup } from "../interfaces/optionGroup.interface";
+import { SelectService } from "../services/select.service";
 
 @Pipe({ name: "filterOptions", pure: true })
 export class FilterOptionsPipe implements PipeTransform {
-  constructor() {}
+  constructor(public service: SelectService) {}
 
   public transform(
     options: Option[] | OptionGroup[],
@@ -13,12 +14,12 @@ export class FilterOptionsPipe implements PipeTransform {
     const value = inputValue?.toLowerCase();
     const array = options;
     let newOptions = [];
-    if (array && array?.length > 0 && this.instanceOfOption(array[0])) {
+    if (array && array?.length > 0 && this.service.instanceOfOption(array[0])) {
       const arrayOption = array as Option[];
       if (arrayOption?.length > 0) {
         newOptions = this.filterOptions(arrayOption, value);
       }
-    } else if(array && array?.length > 0 && !this.instanceOfOption(array[0])){
+    } else if(array && array?.length > 0 && !this.service.instanceOfOption(array[0])){
       const arrayOption = array as OptionGroup[];
       if (arrayOption?.length > 0) {
         arrayOption.map((op) => {
@@ -33,7 +34,9 @@ export class FilterOptionsPipe implements PipeTransform {
         });
       }
     }
-    return (newOptions?.length > 0 || inputValue?.length > 0) ? newOptions : options;
+    const filteredArray = (newOptions?.length > 0 || inputValue?.length > 0) ? newOptions : options;
+    this.service.setFilteredOptions(filteredArray);
+    return filteredArray;
   }
 
   private filterOptions(array: Option[], inputValue: string) {
@@ -45,9 +48,5 @@ export class FilterOptionsPipe implements PipeTransform {
       }
     });
     return newArray;
-  }
-
-  private instanceOfOption(option: any): option is Option {
-    return "value" in option;
   }
 }

@@ -2,7 +2,13 @@
   {{ label }}
 </label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
-<div class="container" tabindex="0" (click)="handleSelectOpen()" #containerRef>
+<div
+  class="container"
+  tabindex="0"
+  (click)="handleSelectOpen()"
+  (keydown)="handleOnKeyDown($event)"
+  #containerRef
+>
   <div class="valueContainer" *ngIf="!searchable || (searchable && multiple)">
     <div
       class="numberOfSelected"
@@ -132,18 +138,18 @@
       let option of options && !searchable
         ? options
         : (options | filterOptions: inputValue);
-      last as lastOption
+      let i = index; last as lastOption
     "
     [ngClass]="{
       lastItem: lastOption
     }"
   >
-    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup" #optionGroupRef>
+    <ul *ngIf="!service.instanceOfOption(option)" class="optionsGroup" #optionGroupRef>
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
       <li
-        *ngFor="let op of option.options; last as lastOptionGroup"
+        *ngFor="let op of option.options; last as lastOptionGroup; let indexOptionGroup = index"
         [ngClass]="{
           lastItemGroup: lastOption && lastOptionGroup
         }"
@@ -151,17 +157,21 @@
         <dxc-new-select-option
           [multiple]="multiple"
           [option]="op"
+          [focused]="focusedOption.option === indexOptionGroup && focusedOption.group === i"
           (optionClick)="handleOptionClick(op, $event)"
           (optionMouseDown)="handleOptionMouseDown($event)"
+          (mouseenter)="handleOnHover(indexOptionGroup, i)"
         ></dxc-new-select-option>
       </li>
     </ul>
     <dxc-new-select-option
-      *ngIf="instanceOfOption(option)"
+      *ngIf="service.instanceOfOption(option)"
       [multiple]="multiple"
       [option]="option"
+      [focused]="focusedOption.option === i"
       (optionClick)="handleOptionClick(option, $event)"
       (optionMouseDown)="handleOptionMouseDown($event)"
+      (mouseenter)="handleOnHover(i)"
     ></dxc-new-select-option>
   </li>
   <li *ngIf="(options | filterOptions: inputValue).length === 0">
@@ -183,18 +193,18 @@
       let option of options && !searchable
         ? options
         : (options | filterOptions: inputValue);
-      last as lastOption
+      let i = index; last as lastOption
     "
     [ngClass]="{
       lastItem: lastOption
     }"
   >
-    <ul *ngIf="!instanceOfOption(option)" class="optionsGroup" #optionGroupRef>
+    <ul *ngIf="!service.instanceOfOption(option)" class="optionsGroup" #optionGroupRef>
       <li>
         <span class="groupLabel">{{ option.label }}</span>
       </li>
       <li
-        *ngFor="let op of option.options; last as lastOptionGroup"
+        *ngFor="let op of option.options; last as lastOptionGroup; let indexOptionGroup = index"
         [ngClass]="{
           lastItemGroup: lastOption && lastOptionGroup
         }"
@@ -203,18 +213,22 @@
           [multiple]="multiple"
           [option]="op"
           [checked]="isValueSelected(op.value)"
+          [focused]="focusedOption.option === indexOptionGroup && focusedOption.group === i"
           (optionClick)="handleOptionClick(op, $event)"
           (optionMouseDown)="handleOptionMouseDown($event)"
+          (mouseenter)="handleOnHover(indexOptionGroup, i)"
         ></dxc-new-select-option>
       </li>
     </ul>
     <dxc-new-select-option
-      *ngIf="instanceOfOption(option)"
+      *ngIf="service.instanceOfOption(option)"
       [multiple]="multiple"
       [option]="option"
       [checked]="isValueSelected(option.value)"
+      [focused]="focusedOption.option === i"
       (optionClick)="handleOptionClick(option, $event)"
       (optionMouseDown)="handleOptionMouseDown($event)"
+      (mouseenter)="handleOnHover(i)"
     ></dxc-new-select-option>
   </li>
   <li *ngIf="(options | filterOptions: inputValue).length === 0">

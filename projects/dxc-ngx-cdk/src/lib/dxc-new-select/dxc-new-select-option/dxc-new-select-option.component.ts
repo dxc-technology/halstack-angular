@@ -19,10 +19,12 @@ import { css } from "emotion";
 export class DxcNewSelectOptionComponent implements OnInit {
   @HostBinding("class") className;
   @HostBinding("class.selected") selected = false;
+  @HostBinding("class.focused") isfocused = false;
 
   @Input() option: Option;
   @Input() multiple: boolean;
   @Input() checked: boolean;
+  @Input() focused: boolean;
 
   @Output() optionClick: EventEmitter<any> = new EventEmitter();
   @Output() optionMouseDown: EventEmitter<any> = new EventEmitter();
@@ -36,6 +38,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
   constructor(public service: SelectService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.isfocused = this.focused;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -111,6 +114,12 @@ export class DxcNewSelectOptionComponent implements OnInit {
       ${inputs.checked && inputs.multiple ? this.setSelectedStyles() : ""}
       &.selected {
         ${this.setSelectedStyles()}
+        &.focused {
+          background-color: #cccccc;
+        }
+      }
+      &.focused {
+        background-color: #f2f2f2;
       }
       .optionLabel {
         display: flex;

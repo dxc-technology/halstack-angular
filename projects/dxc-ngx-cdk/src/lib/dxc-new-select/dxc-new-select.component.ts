@@ -20,6 +20,7 @@ import { Option } from "./interfaces/option.interface";
 import { OptionGroup } from "./interfaces/optionGroup.interface";
 import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
+import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 
 interface SelectProperties {
   label: string;
@@ -140,6 +141,7 @@ export class DxcNewSelectComponent implements OnInit {
   inputValue: string;
   isInputVisible: boolean = true;
   controlled: boolean = false;
+  focusedOption: VisualOptionFocus;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -180,6 +182,22 @@ export class DxcNewSelectComponent implements OnInit {
       ...this.defaultInputs.getValue(),
     })}`;
     this.controlled = this.value || this.value === "" ? true : false;
+    this.service.visualFocused.subscribe((value) => {
+      this.focusedOption = value;
+      if (value.group === undefined || value.group === null) {
+        if (
+          this.optionsRef &&
+          this.optionsRef.nativeElement.children[value.option]
+        ) {
+          this.scrollByIndex(this.optionsRef, value.option);
+        }
+      } else {
+        if(this.optionGroupRef){
+          const optionGroupElement = this.optionGroupRef?.toArray()[value.group];
+          optionGroupElement && this.scrollByIndex(optionGroupElement, value.option + 1);
+        }
+      }
+    });
   }
 
   handleOptionMouseDown(event) {
@@ -222,7 +240,7 @@ export class DxcNewSelectComponent implements OnInit {
   removeSelectedValues(event) {
     event.preventDefault();
     event.stopPropagation();
-    if(!this.controlled) {
+    if (!this.controlled) {
       this.service.setSelectedValues([]);
     }
     this.onChange.emit([]);
@@ -253,7 +271,7 @@ export class DxcNewSelectComponent implements OnInit {
   findOptionByValue(value: any) {
     let selected;
     const array = this.options;
-    if (this.instanceOfOption(this.options[0])) {
+    if (this.service.instanceOfOption(this.options[0])) {
       const arrayOption = array as Option[];
       if (arrayOption?.length > 0) {
         selected = this.findOption(arrayOption, value);
@@ -280,10 +298,6 @@ export class DxcNewSelectComponent implements OnInit {
     });
   }
 
-  instanceOfOption(option: any): option is Option {
-    return "value" in option;
-  }
-
   handleSelectOpen() {
     if (!this.disabled) {
       this.searchable ? this.showInput() : (this.isOpened = !this.isOpened);
@@ -294,13 +308,16 @@ export class DxcNewSelectComponent implements OnInit {
   private handleScrollSelected() {
     const array = this.options;
     if (array && array?.length > 0 && !this.multiple) {
-      if (this.instanceOfOption(array[0]) && this.optionsRef) {
+      if (this.service.instanceOfOption(array[0]) && this.optionsRef) {
         const arrayOption = array as Option[];
         if (this.service.getSelectedValues()) {
           const index = arrayOption.indexOf(this.service.getSelectedValues());
           this.scrollByIndex(this.optionsRef, index);
         }
-      } else if (!this.instanceOfOption(array[0]) && this.optionGroupRef) {
+      } else if (
+        !this.service.instanceOfOption(array[0]) &&
+        this.optionGroupRef
+      ) {
         const arrayOption = array as OptionGroup[];
         if (this.service.getSelectedValues()) {
           let indexOption, indexGroup;
@@ -376,5 +393,41 @@ export class DxcNewSelectComponent implements OnInit {
         return "Choose options";
       }
     }
+  }
+
+  handleOnKeyDown(event) {
+    if (this.isOpened) {
+      switch (event.key) {
+        case "ArrowDown":
+          event.preventDefault();
+          this.service.onArrowDown();
+          // this.handleOnClick();
+          break;
+        case "ArrowUp":
+          event.preventDefault();
+          this.service.onArrowUp();
+          // this.handleOnFocus();
+          break;
+        // case "Enter":
+        //   this.handleEnterKey();
+        //   break;
+        // case "Escape":
+        //   if (this.suggestions && this.suggestions.length) {
+        //     event.preventDefault();
+        //     this.handleDefaultClearAction();
+        //     this.handleOnClose();
+        //   }
+        //   break;
+      }
+    }
+  }
+
+  handleOnHover(indexOption: number, indexGroup?: number) {
+    this.service.instanceOfOption(this.options[0])
+      ? this.service.setVisualFocused({ option: indexOption })
+      : this.service.setVisualFocused({
+          option: indexOption,
+          group: indexGroup,
+        });
   }
 }

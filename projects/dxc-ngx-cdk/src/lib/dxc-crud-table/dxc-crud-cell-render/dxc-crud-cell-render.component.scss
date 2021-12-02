@@ -10,3 +10,9 @@
 .red-icon {
   color: red;
 }
+
+.crudLinkBtn .crud-col span
+{
+  text-decoration: underline;
+  color: var(--icon_color);
+}

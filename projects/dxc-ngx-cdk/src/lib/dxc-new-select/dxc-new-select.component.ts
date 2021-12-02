@@ -153,6 +153,7 @@ export class DxcNewSelectComponent implements OnInit {
     if (!this.ref.nativeElement.contains(event.target)) {
       if (this.isOpened) {
         this.isOpened = false;
+        this.setInitialFocusOption();
       }
       this.setInputValue("");
     }
@@ -230,6 +231,7 @@ export class DxcNewSelectComponent implements OnInit {
         }
         this.isOpened = false;
       }
+      this.setInitialFocusOption();
       this.setInputValue("");
       if (this.searchable && !this.multiple) {
         this.isInputVisible = false;
@@ -302,6 +304,7 @@ export class DxcNewSelectComponent implements OnInit {
     if (!this.disabled) {
       this.searchable ? this.showInput() : (this.isOpened = !this.isOpened);
       this.isOpened && this.handleScrollSelected();
+      this.setInitialFocusOption();
     }
   }
 
@@ -374,6 +377,7 @@ export class DxcNewSelectComponent implements OnInit {
       } else {
         this.isOpened = true;
       }
+      this.setInitialFocusOption();
     });
   }
 
@@ -401,16 +405,14 @@ export class DxcNewSelectComponent implements OnInit {
         case "ArrowDown":
           event.preventDefault();
           this.service.onArrowDown();
-          // this.handleOnClick();
           break;
         case "ArrowUp":
           event.preventDefault();
           this.service.onArrowUp();
-          // this.handleOnFocus();
           break;
-        // case "Enter":
-        //   this.handleEnterKey();
-        //   break;
+        case "Enter":
+          this.handleEnterKey(event);
+          break;
         // case "Escape":
         //   if (this.suggestions && this.suggestions.length) {
         //     event.preventDefault();
@@ -418,6 +420,12 @@ export class DxcNewSelectComponent implements OnInit {
         //     this.handleOnClose();
         //   }
         //   break;
+      }
+    } 
+    if(this.focusedOption.option === -1 && this.focusedOption.group === -1){
+      if(event.key === "Enter"){
+        this.isOpened = !this.isOpened;
+        this.setInitialFocusOption();
       }
     }
   }
@@ -429,5 +437,28 @@ export class DxcNewSelectComponent implements OnInit {
           option: indexOption,
           group: indexGroup,
         });
+  }
+
+  handleEnterKey(event){
+    if (this.focusedOption.option !== -1) {
+      let arrayOption, option;
+      if(this.service.instanceOfOption(this.options[0])){
+        arrayOption = this.service.filteredOptions.getValue() as Option[];
+        option = arrayOption[this.focusedOption.option];
+      } else{
+        arrayOption = this.service.filteredOptions.getValue() as OptionGroup[];
+        option = arrayOption[this.focusedOption.group].options[this.focusedOption.option];
+      }
+      this.handleOptionClick(option, event);
+    } 
+  }
+
+  setInitialFocusOption(){
+    if(!this.isOpened){
+      this.service.setVisualFocused({
+        option: -1,
+        group: -1,
+      });
+    }
   }
 }

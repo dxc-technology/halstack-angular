@@ -172,7 +172,7 @@ export class DxcNewSelectHelper {
               :focus-within {
                 outline: none;
               }
-              &.hiddenInput{
+              &.hiddenInput {
                 visibility: hidden;
               }
             }
@@ -275,14 +275,30 @@ export class DxcNewSelectHelper {
               border-bottom: none;
             }
           }
-          .resultsNotFound{
+          &.resultsNotFound {
             width: 100%;
             display: flex;
             align-items: center;
             height: 28px;
             flex-direction: row;
-            margin: 2px 16px;
+            padding: 0px 16px;
             box-sizing: border-box;
+            .notFoundIcon{
+              height: 100%;
+              align-items: center;
+              width: 24px;
+              justify-content: center;
+              margin-right: 4px;
+              display: flex;
+              svg{
+                fill: #666666;
+                height: 18px;
+                width: 18px;
+              }
+            }
+            span{
+              color: #666666;
+            }
           }
         }
       }

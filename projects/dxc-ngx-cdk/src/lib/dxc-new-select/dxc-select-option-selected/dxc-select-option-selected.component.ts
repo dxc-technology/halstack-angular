@@ -77,9 +77,6 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
     return css`
       display: flex;
       max-width: 100%;
-      .selectedOption {
-        display: inline-flex;
-      }
       div.labelsContainer {
         width: 100%;
         overflow: hidden;
@@ -88,12 +85,16 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
         display: inline-block;
         .selectedOption {
           text-align: left;
+          display: inline-flex;
+          align-items: center;
           font: normal normal normal 16px/22px Open Sans;
           letter-spacing: 0px;
           color: ${inputs.disabled ? "#999999" : "#000000"};
           .iconLabel{
             width: 24px;
             height: 24px;
+            display: inline-flex;
+            align-items: center;
           }
           .comma{
             margin-right: 4px;

@@ -105,7 +105,6 @@ export class DxcNewSelectOptionComponent implements OnInit {
       align-items: center;
       height: 32px;
       :hover {
-        background-color: #f2f2f2;
         cursor: pointer;
       }
       :active {

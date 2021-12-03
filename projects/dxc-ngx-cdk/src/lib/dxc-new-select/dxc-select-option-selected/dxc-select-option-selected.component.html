@@ -9,7 +9,7 @@
         class="iconLabel"
         [innerHTML]="option.icon | safeHtml"
       ></span>
-      <span>
+      <span class="selectedLabel">
         {{ option.label }} <span *ngIf="!last" class="comma">,</span>
       </span>
     </span>

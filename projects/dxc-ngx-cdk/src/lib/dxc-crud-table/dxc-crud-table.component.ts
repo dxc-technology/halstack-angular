@@ -339,6 +339,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
 
   reload = () => {
     this.selectedRowCount = 0;
+    this.dataSource.data.forEach(row => { row['isSelected'] = false });
     this.bindOptions();
   }
 

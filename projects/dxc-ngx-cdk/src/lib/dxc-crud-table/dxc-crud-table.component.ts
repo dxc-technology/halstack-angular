@@ -606,11 +606,16 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     if (this.sourceRequest) {
       this.getData();
     } else {
+      let isFormDirty = this.parentForm?.dirty;
       this.dataSource.data = [...this.data];
       this.dataSource.paginator = this.paginator;
       setTimeout(() => {this.loaded = true;}, 200);
       this.setTableHeight();
       this.onChangeRegister(this.dataSource.data);
+      if(isFormDirty != true){
+        this.parentForm.markAsPristine();
+        this.parentForm.markAsUntouched();
+      }
     }
     if (this.displayedColumns.length === 0) {
       //// future Implementation

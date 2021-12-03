@@ -413,13 +413,13 @@ export class DxcNewSelectComponent implements OnInit {
         case "Enter":
           this.handleEnterKey(event);
           break;
-        // case "Escape":
-        //   if (this.suggestions && this.suggestions.length) {
-        //     event.preventDefault();
-        //     this.handleDefaultClearAction();
-        //     this.handleOnClose();
-        //   }
-        //   break;
+        case "Escape":
+          event.preventDefault();
+          this.isOpened = false;
+          this.setInitialFocusOption();
+          this.setInputValue("");
+          this.inputRef?.nativeElement?.blur();
+          break;
       }
     } 
     if(this.focusedOption.option === -1 && this.focusedOption.group === -1){

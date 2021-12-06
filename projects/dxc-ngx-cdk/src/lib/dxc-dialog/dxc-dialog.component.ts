@@ -191,7 +191,7 @@ export class DxcDialogComponent implements AfterViewInit {
               }
             }
             .content {
-              overflow-y: initial;
+              overflow-y: auto;
               ::-webkit-scrollbar {
                 width: 3px;
               }

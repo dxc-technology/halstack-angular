@@ -980,7 +980,6 @@ export class GridComponent extends DxcBaselookupComponent<any> implements AfterV
       this.gridOptions.rowData = response._embedded[this.node];
       ///this.gridId = response.additionalParams['gridId'];
 
-
       if (response._links !== null &&
         response._links !== undefined &&
         response._links.self !== null &&
@@ -998,13 +997,14 @@ export class GridComponent extends DxcBaselookupComponent<any> implements AfterV
       /// this.additionalParams = response.additionalParams;
       ///this.commonServiceEvent.gridAdditonalParams(this.gridId, response.additionalParams);
       this.changeDetecorRef.markForCheck();
-      if (this.gridApi.api && this.gridApi.api.sizeColumnsToFit) {
-        this.gridApi.api.sizeColumnsToFit();
+      if (this.gridApi && this.gridApi.sizeColumnsToFit) {
+        this.gridApi.sizeColumnsToFit();
       }
       setTimeout(() => {
-        this.gridApi.api.resetRowHeights();
+        this.gridApi.resetRowHeights();
+		this.watcherSubscription.unsubscribe();
       }, 500);
-      this.watcherSubscription.unsubscribe();
+      
     });
   }
 

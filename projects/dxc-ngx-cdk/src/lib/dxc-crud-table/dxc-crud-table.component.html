@@ -27,7 +27,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="expandedDetail">
-        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="pr-3">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="pr-3 expandedDetail-row-backgound">
           <div class="example-element-detail" *ngIf="element == expandedElement && editMode == 'inline' "
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <form [formGroup]="claimsForm" #crudForm class="form-width form-height crud-scroll edit-form" tabindex="0"

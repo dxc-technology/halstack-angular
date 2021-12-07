@@ -18,6 +18,7 @@ import { DateHelper } from '../helpers/date/date-helper';
 import { Button } from './../models/startup/configuration.model';
 import { delay, filter } from 'rxjs/operators';
 import { TextEditorService } from '../dxc-text-editor/text-editor/text-editor.service';
+import { I } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'dxc-crud-table',
@@ -53,6 +54,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   @Input() columns: any
   @Input() editableColumns: any;
   @Input() formatColumns: any;
+  @Input() styleColumns: any = {};
   @Input() sourceRequest: IRequest;
   @Input() uniqueIdentifier = '';
   @Input() resource: { [key: string]: string };
@@ -310,8 +312,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
             this.confirmationDialogService.confirm(options);
             this.confirmationDialogService.confirmed().subscribe(confirmed => {
               if (confirmed) {
-                selectedRows.forEach(row => {
-                  this.deleteRow(row, deleteRequest);
+                selectedRows.forEach((row, index) => {
+                  this.deleteRow(row, deleteRequest, (selectedRows.length - 1 == index));
                 });
               }
             });
@@ -358,7 +360,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.action.emit(row);
   }
 
-  deleteRow = (row, deleteRequest) => {
+  deleteRow = (row, deleteRequest, showMessage) => {
     if (deleteRequest) {
       this.helper.deleteData(deleteRequest, this.uniqueIdentifier, row).subscribe((response) => {
         if (response == true) {
@@ -368,9 +370,12 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
           if (this.parentForm.dirty) {
             this.formControlUpdater.emit({ action: EAction.DELETEANDSAVE, columns: this.editableFields, data: row });
           } else {
+            if (showMessage == true) {
             this.messageService.Success(this.resource.deleteSuccess);
             this.formControlUpdater.emit({ action: EAction.DELETEANDSAVE, columns: this.editableFields, data: row });
+            }
           }
+          this.selectedRowCount = this.dataSource.data.filter(row => { return row['isSelected'] == true }).length;
         } else {
           this.messageService.Error(response);
         }

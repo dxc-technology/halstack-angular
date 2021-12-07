@@ -22,7 +22,7 @@
         <td mat-cell *matCellDef="let element; index as j" class="cell-position cell-focus pr-3 px-2"
           id="table-cell{{j}}">
           <dxc-crud-cell-render [rowData]="element" class="d-flex" [columnName]="column" [gridResource]="resource"
-            [isFirst]="first" [rowSelection]="rowSelection" [resource]="globalResource" [formatColumns]="formatColumns"
+            [isFirst]="first" [rowSelection]="rowSelection" [resource]="globalResource" [styleColumns]="styleColumns" [formatColumns]="formatColumns"
             (onRowClick)="onRowClick($event)" (onRowSelect)="rowChecked($event)"></dxc-crud-cell-render>
         </td>
       </ng-container>
@@ -122,8 +122,8 @@
     [attr.aria-label]="globalResource.selectAllRowMessage?.description" (click)="selectAllRow()">
     <span class="position-absolute font-size-25 left-0">check_box_outline_blank</span>
     <span class="position-absolute font-size-25 left-0"
-      *ngIf="selectedRowCount > 0 && selectedRowCount != dataSource.data?.length">remove</span>
-    <span class="position-absolute font-size-25 left-0" *ngIf="selectedRowCount == dataSource.data?.length">done</span>
+      *ngIf="selectedRowCount > 0 && dataSource.data?.length > 0 && selectedRowCount != dataSource.data?.length">remove</span>
+    <span class="position-absolute font-size-25 left-0" *ngIf="selectedRowCount == dataSource.data?.length && dataSource.data?.length > 0">done</span>
   </a>
   <h6 class="text-center d-md-none d-sm-block">
      <b>{{globalResource.selectAllRow?.description}}</b>
@@ -163,6 +163,6 @@
   </form>
 </dxc-dialog>
  
-<div tabindex="0" *ngIf="loaded == true && (dataSource?.data == null || (dataSource?.data != null && dataSource.data.length <= 0))">
+<div *ngIf="loaded == true && (dataSource?.data == null || (dataSource?.data != null && dataSource.data.length <= 0))">
   <h6 class="no-record p-2 text-center">{{noRecord}}</h6>
 </div>

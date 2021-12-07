@@ -13,6 +13,7 @@ export class DxcCrudCellRenderComponent implements OnInit {
   @Input() gridResource: { [key: string]: string };
   @Input() columnName: string = '';
   @Input() formatColumns: any;
+  @Input() styleColumns: any;
   @Input() isFirst: boolean = false;
   @Input() rowSelection:  'single' | 'multi' | 'none' = 'none'; 
   @Output() onRowClick = new EventEmitter<any>();

@@ -90,7 +90,7 @@ export class DxcUserLookupComponent extends DxcBaselookupComponent<IUsers | Arra
   }
   ngOnInit() {
     this.UpdateLookupOptions();
-    this.GetLookupResources();
+    
   }
 
   registerOnChangeFn = (value) => { };
@@ -116,6 +116,7 @@ export class DxcUserLookupComponent extends DxcBaselookupComponent<IUsers | Arra
         }
         break;
       case EAction.PANELOPEN:
+	    this.GetLookupResources();
         this.selectedIndex = 0;
         break;
     }

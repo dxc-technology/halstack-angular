@@ -487,7 +487,6 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
 
   search = () => {
     if (this.sidenav.opened) {
-      this.isSearch = true;
       let params = new HttpParams();
       params = params.append('format', this.currentView == View.TREE ? 'ux' : 'list');
       //Start Not required while search

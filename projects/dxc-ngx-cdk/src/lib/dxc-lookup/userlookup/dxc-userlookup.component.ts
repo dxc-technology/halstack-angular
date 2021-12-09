@@ -286,9 +286,11 @@ export class DxcUserLookupComponent extends DxcBaselookupComponent<IUsers | Arra
   }
 
   private GetLookupResources(): void {
+    if(this.lookupResourceRequest != null){
     this.lookupService.getResource(this.lookupResourceRequest).subscribe((resource: any) => {
       if (resource && resource._embedded && resource._embedded.pageResources)
         this.resources = resource._embedded.pageResources;
     });
+   }
   }
 }

@@ -487,6 +487,7 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
 
   search = () => {
     if (this.sidenav.opened) {
+      this.isSearch = true;
       let params = new HttpParams();
       params = params.append('format', this.currentView == View.TREE ? 'ux' : 'list');
       //Start Not required while search
@@ -620,7 +621,6 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
 
   searchClickFn = (event) => {
     if (this.sidenav.opened) {
-      this.isSearch = true;
     switch (event) {
       case SEARCHEVENT.DEFAULTLEVEl:
         // tslint:disable-next-line: prefer-for-of

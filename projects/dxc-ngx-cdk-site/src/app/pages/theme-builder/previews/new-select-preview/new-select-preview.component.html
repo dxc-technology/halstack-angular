@@ -7,16 +7,16 @@
         helperText="HelperText"
         margin="xsmall"
         [options]="array1"
-        [value]="value"
         (onChange)="onChange($event)"
+        [optional]="true"
       >
       </dxc-new-select>
       <dxc-new-select
         label="Label"
         helperText="HelperText"
         margin="xsmall"
-        [options]="array1"
-        [value]="value"
+        [options]="array2"
+        [optional]="true"
         (onChange)="onChange($event)"
       ></dxc-new-select>
     </tbuilder-component-mode>
@@ -28,6 +28,7 @@
         searchable="true"
         margin="xsmall"
         [options]="array1"
+        [optional]="true"
       >
       </dxc-new-select>
       <dxc-new-select

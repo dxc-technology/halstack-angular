@@ -993,7 +993,7 @@ export const componentTokens = {
   "--newSelect-fontFamily": "Open Sans, sans-serif",
   "--newSelect-labelFontSize": globalTokens.type_scale_03,
   "--newSelect-labelFontStyle": "normal",
-  "--newSelect-labelFontWeight": globalTokens.type_regular,
+  "--newSelect-labelFontWeight": globalTokens.type_semibold,
   "--newSelect-labelFontColor": globalTokens.hal_black,
   "--newSelect-labelFontColorOnDark": globalTokens.hal_white,
   "--newSelect-helperTextFontColor": globalTokens.hal_black,

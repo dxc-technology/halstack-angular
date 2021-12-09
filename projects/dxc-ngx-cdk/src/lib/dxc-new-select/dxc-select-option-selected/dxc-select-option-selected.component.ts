@@ -99,6 +99,9 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           .comma{
             margin-right: 4px;
           }
+          .selectedLabel{
+            margin-left: 0.25rem;
+          }
         }
         .notSelectedLabel {
           text-align: left;

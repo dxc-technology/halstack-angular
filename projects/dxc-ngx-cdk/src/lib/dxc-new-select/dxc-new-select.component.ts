@@ -142,6 +142,7 @@ export class DxcNewSelectComponent implements OnInit {
   isInputVisible: boolean = true;
   controlled: boolean = false;
   focusedOption: VisualOptionFocus;
+  optionalOption: Option = { label: "Choose an option", value: "" };
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -171,6 +172,7 @@ export class DxcNewSelectComponent implements OnInit {
       return result;
     }, {});
     this.setDefaultValues();
+    this.setInitialFocusOption();
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
@@ -185,17 +187,24 @@ export class DxcNewSelectComponent implements OnInit {
     this.controlled = this.value || this.value === "" ? true : false;
     this.service.visualFocused.subscribe((value) => {
       this.focusedOption = value;
-      if (value.group === undefined || value.group === null) {
+      if (this.focusedOption.option === -1) {
+        this.scrollByIndex(this.optionsRef, 0);
+      } else if (
+        (value.group === undefined || value.group === null) &&
+        !(this.focusedOption.option === -1)
+      ) {
         if (
           this.optionsRef &&
           this.optionsRef.nativeElement.children[value.option]
         ) {
-          this.scrollByIndex(this.optionsRef, value.option);
+          this.scrollByIndex(this.optionsRef, value.option + 1);
         }
       } else {
-        if(this.optionGroupRef){
-          const optionGroupElement = this.optionGroupRef?.toArray()[value.group];
-          optionGroupElement && this.scrollByIndex(optionGroupElement, value.option + 1);
+        if (this.optionGroupRef) {
+          const optionGroupElement =
+            this.optionGroupRef?.toArray()[value.group];
+          optionGroupElement &&
+            this.scrollByIndex(optionGroupElement, value.option + 1);
         }
       }
     });
@@ -207,9 +216,7 @@ export class DxcNewSelectComponent implements OnInit {
 
   handleOptionClick(option, event) {
     if (!this.disabled) {
-      event.preventDefault();
-      event.stopPropagation();
-      this.containerRef.nativeElement.focus();
+      this.focusContainer(event);
       if (this.multiple) {
         const arr: Option[] = this.service.getSelectedValues() || [];
         const index = arr.indexOf(option);
@@ -239,6 +246,14 @@ export class DxcNewSelectComponent implements OnInit {
     }
   }
 
+  focusContainer(event) {
+    if (!this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.containerRef.nativeElement.focus();
+    }
+  }
+
   removeSelectedValues(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -251,6 +266,10 @@ export class DxcNewSelectComponent implements OnInit {
   public isValueSelected = (value): boolean =>
     this.service.getSelectedValues() &&
     this.service.getSelectedValues().find((op) => op.value === value);
+
+  public isFocused = (indexGroup, indexOption): boolean =>
+    this.focusedOption.option === indexOption &&
+    this.focusedOption.group === indexGroup;
 
   setDefaultValues() {
     if (this.value) {
@@ -311,18 +330,26 @@ export class DxcNewSelectComponent implements OnInit {
   private handleScrollSelected() {
     const array = this.options;
     if (array && array?.length > 0 && !this.multiple) {
-      if (this.service.instanceOfOption(array[0]) && this.optionsRef) {
+      if (this.service?.getSelectedValues()?.value === "" && this.optional) {
+        this.service.setVisualFocused({
+          group: -1,
+          option: -1,
+        });
+      } else if (this.service.instanceOfOption(array[0]) && this.optionsRef) {
         const arrayOption = array as Option[];
         if (this.service.getSelectedValues()) {
           const index = arrayOption.indexOf(this.service.getSelectedValues());
-          this.scrollByIndex(this.optionsRef, index);
+          this.service.setVisualFocused({
+            group: -1,
+            option: index,
+          });
         }
       } else if (
         !this.service.instanceOfOption(array[0]) &&
         this.optionGroupRef
       ) {
-        const arrayOption = array as OptionGroup[];
         if (this.service.getSelectedValues()) {
+          const arrayOption = array as OptionGroup[];
           let indexOption, indexGroup;
           arrayOption.map((op, index) => {
             const found = this.findOption(
@@ -330,12 +357,14 @@ export class DxcNewSelectComponent implements OnInit {
               this.service.getSelectedValues().value
             );
             if (found !== undefined && found != null) {
-              indexOption = op.options.indexOf(found) + 1;
+              indexOption = op.options.indexOf(found);
               indexGroup = index;
             }
           });
-          const optionGroupElement = this.optionGroupRef.toArray()[indexGroup];
-          this.scrollByIndex(optionGroupElement, indexOption);
+          this.service.setVisualFocused({
+            group: indexGroup,
+            option: indexOption,
+          });
         }
       }
     }
@@ -400,18 +429,29 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   handleOnKeyDown(event) {
-    if (this.isOpened) {
+    if (!this.isOpened) {
       switch (event.key) {
         case "ArrowDown":
           event.preventDefault();
-          this.service.onArrowDown();
+          this.isOpened = true;
+          this.service.onArrowDown(this.optional);
+          break;
+      }
+    } else {
+      switch (event.key) {
+        case "ArrowDown":
+          event.preventDefault();
+          this.service.onArrowDown(this.optional);
           break;
         case "ArrowUp":
           event.preventDefault();
-          this.service.onArrowUp();
+          this.service.onArrowUp(this.optional);
           break;
         case "Enter":
           this.handleEnterKey(event);
+          break;
+        case "Tab":
+          this.isOpened = false;
           break;
         case "Escape":
           event.preventDefault();
@@ -421,44 +461,51 @@ export class DxcNewSelectComponent implements OnInit {
           this.inputRef?.nativeElement?.blur();
           break;
       }
-    } 
-    if(this.focusedOption.option === -1 && this.focusedOption.group === -1){
-      if(event.key === "Enter"){
-        this.isOpened = !this.isOpened;
-        this.setInitialFocusOption();
-      }
     }
   }
 
-  handleOnHover(indexOption: number, indexGroup?: number) {
-    this.service.instanceOfOption(this.options[0])
-      ? this.service.setVisualFocused({ option: indexOption })
-      : this.service.setVisualFocused({
-          option: indexOption,
-          group: indexGroup,
-        });
+  handleOnHover(indexOption?: number, indexGroup?: number, optional?: boolean) {
+    const isOption = this.service.instanceOfOption(this.options[0]);
+    this.service.setVisualFocused({
+      option: optional ? -1 : indexOption,
+      group: isOption || optional ? -1 : indexGroup,
+    });
   }
 
-  handleEnterKey(event){
-    if (this.focusedOption.option !== -1) {
+  handleEnterKey(event) {
+    if (this.focusedOption.option === -1 && this.optional) {
+      this.handleOptionClick(this.optionalOption, event);
+    } else if (this.focusedOption.option > -1) {
       let arrayOption, option;
-      if(this.service.instanceOfOption(this.options[0])){
+      if (this.service.instanceOfOption(this.options[0])) {
         arrayOption = this.service.filteredOptions.getValue() as Option[];
         option = arrayOption[this.focusedOption.option];
-      } else{
+      } else {
         arrayOption = this.service.filteredOptions.getValue() as OptionGroup[];
-        option = arrayOption[this.focusedOption.group].options[this.focusedOption.option];
+        option =
+          arrayOption[this.focusedOption.group].options[
+            this.focusedOption.option
+          ];
       }
       this.handleOptionClick(option, event);
-    } 
+    }
   }
 
-  setInitialFocusOption(){
-    if(!this.isOpened){
+  setInitialFocusOption() {
+    if (!this.isOpened) {
       this.service.setVisualFocused({
-        option: -1,
-        group: -1,
+        option: this.optional ? -2 : -1,
+        group: this.optional ? -2 : -1,
       });
     }
+  }
+
+  hasOptional() {
+    return (
+      this.optional &&
+      (this.inputValue?.length <= 0 ||
+        this.inputValue === undefined ||
+        this.inputValue === null)
+    );
   }
 }

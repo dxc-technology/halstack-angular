@@ -25,6 +25,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
   @Input() multiple: boolean;
   @Input() checked: boolean;
   @Input() focused: boolean;
+  @Input() optional: boolean;
 
   @Output() optionClick: EventEmitter<any> = new EventEmitter();
   @Output() optionMouseDown: EventEmitter<any> = new EventEmitter();
@@ -33,6 +34,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
     option: null,
     multiple: false,
     checked: null,
+    optional: false
   });
 
   constructor(public service: SelectService) {}
@@ -124,7 +126,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
         display: flex;
         flex-direction: row;
         width: 100%;
-        margin: 2px 8px;
+        padding: 2px 8px;
         height: 100%;
         box-sizing: border-box;
         border-bottom: 1px solid #e6e6e6;
@@ -138,7 +140,7 @@ export class DxcNewSelectOptionComponent implements OnInit {
           height: 100%;
           display: flex;
           align-items: center;
-          margin-left: 8px;
+          margin-left: 0.5rem;
         }
         .checkIcon {
           display: flex;

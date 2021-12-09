@@ -220,9 +220,10 @@ export class DxcNewSelectHelper {
       }
       .options {
         overflow: auto;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         margin: 4px 0px 0px 0px;
         background: #ffffff 0% 0% no-repeat padding-box;
-        border: 1px solid #808080;
+        border: 1px solid #cccccc;
         border-radius: 4px;
         opacity: 1;
         width: inherit;
@@ -300,6 +301,27 @@ export class DxcNewSelectHelper {
               color: #666666;
             }
           }
+          .optionalContainer{
+            width: 100%;
+            height: 100%;
+            :hover {
+              background-color: #f2f2f2;
+              cursor: pointer;
+            }
+            .optionalLabel{
+              width: 100%;
+              height: 32px;
+              flex-direction: row;
+              margin-left: 16px;
+              margin-right: 16px;
+              padding-top: 4px;
+              padding-bottom: 4px;
+              box-sizing: border-box;
+              border-bottom: 1px solid #e6e6e6;
+              display: flex;
+              align-items: center;
+            }
+          }
         }
       }
       .inputLabel {
@@ -307,6 +329,16 @@ export class DxcNewSelectHelper {
         font-size: var(--newSelect-labelFontSize);
         font-style: var(--newSelect-labelFontStyle);
         font-weight: var(--newSelect-labelFontWeight);
+        color: ${inputs.disabled
+          ? "#999999"
+          : "var(--newSelect-labelFontColor)"};
+        line-height: 1.75em;
+      }
+      .optional{
+        font-family: var(--newSelect-fontFamily);
+        font-size: var(--newSelect-labelFontSize);
+        font-style: var(--newSelect-labelFontStyle);
+        font-weight: 400;
         color: ${inputs.disabled
           ? "#999999"
           : "var(--newSelect-labelFontColor)"};

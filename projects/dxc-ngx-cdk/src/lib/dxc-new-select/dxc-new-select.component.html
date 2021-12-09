@@ -1,12 +1,20 @@
-<label *ngIf="label" class="inputLabel" htmlFor="{{ id }}">
-  {{ label }}
-</label>
+<span
+  *ngIf="label"
+  class="inputLabel"
+  id="{{ id }}"
+  role="label"
+  (click)="focusContainer($event)"
+  >{{ label }}
+  <span *ngIf="optional" class="optional">(Optional)</span>
+</span>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div
   class="container"
   tabindex="0"
   (click)="handleSelectOpen()"
   (keydown)="handleOnKeyDown($event)"
+  attr.aria-label="{{ label }}"
+  attr.aria-labelledby="{{ id }}"
   #containerRef
 >
   <div class="valueContainer" *ngIf="!searchable || (searchable && multiple)">
@@ -133,6 +141,17 @@
   }"
   #optionsRef
 >
+  <li *ngIf="hasOptional()">
+    <dxc-new-select-option
+      [multiple]="false"
+      [option]="optionalOption"
+      [focused]="focusedOption.option === -1"
+      [optional]="optional"
+      (optionClick)="handleOptionClick(optionalOption, $event)"
+      (optionMouseDown)="handleOptionMouseDown($event)"
+      (mouseenter)="handleOnHover(-1, -1, true)"
+    ></dxc-new-select-option>
+  </li>
   <li
     *ngFor="
       let option of options && !searchable
@@ -166,10 +185,7 @@
         <dxc-new-select-option
           [multiple]="multiple"
           [option]="op"
-          [focused]="
-            focusedOption.option === indexOptionGroup &&
-            focusedOption.group === i
-          "
+          [focused]="isFocused(i, indexOptionGroup)"
           (optionClick)="handleOptionClick(op, $event)"
           (optionMouseDown)="handleOptionMouseDown($event)"
           (mouseenter)="handleOnHover(indexOptionGroup, i)"
@@ -186,7 +202,10 @@
       (mouseenter)="handleOnHover(i)"
     ></dxc-new-select-option>
   </li>
-  <li *ngIf="(options | filterOptions: inputValue).length === 0" class="resultsNotFound">
+  <li
+    *ngIf="(options | filterOptions: inputValue).length === 0"
+    class="resultsNotFound"
+  >
     <span class="notFoundIcon">
       <svg
         xmlns="http://www.w3.org/2000/svg"

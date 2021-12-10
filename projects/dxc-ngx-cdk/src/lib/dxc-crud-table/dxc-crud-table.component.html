@@ -56,8 +56,11 @@
       <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
     </table>
   </div>
-  <mat-paginator [pageSizeOptions]="pagingOptions" showFirstLastButtons *ngIf="allowPaging && loaded">
-  </mat-paginator>
+  <div class="w-100 m-0">
+    <mat-paginator [pageSizeOptions]="pagingOptions" class="w-100 curd-paginator" disableRipple="true"
+      showFirstLastButtons *ngIf="allowPaging && loaded">
+    </mat-paginator>
+  </div>
 </ng-template>
 
 <ng-template #mobileView>
@@ -68,7 +71,7 @@
       </mat-card-title>
     </mat-card>
     <ng-container
-      *ngFor="let row of dataSource?.data | formatter: {'format': {'columns': columns, 'filterValue': filterValue}, 'type': 'xsfilter'}; trackBy:trackTable">
+      *ngFor="let row of xsDataset | async | formatter: {'format': {'columns': columns, 'filterValue': filterValue}, 'type': 'xsfilter'}; trackBy:trackTable">
       <mat-card class="p-1 m-1">
         <mat-card-title class="w-100 text-center" *ngIf="isToShowRow(0, row)">
           <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox"
@@ -114,6 +117,11 @@
         </mat-card-content>
       </mat-card>
     </ng-container>
+    <div class="w-100 m-0">
+      <mat-paginator [pageSizeOptions]="pagingOptions" class="w-100 curd-paginator" disableRipple="true"
+        showFirstLastButtons *ngIf="allowPaging && loaded">
+      </mat-paginator>
+    </div>
   </div>
 </ng-template>
 <ng-template #selectAll>

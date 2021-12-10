@@ -87,9 +87,13 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           text-align: left;
           display: inline-flex;
           align-items: center;
-          font: normal normal normal 16px/22px Open Sans;
-          letter-spacing: 0px;
-          color: ${inputs.disabled ? "#999999" : "#000000"};
+          font-family: var(--newSelect-fontFamily);
+          font-size: var(--newSelect-valueFontSize);
+          font-style: var(--newSelect-valueFontStyle);
+          font-weight: var(--newSelect-valueFontWeight);
+          color: ${inputs.disabled
+            ? "var(--newSelect-disabledColor)"
+            : "var(--newSelect-valueFontColor)"};
           .iconLabel{
             width: 24px;
             height: 24px;
@@ -99,15 +103,19 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           .comma{
             margin-right: 4px;
           }
-          .selectedLabel{
-            margin-left: 0.25rem;
+          .iconLabel{
+            margin-right: 0.25rem;
           }
         }
         .notSelectedLabel {
           text-align: left;
-          font: normal normal normal 16px/22px Open Sans;
-          letter-spacing: 0px;
-          color: ${inputs.disabled ? "#999999" : "#666666"};;
+          font-family: var(--newSelect-fontFamily);
+          font-size: var(--newSelect-placeholderFontSize);
+          font-style: var(--newSelect-placeholderFontStyle);
+          font-weight: var(--newSelect-placeholderFontWeight);
+          color: ${inputs.disabled
+            ? "var(--newSelect-disabledColor)"
+            : "var(--newSelect-placeholderFontColor)"};
         }
       }
     `;

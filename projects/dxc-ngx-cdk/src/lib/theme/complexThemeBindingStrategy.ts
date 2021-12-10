@@ -247,6 +247,14 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.select?.baseColor, 0.34) ??
       tokens["--select-hoverOptionBackgroundColor"];
 
+    //NEW SELECT
+    proccessedTokens["--newSelect-selectedlistItemBackgroundColor"] =
+      theme?.newSelect?.baseColor ??
+      tokens["--newSelect-selectedlistItemBackgroundColor"];
+    proccessedTokens["unselectedHoverListItemBackgroundColor"] =
+      this.setOpacity(theme?.newSelect?.baseColor, 0.34) ??
+      tokens["unselectedHoverListItemBackgroundColor"];
+
     //SIDENAV
     proccessedTokens["--sidenav-backgroundColor"] =
       theme?.sidenav?.baseColor ?? tokens["--sidenav-backgroundColor"];

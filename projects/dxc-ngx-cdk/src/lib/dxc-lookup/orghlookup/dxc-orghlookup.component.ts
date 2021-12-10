@@ -620,6 +620,7 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   }
 
   searchClickFn = (event) => {
+    if (this.sidenav.opened) {
     switch (event) {
       case SEARCHEVENT.DEFAULTLEVEl:
         // tslint:disable-next-line: prefer-for-of
@@ -660,6 +661,12 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
       default:
         break;
     }
+    this.sidenav.close();
+    this.isSearch = false;
+  }else{
+    this.sidenav.open();
+    this.isSearch = true;
+  }
     this.treeresult = undefined;
   }
 

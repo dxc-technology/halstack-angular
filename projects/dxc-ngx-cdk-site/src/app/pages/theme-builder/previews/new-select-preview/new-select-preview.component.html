@@ -8,7 +8,11 @@
         margin="xsmall"
         [options]="array1"
         (onChange)="onChange($event)"
+        (onBlur)="onBlur($event)"
         [optional]="true"
+        placeholder="Another placeholder"
+        size="large"
+        tabIndex="3"
       >
       </dxc-new-select>
       <dxc-new-select
@@ -18,6 +22,7 @@
         [options]="array2"
         [optional]="true"
         (onChange)="onChange($event)"
+        placeholder="Another placeholder"
       ></dxc-new-select>
     </tbuilder-component-mode>
 
@@ -29,6 +34,7 @@
         margin="xsmall"
         [options]="array1"
         [optional]="true"
+        placeholder="Another placeholder"
       >
       </dxc-new-select>
       <dxc-new-select
@@ -37,6 +43,7 @@
         searchable="true"
         margin="xsmall"
         [options]="array2"
+        placeholder="Another placeholder"
       >
       </dxc-new-select>
       <dxc-new-select
@@ -46,6 +53,9 @@
         margin="xsmall"
         [options]="array2"
         [multiple]="true"
+        (onChange)="onChange($event)"
+        (onBlur)="onBlur($event)"
+        placeholder="Another placeholder"
       >
       </dxc-new-select>
     </tbuilder-component-mode>

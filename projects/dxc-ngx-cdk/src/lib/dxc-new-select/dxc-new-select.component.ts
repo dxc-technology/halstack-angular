@@ -142,7 +142,7 @@ export class DxcNewSelectComponent implements OnInit {
   isInputVisible: boolean = true;
   controlled: boolean = false;
   focusedOption: VisualOptionFocus;
-  optionalOption: Option = { label: "Choose an option", value: "" };
+  optionalOption: Option;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -167,6 +167,7 @@ export class DxcNewSelectComponent implements OnInit {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.optionalOption = { label: this.placeholder, value: "" };
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -180,6 +181,7 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.optionalOption = { label: this.placeholder, value: "" };
     this.id = this.id || uuidv4();
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
@@ -242,6 +244,29 @@ export class DxcNewSelectComponent implements OnInit {
       this.setInputValue("");
       if (this.searchable && !this.multiple) {
         this.isInputVisible = false;
+      }
+    }
+  }
+
+  handleOnFocusOut() {
+    const options = this.service.getSelectedValues();
+    if (this.multiple) {
+      if (options.length > 0) {
+        const op = options.map((el) => {
+          return {
+            value: el.value,
+            error: null,
+          };
+        });
+        this.onBlur.emit(op);
+      } else {
+        this.onBlur.emit([]);
+      }
+    } else {
+      if (options.length > 0) {
+        this.onBlur.emit({ value: options.value, error: null });
+      } else {
+        this.onBlur.emit({});
       }
     }
   }

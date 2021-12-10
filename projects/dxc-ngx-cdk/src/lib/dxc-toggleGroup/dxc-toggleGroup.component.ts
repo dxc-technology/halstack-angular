@@ -46,10 +46,10 @@ export class DxcToggleGroupComponent implements OnInit {
   }
   private _disabled = false;
   @Input()
-  get tabIndexValue(): number {
+  get tabIndex(): number {
     return this._tabIndexValue;
   }
-  set tabIndexValue(value: number) {
+  set tabIndex(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
@@ -104,7 +104,8 @@ export class DxcToggleGroupComponent implements OnInit {
         });
 
         setTimeout(() => {
-          item.tabIndexValue = this.disabled ? -1 : this.tabIndexValue;
+          item.tabIndexValue = this.disabled ? -1 : this.tabIndex;
+          item.role = this.multiple ? 'switch': 'radio';
           this.setToggleSelected(item);
         });
       });

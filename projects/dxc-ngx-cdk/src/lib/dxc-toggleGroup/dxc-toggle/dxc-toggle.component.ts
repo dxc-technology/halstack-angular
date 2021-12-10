@@ -12,7 +12,6 @@ import { OnInit } from '@angular/core';
 @Component({
   selector: "dxc-toggle",
   templateUrl: "./dxc-toggle.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })
 export class DxcToggleComponent implements OnInit {
@@ -22,7 +21,7 @@ export class DxcToggleComponent implements OnInit {
   @Input() value;
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onKeyPress: EventEmitter<any> = new EventEmitter<any>();
-
+  role:string;
   @HostBinding("class") style;
 
   @HostBinding("class.selected") get valid() {

@@ -190,7 +190,7 @@ export class DxcNewInputTextHelper {
         font-size: var(--newInputText-labelFontSize);
         font-style: var(--newInputText-labelFontStyle);
         font-weight: var(--newInputText-labelFontWeight);
-        line-height: 1.75em;
+        line-height: var(--newInputText-labelLineHeight);
         min-height: 24px;
       }
       .inputOptionalLabel {
@@ -203,7 +203,7 @@ export class DxcNewInputTextHelper {
         font-size: var(--newInputText-helperTextFontSize);
         font-style: var(--newInputText-helperTextFontStyle);
         font-weight: var(--newInputText-helperTextFontWeight);
-        line-height: 1.5em;
+        line-height: var(--newInputText-helperTextLineHeight);
         min-height: 18px;
       }
 
@@ -254,7 +254,7 @@ export class DxcNewInputTextHelper {
         &::placeholder {
           color: var(--newInputText-placeholderFontColor);
         }
-        
+
       }
 
       .inputAction {
@@ -406,7 +406,7 @@ export class DxcNewInputTextHelper {
       }
 
       ${inputs.darkBackground ? this.getDarkStyle(inputs) : ""}
-      
+
       ${
         inputs.disabled
           ? inputs.darkBackground

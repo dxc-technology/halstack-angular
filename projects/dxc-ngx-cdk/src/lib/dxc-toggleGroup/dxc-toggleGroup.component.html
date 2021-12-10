@@ -2,7 +2,7 @@
     {{label}}
   </label>
   <span class="helperText" *ngIf="helperText" class="helperText">{{helperText}}</span>
-  <div class="toggleContainer" [id]="toggleGroupId">
+  <div class="toggleContainer" [id]="toggleGroupId" attr.role="{{multiple ? 'group': 'radiogroup'}}">
     <ng-content></ng-content>
   </div>
 

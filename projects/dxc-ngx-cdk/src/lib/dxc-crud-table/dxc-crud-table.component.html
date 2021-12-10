@@ -71,7 +71,7 @@
       </mat-card-title>
     </mat-card>
     <ng-container
-      *ngFor="let row of mobilePaginatorObs | async | formatter: {'format': {'columns': columns, 'filterValue': filterValue}, 'type': 'xsfilter'}; trackBy:trackTable">
+      *ngFor="let row of xsDataset | async | formatter: {'format': {'columns': columns, 'filterValue': filterValue}, 'type': 'xsfilter'}; trackBy:trackTable">
       <mat-card class="p-1 m-1">
         <mat-card-title class="w-100 text-center" *ngIf="isToShowRow(0, row)">
           <a href="javascript:void(0);" class="mat-icon material-icons position-relative float-left" role="checkbox"

@@ -109,7 +109,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   filterValue: string = '';
   referenceRow: any = null;
   enableAccessKey: boolean;
-  mobilePaginatorObs: Observable<any>;
+  xsDataset: Observable<any>;
   
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
@@ -155,14 +155,12 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.uniqueColumn = this.uniqueIdentifier;
     this.validations = this.config.configservice.Resources.gridGlobalRequiredValidation?.description;
     this.noRecord = this.config.configservice.Resources.gridNoRecord?.description;
-    this.mobilePaginatorObs = this.dataSource.connect();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.setTableHeight();
-
   }
 
   writeValue(val: any): void {
@@ -998,6 +996,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     setTimeout(() => {
       this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data, this.elRef);
       this.dataSource.paginator = this.paginator;
+      this.xsDataset = this.dataSource.connect();
     }, 1000);
   }
 }

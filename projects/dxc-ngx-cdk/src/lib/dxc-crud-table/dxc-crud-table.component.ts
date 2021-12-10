@@ -19,6 +19,7 @@ import { Button } from './../models/startup/configuration.model';
 import { delay, filter } from 'rxjs/operators';
 import { TextEditorService } from '../dxc-text-editor/text-editor/text-editor.service';
 import { I } from '@angular/cdk/keycodes';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'dxc-crud-table',
@@ -108,6 +109,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   filterValue: string = '';
   referenceRow: any = null;
   enableAccessKey: boolean;
+  mobilePaginatorObs: Observable<any>;
   
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
@@ -153,6 +155,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.uniqueColumn = this.uniqueIdentifier;
     this.validations = this.config.configservice.Resources.gridGlobalRequiredValidation?.description;
     this.noRecord = this.config.configservice.Resources.gridNoRecord?.description;
+    this.mobilePaginatorObs = this.dataSource.connect();
   }
 
   ngAfterViewInit() {
@@ -281,6 +284,9 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     if ($event) {
       switch ($event.rel) {
         case this.addRel:
+          if(this.allowPaging){
+            this.paginator.pageIndex = 0;
+          }
           this.addRow();
           this.setFocus('.edit-form');
           break;
@@ -991,6 +997,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   private setTableHeight() {
     setTimeout(() => {
       this.tableHeight = this.crudHelper.calculateTableHeight(this.dataSource.data, this.elRef);
+      this.dataSource.paginator = this.paginator;
     }, 1000);
   }
 }

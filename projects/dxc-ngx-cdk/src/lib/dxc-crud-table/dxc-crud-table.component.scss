@@ -254,3 +254,55 @@ th.mat-header-cell:last-of-type {
 .expandedDetail-row-backgound {
   background-color: var(--menu_background_color);
 }
+
+.curd-paginator
+  ::ng-deep {
+    .mat-paginator-page-size-label {
+      white-space: nowrap;
+    }
+
+    .mat-icon-button {
+      min-width: 0 !important;
+      width: 36px !important;
+      height: 36px !important;
+      flex-shrink: 0 !important;
+      line-height: 36px !important;
+      margin: 5px !important;
+
+    }
+
+    .mat-select {
+      margin: 0px !important;
+    }
+
+    .mat-icon-button.mat-button-disabled.mat-button-disabled{
+      color: var(--textarea-disabledFontColor)!important;
+    }
+
+    .mat-form-field-wrapper {
+      padding: 0px !important;
+
+      .mat-select-trigger {
+        border: none !important;
+      }
+
+      .mat-select-value-text {
+        padding-top: 5px !important;
+        display: block !important;
+      }
+
+      .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+        background-color: var(--select-selectedOptionBackgroundColor) !important;;
+      }
+      
+      .mat-option{
+        color: var(--select-color) !important;
+      }
+    }
+
+    .mat-form-field-underline {
+      width: 100% !important;
+    }
+    color: var(--text-color);
+    background-color: var(--transparent-color);
+    }

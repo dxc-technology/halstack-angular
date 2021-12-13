@@ -1,16 +1,13 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
   HostBinding,
-  ContentChildren,
-  QueryList,
-  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
-import { DxcToggleIconComponent } from "../dxc-toggle-icon/dxc-toggle-icon.component";
-import { ToggleGroupService } from "../services/toggleGroup.service";
+import { css } from "emotion";
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: "dxc-toggle",
@@ -18,55 +15,86 @@ import { ToggleGroupService } from "../services/toggleGroup.service";
   providers: [],
 })
 export class DxcToggleComponent implements OnInit {
+
+
   @Input() label: string;
   @Input() value;
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onKeyPress: EventEmitter<any> = new EventEmitter<any>();
+  role:string;
+  @HostBinding("class") style;
 
   @HostBinding("class.selected") get valid() {
     return this.selected;
   }
 
-  @ContentChildren(DxcToggleIconComponent)
-  dxcToggleIcon: QueryList<DxcToggleIconComponent>;
-
   selected: boolean = false;
   tabIndexValue: number = 0;
 
-  constructor(
-    private service: ToggleGroupService,
-    private cdRef: ChangeDetectorRef
-  ) {
-    this.service.tabIndexValue.subscribe((value) => {
-      if (value) {
-        this.tabIndexValue = value;
-      }
-    });
-  }
-
-  ngAfterViewInit() {
-    if (this.dxcToggleIcon.length !== 0) {
-      this.label = null;
-      this.cdRef.detectChanges();
-    }
-  }
-
-  ngOnInit() {}
-
   onClickHandler() {
-    this.service.setSelected(this.value);
+    this.onClick.emit(this.value);
   }
 
-  ngOnChanges() {
-    this.service.values.subscribe((values) => {
-      if (values && values.includes(this.value) && this.selected === false) {
-        this.selected = true;
-      } else if (
-        values &&
-        !values.includes(this.value) &&
-        this.selected === true
-      ) {
-        this.selected = false;
-      }
-    });
+  onHandleKeyPressHandler(event) {
+    if ((event.code === "Enter" || event.code === "Space")){
+      this.onKeyPress.emit(this.value);
+    }
+  };
+
+  ngOnInit(): void {
+    this.style = `${this.getDynamicStyle()}`;
   }
+
+  getDynamicStyle(){
+    return css`
+
+      display: flex;
+      background: var(--toggleGroup-unselectedBackgroundColor);
+      margin: 4px;
+      color: var(--toggleGroup-unselectedFontColor);
+      border-radius: var(--toggleGroup-optionBorderRadius);
+      border-width: var(--toggleGroup-optionBorderThickness);
+      border-style: var(--toggleGroup-optionBorderStyle);
+
+        .toggleContent {
+
+          ${this.label ? `padding-left: var(--toggleGroup-labelPaddingLeft);
+          padding-right: var(--toggleGroup-labelPaddingRight);` : `
+          padding-left: var(--toggleGroup-iconPaddingLeft);
+          padding-right: var(--toggleGroup-iconPaddingRight);
+          `  }
+
+          &:focus,
+          &:focus-within,
+          &:focus-visible {
+            outline: none;
+          }
+          height: 40px;
+          width: 100% !important;
+          display: flex;
+          align-items: center;
+          .label {
+            letter-spacing: var(--toggleGroup-fontLetterSpacing);
+            font-family: var(--toggleGroup-fontFamily);
+            font-size: var(--toggleGroup-fontSize);
+            font-style: var(--toggleGroup-fontStyle);
+            font-weight: var(--toggleGroup-fontWeight);
+          }
+          .icon {
+            ${this.label ? `margin-right: var(--toggleGroup-iconMarginRight);`: `` }
+            display: flex;
+            height: 24px;
+            overflow: hidden;
+            width: 24px;
+            svg {
+              fill: var(--toggleGroup-unselectedFontColor);
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+
+    `;
+  };
+
 }

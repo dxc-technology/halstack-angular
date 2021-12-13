@@ -111,7 +111,7 @@ export class DxcNewTextareaHelper {
         font-size: var(--newTextarea-labelFontSize);
         font-style: var(--newTextarea-labelFontStyle);
         font-weight: var(--newTextarea-labelFontWeight);
-        line-height: 1.75em;
+        line-height: var(--newTextarea-labelLineHeight);
         min-height: 24px;
       }
       .textareaOptionalLabel {
@@ -124,7 +124,7 @@ export class DxcNewTextareaHelper {
         font-size: var(--newTextarea-helperTextFontSize);
         font-style: var(--newTextarea-helperTextFontStyle);
         font-weight: var(--newTextarea-helperTextFontWeight);
-        line-height: 1.5em;
+        line-height: var(--newTextarea-helperTextLineHeight);
         min-height: 18px;
       }
 
@@ -188,7 +188,7 @@ export class DxcNewTextareaHelper {
         min-height: 18px;
       }
       ${inputs.darkBackground ? this.getDarkStyle(inputs) : ""}
-      
+
       ${
         inputs.disabled
           ? inputs.darkBackground

@@ -6,7 +6,9 @@ import {
   EventEmitter,
   SimpleChanges,
   HostBinding,
-  ChangeDetectorRef,
+  QueryList,
+  ContentChildren,
+  ChangeDetectionStrategy,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -15,13 +17,16 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
-import { ToggleGroupService } from "./services/toggleGroup.service";
+import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
+import { ChangeDetectorRef } from '@angular/core';
+import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: "dxc-togglegroup",
   templateUrl: "./dxc-toggleGroup.component.html",
   styleUrls: [],
-  providers: [CssUtils, ToggleGroupService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CssUtils],
 })
 export class DxcToggleGroupComponent implements OnInit {
   @Input()
@@ -41,18 +46,26 @@ export class DxcToggleGroupComponent implements OnInit {
   }
   private _disabled = false;
   @Input()
-  get tabIndexValue(): number {
+  get tabIndex(): number {
     return this._tabIndexValue;
   }
-  set tabIndexValue(value: number) {
+  set tabIndex(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
   @Input() public margin: any;
+  @Input() label: string;
+  @Input() helperText: string;
+
   @Input() public value: any;
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+  @ContentChildren(DxcToggleComponent)
+  toggleGroup: QueryList<DxcToggleComponent>;
+
+  toggleGroupId: string;
 
   selectedOptions = [];
+  private isControlled: boolean = false;
 
   @HostBinding("class") styledDxcToggleGroup;
 
@@ -62,33 +75,42 @@ export class DxcToggleGroupComponent implements OnInit {
     margin: null,
     tabIndexValue: 0,
   });
-  constructor(
-    private utils: CssUtils,
-    private service: ToggleGroupService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {
+      this.toggleGroupId = `file-input${ uuidv4()}`;
+  }
 
   ngOnInit() {
+    if (this.value || this.value === "") {
+      this.isControlled = true;
+    }
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
   }
 
-  ngAfterViewInit() {
-    if (this.value || this.value === "") {
-      this.getSelectedByValue();
-    }
-    this.service.values.subscribe((valuesSelected) => {
-      if (valuesSelected && valuesSelected[0]) {
-        this.selectedOptions = valuesSelected;
-      } else {
-        this.selectedOptions = [];
-      }
-    });
+  ngAfterContentInit() {
+    // reference to the dxc-toggles and manipulating them depending on the given data
+    if (this.toggleGroup) {
+      this.toggleGroup.forEach((item:DxcToggleComponent, index: number) => {
+        item.onClick.subscribe((value) => {
+          if (!this.disabled) {
+            this.valueChanged(value);
+          }
+        });
+        item.onKeyPress.subscribe((value: string) => {
+          if (!this.disabled) {
+            this.valueChanged(value);
+          }
+        });
 
-    this.service.selected.subscribe((selected) => {
-      this.valueChanged(selected);
-    });
+        setTimeout(() => {
+          item.tabIndexValue = this.disabled ? -1 : this.tabIndex;
+          item.role = this.multiple ? 'switch': 'radio';
+          this.setToggleSelected(item);
+        });
+      });
+
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -100,65 +122,66 @@ export class DxcToggleGroupComponent implements OnInit {
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
     )}`;
-    if (this.value || this.value === "") {
-      this.getSelectedByValue();
+    if (this.isControlled) {
+      this.changeSelectedToggle();
     }
-    this.service.setTabIndexValue(this.disabled ? -1 : this.tabIndexValue);
   }
 
-  getSelectedByValue() {
-    this.selectedOptions = [];
-    if (this.value !== "") {
-      if (Array.isArray(this.value)) {
-        this.selectedOptions = this.value;
-      } else {
-        this.selectedOptions.push(this.value);
-      }
-    }
-    this.service.setValues(this.selectedOptions);
-    this.cdRef.detectChanges();
-  }
 
-  public valueChanged(newSelected: any): void {
-    if (!this.disabled) {
-      const selectedValues = [];
-      if (this.value || this.value === "") {
-        if (this.multiple) {
-          this.selectedOptions.map((value) => {
-            if (newSelected && value !== newSelected) {
-              selectedValues.push(value);
-            }
-          });
-        }
-        if (!this.selectedOptions.includes(newSelected)) {
-          selectedValues.push(newSelected);
-        }
-      } else {
-        if (
-          newSelected &&
-          this.selectedOptions &&
-          this.selectedOptions.includes(newSelected)
-        ) {
-          const index = this.selectedOptions.indexOf(newSelected);
-          this.selectedOptions.splice(index, 1);
+
+  private valueChanged(selectedOption: any): void {
+    let newSelectedOptions = [];
+    //handle When value is defined
+    if (!this.isControlled) {
+      if (this.multiple) {
+        newSelectedOptions = this.selectedOptions.map((value) => value);
+        if (newSelectedOptions.includes(selectedOption)) {
+          const index = newSelectedOptions.indexOf(selectedOption);
+          newSelectedOptions.splice(index, 1);
         } else {
-          if (this.multiple && newSelected) {
-            this.selectedOptions.push(newSelected);
-          } else {
-            this.selectedOptions = [newSelected];
-          }
+          newSelectedOptions.push(selectedOption);
         }
-        this.selectedOptions.map((value) => {
-          selectedValues.push(value);
+        this.selectedOptions = newSelectedOptions;
+      } else {
+        this.selectedOptions = selectedOption === this.selectedOptions ? null : selectedOption;
+      }
+    } else if (this.multiple) {
+      newSelectedOptions = this.value.map((v) => v);
+      if (newSelectedOptions.includes(selectedOption)) {
+        const index = newSelectedOptions.indexOf(selectedOption);
+        newSelectedOptions.splice(index, 1);
+      } else {
+        newSelectedOptions.push(selectedOption);
+      }
+    }else{
+      newSelectedOptions = selectedOption;
+    }
+    this.changeSelectedToggle(this.multiple ? selectedOption : null);
+    // Emit the new selected values
+    this.onChange.emit(this.isControlled ? newSelectedOptions: this.selectedOptions);
+  }
+
+  private changeSelectedToggle(selectedValue? :string) {
+    if (this.toggleGroup) {
+      if (selectedValue){
+        const filterToggles = this.toggleGroup.filter(item=> item.value === selectedValue);
+        filterToggles.forEach((item) => {
+          this.setToggleSelected(item);
         });
-        this.service.setValues(selectedValues);
+      }else {
+        this.toggleGroup.forEach((item) => {
+          this.setToggleSelected(item);
+        });
       }
-      if (newSelected && this.multiple && selectedValues && selectedValues[0]) {
-        this.onChange.emit(selectedValues);
-      } else if (newSelected) {
-        this.onChange.emit(selectedValues[0] || "");
-      }
-      this.cdRef.detectChanges();
+      this.ref.detectChanges();
+    }
+  }
+
+  private setToggleSelected(item: DxcToggleComponent) {
+    if (this.multiple) {
+      this.isControlled ? item.selected = this.value.includes(item.value) : item.selected = this.selectedOptions.includes(item.value);
+    } else {
+      this.isControlled ? item.selected = item.value === this.value : item.selected = item.value === this.selectedOptions;
     }
   }
 
@@ -166,18 +189,16 @@ export class DxcToggleGroupComponent implements OnInit {
     if (this.disabled) {
       return css`
         dxc-toggle {
-          background: var(
-            --toggleGroup-unselectedDisabledBackgroundColor
-          ) !important;
-          color: var(--toggleGroup-unselectedDisabledFontColor) !important;
+          background: var(--toggleGroup-unselectedDisabledBackgroundColor);
+          color: var(--toggleGroup-unselectedDisabledFontColor);
           .toggleContent {
             &:focus {
-              outline: none !important;
+              outline: none;
             }
             outline: none;
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-unselectedDisabledFontColor) !important;
+              fill: var(--toggleGroup-unselectedDisabledFontColor);
             }
           }
           &:hover {
@@ -185,12 +206,11 @@ export class DxcToggleGroupComponent implements OnInit {
           }
           &.selected {
             background: var(
-              --toggleGroup-selectedDisabledBackgroundColor
-            ) !important;
-            color: var(--toggleGroup-selectedDisabledFontColor) !important;
+              --toggleGroup-selectedDisabledBackgroundColor);
+            color: var(--toggleGroup-selectedDisabledFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-selectedDisabledFontColor) !important;
+              fill: var(--toggleGroup-selectedDisabledFontColor);
             }
           }
         }
@@ -198,26 +218,28 @@ export class DxcToggleGroupComponent implements OnInit {
     } else {
       return css`
         dxc-toggle {
+          color: var(--toggleGroup-unselectedFontColor);
           &:hover {
             cursor: pointer;
             background: var(--toggleGroup-unselectedHoverBackgroundColor);
-            color: var(--toggleGroup-unselectedFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-unselectedFontColor) !important;
+              fill: var(--toggleGroup-unselectedFontColor);
             }
           }
           &:active {
             cursor: pointer;
             background: var(--toggleGroup-unselectedActiveBackgroundColor);
-            color: var(--toggleGroup-selectedFontColor);
+            color: #ffffff;
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-selectedFontColor) !important;
+              fill: var(--toggleGroup-selectedFontColor);
             }
           }
-          &:focus, &:focus-within, &:focus-visible {
-            outline: solid 2px var(--toggleGroup-focusColor) ;
+          &:focus,
+          &:focus-within,
+          &:focus-visible {
+            outline: solid 2px var(--toggleGroup-focusColor);
             outline-offset: -2px;
           }
           &.selected {
@@ -225,14 +247,16 @@ export class DxcToggleGroupComponent implements OnInit {
             color: var(--toggleGroup-selectedFontColor);
             .icon img,
             .icon svg {
-              fill: var(--toggleGroup-selectedFontColor) !important;
+              fill: var(--toggleGroup-selectedFontColor);
             }
             &:active {
-              background: var(--toggleGroup-selectedActiveBackgroundColor) !important;
+              background: var(
+                --toggleGroup-selectedActiveBackgroundColor
+              );
+              color: #ffffff;
             }
             &:hover {
               background: var(--toggleGroup-selectedHoverBackgroundColor);
-              color: var(--toggleGroup-selectedHoverFontColor);
               .icon img,
               .icon svg {
                 fill: var(--toggleGroup-selectedHoverFontColor);
@@ -246,54 +270,47 @@ export class DxcToggleGroupComponent implements OnInit {
 
   setDxcToggleGroupDynamicStyle(inputs: any) {
     return css`
-      display: flex;
-      align-items: center;
-      height: 43px;
-      width: fit-content;
-      border-radius: 4px;
-      overflow: hidden;
-      ${this.utils.getMargins(inputs.margin)}
+      display: inline-flex;
+      flex-direction: column;
+      ${this.utils.getMargins(inputs.margin)};
+      label{
+        color: ${this.disabled ? 'var(--toggleGroup-disabledLabelFontColor)' : 'var(--toggleGroup-labelFontColor)' };
+        font-family: var(--toggleGroup-labelFontFamily);
+        font-size: var(--toggleGroup-labelFontSize);
+        font-style: var(--toggleGroup-labelFontStyle);
+        font-weight: var(--toggleGroup-labelFontWeight);
+        line-height: var(--toggleGroup-labelLineHeight);
 
-      ${this.disabledStyles()}
-        dxc-toggle {
-        height: 100%;
-        display: flex;
-        background: var(--toggleGroup-unselectedBackgroundColor);
-        color: var(--toggleGroup-unselectedFontColor);
-
-        .toggleContent {
-          &:focus, &:focus-within, &:focus-visible {
-            outline: none;
-          }
-          height: 40px;
-          display: flex;
-          align-items: center;
-          .label {
-            padding-left: var(--toggleGroup-labelPaddingLeft);
-            padding-right: var(--toggleGroup-labelPaddingRight);
-            padding-top: var(--toggleGroup-labelPaddingTop);
-            padding-bottom: var(--toggleGroup-labelPaddingBottom);
-            letter-spacing: var(--toggleGroup-fontLetterSpacing);
-            font-family: var(--toggleGroup-fontFamily);
-            font-size: var(--toggleGroup-fontSize);
-            font-style: var(--toggleGroup-fontStyle);
-            font-weight: var(--toggleGroup-fontWeight);
-          }
-          .icon {
-            display: flex;
-            img,
-            svg {
-              width: var(--toggleGroup-iconSize);
-              height: var(--toggleGroup-iconSize);
-              padding-left: var(--toggleGroup-iconPaddingLeft);
-              padding-right: var(--toggleGroup-iconPaddingRight);
-              padding-top: var(--toggleGroup-iconPaddingTop);
-              padding-bottom: var(--toggleGroup-iconPaddingBottom);
-              fill: var(--toggleGroup-unselectedFontColor);
-            }
-          }
-        }
       }
+
+
+    .helperText{
+      color: ${this.disabled ? 'var(--toggleGroup-disabledHelperTextFontColor)' : 'var(--toggleGroup-helperTextFontColor)' };
+      font-family: var(--toggleGroup-helperTextFontFamily);
+      font-size: var(--toggleGroup-helperTextFontSize);
+      font-style: var(--toggleGroup-helperTextFontStyle);
+      font-weight: var(--toggleGroup-helperTextFontWeight);
+      line-height: var(--toggleGroup-helperTextLineHeight);
+    }
+      .toggleContainer{
+        display: inline-flex;
+        flex-direction: row;
+        opacity: 1px;
+        height: calc(48px - 4px - 4px);
+        padding: 4px;
+        margin-top: var(--toggleGroup-containerMarginTop);
+        border-width: var(--toggleGroup-containerBorderThickness);
+        border-style: var(--toggleGroup-containerBorderStyle);
+        border-radius: var(--toggleGroup-containerBorderRadius);
+        border-color: var(--toggleGroup-containerBorderColor);
+        background-color: var(--toggleGroup-containerBackgroundColor);
+        padding: 4px;
+        margin-top: var(--toggleGroup-containerMarginTop);
+        align-items: center;
+        min-height: 40px;
+      }
+
+      ${this.disabledStyles()};
     `;
   }
 }

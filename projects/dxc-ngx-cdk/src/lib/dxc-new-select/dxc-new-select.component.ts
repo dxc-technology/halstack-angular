@@ -227,14 +227,27 @@ export class DxcNewSelectComponent implements OnInit {
         } else {
           arr.push(option);
         }
-        this.onChange.emit(arr);
+        if (arr) {
+          let op = { value: [], error: null };
+          arr.map((el) => {
+            op.value.push(el.value);
+          });
+          console.log("op:",op);
+          this.onChange.emit(op);
+        } else {
+          this.onChange.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+        }
         if (!this.controlled) {
           this.service.setSelectedValues(arr);
         }
         this.showInput();
         this.isOpened = true;
       } else {
-        this.onChange.emit(option.value);
+        if (option) {
+          this.onChange.emit({ value: option.value, error: null });
+        } else {
+          this.onChange.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+        }
         if (!this.controlled) {
           this.service.setSelectedValues(option);
         }
@@ -251,22 +264,23 @@ export class DxcNewSelectComponent implements OnInit {
   handleOnFocusOut() {
     const options = this.service.getSelectedValues();
     if (this.multiple) {
-      if (options?.length > 0) {
-        const op = options.map((el) => {
-          return {
-            value: el.value,
-            error: null,
-          };
+      if (options) {
+        let op = { value: [], error: null };
+        options.map((el) => {
+          op.value.push(el.value);
         });
+        if(op.value.length === 0){
+          op.error = !this.optional ? `This field is required. Please, enter a value.` : null;
+        }
         this.onBlur.emit(op);
       } else {
-        this.onBlur.emit([]);
+        this.onBlur.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
       }
     } else {
-      if (options?.length > 0) {
+      if (options) {
         this.onBlur.emit({ value: options.value, error: null });
       } else {
-        this.onBlur.emit({});
+        this.onBlur.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
       }
     }
   }
@@ -285,7 +299,12 @@ export class DxcNewSelectComponent implements OnInit {
     if (!this.controlled) {
       this.service.setSelectedValues([]);
     }
-    this.onChange.emit([]);
+    if(this.multiple){
+      this.onChange.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+    }
+    else{
+      this.onChange.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+    }
   }
 
   public isValueSelected = (value): boolean =>

@@ -11,10 +11,14 @@
     class="iconLabel"
     [innerHTML]="option.icon | safeHtml"
   ></div>
-  <span class="label">{{ option.label }}</span>
+  <span class="label" [attr.aria-selected]="this.selected" role="option">{{
+    option.label
+  }}</span>
   <span
     class="checkIcon"
-    *ngIf="!multiple && this.service.getSelectedValues()?.value === option.value"
+    *ngIf="
+      !multiple && this.service.getSelectedValues()?.value === option.value
+    "
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -37,10 +41,14 @@
   (mousedown)="handleOptionMouseDown($event)"
   tabindex="-1"
 >
-  <span class="label">{{ option.label }}</span>
+  <span class="label" [attr.aria-selected]="this.selected" role="option">{{
+    option.label
+  }}</span>
   <span
     class="checkIcon"
-    *ngIf="!multiple && this.service.getSelectedValues()?.value === option.value"
+    *ngIf="
+      !multiple && this.service.getSelectedValues()?.value === option.value
+    "
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -72,6 +80,8 @@
   </dxc-checkbox>
   <div *ngIf="option.icon !== undefined && option.icon !== null">
     <span class="iconLabel" [innerHTML]="option.icon | safeHtml"></span>
-    <span class="label">{{ option.label }}</span>
+    <span class="label" [attr.aria-selected]="this.selected" role="option">{{
+      option.label
+    }}</span>
   </div>
 </span>

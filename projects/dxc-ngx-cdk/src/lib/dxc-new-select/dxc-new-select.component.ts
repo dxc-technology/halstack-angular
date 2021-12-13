@@ -167,7 +167,7 @@ export class DxcNewSelectComponent implements OnInit {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.optionalOption = { label: this.placeholder, value: "" };
+    this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -181,7 +181,7 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.optionalOption = { label: this.placeholder, value: "" };
+    this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
     this.id = this.id || uuidv4();
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
@@ -439,6 +439,18 @@ export class DxcNewSelectComponent implements OnInit {
     this.isInputVisible = false;
   }
 
+  private setPlaceholderOptional() {
+    if (this.placeholder) {
+      return this.placeholder;
+    } else {
+      if (!this.multiple) {
+        return "Choose an option";
+      } else {
+        return "Choose options";
+      }
+    }
+  }
+
   setPlaceholder() {
     if (this.placeholder) {
       return this.placeholder;
@@ -446,9 +458,11 @@ export class DxcNewSelectComponent implements OnInit {
       if (this.service.getSelectedValues()?.label && !this.multiple) {
         return this.service.getSelectedValues()?.label;
       } else if (!this.multiple && !this.service.getSelectedValues()?.label) {
-        return "Choose an option";
+        this.placeholder = "Choose an option";
+        return this.placeholder;
       } else {
-        return "Choose options";
+        this.placeholder = "Choose options";
+        return this.placeholder;
       }
     }
   }

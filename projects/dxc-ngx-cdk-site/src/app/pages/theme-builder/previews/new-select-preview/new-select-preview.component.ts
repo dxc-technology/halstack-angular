@@ -72,12 +72,10 @@ export class NewSelectPreviewComponent implements OnInit {
   }
 
   onChange(event){
-    this.value = event;
     console.log("onchange:", event);
   }
 
   onBlur(event){
-    this.value = event;
     console.log("onBlur:", event);
   }
 

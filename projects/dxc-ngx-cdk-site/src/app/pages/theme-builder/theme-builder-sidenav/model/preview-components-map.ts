@@ -32,11 +32,11 @@ import { NewInputTextPreviewComponent } from '../../previews/new-input-text-prev
 import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
 import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
 import { FileInputPreviewComponent } from '../../previews/file-input-preview/file-input-preview.component';
+import { NewSelectPreviewComponent } from '../../previews/new-select-preview/new-select-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
 }
-
 
 const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'accordion', component: AccordionPreviewComponent},
@@ -62,6 +62,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},
   {name: 'select', component: SelectPreviewComponent},
+  {name: 'newSelect', component: NewSelectPreviewComponent},
   {name: 'sidenav', component: SidenavPreviewComponent},
   {name: 'slider', component: SliderPreviewComponent},
   {name: 'spinner', component: SpinnerPreviewComponent},

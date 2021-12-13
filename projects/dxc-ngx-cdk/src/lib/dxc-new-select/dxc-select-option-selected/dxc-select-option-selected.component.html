@@ -1,0 +1,24 @@
+<div class="labelsContainer" #labelsContainer>
+  <ng-container *ngIf="!(multiple && searchable)">
+    <span
+      *ngFor="let option of selectedOptions; last as last"
+      class="selectedOption"
+    >
+      <span
+        *ngIf="option?.icon"
+        class="iconLabel"
+        [innerHTML]="option.icon | safeHtml"
+      ></span>
+      <span class="selectedLabel">
+        {{ option.label }} <span *ngIf="!last" class="comma">,</span>
+      </span>
+    </span>
+  </ng-container>
+
+  <span
+    *ngIf="service.getSizeSelectedValues() == 0 || (multiple && searchable)"
+    class="notSelectedLabel"
+  >
+    {{ placeholder }}
+  </span>
+</div>

@@ -601,6 +601,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
     this.formControlUpdater.emit(objDataToEmit);
     this.suppgridForm = this.claimsForm;
+    this.parentForm.markAsDirty();
   }
 
   bindOptions = () => {
@@ -930,7 +931,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     if (this.editMode == 'popup') {
       this.isPopupOpen = true;
     }
-    this.isEditForm = false;
+    this.isEditForm = true;
     this.selectedRowIndex = -1;
     let crudFormModel = {};
     crudFormModel[this.uniqueIdentifier] = "";
@@ -984,8 +985,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
       };
     }
     this.formControlUpdater.emit(dataToEmit);
-
     this.suppgridForm = this.claimsForm;
+    this.parentForm.markAsDirty();
   }
 
   private getSelectedRow() {

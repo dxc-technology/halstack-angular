@@ -251,7 +251,7 @@ export class DxcNewSelectComponent implements OnInit {
   handleOnFocusOut() {
     const options = this.service.getSelectedValues();
     if (this.multiple) {
-      if (options.length > 0) {
+      if (options?.length > 0) {
         const op = options.map((el) => {
           return {
             value: el.value,
@@ -263,7 +263,7 @@ export class DxcNewSelectComponent implements OnInit {
         this.onBlur.emit([]);
       }
     } else {
-      if (options.length > 0) {
+      if (options?.length > 0) {
         this.onBlur.emit({ value: options.value, error: null });
       } else {
         this.onBlur.emit({});

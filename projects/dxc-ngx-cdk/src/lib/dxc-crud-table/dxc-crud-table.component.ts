@@ -931,7 +931,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     if (this.editMode == 'popup') {
       this.isPopupOpen = true;
     }
-    this.isEditForm = true;
+    this.isEditForm = false;
     this.selectedRowIndex = -1;
     let crudFormModel = {};
     crudFormModel[this.uniqueIdentifier] = "";

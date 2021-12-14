@@ -4,11 +4,11 @@
   <div class="container px-0 py-0">
     <div>
       <span class="float-left px-2" *ngIf="showThemeToggle">
-        <mat-icon [ngClass]="[isDarkMode ? 'mat-icon-no-color' : 'mat-icon-colorCss']" class="mat-icon material-icons  float-left pt-3">
+        <mat-icon [ngClass]="[isDarkMode ? 'mat-icon-no-color' : 'mat-icon-theme-color']" class="mat-icon material-icons  float-left pt-3">
             wb_sunny
         </mat-icon>
         <dxc-switch [checked]="isDarkMode" (onChange)="themeChange($event)" [ariaLabel]="switchLabel"></dxc-switch>
-        <mat-icon [ngClass]="[!isDarkMode ? 'mat-icon-no-color' : 'mat-icon-colorCss']" class="mat-icon material-icons float-right pt-3">
+        <mat-icon [ngClass]="[!isDarkMode ? 'mat-icon-no-color' : 'mat-icon-theme-color']" class="mat-icon material-icons float-right pt-3">
             nightlight_round
         </mat-icon>
       </span>

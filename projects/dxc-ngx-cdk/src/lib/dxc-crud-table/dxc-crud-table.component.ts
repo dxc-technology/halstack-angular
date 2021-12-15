@@ -626,6 +626,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.parentForm.markAsPristine();
         this.parentForm.markAsUntouched();
       }
+      this.formControlUpdater.emit({ action: EAction.ONRENDER, data: this.dataSource.data });
     }
     if (this.displayedColumns.length === 0) {
       //// future Implementation

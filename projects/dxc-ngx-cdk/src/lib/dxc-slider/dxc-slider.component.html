@@ -1,35 +1,41 @@
-<span
-  [ngClass]="disabled ? 'disabled-span' : ''"
-  *ngIf="showLimitsValues"
-  [class]="minValueClass"
->
-  {{ minValueLabel }}</span
->
-<mat-slider
-  disableRipple
-  [min]="minValue"
-  [max]="maxValue"
-  [step]="step"
-  [value]="renderedValue"
-  [tickInterval]="tickInterval"
-  [disabled]="disabled"
-  (input)="valueChanged($event)"
-  (mouseup)="mouseUp($event)"
-  [tabIndex]="tabIndexValue"
-></mat-slider>
-<span
-  [ngClass]="disabled ? 'disabled-span' : ''"
-  *ngIf="showLimitsValues"
-  [class]="maxValueClass"
->
-  {{ maxValueLabel }}</span
->
-<dxc-input-text
-  *ngIf="showInput"
-  [value]="renderedValue"
-  [name]="name"
-  [disabled]="disabled"
-  (onChange)="inputValueChanged($event)"
-  [size]="'small'"
-  [tabIndexValue]="tabIndexValue"
-></dxc-input-text>
+<div class="container">
+  <label *ngIf="label" class="sliderLabel"> {{label}}</label>
+  <span *ngIf="helperText" class="sliderHelperText">{{helperText}}</span>
+  <div class="sliderContainer">
+    <span
+    [ngClass]="disabled ? 'disabled-span' : ''"
+    *ngIf="showLimitsValues"
+    [class]="minValueClass"
+    >
+    {{ minValueLabel }}</span
+    >
+    <mat-slider
+    disableRipple
+    [min]="minValue"
+    [max]="maxValue"
+    [step]="step"
+    [value]="renderedValue"
+    [tickInterval]="tickInterval"
+    [disabled]="disabled"
+    (input)="valueChanged($event)"
+    (mouseup)="mouseUp($event)"
+    [tabIndex]="tabIndexValue"
+    ></mat-slider>
+    <span
+    [ngClass]="disabled ? 'disabled-span' : ''"
+    *ngIf="showLimitsValues"
+    [class]="maxValueClass"
+    >
+    {{ maxValueLabel }}</span
+    >
+    <dxc-input-text
+    *ngIf="showInput"
+    [value]="renderedValue"
+    [name]="name"
+    [disabled]="disabled"
+    (onChange)="inputValueChanged($event)"
+    [size]="'small'"
+    [tabIndexValue]="tabIndexValue"
+    ></dxc-input-text>
+  </div>
+</div>

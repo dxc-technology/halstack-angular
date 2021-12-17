@@ -8,6 +8,7 @@ import {
   OnInit,
   SimpleChanges,
   Optional,
+  Self,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -17,11 +18,12 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { spaces } from "../variables";
 
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils]
 })
 export class DxcSliderComponent implements OnInit, OnChanges {
   @HostBinding("class") className;
@@ -51,6 +53,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
 
   @Input() value: number;
   @Input() name: string;
+  @Input() label: string;
+  @Input() helperText: string;
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -68,7 +72,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   }
   private _required;
   @Input() margin: any;
-  @Input() size: string;
+  @Input() size: string = 'fillParent';
   @Input() labelFormatCallback: (value: number) => string | number;
   @Input()
   get tabIndexValue(): number {
@@ -104,7 +108,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     disabled: false,
     required: false,
     margin: null,
-    size: null,
+    size: 'fillParent',
     tabIndexValue: 0,
   });
 
@@ -116,7 +120,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   };
 
   constructor(
-    private utils: CssUtils,
+   @Self() private utils: CssUtils,
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.bgProviderService.$changeColor.subscribe((value) => {
@@ -201,25 +205,59 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     this.onDragEnd.emit(this.renderedValue);
   }
 
-  calculateWidth(inputs) {
-    if (inputs.size === "fillParent") {
-      return this.utils.calculateWidth(this.sizes, inputs);
+    calculateWidth(sizes, inputs) {
+      if (inputs.size === "fillParent") {
+        return css`
+          width: calc(${sizes[inputs.size]} - ${this.getMargin(inputs.margin, "left")} - ${this.getMargin(inputs.margin, "right")});
+        `;
+      }
+        return css`
+          width: ${sizes[inputs.size]};
+        `;
     }
-    return css`
-      width: ${this.sizes[inputs.size]};
-    `;
+
+  private getMargin(paddingOrMargin, side) {
+    if (paddingOrMargin && typeof paddingOrMargin === "object") {
+      return paddingOrMargin[side] && spaces[paddingOrMargin[side]] || '0px';
+    }
+    return (paddingOrMargin && spaces[paddingOrMargin]) || "0px";
+
   }
 
   getDynamicStyle(inputs) {
     return css`
+
+    .container{
       display: flex;
-      align-items: center;
-      ${this.calculateWidth(inputs)}
+      flex-direction: column;
+      ${this.calculateWidth(this.sizes, inputs)}
       ${this.utils.getMargins(inputs.margin)}
-      font-family: var(--slider-fontFamily);
-      font-style: var(--slider-fontStyle);
-      font-weight: var(--slider-fontWeight);
-      letter-spacing: var(--slider-fontLetterSpacing);
+    }
+
+    .sliderLabel{
+      color:  var(--slider-labelFontColor);
+      font-family: var(--slider-labelFontFamily);
+      font-size: var(--slider-labelFontSize);
+      font-style: var(--slider-labelFontStyle);
+      font-weight: var(--slider-labelFontWeight);
+      line-height: var(--slider-labelLineHeight);
+
+    }
+
+    .sliderHelperText{
+      color:  var(--slider-helperTextFontColor);
+      font-family: var(--slider-helperTextFontFamily);
+      font-size: var(--slider-helperTextFontSize);
+      font-style: var(--slider-helperTextFontstyle);
+      font-weight: var(--slider-helperTextFontWeight);
+      line-height: var(--slider-helperTextLineHeight);
+    }
+
+
+    .sliderContainer{
+      display: flex;
+      height: 48px;
+      align-items: center;
 
       .mat-slider-has-ticks .mat-slider-wrapper::after {
         height: var(--slider-tickSize);
@@ -316,8 +354,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
             bottom: calc(var(--slider-thumbVerticalPosition) - 2px);
           }
         }
-        
       }
+    }
+
+
+
       dxc-input-text {
         margin-top: 10px;
         margin-left: 32px;

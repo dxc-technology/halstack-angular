@@ -3,13 +3,14 @@
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
       <dxc-slider
+      label="Test Mode"
+      helperText="Helper text example"
         minValue="0"
         maxValue="100"
         showLimitsValues="true"
         name="input"
         step="1"
-        margin="xsmall"
-        size="large"
+        margin="medium"
       ></dxc-slider>
     </tbuilder-component-mode>
 
@@ -21,8 +22,7 @@
         name="input"
         value="50"
         step="1"
-        margin="xsmall"
-        size="large"
+        margin="medium"
         marks="true"
         disabled
       ></dxc-slider>
@@ -36,8 +36,8 @@
         name="input"
         step="10"
         marks="true"
-        margin="xsmall"
-        size="large"
+        margin="medium"
+
       ></dxc-slider>
     </tbuilder-component-mode>
 
@@ -51,13 +51,12 @@
         step="5"
         [value]="value"
         marks="true"
-        size="large"
-        margin="xsmall"
+        margin="medium"
       ></dxc-slider>
     </tbuilder-component-mode>
   </background-provider>
 
-  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">
       <dxc-slider
@@ -113,5 +112,5 @@
         margin="xsmall"
       ></dxc-slider>
     </tbuilder-component-mode>
-  </background-provider>
+  </background-provider> -->
 </div>

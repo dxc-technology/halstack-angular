@@ -31,7 +31,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
   setOpacity(hexColor: String, newOpacity: number) {
     if (hexColor) {
       const color = Color(hexColor);
-      console.log();
       return (
         "#" + rgbHex(color.color[0], color.color[1], color.color[2], newOpacity)
       );

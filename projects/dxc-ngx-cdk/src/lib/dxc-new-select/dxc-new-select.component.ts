@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  forwardRef,
   HostBinding,
   HostListener,
   Input,
@@ -21,6 +22,7 @@ import { OptionGroup } from "./interfaces/optionGroup.interface";
 import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 interface SelectProperties {
   label: string;
@@ -42,9 +44,14 @@ interface SelectProperties {
 @Component({
   selector: "dxc-new-select",
   templateUrl: "./dxc-new-select.component.html",
-  providers: [DxcNewSelectHelper, CssUtils, SelectService],
+  providers: [DxcNewSelectHelper, CssUtils, SelectService ,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DxcNewSelectComponent),
+      multi: true
+    }],
 })
-export class DxcNewSelectComponent implements OnInit {
+export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
   @HostBinding("class") className;
 
   @Input()
@@ -166,6 +173,26 @@ export class DxcNewSelectComponent implements OnInit {
     private ref: ElementRef
   ) {}
 
+  public onTouched: () => void = () => { };
+  public onChangeRegister = (val) => {
+    console.log('Forms registering a change with value  :',val);
+    this.setInputValue(val) ;
+  };
+
+  writeValue(val: any): void {
+    console.log('Forms value :',val);
+    this.value = val || "";
+  }
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -278,6 +305,11 @@ export class DxcNewSelectComponent implements OnInit {
       }
     } else {
       if (options) {
+
+        if (options.value === ''){
+          this.service.setSelectedValues([]);
+        }
+
         this.onBlur.emit({ value: options.value, error: null });
       } else {
         this.onBlur.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });

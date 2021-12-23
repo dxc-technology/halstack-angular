@@ -1,0 +1,34 @@
+<div class="formLab">
+
+  <dxc-heading [level]="3" weight="normal" text="Using cdk components in angular forms"></dxc-heading>
+
+   <p>Valor: {{ controlledValue }}</p>
+
+  <form [formGroup]="testForm" >
+
+    <dxc-new-input-text
+        placeholder="placeholder"
+        helperText="helper text"
+        name="nameInput"
+        label="Name"
+        formControlName="nameInput"
+        margin="xsmall"
+        clearable="true"
+        [(ngModel)]="name"
+      ></dxc-new-input-text>
+
+     <div><input type="text" formControlName="location"  (ngModel)="location"></div>
+
+      <div
+        class="error"
+        *ngIf="testForm.get('nameInput').hasError('required') && testForm.get('nameInput').touched">
+        Name is required
+      </div>
+
+      <dxc-button  label="Basic Button"
+      (onClick)="onSubmit($event)"
+      margin="medium"></dxc-button>
+
+  </form>
+
+</div>

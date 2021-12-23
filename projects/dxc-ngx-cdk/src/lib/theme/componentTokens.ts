@@ -1238,7 +1238,7 @@ export const componentTokens = {
   "--table-rowSeparatorColor": globalTokens.lightGrey,
   "--table-dataBackgroundColor": globalTokens.hal_white,
   "--table-dataFontFamily": globalTokens.type_sans,
-  "--table-dataFontSize": globalTokens.type_scale_root,
+  "--table-dataFontSize": globalTokens.type_scale_02,
   "--table-dataFontStyle": globalTokens.type_normal,
   "--table-dataFontWeight": globalTokens.type_regular,
   "--table-dataFontColor": globalTokens.hal_black,

@@ -48,7 +48,7 @@ describe("DxcSelect tests", () => {
                         <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
                         <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
                         <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
-                      </dv3-xc-select>`,
+                      </v3-dxc-select>`,
       componentProperties: { changeMock },
       imports: [V3DxcSelectModule],
       excludeComponentDeclaration: true,

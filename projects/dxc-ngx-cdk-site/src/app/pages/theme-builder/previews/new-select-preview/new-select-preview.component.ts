@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Option } from '@dxc-technology/halstack-angular/lib/dxc-new-select/interfaces/option.interface';
-import { OptionGroup } from '@dxc-technology/halstack-angular/lib/dxc-new-select/interfaces/optionGroup.interface';
+import { Option } from '@dxc-technology/halstack-angular/lib/dxc-select/interfaces/option.interface';
+import { OptionGroup } from '@dxc-technology/halstack-angular/lib/dxc-select/interfaces/optionGroup.interface';
 
 @Component({
   selector: 'app-new-select',

@@ -1,19 +1,19 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 
-import { DxcNewSelectComponent } from "./dxc-new-select.component";
-import { DxcNewSelectModule } from "./dxc-new-select.module";
+import { DxcSelectComponent } from "./dxc-select.component";
+import { DxcSelectModule } from "./dxc-select.module";
 import { Option } from "./interfaces/option.interface";
 
-describe("DxcNewSelectComponent tests", () => {
+describe("DxcSelectComponent tests", () => {
   test("should render dxc-select", async () => {
-    const dxcSelect = await render(DxcNewSelectComponent, {
+    const dxcSelect = await render(DxcSelectComponent, {
       componentProperties: {
         label: "Select label",
         helperText: "Helper Text",
       },
       excludeComponentDeclaration: true,
-      imports: [DxcNewSelectModule],
+      imports: [DxcSelectModule],
     });
 
     expect(dxcSelect.getByText("Select label"));
@@ -29,14 +29,14 @@ describe("DxcNewSelectComponent tests", () => {
       { label: "aida", value: "10" },
       { label: "pepe", value: "11" },
     ];
-    const dxcSelect = await render(DxcNewSelectComponent, {
+    const dxcSelect = await render(DxcSelectComponent, {
       componentProperties: {
         label: "Select label",
         helperText: "Helper Text",
         options: array1,
       },
       excludeComponentDeclaration: true,
-      imports: [DxcNewSelectModule],
+      imports: [DxcSelectModule],
     });
 
     expect(dxcSelect.getByText("Select label"));
@@ -55,7 +55,7 @@ describe("DxcNewSelectComponent tests", () => {
       { label: "pepe", value: "11" },
     ];
     const changeMock = jest.fn((x) => {});
-    const dxcSelect = await render(DxcNewSelectComponent, {
+    const dxcSelect = await render(DxcSelectComponent, {
       componentProperties: {
         label: "Select label",
         helperText: "Helper Text",
@@ -65,7 +65,7 @@ describe("DxcNewSelectComponent tests", () => {
         } as any,
         value: "1"
       },
-      imports: [DxcNewSelectModule],
+      imports: [DxcSelectModule],
       excludeComponentDeclaration: true,
     });
     expect(dxcSelect.getByText("Select label"));
@@ -93,7 +93,7 @@ describe("DxcNewSelectComponent tests", () => {
       { label: "pepe", value: "11" },
     ];
     const changeMock = jest.fn((x) => {});
-    const dxcSelect = await render(DxcNewSelectComponent, {
+    const dxcSelect = await render(DxcSelectComponent, {
       componentProperties: {
         label: "Select label",
         helperText: "Helper Text",
@@ -102,7 +102,7 @@ describe("DxcNewSelectComponent tests", () => {
           emit: changeMock,
         } as any,
       },
-      imports: [DxcNewSelectModule],
+      imports: [DxcSelectModule],
       excludeComponentDeclaration: true,
     });
     expect(dxcSelect.getByText("Select label"));

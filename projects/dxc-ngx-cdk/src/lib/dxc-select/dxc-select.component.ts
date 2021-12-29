@@ -15,7 +15,7 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { DxcNewSelectHelper } from "./dxc-new-select.helper";
+import { DxcSelectHelper } from "./dxc-select.helper";
 import { Option } from "./interfaces/option.interface";
 import { OptionGroup } from "./interfaces/optionGroup.interface";
 import { v4 as uuidv4 } from "uuid";
@@ -40,11 +40,11 @@ interface SelectProperties {
 }
 
 @Component({
-  selector: "dxc-new-select",
-  templateUrl: "./dxc-new-select.component.html",
-  providers: [DxcNewSelectHelper, CssUtils, SelectService],
+  selector: "dxc-select",
+  templateUrl: "./dxc-select.component.html",
+  providers: [DxcSelectHelper, CssUtils, SelectService],
 })
-export class DxcNewSelectComponent implements OnInit {
+export class DxcSelectComponent implements OnInit {
   @HostBinding("class") className;
 
   @Input()
@@ -161,7 +161,7 @@ export class DxcNewSelectComponent implements OnInit {
   }
 
   constructor(
-    private helper: DxcNewSelectHelper,
+    private helper: DxcSelectHelper,
     public service: SelectService,
     private ref: ElementRef
   ) {}

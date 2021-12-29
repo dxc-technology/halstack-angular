@@ -3,7 +3,7 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { Subject } from "rxjs";
 @Injectable()
-export class DxcNewSelectHelper {
+export class DxcSelectHelper {
   sizes = {
     small: "240px",
     medium: "360px",
@@ -289,7 +289,7 @@ export class DxcNewSelectHelper {
             }
           }
           &.lastItem .optionsGroup li.lastItemGroup,
-          &.lastItem > dxc-new-select-option {
+          &.lastItem > dxc-select-option {
             .optionLabel {
               border-bottom: none;
             }

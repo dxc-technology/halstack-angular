@@ -44,7 +44,7 @@ import {
   DxcNewDateModule,
   DxcNewTextareaModule,
   DxcFileInputModule,
-  DxcNewSelectModule
+  DxcSelectModule
 } from "@dxc-technology/halstack-angular";
 import { AlertPreviewComponent } from "./previews/alert-preview/alert-preview.component";
 import { WizardPreviewComponent } from "./previews/wizard-preview/wizard-preview.component";
@@ -165,7 +165,7 @@ import { NewSelectPreviewComponent } from './previews/new-select-preview/new-sel
     BackgroundProviderModule,
     DxcNewTextareaModule,
     DxcFileInputModule,
-    DxcNewSelectModule
+    DxcSelectModule
   ],
   exports: [],
   entryComponents: [],

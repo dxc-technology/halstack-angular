@@ -11,7 +11,7 @@ import {
 } from "@angular/material-moment-adapter";
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
-import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { DxcInputTextModule } from "../dxc-input-text/dxc-input-text.module";
 
 describe("DxcDate", () => {
   const newMockDate = new Date("1995/12/03");

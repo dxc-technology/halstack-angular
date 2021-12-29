@@ -98,10 +98,10 @@ export * from './lib/dxc-tabs/dxc-tabs.module';
 export * from './lib/dxc-tabs/dxc-tab/dxc-tab.component';
 export * from './lib/dxc-tabs/dxc-tab/dxc-tab-icon/dxc-tab-icon.component';
 
-export * from './lib/dxc-text-input/dxc-input-text.component';
-export * from './lib/dxc-text-input/dxc-input-text.module';
-export * from './lib/dxc-text-input/dxc-input-prefix-icon/dxc-input-prefix-icon.component';
-export * from './lib/dxc-text-input/dxc-input-suffix-icon/dxc-input-suffix-icon.component';
+export * from './lib/dxc-input-text/dxc-input-text.component';
+export * from './lib/dxc-input-text/dxc-input-text.module';
+export * from './lib/dxc-input-text/dxc-input-prefix-icon/dxc-input-prefix-icon.component';
+export * from './lib/dxc-input-text/dxc-input-suffix-icon/dxc-input-suffix-icon.component';
 
 export * from './lib/dxc-new-input-text/dxc-new-input-text.component';
 export * from './lib/dxc-new-input-text/dxc-new-input-text.module';

@@ -118,8 +118,8 @@ export * from './lib/dxc-password/dxc-password.module';
 export * from './lib/dxc-number/dxc-number.component';
 export * from './lib/dxc-number/dxc-number.module';
 
-export * from './lib/dxc-textarea/dxc-textarea.component';
-export * from './lib/dxc-textarea/dxc-textarea.module';
+export * from './lib/v3-dxc-textarea/v3-dxc-textarea.component';
+export * from './lib/v3-dxc-textarea/v3-dxc-textarea.module';
 
 export * from './lib/dxc-upload/dxc-upload.component';
 export * from './lib/dxc-upload/dxc-upload.module';

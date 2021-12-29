@@ -7,7 +7,7 @@ The DXC Textarea Component allows the user to introduce text with multiline.
 ## Usage
 
 ```html
-<dxc-textarea
+<v3-dxc-textarea
   label="Textarea label"
   [value]="inputValue"
   assistiveText="assistive text"
@@ -15,19 +15,19 @@ The DXC Textarea Component allows the user to introduce text with multiline.
   margin="medium"
   required="true"
 >
-</dxc-textarea>
+</v3-dxc-textarea>
 ```
 
-Include the **DXCTextareaModule** into **app.module.ts** to use the textarea component:
+Include the **V3DxcTextareaModule** into **app.module.ts** to use the textarea component:
 
 ```ts
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { DXCTextareaModule } from "@dxc-technology/halstack-angular";
+import { V3DxcTextareaModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [DXCTextareaModule],
+  imports: [V3DxcTextareaModule],
   providers: [],
   bootstrap: [AppComponent],
 })

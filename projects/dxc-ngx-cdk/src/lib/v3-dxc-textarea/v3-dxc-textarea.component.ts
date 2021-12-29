@@ -22,12 +22,12 @@ import {
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
-  selector: "dxc-textarea",
-  templateUrl: "./dxc-textarea.component.html",
+  selector: "v3-dxc-textarea",
+  templateUrl: "./v3-dxc-textarea.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils],
 })
-export class DxcTextareaComponent
+export class V3DxcTextareaComponent
   implements OnInit, OnChanges, AfterViewChecked
 {
   @HostBinding("class") className;

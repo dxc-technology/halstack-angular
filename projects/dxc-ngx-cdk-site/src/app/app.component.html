@@ -4,18 +4,18 @@
     [padding]="{ right: 'medium', left: 'medium' }"
   >
     <div id="unresponsive" class="headerContent">
-      <dxc-select
+      <v3-dxc-select
         (onChange)="selectVersion($event)"
         size="fillParent"
         [value]="selectedVersion"
         size="small"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let version of versions"
           [label]="version.label"
           [value]="version.value"
-        ></dxc-select-option>
-      </dxc-select>
+        ></v3-dxc-select-option>
+      </v3-dxc-select>
       <a
         class="header-link"
         routerLinkActive="active-route"
@@ -79,17 +79,17 @@
           >
         </li>
         <li style="width: 100px">
-          <dxc-select
+          <v3-dxc-select
             (onChange)="selectVersion($event)"
             size="fillParent"
             [value]="selectedVersion"
           >
-            <dxc-select-option
+            <v3-dxc-select-option
               *ngFor="let version of versions"
               [label]="version.label"
               [value]="version.value"
-            ></dxc-select-option>
-          </dxc-select>
+            ></v3-dxc-select-option>
+          </v3-dxc-select>
         </li>
         <li style="margin: 10px 0px; padding: 0">
           <a

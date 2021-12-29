@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ThemeService, DxcHeaderModule, DxcFooterModule, ThemeModule, DxcSelectModule, DxcApplicationLayoutModule } from '@dxc-technology/halstack-angular';
+import { ThemeService, DxcHeaderModule, DxcFooterModule, ThemeModule, V3DxcSelectModule, DxcApplicationLayoutModule } from '@dxc-technology/halstack-angular';
 import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
 import { AlertModule } from './pages/alert/alert.module';
@@ -117,7 +117,7 @@ import { NewSelectModule } from './pages/new-select/new-select.module';
     SliderModule,
     HeadingModule,
     ResultsetTableModule,
-    DxcSelectModule,
+    V3DxcSelectModule,
     ToggleGroupModule,
     DxcApplicationLayoutModule,
     ScullyLibModule,

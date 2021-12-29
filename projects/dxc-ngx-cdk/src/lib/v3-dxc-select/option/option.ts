@@ -358,8 +358,8 @@ export class _MatOptionBase
  * Single option inside of a `<mat-select>` element.
  */
 @Component({
-  selector: "dxc-select-option",
-  exportAs: "DxcSelectOption",
+  selector: "v3-dxc-select-option",
+  exportAs: "V3DxcSelectOption",
   host: {
     role: "option",
     "[attr.tabindex]": "_getTabIndex()",
@@ -380,7 +380,7 @@ export class _MatOptionBase
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DxcSelectOption extends _MatOptionBase {
+export class V3DxcSelectOption extends _MatOptionBase {
   constructor(
     element: ElementRef<HTMLElement>,
     changeDetectorRef: ChangeDetectorRef,

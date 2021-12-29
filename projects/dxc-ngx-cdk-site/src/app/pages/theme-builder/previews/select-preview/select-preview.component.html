@@ -2,48 +2,48 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <div>
     <tbuilder-component-mode text="Default">
-      <dxc-select
+      <v3-dxc-select
         label="Default Select"
         margin="xsmall"
         assistiveText="Assistive text"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let option of optionsWithoutIcon"
           [label]="option.label"
           [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
+        ></v3-dxc-select-option>
+      </v3-dxc-select>
 
-      <dxc-select
+      <v3-dxc-select
         label="Default Select"
         margin="xsmall"
         required
         assistiveText="Assistive text"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let option of optionsWithoutIcon"
           [label]="option.label"
           [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
+        ></v3-dxc-select-option>
+      </v3-dxc-select>
 
-      <dxc-select
+      <v3-dxc-select
         label="Icon Select"
         margin="xsmall"
         assistiveText="Assistive text"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let option of optionsWithIconAndLabels"
           [label]="option.label"
           [value]="option.value"
         >
           <dxc-option-icon><img [src]="option.iconSrc" /></dxc-option-icon>
-        </dxc-select-option>
-      </dxc-select>
+        </v3-dxc-select-option>
+      </v3-dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Multiple">
-      <dxc-select
+      <v3-dxc-select
         label="Multiple Select"
         multiple="true"
         margin="xsmall"
@@ -52,15 +52,15 @@
         assistiveText="Assistive text"
         (onChange)="onChange($event)"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let element of optionsWithoutIcon"
           [label]="element.label"
           [value]="element.value"
         >
-        </dxc-select-option>
-      </dxc-select>
+        </v3-dxc-select-option>
+      </v3-dxc-select>
 
-      <dxc-select
+      <v3-dxc-select
         label="Invalid Select"
         multiple="true"
         margin="xsmall"
@@ -70,28 +70,28 @@
         (onChange)="onChange($event)"
         [invalid]="true"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let element of optionsWithoutIcon"
           [label]="element.label"
           [value]="element.value"
         >
-        </dxc-select-option>
-      </dxc-select>
+        </v3-dxc-select-option>
+      </v3-dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
-      <dxc-select
+      <v3-dxc-select
         label="Default Select"
         margin="xsmall"
         [disabled]="true"
         assistiveText="Assistive text"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let option of optionsWithoutIcon"
           [label]="option.label"
           [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
+        ></v3-dxc-select-option>
+      </v3-dxc-select>
     </tbuilder-component-mode>
   </div>
 

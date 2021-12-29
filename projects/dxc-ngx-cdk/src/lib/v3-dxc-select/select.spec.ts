@@ -1,19 +1,19 @@
 import { render, fireEvent } from "@testing-library/angular";
-import { DxcSelectModule } from "./select-module";
-import { DxcSelectComponent } from "./select";
+import { V3DxcSelectModule } from "./select-module";
+import { V3DxcSelectComponent } from "./select";
 import { screen } from "@testing-library/dom";
 import { flush } from "@angular/core/testing";
 
 describe("DxcSelect tests", () => {
   test("should render dxc-select", async () => {
-    const dxcSelect = await render(DxcSelectComponent, {
-      template: `<dxc-select label="Select label">,
-                      <dxc-select-option value="Facebook" label="Facebook"></dxc-select-option>
-                      <dxc-select-option value="Twitter" label="Twitter"></dxc-select-option>
-                      <dxc-select-option value="Linkedin" label="Linkedin"></dxc-select-option>
-                    </dxc-select>`,
+    const dxcSelect = await render(V3DxcSelectComponent, {
+      template: `<v3-dxc-select label="Select label">,
+                      <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
+                      <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
+                      <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
+                    </v3-dxc-select>`,
       componentProperties: {},
-      imports: [DxcSelectModule],
+      imports: [V3DxcSelectModule],
       excludeComponentDeclaration: true,
     });
 
@@ -22,14 +22,14 @@ describe("DxcSelect tests", () => {
 
   test("dxc-select options", async () => {
     const changeMock = jest.fn((x) => {});
-    const dxcSelect = await render(DxcSelectComponent, {
-      template: `<dxc-select label="Select label" (onChange)="changeMock($event)">,
-                        <dxc-select-option value="Facebook" label="Facebook"></dxc-select-option>
-                        <dxc-select-option value="Twitter" label="Twitter"></dxc-select-option>
-                        <dxc-select-option value="Linkedin" label="Linkedin"></dxc-select-option>
-                      </dxc-select>`,
+    const dxcSelect = await render(V3DxcSelectComponent, {
+      template: `<v3-dxc-select label="Select label" (onChange)="changeMock($event)">,
+                        <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
+                        <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
+                        <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
+                      </v3-dxc-select>`,
       componentProperties: { changeMock },
-      imports: [DxcSelectModule],
+      imports: [V3DxcSelectModule],
       excludeComponentDeclaration: true,
     });
 
@@ -43,14 +43,14 @@ describe("DxcSelect tests", () => {
 
  test("dxc-select uncontrolled functionality", async () => {
     const changeMock = jest.fn((x) => {});
-    const dxcSelect = await render(DxcSelectComponent, {
-      template: `<dxc-select label="Select label" (onChange)="changeMock($event)">,
-                        <dxc-select-option value="Facebook" label="Facebook"></dxc-select-option>
-                        <dxc-select-option value="Twitter" label="Twitter"></dxc-select-option>
-                        <dxc-select-option value="Linkedin" label="Linkedin"></dxc-select-option>
-                      </dxc-select>`,
+    const dxcSelect = await render(V3DxcSelectComponent, {
+      template: `<v3-dxc-select label="Select label" (onChange)="changeMock($event)">,
+                        <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
+                        <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
+                        <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
+                      </v3-dxc-select>`,
       componentProperties: { changeMock },
-      imports: [DxcSelectModule],
+      imports: [V3DxcSelectModule],
       excludeComponentDeclaration: true,
     });
 
@@ -68,14 +68,14 @@ describe("DxcSelect tests", () => {
 
     test("dxc-select controlled functionality", async () => {
         const changeMock = jest.fn((x) => {});
-        const dxcSelect = await render(DxcSelectComponent, {
-          template: `<dxc-select label="Select label" value="Twitter" (onChange)="changeMock($event)">,
-                            <dxc-select-option value="Facebook" label="Facebook"></dxc-select-option>
-                            <dxc-select-option value="Twitter" label="Twitter"></dxc-select-option>
-                            <dxc-select-option value="Linkedin" label="Linkedin"></dxc-select-option>
-                          </dxc-select>`,
+        const dxcSelect = await render(V3DxcSelectComponent, {
+          template: `<v3-dxc-select label="Select label" value="Twitter" (onChange)="changeMock($event)">,
+                            <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
+                            <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
+                            <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
+                          </v3-dxc-select>`,
           componentProperties: { changeMock },
-          imports: [DxcSelectModule],
+          imports: [V3DxcSelectModule],
           excludeComponentDeclaration: true,
         });
     
@@ -94,14 +94,14 @@ describe("DxcSelect tests", () => {
 
     test("dxc-select uncontrolled multiple functionality", async () => {
         const changeMock = jest.fn((x) => {});
-        const dxcSelect = await render(DxcSelectComponent, {
-          template: `<dxc-select label="Select label" multiple="true"(onChange)="changeMock($event)">,
-                            <dxc-select-option value="Facebook" label="Facebook"></dxc-select-option>
-                            <dxc-select-option value="Twitter" label="Twitter"></dxc-select-option>
-                            <dxc-select-option value="Linkedin" label="Linkedin"></dxc-select-option>
-                          </dxc-select>`,
+        const dxcSelect = await render(V3DxcSelectComponent, {
+          template: `<v3-dxc-select label="Select label" multiple="true"(onChange)="changeMock($event)">,
+                            <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
+                            <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
+                            <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
+                          </v3-dxc-select>`,
           componentProperties: { changeMock },
-          imports: [DxcSelectModule],
+          imports: [V3DxcSelectModule],
           excludeComponentDeclaration: true,
         });
     
@@ -122,14 +122,14 @@ describe("DxcSelect tests", () => {
     test("dxc-select controlled multiple functionality", async () => {
         const changeMock = jest.fn((x) => {});
         const initValue = ["Twitter"];
-        const dxcSelect = await render(DxcSelectComponent, {
-          template: `<dxc-select label="Select label" [value]="initValue" multiple="true"(onChange)="changeMock($event)">,
-                            <dxc-select-option value="Facebook" label="Facebook"></dxc-select-option>
-                            <dxc-select-option value="Twitter" label="Twitter"></dxc-select-option>
-                            <dxc-select-option value="Linkedin" label="Linkedin"></dxc-select-option>
-                          </dxc-select>`,
+        const dxcSelect = await render(V3DxcSelectComponent, {
+          template: `<v3-dxc-select label="Select label" [value]="initValue" multiple="true"(onChange)="changeMock($event)">,
+                            <v3-dxc-select-option value="Facebook" label="Facebook"></v3-dxc-select-option>
+                            <v3-dxc-select-option value="Twitter" label="Twitter"></v3-dxc-select-option>
+                            <v3-dxc-select-option value="Linkedin" label="Linkedin"></v3-dxc-select-option>
+                          </v3-dxc-select>`,
           componentProperties: { changeMock, initValue },
-          imports: [DxcSelectModule],
+          imports: [V3DxcSelectModule],
           excludeComponentDeclaration: true,
         });
     

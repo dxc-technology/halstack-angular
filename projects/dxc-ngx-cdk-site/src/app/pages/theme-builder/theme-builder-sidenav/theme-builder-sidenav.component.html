@@ -3,16 +3,16 @@
     <h1 class="sidenav-title">Theme Builder</h1>
   </div>
   <div>
-    <dxc-select
+    <v3-dxc-select
       label="Type"
       margin="small"
       size="fillParent"
       (onChange)="onThemeTypeChange($event)"
       [value]="selectedThemeComponent.themeType"
     >
-      <dxc-select-option value="default" label="Default"></dxc-select-option>
-      <dxc-select-option value="advanced" label="Advanced"></dxc-select-option>
-    </dxc-select>
+      <v3-dxc-select-option value="default" label="Default"></v3-dxc-select-option>
+      <v3-dxc-select-option value="advanced" label="Advanced"></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
   <div class="sidenav-links">
     <div class="nav-item">

@@ -96,7 +96,7 @@ import {
 } from "./common-behaviors/error-state";
 import {
   _MatOptionBase,
-  DxcSelectOption,
+  V3DxcSelectOption,
   MatOptionSelectionChange,
   _getOptionScrollPosition,
 } from "./option/option";
@@ -214,7 +214,7 @@ export const MAT_SELECT_SCROLL_STRATEGY_PROVIDER = {
 export class MatSelectChange {
   constructor(
     /** Reference to the select that emitted the change event. */
-    public source: DxcSelectComponent,
+    public source: V3DxcSelectComponent,
     /** Current value of the select that emitted the event. */
     public value: any
   ) {}
@@ -319,10 +319,10 @@ export abstract class _MatSelectBase<C>
   _ariaDescribedby: string;
 
   /** Deals with the selection logic. */
-  _selectionModel: SelectionModel<DxcSelectOption>;
+  _selectionModel: SelectionModel<V3DxcSelectOption>;
 
   /** Manages keyboard events for options in the panel. */
-  _keyManager: ActiveDescendantKeyManager<DxcSelectOption>;
+  _keyManager: ActiveDescendantKeyManager<V3DxcSelectOption>;
 
   /** `View -> model callback called when value changes` */
   _onChange: (value: any) => void = () => {};
@@ -640,7 +640,7 @@ export abstract class _MatSelectBase<C>
   }
 
   ngOnInit() {
-    this._selectionModel = new SelectionModel<DxcSelectOption>(this.multiple);
+    this._selectionModel = new SelectionModel<V3DxcSelectOption>(this.multiple);
     this.stateChanges.next();
 
     // We need `distinctUntilChanged` here, because some browsers will
@@ -792,7 +792,7 @@ export abstract class _MatSelectBase<C>
   }
 
   /** The currently selected option. */
-  get selected(): DxcSelectOption | DxcSelectOption[] {
+  get selected(): V3DxcSelectOption | V3DxcSelectOption[] {
     return this.multiple
       ? this._selectionModel.selected
       : this._selectionModel.selected[0];
@@ -862,7 +862,7 @@ export abstract class _MatSelectBase<C>
         // We set a duration on the live announcement, because we want the live element to be
         // cleared after a while so that users can't navigate to it using the arrow keys.
         this._liveAnnouncer.announce(
-          (selectedOption as DxcSelectOption).viewValue,
+          (selectedOption as V3DxcSelectOption).viewValue,
           10000
         );
       }
@@ -1005,8 +1005,8 @@ export abstract class _MatSelectBase<C>
    * Finds and selects and option based on its value.
    * @returns Option that has the corresponding value.
    */
-  private _selectValue(value: any): DxcSelectOption | undefined {
-    const correspondingOption = this.options.find((option: DxcSelectOption) => {
+  private _selectValue(value: any): V3DxcSelectOption | undefined {
+    const correspondingOption = this.options.find((option: V3DxcSelectOption) => {
       try {
         // Treat null as a special reset value.
         return option.value != null && this._compareWith(option.value, value);
@@ -1024,7 +1024,7 @@ export abstract class _MatSelectBase<C>
 
   /** Sets up a key manager to listen to keyboard events on the overlay panel. */
   private _initKeyManager() {
-    this._keyManager = new ActiveDescendantKeyManager<DxcSelectOption>(
+    this._keyManager = new ActiveDescendantKeyManager<V3DxcSelectOption>(
       this.options
     )
       .withTypeAhead(this._typeaheadDebounceInterval)
@@ -1100,7 +1100,7 @@ export abstract class _MatSelectBase<C>
       });
   }
 
-  checkSelectIcons(option: DxcSelectOption) {
+  checkSelectIcons(option: V3DxcSelectOption) {
     if (
       option &&
       option._element &&
@@ -1126,7 +1126,7 @@ export abstract class _MatSelectBase<C>
   }
 
   /** Invoked when an option is clicked. */
-  private _onSelect(option: DxcSelectOption, isUserInput: boolean): void {
+  private _onSelect(option: V3DxcSelectOption, isUserInput: boolean): void {
     const wasSelected = this._selectionModel.isSelected(option);
 
     if (this.controlled && !this._multiple && isUserInput) {
@@ -1205,12 +1205,12 @@ export abstract class _MatSelectBase<C>
     let valueToEmit: any = null;
 
     if (this.multiple) {
-      valueToEmit = (this.selected as DxcSelectOption[]).map(
+      valueToEmit = (this.selected as V3DxcSelectOption[]).map(
         (option) => option.value
       );
     } else {
       valueToEmit = this.selected
-        ? (this.selected as DxcSelectOption).value
+        ? (this.selected as V3DxcSelectOption).value
         : fallbackValue;
     }
 
@@ -1466,8 +1466,8 @@ export abstract class _MatSelectBase<C>
 }
 
 @Component({
-  selector: "dxc-select",
-  exportAs: "DxcSelectComponent",
+  selector: "v3-dxc-select",
+  exportAs: "V3DxcSelectComponent",
   templateUrl: "select.html",
   styleUrls: ["select.scss"],
   inputs: ["disabled", "disableRipple", "tabIndex", "invalid"],
@@ -1505,13 +1505,13 @@ export abstract class _MatSelectBase<C>
     matSelectAnimations.transformPanel,
   ],
   providers: [
-    { provide: MatFormFieldControl, useExisting: DxcSelectComponent },
-    { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelectComponent },
+    { provide: MatFormFieldControl, useExisting: V3DxcSelectComponent },
+    { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: V3DxcSelectComponent },
     SelectService,
     CssUtils
   ],
 })
-export class DxcSelectComponent
+export class V3DxcSelectComponent
   extends _MatSelectBase<MatSelectChange>
   implements OnInit
 {
@@ -1534,8 +1534,8 @@ export class DxcSelectComponent
    */
   _offsetY = 0;
 
-  @ContentChildren(DxcSelectOption, { descendants: true })
-  options: QueryList<DxcSelectOption>;
+  @ContentChildren(V3DxcSelectOption, { descendants: true })
+  options: QueryList<V3DxcSelectOption>;
 
   @ContentChild(MAT_SELECT_TRIGGER) customTrigger: MatSelectTrigger;
 

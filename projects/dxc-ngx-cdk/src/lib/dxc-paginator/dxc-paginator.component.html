@@ -2,19 +2,19 @@
   <div class="labels-container">
     <span *ngIf="itemsPerPageOptions" class="items-per-page">
       <span>Items per page</span>
-      <dxc-select
+      <v3-dxc-select
         (onChange)="onItemsPerPageHandler($event)"
         [value]="itemsPerPage"
         [margin]="selectMargin"
         size="small"
         [tabIndexValue]="tabIndexValue"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let option of selectOptions"
           [label]="option.label"
           [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
+        ></v3-dxc-select-option>
+      </v3-dxc-select>
     </span>
 
     <span class="total-items-container">
@@ -74,19 +74,19 @@
     </span>
     <span *ngIf="showGoToPage" class="go-to-page">
       <span>Go to page</span>
-      <dxc-select
+      <v3-dxc-select
         (onChange)="goToPageHandler($event)"
         [value]="currentPage"
         [margin]="selectMargin"
         size="small"
         [tabIndexValue]="tabIndexValue"
       >
-        <dxc-select-option
+        <v3-dxc-select-option
           *ngFor="let item of [].constructor(totalPages); let i = index"
           [label]="i + 1"
           [value]="i + 1"
-        ></dxc-select-option>
-      </dxc-select>
+        ></v3-dxc-select-option>
+      </v3-dxc-select>
     </span>
     <dxc-button
       *ngIf="showNext"

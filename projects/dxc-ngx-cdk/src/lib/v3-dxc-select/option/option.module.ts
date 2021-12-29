@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatRippleModule } from '../ripple/index';
 import { MatCommonModule } from '../common-behaviors/common-module';
-import { DxcSelectOption } from './option';
+import { V3DxcSelectOption } from './option';
 import { DxcCheckboxModule } from '../../dxc-checkbox/dxc-checkbox.module';
 import { DxcOptionIconComponent } from './dxc-option-icon/dxc-option-icon.component';
 import { BackgroundProviderModule } from "../../background-provider/background-provider.module";
@@ -18,8 +18,8 @@ import { BackgroundProviderModule } from "../../background-provider/background-p
 
 @NgModule({
   imports: [MatRippleModule, CommonModule, MatCommonModule, DxcCheckboxModule, BackgroundProviderModule],
-  exports: [DxcSelectOption, DxcOptionIconComponent],
-  declarations: [DxcSelectOption, DxcOptionIconComponent]
+  exports: [V3DxcSelectOption, DxcOptionIconComponent],
+  declarations: [V3DxcSelectOption, DxcOptionIconComponent]
 })
 export class DxcOptionModule { }
 

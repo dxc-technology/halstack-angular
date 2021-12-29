@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcSelectModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, V3DxcSelectModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -32,7 +32,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     TabbedSectionModule,
     ExampleViewerModule,
     DxcTableModule,
-    DxcSelectModule,
+    V3DxcSelectModule,
     DxcTagModule,
     CodePlaygroundModule,
     CodesandboxViewerModule,

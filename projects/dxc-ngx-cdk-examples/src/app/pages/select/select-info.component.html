@@ -13,14 +13,14 @@
   <h4>Compund select</h4> -->
 
   <div>
-    <dxc-select
+    <v3-dxc-select
       label="label "
       multiple="true"
       margin="medium"
       iconPosition="after"
       size="large"
     >
-      <dxc-select-option value="option1" label="Sushi"
+      <v3-dxc-select-option value="option1" label="Sushi"
         ><dxc-option-icon
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,47 +32,47 @@
             <path
               d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
             /></svg></dxc-option-icon
-      ></dxc-select-option>
-      <dxc-select-option value="option2" label="Pizza" disabled></dxc-select-option>
-      <dxc-select-option value="option3" label="Burritos"></dxc-select-option>
-    </dxc-select>
+      ></v3-dxc-select-option>
+      <v3-dxc-select-option value="option2" label="Pizza" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option3" label="Burritos"></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
 
   <div>
-    <dxc-select
+    <v3-dxc-select
       label="label label labe label"
       (onChange)="onMultipleChange($event)"
       [value]="multipleValue"
       multiple="true"
     >
-      <dxc-select-option value="option21" label="Sushi"></dxc-select-option>
-      <dxc-select-option value="option22" label="Pizza" disabled></dxc-select-option>
-      <dxc-select-option value="option23" label="Burritos"></dxc-select-option>
-    </dxc-select>
+      <v3-dxc-select-option value="option21" label="Sushi"></v3-dxc-select-option>
+      <v3-dxc-select-option value="option22" label="Pizza" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option23" label="Burritos"></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
 
   <div>
-    <dxc-select
+    <v3-dxc-select
       label="label label labe label"
       assistiveText="assistiveText"
       (onChange)="onMultipleChange($event)"
       [value]="multipleValue"
       multiple="true"
     >
-      <dxc-select-option value="option21" label="Sushi"></dxc-select-option>
-      <dxc-select-option value="option22" label="Pizza" disabled></dxc-select-option>
-      <dxc-select-option value="option23" label="Burritos"></dxc-select-option>
-    </dxc-select>
+      <v3-dxc-select-option value="option21" label="Sushi"></v3-dxc-select-option>
+      <v3-dxc-select-option value="option22" label="Pizza" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option23" label="Burritos"></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
 
   <div>
-    <dxc-select
+    <v3-dxc-select
       label="label"
       assistiveText="assistiveText"
       (onChange)="onChange($event)"
       [value]="value"
     >
-      <dxc-select-option value="option31" label="Sushi"
+      <v3-dxc-select-option value="option31" label="Sushi"
         ><dxc-option-icon
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -84,15 +84,15 @@
             <path
               d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
             /></svg></dxc-option-icon
-      ></dxc-select-option>
-      <dxc-select-option value="option32" label="Pizza" disabled></dxc-select-option>
-      <dxc-select-option value="option33" label="Burritos"></dxc-select-option>
-    </dxc-select>
+      ></v3-dxc-select-option>
+      <v3-dxc-select-option value="option32" label="Pizza" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option33" label="Burritos"></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
 
   <div>
-    <dxc-select label="label" assistiveText="assistiveText">
-      <dxc-select-option value="option41" label="Sushi"
+    <v3-dxc-select label="label" assistiveText="assistiveText">
+      <v3-dxc-select-option value="option41" label="Sushi"
         ><dxc-option-icon
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -104,15 +104,15 @@
             <path
               d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
             /></svg></dxc-option-icon
-      ></dxc-select-option>
-      <dxc-select-option value="option42" label="Pizza" disabled></dxc-select-option>
-      <dxc-select-option value="option43" label="Burritos"></dxc-select-option>
-    </dxc-select>
+      ></v3-dxc-select-option>
+      <v3-dxc-select-option value="option42" label="Pizza" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option43" label="Burritos"></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
 
   <div>
     <h4>Disabled</h4>
-    <dxc-select
+    <v3-dxc-select
       label="label label labe label"
       assistiveText="assistiveText"
       (onChange)="onMultipleChange($event)"
@@ -120,10 +120,10 @@
       multiple="true"
       disabled
     >
-      <dxc-select-option value="option21" label="Sushi" disabled></dxc-select-option>
-      <dxc-select-option value="option22" label="Pizza" disabled></dxc-select-option>
-      <dxc-select-option value="option23" label="Burritos" disabled></dxc-select-option>
-    </dxc-select>
+      <v3-dxc-select-option value="option21" label="Sushi" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option22" label="Pizza" disabled></v3-dxc-select-option>
+      <v3-dxc-select-option value="option23" label="Burritos" disabled></v3-dxc-select-option>
+    </v3-dxc-select>
   </div>
 
 

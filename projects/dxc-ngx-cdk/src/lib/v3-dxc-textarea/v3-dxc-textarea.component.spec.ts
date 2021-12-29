@@ -1,12 +1,12 @@
 import { render, fireEvent } from "@testing-library/angular";
-import { DxcTextareaComponent } from "./dxc-textarea.component";
+import { V3DxcTextareaComponent } from "./v3-dxc-textarea.component";
 import { MatInputModule } from "@angular/material/input";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 describe("DxcTextareaComponent", () => {
   test("should render dxc-textarea", async () => {
-    const { getByText } = await render(DxcTextareaComponent, {
+    const { getByText } = await render(V3DxcTextareaComponent, {
       componentProperties: {
         label: "test-textarea",
         assistiveText: "assistive text",
@@ -27,7 +27,7 @@ describe("DxcTextareaComponent", () => {
     const onInputFunction = jest.fn();
     const onBlurFunction = jest.fn();
     const newValue = "new value";
-    const { getByRole } = await render(DxcTextareaComponent, {
+    const { getByRole } = await render(V3DxcTextareaComponent, {
       componentProperties: {
         label: "test-textarea",
         onChange: { emit: onInputFunction } as any,
@@ -53,7 +53,7 @@ describe("DxcTextareaComponent", () => {
     const onBlurFunction = jest.fn();
     const newValue = "new value";
     const defaultValue = "default value";
-    const dxcText = await render(DxcTextareaComponent, {
+    const dxcText = await render(V3DxcTextareaComponent, {
       componentProperties: {
         label: "test-textarea",
         value: defaultValue,

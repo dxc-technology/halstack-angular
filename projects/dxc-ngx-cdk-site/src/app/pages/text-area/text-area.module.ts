@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcLinkModule, DxcTagModule, DxcTextareaModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcLinkModule, DxcTagModule, V3DxcTextareaModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TextAreaComponent } from './text-area.component';
@@ -26,7 +26,7 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    DxcTextareaModule,
+    V3DxcTextareaModule,
     ExampleViewerModule,
     CodesandboxViewerModule,
     DxcLinkModule,

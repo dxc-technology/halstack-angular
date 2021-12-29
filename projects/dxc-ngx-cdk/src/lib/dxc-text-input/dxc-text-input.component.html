@@ -5,7 +5,7 @@
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="inputContainer">
   <span (click)="focusInput()"
-    ><ng-content select="dxc-input-text-prefix"></ng-content
+    ><ng-content select="dxc-text-input-prefix"></ng-content
   ></span>
   <input
     #inputRef
@@ -79,7 +79,7 @@
     aria-label="Action"
     [tabindex]="tabIndex"
   >
-    <ng-content select="dxc-new-input-text-action"></ng-content>
+    <ng-content select="dxc-text-input-action"></ng-content>
   </button>
   <button
     #stepButtonMinus
@@ -120,7 +120,7 @@
     </svg>
   </button>
   <span (click)="focusInput()">
-    <ng-content select="dxc-input-text-suffix"></ng-content>
+    <ng-content select="dxc-text-input-suffix"></ng-content>
   </span>
   <ul
     #autoSuggestOptions

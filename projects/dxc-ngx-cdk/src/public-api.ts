@@ -103,11 +103,11 @@ export * from './lib/dxc-input-text/dxc-input-text.module';
 export * from './lib/dxc-input-text/dxc-input-prefix-icon/dxc-input-prefix-icon.component';
 export * from './lib/dxc-input-text/dxc-input-suffix-icon/dxc-input-suffix-icon.component';
 
-export * from './lib/dxc-new-input-text/dxc-new-input-text.component';
-export * from './lib/dxc-new-input-text/dxc-new-input-text.module';
-export * from './lib/dxc-new-input-text/dxc-new-input-text-action/dxc-new-input-text-action.component';
-export * from './lib/dxc-new-input-text/dxc-input-text-prefix/dxc-input-text-prefix.component';
-export * from './lib/dxc-new-input-text/dxc-input-text-suffix/dxc-input-text-suffix.component';
+export * from './lib/dxc-text-input/dxc-text-input.component';
+export * from './lib/dxc-text-input/dxc-text-input.module';
+export * from './lib/dxc-text-input/dxc-text-input-action/dxc-text-input-action.component';
+export * from './lib/dxc-text-input/dxc-text-input-prefix/dxc-text-input-prefix.component';
+export * from './lib/dxc-text-input/dxc-text-input-suffix/dxc-text-input-suffix.component';
 
 export * from './lib/dxc-new-textarea/dxc-new-textarea.component';
 export * from './lib/dxc-new-textarea/dxc-new-textarea.module';

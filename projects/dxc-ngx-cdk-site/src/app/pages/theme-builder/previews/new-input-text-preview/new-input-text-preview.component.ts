@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { DxcNewInputTextComponent } from "@dxc-technology/halstack-angular";
+import { DxcTextInputComponent } from "@dxc-technology/halstack-angular";
 
 @Component({
   selector: "app-new-input-text-preview",
@@ -7,7 +7,7 @@ import { DxcNewInputTextComponent } from "@dxc-technology/halstack-angular";
 })
 export class NewInputTextPreviewComponent implements OnInit {
 
-  @ViewChild("dxcInputRef", { static: false }) dxcInputRef: DxcNewInputTextComponent;
+  @ViewChild("dxcInputRef", { static: false }) dxcInputRef: DxcTextInputComponent;
 
   constructor() {}
 

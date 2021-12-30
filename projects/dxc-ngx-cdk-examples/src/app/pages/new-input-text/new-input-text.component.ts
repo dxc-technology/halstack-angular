@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { DxcNewInputTextComponent } from "@dxc-technology/halstack-angular";
+import { DxcTextInputComponent } from "@dxc-technology/halstack-angular";
 import { of, throwError } from "rxjs";
 import { switchMap, delay } from "rxjs/operators";
 
@@ -9,7 +9,7 @@ import { switchMap, delay } from "rxjs/operators";
 })
 export class NewInpuTextComponent implements OnInit {
   @ViewChild("dxcInputRef", { static: false })
-  dxcInputRef: DxcNewInputTextComponent;
+  dxcInputRef: DxcTextInputComponent;
 
   constructor() {}
 

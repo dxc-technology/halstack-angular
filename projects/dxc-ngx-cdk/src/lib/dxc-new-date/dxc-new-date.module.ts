@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DxcNewDateComponent } from "./dxc-new-date.component";
-import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
+import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { FormsModule } from "@angular/forms";
 import {
@@ -21,7 +21,7 @@ import { DxcBoxModule } from "../dxc-box/dxc-box.module";
   declarations: [DxcNewDateComponent],
   imports: [
     CommonModule,
-    DxcNewInputTextModule,
+    DxcTextInputModule,
     MatMomentDateModule,
     FormsModule,
     DxcBoxModule,

@@ -15,18 +15,18 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { DxcNewInputTextService } from "./services/dxc-new-input-text.service";
+import { DxcTextInputService } from "./services/dxc-text-input.service";
 import { OnDestroy } from "@angular/core";
-import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
+import { DxcTextInputHelper } from "./dxc-text-input.helper";
 import { v4 as uuidv4 } from "uuid";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
-  selector: "dxc-new-input-text",
-  templateUrl: "./dxc-new-input-text.component.html",
-  providers: [DxcNewInputTextService, DxcNewInputTextHelper, CssUtils],
+  selector: "dxc-text-input",
+  templateUrl: "./dxc-text-input.component.html",
+  providers: [DxcTextInputService, DxcTextInputHelper, CssUtils],
 })
-export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
+export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
@@ -147,8 +147,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private service: DxcNewInputTextService,
-    private helper: DxcNewInputTextHelper,
+    private service: DxcTextInputService,
+    private helper: DxcTextInputHelper,
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.bgProviderService.$changeColor.subscribe((value) => {

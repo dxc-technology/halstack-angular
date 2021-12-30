@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { DxcNewInputTextService } from "../services/dxc-new-input-text.service";
+import { DxcTextInputService } from "../services/dxc-text-input.service";
 
 @Pipe({ name: "filterOptions", pure: true })
 export class FilterOptionsPipe implements PipeTransform {
-  constructor(private service: DxcNewInputTextService){}
+  constructor(private service: DxcTextInputService){}
 
   public transform(options: Array<any>, actualValue: string): Array<any> {
     let value = actualValue.toLowerCase();

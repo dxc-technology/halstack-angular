@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DxcPasswordComponent } from "./dxc-password.component";
-import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
+import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 
 @NgModule({
   declarations: [DxcPasswordComponent],
-  imports: [CommonModule, DxcNewInputTextModule],
+  imports: [CommonModule, DxcTextInputModule],
   exports: [DxcPasswordComponent],
 })
 export class DxcPasswordModule {}

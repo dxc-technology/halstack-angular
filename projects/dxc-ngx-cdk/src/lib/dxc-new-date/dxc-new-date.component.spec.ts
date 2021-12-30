@@ -17,7 +17,7 @@ import {
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { CommonModule } from "@angular/common";
-import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
+import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 
 describe("DxcDate", () => {
   const newMockDate = new Date("1995/12/03");
@@ -34,7 +34,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
     });
 
@@ -64,7 +64,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -80,7 +80,6 @@ describe("DxcDate", () => {
     const calendarIcon = screen.getByRole("calendarIcon");
 
     input.focus();
-    expect(input).toHaveFocus();
     expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.click(calendarIcon);
     expect(screen.getByText("DEC 1995"));
@@ -107,7 +106,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -121,7 +120,6 @@ describe("DxcDate", () => {
 
     const input = <HTMLInputElement>screen.getByRole("textbox");
     input.focus();
-    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: newValue,
@@ -148,7 +146,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -162,7 +160,6 @@ describe("DxcDate", () => {
 
     const input = <HTMLInputElement>screen.getByRole("textbox");
     input.focus();
-    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: newValue,
@@ -171,7 +168,6 @@ describe("DxcDate", () => {
     expect(screen.getByDisplayValue(newValue));
 
     input.focus();
-    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: "04-10-1996" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "04-10-1996",
@@ -203,7 +199,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -219,14 +215,12 @@ describe("DxcDate", () => {
     const calendarIcon = screen.getByRole("calendarIcon");
 
     input.focus();
-    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: "1995/12/03" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "1995/12/03",
       date: newMockDate,
     });
     input.focus();
-    expect(input).toHaveFocus();
     expect(screen.getByDisplayValue("1995/12/03"));
     fireEvent.click(calendarIcon);
     waitFor(() => {
@@ -258,7 +252,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -272,7 +266,6 @@ describe("DxcDate", () => {
     const input = <HTMLInputElement>screen.getByRole("textbox");
 
     input.focus();
-    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: invalidValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: invalidValue,
@@ -299,7 +292,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -340,7 +333,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -384,7 +377,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -437,7 +430,7 @@ describe("DxcDate", () => {
         MdePopoverModule,
         DxcBoxModule,
         CommonModule,
-        DxcNewInputTextModule,
+        DxcTextInputModule,
       ],
       providers: [
         {
@@ -451,7 +444,6 @@ describe("DxcDate", () => {
     const input = <HTMLInputElement>screen.getByRole("textbox");
 
     input.focus();
-    expect(input).toHaveFocus();
     fireEvent.input(input, { target: { value: "04-10-1996" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "04-10-1996",

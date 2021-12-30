@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcSliderComponent } from "./dxc-slider.component";
 import { MatSliderModule } from "@angular/material/slider";
-import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { DxcInputTextModule } from "../dxc-input-text/dxc-input-text.module";
 import { TestBed } from "@angular/core/testing";
 
 describe("DxcSlider tests", () => {

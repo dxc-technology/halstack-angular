@@ -18,7 +18,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { OnDestroy } from "@angular/core";
-import { DxcNewInputTextComponent } from "../dxc-new-input-text/dxc-new-input-text.component";
+import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
 import { DxcNumberHelper } from "./dxc-number.helper";
 
 @Component({
@@ -123,7 +123,7 @@ export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
   onError = new EventEmitter<any>(true);
 
   @ViewChild("dxcInputRef", { static: false })
-  dxcInputRef: DxcNewInputTextComponent;
+  dxcInputRef: DxcTextInputComponent;
 
   randomId: string;
 

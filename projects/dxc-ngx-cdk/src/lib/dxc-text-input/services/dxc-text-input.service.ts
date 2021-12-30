@@ -4,7 +4,7 @@ import { BehaviorSubject } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
-export class DxcNewInputTextService {
+export class DxcTextInputService {
   constructor() {}
 
   public visualFocused: BehaviorSubject<number> = new BehaviorSubject(-1);

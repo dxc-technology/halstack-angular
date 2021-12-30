@@ -36,8 +36,7 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CssUtils, InputTextService],
 })
-export class DxcTextInputComponent
-  implements OnInit, OnChanges, AfterViewChecked
+export class DxcInputTextComponent implements OnInit, OnChanges, AfterViewChecked
 {
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;

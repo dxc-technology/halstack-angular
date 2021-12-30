@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/angular";
-import { DxcTextInputComponent } from "./dxc-input-text.component";
+import { DxcInputTextComponent } from "./dxc-input-text.component";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -10,7 +10,7 @@ import { switchMap } from "rxjs/operators";
 
 describe("DxcTextInputComponent", () => {
   test("should render dxc-input-text", async () => {
-    const { getByText } = await render(DxcTextInputComponent, {
+    const { getByText } = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
@@ -31,7 +31,7 @@ describe("DxcTextInputComponent", () => {
     const onInputFunction = jest.fn();
     const onBlurFunction = jest.fn();
     const newValue = "new value";
-    const { getByRole } = await render(DxcTextInputComponent, {
+    const { getByRole } = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         onChange: { emit: onInputFunction } as any,
@@ -57,7 +57,7 @@ describe("DxcTextInputComponent", () => {
     const onBlurFunction = jest.fn();
     const newValue = "new value";
     const defaultValue = "default value";
-    const dxcText = await render(DxcTextInputComponent, {
+    const dxcText = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         value: defaultValue,
@@ -81,7 +81,7 @@ describe("DxcTextInputComponent", () => {
 
   test("dxc-input-text prefix click", async () => {
     const onClickFunction = jest.fn();
-    const { getByText } = await render(DxcTextInputComponent, {
+    const { getByText } = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
@@ -104,7 +104,7 @@ describe("DxcTextInputComponent", () => {
 
   test("dxc-input-text suffix click", async () => {
     const onClickFunction = jest.fn();
-    const { getByText } = await render(DxcTextInputComponent, {
+    const { getByText } = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
@@ -128,7 +128,7 @@ describe("DxcTextInputComponent", () => {
 
 describe("DxcTextInputComponent autocomplete tests", () => {
   test("should render autocomplete options", async () => {
-    const dxcInput = await render(DxcTextInputComponent, {
+    const dxcInput = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
@@ -152,7 +152,7 @@ describe("DxcTextInputComponent autocomplete tests", () => {
   });
 
   test("should filter autocomplete options", async () => {
-    const dxcInput = await render(DxcTextInputComponent, {
+    const dxcInput = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
@@ -182,7 +182,7 @@ describe("DxcTextInputComponent autocomplete tests", () => {
     const autocompleteFunction = jest.fn(() => {
       return of(["One", "Two", "Three"]);
     });
-    const dxcInput = await render(DxcTextInputComponent, {
+    const dxcInput = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",
@@ -211,7 +211,7 @@ describe("DxcTextInputComponent autocomplete tests", () => {
         switchMap((options) => of(options).pipe(delay(1000)))
       );
     });
-    const dxcInput = await render(DxcTextInputComponent, {
+    const dxcInput = await render(DxcInputTextComponent, {
       componentProperties: {
         label: "test-input",
         assistiveText: "assistive text",

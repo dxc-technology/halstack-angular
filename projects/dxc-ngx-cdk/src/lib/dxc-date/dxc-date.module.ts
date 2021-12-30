@@ -10,7 +10,7 @@ import {
   MomentDateAdapter,
   MatMomentDateModule,
 } from "@angular/material-moment-adapter";
-import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { DxcInputTextModule } from "../dxc-input-text/dxc-input-text.module";
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { ThemeModule } from "../theme/theme.module";

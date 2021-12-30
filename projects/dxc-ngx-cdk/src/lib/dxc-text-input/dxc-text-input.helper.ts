@@ -4,7 +4,7 @@ import { CssUtils } from "../utils";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 @Injectable()
-export class DxcNewInputTextHelper {
+export class DxcTextInputHelper {
   sizes = {
     small: "240px",
     medium: "360px",
@@ -135,7 +135,7 @@ export class DxcNewInputTextHelper {
         }
       }
 
-      dxc-new-input-text-action{
+      dxc-text-input-action{
         div {
           width: 24px;
           height: 24px;
@@ -320,7 +320,7 @@ export class DxcNewInputTextHelper {
         min-height: 18px;
       }
 
-      dxc-new-input-text-action {
+      dxc-text-input-action {
         display: flex;
       }
 

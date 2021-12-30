@@ -13,10 +13,10 @@ import { SelectService } from "../services/select.service";
 import { css } from "emotion";
 
 @Component({
-  selector: "dxc-new-select-option",
-  templateUrl: "./dxc-new-select-option.component.html",
+  selector: "dxc-select-option",
+  templateUrl: "./dxc-select-option.component.html",
 })
-export class DxcNewSelectOptionComponent implements OnInit {
+export class DxcSelectOptionComponent implements OnInit {
   @HostBinding("class") className;
   @HostBinding("class.selected") selected = false;
   @HostBinding("class.focused") isfocused = false;

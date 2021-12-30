@@ -2,7 +2,7 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-new-select
+      <dxc-select
         label="Label"
         helperText="HelperText"
         margin="xsmall"
@@ -14,8 +14,8 @@
         size="large"
         tabIndex="3"
       >
-      </dxc-new-select>
-      <dxc-new-select
+      </dxc-select>
+      <dxc-select
         label="Label"
         helperText="HelperText"
         margin="xsmall"
@@ -23,11 +23,11 @@
         [optional]="true"
         (onChange)="onChange($event)"
         placeholder="Another placeholder"
-      ></dxc-new-select>
+      ></dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Searchable">
-      <dxc-new-select
+      <dxc-select
         label="Label"
         helperText="HelperText"
         searchable="true"
@@ -36,8 +36,8 @@
         [optional]="true"
         placeholder="Another placeholder"
       >
-      </dxc-new-select>
-      <dxc-new-select
+      </dxc-select>
+      <dxc-select
         label="Label"
         helperText="HelperText"
         searchable="true"
@@ -45,8 +45,8 @@
         [options]="array2"
         placeholder="Another placeholder"
       >
-      </dxc-new-select>
-      <dxc-new-select
+      </dxc-select>
+      <dxc-select
         label="Label"
         helperText="HelperText"
         searchable="true"
@@ -57,11 +57,11 @@
         (onBlur)="onBlur($event)"
         placeholder="Another placeholder"
       >
-      </dxc-new-select>
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Multiple">
-      <dxc-new-select
+      <dxc-select
         label="Label"
         helperText="HelperText"
         multiple="true"
@@ -70,8 +70,8 @@
         [options]="array1"
         [value]="arrayValue"
       >
-      </dxc-new-select>
-      <dxc-new-select
+      </dxc-select>
+      <dxc-select
         label="Label"
         helperText="HelperText"
         multiple="true"
@@ -79,39 +79,39 @@
         margin="xsmall"
         [options]="array2"
       >
-      </dxc-new-select>
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error">
-      <dxc-new-select
+      <dxc-select
         label="Label"
         helperText="HelperText"
         error="There is an error"
         margin="xsmall"
       >
-      </dxc-new-select>
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error and multiple">
-      <dxc-new-select
+      <dxc-select
         label="Label"
         helperText="HelperText"
         error="There is an error"
         margin="xsmall"
         [multiple]="true"
       >
-      </dxc-new-select>
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
-      <dxc-new-select
+      <dxc-select
         label="Label"
         helperText="HelperText"
         error="There is an error"
         margin="xsmall"
         [disabled]="true"
       >
-      </dxc-new-select>
+      </dxc-select>
     </tbuilder-component-mode>
   </background-provider>
 

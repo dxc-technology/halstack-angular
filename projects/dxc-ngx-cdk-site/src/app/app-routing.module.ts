@@ -5,7 +5,6 @@ import { ComponentsPageComponent } from "./pages/components-page/components-page
 import { AccordionComponent } from "./pages/accordion/accordion.component";
 import { AlertComponent } from "./pages/alert/alert.component";
 import { ApplicationLayoutComponent } from './pages/application-layout/app-layout.component';
-import { AutocompleteComponent } from "./pages/autocomplete/autocomplete.component"
 import { BoxComponent } from "./pages/box/box.component";
 import { ButtonComponent } from "./pages/button/button.component";
 import { CardComponent } from "./pages/card/card.component";
@@ -46,6 +45,7 @@ import { NewDateComponent } from "./pages/new-date/new-date.component";
 import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { NewSelectComponent } from "./pages/new-select/new-select.component";
+import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
 
 let routes: Routes = [];
 
@@ -75,10 +75,6 @@ let routes: Routes = [];
   {
     path: 'components/applicationLayout',
     component: ApplicationLayoutComponent
-  },
-  {
-    path: 'components/autocomplete',
-    component: AutocompleteComponent
   },
   {
     path: 'components/box',
@@ -227,7 +223,12 @@ let routes: Routes = [];
   {
     path: 'components/resultsettable',
     component: ResultsetTableComponent
-  });
+  },
+  {
+    path: 'components/autosuggest',
+    component: AutosuggestComponent
+  }
+  );
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{ useHash: true })],

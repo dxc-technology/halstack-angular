@@ -92,20 +92,6 @@
             }
         },
         {
-            "title": "Autosuggest",
-            "iframe": {
-                "src": "https://codesandbox.io/embed/autosuggest-input-z6fgt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "autosuggest-input"
-            }
-        },
-        {
-            "title": "Autosuggest function",
-            "iframe": {
-                "src": "https://codesandbox.io/embed/autosuggest-function-input-iur0o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "autosuggest-function-input"
-            }
-        },
-        {
             "title": "Fill parent size input",
             "iframe": {
                 "src": "https://codesandbox.io/embed/size-input-qqi7f?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",

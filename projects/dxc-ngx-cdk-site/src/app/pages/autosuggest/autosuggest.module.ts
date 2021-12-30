@@ -11,21 +11,21 @@ import {
 } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
-import { AutocompleteComponent } from "./autocomplete.component";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
-import { AutocompleteExampleComponent } from "../../components/examples/autocomplete/autocomplete-example/autocomplete-example.component";
-import { AutocompleteUsageComponent } from "../../components/examples/autocomplete/autocomplete-usage/autocomplete-usage.component";
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
+import { AutosuggestComponent } from "./autosuggest.component";
+import { AutosuggestExampleComponent } from "src/app/components/examples/autosuggest/autosuggest-example/autosuggest-example.component";
+import { AutosuggestPropertiesComponent } from "src/app/components/examples/autosuggest/autosuggest-properties/autosuggest-properties.component";
 
 @NgModule({
   declarations: [
-    AutocompleteComponent,
-    AutocompleteExampleComponent,
-    AutocompleteUsageComponent,
+    AutosuggestComponent,
+    AutosuggestExampleComponent,
+    AutosuggestPropertiesComponent,
   ],
   imports: [
     CommonModule,
@@ -45,10 +45,10 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     StatusTagModule
   ],
   exports: [
-    AutocompleteComponent,
-    AutocompleteExampleComponent,
-    AutocompleteUsageComponent,
+    AutosuggestComponent,
+    AutosuggestExampleComponent,
+    AutosuggestPropertiesComponent,
   ],
   entryComponents: [ExampleViewerComponent]
 })
-export class AutocompleteModule { }
+export class AutosuggestModule { }

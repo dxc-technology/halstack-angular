@@ -11,8 +11,6 @@ import { AlertExampleComponent } from "../examples/alert/alert-example/alert-exa
 import { AlertComponentPropertiesComponent } from "../examples/alert/properties/alert-properties/alert-properties.component";
 import { ApplicationLayoutApiComponent } from "../examples/layout/app-layout-api/app-layout-api.component";
 import { ApplicationLayoutExamplesComponent } from "../examples/layout/app-layout-examples/app-layout-examples.component";
-import { AutocompleteExampleComponent } from "../examples/autocomplete/autocomplete-example/autocomplete-example.component";
-import { AutocompleteUsageComponent } from "../examples/autocomplete/autocomplete-usage/autocomplete-usage.component";
 import { ButtonTablePropertiesComponent } from "../examples/button/properties/button-table-properties/button-table-properties.component";
 import { BoxExampleComponent } from "../examples/box/box-example/box-example.component";
 import { BoxTablePropertiesComponent } from "../examples/box/properties/box-table-properties/box-table-properties.component";
@@ -175,6 +173,8 @@ import { NewSelectApiComponent } from "../examples/new-select/select-api/select-
 import { NewSelectExampleComponent } from "../examples/new-select/select-example/select-example.component";
 import { NewSelectImportComponent } from "../examples/new-select/select-import/select-import.component";
 import { NewSelectPropertiesComponent } from "../examples/new-select/select-properties/select-properties.component";
+import { AutosuggestPropertiesComponent } from "../examples/autosuggest/autosuggest-properties/autosuggest-properties.component";
+import { AutosuggestExampleComponent } from "../examples/autosuggest/autosuggest-example/autosuggest-example.component";
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -189,8 +189,6 @@ import { NewSelectPropertiesComponent } from "../examples/new-select/select-prop
     AlertComponentPropertiesComponent,
     ApplicationLayoutApiComponent,
     ApplicationLayoutExamplesComponent,
-    AutocompleteExampleComponent,
-    AutocompleteUsageComponent,
     BoxExampleComponent,
     BoxTablePropertiesComponent,
     ButtonTablePropertiesComponent,
@@ -354,6 +352,8 @@ import { NewSelectPropertiesComponent } from "../examples/new-select/select-prop
     NewSelectExampleComponent,
     NewSelectImportComponent,
     NewSelectPropertiesComponent,
+    AutosuggestPropertiesComponent,
+    AutosuggestExampleComponent
   ],
 })
 export class DynamicModule {}

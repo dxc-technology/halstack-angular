@@ -12,15 +12,11 @@ export class TextInputTablePropertiesComponent implements OnInit {
   @Input()
   tablePropertiesExample: Array<DataPropertiesTable>;
 
-  constructor(private router: Router) { 
+  constructor() { 
     this.tablePropertiesExample = new Array<DataPropertiesTable>();
   }
 
   ngOnInit() {
-  }
-
-  navigateToRoute() {
-    this.router.navigate(["components/autocomplete"]);
   }
 
 }

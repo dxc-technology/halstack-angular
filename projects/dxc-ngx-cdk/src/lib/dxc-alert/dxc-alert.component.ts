@@ -49,7 +49,8 @@ export class DxcAlertComponent implements OnChanges {
     small: "280px",
     medium: "480px",
     large: "820px",
-    fitContent: "unset",
+    fillParent: "100%",
+    fitContent: "auto",
   };
 
   defaultInputs = new BehaviorSubject<any>({

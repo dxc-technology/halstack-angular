@@ -10,7 +10,6 @@ import { ExampleService } from './service/example.service';
 import { DesignGuidelinesPageComponent } from './pages/design-guidelines-page/design-guidelines-page.component';
 import { AlertModule } from './pages/alert/alert.module';
 import { ApplicationLayoutModule } from './pages/application-layout/app-layout.module';
-import { AutocompleteModule } from './pages/autocomplete/autocomplete.module';
 import { BoxModule } from './pages/box/box.module';
 import { ButtonModule } from './pages/button/button.module';
 import { CardModule } from './pages/card/card.module';
@@ -60,6 +59,7 @@ import { NewDateModule } from './pages/new-date/new-date.module';
 import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
 import { FileInputModule } from './pages/file-input/file-input.module';
 import { NewSelectModule } from './pages/new-select/new-select.module';
+import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,6 @@ import { NewSelectModule } from './pages/new-select/new-select.module';
     AccordionModule,
     AlertModule,
     ApplicationLayoutModule,
-    AutocompleteModule,
     BoxModule,
     ButtonModule,
     CardModule,
@@ -129,7 +128,8 @@ import { NewSelectModule } from './pages/new-select/new-select.module';
     NewDateModule,
     NewTextareaModule,
     FileInputModule,
-    NewSelectModule
+    NewSelectModule,
+    AutosuggestModule
   ],
   providers: [
     { provide: 'ThemeService', useClass: ThemeService },

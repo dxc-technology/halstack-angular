@@ -41,6 +41,13 @@
                 "src": "https://codesandbox.io/s/sized-input-rxjwq?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
                 "title": "sized-input"
             }
+        },
+        {
+            "title": "Synchronous controlled autocomplete",
+            "iframe": {
+                "src": "https://codesandbox.io/embed/synchronous-controlled-autocomplete-zdnm3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "title": "synchronous-controlled-autocomplete"
+            }
         }
     ]
 }

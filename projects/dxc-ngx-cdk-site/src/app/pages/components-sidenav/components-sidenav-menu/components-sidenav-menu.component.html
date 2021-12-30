@@ -11,17 +11,17 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/autocomplete'
+                active: 'components/autosuggest'
                   ? router.isActive(
                       router
-                        .createUrlTree(['components/autocomplete'])
+                        .createUrlTree(['components/autosuggest'])
                         .toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/autocomplete')"
-              >Autocomplete</a
+              (click)="navigateTo('components/autosuggest')"
+              >Autosuggest</a
             >
           </div>
           <div class="menu-item">

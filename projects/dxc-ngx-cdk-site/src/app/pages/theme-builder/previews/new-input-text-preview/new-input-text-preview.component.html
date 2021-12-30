@@ -2,7 +2,7 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         helperText="helper text"
         label="Input label"
@@ -16,7 +16,7 @@
         [error]="errorMessage"
         [length]="lengthLimit"
       >
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -29,10 +29,10 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
 
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         helperText="helper text"
         label="Input label"
@@ -46,7 +46,7 @@
         [length]="lengthLimit"
         pattern="[a-zA-Z]+"
       >
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -59,10 +59,10 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
 
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -73,7 +73,7 @@
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -86,12 +86,12 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error">
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         clearable="true"
         error="Very important error"
@@ -103,7 +103,7 @@
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -116,12 +116,12 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         value="test"
         clearable="true"
@@ -135,7 +135,7 @@
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -148,15 +148,15 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
     </tbuilder-component-mode>
   </background-provider>
 
   <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         helperText="helper text"
         label="Input label"
@@ -167,7 +167,7 @@
         (onActionClick)="click()"
         [suggestions]="options"
       >
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -180,10 +180,10 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
 
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -193,7 +193,7 @@
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -206,12 +206,12 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error" mode="dark">
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         clearable="true"
         error="Very important error"
@@ -223,7 +223,7 @@
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -236,12 +236,12 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled" mode="dark">
-      <dxc-new-input-text
+      <dxc-text-input
         placeholder="placeholder"
         value="test"
         clearable="true"
@@ -255,7 +255,7 @@
       >
         <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
         <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -268,8 +268,8 @@
               d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>
+        </dxc-text-input-action>
+      </dxc-text-input>
     </tbuilder-component-mode>
   </background-provider> -->
 </div>

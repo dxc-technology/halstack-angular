@@ -1,62 +1,62 @@
 <div className="test-case" id="controlled-input">
   <h4>Controlled</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     margin="xsmall"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="sized-input">
   <h4>Sizes</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     label="Small"
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     margin="xsmall"
     size="small"
-  ></dxc-new-input-text>
-  <dxc-new-input-text
+  ></dxc-text-input>
+  <dxc-text-input
     label="Medium"
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     margin="xsmall"
     size="medium"
-  ></dxc-new-input-text>
-  <dxc-new-input-text
+  ></dxc-text-input>
+  <dxc-text-input
     label="Large"
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     margin="xsmall"
     size="large"
-  ></dxc-new-input-text>
-  <dxc-new-input-text
+  ></dxc-text-input>
+  <dxc-text-input
     label="Fill parent"
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     margin="xsmall"
     size="fillParent"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="uncontrolled-input">
   <h4>Uncontrolled</h4>
-  <dxc-new-input-text clearable="true" margin="xsmall"></dxc-new-input-text>
+  <dxc-text-input clearable="true" margin="xsmall"></dxc-text-input>
 </div>
 
 <div className="test-case" id="clearable-input">
   <h4>Clearable</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     clearable="true"
     margin="xsmall"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-input">
@@ -64,26 +64,26 @@
     With pattern (At least one letter, one number and one special character) -
     Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     clearable="true"
     margin="xsmall"
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="length-input">
   <h4>With min length 5 and max length 10 - Strict</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
     clearable="true"
     margin="xsmall"
     [length]="lengthLimit"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-length-input">
@@ -91,7 +91,7 @@
     With pattern (At least one letter, one number and one special character) and
     minimum length 5 and maximum length 10 - Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
@@ -99,7 +99,7 @@
     margin="xsmall"
     [length]="lengthLimit"
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-non-strict-input">
@@ -107,7 +107,7 @@
     With pattern (At least one letter, one number and one special character) -
     Non Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
@@ -115,12 +115,12 @@
     margin="xsmall"
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
     [error]="errorMessage"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="length-non-strict-input">
   <h4>With min length 5 and max length 10 - Non Strict</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
@@ -128,7 +128,7 @@
     clearable="true"
     [length]="lengthLimit"
     [error]="errorMessage"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-length-non-strict-input">
@@ -136,7 +136,7 @@
     With pattern (At least one letter, one number and one special character) and
     minimum length 5 and maximum length 10 - Non Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="controlledValue"
     (onChange)="onChange($event)"
     (onBlur)="onBlur($event)"
@@ -145,7 +145,7 @@
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
     [length]="lengthLimit"
     [error]="errorMessage"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-autosuggest">
@@ -153,7 +153,7 @@
     Autosuggest - With pattern (At least one letter, one number and one special
     character) - Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="suggestionsValue"
     (onChange)="onChangeSuggestions($event)"
     [suggestions]="options"
@@ -161,12 +161,12 @@
     margin="xsmall"
     clearable="true"
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="length-autosuggest">
   <h4>Autosuggest - With min length 5 and max length 10 - Strict</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="suggestionsValue"
     (onChange)="onChangeSuggestions($event)"
     [suggestions]="options"
@@ -174,7 +174,7 @@
     margin="xsmall"
     clearable="true"
     [length]="lengthLimit"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-length-autosuggest">
@@ -182,7 +182,7 @@
     Autosuggest - With pattern (At least one letter, one number and one special
     character) and minimum length 5 and maximum length 10 - Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="suggestionsValue"
     (onChange)="onChangeSuggestions($event)"
     [suggestions]="options"
@@ -191,7 +191,7 @@
     clearable="true"
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
     [length]="lengthLimit"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-non-strict-autosuggest">
@@ -199,7 +199,7 @@
     Autosuggest - With pattern (At least one letter, one number and one special
     character) - Non Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="suggestionsValue"
     (onChange)="onChangeSuggestions($event)"
     [suggestions]="options"
@@ -208,12 +208,12 @@
     clearable="true"
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
     [error]="errorMessage"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="length-non-strict-autosuggest">
   <h4>Autosuggest - With min length 5 and max length 10 - Non Strict</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="suggestionsValue"
     (onChange)="onChangeSuggestions($event)"
     [suggestions]="options"
@@ -222,7 +222,7 @@
     clearable="true"
     [length]="lengthLimit"
     [error]="errorMessage"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
 <div className="test-case" id="pattern-length-non-strict-autosuggest">
@@ -230,7 +230,7 @@
     Autosuggest - With pattern (At least one letter, one number and one special
     character) and minimum length 5 and maximum length 10 - Non Strict
   </h4>
-  <dxc-new-input-text
+  <dxc-text-input
     [value]="suggestionsValue"
     (onChange)="onChangeSuggestions($event)"
     [suggestions]="options"
@@ -240,27 +240,27 @@
     pattern='^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
     [length]="lengthLimit"
     [error]="errorMessage"
-  ></dxc-new-input-text>
+  ></dxc-text-input>
 </div>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Prefix and suffix text input"
   optional="true"
   helperText="Example of helper text"
   placeholder="placeholder"
   margin="xsmall"
 >
-  <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-  <dxc-input-text-suffix value="USD"></dxc-input-text-suffix>
-</dxc-new-input-text>
+  <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
+  <dxc-text-input-suffix value="USD"></dxc-text-input-suffix>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Prefix icon input"
   helperText="Example of helper text"
   placeholder="placeholder"
   margin="xsmall"
 >
-  <dxc-input-text-prefix
+  <dxc-text-input-prefix
     ><svg
       version="1.1"
       x="0px"
@@ -279,10 +279,10 @@
         />
       </g>
     </svg>
-  </dxc-input-text-prefix>
-</dxc-new-input-text>
+  </dxc-text-input-prefix>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Action input"
   helperText="Example of helper text"
   placeholder="placeholder"
@@ -290,7 +290,7 @@
   (onActionClick)="click()"
   [length]="lengthLimit"
 >
-  <dxc-new-input-text-action>
+  <dxc-text-input-action>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24"
@@ -302,10 +302,10 @@
       />
       <path d="M0 0h24v24H0z" fill="none" />
     </svg>
-  </dxc-new-input-text-action>
-</dxc-new-input-text>
+  </dxc-text-input-action>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Error input"
   helperText="Example of helper text"
   placeholder="Emojis"
@@ -314,7 +314,7 @@
   (onActionClick)="click()"
   clearable="true"
 >
-  <dxc-new-input-text-action>
+  <dxc-text-input-action>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -327,32 +327,32 @@
         d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
       />
     </svg>
-  </dxc-new-input-text-action>
-  <dxc-input-text-prefix value="😀"></dxc-input-text-prefix>
-  <dxc-input-text-suffix value="😠"></dxc-input-text-suffix>
-</dxc-new-input-text>
+  </dxc-text-input-action>
+  <dxc-text-input-prefix value="😀"></dxc-text-input-prefix>
+  <dxc-text-input-suffix value="😠"></dxc-text-input-suffix>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Disabled input"
   helperText="Example of helper text"
   placeholder="Placeholder"
   margin="xsmall"
   disabled="true"
 >
-</dxc-new-input-text>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Disabled input with prefix and suffix"
   helperText="Example of helper text"
   value="Example text"
   margin="xsmall"
   disabled="true"
 >
-  <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-  <dxc-input-text-suffix value="USD"></dxc-input-text-suffix>
-</dxc-new-input-text>
+  <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
+  <dxc-text-input-suffix value="USD"></dxc-text-input-suffix>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Disabled input with action"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -360,7 +360,7 @@
   margin="xsmall"
   disabled="true"
 >
-  <dxc-new-input-text-action>
+  <dxc-text-input-action>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -373,10 +373,10 @@
         d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
       />
     </svg>
-  </dxc-new-input-text-action>
-</dxc-new-input-text>
+  </dxc-text-input-action>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Input with suggestions"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -385,9 +385,9 @@
   (onChange)="onChangeSuggestions($event)"
   [suggestions]="options"
   clearable="true"
-></dxc-new-input-text>
+></dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Suggestions + action"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -398,7 +398,7 @@
   [suggestions]="options"
   clearable="true"
 >
-  <dxc-new-input-text-action>
+  <dxc-text-input-action>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -411,10 +411,10 @@
         d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
       />
     </svg>
-  </dxc-new-input-text-action>
-</dxc-new-input-text>
+  </dxc-text-input-action>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Uncontrolled suggestions"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -422,9 +422,9 @@
   [suggestions]="options"
   clearable="true"
 >
-</dxc-new-input-text>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Uncontrolled disabled suggestions"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -433,9 +433,9 @@
   clearable="true"
   disabled="true"
 >
-</dxc-new-input-text>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Input with suggestions function"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -445,9 +445,9 @@
   [suggestions]="callbackFunc"
   clearable="true"
 >
-</dxc-new-input-text>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   label="Input with suggestions error function"
   helperText="Example of helper text"
   placeholder="Placeholder"
@@ -455,9 +455,9 @@
   [suggestions]="errorCallbackFunc"
   clearable="true"
 >
-</dxc-new-input-text>
+</dxc-text-input>
 
-<dxc-new-input-text
+<dxc-text-input
   #dxcInputRef
   placeholder="Placeholder"
   clearable="true"
@@ -465,7 +465,7 @@
   helperText="helper text"
   margin="xsmall"
 >
-</dxc-new-input-text>
+</dxc-text-input>
 <dxc-button
   mode="primary"
   label="Focus!"
@@ -475,16 +475,16 @@
 
 <div className="test-case" id="dark-date" style="background-color: black">
   <background-provider color="#000000">
-    <dxc-new-input-text
+    <dxc-text-input
       label="Example label"
       optional="true"
       helperText="Example of helper text"
       placeholder="Placeholder"
       margin="xsmall"
     >
-    </dxc-new-input-text>
+    </dxc-text-input>
 
-    <dxc-new-input-text
+    <dxc-text-input
       label="Example label"
       optional="true"
       helperText="Example of helper text"
@@ -493,7 +493,7 @@
       (onActionClick)="click()"
       disabled="true"
     >
-      <dxc-new-input-text-action>
+      <dxc-text-input-action>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -505,10 +505,10 @@
           />
           <path d="M0 0h24v24H0z" fill="none" />
         </svg>
-      </dxc-new-input-text-action>
-    </dxc-new-input-text>
+      </dxc-text-input-action>
+    </dxc-text-input>
 
-    <dxc-new-input-text
+    <dxc-text-input
       label="Suggestions + action"
       helperText="Example of helper text"
       placeholder="Placeholder"
@@ -519,7 +519,7 @@
       [suggestions]="options"
       clearable="true"
     >
-      <dxc-new-input-text-action>
+      <dxc-text-input-action>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -532,10 +532,10 @@
             d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
           />
         </svg>
-      </dxc-new-input-text-action>
-    </dxc-new-input-text>
+      </dxc-text-input-action>
+    </dxc-text-input>
 
-    <dxc-new-input-text
+    <dxc-text-input
       label="Warning label"
       optional="true"
       helperText="Example of helper text"
@@ -543,8 +543,8 @@
       margin="xsmall"
       (onActionClick)="click()"
     >
-      <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-      <dxc-new-input-text-action>
+      <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
+      <dxc-text-input-action>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -557,10 +557,10 @@
             d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
           />
         </svg>
-      </dxc-new-input-text-action>
-    </dxc-new-input-text>
+      </dxc-text-input-action>
+    </dxc-text-input>
 
-    <dxc-new-input-text
+    <dxc-text-input
       label="Error input"
       helperText="Example of helper text"
       placeholder="Emojis"
@@ -569,7 +569,7 @@
       (onActionClick)="click()"
       clearable="true"
     >
-      <dxc-new-input-text-action>
+      <dxc-text-input-action>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -582,16 +582,16 @@
             d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
           />
         </svg>
-      </dxc-new-input-text-action>
-      <dxc-input-text-prefix value="😀"></dxc-input-text-prefix>
-      <dxc-input-text-suffix value="😠"></dxc-input-text-suffix>
-    </dxc-new-input-text>
+      </dxc-text-input-action>
+      <dxc-text-input-prefix value="😀"></dxc-text-input-prefix>
+      <dxc-text-input-suffix value="😠"></dxc-text-input-suffix>
+    </dxc-text-input>
   </background-provider>
 </div>
 
 <div className="test-case" id="default-input">
   <h4>Default</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     placeholder="placeholder"
     helperText="helper text"
     label="Input label"
@@ -605,7 +605,7 @@
     [error]="errorMessage"
     [length]="lengthLimit"
   >
-    <dxc-new-input-text-action>
+    <dxc-text-input-action>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -618,13 +618,13 @@
           d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
         />
       </svg>
-    </dxc-new-input-text-action>
-  </dxc-new-input-text>
+    </dxc-text-input-action>
+  </dxc-text-input>
 </div>
 
 <div className="test-case" id="prefix-suffix-input">
   <h4>Prefix and suffix</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     placeholder="placeholder"
     label="Input label"
     helperText="helper text"
@@ -633,9 +633,9 @@
     [suggestions]="options"
     (onActionClick)="click()"
   >
-    <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-    <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-    <dxc-new-input-text-action>
+    <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
+    <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
+    <dxc-text-input-action>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -648,13 +648,13 @@
           d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
         />
       </svg>
-    </dxc-new-input-text-action>
-  </dxc-new-input-text>
+    </dxc-text-input-action>
+  </dxc-text-input>
 </div>
 
 <div className="test-case" id="error-input">
   <h4>Error</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     placeholder="placeholder"
     clearable="true"
     error="Very important error"
@@ -664,9 +664,9 @@
     (onActionClick)="click()"
     [suggestions]="options"
   >
-    <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-    <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-    <dxc-new-input-text-action>
+    <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
+    <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
+    <dxc-text-input-action>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -679,13 +679,13 @@
           d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
         />
       </svg>
-    </dxc-new-input-text-action>
-  </dxc-new-input-text>
+    </dxc-text-input-action>
+  </dxc-text-input>
 </div>
 
 <div className="test-case" id="disabled-input">
   <h4>Disabled</h4>
-  <dxc-new-input-text
+  <dxc-text-input
     placeholder="placeholder"
     value="test"
     clearable="true"
@@ -697,9 +697,9 @@
     (onActionClick)="click()"
     [suggestions]="options"
   >
-    <dxc-input-text-prefix value="+34"></dxc-input-text-prefix>
-    <dxc-input-text-suffix value="$"></dxc-input-text-suffix>
-    <dxc-new-input-text-action>
+    <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
+    <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
+    <dxc-text-input-action>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -712,6 +712,6 @@
           d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
         />
       </svg>
-    </dxc-new-input-text-action>
-  </dxc-new-input-text>
+    </dxc-text-input-action>
+  </dxc-text-input>
 </div>

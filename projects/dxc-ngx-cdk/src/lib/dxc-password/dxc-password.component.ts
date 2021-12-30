@@ -12,7 +12,7 @@ import {
   ChangeDetectorRef,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { DxcNewInputTextComponent } from "../dxc-new-input-text/dxc-new-input-text.component";
+import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
 import { CssUtils } from "../utils";
 import { DxcPasswordHelper } from "./dxc-password.helper";
 
@@ -84,7 +84,7 @@ export class DxcPasswordComponent implements OnInit, OnChanges {
   onError = new EventEmitter<any>(true);
 
   @ViewChild("dxcInput", { static: false })
-  dxcInputRef: DxcNewInputTextComponent;
+  dxcInputRef: DxcTextInputComponent;
 
   hidden: boolean = true;
 

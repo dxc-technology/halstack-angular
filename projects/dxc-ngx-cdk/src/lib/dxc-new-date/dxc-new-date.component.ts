@@ -13,7 +13,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { DxcNewInputTextComponent } from "../dxc-new-input-text/dxc-new-input-text.component";
+import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
 import { DxcNewDateHelper } from "./dxc-new-date.helper";
 import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
@@ -124,7 +124,7 @@ export class DxcNewDateComponent implements OnInit {
   onBlur = new EventEmitter<any>();
 
   @ViewChild("dxcInput", { static: false })
-  dxcInputRef: DxcNewInputTextComponent;
+  dxcInputRef: DxcTextInputComponent;
 
   renderedValue: string;
   dateValue: Moment;

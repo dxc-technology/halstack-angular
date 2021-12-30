@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcPasswordComponent } from "./dxc-password.component";
-import { DxcNewInputTextModule } from "../dxc-new-input-text/dxc-new-input-text.module";
+import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 
 describe("DxcPasswordComponent", () => {
   test("should render dxc-password", async () => {
@@ -10,7 +10,7 @@ describe("DxcPasswordComponent", () => {
         label: "test-input",
         helperText: "helper-text",
       },
-      imports: [DxcNewInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     expect(screen.queryByText("test-input")).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("DxcPasswordComponent", () => {
           emit: onChange,
         } as any,
       },
-      imports: [DxcNewInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     const btn = screen.getByLabelText("Clear");
@@ -51,7 +51,7 @@ describe("DxcPasswordComponent", () => {
           emit: onChange,
         } as any,
       },
-      imports: [DxcNewInputTextModule],
+      imports: [DxcTextInputModule],
     });
     const input = <HTMLInputElement>screen.getByRole("textbox");
     const btn = screen.getByLabelText("Action");
@@ -81,7 +81,7 @@ describe("DxcPasswordComponent", () => {
           emit: onBlur,
         } as any,
       },
-      imports: [DxcNewInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     const input = <HTMLInputElement>screen.getByRole("textbox");
@@ -113,7 +113,7 @@ describe("DxcPasswordComponent", () => {
           emit: onBlur,
         } as any,
       },
-      imports: [DxcNewInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     const input = <HTMLInputElement>screen.getByRole("textbox");

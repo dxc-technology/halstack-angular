@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { fireEvent, render } from '@testing-library/angular';
 import { screen, waitFor } from '@testing-library/dom';
 
-import { DxcNewTextareaComponent } from './dxc-new-textarea.component';
+import { DxcTextareaComponent } from './dxc-textarea.component';
 
-describe('DxcNewTextareaComponent', () => {
+describe('DxcTextareaComponent', () => {
   test("should render dxc-text-input", async () => {
-    const input = await render(DxcNewTextareaComponent, {
+    const input = await render(DxcTextareaComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -20,7 +20,7 @@ describe('DxcNewTextareaComponent', () => {
     expect(input.getByText("helper-text"));
   });
   test("Renders with correct label", async () => {
-    const input = await render(DxcNewTextareaComponent, {
+    const input = await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
       },
@@ -29,7 +29,7 @@ describe('DxcNewTextareaComponent', () => {
     expect(input.getByText("Example label")).toBeTruthy();
   });
   test("Renders with correct label and helper text", async () => {
-    const input = await render(DxcNewTextareaComponent, {
+    const input = await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         helperText: "Example helper text"
@@ -40,7 +40,7 @@ describe('DxcNewTextareaComponent', () => {
     expect(input.getByText("Example helper text")).toBeTruthy();
   });
   test("Renders with correct label and optional", async () => {
-    const input = await render(DxcNewTextareaComponent, {
+    const input = await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         helperText: "Example helper text",
@@ -53,7 +53,7 @@ describe('DxcNewTextareaComponent', () => {
     expect(input.getByText("Example helper text")).toBeTruthy();
   });
   test("Renders with correct placeholder", async () => {
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         placeholder: "Placeholder"
       },
@@ -63,7 +63,7 @@ describe('DxcNewTextareaComponent', () => {
     expect(input.getAttribute("placeholder")).toBe("Placeholder");
   });
   test("Renders with error message", async () => {
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         error: "Error message"
       },
@@ -72,7 +72,7 @@ describe('DxcNewTextareaComponent', () => {
     expect(screen.getByText("Error message")).toBeTruthy();
   });
   test("Renders with correct default rows", async () => {
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         rows: 10
@@ -85,7 +85,7 @@ describe('DxcNewTextareaComponent', () => {
   test("Strict mode - Pattern constraint", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    const dxctextarea = await render(DxcNewTextareaComponent, {
+    const dxctextarea = await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -124,7 +124,7 @@ describe('DxcNewTextareaComponent', () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     const length = { min: 5, max: 10 };
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -160,7 +160,7 @@ describe('DxcNewTextareaComponent', () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     const length = { min: 5, max: 10 };
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -205,7 +205,7 @@ describe('DxcNewTextareaComponent', () => {
       expect(value).toBe("Example value");
       expect(error).toBe("Please use a valid pattern");
     });
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -236,7 +236,7 @@ describe('DxcNewTextareaComponent', () => {
       expect(error).toBe("Min length 5, Max length 10");
     });
     const length = { min: 5, max: 10 };
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -267,7 +267,7 @@ describe('DxcNewTextareaComponent', () => {
       expect(error).toBe("Min length 5, Max length 10");
     });
     const length = { min: 5, max: 10 };
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -291,7 +291,7 @@ describe('DxcNewTextareaComponent', () => {
   });
   test("onBlur function is called correctly", async () => {
     const onBlur = jest.fn();
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         onBlur: {
@@ -312,7 +312,7 @@ describe('DxcNewTextareaComponent', () => {
   test("Controlled textarea", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         value: "test",
@@ -344,7 +344,7 @@ describe('DxcNewTextareaComponent', () => {
   });
   test("Uncontrolled input", async () => {
     const onChange = jest.fn();
-    await render(DxcNewTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         onChange: {

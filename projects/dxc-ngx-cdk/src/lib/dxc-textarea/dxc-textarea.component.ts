@@ -18,15 +18,15 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { BackgroundProviderService } from "../../public-api";
 import { CssUtils } from "../utils";
-import { DxcNewTextareaHelper } from "./dxc-new-textarea.helper";
+import { DxcTextareaHelper } from "./dxc-textarea.helper";
 import { v4 as uuidv4 } from "uuid";
 
 @Component({
-  selector: "dxc-new-textarea",
-  templateUrl: "./dxc-new-textarea.component.html",
-  providers: [DxcNewTextareaHelper, CssUtils],
+  selector: "dxc-textarea",
+  templateUrl: "./dxc-textarea.component.html",
+  providers: [DxcTextareaHelper, CssUtils],
 })
-export class DxcNewTextareaComponent implements OnInit {
+export class DxcTextareaComponent implements OnInit {
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
@@ -132,7 +132,7 @@ export class DxcNewTextareaComponent implements OnInit {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private helper: DxcNewTextareaHelper,
+    private helper: DxcTextareaHelper,
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.bgProviderService.$changeColor.subscribe((value) => {

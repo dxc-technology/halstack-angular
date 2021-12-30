@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DxcNewTextareaComponent } from './dxc-new-textarea.component';
+import { DxcTextareaComponent } from './dxc-textarea.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    DxcNewTextareaComponent,
+    DxcTextareaComponent,
   ],
   imports: [CommonModule, FormsModule],
   exports: [
-    DxcNewTextareaComponent,
+    DxcTextareaComponent,
   ],
 })
-export class DxcNewTextareaModule { }
+export class DxcTextareaModule { }

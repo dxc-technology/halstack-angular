@@ -77,7 +77,7 @@ import {
   DxcNewDateModule,
   DxcPasswordModule,
   DxcNumberModule,
-  DxcNewTextareaModule,
+  DxcTextareaModule,
 } from "@dxc-technology/halstack-angular";
 import { UploadComponent } from "./pages/upload/upload.component";
 import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component";
@@ -177,7 +177,7 @@ import { NewDateComponent } from './pages/new-date/new-date.component';
     DxcNewDateModule,
     DxcPasswordModule,
     DxcNumberModule,
-    DxcNewTextareaModule
+    DxcTextareaModule
   ],
   providers: [{ provide: "ThemeService", useClass: ThemeService }],
   bootstrap: [AppComponent],

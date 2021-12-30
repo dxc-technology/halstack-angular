@@ -7,7 +7,7 @@ import { screen, waitFor } from '@testing-library/dom';
 import { DxcNewTextareaComponent } from './dxc-new-textarea.component';
 
 describe('DxcNewTextareaComponent', () => {
-  test("should render dxc-new-input-text", async () => {
+  test("should render dxc-text-input", async () => {
     const input = await render(DxcNewTextareaComponent, {
       componentProperties: {
         label: "test-input",

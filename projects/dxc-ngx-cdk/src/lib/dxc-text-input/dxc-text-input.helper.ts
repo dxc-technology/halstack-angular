@@ -135,7 +135,7 @@ export class DxcTextInputHelper {
         }
       }
 
-      dxc-new-input-text-action{
+      dxc-text-input-action{
         div {
           width: 24px;
           height: 24px;
@@ -320,7 +320,7 @@ export class DxcTextInputHelper {
         min-height: 18px;
       }
 
-      dxc-new-input-text-action {
+      dxc-text-input-action {
         display: flex;
       }
 

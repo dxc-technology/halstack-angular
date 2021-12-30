@@ -1,7 +1,7 @@
 import { DxcNumberComponent } from "./dxc-number.component";
 
 import { render, fireEvent, screen } from "@testing-library/angular";
-import { DxcInputTextModule } from "../dxc-input-text/dxc-input-text.module";
+import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 import { waitFor } from "@testing-library/dom";
 
 describe("DxcInputNumberComponent", () => {
@@ -11,7 +11,7 @@ describe("DxcInputNumberComponent", () => {
         label: "test-input",
         helperText: "helper-text",
       },
-      imports: [DxcInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     expect(screen.queryByText("test-input")).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("DxcInputNumberComponent", () => {
         helperText: "helper-text",
         error: "important error",
       },
-      imports: [DxcInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     expect(screen.queryByText("test-input")).toBeInTheDocument();
@@ -46,7 +46,7 @@ describe("DxcInputNumberComponent", () => {
           emit: onChange,
         } as any,
       },
-      imports: [DxcInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     const input = <HTMLInputElement>screen.getByRole("textbox");
@@ -90,7 +90,7 @@ describe("DxcInputNumberComponent", () => {
           emit: onChange,
         } as any,
       },
-      imports: [DxcInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     const input = <HTMLInputElement>screen.getByRole("textbox");
@@ -125,7 +125,7 @@ describe("DxcInputNumberComponent", () => {
           emit: onBlur,
         } as any,
       },
-      imports: [DxcInputTextModule],
+      imports: [DxcTextInputModule],
     });
 
     const input = <HTMLInputElement>screen.getByRole("textbox");

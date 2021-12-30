@@ -4,12 +4,12 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { DxcTextInputComponent } from "./dxc-input-text.component";
+import { DxcInputTextComponent } from "./dxc-input-text.component";
 import { DxcInputPrefixIconComponent } from './dxc-input-prefix-icon/dxc-input-prefix-icon.component';
 import { DxcInputSuffixIconComponent } from './dxc-input-suffix-icon/dxc-input-suffix-icon.component';
 
 @NgModule({
-  declarations: [DxcTextInputComponent, DxcInputPrefixIconComponent, DxcInputSuffixIconComponent],
+  declarations: [DxcInputTextComponent, DxcInputPrefixIconComponent, DxcInputSuffixIconComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,6 +18,6 @@ import { DxcInputSuffixIconComponent } from './dxc-input-suffix-icon/dxc-input-s
     FormsModule,
     MatAutocompleteModule,
   ],
-  exports: [DxcTextInputComponent, DxcInputPrefixIconComponent, DxcInputSuffixIconComponent],
+  exports: [DxcInputTextComponent, DxcInputPrefixIconComponent, DxcInputSuffixIconComponent],
 })
 export class DxcInputTextModule {}

@@ -9,7 +9,7 @@ import { DxcTextInputActionComponent } from "./dxc-text-input-action/dxc-text-in
 import { FormsModule } from "@angular/forms";
 
 describe("DxcNewTextInputComponent", () => {
-  test("should render dxc-new-input-text", async () => {
+  test("should render dxc-text-input", async () => {
     const input = await render(DxcTextInputComponent, {
       componentProperties: {
         label: "test-input",
@@ -24,7 +24,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(input.getByText("helper-text"));
   });
 
-  test("should render error dxc-new-input-text", async () => {
+  test("should render error dxc-text-input", async () => {
     const input = await render(DxcTextInputComponent, {
       componentProperties: {
         label: "test-input",
@@ -44,7 +44,7 @@ describe("DxcNewTextInputComponent", () => {
 
   test("should show options", async () => {
     const input = await render(DxcTextInputComponent, {
-      template: `<dxc-new-input-text
+      template: `<dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -55,7 +55,7 @@ describe("DxcNewTextInputComponent", () => {
           'Andorra',
           'Belgium'
         ]"
-      ></dxc-new-input-text>`,
+      ></dxc-text-input>`,
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
@@ -70,7 +70,7 @@ describe("DxcNewTextInputComponent", () => {
 
   test("should filter options", async () => {
     const input = await render(DxcTextInputComponent, {
-      template: `<dxc-new-input-text
+      template: `<dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -82,7 +82,7 @@ describe("DxcNewTextInputComponent", () => {
           'Andorra',
           'Belgium'
         ]"
-      ></dxc-new-input-text>`,
+      ></dxc-text-input>`,
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
@@ -100,7 +100,7 @@ describe("DxcNewTextInputComponent", () => {
   test("should clear input", async () => {
     const onChange = jest.fn();
     const input = await render(DxcTextInputComponent, {
-      template: `<dxc-new-input-text
+      template: `<dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -108,7 +108,7 @@ describe("DxcNewTextInputComponent", () => {
         value="test input value"
         clearable="true"
         (onChange)="onChange($event)"
-      ></dxc-new-input-text>`,
+      ></dxc-text-input>`,
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],
@@ -126,7 +126,7 @@ describe("DxcNewTextInputComponent", () => {
   test("should allow interaction with action button", async () => {
     const click = jest.fn();
     const input = await render(DxcTextInputComponent, {
-      template: `<dxc-new-input-text
+      template: `<dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -135,7 +135,7 @@ describe("DxcNewTextInputComponent", () => {
         clearable="true"
         (onActionClick)="click()"
       >
-        <dxc-new-input-text-action>
+        <dxc-text-input-action>
           <svg
             id="highlight_off_black_18dp"
             xmlns="http://www.w3.org/2000/svg"
@@ -164,8 +164,8 @@ describe("DxcNewTextInputComponent", () => {
               fill="#d0011b"
             />
           </svg>
-        </dxc-new-input-text-action>
-      </dxc-new-input-text>`,
+        </dxc-text-input-action>
+      </dxc-text-input>`,
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService, DxcTextInputActionComponent],
       declarations: [
@@ -183,7 +183,7 @@ describe("DxcNewTextInputComponent", () => {
   test("should not allow interation with disabled input", async () => {
     const onChange = jest.fn();
     const input = await render(DxcTextInputComponent, {
-      template: `<dxc-new-input-text
+      template: `<dxc-text-input
         placeholder="placeholder"
         label="Input label"
         helperText="helper text"
@@ -191,7 +191,7 @@ describe("DxcNewTextInputComponent", () => {
         value="test input value"
         disabled="true"
         (onChange)="onChange($event)"
-      ></dxc-new-input-text>`,
+      ></dxc-text-input>`,
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
       declarations: [FilterOptionsPipe, BoldOptionsPipe],

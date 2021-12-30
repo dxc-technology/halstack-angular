@@ -6,7 +6,7 @@ import { NewDateImportComponent } from "src/app/components/examples/new-date/dat
 import { NewDatePropertiesComponent } from "src/app/components/examples/new-date/date-properties/date-properties.component";
 import { NewDateComponent } from "./new-date.component";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcChipModule, DxcHeadingModule, DxcLinkModule, DxcNewInputTextModule, DxcTableModule, DxcTagModule } from "@dxc-technology/halstack-angular";
+import { DxcChipModule, DxcHeadingModule, DxcLinkModule, DxcTextInputModule, DxcTableModule, DxcTagModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
 import { CodesandboxViewerModule } from "src/app/components/codesandbox-viewer/codesandbox-viewer.module";
@@ -28,7 +28,7 @@ import { ExampleViewerComponent } from "src/app/components/example-viewer/exampl
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    DxcNewInputTextModule,
+    DxcTextInputModule,
     ExampleViewerModule,
     CodesandboxViewerModule,
     DxcLinkModule,

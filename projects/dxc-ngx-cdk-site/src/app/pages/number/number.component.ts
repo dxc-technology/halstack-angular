@@ -8,11 +8,6 @@ import { NumberExampleComponent } from 'src/app/components/examples/number/numbe
   templateUrl: './number.component.html'
 })
 export class NumberComponent implements OnInit {
-
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

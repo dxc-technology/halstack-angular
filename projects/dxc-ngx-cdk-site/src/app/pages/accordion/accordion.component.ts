@@ -9,10 +9,6 @@ import { AccordionApiComponent } from '../../components/examples/accordion/accor
   styleUrls: ['./accordion.component.scss']
 })
 export class AccordionComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

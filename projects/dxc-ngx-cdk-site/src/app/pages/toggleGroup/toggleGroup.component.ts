@@ -9,10 +9,6 @@ import { ToggleGroupExampleComponent } from '../../components/examples/toggleGro
   styleUrls: ['./toggleGroup.component.scss']
 })
 export class ToggleGroupComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

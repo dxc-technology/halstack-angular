@@ -18,6 +18,7 @@ import { ComponentsSidenavModule } from "../components-sidenav/components-sidena
 
 import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     DxcChipModule,
     DxcLinkModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule
   ],
   exports: [ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent],
   entryComponents: [],

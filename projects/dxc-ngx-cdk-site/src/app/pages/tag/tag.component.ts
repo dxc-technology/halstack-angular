@@ -9,10 +9,6 @@ import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.c
   styleUrls: ['./tag.component.scss']
 })
 export class TagComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

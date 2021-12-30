@@ -12,6 +12,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { DialogApiComponent } from '../../components/examples/dialog/dialog-api/dialog-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ColorPreviewModule,
     DxcChipModule,
     CodesandboxViewerModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     DialogTablePropertiesComponent,

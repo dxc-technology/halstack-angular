@@ -10,10 +10,6 @@ import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-a
   providers: [],
 })
 export class SpinnerComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-  
   sections: Array<Section>;
   tagImg: string;
 

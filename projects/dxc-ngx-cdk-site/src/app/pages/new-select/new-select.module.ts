@@ -12,6 +12,7 @@ import { CodesandboxViewerModule } from "src/app/components/codesandbox-viewer/c
 import { CodePlaygroundModule } from "src/app/components/code-playground/code-playground.module";
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 import { ColorPreviewModule } from "src/app/components/color-preview/color-preview.module";
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ColorPreviewModule } from "src/app/components/color-preview/color-previ
     DxcChipModule,
     ColorPreviewModule,
     DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     NewSelectComponent,

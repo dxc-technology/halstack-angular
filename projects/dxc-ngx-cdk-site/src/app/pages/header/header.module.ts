@@ -15,6 +15,7 @@ import { HeaderImportComponent } from '../../components/examples/header/header-i
 import { HeaderApiComponent } from '../../components/examples/header/header-api/header-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     DxcChipModule,
     DxcHeadingModule,
     CodesandboxViewerModule,
-    DxcLinkModule
+    DxcLinkModule,
+    StatusTagModule
   ],
   exports: [
     HeaderComponent,

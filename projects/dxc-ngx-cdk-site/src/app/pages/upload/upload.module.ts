@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { DxcTableModule, DxcUploadModule,DxcTagModule, DxcChipModule,DxcHeadingModule } from "@dxc-technology/halstack-angular";
+import { DxcTableModule, DxcUploadModule,DxcTagModule, DxcChipModule,DxcHeadingModule, DxcAlertModule, DxcLinkModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
 import { UploadComponent } from "./upload.component";
 import { UploadTablePropertiesComponent } from "src/app/components/examples/upload/properties/upload-table-properties.component";
@@ -11,6 +11,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,10 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ComponentsSidenavModule,
     DxcChipModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule,
+    DxcAlertModule,
+    DxcLinkModule,
   ],
   exports: [
     UploadComponent,

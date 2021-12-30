@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Section } from "src/app/model/sections";
 import { TextAreaApiComponent } from "../../components/examples/text-area/text-area-api/text-area-api.component";
 import { TextAreaExampleComponent } from "../../components/examples/text-area/text-area-example/text-area-example.component";
@@ -9,14 +10,14 @@ import { TextAreaExampleComponent } from "../../components/examples/text-area/te
   styleUrls: ["./text-area.component.scss"],
 })
 export class TextAreaComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-  
   sections: Array<Section>;
   tagImg: string;
 
-  constructor() {
+  alertMargin = {
+    bottom: 'medium'
+  }
+
+  constructor(private router: Router) {
     this.sections = new Array<Section>();
     this.tagImg = "./assets/img/ready.svg";
   }
@@ -35,6 +36,12 @@ export class TextAreaComponent implements OnInit {
         selector: 'examples-component-input',
         component: TextAreaExampleComponent,
       }
+    );
+  }
+
+  navigateToRoute(){
+    this.router.navigate(
+      ["components/newTextarea"]
     );
   }
 }

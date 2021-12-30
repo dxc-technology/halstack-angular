@@ -14,6 +14,7 @@ import { NewTextareaApiComponent } from '../../components/examples/new-textarea/
 import { NewTextareaExampleComponent } from '../../components/examples/new-textarea/new-textarea-example/new-textarea-example.component';
 import { NewTextareaImportComponent } from '../../components/examples/new-textarea/new-textarea-import/new-textarea-import.component';
 import { NewTextareaPropertiesComponent } from '../../components/examples/new-textarea/new-textarea-properties/new-textarea-properties.component';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NewTextareaPropertiesComponent } from '../../components/examples/new-te
     ComponentsSidenavModule,
     DxcChipModule,
     ColorPreviewModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     NewTextareaComponent,

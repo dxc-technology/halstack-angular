@@ -8,11 +8,6 @@ import { Section } from 'src/app/model/sections';
   templateUrl: './new-select.component.html'
 })
 export class NewSelectComponent implements OnInit {
-
-  headingMargin = {
-    bottom: "medium",
-  };
-
   sections: Array<Section>;
   tagImg: string;
 

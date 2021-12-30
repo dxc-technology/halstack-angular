@@ -14,6 +14,7 @@ import { CodePlaygroundModule } from "src/app/components/code-playground/code-pl
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 import { ColorPreviewModule } from "src/app/components/color-preview/color-preview.module";
 import { ExampleViewerComponent } from "src/app/components/example-viewer/example-viewer.component";
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ExampleViewerComponent } from "src/app/components/example-viewer/exampl
     DxcChipModule,
     ColorPreviewModule,
     DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     NewDateComponent,

@@ -9,10 +9,6 @@ import { DropdownApiComponent } from "../../components/examples/dropdown/dropdow
   styleUrls: ["./dropdown.component.scss"],
 })
 export class DropdownComponent implements OnInit {
-  headingMargin = {
-    bottom: "medium",
-  };
-
   sections: Array<Section>;
   tagImg: string;
 

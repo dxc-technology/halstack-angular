@@ -8,10 +8,6 @@ import { InputTextApiComponent } from '../../components/examples/input-text/inpu
   templateUrl: './new-input-text.component.html'
 })
 export class NewInputTextComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

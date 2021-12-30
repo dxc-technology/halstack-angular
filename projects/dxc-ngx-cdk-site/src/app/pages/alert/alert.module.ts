@@ -12,6 +12,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { AlertImportComponent } from '../../components/examples/alert/alert-import/alert-import.component';
 import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     AlertExampleComponent,

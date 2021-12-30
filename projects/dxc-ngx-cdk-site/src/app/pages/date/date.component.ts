@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from '../../model/sections';
 import { DateExampleComponent } from '../../components/examples/date/date-example/date-example.component';
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-date',
@@ -9,14 +10,14 @@ import { DateApiComponent } from '../../components/examples/date/date-api/date-a
   styleUrls: ['./date.component.scss']
 })
 export class DateComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 
-  constructor(){
+  alertMargin = {
+    bottom: 'medium'
+  }
+
+  constructor(private router: Router){
     this.sections = new Array<Section>();
     this.tagImg = './assets/img/ready.svg';
   }
@@ -27,6 +28,11 @@ export class DateComponent implements OnInit {
       {id: 1, label: 'EXAMPLES',selector: 'examples-component-dates', component: DateExampleComponent}
 
       );
+  }
 
+  navigateToRoute(){
+    this.router.navigate(
+      ["components/newDate"]
+    );
   }
 }

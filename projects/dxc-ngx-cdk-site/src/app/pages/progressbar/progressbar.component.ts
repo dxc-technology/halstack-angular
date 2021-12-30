@@ -9,10 +9,6 @@ import { ProgressbarApiComponent } from '../../components/examples/progressbar/p
   styleUrls: ["./progressbar.component.scss"]
 })
 export class ProgressbarComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-  
   sections: Array<Section>;
   tagImg: string;
 

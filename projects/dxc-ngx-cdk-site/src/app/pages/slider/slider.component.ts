@@ -9,10 +9,6 @@ import { SliderApiComponent } from '../../components/examples/slider/slider-api/
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

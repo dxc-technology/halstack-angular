@@ -8,11 +8,6 @@ import { NewDateApiComponent } from '../../components/examples/new-date/date-api
   templateUrl: './new-date.component.html'
 })
 export class NewDateComponent implements OnInit {
-
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

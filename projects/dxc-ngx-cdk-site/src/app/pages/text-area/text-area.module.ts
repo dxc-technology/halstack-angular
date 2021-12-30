@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcLinkModule, DxcTagModule, V3DxcTextareaModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcLinkModule, DxcTagModule, V3DxcTextareaModule, DxcChipModule, DxcHeadingModule, DxcAlertModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TextAreaComponent } from './text-area.component';
@@ -13,6 +13,7 @@ import { TextAreaPropertiesTableComponent } from '../../components/examples/text
 import { TextAreaExampleComponent } from '../../components/examples/text-area/text-area-example/text-area-example.component';
 import { TextAreaImportComponent } from '../../components/examples/text-area/text-area-import/text-area-import.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,10 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule,
+    DxcLinkModule,
+    DxcAlertModule,
   ],
   exports: [
     TextAreaComponent,

@@ -7,10 +7,6 @@ import { AccordionGroupApiComponent } from '../../components/examples/accordion-
   templateUrl: './accordion-group.component.html'
 })
 export class AccordionGroupComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

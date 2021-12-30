@@ -10,10 +10,6 @@ import { SwitchApiComponent } from '../../components/examples/switch/switch-api/
   providers: []
 })
 export class SwitchComponent implements OnInit{
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

@@ -32,11 +32,11 @@ export class DxcTextInputHelper {
 
   getDisabledStyle() {
     return css`
-      dxc-input-text-prefix {
+      dxc-text-input-prefix {
         border-right: 1px solid var(--newInputText-disabledPrefixColor);
         color: var(--newInputText-disabledPrefixColor);
       }
-      dxc-input-text-suffix {
+      dxc-text-input-suffix {
         border-left: 1px solid var(--newInputText-disabledSuffixColor);
         color: var(--newInputText-disabledSuffixColor);
       }
@@ -75,11 +75,11 @@ export class DxcTextInputHelper {
 
   getDisabledDarkStyle() {
     return css`
-      dxc-input-text-prefix {
+      dxc-text-input-prefix {
         border-right: 1px solid var(--newInputText-disabledPrefixColorOnDark);
         color: var(--newInputText-disabledPrefixColorOnDark);
       }
-      dxc-input-text-suffix {
+      dxc-text-input-suffix {
         border-left: 1px solid var(--newInputText-disabledSuffixColorOnDark);
         color: var(--newInputText-disabledSuffixColorOnDark);
       }
@@ -146,14 +146,14 @@ export class DxcTextInputHelper {
         }
       }
 
-      dxc-input-text-prefix, dxc-input-text-suffix{
+      dxc-text-input-prefix, dxc-text-input-suffix{
         height: calc(1rem * 1.5);
         line-height: calc(1rem * 1.5);
         font-family: var(--newInputText-fontFamily);
         pointer-events: none;
       }
 
-      dxc-input-text-suffix{
+      dxc-text-input-suffix{
         border-left: 1px solid var(--newInputText-suffixColor);
         margin-right: calc(1rem * 0.5);
         margin-left: calc(1rem * 0.25);
@@ -164,7 +164,7 @@ export class DxcTextInputHelper {
         font-weight: var(--newInputText-suffixFontWeight);
       }
 
-      dxc-input-text-prefix{
+      dxc-text-input-prefix{
         border-right: 1px solid var(--newInputText-prefixColor);
         margin-left: calc(1rem * 0.25);
         padding: 0 calc(1rem * 0.5) 0 0;
@@ -419,11 +419,11 @@ export class DxcTextInputHelper {
 
   getDarkStyle(inputs) {
     return css`
-      dxc-input-text-prefix {
+      dxc-text-input-prefix {
         border-right: 1px solid var(--newInputText-prefixColorOnDark);
         color: var(--newInputText-prefixColorOnDark);
       }
-      dxc-input-text-suffix {
+      dxc-text-input-suffix {
         border-left: 1px solid var(--newInputText-suffixColorOnDark);
         color: var(--newInputText-suffixColorOnDark);
       }

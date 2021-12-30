@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DateComponent } from './date.component';
-import { DxcDateModule, DxcTableModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcDateModule, DxcTableModule, DxcTagModule, DxcChipModule, DxcHeadingModule, DxcLinkModule, DxcAlertModule } from '@dxc-technology/halstack-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
@@ -15,6 +15,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,10 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule,
+    DxcLinkModule,
+    DxcAlertModule
   ],
   exports: [
     DateComponent,

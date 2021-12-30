@@ -9,10 +9,6 @@ import { RadioApiComponent } from '../../components/examples/radio/radio-api/rad
   styleUrls: ['./radio.component.scss']
 })
 export class RadioComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

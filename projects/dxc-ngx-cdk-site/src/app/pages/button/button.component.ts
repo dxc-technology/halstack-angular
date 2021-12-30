@@ -10,10 +10,6 @@ import { ButtonApiComponent } from '../../components/examples/button/button-api/
   providers: []
 })
 export class ButtonComponent implements OnInit{
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

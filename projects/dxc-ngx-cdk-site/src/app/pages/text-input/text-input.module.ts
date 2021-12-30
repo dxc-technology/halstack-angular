@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcInputTextModule, DxcLinkModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, DxcInputTextModule, DxcLinkModule, DxcTagModule, DxcChipModule, DxcHeadingModule, DxcAlertModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
 import { TextInputComponent } from './text-input.component';
@@ -14,6 +14,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
     ComponentsSidenavModule,
     DxcChipModule,
     ColorPreviewModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule,
+    DxcAlertModule,
+    DxcLinkModule,
   ],
   exports: [
     TextInputComponent,

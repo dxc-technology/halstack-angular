@@ -15,6 +15,7 @@ import { CheckboxApiComponent } from '../../components/examples/checkbox/checkbo
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CheckboxPropertiesComponent } from '../../components/examples/checkbox/properties/checkbox-properties/checkbox-properties.component';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 @NgModule({
   declarations: [
     CheckboxComponent,
@@ -37,7 +38,8 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule
   ],
   exports: [
     CheckboxComponent,

@@ -57,8 +57,10 @@ code{
 .title-tag{
     display: flex;
     flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    // justify-content: space-between;
-    -webkit-box-align: baseline;
-    align-items: baseline;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 36px;
+    gap: 0.5rem;
 }

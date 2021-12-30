@@ -19,6 +19,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     AutocompleteComponent,

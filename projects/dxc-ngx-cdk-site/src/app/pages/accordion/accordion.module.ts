@@ -14,6 +14,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
 import { AccordionExampleComponent } from '../../components/examples/accordion/accordion-example/accordion-example.component';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AccordionExampleComponent } from '../../components/examples/accordion/a
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ], 
   exports: [
     AccordionComponent,

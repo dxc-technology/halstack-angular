@@ -14,6 +14,7 @@ import { ToggleGroupTablePropertiesComponent } from 'src/app/components/examples
 import { ToggleGroupImportComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
 import { ColorPreviewModule } from 'src/app/components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     ToggleGroupApiComponent,

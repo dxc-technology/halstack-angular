@@ -8,11 +8,7 @@ import { HeaderApiComponent } from '../../components/examples/header/header-api/
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  headingMargin = {
-    bottom: "medium",
-  };
-  
+export class HeaderComponent implements OnInit { 
   sections: Array<Section>;
   tagImg: string;
 

@@ -8,10 +8,6 @@ import { NewTextareaApiComponent } from '../../components/examples/new-textarea/
   templateUrl: './new-textarea.component.html'
 })
 export class NewTextareaComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

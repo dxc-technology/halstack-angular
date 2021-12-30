@@ -10,10 +10,6 @@ import { ResultsetTableApiComponent } from '../../components/examples/resultset-
   styleUrls: ['./resultset-table.component.scss']
 })
 export class ResultsetTableComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

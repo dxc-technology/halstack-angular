@@ -8,11 +8,6 @@ import { FileInputApiComponent } from '../../components/examples/file-input/file
   templateUrl: './file-input.component.html'
 })
 export class FileInputComponent implements OnInit {
-
-  headingMargin = {
-    bottom: "medium",
-  };
-
   sections: Array<Section>;
   tagImg: string;
 

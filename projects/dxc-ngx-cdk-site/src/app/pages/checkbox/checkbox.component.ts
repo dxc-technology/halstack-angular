@@ -9,10 +9,6 @@ import { CheckboxApiComponent } from 'src/app/components/examples/checkbox/check
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-  
   sections: Array<Section>;
   tagImg: string;
 

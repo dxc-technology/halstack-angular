@@ -12,6 +12,7 @@ import { TabbedSectionImportComponent } from '../../components/examples/tabbed-s
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { TabbedSectionApiComponent } from '../../components/examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ComponentsSidenavModule,
     DxcChipModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule
   ],
   exports: [
     TabbedSectionInfoComponent,

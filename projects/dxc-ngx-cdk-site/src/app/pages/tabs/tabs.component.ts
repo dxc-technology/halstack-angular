@@ -9,10 +9,6 @@ import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-a
   styleUrls: ["./tabs.component.scss"]
 })
 export class TabsComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-  
   sections: Array<Section>;
   tagImg: string;
 

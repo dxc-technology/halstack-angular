@@ -9,11 +9,6 @@ import { AutocompleteUsageComponent } from 'src/app/components/examples/autocomp
   styleUrls: []
 })
 export class AutocompleteComponent implements OnInit {
-
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

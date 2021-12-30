@@ -10,10 +10,6 @@ import { CardApiComponent } from '../../components/examples/card/card-api/card-a
   providers: []
 })
 export class CardComponent implements OnInit{
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

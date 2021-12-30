@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ComponentsSidenavMenuComponent } from './components-sidenav-menu/components-sidenav-menu.component';
 import { ComponentsSidenavComponent } from './components-sidenav.component';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ComponentsSidenavComponent } from './components-sidenav.component';
     CommonModule,
     RouterModule,
     DxcSideNavModule,
-    DxcLinkModule
+    DxcLinkModule,
+    StatusTagModule
   ],
   exports: [
     ComponentsSidenavComponent,

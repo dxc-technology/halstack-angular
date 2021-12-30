@@ -10,11 +10,6 @@ import { ApplicationLayoutExamplesComponent } from '../../components/examples/la
   providers: []
 })
 export class ApplicationLayoutComponent implements OnInit{
-
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

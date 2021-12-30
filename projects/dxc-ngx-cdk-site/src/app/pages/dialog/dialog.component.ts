@@ -9,10 +9,6 @@ import { DialogApiComponent } from "../../components/examples/dialog/dialog-api/
   styleUrls: ["./dialog.component.scss"],
 })
 export class DialogComponent implements OnInit {
-  headingMargin = {
-    bottom: "medium",
-  };
-
   sections: Array<Section>;
   tagImg: string;
 

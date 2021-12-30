@@ -21,6 +21,7 @@ import { NumberApiComponent } from "src/app/components/examples/number/number-ap
 import { NumberExampleComponent } from "src/app/components/examples/number/number-example/number-example.component";
 import { NumberImportComponent } from "src/app/components/examples/number/number-import/number-import.component";
 import { NumberPropertiesComponent } from "src/app/components/examples/number/number-properties/number-properties.component";
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NumberPropertiesComponent } from "src/app/components/examples/number/nu
     DxcChipModule,
     ColorPreviewModule,
     DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     NumberComponent,

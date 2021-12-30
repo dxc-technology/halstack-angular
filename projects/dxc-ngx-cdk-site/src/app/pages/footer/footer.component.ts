@@ -9,10 +9,6 @@ import { FooterApiComponent } from '../../components/examples/footer/footer-api/
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  headingMargin = {
-    bottom: "medium",
-  };
-
   sections: Array<Section>;
   tagImg: string;
 

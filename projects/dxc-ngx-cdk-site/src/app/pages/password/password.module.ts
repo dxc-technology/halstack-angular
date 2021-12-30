@@ -21,6 +21,7 @@ import { PasswordApiComponent } from "src/app/components/examples/password/passw
 import { PasswordExampleComponent } from "src/app/components/examples/password/password-example/password-example.component";
 import { PasswordImportComponent } from "src/app/components/examples/password/password-import/password-import.component";
 import { PasswordPropertiesComponent } from "src/app/components/examples/password/password-properties/password-properties.component";
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PasswordPropertiesComponent } from "src/app/components/examples/passwor
     DxcChipModule,
     ColorPreviewModule,
     DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     PasswordComponent,

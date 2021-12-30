@@ -99,8 +99,24 @@
 }
 
 .menu-item {
-    padding: 3px 0px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px 0px;
 }
+
+.menu-item a::before {
+  display: table;
+  content: "";
+  margin-bottom: 0.21875rem;
+}
+
+.menu-item a::after {
+  display: table;
+  content: "";
+  margin-top: 0.21875rem;
+}
+
 .menu-items {
     margin-left: 10px;
     margin-bottom: 30px;

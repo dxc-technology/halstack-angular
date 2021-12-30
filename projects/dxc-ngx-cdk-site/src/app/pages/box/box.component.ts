@@ -10,10 +10,6 @@ import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.c
   providers: []
 })
 export class BoxComponent implements OnInit{
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

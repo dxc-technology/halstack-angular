@@ -17,6 +17,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/c
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     RadioComponent,

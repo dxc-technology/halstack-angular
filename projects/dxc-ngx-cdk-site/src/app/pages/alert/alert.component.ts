@@ -10,10 +10,6 @@ import { AlertApiComponent } from '../../components/examples/alert/alert-api/ale
   providers: []
 })
 export class AlertComponent implements OnInit{
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

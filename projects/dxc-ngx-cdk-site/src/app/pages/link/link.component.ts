@@ -9,10 +9,6 @@ import { LinkApiComponent } from '../../components/examples/link/link-api/link-a
   styleUrls: ['./link.component.scss']
 })
 export class LinkComponent implements OnInit {
-  headingMargin = {
-    bottom: "medium",
-  };
-
   sections: Array<Section>;
   tagImg: string;
 

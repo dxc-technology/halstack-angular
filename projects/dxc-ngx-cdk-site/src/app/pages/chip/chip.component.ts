@@ -9,10 +9,6 @@ import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-a
   styleUrls: ['./chip.component.scss']
 })
 export class ChipComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-  
   sections: Array<Section>;
   tagImg: string;
 

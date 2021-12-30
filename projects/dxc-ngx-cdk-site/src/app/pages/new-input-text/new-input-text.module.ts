@@ -14,6 +14,7 @@ import { InputTextApiComponent } from '../../components/examples/input-text/inpu
 import { InputTextExampleComponent } from '../../components/examples/input-text/input-text-example/input-text-example.component';
 import { InputTextImportComponent } from '../../components/examples/input-text/input-text-import/input-text-import.component';
 import { InputTextPropertiesComponent } from '../../components/examples/input-text/input-text-properties/input-text-properties.component';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { InputTextPropertiesComponent } from '../../components/examples/input-te
     ComponentsSidenavModule,
     DxcChipModule,
     ColorPreviewModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule
   ],
   exports: [
     NewInputTextComponent,

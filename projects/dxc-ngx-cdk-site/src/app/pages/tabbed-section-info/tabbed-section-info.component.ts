@@ -10,10 +10,6 @@ import { TabbedSectionApiComponent } from '../../components/examples/tabbed-sect
   styleUrls: ['./tabbed-section-info.component.scss']
 })
 export class TabbedSectionInfoComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, V3DxcSelectModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import { DxcTableModule, V3DxcSelectModule, DxcTagModule, DxcChipModule, DxcHeadingModule, DxcAlertModule, DxcLinkModule } from '@dxc-technology/halstack-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 
 @NgModule({
@@ -39,7 +40,10 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ComponentsSidenavModule,
     ColorPreviewModule,
     DxcChipModule,
-    DxcHeadingModule
+    DxcHeadingModule,
+    StatusTagModule,
+    DxcLinkModule,
+    DxcAlertModule,
   ],
   exports: [
     SelectComponent,

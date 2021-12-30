@@ -10,6 +10,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     ComponentsSidenavModule,
     DxcChipModule,
     DxcHeadingModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule
   ],
   exports: [
     BoxExampleComponent,

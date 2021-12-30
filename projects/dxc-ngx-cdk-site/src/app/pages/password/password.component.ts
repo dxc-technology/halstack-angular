@@ -8,11 +8,6 @@ import { Section } from 'src/app/model/sections';
   templateUrl: './password.component.html'
 })
 export class PasswordComponent implements OnInit {
-
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

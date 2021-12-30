@@ -9,10 +9,6 @@ import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/
   styleUrls: ['./wizard.component.scss']
 })
 export class WizardComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

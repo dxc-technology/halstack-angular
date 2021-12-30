@@ -13,6 +13,7 @@ import { AccordionGroupExampleComponent } from '../../components/examples/accord
 import { AccordionGroupTablePropertiesComponent } from '../../components/examples/accordion-group/properties/accordion-group-table-properties/accordion-group-table-properties.component';
 import { AccordionGroupImportComponent } from '../../components/examples/accordion-group/accordion-group-import/accordion-group-import.component';
 import { AccordionGroupApiComponent } from '../../components/examples/accordion-group/accordion-group-api/accordion-group-api.component';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AccordionGroupApiComponent } from '../../components/examples/accordion-
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    DxcLinkModule
+    DxcLinkModule,
+    StatusTagModule
   ], 
   exports: [
     AccordionGroupComponent,

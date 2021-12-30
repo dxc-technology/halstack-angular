@@ -9,10 +9,6 @@ import { SidenavApiComponent } from "../../components/examples/sidenav/sidenav-a
   styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent implements OnInit {
-  headingMargin = {
-    bottom: 'medium'
-  }
-
   sections: Array<Section>;
   tagImg: string;
 

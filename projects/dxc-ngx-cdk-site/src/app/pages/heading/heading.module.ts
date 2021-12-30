@@ -11,6 +11,7 @@ import { CodePlaygroundModule } from '../../components/code-playground/code-play
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 import { HeadingApiComponent } from '../../components/examples/heading/heading-api/heading-api.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
     CodePlaygroundModule,
     ComponentsSidenavModule,
     DxcChipModule,
-    CodesandboxViewerModule
+    CodesandboxViewerModule,
+    StatusTagModule
   ],
   exports:[
     HeadingComponent,

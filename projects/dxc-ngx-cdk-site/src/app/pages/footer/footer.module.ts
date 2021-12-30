@@ -19,6 +19,7 @@ import { ComponentsSidenavModule } from "../components-sidenav/components-sidena
 import { ColorPreviewModule } from "../../components/color-preview/color-preview.module";
 import { FooterApiComponent } from "../../components/examples/footer/footer-api/footer-api.component";
 import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/cod
     DxcChipModule,
     DxcHeadingModule,
     CodesandboxViewerModule,
+    StatusTagModule
   ],
   exports: [
     FooterComponent,

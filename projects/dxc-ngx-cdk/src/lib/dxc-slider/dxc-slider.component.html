@@ -28,14 +28,14 @@
     >
     {{ maxValueLabel }}</span
     >
-    <dxc-input-text
+    <dxc-text-input
     *ngIf="showInput"
     [value]="renderedValue"
     [name]="name"
     [disabled]="disabled"
     (onChange)="inputValueChanged($event)"
-    [size]="'small'"
-    [tabIndexValue]="tabIndexValue"
-    ></dxc-input-text>
+    size="fillParent"
+    [tabIndex]="tabIndexValue"
+    ></dxc-text-input>
   </div>
 </div>

@@ -19,14 +19,14 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { OnDestroy } from "@angular/core";
 import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
-import { DxcNumberHelper } from "./dxc-number.helper";
+import { DxcNumberInputHelper } from "./dxc-number-input.helper";
 
 @Component({
   selector: "dxc-number",
   templateUrl: "./dxc-number.component.html",
-  providers: [DxcNumberHelper, CssUtils],
+  providers: [DxcNumberInputHelper, CssUtils],
 })
-export class DxcNumberComponent implements OnInit, OnChanges, OnDestroy {
+export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   @HostBinding("class") className;
 
   @Input()

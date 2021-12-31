@@ -115,8 +115,8 @@ export * from './lib/dxc-new-textarea/dxc-new-textarea.module';
 export * from './lib/dxc-password/dxc-password.component';
 export * from './lib/dxc-password/dxc-password.module';
 
-export * from './lib/dxc-number/dxc-number.component';
-export * from './lib/dxc-number/dxc-number.module';
+export * from './lib/dxc-number-input/dxc-number-input.component';
+export * from './lib/dxc-number-input/dxc-number-input.module';
 
 export * from './lib/v3-dxc-textarea/v3-dxc-textarea.component';
 export * from './lib/v3-dxc-textarea/v3-dxc-textarea.module';

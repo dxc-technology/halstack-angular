@@ -1,4 +1,4 @@
-import { DxcNumberComponent } from "./dxc-number.component";
+import { DxcNumberComponent } from "./dxc-number-input.component";
 
 import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";

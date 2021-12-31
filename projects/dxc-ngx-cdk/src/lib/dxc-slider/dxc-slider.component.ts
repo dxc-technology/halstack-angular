@@ -359,9 +359,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
 
 
 
-      dxc-input-text {
-        margin-top: 10px;
-        margin-left: 32px;
+      dxc-text-input {
+        margin-left: 2rem;
+        max-width: 70px;
       }
       ${this.darkBackground ? this.getDarkStyle() : this.getLightStyle()}
     `;

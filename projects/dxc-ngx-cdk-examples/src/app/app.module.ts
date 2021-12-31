@@ -75,7 +75,7 @@ import {
   BackgroundProviderModule,
   DxcTextInputModule,
   DxcNewDateModule,
-  DxcPasswordModule,
+  DxcPasswordInputModule,
   DxcNumberModule,
   DxcNewTextareaModule,
 } from "@dxc-technology/halstack-angular";
@@ -175,7 +175,7 @@ import { NewDateComponent } from './pages/new-date/new-date.component';
     BackgroundProviderModule,
     DxcTextInputModule,
     DxcNewDateModule,
-    DxcPasswordModule,
+    DxcPasswordInputModule,
     DxcNumberModule,
     DxcNewTextareaModule
   ],

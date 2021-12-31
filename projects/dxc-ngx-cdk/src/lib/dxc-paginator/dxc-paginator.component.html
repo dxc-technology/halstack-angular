@@ -2,19 +2,16 @@
   <div class="labels-container">
     <span *ngIf="itemsPerPageOptions" class="items-per-page">
       <span>Items per page</span>
-      <v3-dxc-select
-        (onChange)="onItemsPerPageHandler($event)"
-        [value]="itemsPerPage"
-        [margin]="selectMargin"
-        size="small"
-        [tabIndexValue]="tabIndexValue"
-      >
-        <v3-dxc-select-option
-          *ngFor="let option of selectOptions"
-          [label]="option.label"
-          [value]="option.value"
-        ></v3-dxc-select-option>
-      </v3-dxc-select>
+      <div class="selectContainer">
+        <dxc-select
+          [value]="itemsPerPage.toString()"
+          size="fillParent"
+          [options]="selectOptions"
+          (onChange)="onItemsPerPageHandler($event)"
+          [tabIndex]="tabIndexValue"
+        >
+        </dxc-select>
+      </div>
     </span>
 
     <span class="total-items-container">
@@ -27,14 +24,11 @@
       (onClick)="onFirstHandler($event)"
       size="small"
       [margin]="buttonMargin"
-      [disabled]="currentPageInternal === 1"
+      [disabled]="disabledFirstBtn()"
       [tabIndexValue]="tabIndexValue"
     >
       <dxc-button-icon>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 12.41 12"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.41 12">
           <path
             id="Path_2463"
             data-name="Path 2463"
@@ -50,7 +44,7 @@
       (onClick)="onPrevHandler($event)"
       size="small"
       [margin]="buttonMargin"
-      [disabled]="currentPageInternal === 1"
+      [disabled]="disabledFirstBtn()"
       [tabIndexValue]="tabIndexValue"
     >
       <dxc-button-icon>
@@ -74,19 +68,16 @@
     </span>
     <span *ngIf="showGoToPage" class="go-to-page">
       <span>Go to page</span>
-      <v3-dxc-select
-        (onChange)="goToPageHandler($event)"
-        [value]="currentPage"
-        [margin]="selectMargin"
-        size="small"
-        [tabIndexValue]="tabIndexValue"
-      >
-        <v3-dxc-select-option
-          *ngFor="let item of [].constructor(totalPages); let i = index"
-          [label]="i + 1"
-          [value]="i + 1"
-        ></v3-dxc-select-option>
-      </v3-dxc-select>
+      <div class="selectContainer">
+        <dxc-select
+          [value]="currentPage.toString()"
+          size="fillParent"
+          [options]="totalPagesOptions"
+          (onChange)="goToPageHandler($event)"
+          [tabIndex]="tabIndexValue"
+        >
+        </dxc-select>
+      </div>
     </span>
     <dxc-button
       *ngIf="showNext"
@@ -94,7 +85,7 @@
       (onClick)="onNextHandler($event)"
       size="small"
       [margin]="buttonMargin"
-      [disabled]="currentPageInternal === totalPages"
+      [disabled]="disabledLastBtn()"
       [tabIndexValue]="tabIndexValue"
     >
       <dxc-button-icon>
@@ -119,7 +110,7 @@
       (onClick)="onLastHandler($event)"
       size="small"
       [margin]="buttonMargin"
-      [disabled]="currentPageInternal === totalPages"
+      [disabled]="disabledLastBtn()"
       [tabIndexValue]="tabIndexValue"
     >
       <dxc-button-icon>

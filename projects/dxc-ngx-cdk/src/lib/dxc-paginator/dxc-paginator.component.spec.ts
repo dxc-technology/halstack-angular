@@ -280,7 +280,7 @@ describe("DxcPaginator tests", () => {
       excludeComponentDeclaration: true,
     });
     expect(screen.getByText("Items per page")).toBeTruthy();
-    fireEvent.click(paginator.getByRole("trigger"));
+    fireEvent.click(paginator.getByRole("combobox"));
     paginator.detectChanges();
     fireEvent.click(screen.getByText("20"));
     expect(changeMock).toHaveBeenCalledWith(20);
@@ -303,7 +303,7 @@ describe("DxcPaginator tests", () => {
     });
     
     expect(screen.getByText("Go to page")).toBeTruthy();
-    fireEvent.click(paginator.getByRole("trigger"));
+    fireEvent.click(paginator.getByRole("combobox"));
     paginator.detectChanges();
     fireEvent.click(screen.getByText("3"));
     expect(changeMock).toHaveBeenCalledWith(3);

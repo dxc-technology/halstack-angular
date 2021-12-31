@@ -8,6 +8,10 @@
     font-style: var(--paginator-fontStyle);
     font-weight: var(--paginator-fontWeight);
     text-transform: var(--paginator-fontTextTransform);
+    margin-right: 15px;
+  }
+  .selectContainer{
+    max-width: 100px;
   }
 }
 

@@ -146,7 +146,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private cdRef: ChangeDetectorRef,
-    private helper: DxcNumberHelper
+    private helper: DxcNumberInputHelper
   ) {}
 
   ngOnDestroy(): void {}

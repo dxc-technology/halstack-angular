@@ -1,4 +1,4 @@
-import { DxcNumberComponent } from "./dxc-number-input.component";
+import { DxcNumberInputComponent } from "./dxc-number-input.component";
 
 import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
@@ -6,7 +6,7 @@ import { waitFor } from "@testing-library/dom";
 
 describe("DxcInputNumberComponent", () => {
   test("should render dxc-number", async () => {
-    await render(DxcNumberComponent, {
+    await render(DxcNumberInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -19,7 +19,7 @@ describe("DxcInputNumberComponent", () => {
   });
 
   test("should render error dxc-number", async () => {
-    await render(DxcNumberComponent, {
+    await render(DxcNumberInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -35,7 +35,7 @@ describe("DxcInputNumberComponent", () => {
 
   test("should call onChange in dxc-number", async () => {
     const onChange = jest.fn();
-    const dxcNumber = await render(DxcNumberComponent, {
+    const dxcNumber = await render(DxcNumberInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -78,7 +78,7 @@ describe("DxcInputNumberComponent", () => {
 
   test("controlled dxc-number", async () => {
     const onChange = jest.fn();
-    await render(DxcNumberComponent, {
+    await render(DxcNumberInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -110,7 +110,7 @@ describe("DxcInputNumberComponent", () => {
   test("should call onBlur in dxc-number", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    await render(DxcNumberComponent, {
+    await render(DxcNumberInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",

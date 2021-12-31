@@ -42,8 +42,8 @@ export * from './lib/dxc-chip/dxc-chip-suffix-icon/dxc-chip-suffix-icon.componen
 export * from './lib/dxc-date/dxc-date.component';
 export * from './lib/dxc-date/dxc-date.module';
 
-export * from './lib/dxc-new-date/dxc-new-date.component';
-export * from './lib/dxc-new-date/dxc-new-date.module';
+export * from './lib/dxc-date-input/dxc-date-input.component';
+export * from './lib/dxc-date-input/dxc-date-input.module';
 
 export * from './lib/dxc-dialog/dxc-dialog.component';
 export * from './lib/dxc-dialog/dxc-dialog.module';

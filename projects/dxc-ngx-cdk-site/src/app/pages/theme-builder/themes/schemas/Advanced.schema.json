@@ -857,7 +857,6 @@
     "helperTextFontColor": "color",
     "collapseIndicatorColor": "color",
     "errorColor": "color",
-    "valueIconColor": "color",
     "placeholderFontColor": "color",
     "disabledColor": "color",
     "optionListBackgroundColor": "color",
@@ -870,7 +869,7 @@
     "selectedlistItemBackgroundColor": "color",
     "selectedHoverListItemBackgroundColor": "color",
     "selectedActivelistItemBackgroundColor": "color",
-
+    "selectedListItemIconColor": "color",
     "errorColorOnDark": "color",
     "disabledColorOnDark": "color",
     "focusColor": "color",

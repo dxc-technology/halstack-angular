@@ -24,7 +24,7 @@ export class OverviewPageComponent implements OnInit {
 
   ngOnInit() {
     this.imgGithub = 'assets/img/github-logo.svg';
-    this.imgDxc = 'assets/img/dxclogo.png';
+    this.imgDxc = 'assets/img/dxclogo.svg';
 
     this.sections.push(
       { id: 0, label: 'INSTALL', selector: 'app-overview-install', component: OverviewInstallComponent },

@@ -2,51 +2,51 @@
     <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
     <background-provider color="#FFFFFF">
       <tbuilder-component-mode text="Default">
-        <dxc-new-textarea
+        <dxc-textarea
             label="Test"
             [pattern]="pattern"
 
             (onBlur)="onBlur($event)"
         >
-        </dxc-new-textarea>
+        </dxc-textarea>
       </tbuilder-component-mode>
       <tbuilder-component-mode text="Invalid">
-        <dxc-new-textarea
+        <dxc-textarea
             label="Test"
             error="error"
         >
-        </dxc-new-textarea>
+        </dxc-textarea>
       </tbuilder-component-mode>
       <tbuilder-component-mode text="Disabled">
-        <dxc-new-textarea
+        <dxc-textarea
             label="Test"
             value="test"
             disabled="true"
         >
-        </dxc-new-textarea>
+        </dxc-textarea>
       </tbuilder-component-mode>
     </background-provider>
 
     <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
     <background-provider color="#000000">
       <tbuilder-component-mode text="Default" mode="dark">
-        <dxc-new-textarea
+        <dxc-textarea
         >
-        </dxc-new-textarea>
+        </dxc-textarea>
       </tbuilder-component-mode>
       <tbuilder-component-mode text="Invalid" mode="dark">
-        <dxc-new-textarea
+        <dxc-textarea
             label="Test"
             error="error"
         >
-        </dxc-new-textarea>
+        </dxc-textarea>
       </tbuilder-component-mode>
       <tbuilder-component-mode text="Disabled" mode="dark">
-        <dxc-new-textarea
+        <dxc-textarea
             label="Test"
             disabled="true"
         >
-        </dxc-new-textarea>
+        </dxc-textarea>
       </tbuilder-component-mode>
     </background-provider> -->
   </div>

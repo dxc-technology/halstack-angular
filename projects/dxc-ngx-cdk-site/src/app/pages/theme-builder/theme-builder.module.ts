@@ -40,9 +40,9 @@ import {
   BackgroundProviderModule,
   DxcTextInputModule,
   DxcPasswordInputModule,
-  DxcNumberModule,
+  DxcNumberInputModule,
   DxcNewDateModule,
-  DxcNewTextareaModule,
+  DxcTextareaModule,
   DxcFileInputModule,
   DxcSelectModule
 } from "@dxc-technology/halstack-angular";
@@ -145,7 +145,7 @@ import { NewSelectPreviewComponent } from './previews/new-select-preview/new-sel
     DxcInputTextModule,
     DxcTextInputModule,
     DxcPasswordInputModule,
-    DxcNumberModule,
+    DxcNumberInputModule,
     DxcLinkModule,
     DxcPaginatorModule,
     DxcProgressbarModule,
@@ -163,7 +163,7 @@ import { NewSelectPreviewComponent } from './previews/new-select-preview/new-sel
     DxcToggleGroupModule,
     DxcUploadModule,
     BackgroundProviderModule,
-    DxcNewTextareaModule,
+    DxcTextareaModule,
     DxcFileInputModule,
     DxcSelectModule
   ],

@@ -6,11 +6,11 @@ import { Component, OnInit } from "@angular/core";
 })
 export class NewTextareaImportComponent implements OnInit {
   bindCode = `
-  import { DxcNewTextareaModule } from '@dxc-technology/halstack-angular';
+  import { DxcTextareaModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DxcNewTextareaModule,
+      DxcTextareaModule,
     ]
   })
   export class AppComponent { }

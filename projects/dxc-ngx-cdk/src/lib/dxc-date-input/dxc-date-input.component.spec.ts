@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen, waitFor } from "@testing-library/dom";
-import { DxcNewDateComponent } from "./dxc-new-date.component";
+import { DxcDateInputComponent } from "./dxc-date-input.component";
 import {
   DateAdapter,
   MatNativeDateModule,
@@ -24,7 +24,7 @@ describe("DxcDate", () => {
   const newValue = "03-12-1995";
 
   test("should render dxc-date", async () => {
-    const { getByText } = await render(DxcNewDateComponent, {
+    const { getByText } = await render(DxcDateInputComponent, {
       componentProperties: { label: "test-date" },
       imports: [
         MatMomentDateModule,
@@ -45,7 +45,7 @@ describe("DxcDate", () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         value: "03-12-1995",
@@ -91,7 +91,7 @@ describe("DxcDate", () => {
   test("dxc-date value change and default format", async () => {
     const onChange = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         onChange: {
@@ -131,7 +131,7 @@ describe("DxcDate", () => {
   test("dxc-date cahnge value twice as uncontrolled", async () => {
     const onChange = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         onChange: {
@@ -180,7 +180,7 @@ describe("DxcDate", () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         format: "YYYY/MM/DD",
@@ -237,7 +237,7 @@ describe("DxcDate", () => {
     const onChange = jest.fn();
     const invalidValue = "03-12-199_";
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         onChange: {
@@ -276,7 +276,7 @@ describe("DxcDate", () => {
   test("onChange function is called when the user selects from the calendar", async () => {
     const onChange = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         value: newValue,
@@ -316,7 +316,7 @@ describe("DxcDate", () => {
   test("onChange function is called when the user selects from the calendar, the stringValue received by the function is the date with the correct format", async () => {
     const onChange = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         value: "12-03-1995",
@@ -361,7 +361,7 @@ describe("DxcDate", () => {
   test("If the user types something, if controlled and without onChange, the value doesn´t change", async () => {
     const onChange = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         value: newValue,
@@ -411,7 +411,7 @@ describe("DxcDate", () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
 
-    await render(DxcNewDateComponent, {
+    await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
         value: "04-12-1995",

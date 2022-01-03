@@ -4,7 +4,7 @@ import { CssUtils } from "../utils";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 @Injectable()
-export class DxcNewTextareaHelper {
+export class DxcTextareaHelper {
   sizes = {
     small: "240px",
     medium: "360px",

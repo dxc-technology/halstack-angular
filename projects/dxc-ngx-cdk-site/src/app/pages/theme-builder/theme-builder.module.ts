@@ -42,7 +42,7 @@ import {
   DxcPasswordModule,
   DxcNumberInputModule,
   DxcNewDateModule,
-  DxcNewTextareaModule,
+  DxcTextareaModule,
   DxcFileInputModule,
   DxcSelectModule
 } from "@dxc-technology/halstack-angular";
@@ -163,7 +163,7 @@ import { NewSelectPreviewComponent } from './previews/new-select-preview/new-sel
     DxcToggleGroupModule,
     DxcUploadModule,
     BackgroundProviderModule,
-    DxcNewTextareaModule,
+    DxcTextareaModule,
     DxcFileInputModule,
     DxcSelectModule
   ],

@@ -3,7 +3,7 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 
 @Injectable()
-export class DxcNewDateHelper {
+export class DxcDateInputHelper {
   constructor(private utils: CssUtils) {}
 
   getDynamicStyle(inputs) {

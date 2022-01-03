@@ -14,7 +14,7 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
-import { DxcNewDateHelper } from "./dxc-new-date.helper";
+import { DxcDateInputHelper } from "./dxc-date-input.helper";
 import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
@@ -24,11 +24,11 @@ import { CssUtils } from "../utils";
 const moment = momentImported;
 
 @Component({
-  selector: "dxc-new-date",
-  templateUrl: "./dxc-new-date.component.html",
-  providers: [DxcNewDateHelper, CssUtils],
+  selector: "dxc-date-input",
+  templateUrl: "./dxc-date-input.component.html",
+  providers: [DxcDateInputHelper, CssUtils],
 })
-export class DxcNewDateComponent implements OnInit {
+export class DxcDateInputComponent implements OnInit {
   @HostBinding("class") className;
 
   @Input()
@@ -171,7 +171,7 @@ export class DxcNewDateComponent implements OnInit {
   }
 
   constructor(
-    private helper: DxcNewDateHelper,
+    private helper: DxcDateInputHelper,
     private cdRef: ChangeDetectorRef
   ) {}
 

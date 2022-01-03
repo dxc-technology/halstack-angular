@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { DxcNewDateComponent } from "./dxc-new-date.component";
+import { DxcDateInputComponent } from "./dxc-date-input.component";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { FormsModule } from "@angular/forms";
@@ -18,7 +18,7 @@ import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 
 @NgModule({
-  declarations: [DxcNewDateComponent],
+  declarations: [DxcDateInputComponent],
   imports: [
     CommonModule,
     DxcTextInputModule,
@@ -28,7 +28,7 @@ import { DxcBoxModule } from "../dxc-box/dxc-box.module";
     MdePopoverModule,
     MatDatepickerModule
   ],
-  exports: [DxcNewDateComponent],
+  exports: [DxcDateInputComponent],
   providers: [
     {
       provide: DateAdapter,

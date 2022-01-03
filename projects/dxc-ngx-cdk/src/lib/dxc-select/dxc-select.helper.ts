@@ -207,25 +207,25 @@ export class DxcSelectHelper {
             background-color: transparent;
             color: #000000;
             &:hover {
-              background-color: var(--newInputText-hoverActionBackgroundColor);
-              color: var(--newInputText-hoverActionIconColor);
+              background-color: var(--textInput-hoverActionBackgroundColor);
+              color: var(--textInput-hoverActionIconColor);
             }
             &:focus {
-              color: var(--newInputText-focusActionIconColor);
-              border: 2px solid var(--newInputText-focusActionBorderColor);
+              color: var(--textInput-focusActionIconColor);
+              border: 2px solid var(--textInput-focusActionBorderColor);
               outline: none;
             }
             &:focus-visible {
-              border: 2px solid var(--newInputText-focusActionBorderColor);
+              border: 2px solid var(--textInput-focusActionBorderColor);
               outline: none;
             }
             &:active {
-              border: 2px solid var(--newInputText-focusActionBorderColor);
+              border: 2px solid var(--textInput-focusActionBorderColor);
               box-shadow: inset 0 0 0 1px
-                var(--newInputText-activeActionBackgroundColor);
+                var(--textInput-activeActionBackgroundColor);
               outline: none;
-              background-color: var(--newInputText-activeActionBackgroundColor);
-              color: var(--newInputText-activeActionIconColor);
+              background-color: var(--textInput-activeActionBackgroundColor);
+              color: var(--textInput-activeActionIconColor);
             }
             svg {
               line-height: 18px;

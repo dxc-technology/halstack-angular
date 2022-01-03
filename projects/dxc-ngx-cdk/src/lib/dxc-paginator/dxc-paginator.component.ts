@@ -6,10 +6,12 @@ import {
   EventEmitter,
   SimpleChanges,
   HostBinding,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
 import { css } from "emotion";
+import { Option } from "../../public-api";
 
 @Component({
   selector: "dxc-paginator",
@@ -72,16 +74,13 @@ export class DxcPaginatorComponent implements OnInit {
   @HostBinding("class") className;
 
   buttonMargin = { left: "xxsmall", right: "xxsmall" };
-  selectMargin = { left: "xxsmall", right: "small" };
 
   totalPages: number;
   currentPageInternal: number;
   minItemsPerPage: number;
   maxItemsPerPage: number;
-  selectOptions: {
-    label: string;
-    value: any;
-  }[];
+  selectOptions: Option[];
+  totalPagesOptions: Option[];
 
   showFirst: boolean = false;
   showLast: boolean = false;
@@ -94,10 +93,10 @@ export class DxcPaginatorComponent implements OnInit {
     totalItems: 1,
     paginationActions: 0,
     itemsPerPageOptions: [],
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
 
-  constructor() {
+  constructor(private cdRef: ChangeDetectorRef) {
     this.currentPage = 1;
     this.itemsPerPage = 5;
     this.totalItems = 1;
@@ -113,7 +112,10 @@ export class DxcPaginatorComponent implements OnInit {
     this.selectOptions = [];
     if (this.itemsPerPageOptions) {
       this.itemsPerPageOptions.map((value) => {
-        const option = { label: value.toString(), value: value };
+        const option: Option = {
+          label: value.toString(),
+          value: value.toString(),
+        };
         this.selectOptions.push(option);
       });
     }
@@ -126,7 +128,19 @@ export class DxcPaginatorComponent implements OnInit {
       ...this.defaultInputs.getValue(),
       ...inputs,
     });
+    if(this.totalPages > 0){
+      this.totalPagesOptions = [];
+      for(let i = 0; i < this.totalPages; i++){
+        const op = i + 1;
+        const option: Option = {
+          label: op.toString(),
+          value: op.toString(),
+        };
+        this.totalPagesOptions.push(option);
+      }
+    }
     this.className = `${this.getDynamicStyle()}`;
+    this.cdRef.detectChanges();
   }
 
   public onFirstHandler($event: any): void {
@@ -145,12 +159,12 @@ export class DxcPaginatorComponent implements OnInit {
     this.onGoToPage.emit(this.totalPages);
   }
 
-  public onItemsPerPageHandler($event: any): void {
-    this.itemsPerPageFunction.emit($event);
+  public onItemsPerPageHandler(event: any): void {
+    this.itemsPerPageFunction.emit(parseInt(event.value));
   }
 
-  goToPageHandler($event: any) {
-    this.onGoToPage.emit($event);
+  goToPageHandler(event: any) {
+    this.onGoToPage.emit(parseInt(event.value));
   }
 
   private setButtonVisibility(paginationActions: Array<string>) {
@@ -193,13 +207,21 @@ export class DxcPaginatorComponent implements OnInit {
         : this.minItemsPerPage - 1 + +input.itemsPerPage;
   }
 
+  public disabledFirstBtn() {
+    return this.currentPageInternal == 1;
+  }
+
+  public disabledLastBtn() {
+    return this.currentPageInternal == this.totalPages;
+  }
+
   getDynamicStyle() {
     return css`
       .mat-button-disabled {
         background-color: transparent !important;
         opacity: 0.3 !important;
       }
-      dxc-select{
+      dxc-select {
         margin-right: 0px;
       }
     `;

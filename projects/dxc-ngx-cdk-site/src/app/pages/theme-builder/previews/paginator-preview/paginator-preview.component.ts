@@ -5,7 +5,6 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./paginator-preview.component.html",
 })
 export class PaginatorPreviewComponent implements OnInit {
-  paginationActions: Array<string> = ["prev", "next", "first", "last"];
   page: number = 1;
   totalItems: number = 27;
   itemsPerPage: number = 10;
@@ -15,8 +14,11 @@ export class PaginatorPreviewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  navigate(page: number, operation: string) {
-    this.page = page;
-    console.log("navigate: " + operation);
+  itemsPerPageFunction(event){
+    this.itemsPerPage = event;
+  }
+
+  onGoToPage(event){
+    this.page = event;
   }
 }

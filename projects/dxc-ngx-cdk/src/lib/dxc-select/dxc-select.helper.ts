@@ -116,7 +116,7 @@ export class DxcSelectHelper {
           }
           .selectedOptionContainer {
             margin-left: 8px;
-            width: calc(100% - 60px);
+            width: 80%;
           }
         }
         .iconsContainer {
@@ -234,9 +234,11 @@ export class DxcSelectHelper {
         }
       }
       .options {
+        left: 0;
+        margin-top: 4px;
+        top: 100%;
         overflow: auto;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        margin: 4px 0px 0px 0px;
         background: var(--newSelect-optionListBackgroundColor) 0% 0% no-repeat
           padding-box;
         border: 1px solid var(--newSelect-optionListBorderColor);
@@ -249,7 +251,6 @@ export class DxcSelectHelper {
         flex-direction: column;
         padding: 4px 0px;
         position: absolute;
-        margin-top: 92px;
         z-index: 100;
         max-height: 312px;
         &.closed {

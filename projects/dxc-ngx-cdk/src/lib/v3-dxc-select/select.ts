@@ -614,7 +614,7 @@ export abstract class _MatSelectBase<C>
         this.service.isDarkTheme = false;
       }
       this.service.isDarkThemeOption.next(this.utils.readProperty(
-        "--select-optionBackgroundColor"
+        "--v3Select-optionBackgroundColor"
       ));
     });
 
@@ -1338,8 +1338,8 @@ export abstract class _MatSelectBase<C>
         top: ${this.panelOpen || this.floatingLabel ? "10px" : "19px"};
         transform: ${this.floatingStyles()};
         color: ${this.invalid
-          ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
-          : this.service.isDarkTheme ?  "var(--select-labelFontColorOnDark)" : "var(--select-labelFontColor)"};
+          ? this.service.isDarkTheme ?  "var(--v3Select-errorColorOnDark)" : "var(--v3Select-errorColor)"
+          : this.service.isDarkTheme ?  "var(--v3Select-labelFontColorOnDark)" : "var(--v3Select-labelFontColor)"};
         transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
           left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -1348,14 +1348,14 @@ export abstract class _MatSelectBase<C>
           font-size 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
         span {
           font-size: ${this.panelOpen || this.floatingLabel
-            ? "calc(var(--select-labelFontSize) * 0.75)"
-            : "var(--select-labelFontSize)"};
-          font-family: var(--select-fontFamily);
-          font-style: var(--select-labelFontStyle);
-          font-weight: var(--select-labelFontWeight);
+            ? "calc(var(--v3Select-labelFontSize) * 0.75)"
+            : "var(--v3Select-labelFontSize)"};
+          font-family: var(--v3Select-fontFamily);
+          font-style: var(--v3Select-labelFontStyle);
+          font-weight: var(--v3Select-labelFontWeight);
         }
         .select-required {
-          color: var(--select-required);
+          color: var(--v3Select-required);
         }
       }
       dxc-option-icon {
@@ -1370,7 +1370,7 @@ export abstract class _MatSelectBase<C>
       .mat-select-value {
         height: 32px;
         span {
-          font-family: var(--select-fontFamily);
+          font-family: var(--v3Select-fontFamily);
         }
       }
 
@@ -1380,7 +1380,7 @@ export abstract class _MatSelectBase<C>
         border-top-color: transparent;
         :focus {
           outline: -webkit-focus-ring-color auto 1px;
-          outline-color: ${this.service.isDarkTheme ?  "var(--select-focusColorOnDark)" : "var(--select-focusColor)"};
+          outline-color: ${this.service.isDarkTheme ?  "var(--v3Select-focusColorOnDark)" : "var(--v3Select-focusColor)"};
         }
         dxc-option-icon{
           height: 100%;
@@ -1388,23 +1388,23 @@ export abstract class _MatSelectBase<C>
       }
 
       .underline {
-        height: var(--select-underlineThickness);
+        height: var(--v3Select-underlineThickness);
         background-color: ${this.invalid
-          ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
-          : this.service.isDarkTheme ?  "var(--select-underlineColorOnDark)" : "var(--select-underlineColor)"};
+          ? this.service.isDarkTheme ?  "var(--v3Select-errorColorOnDark)" : "var(--v3Select-errorColor)"
+          : this.service.isDarkTheme ?  "var(--v3Select-underlineColorOnDark)" : "var(--v3Select-underlineColor)"};
         position: absolute;
         bottom: ${this.value ? "19.5px" : "18.5px"};
         width: 100%;
       }
 
       .assistiveText {
-        font-size: var(--select-assistiveTextFontSize);
-        font-family: var(--select-fontFamily);
-        font-style: var(--select-assistiveTextFontStyle);
-        font-weight: var(--select-assistiveTextFontWeight);
+        font-size: var(--v3Select-assistiveTextFontSize);
+        font-family: var(--v3Select-fontFamily);
+        font-style: var(--v3Select-assistiveTextFontStyle);
+        font-weight: var(--v3Select-assistiveTextFontWeight);
         color: ${this.invalid
-          ? this.service.isDarkTheme ?  "var(--select-errorColorOnDark)" : "var(--select-errorColor)"
-          : this.service.isDarkTheme ?  "var(--select-assistiveTextFontColorOnDark)" : "var(--select-assistiveTextFontColor)"};
+          ? this.service.isDarkTheme ?  "var(--v3Select-errorColorOnDark)" : "var(--v3Select-errorColor)"
+          : this.service.isDarkTheme ?  "var(--v3Select-assistiveTextFontColorOnDark)" : "var(--v3Select-assistiveTextFontColor)"};
 
         position: absolute;
         width: 100%;
@@ -1421,36 +1421,36 @@ export abstract class _MatSelectBase<C>
       }
 
       .underline {
-        height: var(--select-underlineThickness);
-        background-color:${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"};
+        height: var(--v3Select-underlineThickness);
+        background-color:${this.service.isDarkTheme ?  "var(--v3Select-disabledColorOnDark)" : "var(--v3Select-disabledColor)"};
         position: absolute;
         bottom: ${this.value ? "19.5px" : "18.5px"};
         width: 100%;
       }
 
       .assistiveText {
-        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"} !important;
+        color: ${this.service.isDarkTheme ?  "var(--v3Select-disabledColorOnDark)" : "var(--v3Select-disabledColor)"} !important;
       }
       .selectLabel {
-        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"} !important;
+        color: ${this.service.isDarkTheme ?  "var(--v3Select-disabledColorOnDark)" : "var(--v3Select-disabledColor)"} !important;
       }
       .mat-select-arrow {
-        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"} !important;
+        color: ${this.service.isDarkTheme ?  "var(--v3Select-disabledColorOnDark)" : "var(--v3Select-disabledColor)"} !important;
       }
       .mat-select-value span {
-        color: ${this.service.isDarkTheme ?  "var(--select-disabledColorOnDark)" : "var(--select-disabledColor)"};
-        font-size: var(--select-valueFontSize);
-        font-style: var(--select-valueFontStyle);
-        font-weight: var(--select-valueFontWeight);
+        color: ${this.service.isDarkTheme ?  "var(--v3Select-disabledColorOnDark)" : "var(--v3Select-disabledColor)"};
+        font-size: var(--v3Select-valueFontSize);
+        font-style: var(--v3Select-valueFontStyle);
+        font-weight: var(--v3Select-valueFontWeight);
       }`
         : `.mat-select-value span {
-        color: ${this.service.isDarkTheme ?  "var(--select-valueFontColorOnDark)" : "var(--select-valueFontColor)"};
+        color: ${this.service.isDarkTheme ?  "var(--v3Select-valueFontColorOnDark)" : "var(--v3Select-valueFontColor)"};
       }
       .mat-select-arrow {
-        color: ${this.service.isDarkTheme ?  "var(--select-arrowColorOnDark)" : "var(--select-arrowColor)"};
+        color: ${this.service.isDarkTheme ?  "var(--v3Select-arrowColorOnDark)" : "var(--v3Select-arrowColor)"};
       }
       div.underline.opened {
-        border-bottom: 2px solid ${this.service.isDarkTheme ?  "var(--select-underlineFocusColorOnDark)" : "var(--select-underlineFocusColor)"};
+        border-bottom: 2px solid ${this.service.isDarkTheme ?  "var(--v3Select-underlineFocusColorOnDark)" : "var(--v3Select-underlineFocusColor)"};
       }
       `}
     `;

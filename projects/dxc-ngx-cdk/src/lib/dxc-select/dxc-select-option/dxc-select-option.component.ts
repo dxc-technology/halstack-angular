@@ -89,12 +89,12 @@ export class DxcSelectOptionComponent implements OnInit {
 
   setSelectedStyles() {
     return css`
-      background-color: var(--newSelect-selectedlistItemBackgroundColor);
+      background-color: var(--select-selectedlistItemBackgroundColor);
       :hover {
-        background-color: var(--newSelect-selectedHoverListItemBackgroundColor);
+        background-color: var(--select-selectedHoverListItemBackgroundColor);
       }
       :active {
-        background-color: var(--newSelect-selectedActivelistItemBackgroundColor);
+        background-color: var(--select-selectedActivelistItemBackgroundColor);
       }
     `;
   }
@@ -110,17 +110,17 @@ export class DxcSelectOptionComponent implements OnInit {
         cursor: pointer;
       }
       :active {
-        background-color: var(--newSelect-unselectedActiveListItemBackgroundColor);
+        background-color: var(--select-unselectedActiveListItemBackgroundColor);
       }
       ${inputs.checked && inputs.multiple ? this.setSelectedStyles() : ""}
       &.selected {
         ${this.setSelectedStyles()}
         &.focused {
-          background-color: var(--newSelect-selectedHoverListItemBackgroundColor);
+          background-color: var(--select-selectedHoverListItemBackgroundColor);
         }
       }
       &.focused {
-        background-color: var(--newSelect-unselectedHoverListItemBackgroundColor);
+        background-color: var(--select-unselectedHoverListItemBackgroundColor);
       }
       .optionLabel {
         display: flex;
@@ -129,13 +129,13 @@ export class DxcSelectOptionComponent implements OnInit {
         margin: 2px 8px;
         height: 100%;
         box-sizing: border-box;
-        border-bottom: 1px solid var(--newSelect-listItemDividerColor);
+        border-bottom: 1px solid var(--select-listItemDividerColor);
         .iconLabel {
           display: flex;
           align-items: center;
           margin-left: ${!inputs.multiple ? "8px" : ""};
           svg {
-            fill: var(--newSelect-listItemIconColor);
+            fill: var(--select-listItemIconColor);
           }
         }
         .label {
@@ -144,11 +144,11 @@ export class DxcSelectOptionComponent implements OnInit {
           display: flex;
           align-items: center;
           margin-left: 0.5rem;
-          font-family: var(--newSelect-fontFamily);
-          font-size: var(--newSelect-listItemFontSize);
-          font-style: var(--newSelect-listItemFontStyle);
-          font-weight: var(--newSelect-listItemFontWeight);
-          color: var(--newSelect-listItemFontColor);
+          font-family: var(--select-fontFamily);
+          font-size: var(--select-listItemFontSize);
+          font-style: var(--select-listItemFontStyle);
+          font-weight: var(--select-listItemFontWeight);
+          color: var(--select-listItemFontColor);
         }
         .checkIcon {
           display: flex;

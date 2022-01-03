@@ -31,9 +31,9 @@ export class DxcSelectHelper {
       .container {
         background: #ffffff 0% 0% no-repeat padding-box;
         border: 1px solid
-          ${inputs.disabled ? "var(--newSelect-disabledColor)" : inputs.error ? "var(--newSelect-errorColor)" : "#000000"};
+          ${inputs.disabled ? "var(--select-disabledColor)" : inputs.error ? "var(--select-errorColor)" : "#000000"};
         ${inputs.error && !inputs.disabled
-          ? "box-shadow: inset 0 0 0 1px var(--newSelect-errorColor);"
+          ? "box-shadow: inset 0 0 0 1px var(--select-errorColor);"
           : ""}
         border-radius: 4px;
         opacity: 1;
@@ -130,7 +130,7 @@ export class DxcSelectHelper {
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            color: var(--newSelect-errorColor);
+            color: var(--select-errorColor);
             svg {
               line-height: 18px;
               height: 18px;
@@ -145,8 +145,8 @@ export class DxcSelectHelper {
             }
             svg {
               fill: ${!inputs.disabled
-                ? "var(--newSelect-collapseIndicatorColor)"
-                : "var(--newSelect-disabledColor)"};
+                ? "var(--select-collapseIndicatorColor)"
+                : "var(--select-disabledColor)"};
             }
           }
         }
@@ -166,13 +166,13 @@ export class DxcSelectHelper {
               padding: 0px;
               height: 100%;
               text-align: left;
-              font-family: var(--newSelect-fontFamily);
-              font-size: var(--newSelect-valueFontSize);
-              font-style: var(--newSelect-valueFontStyle);
-              font-weight: var(--newSelect-valueFontWeight);
+              font-family: var(--select-fontFamily);
+              font-size: var(--select-valueFontSize);
+              font-style: var(--select-valueFontStyle);
+              font-weight: var(--select-valueFontWeight);
               color: ${inputs.disabled
-                ? "var(--newSelect-disabledColor)"
-                : "var(--newSelect-valueFontColor)"};
+                ? "var(--select-disabledColor)"
+                : "var(--select-valueFontColor)"};
               :focus-visible,
               :focus,
               :focus-within {
@@ -182,13 +182,13 @@ export class DxcSelectHelper {
                 visibility: hidden;
               }
               ::placeholder {
-                font-family: var(--newSelect-fontFamily);
-                font-size: var(--newSelect-placeholderFontSize);
-                font-style: var(--newSelect-placeholderFontStyle);
-                font-weight: var(--newSelect-placeholderFontWeight);
+                font-family: var(--select-fontFamily);
+                font-size: var(--select-placeholderFontSize);
+                font-style: var(--select-placeholderFontStyle);
+                font-weight: var(--select-placeholderFontWeight);
                 color: ${inputs.disabled
-                  ? "var(--newSelect-disabledColor)"
-                  : "var(--newSelect-placeholderFontColor)"};
+                  ? "var(--select-disabledColor)"
+                  : "var(--select-placeholderFontColor)"};
               }
             }
           }
@@ -197,7 +197,7 @@ export class DxcSelectHelper {
             max-width: 24px;
             padding: 3px;
             font-size: 1rem;
-            font-family: var(--newSelect-fontFamily);
+            font-family: var(--select-fontFamily);
             border: 2px solid transparent;
             border-radius: 4px;
             display: flex;
@@ -239,9 +239,9 @@ export class DxcSelectHelper {
         top: 100%;
         overflow: auto;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        background: var(--newSelect-optionListBackgroundColor) 0% 0% no-repeat
+        background: var(--select-optionListBackgroundColor) 0% 0% no-repeat
           padding-box;
-        border: 1px solid var(--newSelect-optionListBorderColor);
+        border: 1px solid var(--select-optionListBorderColor);
         border-radius: 4px;
         opacity: 1;
         width: inherit;
@@ -279,11 +279,11 @@ export class DxcSelectHelper {
               height: 32px;
               display: flex;
               align-items: center;
-              font-family: var(--newSelect-fontFamily);
-              font-size: var(--newSelect-listItemFontSize);
-              font-style: var(--newSelect-listItemFontStyle);
-              font-weight: var(--newSelect-listGroupItemFontWeight);
-              color: var(--newSelect-listItemFontColor);
+              font-family: var(--select-fontFamily);
+              font-size: var(--select-listItemFontSize);
+              font-style: var(--select-listItemFontStyle);
+              font-weight: var(--select-listGroupItemFontWeight);
+              color: var(--select-listItemFontColor);
             }
             .optionLabel {
               padding: 2px 14px;
@@ -336,7 +336,7 @@ export class DxcSelectHelper {
               padding-top: 4px;
               padding-bottom: 4px;
               box-sizing: border-box;
-              border-bottom: 1px solid var(--newSelect-listItemDividerColor);
+              border-bottom: 1px solid var(--select-listItemDividerColor);
               display: flex;
               align-items: center;
             }
@@ -344,44 +344,44 @@ export class DxcSelectHelper {
         }
       }
       .inputLabel {
-        font-family: var(--newSelect-fontFamily);
-        font-size: var(--newSelect-labelFontSize);
-        font-style: var(--newSelect-labelFontStyle);
-        font-weight: var(--newSelect-labelFontWeight);
+        font-family: var(--select-fontFamily);
+        font-size: var(--select-labelFontSize);
+        font-style: var(--select-labelFontStyle);
+        font-weight: var(--select-labelFontWeight);
         color: ${inputs.disabled
-          ? "var(--newSelect-disabledColor)"
-          : "var(--newSelect-labelFontColor)"};
-        line-height: var(--newSelect-labelLineHeight);
+          ? "var(--select-disabledColor)"
+          : "var(--select-labelFontColor)"};
+        line-height: var(--select-labelLineHeight);
       }
       .optional {
-        font-family: var(--newSelect-fontFamily);
-        font-size: var(--newSelect-labelFontSize);
-        font-style: var(--newSelect-labelFontStyle);
+        font-family: var(--select-fontFamily);
+        font-size: var(--select-labelFontSize);
+        font-style: var(--select-labelFontStyle);
         font-weight: 400;
         color: ${inputs.disabled
-          ? "var(--newSelect-disabledColor)"
-          : "var(--newSelect-labelFontColor)"};
-        line-height: var(--newSelect-labelLineHeight);
+          ? "var(--select-disabledColor)"
+          : "var(--select-labelFontColor)"};
+        line-height: var(--select-labelLineHeight);
       }
       .helperText {
-        font-family: var(--newSelect-fontFamily);
-        font-size: var(--newSelect-helperTextFontSize);
-        font-style: var(--newSelect-helperTextFontStyle);
-        font-weight: var(--newSelect-helperTextFontWeight);
+        font-family: var(--select-fontFamily);
+        font-size: var(--select-helperTextFontSize);
+        font-style: var(--select-helperTextFontStyle);
+        font-weight: var(--select-helperTextFontWeight);
         color: ${inputs.disabled
-          ? "var(--newSelect-disabledColor)"
-          : "var(--newSelect-helperTextFontColor)"};
-        line-height: var(--newSelect-helperTextLineHeight);
+          ? "var(--select-disabledColor)"
+          : "var(--select-helperTextFontColor)"};
+        line-height: var(--select-helperTextLineHeight);
       }
       .errorMessage {
-        font-family: var(--newSelect-fontFamily);
-        font-size: var(--newSelect-errorMessageFontSize);
-        font-style: var(--newSelect-errorMessagetFontStyle);
-        font-weight: var(--newSelect-errorMessageFontWeight);
+        font-family: var(--select-fontFamily);
+        font-size: var(--select-errorMessageFontSize);
+        font-style: var(--select-errorMessagetFontStyle);
+        font-weight: var(--select-errorMessageFontWeight);
         color: ${inputs.disabled
-          ? "var(--newSelect-disabledColor)"
-          : "var(--newSelect-errorColor)"};
-        line-height: var(--newSelect-errorMessagetLineHeight);
+          ? "var(--select-disabledColor)"
+          : "var(--select-errorColor)"};
+        line-height: var(--select-errorMessagetLineHeight);
       }
     `;
   }

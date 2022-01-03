@@ -34,7 +34,7 @@
     @include mat-private-theme-overridable-elevation(4, $config);
 
     .mat-option.mat-selected:not(.mat-option-multiple) {
-      background: var(--select-selectedOptionBackgroundColor);
+      background: var(--v3Select-selectedOptionBackgroundColor);
     }
   }
 

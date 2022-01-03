@@ -1,11 +1,11 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
-import { DxcPasswordComponent } from "./dxc-password.component";
+import { DxcPasswordInputComponent } from "./dxc-password-input.component";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 
-describe("DxcPasswordComponent", () => {
+describe("DxcPasswordInputComponent", () => {
   test("should render dxc-password", async () => {
-    await render(DxcPasswordComponent, {
+    await render(DxcPasswordInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -19,7 +19,7 @@ describe("DxcPasswordComponent", () => {
 
   test("should clear input password", async () => {
     const onChange = jest.fn();
-    await render(DxcPasswordComponent, {
+    await render(DxcPasswordInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -42,7 +42,7 @@ describe("DxcPasswordComponent", () => {
 
   test("should mask input password", async () => {
     const onChange = jest.fn();
-    await render(DxcPasswordComponent, {
+    await render(DxcPasswordInputComponent, {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
@@ -68,7 +68,7 @@ describe("DxcPasswordComponent", () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
 
-    await render(DxcPasswordComponent, {
+    await render(DxcPasswordInputComponent, {
       componentProperties: {
         label: "test-input",
         clearable: true,
@@ -100,7 +100,7 @@ describe("DxcPasswordComponent", () => {
     const onBlur = jest.fn();
     const lengthLimit = { min: 2, max: 5 };
 
-    await render(DxcPasswordComponent, {
+    await render(DxcPasswordInputComponent, {
       componentProperties: {
         label: "test-input",
         clearable: true,

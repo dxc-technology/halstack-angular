@@ -7,7 +7,7 @@ import {
   DxcChipModule,
   DxcHeadingModule,
   DxcLinkModule,
-  DxcPasswordModule,
+  DxcPasswordInputModule,
   DxcTableModule,
   DxcTagModule,
 } from "@dxc-technology/halstack-angular";
@@ -36,7 +36,7 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     BrowserModule,
     DxcTableModule,
     TabbedSectionModule,
-    DxcPasswordModule,
+    DxcPasswordInputModule,
     ExampleViewerModule,
     CodesandboxViewerModule,
     DxcLinkModule,

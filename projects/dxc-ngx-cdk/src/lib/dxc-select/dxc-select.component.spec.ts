@@ -71,7 +71,7 @@ describe("DxcSelectComponent tests", () => {
     expect(dxcSelect.getByText("Select label"));
     expect(dxcSelect.getByText("Helper Text"));
     expect(() => dxcSelect.getByText("Choose an option")).toThrow();
-    fireEvent.click(dxcSelect.getByRole('select'));
+    fireEvent.click(dxcSelect.getByRole('combobox'));
     expect((screen.getAllByText('label1')[1].getAttribute("aria-selected"))).toBe("true");
     fireEvent.click(screen.getByText("aida"));
     expect(changeMock).toHaveBeenCalledWith({value: "10", error: null});
@@ -108,7 +108,7 @@ describe("DxcSelectComponent tests", () => {
     expect(dxcSelect.getByText("Select label"));
     expect(dxcSelect.getByText("Helper Text"));
     dxcSelect.getByText("Choose an option")
-    fireEvent.click(dxcSelect.getByRole('select'));
+    fireEvent.click(dxcSelect.getByRole('combobox'));
     fireEvent.click(screen.getByText("aida"));
     expect(changeMock).toHaveBeenCalledWith({value: "10", error: null});
     expect((screen.getAllByText('aida')[1].getAttribute("aria-selected"))).toBe("true");

@@ -112,11 +112,11 @@ export * from './lib/dxc-text-input/dxc-text-input-suffix/dxc-text-input-suffix.
 export * from './lib/dxc-textarea/dxc-textarea.component';
 export * from './lib/dxc-textarea/dxc-textarea.module';
 
-export * from './lib/dxc-password/dxc-password.component';
-export * from './lib/dxc-password/dxc-password.module';
+export * from './lib/dxc-password-input/dxc-password-input.component';
+export * from './lib/dxc-password-input/dxc-password-input.module';
 
-export * from './lib/dxc-number/dxc-number.component';
-export * from './lib/dxc-number/dxc-number.module';
+export * from './lib/dxc-number-input/dxc-number-input.component';
+export * from './lib/dxc-number-input/dxc-number-input.module';
 
 export * from './lib/v3-dxc-textarea/v3-dxc-textarea.component';
 export * from './lib/v3-dxc-textarea/v3-dxc-textarea.module';

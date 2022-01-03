@@ -344,7 +344,7 @@ describe("DxcResultset Table tests", () => {
     table.detectChanges();
     expect(table.getByText("Go to page")).toBeTruthy();
     expect(table.getByText("pepe")).toBeTruthy();
-    const trigger = table.getByRole("trigger");
+    const trigger = table.getByRole("combobox");
     fireEvent.click(trigger);
     table.detectChanges();
     fireEvent.click(screen.getByText("3"));

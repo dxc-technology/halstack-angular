@@ -116,7 +116,7 @@ export class DxcSelectHelper {
           }
           .selectedOptionContainer {
             margin-left: 8px;
-            width: calc(100% - 60px);
+            width: 80%;
           }
         }
         .iconsContainer {
@@ -207,25 +207,25 @@ export class DxcSelectHelper {
             background-color: transparent;
             color: #000000;
             &:hover {
-              background-color: var(--newInputText-hoverActionBackgroundColor);
-              color: var(--newInputText-hoverActionIconColor);
+              background-color: var(--textInput-hoverActionBackgroundColor);
+              color: var(--textInput-hoverActionIconColor);
             }
             &:focus {
-              color: var(--newInputText-focusActionIconColor);
-              border: 2px solid var(--newInputText-focusActionBorderColor);
+              color: var(--textInput-focusActionIconColor);
+              border: 2px solid var(--textInput-focusActionBorderColor);
               outline: none;
             }
             &:focus-visible {
-              border: 2px solid var(--newInputText-focusActionBorderColor);
+              border: 2px solid var(--textInput-focusActionBorderColor);
               outline: none;
             }
             &:active {
-              border: 2px solid var(--newInputText-focusActionBorderColor);
+              border: 2px solid var(--textInput-focusActionBorderColor);
               box-shadow: inset 0 0 0 1px
-                var(--newInputText-activeActionBackgroundColor);
+                var(--textInput-activeActionBackgroundColor);
               outline: none;
-              background-color: var(--newInputText-activeActionBackgroundColor);
-              color: var(--newInputText-activeActionIconColor);
+              background-color: var(--textInput-activeActionBackgroundColor);
+              color: var(--textInput-activeActionIconColor);
             }
             svg {
               line-height: 18px;
@@ -234,9 +234,11 @@ export class DxcSelectHelper {
         }
       }
       .options {
+        left: 0;
+        margin-top: 4px;
+        top: 100%;
         overflow: auto;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        margin: 4px 0px 0px 0px;
         background: var(--newSelect-optionListBackgroundColor) 0% 0% no-repeat
           padding-box;
         border: 1px solid var(--newSelect-optionListBorderColor);
@@ -249,7 +251,6 @@ export class DxcSelectHelper {
         flex-direction: column;
         padding: 4px 0px;
         position: absolute;
-        margin-top: 92px;
         z-index: 100;
         max-height: 312px;
         &.closed {

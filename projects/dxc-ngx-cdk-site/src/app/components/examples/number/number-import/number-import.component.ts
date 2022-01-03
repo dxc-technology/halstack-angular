@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 export class NumberImportComponent implements OnInit {
 
   bindCode = `
-  import { DxcNumberModule } from '@dxc-technology/halstack-angular';
+  import { DxcNumberInputModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DxcNumberModule,
+      DxcNumberInputModule,
     ]
   })
   export class AppComponent { }

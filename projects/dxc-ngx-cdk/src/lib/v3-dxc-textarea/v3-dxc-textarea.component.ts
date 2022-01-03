@@ -218,12 +218,12 @@ export class V3DxcTextareaComponent
         textarea {
           min-height: 22px;
           text-overflow: ellipsis;
-          font-weight: var(--textarea-valueFontWeight);
-          font-style: var(--textarea-valueFontStyle);
-          font-size: var(--textarea-valueFontSize);
-          line-height: var(--textarea-valueLineHeight);
-          letter-spacing: var(--textarea-valueLetterSpacing);
-          font-family: var(--textarea-fontFamily);
+          font-weight: var(--v3Textarea-valueFontWeight);
+          font-style: var(--v3Textarea-valueFontStyle);
+          font-size: var(--v3Textarea-valueFontSize);
+          line-height: var(--v3Textarea-valueLineHeight);
+          letter-spacing: var(--v3Textarea-valueLetterSpacing);
+          font-family: var(--v3Textarea-fontFamily);
         }
         textarea::-webkit-scrollbar {
           width: 3px;
@@ -248,19 +248,19 @@ export class V3DxcTextareaComponent
         }
       }
       .mat-hint {
-        font-family: var(--textarea-fontFamily);
-        font-size: var(--textarea-assistiveTextFontSize);
-        font-style: var(--textarea-assistiveTextFontStyle);
-        font-weight: var(--textarea-assistiveTextFontWeight);
-        letter-spacing: var(--textarea-assistiveTextLetterSpacing);
+        font-family: var(--v3Textarea-fontFamily);
+        font-size: var(--v3Textarea-assistiveTextFontSize);
+        font-style: var(--v3Textarea-assistiveTextFontStyle);
+        font-weight: var(--v3Textarea-assistiveTextFontWeight);
+        letter-spacing: var(--v3Textarea-assistiveTextLetterSpacing);
       }
       .mat-form-field.mat-form-field-should-float mat-label,
       .mat-form-field-label {
-        font-family: var(--textarea-fontFamily);
-        font-size: var(--textarea-labelFontSize);
-        font-style: var(--textarea-labelFontStyle);
-        font-weight: var(--textarea-labelFontWeight);
-        letter-spacing: var(--textarea-labelLetterSpacing);
+        font-family: var(--v3Textarea-fontFamily);
+        font-size: var(--v3Textarea-labelFontSize);
+        font-style: var(--v3Textarea-labelFontStyle);
+        font-weight: var(--v3Textarea-labelFontWeight);
+        letter-spacing: var(--v3Textarea-labelLetterSpacing);
       }
       .mat-form-field {
         &.mat-form-field-should-float {
@@ -297,15 +297,15 @@ export class V3DxcTextareaComponent
       &.light {
         .mat-form-field {
           textarea {
-            color: var(--textarea-valueFontColor);
-            caret-color: var(--textarea-valueFontColor);
+            color: var(--v3Textarea-valueFontColor);
+            caret-color: var(--v3Textarea-valueFontColor);
           }
           textarea::-webkit-scrollbar-track {
-            background-color: var(--textarea-scrollBarTrackColor);
+            background-color: var(--v3Textarea-scrollBarTrackColor);
             opacity: 0.34;
           }
           textarea::-webkit-scrollbar-thumb {
-            background-color: var(--textarea-scrollBarThumbColor);
+            background-color: var(--v3Textarea-scrollBarThumbColor);
           }
           &.disabled {
             textarea,
@@ -313,60 +313,60 @@ export class V3DxcTextareaComponent
             .mat-form-field-empty mat-label,
             .mat-form-field-label:not(.mat-form-field-empty) mat-label,
             &.mat-focused .mat-form-field-empty mat-label {
-              color: var(--textarea-disabledColor);
+              color: var(--v3Textarea-disabledColor);
             }
             .mat-form-field-underline {
-              background-color: var(--textarea-disabledColor);
+              background-color: var(--v3Textarea-disabledColor);
             }
             .mat-form-field-wrapper {
               .mat-form-field-flex {
                 .mat-form-field-infix input {
-                  color: var(--textarea-disabledColor);
+                  color: var(--v3Textarea-disabledColor);
                 }
               }
             }
           }
         }
         .mat-hint {
-          color: var(--textarea-assistiveTextFontColor);
+          color: var(--v3Textarea-assistiveTextFontColor);
         }
         label.mat-form-field-label {
-          color: var(--textarea-labelFontColor);
+          color: var(--v3Textarea-labelFontColor);
         }
         .mat-form-field.mat-focused .mat-form-field-ripple {
-          background-color: var(--textarea-underlineFocusColor);
+          background-color: var(--v3Textarea-underlineFocusColor);
         }
         .mat-form-field-underline {
-          background-color: var(--textarea-underlineColor);
-          height: var(--textarea-underlineThickness);
+          background-color: var(--v3Textarea-underlineColor);
+          height: var(--v3Textarea-underlineThickness);
         }
         input::placeholder {
-          color: var(--textarea-valueFontColor);
+          color: var(--v3Textarea-valueFontColor);
         }
         &.required {
           .mat-form-field-required-marker {
-            color: var(--textarea-errorColor) !important;
+            color: var(--v3Textarea-errorColor) !important;
           }
           .mat-form-field.mat-focused .mat-form-field-ripple,
           .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
-            background-color: var(--textarea-labelFontColor);
+            background-color: var(--v3Textarea-labelFontColor);
           }
         }
         &.invalid {
           .mat-hint {
-            color: var(--textarea-errorColor);
+            color: var(--v3Textarea-errorColor);
           }
           .mat-form-field-ripple {
-            background-color: var(--textarea-errorColor) !important;
+            background-color: var(--v3Textarea-errorColor) !important;
             height: 0px !important;
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--textarea-errorColor) !important;
+            color: var(--v3Textarea-errorColor) !important;
           }
           .mat-form-field {
             &.mat-form-field-should-float {
               mat-label {
-                color: var(--textarea-errorColor);
+                color: var(--v3Textarea-errorColor);
               }
             }
           }
@@ -380,15 +380,15 @@ export class V3DxcTextareaComponent
       &.dark {
         .mat-form-field {
           textarea {
-            color: var(--textarea-valueFontColorOnDark);
-            caret-color: var(--textarea-valueFontColorOnDark);
+            color: var(--v3Textarea-valueFontColorOnDark);
+            caret-color: var(--v3Textarea-valueFontColorOnDark);
           }
           textarea::-webkit-scrollbar-track {
-            background-color: var(--textarea-scrollBarTrackColorOnDark);
+            background-color: var(--v3Textarea-scrollBarTrackColorOnDark);
             opacity: 0.34;
           }
           textarea::-webkit-scrollbar-thumb {
-            background-color: var(--textarea-scrollBarThumbColorOnDark);
+            background-color: var(--v3Textarea-scrollBarThumbColorOnDark);
           }
           &.disabled {
             textarea,
@@ -396,59 +396,59 @@ export class V3DxcTextareaComponent
             .mat-form-field-empty mat-label,
             .mat-form-field-label:not(.mat-form-field-empty) mat-label,
             &.mat-focused .mat-form-field-empty mat-label {
-              color: var(--textarea-disabledColorOnDark);
+              color: var(--v3Textarea-disabledColorOnDark);
             }
             .mat-form-field-underline {
-              background-color: var(--textarea-disabledColorOnDark);
+              background-color: var(--v3Textarea-disabledColorOnDark);
             }
             .mat-form-field-wrapper {
               .mat-form-field-flex {
                 .mat-form-field-infix input {
-                  color: var(--textarea-disabledColorOnDark);
+                  color: var(--v3Textarea-disabledColorOnDark);
                 }
               }
             }
           }
         }
         .mat-hint {
-          color: var(--textarea-assistiveTextFontColorOnDark);
+          color: var(--v3Textarea-assistiveTextFontColorOnDark);
         }
         label.mat-form-field-label {
-          color: var(--textarea-labelFontColorOnDark);
+          color: var(--v3Textarea-labelFontColorOnDark);
         }
         .mat-form-field.mat-focused .mat-form-field-ripple {
-          background-color: var(--textarea-underlineFocusColorOnDark);
+          background-color: var(--v3Textarea-underlineFocusColorOnDark);
         }
         .mat-form-field-underline {
-          background-color: var(--textarea-underlineColorOnDark);
+          background-color: var(--v3Textarea-underlineColorOnDark);
         }
         input::placeholder {
-          color: var(--textarea-valueFontColorOnDark);
+          color: var(--v3Textarea-valueFontColorOnDark);
         }
         &.required {
           .mat-form-field-required-marker {
-            color: var(--textarea-errorColorOnDark) !important;
+            color: var(--v3Textarea-errorColorOnDark) !important;
           }
           .mat-form-field.mat-focused .mat-form-field-ripple,
           .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
-            background-color: var(--textarea-labelFontColorOnDark);
+            background-color: var(--v3Textarea-labelFontColorOnDark);
           }
         }
         &.invalid {
           .mat-hint {
-            color: var(--textarea-errorColorOnDark);
+            color: var(--v3Textarea-errorColorOnDark);
           }
           .mat-form-field-ripple {
-            background-color: var(--textarea-errorColorOnDark) !important;
+            background-color: var(--v3Textarea-errorColorOnDark) !important;
             height: 0px !important;
           }
           &.mat-focused .mat-form-field-empty mat-label {
-            color: var(--textarea-errorColorOnDark) !important;
+            color: var(--v3Textarea-errorColorOnDark) !important;
           }
           .mat-form-field {
             &.mat-form-field-should-float {
               mat-label {
-                color: var(--textarea-errorColorOnDark);
+                color: var(--v3Textarea-errorColorOnDark);
               }
             }
           }

@@ -74,7 +74,7 @@ import {
   DxcChipModule,
   BackgroundProviderModule,
   DxcTextInputModule,
-  DxcNewDateModule,
+  DxcDateInputModule,
   DxcPasswordInputModule,
   DxcNumberModule,
   DxcTextareaModule,
@@ -88,7 +88,7 @@ import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info
 import { NewInpuTextComponent } from './pages/new-input-text/new-input-text.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { NumberComponent } from './pages/number/number.component';
-import { NewDateComponent } from './pages/new-date/new-date.component';
+import { DateInputComponent } from './pages/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +131,7 @@ import { NewDateComponent } from './pages/new-date/new-date.component';
     NewInpuTextComponent,
     PasswordComponent,
     NumberComponent,
-    NewDateComponent
+    DateInputComponent
   ],
   imports: [
     AppRoutingModule,
@@ -175,7 +175,7 @@ import { NewDateComponent } from './pages/new-date/new-date.component';
     DxcAccordionGroupModule,
     BackgroundProviderModule,
     DxcTextInputModule,
-    DxcNewDateModule,
+    DxcDateInputModule,
     DxcPasswordInputModule,
     DxcNumberInputModule,
     DxcTextareaModule

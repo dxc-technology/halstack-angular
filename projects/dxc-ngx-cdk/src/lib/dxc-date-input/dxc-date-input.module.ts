@@ -38,4 +38,4 @@ import { DxcBoxModule } from "../dxc-box/dxc-box.module";
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ],
 })
-export class DxcNewDateModule {}
+export class DxcDateInputModule {}

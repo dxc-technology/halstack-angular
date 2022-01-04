@@ -20,7 +20,7 @@ export const customTheme = {
     baseColor: "#5f249f",
     accentColor: "#ffffff",
   },
-  newDate: {
+  dateInput: {
     baseColor: "#5f249f",
     accentColor: "#ffffff",
   },

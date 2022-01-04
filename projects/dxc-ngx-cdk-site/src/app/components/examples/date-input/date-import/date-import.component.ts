@@ -1,16 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "new-date-import",
+  selector: "date-input-import",
   templateUrl: "./date-import.component.html",
 })
-export class NewDateImportComponent implements OnInit {
+export class DateInputImportComponent implements OnInit {
   bindCode = `
-  import { DxcNewDateModule } from '@dxc-technology/halstack-angular';
+  import { DxcDateInputModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DxcNewDateModule,
+      DxcDateInputModule,
     ]
   })
   export class AppComponent { }

@@ -154,10 +154,10 @@ import { NumberApiComponent } from "../examples/number/number-api/number-api.com
 import { NumberImportComponent } from "../examples/number/number-import/number-import.component";
 import { NumberExampleComponent } from "../examples/number/number-example/number-example.component";
 import { NumberPropertiesComponent } from "../examples/number/number-properties/number-properties.component";
-import { NewDateApiComponent } from "../examples/new-date/date-api/date-api.component";
-import { NewDateImportComponent } from "../examples/new-date/date-import/date-import.component";
-import { NewDateExampleComponent } from "../examples/new-date/date-example/date-example.component";
-import { NewDatePropertiesComponent } from "../examples/new-date/date-properties/date-properties.component";
+import { DateInputApiComponent } from "../examples/date-input/date-api/date-api.component";
+import { DateInputImportComponent } from "../examples/date-input/date-import/date-import.component";
+import { DateInputExampleComponent } from "../examples/date-input/date-example/date-example.component";
+import { DateInputPropertiesComponent } from "../examples/date-input/date-properties/date-properties.component";
 import { TextareaApiComponent } from "../examples/textarea/textarea-api/textarea-api.component";
 import { TextareaImportComponent } from "../examples/textarea/textarea-import/textarea-import.component";
 import { TextareaExampleComponent } from "../examples/textarea/textarea-example/textarea-example.component";
@@ -336,10 +336,10 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     NumberImportComponent,
     NumberExampleComponent,
     NumberPropertiesComponent,
-    NewDateApiComponent,
-    NewDateImportComponent,
-    NewDateExampleComponent,
-    NewDatePropertiesComponent,
+    DateInputApiComponent,
+    DateInputImportComponent,
+    DateInputExampleComponent,
+    DateInputPropertiesComponent,
     TextareaApiComponent,
     TextareaImportComponent,
     TextareaExampleComponent,

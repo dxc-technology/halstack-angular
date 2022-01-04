@@ -37,11 +37,10 @@ import { ChipComponent } from './pages/chip/chip.component';
 import { V3TextareaComponent } from "./pages/v3-textarea/v3-textarea.component";
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
-import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
 import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
 import { PasswordComponent } from "./pages/password/password.component";
 import { NumberComponent } from "./pages/number/number.component";
-import { NewDateComponent } from "./pages/new-date/new-date.component";
+import { DateInputComponent } from "./pages/date-input/date-input.component";
 import { TextareaComponent } from "./pages/textarea/textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { SelectComponent } from "./pages/select/select.component";
@@ -206,8 +205,8 @@ let routes: Routes = [];
     component: NumberComponent
   },
   {
-    path: 'components/newDate',
-    component: NewDateComponent
+    path: 'components/dateInput',
+    component: DateInputComponent
   },
   {
     path: 'components/textarea',

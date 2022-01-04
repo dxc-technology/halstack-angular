@@ -41,7 +41,7 @@ import {
   DxcTextInputModule,
   DxcPasswordInputModule,
   DxcNumberInputModule,
-  DxcNewDateModule,
+  DxcDateInputModule,
   DxcTextareaModule,
   DxcFileInputModule,
   DxcSelectModule
@@ -76,7 +76,7 @@ import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/tog
 import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
-import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
+import { DateInputPreviewComponent } from './previews/date-input-preview/date-input-preview.component';
 import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
 import { FileInputPreviewComponent } from './previews/file-input-preview/file-input-preview.component';
 import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
@@ -116,7 +116,7 @@ import { V3SelectPreviewComponent } from "./previews/v3-select-preview/v3-select
     UploadPreviewComponent,
     TablePreviewComponent,
     NewInputTextPreviewComponent,
-    NewDatePreviewComponent,
+    DateInputPreviewComponent,
     TextareaPreviewComponent,
     FileInputPreviewComponent,
     SelectPreviewComponent,
@@ -137,7 +137,7 @@ import { V3SelectPreviewComponent } from "./previews/v3-select-preview/v3-select
     DxcCheckboxModule,
     DxcChipModule,
     DxcDateModule,
-    DxcNewDateModule,
+    DxcDateInputModule,
     DxcDialogModule,
     DxcDropdownModule,
     DxcFooterModule,

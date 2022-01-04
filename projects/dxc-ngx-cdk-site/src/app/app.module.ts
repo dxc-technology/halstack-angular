@@ -58,7 +58,7 @@ import { NumberModule } from './pages/number/number.module';
 import { NewDateModule } from './pages/new-date/new-date.module';
 import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
 import { FileInputModule } from './pages/file-input/file-input.module';
-import { NewSelectModule } from './pages/new-select/new-select.module';
+import { SelectModule } from './pages/select/select.module';
 import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
 
 @NgModule({
@@ -128,7 +128,7 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     NewDateModule,
     NewTextareaModule,
     FileInputModule,
-    NewSelectModule,
+    SelectModule,
     AutosuggestModule
   ],
   providers: [

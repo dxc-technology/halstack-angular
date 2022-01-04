@@ -17,7 +17,6 @@ import { LinkPreviewComponent } from '../../previews/link-preview/link-preview.c
 import { PaginatorPreviewComponent } from '../../previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from '../../previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from '../../previews/radio-preview/radio-preview.component';
-import { V3SelectPreviewComponent } from '../../previews/v3-select-preview/v3-select-preview.component';
 import { SidenavPreviewComponent } from '../../previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from '../../previews/slider-preview/slider-preview.component';
 import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-preview.component';
@@ -32,7 +31,8 @@ import { NewInputTextPreviewComponent } from '../../previews/new-input-text-prev
 import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
 import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
 import { FileInputPreviewComponent } from '../../previews/file-input-preview/file-input-preview.component';
-import { NewSelectPreviewComponent } from '../../previews/new-select-preview/new-select-preview.component';
+import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
+import { V3SelectPreviewComponent } from '../../previews/v3-select-preview/v3-select-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -62,7 +62,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},
   {name: 'v3Select', component: V3SelectPreviewComponent},
-  {name: 'newSelect', component: NewSelectPreviewComponent},
+  {name: 'select', component: SelectPreviewComponent},
   {name: 'sidenav', component: SidenavPreviewComponent},
   {name: 'slider', component: SliderPreviewComponent},
   {name: 'spinner', component: SpinnerPreviewComponent},

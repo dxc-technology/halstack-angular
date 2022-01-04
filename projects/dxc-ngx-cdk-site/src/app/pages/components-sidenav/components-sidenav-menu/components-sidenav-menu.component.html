@@ -115,15 +115,15 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/newSelect'
+                active: 'components/select'
                   ? router.isActive(
-                      router.createUrlTree(['components/newSelect']).toString(),
+                      router.createUrlTree(['components/select']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/newSelect')"
-              >New Select</a
+              (click)="navigateTo('components/select')"
+              >Select</a
             >
           </div>
           <div class="menu-item">

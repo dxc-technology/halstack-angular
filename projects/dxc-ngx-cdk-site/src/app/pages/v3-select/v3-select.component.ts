@@ -39,7 +39,7 @@ export class V3SelectComponent implements OnInit {
 
   navigateToRoute(){
     this.router.navigate(
-      ["components/newSelect"]
+      ["components/v3Select"]
     );
   }
 }

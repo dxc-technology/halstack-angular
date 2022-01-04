@@ -63,7 +63,7 @@
   "v3Select": {
     "baseColor": "#D9D9D9"
   },
-  "newSelect": {
+  "select": {
   },
   "sidenav": {
     "baseColor": "#F8F8F8",

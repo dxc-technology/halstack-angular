@@ -827,7 +827,7 @@
     "arrowColor": "#000000",
     "arrowColorOnDark": "#ffffff"
   },
-  "newSelect": {
+  "select": {
     "fontFamily": "Open Sans, sans-serif",
     "labelFontSize": "0.875rem",
     "labelFontStyle": "normal",

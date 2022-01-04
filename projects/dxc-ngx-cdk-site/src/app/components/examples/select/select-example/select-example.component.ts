@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'examples-component-select',
   templateUrl: './select-example.component.html'
 })
-export class NewSelectExampleComponent implements OnInit {
+export class SelectExampleComponent implements OnInit {
 
   constructor() { }
 

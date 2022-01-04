@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'select-api',
   templateUrl: './select-api.component.html'
 })
-export class NewSelectApiComponent implements OnInit {
+export class SelectApiComponent implements OnInit {
 
   constructor() { }
 

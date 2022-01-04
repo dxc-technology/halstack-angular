@@ -240,18 +240,18 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
 
     //V3 SELECT
     proccessedTokens["--v3Select-selectedOptionBackgroundColor"] =
-      theme?.select?.baseColor ??
+      theme?.v3Select?.baseColor ??
       tokens["--v3Select-selectedOptionBackgroundColor"];
     proccessedTokens["--v3Select-hoverOptionBackgroundColor"] =
-      this.setOpacity(theme?.select?.baseColor, 0.34) ??
+      this.setOpacity(theme?.v3Select?.baseColor, 0.34) ??
       tokens["--v3Select-hoverOptionBackgroundColor"];
 
     //SELECT
     proccessedTokens["--select-selectedlistItemBackgroundColor"] =
-      theme?.newSelect?.baseColor ??
+      theme?.select?.baseColor ??
       tokens["--select-selectedlistItemBackgroundColor"];
     proccessedTokens["unselectedHoverListItemBackgroundColor"] =
-      this.setOpacity(theme?.newSelect?.baseColor, 0.34) ??
+      this.setOpacity(theme?.select?.baseColor, 0.34) ??
       tokens["unselectedHoverListItemBackgroundColor"];
 
     //SIDENAV

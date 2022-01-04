@@ -3,10 +3,10 @@ import { Option } from '@dxc-technology/halstack-angular/lib/dxc-select/interfac
 import { OptionGroup } from '@dxc-technology/halstack-angular/lib/dxc-select/interfaces/optionGroup.interface';
 
 @Component({
-  selector: 'app-new-select',
-  templateUrl: './new-select-preview.component.html'
+  selector: 'app-select',
+  templateUrl: './select-preview.component.html'
 })
-export class NewSelectPreviewComponent implements OnInit {
+export class SelectPreviewComponent implements OnInit {
 
   array1: Option[] = [
     {

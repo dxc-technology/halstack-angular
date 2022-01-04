@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NewSelectApiComponent } from "src/app/components/examples/new-select/select-api/select-api.component";
-import { NewSelectExampleComponent } from "src/app/components/examples/new-select/select-example/select-example.component";
-import { NewSelectImportComponent } from "src/app/components/examples/new-select/select-import/select-import.component";
-import { NewSelectPropertiesComponent } from "src/app/components/examples/new-select/select-properties/select-properties.component";
-import { NewSelectComponent } from "./new-select.component";
+import { SelectApiComponent } from "src/app/components/examples/select/select-api/select-api.component";
+import { SelectExampleComponent } from "src/app/components/examples/select/select-example/select-example.component";
+import { SelectImportComponent } from "src/app/components/examples/select/select-import/select-import.component";
+import { SelectPropertiesComponent } from "src/app/components/examples/select/select-properties/select-properties.component";
+import { SelectComponent } from "./select.component";
 import { DxcChipModule, DxcHeadingModule, DxcLinkModule, DxcTableModule, DxcTagModule } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
@@ -16,11 +16,11 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
 
 @NgModule({
   declarations: [
-    NewSelectComponent,
-    NewSelectApiComponent,
-    NewSelectExampleComponent,
-    NewSelectImportComponent,
-    NewSelectPropertiesComponent,
+    SelectComponent,
+    SelectApiComponent,
+    SelectExampleComponent,
+    SelectImportComponent,
+    SelectPropertiesComponent,
   ],
   imports: [
     CommonModule,
@@ -38,11 +38,11 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     StatusTagModule
   ],
   exports: [
-    NewSelectComponent,
-    NewSelectApiComponent,
-    NewSelectExampleComponent,
-    NewSelectImportComponent,
-    NewSelectPropertiesComponent,
+    SelectComponent,
+    SelectApiComponent,
+    SelectExampleComponent,
+    SelectImportComponent,
+    SelectPropertiesComponent,
   ],
 })
-export class NewSelectModule {}
+export class SelectModule {}

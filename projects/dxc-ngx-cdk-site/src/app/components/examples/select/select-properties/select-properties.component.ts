@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'new-select-properties',
+  selector: 'select-properties',
   templateUrl: './select-properties.component.html'
 })
-export class NewSelectPropertiesComponent implements OnInit {
+export class SelectPropertiesComponent implements OnInit {
 
   constructor() { }
 

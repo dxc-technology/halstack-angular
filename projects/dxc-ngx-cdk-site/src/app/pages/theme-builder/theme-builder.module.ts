@@ -77,7 +77,7 @@ import { UploadPreviewComponent } from './previews/upload-preview/upload-preview
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from './previews/new-date-preview/new-date-preview.component';
-import { NewTextareaPreviewComponent } from './previews/new-textarea-preview/new-textarea-preview.component';
+import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
 import { FileInputPreviewComponent } from './previews/file-input-preview/file-input-preview.component';
 import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
 import { V3SelectPreviewComponent } from "./previews/v3-select-preview/v3-select-preview.component";
@@ -117,7 +117,7 @@ import { V3SelectPreviewComponent } from "./previews/v3-select-preview/v3-select
     TablePreviewComponent,
     NewInputTextPreviewComponent,
     NewDatePreviewComponent,
-    NewTextareaPreviewComponent,
+    TextareaPreviewComponent,
     FileInputPreviewComponent,
     SelectPreviewComponent,
   ],

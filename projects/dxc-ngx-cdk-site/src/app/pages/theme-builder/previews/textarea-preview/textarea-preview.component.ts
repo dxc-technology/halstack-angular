@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-new-textarea-preview',
-  templateUrl: './new-textarea-preview.component.html'
+  selector: 'app-textarea-preview',
+  templateUrl: './textarea-preview.component.html'
 })
-export class NewTextareaPreviewComponent implements OnInit {
+export class TextareaPreviewComponent implements OnInit {
 
   pattern = '^.*(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%&? "]).*$';
   value = "test";

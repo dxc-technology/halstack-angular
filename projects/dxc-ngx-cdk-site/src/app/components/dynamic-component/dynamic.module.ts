@@ -158,10 +158,10 @@ import { NewDateApiComponent } from "../examples/new-date/date-api/date-api.comp
 import { NewDateImportComponent } from "../examples/new-date/date-import/date-import.component";
 import { NewDateExampleComponent } from "../examples/new-date/date-example/date-example.component";
 import { NewDatePropertiesComponent } from "../examples/new-date/date-properties/date-properties.component";
-import { NewTextareaApiComponent } from "../examples/new-textarea/new-textarea-api/new-textarea-api.component";
-import { NewTextareaImportComponent } from "../examples/new-textarea/new-textarea-import/new-textarea-import.component";
-import { NewTextareaExampleComponent } from "../examples/new-textarea/new-textarea-example/new-textarea-example.component";
-import { NewTextareaPropertiesComponent } from "../examples/new-textarea/new-textarea-properties/new-textarea-properties.component";
+import { TextareaApiComponent } from "../examples/textarea/textarea-api/textarea-api.component";
+import { TextareaImportComponent } from "../examples/textarea/textarea-import/textarea-import.component";
+import { TextareaExampleComponent } from "../examples/textarea/textarea-example/textarea-example.component";
+import { TextareaPropertiesComponent } from "../examples/textarea/textarea-properties/textarea-properties.component";
 import { FileInputApiComponent } from "../examples/file-input/file-input-api/file-input-api.component";
 import { FileInputExampleComponent } from "../examples/file-input/file-input-example/file-input-example.component";
 import { FileInputImportComponent } from "../examples/file-input/file-input-import/file-input-import.component";
@@ -340,10 +340,10 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     NewDateImportComponent,
     NewDateExampleComponent,
     NewDatePropertiesComponent,
-    NewTextareaApiComponent,
-    NewTextareaImportComponent,
-    NewTextareaExampleComponent,
-    NewTextareaPropertiesComponent,
+    TextareaApiComponent,
+    TextareaImportComponent,
+    TextareaExampleComponent,
+    TextareaPropertiesComponent,
     FileInputApiComponent,
     FileInputExampleComponent,
     FileInputImportComponent,

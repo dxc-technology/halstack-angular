@@ -29,7 +29,7 @@ import { UploadPreviewComponent } from '../../previews/upload-preview/upload-pre
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
-import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
+import { TextareaPreviewComponent } from '../../previews/textarea-preview/textarea-preview.component';
 import { FileInputPreviewComponent } from '../../previews/file-input-preview/file-input-preview.component';
 import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
 import { V3SelectPreviewComponent } from '../../previews/v3-select-preview/v3-select-preview.component';
@@ -57,7 +57,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'inputText', component: InputTextPreviewComponent},
   {name: 'newInputText', component: NewInputTextPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
-  {name: 'newTextarea', component: NewTextareaPreviewComponent},
+  {name: 'textarea', component: TextareaPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},

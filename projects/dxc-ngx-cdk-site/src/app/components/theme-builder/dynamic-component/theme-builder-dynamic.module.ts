@@ -34,7 +34,7 @@ import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/up
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previews/new-input-text-preview/new-input-text-preview.component';
 import { NewDatePreviewComponent } from "src/app/pages/theme-builder/previews/new-date-preview/new-date-preview.component";
-import { NewTextareaPreviewComponent } from "src/app/pages/theme-builder/previews/new-textarea-preview/new-textarea-preview.component";
+import { TextareaPreviewComponent } from "src/app/pages/theme-builder/previews/textarea-preview/textarea-preview.component";
 import { FileInputPreviewComponent } from "src/app/pages/theme-builder/previews/file-input-preview/file-input-preview.component";
 import { SelectPreviewComponent } from "src/app/pages/theme-builder/previews/select-preview/select-preview.component";
 import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v3-select-preview/v3-select-preview.component";
@@ -76,7 +76,7 @@ import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v
     UploadPreviewComponent,
     TablePreviewComponent,
     NewDatePreviewComponent,
-    NewTextareaPreviewComponent,
+    TextareaPreviewComponent,
     FileInputPreviewComponent,
     SelectPreviewComponent
   ]

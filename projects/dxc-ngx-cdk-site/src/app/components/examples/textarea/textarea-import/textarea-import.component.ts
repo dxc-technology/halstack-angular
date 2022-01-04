@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "new-textarea-import",
-  templateUrl: "./new-textarea-import.component.html",
+  selector: "textarea-import",
+  templateUrl: "./textarea-import.component.html",
 })
-export class NewTextareaImportComponent implements OnInit {
+export class TextareaImportComponent implements OnInit {
   bindCode = `
   import { DxcTextareaModule } from '@dxc-technology/halstack-angular';
 

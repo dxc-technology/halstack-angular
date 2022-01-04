@@ -42,7 +42,7 @@ import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.com
 import { PasswordComponent } from "./pages/password/password.component";
 import { NumberComponent } from "./pages/number/number.component";
 import { NewDateComponent } from "./pages/new-date/new-date.component";
-import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
+import { TextareaComponent } from "./pages/textarea/textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { SelectComponent } from "./pages/select/select.component";
 import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
@@ -210,8 +210,8 @@ let routes: Routes = [];
     component: NewDateComponent
   },
   {
-    path: 'components/newTextarea',
-    component: NewTextareaComponent
+    path: 'components/textarea',
+    component: TextareaComponent
   },
   {
     path: 'components/fileInput',

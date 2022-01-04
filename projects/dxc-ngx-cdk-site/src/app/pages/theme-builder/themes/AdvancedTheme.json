@@ -773,7 +773,7 @@
     "fontStyle": "normal",
     "fontWeight": "400"
   },
-  "select": {
+  "v3Select": {
     "optionCheckboxSpacing": "12px",
     "disabledColor": "#b1b1b1",
     "disabledColorOnDark": "#575757",

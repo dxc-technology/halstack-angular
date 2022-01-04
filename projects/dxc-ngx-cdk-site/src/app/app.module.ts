@@ -17,7 +17,7 @@ import { CheckboxModule } from './pages/checkbox/checkbox.module';
 import { ChipModule } from './pages/chip/chip.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RadioModule } from './pages/radio/radio.module';
-import { SelectModule } from './pages/select/select.module';
+import { V3SelectModule } from './pages/v3-select/v3-select.module';
 import { SpinnerModule } from './pages/spinner/spinner.module';
 import { SwitchModule } from './pages/switch/switch.module';
 import { OverviewPageModule } from './pages/overview-page/overview-page.module';
@@ -93,7 +93,7 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     FooterModule,
     HeaderModule,
     RadioModule,
-    SelectModule,
+    V3SelectModule,
     SpinnerModule,
     SwitchModule,
     TextInputModule,

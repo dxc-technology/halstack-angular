@@ -65,7 +65,7 @@ import { LinkPreviewComponent } from './previews/link-preview/link-preview.compo
 import { PaginatorPreviewComponent } from './previews/paginator-preview/paginator-preview.component';
 import { ProgressBarPreviewComponent } from './previews/progress-bar-preview/progress-bar-preview.component';
 import { RadioPreviewComponent } from './previews/radio-preview/radio-preview.component';
-import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
+import { V3SelectPreviewComponent } from './previews/v3-select-preview/v3-select-preview.component';
 import { SidenavPreviewComponent } from './previews/sidenav-preview/sidenav-preview.component';
 import { SliderPreviewComponent } from './previews/slider-preview/slider-preview.component';
 import { SpinnerPreviewComponent } from './previews/spinner-preview/spinner-preview.component';
@@ -104,7 +104,7 @@ import { NewSelectPreviewComponent } from './previews/new-select-preview/new-sel
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
     RadioPreviewComponent,
-    SelectPreviewComponent,
+    V3SelectPreviewComponent,
     SidenavPreviewComponent,
     SliderPreviewComponent,
     SpinnerPreviewComponent,

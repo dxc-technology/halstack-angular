@@ -187,14 +187,14 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/select'
+                active: 'components/v3Select'
                   ? router.isActive(
-                      router.createUrlTree(['components/select']).toString(),
+                      router.createUrlTree(['components/v3Select']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/select')"
+              (click)="navigateTo('components/v3Select')"
               >Select</a
             >
             <status-tag status="Deprecated"></status-tag>

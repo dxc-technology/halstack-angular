@@ -60,7 +60,7 @@
   "radio": {
     "baseColor": "#000000"
   },
-  "select": {
+  "v3Select": {
     "baseColor": "#D9D9D9"
   },
   "newSelect": {

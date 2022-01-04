@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'select-import',
-  templateUrl: './select-import.component.html',
-  styleUrls: ['./select-import.component.scss']
+  templateUrl: './v3-select-import.component.html'
 })
-export class SelectImportComponent implements OnInit {
+export class V3SelectImportComponent implements OnInit {
 
   bindCode = `
   import { V3DxcSelectModule } from '@dxc-technology/halstack-angular';

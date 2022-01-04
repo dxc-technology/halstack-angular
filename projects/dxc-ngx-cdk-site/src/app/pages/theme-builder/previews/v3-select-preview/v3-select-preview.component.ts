@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-select-preview",
-  templateUrl: "./select-preview.component.html",
+  templateUrl: "./v3-select-preview.component.html",
 })
-export class SelectPreviewComponent implements OnInit {
+export class V3SelectPreviewComponent implements OnInit {
   optionsWithoutIcon = [
     {
       value: "1",

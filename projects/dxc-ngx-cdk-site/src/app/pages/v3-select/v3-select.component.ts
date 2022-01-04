@@ -1,15 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { Section } from "../../model/sections";
-import { SelectExampleComponent } from "../../components/examples/select/select-example/select-example.component";
-import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
+import { V3SelectExampleComponent } from "../../components/examples/v3-select/v3-select-example/v3-select-example.component";
+import { V3SelectApiComponent } from '../../components/examples/v3-select/v3-select-api/v3-select-api.component';
 import { Router } from "@angular/router";
 
 @Component({
   selector: "app-select",
-  templateUrl: "./select.component.html",
-  styleUrls: ["./select.component.scss"]
+  templateUrl: "./v3-select.component.html"
 })
-export class SelectComponent implements OnInit {
+export class V3SelectComponent implements OnInit {
   sections: Array<Section>;
   tagImg: string;
 
@@ -27,13 +26,13 @@ export class SelectComponent implements OnInit {
         id: 0,
         label: "API",
         selector: "select-api",
-        component: SelectApiComponent
+        component: V3SelectApiComponent
       },
       {
         id: 1,
         label: "EXAMPLES",
         selector: "examples-component-buttons",
-        component: SelectExampleComponent
+        component: V3SelectExampleComponent
       }
     );
   }

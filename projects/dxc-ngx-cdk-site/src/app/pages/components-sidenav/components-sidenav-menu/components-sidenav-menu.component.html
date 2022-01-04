@@ -115,15 +115,15 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/number'
+                active: 'components/numberInput'
                   ? router.isActive(
-                      router.createUrlTree(['components/number']).toString(),
+                      router.createUrlTree(['components/numberInput']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/number')"
-              >Number</a
+              (click)="navigateTo('components/numberInput')"
+              >Number Input</a
             >
           </div>
           <div class="menu-item">

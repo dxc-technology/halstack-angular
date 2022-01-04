@@ -150,10 +150,10 @@ import { PasswordPropertiesComponent } from "../examples/password/password-prope
 import { PasswordImportComponent } from "../examples/password/password-import/password-import.component";
 import { PasswordExampleComponent } from "../examples/password/password-example/password-example.component";
 import { PasswordApiComponent } from "../examples/password/password-api/password-api.component";
-import { NumberApiComponent } from "../examples/number/number-api/number-api.component";
-import { NumberImportComponent } from "../examples/number/number-import/number-import.component";
-import { NumberExampleComponent } from "../examples/number/number-example/number-example.component";
-import { NumberPropertiesComponent } from "../examples/number/number-properties/number-properties.component";
+import { NumberApiComponent } from "../examples/number-input/number-api/number-api.component";
+import { NumberImportComponent } from "../examples/number-input/number-import/number-import.component";
+import { NumberExampleComponent } from "../examples/number-input/number-example/number-example.component";
+import { NumberPropertiesComponent } from "../examples/number-input/number-properties/number-properties.component";
 import { DateInputApiComponent } from "../examples/date-input/date-api/date-api.component";
 import { DateInputImportComponent } from "../examples/date-input/date-import/date-import.component";
 import { DateInputExampleComponent } from "../examples/date-input/date-example/date-example.component";

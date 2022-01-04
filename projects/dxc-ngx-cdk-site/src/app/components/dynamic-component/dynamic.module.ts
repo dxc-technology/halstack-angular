@@ -133,10 +133,10 @@ import { DropdownApiComponent } from "../examples/dropdown/dropdown-api/dropdown
 import { TableApiComponent } from "../examples/table/table-api/table-api.component";
 import { PaginatorApiComponent } from "../examples/paginator/paginator-api/paginator-api.component";
 import { TabsApiComponent } from "../examples/tabs/tabs-api/tabs-api.component";
-import { TextAreaApiComponent } from "../examples/text-area/text-area-api/text-area-api.component";
-import { TextAreaPropertiesTableComponent } from "../examples/text-area/properties/text-area-properties-table/text-area-properties-table.component";
-import { TextAreaExampleComponent } from "../examples/text-area/text-area-example/text-area-example.component";
-import { TextAreaImportComponent } from "../examples/text-area/text-area-import/text-area-import.component";
+import { V3TextareaApiComponent } from "../examples/v3-textarea/v3-textarea-api/v3-textarea-api.component";
+import { V3TextareaPropertiesComponent } from "../examples/v3-textarea/v3-textarea-properties/v3-textarea-properties.component";
+import { V3TextareaExampleComponent } from "../examples/v3-textarea/v3-textarea-example/v3-textarea-example.component";
+import { V3TextareaImportComponent } from "../examples/v3-textarea/v3-textarea-import/v3-textarea-import.component";
 import { AlertApiComponent } from "../examples/alert/alert-api/alert-api.component";
 import { HeadingApiComponent } from "../examples/heading/heading-api/heading-api.component";
 import { UploadApiComponent } from "../examples/upload/upload-api/upload-api.component";
@@ -158,10 +158,10 @@ import { DateInputApiComponent } from "../examples/date-input/date-api/date-api.
 import { DateInputImportComponent } from "../examples/date-input/date-import/date-import.component";
 import { DateInputExampleComponent } from "../examples/date-input/date-example/date-example.component";
 import { DateInputPropertiesComponent } from "../examples/date-input/date-properties/date-properties.component";
-import { NewTextareaApiComponent } from "../examples/new-textarea/new-textarea-api/new-textarea-api.component";
-import { NewTextareaImportComponent } from "../examples/new-textarea/new-textarea-import/new-textarea-import.component";
-import { NewTextareaExampleComponent } from "../examples/new-textarea/new-textarea-example/new-textarea-example.component";
-import { NewTextareaPropertiesComponent } from "../examples/new-textarea/new-textarea-properties/new-textarea-properties.component";
+import { TextareaApiComponent } from "../examples/textarea/textarea-api/textarea-api.component";
+import { TextareaImportComponent } from "../examples/textarea/textarea-import/textarea-import.component";
+import { TextareaExampleComponent } from "../examples/textarea/textarea-example/textarea-example.component";
+import { TextareaPropertiesComponent } from "../examples/textarea/textarea-properties/textarea-properties.component";
 import { FileInputApiComponent } from "../examples/file-input/file-input-api/file-input-api.component";
 import { FileInputExampleComponent } from "../examples/file-input/file-input-example/file-input-example.component";
 import { FileInputImportComponent } from "../examples/file-input/file-input-import/file-input-import.component";
@@ -299,10 +299,10 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     ColorPreviewComponent,
     SwitchApiComponent,
     TextInputApiComponent,
-    TextAreaApiComponent,
-    TextAreaPropertiesTableComponent,
-    TextAreaExampleComponent,
-    TextAreaImportComponent,
+    V3TextareaApiComponent,
+    V3TextareaPropertiesComponent,
+    V3TextareaExampleComponent,
+    V3TextareaImportComponent,
     TagApiComponent,
     DateApiComponent,
     SidenavApiComponent,
@@ -340,10 +340,10 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     DateInputImportComponent,
     DateInputExampleComponent,
     DateInputPropertiesComponent,
-    NewTextareaApiComponent,
-    NewTextareaImportComponent,
-    NewTextareaExampleComponent,
-    NewTextareaPropertiesComponent,
+    TextareaApiComponent,
+    TextareaImportComponent,
+    TextareaExampleComponent,
+    TextareaPropertiesComponent,
     FileInputApiComponent,
     FileInputExampleComponent,
     FileInputImportComponent,

@@ -115,22 +115,6 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/newTextarea'
-                  ? router.isActive(
-                      router
-                        .createUrlTree(['components/newTextarea'])
-                        .toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/newTextarea')"
-              >New Textarea</a
-            >
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
                 active: 'components/number'
                   ? router.isActive(
                       router.createUrlTree(['components/number']).toString(),
@@ -230,9 +214,26 @@
           <div class="menu-item">
             <a
               [ngClass]="{
+                active: 'components/v3Textarea'
+                  ? router.isActive(
+                      router.createUrlTree(['components/v3Textarea']).toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/v3Textarea')"
+              >Textarea</a
+            >
+            <status-tag status="Deprecated"></status-tag>
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
                 active: 'components/textarea'
                   ? router.isActive(
-                      router.createUrlTree(['components/textarea']).toString(),
+                      router
+                        .createUrlTree(['components/textarea'])
+                        .toString(),
                       true
                     )
                   : false
@@ -240,7 +241,6 @@
               (click)="navigateTo('components/textarea')"
               >Textarea</a
             >
-            <status-tag status="Deprecated"></status-tag>
           </div>
           <div class="menu-item">
             <a

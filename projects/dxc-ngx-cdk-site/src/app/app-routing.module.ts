@@ -34,17 +34,18 @@ import { LinkComponent } from './pages/link/link.component';
 import { HeadingComponent } from './pages/heading/heading.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { ChipComponent } from './pages/chip/chip.component';
-import { TextAreaComponent } from './pages/text-area/text-area.component';
+import { V3TextareaComponent } from "./pages/v3-textarea/v3-textarea.component";
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
 import { PasswordComponent } from "./pages/password/password.component";
 import { NumberComponent } from "./pages/number/number.component";
 import { DateInputComponent } from "./pages/date-input/date-input.component";
-import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
+import { TextareaComponent } from "./pages/textarea/textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { SelectComponent } from "./pages/select/select.component";
 import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
+
 
 let routes: Routes = [];
 
@@ -124,8 +125,8 @@ let routes: Routes = [];
     component: TextInputComponent
   },
   {
-    path: 'components/textarea',
-    component: TextAreaComponent
+    path: 'components/v3Textarea',
+    component: V3TextareaComponent
   },
   {
     path: 'components/toggleGroup',
@@ -208,8 +209,8 @@ let routes: Routes = [];
     component: DateInputComponent
   },
   {
-    path: 'components/newTextarea',
-    component: NewTextareaComponent
+    path: 'components/textarea',
+    component: TextareaComponent
   },
   {
     path: 'components/fileInput',

@@ -60,10 +60,10 @@
   "radio": {
     "baseColor": "color"
   },
-  "select": {
+  "v3Select": {
     "baseColor": "color"
   },
-  "newSelect": {
+  "select": {
     "baseColor": "color"
   },
   "sidenav": {

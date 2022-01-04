@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'select-api',
-  templateUrl: './select-api.component.html'
+  templateUrl: './v3-select-api.component.html'
 })
-export class NewSelectApiComponent implements OnInit {
+export class V3SelectApiComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

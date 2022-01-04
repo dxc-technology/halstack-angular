@@ -108,7 +108,7 @@ export class DxcSelectOptionComponent implements OnInit {
       height: 32px;
       :hover {
         cursor: pointer;
-        background-color: var(--newSelect-unselectedHoverListItemBackgroundColor);
+        background-color: var(--select-unselectedHoverListItemBackgroundColor);
       }
       :active {
         background-color: var(--select-unselectedActiveListItemBackgroundColor);
@@ -159,7 +159,7 @@ export class DxcSelectOptionComponent implements OnInit {
           margin-right: 8px;
           align-items: center;
           svg{
-            fill: var(--newSelect-selectedListItemIconColor);
+            fill: var(--select-selectedListItemIconColor);
           }
         }
       }

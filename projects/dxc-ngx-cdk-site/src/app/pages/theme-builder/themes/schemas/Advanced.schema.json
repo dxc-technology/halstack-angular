@@ -774,7 +774,7 @@
     "disabledFontColorOnDark": "color",
     "focusColorOnDark": "color"
   },
-  "select": {
+  "v3Select": {
     "errorColor": "color",
     "errorColorOnDark": "color",
     "disabledColor": "color",
@@ -828,7 +828,7 @@
     "arrowColor": "color",
     "arrowColorOnDark": "color"
   },
-  "newSelect": {
+  "select": {
     "fontFamily": "fFamily",
     "labelFontSize": "length",
     "labelFontStyle": "fStyle",

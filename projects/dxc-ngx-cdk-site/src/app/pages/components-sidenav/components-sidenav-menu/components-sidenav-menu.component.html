@@ -115,20 +115,6 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/newSelect'
-                  ? router.isActive(
-                      router.createUrlTree(['components/newSelect']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/newSelect')"
-              >New Select</a
-            >
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
                 active: 'components/newTextarea'
                   ? router.isActive(
                       router
@@ -187,6 +173,21 @@
           <div class="menu-item">
             <a
               [ngClass]="{
+                active: 'components/v3Select'
+                  ? router.isActive(
+                      router.createUrlTree(['components/v3Select']).toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/v3Select')"
+              >Select</a
+            >
+            <status-tag status="Deprecated"></status-tag>
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
                 active: 'components/select'
                   ? router.isActive(
                       router.createUrlTree(['components/select']).toString(),
@@ -197,7 +198,6 @@
               (click)="navigateTo('components/select')"
               >Select</a
             >
-            <status-tag status="Deprecated"></status-tag>
           </div>
           <div class="menu-item">
             <a

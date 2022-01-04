@@ -1,12 +1,14 @@
-import { Component } from "@angular/core";
-@Component({
-  selector: "app-select-example",
-  templateUrl: "./select-example.component.html",
-  styleUrls: ["./select-example.component.scss"],
-})
-export class SelectExampleComponent {
+import { Component, OnInit } from '@angular/core';
 
-  constructor() {
+@Component({
+  selector: 'examples-component-select',
+  templateUrl: './select-example.component.html'
+})
+export class SelectExampleComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
 }

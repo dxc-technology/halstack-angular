@@ -13,7 +13,7 @@ import { DateComponent } from "./pages/date/date.component";
 import { DesignGuidelinesPageComponent } from "./pages/design-guidelines-page/design-guidelines-page.component";
 import { FooterComponent } from "./pages/footer/footer.component";
 import { RadioComponent } from "./pages/radio/radio.component";
-import { SelectComponent } from './pages/select/select.component';
+import { V3SelectComponent } from './pages/v3-select/v3-select.component';
 import { SliderComponent } from './pages/slider/slider.component';
 import { SwitchComponent } from "./pages/switch/switch.component";
 import { SpinnerComponent } from './pages/spinner/spinner.component';
@@ -44,7 +44,7 @@ import { NumberComponent } from "./pages/number/number.component";
 import { NewDateComponent } from "./pages/new-date/new-date.component";
 import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
-import { NewSelectComponent } from "./pages/new-select/new-select.component";
+import { SelectComponent } from "./pages/select/select.component";
 import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
 
 let routes: Routes = [];
@@ -145,8 +145,8 @@ let routes: Routes = [];
     component: DialogComponent
   },
   {
-    path: 'components/select',
-    component: SelectComponent
+    path: 'components/v3Select',
+    component: V3SelectComponent
   },
   {
     path: 'components/slider',
@@ -217,8 +217,8 @@ let routes: Routes = [];
     component: FileInputComponent
   },
   {
-    path: 'components/newSelect',
-    component: NewSelectComponent
+    path: 'components/select',
+    component: SelectComponent
   },
   {
     path: 'components/resultsettable',

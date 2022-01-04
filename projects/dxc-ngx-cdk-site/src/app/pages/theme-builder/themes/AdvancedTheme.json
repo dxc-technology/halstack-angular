@@ -773,7 +773,7 @@
     "fontStyle": "normal",
     "fontWeight": "400"
   },
-  "select": {
+  "v3Select": {
     "optionCheckboxSpacing": "12px",
     "disabledColor": "#b1b1b1",
     "disabledColorOnDark": "#575757",
@@ -827,7 +827,7 @@
     "arrowColor": "#000000",
     "arrowColorOnDark": "#ffffff"
   },
-  "newSelect": {
+  "select": {
     "fontFamily": "Open Sans, sans-serif",
     "labelFontSize": "0.875rem",
     "labelFontStyle": "normal",

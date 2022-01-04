@@ -945,7 +945,7 @@ export const componentTokens = {
   "--radio-fontStyle": globalTokens.type_normal,
   "--radio-fontWeight": globalTokens.type_regular,
 
-  //SELECT
+  //V3 SELECT
   "--v3Select-fontFamily": "Open Sans, sans-serif",
   "--v3Select-labelFontSize": globalTokens.type_scale_03,
   "--v3Select-labelFontStyle": "normal",
@@ -1001,7 +1001,7 @@ export const componentTokens = {
   "--v3Select-arrowColor": globalTokens.hal_black,
   "--v3Select-arrowColorOnDark": globalTokens.hal_white,
 
-  //NEW SELECT
+  //SELECT
   "--select-fontFamily": globalTokens.type_sans,
   "--select-labelFontSize": globalTokens.type_scale_02,
   "--select-labelFontStyle": globalTokens.type_normal,

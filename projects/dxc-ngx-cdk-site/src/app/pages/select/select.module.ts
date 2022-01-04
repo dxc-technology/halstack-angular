@@ -1,59 +1,48 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, V3DxcSelectModule, DxcTagModule, DxcChipModule, DxcHeadingModule, DxcAlertModule, DxcLinkModule } from '@dxc-technology/halstack-angular';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
-import { SelectComponent } from './select.component';
-import { SelectExampleComponent } from 'src/app/components/examples/select/select-example/select-example.component';
-import { SelectPropertiesComponent } from '../../components/examples/select/properties/select-properties/select-properties.component';
-import { SelectImportComponent } from '../../components/examples/select/select-import/select-import.component';
-import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
-import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
-import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
+import { CommonModule } from "@angular/common";
+import { SelectApiComponent } from "src/app/components/examples/select/select-api/select-api.component";
+import { SelectExampleComponent } from "src/app/components/examples/select/select-example/select-example.component";
+import { SelectImportComponent } from "src/app/components/examples/select/select-import/select-import.component";
+import { SelectPropertiesComponent } from "src/app/components/examples/select/select-properties/select-properties.component";
+import { SelectComponent } from "./select.component";
+import { DxcChipModule, DxcHeadingModule, DxcLinkModule, DxcTableModule, DxcTagModule } from "@dxc-technology/halstack-angular";
+import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
+import { ExampleViewerModule } from "src/app/components/example-viewer/example-viewer.module";
+import { CodesandboxViewerModule } from "src/app/components/codesandbox-viewer/codesandbox-viewer.module";
+import { CodePlaygroundModule } from "src/app/components/code-playground/code-playground.module";
+import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
+import { ColorPreviewModule } from "src/app/components/color-preview/color-preview.module";
 import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
-
 
 @NgModule({
   declarations: [
     SelectComponent,
-    SelectExampleComponent,
-    SelectPropertiesComponent,
-    SelectImportComponent,
     SelectApiComponent,
+    SelectExampleComponent,
+    SelectImportComponent,
+    SelectPropertiesComponent,
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
     CommonModule,
+    DxcTableModule,
     TabbedSectionModule,
     ExampleViewerModule,
-    DxcTableModule,
-    V3DxcSelectModule,
+    CodesandboxViewerModule,
+    DxcLinkModule,
     DxcTagModule,
     CodePlaygroundModule,
-    CodesandboxViewerModule,
     ComponentsSidenavModule,
-    ColorPreviewModule,
     DxcChipModule,
+    ColorPreviewModule,
     DxcHeadingModule,
-    StatusTagModule,
-    DxcLinkModule,
-    DxcAlertModule,
+    StatusTagModule
   ],
   exports: [
     SelectComponent,
+    SelectApiComponent,
     SelectExampleComponent,
-    SelectPropertiesComponent,
     SelectImportComponent,
-    SelectApiComponent
+    SelectPropertiesComponent,
   ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
 })
-export class SelectModule { }
+export class SelectModule {}

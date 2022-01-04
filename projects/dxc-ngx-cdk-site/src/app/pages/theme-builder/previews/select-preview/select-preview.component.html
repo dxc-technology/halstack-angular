@@ -1,193 +1,120 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <div>
+  <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <v3-dxc-select
-        label="Default Select"
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
         margin="xsmall"
-        assistiveText="Assistive text"
+        [options]="array1"
+        (onChange)="onChange($event)"
+        (onBlur)="onBlur($event)"
+        [optional]="true"
+        placeholder="Another placeholder"
+        size="large"
+        tabIndex="3"
       >
-        <v3-dxc-select-option
-          *ngFor="let option of optionsWithoutIcon"
-          [label]="option.label"
-          [value]="option.value"
-        ></v3-dxc-select-option>
-      </v3-dxc-select>
+      </dxc-select>
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        margin="xsmall"
+        [options]="array2"
+        [optional]="true"
+        (onChange)="onChange($event)"
+        placeholder="Another placeholder"
+      ></dxc-select>
+    </tbuilder-component-mode>
 
-      <v3-dxc-select
-        label="Default Select"
+    <tbuilder-component-mode text="Searchable">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
         margin="xsmall"
-        required
-        assistiveText="Assistive text"
+        [options]="array1"
+        [optional]="true"
+        placeholder="Another placeholder"
       >
-        <v3-dxc-select-option
-          *ngFor="let option of optionsWithoutIcon"
-          [label]="option.label"
-          [value]="option.value"
-        ></v3-dxc-select-option>
-      </v3-dxc-select>
-
-      <v3-dxc-select
-        label="Icon Select"
+      </dxc-select>
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
         margin="xsmall"
-        assistiveText="Assistive text"
+        [options]="array2"
+        placeholder="Another placeholder"
       >
-        <v3-dxc-select-option
-          *ngFor="let option of optionsWithIconAndLabels"
-          [label]="option.label"
-          [value]="option.value"
-        >
-          <dxc-option-icon><img [src]="option.iconSrc" /></dxc-option-icon>
-        </v3-dxc-select-option>
-      </v3-dxc-select>
+      </dxc-select>
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
+        margin="xsmall"
+        [options]="array2"
+        [multiple]="true"
+        (onChange)="onChange($event)"
+        (onBlur)="onBlur($event)"
+        placeholder="Another placeholder"
+      >
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Multiple">
-      <v3-dxc-select
-        label="Multiple Select"
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
         multiple="true"
-        margin="xsmall"
-        [value]="multipleSelected"
-        size="medium"
-        assistiveText="Assistive text"
         (onChange)="onChange($event)"
+        margin="xsmall"
+        [options]="array1"
+        [value]="arrayValue"
       >
-        <v3-dxc-select-option
-          *ngFor="let element of optionsWithoutIcon"
-          [label]="element.label"
-          [value]="element.value"
-        >
-        </v3-dxc-select-option>
-      </v3-dxc-select>
+      </dxc-select>
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        multiple="true"
+        (onChange)="onChange($event)"
+        margin="xsmall"
+        [options]="array2"
+      >
+      </dxc-select>
+    </tbuilder-component-mode>
 
-      <v3-dxc-select
-        label="Invalid Select"
-        multiple="true"
+    <tbuilder-component-mode text="Error">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
         margin="xsmall"
-        [value]="multipleSelected"
-        size="medium"
-        assistiveText="Assistive text"
-        (onChange)="onChange($event)"
-        [invalid]="true"
       >
-        <v3-dxc-select-option
-          *ngFor="let element of optionsWithoutIcon"
-          [label]="element.label"
-          [value]="element.value"
-        >
-        </v3-dxc-select-option>
-      </v3-dxc-select>
+      </dxc-select>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Error and multiple">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
+        margin="xsmall"
+        [multiple]="true"
+      >
+      </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
-      <v3-dxc-select
-        label="Default Select"
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
         margin="xsmall"
         [disabled]="true"
-        assistiveText="Assistive text"
       >
-        <v3-dxc-select-option
-          *ngFor="let option of optionsWithoutIcon"
-          [label]="option.label"
-          [value]="option.value"
-        ></v3-dxc-select-option>
-      </v3-dxc-select>
-    </tbuilder-component-mode>
-  </div>
-
-  <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <background-provider color="#000000">
-    <tbuilder-component-mode text="Default" mode="dark">
-      <dxc-select
-        label="Default Select"
-        margin="xsmall"
-        assistiveText="Assistive text"
-      >
-        <dxc-select-option
-          *ngFor="let option of optionsWithoutIcon"
-          [label]="option.label"
-          [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
-
-      <dxc-select
-        label="Default Select"
-        margin="xsmall"
-        required="true"
-        assistiveText="Assistive text"
-      >
-        <dxc-select-option
-          *ngFor="let option of optionsWithoutIcon"
-          [label]="option.label"
-          [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
-
-      <dxc-select
-        label="Icon Select"
-        margin="xsmall"
-        assistiveText="Assistive text"
-      >
-        <dxc-select-option
-          *ngFor="let option of optionsWithIconAndLabels"
-          [label]="option.label"
-          [value]="option.value"
-        >
-          <dxc-option-icon><img [src]="option.iconSrc" /></dxc-option-icon>
-        </dxc-select-option>
       </dxc-select>
     </tbuilder-component-mode>
+  </background-provider>
 
-    <tbuilder-component-mode text="Multiple" mode="dark">
-      <dxc-select
-        label="Multiple Select"
-        multiple="true"
-        margin="xsmall"
-        [value]="multipleSelected"
-        size="medium"
-        assistiveText="Assistive text"
-        (onChange)="onChange($event)"
-      >
-        <dxc-select-option
-          *ngFor="let element of optionsWithoutIcon"
-          [label]="element.label"
-          [value]="element.value"
-        >
-        </dxc-select-option>
-      </dxc-select>
-
-      <dxc-select
-        label="Invalid Select"
-        multiple="true"
-        margin="xsmall"
-        [value]="multipleSelected"
-        size="medium"
-        assistiveText="Assistive text"
-        (onChange)="onChange($event)"
-        [invalid]="true"
-      >
-        <dxc-select-option
-          *ngFor="let element of optionsWithoutIcon"
-          [label]="element.label"
-          [value]="element.value"
-        >
-        </dxc-select-option>
-      </dxc-select>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Disabled" mode="dark">
-      <dxc-select
-        label="Default Select"
-        margin="xsmall"
-        [disabled]="true"
-        assistiveText="Assistive text"
-      >
-        <dxc-select-option
-          *ngFor="let option of optionsWithoutIcon"
-          [label]="option.label"
-          [value]="option.value"
-        ></dxc-select-option>
-      </dxc-select>
-    </tbuilder-component-mode>
-  </background-provider> -->
+  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+  <background-provider color="#000000"> </background-provider>
 </div>

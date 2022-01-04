@@ -29,8 +29,6 @@ import { OverviewSupportComponent } from "../overview/overview-support/overview-
 import { OverviewThemesComponent } from "../overview/overview-themes/overview-themes.component";
 import { RadioExampleComponent } from "../examples/radio/radio-example/radio-example.component";
 import { RadioPropertiesComponent } from "../examples/radio/properties/radio-properties/radio-properties.component";
-import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
-import { SelectPropertiesComponent } from "../examples/select/properties/select-properties/select-properties.component";
 import { SliderPropertiesComponent } from "../examples/slider/properties/slider-properties/slider-properties.component";
 import { SliderExampleComponent } from "../examples/slider/slider-example/slider-example.component";
 import { SpinnerExampleComponent } from "../examples/spinner/spinner-example/spinner-example.component";
@@ -96,7 +94,7 @@ import { PaginatorImportComponent } from "../examples/paginator/paginator-import
 import { ProgressbarImportComponent } from "../examples/progressbar/progressbar-import/progressbar-import.component";
 import { RadioImportComponent } from "../examples/radio/radio-import/radio-import.component";
 import { ResultsetTableImportComponent } from "../examples/resultset-table/resultset-table-import/resultset-table-import.component";
-import { SelectImportComponent } from "../examples/select/select-import/select-import.component";
+import { V3SelectImportComponent } from "../examples/v3-select/v3-select-import/v3-select-import.component";
 import { SidenavImportComponent } from "../examples/sidenav/sidenav-import/sidenav-import.component";
 import { SliderImportComponent } from "../examples/slider/slider-import/slider-import.component";
 import { SpinnerImportComponent } from "../examples/spinner/spinner-import/spinner-import.component";
@@ -113,7 +111,6 @@ import { CheckboxApiComponent } from "../examples/checkbox/checkbox-api/checkbox
 import { RadioApiComponent } from "../examples/radio/radio-api/radio-api.component";
 import { LinkApiComponent } from "../examples/link/link-api/link-api.component";
 import { SliderApiComponent } from "../examples/slider/slider-api/slider-api.component";
-import { SelectApiComponent } from "../examples/select/select-api/select-api.component";
 import { BoxApiComponent } from "../examples/box/box-api/box-api.component";
 import { TagApiComponent } from "../examples/tag/tag-api/tag-api.component";
 import { CardApiComponent } from "../examples/card/card-api/card-api.component";
@@ -169,12 +166,15 @@ import { FileInputApiComponent } from "../examples/file-input/file-input-api/fil
 import { FileInputExampleComponent } from "../examples/file-input/file-input-example/file-input-example.component";
 import { FileInputImportComponent } from "../examples/file-input/file-input-import/file-input-import.component";
 import { FileInputPropertiesComponent } from "../examples/file-input/file-input-properties/file-input-properties.component";
-import { NewSelectApiComponent } from "../examples/new-select/select-api/select-api.component";
-import { NewSelectExampleComponent } from "../examples/new-select/select-example/select-example.component";
-import { NewSelectImportComponent } from "../examples/new-select/select-import/select-import.component";
-import { NewSelectPropertiesComponent } from "../examples/new-select/select-properties/select-properties.component";
+import { SelectApiComponent } from "../examples/select/select-api/select-api.component";
+import { SelectExampleComponent } from "../examples/select/select-example/select-example.component";
+import { SelectImportComponent } from "../examples/select/select-import/select-import.component";
+import { SelectPropertiesComponent } from "../examples/select/select-properties/select-properties.component";
 import { AutosuggestPropertiesComponent } from "../examples/autosuggest/autosuggest-properties/autosuggest-properties.component";
 import { AutosuggestExampleComponent } from "../examples/autosuggest/autosuggest-example/autosuggest-example.component";
+import { V3SelectApiComponent } from "../examples/v3-select/v3-select-api/v3-select-api.component";
+import { V3SelectExampleComponent } from "../examples/v3-select/v3-select-example/v3-select-example.component";
+import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-properties/v3-select-properties.component";
 
 @NgModule({
   declarations: [DynamicComponentComponent],
@@ -211,8 +211,8 @@ import { AutosuggestExampleComponent } from "../examples/autosuggest/autosuggest
     OverviewThemesComponent,
     RadioPropertiesComponent,
     RadioExampleComponent,
-    SelectExampleComponent,
-    SelectPropertiesComponent,
+    V3SelectExampleComponent,
+    V3SelectPropertiesComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
     SpinnerExampleComponent,
@@ -276,7 +276,7 @@ import { AutosuggestExampleComponent } from "../examples/autosuggest/autosuggest
     ProgressbarImportComponent,
     RadioImportComponent,
     ResultsetTableImportComponent,
-    SelectImportComponent,
+    V3SelectImportComponent,
     SidenavImportComponent,
     SliderImportComponent,
     SpinnerImportComponent,
@@ -293,7 +293,7 @@ import { AutosuggestExampleComponent } from "../examples/autosuggest/autosuggest
     RadioApiComponent,
     LinkApiComponent,
     SliderApiComponent,
-    SelectApiComponent,
+    V3SelectApiComponent,
     BoxApiComponent,
     ChipApiComponent,
     ColorPreviewComponent,
@@ -348,10 +348,10 @@ import { AutosuggestExampleComponent } from "../examples/autosuggest/autosuggest
     FileInputExampleComponent,
     FileInputImportComponent,
     FileInputPropertiesComponent,
-    NewSelectApiComponent,
-    NewSelectExampleComponent,
-    NewSelectImportComponent,
-    NewSelectPropertiesComponent,
+    SelectApiComponent,
+    SelectExampleComponent,
+    SelectImportComponent,
+    SelectPropertiesComponent,
     AutosuggestPropertiesComponent,
     AutosuggestExampleComponent
   ],

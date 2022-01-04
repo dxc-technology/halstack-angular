@@ -43,7 +43,7 @@ import { SidenavModule } from './pages/sidenav/sidenav.module';
 import { LinkModule } from './pages/link/link.module';
 import { HeadingModule } from './pages/heading/heading.module';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
-import { TextAreaModule } from './pages/text-area/text-area.module';
+import { V3TextareaModule } from './pages/v3-textarea/v3-textarea.module';
 import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
 import { DxcLinkModule } from '../../../dxc-ngx-cdk/src/lib/dxc-link/dxc-link.module';
 import { DxcHeadingModule } from '../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
@@ -97,7 +97,7 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     SpinnerModule,
     SwitchModule,
     TextInputModule,
-    TextAreaModule,
+    V3TextareaModule,
     DropdownModule,
     DialogModule,
     TabbedSectionInfoModule,

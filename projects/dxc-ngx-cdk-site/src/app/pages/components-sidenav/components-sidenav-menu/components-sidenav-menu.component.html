@@ -230,14 +230,14 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/textarea'
+                active: 'components/v3Textarea'
                   ? router.isActive(
-                      router.createUrlTree(['components/textarea']).toString(),
+                      router.createUrlTree(['components/v3Textarea']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/textarea')"
+              (click)="navigateTo('components/v3Textarea')"
               >Textarea</a
             >
             <status-tag status="Deprecated"></status-tag>

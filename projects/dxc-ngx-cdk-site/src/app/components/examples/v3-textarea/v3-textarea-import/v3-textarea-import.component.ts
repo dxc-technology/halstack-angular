@@ -2,10 +2,9 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "text-area-import",
-  templateUrl: "./text-area-import.component.html",
-  styleUrls: ["./text-area-import.component.scss"],
+  templateUrl: "./v3-textarea-import.component.html"
 })
-export class TextAreaImportComponent implements OnInit {
+export class V3TextareaImportComponent implements OnInit {
   bindCode = `
   import { V3DxcTextareaModule } from '@dxc-technology/halstack-angular';
 

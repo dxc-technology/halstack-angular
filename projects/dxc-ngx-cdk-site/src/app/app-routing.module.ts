@@ -34,7 +34,7 @@ import { LinkComponent } from './pages/link/link.component';
 import { HeadingComponent } from './pages/heading/heading.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { ChipComponent } from './pages/chip/chip.component';
-import { TextAreaComponent } from './pages/text-area/text-area.component';
+import { V3TextareaComponent } from "./pages/v3-textarea/v3-textarea.component";
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
@@ -46,6 +46,7 @@ import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.componen
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { SelectComponent } from "./pages/select/select.component";
 import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
+
 
 let routes: Routes = [];
 
@@ -125,8 +126,8 @@ let routes: Routes = [];
     component: TextInputComponent
   },
   {
-    path: 'components/textarea',
-    component: TextAreaComponent
+    path: 'components/v3Textarea',
+    component: V3TextareaComponent
   },
   {
     path: 'components/toggleGroup',

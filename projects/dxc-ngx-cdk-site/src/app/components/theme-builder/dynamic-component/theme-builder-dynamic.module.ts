@@ -28,7 +28,7 @@ import { SpinnerPreviewComponent } from '../../../pages/theme-builder/previews/s
 import { SwitchPreviewComponent } from '../../../pages/theme-builder/previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
-import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/textarea-preview/textarea-preview.component';
+import { V3TextareaPreviewComponent } from '../../../pages/theme-builder/previews/v3-textarea-preview/v3-textarea-preview.component';
 import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
@@ -71,7 +71,7 @@ import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v
     SwitchPreviewComponent,
     TagPreviewComponent,
     TabsPreviewComponent,
-    TextareaPreviewComponent,
+    V3TextareaPreviewComponent,
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
     TablePreviewComponent,

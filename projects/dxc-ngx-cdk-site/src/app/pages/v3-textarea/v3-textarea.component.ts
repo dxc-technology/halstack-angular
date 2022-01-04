@@ -1,15 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Section } from "src/app/model/sections";
-import { TextAreaApiComponent } from "../../components/examples/text-area/text-area-api/text-area-api.component";
-import { TextAreaExampleComponent } from "../../components/examples/text-area/text-area-example/text-area-example.component";
+import { V3TextareaApiComponent } from "../../components/examples/v3-textarea/v3-textarea-api/v3-textarea-api.component";
+import { V3TextareaExampleComponent } from "../../components/examples/v3-textarea/v3-textarea-example/v3-textarea-example.component";
 
 @Component({
   selector: "app-text-area",
-  templateUrl: "./text-area.component.html",
-  styleUrls: ["./text-area.component.scss"],
+  templateUrl: "./v3-textarea.component.html",
 })
-export class TextAreaComponent implements OnInit {
+export class V3TextareaComponent implements OnInit {
   sections: Array<Section>;
   tagImg: string;
 
@@ -28,13 +27,13 @@ export class TextAreaComponent implements OnInit {
         id: 0,
         label: "API",
         selector: "text-area-api",
-        component: TextAreaApiComponent,
+        component: V3TextareaApiComponent,
       },
       {
         id: 1,
         label: "EXAMPLES",
         selector: 'examples-component-input',
-        component: TextAreaExampleComponent,
+        component: V3TextareaExampleComponent,
       }
     );
   }

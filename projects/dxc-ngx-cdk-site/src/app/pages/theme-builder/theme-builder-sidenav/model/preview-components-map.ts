@@ -23,7 +23,7 @@ import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-
 import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../previews/tabs-preview/tabs-preview.component';
-import { TextareaPreviewComponent } from '../../previews/textarea-preview/textarea-preview.component';
+import { V3TextareaPreviewComponent } from '../../previews/v3-textarea-preview/v3-textarea-preview.component';
 import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
@@ -70,7 +70,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'tag', component: TagPreviewComponent},
   {name: 'table', component: TablePreviewComponent},
   {name: 'tabs', component: TabsPreviewComponent},
-  {name: 'textarea', component: TextareaPreviewComponent},
+  {name: 'v3Textarea', component: V3TextareaPreviewComponent},
   {name: 'toggleGroup', component: ToggleGroupPreviewComponent},
   {name: 'upload', component: UploadPreviewComponent},
   {name: 'wizard', component: WizardPreviewComponent}

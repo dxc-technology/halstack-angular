@@ -4,24 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DxcTableModule, DxcLinkModule, DxcTagModule, V3DxcTextareaModule, DxcChipModule, DxcHeadingModule, DxcAlertModule } from '@dxc-technology/halstack-angular';
 import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
 import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
-import { TextAreaComponent } from './text-area.component';
+import { V3TextareaComponent } from './v3-textarea.component';
 import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { TextAreaApiComponent } from '../../components/examples/text-area/text-area-api/text-area-api.component';
-import { TextAreaPropertiesTableComponent } from '../../components/examples/text-area/properties/text-area-properties-table/text-area-properties-table.component';
-import { TextAreaExampleComponent } from '../../components/examples/text-area/text-area-example/text-area-example.component';
-import { TextAreaImportComponent } from '../../components/examples/text-area/text-area-import/text-area-import.component';
+import { V3TextareaApiComponent } from '../../components/examples/v3-textarea/v3-textarea-api/v3-textarea-api.component';
+import { V3TextareaPropertiesComponent } from '../../components/examples/v3-textarea/v3-textarea-properties/v3-textarea-properties.component';
+import { V3TextareaExampleComponent } from '../../components/examples/v3-textarea/v3-textarea-example/v3-textarea-example.component';
+import { V3TextareaImportComponent } from 'src/app/components/examples/v3-textarea/v3-textarea-import/v3-textarea-import.component';
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
 
+
 @NgModule({
   declarations: [
-    TextAreaComponent,
-    TextAreaApiComponent,
-    TextAreaPropertiesTableComponent,
-    TextAreaExampleComponent,
-    TextAreaImportComponent],
+    V3TextareaComponent,
+    V3TextareaApiComponent,
+    V3TextareaPropertiesComponent,
+    V3TextareaExampleComponent,
+    V3TextareaImportComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -41,13 +42,13 @@ import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module
     DxcAlertModule,
   ],
   exports: [
-    TextAreaComponent,
-    TextAreaApiComponent,
-    TextAreaPropertiesTableComponent,
-    TextAreaExampleComponent,
-    TextAreaImportComponent],
+    V3TextareaComponent,
+    V3TextareaApiComponent,
+    V3TextareaPropertiesComponent,
+    V3TextareaExampleComponent,
+    V3TextareaImportComponent],
   entryComponents: [
     ExampleViewerComponent
   ]
 })
-export class TextAreaModule { }
+export class V3TextareaModule { }

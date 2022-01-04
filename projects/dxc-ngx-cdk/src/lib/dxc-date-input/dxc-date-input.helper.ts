@@ -12,10 +12,10 @@ export class DxcDateInputHelper {
 
   getCalendarContentStyle() {
     return css`
-      width: var(--newDate-pickerWidth);
+      width: var(--dateInput-pickerWidth);
       dxc-box {
-        background: var(--newDate-pickerBackgroundColor);
-        height: var(--newDate-pickerHeight);
+        background: var(--dateInput-pickerBackgroundColor);
+        height: var(--dateInput-pickerHeight);
         display: inline-block;
       }
       .mat-calendar {
@@ -30,7 +30,7 @@ export class DxcDateInputHelper {
         height: 100%;
       }
       .mat-calendar-header {
-        color: var(--newDate-color);
+        color: var(--dateInput-color);
         padding: 0px;
         margin-bottom: 5px;
         .mat-calendar-controls {
@@ -53,12 +53,12 @@ export class DxcDateInputHelper {
         font-size: 16px;
       }
       .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-        border-color: var(--newDate-pickerActualDateColor);
+        border-color: var(--dateInput-pickerActualDateColor);
       }
       .mat-calendar-body-selected {
-        border-color: var(--newDate-pickerSelectedDateBackgroundColor);
-        background-color: var(--newDate-pickerSelectedDateBackgroundColor);
-        color: var(--newDate-pickerSelectedDateColor) !important;
+        border-color: var(--dateInput-pickerSelectedDateBackgroundColor);
+        background-color: var(--dateInput-pickerSelectedDateBackgroundColor);
+        color: var(--dateInput-pickerSelectedDateColor) !important;
         &.mat-calendar-body-today {
           border: none;
           box-shadow: none;
@@ -69,24 +69,24 @@ export class DxcDateInputHelper {
       .mat-calendar-body-label,
       .mat-calendar-table-header,
       th {
-        font-family: var(--newDate-fontFamily);
+        font-family: var(--dateInput-fontFamily);
       }
 
       .mat-calendar-previous-button,
       .mat-calendar-next-button {
-        background: var(--newDate-pickerBackgroundColorMonthArrows);
+        background: var(--dateInput-pickerBackgroundColorMonthArrows);
       }
 
       .mat-calendar-table-header {
-        color: var(--newDate-pickerWeekLabelColor);
+        color: var(--dateInput-pickerWeekLabelColor);
       }
 
       .mat-calendar-body-label {
-        color: var(--newDate-pickerMonthColor);
+        color: var(--dateInput-pickerMonthColor);
       }
 
       .mat-calendar-period-button {
-        color: var(--newDate-pickerYearColor);
+        color: var(--dateInput-pickerYearColor);
       }
 
       .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
@@ -103,7 +103,7 @@ export class DxcDateInputHelper {
       mat-month-view .mat-calendar-body-cell-content {
         width: 28px;
         height: 28px;
-        color: var(--newDate-pickerFontColor);
+        color: var(--dateInput-pickerFontColor);
       }
 
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content:focus,
@@ -111,7 +111,7 @@ export class DxcDateInputHelper {
       .mat-calendar-next-button:focus,
       .mat-calendar-period-button:focus {
         outline: -webkit-focus-ring-color auto 1px;
-        outline-color: var(--newDate-focusColor);
+        outline-color: var(--dateInput-focusColor);
       }
 
       .mat-button-focus-overlay {
@@ -131,9 +131,9 @@ export class DxcDateInputHelper {
       td:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content {
         &:not(.mat-calendar-body-selected):hover {
           background-color: var(
-            --newDate-pickerHoverDateBackgroundColor
+            --dateInput-pickerHoverDateBackgroundColor
           ) !important;
-          color: var(--newDate-pickerHoverDateFontColor) !important;
+          color: var(--dateInput-pickerHoverDateFontColor) !important;
         }
         mat-multi-year-view .mat-calendar-body-cell-content,
         mat-year-view .mat-calendar-body-cell-content {

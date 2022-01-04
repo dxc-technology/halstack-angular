@@ -261,7 +261,7 @@
     "pickerHeight": "length",
     "pickerWidth": "length"
   },
-  "newDate": {
+  "dateInput": {
     "pickerSelectedDateBackgroundColor": "color",
     "pickerSelectedDateColor": "color",
     "pickerBackgroundColor": "color",

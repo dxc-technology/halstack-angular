@@ -28,7 +28,7 @@ import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview
 import { UploadPreviewComponent } from '../../previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
 import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
-import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
+import { DateInputPreviewComponent } from '../../previews/date-input-preview/date-input-preview.component';
 import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
 import { FileInputPreviewComponent } from '../../previews/file-input-preview/file-input-preview.component';
 import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
@@ -47,7 +47,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'checkbox', component: CheckboxPreviewComponent},
   {name: 'chip', component: ChipPreviewComponent},
   {name: 'date', component: DatePreviewComponent},
-  {name: 'newDate', component: NewDatePreviewComponent},
+  {name: 'dateInput', component: DateInputPreviewComponent},
   {name: 'dialog', component: DialogPreviewComponent},
   {name: 'dropdown', component: DropdownPreviewComponent},
   {name: 'fileInput', component: FileInputPreviewComponent},

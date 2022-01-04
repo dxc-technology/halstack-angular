@@ -20,7 +20,7 @@
     "baseColor": "color",
     "accentColor": "color"
   },
-  "newDate": {
+  "dateInput": {
     "baseColor": "color",
     "accentColor": "color"
   },

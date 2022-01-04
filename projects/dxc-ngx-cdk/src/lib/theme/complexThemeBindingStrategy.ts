@@ -143,16 +143,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.date?.baseColor, 0.34) ??
       tokens["--date-pickerHoverDateBackgroundColor"];
 
-    //NEWDATE
-    proccessedTokens["--newDate-pickerSelectedDateBackgroundColor"] =
-      theme?.newDate?.baseColor ??
-      tokens["--newDate-pickerSelectedDateBackgroundColor"];
-    proccessedTokens["--newDate-pickerSelectedDateColor"] =
-      theme?.newDate?.accentColor ??
-      tokens["--newDate-pickerSelectedDateColor"];
-    proccessedTokens["--newDate-pickerHoverDateBackgroundColor"] =
-      this.setOpacity(theme?.newDate?.baseColor, 0.34) ??
-      tokens["--newDate-pickerHoverDateBackgroundColor"];
+    //dateInput
+    proccessedTokens["--dateInput-pickerSelectedDateBackgroundColor"] =
+      theme?.dateInput?.baseColor ??
+      tokens["--dateInput-pickerSelectedDateBackgroundColor"];
+    proccessedTokens["--dateInput-pickerSelectedDateColor"] =
+      theme?.dateInput?.accentColor ??
+      tokens["--dateInput-pickerSelectedDateColor"];
+    proccessedTokens["--dateInput-pickerHoverDateBackgroundColor"] =
+      this.setOpacity(theme?.dateInput?.baseColor, 0.34) ??
+      tokens["--dateInput-pickerHoverDateBackgroundColor"];
 
     //DROPDOWN
     proccessedTokens["--dropdown-buttonBackgroundColor"] =

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-new-date',
-  templateUrl: './new-date.component.html'
+  selector: 'app-date-input',
+  templateUrl: './date-input.component.html'
 })
-export class NewDateComponent implements OnInit {
+export class DateInputComponent implements OnInit {
 
   inputValue = "01-01-1995";
 

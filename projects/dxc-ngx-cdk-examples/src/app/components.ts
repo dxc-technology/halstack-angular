@@ -36,7 +36,7 @@ import { AccordionGroupComponent } from './pages/accordion-group/accordion-group
 import { NewInpuTextComponent } from './pages/new-input-text/new-input-text.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { NumberComponent } from './pages/number/number.component';
-import { NewDateComponent } from './pages/new-date/new-date.component';
+import { DateInputComponent } from './pages/date-input/date-input.component';
 
 export const Components = [
     {
@@ -120,9 +120,9 @@ export const Components = [
         component:  LinkInfoComponent
     },
     {
-        name: 'New Date',
-        route: 'new_date',
-        component:  NewDateComponent
+        name: 'Date Input',
+        route: 'date_input',
+        component:  DateInputComponent
     },
     {
         name: 'New Input Text',

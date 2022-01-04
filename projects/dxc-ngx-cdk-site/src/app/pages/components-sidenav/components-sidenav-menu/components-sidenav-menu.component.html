@@ -70,6 +70,20 @@
           <div class="menu-item">
             <a
               [ngClass]="{
+                active: 'components/dateInput'
+                  ? router.isActive(
+                      router.createUrlTree(['components/dateInput']).toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/dateInput')"
+              >Date Input</a
+            >
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
                 active: 'components/input'
                   ? router.isActive(
                       router.createUrlTree(['components/input']).toString(),
@@ -81,20 +95,6 @@
               >Input Text</a
             >
             <status-tag status="Deprecated"></status-tag>
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/newDate'
-                  ? router.isActive(
-                      router.createUrlTree(['components/newDate']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/newDate')"
-              >New Date</a
-            >
           </div>
           <div class="menu-item">
             <a

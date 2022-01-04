@@ -32,7 +32,7 @@ export class DateComponent implements OnInit {
 
   navigateToRoute(){
     this.router.navigate(
-      ["components/newDate"]
+      ["components/dateInput"]
     );
   }
 }

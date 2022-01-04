@@ -55,7 +55,7 @@ import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-s
 import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
 import { PasswordModule } from './pages/password/password.module';
 import { NumberModule } from './pages/number/number.module';
-import { NewDateModule } from './pages/new-date/new-date.module';
+import { DateInputModule } from './pages/date-input/date-input.module';
 import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
 import { FileInputModule } from './pages/file-input/file-input.module';
 import { SelectModule } from './pages/select/select.module';
@@ -125,7 +125,7 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     NewInputTextModule,
     PasswordModule,
     NumberModule,
-    NewDateModule,
+    DateInputModule,
     NewTextareaModule,
     FileInputModule,
     SelectModule,

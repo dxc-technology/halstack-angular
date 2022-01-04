@@ -522,14 +522,6 @@ export class DxcSelectComponent implements OnInit {
     }
   }
 
-  handleOnHover(indexOption?: number, indexGroup?: number, optional?: boolean) {
-    const isOption = this.service.instanceOfOption(this.options[0]);
-    this.service.setVisualFocused({
-      option: optional ? -1 : indexOption,
-      group: isOption || optional ? -1 : indexGroup,
-    });
-  }
-
   handleEnterKey(event) {
     if (this.focusedOption.option === -1 && this.optional) {
       this.handleOptionClick(this.optionalOption, event);

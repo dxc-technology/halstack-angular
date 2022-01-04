@@ -151,7 +151,6 @@
         [optional]="optional"
         (optionClick)="handleOptionClick(optionalOption, $event)"
         (optionMouseDown)="handleOptionMouseDown($event)"
-        (mouseenter)="handleOnHover(-1, -1, true)"
       ></dxc-select-option>
     </li>
     <li
@@ -190,7 +189,6 @@
             [focused]="isFocused(i, indexOptionGroup)"
             (optionClick)="handleOptionClick(op, $event)"
             (optionMouseDown)="handleOptionMouseDown($event)"
-            (mouseenter)="handleOnHover(indexOptionGroup, i)"
           ></dxc-select-option>
         </li>
       </ul>
@@ -201,7 +199,6 @@
         [focused]="focusedOption.option === i"
         (optionClick)="handleOptionClick(option, $event)"
         (optionMouseDown)="handleOptionMouseDown($event)"
-        (mouseenter)="handleOnHover(i)"
       ></dxc-select-option>
     </li>
     <li
@@ -283,7 +280,6 @@
             "
             (optionClick)="handleOptionClick(op, $event)"
             (optionMouseDown)="handleOptionMouseDown($event)"
-            (mouseenter)="handleOnHover(indexOptionGroup, i)"
           ></dxc-select-option>
         </li>
       </ul>
@@ -295,7 +291,6 @@
         [focused]="focusedOption.option === i"
         (optionClick)="handleOptionClick(option, $event)"
         (optionMouseDown)="handleOptionMouseDown($event)"
-        (mouseenter)="handleOnHover(i)"
       ></dxc-select-option>
     </li>
     <li

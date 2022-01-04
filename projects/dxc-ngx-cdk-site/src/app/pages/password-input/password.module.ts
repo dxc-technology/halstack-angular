@@ -17,10 +17,10 @@ import { CodesandboxViewerModule } from "src/app/components/codesandbox-viewer/c
 import { CodePlaygroundModule } from "src/app/components/code-playground/code-playground.module";
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 import { ColorPreviewModule } from "src/app/components/color-preview/color-preview.module";
-import { PasswordApiComponent } from "src/app/components/examples/password/password-api/password-api.component";
-import { PasswordExampleComponent } from "src/app/components/examples/password/password-example/password-example.component";
-import { PasswordImportComponent } from "src/app/components/examples/password/password-import/password-import.component";
-import { PasswordPropertiesComponent } from "src/app/components/examples/password/password-properties/password-properties.component";
+import { PasswordApiComponent } from "src/app/components/examples/password-input/password-api/password-api.component";
+import { PasswordExampleComponent } from "src/app/components/examples/password-input/password-example/password-example.component";
+import { PasswordImportComponent } from "src/app/components/examples/password-input/password-import/password-import.component";
+import { PasswordPropertiesComponent } from "src/app/components/examples/password-input/password-properties/password-properties.component";
 import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({

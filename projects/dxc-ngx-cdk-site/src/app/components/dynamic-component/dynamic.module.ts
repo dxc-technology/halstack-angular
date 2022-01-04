@@ -146,10 +146,10 @@ import { InputTextPropertiesComponent } from "../examples/input-text/input-text-
 import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
 import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
 import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
-import { PasswordPropertiesComponent } from "../examples/password/password-properties/password-properties.component";
-import { PasswordImportComponent } from "../examples/password/password-import/password-import.component";
-import { PasswordExampleComponent } from "../examples/password/password-example/password-example.component";
-import { PasswordApiComponent } from "../examples/password/password-api/password-api.component";
+import { PasswordPropertiesComponent } from "../examples/password-input/password-properties/password-properties.component";
+import { PasswordImportComponent } from "../examples/password-input/password-import/password-import.component";
+import { PasswordExampleComponent } from "../examples/password-input/password-example/password-example.component";
+import { PasswordApiComponent } from "../examples/password-input/password-api/password-api.component";
 import { NumberApiComponent } from "../examples/number/number-api/number-api.component";
 import { NumberImportComponent } from "../examples/number/number-import/number-import.component";
 import { NumberExampleComponent } from "../examples/number/number-example/number-example.component";

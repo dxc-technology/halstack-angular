@@ -38,7 +38,7 @@ import { V3TextareaComponent } from "./pages/v3-textarea/v3-textarea.component";
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
 import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
-import { PasswordComponent } from "./pages/password/password.component";
+import { PasswordComponent } from "./pages/password-input/password.component";
 import { NumberComponent } from "./pages/number/number.component";
 import { DateInputComponent } from "./pages/date-input/date-input.component";
 import { TextareaComponent } from "./pages/textarea/textarea.component";
@@ -197,7 +197,7 @@ let routes: Routes = [];
     component: NewInputTextComponent
   },
   {
-    path: 'components/password',
+    path: 'components/passwordInput',
     component: PasswordComponent
   },
   {

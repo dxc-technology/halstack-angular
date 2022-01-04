@@ -13,14 +13,14 @@
   box-sizing: border-box;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
-  padding-left: var(--select-optionPaddingLeft);
-  padding-right: var(--select-optionPaddingRight);
-  padding-top: var(--select-optionPaddingTop);
-  padding-bottom: var(--select-optionPaddingBottom);
+  padding-left: var(--v3Select-optionPaddingLeft);
+  padding-right: var(--v3Select-optionPaddingRight);
+  padding-top: var(--v3Select-optionPaddingTop);
+  padding-bottom: var(--v3Select-optionPaddingBottom);
 
   dxc-checkbox {
     mat-checkbox label.mat-checkbox-layout .mat-checkbox-inner-container{
-      margin-right: var(--select-optionCheckboxSpacing);
+      margin-right: var(--v3Select-optionCheckboxSpacing);
     }
   }
 

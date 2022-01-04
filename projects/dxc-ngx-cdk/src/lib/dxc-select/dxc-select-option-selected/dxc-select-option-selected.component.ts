@@ -87,13 +87,13 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           text-align: left;
           display: inline-flex;
           align-items: center;
-          font-family: var(--newSelect-fontFamily);
-          font-size: var(--newSelect-valueFontSize);
-          font-style: var(--newSelect-valueFontStyle);
-          font-weight: var(--newSelect-valueFontWeight);
+          font-family: var(--select-fontFamily);
+          font-size: var(--select-valueFontSize);
+          font-style: var(--select-valueFontStyle);
+          font-weight: var(--select-valueFontWeight);
           color: ${inputs.disabled
-            ? "var(--newSelect-disabledColor)"
-            : "var(--newSelect-valueFontColor)"};
+            ? "var(--select-disabledColor)"
+            : "var(--select-valueFontColor)"};
           .iconLabel{
             width: 24px;
             height: 24px;
@@ -109,13 +109,13 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
         }
         .notSelectedLabel {
           text-align: left;
-          font-family: var(--newSelect-fontFamily);
-          font-size: var(--newSelect-placeholderFontSize);
-          font-style: var(--newSelect-placeholderFontStyle);
-          font-weight: var(--newSelect-placeholderFontWeight);
+          font-family: var(--select-fontFamily);
+          font-size: var(--select-placeholderFontSize);
+          font-style: var(--select-placeholderFontStyle);
+          font-weight: var(--select-placeholderFontWeight);
           color: ${inputs.disabled
-            ? "var(--newSelect-disabledColor)"
-            : "var(--newSelect-placeholderFontColor)"};
+            ? "var(--select-disabledColor)"
+            : "var(--select-placeholderFontColor)"};
         }
       }
     `;

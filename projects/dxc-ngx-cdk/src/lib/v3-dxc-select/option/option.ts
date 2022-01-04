@@ -273,7 +273,7 @@ export class _MatOptionBase
     return css`
       height: ${this.multiple ? "48px" : "36px"};
       &.mat-option:not(.mat-option-disabled) {
-        color: var(--select-labelFontColor) !important;
+        color: var(--v3Select-labelFontColor) !important;
       }
       .mat-option-text {
         display: flex;
@@ -285,47 +285,47 @@ export class _MatOptionBase
         overflow: hidden;
         text-overflow: ellipsis;
         span {
-          font-family: var(--select-fontFamily);
+          font-family: var(--v3Select-fontFamily);
           color: ${this.service.isDarkTheme
-            ? "var(--select-optionFontColorOnDark)"
-            : "var(--select-optionFontColor)"};
-          font-size: var(--select-optionFontSize);
-          font-style: var(--select-optionFontStyle);
+            ? "var(--v3Select-optionFontColorOnDark)"
+            : "var(--v3Select-optionFontColor)"};
+          font-size: var(--v3Select-optionFontSize);
+          font-style: var(--v3Select-optionFontStyle);
         }
       }
       &.mat-option.mat-active {
         outline: -webkit-focus-ring-color auto 1px;
-        outline-color: var(--select-focusColor);
+        outline-color: var(--v3Select-focusColor);
         background: white;
       }
       &.mat-option:hover:not(.mat-option-disabled) {
         background: ${this.service.isDarkTheme
-          ? "var(--select-hoverOptionBackgroundColorOnDark)"
-          : "var(--select-hoverOptionBackgroundColor)"} !important;
+          ? "var(--v3Select-hoverOptionBackgroundColorOnDark)"
+          : "var(--v3Select-hoverOptionBackgroundColor)"} !important;
       }
       &.mat-option.mat-selected:not(.mat-option-disabled) {
         background: ${this.service.isDarkTheme
-          ? "var(--select-selectedOptionBackgroundColorOnDark)"
-          : "var(--select-selectedOptionBackgroundColor)"};
+          ? "var(--v3Select-selectedOptionBackgroundColorOnDark)"
+          : "var(--v3Select-selectedOptionBackgroundColor)"};
       }
       &.mat-option:focus:not(.mat-option-disabled) {
         outline: -webkit-focus-ring-color auto 1px;
-        outline-color: var(--select-focusColor);
+        outline-color: var(--v3Select-focusColor);
       }
       &.mat-option-disabled {
-        color: var(--select-disabledColor) !important;
+        color: var(--v3Select-disabledColor) !important;
       }
       dxc-option-icon {
         display: flex;
         align-items: center;
         ${this.iconPosition == "after"
-          ? "margin-left: var(--select-optionIconSpacing)"
-          : "margin-right: var(--select-optionIconSpacing)"};
-        color: var(--select-optionIconColor);
+          ? "margin-left: var(--v3Select-optionIconSpacing)"
+          : "margin-right: var(--v3Select-optionIconSpacing)"};
+        color: var(--v3Select-optionIconColor);
         img,
         svg {
-          height: var(--select-optionIconSize);
-          width: var(--select-optionIconSize);
+          height: var(--v3Select-optionIconSize);
+          width: var(--v3Select-optionIconSize);
         }
       }
       mat-checkbox.cdk-focused {

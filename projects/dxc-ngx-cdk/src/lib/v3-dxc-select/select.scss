@@ -99,15 +99,15 @@ $mat-select-placeholder-arrow-space: 2 *
 
 .mat-select-panel {
   @include mat-menu-base();
-  background: var(--select-optionBackgroundColor);
+  background: var(--v3Select-optionBackgroundColor);
   padding-top: 0;
   padding-bottom: 0;
   max-height: $mat-select-panel-max-height;
   max-width: calc(100% - 32px);
   min-width: 100%; // prevents some animation twitching and test inconsistencies in IE11
-  border-color: var(--select-optionBorderColor);
-  border-style: var(--select-optionBorderStyle);
-  border-width: var(--select-optionBorderThickness);
+  border-color: var(--v3Select-optionBorderColor);
+  border-style: var(--v3Select-optionBorderStyle);
+  border-width: var(--v3Select-optionBorderThickness);
   outline: 0;
 
   &::-webkit-scrollbar {
@@ -116,11 +116,11 @@ $mat-select-placeholder-arrow-space: 2 *
   }
   &::-webkit-scrollbar-track {
     border-radius: 3px;
-    background-color: var(--select-scrollBarTrackColor);
+    background-color: var(--v3Select-scrollBarTrackColor);
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background-color: var(--select-scrollBarThumbColor);
+    background-color: var(--v3Select-scrollBarThumbColor);
   }
 }
 
@@ -129,7 +129,7 @@ $mat-select-placeholder-arrow-space: 2 *
   .mat-optgroup-label,
   .mat-option {
     font-size: inherit;
-    font-family: var(--select-fontFamily);
+    font-family: var(--v3Select-fontFamily);
   }
 }
 

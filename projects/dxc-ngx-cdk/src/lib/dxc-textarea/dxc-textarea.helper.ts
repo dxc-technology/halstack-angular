@@ -34,21 +34,21 @@ export class DxcTextareaHelper {
     return css`
       .textareaLabel,
       .textareaOptionalLabel {
-        color: var(--newTextarea-disabledLabelFontColor);
+        color: var(--textarea-disabledLabelFontColor);
       }
       .helperText {
-        color: var(--newTextarea-disabledHelperTextFontColor);
+        color: var(--textarea-disabledHelperTextFontColor);
       }
       .textarea,
       .textarea:hover {
-        color: var(--newTextarea-disabledValueFontColor);
-        border: 1px solid var(--newTextarea-disabledBorderColor);
+        color: var(--textarea-disabledValueFontColor);
+        border: 1px solid var(--textarea-disabledBorderColor);
         box-shadow: none;
         cursor: not-allowed;
-        background-color: var(--newTextarea-disabledContainerFillColor);
+        background-color: var(--textarea-disabledContainerFillColor);
       }
       .textarea::placeholder {
-        color: var(--newTextarea-disabledPlaceholderFontColor);
+        color: var(--textarea-disabledPlaceholderFontColor);
       }
     `;
   }
@@ -57,21 +57,21 @@ export class DxcTextareaHelper {
     return css`
       .textareaLabel,
       .textareaOptionalLabel {
-        color: var(--newTextarea-disabledLabelFontColorOnDark);
+        color: var(--textarea-disabledLabelFontColorOnDark);
       }
       .helperText {
-        color: var(--newTextarea-disabledHelperTextFontColorOnDark);
+        color: var(--textarea-disabledHelperTextFontColorOnDark);
       }
       .textarea,
       .textarea:hover {
-        color: var(--newTextarea-disabledValueFontColorOnDark);
-        border: 1px solid var(--newTextarea-disabledBorderColorOnDark);
+        color: var(--textarea-disabledValueFontColorOnDark);
+        border: 1px solid var(--textarea-disabledBorderColorOnDark);
         box-shadow: none;
         cursor: not-allowed;
-        background-color: var(--newTextarea-disabledContainerFillColorOnDark);
+        background-color: var(--textarea-disabledContainerFillColorOnDark);
       }
       .textarea::placeholder {
-        color: var(--newTextarea-disabledPlaceholderFontColorOnDark);
+        color: var(--textarea-disabledPlaceholderFontColorOnDark);
       }
     `;
   }
@@ -86,11 +86,11 @@ export class DxcTextareaHelper {
 
       &.hasError {
         .textareaContainer {
-          border: 1px solid var(--newTextarea-errorBorderColor);
-          box-shadow: inset 0 0 0 1px var(--newTextarea-errorBorderColor);
+          border: 1px solid var(--textarea-errorBorderColor);
+          box-shadow: inset 0 0 0 1px var(--textarea-errorBorderColor);
           &:hover {
-            border-color: var(--newTextarea-hoverErrorBorderColor);
-            box-shadow: inset 0 0 0 1px var(--newTextarea-hoverErrorBorderColor);
+            border-color: var(--textarea-hoverErrorBorderColor);
+            box-shadow: inset 0 0 0 1px var(--textarea-hoverErrorBorderColor);
           }
         }
       }
@@ -106,25 +106,25 @@ export class DxcTextareaHelper {
         z-index
       }
       .textareaLabel, .textareaOptionalLabel {
-        color: var(--newTextarea-labelFontColor);
-        font-family: var(--newTextarea-fontFamily);
-        font-size: var(--newTextarea-labelFontSize);
-        font-style: var(--newTextarea-labelFontStyle);
-        font-weight: var(--newTextarea-labelFontWeight);
-        line-height: var(--newTextarea-labelLineHeight);
+        color: var(--textarea-labelFontColor);
+        font-family: var(--textarea-fontFamily);
+        font-size: var(--textarea-labelFontSize);
+        font-style: var(--textarea-labelFontStyle);
+        font-weight: var(--textarea-labelFontWeight);
+        line-height: var(--textarea-labelLineHeight);
         min-height: 24px;
       }
       .textareaOptionalLabel {
-        font-weight: var(--newTextarea-optionalLabelFontWeight);
+        font-weight: var(--textarea-optionalLabelFontWeight);
       }
 
       .helperText {
-        color: var(--newTextarea-helperTextFontColor);
-        font-family: var(--newTextarea-fontFamily);
-        font-size: var(--newTextarea-helperTextFontSize);
-        font-style: var(--newTextarea-helperTextFontStyle);
-        font-weight: var(--newTextarea-helperTextFontWeight);
-        line-height: var(--newTextarea-helperTextLineHeight);
+        color: var(--textarea-helperTextFontColor);
+        font-family: var(--textarea-fontFamily);
+        font-size: var(--textarea-helperTextFontSize);
+        font-style: var(--textarea-helperTextFontStyle);
+        font-weight: var(--textarea-helperTextFontWeight);
+        line-height: var(--textarea-helperTextLineHeight);
         min-height: 18px;
       }
 
@@ -145,45 +145,45 @@ export class DxcTextareaHelper {
         background: none;
         outline: none;
         underline: none;
-        color: var(--newTextarea-valueFontColor);
-        font-family: var(--newTextarea-fontFamily);
-        font-size: var(--newTextarea-valueFontSize);
-        font-style: var(--newTextarea-valueFontStyle);
-        font-weight: var(--newTextarea-valueFontWeight);
-        caret-color: var(--newTextarea-valueFontColor);
+        color: var(--textarea-valueFontColor);
+        font-family: var(--textarea-fontFamily);
+        font-size: var(--textarea-valueFontSize);
+        font-style: var(--textarea-valueFontStyle);
+        font-weight: var(--textarea-valueFontWeight);
+        caret-color: var(--textarea-valueFontColor);
         border: ${
           inputs.error
-            ? `1px solid var(--newTextarea-errorBorderColor)`
-            : "1px solid var(--newTextarea-enabledBorderColor)"
+            ? `1px solid var(--textarea-errorBorderColor)`
+            : "1px solid var(--textarea-enabledBorderColor)"
         };
         ${
           inputs.error && !inputs.disabled
-            ? `border-color: transparent; box-shadow: 0 0 0 2px var(--newTextarea-errorBorderColor);`
+            ? `border-color: transparent; box-shadow: 0 0 0 2px var(--textarea-errorBorderColor);`
             : ""
         };
         &::placeholder {
-          color: var(--newTextarea-placeholderFontColor);
+          color: var(--textarea-placeholderFontColor);
         }
         &:hover {
             ${
               inputs.error
                 ? `border-color: transparent;
-                   box-shadow: 0 0 0 2px var(--newTextarea-hoverErrorBorderColor);`
-                : `border-color: var(--newTextarea-hoverBorderColor);`
+                   box-shadow: 0 0 0 2px var(--textarea-hoverErrorBorderColor);`
+                : `border-color: var(--textarea-hoverBorderColor);`
             };
         }
         &:focus-within {
             border: 1px solid transparent;
-            box-shadow: 0 0 0 2px var(--newTextarea-focusBorderColor);
+            box-shadow: 0 0 0 2px var(--textarea-focusBorderColor);
             outline: none;
         }
       }
       .textareaErrorMessage {
-        font-family: var(--newTextarea-fontFamily);
-        color: var(--newTextarea-errorMessageColor);
-        font-size: var(--newTextarea-errorFontSize);
-        font-style: var(--newTextarea-errorFontStyle);
-        font-weight: var(--newTextarea-errorFontWeight);
+        font-family: var(--textarea-fontFamily);
+        color: var(--textarea-errorMessageColor);
+        font-size: var(--textarea-errorFontSize);
+        font-style: var(--textarea-errorFontStyle);
+        font-weight: var(--textarea-errorFontWeight);
         line-height: 1.5em;
         min-height: 18px;
       }
@@ -203,37 +203,37 @@ export class DxcTextareaHelper {
     return css`
       .textareaLabel,
       .textareaOptionalLabel {
-        color: var(--newTextarea-labelFontColorOnDark);
+        color: var(--textarea-labelFontColorOnDark);
       }
       .helperText {
-        color: var(--newTextarea-helperTextFontColorOnDark);
+        color: var(--textarea-helperTextFontColorOnDark);
       }
       .textarea {
-        color: var(--newTextarea-valueFontColorOnDark);
-        caret-color: var(--newTextarea-valueFontColorOnDark);
+        color: var(--textarea-valueFontColorOnDark);
+        caret-color: var(--textarea-valueFontColorOnDark);
         &::placeholder {
-          color: var(--newTextarea-placeholderFontColorOnDark);
+          color: var(--textarea-placeholderFontColorOnDark);
         }
         border: ${inputs.error
-          ? `1px solid var(--newTextarea-errorBorderColorOnDark)`
-          : "1px solid var(--newTextarea-enabledBorderColorOnDark)"};
+          ? `1px solid var(--textarea-errorBorderColorOnDark)`
+          : "1px solid var(--textarea-enabledBorderColorOnDark)"};
         ${inputs.error
-          ? `box-shadow: 0 0 0 2px var(--newTextarea-errorBorderColorOnDark);`
+          ? `box-shadow: 0 0 0 2px var(--textarea-errorBorderColorOnDark);`
           : ""};
         &:hover {
           ${inputs.error
             ? `border-color: transparent;
-                box-shadow: 0 0 0 2px var(--newTextarea-hoverErrorBorderColorOnDark);`
-            : `border-color: var(--newTextarea-hoverBorderColorOnDark);`};
+                box-shadow: 0 0 0 2px var(--textarea-hoverErrorBorderColorOnDark);`
+            : `border-color: var(--textarea-hoverBorderColorOnDark);`};
         }
         &:focus-within {
           border: 1px solid transparent;
-          box-shadow: 0 0 0 2px var(--newTextarea-focusBorderColorOnDark);
+          box-shadow: 0 0 0 2px var(--textarea-focusBorderColorOnDark);
           outline: none;
         }
       }
       .textareaErrorMessage {
-        color: var(--newTextarea-errorMessageColorOnDark);
+        color: var(--textarea-errorMessageColorOnDark);
       }
     `;
   }

@@ -108,6 +108,7 @@ export class DxcSelectOptionComponent implements OnInit {
       height: 32px;
       :hover {
         cursor: pointer;
+        background-color: var(--newSelect-unselectedHoverListItemBackgroundColor);
       }
       :active {
         background-color: var(--select-unselectedActiveListItemBackgroundColor);
@@ -120,7 +121,10 @@ export class DxcSelectOptionComponent implements OnInit {
         }
       }
       &.focused {
-        background-color: var(--select-unselectedHoverListItemBackgroundColor);
+        box-shadow: inset 0 0 0 2px #0095ff;
+        .optionLabel {
+          border-bottom: 1px solid transparent;
+        }
       }
       .optionLabel {
         display: flex;
@@ -154,6 +158,9 @@ export class DxcSelectOptionComponent implements OnInit {
           display: flex;
           margin-right: 8px;
           align-items: center;
+          svg{
+            fill: var(--newSelect-selectedListItemIconColor);
+          }
         }
       }
       .checkboxContainer {

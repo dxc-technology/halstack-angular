@@ -17,10 +17,10 @@ import { CodesandboxViewerModule } from "src/app/components/codesandbox-viewer/c
 import { CodePlaygroundModule } from "src/app/components/code-playground/code-playground.module";
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 import { ColorPreviewModule } from "src/app/components/color-preview/color-preview.module";
-import { NumberApiComponent } from "src/app/components/examples/number/number-api/number-api.component";
-import { NumberExampleComponent } from "src/app/components/examples/number/number-example/number-example.component";
-import { NumberImportComponent } from "src/app/components/examples/number/number-import/number-import.component";
-import { NumberPropertiesComponent } from "src/app/components/examples/number/number-properties/number-properties.component";
+import { NumberApiComponent } from "src/app/components/examples/number-input/number-api/number-api.component";
+import { NumberExampleComponent } from "src/app/components/examples/number-input/number-example/number-example.component";
+import { NumberImportComponent } from "src/app/components/examples/number-input/number-import/number-import.component";
+import { NumberPropertiesComponent } from "src/app/components/examples/number-input/number-properties/number-properties.component";
 import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({

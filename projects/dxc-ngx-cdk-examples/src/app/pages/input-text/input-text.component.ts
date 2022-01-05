@@ -4,11 +4,11 @@ import { delay } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
 
 @Component({
-  selector: "text-info",
-  templateUrl: "./text-input-info.component.html",
-  styleUrls: ["./text-input-info.component.scss"]
+  selector: "input-text",
+  templateUrl: "./input-text.component.html",
+  styleUrls: ["./input-text.component.scss"]
 })
-export class TextInputInfoComponent {
+export class InputTextComponent {
   inputValue = "Testing";
 
   options = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"];

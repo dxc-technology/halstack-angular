@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
   selector: 'input-text-properties',
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputTextPropertiesComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  tablePropertiesExample: Array<DataPropertiesTable>;
 
-  ngOnInit(): void {
+  constructor() { 
+    this.tablePropertiesExample = new Array<DataPropertiesTable>();
+  }
+
+  ngOnInit() {
   }
 
 }

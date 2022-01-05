@@ -32,12 +32,12 @@ import { V3TextareaPreviewComponent } from '../../../pages/theme-builder/preview
 import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
-import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previews/new-input-text-preview/new-input-text-preview.component';
 import { DateInputPreviewComponent } from "src/app/pages/theme-builder/previews/date-input-preview/date-input-preview.component";
 import { TextareaPreviewComponent } from "src/app/pages/theme-builder/previews/textarea-preview/textarea-preview.component";
 import { FileInputPreviewComponent } from "src/app/pages/theme-builder/previews/file-input-preview/file-input-preview.component";
 import { SelectPreviewComponent } from "src/app/pages/theme-builder/previews/select-preview/select-preview.component";
 import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v3-select-preview/v3-select-preview.component";
+import { TextInputPreviewComponent } from "src/app/pages/theme-builder/previews/text-input-preview/text-input-preview.component";
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -59,7 +59,7 @@ import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v
     HeaderPreviewComponent,
     HeadingPreviewComponent,
     InputTextPreviewComponent,
-    NewInputTextPreviewComponent,
+    TextInputPreviewComponent,
     LinkPreviewComponent,
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,

@@ -84,33 +84,17 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/input'
+                active: 'components/inputText'
                   ? router.isActive(
-                      router.createUrlTree(['components/input']).toString(),
+                      router.createUrlTree(['components/inputText']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/input')"
+              (click)="navigateTo('components/inputText')"
               >Input Text</a
             >
             <status-tag status="Deprecated"></status-tag>
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/newInputText'
-                  ? router.isActive(
-                      router
-                        .createUrlTree(['components/newInputText'])
-                        .toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/newInputText')"
-              >New Input Text</a
-            >
           </div>
           <div class="menu-item">
             <a
@@ -129,15 +113,15 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/password'
+                active: 'components/passwordInput'
                   ? router.isActive(
-                      router.createUrlTree(['components/password']).toString(),
+                      router.createUrlTree(['components/passwordInput']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/password')"
-              >Password</a
+              (click)="navigateTo('components/passwordInput')"
+              >Password Input</a
             >
           </div>
           <div class="menu-item">
@@ -209,6 +193,22 @@
               }"
               (click)="navigateTo('components/switch')"
               >Switch</a
+            >
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
+                active: 'components/textInput'
+                  ? router.isActive(
+                      router
+                        .createUrlTree(['components/textInput'])
+                        .toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/textInput')"
+              >Text Input</a
             >
           </div>
           <div class="menu-item">

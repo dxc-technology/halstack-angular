@@ -4,10 +4,10 @@ import { of, throwError } from "rxjs";
 import { switchMap, delay } from "rxjs/operators";
 
 @Component({
-  selector: "new-input-text",
-  templateUrl: "./new-input-text.component.html",
+  selector: "text-input",
+  templateUrl: "./text-input.component.html",
 })
-export class NewInpuTextComponent implements OnInit {
+export class TextInputComponent implements OnInit {
   @ViewChild("dxcInputRef", { static: false })
   dxcInputRef: DxcTextInputComponent;
 

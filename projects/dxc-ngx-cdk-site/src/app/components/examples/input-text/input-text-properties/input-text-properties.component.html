@@ -13,17 +13,46 @@
   <tr>
     <td>value: string</td>
     <td></td>
-    <td>
-      Value of the input. If undefined, the component will be uncontrolled and
-      the value will be managed internally by the component.
-    </td>
+    <td>Value of the input element.</td>
   </tr>
   <tr>
     <td>label: string</td>
     <td></td>
+    <td>Text to be placed next to the input.</td>
+  </tr>
+  <tr>
+    <td>assistiveText: string</td>
+    <td></td>
+    <td>Assistive text to be placed bellow the input.</td>
+  </tr>
+  <tr>
+    <td>prefix: string</td>
+    <td></td>
     <td>
-      Text to be placed above the input. Note that this prop will be reused for
-      the attribute <code>aria-label</code> of the suggestions list.
+      Prefix to be placed before the input value. Use prefixIconSrc in case the
+      prefix is an icon.
+    </td>
+  </tr>
+  <tr>
+    <td>suffix: string</td>
+    <td></td>
+    <td>
+      Suffix to be placed after the input value. Use suffixIconSrc in case the
+      suffix is an icon.
+    </td>
+  </tr>
+  <tr>
+    <td>prefixIconSrc: string</td>
+    <td></td>
+    <td>
+      <b>Deprecated.</b> Path of the icon to be placed before the input value.
+    </td>
+  </tr>
+  <tr>
+    <td>suffixIconSrc: string</td>
+    <td></td>
+    <td>
+      <b>Deprecated.</b> Path of the icon to be placed after the input value.
     </td>
   </tr>
   <tr>
@@ -32,14 +61,9 @@
     <td>Name attribute of the input element.</td>
   </tr>
   <tr>
-    <td>helperText: string</td>
-    <td></td>
-    <td>Helper text to be placed above the input.</td>
-  </tr>
-  <tr>
     <td>placeholder: string</td>
     <td></td>
-    <td>Text to be put as placeholder of the input.</td>
+    <td>Text to be put as placeholder in the input.</td>
   </tr>
   <tr>
     <td>disabled: boolean</td>
@@ -47,126 +71,97 @@
     <td>If true, the component will be disabled.</td>
   </tr>
   <tr>
-    <td>error: string</td>
-    <td></td>
+    <td>required: boolean</td>
+    <td><code>false</code></td>
     <td>
-      If it is defined, the component will change its appearance, showing the
-      error below the input component. If it is not defined, the error messages will be created and managed internally.
+      If true, the input will change its appearence showing that the value is
+      required.
     </td>
   </tr>
   <tr>
-    <td>clearable: boolean</td>
+    <td>isMasked: boolean</td>
+    <td><code>false</code></td>
+    <td>If true, a mask will be displayed.</td>
+  </tr>
+  <tr>
+    <td>invalid: boolean</td>
+    <td><code>false</code></td>
     <td>
-      <code>false</code>
-    </td>
-    <td>
-      If true, the input will have an action to clear the entered value.
+      If true, the input will change its appearence showing that the value is
+      invalid.
     </td>
   </tr>
   <tr>
-    <td>optional: boolean</td>
-    <td>
-      <code>false</code>
-    </td>
-    <td>
-      If true, the input will be optional, showing <code>(Optional)</code>
-      next to the label.
-    </td>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex, it also applies to prefix and suffix when a function is given.</td>
   </tr>
   <tr>
     <td>onChange: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user types within the input. The new
-      value will be passed as a parameter.
+      This function will be called when the user changes the value of the input.
+      The new value will be passed as a parameter.
     </td>
   </tr>
   <tr>
     <td>onBlur: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the input loses the focus. An object
-      including the input value and the error (if the value entered is not
-      valid) will be passed to this function. An example of this object is:
-      {{ "{" }}
-      <code>value: value, error: error</code>
-      {{ "}" }}. If there is no error, error will be null.
+      This function will be called when the the input loses the focus. The input
+      value will be passed as a parameter.
     </td>
   </tr>
   <tr>
-    <td>onActionClick: EventEmitter</td>
+    <td>onClickPrefix: EventEmitter</td>
     <td></td>
-    <td>This function will be called when click in an action button.</td>
+    <td>
+      This function will be called when the prefix (text or icon) is clicked.
+    </td>
   </tr>
   <tr>
-    <td>margin: string | object</td>
+    <td>onClickSuffix: EventEmitter</td>
+    <td></td>
+    <td>
+      This function will be called when the suffix (text or icon) is clicked.
+    </td>
+  </tr>
+  <tr>
+    <td>margin: any (string | object)</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
       'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
       object with 'top', 'bottom', 'left' and 'right' properties in order to
-      specify different margin sizes.
+      specify different padding sizes.
     </td>
   </tr>
   <tr>
-    <td>pattern: string</td>
-    <td></td>
-    <td>
-      Regular expression that defines the valid format allowed by the input.
-      This will be checked when the input loses the focus. If the value entered
-      does not match the pattern, the onBlur function will be called with the
-      value entered and the error informing that the value does not match the
-      pattern as parameters. If the pattern is accomplished, the error parameter
-      will be null.
-    </td>
-  </tr>
-  <tr>
-    <td>length: object</td>
-    <td></td>
-    <td>
-      Specifies the minimun and maximum length allowed by the input. It follows
-      this structure: {{ "{" }}
-      <code>min: minLength, max: maxLength</code>
-      {{ "}" }}. This will be checked when the user types within the input. If
-      the value entered does not comply the length, the onChange function will
-      be called with the value entered and the error informing that the value
-      does not comply the length as parameters. If the length is accomplished,
-      the error parameter will be null.
-    </td>
-  </tr>
-  <tr>
-    <td>size: string | object</td>
-    <td>
-      <code>'medium'</code>
-    </td>
+    <td>size: any (string | object)</td>
+    <td><code>'medium'</code></td>
     <td>
       Size of the component ('small' | 'medium' | 'large' | 'fillParent').
     </td>
   </tr>
   <tr>
-    <td>suggestions: Array | function</td>
-    <td></td>
     <td>
-      These are the options to be displayed as suggestions. It can be either an
-      array or a function:
+      autocompleteOptions: any ([string] | function: Observable &lt;Array&gt;)
+    </td>
+    <td><code></code></td>
+    <td>
+      These are the options to be displayed as
+      suggestions. It can be either an array or a function:
       <ul>
         <li>
           <b>Array</b>: Array of options that will be filtered by the component.
         </li>
         <li>
           <b>Function</b>: This function will be called when the user changes
-          the value, we will send as a parameter the new value; apart from that
-          this function should return one promise on which we should make 'then'
-          to get the suggestions filtered.
+          the value and when the component is initialized, this function will
+          receive the new value as parameter and should return one Observable on
+          which we subscribe to get the suggestions array.
         </li>
       </ul>
     </td>
-  </tr>
-  <tr>
-    <td>tabIndex: number</td>
-    <td>
-      <code>0</code>
-    </td>
-    <td>Value of the tabindex attribute.</td>
   </tr>
 </dxc-table>

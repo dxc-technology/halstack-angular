@@ -5,7 +5,7 @@
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
 
-<text-input-table-properties></text-input-table-properties>
+<text-input-properties></text-input-properties>
 
 <dxc-heading
   [level]="4"
@@ -17,10 +17,12 @@
 <dxc-heading
   [level]="5"
   weight="normal"
-  text="DxcInputPrefixIcon"
+  text="DxcInputTextPrefix"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
-<p>This component displays what is inside as the prefix icon.</p>
+<p>
+  Prefix to be placed before the input value.
+</p>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -28,24 +30,23 @@
     <th>Description</th>
   </tr>
   <tr>
-    <td>tabIndexValue: number</td>
-    <td><code>0</code></td>
-    <td>Tabindex value given to the preffix icon.</td>
-  </tr>
-  <tr>
-    <td>onClickPrefix: EventEmitter</td>
+    <td>value: string</td>
     <td></td>
-    <td>This function will be called when the prefix is clicked.</td>
+    <td>
+      Value of the prefix.
+    </td>
   </tr>
 </dxc-table>
 
 <dxc-heading
   [level]="5"
   weight="normal"
-  text="DxcInputSuffixIcon"
+  text="DxcInputTextSuffix"
   [margin]="{ bottom: 'small', top: 'small' }"
 ></dxc-heading>
-<p>This component displays what is inside as the suffix icon.</p>
+<p>
+  Suffix to be placed after the input value.
+</p>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -53,14 +54,11 @@
     <th>Description</th>
   </tr>
   <tr>
-    <td>tabIndexValue: number</td>
-    <td><code>0</code></td>
-    <td>Tabindex value given to the suffix icon.</td>
-  </tr>
-  <tr>
-    <td>onClickSuffix: EventEmitter</td>
+    <td>value: string</td>
     <td></td>
-    <td>This function will be called when the suffix is clicked.</td>
+    <td>
+      Value of the suffix.
+    </td>
   </tr>
 </dxc-table>
 

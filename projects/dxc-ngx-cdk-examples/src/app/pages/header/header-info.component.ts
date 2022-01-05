@@ -9,7 +9,7 @@ import { DateInfoComponent } from '../date/date-info.component';
 import { DialogInfoComponent } from '../dialog/dialog-info.component';
 import { DropdownInfoComponent } from '../dropdown/dropdown-info.component';
 import { FooterInfoComponent } from '../footer/footer-info.component';
-import { TextInputInfoComponent } from '../inputText/text-input-info.component';
+import { TextInputInfoComponent } from '../input-text/input-text.component';
 import { ProgressInfoComponent } from '../progressBar/progressBar-info.component';
 import { RadioInfoComponent } from '../radio/radio-info.component';
 import { SelectInfoComponent } from '../select/select-info.component';

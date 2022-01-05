@@ -75,12 +75,12 @@ import { V3TextareaPreviewComponent } from './previews/v3-textarea-preview/v3-te
 import { ToggleGroupPreviewComponent } from './previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from './previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from './previews/table-preview/table-preview.component';
-import { NewInputTextPreviewComponent } from './previews/new-input-text-preview/new-input-text-preview.component';
 import { DateInputPreviewComponent } from './previews/date-input-preview/date-input-preview.component';
 import { TextareaPreviewComponent } from './previews/textarea-preview/textarea-preview.component';
 import { FileInputPreviewComponent } from './previews/file-input-preview/file-input-preview.component';
 import { SelectPreviewComponent } from './previews/select-preview/select-preview.component';
 import { V3SelectPreviewComponent } from "./previews/v3-select-preview/v3-select-preview.component";
+import { TextInputPreviewComponent } from "./previews/text-input-preview/text-input-preview.component";
 
 @NgModule({
   declarations: [
@@ -115,7 +115,7 @@ import { V3SelectPreviewComponent } from "./previews/v3-select-preview/v3-select
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
     TablePreviewComponent,
-    NewInputTextPreviewComponent,
+    TextInputPreviewComponent,
     DateInputPreviewComponent,
     TextareaPreviewComponent,
     FileInputPreviewComponent,

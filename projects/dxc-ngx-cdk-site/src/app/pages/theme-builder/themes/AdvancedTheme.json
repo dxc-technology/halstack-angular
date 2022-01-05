@@ -539,7 +539,7 @@
     "underlineFocusColorOnDark": "#ffffff",
     "underlineThickness": "1px"
   },
-  "newInputText": {
+  "textInput": {
     "disabledBorderColor": "#808080",
     "disabledBorderColorOnDark": "#999999",
     "disabledContainerFillColor": "#f2f2f2",

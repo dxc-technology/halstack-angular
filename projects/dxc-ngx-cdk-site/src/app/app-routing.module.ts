@@ -17,7 +17,7 @@ import { V3SelectComponent } from './pages/v3-select/v3-select.component';
 import { SliderComponent } from './pages/slider/slider.component';
 import { SwitchComponent } from "./pages/switch/switch.component";
 import { SpinnerComponent } from './pages/spinner/spinner.component';
-import { TextInputComponent } from './pages/text-input/text-input.component';
+import { InputTextComponent } from './pages/input-text/input-text.component';
 import { DropdownComponent } from "./pages/dropdown/dropdown.component";
 import { DialogComponent } from "./pages/dialog/dialog.component";
 import { TableComponent } from './pages/table/table.component';
@@ -37,7 +37,7 @@ import { ChipComponent } from './pages/chip/chip.component';
 import { V3TextareaComponent } from "./pages/v3-textarea/v3-textarea.component";
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
-import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
+import { TextInputComponent } from "./pages/text-input/text-input.component";
 import { PasswordComponent } from "./pages/password/password.component";
 import { NumberComponent } from "./pages/number-input/number.component";
 import { DateInputComponent } from "./pages/date-input/date-input.component";
@@ -121,8 +121,8 @@ let routes: Routes = [];
     component: SwitchComponent
   },
   {
-    path: 'components/input',
-    component: TextInputComponent
+    path: 'components/inputText',
+    component: InputTextComponent
   },
   {
     path: 'components/v3Textarea',
@@ -193,11 +193,11 @@ let routes: Routes = [];
     component: HeadingComponent
   },
   {
-    path: 'components/newInputText',
-    component: NewInputTextComponent
+    path: 'components/textInput',
+    component: TextInputComponent
   },
   {
-    path: 'components/password',
+    path: 'components/passwordInput',
     component: PasswordComponent
   },
   {

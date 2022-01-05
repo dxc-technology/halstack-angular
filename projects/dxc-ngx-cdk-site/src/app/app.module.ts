@@ -54,7 +54,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
 import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
 import { PasswordModule } from './pages/password-input/password.module';
-import { NumberModule } from './pages/number/number.module';
+import { NumberModule } from './pages/number-input/number.module';
 import { DateInputModule } from './pages/date-input/date-input.module';
 import { TextareaModule } from './pages/textarea/textarea.module';
 import { FileInputModule } from './pages/file-input/file-input.module';

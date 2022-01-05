@@ -131,7 +131,6 @@
     [id]="autoSuggestId"
     role="listbox"
     class="options"
-    *ngIf="suggestions && autosuggestType"
   >
     <li
       *ngFor="
@@ -157,16 +156,6 @@
       (mouseenter)="handleOnHover(i)"
       (mouseleave)="handleOnLeave()"
     ></li>
-    <li
-      *ngIf="
-        ((autosuggestType === 'array' && filteredOptions.length === 0) ||
-          (autosuggestType === 'async' && options.length === 0)) &&
-        !loading.getValue()
-      "
-      class="systemMessage"
-    >
-      No results found
-    </li>
     <li *ngIf="fetchingError.getValue() && !loading.getValue()">
       <svg
         xmlns="http://www.w3.org/2000/svg"

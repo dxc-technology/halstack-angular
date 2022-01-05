@@ -53,7 +53,7 @@ import { AccordionGroupModule } from './pages/accordion-group/accordion-group.mo
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
 import { TextInputModule } from './pages/text-input/text-input.module';
-import { PasswordModule } from './pages/password/password.module';
+import { PasswordModule } from './pages/password-input/password.module';
 import { NumberModule } from './pages/number-input/number.module';
 import { DateInputModule } from './pages/date-input/date-input.module';
 import { TextareaModule } from './pages/textarea/textarea.module';

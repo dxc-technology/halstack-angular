@@ -46,7 +46,7 @@ export const customTheme = {
   inputText: {
     selectedBaseColor: "#D9D9D9",
   },
-  newInputText: {
+  textInput: {
     selectedBaseColor: "#D9D9D9",
   },
   paginator: {

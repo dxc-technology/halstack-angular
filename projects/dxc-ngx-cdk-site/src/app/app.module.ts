@@ -23,7 +23,7 @@ import { SwitchModule } from './pages/switch/switch.module';
 import { OverviewPageModule } from './pages/overview-page/overview-page.module';
 import { AccordionModule } from './pages/accordion/accordion.module';
 import { DateModule } from './pages/date/date.module';
-import { TextInputModule } from './pages/text-input/text-input.module';
+import { InputTextModule } from './pages/input-text/input-text.module';
 import { SliderModule } from './pages/slider/slider.module';
 import { FooterModule } from './pages/footer/footer.module';
 import { DropdownModule } from './pages/dropdown/dropdown.module';
@@ -52,7 +52,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { AccordionGroupModule } from './pages/accordion-group/accordion-group.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
-import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
+import { TextInputModule } from './pages/text-input/text-input.module';
 import { PasswordModule } from './pages/password-input/password.module';
 import { NumberModule } from './pages/number-input/number.module';
 import { DateInputModule } from './pages/date-input/date-input.module';
@@ -96,7 +96,7 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     V3SelectModule,
     SpinnerModule,
     SwitchModule,
-    TextInputModule,
+    InputTextModule,
     V3TextareaModule,
     DropdownModule,
     DialogModule,
@@ -122,7 +122,7 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     ScullyLibModule,
     AccordionGroupModule,
     ThemeBuilderSidenavModule,
-    NewInputTextModule,
+    TextInputModule,
     PasswordModule,
     NumberModule,
     DateInputModule,

@@ -3,9 +3,9 @@ import { DxcTextInputComponent } from "@dxc-technology/halstack-angular";
 
 @Component({
   selector: "app-new-input-text-preview",
-  templateUrl: "./new-input-text-preview.component.html",
+  templateUrl: "./text-input-preview.component.html",
 })
-export class NewInputTextPreviewComponent implements OnInit {
+export class TextInputPreviewComponent implements OnInit {
 
   @ViewChild("dxcInputRef", { static: false }) dxcInputRef: DxcTextInputComponent;
 

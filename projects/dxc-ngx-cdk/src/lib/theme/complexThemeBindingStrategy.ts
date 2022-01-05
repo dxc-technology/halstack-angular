@@ -211,12 +211,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.inputText?.selectedBaseColor, 0.34) ??
       tokens["--inputText-hoverOptionBackgroundColor"];
 
-    //NEW INPUT TEXT
+    //TEXT INPUT
     proccessedTokens["--textInput-hoverListOptionBackgroundColor"] =
-      theme?.newInputText?.selectedBaseColor ??
+      theme?.textInput?.selectedBaseColor ??
       tokens["--textInput-hoverListOptionBackgroundColor"];
     proccessedTokens["--textInput-activeListOptionBackgroundColor"] =
-      this.subLightness(theme?.newInputText?.selectedBaseColor, 15) ??
+      this.subLightness(theme?.textInput?.selectedBaseColor, 15) ??
       tokens["--textInput-activeListOptionBackgroundColor"];
 
     //PAGINATOR

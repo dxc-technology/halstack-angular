@@ -35,8 +35,8 @@ import { SpinnerExampleComponent } from "../examples/spinner/spinner-example/spi
 import { SpinnerTablePropertiesComponent } from "../examples/spinner/properties/spinner-table-properties/spinner-table-properties.component";
 import { SwitchExampleComponent } from "../examples/switch/switch-example/switch-example.component";
 import { SwitchTablePropertiesComponent } from "../examples/switch/properties/switch-table-properties/switch-table-properties.component";
-import { TextInputTablePropertiesComponent } from "../examples/text-input/properties/text-input-table-properties/text-input-table-properties.component";
-import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
+import { InputTextPropertiesComponent } from "../examples/input-text/input-text-properties/input-text-properties.component";
+import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
 import { FooterExampleComponent } from "../examples/footer/footer-example/footer-example.component";
 import { FooterTablePropertiesComponent } from "../examples/footer/properties/footer-table-properties/footer-table-properties.component";
 import { DropdownTablePropertiesComponent } from "../examples/dropdown/properties/dropdown-table-properties.component";
@@ -103,7 +103,7 @@ import { TabbedSectionImportComponent } from "../examples/tabbed-section/tabbed-
 import { TableImportComponent } from "../examples/table/table-import/table-import.component";
 import { TabsImportComponent } from "../examples/tabs/tabs-import/tabs-import.component";
 import { TagImportComponent } from "../examples/tag/tag-import/tag-import.component";
-import { TextInputImportComponent } from "../examples/text-input/text-input-import/text-input-import.component";
+import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
 import { UploadImportComponent } from "../examples/upload/upload-import/upload-import.component";
 import { WizardImportComponent } from "../examples/wizard/wizard-import/wizard-import.component";
 import { ButtonApiComponent } from "../examples/button/button-api/button-api.component";
@@ -116,7 +116,7 @@ import { TagApiComponent } from "../examples/tag/tag-api/tag-api.component";
 import { CardApiComponent } from "../examples/card/card-api/card-api.component";
 import { ChipApiComponent } from "../examples/chip/chip-api/chip-api.component";
 import { SwitchApiComponent } from "../examples/switch/switch-api/switch-api.component";
-import { TextInputApiComponent } from "../examples/text-input/text-input-api/text-input-api.component";
+import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
 import { ColorPreviewComponent } from "../color-preview/color-preview.component";
 import { DateApiComponent } from "../examples/date/date-api/date-api.component";
 import { SidenavApiComponent } from "../examples/sidenav/sidenav-api/sidenav-api.component";
@@ -142,10 +142,10 @@ import { HeadingApiComponent } from "../examples/heading/heading-api/heading-api
 import { UploadApiComponent } from "../examples/upload/upload-api/upload-api.component";
 import { ResultsetTableApiComponent } from "../examples/resultset-table/resultset-table-api/resultset-table-api.component";
 import { ButtonExampleComponent } from "../examples/button/button-example/button-example.component";
-import { InputTextPropertiesComponent } from "../examples/input-text/input-text-properties/input-text-properties.component";
-import { InputTextApiComponent } from "../examples/input-text/input-text-api/input-text-api.component";
-import { InputTextExampleComponent } from "../examples/input-text/input-text-example/input-text-example.component";
-import { InputTextImportComponent } from "../examples/input-text/input-text-import/input-text-import.component";
+import { TextInputPropertiesComponent } from "../examples/text-input/text-input-properties/text-input-properties.component";
+import { TextInputApiComponent } from "../examples/text-input/text-input-api/text-input-api.component";
+import { TextInputExampleComponent } from "../examples/text-input/text-input-example/text-input-example.component";
+import { TextInputImportComponent } from "../examples/text-input/text-input-import/text-input-import.component";
 import { PasswordPropertiesComponent } from "../examples/password-input/password-properties/password-properties.component";
 import { PasswordImportComponent } from "../examples/password-input/password-import/password-import.component";
 import { PasswordExampleComponent } from "../examples/password-input/password-example/password-example.component";
@@ -220,8 +220,10 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     SpinnerApiComponent,
     SwitchExampleComponent,
     SwitchTablePropertiesComponent,
-    TextInputExampleComponent,
-    TextInputTablePropertiesComponent,
+    InputTextPropertiesComponent,
+    InputTextImportComponent,
+    InputTextApiComponent,
+    InputTextExampleComponent,
     DropdownTablePropertiesComponent,
     DropdownExampleComponent,
     DialogTablePropertiesComponent,
@@ -285,7 +287,6 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     TableImportComponent,
     TabsImportComponent,
     TagImportComponent,
-    TextInputImportComponent,
     UploadImportComponent,
     WizardImportComponent,
     ButtonApiComponent,
@@ -298,7 +299,6 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     ChipApiComponent,
     ColorPreviewComponent,
     SwitchApiComponent,
-    TextInputApiComponent,
     V3TextareaApiComponent,
     V3TextareaPropertiesComponent,
     V3TextareaExampleComponent,
@@ -324,10 +324,10 @@ import { V3SelectPropertiesComponent } from "../examples/v3-select/v3-select-pro
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupApiComponent,
-    InputTextPropertiesComponent,
-    InputTextApiComponent,
-    InputTextExampleComponent,
-    InputTextImportComponent,
+    TextInputPropertiesComponent,
+    TextInputApiComponent,
+    TextInputExampleComponent,
+    TextInputImportComponent,
     PasswordApiComponent,
     PasswordExampleComponent,
     PasswordImportComponent,

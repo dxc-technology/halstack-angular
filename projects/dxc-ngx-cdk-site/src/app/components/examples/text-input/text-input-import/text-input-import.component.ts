@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'text-input-import',
-  templateUrl: './text-input-import.component.html',
-  styleUrls: ['./text-input-import.component.scss']
+  templateUrl: './text-input-import.component.html'
 })
 export class TextInputImportComponent implements OnInit {
 
   bindCode = `
-  import { DxcInputTextModule } from '@dxc-technology/halstack-angular';
+  import { DxcTextInputModule } from '@dxc-technology/halstack-angular';
 
   @NgModule({
     imports: [
-      DxcInputTextModule,
+      DxcTextInputModule,
     ]
   })
   export class AppComponent { }
@@ -20,7 +19,7 @@ export class TextInputImportComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

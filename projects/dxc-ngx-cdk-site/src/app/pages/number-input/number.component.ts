@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/model/sections';
-import { NumberApiComponent } from 'src/app/components/examples/number/number-api/number-api.component';
-import { NumberExampleComponent } from 'src/app/components/examples/number/number-example/number-example.component';
+import { NumberApiComponent } from 'src/app/components/examples/number-input/number-api/number-api.component';
+import { NumberExampleComponent } from 'src/app/components/examples/number-input/number-example/number-example.component';
 
 @Component({
   selector: 'app-number',

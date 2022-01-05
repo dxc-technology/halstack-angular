@@ -201,7 +201,7 @@ let routes: Routes = [];
     component: PasswordComponent
   },
   {
-    path: 'components/number',
+    path: 'components/numberInput',
     component: NumberComponent
   },
   {

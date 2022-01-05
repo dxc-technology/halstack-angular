@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PasswordApiComponent } from 'src/app/components/examples/password/password-api/password-api.component';
-import { PasswordExampleComponent } from 'src/app/components/examples/password/password-example/password-example.component';
+import { PasswordApiComponent } from 'src/app/components/examples/password-input/password-api/password-api.component';
+import { PasswordExampleComponent } from 'src/app/components/examples/password-input/password-example/password-example.component';
 import { Section } from 'src/app/model/sections';
 
 @Component({

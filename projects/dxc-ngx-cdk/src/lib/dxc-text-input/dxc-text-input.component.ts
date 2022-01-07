@@ -202,6 +202,16 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
     });
     this.service.filteredOptions.subscribe((filteredArray) => {
       this.filteredOptions = filteredArray;
+      if (
+        this.suggestions &&
+        (this.suggestions.length || this.autosuggestType === "async") &&
+        this.filteredOptions?.length > 0 && this.isDirty
+      ) {
+        this.autosuggestVisible = true;
+      } else {
+        this.autosuggestVisible = false;
+      }
+      this.cdRef.detectChanges();
     });
     if (this.suggestions && typeof this.suggestions === "function") {
       this.getAsyncSuggestions();
@@ -286,23 +296,31 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
     }
     if (
       this.suggestions &&
-      (this.suggestions.length || this.autosuggestType === "async")
+      (this.suggestions.length || this.autosuggestType === "async") &&
+      this.filteredOptions?.length > 0
     ) {
       this.autosuggestVisible = true;
+      this.cdRef.detectChanges();
+    } else {
+      this.autosuggestVisible = false;
       this.cdRef.detectChanges();
     }
   }
 
-  focusInput(){
+  focusInput() {
     this.inputRef.nativeElement.focus();
   }
 
   handleOnClick() {
     if (
       this.suggestions &&
-      (this.suggestions.length || this.autosuggestType === "async")
+      (this.suggestions.length || this.autosuggestType === "async") &&
+      this.filteredOptions?.length > 0
     ) {
       this.autosuggestVisible = true;
+      this.cdRef.detectChanges();
+    } else {
+      this.autosuggestVisible = false;
       this.cdRef.detectChanges();
     }
   }

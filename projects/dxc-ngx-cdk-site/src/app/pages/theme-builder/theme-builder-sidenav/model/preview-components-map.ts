@@ -23,16 +23,16 @@ import { SpinnerPreviewComponent } from '../../previews/spinner-preview/spinner-
 import { SwitchPreviewComponent } from '../../previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../previews/tabs-preview/tabs-preview.component';
-import { TextareaPreviewComponent } from '../../previews/textarea-preview/textarea-preview.component';
+import { V3TextareaPreviewComponent } from '../../previews/v3-textarea-preview/v3-textarea-preview.component';
 import { ToggleGroupPreviewComponent } from '../../previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../previews/table-preview/table-preview.component';
-import { NewInputTextPreviewComponent } from '../../previews/new-input-text-preview/new-input-text-preview.component';
-import { NewDatePreviewComponent } from '../../previews/new-date-preview/new-date-preview.component';
-import { NewTextareaPreviewComponent } from '../../previews/new-textarea-preview/new-textarea-preview.component';
+import { DateInputPreviewComponent } from '../../previews/date-input-preview/date-input-preview.component';
+import { TextareaPreviewComponent } from '../../previews/textarea-preview/textarea-preview.component';
 import { FileInputPreviewComponent } from '../../previews/file-input-preview/file-input-preview.component';
 import { SelectPreviewComponent } from '../../previews/select-preview/select-preview.component';
 import { V3SelectPreviewComponent } from '../../previews/v3-select-preview/v3-select-preview.component';
+import { TextInputPreviewComponent } from '../../previews/text-input-preview/text-input-preview.component';
 export interface PreviewThemeBuilderComponent{
   name: string;
   component: any;
@@ -47,7 +47,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'checkbox', component: CheckboxPreviewComponent},
   {name: 'chip', component: ChipPreviewComponent},
   {name: 'date', component: DatePreviewComponent},
-  {name: 'newDate', component: NewDatePreviewComponent},
+  {name: 'dateInput', component: DateInputPreviewComponent},
   {name: 'dialog', component: DialogPreviewComponent},
   {name: 'dropdown', component: DropdownPreviewComponent},
   {name: 'fileInput', component: FileInputPreviewComponent},
@@ -55,9 +55,9 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'header', component: HeaderPreviewComponent},
   {name: 'heading', component: HeadingPreviewComponent},
   {name: 'inputText', component: InputTextPreviewComponent},
-  {name: 'newInputText', component: NewInputTextPreviewComponent},
+  {name: 'textInput', component: TextInputPreviewComponent},
   {name: 'link', component: LinkPreviewComponent},
-  {name: 'newTextarea', component: NewTextareaPreviewComponent},
+  {name: 'textarea', component: TextareaPreviewComponent},
   {name: 'paginator', component: PaginatorPreviewComponent},
   {name: 'progressBar', component: ProgressBarPreviewComponent},
   {name: 'radio', component: RadioPreviewComponent},
@@ -70,7 +70,7 @@ const tBuilderComponentsPreviewList:Array<PreviewThemeBuilderComponent> = [
   {name: 'tag', component: TagPreviewComponent},
   {name: 'table', component: TablePreviewComponent},
   {name: 'tabs', component: TabsPreviewComponent},
-  {name: 'textarea', component: TextareaPreviewComponent},
+  {name: 'v3Textarea', component: V3TextareaPreviewComponent},
   {name: 'toggleGroup', component: ToggleGroupPreviewComponent},
   {name: 'upload', component: UploadPreviewComponent},
   {name: 'wizard', component: WizardPreviewComponent}

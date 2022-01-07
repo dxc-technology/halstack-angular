@@ -23,7 +23,7 @@ import { SwitchModule } from './pages/switch/switch.module';
 import { OverviewPageModule } from './pages/overview-page/overview-page.module';
 import { AccordionModule } from './pages/accordion/accordion.module';
 import { DateModule } from './pages/date/date.module';
-import { TextInputModule } from './pages/text-input/text-input.module';
+import { InputTextModule } from './pages/input-text/input-text.module';
 import { SliderModule } from './pages/slider/slider.module';
 import { FooterModule } from './pages/footer/footer.module';
 import { DropdownModule } from './pages/dropdown/dropdown.module';
@@ -43,7 +43,7 @@ import { SidenavModule } from './pages/sidenav/sidenav.module';
 import { LinkModule } from './pages/link/link.module';
 import { HeadingModule } from './pages/heading/heading.module';
 import { ComponentsSidenavModule } from './pages/components-sidenav/components-sidenav.module';
-import { TextAreaModule } from './pages/text-area/text-area.module';
+import { V3TextareaModule } from './pages/v3-textarea/v3-textarea.module';
 import { ToggleGroupModule } from './pages/toggleGroup/toggleGroup.module';
 import { DxcLinkModule } from '../../../dxc-ngx-cdk/src/lib/dxc-link/dxc-link.module';
 import { DxcHeadingModule } from '../../../dxc-ngx-cdk/src/lib/dxc-heading/dxc-heading.module';
@@ -52,11 +52,11 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { AccordionGroupModule } from './pages/accordion-group/accordion-group.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ThemeBuilderSidenavModule } from './pages/theme-builder/theme-builder-sidenav/theme-builder-sidenav.module';
-import { NewInputTextModule } from './pages/new-input-text/new-input-text.module';
-import { PasswordModule } from './pages/password/password.module';
-import { NumberModule } from './pages/number/number.module';
-import { NewDateModule } from './pages/new-date/new-date.module';
-import { NewTextareaModule } from './pages/new-textarea/new-textarea.module';
+import { TextInputModule } from './pages/text-input/text-input.module';
+import { PasswordModule } from './pages/password-input/password.module';
+import { NumberModule } from './pages/number-input/number.module';
+import { DateInputModule } from './pages/date-input/date-input.module';
+import { TextareaModule } from './pages/textarea/textarea.module';
 import { FileInputModule } from './pages/file-input/file-input.module';
 import { SelectModule } from './pages/select/select.module';
 import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
@@ -96,8 +96,8 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     V3SelectModule,
     SpinnerModule,
     SwitchModule,
-    TextInputModule,
-    TextAreaModule,
+    InputTextModule,
+    V3TextareaModule,
     DropdownModule,
     DialogModule,
     TabbedSectionInfoModule,
@@ -122,11 +122,11 @@ import { AutosuggestModule } from './pages/autosuggest/autosuggest.module';
     ScullyLibModule,
     AccordionGroupModule,
     ThemeBuilderSidenavModule,
-    NewInputTextModule,
+    TextInputModule,
     PasswordModule,
     NumberModule,
-    NewDateModule,
-    NewTextareaModule,
+    DateInputModule,
+    TextareaModule,
     FileInputModule,
     SelectModule,
     AutosuggestModule

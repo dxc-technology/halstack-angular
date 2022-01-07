@@ -28,16 +28,16 @@ import { SpinnerPreviewComponent } from '../../../pages/theme-builder/previews/s
 import { SwitchPreviewComponent } from '../../../pages/theme-builder/previews/switch-preview/switch-preview.component';
 import { TagPreviewComponent } from '../../../pages/theme-builder/previews/tag-preview/tag-preview.component';
 import { TabsPreviewComponent } from '../../../pages/theme-builder/previews/tabs-preview/tabs-preview.component';
-import { TextareaPreviewComponent } from '../../../pages/theme-builder/previews/textarea-preview/textarea-preview.component';
+import { V3TextareaPreviewComponent } from '../../../pages/theme-builder/previews/v3-textarea-preview/v3-textarea-preview.component';
 import { ToggleGroupPreviewComponent } from '../../../pages/theme-builder/previews/toggle-group-preview/toggle-group-preview.component';
 import { UploadPreviewComponent } from '../../../pages/theme-builder/previews/upload-preview/upload-preview.component';
 import { TablePreviewComponent } from '../../../pages/theme-builder/previews/table-preview/table-preview.component';
-import { NewInputTextPreviewComponent } from '../../../pages/theme-builder/previews/new-input-text-preview/new-input-text-preview.component';
-import { NewDatePreviewComponent } from "src/app/pages/theme-builder/previews/new-date-preview/new-date-preview.component";
-import { NewTextareaPreviewComponent } from "src/app/pages/theme-builder/previews/new-textarea-preview/new-textarea-preview.component";
+import { DateInputPreviewComponent } from "src/app/pages/theme-builder/previews/date-input-preview/date-input-preview.component";
+import { TextareaPreviewComponent } from "src/app/pages/theme-builder/previews/textarea-preview/textarea-preview.component";
 import { FileInputPreviewComponent } from "src/app/pages/theme-builder/previews/file-input-preview/file-input-preview.component";
 import { SelectPreviewComponent } from "src/app/pages/theme-builder/previews/select-preview/select-preview.component";
 import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v3-select-preview/v3-select-preview.component";
+import { TextInputPreviewComponent } from "src/app/pages/theme-builder/previews/text-input-preview/text-input-preview.component";
 
 @NgModule({
   declarations: [ThemeBuilderDynamicComponentComponent],
@@ -59,7 +59,7 @@ import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v
     HeaderPreviewComponent,
     HeadingPreviewComponent,
     InputTextPreviewComponent,
-    NewInputTextPreviewComponent,
+    TextInputPreviewComponent,
     LinkPreviewComponent,
     PaginatorPreviewComponent,
     ProgressBarPreviewComponent,
@@ -71,12 +71,12 @@ import { V3SelectPreviewComponent } from "src/app/pages/theme-builder/previews/v
     SwitchPreviewComponent,
     TagPreviewComponent,
     TabsPreviewComponent,
-    TextareaPreviewComponent,
+    V3TextareaPreviewComponent,
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
     TablePreviewComponent,
-    NewDatePreviewComponent,
-    NewTextareaPreviewComponent,
+    DateInputPreviewComponent,
+    TextareaPreviewComponent,
     FileInputPreviewComponent,
     SelectPreviewComponent
   ]

@@ -143,16 +143,16 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.date?.baseColor, 0.34) ??
       tokens["--date-pickerHoverDateBackgroundColor"];
 
-    //NEWDATE
-    proccessedTokens["--newDate-pickerSelectedDateBackgroundColor"] =
-      theme?.newDate?.baseColor ??
-      tokens["--newDate-pickerSelectedDateBackgroundColor"];
-    proccessedTokens["--newDate-pickerSelectedDateColor"] =
-      theme?.newDate?.accentColor ??
-      tokens["--newDate-pickerSelectedDateColor"];
-    proccessedTokens["--newDate-pickerHoverDateBackgroundColor"] =
-      this.setOpacity(theme?.newDate?.baseColor, 0.34) ??
-      tokens["--newDate-pickerHoverDateBackgroundColor"];
+    //dateInput
+    proccessedTokens["--dateInput-pickerSelectedDateBackgroundColor"] =
+      theme?.dateInput?.baseColor ??
+      tokens["--dateInput-pickerSelectedDateBackgroundColor"];
+    proccessedTokens["--dateInput-pickerSelectedDateColor"] =
+      theme?.dateInput?.accentColor ??
+      tokens["--dateInput-pickerSelectedDateColor"];
+    proccessedTokens["--dateInput-pickerHoverDateBackgroundColor"] =
+      this.setOpacity(theme?.dateInput?.baseColor, 0.34) ??
+      tokens["--dateInput-pickerHoverDateBackgroundColor"];
 
     //DROPDOWN
     proccessedTokens["--dropdown-buttonBackgroundColor"] =
@@ -211,12 +211,12 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.inputText?.selectedBaseColor, 0.34) ??
       tokens["--inputText-hoverOptionBackgroundColor"];
 
-    //NEW INPUT TEXT
+    //TEXT INPUT
     proccessedTokens["--textInput-hoverListOptionBackgroundColor"] =
-      theme?.newInputText?.selectedBaseColor ??
+      theme?.textInput?.selectedBaseColor ??
       tokens["--textInput-hoverListOptionBackgroundColor"];
     proccessedTokens["--textInput-activeListOptionBackgroundColor"] =
-      this.subLightness(theme?.newInputText?.selectedBaseColor, 15) ??
+      this.subLightness(theme?.textInput?.selectedBaseColor, 15) ??
       tokens["--textInput-activeListOptionBackgroundColor"];
 
     //PAGINATOR

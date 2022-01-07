@@ -70,14 +70,28 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/input'
+                active: 'components/dateInput'
                   ? router.isActive(
-                      router.createUrlTree(['components/input']).toString(),
+                      router.createUrlTree(['components/dateInput']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/input')"
+              (click)="navigateTo('components/dateInput')"
+              >Date Input</a
+            >
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
+                active: 'components/inputText'
+                  ? router.isActive(
+                      router.createUrlTree(['components/inputText']).toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/inputText')"
               >Input Text</a
             >
             <status-tag status="Deprecated"></status-tag>
@@ -85,75 +99,29 @@
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/newDate'
+                active: 'components/numberInput'
                   ? router.isActive(
-                      router.createUrlTree(['components/newDate']).toString(),
+                      router.createUrlTree(['components/numberInput']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/newDate')"
-              >New Date</a
+              (click)="navigateTo('components/numberInput')"
+              >Number Input</a
             >
           </div>
           <div class="menu-item">
             <a
               [ngClass]="{
-                active: 'components/newInputText'
+                active: 'components/passwordInput'
                   ? router.isActive(
-                      router
-                        .createUrlTree(['components/newInputText'])
-                        .toString(),
+                      router.createUrlTree(['components/passwordInput']).toString(),
                       true
                     )
                   : false
               }"
-              (click)="navigateTo('components/newInputText')"
-              >New Input Text</a
-            >
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/newTextarea'
-                  ? router.isActive(
-                      router
-                        .createUrlTree(['components/newTextarea'])
-                        .toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/newTextarea')"
-              >New Textarea</a
-            >
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/number'
-                  ? router.isActive(
-                      router.createUrlTree(['components/number']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/number')"
-              >Number</a
-            >
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/password'
-                  ? router.isActive(
-                      router.createUrlTree(['components/password']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/password')"
-              >Password</a
+              (click)="navigateTo('components/passwordInput')"
+              >Password Input</a
             >
           </div>
           <div class="menu-item">
@@ -230,9 +198,42 @@
           <div class="menu-item">
             <a
               [ngClass]="{
+                active: 'components/textInput'
+                  ? router.isActive(
+                      router
+                        .createUrlTree(['components/textInput'])
+                        .toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/textInput')"
+              >Text Input</a
+            >
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
+                active: 'components/v3Textarea'
+                  ? router.isActive(
+                      router.createUrlTree(['components/v3Textarea']).toString(),
+                      true
+                    )
+                  : false
+              }"
+              (click)="navigateTo('components/v3Textarea')"
+              >Textarea</a
+            >
+            <status-tag status="Deprecated"></status-tag>
+          </div>
+          <div class="menu-item">
+            <a
+              [ngClass]="{
                 active: 'components/textarea'
                   ? router.isActive(
-                      router.createUrlTree(['components/textarea']).toString(),
+                      router
+                        .createUrlTree(['components/textarea'])
+                        .toString(),
                       true
                     )
                   : false
@@ -240,7 +241,6 @@
               (click)="navigateTo('components/textarea')"
               >Textarea</a
             >
-            <status-tag status="Deprecated"></status-tag>
           </div>
           <div class="menu-item">
             <a

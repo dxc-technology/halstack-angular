@@ -20,7 +20,7 @@ export const customTheme = {
     baseColor: "#5f249f",
     accentColor: "#ffffff",
   },
-  newDate: {
+  dateInput: {
     baseColor: "#5f249f",
     accentColor: "#ffffff",
   },
@@ -46,7 +46,7 @@ export const customTheme = {
   inputText: {
     selectedBaseColor: "#D9D9D9",
   },
-  newInputText: {
+  textInput: {
     selectedBaseColor: "#D9D9D9",
   },
   paginator: {

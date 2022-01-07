@@ -1,87 +1,52 @@
 <div>
-  <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <background-provider color="#FFFFFF">
-    <tbuilder-component-mode text="Default">
-      <v3-dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-      >
-      </v3-dxc-textarea>
-    </tbuilder-component-mode>
+    <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
+    <background-provider color="#FFFFFF">
+      <tbuilder-component-mode text="Default">
+        <dxc-textarea
+            label="Test"
+            [pattern]="pattern"
 
-    <tbuilder-component-mode text="Disabled">
-      <v3-dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-        disabled="true"
-        value="test"
-      >
-      </v3-dxc-textarea>
-    </tbuilder-component-mode>
+            (onBlur)="onBlur($event)"
+        >
+        </dxc-textarea>
+      </tbuilder-component-mode>
+      <tbuilder-component-mode text="Invalid">
+        <dxc-textarea
+            label="Test"
+            error="error"
+        >
+        </dxc-textarea>
+      </tbuilder-component-mode>
+      <tbuilder-component-mode text="Disabled">
+        <dxc-textarea
+            label="Test"
+            value="test"
+            disabled="true"
+        >
+        </dxc-textarea>
+      </tbuilder-component-mode>
+    </background-provider>
 
-    <tbuilder-component-mode text="Invalid">
-      <v3-dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-        invalid="true"
-      >
-      </v3-dxc-textarea>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Required">
-      <v3-dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-        required="true"
-      >
-      </v3-dxc-textarea>
-    </tbuilder-component-mode>
-  </background-provider>
-
-  <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <background-provider color="#000000">
-    <tbuilder-component-mode text="Default" mode="dark">
-      <dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-      >
-      </dxc-textarea>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Disabled" mode="dark">
-      <dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-        disabled="true"
-        value="test"
-      >
-      </dxc-textarea>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Invalid" mode="dark">
-      <dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-        invalid="true"
-      >
-      </dxc-textarea>
-    </tbuilder-component-mode>
-
-    <tbuilder-component-mode text="Required" mode="dark">
-      <dxc-textarea
-        label="Textarea label"
-        assistiveText="assistive text"
-        margin="xsmall"
-        required="true"
-      >
-      </dxc-textarea>
-    </tbuilder-component-mode>
-  </background-provider> -->
-</div>
+    <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
+    <background-provider color="#000000">
+      <tbuilder-component-mode text="Default" mode="dark">
+        <dxc-textarea
+        >
+        </dxc-textarea>
+      </tbuilder-component-mode>
+      <tbuilder-component-mode text="Invalid" mode="dark">
+        <dxc-textarea
+            label="Test"
+            error="error"
+        >
+        </dxc-textarea>
+      </tbuilder-component-mode>
+      <tbuilder-component-mode text="Disabled" mode="dark">
+        <dxc-textarea
+            label="Test"
+            disabled="true"
+        >
+        </dxc-textarea>
+      </tbuilder-component-mode>
+    </background-provider> -->
+  </div>

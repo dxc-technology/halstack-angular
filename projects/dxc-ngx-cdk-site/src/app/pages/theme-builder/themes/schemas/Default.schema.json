@@ -20,7 +20,7 @@
     "baseColor": "color",
     "accentColor": "color"
   },
-  "newDate": {
+  "dateInput": {
     "baseColor": "color",
     "accentColor": "color"
   },
@@ -46,7 +46,7 @@
   "inputText": {
     "selectedBaseColor": "color"
   },
-  "newInputText": {
+  "textInput": {
     "selectedBaseColor": "color"
   },
   "paginator": {

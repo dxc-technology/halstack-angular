@@ -8,7 +8,7 @@ import { CheckboxInfoComponent } from "./pages/checkbox/checkbox-info.component"
 import { DateInfoComponent } from "./pages/date/date-info.component";
 import { DialogInfoComponent } from "./pages/dialog/dialog-info.component";
 import { HeaderInfoComponent } from "./pages/header/header-info.component";
-import { TextInputInfoComponent } from "./pages/inputText/text-input-info.component";
+import { TextInputInfoComponent } from "./pages/input-text/input-text.component";
 import { SelectInfoComponent } from "./pages/select/select-info.component";
 import { SpinnerInfoComponent } from "./pages/spinner/spinner.component";
 import { SwitchInfoComponent } from "./pages/switch/switch-info.component";
@@ -74,7 +74,7 @@ import {
   DxcChipModule,
   BackgroundProviderModule,
   DxcTextInputModule,
-  DxcNewDateModule,
+  DxcDateInputModule,
   DxcPasswordInputModule,
   DxcNumberModule,
   DxcTextareaModule,
@@ -85,10 +85,10 @@ import { TextareaInfoComponent } from "./pages/textarea/textarea-info.component"
 import { ApplicationInfoComponent } from './pages/standard/application-info.component';
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
-import { NewInpuTextComponent } from './pages/new-input-text/new-input-text.component';
+import { TextInputComponent } from './pages/text-input/text-input.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { NumberComponent } from './pages/number/number.component';
-import { NewDateComponent } from './pages/new-date/new-date.component';
+import { DateInputComponent } from './pages/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -128,10 +128,10 @@ import { NewDateComponent } from './pages/new-date/new-date.component';
     ApplicationInfoComponent,
     ChipComponent,
     AccordionGroupComponent,
-    NewInpuTextComponent,
+    TextInputComponent,
     PasswordComponent,
     NumberComponent,
-    NewDateComponent
+    DateInputComponent
   ],
   imports: [
     AppRoutingModule,
@@ -175,7 +175,7 @@ import { NewDateComponent } from './pages/new-date/new-date.component';
     DxcAccordionGroupModule,
     BackgroundProviderModule,
     DxcTextInputModule,
-    DxcNewDateModule,
+    DxcDateInputModule,
     DxcPasswordInputModule,
     DxcNumberInputModule,
     DxcTextareaModule

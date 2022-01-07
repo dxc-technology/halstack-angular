@@ -14,7 +14,7 @@ export class AutosuggestPropertiesComponent implements OnInit {
 
   navigateToRoute(){
     this.router.navigate(
-      ["components/newInputText"]
+      ["components/textInput"]
     );
   }
 

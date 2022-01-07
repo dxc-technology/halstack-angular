@@ -17,7 +17,7 @@ import { V3SelectComponent } from './pages/v3-select/v3-select.component';
 import { SliderComponent } from './pages/slider/slider.component';
 import { SwitchComponent } from "./pages/switch/switch.component";
 import { SpinnerComponent } from './pages/spinner/spinner.component';
-import { TextInputComponent } from './pages/text-input/text-input.component';
+import { InputTextComponent } from './pages/input-text/input-text.component';
 import { DropdownComponent } from "./pages/dropdown/dropdown.component";
 import { DialogComponent } from "./pages/dialog/dialog.component";
 import { TableComponent } from './pages/table/table.component';
@@ -34,18 +34,18 @@ import { LinkComponent } from './pages/link/link.component';
 import { HeadingComponent } from './pages/heading/heading.component';
 import { ResultsetTableComponent } from './pages/resultset-table/resultset-table.component';
 import { ChipComponent } from './pages/chip/chip.component';
-import { TextAreaComponent } from './pages/text-area/text-area.component';
+import { V3TextareaComponent } from "./pages/v3-textarea/v3-textarea.component";
 import { ToggleGroupComponent } from './pages/toggleGroup/toggleGroup.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
-import { ThemeBuilderPageModule } from './pages/theme-builder/theme-builder.module';
-import { NewInputTextComponent } from "./pages/new-input-text/new-input-text.component";
-import { PasswordComponent } from "./pages/password/password.component";
-import { NumberComponent } from "./pages/number/number.component";
-import { NewDateComponent } from "./pages/new-date/new-date.component";
-import { NewTextareaComponent } from "./pages/new-textarea/new-textarea.component";
+import { TextInputComponent } from "./pages/text-input/text-input.component";
+import { PasswordComponent } from "./pages/password-input/password.component";
+import { NumberComponent } from "./pages/number-input/number.component";
+import { DateInputComponent } from "./pages/date-input/date-input.component";
+import { TextareaComponent } from "./pages/textarea/textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { SelectComponent } from "./pages/select/select.component";
 import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
+
 
 let routes: Routes = [];
 
@@ -121,12 +121,12 @@ let routes: Routes = [];
     component: SwitchComponent
   },
   {
-    path: 'components/input',
-    component: TextInputComponent
+    path: 'components/inputText',
+    component: InputTextComponent
   },
   {
-    path: 'components/textarea',
-    component: TextAreaComponent
+    path: 'components/v3Textarea',
+    component: V3TextareaComponent
   },
   {
     path: 'components/toggleGroup',
@@ -193,24 +193,24 @@ let routes: Routes = [];
     component: HeadingComponent
   },
   {
-    path: 'components/newInputText',
-    component: NewInputTextComponent
+    path: 'components/textInput',
+    component: TextInputComponent
   },
   {
-    path: 'components/password',
+    path: 'components/passwordInput',
     component: PasswordComponent
   },
   {
-    path: 'components/number',
+    path: 'components/numberInput',
     component: NumberComponent
   },
   {
-    path: 'components/newDate',
-    component: NewDateComponent
+    path: 'components/dateInput',
+    component: DateInputComponent
   },
   {
-    path: 'components/newTextarea',
-    component: NewTextareaComponent
+    path: 'components/textarea',
+    component: TextareaComponent
   },
   {
     path: 'components/fileInput',

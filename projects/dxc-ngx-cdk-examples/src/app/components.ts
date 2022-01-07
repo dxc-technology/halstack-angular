@@ -9,7 +9,7 @@ import { SelectInfoComponent } from './pages/select/select-info.component';
 import { SpinnerInfoComponent } from './pages/spinner/spinner.component';
 import { SwitchInfoComponent } from './pages/switch/switch-info.component';
 import { DropdownInfoComponent } from './pages/dropdown/dropdown-info.component';
-import { TextInputInfoComponent } from './pages/inputText/text-input-info.component';
+import { InputTextComponent } from './pages/input-text/input-text.component';
 import { FooterInfoComponent } from './pages/footer/footer-info.component';
 import { TableInfoComponent } from './pages/table/table-info.component';
 import { ProgressInfoComponent } from './pages/progressBar/progressBar-info.component';
@@ -33,10 +33,10 @@ import { ApplicationInfoComponent } from './pages/standard/application-info.comp
 import { ChipComponent } from './pages/chip/chip.component';
 import { ToggleGroupInfoComponent } from './pages/toggle-group/toggle-group-info.component';
 import { AccordionGroupComponent } from './pages/accordion-group/accordion-group.component';
-import { NewInpuTextComponent } from './pages/new-input-text/new-input-text.component';
+import { TextInputComponent } from './pages/text-input/text-input.component';
 import { PasswordComponent } from './pages/password/password.component';
 import { NumberComponent } from './pages/number/number.component';
-import { NewDateComponent } from './pages/new-date/new-date.component';
+import { DateInputComponent } from './pages/date-input/date-input.component';
 
 export const Components = [
     {
@@ -111,8 +111,8 @@ export const Components = [
     },
     {
         name: 'Input Text',
-        route: 'input_text',
-        component:  TextInputInfoComponent
+        route: 'inputText',
+        component:  InputTextComponent
     },
     {
         name: 'Link',
@@ -120,14 +120,14 @@ export const Components = [
         component:  LinkInfoComponent
     },
     {
-        name: 'New Date',
-        route: 'new_date',
-        component:  NewDateComponent
+        name: 'Date Input',
+        route: 'dateInput',
+        component:  DateInputComponent
     },
     {
-        name: 'New Input Text',
-        route: 'new_input',
-        component:  NewInpuTextComponent
+        name: 'Text Input',
+        route: 'textInput',
+        component:  TextInputComponent
     },
     {
         name: 'Number',
@@ -141,7 +141,7 @@ export const Components = [
     },
     {
         name: 'Password',
-        route: 'password',
+        route: 'passwordInput',
         component:  PasswordComponent
     },
     {

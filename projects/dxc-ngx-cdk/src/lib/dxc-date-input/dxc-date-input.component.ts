@@ -236,11 +236,12 @@ export class DxcDateInputComponent implements OnInit {
     ).forEach((el: Element) => el.remove());
   }
 
-  handleOnChange(value: string) {
+  handleOnChange(value) {
     if (this._isCalendarOpened) this.closeCalendar();
-    let _dateValue = this.getMomentValue(value, this.format);
+    let _dateValue = this.getMomentValue(value.value, this.format);
     let _dateReturn = {
-      value: value,
+      value: value.value,
+      error: value.error,
       date: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
     this.onChange.emit(_dateReturn);

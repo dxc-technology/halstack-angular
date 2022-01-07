@@ -123,12 +123,13 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: newValue,
+      error: null,
       date: newMockDate,
     });
     expect(screen.getByDisplayValue(newValue));
   });
 
-  test("dxc-date cahnge value twice as uncontrolled", async () => {
+  test("dxc-date change value twice as uncontrolled", async () => {
     const onChange = jest.fn();
 
     await render(DxcDateInputComponent, {
@@ -163,6 +164,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: newValue,
+      error: null,
       date: newMockDate,
     });
     expect(screen.getByDisplayValue(newValue));
@@ -171,6 +173,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: "04-10-1996" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "04-10-1996",
+      error: null,
       date: new Date("1996/10/04"),
     });
     expect(screen.getByDisplayValue("04-10-1996"));
@@ -218,6 +221,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: "1995/12/03" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "1995/12/03",
+      error: null,
       date: newMockDate,
     });
     input.focus();
@@ -269,6 +273,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: invalidValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: invalidValue,
+      error: null,
       date: null,
     });
   });
@@ -414,7 +419,7 @@ describe("DxcDate", () => {
     await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
-        value: "04-12-1995",
+        value: "03-12-1995",
         onChange: {
           emit: onChange,
         } as any,
@@ -444,13 +449,14 @@ describe("DxcDate", () => {
     const input = <HTMLInputElement>screen.getByRole("textbox");
 
     input.focus();
-    fireEvent.input(input, { target: { value: "04-10-1996" } });
+    fireEvent.input(input, { target: { value: "03-10-1996" } });
     expect(onChange).toHaveBeenCalledWith({
-      value: "04-10-1996",
-      date: new Date("1996/10/04"),
+      value: "03-10-1996",
+      error: null,
+      date: new Date("1996/10/03"),
     });
-    expect(screen.getByDisplayValue("04-12-1995"));
+    expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.blur(input);
-    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "04-12-1995" });
+    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "03-12-1995" });
   });
 });

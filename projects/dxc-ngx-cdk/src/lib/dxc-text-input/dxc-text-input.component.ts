@@ -259,7 +259,9 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleDefaultClearAction() {
-    this.onChange.emit("");
+    if(!this.isDirty) {
+      this.isDirty = true;
+    }
     this.handleOnChange("");
     this.inputRef.nativeElement.focus();
     if (this.suggestions) {

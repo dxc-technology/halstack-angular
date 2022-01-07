@@ -187,7 +187,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
    * @param $event
    */
   public inputValueChanged($event: any): void {
-    let newValue = $event * 1;
+    let newValue = $event.value * 1;
     newValue = newValue < this.minValue ? this.minValue : newValue;
     newValue = newValue > this.maxValue ? this.maxValue : newValue;
 

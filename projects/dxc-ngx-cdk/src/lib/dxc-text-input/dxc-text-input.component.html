@@ -131,6 +131,7 @@
     [id]="autoSuggestId"
     role="listbox"
     class="options"
+    *ngIf="suggestions && autosuggestType"
   >
     <li
       *ngFor="

@@ -160,6 +160,8 @@ export class DxcSelectOptionComponent implements OnInit {
           align-items: center;
           svg{
             fill: var(--select-selectedListItemIconColor);
+            width: 16px;
+            height: 16px;
           }
         }
       }

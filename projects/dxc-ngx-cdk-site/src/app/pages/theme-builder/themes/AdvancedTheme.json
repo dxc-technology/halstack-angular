@@ -640,7 +640,7 @@
     "hoverListOptionBackgroundColor": "#f2f2f2",
     "activeListOptionBackgroundColor": "#cccccc"
   },
-  "newTextarea": {
+  "textarea": {
     "fontFamily": "Open Sans, sans-serif",
     "enabledBorderColor": "#000000",
     "enabledBorderColorOnDark": "#ffffff",
@@ -1153,7 +1153,7 @@
     "badgeHeightWithNotificationNumber": "17px",
     "badgeRadiusWithNotificationNumber": "10px"
   },
-  "textarea": {
+  "v3Textarea": {
     "fontFamily": "Open Sans, sans-serif",
     "errorColor": "#D0011B",
     "errorColorOnDark": "#FE344F",

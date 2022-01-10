@@ -40,7 +40,7 @@ export class V3TextareaComponent implements OnInit {
 
   navigateToRoute(){
     this.router.navigate(
-      ["components/newTextarea"]
+      ["components/textarea"]
     );
   }
 }

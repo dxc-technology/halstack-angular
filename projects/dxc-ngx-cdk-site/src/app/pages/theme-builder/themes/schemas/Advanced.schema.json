@@ -641,7 +641,7 @@
     "hoverListOptionBackgroundColor": "color",
     "activeListOptionBackgroundColor": "color"
   },
-  "newTextarea": {
+  "textarea": {
     "fontFamily": "fFamily",
     "enabledBorderColor": "color",
     "enabledBorderColorOnDark": "color",
@@ -1139,7 +1139,7 @@
     "badgeHeightWithNotificationNumber": "length",
     "badgeRadiusWithNotificationNumber": "length"
   },
-  "textarea": {
+  "v3Textarea": {
     "errorColor": "color",
     "errorColorOnDark": "color",
     "assistiveTextFontSize": "length",

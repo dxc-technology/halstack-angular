@@ -1,4 +1,4 @@
-<div class="previewContainer" *ngIf="hasShowPreview">
+<div class="previewContainer" [attr.aria-label]="getIconAriaLabel()" *ngIf="hasShowPreview">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="24px"
@@ -16,7 +16,7 @@
   <div class="fileContainer">
     <span class="fileName">{{ file.data.name }}</span>
     <div class="fileIcons">
-      <span *ngIf="hasError" class="errorIcon">
+      <span *ngIf="hasError" aria-label="Error" class="errorIcon">
         <svg
           fill="currentColor"
           height="24px"
@@ -29,7 +29,7 @@
           ></path>
         </svg>
       </span>
-      <span class="removeIcon"(click)="onRemoveHandler($event)" data-testid="removeIcon">
+      <span class="removeIcon" [attr.aria-label]="getRemoveAriaLabel()" (click)="onRemoveHandler($event)" data-testid="removeIcon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="18px"

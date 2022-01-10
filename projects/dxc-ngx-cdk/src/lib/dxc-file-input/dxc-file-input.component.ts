@@ -129,23 +129,22 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasMultipleFiles: boolean = false;
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
-  isControlled: boolean = false;
+  hasValue: boolean = false;
 
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
-      if (files) {
-        this.value = files;
+      if (event !== "reset" && (files.length || this.hasValue)) {
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
         this.hasSingleFile = this.isSingleFilesPrintables();
-        this.callbackFile.emit(this.value);
+        this.callbackFile.emit(files);
       }
     });
   }
 
   ngOnInit() {
     this.id = this.id || uuidv4();
-    this.value ? (this.isControlled = true) : (this.isControlled = false);
+    this.value ? (this.hasValue = true) : (this.hasValue = false);
     this.hasShowError = this.isErrorShow();
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
     this.hasSingleFile = this.isSingleFilesPrintables();
@@ -158,8 +157,13 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         ? this.fileInputNative.nativeElement.setAttribute("multiple", true)
         : this.fileInputNative.nativeElement.removeAttribute("multiple");
     }
-    if (this.value !== null && this.value) {
+    if (this.value?.length > 0) {
+      const arr: FileData[] = [];
+      this.service.files.next({ files: arr, event: "reset" });
       this.value.forEach((file) => {
+        if (!file.error) {
+          file.error = this.checkFileSize(file.data);
+        }
         this.service.addFile(file);
       });
     }
@@ -180,6 +184,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   }
 
   checkFileSize(file: File) {
+    console.log(file);
     if (file.size < this.minSize) {
       return "File size must be greater than min size.";
     }
@@ -214,10 +219,12 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
-    if (!this.multiple) {
-      this.service.emptyArrayFiles();
+    if (this.callbackFile.observers?.length > 0 && this.hasValue) {
+      if (!this.multiple) {
+        this.service.emptyArrayFiles();
+      }
+      this.getPreviewsFiles(event.dataTransfer.files);
     }
-    this.getPreviewsFiles(event.dataTransfer.files);
   }
 
   /**
@@ -225,7 +232,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param event
    */
   onFileInput(event) {
-    if (this.callbackFile.observers?.length > 0) {
+    if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
         this.service.emptyArrayFiles();
       }

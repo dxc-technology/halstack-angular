@@ -120,7 +120,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(screen.getByDisplayValue("test input value")).toBeTruthy();
     fireEvent.click(input.getByLabelText("Clear"));
     input.detectChanges();
-    expect(onChange).toHaveBeenCalledWith("");
+    expect(onChange).toHaveBeenCalledWith({value: "", error: null});
   });
 
   test("should allow interaction with action button", async () => {
@@ -203,7 +203,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(screen.getByDisplayValue("test input value")).toBeTruthy();
     fireEvent.click(input.getByRole("textbox"));
     input.detectChanges();
-    expect(onChange).not.toHaveBeenCalledWith("");
+    expect(onChange).not.toHaveBeenCalledWith({value: "", error: null});
   });
 
   test("controlled dxc-input-text input change and blur", async () => {
@@ -230,7 +230,7 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial" });
     await waitFor(() => {
@@ -261,7 +261,7 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue(""));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ error: null, value: "new value" });
     await waitFor(() => {
@@ -294,12 +294,12 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial string"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
     await waitFor(() => {
       fireEvent.blur(input);
       expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial string" });
       fireEvent.click(screen.getByLabelText("Clear"));
-      expect(onChange).toHaveBeenCalledWith("");
+      expect(onChange).toHaveBeenCalledWith({value: "", error: null});
       screen.getByDisplayValue("initial string");
     });
   });
@@ -330,7 +330,7 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({value: "new value", error: "Please use a valid pattern"});
     fireEvent.blur(input);
     await waitFor(() => {
       expect(screen.getByDisplayValue("initial"));
@@ -341,7 +341,7 @@ describe("DxcNewTextInputComponent", () => {
     });
     fireEvent.click(screen.getByLabelText("Clear"));
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith("");
+      expect(onChange).toHaveBeenCalledWith({value: "", error: null});
       expect(screen.getByDisplayValue("initial"));
     });
   });
@@ -373,7 +373,7 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({value: "new value", error: "Min length 2, Max length 5"});
     fireEvent.blur(input);
     await waitFor(() => {
       expect(screen.getByDisplayValue("initial"));
@@ -384,7 +384,7 @@ describe("DxcNewTextInputComponent", () => {
     });
     fireEvent.click(screen.getByLabelText("Clear"));
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith("");
+      expect(onChange).toHaveBeenCalledWith({value: "", error: null});
       expect(screen.getByDisplayValue("initial"));
     });
   });

@@ -185,7 +185,7 @@ export class DxcTextareaComponent implements OnInit {
 
   handleOnChange(event) {
     if (this.value !== event && this.isDirty) {
-      this.onChange.emit(event);
+      this.onChange.emit({value: event, error: this.validateValue(event)});
     }
     if (!this.controlled) {
       this.value = event;
@@ -213,7 +213,7 @@ export class DxcTextareaComponent implements OnInit {
   }
 
   handleOnBlur() {
-    const validationError = this.validateOnBlur();
+    const validationError = this.validateValue(this.value);
     this.validationError = validationError;
     this.hasError = this.validationError ? true : false;
     this.onBlur.emit({ value: this.value, error: validationError });
@@ -225,19 +225,15 @@ export class DxcTextareaComponent implements OnInit {
     }
   }
 
-  validateOnBlur() {
-    let err = this.validateLength(this.value);
-    if (!err && this.value && !this.patternMatch(this.pattern, this.value)) {
-      err = `Please use a valid pattern`;
-    }
-    return err;
-  }
-
-  validateLength(value) {
-    return (this.length.min && value && value.length < +this.length.min) ||
+  validateValue(value) {
+    let err =
+      (this.length.min && value && value.length < +this.length.min) ||
       (this.length.max && value && value.length > +this.length.max)
-      ? `Min length ${this.length.min}, Max length ${this.length.max}`
-      : null;
+        ? `Min length ${this.length.min}, Max length ${this.length.max}`
+        : value && !this.patternMatch(this.pattern, value)
+        ? `Please use a valid pattern`
+        : null;
+    return err;
   }
 
   patternMatch(pattern, value) {

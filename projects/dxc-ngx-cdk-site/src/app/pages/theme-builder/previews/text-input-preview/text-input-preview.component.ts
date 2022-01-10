@@ -43,9 +43,10 @@ export class TextInputPreviewComponent implements OnInit {
   ];
 
   changeValue(event) {
-    if (!event.includes("x")) {
-      this.controlledValue = event;
+    if (!event.value.includes("x")) {
+      this.controlledValue = event.value;
     }
+    console.log(event);
   }
 
   click() {

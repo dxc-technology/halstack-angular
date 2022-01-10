@@ -4,7 +4,7 @@ import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 import { waitFor } from "@testing-library/dom";
 
-describe("DxcInputNumberComponent", () => {
+describe("DxcNumberInputComponent", () => {
   test("should render dxc-number", async () => {
     await render(DxcNumberInputComponent, {
       componentProperties: {
@@ -33,7 +33,7 @@ describe("DxcInputNumberComponent", () => {
     expect(screen.queryByText("important error")).toBeInTheDocument();
   });
 
-  test("should call onChange in dxc-number", async () => {
+  test("increase should call onChange in dxc-number", async () => {
     const onChange = jest.fn();
     const dxcNumber = await render(DxcNumberInputComponent, {
       componentProperties: {
@@ -56,24 +56,33 @@ describe("DxcInputNumberComponent", () => {
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Increment"));
     dxcNumber.detectChanges();
-    waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith(10);
+    expect(onChange).toHaveBeenCalledWith({"value": 10, error: null});
+  });
+
+  test("decrease should call onChange in dxc-number", async () => {
+    const onChange = jest.fn();
+    const dxcNumber = await render(DxcNumberInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        min: 5,
+        max: 100,
+        step: 5,
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [DxcTextInputModule],
     });
-    fireEvent.click(screen.getByLabelText("Increment"));
-    dxcNumber.detectChanges();
-    waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith(15);
-    });
-    fireEvent.click(screen.getByLabelText("Increment"));
-    dxcNumber.detectChanges();
-    waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith(20);
-    });
+
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+
+    expect(screen.queryByText("test-input")).toBeInTheDocument();
+    input.focus();
+    expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Decrement"));
     dxcNumber.detectChanges();
-    waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith(15);
-    });
+    expect(onChange).toHaveBeenCalledWith({"value": 5, error: null});
   });
 
   test("controlled dxc-number", async () => {
@@ -103,7 +112,7 @@ describe("DxcInputNumberComponent", () => {
     expect(input.max).toBe("100");
     expect(screen.getByDisplayValue("4")).toBeTruthy();
     fireEvent.input(input, { target: { value: "10" } });
-    expect(onChange).toHaveBeenCalledWith("10");
+    expect(onChange).toHaveBeenCalledWith({value: "10", error: null});
     expect(screen.getByDisplayValue("4")).toBeTruthy();
   });
 
@@ -138,7 +147,7 @@ describe("DxcInputNumberComponent", () => {
     expect(input.max).toBe("100");
     expect(screen.getByDisplayValue("4"));
     fireEvent.input(input, { target: { value: "10" } });
-    expect(onChange).toHaveBeenCalledWith("10");
+    expect(onChange).toHaveBeenCalledWith({value: "10", error: null});
     expect(screen.getByDisplayValue("4"));
     fireEvent.blur(input);
     waitFor(() => {

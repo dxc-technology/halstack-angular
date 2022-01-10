@@ -37,7 +37,7 @@ describe("DxcPasswordInputComponent", () => {
     expect(screen.queryByText("test-input")).toBeInTheDocument();
     expect(screen.getByDisplayValue("password-test")).toBeTruthy();
     fireEvent.click(btn);
-    expect(onChange).toHaveBeenCalledWith("");
+    expect(onChange).toHaveBeenCalledWith({ value: "", error: null });
   });
 
   test("should mask input password", async () => {
@@ -89,7 +89,7 @@ describe("DxcPasswordInputComponent", () => {
     expect(input).toHaveFocus();
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: "Please use a valid pattern" });
     expect(screen.getByDisplayValue("initial"));
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "initial" });
@@ -121,7 +121,7 @@ describe("DxcPasswordInputComponent", () => {
     expect(input).toHaveFocus();
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith("new value");
+    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: "Min length 2, Max length 5" });
     expect(screen.getByDisplayValue("initial"));
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ error: "Min length 2, Max length 5", value: "initial" });

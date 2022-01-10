@@ -145,7 +145,7 @@
       role="option"
       [attr.aria-selected]="focusedOption === i"
       [ngClass]="{
-        selected: focusedOption === i,
+        focused: focusedOption === i,
         active: focusedOption === i && activedOption === i
       }"
       [innerHtml]="
@@ -154,7 +154,6 @@
       [id]="item"
       (mousedown)="handleMouseDown($event, i)"
       (mouseup)="handleOnClickOption(item)"
-      (mouseenter)="handleOnHover(i)"
       (mouseleave)="handleOnLeave()"
     ></li>
     <li *ngIf="fetchingError.getValue() && !loading.getValue()">

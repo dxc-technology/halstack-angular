@@ -336,11 +336,9 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnClickOption(event) {
-    if (this.activedOption === this.focusedOption) {
-      this.onChange.emit(event);
-      this.value = event;
-      this.handleOnClose();
-    }
+    this.onChange.emit({ value: event, error: this.validateValue(event) });
+    this.value = event;
+    this.handleOnClose();
     this.service.activeOption.next(-1);
   }
 
@@ -354,10 +352,6 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   handleMouseDown(event, index) {
     this.service.activeOption.next(index);
     event.preventDefault();
-  }
-
-  handleOnHover(index) {
-    this.service.visualFocused.next(index);
   }
 
   handleOnLeave() {

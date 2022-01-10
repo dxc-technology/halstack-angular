@@ -60,39 +60,4 @@ export class DxcTextInputService {
       this.activeOption.next(-1);
     }
   }
-
-  // autocompleteFunction(value) {
-  //   if (
-  //     value !== undefined &&
-  //     this.autocompleteOptions &&
-  //     Array.isArray(this.autocompleteOptions)
-  //   ) {
-  //     const inputValue = value.toLowerCase();
-  //     this.options = this.autocompleteOptions.filter((option) =>
-  //       option.toLowerCase().includes(inputValue)
-  //     );
-  //   } else if (
-  //     this.autocompleteOptions &&
-  //     typeof this.autocompleteOptions === "function"
-  //   ) {
-  //     this.loading.next(true);
-  //     this.isError.next(false);
-  //     this.autocompleteOptions(value).subscribe(
-  //       (autocompleteOptionsList) => {
-  //         this.options = autocompleteOptionsList;
-  //         this.ref.markForCheck();
-  //         this.loading.next(false);
-  //       },
-  //       (err) => {
-  //         this.isError.next(true);
-  //         this.loading.next(false);
-  //         this.ref.markForCheck();
-  //       }
-  //     );
-  //   } else if (this.autocompleteOptions) {
-  //     this.isError.next(true);
-  //     this.loading.next(false);
-  //     this.ref.markForCheck();
-  //   }
-  // }
 }

@@ -354,10 +354,13 @@ export class DxcTextInputHelper {
           padding-bottom: calc((39px - 1.75em) / 2);
           padding-left: 1em;
           cursor: pointer;
-          &.selected {
+          :hover{
             background-color: var(--textInput-hoverListOptionBackgroundColor);
           }
-          &.active.selected {
+          &.focused {
+            box-shadow: inset 0 0 0 2px #0095ff;
+          }
+          &.active.focused {
             background-color: var(--textInput-activeListOptionBackgroundColor);
           }
           b{

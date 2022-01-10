@@ -355,7 +355,7 @@
     "disabledDropLabelFontColor": "color",
     "focusDropBorderColor": "color",
     "disabledDropBorderColor": "color",
-    "focusDropBackgroundColor": "color",
+    "dragoverDropBackgroundColor": "color",
     "hoverFileItemIconBackgroundColor": "color",
     "activeFileItemIconBackgroundColor": "color",
     "errorFileItemBorderColor": "color",

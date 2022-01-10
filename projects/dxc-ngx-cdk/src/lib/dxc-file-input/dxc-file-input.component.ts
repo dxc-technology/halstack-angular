@@ -406,7 +406,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           }
           &.hovering {
             ${!inputs.disabled
-              ? "border: 2px solid var(--fileInput-focusDropBorderColor); background: var(--fileInput-focusDropBackgroundColor) 0% 0% no-repeat padding-box;"
+              ? "border: 2px solid var(--fileInput-focusDropBorderColor); background: var(--fileInput-dragoverDropBackgroundColor) 0% 0% no-repeat padding-box;"
               : ""}
           }
         }

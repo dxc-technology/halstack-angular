@@ -509,7 +509,7 @@ export const componentTokens = {
   "--fileInput-disabledDropLabelFontColor": globalTokens.hal_grey_l_60,
   "--fileInput-focusDropBorderColor": globalTokens.hal_blue_l_50,
   "--fileInput-disabledDropBorderColor": globalTokens.hal_grey_l_60,
-  "--fileInput-focusDropBackgroundColor": "#f5fbff",
+  "--fileInput-dragoverDropBackgroundColor": "#f5fbff",
   "--fileInput-hoverFileItemIconBackgroundColor": globalTokens.hal_grey_l_95,
   "--fileInput-activeFileItemIconBackgroundColor": globalTokens.hal_grey_l_80,
   "--fileInput-errorFileItemBorderColor": globalTokens.hal_red_s_41,

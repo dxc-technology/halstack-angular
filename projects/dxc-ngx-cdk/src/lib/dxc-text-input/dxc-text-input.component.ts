@@ -57,7 +57,13 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   private _disabled = false;
 
   @Input()
-  optional = false;
+  get optional(): boolean {
+    return this._optional;
+  }
+  set optional(value: boolean) {
+    this._optional = coerceBooleanProperty(value);
+  }
+  private _optional = false;
 
   @Input()
   clearable = false;
@@ -286,10 +292,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnBlur() {
-    const validationError = this.validateValue(this.value);
-    this.validationError = validationError;
-    this.hasError = this.validationError ? true : false;
-    this.onBlur.emit({ value: this.value, error: validationError });
+    this.onBlur.emit({ value: this.value, error: this.handleValidationError() });
   }
 
   handleOnFocus() {
@@ -383,21 +386,37 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  validateValue(value) {
-    let err =
-      (this.length.min && value && value.length < +this.length.min) ||
-      (this.length.max && value && value.length > +this.length.max)
-        ? `Min length ${this.length.min}, Max length ${this.length.max}`
-        : value && !this.patternMatch(this.pattern, value)
-        ? `Please use a valid pattern`
-        : null;
-    return err;
-  }
-
-  patternMatch(pattern, value) {
+  private patternMatch(pattern, value) {
     const patternToMatch = new RegExp(pattern);
     return patternToMatch.test(value);
   }
+
+  private validateValue(value) {
+    if (this.isRequired(value))
+      return `This field is required. Please, enter a value.`;
+    if (this.isLengthIncorrect(value))
+      return `Min length ${this.length.min}, Max length ${this.length.max}`;
+    if (value && !this.patternMatch(this.pattern, value))
+      return `Please use a valid pattern`;
+    return null;
+  }
+
+  private handleValidationError() {
+    const validationError = this.validateValue(this.value);
+    this.validationError = validationError;
+    this.hasError = this.validationError ? true : false;
+    return validationError;
+  }
+
+  private isRequired = (value) => value === "" && !this.optional;
+
+  private isLengthIncorrect = (value) =>
+    (value !== "" &&
+      this.length &&
+      this.length.min &&
+      value &&
+      value.length < +this.length.min) ||
+    (this.length.max && value && value.length > +this.length.max);
 
   getAsyncSuggestions() {
     this.loading.next(true);

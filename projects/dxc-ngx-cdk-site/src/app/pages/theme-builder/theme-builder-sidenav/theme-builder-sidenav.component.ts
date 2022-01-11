@@ -8,7 +8,7 @@ import advancedTheme from "./../themes/AdvancedTheme.json";
 import simpleTheme from "./../themes/DefaultTheme.json";
 import advancedSchema from "./../themes/schemas/Advanced.schema.json";
 import simpleSchema from "./../themes/schemas/Default.schema.json";
-import { ThemeService } from "@dxc-technology/halstack-angular";
+import { Option, ThemeService } from "@dxc-technology/halstack-angular";
 
 interface SelectedThemeType {
   componentName: string;
@@ -34,6 +34,11 @@ export class ThemeBuilderSidenavComponent implements OnInit {
   selectedThemeComponent: SelectedThemeType;
 
   type: string;
+
+  selectOptions: Option[] = [
+    { label: "Default", value: "default" },
+    { label: "Advanced", value: "advanced" },
+  ];
 
   constructor(
     public router: Router,
@@ -67,8 +72,8 @@ export class ThemeBuilderSidenavComponent implements OnInit {
     );
   }
 
-  onThemeTypeChange = ($event) => {
-    if ($event === "default") {
+  onThemeTypeChange = (event) => {
+    if (event.value === "default") {
       this.currentTheme = this.defaultTheme;
       this.currentSchemaTheme = simpleSchema;
       this.themeService.registerTheme(this.defaultTheme);

@@ -4,6 +4,7 @@
     <tbuilder-component-mode text="Default">
       <dxc-new-select
         label="Label"
+        name="example1"
         helperText="HelperText"
         margin="xsmall"
         [options]="array1"
@@ -15,7 +16,7 @@
         tabIndex="3"
       >
       </dxc-new-select>
-      <dxc-new-select
+      <!-- <dxc-new-select
         label="Label"
         helperText="HelperText"
         margin="xsmall"
@@ -57,7 +58,7 @@
         (onBlur)="onBlur($event)"
         placeholder="Another placeholder"
       >
-      </dxc-new-select>
+      </dxc-new-select>-->
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Multiple">
@@ -71,7 +72,7 @@
         [value]="arrayValue"
       >
       </dxc-new-select>
-      <dxc-new-select
+      <!-- <dxc-new-select
         label="Label"
         helperText="HelperText"
         multiple="true"
@@ -79,10 +80,10 @@
         margin="xsmall"
         [options]="array2"
       >
-      </dxc-new-select>
+      </dxc-new-select> -->
     </tbuilder-component-mode>
 
-    <tbuilder-component-mode text="Error">
+    <!-- <tbuilder-component-mode text="Error">
       <dxc-new-select
         label="Label"
         helperText="HelperText"
@@ -112,9 +113,6 @@
         [disabled]="true"
       >
       </dxc-new-select>
-    </tbuilder-component-mode>
+    </tbuilder-component-mode> -->
   </background-provider>
-
-  <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <background-provider color="#000000"> </background-provider>
 </div>

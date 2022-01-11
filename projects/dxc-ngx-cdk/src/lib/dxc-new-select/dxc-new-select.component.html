@@ -7,6 +7,15 @@
   >{{ label }}
   <span *ngIf="optional" class="optional">(Optional)</span>
 </span>
+<input
+    *ngIf="!searchable"
+    type="text"
+    [id]="id"
+    ngModel
+    [name]="name"
+    [value]="formValues"
+    style="display:none"
+  />
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div
   class="container"
@@ -52,6 +61,7 @@
         [placeholder]="placeholder"
       ></dxc-select-option-selected
     ></span>
+
   </div>
   <div *ngIf="searchable" class="searchContainer">
     <span class="searchGrid">

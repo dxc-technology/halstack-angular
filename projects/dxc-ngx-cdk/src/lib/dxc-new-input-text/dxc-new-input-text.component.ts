@@ -12,6 +12,7 @@ import {
   ViewChild,
   ElementRef,
   Optional,
+  forwardRef,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -20,13 +21,19 @@ import { OnDestroy } from "@angular/core";
 import { DxcNewInputTextHelper } from "./dxc-new-input-text.helper";
 import { v4 as uuidv4 } from "uuid";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
   selector: "dxc-new-input-text",
   templateUrl: "./dxc-new-input-text.component.html",
-  providers: [DxcNewInputTextService, DxcNewInputTextHelper, CssUtils],
+  providers: [DxcNewInputTextService, DxcNewInputTextHelper, CssUtils,
+  {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcNewInputTextComponent),
+    multi: true,
+  }]
 })
-export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
+export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
@@ -145,6 +152,8 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
 
   isInputNumber: boolean = false;
 
+  onTouch = () => { }
+
   constructor(
     private cdRef: ChangeDetectorRef,
     private service: DxcNewInputTextService,
@@ -165,6 +174,21 @@ export class DxcNewInputTextComponent implements OnInit, OnChanges, OnDestroy {
         })}`;
       }, 0);
     });
+  }
+  writeValue(value: any): void {
+    if (value) {
+      this.value = value || '';
+    } else {
+      this.value = '';
+    }  }
+  registerOnChange(fn: any): void {
+    this.handleOnChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled =  isDisabled
   }
   ngOnDestroy(): void {}
 

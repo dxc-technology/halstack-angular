@@ -1,34 +1,51 @@
 <div class="formLab">
 
-  <dxc-heading [level]="3" weight="normal" text="Using cdk components in angular forms"></dxc-heading>
-
-   <p>Valor: {{ controlledValue }}</p>
-
-  <form [formGroup]="testForm" >
+  <form [formGroup]="pruebaForm">
 
     <dxc-new-input-text
-        placeholder="placeholder"
-        helperText="helper text"
-        name="nameInput"
-        label="Name"
-        formControlName="nameInput"
-        margin="xsmall"
-        clearable="true"
-        [(ngModel)]="name"
-      ></dxc-new-input-text>
+    placeholder="placeholder"
+    helperText="helper text"
+    label="Input label"
+    margin="xsmall"
+    [value]="controlledValue"
+    (onChange)="changeValue($event)"
+    clearable="true"
+    (onActionClick)="click()"
+    formControlName="pruebaInput"
+  ></dxc-new-input-text>
 
-     <div><input type="text" formControlName="location"  (ngModel)="location"></div>
 
-      <div
-        class="error"
-        *ngIf="testForm.get('nameInput').hasError('required') && testForm.get('nameInput').touched">
-        Name is required
-      </div>
 
+
+  <dxc-new-select
+    label="Label"
+    name="example1"
+    helperText="HelperText"
+    margin="xsmall"
+    [options]="array1"
+    (onChange)="onChange($event)"
+    (onBlur)="onBlur($event)"
+    [optional]="true"
+    placeholder="Another placeholder"
+    size="large"
+    tabIndex="3"
+    [(ngModel)]="myText"
+    formControlName="pruebaSelect"
+  >
+
+
+
+
+  </dxc-new-select>
       <dxc-button  label="Basic Button"
-      (onClick)="onSubmit($event)"
-      margin="medium"></dxc-button>
+      margin="medium" (onClick)="onSubmit($event)"></dxc-button>
 
   </form>
+<!--
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <input name="first" ngModel>
+    <input name="last" ngModel>
+    <button>Submit</button>
+  </form> -->
 
 </div>

@@ -53,6 +53,10 @@ let routes: Routes = [];
   routes.push({ path: 'overview', component: OverviewPageComponent }),
   routes.push({ path: 'guidelines', component: DesignGuidelinesPageComponent }),
   routes.push({
+    path: 'testform',
+    loadChildren: () => import('./pages/forms/forms.module').then(m => m.TestFormsModule)
+  }),
+  routes.push({
     path: 'theme-builder',
     loadChildren: () => import('./pages/theme-builder/theme-builder.module').then(m => m.ThemeBuilderPageModule)
   }),

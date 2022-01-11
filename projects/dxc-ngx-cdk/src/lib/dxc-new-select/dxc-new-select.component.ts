@@ -10,6 +10,7 @@ import {
   OnInit,
   Output,
   QueryList,
+  Self,
   SimpleChanges,
   ViewChild,
   ViewChildren,
@@ -22,7 +23,7 @@ import { OptionGroup } from "./interfaces/optionGroup.interface";
 import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 interface SelectProperties {
   label: string;
@@ -44,12 +45,16 @@ interface SelectProperties {
 @Component({
   selector: "dxc-new-select",
   templateUrl: "./dxc-new-select.component.html",
-  providers: [DxcNewSelectHelper, CssUtils, SelectService ,
+  providers: [
+    DxcNewSelectHelper,
+    CssUtils,
+    SelectService,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DxcNewSelectComponent),
-      multi: true
-    }],
+      multi: true,
+    },
+  ],
 })
 export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
   @HostBinding("class") className;
@@ -120,6 +125,8 @@ export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
   @Input()
   options: Option[] | OptionGroup[];
 
+  formValues: string | string[];
+
   defaultInputs = new BehaviorSubject<SelectProperties>({
     label: "",
     name: "",
@@ -169,19 +176,26 @@ export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     private helper: DxcNewSelectHelper,
-    public service: SelectService,
+    @Self() public service: SelectService,
     private ref: ElementRef
-  ) {}
+  ) {
+    this.service.selectedValues?.subscribe((selectedValues) => {
+      console.log(selectedValues);
+      if (selectedValues){
+        this.formValues = this.multiple ? selectedValues.map(item => item.value).toString() : selectedValues.value;
+      }
+    });
+  }
 
-  public onTouched: () => void = () => { };
+  public onTouched: () => void = () => {};
   public onChangeRegister = (val) => {
-    console.log('Forms registering a change with value  :',val);
-    this.setInputValue(val) ;
+    console.log("Forms registering a change with value  :", val);
+    this.setInputValue(val);
   };
 
   writeValue(val: any): void {
-    console.log('Forms value :',val);
-    this.value = val || "";
+    console.log("Forms value :", val);
+    this.formValues = val || "";
   }
   registerOnChange(fn: any): void {
     this.onChangeRegister = fn;
@@ -259,21 +273,31 @@ export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
           arr.map((el) => {
             op.value.push(el.value);
           });
-          console.log("op:",op);
+          console.log("op:", op);
           this.onChange.emit(op);
         } else {
-          this.onChange.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+          this.onChange.emit({
+            value: [],
+            error: !this.optional
+              ? `This field is required. Please, enter a value.`
+              : null,
+          });
         }
-        if (!this.controlled) {
-          this.service.setSelectedValues(arr);
-        }
+        // if (!this.controlled) {
+        this.service.setSelectedValues(arr);
+        // }
         this.showInput();
         this.isOpened = true;
       } else {
         if (option) {
           this.onChange.emit({ value: option.value, error: null });
         } else {
-          this.onChange.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+          this.onChange.emit({
+            value: "",
+            error: !this.optional
+              ? `This field is required. Please, enter a value.`
+              : null,
+          });
         }
         if (!this.controlled) {
           this.service.setSelectedValues(option);
@@ -296,23 +320,35 @@ export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
         options.map((el) => {
           op.value.push(el.value);
         });
-        if(op.value.length === 0){
-          op.error = !this.optional ? `This field is required. Please, enter a value.` : null;
+        if (op.value.length === 0) {
+          op.error = !this.optional
+            ? `This field is required. Please, enter a value.`
+            : null;
         }
         this.onBlur.emit(op);
       } else {
-        this.onBlur.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+        this.onBlur.emit({
+          value: [],
+          error: !this.optional
+            ? `This field is required. Please, enter a value.`
+            : null,
+        });
       }
     } else {
       if (options) {
-
-        if (options.value === ''){
+        console.log(options);
+        if (options.value === "") {
           this.service.setSelectedValues([]);
         }
 
         this.onBlur.emit({ value: options.value, error: null });
       } else {
-        this.onBlur.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+        this.onBlur.emit({
+          value: "",
+          error: !this.optional
+            ? `This field is required. Please, enter a value.`
+            : null,
+        });
       }
     }
   }
@@ -321,7 +357,7 @@ export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
     if (!this.disabled) {
       event.preventDefault();
       event.stopPropagation();
-      this.containerRef.nativeElement.focus();
+      this.containerRef?.nativeElement?.focus();
     }
   }
 
@@ -331,11 +367,20 @@ export class DxcNewSelectComponent implements OnInit, ControlValueAccessor {
     if (!this.controlled) {
       this.service.setSelectedValues([]);
     }
-    if(this.multiple){
-      this.onChange.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
-    }
-    else{
-      this.onChange.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+    if (this.multiple) {
+      this.onChange.emit({
+        value: [],
+        error: !this.optional
+          ? `This field is required. Please, enter a value.`
+          : null,
+      });
+    } else {
+      this.onChange.emit({
+        value: "",
+        error: !this.optional
+          ? `This field is required. Please, enter a value.`
+          : null,
+      });
     }
   }
 

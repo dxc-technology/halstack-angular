@@ -37,7 +37,7 @@ export class DxcSelectHelper {
           : ""}
         border-radius: 4px;
         opacity: 1;
-        width: inherit;
+        width: 100%;
         padding: 8px;
         box-sizing: border-box;
         position: relative;

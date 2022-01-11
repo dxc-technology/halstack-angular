@@ -4,6 +4,14 @@ import { List } from 'immutable';
 import { ELookupType, Mode, GridMode } from '../lookup/lookup';
 import { FormGroup } from '@angular/forms';
 import { EUserLookupOptions } from '../lookup/lookup'
+import { BehaviorSubject } from 'rxjs';
+
+export interface IThemeInfo {
+  "isDarkMode": boolean,
+  "isTransparent": boolean,
+  "themeColors": { 'color': { 'primary': string, 'effect': string }, active: boolean } [],
+  "backgrounds": { 'id': string, 'title': string, 'background': string, 'active': boolean } []
+}
 
 export interface IConfig {
   SERVER: { [key: string]: string };
@@ -12,10 +20,12 @@ export interface IConfig {
   HELPLINK: string;
   REQUIRED: RequiredFormat;
   ButtonIcon: { [key: string]: string };
-  Settings: { [key: string]: string };
+  Settings: { [key: string]: any };
   Resources: { [key: string]: { description: string, type: string } };
-  ThemeColors?: Array<any>;
-  ThemeMode?: string;
+  ThemeInfo?: BehaviorSubject<IThemeInfo>;
+  // ;
+  // ThemeColors?: Array<{ [key: string]: any }>;
+  // ThemeMode?: string;
 }
 
 

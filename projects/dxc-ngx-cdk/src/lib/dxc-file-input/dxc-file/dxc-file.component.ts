@@ -103,6 +103,23 @@ export class DxcFileComponent implements OnInit {
     );
   }
 
+  getIconAriaLabel() {
+    if (this.file.data.type.includes("video")) {
+      return "video";
+    }
+    if (this.file.data.type.includes("audio")) {
+      return "audio";
+    }
+    if (this.file.data.type.includes("image")) {
+      return "image";
+    }
+    return "file";
+  };
+
+  getRemoveAriaLabel() {
+    return "Remove " + this.file.data.name;
+  };
+
   getDynamicStyle(inputs) {
     return css`
       height: ${this.hasError

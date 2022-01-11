@@ -78,7 +78,13 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   private _step = 1;
 
   @Input()
-  optional = false;
+  get optional(): boolean {
+    return this._optional;
+  }
+  set optional(value: boolean) {
+    this._optional = coerceBooleanProperty(value);
+  }
+  private _optional = false;
 
   @Input()
   error = "";

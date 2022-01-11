@@ -80,16 +80,21 @@ describe("DxcFileInputComponent", () => {
     const file = new File(["foo"], "foo.txt", {
       type: "text/plain",
     });
+    const value: Array<FileData> = [
+      {
+        data: file,
+        image: "",
+        error: "",
+      }
+    ];
     const callback = jest.fn();
     const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input (callbackFile)="callback($event)" minSize="50" multiple="false"></dxc-file-input>`,
-      componentProperties: { callback },
+      template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)" [minSize]="50" multiple="false"></dxc-file-input>`,
+      componentProperties: { callback, value },
       excludeComponentDeclaration: true,
       imports: [DxcFileInputModule],
     });
     fileInput.detectChanges();
-    const inputEl = fileInput.getByTestId("input");
-    fireEvent.change(inputEl, { target: { files: [file] } });
     await waitFor(() => {
       fileInput.detectChanges();
       expect(screen.getByText("foo.txt"));
@@ -207,10 +212,10 @@ describe("DxcFileInputComponent", () => {
     });
     const value = [{
           data: file,
-          image: ""
+          image: null
         }, {
           data: file2,
-          image: ""
+          image: null
         }];
     const fileInput = await render(DxcFileInputComponent, {
       template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,

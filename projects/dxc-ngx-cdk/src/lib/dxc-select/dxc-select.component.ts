@@ -232,10 +232,9 @@ export class DxcSelectComponent implements OnInit {
           arr.map((el) => {
             op.value.push(el.value);
           });
-          console.log("op:",op);
           this.onChange.emit(op);
         } else {
-          this.onChange.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+          this.onChange.emit({ value: [], error: this.isRequired() });
         }
         if (!this.controlled) {
           this.service.setSelectedValues(arr);
@@ -246,7 +245,7 @@ export class DxcSelectComponent implements OnInit {
         if (option) {
           this.onChange.emit({ value: option.value, error: null });
         } else {
-          this.onChange.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+          this.onChange.emit({ value: "", error: this.isRequired() });
         }
         if (!this.controlled) {
           this.service.setSelectedValues(option);
@@ -270,17 +269,17 @@ export class DxcSelectComponent implements OnInit {
           op.value.push(el.value);
         });
         if(op.value.length === 0){
-          op.error = !this.optional ? `This field is required. Please, enter a value.` : null;
+          op.error = this.isRequired();
         }
         this.onBlur.emit(op);
       } else {
-        this.onBlur.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+        this.onBlur.emit({ value: [], error: this.isRequired() });
       }
     } else {
       if (options) {
         this.onBlur.emit({ value: options.value, error: null });
       } else {
-        this.onBlur.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+        this.onBlur.emit({ value: "", error: this.isRequired() });
       }
     }
   }
@@ -300,10 +299,10 @@ export class DxcSelectComponent implements OnInit {
       this.service.setSelectedValues([]);
     }
     if(this.multiple){
-      this.onChange.emit({ value: [], error: !this.optional ? `This field is required. Please, enter a value.` : null });
+      this.onChange.emit({ value: [], error: this.isRequired() });
     }
     else{
-      this.onChange.emit({ value: "", error: !this.optional ? `This field is required. Please, enter a value.` : null });
+      this.onChange.emit({ value: "", error: this.isRequired() });
     }
   }
 
@@ -558,4 +557,6 @@ export class DxcSelectComponent implements OnInit {
         this.inputValue === null)
     );
   }
+
+  private isRequired = () => !this.optional ? `This field is required. Please, enter a value.` : null;
 }

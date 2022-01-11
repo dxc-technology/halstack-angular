@@ -37,7 +37,7 @@ describe("DxcPasswordInputComponent", () => {
     expect(screen.queryByText("test-input")).toBeInTheDocument();
     expect(screen.getByDisplayValue("password-test")).toBeTruthy();
     fireEvent.click(btn);
-    expect(onChange).toHaveBeenCalledWith({ value: "", error: null });
+    expect(onChange).toHaveBeenCalledWith({ value: "", error: "This field is required. Please, enter a value." });
   });
 
   test("should mask input password", async () => {

@@ -126,4 +126,36 @@ describe("DxcSelectComponent tests", () => {
     expect((screen.getAllByText('label9')[0].getAttribute("aria-selected"))).toBe("false");
     expect((screen.getAllByText('aida')[0].getAttribute("aria-selected"))).toBe("false");
   });
+
+  
+  test("should render optional error", async () => {
+    const array1: Option[] = [
+      { label: "label1", value: "1" },
+      { label: "label2", value: "2" },
+      { label: "label6", value: "6" },
+      { label: "label9", value: "9" },
+      { label: "aida", value: "10" },
+      { label: "pepe", value: "11" },
+    ];
+    const onBlur = jest.fn((x) => {});
+    const dxcSelect = await render(DxcSelectComponent, {
+      componentProperties: {
+        label: "Select label",
+        helperText: "Helper Text",
+        options: array1,
+        onBlur: {
+          emit: onBlur,
+        } as any,
+      },
+      excludeComponentDeclaration: true,
+      imports: [DxcSelectModule],
+    });
+
+    expect(dxcSelect.getByText("Select label"));
+    expect(dxcSelect.getByText("Helper Text"));
+    fireEvent.click(dxcSelect.getByText("Choose an option"));
+    fireEvent.focusOut(dxcSelect.getByText("Choose an option"));
+    expect(onBlur).toHaveBeenCalledWith({value: "", error: "This field is required. Please, enter a value."});
+
+  });
 });

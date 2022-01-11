@@ -185,7 +185,7 @@ export class DxcTextareaComponent implements OnInit {
 
   handleOnChange(event) {
     if (this.value !== event && this.isDirty) {
-      this.onChange.emit({value: event, error: this.validateValue(event)});
+      this.onChange.emit({ value: event, error: this.validateValue(event) });
     }
     if (!this.controlled) {
       this.value = event;
@@ -200,23 +200,11 @@ export class DxcTextareaComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  checkHeight(){
-    if(this.textareaRef){
-      if (this.verticalGrow === "auto") {
-        const textareaLineHeight = parseInt(window.getComputedStyle(this.textareaRef.nativeElement)["line-height"]);
-        const textareaPaddingTopBottom = parseInt(window.getComputedStyle(this.textareaRef.nativeElement)["padding-top"]) * 2;
-        this.textareaRef.nativeElement.style.height = `${textareaLineHeight * this.rows}px`;
-        const newHeight = this.textareaRef.nativeElement.scrollHeight - textareaPaddingTopBottom;
-        this.textareaRef.nativeElement.style.height = `${newHeight}px`;
-      }
-    }
-  }
-
   handleOnBlur() {
-    const validationError = this.validateValue(this.value);
-    this.validationError = validationError;
-    this.hasError = this.validationError ? true : false;
-    this.onBlur.emit({ value: this.value, error: validationError });
+    this.onBlur.emit({
+      value: this.value,
+      error: this.handleValidationError(),
+    });
   }
 
   handleOnFocus() {
@@ -225,19 +213,58 @@ export class DxcTextareaComponent implements OnInit {
     }
   }
 
-  validateValue(value) {
-    let err =
-      (this.length.min && value && value.length < +this.length.min) ||
-      (this.length.max && value && value.length > +this.length.max)
-        ? `Min length ${this.length.min}, Max length ${this.length.max}`
-        : value && !this.patternMatch(this.pattern, value)
-        ? `Please use a valid pattern`
-        : null;
-    return err;
+  private validateValue(value) {
+    if (this.isRequired(value))
+      return `This field is required. Please, enter a value.`;
+    if (this.isLengthIncorrect(value))
+      return `Min length ${this.length.min}, Max length ${this.length.max}`;
+    if (value && !this.patternMatch(this.pattern, value))
+      return `Please use a valid pattern`;
+    return null;
   }
 
-  patternMatch(pattern, value) {
+  private handleValidationError() {
+    const validationError = this.validateValue(this.value);
+    this.validationError = validationError;
+    this.hasError = this.validationError ? true : false;
+    return validationError;
+  }
+
+  private patternMatch(pattern, value) {
     const patternToMatch = new RegExp(pattern);
     return patternToMatch.test(value);
+  }
+
+  private isRequired = (value) => value === "" && !this.optional;
+
+  private isLengthIncorrect = (value) =>
+    (value !== "" &&
+      this.length &&
+      this.length.min &&
+      value &&
+      value.length < +this.length.min) ||
+    (this.length.max && value && value.length > +this.length.max);
+
+  private checkHeight() {
+    if (this.textareaRef) {
+      if (this.verticalGrow === "auto") {
+        const textareaLineHeight = parseInt(
+          window.getComputedStyle(this.textareaRef.nativeElement)["line-height"]
+        );
+        const textareaPaddingTopBottom =
+          parseInt(
+            window.getComputedStyle(this.textareaRef.nativeElement)[
+              "padding-top"
+            ]
+          ) * 2;
+        this.textareaRef.nativeElement.style.height = `${
+          textareaLineHeight * this.rows
+        }px`;
+        const newHeight =
+          this.textareaRef.nativeElement.scrollHeight -
+          textareaPaddingTopBottom;
+        this.textareaRef.nativeElement.style.height = `${newHeight}px`;
+      }
+    }
   }
 }

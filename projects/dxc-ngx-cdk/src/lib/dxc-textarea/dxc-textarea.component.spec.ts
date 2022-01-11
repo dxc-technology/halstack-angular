@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { fireEvent, render } from '@testing-library/angular';
 import { screen, waitFor } from '@testing-library/dom';
@@ -75,7 +74,7 @@ describe('DxcTextareaComponent', () => {
     await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
-        rows: 10
+        rows: 10,
       },
       imports: [CommonModule, FormsModule],
     });
@@ -85,7 +84,7 @@ describe('DxcTextareaComponent', () => {
   test("Strict mode - Pattern constraint", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    const dxctextarea = await render(DxcTextareaComponent, {
+    await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
         placeholder: "Placeholder",
@@ -96,11 +95,12 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        pattern: '^.*(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%&? "]).*$'
+        pattern: '^.*(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%&? "]).*$',
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
 
     textarea.focus();
     expect(textarea).toHaveFocus();
@@ -135,11 +135,12 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        length: length
+        length: length,
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -172,11 +173,12 @@ describe('DxcTextareaComponent', () => {
         } as any,
         margin: "medium",
         pattern: '^.*(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%&? "]).*$',
-        length: length
+        length: length,
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
 
     textarea.focus();
     expect(textarea).toHaveFocus();
@@ -216,11 +218,12 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        pattern: '^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$'
+        pattern: '^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$',
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -247,11 +250,12 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        length: length
+        length: length,
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -278,11 +282,12 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        length: length
+        length: length,
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -297,10 +302,11 @@ describe('DxcTextareaComponent', () => {
         onBlur: {
           emit: onBlur,
         } as any,
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -323,10 +329,11 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -350,10 +357,11 @@ describe('DxcTextareaComponent', () => {
         onChange: {
           emit: onChange,
         } as any,
+        optional: true
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label");
+    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);

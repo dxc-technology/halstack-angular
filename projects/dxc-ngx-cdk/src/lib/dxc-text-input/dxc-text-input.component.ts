@@ -6,6 +6,7 @@ import {
   Input,
   OnInit,
   Output,
+  forwardRef,
   OnChanges,
   SimpleChanges,
   ChangeDetectorRef,
@@ -20,13 +21,23 @@ import { OnDestroy } from "@angular/core";
 import { DxcTextInputHelper } from "./dxc-text-input.helper";
 import { v4 as uuidv4 } from "uuid";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
   selector: "dxc-text-input",
   templateUrl: "./dxc-text-input.component.html",
-  providers: [DxcTextInputService, DxcTextInputHelper, CssUtils],
+  providers: [
+    DxcTextInputService,
+    DxcTextInputHelper,
+    CssUtils,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DxcTextInputComponent),
+      multi: true,
+    },
+  ],
 })
-export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
+export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
@@ -172,6 +183,25 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
       }, 0);
     });
   }
+
+  onTouch = () => { }
+
+  writeValue(value: any): void {
+    if (value) {
+      this.value = value || '';
+    } else {
+      this.value = '';
+    }  }
+  registerOnChange(fn: any): void {
+    this.handleOnChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled =  isDisabled
+  }
+
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
@@ -211,7 +241,8 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
       if (
         this.suggestions &&
         (this.suggestions.length || this.autosuggestType === "async") &&
-        this.filteredOptions?.length > 0 && this.isDirty
+        this.filteredOptions?.length > 0 &&
+        this.isDirty
       ) {
         this.autosuggestVisible = true;
       } else {
@@ -275,7 +306,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleDefaultClearAction() {
-    if(!this.isDirty) {
+    if (!this.isDirty) {
       this.isDirty = true;
     }
     this.handleOnChange("");
@@ -292,7 +323,10 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleOnBlur() {
-    this.onBlur.emit({ value: this.value, error: this.handleValidationError() });
+    this.onBlur.emit({
+      value: this.value,
+      error: this.handleValidationError(),
+    });
   }
 
   handleOnFocus() {

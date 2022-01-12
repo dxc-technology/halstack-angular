@@ -4,11 +4,11 @@
       *ngFor="let option of selectedOptions; last as last"
       class="selectedOption"
     >
-      <span
+      <!-- <span
         *ngIf="option?.icon"
         class="iconLabel"
         [innerHTML]="option.icon | safeHtml"
-      ></span>
+      ></span> -->
       <span class="selectedLabel">
         {{ option.label }} <span *ngIf="!last" class="comma">,</span>
       </span>

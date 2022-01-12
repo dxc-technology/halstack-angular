@@ -8,6 +8,8 @@ import {
   Input,
   OnInit,
   Output,
+  forwardRef,
+  Self,
   QueryList,
   SimpleChanges,
   ViewChild,
@@ -21,6 +23,7 @@ import { OptionGroup } from "./interfaces/optionGroup.interface";
 import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 interface SelectProperties {
   label: string;
@@ -42,9 +45,18 @@ interface SelectProperties {
 @Component({
   selector: "dxc-select",
   templateUrl: "./dxc-select.component.html",
-  providers: [DxcSelectHelper, CssUtils, SelectService],
+  providers: [
+    DxcSelectHelper,
+    CssUtils,
+    SelectService,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DxcSelectComponent),
+      multi: true,
+    },
+  ],
 })
-export class DxcSelectComponent implements OnInit {
+export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   @HostBinding("class") className;
 
   @Input()
@@ -143,6 +155,7 @@ export class DxcSelectComponent implements OnInit {
   controlled: boolean = false;
   focusedOption: VisualOptionFocus;
   optionalOption: Option;
+  formValues: string | string[];
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -162,9 +175,35 @@ export class DxcSelectComponent implements OnInit {
 
   constructor(
     private helper: DxcSelectHelper,
-    public service: SelectService,
+    @Self() public service: SelectService,
     private ref: ElementRef
-  ) {}
+  ) {
+    this.service.selectedValues?.subscribe((selectedValues) => {
+      if (selectedValues){
+        this.formValues = this.multiple ? selectedValues.map(item => item.value).toString() : selectedValues.value;
+      }
+    });
+  }
+
+  public onTouched: () => void = () => {};
+  public onChangeRegister = (val) => {
+    console.log("Forms registering a change with value  :", val);
+    this.setInputValue(val);
+  };
+
+  writeValue(val: any): void {
+    console.log("Forms value :", val);
+    this.formValues = val || "";
+  }
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
@@ -236,9 +275,7 @@ export class DxcSelectComponent implements OnInit {
         } else {
           this.onChange.emit({ value: [], error: this.isRequired() });
         }
-        if (!this.controlled) {
-          this.service.setSelectedValues(arr);
-        }
+        this.service.setSelectedValues(arr);
         this.showInput();
         this.isOpened = true;
       } else {
@@ -268,7 +305,7 @@ export class DxcSelectComponent implements OnInit {
         options.map((el) => {
           op.value.push(el.value);
         });
-        if(op.value.length === 0){
+        if (op.value.length === 0) {
           op.error = this.isRequired();
         }
         this.onBlur.emit(op);
@@ -277,6 +314,9 @@ export class DxcSelectComponent implements OnInit {
       }
     } else {
       if (options) {
+        if (options.value === "") {
+          this.service.setSelectedValues([]);
+        }
         this.onBlur.emit({ value: options.value, error: null });
       } else {
         this.onBlur.emit({ value: "", error: this.isRequired() });
@@ -288,7 +328,7 @@ export class DxcSelectComponent implements OnInit {
     if (!this.disabled) {
       event.preventDefault();
       event.stopPropagation();
-      this.containerRef.nativeElement.focus();
+      this.containerRef?.nativeElement?.focus();
     }
   }
 
@@ -298,10 +338,9 @@ export class DxcSelectComponent implements OnInit {
     if (!this.controlled) {
       this.service.setSelectedValues([]);
     }
-    if(this.multiple){
+    if (this.multiple) {
       this.onChange.emit({ value: [], error: this.isRequired() });
-    }
-    else{
+    } else {
       this.onChange.emit({ value: "", error: this.isRequired() });
     }
   }
@@ -558,5 +597,6 @@ export class DxcSelectComponent implements OnInit {
     );
   }
 
-  private isRequired = () => !this.optional ? `This field is required. Please, enter a value.` : null;
+  private isRequired = () =>
+    !this.optional ? `This field is required. Please, enter a value.` : null;
 }

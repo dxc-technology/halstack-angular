@@ -149,6 +149,8 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   onBlur = new EventEmitter<any>();
 
   id: string;
+  optionsListId: string;
+  selectLabelId: string;
   isOpened: boolean = false;
   inputValue: string;
   isInputVisible: boolean = true;
@@ -156,6 +158,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   focusedOption: VisualOptionFocus;
   optionalOption: Option;
   formValues: string | string[];
+  activeDescendant: string;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -221,13 +224,16 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
-    this.id = this.id || uuidv4();
+    this.id = `select-${uuidv4()}`;
+    this.selectLabelId = `label-${this.id}`;
+    this.optionsListId = `${this.id}-listbox`;
     this.className = `${this.helper.getDynamicStyle({
       ...this.defaultInputs.getValue(),
     })}`;
     this.controlled = this.value || this.value === "" ? true : false;
     this.service.visualFocused.subscribe((value) => {
       this.focusedOption = value;
+      this.setActiveDescendantAttr();
       if (this.focusedOption.option === -1) {
         this.scrollByIndex(this.optionsRef, 0);
       } else if (
@@ -249,6 +255,16 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         }
       }
     });
+  }
+
+  private setActiveDescendantAttr(){
+    const indexOptionalLabel = this.optional ? -1 : 0;
+    this.activeDescendant =
+    this.focusedOption.option < indexOptionalLabel
+      ? 'false'
+      : this.focusedOption.group !== undefined
+      ? `option-${this.focusedOption.group}-${this.focusedOption.option}`
+      : `option-${this.focusedOption.option}`;
   }
 
   handleOptionMouseDown(event) {

@@ -1,7 +1,7 @@
 <span
   *ngIf="label"
   class="inputLabel"
-  id="{{ id }}"
+  id="{{ selectLabelId }}"
   role="label"
   (click)="focusContainer($event)"
   >{{ label }}
@@ -15,6 +15,8 @@
   [name]="name"
   [value]="formValues"
   style="display: none"
+  readOnly
+  attr.aria-hidden="true"
 />
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div
@@ -24,9 +26,15 @@
   (keydown)="handleOnKeyDown($event)"
   (focusout)="handleOnFocusOut()"
   attr.aria-label="{{ label }}"
-  attr.aria-labelledby="{{ id }}"
+  attr.aria-labelledby="{{ selectLabelId }}"
   #containerRef
   role="combobox"
+  attr.aria-controls="{{ optionsListId }}"
+  attr.aria-expanded="{{ isOpened }}"
+  attr.aria-haspopup="listbox"
+  attr.aria-activedescendant="{{ activeDescendant }}"
+  [attr.aria-invalid]="error ? 'true' : 'false'"
+  attr.aria-required="{{ !optional }}"
 >
   <div class="valueContainer" *ngIf="!searchable || (searchable && multiple)">
     <div
@@ -40,6 +48,8 @@
         class="removeContainer"
         (click)="removeSelectedValues($event)"
         tabindex="0"
+        title="Clear selected options"
+        attr.aria-label="Clear selected options"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M0 0h24v24H0z" fill="none" />
@@ -83,6 +93,7 @@
         [disabled]="disabled"
         [tabindex]="tabIndex"
         autocomplete="off"
+        autocorrect="off"
         (ngModelChange)="handleOnChangeInput($event)"
         [ngModel]="inputValue"
         (blur)="handleBlurInput()"
@@ -94,8 +105,9 @@
       class="inputClear"
       (mousedown)="handleClearInput($event)"
       [disabled]="disabled"
-      aria-label="Clear"
       [tabindex]="tabIndex"
+      title="Clear search text"
+      attr.aria-label="Clear search text"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -150,6 +162,9 @@
     [ngClass]="{
       closed: !this.isOpened
     }"
+    role="listbox"
+    attr.aria-labelledby="{{ selectLabelId }}"
+    attr.aria-multiselectable="{{ multiple }}"
     #optionsRef
   >
     <li *ngIf="hasOptional()">
@@ -247,6 +262,9 @@
     [ngClass]="{
       closed: !this.isOpened
     }"
+    role="listbox"
+    attr.aria-labelledby="{{ selectLabelId }}"
+    attr.aria-multiselectable="{{ multiple }}"
     #optionsRef
   >
     <li

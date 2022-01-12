@@ -1042,7 +1042,7 @@ export const componentTokens = {
   "--select-unselectedActiveListItemBackgroundColor": globalTokens.hal_grey_l_90,
   "--select-selectedlistItemBackgroundColor": globalTokens.hal_grey_l_90,
   "--select-selectedHoverListItemBackgroundColor": globalTokens.hal_grey_l_80,
-  "--select-selectedActivelistItemBackgroundColor": globalTokens.hal_grey_l_75,
+  "--select-selectedActivelistItemBackgroundColor": globalTokens.hal_blue_l_80,
   "--select-selectedListItemIconColor": globalTokens.hal_blue_d_20,
   "--select-optionBorderThickness": "0px",
   "--select-optionBorderStyle": globalTokens.border_solid,

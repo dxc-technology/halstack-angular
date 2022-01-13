@@ -794,6 +794,9 @@ export const componentTokens = {
   "--textInput-hoverListOptionBackgroundColor": globalTokens.hal_grey_l_95,
   "--textInput-activeListOptionBackgroundColor": globalTokens.hal_grey_l_80,
 
+  "--textInput-inputMarginTop": globalTokens.spacing_02,
+  "--textInput-inputMarginBottom": globalTokens.spacing_02,
+
   "--textInput-scrollBarThumbColor": globalTokens.hal_grey_s_40,
   "--textInput-scrollBarTrackColor": globalTokens.lightGrey,
   "--textInput-selectedOptionBackgroundColor": globalTokens.lightGrey,

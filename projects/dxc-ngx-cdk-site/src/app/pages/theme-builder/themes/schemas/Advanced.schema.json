@@ -639,7 +639,9 @@
     "errorMessageBorderColor": "color",
     "errorMessageBackgroundColor": "color",
     "hoverListOptionBackgroundColor": "color",
-    "activeListOptionBackgroundColor": "color"
+    "activeListOptionBackgroundColor": "color",
+    "inputMarginBottom": "length",
+    "inputMarginTop": "length"
   },
   "textarea": {
     "fontFamily": "fFamily",

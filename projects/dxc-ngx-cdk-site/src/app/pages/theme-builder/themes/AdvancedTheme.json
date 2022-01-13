@@ -638,7 +638,9 @@
     "errorMessageBorderColor": "#d0011b",
     "errorMessageBackgroundColor": "#ffe6e9",
     "hoverListOptionBackgroundColor": "#f2f2f2",
-    "activeListOptionBackgroundColor": "#cccccc"
+    "activeListOptionBackgroundColor": "#cccccc",
+    "inputMarginBottom": "0.25rem",
+    "inputMarginTop": "0.25rem"
   },
   "textarea": {
     "fontFamily": "Open Sans, sans-serif",

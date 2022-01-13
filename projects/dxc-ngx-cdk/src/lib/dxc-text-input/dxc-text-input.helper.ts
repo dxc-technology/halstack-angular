@@ -74,46 +74,47 @@ export class DxcTextInputHelper {
   }
 
   getDisabledDarkStyle() {
-    return css`
-      dxc-text-input-prefix {
-        border-right: 1px solid var(--textInput-disabledPrefixColorOnDark);
-        color: var(--textInput-disabledPrefixColorOnDark);
-      }
-      dxc-text-input-suffix {
-        border-left: 1px solid var(--textInput-disabledSuffixColorOnDark);
-        color: var(--textInput-disabledSuffixColorOnDark);
-      }
-      .inputLabel,
-      .inputOptionalLabel {
-        color: var(--textInput-disabledLabelFontColorOnDark);
-      }
-      .helperText {
-        color: var(--textInput-disabledHelperTextFontColorOnDark);
-      }
-      .inputText {
-        color: var(--textInput-disabledValueFontColorOnDark);
-      }
-      .inputText::placeholder {
-        color: var(--textInput-disabledPlaceholderFontColorOnDark);
-      }
-      .inputAction {
-        pointer-events: none;
-        background-color: var(--textInput-disabledActionBackgroundColorOnDark);
-        color: var(--textInput-disabledActionIconColorOnDark);
-        fill: var(--textInput-disabledActionIconColorOnDark);
-      }
-      .inputText,
-      .inputAction {
-        cursor: not-allowed;
-      }
-      .inputContainer,
-      .inputContainer:hover {
-        border: 1px solid var(--textInput-disabledBorderColorOnDark);
-        box-shadow: none;
-        cursor: not-allowed;
-        background-color: var(--textInput-disabledContainerFillColorOnDark);
-      }
-    `;
+    return css``;
+    // return css`
+    //   dxc-text-input-prefix {
+    //     border-right: 1px solid var(--textInput-disabledPrefixColorOnDark);
+    //     color: var(--textInput-disabledPrefixColorOnDark);
+    //   }
+    //   dxc-text-input-suffix {
+    //     border-left: 1px solid var(--textInput-disabledSuffixColorOnDark);
+    //     color: var(--textInput-disabledSuffixColorOnDark);
+    //   }
+    //   .inputLabel,
+    //   .inputOptionalLabel {
+    //     color: var(--textInput-disabledLabelFontColorOnDark);
+    //   }
+    //   .helperText {
+    //     color: var(--textInput-disabledHelperTextFontColorOnDark);
+    //   }
+    //   .inputText {
+    //     color: var(--textInput-disabledValueFontColorOnDark);
+    //   }
+    //   .inputText::placeholder {
+    //     color: var(--textInput-disabledPlaceholderFontColorOnDark);
+    //   }
+    //   .inputAction {
+    //     pointer-events: none;
+    //     background-color: var(--textInput-disabledActionBackgroundColorOnDark);
+    //     color: var(--textInput-disabledActionIconColorOnDark);
+    //     fill: var(--textInput-disabledActionIconColorOnDark);
+    //   }
+    //   .inputText,
+    //   .inputAction {
+    //     cursor: not-allowed;
+    //   }
+    //   .inputContainer,
+    //   .inputContainer:hover {
+    //     border: 1px solid var(--textInput-disabledBorderColorOnDark);
+    //     box-shadow: none;
+    //     cursor: not-allowed;
+    //     background-color: var(--textInput-disabledContainerFillColorOnDark);
+    //   }
+    // `;
   }
 
   getDynamicStyle(inputs) {
@@ -147,17 +148,17 @@ export class DxcTextInputHelper {
       }
 
       dxc-text-input-prefix, dxc-text-input-suffix{
-        height: calc(1rem * 1.5);
-        line-height: calc(1rem * 1.5);
+        height: 1.5rem;
+        line-height: 1.5rem;
         font-family: var(--textInput-fontFamily);
         pointer-events: none;
       }
 
       dxc-text-input-suffix{
         border-left: 1px solid var(--textInput-suffixColor);
-        margin-right: calc(1rem * 0.5);
-        margin-left: calc(1rem * 0.25);
-        padding: 0 0 0 calc(1rem * 0.5);
+        margin-right: 0.25rem;
+        margin-left: 0.25rem;
+        padding: 0 0 0 0.5rem;
         color: var(--textInput-suffixColor);
         font-size: var(--textInput-suffixFontSize);
         font-style: var(--textInput-suffixFontStyle);
@@ -166,8 +167,8 @@ export class DxcTextInputHelper {
 
       dxc-text-input-prefix{
         border-right: 1px solid var(--textInput-prefixColor);
-        margin-left: calc(1rem * 0.25);
-        padding: 0 calc(1rem * 0.5) 0 0;
+        margin-left: 0.25rem;
+        padding: 0 0.5rem 0 0;
         color: var(--textInput-prefixColor);
         font-size: var(--textInput-prefixFontSize);
         font-style: var(--textInput-prefixFontStyle);
@@ -208,6 +209,8 @@ export class DxcTextInputHelper {
       }
 
       .inputContainer {
+        margin-top: var(--textInput-inputMarginTop);
+        margin-bottom: var(--textInput-inputMarginBottom);
         position: relative;
         display: flex;
         align-items: center;
@@ -223,7 +226,7 @@ export class DxcTextInputHelper {
             : ""
         };
         border-radius: 4px;
-        padding: 0 calc(1rem * 0.5);
+        padding: 0 0.5rem;
         &:hover {
           ${
             inputs.error
@@ -244,7 +247,7 @@ export class DxcTextInputHelper {
         background: none;
         border: none;
         outline: none;
-        padding: 0 calc(1rem * 0.5);
+        padding: 0 0.5rem;
         color: var(--textInput-valueFontColor);
         font-family: var(--textInput-fontFamily);
         font-size: var(--textInput-valueFontSize);
@@ -258,9 +261,10 @@ export class DxcTextInputHelper {
       }
 
       .inputAction {
+        padding: 3px;
         height: 24px;
         max-width: 24px;
-        padding: 3px;
+        margin-left: 0.25rem;
         font-size: 1rem;
         font-family: var(--textInput-fontFamily);
         border: 1px solid var(--textInput-actionBackgroundColor);
@@ -292,13 +296,13 @@ export class DxcTextInputHelper {
           color: var(--textInput-activeActionIconColor);
         }
         svg {
-          line-height: 18px;
+          line-height: 16px;
         }
       }
       .inputErrorIcon {
         height: 18px;
         width: 18px;
-        margin-right: 4px;
+        margin-left: 0.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -421,77 +425,78 @@ export class DxcTextInputHelper {
   }
 
   getDarkStyle(inputs) {
-    return css`
-      dxc-text-input-prefix {
-        border-right: 1px solid var(--textInput-prefixColorOnDark);
-        color: var(--textInput-prefixColorOnDark);
-      }
-      dxc-text-input-suffix {
-        border-left: 1px solid var(--textInput-suffixColorOnDark);
-        color: var(--textInput-suffixColorOnDark);
-      }
-      .inputLabel,
-      .inputOptionalLabel {
-        color: var(--textInput-labelFontColorOnDark);
-      }
-      .helperText {
-        color: var(--textInput-helperTextFontColorOnDark);
-      }
-      .inputText {
-        color: var(--textInput-valueFontColorOnDark);
-        caret-color: var(--textInput-valueFontColorOnDark);
-        &::placeholder {
-          color: var(--textInput-placeholderFontColorOnDark);
-        }
-      }
-      .inputContainer {
-        border: ${inputs.error
-          ? `1px solid var(--textInput-errorBorderColorOnDark)`
-          : "1px solid var(--textInput-enabledBorderColorOnDark)"};
-        ${inputs.error
-          ? `box-shadow: inset 0 0 0 1px var(--textInput-errorBorderColorOnDark);`
-          : ""};
-        &:hover {
-          ${inputs.error
-            ? `border-color: var(--textInput-hoverErrorBorderColorOnDark);
-                   box-shadow: inset 0 0 0 1px var(--textInput-hoverErrorBorderColorOnDark);`
-            : `border-color: var(--textInput-hoverBorderColorOnDark);`};
-        }
-        &:focus-within {
-          border: 1px solid var(--textInput-focusBorderColorOnDark);
-          box-shadow: inset 0 0 0 1px var(--textInput-focusBorderColorOnDark);
-        }
-      }
-      .inputAction {
-        border: 1px solid var(--textInput-actionBackgroundColorOnDark);
-        background-color: var(--textInput-actionBackgroundColorOnDark);
-        color: var(--textInput-actionIconColorOnDark);
-        &:hover {
-          color: var(--textInput-hoverActionIconColorOnDark);
-          background-color: var(--textInput-hoverActionBackgroundColorOnDark);
-        }
-        &:focus {
-          color: var(--textInput-focusActionIconColorOnDark);
-          border: 2px solid var(--textInput-focusActionBorderColorOnDark);
-        }
-        &:focus-visible {
-          color: var(--textInput-focusActionIconColorOnDark);
-          border: 2px solid var(--textInput-focusActionBorderColorOnDark);
-        }
-        &:active {
-          border: 2px solid var(--textInput-focusActionBorderColorOnDark);
-          box-shadow: inset 0 0 0 1px
-            var(--textInput-activeActionBackgroundColorOnDark);
-          background-color: var(--textInput-activeActionBackgroundColorOnDark);
-          color: var(--textInput-activeActionIconColorOnDark);
-        }
-      }
-      .inputErrorIcon {
-        color: var(--textInput-errorIconColorOnDark);
-      }
-      .inputErrorMessage {
-        color: var(--textInput-errorMessageColorOnDark);
-      }
-    `;
+    return css``;
+    // return css`
+    //   dxc-text-input-prefix {
+    //     border-right: 1px solid var(--textInput-prefixColorOnDark);
+    //     color: var(--textInput-prefixColorOnDark);
+    //   }
+    //   dxc-text-input-suffix {
+    //     border-left: 1px solid var(--textInput-suffixColorOnDark);
+    //     color: var(--textInput-suffixColorOnDark);
+    //   }
+    //   .inputLabel,
+    //   .inputOptionalLabel {
+    //     color: var(--textInput-labelFontColorOnDark);
+    //   }
+    //   .helperText {
+    //     color: var(--textInput-helperTextFontColorOnDark);
+    //   }
+    //   .inputText {
+    //     color: var(--textInput-valueFontColorOnDark);
+    //     caret-color: var(--textInput-valueFontColorOnDark);
+    //     &::placeholder {
+    //       color: var(--textInput-placeholderFontColorOnDark);
+    //     }
+    //   }
+    //   .inputContainer {
+    //     border: ${inputs.error
+    //       ? `1px solid var(--textInput-errorBorderColorOnDark)`
+    //       : "1px solid var(--textInput-enabledBorderColorOnDark)"};
+    //     ${inputs.error
+    //       ? `box-shadow: inset 0 0 0 1px var(--textInput-errorBorderColorOnDark);`
+    //       : ""};
+    //     &:hover {
+    //       ${inputs.error
+    //         ? `border-color: var(--textInput-hoverErrorBorderColorOnDark);
+    //                box-shadow: inset 0 0 0 1px var(--textInput-hoverErrorBorderColorOnDark);`
+    //         : `border-color: var(--textInput-hoverBorderColorOnDark);`};
+    //     }
+    //     &:focus-within {
+    //       border: 1px solid var(--textInput-focusBorderColorOnDark);
+    //       box-shadow: inset 0 0 0 1px var(--textInput-focusBorderColorOnDark);
+    //     }
+    //   }
+    //   .inputAction {
+    //     border: 1px solid var(--textInput-actionBackgroundColorOnDark);
+    //     background-color: var(--textInput-actionBackgroundColorOnDark);
+    //     color: var(--textInput-actionIconColorOnDark);
+    //     &:hover {
+    //       color: var(--textInput-hoverActionIconColorOnDark);
+    //       background-color: var(--textInput-hoverActionBackgroundColorOnDark);
+    //     }
+    //     &:focus {
+    //       color: var(--textInput-focusActionIconColorOnDark);
+    //       border: 2px solid var(--textInput-focusActionBorderColorOnDark);
+    //     }
+    //     &:focus-visible {
+    //       color: var(--textInput-focusActionIconColorOnDark);
+    //       border: 2px solid var(--textInput-focusActionBorderColorOnDark);
+    //     }
+    //     &:active {
+    //       border: 2px solid var(--textInput-focusActionBorderColorOnDark);
+    //       box-shadow: inset 0 0 0 1px
+    //         var(--textInput-activeActionBackgroundColorOnDark);
+    //       background-color: var(--textInput-activeActionBackgroundColorOnDark);
+    //       color: var(--textInput-activeActionIconColorOnDark);
+    //     }
+    //   }
+    //   .inputErrorIcon {
+    //     color: var(--textInput-errorIconColorOnDark);
+    //   }
+    //   .inputErrorMessage {
+    //     color: var(--textInput-errorMessageColorOnDark);
+    //   }
+    // `;
   }
 }

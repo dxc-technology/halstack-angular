@@ -50,19 +50,40 @@ export class SelectService {
     this.filteredOptions.next(array);
   }
 
-  public onArrowDown(optional: boolean): void {
+  public onArrowDown(optional: boolean, isDirty: boolean): void {
     if (
-      this.filteredOptions &&
-      this.filteredOptions.getValue() &&
-      this.instanceOfOption(this.filteredOptions.getValue()[0])
+      !isDirty &&
+      this.getSelectedValues() !== undefined &&
+      this.getSelectedValues() !== null
     ) {
-      this.arrowDownOptions(optional);
-    } else if (
-      this.filteredOptions &&
-      this.filteredOptions.getValue() &&
-      !this.instanceOfOption(this.filteredOptions.getValue()[0])
-    ) {
-      this.arrowDownGroups(optional);
+      this.setSelectedFocus();
+    } else {
+      if (
+        this.filteredOptions &&
+        this.filteredOptions.getValue() &&
+        this.instanceOfOption(this.filteredOptions.getValue()[0])
+      ) {
+        this.arrowDownOptions(optional);
+      } else if (
+        this.filteredOptions &&
+        this.filteredOptions.getValue() &&
+        !this.instanceOfOption(this.filteredOptions.getValue()[0])
+      ) {
+        this.arrowDownGroups(optional);
+      }
+    }
+  }
+
+  private setSelectedFocus() {
+    if (this.instanceOfOption(this.filteredOptions.getValue()[0])) {
+      this.visualFocused.next({
+        option: this.visualFocused.getValue().option,
+      });
+    } else {
+      this.visualFocused.next({
+        option: this.visualFocused.getValue().option,
+        group: this.visualFocused.getValue().group,
+      });
     }
   }
 
@@ -124,19 +145,27 @@ export class SelectService {
     }
   }
 
-  public onArrowUp(optional: boolean): void {
+  public onArrowUp(optional: boolean, isDirty: boolean): void {
     if (
-      this.filteredOptions &&
-      this.filteredOptions.getValue() &&
-      this.instanceOfOption(this.filteredOptions.getValue()[0])
+      !isDirty &&
+      this.getSelectedValues() !== undefined &&
+      this.getSelectedValues() !== null
     ) {
-      this.arrowUpOptions(optional);
-    } else if (
-      this.filteredOptions &&
-      this.filteredOptions.getValue() &&
-      !this.instanceOfOption(this.filteredOptions.getValue()[0])
-    ) {
-      this.arrowUpGroups(optional);
+      this.setSelectedFocus();
+    } else {
+      if (
+        this.filteredOptions &&
+        this.filteredOptions.getValue() &&
+        this.instanceOfOption(this.filteredOptions.getValue()[0])
+      ) {
+        this.arrowUpOptions(optional);
+      } else if (
+        this.filteredOptions &&
+        this.filteredOptions.getValue() &&
+        !this.instanceOfOption(this.filteredOptions.getValue()[0])
+      ) {
+        this.arrowUpGroups(optional);
+      }
     }
   }
 
@@ -161,21 +190,25 @@ export class SelectService {
   }
 
   private arrowUpGroups(optional: boolean) {
+    console.log("this.visualFocused.getValue():", this.visualFocused.getValue());
     const arrayOption = this.filteredOptions.getValue() as OptionGroup[];
-    if((this.visualFocused.getValue().group === -1 &&
-    this.visualFocused.getValue().option === -1)){
+    if (
+      this.visualFocused.getValue().group === -1 &&
+      this.visualFocused.getValue().option === -1
+    ) {
       this.visualFocused.next({
         group: arrayOption.length - 1,
         option: arrayOption[arrayOption.length - 1].options.length - 1,
       });
-    }
-    else if (
-      (this.visualFocused.getValue().group === 0 &&
-        this.visualFocused.getValue().option === 0)
+    } else if (
+      this.visualFocused.getValue().group === 0 &&
+      this.visualFocused.getValue().option === 0
     ) {
       this.visualFocused.next({
         group: optional ? -1 : arrayOption.length - 1,
-        option: optional ? -1 : arrayOption[arrayOption.length - 1].options.length - 1,
+        option: optional
+          ? -1
+          : arrayOption[arrayOption.length - 1].options.length - 1,
       });
     } else {
       if (this.visualFocused.getValue().option > 0) {

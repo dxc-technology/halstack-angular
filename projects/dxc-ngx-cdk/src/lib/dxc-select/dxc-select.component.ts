@@ -626,7 +626,6 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   handleEnterKey(event) {
     if (this.focusedOption.option === -1 && this.optional) {
-      console.log("optional");
       this.handleOptionClick(this.optionalOption, event);
     } else if (this.focusedOption.option > -1) {
       let arrayOption, option;

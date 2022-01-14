@@ -333,9 +333,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
       }
     } else {
       if (options) {
-        if (options.value === "") {
-          this.service.setSelectedValues([]);
-        }
+        // if (options.value === "") {
+        //   this.service.setSelectedValues([]);
+        // }
         this.onBlur.emit({ value: options.value, error: null });
       } else {
         this.onBlur.emit({ value: "", error: this.isRequired() });

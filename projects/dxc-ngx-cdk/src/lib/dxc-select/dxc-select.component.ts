@@ -472,13 +472,13 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         indexGroup = index;
       }
     });
-    if(indexGroup !== undefined && indexOption !== undefined){
+    if (indexGroup !== undefined && indexOption !== undefined) {
       this.service.setVisualFocused({
         group: indexGroup,
         option: indexOption,
       });
-    } else{
-      if(this.optionalOption === this.service.getSelectedValues()){
+    } else {
+      if (this.optionalOption === this.service.getSelectedValues()) {
         this.service.setVisualFocused({
           group: -1,
           option: -1,
@@ -575,6 +575,21 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
           } else {
             this.isDirty = true;
             this.service.onArrowDown(this.optional, this.isDirty);
+          }
+          break;
+        case "ArrowUp":
+          event.preventDefault();
+          this.isOpened = true;
+          if (
+            this.service.getSelectedValues() !== undefined &&
+            this.service.getSelectedValues() !== null
+          ) {
+            this.setActualSelectedFocus();
+            this.service.onArrowUp(this.optional, this.isDirty);
+            this.isDirty = true;
+          } else {
+            this.isDirty = true;
+            this.service.onArrowUp(this.optional, this.isDirty);
           }
           break;
       }

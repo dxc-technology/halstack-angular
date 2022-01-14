@@ -472,14 +472,12 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         indexGroup = index;
       }
     });
-    if(indexGroup && indexOption){
+    if(indexGroup !== undefined && indexOption !== undefined){
       this.service.setVisualFocused({
         group: indexGroup,
         option: indexOption,
       });
     } else{
-      console.log("this.optionalOption:",this.optionalOption);
-      console.log("this.service.getSelectedValues():",this.service.getSelectedValues());
       if(this.optionalOption === this.service.getSelectedValues()){
         this.service.setVisualFocused({
           group: -1,

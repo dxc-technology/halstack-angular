@@ -194,8 +194,8 @@
         class="optionsGroup"
         #optionGroupRef
       >
-        <li>
-          <span class="groupLabel">{{ option.label }}</span>
+        <li class="groupLabelElement" (click)="clickNotSelectable()">
+          <span>{{ option.label }}</span>
         </li>
         <li
           *ngFor="
@@ -227,6 +227,7 @@
     </li>
     <li
       *ngIf="(options | filterOptions: inputValue).length === 0"
+      (click)="clickNotSelectable()"
       class="resultsNotFound"
     >
       <span class="notFoundIcon">
@@ -284,8 +285,8 @@
         class="optionsGroup"
         #optionGroupRef
       >
-        <li>
-          <span class="groupLabel">{{ option.label }}</span>
+        <li class="groupLabelElement" (click)="clickNotSelectable()">
+          <span>{{ option.label }}</span>
         </li>
         <li
           *ngFor="
@@ -322,6 +323,7 @@
     </li>
     <li
       *ngIf="(options | filterOptions: inputValue).length === 0"
+      (click)="clickNotSelectable()"
       class="resultsNotFound"
     >
       <span class="notFoundIcon">

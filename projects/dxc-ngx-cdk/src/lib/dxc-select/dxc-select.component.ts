@@ -160,6 +160,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   formValues: string | string[];
   activeDescendant: string;
   isDirty: boolean = false;
+  isNotSelectable: boolean = false;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -421,7 +422,13 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   handleSelectOpen() {
     if (!this.disabled) {
-      this.searchable ? this.showInput() : (this.isOpened = !this.isOpened);
+      if (this.searchable) {
+        this.showInput();
+      }
+      else if (!this.isNotSelectable) {
+        this.isOpened = !this.isOpened;
+      }
+      this.isNotSelectable = false;
       this.isOpened && this.handleScrollSelected();
       this.setInitialFocusOption();
     }
@@ -518,7 +525,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     this.isInputVisible = true;
     setTimeout(() => {
       this.inputRef?.nativeElement.focus();
-      if (!this.multiple) {
+      if (!this.multiple && this.isNotSelectable) {
         this.isOpened = !this.isOpened;
       } else {
         this.isOpened = true;
@@ -679,4 +686,8 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   private isRequired = () =>
     !this.optional ? `This field is required. Please, enter a value.` : null;
+
+  clickNotSelectable() {
+    this.isNotSelectable = true;
+  }
 }

@@ -55,8 +55,8 @@ export class DxcSelectOptionComponent implements OnInit {
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
     })}`;
-    this.service.selectedValues.subscribe((values) => {
-      this.selected = this.isSelected();
+    this.service.selectedValues.subscribe((selectedValues) => {
+      this.selected = this.isSelected(selectedValues);
     });
   }
 
@@ -72,16 +72,14 @@ export class DxcSelectOptionComponent implements OnInit {
     this.service.getSelectedValues() &&
     this.service.getSelectedValues().includes(value);
 
-  isSelected(): boolean {
+  isSelected(selectedValues): boolean {
     if (!this.multiple) {
-      return this.service.getSelectedValues()?.value === this.option.value
-        ? true
-        : false;
+      return selectedValues?.value === this.option.value ? true : false;
     } else {
       if (this.service.getSizeSelectedValues() > 0) {
-        const selected = this.service
-          .getSelectedValues()
-          .find((op) => op.value === this.option.value);
+        const selected = selectedValues.find(
+          (op) => op.value === this.option.value
+        );
         return selected !== null && selected !== undefined;
       } else return false;
     }
@@ -161,7 +159,7 @@ export class DxcSelectOptionComponent implements OnInit {
           display: flex;
           margin-right: 8px;
           align-items: center;
-          svg{
+          svg {
             fill: var(--select-selectedListItemIconColor);
             width: 16px;
             height: 16px;

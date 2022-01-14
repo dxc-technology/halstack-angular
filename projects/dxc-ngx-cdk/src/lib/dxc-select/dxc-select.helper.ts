@@ -31,7 +31,11 @@ export class DxcSelectHelper {
       .container {
         background: #ffffff 0% 0% no-repeat padding-box;
         border: 1px solid
-          ${inputs.disabled ? "var(--select-disabledColor)" : inputs.error ? "var(--select-errorColor)" : "#000000"};
+          ${inputs.disabled
+            ? "var(--select-disabledColor)"
+            : inputs.error
+            ? "var(--select-errorColor)"
+            : "#000000"};
         ${inputs.error && !inputs.disabled
           ? "box-shadow: inset 0 0 0 1px var(--select-errorColor);"
           : ""}
@@ -273,17 +277,20 @@ export class DxcSelectHelper {
             flex-direction: column;
             padding: 0px;
             width: 100%;
-            .groupLabel {
-              padding-left: 16px;
-              text-align: left;
-              height: 32px;
-              display: flex;
-              align-items: center;
-              font-family: var(--select-fontFamily);
-              font-size: var(--select-listItemFontSize);
-              font-style: var(--select-listItemFontStyle);
-              font-weight: var(--select-listGroupItemFontWeight);
-              color: var(--select-listItemFontColor);
+            .groupLabelElement {
+              cursor: default;
+              span {
+                padding-left: 16px;
+                text-align: left;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                font-family: var(--select-fontFamily);
+                font-size: var(--select-listItemFontSize);
+                font-style: var(--select-listItemFontStyle);
+                font-weight: var(--select-listGroupItemFontWeight);
+                color: var(--select-listItemFontColor);
+              }
             }
             .optionLabel {
               padding: 2px 14px;
@@ -303,6 +310,7 @@ export class DxcSelectHelper {
             flex-direction: row;
             padding: 0px 16px;
             box-sizing: border-box;
+            cursor: default;
             .notFoundIcon {
               height: 100%;
               align-items: center;

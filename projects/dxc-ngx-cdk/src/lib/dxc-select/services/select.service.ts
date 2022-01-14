@@ -192,8 +192,8 @@ export class SelectService {
   private arrowUpGroups(optional: boolean) {
     const arrayOption = this.filteredOptions.getValue() as OptionGroup[];
     if (
-      this.visualFocused.getValue().group === -1 &&
-      this.visualFocused.getValue().option === -1
+      this.visualFocused.getValue().group <= -1 &&
+      this.visualFocused.getValue().option <= -1
     ) {
       this.visualFocused.next({
         group: arrayOption.length - 1,

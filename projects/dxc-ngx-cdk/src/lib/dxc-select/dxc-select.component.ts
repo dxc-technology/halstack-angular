@@ -465,7 +465,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     arrayOption.map((op, index) => {
       const found = this.findOption(
         op.options,
-        this.service.getSelectedValues()
+        this.service.getSelectedValues().value
       );
       if (found !== undefined && found != null) {
         indexOption = op.options.indexOf(found);

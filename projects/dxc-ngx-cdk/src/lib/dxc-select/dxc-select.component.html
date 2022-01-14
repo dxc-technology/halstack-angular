@@ -171,7 +171,7 @@
       <dxc-select-option
         [multiple]="false"
         [option]="optionalOption"
-        [focused]="focusedOption.option === -1"
+        [focused]="isDirty && focusedOption.option === -1"
         [optional]="optional"
         (optionClick)="handleOptionClick(optionalOption, $event)"
         (optionMouseDown)="handleOptionMouseDown($event)"
@@ -210,7 +210,7 @@
           <dxc-select-option
             [multiple]="multiple"
             [option]="op"
-            [focused]="isFocused(i, indexOptionGroup)"
+            [focused]="isDirty && isFocused(i, indexOptionGroup)"
             (optionClick)="handleOptionClick(op, $event)"
             (optionMouseDown)="handleOptionMouseDown($event)"
           ></dxc-select-option>
@@ -220,7 +220,7 @@
         *ngIf="service.instanceOfOption(option)"
         [multiple]="multiple"
         [option]="option"
-        [focused]="focusedOption.option === i"
+        [focused]="isDirty && focusedOption.option === i"
         (optionClick)="handleOptionClick(option, $event)"
         (optionMouseDown)="handleOptionMouseDown($event)"
       ></dxc-select-option>

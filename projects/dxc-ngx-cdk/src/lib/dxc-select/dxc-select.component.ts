@@ -159,6 +159,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   optionalOption: Option;
   formValues: string | string[];
   activeDescendant: string;
+  isDirty: boolean = false;
 
   @ViewChild("containerRef", { static: false }) containerRef: ElementRef;
   @ViewChild("optionsRef", { static: false }) optionsRef: ElementRef;
@@ -182,20 +183,21 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     private ref: ElementRef
   ) {
     this.service.selectedValues?.subscribe((selectedValues) => {
-      if (selectedValues){
-        this.formValues = this.multiple ? selectedValues.map(item => item.value).toString() : selectedValues.value;
+      if (selectedValues) {
+        this.formValues = this.multiple
+          ? selectedValues.map((item) => item.value).toString()
+          : selectedValues.value;
       }
     });
   }
 
   public onTouched: () => void = () => {};
+
   public onChangeRegister = (val) => {
-    console.log("Forms registering a change with value  :", val);
     this.setInputValue(val);
   };
 
   writeValue(val: any): void {
-    console.log("Forms value :", val);
     this.formValues = val || "";
   }
   registerOnChange(fn: any): void {
@@ -257,14 +259,14 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     });
   }
 
-  private setActiveDescendantAttr(){
+  private setActiveDescendantAttr() {
     const indexOptionalLabel = this.optional ? -1 : 0;
     this.activeDescendant =
-    this.focusedOption.option < indexOptionalLabel
-      ? 'false'
-      : this.focusedOption.group !== undefined
-      ? `option-${this.focusedOption.group}-${this.focusedOption.option}`
-      : `option-${this.focusedOption.option}`;
+      this.focusedOption.option < indexOptionalLabel
+        ? "false"
+        : this.focusedOption.group !== undefined
+        ? `option-${this.focusedOption.group}-${this.focusedOption.option}`
+        : `option-${this.focusedOption.option}`;
   }
 
   handleOptionMouseDown(event) {
@@ -436,11 +438,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
       } else if (this.service.instanceOfOption(array[0]) && this.optionsRef) {
         const arrayOption = array as Option[];
         if (this.service.getSelectedValues()) {
-          const index = arrayOption.indexOf(this.service.getSelectedValues());
-          this.service.setVisualFocused({
-            group: -1,
-            option: index,
-          });
+          this.setFocusSelectedOption(arrayOption);
         }
       } else if (
         !this.service.instanceOfOption(array[0]) &&
@@ -448,22 +446,43 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
       ) {
         if (this.service.getSelectedValues()) {
           const arrayOption = array as OptionGroup[];
-          let indexOption, indexGroup;
-          arrayOption.map((op, index) => {
-            const found = this.findOption(
-              op.options,
-              this.service.getSelectedValues().value
-            );
-            if (found !== undefined && found != null) {
-              indexOption = op.options.indexOf(found);
-              indexGroup = index;
-            }
-          });
-          this.service.setVisualFocused({
-            group: indexGroup,
-            option: indexOption,
-          });
+          this.setFocusSelectedOptionGroup(arrayOption);
         }
+      }
+    }
+  }
+
+  private setFocusSelectedOption(arrayOption: Option[]) {
+    const index = arrayOption.indexOf(this.service.getSelectedValues());
+    this.service.setVisualFocused({
+      group: -1,
+      option: index,
+    });
+  }
+
+  private setFocusSelectedOptionGroup(arrayOption: OptionGroup[]) {
+    let indexOption, indexGroup;
+    arrayOption.map((op, index) => {
+      const found = this.findOption(
+        op.options,
+        this.service.getSelectedValues().value
+      );
+      if (found !== undefined && found != null) {
+        indexOption = op.options.indexOf(found);
+        indexGroup = index;
+      }
+    });
+    if(indexGroup !== undefined && indexOption !== undefined){
+      this.service.setVisualFocused({
+        group: indexGroup,
+        option: indexOption,
+      });
+    } else{
+      if(this.optionalOption === this.service.getSelectedValues()){
+        this.service.setVisualFocused({
+          group: -1,
+          option: -1,
+        });
       }
     }
   }
@@ -546,18 +565,30 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         case "ArrowDown":
           event.preventDefault();
           this.isOpened = true;
-          this.service.onArrowDown(this.optional);
+          if (
+            this.service.getSelectedValues() !== undefined &&
+            this.service.getSelectedValues() !== null
+          ) {
+            this.setActualSelectedFocus();
+            this.service.onArrowDown(this.optional, this.isDirty);
+            this.isDirty = true;
+          } else {
+            this.isDirty = true;
+            this.service.onArrowDown(this.optional, this.isDirty);
+          }
           break;
       }
     } else {
       switch (event.key) {
         case "ArrowDown":
           event.preventDefault();
-          this.service.onArrowDown(this.optional);
+          this.service.onArrowDown(this.optional, this.isDirty);
+          this.isDirty = true;
           break;
         case "ArrowUp":
           event.preventDefault();
-          this.service.onArrowUp(this.optional);
+          this.service.onArrowUp(this.optional, this.isDirty);
+          this.isDirty = true;
           break;
         case "Enter":
           this.handleEnterKey(event);
@@ -572,6 +603,23 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
           this.setInputValue("");
           this.inputRef?.nativeElement?.blur();
           break;
+      }
+    }
+  }
+
+  private setActualSelectedFocus() {
+    if (!this.multiple) {
+      const array = this.options;
+      if (this.service.instanceOfOption(this.options[0])) {
+        const arrayOption = array as Option[];
+        if (this.service.getSelectedValues()) {
+          this.setFocusSelectedOption(arrayOption);
+        }
+      } else {
+        const arrayOption = array as OptionGroup[];
+        if (this.service.getSelectedValues()) {
+          this.setFocusSelectedOptionGroup(arrayOption);
+        }
       }
     }
   }
@@ -597,6 +645,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   setInitialFocusOption() {
     if (!this.isOpened) {
+      this.isDirty = false;
       this.service.setVisualFocused({
         option: this.optional ? -2 : -1,
         group: this.optional ? -2 : -1,

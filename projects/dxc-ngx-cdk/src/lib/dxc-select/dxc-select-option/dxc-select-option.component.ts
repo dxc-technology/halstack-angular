@@ -119,6 +119,9 @@ export class DxcSelectOptionComponent implements OnInit {
         &.focused {
           background-color: var(--select-selectedHoverListItemBackgroundColor);
         }
+        .optionLabel {
+          border-bottom: 1px solid transparent;
+        }
       }
       &.focused {
         box-shadow: inset 0 0 0 2px #0095ff;

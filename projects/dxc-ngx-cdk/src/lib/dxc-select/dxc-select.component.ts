@@ -227,6 +227,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
+    if(this.optional && !this.multiple){
+      this.service.setSelectedValues(this.optionalOption);
+    }
     this.id = `select-${uuidv4()}`;
     this.selectLabelId = `label-${this.id}`;
     this.optionsListId = `${this.id}-listbox`;

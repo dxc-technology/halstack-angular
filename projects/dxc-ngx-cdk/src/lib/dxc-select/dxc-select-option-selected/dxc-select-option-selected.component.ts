@@ -74,7 +74,6 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   }
 
   getDynamicStyle(inputs) {
-    console.log("this.selectedOptions:", this.selectedOptions);
     return css`
       display: flex;
       max-width: 100%;

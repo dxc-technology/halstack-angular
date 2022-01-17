@@ -29,17 +29,19 @@ export class DxcSelectHelper {
       ${this.utils.getMargins(inputs.margin)}
       ${this.calculateWidth(inputs)}
       .container {
-        background: #ffffff 0% 0% no-repeat padding-box;
+        background: ${inputs.disabled
+          ? "var(--select-disabledInputBackgroundColor) 0% 0% no-repeat padding-box"
+          : "#ffffff 0% 0% no-repeat padding-box"};
         border: 1px solid
           ${inputs.disabled
-            ? "var(--select-disabledColor)"
+            ? "var(--select-disabledInputBorderColor)"
             : inputs.error
-            ? "var(--select-errorColor)"
-            : "#000000"};
+            ? "transparent"
+            : "var(--select-enabledInputBorderColor)"};
         ${inputs.error && !inputs.disabled
-          ? "box-shadow: inset 0 0 0 1px var(--select-errorColor);"
+          ? "box-shadow: 0 0 0 2px var(--select-errorInputBorderColor);"
           : ""}
-        border-radius: 4px;
+        border-radius: 0.25rem;
         opacity: 1;
         width: 100%;
         padding: 8px;
@@ -55,12 +57,12 @@ export class DxcSelectHelper {
         margin-bottom: 4px;
         :hover {
           ${!inputs.error && !inputs.disabled
-            ? "border: 1px solid #5F249F;"
+            ? "border: 1px solid var(--select-hoverInputBorderColor);"
             : ""}
         }
         :focus-within {
           ${!inputs.disabled
-            ? "border: 1px solid #0095ff; box-shadow: inset 0 0 0 1px #0095ff;"
+            ? "border: 1px solid transparent; box-shadow: 0 0 0 2px var(--select-focusInputBorderColor);"
             : ""}
         }
         .valueContainer {
@@ -77,44 +79,52 @@ export class DxcSelectHelper {
             .sizeContainer {
               width: 24px;
               height: 22px;
-              background: #fafafa 0% 0% no-repeat padding-box;
+              background: var(--select-selectionIndicatorBackgroundColor) 0% 0%
+                no-repeat padding-box;
               display: flex;
               justify-content: center;
               text-align: left;
               font: normal normal 600 11px/15px Open Sans;
               letter-spacing: 0.98px;
-              color: #000000;
-              border-bottom-left-radius: 4px;
-              border-top-left-radius: 4px;
+              color: var(--select-selectionIndicatorFontColor);
+              border-bottom-left-radius: 0.125rem;
+              border-top-left-radius: 0.125rem;
               align-items: center;
-              border-left: 1px solid #cccccc;
-              border-top: 1px solid #cccccc;
-              border-bottom: 1px solid #cccccc;
+              border-left: 1px solid var(--select-selectionIndicatorBorderColor);
+              border-top: 1px solid var(--select-selectionIndicatorBorderColor);
+              border-bottom: 1px solid var(--select-selectionIndicatorBorderColor);
             }
             .removeContainer {
               width: 24px;
               height: 22px;
-              background: #ffffff 0% 0% no-repeat padding-box;
-              border: 1px solid #cccccc;
+              background: var(--select-enabledSelectionIndicatorActionBackgroundColor) 0% 0% no-repeat padding-box;
+              border: 1px solid var(--select-selectionIndicatorBorderColor);
               display: flex;
               justify-content: center;
               text-align: left;
               font: normal normal 600 11px/15px Open Sans;
               letter-spacing: 0.98px;
-              color: #000000;
-              border-bottom-right-radius: 4px;
-              border-top-right-radius: 4px;
+              color: var(--select-selectionIndicatorFontColor);
+              border-bottom-right-radius: 0.125rem;
+              border-top-right-radius: 0.125rem;
               align-items: center;
               outline: none;
               svg {
                 height: 16px;
                 width: 16px;
-                fill: #000000;
+                fill: var(--select-enabledSelectionIndicatorActionIconColor);
               }
-              :focus-visible,
-              :active {
-                border: 1px solid #0095ff;
-                box-shadow: inset 0 0 0 1px #0095ff;
+              &:hover {
+                background: var(--select-hoverSelectionIndicatorActionBackgroundColor);
+                svg {
+                  fill: var(--select-hoverSelectionIndicatorActionIconColor);
+                }
+              }
+              &:active {
+                background: var(--select-activeSelectionIndicatorActionBackgroundColor);
+                svg {
+                  fill: var(--select-activeSelectionIndicatorActionIconColor);
+                }
               }
             }
           }
@@ -134,7 +144,7 @@ export class DxcSelectHelper {
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            color: var(--select-errorColor);
+            color: var(--select-errorIconColor);
             svg {
               line-height: 18px;
               height: 18px;
@@ -174,6 +184,7 @@ export class DxcSelectHelper {
               font-size: var(--select-valueFontSize);
               font-style: var(--select-valueFontStyle);
               font-weight: var(--select-valueFontWeight);
+              line-height:var(--select-valueLineHeight);
               color: ${inputs.disabled
                 ? "var(--select-disabledColor)"
                 : "var(--select-valueFontColor)"};
@@ -208,28 +219,15 @@ export class DxcSelectHelper {
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            background-color: transparent;
-            color: #000000;
+            background-color: var(--select-actionBackgroundColor);
+            color: var(--select-actionIconColor);
             &:hover {
-              background-color: var(--textInput-hoverActionBackgroundColor);
-              color: var(--textInput-hoverActionIconColor);
-            }
-            &:focus {
-              color: var(--textInput-focusActionIconColor);
-              border: 2px solid var(--textInput-focusActionBorderColor);
-              outline: none;
-            }
-            &:focus-visible {
-              border: 2px solid var(--textInput-focusActionBorderColor);
-              outline: none;
+              background-color: var(--select-hoverActionBackgroundColor);
+              color: var(--select-hoverActionIconColor);
             }
             &:active {
-              border: 2px solid var(--textInput-focusActionBorderColor);
-              box-shadow: inset 0 0 0 1px
-                var(--textInput-activeActionBackgroundColor);
-              outline: none;
-              background-color: var(--textInput-activeActionBackgroundColor);
-              color: var(--textInput-activeActionIconColor);
+              background-color: var(--select-activeActionBackgroundColor);
+              color: var(--select-activeActionIconColor);
             }
             svg {
               line-height: 18px;
@@ -239,13 +237,14 @@ export class DxcSelectHelper {
       }
       .options {
         left: 0;
-        margin-top: 4px;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
         top: 100%;
         overflow: auto;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        background: var(--select-optionListBackgroundColor) 0% 0% no-repeat
+        background: var(--select-listDialogBackgroundColor) 0% 0% no-repeat
           padding-box;
-        border: 1px solid var(--select-optionListBorderColor);
+        border: 1px solid var(--select-listDialogBorderColor);
         border-radius: 4px;
         opacity: 1;
         width: inherit;
@@ -253,7 +252,7 @@ export class DxcSelectHelper {
         position: relative;
         display: flex;
         flex-direction: column;
-        padding: 4px 0px;
+        padding: 0.5rem 0px;
         position: absolute;
         z-index: 100;
         max-height: 312px;
@@ -278,22 +277,19 @@ export class DxcSelectHelper {
             padding: 0px;
             width: 100%;
             .groupLabelElement {
-              cursor: default;
-              span {
-                padding-left: 16px;
-                text-align: left;
-                height: 32px;
-                display: flex;
-                align-items: center;
-                font-family: var(--select-fontFamily);
-                font-size: var(--select-listItemFontSize);
-                font-style: var(--select-listItemFontStyle);
-                font-weight: var(--select-listGroupItemFontWeight);
-                color: var(--select-listItemFontColor);
-              }
+              padding-left: 16px;
+              text-align: left;
+              height: 32px;
+              display: flex;
+              align-items: center;
+              font-family: var(--select-fontFamily);
+              font-size: var(--select-listItemFontSize);
+              font-style: var(--select-listItemFontStyle);
+              font-weight: var(--select-listGroupItemFontWeight);
+              color: var(--select-listOptionFontColor);
             }
             .optionLabel {
-              padding: 2px 14px;
+              padding: 2px 0px 2px 14px;
             }
           }
           &.lastItem .optionsGroup li.lastItemGroup,
@@ -319,13 +315,13 @@ export class DxcSelectHelper {
               margin-right: 4px;
               display: flex;
               svg {
-                fill: #666666;
+                fill: var(--select-systemMessageFontColor);
                 height: 18px;
                 width: 18px;
               }
             }
-            span {
-              color: #666666;
+            span.systemMessage {
+              color: var(--select-systemMessageFontColor);
             }
           }
           .optionalContainer {
@@ -365,7 +361,7 @@ export class DxcSelectHelper {
         font-family: var(--select-fontFamily);
         font-size: var(--select-labelFontSize);
         font-style: var(--select-labelFontStyle);
-        font-weight: 400;
+        font-weight: var(--select-optionalLabelFontWeight);
         color: ${inputs.disabled
           ? "var(--select-disabledColor)"
           : "var(--select-labelFontColor)"};
@@ -388,7 +384,7 @@ export class DxcSelectHelper {
         font-weight: var(--select-errorMessageFontWeight);
         color: ${inputs.disabled
           ? "var(--select-disabledColor)"
-          : "var(--select-errorColor)"};
+          : "var(--select-errorMessageColor)"};
         line-height: var(--select-errorMessagetLineHeight);
       }
     `;

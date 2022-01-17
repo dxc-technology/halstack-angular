@@ -1006,47 +1006,85 @@ export const componentTokens = {
 
   //SELECT
   "--select-fontFamily": globalTokens.type_sans,
+
+  "--select-enabledInputBorderColor": globalTokens.hal_black,
+  "--select-hoverInputBorderColor": globalTokens.hal_purple_l_65,
+  "--select-focusInputBorderColor": globalTokens.hal_blue_l_50,
+  "--select-errorInputBorderColor": globalTokens.hal_red_s_41,
+  "--select-hoverInputErrorBorderColor": globalTokens.color_red_600,
+  "--select-disabledInputBorderColor": globalTokens.hal_grey_l_60,
+  "--select-disabledInputBackgroundColor": globalTokens.hal_grey_l_95,
+
   "--select-labelFontSize": globalTokens.type_scale_02,
   "--select-labelFontStyle": globalTokens.type_normal,
   "--select-labelFontWeight": globalTokens.type_semibold,
   "--select-labelLineHeight": globalTokens.type_leading_loose_01,
+  "--select-labelFontColor": globalTokens.hal_black,
+
   "--select-valueFontSize": globalTokens.type_scale_03,
   "--select-valueFontStyle": globalTokens.type_normal,
   "--select-valueFontWeight": globalTokens.type_regular,
+  "--select-valueFontColor": globalTokens.hal_black,
+  "--select-valueIconColor": globalTokens.hal_black,
+  "--select-valueLineHeight": globalTokens.type_leading_normal,
+
   "--select-placeholderFontSize": globalTokens.type_scale_03,
   "--select-placeholderFontStyle": globalTokens.type_normal,
   "--select-placeholderFontWeight": globalTokens.type_regular,
+  "--select-placeholderFontColor": "#000000b3",
+
   "--select-helperTextFontSize": globalTokens.type_scale_01,
   "--select-helperTextFontStyle": globalTokens.type_normal,
   "--select-helperTextFontWeight": globalTokens.type_regular,
   "--select-helperTextLineHeight": globalTokens.type_leading_normal,
+  "--select-helperTextFontColor": globalTokens.hal_black,
+
+  "--select-optionalLabelFontWeight": globalTokens.type_regular,
+
   "--select-errorMessageFontSize": globalTokens.type_scale_01,
   "--select-errorMessagetFontStyle": globalTokens.type_normal,
   "--select-errorMessageFontWeight": globalTokens.type_regular,
   "--select-errorMessagetLineHeight": globalTokens.type_leading_normal,
-  "--select-listItemFontSize": globalTokens.type_scale_02,
-  "--select-listItemFontStyle": globalTokens.type_normal,
-  "--select-listItemFontWeight": globalTokens.type_regular,
-  "--select-listGroupItemFontWeight": globalTokens.type_semibold,
-  "--select-labelFontColor": globalTokens.hal_black,
-  "--select-valueFontColor": globalTokens.hal_black,
-  "--select-helperTextFontColor": globalTokens.hal_black,
-  "--select-collapseIndicatorColor": globalTokens.hal_black,
-  "--select-errorColor": globalTokens.hal_red_s_41,
-  "--select-valueIconColor": globalTokens.hal_black,
-  "--select-placeholderFontColor": "#000000b3",
+  "--select-errorMessageColor": globalTokens.hal_red_s_41,
+  "--select-errorIconColor": globalTokens.hal_red_s_41,
+  
+  "--select-selectionIndicatorFontColor": globalTokens.hal_black,
+  "--select-selectionIndicatorBorderColor": globalTokens.hal_grey_l_75,
+  "--select-selectionIndicatorBackgroundColor": globalTokens.color_grey_50,
+  "--select-enabledSelectionIndicatorActionBackgroundColor": globalTokens.transparent,
+  "--select-hoverSelectionIndicatorActionBackgroundColor": globalTokens.hal_grey_l_95,
+  "--select-activeSelectionIndicatorActionBackgroundColor": globalTokens.hal_grey_l_80,
+  "--select-enabledSelectionIndicatorActionIconColor": globalTokens.hal_black,
+  "--select-hoverSelectionIndicatorActionIconColor": globalTokens.hal_black,
+  "--select-activeSelectionIndicatorActionIconColor": globalTokens.hal_black,
+
+  "--select-actionBackgroundColor": globalTokens.transparent,
+  "--select-hoverActionBackgroundColor": globalTokens.hal_grey_l_95,
+  "--select-activeActionBackgroundColor": globalTokens.hal_grey_l_80,
+  "--select-actionIconColor": globalTokens.hal_black,
+  "--select-hoverActionIconColor": globalTokens.hal_black,
+  "--select-activeActionIconColor": globalTokens.hal_black,
+
   "--select-disabledColor": globalTokens.hal_grey_l_60,
-  "--select-optionListBackgroundColor": globalTokens.hal_white,
-  "--select-optionListBorderColor": globalTokens.hal_grey_l_80,
-  "--select-listItemFontColor": globalTokens.hal_black,
-  "--select-listItemIconColor": globalTokens.hal_black,
-  "--select-listItemDividerColor": globalTokens.hal_grey_l_90,
-  "--select-unselectedHoverListItemBackgroundColor": globalTokens.hal_grey_l_95,
-  "--select-unselectedActiveListItemBackgroundColor": globalTokens.hal_grey_l_90,
-  "--select-selectedlistItemBackgroundColor": globalTokens.hal_blue_l_95,
-  "--select-selectedHoverListItemBackgroundColor": globalTokens.color_blue_200,
-  "--select-selectedActivelistItemBackgroundColor": globalTokens.hal_blue_l_80,
-  "--select-selectedListItemIconColor": globalTokens.hal_blue_d_20,
+
+  "--select-listDialogBackgroundColor": globalTokens.hal_white,
+  "--select-listDialogBorderColor": globalTokens.hal_grey_l_75,
+
+  "--select-listOptionFontSize": globalTokens.type_scale_02,
+  "--select-listOptionFontStyle": globalTokens.type_normal,
+  "--select-listOptionFontWeight": globalTokens.type_regular,
+  "--select-listOptionFontColor": globalTokens.hal_black,
+  "--select-listOptionIconColor": globalTokens.hal_black,
+  "--select-listOptionDividerColor": globalTokens.hal_grey_l_90,
+  "--select-listGroupLabelFontWeight": globalTokens.type_semibold,
+
+  "--select-unselectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_95,
+  "--select-unselectedActiveListOptionBackgroundColor": globalTokens.hal_grey_l_90,
+  "--select-selectedListOptionBackgroundColor": globalTokens.hal_grey_l_90,
+  "--select-selectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_80,
+  "--select-selectedActiveListOptionBackgroundColor": globalTokens.hal_blue_l_80,
+  "--select-selectedListOptionIconColor": globalTokens.hal_blue_d_20,
+
   "--select-optionBorderThickness": "0px",
   "--select-optionBorderStyle": globalTokens.border_solid,
   "--select-optionFontColor": globalTokens.hal_black,
@@ -1056,24 +1094,34 @@ export const componentTokens = {
   "--select-optionIconSpacing": "12px",
   "--select-optionIconColor": globalTokens.hal_black,
   "--select-optionIconSize": "20px",
+
   "--select-selectedOptionBackgroundColor": globalTokens.lightGrey,
   "--select-hoverOptionBackgroundColor": globalTokens.hal_grey_l_95,
+
   "--select-optionPaddingBottom": "6px",
   "--select-optionPaddingTop": "6px",
   "--select-optionPaddingLeft": "16px",
   "--select-optionPaddingRight": "16px",
   "--select-optionCheckboxSpacing": "12px",
+
+  "--select-systemMessageFontColor": globalTokens.hal_grey_s_40,
+
   "--select-required": globalTokens.hal_red_s_41,
+
   "--select-focusColor": globalTokens.hal_blue_l_50,
+
   "--select-scrollBarThumbColor": globalTokens.hal_grey_s_40,
   "--select-scrollBarTrackColor": globalTokens.lightGrey,
+
   "--select-underlineColor": globalTokens.hal_black,
   "--select-underlineColorOnDark": globalTokens.hal_white,
   "--select-underlineFocusColor": globalTokens.hal_black,
   "--select-underlineFocusColorOnDark": globalTokens.hal_white,
   "--select-underlineThickness": "1px",
+
   "--select-arrowColor": globalTokens.hal_black,
   "--select-arrowColorOnDark": globalTokens.hal_white,
+  "--select-collapseIndicatorColor": globalTokens.hal_black,
 
 
   //SIDENAV

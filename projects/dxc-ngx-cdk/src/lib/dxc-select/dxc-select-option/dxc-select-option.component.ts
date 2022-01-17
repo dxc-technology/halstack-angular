@@ -87,12 +87,12 @@ export class DxcSelectOptionComponent implements OnInit {
 
   setSelectedStyles() {
     return css`
-      background-color: var(--select-selectedlistItemBackgroundColor);
+      background-color: var(--select-selectedListOptionBackgroundColor);
       :hover {
-        background-color: var(--select-selectedHoverListItemBackgroundColor);
+        background-color: var(--select-selectedHoverListOptionBackgroundColor);
       }
       :active {
-        background-color: var(--select-selectedActivelistItemBackgroundColor);
+        background-color: var(--select-selectedActiveListOptionBackgroundColor);
       }
     `;
   }
@@ -106,16 +106,16 @@ export class DxcSelectOptionComponent implements OnInit {
       height: 32px;
       :hover {
         cursor: pointer;
-        background-color: var(--select-unselectedHoverListItemBackgroundColor);
+        background-color: var(--select-unselectedHoverListOptionBackgroundColor);
       }
       :active {
-        background-color: var(--select-unselectedActiveListItemBackgroundColor);
+        background-color: var(--select-unselectedActiveListOptionBackgroundColor);
       }
       ${inputs.checked && inputs.multiple ? this.setSelectedStyles() : ""}
       &.selected {
         ${this.setSelectedStyles()}
         &.focused {
-          background-color: var(--select-selectedHoverListItemBackgroundColor);
+          background-color: var(--select-selectedHoverListOptionBackgroundColor);
         }
         .optionLabel {
           border-bottom: 1px solid transparent;
@@ -134,13 +134,13 @@ export class DxcSelectOptionComponent implements OnInit {
         margin: 2px 8px;
         height: 100%;
         box-sizing: border-box;
-        border-bottom: 1px solid var(--select-listItemDividerColor);
+        border-bottom: 1px solid var(--select-ListOptionDividerColor);
         .iconLabel {
           display: flex;
           align-items: center;
           margin-left: ${!inputs.multiple ? "8px" : ""};
           svg {
-            fill: var(--select-listItemIconColor);
+            fill: var(--select-ListOptionIconColor);
           }
         }
         .label {
@@ -149,18 +149,19 @@ export class DxcSelectOptionComponent implements OnInit {
           display: flex;
           align-items: center;
           margin-left: 0.5rem;
+          margin-right: 0.5rem;
           font-family: var(--select-fontFamily);
-          font-size: var(--select-listItemFontSize);
-          font-style: var(--select-listItemFontStyle);
-          font-weight: var(--select-listItemFontWeight);
-          color: var(--select-listItemFontColor);
+          font-size: var(--select-ListOptionFontSize);
+          font-style: var(--select-ListOptionFontStyle);
+          font-weight: var(--select-ListOptionFontWeight);
+          color: var(--select-ListOptionFontColor);
         }
         .checkIcon {
           display: flex;
           margin-right: 8px;
           align-items: center;
-          svg {
-            fill: var(--select-selectedListItemIconColor);
+          svg{
+            fill: var(--select-selectedListOptionIconColor);
             width: 16px;
             height: 16px;
           }
@@ -173,9 +174,6 @@ export class DxcSelectOptionComponent implements OnInit {
         div {
           display: flex;
         }
-      }
-      dxc-checkbox {
-        margin-left: 8px;
       }
     `;
   }

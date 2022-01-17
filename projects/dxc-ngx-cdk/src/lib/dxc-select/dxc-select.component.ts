@@ -424,8 +424,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     if (!this.disabled) {
       if (this.searchable) {
         this.showInput();
-      }
-      else if (!this.isNotSelectable) {
+      } else if (!this.isNotSelectable) {
         this.isOpened = !this.isOpened;
       }
       this.isNotSelectable = false;
@@ -551,17 +550,19 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   setPlaceholder() {
-    if (this.placeholder) {
-      return this.placeholder;
+    if (this.service.getSelectedValues()?.label && !this.multiple) {
+      return this.service.getSelectedValues()?.label;
     } else {
-      if (this.service.getSelectedValues()?.label && !this.multiple) {
-        return this.service.getSelectedValues()?.label;
-      } else if (!this.multiple && !this.service.getSelectedValues()?.label) {
-        this.placeholder = "Choose an option";
+      if (this.placeholder) {
         return this.placeholder;
       } else {
-        this.placeholder = "Choose options";
-        return this.placeholder;
+        if (!this.multiple) {
+          this.placeholder = "Choose an option";
+          return this.placeholder;
+        } else {
+          this.placeholder = "Choose options";
+          return this.placeholder;
+        }
       }
     }
   }

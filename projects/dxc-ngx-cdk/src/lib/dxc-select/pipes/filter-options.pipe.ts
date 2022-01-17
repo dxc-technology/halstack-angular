@@ -43,7 +43,7 @@ export class FilterOptionsPipe implements PipeTransform {
     let newArray = [];
     array.map((op) => {
       const label = op.label.toLowerCase();
-      if (label.startsWith(inputValue)) {
+      if (label.includes(inputValue)) {
         newArray.push(op);
       }
     });

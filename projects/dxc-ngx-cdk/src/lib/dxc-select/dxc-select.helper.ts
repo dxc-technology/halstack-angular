@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { Subject } from "rxjs";
+
 @Injectable()
 export class DxcSelectHelper {
   sizes = {

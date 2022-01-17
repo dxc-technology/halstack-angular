@@ -9,7 +9,12 @@
         class="iconLabel"
         [innerHTML]="option.icon | safeHtml"
       ></span> -->
-      <span class="selectedLabel">
+      <span
+        class="selectedLabel"
+        [ngClass]="{
+          isOptionalLabel: !multiple && this.selectedOptions[0]?.value === ''
+        }"
+      >
         {{ option.label }} <span *ngIf="!last" class="comma">,</span>
       </span>
     </span>

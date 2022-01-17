@@ -61,19 +61,20 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
     })}`;
   }
 
-  private setPlaceholder(){
-    if(this.multiple){
-      if(!this.placeholder) {
+  private setPlaceholder() {
+    if (this.multiple) {
+      if (!this.placeholder) {
         this.placeholder = "Choose options";
       }
     } else {
-      if(!this.placeholder) {
+      if (!this.placeholder) {
         this.placeholder = "Choose an option";
       }
     }
   }
 
   getDynamicStyle(inputs) {
+    console.log("this.selectedOptions:", this.selectedOptions);
     return css`
       display: flex;
       max-width: 100%;
@@ -91,9 +92,11 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           font-size: var(--select-valueFontSize);
           font-style: var(--select-valueFontStyle);
           font-weight: var(--select-valueFontWeight);
-          color: ${inputs.disabled
-            ? "var(--select-disabledColor)"
-            : "var(--select-valueFontColor)"};
+          color: ${
+            inputs.disabled
+              ? "var(--select-disabledColor)"
+              : "var(--select-valueFontColor)"
+          };
           .iconLabel{
             width: 24px;
             height: 24px;
@@ -106,6 +109,11 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           .iconLabel{
             margin-right: 0.25rem;
           }
+          .isOptionalLabel{
+            color: ${
+              inputs.disabled ? "var(--select-disabledColor)" : "#000000b3"
+            };
+          }
         }
         .notSelectedLabel {
           text-align: left;
@@ -113,9 +121,11 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           font-size: var(--select-placeholderFontSize);
           font-style: var(--select-placeholderFontStyle);
           font-weight: var(--select-placeholderFontWeight);
-          color: ${inputs.disabled
-            ? "var(--select-disabledColor)"
-            : "var(--select-placeholderFontColor)"};
+          color: ${
+            inputs.disabled
+              ? "var(--select-disabledColor)"
+              : "var(--select-placeholderFontColor)"
+          };
         }
       }
     `;

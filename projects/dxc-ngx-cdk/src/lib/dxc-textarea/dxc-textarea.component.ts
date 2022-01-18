@@ -152,6 +152,7 @@ export class DxcTextareaComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.checkHeight();
+    this.hasError = this.error && !this.disabled ? true : false;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -226,7 +227,6 @@ export class DxcTextareaComponent implements OnInit {
   private handleValidationError() {
     const validationError = this.validateValue(this.value);
     this.validationError = validationError;
-    this.hasError = this.validationError ? true : false;
     return validationError;
   }
 

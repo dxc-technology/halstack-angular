@@ -253,13 +253,14 @@ export class DxcDateInputComponent implements OnInit {
     if (!this.value) {
       this.renderedValue = value;
       this.dateValue = _dateValue;
-    }
+    }    
   }
 
   handleOnBlur(event) {
     this.onBlur.emit({ value: event.value, error: event.error });
     if (!this.controlled) {
       this.renderedValue = event.value;
+      this.dateValue = this.getMomentValue(event.value, this.format);;
       this.cdRef.detectChanges();
     }
   }
@@ -271,7 +272,7 @@ export class DxcDateInputComponent implements OnInit {
       date: value.isValid() ? value.toDate() : null,
     };
     this.onChange.emit(_dateReturn);
-    if (!this.value) {
+    if (!this.controlled) {
       this.dateValue = value;
       this.renderedValue = _stringValue;
     }

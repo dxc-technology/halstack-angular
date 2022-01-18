@@ -19,8 +19,3 @@
   (focus)="handleOnFocus()"
 ></textarea>
 <span *ngIf="error && !disabled" class="textareaErrorMessage">{{ error }}</span>
-<span
-  *ngIf="validationError && !disabled && !error"
-  class="textareaErrorMessage"
-  >{{ validationError }}</span
->

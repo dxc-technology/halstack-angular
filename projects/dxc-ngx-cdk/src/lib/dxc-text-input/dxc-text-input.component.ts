@@ -269,6 +269,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, Cont
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.hasError = this.error && !this.disabled ? true : false;
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -438,7 +439,6 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, Cont
   private handleValidationError() {
     const validationError = this.validateValue(this.value);
     this.validationError = validationError;
-    this.hasError = this.validationError ? true : false;
     return validationError;
   }
 

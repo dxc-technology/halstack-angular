@@ -270,12 +270,14 @@ export class DxcDateInputComponent implements OnInit {
     let _dateReturn = {
       value: _stringValue,
       date: value.isValid() ? value.toDate() : null,
+      error: this.dxcInputRef.error
     };
     this.onChange.emit(_dateReturn);
     if (!this.controlled) {
       this.dateValue = value;
       this.renderedValue = _stringValue;
     }
+    this.onBlur.emit(_dateReturn);
     this.closeCalendar();
   }
 

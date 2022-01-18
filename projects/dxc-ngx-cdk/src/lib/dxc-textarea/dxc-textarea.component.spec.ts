@@ -109,7 +109,6 @@ describe('DxcTextareaComponent', () => {
     expect(onChange).toHaveBeenCalledWith({ value: "new value", error: "Please use a valid pattern" });
     fireEvent.blur(textarea);
     expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "new value" });
-    expect(screen.getByText("Please use a valid pattern")).toBeTruthy();
     expect(screen.getByDisplayValue("new value"));
     textarea.focus();
     expect(textarea).toHaveFocus();
@@ -148,14 +147,15 @@ describe('DxcTextareaComponent', () => {
     fireEvent.blur(textarea);
     await waitFor(() => {
       expect(onBlur).toHaveBeenCalledWith({ error: "Min length 5, Max length 10", value: "test" });
-      expect(screen.getByText("Min length 5, Max length 10")).toBeTruthy();
     });
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
-    fireEvent.input(textarea, { target: { value: "test " } });
+    fireEvent.input(textarea, { target: { value: "test 2" } });
     fireEvent.blur(textarea);
-    expect(screen.queryByText("Min length 5, Max length 10")).toBeFalsy();
+    await waitFor(() => {
+      expect(onBlur).toHaveBeenCalledWith({ error: null, value: "test 2" });
+    });
   });
   test("Strict mode - Pattern and length constraints", async () => {
     const onChange = jest.fn();
@@ -185,19 +185,19 @@ describe('DxcTextareaComponent', () => {
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test" } });
     fireEvent.blur(textarea);
-    expect(screen.getByText("Min length 5, Max length 10")).toBeTruthy();
+    expect(onBlur).toHaveBeenCalledWith({ error: "Min length 5, Max length 10", value: "test" });
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test " } });
     fireEvent.blur(textarea);
-    expect(screen.getByText("Please use a valid pattern")).toBeTruthy();
+    expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "test " });
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test 4" } });
     fireEvent.blur(textarea);
-    expect(screen.queryByText("Please use a valid pattern")).toBeFalsy();
+    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "test 4" });
   });
   test("Non Strict mode - Pattern constraint", async () => {
     const onChange = jest.fn((value) => {

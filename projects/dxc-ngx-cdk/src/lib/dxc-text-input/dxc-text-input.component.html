@@ -33,7 +33,7 @@
     [attr.aria-autocomplete]="suggestions && 'list'"
   />
   <span
-    *ngIf="(error || validationError) && !disabled"
+    *ngIf="error && !disabled"
     class="inputErrorIcon"
     aria-label="Error"
   >
@@ -176,8 +176,3 @@
 </div>
 
 <span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>
-<span
-  *ngIf="validationError && !disabled && !error"
-  class="inputErrorMessage"
-  >{{ validationError }}</span
->

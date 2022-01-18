@@ -32,14 +32,14 @@ export class DxcSelectHelper {
         background: ${inputs.disabled
           ? "var(--select-disabledInputBackgroundColor) 0% 0% no-repeat padding-box"
           : "#ffffff 0% 0% no-repeat padding-box"};
-        border: 1px solid
-          ${inputs.disabled
-            ? "var(--select-disabledInputBorderColor)"
-            : inputs.error
-            ? "transparent"
-            : "var(--select-enabledInputBorderColor)"};
+        border: 1px solid;
+        border-color: ${inputs.disabled
+          ? "var(--select-disabledInputBorderColor)"
+          : inputs.error
+          ? "transparent"
+          : "var(--select-enabledInputBorderColor)"};
         ${inputs.error && !inputs.disabled
-          ? "box-shadow: 0 0 0 2px var(--select-errorInputBorderColor);"
+          ? "box-shadow: inset 0 0 0 2px var(--select-errorInputBorderColor);"
           : ""}
         border-radius: 0.25rem;
         opacity: 1;
@@ -62,7 +62,7 @@ export class DxcSelectHelper {
         }
         :focus-within {
           ${!inputs.disabled
-            ? "border: 1px solid transparent; box-shadow: 0 0 0 2px var(--select-focusInputBorderColor);"
+            ? "border-color: transparent; box-shadow: inset 0 0 0 2px var(--select-focusInputBorderColor);"
             : ""}
         }
         .valueContainer {
@@ -92,12 +92,16 @@ export class DxcSelectHelper {
               align-items: center;
               border-left: 1px solid var(--select-selectionIndicatorBorderColor);
               border-top: 1px solid var(--select-selectionIndicatorBorderColor);
-              border-bottom: 1px solid var(--select-selectionIndicatorBorderColor);
+              border-bottom: 1px solid
+                var(--select-selectionIndicatorBorderColor);
             }
             .removeContainer {
               width: 24px;
               height: 22px;
-              background: var(--select-enabledSelectionIndicatorActionBackgroundColor) 0% 0% no-repeat padding-box;
+              background: var(
+                  --select-enabledSelectionIndicatorActionBackgroundColor
+                )
+                0% 0% no-repeat padding-box;
               border: 1px solid var(--select-selectionIndicatorBorderColor);
               display: flex;
               justify-content: center;
@@ -115,13 +119,17 @@ export class DxcSelectHelper {
                 fill: var(--select-enabledSelectionIndicatorActionIconColor);
               }
               &:hover {
-                background: var(--select-hoverSelectionIndicatorActionBackgroundColor);
+                background: var(
+                  --select-hoverSelectionIndicatorActionBackgroundColor
+                );
                 svg {
                   fill: var(--select-hoverSelectionIndicatorActionIconColor);
                 }
               }
               &:active {
-                background: var(--select-activeSelectionIndicatorActionBackgroundColor);
+                background: var(
+                  --select-activeSelectionIndicatorActionBackgroundColor
+                );
                 svg {
                   fill: var(--select-activeSelectionIndicatorActionIconColor);
                 }
@@ -184,7 +192,7 @@ export class DxcSelectHelper {
               font-size: var(--select-valueFontSize);
               font-style: var(--select-valueFontStyle);
               font-weight: var(--select-valueFontWeight);
-              line-height:var(--select-valueLineHeight);
+              line-height: var(--select-valueLineHeight);
               color: ${inputs.disabled
                 ? "var(--select-disabledColor)"
                 : "var(--select-valueFontColor)"};
@@ -241,7 +249,7 @@ export class DxcSelectHelper {
         margin-bottom: 0.25rem;
         top: 100%;
         overflow: auto;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         background: var(--select-listDialogBackgroundColor) 0% 0% no-repeat
           padding-box;
         border: 1px solid var(--select-listDialogBorderColor);

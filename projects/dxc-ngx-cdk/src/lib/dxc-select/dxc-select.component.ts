@@ -24,7 +24,6 @@ import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { I } from "@angular/cdk/keycodes";
 
 interface SelectProperties {
   label: string;
@@ -348,7 +347,6 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   focusContainer(event) {
-    console.log("dame dane dame yo");
     if (!this.disabled && !this.searchable) {
       event.preventDefault();
       event.stopPropagation();

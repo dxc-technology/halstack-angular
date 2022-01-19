@@ -24,6 +24,7 @@ import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { I } from "@angular/cdk/keycodes";
 
 interface SelectProperties {
   label: string;
@@ -227,7 +228,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
-    if(this.optional && !this.multiple){
+    if (this.optional && !this.multiple) {
       this.service.setSelectedValues(this.optionalOption);
     }
     this.id = `select-${uuidv4()}`;
@@ -347,10 +348,19 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   focusContainer(event) {
-    if (!this.disabled) {
+    console.log("dame dane dame yo");
+    if (!this.disabled && !this.searchable) {
       event.preventDefault();
       event.stopPropagation();
       this.containerRef?.nativeElement?.focus();
+    }
+    if (!this.disabled && this.searchable) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.isInputVisible = true;
+      setTimeout(() => {
+        this.inputRef.nativeElement.focus();
+      }, 0);
     }
   }
 

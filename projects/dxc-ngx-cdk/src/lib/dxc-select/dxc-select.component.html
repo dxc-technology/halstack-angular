@@ -21,7 +21,8 @@
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div
   class="container"
-  tabindex="0"
+  [tabindex]="tabIndex"
+  (focus)="focusContainer($event)"
   (click)="handleSelectOpen()"
   (keydown)="handleOnKeyDown($event)"
   (focusout)="handleOnFocusOut()"

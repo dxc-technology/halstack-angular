@@ -6,7 +6,7 @@ import {
   HostBinding,
   SimpleChanges,
 } from "@angular/core";
-import { EventEmitter, ElementRef, Optional } from "@angular/core";
+import { EventEmitter, Optional } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -15,6 +15,21 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 
 @Component({
   selector: "dxc-switch",
@@ -25,6 +40,9 @@ export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
   @HostBinding("class.dark") darkBackground = false;
   @HostBinding("class.light") lightBackground = true;
+  /**
+   * If true, the component is checked. If undefined, the component will be uncontrolled and the value will be managed internally by the component.
+   */
   @Input()
   get checked(): boolean {
     return this._checked;
@@ -33,7 +51,13 @@ export class DxcSwitchComponent implements OnChanges {
     this._checked = coerceBooleanProperty(value);
   }
   private _checked;
-  @Input() value: any;
+  /**
+   * Will be passed to the value attribute of the html input element. When inside a form, this value will be only submitted if the switch is checked.
+   */
+  @Input() value: string;
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -41,7 +65,10 @@ export class DxcSwitchComponent implements OnChanges {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
+  private _disabled = false;
+  /**
+   * If true, the switch will change its appearence, showing that the value is required.
+   */
   @Input()
   get required(): boolean {
     return this._required;
@@ -49,13 +76,31 @@ export class DxcSwitchComponent implements OnChanges {
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value);
   }
-  private _required;
-  @Input() label: string;
-  @Input() name: string;
-  @Input() id: string;
-  @Input() labelPosition: string;
-  @Input() margin: any;
-  @Input() size: any;
+  private _required = false;
+  /**
+   * Text to be placed next to the switch.
+   */
+  @Input() label: string = "";
+  /**
+   * Name attribute of the input element.
+   */
+  @Input() name: string = "";
+  /**
+   * Whether the label should appear after or before the switch.
+   */
+  @Input() labelPosition: "before" | "after" = "before";
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Size of the component.
+   */
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" = "fitContent";
+  /**
+   * Value of the tabindex.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -63,9 +108,11 @@ export class DxcSwitchComponent implements OnChanges {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
-
-  @Output() onChange: EventEmitter<any>;
+  private _tabIndexValue = 0;
+  /**
+   * This function will be called when the user changes the state of the switch. The new state will be passed as a parameter.
+   */
+  @Output() onChange: EventEmitter<boolean>;
 
   renderedChecked: boolean;
 
@@ -74,9 +121,7 @@ export class DxcSwitchComponent implements OnChanges {
     checked: false,
     disabled: false,
     required: false,
-    label: null,
     name: null,
-    id: null,
     labelPosition: "before",
     margin: null,
     size: "fitContent",

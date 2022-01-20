@@ -3,7 +3,7 @@
   class="inputLabel"
   id="{{ selectLabelId }}"
   role="label"
-  (click)="focusContainer($event)"
+  (click)="labelClick($event)"
   >{{ label }}
   <span *ngIf="optional" class="optional">(Optional)</span>
 </span>

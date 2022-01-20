@@ -184,7 +184,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   }
 
   checkFileSize(file: File) {
-    console.log(file);
     if (file.size < this.minSize) {
       return "File size must be greater than min size.";
     }

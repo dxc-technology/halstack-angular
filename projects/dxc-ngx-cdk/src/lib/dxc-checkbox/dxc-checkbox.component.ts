@@ -138,16 +138,17 @@ export class DxcCheckboxComponent implements OnInit {
   renderedChecked: boolean;
 
   defaultInputs = new BehaviorSubject<any>({
-    value: null,
     checked: false,
+    value: null,
+    label: null,
+    labelPosition: "before",
+    name: null,
     disabled: false,
     required: false,
-    label: null,
-    name: null,
-    id: null,
-    labelPosition: "before",
+    tabIndexValue: 0,
     margin: null,
     size: "fitContent",
+    id: null,
   });
 
   sizes = {

@@ -52,7 +52,7 @@ export class DxcPaginatorComponent implements OnInit {
    * Array of numbers representing the items per page options.
    * If undefined, the select with items per page options will not be displayed.
    */
-  @Input() public itemsPerPageOptions: number[] = [];
+  @Input() public itemsPerPageOptions: number[];
 
   /**
    * Total number of items in the pages.

@@ -16,6 +16,24 @@ import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { BackgroundProviderInnerComponent } from "../background-provider/background-provider-inner.component";
 
+type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-alert",
   templateUrl: "./dxc-alert.component.html",
@@ -23,12 +41,31 @@ import { BackgroundProviderInnerComponent } from "../background-provider/backgro
   providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcAlertComponent implements OnChanges {
-  @HostBinding("class") className;
-  @Input() type: string = "info";
-  @Input() mode: string = "inline";
+  /**
+   * Uses on of the available alert types.
+   */
+  @Input() type: "info" | "confirm" | "warning" | "error" = "info";
+
+  /**
+   * Uses on of the available alert modes:
+   *    'inline': If onClose eventEmitter is received, close button will be visible and the
+   *              event will be emitted when it's clicked. There is no overlay layer.
+   *              Position should be decided by the user.
+   *    'modal': The alert will be displayed in the middle of the screen with an overlay
+   *             layer behind. The onClose event will be emitted when the X button or
+   *             the overlay is clicked. The user has the responsibility of hidding the modal
+   *             in the onClose event, otherwise the modal will remain visible.
+   */
+  @Input() mode: "inline" | "modal" = "inline";
+
+  /**
+   * Text to display after icon and alert type and before content.
+   */
   @Input() inlineText: string;
-  @Input() margin: any;
-  @Input() size: string;
+
+  /**
+   * Tabindex value given to the close button.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -36,10 +73,30 @@ export class DxcAlertComponent implements OnChanges {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
-  @Output() onClose = new EventEmitter<any>();
+  /**
+   * This event will emit in case the user clicks the close button. If there is no
+   * eventEmitter we should close the alert by default.
+   */
+  @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * Size of the margin to be applied to the component. You can pass an object with
+   * 'top', 'bottom', 'left' and 'right' properties in order to specify different
+   * margin sizes.
+   */
+  @Input() margin: Space | Margin;
+
+  /**
+   * Size of the component.
+   */
+  @Input() size: Size = "fitContent";
+
   isCloseVisible = false;
+
+  @HostBinding("class") className;
+
   @ViewChild("contents", { static: true })
   content: BackgroundProviderInnerComponent;
 
@@ -54,11 +111,12 @@ export class DxcAlertComponent implements OnChanges {
   };
 
   defaultInputs = new BehaviorSubject<any>({
-    mode: "inline",
-    margin: null,
     type: "info",
-    size: "fitContent",
+    mode: "inline",
+    inlineText: null,
     tabIndexValue: 0,
+    margin: null,
+    size: "fitContent",
   });
 
   constructor(private utils: CssUtils) {}
@@ -102,12 +160,13 @@ export class DxcAlertComponent implements OnChanges {
   setBackgroundColorByAlertType(type: string) {
     switch (type) {
       case "info":
-        this.currentBackgroundColor =
-          this.utils.readProperty("--alert-infoBackgroundColor");
+        this.currentBackgroundColor = this.utils.readProperty(
+          "--alert-infoBackgroundColor"
+        );
         return css`
           background-color: var(--alert-infoBackgroundColor);
           border-color: var(--alert-infoBorderColor);
-          .icon svg{
+          .icon svg {
             fill: var(--alert-infoIconColor);
           }
         `;
@@ -118,7 +177,7 @@ export class DxcAlertComponent implements OnChanges {
         return css`
           background-color: var(--alert-successBackgroundColor);
           border-color: var(--alert-successBorderColor);
-          .icon svg{
+          .icon svg {
             fill: var(--alert-successIconColor);
           }
         `;
@@ -129,27 +188,29 @@ export class DxcAlertComponent implements OnChanges {
         return css`
           background-color: var(--alert-warningBackgroundColor);
           border-color: var(--alert-warningBorderColor);
-          .icon svg{
+          .icon svg {
             fill: var(--alert-warningIconColor);
           }
         `;
       case "error":
-        this.currentBackgroundColor =
-          this.utils.readProperty("--alert-errorBackgroundColor");
+        this.currentBackgroundColor = this.utils.readProperty(
+          "--alert-errorBackgroundColor"
+        );
         return css`
           background-color: var(--alert-errorBackgroundColor);
           border-color: var(--alert-errorBorderColor);
-          .icon svg{
+          .icon svg {
             fill: var(--alert-errorIconColor);
           }
         `;
       default:
-        this.currentBackgroundColor =
-          this.utils.readProperty("--alert-errorBackgroundColor");
+        this.currentBackgroundColor = this.utils.readProperty(
+          "--alert-errorBackgroundColor"
+        );
         return css`
           background-color: var(--alert-errorBackgroundColor);
           border-color: var(--alert-errorBorderColor);
-          .icon svg{
+          .icon svg {
             fill: var(--alert-errorIconColor);
           }
         `;

@@ -17,8 +17,6 @@ import {
 
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
-type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
-
 type Space =
   | "xxsmall"
   | "xsmall"
@@ -126,7 +124,8 @@ export class DxcCheckboxComponent implements OnInit {
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
 
   @Input() id: string;
 

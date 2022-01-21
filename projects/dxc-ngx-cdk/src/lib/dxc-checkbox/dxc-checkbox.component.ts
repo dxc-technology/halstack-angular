@@ -52,7 +52,7 @@ export class DxcCheckboxComponent implements OnInit {
   set checked(value: boolean) {
     this._checked = coerceBooleanProperty(value);
   }
-  private _checked = false;
+  private _checked;
 
   /**
    * Will be passed to the value attribute of the html input element. When inside a form,

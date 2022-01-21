@@ -93,12 +93,12 @@ export class DxcPaginatorComponent implements OnInit {
 
   /**
    * This event will emit the new page when the user interacts with the page navigation
-   * buttons or select. The page number will be passed as a parameter to this function.
+   * buttons or select. The page number will be passed as a parameter.
    */
   @Output() onGoToPage: EventEmitter<number> = new EventEmitter<number>();
 
   /**
-   * This function will be called when the user picks an option for the itemsPerPage select.
+   * This event will emit in case of the user picks an option for the itemsPerPage select.
    * The value selected will be passed as a parameter.
    */
   @Output() itemsPerPageFunction: EventEmitter<number> =
@@ -123,6 +123,7 @@ export class DxcPaginatorComponent implements OnInit {
   defaultInputs = new BehaviorSubject<any>({
     currentPage: 1,
     itemsPerPage: 5,
+    showGoToPage: false,
     itemsPerPageOptions: [],
     totalItems: 1,
     paginationActions: null,

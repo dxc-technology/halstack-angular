@@ -21,6 +21,21 @@ import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { CssUtils } from "../utils";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 const moment = momentImported;
 
 @Component({
@@ -31,18 +46,10 @@ const moment = momentImported;
 export class DxcDateInputComponent implements OnInit {
   @HostBinding("class") className;
 
-  @Input()
-  label: string;
-
-  @Input()
-  name: string;
-
-  @Input()
-  value: string;
-
-  @Input()
-  helperText: string;
-
+  @Input() label: string;
+  @Input() name: string;
+  @Input() value: string;
+  @Input() helperText: string;
   @Input() format: string = "dd-MM-yyyy";
 
   @Input()
@@ -81,22 +88,16 @@ export class DxcDateInputComponent implements OnInit {
   }
   private _clearable = false;
 
-  @Input()
-  error = undefined;
-
-  @Input()
-  pattern = "";
-
-  @Input()
-  length = { min: undefined, max: undefined };
-
-  @Input()
-  margin: Object | string;
-
+  @Input() error: string;
+  @Input() margin: Space | Margin;
   @Input() size: string = "medium";
+  @Input() tabIndex: number = 0;
 
-  @Input()
-  tabIndex: number;
+  // @Input()
+  // pattern = "";
+
+  // @Input()
+  // length = { min: undefined, max: undefined };
 
   defaultInputs = new BehaviorSubject<any>({
     error: "",
@@ -253,14 +254,14 @@ export class DxcDateInputComponent implements OnInit {
     if (!this.value) {
       this.renderedValue = value;
       this.dateValue = _dateValue;
-    }    
+    }
   }
 
   handleOnBlur(event) {
     this.onBlur.emit({ value: event.value, error: event.error });
     if (!this.controlled) {
       this.renderedValue = event.value;
-      this.dateValue = this.getMomentValue(event.value, this.format);;
+      this.dateValue = this.getMomentValue(event.value, this.format);
       this.cdRef.detectChanges();
     }
   }
@@ -270,7 +271,7 @@ export class DxcDateInputComponent implements OnInit {
     let _dateReturn = {
       value: _stringValue,
       date: value.isValid() ? value.toDate() : null,
-      error: this.dxcInputRef.error
+      error: this.dxcInputRef.error,
     };
     this.onChange.emit(_dateReturn);
     if (!this.controlled) {

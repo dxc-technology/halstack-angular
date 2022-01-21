@@ -16,8 +16,6 @@ import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { BackgroundProviderInnerComponent } from "../background-provider/background-provider-inner.component";
 
-type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
-
 type Space =
   | "xxsmall"
   | "xsmall"
@@ -91,7 +89,8 @@ export class DxcAlertComponent implements OnChanges {
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
 
   isCloseVisible = false;
 

@@ -19,6 +19,9 @@ import { Option } from "../../public-api";
   styleUrls: ["./dxc-paginator.component.scss"],
 })
 export class DxcPaginatorComponent implements OnInit {
+  /**
+   * Number of the current selected page.
+   */
   @Input()
   get currentPage(): number {
     return this._currentPage;
@@ -26,8 +29,11 @@ export class DxcPaginatorComponent implements OnInit {
   set currentPage(value: number) {
     this._currentPage = coerceNumberProperty(value);
   }
-  private _currentPage;
+  private _currentPage = 1;
 
+  /**
+   * Number of items per page.
+   */
   @Input()
   get itemsPerPage(): number {
     return this._itemsPerPage;
@@ -35,8 +41,22 @@ export class DxcPaginatorComponent implements OnInit {
   set itemsPerPage(value: number) {
     this._itemsPerPage = coerceNumberProperty(value);
   }
-  private _itemsPerPage;
+  private _itemsPerPage = 5;
 
+  /**
+   * If true, a select will be displayed with the page numbers to move through them.
+   */
+  @Input() public showGoToPage: boolean = false;
+
+  /**
+   * Array of numbers representing the items per page options.
+   * If undefined, the select with items per page options will not be displayed.
+   */
+  @Input() public itemsPerPageOptions: number[] = [];
+
+  /**
+   * Total number of items in the pages.
+   */
   @Input()
   get totalItems(): number {
     return this._totalItems;
@@ -44,17 +64,24 @@ export class DxcPaginatorComponent implements OnInit {
   set totalItems(value: number) {
     this._totalItems = coerceNumberProperty(value);
   }
-  private _totalItems;
+  private _totalItems = 1;
 
+  /**
+   * Pagination actions to be rendered.
+   * In case the property is not defined all actions will be rendered.
+   */
   @Input()
-  get paginationActions(): Array<string> {
+  get paginationActions(): Array<"prev" | "next" | "first" | "last"> {
     return this._paginationActions;
   }
-  set paginationActions(value: Array<string>) {
+  set paginationActions(value: Array<"prev" | "next" | "first" | "last">) {
     this._paginationActions = coerceArray(value);
   }
   private _paginationActions;
 
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -62,14 +89,20 @@ export class DxcPaginatorComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
-  @Input() public itemsPerPageOptions: number[];
+  /**
+   * This event will emit the new page when the user interacts with the page navigation
+   * buttons or select. The page number will be passed as a parameter to this function.
+   */
+  @Output() onGoToPage: EventEmitter<number> = new EventEmitter<number>();
 
-  @Input() public showGoToPage: boolean = false;
-
-  @Output() onGoToPage: EventEmitter<any> = new EventEmitter<any>();
-  @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
+  /**
+   * This function will be called when the user picks an option for the itemsPerPage select.
+   * The value selected will be passed as a parameter.
+   */
+  @Output() itemsPerPageFunction: EventEmitter<number> =
+    new EventEmitter<number>();
 
   @HostBinding("class") className;
 
@@ -90,9 +123,9 @@ export class DxcPaginatorComponent implements OnInit {
   defaultInputs = new BehaviorSubject<any>({
     currentPage: 1,
     itemsPerPage: 5,
-    totalItems: 1,
-    paginationActions: 0,
     itemsPerPageOptions: [],
+    totalItems: 1,
+    paginationActions: null,
     tabIndexValue: 0,
   });
 
@@ -128,9 +161,9 @@ export class DxcPaginatorComponent implements OnInit {
       ...this.defaultInputs.getValue(),
       ...inputs,
     });
-    if(this.totalPages > 0){
+    if (this.totalPages > 0) {
       this.totalPagesOptions = [];
-      for(let i = 0; i < this.totalPages; i++){
+      for (let i = 0; i < this.totalPages; i++) {
         const op = i + 1;
         const option: Option = {
           label: op.toString(),

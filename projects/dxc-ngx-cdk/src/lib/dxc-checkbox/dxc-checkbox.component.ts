@@ -17,13 +17,34 @@ import {
 
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
+type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-checkbox",
   templateUrl: "./dxc-checkbox.component.html",
   providers: [CssUtils],
 })
 export class DxcCheckboxComponent implements OnInit {
-  @Input() value: string;
+  /**
+   * If true, the component is checked. If undefined the component will be uncontrolled
+   * and the value will be managed internally by the component.
+   */
   @Input()
   get checked(): boolean {
     return this._checked;
@@ -31,7 +52,32 @@ export class DxcCheckboxComponent implements OnInit {
   set checked(value: boolean) {
     this._checked = coerceBooleanProperty(value);
   }
-  private _checked;
+  private _checked = false;
+
+  /**
+   * Will be passed to the value attribute of the html input element. When inside a form,
+   * this value will be only submitted if the checkbox is checked.
+   */
+  @Input() value: string;
+
+  /**
+   * Text to be placed next to the checkbox.
+   */
+  @Input() label: string;
+
+  /**
+   * Whether the label should appear after or before the checkbox.
+   */
+  @Input() labelPosition: "before" | "after" = "before";
+
+  /**
+   * Name attribute of the input element.
+   */
+  @Input() name: string;
+
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -39,7 +85,11 @@ export class DxcCheckboxComponent implements OnInit {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
+  private _disabled = false;
+
+  /**
+   * If true, the checkbox will change its appearence, showing that the value is required.
+   */
   @Input()
   get required(): boolean {
     return this._required;
@@ -47,13 +97,11 @@ export class DxcCheckboxComponent implements OnInit {
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value);
   }
-  private _required;
-  @Input() label: string;
-  @Input() name: string;
-  @Input() id: string;
-  @Input() labelPosition: string;
-  @Input() margin: any;
-  @Input() size: any;
+  private _required = false;
+
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -61,9 +109,26 @@ export class DxcCheckboxComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
-  @Output() onChange: EventEmitter<any>;
+  /**
+   * This event will emit in case the user clicks the checkbox.
+   * The new value will be passed as a parameter.
+   */
+  @Output() onChange: EventEmitter<boolean>;
+
+  /**
+   * Size of the margin to be applied to the component. You can pass an object with 'top',
+   * 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+
+  /**
+   * Size of the component.
+   */
+  @Input() size: Size = "fitContent";
+
+  @Input() id: string;
 
   @HostBinding("class") className;
   @HostBinding("class.dark") darkBackground = false;
@@ -162,7 +227,7 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   hoverCheckbox() {
-    if(!this.disabled){
+    if (!this.disabled) {
       this.hover = !this.hover;
     }
   }
@@ -223,11 +288,9 @@ export class DxcCheckboxComponent implements OnInit {
           }
 
           .mat-checkbox-inner-container {
-            margin: ${
-              inputs.labelPosition === "after"
-                ? "2px calc(var(--checkbox-checkLabelSpacing) + 6px) 2px 2px;"
-                : "2px 2px 2px calc(var(--checkbox-checkLabelSpacing) + 2px);"
-            };
+            margin: ${inputs.labelPosition === "after"
+              ? "2px calc(var(--checkbox-checkLabelSpacing) + 6px) 2px 2px;"
+              : "2px 2px 2px calc(var(--checkbox-checkLabelSpacing) + 2px);"};
             width: 18px;
             height: 18px;
 
@@ -260,7 +323,7 @@ export class DxcCheckboxComponent implements OnInit {
               border-color: var(--checkbox-disabledBorderColor) !important;
             }
           }
-          label.mat-checkbox-layout span.mat-checkbox-label span.checkboxLabel{
+          label.mat-checkbox-layout span.mat-checkbox-label span.checkboxLabel {
             color: var(--checkbox-disabledFontColor) !important;
           }
         }
@@ -371,20 +434,30 @@ export class DxcCheckboxComponent implements OnInit {
             background: var(--checkbox-hoverBackgroundColorChecked) !important;
           }
         }
-        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background, 
-        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame {
-            border-color: var(--checkbox-hoverBorderColor);
+        label.mat-checkbox-layout
+          .mat-checkbox-inner-container
+          .mat-checkbox-background,
+        label.mat-checkbox-layout
+          .mat-checkbox-inner-container
+          .mat-checkbox-frame {
+          border-color: var(--checkbox-hoverBorderColor);
         }
       }
       &.hover {
         .mat-checkbox-checked .mat-checkbox-inner-container {
           .mat-checkbox-background {
-            background: var(--checkbox-hoverBackgroundColorCheckedOnDark) !important;
+            background: var(
+              --checkbox-hoverBackgroundColorCheckedOnDark
+            ) !important;
           }
         }
-        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background, 
-        label.mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-frame {
-            border-color: var(--checkbox-hoverBorderColorOnDark);
+        label.mat-checkbox-layout
+          .mat-checkbox-inner-container
+          .mat-checkbox-background,
+        label.mat-checkbox-layout
+          .mat-checkbox-inner-container
+          .mat-checkbox-frame {
+          border-color: var(--checkbox-hoverBorderColorOnDark);
         }
       }
     `;

@@ -24,6 +24,7 @@ type Space =
   | "large"
   | "xlarge"
   | "xxlarge";
+  
 type Margin = {
   top?: Space;
   bottom?: Space;
@@ -110,7 +111,8 @@ export class DxcSwitchComponent implements OnChanges {
   }
   private _tabIndexValue = 0;
   /**
-   * This function will be called when the user changes the state of the switch. The new state will be passed as a parameter.
+   * This event will be emitted when the user changes the state of the switch. 
+   * The new value of the checked property will be passed as a parameter.
    */
   @Output() onChange: EventEmitter<boolean>;
 

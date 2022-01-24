@@ -63,6 +63,9 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
   @Input()
   size: string = "medium";
 
+  @Input()
+  autocomplete: string = "off";
+
   defaultInputs = new BehaviorSubject<any>({
     error: "",
     helperText: "",

@@ -98,6 +98,9 @@ export class DxcDateInputComponent implements OnInit {
   @Input()
   tabIndex: number;
 
+  @Input()
+  autocomplete: string = "off";
+
   defaultInputs = new BehaviorSubject<any>({
     error: "",
     clearable: false,

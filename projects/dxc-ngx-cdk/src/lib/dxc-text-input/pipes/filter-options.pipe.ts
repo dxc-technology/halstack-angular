@@ -10,6 +10,8 @@ export class FilterOptionsPipe implements PipeTransform {
     options: Array<any>,
     actualValue: string | EmittedValue
   ): Array<any> {
+    console.log(actualValue);
+    console.log("options", options);
     if (actualValue) {
       const value =
         typeof actualValue === "string"
@@ -21,6 +23,6 @@ export class FilterOptionsPipe implements PipeTransform {
       this.service.setFilteredOptions(array);
       return array;
     }
-    return [];
+    return options;
   }
 }

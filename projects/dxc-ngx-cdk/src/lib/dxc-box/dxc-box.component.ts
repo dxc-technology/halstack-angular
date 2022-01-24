@@ -74,6 +74,7 @@ export class DxcBoxComponent implements OnInit {
       border-radius: 4px;
       overflow: hidden;
       background-color: var(--box-backgroundColor);
+      backdrop-filter:blur(4px);
       border-color: transparent;
       color: "#000000";
 

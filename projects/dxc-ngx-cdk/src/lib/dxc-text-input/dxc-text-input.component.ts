@@ -23,6 +23,11 @@ import { v4 as uuidv4 } from "uuid";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
+export type EmittedValue = {
+  value: string;
+  error: string;
+};
+
 @Component({
   selector: "dxc-text-input",
   templateUrl: "./dxc-text-input.component.html",
@@ -126,10 +131,10 @@ export class DxcTextInputComponent
   });
 
   @Output()
-  onChange = new EventEmitter<any>();
+  onChange = new EventEmitter<EmittedValue>();
 
   @Output()
-  onBlur = new EventEmitter<any>();
+  onBlur = new EventEmitter<EmittedValue>();
 
   @Output()
   onActionClick = new EventEmitter<any>();

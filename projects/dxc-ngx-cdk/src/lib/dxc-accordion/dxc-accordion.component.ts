@@ -22,6 +22,29 @@ import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-ic
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
 import { BackgroundProviderComponent } from "../background-provider/background-provider.component";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
+type Padding = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-accordion",
   templateUrl: "./dxc-accordion.component.html",
@@ -30,9 +53,21 @@ import { BackgroundProviderComponent } from "../background-provider/background-p
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   currentBackgroundColor: string;
   @Input() mode: string;
-  @Input() label: string;
+  /**
+   * The panel label.
+   */
+  @Input() label: string = "";
+  /**
+   * @deprecated URL of the icon that will be placed next to panel label.
+   */
   @Input() iconSrc: string;
-  @Input() assistiveText: string;
+  /**
+   * Assistive text to be placed on the right side of the panel.
+   */
+  @Input() assistiveText: string = "";
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -41,9 +76,26 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
-  @Output() onClick = new EventEmitter<any>();
-  @Input() margin: any;
-  @Input() padding: any;
+  /**
+   * This event will be emitted when the user clicks the accordion to expand or collapse
+   * the panel. The new state of the panel will be passed as a parameter.
+   */
+  @Output() onClick = new EventEmitter<boolean>();
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
+   */
+  @Input() padding: Space | Padding;
+  /**
+   * Represents the state of the panel. When true, the component will be
+   * expanded. If undefined, the component will be uncontrolled and its
+   * value will be managed internally by the component.
+   */
   @Input()
   get isExpanded(): boolean {
     return this._isExpanded;
@@ -52,6 +104,9 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     this._isExpanded = coerceBooleanProperty(value);
   }
   private _isExpanded;
+  /**
+   * Value of the tabindex.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -59,13 +114,16 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
   @HostBinding("class") className;
 
   @ViewChild("matExpansionPanel", { static: true }) _matExpansionPanel: any;
   renderedIsExpanded: boolean;
 
+  /**
+   * Element used as the icon that will be placed next to panel label.
+   */
   @ContentChildren(DxcAccordionIconComponent)
   dxcAccordionIcon: QueryList<DxcAccordionIconComponent>;
 

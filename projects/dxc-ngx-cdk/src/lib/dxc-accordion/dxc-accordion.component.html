@@ -10,9 +10,7 @@
       [expandedHeight]="'48px'"
       [tabindex]="disabled ? -1 : tabIndexValue"
     >
-      <mat-panel-title
-        [ngClass]="'before'"
-      >
+      <mat-panel-title [ngClass]="'before'">
         <span *ngIf="label">{{ label }}</span>
         <img [src]="iconSrc" *ngIf="iconSrc" class="imageIcon" />
         <ng-content select="dxc-accordion-icon"></ng-content>
@@ -33,9 +31,8 @@
         </svg>
       </span>
     </mat-expansion-panel-header>
-    <background-provider-inner color="{{currentBackgroundColor}}">
+    <background-provider-inner color="{{ currentBackgroundColor }}">
       <ng-content></ng-content>
     </background-provider-inner>
-
   </mat-expansion-panel>
 </mat-accordion>

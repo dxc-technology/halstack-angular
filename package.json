@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve angular-dxc-site --baseHref=/tools/angular/",
+    "start": "ng serve angular-dxc-site --baseHref=/tools/angular/ --port 3000",
     "start:next": "ng serve angular-dxc-site --baseHref=/tools/angular/next/",
     "start-example": "ng serve dxc-angular-cdk",
     "build-next-cdk-site": "ng build angular-dxc-site --prod --baseHref=/tools/angular/next/",

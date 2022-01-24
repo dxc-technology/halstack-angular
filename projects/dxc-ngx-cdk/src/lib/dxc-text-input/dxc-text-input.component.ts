@@ -37,7 +37,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
     },
   ],
 })
-export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
+export class DxcTextInputComponent
+  implements OnInit, OnChanges, OnDestroy, ControlValueAccessor
+{
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
@@ -184,14 +186,15 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, Cont
     });
   }
 
-  onTouch = () => { }
+  onTouch = () => {};
 
   writeValue(value: any): void {
     if (value) {
-      this.value = value || '';
+      this.value = value || "";
     } else {
-      this.value = '';
-    }  }
+      this.value = "";
+    }
+  }
   registerOnChange(fn: any): void {
     this.handleOnChange = fn;
   }
@@ -199,7 +202,7 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, Cont
     this.onTouch = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    this.disabled =  isDisabled
+    this.disabled = isDisabled;
   }
 
   ngOnDestroy(): void {}
@@ -458,11 +461,13 @@ export class DxcTextInputComponent implements OnInit, OnChanges, OnDestroy, Cont
     this.suggestions(this.value).subscribe(
       (suggestionsOptionsList) => {
         this.options = suggestionsOptionsList;
+        this.autosuggestVisible = true;
         this.cdRef.markForCheck();
         this.loading.next(false);
       },
       (err) => {
         this.fetchingError.next(true);
+        this.autosuggestVisible = false;
         this.loading.next(false);
         this.cdRef.markForCheck();
       }

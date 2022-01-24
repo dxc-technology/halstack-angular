@@ -101,6 +101,9 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   size: string = "medium";
 
+  @Input()
+  autocomplete: string = "off";
+
   private controlled: boolean;
 
   defaultInputs = new BehaviorSubject<any>({

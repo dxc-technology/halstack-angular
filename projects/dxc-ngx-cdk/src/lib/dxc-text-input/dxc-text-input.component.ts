@@ -63,6 +63,9 @@ export class DxcTextInputComponent
   @Input()
   helperText: string;
 
+  @Input()
+  autocomplete: string = "off";
+
   hasAction = () => this.onActionClick.observers.length;
 
   @Input()

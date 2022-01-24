@@ -96,6 +96,9 @@ export class DxcTextareaComponent implements OnInit {
   @Input()
   size: string;
 
+  @Input()
+  autocomplete: string = "off";
+
   private controlled: boolean;
 
   defaultInputs = new BehaviorSubject<any>({

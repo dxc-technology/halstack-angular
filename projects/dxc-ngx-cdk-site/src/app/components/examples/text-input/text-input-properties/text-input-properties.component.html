@@ -51,7 +51,8 @@
     <td></td>
     <td>
       If it is defined, the component will change its appearance, showing the
-      error below the input component. If it is not defined, the error messages will be created and managed internally.
+      error below the input component. If it is not defined, the error messages
+      will be created and managed internally.
     </td>
   </tr>
   <tr>
@@ -59,9 +60,7 @@
     <td>
       <code>false</code>
     </td>
-    <td>
-      If true, the input will have an action to clear the entered value.
-    </td>
+    <td>If true, the input will have an action to clear the entered value.</td>
   </tr>
   <tr>
     <td>optional: boolean</td>
@@ -118,6 +117,16 @@
       value entered and the error informing that the value does not match the
       pattern as parameters. If the pattern is accomplished, the error parameter
       will be null.
+    </td>
+  </tr>
+  <tr>
+    <td>autocomplete: string</td>
+    <td><code>'off'</code></td>
+    <td>
+      HTML autocomplete attribute. Lets the user specify if any permission the
+      user agent has to provide automated assistance in filling out the input
+      value. Its value must be one of all the possible values of the HTML
+      autocomplete attribute. Please check the documentation <dxc-link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete" text="here"></dxc-link>.
     </td>
   </tr>
   <tr>

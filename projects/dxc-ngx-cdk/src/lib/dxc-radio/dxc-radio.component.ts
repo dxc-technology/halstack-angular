@@ -14,12 +14,32 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-radio",
   templateUrl: "./dxc-radio.component.html",
   providers: [CssUtils],
 })
 export class DxcRadioComponent implements OnInit {
+  /**
+   * If true, the radio is selected. If undefined the component will be uncontrolled and
+   * the value will be managed internally by the component.
+   */
   @Input()
   get checked(): boolean {
     return this._checked;
@@ -28,6 +48,31 @@ export class DxcRadioComponent implements OnInit {
     this._checked = coerceBooleanProperty(value);
   }
   private _checked;
+
+  /**
+   * Will be passed to the value attribute of the html input element. When inside a form,
+   * this value will be only submitted if the radio is checked.
+   */
+  @Input() value: string;
+
+  /**
+   * Text to be placed next to the radio.
+   */
+  @Input() label: string;
+
+  /**
+   * Whether the label should appear after or before the radio.
+   */
+  @Input() labelPosition: "before" | "after" = "before";
+
+  /**
+   * Name attribute of the input element.
+   */
+  @Input() name: string = "";
+
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -35,9 +80,11 @@ export class DxcRadioComponent implements OnInit {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
-  @Input() label: string;
-  @Input() name: string;
+  private _disabled = false;
+
+  /**
+   * If true, the radio will change its appearence, showing that the value is required.
+   */
   @Input()
   get required(): boolean {
     return this._required;
@@ -45,13 +92,25 @@ export class DxcRadioComponent implements OnInit {
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value);
   }
-  private _required;
-  @Input() labelPosition: string;
-  @Input() margin: string;
-  @Input() size: string;
-  @Input() value: string;
+  private _required = false;
 
-  @Output() onChange: EventEmitter<any>;
+  /**
+   * This event will emit in case the user clicks the radio.
+   * The new value will be passed as a parameter.
+   */
+  @Output() onChange: EventEmitter<boolean>;
+
+  /**
+   * Size of the margin to be applied to the component. You can pass an object with 'top',
+   * 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+
+  /**
+   * Size of the component.
+   */
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
 
   @HostBinding("class") className;
   @HostBinding("class.dark") darkBackground = false;
@@ -61,14 +120,15 @@ export class DxcRadioComponent implements OnInit {
 
   defaultInputs = new BehaviorSubject<any>({
     checked: false,
-    disabled: false,
+    value: null,
     label: null,
-    name: "",
+    labelPosition: "before",
+    name: null,
+    disabled: false,
     required: false,
-    labelPosition: "after",
     margin: null,
     size: "fitContent",
-    value: null,
+    id: null,
   });
 
   sizes = {
@@ -189,7 +249,7 @@ export class DxcRadioComponent implements OnInit {
               height: var(--radio-circleSize);
               width: var(--radio-circleSize);
             }
-            .mat-ripple-element{
+            .mat-ripple-element {
               background-color: transparent;
             }
           }

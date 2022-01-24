@@ -1,21 +1,25 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { DxcTextInputComponent } from "@dxc-technology/halstack-angular";
+import { of } from "rxjs";
+import { delay, switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-new-input-text-preview",
   templateUrl: "./text-input-preview.component.html",
 })
 export class TextInputPreviewComponent implements OnInit {
+  @ViewChild("dxcInputRef", { static: false })
+  dxcInputRef: DxcTextInputComponent;
 
-  @ViewChild("dxcInputRef", { static: false }) dxcInputRef: DxcTextInputComponent;
-
-  constructor() {}
+  constructor() {
+    this.callbackFunc = this.callbackFunc.bind(this);
+  }
 
   controlledValue = "c";
 
   errorMessage = "";
-  
-  lengthLimit={min: 2, max: 5}
+
+  lengthLimit = { min: 2, max: 5 };
 
   options: Array<any> = [
     "Afghanistan",
@@ -55,6 +59,23 @@ export class TextInputPreviewComponent implements OnInit {
 
   clickRef() {
     this.dxcInputRef.inputRef.nativeElement.focus();
+  }
+  callbackFunc(newValue) {
+    console.log(newValue);
+    const newOptions = this.options.filter((option) => {
+      console.log(option);
+      return option.toUpperCase().includes(newValue.toUpperCase());
+    });
+    return of(newOptions).pipe(
+      switchMap((options) => of(options).pipe(delay(1000)))
+    );
+  }
+  onBlur({ value, error }) {
+    this.controlledValue = value;
+  }
+
+  onChange({ value, error }) {
+    this.controlledValue = value;
   }
 
   ngOnInit(): void {}

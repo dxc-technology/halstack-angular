@@ -74,11 +74,10 @@ export class DxcToggleComponent implements OnInit {
           display: flex;
           align-items: center;
           .label {
-            letter-spacing: var(--toggleGroup-fontLetterSpacing);
-            font-family: var(--toggleGroup-fontFamily);
-            font-size: var(--toggleGroup-fontSize);
-            font-style: var(--toggleGroup-fontStyle);
-            font-weight: var(--toggleGroup-fontWeight);
+            font-family: var(--toggleGroup-labelFontFamily);
+            font-size: var(--toggleGroup-labelFontSize);
+            font-style: var(--toggleGroup-labelFontStyle);
+            font-weight: var(--toggleGroup-labelFontWeight);
           }
           .icon {
             ${this.label ? `margin-right: var(--toggleGroup-iconMarginRight);`: `` }

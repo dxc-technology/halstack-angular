@@ -159,6 +159,7 @@ export class DxcButtonComponent {
         display: inline-flex;
         align-items: center;
         span.mat-button-wrapper {
+          width: 100%;
           display: flex;
           align-items: inherit;
           justify-content: inherit;

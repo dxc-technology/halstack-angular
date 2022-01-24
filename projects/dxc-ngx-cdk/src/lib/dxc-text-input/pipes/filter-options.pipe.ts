@@ -21,6 +21,6 @@ export class FilterOptionsPipe implements PipeTransform {
       this.service.setFilteredOptions(array);
       return array;
     }
-    return [];
+    return options;
   }
 }

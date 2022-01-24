@@ -156,9 +156,9 @@ export class DxcDateInputComponent implements OnInit {
    * Also, if the string value is not a valid date, date will be null.
    */
   @Output() onChange = new EventEmitter<{
-    value?: string;
-    error?: string;
-    date?: Date;
+    value: string;
+    error: string | null;
+    date: Date | null;
   }>();
   /**
    * This event will be emitted when the input element loses the focus. An object including the string value,
@@ -166,9 +166,9 @@ export class DxcDateInputComponent implements OnInit {
    * Also, if the string value is not a valid date, date will be null.
    */
   @Output() onBlur = new EventEmitter<{
-    value?: string;
-    error?: string;
-    date: Date;
+    value: string;
+    error: string | null;
+    date: Date | null;
   }>();
   /**
    * Reference to the component.
@@ -307,15 +307,15 @@ export class DxcDateInputComponent implements OnInit {
   }
 
   handleOnBlur(event) {
-    let dateValue = this.getMomentValue(event.value, this.format);
+    let _dateValue = this.getMomentValue(event.value, this.format);
     this.onBlur.emit({
       value: event.value,
       error: event.error,
-      date: dateValue.isValid() ? dateValue.toDate() : null,
+      date: _dateValue.isValid() ? _dateValue.toDate() : null,
     });
     if (!this.controlled) {
       this.renderedValue = event.value;
-      this.dateValue = dateValue;
+      this.dateValue = _dateValue;
       this.cdRef.detectChanges();
     }
   }

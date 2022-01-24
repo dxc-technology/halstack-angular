@@ -160,10 +160,7 @@
 
   <ul
     class="options"
-    *ngIf="!multiple && options?.length > 0"
-    [ngClass]="{
-      closed: !this.isOpened
-    }"
+    *ngIf="!multiple && options?.length > 0 && this.isOpened"
     role="listbox"
     attr.aria-labelledby="{{ selectLabelId }}"
     attr.aria-multiselectable="{{ multiple }}"
@@ -260,11 +257,8 @@
 
   <ul
     class="options"
-    *ngIf="multiple && options?.length > 0"
+    *ngIf="multiple && options?.length > 0&& this.isOpened"
     tabindex="-1"
-    [ngClass]="{
-      closed: !this.isOpened
-    }"
     role="listbox"
     attr.aria-labelledby="{{ selectLabelId }}"
     attr.aria-multiselectable="{{ multiple }}"

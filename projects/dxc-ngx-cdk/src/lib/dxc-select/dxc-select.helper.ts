@@ -264,9 +264,6 @@ export class DxcSelectHelper {
         position: absolute;
         z-index: 100;
         max-height: 312px;
-        &.closed {
-          visibility: hidden;
-        }
         li {
           list-style-type: none;
           text-align: left;

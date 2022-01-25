@@ -14,8 +14,14 @@ import { DropdownService } from "../services/dropdown.service";
   templateUrl: "./dxc-dropdown-option.component.html",
 })
 export class DxcDropdownOptionComponent implements OnChanges {
-  @Input() public value;
-  @Input() public label: string;
+  /**
+   * Value of the option.
+   */
+  @Input() value: string;
+  /**
+   * Label displayed in the option.
+   */
+  @Input() label: string;
 
   @ViewChild(MatMenuItem) menuItem: MatMenuItem;
 

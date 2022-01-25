@@ -21,6 +21,22 @@ import {
 } from "@angular/cdk/coercion";
 import { DropdownService } from "./services/dropdown.service";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-dropdown",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,21 +45,34 @@ import { DropdownService } from "./services/dropdown.service";
   providers: [CssUtils, DropdownService],
 })
 export class DxcDropdownComponent implements OnChanges {
-  @HostBinding("class") className;
+  /**
+   * In case options include icons, whether the icon should appear after or before the label.
+   */
+  @Input() optionsIconPosition: "before" | "after" = "before";
 
-  @Input() public name: string;
-  @Input() public iconPosition: string = "before";
-  @Input() public optionsIconPosition: string = "before";
-  @Input() public margin: any;
-  @Input() public size: any;
-  @Input()
-  get expandOnHover(): boolean {
-    return this._expandOnHover;
-  }
-  set expandOnHover(value: boolean) {
-    this._expandOnHover = coerceBooleanProperty(value);
-  }
-  private _expandOnHover;
+  /**
+   * @deprecated URL of the icon that will be placed next to the dropdown label.
+   */
+  @Input() public iconSrc: string;
+
+  /**
+   * Whether the icon should appear after or before the label.
+   */
+  @Input() iconPosition: "before" | "after" = "before";
+
+  /**
+   * Text to be placed when the list of options is not displayed.
+   */
+  @Input() label: string = "";
+
+  /**
+   * Name attribute of the input element.
+   */
+  @Input() name: string;
+
+  /**
+   * Whether the arrow next to the label is displayed or not.
+   */
   @Input()
   get caretHidden(): boolean {
     return this._caretHidden;
@@ -51,7 +80,30 @@ export class DxcDropdownComponent implements OnChanges {
   set caretHidden(value: boolean) {
     this._caretHidden = coerceBooleanProperty(value);
   }
-  private _caretHidden;
+  private _caretHidden = false;
+
+  /**
+   * Size of the margin to be applied to the component. You can pass an object with 'top',
+   * 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+
+  /**
+   * Size of the component.
+   */
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
+
+  /**
+   * This event will be triggered when the selection changes. The value of the selected
+   * value will be passed as a parameter.
+   */
+  @Output() public onSelectOption: EventEmitter<string> =
+    new EventEmitter<string>();
+
+  /**
+   * Value of the tabindex.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -59,7 +111,23 @@ export class DxcDropdownComponent implements OnChanges {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
+
+  /**
+   * If true, the options are showed when the dropdown is hover.
+   */
+  @Input()
+  get expandOnHover(): boolean {
+    return this._expandOnHover;
+  }
+  set expandOnHover(value: boolean) {
+    this._expandOnHover = coerceBooleanProperty(value);
+  }
+  private _expandOnHover = false;
+
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -67,10 +135,9 @@ export class DxcDropdownComponent implements OnChanges {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
+  private _disabled = false;
 
-  @Input() public label: string = "";
-  @Output() public onSelectOption: EventEmitter<any> = new EventEmitter<any>();
+  @HostBinding("class") className;
 
   @ViewChild("dropdownButton", { static: true }) dropdownButton;
   @ViewChild(MatMenuTrigger, { static: false }) menuTrigger: MatMenuTrigger;
@@ -88,17 +155,17 @@ export class DxcDropdownComponent implements OnChanges {
   triggerStyles: string;
 
   defaultInputs = new BehaviorSubject<any>({
-    disableRipple: false,
-    name: null,
-    iconPosition: "before",
     optionsIconPosition: "before",
-    mode: "basic",
-    caretHidden: false,
+    iconSrc: null,
+    iconPosition: "before",
     label: null,
+    name: null,
+    caretHidden: false,
     margin: null,
     size: "fitContent",
-    expandOnHover: false,
     tabIndexValue: 0,
+    disabled: false,
+    expandOnHover: false,
   });
 
   public arrowClass: string = "down";

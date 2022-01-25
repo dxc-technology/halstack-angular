@@ -220,12 +220,12 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
     this.onChange.emit(event);
     this.controlled
       ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-      : (this.value = event);
+      : (this.value = event.value);
   }
 
   handleOnBlur(event) {
     this.validationError = this.validateOnBlur();
-    this.onBlur.emit({ value: event.value, error: this.validationError });
+    this.onBlur.emit(event);
     if (!this.controlled) {
       this.value = event.value;
       this.cdRef.detectChanges();

@@ -14,6 +14,7 @@
   [disabled]="disabled"
 >
   <div class="buttonContent">
+    <img *ngIf="iconSrc" src="{{ iconSrc }}" />
     <ng-content select="dxc-dropdown-icon"></ng-content>
     <span class="menu-buttom-label" *ngIf="label">{{ label }}</span>
   </div>
@@ -23,7 +24,6 @@
       <div class="dxc-arrow arrow-{{ arrowClass }}"></div>
     </div>
   </div>
-
 </button>
 
 <mat-menu

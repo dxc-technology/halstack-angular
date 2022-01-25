@@ -1,7 +1,7 @@
 <dxc-dialog #activationdialog ariaLabelledBy="lblActivationCode" [isCloseVisible]="isCloseVisible"
   (onCloseClick)="closeActivationDialog()">
   <div class="modal-content" style="position: inherit;">
-    <div class="modal-header">
+    <div class="modal-header d-inline-block">
       <dxc-label id="lblActivationCode" [text]="'Activation Code -'+ label"></dxc-label>
     </div>
     <form [formGroup]="licenceActivationForm">

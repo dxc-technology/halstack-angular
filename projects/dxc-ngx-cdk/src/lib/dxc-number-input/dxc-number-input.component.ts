@@ -215,24 +215,24 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
     )}`;
   }
 
-  handleOnChange(event) {
+  handleOnChange({value, error}) {
     this.cdRef.detectChanges();
-    this.onChange.emit(event);
+    this.onChange.emit({value, error});
     this.controlled
       ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-      : (this.value = event.value);
+      : (this.value = value);
   }
 
-  handleOnBlur(event) {
-    this.validationError = this.validateOnBlur();
-    this.onBlur.emit(event);
+  handleOnBlur({value, error}) {
+    this.validationError = this.validation();
+    this.onBlur.emit({value, error});
     if (!this.controlled) {
-      this.value = event.value;
+      this.value = value;
       this.cdRef.detectChanges();
     }
   }
 
-  validateOnBlur() {
+  validation() {
     let err;
     const currentValue = coerceNumberProperty(this.value);
     if (this.value && this.min && currentValue < this.min) {
@@ -244,7 +244,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleStepMinus() {
-    this.handleOnBlur({ value: this.value });
+    this.handleOnBlur({ value: this.value, error: this.validation() });
     let currentValue;
     if (this.value === null || this.value === undefined) {
       currentValue = 0;
@@ -257,7 +257,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleStepPlus() {
-    this.handleOnBlur({ value: this.value });
+    this.handleOnBlur({ value: this.value, error: this.validation() });
     let currentValue;
     if (this.value === null || this.value === undefined) {
       currentValue = 0;

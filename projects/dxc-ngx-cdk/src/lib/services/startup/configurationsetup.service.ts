@@ -1,6 +1,7 @@
 import { ServiceRequest } from './../../service-resource.constant';
 import { Injectable } from '@angular/core';
 import { IConfig } from '../../models/startup/configuration.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,14 @@ import { IConfig } from '../../models/startup/configuration.model';
 export class ConfigurationsetupService {
   configservice: IConfig;
   private _enableLoader: boolean = true;
+
+  public onConfigLoad = new BehaviorSubject<boolean>(false);
+
   constructor() { }
 
   config = (config?: IConfig): IConfig => {
     this.configservice = config;
+    setTimeout(() => { this.onConfigLoad.next(true) }, 500);
     return this.configservice;
   }
 

@@ -3,6 +3,7 @@ import { ComplexThemeBindingStrategy } from '../theme/complexThemeBindingStrateg
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
+import { IThemeInfo } from '../models/startup/configuration.model';
 
 @Component({
   selector: 'dxc-theme-palette',
@@ -13,23 +14,32 @@ import { CssUtils } from "../utils";
 
 export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('isThemeOpen') isThemeOpen: boolean = false;
-  @Input('themeColors') themeColors: Array<any> = [];
-  @Input('selectedThemeColor') selectedThemeColor: string = '';
-  @Input('isDarkMode') isDarkMode: boolean = false;
+  
+  //@Input('themeColors') themeColors: { 'color': { 'primary': string, 'effect': string }, active: boolean }[] = null;
+  //@Input('selectedThemeColor') selectedThemeColor: { [key: string]: any } = {};
+  //@Input('themeBackgrounds') themeBackgrounds: { 'id': string, 'title': string, 'background': string, 'active': boolean }[] = null;
+  //@Input('isDarkMode') isDarkMode: boolean = false;
+  //@Input('enableTransparency') enableTransparency: boolean = false;
+  @Input('themeInfo') themeInfo: IThemeInfo = null;
+
   @Input('enablePopupMode') enablePopupMode: boolean = true;
   @Input('tabIndexValue') tabIndexValue: number = 0;
   @Input('showThemeToggle') showThemeToggle: boolean = true;
   @Input('label') label: string = '';
+  @Input('backgroundLabel') backgroundLabel: string = '';
   @Input('switchLabel') switchLabel: string = '';
+  @Input('backgroundSwitchLabel') backgroundSwitchLabel: string = '';
   @Input('themePaletteLabel') themePaletteLabel: string = '';
   @Input('closeLabel') closeLabel: string = '';
   @Input('colorShades') colorShades: Array<number> = [];
   @Input() border: boolean = false;
   @Input() public disabled: boolean = false;
 
+  @Output() themeChanged: EventEmitter<{ 'themeInfo': IThemeInfo, 'shades': any[] }> = new EventEmitter<{ 'themeInfo': IThemeInfo, 'shades': any[] }>();
   @Output() themeOpenChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() themeModeChanged: EventEmitter<any> = new EventEmitter<any>();
-  @Output() themeColorChanged: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() transparencyModeChanged: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() backgroundChange: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() themeColorChanged: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('dialogstart', { read: ElementRef, static: false }) dialogstart: ElementRef;
   @ViewChild('returntoend', { read: ElementRef, static: false }) returntoend: ElementRef;
@@ -67,8 +77,8 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
   constructor(private utils: CssUtils, private ref: ChangeDetectorRef, private complexThemeBindingStrategy: ComplexThemeBindingStrategy) { }
 
   ngOnInit(): void {
-    let selectedThemeColor = this.themeColors.filter((colors) => { return colors.active == true; });
-    this.selectedThemeColor = selectedThemeColor.length > 0 ? selectedThemeColor[0].color : '';
+    // let selectedThemeColor = this.themeColors.filter((colors) => { return colors.active == true; });
+    // this.selectedThemeColor = selectedThemeColor.length > 0 ? selectedThemeColor[0].color : '';
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -96,13 +106,25 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   themeChange(event) {
-    this.isDarkMode = event;
-    this.emitEvent(this.themeModeChanged);
+    this.themeInfo.isDarkMode = event;
+    this.emitEvent();
   }
 
-  changeThemeColor = (color) => {
-    this.selectedThemeColor = color;
-    this.emitEvent(this.themeColorChanged);
+  transparencyChange(event) {
+    this.themeInfo.isTransparent = event;
+    this.emitEvent();
+  }
+
+  changeThemeColor = (index) => {
+    this.themeInfo.themeColors.forEach(color => color.active = false);
+    this.themeInfo.themeColors[index].active = true;
+    this.emitEvent();
+  }
+
+  changeBackground = (index) => {
+    this.themeInfo.backgrounds.forEach(color => color.active = false);
+    this.themeInfo.backgrounds[index].active = true;
+    this.emitEvent();
   }
 
   startKeyPress($event: any) {
@@ -144,11 +166,14 @@ export class DxcThemePaletteComponent implements OnInit, AfterViewInit, OnDestro
     `;
   }
 
-  emitEvent(eventToEmit) {
+  emitEvent() {
     let colorShadesList = [];
-    this.colorShades.forEach((shadesPoint) => {
-      colorShadesList.push(this.complexThemeBindingStrategy.setOpacity(this.selectedThemeColor, shadesPoint));
-    });
-    eventToEmit.emit({ 'color': this.selectedThemeColor, 'shades': colorShadesList, 'isDarkMode': this.isDarkMode });
+    let selectedThemeColor = this.themeInfo.themeColors.filter(color => color.active == true);
+    if (selectedThemeColor.length > 0) {
+      this.colorShades.forEach((shadesPoint) => {
+        colorShadesList.push(this.complexThemeBindingStrategy.setOpacity(selectedThemeColor[0].color?.primary, shadesPoint));
+      });
+    }
+    this.themeChanged.emit({ 'themeInfo': this.themeInfo, 'shades': colorShadesList });
   }
 }

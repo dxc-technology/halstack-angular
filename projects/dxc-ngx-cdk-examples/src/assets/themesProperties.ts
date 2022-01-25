@@ -195,7 +195,7 @@ export const darkTheme = {
     '--border_color': '#666666',
     '--search_font_color': '#ffffff',
     '--icon_border_color': '#008ecc61',
-    '--icon_color': '#00a1c9',
+    '--icon_color': '#000000',
     '--searchbackground': '#232223',
     '--source-icon': '#00a1c9',
     '--menupanel-arrowicon-color': '#444242',
@@ -214,7 +214,8 @@ export const darkTheme = {
     '--landing_textcolor': '#fff',
     '--button-secondaryOutlinedColor': '#008ecc',
     '--button-secondaryHoverBackgroundColor': 'transparent',
-    '--button-secondaryActiveBackgroundColor': 'transparent'
+    '--button-secondaryActiveBackgroundColor': 'transparent',
+    '--selected-icon-color': '#000000'
   }
 };
 
@@ -415,7 +416,7 @@ export const lightTheme = {
     '--border_color': '#D9D9D9',
     '--search_font_color': '#666666',
     '--icon_border_color': '#008ecc61',
-    '--icon_color': '#00a1c9',
+    '--icon_color': '#000000',
     '--searchbackground': '#d7d7d7',
     '--source-icon': '#00a1c9',
     '--menupanel-arrowicon-color': '#c7bdbd',
@@ -434,6 +435,7 @@ export const lightTheme = {
     '--landing_textcolor': '#000',
     '--button-secondaryOutlinedColor': '#008ecc',
     '--button-secondaryHoverBackgroundColor': 'transparent',
-    '--button-secondaryActiveBackgroundColor': 'transparent'
+    '--button-secondaryActiveBackgroundColor': 'transparent',
+    '--selected-icon-color': '#000000'
   }
 };

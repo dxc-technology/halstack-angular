@@ -57,9 +57,12 @@
     </td>
   </tr>
   <tr>
-    <td>size: any (string | object)</td>
+    <td>size: string</td>
     <td><code>'fitContent' </code></td>
-    <td>Size of the component ('large' | 'fillParent' | 'fitContent').</td>
+    <td>
+      Size of the component ('small' | 'medium' | 'large' | 'fillParent' |
+      'fitContent').
+    </td>
   </tr>
   <tr>
     <td>onSelectOption: EventEmitter</td>
@@ -73,5 +76,15 @@
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
     <td>Value of the tabindex.</td>
+  </tr>
+  <tr>
+    <td>disabled: boolean</td>
+    <td><code>false</code></td>
+    <td>If true, the component will be disabled.</td>
+  </tr>
+  <tr>
+    <td>expandOnHover: boolean</td>
+    <td><code>false</code></td>
+    <td>If true, the options are showed when the dropdown is hover.</td>
   </tr>
 </dxc-table>

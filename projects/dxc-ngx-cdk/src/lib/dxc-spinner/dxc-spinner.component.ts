@@ -202,7 +202,7 @@ export class DxcSpinnerComponent implements OnInit {
             ? "animation: 1.4s ease-in-out infinite both svg-circle-large;"
             : "animation: 1.4s ease-in-out infinite both svg-circle-small;"}
           ${inputs.mode === "overlay"
-            ? "stroke: var(--spinner-overlayTrackCircleColor);"
+            ? "stroke: var(--spinner-trackCircleColorOnDark);"
             : "stroke: var(--spinner-trackCircleColor);"}
           stroke-dasharray: ${strokeDashArray};
           stroke-width: ${strokeWidth}px;
@@ -221,7 +221,7 @@ export class DxcSpinnerComponent implements OnInit {
         circle {
           animation: none;
           ${inputs.mode === "overlay"
-            ? "stroke: var(--spinner-overlayTrackCircleColor);"
+            ? "stroke: var(--spinner-trackCircleColorOnDark);"
             : "stroke: var(--spinner-trackCircleColor);"}
           stroke-width: ${strokeWidth}px;
           stroke-dashoffset: ${inputs.mode !== "small"

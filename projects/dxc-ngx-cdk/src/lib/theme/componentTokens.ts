@@ -1219,7 +1219,7 @@ export const componentTokens = {
 
   //SPINNER
   "--spinner-trackCircleColor": globalTokens.hal_purple_s_38,
-  "--spinner-trackCircleColorOnDark": globalTokens.hal_purple_l_65,
+  "--spinner-overlayTrackCircleColor": globalTokens.hal_purple_l_65,
   "--spinner-totalCircleColor": globalTokens.hal_white,
   "--spinner-overlayBackgroundColor": globalTokens.hal_black,
   "--spinner-labelFontFamily": globalTokens.type_sans,

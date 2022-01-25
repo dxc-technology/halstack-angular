@@ -141,18 +141,18 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
   }
 
   
-  handleOnChange(event) {
+  handleOnChange({value, error}) {
     this.cdRef.detectChanges();
-    this.onChange.emit(event);
+    this.onChange.emit({value, error});
     this.controlled
       ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
-      : (this.value = event);
+      : (this.value = value);
   }
 
-  handleOnBlur(event) {
-    this.onBlur.emit({ value: event.value, error: event.error });
+  handleOnBlur({value, error}) {
+    this.onBlur.emit({ value: value, error: error });
     if (!this.controlled) {
-      this.value = event.value;
+      this.value = value;
       this.cdRef.detectChanges();
     }
   }

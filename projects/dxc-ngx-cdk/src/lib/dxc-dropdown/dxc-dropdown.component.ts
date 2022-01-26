@@ -51,11 +51,6 @@ export class DxcDropdownComponent implements OnChanges {
   @Input() optionsIconPosition: "before" | "after" = "before";
 
   /**
-   * @deprecated URL of the icon that will be placed next to the dropdown label.
-   */
-  @Input() public iconSrc: string;
-
-  /**
    * Whether the icon should appear after or before the label.
    */
   @Input() iconPosition: "before" | "after" = "before";

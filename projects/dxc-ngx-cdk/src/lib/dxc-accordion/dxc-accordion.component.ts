@@ -52,7 +52,6 @@ type Padding = {
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   currentBackgroundColor: string;
-  @Input() mode: string;
   /**
    * The panel label.
    */

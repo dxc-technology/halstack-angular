@@ -3,21 +3,21 @@
         {
             "title": "Uncontrolled Accordion Group",
             "iframe": {
-                "src": "https://codesandbox.io/embed/defaultaccordiongroup-ggl6p?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/uncontrolled-accordion-group/uncontrolled-accordion-group.component.html&initialpath=uncontrolledAccordionGroup",
                 "title": "UncontrolledAccordionGroup"
             }
         },
         {
             "title": "Controlled Accordion Group",
             "iframe": {
-                "src": "https://codesandbox.io/embed/controlledaccordiongroup-68j5d?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "ControlledAccordionGroup"
+              "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/controlled-accordion-group/controlled-accordion-group.component.html&initialpath=controlledAccordionGroup",
+              "title": "ControlledAccordionGroup"
             }
         },
         {
             "title": "Disabled Accordion Group",
             "iframe": {
-                "src": "https://codesandbox.io/embed/disabledaccordiongroup-gheg4?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+              "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/disabled-accordion-group/disabled-accordion-group.component.html&initialpath=disabledAccordionGroup",
                 "title": "DisabledAccordionGroup"
             }
         }

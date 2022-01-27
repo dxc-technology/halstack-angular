@@ -90,7 +90,7 @@ export class DxcDropdownComponent implements OnChanges {
     "fitContent";
 
   /**
-   * This event will be triggered when the selection changes. The value of the selected
+   * This event will emit in case the selection changes. The value of the selected
    * value will be passed as a parameter.
    */
   @Output() public onSelectOption: EventEmitter<string> =

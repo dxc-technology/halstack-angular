@@ -5,7 +5,7 @@
             "iframe": {
                 "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/uncontrolled-accordion-group/uncontrolled-accordion-group.component.html&initialpath=uncontrolledAccordionGroup",
                 "title": "UncontrolledAccordionGroup"
-            }
+            },"visibility":true
         },
         {
             "title": "Controlled Accordion Group",

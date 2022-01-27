@@ -15,8 +15,6 @@ export class CodesandboxViewer implements OnInit {
 
   subscriptor: any;
 
-  showLoading = false;
-
   constructor(
     private codesandboxService: CodesandboxServiceService,
     protected _sanitizer: DomSanitizer
@@ -27,6 +25,7 @@ export class CodesandboxViewer implements OnInit {
       .getExamples(this.path)
       .subscribe((resp) => {
         this.examples = resp;
+        console.log(this.examples);
       });
   }
 
@@ -37,7 +36,6 @@ export class CodesandboxViewer implements OnInit {
   changeVisibility(example) {
     example.visibility = !example.visibility;
     if (example.visibility) {
-      this.showLoading = true;
       const element = document.getElementById(example.iframe.title);
       element.scrollIntoView({
         behavior: "auto",
@@ -51,9 +49,5 @@ export class CodesandboxViewer implements OnInit {
 
   OnDestroy() {
     this.subscriptor.unsubscribe();
-  }
-
-  onLoad() {
-    this.showLoading = false;
   }
 }

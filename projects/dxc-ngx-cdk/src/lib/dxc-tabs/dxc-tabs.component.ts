@@ -28,6 +28,23 @@ const globalRippleConfig: RippleGlobalOptions = {
     exitDuration: 0,
   },
 };
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-tabs",
   templateUrl: "./dxc-tabs.component.html",
@@ -39,13 +56,9 @@ const globalRippleConfig: RippleGlobalOptions = {
   ],
 })
 export class DxcTabsComponent implements OnChanges {
-  @HostBinding("class") className;
-  @HostBinding("class.label-icons") allTabWithLabelAndIcon: boolean = false;
-
-  //Default values
-  @Input() margin: any;
-  @Input() iconPosition: string;
-
+  /**
+   * The index of the active tab.
+   */
   @Input()
   get activeTabIndex(): number {
     return this._activeTabIndex;
@@ -53,7 +66,23 @@ export class DxcTabsComponent implements OnChanges {
   set activeTabIndex(value: number) {
     this._activeTabIndex = coerceNumberProperty(value);
   }
-  private _activeTabIndex;
+  private _activeTabIndex = 0;
+
+  /**
+   * Position of icons in tabs.
+   */
+  @Input() iconPosition: "top" | "left" = "left";
+
+  /**
+   * Size of the margin to be applied to the component. You can pass an object
+   * with 'top', 'bottom', 'left' and 'right' properties in order to specify
+   * different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+
+  @HostBinding("class") className;
+  @HostBinding("class.label-icons") allTabWithLabelAndIcon: boolean = false;
+
   renderedActiveTabIndex: number;
 
   @ViewChild(MatRipple) ripple: MatRipple;
@@ -65,8 +94,9 @@ export class DxcTabsComponent implements OnChanges {
   protected tabs: QueryList<DxcTabComponent>;
 
   defaultInputs = new BehaviorSubject<any>({
+    activeTabIndex: 0,
+    iconPosition: "left",
     margin: null,
-    iconPosition: null,
   });
 
   constructor(

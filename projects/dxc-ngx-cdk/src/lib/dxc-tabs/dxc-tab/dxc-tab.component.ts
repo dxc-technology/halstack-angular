@@ -17,14 +17,43 @@ import { TabService } from "../services/tab.service";
   templateUrl: "./dxc-tab.component.html",
 })
 export class DxcTabComponent implements OnChanges {
-  //Default values
+  /**
+   * Text to be placed within the tab.
+   */
   @Input() label: string;
+
+  /**
+   * @deprecated The path of an icon to be placed within the tab.
+   */
   @Input() iconSrc: string;
-  @Input() disabled: boolean;
+
+  /**
+   * Whether the tab is disabled or not.
+   */
+  @Input() disabled: boolean = false;
+
+  /**
+   * It can have boolean type or number type.
+   * If the value is 'true', an empty badge will appear. If it is 'false',
+   * no badge will appear.
+   * If a number is put it will be shown as the label of the notification
+   * in the tab, taking into account that if that number is greater than 99,
+   * it will appear as '+99' in the badge.
+   */
+  @Input() notificationNumber: boolean | number;
+
+  /**
+   * This event will emit when the user clicks on a tab. The index 
+   * of the clicked tab will be passed as a parameter.
+   */
+  @Output() onTabClick: EventEmitter<number> = new EventEmitter<number>();
+
+  /**
+   * This event will emit when the user is on hover on a tab.
+   */
+  @Output() onTabHover: EventEmitter<number> = new EventEmitter<number>();
+
   @Input() id: number;
-  @Input() notificationNumber: any;
-  @Output() onTabClick = new EventEmitter<any>();
-  @Output() onTabHover = new EventEmitter<any>();
 
   showDotIndicator: boolean = false;
   labelClass: string;

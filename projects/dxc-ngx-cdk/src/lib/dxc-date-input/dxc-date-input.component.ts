@@ -67,7 +67,7 @@ export class DxcDateInputComponent implements OnInit {
   @Input() helperText: string;
   /**
    * The format in which the date value will be displayed. User must follow this format when editing the value or it will be considered as an invalid date.
-   * In this case, the onBlur and onChange functions will be called with an internal error as a parameter reporting the situation.
+   * In this case, the onBlur and onChange events will be called with an internal error as a parameter reporting the situation.
    */
   @Input() format: string = "dd-MM-yyyy";
   /**
@@ -94,7 +94,7 @@ export class DxcDateInputComponent implements OnInit {
   private _placeholder = false;
   /**
    * If true, the date will be optional, showing (Optional) next to the label. Otherwise, the field will be considered required
-   * and an error will be passed as a parameter to the OnBlur and onChange functions when it has not been filled.
+   * and an error will be passed as a parameter to the OnBlur and onChange events when it has not been filled.
    */
   @Input()
   get optional(): boolean {
@@ -151,8 +151,8 @@ export class DxcDateInputComponent implements OnInit {
   });
 
   /**
-   * This event will be emitted when the user types within the input element of the component. An object including the string value,
-   * the error and the date value will be passed to this function. If the string value is a valid date, error will be null.
+   * This event will emit in case the user types within the input element of the component. An object including the string value,
+   * the error and the date value will be emitted. If the string value is a valid date, error will be null.
    * Also, if the string value is not a valid date, date will be null.
    */
   @Output() onChange = new EventEmitter<{
@@ -161,8 +161,8 @@ export class DxcDateInputComponent implements OnInit {
     date: Date | null;
   }>();
   /**
-   * This event will be emitted when the input element loses the focus. An object including the string value,
-   * the error and the date value will be passed to this function. If the string value is a valid date, error will be null.
+   * This event will emit in case the input element loses the focus. An object including the string value,
+   * the error and the date value will be emitted. If the string value is a valid date, error will be null.
    * Also, if the string value is not a valid date, date will be null.
    */
   @Output() onBlur = new EventEmitter<{

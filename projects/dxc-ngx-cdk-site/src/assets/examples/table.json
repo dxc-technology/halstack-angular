@@ -3,9 +3,10 @@
         {
             "title": "Simple Table",
             "iframe": {
-                "src": "https://codesandbox.io/embed/simpletable-hixg7?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/table/simple-table/simple-table.component.html&initialpath=simpleTable",
                 "title": "SimpleTable"
-            }
+            },
+            "visibility": true
         }
     ]
 }

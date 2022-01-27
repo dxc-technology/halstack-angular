@@ -3,21 +3,22 @@
         {
             "title": "Default Header",
             "iframe": {
-                "src": "https://codesandbox.io/embed/fast-surf-ymepw?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/header/default-header/default-header.component.html&initialpath=defaultHeader",
                 "title": "DefaultHeader"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Custom Header",
             "iframe": {
-                "src": "https://codesandbox.io/embed/customheader-hqzfc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/header/custom-header/custom-header.component.html&initialpath=customHeader",
                 "title": "CustomHeader"
             }
         },
         {
             "title": "Header with DxcHeaderDropdown",
             "iframe": {
-                "src": "https://codesandbox.io/s/headerwithchilddropdown-ox7t7?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/header/header-with-dropdown/header-with-dropdown.component.html&initialpath=headerWithDropdown",
                 "title": "HeaderWithChildDropdown"
             }
         }

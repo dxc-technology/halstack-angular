@@ -3,9 +3,10 @@
         {
             "title": "Paginator",
             "iframe": {
-                "src": "https://codesandbox.io/embed/paginator-065g2?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/paginator/paginator/paginator.component.html&initialpath=defaultPaginator",
                 "title": "Paginator"
-            }
+            },
+            "visibility": true
         }
     ]
 }

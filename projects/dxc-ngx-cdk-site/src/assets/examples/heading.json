@@ -3,14 +3,15 @@
         {
             "title": "Default Headings",
             "iframe": {
-                "src": "https://codesandbox.io/embed/defaultheadings-bhd75?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/heading/default-headings/default-headings.component.html&initialpath=defaultHeadings",
                 "title": "DefaultHeadings"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Headings with different weights",
             "iframe": {
-                "src": "https://codesandbox.io/embed/headingsweights-3r5w3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/heading/headings-with-different-weights/headings-with-different-weights.component.html&initialpath=headingsWithDifferentWeights",
                 "title": "HeadingsWeights"
             }
         }

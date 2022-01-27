@@ -3,50 +3,37 @@
         {
             "title": "Controlled Input",
             "iframe": {
-                "src": "https://codesandbox.io/s/controlled-input-h5f5n?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/input-text/controlled-input-text/controlled-input-text.component.html&initialpath=controlledInputText",
                 "title": "controlled-input"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Uncontrolled Input",
             "iframe": {
-                "src": "https://codesandbox.io/s/uncontrolled-input-yx5r3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/input-text/uncontrolled-input-text/uncontrolled-input-text.component.html&initialpath=uncontrolledInputText",
                 "title": "uncontrolled-input"
-            }
-        },
-        {
-            "title": "Masked Input",
-            "iframe": {
-                "src": "https://codesandbox.io/s/masked-input-fkt3u?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "masked-input"
             }
         },
         {
             "title": "Fill Parent Input",
             "iframe": {
-                "src": "https://codesandbox.io/s/fill-parent-input-ngvzc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/input-text/fill-parent-input-text/fill-parent-input-text.component.html&initialpath=fillParentInputText",
                 "title": "fill-parent-input"
             }
         },
         {
             "title": "Input with prefix/suffix",
             "iframe": {
-                "src": "https://codesandbox.io/s/input-with-prefix-suffix-eqvdv?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/input-text/preffix-suffix-input-text/preffix-suffix-input-text.component.html&initialpath=preffixSuffixInputText",
                 "title": "input-with-prefix-suffix"
             }
         },
         {
             "title": "Sized Input",
             "iframe": {
-                "src": "https://codesandbox.io/s/sized-input-rxjwq?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/input-text/sized-input-text/sized-input-text.component.html&initialpath=sizedInputText",
                 "title": "sized-input"
-            }
-        },
-        {
-            "title": "Synchronous controlled autocomplete",
-            "iframe": {
-                "src": "https://codesandbox.io/embed/synchronous-controlled-autocomplete-zdnm3?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "synchronous-controlled-autocomplete"
             }
         }
     ]

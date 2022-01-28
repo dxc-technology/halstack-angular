@@ -3,21 +3,21 @@
         {
             "title": "Default Dialog",
             "iframe": {
-                "src": "https://codesandbox.io/embed/defaultdialog-x9h2q?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/dialog/default-dialog/default-dialog.component.html&initialpath=defaultDialog",
                 "title": "DefaultDialog"
             }
         },
         {
             "title": "Modal Dialog",
             "iframe": {
-                "src": "https://codesandbox.io/embed/modaldialog-f5cef?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/dialog/modal-dialog/modal-dialog.component.html&initialpath=modalDialog",
                 "title": "ModalDialog"
             }
         },
         {
             "title": "Close Dialog",
             "iframe": {
-                "src": "https://codesandbox.io/embed/closedialog-769g4?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/dialog/close-dialog/close-dialog.component.html&initialpath=closeDialog",
                 "title": "CloseDialog"
             }
         }

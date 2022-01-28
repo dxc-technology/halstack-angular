@@ -3,14 +3,14 @@
         {
             "title": "Default Chip",
             "iframe": {
-                "src": "https://codesandbox.io/embed/defaultchip-5i2i2?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/chip/default-chip/default-chip.component.html&initialpath=defaultChip",
                 "title": "DefaultChip"
             }
         },
         {
             "title": "Chip with icons",
             "iframe": {
-                "src": "https://codesandbox.io/embed/chipwithicons-g5c7p?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/chip/chip-with-icons/chip-with-icons.component.html&initialpath=chipWithIcons",
                 "title": "ChipWithIcons"
             }
         }

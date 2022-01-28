@@ -3,14 +3,14 @@
         {
             "title": "Basic Layout",
             "iframe": {
-                "src": "https://codesandbox.io/embed/dxc-technologyhalstack-angularapplication-layout1-dbf93?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/application-layout/basic-layout/basic-layout.component.html&initialpath=basicLayout",
                 "title": "dxc-technology/halstack-angular/application-layout#1"
             }
         },
         {
             "title": "Layout with Sidenav",
             "iframe": {
-                "src": "https://codesandbox.io/embed/dxc-technologyhalstack-angularapplication-layout2-gxcch?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/application-layout/layout-with-sidenav/layout-with-sidenav.component.html&initialpath=layoutWithSidenav",
                 "title": "dxc-technology/halstack-angular/application-layout#2"
             }
         }

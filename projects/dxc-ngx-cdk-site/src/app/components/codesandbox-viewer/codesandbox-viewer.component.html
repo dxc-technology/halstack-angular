@@ -1,52 +1,32 @@
-<dxc-heading
-  [level]="3"
-  weight="normal"
-  text="Examples"
-  [margin]="{ bottom: 'small' }"
-></dxc-heading>
+<dxc-heading [level]="3" weight="normal" text="Examples" [margin]="{ bottom: 'small' }"></dxc-heading>
 
 <div *ngIf="examples">
   <div *ngFor="let example of examples; first as isFirst">
-    <div [id]="example.iframe.title" class="exampleHeader" [ngClass]="{'first': isFirst}" >
-      <dxc-heading
-        [text]="example.title"
-        [level]="5"
-      ></dxc-heading>
+    <div [id]="example.iframe.title" class="exampleHeader" [ngClass]="{'first': isFirst}">
+      <dxc-heading [text]="example.title" [level]="5"></dxc-heading>
 
       <button class="visibilityButton" (click)="changeVisibility(example)">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="100%"
-          height="100%"
-          viewBox="0 0 24 24"
-          fit=""
-          preserveAspectRatio="xMidYMid meet"
-          focusable="false"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit=""
+          preserveAspectRatio="xMidYMid meet" focusable="false">
           <path fill="none" d="M0 0h24v24H0V0z"></path>
-          <path
-            _ngcontent-hgo-c501=""
-            d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
-          ></path>
+          <path _ngcontent-hgo-c501=""
+            d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path>
         </svg>
         <span *ngIf="!example.visibility">View Example</span>
         <span *ngIf="example.visibility">Hide Example</span>
       </button>
     </div>
 
-    <iframe
-      [src]="example.iframe.src"
-      *ngIf="example.visibility"
-      style="
-        width: 100%;
-        height: 500px;
-        border: 0;
-        border-radius: 4px;
-        overflow: hidden;
-      "
-      title="{{ example.iframe.title }}"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-    ></iframe>
+    <div *ngIf="example.visibility">
+      <iframe [src]="example.iframe.src" style="
+      width: 100%;
+      height: 500px;
+      border: 0;
+      border-radius: 4px;
+      overflow: hidden;
+    " title="{{ example.iframe.title }}" loading="lazy"
+        sandbox="allow-forms allow-presentation allow-same-origin allow-scripts"></iframe>
+    </div>
+
   </div>
 </div>

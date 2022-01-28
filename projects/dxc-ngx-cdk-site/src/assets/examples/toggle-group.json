@@ -3,28 +3,28 @@
         {
             "title": "Basic Toggle Group",
             "iframe": {
-                "src": "https://codesandbox.io/s/basic-toggle-group-dcdmt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/toggle-group/basic-toggle-group/basic-toggle-group.component.html&initialpath=basicToogleGroup",
                 "title": "basic-toggle-group"
             }
         },
         {
             "title": "Controlled Toggle Group",
             "iframe": {
-                "src": "https://codesandbox.io/s/controlled-toggle-group-42u5s?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/toggle-group/controlled-toggle-group/controlled-toggle-group.component.html&initialpath=controlledToggleGroup",
                 "title": "controlled-toggle-group"
             }
         },
         {
             "title": "Disabled Toggle Group",
             "iframe": {
-                "src": "https://codesandbox.io/s/disabled-toggle-group-008lb?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/toggle-group/disabled-toggle-group/disabled-toggle-group.component.html&initialpath=disabledToggleGroup",
                 "title": "disabled-toggle-group"
             }
         },
         {
             "title": "Multiple Toggle Group",
             "iframe": {
-                "src": "https://codesandbox.io/s/multiple-toggle-group-d9ooc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/toggle-group/multiple-toggle-group/multiple-toggle-group.component.html&initialpath=multipleToggleGroup",
                 "title": "multiple-toggle-group"
             }
         }

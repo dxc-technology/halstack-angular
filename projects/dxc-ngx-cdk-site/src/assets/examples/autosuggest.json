@@ -3,14 +3,14 @@
         {
             "title": "Text input with suggestions",
             "iframe": {
-                "src": "https://codesandbox.io/embed/autosuggest-input-z6fgt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+              "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input-function-suggestions/text-input-function-suggestions.component.html&initialpath=autosuggestInput",
                 "title": "autosuggest-input"
             }
         },
         {
             "title": "Text input with a function as suggestions",
             "iframe": {
-                "src": "https://codesandbox.io/embed/autosuggest-function-input-iur0o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input-with-suggestions/text-input-with-suggestions.component.html&initialpath=autosuggestFunctionInput",
                 "title": "autosuggest-function-input"
             }
         }

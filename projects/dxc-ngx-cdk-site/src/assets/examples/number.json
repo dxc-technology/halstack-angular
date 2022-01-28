@@ -3,84 +3,85 @@
         {
             "title": "Controlled number",
             "iframe": {
-                "src": "https://codesandbox.io/embed/controlled-number-okhnl?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/controlled-number/controlled-number.component.html&initialpath=controlledNumber",
                 "title": "controlled-number"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Uncontrolled number",
             "iframe": {
-                "src": "https://codesandbox.io/embed/uncontrolled-number-39i8h?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/uncontrolled-number/uncontrolled-number.component.html&initialpath=uncontrolledNumber",
                 "title": "uncontrolled-number"
             }
         },
         {
             "title": "Number with helper text",
             "iframe": {
-                "src": "https://codesandbox.io/embed/number-helper-text-u0hlu?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/helper-text-number/helper-text-number.component.html&initialpath=helperTextNumber",
                 "title": "number-helper-text"
             }
         },
         {
             "title": "Number with placeholder",
             "iframe": {
-                "src": "https://codesandbox.io/embed/number-placeholder-m7hpw?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/placeholder-number/placeholder-number.component.html&initialpath=placeholderNumber",
                 "title": "number-placeholder"
             }
         },
         {
             "title": "Number with prefix",
             "iframe": {
-                "src": "https://codesandbox.io/embed/number-prefix-3804i?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/preffix-number/preffix-number.component.html&initialpath=prefixNumber",
                 "title": "number-prefix"
             }
         },
         {
             "title": "Number with suffix",
             "iframe": {
-                "src": "https://codesandbox.io/embed/number-suffix-ls6ws?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/suffix-number/suffix-number.component.html&initialpath=suffixNumber",
                 "title": "number-suffix"
             }
         },
         {
             "title": "Optional number",
             "iframe": {
-                "src": "https://codesandbox.io/embed/optional-number-7ej83?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/optional-number/optional-number.component.html&initialpath=optionalNumber",
                 "title": "optional-number"
             }
         },
         {
             "title": "Disabled number",
             "iframe": {
-                "src": "https://codesandbox.io/embed/disabled-number-0qe07?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/disabled-number/disabled-number.component.html&initialpath=disabledNumber",
                 "title": "disabled-number"
             }
         },
         {
             "title": "Invalid number",
             "iframe": {
-                "src": "https://codesandbox.io/embed/invalid-number-yoi2o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/invalid-number/invalid-number.component.html&initialpath=invalidNumber",
                 "title": "invalid-number"
             }
         },
         {
             "title": "Min, max and step",
             "iframe": {
-                "src": "https://codesandbox.io/embed/step-number-kf20o?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/min-max-step-number/min-max-step-number.component.html&initialpath=minMaxStepNumber",
                 "title": "step-number"
             }
         },
         {
             "title": "Number with custom error messages",
             "iframe": {
-                "src": "https://codesandbox.io/embed/custom-error-number-hbckx?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/custom-error-number/custom-error-number.component.html&initialpath=customErrorNumber",
                 "title": "custom-error-number"
             }
         },
         {
             "title": "Fill parent size number",
             "iframe": {
-                "src": "https://codesandbox.io/embed/size-number-r5fvt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/fill-parent-size-number/fill-parent-size-number.component.html&initialpath=fillParentSizeNumber",
                 "title": "size-number"
             }
         }

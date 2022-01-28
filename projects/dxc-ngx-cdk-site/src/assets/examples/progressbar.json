@@ -3,21 +3,22 @@
         {
             "title": "Determinate Default Progress Bar",
             "iframe": {
-                "src": "https://codesandbox.io/embed/determinatedefaultprogressbar-e47zs?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/progress-bar/determinate-default-progress-bar/determinate-default-progress-bar.component.html&initialpath=determinateDefaultProgressBar",
                 "title": "DeterminateDefaultProgressBar"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Undeterminate Default Progress Bar",
             "iframe": {
-                "src": "https://codesandbox.io/embed/undeterminatedefaultprogressbar-1x8q1?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/progress-bar/undeterminate-default-progress-bar/undeterminate-default-progress-bar.component.html&initialpath=undeterminateDefaultProgressBar",
                 "title": "UndeterminateDefaultProgressBar"
             }
         },
         {
             "title": "Progress Bar with Overlay",
             "iframe": {
-                "src": "https://codesandbox.io/embed/progressbaroverlay-u7j1w?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/progress-bar/progress-bar-with-overlay/progress-bar-with-overlay.component.html&initialpath=progressBarWithOverlay",
                 "title": "ProgressBarOverlay"
             }
         }

@@ -3,8 +3,43 @@
         {
             "title": "Default select",
             "iframe": {
-                "src": "https://codesandbox.io/embed/default-new-select-ldqi1?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
-                "title": "default-new-select"
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/select/default-select/default-select.component.html&initialpath=defaultSelect",
+                "title": "default-select"
+            }
+        },
+        {
+            "title": "Disabled select",
+            "iframe": {
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/select/disabled-select/disabled-select.component.html&initialpath=disabledSelect",
+                "title": "disabledSelect-select"
+            }
+        },
+        {
+            "title": "Error multiple select",
+            "iframe": {
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/select/error-multiple-select/error-multiple-select.component.html&initialpath=errorMultipleSelect",
+                "title": "error-multiple-select"
+            }
+        },
+        {
+            "title": "Error select",
+            "iframe": {
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/select/error-select/error-select.component.html&initialpath=errorSelect",
+                "title": "error-select"
+            }
+        },
+        {
+            "title": "Multiple select",
+            "iframe": {
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/select/multiple-select/multiple-select.component.html&initialpath=multipleSelect",
+                "title": "multiple-select"
+            }
+        },
+        {
+            "title": "Searchable select",
+            "iframe": {
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/select/searchable-select/searchable-select.component.html&initialpath=searchableSelect",
+                "title": "searchable-select"
             }
         }
     ]

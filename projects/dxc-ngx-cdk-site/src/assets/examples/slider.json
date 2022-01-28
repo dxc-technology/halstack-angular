@@ -3,56 +3,57 @@
         {
             "title": "Uncontrolled Slider",
             "iframe": {
-                "src": "https://codesandbox.io/s/uncontrolled-slider-v0n4i?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/uncontrolled-slider/uncontrolled-slider.component.html&initialpath=uncontrolledSlider",
                 "title": "uncontrolled-slider"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Continuous Slider",
             "iframe": {
-                "src": "https://codesandbox.io/s/continuous-slider-o8g1n?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/continuous-slider/continuous-slider.component.html&initialpath=continuousSlider",
                 "title": "continuous-slider"
             }
         },
         {
             "title": "Slider with input",
             "iframe": {
-                "src": "https://codesandbox.io/s/slider-with-input-43mtp?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/slider-with-input/slider-with-input.component.html&initialpath=sliderWithInput",
                 "title": "slider-with-input"
             }
         },
         {
             "title": "Controlled Slider",
             "iframe": {
-                "src": "https://codesandbox.io/s/controlled-slider-iegdt?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/controlled-slider/controlled-slider.component.html&initialpath=controlledSlider",
                 "title": "controlled-slider"
             }
         },
         {
             "title": "Sized Slider",
             "iframe": {
-                "src": "https://codesandbox.io/s/sized-slider-3dsnh?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/sized-slider/sized-slider.component.html&initialpath=sizedSlider",
                 "title": "sized-slider"
             }
         },
         {
             "title": "Slider without limit values",
             "iframe": {
-                "src": "https://codesandbox.io/s/slider-without-limits-pwnvd?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/slider-no-limit-values/slider-no-limit-values.component.html&initialpath=sliderNoLimitValues",
                 "title": "slider-without-limits"
             }
         },
         {
             "title": "Disabled Slider",
             "iframe": {
-                "src": "https://codesandbox.io/s/disabled-slider-t3pjm?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/disabled-slider/disabled-slider.component.html&initialpath=disabledSlider",
                 "title": "disabled-slider"
             }
         },
         {
             "title": "Discrete Slider",
             "iframe": {
-                "src": "https://codesandbox.io/s/discrete-slider-1vw57?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/discrete-slider/discrete-slider.component.html&initialpath=discreteSlider",
                 "title": "discrete-slider"
             }
         }

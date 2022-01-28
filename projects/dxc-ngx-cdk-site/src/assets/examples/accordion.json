@@ -3,35 +3,36 @@
         {
             "title": "Default Accordion",
             "iframe": {
-                "src": "https://codesandbox.io/embed/defaultaccordion-l94dh?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/default-accordion/default-accordion.component.html&initialpath=defaultAccordion",
                 "title": "DefaultAccordion"
-            }
+            },
+            "visibility":true
         },
         {
             "title": "Controlled Accordion",
             "iframe": {
-                "src": "https://codesandbox.io/embed/controlledaccordion-ckwrb?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/controlled-accordion/controlled-accordion.component.html&initialpath=controlledAccordion",
                 "title": "ControlledAccordion"
             }
         },
         {
             "title": "Accordion with Assistive Text",
             "iframe": {
-                "src": "https://codesandbox.io/embed/assistivetextaccordion-jvolv?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/accordion-with-assistive-text/accordion-with-assistive-text.component.html&initialpath=accordionWithAssistiveText",
                 "title": "AssistiveTextAccordion"
             }
         },
         {
             "title": "Accordion with Icon",
             "iframe": {
-                "src": "https://codesandbox.io/embed/iconaccordion-1herc?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/accordion-with-icon/accordion-with-icon.component.html&initialpath=accordionWithIcon",
                 "title": "IconAccordion"
             }
         },
         {
             "title": "Disabled Accordion",
             "iframe": {
-                "src": "https://codesandbox.io/embed/disabledaccordion-g4h2e?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/disabled-icon/disabled-icon.component.html&initialpath=disabledIconAccordion",
                 "title": "DisabledAccordion"
             }
         }

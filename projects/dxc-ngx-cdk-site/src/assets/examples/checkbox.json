@@ -3,28 +3,28 @@
     {
       "title": "Checkbox Label Position",
       "iframe": {
-        "src": "https://codesandbox.io/embed/checkbox-label-position-qm9z5?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-label-position/checkbox-label-position.component.html&initialpath=checkboxLabelPosition",
         "title": "CheckboxLabelPosition"
       }
     },
     {
       "title": "Checkbox Uncontrolled",
       "iframe": {
-        "src": "https://codesandbox.io/embed/checkbox-uncontrolled-iqsn2?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component.html&initialpath=checkboxUncontrolled",
         "title": "CheckboxUncontrolled"
       }
     },
     {
       "title": "Checkbox Sized",
       "iframe": {
-        "src": "https://codesandbox.io/embed/checkbox-sized-85sbo?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-sized/checkbox-sized.component.html&initialpath=checkboxSized",
         "title": "CheckboxSized"
       }
     },
     {
       "title": "Checkbox Controlled",
       "iframe": {
-        "src": "https://codesandbox.io/embed/checkbox-controlled-r78s7?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-controlled/checkbox-controlled.component.html&initialpath=checkboxControlled",
         "title": "CheckboxControlled"
       }
     }

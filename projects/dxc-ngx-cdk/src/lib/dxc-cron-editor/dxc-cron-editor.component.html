@@ -1,0 +1,122 @@
+<section class="cron-editor-main">
+    <mat-tab-group class="cron-editor-container" (selectedIndexChange)="onTabFocus($event)"
+      [backgroundColor]="backgroundColor" [color]="color">
+
+      <!-- Advanced-->
+      <mat-tab class="cron-editor-tab"  [label]="resource?.selectCronExpression.description" *ngIf="!options.hideAdvancedTab">
+        <div class="cron-editor-tab-content" [formGroup]="advancedForm">  
+
+          <dxc-select class="main-dd-filter" (onChange)="isExpression=!isExpression" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                      aria-labelledby="lbl_cronexp" id="cronexp" matTooltip="" margin="small" size="fitContent"
+                      formControlName="selectedType" >
+                      <dxc-select-option *ngFor="let exp of expressionList" value="{{exp.value}}" label="{{exp.name}}">
+                      </dxc-select-option>
+          </dxc-select>
+          <div *ngIf="isExpression">
+            <mat-form-field>
+              <dxc-label id="lbl_Expression" text="Expression"></dxc-label>
+             <input matInput type="text" ariaLabelledBy="lbl_Expression" class="advanced-cron-editor-input" formControlName="expression">
+            </mat-form-field>
+          </div>
+          <div *ngIf="!isExpression">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field formGroupName="custom">              
+                  <dxc-label id="lbl_startDays" [text]="resource?.daysStartFrom.description"></dxc-label>
+                  <dxc-select class="main-dd-filter"  [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                      aria-labelledby="lbl_startDays" id="startDays" matTooltip="" margin="small" size="fitContent"
+                      formControlName="startDays">
+                      <dxc-select-option value="none" label="None">
+                      </dxc-select-option>
+                      <dxc-select-option *ngFor="let monthDay of selectOptions.monthDays" value="{{monthDay}}" label="{{monthDay}}">
+                      </dxc-select-option>
+                  </dxc-select>
+  
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field formGroupName="custom">
+                  <dxc-label id="lbl_days" [text]="resource?.onTheDay.description"></dxc-label>
+                  <dxc-select class="main-dd-filter" [multiple]="true" [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                      aria-labelledby="lbl_days" id="days" matTooltip="" margin="small" size="fitContent"
+                      formControlName="days">
+                      <dxc-select-option value="*" label="Every">
+                      </dxc-select-option>
+                      <dxc-select-option *ngFor="let monthDay of selectOptions.monthDays" value="{{monthDay}}" label="{{monthDay}}">
+                      </dxc-select-option>
+                  </dxc-select>
+
+                </mat-form-field>
+              </div>
+            </div>
+         <div class="row">
+           <div class="col-md-6">
+            <mat-form-field formGroupName="custom"  class="mt-3">
+              <dxc-label id="lbl_startMonth" [text]="resource?.monthsStartFrom.description"></dxc-label>
+              <dxc-select class="main-dd-filter"  [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                  aria-labelledby="lbl_startMonth" id="startMonth" matTooltip="" margin="small" size="fitContent"
+                  formControlName="startMonth">
+                  <dxc-select-option value="none" label="None">
+                  </dxc-select-option>
+                  <dxc-select-option *ngFor="let month of selectOptions.months" value="{{month}}" label="{{monthDisplay(month)}}">
+                  </dxc-select-option>
+              </dxc-select>
+
+            </mat-form-field>
+           </div>
+           <div class="col-md-6">
+
+            <mat-form-field formGroupName="custom"  class="mt-3">
+              <dxc-label id="lbl_month" [text]="resource?.ofMonth.description"></dxc-label>
+              <dxc-select class="main-dd-filter" [multiple]="true" [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                  aria-labelledby="lbl_month" id="lbl_month" matTooltip="" margin="small" size="fitContent"
+                  formControlName="month">
+                  <dxc-select-option value="*" label="Every">
+                  </dxc-select-option>
+                  <dxc-select-option *ngFor="let month of selectOptions.months" value="{{month}}" label="{{monthDisplay(month)}}">
+                  </dxc-select-option>
+              </dxc-select>
+
+            </mat-form-field>
+           </div>
+         </div>
+           
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field formGroupName="custom" class="mt-3">
+                  <dxc-label id="lbl_startYear" [text]="resource?.yearsStartFrom.description"></dxc-label>
+                  <dxc-select class="main-dd-filter"  [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                      aria-labelledby="lbl_startYear" id="startYear" matTooltip="" margin="small" size="fitContent"
+                      formControlName="startYear">
+                      <dxc-select-option value="none" label="None">
+                      </dxc-select-option>
+                      <dxc-select-option *ngFor="let year of selectOptions.years" value="{{year}}" label="{{year}}">
+                      </dxc-select-option>
+                  </dxc-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field formGroupName="custom"  class="mt-3">
+                  <dxc-label id="lbl_year" [text]="resource?.ofYear.description"></dxc-label>
+                  <dxc-select class="main-dd-filter" [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+                      aria-labelledby="lbl_year" id="lbl_year" matTooltip="" margin="small" size="fitContent"
+                      formControlName="year">
+                      <dxc-select-option value="*" label="Every">
+                      </dxc-select-option>
+                      <dxc-select-option *ngFor="let year of selectOptions.years" value="{{year}}" label="{{year}}">
+                      </dxc-select-option>
+                  </dxc-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <dxc-time-picker-cron [disabled]="disabled" [options] ="options" [includeEvery]="true" [showStart]="true" [includeNone]="true"
+              [formGroup]="advancedForm.controls.custom" [use24HourTime]="options.use24HourTime" [resource]="resource"
+              [hideSeconds]="options.hideSeconds || !isCronFlavorQuartz">
+            </dxc-time-picker-cron>
+          </div>
+  
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </section>
+  

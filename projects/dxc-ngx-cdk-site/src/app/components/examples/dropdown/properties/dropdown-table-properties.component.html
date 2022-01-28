@@ -19,14 +19,6 @@
     </td>
   </tr>
   <tr>
-    <td>iconSrc: string</td>
-    <td></td>
-    <td>
-      <b>Deprecated.</b> URL of the icon that will be placed next to the
-      dropdown label.
-    </td>
-  </tr>
-  <tr>
     <td>iconPosition: 'before' | 'after'</td>
     <td><code>'before'</code></td>
     <td>Whether the icon should appear after or before the label.</td>
@@ -57,15 +49,18 @@
     </td>
   </tr>
   <tr>
-    <td>size: any (string | object)</td>
+    <td>size: string</td>
     <td><code>'fitContent' </code></td>
-    <td>Size of the component ('large' | 'fillParent' | 'fitContent').</td>
+    <td>
+      Size of the component ('small' | 'medium' | 'large' | 'fillParent' |
+      'fitContent').
+    </td>
   </tr>
   <tr>
     <td>onSelectOption: EventEmitter</td>
     <td></td>
     <td>
-      This event will be triggered when the selection changes. The value of the
+      This event will emit in case the selection changes. The value of the
       selected value will be passed as a parameter.
     </td>
   </tr>
@@ -73,5 +68,15 @@
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
     <td>Value of the tabindex.</td>
+  </tr>
+  <tr>
+    <td>disabled: boolean</td>
+    <td><code>false</code></td>
+    <td>If true, the component will be disabled.</td>
+  </tr>
+  <tr>
+    <td>expandOnHover: boolean</td>
+    <td><code>false</code></td>
+    <td>If true, the options are showed when the dropdown is hover.</td>
   </tr>
 </dxc-table>

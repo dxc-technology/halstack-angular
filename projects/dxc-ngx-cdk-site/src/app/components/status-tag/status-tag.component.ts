@@ -38,6 +38,7 @@ export class StatusTagComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
+      line-height: 1.125em;
       box-sizing: border-box;
       height: 24px;
       border: 1px solid

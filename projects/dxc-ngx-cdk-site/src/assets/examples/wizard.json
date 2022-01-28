@@ -3,21 +3,21 @@
         {
             "title": "Controlled Wizard",
             "iframe": {
-                "src": "https://codesandbox.io/embed/controlledwizard-8h2xd?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/wizard/controlled-wizard/controlled-wizard.component.html&initialpath=controlledWizard",
                 "title": "ControlledWizard"
             }
         },
         {
             "title": "Uncontrolled Wizard",
             "iframe": {
-                "src": "https://codesandbox.io/embed/uncontrolledwizard-1yy9i?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/wizard/uncontrolled-wizard/uncontrolled-wizard.component.html&initialpath=uncontrolledWizard",
                 "title": "UncontrolledWizard"
             }
         },
         {
             "title": "Vertical Wizard",
             "iframe": {
-                "src": "https://codesandbox.io/embed/verticalwizard-z00v2?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fapp%2Fapp.component.html&theme=dark",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/wizard/vertical-wizard/vertical-wizard.component.html&initialpath=verticalWizard",
                 "title": "VerticalWizard"
             }
         }

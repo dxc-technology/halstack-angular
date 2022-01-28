@@ -77,7 +77,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   private _disabled = false;
   /**
    * This event will emit in case the user clicks the accordion to expand or collapse
-   * the panel. The new state of the panel will be passed as a parameter.S
+   * the panel. The new state of the panel will be passed as a parameter.
    */
   @Output() onClick = new EventEmitter<boolean>();
   /**

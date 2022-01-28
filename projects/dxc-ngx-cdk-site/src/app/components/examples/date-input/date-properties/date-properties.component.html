@@ -14,8 +14,8 @@
     <td>value: string</td>
     <td></td>
     <td>
-      Value of the input. If undefined, the component will be uncontrolled and
-      the value will be managed internally by the component.
+      Value of the input element. If undefined, the component will be
+      uncontrolled and the value will be managed internally by the component.
     </td>
   </tr>
   <tr>
@@ -35,7 +35,7 @@
   </tr>
   <tr>
     <td>placeholder: boolean</td>
-    <td></td>
+    <td>false</td>
     <td>If true, the date format will appear as placeholder in the field.</td>
   </tr>
   <tr>
@@ -44,6 +44,8 @@
     <td>
       The format in which the date value will be displayed. User must use this
       format when editing the value or it will be considered as an invalid date.
+      In this case, the onBlur and onChange events will be called with an
+      internal error as a parameter reporting the situation.
     </td>
   </tr>
   <tr>
@@ -65,7 +67,9 @@
     </td>
     <td>
       If true, the date will be optional, showing <code>(Optional)</code>
-      next to the label.
+      next to the label. Otherwise, the field will be considered required and an
+      error will be passed as a parameter to the OnBlur and onChange events
+      when it has not been filled.
     </td>
   </tr>
   <tr>
@@ -73,31 +77,34 @@
     <td></td>
     <td>
       If it is defined, the component will change its appearance, showing the
-      error below the input component. If it is not defined, the error messages
-      will be created and managed internally.
+      error below the date input component. If it is not defined, the error
+      messages will be managed internally, but never displayed on its own.
     </td>
   </tr>
   <tr>
     <td>onChange: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user types within the input. An
-      object including the new value and the error (if the value entered is not
-      valid) will be passed to this function. An example of this object is:
-      {{ "{" }} <code>value: value, error: error</code>{{ "}" }}. If there is no
-      error, error will be null.
+      This event will emit in case the user types within the input element of
+      the component. An object including the string value, the error and the
+      date value will be emitted. An example of this object is:
+      {{ "{" }} <code>value: value, error: error, date: date</code>{{ "}" }}. If
+      the string value is a valid date, <code>error</code> will be null. Also,
+      if the string value is not a valid date, <code>date</code> will be null.
     </td>
   </tr>
   <tr>
     <td>onBlur: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the input loses the focus. An object
-      including the input value and the error (if the value entered is not
-      valid) will be passed to this function. An example of this object is:
+      This event will emit in case the input element loses the focus. An object
+      including the string value, the error and the date value will be emitted.
+      An example of this object is:
       {{ "{" }}
-      <code>value: value, error: error</code>
-      {{ "}" }}. If there is no error, error will be null.
+      <code>value: value, error: error, date: date</code>
+      {{ "}" }}. If the string value is a valid date, <code>error</code> will be
+      null. Also, if the string value is not a valid date,
+      <code>date</code> will be null.
     </td>
   </tr>
   <tr>
@@ -111,13 +118,11 @@
     </td>
   </tr>
   <tr>
-    <td>size: string | object</td>
+    <td>size: string</td>
     <td>
       <code>'medium'</code>
     </td>
-    <td>
-      Size of the component ('small' | 'medium' | 'large' | 'fillParent').
-    </td>
+    <td>Size of the component ('medium' | 'large' | 'fillParent').</td>
   </tr>
   <tr>
     <td>tabIndex: number</td>

@@ -457,6 +457,10 @@ describe("DxcDate", () => {
     });
     expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.blur(input);
-    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "03-12-1995" });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: null,
+      value: "03-12-1995",
+      date: new Date("1995/12/03"),
+    });
   });
 });

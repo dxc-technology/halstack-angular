@@ -21,6 +21,24 @@ import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { CssUtils } from "../utils";
 
+type Size = "medium" | "large" | "fillParent";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 const moment = momentImported;
 
 @Component({
@@ -31,20 +49,30 @@ const moment = momentImported;
 export class DxcDateInputComponent implements OnInit {
   @HostBinding("class") className;
 
-  @Input()
-  label: string;
-
-  @Input()
-  name: string;
-
-  @Input()
-  value: string;
-
-  @Input()
-  helperText: string;
-
+  /**
+   * Text to be placed above the date.
+   */
+  @Input() label: string;
+  /**
+   * Name attribute of the input element.
+   */
+  @Input() name: string;
+  /**
+   * Value of the input element. If undefined, the component will be uncontrolled and the value will be managed internally by the component.
+   */
+  @Input() value: string;
+  /**
+   * Helper text to be placed above the date.
+   */
+  @Input() helperText: string;
+  /**
+   * The format in which the date value will be displayed. User must follow this format when editing the value or it will be considered as an invalid date.
+   * In this case, the onBlur and onChange events will be called with an internal error as a parameter reporting the situation.
+   */
   @Input() format: string = "dd-MM-yyyy";
-
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -53,7 +81,9 @@ export class DxcDateInputComponent implements OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
-
+  /**
+   * If true, the date format will appear as placeholder in the field.
+   */
   @Input()
   get placeholder(): boolean {
     return this._placeholder;
@@ -62,7 +92,10 @@ export class DxcDateInputComponent implements OnInit {
     this._placeholder = coerceBooleanProperty(value);
   }
   private _placeholder = false;
-
+  /**
+   * If true, the date will be optional, showing (Optional) next to the label. Otherwise, the field will be considered required
+   * and an error will be passed as a parameter to the OnBlur and onChange events when it has not been filled.
+   */
   @Input()
   get optional(): boolean {
     return this._optional;
@@ -71,7 +104,9 @@ export class DxcDateInputComponent implements OnInit {
     this._optional = coerceBooleanProperty(value);
   }
   private _optional = false;
-
+  /**
+   * If true, the date input will have an action to clear the entered value.
+   */
   @Input()
   get clearable(): boolean {
     return this._clearable;
@@ -80,23 +115,24 @@ export class DxcDateInputComponent implements OnInit {
     this._clearable = coerceBooleanProperty(value);
   }
   private _clearable = false;
-
-  @Input()
-  error = undefined;
-
-  @Input()
-  pattern = "";
-
-  @Input()
-  length = { min: undefined, max: undefined };
-
-  @Input()
-  margin: Object | string;
-
-  @Input() size: string = "medium";
-
-  @Input()
-  tabIndex: number;
+  /**
+   * If it is defined, the component will change its appearance, showing the error below the date input component.
+   * If it is not defined, the error messages will be managed internally, but never displayed on its own.
+   */
+  @Input() error: string;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Size of the component.
+   */
+  @Input() size: Size = "medium";
+  /**
+   * Value of the tabindex attribute.
+   */
+  @Input() tabIndex: number = 0;
 
   @Input()
   autocomplete: string = "off";
@@ -117,15 +153,29 @@ export class DxcDateInputComponent implements OnInit {
     placeholder: false,
   });
 
-  @Output()
-  onChange = new EventEmitter<any>();
-
-  @Output()
-  onError = new EventEmitter<any>(true);
-
-  @Output()
-  onBlur = new EventEmitter<any>();
-
+  /**
+   * This event will emit in case the user types within the input element of the component. An object including the string value,
+   * the error and the date value will be emitted. If the string value is a valid date, error will be null.
+   * Also, if the string value is not a valid date, date will be null.
+   */
+  @Output() onChange = new EventEmitter<{
+    value: string;
+    error: string | null;
+    date: Date | null;
+  }>();
+  /**
+   * This event will emit in case the input element loses the focus. An object including the string value,
+   * the error and the date value will be emitted. If the string value is a valid date, error will be null.
+   * Also, if the string value is not a valid date, date will be null.
+   */
+  @Output() onBlur = new EventEmitter<{
+    value: string;
+    error: string | null;
+    date: Date | null;
+  }>();
+  /**
+   * Reference to the component.
+   */
   @ViewChild("dxcInput", { static: false })
   dxcInputRef: DxcTextInputComponent;
 
@@ -140,7 +190,7 @@ export class DxcDateInputComponent implements OnInit {
   _dxcCalendar: MatCalendar<Moment>;
   @ViewChild("dxcCalendar", { read: ElementRef }) calendar: ElementRef;
 
-  private _sizes = ["medium", "large", "fillParent"];
+  private _sizes: Size[] = ["medium", "large", "fillParent"];
 
   private _isOpenClicked: boolean = false;
   private _isCalendarOpened: boolean = false;
@@ -256,14 +306,19 @@ export class DxcDateInputComponent implements OnInit {
     if (!this.value) {
       this.renderedValue = value;
       this.dateValue = _dateValue;
-    }    
+    }
   }
 
   handleOnBlur(event) {
-    this.onBlur.emit({ value: event.value, error: event.error });
+    let _dateValue = this.getMomentValue(event.value, this.format);
+    this.onBlur.emit({
+      value: event.value,
+      error: event.error,
+      date: _dateValue.isValid() ? _dateValue.toDate() : null,
+    });
     if (!this.controlled) {
       this.renderedValue = event.value;
-      this.dateValue = this.getMomentValue(event.value, this.format);;
+      this.dateValue = _dateValue;
       this.cdRef.detectChanges();
     }
   }
@@ -273,7 +328,7 @@ export class DxcDateInputComponent implements OnInit {
     let _dateReturn = {
       value: _stringValue,
       date: value.isValid() ? value.toDate() : null,
-      error: this.dxcInputRef.error
+      error: this.dxcInputRef.error,
     };
     this.onChange.emit(_dateReturn);
     if (!this.controlled) {

@@ -26,11 +26,11 @@
     <td>If true, the component will be disabled.</td>
   </tr>
   <tr>
-    <td>onActiveChange: function</td>
+    <td>onActiveChange: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user clicks on an accordion. The
-      index of the clicked accordion will be passed as a parameter.
+      This event will emit in case the user clicks on an accordion. The index of
+      the clicked accordion will be passed as a parameter.
     </td>
   </tr>
   <tr>
@@ -84,13 +84,6 @@
       <b>Deprecated.</b> URL of the icon that will be placed next to panel
       label.
     </td>
-  </tr>
-  <tr>
-    <td>iconPosition: 'before' | 'after'</td>
-    <td>
-      <code>'before'</code>
-    </td>
-    <td>Whether the icon should appear after or before the label.</td>
   </tr>
   <tr>
     <td>assistiveText: string</td>

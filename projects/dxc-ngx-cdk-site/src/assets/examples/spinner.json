@@ -3,7 +3,7 @@
         {
             "title": "Undetermined Spinner",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/spinner/undetermined-spinner/undetermined-spinner.component.html&initialpath=undeterminedSpinner",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/spinner/undetermined-spinner/undetermined-spinner.component.html&initialpath=undeterminedSpinner",
                 "title": "UndeterminedSpinner"
             },
             "visibility": true
@@ -11,21 +11,21 @@
         {
             "title": "Determined Spinner",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/spinner/determined-spinner/determined-spinner.component.html&initialpath=determinedSpinner",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/spinner/determined-spinner/determined-spinner.component.html&initialpath=determinedSpinner",
                 "title": "DeterminedSpinner"
             }
         },
         {
             "title": "Small Spinner",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/spinner/small-spinner/small-spinner.component.html&initialpath=smallSpinner",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/spinner/small-spinner/small-spinner.component.html&initialpath=smallSpinner",
                 "title": "SmallSpinner"
             }
         },
         {
             "title": "Spinner with Overlay",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/spinner/spinner-with-overlay/spinner-with-overlay.component.html&initialpath=spinnerWithOverlay",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/spinner/spinner-with-overlay/spinner-with-overlay.component.html&initialpath=spinnerWithOverlay",
                 "title": "SpinnerOverlay"
             }
         }

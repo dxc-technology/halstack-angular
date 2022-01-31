@@ -3,21 +3,21 @@
     {
       "title": "Sized Date",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/date/sized-date/sized-date.component.html&initialpath=sizedDate",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date/sized-date/sized-date.component.html&initialpath=sizedDate",
         "title": "Sized Date"
       }
     },
     {
       "title": "Uncontrolled Date",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/date/uncontrolled-date/uncontrolled-date.component.html&initialpath=uncontrolledDate",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date/uncontrolled-date/uncontrolled-date.component.html&initialpath=uncontrolledDate",
         "title": "UncontrolledDate"
       }
     },
     {
       "title": "Controlled Date",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/date/controlled-date/controlled-date.component.html&initialpath=controlledDate",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date/controlled-date/controlled-date.component.html&initialpath=controlledDate",
         "title": "ControlledDate"
       }
     }

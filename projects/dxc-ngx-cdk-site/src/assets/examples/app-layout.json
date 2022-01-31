@@ -3,14 +3,14 @@
         {
             "title": "Basic Layout",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/application-layout/basic-layout/basic-layout.component.html&initialpath=basicLayout",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/application-layout/basic-layout/basic-layout.component.html&initialpath=basicLayout",
                 "title": "dxc-technology/halstack-angular/application-layout#1"
             }
         },
         {
             "title": "Layout with Sidenav",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/application-layout/layout-with-sidenav/layout-with-sidenav.component.html&initialpath=layoutWithSidenav",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/application-layout/layout-with-sidenav/layout-with-sidenav.component.html&initialpath=layoutWithSidenav",
                 "title": "dxc-technology/halstack-angular/application-layout#2"
             }
         }

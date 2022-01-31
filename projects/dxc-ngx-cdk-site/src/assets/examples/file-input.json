@@ -3,7 +3,7 @@
     {
       "title": "Default file input",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/default-file-input/default-file-input.component.html&initialpath=defaultFileInput",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/default-file-input/default-file-input.component.html&initialpath=defaultFileInput",
         "title": "DefaultFileInput"
       },
       "visibility": true
@@ -11,42 +11,42 @@
     {
       "title": "File input modes",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/file-input-modes/file-input-modes.component.html&initialpath=fileInputModes",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/file-input-modes/file-input-modes.component.html&initialpath=fileInputModes",
         "title": "FileInputModes"
       }
     },
     {
       "title": "File input with preview",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/file-input-with-preview/file-input-with-preview.component.html&initialpath=fileInputWithPreview",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/file-input-with-preview/file-input-with-preview.component.html&initialpath=fileInputWithPreview",
         "title": "FileInputPreview"
       }
     },
     {
       "title": "File input with error",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/file-input-with-error/file-input-with-error.component.html&initialpath=fileInputWithError",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/file-input-with-error/file-input-with-error.component.html&initialpath=fileInputWithError",
         "title": "FileInputError"
       }
     },
     {
       "title": "File input with one file",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/file-input-with-one-file/file-input-with-one-file.component.html&initialpath=fileIputWithOneFile",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/file-input-with-one-file/file-input-with-one-file.component.html&initialpath=fileIputWithOneFile",
         "title": "SingleFileInput"
       }
     },
     {
       "title": "Disabled file input",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/disabled-file-input/disabled-file-input.component.html&initialpath=disabledFileInput",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/disabled-file-input/disabled-file-input.component.html&initialpath=disabledFileInput",
         "title": "DisabledFileInput"
       }
     },
     {
       "title": "File input with accepted files",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/file-input/file-input-with-accepted-files/file-input-with-accepted-files.component.html&initialpath=fileInputWithAcceptedFiles",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/file-input/file-input-with-accepted-files/file-input-with-accepted-files.component.html&initialpath=fileInputWithAcceptedFiles",
         "title": "FileInputAccept"
       }
     }

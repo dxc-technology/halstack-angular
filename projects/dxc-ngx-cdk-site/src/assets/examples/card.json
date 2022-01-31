@@ -3,21 +3,21 @@
         {
             "title": "Default Card",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/card/card-with-action/card-with-action.component.html&initialpath=cardWithAction",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/card/card-with-action/card-with-action.component.html&initialpath=cardWithAction",
                 "title": "DefaultCard"
             }
         },
         {
             "title": "Card with link",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/card/card-with-link/card-with-link.component.html&initialpath=cardWithLink",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/card/card-with-link/card-with-link.component.html&initialpath=cardWithLink",
                 "title": "CardWithLink"
             }
         },
         {
             "title": "Card with action",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/card-with-action/card-with-action.component.html&initialpath=cardWithAction",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/card-with-action/card-with-action.component.html&initialpath=cardWithAction",
                 "title": "CardWithAction"
             }
         }

@@ -3,7 +3,7 @@
         {
             "title": "Simple Table",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/table/simple-table/simple-table.component.html&initialpath=simpleTable",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/table/simple-table/simple-table.component.html&initialpath=simpleTable",
                 "title": "SimpleTable"
             },
             "visibility": true

@@ -3,21 +3,21 @@
         {
             "title": "Uncontrolled Accordion Group",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/uncontrolled-accordion-group/uncontrolled-accordion-group.component.html&initialpath=uncontrolledAccordionGroup",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion-group/uncontrolled-accordion-group/uncontrolled-accordion-group.component.html&initialpath=uncontrolledAccordionGroup",
                 "title": "UncontrolledAccordionGroup"
             },"visibility":true
         },
         {
             "title": "Controlled Accordion Group",
             "iframe": {
-              "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/controlled-accordion-group/controlled-accordion-group.component.html&initialpath=controlledAccordionGroup",
+              "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion-group/controlled-accordion-group/controlled-accordion-group.component.html&initialpath=controlledAccordionGroup",
               "title": "ControlledAccordionGroup"
             }
         },
         {
             "title": "Disabled Accordion Group",
             "iframe": {
-              "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion-group/disabled-accordion-group/disabled-accordion-group.component.html&initialpath=disabledAccordionGroup",
+              "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion-group/disabled-accordion-group/disabled-accordion-group.component.html&initialpath=disabledAccordionGroup",
                 "title": "DisabledAccordionGroup"
             }
         }

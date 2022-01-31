@@ -3,7 +3,7 @@
         {
             "title": "Default Sidenav",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/sidenav/default-sidenav/default-sidenav.component.html&initialpath=defaultSidenav",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/sidenav/default-sidenav/default-sidenav.component.html&initialpath=defaultSidenav",
                 "title": "DefaultSidenav"
             },
             "visibility": true
@@ -11,7 +11,7 @@
         {
             "title": "Sidenav with children",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/sidenav/sidenav-with-children/sidenav-with-children.component.html&initialpath=sidenavWithChildren",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/sidenav/sidenav-with-children/sidenav-with-children.component.html&initialpath=sidenavWithChildren",
                 "title": "SidenavWithChildren"
             }
         }

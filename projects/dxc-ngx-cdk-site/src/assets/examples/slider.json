@@ -3,7 +3,7 @@
         {
             "title": "Uncontrolled Slider",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/uncontrolled-slider/uncontrolled-slider.component.html&initialpath=uncontrolledSlider",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/uncontrolled-slider/uncontrolled-slider.component.html&initialpath=uncontrolledSlider",
                 "title": "uncontrolled-slider"
             },
             "visibility": true
@@ -11,49 +11,49 @@
         {
             "title": "Continuous Slider",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/continuous-slider/continuous-slider.component.html&initialpath=continuousSlider",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/continuous-slider/continuous-slider.component.html&initialpath=continuousSlider",
                 "title": "continuous-slider"
             }
         },
         {
             "title": "Slider with input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/slider-with-input/slider-with-input.component.html&initialpath=sliderWithInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/slider-with-input/slider-with-input.component.html&initialpath=sliderWithInput",
                 "title": "slider-with-input"
             }
         },
         {
             "title": "Controlled Slider",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/controlled-slider/controlled-slider.component.html&initialpath=controlledSlider",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/controlled-slider/controlled-slider.component.html&initialpath=controlledSlider",
                 "title": "controlled-slider"
             }
         },
         {
             "title": "Sized Slider",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/sized-slider/sized-slider.component.html&initialpath=sizedSlider",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/sized-slider/sized-slider.component.html&initialpath=sizedSlider",
                 "title": "sized-slider"
             }
         },
         {
             "title": "Slider without limit values",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/slider-no-limit-values/slider-no-limit-values.component.html&initialpath=sliderNoLimitValues",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/slider-no-limit-values/slider-no-limit-values.component.html&initialpath=sliderNoLimitValues",
                 "title": "slider-without-limits"
             }
         },
         {
             "title": "Disabled Slider",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/disabled-slider/disabled-slider.component.html&initialpath=disabledSlider",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/disabled-slider/disabled-slider.component.html&initialpath=disabledSlider",
                 "title": "disabled-slider"
             }
         },
         {
             "title": "Discrete Slider",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/slider/discrete-slider/discrete-slider.component.html&initialpath=discreteSlider",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/slider/discrete-slider/discrete-slider.component.html&initialpath=discreteSlider",
                 "title": "discrete-slider"
             }
         }

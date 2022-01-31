@@ -3,28 +3,28 @@
         {
             "title": "Basic Tag",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/tag/basic-tag/basic-tag.component.html&initialpath=basicTag",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tag/basic-tag/basic-tag.component.html&initialpath=basicTag",
                 "title": "BasicTag"
             }
         },
         {
             "title": "Tag with link",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/tag/tag-with-link/tag-with-link.component.html&initialpath=tagWithLink",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tag/tag-with-link/tag-with-link.component.html&initialpath=tagWithLink",
                 "title": "TagWithLink"
             }
         },
         {
             "title": "Tag with action",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/tag/tag-with-icon/tag-with-icon.component.html&initialpath=tagWithIcon",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tag/tag-with-icon/tag-with-icon.component.html&initialpath=tagWithIcon",
                 "title": "TagWithAction"
             }
         },
         {
             "title": "Sized Tag",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/tag/sized-tag/sized-tag.component.html&initialpath=sizedTag",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tag/sized-tag/sized-tag.component.html&initialpath=sizedTag",
                 "title": "SizedTag"
             }
         }

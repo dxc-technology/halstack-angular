@@ -3,7 +3,7 @@
         {
             "title": "Determinate Default Progress Bar",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/progress-bar/determinate-default-progress-bar/determinate-default-progress-bar.component.html&initialpath=determinateDefaultProgressBar",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/progress-bar/determinate-default-progress-bar/determinate-default-progress-bar.component.html&initialpath=determinateDefaultProgressBar",
                 "title": "DeterminateDefaultProgressBar"
             },
             "visibility": true
@@ -11,14 +11,14 @@
         {
             "title": "Undeterminate Default Progress Bar",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/progress-bar/undeterminate-default-progress-bar/undeterminate-default-progress-bar.component.html&initialpath=undeterminateDefaultProgressBar",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/progress-bar/undeterminate-default-progress-bar/undeterminate-default-progress-bar.component.html&initialpath=undeterminateDefaultProgressBar",
                 "title": "UndeterminateDefaultProgressBar"
             }
         },
         {
             "title": "Progress Bar with Overlay",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/progress-bar/progress-bar-with-overlay/progress-bar-with-overlay.component.html&initialpath=progressBarWithOverlay",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/progress-bar/progress-bar-with-overlay/progress-bar-with-overlay.component.html&initialpath=progressBarWithOverlay",
                 "title": "ProgressBarOverlay"
             }
         }

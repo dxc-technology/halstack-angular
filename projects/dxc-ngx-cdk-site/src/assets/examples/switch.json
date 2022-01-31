@@ -3,7 +3,7 @@
         {
             "title": "Label Position Switch",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/switch/label-position-switch/label-position-switch.component.html&initialpath=labelPositionSwitch",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/switch/label-position-switch/label-position-switch.component.html&initialpath=labelPositionSwitch",
                 "title": "label-position-switch"
             },
             "visibility": true
@@ -11,14 +11,14 @@
         {
             "title": "Uncontrolled Switch",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/switch/uncontrolled-switch/uncontrolled-switch.component.html&initialpath=uncontrolledSwitch",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/switch/uncontrolled-switch/uncontrolled-switch.component.html&initialpath=uncontrolledSwitch",
                 "title": "uncontrolled-switch"
             }
         },
         {
             "title": "Controlled Switch",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/switch/controlled-switch/controlled-switch.component.html&initialpath=controlledSwitch",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/switch/controlled-switch/controlled-switch.component.html&initialpath=controlledSwitch",
                 "title": "controlled-switch"
             }
         }

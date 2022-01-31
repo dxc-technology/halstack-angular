@@ -3,7 +3,7 @@
         {
             "title": "Controlled number",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/controlled-number/controlled-number.component.html&initialpath=controlledNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/controlled-number/controlled-number.component.html&initialpath=controlledNumber",
                 "title": "controlled-number"
             },
             "visibility": true
@@ -11,77 +11,77 @@
         {
             "title": "Uncontrolled number",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/uncontrolled-number/uncontrolled-number.component.html&initialpath=uncontrolledNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/uncontrolled-number/uncontrolled-number.component.html&initialpath=uncontrolledNumber",
                 "title": "uncontrolled-number"
             }
         },
         {
             "title": "Number with helper text",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/helper-text-number/helper-text-number.component.html&initialpath=helperTextNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/helper-text-number/helper-text-number.component.html&initialpath=helperTextNumber",
                 "title": "number-helper-text"
             }
         },
         {
             "title": "Number with placeholder",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/placeholder-number/placeholder-number.component.html&initialpath=placeholderNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/placeholder-number/placeholder-number.component.html&initialpath=placeholderNumber",
                 "title": "number-placeholder"
             }
         },
         {
             "title": "Number with prefix",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/preffix-number/preffix-number.component.html&initialpath=prefixNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/preffix-number/preffix-number.component.html&initialpath=prefixNumber",
                 "title": "number-prefix"
             }
         },
         {
             "title": "Number with suffix",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/suffix-number/suffix-number.component.html&initialpath=suffixNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/suffix-number/suffix-number.component.html&initialpath=suffixNumber",
                 "title": "number-suffix"
             }
         },
         {
             "title": "Optional number",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/optional-number/optional-number.component.html&initialpath=optionalNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/optional-number/optional-number.component.html&initialpath=optionalNumber",
                 "title": "optional-number"
             }
         },
         {
             "title": "Disabled number",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/disabled-number/disabled-number.component.html&initialpath=disabledNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/disabled-number/disabled-number.component.html&initialpath=disabledNumber",
                 "title": "disabled-number"
             }
         },
         {
             "title": "Invalid number",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/invalid-number/invalid-number.component.html&initialpath=invalidNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/invalid-number/invalid-number.component.html&initialpath=invalidNumber",
                 "title": "invalid-number"
             }
         },
         {
             "title": "Min, max and step",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/min-max-step-number/min-max-step-number.component.html&initialpath=minMaxStepNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/min-max-step-number/min-max-step-number.component.html&initialpath=minMaxStepNumber",
                 "title": "step-number"
             }
         },
         {
             "title": "Number with custom error messages",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/custom-error-number/custom-error-number.component.html&initialpath=customErrorNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/custom-error-number/custom-error-number.component.html&initialpath=customErrorNumber",
                 "title": "custom-error-number"
             }
         },
         {
             "title": "Fill parent size number",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/number-input/fill-parent-size-number/fill-parent-size-number.component.html&initialpath=fillParentSizeNumber",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/number-input/fill-parent-size-number/fill-parent-size-number.component.html&initialpath=fillParentSizeNumber",
                 "title": "size-number"
             }
         }

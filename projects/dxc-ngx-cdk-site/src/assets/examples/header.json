@@ -3,7 +3,7 @@
         {
             "title": "Default Header",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/header/default-header/default-header.component.html&initialpath=defaultHeader",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/header/default-header/default-header.component.html&initialpath=defaultHeader",
                 "title": "DefaultHeader"
             },
             "visibility": true
@@ -11,14 +11,14 @@
         {
             "title": "Custom Header",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/header/custom-header/custom-header.component.html&initialpath=customHeader",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/header/custom-header/custom-header.component.html&initialpath=customHeader",
                 "title": "CustomHeader"
             }
         },
         {
             "title": "Header with DxcHeaderDropdown",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/header/header-with-dropdown/header-with-dropdown.component.html&initialpath=headerWithDropdown",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/header/header-with-dropdown/header-with-dropdown.component.html&initialpath=headerWithDropdown",
                 "title": "HeaderWithChildDropdown"
             }
         }

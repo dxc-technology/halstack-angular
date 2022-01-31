@@ -3,7 +3,7 @@
         {
             "title": "Default Accordion",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/default-accordion/default-accordion.component.html&initialpath=defaultAccordion",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion/default-accordion/default-accordion.component.html&initialpath=defaultAccordion",
                 "title": "DefaultAccordion"
             },
             "visibility":true
@@ -11,28 +11,28 @@
         {
             "title": "Controlled Accordion",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/controlled-accordion/controlled-accordion.component.html&initialpath=controlledAccordion",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion/controlled-accordion/controlled-accordion.component.html&initialpath=controlledAccordion",
                 "title": "ControlledAccordion"
             }
         },
         {
             "title": "Accordion with Assistive Text",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/accordion-with-assistive-text/accordion-with-assistive-text.component.html&initialpath=accordionWithAssistiveText",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion/accordion-with-assistive-text/accordion-with-assistive-text.component.html&initialpath=accordionWithAssistiveText",
                 "title": "AssistiveTextAccordion"
             }
         },
         {
             "title": "Accordion with Icon",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/accordion-with-icon/accordion-with-icon.component.html&initialpath=accordionWithIcon",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion/accordion-with-icon/accordion-with-icon.component.html&initialpath=accordionWithIcon",
                 "title": "IconAccordion"
             }
         },
         {
             "title": "Disabled Accordion",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/accordion/disabled-icon/disabled-icon.component.html&initialpath=disabledIconAccordion",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/accordion/disabled-icon/disabled-icon.component.html&initialpath=disabledIconAccordion",
                 "title": "DisabledAccordion"
             }
         }

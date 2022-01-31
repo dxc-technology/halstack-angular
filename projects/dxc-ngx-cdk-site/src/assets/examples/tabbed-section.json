@@ -3,7 +3,7 @@
         {
             "title": "Default Tabbed Section",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/tabbed-section/default-tabbed-section/default-tabbed-section.component.html&initialpath=defaultTabbedSection",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabbed-section/default-tabbed-section/default-tabbed-section.component.html&initialpath=defaultTabbedSection",
                 "title": "DefaultTabbedSection"
             },
             "visibility": true

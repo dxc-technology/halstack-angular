@@ -3,7 +3,7 @@
         {
             "title": "Default Upload",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/uplodad/default-upload/default-upload.component.html&initialpath=defaultUpload",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/uplodad/default-upload/default-upload.component.html&initialpath=defaultUpload",
                 "title": "DefaultUpload"
             }
         }

@@ -3,98 +3,98 @@
         {
             "title": "Controlled input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/controlled-input/controlled-input.component.html&initialpath=controlledInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/controlled-input/controlled-input.component.html&initialpath=controlledInput",
                 "title": "controlled-input"
             }
         },
         {
             "title": "Uncontrolled input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/uncontrolled-input/uncontrolled-input.component.html&initialpath=uncontrolledInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/uncontrolled-input/uncontrolled-input.component.html&initialpath=uncontrolledInput",
                 "title": "uncontrolled-input"
             }
         },
         {
             "title": "Input with helper text",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-helper-text/input-with-helper-text.component.html&initialpath=inputWithHelperText",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-helper-text/input-with-helper-text.component.html&initialpath=inputWithHelperText",
                 "title": "input-helper-text"
             }
         },
         {
             "title": "Input with placeholder",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-placeholder/input-with-placeholder.component.html&initialpath=inputWithPlaceholder",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-placeholder/input-with-placeholder.component.html&initialpath=inputWithPlaceholder",
                 "title": "input-placeholder"
             }
         },
         {
             "title": "Input with prefix",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-prefix/input-with-prefix.component.html&initialpath=inputWithPrefix",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-prefix/input-with-prefix.component.html&initialpath=inputWithPrefix",
                 "title": "input-prefix"
             }
         },
         {
             "title": "Input with suffix",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-suffix/input-with-suffix.component.html&initialpath=inputWithSuffix",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-suffix/input-with-suffix.component.html&initialpath=inputWithSuffix",
                 "title": "input-suffix"
             }
         },
         {
             "title": "Input with action",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-action/input-with-action.component.html&initialpath=inputWithAction",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-action/input-with-action.component.html&initialpath=inputWithAction",
                 "title": "input-action"
             }
         },
         {
             "title": "Optional input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/optional-input/optional-input.component.html&initialpath=optionalInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/optional-input/optional-input.component.html&initialpath=optionalInput",
                 "title": "optional-input"
             }
         },
         {
             "title": "Disabled input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/disabled-input/disabled-input.component.html&initialpath=disabledInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/disabled-input/disabled-input.component.html&initialpath=disabledInput",
                 "title": "disabled-input"
             }
         },
         {
             "title": "Input with pattern constraint",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-pattern-constraint/input-with-pattern-constraint.component.html&initialpath=inputWithPatternConstraint",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-pattern-constraint/input-with-pattern-constraint.component.html&initialpath=inputWithPatternConstraint",
                 "title": "pattern-input"
             }
         },
         {
             "title": "Input with length constraint",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-length-constraint/input-with-length-constraint.component.html&initialpath=inputWithLengthConstraint",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-length-constraint/input-with-length-constraint.component.html&initialpath=inputWithLengthConstraint",
                 "title": "length-input"
             }
         },
         {
             "title": "Invalid input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/invalid-input/invalid-input.component.html&initialpath=invalidInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/invalid-input/invalid-input.component.html&initialpath=invalidInput",
                 "title": "invalid-input"
             }
         },
         {
             "title": "Input with custom error messages",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/input-with-custom-error/input-with-custom-error.component.html&initialpath=inputWithCustomError",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/input-with-custom-error/input-with-custom-error.component.html&initialpath=inputWithCustomError",
                 "title": "custom-error-input"
             }
         },
         {
             "title": "Fill parent size input",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/text-input/fill-parent-size-input/fill-parent-size-input.component.html&initialpath=fillParentSizeInput",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/text-input/fill-parent-size-input/fill-parent-size-input.component.html&initialpath=fillParentSizeInput",
                 "title": "size-input"
             }
         }

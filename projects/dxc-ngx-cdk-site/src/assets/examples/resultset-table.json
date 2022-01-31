@@ -3,7 +3,7 @@
         {
             "title": "Resultset Table",
             "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/resultset-table/default-resultset-table/default-resultset-table.component.html&initialpath=defaultResultsetTable",
+                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/resultset-table/default-resultset-table/default-resultset-table.component.html&initialpath=defaultResultsetTable",
                 "title": "ResultsetTable"
             },
             "visibility": true

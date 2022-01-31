@@ -3,28 +3,28 @@
     {
       "title": "Checkbox Label Position",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-label-position/checkbox-label-position.component.html&initialpath=checkboxLabelPosition",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/checkbox/checkbox-label-position/checkbox-label-position.component.html&initialpath=checkboxLabelPosition",
         "title": "CheckboxLabelPosition"
       }
     },
     {
       "title": "Checkbox Uncontrolled",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component.html&initialpath=checkboxUncontrolled",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/checkbox/checkbox-uncontrolled/checkbox-uncontrolled.component.html&initialpath=checkboxUncontrolled",
         "title": "CheckboxUncontrolled"
       }
     },
     {
       "title": "Checkbox Sized",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-sized/checkbox-sized.component.html&initialpath=checkboxSized",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/checkbox/checkbox-sized/checkbox-sized.component.html&initialpath=checkboxSized",
         "title": "CheckboxSized"
       }
     },
     {
       "title": "Checkbox Controlled",
       "iframe": {
-        "src": "https://stackblitz.com/edit/halstack-angular-examples?file=src/app/views/checkbox/checkbox-controlled/checkbox-controlled.component.html&initialpath=checkboxControlled",
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/checkbox/checkbox-controlled/checkbox-controlled.component.html&initialpath=checkboxControlled",
         "title": "CheckboxControlled"
       }
     }

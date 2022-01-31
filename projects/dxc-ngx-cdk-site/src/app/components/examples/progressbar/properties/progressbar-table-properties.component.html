@@ -1,4 +1,9 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -9,6 +14,11 @@
     <td>label: string</td>
     <td></td>
     <td>Text to be placed above the progress bar.</td>
+  </tr>
+  <tr>
+    <td>helperText: string</td>
+    <td></td>
+    <td>Helper text to be placed under the progress bar.</td>
   </tr>
   <tr>
     <td>overlay: boolean</td>
@@ -33,7 +43,7 @@
     <td>If true, the value is displayed above the progress bar.</td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |

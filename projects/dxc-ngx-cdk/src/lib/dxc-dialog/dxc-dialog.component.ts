@@ -84,13 +84,13 @@ export class DxcDialogComponent {
 
   /**
    * This event will emit when the user clicks the close 'x' button.
-   * The responsibility of hiding the modal lies with the user.
+   * The responsibility of hiding the dialog lies with the user.
    */
   @Output() onCloseClick: EventEmitter<void> = new EventEmitter<void>();
 
   /**
    * This event will emit when the user clicks the background.
-   * The responsibility of hiding the modal lies with the user. 
+   * The responsibility of hiding the dialog lies with the user. 
    * */
   @Output() onBackgroundClick: EventEmitter<void> = new EventEmitter<void>();
 

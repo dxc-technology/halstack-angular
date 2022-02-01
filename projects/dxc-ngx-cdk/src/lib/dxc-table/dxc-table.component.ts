@@ -4,6 +4,22 @@ import { BehaviorSubject } from "rxjs";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { CssUtils } from "../utils";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-table",
   templateUrl: "./dxc-table.component.html",
@@ -11,11 +27,16 @@ import { CssUtils } from "../utils";
   providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcTableComponent {
-  @Input() margin;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' |
+   * 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You
+   * can pass an object with 'top', 'bottom', 'left' and 'right' properties
+   * in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+
   @HostBinding("class") className;
-
   defaultInputs = new BehaviorSubject<any>({});
-
   currentBackgroundColor: string;
 
   constructor(private utils: CssUtils) {}
@@ -39,8 +60,8 @@ export class DxcTableComponent {
   getDynamicStyle(inputs) {
     return css`
       div#divTable {
-        ${this.utils.getMargins(this.margin)}
-        ${this.calculateWidth(this.margin)};
+        ${this.utils.getMargins(inputs.margin)}
+        ${this.calculateWidth(inputs.margin)};
         overflow-y: auto;
         &::-webkit-scrollbar {
           width: 8px;
@@ -103,9 +124,12 @@ export class DxcTableComponent {
     `;
   }
 
-  private calculateWidth = (margin: any) => {
-    return margin ?`width: calc(100% - ${this.utils.getMarginValue(margin, "left")} - ${this.utils.getMarginValue(
-      margin,"right")})`: '';
-  }
-
+  private calculateWidth = (margin: Space | Margin) => {
+    return margin
+      ? `width: calc(100% - ${this.utils.getMarginValue(
+          margin,
+          "left"
+        )} - ${this.utils.getMarginValue(margin, "right")})`
+      : "";
+  };
 }

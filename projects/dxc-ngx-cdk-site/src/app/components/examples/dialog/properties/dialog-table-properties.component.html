@@ -21,16 +21,16 @@
     <td>onCloseClick: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user clicks the close 'x' button.
-      The user has the responsibility of hidding the modal.
+      This event will emit when the user clicks the close 'x' button. The
+      responsibility of hiding the dialog lies with the user.
     </td>
   </tr>
   <tr>
     <td>onBackgroundClick: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user clicks background of the modal
-      button. The user has the responsibility of hidding the modal.
+      This event will emit when the user clicks the background. The
+      responsibility of hiding the dialog lies with the user.
     </td>
   </tr>
   <tr>
@@ -38,10 +38,13 @@
     <td>
       <code>true</code>
     </td>
-    <td>If true, the dialog will be displayed over a darker background.</td>
+    <td>
+      If true, the dialog will be displayed over a darker background that covers
+      the content behind
+    </td>
   </tr>
   <tr>
-    <td>padding: any (string | object)</td>
+    <td>padding: string | object</td>
     <td></td>
     <td>
       Size of the padding to be applied to the component ('xxsmall' | 'xsmall' |
@@ -53,6 +56,6 @@
   <tr>
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
-    <td>Value of the tabindex given to the close 'x' button.</td>
+    <td>Value of the tabindex given to the close button.</td>
   </tr>
 </dxc-table>

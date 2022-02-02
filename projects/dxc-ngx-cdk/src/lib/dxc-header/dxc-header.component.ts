@@ -13,8 +13,27 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { spaces, responsiveSizes } from "../variables";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Padding = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 
 @Component({
   selector: "dxc-header",
@@ -22,11 +41,9 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
   providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcHeaderComponent implements OnChanges {
-  @HostBinding("class") className;
-  @Input() logoSrc: string;
-  @Input() logoResponsiveSrc: string;
-  @Input() margin: any;
-  @Input() padding: any;
+  /**
+   * Wether a contrast line should appear at the bottom of the header.
+   */
   @Input()
   get underlined(): boolean {
     return this._underlined;
@@ -34,7 +51,26 @@ export class DxcHeaderComponent implements OnChanges {
   set underlined(value: boolean) {
     this._underlined = coerceBooleanProperty(value);
   }
-  private _underlined;
+  private _underlined = false;
+
+  /**
+   * The path of an icon to replace the theme logo.
+   */
+  @Input() logoSrc: string;
+
+  /**
+   * The path of an icon to replace the theme logo in responsive version.
+   */
+  @Input() logoResponsiveSrc: string;
+
+  /**
+   * This event will emit in case the user clicks the header logo.
+   */
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * Value of the tabindex for all interactuable elements, except those inside the custom area.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -42,9 +78,21 @@ export class DxcHeaderComponent implements OnChanges {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
-  @Output() onClick = new EventEmitter<any>();
+  /**
+   * Size of the bottom margin to be applied to the footer.
+   */
+  @Input() margin: Space;
+
+  /**
+   * Size of the padding to be applied to the custom area of the component.
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to
+   * specify different padding sizes.
+   */
+  @Input() padding: Space | Padding;
+
+  @HostBinding("class") className;
 
   isResponsive = false;
   isMenuVisible = false;
@@ -56,16 +104,16 @@ export class DxcHeaderComponent implements OnChanges {
   currentBackgroundColor: string;
 
   defaultInputs = new BehaviorSubject<any>({
+    underlined: false,
     logoSrc: null,
     logoResponsiveSrc: null,
+    tabIndexValue: 0,
     margin: null,
     padding: null,
     isResponsive: false,
     isMenuVisible: false,
     innerWidth,
     innerHeight,
-    underlined:false,
-    tabIndexValue: 0,
   });
 
   @HostListener("window:resize", ["$event"])
@@ -167,7 +215,7 @@ export class DxcHeaderComponent implements OnChanges {
     `;
   }
 
-   getLogoDxc() {
+  getLogoDxc() {
     const pic = document.body.getAttribute("header-logo");
     return pic;
   }
@@ -195,8 +243,9 @@ export class DxcHeaderComponent implements OnChanges {
         }
         &.underlined {
           .mat-toolbar-row {
-            border-bottom: ${inputs.underlined ?
-              `var(--header-underlinedThickness) var(--header-underlinedStyle) var(--header-underlinedColor);`: 'unset;'};
+            border-bottom: ${inputs.underlined
+              ? `var(--header-underlinedThickness) var(--header-underlinedStyle) var(--header-underlinedColor);`
+              : "unset;"};
           }
         }
       }
@@ -263,12 +312,11 @@ export class DxcHeaderComponent implements OnChanges {
         }
       }
       .overlay {
-
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
-        height:  ${inputs.innerHeight}px;
+        height: ${inputs.innerHeight}px;
         background-color: var(--header-overlayColor);
         opacity: var(--header-overlayOpacity) !important;
         display: ${inputs.innerWidth <= responsiveSizes.mobileLarge
@@ -311,7 +359,6 @@ export class DxcHeaderComponent implements OnChanges {
         justify-content: space-between;
         width: 100%;
         .closeIcon {
-
           cursor: pointer;
           display: flex;
           justify-content: flex-end;

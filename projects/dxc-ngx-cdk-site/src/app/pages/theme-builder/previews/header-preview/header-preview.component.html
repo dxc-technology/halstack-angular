@@ -1,14 +1,36 @@
 <div>
   <tbuilder-component-mode text="Default">
-    <dxc-header margin="xsmall" underlined="true" style="position:relative;">
+    <dxc-header margin="xsmall" underlined="true" style="position: relative">
       <div id="responsive">
         <dxc-button label="Custom Button"> </dxc-button>
         <p>Header text</p>
       </div>
-      <div id="unresponsive" style="display: flex;
-      align-items: center;">
+      <div id="unresponsive" style="display: flex; align-items: center">
+        <dxc-header-dropdown
+          label="Default Dropdown"
+          size="medium"
+          caretHidden="false"
+          margin="small"
+        >
+          <dxc-dropdown-option label="1" value="1"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="2"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="3"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="4" value="1"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="5"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="6"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="7" value="1"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="8"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="9"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="10" value="1"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="11"> </dxc-dropdown-option>
+          <dxc-dropdown-option label="12"> </dxc-dropdown-option>
+        </dxc-header-dropdown>
         <p>Header text</p>
-        <dxc-button mode="primary" label="Custom Button" [margin]="buttonMargin"></dxc-button>
+        <dxc-button
+          mode="primary"
+          label="Custom Button"
+          [margin]="buttonMargin"
+        ></dxc-button>
       </div>
     </dxc-header>
   </tbuilder-component-mode>

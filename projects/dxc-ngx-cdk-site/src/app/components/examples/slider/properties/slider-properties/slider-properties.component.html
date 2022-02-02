@@ -26,9 +26,22 @@
     <td>The step interval between values available for selection.</td>
   </tr>
   <tr>
+    <td>label: string</td>
+    <td></td>
+    <td>Text to be placed above the slider.</td>
+  </tr>
+  <tr>
+    <td>helperText: string</td>
+    <td></td>
+    <td>Helper text to be placed above the slider.</td>
+  </tr>
+  <tr>
     <td>value: number</td>
-    <td><code>0</code></td>
-    <td>The selected value.</td>
+    <td></td>
+    <td>
+      The selected value. If undefined, the component will be uncontrolled and
+      the value will be managed internally by the component.
+    </td>
   </tr>
   <tr>
     <td>marks: boolean</td>
@@ -61,35 +74,32 @@
     <td>If true, the component will be disabled.</td>
   </tr>
   <tr>
-    <td>labelFormatCallback: (value: number) => string | number</td>
-    <td></td>
-    <td>Function used to format minimum and maximum labels.</td>
-  </tr>
-  <tr>
-    <td>tabIndexValue: number</td>
-    <td><code>0</code></td>
-    <td>Value of the tabindex</td>
-  </tr>
-  <tr>
-    <td>valueChange: EventEmitter</td>
+    <td>labelFormatCallback: function</td>
     <td></td>
     <td>
-      This function will be called when the slider changes its value, as it's
-      being dragged. The new value will be passed as a parameter when this
-      function is executed.
+      This function will be used to format the labels displayed next to the
+      slider. The value will be passed as parameter and the function must return
+      the formatted value.
+    </td>
+  </tr>
+  <tr>
+    <td>onChange: EventEmitter</td>
+    <td></td>
+    <td>
+      This event will emit in case the slider changes its value, as it's being
+      dragged. The new value will be passed as a parameter.
     </td>
   </tr>
   <tr>
     <td>onDragEnd: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the slider changes its value, but only
-      when the thumb is released. The new value will be passed as a parameter
-      when this function is executed.
+      This event will emit in case the slider changes its value, but only when
+      the thumb is released. The new value will be passed as a parameter.
     </td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
@@ -99,10 +109,13 @@
     </td>
   </tr>
   <tr>
-    <td>size: string | object</td>
+    <td>size: string</td>
     <td><code>'fillParent'</code></td>
-    <td>
-      Size of the component ('medium' | 'large' | 'fillParent' | 'fitContent').
-    </td>
+    <td>Size of the component.</td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex</td>
   </tr>
 </dxc-table>

@@ -256,7 +256,7 @@ export class DxcSpinnerComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      ${this.utils.getMargins(inputs.margin)}
+      ${inputs.mode != "overlay" ? this.utils.getMargins(inputs.margin) : ""}
       display: inline-block;
       &.overlay {
         height: 100vh;

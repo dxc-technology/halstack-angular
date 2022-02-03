@@ -18,6 +18,21 @@ import {
 } from "@angular/core";
 import { DxcLinkIconComponent } from "./dxc-link-icon/dxc-link-icon.component";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-link",
   templateUrl: "./dxc-link.component.html",
@@ -32,6 +47,9 @@ export class DxcLinkComponent {
     this._underlined = coerceBooleanProperty(value);
   }
   private _underlined = true;
+  /**
+   * If true, the color is inherited from parent.
+   */
   @Input()
   get inheritColor(): boolean {
     return this._inheritColor;
@@ -39,7 +57,10 @@ export class DxcLinkComponent {
   set inheritColor(value: boolean) {
     this._inheritColor = coerceBooleanProperty(value);
   }
-  private _inheritColor;
+  private _inheritColor = false;
+  /**
+   * If true, the link is disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -47,11 +68,26 @@ export class DxcLinkComponent {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
+  private _disabled = false;
+  /**
+   * Link text.
+   */
   @Input() text: string;
+  /**
+   * @Deprecated Source of the icon.
+   */
   @Input() iconSrc: string;
+  /**
+   * Indicates the position of the icon in the component.
+   */
   @Input() iconPosition: string;
+  /**
+   * Page to be opened when the user clicks on the link.
+   */
   @Input() href: string;
+  /**
+   * If true, the page is opened in a new browser tab.
+   */
   @Input()
   get newWindow(): boolean {
     return this._newWindow;
@@ -59,8 +95,17 @@ export class DxcLinkComponent {
   set newWindow(value: boolean) {
     this._newWindow = coerceBooleanProperty(value);
   }
-  private _newWindow;
-  @Input() margin: string;
+  private _newWindow = false;
+  /**
+   * Size of the margin to be applied to the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
+   * in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Value of the tabindex.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -68,21 +113,20 @@ export class DxcLinkComponent {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
-
+  private _tabIndexValue = 0;
+  /**
+   * This event will emit in case the user clicks the component. If defined,
+   * the link will be displayed as a button.
+   */
   @Output() onClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
-
-  isClickDefined = false;
-
   @ContentChildren(DxcLinkIconComponent)
   dxcLinkIcon: QueryList<DxcLinkIconComponent>;
-
   styledLink: string = css`
     display: inline;
   `;
-
+  isClickDefined = false;
   styledButton: string;
 
   defaultInputs = new BehaviorSubject<any>({

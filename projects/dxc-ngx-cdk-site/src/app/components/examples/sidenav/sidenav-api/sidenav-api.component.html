@@ -39,7 +39,7 @@
   text="DxcSidenavLink"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
-<p>Customized link that allows the navigation.</p>
+<p>Customized link that allows the navigation. As the other components its content will be shown as an anchor</p>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -54,7 +54,12 @@
   <tr>
     <td>onClick: EventEmitter</td>
     <td></td>
-    <td>This function will be called when the user clicks the link.</td>
+    <td>This event will be emit when the user clicks the link.</td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex given to the DxcSidenavLink.</td>
   </tr>
 </dxc-table>
 

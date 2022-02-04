@@ -12,45 +12,23 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { responsiveSizes } from "./../variables";
-import {
-  coerceBooleanProperty,
-  coerceNumberProperty,
-} from "@angular/cdk/coercion";
-import { SidenavService } from "./services/sidenav.service";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
 @Component({
   selector: "dxc-sidenav",
   templateUrl: "./dxc-sidenav.component.html",
-  styleUrls: ["./dxc-sidenav.component.scss"],
-  providers: [CssUtils, SidenavService, BackgroundProviderService],
+  providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcSidenavComponent implements OnInit {
   @HostBinding("class") sidenavStyles;
-  @Input() mode: string = "push";
+
+  /**
+   * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
+   */
   @Input() padding: any;
-  @Input()
-  get displayArrow(): boolean {
-    return this._displayArrow;
-  }
-  set displayArrow(value: boolean) {
-    this._displayArrow = coerceBooleanProperty(value);
-  }
-  _displayArrow = true;
-  @Input()
-  get tabIndexValue(): number {
-    return this._tabIndexValue;
-  }
-  set tabIndexValue(value: number) {
-    this._tabIndexValue = coerceNumberProperty(value);
-  }
-  private _tabIndexValue;
 
   firstClick: boolean = false; //remove animation on first load
-  innerWidth;
-  isResponsive = true;
-  isShown: boolean;
 
   currentBackgroundColor: string;
 
@@ -62,41 +40,15 @@ export class DxcSidenavComponent implements OnInit {
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;
   sidenavArrow: any;
 
-  constructor(private utils: CssUtils, private service: SidenavService) {}
-
-  @HostListener("window:resize", ["$event"])
-  onResize(event) {
-    this.updateCss();
-  }
+  constructor(private utils: CssUtils) {}
 
   ngOnInit() {
-    this.updateState();
     this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
-      mode: this.mode,
-      innerWidth: this.innerWidth,
-      isResponsive: this.isResponsive,
-      isShown: this.isShown,
     })}`;
   }
 
-  public arrowClicked() {
-    this.isShown = !this.isShown;
-    this.firstClick = true;
-    console.log(this.isShown);
-    this.updateCss();
-  }
-
-  public arrowKey($event) {
-    if ($event.keyCode && $event.keyCode === 32) {
-      $event.preventDefault();
-      this.isShown = !this.isShown;
-      this.updateCss();
-    }
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
-    this.service.setTabIndexValue(this.tabIndexValue);
     this.currentBackgroundColor = this.utils.readProperty(
       "--sidenav-backgroundColor"
     );
@@ -105,41 +57,6 @@ export class DxcSidenavComponent implements OnInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    if (this.sidenav) {
-      this.updateCss();
-    }
-  }
-
-  updateState() {
-    this.innerWidth = window.innerWidth;
-    if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true;
-      if (!this.displayArrow) {
-        this.displayArrow = true;
-      }
-    } else {
-      this.isResponsive = false;
-      if (!this.displayArrow && !this.isShown) {
-        this.isShown = true;
-      }
-    }
-    this.isShown =
-      this.isShown !== undefined
-        ? this.isShown
-        : this.innerWidth <= responsiveSizes.tablet
-        ? false
-        : true;
-  }
-
-  updateCss() {
-    this.updateState();
-    this.sidenavStyles = `${this.getDynamicStyle({
-      ...this.defaultInputs.getValue(),
-      mode: this.mode,
-      innerWidth: this.innerWidth,
-      isResponsive: this.isResponsive,
-      isShown: this.isShown,
-    })}`;
   }
 
   getDynamicStyle(inputs) {

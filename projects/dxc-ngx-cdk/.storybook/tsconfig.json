@@ -1,0 +1,18 @@
+
+{
+  "extends": "../tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "exclude": [
+    "../src/**/*.spec.ts",
+    "../projects/**/*.spec.ts"
+  ],
+  "include": [
+    "../src/**/*",
+    "../projects/**/*"
+  ],
+  "files": [
+    "./typings.d.ts"
+  ]
+}

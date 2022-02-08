@@ -65,7 +65,7 @@ export class DxcWizardComponent {
    * This event will emit in case the user clicks a step. The step
    * number will be passed as a parameter.
    */
-  @Output() onStepClick = new EventEmitter<number>();
+  @Output() onStepClick: EventEmitter<number> = new EventEmitter<number>();
 
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;

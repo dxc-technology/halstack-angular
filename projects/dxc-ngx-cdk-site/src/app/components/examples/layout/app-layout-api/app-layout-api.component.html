@@ -61,36 +61,14 @@
   for more information regarding its props. This also applies to the themming.
 </p>
 
-
 <dxc-heading
   [level]="5"
   weight="normal"
-  text="DxcApplicationLayoutFooter"
-  [margin]="{ bottom: 'small' }"
-></dxc-heading>
-<p>
-  This component has to be a child of DxcApplicationLayoutMain. Everything in
-  this component will be displayed as a footer, at the bottom of the screen. If
-  you want to show a
-  <dxc-link
-    text="DxcFooter"
-    href=""
-    underlined="false"
-    (click)="navigateToRoute('footer'); $event.preventDefault()"
-  ></dxc-link
-  >, as a shortcut, you can directly use it without DxcApplicationLayoutFooter.
-  This is optional and if it is not specified, the DxcFooter will be shown by
-  default.
-</p>
-
-<dxc-heading
-  [level]="5"
-  weight="normal"
-  text="Props"
+  text="Additional props"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
 
-<dxc-table>
+<dxc-table [margin]="{bottom: 'medium'}">
   <tr>
     <th>Name</th>
     <th>Default</th>
@@ -118,6 +96,27 @@
 <dxc-heading
   [level]="5"
   weight="normal"
+  text="DxcApplicationLayoutFooter"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
+<p>
+  This component has to be a child of DxcApplicationLayoutMain. Everything in
+  this component will be displayed as a footer, at the bottom of the screen. If
+  you want to show a
+  <dxc-link
+    text="DxcFooter"
+    href=""
+    underlined="false"
+    (click)="navigateToRoute('footer'); $event.preventDefault()"
+  ></dxc-link
+  >, as a shortcut, you can directly use it without DxcApplicationLayoutFooter.
+  This is optional and if it is not specified, the DxcFooter will be shown by
+  default.
+</p>
+
+<dxc-heading
+  [level]="5"
+  weight="normal"
   text="DxcApplicationLayoutMain"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
@@ -125,7 +124,6 @@
   Everything in this component will be displayed as content inside the main
   container at the center.
 </p>
-
 
 <dxc-heading
   [level]="4"
@@ -137,8 +135,5 @@
   To be able to use this component, you should import the module in the page you
   want to use it from your Angular project. You have the following example:
 </p>
-
-
-
 
 <app-code-playground [code]="bindCode" type="TS"></app-code-playground>

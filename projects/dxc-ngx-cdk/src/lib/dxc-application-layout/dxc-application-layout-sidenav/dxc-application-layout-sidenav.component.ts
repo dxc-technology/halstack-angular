@@ -24,8 +24,18 @@ import { SidenavService } from "./services/sidenav.service";
 })
 export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   @HostBinding("class") sidenavStyles;
+  /**
+   * Default action over the content of the page, overlay the content or push to the right.
+   */
   @Input() mode: string = "push";
+  /**
+   * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
+   */
   @Input() padding: any;
+  /**
+   * If false, the arrow button is hidden.
+   */
   @Input()
   get displayArrow(): boolean {
     return this._displayArrow;
@@ -51,7 +61,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   constructor(
     private utils: CssUtils,
     private sidenavService: SidenavService
-  ) { }
+  ) {}
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -113,8 +123,8 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
       this.isShown !== undefined
         ? this.isShown
         : this.innerWidth <= responsiveSizes.tablet
-          ? false
-          : true;
+        ? false
+        : true;
     this.sidenavService.showMenu(this.isShown);
   }
 
@@ -133,7 +143,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
     return css`
       z-index: 400;
       position: ${(inputs.mode === "overlay" && this.displayArrow) ||
-        inputs.isResponsive
+      inputs.isResponsive
         ? "absolute"
         : "relative"};
       height: ${inputs.mode === "overlay" || inputs.isResponsive ? "100%" : ""};
@@ -145,22 +155,22 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
         .sidenavMenu {
           ${this.isShown ? this.utils.getPaddings(inputs.padding) : ""}
           width: ${inputs.isShown
-        ? "calc(300px" +
-        this.utils.getPaddingOrMargin(null, inputs.padding) +
-        ")"
-        : "0px"};
+            ? "calc(300px" +
+              this.utils.getPaddingOrMargin(null, inputs.padding) +
+              ")"
+            : "0px"};
           overflow-y: auto;
           overflow-x: hidden;
           transform: ${inputs.isShown
-        ? "translateX(0)"
-        : !inputs.isShown
-          ? "translateX(-100%) !important"
-          : ""};
+            ? "translateX(0)"
+            : !inputs.isShown
+            ? "translateX(-100%) !important"
+            : ""};
           opacity: ${inputs.isShown ? "1" : "0"};
           visibility: ${inputs.isShown ? "visible" : "hidden"};
           transition: ${this.firstClick
-        ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out, padding 0.4s ease-in-out;"
-        : "width 0.4s ease-in-out"};
+            ? "transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, width 0.4s ease-in-out, padding 0.4s ease-in-out;"
+            : "width 0.4s ease-in-out"};
           &::-webkit-scrollbar {
             width: 2px;
           }
@@ -186,12 +196,12 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           left: ${this.isShown ? "calc(300px - 21px)" : "calc(0px - 21px)"};
           top: calc(50% - 21px);
           transition: ${this.firstClick
-        ? "transform 0.4s ease-in-out, left 0.4s ease-in-out;"
-        : ""};
+            ? "transform 0.4s ease-in-out, left 0.4s ease-in-out;"
+            : ""};
           cursor: pointer;
           z-index: ${inputs.mode === "overlay" || this.isResponsive
-        ? "401"
-        : "auto"};
+            ? "401"
+            : "auto"};
           .sidenavArrowImage {
             height: 18px;
             width: 18px;
@@ -199,11 +209,11 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
             align-items: center;
             margin-left: ${inputs.isShown ? "0px" : "10px"};
             transform: ${inputs.isShown
-        ? "rotate(-180deg)"
-        : "rotate(0deg) !important"};
+              ? "rotate(-180deg)"
+              : "rotate(0deg) !important"};
             transition: ${this.firstClick
-        ? "margin 0.4s ease-in, transform 0.4s ease-in-out; "
-        : ""};
+              ? "margin 0.4s ease-in, transform 0.4s ease-in-out; "
+              : ""};
             fill: var(--sidenav-arrowColor);
           }
         }

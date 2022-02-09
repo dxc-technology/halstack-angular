@@ -6,19 +6,19 @@
       <mat-tab class="cron-editor-tab"  [label]="resource?.selectCronExpression.description" *ngIf="!options.hideAdvancedTab">
         <div class="cron-editor-tab-content" [formGroup]="advancedForm">  
 
-          <dxc-select class="main-dd-filter" (onChange)="isExpression=!isExpression" [customHandler]="false" tabIndexValue="-1" tabindex="0"
+          <dxc-select class="main-dd-filter"  [customHandler]="false" tabIndexValue="-1" tabindex="0"
                       aria-labelledby="lbl_cronexp" id="cronexp" matTooltip="" margin="small" size="fitContent"
-                      formControlName="selectedType" >
+                      formControlName="subTab" >
                       <dxc-select-option *ngFor="let exp of expressionList" value="{{exp.value}}" label="{{exp.name}}">
                       </dxc-select-option>
           </dxc-select>
-          <div *ngIf="isExpression">
+          <div *ngIf="this.advancedForm.get('subTab').value=='expression'">
             <mat-form-field>
               <dxc-label id="lbl_Expression" text="Expression"></dxc-label>
              <input matInput type="text" ariaLabelledBy="lbl_Expression" class="advanced-cron-editor-input" formControlName="expression">
             </mat-form-field>
           </div>
-          <div *ngIf="!isExpression">
+          <div *ngIf="this.advancedForm.get('subTab').value=='cust'">
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field formGroupName="custom">              

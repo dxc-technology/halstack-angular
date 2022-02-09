@@ -55,7 +55,13 @@
     </div>
     <span class="mdi mdi-console grid-status-icon" (click)="invokeParentMethod();"></span>
   </div>
+  
+  <div *ngSwitchCase="'jobFiles'">
+    <div *ngIf="gridAPIRow.dataIntegratorJob?.toLowerCase() == 'true'">
+      <span class="mdi mdi-folder-zip grid-jobfiles-icon" (click)="invokeParentMethod();"></span>
+    </div>
 
+</div>
   <div *ngSwitchCase="'entryNotes'" class="cell-wrap-text">
     <div class="cell-wrap-text" *ngIf="params.colDef.field == 'entryNotes'">
       <div style="float:left;">

@@ -31,9 +31,8 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
   public state: any;
   private localCron = '* 0 0 ? * * *';
   private isDirty: boolean;
+  isExpression:boolean=true;
   expressionList: any = [];
-  selectedType='express';
-  isExpression:boolean = true;
   cronForm: FormControl;
   minutesForm: FormGroup;
   hourlyForm: FormGroup;
@@ -41,7 +40,7 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
   weeklyForm: FormGroup;
   monthlyForm: FormGroup;
   yearlyForm: FormGroup;
-  public advancedForm: FormGroup;
+  advancedForm: FormGroup;
   @Input() public resource: any;
   @Input()
   get cron(): string {
@@ -50,7 +49,10 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
   set cron(value: string) {
     this.localCron = value;    
     this.onChange(this.localCron);
-    this.cronChange.emit(this.localCron);
+    if(this.cronChange)
+    {
+      this.cronChange.emit(this.localCron)
+    }
   }
 
   get isCronFlavorQuartz() {
@@ -110,6 +112,10 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
 
   public async ngOnInit() {
     this.state = this.getDefaultState();
+    this.expressionList = [
+      {'name': 'Expression', 'value': 'expression'},
+      {'name': 'Custom', 'value': 'cust'},
+     ];
     this.handleModelChange(this.cron);
     const [defaultHours, defaultMinutes, defaultSeconds] = this.options.defaultTime.split(':').map(Number);
     this.cronForm = new FormControl('* 0 0 ? * * *');
@@ -118,10 +124,8 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
       minutes: [1],
       seconds: [0]
     });
-    this.expressionList = [
-     {'name': 'Expression', 'value': 'express'},
-     {'name': 'Custom', 'value': 'cust'},
-    ];
+    
+   
 
     this.advancedForm = this.fb.group({
       subTab: ['expression'],
@@ -141,16 +145,14 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
         startSeconds: ['none'],
         seconds: ['0'],
         hourType: ['*']
-      }),
-      selectedType:[[]]
+      })
     });
-    this.advancedForm.get('selectedType').setValue(this.expressionList[0].value);
     this.advancedForm.valueChanges.subscribe(next => this.computeAdvancedExpression(next));
   }
 
   private computeAdvancedExpression(state: any) {
     switch (state.subTab) {
-      case 'express':
+      case 'expression':
         this.cron = state.expression;
         break;
       case 'cust':

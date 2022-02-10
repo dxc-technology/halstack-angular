@@ -118,7 +118,7 @@ export class DxcCardComponent implements OnInit {
   /**
    * Whether the card must be outlined.
    */
-  @Input() outlined: boolean = false;
+  @Input() outlined: boolean = true;
 
   private isHovered: boolean;
 
@@ -136,7 +136,7 @@ export class DxcCardComponent implements OnInit {
     imageCover: false,
     margin: null,
     tabIndexValue: 0,
-    outlined: false,
+    outlined: true,
   });
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -195,7 +195,7 @@ export class DxcCardComponent implements OnInit {
   }
 
   getShadowDepth() {
-    return this.defaultInputs.value.outlined
+    return !this.defaultInputs.value.outlined
       ? "0"
       : this.isHovered &&
         this.onClick.observers.length > 0 &&

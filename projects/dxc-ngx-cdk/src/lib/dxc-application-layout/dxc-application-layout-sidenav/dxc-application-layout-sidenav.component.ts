@@ -44,6 +44,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   @HostBinding("class") sidenavStyles;
   /**
    * Default action over the content of the page, overlay the content or push to the right ('push' | 'overlay').
+   * In lower resolutions the mode will always be overlay.
    */
   @Input() mode: Mode = "push";
   /**
@@ -53,6 +54,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   @Input() padding: Space | Padding;
   /**
    * If false, the arrow button is hidden.
+   * In lower resolutions the arrow will be always displayed.
    */
   @Input()
   get displayArrow(): boolean {

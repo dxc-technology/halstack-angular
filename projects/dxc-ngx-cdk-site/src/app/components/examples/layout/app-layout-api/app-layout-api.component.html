@@ -51,37 +51,30 @@
 <p>
   Everything in this component will be displayed as content inside a sidenav at
   the left. This is optional and if not specified, the sidenav will not be
-  shown. Check
-  <dxc-link
-    text="DxcSidenav"
-    href=""
-    underlined="false"
-    (click)="navigateToRoute('sidenav'); $event.preventDefault()"
-  ></dxc-link>
-  for more information regarding its props. This also applies to the themming.
+  shown. 
 </p>
 
 <dxc-heading
   [level]="5"
   weight="normal"
-  text="Additional props"
+  text="Props"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
 
-<dxc-table [margin]="{bottom: 'medium'}">
+<dxc-table [margin]="{ bottom: 'medium' }">
   <tr>
     <th>Name</th>
     <th>Default</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td>mode: 'overlay' | 'push' </td>
+    <td>mode: 'overlay' | 'push'</td>
     <td>
       <code>'push'</code>
     </td>
     <td>
-      Default action over the content of the page, overlay the content or
-      push to the right.
+      Default action over the content of the page, overlay the content or push
+      to the right. In lower resolutions the mode will always be overlay.
     </td>
   </tr>
   <tr>
@@ -89,7 +82,20 @@
     <td>
       <code>true</code>
     </td>
-    <td>If false, the arrow button is hidden.</td>
+    <td>
+      If false, the arrow button is hidden. In lower resolutions the arrow will
+      be always displayed.
+    </td>
+  </tr>
+  <tr>
+    <td>padding: string | object</td>
+    <td></td>
+    <td>
+      Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall'
+      | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+      object with 'top', 'bottom', 'left' and 'right' properties in order to
+      specify different padding sizes.
+    </td>
   </tr>
 </dxc-table>
 

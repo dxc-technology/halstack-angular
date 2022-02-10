@@ -12,7 +12,6 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
-type Mode = "large" | "small" | "overlay";
 type Space =
   | "xxsmall"
   | "xsmall"
@@ -46,7 +45,7 @@ export class DxcSpinnerComponent implements OnInit {
   /**
    * Available modes of the spinner ('large' | 'small' | 'overlay').
    */
-  @Input() mode: Mode = "large";
+  @Input() mode: "large" | "small" | "overlay" = "large";
   /**
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.

@@ -16,8 +16,6 @@ import { responsiveSizes } from "../../variables";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { SidenavService } from "./services/sidenav.service";
 
-type Mode = "push" | "overlay";
-
 type Space =
   | "xxsmall"
   | "xsmall"
@@ -46,7 +44,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
    * Default action over the content of the page, overlay the content or push to the right ('push' | 'overlay').
    * In lower resolutions the mode will always be overlay.
    */
-  @Input() mode: Mode = "push";
+  @Input() mode: "push" | "overlay" = "push";
   /**
    * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.

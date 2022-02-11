@@ -5,6 +5,7 @@
   .cron-editor-tab-content {
     margin-top: 24px;
     border-radius: 8px;
+    overflow: hidden;
   }
   
   .cron-editor-main .cron-editor-container .cron-editor-radio {
@@ -46,4 +47,7 @@
   
   .checkbox-margin {
     margin: 0 10px;
+  }
+  .cron-editor-tab-content-padding {
+    padding-right: 1.5rem;
   }

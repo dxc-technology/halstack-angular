@@ -28,7 +28,7 @@ export class DxcHeadingComponent {
   /**
    * Defines the heading level from 1 to 5. The styles of the heading are applied according to the level.
    */
-  @Input() level: 1 | 2 | 3 | 4 | 5;
+  @Input() level: 1 | 2 | 3 | 4 | 5 = 1;
   /**
    * Heading text.
    */
@@ -56,9 +56,6 @@ export class DxcHeadingComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.level == null) {
-      this.level = 1;
-    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

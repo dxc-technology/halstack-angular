@@ -44,7 +44,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
    * Default action over the content of the page, overlay the content or push to the right ('push' | 'overlay').
    * In lower resolutions the mode will always be overlay.
    */
-  @Input() mode: "push" | "overlay" = "push";
+  @Input() mode: "push" | "overlay" = "overlay";
   /**
    * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.

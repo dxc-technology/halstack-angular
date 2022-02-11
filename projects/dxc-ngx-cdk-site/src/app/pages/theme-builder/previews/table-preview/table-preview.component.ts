@@ -86,4 +86,8 @@ export class TablePreviewComponent implements OnInit, Stylable {
   ngOnInit(): void {
     this.className = this.getDynamicStyle();
   }
+
+  itemsPerPageFunction(event) {
+    console.log("event:", event);
+  }
 }

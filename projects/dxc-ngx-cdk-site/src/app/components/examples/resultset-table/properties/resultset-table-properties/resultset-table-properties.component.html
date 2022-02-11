@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td>showGoToPage: boolean</td>
-    <td><code>false</code></td>
+    <td><code>true</code></td>
     <td>Show page navigation select.</td>
   </tr>
   <tr>
@@ -49,19 +49,16 @@
     </td>
   </tr>
   <tr>
-    <td>onGoToPage: EventEmitter</td>
-    <td></td>
-    <td>
-      This event will emit the new page when the user interacts with the page
-      navigation buttons or select.
-    </td>
-  </tr>
-  <tr>
     <td>itemsPerPageFunction: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user picks an option for the
+      This event will emit in case of the user picks an option for the
       itemsPerPage select. The value selected will be passed as a parameter.
     </td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex attribute given to the sortable icon.</td>
   </tr>
 </dxc-table>

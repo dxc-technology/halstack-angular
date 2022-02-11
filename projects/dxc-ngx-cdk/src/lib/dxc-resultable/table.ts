@@ -59,7 +59,7 @@ import { DxcColumnDef } from "./directives/dxc-column-def.directive";
 import { PaginationService } from "./services/pagination.service";
 import { SortService } from "./services/sort.service";
 import { Ordering } from "./directives/sorting.directive";
-import { coerceArray } from "@angular/cdk/coercion";
+import { coerceArray, coerceNumberProperty } from "@angular/cdk/coercion";
 import { HostBinding } from "@angular/core";
 
 type Space =
@@ -233,8 +233,19 @@ export class DxcResultTable<T>
    */
   @Input() public showGoToPage: boolean = true;
   /**
-   * This event will emit in case of the user picks an option for the itemsPerPage select.
-   * The value selected will be passed as a parameter.
+   * Value of the tabindex attribute given to the sortable icon.
+   */
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue = 0;
+  /**
+   *  This event will emit in case of the user picks an option for the itemsPerPage
+   *  select. The value selected will be passed as a parameter.
    */
   @Output() itemsPerPageFunction: EventEmitter<number> =
     new EventEmitter<number>();
@@ -454,7 +465,7 @@ export class DxcResultTable<T>
           this._headerOutlet.viewContainer.createComponent(factory);
         viewRef.instance.columnName = key;
         viewRef.instance.isSortable = value.sortable.isSortable; //Save if header is sortable in the created component
-        viewRef.instance.tabIndexValue = value.tabIndexValue;
+        viewRef.instance.tabIndexValue = this.tabIndexValue;
         viewRef.instance.state = this.getMapStateHeaders().get(key); //Get header's current state for sorting and save it in the created component
         viewRef.instance.parentClassName = this.className; // just in case there are more tables in the page
         viewRef.instance.propertyName = value.sortable.propertyName;

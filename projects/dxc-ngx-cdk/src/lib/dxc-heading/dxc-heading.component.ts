@@ -3,16 +3,45 @@ import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-heading",
   templateUrl: "./dxc-heading.component.html",
   providers: [CssUtils],
 })
 export class DxcHeadingComponent {
-  @Input() level: number;
+  /**
+   * Defines the heading level from 1 to 5. The styles of the heading are applied according to the level.
+   */
+  @Input() level: 1 | 2 | 3 | 4 | 5 = 1;
+  /**
+   * Heading text.
+   */
   @Input() text: string;
-  @Input() weight: string;
-  @Input() margin: string;
+  /**
+   * Modifies the default weight of the heading.
+   */
+  @Input() weight: "light" | "normal" | "bold";
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
 
   @HostBinding("class") className;
 
@@ -27,9 +56,6 @@ export class DxcHeadingComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    if (this.level == null) {
-      this.level = 1;
-    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

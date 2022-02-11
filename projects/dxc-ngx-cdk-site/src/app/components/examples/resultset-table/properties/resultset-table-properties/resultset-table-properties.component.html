@@ -11,36 +11,6 @@
     <th>Description</th>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
-    <td></td>
-    <td>
-      Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
-      'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
-      object with 'top', 'bottom', 'left' and 'right' properties in order to
-      specify different padding sizes.
-    </td>
-  </tr>
-  <tr>
-    <td>itemsPerPage: number</td>
-    <td><code>5</code></td>
-    <td>Number of items per page.</td>
-  </tr>
-  <tr>
-    <td>showGoToPage: boolean</td>
-    <td><code>true</code></td>
-    <td>Show page navigation select.</td>
-  </tr>
-  <tr>
-    <td>itemsPerPageOptions: number[]</td>
-    <td>
-      <code>[]</code>
-    </td>
-    <td>
-      An array of objects representing the selectable options of the items per
-      page input.
-    </td>
-  </tr>
-  <tr>
     <td>collectionResource: object[]</td>
     <td><code>[]</code></td>
     <td>
@@ -49,16 +19,43 @@
     </td>
   </tr>
   <tr>
-    <td>itemsPerPageFunction: EventEmitter</td>
-    <td></td>
+    <td>showGoToPage: boolean</td>
+    <td><code>true</code></td>
+    <td>Show page navigation select.</td>
+  </tr>
+  <tr>
+    <td>itemsPerPage: number</td>
+    <td><code>5</code></td>
+    <td>Number of items per page.</td>
+  </tr>
+  <tr>
+    <td>itemsPerPageOptions: number[]</td>
     <td>
-      This event will emit in case of the user picks an option for the
-      itemsPerPage select. The value selected will be passed as a parameter.
+      <code>[]</code>
     </td>
+    <td>An array of numbers representing the items per page options.</td>
   </tr>
   <tr>
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
     <td>Value of the tabindex attribute given to the sortable icon.</td>
+  </tr>
+  <tr>
+    <td>itemsPerPageFunction: EventEmitter</td>
+    <td></td>
+    <td>
+      This event will emit in case of the user selects an item per page option.
+      The value selected will be passed as a parameter.
+    </td>
+  </tr>
+  <tr>
+    <td>margin: any (string | object)</td>
+    <td></td>
+    <td>
+      Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
+      'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+      object with 'top', 'bottom', 'left' and 'right' properties in order to
+      specify different padding sizes.
+    </td>
   </tr>
 </dxc-table>

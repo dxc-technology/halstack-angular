@@ -225,7 +225,7 @@ export class DxcResultTable<T>
    */
   @Input() margin: Space | Size;
   /**
-   * An array of objects representing the selectable options of the items per page input.
+   * An array of numbers representing the items per page options.
    */
   @Input() public itemsPerPageOptions: number[];
   /**
@@ -244,8 +244,8 @@ export class DxcResultTable<T>
   }
   private _tabIndexValue = 0;
   /**
-   *  This event will emit in case of the user picks an option for the itemsPerPage
-   *  select. The value selected will be passed as a parameter.
+   *  This event will emit in case of the user selects an item per page
+   * option. The value selected will be passed as a parameter.
    */
   @Output() itemsPerPageFunction: EventEmitter<number> =
     new EventEmitter<number>();

@@ -81,12 +81,14 @@ export class DxcHeaderComponent implements OnChanges {
   private _tabIndexValue = 0;
 
   /**
-   * Size of the bottom margin to be applied to the footer.
+   * Size of the bottom margin to be applied to the footer
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    */
   @Input() margin: Space;
 
   /**
-   * Size of the padding to be applied to the custom area of the component.
+   * Size of the padding to be applied to the custom area of the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to
    * specify different padding sizes.
    */

@@ -116,8 +116,10 @@ export class DxcCheckboxComponent implements OnInit {
   @Output() onChange: EventEmitter<boolean>;
 
   /**
-   * Size of the margin to be applied to the component. You can pass an object with 'top',
-   * 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   * Size of the margin to be applied to the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties 
+   * in order to specify different margin sizes.
    */
   @Input() margin: Space | Margin;
 

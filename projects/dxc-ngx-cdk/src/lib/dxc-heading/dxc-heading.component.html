@@ -1,7 +1,52 @@
-<div class="container">
-  <h1 *ngIf="level === 1">{{ text }}</h1>
-  <h2 *ngIf="level === 2">{{ text }}</h2>
-  <h3 *ngIf="level === 3">{{ text }}</h3>
-  <h4 *ngIf="level === 4">{{ text }}</h4>
-  <h5 *ngIf="level === 5">{{ text }}</h5>
+<div class="container" [ngSwitch]="asTag">
+  <h1
+    *ngSwitchCase="'h1'"
+    [ngClass]="{
+      level_1: level === 1,
+      level_2: level === 2,
+      level_3: level === 3,
+      level_4: level === 4,
+      level_5: level === 5
+    }"
+  >{{text}}</h1>
+  <h2
+    *ngSwitchCase="'h2'"
+    [ngClass]="{
+      level_1: level === 1,
+      level_2: level === 2,
+      level_3: level === 3,
+      level_4: level === 4,
+      level_5: level === 5
+    }"
+  >{{text}}</h2>
+  <h3
+    *ngSwitchCase="'h3'"
+    [ngClass]="{
+      level_1: level === 1,
+      level_2: level === 2,
+      level_3: level === 3,
+      level_4: level === 4,
+      level_5: level === 5
+    }"
+  >{{text}}</h3>
+  <h4
+    *ngSwitchCase="'h4'"
+    [ngClass]="{
+      level_1: level === 1,
+      level_2: level === 2,
+      level_3: level === 3,
+      level_4: level === 4,
+      level_5: level === 5
+    }"
+  >{{text}}</h4>
+  <h5
+    *ngSwitchCase="'h5'"
+    [ngClass]="{
+      level_1: level === 1,
+      level_2: level === 2,
+      level_3: level === 3,
+      level_4: level === 4,
+      level_5: level === 5
+    }"
+  >{{text}}</h5>
 </div>

@@ -30,6 +30,10 @@ export class DxcHeadingComponent {
    */
   @Input() level: 1 | 2 | 3 | 4 | 5 = 1;
   /**
+   * Specifies the html tag of the heading.
+   */
+  @Input() asTag: "h1" | "h2" | "h3" | "h4" | "h5";
+  /**
    * Heading text.
    */
   @Input() text: string;
@@ -47,6 +51,7 @@ export class DxcHeadingComponent {
 
   defaultInputs = new BehaviorSubject<any>({
     level: 1,
+    asTag: null,
     text: null,
     weight: null,
     margin: null,
@@ -59,9 +64,14 @@ export class DxcHeadingComponent {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.level == null) {
-      this.level = 1;
+    if (this.asTag == null) {
+      if (this.level === 1) this.asTag = "h1";
+      else if (this.level === 2) this.asTag = "h2";
+      else if (this.level === 3) this.asTag = "h3";
+      else if (this.level === 4) this.asTag = "h4";
+      else if (this.level === 5) this.asTag = "h5";
     }
+
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -83,86 +93,102 @@ export class DxcHeadingComponent {
       h5 {
         margin: 0px;
       }
-
-      h1 {
-        font-weight: ${inputs.weight === "light"
-          ? 200
-          : inputs.weight === "normal"
-          ? 400
-          : inputs.weight === "bold"
-          ? 600
-          : "var(--heading-level1FontWeight)"};
-        letter-spacing: var(--heading-level1LetterSpacing);
-        font-size: var(--heading-level1FontSize);
-        line-height: var(--heading-level1LineHeight);
-        color: var(--heading-level1FontColor);
-        font-family: var(--heading-level1FontFamily);
-        font-style: var(--heading-level1FontStyle);
-      }
-
-      h2 {
-        font-weight: ${inputs.weight === "light"
-          ? 200
-          : inputs.weight === "normal"
-          ? 400
-          : inputs.weight === "bold"
-          ? 600
-          : "var(--heading-level2FontWeight)"};
-        letter-spacing: var(--heading-level2LetterSpacing);
-        font-size: var(--heading-level2FontSize);
-        line-height: var(--heading-level2LineHeight);
-        color: var(--heading-level2FontColor);
-        font-family: var(--heading-level2FontFamily);
-        font-style: var(--heading-level2FontStyle);
-      }
-
-      h3 {
-        font-weight: ${inputs.weight === "light"
-          ? 200
-          : inputs.weight === "normal"
-          ? 400
-          : inputs.weight === "bold"
-          ? 600
-          : "var(--heading-level3FontWeight)"};
-        letter-spacing: var(--heading-level3LetterSpacing);
-        font-size: var(--heading-level3FontSize);
-        line-height: var(--heading-level3LineHeight);
-        color: var(--heading-level3FontColor);
-        font-family: var(--heading-level3FontFamily);
-        font-style: var(--heading-level3FontStyle);
-      }
-
-      h4 {
-        font-weight: ${inputs.weight === "light"
-          ? 200
-          : inputs.weight === "normal"
-          ? 400
-          : inputs.weight === "bold"
-          ? 600
-          : "var(--heading-level4FontWeight)"};
-        letter-spacing: var(--heading-level4LetterSpacing);
-        font-size: var(--heading-level4FontSize);
-        line-height: var(--heading-level4LineHeight);
-        color: var(--heading-level4FontColor);
-        font-family: var(--heading-level4FontFamily);
-        font-style: var(--heading-level4FontStyle);
-      }
-
-      h5 {
-        font-weight: ${inputs.weight === "light"
-          ? 200
-          : inputs.weight === "normal"
-          ? 400
-          : inputs.weight === "bold"
-          ? 600
-          : "var(--heading-level5FontWeight)"};
-        letter-spacing: var(--heading-level5LetterSpacing);
-        font-size: var(--heading-level5FontSize);
-        line-height: var(--heading-level5LineHeight);
-        color: var(--heading-level5FontColor);
-        font-family: var(--heading-level5FontFamily);
-        font-style: var(--heading-level5FontStyle);
-      }
+      ${this.setClassByLevel(inputs.level, inputs.weight)}
     `;
+  }
+
+  setClassByLevel(level, weight) {
+    switch (level) {
+      case 1:
+        return css`
+          .level_1 {
+            font-weight: ${weight === "light"
+              ? 200
+              : weight === "normal"
+              ? 400
+              : weight === "bold"
+              ? 600
+              : "var(--heading-level1FontWeight)"};
+            letter-spacing: var(--heading-level1LetterSpacing);
+            font-size: var(--heading-level1FontSize);
+            line-height: var(--heading-level1LineHeight);
+            color: var(--heading-level1FontColor);
+            font-family: var(--heading-level1FontFamily);
+            font-style: var(--heading-level1FontStyle);
+          }
+        `;
+      case 2:
+        return css`
+          .level_2 {
+            font-weight: ${weight === "light"
+              ? 200
+              : weight === "normal"
+              ? 400
+              : weight === "bold"
+              ? 600
+              : "var(--heading-level2FontWeight)"};
+            letter-spacing: var(--heading-level2LetterSpacing);
+            font-size: var(--heading-level2FontSize);
+            line-height: var(--heading-level2LineHeight);
+            color: var(--heading-level2FontColor);
+            font-family: var(--heading-level2FontFamily);
+            font-style: var(--heading-level2FontStyle);
+          }
+        `;
+      case 3:
+        return css`
+          .level_3 {
+            font-weight: ${weight === "light"
+              ? 200
+              : weight === "normal"
+              ? 400
+              : weight === "bold"
+              ? 600
+              : "var(--heading-level3FontWeight)"};
+            letter-spacing: var(--heading-level3LetterSpacing);
+            font-size: var(--heading-level3FontSize);
+            line-height: var(--heading-level3LineHeight);
+            color: var(--heading-level3FontColor);
+            font-family: var(--heading-level3FontFamily);
+            font-style: var(--heading-level3FontStyle);
+          }
+        `;
+      case 4:
+        return css`
+          .level_4 {
+            font-weight: ${weight === "light"
+              ? 200
+              : weight === "normal"
+              ? 400
+              : weight === "bold"
+              ? 600
+              : "var(--heading-level4FontWeight)"};
+            letter-spacing: var(--heading-level4LetterSpacing);
+            font-size: var(--heading-level4FontSize);
+            line-height: var(--heading-level4LineHeight);
+            color: var(--heading-level4FontColor);
+            font-family: var(--heading-level4FontFamily);
+            font-style: var(--heading-level4FontStyle);
+          }
+        `;
+      case 5:
+        return css`
+          .level_5 {
+            font-weight: ${weight === "light"
+              ? 200
+              : weight === "normal"
+              ? 400
+              : weight === "bold"
+              ? 600
+              : "var(--heading-level5FontWeight)"};
+            letter-spacing: var(--heading-level5LetterSpacing);
+            font-size: var(--heading-level5FontSize);
+            line-height: var(--heading-level5LineHeight);
+            color: var(--heading-level5FontColor);
+            font-family: var(--heading-level5FontFamily);
+            font-style: var(--heading-level5FontStyle);
+          }
+        `;
+    }
   }
 }

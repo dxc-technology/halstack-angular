@@ -92,8 +92,8 @@ export class DxcHeadingComponent {
       h4,
       h5 {
         margin: 0px;
+        ${this.setClassByLevel(inputs.level, inputs.weight)}
       }
-      ${this.setClassByLevel(inputs.level, inputs.weight)}
     `;
   }
 
@@ -101,93 +101,83 @@ export class DxcHeadingComponent {
     switch (level) {
       case 1:
         return css`
-          .level_1 {
-            font-weight: ${weight === "light"
-              ? 200
-              : weight === "normal"
-              ? 400
-              : weight === "bold"
-              ? 600
-              : "var(--heading-level1FontWeight)"};
-            letter-spacing: var(--heading-level1LetterSpacing);
-            font-size: var(--heading-level1FontSize);
-            line-height: var(--heading-level1LineHeight);
-            color: var(--heading-level1FontColor);
-            font-family: var(--heading-level1FontFamily);
-            font-style: var(--heading-level1FontStyle);
-          }
+          font-weight: ${weight === "light"
+            ? 200
+            : weight === "normal"
+            ? 400
+            : weight === "bold"
+            ? 600
+            : "var(--heading-level1FontWeight)"};
+          letter-spacing: var(--heading-level1LetterSpacing);
+          font-size: var(--heading-level1FontSize);
+          line-height: var(--heading-level1LineHeight);
+          color: var(--heading-level1FontColor);
+          font-family: var(--heading-level1FontFamily);
+          font-style: var(--heading-level1FontStyle);
         `;
       case 2:
         return css`
-          .level_2 {
-            font-weight: ${weight === "light"
-              ? 200
-              : weight === "normal"
-              ? 400
-              : weight === "bold"
-              ? 600
-              : "var(--heading-level2FontWeight)"};
-            letter-spacing: var(--heading-level2LetterSpacing);
-            font-size: var(--heading-level2FontSize);
-            line-height: var(--heading-level2LineHeight);
-            color: var(--heading-level2FontColor);
-            font-family: var(--heading-level2FontFamily);
-            font-style: var(--heading-level2FontStyle);
-          }
+          font-weight: ${weight === "light"
+            ? 200
+            : weight === "normal"
+            ? 400
+            : weight === "bold"
+            ? 600
+            : "var(--heading-level2FontWeight)"};
+          letter-spacing: var(--heading-level2LetterSpacing);
+          font-size: var(--heading-level2FontSize);
+          line-height: var(--heading-level2LineHeight);
+          color: var(--heading-level2FontColor);
+          font-family: var(--heading-level2FontFamily);
+          font-style: var(--heading-level2FontStyle);
         `;
       case 3:
         return css`
-          .level_3 {
-            font-weight: ${weight === "light"
-              ? 200
-              : weight === "normal"
-              ? 400
-              : weight === "bold"
-              ? 600
-              : "var(--heading-level3FontWeight)"};
-            letter-spacing: var(--heading-level3LetterSpacing);
-            font-size: var(--heading-level3FontSize);
-            line-height: var(--heading-level3LineHeight);
-            color: var(--heading-level3FontColor);
-            font-family: var(--heading-level3FontFamily);
-            font-style: var(--heading-level3FontStyle);
-          }
+          font-weight: ${weight === "light"
+            ? 200
+            : weight === "normal"
+            ? 400
+            : weight === "bold"
+            ? 600
+            : "var(--heading-level3FontWeight)"};
+          letter-spacing: var(--heading-level3LetterSpacing);
+          font-size: var(--heading-level3FontSize);
+          line-height: var(--heading-level3LineHeight);
+          color: var(--heading-level3FontColor);
+          font-family: var(--heading-level3FontFamily);
+          font-style: var(--heading-level3FontStyle);
         `;
       case 4:
         return css`
-          .level_4 {
-            font-weight: ${weight === "light"
-              ? 200
-              : weight === "normal"
-              ? 400
-              : weight === "bold"
-              ? 600
-              : "var(--heading-level4FontWeight)"};
-            letter-spacing: var(--heading-level4LetterSpacing);
-            font-size: var(--heading-level4FontSize);
-            line-height: var(--heading-level4LineHeight);
-            color: var(--heading-level4FontColor);
-            font-family: var(--heading-level4FontFamily);
-            font-style: var(--heading-level4FontStyle);
-          }
+          font-weight: ${weight === "light"
+            ? 200
+            : weight === "normal"
+            ? 400
+            : weight === "bold"
+            ? 600
+            : "var(--heading-level4FontWeight)"};
+          letter-spacing: var(--heading-level4LetterSpacing);
+          font-size: var(--heading-level4FontSize);
+          line-height: var(--heading-level4LineHeight);
+          color: var(--heading-level4FontColor);
+          font-family: var(--heading-level4FontFamily);
+          font-style: var(--heading-level4FontStyle);
         `;
       case 5:
         return css`
-          .level_5 {
-            font-weight: ${weight === "light"
-              ? 200
-              : weight === "normal"
-              ? 400
-              : weight === "bold"
-              ? 600
-              : "var(--heading-level5FontWeight)"};
-            letter-spacing: var(--heading-level5LetterSpacing);
-            font-size: var(--heading-level5FontSize);
-            line-height: var(--heading-level5LineHeight);
-            color: var(--heading-level5FontColor);
-            font-family: var(--heading-level5FontFamily);
-            font-style: var(--heading-level5FontStyle);
-          }
+          font-weight: ${weight === "light"
+            ? 200
+            : weight === "normal"
+            ? 400
+            : weight === "bold"
+            ? 600
+            : "var(--heading-level5FontWeight)"};
+          letter-spacing: var(--heading-level5LetterSpacing);
+          font-size: var(--heading-level5FontSize);
+          line-height: var(--heading-level5LineHeight);
+          color: var(--heading-level5FontColor);
+          font-family: var(--heading-level5FontFamily);
+          font-style: var(--heading-level5FontStyle);
         `;
     }
   }

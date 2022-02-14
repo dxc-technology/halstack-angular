@@ -1,46 +1,47 @@
 {
-    "data": [
-        {
-            "title": "Controlled Textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-controlled-textarea/v3-controlled-textarea.component.html&initialpath=v3ControlledTextarea",
-                "title": "controlled-text-area"
-            }
-        },
-        {
-            "title": "Disabled Textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-disabled-textarea/v3-disabled-textarea.component.html&initialpath=v3DisabledTextarea",
-                "title": "disabled-text-area"
-            }
-        },
-        {
-            "title": "Invalid Textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-invalid-textarea/v3-invalid-textarea.component.html&initialpath=v3InvalidTextarea",
-                "title": "invalid-text-area"
-            }
-        },
-        {
-            "title": "Required Textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-required-textarea/v3-required-textarea.component.html&initialpath=v3RequiredTextarea",
-                "title": "required-text-area"
-            }
-        },
-        {
-            "title": "Uncontrolled Textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-uncontrolled-textarea/v3-uncontrolled-textarea.component.html&initialpath=v3UncontrolledTextarea",
-                "title": "uncontrolled-text-area"
-            }
-        },
-        {
-            "title": "Fill Parent Textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-fill-parent-textarea/v3-fill-parent-textarea.component.html&initialpath=v3FillParentTextarea",
-                "title": "fill-parent-text-area"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Controlled Textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-controlled-textarea/v3-controlled-textarea.component.html&initialpath=v3ControlledTextarea",
+        "title": "controlled-text-area"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Disabled Textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-disabled-textarea/v3-disabled-textarea.component.html&initialpath=v3DisabledTextarea",
+        "title": "disabled-text-area"
+      }
+    },
+    {
+      "title": "Invalid Textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-invalid-textarea/v3-invalid-textarea.component.html&initialpath=v3InvalidTextarea",
+        "title": "invalid-text-area"
+      }
+    },
+    {
+      "title": "Required Textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-required-textarea/v3-required-textarea.component.html&initialpath=v3RequiredTextarea",
+        "title": "required-text-area"
+      }
+    },
+    {
+      "title": "Uncontrolled Textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-uncontrolled-textarea/v3-uncontrolled-textarea.component.html&initialpath=v3UncontrolledTextarea",
+        "title": "uncontrolled-text-area"
+      }
+    },
+    {
+      "title": "Fill Parent Textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/v3-textarea/v3-fill-parent-textarea/v3-fill-parent-textarea.component.html&initialpath=v3FillParentTextarea",
+        "title": "fill-parent-text-area"
+      }
+    }
+  ]
 }

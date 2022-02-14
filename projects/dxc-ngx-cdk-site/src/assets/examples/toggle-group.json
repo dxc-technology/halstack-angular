@@ -1,32 +1,33 @@
 {
-    "data": [
-        {
-            "title": "Basic Toggle Group",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/basic-toggle-group/basic-toggle-group.component.html&initialpath=basicToogleGroup",
-                "title": "basic-toggle-group"
-            }
-        },
-        {
-            "title": "Controlled Toggle Group",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/controlled-toggle-group/controlled-toggle-group.component.html&initialpath=controlledToggleGroup",
-                "title": "controlled-toggle-group"
-            }
-        },
-        {
-            "title": "Disabled Toggle Group",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/disabled-toggle-group/disabled-toggle-group.component.html&initialpath=disabledToggleGroup",
-                "title": "disabled-toggle-group"
-            }
-        },
-        {
-            "title": "Multiple Toggle Group",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/multiple-toggle-group/multiple-toggle-group.component.html&initialpath=multipleToggleGroup",
-                "title": "multiple-toggle-group"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Basic Toggle Group",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/basic-toggle-group/basic-toggle-group.component.html&initialpath=basicToogleGroup",
+        "title": "basic-toggle-group"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Controlled Toggle Group",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/controlled-toggle-group/controlled-toggle-group.component.html&initialpath=controlledToggleGroup",
+        "title": "controlled-toggle-group"
+      }
+    },
+    {
+      "title": "Disabled Toggle Group",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/disabled-toggle-group/disabled-toggle-group.component.html&initialpath=disabledToggleGroup",
+        "title": "disabled-toggle-group"
+      }
+    },
+    {
+      "title": "Multiple Toggle Group",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/toggle-group/multiple-toggle-group/multiple-toggle-group.component.html&initialpath=multipleToggleGroup",
+        "title": "multiple-toggle-group"
+      }
+    }
+  ]
 }

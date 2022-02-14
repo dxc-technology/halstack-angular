@@ -1,11 +1,12 @@
 {
-    "data": [
-        {
-            "title": "Basic Box",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/box/basic-box/basic-box.component.html&initialpath=basicBox",
-                "title": "BasicBox"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Basic Box",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/box/basic-box/basic-box.component.html&initialpath=basicBox",
+        "title": "BasicBox"
+      },
+      "visibility": true
+    }
+  ]
 }

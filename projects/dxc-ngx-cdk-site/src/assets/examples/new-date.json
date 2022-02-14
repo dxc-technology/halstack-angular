@@ -1,67 +1,68 @@
 {
-    "data": [
-        {
-            "title": "Controlled date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/controlled-date-input/controlled-date-input.component.html&initialpath=controlledDateInput",
-                "title": "controlled-date"
-            }
-        },
-        {
-            "title": "Uncontrolled date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/uncontrolled-date-input/uncontrolled-date-input.component.html&initialpath=uncontrolledDateInput",
-                "title": "uncontrolled-date"
-            }
-        },
-        {
-            "title": "Date with helper text",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/date-with-helper/date-with-helper.component.html&initialpath=dateInputWithHelperText",
-                "title": "date-helper-text"
-            }
-        },
-        {
-            "title": "Formatted date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/formatted-date-input/formatted-date-input.component.html&initialpath=formattedDateInput",
-                "title": "date-formatted"
-            }
-        },
-        {
-            "title": "Optional date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/optional-date-input/optional-date-input.component.html&initialpath=optionalDateInput",
-                "title": "optional-date"
-            }
-        },
-        {
-            "title": "Disabled date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/disabled-date-input/disabled-date-input.component.html&initialpath=disabledDateInput",
-                "title": "disabled-date"
-            }
-        },
-        {
-            "title": "Invalid date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/invalid-date-input/invalid-date-input.component.html&initialpath=invalidDateInput",
-                "title": "invalid-date"
-            }
-        },
-        {
-            "title": "Input with custom error messages",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/custom-error-date-input/custom-error-date-input.component.html&initialpath=customErrorDateInput",
-                "title": "custom-error-date"
-            }
-        },
-        {
-            "title": "Fill parent size date",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/fill-parent-sized-date-input/fill-parent-sized-date-input.component.html&initialpath=fillParentSizedDateInput",
-                "title": "size-date"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Controlled date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/controlled-date-input/controlled-date-input.component.html&initialpath=controlledDateInput",
+        "title": "controlled-date"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Uncontrolled date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/uncontrolled-date-input/uncontrolled-date-input.component.html&initialpath=uncontrolledDateInput",
+        "title": "uncontrolled-date"
+      }
+    },
+    {
+      "title": "Date with helper text",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/date-with-helper/date-with-helper.component.html&initialpath=dateInputWithHelperText",
+        "title": "date-helper-text"
+      }
+    },
+    {
+      "title": "Formatted date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/formatted-date-input/formatted-date-input.component.html&initialpath=formattedDateInput",
+        "title": "date-formatted"
+      }
+    },
+    {
+      "title": "Optional date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/optional-date-input/optional-date-input.component.html&initialpath=optionalDateInput",
+        "title": "optional-date"
+      }
+    },
+    {
+      "title": "Disabled date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/disabled-date-input/disabled-date-input.component.html&initialpath=disabledDateInput",
+        "title": "disabled-date"
+      }
+    },
+    {
+      "title": "Invalid date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/invalid-date-input/invalid-date-input.component.html&initialpath=invalidDateInput",
+        "title": "invalid-date"
+      }
+    },
+    {
+      "title": "Input with custom error messages",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/custom-error-date-input/custom-error-date-input.component.html&initialpath=customErrorDateInput",
+        "title": "custom-error-date"
+      }
+    },
+    {
+      "title": "Fill parent size date",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date-input/fill-parent-sized-date-input/fill-parent-sized-date-input.component.html&initialpath=fillParentSizedDateInput",
+        "title": "size-date"
+      }
+    }
+  ]
 }

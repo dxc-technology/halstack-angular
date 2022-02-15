@@ -38,7 +38,6 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
       this.cronChange.emit(this.localCron)
     }
   }
-  //@Input() onRefreshCron = new EventEmitter<string>();
   // the name is an Angular convention, @Input variable name + "Change" suffix
   @Output() cronChange = new EventEmitter<string>();
 
@@ -188,7 +187,6 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
         }
         if (shouldUpdate)
           this.advancedForm.patchValue({ 'days': state.custom.days, 'month': state.custom.month });
-        // this.cron = `${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${state.custom.minutes} ${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.monthDayDefaultChar} ${state.custom.month} ${state.custom.day}${state.custom.monthWeek} ${state.custom.year}`.trim();
         this.cron = `${this.getStartFrom( state.custom.startSeconds)}${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${this.getStartFrom( state.custom.startMinutes)}${state.custom.minutes} ${this.getStartFrom( state.custom.startHours)}${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.getStartFrom( state.custom.startDays)}${state.custom.days.join(',')} ${this.getStartFrom( state.custom.startMonth)}${state.custom.month.join(',')} ${this.getStartFrom( state.custom.startYear)}${this.weekDayDefaultChar} ${state.custom.year}`.trim();
         break;
       default:
@@ -488,11 +486,6 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
       hourTypes: ['AM', 'PM']
     };
   }
-
-  // public onRefreshCron()
-  // {
-  //   this.cron=this.localCron;
-  // }
 
 
   private getRange(start: number, end: number): number[] {

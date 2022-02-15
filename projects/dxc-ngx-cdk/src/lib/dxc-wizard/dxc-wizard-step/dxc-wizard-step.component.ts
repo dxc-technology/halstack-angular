@@ -21,8 +21,17 @@ import { WizardService } from "../services/wizard.service";
   templateUrl: "./dxc-wizard-step.component.html",
 })
 export class DxcWizardStepComponent {
+  /**
+   * Step label.
+   */
   @Input() label: string;
+  /**
+   * Description that will be placed next to the step.
+   */
   @Input() description: string;
+  /**
+   * Whether the step is disabled or not.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -31,6 +40,9 @@ export class DxcWizardStepComponent {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
+  /**
+   * Whether the step is valid or not.
+   */
   @Input()
   get valid(): boolean {
     return this._valid;
@@ -228,7 +240,8 @@ export class DxcWizardStepComponent {
         .number {
           color: var(--wizard-disabledFontColor);
         }
-        .infoContainer .label, .infoContainer .description {
+        .infoContainer .label,
+        .infoContainer .description {
           color: var(--wizard-disabledFontColor);
         }
       }

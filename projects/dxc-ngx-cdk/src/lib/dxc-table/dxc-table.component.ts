@@ -62,9 +62,10 @@ export class DxcTableComponent {
       div#divTable {
         ${this.utils.getMargins(inputs.margin)}
         ${this.calculateWidth(inputs.margin)};
-        overflow-y: auto;
+        overflow: auto;
         &::-webkit-scrollbar {
           width: 8px;
+          height: 8px;
         }
         &::-webkit-scrollbar-thumb {
           background-color: var(--table-scrollBarThumbColor);

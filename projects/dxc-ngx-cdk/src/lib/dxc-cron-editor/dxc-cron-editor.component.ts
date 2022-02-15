@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter, forwardRef } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { Days, MonthWeeks, Months } from './enums';
 import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -18,11 +18,26 @@ export const CRON_VALUE_ACCESSOR: any = {
   styleUrls: ['./dxc-cron-editor.component.scss'],
   providers: [CRON_VALUE_ACCESSOR]
 })
-export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
+export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() public backgroundColor: ThemePalette;
   @Input() public color: ThemePalette;
   @Input() public disabled: boolean;
   @Input() public options: CronOptions;
+  @Input() public cronType:'expression' | 'cust' = 'expression';
+  @Output() public cronTypeChange = new EventEmitter<string>();
+  @Input() public resource: any;
+  @Input()
+  get cron(): string {
+    return this.localCron;
+  }
+  set cron(value: string) {
+    this.localCron = value;    
+    this.onChange(this.localCron);
+    if(this.cronChange)
+    {
+      this.cronChange.emit(this.localCron)
+    }
+  }
   // the name is an Angular convention, @Input variable name + "Change" suffix
   @Output() cronChange = new EventEmitter<string>();
 
@@ -41,19 +56,7 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
   monthlyForm: FormGroup;
   yearlyForm: FormGroup;
   advancedForm: FormGroup;
-  @Input() public resource: any;
-  @Input()
-  get cron(): string {
-    return this.localCron;
-  }
-  set cron(value: string) {
-    this.localCron = value;    
-    this.onChange(this.localCron);
-    if(this.cronChange)
-    {
-      this.cronChange.emit(this.localCron)
-    }
-  }
+  
 
   get isCronFlavorQuartz() {
     return this.options.cronFlavor === 'quartz';
@@ -77,6 +80,15 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
 
   constructor(private fb: FormBuilder, private config : ConfigurationsetupService) { 
    // this.resources = config.configservice.Resources;
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes?.cronType?.currentValue !=changes?.cronType?.previousValue)
+    {
+      if(this.advancedForm && this.advancedForm.get('subTab'))
+      {
+        this.advancedForm.get('subTab').setValue(changes?.cronType?.currentValue ? changes?.cronType?.currentValue : 'expression'); 
+      }
+    }
   }
 
   /* Update the cron output to that of the selected tab.
@@ -124,9 +136,6 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
       minutes: [1],
       seconds: [0]
     });
-    
-   
-
     this.advancedForm = this.fb.group({
       subTab: ['expression'],
       expression: [this.cron != null && this.cron !='' ? this.cron : this.isCronFlavorQuartz ? '0 15 10 L-2 * ? *' : '15 10 2 * *'],
@@ -147,10 +156,13 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
         hourType: ['*']
       })
     });
+    this.cron = this.advancedForm.value.expression;
     this.advancedForm.valueChanges.subscribe(next => this.computeAdvancedExpression(next));
   }
 
   private computeAdvancedExpression(state: any) {
+    this.cronType = state.subTab;
+    this.cronTypeChange.emit(state.subTab);
     switch (state.subTab) {
       case 'expression':
         this.cron = state.expression;
@@ -175,7 +187,6 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
         }
         if (shouldUpdate)
           this.advancedForm.patchValue({ 'days': state.custom.days, 'month': state.custom.month });
-        // this.cron = `${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${state.custom.minutes} ${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.monthDayDefaultChar} ${state.custom.month} ${state.custom.day}${state.custom.monthWeek} ${state.custom.year}`.trim();
         this.cron = `${this.getStartFrom( state.custom.startSeconds)}${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${this.getStartFrom( state.custom.startMinutes)}${state.custom.minutes} ${this.getStartFrom( state.custom.startHours)}${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.getStartFrom( state.custom.startDays)}${state.custom.days.join(',')} ${this.getStartFrom( state.custom.startMonth)}${state.custom.month.join(',')} ${this.getStartFrom( state.custom.startYear)}${this.weekDayDefaultChar} ${state.custom.year}`.trim();
         break;
       default:
@@ -475,7 +486,6 @@ export class DxcCronEditorComponent implements OnInit, ControlValueAccessor {
       hourTypes: ['AM', 'PM']
     };
   }
-
 
 
   private getRange(start: number, end: number): number[] {

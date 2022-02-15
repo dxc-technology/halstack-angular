@@ -1,9 +1,6 @@
 <section class="cron-editor-main">
-    <mat-tab-group class="cron-editor-container" (selectedIndexChange)="onTabFocus($event)"
-      [backgroundColor]="backgroundColor" [color]="color">
-
       <!-- Advanced-->
-      <mat-tab class="cron-editor-tab"  [label]="resource?.selectCronExpression.description" *ngIf="!options.hideAdvancedTab">
+        <dxc-label id="lbl_startDays" [text]="resource?.selectCronExpression.description"></dxc-label>
         <div class="cron-editor-tab-content" [formGroup]="advancedForm">  
 
           <dxc-select class="main-dd-filter"  [customHandler]="false" tabIndexValue="-1" tabindex="0"
@@ -116,7 +113,5 @@
           </div>
   
         </div>
-      </mat-tab>
-    </mat-tab-group>
   </section>
   

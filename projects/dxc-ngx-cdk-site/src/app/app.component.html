@@ -124,7 +124,7 @@
     *ngIf="($sideNav | async)?.hasSideNav"
     [displayArrow]="isArrowVisible(($sideNav | async)?.page)"
     padding="medium"
-
+    mode="push"
   >
     <div class="sidenavContent" style="text-align: left; height: 100%">
       <components-sidenav-menu *ngIf="($sideNav | async)?.page === 'components'"></components-sidenav-menu>

@@ -121,7 +121,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(screen.getByDisplayValue("test input value")).toBeTruthy();
     fireEvent.click(input.getByLabelText("Clear"));
     input.detectChanges();
-    expect(onChange).toHaveBeenCalledWith({value: "", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "", error: null });
   });
 
   test("should allow interaction with action button", async () => {
@@ -204,7 +204,7 @@ describe("DxcNewTextInputComponent", () => {
     expect(screen.getByDisplayValue("test input value")).toBeTruthy();
     fireEvent.click(input.getByRole("textbox"));
     input.detectChanges();
-    expect(onChange).not.toHaveBeenCalledWith({value: "", error: null});
+    expect(onChange).not.toHaveBeenCalledWith({ value: "", error: null });
   });
 
   test("controlled dxc-input-text input change and blur", async () => {
@@ -231,7 +231,7 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: null });
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial" });
     await waitFor(() => {
@@ -262,7 +262,7 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue(""));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: null });
     fireEvent.blur(input);
     expect(onBlur).toHaveBeenCalledWith({ error: null, value: "new value" });
     await waitFor(() => {
@@ -284,7 +284,7 @@ describe("DxcNewTextInputComponent", () => {
         onBlur: {
           emit: onBlur,
         } as any,
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
@@ -296,12 +296,15 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial string"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: null });
     await waitFor(() => {
       fireEvent.blur(input);
-      expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial string" });
+      expect(onBlur).toHaveBeenCalledWith({
+        error: null,
+        value: "initial string",
+      });
       fireEvent.click(screen.getByLabelText("Clear"));
-      expect(onChange).toHaveBeenCalledWith({value: "", error: null});
+      expect(onChange).toHaveBeenCalledWith({ value: "", error: null });
       screen.getByDisplayValue("initial string");
     });
   });
@@ -321,7 +324,7 @@ describe("DxcNewTextInputComponent", () => {
         onBlur: {
           emit: onBlur,
         } as any,
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
@@ -333,7 +336,10 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({value: "new value", error: "Please use a valid pattern"});
+    expect(onChange).toHaveBeenCalledWith({
+      value: "new value",
+      error: "Please use a valid pattern",
+    });
     fireEvent.blur(input);
     await waitFor(() => {
       expect(screen.getByDisplayValue("initial"));
@@ -344,7 +350,7 @@ describe("DxcNewTextInputComponent", () => {
     });
     fireEvent.click(screen.getByLabelText("Clear"));
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith({value: "", error: null});
+      expect(onChange).toHaveBeenCalledWith({ value: "", error: null });
       expect(screen.getByDisplayValue("initial"));
     });
   });
@@ -352,20 +358,20 @@ describe("DxcNewTextInputComponent", () => {
   test("controlled dxc-input-text onError length", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    const lengthLimit = { min: 2, max: 5 };
     await render(DxcTextInputComponent, {
       componentProperties: {
         label: "Input label",
         value: "initial",
         clearable: true,
-        length: lengthLimit,
+        minLength: 2,
+        maxLength: 5,
         onChange: {
           emit: onChange,
         } as any,
         onBlur: {
           emit: onBlur,
         } as any,
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
       providers: [DxcTextInputService],
@@ -377,7 +383,10 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({value: "new value", error: "Min length 2, Max length 5"});
+    expect(onChange).toHaveBeenCalledWith({
+      value: "new value",
+      error: "Min length 2, Max length 5",
+    });
     fireEvent.blur(input);
     await waitFor(() => {
       expect(screen.getByDisplayValue("initial"));
@@ -388,7 +397,7 @@ describe("DxcNewTextInputComponent", () => {
     });
     fireEvent.click(screen.getByLabelText("Clear"));
     await waitFor(() => {
-      expect(onChange).toHaveBeenCalledWith({value: "", error: null});
+      expect(onChange).toHaveBeenCalledWith({ value: "", error: null });
       expect(screen.getByDisplayValue("initial"));
     });
   });
@@ -418,15 +427,19 @@ describe("DxcNewTextInputComponent", () => {
     fireEvent.click(input);
     expect(screen.getByDisplayValue("initial string"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({value: "new value", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: null });
     await waitFor(() => {
       fireEvent.blur(input);
-      expect(onBlur).toHaveBeenCalledWith({ error: null, value: "initial string" });
+      expect(onBlur).toHaveBeenCalledWith({
+        error: null,
+        value: "initial string",
+      });
       fireEvent.click(screen.getByLabelText("Clear"));
-      expect(onChange).toHaveBeenCalledWith({value: "", error: "This field is required. Please, enter a value."});
+      expect(onChange).toHaveBeenCalledWith({
+        value: "",
+        error: "This field is required. Please, enter a value.",
+      });
       screen.getByDisplayValue("initial string");
     });
   });
 });
-
-

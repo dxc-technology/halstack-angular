@@ -55,7 +55,10 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
   margin: Object | string;
 
   @Input()
-  length = { min: undefined, max: undefined };
+  minLength: number;
+
+  @Input()
+  maxLength: number;
 
   @Input()
   tabIndex: number;
@@ -140,16 +143,15 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
     )}`;
   }
 
-  
-  handleOnChange({value, error}) {
+  handleOnChange({ value, error }) {
     this.cdRef.detectChanges();
-    this.onChange.emit({value, error});
+    this.onChange.emit({ value, error });
     this.controlled
       ? (this.dxcInputRef.inputRef.nativeElement.value = this.value)
       : (this.value = value);
   }
 
-  handleOnBlur({value, error}) {
+  handleOnBlur({ value, error }) {
     this.onBlur.emit({ value: value, error: error });
     if (!this.controlled) {
       this.value = value;
@@ -166,5 +168,4 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
       ? "Show"
       : "Hide";
   }
-
 }

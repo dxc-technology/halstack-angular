@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { fireEvent, render } from '@testing-library/angular';
-import { screen, waitFor } from '@testing-library/dom';
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { fireEvent, render } from "@testing-library/angular";
+import { screen, waitFor } from "@testing-library/dom";
 
-import { DxcTextareaComponent } from './dxc-textarea.component';
+import { DxcTextareaComponent } from "./dxc-textarea.component";
 
-describe('DxcTextareaComponent', () => {
+describe("DxcTextareaComponent", () => {
   test("should render dxc-text-input", async () => {
     const input = await render(DxcTextareaComponent, {
       componentProperties: {
@@ -31,7 +31,7 @@ describe('DxcTextareaComponent', () => {
     const input = await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
-        helperText: "Example helper text"
+        helperText: "Example helper text",
       },
       imports: [CommonModule, FormsModule],
     });
@@ -43,7 +43,7 @@ describe('DxcTextareaComponent', () => {
       componentProperties: {
         label: "Example label",
         helperText: "Example helper text",
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
@@ -54,7 +54,7 @@ describe('DxcTextareaComponent', () => {
   test("Renders with correct placeholder", async () => {
     await render(DxcTextareaComponent, {
       componentProperties: {
-        placeholder: "Placeholder"
+        placeholder: "Placeholder",
       },
       imports: [CommonModule, FormsModule],
     });
@@ -64,7 +64,7 @@ describe('DxcTextareaComponent', () => {
   test("Renders with error message", async () => {
     await render(DxcTextareaComponent, {
       componentProperties: {
-        error: "Error message"
+        error: "Error message",
       },
       imports: [CommonModule, FormsModule],
     });
@@ -96,19 +96,27 @@ describe('DxcTextareaComponent', () => {
         } as any,
         margin: "medium",
         pattern: '^.*(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%&? "]).*$',
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
 
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: "Please use a valid pattern" });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "new value",
+      error: "Please use a valid pattern",
+    });
     fireEvent.blur(textarea);
-    expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "new value" });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: "Please use a valid pattern",
+      value: "new value",
+    });
     expect(screen.getByDisplayValue("new value"));
     textarea.focus();
     expect(textarea).toHaveFocus();
@@ -122,7 +130,6 @@ describe('DxcTextareaComponent', () => {
   test("Strict mode - Length constraint", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    const length = { min: 5, max: 10 };
     await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
@@ -134,19 +141,25 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        length: length,
-        optional: true
+        minLength: 5,
+        maxLength: 10,
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test" } });
     fireEvent.blur(textarea);
     await waitFor(() => {
-      expect(onBlur).toHaveBeenCalledWith({ error: "Min length 5, Max length 10", value: "test" });
+      expect(onBlur).toHaveBeenCalledWith({
+        error: "Min length 5, Max length 10",
+        value: "test",
+      });
     });
     textarea.focus();
     expect(textarea).toHaveFocus();
@@ -160,7 +173,6 @@ describe('DxcTextareaComponent', () => {
   test("Strict mode - Pattern and length constraints", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    const length = { min: 5, max: 10 };
     await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
@@ -173,25 +185,34 @@ describe('DxcTextareaComponent', () => {
         } as any,
         margin: "medium",
         pattern: '^.*(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!&$%&? "]).*$',
-        length: length,
-        optional: true
+        minLength: 5,
+        maxLength: 10,
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
 
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test" } });
     fireEvent.blur(textarea);
-    expect(onBlur).toHaveBeenCalledWith({ error: "Min length 5, Max length 10", value: "test" });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: "Min length 5, Max length 10",
+      value: "test",
+    });
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test " } });
     fireEvent.blur(textarea);
-    expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "test " });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: "Please use a valid pattern",
+      value: "test ",
+    });
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -218,12 +239,14 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        pattern: '^.*(?=.*[a-zA-Z])(?=.*\d)(?=.*[!&$%&? "]).*$',
-        optional: true
+        pattern: '^.*(?=.*[a-zA-Z])(?=.*d)(?=.*[!&$%&? "]).*$',
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -238,7 +261,6 @@ describe('DxcTextareaComponent', () => {
       expect(value).toBe("Example value");
       expect(error).toBe("Min length 5, Max length 10");
     });
-    const length = { min: 5, max: 10 };
     await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
@@ -250,12 +272,15 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        length: length,
-        optional: true
+        minLength: 5,
+        maxLength: 10,
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -270,7 +295,6 @@ describe('DxcTextareaComponent', () => {
       expect(value).toBe("Example value");
       expect(error).toBe("Min length 5, Max length 10");
     });
-    const length = { min: 5, max: 10 };
     await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
@@ -282,12 +306,15 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        length: length,
-        optional: true
+        minLength: 5,
+        maxLength: 10,
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -302,11 +329,13 @@ describe('DxcTextareaComponent', () => {
         onBlur: {
           emit: onBlur,
         } as any,
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
@@ -329,25 +358,29 @@ describe('DxcTextareaComponent', () => {
           emit: onBlur,
         } as any,
         margin: "medium",
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "Controlled test" } });
     await waitFor(() => {
       expect(screen.getByDisplayValue("test"));
-      expect(onChange).toHaveBeenCalledWith({ value: "Controlled test", error: null });
+      expect(onChange).toHaveBeenCalledWith({
+        value: "Controlled test",
+        error: null,
+      });
     });
     fireEvent.blur(textarea);
     await waitFor(() => {
       expect(onBlur).toHaveBeenCalled();
       expect(onBlur).toHaveBeenCalledWith({ value: "test", error: null });
     });
-
   });
   test("Uncontrolled input", async () => {
     const onChange = jest.fn();
@@ -357,17 +390,22 @@ describe('DxcTextareaComponent', () => {
         onChange: {
           emit: onChange,
         } as any,
-        optional: true
+        optional: true,
       },
       imports: [CommonModule, FormsModule],
     });
-    const textarea = <HTMLInputElement>screen.getByLabelText("Example label (Optional)");
+    const textarea = <HTMLInputElement>(
+      screen.getByLabelText("Example label (Optional)")
+    );
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "Uncontrolled test" } });
     expect(onChange).toHaveBeenCalled();
-    expect(onChange).toHaveBeenCalledWith({ value: "Uncontrolled test", error: null });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "Uncontrolled test",
+      error: null,
+    });
     expect(textarea.value).toBe("Uncontrolled test");
   });
 });

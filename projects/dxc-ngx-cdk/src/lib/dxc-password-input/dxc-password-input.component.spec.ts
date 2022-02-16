@@ -37,7 +37,10 @@ describe("DxcPasswordInputComponent", () => {
     expect(screen.queryByText("test-input")).toBeInTheDocument();
     expect(screen.getByDisplayValue("password-test")).toBeTruthy();
     fireEvent.click(btn);
-    expect(onChange).toHaveBeenCalledWith({ value: "", error: "This field is required. Please, enter a value." });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "",
+      error: "This field is required. Please, enter a value.",
+    });
   });
 
   test("should mask input password", async () => {
@@ -89,23 +92,29 @@ describe("DxcPasswordInputComponent", () => {
     expect(input).toHaveFocus();
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: "Please use a valid pattern" });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "new value",
+      error: "Please use a valid pattern",
+    });
     expect(screen.getByDisplayValue("initial"));
     fireEvent.blur(input);
-    expect(onBlur).toHaveBeenCalledWith({ error: "Please use a valid pattern", value: "initial" });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: "Please use a valid pattern",
+      value: "initial",
+    });
   });
 
   test("controlled dxc-password onError length", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    const lengthLimit = { min: 2, max: 5 };
 
     await render(DxcPasswordInputComponent, {
       componentProperties: {
         label: "test-input",
         clearable: true,
         value: "initial",
-        length: lengthLimit,
+        minLength: 2,
+        maxLength: 5,
         onChange: {
           emit: onChange,
         } as any,
@@ -121,9 +130,15 @@ describe("DxcPasswordInputComponent", () => {
     expect(input).toHaveFocus();
     expect(screen.getByDisplayValue("initial"));
     fireEvent.input(input, { target: { value: "new value" } });
-    expect(onChange).toHaveBeenCalledWith({ value: "new value", error: "Min length 2, Max length 5" });
+    expect(onChange).toHaveBeenCalledWith({
+      value: "new value",
+      error: "Min length 2, Max length 5",
+    });
     expect(screen.getByDisplayValue("initial"));
     fireEvent.blur(input);
-    expect(onBlur).toHaveBeenCalledWith({ error: "Min length 2, Max length 5", value: "initial" });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: "Min length 2, Max length 5",
+      value: "initial",
+    });
   });
 });

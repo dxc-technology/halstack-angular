@@ -2,81 +2,169 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-text-input placeholder="placeholder" helperText="helper text" label="Input label" margin="xsmall"
-        [value]="controlledValue" (onChange)="changeValue($event)" clearable="true" (onActionClick)="click()"
-        [suggestions]="options" pattern="[a-zA-Z]+" [error]="errorMessage" [length]="lengthLimit">
+      <dxc-text-input
+        placeholder="placeholder"
+        helperText="helper text"
+        label="Input label"
+        margin="xsmall"
+        [value]="controlledValue"
+        (onChange)="changeValue($event)"
+        clearable="true"
+        (onActionClick)="click()"
+        [suggestions]="options"
+        pattern="[a-zA-Z]+"
+        [error]="errorMessage"
+        [minlength]="minLength"
+        [maxlength]="maxlength"
+      >
         <dxc-text-input-action>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="currentColor"
+          >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
           </svg>
         </dxc-text-input-action>
       </dxc-text-input>
 
-      <dxc-text-input placeholder="placeholder" helperText="helper text" label="Input label" margin="xsmall"
-        [value]="controlledValue" (onChange)="changeValue($event)" clearable="true" (onActionClick)="click()"
-        [suggestions]="options" [error]="errorMessage" [length]="lengthLimit" pattern="[a-zA-Z]+">
+      <dxc-text-input
+        placeholder="placeholder"
+        helperText="helper text"
+        label="Input label"
+        margin="xsmall"
+        [value]="controlledValue"
+        (onChange)="changeValue($event)"
+        clearable="true"
+        (onActionClick)="click()"
+        [suggestions]="options"
+        [error]="errorMessage"
+        [minlength]="minLength"
+        [maxlength]="maxlength"
+        pattern="[a-zA-Z]+"
+      >
         <dxc-text-input-action>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="currentColor"
+          >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
           </svg>
         </dxc-text-input-action>
       </dxc-text-input>
 
-      <dxc-text-input placeholder="placeholder" label="Input label" helperText="helper text" clearable="true"
-        margin="xsmall" [suggestions]="options" (onActionClick)="click()">
+      <dxc-text-input
+        placeholder="placeholder"
+        label="Input label"
+        helperText="helper text"
+        clearable="true"
+        margin="xsmall"
+        [suggestions]="options"
+        (onActionClick)="click()"
+      >
         <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
         <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
         <dxc-text-input-action>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="currentColor"
+          >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
           </svg>
         </dxc-text-input-action>
       </dxc-text-input>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error">
-      <dxc-text-input placeholder="placeholder" clearable="true" error="Very important error" label="Input label"
-        helperText="helper text" margin="xsmall" (onActionClick)="click()" [suggestions]="options">
+      <dxc-text-input
+        placeholder="placeholder"
+        clearable="true"
+        error="Very important error"
+        label="Input label"
+        helperText="helper text"
+        margin="xsmall"
+        (onActionClick)="click()"
+        [suggestions]="options"
+      >
         <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
         <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
         <dxc-text-input-action>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="currentColor"
+          >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
           </svg>
         </dxc-text-input-action>
       </dxc-text-input>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
-      <dxc-text-input placeholder="placeholder" value="test" clearable="true" error="Very important error"
-        label="Input label" helperText="helper text" margin="xsmall" disabled="true" (onActionClick)="click()"
-        [suggestions]="options">
+      <dxc-text-input
+        placeholder="placeholder"
+        value="test"
+        clearable="true"
+        error="Very important error"
+        label="Input label"
+        helperText="helper text"
+        margin="xsmall"
+        disabled="true"
+        (onActionClick)="click()"
+        [suggestions]="options"
+      >
         <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
         <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
         <dxc-text-input-action>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="currentColor"
+          >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
           </svg>
         </dxc-text-input-action>
       </dxc-text-input>
     </tbuilder-component-mode>
     <tbuilder-component-mode text="Disabled">
-
-      <dxc-text-input label="Autosuggest function"
-        helperText="Checks if any< of the options include the incoming string" margin="medium" [value]="controlledValue"
-        (onChange)="onChange($event)" clearable="true" [suggestions]="callbackFunc" size="large">
+      <dxc-text-input
+        label="Autosuggest function"
+        helperText="Checks if any of the options include the incoming string"
+        margin="medium"
+        [value]="controlledValue"
+        (onChange)="onChange($event)"
+        clearable="true"
+        [suggestions]="callbackFunc"
+        size="large"
+      >
       </dxc-text-input>
-
     </tbuilder-component-mode>
   </background-provider>
 

@@ -19,7 +19,8 @@ export class TextInputPreviewComponent implements OnInit {
 
   errorMessage = "";
 
-  lengthLimit = { min: 2, max: 5 };
+  minLength = 2;
+  maxLength = 5;
 
   options: Array<any> = [
     "Afghanistan",

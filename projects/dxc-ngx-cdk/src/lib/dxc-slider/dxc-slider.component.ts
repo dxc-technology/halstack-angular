@@ -107,6 +107,17 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   }
   private _disabled;
   /**
+   * Whether the marks between each step should be shown or not.
+   */
+  @Input()
+  get marks(): boolean {
+    return this._marks;
+  }
+  set marks(value: boolean) {
+    this._marks = coerceBooleanProperty(value);
+  }
+  private _marks = false;
+  /**
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
@@ -134,7 +145,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   /**
    * This event will emit in case the slider changes its value, as it's being dragged.
    * The new value will be passed as a parameter.
-   */ 
+   */
   @Output() onChange: EventEmitter<number> = new EventEmitter<number>();
   /**
    * This event will emit in case the slider changes its value, but only when the thumb is released.
@@ -201,7 +212,9 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.tickInterval = this.step > 1 ? 1 : 0;
+    if (this.marks) {
+      this.tickInterval = this.step > 1 ? 1 : 0;
+    }
     this.isDisabled = this.disabled;
     this.renderedValue = this.value;
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -263,7 +276,8 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     if (inputs.size === "fillParent") {
       return css`
         width: calc(
-          ${sizes[inputs.size]} - ${this.getMargin(inputs.margin, "left")} - ${this.getMargin(inputs.margin, "right")}
+          ${sizes[inputs.size]} - ${this.getMargin(inputs.margin, "left")} -
+            ${this.getMargin(inputs.margin, "right")}
         );
       `;
     }

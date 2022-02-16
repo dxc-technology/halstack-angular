@@ -13,12 +13,12 @@ import { SortService } from "../../services/sort.service";
     id="header-{{ columnName }}-{{ parentClassName }}"
     propertyname="{{ propertyName }}"
     [ngClass]="[isSortable ? 'isSortable' : '']"
+    [tabIndex]="isSortable ? tabIndexValue : -1"
   >
     {{ columnName }}
     <span
       id="iconSort-{{ columnName }}-{{ parentClassName }}"
       *ngIf="isSortable"
-      [tabIndex]="tabIndexValue"
     ></span>
   </div>`,
   styleUrls: ["./dxc-header-row-component.scss"],

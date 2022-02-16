@@ -7,7 +7,6 @@ import {
 } from "@angular/core";
 import { DxcCellDef } from "./dxc-cell-def.directive";
 import { DXC_RESULTSET_TABLE } from "./../tokens";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 /** Base interface for a cell definition. Captures a column's cell template definition. */
 
@@ -39,15 +38,6 @@ export class DxcColumnDef extends _DxcColumnDefBase {
   _name: string;
 
   @Input("sortable") sortable = { isSortable: false, propertyName: "" };
-
-  @Input()
-  get tabIndexValue(): number {
-    return this._tabIndexValue;
-  }
-  set tabIndexValue(value: number) {
-    this._tabIndexValue = coerceNumberProperty(value);
-  }
-  private _tabIndexValue;
 
   /** @docs-private */
   @ContentChild(DxcCellDef, { static: true }) cell: DxcCellDef;

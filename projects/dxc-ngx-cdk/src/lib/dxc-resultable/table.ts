@@ -59,8 +59,24 @@ import { DxcColumnDef } from "./directives/dxc-column-def.directive";
 import { PaginationService } from "./services/pagination.service";
 import { SortService } from "./services/sort.service";
 import { Ordering } from "./directives/sorting.directive";
-import { coerceArray } from "@angular/cdk/coercion";
+import { coerceArray, coerceNumberProperty } from "@angular/cdk/coercion";
 import { HostBinding } from "@angular/core";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Size = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 
 /** Interface used to provide an outlet for rows to be inserted into. */
 export interface RowOutlet {
@@ -182,10 +198,17 @@ export const CDK_TABLE_TEMPLATE = `
   ],
 })
 export class DxcResultTable<T>
-  implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit {
+  implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit
+{
+  /**
+   * Number of items per page.
+   */
   @Input()
   itemsPerPage: number = 5;
-
+  /**
+   * An array of objects with the values to display in the table.
+   * The key is the column and the value is the property to be displayed in the cell.
+   */
   @Input()
   get collectionResource(): Array<any> {
     return this._collectionResource;
@@ -194,14 +217,38 @@ export class DxcResultTable<T>
     this._collectionResource = coerceArray(value);
   }
   private _collectionResource;
-
-  @Input() margin: string;
-
+  /**
+   * Size of the margin to be applied to the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in
+   * order to specify different padding sizes.
+   */
+  @Input() margin: Space | Size;
+  /**
+   * An array of numbers representing the items per page options.
+   */
   @Input() public itemsPerPageOptions: number[];
-
+  /**
+   * Show page navigation select.
+   */
   @Input() public showGoToPage: boolean = true;
-
-  @Output() itemsPerPageFunction: EventEmitter<any> = new EventEmitter<any>();
+  /**
+   * Value of the tabindex attribute given to the sortable icon.
+   */
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue = 0;
+  /**
+   *  This event will emit in case of the user selects an item per page
+   * option. The value selected will be passed as a parameter.
+   */
+  @Output() itemsPerPageFunction: EventEmitter<number> =
+    new EventEmitter<number>();
 
   collectionData: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
 
@@ -414,12 +461,11 @@ export class DxcResultTable<T>
         const factory = this.resolver.resolveComponentFactory(
           DxcHeaderRowComponent
         );
-        const viewRef = this._headerOutlet.viewContainer.createComponent(
-          factory
-        );
+        const viewRef =
+          this._headerOutlet.viewContainer.createComponent(factory);
         viewRef.instance.columnName = key;
         viewRef.instance.isSortable = value.sortable.isSortable; //Save if header is sortable in the created component
-        viewRef.instance.tabIndexValue = value.tabIndexValue;
+        viewRef.instance.tabIndexValue = this.tabIndexValue;
         viewRef.instance.state = this.getMapStateHeaders().get(key); //Get header's current state for sorting and save it in the created component
         viewRef.instance.parentClassName = this.className; // just in case there are more tables in the page
         viewRef.instance.propertyName = value.sortable.propertyName;

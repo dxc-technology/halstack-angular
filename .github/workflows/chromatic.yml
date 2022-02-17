@@ -24,4 +24,4 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitOnceUploaded: true
           exitZeroOnChanges: true
-          workingDir: lib
+          workingDir: projects/dxc-ngx-cdk

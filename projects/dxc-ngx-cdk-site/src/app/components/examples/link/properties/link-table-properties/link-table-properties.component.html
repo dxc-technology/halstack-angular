@@ -1,4 +1,9 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -58,9 +63,7 @@
   <tr>
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
-    <td>
-      Value of the tabindex.
-    </td>
+    <td>Value of the tabindex.</td>
   </tr>
   <tr>
     <td>margin: string | object</td>
@@ -78,8 +81,8 @@
     <td>onClick: EventEmitter</td>
     <td></td>
     <td>
-      If defined, the link will be displayed as a button. 
-      This function will be called when the user clicks the link. 
+      This event will emit in case the user clicks the component. If defined,
+      the link will be displayed as a button.
     </td>
   </tr>
 </dxc-table>

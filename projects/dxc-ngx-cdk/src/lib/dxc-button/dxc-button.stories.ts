@@ -1,48 +1,32 @@
-import { storiesOf, moduleMetadata } from "@storybook/angular";
+import { ThemeModule } from "../theme";
+import { DxcButtonComponent } from "./dxc-button.component";
 import { DxcButtonModule } from "./dxc-button.module";
-import { action } from "@storybook/addon-actions";
-import { ThemeModule } from "../theme/theme.module";
+import { moduleMetadata, Meta, Story } from "@storybook/angular";
+import { ComponentsModule } from "../../../.storybook/components/components.module";
+import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 
-storiesOf("Form Components|Button", module)
-  .addDecorator(
+export default {
+  title: "Button",
+  decorators: [
     moduleMetadata({
-      imports: [DxcButtonModule, ThemeModule],
-    })
-  )
-  .add("Types", () => ({
-    styles: [`
-    .container{
-      margin: 15px;
-    }
+      imports: [
+        BackgroundProviderModule,
+        DxcButtonModule,
+        ComponentsModule,
+        ThemeModule,
+      ],
+    }),
+  ],
+} as Meta;
 
-    .darkContainer{
-      background-color: #333333;
-    }
+const TemplateLight: Story = (args) => ({
+  component: DxcButtonComponent,
+  templateUrl: "./dxc-button.stories.html",
+  props: args,
+});
 
-    .mainTitle{
-      font-family: 'Open Sans', sans-serif;
-    }
+export const Chromatic = TemplateLight.bind({});
 
-    .containerTitle{
-      font-family: 'Open Sans', sans-serif;
-    }
-    `],
-    template: `
-    <div theme>
-      <h2 class="mainTitle"> Primary </h2>
-      <div class="container">
-        <h4 class="containerTitle">Enabled</h4>
-        <dxc-button label="Primeray enabled"></dxc-button>
-      </div>
-      <div class="container pseudo-hover">
-      <h4 class="containerTitle">Hovered</h4>
-      <dxc-button label="Primary hovered"></dxc-button>
-    </div>
-    </div>
-
-
-      `,
-    props: {
-      onClick: action("Click fired!"),
-    },
-  }));
+Chromatic.parameters = {
+  pseudo: { hover: false, focus: false, visited: false, active: false },
+};

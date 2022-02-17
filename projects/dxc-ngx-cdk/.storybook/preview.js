@@ -1,3 +1,5 @@
+import '@angular/localize/init';
+
 export const decorators = [
   (storyFunc) => {
     const story = storyFunc();

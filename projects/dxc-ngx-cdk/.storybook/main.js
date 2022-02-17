@@ -1,5 +1,4 @@
 
-import '@angular/localize/init';
 
 module.exports = {
   stories: ['../src/lib/**/*.stories.@(ts|mdx)'],

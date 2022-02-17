@@ -1,18 +1,19 @@
 {
-    "data": [
-        {
-            "title": "Default Chip",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/chip/default-chip/default-chip.component.html&initialpath=defaultChip",
-                "title": "DefaultChip"
-            }
-        },
-        {
-            "title": "Chip with icons",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/chip/chip-with-icons/chip-with-icons.component.html&initialpath=chipWithIcons",
-                "title": "ChipWithIcons"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Default Chip",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/chip/default-chip/default-chip.component.html&initialpath=defaultChip",
+        "title": "DefaultChip"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Chip with icons",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/chip/chip-with-icons/chip-with-icons.component.html&initialpath=chipWithIcons",
+        "title": "ChipWithIcons"
+      }
+    }
+  ]
 }

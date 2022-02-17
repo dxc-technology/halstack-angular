@@ -1,25 +1,26 @@
 {
-    "data": [
-        {
-            "title": "Controlled Wizard",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/wizard/controlled-wizard/controlled-wizard.component.html&initialpath=controlledWizard",
-                "title": "ControlledWizard"
-            }
-        },
-        {
-            "title": "Uncontrolled Wizard",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/wizard/uncontrolled-wizard/uncontrolled-wizard.component.html&initialpath=uncontrolledWizard",
-                "title": "UncontrolledWizard"
-            }
-        },
-        {
-            "title": "Vertical Wizard",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/wizard/vertical-wizard/vertical-wizard.component.html&initialpath=verticalWizard",
-                "title": "VerticalWizard"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Controlled Wizard",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/wizard/controlled-wizard/controlled-wizard.component.html&initialpath=controlledWizard",
+        "title": "ControlledWizard"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Uncontrolled Wizard",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/wizard/uncontrolled-wizard/uncontrolled-wizard.component.html&initialpath=uncontrolledWizard",
+        "title": "UncontrolledWizard"
+      }
+    },
+    {
+      "title": "Vertical Wizard",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/wizard/vertical-wizard/vertical-wizard.component.html&initialpath=verticalWizard",
+        "title": "VerticalWizard"
+      }
+    }
+  ]
 }

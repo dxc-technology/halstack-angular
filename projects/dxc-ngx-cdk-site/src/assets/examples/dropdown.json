@@ -1,25 +1,26 @@
 {
-    "data": [
-        {
-            "title": "Default Dropdown",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/dropdown/default-dropdown/default-dropdown.component.html&initialpath=defaultDropdown",
-                "title": "DefaultDropdown"
-            }
-        },
-        {
-            "title": "Default Dropdown with expand on hover",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/dropdown/default-dropdown-expand-on-hover/default-dropdown-expand-on-hover.component.html&initialpath=defaultDropdownExpandOnHover",
-                "title": "DefaultDropdownHover"
-            }
-        },
-        {
-            "title": "Dropdown with icons",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/dropdown/dropdown-with-icons/dropdown-with-icons.component.html&initialpath=dropdownWithIcons",
-                "title": "DropdownWithIcons"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Default Dropdown",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/dropdown/default-dropdown/default-dropdown.component.html&initialpath=defaultDropdown",
+        "title": "DefaultDropdown"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Default Dropdown with expand on hover",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/dropdown/default-dropdown-expand-on-hover/default-dropdown-expand-on-hover.component.html&initialpath=defaultDropdownExpandOnHover",
+        "title": "DefaultDropdownHover"
+      }
+    },
+    {
+      "title": "Dropdown with icons",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/dropdown/dropdown-with-icons/dropdown-with-icons.component.html&initialpath=dropdownWithIcons",
+        "title": "DropdownWithIcons"
+      }
+    }
+  ]
 }

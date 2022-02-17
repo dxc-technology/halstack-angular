@@ -1,102 +1,103 @@
 {
-    "data": [
-        {
-            "title": "Controlled textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/controlled-textarea/controlled-textarea.component.html&initialpath=controlledTextarea",
-                "title": "controlled-textarea"
-            }
-        },
-        {
-            "title": "Uncontrolled textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/uncontrolled-textarea/uncontrolled-textarea.component.html&initialpath=uncontrolledTextarea",
-                "title": "uncontrolled-textarea"
-            }
-        },
-        {
-            "title": "Textarea with helper text",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-helper-text/textarea-with-helper-text.component.html&initialpath=textareaWithHelperText",
-                "title": "textarea-helper-text"
-            }
-        },
-        {
-            "title": "Textarea with placeholder",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-placeholder/textarea-with-placeholder.component.html&initialpath=textareaWithPlaceholder",
-                "title": "textarea-placeholder"
-            }
-        },
-        {
-            "title": "Disabled textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/disabled-textarea/disabled-textarea.component.html&initialpath=disabledTextarea",
-                "title": "disabled-textarea"
-            }
-        },
-        {
-            "title": "Optional textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/optional-textarea/optional-textarea.component.html&initialpath=optionalTextarea",
-                "title": "optional-textarea"
-            }
-        },
-        {
-            "title": "Textarea with verticalGrow set to 'manual'",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-vertialgrow-manual/textarea-vertialgrow-manual.component.html&initialpath=textareaVerticalgrowManual",
-                "title": "verticalGrow-manual-textarea"
-            }
-        },
-        {
-            "title": "Textarea with verticalGrow set to 'none'",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-vertialgrow-none/textarea-vertialgrow-none.component.html&initialpath=textareaVerticalgrowNone",
-                "title": "verticalGrow-none-textarea"
-            }
-        },
-        {
-            "title": "Textarea with default rows",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-default-rows/textarea-with-default-rows.component.html&initialpath=textareaWithDefaultRows",
-                "title": "rows-textarea"
-            }
-        },
-        {
-            "title": "Invalid textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/invalid-textarea/invalid-textarea.component.html&initialpath=invalidTextarea",
-                "title": "invalid-textarea"
-            }
-        },
-        {
-            "title": "Textarea with pattern constraint",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-pattern-constraint/textarea-with-pattern-constraint.component.html&initialpath=textareaWithPatternConstraint",
-                "title": "pattern-textarea"
-            }
-        },
-        {
-            "title": "Textarea with length constraint",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-length-constraint/textarea-with-length-constraint.component.html&initialpath=textareaWithLengthConstraint",
-                "title": "length-textarea"
-            }
-        },
-        {
-            "title": "Textarea with custom error messages",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-custom-error/textarea-with-custom-error.component.html&initialpath=textareaWithCustomError",
-                "title": "custom-error-textarea"
-            }
-        },
-        {
-            "title": "Fill parent size textarea",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app//views/textarea/fill-parent-size-textarea/fill-parent-size-textarea.component.html&initialpath=fillParentSizeTextarea",
-                "title": "fill-parent-textarea"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Controlled textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/controlled-textarea/controlled-textarea.component.html&initialpath=controlledTextarea",
+        "title": "controlled-textarea"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Uncontrolled textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/uncontrolled-textarea/uncontrolled-textarea.component.html&initialpath=uncontrolledTextarea",
+        "title": "uncontrolled-textarea"
+      }
+    },
+    {
+      "title": "Textarea with helper text",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-helper-text/textarea-with-helper-text.component.html&initialpath=textareaWithHelperText",
+        "title": "textarea-helper-text"
+      }
+    },
+    {
+      "title": "Textarea with placeholder",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-placeholder/textarea-with-placeholder.component.html&initialpath=textareaWithPlaceholder",
+        "title": "textarea-placeholder"
+      }
+    },
+    {
+      "title": "Disabled textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/disabled-textarea/disabled-textarea.component.html&initialpath=disabledTextarea",
+        "title": "disabled-textarea"
+      }
+    },
+    {
+      "title": "Optional textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/optional-textarea/optional-textarea.component.html&initialpath=optionalTextarea",
+        "title": "optional-textarea"
+      }
+    },
+    {
+      "title": "Textarea with verticalGrow set to 'manual'",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-vertialgrow-manual/textarea-vertialgrow-manual.component.html&initialpath=textareaVerticalgrowManual",
+        "title": "verticalGrow-manual-textarea"
+      }
+    },
+    {
+      "title": "Textarea with verticalGrow set to 'none'",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-vertialgrow-none/textarea-vertialgrow-none.component.html&initialpath=textareaVerticalgrowNone",
+        "title": "verticalGrow-none-textarea"
+      }
+    },
+    {
+      "title": "Textarea with default rows",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-default-rows/textarea-with-default-rows.component.html&initialpath=textareaWithDefaultRows",
+        "title": "rows-textarea"
+      }
+    },
+    {
+      "title": "Invalid textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/invalid-textarea/invalid-textarea.component.html&initialpath=invalidTextarea",
+        "title": "invalid-textarea"
+      }
+    },
+    {
+      "title": "Textarea with pattern constraint",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-pattern-constraint/textarea-with-pattern-constraint.component.html&initialpath=textareaWithPatternConstraint",
+        "title": "pattern-textarea"
+      }
+    },
+    {
+      "title": "Textarea with length constraint",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-length-constraint/textarea-with-length-constraint.component.html&initialpath=textareaWithLengthConstraint",
+        "title": "length-textarea"
+      }
+    },
+    {
+      "title": "Textarea with custom error messages",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/textarea/textarea-with-custom-error/textarea-with-custom-error.component.html&initialpath=textareaWithCustomError",
+        "title": "custom-error-textarea"
+      }
+    },
+    {
+      "title": "Fill parent size textarea",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app//views/textarea/fill-parent-size-textarea/fill-parent-size-textarea.component.html&initialpath=fillParentSizeTextarea",
+        "title": "fill-parent-textarea"
+      }
+    }
+  ]
 }

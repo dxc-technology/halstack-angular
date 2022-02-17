@@ -1,60 +1,61 @@
 {
-    "data": [
-        {
-            "title": "Info Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/info-alert/info-alert.component.html&initialpath=infoAlert",
-                "title": "InfoAlert"
-            }
-        },
-        {
-            "title": "Succes Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/success-alert/success-alert.component.html&initialpath=successAlert",
-                "title": "SuccesAlert"
-            }
-        },
-        {
-            "title": "Warning Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/warning-alert/warning-alert.component.html&initialpath=warningAlert",
-                "title": "WarningAlert"
-            }
-        },
-        {
-            "title": "Error Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/error-alert/error-alert.component.html&initialpath=errorAlert",
-                "title": "ErrorAlert"
-            }
-        },
-        {
-            "title": "Sized Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/sized-alert/sized-alert.component.html&initialpath=sizedAlert",
-                "title": "SizedAlert"
-            }
-        },
-        {
-            "title": "Modal Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/modal-alert/modal-alert.component.html&initialpath=modalAlert",
-                "title": "ModalAlert"
-            }
-        },
-        {
-            "title": "Closable Inline Alert",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/closable-inline-alert/closable-inline-alert.component.html&initialpath=closableInlineAlert",
-                "title": "ClosableInlineAlert"
-            }
-        },
-        {
-            "title": "Alert with children",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/alert-with-children/alert-with-children.component.html&initialpath=alertWithChildren",
-                "title": "AlertWithChildren"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Info Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/info-alert/info-alert.component.html&initialpath=infoAlert",
+        "title": "InfoAlert"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Succes Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/success-alert/success-alert.component.html&initialpath=successAlert",
+        "title": "SuccesAlert"
+      }
+    },
+    {
+      "title": "Warning Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/warning-alert/warning-alert.component.html&initialpath=warningAlert",
+        "title": "WarningAlert"
+      }
+    },
+    {
+      "title": "Error Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/error-alert/error-alert.component.html&initialpath=errorAlert",
+        "title": "ErrorAlert"
+      }
+    },
+    {
+      "title": "Sized Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/sized-alert/sized-alert.component.html&initialpath=sizedAlert",
+        "title": "SizedAlert"
+      }
+    },
+    {
+      "title": "Modal Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/modal-alert/modal-alert.component.html&initialpath=modalAlert",
+        "title": "ModalAlert"
+      }
+    },
+    {
+      "title": "Closable Inline Alert",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/closable-inline-alert/closable-inline-alert.component.html&initialpath=closableInlineAlert",
+        "title": "ClosableInlineAlert"
+      }
+    },
+    {
+      "title": "Alert with children",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/alert/alert-with-children/alert-with-children.component.html&initialpath=alertWithChildren",
+        "title": "AlertWithChildren"
+      }
+    }
+  ]
 }

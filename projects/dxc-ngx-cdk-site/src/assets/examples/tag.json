@@ -5,7 +5,8 @@
             "iframe": {
                 "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tag/basic-tag/basic-tag.component.html&initialpath=basicTag",
                 "title": "BasicTag"
-            }
+            },
+            "visibility": true
         },
         {
             "title": "Tag with link",

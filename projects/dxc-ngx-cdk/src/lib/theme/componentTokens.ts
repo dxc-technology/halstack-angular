@@ -813,8 +813,7 @@ export const componentTokens = {
   "--textarea-disabledHelperTextFontColor": globalTokens.hal_grey_l_60,
   "--textarea-disabledHelperTextFontColorOnDark": globalTokens.hal_grey_l_60,
   "--textarea-disabledPlaceholderFontColor": globalTokens.hal_grey_l_60,
-  "--textarea-disabledPlaceholderFontColorOnDark":
-    globalTokens.hal_grey_l_60,
+  "--textarea-disabledPlaceholderFontColorOnDark": globalTokens.hal_grey_l_60,
   "--textarea-fontFamily": globalTokens.type_sans,
   "--textarea-labelFontColor": globalTokens.hal_black,
   "--textarea-labelFontColorOnDark": globalTokens.hal_white,
@@ -1047,13 +1046,16 @@ export const componentTokens = {
   "--select-errorMessagetLineHeight": globalTokens.type_leading_normal,
   "--select-errorMessageColor": globalTokens.hal_red_s_41,
   "--select-errorIconColor": globalTokens.hal_red_s_41,
-  
+
   "--select-selectionIndicatorFontColor": globalTokens.hal_black,
   "--select-selectionIndicatorBorderColor": globalTokens.hal_grey_l_75,
   "--select-selectionIndicatorBackgroundColor": globalTokens.color_grey_50,
-  "--select-enabledSelectionIndicatorActionBackgroundColor": globalTokens.transparent,
-  "--select-hoverSelectionIndicatorActionBackgroundColor": globalTokens.hal_grey_l_95,
-  "--select-activeSelectionIndicatorActionBackgroundColor": globalTokens.hal_grey_l_80,
+  "--select-enabledSelectionIndicatorActionBackgroundColor":
+    globalTokens.transparent,
+  "--select-hoverSelectionIndicatorActionBackgroundColor":
+    globalTokens.hal_grey_l_95,
+  "--select-activeSelectionIndicatorActionBackgroundColor":
+    globalTokens.hal_grey_l_80,
   "--select-enabledSelectionIndicatorActionIconColor": globalTokens.hal_black,
   "--select-hoverSelectionIndicatorActionIconColor": globalTokens.hal_black,
   "--select-activeSelectionIndicatorActionIconColor": globalTokens.hal_black,
@@ -1078,11 +1080,14 @@ export const componentTokens = {
   "--select-listOptionDividerColor": globalTokens.hal_grey_l_90,
   "--select-listGroupLabelFontWeight": globalTokens.type_semibold,
 
-  "--select-unselectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_95,
-  "--select-unselectedActiveListOptionBackgroundColor": globalTokens.hal_grey_l_90,
+  "--select-unselectedHoverListOptionBackgroundColor":
+    globalTokens.hal_grey_l_95,
+  "--select-unselectedActiveListOptionBackgroundColor":
+    globalTokens.hal_grey_l_90,
   "--select-selectedListOptionBackgroundColor": globalTokens.hal_grey_l_90,
   "--select-selectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_80,
-  "--select-selectedActiveListOptionBackgroundColor": globalTokens.hal_blue_l_80,
+  "--select-selectedActiveListOptionBackgroundColor":
+    globalTokens.hal_blue_l_80,
   "--select-selectedListOptionIconColor": globalTokens.hal_blue_d_20,
 
   "--select-optionBorderThickness": "0px",
@@ -1122,7 +1127,6 @@ export const componentTokens = {
   "--select-arrowColor": globalTokens.hal_black,
   "--select-arrowColorOnDark": globalTokens.hal_white,
   "--select-collapseIndicatorColor": globalTokens.hal_black,
-
 
   //SIDENAV
   "--sidenav-backgroundColor": globalTokens.lighterGrey,
@@ -1365,11 +1369,15 @@ export const componentTokens = {
   "--tag-fontColor": globalTokens.hal_black,
   "--tag-fontSize": globalTokens.type_scale_02,
   "--tag-fontWeight": globalTokens.type_regular,
-  "--tag-fontTextTransform": globalTokens.type_uppercase,
-  "--tag-height": "43px",
-  "--tag-iconSectionWidth": "48px",
+  "--tag-height": "40px",
+  "--tag-iconSectionWidth": "40px",
   "--tag-iconHeight": "24px",
   "--tag-iconWidth": "24px",
+  "--tag-focusColor": "#0095ff",
+  "--tag-labelPaddingTop": "0rem",
+  "--tag-labelPaddingBottom": "0rem",
+  "--tag-labelPaddingLeft": "1rem",
+  "--tag-labelPaddingRight": "1rem",
 
   //V3 TEXTAREA
   "--v3Textarea-fontFamily": globalTokens.type_sans,

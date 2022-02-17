@@ -1,21 +1,20 @@
 <div
-  [class]="styleDxcTag"
   (mouseenter)="mouseEnter()"
   (mouseleave)="mouseLeave()"
   (click)="onClickHandler($event)"
 >
   <button
     *ngIf="isClickDefined == true && linkHref == null"
-    [class]="styledButton"
+    class="styledButton"
   >
     <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
-      <div [class]="tagContent" [tabindex]="tabIndexValue">
-        <div [class]="iconContainer">
-          <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container> 
-          <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc"/>
+      <div class="tagContent">
+        <div class="iconContainer" #iconContainer>
+          <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container>
+          <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc" />
         </div>
         <div
-          [class]="tagLabel"
+          class="tagLabel"
           *ngIf="size !== 'small' && (label !== undefined || label !== null)"
         >
           {{ label }}
@@ -29,13 +28,13 @@
     [shadowDepth]="shadowDepth"
     #dxcBox
   >
-    <div [class]="tagContent">
-      <div [class]="iconContainer">
-        <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container> 
-        <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc"/>
+    <div class="tagContent">
+      <div class="iconContainer" #iconContainer>
+        <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container>
+        <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc" />
       </div>
       <div
-        [class]="tagLabel"
+        class="tagLabel"
         *ngIf="size !== 'small' && (label !== undefined || label !== null)"
       >
         {{ label }}
@@ -43,27 +42,29 @@
     </div>
   </dxc-box>
 
-  <div *ngIf="linkHref != null">
-    <a
-      [class]="styledLink"
-      href="{{ linkHref }}"
-      [target]="newWindow ? '_blank' : '_self'"
-    >
-      <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
-        <div [class]="tagContent" [tabindex]="tabIndexValue">
-          <div [class]="iconContainer">
-            <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container> 
-            <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc"/>
-          </div>
-          <div
-            [class]="tagLabel"
-            *ngIf="size !== 'small' && (label !== undefined || label !== null)"
-          >
-            {{ label }}
-          </div>
+  <a
+    *ngIf="linkHref != null"
+    [tabindex]="tabIndexValue"
+    class="styledLink"
+    href="{{ linkHref }}"
+    [target]="newWindow ? '_blank' : '_self'"
+  >
+    <dxc-box [size]="size" [shadowDepth]="shadowDepth" #dxcBox>
+      <div class="tagContent">
+        <div class="iconContainer" #iconContainer>
+          <ng-container *ngTemplateOutlet="dxcTagIcon"></ng-container>
+          <img src="{{ iconSrc }}" class="tagIcon" *ngIf="iconSrc" />
         </div>
-      </dxc-box>
-    </a>
-  </div>
+        <div
+          class="tagLabel"
+          *ngIf="size !== 'small' && (label !== undefined || label !== null)"
+        >
+          {{ label }}
+        </div>
+      </div>
+    </dxc-box>
+  </a>
 </div>
-<ng-template #dxcTagIcon><ng-content select="dxc-tag-icon"></ng-content></ng-template>
+<ng-template #dxcTagIcon
+  ><ng-content select="dxc-tag-icon"></ng-content
+></ng-template>

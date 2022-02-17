@@ -342,7 +342,7 @@
     "scrollBarTrackColor": "color",
     "focusColor": "color"
   },
-  "fileInput":{
+  "fileInput": {
     "dropBorderColor": "color",
     "fileItemBorderColor": "color",
     "fileItemIconColor": "color",
@@ -1083,7 +1083,6 @@
   },
   "tag": {
     "fontStyle": "fStyle",
-    "fontTextTransform": "fTextTransform",
     "height": "length",
     "iconColor": "color",
     "iconSectionWidth": "length",
@@ -1092,7 +1091,12 @@
     "fontFamily": "fFamily",
     "fontColor": "color",
     "fontSize": "length",
-    "fontWeight": "fWeight"
+    "fontWeight": "fWeight",
+    "focusColor": "color",
+    "labelPaddingTop": "length",
+    "labelPaddingBottom": "length",
+    "labelPaddingLeft": "length",
+    "labelPaddingRight": "length"
   },
   "table": {
     "rowSeparatorThickness": "length",
@@ -1249,7 +1253,7 @@
     "containerBorderStyle": "bStyle",
     "containerBorderRadius": "length",
     "optionFocusBorderThickness": "bWidth",
-    "optionFocusBorderStyle":  "bStyle",
+    "optionFocusBorderStyle": "bStyle",
     "optionFocusBorderRadius": "length"
   },
   "upload": {

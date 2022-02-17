@@ -8,18 +8,21 @@ import {
   ElementRef,
   ViewChildren,
   QueryList,
+  HostBinding,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { css } from "emotion";
-import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
-import { ContentChildren, ChangeDetectorRef } from '@angular/core';
-import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
+import { ContentChildren, ChangeDetectorRef } from "@angular/core";
+import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
 
 @Component({
   selector: "dxc-tag",
   templateUrl: "./dxc-tag.component.html",
-  styleUrls: ["./dxc-tag.component.css"],
   providers: [CssUtils],
 })
 export class DxcTagComponent implements OnInit {
@@ -52,32 +55,14 @@ export class DxcTagComponent implements OnInit {
   @Output() onClick = new EventEmitter<any>();
 
   isClickDefined = false;
-
-  styleDxcTag: string;
-
-  tagContent: string;
-
-  iconContainer: string;
-
   shadowDepth: string;
 
+  @HostBinding("class") className;
   @ViewChildren("dxcBox", { read: ElementRef }) dxcBox: QueryList<ElementRef>;
-
   @ContentChildren(DxcTagIconComponent)
   dxcTagIcon: QueryList<DxcTagIconComponent>;
-
-  styledLink: string = css`
-    text-decoration: none;
-    outline: none;
-  `;
-
-  styledButton: string = css`
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: 0;
-  `;
+  @ViewChildren("iconContainer", { read: ElementRef })
+  iconContainer: QueryList<ElementRef>;
 
   defaultInputs = new BehaviorSubject<any>({
     size: "fitContent",
@@ -88,21 +73,13 @@ export class DxcTagComponent implements OnInit {
     labelPosition: "after",
     margin: null,
     newWindow: false,
-    tabIndexValue: 0
+    tabIndexValue: 0,
   });
-  constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
+  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.isClickDefined = this.onClick.observers.length > 0;
-    this.styleDxcTag = `${this.setDxcTagDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
-    this.tagContent = `${this.setTagContentDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
-    this.iconContainer = `${this.setIconContainerDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.shadowDepth = this.getShadowDepth();
   }
 
@@ -112,31 +89,34 @@ export class DxcTagComponent implements OnInit {
       return result;
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
-    this.styleDxcTag = `${this.setDxcTagDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
-    this.tagContent = `${this.setTagContentDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
-    this.iconContainer = `${this.setIconContainerDynamicStyle(
-      this.defaultInputs.getValue()
-    )}`;
+    this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.shadowDepth = this.getShadowDepth();
   }
 
   ngAfterViewInit() {
-    if(this.dxcTagIcon.length !== 0){
-      this.iconSrc = "";
-    }
     this.setStyleDxcBox();
+    this.setIconDisplay();
     this.cdRef.detectChanges();
+  }
+
+  setIconDisplay() {
+    if (this.dxcTagIcon.length !== 0) {
+      this.iconSrc = "";
+    } else if (
+      (this.iconSrc === null || this.iconSrc === undefined) &&
+      this.dxcTagIcon.length === 0
+    ) {
+      this.iconContainer.toArray().forEach((el) => {
+        (el.nativeElement as HTMLElement).style.display = "none";
+      });
+    }
   }
 
   setStyleDxcBox() {
     this.dxcBox.toArray().forEach((el) => {
-      (el.nativeElement as HTMLElement).style.border = "0px solid";
-      if(!this.label && this.size == "small"){
-        (el.nativeElement as HTMLElement).style.width = "var(--tag-iconSectionWidth)"
+      if (!this.label && this.size == "small") {
+        (el.nativeElement as HTMLElement).style.width =
+          "var(--tag-iconSectionWidth)";
       }
     });
   }
@@ -171,7 +151,7 @@ export class DxcTagComponent implements OnInit {
       : "1";
   }
 
-  setDxcTagDynamicStyle(input: any) {
+  getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
       ${this.isClickDefined ||
@@ -182,58 +162,97 @@ export class DxcTagComponent implements OnInit {
         : css`
             cursor: unset;
           `};
-      ${this.utils.getMargins(input.margin)};
-    `;
-  }
-
-  setTagContentDynamicStyle(input: any) {
-    return css`
-      display: inline-flex;
-      align-items: center;
-      ${this.utils.calculateWidth(this.sizes, input)};
-      ${input.labelPosition &&
-      input.labelPosition != null &&
-      input.labelPosition === "before"
-        ? css`
-            flex-direction: row-reverse;
-          `
-        : css`
-            flex-direction: row;
-          `};
-    `;
-  }
-
-  setIconContainerDynamicStyle(input: any) {
-    return css`
-      height: var(--tag-height);
-      display: inline-flex;
-      width: var(--tag-iconSectionWidth);
-      justify-content: center;
-      background: ${input.iconBgColor};
-      dxc-tag-icon{
-        img,svg{
-          padding: 10px 12px;
-          height: var(--tag-iconHeight);
-          width: var(--tag-iconWidth);
-          fill: var(--tag-iconColor);
+      ${this.utils.getMargins(inputs.margin)};
+      dxc-box {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border: 0px solid;
+      }
+      .tagContent {
+        display: inline-flex;
+        align-items: center;
+        height: var(--tag-height);
+        ${this.utils.calculateWidth(this.sizes, inputs)};
+        ${inputs.labelPosition &&
+        inputs.labelPosition != null &&
+        inputs.labelPosition === "before"
+          ? css`
+              flex-direction: row-reverse;
+            `
+          : css`
+              flex-direction: row;
+            `};
+        .tagLabel {
+          padding-top: var(--tag-labelPaddingTop);
+          padding-left: var(--tag-labelPaddingLeft);
+          padding-bottom: var(--tag-labelPaddingBottom);
+          padding-right: var(--tag-labelPaddingRight);
+          font-style: var(--tag-fontStyle);
+          font-family: var(--tag-fontFamily);
+          color: var(--tag-fontColor);
+          font-weight: var(--tag-fontWeight);
+          font-size: var(--tag-fontSize);
+          letter-spacing: 1px;
+          flex-grow: 1;
+          text-align: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          display: ${inputs.label ? "inline-flex" : "none"};
+        }
+        .iconContainer {
+          height: 100%;
+          display: inline-flex;
+          width: var(--tag-iconSectionWidth);
+          justify-content: center;
+          background: ${inputs.iconBgColor};
+          .tagIcon {
+            display: flex;
+            align-self: center;
+            height: var(--tag-iconHeight);
+            width: var(--tag-iconWidth);
+            fill: var(--tag-iconColor);
+          }
+          dxc-tag-icon {
+            display: flex;
+            align-self: center;
+            img,
+            svg {
+              height: var(--tag-iconHeight);
+              width: var(--tag-iconWidth);
+              fill: var(--tag-iconColor);
+            }
+          }
+        }
+      }
+      .styledButton {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        outline: 0;
+      }
+      .styledLink {
+        text-decoration: none;
+        outline: none;
+      }
+      button:focus,
+      button:focus-visible,
+      button:focus-within,
+      button:active,
+      a:focus,
+      a:focus-visible,
+      a:focus-within,
+      a:active {
+        outline: var(--tag-focusColor) auto 2px;
+      }
+      button:active,
+      button:hover,
+      a:active,
+      a:hover {
+        dxc-box {
+          box-shadow: 0 8px 14px -2px rgba(0, 0, 0, 0.1);
         }
       }
     `;
   }
-
-  tagLabel: string = css`
-    padding: 0px 30px;
-    text-transform: var(--tag-fontTextTransform);
-    font-style: var(--tag-fontStyle);
-    font-family: var(--tag-fontFamily);
-    color: var(--tag-fontColor);
-    font-weight: var(--tag-fontWeight);
-    font-size: var(--tag-fontSize);
-    letter-spacing: 1px;
-    flex-grow: 1;
-    text-align: center;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  `;
 }

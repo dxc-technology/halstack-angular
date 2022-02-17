@@ -18,7 +18,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef } from "@angular/core";
 import { v4 as uuidv4 } from "uuid";
 
 @Component({
@@ -76,7 +76,7 @@ export class DxcToggleGroupComponent implements OnInit {
     tabIndexValue: 0,
   });
   constructor(private utils: CssUtils, private ref: ChangeDetectorRef) {
-      this.toggleGroupId = `file-input${ uuidv4()}`;
+    this.toggleGroupId = `file-input${uuidv4()}`;
   }
 
   ngOnInit() {
@@ -91,7 +91,7 @@ export class DxcToggleGroupComponent implements OnInit {
   ngAfterContentInit() {
     // reference to the dxc-toggles and manipulating them depending on the given data
     if (this.toggleGroup) {
-      this.toggleGroup.forEach((item:DxcToggleComponent, index: number) => {
+      this.toggleGroup.forEach((item: DxcToggleComponent, index: number) => {
         item.onClick.subscribe((value) => {
           if (!this.disabled) {
             this.valueChanged(value);
@@ -105,11 +105,10 @@ export class DxcToggleGroupComponent implements OnInit {
 
         setTimeout(() => {
           item.tabIndexValue = this.disabled ? -1 : this.tabIndex;
-          item.role = this.multiple ? 'switch': 'radio';
+          item.role = this.multiple ? "switch" : "radio";
           this.setToggleSelected(item);
         });
       });
-
     }
   }
 
@@ -127,8 +126,6 @@ export class DxcToggleGroupComponent implements OnInit {
     }
   }
 
-
-
   private valueChanged(selectedOption: any): void {
     let newSelectedOptions = [];
     //handle When value is defined
@@ -143,7 +140,8 @@ export class DxcToggleGroupComponent implements OnInit {
         }
         this.selectedOptions = newSelectedOptions;
       } else {
-        this.selectedOptions = selectedOption === this.selectedOptions ? null : selectedOption;
+        this.selectedOptions =
+          selectedOption === this.selectedOptions ? null : selectedOption;
       }
     } else if (this.multiple) {
       newSelectedOptions = this.value.map((v) => v);
@@ -153,22 +151,26 @@ export class DxcToggleGroupComponent implements OnInit {
       } else {
         newSelectedOptions.push(selectedOption);
       }
-    }else{
+    } else {
       newSelectedOptions = selectedOption;
     }
     this.changeSelectedToggle(this.multiple ? selectedOption : null);
     // Emit the new selected values
-    this.onChange.emit(this.isControlled ? newSelectedOptions: this.selectedOptions);
+    this.onChange.emit(
+      this.isControlled ? newSelectedOptions : this.selectedOptions
+    );
   }
 
-  private changeSelectedToggle(selectedValue? :string) {
+  private changeSelectedToggle(selectedValue?: string) {
     if (this.toggleGroup) {
-      if (selectedValue){
-        const filterToggles = this.toggleGroup.filter(item=> item.value === selectedValue);
+      if (selectedValue) {
+        const filterToggles = this.toggleGroup.filter(
+          (item) => item.value === selectedValue
+        );
         filterToggles.forEach((item) => {
           this.setToggleSelected(item);
         });
-      }else {
+      } else {
         this.toggleGroup.forEach((item) => {
           this.setToggleSelected(item);
         });
@@ -179,9 +181,13 @@ export class DxcToggleGroupComponent implements OnInit {
 
   private setToggleSelected(item: DxcToggleComponent) {
     if (this.multiple) {
-      this.isControlled ? item.selected = this.value.includes(item.value) : item.selected = this.selectedOptions.includes(item.value);
+      this.isControlled
+        ? (item.selected = this.value.includes(item.value))
+        : (item.selected = this.selectedOptions.includes(item.value));
     } else {
-      this.isControlled ? item.selected = item.value === this.value : item.selected = item.value === this.selectedOptions;
+      this.isControlled
+        ? (item.selected = item.value === this.value)
+        : (item.selected = item.value === this.selectedOptions);
     }
   }
 
@@ -205,8 +211,7 @@ export class DxcToggleGroupComponent implements OnInit {
             cursor: not-allowed;
           }
           &.selected {
-            background: var(
-              --toggleGroup-selectedDisabledBackgroundColor);
+            background: var(--toggleGroup-selectedDisabledBackgroundColor);
             color: var(--toggleGroup-selectedDisabledFontColor);
             .icon img,
             .icon svg {
@@ -250,9 +255,7 @@ export class DxcToggleGroupComponent implements OnInit {
               fill: var(--toggleGroup-selectedFontColor);
             }
             &:active {
-              background: var(
-                --toggleGroup-selectedActiveBackgroundColor
-              );
+              background: var(--toggleGroup-selectedActiveBackgroundColor);
               color: #ffffff;
             }
             &:hover {
@@ -273,30 +276,32 @@ export class DxcToggleGroupComponent implements OnInit {
       display: inline-flex;
       flex-direction: column;
       ${this.utils.getMargins(inputs.margin)};
-      label{
-        color: ${this.disabled ? 'var(--toggleGroup-disabledLabelFontColor)' : 'var(--toggleGroup-labelFontColor)' };
+      label {
+        color: ${this.disabled
+          ? "var(--toggleGroup-disabledLabelFontColor)"
+          : "var(--toggleGroup-labelFontColor)"};
         font-family: var(--toggleGroup-labelFontFamily);
         font-size: var(--toggleGroup-labelFontSize);
         font-style: var(--toggleGroup-labelFontStyle);
         font-weight: var(--toggleGroup-labelFontWeight);
         line-height: var(--toggleGroup-labelLineHeight);
-
       }
 
-
-    .helperText{
-      color: ${this.disabled ? 'var(--toggleGroup-disabledHelperTextFontColor)' : 'var(--toggleGroup-helperTextFontColor)' };
-      font-family: var(--toggleGroup-helperTextFontFamily);
-      font-size: var(--toggleGroup-helperTextFontSize);
-      font-style: var(--toggleGroup-helperTextFontStyle);
-      font-weight: var(--toggleGroup-helperTextFontWeight);
-      line-height: var(--toggleGroup-helperTextLineHeight);
-    }
-      .toggleContainer{
+      .helperText {
+        color: ${this.disabled
+          ? "var(--toggleGroup-disabledHelperTextFontColor)"
+          : "var(--toggleGroup-helperTextFontColor)"};
+        font-family: var(--toggleGroup-helperTextFontFamily);
+        font-size: var(--toggleGroup-helperTextFontSize);
+        font-style: var(--toggleGroup-helperTextFontStyle);
+        font-weight: var(--toggleGroup-helperTextFontWeight);
+        line-height: var(--toggleGroup-helperTextLineHeight);
+      }
+      .toggleContainer {
         display: inline-flex;
         flex-direction: row;
-        opacity: 1px;
-        height: calc(48px - 4px - 4px);
+        opacity: 1;
+        height: 48px;
         padding: 4px;
         margin-top: var(--toggleGroup-containerMarginTop);
         border-width: var(--toggleGroup-containerBorderThickness);
@@ -304,13 +309,16 @@ export class DxcToggleGroupComponent implements OnInit {
         border-radius: var(--toggleGroup-containerBorderRadius);
         border-color: var(--toggleGroup-containerBorderColor);
         background-color: var(--toggleGroup-containerBackgroundColor);
-        padding: 4px;
         margin-top: var(--toggleGroup-containerMarginTop);
         align-items: center;
         min-height: 40px;
+        box-sizing: border-box;
       }
-
       ${this.disabledStyles()};
+
+      dxc-toggle:not(:last-of-type) {
+        margin-right: 4px;
+      }
     `;
   }
 }

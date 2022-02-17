@@ -3,7 +3,7 @@ name: "Chromatic"
 on:
   push:
     branches:
-      - master
+      - storybook
   pull_request:
 
 jobs:

@@ -194,12 +194,12 @@
     "width": "length"
   },
   "checkbox": {
-    "backgroundColorChecked": "color",
-    "backgroundColorCheckedOnDark": "color",
-    "hoverBackgroundColorChecked": "color",
-    "hoverBackgroundColorCheckedOnDark": "color",
-    "disabledBackgroundColorChecked": "color",
-    "disabledBackgroundColorCheckedOnDark": "color",
+    "selectedBackgroundColor": "color",
+    "selectedBackgroundColorOnDark": "color",
+    "selectedHoverBackgroundColor": "color",
+    "selectedHoverBackgroundColorOnDark": "color",
+    "selectedDisabledBackgroundColor": "color",
+    "selectedDisabledBackgroundColorOnDark": "color",
     "borderColor": "color",
     "borderColorOnDark": "color",
     "hoverBorderColor": "color",
@@ -342,7 +342,7 @@
     "scrollBarTrackColor": "color",
     "focusColor": "color"
   },
-  "fileInput":{
+  "fileInput": {
     "dropBorderColor": "color",
     "fileItemBorderColor": "color",
     "fileItemIconColor": "color",
@@ -1249,7 +1249,7 @@
     "containerBorderStyle": "bStyle",
     "containerBorderRadius": "length",
     "optionFocusBorderThickness": "bWidth",
-    "optionFocusBorderStyle":  "bStyle",
+    "optionFocusBorderStyle": "bStyle",
     "optionFocusBorderRadius": "length"
   },
   "upload": {

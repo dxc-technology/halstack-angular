@@ -117,8 +117,8 @@ export class DxcCheckboxComponent implements OnInit {
 
   /**
    * Size of the margin to be applied to the component
-   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
-   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties 
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
   @Input() margin: Space | Margin;
@@ -242,13 +242,13 @@ export class DxcCheckboxComponent implements OnInit {
       vertical-align: top;
       .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
       .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-        background: var(--checkbox-backgroundColorChecked) !important;
+        background: var(--checkbox-selectedBackgroundColor) !important;
       }
 
       .mat-checkbox-checked .mat-checkbox-inner-container {
         &:hover {
           .mat-checkbox-background {
-            background: var(--checkbox-hoverBackgroundColorChecked) !important;
+            background: var(--checkbox-selectedHoverBackgroundColor) !important;
           }
         }
       }
@@ -265,9 +265,9 @@ export class DxcCheckboxComponent implements OnInit {
           label.mat-checkbox-layout {
             .mat-checkbox-inner-container {
               .mat-checkbox-background {
-                outline: -webkit-focus-ring-color auto 2px;
-                outline-color: var(--checkbox-focusColor);
-                outline-offset: 3px;
+                outline: 2px solid var(--checkbox-focusColor);
+                outline-offset: 1px;
+                border-radius: 2px;
               }
             }
           }
@@ -277,7 +277,10 @@ export class DxcCheckboxComponent implements OnInit {
           align-items: center;
           width: 100%;
           white-space: normal;
+          height: 24px;
+          margin-left: 3px;
           span.mat-checkbox-label {
+            line-height: 18px;
             span.checkboxLabel {
               word-break: normal;
               color: var(--checkbox-fontColor);
@@ -291,8 +294,8 @@ export class DxcCheckboxComponent implements OnInit {
 
           .mat-checkbox-inner-container {
             margin: ${inputs.labelPosition === "after"
-              ? "2px calc(var(--checkbox-checkLabelSpacing) + 6px) 2px 2px;"
-              : "2px 2px 2px calc(var(--checkbox-checkLabelSpacing) + 2px);"};
+              ? "0px var(--checkbox-checkLabelSpacing) 0px 0px;"
+              : "0px 0px 0px var(--checkbox-checkLabelSpacing);"};
             width: 18px;
             height: 18px;
 
@@ -304,6 +307,7 @@ export class DxcCheckboxComponent implements OnInit {
             }
 
             .mat-checkbox-background {
+              outline-offset: 1px;
               svg path {
                 stroke: var(--checkbox-checkColor) !important;
                 stroke-width: 3px;
@@ -336,7 +340,7 @@ export class DxcCheckboxComponent implements OnInit {
             }
             .mat-checkbox-background {
               background: var(
-                --checkbox-disabledBackgroundColorChecked
+                --checkbox-selectedDisabledBackgroundColor
               ) !important;
               svg path {
                 stroke: var(--checkbox-disabledCheckColor) !important;
@@ -361,14 +365,14 @@ export class DxcCheckboxComponent implements OnInit {
         }
         .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
         .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-          background: var(--checkbox-backgroundColorCheckedOnDark) !important;
+          background: var(--checkbox-selectedBackgroundColorOnDark) !important;
         }
 
         .mat-checkbox-checked .mat-checkbox-inner-container {
           &:hover {
             .mat-checkbox-background {
               background: var(
-                --checkbox-hoverBackgroundColorCheckedOnDark
+                --checkbox-selectedHoverBackgroundColorOnDark
               ) !important;
             }
           }
@@ -421,7 +425,7 @@ export class DxcCheckboxComponent implements OnInit {
             }
             .mat-checkbox-background {
               background: var(
-                --checkbox-disabledBackgroundColorCheckedOnDark
+                --checkbox-selectedDisabledBackgroundColorOnDark
               ) !important;
               svg path {
                 stroke: var(--checkbox-disabledCheckColorOnDark) !important;
@@ -433,7 +437,7 @@ export class DxcCheckboxComponent implements OnInit {
       &.hover:not(.dark) {
         .mat-checkbox-checked .mat-checkbox-inner-container {
           .mat-checkbox-background {
-            background: var(--checkbox-hoverBackgroundColorChecked) !important;
+            background: var(--checkbox-selectedHoverBackgroundColor) !important;
           }
         }
         label.mat-checkbox-layout
@@ -449,7 +453,7 @@ export class DxcCheckboxComponent implements OnInit {
         .mat-checkbox-checked .mat-checkbox-inner-container {
           .mat-checkbox-background {
             background: var(
-              --checkbox-hoverBackgroundColorCheckedOnDark
+              --checkbox-selectedHoverBackgroundColorOnDark
             ) !important;
           }
         }

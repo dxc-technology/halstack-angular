@@ -8,10 +8,7 @@
     "primaryFontColor": "#ffffff",
     "secondaryHoverFontColor": "#ffffff"
   },
-  "checkbox": {
-    "baseColor": "#0067b3",
-    "checkColor": "#ffffff"
-  },
+  "checkbox": {},
   "chip": {
     "baseColor": "#eeeeee",
     "fontColor": "#000000"

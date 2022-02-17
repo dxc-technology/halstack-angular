@@ -346,12 +346,12 @@ export const componentTokens = {
   "--card-width": "400px",
 
   //CHECKBOX
-  "--checkbox-backgroundColorChecked": globalTokens.hal_blue_s_35,
-  "--checkbox-backgroundColorCheckedOnDark": globalTokens.hal_grey_l_90,
-  "--checkbox-hoverBackgroundColorChecked": globalTokens.hal_blue_d_20,
-  "--checkbox-hoverBackgroundColorCheckedOnDark": globalTokens.hal_white,
-  "--checkbox-disabledBackgroundColorChecked": globalTokens.hal_grey_l_60,
-  "--checkbox-disabledBackgroundColorCheckedOnDark":
+  "--checkbox-selectedBackgroundColor": globalTokens.hal_blue_s_35,
+  "--checkbox-selectedBackgroundColorOnDark": globalTokens.hal_grey_l_90,
+  "--checkbox-selectedHoverBackgroundColor": globalTokens.hal_blue_d_20,
+  "--checkbox-selectedHoverBackgroundColorOnDark": globalTokens.hal_white,
+  "--checkbox-selectedDisabledBackgroundColor": globalTokens.hal_grey_l_60,
+  "--checkbox-selectedDisabledBackgroundColorOnDark":
     globalTokens.color_grey_800,
   "--checkbox-borderColor": globalTokens.hal_blue_s_35,
   "--checkbox-borderColorOnDark": globalTokens.hal_grey_l_90,
@@ -372,7 +372,7 @@ export const componentTokens = {
   "--checkbox-disabledFontColorOnDark": globalTokens.hal_grey_l_60,
   "--checkbox-focusColor": globalTokens.hal_blue_l_50,
   "--checkbox-focusColorOnDark": globalTokens.hal_blue_l_50,
-  "--checkbox-checkLabelSpacing": "8px",
+  "--checkbox-checkLabelSpacing": "0.5rem",
 
   //CHIP
   "--chip-backgroundColor": globalTokens.hal_grey_l_90,
@@ -813,8 +813,7 @@ export const componentTokens = {
   "--textarea-disabledHelperTextFontColor": globalTokens.hal_grey_l_60,
   "--textarea-disabledHelperTextFontColorOnDark": globalTokens.hal_grey_l_60,
   "--textarea-disabledPlaceholderFontColor": globalTokens.hal_grey_l_60,
-  "--textarea-disabledPlaceholderFontColorOnDark":
-    globalTokens.hal_grey_l_60,
+  "--textarea-disabledPlaceholderFontColorOnDark": globalTokens.hal_grey_l_60,
   "--textarea-fontFamily": globalTokens.type_sans,
   "--textarea-labelFontColor": globalTokens.hal_black,
   "--textarea-labelFontColorOnDark": globalTokens.hal_white,
@@ -1047,13 +1046,16 @@ export const componentTokens = {
   "--select-errorMessagetLineHeight": globalTokens.type_leading_normal,
   "--select-errorMessageColor": globalTokens.hal_red_s_41,
   "--select-errorIconColor": globalTokens.hal_red_s_41,
-  
+
   "--select-selectionIndicatorFontColor": globalTokens.hal_black,
   "--select-selectionIndicatorBorderColor": globalTokens.hal_grey_l_75,
   "--select-selectionIndicatorBackgroundColor": globalTokens.color_grey_50,
-  "--select-enabledSelectionIndicatorActionBackgroundColor": globalTokens.transparent,
-  "--select-hoverSelectionIndicatorActionBackgroundColor": globalTokens.hal_grey_l_95,
-  "--select-activeSelectionIndicatorActionBackgroundColor": globalTokens.hal_grey_l_80,
+  "--select-enabledSelectionIndicatorActionBackgroundColor":
+    globalTokens.transparent,
+  "--select-hoverSelectionIndicatorActionBackgroundColor":
+    globalTokens.hal_grey_l_95,
+  "--select-activeSelectionIndicatorActionBackgroundColor":
+    globalTokens.hal_grey_l_80,
   "--select-enabledSelectionIndicatorActionIconColor": globalTokens.hal_black,
   "--select-hoverSelectionIndicatorActionIconColor": globalTokens.hal_black,
   "--select-activeSelectionIndicatorActionIconColor": globalTokens.hal_black,
@@ -1078,11 +1080,14 @@ export const componentTokens = {
   "--select-listOptionDividerColor": globalTokens.hal_grey_l_90,
   "--select-listGroupLabelFontWeight": globalTokens.type_semibold,
 
-  "--select-unselectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_95,
-  "--select-unselectedActiveListOptionBackgroundColor": globalTokens.hal_grey_l_90,
+  "--select-unselectedHoverListOptionBackgroundColor":
+    globalTokens.hal_grey_l_95,
+  "--select-unselectedActiveListOptionBackgroundColor":
+    globalTokens.hal_grey_l_90,
   "--select-selectedListOptionBackgroundColor": globalTokens.hal_grey_l_90,
   "--select-selectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_80,
-  "--select-selectedActiveListOptionBackgroundColor": globalTokens.hal_blue_l_80,
+  "--select-selectedActiveListOptionBackgroundColor":
+    globalTokens.hal_blue_l_80,
   "--select-selectedListOptionIconColor": globalTokens.hal_blue_d_20,
 
   "--select-optionBorderThickness": "0px",
@@ -1122,7 +1127,6 @@ export const componentTokens = {
   "--select-arrowColor": globalTokens.hal_black,
   "--select-arrowColorOnDark": globalTokens.hal_white,
   "--select-collapseIndicatorColor": globalTokens.hal_black,
-
 
   //SIDENAV
   "--sidenav-backgroundColor": globalTokens.lighterGrey,

@@ -12,16 +12,48 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-spinner",
   templateUrl: "./dxc-spinner.component.html",
   providers: [CssUtils],
 })
 export class DxcSpinnerComponent implements OnInit {
+  /**
+   * The value of the progress indicator. If it's received the
+   * component is determinate, otherwise is indeterminate.
+   */
   @Input() value: number;
+  /**
+   * Text to be placed inside the spinner.
+   */
   @Input() label: string;
-  @Input() mode: string = "large";
-  @Input() margin: any;
+  /**
+   * Available modes of the spinner ('large' | 'small' | 'overlay').
+   */
+  @Input() mode: "large" | "small" | "overlay" = "large";
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * If true, the value is displayed inside the spinner..
+   */
   @Input()
   get showValue(): boolean {
     return this._showValue;
@@ -35,7 +67,6 @@ export class DxcSpinnerComponent implements OnInit {
   @HostBinding("class.overlay") isOverlayed: boolean = false;
   @HostBinding("class.small") isSmall: boolean = false;
   @HostBinding("class.large") isLarge: boolean = true;
-
   @ViewChild("svgBackgroundLarge") svgBackgroundLarge: ElementRef;
   @ViewChild("svgBackgroundSmall") svgBackgroundSmall: ElementRef;
   @ViewChild("svgLarge") svgLarge: ElementRef;
@@ -46,7 +77,6 @@ export class DxcSpinnerComponent implements OnInit {
   @ViewChild("circleSmall") circleSmall: ElementRef;
 
   isIndeterminate: boolean = true;
-
   largeSize: number = 140;
   smallSize: number = 16;
   radioLargeSize: number = 65;
@@ -256,7 +286,7 @@ export class DxcSpinnerComponent implements OnInit {
 
   getDynamicStyle(inputs) {
     return css`
-      ${this.utils.getMargins(inputs.margin)}
+      ${inputs.mode != "overlay" ? this.utils.getMargins(inputs.margin) : ""}
       display: inline-block;
       &.overlay {
         height: 100vh;
@@ -352,14 +382,6 @@ export class DxcSpinnerComponent implements OnInit {
               color: var(--spinner-progressValueFontColor);
             }
           }
-          /* &.notOverlayed {
-            height: auto;
-            width: auto;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1;
-          } */
         }
         @keyframes spinner-svg {
           0% {

@@ -15,12 +15,32 @@ import {
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
+type Space = {
+  xxsmall: "6px";
+  xsmall: "16px";
+  small: "24px";
+  medium: "36px";
+  large: "48px";
+  xlarge: "64px";
+  xxlarge: "100px";
+};
+
+type Padding = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-dialog",
   templateUrl: "./dxc-dialog.component.html",
   providers: [CssUtils, BackgroundProviderService],
 })
 export class DxcDialogComponent {
+  /**
+   * If true, the dialog will be displayed over a darker background that covers the content behind.
+   */
   @Input()
   get overlay(): boolean {
     return this._overlay;
@@ -29,6 +49,10 @@ export class DxcDialogComponent {
     this._overlay = coerceBooleanProperty(value);
   }
   private _overlay;
+
+  /**
+   * If true, the close 'x' button will be visible.
+   */
   @Input()
   get isCloseVisible(): boolean {
     return this._isCloseVisible;
@@ -37,7 +61,18 @@ export class DxcDialogComponent {
     this._isCloseVisible = coerceBooleanProperty(value);
   }
   private _isCloseVisible = true;
-  @Input() padding: any;
+
+  /**
+   * Size of the padding to be applied to the component ('xxsmall' | 'xsmall' |
+   * 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an
+   * object with 'top', 'bottom', 'left' and 'right' to
+   * specify different padding sizes.
+   */
+  @Input() padding: Space | Padding;
+
+  /**
+   * Value of the tabindex given to the close button.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -46,8 +81,18 @@ export class DxcDialogComponent {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
-  @Output() onCloseClick = new EventEmitter<any>();
-  @Output() onBackgroundClick = new EventEmitter<any>();
+
+  /**
+   * This event will emit when the user clicks the close 'x' button.
+   * The responsibility of hiding the dialog lies with the user.
+   */
+  @Output() onCloseClick: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * This event will emit when the user clicks the background.
+   * The responsibility of hiding the dialog lies with the user. 
+   * */
+  @Output() onBackgroundClick: EventEmitter<void> = new EventEmitter<void>();
 
   @HostBinding("class") className;
 
@@ -79,11 +124,11 @@ export class DxcDialogComponent {
   }
 
   public onCloseHandler($event: any): void {
-    this.onCloseClick.emit($event);
+    this.onCloseClick.emit();
   }
 
   public onBackgroundClickHandler($event: any): void {
-    this.onBackgroundClick.emit($event);
+    this.onBackgroundClick.emit();
   }
 
   private overlayStyle(overlay: boolean) {
@@ -172,7 +217,7 @@ export class DxcDialogComponent {
                 width: 3px;
               }
               ::-webkit-scrollbar-track {
-                background-color: #D9D9D9;
+                background-color: #d9d9d9;
                 border-radius: 3px;
               }
               ::-webkit-scrollbar-thumb {

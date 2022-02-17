@@ -1,32 +1,33 @@
 {
-    "data": [
-        {
-            "title": "Controlled tabs",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/controlled-tabs/controlled-tabs.component.html&initialpath=controlledTabs",
-                "title": "ControlledTabs"
-            }
-        },
-        {
-            "title": "Uncontrolled tabs",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/uncontrolled-tabs/uncontrolled-tabs.component.html&initialpath=uncontrolledTabs",
-                "title": "UncontrolledTabs"
-            }
-        },
-        {
-            "title": "Tabs with content",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/tabs-with-content/tabs-with-content.component.html&initialpath=tabsWithContent",
-                "title": "TabsWithContent"
-            }
-        },
-        {
-          "title": "Add tabs dynamically",
-          "iframe": {
-              "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/add-tabs-dynamically/add-tabs-dynamically.component.html&initialpath=addTabsDynamically",
-              "title": "AddTabsDynamically"
-          }
-        }
-    ]
+  "data": [
+    {
+      "title": "Controlled tabs",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/controlled-tabs/controlled-tabs.component.html&initialpath=controlledTabs",
+        "title": "ControlledTabs"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Uncontrolled tabs",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/uncontrolled-tabs/uncontrolled-tabs.component.html&initialpath=uncontrolledTabs",
+        "title": "UncontrolledTabs"
+      }
+    },
+    {
+      "title": "Tabs with content",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/tabs-with-content/tabs-with-content.component.html&initialpath=tabsWithContent",
+        "title": "TabsWithContent"
+      }
+    },
+    {
+      "title": "Add tabs dynamically",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/tabs/add-tabs-dynamically/add-tabs-dynamically.component.html&initialpath=addTabsDynamically",
+        "title": "AddTabsDynamically"
+      }
+    }
+  ]
 }

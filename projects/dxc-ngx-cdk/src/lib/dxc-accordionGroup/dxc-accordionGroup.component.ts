@@ -23,27 +23,49 @@ import {
   coerceBooleanProperty,
 } from "@angular/cdk/coercion";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-accordion-group",
   templateUrl: "./dxc-accordionGroup.component.html",
   providers: [CssUtils, AccordionService],
 })
 export class DxcAccordionGroupComponent implements OnChanges, OnInit {
-  @Input() margin: any;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * The index of the active accordion. If undefined, the component will be uncontrolled and the active accordion will be managed internally by the component.
+   * If null, the component will be controlled and all accordions will be closed.
+   */
   @Input()
-  get indexActive(): any {
+  get indexActive(): number {
     return this._indexActive;
   }
-  set indexActive(value: any) {
-    if (value === undefined || value === "undefined") {
-      this._indexActive = undefined;
-    } else if (value === null || value === "null") {
-      this._indexActive = null;
-    } else {
-      this._indexActive = coerceNumberProperty(value);
-    }
+  set indexActive(value: number) {
+    if (value == null) this._indexActive = value;
+    else this._indexActive = coerceNumberProperty(value);
   }
   private _indexActive;
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -52,10 +74,17 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
-  @Output() onActiveChange = new EventEmitter<any>();
+  /**
+   * This event will emit in case the user clicks on an accordion.
+   * The index of the clicked accordion will be passed as a parameter.
+   */
+  @Output() onActiveChange: EventEmitter<number> = new EventEmitter<number>();
 
   @HostBinding("class") className;
 
+  /**
+   * Customized accordion that allows this accordion group component. Accordion component can be checked here.
+   */
   @ContentChildren(DxcAccordionComponent)
   dxcAccordion: QueryList<DxcAccordionComponent>;
 

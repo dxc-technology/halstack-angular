@@ -5,7 +5,8 @@
       "iframe": {
         "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/date/sized-date/sized-date.component.html&initialpath=sizedDate",
         "title": "Sized Date"
-      }
+      },
+      "visibility": true
     },
     {
       "title": "Uncontrolled Date",

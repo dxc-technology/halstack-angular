@@ -5,7 +5,8 @@
       "iframe": {
         "src": "https://stackblitz.com/edit/halstack-angular-examples-next?file=src/app/views/checkbox/checkbox-label-position/checkbox-label-position.component.html&initialpath=checkboxLabelPosition",
         "title": "CheckboxLabelPosition"
-      }
+      },
+      "visibility": true
     },
     {
       "title": "Checkbox Uncontrolled",

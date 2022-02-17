@@ -14,7 +14,22 @@ import { CssUtils } from "../utils";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
 import { WizardService } from "./services/wizard.service";
 import { ChangeDetectorRef } from "@angular/core";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 
 @Component({
   selector: "dxc-wizard",
@@ -22,9 +37,22 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
   providers: [CssUtils, WizardService],
 })
 export class DxcWizardComponent {
-  @Input() mode: string = "horizontal";
-  @Input() currentStep: number;
-  @Input() margin: any;
+  /**
+   * The wizard can be showed in horizontal or vertical.
+   */
+  @Input() mode: "horizontal" | "vertical" = "horizontal";
+  /**
+   * Defines which step is marked as the current. The numeration starts in 0.
+   */
+  @Input() currentStep: number = 0;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Margin | Space;
+  /**
+   * Value of the tabindex attribute that is given to all the steps.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -32,8 +60,12 @@ export class DxcWizardComponent {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
-  @Output() onStepClick = new EventEmitter<any>();
+  private _tabIndexValue = 0;
+  /**
+   * This event will emit in case the user clicks a step. The step
+   * number will be passed as a parameter.
+   */
+  @Output() onStepClick: EventEmitter<number> = new EventEmitter<number>();
 
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;
@@ -42,7 +74,7 @@ export class DxcWizardComponent {
 
   defaultInputs = new BehaviorSubject<any>({
     mode: "horizontal",
-    currentStep: null,
+    currentStep: 0,
     margin: null,
   });
 

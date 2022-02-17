@@ -13,21 +13,26 @@
   <tr>
     <td>underlined: boolean</td>
     <td>
-      <code>true</code>
+      <code>false</code>
     </td>
     <td>Wether a contrast line should appear at the bottom of the header.</td>
   </tr>
   <tr>
     <td>logoSrc: string</td>
-    <td>
-      <code>'default'</code>
-    </td>
+    <td></td>
     <td>The path of an icon to replace the theme logo.</td>
+  </tr>
+  <tr>
+    <td>logoResponsiveSrc: string</td>
+    <td></td>
+    <td>
+      The path of an icon to replace the theme logo in responsive version.
+    </td>
   </tr>
   <tr>
     <td>onClick: EventEmitter</td>
     <td></td>
-    <td>This function will be called when the user clicks the header logo.</td>
+    <td>This event will emit in case the user clicks the header logo.</td>
   </tr>
   <tr>
     <td>children: node</td>
@@ -40,7 +45,10 @@
   <tr>
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
-    <td>Value of the tabindex for all interactuable elements, except those inside the custom area.</td>
+    <td>
+      Value of the tabindex for all interactuable elements, except those inside
+      the custom area.
+    </td>
   </tr>
   <tr>
     <td>margin: string</td>
@@ -51,7 +59,7 @@
     </td>
   </tr>
   <tr>
-    <td>padding: any (string | object)</td>
+    <td>padding: string | object</td>
     <td></td>
     <td>
       Size of the padding to be applied to the custom area of the component

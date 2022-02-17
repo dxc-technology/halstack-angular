@@ -21,7 +21,7 @@
     <td>Color of the image background.</td>
   </tr>
   <tr>
-    <td>imagePadding: any (string | object)</td>
+    <td>imagePadding: string | object</td>
     <td></td>
     <td>
       Size of the padding to be applied to the image section of the component
@@ -31,14 +31,14 @@
     </td>
   </tr>
   <tr>
-    <td>imagePosition: string ('after' | 'before')</td>
+    <td>imagePosition: 'after' | 'before'</td>
     <td>
       <code>'before'</code>
     </td>
     <td>Whether the image should appear in relation to the content.</td>
   </tr>
   <tr>
-    <td>contentPadding: any (string | object)</td>
+    <td>contentPadding: string | object</td>
     <td></td>
     <td>
       Size of the padding to be applied to the content section of the component
@@ -51,7 +51,7 @@
     <td>linkHref: string</td>
     <td></td>
     <td>
-      If defined, the tag will be displayed as an anchor, using this prop as
+      If defined, the card will be displayed as an anchor, using this prop as
       "href". Component will show some visual feedback on hover.
     </td>
   </tr>
@@ -59,8 +59,8 @@
     <td>onClick: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user clicks the tag. Component will
-      show some visual feedback on hover.
+      This event will emit when the user clicks the card. Component will show
+      some visual feedback on hover.
     </td>
   </tr>
   <tr>
@@ -69,7 +69,7 @@
     <td>Whether the image must cover the whole image area of the card.</td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
@@ -85,9 +85,7 @@
   </tr>
   <tr>
     <td>outlined: boolean</td>
-    <td><code>false</code></td>
-    <td>Whether the card must be outlined.
-    </td>
+    <td><code>true</code></td>
+    <td>Whether the card must be outlined.</td>
   </tr>
-
 </dxc-table>

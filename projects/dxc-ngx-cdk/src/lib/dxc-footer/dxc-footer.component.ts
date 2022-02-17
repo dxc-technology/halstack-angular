@@ -13,6 +13,27 @@ import { responsiveSizes } from "../variables";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
+export interface DxcFooterInputs{
+  margin: Space | Margin,
+  padding: Space | Margin
+}
+
 @Component({
   selector: "dxc-footer",
   templateUrl: "./dxc-footer.component.html",
@@ -22,13 +43,48 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;
 
+  /**
+   * An array of objects representing the links that will be rendered as
+   * icons at the top-right side of the footer. Each object has the
+   * following properties:
+   * - href: The path of an icon for the link.
+   * - logoSrc: URL of the page the link goes to.
+   */
   @Input() socialLinks: { href?: string; logoSrc?: string }[];
+  /**
+   * An array of objects representing the links that will be rendered at
+   * the bottom part of the footer. Each object has the following
+   * properties:
+   * - text: Text for the link.
+   * - href: URL of the page the link goes to.
+   */
   @Input() bottomLinks: { href?: string; text?: string }[];
-
+  /**
+   * The text that will be displayed as copyright disclaimer.
+   */
   @Input() copyright: string;
-  @Input() margin: any;
-  @Input() padding: any;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' |
+   * 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You
+   * can pass an object with 'top', 'bottom', 'left' and 'right' properties
+   * in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Size of the padding to be applied to the custom area of the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' |
+   * 'xxlarge'). You can pass an object with 'top', 'bottom', 'left' and
+   * 'right' properties in order to specify different padding sizes.
+   */
+  @Input() padding: Space | Margin;
+  /**
+   * The path of an icon to replace the theme logo.
+   */
   @Input() logoSrc: string;
+  /**
+   * Value of the tabindex for all interactuable elements, except those
+   * inside the custom area.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -36,21 +92,15 @@ export class DxcFooterComponent implements OnChanges {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
   defaultImglogo: string;
-  innerWidth;
-  isResponsive;
-
-  bottomLinksLength;
-
+  innerWidth: number;
+  isResponsive: boolean;
+  bottomLinksLength: number;
   currentBackgroundColor: string;
 
-  defaultInputs = new BehaviorSubject<any>({
-    socialLinks: {},
-    bottomLinks: {},
-    copyright: "",
-    logoSrc: null,
+  defaultInputs = new BehaviorSubject<DxcFooterInputs>({
     margin: null,
     padding: null,
   });
@@ -109,7 +159,7 @@ export class DxcFooterComponent implements OnChanges {
 
   constructor(private utils: CssUtils) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.innerWidth = window.innerWidth;
     this.currentBackgroundColor = this.utils.readProperty(
       "--footer-backgroundColor"
@@ -155,7 +205,7 @@ export class DxcFooterComponent implements OnChanges {
     return document.body.getAttribute("footer-logo");
   }
 
-  setFooterContainerStyle(input: any, responsive) {
+  setFooterContainerStyle(input: any, responsive: boolean) {
     return css`
       padding: ${responsive ? "20px" : "24px 36px"};
       background-color: var(--footer-backgroundColor);
@@ -177,7 +227,7 @@ export class DxcFooterComponent implements OnChanges {
     `;
   }
 
-  setFooterFooterStyle(responsive) {
+  setFooterFooterStyle(responsive: boolean) {
     return css`
       display: flex;
       justify-content: space-between;

@@ -4,16 +4,47 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-progressbar",
   templateUrl: "./dxc-progressbar.component.html",
   providers: [CssUtils],
 })
 export class DxcProgressbarComponent {
-  mode: string = "indeterminate";
+
+  /**
+   * The value of the progress indicator. If it's received the component is determinate otherwise is indeterminate.
+   */
   @Input() value: number;
+
+  /**
+   * Text to be placed above the progress bar.
+   */
   @Input() label: string;
+
+  /**
+   * Helper text to be placed under the progress bar.
+   */
   @Input() helperText: string;
+
+  /**
+   * If true, the value is displayed above the progress bar.
+   */
   @Input()
   get showValue(): boolean {
     return this._showValue;
@@ -21,7 +52,11 @@ export class DxcProgressbarComponent {
   set showValue(value: boolean) {
     this._showValue = coerceBooleanProperty(value);
   }
-  private _showValue;
+  private _showValue = false;
+
+  /**
+   * If true, the progress bar will be displayed as a modal.
+   */
   @Input()
   get overlay(): boolean {
     return this._overlay;
@@ -30,14 +65,19 @@ export class DxcProgressbarComponent {
     this._overlay = coerceBooleanProperty(value);
   }
   private _overlay = false;
-  @Input() margin: any;
+
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
 
   @HostBinding("class") className;
   @HostBinding("class.absolute") isAbsolute: boolean = false;
 
+  mode: string = "indeterminate";
+
   defaultInputs = new BehaviorSubject<any>({
-    showValue: false,
-    mode: "large",
     overlay: false,
   });
 
@@ -82,6 +122,7 @@ export class DxcProgressbarComponent {
       this.mode = "determinate";
     }
   }
+
   getDynamicStyle(inputs) {
     return css`
       ${this.utils.getMargins(inputs.margin)}
@@ -145,7 +186,7 @@ export class DxcProgressbarComponent {
           fill: transparent;
         }
       }
-      .helperText{
+      .helperText {
         font-family: var(--progressBar-helperTextFontFamily);
         font-size: var(--progressBar-helperTextFontSize);
         font-style: var(--progressBar-helperTextFontStyle);

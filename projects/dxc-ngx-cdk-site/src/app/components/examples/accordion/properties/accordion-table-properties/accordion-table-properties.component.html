@@ -13,7 +13,7 @@
   <tr>
     <td>label: string</td>
     <td></td>
-    <td>Text to be placed next to the button.</td>
+    <td>The panel label.</td>
   </tr>
   <tr>
     <td>iconSrc: string</td>
@@ -35,20 +35,24 @@
   </tr>
   <tr>
     <td>isExpanded: boolean</td>
-    <td><code>false</code></td>
-    <td>If true, the component will be expanded.</td>
+    <td></td>
+    <td>
+      Represents the state of the panel. When true, the component will be
+      expanded. If undefined, the component will be uncontrolled and its value
+      will be managed internally by the component.
+    </td>
   </tr>
   <tr>
     <td>onClick: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user clicks the icon to open/close
-      the panel. The state of the panel (opened/closed) should be passed as a
-      parameter
+      This event will emit in case the user clicks the accordion to expand
+      or collapse the panel. The new state of the panel will be passed as a
+      parameter.
     </td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
@@ -58,7 +62,7 @@
     </td>
   </tr>
   <tr>
-    <td>padding: any (string | object)</td>
+    <td>padding: string | object</td>
     <td></td>
     <td>
       Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall'

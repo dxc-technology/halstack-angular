@@ -1,25 +1,26 @@
 {
-    "data": [
-        {
-            "title": "Default Dialog",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next-next?file=src/app/views/dialog/default-dialog/default-dialog.component.html&initialpath=defaultDialog",
-                "title": "DefaultDialog"
-            }
-        },
-        {
-            "title": "Modal Dialog",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next-next?file=src/app/views/dialog/modal-dialog/modal-dialog.component.html&initialpath=modalDialog",
-                "title": "ModalDialog"
-            }
-        },
-        {
-            "title": "Close Dialog",
-            "iframe": {
-                "src": "https://stackblitz.com/edit/halstack-angular-examples-next-next?file=src/app/views/dialog/close-dialog/close-dialog.component.html&initialpath=closeDialog",
-                "title": "CloseDialog"
-            }
-        }
-    ]
+  "data": [
+    {
+      "title": "Default Dialog",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next-next?file=src/app/views/dialog/default-dialog/default-dialog.component.html&initialpath=defaultDialog",
+        "title": "DefaultDialog"
+      },
+      "visibility": true
+    },
+    {
+      "title": "Modal Dialog",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next-next?file=src/app/views/dialog/modal-dialog/modal-dialog.component.html&initialpath=modalDialog",
+        "title": "ModalDialog"
+      }
+    },
+    {
+      "title": "Close Dialog",
+      "iframe": {
+        "src": "https://stackblitz.com/edit/halstack-angular-examples-next-next?file=src/app/views/dialog/close-dialog/close-dialog.component.html&initialpath=closeDialog",
+        "title": "CloseDialog"
+      }
+    }
+  ]
 }

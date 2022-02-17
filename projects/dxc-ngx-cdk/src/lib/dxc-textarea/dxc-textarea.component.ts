@@ -85,7 +85,10 @@ export class DxcTextareaComponent implements OnInit {
   pattern = "";
 
   @Input()
-  length = { min: undefined, max: undefined };
+  minLength: number;
+
+  @Input()
+  maxLength: number;
 
   @Input()
   margin: Object | string;
@@ -221,7 +224,7 @@ export class DxcTextareaComponent implements OnInit {
     if (this.isRequired(value))
       return `This field is required. Please, enter a value.`;
     if (this.isLengthIncorrect(value))
-      return `Min length ${this.length.min}, Max length ${this.length.max}`;
+      return `Min length ${this.minLength}, Max length ${this.maxLength}`;
     if (value && !this.patternMatch(this.pattern, value))
       return `Please use a valid pattern`;
     return null;
@@ -242,11 +245,10 @@ export class DxcTextareaComponent implements OnInit {
 
   private isLengthIncorrect = (value) =>
     (value !== "" &&
-      this.length &&
-      this.length.min &&
+      this.minLength &&
       value &&
-      value.length < +this.length.min) ||
-    (this.length.max && value && value.length > +this.length.max);
+      value.length < +this.minLength) ||
+    (this.maxLength && value && value.length > +this.maxLength);
 
   private checkHeight() {
     if (this.textareaRef) {

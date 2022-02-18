@@ -159,13 +159,15 @@ export class DxcSelectHelper {
               width: 18px;
             }
           }
-          .expandIcon {
+          .collapseIndicator {
             display: flex;
             transform: rotate(0deg);
             &.opened {
               transform: rotate(180deg);
             }
             svg {
+              height: 16px;
+              width: 16px;
               fill: ${!inputs.disabled
                 ? "var(--select-collapseIndicatorColor)"
                 : "var(--select-disabledColor)"};

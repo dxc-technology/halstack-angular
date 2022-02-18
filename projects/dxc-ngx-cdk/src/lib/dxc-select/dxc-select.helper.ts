@@ -289,6 +289,7 @@ export class DxcSelectHelper {
               align-items: center;
               cursor: default;
               font-weight: var(--select-listGroupLabelFontWeight);
+              line-height: 1.715em;
             }
             .optionLabel {
               padding: 2px 0px 2px 14px;

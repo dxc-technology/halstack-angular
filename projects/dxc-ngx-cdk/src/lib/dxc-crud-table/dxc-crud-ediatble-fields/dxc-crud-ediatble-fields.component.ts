@@ -21,6 +21,11 @@ const UserGridStateRequest: IRequest = {
   methodtype: EMethod.GET
 };
 
+const MultiUserGridStateRequest: IRequest = {
+  url: '',
+  methodtype: EMethod.GET
+};
+
 const UserGridRequest: IRequest = {
   url: '',
   methodtype: EMethod.GET,
@@ -59,7 +64,7 @@ export class DxcCrudEdiatbleFieldsComponent implements OnInit {
   fieldsType = EFieldsType;
   gridStateRequest: IRequest = GridStateRequest;
   userGridStateRequest: IRequest = UserGridStateRequest;
-  multiUserGridStateRequest: IRequest = UserGridStateRequest;
+  multiUserGridStateRequest: IRequest = MultiUserGridStateRequest;
   resourceRequest: IRequest = ResourceRequest;
   lookupResourceRequest: IRequest = ResourceRequest;
   userGridRequest = UserGridRequest;

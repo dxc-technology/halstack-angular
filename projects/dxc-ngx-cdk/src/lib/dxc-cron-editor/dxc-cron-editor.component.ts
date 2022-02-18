@@ -45,6 +45,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
   public selectOptions = this.getSelectOptions();
   public state: any;
   private localCron = '* 0 0 ? * * *';
+  private defaultCron = '* 0 0 ? * * *';
   private isDirty: boolean;
   isExpression:boolean=true;
   expressionList: any = [];
@@ -87,6 +88,11 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
       if(this.advancedForm && this.advancedForm.get('subTab'))
       {
         this.advancedForm.get('subTab').setValue(changes?.cronType?.currentValue ? changes?.cronType?.currentValue : 'expression'); 
+        this.cron = this.defaultCron;
+        if(this.advancedForm != null && this.advancedForm.value !=null)
+        {
+          this.advancedForm.get('expression').setValue(this.cron); 
+        }
       }
     }
   }
@@ -345,6 +351,9 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
     } else {
       this.activeTab = 'advanced';
       this.state.advanced.expression = origCron;
+      if (this.advancedForm != null && origCron !== '' && origCron !=='0 0 0 1 1 ? *' && origCron !=='0 15 10 L-2 * ? *' ) {
+        this.advancedForm.get('expression').setValue(origCron); 
+      }
     }
   }
 

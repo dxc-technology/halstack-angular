@@ -7,34 +7,46 @@
  */
 
 /** IE 11 compatible closest implementation that is able to start from non-Element Nodes. */
-export function closest(element: EventTarget|Element|null|undefined, selector: string):
-    Element|null {
-  if (!(element instanceof Node)) { return null; }
+export function closest(
+  element: EventTarget | Element | null | undefined,
+  selector: string
+): Element | null {
+  if (!(element instanceof Node)) {
+    return null;
+  }
 
-  let curr: Node|null = element;
+  let curr: Node | null = element;
   while (curr != null && !(curr instanceof Element)) {
     curr = curr.parentNode;
   }
 
-  return curr && (hasNativeClosest ?
-      curr.closest(selector) : polyfillClosest(curr, selector)) as Element|null;
+  return (
+    curr &&
+    ((hasNativeClosest
+      ? (<HTMLElement>curr).closest(selector)
+      : polyfillClosest(<HTMLElement>curr, selector)) as Element | null)
+  );
 }
 
 /** Polyfill for browsers without Element.closest. */
-function polyfillClosest(element: Element, selector: string): Element|null {
-  let curr: Node|null = element;
-  while (curr != null && !(curr instanceof Element && matches(curr, selector))) {
+function polyfillClosest(element: Element, selector: string): Element | null {
+  let curr: Node | null = element;
+  while (
+    curr != null &&
+    !(curr instanceof Element && matches(curr, selector))
+  ) {
     curr = curr.parentNode;
   }
 
-  return (curr || null) as Element|null;
+  return (curr || null) as Element | null;
 }
 
-const hasNativeClosest = typeof Element != 'undefined' && !!Element.prototype.closest;
+const hasNativeClosest =
+  typeof Element != "undefined" && !!Element.prototype.closest;
 
 /** IE 11 compatible matches implementation. */
 function matches(element: Element, selector: string): boolean {
-  return element.matches ?
-      element.matches(selector) :
-      (element as any)['msMatchesSelector'](selector);
+  return element.matches
+    ? element.matches(selector)
+    : (element as any)["msMatchesSelector"](selector);
 }

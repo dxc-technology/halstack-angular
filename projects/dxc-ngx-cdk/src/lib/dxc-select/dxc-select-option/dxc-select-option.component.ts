@@ -106,23 +106,29 @@ export class DxcSelectOptionComponent implements OnInit {
       height: 32px;
       :hover {
         cursor: pointer;
-        background-color: var(--select-unselectedHoverListOptionBackgroundColor);
+        background-color: var(
+          --select-unselectedHoverListOptionBackgroundColor
+        );
       }
       :active {
-        background-color: var(--select-unselectedActiveListOptionBackgroundColor);
+        background-color: var(
+          --select-unselectedActiveListOptionBackgroundColor
+        );
       }
       ${inputs.checked && inputs.multiple ? this.setSelectedStyles() : ""}
       &.selected {
         ${this.setSelectedStyles()}
         &.focused {
-          background-color: var(--select-selectedHoverListOptionBackgroundColor);
+          background-color: var(
+            --select-selectedHoverListOptionBackgroundColor
+          );
         }
         .optionLabel {
           border-bottom: 1px solid transparent;
         }
       }
       &.focused {
-        box-shadow: inset 0 0 0 2px #0095ff;
+        box-shadow: inset 0 0 0 2px var(--select-focusListOptionBorderColor);
         .optionLabel {
           border-bottom: 1px solid transparent;
         }
@@ -134,7 +140,7 @@ export class DxcSelectOptionComponent implements OnInit {
         margin: 2px 8px;
         height: 100%;
         box-sizing: border-box;
-        border-bottom: 1px solid var(--select-ListOptionDividerColor);
+        border-bottom: 1px solid var(--select-listOptionDividerColor);
         .iconLabel {
           display: flex;
           align-items: center;
@@ -160,7 +166,7 @@ export class DxcSelectOptionComponent implements OnInit {
           display: flex;
           margin-right: 8px;
           align-items: center;
-          svg{
+          svg {
             fill: var(--select-selectedListOptionIconColor);
             width: 16px;
             height: 16px;
@@ -171,6 +177,7 @@ export class DxcSelectOptionComponent implements OnInit {
         width: 100%;
         height: 100%;
         display: flex;
+        align-items: center;
         div {
           display: flex;
         }

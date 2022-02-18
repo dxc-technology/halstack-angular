@@ -162,6 +162,10 @@ export class DxcSelectHelper {
           .collapseIndicator {
             display: flex;
             transform: rotate(0deg);
+            height: 24px;
+            width: 24px;
+            align-items: center;
+            justify-content: center;
             &.opened {
               transform: rotate(180deg);
             }

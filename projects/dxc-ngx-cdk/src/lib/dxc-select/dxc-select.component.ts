@@ -716,6 +716,10 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   setDisplayValueContainer() {
-    return this.service.getSizeSelectedValues() <= 0 && this.multiple;
+    return (
+      this.service.getSizeSelectedValues() <= 0 &&
+      this.multiple &&
+      this.searchable
+    );
   }
 }

@@ -146,7 +146,7 @@ export class DxcSelectOptionComponent implements OnInit {
           align-items: center;
           margin-left: ${!inputs.multiple ? "8px" : ""};
           svg {
-            fill: var(--select-ListOptionIconColor);
+            fill: var(--select-listOptionIconColor);
           }
         }
         .label {
@@ -157,10 +157,10 @@ export class DxcSelectOptionComponent implements OnInit {
           margin-left: 0.5rem;
           margin-right: 0.5rem;
           font-family: var(--select-fontFamily);
-          font-size: var(--select-ListOptionFontSize);
-          font-style: var(--select-ListOptionFontStyle);
-          font-weight: var(--select-ListOptionFontWeight);
-          color: var(--select-ListOptionFontColor);
+          font-size: var(--select-listOptionFontSize);
+          font-style: var(--select-listOptionFontStyle);
+          font-weight: var(--select-listOptionFontWeight);
+          color: var(--select-listOptionFontColor);
         }
         .checkIcon {
           display: flex;

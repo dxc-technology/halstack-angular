@@ -530,6 +530,11 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     this.inputValue = value;
   }
 
+  handlePropagation(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   handleClearInput(event) {
     event.preventDefault();
     event.stopPropagation();

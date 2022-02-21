@@ -109,7 +109,8 @@
     <button
       *ngIf="inputValue?.length > 0 && !disabled && isInputVisible"
       class="inputClear"
-      (mousedown)="handleClearInput($event)"
+      (mousedown)="handlePropagation($event)"
+      (mouseup)="handleClearInput($event)"
       [disabled]="disabled"
       [tabindex]="tabIndex"
       title="Clear search text"

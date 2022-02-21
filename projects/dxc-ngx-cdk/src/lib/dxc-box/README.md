@@ -46,7 +46,7 @@ The API properties are the following:
         <td>
         <code>'inline-flex'</code>
         </td>
-        <td>Changes the display CSS property of the Box div.</td>
+        <td>Changes the display CSS property of the box div.</td>
     </tr>
     <tr>
         <td>@Input<br>margin: any (string | object)</td>

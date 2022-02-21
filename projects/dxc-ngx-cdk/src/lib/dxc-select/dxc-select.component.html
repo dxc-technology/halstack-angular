@@ -14,7 +14,7 @@
   ngModel
   [name]="name"
   [value]="formValues"
-  style="display: none"
+  style="display: none;"
   readOnly
   attr.aria-hidden="true"
 />
@@ -37,7 +37,11 @@
   [attr.aria-invalid]="error ? 'true' : 'false'"
   attr.aria-required="{{ !optional }}"
 >
-  <div class="valueContainer" *ngIf="!searchable || (searchable && multiple)">
+  <div
+    class="valueContainer"
+    *ngIf="!searchable || (searchable && multiple)"
+    [ngClass]="setDisplayValueContainer() ? 'noValuesSelected' : ''"
+  >
     <div
       class="numberOfSelected"
       *ngIf="service.getSizeSelectedValues() > 0 && multiple"

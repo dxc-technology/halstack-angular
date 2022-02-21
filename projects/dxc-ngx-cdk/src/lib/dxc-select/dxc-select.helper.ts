@@ -66,6 +66,9 @@ export class DxcSelectHelper {
             : ""}
         }
         .valueContainer {
+          &.noValuesSelected {
+            display: none;
+          }
           display: flex;
           flex-direction: row;
           width: ${inputs.searchable && inputs.multiple ? "" : "100%"};

@@ -38,6 +38,8 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
         } else {
           this.selectedOptions[0] = newOptions;
         }
+      } else {
+        this.selectedOptions = [];
       }
     });
   }
@@ -91,27 +93,25 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           font-size: var(--select-valueFontSize);
           font-style: var(--select-valueFontStyle);
           font-weight: var(--select-valueFontWeight);
-          color: ${
-            inputs.disabled
-              ? "var(--select-disabledColor)"
-              : "var(--select-valueFontColor)"
-          };
-          .iconLabel{
+          color: ${inputs.disabled
+            ? "var(--select-disabledColor)"
+            : "var(--select-valueFontColor)"};
+          .iconLabel {
             width: 24px;
             height: 24px;
             display: inline-flex;
             align-items: center;
           }
-          .comma{
+          .comma {
             margin-right: 4px;
           }
-          .iconLabel{
+          .iconLabel {
             margin-right: 0.25rem;
           }
-          .isOptionalLabel{
-            color: ${
-              inputs.disabled ? "var(--select-disabledColor)" : "#000000b3"
-            };
+          .isOptionalLabel {
+            color: ${inputs.disabled
+              ? "var(--select-disabledColor)"
+              : "#000000b3"};
           }
         }
         .notSelectedLabel {
@@ -120,11 +120,9 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           font-size: var(--select-placeholderFontSize);
           font-style: var(--select-placeholderFontStyle);
           font-weight: var(--select-placeholderFontWeight);
-          color: ${
-            inputs.disabled
-              ? "var(--select-disabledColor)"
-              : "var(--select-placeholderFontColor)"
-          };
+          color: ${inputs.disabled
+            ? "var(--select-disabledColor)"
+            : "var(--select-placeholderFontColor)"};
         }
       }
     `;

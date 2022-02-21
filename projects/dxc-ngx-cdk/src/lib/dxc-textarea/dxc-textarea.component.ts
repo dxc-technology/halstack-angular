@@ -73,7 +73,7 @@ export class DxcTextareaComponent implements OnInit {
   private _rows = 4;
 
   @Input()
-  verticalGrow = "";
+  verticalGrow = "auto";
 
   @Input()
   error = undefined;

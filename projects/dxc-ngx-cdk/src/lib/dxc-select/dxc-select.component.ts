@@ -254,8 +254,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         }
       } else {
         if (this.optionGroupRef) {
-          const optionGroupElement =
-            this.optionGroupRef?.toArray()[value.group];
+          const optionGroupElement = this.optionGroupRef?.toArray()[
+            value.group
+          ];
           optionGroupElement &&
             this.scrollByIndex(optionGroupElement, value.option + 1);
         }
@@ -395,7 +396,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     this.focusedOption.group === indexGroup;
 
   setDefaultValues() {
-    if (this.value) {
+    if (this.value !== undefined && this.value !== null) {
       if (Array.isArray(this.value)) {
         const arr = [];
         this.value.map((value) => {

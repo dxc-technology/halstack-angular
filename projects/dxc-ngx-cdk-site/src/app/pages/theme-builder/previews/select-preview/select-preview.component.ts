@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Option } from '@dxc-technology/halstack-angular/lib/dxc-select/interfaces/option.interface';
-import { OptionGroup } from '@dxc-technology/halstack-angular/lib/dxc-select/interfaces/optionGroup.interface';
+import { Component, OnInit } from "@angular/core";
+import { Option } from "@dxc-technology/halstack-angular/lib/dxc-select/interfaces/option.interface";
+import { OptionGroup } from "@dxc-technology/halstack-angular/lib/dxc-select/interfaces/optionGroup.interface";
 
 @Component({
-  selector: 'app-select',
-  templateUrl: './select-preview.component.html'
+  selector: "app-select",
+  templateUrl: "./select-preview.component.html",
 })
 export class SelectPreviewComponent implements OnInit {
+  selectedValues: string = "";
 
   array1: Option[] = [
     {
@@ -62,21 +63,33 @@ export class SelectPreviewComponent implements OnInit {
     },
   ];
 
-  arrayValue = ['1','2'];
+  arrayValue = ["1", "2"];
 
   value = "1";
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  onChange(event){
+  onChange(event) {
     console.log("onchange:", event);
   }
 
-  onBlur(event){
+  onBlur(event) {
     console.log("onBlur:", event);
   }
 
+  onChangeTest(event) {
+    this.selectedValues = event.value;
+    console.log("onchange:", event);
+  }
+
+  onBlurTest(event) {
+    console.log("onBlur:", event);
+  }
+
+  onResetTest(event) {
+    console.log(event);
+    this.selectedValues = "";
+  }
 }

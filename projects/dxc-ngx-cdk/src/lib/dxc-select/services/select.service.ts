@@ -12,11 +12,12 @@ export class SelectService {
 
   public selectedValues: BehaviorSubject<any> = new BehaviorSubject(null);
   public filteredOptions: BehaviorSubject<any> = new BehaviorSubject(null);
-  public visualFocused: BehaviorSubject<VisualOptionFocus> =
-    new BehaviorSubject({
-      group: -1,
-      option: -1,
-    });
+  public visualFocused: BehaviorSubject<
+    VisualOptionFocus
+  > = new BehaviorSubject({
+    group: -1,
+    option: -1,
+  });
   public activeOption: BehaviorSubject<VisualOptionFocus> = new BehaviorSubject(
     {
       group: -1,
@@ -25,7 +26,7 @@ export class SelectService {
   );
 
   public setSelectedValues(newOptions): void {
-    this.selectedValues.next(newOptions);
+    this.selectedValues.next(newOptions ?? null);
   }
 
   public setVisualFocused(newFocus): void {

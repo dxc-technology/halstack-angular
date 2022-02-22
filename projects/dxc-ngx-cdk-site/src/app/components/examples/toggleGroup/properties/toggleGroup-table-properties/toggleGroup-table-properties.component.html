@@ -18,7 +18,7 @@
     </td>
   </tr>
   <tr>
-    <td>value: any | any[]</td>
+    <td>value: string | string[]</td>
     <td></td>
     <td>
       Value(s) of the toggle(s) that are toggled. If undefined, the
@@ -32,7 +32,8 @@
       <code>false</code>
     </td>
     <td>
-      If false only one toggle can be toggled.
+      If true, the toggle group will support multiple selection.
+      In that case, value must be an array of numbers with the keys of the selected values.
     </td>
   </tr>
   <tr>
@@ -56,7 +57,7 @@
     </td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |

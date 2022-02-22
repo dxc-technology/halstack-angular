@@ -21,6 +21,23 @@ import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
 import { ChangeDetectorRef } from "@angular/core";
 import { v4 as uuidv4 } from "uuid";
 
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-togglegroup",
   templateUrl: "./dxc-toggleGroup.component.html",
@@ -29,6 +46,10 @@ import { v4 as uuidv4 } from "uuid";
   providers: [CssUtils],
 })
 export class DxcToggleGroupComponent implements OnInit {
+  /**
+  * If true, the toggle group will support multiple selection. 
+  * In that case, value must be an array of numbers with the keys of the selected values.
+  */
   @Input()
   get multiple(): boolean {
     return this._multiple;
@@ -37,6 +58,9 @@ export class DxcToggleGroupComponent implements OnInit {
     this._multiple = coerceBooleanProperty(value);
   }
   private _multiple = false;
+  /**
+  * If true, the component will be disabled.
+  */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -45,6 +69,9 @@ export class DxcToggleGroupComponent implements OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
+  /**
+  * Value of the tabindex which its propagated to their children components.
+  */
   @Input()
   get tabIndex(): number {
     return this._tabIndexValue;
@@ -53,12 +80,29 @@ export class DxcToggleGroupComponent implements OnInit {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
-  @Input() public margin: any;
+  /**
+  * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+  * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+  */
+  @Input() public margin: Space | Margin;
+  /**
+  * Text to be placed next to the input.
+  */
   @Input() label: string;
+  /**
+  * Assistive text to be placed bellow the input.
+  */
   @Input() helperText: string;
-
-  @Input() public value: any;
-  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+  /**
+  * Value(s) of the toggle(s) that are toggled. 
+  * If undefined, the component will be uncontrolled and the value will be managed internally by the component.
+  */ 
+  @Input() public value: string | string[];
+  /**
+  * This function will be called when the user changes the state of any toggle. 
+  * The new value or values will be passed as a parameter.
+  */
+  @Output() public onChange: EventEmitter<string | string[]> = new EventEmitter<string | string[]>();
   @ContentChildren(DxcToggleComponent)
   toggleGroup: QueryList<DxcToggleComponent>;
 

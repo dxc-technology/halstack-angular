@@ -44,15 +44,15 @@ The API properties are the following:
   <tr>
     <td>@Input<br>suffixIconSrc: string</td>
     <td></td>
-    <td>Path of the icon to be placed after the label.</td>
+    <td><b>Deprecated.</b>Path of the icon to be placed after the label.</td>
   </tr>
   <tr>
     <td>@Input<br>prefixIconSrc: string</td>
     <td></td>
-    <td>Path of the icon to be placed before the label.</td>
+    <td><b>Deprecated.</b>Path of the icon to be placed before the label.</td>
   </tr>
   <tr>
-    <td>@Input<br>margin: any (string | object)</td>
+    <td>@Input<br>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |

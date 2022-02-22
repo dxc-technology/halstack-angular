@@ -19,6 +19,23 @@ import { ChangeDetectorRef, QueryList } from "@angular/core";
 import { DxcChipPrefixIconComponent } from "./dxc-chip-prefix-icon/dxc-chip-prefix-icon.component";
 import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
 
+
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-chip",
   templateUrl: "./dxc-chip.component.html",
@@ -28,9 +45,21 @@ export class DxcChipComponent implements OnChanges {
   @HostBinding("class") className;
   @HostBinding("class.hasTabIndexPrefix") hasTabIndexPrefix: boolean = false;
   @HostBinding("class.hasTabIndexSuffix") hasTabIndexSuffix: boolean = false;
+  /**
+   * Text to be placed inside the chip.
+   */
   @Input() label: string;
+  /**
+   * @deprecated. Path of the icon to be placed after the label.
+   */
   @Input() suffixIconSrc: string;
+  /**
+   * @deprecated. Path of the icon to be placed before the label.
+   */
   @Input() prefixIconSrc: string;
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -39,17 +68,34 @@ export class DxcChipComponent implements OnChanges {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled;
-  @Input() margin: any;
-
-  @Output() suffixIconClick = new EventEmitter<any>();
-  @Output() prefixIconClick = new EventEmitter<any>();
-
+  /**
+   * Size of the margin to be applied to the component 
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties 
+   * in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Event that will be emitted when the suffix icon is clicked.
+   */
+  @Output() suffixIconClick = new EventEmitter<string | undefined >();
+  /**
+   * Event that will be emitted when the prefix icon is clicked.
+   */
+  @Output() prefixIconClick = new EventEmitter<string | undefined>();
+  /**
+   * Element used as icon to be placed before the chip label.
+   */
   @ContentChildren(DxcChipPrefixIconComponent)
   dxcChipPrefixIcon: QueryList<DxcChipPrefixIconComponent>;
-
+  /**
+   * Element used as icon to be placed after the chip label.
+   */
   @ContentChildren(DxcChipSuffixIconComponent)
   dxcChipSuffixIcon: QueryList<DxcChipSuffixIconComponent>;
-
+  /**
+   * Value of the tabindex, it also applies to prefix and suffix icons when a function is given.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;

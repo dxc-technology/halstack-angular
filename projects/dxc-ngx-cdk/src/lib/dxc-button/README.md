@@ -51,7 +51,7 @@ The API properties are the following:
     <tr>
       <td>@Input<br>label: string</td>
       <td></td>
-      <td>Text to be placed next to the button.</td>
+      <td>Text to be placed inside the button.</td>
     </tr>
     <tr>
       <td>@Input<br>iconSrc: string</td>

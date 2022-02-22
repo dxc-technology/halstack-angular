@@ -58,7 +58,7 @@ export class DxcButtonComponent {
   }
   private _disabled = false;
   /**
-   * Text to be placed next to the button.
+   * Text to be placed inside the button.
    */
   @Input() label: string;
   /**

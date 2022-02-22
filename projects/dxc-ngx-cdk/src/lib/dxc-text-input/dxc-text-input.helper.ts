@@ -193,7 +193,7 @@ export class DxcTextInputHelper {
         font-weight: var(--textInput-labelFontWeight);
         line-height: var(--textInput-labelLineHeight);
         min-height: 24px;
-        ${!inputs.helperText && `margin-bottom: 0.75rem;`}
+        ${!inputs.helperText && `margin-bottom: 0.25rem;`}
       }
       .inputOptionalLabel {
         font-weight: var(--textInput-optionalLabelFontWeight);
@@ -207,7 +207,7 @@ export class DxcTextInputHelper {
         font-weight: var(--textInput-helperTextFontWeight);
         line-height: var(--textInput-helperTextLineHeight);
         min-height: 18px;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.25rem;
       }
 
       .inputContainer {
@@ -322,7 +322,7 @@ export class DxcTextInputHelper {
         font-weight: var(--textInput-errorFontWeight);
         line-height: 1.5em;
         min-height: 18px;
-        margin-top: 0.75rem;
+        margin-top: 0.25rem;
       }
 
       dxc-text-input-action {

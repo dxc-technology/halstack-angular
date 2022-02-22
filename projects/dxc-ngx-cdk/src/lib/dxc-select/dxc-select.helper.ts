@@ -359,7 +359,7 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-labelFontColor)"};
         line-height: var(--select-labelLineHeight);
-        ${!inputs.helperText && `margin-bottom: 0.75rem;`}
+        ${!inputs.helperText && `margin-bottom: 0.25rem;`}
       }
       .optional {
         font-family: var(--select-fontFamily);
@@ -380,7 +380,7 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-helperTextFontColor)"};
         line-height: var(--select-helperTextLineHeight);
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.25rem;
       }
       .errorMessage {
         font-family: var(--select-fontFamily);
@@ -391,7 +391,7 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-errorMessageColor)"};
         line-height: var(--select-errorMessagetLineHeight);
-        margin-top: 0.75rem;
+        margin-top: 0.25rem;
         min-height: 18px;
       }
     `;

@@ -1097,16 +1097,20 @@
   },
   "tag": {
     "fontStyle": "normal",
-    "fontTextTransform": "uppercase",
-    "height": "43px",
+    "height": "40px",
     "iconColor": "#FFFFFF",
-    "iconSectionWidth": "48px",
+    "iconSectionWidth": "40px",
     "iconHeight": "24px",
     "iconWidth": "24px",
     "fontFamily": "Open Sans, sans-serif",
     "fontColor": "#000000",
     "fontSize": "0.875rem",
-    "fontWeight": "400"
+    "fontWeight": "400",
+    "focusColor": "#0095ff",
+    "labelPaddingTop": "0rem",
+    "labelPaddingBottom": "0rem",
+    "labelPaddingLeft": "1rem",
+    "labelPaddingRight": "1rem"
   },
   "table": {
     "rowSeparatorThickness": "1px",

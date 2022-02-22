@@ -931,12 +931,16 @@
   },
   "tag": {
     "fontStyle": "normal",
-    "fontTextTransform": "uppercase",
-    "height": "43px",
+    "height": "40px",
     "iconColor": "#FFFFFF",
-    "iconSectionWidth": "48px",
+    "iconSectionWidth": "40px",
     "iconHeight": "24px",
-    "iconWidth": "auto"
+    "iconWidth": "auto",
+    "focusColor": "#0095ff",
+    "labelPaddingTop": "0rem",
+    "labelPaddingBottom": "0rem",
+    "labelPaddingLeft": "1rem",
+    "labelPaddingRight": "1rem"
   },
   "table": {
     "rowSeparatorThickness": "1px",

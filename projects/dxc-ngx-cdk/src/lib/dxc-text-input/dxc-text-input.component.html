@@ -176,4 +176,4 @@
   </ul>
 </div>
 
-<span *ngIf="error && !disabled" class="inputErrorMessage">{{ error }}</span>
+<span *ngIf="isStringError(error) && !disabled" class="inputErrorMessage">{{ error }}</span>

@@ -272,4 +272,6 @@ export class DxcTextareaComponent implements OnInit {
       }
     }
   }
+
+  isStringError = (error) => typeof error === "string";
 }

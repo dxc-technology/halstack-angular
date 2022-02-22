@@ -714,4 +714,6 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   clickNotSelectable() {
     this.isNotSelectable = true;
   }
+
+  isStringError = (error) => typeof error === "string";
 }

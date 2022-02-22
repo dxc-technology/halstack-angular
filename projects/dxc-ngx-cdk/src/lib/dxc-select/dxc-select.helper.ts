@@ -53,8 +53,6 @@ export class DxcSelectHelper {
         outline: 0;
         cursor: ${inputs.disabled ? "not-allowed" : "pointer"};
         justify-content: space-between;
-        margin-top: 4px;
-        margin-bottom: 4px;
         :hover {
           ${!inputs.error && !inputs.disabled
             ? "border: 1px solid var(--select-hoverInputBorderColor);"
@@ -361,6 +359,7 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-labelFontColor)"};
         line-height: var(--select-labelLineHeight);
+        ${!inputs.helperText && `margin-bottom: 0.75rem;`}
       }
       .optional {
         font-family: var(--select-fontFamily);
@@ -381,6 +380,7 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-helperTextFontColor)"};
         line-height: var(--select-helperTextLineHeight);
+        margin-bottom: 0.75rem;
       }
       .errorMessage {
         font-family: var(--select-fontFamily);
@@ -391,6 +391,8 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-errorMessageColor)"};
         line-height: var(--select-errorMessagetLineHeight);
+        margin-top: 0.75rem;
+        min-height: 18px;
       }
     `;
   }

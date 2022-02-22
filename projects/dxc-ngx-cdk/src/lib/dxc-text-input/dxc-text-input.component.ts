@@ -465,6 +465,8 @@ export class DxcTextInputComponent
       value.length < +this.minLength) ||
     (this.maxLength && value && value.length > +this.maxLength);
 
+  isStringError = (error) => typeof error === "string";
+
   getAsyncSuggestions() {
     this.loading.next(true);
     this.fetchingError.next(false);

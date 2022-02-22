@@ -19,4 +19,4 @@
   (focus)="handleOnFocus()"
   [attr.autocomplete]="autocomplete"
 ></textarea>
-<span *ngIf="error && !disabled" class="textareaErrorMessage">{{ error }}</span>
+<span *ngIf="isStringError(error) && !disabled" class="textareaErrorMessage">{{ error }}</span>

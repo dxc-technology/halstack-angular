@@ -113,6 +113,7 @@ export class DxcTextareaHelper {
         font-weight: var(--textarea-labelFontWeight);
         line-height: var(--textarea-labelLineHeight);
         min-height: 24px;
+        ${!inputs.helperText && `margin-bottom: 0.75rem;`}
       }
       .textareaOptionalLabel {
         font-weight: var(--textarea-optionalLabelFontWeight);
@@ -126,6 +127,7 @@ export class DxcTextareaHelper {
         font-weight: var(--textarea-helperTextFontWeight);
         line-height: var(--textarea-helperTextLineHeight);
         min-height: 18px;
+        margin-bottom: 0.75rem;
       }
 
       .textarea {
@@ -136,7 +138,6 @@ export class DxcTextareaHelper {
             ? `resize: none; overflow: hidden;`
             : "resize: none;"
         };
-        margin: calc(1rem * 0.25) 0;
         padding: calc(1rem * 0.5) calc(1rem * 1);
         box-shadow: 0 0 0 2px transparent;
         border-radius: calc(1rem * 0.25);
@@ -186,6 +187,7 @@ export class DxcTextareaHelper {
         font-weight: var(--textarea-errorFontWeight);
         line-height: 1.5em;
         min-height: 18px;
+        margin-top: 0.75rem;
       }
       ${inputs.darkBackground ? this.getDarkStyle(inputs) : ""}
 

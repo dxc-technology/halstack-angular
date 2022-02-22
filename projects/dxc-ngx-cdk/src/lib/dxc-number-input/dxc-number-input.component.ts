@@ -87,7 +87,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   private _optional = false;
 
   @Input()
-  error = "";
+  error: string;
 
   @Input()
   placeholder = "";

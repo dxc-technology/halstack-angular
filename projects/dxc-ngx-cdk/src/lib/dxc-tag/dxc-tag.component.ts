@@ -20,6 +20,21 @@ import {
 import { ContentChildren, ChangeDetectorRef } from "@angular/core";
 import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
 
+type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 @Component({
   selector: "dxc-tag",
   templateUrl: "./dxc-tag.component.html",
@@ -27,14 +42,35 @@ import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
 })
 export class DxcTagComponent implements OnInit {
   isHovered = false;
-
-  @Input() size: string;
-  @Input() iconSrc: string;
-  @Input() iconBgColor: string;
+  /**
+   * Text to be placed next inside the tag.
+   */
   @Input() label: string;
-  @Input() labelPosition: string;
+  /**
+   * @deprecated URL of the icon.
+   */
+  @Input() iconSrc: string;
+  /**
+   * Background color of the icon section of the tag.
+   */
+  @Input() iconBgColor: string = "#5f249f";
+  /**
+   * Whether the label should appear after or before the icon.
+   */
+  @Input() labelPosition: "before" | "after" = "after";
+  /**
+   * If defined, the tag will be displayed as an anchor, using this prop as "href".
+   * Component will show some visual feedback on hover.
+   */
   @Input() linkHref: string;
-  @Input() margin: any;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * If true, the page is opened in a new browser tab.
+   */
   @Input()
   get newWindow(): boolean {
     return this._newWindow;
@@ -42,7 +78,14 @@ export class DxcTagComponent implements OnInit {
   set newWindow(value: boolean) {
     this._newWindow = coerceBooleanProperty(value);
   }
-  private _newWindow;
+  private _newWindow = false;
+  /**
+   * Size of the component.
+   */
+  @Input() size: Size = "fitContent";
+  /**
+   * Value of the tabindex.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -50,9 +93,13 @@ export class DxcTagComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
-
-  @Output() onClick = new EventEmitter<any>();
+  private _tabIndexValue = 0;
+  /**
+   * If defined, the tag will be displayed as a button. This function will
+   * be called when the user clicks the tag. Component will show some
+   * visual feedback on hover.
+   */
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
 
   isClickDefined = false;
   shadowDepth: string;

@@ -187,7 +187,7 @@ export class DxcToggleGroupComponent implements OnInit {
         this.selectedOptions =
           selectedOption === this.selectedOptions ? null : selectedOption;
       }
-    } else if (this.multiple) {
+    } else if (this.multiple && Array.isArray(this.value)) {
       newSelectedOptions = this.value.map((v) => v);
       if (newSelectedOptions.includes(selectedOption)) {
         const index = newSelectedOptions.indexOf(selectedOption);

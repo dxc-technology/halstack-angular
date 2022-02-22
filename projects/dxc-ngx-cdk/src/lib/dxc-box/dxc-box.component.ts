@@ -8,7 +8,30 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
-import { BackgroundProviderService } from '../background-provider/service/background-provider.service';
+import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+
+type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+type Padding = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-box",
   templateUrl: "./dxc-box.component.html",
@@ -16,11 +39,28 @@ import { BackgroundProviderService } from '../background-provider/service/backgr
 })
 export class DxcBoxComponent implements OnInit {
   @HostBinding("class") className;
-  @Input() shadowDepth: number;
-  @Input() display: string;
-  @Input() margin: any;
-  @Input() padding: any;
-  @Input() size: string;
+  /**
+   * The size of the shadow to be displayed around the box.
+   */
+  @Input() shadowDepth: 0 | 1 | 2 = 2;
+  /**
+   * Changes the display CSS property of the box div.
+   */
+  @Input() display: string = "inline-flex";
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
+   */
+  @Input() padding: Space | Padding;
+  /**
+   * Size of the component.
+   */
+  @Input() size: Size = "fitContent";
   currentBackgroundColor;
 
   sizes = {
@@ -59,7 +99,9 @@ export class DxcBoxComponent implements OnInit {
       result[item] = changes[item].currentValue;
       return result;
     }, {});
-    this.currentBackgroundColor = this.utils.readProperty('--box-backgroundColor');
+    this.currentBackgroundColor = this.utils.readProperty(
+      "--box-backgroundColor"
+    );
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

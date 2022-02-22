@@ -37,7 +37,7 @@ The API properties are the following:
         <th>Description</th>
     </tr>
     <tr>
-        <td>@Input<br>shadowDepth: number (0 | 1 | 2)</td>
+        <td>@Input<br>shadowDepth: 0 | 1 | 2</td>
         <td><code>2</code></td>
         <td>The size of the shadow to be displayed around the box.</td>
     </tr>
@@ -46,10 +46,10 @@ The API properties are the following:
         <td>
         <code>'inline-flex'</code>
         </td>
-        <td>Changes the display CSS property of the Box div.</td>
+        <td>Changes the display CSS property of the box div.</td>
     </tr>
     <tr>
-        <td>@Input<br>margin: any (string | object)</td>
+        <td>@Input<br>margin: string | object</td>
         <td></td>
         <td>
         Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
@@ -59,7 +59,7 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
-        <td>@Input<br>padding: any (string | object)</td>
+        <td>@Input<br>padding: string | object</td>
         <td></td>
         <td>
         Size of the padding to be applied to the component ('xxsmall' | 'xsmall' |

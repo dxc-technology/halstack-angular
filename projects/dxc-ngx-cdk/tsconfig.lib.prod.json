@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
     "module": "es2015",
+    "declarationMap": false,
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,

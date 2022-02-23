@@ -92,6 +92,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
         if(this.advancedForm != null && this.advancedForm.value !=null)
         {
           this.advancedForm.get('expression').setValue(this.cron); 
+          this.setDefaultCustomExpression();
         }
       }
     }
@@ -166,6 +167,24 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
     this.advancedForm.valueChanges.subscribe(next => this.computeAdvancedExpression(next));
   }
 
+  private setDefaultCustomExpression(){
+    this.advancedForm.get('custom').setValue({
+      days: ['*'],
+      hourType: "*",
+      hours: "*",
+      minutes: "*",
+      month: ['*'],
+      seconds: "0",
+      startDays: "none",
+      startHours: "none",
+      startMinutes: "none",
+      startMonth: "none",
+      startSeconds: "none",
+      startYear: "none",
+      year: "*"
+    });
+  }
+
   private computeAdvancedExpression(state: any) {
     this.cronType = state.subTab;
     this.cronTypeChange.emit(state.subTab);
@@ -193,7 +212,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
         }
         if (shouldUpdate)
           this.advancedForm.patchValue({ 'days': state.custom.days, 'month': state.custom.month });
-        this.cron = `${this.getStartFrom( state.custom.startSeconds)}${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${this.getStartFrom( state.custom.startMinutes)}${state.custom.minutes} ${this.getStartFrom( state.custom.startHours)}${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.getStartFrom( state.custom.startDays)}${state.custom.days.join(',')} ${this.getStartFrom( state.custom.startMonth)}${state.custom.month.join(',')} ${this.getStartFrom( state.custom.startYear)}${this.weekDayDefaultChar} ${state.custom.year}`.trim();
+          this.cron = `${this.getStartFrom(state.custom.startSeconds)}${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${this.getStartFrom(state.custom.startMinutes)}${state.custom.minutes} ${this.getStartFrom(state.custom.startHours)}${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.getStartFrom(state.custom.startDays)}${state.custom.days.join(',')} ${this.getStartFrom(state.custom.startMonth)}${state.custom.month.join(',')} ${this.weekDayDefaultChar} ${this.getCronYear(state.custom.startYear, state.custom.year)}`.trim();
         break;
       default:
         throw new Error('Invalid cron yearly subtab selection');
@@ -505,6 +524,17 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
   private getStartFrom(value) {
     return (value === 'none' || value === 'None') ? '' : value+'/';
   }
+
+  getCronYear(startyear, start) {
+    var year = '';
+    if (startyear != 'none')
+        year = startyear;
+    if (start != '*' && startyear != '')
+        year = year + '-' + start;
+    if (start != '*' && startyear === 'none')
+        year = start;
+    return year;
+}
 
 
   /*

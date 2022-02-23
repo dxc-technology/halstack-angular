@@ -6,8 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {QueryList} from '@angular/core';
-import {Subject, Subscription} from 'rxjs';
+import { QueryList } from "@angular/core";
+import { Subject, Subscription } from "rxjs";
 import {
   UP_ARROW,
   DOWN_ARROW,
@@ -21,8 +21,8 @@ import {
   hasModifierKey,
   HOME,
   END,
-} from '@angular/cdk/keycodes';
-import {debounceTime, filter, map, tap} from 'rxjs/operators';
+} from "@angular/cdk/keycodes";
+import { debounceTime, filter, map, tap } from "rxjs/operators";
 
 /** This interface is for items that can be passed to a ListKeyManager. */
 export interface ListKeyManagerOption {
@@ -34,7 +34,11 @@ export interface ListKeyManagerOption {
 }
 
 /** Modifier keys handled by the ListKeyManager. */
-export type ListKeyManagerModifierKey = 'altKey' | 'ctrlKey' | 'metaKey' | 'shiftKey';
+export type ListKeyManagerModifierKey =
+  | "altKey"
+  | "ctrlKey"
+  | "metaKey"
+  | "shiftKey";
 
 /**
  * This class manages keyboard events for selectable lists. If you pass it a query list
@@ -47,7 +51,7 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
   private _letterKeyStream = new Subject<string>();
   private _typeaheadSubscription = Subscription.EMPTY;
   private _vertical = true;
-  private _horizontal: 'ltr' | 'rtl' | null;
+  private _horizontal: "ltr" | "rtl" | null;
   private _allowedModifierKeys: ListKeyManagerModifierKey[] = [];
   private _homeAndEnd = false;
 
@@ -121,7 +125,7 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
    * Passing in `null` will disable horizontal movement.
    * @param direction Direction in which the selection can be moved.
    */
-  withHorizontalOrientation(direction: 'ltr' | 'rtl' | null): this {
+  withHorizontalOrientation(direction: "ltr" | "rtl" | null): this {
     this._horizontal = direction;
     return this;
   }
@@ -140,40 +144,43 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
    * @param debounceInterval Time to wait after the last keystroke before setting the active item.
    */
   withTypeAhead(debounceInterval: number = 200): this {
-    if ((typeof ngDevMode === 'undefined' || ngDevMode) && (this._items.length &&
-        this._items.some(item => typeof item.getLabel !== 'function'))) {
-      throw Error('ListKeyManager items in typeahead mode must implement the `getLabel` method.');
-    }
+    // if ((typeof ngDevMode === 'undefined' || ngDevMode) && (this._items.length &&
+    //     this._items.some(item => typeof item.getLabel !== 'function'))) {
+    //   throw Error('ListKeyManager items in typeahead mode must implement the `getLabel` method.');
+    // }
 
     this._typeaheadSubscription.unsubscribe();
 
     // Debounce the presses of non-navigational keys, collect the ones that correspond to letters
     // and convert those letters back into a string. Afterwards find the first item that starts
     // with that string and select it.
-    this._typeaheadSubscription = this._letterKeyStream.pipe(
-      tap(letter => this._pressedLetters.push(letter)),
-      debounceTime(debounceInterval),
-      filter(() => this._pressedLetters.length > 0),
-      map(() => this._pressedLetters.join(''))
-    ).subscribe(inputString => {
-      const items = this._getItemsArray();
+    this._typeaheadSubscription = this._letterKeyStream
+      .pipe(
+        tap((letter) => this._pressedLetters.push(letter)),
+        debounceTime(debounceInterval),
+        filter(() => this._pressedLetters.length > 0),
+        map(() => this._pressedLetters.join(""))
+      )
+      .subscribe((inputString) => {
+        const items = this._getItemsArray();
 
-      // Start at 1 because we want to start searching at the item immediately
-      // following the current active item.
-      for (let i = 1; i < items.length + 1; i++) {
-        const index = (this._activeItemIndex + i) % items.length;
-        const item = items[index];
+        // Start at 1 because we want to start searching at the item immediately
+        // following the current active item.
+        for (let i = 1; i < items.length + 1; i++) {
+          const index = (this._activeItemIndex + i) % items.length;
+          const item = items[index];
 
-        if (!this._skipPredicateFn(item) &&
-            item.getLabel!().toUpperCase().trim().indexOf(inputString) === 0) {
-
-          this.setActiveItem(index);
-          break;
+          if (
+            !this._skipPredicateFn(item) &&
+            item.getLabel!().toUpperCase().trim().indexOf(inputString) === 0
+          ) {
+            this.setActiveItem(index);
+            break;
+          }
         }
-      }
 
-      this._pressedLetters = [];
-    });
+        this._pressedLetters = [];
+      });
 
     return this;
   }
@@ -216,9 +223,16 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
    */
   onKeydown(event: KeyboardEvent): void {
     const keyCode = event.keyCode;
-    const modifiers: ListKeyManagerModifierKey[] = ['altKey', 'ctrlKey', 'metaKey', 'shiftKey'];
-    const isModifierAllowed = modifiers.every(modifier => {
-      return !event[modifier] || this._allowedModifierKeys.indexOf(modifier) > -1;
+    const modifiers: ListKeyManagerModifierKey[] = [
+      "altKey",
+      "ctrlKey",
+      "metaKey",
+      "shiftKey",
+    ];
+    const isModifierAllowed = modifiers.every((modifier) => {
+      return (
+        !event[modifier] || this._allowedModifierKeys.indexOf(modifier) > -1
+      );
     });
 
     switch (keyCode) {
@@ -244,7 +258,9 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
 
       case RIGHT_ARROW:
         if (this._horizontal && isModifierAllowed) {
-          this._horizontal === 'rtl' ? this.setPreviousItemActive() : this.setNextItemActive();
+          this._horizontal === "rtl"
+            ? this.setPreviousItemActive()
+            : this.setNextItemActive();
           break;
         } else {
           return;
@@ -252,7 +268,9 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
 
       case LEFT_ARROW:
         if (this._horizontal && isModifierAllowed) {
-          this._horizontal === 'rtl' ? this.setNextItemActive() : this.setPreviousItemActive();
+          this._horizontal === "rtl"
+            ? this.setNextItemActive()
+            : this.setPreviousItemActive();
           break;
         } else {
           return;
@@ -275,12 +293,15 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
         }
 
       default:
-      if (isModifierAllowed || hasModifierKey(event, 'shiftKey')) {
+        if (isModifierAllowed || hasModifierKey(event, "shiftKey")) {
           // Attempt to use the `event.key` which also maps it to the user's keyboard language,
           // otherwise fall back to resolving alphanumeric characters via the keyCode.
           if (event.key && event.key.length === 1) {
             this._letterKeyStream.next(event.key.toLocaleUpperCase());
-          } else if ((keyCode >= A && keyCode <= Z) || (keyCode >= ZERO && keyCode <= NINE)) {
+          } else if (
+            (keyCode >= A && keyCode <= Z) ||
+            (keyCode >= ZERO && keyCode <= NINE)
+          ) {
             this._letterKeyStream.next(String.fromCharCode(keyCode));
           }
         }
@@ -321,13 +342,16 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
 
   /** Sets the active item to the next enabled item in the list. */
   setNextItemActive(): void {
-    this._activeItemIndex < 0 ? this.setFirstItemActive() : this._setActiveItemByDelta(1);
+    this._activeItemIndex < 0
+      ? this.setFirstItemActive()
+      : this._setActiveItemByDelta(1);
   }
 
   /** Sets the active item to a previous enabled item in the list. */
   setPreviousItemActive(): void {
-    this._activeItemIndex < 0 && this._wrap ? this.setLastItemActive()
-                                            : this._setActiveItemByDelta(-1);
+    this._activeItemIndex < 0 && this._wrap
+      ? this.setLastItemActive()
+      : this._setActiveItemByDelta(-1);
   }
 
   /**
@@ -344,7 +368,7 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
 
   updateActiveItem(item: any): void {
     const itemArray = this._getItemsArray();
-    const index = typeof item === 'number' ? item : itemArray.indexOf(item);
+    const index = typeof item === "number" ? item : itemArray.indexOf(item);
     const activeItem = itemArray[index];
 
     // Explicitly check for `null` and `undefined` because other falsy values are valid.
@@ -358,7 +382,9 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
    * depending on whether wrap mode is turned on.
    */
   private _setActiveItemByDelta(delta: -1 | 1): void {
-    this._wrap ? this._setActiveInWrapMode(delta) : this._setActiveInDefaultMode(delta);
+    this._wrap
+      ? this._setActiveInWrapMode(delta)
+      : this._setActiveInDefaultMode(delta);
   }
 
   /**
@@ -370,7 +396,8 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
     const items = this._getItemsArray();
 
     for (let i = 1; i <= items.length; i++) {
-      const index = (this._activeItemIndex + (delta * i) + items.length) % items.length;
+      const index =
+        (this._activeItemIndex + delta * i + items.length) % items.length;
       const item = items[index];
 
       if (!this._skipPredicateFn(item)) {
@@ -414,6 +441,8 @@ export class ListKeyManager<T extends ListKeyManagerOption> {
 
   /** Returns the items as an array. */
   private _getItemsArray(): T[] {
-    return this._items instanceof QueryList ? this._items.toArray() : this._items;
+    return this._items instanceof QueryList
+      ? this._items.toArray()
+      : this._items;
   }
 }

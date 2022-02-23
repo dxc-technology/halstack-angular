@@ -48,6 +48,8 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           this.array[0] = newOptions;
           this.selectedOptions = newOptions.label;
         }
+      } else {
+        this.selectedOptions = [];
       }
     });
   }

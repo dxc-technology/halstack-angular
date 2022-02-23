@@ -1,6 +1,6 @@
 <div>
   <tbuilder-component-mode text="Default">
-    <dxc-tag margin="xsmall" label="DXC TECHNOLOGY" iconBgColor="#6B4187">
+    <dxc-tag margin="xsmall" label="DXC TECHNOLOGY" iconBgColor="#FABADA">
       <dxc-tag-icon>
         <img src="{{ dxcLogoPath }}" />
       </dxc-tag-icon>
@@ -18,6 +18,36 @@
           </g>
         </svg>
       </dxc-tag-icon>
+    </dxc-tag>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="With link">
+    <dxc-tag margin="xsmall" label="DXC TECHNOLOGY" linkHref="www.google.es">
+      <dxc-tag-icon>
+        <img src="{{ dxcLogoPath }}" />
+      </dxc-tag-icon>
+    </dxc-tag>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="With action">
+    <dxc-tag margin="xsmall" label="DXC TECHNOLOGY" (onClick)="onClick()">
+      <dxc-tag-icon>
+        <img src="{{ dxcLogoPath }}" />
+      </dxc-tag-icon>
+    </dxc-tag>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Only icon">
+    <dxc-tag margin="xsmall">
+      <dxc-tag-icon>
+        <img src="{{ dxcLogoPath }}" />
+      </dxc-tag-icon>
+    </dxc-tag>
+    <dxc-tag margin="xsmall" [iconSrc]="imgGithub"> </dxc-tag>
+  </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Only text">
+    <dxc-tag margin="xsmall" label="DXC TECHNOLOGY" iconBgColor="#6B4187">
     </dxc-tag>
   </tbuilder-component-mode>
 </div>

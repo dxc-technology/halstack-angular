@@ -1,10 +1,4 @@
-import {
-  Directive,
-  OnInit,
-  OnDestroy,
-  Inject,
-  Optional,
-} from "@angular/core";
+import { Directive, OnInit, OnDestroy, Inject, Optional } from "@angular/core";
 import { ThemeService } from "./theme.service";
 import { Subject } from "rxjs";
 import { BindingContext } from "./bindingContext";
@@ -12,10 +6,9 @@ import { ComplexThemeBindingStrategy } from "./complexThemeBindingStrategy";
 import { componentIcons } from "./componentTokens";
 import { AdvancedThemeBindingStrategy } from "./advancedThemeBindingStrategy";
 
-
 interface Theme {
-  theme:any,
-  advanced: boolean
+  theme: any;
+  advanced: boolean;
 }
 
 @Directive({
@@ -45,7 +38,11 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   setPropertiesCss(theme: Theme) {
-    const ctx = new BindingContext(!theme.advanced ? new ComplexThemeBindingStrategy():  new AdvancedThemeBindingStrategy());
+    const ctx = new BindingContext(
+      !theme.advanced
+        ? new ComplexThemeBindingStrategy()
+        : new AdvancedThemeBindingStrategy()
+    );
     let processedTokens = ctx.bindProperties(theme.theme);
     for (const key in processedTokens) {
       document.body.style.setProperty(key, processedTokens[key]);
@@ -53,25 +50,28 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   setVariableLinks(themeObj: Theme): void {
-    const footerLogo = themeObj.theme?.footer?.logo ?? componentIcons.footer.logo;
-    const headerLogo = themeObj.theme?.header?.logo ?? componentIcons.header.logo;
+    const footerLogo =
+      themeObj.theme?.footer?.logo ?? componentIcons.footer.logo;
+    const headerLogo =
+      themeObj.theme?.header?.logo ?? componentIcons.header.logo;
     const headerLogoResponsive =
-    themeObj?.theme?.header?.logoResponsive ?? componentIcons.header.logoResponsive;
+      themeObj?.theme?.header?.logoResponsive ??
+      componentIcons.header.logoResponsive;
     document.body.setAttribute("footer-logo", footerLogo);
     document.body.setAttribute("header-logo", headerLogo);
     document.body.setAttribute("header-logoResponsive", headerLogoResponsive);
   }
 
   private getTheme(): void {
-      const active = this._themeService?.getTheme();
-      this.updateTheme({theme: active, advanced: false});
+    const active = this._themeService?.getTheme();
+    this.updateTheme({ theme: active, advanced: false });
 
-      this._themeService.themeChange.subscribe((theme: any) => {
-        this.updateTheme({theme: theme, advanced: false});
-      });
+    this._themeService?.themeChange.subscribe((theme: any) => {
+      this.updateTheme({ theme: theme, advanced: false });
+    });
 
-      this._themeService.themeAdvanceChange.subscribe((theme: any) => {
-        this.updateTheme({theme: theme, advanced: true});
-      });
+    this._themeService?.themeAdvanceChange.subscribe((theme: any) => {
+      this.updateTheme({ theme: theme, advanced: true });
+    });
   }
 }

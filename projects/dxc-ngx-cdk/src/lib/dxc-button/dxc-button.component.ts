@@ -145,7 +145,7 @@ export class DxcButtonComponent {
       ${this.utils.calculateWidth(this.sizes, inputs)}
       display: inline-flex;
       vertical-align: middle;
-      button {
+      .dxcButton {
         padding-top: var(--button-paddingTop);
         padding-bottom: var(--button-paddingBottom);
         padding-left: var(--button-paddingLeft);
@@ -163,9 +163,11 @@ export class DxcButtonComponent {
           display: flex;
           align-items: inherit;
           justify-content: inherit;
-          ${this.iconPosition === "after"
-            ? "flex-direction: row-reverse;"
-            : "flex-direction: row;"}
+          ${
+            this.iconPosition === "after"
+              ? "flex-direction: row-reverse;"
+              : "flex-direction: row;"
+          }
 
           & > span {
             margin: 0 8px;
@@ -182,11 +184,13 @@ export class DxcButtonComponent {
           }
           img,
           svg {
-            ${this.label
-              ? this.iconPosition === "before"
-                ? "margin-left: 8px;"
-                : "margin-right: 8px;"
-              : ""}
+            ${
+              this.label
+                ? this.iconPosition === "before"
+                  ? "margin-left: 8px;"
+                  : "margin-right: 8px;"
+                : ""
+            }
             height: 24px;
             width: 24px;
             z-index: 20;
@@ -229,6 +233,7 @@ export class DxcButtonComponent {
           cursor: not-allowed;
         }
       }
+
     `;
   }
 
@@ -253,6 +258,7 @@ export class DxcButtonComponent {
           border-radius: var(--button-primaryBorderRadius);
           border-width: var(--button-primaryBorderThickness);
         }
+        .mat-button-wrapper,
         .mat-button-wrapper span {
           font-family: var(--button-primaryFontFamily) !important;
           font-size: var(--button-primaryFontSize) !important;
@@ -299,6 +305,17 @@ export class DxcButtonComponent {
           font-family: var(--button-textFontFamily) !important;
           font-size: var(--button-textFontSize) !important;
           font-weight: var(--button-textFontWeight) !important;
+        }
+        &:hover:not([disabled]) {
+          background: var(--button-textHoverBackgroundColor);
+          color: #ffffff;
+        }
+        &:disabled {
+          background: var(--button-textDisabledBackgroundColor);
+          color: var(--button-textDisabledFontColor) !important;
+        }
+        &:active:not([disabled]) {
+          background: var(--button-textActiveBackgroundColor);
         }
       }
     `;

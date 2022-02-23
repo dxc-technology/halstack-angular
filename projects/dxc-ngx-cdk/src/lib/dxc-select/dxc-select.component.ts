@@ -396,7 +396,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     this.focusedOption.group === indexGroup;
 
   setDefaultValues() {
-    if (this.value) {
+    if (this.value !== undefined && this.value !== null) {
       if (Array.isArray(this.value)) {
         const arr = [];
         this.value.map((value) => {

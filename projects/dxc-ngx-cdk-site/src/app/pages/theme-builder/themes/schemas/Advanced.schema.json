@@ -1084,7 +1084,6 @@
   },
   "tag": {
     "fontStyle": "fStyle",
-    "fontTextTransform": "fTextTransform",
     "height": "length",
     "iconColor": "color",
     "iconSectionWidth": "length",
@@ -1093,7 +1092,12 @@
     "fontFamily": "fFamily",
     "fontColor": "color",
     "fontSize": "length",
-    "fontWeight": "fWeight"
+    "fontWeight": "fWeight",
+    "focusColor": "color",
+    "labelPaddingTop": "length",
+    "labelPaddingBottom": "length",
+    "labelPaddingLeft": "length",
+    "labelPaddingRight": "length"
   },
   "table": {
     "rowSeparatorThickness": "length",

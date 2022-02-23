@@ -1371,11 +1371,15 @@ export const componentTokens = {
   "--tag-fontColor": globalTokens.hal_black,
   "--tag-fontSize": globalTokens.type_scale_02,
   "--tag-fontWeight": globalTokens.type_regular,
-  "--tag-fontTextTransform": globalTokens.type_uppercase,
-  "--tag-height": "43px",
-  "--tag-iconSectionWidth": "48px",
+  "--tag-height": "40px",
+  "--tag-iconSectionWidth": "40px",
   "--tag-iconHeight": "24px",
   "--tag-iconWidth": "24px",
+  "--tag-focusColor": "#0095ff",
+  "--tag-labelPaddingTop": "0rem",
+  "--tag-labelPaddingBottom": "0rem",
+  "--tag-labelPaddingLeft": "1rem",
+  "--tag-labelPaddingRight": "1rem",
 
   //V3 TEXTAREA
   "--v3Textarea-fontFamily": globalTokens.type_sans,

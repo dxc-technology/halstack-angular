@@ -6,8 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
-import {DOCUMENT} from '@angular/common';
+import { BooleanInput, coerceBooleanProperty } from "@angular/cdk/coercion";
+import { DOCUMENT } from "@angular/common";
 import {
   AfterContentInit,
   Directive,
@@ -20,10 +20,9 @@ import {
   DoCheck,
   SimpleChanges,
   OnChanges,
-} from '@angular/core';
-import {take} from 'rxjs/operators';
-import {InteractivityChecker} from '../interactivity-checker/interactivity-checker';
-
+} from "@angular/core";
+import { take } from "rxjs/operators";
+import { InteractivityChecker } from "../interactivity-checker/interactivity-checker";
 
 /**
  * Class that allows for trapping focus within a DOM element.
@@ -45,7 +44,9 @@ export class FocusTrap {
   protected endAnchorListener = () => this.focusFirstTabbableElement();
 
   /** Whether the focus trap is active. */
-  get enabled(): boolean { return this._enabled; }
+  get enabled(): boolean {
+    return this._enabled;
+  }
   set enabled(value: boolean) {
     this._enabled = value;
 
@@ -61,8 +62,8 @@ export class FocusTrap {
     private _checker: InteractivityChecker,
     readonly _ngZone: NgZone,
     readonly _document: Document,
-    deferAnchors = false) {
-
+    deferAnchors = false
+  ) {
     if (!deferAnchors) {
       this.attachAnchors();
     }
@@ -74,7 +75,7 @@ export class FocusTrap {
     const endAnchor = this._endAnchor;
 
     if (startAnchor) {
-      startAnchor.removeEventListener('focus', this.startAnchorListener);
+      startAnchor.removeEventListener("focus", this.startAnchorListener);
 
       if (startAnchor.parentNode) {
         startAnchor.parentNode.removeChild(startAnchor);
@@ -82,7 +83,7 @@ export class FocusTrap {
     }
 
     if (endAnchor) {
-      endAnchor.removeEventListener('focus', this.endAnchorListener);
+      endAnchor.removeEventListener("focus", this.endAnchorListener);
 
       if (endAnchor.parentNode) {
         endAnchor.parentNode.removeChild(endAnchor);
@@ -108,18 +109,21 @@ export class FocusTrap {
     this._ngZone.runOutsideAngular(() => {
       if (!this._startAnchor) {
         this._startAnchor = this._createAnchor();
-        this._startAnchor!.addEventListener('focus', this.startAnchorListener);
+        this._startAnchor!.addEventListener("focus", this.startAnchorListener);
       }
 
       if (!this._endAnchor) {
         this._endAnchor = this._createAnchor();
-        this._endAnchor!.addEventListener('focus', this.endAnchorListener);
+        this._endAnchor!.addEventListener("focus", this.endAnchorListener);
       }
     });
 
     if (this._element.parentNode) {
       this._element.parentNode.insertBefore(this._startAnchor!, this._element);
-      this._element.parentNode.insertBefore(this._endAnchor!, this._element.nextSibling);
+      this._element.parentNode.insertBefore(
+        this._endAnchor!,
+        this._element.nextSibling
+      );
       this._hasAttached = true;
     }
 
@@ -133,7 +137,7 @@ export class FocusTrap {
    * on whether focus was moved successfully.
    */
   focusInitialElementWhenReady(options?: FocusOptions): Promise<boolean> {
-    return new Promise<boolean>(resolve => {
+    return new Promise<boolean>((resolve) => {
       this._executeOnStable(() => resolve(this.focusInitialElement(options)));
     });
   }
@@ -145,8 +149,10 @@ export class FocusTrap {
    * on whether focus was moved successfully.
    */
   focusFirstTabbableElementWhenReady(options?: FocusOptions): Promise<boolean> {
-    return new Promise<boolean>(resolve => {
-      this._executeOnStable(() => resolve(this.focusFirstTabbableElement(options)));
+    return new Promise<boolean>((resolve) => {
+      this._executeOnStable(() =>
+        resolve(this.focusFirstTabbableElement(options))
+      );
     });
   }
 
@@ -157,8 +163,10 @@ export class FocusTrap {
    * on whether focus was moved successfully.
    */
   focusLastTabbableElementWhenReady(options?: FocusOptions): Promise<boolean> {
-    return new Promise<boolean>(resolve => {
-      this._executeOnStable(() => resolve(this.focusLastTabbableElement(options)));
+    return new Promise<boolean>((resolve) => {
+      this._executeOnStable(() =>
+        resolve(this.focusLastTabbableElement(options))
+      );
     });
   }
 
@@ -167,30 +175,41 @@ export class FocusTrap {
    * @param bound The boundary to get (start or end of trapped region).
    * @returns The boundary element.
    */
-  private _getRegionBoundary(bound: 'start' | 'end'): HTMLElement | null {
+  private _getRegionBoundary(bound: "start" | "end"): HTMLElement | null {
     // Contains the deprecated version of selector, for temporary backwards comparability.
-    let markers = this._element.querySelectorAll(`[cdk-focus-region-${bound}], ` +
-                                                 `[cdkFocusRegion${bound}], ` +
-                                                 `[cdk-focus-${bound}]`) as NodeListOf<HTMLElement>;
+    let markers = this._element.querySelectorAll(
+      `[cdk-focus-region-${bound}], ` +
+        `[cdkFocusRegion${bound}], ` +
+        `[cdk-focus-${bound}]`
+    ) as NodeListOf<HTMLElement>;
 
     for (let i = 0; i < markers.length; i++) {
       // @breaking-change 8.0.0
       if (markers[i].hasAttribute(`cdk-focus-${bound}`)) {
-        console.warn(`Found use of deprecated attribute 'cdk-focus-${bound}', ` +
-                     `use 'cdkFocusRegion${bound}' instead. The deprecated ` +
-                     `attribute will be removed in 8.0.0.`, markers[i]);
+        console.warn(
+          `Found use of deprecated attribute 'cdk-focus-${bound}', ` +
+            `use 'cdkFocusRegion${bound}' instead. The deprecated ` +
+            `attribute will be removed in 8.0.0.`,
+          markers[i]
+        );
       } else if (markers[i].hasAttribute(`cdk-focus-region-${bound}`)) {
-        console.warn(`Found use of deprecated attribute 'cdk-focus-region-${bound}', ` +
-                     `use 'cdkFocusRegion${bound}' instead. The deprecated attribute ` +
-                     `will be removed in 8.0.0.`, markers[i]);
+        console.warn(
+          `Found use of deprecated attribute 'cdk-focus-region-${bound}', ` +
+            `use 'cdkFocusRegion${bound}' instead. The deprecated attribute ` +
+            `will be removed in 8.0.0.`,
+          markers[i]
+        );
       }
     }
 
-    if (bound == 'start') {
-      return markers.length ? markers[0] : this._getFirstTabbableElement(this._element);
+    if (bound == "start") {
+      return markers.length
+        ? markers[0]
+        : this._getFirstTabbableElement(this._element);
     }
-    return markers.length ?
-        markers[markers.length - 1] : this._getLastTabbableElement(this._element);
+    return markers.length
+      ? markers[markers.length - 1]
+      : this._getLastTabbableElement(this._element);
   }
 
   /**
@@ -199,26 +218,32 @@ export class FocusTrap {
    */
   focusInitialElement(options?: FocusOptions): boolean {
     // Contains the deprecated version of selector, for temporary backwards comparability.
-    const redirectToElement = this._element.querySelector(`[cdk-focus-initial], ` +
-                                                          `[cdkFocusInitial]`) as HTMLElement;
+    const redirectToElement = this._element.querySelector(
+      `[cdk-focus-initial], ` + `[cdkFocusInitial]`
+    ) as HTMLElement;
 
     if (redirectToElement) {
       // @breaking-change 8.0.0
       if (redirectToElement.hasAttribute(`cdk-focus-initial`)) {
-        console.warn(`Found use of deprecated attribute 'cdk-focus-initial', ` +
-                    `use 'cdkFocusInitial' instead. The deprecated attribute ` +
-                    `will be removed in 8.0.0`, redirectToElement);
+        console.warn(
+          `Found use of deprecated attribute 'cdk-focus-initial', ` +
+            `use 'cdkFocusInitial' instead. The deprecated attribute ` +
+            `will be removed in 8.0.0`,
+          redirectToElement
+        );
       }
 
       // Warn the consumer if the element they've pointed to
       // isn't focusable, when not in production mode.
-      if ((typeof ngDevMode === 'undefined' || ngDevMode) &&
-        !this._checker.isFocusable(redirectToElement)) {
-        console.warn(`Element matching '[cdkFocusInitial]' is not focusable.`, redirectToElement);
-      }
+      // if ((typeof ngDevMode === 'undefined' || ngDevMode) &&
+      //   !this._checker.isFocusable(redirectToElement)) {
+      //   console.warn(`Element matching '[cdkFocusInitial]' is not focusable.`, redirectToElement);
+      // }
 
       if (!this._checker.isFocusable(redirectToElement)) {
-        const focusableChild = this._getFirstTabbableElement(redirectToElement) as HTMLElement;
+        const focusableChild = this._getFirstTabbableElement(
+          redirectToElement
+        ) as HTMLElement;
         focusableChild?.focus(options);
         return !!focusableChild;
       }
@@ -235,7 +260,7 @@ export class FocusTrap {
    * @returns Whether focus was moved successfully.
    */
   focusFirstTabbableElement(options?: FocusOptions): boolean {
-    const redirectToElement = this._getRegionBoundary('start');
+    const redirectToElement = this._getRegionBoundary("start");
 
     if (redirectToElement) {
       redirectToElement.focus(options);
@@ -249,7 +274,7 @@ export class FocusTrap {
    * @returns Whether focus was moved successfully.
    */
   focusLastTabbableElement(options?: FocusOptions): boolean {
-    const redirectToElement = this._getRegionBoundary('end');
+    const redirectToElement = this._getRegionBoundary("end");
 
     if (redirectToElement) {
       redirectToElement.focus(options);
@@ -276,9 +301,10 @@ export class FocusTrap {
     let children = root.children || root.childNodes;
 
     for (let i = 0; i < children.length; i++) {
-      let tabbableChild = children[i].nodeType === this._document.ELEMENT_NODE ?
-        this._getFirstTabbableElement(children[i] as HTMLElement) :
-        null;
+      let tabbableChild =
+        children[i].nodeType === this._document.ELEMENT_NODE
+          ? this._getFirstTabbableElement(children[i] as HTMLElement)
+          : null;
 
       if (tabbableChild) {
         return tabbableChild;
@@ -298,9 +324,10 @@ export class FocusTrap {
     let children = root.children || root.childNodes;
 
     for (let i = children.length - 1; i >= 0; i--) {
-      let tabbableChild = children[i].nodeType === this._document.ELEMENT_NODE ?
-        this._getLastTabbableElement(children[i] as HTMLElement) :
-        null;
+      let tabbableChild =
+        children[i].nodeType === this._document.ELEMENT_NODE
+          ? this._getLastTabbableElement(children[i] as HTMLElement)
+          : null;
 
       if (tabbableChild) {
         return tabbableChild;
@@ -312,11 +339,11 @@ export class FocusTrap {
 
   /** Creates an anchor element. */
   private _createAnchor(): HTMLElement {
-    const anchor = this._document.createElement('div');
+    const anchor = this._document.createElement("div");
     this._toggleAnchorTabIndex(this._enabled, anchor);
-    anchor.classList.add('cdk-visually-hidden');
-    anchor.classList.add('cdk-focus-trap-anchor');
-    anchor.setAttribute('aria-hidden', 'true');
+    anchor.classList.add("cdk-visually-hidden");
+    anchor.classList.add("cdk-focus-trap-anchor");
+    anchor.setAttribute("aria-hidden", "true");
     return anchor;
   }
 
@@ -328,7 +355,9 @@ export class FocusTrap {
   private _toggleAnchorTabIndex(isEnabled: boolean, anchor: HTMLElement) {
     // Remove the tabindex completely, rather than setting it to -1, because if the
     // element has a tabindex, the user might still hit it when navigating with the arrow keys.
-    isEnabled ? anchor.setAttribute('tabindex', '0') : anchor.removeAttribute('tabindex');
+    isEnabled
+      ? anchor.setAttribute("tabindex", "0")
+      : anchor.removeAttribute("tabindex");
   }
 
   /**
@@ -357,15 +386,15 @@ export class FocusTrap {
  * @deprecated Use `ConfigurableFocusTrapFactory` instead.
  * @breaking-change for 11.0.0 Remove this class.
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class FocusTrapFactory {
   private _document: Document;
 
   constructor(
-      private _checker: InteractivityChecker,
-      private _ngZone: NgZone,
-      @Inject(DOCUMENT) _document: any) {
-
+    private _checker: InteractivityChecker,
+    private _ngZone: NgZone,
+    @Inject(DOCUMENT) _document: any
+  ) {
     this._document = _document;
   }
 
@@ -376,18 +405,28 @@ export class FocusTrapFactory {
    *     manually by the user.
    * @returns The created focus trap instance.
    */
-  create(element: HTMLElement, deferCaptureElements: boolean = false): FocusTrap {
+  create(
+    element: HTMLElement,
+    deferCaptureElements: boolean = false
+  ): FocusTrap {
     return new FocusTrap(
-        element, this._checker, this._ngZone, this._document, deferCaptureElements);
+      element,
+      this._checker,
+      this._ngZone,
+      this._document,
+      deferCaptureElements
+    );
   }
 }
 
 /** Directive for trapping focus within a region. */
 @Directive({
-  selector: '[cdkTrapFocus]',
-  exportAs: 'cdkTrapFocus',
+  selector: "[cdkTrapFocus]",
+  exportAs: "cdkTrapFocus",
 })
-export class CdkTrapFocus implements OnDestroy, AfterContentInit, OnChanges, DoCheck {
+export class CdkTrapFocus
+  implements OnDestroy, AfterContentInit, OnChanges, DoCheck
+{
   private _document: Document;
 
   /** Underlying FocusTrap instance. */
@@ -397,26 +436,37 @@ export class CdkTrapFocus implements OnDestroy, AfterContentInit, OnChanges, DoC
   private _previouslyFocusedElement: HTMLElement | null = null;
 
   /** Whether the focus trap is active. */
-  @Input('cdkTrapFocus')
-  get enabled(): boolean { return this.focusTrap.enabled; }
-  set enabled(value: boolean) { this.focusTrap.enabled = coerceBooleanProperty(value); }
+  @Input("cdkTrapFocus")
+  get enabled(): boolean {
+    return this.focusTrap.enabled;
+  }
+  set enabled(value: boolean) {
+    this.focusTrap.enabled = coerceBooleanProperty(value);
+  }
 
   /**
    * Whether the directive should automatically move focus into the trapped region upon
    * initialization and return focus to the previous activeElement upon destruction.
    */
-  @Input('cdkTrapFocusAutoCapture')
-  get autoCapture(): boolean { return this._autoCapture; }
-  set autoCapture(value: boolean) { this._autoCapture = coerceBooleanProperty(value); }
+  @Input("cdkTrapFocusAutoCapture")
+  get autoCapture(): boolean {
+    return this._autoCapture;
+  }
+  set autoCapture(value: boolean) {
+    this._autoCapture = coerceBooleanProperty(value);
+  }
   private _autoCapture: boolean;
 
   constructor(
-      private _elementRef: ElementRef<HTMLElement>,
-      private _focusTrapFactory: FocusTrapFactory,
-      @Inject(DOCUMENT) _document: any) {
-
+    private _elementRef: ElementRef<HTMLElement>,
+    private _focusTrapFactory: FocusTrapFactory,
+    @Inject(DOCUMENT) _document: any
+  ) {
     this._document = _document;
-    this.focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement, true);
+    this.focusTrap = this._focusTrapFactory.create(
+      this._elementRef.nativeElement,
+      true
+    );
   }
 
   ngOnDestroy() {
@@ -445,16 +495,21 @@ export class CdkTrapFocus implements OnDestroy, AfterContentInit, OnChanges, DoC
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const autoCaptureChange = changes['autoCapture'];
+    const autoCaptureChange = changes["autoCapture"];
 
-    if (autoCaptureChange && !autoCaptureChange.firstChange && this.autoCapture &&
-        this.focusTrap.hasAttached()) {
+    if (
+      autoCaptureChange &&
+      !autoCaptureChange.firstChange &&
+      this.autoCapture &&
+      this.focusTrap.hasAttached()
+    ) {
       this._captureFocus();
     }
   }
 
   private _captureFocus() {
-    this._previouslyFocusedElement = this._document.activeElement as HTMLElement;
+    this._previouslyFocusedElement = this._document
+      .activeElement as HTMLElement;
     this.focusTrap.focusInitialElementWhenReady();
   }
 

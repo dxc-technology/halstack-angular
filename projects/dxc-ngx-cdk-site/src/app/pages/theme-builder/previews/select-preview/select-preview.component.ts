@@ -7,6 +7,7 @@ import { OptionGroup } from "@dxc-technology/halstack-angular/lib/dxc-select/int
   templateUrl: "./select-preview.component.html",
 })
 export class SelectPreviewComponent implements OnInit {
+  selectedValues: string = "";
   array1: Option[] = [
     {
       label: "label1",
@@ -81,5 +82,19 @@ export class SelectPreviewComponent implements OnInit {
 
   onBlur(event) {
     console.log("onBlur:", event);
+  }
+
+  onChangeTest(event) {
+    this.selectedValues = event.value;
+    console.log("onchange:", event);
+  }
+
+  onBlurTest(event) {
+    console.log("onBlur:", event);
+  }
+
+  onResetTest(event) {
+    console.log(event);
+    this.selectedValues = "";
   }
 }

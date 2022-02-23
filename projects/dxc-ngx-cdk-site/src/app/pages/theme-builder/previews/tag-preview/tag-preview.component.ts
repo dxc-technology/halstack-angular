@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-tag-preview',
-  templateUrl: './tag-preview.component.html'
+  selector: "app-tag-preview",
+  templateUrl: "./tag-preview.component.html",
 })
 export class TagPreviewComponent implements OnInit {
-
   dxcLogoPath = "./assets/img/dxclogo.png";
+  imgGithub = "./assets/img/github-logo.svg";
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  onClick() {}
 }

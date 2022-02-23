@@ -49,7 +49,7 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           this.selectedOptions = newOptions.label;
         }
       } else {
-        this.selectedOptions = [];
+        this.selectedOptions = "";
       }
     });
   }

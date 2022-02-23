@@ -74,7 +74,6 @@ export class DxcSelectHelper {
           width: ${inputs.searchable && inputs.multiple ? "" : "100%"};
           text-overflow: ellipsis;
           white-space: nowrap;
-          margin-right: 4px;
           overflow: ${inputs.searchable && inputs.multiple ? "" : "hidden"};
           .numberOfSelected {
             display: flex;
@@ -141,12 +140,15 @@ export class DxcSelectHelper {
           }
           .selectedOptionContainer {
             margin-left: 8px;
-            width: 80%;
+            width: ${inputs.multiple
+              ? "calc(100% - 58px)"
+              : "calc(100% - 8px)"};
           }
         }
         .iconsContainer {
           display: flex;
           flex-direction: row;
+          align-items: center;
           .errorIcon {
             height: 18px;
             width: 18px;
@@ -169,6 +171,7 @@ export class DxcSelectHelper {
             width: 24px;
             align-items: center;
             justify-content: center;
+            margin-left: 0.25rem;
             &.opened {
               transform: rotate(180deg);
             }
@@ -182,15 +185,15 @@ export class DxcSelectHelper {
           }
         }
         .searchContainer {
+          overflow: hidden;
           display: flex;
           flex-direction: row;
           width: 100%;
           align-items: center;
-          margin-right: 4px;
+          margin-left: 8px;
           .searchGrid {
             width: 100%;
             display: flex;
-            margin-left: 8px;
             input {
               border: none;
               width: 100%;
@@ -222,6 +225,9 @@ export class DxcSelectHelper {
                   ? "var(--select-disabledColor)"
                   : "var(--select-placeholderFontColor)"};
               }
+            }
+            input:placeholder-shown {
+              text-overflow: ellipsis;
             }
           }
           .inputClear {
@@ -258,6 +264,7 @@ export class DxcSelectHelper {
         margin-bottom: 0.25rem;
         top: 100%;
         overflow: auto;
+        overflow-x: hidden;
         box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         background: var(--select-listDialogBackgroundColor) 0% 0% no-repeat
           padding-box;

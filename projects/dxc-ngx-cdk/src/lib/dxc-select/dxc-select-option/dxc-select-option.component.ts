@@ -141,6 +141,7 @@ export class DxcSelectOptionComponent implements OnInit {
         height: 100%;
         box-sizing: border-box;
         border-bottom: 1px solid var(--select-listOptionDividerColor);
+        overflow: hidden;
         .iconLabel {
           display: flex;
           align-items: center;
@@ -151,20 +152,26 @@ export class DxcSelectOptionComponent implements OnInit {
         }
         .label {
           width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          display: inline-block;
+          align-self: center;
           margin-left: 0.5rem;
           margin-right: 0.5rem;
-          font-family: var(--select-fontFamily);
-          font-size: var(--select-listOptionFontSize);
-          font-style: var(--select-listOptionFontStyle);
-          font-weight: var(--select-listOptionFontWeight);
-          color: var(--select-listOptionFontColor);
+          span {
+            width: 100%;
+            height: 100%;
+            font-family: var(--select-fontFamily);
+            font-size: var(--select-listOptionFontSize);
+            font-style: var(--select-listOptionFontStyle);
+            font-weight: var(--select-listOptionFontWeight);
+            color: var(--select-listOptionFontColor);
+          }
         }
         .checkIcon {
           display: flex;
-          margin-right: 8px;
+          margin-right: 0.5rem;
           align-items: center;
           svg {
             fill: var(--select-selectedListOptionIconColor);
@@ -180,6 +187,21 @@ export class DxcSelectOptionComponent implements OnInit {
         align-items: center;
         div {
           display: flex;
+          overflow: hidden;
+        }
+        dxc-checkbox {
+          .mat-checkbox-label {
+            span:last-child {
+              display: inline-grid;
+              .checkboxLabel {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: block;
+                width: 100%;
+              }
+            }
+          }
         }
       }
     `;

@@ -16,7 +16,7 @@
     <td>Text to be placed next inside the tag.</td>
   </tr>
   <tr>
-    <td>labelPosition: string</td>
+    <td>labelPosition: 'before' | 'after'</td>
     <td><code>'after'</code></td>
     <td>Whether the label should appear after or before the icon.</td>
   </tr>
@@ -39,21 +39,16 @@
     </td>
   </tr>
   <tr>
-    <td>tabIndexValue: number</td>
-    <td><code>0</code></td>
-    <td>Value of the tabindex.</td>
-  </tr>
-  <tr>
     <td>onClick: EventEmitter</td>
     <td></td>
     <td>
-      If defined, the tag will be displayed as a button. This function will be
-      called when the user clicks the tag. Component will show some visual
-      feedback on hover.
+      If defined, the tag will be displayed as a button. This event will emit in
+      case the user clicks the tag. Component will show some visual feedback on
+      hover.
     </td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
@@ -63,8 +58,8 @@
     </td>
   </tr>
   <tr>
-    <td>size: any (string | object)</td>
-    <td><code>'medium'</code></td>
+    <td>size: string</td>
+    <td><code>'fitContent'</code></td>
     <td>
       Size of the component ('small' | 'medium' | 'large' | 'fillParent' |
       'fitContent').
@@ -76,5 +71,10 @@
       <code>false</code>
     </td>
     <td>If true, the page is opened in a new browser tab.</td>
+  </tr>
+  <tr>
+    <td>tabIndexValue: number</td>
+    <td><code>0</code></td>
+    <td>Value of the tabindex.</td>
   </tr>
 </dxc-table>

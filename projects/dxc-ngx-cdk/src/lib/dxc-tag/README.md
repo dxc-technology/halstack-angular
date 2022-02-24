@@ -54,7 +54,7 @@ The API properties are the following:
     </tr>
     <tr>
         <td>@Input<br>iconBgColor: string</td>
-        <td><code>'black'</code></td>
+        <td><code>'#5f249f'</code></td>
         <td>Background color of the icon section of the tag.</td>
     </tr>
     <tr>
@@ -70,7 +70,7 @@ The API properties are the following:
             Component will show some visual feedback on hover.</td>
     </tr>
     <tr>
-        <td>@Input<br>margin: any (string | object)</td>
+        <td>@Input<br>margin: string | object</td>
         <td></td>
         <td>
             Size of the margin to be applied to the component ('xxsmall' | 
@@ -80,8 +80,8 @@ The API properties are the following:
         </td>
     </tr>
     <tr>
-        <td>@Input<br>size: any (string | object)</td>
-        <td><code>'medium'</code></td>
+        <td>@Input<br>size: string</td>
+        <td><code>'fitContent'</code></td>
         <td>Size of the component ('small' | 'medium' | 'large' | 'fillParent' | 'fitContent').</td>
     </tr>
     <tr>

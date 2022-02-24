@@ -5,8 +5,15 @@
       <dxc-select label="Label" helperText="HelperText" margin="xsmall" [options]="array1" (onChange)="onChange($event)"
         (onBlur)="onBlur($event)" [optional]="true" placeholder="Another placeholder" size="large" tabIndex="3">
       </dxc-select>
-      <dxc-select label="Label" helperText="HelperText" margin="xsmall" [options]="array2" [optional]="true"
-        (onChange)="onChange($event)" placeholder="Another placeholder"></dxc-select>
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        margin="xsmall"
+        [options]="array2"
+        [optional]="true"
+        (onChange)="onChange($event)"
+        placeholder="This is a very very very long placeholder to test the ellipsis"
+      ></dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Searchable">

@@ -11,20 +11,18 @@
     class="iconLabel"
     [innerHTML]="option.icon | safeHtml"
   ></div>
-  <span class="label" [attr.aria-selected]="this.selected" role="option">{{
-    option.label
-  }}</span>
+  <span class="label"
+    ><span [attr.aria-selected]="this.selected" role="option">{{
+      option.label
+    }}</span></span
+  >
   <span
     class="checkIcon"
     *ngIf="
       !multiple && this.service.getSelectedValues()?.value === option.value
     "
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="#000000"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
       <path d="M0 0h24v24H0z" fill="none" />
       <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
     </svg>
@@ -39,20 +37,18 @@
   (mousedown)="handleOptionMouseDown($event)"
   tabindex="-1"
 >
-  <span class="label" [attr.aria-selected]="this.selected" role="option">{{
-    option.label
-  }}</span>
+  <span class="label"
+    ><span [attr.aria-selected]="this.selected" role="option">{{
+      option.label
+    }}</span></span
+  >
   <span
     class="checkIcon"
     *ngIf="
       !multiple && this.service.getSelectedValues()?.value === option.value
     "
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="#000000"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
       <path d="M0 0h24v24H0z" fill="none" />
       <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
     </svg>
@@ -76,8 +72,10 @@
   </dxc-checkbox>
   <div *ngIf="option.icon !== undefined && option.icon !== null">
     <span class="iconLabel" [innerHTML]="option.icon | safeHtml"></span>
-    <span class="label" [attr.aria-selected]="this.selected" role="option">{{
-      option.label
-    }}</span>
+    <span class="label"
+      ><span [attr.aria-selected]="this.selected" role="option">{{
+        option.label
+      }}</span></span
+    >
   </div>
 </span>

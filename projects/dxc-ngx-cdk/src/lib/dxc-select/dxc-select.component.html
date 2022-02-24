@@ -14,7 +14,7 @@
   ngModel
   [name]="name"
   [value]="formValues"
-  style="display: none"
+  style="display: none;"
   readOnly
   attr.aria-hidden="true"
 />
@@ -37,7 +37,11 @@
   [attr.aria-invalid]="error ? 'true' : 'false'"
   attr.aria-required="{{ !optional }}"
 >
-  <div class="valueContainer" *ngIf="!searchable || (searchable && multiple)">
+  <div
+    class="valueContainer"
+    *ngIf="!searchable || (searchable && multiple)"
+    [ngClass]="setDisplayValueContainer() ? 'noValuesSelected' : ''"
+  >
     <div
       class="numberOfSelected"
       *ngIf="service.getSizeSelectedValues() > 0 && multiple"
@@ -105,7 +109,8 @@
     <button
       *ngIf="inputValue?.length > 0 && !disabled && isInputVisible"
       class="inputClear"
-      (mousedown)="handleClearInput($event)"
+      (mousedown)="handlePropagation($event)"
+      (mouseup)="handleClearInput($event)"
       [disabled]="disabled"
       [tabindex]="tabIndex"
       title="Clear search text"
@@ -140,20 +145,21 @@
       </svg>
     </span>
     <span
-      class="expandIcon"
+      class="collapseIndicator"
       [ngClass]="{
         opened: this.isOpened
       }"
     >
       <svg
+        role="img"
         xmlns="http://www.w3.org/2000/svg"
-        height="18px"
         viewBox="0 0 24 24"
-        width="18px"
         fill="currentColor"
       >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+        <path d="M0 0h24v24H0V0z" fill="none"></path>
+        <path
+          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+        ></path>
       </svg>
     </span>
   </div>
@@ -257,7 +263,7 @@
 
   <ul
     class="options"
-    *ngIf="multiple && options?.length > 0&& this.isOpened"
+    *ngIf="multiple && options?.length > 0 && this.isOpened"
     tabindex="-1"
     role="listbox"
     attr.aria-labelledby="{{ selectLabelId }}"

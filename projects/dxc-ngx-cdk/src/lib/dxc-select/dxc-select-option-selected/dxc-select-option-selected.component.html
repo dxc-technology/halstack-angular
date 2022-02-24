@@ -1,22 +1,12 @@
 <div class="labelsContainer" #labelsContainer>
   <ng-container *ngIf="!(multiple && searchable)">
     <span
-      *ngFor="let option of selectedOptions; last as last"
       class="selectedOption"
+      [ngClass]="{
+        isOptionalLabel: isOptionalLabel()
+      }"
     >
-      <!-- <span
-        *ngIf="option?.icon"
-        class="iconLabel"
-        [innerHTML]="option.icon | safeHtml"
-      ></span> -->
-      <span
-        class="selectedLabel"
-        [ngClass]="{
-          isOptionalLabel: !multiple && this.selectedOptions[0]?.value === ''
-        }"
-      >
-        {{ option.label }} <span *ngIf="!last" class="comma">,</span>
-      </span>
+      {{ selectedOptions }}
     </span>
   </ng-container>
 

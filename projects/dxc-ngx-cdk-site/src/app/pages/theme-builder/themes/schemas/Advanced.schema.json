@@ -938,7 +938,8 @@
     "valueFontColorOnDark": "color",
     "arrowColor": "color",
     "arrowColorOnDark": "color",
-    "systemMessageFontColor": "color"
+    "systemMessageFontColor": "color",
+    "focusListOptionBorderColor": "color"
   },
   "sidenav": {
     "backgroundColor": "color",

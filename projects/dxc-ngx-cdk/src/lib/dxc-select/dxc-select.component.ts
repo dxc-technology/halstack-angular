@@ -530,6 +530,11 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     this.inputValue = value;
   }
 
+  handlePropagation(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   handleClearInput(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -713,5 +718,13 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   clickNotSelectable() {
     this.isNotSelectable = true;
+  }
+
+  setDisplayValueContainer() {
+    return (
+      this.service.getSizeSelectedValues() <= 0 &&
+      this.multiple &&
+      this.searchable
+    );
   }
 }

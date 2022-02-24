@@ -23,7 +23,8 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   @Input() placeholder: string;
 
   subscriptor: any;
-  selectedOptions: Array<Option> = [];
+  selectedOptions: string = "";
+  array: Array<Option> = [];
 
   defaultInputs = new BehaviorSubject<any>({
     multiple: false,
@@ -33,13 +34,22 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
   constructor(public service: SelectService) {
     this.subscriptor = this.service.selectedValues.subscribe((newOptions) => {
       if (newOptions) {
+        this.selectedOptions = "";
         if (Array.isArray(newOptions)) {
-          this.selectedOptions = newOptions;
+          this.array = newOptions;
+          newOptions.forEach((option, index) => {
+            if (index === 0) {
+              this.selectedOptions = option.label;
+            } else {
+              this.selectedOptions = this.selectedOptions + ", " + option.label;
+            }
+          });
         } else {
-          this.selectedOptions[0] = newOptions;
+          this.array[0] = newOptions;
+          this.selectedOptions = newOptions.label;
         }
       } else {
-        this.selectedOptions = [];
+        this.selectedOptions = "";
       }
     });
   }
@@ -75,20 +85,23 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
     }
   }
 
+  isOptionalLabel() {
+    return !this.multiple && this.array[0]?.value === "";
+  }
+
   getDynamicStyle(inputs) {
     return css`
       display: flex;
       max-width: 100%;
+      width: 100%;
       div.labelsContainer {
         width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        display: inline-block;
         .selectedOption {
-          text-align: left;
-          display: inline-flex;
-          align-items: center;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          display: block;
+          width: 100%;
           font-family: var(--select-fontFamily);
           font-size: var(--select-valueFontSize);
           font-style: var(--select-valueFontStyle);
@@ -96,19 +109,7 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
           color: ${inputs.disabled
             ? "var(--select-disabledColor)"
             : "var(--select-valueFontColor)"};
-          .iconLabel {
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-          }
-          .comma {
-            margin-right: 4px;
-          }
-          .iconLabel {
-            margin-right: 0.25rem;
-          }
-          .isOptionalLabel {
+          &.isOptionalLabel {
             color: ${inputs.disabled
               ? "var(--select-disabledColor)"
               : "#000000b3"};
@@ -116,6 +117,7 @@ export class DxcSelectOptionSelectedComponent implements OnInit {
         }
         .notSelectedLabel {
           text-align: left;
+          white-space: nowrap;
           font-family: var(--select-fontFamily);
           font-size: var(--select-placeholderFontSize);
           font-style: var(--select-placeholderFontStyle);

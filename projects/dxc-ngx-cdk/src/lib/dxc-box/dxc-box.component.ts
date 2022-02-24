@@ -10,7 +10,6 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
-type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
 type Space =
   | "xxsmall"
   | "xsmall"
@@ -60,7 +59,8 @@ export class DxcBoxComponent implements OnInit {
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
   currentBackgroundColor;
 
   sizes = {

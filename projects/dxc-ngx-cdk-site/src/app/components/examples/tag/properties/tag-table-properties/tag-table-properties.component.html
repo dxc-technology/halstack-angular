@@ -16,7 +16,7 @@
     <td>Text to be placed next inside the tag.</td>
   </tr>
   <tr>
-    <td>labelPosition: string</td>
+    <td>labelPosition: 'before' | 'after'</td>
     <td><code>'after'</code></td>
     <td>Whether the label should appear after or before the icon.</td>
   </tr>
@@ -42,9 +42,9 @@
     <td>onClick: EventEmitter</td>
     <td></td>
     <td>
-      If defined, the tag will be displayed as a button. This function will be
-      called when the user clicks the tag. Component will show some visual
-      feedback on hover.
+      If defined, the tag will be displayed as a button. This event will emit in
+      case the user clicks the tag. Component will show some visual feedback on
+      hover.
     </td>
   </tr>
   <tr>

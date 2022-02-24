@@ -20,7 +20,6 @@ import {
 import { ContentChildren, ChangeDetectorRef } from "@angular/core";
 import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
 
-type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
 type Space =
   | "xxsmall"
   | "xsmall"
@@ -82,7 +81,8 @@ export class DxcTagComponent implements OnInit {
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
   /**
    * Value of the tabindex.
    */
@@ -95,9 +95,8 @@ export class DxcTagComponent implements OnInit {
   }
   private _tabIndexValue = 0;
   /**
-   * If defined, the tag will be displayed as a button. This function will
-   * be called when the user clicks the tag. Component will show some
-   * visual feedback on hover.
+   * If defined, the tag will be displayed as a button. This event will emit in case the user clicks the tag.
+   * Component will show some visual feedback on hover.
    */
   @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
 

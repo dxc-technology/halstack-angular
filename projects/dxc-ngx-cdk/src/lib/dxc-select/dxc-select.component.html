@@ -22,7 +22,7 @@
 <div
   class="container"
   [tabindex]="tabIndex"
-  (focus)="focusContainer($event)"
+  (focus)="focusContainer($event, false)"
   (click)="handleSelectOpen()"
   (keydown)="handleOnKeyDown($event)"
   (focusout)="handleOnFocusOut()"

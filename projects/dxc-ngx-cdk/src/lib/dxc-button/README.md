@@ -42,7 +42,7 @@ The API properties are the following:
       <th>Description</th>
     </tr>
     <tr>
-      <td>@Input<br>mode: string ('primary' | 'secondary' | 'text')</td>
+      <td>@Input<br>'primary' | 'secondary' | 'text'</td>
       <td>
         <code>'primary'</code>
       </td>
@@ -51,7 +51,7 @@ The API properties are the following:
     <tr>
       <td>@Input<br>label: string</td>
       <td></td>
-      <td>Text to be placed next to the button.</td>
+      <td>Text to be placed inside the button.</td>
     </tr>
     <tr>
       <td>@Input<br>iconSrc: string</td>
@@ -59,7 +59,7 @@ The API properties are the following:
       <td>URL of the icon that will be placed next to the button label.</td>
     </tr>
     <tr>
-      <td>@Input<br>iconPosition: string ('before' | 'after')</td>
+      <td>@Input<br>iconPosition: 'before' | 'after'</td>
       <td>
         <code>'before'</code>
       </td>
@@ -81,7 +81,7 @@ The API properties are the following:
       </td>
     </tr>
     <tr>
-      <td>@Input<br>margin: any (string | object)</td>
+      <td>@Input<br>margin: string | object</td>
       <td></td>
       <td>
         Size of the margin to be applied to the component ('xxsmall' |
@@ -91,7 +91,7 @@ The API properties are the following:
       </td>
     </tr>
     <tr>
-      <td>@Input<br>size: any (string | object)</td>
+      <td>@Input<br>size: string | object</td>
       <td></td>
       <td>
         Size of the component ('small' | 'medium' | 'large' | 'fillParent' |

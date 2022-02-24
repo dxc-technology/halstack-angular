@@ -20,13 +20,35 @@ import {
 import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.component";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
+type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
+
 @Component({
   selector: "dxc-button",
   templateUrl: "./dxc-button.component.html",
   providers: [CssUtils],
 })
 export class DxcButtonComponent {
-  @Input() mode: string;
+  /**
+   * Uses one of the available button modes.
+   */
+  @Input() mode: "primary" | "secondary" | "text" = "primary";
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -34,12 +56,31 @@ export class DxcButtonComponent {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
+  private _disabled = false;
+  /**
+   * Text to be placed inside the button.
+   */
   @Input() label: string;
+  /**
+   * @deprecated URL of the icon that will be placed next to the button label.
+   */
   @Input() iconSrc: string;
-  @Input() iconPosition: string;
-  @Input() margin: any;
-  @Input() size: string;
+  /**
+   * Whether the icon should appear after or before the label.
+   */
+  @Input() iconPosition: "before" | "after" = "before";
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * Size of the component.
+   */
+  @Input() size: Size = "fitContent";
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -47,9 +88,12 @@ export class DxcButtonComponent {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
-  @Output() onClick = new EventEmitter<any>();
+  /**
+   * This function will be called when the user clicks the button.
+   */
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
 
   @HostBinding("class") className;
 

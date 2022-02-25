@@ -56,7 +56,7 @@ describe("DxcNumberInputComponent", () => {
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Increment"));
     dxcNumber.detectChanges();
-    expect(onChange).toHaveBeenCalledWith({"value": 10, error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
   });
 
   test("decrease should call onChange in dxc-number", async () => {
@@ -82,7 +82,7 @@ describe("DxcNumberInputComponent", () => {
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Decrement"));
     dxcNumber.detectChanges();
-    expect(onChange).toHaveBeenCalledWith({"value": 5, error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "5", error: null });
   });
 
   test("controlled dxc-number", async () => {
@@ -91,7 +91,7 @@ describe("DxcNumberInputComponent", () => {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
-        value: 4,
+        value: "4",
         min: 1,
         max: 100,
         step: 5,
@@ -112,7 +112,7 @@ describe("DxcNumberInputComponent", () => {
     expect(input.max).toBe("100");
     expect(screen.getByDisplayValue("4")).toBeTruthy();
     fireEvent.input(input, { target: { value: "10" } });
-    expect(onChange).toHaveBeenCalledWith({value: "10", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
     expect(screen.getByDisplayValue("4")).toBeTruthy();
   });
 
@@ -123,7 +123,7 @@ describe("DxcNumberInputComponent", () => {
       componentProperties: {
         label: "test-input",
         helperText: "helper-text",
-        value: 4,
+        value: "4",
         min: 1,
         max: 100,
         step: 5,
@@ -147,7 +147,7 @@ describe("DxcNumberInputComponent", () => {
     expect(input.max).toBe("100");
     expect(screen.getByDisplayValue("4"));
     fireEvent.input(input, { target: { value: "10" } });
-    expect(onChange).toHaveBeenCalledWith({value: "10", error: null});
+    expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
     expect(screen.getByDisplayValue("4"));
     fireEvent.blur(input);
     waitFor(() => {

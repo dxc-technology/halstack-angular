@@ -1380,6 +1380,7 @@ export const componentTokens = {
   "--tag-labelPaddingBottom": "0rem",
   "--tag-labelPaddingLeft": "1rem",
   "--tag-labelPaddingRight": "1rem",
+  "--tag-disabledFontColor": globalTokens.hal_grey_l_60,
 
   //V3 TEXTAREA
   "--v3Textarea-fontFamily": globalTokens.type_sans,

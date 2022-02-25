@@ -79,6 +79,17 @@ export class DxcTagComponent implements OnInit {
   }
   private _newWindow = false;
   /**
+   * If true, the component will be disabled.
+   */
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
+  /**
    * Size of the component.
    */
   @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
@@ -197,11 +208,40 @@ export class DxcTagComponent implements OnInit {
       : "1";
   }
 
+  setActionStyle(inputs) {
+    if (!inputs.disabled) {
+      return css`
+        button:focus,
+        button:focus-visible,
+        button:focus-within,
+        button:active,
+        a:focus,
+        a:focus-visible,
+        a:focus-within,
+        a:active {
+          outline: var(--tag-focusColor) auto 2px;
+        }
+        button:active,
+        button:hover,
+        a:active,
+        a:hover {
+          dxc-box {
+            box-shadow: 0 8px 14px -2px rgba(0, 0, 0, 0.1);
+          }
+        }
+      `;
+    }
+  }
+
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
-      ${this.isClickDefined ||
-      (this.linkHref !== null && this.linkHref !== undefined)
+      ${inputs.disabled
+        ? css`
+            cursor: not-allowed;
+          `
+        : this.isClickDefined ||
+          (this.linkHref !== null && this.linkHref !== undefined)
         ? css`
             cursor: pointer;
           `
@@ -234,7 +274,9 @@ export class DxcTagComponent implements OnInit {
           padding-right: var(--tag-labelPaddingRight);
           font-style: var(--tag-fontStyle);
           font-family: var(--tag-fontFamily);
-          color: var(--tag-fontColor);
+          color: ${inputs.disabled
+            ? "var(--tag-disabledFontColor)"
+            : "var(--tag-fontColor)"};
           font-weight: var(--tag-fontWeight);
           font-size: var(--tag-fontSize);
           letter-spacing: 1px;
@@ -246,6 +288,7 @@ export class DxcTagComponent implements OnInit {
           display: ${inputs.label ? "inline-flex" : "none"};
         }
         .iconContainer {
+          opacity: ${inputs.disabled ? "0.4" : "1"};
           height: 100%;
           display: inline-flex;
           width: var(--tag-iconSectionWidth);
@@ -281,24 +324,7 @@ export class DxcTagComponent implements OnInit {
         text-decoration: none;
         outline: none;
       }
-      button:focus,
-      button:focus-visible,
-      button:focus-within,
-      button:active,
-      a:focus,
-      a:focus-visible,
-      a:focus-within,
-      a:active {
-        outline: var(--tag-focusColor) auto 2px;
-      }
-      button:active,
-      button:hover,
-      a:active,
-      a:hover {
-        dxc-box {
-          box-shadow: 0 8px 14px -2px rgba(0, 0, 0, 0.1);
-        }
-      }
+      ${this.setActionStyle(inputs)};
     `;
   }
 }

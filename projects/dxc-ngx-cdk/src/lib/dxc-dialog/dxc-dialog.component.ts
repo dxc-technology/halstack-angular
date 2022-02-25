@@ -15,15 +15,15 @@ import {
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 
-type Space = {
-  xxsmall: "6px";
-  xsmall: "16px";
-  small: "24px";
-  medium: "36px";
-  large: "48px";
-  xlarge: "64px";
-  xxlarge: "100px";
-};
+type Space = 
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+;
 
 type Padding = {
   top?: Space;
@@ -68,7 +68,7 @@ export class DxcDialogComponent {
    * object with 'top', 'bottom', 'left' and 'right' to
    * specify different padding sizes.
    */
-  @Input() padding: Space | Padding;
+  @Input() padding: Space | Padding = "small";
 
   /**
    * Value of the tabindex given to the close button.
@@ -101,7 +101,7 @@ export class DxcDialogComponent {
   defaultInputs = new BehaviorSubject<any>({
     overlay: true,
     isCloseVisible: true,
-    padding: null,
+    padding: "small",
     tabIndexValue: 0,
   });
 

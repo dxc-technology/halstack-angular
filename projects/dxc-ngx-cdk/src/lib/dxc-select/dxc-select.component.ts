@@ -280,7 +280,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   handleOptionClick(option, event) {
     if (!this.disabled) {
-      this.focusContainer(event);
+      this.focusContainer(event, true);
       if (this.multiple) {
         const arr: Option[] = this.service.getSelectedValues() || [];
         const index = arr.indexOf(option);
@@ -347,14 +347,13 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  focusContainer(event) {
+  focusContainer(event, isOptionClicked: boolean) {
     if (!this.disabled && this.searchable) {
       event.preventDefault();
       event.stopPropagation();
       this.isInputVisible = true;
-      setTimeout(() => {
-        this.inputRef.nativeElement.focus();
-      }, 0);
+      this.inputRef.nativeElement.focus();
+      this.isOpened = !isOptionClicked ? true : false;
     }
   }
 

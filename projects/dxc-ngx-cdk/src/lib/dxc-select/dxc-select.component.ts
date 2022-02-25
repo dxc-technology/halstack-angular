@@ -354,6 +354,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
       this.isInputVisible = true;
       this.inputRef.nativeElement.focus();
       this.isOpened = !isOptionClicked ? true : false;
+    } else if (!this.disabled && this.multiple) {
+      event.preventDefault();
+      event.stopPropagation();
     }
   }
 

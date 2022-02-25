@@ -1111,7 +1111,8 @@
     "labelPaddingTop": "0rem",
     "labelPaddingBottom": "0rem",
     "labelPaddingLeft": "1rem",
-    "labelPaddingRight": "1rem"
+    "labelPaddingRight": "1rem",
+    "disabledFontColor": "#999999"
   },
   "table": {
     "rowSeparatorThickness": "1px",

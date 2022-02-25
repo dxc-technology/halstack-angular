@@ -1097,7 +1097,8 @@
     "labelPaddingTop": "length",
     "labelPaddingBottom": "length",
     "labelPaddingLeft": "length",
-    "labelPaddingRight": "length"
+    "labelPaddingRight": "length",
+    "disabledFontColor": "color"
   },
   "table": {
     "rowSeparatorThickness": "length",

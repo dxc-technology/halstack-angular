@@ -54,7 +54,7 @@
         <p class="text-muted mb-2">{{label}}</p>
         <div class="d-flex flex-row justify-content-between theme-palette">
           <span [ngClass]="{ active: colors.active}" role="button" attr.aria-checked="{{colors.active}}" role="radio"
-            tabindex="{{disabled ? -1 : tabIndexValue}}" attr.aria-label="{{label + ' ' + colors.color}}"
+            tabindex="{{disabled ? -1 : tabIndexValue}}" attr.aria-label="{{label + ' ' + colors.color?.primary}}"
             *ngFor="let colors of themeInfo.themeColors; let i = index" (click)="changeThemeColor(i)"
             (keyup.enter)="changeThemeColor(i)"
             [ngStyle]="{'background-color': colors.color?.primary, 'border-color': colors.color?.primary}"

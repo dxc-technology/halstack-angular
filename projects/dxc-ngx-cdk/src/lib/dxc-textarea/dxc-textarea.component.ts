@@ -20,7 +20,20 @@ import { BackgroundProviderService } from "../../public-api";
 import { CssUtils } from "../utils";
 import { DxcTextareaHelper } from "./dxc-textarea.helper";
 import { v4 as uuidv4 } from "uuid";
-
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 @Component({
   selector: "dxc-textarea",
   templateUrl: "./dxc-textarea.component.html",
@@ -29,22 +42,30 @@ import { v4 as uuidv4 } from "uuid";
 export class DxcTextareaComponent implements OnInit {
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
-
+  /**
+   * Text to be placed above the textarea.
+   */
   @Input()
-  label: string;
-
+  label: string = "";
+  /**
+   * Name attribute of the textarea element.
+   */
   @Input()
-  name: string;
-
+  name: string = "";
+  /**
+   * Value of the textarea. If undefined, the component will be uncontrolled and the value will be managed internally.
+   */
   @Input()
   value: string;
-
-  @Input()
   id: string;
-
+  /**
+   * Helper text to be placed above the textarea.
+   */
   @Input()
-  helperText: string;
-
+  helperText: string = "";
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -53,7 +74,10 @@ export class DxcTextareaComponent implements OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
-
+  /**
+   * If true, the textarea will be optional, showing (Optional) next to the label. 
+   * Otherwise, the field will be considered required and an error will be passed as a parameter to the OnBlur and onChange functions when it has not been filled.
+   */
   @Input()
   get optional(): boolean {
     return this._optional;
@@ -62,7 +86,9 @@ export class DxcTextareaComponent implements OnInit {
     this._optional = coerceBooleanProperty(value);
   }
   private _optional = false;
-
+  /**
+   * Number of rows of the textarea.
+   */
   @Input()
   get rows(): number {
     return this._rows;
@@ -71,39 +97,75 @@ export class DxcTextareaComponent implements OnInit {
     this._rows = coerceNumberProperty(value);
   }
   private _rows = 4;
-
+  /**
+   * Defines the textarea's ability to resize vertically. It can be:
+      'auto': The textarea grows or shrinks automatically in order to fit the content.
+      'manual': The height of the textarea is enabled to be manually modified.
+      'none': The textarea has a fixed height and can't be modified.
+   */
   @Input()
-  verticalGrow = "auto";
-
+  verticalGrow: "auto" | "manual" | "none" = "auto";
+  /**
+   * If it is defined, the component will change its appearance, showing the error below the textarea component. 
+   * If it is not defined, the error messages will be created and managed internally.
+   */
   @Input()
   error = undefined;
-
+  /**
+   * Text to be put as placeholder of the textarea.
+   */
   @Input()
   placeholder = "";
-
+  /**
+   * Regular expression that defines the valid format allowed by the textarea. 
+   * This will be checked when the textarea loses the focus. 
+   * If the value entered does not match the pattern, the onBlur function will be called with the value 
+   * entered and the error informing that the value does not match the pattern as parameters. If the pattern is accomplished, 
+   * the error parameter will be null.
+   */
   @Input()
   pattern = "";
-
+  /**
+   * Specifies the minimun length allowed by the textarea. 
+   * This will be checked both when the input element loses the focus and while typing within it. 
+   * If the string entered does not comply the minimum length, the onBlur and onChange functions will be called 
+   * with the current value and an internal error informing that the value length does not comply the specified range. 
+   * If a valid length is reached, the error parameter of both events will be null.
+   */
   @Input()
   minLength: number;
-
+  /**
+   * Specifies the maximum length allowed by the textarea. 
+   * This will be checked both when the input element loses the focus and while typing within it. 
+   * If the string entered does not comply the maximum length, the onBlur and onChange functions will be called 
+   * with the current value and an internal error informing that the value length does not comply the specified range. 
+   * If a valid length is reached, the error parameter of both events will be null.
+   */
   @Input()
   maxLength: number;
-
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
   @Input()
-  margin: Object | string;
-
+  margin: Space | Margin;
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
-  tabIndex: number;
-
+  tabIndex: number = 0;
+  /**
+   * Size of the component ('small' | 'medium' | 'large' | 'fillParent').
+   */
   @Input()
-  size: string;
-
+  size: "small" | "medium" | "large" | "fillParent" = "medium";
+  /**
+   * HTML autocomplete attribute. Lets the user specify if any permission the user agent has to provide automated assistance in filling out
+   * the textarea value. Its value must be one of all the possible values of the HTML autocomplete attribute: 'on', 'off', 'email', 'username', 'new-password', ...
+   */
   @Input()
   autocomplete: string = "off";
-
   private controlled: boolean;
-
   defaultInputs = new BehaviorSubject<any>({
     placeholder: "",
     error: "",
@@ -119,23 +181,23 @@ export class DxcTextareaComponent implements OnInit {
     rows: 4,
     verticalGrow: "auto",
   });
-
+  /**
+   * This function will be called when the user types within the textarea. An object including the new value and the error will be passed to this function. 
+   * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
+   */
   @Output()
-  onChange = new EventEmitter<any>();
-
+  onChange = new EventEmitter<{value: string; error: string | null}>();
+  /**
+   * This function will be called when the textarea loses the focus. An object including the textarea value and the error will be passed to this function. 
+   * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
+   */
   @Output()
-  onBlur = new EventEmitter<any>();
-
+  onBlur = new EventEmitter<{value: string; error: string | null}>();
   @ViewChild("textareaRef", { static: true }) textareaRef: ElementRef;
-
   darkBackground: boolean = false;
-
   isDirty: boolean = false;
-
   validationError: string = "";
-
   textareaId = `textarea-${uuidv4()}`;
-
   constructor(
     private cdRef: ChangeDetectorRef,
     private helper: DxcTextareaHelper,
@@ -155,7 +217,6 @@ export class DxcTextareaComponent implements OnInit {
       }, 0);
     });
   }
-
   ngOnChanges(changes: SimpleChanges): void {
     this.checkHeight();
     this.hasError = this.error && !this.disabled ? true : false;
@@ -169,7 +230,6 @@ export class DxcTextareaComponent implements OnInit {
       darkBackground: this.darkBackground,
     })}`;
   }
-
   ngOnInit(): void {
     if (this.value === undefined) {
       this.value = "";
@@ -182,14 +242,12 @@ export class DxcTextareaComponent implements OnInit {
       darkBackground: this.darkBackground,
     })}`;
   }
-
   ngAfterViewInit(): void {
     if (this.textareaRef) {
       this.textareaRef.nativeElement.ariaDisabled = this.disabled;
     }
     this.checkHeight();
   }
-
   handleOnChange(event) {
     if (this.value !== event && this.isDirty) {
       this.onChange.emit({ value: event, error: this.validateValue(event) });
@@ -206,20 +264,17 @@ export class DxcTextareaComponent implements OnInit {
     }
     this.cdRef.detectChanges();
   }
-
   handleOnBlur() {
     this.onBlur.emit({
       value: this.value,
       error: this.handleValidationError(),
     });
   }
-
   handleOnFocus() {
     if (!this.isDirty) {
       this.isDirty = true;
     }
   }
-
   private validateValue(value) {
     if (this.isRequired(value))
       return `This field is required. Please, enter a value.`;
@@ -229,27 +284,22 @@ export class DxcTextareaComponent implements OnInit {
       return `Please use a valid pattern`;
     return null;
   }
-
   private handleValidationError() {
     const validationError = this.validateValue(this.value);
     this.validationError = validationError;
     return validationError;
   }
-
   private patternMatch(pattern, value) {
     const patternToMatch = new RegExp(pattern);
     return patternToMatch.test(value);
   }
-
   private isRequired = (value) => value === "" && !this.optional;
-
   private isLengthIncorrect = (value) =>
     (value !== "" &&
       this.minLength &&
       value &&
       value.length < +this.minLength) ||
     (this.maxLength && value && value.length > +this.maxLength);
-
   private checkHeight() {
     if (this.textareaRef) {
       if (this.verticalGrow === "auto") {

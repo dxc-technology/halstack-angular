@@ -1,4 +1,9 @@
-<dxc-heading [level]="3" weight="normal" text="API" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="3"
+  weight="normal"
+  text="API"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 
 <file-input-properties></file-input-properties>
 
@@ -15,7 +20,9 @@
   text="FileData"
   [margin]="{ bottom: 'small' }"
 ></dxc-heading>
-<p>Object structure of the interface. It should be imported from the library.</p>
+<p>
+  Object structure of the interface. It should be imported from the library.
+</p>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -23,22 +30,18 @@
   </tr>
   <tr>
     <td>data: File</td>
-    <td>
-        Data of the file.
-    </td>
+    <td>Selected file.</td>
   </tr>
   <tr>
     <td>error: string</td>
     <td>
-        Error that will be displayed in the file input.
+      Error of the file. If it is defined, it will be shown and the file item
+      will be mark as invalid.
     </td>
   </tr>
   <tr>
     <td>image: string | ArrayBuffer</td>
-    <td>
-      Image data of the file.
-    </td>
+    <td>Preview of the file..</td>
   </tr>
 </dxc-table>
-
 <file-input-import></file-input-import>

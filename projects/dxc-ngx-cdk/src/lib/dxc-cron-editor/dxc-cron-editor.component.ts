@@ -208,10 +208,11 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
         }
         else if (state.custom.month.length > 1 && state.custom.month.indexOf('*') != -1) {
           state.custom.month.splice(state.custom.month.indexOf('*'), 1);
+
           shouldUpdate = true;
         }
         if (shouldUpdate)
-          this.advancedForm.patchValue({ 'days': state.custom.days, 'month': state.custom.month });
+          this.advancedForm.get('custom').patchValue({ 'days': state.custom.days, 'month': state.custom.month });
           this.cron = `${this.getStartFrom(state.custom.startSeconds)}${this.isCronFlavorQuartz ? state.custom.seconds : ''} ${this.getStartFrom(state.custom.startMinutes)}${state.custom.minutes} ${this.getStartFrom(state.custom.startHours)}${this.hourToCron(state.custom.hours, state.custom.hourType)} ${this.getStartFrom(state.custom.startDays)}${state.custom.days.join(',')} ${this.getStartFrom(state.custom.startMonth)}${state.custom.month.join(',')} ${this.weekDayDefaultChar} ${this.getCronYear(state.custom.startYear, state.custom.year)}`.trim();
         break;
       default:

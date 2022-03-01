@@ -197,7 +197,9 @@ export class DxcTagComponent implements OnInit {
   };
 
   public onClickHandler($event: any): void {
-    this.onClick.emit($event);
+    if (!this.disabled) {
+      this.onClick.emit($event);
+    }
   }
 
   getShadowDepth(): string {
@@ -236,17 +238,17 @@ export class DxcTagComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
-      ${inputs.disabled
+      ${!this.isClickDefined &&
+      (this.linkHref === null || this.linkHref === undefined)
+        ? css`
+            cursor: unset;
+          `
+        : this.disabled
         ? css`
             cursor: not-allowed;
           `
-        : this.isClickDefined ||
-          (this.linkHref !== null && this.linkHref !== undefined)
-        ? css`
-            cursor: pointer;
-          `
         : css`
-            cursor: unset;
+            cursor: pointer;
           `};
       ${this.utils.getMargins(inputs.margin)};
       dxc-box {
@@ -317,12 +319,14 @@ export class DxcTagComponent implements OnInit {
         background: none;
         border: none;
         padding: 0;
-        cursor: pointer;
+        cursor: ${!this.disabled ? "pointer" : "not-allowed"};
         outline: 0;
       }
       .styledLink {
         text-decoration: none;
         outline: none;
+        cursor: ${!this.disabled ? "pointer" : "not-allowed"};
+        ${this.disabled ? "pointer-events: none;" : ""}
       }
       ${this.setActionStyle(inputs)};
     `;

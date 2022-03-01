@@ -12,5 +12,7 @@ export class TagPreviewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick() {}
+  onClick() {
+    console.log("click");
+  }
 }

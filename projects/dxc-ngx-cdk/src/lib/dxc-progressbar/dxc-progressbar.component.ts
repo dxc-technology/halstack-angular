@@ -26,7 +26,6 @@ type Margin = {
   providers: [CssUtils],
 })
 export class DxcProgressbarComponent {
-
   /**
    * The value of the progress indicator. If it's received the component is determinate otherwise is indeterminate.
    */
@@ -35,7 +34,7 @@ export class DxcProgressbarComponent {
   /**
    * Text to be placed above the progress bar.
    */
-  @Input() label: string;
+  @Input() label: string = "";
 
   /**
    * Helper text to be placed under the progress bar.
@@ -84,20 +83,25 @@ export class DxcProgressbarComponent {
   constructor(private utils: CssUtils) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.value || this.value === 0) {
-      if (this.value <= 100 && this.value >= 0) {
-        this.mode = "determinate";
-      } else {
-        if (this.value > 100) {
+    if (this.showValue) {
+      this.mode = "determinate";
+      if (this.value || this.value === 0) {
+        if (this.value <= 100 && this.value >= 0) {
           this.mode = "determinate";
-          this.value = 100;
-        } else if (this.value < 0) {
-          this.mode = "determinate";
-          this.value = 0;
         } else {
-          this.value = undefined;
-          this.mode = "indeterminate";
+          if (this.value > 100) {
+            this.mode = "determinate";
+            this.value = 100;
+          } else if (this.value < 0) {
+            this.mode = "determinate";
+            this.value = 0;
+          } else {
+            this.value = undefined;
+            this.mode = "indeterminate";
+          }
         }
+      } else {
+        this.value = 0;
       }
     } else {
       this.mode = "indeterminate";
@@ -117,7 +121,6 @@ export class DxcProgressbarComponent {
 
   public ngOnInit(): void {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-
     if (this.value) {
       this.mode = "determinate";
     }
@@ -187,6 +190,8 @@ export class DxcProgressbarComponent {
         }
       }
       .helperText {
+        width: 80%;
+        z-index: 1;
         font-family: var(--progressBar-helperTextFontFamily);
         font-size: var(--progressBar-helperTextFontSize);
         font-style: var(--progressBar-helperTextFontStyle);

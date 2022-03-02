@@ -16,7 +16,7 @@
         aria-labelledby="cl_{{field.name}}" sizes="fitContent" margin="small"
         [attr.aria-disabled]="field.disabled" [disabled]="field.disabled" formControlName="{{field.name}}"
         [multiple]="field.multiple"
-        [className]="formGroup.get(field.name).errors?.required ? 'classinavlid' : 'classvalid'">
+        [className]="formGroup.get(field.name).errors?.required ? 'classinavlid' : 'classvalid mat-select'">
         <dxc-select-option *ngFor="let option of field.options" value="{{option.value}}" label="{{option.label}}">
         </dxc-select-option>
       </dxc-select>

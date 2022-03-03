@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Directionality } from "@angular/cdk/bidi";
 import {
   CollectionViewer,
@@ -50,7 +43,6 @@ import {
   isObservable,
 } from "rxjs";
 import { takeUntil } from "rxjs/operators";
-import { DxcCellOutlet, DxcCellOutletRowContext } from "./row";
 import { getTableUnknownDataSourceError } from "./table-errors";
 import { DXC_RESULTSET_TABLE } from "./tokens";
 import { DxcHeaderRowComponent } from "./components/dxc-header-row/dxc-header-row.component";
@@ -58,123 +50,21 @@ import { DxcRowComponent } from "./components/dxc-row/dxc-row.component";
 import { DxcColumnDef } from "./directives/dxc-column-def.directive";
 import { PaginationService } from "./services/pagination.service";
 import { SortService } from "./services/sort.service";
-import { Ordering } from "./directives/sorting.directive";
+// import { Ordering } from "./directives/sorting.directive";
 import { coerceArray, coerceNumberProperty } from "@angular/cdk/coercion";
 import { HostBinding } from "@angular/core";
+import { RowOutlet } from "./interfaces/row-outlet.interface";
+import { RenderRow } from "./interfaces/render-row.interface";
+import { dxcResultsetTableDataSourceInput } from "./types/dxc-resultset-table-datasource.type";
+import { HeaderOutlet } from "./directives/header-outlet.directive";
+import { DataRowOutlet } from "./directives/data-row-outlet.directive";
+import { Space } from "./types/table-space.type";
+import { Size } from "./types/table-size.type";
+import { RowViewRef } from "./classes/row-viewref.class";
+import { RowContext } from "./interfaces/row-context.interface";
+import { DxcCellOutlet } from "./directives/dxc-cell-outlet.directive";
+import { TableDataSource } from "./classes/table-data-source.class";
 
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Size = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
-
-/** Interface used to provide an outlet for rows to be inserted into. */
-export interface RowOutlet {
-  viewContainer: ViewContainerRef;
-}
-
-/**
- * Union of the types that can be set as the data source for a `CdkTable`.
- * @docs-private
- */
-type dxcResultsetTableDataSourceInput<T> =
-  | DataSource<T>
-  | Observable<ReadonlyArray<T> | T[]>
-  | ReadonlyArray<T>
-  | T[];
-
-/**
- * Provides a handle for the table to grab the view container's ng-container to insert data rows.
- * @docs-private
- */
-@Directive({ selector: "[headerOutlet]" })
-export class HeaderOutlet implements RowOutlet {
-  constructor(
-    public viewContainer: ViewContainerRef,
-    public elementRef: ElementRef
-  ) {}
-}
-
-/**
- * Provides a handle for the table to grab the view container's ng-container to insert data rows.
- * @docs-private
- */
-@Directive({ selector: "[rowOutlet]" })
-export class DataRowOutlet implements RowOutlet {
-  constructor(
-    public viewContainer: ViewContainerRef,
-    public elementRef: ElementRef
-  ) {}
-}
-
-/**
- * Interface used to conveniently type the possible context interfaces for the render row.
- * @docs-private
- */
-export interface RowContext<T> extends DxcCellOutletRowContext<T> {}
-
-/**
- * Class used to conveniently type the embedded view ref for rows with a context.
- * @docs-private
- */
-abstract class RowViewRef<T> extends EmbeddedViewRef<RowContext<T>> {}
-
-/**
- * Set of properties that represents the identity of a single rendered row.
- *
- * When the table needs to determine the list of rows to render, it will do so by iterating through
- * each data object and evaluating its list of row templates to display (when multiTemplateDataRows
- * is false, there is only one template per data object). For each pair of data object and row
- * template, a `RenderRow` is added to the list of rows to render. If the data object and row
- * template pair has already been rendered, the previously used `RenderRow` is added; else a new
- * `RenderRow` is * created. Once the list is complete and all data objects have been itereated
- * through, a diff is performed to determine the changes that need to be made to the rendered rows.
- *
- * @docs-private
- */
-export interface RenderRow<T> {
-  data: T;
-  dataIndex: number;
-  rowDef: Object;
-}
-
-export interface Columns {
-  columns: Array<string>;
-  labels: Array<string>;
-}
-/**
- * The table template that can be used by the mat-table. Should not be used outside of the
- * material library.
- * @docs-private
- */
-export const CDK_TABLE_TEMPLATE = `
-    <dxc-table [margin]="margin">
-      <ng-container headerOutlet></ng-container>
-      <ng-container rowOutlet></ng-container>
-    </dxc-table>
-
-    <dxc-paginator *ngIf="totalItems !== null"
-      [totalItems]="totalItems"
-      [itemsPerPage]="itemsPerPage"
-      [itemsPerPageOptions]="itemsPerPageOptions"
-      [currentPage]="page"
-      [showGoToPage]="showGoToPage"
-      (onGoToPage)="navigate($event)"
-      (itemsPerPageFunction)="handleItemsPerPageSelect($event)"
-    ></dxc-paginator>
-
-
-`;
 /**
  * A data table that can render a header row, data rows, and a footer row.
  * Uses the dataSource input to determine the data to be rendered. The data can be provided either
@@ -184,7 +74,23 @@ export const CDK_TABLE_TEMPLATE = `
 @Component({
   selector: "dxc-resultset-table, table[dxc-resultset-table]",
   exportAs: "dxcResultsetTable",
-  template: CDK_TABLE_TEMPLATE,
+  template: `
+    <dxc-table [margin]="margin">
+      <ng-container headerOutlet></ng-container>
+      <ng-container rowOutlet></ng-container>
+    </dxc-table>
+
+    <dxc-paginator
+      *ngIf="totalItems !== null"
+      [totalItems]="totalItems"
+      [itemsPerPage]="itemsPerPage"
+      [itemsPerPageOptions]="itemsPerPageOptions"
+      [currentPage]="page"
+      [showGoToPage]="showGoToPage"
+      (onGoToPage)="navigate($event)"
+      (itemsPerPageFunction)="handleItemsPerPageSelect($event)"
+    ></dxc-paginator>
+  `,
   encapsulation: ViewEncapsulation.None,
   // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
   // The view for `MatTable` consists entirely of templates declared in other views. As they are
@@ -263,7 +169,7 @@ export class DxcResultTable<T>
   @HostBinding("class") className;
 
   /** List of ordering directives. */
-  private _allOrderingRefs: Ordering[] = [];
+  private _allOrderingRefs: ElementRef[] = [];
 
   private _document: Document;
 
@@ -591,7 +497,7 @@ export class DxcResultTable<T>
   /** Update the map containing the content's column definitions. */
   private _cacheColumnDefs() {
     this._columnDefsByName.clear();
-    const columnDefs = mergeArrayAndSet(
+    const columnDefs = this.mergeArrayAndSet(
       this._getOwnDefs(this._contentColumnDefs),
       this._customColumnDefs
     );
@@ -747,7 +653,7 @@ export class DxcResultTable<T>
   /** Set to default others header's states if they are different to default state ("up" or "down"). */
   removeOtherSorts(actualIdHeader) {
     this._allOrderingRefs.forEach((element) => {
-      let nativeElement = element.elementRef.nativeElement;
+      let nativeElement = element.nativeElement;
       if (actualIdHeader != nativeElement.id) {
         let stateElement = nativeElement.getAttribute("state");
         if (stateElement === "up" || stateElement === "down") {
@@ -764,14 +670,14 @@ export class DxcResultTable<T>
   /** Set to default all headers that are sortable. */
   setDefaultStateHeaders() {
     this._allOrderingRefs.forEach((element) => {
-      let id = element.elementRef.nativeElement.id;
+      let id = element.nativeElement.id;
       let columnName = id.split("-")[1];
       this.sortService.mapStatesHeaders.set(columnName, "default");
     });
   }
 
   /** Register all ordering directives references. */
-  registerOrderingRef(ref: Ordering) {
+  registerOrderingRef(ref: ElementRef) {
     this._allOrderingRefs.push(ref);
   }
 
@@ -803,17 +709,17 @@ export class DxcResultTable<T>
   }
 
   /** Change icon to up icon */
-  changeAscIcon(el: Ordering) {
+  changeAscIcon(el: ElementRef) {
     this.sortService.setAscIconSort(el);
   }
 
   /** Change icon to down icon */
-  changeDescIcon(el: Ordering) {
+  changeDescIcon(el: ElementRef) {
     this.sortService.setDescIconSort(el);
   }
 
   /** Change icon to default icon */
-  changeDefaultIcon(el: Ordering) {
+  changeDefaultIcon(el: ElementRef) {
     this.sortService.setDefaultIconSort(el);
   }
 
@@ -826,31 +732,9 @@ export class DxcResultTable<T>
   setClassName() {
     this.className = `${Math.round(Math.random() * 100)}`;
   }
-}
 
-/** Utility function that gets a merged list of the entries in an array and values of a Set. */
-function mergeArrayAndSet<T>(array: T[], set: Set<T>): T[] {
-  return array.concat(Array.from(set));
-}
-
-export class TableDataSource extends DataSource<any> {
-  /** Stream of data that is provided to the table. */
-
-  public data = new BehaviorSubject<[]>([]);
-
-  constructor(items) {
-    super();
-    this.data = items;
+  /** Utility function that gets a merged list of the entries in an array and values of a Set. */
+  mergeArrayAndSet<T>(array: T[], set: Set<T>): T[] {
+    return array.concat(Array.from(set));
   }
-
-  getData() {
-    return this.data;
-  }
-
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<[]> {
-    return this.data;
-  }
-
-  disconnect() {}
 }

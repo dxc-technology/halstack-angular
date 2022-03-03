@@ -11,7 +11,7 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
 import { css } from "emotion";
-import { Option } from "../../public-api";
+import { Option } from "../dxc-select/interfaces/option.interface";
 
 @Component({
   selector: "dxc-paginator",

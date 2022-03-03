@@ -1,8 +1,5 @@
 import { Directive, TemplateRef } from "@angular/core";
-
-export interface CellDef {
-  template: TemplateRef<any>;
-}
+import CellDef from "../interfaces/cell-def.interface";
 
 /**
  * Cell definition for a CDK table.

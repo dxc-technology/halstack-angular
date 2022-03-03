@@ -25,7 +25,6 @@ export class CodesandboxViewer implements OnInit {
       .getExamples(this.path)
       .subscribe((resp) => {
         this.examples = resp;
-        console.log(this.examples);
       });
   }
 

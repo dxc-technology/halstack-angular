@@ -33,7 +33,6 @@
     "@angular/router": "12.2.16",
     "@babel/preset-env": "^7.4.5",
     "@ctrl/tinycolor": "^3.4.0",
-    "@material-extended/mde": "^3.0.3",
     "@scullyio/init": "^1.0.1",
     "@scullyio/ng-lib": "^1.0.0",
     "@scullyio/scully": "^1.0.0",

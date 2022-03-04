@@ -19,8 +19,8 @@
     "build-lib:watch": "ng build --watch dxc-ngx-cdk",
     "storybook": "start-storybook -s .out -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .out && npm run copy-storybook-lib-assets && npm run copy-storybook-component-assets",
-    "copy-storybook-lib-assets": "xcopy .\\..\\..\\dist\\dxc-ngx-cdk\\lib\\assets .\\.out\\assets /Y /I /E",
-    "copy-storybook-component-assets": "xcopy .\\.storybook\\assets .\\.out\\assets /Y /I /E"
+    "copy-storybook-lib-assets": "xcopy .\\..\\..\\dist\\dxc-ngx-cdk\\lib\\assets\\* .\\.out\\assets /Y /I /E",
+    "copy-storybook-component-assets": "xcopy .\\.storybook\\assets\\* .\\.out\\assets /Y /I /E"
   },
   "author": {
     "name": "DXC Technology",

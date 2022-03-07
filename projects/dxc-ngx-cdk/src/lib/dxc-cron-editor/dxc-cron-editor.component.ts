@@ -85,7 +85,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
   ngOnChanges(changes: SimpleChanges): void {
     if(changes?.cronType?.currentValue !=changes?.cronType?.previousValue)
     {
-      if(this.advancedForm && this.advancedForm.get('subTab'))
+      if(this.advancedForm && this.advancedForm.get('subTab') && this.advancedForm.get('subTab').value !=='-1')
       {
         this.advancedForm.get('subTab').setValue(changes?.cronType?.currentValue ? changes?.cronType?.currentValue : 'expression'); 
         this.cron = this.defaultCron;
@@ -132,6 +132,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
   public async ngOnInit() {
     this.state = this.getDefaultState();
     this.expressionList = [
+      {'name': 'Run Immediately(after 1 min)', 'value': '-1'},
       {'name': 'Expression', 'value': 'expression'},
       {'name': 'Custom', 'value': 'cust'},
      ];
@@ -189,6 +190,9 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
     this.cronType = state.subTab;
     this.cronTypeChange.emit(state.subTab);
     switch (state.subTab) {
+      case '-1':
+        this.cron = '-1';
+        break;
       case 'expression':
         this.cron = state.expression;
         break;

@@ -77,7 +77,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "4mb",
-                  "maximumError": "5mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -92,7 +92,6 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
             "options": {
-              "baseHref":"/tools/angular/",
               "browserTarget": "angular-dxc-site:build"
             },
           "configurations": {
@@ -127,19 +126,6 @@
 
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk-site/tsconfig.app.json",
-              "projects/dxc-ngx-cdk-site/tsconfig.spec.json",
-              "projects/dxc-ngx-cdk-site/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
@@ -182,16 +168,17 @@
             "karmaConfig": "projects/dxc-ngx-cdk/karma.conf.js"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk/tsconfig.lib.json",
-              "projects/dxc-ngx-cdk/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "browserTarget": "angular-cli:build",
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "browserTarget": "angular-cli:build"
           }
         }
       }

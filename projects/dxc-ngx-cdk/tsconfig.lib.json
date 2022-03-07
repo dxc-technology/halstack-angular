@@ -2,16 +2,17 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
-    "module": "es2015",
+    "module": "CommonJS", // CommonJS
     "declarationMap": true,
     "moduleResolution": "node",
     "declaration": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es6",
     "typeRoots": [
       "node_modules/@types"
     ],

@@ -1,4 +1,4 @@
-import '@angular/localize/init';
+import '!style-loader!css-loader!sass-loader!./styles.scss';
 
 export const decorators = [
   (storyFunc) => {

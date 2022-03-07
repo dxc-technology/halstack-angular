@@ -262,10 +262,7 @@ export class DxcResultTable<T>
    *
    * @docs-private
    */
-  viewChange: BehaviorSubject<{
-    start: number;
-    end: number;
-  }> = new BehaviorSubject<{ start: number; end: number }>({
+  readonly viewChange = new BehaviorSubject<{ start: number; end: number }>({
     start: 0,
     end: Number.MAX_VALUE,
   });

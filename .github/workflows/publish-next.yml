@@ -31,11 +31,11 @@ jobs:
           role-duration-seconds: 3600
           role-skip-session-tagging: true
 
+      - name: Install app dependencies
+        run: npm install
+
       - name: Install lib dependencies
         run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
-
-      - name: Install app dependencies
-        run: cd . && npm install
 
       - name: Generate lib
         run: cd ./projects/dxc-ngx-cdk && npm run generate-lib

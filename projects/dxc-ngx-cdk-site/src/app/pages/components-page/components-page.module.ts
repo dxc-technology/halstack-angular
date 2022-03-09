@@ -1,15 +1,20 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from '@angular/common';
-import { DxcBoxModule, DxcBoxComponent, DxcSideNavModule, DxcLinkModule, DxcHeadingComponent, DxcHeadingModule } from "@dxc-technology/halstack-angular"
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { ComponentsPageComponent } from 'src/app/pages/components-page/components-page.component';
-import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
+import { CommonModule } from "@angular/common";
+import {
+  DxcBoxModule,
+  DxcBoxComponent,
+  DxcSideNavModule,
+  DxcLinkModule,
+  DxcHeadingComponent,
+  DxcHeadingModule,
+} from "@dxc-technology/halstack-angular";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
+import { ComponentsPageComponent } from "../../pages/components-page/components-page.component";
+import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 
 @NgModule({
-  declarations: [
-    ComponentsPageComponent
-  ],
+  declarations: [ComponentsPageComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -18,13 +23,9 @@ import { ComponentsSidenavModule } from '../components-sidenav/components-sidena
     DxcSideNavModule,
     DxcLinkModule,
     ComponentsSidenavModule,
-    DxcHeadingModule
+    DxcHeadingModule,
   ],
-  exports: [
-  ],
-  entryComponents: [
-    DxcBoxComponent,
-    DxcHeadingComponent
-  ]
+  exports: [],
+  entryComponents: [DxcBoxComponent, DxcHeadingComponent],
 })
 export class ComponentsPageModule {}

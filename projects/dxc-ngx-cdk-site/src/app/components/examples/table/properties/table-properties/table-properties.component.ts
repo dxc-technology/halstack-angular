@@ -1,21 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataPropertiesTable } from 'src/app/model/data-properties-table';
+import { Component, OnInit, Input } from "@angular/core";
+import { DataPropertiesTable } from "../../../../../model/data-properties-table";
 
 @Component({
-  selector: 'table-properties',
-  templateUrl: './table-properties.component.html',
-  styleUrls: ['./table-properties.component.scss']
+  selector: "table-properties",
+  templateUrl: "./table-properties.component.html",
+  styleUrls: ["./table-properties.component.scss"],
 })
 export class TablePropertiesComponent implements OnInit {
-
   @Input()
   tablePropertiesExample: Array<DataPropertiesTable>;
 
-  constructor() { 
+  constructor() {
     this.tablePropertiesExample = new Array<DataPropertiesTable>();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

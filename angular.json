@@ -77,7 +77,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "4mb",
-                  "maximumError": "10mb"
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -98,10 +98,8 @@
             "production": {
               "browserTarget": "angular-dxc-site:build:production"
             }
-          },
-          "assets": [
-            "projects/dxc-ngx-cdk-site/src/assets"
-          ]
+          }
+
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -171,14 +169,35 @@
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
-            "browserTarget": "angular-cli:build",
+            "browserTarget": "dxc-ngx-cdk:build",
+            "docsMode":false,
             "port": 6006
           }
         },
         "build-storybook": {
           "builder": "@storybook/angular:build-storybook",
           "options": {
-            "browserTarget": "angular-cli:build"
+            "browserTarget": "dxc-ngx-cdk:build"
+          }
+        }
+
+      }
+    },
+    "without-browser-target": {
+      "root": "",
+      "projectType": "library",
+      "architect": {
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "tsConfig": "src/tsconfig.app.json",
+            "docsMode":false
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "tsConfig": "src/tsconfig.app.json"
           }
         }
       }

@@ -1,41 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Example } from 'src/app/model/example';
- 
+import { Component, OnInit, Input } from "@angular/core";
+import { Example } from "../../model/example";
+
 @Component({
-  selector: 'app-example-viewer',
-  templateUrl: './example-viewer.component.html',
-  styleUrls: ['./example-viewer.component.scss']
+  selector: "app-example-viewer",
+  templateUrl: "./example-viewer.component.html",
+  styleUrls: ["./example-viewer.component.scss"],
 })
 export class ExampleViewerComponent implements OnInit {
+  @Input()
+  id: string;
 
   @Input()
-  id:string;
+  item: Example;
 
-  @Input()
-  item: Example; 
-  
   visible = false;
 
-  constructor() {
-   }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  changeVisibility(){
+  changeVisibility() {
     this.visible = !this.visible;
-    if(this.visible){
+    if (this.visible) {
       var element = document.getElementById(this.id);
       element.scrollIntoView({
         behavior: "auto",
-        block: "start"
+        block: "start",
       });
-      window.scroll(0,window.pageYOffset+(element.offsetHeight-200));
+      window.scroll(0, window.pageYOffset + (element.offsetHeight - 200));
     }
   }
 
-  ngAfterViewInit(): void {
-  }
-  
-
+  ngAfterViewInit(): void {}
 }

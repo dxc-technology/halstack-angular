@@ -1,21 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataPropertiesTable } from 'src/app/model/data-properties-table';
+import { Component, OnInit, Input } from "@angular/core";
+import { DataPropertiesTable } from "../../../../../model/data-properties-table";
 
 @Component({
-  selector: 'tabbed-section-table-properties',
-  templateUrl: './tabbed-section-table-properties.component.html',
-  styleUrls: ['./tabbed-section-table-properties.component.scss']
+  selector: "tabbed-section-table-properties",
+  templateUrl: "./tabbed-section-table-properties.component.html",
+  styleUrls: ["./tabbed-section-table-properties.component.scss"],
 })
 export class TabbedSectionTablePropertiesComponent implements OnInit {
-
   @Input()
   tablePropertiesExample: Array<DataPropertiesTable>;
 
-  constructor() { 
+  constructor() {
     this.tablePropertiesExample = new Array<DataPropertiesTable>();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -43,7 +43,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
         ? new ComplexThemeBindingStrategy()
         : new AdvancedThemeBindingStrategy()
     );
-    console.log(theme.theme);
     let processedTokens = ctx.bindProperties(theme.theme);
     for (const key in processedTokens) {
       document.body.style.setProperty(key, processedTokens[key]);
@@ -64,7 +63,6 @@ export class ThemeDirective implements OnInit, OnDestroy {
   }
 
   private getTheme(): void {
-    console.log("Getting theme");
     const active = this._themeService?.getTheme();
     this.updateTheme({ theme: active, advanced: false });
 

@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "outDir": "./out-tsc/app",
     "types": [],
-    "paths": { 
+    "paths": {
       "@angular/*": [ "../../node_modules/@angular/*" ],
       "@dxc-technology/halstack-angular": [ "../../dist/dxc-ngx-cdk/*" ],
     },

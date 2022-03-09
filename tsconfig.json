@@ -5,14 +5,14 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es6",
+    "target": "es2015",
+    "module": "es2020",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es6",
     "paths": {
       "@angular/*": [ "node_modules/@angular/*" ]
     },

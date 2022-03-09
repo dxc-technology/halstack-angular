@@ -7,19 +7,19 @@ import {
   DxcLinkModule,
   DxcTagModule,
   DxcChipModule,
-  DxcHeadingModule
+  DxcHeadingModule,
 } from "@dxc-technology/halstack-angular";
 import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
 import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
 import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
-import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
-import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
-import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
+import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
+import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
+import { ColorPreviewModule } from "../../components/color-preview/color-preview.module";
+import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
+import { StatusTagModule } from "../../components/status-tag/status-tag.module";
 import { AutosuggestComponent } from "./autosuggest.component";
-import { AutosuggestExampleComponent } from "src/app/components/examples/autosuggest/autosuggest-example/autosuggest-example.component";
-import { AutosuggestPropertiesComponent } from "src/app/components/examples/autosuggest/autosuggest-properties/autosuggest-properties.component";
+import { AutosuggestExampleComponent } from "../../components/examples/autosuggest/autosuggest-example/autosuggest-example.component";
+import { AutosuggestPropertiesComponent } from "../../components/examples/autosuggest/autosuggest-properties/autosuggest-properties.component";
 
 @NgModule({
   declarations: [
@@ -42,13 +42,13 @@ import { AutosuggestPropertiesComponent } from "src/app/components/examples/auto
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    StatusTagModule
+    StatusTagModule,
   ],
   exports: [
     AutosuggestComponent,
     AutosuggestExampleComponent,
     AutosuggestPropertiesComponent,
   ],
-  entryComponents: [ExampleViewerComponent]
+  entryComponents: [ExampleViewerComponent],
 })
-export class AutosuggestModule { }
+export class AutosuggestModule {}

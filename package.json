@@ -1,9 +1,12 @@
 {
   "name": "dxc-angular-cdk",
   "version": "0.0.0",
+  "resolutions": {
+    "@storybook/angular/webpack": "^5"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve angular-dxc-site --port 3000",
+    "start": "ng run angular-dxc-site:serve",
     "start:next": "ng serve angular-dxc-site --baseHref=/tools/angular/next/",
     "start-example": "ng serve dxc-angular-cdk",
     "build-next-cdk-site": "ng build angular-dxc-site --configuration production --baseHref=/tools/angular/next/",
@@ -19,8 +22,9 @@
     "scully:serve": "scully serve",
     "pre-analyze": "ng build --stats-json",
     "analyze": "webpack-bundle-analyzer ./dist/angular-dxc-site/stats.json",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "ng run dxc-ngx-cdk:storybook",
+    "build-storybook": "ng run dxc-ngx-cdk:build-storybook",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -57,15 +61,18 @@
     "@angular/cli": "13.2.5",
     "@angular/compiler-cli": "13.2.5",
     "@babel/core": "^7.4.5",
+    "@compodoc/compodoc": "^1.1.19",
+    "@scullyio/scully-plugin-base-href-rewrite": "^1.0.0-beta.0",
     "@storybook/addon-a11y": "^6.4.19",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
     "@storybook/addon-storysource": "^6.4.19",
     "@storybook/angular": "^6.4.19",
     "@storybook/builder-webpack5": "^6.5.0-alpha.46",
     "@storybook/manager-webpack5": "^6.5.0-alpha.46",
-    "@scullyio/scully-plugin-base-href-rewrite": "^1.0.0-beta.0",
+    "@storybook/testing-library": "0.0.9",
     "@types/node": "14.14.13",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
@@ -78,10 +85,10 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "rgb-hex": "^3.0.0",
+    "storybook-addon-pseudo-states": "^1.0.0",
     "ts-node": "7.0.0",
     "typescript": "4.5.5",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "storybook-addon-pseudo-states": "^1.0.0",
-    "webpack": "^5.70.0"
+    "webpack": "^5.70.0",
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }

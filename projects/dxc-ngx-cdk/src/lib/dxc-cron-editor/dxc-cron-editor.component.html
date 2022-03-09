@@ -4,7 +4,7 @@
         <div class="cron-editor-tab-content" [formGroup]="advancedForm">  
 
           <dxc-select class="main-dd-filter"  [customHandler]="false" tabIndexValue="-1" tabindex="0"
-                      aria-labelledby="lbl_cronexp" id="cronexp" matTooltip="" margin="small" size="fitContent"
+                      aria-labelledby="lbl_startDays" id="cronexp" matTooltip="" margin="small" size="fitContent"
                       formControlName="subTab" >
                       <dxc-select-option *ngFor="let exp of expressionList" value="{{exp.value}}" label="{{exp.name}}">
                       </dxc-select-option>
@@ -19,9 +19,9 @@
             <div class="row">
               <div class="col-md-6 cron-editor-tab-content-padding">
                 <mat-form-field formGroupName="custom">              
-                  <dxc-label id="lbl_startDays" [text]="resource?.daysStartFrom.description"></dxc-label>
+                  <dxc-label id="lbl_Daystart" [text]="resource?.daysStartFrom.description"></dxc-label>
                   <dxc-select class="main-dd-filter"  [ngClass]="options.formSelectClass" [customHandler]="false" tabIndexValue="-1" tabindex="0"
-                      aria-labelledby="lbl_startDays" id="startDays" matTooltip="" margin="small" size="fitContent"
+                      aria-labelledby="lbl_Daystart" id="startDays" matTooltip="" margin="small" size="fitContent"
                       formControlName="startDays">
                       <dxc-select-option value="none" label="None">
                       </dxc-select-option>

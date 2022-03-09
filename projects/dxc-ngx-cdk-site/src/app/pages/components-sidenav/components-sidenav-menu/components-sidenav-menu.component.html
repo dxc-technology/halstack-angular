@@ -9,8 +9,7 @@
         <div class="menu-title">Forms</div>
         <div class="menu-items">
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/autosuggest'
                   ? router.isActive(
                       router
@@ -19,185 +18,100 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/autosuggest')"
-              >Autosuggest</a
-            >
+              }" (click)="navigateTo('components/autosuggest')">Autosuggest</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/button'
                   ? router.isActive(
                       router.createUrlTree(['components/button']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/button')"
-              >Button</a
-            >
+              }" (click)="navigateTo('components/button')">Button</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/checkbox'
                   ? router.isActive(
                       router.createUrlTree(['components/checkbox']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/checkbox')"
-              >Checkbox</a
-            >
+              }" (click)="navigateTo('components/checkbox')">Checkbox</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/date'
-                  ? router.isActive(
-                      router.createUrlTree(['components/date']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/date')"
-              >Date</a
-            >
-            <status-tag status="Deprecated"></status-tag>
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/dateInput'
                   ? router.isActive(
                       router.createUrlTree(['components/dateInput']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/dateInput')"
-              >Date Input</a
-            >
+              }" (click)="navigateTo('components/dateInput')">Date Input</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/inputText'
-                  ? router.isActive(
-                      router.createUrlTree(['components/inputText']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/inputText')"
-              >Input Text</a
-            >
-            <status-tag status="Deprecated"></status-tag>
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/numberInput'
                   ? router.isActive(
                       router.createUrlTree(['components/numberInput']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/numberInput')"
-              >Number Input</a
-            >
+              }" (click)="navigateTo('components/numberInput')">Number Input</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/passwordInput'
                   ? router.isActive(
                       router.createUrlTree(['components/passwordInput']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/passwordInput')"
-              >Password Input</a
-            >
+              }" (click)="navigateTo('components/passwordInput')">Password Input</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/radio'
                   ? router.isActive(
                       router.createUrlTree(['components/radio']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/radio')"
-              >Radio Button</a
-            >
+              }" (click)="navigateTo('components/radio')">Radio Button</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/v3Select'
-                  ? router.isActive(
-                      router.createUrlTree(['components/v3Select']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/v3Select')"
-              >Select</a
-            >
-            <status-tag status="Deprecated"></status-tag>
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/select'
                   ? router.isActive(
                       router.createUrlTree(['components/select']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/select')"
-              >Select</a
-            >
+              }" (click)="navigateTo('components/select')">Select</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/slider'
                   ? router.isActive(
                       router.createUrlTree(['components/slider']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/slider')"
-              >Slider</a
-            >
+              }" (click)="navigateTo('components/slider')">Slider</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/switch'
                   ? router.isActive(
                       router.createUrlTree(['components/switch']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/switch')"
-              >Switch</a
-            >
+              }" (click)="navigateTo('components/switch')">Switch</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/textInput'
                   ? router.isActive(
                       router
@@ -206,29 +120,10 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/textInput')"
-              >Text Input</a
-            >
+              }" (click)="navigateTo('components/textInput')">Text Input</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/v3Textarea'
-                  ? router.isActive(
-                      router.createUrlTree(['components/v3Textarea']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/v3Textarea')"
-              >Textarea</a
-            >
-            <status-tag status="Deprecated"></status-tag>
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/textarea'
                   ? router.isActive(
                       router
@@ -237,14 +132,10 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/textarea')"
-              >Textarea</a
-            >
+              }" (click)="navigateTo('components/textarea')">Textarea</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/toggleGroup'
                   ? router.isActive(
                       router
@@ -253,76 +144,56 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/toggleGroup')"
-              >Toggle Group</a
-            >
+              }" (click)="navigateTo('components/toggleGroup')">Toggle Group</a>
           </div>
         </div>
         <div class="menu-title">Navigation</div>
         <div class="menu-items">
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/footer'
                   ? router.isActive(
                       router.createUrlTree(['components/footer']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/footer')"
-              >Footer</a
-            >
+              }" (click)="navigateTo('components/footer')">Footer</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/header'
                   ? router.isActive(
                       router.createUrlTree(['components/header']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/header')"
-              >Header</a
-            >
+              }" (click)="navigateTo('components/header')">Header</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/tabs'
                   ? router.isActive(
                       router.createUrlTree(['components/tabs']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/tabs')"
-              >Tabs</a
-            >
+              }" (click)="navigateTo('components/tabs')">Tabs</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/wizard'
                   ? router.isActive(
                       router.createUrlTree(['components/wizard']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/wizard')"
-              >Wizard</a
-            >
+              }" (click)="navigateTo('components/wizard')">Wizard</a>
           </div>
         </div>
         <div class="menu-title">Layout</div>
         <div class="menu-items">
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/applicationLayout'
                   ? router.isActive(
                       router
@@ -331,56 +202,40 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/applicationLayout')"
-              >Application Layout</a
-            >
+              }" (click)="navigateTo('components/applicationLayout')">Application Layout</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/box'
                   ? router.isActive(
                       router.createUrlTree(['components/box']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/box')"
-              >Box</a
-            >
+              }" (click)="navigateTo('components/box')">Box</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/card'
                   ? router.isActive(
                       router.createUrlTree(['components/card']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/card')"
-              >Card</a
-            >
+              }" (click)="navigateTo('components/card')">Card</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/sidenav'
                   ? router.isActive(
                       router.createUrlTree(['components/sidenav']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/sidenav')"
-              >Sidenav</a
-            >
+              }" (click)="navigateTo('components/sidenav')">Sidenav</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/tabbed-section'
                   ? router.isActive(
                       router
@@ -389,46 +244,34 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/tabbed-section')"
-              >Tabbed Section</a
-            >
+              }" (click)="navigateTo('components/tabbed-section')">Tabbed Section</a>
             <status-tag status="Deprecated"></status-tag>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/tag'
                   ? router.isActive(
                       router.createUrlTree(['components/tag']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/tag')"
-              >Tag</a
-            >
+              }" (click)="navigateTo('components/tag')">Tag</a>
           </div>
         </div>
         <div class="menu-title">Utilities</div>
         <div class="menu-items">
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/accordion'
                   ? router.isActive(
                       router.createUrlTree(['components/accordion']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/accordion')"
-              >Accordion</a
-            >
+              }" (click)="navigateTo('components/accordion')">Accordion</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/accordion-group'
                   ? router.isActive(
                       router
@@ -437,126 +280,90 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/accordion-group')"
-              >Accordion Group</a
-            >
+              }" (click)="navigateTo('components/accordion-group')">Accordion Group</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/alert'
                   ? router.isActive(
                       router.createUrlTree(['components/alert']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/alert')"
-              >Alert</a
-            >
+              }" (click)="navigateTo('components/alert')">Alert</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/chip'
                   ? router.isActive(
                       router.createUrlTree(['components/chip']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/chip')"
-              >Chip</a
-            >
+              }" (click)="navigateTo('components/chip')">Chip</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/dialog'
                   ? router.isActive(
                       router.createUrlTree(['components/dialog']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/dialog')"
-              >Dialog</a
-            >
+              }" (click)="navigateTo('components/dialog')">Dialog</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/dropdown'
                   ? router.isActive(
                       router.createUrlTree(['components/dropdown']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/dropdown')"
-              >Dropdown</a
-            >
+              }" (click)="navigateTo('components/dropdown')">Dropdown</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/fileInput'
                   ? router.isActive(
                       router.createUrlTree(['components/fileInput']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/fileInput')"
-              >File Input</a
-            >
+              }" (click)="navigateTo('components/fileInput')">File Input</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/heading'
                   ? router.isActive(
                       router.createUrlTree(['components/heading']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/heading')"
-              >Heading</a
-            >
+              }" (click)="navigateTo('components/heading')">Heading</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/link'
                   ? router.isActive(
                       router.createUrlTree(['components/link']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/link')"
-              >Link</a
-            >
+              }" (click)="navigateTo('components/link')">Link</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/paginator'
                   ? router.isActive(
                       router.createUrlTree(['components/paginator']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/paginator')"
-              >Paginator</a
-            >
+              }" (click)="navigateTo('components/paginator')">Paginator</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/progressbar'
                   ? router.isActive(
                       router
@@ -565,14 +372,10 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/progressbar')"
-              >Progress Bar</a
-            >
+              }" (click)="navigateTo('components/progressbar')">Progress Bar</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/resultsettable'
                   ? router.isActive(
                       router
@@ -581,53 +384,27 @@
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/resultsettable')"
-              >Resultset Table</a
-            >
+              }" (click)="navigateTo('components/resultsettable')">Resultset Table</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/spinner'
                   ? router.isActive(
                       router.createUrlTree(['components/spinner']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/spinner')"
-              >Spinner</a
-            >
+              }" (click)="navigateTo('components/spinner')">Spinner</a>
           </div>
           <div class="menu-item">
-            <a
-              [ngClass]="{
+            <a [ngClass]="{
                 active: 'components/table'
                   ? router.isActive(
                       router.createUrlTree(['components/table']).toString(),
                       true
                     )
                   : false
-              }"
-              (click)="navigateTo('components/table')"
-              >Table</a
-            >
-          </div>
-          <div class="menu-item">
-            <a
-              [ngClass]="{
-                active: 'components/upload'
-                  ? router.isActive(
-                      router.createUrlTree(['components/upload']).toString(),
-                      true
-                    )
-                  : false
-              }"
-              (click)="navigateTo('components/upload')"
-              >Upload</a
-            >
-            <status-tag status="Deprecated"></status-tag>
+              }" (click)="navigateTo('components/table')">Table</a>
           </div>
         </div>
       </div>

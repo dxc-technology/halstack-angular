@@ -938,7 +938,8 @@
     "valueFontColorOnDark": "color",
     "arrowColor": "color",
     "arrowColorOnDark": "color",
-    "systemMessageFontColor": "color"
+    "systemMessageFontColor": "color",
+    "focusListOptionBorderColor": "color"
   },
   "sidenav": {
     "backgroundColor": "color",
@@ -1096,7 +1097,8 @@
     "labelPaddingTop": "length",
     "labelPaddingBottom": "length",
     "labelPaddingLeft": "length",
-    "labelPaddingRight": "length"
+    "labelPaddingRight": "length",
+    "disabledFontColor": "color"
   },
   "table": {
     "rowSeparatorThickness": "length",

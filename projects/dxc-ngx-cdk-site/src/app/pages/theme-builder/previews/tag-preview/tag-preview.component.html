@@ -50,4 +50,39 @@
     <dxc-tag margin="xsmall" label="DXC TECHNOLOGY" iconBgColor="#6B4187">
     </dxc-tag>
   </tbuilder-component-mode>
+
+  <tbuilder-component-mode text="Disabled">
+    <dxc-tag
+      margin="xsmall"
+      label="DXC TECHNOLOGY"
+      iconBgColor="#FABADA"
+      disabled="true"
+    >
+      <dxc-tag-icon>
+        <img src="{{ dxcLogoPath }}" />
+      </dxc-tag-icon>
+    </dxc-tag>
+
+    <dxc-tag
+      margin="xsmall"
+      label="DXC TECHNOLOGY"
+      disabled="true"
+      linkHref="www.google.es"
+    >
+      <dxc-tag-icon>
+        <img src="{{ dxcLogoPath }}" />
+      </dxc-tag-icon>
+    </dxc-tag>
+
+    <dxc-tag
+      margin="xsmall"
+      label="DXC TECHNOLOGY"
+      (onClick)="onClick()"
+      disabled="true"
+    >
+      <dxc-tag-icon>
+        <img src="{{ dxcLogoPath }}" />
+      </dxc-tag-icon>
+    </dxc-tag>
+  </tbuilder-component-mode>
 </div>

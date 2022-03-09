@@ -47,12 +47,19 @@
       </ul>
     </div>
   </dxc-header>
-  <dxc-application-layout-sidenav *ngIf="($sideNav | async)?.hasSideNav"
-    [displayArrow]="isArrowVisible(($sideNav | async)?.page)" padding="medium" mode="push">
+    <dxc-application-layout-sidenav
+    *ngIf="($sideNav | async)?.hasSideNav"
+    [displayArrow]="isArrowVisible(($sideNav | async)?.page)"
+    padding="medium"
+    mode="push"
+  >
     <div class="sidenavContent" style="text-align: left; height: 100%">
-      <components-sidenav-menu *ngIf="($sideNav | async)?.page === 'components'"></components-sidenav-menu>
-      <theme-builder-sidenav *ngIf="($sideNav | async)?.page === 'theme-builder'"></theme-builder-sidenav>
-
+      <components-sidenav-menu
+        *ngIf="($sideNav | async)?.page === 'components'"
+      ></components-sidenav-menu>
+      <theme-builder-sidenav
+        *ngIf="($sideNav | async)?.page === 'theme-builder'"
+      ></theme-builder-sidenav>
     </div>
   </dxc-application-layout-sidenav>
   <dxc-application-layout-main>
@@ -63,6 +70,8 @@
       { text: 'Twitter', href: 'https://twitter.com/DXCTechnology' },
       { text: 'Facebook', href: 'https://www.facebook.com/DXCTechnology/' },
       { text: 'Instagram', href: 'https://www.instagram.com/dxctechnology/' }
-    ]" [copyright]="'© DXC Technology 2019. All rights reserved.'">
+    ]"
+    [copyright]="'© DXC Technology 2022. All rights reserved.'"
+  >
   </dxc-footer>
 </dxc-application-layout>

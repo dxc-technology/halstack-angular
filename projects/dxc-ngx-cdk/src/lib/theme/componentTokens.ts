@@ -1084,8 +1084,9 @@ export const componentTokens = {
     globalTokens.hal_grey_l_95,
   "--select-unselectedActiveListOptionBackgroundColor":
     globalTokens.hal_grey_l_90,
-  "--select-selectedListOptionBackgroundColor": globalTokens.hal_grey_l_90,
-  "--select-selectedHoverListOptionBackgroundColor": globalTokens.hal_grey_l_80,
+  "--select-selectedListOptionBackgroundColor": globalTokens.hal_blue_l_95,
+  "--select-selectedHoverListOptionBackgroundColor":
+    globalTokens.color_blue_200,
   "--select-selectedActiveListOptionBackgroundColor":
     globalTokens.hal_blue_l_80,
   "--select-selectedListOptionIconColor": globalTokens.hal_blue_d_20,
@@ -1114,6 +1115,7 @@ export const componentTokens = {
   "--select-required": globalTokens.hal_red_s_41,
 
   "--select-focusColor": globalTokens.hal_blue_l_50,
+  "--select-focusListOptionBorderColor": globalTokens.hal_blue_l_50,
 
   "--select-scrollBarThumbColor": globalTokens.hal_grey_s_40,
   "--select-scrollBarTrackColor": globalTokens.lightGrey,
@@ -1378,6 +1380,7 @@ export const componentTokens = {
   "--tag-labelPaddingBottom": "0rem",
   "--tag-labelPaddingLeft": "1rem",
   "--tag-labelPaddingRight": "1rem",
+  "--tag-disabledFontColor": globalTokens.hal_grey_l_60,
 
   //V3 TEXTAREA
   "--v3Textarea-fontFamily": globalTokens.type_sans,

@@ -20,6 +20,20 @@ import {
 import { ContentChildren, ChangeDetectorRef } from "@angular/core";
 import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
 
+type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
+type Margin = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};
 @Component({
   selector: "dxc-tag",
   templateUrl: "./dxc-tag.component.html",
@@ -27,14 +41,35 @@ import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
 })
 export class DxcTagComponent implements OnInit {
   isHovered = false;
-
-  @Input() size: string;
-  @Input() iconSrc: string;
-  @Input() iconBgColor: string;
+  /**
+   * Text to be placed next inside the tag.
+   */
   @Input() label: string;
-  @Input() labelPosition: string;
+  /**
+   * @deprecated URL of the icon.
+   */
+  @Input() iconSrc: string;
+  /**
+   * Background color of the icon section of the tag.
+   */
+  @Input() iconBgColor: string = "#5f249f";
+  /**
+   * Whether the label should appear after or before the icon.
+   */
+  @Input() labelPosition: "before" | "after" = "after";
+  /**
+   * If defined, the tag will be displayed as an anchor, using this prop as "href".
+   * Component will show some visual feedback on hover.
+   */
   @Input() linkHref: string;
-  @Input() margin: any;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Margin;
+  /**
+   * If true, the page is opened in a new browser tab.
+   */
   @Input()
   get newWindow(): boolean {
     return this._newWindow;
@@ -42,7 +77,26 @@ export class DxcTagComponent implements OnInit {
   set newWindow(value: boolean) {
     this._newWindow = coerceBooleanProperty(value);
   }
-  private _newWindow;
+  private _newWindow = false;
+  /**
+   * If true, the component will be disabled.
+   */
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  private _disabled = false;
+  /**
+   * Size of the component.
+   */
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
+  /**
+   * Value of the tabindex.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -50,9 +104,12 @@ export class DxcTagComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
-
-  @Output() onClick = new EventEmitter<any>();
+  private _tabIndexValue = 0;
+  /**
+   * If defined, the tag will be displayed as a button. This event will emit in case the user clicks the tag.
+   * Component will show some visual feedback on hover.
+   */
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
 
   isClickDefined = false;
   shadowDepth: string;
@@ -140,7 +197,9 @@ export class DxcTagComponent implements OnInit {
   };
 
   public onClickHandler($event: any): void {
-    this.onClick.emit($event);
+    if (!this.disabled) {
+      this.onClick.emit($event);
+    }
   }
 
   getShadowDepth(): string {
@@ -151,16 +210,45 @@ export class DxcTagComponent implements OnInit {
       : "1";
   }
 
+  setActionStyle(inputs) {
+    if (!inputs.disabled) {
+      return css`
+        button:focus,
+        button:focus-visible,
+        button:focus-within,
+        button:active,
+        a:focus,
+        a:focus-visible,
+        a:focus-within,
+        a:active {
+          outline: var(--tag-focusColor) auto 2px;
+        }
+        button:active,
+        button:hover,
+        a:active,
+        a:hover {
+          dxc-box {
+            box-shadow: 0 8px 14px -2px rgba(0, 0, 0, 0.1);
+          }
+        }
+      `;
+    }
+  }
+
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
-      ${this.isClickDefined ||
-      (this.linkHref !== null && this.linkHref !== undefined)
+      ${!this.isClickDefined &&
+      (this.linkHref === null || this.linkHref === undefined)
         ? css`
-            cursor: pointer;
+            cursor: unset;
+          `
+        : this.disabled
+        ? css`
+            cursor: not-allowed;
           `
         : css`
-            cursor: unset;
+            cursor: pointer;
           `};
       ${this.utils.getMargins(inputs.margin)};
       dxc-box {
@@ -188,7 +276,9 @@ export class DxcTagComponent implements OnInit {
           padding-right: var(--tag-labelPaddingRight);
           font-style: var(--tag-fontStyle);
           font-family: var(--tag-fontFamily);
-          color: var(--tag-fontColor);
+          color: ${inputs.disabled
+            ? "var(--tag-disabledFontColor)"
+            : "var(--tag-fontColor)"};
           font-weight: var(--tag-fontWeight);
           font-size: var(--tag-fontSize);
           letter-spacing: 1px;
@@ -200,6 +290,7 @@ export class DxcTagComponent implements OnInit {
           display: ${inputs.label ? "inline-flex" : "none"};
         }
         .iconContainer {
+          opacity: ${inputs.disabled ? "0.4" : "1"};
           height: 100%;
           display: inline-flex;
           width: var(--tag-iconSectionWidth);
@@ -228,31 +319,16 @@ export class DxcTagComponent implements OnInit {
         background: none;
         border: none;
         padding: 0;
-        cursor: pointer;
+        cursor: ${!this.disabled ? "pointer" : "not-allowed"};
         outline: 0;
       }
       .styledLink {
         text-decoration: none;
         outline: none;
+        cursor: ${!this.disabled ? "pointer" : "not-allowed"};
+        ${this.disabled ? "pointer-events: none;" : ""}
       }
-      button:focus,
-      button:focus-visible,
-      button:focus-within,
-      button:active,
-      a:focus,
-      a:focus-visible,
-      a:focus-within,
-      a:active {
-        outline: var(--tag-focusColor) auto 2px;
-      }
-      button:active,
-      button:hover,
-      a:active,
-      a:hover {
-        dxc-box {
-          box-shadow: 0 8px 14px -2px rgba(0, 0, 0, 0.1);
-        }
-      }
+      ${this.setActionStyle(inputs)};
     `;
   }
 }

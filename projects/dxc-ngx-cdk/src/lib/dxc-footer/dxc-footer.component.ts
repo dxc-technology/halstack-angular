@@ -29,9 +29,9 @@ type Margin = {
   right?: Space;
 };
 
-export interface DxcFooterInputs{
-  margin: Space | Margin,
-  padding: Space | Margin
+export interface DxcFooterInputs {
+  margin: Space | Margin;
+  padding: Space | Margin;
 }
 
 @Component({
@@ -62,7 +62,7 @@ export class DxcFooterComponent implements OnChanges {
   /**
    * The text that will be displayed as copyright disclaimer.
    */
-  @Input() copyright: string;
+  @Input() copyright: string = "© DXC Technology 2022. All rights reserved.";
   /**
    * Size of the margin to be applied to the component ('xxsmall' |
    * 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You

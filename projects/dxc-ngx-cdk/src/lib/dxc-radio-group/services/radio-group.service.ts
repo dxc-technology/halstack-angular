@@ -6,8 +6,11 @@ import { Option } from "../dxc-radio-group.types";
   providedIn: "root",
 })
 export class RadioGroupService {
-  constructor() {}
 
-  public allOptions: BehaviorSubject<Option[]> = new BehaviorSubject(null);
+  public optionList: BehaviorSubject<Option[]> = new BehaviorSubject(null);
+
+  public selectedValue: BehaviorSubject<string> = new BehaviorSubject(undefined);
+  
+  public newValue: BehaviorSubject<string> = new BehaviorSubject(undefined);
   
 }

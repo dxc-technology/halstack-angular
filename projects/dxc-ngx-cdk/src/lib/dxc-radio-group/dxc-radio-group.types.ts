@@ -1,5 +1,3 @@
-import { ElementRef } from "@angular/core";
-
 export interface RadioGroupProperties {
   label: string;
   helperText: string;

@@ -1,4 +1,10 @@
-
-<label></label>
-<ng-container *ngFor="let option of optionsList">
+<span>{{ label }}</span> <span>{{ helperText }}</span>
+<div class="radio-list-container">
+<ng-container *ngFor="let option of optionList">
+  <dxc-radio-group-item
+    [value]="option.value"
+    [label]="option.label"
+    [disabled]="option.disabled"
+  ></dxc-radio-group-item>
 </ng-container>
+</div>

@@ -170,3 +170,7 @@ export * from './lib/dxc-application-layout/dxc-application-layout.module';
 export * from './lib/dxc-application-layout/dxc-application-layout-main/dxc-application-layout-main.component';
 export * from './lib/dxc-application-layout/dxc-application-layout-sidenav/dxc-application-layout-sidenav.component';
 export * from './lib/dxc-application-layout/dxc-application-layout-header/dxc-application-layout-header.component';
+
+export * from './lib/dxc-radio-group/dxc-radio-group.component';
+export * from './lib/dxc-radio-group/dxc-radio/dxc-radio.component';
+export * from './lib/dxc-radio-group/dxc-radio-group.module';

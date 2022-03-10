@@ -1,6 +1,20 @@
 <div>
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
+    <tbuilder-component-mode text="New radio group">
+      <dxc-radio-group
+        [value]="value"
+        (onChange)="handleOnChange($event)"
+        [options]="options"
+        label="Controlled radio"
+        helperText="example helper text"
+      ></dxc-radio-group>
+      <dxc-radio-group
+        [options]="options"
+        label="Uncontrolled radio"
+        helperText="example helper text"
+      ></dxc-radio-group>
+    </tbuilder-component-mode>
     <tbuilder-component-mode text="Default">
       <dxc-radio
         label="Option1"
@@ -59,7 +73,7 @@
       </dxc-radio>
     </tbuilder-component-mode>
   </background-provider>
-<!--
+  <!--
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">

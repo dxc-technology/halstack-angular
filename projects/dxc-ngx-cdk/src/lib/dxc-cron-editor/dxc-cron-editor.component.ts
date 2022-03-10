@@ -375,7 +375,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
     } else {
       this.activeTab = 'advanced';
       this.state.advanced.expression = origCron;
-      if (this.advancedForm != null && origCron !== '' && origCron !=='0 0 0 1 1 ? *' && origCron !=='0 15 10 L-2 * ? *' ) {
+      if (this.advancedForm != null && origCron !== '' && origCron !=='0 0 0 1 1 ? *' ) {
         this.advancedForm.get('expression').setValue(origCron); 
       }
     }
@@ -477,7 +477,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
       },
       advanced: {
         subTab: 'expression',
-        expression: this.cron != null && this.cron !='' ? this.cron : this.isCronFlavorQuartz ? '0 15 10 L-2 * ? *' : '15 10 2 * *'
+        expression: this.cron != null && this.cron !='' ? this.cron : this.isCronFlavorQuartz ? this.defaultCron : '15 10 2 * *'
       }
     };
   }
@@ -549,7 +549,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
   onTouched = () => { };
 
   writeValue(obj: string): void { 
-    this.cron = obj != null && obj !='' ? obj : this.isCronFlavorQuartz ? '0 15 10 L-2 * ? *' : '15 10 2 * *';
+    this.cron = obj != null && obj !='' ? obj : this.isCronFlavorQuartz ? this.defaultCron : '15 10 2 * *';
     this.handleModelChange(this.cron);
   }
 

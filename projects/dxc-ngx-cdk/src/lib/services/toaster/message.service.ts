@@ -50,7 +50,7 @@ export class MessageService {
   Warning(message: string, header?: string) {
     this.toastr.warning(message, header, {
       disableTimeOut: true,
-      positionClass: 'toast-top-full',
+      positionClass: 'toast-top-full-width',
     });
   }
 

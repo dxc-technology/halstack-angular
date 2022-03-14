@@ -14,7 +14,6 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { RadioGroupService } from "../services/radio-group.service";
-import { runInThisContext } from "vm";
 
 @Component({
   selector: "dxc-radio-group-item",
@@ -36,19 +35,34 @@ export class DxcRadioGroupItemComponent implements OnInit {
   @Input()
   indexValue: any;
 
-  constructor(private service: RadioGroupService, private elRef:ElementRef) {
-    this.service.indexToFocus.subscribe(index => {
-      if(index >= 0) {
-        if(this.indexValue === index) {
+  constructor(private service: RadioGroupService, private elRef: ElementRef) {
+    this.service.indexToFocus.subscribe((index) => {
+      if (index >= 0) {
+        if (this.indexValue === index) {
           this.elRef.nativeElement.focus();
         }
       }
-    })
+    });
+  }
+
+  @HostListener("click")
+  onClickHandler() {
+    if (!this.service.firstTabbedFocus) {
+      this.service.newValue.next(this.value);
+      this.service.firstTabbedFocus = true;
+    }
+    if(this.service.newValue.value !== this.value){
+      this.service.newValue.next(this.value);
+    }
   }
 
   @HostListener("focus")
   onFocusHandler() {
-    this.service.newValue.next(this.value);
+    console.log(this.service.firstTabbedFocus);
+    if (this.service.firstTabbedFocus) {
+      this.service.newValue.next(this.value);
+    }
+    this.service.firstTabbedFocus = true;
   }
 
   ngOnInit(): void {

@@ -71,16 +71,32 @@ export class DxcRadioGroupComponent implements OnInit {
   private subscriptionOptions: Subscription;
   private subcriptionNewValue: Subscription;
 
-  @HostListener("blur")
-  onBlurHandler() {
+  @HostListener("focusout", ["$event"])
+  onBlurHandler($event) {
     // reset defaultFocusOption
+    if(!$event.currentTarget.contains($event.relatedTarget)) {
+      if (this.value || this.value === "") {
+        const selectedOption = this.optionList?.find(
+          (el) => el.value === this.value
+        );
+        if (selectedOption) {
+          this.defaultFocusOption = this.optionList.indexOf(selectedOption);
+        }
+      } else {
+        this.defaultFocusOption = 0;
+      }
+      this.service.firstTabbedFocus = false;
+    }
   }
 
-  @HostListener("focus")
-  onFocusHandler() {
+  @HostListener("focusin", ["$event"])
+  onFocusHandler($event) {
+    if($event.currentTarget.contains($event.relatedTarget)) {
+      
+    }
     //Sync this.service.indexToFocus in case it is not updated
-    if (this.service.indexToFocus.value !== this.defaultFocusOption)
-      this.focusHandler();
+    // if (this.service.indexToFocus.value !== this.defaultFocusOption)
+    //   this.focusHandler();
   }
 
   /**
@@ -127,7 +143,6 @@ export class DxcRadioGroupComponent implements OnInit {
     this.subcriptionNewValue = this.service.newValue.subscribe((newValue) => {
       if (newValue || newValue === "") {
         this.onChange.emit(newValue);
-        console.log(newValue);
         if (!this.isControlled) {
           this.value = newValue;
           this.service.selectedValue.next(this.value);

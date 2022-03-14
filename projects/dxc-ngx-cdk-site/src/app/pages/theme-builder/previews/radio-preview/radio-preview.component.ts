@@ -17,7 +17,7 @@ export class RadioPreviewComponent implements OnInit {
 
   value = "1";
   handleOnChange($event) {
-    this.value = $event;
+    //this.value = $event;
   }
 
   onChange1(event) {

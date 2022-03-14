@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   Optional,
   HostListener,
+  ElementRef,
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
@@ -27,15 +28,26 @@ export class DxcRadioGroupItemComponent implements OnInit {
   value: string;
 
   @Input()
-  disabled: boolean;
-  @HostBinding('class.selected')
+  disabled: boolean = false;
+
+  @HostBinding("class.selected")
   selected: boolean = false;
 
-  constructor(private service: RadioGroupService) {
+  @Input()
+  indexValue: any;
+
+  constructor(private service: RadioGroupService, private elRef:ElementRef) {
+    this.service.indexToFocus.subscribe(index => {
+      if(index >= 0) {
+        if(this.indexValue === index) {
+          this.elRef.nativeElement.focus();
+        }
+      }
+    })
   }
 
-  @HostListener("click")
-  clickHandle() {
+  @HostListener("focus")
+  onFocusHandler() {
     this.service.newValue.next(this.value);
   }
 

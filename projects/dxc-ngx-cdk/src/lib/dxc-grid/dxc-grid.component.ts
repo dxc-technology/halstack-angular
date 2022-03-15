@@ -596,7 +596,7 @@ export class GridComponent extends DxcBaselookupComponent<any> implements AfterV
               col.exportToCol.length > 0) {
 
               let val = '';
-              col.exportToCol.forEach(col.exportToCol, (item) => {
+              col.exportToCol.forEach((item) => {
                 // val += row.entity[item.col];
                 val += (row.entity[item.col]
                   && row.entity[item.col] != null) ? row.entity[item.col] + ' ' : '';

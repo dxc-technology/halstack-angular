@@ -47,22 +47,25 @@ export class DxcRadioGroupItemComponent implements OnInit {
 
   @HostListener("click")
   onClickHandler() {
-    if (!this.service.firstTabbedFocus) {
-      this.service.newValue.next(this.value);
-      this.service.firstTabbedFocus = true;
-    }
-    if(this.service.newValue.value !== this.value){
-      this.service.newValue.next(this.value);
+    if (!this.disabled) {
+      if (!this.service.firstTabbedFocus) {
+        this.service.newValue.next(this.value);
+        this.service.firstTabbedFocus = true;
+      }
+      if (this.service.newValue.value !== this.value) {
+        this.service.newValue.next(this.value);
+      }
     }
   }
 
   @HostListener("focus")
   onFocusHandler() {
-    console.log(this.service.firstTabbedFocus);
-    if (this.service.firstTabbedFocus) {
-      this.service.newValue.next(this.value);
+    if (!this.disabled) {
+      if (this.service.firstTabbedFocus) {
+        this.service.newValue.next(this.value);
+      }
+      this.service.firstTabbedFocus = true;
     }
-    this.service.firstTabbedFocus = true;
   }
 
   ngOnInit(): void {

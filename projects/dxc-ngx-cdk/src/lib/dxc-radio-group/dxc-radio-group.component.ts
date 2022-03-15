@@ -45,7 +45,7 @@ export class DxcRadioGroupComponent implements OnInit {
   optional: boolean = false;
 
   @Input()
-  optionalItemLabel?: string;
+  optionalItemLabel?: string = "N/A";
 
   @Input()
   defaultValue: string;
@@ -65,62 +65,41 @@ export class DxcRadioGroupComponent implements OnInit {
   // ref
 
   public optionList: Option[] = [];
-  public defaultFocusOption: number = 0;
+  public indexToFocus: number = 0;
 
   private isControlled: boolean = false;
   private subscriptionOptions: Subscription;
   private subcriptionNewValue: Subscription;
 
   @HostListener("focusout", ["$event"])
-  onBlurHandler($event) {
-    // reset defaultFocusOption
-    if(!$event.currentTarget.contains($event.relatedTarget)) {
+  onFocusOutHandler($event) {
+    // whether you are leaving the radio group component
+    if (!$event.currentTarget.contains($event.relatedTarget)) {
       if (this.value || this.value === "") {
         const selectedOption = this.optionList?.find(
           (el) => el.value === this.value
         );
         if (selectedOption) {
-          this.defaultFocusOption = this.optionList.indexOf(selectedOption);
+          this.indexToFocus = this.optionList.indexOf(selectedOption);
         }
       } else {
-        this.defaultFocusOption = 0;
+        this.indexToFocus = 0;
       }
       this.service.firstTabbedFocus = false;
     }
   }
 
-  @HostListener("focusin", ["$event"])
-  onFocusHandler($event) {
-    if($event.currentTarget.contains($event.relatedTarget)) {
-      
-    }
-    //Sync this.service.indexToFocus in case it is not updated
-    // if (this.service.indexToFocus.value !== this.defaultFocusOption)
-    //   this.focusHandler();
-  }
-
-  /**
-   * Check which option index to focus
-   */
   @HostListener("keydown", ["$event"])
   onKeyHandler($event) {
     if ($event.key === "ArrowDown" || $event.key === "ArrowRight") {
       $event.preventDefault();
-      if (this.defaultFocusOption === this.optionList.length - 1) {
-        this.defaultFocusOption = 0;
-      } else {
-        this.defaultFocusOption++;
-      }
+      this.indexToFocusHandler("next");
     }
     if ($event.key === "ArrowUp" || $event.key === "ArrowLeft") {
       $event.preventDefault();
-      if (this.defaultFocusOption === 0) {
-        this.defaultFocusOption = this.optionList.length - 1;
-      } else {
-        this.defaultFocusOption--;
-      }
+      this.indexToFocusHandler("previous");
     }
-    this.service.indexToFocus.next(this.defaultFocusOption);
+    this.service.indexToFocus.next(this.indexToFocus);
   }
 
   defaultInputs = new BehaviorSubject<RadioGroupProperties>({
@@ -141,7 +120,7 @@ export class DxcRadioGroupComponent implements OnInit {
       (options) => (this.optionList = options)
     );
     this.subcriptionNewValue = this.service.newValue.subscribe((newValue) => {
-      if (newValue || newValue === "") {
+      if (!this.disabled && !this.readOnly && (newValue || newValue === "")) {
         this.onChange.emit(newValue);
         if (!this.isControlled) {
           this.value = newValue;
@@ -155,10 +134,10 @@ export class DxcRadioGroupComponent implements OnInit {
   ngOnInit(): void {
     const tempOptions = [];
     tempOptions.push(...this.options);
-    if (this.optional && this.optionalItemLabel) {
+    if (this.optional) {
       // add empty option to the begginning of the array
       tempOptions.unshift({
-        label: "None",
+        label: this.optionalItemLabel,
         value: "",
       });
     }
@@ -170,6 +149,9 @@ export class DxcRadioGroupComponent implements OnInit {
       if (this.defaultValue || this.defaultValue === "") {
         this.value = this.defaultValue;
       }
+    }
+    if (this.disabled) {
+      this.indexToFocus = -1;
     }
   }
 
@@ -197,13 +179,40 @@ export class DxcRadioGroupComponent implements OnInit {
         (el) => el.value === this.value
       );
       if (selectedOption) {
-        this.defaultFocusOption = this.optionList.indexOf(selectedOption);
-        if (this.defaultFocusOption !== this.service.indexToFocus.value)
-          this.service.indexToFocus.next(this.defaultFocusOption);
+        this.indexToFocus = this.optionList.indexOf(selectedOption);
+        if (this.indexToFocus !== this.service.indexToFocus.value)
+          this.service.indexToFocus.next(this.indexToFocus);
       }
     } else {
-      if (this.defaultFocusOption !== this.service.indexToFocus.value)
-          this.service.indexToFocus.next(this.defaultFocusOption);
+      if (this.indexToFocus !== this.service.indexToFocus.value)
+        this.service.indexToFocus.next(this.indexToFocus);
+    }
+  }
+
+  /**
+   * Closest not disabled option to focus
+   */
+  indexToFocusHandler(direction: string) {
+    let auxIndex: number = this.indexToFocus;
+    switch (direction) {
+      case "next":
+        do {
+          auxIndex === this.optionList.length - 1 ? (auxIndex = 0) : auxIndex++;
+          if (!this.optionList[auxIndex].disabled) {
+            this.indexToFocus = auxIndex;
+            break;
+          }
+        } while (auxIndex !== this.indexToFocus);
+        break;
+      case "previous":
+        do {
+          auxIndex === 0 ? (auxIndex = this.optionList.length - 1) : auxIndex--;
+          if (!this.optionList[auxIndex].disabled) {
+            this.indexToFocus = auxIndex;
+            break;
+          }
+        } while (auxIndex !== this.indexToFocus);
+        break;
     }
   }
 

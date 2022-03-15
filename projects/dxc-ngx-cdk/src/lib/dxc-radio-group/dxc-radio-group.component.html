@@ -2,7 +2,7 @@
 <div class="radio-list-container">
   <ng-container *ngFor="let option of optionList; index as i">
     <dxc-radio-group-item
-      [tabindex]="defaultFocusOption === i ? '0' : '-1'"
+      [tabindex]="indexToFocus === i && !option.disabled ? tabIndex : '-1'"
       [indexValue]="i"
       [value]="option.value"
       [label]="option.label"

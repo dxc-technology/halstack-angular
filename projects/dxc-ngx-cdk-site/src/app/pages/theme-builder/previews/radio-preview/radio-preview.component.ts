@@ -15,7 +15,7 @@ export class RadioPreviewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  value = "1";
+  value = "";
   handleOnChange($event) {
     //this.value = $event;
   }
@@ -32,8 +32,8 @@ export class RadioPreviewComponent implements OnInit {
 
   options = [
     { value: "1", label: "1", disabled: false },
-    { value: "2", label: "2", disabled: false },
-    { value: "3", label: "3", disabled: false },
+    { value: "2", label: "2", disabled: true },
+    { value: "3", label: "3", disabled: true },
     { value: "4", label: "4", disabled: false },
   ];
 

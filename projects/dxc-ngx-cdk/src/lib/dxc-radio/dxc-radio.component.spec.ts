@@ -1,6 +1,16 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcRadioComponent } from "./dxc-radio.component";
 import { MatRadioModule } from "@angular/material/radio";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcRadio tests", () => {
   test("should render dxc-radio", async () => {

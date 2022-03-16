@@ -1,6 +1,16 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcSwitchComponent } from "./dxc-switch.component";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcSwitch tests", () => {
   test("should render dxc-switch", async () => {

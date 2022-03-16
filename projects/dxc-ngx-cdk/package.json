@@ -19,7 +19,7 @@
     "generate-lib-prod": "npm run build-lib-prod && npm run post-build-lib && npm run package",
     "generate-lib-win": "npm run build-lib && npm run post-build-lib-win && npm run package",
     "generate-lib-prod-win": "npm run build-lib-prod && npm run post-build-lib-win && npm run package",
-    "test": "jest --config ./jest.lib.config.js table.spec.ts",
+    "test": "ngcc && jest --config ./jest.lib.config.js",
     "build-lib:watch": "ng build --watch dxc-ngx-cdk",
     "test-lib": "nx run-many --target=test --all"
   },

@@ -2,8 +2,17 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { fireEvent, render } from "@testing-library/angular";
 import { screen, waitFor } from "@testing-library/dom";
-
 import { DxcTextareaComponent } from "./dxc-textarea.component";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcTextareaComponent", () => {
   test("should render dxc-text-input", async () => {

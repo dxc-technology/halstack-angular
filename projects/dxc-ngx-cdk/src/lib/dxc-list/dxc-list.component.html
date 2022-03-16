@@ -6,12 +6,12 @@
         <mat-icon *ngIf="item?.iconname != null && item?.iconName != ''" aria-hidden="true"
           class="material-icons left-material-icons-fdm">
           {{item?.iconname || item?.iconName}}</mat-icon>
-        <a href="javascript:void(0);" target="_self" [ngClass]="{'btn-link-list': true, 'badge-space': item && [badgeNode] }"
+        <a href="javascript:void(0);" target="_self" [ngClass]="{'btn-link-list': true, 'badge-space': (item && (item[badgeNode] || item[badgeNode] == 0)) }"
           role="tab" attr.aria-selected="{{currentselection?.name === item?.name}}"
           matTooltip="{{item?.title || item?.label}}" [matTooltipPosition]="infoToolTipPos"
           [class.highlightext]="currentselection?.name === item?.name">{{item?.title || item?.label}}
-          <b *ngIf="item && item[badgeNode]"
-            class="{{'badge border rounded-circle border-'+ item[badgeTypeNode] +' text-'+ item[badgeTypeNode] +''}}">{{item[badgeNode]}}</b>
+          <b *ngIf="item &&  (item[badgeNode] || item[badgeNode] == 0)"
+            class="{{'badge border rounded-circle border-'+ item[badgeTypeNode] +' text-'+ item[badgeTypeNode] +''}}">{{item[badgeNode] > maxBadge ? (maxBadge+'+') : item[badgeNode]}}</b>
         </a>
       </li>
     </ng-container>

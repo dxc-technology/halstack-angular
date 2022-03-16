@@ -18,7 +18,16 @@ import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { CommonModule } from "@angular/common";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
 
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 describe("DxcDate", () => {
   const newMockDate = new Date("1995/12/03");
   const newValue = "03-12-1995";

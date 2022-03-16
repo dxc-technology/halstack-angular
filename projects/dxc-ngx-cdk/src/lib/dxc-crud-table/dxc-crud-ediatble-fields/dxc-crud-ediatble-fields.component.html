@@ -38,9 +38,6 @@
         [allowDecimal]="field.allowDecimal" [minValue]="field.minValue" [maxValue]="field.maxValue"
         id="{{field.name}}"  formControlName="{{field.name}}" [disabled]="field.disabled">
       </dxc-number>
-      <dxc-show-errors [control]="formGroup.controls[field.name]" [fieldname]="field.name"
-          [errormessages]="resource" [gridGlobalRequiredValidation]="validation">
-      </dxc-show-errors>
     </div>
     <div *ngSwitchCase="fieldsType.checkbox">
       <dxc-checkbox id="ctrl_{{field.name}}" ariaLabelledBy="cl_{{field.name}}" [disabled]="field.disabled"

@@ -3,6 +3,15 @@ import { DxcSliderComponent } from "./dxc-slider.component";
 import { MatSliderModule } from "@angular/material/slider";
 import { TestBed } from "@angular/core/testing";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcSlider tests", () => {
   test("should render dxc-slider", async () => {

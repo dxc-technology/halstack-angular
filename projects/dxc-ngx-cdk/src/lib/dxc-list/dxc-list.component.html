@@ -11,7 +11,7 @@
           matTooltip="{{item?.title || item?.label}}" [matTooltipPosition]="infoToolTipPos"
           [class.highlightext]="currentselection?.name === item?.name">{{item?.title || item?.label}}
           <b *ngIf="item &&  (item[badgeNode] || item[badgeNode] == 0)"
-            class="{{'badge border rounded-circle border-'+ item[badgeTypeNode] +' text-'+ item[badgeTypeNode] +''}}">{{item[badgeNode] > maxBadge ? (maxBadge+'+') : item[badgeNode]}}</b>
+            class="{{'badge border rounded-circle border-'+ item[badgeTypeNode] +' text-'+ item[badgeTypeNode] +''}}">{{(item[badgeNode] > maxBadge) && (maxBadge != -1) ? (maxBadge+'+') : item[badgeNode]}}</b>
         </a>
       </li>
     </ng-container>

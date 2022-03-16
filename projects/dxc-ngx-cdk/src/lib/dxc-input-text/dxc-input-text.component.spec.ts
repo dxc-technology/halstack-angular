@@ -7,6 +7,16 @@ import { screen, waitFor } from "@testing-library/dom";
 import { of } from "rxjs";
 import { delay } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
+import { TestBed } from "@angular/core/testing";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcTextInputComponent", () => {
   test("should render dxc-input-text", async () => {
@@ -15,12 +25,8 @@ describe("DxcTextInputComponent", () => {
         label: "test-input",
         assistiveText: "assistive text",
       },
-      imports: [
-        MatInputModule,
-        MatAutocompleteModule,
-        FormsModule,
-        ReactiveFormsModule,
-      ],
+      imports: [MatAutocompleteModule, FormsModule, ReactiveFormsModule],
+      declarations: [DxcInputTextComponent],
     });
 
     expect(getByText("test-input"));

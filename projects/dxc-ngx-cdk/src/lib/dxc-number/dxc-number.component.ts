@@ -344,6 +344,6 @@ function formatNumber(minValue, maxValue, allowdecimalvalue, decimalPlace, value
     return transformedInput;
   }
   else {
-    return 0;
+    return minValue ? minValue : 0;
   }
 }

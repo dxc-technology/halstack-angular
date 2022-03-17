@@ -818,6 +818,10 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
             this.expandedElement[col.name] = this.expandedElement[col.name];
             this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name], (col.required && col.required == true) ? Validators.required : null));
             break;
+          case this.fieldsType.number:
+              this.expandedElement[col.name] = this.expandedElement[col.name];
+              this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name]));
+            break;
           default:
             this.expandedElement[col.name] = this.expandedElement[col.name];
             this.claimsForm.addControl(col.name, new FormControl(this.expandedElement[col.name],

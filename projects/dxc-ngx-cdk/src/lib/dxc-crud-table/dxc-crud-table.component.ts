@@ -215,7 +215,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
         this.rowsave(element);
         this.dataSource.data.forEach(row => { row['isSelected'] = false });
         this.isEditForm =false;
-        this.expandedElement = null;
         break;
       case 'close':
         this.closeExpandRow(element)

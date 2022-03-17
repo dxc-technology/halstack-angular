@@ -9,6 +9,7 @@ export interface RadioGroupProperties {
   options: Option[];
   stacking?: "row"|"column";
   tabIndex?: number;
+  error?: string;
 }
 
 export type Option = {

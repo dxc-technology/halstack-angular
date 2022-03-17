@@ -14,12 +14,17 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { RadioGroupService } from "../services/radio-group.service";
+import { Option } from "../dxc-radio-group.types";
 
 @Component({
   selector: "dxc-radio-group-item",
   templateUrl: "./dxc-radio.component.html",
 })
 export class DxcRadioGroupItemComponent implements OnInit {
+  @HostBinding("class") styles;
+  @HostBinding("class.selected")
+  selected: boolean = false;
+
   @Input()
   label: string;
 
@@ -29,11 +34,20 @@ export class DxcRadioGroupItemComponent implements OnInit {
   @Input()
   disabled: boolean = false;
 
-  @HostBinding("class.selected")
-  selected: boolean = false;
+  @Input()
+  errorState: boolean = false;
 
   @Input()
-  indexValue: any;
+  readOnlyState: boolean = false;
+
+  @Input()
+  indexValue: number;
+
+  defaultInputs = new BehaviorSubject<Option>({
+    label: "",
+    value: undefined,
+    disabled: false,
+  });
 
   constructor(private service: RadioGroupService, private elRef: ElementRef) {
     this.service.indexToFocus.subscribe((index) => {
@@ -74,5 +88,104 @@ export class DxcRadioGroupItemComponent implements OnInit {
         this.selected = this.value === newValue;
       }
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const inputs = Object.keys(changes).reduce((result, item) => {
+      result[item] = changes[item].currentValue;
+      return result;
+    }, {});
+    this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
+    this.styles = `${this.getDynamicStyle({
+      ...this.defaultInputs.getValue(),
+    })}`;
+  }
+
+  getBorderColor() {
+    if (this.disabled) {
+      return "var(--radioGroup-disabledRadioInputColor)";
+    } else if (this.errorState) {
+      return "var(--radioGroup-errorRadioInputColor)";
+    } else if (this.readOnlyState) {
+      return "var(--radioGroup-readonlyRadioInputColor)";
+    } else {
+      return "var(--radioGroup-radioInputColor)";
+    }
+  }
+
+  getHoverBorderColor() {
+    if (this.errorState) {
+      return "var(--radioGroup-hoverErrorRadioInputColor)";
+    } else if (this.readOnlyState) {
+      return "var(--radioGroup-hoverReadonlyRadioInputColor)";
+    } else {
+      return "var(--radioGroup-hoverRadioInputColor)";
+    }
+  }
+
+  getDynamicStyle(inputs) {
+    return css`
+      display: flex;
+      align-items: center;
+      ${inputs.disabled ? "pointer-events: none" : "cursor: pointer"};
+      .radioInputContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 24px;
+        width: 24px;
+        .radioInput {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          width: 18px;
+          height: 18px;
+          border: 2px solid;
+          border-color: ${this.getBorderColor()};
+          border-radius: 50%;
+          box-shadow: 0 0 0 2px transparent;
+        }
+      }
+      &.selected {
+        .dot {
+          height: 10px;
+          width: 10px;
+          border-radius: 50%;
+          background-color: ${this.getBorderColor()};
+        }
+      }
+      .radioLabel {
+        margin-left: var(--radioGroup-radioInputLabelMargin);
+        color: ${inputs.disabled
+          ? "var(--radioGroup-disabledRadioInputLabelFontColor)"
+          : "var(--radioGroup-radioInputLabelFontColor)"};
+        font-family: var(--radioGroup-radioInputLabelFontFamily);
+        font-size: var(--radioGroup-radioInputLabelFontSize);
+        font-style: var(--radioGroup-radioInputLabelFontStyle);
+        font-weight: var(--radioGroup-radioInputLabelFontWeight);
+        line-height: var(--radioGroup-radioInputLabelLineHeight);
+      }
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        .radioInput {
+          outline: var(--radioGroup-focusBorderWidth)
+            var(--radioGroup-focusBorderStyle)
+            var(--radioGroup-focusRadioInputColor);
+          outline-offset: 1px;
+        }
+      }
+      &:hover {
+        .radioInput {
+          border-color: ${this.getHoverBorderColor()};
+        }
+        &.selected {
+          .dot {
+            background-color: ${this.getHoverBorderColor()};
+          }
+        }
+      }
+    `;
   }
 }

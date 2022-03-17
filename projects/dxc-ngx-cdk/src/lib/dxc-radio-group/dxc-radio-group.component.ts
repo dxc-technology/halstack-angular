@@ -59,6 +59,9 @@ export class DxcRadioGroupComponent implements OnInit {
   @Input()
   tabIndex: number = 0;
 
+  @Input()
+  error: string;
+
   @Output()
   onChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -113,6 +116,7 @@ export class DxcRadioGroupComponent implements OnInit {
     options: [],
     stacking: "column",
     tabIndex: 0,
+    error: undefined
   });
 
   constructor(private utils: CssUtils, private service: RadioGroupService) {
@@ -198,7 +202,7 @@ export class DxcRadioGroupComponent implements OnInit {
       case "next":
         do {
           auxIndex === this.optionList.length - 1 ? (auxIndex = 0) : auxIndex++;
-          if (!this.optionList[auxIndex].disabled) {
+          if (!this.optionList[auxIndex].disabled || this.readOnly) {
             this.indexToFocus = auxIndex;
             break;
           }
@@ -207,7 +211,7 @@ export class DxcRadioGroupComponent implements OnInit {
       case "previous":
         do {
           auxIndex === 0 ? (auxIndex = this.optionList.length - 1) : auxIndex--;
-          if (!this.optionList[auxIndex].disabled) {
+          if (!this.optionList[auxIndex].disabled || this.readOnly) {
             this.indexToFocus = auxIndex;
             break;
           }
@@ -220,14 +224,31 @@ export class DxcRadioGroupComponent implements OnInit {
     return css`
       display: flex;
       flex-direction: column;
+      box-sizing: border-box;
+      .label {
+        color: ${inputs.disabled
+          ? "var(--radioGroup-disabledLabelFontColor)"
+          : "var(--radioGroup-labelFontColor)"};
+        font-family: var(--radioGroup-labelFontFamily);
+        font-size: var(--radioGroup-labelFontSize);
+        font-style: var(--radioGroup-labelFontStyle);
+        font-weight: var(--radioGroup-labelFontWeight);
+        line-height: var(--radioGroup-labelLineHeight);
+        ${inputs.helperText ? "" : "margin-bottom: var(--radioGroup-groupLabelMargin);"}
+      }
+      .helperText {
+        color: ${inputs.disabled
+          ? "var(--radioGroup-disabledHelperTextFontColor)"
+          : "var(--radioGroup-helperTextFontColor)"};
+        font-family: var(--radioGroup-helperTextFontFamily);
+        font-size: var(--radioGroup-helperTextFontSize);
+        font-style: var(--radioGroup-helperTextFontStyle);
+        font-weight: var(--radioGroup-helperTextFontWeight);
+        line-height: var(--radioGroup-helperTextLineHeight);
+      }
       .radio-list-container {
         display: flex;
         flex-direction: ${inputs.stacking};
-        dxc-radio-group-item {
-          &.selected {
-            background: #fabada;
-          }
-        }
       }
     `;
   }

@@ -1,4 +1,4 @@
-<span>{{ label }}</span> <span>{{ helperText }}</span>
+<span *ngIf="label" class="label">{{ label }}</span> <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="radio-list-container">
   <ng-container *ngFor="let option of optionList; index as i">
     <dxc-radio-group-item
@@ -6,7 +6,9 @@
       [indexValue]="i"
       [value]="option.value"
       [label]="option.label"
-      [disabled]="option.disabled"
+      [disabled]="(option.disabled && !readOnly) || disabled"
+      [errorState]="error ? true : false"
+      [readOnlyState]="readOnly"
     ></dxc-radio-group-item>
   </ng-container>
 </div>

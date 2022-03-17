@@ -15,7 +15,26 @@
         label="Uncontrolled radio"
         helperText="example helper text"
         [optional]="true"
+      ></dxc-radio-group>
+      <dxc-radio-group
+        [options]="options"
+        label="Disabled radio"
+        helperText="example helper text"
+        [optional]="true"
         [disabled]="true"
+      ></dxc-radio-group>
+      <dxc-radio-group
+        [options]="options"
+        label="readOnly radio"
+        helperText="example helper text"
+        [optional]="true"
+        [readOnly]="true"
+      ></dxc-radio-group>
+      <dxc-radio-group
+        [options]="options"
+        label="readOnly radio"
+        [optional]="true"
+        error="error message"
       ></dxc-radio-group>
     </tbuilder-component-mode>
     <tbuilder-component-mode text="Default">

@@ -87,7 +87,6 @@ describe("DxcNewTextInputComponent", () => {
   test("should filter options", async () => {
     await render(
       `<dxc-text-input
-        placeholder="placeholder"
         label="Input label"
         helperText="helper text"
         value="Belgium"
@@ -116,7 +115,7 @@ describe("DxcNewTextInputComponent", () => {
     const text2 = screen.queryByText("Andorra");
     expect(text1).toBeNull();
     expect(text2).toBeNull();
-    expect(screen.getByText("Belgium"));
+    expect(screen.getByDisplayValue("Belgium")).toBeTruthy();
   });
 
   test("should clear input", async () => {

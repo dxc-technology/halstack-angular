@@ -132,7 +132,7 @@ export class DxcCronEditorComponent implements OnInit, OnChanges, ControlValueAc
   public async ngOnInit() {
     this.state = this.getDefaultState();
     this.expressionList = [
-      {'name': 'Run Immediately(after 1 min)', 'value': '-1'},
+      {'name': 'Run Immediately(In Couple Of Minutes)', 'value': '-1'},
       {'name': 'Expression', 'value': 'expression'},
       {'name': 'Custom', 'value': 'cust'},
      ];

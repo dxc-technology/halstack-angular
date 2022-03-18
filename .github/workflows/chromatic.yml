@@ -21,6 +21,9 @@ jobs:
       - name: Install lib dependencies
         run: cd projects/dxc-ngx-cdk && npm install
 
+      - name: Back to root folder
+        run: cd .
+
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:

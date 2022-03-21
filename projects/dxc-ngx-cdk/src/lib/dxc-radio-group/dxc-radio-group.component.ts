@@ -9,11 +9,15 @@ import {
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
-import { BehaviorSubject, Observable, Subscription } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { CssUtils } from "../utils";
-import { Option, RadioGroupProperties } from "./dxc-radio-group.types";
-import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import {
+  BlurEvent,
+  Option,
+  RadioGroupProperties,
+} from "./dxc-radio-group.types";
 import { RadioGroupService } from "./services/radio-group.service";
+import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: "dxc-radio-group",
@@ -65,7 +69,12 @@ export class DxcRadioGroupComponent implements OnInit {
   @Output()
   onChange: EventEmitter<string> = new EventEmitter<string>();
 
+  @Output()
+  onBlur: EventEmitter<BlurEvent> = new EventEmitter<BlurEvent>();
+
   // ref
+
+  radioGroupId = "";
 
   public optionList: Option[] = [];
   public indexToFocus: number = 0;
@@ -89,6 +98,12 @@ export class DxcRadioGroupComponent implements OnInit {
         this.indexToFocus = 0;
       }
       this.service.firstTabbedFocus = false;
+    } else {
+      const errorMessage =
+        (!this.value || this.value !== "") && !this.optional
+          ? "This is required"
+          : undefined;
+      this.onBlur.emit({ value: this.value, error: errorMessage });
     }
   }
 
@@ -101,6 +116,17 @@ export class DxcRadioGroupComponent implements OnInit {
     if ($event.key === "ArrowUp" || $event.key === "ArrowLeft") {
       $event.preventDefault();
       this.indexToFocusHandler("previous");
+    }
+    if ($event.key === "Enter" || $event.key === " ") {
+      $event.preventDefault();
+      if (!this.readOnly) {
+        this.onChange.emit(this.optionList[this.indexToFocus].value);
+        if (!this.isControlled) {
+          this.value = this.optionList[this.indexToFocus].value;
+          this.service.selectedValue.next(this.value);
+          this.focusHandler();
+        }
+      }
     }
     this.service.indexToFocus.next(this.indexToFocus);
   }
@@ -116,7 +142,7 @@ export class DxcRadioGroupComponent implements OnInit {
     options: [],
     stacking: "column",
     tabIndex: 0,
-    error: undefined
+    error: undefined,
   });
 
   constructor(private utils: CssUtils, private service: RadioGroupService) {
@@ -136,6 +162,7 @@ export class DxcRadioGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.radioGroupId = `radioGroup-${uuidv4()}`;
     const tempOptions = [];
     tempOptions.push(...this.options);
     if (this.optional) {
@@ -234,9 +261,14 @@ export class DxcRadioGroupComponent implements OnInit {
         font-style: var(--radioGroup-labelFontStyle);
         font-weight: var(--radioGroup-labelFontWeight);
         line-height: var(--radioGroup-labelLineHeight);
-        ${inputs.helperText ? "" : "margin-bottom: var(--radioGroup-groupLabelMargin);"}
       }
-      .helperText {
+      .groupLabel {
+        ${inputs.helperText
+          ? ""
+          : "margin-bottom: var(--radioGroup-groupLabelMargin);"}
+      }
+      .helperText,
+      .optional {
         color: ${inputs.disabled
           ? "var(--radioGroup-disabledHelperTextFontColor)"
           : "var(--radioGroup-helperTextFontColor)"};
@@ -245,10 +277,24 @@ export class DxcRadioGroupComponent implements OnInit {
         font-style: var(--radioGroup-helperTextFontStyle);
         font-weight: var(--radioGroup-helperTextFontWeight);
         line-height: var(--radioGroup-helperTextLineHeight);
+        margin-bottom: var(--radioGroup-groupLabelMargin);
       }
       .radio-list-container {
         display: flex;
         flex-direction: ${inputs.stacking};
+        gap: ${inputs.stacking === "row"
+          ? "var(--radioGroup-groupHorizontalGutter)"
+          : "var(--radioGroup-groupVerticalGutter)"};
+      }
+      .errorMessage {
+        color: var(--radioGroup-errorMessageColor);
+        font-size: var(--radioGroup-errorMessageFontSize);
+        font-weight: var(--radioGroup-errorMessageFontWeight);
+        line-height: var(--radioGroup-errorMessageLineHeight);
+        font-family: var(--radioGroup-labelFontFamily);
+      }
+      .valueInput {
+        display: none;
       }
     `;
   }

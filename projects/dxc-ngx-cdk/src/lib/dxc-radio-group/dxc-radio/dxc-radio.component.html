@@ -1,2 +1,10 @@
-<div class="radioInputContainer"><div class="radioInput"><div *ngIf="selected" class="dot"></div></div></div>
-<span class="radioLabel">{{ label }}</span>
+<div
+  class="radioInputContainer"
+  role="radio"
+  [attr.aria-disabled]="disabled"
+  [attr.aria-checked]="selected"
+  [attr.aria-labelledby]="radioLabelId"
+>
+  <div class="radioInput"><div *ngIf="selected" class="dot"></div></div>
+</div>
+<span class="radioLabel" [id]="radioLabelId">{{ label }}</span>

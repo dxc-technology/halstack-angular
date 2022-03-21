@@ -18,3 +18,8 @@ export type Option = {
   disabled?: boolean;
 };
 
+export type BlurEvent = {
+  value: string,
+  error: string
+};
+

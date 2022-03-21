@@ -2,17 +2,14 @@ import {
   Component,
   OnInit,
   Input,
-  Output,
   HostBinding,
   SimpleChanges,
-  Optional,
   HostListener,
   ElementRef,
 } from "@angular/core";
-import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import { v4 as uuidv4 } from "uuid";
 import { RadioGroupService } from "../services/radio-group.service";
 import { Option } from "../dxc-radio-group.types";
 
@@ -42,6 +39,8 @@ export class DxcRadioGroupItemComponent implements OnInit {
 
   @Input()
   indexValue: number;
+
+  radioLabelId = "";
 
   defaultInputs = new BehaviorSubject<Option>({
     label: "",
@@ -88,6 +87,7 @@ export class DxcRadioGroupItemComponent implements OnInit {
         this.selected = this.value === newValue;
       }
     });
+    this.radioLabelId = `radio-${uuidv4()}`;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -101,7 +101,7 @@ export class DxcRadioGroupItemComponent implements OnInit {
     })}`;
   }
 
-  getBorderColor() {
+  private getBorderColor() {
     if (this.disabled) {
       return "var(--radioGroup-disabledRadioInputColor)";
     } else if (this.errorState) {
@@ -113,7 +113,7 @@ export class DxcRadioGroupItemComponent implements OnInit {
     }
   }
 
-  getHoverBorderColor() {
+  private getHoverBorderColor() {
     if (this.errorState) {
       return "var(--radioGroup-hoverErrorRadioInputColor)";
     } else if (this.readOnlyState) {
@@ -123,11 +123,22 @@ export class DxcRadioGroupItemComponent implements OnInit {
     }
   }
 
+  private getActiveBorderColor() {
+    if (this.errorState) {
+      return "var(--radioGroup-activeErrorRadioInputColor)";
+    } else if (this.readOnlyState) {
+      return "var(--radioGroup-activeReadonlyRadioInputColor)";
+    } else {
+      return "var(--radioGroup-activeRadioInputColor)";
+    }
+  }
+
   getDynamicStyle(inputs) {
     return css`
-      display: flex;
+      display: inline-flex;
       align-items: center;
       ${inputs.disabled ? "pointer-events: none" : "cursor: pointer"};
+      width: fit-content;
       .radioInputContainer {
         display: flex;
         align-items: center;
@@ -141,7 +152,7 @@ export class DxcRadioGroupItemComponent implements OnInit {
           box-sizing: border-box;
           width: 18px;
           height: 18px;
-          border: 2px solid;
+          border: var(--radioGroup-radioInputBorderWidth) var(--radioGroup-radioInputBorderStyle);;
           border-color: ${this.getBorderColor()};
           border-radius: 50%;
           box-shadow: 0 0 0 2px transparent;
@@ -183,6 +194,16 @@ export class DxcRadioGroupItemComponent implements OnInit {
         &.selected {
           .dot {
             background-color: ${this.getHoverBorderColor()};
+          }
+        }
+      }
+      &:active {
+        .radioInput {
+          border-color: ${this.getActiveBorderColor()};
+        }
+        &.selected {
+          .dot {
+            background-color: ${this.getActiveBorderColor()};
           }
         }
       }

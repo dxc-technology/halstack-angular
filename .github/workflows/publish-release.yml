@@ -12,7 +12,7 @@ jobs:
       - uses: jungwinter/split@v1
         id: split
         with:
-          seperator: '.'
+          seperator: "."
           msg: ${{ github.event.release.tag_name }}
 
       - name: Checkout repository
@@ -34,11 +34,11 @@ jobs:
           role-duration-seconds: 6000
           role-skip-session-tagging: true
 
-      - name: Install lib dependencies
-        run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
-      
       - name: Install app dependencies
         run: cd . && npm install
+
+      - name: Install lib dependencies
+        run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
 
       - name: Generate lib
         run: cd ./projects/dxc-ngx-cdk && npm run generate-lib

@@ -120,18 +120,14 @@ export class DxcButtonComponent {
     @Optional() public bgProviderService?: BackgroundProviderService
   ) {
     this.bgProviderService.$changeColor.subscribe((value) => {
-      setTimeout(() => {
-        if (value === "dark") {
-          this.lightBackground = false;
-          this.darkBackground = true;
-        } else if (value === "light") {
-          this.lightBackground = true;
-          this.darkBackground = false;
-        }
-        this.className = `${this.getDynamicStyle(
-          this.defaultInputs.getValue()
-        )}`;
-      }, 0);
+      if (value === "dark") {
+        this.lightBackground = false;
+        this.darkBackground = true;
+      } else if (value === "light") {
+        this.lightBackground = true;
+        this.darkBackground = false;
+      }
+      this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     });
   }
 
@@ -207,11 +203,9 @@ export class DxcButtonComponent {
           display: flex;
           align-items: inherit;
           justify-content: inherit;
-          ${
-            this.iconPosition === "after"
-              ? "flex-direction: row-reverse;"
-              : "flex-direction: row;"
-          }
+          ${this.iconPosition === "after"
+            ? "flex-direction: row-reverse;"
+            : "flex-direction: row;"}
 
           & > span {
             margin: 0 8px;
@@ -228,13 +222,11 @@ export class DxcButtonComponent {
           }
           img,
           svg {
-            ${
-              this.label
-                ? this.iconPosition === "before"
-                  ? "margin-left: 8px;"
-                  : "margin-right: 8px;"
-                : ""
-            }
+            ${this.label
+              ? this.iconPosition === "before"
+                ? "margin-left: 8px;"
+                : "margin-right: 8px;"
+              : ""}
             height: 24px;
             width: 24px;
             z-index: 20;
@@ -277,7 +269,6 @@ export class DxcButtonComponent {
           cursor: not-allowed;
         }
       }
-
     `;
   }
 

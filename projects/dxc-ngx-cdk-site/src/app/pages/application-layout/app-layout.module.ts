@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import {
   DxcButtonModule,
-  DxcTableModule,
   DxcTagModule,
   DxcChipModule,
   DxcLinkModule,
   DxcHeadingModule,
 } from "@dxc-technology/halstack-angular";
+
 import { ApplicationLayoutComponent } from "./app-layout.component";
 import { ApplicationLayoutApiComponent } from "../../components/examples/layout/app-layout-api/app-layout-api.component";
 import { ApplicationLayoutExamplesComponent } from "../../components/examples/layout/app-layout-examples/app-layout-examples.component";
@@ -17,8 +17,9 @@ import { ExampleViewerModule } from "../../components/example-viewer/example-vie
 import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
 
 import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
-import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
-import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
+import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
+import { StatusTagModule } from "../../components/status-tag/status-tag.module";
+import { DxcTableModule } from "@dxc-technology/halstack-angular";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     DxcLinkModule,
     DxcHeadingModule,
     CodesandboxViewerModule,
-    StatusTagModule
+    StatusTagModule,
   ],
   exports: [ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent],
   entryComponents: [],

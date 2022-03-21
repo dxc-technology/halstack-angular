@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { EmittedValue } from "../dxc-text-input.component";
+import EmittedValue from "../emitted-value.type";
 import { DxcTextInputService } from "../services/dxc-text-input.service";
 
 @Pipe({ name: "filterOptions", pure: true })

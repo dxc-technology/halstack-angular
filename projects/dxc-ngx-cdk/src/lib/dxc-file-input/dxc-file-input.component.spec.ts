@@ -3,6 +3,16 @@ import { DxcFileInputComponent } from "./dxc-file-input.component";
 import { DxcFileInputModule } from "./dxc-file-input.module";
 import { screen, waitFor } from "@testing-library/dom";
 import { FileData } from "./interfaces/file.interface";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcFileInputComponent", () => {
   test("should render dxc-file-input in file mode", async () => {
@@ -59,19 +69,20 @@ describe("DxcFileInputComponent", () => {
   });
 
   test("should not have files even if they are selected", async () => {
-    const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input multiple="false"></dxc-file-input>`,
-      excludeComponentDeclaration: true,
-      imports: [DxcFileInputModule],
-    });
-    fileInput.detectChanges();
+    const fileInput = await render(
+      `<dxc-file-input multiple="false"></dxc-file-input>`,
+      {
+        excludeComponentDeclaration: true,
+        imports: [DxcFileInputModule],
+        declarations: [DxcFileInputComponent],
+      }
+    );
     const inputEl = fileInput.getByTestId("input");
     const file = new File(["foo"], "foo.txt", {
       type: "text/plain",
     });
     fireEvent.change(inputEl, { target: { files: [file] } });
     await waitFor(() => {
-      fileInput.detectChanges();
       expect(() => screen.getByText("foo.txt")).toThrow();
     });
   });
@@ -85,16 +96,18 @@ describe("DxcFileInputComponent", () => {
         data: file,
         image: "",
         error: "",
-      }
+      },
     ];
     const callback = jest.fn();
-    const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)" [minSize]="50" multiple="false"></dxc-file-input>`,
-      componentProperties: { callback, value },
-      excludeComponentDeclaration: true,
-      imports: [DxcFileInputModule],
-    });
-    fileInput.detectChanges();
+    const fileInput = await render(
+      `<dxc-file-input [value]="value" (callbackFile)="callback($event)" [minSize]="50" multiple="false"></dxc-file-input>`,
+      {
+        componentProperties: { callback, value },
+        excludeComponentDeclaration: true,
+        imports: [DxcFileInputModule],
+        declarations: [DxcFileInputComponent],
+      }
+    );
     await waitFor(() => {
       fileInput.detectChanges();
       expect(screen.getByText("foo.txt"));
@@ -111,16 +124,19 @@ describe("DxcFileInputComponent", () => {
         data: file,
         image: "",
         error: "",
-      }
+      },
     ];
     const maxSize = 1;
     const callback = jest.fn();
-    const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)" [maxSize]="maxSize" multiple="false"></dxc-file-input>`,
-      componentProperties: { callback, value, maxSize },
-      excludeComponentDeclaration: true,
-      imports: [DxcFileInputModule],
-    });
+    const fileInput = await render(
+      `<dxc-file-input [value]="value" (callbackFile)="callback($event)" [maxSize]="maxSize" multiple="false"></dxc-file-input>`,
+      {
+        componentProperties: { callback, value, maxSize },
+        excludeComponentDeclaration: true,
+        imports: [DxcFileInputModule],
+        declarations: [DxcFileInputComponent],
+      }
+    );
     fileInput.detectChanges();
     await waitFor(() => {
       fileInput.detectChanges();
@@ -160,10 +176,8 @@ describe("DxcFileInputComponent", () => {
       excludeComponentDeclaration: true,
       imports: [DxcFileInputModule],
     });
-    fileInput.detectChanges();
 
     await waitFor(() => {
-      fileInput.detectChanges();
       expect(screen.getByText("foo.txt"));
       expect(screen.getByText("chucknorris.txt"));
       expect(screen.getByText("Error for file"));
@@ -179,24 +193,27 @@ describe("DxcFileInputComponent", () => {
     const file2 = new File(["test"], "test.txt", {
       type: "text/plain",
     });
-    const value = [{
-          data: file,
-          image: ""
-        }, {
-          data: file2,
-          image: ""
-        }];
-    const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,
-      componentProperties: { callback, value },
-      excludeComponentDeclaration: true,
-      imports: [DxcFileInputModule],
-    });
-    fileInput.detectChanges();
+    const value = [
+      {
+        data: file,
+        image: "",
+      },
+      {
+        data: file2,
+        image: "",
+      },
+    ];
+    const fileInput = await render(
+      `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,
+      {
+        componentProperties: { callback, value },
+        excludeComponentDeclaration: true,
+        imports: [DxcFileInputModule],
+        declarations: [DxcFileInputComponent],
+      }
+    );
     const inputEl = fileInput.getByTestId("input");
-    fileInput.detectChanges();
     await waitFor(() => {
-      fileInput.detectChanges();
       expect(screen.getByText("foo.txt"));
       expect(screen.getByText("test.txt"));
     });
@@ -210,47 +227,53 @@ describe("DxcFileInputComponent", () => {
     const file2 = new File(["test"], "test.txt", {
       type: "text/plain",
     });
-    const value = [{
-          data: file,
-          image: null
-        }, {
-          data: file2,
-          image: null
-        }];
-    const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,
-      componentProperties: { callback, value },
-      excludeComponentDeclaration: true,
-      imports: [DxcFileInputModule],
-    });
-    fileInput.detectChanges();
+    const value = [
+      {
+        data: file,
+        image: null,
+      },
+      {
+        data: file2,
+        image: null,
+      },
+    ];
+    const fileInput = await render(
+      `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,
+      {
+        componentProperties: { callback, value },
+        excludeComponentDeclaration: true,
+        imports: [DxcFileInputModule],
+        declarations: [DxcFileInputComponent],
+      }
+    );
     const inputEl = fileInput.getByTestId("input");
 
     fireEvent.change(inputEl, { target: { files: [file, file2] } });
     fileInput.detectChanges();
     await waitFor(() => {
-      fileInput.detectChanges();
       expect(screen.getByText("foo.txt"));
     });
     const removeIcons = fileInput.getAllByTestId("removeIcon");
     fireEvent.click(removeIcons[0]);
-    fileInput.detectChanges();
     await waitFor(() => {
-      fileInput.detectChanges();
-      expect(callback).toHaveBeenCalledWith([{data: file2, error:null, image:null}]);
+      expect(callback).toHaveBeenCalledWith([
+        { data: file2, error: null, image: null },
+      ]);
     });
   });
 
   test("should return callback files", async () => {
     const callback = jest.fn();
     const value = [];
-    const fileInput = await render(DxcFileInputComponent, {
-      template: `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,
-      componentProperties: { callback, value },
-      excludeComponentDeclaration: true,
-      imports: [DxcFileInputModule],
-    });
-    fileInput.detectChanges();
+    const fileInput = await render(
+      `<dxc-file-input [value]="value" (callbackFile)="callback($event)"></dxc-file-input>`,
+      {
+        componentProperties: { callback, value },
+        excludeComponentDeclaration: true,
+        imports: [DxcFileInputModule],
+        declarations: [DxcFileInputComponent],
+      }
+    );
     const inputEl = fileInput.getByTestId("input");
     const file = new File(["foo"], "foo.txt", {
       type: "text/plain",
@@ -259,7 +282,6 @@ describe("DxcFileInputComponent", () => {
       type: "text/plain",
     });
     fireEvent.change(inputEl, { target: { files: [file, file2] } });
-    fileInput.detectChanges();
     await waitFor(() => {
       expect(callback).toHaveBeenCalledWith([
         { data: file, error: null, image: null },

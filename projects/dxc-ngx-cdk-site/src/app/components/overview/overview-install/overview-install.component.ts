@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { ExampleService } from "src/app/service/example.service";
+import { ExampleService } from "../../../service/example.service";
 
 @Component({
   selector: "app-overview-install",
@@ -8,9 +8,9 @@ import { ExampleService } from "src/app/service/example.service";
 })
 export class OverviewInstallComponent implements OnInit {
   headingMargin = {
-    top: 'small',
-    right: 'small',
-    bottom: 'small',
+    top: "small",
+    right: "small",
+    bottom: "small",
   };
 
   npmCode: string;

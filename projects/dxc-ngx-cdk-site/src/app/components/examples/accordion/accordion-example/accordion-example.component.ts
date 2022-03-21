@@ -1,18 +1,14 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Example } from 'src/app/model/example';
-import { ExampleService } from 'src/app/service/example.service';
+import { Component, OnInit, Inject } from "@angular/core";
+import { Example } from "../../../../model/example";
+import { ExampleService } from "../../../../service/example.service";
 
 @Component({
-  selector: 'app-accordion-example',
-  templateUrl: './accordion-example.component.html',
-  styleUrls: ['./accordion-example.component.scss']
+  selector: "app-accordion-example",
+  templateUrl: "./accordion-example.component.html",
+  styleUrls: ["./accordion-example.component.scss"],
 })
 export class AccordionExampleComponent implements OnInit {
+  constructor() {}
 
-  constructor() { 
-  }
-
-  ngOnInit() {
-  }
-  
+  ngOnInit() {}
 }

@@ -1,18 +1,25 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from '@angular/common';
-import { DxcBoxModule, DxcBoxComponent, DxcTagModule, DxcTagComponent, DxcHeadingComponent, DxcHeadingModule } from "@dxc-technology/halstack-angular"
-import { BrowserModule } from '@angular/platform-browser';
-import { OverviewPageComponent} from "./overview-page.component"
-import { OverviewInstallComponent } from 'src/app/components/overview/overview-install/overview-install.component';
-import { OverviewSupportComponent } from 'src/app/components/overview/overview-support/overview-support.component';
-import { OverviewUseComponent } from 'src/app/components/overview/overview-use/overview-use.component';
-import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
-import { FormsModule } from '@angular/forms';
-import { CodePlaygroundModule } from 'src/app/components/code-playground/code-playground.module';
-import { TabbedSectionModule } from 'src/app/components/tabbed-section/tabbed-section.module';
-import { OverviewThemesComponent } from 'src/app/components/overview/overview-themes/overview-themes.component';
+import { CommonModule } from "@angular/common";
+import {
+  DxcBoxModule,
+  DxcBoxComponent,
+  DxcTagModule,
+  DxcTagComponent,
+  DxcHeadingComponent,
+  DxcHeadingModule,
+} from "@dxc-technology/halstack-angular";
+import { BrowserModule } from "@angular/platform-browser";
+import { OverviewPageComponent } from "./overview-page.component";
+import { OverviewInstallComponent } from "../../components/overview/overview-install/overview-install.component";
+import { OverviewSupportComponent } from "../../components/overview/overview-support/overview-support.component";
+import { OverviewUseComponent } from "../../components/overview/overview-use/overview-use.component";
+import { RouterModule } from "@angular/router";
+import { MatIconModule } from "@angular/material/icon";
+import { MatTabsModule } from "@angular/material/tabs";
+import { FormsModule } from "@angular/forms";
+import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
+import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
+import { OverviewThemesComponent } from "../../components/overview/overview-themes/overview-themes.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +27,7 @@ import { OverviewThemesComponent } from 'src/app/components/overview/overview-th
     OverviewInstallComponent,
     OverviewSupportComponent,
     OverviewUseComponent,
-    OverviewThemesComponent
+    OverviewThemesComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,14 +41,9 @@ import { OverviewThemesComponent } from 'src/app/components/overview/overview-th
     MatTabsModule,
     FormsModule,
     CodePlaygroundModule,
-    DxcHeadingModule
+    DxcHeadingModule,
   ],
-  exports: [
-  ],
-  entryComponents: [
-    DxcBoxComponent,
-    DxcTagComponent,
-    DxcHeadingComponent,
-  ]
+  exports: [],
+  entryComponents: [DxcBoxComponent, DxcTagComponent, DxcHeadingComponent],
 })
 export class OverviewPageModule {}

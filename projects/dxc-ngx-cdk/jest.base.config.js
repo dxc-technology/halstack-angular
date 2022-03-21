@@ -1,21 +1,22 @@
+const nxPreset = require('@nrwl/jest/preset');
 module.exports = {
-    preset: 'jest-preset-angular',
-    rootDir: '../',
-    setupFilesAfterEnv: ['<rootDir>/dxc-ngx-cdk/test-import.ts'],
-    testURL: 'http://localhost',
-    globals: {
-      'ts-jest': {
-        tsConfig: './tsconfig.spec.json',
-        stringifyContentPathRegex: '\\.html$',
-        astTransformers: [require.resolve('jest-preset-angular/InlineHtmlStripStylesTransformer')],
-      },
+  ...nxPreset,
+  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
+  transform: {
+    '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
+  resolver: '@nrwl/jest/plugins/resolver',
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  globals: {
+    'ts-jest': {
+      tsconfig: './tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
     },
-    transform: {
-      '^.+\\.(ts|js|html)$': 'ts-jest',
-    },
-    transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
-    snapshotSerializers: [
-      'jest-preset-angular/AngularSnapshotSerializer.js',
-      'jest-preset-angular/HTMLCommentSerializer.js',
-    ],
-  };
+  },
+  snapshotSerializers: [
+    'jest-preset-angular/build/serializers/no-ng-attributes',
+    'jest-preset-angular/build/serializers/ng-snapshot',
+    'jest-preset-angular/build/serializers/html-comment',
+  ],
+};

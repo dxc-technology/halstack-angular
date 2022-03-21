@@ -1,67 +1,76 @@
+import { TestBed } from "@angular/core/testing";
 import { render, fireEvent } from "@testing-library/angular";
 import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 import { DxcAlertComponent } from "./dxc-alert.component";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { screen } from "@testing-library/dom";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcAlertComponent tests", () => {
   test("should render default dxc-alert", async () => {
     const projection = "Content inside the ng-content!";
-    const dxcAlert = await render(DxcAlertComponent, {
-      template: `<dxc-alert>${projection}</dxc-alert>`,
-      componentProperties: {},
+    await render(`  <dxc-alert>${projection}</dxc-alert>`, {
       imports: [BackgroundProviderModule],
+      componentProperties: {},
+      declarations: [DxcAlertComponent],
     });
-
-    expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("information"));
+    expect(screen.getByText(projection));
+    expect(screen.getByText("information"));
   });
 
   test("should render dxc-alert warning", async () => {
     const projection = "Content inside the ng-content!";
-    const dxcAlert = await render(DxcAlertComponent, {
-      template: `<dxc-alert type="warning">${projection}</dxc-alert>`,
-      componentProperties: {},
+    await render(`  <dxc-alert type="warning">${projection}</dxc-alert>`, {
       imports: [BackgroundProviderModule],
+      componentProperties: {},
+      declarations: [DxcAlertComponent],
     });
-
-    expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("warning"));
+    expect(screen.getByText(projection));
+    expect(screen.getByText("warning"));
   });
 
   test("should render dxc-alert error", async () => {
     const projection = "Content inside the ng-content!";
-    const dxcAlert = await render(DxcAlertComponent, {
-      template: `<dxc-alert type="error">${projection}</dxc-alert>`,
-      componentProperties: {},
+    await render(`<dxc-alert type="error">${projection}</dxc-alert>`, {
       imports: [BackgroundProviderModule],
+      componentProperties: {},
+      declarations: [DxcAlertComponent],
     });
-
-    expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("error"));
+    expect(screen.getByText(projection));
+    expect(screen.getByText("error"));
   });
 
   test("should render dxc-alert confirm", async () => {
     const projection = "Content inside the ng-content!";
-    const dxcAlert = await render(DxcAlertComponent, {
-      template: `<dxc-alert type="confirm">${projection}</dxc-alert>`,
-      componentProperties: {},
+    await render(`<dxc-alert type="confirm">${projection}</dxc-alert>`, {
       imports: [BackgroundProviderModule],
+      componentProperties: {},
+      declarations: [DxcAlertComponent],
     });
-
-    expect(dxcAlert.getByText(projection));
-    expect(dxcAlert.getByText("success"));
+    expect(screen.getByText(projection));
+    expect(screen.getByText("success"));
   });
 
   test("should dxc-alert call onClose", async () => {
     const onCloseFunction = jest.fn();
     const projection = "Content inside the ng-content!";
-    const dxcAlert = await render(DxcAlertComponent, {
-      template: `<dxc-alert (onClose)="onCloseFunction()">${projection}</dxc-alert>`,
-      componentProperties: { onCloseFunction },
-      imports: [BackgroundProviderModule],
-    });
-
-    expect(dxcAlert.getByText(projection));
-    const closeIcon = dxcAlert.getByTestId("closeIcon");
+    await render(
+      `<dxc-alert (onClose)="onCloseFunction()">${projection}</dxc-alert>`,
+      {
+        imports: [BackgroundProviderModule],
+        componentProperties: { onCloseFunction },
+        declarations: [DxcAlertComponent],
+      }
+    );
+    expect(screen.getByText(projection));
+    const closeIcon = screen.getByTestId("closeIcon");
 
     fireEvent.click(closeIcon);
     expect(onCloseFunction).toHaveBeenCalled();

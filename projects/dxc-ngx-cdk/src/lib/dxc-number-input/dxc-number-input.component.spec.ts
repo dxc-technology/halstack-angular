@@ -3,6 +3,16 @@ import { DxcNumberInputComponent } from "./dxc-number-input.component";
 import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 import { waitFor } from "@testing-library/dom";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcNumberInputComponent", () => {
   test("should render dxc-number", async () => {
@@ -55,7 +65,6 @@ describe("DxcNumberInputComponent", () => {
     input.focus();
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Increment"));
-    dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
   });
 
@@ -81,7 +90,6 @@ describe("DxcNumberInputComponent", () => {
     input.focus();
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Decrement"));
-    dxcNumber.detectChanges();
     expect(onChange).toHaveBeenCalledWith({ value: "5", error: null });
   });
 

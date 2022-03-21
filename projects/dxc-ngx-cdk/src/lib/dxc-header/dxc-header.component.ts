@@ -276,7 +276,6 @@ export class DxcHeaderComponent implements OnChanges {
         ${this.utils.getPaddings(inputs.padding)}
         align-items: center;
         flex-wrap: wrap;
-        overflow: hidden;
       }
       .hamburger {
         color: var(--header-fontColor);

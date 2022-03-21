@@ -3,35 +3,36 @@ import { screen } from "@testing-library/dom";
 import { DxcHeaderComponent } from "./dxc-header.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { TestBed } from "@angular/core/testing";
-import { PipesModule } from '../pipes/pipes.module';
+import { PipesModule } from "../pipes/pipes.module";
 import { BackgroundProviderModule } from "../background-provider/background-provider.module";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcHeader tests", () => {
   test("should render dxc-header", async () => {
-    const header = await render(DxcHeaderComponent, {
+    await render(`<dxc-header></dxc-header>`, {
+      imports: [PipesModule, BackgroundProviderModule],
       componentProperties: {},
-      imports: [MatToolbarModule, PipesModule, BackgroundProviderModule],
+      declarations: [DxcHeaderComponent],
     });
-    expect(header.getAllByRole("img")).toBeTruthy();
-  });
-
-  test("should render dxc-header", async () => {
-    const header = await render(DxcHeaderComponent, {
-      componentProperties: {},
-      imports: [MatToolbarModule, PipesModule, BackgroundProviderModule],
-    });
-    expect(header.getAllByRole("img")).toBeTruthy();
+    expect(screen.getAllByRole("img")).toBeTruthy();
   });
 
   test("should click on logo", async () => {
     const onClick = jest.fn();
-    const header = await render(DxcHeaderComponent, {
-      componentProperties: {
-        onClick: { emit: onClick } as any,
-      },
-      imports: [MatToolbarModule, PipesModule, BackgroundProviderModule],
+    await render(`<dxc-header (onClick)="onClick($event)"></dxc-header>`, {
+      imports: [PipesModule, BackgroundProviderModule],
+      componentProperties: { onClick },
+      declarations: [DxcHeaderComponent],
     });
-    fireEvent.click(header.getAllByRole("img")[0]);
+    fireEvent.click(screen.getAllByRole("img")[0]);
     expect(onClick).toHaveBeenCalled();
   });
 
@@ -43,9 +44,10 @@ describe("DxcHeader tests", () => {
     TestBed.overrideComponent(DxcHeaderComponent, {
       set: { selector: "header" },
     });
-    await render(DxcHeaderComponent, {
-      template: `<header isResponsive="true" isMenuVisible="true"></header>`,
-      imports: [MatToolbarModule, PipesModule, BackgroundProviderModule],
+    await render(`<header isResponsive="true" isMenuVisible="true"></header>`, {
+      imports: [PipesModule, BackgroundProviderModule],
+      componentProperties: {},
+      declarations: [DxcHeaderComponent],
     });
     expect(screen.getByText("Menu"));
   });

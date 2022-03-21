@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { DxcBoxComponent } from "./dxc-box.component";
 import { CommonModule } from "@angular/common";
-import { BackgroundProviderModule } from '../background-provider/background-provider.module';
+import { BackgroundProviderInnerModule } from "../background-provider/background-provider-inner.module";
 
 @NgModule({
   declarations: [DxcBoxComponent],
-  imports: [CommonModule, BackgroundProviderModule],
+  imports: [CommonModule, BackgroundProviderInnerModule],
   exports: [DxcBoxComponent],
 })
 export class DxcBoxModule {}

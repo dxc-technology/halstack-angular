@@ -1,23 +1,29 @@
 import { NgModule } from "@angular/core";
-import { DxcTableModule, DxcRadioModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
+import {
+  DxcTableModule,
+  DxcRadioModule,
+  DxcTagModule,
+  DxcChipModule,
+  DxcHeadingModule,
+} from "@dxc-technology/halstack-angular";
 
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
-import { RadioComponent } from './radio.component';
-import { RadioExampleComponent } from 'src/app/components/examples/radio/radio-example/radio-example.component';
-import { RadioPropertiesComponent } from '../../components/examples/radio/properties/radio-properties/radio-properties.component';
-import { MatRadioModule } from '@angular/material/radio';
-import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
-import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
-import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
-import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
-import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
+import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
+import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
+import { RadioComponent } from "./radio.component";
+import { RadioExampleComponent } from "../../components/examples/radio/radio-example/radio-example.component";
+import { RadioPropertiesComponent } from "../../components/examples/radio/properties/radio-properties/radio-properties.component";
+import { MatRadioModule } from "@angular/material/radio";
+import { RadioImportComponent } from "../../components/examples/radio/radio-import/radio-import.component";
+import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
+import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
+import { RadioApiComponent } from "../../components/examples/radio/radio-api/radio-api.component";
+import { ColorPreviewModule } from "../../components/color-preview/color-preview.module";
+import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
+import { StatusTagModule } from "../../components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -25,7 +31,7 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     RadioExampleComponent,
     RadioPropertiesComponent,
     RadioApiComponent,
-    RadioImportComponent
+    RadioImportComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,7 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    StatusTagModule
+    StatusTagModule,
   ],
   exports: [
     RadioComponent,
@@ -52,8 +58,6 @@ import { StatusTagModule } from "src/app/components/status-tag/status-tag.module
     RadioImportComponent,
     RadioApiComponent,
   ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+  entryComponents: [ExampleViewerComponent],
 })
-export class RadioModule { }
+export class RadioModule {}

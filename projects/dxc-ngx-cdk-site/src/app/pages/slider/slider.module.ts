@@ -1,20 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SliderComponent } from './slider.component';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcSliderModule, DxcTagModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
-import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
-import { SliderPropertiesComponent } from '../../components/examples/slider/properties/slider-properties/slider-properties.component';
-import { SliderExampleComponent } from '../../components/examples/slider/slider-example/slider-example.component';
-import { SliderImportComponent } from '../../components/examples/slider/slider-import/slider-import.component';
-import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
-import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
-import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
-import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
-import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { SliderComponent } from "./slider.component";
+import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
+import { BrowserModule } from "@angular/platform-browser";
+import {
+  DxcTableModule,
+  DxcSliderModule,
+  DxcTagModule,
+  DxcChipModule,
+  DxcHeadingModule,
+} from "@dxc-technology/halstack-angular";
+import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
+import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
+import { SliderPropertiesComponent } from "../../components/examples/slider/properties/slider-properties/slider-properties.component";
+import { SliderExampleComponent } from "../../components/examples/slider/slider-example/slider-example.component";
+import { SliderImportComponent } from "../../components/examples/slider/slider-import/slider-import.component";
+import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
+import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
+import { SliderApiComponent } from "../../components/examples/slider/slider-api/slider-api.component";
+import { ColorPreviewModule } from "../../components/color-preview/color-preview.module";
+import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
+import { StatusTagModule } from "../../components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +28,7 @@ import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderImportComponent,
-    SliderApiComponent
+    SliderApiComponent,
   ],
   imports: [
     CommonModule,
@@ -38,17 +44,15 @@ import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    StatusTagModule
+    StatusTagModule,
   ],
   exports: [
     SliderComponent,
     SliderPropertiesComponent,
     SliderExampleComponent,
     SliderImportComponent,
-    SliderApiComponent
+    SliderApiComponent,
   ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+  entryComponents: [ExampleViewerComponent],
 })
-export class SliderModule { }
+export class SliderModule {}

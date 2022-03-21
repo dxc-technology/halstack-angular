@@ -157,3 +157,40 @@ Using stored unhandled routes!.
 ----------------------------------
 No routes defined in ""
 No routes defined in ""
+
+      =====================================================================================================
+      Config file "./scully.angular-dxc-site.next.config" not found, only rendering routes without parameters
+      The config file should have a name that is formated as:
+          scully.<projectName>.config.ts
+      where <projectName> is the name of the project as defined in the 'angular.json' file
+      If you meant to build a different project as undefined you can use:
+          --project differentProjectName as a cmd line option
+
+      When you are in a mixed mono-repo you might need to use the --pjFirst flag.
+       which will look for package.json instead of angular.json to find the 'root' of the project.
+    =====================================================================================================
+The option outDir isn't configured, using default folder "./dist/static/".No routes defined in "scully.angular-dxc-site.next.config" Deprication Notice:
+       ======================================================================
+         From now on, the plugin that is being used to render a route is
+         able to be changed by the user. You can do this by adding or
+         enabling the plugin in the scully.json file. For your convenience,
+         we loaded the Puppeteer plugin for you.
+
+         To disable this warning enable the plugin of your choice.
+         for Puppteer please add:
+             import '@scullyio/scully-plugin-puppeteer';
+          to your scully.angular-dxc-site.config.ts file.
+
+          When you get this warning while not using scully-plugin-puppeteer
+          you need to set the defaultRouteRenderer to the name of your plugin.
+          The defaultRouteRenderer is now set to 'routeRenderer'.
+       ======================================================================
+
+
+
+(You can skip this, or any future question by using the --noPrompt flag)
+handleUnknownRoute: "/tools/angular/next/runtime.fbe83a5ac4139aae.js", 404:""handleUnknownRoute: "/tools/angular/next/main.b354609540c53223.js", 404:""handleUnknownRoute: "/tools/angular/next/styles.d724e05334672c20.css", 404:""handleUnknownRoute: "/tools/angular/next/polyfills.19efc8b80ae7336e.js", 404:""handleUnknownRoute: "/tools/angular/next/OpenSans-Regular.bb6604b3e00dee92.ttf", 404:""
+
+
+
+

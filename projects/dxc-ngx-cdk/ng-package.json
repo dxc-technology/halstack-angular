@@ -1,15 +1,25 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "allowedNonPeerDependencies": [
+    "@ctrl/tinycolor",
+    "@angular/material",
+    "@angular/material-moment-adapter",
+    "@material-extended/mde",
+    "color",
+    "emotion",
+    "moment",
+    "rgb-hex",
+    "rxjs",
+    "uuid",
+    "webpack",
+    "zone.js",
+    "sass",
+    "sass-loader",
+    "@testing-library/dom",
+    "@testing-library/angular"
+  ],
   "dest": "../../dist/dxc-ngx-cdk",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "emotion": "emotion",
-      "moment": "momentImported",
-      "@material-extended/mde": "mde",
-      "util": "util",
-      "events": "events"
-    }
-  },
-  "whitelistedNonPeerDependencies": ["."]
+    "entryFile": "src/public-api.ts"
+  }
 }

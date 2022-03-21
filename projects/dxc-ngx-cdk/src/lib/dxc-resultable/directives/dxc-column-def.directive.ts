@@ -7,13 +7,7 @@ import {
 } from "@angular/core";
 import { DxcCellDef } from "./dxc-cell-def.directive";
 import { DXC_RESULTSET_TABLE } from "./../tokens";
-
-/** Base interface for a cell definition. Captures a column's cell template definition. */
-
-// Boilerplate for applying mixins to CdkColumnDef.
-/** @docs-private */
-class DxcColumnDefBase {}
-const _DxcColumnDefBase: typeof DxcColumnDefBase = DxcColumnDefBase;
+import { _DxcColumnDefBase } from "../classes/dxc-column-def-base.class";
 
 /**
  * Column definition for the CDK table.

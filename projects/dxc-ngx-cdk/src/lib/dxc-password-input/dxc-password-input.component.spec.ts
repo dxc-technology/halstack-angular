@@ -2,7 +2,16 @@ import { render, fireEvent } from "@testing-library/angular";
 import { screen } from "@testing-library/dom";
 import { DxcPasswordInputComponent } from "./dxc-password-input.component";
 import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
 
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 describe("DxcPasswordInputComponent", () => {
   test("should render dxc-password", async () => {
     await render(DxcPasswordInputComponent, {

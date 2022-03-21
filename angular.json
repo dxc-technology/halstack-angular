@@ -22,6 +22,7 @@
             "index": "projects/dxc-ngx-cdk-site/src/index.html",
             "main": "projects/dxc-ngx-cdk-site/src/main.ts",
             "polyfills": "projects/dxc-ngx-cdk-site/src/polyfills.ts",
+            "inlineStyleLanguage": "scss",
             "tsConfig": "projects/dxc-ngx-cdk-site/tsconfig.app.json",
             "aot": false,
             "assets": [
@@ -50,7 +51,13 @@
 
             ],
             "scripts": [],
-            "baseHref": "/"
+            "baseHref": "/",
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -63,16 +70,14 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": false,
               "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "4mb",
-                  "maximumError": "5mb"
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -81,21 +86,20 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "angular-dxc-site:build"
-          },
+            "options": {
+              "browserTarget": "angular-dxc-site:build"
+            },
           "configurations": {
             "production": {
               "browserTarget": "angular-dxc-site:build:production"
             }
-          },
-          "assets": [
-            "projects/dxc-ngx-cdk-site/src/assets"
-          ]
+          }
+
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -122,19 +126,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk-site/tsconfig.app.json",
-              "projects/dxc-ngx-cdk-site/tsconfig.spec.json",
-              "projects/dxc-ngx-cdk-site/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -156,7 +147,7 @@
       "prefix": "dxc-ngx-cdk",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.json",
             "project": "projects/dxc-ngx-cdk/ng-package.json"
@@ -175,16 +166,38 @@
             "karmaConfig": "projects/dxc-ngx-cdk/karma.conf.js"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk/tsconfig.lib.json",
-              "projects/dxc-ngx-cdk/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "browserTarget": "dxc-ngx-cdk:build",
+            "docsMode":false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "browserTarget": "dxc-ngx-cdk:build"
+          }
+        }
+
+      }
+    },
+    "without-browser-target": {
+      "root": "",
+      "projectType": "library",
+      "architect": {
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "tsConfig": "src/tsconfig.app.json",
+            "docsMode":false
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "tsConfig": "src/tsconfig.app.json"
           }
         }
       }

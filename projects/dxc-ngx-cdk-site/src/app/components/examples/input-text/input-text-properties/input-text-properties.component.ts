@@ -1,20 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataPropertiesTable } from 'src/app/model/data-properties-table';
+import { Component, OnInit, Input } from "@angular/core";
+import { DataPropertiesTable } from "../../../../model/data-properties-table";
 
 @Component({
-  selector: 'input-text-properties',
-  templateUrl: './input-text-properties.component.html'
+  selector: "input-text-properties",
+  templateUrl: "./input-text-properties.component.html",
 })
 export class InputTextPropertiesComponent implements OnInit {
-
   @Input()
   tablePropertiesExample: Array<DataPropertiesTable>;
 
-  constructor() { 
+  constructor() {
     this.tablePropertiesExample = new Array<DataPropertiesTable>();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,15 +1,24 @@
-import { render, fireEvent } from "@testing-library/angular";
+import { render, fireEvent, screen } from "@testing-library/angular";
 import { DxcCheckboxComponent } from "./dxc-checkbox.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
 
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 describe("DxcCheckbox tests", () => {
   test("should render dxc-checkbox", async () => {
-    const { getByText } = await render(DxcCheckboxComponent, {
+    await render(DxcCheckboxComponent, {
       componentProperties: { label: "test-checkbox" },
       imports: [MatCheckboxModule],
     });
 
-    expect(getByText("test-checkbox"));
+    expect(screen.getByText("test-checkbox"));
   });
 
   test("Uncontrolled dxc-checkbox", async () => {

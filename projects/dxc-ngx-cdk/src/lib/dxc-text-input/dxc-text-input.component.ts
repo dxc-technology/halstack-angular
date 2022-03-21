@@ -22,11 +22,7 @@ import { DxcTextInputHelper } from "./dxc-text-input.helper";
 import { v4 as uuidv4 } from "uuid";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-
-export type EmittedValue = {
-  value: string;
-  error: string;
-};
+import EmittedValue from "./emitted-value.type";
 
 @Component({
   selector: "dxc-text-input",
@@ -43,8 +39,7 @@ export type EmittedValue = {
   ],
 })
 export class DxcTextInputComponent
-  implements OnInit, OnChanges, OnDestroy, ControlValueAccessor
-{
+  implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 

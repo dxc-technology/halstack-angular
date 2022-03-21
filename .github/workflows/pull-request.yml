@@ -1,36 +1,35 @@
 name: Build and test
 
-on:
-  pull_request
+on: pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Install Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-        registry-url: https://registry.npmjs.org/
-          
-    - name: Install lib dependencies
-      run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
+      - name: Install Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
 
-    - name: Install app dependencies
-      run: cd . && npm install
-    
-    - name: Generate lib
-      run: cd ./projects/dxc-ngx-cdk && npm run generate-lib
+      - name: Install app dependencies
+        run: cd . && npm install
 
-    - name: Link lib
-      run: cd . && npm run link-lib
-        
-    - name: Test library
-      run: cd ./projects/dxc-ngx-cdk && npm run test
+      - name: Install lib dependencies
+        run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
 
-    - name: Build angular cdk site
-      run: cd . && npm run build-next-cdk-site
+      - name: Generate lib
+        run: cd ./projects/dxc-ngx-cdk && npm run generate-lib
+
+      - name: Link lib
+        run: cd . && npm run link-lib
+
+      - name: Test library
+        run: cd ./projects/dxc-ngx-cdk && npm run test
+
+      - name: Build angular cdk site
+        run: cd . && npm run build-next-cdk-site

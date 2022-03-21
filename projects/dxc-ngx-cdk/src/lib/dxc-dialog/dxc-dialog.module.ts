@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DxcDialogComponent } from "./dxc-dialog.component";
-import { BackgroundProviderModule } from "../background-provider/background-provider.module";
+import { BackgroundProviderInnerModule } from "../background-provider/background-provider-inner.module";
 
 @NgModule({
   declarations: [DxcDialogComponent],
-  imports: [CommonModule, BackgroundProviderModule],
+  imports: [CommonModule, BackgroundProviderInnerModule],
   exports: [DxcDialogComponent],
 })
 export class DxcDialogModule {}

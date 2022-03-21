@@ -1,8 +1,19 @@
 import { render } from "@testing-library/angular";
 import { DxcFooterComponent } from "./dxc-footer.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { PipesModule } from '../pipes/pipes.module';
+import { PipesModule } from "../pipes/pipes.module";
+import { TestBed } from "@angular/core/testing";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { screen } from "@testing-library/dom";
 import { BackgroundProviderModule } from "../background-provider/background-provider.module";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcFooter tests", () => {
   test("should render dxc-footer", async () => {
@@ -13,13 +24,14 @@ describe("DxcFooter tests", () => {
         text: "bottom-link-text",
       },
     ];
-    const footer = await render(DxcFooterComponent, {
+    await render(DxcFooterComponent, {
+      imports: [BackgroundProviderModule, PipesModule],
       componentProperties: {
         copyright: text,
         bottomLinks: bottom,
       },
-      imports: [MatToolbarModule, PipesModule, BackgroundProviderModule],
     });
-    expect(footer.getByText(text)).toBeTruthy();
+    expect(screen.getByText(text)).toBeTruthy();
+    expect(screen.getByText("bottom-link-text")).toBeTruthy();
   });
 });

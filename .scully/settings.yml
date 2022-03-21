@@ -1,0 +1,11 @@
+identifier: l4120es4p1nec660
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: angular-dxc-site
+homeFolder: /Users/mawel/Desarrollo/Workspace/dxc/diaas-angular-cdk
+distFolder: dist/angular-dxc-site
+outDir: /Users/mawel/Desarrollo/Workspace/dxc/diaas-angular-cdk/dist/static/
+handle404: ''
+allowErrorCollect: true

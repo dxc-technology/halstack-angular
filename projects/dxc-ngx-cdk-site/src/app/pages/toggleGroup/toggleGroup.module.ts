@@ -1,20 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { DxcTableModule, DxcToggleGroupModule, DxcChipModule, DxcHeadingModule } from '@dxc-technology/halstack-angular';
-import { TabbedSectionModule } from '../../components/tabbed-section/tabbed-section.module';
-import { ExampleViewerModule } from '../../components/example-viewer/example-viewer.module';
-import { ExampleViewerComponent } from '../../components/example-viewer/example-viewer.component';
-import { ToggleGroupComponent } from './toggleGroup.component';
-import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
-import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
-import { ToggleGroupExampleComponent } from '../../components/examples/toggleGroup/toggleGroup-example/toggleGroup-example.component';
-import { ToggleGroupApiComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
-import { ToggleGroupTablePropertiesComponent } from 'src/app/components/examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component';
-import { ToggleGroupImportComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-import/toggleGroup-import.component';
-import { ColorPreviewModule } from 'src/app/components/color-preview/color-preview.module';
-import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
-import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import {
+  DxcTableModule,
+  DxcToggleGroupModule,
+  DxcChipModule,
+  DxcHeadingModule,
+} from "@dxc-technology/halstack-angular";
+import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
+import { ExampleViewerModule } from "../../components/example-viewer/example-viewer.module";
+import { ExampleViewerComponent } from "../../components/example-viewer/example-viewer.component";
+import { ToggleGroupComponent } from "./toggleGroup.component";
+import { CodePlaygroundModule } from "../../components/code-playground/code-playground.module";
+import { ComponentsSidenavModule } from "../components-sidenav/components-sidenav.module";
+import { ToggleGroupExampleComponent } from "../../components/examples/toggleGroup/toggleGroup-example/toggleGroup-example.component";
+import { ToggleGroupApiComponent } from "../../components/examples/toggleGroup/toggleGroup-api/toggleGroup-api.component";
+import { ToggleGroupTablePropertiesComponent } from "../../components/examples/toggleGroup/properties/toggleGroup-table-properties/toggleGroup-table-properties.component";
+import { ToggleGroupImportComponent } from "../../components/examples/toggleGroup/toggleGroup-import/toggleGroup-import.component";
+import { ColorPreviewModule } from "../../components/color-preview/color-preview.module";
+import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
+import { StatusTagModule } from "../../components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +27,7 @@ import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupComponent,
-    ToggleGroupExampleComponent
+    ToggleGroupExampleComponent,
   ],
   imports: [
     CommonModule,
@@ -37,17 +42,15 @@ import { StatusTagModule } from 'src/app/components/status-tag/status-tag.module
     ColorPreviewModule,
     DxcChipModule,
     DxcHeadingModule,
-    StatusTagModule
+    StatusTagModule,
   ],
   exports: [
     ToggleGroupApiComponent,
     ToggleGroupImportComponent,
     ToggleGroupTablePropertiesComponent,
     ToggleGroupComponent,
-    ToggleGroupExampleComponent
+    ToggleGroupExampleComponent,
   ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+  entryComponents: [ExampleViewerComponent],
 })
-export class ToggleGroupModule { }
+export class ToggleGroupModule {}

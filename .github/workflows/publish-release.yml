@@ -12,16 +12,16 @@ jobs:
       - uses: jungwinter/split@v1
         id: split
         with:
-          seperator: '.'
+          seperator: "."
           msg: ${{ github.event.release.tag_name }}
 
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Node.js 10.x
+      - name: Install Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 14.x
           registry-url: https://registry.npmjs.org/
 
       - name: Configure AWS Credentials
@@ -34,11 +34,11 @@ jobs:
           role-duration-seconds: 6000
           role-skip-session-tagging: true
 
-      - name: Install lib dependencies
-        run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
-      
       - name: Install app dependencies
         run: cd . && npm install
+
+      - name: Install lib dependencies
+        run: cd ./projects/dxc-ngx-cdk && rm -rf node_modules && npm install
 
       - name: Generate lib
         run: cd ./projects/dxc-ngx-cdk && npm run generate-lib

@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "./../fonts/fonts.scss";
 
 // Import all the theming functionality.
@@ -1903,13 +1904,13 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
 
   &.mat-badge-above {
     .mat-badge-content {
-      top: -$size / 2;
+      top: math.div(-$size, 2);
     }
   }
 
   &.mat-badge-below {
     .mat-badge-content {
-      bottom: -$size / 2;
+      bottom: math.div(-$size, 2);
     }
   }
 
@@ -1942,27 +1943,27 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   &.mat-badge-overlap {
     &.mat-badge-before {
       .mat-badge-content {
-        left: -$size / 2;
+        left: math.div(-$size, 2);
       }
     }
 
     [dir="rtl"] &.mat-badge-before {
       .mat-badge-content {
         left: auto;
-        right: -$size / 2;
+        right: math.div(-$size, 2);
       }
     }
 
     &.mat-badge-after {
       .mat-badge-content {
-        right: -$size / 2;
+        right: math.div(-$size, 2);
       }
     }
 
     [dir="rtl"] &.mat-badge-after {
       .mat-badge-content {
         right: auto;
-        left: -$size / 2;
+        left: math.div(-$size, 2);
       }
     }
   }
@@ -2076,7 +2077,7 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   }
 
   .mat-badge-small .mat-badge-content {
-    font-size: $mat-badge-font-size / 2;
+    font-size: math.div($mat-badge-font-size, 2);
   }
 
   .mat-badge-large .mat-badge-content {
@@ -3130,7 +3131,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   // The amount of space between the top of the line and the top of the actual text
   // (as a fraction of the font-size).
-  $line-spacing: ($line-height - 1) / 2;
+  $line-spacing: math.div($line-height - 1, 2);
 
   // <input> elements seem to have their height set slightly too large on Safari causing the text to
   // be misaligned w.r.t. the placeholder. Adding this margin corrects it.
@@ -4176,15 +4177,17 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 $mat-tooltip-target-height: 22px;
 $mat-tooltip-font-size: 10px;
-$mat-tooltip-vertical-padding: (
-    $mat-tooltip-target-height - $mat-tooltip-font-size
-  ) / 2;
+$mat-tooltip-vertical-padding: math.div(
+  $mat-tooltip-target-height - $mat-tooltip-font-size,
+  2
+);
 
 $mat-tooltip-handset-target-height: 30px;
 $mat-tooltip-handset-font-size: 14px;
-$mat-tooltip-handset-vertical-padding: (
-    $mat-tooltip-handset-target-height - $mat-tooltip-handset-font-size
-  ) / 2;
+$mat-tooltip-handset-vertical-padding: math.div(
+  $mat-tooltip-handset-target-height - $mat-tooltip-handset-font-size,
+  2
+);
 
 @mixin mat-tooltip-theme($theme) {
   .mat-tooltip {
@@ -4303,7 +4306,7 @@ $mat-form-field-fill-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-fill-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-fill-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-fill-dedupe;
 
   $mat-form-field-fill-dedupe: $mat-form-field-fill-dedupe + 0.00001 !global;
 }
@@ -4421,7 +4424,7 @@ $mat-form-field-legacy-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-legacy-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-legacy-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-legacy-dedupe;
 
   $mat-form-field-legacy-dedupe: $mat-form-field-legacy-dedupe + 0.00001 !global;
 }
@@ -4453,7 +4456,7 @@ $mat-form-field-legacy-dedupe: 0;
 
   // The amount of space between the top of the line and the top of the actual text
   // (as a fraction of the font-size).
-  $line-spacing: ($line-height - 1) / 2;
+  $line-spacing: math.div($line-height - 1, 2);
 
   // The padding on the infix. Mocks show half of the text size, but seem to measure from the edge
   // of the text itself, not the edge of the line; therefore we subtract off the line spacing.
@@ -4467,7 +4470,8 @@ $mat-form-field-legacy-dedupe: 0;
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size. We again need to subtract off the line spacing since the mocks measure to the edge of the
   // text, not the  edge of the line.
-  $subscript-margin-top: 0.5em / $subscript-font-scale - $line-spacing * 2;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale) - $line-spacing *
+    2;
 
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
@@ -4535,7 +4539,9 @@ $mat-form-field-legacy-dedupe: 0;
 
       // We want the subscript to start at the end of the content box, not the padding box,
       // so we move it up by the padding amount (adjusted for the smaller font size);
-      top: calc(100% - #{$wrapper-padding-bottom / $subscript-font-scale});
+      top: calc(
+        100% - #{math.div($wrapper-padding-bottom, $subscript-font-scale)}
+      );
     }
   }
 
@@ -4669,7 +4675,7 @@ $mat-form-field-outline-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-outline-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-outline-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-outline-dedupe;
 
   $mat-form-field-outline-dedupe: $mat-form-field-outline-dedupe + 0.00001 !global;
 }
@@ -4691,7 +4697,7 @@ $mat-form-field-outline-dedupe: 0;
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
-  $subscript-margin-top: 0.5em / $subscript-font-scale;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale);
 
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
@@ -4894,7 +4900,7 @@ $mat-form-field-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-dedupe;
 
   $mat-form-field-dedupe: $mat-form-field-dedupe + 0.00001 !global;
 }
@@ -4925,7 +4931,7 @@ $mat-form-field-dedupe: 0;
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
-  $subscript-margin-top: 0.5em / $subscript-font-scale;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale);
 
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
@@ -5014,7 +5020,9 @@ $mat-form-field-dedupe: 0;
 
     // We want the subscript to start at the end of the content box, not the padding box,
     // so we move it up by the padding amount (adjusted for the smaller font size);
-    top: calc(100% - #{$wrapper-padding-bottom / $subscript-font-scale});
+    top: calc(
+      100% - #{math.div($wrapper-padding-bottom, $subscript-font-scale)}
+    );
   }
 
   @include mat-form-field-legacy-typography($config);

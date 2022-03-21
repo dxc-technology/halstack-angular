@@ -1,4 +1,5 @@
-@import './fonts/fonts.scss';
+@use "sass:math";
+@import "./fonts/fonts.scss";
 
 // Import all the theming functionality.
 // We can use relative imports for imports from the cdk because we bundle everything
@@ -226,12 +227,12 @@ $cdk-text-field-autofill-color-frame-count: 0;
 // Mixin used to apply custom background and foreground colors to an autofilled text field.
 // Based on: https://stackoverflow.com/questions/2781549/
 // removing-input-background-colour-for-chrome-autocomplete#answer-37432260
-@mixin cdk-text-field-autofill-color($background, $foreground: '') {
+@mixin cdk-text-field-autofill-color($background, $foreground: "") {
   @keyframes cdk-text-field-autofill-color-#{$cdk-text-field-autofill-color-frame-count} {
     to {
       background: $background;
 
-      @if $foreground != '' {
+      @if $foreground != "" {
         color: $foreground;
       }
     }
@@ -254,8 +255,8 @@ $cdk-text-field-autofill-color-frame-count: 0;
 // Core styles that can be used to apply material design treatments to any element.
 // Media queries
 // TODO(josephperrott): Change $mat-xsmall and $mat-small usages to rely on BreakpointObserver,
-$mat-xsmall: 'max-width: 599px';
-$mat-small: 'max-width: 959px';
+$mat-xsmall: "max-width: 599px";
+$mat-small: "max-width: 959px";
 
 // TODO: Revisit all z-indices before beta
 // z-index master list
@@ -337,31 +338,31 @@ $swift-linear: all $swift-linear-duration $swift-linear-timing-function !default
   );
 
   @return (
-    0: '0px 0px 0px 0px #{$shadow-color}',
-    1: '0px 2px 1px -1px #{$shadow-color}',
-    2: '0px 3px 1px -2px #{$shadow-color}',
-    3: '0px 3px 3px -2px #{$shadow-color}',
-    4: '0px 2px 4px -1px #{$shadow-color}',
-    5: '0px 3px 5px -1px #{$shadow-color}',
-    6: '0px 3px 5px -1px #{$shadow-color}',
-    7: '0px 4px 5px -2px #{$shadow-color}',
-    8: '0px 5px 5px -3px #{$shadow-color}',
-    9: '0px 5px 6px -3px #{$shadow-color}',
-    10: '0px 6px 6px -3px #{$shadow-color}',
-    11: '0px 6px 7px -4px #{$shadow-color}',
-    12: '0px 7px 8px -4px #{$shadow-color}',
-    13: '0px 7px 8px -4px #{$shadow-color}',
-    14: '0px 7px 9px -4px #{$shadow-color}',
-    15: '0px 8px 9px -5px #{$shadow-color}',
-    16: '0px 8px 10px -5px #{$shadow-color}',
-    17: '0px 8px 11px -5px #{$shadow-color}',
-    18: '0px 9px 11px -5px #{$shadow-color}',
-    19: '0px 9px 12px -6px #{$shadow-color}',
-    20: '0px 10px 13px -6px #{$shadow-color}',
-    21: '0px 10px 13px -6px #{$shadow-color}',
-    22: '0px 10px 14px -6px #{$shadow-color}',
-    23: '0px 11px 14px -7px #{$shadow-color}',
-    24: '0px 11px 15px -7px #{$shadow-color}'
+    0: "0px 0px 0px 0px #{$shadow-color}",
+    1: "0px 2px 1px -1px #{$shadow-color}",
+    2: "0px 3px 1px -2px #{$shadow-color}",
+    3: "0px 3px 3px -2px #{$shadow-color}",
+    4: "0px 2px 4px -1px #{$shadow-color}",
+    5: "0px 3px 5px -1px #{$shadow-color}",
+    6: "0px 3px 5px -1px #{$shadow-color}",
+    7: "0px 4px 5px -2px #{$shadow-color}",
+    8: "0px 5px 5px -3px #{$shadow-color}",
+    9: "0px 5px 6px -3px #{$shadow-color}",
+    10: "0px 6px 6px -3px #{$shadow-color}",
+    11: "0px 6px 7px -4px #{$shadow-color}",
+    12: "0px 7px 8px -4px #{$shadow-color}",
+    13: "0px 7px 8px -4px #{$shadow-color}",
+    14: "0px 7px 9px -4px #{$shadow-color}",
+    15: "0px 8px 9px -5px #{$shadow-color}",
+    16: "0px 8px 10px -5px #{$shadow-color}",
+    17: "0px 8px 11px -5px #{$shadow-color}",
+    18: "0px 9px 11px -5px #{$shadow-color}",
+    19: "0px 9px 12px -6px #{$shadow-color}",
+    20: "0px 10px 13px -6px #{$shadow-color}",
+    21: "0px 10px 13px -6px #{$shadow-color}",
+    22: "0px 10px 14px -6px #{$shadow-color}",
+    23: "0px 11px 14px -7px #{$shadow-color}",
+    24: "0px 11px 15px -7px #{$shadow-color}"
   );
 }
 
@@ -373,31 +374,31 @@ $swift-linear: all $swift-linear-duration $swift-linear-timing-function !default
   );
 
   @return (
-    0: '0px 0px 0px 0px #{$shadow-color}',
-    1: '0px 1px 1px 0px #{$shadow-color}',
-    2: '0px 2px 2px 0px #{$shadow-color}',
-    3: '0px 3px 4px 0px #{$shadow-color}',
-    4: '0px 4px 5px 0px #{$shadow-color}',
-    5: '0px 5px 8px 0px #{$shadow-color}',
-    6: '0px 6px 10px 0px #{$shadow-color}',
-    7: '0px 7px 10px 1px #{$shadow-color}',
-    8: '0px 8px 10px 1px #{$shadow-color}',
-    9: '0px 9px 12px 1px #{$shadow-color}',
-    10: '0px 10px 14px 1px #{$shadow-color}',
-    11: '0px 11px 15px 1px #{$shadow-color}',
-    12: '0px 12px 17px 2px #{$shadow-color}',
-    13: '0px 13px 19px 2px #{$shadow-color}',
-    14: '0px 14px 21px 2px #{$shadow-color}',
-    15: '0px 15px 22px 2px #{$shadow-color}',
-    16: '0px 16px 24px 2px #{$shadow-color}',
-    17: '0px 17px 26px 2px #{$shadow-color}',
-    18: '0px 18px 28px 2px #{$shadow-color}',
-    19: '0px 19px 29px 2px #{$shadow-color}',
-    20: '0px 20px 31px 3px #{$shadow-color}',
-    21: '0px 21px 33px 3px #{$shadow-color}',
-    22: '0px 22px 35px 3px #{$shadow-color}',
-    23: '0px 23px 36px 3px #{$shadow-color}',
-    24: '0px 24px 38px 3px #{$shadow-color}'
+    0: "0px 0px 0px 0px #{$shadow-color}",
+    1: "0px 1px 1px 0px #{$shadow-color}",
+    2: "0px 2px 2px 0px #{$shadow-color}",
+    3: "0px 3px 4px 0px #{$shadow-color}",
+    4: "0px 4px 5px 0px #{$shadow-color}",
+    5: "0px 5px 8px 0px #{$shadow-color}",
+    6: "0px 6px 10px 0px #{$shadow-color}",
+    7: "0px 7px 10px 1px #{$shadow-color}",
+    8: "0px 8px 10px 1px #{$shadow-color}",
+    9: "0px 9px 12px 1px #{$shadow-color}",
+    10: "0px 10px 14px 1px #{$shadow-color}",
+    11: "0px 11px 15px 1px #{$shadow-color}",
+    12: "0px 12px 17px 2px #{$shadow-color}",
+    13: "0px 13px 19px 2px #{$shadow-color}",
+    14: "0px 14px 21px 2px #{$shadow-color}",
+    15: "0px 15px 22px 2px #{$shadow-color}",
+    16: "0px 16px 24px 2px #{$shadow-color}",
+    17: "0px 17px 26px 2px #{$shadow-color}",
+    18: "0px 18px 28px 2px #{$shadow-color}",
+    19: "0px 19px 29px 2px #{$shadow-color}",
+    20: "0px 20px 31px 3px #{$shadow-color}",
+    21: "0px 21px 33px 3px #{$shadow-color}",
+    22: "0px 22px 35px 3px #{$shadow-color}",
+    23: "0px 23px 36px 3px #{$shadow-color}",
+    24: "0px 24px 38px 3px #{$shadow-color}"
   );
 }
 
@@ -409,31 +410,31 @@ $swift-linear: all $swift-linear-duration $swift-linear-timing-function !default
   );
 
   @return (
-    0: '0px 0px 0px 0px #{$shadow-color}',
-    1: '0px 1px 3px 0px #{$shadow-color}',
-    2: '0px 1px 5px 0px #{$shadow-color}',
-    3: '0px 1px 8px 0px #{$shadow-color}',
-    4: '0px 1px 10px 0px #{$shadow-color}',
-    5: '0px 1px 14px 0px #{$shadow-color}',
-    6: '0px 1px 18px 0px #{$shadow-color}',
-    7: '0px 2px 16px 1px #{$shadow-color}',
-    8: '0px 3px 14px 2px #{$shadow-color}',
-    9: '0px 3px 16px 2px #{$shadow-color}',
-    10: '0px 4px 18px 3px #{$shadow-color}',
-    11: '0px 4px 20px 3px #{$shadow-color}',
-    12: '0px 5px 22px 4px #{$shadow-color}',
-    13: '0px 5px 24px 4px #{$shadow-color}',
-    14: '0px 5px 26px 4px #{$shadow-color}',
-    15: '0px 6px 28px 5px #{$shadow-color}',
-    16: '0px 6px 30px 5px #{$shadow-color}',
-    17: '0px 6px 32px 5px #{$shadow-color}',
-    18: '0px 7px 34px 6px #{$shadow-color}',
-    19: '0px 7px 36px 6px #{$shadow-color}',
-    20: '0px 8px 38px 7px #{$shadow-color}',
-    21: '0px 8px 40px 7px #{$shadow-color}',
-    22: '0px 8px 42px 7px #{$shadow-color}',
-    23: '0px 9px 44px 8px #{$shadow-color}',
-    24: '0px 9px 46px 8px #{$shadow-color}'
+    0: "0px 0px 0px 0px #{$shadow-color}",
+    1: "0px 1px 3px 0px #{$shadow-color}",
+    2: "0px 1px 5px 0px #{$shadow-color}",
+    3: "0px 1px 8px 0px #{$shadow-color}",
+    4: "0px 1px 10px 0px #{$shadow-color}",
+    5: "0px 1px 14px 0px #{$shadow-color}",
+    6: "0px 1px 18px 0px #{$shadow-color}",
+    7: "0px 2px 16px 1px #{$shadow-color}",
+    8: "0px 3px 14px 2px #{$shadow-color}",
+    9: "0px 3px 16px 2px #{$shadow-color}",
+    10: "0px 4px 18px 3px #{$shadow-color}",
+    11: "0px 4px 20px 3px #{$shadow-color}",
+    12: "0px 5px 22px 4px #{$shadow-color}",
+    13: "0px 5px 24px 4px #{$shadow-color}",
+    14: "0px 5px 26px 4px #{$shadow-color}",
+    15: "0px 6px 28px 5px #{$shadow-color}",
+    16: "0px 6px 30px 5px #{$shadow-color}",
+    17: "0px 6px 32px 5px #{$shadow-color}",
+    18: "0px 7px 34px 6px #{$shadow-color}",
+    19: "0px 7px 36px 6px #{$shadow-color}",
+    20: "0px 8px 38px 7px #{$shadow-color}",
+    21: "0px 8px 40px 7px #{$shadow-color}",
+    22: "0px 8px 42px 7px #{$shadow-color}",
+    23: "0px 9px 44px 8px #{$shadow-color}",
+    24: "0px 9px 46px 8px #{$shadow-color}"
   );
 }
 
@@ -450,7 +451,7 @@ $mat-elevation-color: black !default;
 $mat-elevation-opacity: 1 !default;
 
 // Prefix for elevation-related selectors.
-$_mat-elevation-prefix: 'mat-elevation-z';
+$_mat-elevation-prefix: "mat-elevation-z";
 
 // Applies the correct css rules to an element to give it the elevation specified by $zValue.
 // The $zValue must be between 0 and 24.
@@ -491,7 +492,7 @@ $_mat-elevation-prefix: 'mat-elevation-z';
   $color: $mat-elevation-color,
   $opacity: $mat-elevation-opacity
 ) {
-  &:not([class*='#{$_mat-elevation-prefix}']) {
+  &:not([class*="#{$_mat-elevation-prefix}"]) {
     @include mat-elevation($zValue, $color, $opacity);
   }
 }
@@ -614,8 +615,8 @@ $mat-red: (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-pink: (
@@ -647,8 +648,8 @@ $mat-pink: (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-purple: (
@@ -680,8 +681,8 @@ $mat-purple: (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-deep-purple: (
@@ -713,8 +714,8 @@ $mat-deep-purple: (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-indigo: (
@@ -746,8 +747,8 @@ $mat-indigo: (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-blue: (
@@ -779,8 +780,8 @@ $mat-blue: (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-light-blue: (
@@ -812,8 +813,8 @@ $mat-light-blue: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-cyan: (
@@ -845,8 +846,8 @@ $mat-cyan: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-teal: (
@@ -878,8 +879,8 @@ $mat-teal: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-green: (
@@ -911,8 +912,8 @@ $mat-green: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-light-green: (
@@ -944,8 +945,8 @@ $mat-light-green: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-lime: (
@@ -977,8 +978,8 @@ $mat-lime: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-yellow: (
@@ -1010,8 +1011,8 @@ $mat-yellow: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-amber: (
@@ -1043,8 +1044,8 @@ $mat-amber: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $dark-primary-text
-  )
+    A700: $dark-primary-text,
+  ),
 );
 
 $mat-orange: (
@@ -1076,8 +1077,8 @@ $mat-orange: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: black
-  )
+    A700: black,
+  ),
 );
 
 $mat-deep-orange: (
@@ -1109,8 +1110,8 @@ $mat-deep-orange: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-brown: (
@@ -1142,8 +1143,8 @@ $mat-brown: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 $mat-grey: (
@@ -1175,8 +1176,8 @@ $mat-grey: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $dark-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 // Alias for alternate spelling.
@@ -1211,8 +1212,8 @@ $mat-blue-grey: (
     A100: $dark-primary-text,
     A200: $dark-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text
-  )
+    A700: $light-primary-text,
+  ),
 );
 
 // Alias for alternate spelling.
@@ -1233,7 +1234,7 @@ $mat-light-theme-background: (
   selected-disabled-button: map_get($mat-grey, 400),
   disabled-button-toggle: map_get($mat-grey, 200),
   unselected-chip: map_get($mat-grey, 300),
-  disabled-list-option: map_get($mat-grey, 200)
+  disabled-list-option: map_get($mat-grey, 200),
 );
 
 // Background palette for dark themes.
@@ -1251,7 +1252,7 @@ $mat-dark-theme-background: (
   selected-disabled-button: map_get($mat-grey, 800),
   disabled-button-toggle: black,
   unselected-chip: map_get($mat-grey, 700),
-  disabled-list-option: black
+  disabled-list-option: black,
 );
 
 // Foreground palette for light themes.
@@ -1270,7 +1271,7 @@ $mat-light-theme-foreground: (
   text: rgba(black, 0.87),
   slider-min: rgba(black, 0.87),
   slider-off: rgba(black, 0.26),
-  slider-off-active: rgba(black, 0.38)
+  slider-off-active: rgba(black, 0.38),
 );
 
 // Foreground palette for dark themes.
@@ -1289,7 +1290,7 @@ $mat-dark-theme-foreground: (
   text: white,
   slider-min: white,
   slider-off: rgba(white, 0.3),
-  slider-off-active: rgba(white, 0.3)
+  slider-off-active: rgba(white, 0.3),
 );
 
 // For a given hue in a palette, return the contrast color from the map of contrast palettes.
@@ -1318,7 +1319,7 @@ $mat-dark-theme-foreground: (
       darker: map-get($base-palette, $darker),
       default-contrast: mat-contrast($base-palette, $default),
       lighter-contrast: mat-contrast($base-palette, $lighter),
-      darker-contrast: mat-contrast($base-palette, $darker)
+      darker-contrast: mat-contrast($base-palette, $darker),
     )
   );
 
@@ -1327,7 +1328,7 @@ $mat-dark-theme-foreground: (
     $result: map_merge(
       $result,
       (
-        '#{$hue}-contrast': mat-contrast($base-palette, $hue)
+        "#{$hue}-contrast": mat-contrast($base-palette, $hue),
       )
     );
   }
@@ -1618,7 +1619,7 @@ $mat-ripple-color-opacity: 0.1;
     $white-30pct-opacity-on-dark,
     $black-26pct-opacity-on-light
   );
-  $colored-box-selector: '.mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate';
+  $colored-box-selector: ".mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate";
 
   .mat-pseudo-checkbox {
     color: mat-color(map-get($theme, foreground), secondary-text);
@@ -1709,7 +1710,7 @@ $mat-ripple-color-opacity: 0.1;
     body-1: $body-1,
     caption: $caption,
     button: $button,
-    input: $input
+    input: $input,
   );
 
   // Loop through the levels and set the `font-family` of the ones that don't have one to the base.
@@ -1719,13 +1720,13 @@ $mat-ripple-color-opacity: 0.1;
       $new-level: map-merge(
         $level,
         (
-          font-family: $font-family
+          font-family: $font-family,
         )
       );
       $config: map-merge(
         $config,
         (
-          $key: $new-level
+          $key: $new-level,
         )
       );
     }
@@ -1735,13 +1736,13 @@ $mat-ripple-color-opacity: 0.1;
   @return map-merge(
     $config,
     (
-      font-family: $font-family
+      font-family: $font-family,
     )
   );
 }
 
 // Adds the base typography styles, based on a config.
-@mixin mat-base-typography($config, $selector: '.mat-typography') {
+@mixin mat-base-typography($config, $selector: ".mat-typography") {
   .mat-h1,
   .mat-headline,
   #{$selector} h1 {
@@ -1903,13 +1904,13 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
 
   &.mat-badge-above {
     .mat-badge-content {
-      top: -$size / 2;
+      top: math.div(-$size, 2);
     }
   }
 
   &.mat-badge-below {
     .mat-badge-content {
-      bottom: -$size / 2;
+      bottom: math.div(-$size, 2);
     }
   }
 
@@ -1919,7 +1920,7 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
     }
   }
 
-  [dir='rtl'] &.mat-badge-before {
+  [dir="rtl"] &.mat-badge-before {
     .mat-badge-content {
       left: auto;
       right: -$size;
@@ -1932,7 +1933,7 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
     }
   }
 
-  [dir='rtl'] &.mat-badge-after {
+  [dir="rtl"] &.mat-badge-after {
     .mat-badge-content {
       right: auto;
       left: -$size;
@@ -1942,27 +1943,27 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   &.mat-badge-overlap {
     &.mat-badge-before {
       .mat-badge-content {
-        left: -$size / 2;
+        left: math.div(-$size, 2);
       }
     }
 
-    [dir='rtl'] &.mat-badge-before {
+    [dir="rtl"] &.mat-badge-before {
       .mat-badge-content {
         left: auto;
-        right: -$size / 2;
+        right: math.div(-$size, 2);
       }
     }
 
     &.mat-badge-after {
       .mat-badge-content {
-        right: -$size / 2;
+        right: math.div(-$size, 2);
       }
     }
 
-    [dir='rtl'] &.mat-badge-after {
+    [dir="rtl"] &.mat-badge-after {
       .mat-badge-content {
         right: auto;
-        left: -$size / 2;
+        left: math.div(-$size, 2);
       }
     }
   }
@@ -2011,7 +2012,7 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
 
   .mat-badge-disabled {
     .mat-badge-content {
-      $app-background: mat-color($background, 'background');
+      $app-background: mat-color($background, "background");
       $badge-color: mat-color($foreground, disabled-button);
 
       // The disabled color usually has some kind of opacity, but because the badge is overlayed
@@ -2076,7 +2077,7 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   }
 
   .mat-badge-small .mat-badge-content {
-    font-size: $mat-badge-font-size / 2;
+    font-size: math.div($mat-badge-font-size, 2);
   }
 
   .mat-badge-large .mat-badge-content {
@@ -2174,7 +2175,7 @@ $_mat-button-ripple-opacity: 0.1;
   &.mat-warn,
   &[disabled] {
     &[disabled] {
-      $palette: if($property == 'color', $foreground, $background);
+      $palette: if($property == "color", $foreground, $background);
 
       #{$property}: mat-color($palette, disabled-button);
     }
@@ -2198,7 +2199,7 @@ $_mat-button-ripple-opacity: 0.1;
     color: inherit;
     background: transparent;
 
-    @include _mat-button-theme-property($theme, 'color', default);
+    @include _mat-button-theme-property($theme, "color", default);
     @include _mat-button-focus-overlay-color($theme);
 
     // Setup the ripple color to be based on the text color. This ensures that the ripples
@@ -2228,8 +2229,8 @@ $_mat-button-ripple-opacity: 0.1;
     color: mat-color($foreground, text);
     background-color: mat-color($background, raised-button);
 
-    @include _mat-button-theme-property($theme, 'color', default-contrast);
-    @include _mat-button-theme-property($theme, 'background-color', default);
+    @include _mat-button-theme-property($theme, "color", default-contrast);
+    @include _mat-button-theme-property($theme, "background-color", default);
     @include _mat-button-ripple-color($theme, default-contrast);
   }
 
@@ -2318,7 +2319,7 @@ $_mat-button-ripple-opacity: 0.1;
     border-left: solid 1px $divider-color;
   }
 
-  [dir='rtl']
+  [dir="rtl"]
     .mat-button-toggle-group-appearance-standard
     .mat-button-toggle
     + .mat-button-toggle {
@@ -2457,20 +2458,20 @@ $_mat-button-ripple-opacity: 0.1;
     background-color: $checkbox-mark-color;
   }
 
-   .mat-checkbox-indeterminate,
-   .mat-checkbox-checked {
-     &.mat-primary .mat-checkbox-background {
-       background-color: mat-color($primary);
-     }
+  .mat-checkbox-indeterminate,
+  .mat-checkbox-checked {
+    &.mat-primary .mat-checkbox-background {
+      background-color: mat-color($primary);
+    }
 
-     &.mat-accent .mat-checkbox-background {
-       background-color: mat-color($accent);
-     }
+    &.mat-accent .mat-checkbox-background {
+      background-color: mat-color($accent);
+    }
 
-     &.mat-warn .mat-checkbox-background {
-       background-color: mat-color($warn);
-     }
-   }
+    &.mat-warn .mat-checkbox-background {
+      background-color: mat-color($warn);
+    }
+  }
 
   .mat-checkbox-disabled {
     &.mat-checkbox-checked,
@@ -2618,7 +2619,7 @@ $mat-chip-remove-font-size: 18px;
   $foreground: map-get($theme, foreground);
 
   .mat-table {
-    background: mat-color($background, 'card');
+    background: mat-color($background, "card");
   }
 
   .mat-table thead,
@@ -2862,7 +2863,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header {
-    &:not([aria-disabled='true']) {
+    &:not([aria-disabled="true"]) {
       &.cdk-keyboard-focused,
       &.cdk-program-focused,
       &:hover {
@@ -2874,7 +2875,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   // Disable the hover on touch devices since it can appear like it is stuck. We can't use
   // `@media (hover)` above, because the desktop support browser support isn't great.
   @media (hover: none) {
-    .mat-expansion-panel:not(.mat-expanded):not([aria-disabled='true'])
+    .mat-expansion-panel:not(.mat-expanded):not([aria-disabled="true"])
       .mat-expansion-panel-header:hover {
       background: mat-color($background, card);
     }
@@ -2889,7 +2890,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     color: mat-color($foreground, secondary-text);
   }
 
-  .mat-expansion-panel-header[aria-disabled='true'] {
+  .mat-expansion-panel-header[aria-disabled="true"] {
     color: mat-color($foreground, disabled-button);
 
     .mat-expansion-panel-header-title,
@@ -3130,7 +3131,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   // The amount of space between the top of the line and the top of the actual text
   // (as a fraction of the font-size).
-  $line-spacing: ($line-height - 1) / 2;
+  $line-spacing: math.div($line-height - 1, 2);
 
   // <input> elements seem to have their height set slightly too large on Safari causing the text to
   // be misaligned w.r.t. the placeholder. Adding this margin corrects it.
@@ -3166,7 +3167,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-action-list .mat-list-item {
     &:hover,
     &:focus {
-      background: mat-color($background, 'hover');
+      background: mat-color($background, "hover");
     }
   }
 }
@@ -3232,24 +3233,24 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-menu-panel {
     @include _mat-theme-overridable-elevation(4, $theme);
 
-    background: mat-color($background, 'card');
+    background: mat-color($background, "card");
   }
 
   .mat-menu-item {
     background: transparent;
-    color: mat-color($foreground, 'text');
+    color: mat-color($foreground, "text");
 
     &[disabled] {
       &,
       &::after {
-        color: mat-color($foreground, 'disabled');
+        color: mat-color($foreground, "disabled");
       }
     }
   }
 
   .mat-menu-item .mat-icon-no-color,
   .mat-menu-item-submenu-trigger::after {
-    color: mat-color($foreground, 'icon');
+    color: mat-color($foreground, "icon");
   }
 
   .mat-menu-item:hover,
@@ -3257,7 +3258,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-menu-item.cdk-keyboard-focused,
   .mat-menu-item-highlighted {
     &:not([disabled]) {
-      background: mat-color($background, 'hover');
+      background: mat-color($background, "hover");
     }
   }
 }
@@ -3277,7 +3278,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $background: map-get($theme, background);
 
   .mat-paginator {
-    background: mat-color($background, 'card');
+    background: mat-color($background, "card");
   }
 
   .mat-paginator,
@@ -3287,13 +3288,13 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   .mat-paginator-decrement,
   .mat-paginator-increment {
-    border-top: 2px solid mat-color($foreground, 'icon');
-    border-right: 2px solid mat-color($foreground, 'icon');
+    border-top: 2px solid mat-color($foreground, "icon");
+    border-right: 2px solid mat-color($foreground, "icon");
   }
 
   .mat-paginator-first,
   .mat-paginator-last {
-    border-top: 2px solid mat-color($foreground, 'icon');
+    border-top: 2px solid mat-color($foreground, "icon");
   }
 
   .mat-icon-button[disabled] {
@@ -3301,7 +3302,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     .mat-paginator-increment,
     .mat-paginator-first,
     .mat-paginator-last {
-      border-color: mat-color($foreground, 'disabled');
+      border-color: mat-color($foreground, "disabled");
     }
   }
 }
@@ -3571,7 +3572,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     }
   }
 
-  [dir='rtl'] .mat-drawer-side {
+  [dir="rtl"] .mat-drawer-side {
     border-left: $drawer-side-border;
     border-right: none;
 
@@ -3940,7 +3941,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $foreground: map-get($theme, foreground);
 
   .mat-sort-header-arrow {
-    $table-background: mat-color($background, 'card');
+    $table-background: mat-color($background, "card");
     $text-color: mat-color($foreground, secondary-text);
 
     // Because the arrow is made up of multiple elements that are stacked on top of each other,
@@ -4005,8 +4006,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   // Remove header border when there is a background color
-  .mat-tab-group[class*='mat-background-'] .mat-tab-header,
-  .mat-tab-nav-bar[class*='mat-background-'] {
+  .mat-tab-group[class*="mat-background-"] .mat-tab-header,
+  .mat-tab-nav-bar[class*="mat-background-"] {
     border-bottom: none;
     border-top: none;
   }
@@ -4016,7 +4017,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     $theme-colors: (
       primary: $primary,
       accent: $accent,
-      warn: $warn
+      warn: $warn,
     );
 
     @each $name, $color in $theme-colors {
@@ -4176,15 +4177,17 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 $mat-tooltip-target-height: 22px;
 $mat-tooltip-font-size: 10px;
-$mat-tooltip-vertical-padding: (
-    $mat-tooltip-target-height - $mat-tooltip-font-size
-  ) / 2;
+$mat-tooltip-vertical-padding: math.div(
+  $mat-tooltip-target-height - $mat-tooltip-font-size,
+  2
+);
 
 $mat-tooltip-handset-target-height: 30px;
 $mat-tooltip-handset-font-size: 14px;
-$mat-tooltip-handset-vertical-padding: (
-    $mat-tooltip-handset-target-height - $mat-tooltip-handset-font-size
-  ) / 2;
+$mat-tooltip-handset-vertical-padding: math.div(
+  $mat-tooltip-handset-target-height - $mat-tooltip-handset-font-size,
+  2
+);
 
 @mixin mat-tooltip-theme($theme) {
   .mat-tooltip {
@@ -4303,7 +4306,7 @@ $mat-form-field-fill-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-fill-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-fill-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-fill-dedupe;
 
   $mat-form-field-fill-dedupe: $mat-form-field-fill-dedupe + 0.00001 !global;
 }
@@ -4421,7 +4424,7 @@ $mat-form-field-legacy-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-legacy-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-legacy-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-legacy-dedupe;
 
   $mat-form-field-legacy-dedupe: $mat-form-field-legacy-dedupe + 0.00001 !global;
 }
@@ -4453,7 +4456,7 @@ $mat-form-field-legacy-dedupe: 0;
 
   // The amount of space between the top of the line and the top of the actual text
   // (as a fraction of the font-size).
-  $line-spacing: ($line-height - 1) / 2;
+  $line-spacing: math.div($line-height - 1, 2);
 
   // The padding on the infix. Mocks show half of the text size, but seem to measure from the edge
   // of the text itself, not the edge of the line; therefore we subtract off the line spacing.
@@ -4467,7 +4470,8 @@ $mat-form-field-legacy-dedupe: 0;
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size. We again need to subtract off the line spacing since the mocks measure to the edge of the
   // text, not the  edge of the line.
-  $subscript-margin-top: 0.5em / $subscript-font-scale - $line-spacing * 2;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale) - $line-spacing *
+    2;
 
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
@@ -4535,7 +4539,9 @@ $mat-form-field-legacy-dedupe: 0;
 
       // We want the subscript to start at the end of the content box, not the padding box,
       // so we move it up by the padding amount (adjusted for the smaller font size);
-      top: calc(100% - #{$wrapper-padding-bottom / $subscript-font-scale});
+      top: calc(
+        100% - #{math.div($wrapper-padding-bottom, $subscript-font-scale)}
+      );
     }
   }
 
@@ -4669,7 +4675,7 @@ $mat-form-field-outline-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-outline-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-outline-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-outline-dedupe;
 
   $mat-form-field-outline-dedupe: $mat-form-field-outline-dedupe + 0.00001 !global;
 }
@@ -4691,7 +4697,7 @@ $mat-form-field-outline-dedupe: 0;
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
-  $subscript-margin-top: 0.5em / $subscript-font-scale;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale);
 
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
@@ -4894,7 +4900,7 @@ $mat-form-field-dedupe: 0;
       -$infix-margin-top - $infix-padding + $mat-form-field-dedupe
     )
     scale($font-scale);
-  width: 100% / $font-scale + $mat-form-field-dedupe;
+  width: math.div(100%, $font-scale) + $mat-form-field-dedupe;
 
   $mat-form-field-dedupe: $mat-form-field-dedupe + 0.00001 !global;
 }
@@ -4925,7 +4931,7 @@ $mat-form-field-dedupe: 0;
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
-  $subscript-margin-top: 0.5em / $subscript-font-scale;
+  $subscript-margin-top: math.div(0.5em, $subscript-font-scale);
 
   // The padding applied to the form-field-wrapper to reserve space for the subscript, since it's
   // absolutely positioned. This is a combination of the subscript's margin and line-height, but we
@@ -5014,7 +5020,9 @@ $mat-form-field-dedupe: 0;
 
     // We want the subscript to start at the end of the content box, not the padding box,
     // so we move it up by the padding amount (adjusted for the smaller font size);
-    top: calc(100% - #{$wrapper-padding-bottom / $subscript-font-scale});
+    top: calc(
+      100% - #{math.div($wrapper-padding-bottom, $subscript-font-scale)}
+    );
   }
 
   @include mat-form-field-legacy-typography($config);
@@ -5028,7 +5036,7 @@ $mat-form-field-dedupe: 0;
   $foreground: map-get($theme, foreground);
 
   .mat-tree {
-    background: mat-color($background, 'card');
+    background: mat-color($background, "card");
   }
 
   .mat-tree-node,
@@ -5121,7 +5129,7 @@ $mat-form-field-dedupe: 0;
   // Wrapper element that provides the theme background when the user's content isn't
   // inside of a `mat-sidenav-container`. Note that we need to exclude the ampersand
   // selector in case the mixin is included at the top level.
-  .mat-app-background#{if(&, ', &.mat-app-background', '')} {
+  .mat-app-background#{if(&, ", &.mat-app-background", "")} {
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
@@ -5228,8 +5236,8 @@ $my-primary: (
     A100: #000000,
     A200: #000000,
     A400: #ffffff,
-    A700: #ffffff
-  )
+    A700: #ffffff,
+  ),
 );
 
 $my-accent: (
@@ -5261,8 +5269,8 @@ $my-accent: (
     A100: #000000,
     A200: #000000,
     A400: #000000,
-    A700: #000000
-  )
+    A700: #000000,
+  ),
 );
 
 // Create the theme object (a Sass map containing all of the palettes).
@@ -5284,13 +5292,12 @@ $my-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
 // @include angular-material-theme($candy-app-theme);
 
 body * {
-
   i.fas {
-    font-family: 'Font Awesome';
+    font-family: "Font Awesome";
     font-weight: 700;
   }
 
   i.fab {
-    font-family: 'Font Awesome Brands';
+    font-family: "Font Awesome Brands";
   }
 }

@@ -1,8 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { SidenavService } from './sidenav.service';
+import { SidenavService } from "./sidenav.service";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
 
-describe('SidenavService', () => {
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
+
+describe("SidenavService", () => {
   let service: SidenavService;
 
   beforeEach(() => {
@@ -10,7 +19,7 @@ describe('SidenavService', () => {
     service = TestBed.inject(SidenavService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

@@ -2,6 +2,16 @@ import { render, fireEvent } from "@testing-library/angular";
 import { DxcUploadComponent } from "./dxc-upload.component";
 import { DxcUploadModule } from "./dxc-upload.module";
 import { screen, waitFor } from "@testing-library/dom";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from "@angular/platform-browser-dynamic/testing";
+import { TestBed } from "@angular/core/testing";
+
+TestBed.initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+);
 
 describe("DxcUpload tests", () => {
   test("should render dxc-upload", async () => {

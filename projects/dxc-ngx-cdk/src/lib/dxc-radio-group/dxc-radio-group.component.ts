@@ -6,6 +6,8 @@ import {
   HostBinding,
   SimpleChanges,
   HostListener,
+  ViewChild,
+  ElementRef,
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
@@ -72,7 +74,7 @@ export class DxcRadioGroupComponent implements OnInit {
   @Output()
   onBlur: EventEmitter<BlurEvent> = new EventEmitter<BlurEvent>();
 
-  // ref
+  @ViewChild("inputRef", { static: true }) inputRef: ElementRef;
 
   radioGroupId = "";
 
@@ -167,7 +169,7 @@ export class DxcRadioGroupComponent implements OnInit {
     tempOptions.push(...this.options);
     if (this.optional) {
       // add empty option to the begginning of the array
-      tempOptions.unshift({
+      tempOptions.push({
         label: this.optionalItemLabel,
         value: "",
       });

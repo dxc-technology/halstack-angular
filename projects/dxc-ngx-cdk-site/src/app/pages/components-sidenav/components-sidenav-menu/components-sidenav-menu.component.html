@@ -82,6 +82,16 @@
           </div>
           <div class="menu-item">
             <a [ngClass]="{
+                active: 'components/radio-group'
+                  ? router.isActive(
+                      router.createUrlTree(['components/radio-group']).toString(),
+                      true
+                    )
+                  : false
+              }" (click)="navigateTo('components/radio-group')">Radio Group</a>
+          </div>
+          <div class="menu-item">
+            <a [ngClass]="{
                 active: 'components/select'
                   ? router.isActive(
                       router.createUrlTree(['components/select']).toString(),

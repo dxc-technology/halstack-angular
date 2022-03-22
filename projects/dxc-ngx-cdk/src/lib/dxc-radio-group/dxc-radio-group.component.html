@@ -16,5 +16,5 @@
     ></dxc-radio-group-item>
   </ng-container>
 </div>
-<input class="valueInput" [name]="name" [value]="value" readOnly aria-hidden="true" />
+<input #inputRef class="valueInput" [name]="name" [value]="value" readOnly aria-hidden="true" />
 <span *ngIf="error" class="errorMessage">{{ error }}</span>

@@ -43,6 +43,7 @@ import { TextareaComponent } from "./pages/textarea/textarea.component";
 import { FileInputComponent } from "./pages/file-input/file-input.component";
 import { SelectComponent } from "./pages/select/select.component";
 import { AutosuggestComponent } from "./pages/autosuggest/autosuggest.component";
+import { RadioGroupComponent } from "./pages/radio-group/radio-group.component";
 
 let routes: Routes = [];
 
@@ -112,6 +113,10 @@ routes.push({ path: "", redirectTo: "overview", pathMatch: "full" }),
     {
       path: "components/radio",
       component: RadioComponent,
+    },
+    {
+      path: "components/radio-group",
+      component: RadioGroupComponent,
     },
     {
       path: "components/spinner",

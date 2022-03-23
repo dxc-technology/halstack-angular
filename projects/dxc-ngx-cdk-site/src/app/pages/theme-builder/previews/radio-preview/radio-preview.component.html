@@ -14,8 +14,8 @@
         [options]="options"
         label="Uncontrolled radio"
         helperText="example helper text"
-        [optional]="true"
         stacking="row"
+        (onBlur)="handleOnBlur($event)"
       ></dxc-radio-group>
       <dxc-radio-group
         [options]="options"

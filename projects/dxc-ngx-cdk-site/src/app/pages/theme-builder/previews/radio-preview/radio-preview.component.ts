@@ -17,7 +17,11 @@ export class RadioPreviewComponent implements OnInit {
 
   value = "";
   handleOnChange($event) {
-    //this.value = $event;
+    this.value = $event;
+  }
+
+  handleOnBlur($event) {
+    console.log($event);
   }
 
   onChange1(event) {

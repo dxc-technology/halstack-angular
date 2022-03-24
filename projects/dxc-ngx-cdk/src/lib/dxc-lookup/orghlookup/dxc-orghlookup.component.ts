@@ -65,6 +65,11 @@ const orghLevel: Array<OrghEntity> = [
     shortCode: 'DT',
     label: 'Department',
     value: 1012
+  },
+  {
+    shortCode: 'ALL',
+    label: 'All',
+    value: 1013
   }
 ];
 
@@ -550,7 +555,7 @@ export class DxcOrghlookupComponent extends DxcBaselookupComponent<Code | Array<
   actionChange = (event: EAction) => {
     switch (event) {
       case EAction.SELECT:
-        if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value == this.allowedlevel) {
+        if (getNodeLevelName(this.orghLevel, this.currentSelectedNode.code, 'code').value == this.allowedlevel || this.allowedlevel == 1013) {
           if (this.allowMultipleSelection && this.result.length > 0) {
             let list: any = [];
             list = this.selectednodes;

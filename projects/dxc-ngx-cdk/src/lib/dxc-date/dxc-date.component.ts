@@ -280,7 +280,11 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
           .includes("mat-calendar-period") &&
         !event.target.offsetParent
           .getAttribute("class")
-          .includes("mat-calendar-table")
+          .includes("mat-calendar-table") &&
+          !event.target.getAttribute("class")
+          .includes("mat-calendar-previous-button") &&
+          !event.target.getAttribute("class")
+          .includes("mat-calendar-next-button")
       ) {
         this.checkOpenCalendar();
       }

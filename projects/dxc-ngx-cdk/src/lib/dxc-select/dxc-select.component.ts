@@ -254,9 +254,8 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         }
       } else {
         if (this.optionGroupRef) {
-          const optionGroupElement = this.optionGroupRef?.toArray()[
-            value.group
-          ];
+          const optionGroupElement =
+            this.optionGroupRef?.toArray()[value.group];
           optionGroupElement &&
             this.scrollByIndex(optionGroupElement, value.option + 1);
         }

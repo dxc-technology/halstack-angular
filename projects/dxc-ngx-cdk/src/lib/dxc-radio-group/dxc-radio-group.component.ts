@@ -87,7 +87,6 @@ export class DxcRadioGroupComponent implements OnInit {
 
   @HostListener("focusout", ["$event"])
   onFocusOutHandler($event) {
-    console.log(!$event.currentTarget.contains($event.relatedTarget));
     // whether you are leaving the radio group component
     if (!$event.currentTarget.contains($event.relatedTarget)) {
       if (this.value || this.value === "") {

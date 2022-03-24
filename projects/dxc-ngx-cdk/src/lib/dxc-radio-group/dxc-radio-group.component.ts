@@ -100,9 +100,8 @@ export class DxcRadioGroupComponent implements OnInit {
         this.indexToFocus = 0;
       }
       this.service.firstTabbedFocus = false;
-    } else {
       const errorMessage =
-        (!this.value || this.value !== "") && !this.optional
+        !(this.value || this.value === "") && !this.optional
           ? "This is required"
           : undefined;
       this.onBlur.emit({ value: this.value, error: errorMessage });

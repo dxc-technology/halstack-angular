@@ -227,7 +227,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     this.optionalOption = { label: this.setPlaceholderOptional(), value: "" };
-    if (this.optional && !this.multiple) {
+    if (this.optional && !this.multiple && !(this.value || this.value === "")) {
       this.service.setSelectedValues(this.optionalOption);
     }
     this.id = `select-${uuidv4()}`;
@@ -254,9 +254,8 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         }
       } else {
         if (this.optionGroupRef) {
-          const optionGroupElement = this.optionGroupRef?.toArray()[
-            value.group
-          ];
+          const optionGroupElement =
+            this.optionGroupRef?.toArray()[value.group];
           optionGroupElement &&
             this.scrollByIndex(optionGroupElement, value.option + 1);
         }

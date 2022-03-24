@@ -63,24 +63,38 @@ describe("DxcSelectComponent tests", () => {
         onChange: {
           emit: changeMock,
         } as any,
-        value: "1"
+        value: "1",
       },
       imports: [DxcSelectModule],
       excludeComponentDeclaration: true,
     });
     expect(dxcSelect.getByText("Select label"));
     expect(dxcSelect.getByText("Helper Text"));
-    expect(() => dxcSelect.getByText("Choose an option")).toThrow();
-    fireEvent.click(dxcSelect.getByRole('combobox'));
-    expect((screen.getAllByText('label1')[1].getAttribute("aria-selected"))).toBe("true");
+    expect(dxcSelect.getByText("label1"));
+    fireEvent.click(dxcSelect.getByRole("combobox"));
+    expect(screen.getAllByText("label1")[1].getAttribute("aria-selected")).toBe(
+      "true"
+    );
     fireEvent.click(screen.getByText("aida"));
-    expect(changeMock).toHaveBeenCalledWith({value: "10", error: null});
-    expect((screen.getAllByText('label1')[1].getAttribute("aria-selected"))).toBe("true");
-    expect((screen.getAllByText('aida')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label2')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label6')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label9')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('pepe')[0].getAttribute("aria-selected"))).toBe("false");
+    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(screen.getAllByText("label1")[1].getAttribute("aria-selected")).toBe(
+      "true"
+    );
+    expect(screen.getAllByText("aida")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label2")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label6")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label9")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("pepe")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
   });
 
   test("dxc-select single uncontrolled functionality", async () => {
@@ -107,27 +121,50 @@ describe("DxcSelectComponent tests", () => {
     });
     expect(dxcSelect.getByText("Select label"));
     expect(dxcSelect.getByText("Helper Text"));
-    dxcSelect.getByText("Choose an option")
-    fireEvent.click(dxcSelect.getByRole('combobox'));
+    dxcSelect.getByText("Choose an option");
+    fireEvent.click(dxcSelect.getByRole("combobox"));
     fireEvent.click(screen.getByText("aida"));
-    expect(changeMock).toHaveBeenCalledWith({value: "10", error: null});
-    expect((screen.getAllByText('aida')[1].getAttribute("aria-selected"))).toBe("true");
-    expect((screen.getAllByText('label1')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label2')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label6')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label9')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('pepe')[0].getAttribute("aria-selected"))).toBe("false");
+    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(screen.getAllByText("aida")[1].getAttribute("aria-selected")).toBe(
+      "true"
+    );
+    expect(screen.getAllByText("label1")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label2")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label6")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label9")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("pepe")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
     fireEvent.click(screen.getByText("pepe"));
-    expect(changeMock).toHaveBeenCalledWith({value: "11", error: null});
-    expect((screen.getAllByText('pepe')[1].getAttribute("aria-selected"))).toBe("true");
-    expect((screen.getAllByText('label1')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label2')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label6')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('label9')[0].getAttribute("aria-selected"))).toBe("false");
-    expect((screen.getAllByText('aida')[0].getAttribute("aria-selected"))).toBe("false");
+    expect(changeMock).toHaveBeenCalledWith({ value: "11", error: null });
+    expect(screen.getAllByText("pepe")[1].getAttribute("aria-selected")).toBe(
+      "true"
+    );
+    expect(screen.getAllByText("label1")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label2")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label6")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("label9")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
+    expect(screen.getAllByText("aida")[0].getAttribute("aria-selected")).toBe(
+      "false"
+    );
   });
 
-  
   test("should render optional error", async () => {
     const array1: Option[] = [
       { label: "label1", value: "1" },
@@ -155,7 +192,9 @@ describe("DxcSelectComponent tests", () => {
     expect(dxcSelect.getByText("Helper Text"));
     fireEvent.click(dxcSelect.getByText("Choose an option"));
     fireEvent.focusOut(dxcSelect.getByText("Choose an option"));
-    expect(onBlur).toHaveBeenCalledWith({value: "", error: "This field is required. Please, enter a value."});
-
+    expect(onBlur).toHaveBeenCalledWith({
+      value: "",
+      error: "This field is required. Please, enter a value.",
+    });
   });
 });

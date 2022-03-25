@@ -82,9 +82,8 @@ describe("DxcFileInputComponent", () => {
       type: "text/plain",
     });
     fireEvent.change(inputEl, { target: { files: [file] } });
-    await waitFor(() => {
-      expect(() => screen.getByText("foo.txt")).toThrow();
-    });
+    const fileInScreen = screen.queryByText("foo.txt");
+    expect(fileInScreen).toBeFalsy();
   });
 
   test("should render error when file does not meet minSize", async () => {

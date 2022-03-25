@@ -2,8 +2,18 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-select label="Label" helperText="HelperText" margin="xsmall" [options]="array1" (onChange)="onChange($event)"
-        (onBlur)="onBlur($event)" [optional]="true" placeholder="Another placeholder" size="large" tabIndex="3">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        margin="xsmall"
+        [options]="array1"
+        (onChange)="onChange($event)"
+        (onBlur)="onBlur($event)"
+        [optional]="true"
+        placeholder="Another placeholder"
+        size="large"
+        tabIndex="3"
+      >
       </dxc-select>
       <dxc-select
         label="Label"
@@ -17,51 +27,135 @@
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Searchable">
-      <dxc-select label="Label" helperText="HelperText" searchable="true" margin="xsmall" [options]="array1"
-        [optional]="true" placeholder="Another placeholder">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
+        margin="xsmall"
+        [options]="array1"
+        [optional]="true"
+        placeholder="Another placeholder"
+      >
       </dxc-select>
-      <dxc-select label="Label" helperText="HelperText" searchable="true" margin="xsmall" [options]="array2"
-        placeholder="Another placeholder">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
+        margin="xsmall"
+        [options]="array2"
+        placeholder="Another placeholder"
+      >
       </dxc-select>
-      <dxc-select label="Label" helperText="HelperText" searchable="true" margin="xsmall" [options]="array2"
-        [multiple]="true" (onChange)="onChange($event)" (onBlur)="onBlur($event)" placeholder="Another placeholder">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        searchable="true"
+        margin="xsmall"
+        [options]="array2"
+        [multiple]="true"
+        (onChange)="onChange($event)"
+        (onBlur)="onBlur($event)"
+        placeholder="Another placeholder"
+      >
       </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Multiple">
-      <dxc-select label="Label" helperText="HelperText" multiple="true" (onChange)="onChange($event)" margin="xsmall"
-        [options]="array1" [value]="arrayValue">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        multiple="true"
+        (onChange)="onChange($event)"
+        margin="xsmall"
+        [options]="array1"
+        [value]="arrayValue"
+      >
       </dxc-select>
-      <dxc-select label="Label" helperText="HelperText" multiple="true" (onChange)="onChange($event)" margin="xsmall"
-        [options]="array2">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        multiple="true"
+        (onChange)="onChange($event)"
+        margin="xsmall"
+        [options]="array2"
+      >
       </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error">
-      <dxc-select label="Label" helperText="HelperText" error="There is an error" margin="xsmall">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
+        margin="xsmall"
+      >
       </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Error and multiple">
-      <dxc-select label="Label" helperText="HelperText" error="There is an error" margin="xsmall" [multiple]="true">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
+        margin="xsmall"
+        [multiple]="true"
+      >
       </dxc-select>
     </tbuilder-component-mode>
 
     <tbuilder-component-mode text="Disabled">
-      <dxc-select label="Label" helperText="HelperText" error="There is an error" margin="xsmall" [disabled]="true">
+      <dxc-select
+        label="Label"
+        helperText="HelperText"
+        error="There is an error"
+        margin="xsmall"
+        [disabled]="true"
+      >
       </dxc-select>
     </tbuilder-component-mode>
   </background-provider>
 
-  <dxc-heading text="Test reset controlled select" [level]="5" margin="xsmall"></dxc-heading>
+  <dxc-heading
+    text="Test reset controlled select"
+    [level]="5"
+    margin="xsmall"
+  ></dxc-heading>
 
   <tbuilder-component-mode text="Default">
-    <dxc-select label="Label" helperText="HelperText" margin="xsmall" [value]="selectedValues" [options]="array1"
-      (onChange)="onChangeTest($event)" (onBlur)="onBlurTest($event)" [optional]="true"
-      placeholder="Another placeholder" size="large" tabIndex="3">
+    <dxc-select
+      label="Label"
+      helperText="HelperText"
+      margin="xsmall"
+      [value]="selectedValues"
+      [options]="array1"
+      (onChange)="onChangeTest($event)"
+      (onBlur)="onBlurTest($event)"
+      [optional]="true"
+      placeholder="Another placeholder"
+      size="large"
+      tabIndex="3"
+    >
     </dxc-select>
 
-    <dxc-button label="Reset values" (onClick)="onResetTest($event)" margin="medium"></dxc-button>
+    <dxc-select
+      label="Controlled not optional"
+      helperText="HelperText"
+      margin="xsmall"
+      [value]="selectedValues"
+      [options]="array1"
+      (onChange)="onChangeTest($event)"
+      (onBlur)="onBlurTest($event)"
+      placeholder="Another placeholder"
+      size="large"
+      tabIndex="3"
+    >
+    </dxc-select>
+
+    <dxc-button
+      label="Reset values"
+      (onClick)="onResetTest($event)"
+      margin="medium"
+    ></dxc-button>
   </tbuilder-component-mode>
 
   <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>

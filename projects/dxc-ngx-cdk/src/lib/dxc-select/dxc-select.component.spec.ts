@@ -80,7 +80,7 @@ describe("DxcSelectComponent tests", () => {
     });
     expect(dxcSelect.getByText("Select label"));
     expect(dxcSelect.getByText("Helper Text"));
-    expect(() => dxcSelect.getByText("Choose an option")).toThrow();
+    expect(dxcSelect.getByText("label1"));
     fireEvent.click(dxcSelect.getByRole("combobox"));
     expect(screen.getAllByText("label1")[1].getAttribute("aria-selected")).toBe(
       "true"

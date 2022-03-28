@@ -15,7 +15,7 @@ import { BehaviorSubject, Subscription } from "rxjs";
 import { CssUtils } from "../utils";
 import {
   BlurEvent,
-  Option,
+  RadioItem,
   RadioGroupProperties,
 } from "./dxc-radio-group.types";
 import { RadioGroupService } from "./services/radio-group.service";
@@ -57,7 +57,7 @@ export class DxcRadioGroupComponent implements OnInit {
   defaultValue: string;
 
   @Input()
-  options: Option[];
+  options: RadioItem[];
 
   @Input()
   stacking: "row" | "column" = "column";
@@ -78,7 +78,7 @@ export class DxcRadioGroupComponent implements OnInit {
 
   radioGroupId = "";
 
-  public optionList: Option[] = [];
+  public optionList: RadioItem[] = [];
   public indexToFocus: number = 0;
 
   private isControlled: boolean = false;
@@ -269,7 +269,7 @@ export class DxcRadioGroupComponent implements OnInit {
           : "margin-bottom: var(--radioGroup-groupLabelMargin);"}
       }
       .helperText,
-      .optional {
+      .optionalLabel {
         color: ${inputs.disabled
           ? "var(--radioGroup-disabledHelperTextFontColor)"
           : "var(--radioGroup-helperTextFontColor)"};

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
-import { RadioItem } from "../dxc-radio-group.types";
+import { RadioItem } from "../interfaces/radio-item.interface";
 
 @Injectable({
   providedIn: "root",

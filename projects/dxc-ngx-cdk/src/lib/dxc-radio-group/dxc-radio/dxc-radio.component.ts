@@ -11,7 +11,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { v4 as uuidv4 } from "uuid";
 import { RadioGroupService } from "../services/radio-group.service";
-import { Option } from "../dxc-radio-group.types";
+import { RadioItem } from "../dxc-radio-group.types";
 
 @Component({
   selector: "dxc-radio-group-item",
@@ -152,7 +152,8 @@ export class DxcRadioGroupItemComponent implements OnInit {
           box-sizing: border-box;
           width: 18px;
           height: 18px;
-          border: var(--radioGroup-radioInputBorderWidth) var(--radioGroup-radioInputBorderStyle);;
+          border: var(--radioGroup-radioInputBorderWidth)
+            var(--radioGroup-radioInputBorderStyle);
           border-color: ${this.getBorderColor()};
           border-radius: 50%;
           box-shadow: 0 0 0 2px transparent;

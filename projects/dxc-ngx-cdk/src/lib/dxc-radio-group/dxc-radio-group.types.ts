@@ -6,20 +6,19 @@ export interface RadioGroupProperties {
   readOnly?: boolean;
   disabled?: boolean;
   defaultValue?: string;
-  options: Option[];
-  stacking?: "row"|"column";
+  options: RadioItem[];
+  stacking?: "row" | "column";
   tabIndex?: number;
   error?: string;
 }
 
-export type Option = {
+export type RadioItem = {
   label: string;
   value: string;
   disabled?: boolean;
 };
 
 export type BlurEvent = {
-  value: string,
-  error: string
+  value: string;
+  error: string;
 };
-

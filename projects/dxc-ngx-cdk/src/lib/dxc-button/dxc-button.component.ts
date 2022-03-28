@@ -202,7 +202,7 @@ export class DxcButtonComponent {
           width: 100%;
           display: flex;
           align-items: inherit;
-          justify-content: inherit;
+          justify-content: center;
           ${this.iconPosition === "after"
             ? "flex-direction: row-reverse;"
             : "flex-direction: row;"}
@@ -227,8 +227,8 @@ export class DxcButtonComponent {
                 ? "margin-left: 8px;"
                 : "margin-right: 8px;"
               : ""}
-            height: 24px;
-            width: 24px;
+            height: 100%;
+            width: 100%;
             z-index: 20;
           }
           mat-icon {

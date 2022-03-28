@@ -13,11 +13,7 @@ import { EventEmitter } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { CssUtils } from "../utils";
-import {
-  BlurEvent,
-  RadioItem,
-  RadioGroupProperties,
-} from "./dxc-radio-group.types";
+import { BlurEvent, RadioGroupProperties } from "./dxc-radio-group.types";
 import { RadioGroupService } from "./services/radio-group.service";
 import { v4 as uuidv4 } from "uuid";
 

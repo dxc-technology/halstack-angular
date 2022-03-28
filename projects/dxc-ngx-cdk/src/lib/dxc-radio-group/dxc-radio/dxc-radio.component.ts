@@ -11,7 +11,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { v4 as uuidv4 } from "uuid";
 import { RadioGroupService } from "../services/radio-group.service";
-import { RadioItem } from "../dxc-radio-group.types";
+import { RadioItem } from "../interfaces/radio-item.interface";
 
 @Component({
   selector: "dxc-radio-group-item",

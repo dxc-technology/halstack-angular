@@ -1,3 +1,4 @@
+import { RadioItem } from "./interfaces/radio-item.interface";
 export interface RadioGroupProperties {
   label: string;
   helperText?: string;
@@ -11,12 +12,6 @@ export interface RadioGroupProperties {
   tabIndex?: number;
   error?: string;
 }
-
-export type RadioItem = {
-  label: string;
-  value: string;
-  disabled?: boolean;
-};
 
 export type BlurEvent = {
   value: string;

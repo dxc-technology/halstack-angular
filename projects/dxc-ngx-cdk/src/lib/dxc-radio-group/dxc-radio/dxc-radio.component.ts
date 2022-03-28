@@ -42,7 +42,7 @@ export class DxcRadioGroupItemComponent implements OnInit {
 
   radioLabelId = "";
 
-  defaultInputs = new BehaviorSubject<Option>({
+  defaultInputs = new BehaviorSubject<RadioItem>({
     label: "",
     value: undefined,
     disabled: false,

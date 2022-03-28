@@ -16,6 +16,7 @@ import { CssUtils } from "../utils";
 import { BlurEvent, RadioGroupProperties } from "./dxc-radio-group.types";
 import { RadioGroupService } from "./services/radio-group.service";
 import { v4 as uuidv4 } from "uuid";
+import { RadioItem } from "./interfaces/radio-item.interface";
 
 @Component({
   selector: "dxc-radio-group",

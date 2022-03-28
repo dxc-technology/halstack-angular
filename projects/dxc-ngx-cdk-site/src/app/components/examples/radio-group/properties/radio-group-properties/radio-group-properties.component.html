@@ -40,11 +40,11 @@
     </td>
   </tr>
   <tr>
-    <td>options: Option[]</td>
+    <td>options: RadioItem[]</td>
     <td></td>
     <td>
       An array of objects representing the selectable options. Each object
-      Option has the following properties: <br />
+      RadioItem has the following properties: <br />
       <ul>
         <li>
           <b>label: string:</b> Label of the option placed next to the radio
@@ -107,8 +107,8 @@
     <td>
       This function will be called when the radio group loses the focus. An
       object including the value and the error will be passed to this function.
-      An example of this object is: {{ '{' }} value: value, error: error {{ '}' }}. If there is
-      no error, error will not be defined.
+      An example of this object is: {{ "{" }} value: value, error: error
+      {{ "}" }}. If there is no error, error will not be defined.
     </td>
   </tr>
   <tr>
@@ -123,8 +123,6 @@
   <tr>
     <td>tabIndex: number</td>
     <td></td>
-    <td>
-      Value of the tabindex attribute.
-    </td>
+    <td>Value of the tabindex attribute.</td>
   </tr>
 </dxc-table>

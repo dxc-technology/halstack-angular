@@ -59,23 +59,9 @@ export class DxcTableComponent {
 
   getDynamicStyle(inputs) {
     return css`
-      div#divTable {
-        ${this.utils.getMargins(inputs.margin)}
-        ${this.calculateWidth(inputs.margin)};
-        overflow: auto;
-        &::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: var(--table-scrollBarThumbColor);
-          border-radius: 6px;
-        }
-        &::-webkit-scrollbar-track {
-          background-color: var(--table-scrollBarTrackColor);
-          border-radius: 6px;
-        }
-      }
+      ${this.utils.getMargins(inputs.margin)}
+      display: flex;
+      overflow: auto;
 
       table {
         border-collapse: collapse;

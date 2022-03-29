@@ -213,3 +213,73 @@
     </tbuilder-component-mode>
   </background-provider>
 </div>
+
+<div>
+  <dxc-heading text="Number Input" [level]="4" margin="xsmall"></dxc-heading>
+  <background-provider>
+    <tbuilder-component-mode text="Default">
+      <dxc-number-input margin="xsmall"> </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Controlled">
+      <dxc-number-input
+        [value]="numberValue"
+        (onChange)="onChangeNumber($event)"
+        (onBlur)="onBlurNumber($event)"
+        margin="xsmall"
+      >
+      </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With label, helper text and placeholder">
+      <dxc-number-input
+        label="Label"
+        helperText="Helper text"
+        placeholder="placeholder"
+        margin="xsmall"
+      >
+      </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Disabled">
+      <dxc-number-input
+        label="Label"
+        helperText="Helper text"
+        placeholder="placeholder"
+        margin="xsmall"
+        disabled="true"
+      >
+      </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Optional">
+      <dxc-number-input
+        label="Label"
+        helperText="Helper text"
+        placeholder="placeholder"
+        margin="xsmall"
+        optional="true"
+      >
+      </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With min and max">
+      <dxc-number-input margin="xsmall" min="5" max="10"> </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With step">
+      <dxc-number-input margin="xsmall" step="5"> </dxc-number-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="Error">
+      <dxc-number-input
+        label="Label"
+        helperText="Helper text"
+        placeholder="placeholder"
+        error="Error"
+        margin="xsmall"
+      >
+      </dxc-number-input>
+    </tbuilder-component-mode>
+  </background-provider>
+</div>

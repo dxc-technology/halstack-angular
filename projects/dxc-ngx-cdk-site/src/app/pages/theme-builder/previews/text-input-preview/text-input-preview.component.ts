@@ -21,6 +21,8 @@ export class TextInputPreviewComponent implements OnInit {
 
   passwordValue = "";
 
+  numberValue = 0;
+
   minLength = 2;
   maxLength = 5;
 
@@ -89,5 +91,13 @@ export class TextInputPreviewComponent implements OnInit {
 
   onBlurPassword({ value, error }) {
     this.passwordValue = value;
+  }
+
+  onChangeNumber({ value, error }) {
+    this.numberValue = value;
+  }
+
+  onBlurNumber({ value, error }) {
+    this.numberValue = value;
   }
 }

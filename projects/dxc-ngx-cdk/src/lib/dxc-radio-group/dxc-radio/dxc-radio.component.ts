@@ -137,7 +137,7 @@ export class DxcRadioGroupItemComponent implements OnInit {
     return css`
       display: inline-flex;
       align-items: center;
-      ${inputs.disabled ? "pointer-events: none" : "cursor: pointer"};
+      ${inputs.disabled ? "pointer-events: none" : inputs.readOnlyState ? "cursor: default" : "cursor: pointer"};
       width: fit-content;
       .radioInputContainer {
         display: flex;

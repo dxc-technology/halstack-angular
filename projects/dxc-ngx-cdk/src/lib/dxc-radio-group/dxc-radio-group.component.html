@@ -17,4 +17,4 @@
   </ng-container>
 </div>
 <input #inputRef class="valueInput" [name]="name" [value]="value" readOnly aria-hidden="true" />
-<span *ngIf="error" class="errorMessage">{{ error }}</span>
+<span *ngIf="error || error===''" class="errorMessage">{{ error }}</span>

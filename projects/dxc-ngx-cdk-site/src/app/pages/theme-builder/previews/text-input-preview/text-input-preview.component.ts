@@ -19,6 +19,8 @@ export class TextInputPreviewComponent implements OnInit {
 
   errorMessage = "";
 
+  passwordValue = "";
+
   minLength = 2;
   maxLength = 5;
 
@@ -80,4 +82,12 @@ export class TextInputPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onChangePassword({ value, error }) {
+    this.passwordValue = value;
+  }
+
+  onBlurPassword({ value, error }) {
+    this.passwordValue = value;
+  }
 }

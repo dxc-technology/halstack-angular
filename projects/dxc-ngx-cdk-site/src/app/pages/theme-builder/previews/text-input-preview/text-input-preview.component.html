@@ -153,11 +153,11 @@
         </dxc-text-input-action>
       </dxc-text-input>
     </tbuilder-component-mode>
-    <tbuilder-component-mode text="Disabled">
+    <tbuilder-component-mode text="Autosuggest">
       <dxc-text-input
         label="Autosuggest function"
         helperText="Checks if any of the options include the incoming string"
-        margin="medium"
+        margin="xsmall"
         [value]="controlledValue"
         (onChange)="onChange($event)"
         clearable="true"
@@ -167,124 +167,49 @@
       </dxc-text-input>
     </tbuilder-component-mode>
   </background-provider>
+</div>
 
-  <!-- <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
-  <background-provider color="#000000">
-    <tbuilder-component-mode text="Default" mode="dark">
-      <dxc-text-input
-        placeholder="placeholder"
-        helperText="helper text"
-        label="Input label"
-        margin="xsmall"
-        [value]="controlledValue"
-        (onChange)="changeValue($event)"
-        clearable="true"
-        (onActionClick)="click()"
-        [suggestions]="options"
-      >
-        <dxc-text-input-action>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            fill="currentColor"
-          >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
-            />
-          </svg>
-        </dxc-text-input-action>
-      </dxc-text-input>
-
-      <dxc-text-input
-        placeholder="placeholder"
-        label="Input label"
-        helperText="helper text"
-        margin="xsmall"
-        (onActionClick)="click()"
-        [suggestions]="options"
-      >
-        <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
-        <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
-        <dxc-text-input-action>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            fill="currentColor"
-          >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
-            />
-          </svg>
-        </dxc-text-input-action>
-      </dxc-text-input>
+<div>
+  <dxc-heading text="Password Input" [level]="4" margin="xsmall"></dxc-heading>
+  <background-provider>
+    <tbuilder-component-mode text="Default">
+      <dxc-password-input margin="xsmall"> </dxc-password-input>
     </tbuilder-component-mode>
 
-    <tbuilder-component-mode text="Error" mode="dark">
-      <dxc-text-input
-        placeholder="placeholder"
+    <tbuilder-component-mode text="Controlled">
+      <dxc-password-input
+        [value]="passwordValue"
         clearable="true"
-        error="Very important error"
-        label="Input label"
-        helperText="helper text"
+        (onChange)="onChangePassword($event)"
+        (onBlur)="onBlurPassword($event)"
         margin="xsmall"
-        (onActionClick)="click()"
-        [suggestions]="options"
       >
-        <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
-        <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
-        <dxc-text-input-action>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            fill="currentColor"
-          >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
-            />
-          </svg>
-        </dxc-text-input-action>
-      </dxc-text-input>
+      </dxc-password-input>
     </tbuilder-component-mode>
 
-    <tbuilder-component-mode text="Disabled" mode="dark">
-      <dxc-text-input
-        placeholder="placeholder"
-        value="test"
+    <tbuilder-component-mode text="With label and helper text">
+      <dxc-password-input
+        label="Label"
+        helperText="Helper text"
         clearable="true"
-        error="Very important error"
-        label="Input label"
-        helperText="helper text"
         margin="xsmall"
-        disabled="true"
-        (onActionClick)="click()"
-        [suggestions]="options"
       >
-        <dxc-text-input-prefix value="+34"></dxc-text-input-prefix>
-        <dxc-text-input-suffix value="$"></dxc-text-input-suffix>
-        <dxc-text-input-action>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            fill="currentColor"
-          >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path
-              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
-            />
-          </svg>
-        </dxc-text-input-action>
-      </dxc-text-input>
+      </dxc-password-input>
     </tbuilder-component-mode>
-  </background-provider> -->
+
+    <tbuilder-component-mode text="With pattern">
+      <dxc-password-input clearable="true" margin="xsmall" pattern=".{10,15}">
+      </dxc-password-input>
+    </tbuilder-component-mode>
+
+    <tbuilder-component-mode text="With length">
+      <dxc-password-input
+        clearable="true"
+        margin="xsmall"
+        minLength="5"
+        maxLength="10"
+      >
+      </dxc-password-input>
+    </tbuilder-component-mode>
+  </background-provider>
 </div>

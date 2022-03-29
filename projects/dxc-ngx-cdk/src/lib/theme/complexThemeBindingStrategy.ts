@@ -236,14 +236,6 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
       this.setOpacity(theme?.radio?.baseColor, 0.34) ??
       tokens["--radio-disabledColor"];
 
-    //V3 SELECT
-    proccessedTokens["--v3Select-selectedOptionBackgroundColor"] =
-      theme?.v3Select?.baseColor ??
-      tokens["--v3Select-selectedOptionBackgroundColor"];
-    proccessedTokens["--v3Select-hoverOptionBackgroundColor"] =
-      this.setOpacity(theme?.v3Select?.baseColor, 0.34) ??
-      tokens["--v3Select-hoverOptionBackgroundColor"];
-
     //SELECT
     proccessedTokens["--select-selectedListItemBackgroundColor"] =
       theme?.select?.baseColor ??

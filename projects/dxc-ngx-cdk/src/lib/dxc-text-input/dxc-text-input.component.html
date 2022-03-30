@@ -24,7 +24,7 @@
     [name]="name"
     [disabled]="disabled"
     [pattern]="pattern"
-    [tabindex]="tabIndex"
+    [tabindex]="tabIndexValue"
     [attr.aria-activedescendant]="
       suggestions && autosuggestVisible && suggestions[focusedOption]
     "
@@ -33,11 +33,7 @@
     [attr.aria-autocomplete]="suggestions && 'list'"
     [autocomplete]="autocomplete"
   />
-  <span
-    *ngIf="error && !disabled"
-    class="inputErrorIcon"
-    aria-label="Error"
-  >
+  <span *ngIf="error && !disabled" class="inputErrorIcon" aria-label="Error">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="24px"
@@ -56,7 +52,7 @@
     (click)="handleDefaultClearAction()"
     [disabled]="disabled"
     aria-label="Clear"
-    [tabindex]="tabIndex"
+    [tabindex]="tabIndexValue"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +74,7 @@
     (click)="handleActionOnClick($event)"
     [disabled]="disabled"
     aria-label="Action"
-    [tabindex]="tabIndex"
+    [tabindex]="tabIndexValue"
   >
     <ng-content select="dxc-text-input-action"></ng-content>
   </button>
@@ -88,7 +84,7 @@
     class="inputAction"
     [disabled]="disabled"
     aria-label="Decrement"
-    [tabindex]="tabIndex"
+    [tabindex]="tabIndexValue"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +103,7 @@
     class="inputAction"
     [disabled]="disabled"
     aria-label="Increment"
-    [tabindex]="tabIndex"
+    [tabindex]="tabIndexValue"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

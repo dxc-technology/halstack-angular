@@ -61,7 +61,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
   maxLength: number;
 
   @Input()
-  tabIndex: number;
+  tabIndexValue: number;
 
   @Input()
   size: string = "medium";
@@ -75,7 +75,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
     value: undefined,
     label: "",
     margin: "",
-    tabIndex: 0,
+    tabIndexValue: 0,
     size: "medium",
     clearable: false,
   });

@@ -10,6 +10,15 @@
       [multiple]="false"
     ></dxc-file-input>
     <dxc-file-input
+      label="Custom button label"
+      helperText="helperText"
+      buttonLabel="Custom button label"
+      [showPreview]="true"
+      margin="xsmall"
+      (callbackFile)="callback2($event)"
+      [multiple]="false"
+    ></dxc-file-input>
+    <dxc-file-input
       label="Label"
       helperText="helperText"
       [showPreview]="true"

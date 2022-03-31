@@ -1,4 +1,8 @@
-<div class="previewContainer" [attr.aria-label]="getIconAriaLabel()" *ngIf="hasShowPreview">
+<div
+  class="previewContainer"
+  [attr.aria-label]="getIconAriaLabel()"
+  *ngIf="hasShowPreview"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="24px"
@@ -7,9 +11,8 @@
     dxcFileFormat
     [format]="file.data.type"
     *ngIf="hasShowPreviewIcon"
-  >
-  </svg>
-  <img [src]="file.image" *ngIf="hasShowPreviewImage"/>
+  ></svg>
+  <img [src]="file.image" *ngIf="hasShowPreviewImage" />
 </div>
 
 <div class="infoContainer">
@@ -29,7 +32,13 @@
           ></path>
         </svg>
       </span>
-      <span class="removeIcon" [attr.aria-label]="getRemoveAriaLabel()" (click)="onRemoveHandler($event)" data-testid="removeIcon">
+      <span
+        class="removeIcon"
+        [tabindex]="tabIndexValue"
+        [attr.aria-label]="getRemoveAriaLabel()"
+        (click)="onRemoveHandler($event)"
+        data-testid="removeIcon"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="18px"
@@ -46,10 +55,6 @@
     </div>
   </div>
   <div class="errorContainer">
-    <span
-      *ngIf="hasShowError"
-      class="errorMessage"
-      >{{ file.error }}</span
-    >
+    <span *ngIf="hasShowError" class="errorMessage">{{ file.error }}</span>
   </div>
 </div>

@@ -510,12 +510,12 @@ export const componentTokens = {
   "--fileInput-focusDropBorderColor": globalTokens.hal_blue_l_50,
   "--fileInput-disabledDropBorderColor": globalTokens.hal_grey_l_60,
   "--fileInput-dragoverDropBackgroundColor": "#f5fbff",
-  "--fileInput-hoverFileItemIconBackgroundColor": globalTokens.hal_grey_l_95,
-  "--fileInput-activeFileItemIconBackgroundColor": globalTokens.hal_grey_l_80,
+  "--fileInput-hoverDeleteFileItemBackgroundColor": "#0000000d",
+  "--fileInput-activeDeleteFileItemBackgroundColor": "#00000033",
+  "--fileInput-focusDeleteFileItemBackgroundColor": globalTokens.hal_blue_l_50,
   "--fileInput-errorFileItemBorderColor": globalTokens.hal_red_s_41,
-  "--fileInput-errorFileItemBackgroundColor": "#ffccd3",
+  "--fileInput-errorFileItemBackgroundColor": "#FFF5F6",
   "--fileInput-errorMessageFontColor": globalTokens.hal_red_s_41,
-  //falta token para error icon
   "--fileInput-labelFontFamily": globalTokens.type_sans,
   "--fileInput-labelFontSize": globalTokens.type_scale_02,
   "--fileInput-labelFontWeight": globalTokens.type_semibold,
@@ -999,7 +999,6 @@ export const componentTokens = {
   // "--radioGroup-focusOutlineWidth": "24px",
   // "--radioGroup-radioInputHeight": "18px",
   // "--radioGroup-focusOutlineHeight": "24px",
-
 
   //V3 SELECT
   "--v3Select-fontFamily": "Open Sans, sans-serif",

@@ -1,4 +1,7 @@
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { C } from "@angular/cdk/keycodes";
 import {
   Component,
@@ -31,6 +34,14 @@ export class DxcFileComponent implements OnInit {
     this._showPreview = coerceBooleanProperty(value);
   }
   private _showPreview = false;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue = 0;
 
   hasError: boolean = false;
   hasShowError: boolean = false;
@@ -70,9 +81,9 @@ export class DxcFileComponent implements OnInit {
   }
 
   onRemoveHandler(event: any): void {
-    if(this.updatable){
+    if (this.updatable) {
       this.service.removeFile(this.file);
-    } 
+    }
   }
 
   private isShowPreview() {
@@ -114,11 +125,11 @@ export class DxcFileComponent implements OnInit {
       return "image";
     }
     return "file";
-  };
+  }
 
   getRemoveAriaLabel() {
     return "Remove " + this.file.data.name;
-  };
+  }
 
   getDynamicStyle(inputs) {
     return css`
@@ -215,13 +226,17 @@ export class DxcFileComponent implements OnInit {
               }
               &:hover {
                 background-color: var(
-                  --fileInput-hoverFileItemIconBackgroundColor
+                  --fileInput-hoverDeleteFileItemBackgroundColor
                 );
               }
               &:active {
                 background-color: var(
-                  --fileInput-activeFileItemIconBackgroundColor
+                  --fileInput-activeDeleteFileItemBackgroundColor
                 );
+              }
+              &:focus {
+                outline: var(--fileInput-focusDeleteFileItemBackgroundColor)
+                  auto 1px;
               }
             }
             .errorIcon {

@@ -60,7 +60,7 @@ export class DxcRadioGroupComponent implements OnInit {
   stacking: "row" | "column" = "column";
 
   @Input()
-  tabIndex: number = 0;
+  tabIndexValue: number = 0;
 
   @Input()
   error: string;
@@ -139,7 +139,7 @@ export class DxcRadioGroupComponent implements OnInit {
     defaultValue: undefined,
     options: [],
     stacking: "column",
-    tabIndex: 0,
+    tabIndexValue: 0,
     error: undefined,
   });
 

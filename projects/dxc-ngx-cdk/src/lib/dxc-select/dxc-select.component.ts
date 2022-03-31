@@ -39,7 +39,7 @@ interface SelectProperties {
   margin: Object | string;
   size: string;
   options: Option[] | OptionGroup[];
-  tabIndex: number;
+  tabIndexValue: number;
 }
 
 @Component({
@@ -117,7 +117,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   margin: Object | string;
 
   @Input()
-  tabIndex: number;
+  tabIndexValue: number;
 
   @Input()
   size: string;
@@ -139,7 +139,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     margin: "",
     size: "medium",
     options: [],
-    tabIndex: 0,
+    tabIndexValue: 0,
   });
 
   @Output()

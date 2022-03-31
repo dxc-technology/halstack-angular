@@ -132,7 +132,7 @@ export class DxcDateInputComponent implements OnInit {
   /**
    * Value of the tabindex attribute.
    */
-  @Input() tabIndex: number = 0;
+  @Input() tabIndexValue: number = 0;
 
   @Input()
   autocomplete: string = "off";
@@ -149,7 +149,7 @@ export class DxcDateInputComponent implements OnInit {
     margin: "",
     size: "medium",
     format: "dd-MM-yyyy",
-    tabIndex: 0,
+    tabIndexValue: 0,
     placeholder: false,
   });
 

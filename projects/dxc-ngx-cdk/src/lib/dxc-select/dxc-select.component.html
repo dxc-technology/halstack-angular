@@ -14,14 +14,14 @@
   ngModel
   [name]="name"
   [value]="formValues"
-  style="display: none;"
+  style="display: none"
   readOnly
   attr.aria-hidden="true"
 />
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div
   class="container"
-  [tabindex]="tabIndex"
+  [tabindex]="disabled ? -1 : tabIndexValue"
   (focus)="focusContainer($event, false)"
   (click)="handleSelectOpen()"
   (keydown)="handleOnKeyDown($event)"
@@ -97,7 +97,7 @@
         [placeholder]="setPlaceholder()"
         [name]="name"
         [disabled]="disabled"
-        [tabindex]="tabIndex"
+        [tabindex]="disabled ? -1 : tabIndexValue"
         autocomplete="off"
         autocorrect="off"
         (ngModelChange)="handleOnChangeInput($event)"
@@ -112,7 +112,7 @@
       (mousedown)="handlePropagation($event)"
       (mouseup)="handleClearInput($event)"
       [disabled]="disabled"
-      [tabindex]="tabIndex"
+      [tabindex]="disabled ? -1 : tabIndexValue"
       title="Clear search text"
       attr.aria-label="Clear search text"
     >

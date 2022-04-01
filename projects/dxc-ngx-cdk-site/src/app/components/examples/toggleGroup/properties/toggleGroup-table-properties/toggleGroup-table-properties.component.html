@@ -1,4 +1,9 @@
-<dxc-heading [level]="4" weight="normal" text="Properties" [margin]="{bottom:'small'}"></dxc-heading>
+<dxc-heading
+  [level]="4"
+  weight="normal"
+  text="Properties"
+  [margin]="{ bottom: 'small' }"
+></dxc-heading>
 <dxc-table>
   <tr>
     <th>Name</th>
@@ -13,17 +18,15 @@
   <tr>
     <td>helperText: string</td>
     <td></td>
-    <td>
-      Assistive text to be placed bellow the input.
-    </td>
+    <td>Assistive text to be placed bellow the input.</td>
   </tr>
   <tr>
     <td>value: any | any[]</td>
     <td></td>
     <td>
-      Value(s) of the toggle(s) that are toggled. If undefined, the
-      component will be uncontrolled and the value will be managed internally by
-      the component.
+      Value(s) of the toggle(s) that are toggled. If undefined, the component
+      will be uncontrolled and the value will be managed internally by the
+      component.
     </td>
   </tr>
   <tr>
@@ -31,9 +34,7 @@
     <td>
       <code>false</code>
     </td>
-    <td>
-      If false only one toggle can be toggled.
-    </td>
+    <td>If false only one toggle can be toggled.</td>
   </tr>
   <tr>
     <td>disabled: boolean</td>
@@ -41,7 +42,7 @@
     <td>If true, the component will be disabled.</td>
   </tr>
   <tr>
-    <td>tabIndex: number</td>
+    <td>tabIndexValue: number</td>
     <td></td>
     <td>
       Value of the tabindex which its propagated to their children components.
@@ -51,8 +52,8 @@
     <td>onChange: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user changes the state of any toggle.
-      The new value or values will be passed as a parameter.
+      This function will be called when the user changes the state of any
+      toggle. The new value or values will be passed as a parameter.
     </td>
   </tr>
   <tr>

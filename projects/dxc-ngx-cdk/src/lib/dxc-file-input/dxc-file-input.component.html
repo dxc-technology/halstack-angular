@@ -10,7 +10,7 @@
   />
   <dxc-button
     *ngIf="mode === 'file'"
-    label="Select files"
+    [label]="buttonLabel"
     mode="secondary"
     [disabled]="disabled"
     (onClick)="fileInput.click()"
@@ -27,7 +27,7 @@
     (dragover)="dragOver($event)"
   >
     <dxc-button
-      label="Select"
+      [label]="buttonLabel"
       mode="secondary"
       [disabled]="disabled"
       [tabIndexValue]="tabIndexValue"

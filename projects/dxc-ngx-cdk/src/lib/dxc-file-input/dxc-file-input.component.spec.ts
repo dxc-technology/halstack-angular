@@ -30,6 +30,23 @@ describe("DxcFileInputComponent", () => {
     expect(fileInput.getByText("Helper Text"));
   });
 
+  test("should render dxc-file-input with custom buttonLabel", async () => {
+    const fileInput = await render(DxcFileInputComponent, {
+      componentProperties: {
+        label: "Label",
+        helperText: "Helper Text",
+        buttonLabel: "Custom Button Label",
+      },
+      excludeComponentDeclaration: true,
+      imports: [DxcFileInputModule],
+    });
+
+    expect(fileInput.getByText("Custom Button Label"));
+    expect(fileInput.getByText("Label"));
+    expect(fileInput.getByText("Helper Text"));
+  });
+
+
   test("should render dxc-file-input in file drop mode", async () => {
     const fileInput = await render(DxcFileInputComponent, {
       componentProperties: {

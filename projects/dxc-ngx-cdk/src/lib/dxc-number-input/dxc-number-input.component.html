@@ -9,11 +9,17 @@
   [size]="size"
   (onBlur)="handleOnBlur($event)"
   (onChange)="handleOnChange($event)"
-  [tabIndex]="tabIndex"
+  [tabIndexValue]="tabIndexValue"
   [disabled]="disabled"
   [optional]="optional"
   [autocomplete]="autocomplete"
 >
-  <ng-content select="dxc-text-input-suffix" ngProjectAs="dxc-text-input-suffix"></ng-content>
-  <ng-content select="dxc-text-input-prefix" ngProjectAs="dxc-text-input-prefix"></ng-content>
+  <ng-content
+    select="dxc-text-input-suffix"
+    ngProjectAs="dxc-text-input-suffix"
+  ></ng-content>
+  <ng-content
+    select="dxc-text-input-prefix"
+    ngProjectAs="dxc-text-input-prefix"
+  ></ng-content>
 </dxc-text-input>

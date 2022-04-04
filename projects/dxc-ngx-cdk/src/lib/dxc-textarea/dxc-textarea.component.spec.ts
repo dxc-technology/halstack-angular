@@ -396,6 +396,7 @@ describe("DxcTextareaComponent", () => {
     await render(DxcTextareaComponent, {
       componentProperties: {
         label: "Example label",
+        defaultValue: "test",
         onChange: {
           emit: onChange,
         } as any,
@@ -406,6 +407,7 @@ describe("DxcTextareaComponent", () => {
     const textarea = <HTMLInputElement>(
       screen.getByLabelText("Example label (Optional)")
     );
+    expect(screen.getByDisplayValue("test"));
     textarea.focus();
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);

@@ -38,6 +38,9 @@ export class DxcTextareaComponent implements OnInit {
 
   @Input()
   value: string;
+  
+  @Input()
+  defaultValue: string;
 
   @Input()
   id: string;
@@ -110,7 +113,7 @@ export class DxcTextareaComponent implements OnInit {
     optional: false,
     disabled: false,
     helperText: "",
-    value: "",
+    value: undefined,
     name: "",
     label: "",
     margin: "",
@@ -172,7 +175,7 @@ export class DxcTextareaComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.value === undefined) {
-      this.value = "";
+      this.value = this.defaultValue ?? "";
       this.controlled = false;
     } else {
       this.controlled = true;

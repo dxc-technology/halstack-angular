@@ -231,7 +231,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
     this.randomId = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
 
     if (this.value === undefined) {
-      this.defaultValue ? (this.value = this.defaultValue) : (this.value = "");
+      this.value = this.defaultValue ?? "";
       this.controlled = false;
     } else {
       this.controlled = true;

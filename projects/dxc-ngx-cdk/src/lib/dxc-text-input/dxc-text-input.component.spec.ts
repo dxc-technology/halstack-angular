@@ -304,6 +304,29 @@ describe("DxcNewTextInputComponent", () => {
     });
   });
 
+  test("uncontrolled with defaultValue", async () => {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    await render(DxcTextInputComponent, {
+      componentProperties: {
+        label: "Input label",
+        defaultValue: "Default value",
+      },
+      imports: [CommonModule, FormsModule],
+      providers: [DxcTextInputService],
+      declarations: [FilterOptionsPipe, BoldOptionsPipe],
+    });
+
+    const input = <HTMLInputElement>screen.getByRole("textbox");
+    input.focus();
+    fireEvent.click(input);
+    expect(screen.getByDisplayValue("Default value"));
+    fireEvent.input(input, { target: { value: "new value" } });
+    await waitFor(() => {
+      expect(screen.getByDisplayValue("new value"));
+    });
+  });
+
   test("controlled dxc-input-text input with clear, change and blur", async () => {
     const onChange = jest.fn();
     const onBlur = jest.fn();

@@ -54,6 +54,9 @@ export class DxcTextInputComponent
   value: string;
 
   @Input()
+  defaultValue: string;
+
+  @Input()
   id: string;
 
   @Input()
@@ -223,7 +226,7 @@ export class DxcTextInputComponent
       validationError: this.validationError,
     })}`;
     if (this.value === undefined) {
-      this.value = "";
+      this.defaultValue ? (this.value = this.defaultValue) : (this.value = "");
       this.controlled = false;
     } else {
       this.controlled = true;

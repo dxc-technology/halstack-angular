@@ -56,6 +56,10 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
    */
   @Input() value: string;
   /**
+   * Initial value of the number input, only when it is uncontrolled.
+   */
+  @Input() defaultValue: string;
+  /**
    * Helper text to be placed above the number.
    */
   @Input() helperText: string = "";
@@ -227,7 +231,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
     this.randomId = `input-${Math.floor(Math.random() * 1000000000000000) + 1}`;
 
     if (this.value === undefined) {
-      this.value = "";
+      this.defaultValue ? (this.value = this.defaultValue) : (this.value = "");
       this.controlled = false;
     } else {
       this.controlled = true;

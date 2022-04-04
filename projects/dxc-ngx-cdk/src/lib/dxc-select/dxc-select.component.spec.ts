@@ -55,6 +55,43 @@ describe("DxcSelectComponent tests", () => {
     expect(dxcSelect.getByText("label1"));
   });
 
+  test("dxc-select defaultValue functionality", async () => {
+    const array1: Option[] = [
+      { label: "label1", value: "1" },
+      { label: "label2", value: "2" },
+      { label: "label6", value: "6" },
+      { label: "label9", value: "9" },
+      { label: "aida", value: "10" },
+      { label: "pepe", value: "11" },
+    ];
+    const changeMock = jest.fn((x) => {});
+    const dxcSelect = await render(DxcSelectComponent, {
+      componentProperties: {
+        label: "Select label",
+        helperText: "Helper Text",
+        options: array1,
+        onChange: {
+          emit: changeMock,
+        } as any,
+        defaultValue: "1",
+      },
+      imports: [DxcSelectModule],
+      excludeComponentDeclaration: true,
+    });
+    expect(dxcSelect.getByText("Select label"));
+    expect(dxcSelect.getByText("Helper Text"));
+    expect(dxcSelect.getByText("label1"));
+    fireEvent.click(dxcSelect.getByRole("combobox"));
+    expect(screen.getAllByText("label1")[1].getAttribute("aria-selected")).toBe(
+      "true"
+    );
+    fireEvent.click(screen.getByText("aida"));
+    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: null });
+    fireEvent.click(dxcSelect.getByRole("combobox"));
+    expect(dxcSelect.getByText("aida"));
+    
+  });
+
   test("dxc-select single controlled functionality", async () => {
     const array1: Option[] = [
       { label: "label1", value: "1" },

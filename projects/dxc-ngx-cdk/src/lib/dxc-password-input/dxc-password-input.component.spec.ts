@@ -52,6 +52,32 @@ describe("DxcPasswordInputComponent", () => {
     });
   });
 
+  test("should render defaultValue", async () => {
+    const onChange = jest.fn();
+    await render(DxcPasswordInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        defaultValue: "default",
+        clearable: true,
+        onChange: {
+          emit: onChange,
+        } as any,
+      },
+      imports: [DxcTextInputModule],
+    });
+
+    const btn = screen.getByLabelText("Clear");
+
+    expect(screen.queryByText("test-input")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("default")).toBeTruthy();
+    fireEvent.click(btn);
+    expect(onChange).toHaveBeenCalledWith({
+      value: "",
+      error: "This field is required. Please, enter a value.",
+    });
+  });
+
   test("should mask input password", async () => {
     const onChange = jest.fn();
     await render(DxcPasswordInputComponent, {

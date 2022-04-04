@@ -34,6 +34,9 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
   value: string;
 
   @Input()
+  defaultValue: string;
+
+  @Input()
   helperText: string;
 
   @Input()
@@ -107,7 +110,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
     this.type = "password";
 
     if (this.value === undefined) {
-      this.value = "";
+      this.defaultValue ? (this.value = this.defaultValue) : (this.value = "");
       this.controlled = false;
     } else {
       this.controlled = true;

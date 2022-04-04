@@ -39,8 +39,7 @@
     <td>options: Option[] | OptionGroup[]</td>
     <td></td>
     <td>
-      List of options. The following interfaces should be
-      imported. <br />
+      List of options. The following interfaces should be imported. <br />
       Option:
       <ul>
         <li>
@@ -78,7 +77,10 @@
     <td>
       <code>false</code>
     </td>
-    <td>If true, multiple options can be selected. If false, only a single option can be selected.</td>
+    <td>
+      If true, multiple options can be selected. If false, only a single option
+      can be selected.
+    </td>
   </tr>
   <tr>
     <td>disabled: boolean</td>
@@ -107,9 +109,10 @@
     <td>onChange: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user select an option. An
-      object including the new value (or values) and the error (if the value selected is not
-      valid) will be passed to this function. An example of this object is:
+      This function will be called when the user select an option. An object
+      including the new value (or values) and the error (if the value selected
+      is not valid) will be passed to this function. An example of this object
+      is:
       {{ "{" }} <code>value: value, error: error</code>{{ "}" }}. If there is no
       error, error will be null.
     </td>
@@ -119,8 +122,8 @@
     <td></td>
     <td>
       This function will be called when the select loses the focus. An object
-      including the value (or values) and the error (if the value selected is not
-      valid) will be passed to this function. An example of this object is:
+      including the value (or values) and the error (if the value selected is
+      not valid) will be passed to this function. An example of this object is:
       {{ "{" }}
       <code>value: value, error: error</code>
       {{ "}" }}. If there is no error, error will be null.
@@ -146,7 +149,7 @@
     </td>
   </tr>
   <tr>
-    <td>tabIndex: number</td>
+    <td>tabIndexValue: number</td>
     <td>
       <code>0</code>
     </td>

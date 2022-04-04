@@ -49,6 +49,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   @Input() public name: string;
   @Input() public mode: string = "file";
   @Input() public label: string;
+  @Input() public buttonLabel: string;
   @Input() public helperText: string;
   @Input() public value: Array<FileData>;
   @Input() public accept: any;
@@ -148,6 +149,21 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.hasShowError = this.isErrorShow();
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
     this.hasSingleFile = this.isSingleFilesPrintables();
+    if (!this.buttonLabel) {
+      console.log(
+        this.mode === "file"
+          ? this.multiple
+            ? "Select files"
+            : "Select file"
+          : "Select"
+      );
+      this.buttonLabel =
+        this.mode === "file"
+          ? this.multiple
+            ? "Select files"
+            : "Select file"
+          : "Select";
+    }
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

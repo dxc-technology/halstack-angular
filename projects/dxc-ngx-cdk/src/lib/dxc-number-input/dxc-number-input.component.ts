@@ -154,7 +154,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
   /**
    * Value of the tabindex attribute.
    */
-  @Input() tabIndex: number = 0;
+  @Input() tabIndexValue: number = 0;
 
   private controlled: boolean;
 
@@ -171,7 +171,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
     step: 1,
     min: null,
     max: null,
-    tabIndex: 0,
+    tabIndexValue: 0,
     size: "medium",
   });
   /**

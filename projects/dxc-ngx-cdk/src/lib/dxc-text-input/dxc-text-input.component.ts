@@ -39,7 +39,8 @@ import EmittedValue from "./emitted-value.type";
   ],
 })
 export class DxcTextInputComponent
-  implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
+  implements OnInit, OnChanges, OnDestroy, ControlValueAccessor
+{
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
@@ -106,7 +107,7 @@ export class DxcTextInputComponent
   suggestions: any;
 
   @Input()
-  tabIndex: number;
+  tabIndexValue: number;
 
   @Input()
   size: string;
@@ -127,7 +128,7 @@ export class DxcTextInputComponent
     label: "",
     margin: "",
     suggestions: [],
-    tabIndex: 0,
+    tabIndexValue: 0,
     size: "medium",
   });
 

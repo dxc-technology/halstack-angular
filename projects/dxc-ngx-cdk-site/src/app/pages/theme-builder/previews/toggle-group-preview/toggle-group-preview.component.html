@@ -1,22 +1,47 @@
 <div>
   <tbuilder-component-mode text="Default">
-    <dxc-togglegroup margin="xsmall" label="Social networks" tabIndex="1" helperText="Choose a social network">
-      <dxc-toggle label="Facebook" value="test1" > </dxc-toggle>
-      <dxc-toggle label="Twitter" value="test2" > </dxc-toggle>
+    <dxc-togglegroup
+      margin="xsmall"
+      label="Social networks"
+      tabIndexValue="1"
+      helperText="Choose a social network"
+    >
+      <dxc-toggle label="Facebook" value="test1"> </dxc-toggle>
+      <dxc-toggle label="Twitter" value="test2"> </dxc-toggle>
       <dxc-toggle label="Linkedin" value="test3"> </dxc-toggle>
     </dxc-togglegroup>
   </tbuilder-component-mode>
 
   <tbuilder-component-mode text="Controlled">
-    <dxc-togglegroup label="Saiyans" helperText="Choose your favourite" [multiple]="true" [value]="value" margin="xsmall" (onChange)="callbackFunction($event)">
-        <dxc-toggle [label]="option.label" [value]="option.value" *ngFor="let option of controlledOptions"> </dxc-toggle>
+    <dxc-togglegroup
+      label="Saiyans"
+      helperText="Choose your favourite"
+      [multiple]="true"
+      [value]="value"
+      margin="xsmall"
+      (onChange)="callbackFunction($event)"
+    >
+      <dxc-toggle
+        [label]="option.label"
+        [value]="option.value"
+        *ngFor="let option of controlledOptions"
+      >
+      </dxc-toggle>
     </dxc-togglegroup>
   </tbuilder-component-mode>
 
-
   <tbuilder-component-mode text="Controlled and single">
-    <dxc-togglegroup [value]="singleValue" margin="xsmall" (onChange)="callbackFunction2($event)">
-        <dxc-toggle [label]="option.label" [value]="option.value" *ngFor="let option of controlledSingleOptions"> </dxc-toggle>
+    <dxc-togglegroup
+      [value]="singleValue"
+      margin="xsmall"
+      (onChange)="callbackFunction2($event)"
+    >
+      <dxc-toggle
+        [label]="option.label"
+        [value]="option.value"
+        *ngFor="let option of controlledSingleOptions"
+      >
+      </dxc-toggle>
     </dxc-togglegroup>
   </tbuilder-component-mode>
 

@@ -94,7 +94,7 @@ export class DxcTextareaComponent implements OnInit {
   margin: Object | string;
 
   @Input()
-  tabIndex: number;
+  tabIndexValue: number;
 
   @Input()
   size: string;
@@ -114,7 +114,7 @@ export class DxcTextareaComponent implements OnInit {
     name: "",
     label: "",
     margin: "",
-    tabIndex: 0,
+    tabIndexValueValue: 0,
     size: "medium",
     rows: 4,
     verticalGrow: "auto",

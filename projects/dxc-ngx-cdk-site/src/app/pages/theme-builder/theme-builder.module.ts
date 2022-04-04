@@ -70,7 +70,6 @@ import { SpinnerPreviewComponent } from "./previews/spinner-preview/spinner-prev
 import { SwitchPreviewComponent } from "./previews/switch-preview/switch-preview.component";
 import { TagPreviewComponent } from "./previews/tag-preview/tag-preview.component";
 import { TabsPreviewComponent } from "./previews/tabs-preview/tabs-preview.component";
-import { V3TextareaPreviewComponent } from "./previews/v3-textarea-preview/v3-textarea-preview.component";
 import { ToggleGroupPreviewComponent } from "./previews/toggle-group-preview/toggle-group-preview.component";
 import { UploadPreviewComponent } from "./previews/upload-preview/upload-preview.component";
 import { TablePreviewComponent } from "./previews/table-preview/table-preview.component";
@@ -108,7 +107,6 @@ import { TextInputPreviewComponent } from "./previews/text-input-preview/text-in
     SwitchPreviewComponent,
     TagPreviewComponent,
     TabsPreviewComponent,
-    V3TextareaPreviewComponent,
     ToggleGroupPreviewComponent,
     UploadPreviewComponent,
     TablePreviewComponent,

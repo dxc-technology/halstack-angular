@@ -9,7 +9,7 @@ export interface RadioGroupProperties {
   defaultValue?: string;
   options: RadioItem[];
   stacking?: "row" | "column";
-  tabIndex?: number;
+  tabIndexValue?: number;
   error?: string;
 }
 

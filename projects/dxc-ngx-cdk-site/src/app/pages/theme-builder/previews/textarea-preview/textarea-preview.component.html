@@ -2,7 +2,12 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-textarea label="Test" [pattern]="pattern" (onBlur)="onBlur($event)">
+      <dxc-textarea
+        label="Test"
+        [pattern]="pattern"
+        (onBlur)="onBlur($event)"
+        tabIndexValue="3"
+      >
       </dxc-textarea>
     </tbuilder-component-mode>
     <tbuilder-component-mode text="Invalid">

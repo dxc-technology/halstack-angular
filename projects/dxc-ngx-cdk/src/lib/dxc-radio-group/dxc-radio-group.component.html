@@ -3,10 +3,14 @@
   <span *ngIf="optional" class="optionalLabel"> (Optional)</span>
 </div>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
-<div class="radio-list-container" role="radiogroup" [attr.aria-labelledby]="radioGroupId">
+<div
+  class="radio-list-container"
+  role="radiogroup"
+  [attr.aria-labelledby]="radioGroupId"
+>
   <ng-container *ngFor="let option of optionList; index as i">
     <dxc-radio-group-item
-      [tabindex]="indexToFocus === i && !option.disabled ? tabIndex : '-1'"
+      [tabindex]="indexToFocus === i && !option.disabled ? tabIndexValue : '-1'"
       [indexValue]="i"
       [value]="option.value"
       [label]="option.label"
@@ -16,5 +20,12 @@
     ></dxc-radio-group-item>
   </ng-container>
 </div>
-<input #inputRef class="valueInput" [name]="name" [value]="value" readOnly aria-hidden="true" />
-<span *ngIf="error || error===''" class="errorMessage">{{ error }}</span>
+<input
+  #inputRef
+  class="valueInput"
+  [name]="name"
+  [value]="value"
+  readOnly
+  aria-hidden="true"
+/>
+<span *ngIf="error || error === ''" class="errorMessage">{{ error }}</span>

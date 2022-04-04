@@ -7,7 +7,7 @@ import { OptionGroup } from "@dxc-technology/halstack-angular/lib/dxc-select/int
   templateUrl: "./select-preview.component.html",
 })
 export class SelectPreviewComponent implements OnInit {
-  selectedValues: string = "";
+  selectedValues: string = "1";
   array1: Option[] = [
     {
       label: "label1",

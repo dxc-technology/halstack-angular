@@ -71,6 +71,15 @@
       >
       </dxc-select>
       <dxc-select
+        label="default value"
+        helperText="HelperText"
+        multiple="true"
+        margin="xsmall"
+        [options]="array1"
+        [defaultValue]="arrayValue"
+      >
+      </dxc-select>
+      <dxc-select
         label="Label"
         helperText="HelperText"
         multiple="true"
@@ -130,6 +139,31 @@
       (onChange)="onChangeTest($event)"
       (onBlur)="onBlurTest($event)"
       [optional]="true"
+      placeholder="Another placeholder"
+      size="large"
+      tabIndex="3"
+    >
+    </dxc-select>
+
+    <dxc-select
+      label="defaultvalue searchable"
+      helperText="HelperText"
+      margin="xsmall"
+      [defaultValue]="selectedValues"
+      [options]="array1"
+      placeholder="Another placeholder"
+      size="large"
+      searchable="true"
+      tabIndex="3"
+    >
+    </dxc-select>
+
+    <dxc-select
+      label="defaultvalue single"
+      helperText="HelperText"
+      margin="xsmall"
+      [defaultValue]="selectedValues"
+      [options]="array1"
       placeholder="Another placeholder"
       size="large"
       tabIndex="3"

@@ -29,6 +29,7 @@ interface SelectProperties {
   label: string;
   name: string;
   value: string | string[];
+  defaultValue: string | string[];
   placeholder: string;
   helperText: string;
   searchable: boolean;
@@ -67,6 +68,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   value: string | string[];
+
+  @Input()
+  defaultValue: string | string[];
 
   @Input()
   helperText: string;
@@ -129,6 +133,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     label: "",
     name: "",
     value: null,
+    defaultValue: null,
     placeholder: "",
     helperText: "",
     searchable: false,
@@ -237,6 +242,10 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
       ...this.defaultInputs.getValue(),
     })}`;
     this.controlled = this.value || this.value === "" ? true : false;
+    if (this.defaultValue || this.defaultValue === "" && !this.controlled) {
+      this.value = this.defaultValue;
+      this.setDefaultValues();
+    }
     this.service.visualFocused.subscribe((value) => {
       this.focusedOption = value;
       this.setActiveDescendantAttr();

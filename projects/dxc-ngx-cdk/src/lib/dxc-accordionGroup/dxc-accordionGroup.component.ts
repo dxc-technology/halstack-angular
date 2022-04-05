@@ -22,22 +22,7 @@ import {
   coerceNumberProperty,
   coerceBooleanProperty,
 } from "@angular/cdk/coercion";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { AccordionProperties, Space, Spacing } from "./dxc-accordionGroup.types";
 
 @Component({
   selector: "dxc-accordion-group",
@@ -49,7 +34,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * The index of the active accordion. If undefined, the component will be uncontrolled and the active accordion will be managed internally by the component.
    * If null, the component will be controlled and all accordions will be closed.
@@ -90,7 +75,7 @@ export class DxcAccordionGroupComponent implements OnChanges, OnInit {
 
   accordionContent: string;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<AccordionProperties>({
     margin: null,
     indexActive: null,
     disabled: false,

@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-  ElementRef,
   SimpleChanges,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
@@ -15,7 +14,7 @@ import { CssUtils } from "../utils";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { BackgroundProviderInnerComponent } from "../background-provider/background-provider-inner.component";
-import { Margin, Space } from "./dxc-alert.types";
+import { Spacing, Space, AlertProperties } from "./dxc-alert.types";
 
 @Component({
   selector: "dxc-alert",
@@ -70,7 +69,7 @@ export class DxcAlertComponent implements OnChanges {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   /**
    * Size of the component.
@@ -95,7 +94,7 @@ export class DxcAlertComponent implements OnChanges {
     fitContent: "auto",
   };
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<AlertProperties>({
     type: "info",
     mode: "inline",
     inlineText: null,

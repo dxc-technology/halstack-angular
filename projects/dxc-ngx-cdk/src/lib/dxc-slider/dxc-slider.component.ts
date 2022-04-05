@@ -19,22 +19,7 @@ import {
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { spaces } from "../variables";
-
-type Size = "medium" | "large" | "fillParent";
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Space, Spacing } from "./dxc-slider.types";
 
 @Component({
   selector: "dxc-slider",
@@ -121,11 +106,11 @@ export class DxcSliderComponent implements OnInit, OnChanges {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fillParent";
+  @Input() size: "medium" | "large" | "fillParent" = "fillParent";
   /**
    * This function will be used to format the labels displayed next to the slider.
    * The value will be passed as parameter and the function must return the formatted value.

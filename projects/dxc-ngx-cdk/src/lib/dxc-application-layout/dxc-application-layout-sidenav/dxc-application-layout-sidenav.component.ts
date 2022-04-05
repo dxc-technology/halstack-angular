@@ -15,22 +15,11 @@ import { CssUtils } from "../../utils";
 import { responsiveSizes } from "../../variables";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { SidenavService } from "./services/sidenav.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Padding = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import {
+  ApplicationLayoutSidenavProperties,
+  Space,
+  Spacing,
+} from "./dxc-application-layout-sidenav.types";
 
 @Component({
   selector: "dxc-application-layout-sidenav",
@@ -49,7 +38,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
    * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
    */
-  @Input() padding: Space | Padding;
+  @Input() padding: Space | Spacing;
   /**
    * If false, the arrow button is hidden.
    * In lower resolutions the arrow will be always displayed.
@@ -68,9 +57,10 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   isResponsive = true;
   isShown: boolean;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<ApplicationLayoutSidenavProperties>({
     displayArrow: true,
     padding: null,
+    mode: "overlay",
   });
 
   @ViewChild("sidenavContainer", { static: false }) sidenav: ElementRef;

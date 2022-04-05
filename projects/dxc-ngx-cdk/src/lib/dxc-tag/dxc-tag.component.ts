@@ -19,21 +19,8 @@ import {
 } from "@angular/cdk/coercion";
 import { ContentChildren, ChangeDetectorRef } from "@angular/core";
 import { DxcTagIconComponent } from "./dxc-tag-icon/dxc-tag-icon.component";
+import { Space, Spacing, TagProperties } from "../dxc-tag/dxc-tag.types";
 
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
 @Component({
   selector: "dxc-tag",
   templateUrl: "./dxc-tag.component.html",
@@ -66,7 +53,7 @@ export class DxcTagComponent implements OnInit {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * If true, the page is opened in a new browser tab.
    */
@@ -121,11 +108,11 @@ export class DxcTagComponent implements OnInit {
   @ViewChildren("iconContainer", { read: ElementRef })
   iconContainer: QueryList<ElementRef>;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<TagProperties>({
     size: "fitContent",
     iconSrc: null,
     iconBgColor: "#5f249f",
-    label: false,
+    label: null,
     linkHref: null,
     labelPosition: "after",
     margin: null,

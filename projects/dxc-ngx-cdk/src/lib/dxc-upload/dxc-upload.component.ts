@@ -5,6 +5,7 @@ import { SimpleChanges, HostBinding } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { UploadService } from "./services/upload.service";
+import { Space, Spacing, UploadProperties } from "./dxc-upload.type";
 
 @Component({
   selector: "dxc-upload",
@@ -19,8 +20,17 @@ export class DxcUploadComponent implements OnChanges {
 
   newFile = new EventEmitter<any>();
 
+  /**
+   * This function will be called when the user clicks the 'Upload' button for every file to be uploaded, we will as a parameter the File object; apart from that this function should return one promise on which we should make 'then'(here we should show a Success alert) or 'catch' (in this case we would receive the error message as a string)
+   */
   @Input() public uploadCallback: Function;
-  @Input() margin: any;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
+   */
+  @Input() margin: Spacing | Space;
+  /**
+   * Value of the tabindex given to every interactuable elements.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -33,7 +43,7 @@ export class DxcUploadComponent implements OnChanges {
 
   styleDxcUpload: string;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<UploadProperties>({
     margin: null,
     tabIndexValue: 0,
   });

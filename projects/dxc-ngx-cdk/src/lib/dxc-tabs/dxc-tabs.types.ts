@@ -1,4 +1,4 @@
-type Space =
+export type Space =
   | "xxsmall"
   | "xsmall"
   | "small"
@@ -7,7 +7,7 @@ type Space =
   | "xlarge"
   | "xxlarge";
 
-type Spacing = {
+export type Spacing = {
   top?: Space;
   bottom?: Space;
   left?: Space;
@@ -16,6 +16,6 @@ type Spacing = {
 
 export interface TabsProperties {
   activeTabIndex?: number;
-  iconPosition: "top" | "left";
+  iconPosition?: "top" | "left";
   margin?: Space | Spacing;
 }

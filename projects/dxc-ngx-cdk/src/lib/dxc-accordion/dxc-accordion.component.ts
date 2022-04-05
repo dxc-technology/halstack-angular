@@ -21,29 +21,8 @@ import {
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
 import { BackgroundProviderComponent } from "../background-provider/background-provider.component";
+import { AccordionProperties, Space, Spacing } from "./dxc-accordion.types";
 
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
-
-type Padding = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
 
 @Component({
   selector: "dxc-accordion",
@@ -84,12 +63,12 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
    */
-  @Input() padding: Space | Padding;
+  @Input() padding: Space | Spacing;
   /**
    * Represents the state of the panel. When true, the component will be
    * expanded. If undefined, the component will be uncontrolled and its
@@ -126,7 +105,10 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   @ContentChildren(DxcAccordionIconComponent)
   dxcAccordionIcon: QueryList<DxcAccordionIconComponent>;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<AccordionProperties>({
+    label: "",
+    assistiveText: "",
+    isExpanded: false,
     margin: null,
     padding: null,
     disabled: false,

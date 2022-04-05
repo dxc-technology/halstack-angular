@@ -15,21 +15,7 @@ import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.compon
 import { WizardService } from "./services/wizard.service";
 import { ChangeDetectorRef } from "@angular/core";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Spacing, Space, WizardProperties } from "./dxc-wizard.types";
 
 @Component({
   selector: "dxc-wizard",
@@ -49,7 +35,7 @@ export class DxcWizardComponent {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Margin | Space;
+  @Input() margin: Spacing | Space;
   /**
    * Value of the tabindex attribute that is given to all the steps.
    */
@@ -72,10 +58,11 @@ export class DxcWizardComponent {
 
   @HostBinding("class") className;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<WizardProperties>({
     mode: "horizontal",
     currentStep: 0,
     margin: null,
+    tabIndexValue: 0,
   });
 
   constructor(

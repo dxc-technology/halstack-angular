@@ -15,6 +15,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { DxcWizardIconComponent } from "../dxc-wizard-icon/dxc-wizard-icon.component";
 import { WizardService } from "../services/wizard.service";
+import { WizardStepProperties } from "./dxc-wizard-step.types";
 
 @Component({
   selector: "dxc-wizard-step",
@@ -70,7 +71,7 @@ export class DxcWizardStepComponent {
 
   @HostBinding("class") className;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<WizardStepProperties>({
     label: null,
     description: null,
     disabled: false,

@@ -15,22 +15,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-  
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Space, Spacing, SwitchProperties } from "./dxc-switch.types";
 
 @Component({
   selector: "dxc-switch",
@@ -94,11 +79,12 @@ export class DxcSwitchComponent implements OnChanges {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the component.
    */
-  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" =
+    "fitContent";
   /**
    * Value of the tabindex.
    */
@@ -111,14 +97,14 @@ export class DxcSwitchComponent implements OnChanges {
   }
   private _tabIndexValue = 0;
   /**
-   * This event will be emitted when the user changes the state of the switch. 
+   * This event will be emitted when the user changes the state of the switch.
    * The new value of the checked property will be passed as a parameter.
    */
   @Output() onChange: EventEmitter<boolean>;
 
   renderedChecked: boolean;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<SwitchProperties>({
     value: null,
     checked: false,
     disabled: false,

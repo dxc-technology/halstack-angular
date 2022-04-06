@@ -3,22 +3,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { ProgressBarProperties, Space, Spacing } from "./dxc-progressbar.types";
 
 @Component({
   selector: "dxc-progressbar",
@@ -26,7 +11,6 @@ type Margin = {
   providers: [CssUtils],
 })
 export class DxcProgressbarComponent {
-
   /**
    * The value of the progress indicator. If it's received the component is determinate otherwise is indeterminate.
    */
@@ -70,15 +54,20 @@ export class DxcProgressbarComponent {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   @HostBinding("class") className;
   @HostBinding("class.absolute") isAbsolute: boolean = false;
 
   mode: string = "indeterminate";
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<ProgressBarProperties>({
     overlay: false,
+    margin: null,
+    value: null,
+    label: null,
+    helperText: null,
+    showValue: false,
   });
 
   constructor(private utils: CssUtils) {}

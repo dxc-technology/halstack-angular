@@ -20,21 +20,13 @@ import { CssUtils } from "../utils";
 import { OnDestroy } from "@angular/core";
 import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
 import { DxcNumberInputHelper } from "./dxc-number-input.helper";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import {
+  Spacing,
+  Space,
+  OnChangeEvent,
+  OnBlurEvent,
+  NumberInputProperties,
+} from "./dxc-number.types";
 
 @Component({
   selector: "dxc-number-input",
@@ -146,7 +138,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the component ('small' | 'medium' | 'large' | 'fillParent').
    */
@@ -158,7 +150,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
 
   private controlled: boolean;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<NumberInputProperties>({
     placeholder: "",
     error: "",
     optional: false,
@@ -167,7 +159,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
     value: undefined,
     name: "",
     label: "",
-    margin: "",
+    margin: null,
     step: 1,
     min: null,
     max: null,
@@ -180,20 +172,14 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
    * the error (if the value entered is not valid) will be passed to this
    * function. If there is no error, error will be null.
    */
-  @Output() onChange = new EventEmitter<{
-    value: string;
-    error: string | null;
-  }>();
+  @Output() onChange = new EventEmitter<OnChangeEvent>();
   /**
    * This event will emit in case the number loses the focus.
    * An object including the input value and the error (if the value
    * entered is not valid) will be passed to this function. If there is no error,
    * error will be null.
    */
-  @Output() onBlur = new EventEmitter<{
-    value: string;
-    error: string | null;
-  }>();
+  @Output() onBlur = new EventEmitter<OnBlurEvent>();
   @ViewChild("dxcInputRef", { static: false })
   dxcInputRef: DxcTextInputComponent;
 

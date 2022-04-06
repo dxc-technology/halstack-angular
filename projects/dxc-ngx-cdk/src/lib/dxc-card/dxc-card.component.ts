@@ -19,22 +19,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Size = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Space, Spacing, CardProperties } from "./dxc-card.types"
 
 @Component({
   selector: "dxc-card",
@@ -59,7 +44,7 @@ export class DxcCardComponent implements OnInit {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different padding sizes.
    */
-  @Input() imagePadding: Space | Size;
+  @Input() imagePadding: Space | Spacing;
 
   /**
    * Whether the image should appear in relation to the content.
@@ -72,7 +57,7 @@ export class DxcCardComponent implements OnInit {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different padding sizes.
    */
-  @Input() contentPadding: Space | Size;
+  @Input() contentPadding: Space | Spacing;
 
   /**
    * If defined, the card will be displayed as an anchor, using this prop as "href".
@@ -104,7 +89,7 @@ export class DxcCardComponent implements OnInit {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in 
    * order to specify different margin sizes.
    */
-  @Input() margin: Space | Size;
+  @Input() margin: Space | Spacing;
 
   /**
    * Value of the tabindex given when there is an href.
@@ -129,7 +114,7 @@ export class DxcCardComponent implements OnInit {
 
   @ViewChild("content", { static: false }) content: ElementRef;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<CardProperties>({
     imageSrc: null,
     imageBgColor: "black",
     imagePadding: null,

@@ -17,21 +17,7 @@ import {
   QueryList,
 } from "@angular/core";
 import { DxcLinkIconComponent } from "./dxc-link-icon/dxc-link-icon.component";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { LinkProperties, Space, Spacing } from "./dxc-link.types";
 
 @Component({
   selector: "dxc-link",
@@ -102,7 +88,7 @@ export class DxcLinkComponent {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Value of the tabindex.
    */
@@ -129,7 +115,7 @@ export class DxcLinkComponent {
   isClickDefined = false;
   styledButton: string;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<LinkProperties>({
     underlined: false,
     inheritColor: false,
     disabled: false,

@@ -9,27 +9,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
-type Padding = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { BoxProperties, Space, Spacing } from "./dxc-box.types";
 
 @Component({
   selector: "dxc-box",
@@ -50,12 +30,12 @@ export class DxcBoxComponent implements OnInit {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
    */
-  @Input() padding: Space | Padding;
+  @Input() padding: Space | Spacing;
   /**
    * Size of the component.
    */
@@ -71,9 +51,9 @@ export class DxcBoxComponent implements OnInit {
     fitContent: "fit-content",
   };
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<BoxProperties>({
     display: "inline-flex",
-    shadowDepth: "2",
+    shadowDepth: 2,
     margin: null,
     padding: null,
     size: null,

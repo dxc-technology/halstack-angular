@@ -1,4 +1,4 @@
-export interface LinkProperties {
+export interface HeadingProperties {
   margin?: Space | Spacing;
   level: 1 | 2 | 3 | 4 | 5;
   asTag: "h1" | "h2" | "h3" | "h4" | "h5";

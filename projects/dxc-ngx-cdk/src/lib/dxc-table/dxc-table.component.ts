@@ -3,22 +3,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { CssUtils } from "../utils";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Space, Spacing, TableProperties } from "./dxc-table.types";
 
 @Component({
   selector: "dxc-table",
@@ -33,10 +18,12 @@ export class DxcTableComponent {
    * can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   @HostBinding("class") className;
-  defaultInputs = new BehaviorSubject<any>({});
+  defaultInputs = new BehaviorSubject<TableProperties>({
+    margin: null,
+  });
   currentBackgroundColor: string;
 
   constructor(private utils: CssUtils) {}
@@ -110,13 +97,4 @@ export class DxcTableComponent {
       }
     `;
   }
-
-  private calculateWidth = (margin: Space | Margin) => {
-    return margin
-      ? `width: calc(100% - ${this.utils.getMarginValue(
-          margin,
-          "left"
-        )} - ${this.utils.getMarginValue(margin, "right")})`
-      : "";
-  };
 }

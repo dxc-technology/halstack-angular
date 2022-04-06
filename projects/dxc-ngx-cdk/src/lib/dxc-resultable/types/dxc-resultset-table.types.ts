@@ -6,3 +6,10 @@ export type Space =
   | "large"
   | "xlarge"
   | "xxlarge";
+
+export type Spacing = {
+  top?: Space;
+  bottom?: Space;
+  left?: Space;
+  right?: Space;
+};

@@ -18,22 +18,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Padding = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { HeaderProperties, Space, Spacing } from "./dxc-header.types";
 
 @Component({
   selector: "dxc-header",
@@ -92,7 +77,7 @@ export class DxcHeaderComponent implements OnChanges {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to
    * specify different padding sizes.
    */
-  @Input() padding: Space | Padding;
+  @Input() padding: Space | Spacing;
 
   @HostBinding("class") className;
 
@@ -105,17 +90,13 @@ export class DxcHeaderComponent implements OnChanges {
 
   currentBackgroundColor: string;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<HeaderProperties>({
     underlined: false,
     logoSrc: null,
     logoResponsiveSrc: null,
     tabIndexValue: 0,
     margin: null,
     padding: null,
-    isResponsive: false,
-    isMenuVisible: false,
-    innerWidth,
-    innerHeight,
   });
 
   @HostListener("window:resize", ["$event"])

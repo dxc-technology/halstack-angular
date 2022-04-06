@@ -79,6 +79,10 @@ export class DxcButtonComponent {
    */
   @Input() size: Size = "fitContent";
   /**
+   * This prop corresponds to the 'type' prop of the button in html.
+   */
+  @Input() type: "reset" | "submit" | "button" = "button";
+  /**
    * Value of the tabindex attribute.
    */
   @Input()

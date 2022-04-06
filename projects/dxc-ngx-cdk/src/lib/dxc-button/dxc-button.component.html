@@ -1,5 +1,12 @@
-<button class="dxcButton" disableRipple mat-button [disabled]="disabled" (click)="onClickHandler($event)"
-  [tabindex]="disabled ? -1 : tabIndexValue">
+<button
+  class="dxcButton"
+  [type]="type"
+  disableRipple
+  mat-button
+  [disabled]="disabled"
+  (click)="onClickHandler($event)"
+  [tabindex]="disabled ? -1 : tabIndexValue"
+>
   <img src="{{ iconSrc }}" *ngIf="iconSrc" />
   <ng-content select="dxc-button-icon"></ng-content>
   <span *ngIf="label">{{ label }}</span>

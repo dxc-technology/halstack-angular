@@ -14,8 +14,9 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { DialogProperties, Spacing } from "./dxc-dialog.types";
 
-type Space = 
+type Space =
   | "xxsmall"
   | "xsmall"
   | "small"
@@ -23,8 +24,6 @@ type Space =
   | "large"
   | "xlarge"
   | "xxlarge";
-;
-
 type Padding = {
   top?: Space;
   bottom?: Space;
@@ -68,7 +67,7 @@ export class DxcDialogComponent {
    * object with 'top', 'bottom', 'left' and 'right' to
    * specify different padding sizes.
    */
-  @Input() padding: Space | Padding = "small";
+  @Input() padding: Space | Spacing = "small";
 
   /**
    * Value of the tabindex given to the close button.
@@ -90,7 +89,7 @@ export class DxcDialogComponent {
 
   /**
    * This event will emit when the user clicks the background.
-   * The responsibility of hiding the dialog lies with the user. 
+   * The responsibility of hiding the dialog lies with the user.
    * */
   @Output() onBackgroundClick: EventEmitter<void> = new EventEmitter<void>();
 
@@ -98,10 +97,11 @@ export class DxcDialogComponent {
 
   currentBackgroundColor: string;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<DialogProperties>({
     overlay: true,
     isCloseVisible: true,
     padding: "small",
+    margin: null,
     tabIndexValue: 0,
   });
 

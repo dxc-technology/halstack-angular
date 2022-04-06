@@ -11,22 +11,7 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
-
+import { Space, Spacing, SpinnerProperties } from "./dxc-spinner.types";
 @Component({
   selector: "dxc-spinner",
   templateUrl: "./dxc-spinner.component.html",
@@ -50,7 +35,7 @@ export class DxcSpinnerComponent implements OnInit {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * If true, the value is displayed inside the spinner..
    */
@@ -82,7 +67,7 @@ export class DxcSpinnerComponent implements OnInit {
   radioLargeSize: number = 65;
   radioSmallSize: number = 6;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<SpinnerProperties>({
     showValue: false,
     mode: "large",
     value: 0,

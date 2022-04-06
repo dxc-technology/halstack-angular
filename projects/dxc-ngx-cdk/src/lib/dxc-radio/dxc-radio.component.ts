@@ -13,22 +13,7 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { RadioProperties, Space, Spacing } from "./dxc-radio.types";
 
 @Component({
   selector: "dxc-radio",
@@ -102,11 +87,11 @@ export class DxcRadioComponent implements OnInit {
 
   /**
    * Size of the margin to be applied to the component
-   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
-   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in 
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in
    * order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   /**
    * Size of the component.
@@ -120,7 +105,7 @@ export class DxcRadioComponent implements OnInit {
 
   renderedChecked: boolean;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<RadioProperties>({
     checked: false,
     value: null,
     label: null,
@@ -130,7 +115,6 @@ export class DxcRadioComponent implements OnInit {
     required: false,
     margin: null,
     size: "fitContent",
-    id: null,
   });
 
   sizes = {

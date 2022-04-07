@@ -20,22 +20,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { DropdownService } from "./services/dropdown.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { DropdownProperties, Space, Spacing } from "./dxc-dropdown.types";
 
 @Component({
   selector: "dxc-dropdown",
@@ -79,11 +64,11 @@ export class DxcDropdownComponent implements OnChanges {
 
   /**
    * Size of the margin to be applied to the component
-   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
-   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties 
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   /**
    * Size of the component.
@@ -151,9 +136,8 @@ export class DxcDropdownComponent implements OnChanges {
   menuOptions: string;
   triggerStyles: string;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<DropdownProperties>({
     optionsIconPosition: "before",
-    iconSrc: null,
     iconPosition: "before",
     label: null,
     name: null,

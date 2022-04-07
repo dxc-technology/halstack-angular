@@ -21,28 +21,13 @@ import {
   MAT_RIPPLE_GLOBAL_OPTIONS,
   RippleGlobalOptions,
 } from "@angular/material/core";
+import { TabsProperties, Spacing, Space } from "./dxc-tabs.types";
 
 const globalRippleConfig: RippleGlobalOptions = {
   animation: {
     enterDuration: 0,
     exitDuration: 0,
   },
-};
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
 };
 
 @Component({
@@ -75,11 +60,11 @@ export class DxcTabsComponent implements OnChanges {
 
   /**
    * Size of the margin to be applied to the component
-   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
-   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties 
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   @HostBinding("class") className;
   @HostBinding("class.label-icons") allTabWithLabelAndIcon: boolean = false;
@@ -94,7 +79,7 @@ export class DxcTabsComponent implements OnChanges {
   @ContentChildren(DxcTabComponent)
   protected tabs: QueryList<DxcTabComponent>;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<TabsProperties>({
     activeTabIndex: 0,
     iconPosition: "left",
     margin: null,

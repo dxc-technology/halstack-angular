@@ -1,7 +1,7 @@
 <div class="progressContainer" [ngClass]="[overlay ? 'overlayed' : '']">
   <div class="backOverlay" *ngIf="overlay"></div>
   <div class="labelContainer" [ngClass]="[overlay ? '' : 'notOverlayed']">
-    <span class="label" *ngIf="label">{{ label }}</span>
+    <span class="label">{{ label }}</span>
     <span class="value" *ngIf="(value || value === 0) && showValue"
       >{{ value }}%</span
     >

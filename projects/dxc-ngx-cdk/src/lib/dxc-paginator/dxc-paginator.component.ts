@@ -12,6 +12,7 @@ import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
 import { css } from "emotion";
 import { Option } from "../dxc-select/interfaces/option.interface";
+import { ProgressBarProperties } from "./dxc-paginator.types";
 
 @Component({
   selector: "dxc-paginator",
@@ -120,7 +121,7 @@ export class DxcPaginatorComponent implements OnInit {
   showNext: boolean = false;
   showPrev: boolean = false;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<ProgressBarProperties>({
     currentPage: 1,
     itemsPerPage: 5,
     showGoToPage: false,

@@ -12,27 +12,7 @@ import { CssUtils } from "../utils";
 import { responsiveSizes } from "../variables";
 import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
-
-export interface DxcFooterInputs {
-  margin: Space | Margin;
-  padding: Space | Margin;
-}
+import { FooterProperties, Space, Spacing } from "./dxc-footer.types";
 
 @Component({
   selector: "dxc-footer",
@@ -69,14 +49,14 @@ export class DxcFooterComponent implements OnChanges {
    * can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the padding to be applied to the custom area of the component
    * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' |
    * 'xxlarge'). You can pass an object with 'top', 'bottom', 'left' and
    * 'right' properties in order to specify different padding sizes.
    */
-  @Input() padding: Space | Margin;
+  @Input() padding: Space | Spacing;
   /**
    * The path of an icon to replace the theme logo.
    */
@@ -100,9 +80,14 @@ export class DxcFooterComponent implements OnChanges {
   bottomLinksLength: number;
   currentBackgroundColor: string;
 
-  defaultInputs = new BehaviorSubject<DxcFooterInputs>({
+  defaultInputs = new BehaviorSubject<FooterProperties>({
     margin: null,
     padding: null,
+    socialLinks: [],
+    bottomLinks: [],
+    copyright: "© DXC Technology 2022. All rights reserved.",
+    logoSrc: null,
+    tabIndexValue: 0,
   });
 
   @HostListener("window:resize", ["$event"])

@@ -13,22 +13,8 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { SidenavProperties, Space, Spacing } from "./dxc-sidenav.types";
 
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Padding = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
 @Component({
   selector: "dxc-sidenav",
   templateUrl: "./dxc-sidenav.component.html",
@@ -41,14 +27,13 @@ export class DxcSidenavComponent implements OnInit {
    * Size of the padding to be applied to the custom area ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different padding sizes.
    */
-  @Input() padding: Space | Padding;
+  @Input() padding: Space | Spacing;
 
   firstClick: boolean = false; //remove animation on first load
 
   currentBackgroundColor: string;
 
-  defaultInputs = new BehaviorSubject<any>({
-    displayArrow: true,
+  defaultInputs = new BehaviorSubject<SidenavProperties>({
     padding: null,
   });
 

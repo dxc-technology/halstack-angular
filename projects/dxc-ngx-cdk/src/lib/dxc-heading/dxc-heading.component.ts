@@ -2,22 +2,7 @@ import { css } from "emotion";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { HeadingProperties, Space, Spacing } from "./dxc-heading.types";
 
 @Component({
   selector: "dxc-heading",
@@ -45,11 +30,11 @@ export class DxcHeadingComponent {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   @HostBinding("class") className;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<HeadingProperties>({
     level: 1,
     asTag: null,
     text: null,

@@ -1,7 +1,3 @@
-export type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
-
-export type Mode = "primary" | "secondary" | "text";
-
 export type Space =
   | "xxsmall"
   | "xsmall"
@@ -19,13 +15,13 @@ export type Spacing = {
 };
 
 export interface ButtonProperties {
-    mode: Mode;
+    mode: "primary" | "secondary" | "text";
     label: string;
     disabled: boolean;
     iconSrc: string;
     iconPosition: "before" | "after";
     margin: Space | Spacing;
-    size: Size;
+    size: "small" | "medium" | "large" | "fillParent" | "fitContent";
     type: "reset" | "submit" | "button";
     tabIndexValue: number;
 }

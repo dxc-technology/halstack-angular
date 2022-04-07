@@ -19,7 +19,7 @@ import {
 } from "@angular/cdk/coercion";
 import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.component";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-import { Size, Space, Spacing, Mode, ButtonProperties } from "./dxc-button.types";
+import { Space, Spacing, ButtonProperties } from "./dxc-button.types";
 
 @Component({
   selector: "dxc-button",
@@ -30,7 +30,7 @@ export class DxcButtonComponent {
   /**
    * Uses one of the available button modes.
    */
-  @Input() mode: Mode = "primary";
+  @Input() mode: "primary" | "secondary" | "text" = "primary";
   /**
    * If true, the component will be disabled.
    */
@@ -62,7 +62,7 @@ export class DxcButtonComponent {
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" = "fitContent";
   /**
    * This prop corresponds to the 'type' prop of the button in html.
    */

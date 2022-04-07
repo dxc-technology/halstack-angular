@@ -19,22 +19,7 @@ import {
 } from "@angular/cdk/coercion";
 import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.component";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Size = "small" | "medium" | "large" | "fillParent" | "fitContent";
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Space, Spacing, ButtonProperties } from "./dxc-button.types";
 
 @Component({
   selector: "dxc-button",
@@ -73,11 +58,11 @@ export class DxcButtonComponent {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the component.
    */
-  @Input() size: Size = "fitContent";
+  @Input() size: "small" | "medium" | "large" | "fillParent" | "fitContent" = "fitContent";
   /**
    * This prop corresponds to the 'type' prop of the button in html.
    */
@@ -107,7 +92,7 @@ export class DxcButtonComponent {
   lightBackground: boolean = true;
   darkBackground: boolean = false;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<ButtonProperties>({
     mode: "primary",
     disabled: false,
     label: null,
@@ -116,6 +101,7 @@ export class DxcButtonComponent {
     margin: null,
     size: "fitContent",
     tabIndexValue: 0,
+    type: "button"
   });
 
   constructor(

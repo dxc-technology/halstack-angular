@@ -20,6 +20,7 @@ import {
 import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
 import { ChangeDetectorRef } from "@angular/core";
 import { v4 as uuidv4 } from "uuid";
+import { Space, Spacing, ToggleGroupProperties } from "./dxc-toggleGroup.types";
 
 @Component({
   selector: "dxc-togglegroup",
@@ -29,6 +30,10 @@ import { v4 as uuidv4 } from "uuid";
   providers: [CssUtils],
 })
 export class DxcToggleGroupComponent implements OnInit {
+  /**
+  * If true, the toggle group will support multiple selection. 
+  * In that case, value must be an array of numbers with the keys of the selected values.
+  */
   @Input()
   get multiple(): boolean {
     return this._multiple;
@@ -37,6 +42,9 @@ export class DxcToggleGroupComponent implements OnInit {
     this._multiple = coerceBooleanProperty(value);
   }
   private _multiple = false;
+  /**
+  * If true, the component will be disabled.
+  */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -45,6 +53,9 @@ export class DxcToggleGroupComponent implements OnInit {
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
+  /**
+  * Value of the tabindex which its propagated to their children components.
+  */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -53,23 +64,41 @@ export class DxcToggleGroupComponent implements OnInit {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue;
-  @Input() public margin: any;
+  /**
+  * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+  * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+  */
+  @Input() public margin: Space | Spacing;
+  /**
+  * Text to be placed next to the input.
+  */
   @Input() label: string;
+  /**
+  * Assistive text to be placed bellow the input.
+  */
   @Input() helperText: string;
-
-  @Input() public value: any;
-  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
+  /**
+  * Value(s) of the toggle(s) that are toggled. 
+  * If undefined, the component will be uncontrolled and the value will be managed internally by the component.
+  */ 
+  @Input() public value: string | string[];
+  /**
+  * This function will be called when the user changes the state of any toggle. 
+  * The new value or values will be passed as a parameter.
+  */
+  @Output() public onChange: EventEmitter<string | string[]> = new EventEmitter<string | string[]>();
   @ContentChildren(DxcToggleComponent)
   toggleGroup: QueryList<DxcToggleComponent>;
 
   toggleGroupId: string;
 
-  selectedOptions = [];
+  selectedOptions: string[] = [];
   private isControlled: boolean = false;
 
   @HostBinding("class") styledDxcToggleGroup;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<ToggleGroupProperties>({
+    label: "",
     multiple: false,
     disabled: false,
     margin: null,
@@ -143,7 +172,7 @@ export class DxcToggleGroupComponent implements OnInit {
         this.selectedOptions =
           selectedOption === this.selectedOptions ? null : selectedOption;
       }
-    } else if (this.multiple) {
+    } else if (this.multiple && Array.isArray(this.value)) {
       newSelectedOptions = this.value.map((v) => v);
       if (newSelectedOptions.includes(selectedOption)) {
         const index = newSelectedOptions.indexOf(selectedOption);
@@ -187,7 +216,7 @@ export class DxcToggleGroupComponent implements OnInit {
     } else {
       this.isControlled
         ? (item.selected = item.value === this.value)
-        : (item.selected = item.value === this.selectedOptions);
+        : (item.selected = this.selectedOptions.includes(item.value));
     }
   }
 

@@ -20,20 +20,8 @@ import { BackgroundProviderService } from "../../public-api";
 import { CssUtils } from "../utils";
 import { DxcTextareaHelper } from "./dxc-textarea.helper";
 import { v4 as uuidv4 } from "uuid";
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { Space, Spacing, TextareaProperties } from "./dxc-textarea.types";
+
 @Component({
   selector: "dxc-textarea",
   templateUrl: "./dxc-textarea.component.html",
@@ -57,12 +45,11 @@ export class DxcTextareaComponent implements OnInit {
    */
   @Input()
   value: string;
-  
+  /**
+   * Default value given to the textarea when is uncontrolled and also maintains the uncontrolled behaviour.
+   */
   @Input()
   defaultValue: string;
-
-  @Input()
-  id: string;
   /**
    * Helper text to be placed above the textarea.
    */
@@ -153,7 +140,7 @@ export class DxcTextareaComponent implements OnInit {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
   @Input()
-  margin: Space | Margin;
+  margin: Space | Spacing;
   /**
    * Value of the tabindex attribute.
    */
@@ -171,7 +158,7 @@ export class DxcTextareaComponent implements OnInit {
   @Input()
   autocomplete: string = "off";
   private controlled: boolean;
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<TextareaProperties>({
     placeholder: "",
     error: "",
     optional: false,
@@ -180,20 +167,20 @@ export class DxcTextareaComponent implements OnInit {
     value: undefined,
     name: "",
     label: "",
-    margin: "",
-    tabIndexValueValue: 0,
+    margin: undefined,
+    tabIndexValue: 0,
     size: "medium",
     rows: 4,
     verticalGrow: "auto",
   });
   /**
-   * This function will be called when the user types within the textarea. An object including the new value and the error will be passed to this function. 
+   * This event will emit when the user types within the textarea. An object including the new value and the error will be passed to this function. 
    * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
    */
   @Output()
   onChange = new EventEmitter<{value: string; error: string | null}>();
   /**
-   * This function will be called when the textarea loses the focus. An object including the textarea value and the error will be passed to this function. 
+   * This event will emit when the textarea loses the focus. An object including the textarea value and the error will be passed to this function. 
    * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
    */
   @Output()

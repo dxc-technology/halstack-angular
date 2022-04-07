@@ -58,12 +58,11 @@ import { RenderRow } from "./interfaces/render-row.interface";
 import { dxcResultsetTableDataSourceInput } from "./types/dxc-resultset-table-datasource.type";
 import { HeaderOutlet } from "./directives/header-outlet.directive";
 import { DataRowOutlet } from "./directives/data-row-outlet.directive";
-import { Space } from "./types/table-space.type";
-import { Size } from "./types/table-size.type";
 import { RowViewRef } from "./classes/row-viewref.class";
 import { RowContext } from "./interfaces/row-context.interface";
 import { DxcCellOutlet } from "./directives/dxc-cell-outlet.directive";
 import { TableDataSource } from "./classes/table-data-source.class";
+import { Space, Spacing } from "./types/dxc-resultset-table.types";
 
 /**
  * A data table that can render a header row, data rows, and a footer row.
@@ -129,7 +128,7 @@ export class DxcResultTable<T>
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in
    * order to specify different padding sizes.
    */
-  @Input() margin: Space | Size;
+  @Input() margin: Space | Spacing;
   /**
    * An array of numbers representing the items per page options.
    */

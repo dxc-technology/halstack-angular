@@ -15,8 +15,14 @@ import { OnInit } from "@angular/core";
   providers: [],
 })
 export class DxcToggleComponent implements OnInit {
+  /**
+   * Label displayed in the option.
+   */
   @Input() label: string;
-  @Input() value;
+  /**
+   * Value of the option.
+   */
+  @Input() value: string;
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onKeyPress: EventEmitter<any> = new EventEmitter<any>();
   role: string;

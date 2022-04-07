@@ -21,7 +21,7 @@
     <td>Assistive text to be placed bellow the input.</td>
   </tr>
   <tr>
-    <td>value: any | any[]</td>
+    <td>value: string | string[]</td>
     <td></td>
     <td>
       Value(s) of the toggle(s) that are toggled. If undefined, the component
@@ -34,7 +34,10 @@
     <td>
       <code>false</code>
     </td>
-    <td>If false only one toggle can be toggled.</td>
+    <td>
+      If true, the toggle group will support multiple selection.
+      In that case, value must be an array of each of the selected toggle's value.
+    </td>
   </tr>
   <tr>
     <td>disabled: boolean</td>
@@ -57,7 +60,7 @@
     </td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |

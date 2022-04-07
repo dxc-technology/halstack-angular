@@ -16,22 +16,7 @@ import {
 } from "@angular/cdk/coercion";
 
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { CheckboxProperties, Space, Spacing } from "./dxc-checkbox.types";
 
 @Component({
   selector: "dxc-checkbox",
@@ -121,7 +106,7 @@ export class DxcCheckboxComponent implements OnInit {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
    * in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
 
   /**
    * Size of the component.
@@ -138,7 +123,7 @@ export class DxcCheckboxComponent implements OnInit {
 
   renderedChecked: boolean;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<CheckboxProperties>({
     checked: false,
     value: null,
     label: null,
@@ -148,8 +133,7 @@ export class DxcCheckboxComponent implements OnInit {
     required: false,
     tabIndexValue: 0,
     margin: null,
-    size: "fitContent",
-    id: null,
+    size: "fitContent"
   });
 
   sizes = {

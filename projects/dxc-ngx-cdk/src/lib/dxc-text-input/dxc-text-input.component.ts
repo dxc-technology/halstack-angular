@@ -23,6 +23,7 @@ import { v4 as uuidv4 } from "uuid";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import EmittedValue from "./emitted-value.type";
+import { Space, Spacing, TextInputProperties } from "./dxc-text-input.types";
 
 @Component({
   selector: "dxc-text-input",
@@ -44,29 +45,40 @@ export class DxcTextInputComponent
   @HostBinding("class") className;
   @HostBinding("class.hasError") hasError = false;
 
-  @Input()
-  label: string;
-
-  @Input()
-  name: string;
-
-  @Input()
-  value: string;
-
-  @Input()
-  defaultValue: string;
-
-  @Input()
-  id: string;
-
-  @Input()
-  helperText: string;
-
-  @Input()
-  autocomplete: string = "off";
+  /**
+   * Text to be placed above the input. This label will be used as the aria-label attribute of the list of suggestions.
+   */
+  @Input() label: string;
+  /**
+   * Name attribute of the input element.
+   */
+  @Input() name: string = "";
+  /**
+   * Value of the input. If undefined, the component will be uncontrolled and the value will be managed internally by the component.
+   */
+  @Input() value: string;
+  /**
+   * Initial value of the input, only when it is uncontrolled.
+   */
+  @Input() defaultValue: string;
+  /**
+   * Helper text to be placed above the input.
+   */
+  @Input() helperText: string;
+  /**
+   * Text to be put as placeholder of the input.
+   */
+  @Input() placeholder: string = "";
+  /**
+   * HTML autocomplete attribute. Lets the user specify if any permission the user agent has to provide automated assistance in filling out the input value.
+   * Its value must be one of all the possible values of the HTML autocomplete attribute: 'on', 'off', 'email', 'username', 'new-password', ...
+   */
+  @Input() autocomplete: string = "off";
 
   hasAction = () => this.onActionClick.observers.length;
-
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -75,7 +87,12 @@ export class DxcTextInputComponent
     this._disabled = coerceBooleanProperty(value);
   }
   private _disabled = false;
-
+  /**
+   * If true, the input will be optional, showing '(Optional)'
+   * next to the label. Otherwise, the field will be considered required and an error will be
+   * passed as a parameter to the OnBlur and onChange events when it has
+   * not been filled.
+   */
   @Input()
   get optional(): boolean {
     return this._optional;
@@ -84,42 +101,71 @@ export class DxcTextInputComponent
     this._optional = coerceBooleanProperty(value);
   }
   private _optional = false;
+  /**
+   * If true, the input will have an action to clear the entered value.
+   */
+  @Input() clearable: boolean = false;
+  /**
+   * If it is defined, the component will change its appearance, showing
+   * the error below the input component. If it is not defined, the error
+   * messages will be managed internally, but never displayed on its own.
+   */
+  @Input() error: string = "";
+  /**
+   * Regular expression that defines the valid format allowed by the input.
+   * This will be checked when the input loses the focus. If the value entered
+   * does not match the pattern, the onBlur event will emit with the value
+   * entered and the error informing that the value does not match the pattern
+   * as parameters. If the pattern is accomplished, the error parameter will be
+   * null.
+   */
+  @Input() pattern: string;
+  /**
+   * Specifies the minimun length allowed by the input. This will be checked
+   * both when the input element loses the focus and while typing within it. If
+   * the string entered does not comply the minimum length, the onBlur and
+   * onChange events will emit with the current value and an internal error
+   * informing that the value length does not comply the specified range. If a
+   * valid length is reached, the error parameter of both events will be null.
+   */
+  @Input() minLength: number;
+  /**
+   * Specifies the maximum length allowed by the input. This will be checked
+   * both when the input element loses the focus and while typing within it. If
+   * the string entered does not comply the maximum length, the onBlur and
+   * onChange events will emit with the current value and an internal error
+   * informing that the value length does not comply the specified range. If a
+   * valid length is reached, the error parameter of both events will be null.
+   */
+  @Input() maxLength: number;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Space | Spacing;
+  /**
+   * These are the options to be displayed as suggestions. It can be either an array or a function:
+   *    - Array:    Array of options that will be filtered by the component.
+   *    - Function: This function will be called when the user changes the value, we will send as a parameter the new value;
+   *                apart from that this function should return one promise on which we should make 'then' to get the suggestions filtered.
+   */
+  @Input() suggestions: Array<string> | any;
 
-  @Input()
-  clearable = false;
+  /**
+   * Value of the tabindex attribute.
+   */
+  @Input() tabIndexValue: number = 0;
+  /**
+   * Size of the component ('small' | 'medium' | 'large' | 'fillParent').
+   */
+  @Input() size: "small" | "medium" | "large" | "fillParent" = "medium";
 
-  @Input()
-  error = undefined;
-
-  @Input()
-  placeholder = "";
-
-  @Input()
-  pattern = "";
-
-  @Input()
-  minLength: number;
-
-  @Input()
-  maxLength: number;
-
-  @Input()
-  margin: Object | string;
-
-  @Input()
-  suggestions: any;
-
-  @Input()
-  tabIndexValue: number;
-
-  @Input()
-  size: string;
-
+  id: string;
   autoSuggestId: string;
 
   private controlled: boolean;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<TextInputProperties>({
     placeholder: "",
     error: "",
     clearable: false,
@@ -129,20 +175,32 @@ export class DxcTextInputComponent
     value: undefined,
     name: "",
     label: "",
-    margin: "",
+    margin: null,
     suggestions: [],
     tabIndexValue: 0,
     size: "medium",
   });
-
+  /**
+   * This event will be emit when the user types within the input
+   * element of the component. An object including the current value and
+   * the error (if the value entered is not valid) will be passed to this
+   * event. If there is no error, error will be null.
+   */
   @Output()
   onChange = new EventEmitter<EmittedValue>();
-
+  /**
+   * This event will emit when the input element loses the focus.
+   * An object including the input value and the error (if the value
+   * entered is not valid) will be passed to this event. If there is no error,
+   * error will be null.
+   */
   @Output()
   onBlur = new EventEmitter<EmittedValue>();
-
+  /**
+   * This event will emit when the action is clicked.
+   */
   @Output()
-  onActionClick = new EventEmitter<any>();
+  onActionClick = new EventEmitter<string>();
 
   @ViewChild("inputRef", { static: true }) inputRef: ElementRef;
   @ViewChild("autoSuggestOptions", { static: false }) optionsRef: ElementRef;

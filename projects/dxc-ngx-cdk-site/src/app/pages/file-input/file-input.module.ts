@@ -8,9 +8,10 @@ import {
   DxcTagModule,
   DxcChipModule,
   DxcHeadingModule,
+  DxcLinkModule,
 } from "@dxc-technology/halstack-angular";
-import { TabbedSectionModule } from "../../components/tabbed-section/tabbed-section.module";
-import { FileInputPropertiesComponent } from "../../components/examples/file-input/file-input-properties/file-input-properties.component";
+import { TabbedSectionModule } from "src/app/components/tabbed-section/tabbed-section.module";
+import { FileInputPropertiesComponent } from "src/app/components/examples/file-input/file-input-properties/file-input-properties.component";
 import { FileInputExampleComponent } from "../../components/examples/file-input/file-input-example/file-input-example.component";
 import { FileInputComponent } from "./file-input.component";
 import { FileInputImportComponent } from "../../components/examples/file-input/file-input-import/file-input-import.component";
@@ -19,7 +20,7 @@ import { ComponentsSidenavModule } from "../components-sidenav/components-sidena
 import { FileInputApiComponent } from "../../components/examples/file-input/file-input-api/file-input-api.component";
 import { ColorPreviewModule } from "../../components/color-preview/color-preview.module";
 import { CodesandboxViewerModule } from "../../components/codesandbox-viewer/codesandbox-viewer.module";
-import { StatusTagModule } from "../../components/status-tag/status-tag.module";
+import { StatusTagModule } from "src/app/components/status-tag/status-tag.module";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { StatusTagModule } from "../../components/status-tag/status-tag.module";
     DxcChipModule,
     CodesandboxViewerModule,
     DxcHeadingModule,
+    DxcLinkModule,
     StatusTagModule,
   ],
   exports: [

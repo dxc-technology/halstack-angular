@@ -21,22 +21,7 @@ import { v4 as uuidv4 } from "uuid";
 import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
-
-interface FileInputProperties {
-  name: string;
-  mode: string;
-  label: string;
-  helperText: string;
-  accept: string;
-  multiple: boolean;
-  showPreview: boolean;
-  disabled: boolean;
-  maxSize: number;
-  minSize: number;
-  margin: string;
-  tabIndexValue: number;
-  value: Array<FileData>;
-}
+import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
 
 @Component({
   selector: "dxc-file-input",
@@ -46,13 +31,34 @@ interface FileInputProperties {
 export class DxcFileInputComponent implements OnChanges, OnInit {
   @ViewChild("fileInput", { static: false }) fileInputNative: ElementRef;
   @HostBinding("class") className;
-  @Input() public name: string;
-  @Input() public mode: string = "file";
-  @Input() public label: string;
-  @Input() public buttonLabel: string;
-  @Input() public helperText: string;
-  @Input() public value: Array<FileData>;
-  @Input() public accept: any;
+  /**
+   * Name attribute.
+   */
+  @Input() public name: string = "";
+  /**
+   * Available modes of the component.
+   */
+  @Input() public mode: "file" | "filedrop" | "dropzone" = "file";
+  /**
+   * Text to be placed above the component.
+   */
+  @Input() public label: string = "";
+  /**
+   * Helper text to be placed above the component.
+   */
+  @Input() public helperText: string = "";
+  /**
+   * An array of files representing the selected files.
+   */
+  @Input() public value: FileData[];
+  /**
+   * The file types that the component accepts. Its value must be one of all the possible values of the HTML file input's accept attribute.
+   */
+  @Input() public accept: string;
+  /**
+   * If true, the component allows multiple file items and will show all of them. If false, only one file will be shown,
+   * and if there is already one file selected and a new one is chosen, it will be replaced by the new selected one.
+   */
   @Input()
   get multiple(): boolean {
     return this._multiple;
@@ -61,6 +67,9 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._multiple = coerceBooleanProperty(value);
   }
   private _multiple = true;
+  /**
+   * If true, if the file is an image, a preview of it will be shown. If not, an icon refering to the file type will be shown.
+   */
   @Input()
   get showPreview(): boolean {
     return this._showPreview;
@@ -68,7 +77,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   set showPreview(value: boolean) {
     this._showPreview = coerceBooleanProperty(value);
   }
-  private _showPreview;
+  private _showPreview = false;
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -76,7 +88,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
   }
-  private _disabled;
+  private _disabled = false;
+  /**
+   * The minimum file size (in bytes) allowed. If the size of the file does not comply the minSize, the file will have an error.
+   */
   @Input()
   get minSize(): number {
     return this._minSize;
@@ -85,6 +100,9 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._minSize = coerceNumberProperty(value);
   }
   private _minSize;
+  /**
+   * The maximum file size (in bytes) allowed. If the size of the file does not comply the maxSize, the file will have an error.
+   */
   @Input()
   get maxSize(): number {
     return this._maxSize;
@@ -93,7 +111,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._maxSize = coerceNumberProperty(value);
   }
   private _maxSize;
-  @Input() public margin: any;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() public margin: Space | Spacing;
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -103,8 +128,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   }
   private _tabIndexValue = 0;
   hasShowError: boolean = false;
-
-  @Output() callbackFile = new EventEmitter<any>();
+  /**
+   * This event will emit when the user selects or drops a file. The file or list of files will be sent as a parameter.
+   */
+  @Output() callbackFile = new EventEmitter<FileData[]>();
 
   defaultInputs = new BehaviorSubject<FileInputProperties>({
     name: null,
@@ -149,21 +176,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.hasShowError = this.isErrorShow();
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
     this.hasSingleFile = this.isSingleFilesPrintables();
-    if (!this.buttonLabel) {
-      console.log(
-        this.mode === "file"
-          ? this.multiple
-            ? "Select files"
-            : "Select file"
-          : "Select"
-      );
-      this.buttonLabel =
-        this.mode === "file"
-          ? this.multiple
-            ? "Select files"
-            : "Select file"
-          : "Select";
-    }
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

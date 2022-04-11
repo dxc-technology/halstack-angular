@@ -15,7 +15,7 @@ import { MdePopoverModule } from "@material-extended/mde";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { ThemeModule } from "../theme/theme.module";
-import { DateHelper } from '../helpers/date/date-helper';
+import { DateHelper } from './helpers/date-helper';
 import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [DxcDateComponent],

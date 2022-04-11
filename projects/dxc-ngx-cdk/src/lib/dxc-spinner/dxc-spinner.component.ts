@@ -10,7 +10,7 @@ import { css } from "emotion";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { LoaderService } from './../services/spinner/loader.service';
+import { LoaderService } from './services/loader.service';
 import { LoaderState } from './dxc-spinner.interface';
 @Component({
   selector: "dxc-spinner",
@@ -47,7 +47,7 @@ export class DxcSpinnerComponent {
     mode: "large"
   });
 
-  private subscription: Subscription;
+  private subscriptions: Subscription;
   show = false;
 
   constructor(private utils: CssUtils, private injector: Injector,) {
@@ -99,7 +99,7 @@ export class DxcSpinnerComponent {
     if (this.value) {
       this.type = "determinate";
     }
-    this.subscription = this.loaderService.loaderState
+    this.subscriptions = this.loaderService.loaderState
       .subscribe((state: LoaderState) => {
         this.show = state.show;
       });

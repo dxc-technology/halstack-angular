@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ConfigurationsetupService } from '../../services/startup/configurationsetup.service';
 import { DatePipe } from '@angular/common';
-import { MessageService } from '../../services/toaster/message.service';
-import { LocalStorageService } from '../../services/localstorage/dxc-localstorage.service';
+// import { MessageService } from '../../services/toaster/message.service';
+// import { LocalStorageService } from '../../../claims-localstorage/services/localstorage.service';
 import * as moment_ from 'moment';
 const moment = moment_;
 
@@ -11,8 +10,10 @@ const moment = moment_;
 })
 export class DateHelper {
    
-    constructor(private config: ConfigurationsetupService, private messageService: MessageService, private datePipe: DatePipe,
-        private _localStorageService: LocalStorageService) {
+    constructor(private datePipe: DatePipe,
+      // To Do // private messageService: MessageService, 
+      //   private _localStorageService: LocalStorageService
+        ) {
       }
 
     public convertDateToControlFormat(date: string, userFormat: string): string {
@@ -145,7 +146,7 @@ export class DateHelper {
             valid = false;
           if (!valid || (dateValue instanceof Date && dateValue.getFullYear() < 1990 )) {
             var msg = 'Please enter a valid date greater than or equal to ' + this.datePipe.transform(new Date(1900, 0, 1), userFormat);
-            this.messageService.Error(msg);
+            // To Do // this.messageService.Error(msg);
             return '';
           }
           var inst = Object();
@@ -191,7 +192,8 @@ export class DateHelper {
     
       getSystemOverrideDate(): Date {
         var dCurrentDateTime = new Date();
-        let sSystemDate = this._localStorageService.get('systemOverrideDate');
+        let sSystemDate = null;
+        // To Do //  let sSystemDate = this._localStorageService.get('systemOverrideDate');
         if (!sSystemDate) {
           return dCurrentDateTime;
         } else {

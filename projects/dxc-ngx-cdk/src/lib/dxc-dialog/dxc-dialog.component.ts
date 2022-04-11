@@ -14,22 +14,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
-import { DialogProperties, Spacing } from "./dxc-dialog.types";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-type Padding = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import { DialogProperties, Space, Spacing } from "./dxc-dialog.types";
 
 @Component({
   selector: "dxc-dialog",

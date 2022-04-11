@@ -113,7 +113,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
   /**
    * Value of the tabindex attribute.
    */
-  @Input() tabIndex: number = 0;
+  @Input() tabIndexValue: number = 0;
 
   defaultInputs = new BehaviorSubject<PasswordInputProperties>({
     error: "",

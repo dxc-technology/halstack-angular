@@ -1,4 +1,4 @@
-export interface VisualOptionFocus{
-    group?: number;
-    option: number;
+export interface VisualOptionFocus {
+  group?: number;
+  option: number;
 }

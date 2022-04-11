@@ -24,24 +24,7 @@ import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-
-interface SelectProperties {
-  label: string;
-  name: string;
-  value: string | string[];
-  defaultValue: string | string[];
-  placeholder: string;
-  helperText: string;
-  searchable: boolean;
-  multiple: boolean;
-  optional: boolean;
-  disabled: boolean;
-  error: string;
-  margin: Object | string;
-  size: string;
-  options: Option[] | OptionGroup[];
-  tabIndexValue: number;
-}
+import { SelectProperties, Space, Spacing, EmittedValue } from "./dxc-select.types";
 
 @Component({
   selector: "dxc-select",
@@ -60,21 +43,40 @@ interface SelectProperties {
 export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   @HostBinding("class") className;
 
-  @Input()
-  label: string;
+  /**
+   * Text to be placed above the select.
+   */
+  @Input() label: string;
 
-  @Input()
-  name: string;
+  /**
+   * Name attribute of the input element. This attribute will allow users
+   * to find the component's value during the submit event. In this event,
+   * the component's value will always be a regular string, for both single
+   * and multiple selection modes, been in the first one a single option
+   * value and in the multiple variant more than one option value,
+   * separated by commas.
+   */
+  @Input() name: string;
 
+  /**
+   * Value of the select. If undefined, the component will be uncontrolled
+   * and the value will be managed internally by the component.
+   */
   @Input()
   value: string | string[];
 
+  /**
+   * Helper text to be placed above the select.
+   */
   @Input()
   defaultValue: string | string[];
 
   @Input()
   helperText: string;
 
+  /**
+   * If true, enables search functionality.
+   */
   @Input()
   get searchable(): boolean {
     return this._searchable;
@@ -84,6 +86,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
   private _searchable = false;
 
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -93,6 +98,10 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
   private _disabled = false;
 
+  /**
+   * If true, the select component will support multiple selected options.
+   * In that case, value will be an array of strings with each selected option value.
+   */
   @Input()
   get multiple(): boolean {
     return this._multiple;
@@ -102,6 +111,13 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
   private _multiple = false;
 
+  /**
+   * If true, the select will be optional, showing (Optional) next to the label
+   * and adding a default first option with an empty string as value,
+   * been the placeholder (if defined) its label.
+   * Otherwise, the field will be considered required and an error will be passed
+   * as a parameter to the OnBlur and onChange functions if an option wasn't selected.
+   */
   @Input()
   get optional(): boolean {
     return this._optional;
@@ -111,21 +127,41 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
   private _optional = false;
 
+  /**
+   * If it is defined, the component will change its appearance, showing the error below the select component.
+   * If it is not defined, the error messages will be managed internally, but never displayed on its own.
+   */
   @Input()
-  error: string = undefined;
+  error: string;
 
+  /**
+   * Text to be put as placeholder of the select.
+   */
   @Input()
   placeholder: string = "";
 
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
   @Input()
-  margin: Object | string;
+  margin: Space | Spacing;
 
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
   tabIndexValue: number;
 
+  /**
+   * Size of the component.
+   */
   @Input()
-  size: string;
+  size: "small" | "medium" | "large" | "fillParent";
 
+  /**
+   * An array of objects representing the selectable options.
+   */
   @Input()
   options: Option[] | OptionGroup[];
 
@@ -141,17 +177,25 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     optional: false,
     disabled: false,
     error: "",
-    margin: "",
+    margin: undefined,
     size: "medium",
     options: [],
     tabIndexValue: 0,
   });
 
+  /**
+   * This event will be emitted when the user selects an option. An object including the new value (or values) 
+   * and the error (if the value selected is not valid) will be passed to this function.
+   */
   @Output()
-  onChange = new EventEmitter<any>();
+  onChange = new EventEmitter<EmittedValue>();
 
+  /**
+   * This event will be emitted when the select loses the focus. An object including the value (or values) 
+   * and the error (if the value selected is not valid) will be passed to this function.
+   */
   @Output()
-  onBlur = new EventEmitter<any>();
+  onBlur = new EventEmitter<EmittedValue>();
 
   id: string;
   optionsListId: string;

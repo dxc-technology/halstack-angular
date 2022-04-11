@@ -28,6 +28,21 @@ describe("DxcNumberInputComponent", () => {
     expect(screen.queryByText("helper-text")).toBeInTheDocument();
   });
 
+  test("should render defaultValue", async () => {
+    await render(DxcNumberInputComponent, {
+      componentProperties: {
+        label: "test-input",
+        helperText: "helper-text",
+        defaultValue: "4",
+      },
+      imports: [DxcTextInputModule],
+    });
+
+    expect(screen.queryByText("test-input")).toBeInTheDocument();
+    expect(screen.queryByText("helper-text")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("4")).toBeTruthy();
+  });
+
   test("should render error dxc-number", async () => {
     await render(DxcNumberInputComponent, {
       componentProperties: {

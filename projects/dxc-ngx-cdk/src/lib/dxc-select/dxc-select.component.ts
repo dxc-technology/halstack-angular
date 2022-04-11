@@ -24,32 +24,7 @@ import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-
-
-type Space = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge";
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
-interface SelectProperties {
-  label: string;
-  name: string;
-  value: string | string[];
-  defaultValue: string | string[];
-  placeholder: string;
-  helperText: string;
-  searchable: boolean;
-  multiple: boolean;
-  optional: boolean;
-  disabled: boolean;
-  error: string;
-  margin: Space | Margin;
-  size: "small" | "medium" | "large" | "fillParent";
-  options: Option[] | OptionGroup[];
-  tabIndexValue: number;
-}
+import { SelectProperties, Space, Spacing } from "./dxc-select.types";
 
 @Component({
   selector: "dxc-select",
@@ -170,7 +145,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
   @Input()
-  margin: Space | Margin;
+  margin: Space | Spacing;
 
   /**
    * Value of the tabindex attribute.

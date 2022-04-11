@@ -160,7 +160,9 @@ export class DxcFileComponent implements OnInit {
       margin-top: ${inputs.multiple || inputs.mode !== "file" ? "4px" : ""};
       margin-left: ${!inputs.multiple && inputs.mode === "file" ? "4px" : ""};
       .previewContainer {
-        background-color: ${this.hasError ? "#ffc9ce" : "#e6e6e6"};
+        background-color: ${this.hasError
+          ? "var(--fileInput-errorFilePreviewBackgroundColor)"
+          : "var(--fileInput-filePreviewBackgroundColor)"};
         display: flex;
         align-items: center;
         place-content: center;
@@ -170,7 +172,9 @@ export class DxcFileComponent implements OnInit {
         width: 48px;
         svg,
         img {
-          fill: ${this.hasError ? "#d0011b" : "#808080"};
+          fill: ${this.hasError
+            ? "var(--fileInput-errorFilePreviewIconColor)"
+            : "var(--fileInput-filePreviewIconColor)"};
           height: 24px;
           width: 24px;
         }
@@ -218,6 +222,7 @@ export class DxcFileComponent implements OnInit {
               svg {
                 height: 16px;
                 width: 16px;
+                fill: var(--fileInput-deleteFileItemColor);
               }
               &:hover,
               &:active {

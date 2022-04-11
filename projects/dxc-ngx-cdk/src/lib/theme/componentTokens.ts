@@ -498,12 +498,15 @@ export const componentTokens = {
   //FILE INPUT
   "--fileInput-dropBorderColor": globalTokens.hal_black,
   "--fileInput-fileItemBorderColor": globalTokens.hal_grey_l_80,
-  "--fileInput-fileItemIconColor": globalTokens.hal_black, //añadir
+  "--fileInput-deleteFileItemColor": globalTokens.hal_black,
   "--fileInput-fileNameFontColor": globalTokens.hal_black,
   "--fileInput-labelFontColor": globalTokens.hal_black,
   "--fileInput-helperTextFontColor": globalTokens.hal_black,
   "--fileInput-dropLabelFontColor": globalTokens.hal_black,
-
+  "--fileInput-filePreviewBackgroundColor": globalTokens.hal_grey_l_95,
+  "--fileInput-filePreviewIconColor": globalTokens.hal_black,
+  "--fileInput-errorFilePreviewBackgroundColor": "#ffccd3",
+  "--fileInput-errorFilePreviewIconColor": globalTokens.hal_red_s_41,
   "--fileInput-disabledLabelFontColor": globalTokens.hal_grey_l_60,
   "--fileInput-disabledHelperTextFontColor": globalTokens.hal_grey_l_60,
   "--fileInput-disabledDropLabelFontColor": globalTokens.hal_grey_l_60,

@@ -14,6 +14,11 @@ export type Spacing = {
   right?: Space;
 };
 
+export type EmittedValue = {
+  value: string;
+  error: string;
+};
+
 export interface TextareaProperties {
   value?: string;
   defaultValue?: string;

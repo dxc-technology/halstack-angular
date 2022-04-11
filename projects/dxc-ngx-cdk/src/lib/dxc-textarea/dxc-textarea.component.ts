@@ -21,6 +21,7 @@ import { CssUtils } from "../utils";
 import { DxcTextareaHelper } from "./dxc-textarea.helper";
 import { v4 as uuidv4 } from "uuid";
 import { Space, Spacing, TextareaProperties } from "./dxc-textarea.types";
+import EmittedValue from "../dxc-text-input/emitted-value.type";
 
 @Component({
   selector: "dxc-textarea",
@@ -178,13 +179,13 @@ export class DxcTextareaComponent implements OnInit {
    * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
    */
   @Output()
-  onChange = new EventEmitter<{value: string; error: string | null}>();
+  onChange = new EventEmitter<EmittedValue>();
   /**
    * This event will emit when the textarea loses the focus. An object including the textarea value and the error will be passed to this function. 
    * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
    */
   @Output()
-  onBlur = new EventEmitter<{value: string; error: string | null}>();
+  onBlur = new EventEmitter<EmittedValue>();
   @ViewChild("textareaRef", { static: true }) textareaRef: ElementRef;
   darkBackground: boolean = false;
   isDirty: boolean = false;

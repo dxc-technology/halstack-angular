@@ -14,14 +14,11 @@ export type Spacing = {
   right?: Space;
 };
 
-export interface ButtonProperties {
-  mode: "primary" | "secondary" | "text";
+export interface ChipProperties {
   label: string;
   disabled: boolean;
-  iconSrc: string;
-  iconPosition: "before" | "after";
   margin: Space | Spacing;
-  size: "small" | "medium" | "large" | "fillParent" | "fitContent";
-  type: "reset" | "submit" | "button";
   tabIndexValue: number;
+  suffixIconSrc?: string;
+  prefixIconSrc?: string;
 }

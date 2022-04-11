@@ -24,7 +24,7 @@ import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { SelectProperties, Space, Spacing } from "./dxc-select.types";
+import { SelectProperties, Space, Spacing, EmittedValue } from "./dxc-select.types";
 
 @Component({
   selector: "dxc-select",
@@ -177,7 +177,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     optional: false,
     disabled: false,
     error: "",
-    margin: {},
+    margin: undefined,
     size: "medium",
     options: [],
     tabIndexValue: 0,
@@ -188,14 +188,14 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
    * and the error (if the value selected is not valid) will be passed to this function.
    */
   @Output()
-  onChange = new EventEmitter<{ value: string | string[]; error: string }>();
+  onChange = new EventEmitter<EmittedValue>();
 
   /**
    * This event will be emitted when the select loses the focus. An object including the value (or values) 
    * and the error (if the value selected is not valid) will be passed to this function.
    */
   @Output()
-  onBlur = new EventEmitter<{ value: string | string[]; error: string }>();
+  onBlur = new EventEmitter<EmittedValue>();
 
   id: string;
   optionsListId: string;

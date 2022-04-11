@@ -1,7 +1,14 @@
 import { Option } from "./interfaces/option.interface";
 import { OptionGroup } from "./interfaces/optionGroup.interface";
 
-export type Space = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge";
+export type Space =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "xxlarge";
 
 export type Spacing = {
   top?: Space;
@@ -27,3 +34,8 @@ export interface SelectProperties {
   options: Option[] | OptionGroup[];
   tabIndexValue: number;
 }
+
+export type EmittedValue = {
+  value: string | string[];
+  error: string;
+};

@@ -20,7 +20,12 @@ import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { CssUtils } from "../utils";
-import { DateInputProperties, Space, Spacing } from "./dxc-date-input.types";
+import {
+  DateInputProperties,
+  EmittedValue,
+  Space,
+  Spacing,
+} from "./dxc-date-input.types";
 
 const moment = momentImported;
 
@@ -142,21 +147,13 @@ export class DxcDateInputComponent implements OnInit {
    * the error and the date value will be emitted. If the string value is a valid date, error will be null.
    * Also, if the string value is not a valid date, date will be null.
    */
-  @Output() onChange = new EventEmitter<{
-    value: string;
-    error: string | null;
-    date: Date | null;
-  }>();
+  @Output() onChange = new EventEmitter<EmittedValue>();
   /**
    * This event will emit in case the input element loses the focus. An object including the string value,
    * the error and the date value will be emitted. If the string value is a valid date, error will be null.
    * Also, if the string value is not a valid date, date will be null.
    */
-  @Output() onBlur = new EventEmitter<{
-    value: string;
-    error: string | null;
-    date: Date | null;
-  }>();
+  @Output() onBlur = new EventEmitter<EmittedValue>();
   /**
    * Reference to the component.
    */

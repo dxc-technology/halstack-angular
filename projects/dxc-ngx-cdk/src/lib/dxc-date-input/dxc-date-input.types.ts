@@ -30,3 +30,9 @@ export type Spacing = {
   left?: Space;
   right?: Space;
 };
+
+export type EmittedValue = {
+  value: string;
+  error: string | null;
+  date: Date | null;
+};

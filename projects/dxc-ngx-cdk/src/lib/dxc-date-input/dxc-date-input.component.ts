@@ -20,24 +20,12 @@ import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { CssUtils } from "../utils";
-
-type Size = "medium" | "large" | "fillParent";
-
-type Space =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "medium"
-  | "large"
-  | "xlarge"
-  | "xxlarge";
-
-type Margin = {
-  top?: Space;
-  bottom?: Space;
-  left?: Space;
-  right?: Space;
-};
+import {
+  DateInputProperties,
+  EmittedValue,
+  Space,
+  Spacing,
+} from "./dxc-date-input.types";
 
 const moment = momentImported;
 
@@ -124,11 +112,11 @@ export class DxcDateInputComponent implements OnInit {
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
-  @Input() margin: Space | Margin;
+  @Input() margin: Space | Spacing;
   /**
    * Size of the component.
    */
-  @Input() size: Size = "medium";
+  @Input() size: "medium" | "large" | "fillParent" = "medium";
   /**
    * Value of the tabindex attribute.
    */
@@ -137,7 +125,7 @@ export class DxcDateInputComponent implements OnInit {
   @Input()
   autocomplete: string = "off";
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<DateInputProperties>({
     error: "",
     clearable: false,
     optional: false,
@@ -146,11 +134,12 @@ export class DxcDateInputComponent implements OnInit {
     value: undefined,
     name: "",
     label: "",
-    margin: "",
+    margin: null,
     size: "medium",
     format: "dd-MM-yyyy",
     tabIndexValue: 0,
     placeholder: false,
+    autocomplete: "off",
   });
 
   /**
@@ -158,21 +147,13 @@ export class DxcDateInputComponent implements OnInit {
    * the error and the date value will be emitted. If the string value is a valid date, error will be null.
    * Also, if the string value is not a valid date, date will be null.
    */
-  @Output() onChange = new EventEmitter<{
-    value: string;
-    error: string | null;
-    date: Date | null;
-  }>();
+  @Output() onChange = new EventEmitter<EmittedValue>();
   /**
    * This event will emit in case the input element loses the focus. An object including the string value,
    * the error and the date value will be emitted. If the string value is a valid date, error will be null.
    * Also, if the string value is not a valid date, date will be null.
    */
-  @Output() onBlur = new EventEmitter<{
-    value: string;
-    error: string | null;
-    date: Date | null;
-  }>();
+  @Output() onBlur = new EventEmitter<EmittedValue>();
   /**
    * Reference to the component.
    */
@@ -190,7 +171,11 @@ export class DxcDateInputComponent implements OnInit {
   _dxcCalendar: MatCalendar<Moment>;
   @ViewChild("dxcCalendar", { read: ElementRef }) calendar: ElementRef;
 
-  private _sizes: Size[] = ["medium", "large", "fillParent"];
+  private _sizes: ("medium" | "large" | "fillParent")[] = [
+    "medium",
+    "large",
+    "fillParent",
+  ];
 
   private _isOpenClicked: boolean = false;
   private _isCalendarOpened: boolean = false;

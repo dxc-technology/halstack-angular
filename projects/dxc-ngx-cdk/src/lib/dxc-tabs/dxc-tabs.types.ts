@@ -18,4 +18,5 @@ export interface TabsProperties {
   activeTabIndex?: number;
   iconPosition?: "top" | "left";
   margin?: Space | Spacing;
+  defaultActiveTabIndex?: number;
 }

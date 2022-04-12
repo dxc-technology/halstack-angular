@@ -54,6 +54,18 @@ export class DxcTabsComponent implements OnChanges {
   private _activeTabIndex = 0;
 
   /**
+   * Initially active tab, only when it is uncontrolled
+   */
+  @Input()
+  get defaultActiveTabIndex(): number {
+    return this._defaultActiveTabIndex;
+  }
+  set defaultActiveTabIndex(value: number) {
+    this._defaultActiveTabIndex = coerceNumberProperty(value);
+  }
+  private _defaultActiveTabIndex = 0;
+
+  /**
    * Position of icons in tabs.
    */
   @Input() iconPosition: "top" | "left" = "left";
@@ -98,7 +110,6 @@ export class DxcTabsComponent implements OnChanges {
     if (this.tabs && this.tabs.length > 0) {
       this.generateTabs();
     }
-
     const inputs = Object.keys(changes).reduce((result, item) => {
       result[item] = changes[item].currentValue;
       return result;
@@ -109,6 +120,9 @@ export class DxcTabsComponent implements OnChanges {
 
   ngOnInit() {
     this.service.iconPosition.next(this.iconPosition || "left");
+    this.activeTabIndex = this.defaultActiveTabIndex
+      ? this.defaultActiveTabIndex
+      : this.activeTabIndex;
     this.renderedActiveTabIndex = this.activeTabIndex;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }

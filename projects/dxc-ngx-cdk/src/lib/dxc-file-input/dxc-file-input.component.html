@@ -33,7 +33,7 @@
       [tabIndexValue]="tabIndexValue"
       (onClick)="fileInput.click()"
     ></dxc-button>
-    <span *ngIf="mode === ('filedrop' || 'dropzone')" class="dropLabel"
+    <span *ngIf="mode === 'filedrop' || mode === 'dropzone'" class="dropLabel"
       >or drop files</span
     >
   </div>

@@ -6,6 +6,7 @@ export interface FileInputProperties {
   name?: string;
   mode?: string;
   label?: string;
+  buttonLabel?: string;
   helperText?: string;
   value?: FileData[];
   accept?: string;

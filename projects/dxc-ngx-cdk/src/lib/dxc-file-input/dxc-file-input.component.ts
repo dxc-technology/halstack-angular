@@ -44,6 +44,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    */
   @Input() public label: string = "";
   /**
+   * Text to be placed inside the button.
+   */
+  @Input() public buttonLabel: string;
+  /**
    * Helper text to be placed above the component.
    */
   @Input() public helperText: string = "";
@@ -137,6 +141,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     name: null,
     mode: "file",
     label: null,
+    buttonLabel: null,
     helperText: null,
     accept: null,
     multiple: true,
@@ -177,6 +182,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
     this.hasSingleFile = this.isSingleFilesPrintables();
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    if (!this.buttonLabel) {
+      this.buttonLabel =
+        this.mode === "file"
+          ? this.multiple
+            ? "Select files"
+            : "Select file"
+          : "Select";
+    }
   }
 
   ngOnChanges(changes: NgChanges<DxcFileInputComponent>): void {

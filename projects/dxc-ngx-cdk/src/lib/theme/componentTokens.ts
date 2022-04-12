@@ -498,7 +498,7 @@ export const componentTokens = {
   //FILE INPUT
   "--fileInput-dropBorderColor": globalTokens.hal_black,
   "--fileInput-fileItemBorderColor": globalTokens.hal_grey_l_80,
-  "--fileInput-deleteFileItemColor": globalTokens.hal_black,
+  "--fileInput-deleteFileItemIconColor": globalTokens.hal_black,
   "--fileInput-fileNameFontColor": globalTokens.hal_black,
   "--fileInput-labelFontColor": globalTokens.hal_black,
   "--fileInput-helperTextFontColor": globalTokens.hal_black,

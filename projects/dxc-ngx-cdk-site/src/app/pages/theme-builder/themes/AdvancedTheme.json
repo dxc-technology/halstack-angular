@@ -345,7 +345,7 @@
   "fileInput": {
     "dropBorderColor": "#000000",
     "fileItemBorderColor": "#cccccc",
-    "deleteFileItemColor": "#000000",
+    "deleteFileItemIconColor": "#000000",
     "fileNameFontColor": "#000000",
     "labelFontColor": "#000000",
     "helperTextFontColor": "#000000",

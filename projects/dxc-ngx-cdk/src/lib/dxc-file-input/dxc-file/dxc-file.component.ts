@@ -222,7 +222,7 @@ export class DxcFileComponent implements OnInit {
               svg {
                 height: 16px;
                 width: 16px;
-                fill: var(--fileInput-deleteFileItemColor);
+                fill: var(--fileInput-deleteFileItemIconColor);
               }
               &:hover,
               &:active {

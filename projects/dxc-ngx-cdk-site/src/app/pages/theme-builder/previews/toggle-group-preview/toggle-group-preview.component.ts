@@ -20,7 +20,7 @@ export class ToggleGroupPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.value = ['1','2',];
+    this.value = ['1','2'];
     this.singleValue = "1";
   }
 

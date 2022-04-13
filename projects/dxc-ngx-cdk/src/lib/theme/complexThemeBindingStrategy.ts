@@ -1,16 +1,17 @@
 import { MappingStrategy } from "./mappingStrategy";
-import * as Color from "color";
+import { TinyColor } from "@ctrl/tinycolor";
 import rgbHex from "rgb-hex";
 
 export class ComplexThemeBindingStrategy implements MappingStrategy {
   constructor() {}
 
-  addLightness(hexColor: String, newLightness: number) {
+  addLightness(hexColor: string, newLightness: number) {
     if (hexColor) {
-      const color = Color(hexColor);
-      const hslColor = color.hsl();
-      const lightnessColor = hslColor.color[2];
-      return hslColor.lightness(lightnessColor + newLightness).hex();
+      let colorInstance = new TinyColor(hexColor);
+      // const hslColor = colorInstance.toHsl();
+      const lightnessColor = colorInstance.lighten(newLightness);
+      const lightnessColorHex = lightnessColor.toHexString();
+      return lightnessColorHex;
     }
     return null;
   }
@@ -18,22 +19,20 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
   subLightness(hexColor, newLightness) {
     try {
       if (hexColor) {
-        const color = Color(hexColor);
-        const hslColor = color.hsl();
-        const lightnessColor = hslColor.color[2];
-        return hslColor.lightness(lightnessColor - newLightness).hex();
+        let colorInstance = new TinyColor(hexColor);
+        const lightnessColor = colorInstance.darken(newLightness);
+        const lightnessColorHex = lightnessColor.toHexString();
+        return lightnessColorHex;
       }
     } catch (e) {
       return null;
     }
   }
 
-  setOpacity(hexColor: String, newOpacity: number) {
+  setOpacity(hexColor: string, newOpacity: number) {
     if (hexColor) {
-      const color = Color(hexColor);
-      return (
-        "#" + rgbHex(color.color[0], color.color[1], color.color[2], newOpacity)
-      );
+      let colorInstance = new TinyColor(hexColor);
+      return colorInstance.setAlpha(newOpacity)?.toHex8String();
     }
     return null;
   }

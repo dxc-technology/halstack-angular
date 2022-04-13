@@ -8,7 +8,7 @@ import {
   platformBrowserDynamicTesting,
 } from "@angular/platform-browser-dynamic/testing";
 import { screen } from "@testing-library/dom";
-import { BackgroundProviderModule } from "../background-provider/background-provider.module";
+import { BackgroundProviderInnerModule } from "../background-provider/background-provider-inner.module";
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -25,7 +25,7 @@ describe("DxcFooter tests", () => {
       },
     ];
     await render(DxcFooterComponent, {
-      imports: [BackgroundProviderModule, PipesModule],
+      imports: [BackgroundProviderInnerModule, PipesModule],
       componentProperties: {
         copyright: text,
         bottomLinks: bottom,

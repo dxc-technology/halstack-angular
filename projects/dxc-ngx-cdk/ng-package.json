@@ -5,7 +5,6 @@
     "@angular/material",
     "@angular/material-moment-adapter",
     "@material-extended/mde",
-    "color",
     "emotion",
     "moment",
     "rgb-hex",
@@ -16,7 +15,8 @@
     "sass",
     "sass-loader",
     "@testing-library/dom",
-    "@testing-library/angular"
+    "@testing-library/angular",
+    "dayjs"
   ],
   "dest": "../../dist/dxc-ngx-cdk",
   "lib": {

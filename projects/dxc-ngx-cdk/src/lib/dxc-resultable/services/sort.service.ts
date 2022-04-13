@@ -50,7 +50,6 @@ export class SortService {
 
   /** Set default icon to the header. */
   setDefaultIconSort(el: ElementRef) {
-    console.log(el.nativeElement);
     let columnName = el.nativeElement.id;
     el.nativeElement.children[0].innerHTML = this.getDefaultIcon(columnName);
   }

@@ -77,6 +77,10 @@ export class DxcSliderComponent implements OnInit, OnChanges {
    */
   @Input() label: string;
   /**
+   * Initial value of the slider, only when it is uncontrolled.
+   */
+  @Input() defaultValue?: number;
+  /**
    * Helper text to be placed above the slider.
    */
   @Input() helperText: string;
@@ -184,6 +188,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.value = this.defaultValue ?? this.value;
     this.renderedValue = this.value;
 
     if (this.labelFormatCallback) {

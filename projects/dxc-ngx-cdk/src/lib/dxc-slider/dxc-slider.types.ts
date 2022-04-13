@@ -8,6 +8,7 @@ export interface SliderProperties {
   showInput?: boolean;
   value?: number;
   name?: string;
+  defaultValue?: number;
   label?: string;
   helperText?: string;
   disabled?: boolean;

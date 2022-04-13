@@ -244,23 +244,6 @@
     "disabledIconColor": "#999999",
     "focusColor": "#0067b3"
   },
-  "date": {
-    "pickerSelectedDateBackgroundColor": "#5f249f",
-    "pickerSelectedDateColor": "#ffffff",
-    "pickerBackgroundColor": "#ffffff",
-    "pickerFontColor": "#000000",
-    "pickerHoverDateBackgroundColor": "#d0bddb",
-    "pickerHoverDateFontColor": "#000000",
-    "pickerActualDateColor": "#D9D9D9",
-    "pickerYearColor": "#000000",
-    "pickerMonthColor": "#000000",
-    "pickerWeekLabelColor": "#000000",
-    "pickerBackgroundColorMonthArrows": "transparent",
-    "focusColor": "#0095ff",
-    "fontFamily": "Open Sans, sans-serif",
-    "pickerHeight": "316px",
-    "pickerWidth": "290px"
-  },
   "dateInput": {
     "pickerSelectedDateBackgroundColor": "#5f249f",
     "pickerSelectedDateColor": "#ffffff",

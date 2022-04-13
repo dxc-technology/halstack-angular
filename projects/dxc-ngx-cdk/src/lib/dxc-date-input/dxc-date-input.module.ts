@@ -5,37 +5,41 @@ import { DxcTextInputModule } from "../dxc-text-input/dxc-text-input.module";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { FormsModule } from "@angular/forms";
 import {
+  MatDayjsDateModule,
+  MAT_DAYJS_DATE_FORMATS,
+} from "@tabuckner/material-dayjs-adapter";
+
+import {
   MAT_DATE_FORMATS,
   DateAdapter,
   MAT_DATE_LOCALE,
 } from "@angular/material/core";
-import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MatMomentDateModule,
-} from "@angular/material-moment-adapter";
+
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
+import { DAYJS_DATE_FORMATS } from "../utils/date-functions";
+import { Platform } from "@angular/cdk/platform";
+import { DayjsDateAdapter } from "../utils/date-functions";
 
 @NgModule({
   declarations: [DxcDateInputComponent],
   imports: [
     CommonModule,
     DxcTextInputModule,
-    MatMomentDateModule,
     FormsModule,
     DxcBoxModule,
     MdePopoverModule,
-    MatDatepickerModule
+    MatDayjsDateModule,
+    MatDatepickerModule,
   ],
   exports: [DxcDateInputComponent],
   providers: [
+    { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
     {
       provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
+      useClass: DayjsDateAdapter,
+      deps: [MAT_DATE_LOCALE, Platform],
     },
-    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ],
 })
 export class DxcDateInputModule {}

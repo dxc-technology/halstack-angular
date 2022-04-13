@@ -9,11 +9,6 @@ import {
 } from "@angular/material/core";
 import { MatInputModule } from "@angular/material/input";
 import { MatDatepickerModule } from "@angular/material/datepicker";
-import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MatMomentDateModule,
-} from "@angular/material-moment-adapter";
 import { MdePopoverModule } from "@material-extended/mde";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { CommonModule } from "@angular/common";
@@ -23,6 +18,9 @@ import {
   platformBrowserDynamicTesting,
 } from "@angular/platform-browser-dynamic/testing";
 import { TestBed } from "@angular/core/testing";
+import { MatDayjsDateModule } from "@tabuckner/material-dayjs-adapter";
+import { DayjsDateAdapter, DAYJS_DATE_FORMATS } from "../utils/date-functions";
+import { Platform } from "@angular/cdk/platform";
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -36,7 +34,7 @@ describe("DxcDate", () => {
     const { getByText } = await render(DxcDateInputComponent, {
       componentProperties: { label: "test-date" },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -44,6 +42,14 @@ describe("DxcDate", () => {
         DxcBoxModule,
         CommonModule,
         DxcTextInputModule,
+      ],
+      providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
+        {
+          provide: DateAdapter,
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
+        },
       ],
     });
 
@@ -66,7 +72,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -76,12 +82,12 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
 
@@ -91,7 +97,7 @@ describe("DxcDate", () => {
     input.focus();
     expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.click(calendarIcon);
-    expect(screen.getByText("DEC 1995"));
+    expect(screen.getByText("DECEMBER 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
@@ -108,7 +114,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -118,12 +124,12 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
 
@@ -149,7 +155,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -159,12 +165,12 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
 
@@ -204,7 +210,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -214,12 +220,12 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
 
@@ -237,7 +243,7 @@ describe("DxcDate", () => {
     expect(screen.getByDisplayValue("1995/12/03"));
     fireEvent.click(calendarIcon);
     waitFor(() => {
-      expect(screen.getByText("DEC 1995"));
+      expect(screen.getByText("DECEMBER 1995"));
     });
     waitFor(() => {
       expect(
@@ -258,7 +264,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -268,18 +274,19 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
     const input = <HTMLInputElement>screen.getByRole("textbox");
 
     input.focus();
     fireEvent.input(input, { target: { value: invalidValue } });
+
     expect(onChange).toHaveBeenCalledWith({
       value: invalidValue,
       error: null,
@@ -299,7 +306,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -309,21 +316,23 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
     const calendarIcon = screen.getByRole("calendarIcon");
 
     fireEvent.click(calendarIcon);
     fireEvent.click(screen.getByText("4"));
-    expect(onChange).toHaveBeenCalledWith({
-      value: "04-12-1995",
-      date: new Date("1995/12/04"),
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith({
+        value: "04-12-1995",
+        date: new Date("04/12/1995"),
+      });
     });
   });
 
@@ -340,7 +349,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -350,25 +359,27 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
     const calendarIcon = screen.getByRole("calendarIcon");
 
     fireEvent.click(calendarIcon);
-    expect(screen.getByText("DEC 1995"));
+    expect(screen.getByText("DECEMBER 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
     fireEvent.click(screen.getByText("4"));
-    expect(onChange).toHaveBeenCalledWith({
-      value: "12-04-1995",
-      date: new Date("1995/12/04"),
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith({
+        value: "12-04-1995",
+        date: new Date("04/12/1995"),
+      });
     });
   });
 
@@ -384,7 +395,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -394,31 +405,37 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
     const calendarIcon = screen.getByRole("calendarIcon");
 
     fireEvent.click(calendarIcon);
-    expect(screen.getByText("DEC 1995"));
+    expect(screen.getByText("DECEMBER 1995"));
     expect(
       screen.getByText("3").classList.contains("mat-calendar-body-selected")
     ).toBeTruthy();
     fireEvent.click(screen.getByText("4"));
-    expect(onChange).toHaveBeenCalledWith({
-      value: "04-12-1995",
-      date: new Date("1995/12/04"),
+    waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith({
+        value: "04-12-1995",
+        date: new Date("04/12/1995"),
+      });
     });
+
     fireEvent.click(calendarIcon);
-    expect(screen.getByText("DEC 1995"));
-    expect(
-      screen.getByText("3").classList.contains("mat-calendar-body-selected")
-    ).toBeTruthy();
+
+    expect(screen.getByText("DECEMBER 1995"));
+    waitFor(() => {
+      expect(
+        screen.getByText("3").classList.contains("mat-calendar-body-selected")
+      ).toBeTruthy();
+    });
   });
 
   test("controlled dxc-date", async () => {
@@ -437,7 +454,7 @@ describe("DxcDate", () => {
         } as any,
       },
       imports: [
-        MatMomentDateModule,
+        MatDayjsDateModule,
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
@@ -447,12 +464,12 @@ describe("DxcDate", () => {
         DxcTextInputModule,
       ],
       providers: [
+        { provide: MAT_DATE_FORMATS, useValue: DAYJS_DATE_FORMATS },
         {
           provide: DateAdapter,
-          useClass: MomentDateAdapter,
-          deps: [MAT_DATE_LOCALE],
+          useClass: DayjsDateAdapter,
+          deps: [MAT_DATE_LOCALE, Platform],
         },
-        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
       ],
     });
     const input = <HTMLInputElement>screen.getByRole("textbox");
@@ -466,10 +483,12 @@ describe("DxcDate", () => {
     });
     expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.blur(input);
-    expect(onBlur).toHaveBeenCalledWith({
-      error: null,
-      value: "03-12-1995",
-      date: new Date("1995/12/03"),
+    waitFor(() => {
+      expect(onBlur).toHaveBeenCalledWith({
+        error: null,
+        value: "03-12-1995",
+        date: new Date("1995/12/03"),
+      });
     });
   });
 });

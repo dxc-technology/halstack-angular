@@ -15,7 +15,6 @@ import {
   DxcCardModule,
   DxcCheckboxModule,
   DxcChipModule,
-  DxcDateModule,
   DxcDialogModule,
   DxcDropdownModule,
   DxcFooterModule,
@@ -53,7 +52,6 @@ import { CardPreviewComponent } from "./previews/card-preview/card-preview.compo
 import { ThemeModule } from "../../../../../dxc-ngx-cdk/src/lib/theme/theme.module";
 import { CheckboxPreviewComponent } from "./previews/checkbox-preview/checkbox-preview.component";
 import { ChipPreviewComponent } from "./previews/chip-preview/chip-preview.component";
-import { DatePreviewComponent } from "./previews/date-preview/date-preview.component";
 import { DialogPreviewComponent } from "./previews/dialog-preview/dialog-preview.component";
 import { DropdownPreviewComponent } from "./previews/dropdown-preview/dropdown-preview.component";
 import { FooterPreviewComponent } from "./previews/footer-preview/footer-preview.component";
@@ -90,7 +88,6 @@ import { TextInputPreviewComponent } from "./previews/text-input-preview/text-in
     CardPreviewComponent,
     CheckboxPreviewComponent,
     ChipPreviewComponent,
-    DatePreviewComponent,
     DialogPreviewComponent,
     DropdownPreviewComponent,
     FooterPreviewComponent,
@@ -131,7 +128,6 @@ import { TextInputPreviewComponent } from "./previews/text-input-preview/text-in
     DxcCardModule,
     DxcCheckboxModule,
     DxcChipModule,
-    DxcDateModule,
     DxcDateInputModule,
     DxcDialogModule,
     DxcDropdownModule,

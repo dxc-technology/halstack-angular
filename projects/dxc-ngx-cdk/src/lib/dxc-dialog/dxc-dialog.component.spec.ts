@@ -7,6 +7,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from "@angular/platform-browser-dynamic/testing";
+import { BackgroundProviderInnerModule } from "../background-provider/background-provider-inner.module";
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -18,7 +19,7 @@ describe("DxcDialog tests", () => {
 
   test("should render dxc-dialog", async () => {
     await render(`<dxc-dialog>${projection}</dxc-dialog>`, {
-      imports: [BackgroundProviderModule],
+      imports: [BackgroundProviderInnerModule],
       declarations: [DxcDialogComponent],
     });
 
@@ -30,7 +31,7 @@ describe("DxcDialog tests", () => {
     await render(
       `<dxc-dialog (onCloseClick)="onCloseClickFunction()">${projection}</dxc-dialog>`,
       {
-        imports: [BackgroundProviderModule],
+        imports: [BackgroundProviderInnerModule],
         componentProperties: { onCloseClickFunction },
         declarations: [DxcDialogComponent],
       }
@@ -46,7 +47,7 @@ describe("DxcDialog tests", () => {
     await render(
       `<dxc-dialog (onBackgroundClick)="onCloseClickFunction()">${projection}</dxc-dialog>`,
       {
-        imports: [BackgroundProviderModule],
+        imports: [BackgroundProviderInnerModule],
         componentProperties: { onCloseClickFunction },
         declarations: [DxcDialogComponent],
       }

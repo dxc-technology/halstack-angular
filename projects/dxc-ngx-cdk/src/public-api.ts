@@ -40,9 +40,6 @@ export * from "./lib//dxc-chip/dxc-chip.module";
 export * from "./lib/dxc-chip/dxc-chip-prefix-icon/dxc-chip-prefix-icon.component";
 export * from "./lib/dxc-chip/dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
 
-export * from "./lib/dxc-date/dxc-date.component";
-export * from "./lib/dxc-date/dxc-date.module";
-
 export * from "./lib/dxc-date-input/dxc-date-input.component";
 export * from "./lib/dxc-date-input/dxc-date-input.module";
 

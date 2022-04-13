@@ -7,6 +7,7 @@ import {
   platformBrowserDynamicTesting,
 } from "@angular/platform-browser-dynamic/testing";
 import { screen } from "@testing-library/dom";
+import { BackgroundProviderInnerModule } from "../background-provider/background-provider-inner.module";
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -17,7 +18,7 @@ describe("DxcAlertComponent tests", () => {
   test("should render default dxc-alert", async () => {
     const projection = "Content inside the ng-content!";
     await render(`  <dxc-alert>${projection}</dxc-alert>`, {
-      imports: [BackgroundProviderModule],
+      imports: [BackgroundProviderInnerModule],
       componentProperties: {},
       declarations: [DxcAlertComponent],
     });
@@ -28,7 +29,7 @@ describe("DxcAlertComponent tests", () => {
   test("should render dxc-alert warning", async () => {
     const projection = "Content inside the ng-content!";
     await render(`  <dxc-alert type="warning">${projection}</dxc-alert>`, {
-      imports: [BackgroundProviderModule],
+      imports: [BackgroundProviderInnerModule],
       componentProperties: {},
       declarations: [DxcAlertComponent],
     });
@@ -39,7 +40,7 @@ describe("DxcAlertComponent tests", () => {
   test("should render dxc-alert error", async () => {
     const projection = "Content inside the ng-content!";
     await render(`<dxc-alert type="error">${projection}</dxc-alert>`, {
-      imports: [BackgroundProviderModule],
+      imports: [BackgroundProviderInnerModule],
       componentProperties: {},
       declarations: [DxcAlertComponent],
     });
@@ -50,7 +51,7 @@ describe("DxcAlertComponent tests", () => {
   test("should render dxc-alert confirm", async () => {
     const projection = "Content inside the ng-content!";
     await render(`<dxc-alert type="confirm">${projection}</dxc-alert>`, {
-      imports: [BackgroundProviderModule],
+      imports: [BackgroundProviderInnerModule],
       componentProperties: {},
       declarations: [DxcAlertComponent],
     });
@@ -64,7 +65,7 @@ describe("DxcAlertComponent tests", () => {
     await render(
       `<dxc-alert (onClose)="onCloseFunction()">${projection}</dxc-alert>`,
       {
-        imports: [BackgroundProviderModule],
+        imports: [BackgroundProviderInnerModule],
         componentProperties: { onCloseFunction },
         declarations: [DxcAlertComponent],
       }

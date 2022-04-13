@@ -9,7 +9,6 @@ import { BoxComponent } from "./pages/box/box.component";
 import { ButtonComponent } from "./pages/button/button.component";
 import { CardComponent } from "./pages/card/card.component";
 import { CheckboxComponent } from "./pages/checkbox/checkbox.component";
-import { DateComponent } from "./pages/date/date.component";
 import { DesignGuidelinesPageComponent } from "./pages/design-guidelines-page/design-guidelines-page.component";
 import { FooterComponent } from "./pages/footer/footer.component";
 import { RadioComponent } from "./pages/radio/radio.component";
@@ -101,10 +100,6 @@ routes.push({ path: "", redirectTo: "overview", pathMatch: "full" }),
     {
       path: "components/chip",
       component: ChipComponent,
-    },
-    {
-      path: "components/date",
-      component: DateComponent,
     },
     {
       path: "components/dropdown",

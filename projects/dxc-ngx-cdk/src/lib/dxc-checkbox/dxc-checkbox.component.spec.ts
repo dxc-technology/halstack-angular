@@ -26,6 +26,7 @@ describe("DxcCheckbox tests", () => {
     const dxcCheckbox = await render(DxcCheckboxComponent, {
       componentProperties: {
         label: "test-checkbox",
+        defaultChecked: true,
         onChange: { emit: onClickFunction } as any,
       },
       imports: [MatCheckboxModule],
@@ -33,11 +34,11 @@ describe("DxcCheckbox tests", () => {
     expect(dxcCheckbox);
 
     const input = <HTMLInputElement>dxcCheckbox.getByRole("checkbox");
-    expect(input.checked).toBeFalsy();
+    expect(input.checked).toBeTruthy();
     const dxcInput = dxcCheckbox.getByText("test-checkbox");
     fireEvent.click(dxcInput);
-    expect(onClickFunction).toHaveBeenCalledWith(true);
-    expect(input.checked).toBeTruthy();
+    expect(onClickFunction).toHaveBeenCalledWith(false);
+    expect(input.checked).toBeFalsy();
   });
 
   test("Controlled dxc-checkbox", async () => {

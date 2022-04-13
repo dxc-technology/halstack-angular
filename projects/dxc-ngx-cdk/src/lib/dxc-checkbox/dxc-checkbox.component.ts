@@ -37,6 +37,9 @@ export class DxcCheckboxComponent implements OnInit {
   }
   private _checked;
 
+  /**
+   * 	Initial state of the checkbox, only when it is uncontrolled.
+   */
   @Input()
   defaultChecked: boolean = false;
 

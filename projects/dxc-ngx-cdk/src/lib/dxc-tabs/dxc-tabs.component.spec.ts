@@ -33,14 +33,15 @@ describe("DxcTabs tests", () => {
   });
 
   test("should render dxc-tabs with default value", async () => {
+    const clickFunction = jest.fn();
     const tabs = await render(
       `<dxc-tabs margin="xsmall" defaultActiveTabIndex="2">
-        <dxc-tab label="Tab1"></dxc-tab>
-        <dxc-tab label="Tab2"></dxc-tab>
-        <dxc-tab label="Tab3"></dxc-tab>
+        <dxc-tab label="Tab1" (onTabClick)="clickFunction($event)"></dxc-tab>
+        <dxc-tab label="Tab2" (onTabClick)="clickFunction($event)"></dxc-tab>
+        <dxc-tab label="Tab3" (onTabClick)="clickFunction($event)"></dxc-tab>
       </dxc-tabs>`,
       {
-        componentProperties: {},
+        componentProperties: { clickFunction },
         imports: [DxcTabsModule],
         excludeComponentDeclaration: true,
       }
@@ -53,6 +54,14 @@ describe("DxcTabs tests", () => {
     expect(tabs.getByText("Tab1")).toBeTruthy();
     expect(tabs.getByText("Tab2")).toBeTruthy();
     expect(tabs.getByText("Tab3")).toBeTruthy();
+
+    const tab1 = screen.getByText("Tab1");
+    fireEvent.click(tab1);
+    tabs.detectChanges();
+    expect(clickFunction).toHaveBeenCalledWith(0);
+    expect(arrTabs[0].getAttribute("aria-selected")).toBe("true");
+    expect(arrTabs[1].getAttribute("aria-selected")).toBe("false");
+    expect(arrTabs[2].getAttribute("aria-selected")).toBe("false");
   });
 
   test("should render dxc-badge", async () => {

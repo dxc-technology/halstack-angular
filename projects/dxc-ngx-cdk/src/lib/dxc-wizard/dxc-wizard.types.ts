@@ -2,6 +2,7 @@ export interface WizardProperties {
   mode?: string;
   currentStep?: number;
   margin?: Spacing | Space;
+  defaultCurrentStep?: number;
   tabIndexValue?: number;
 }
 

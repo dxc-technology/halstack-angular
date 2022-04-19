@@ -82,6 +82,7 @@ export class DxcWizardComponent {
     currentStep: 0,
     margin: null,
     tabIndexValue: 0,
+    defaultCurrentStep: 0,
   });
 
   constructor(

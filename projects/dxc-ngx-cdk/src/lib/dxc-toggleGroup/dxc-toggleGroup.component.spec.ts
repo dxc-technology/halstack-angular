@@ -6,6 +6,7 @@ import {
   platformBrowserDynamicTesting,
 } from "@angular/platform-browser-dynamic/testing";
 import { TestBed } from "@angular/core/testing";
+import { waitFor } from "@testing-library/dom";
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -147,5 +148,49 @@ describe("DxcToggleGroup tests", () => {
     expect(dxcToggleGroup.getByText("Facebook"));
     fireEvent.click(dxcToggleGroup.getByText("Facebook"));
     expect(changeMock).toHaveBeenCalledTimes(0);
+  });
+
+  test("dxc-toggleGroup with default value", async () => {
+    const changeMock = jest.fn();
+    const dxcToggleGroup = await render(
+      `<dxc-togglegroup defaultValue="3">,
+          <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+          <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+          <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+        </dxc-togglegroup>`,
+      {
+        componentProperties: {
+          changeMock,
+        },
+        imports: [DxcToggleGroupModule],
+        excludeComponentDeclaration: true,
+      }
+    );
+    const radios = dxcToggleGroup.getAllByRole("radio");
+    expect(radios[0].getAttribute("aria-checked")).toBe("false");
+    expect(radios[1].getAttribute("aria-checked")).toBe("false");
+    expect(radios[2].getAttribute("aria-checked")).toBe("true");
+  });
+
+  test("dxc-toggleGroup multiple with default value", async () => {
+    const changeMock = jest.fn();
+    const dxcToggleGroup = await render(
+      `<dxc-togglegroup [multiple]="true" [defaultValue]="['2','3']">,
+          <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+          <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+          <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+        </dxc-togglegroup>`,
+      {
+        componentProperties: {
+          changeMock,
+        },
+        imports: [DxcToggleGroupModule],
+        excludeComponentDeclaration: true,
+      }
+    );
+    const radios = dxcToggleGroup.getAllByRole("switch");
+    expect(radios[0].getAttribute("aria-checked")).toBe("false");
+    expect(radios[1].getAttribute("aria-checked")).toBe("true");
+    expect(radios[2].getAttribute("aria-checked")).toBe("true");
   });
 });

@@ -25,13 +25,13 @@ export class DxcToggleComponent implements OnInit {
   @Input() value: string;
   @Output() public onClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onKeyPress: EventEmitter<any> = new EventEmitter<any>();
-  role: string;
   @HostBinding("class") style;
 
   @HostBinding("class.selected") get valid() {
     return this.selected;
   }
 
+  role: string;
   selected: boolean = false;
   tabIndexValue: number = 0;
 
@@ -43,6 +43,10 @@ export class DxcToggleComponent implements OnInit {
     if (event.code === "Enter" || event.code === "Space") {
       this.onKeyPress.emit(this.value);
     }
+  }
+
+  setRole(role: string) {
+    this.role = role;
   }
 
   ngOnInit(): void {

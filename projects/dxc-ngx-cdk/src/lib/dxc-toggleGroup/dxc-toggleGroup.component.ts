@@ -148,11 +148,9 @@ export class DxcToggleGroupComponent implements OnInit {
           }
         });
 
-        setTimeout(() => {
-          item.tabIndexValue = this.disabled ? -1 : this.tabIndexValue;
-          item.role = this.multiple ? "switch" : "radio";
-          this.setToggleSelected(item);
-        });
+        item.tabIndexValue = this.disabled ? -1 : this.tabIndexValue;
+        item.setRole(this.multiple ? "switch" : "radio");
+        this.setToggleSelected(item);
       });
     }
   }

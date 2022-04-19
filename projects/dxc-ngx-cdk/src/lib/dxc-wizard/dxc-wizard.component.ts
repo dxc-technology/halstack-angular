@@ -28,9 +28,28 @@ export class DxcWizardComponent {
    */
   @Input() mode: "horizontal" | "vertical" = "horizontal";
   /**
-   * Defines which step is marked as the current. The numeration starts in 0.
+   * Defines which step is marked as the current. The numeration starts at 0.
+   * If undefined, the component will be uncontrolled and the step will be managed internally by the component.
    */
-  @Input() currentStep: number = 0;
+  @Input()
+  get currentStep(): number {
+    return this._currentStep;
+  }
+  set currentStep(value: number) {
+    this._currentStep = coerceNumberProperty(value);
+  }
+  private _currentStep = 0;
+  /**
+   * Initially selected step, only when it is uncontrolled.
+   */
+  @Input()
+  get defaultCurrentStep(): number {
+    return this._defaultCurrentStep;
+  }
+  set defaultCurrentStep(value: number) {
+    this._defaultCurrentStep = coerceNumberProperty(value);
+  }
+  private _defaultCurrentStep = 0;
   /**
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
@@ -73,6 +92,7 @@ export class DxcWizardComponent {
 
   ngAfterViewInit(): void {
     this.service.setSteps(this.dxcWizardSteps);
+    this.service.innerCurrentStep.next(this.currentStep);
     this.service.newCurrentStep.subscribe((value) => {
       if (value || value === 0) {
         this.handleStepClick(value);
@@ -86,7 +106,10 @@ export class DxcWizardComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.service.innerCurrentStep.next(this.currentStep || 0);
+    this.currentStep = this.currentStep
+      ? this.currentStep
+      : this.defaultCurrentStep ?? 0;
+    this.service.innerCurrentStep.next(this.currentStep);
     this.service.mode.next(this.mode || "horizontal");
     this.service.tabIndexValue.next(this.tabIndexValue);
   }
@@ -105,9 +128,7 @@ export class DxcWizardComponent {
   }
 
   public handleStepClick(i) {
-    if (!(this.currentStep || this.currentStep === 0)) {
-      this.service.innerCurrentStep.next(i);
-    }
+    this.service.innerCurrentStep.next(i);
     this.onStepClick.emit(i);
   }
 

@@ -1,5 +1,5 @@
 <tbuilder-component-mode text="Default">
-  <dxc-wizard margin="xsmall">
+  <dxc-wizard margin="xsmall" defaultCurrentStep="2">
     <dxc-wizard-step
       label="First step"
       description="Not validated step"
@@ -19,6 +19,19 @@
       description="Disabled step"
       disabled="true"
     ></dxc-wizard-step>
+  </dxc-wizard>
+</tbuilder-component-mode>
+
+<tbuilder-component-mode text="With onStep function">
+  <dxc-wizard
+    (onStepClick)="onStepClick($event)"
+    margin="xsmall"
+    [currentStep]="current"
+  >
+    <dxc-wizard-step label="First step"></dxc-wizard-step>
+    <dxc-wizard-step label="Second step"></dxc-wizard-step>
+    <dxc-wizard-step label="Third step"></dxc-wizard-step>
+    <dxc-wizard-step label="Forth step" valid="false"></dxc-wizard-step>
   </dxc-wizard>
 </tbuilder-component-mode>
 

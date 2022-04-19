@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-wizard-preview',
-  templateUrl: './wizard-preview.component.html'
+  selector: "app-wizard-preview",
+  templateUrl: "./wizard-preview.component.html",
 })
 export class WizardPreviewComponent implements OnInit {
+  current = 0;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  onStepClick(value) {
+    this.current = value;
+    console.log(value);
   }
-
 }

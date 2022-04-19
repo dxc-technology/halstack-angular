@@ -22,6 +22,7 @@ export interface ToggleGroupProperties {
   disabled?: boolean;
   tabIndexValue?: number;
   margin?: Space | Spacing;
+  defaultValue?: string | string[];
 }
 
 export interface ToggleProperties {

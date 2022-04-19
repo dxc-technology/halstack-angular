@@ -38,6 +38,17 @@ export class DxcSwitchComponent implements OnChanges {
   }
   private _checked;
   /**
+   * 	Initial state of the switch, only when it is uncontrolled.
+   */
+  @Input()
+  get defaultChecked(): boolean {
+    return this._defaultChecked;
+  }
+  set defaultChecked(value: boolean) {
+    this._defaultChecked = coerceBooleanProperty(value);
+  }
+  private _defaultChecked;
+  /**
    * Will be passed to the value attribute of the html input element. When inside a form, this value will be only submitted if the switch is checked.
    */
   @Input() value: string;
@@ -136,7 +147,7 @@ export class DxcSwitchComponent implements OnChanges {
   }
 
   ngOnInit() {
-    this.renderedChecked = this.checked;
+    this.renderedChecked = this.checked || this.defaultChecked;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

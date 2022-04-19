@@ -24,7 +24,12 @@ import { v4 as uuidv4 } from "uuid";
 import { SelectService } from "./services/select.service";
 import { VisualOptionFocus } from "./interfaces/visualFocus.interface";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { SelectProperties, Space, Spacing, EmittedValue } from "./dxc-select.types";
+import {
+  SelectProperties,
+  Space,
+  Spacing,
+  EmittedValue,
+} from "./dxc-select.types";
 
 @Component({
   selector: "dxc-select",
@@ -66,11 +71,14 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   value: string | string[];
 
   /**
-   * Helper text to be placed above the select.
+   * Initial value of the select, only when it is uncontrolled.
    */
   @Input()
   defaultValue: string | string[];
 
+  /**
+   * Helper text to be placed above the select.
+   */
   @Input()
   helperText: string;
 
@@ -184,14 +192,14 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   });
 
   /**
-   * This event will be emitted when the user selects an option. An object including the new value (or values) 
+   * This event will be emitted when the user selects an option. An object including the new value (or values)
    * and the error (if the value selected is not valid) will be passed to this function.
    */
   @Output()
   onChange = new EventEmitter<EmittedValue>();
 
   /**
-   * This event will be emitted when the select loses the focus. An object including the value (or values) 
+   * This event will be emitted when the select loses the focus. An object including the value (or values)
    * and the error (if the value selected is not valid) will be passed to this function.
    */
   @Output()
@@ -286,7 +294,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
       ...this.defaultInputs.getValue(),
     })}`;
     this.controlled = this.value || this.value === "" ? true : false;
-    if (this.defaultValue || this.defaultValue === "" && !this.controlled) {
+    if (this.defaultValue || (this.defaultValue === "" && !this.controlled)) {
       this.value = this.defaultValue;
       this.setDefaultValues();
     }

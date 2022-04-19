@@ -10,6 +10,7 @@
   [disabled]="disabled"
   (click)="!disabled ? handleStepClick() : ''"
   [tabindex]="disabled ? -1 : tabIndexValue"
+  [attr.aria-current]="isCurrent"
 >
   <div class="stepHeader">
     <div class="iconContainer">

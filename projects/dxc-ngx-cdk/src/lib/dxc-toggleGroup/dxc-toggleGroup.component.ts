@@ -31,9 +31,9 @@ import { Space, Spacing, ToggleGroupProperties } from "./dxc-toggleGroup.types";
 })
 export class DxcToggleGroupComponent implements OnInit {
   /**
-  * If true, the toggle group will support multiple selection. 
-  * In that case, value must be an array of numbers with the keys of the selected values.
-  */
+   * If true, the toggle group will support multiple selection.
+   * In that case, value must be an array of numbers with the keys of the selected values.
+   */
   @Input()
   get multiple(): boolean {
     return this._multiple;
@@ -43,8 +43,8 @@ export class DxcToggleGroupComponent implements OnInit {
   }
   private _multiple = false;
   /**
-  * If true, the component will be disabled.
-  */
+   * If true, the component will be disabled.
+   */
   @Input()
   get disabled(): boolean {
     return this._disabled;
@@ -54,8 +54,8 @@ export class DxcToggleGroupComponent implements OnInit {
   }
   private _disabled = false;
   /**
-  * Value of the tabindex which its propagated to their children components.
-  */
+   * Value of the tabindex which its propagated to their children components.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -65,28 +65,34 @@ export class DxcToggleGroupComponent implements OnInit {
   }
   private _tabIndexValue;
   /**
-  * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
-  * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
-  */
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
   @Input() public margin: Space | Spacing;
   /**
-  * Text to be placed next to the input.
-  */
+   * Text to be placed next to the input.
+   */
   @Input() label: string;
   /**
-  * Assistive text to be placed bellow the input.
-  */
+   * Assistive text to be placed bellow the input.
+   */
   @Input() helperText: string;
   /**
-  * Value(s) of the toggle(s) that are toggled. 
-  * If undefined, the component will be uncontrolled and the value will be managed internally by the component.
-  */ 
+   * Value(s) of the toggle(s) that are toggled.
+   * If undefined, the component will be uncontrolled and the value will be managed internally by the component.
+   */
   @Input() public value: string | string[];
   /**
-  * This function will be called when the user changes the state of any toggle. 
-  * The new value or values will be passed as a parameter.
-  */
-  @Output() public onChange: EventEmitter<string | string[]> = new EventEmitter<string | string[]>();
+   * Initial value of the toggle group, only when it is uncontrolled.
+   */
+  @Input() public defaultValue: string | string[];
+  /**
+   * This event will emit when the user changes the state of any toggle.
+   * The new value or values will be passed as a parameter.
+   */
+  @Output() public onChange: EventEmitter<string | string[]> = new EventEmitter<
+    string | string[]
+  >();
   @ContentChildren(DxcToggleComponent)
   toggleGroup: QueryList<DxcToggleComponent>;
 
@@ -111,6 +117,16 @@ export class DxcToggleGroupComponent implements OnInit {
   ngOnInit() {
     if (this.value || this.value === "") {
       this.isControlled = true;
+    } else {
+      if (this.defaultValue || this.defaultValue === "") {
+        if (Array.isArray(this.defaultValue)) {
+          this.defaultValue.forEach((item: string) => {
+            this.valueChanged(item);
+          });
+        } else {
+          this.valueChanged(this.defaultValue);
+        }
+      }
     }
     this.styledDxcToggleGroup = `${this.setDxcToggleGroupDynamicStyle(
       this.defaultInputs.getValue()
@@ -216,7 +232,8 @@ export class DxcToggleGroupComponent implements OnInit {
     } else {
       this.isControlled
         ? (item.selected = item.value === this.value)
-        : (item.selected = this.selectedOptions.includes(item.value));
+        : (item.selected =
+            this.selectedOptions && this.selectedOptions.includes(item.value));
     }
   }
 

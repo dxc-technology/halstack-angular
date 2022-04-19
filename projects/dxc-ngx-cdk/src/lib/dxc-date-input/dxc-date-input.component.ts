@@ -6,6 +6,7 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
+  Inject,
   Input,
   OnInit,
   Output,
@@ -15,11 +16,10 @@ import {
 import { BehaviorSubject } from "rxjs";
 import { DxcTextInputComponent } from "../dxc-text-input/dxc-text-input.component";
 import { DxcDateInputHelper } from "./dxc-date-input.helper";
-import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
-import { Moment } from "moment";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { CssUtils } from "../utils";
+import { default as dayjs, Dayjs } from "dayjs";
 import {
   DateInputProperties,
   EmittedValue,
@@ -27,7 +27,7 @@ import {
   Spacing,
 } from "./dxc-date-input.types";
 
-const moment = momentImported;
+
 
 @Component({
   selector: "dxc-date-input",
@@ -161,14 +161,14 @@ export class DxcDateInputComponent implements OnInit {
   dxcInputRef: DxcTextInputComponent;
 
   renderedValue: string;
-  dateValue: Moment;
+  dateValue: dayjs.Dayjs;
   popOverOffsetX: any;
   calendarDynamicStyle: any;
 
   @ViewChild(MdePopoverTrigger, { static: false })
   _dxcTrigger: MdePopoverTrigger;
   @ViewChild("dxcCalendar", { static: false })
-  _dxcCalendar: MatCalendar<Moment>;
+  _dxcCalendar: MatCalendar<dayjs.Dayjs>;
   @ViewChild("dxcCalendar", { read: ElementRef }) calendar: ElementRef;
 
   private _sizes: ("medium" | "large" | "fillParent")[] = [
@@ -308,7 +308,7 @@ export class DxcDateInputComponent implements OnInit {
     }
   }
 
-  onSelectedChangeHandler(value: Moment) {
+  onSelectedChangeHandler(value: Dayjs) {
     let _stringValue = this.getDateStringValue(value, this.format);
     let _dateReturn = {
       value: _stringValue,
@@ -320,6 +320,7 @@ export class DxcDateInputComponent implements OnInit {
       this.dateValue = value;
       this.renderedValue = _stringValue;
     }
+
     this.onBlur.emit(_dateReturn);
     this.closeCalendar();
   }
@@ -345,7 +346,7 @@ export class DxcDateInputComponent implements OnInit {
     } else {
       this._dxcCalendar.activeDate = this.dateValue.isValid()
         ? this.dateValue
-        : moment();
+        : dayjs();
       this._dxcCalendar.currentView = "month";
       this._dxcTrigger.openPopover();
       this.resetCalendarState(true);
@@ -369,10 +370,10 @@ export class DxcDateInputComponent implements OnInit {
   }
 
   private getMomentValue(value: string, format: string) {
-    return moment(value, format.toUpperCase(), true);
+    return dayjs(value, format.toUpperCase());
   }
 
-  private getDateStringValue(value: Moment, format: string) {
-    return value.format(format.toUpperCase());
+  private getDateStringValue(value: Dayjs, format: string) {
+    return dayjs(value).format(format.toUpperCase());
   }
 }

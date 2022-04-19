@@ -29,7 +29,6 @@ import { SpinnerModule } from "./pages/spinner/spinner.module";
 import { SwitchModule } from "./pages/switch/switch.module";
 import { OverviewPageModule } from "./pages/overview-page/overview-page.module";
 import { AccordionModule } from "./pages/accordion/accordion.module";
-import { DateModule } from "./pages/date/date.module";
 import { InputTextModule } from "./pages/input-text/input-text.module";
 import { SliderModule } from "./pages/slider/slider.module";
 import { FooterModule } from "./pages/footer/footer.module";
@@ -93,7 +92,6 @@ import { AutosuggestModule } from "./pages/autosuggest/autosuggest.module";
     CardModule,
     CheckboxModule,
     ChipModule,
-    DateModule,
     FooterModule,
     HeaderModule,
     RadioModule,

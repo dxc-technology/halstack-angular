@@ -175,7 +175,7 @@ export class CssUtils {
 
   getBoxShadow(shadowDepth, isImportant: boolean = false) {
     switch (shadowDepth) {
-      case "1":
+      case 1:
         return css`
           box-shadow: var(--box-oneShadowDepthShadowOffsetX)
             var(--box-oneShadowDepthShadowOffsetY)
@@ -184,7 +184,7 @@ export class CssUtils {
             var(--box-oneShadowDepthShadowColor)
             ${this.isPropertyImportant(isImportant)};
         `;
-      case "2":
+      case 2:
         return css`
           box-shadow: var(--box-twoShadowDepthShadowOffsetX)
             var(--box-twoShadowDepthShadowOffsetY)

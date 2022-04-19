@@ -38,6 +38,12 @@ export class DxcCheckboxComponent implements OnInit {
   private _checked;
 
   /**
+   * 	Initial state of the checkbox, only when it is uncontrolled.
+   */
+  @Input()
+  defaultChecked: boolean = false;
+
+  /**
    * Will be passed to the value attribute of the html input element. When inside a form,
    * this value will be only submitted if the checkbox is checked.
    */
@@ -125,6 +131,7 @@ export class DxcCheckboxComponent implements OnInit {
 
   defaultInputs = new BehaviorSubject<CheckboxProperties>({
     checked: false,
+    defaultChecked: false,
     value: null,
     label: null,
     labelPosition: "before",
@@ -173,7 +180,7 @@ export class DxcCheckboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.renderedChecked = this.checked;
+    this.renderedChecked = this.checked || this.defaultChecked;
 
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     if (this.disabled) {

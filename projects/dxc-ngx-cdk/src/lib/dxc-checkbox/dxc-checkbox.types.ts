@@ -16,6 +16,7 @@ export type Spacing = {
 
 export interface CheckboxProperties {
   checked?: boolean;
+  defaultChecked?: boolean;
   value?: string;
   label: string;
   labelPosition?: "before" | "after";

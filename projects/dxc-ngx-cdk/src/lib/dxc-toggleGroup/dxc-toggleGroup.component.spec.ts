@@ -53,6 +53,31 @@ describe("DxcToggleGroup tests", () => {
     expect(changeMock).toHaveBeenCalledWith(["1", "2"]);
   });
 
+  test("dxc-toggleGroup defaultValue functionality", async () => {
+    const changeMock = jest.fn();
+    const dxcToggleGroup = await render(
+      `<dxc-togglegroup defaultValue="1" (onChange)="changeMock($event)">,
+        <dxc-toggle label="Facebook" value="1"></dxc-toggle>
+        <dxc-toggle label="Twitter" value="2"></dxc-toggle>
+        <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
+      </dxc-togglegroup>`,
+      {
+        componentProperties: {
+          changeMock,
+        },
+        imports: [DxcToggleGroupModule],
+        excludeComponentDeclaration: true,
+      }
+    );
+
+    dxcToggleGroup.detectChanges();
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
+    dxcToggleGroup.detectChanges();
+    expect(changeMock).toHaveBeenCalledWith(null);
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
+    expect(changeMock).toHaveBeenCalledWith("1");
+  });
+
   test("dxc-toggleGroup controlled functionality", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(

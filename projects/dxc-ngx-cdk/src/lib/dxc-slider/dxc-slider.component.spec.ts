@@ -43,6 +43,30 @@ describe("DxcSlider tests", () => {
     expect(onChangeFunction).toHaveBeenCalledWith(value);
   });
 
+  test("Uncontrolled dxc-slider with default value", async () => {
+    const onChangeFunction = jest.fn();
+    const value = 22;
+    TestBed.overrideComponent(DxcSliderComponent, {
+      set: { selector: "slider" },
+    });
+    const slider = await render(DxcSliderComponent, {
+      componentProperties: {
+        showLimitsValues: true,
+        onChange: { emit: onChangeFunction } as any,
+        showInput: true,
+        defaultValue: 10,
+      },
+      imports: [MatSliderModule, DxcTextInputModule],
+    });
+    const input = <HTMLInputElement>slider.getByRole("textbox");
+    expect(input.value).toBe("10");
+    input.focus();
+    fireEvent.click(input);
+    fireEvent.input(input, { target: { value: value } });
+    expect(onChangeFunction).toHaveBeenCalledWith(value);
+    expect(input.value).toBe("22");
+  });
+
   test("Controlled dxc-slider", async () => {
     const onChangeFunction = jest.fn();
     const value = 22;

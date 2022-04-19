@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckboxPreviewComponent implements OnInit {
 
-  checked1: boolean = false;
+  checked1: boolean = true;
   checked2: boolean = false;
   checked3: boolean = false;
 

@@ -2,38 +2,22 @@
   <dxc-heading text="Light Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#FFFFFF">
     <tbuilder-component-mode text="Default">
-      <dxc-date-input
-        label="Date of birth"
-        format="dd-MM-yyyy"
-        margin="xsmall"
-        helperText="helper text"
-      >
+      <dxc-date-input label="Date of birth" format="dd-MM-yyyy" margin="xsmall" helperText="helper text">
       </dxc-date-input>
     </tbuilder-component-mode>
 
-  <tbuilder-component-mode text="Disabled">
-    <dxc-date-input
-      label="Date of birth"
-      format="dd-MM-yyyy"
-      margin="xsmall"
-      helperText="helper text"
-      disabled
-    >
-    </dxc-date-input>
-  </tbuilder-component-mode>
+    <tbuilder-component-mode text="Disabled">
+      <dxc-date-input label="Date of birth" format="dd-MM-yyyy" margin="xsmall" helperText="helper text" disabled>
+      </dxc-date-input>
+    </tbuilder-component-mode>
 
-  <tbuilder-component-mode text="Error">
-    <dxc-date-input
-      label="Date of birth"
-      format="dd-MM-yyyy"
-      margin="xsmall"
-      helperText="helper text"
-      error="Error date"
-    >
-    </dxc-date-input>
-  </tbuilder-component-mode>
-</background-provider>
-<!--
+    <tbuilder-component-mode text="Error">
+      <dxc-date-input label="Date of birth" format="dd-MM-yyyy" margin="xsmall" helperText="helper text"
+        error="Error date">
+      </dxc-date-input>
+    </tbuilder-component-mode>
+  </background-provider>
+  <!--
   <dxc-heading text="Dark Mode" [level]="5" margin="xsmall"></dxc-heading>
   <background-provider color="#000000">
     <tbuilder-component-mode text="Default" mode="dark">

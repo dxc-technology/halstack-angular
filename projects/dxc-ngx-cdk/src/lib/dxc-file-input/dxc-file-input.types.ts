@@ -1,19 +1,20 @@
-export interface SliderProperties {
+import { FileData } from "./interfaces/file.interface";
+
+export interface FileInputProperties {
   margin?: Space | Spacing;
-  step?: number;
-  maxValue?: number;
-  minValue?: number;
-  size?: "medium" | "large" | "fillParent";
-  showLimitsValues?: boolean;
-  showInput?: boolean;
-  value?: number;
-  name?: string;
-  defaultValue?: number;
-  label?: string;
-  helperText?: string;
-  disabled?: boolean;
-  marks?: boolean;
   tabIndexValue?: number;
+  name?: string;
+  mode?: string;
+  label?: string;
+  buttonLabel?: string;
+  helperText?: string;
+  value?: FileData[];
+  accept?: string;
+  multiple?: boolean;
+  showPreview?: boolean;
+  disabled?: boolean;
+  minSize?: number;
+  maxSize?: number;
 }
 
 export type Space =

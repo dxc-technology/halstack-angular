@@ -19,6 +19,7 @@ export interface AccordionProperties {
   assistiveText?: string;
   disabled: boolean;
   isExpanded: boolean;
+  defaultIsExpanded?:boolean
   margin?: Space | Spacing;
   padding?: Space | Spacing;
   tabIndexValue?: number;

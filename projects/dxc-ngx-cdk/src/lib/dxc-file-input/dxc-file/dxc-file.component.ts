@@ -1,4 +1,7 @@
-import { coerceBooleanProperty } from "@angular/cdk/coercion";
+import {
+  coerceBooleanProperty,
+  coerceNumberProperty,
+} from "@angular/cdk/coercion";
 import { C } from "@angular/cdk/keycodes";
 import {
   Component,
@@ -31,6 +34,14 @@ export class DxcFileComponent implements OnInit {
     this._showPreview = coerceBooleanProperty(value);
   }
   private _showPreview = false;
+  @Input()
+  get tabIndexValue(): number {
+    return this._tabIndexValue;
+  }
+  set tabIndexValue(value: number) {
+    this._tabIndexValue = coerceNumberProperty(value);
+  }
+  private _tabIndexValue = 0;
 
   hasError: boolean = false;
   hasShowError: boolean = false;
@@ -70,9 +81,9 @@ export class DxcFileComponent implements OnInit {
   }
 
   onRemoveHandler(event: any): void {
-    if(this.updatable){
+    if (this.updatable) {
       this.service.removeFile(this.file);
-    } 
+    }
   }
 
   private isShowPreview() {
@@ -114,11 +125,11 @@ export class DxcFileComponent implements OnInit {
       return "image";
     }
     return "file";
-  };
+  }
 
   getRemoveAriaLabel() {
     return "Remove " + this.file.data.name;
-  };
+  }
 
   getDynamicStyle(inputs) {
     return css`
@@ -149,7 +160,9 @@ export class DxcFileComponent implements OnInit {
       margin-top: ${inputs.multiple || inputs.mode !== "file" ? "4px" : ""};
       margin-left: ${!inputs.multiple && inputs.mode === "file" ? "4px" : ""};
       .previewContainer {
-        background-color: ${this.hasError ? "#ffc9ce" : "#e6e6e6"};
+        background-color: ${this.hasError
+          ? "var(--fileInput-errorFilePreviewBackgroundColor)"
+          : "var(--fileInput-filePreviewBackgroundColor)"};
         display: flex;
         align-items: center;
         place-content: center;
@@ -159,7 +172,9 @@ export class DxcFileComponent implements OnInit {
         width: 48px;
         svg,
         img {
-          fill: ${this.hasError ? "#d0011b" : "#808080"};
+          fill: ${this.hasError
+            ? "var(--fileInput-errorFilePreviewIconColor)"
+            : "var(--fileInput-filePreviewIconColor)"};
           height: 24px;
           width: 24px;
         }
@@ -207,6 +222,7 @@ export class DxcFileComponent implements OnInit {
               svg {
                 height: 16px;
                 width: 16px;
+                fill: var(--fileInput-deleteFileItemIconColor);
               }
               &:hover,
               &:active {
@@ -215,13 +231,17 @@ export class DxcFileComponent implements OnInit {
               }
               &:hover {
                 background-color: var(
-                  --fileInput-hoverFileItemIconBackgroundColor
+                  --fileInput-hoverDeleteFileItemBackgroundColor
                 );
               }
               &:active {
                 background-color: var(
-                  --fileInput-activeFileItemIconBackgroundColor
+                  --fileInput-activeDeleteFileItemBackgroundColor
                 );
+              }
+              &:focus {
+                outline: var(--fileInput-focusDeleteFileItemBackgroundColor)
+                  auto 1px;
               }
             }
             .errorIcon {

@@ -153,8 +153,8 @@ export class DxcWizardStepComponent {
           : "0 0 0 24px"} !important;
         &:focus {
           margin: ${inputs.mode === "vertical"
-            ? "24px 1px 1px 1px"
-            : "1px 1px 1px 24px"} !important;
+            ? "24px 0px 0px 0px"
+            : "0px 0px 0px 24px"} !important;
         }
       }
       .first {
@@ -163,8 +163,8 @@ export class DxcWizardStepComponent {
           : "0 24px 0 0"} !important;
         &:focus {
           margin: ${inputs.mode === "vertical"
-            ? "1px 1px 24px 1px"
-            : "1px 24px 1px 1px"} !important;
+            ? "0px 0px 24px 0px"
+            : "0px 24px 0px 0px"} !important;
         }
       }
       .step {
@@ -176,12 +176,10 @@ export class DxcWizardStepComponent {
         margin: ${inputs.mode === "vertical" ? "24px 0" : "0 24px"};
         padding: 0px;
         ${inputs.disabled ? "cursor: not-allowed;" : ""}
-        outline-color: var(--wizard-focusColor);
+        margin: ${inputs.mode === "vertical" ? "24px 1px" : "1px 24px"};
         &:focus {
-          padding: 2px;
-          outline: -webkit-focus-ring-color auto 1px;
-          margin: ${inputs.mode === "vertical" ? "24px 1px" : "1px 24px"};
-          outline-color: var(--wizard-focusColor);
+          outline: var(--wizard-focusColor) auto 1px;
+          outline-offset: 2px;
         }
         &:hover {
           ${inputs.disabled ? "" : "cursor: pointer;"}

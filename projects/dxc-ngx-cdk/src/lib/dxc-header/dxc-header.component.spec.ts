@@ -5,6 +5,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { TestBed } from "@angular/core/testing";
 import { PipesModule } from "../pipes/pipes.module";
 import { BackgroundProviderModule } from "../background-provider/background-provider.module";
+import { BackgroundProviderInnerModule } from "../background-provider/background-provider-inner.module";
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
@@ -18,7 +19,7 @@ TestBed.initTestEnvironment(
 describe("DxcHeader tests", () => {
   test("should render dxc-header", async () => {
     await render(`<dxc-header></dxc-header>`, {
-      imports: [PipesModule, BackgroundProviderModule],
+      imports: [PipesModule, BackgroundProviderInnerModule],
       componentProperties: {},
       declarations: [DxcHeaderComponent],
     });
@@ -28,7 +29,7 @@ describe("DxcHeader tests", () => {
   test("should click on logo", async () => {
     const onClick = jest.fn();
     await render(`<dxc-header (onClick)="onClick($event)"></dxc-header>`, {
-      imports: [PipesModule, BackgroundProviderModule],
+      imports: [PipesModule, BackgroundProviderInnerModule],
       componentProperties: { onClick },
       declarations: [DxcHeaderComponent],
     });
@@ -45,7 +46,7 @@ describe("DxcHeader tests", () => {
       set: { selector: "header" },
     });
     await render(`<header isResponsive="true" isMenuVisible="true"></header>`, {
-      imports: [PipesModule, BackgroundProviderModule],
+      imports: [PipesModule, BackgroundProviderInnerModule],
       componentProperties: {},
       declarations: [DxcHeaderComponent],
     });

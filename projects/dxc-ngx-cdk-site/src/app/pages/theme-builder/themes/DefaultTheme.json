@@ -13,10 +13,6 @@
     "baseColor": "#eeeeee",
     "fontColor": "#000000"
   },
-  "date": {
-    "baseColor": "#5f249f",
-    "accentColor": "#ffffff"
-  },
   "dateInput": {
     "baseColor": "#5f249f",
     "accentColor": "#ffffff"

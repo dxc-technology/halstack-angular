@@ -20,23 +20,29 @@
     <td>
       <code>'file'</code>
     </td>
-    <td>
-      Available modes of the component.
-    </td>
+    <td>Available modes of the component.</td>
   </tr>
   <tr>
     <td>value: Array&lt;FileData&gt;</td>
     <td></td>
-    <td>Value of the input file. It has an array of FileData.</td>
+    <td>
+      An array of files representing the selected files. Each file is a
+      FileData.
+    </td>
   </tr>
   <tr>
     <td>label: string</td>
     <td>
       <code></code>
     </td>
+    <td>Text to be placed above the component.</td>
+  </tr>
+  <tr>
+    <td>buttonLabel: string</td>
     <td>
-      Text to be placed above the component.
+      <code></code>
     </td>
+    <td>Text to be placed inside the button.</td>
   </tr>
   <tr>
     <td>helperText: string</td>
@@ -44,65 +50,70 @@
     <td>Helper text to be placed above the component.</td>
   </tr>
   <tr>
-    <td>buttonLabel: string</td>
-    <td>
-      <code></code>
-    </td>
-    <td>
-      Text to be placed inside the button.
-    </td>
-  </tr>
-  <tr>
     <td>accept: string</td>
     <td></td>
     <td>
-      The file types that the component accepts.
+      The file types that the component accepts. Its value must be one of all
+      the possible values of the HTML file input's accept attribute. Please
+      check the documentation
+      <dxc-link
+        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept"
+        text="here"
+      ></dxc-link
+      >.
     </td>
   </tr>
   <tr>
     <td>minSize: number</td>
     <td></td>
     <td>
-      The minimum file size (in bytes) allowed. If the size of the file does not comply the minSize, the file will have an error.
+      The minimum file size (in bytes) allowed. If the size of the file does not
+      comply the minSize, the file will have an error.
     </td>
   </tr>
   <tr>
     <td>maxSize: number</td>
     <td></td>
     <td>
-      The maximum file size (in bytes) allowed. If the size of the file does not comply the maxSize, the file will have an error.
+      The maximum file size (in bytes) allowed. If the size of the file does not
+      comply the maxSize, the file will have an error.
     </td>
   </tr>
   <tr>
     <td>multiple: boolean</td>
     <td><code>true</code></td>
     <td>
-      If true, the component allows multiple file items and will show all of them. If false, the selected file will be replaced by the new selected one.
+      If true, the component allows multiple file items and will show all of
+      them. If false, only one file will be shown, and if there is already one
+      file selected and a new one is chosen, it will be replaced by the new
+      selected one.
     </td>
   </tr>
   <tr>
     <td>showPreview: boolean</td>
     <td><code>false</code></td>
     <td>
-      If true, the preview of each file item will be shown. If it's not possible to show a preview, an icon refering to the file type will be shown.
+      If true, the preview of each file item will be shown. If it's not possible
+      to show a preview, an icon refering to the file type will be shown.
     </td>
   </tr>
   <tr>
     <td>disabled: boolean</td>
     <td><code>false</code></td>
-    <td>
-      If true, the component will be disabled.
-    </td>
+    <td>If true, the component will be disabled.</td>
   </tr>
   <tr>
     <td>callbackFile: EventEmitter</td>
     <td></td>
     <td>
-      This function will be called when the user selects or drops a file. The file or list of files will be sent as a parameter.
+      This event will be emit when the user selects or drops a file. The list of
+      files will be sent as a parameter. In this function, the files can be
+      updated or returned as they come. These files must be passed to the value
+      in order to be shown.
     </td>
   </tr>
   <tr>
-    <td>margin: any (string | object)</td>
+    <td>margin: string | object</td>
     <td></td>
     <td>
       Size of the margin to be applied to the component ('xxsmall' | 'xsmall' |
@@ -114,9 +125,6 @@
   <tr>
     <td>tabIndexValue: number</td>
     <td><code>0</code></td>
-    <td>
-      Value of the tabindex for all interactuable elements, except those inside
-      the custom area.
-    </td>
+    <td>Value of the tabindex.</td>
   </tr>
 </dxc-table>

@@ -17,9 +17,9 @@ export class WizardService {
   public tabIndexValue: BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor() {
-    this.innerCurrentStep.subscribe((newCurrent) => {
+    this.innerCurrentStep.subscribe((newCurrent: number) => {
       if (this.steps && (newCurrent || newCurrent === 0)) {
-        this.steps.forEach((element, index) => {
+        this.steps.forEach((element: DxcWizardStepComponent, index: number) => {
           element.setIsCurrent(index === newCurrent, newCurrent);
         });
       }
@@ -33,7 +33,10 @@ export class WizardService {
         element.isFirst = index === 0;
         element.setIsLast(index === this.steps.length - 1);
         element.position = index;
-        element.setIsCurrent(index === this.innerCurrentStep.value, this.innerCurrentStep.value);
+        element.setIsCurrent(
+          index === this.innerCurrentStep.value,
+          this.innerCurrentStep.value
+        );
       });
     }
   }

@@ -22,9 +22,7 @@ import { MdePopoverTrigger } from "@material-extended/mde";
 import { HostListener } from "@angular/core";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { DatePipe } from '@angular/common';
-import { DateHelper } from '../helpers/date/date-helper';
-import { ConfigurationsetupService } from './../services/startup/configurationsetup.service';
-import { MessageService } from './../services/toaster/message.service';
+import { DateHelper } from './helpers/date-helper';
 const moment = momentImported;
 
 @Component({
@@ -151,7 +149,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   private _isCalendarOpened: boolean = false;
   private _isSelectingDate: boolean = false;
 
-  constructor(private config: ConfigurationsetupService, private messageService: MessageService, private helper: DateHelper, private datePipe: DatePipe) { }
+  constructor(private helper: DateHelper, private datePipe: DatePipe) { }
 
   private calculateComponentValues(): void {
     this.size = this.size

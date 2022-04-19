@@ -23,7 +23,6 @@ import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
 import { BackgroundProviderComponent } from "../background-provider/background-provider.component";
 import { AccordionProperties, Space, Spacing } from "./dxc-accordion.types";
 
-
 @Component({
   selector: "dxc-accordion",
   templateUrl: "./dxc-accordion.component.html",
@@ -83,6 +82,11 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   }
   private _isExpanded;
   /**
+   * Initial state of the panel, only when it is uncontrolled.
+   */
+  @Input()
+  defaultIsExpanded: boolean = false;
+  /**
    * Value of the tabindex.
    */
   @Input()
@@ -109,6 +113,7 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
     label: "",
     assistiveText: "",
     isExpanded: false,
+    defaultIsExpanded: false,
     margin: null,
     padding: null,
     disabled: false,
@@ -133,7 +138,8 @@ export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnInit() {
-    this.renderedIsExpanded = this.isExpanded || false;
+    this.renderedIsExpanded = this.isExpanded || this.defaultIsExpanded;
+    console.log(this.renderedIsExpanded);
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

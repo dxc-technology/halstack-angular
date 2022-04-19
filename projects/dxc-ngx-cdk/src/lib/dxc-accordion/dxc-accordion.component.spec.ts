@@ -29,12 +29,12 @@ describe("DxcAccordion tests", () => {
     expect(getByText("assistiveText")).toBeTruthy();
   });
 
-  test("uncontrolled dxc-accordion", async () => {
+  test("defaultIsExpanded dxc-accordion", async () => {
     const projection = "Content inside the ng-content!";
     const onClickFunction = jest.fn();
 
     await render(
-      `<dxc-accordion label="test-accordion" assistiveText="assistiveText" (onClick)="onClickFunction($event)">${projection}</dxc-accordion>`,
+      `<dxc-accordion label="test-accordion" defaultIsExpanded="true" assistiveText="assistiveText" (onClick)="onClickFunction($event)">${projection}</dxc-accordion>`,
       {
         componentProperties: { onClickFunction },
         imports: [MatExpansionModule, BackgroundProviderInnerModule],
@@ -45,12 +45,12 @@ describe("DxcAccordion tests", () => {
     expect(screen.getByText("test-accordion")).toBeTruthy();
     expect(screen.getByText("assistiveText"));
 
-    expect(screen.getByText(projection).hidden);
+    expect(screen.getByText(projection).hidden).toBeFalsy();;
     fireEvent.click(screen.getByText("test-accordion"));
     expect(onClickFunction).toHaveBeenCalled();
-    expect(screen.getByText(projection).hidden).toBeFalsy();
+    expect(screen.getByText(projection).hidden)
     fireEvent.click(screen.getByText("test-accordion"));
-    expect(screen.getByText(projection).hidden);
+    expect(screen.getByText(projection).hidden).toBeFalsy();
   });
 
   test("controlled dxc-accordion", async () => {

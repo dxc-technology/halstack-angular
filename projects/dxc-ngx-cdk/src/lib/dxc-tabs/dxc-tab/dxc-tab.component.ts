@@ -43,7 +43,7 @@ export class DxcTabComponent implements OnChanges {
   @Input() notificationNumber: boolean | number;
 
   /**
-   * This event will emit when the user clicks on a tab. The index 
+   * This event will emit when the user clicks on a tab. The index
    * of the clicked tab will be passed as a parameter.
    */
   @Output() onTabClick: EventEmitter<number> = new EventEmitter<number>();

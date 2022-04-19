@@ -28,14 +28,15 @@ describe("DxcSwitch tests", () => {
       componentProperties: {
         label: "test-switch",
         onChange: { emit: onClickFunction } as any,
+        defaultChecked: true
       },
       imports: [MatSlideToggleModule],
     });
     const input = <HTMLInputElement>dxcSwitch.getByRole("switch");
-    expect(input.checked).toBeFalsy();
-    fireEvent.click(dxcSwitch.getByText("test-switch"));
-    expect(onClickFunction).toHaveBeenCalledWith(true);
     expect(input.checked).toBeTruthy();
+    fireEvent.click(dxcSwitch.getByText("test-switch"));
+    expect(onClickFunction).toHaveBeenCalledWith(false);
+    expect(input.checked).toBeFalsy();
   });
 
   test("controlled dxc-switch functionality", async () => {

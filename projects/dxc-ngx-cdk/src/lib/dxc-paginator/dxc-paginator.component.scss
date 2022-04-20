@@ -35,3 +35,21 @@
   font-size: 14px;
   font-family: var(--fontFamily);
 }
+
+@media (max-width:575px){
+  .labels-container {
+    display: block;
+    width: 97%;
+    font-size: 13px;
+    position: relative;
+    left: 1rem;  
+  }
+}
+
+
+@media (max-width: 575px) {
+  .paginator-button {
+    height: 30px !important;
+    margin-bottom: 0.5rem;
+  }
+}

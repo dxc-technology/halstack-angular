@@ -23,6 +23,7 @@
 
     <dxc-button
       *ngIf="showFirst"
+      class="paginator-button"
       mode="secondary"
       (onClick)="onFirstHandler($event)"
       size="small"
@@ -33,6 +34,7 @@
     ></dxc-button>
     <dxc-button
       *ngIf="showPrev"
+      class="paginator-button"
       mode="secondary"
       (onClick)="onPrevHandler($event)"
       size="small"

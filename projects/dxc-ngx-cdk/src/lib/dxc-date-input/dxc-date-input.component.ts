@@ -27,8 +27,6 @@ import {
   Spacing,
 } from "./dxc-date-input.types";
 
-
-
 @Component({
   selector: "dxc-date-input",
   templateUrl: "./dxc-date-input.component.html",
@@ -49,6 +47,10 @@ export class DxcDateInputComponent implements OnInit {
    * Value of the input element. If undefined, the component will be uncontrolled and the value will be managed internally by the component.
    */
   @Input() value: string;
+  /**
+   * Initial value of the date input, only when it is uncontrolled.
+   */
+  @Input() defaultValue: string;
   /**
    * Helper text to be placed above the date.
    */
@@ -140,6 +142,7 @@ export class DxcDateInputComponent implements OnInit {
     tabIndexValue: 0,
     placeholder: false,
     autocomplete: "off",
+    defaultValue: undefined,
   });
 
   /**

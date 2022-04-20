@@ -150,6 +150,7 @@ describe("DxcDate", () => {
     await render(DxcDateInputComponent, {
       componentProperties: {
         label: "test-input",
+        defaultValue: "22-10-1998",
         onChange: {
           emit: onChange,
         } as any,
@@ -173,7 +174,7 @@ describe("DxcDate", () => {
         },
       ],
     });
-
+    expect(screen.getByDisplayValue("22-10-1998"));
     const input = <HTMLInputElement>screen.getByRole("textbox");
     input.focus();
     fireEvent.input(input, { target: { value: newValue } });
@@ -446,6 +447,7 @@ describe("DxcDate", () => {
       componentProperties: {
         label: "test-input",
         value: "03-12-1995",
+        defaultValue: "12-04-1995",
         onChange: {
           emit: onChange,
         } as any,
@@ -472,6 +474,7 @@ describe("DxcDate", () => {
         },
       ],
     });
+    expect(screen.getByDisplayValue("03-12-1995"));
     const input = <HTMLInputElement>screen.getByRole("textbox");
 
     input.focus();

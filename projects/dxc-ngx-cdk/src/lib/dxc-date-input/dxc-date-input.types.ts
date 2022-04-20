@@ -13,6 +13,7 @@ export interface DateInputProperties {
   size?: "medium" | "large" | "fillParent";
   tabIndexValue?: number;
   autocomplete?: string;
+  defaultValue?: string;
 }
 
 export type Space =

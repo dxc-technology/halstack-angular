@@ -342,6 +342,7 @@ export class DxcToggleGroupComponent implements OnInit {
         line-height: var(--toggleGroup-helperTextLineHeight);
       }
       .toggleContainer {
+        width: max-content;
         display: inline-flex;
         flex-direction: row;
         opacity: 1;

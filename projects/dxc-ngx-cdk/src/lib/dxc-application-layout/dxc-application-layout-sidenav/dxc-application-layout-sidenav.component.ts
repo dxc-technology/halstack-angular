@@ -52,8 +52,9 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   }
   _displayArrow = true;
 
+  showArrow: boolean;
+
   firstClick: boolean = false; //remove animation on first load
-  innerWidth;
   isResponsive = true;
   isShown: boolean;
 
@@ -72,7 +73,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   ) {}
 
   @HostListener("window:resize", ["$event"])
-  onResize(event) {
+  onResize() {
     this.updateCss();
   }
 
@@ -81,7 +82,6 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
     this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
-      innerWidth: this.innerWidth,
       isResponsive: this.isResponsive,
       isShown: this.isShown,
     })}`;
@@ -114,23 +114,16 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   }
 
   updateState() {
-    this.innerWidth = window.innerWidth;
     this.sidenavService.setPushMode(this.mode === "push");
-    if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true;
-      if (!this.displayArrow) {
-        this.displayArrow = true;
-      }
-    } else {
-      this.isResponsive = false;
-      if (!this.displayArrow && !this.isShown) {
-        this.isShown = true;
-      }
+    this.isResponsive = window.matchMedia(`(max-width: ${responsiveSizes.medium}rem)`).matches;
+    this.isResponsive ? this.showArrow = true : this.showArrow = this.displayArrow;
+    if (!this.isResponsive && !this.displayArrow && !this.isShown) {
+      this.isShown = true;
     }
     this.isShown =
       this.isShown !== undefined
         ? this.isShown
-        : this.innerWidth <= responsiveSizes.tablet
+        : this.isResponsive
         ? false
         : true;
     this.sidenavService.showMenu(this.isShown);
@@ -141,7 +134,6 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
     this.sidenavStyles = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       mode: this.mode,
-      innerWidth: this.innerWidth,
       isResponsive: this.isResponsive,
       isShown: this.isShown,
     })}`;
@@ -151,10 +143,10 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
     return css`
       z-index: 400;
       position: ${(inputs.mode === "overlay" && this.displayArrow) ||
-      inputs.isResponsive
+      this.isResponsive
         ? "absolute"
         : "relative"};
-      height: ${inputs.mode === "overlay" || inputs.isResponsive ? "100%" : ""};
+      height: ${inputs.mode === "overlay" || this.isResponsive ? "100%" : ""};
       .sidenavContainerClass {
         background-color: var(--sidenav-backgroundColor);
         display: flex;
@@ -192,7 +184,7 @@ export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
           }
         }
         .sidenavArrow {
-          visibility: ${!this.displayArrow ? "hidden" : "visible"};
+          visibility: ${!this.showArrow ? "hidden" : "visible"};
           width: 42px;
           height: 42px;
           background-color: var(--sidenav-arrowContainerColor);

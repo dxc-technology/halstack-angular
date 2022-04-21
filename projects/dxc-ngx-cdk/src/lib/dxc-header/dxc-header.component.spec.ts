@@ -17,6 +17,15 @@ TestBed.initTestEnvironment(
 );
 
 describe("DxcHeader tests", () => {
+  beforeAll(() => {
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: jest.fn().mockImplementation(() => ({
+        matches: false,
+      })),
+    });
+  });
+
   test("should render dxc-header", async () => {
     await render(`<dxc-header></dxc-header>`, {
       imports: [PipesModule, BackgroundProviderInnerModule],
@@ -41,6 +50,12 @@ describe("DxcHeader tests", () => {
     Object.defineProperty(window, "innerWidth", {
       configurable: true,
       value: 375,
+    });
+    Object.defineProperty(window, "matchMedia", {
+      writable: true,
+      value: jest.fn().mockImplementation(() => ({
+        matches: true,
+      })),
     });
     TestBed.overrideComponent(DxcHeaderComponent, {
       set: { selector: "header" },

@@ -76,7 +76,6 @@ export class DxcFooterComponent implements OnChanges {
 
   defaultImglogo: string;
   innerWidth: number;
-  isResponsive: boolean;
   bottomLinksLength: number;
   currentBackgroundColor: string;
 
@@ -90,16 +89,6 @@ export class DxcFooterComponent implements OnChanges {
     tabIndexValue: 0,
   });
 
-  @HostListener("window:resize", ["$event"])
-  onResize(event) {
-    this.innerWidth = event.target.innerWidth;
-    if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true;
-    } else {
-      this.isResponsive = false;
-    }
-    this.footerFooterStyle = `${this.setFooterFooterStyle(this.isResponsive)}`;
-  }
 
   // Styling
   footerContainerStyle: string;
@@ -152,16 +141,8 @@ export class DxcFooterComponent implements OnChanges {
     this.childComponentsStyle = `${this.setChildComponentsStyle(
       this.defaultInputs.getValue()
     )}`;
-    if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true;
-    } else {
-      this.isResponsive = false;
-    }
-    this.footerContainerStyle = `${this.setFooterContainerStyle(
-      this.defaultInputs.getValue(),
-      this.isResponsive
-    )}`;
-    this.footerFooterStyle = `${this.setFooterFooterStyle(this.isResponsive)}`;
+
+    this.footerFooterStyle = `${this.setFooterFooterStyle()}`;
     if (this.bottomLinks) {
       this.bottomLinksLength = this.bottomLinks.length - 1;
     }
@@ -174,13 +155,12 @@ export class DxcFooterComponent implements OnChanges {
     }, {});
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.footerContainerStyle = `${this.setFooterContainerStyle(
-      this.defaultInputs.getValue(),
-      this.isResponsive
+      this.defaultInputs.getValue()
     )}`;
     this.childComponentsStyle = `${this.setChildComponentsStyle(
       this.defaultInputs.getValue()
     )}`;
-    this.footerFooterStyle = `${this.setFooterFooterStyle(this.isResponsive)}`;
+    this.footerFooterStyle = `${this.setFooterFooterStyle()}`;
     if (this.bottomLinks) {
       this.bottomLinksLength = this.bottomLinks.length - 1;
     }
@@ -190,9 +170,15 @@ export class DxcFooterComponent implements OnChanges {
     return document.body.getAttribute("footer-logo");
   }
 
-  setFooterContainerStyle(input: any, responsive: boolean) {
+  setFooterContainerStyle(input: any) {
     return css`
-      padding: ${responsive ? "20px" : "24px 36px"};
+      @media (min-width: ${responsiveSizes.small}rem) {
+        padding: 24px 36px 24px 36px;
+      }
+
+      @media (max-width: ${responsiveSizes.small}rem) {
+        padding: 20px;
+      }
       background-color: var(--footer-backgroundColor);
       ${this.utils.getTopMargin(input.margin)}
       width: 100%;
@@ -212,12 +198,19 @@ export class DxcFooterComponent implements OnChanges {
     `;
   }
 
-  setFooterFooterStyle(responsive: boolean) {
+  setFooterFooterStyle() {
     return css`
       display: flex;
       justify-content: space-between;
-      flex-direction: ${responsive ? "column" : "row"};
-      align-items: ${responsive ? "center" : "flex-end"};
+      @media (min-width: ${responsiveSizes.small}rem) {
+        flex-direction: row;
+        align-items: flex-end;
+      }
+    
+      @media (max-width: ${responsiveSizes.small}rem) {
+        flex-direction: column;
+        align-items: center;
+      }
       border-top: var(--footer-bottomLinksDividerThickness)
         var(--footer-bottomLinksDividerStyle)
         var(--footer-bottomLinksDividerColor);
@@ -228,19 +221,33 @@ export class DxcFooterComponent implements OnChanges {
         font-style: var(--footer-copyrightFontStyle);
         font-size: var(--footer-copyrightFontSize);
         font-weight: var(--footer-copyrightFontWeight);
-        max-width: ${responsive ? "100%" : "40%"};
-        width: ${responsive ? "100%" : "40%"};
-        text-align: ${responsive ? "center" : "right"};
+        @media (min-width: ${responsiveSizes.small}rem) {
+          max-width: 40%;
+          text-align: right;
+        }
+      
+        @media (max-width: ${responsiveSizes.small}rem) {
+          max-width: 100%;
+          width: 100%;
+          text-align: left;
+        }
       }
 
       .bottomLinksStyle {
         padding-top: var(--footer-bottomLinksDividerSpacing);
         display: inline-flex;
         flex-wrap: wrap;
-        max-width: ${responsive ? "100%" : "60%"};
-        width: ${responsive ? "100%" : "auto"};
-        text-align: ${responsive ? "center" : ""};
-        margin: ${responsive ? "40px 0 40px 0" : ""};
+        @media (min-width: ${responsiveSizes.small}rem) {
+          max-width: 60%;
+        }
+      
+        @media (max-width: ${responsiveSizes.small}rem) {
+          max-width: 100%;
+          width: 100%;
+          text-align: center;
+          margin: 40px 0 40px 0;
+        }
+      
         color: var(--footer-bottomLinksFontColor);
         .point {
           margin: 0px 10px;

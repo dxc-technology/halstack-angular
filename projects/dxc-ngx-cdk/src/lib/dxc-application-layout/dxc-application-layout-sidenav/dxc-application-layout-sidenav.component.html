@@ -4,7 +4,7 @@
   </div>
   <div
     tabindex="0"
-    *ngIf="displayArrow || isResponsive"
+    *ngIf="showArrow"
     class="sidenavArrow"
     (keydown)="arrowKey($event)"
     (click)="arrowClicked()"

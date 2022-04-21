@@ -83,8 +83,6 @@ export class DxcHeaderComponent implements OnChanges {
 
   isResponsive = false;
   isMenuVisible = false;
-  innerWidth;
-  innerHeight;
   responsiveMenu: string;
   isClickDefined = false;
 
@@ -99,14 +97,10 @@ export class DxcHeaderComponent implements OnChanges {
     padding: null,
   });
 
-  @HostListener("window:resize", ["$event"])
-  onResize(event) {
-    this.innerWidth = event.target.innerWidth;
-    this.innerHeight = event.target.innerHeight;
-    if (this.innerWidth <= responsiveSizes.tablet) {
-      this.isResponsive = true;
-    } else {
-      this.isResponsive = false;
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isResponsive = window.matchMedia(`(max-width: ${responsiveSizes.medium}rem)`).matches;
+    if(!this.isResponsive) { 
       this.isMenuVisible = false;
     }
     this.updateCss();
@@ -115,40 +109,26 @@ export class DxcHeaderComponent implements OnChanges {
   constructor(private utils: CssUtils, private elRef: ElementRef) {}
 
   updateCss() {
-    if (this.isMenuVisible) {
-      this.elRef.nativeElement.ownerDocument.body.style.overflow = "hidden";
-    } else {
-      this.elRef.nativeElement.ownerDocument.body.style.overflow = null;
-    }
+                            
     this.currentBackgroundColor = this.utils.readProperty(
       "--header-backgroundColor"
     );
     this.className = `${this.getDynamicStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,
-      isResponsive: this.isResponsive,
-      innerWidth: this.innerWidth,
-      innerHeight: this.innerHeight,
+      isResponsive: this.isResponsive
     })}`;
 
     this.responsiveMenu = `${this.getResponsiveMenuStyle({
       ...this.defaultInputs.getValue(),
       isMenuVisible: this.isMenuVisible,
-      isResponsive: this.isResponsive,
-      innerWidth: this.innerWidth,
-      innerHeight: this.innerHeight,
+      isResponsive: this.isResponsive
     })}`;
   }
 
   public ngOnInit() {
     this.isClickDefined = this.onClick.observers?.length > 0;
-    this.innerWidth = window.innerWidth;
-    this.innerHeight = window.innerHeight;
-    if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {
-      this.isResponsive = true;
-    } else {
-      this.isResponsive = false;
-    }
+    this.isResponsive = window.matchMedia(`(max-width: ${responsiveSizes.medium}rem)`).matches;
     this.updateCss();
   }
 
@@ -298,12 +278,12 @@ export class DxcHeaderComponent implements OnChanges {
         top: 0;
         left: 0;
         width: 100vw;
-        height: ${inputs.innerHeight}px;
+        height: 100vh;
         background-color: var(--header-overlayColor);
         opacity: var(--header-overlayOpacity) !important;
-        display: ${inputs.innerWidth <= responsiveSizes.mobileLarge
-          ? "none"
-          : ""};
+        @media (max-width: ${responsiveSizes.small}rem) { 
+          display: none;
+        }
         transition: opacity 0.2s 0.2s ease-in-out;
         z-index: var(--header-overlayZindex);
       }
@@ -322,11 +302,15 @@ export class DxcHeaderComponent implements OnChanges {
       right: 0;
       z-index: var(--header-menuZindex);
 
-      width: ${inputs.innerWidth <= responsiveSizes.laptop &&
-      inputs.innerWidth > responsiveSizes.mobileLarge
-        ? "var(--header-menuTabletWidth)"
-        : "var(--header-menuMobileWidth)"};
-      height: ${inputs.innerHeight}px;
+
+      @media (max-width: ${responsiveSizes.large}rem) and (min-width: ${responsiveSizes.small}rem) {
+        width: "var(--header-menuTabletWidth)";
+      }
+      @media not((max-width: ${responsiveSizes.large}rem) and (min-width: ${responsiveSizes.small}rem)) {
+        width: "var(--header-menuMobileWidth)"};
+      }
+
+      height: 100vh;
       padding: 20px;
 
       ${this.checkMenuVisible(inputs.isMenuVisible)}

@@ -26,10 +26,9 @@ export const colors = {
   };
 
   export const responsiveSizes = {
-    mobileSmall: 320,
-    mobileMedium: 375,
-    mobileLarge: 425,
-    tablet: 768,
-    laptop: 1024,
-    desktop: 1440
+    xsmall: "20",
+    small: "30",
+    medium: "45",
+    large: "66",
+    xlarge: "90",
   }

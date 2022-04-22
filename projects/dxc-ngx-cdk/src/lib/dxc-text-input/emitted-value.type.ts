@@ -1,6 +1,6 @@
 type EmittedValue = {
   value: string;
-  error: string;
+  error?: string;
 };
 
 export default EmittedValue;

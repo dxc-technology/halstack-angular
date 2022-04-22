@@ -110,7 +110,7 @@ export class DxcTextInputComponent
    * the error below the input component. If it is not defined, the error
    * messages will be managed internally, but never displayed on its own.
    */
-  @Input() error: string = "";
+  @Input() error: string = undefined;
   /**
    * Regular expression that defines the valid format allowed by the input.
    * This will be checked when the input loses the focus. If the value entered
@@ -167,7 +167,7 @@ export class DxcTextInputComponent
 
   defaultInputs = new BehaviorSubject<TextInputProperties>({
     placeholder: "",
-    error: "",
+    error: undefined,
     clearable: false,
     optional: false,
     disabled: false,
@@ -504,7 +504,7 @@ export class DxcTextInputComponent
       return `Min length ${this.minLength}, Max length ${this.maxLength}`;
     if (value && !this.patternMatch(this.pattern, value))
       return `Please use a valid pattern`;
-    return null;
+    return undefined;
   }
 
   private handleValidationError() {

@@ -150,10 +150,10 @@ describe("DxcToggleGroup tests", () => {
     expect(changeMock).toHaveBeenCalledTimes(0);
   });
 
-  test("dxc-toggleGroup with default value", async () => {
+  test("dxc-toggleGroup uncontrolled with default value", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(
-      `<dxc-togglegroup defaultValue="3">,
+      `<dxc-togglegroup defaultValue="3" (onChange)="changeMock($event)">,
           <dxc-toggle label="Facebook" value="1"></dxc-toggle>
           <dxc-toggle label="Twitter" value="2"></dxc-toggle>
           <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
@@ -166,16 +166,17 @@ describe("DxcToggleGroup tests", () => {
         excludeComponentDeclaration: true,
       }
     );
-    const radios = dxcToggleGroup.getAllByRole("radio");
-    expect(radios[0].getAttribute("aria-checked")).toBe("false");
-    expect(radios[1].getAttribute("aria-checked")).toBe("false");
-    expect(radios[2].getAttribute("aria-checked")).toBe("true");
+    dxcToggleGroup.detectChanges();
+    expect(dxcToggleGroup.getByText("Linkedin"));
+    fireEvent.click(dxcToggleGroup.getByText("Linkedin"));
+    dxcToggleGroup.detectChanges();
+    expect(changeMock).toHaveBeenCalledWith(null);
   });
 
-  test("dxc-toggleGroup multiple with default value", async () => {
+  test("dxc-toggleGroup uncontrolled with multiple and default value", async () => {
     const changeMock = jest.fn();
     const dxcToggleGroup = await render(
-      `<dxc-togglegroup [multiple]="true" [defaultValue]="['2','3']">,
+      `<dxc-togglegroup [multiple]="true" [defaultValue]="['1','2','3']" (onChange)="changeMock($event)">
           <dxc-toggle label="Facebook" value="1"></dxc-toggle>
           <dxc-toggle label="Twitter" value="2"></dxc-toggle>
           <dxc-toggle label="Linkedin" value="3"></dxc-toggle>
@@ -188,9 +189,20 @@ describe("DxcToggleGroup tests", () => {
         excludeComponentDeclaration: true,
       }
     );
-    const radios = dxcToggleGroup.getAllByRole("switch");
-    expect(radios[0].getAttribute("aria-checked")).toBe("false");
-    expect(radios[1].getAttribute("aria-checked")).toBe("true");
-    expect(radios[2].getAttribute("aria-checked")).toBe("true");
+    dxcToggleGroup.detectChanges();
+    expect(dxcToggleGroup.getByText("Facebook"));
+    fireEvent.click(dxcToggleGroup.getByText("Facebook"));
+    dxcToggleGroup.detectChanges();
+    expect(changeMock).toHaveBeenCalledWith(["2", "3"]);
+    dxcToggleGroup.detectChanges();
+    expect(dxcToggleGroup.getByText("Twitter"));
+    fireEvent.click(dxcToggleGroup.getByText("Twitter"));
+    dxcToggleGroup.detectChanges();
+    expect(changeMock).toHaveBeenCalledWith(["3"]);
+    dxcToggleGroup.detectChanges();
+    expect(dxcToggleGroup.getByText("Linkedin"));
+    fireEvent.click(dxcToggleGroup.getByText("Linkedin"));
+    dxcToggleGroup.detectChanges();
+    expect(changeMock).toHaveBeenCalledWith([]);
   });
 });

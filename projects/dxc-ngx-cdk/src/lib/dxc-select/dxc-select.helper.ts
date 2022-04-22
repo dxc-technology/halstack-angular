@@ -405,6 +405,7 @@ export class DxcSelectHelper {
           ? "var(--select-disabledColor)"
           : "var(--select-errorMessageColor)"};
         line-height: var(--select-errorMessagetLineHeight);
+        min-height: 18px;
       }
     `;
   }

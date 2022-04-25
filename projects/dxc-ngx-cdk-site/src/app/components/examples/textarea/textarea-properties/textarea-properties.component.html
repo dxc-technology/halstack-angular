@@ -22,7 +22,8 @@
     <td>defaultValue: string</td>
     <td></td>
     <td>
-      Default value given to the textarea when is uncontrolled and also maintains the uncontrolled behaviour.
+      Default value given to the textarea when is uncontrolled and also
+      maintains the uncontrolled behaviour.
     </td>
   </tr>
   <tr>
@@ -59,8 +60,9 @@
     </td>
     <td>
       If true, the input will be optional, showing <code>(Optional)</code>
-      next to the label. Otherwise, the field will be considered required and an error 
-      will be passed as a parameter to the OnBlur and onChange functions when it has not been filled.
+      next to the label. Otherwise, the field will be considered required and an
+      error will be passed as a parameter to the OnBlur and onChange functions
+      when it has not been filled.
     </td>
   </tr>
   <tr>
@@ -94,9 +96,12 @@
     <td>error: string</td>
     <td></td>
     <td>
-      If it is defined, the component will change its appearance, showing the
-      error below the textarea component. If it is not defined, the error
-      messages will be created and managed internally.
+      If it is a defined value and also a truthy string, the component will
+      change its appearance, showing the error below the textarea. If the
+      defined value is an empty string, it will reserve a space below the
+      component for a future error, but it would not change its look. In case of
+      being undefined or null, both the appearance and the space for the error
+      message would not be modified.
     </td>
   </tr>
   <tr>

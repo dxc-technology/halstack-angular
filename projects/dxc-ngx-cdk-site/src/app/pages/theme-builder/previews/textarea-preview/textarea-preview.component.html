@@ -7,20 +7,24 @@
         [pattern]="pattern"
         (onBlur)="onBlur($event)"
         tabIndexValue="3"
+        margin="xsmall"
       >
       </dxc-textarea>
       <dxc-textarea
         label="default value"
         [pattern]="pattern"
         defaultValue="Default"
+        margin="xsmall"
       >
       </dxc-textarea>
     </tbuilder-component-mode>
     <tbuilder-component-mode text="Invalid">
-      <dxc-textarea label="Test" error="error"> </dxc-textarea>
+      <dxc-textarea label="Test" error="error" margin="xsmall"> </dxc-textarea>
+      <dxc-textarea label="Test" error="" margin="xsmall"> </dxc-textarea>
     </tbuilder-component-mode>
     <tbuilder-component-mode text="Disabled">
-      <dxc-textarea label="Test" value="test" disabled="true"> </dxc-textarea>
+      <dxc-textarea label="Test" value="test" disabled="true" margin="xsmall">
+      </dxc-textarea>
     </tbuilder-component-mode>
   </background-provider>
 

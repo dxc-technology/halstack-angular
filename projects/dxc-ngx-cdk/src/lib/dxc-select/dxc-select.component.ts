@@ -136,11 +136,15 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   private _optional = false;
 
   /**
-   * If it is defined, the component will change its appearance, showing the error below the select component.
-   * If it is not defined, the error messages will be managed internally, but never displayed on its own.
+   * If it is a defined value and also a truthy string, the component will
+   * change its appearance, showing the error below the select component. If
+   * the defined value is an empty string, it will reserve a space below the
+   * component for a future error, but it would not change its look. In case of
+   * being undefined or null, both the appearance and the space for the error
+   * message would not be modified.
    */
   @Input()
-  error: string;
+  error: string = undefined;
 
   /**
    * Text to be put as placeholder of the select.
@@ -184,7 +188,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     multiple: false,
     optional: false,
     disabled: false,
-    error: "",
+    error: undefined,
     margin: undefined,
     size: "medium",
     options: [],
@@ -350,7 +354,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
           arr.push(option);
         }
         if (arr) {
-          let op = { value: [], error: null };
+          let op = { value: [], error: undefined };
           arr.map((el) => {
             op.value.push(el.value);
           });
@@ -363,7 +367,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         this.isOpened = true;
       } else {
         if (option) {
-          this.onChange.emit({ value: option.value, error: null });
+          this.onChange.emit({ value: option.value, error: undefined });
         } else {
           this.onChange.emit({ value: "", error: this.isRequired() });
         }
@@ -384,7 +388,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
     const options = this.service.getSelectedValues();
     if (this.multiple) {
       if (options) {
-        let op = { value: [], error: null };
+        let op = { value: [], error: undefined };
         options.map((el) => {
           op.value.push(el.value);
         });
@@ -400,7 +404,7 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
         // if (options.value === "") {
         //   this.service.setSelectedValues([]);
         // }
-        this.onBlur.emit({ value: options.value, error: null });
+        this.onBlur.emit({ value: options.value, error: undefined });
       } else {
         this.onBlur.emit({ value: "", error: this.isRequired() });
       }
@@ -776,7 +780,9 @@ export class DxcSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   private isRequired = () =>
-    !this.optional ? `This field is required. Please, enter a value.` : null;
+    !this.optional
+      ? `This field is required. Please, enter a value.`
+      : undefined;
 
   clickNotSelectable() {
     this.isNotSelectable = true;

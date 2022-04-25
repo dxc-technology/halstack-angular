@@ -355,4 +355,6 @@
   </ul>
 </div>
 
-<span *ngIf="error && !disabled" class="errorMessage">{{ error }}</span>
+<span *ngIf="(error || error === '') && !disabled" class="errorMessage">{{
+  error
+}}</span>

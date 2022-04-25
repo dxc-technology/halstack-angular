@@ -86,10 +86,9 @@ describe("DxcSelectComponent tests", () => {
       "true"
     );
     fireEvent.click(screen.getByText("aida"));
-    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: undefined });
     fireEvent.click(dxcSelect.getByRole("combobox"));
     expect(dxcSelect.getByText("aida"));
-    
   });
 
   test("dxc-select single controlled functionality", async () => {
@@ -123,7 +122,7 @@ describe("DxcSelectComponent tests", () => {
       "true"
     );
     fireEvent.click(screen.getByText("aida"));
-    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: undefined });
     expect(screen.getAllByText("label1")[1].getAttribute("aria-selected")).toBe(
       "true"
     );
@@ -171,7 +170,7 @@ describe("DxcSelectComponent tests", () => {
     dxcSelect.getByText("Choose an option");
     fireEvent.click(dxcSelect.getByRole("combobox"));
     fireEvent.click(screen.getByText("aida"));
-    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(changeMock).toHaveBeenCalledWith({ value: "10", error: undefined });
     expect(screen.getAllByText("aida")[1].getAttribute("aria-selected")).toBe(
       "true"
     );
@@ -191,7 +190,7 @@ describe("DxcSelectComponent tests", () => {
       "false"
     );
     fireEvent.click(screen.getByText("pepe"));
-    expect(changeMock).toHaveBeenCalledWith({ value: "11", error: null });
+    expect(changeMock).toHaveBeenCalledWith({ value: "11", error: undefined });
     expect(screen.getAllByText("pepe")[1].getAttribute("aria-selected")).toBe(
       "true"
     );

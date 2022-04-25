@@ -73,7 +73,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
    * the pattern, the onBlur and onChange functions will be called with the
    * current value and an internal error informing that this value does not
    * match the pattern. If the pattern is met, the error parameter of both
-   * events will be null.
+   * events will be undefined.
    */
   @Input() pattern: string;
   /**
@@ -83,7 +83,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
    * comply the minimum length, the onBlur and onChange functions will be called
    * with the current value and an internal error informing that the value
    * length does not comply the specified range. If a valid length is
-   * reached, the error parameter of both events will be null.
+   * reached, the error parameter of both events will be undefined.
    */
   @Input() minLength: number;
   /**
@@ -93,7 +93,7 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
    * comply the maximum length, the onBlur and onChange functions will be called
    * with the current value and an internal error informing that the value
    * length does not comply the specified range. If a valid length is
-   * reached, the error parameter of both events will be null.
+   * reached, the error parameter of both events will be undefined.
    */
   @Input() maxLength: number;
   /**
@@ -135,13 +135,13 @@ export class DxcPasswordInputComponent implements OnInit, OnChanges {
    * This function will be called when the user types within the input
    * element of the component. An object including the current value and
    * the error (if the value entered is not valid) will be passed to this
-   * function. If there is no error, error will be null.
+   * function. If there is no error, error will be undefined.
    * */
   @Output() onChange = new EventEmitter<EmittedValue>();
   /**
    * This function will be called when the input element loses the focus.
    * An object including the input value and the error (if the value entered is
-   * not valid) will be passed to this function. If there is no error, error will be null.
+   * not valid) will be passed to this function. If there is no error, error will be undefined.
    */
   @Output() onBlur = new EventEmitter<EmittedValue>();
 

@@ -80,7 +80,7 @@ describe("DxcNumberInputComponent", () => {
     input.focus();
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Increment"));
-    expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(onChange).toHaveBeenCalledWith({ value: "10", error: undefined });
   });
 
   test("decrease should call onChange in dxc-number", async () => {
@@ -105,7 +105,7 @@ describe("DxcNumberInputComponent", () => {
     input.focus();
     expect(input).toHaveFocus();
     fireEvent.click(screen.getByLabelText("Decrement"));
-    expect(onChange).toHaveBeenCalledWith({ value: "5", error: null });
+    expect(onChange).toHaveBeenCalledWith({ value: "5", error: undefined });
   });
 
   test("controlled dxc-number", async () => {
@@ -135,7 +135,7 @@ describe("DxcNumberInputComponent", () => {
     expect(input.max).toBe("100");
     expect(screen.getByDisplayValue("4")).toBeTruthy();
     fireEvent.input(input, { target: { value: "10" } });
-    expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(onChange).toHaveBeenCalledWith({ value: "10", error: undefined });
     expect(screen.getByDisplayValue("4")).toBeTruthy();
   });
 
@@ -170,7 +170,7 @@ describe("DxcNumberInputComponent", () => {
     expect(input.max).toBe("100");
     expect(screen.getByDisplayValue("4"));
     fireEvent.input(input, { target: { value: "10" } });
-    expect(onChange).toHaveBeenCalledWith({ value: "10", error: null });
+    expect(onChange).toHaveBeenCalledWith({ value: "10", error: undefined });
     expect(screen.getByDisplayValue("4"));
     fireEvent.blur(input);
     waitFor(() => {

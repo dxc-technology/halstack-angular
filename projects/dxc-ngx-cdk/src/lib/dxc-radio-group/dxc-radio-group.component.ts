@@ -26,42 +26,98 @@ import { RadioItem } from "./interfaces/radio-item.interface";
 export class DxcRadioGroupComponent implements OnInit {
   @HostBinding("class") styles;
 
+  /**
+   * Value of the radio group. If undefined, the component will be uncontrolled
+   * and the value will be managed internally by the component.
+   */
   @Input()
   label: string = "";
 
+  /**
+   * Helper text to be placed above the radio group.
+   */
   @Input()
   helperText: string = "";
 
+  /**
+   * Name attribute of the input element. This attribute will allow users to
+   * find the component's value during the submit event.
+   */
   @Input()
   name: string;
 
+  /**
+   * Value of the radio group. If undefined, the component will be uncontrolled
+   * and the value will be managed internally by the component.
+   */
   @Input()
   value?: string;
 
+  /**
+   * If true, the component will be marked as readonly.
+   */
   @Input()
   readOnly: boolean = false;
 
+  /**
+   * If true, the component will be disabled.
+   */
   @Input()
   disabled: boolean = false;
 
+  /**
+   * If true, the radio group will be optional, showing (Optional) next to the
+   * label and adding a default last option with an empty string as value.
+   * Otherwise, the field will be considered required and an error will be
+   * passed as a parameter to the OnBlur functions if an option wasn't selected.
+   */
   @Input()
   optional: boolean = false;
 
+  /**
+   * Label of the optional item.
+   */
   @Input()
   optionalItemLabel?: string = "N/A";
 
+  /**
+   * Default value of the radio group, this property is used to have a default
+   * value and also have uncontrolled behaviour.
+   */
   @Input()
   defaultValue: string;
 
+  /**
+   * An array of objects representing the selectable options. Each object
+   * RadioItem has the following properties:
+   * - label: string: Label of the option placed next to the radio input.
+   * - value: string: Value of the option. It should be unique and not
+   * an empty string, which is reserved to the optional item added by optional prop.
+   * - disabled: boolean: disables the option.
+   */
   @Input()
   options: RadioItem[];
 
+  /**
+   * Sets the orientation of the options within the radio group.
+   */
   @Input()
   stacking: "row" | "column" = "column";
 
+  /**
+   * Value of the tabindex attribute.
+   */
   @Input()
   tabIndexValue: number = 0;
 
+  /**
+   * If it is a defined value and also a truthy string, the component will
+   * change its appearance, showing the error below the radio group. If the
+   * defined value is an empty string, it will reserve a space below the
+   * component for a future error, but it would not change its look. In case of
+   * being undefined or null, both the appearance and the space for the error
+   * message would not be modified.
+   */
   @Input()
   error: string;
 
@@ -290,7 +346,7 @@ export class DxcRadioGroupComponent implements OnInit {
         font-weight: var(--radioGroup-errorMessageFontWeight);
         line-height: var(--radioGroup-errorMessageLineHeight);
         font-family: var(--radioGroup-labelFontFamily);
-        height: var(--radioGroup-errorMessageLineHeight);
+        min-height: var(--radioGroup-errorMessageLineHeight);
       }
       .valueInput {
         display: none;

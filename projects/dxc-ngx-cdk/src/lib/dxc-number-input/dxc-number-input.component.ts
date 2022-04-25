@@ -305,7 +305,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
       currentValue = coerceNumberProperty(this.value);
     }
     let calculatedValue = this.calculateMinus(currentValue);
-    this.handleOnChange({ value: calculatedValue.toString(), error: null });
+    this.handleOnChange({ value: calculatedValue.toString(), error: undefined });
     this.dxcInputRef.inputRef.nativeElement.focus();
   }
 
@@ -318,7 +318,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
       currentValue = coerceNumberProperty(this.value);
     }
     let calculatedValue = this.calculatePlus(currentValue);
-    this.handleOnChange({ value: calculatedValue.toString(), error: null });
+    this.handleOnChange({ value: calculatedValue.toString(), error: undefined });
     this.dxcInputRef.inputRef.nativeElement.focus();
   }
 

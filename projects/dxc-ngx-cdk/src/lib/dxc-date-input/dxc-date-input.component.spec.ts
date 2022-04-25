@@ -138,7 +138,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: newValue,
-      error: null,
+      error: undefined,
       date: newMockDate,
     });
     expect(screen.getByDisplayValue(newValue));
@@ -180,7 +180,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: newValue } });
     expect(onChange).toHaveBeenCalledWith({
       value: newValue,
-      error: null,
+      error: undefined,
       date: newMockDate,
     });
     expect(screen.getByDisplayValue(newValue));
@@ -189,7 +189,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: "04-10-1996" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "04-10-1996",
-      error: null,
+      error: undefined,
       date: new Date("1996/10/04"),
     });
     expect(screen.getByDisplayValue("04-10-1996"));
@@ -237,7 +237,7 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: "1995/12/03" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "1995/12/03",
-      error: null,
+      error: undefined,
       date: newMockDate,
     });
     input.focus();
@@ -290,7 +290,7 @@ describe("DxcDate", () => {
 
     expect(onChange).toHaveBeenCalledWith({
       value: invalidValue,
-      error: null,
+      error: undefined,
       date: null,
     });
   });
@@ -481,14 +481,14 @@ describe("DxcDate", () => {
     fireEvent.input(input, { target: { value: "03-10-1996" } });
     expect(onChange).toHaveBeenCalledWith({
       value: "03-10-1996",
-      error: null,
+      error: undefined,
       date: new Date("1996/10/03"),
     });
     expect(screen.getByDisplayValue("03-12-1995"));
     fireEvent.blur(input);
     waitFor(() => {
       expect(onBlur).toHaveBeenCalledWith({
-        error: null,
+        error: undefined,
         value: "03-12-1995",
         date: new Date("1995/12/03"),
       });

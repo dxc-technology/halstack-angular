@@ -291,7 +291,7 @@ describe("DxcDate", () => {
     expect(onChange).toHaveBeenCalledWith({
       value: invalidValue,
       error: undefined,
-      date: null,
+      date: undefined,
     });
   });
 

@@ -290,7 +290,7 @@ export class DxcRadioGroupComponent implements OnInit {
         font-weight: var(--radioGroup-errorMessageFontWeight);
         line-height: var(--radioGroup-errorMessageLineHeight);
         font-family: var(--radioGroup-labelFontFamily);
-        height: var(--radioGroup-errorMessageLineHeight);
+        min-height: var(--radioGroup-errorMessageLineHeight);
       }
       .valueInput {
         display: none;

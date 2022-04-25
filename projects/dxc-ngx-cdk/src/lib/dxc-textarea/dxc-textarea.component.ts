@@ -68,7 +68,7 @@ export class DxcTextareaComponent implements OnInit {
   }
   private _disabled = false;
   /**
-   * If true, the textarea will be optional, showing (Optional) next to the label. 
+   * If true, the textarea will be optional, showing (Optional) next to the label.
    * Otherwise, the field will be considered required and an error will be passed as a parameter to the OnBlur and onChange functions when it has not been filled.
    */
   @Input()
@@ -99,8 +99,12 @@ export class DxcTextareaComponent implements OnInit {
   @Input()
   verticalGrow: "auto" | "manual" | "none" = "auto";
   /**
-   * If it is defined, the component will change its appearance, showing the error below the textarea component. 
-   * If it is not defined, the error messages will be created and managed internally.
+   * If it is a defined value and also a truthy string, the component will
+   * change its appearance, showing the error below the textarea. If the defined
+   * value is an empty string, it will reserve a space below the component for a
+   * future error, but it would not change its look. In case of being undefined
+   * or null, both the appearance and the space for the error message would not
+   * be modified.
    */
   @Input()
   error = undefined;
@@ -110,34 +114,34 @@ export class DxcTextareaComponent implements OnInit {
   @Input()
   placeholder = "";
   /**
-   * Regular expression that defines the valid format allowed by the textarea. 
-   * This will be checked when the textarea loses the focus. 
-   * If the value entered does not match the pattern, the onBlur function will be called with the value 
-   * entered and the error informing that the value does not match the pattern as parameters. If the pattern is accomplished, 
+   * Regular expression that defines the valid format allowed by the textarea.
+   * This will be checked when the textarea loses the focus.
+   * If the value entered does not match the pattern, the onBlur function will be called with the value
+   * entered and the error informing that the value does not match the pattern as parameters. If the pattern is accomplished,
    * the error parameter will be null.
    */
   @Input()
   pattern = "";
   /**
-   * Specifies the minimun length allowed by the textarea. 
-   * This will be checked both when the input element loses the focus and while typing within it. 
-   * If the string entered does not comply the minimum length, the onBlur and onChange functions will be called 
-   * with the current value and an internal error informing that the value length does not comply the specified range. 
+   * Specifies the minimun length allowed by the textarea.
+   * This will be checked both when the input element loses the focus and while typing within it.
+   * If the string entered does not comply the minimum length, the onBlur and onChange functions will be called
+   * with the current value and an internal error informing that the value length does not comply the specified range.
    * If a valid length is reached, the error parameter of both events will be null.
    */
   @Input()
   minLength: number;
   /**
-   * Specifies the maximum length allowed by the textarea. 
-   * This will be checked both when the input element loses the focus and while typing within it. 
-   * If the string entered does not comply the maximum length, the onBlur and onChange functions will be called 
-   * with the current value and an internal error informing that the value length does not comply the specified range. 
+   * Specifies the maximum length allowed by the textarea.
+   * This will be checked both when the input element loses the focus and while typing within it.
+   * If the string entered does not comply the maximum length, the onBlur and onChange functions will be called
+   * with the current value and an internal error informing that the value length does not comply the specified range.
    * If a valid length is reached, the error parameter of both events will be null.
    */
   @Input()
   maxLength: number;
   /**
-   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
   @Input()
@@ -161,7 +165,7 @@ export class DxcTextareaComponent implements OnInit {
   private controlled: boolean;
   defaultInputs = new BehaviorSubject<TextareaProperties>({
     placeholder: "",
-    error: "",
+    error: undefined,
     optional: false,
     disabled: false,
     helperText: "",
@@ -175,13 +179,13 @@ export class DxcTextareaComponent implements OnInit {
     verticalGrow: "auto",
   });
   /**
-   * This event will emit when the user types within the textarea. An object including the new value and the error will be passed to this function. 
+   * This event will emit when the user types within the textarea. An object including the new value and the error will be passed to this function.
    * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
    */
   @Output()
   onChange = new EventEmitter<EmittedValue>();
   /**
-   * This event will emit when the textarea loses the focus. An object including the textarea value and the error will be passed to this function. 
+   * This event will emit when the textarea loses the focus. An object including the textarea value and the error will be passed to this function.
    * An example of this object is: { value: value, error: error }. If there is no error, error will be null.
    */
   @Output()
@@ -275,7 +279,7 @@ export class DxcTextareaComponent implements OnInit {
       return `Min length ${this.minLength}, Max length ${this.maxLength}`;
     if (value && !this.patternMatch(this.pattern, value))
       return `Please use a valid pattern`;
-    return null;
+    return undefined;
   }
   private handleValidationError() {
     const validationError = this.validateValue(this.value);

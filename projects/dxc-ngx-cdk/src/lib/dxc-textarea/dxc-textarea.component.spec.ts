@@ -131,9 +131,15 @@ describe("DxcTextareaComponent", () => {
     expect(textarea).toHaveFocus();
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "pattern4&" } });
-    expect(onChange).toHaveBeenCalledWith({ error: null, value: "pattern4&" });
+    expect(onChange).toHaveBeenCalledWith({
+      error: undefined,
+      value: "pattern4&",
+    });
     fireEvent.blur(textarea);
-    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "pattern4&" });
+    expect(onBlur).toHaveBeenCalledWith({
+      error: undefined,
+      value: "pattern4&",
+    });
     expect(screen.getByDisplayValue("pattern4&"));
   });
   test("Strict mode - Length constraint", async () => {
@@ -176,7 +182,10 @@ describe("DxcTextareaComponent", () => {
     fireEvent.input(textarea, { target: { value: "test 2" } });
     fireEvent.blur(textarea);
     await waitFor(() => {
-      expect(onBlur).toHaveBeenCalledWith({ error: null, value: "test 2" });
+      expect(onBlur).toHaveBeenCalledWith({
+        error: undefined,
+        value: "test 2",
+      });
     });
   });
   test("Strict mode - Pattern and length constraints", async () => {
@@ -227,7 +236,7 @@ describe("DxcTextareaComponent", () => {
     fireEvent.click(textarea);
     fireEvent.input(textarea, { target: { value: "test 4" } });
     fireEvent.blur(textarea);
-    expect(onBlur).toHaveBeenCalledWith({ error: null, value: "test 4" });
+    expect(onBlur).toHaveBeenCalledWith({ error: undefined, value: "test 4" });
   });
   test("Non Strict mode - Pattern constraint", async () => {
     const onChange = jest.fn((value) => {
@@ -351,7 +360,10 @@ describe("DxcTextareaComponent", () => {
     fireEvent.input(textarea, { target: { value: "Blur test" } });
     fireEvent.blur(textarea);
     expect(onBlur).toHaveBeenCalled();
-    expect(onBlur).toHaveBeenCalledWith({ value: "Blur test", error: null });
+    expect(onBlur).toHaveBeenCalledWith({
+      value: "Blur test",
+      error: undefined,
+    });
   });
   test("Controlled textarea", async () => {
     const onChange = jest.fn();
@@ -382,13 +394,13 @@ describe("DxcTextareaComponent", () => {
       expect(screen.getByDisplayValue("test"));
       expect(onChange).toHaveBeenCalledWith({
         value: "Controlled test",
-        error: null,
+        error: undefined,
       });
     });
     fireEvent.blur(textarea);
     await waitFor(() => {
       expect(onBlur).toHaveBeenCalled();
-      expect(onBlur).toHaveBeenCalledWith({ value: "test", error: null });
+      expect(onBlur).toHaveBeenCalledWith({ value: "test", error: undefined });
     });
   });
   test("Uncontrolled input", async () => {
@@ -415,7 +427,7 @@ describe("DxcTextareaComponent", () => {
     expect(onChange).toHaveBeenCalled();
     expect(onChange).toHaveBeenCalledWith({
       value: "Uncontrolled test",
-      error: null,
+      error: undefined,
     });
     expect(textarea.value).toBe("Uncontrolled test");
   });

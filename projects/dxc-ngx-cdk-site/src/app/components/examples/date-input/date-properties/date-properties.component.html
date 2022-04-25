@@ -94,8 +94,9 @@
       the component. An object including the string value, the error and the
       date value will be emitted. An example of this object is:
       {{ "{" }} <code>value: value, error: error, date: date</code>{{ "}" }}. If
-      the string value is a valid date, <code>error</code> will be null. Also,
-      if the string value is not a valid date, <code>date</code> will be null.
+      the string value is a valid date, <code>error</code> will be undefined.
+      Also, if the string value is not a valid date, <code>date</code> will be
+      undefined.
     </td>
   </tr>
   <tr>
@@ -108,8 +109,8 @@
       {{ "{" }}
       <code>value: value, error: error, date: date</code>
       {{ "}" }}. If the string value is a valid date, <code>error</code> will be
-      null. Also, if the string value is not a valid date,
-      <code>date</code> will be null.
+      undefined. Also, if the string value is not a valid date,
+      <code>date</code> will be undefined.
     </td>
   </tr>
   <tr>

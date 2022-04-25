@@ -147,14 +147,14 @@ export class DxcDateInputComponent implements OnInit {
 
   /**
    * This event will emit in case the user types within the input element of the component. An object including the string value,
-   * the error and the date value will be emitted. If the string value is a valid date, error will be null.
-   * Also, if the string value is not a valid date, date will be null.
+   * the error and the date value will be emitted. If the string value is a valid date, error will be undefined.
+   * Also, if the string value is not a valid date, date will be undefined.
    */
   @Output() onChange = new EventEmitter<EmittedValue>();
   /**
    * This event will emit in case the input element loses the focus. An object including the string value,
-   * the error and the date value will be emitted. If the string value is a valid date, error will be null.
-   * Also, if the string value is not a valid date, date will be null.
+   * the error and the date value will be emitted. If the string value is a valid date, error will be undefined.
+   * Also, if the string value is not a valid date, date will be undefined.
    */
   @Output() onBlur = new EventEmitter<EmittedValue>();
   /**
@@ -283,7 +283,7 @@ export class DxcDateInputComponent implements OnInit {
     let _dateReturn = {
       value: value.value,
       error: value.error,
-      date: _dateValue.isValid() ? _dateValue.toDate() : null,
+      date: _dateValue.isValid() ? _dateValue.toDate() : undefined,
     };
     this.onChange.emit(_dateReturn);
 
@@ -302,7 +302,7 @@ export class DxcDateInputComponent implements OnInit {
     this.onBlur.emit({
       value: event.value,
       error: event.error,
-      date: _dateValue.isValid() ? _dateValue.toDate() : null,
+      date: _dateValue.isValid() ? _dateValue.toDate() : undefined,
     });
     if (!this.controlled) {
       this.renderedValue = event.value;
@@ -315,7 +315,7 @@ export class DxcDateInputComponent implements OnInit {
     let _stringValue = this.getDateStringValue(value, this.format);
     let _dateReturn = {
       value: _stringValue,
-      date: value.isValid() ? value.toDate() : null,
+      date: value.isValid() ? value.toDate() : undefined,
       error: this.dxcInputRef.error,
     };
     this.onChange.emit(_dateReturn);

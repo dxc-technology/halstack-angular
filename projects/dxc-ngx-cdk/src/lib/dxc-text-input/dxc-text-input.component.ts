@@ -106,9 +106,12 @@ export class DxcTextInputComponent
    */
   @Input() clearable: boolean = false;
   /**
-   * If it is defined, the component will change its appearance, showing
-   * the error below the input component. If it is not defined, the error
-   * messages will be managed internally, but never displayed on its own.
+   * If it is a defined value and also a truthy string, the component will
+   * change its appearance, showing the error below the input component. If the
+   * defined value is an empty string, it will reserve a space below the
+   * component for a future error, but it would not change its look. In case of
+   * being undefined or null, both the appearance and the space for the error
+   * message would not be modified.
    */
   @Input() error: string = undefined;
   /**
@@ -117,7 +120,7 @@ export class DxcTextInputComponent
    * does not match the pattern, the onBlur event will emit with the value
    * entered and the error informing that the value does not match the pattern
    * as parameters. If the pattern is accomplished, the error parameter will be
-   * null.
+   * undefined.
    */
   @Input() pattern: string;
   /**
@@ -126,7 +129,7 @@ export class DxcTextInputComponent
    * the string entered does not comply the minimum length, the onBlur and
    * onChange events will emit with the current value and an internal error
    * informing that the value length does not comply the specified range. If a
-   * valid length is reached, the error parameter of both events will be null.
+   * valid length is reached, the error parameter of both events will be undefined.
    */
   @Input() minLength: number;
   /**
@@ -135,7 +138,7 @@ export class DxcTextInputComponent
    * the string entered does not comply the maximum length, the onBlur and
    * onChange events will emit with the current value and an internal error
    * informing that the value length does not comply the specified range. If a
-   * valid length is reached, the error parameter of both events will be null.
+   * valid length is reached, the error parameter of both events will be undefined.
    */
   @Input() maxLength: number;
   /**
@@ -181,18 +184,20 @@ export class DxcTextInputComponent
     size: "medium",
   });
   /**
-   * This event will be emit when the user types within the input
-   * element of the component. An object including the current value and
-   * the error (if the value entered is not valid) will be passed to this
-   * event. If there is no error, error will be null.
+   * This event will emit when the user types within the input element
+   * of the component. An object including the current value and the error (if
+   * the value entered is not valid) will be passed to this function. An
+   * example of this object is: { value: value, error: error }. If there is no
+   * error, error will not be defined.
    */
   @Output()
   onChange = new EventEmitter<EmittedValue>();
   /**
-   * This event will emit when the input element loses the focus.
-   * An object including the input value and the error (if the value
-   * entered is not valid) will be passed to this event. If there is no error,
-   * error will be null.
+   * This event will emit when the input element loses the focus. An object
+   * including the input value and the error (if the value entered is not
+   * valid) will be passed to this function. An example of this object is: {
+   * value: value, error: error }. If there is no error, error will not be
+   * defined.
    */
   @Output()
   onBlur = new EventEmitter<EmittedValue>();

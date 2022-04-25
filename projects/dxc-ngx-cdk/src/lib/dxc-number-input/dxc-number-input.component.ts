@@ -75,7 +75,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
    * lower than min, the onBlur and onChange functions will be called with
    * the current value and an internal error informing that the current
    * value is not correct. If a valid state is reached, the error parameter
-   * will be null in both events.
+   * will be undefined in both events.
    */
   @Input()
   get min(): number {
@@ -90,7 +90,7 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
    * surpasses max, the onBlur and onChange functions will be called with
    * the current value and an internal error informing that the current
    * value is not correct. If a valid state is reached, the error parameter
-   * will be null in both events.
+   * will be undefined in both events.
    */
   @Input()
   get max(): number {
@@ -174,14 +174,14 @@ export class DxcNumberInputComponent implements OnInit, OnChanges, OnDestroy {
    * This event will emit in case the user types within the input
    * element of the component. An object including the current value and
    * the error (if the value entered is not valid) will be passed to this
-   * function. If there is no error, error will be null.
+   * function. If there is no error, error will be undefined.
    */
   @Output() onChange = new EventEmitter<OnChangeEvent>();
   /**
    * This event will emit in case the number loses the focus.
    * An object including the input value and the error (if the value
    * entered is not valid) will be passed to this function. If there is no error,
-   * error will be null.
+   * error will be undefined.
    */
   @Output() onBlur = new EventEmitter<OnBlurEvent>();
   @ViewChild("dxcInputRef", { static: false })

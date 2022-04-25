@@ -59,7 +59,7 @@
       change its appearance, showing the error below the input component. If the
       defined value is an empty string, it will reserve a space below the
       component for a future error, but it would not change its look. In case of
-      being undefined or null, both the appearance and the space for the error
+      being undefined or undefined, both the appearance and the space for the error
       message would not be modified.
     </td>
   </tr>
@@ -126,7 +126,7 @@
       does not match the pattern, the onBlur function will be called with the
       value entered and the error informing that the value does not match the
       pattern as parameters. If the pattern is accomplished, the error parameter
-      will be null.
+      will be undefined.
     </td>
   </tr>
   <tr>
@@ -154,7 +154,7 @@
       onChange functions will be called with the current value and an internal
       error informing that the value length does not comply the specified range.
       If a valid length is reached, the error parameter of both events will be
-      null.
+      undefined.
     </td>
   </tr>
   <tr>
@@ -167,7 +167,7 @@
       onChange functions will be called with the current value and an internal
       error informing that the value length does not comply the specified range.
       If a valid length is reached, the error parameter of both events will be
-      null.
+      undefined.
     </td>
   </tr>
   <tr>

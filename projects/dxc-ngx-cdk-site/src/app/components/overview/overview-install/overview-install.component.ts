@@ -17,6 +17,7 @@ export class OverviewInstallComponent implements OnInit {
   yarnCode: string;
   assetsCode: string;
   tsCode: string;
+  materialThemeCode: string;
   files: Array<string>;
 
   constructor(
@@ -27,12 +28,14 @@ export class OverviewInstallComponent implements OnInit {
       "overview/overview-install/overview-install-yarn",
       "overview/overview-install/overview-install-assets",
       "overview/overview-install/overview-install-ts",
+      "overview/overview-install/overview-install-materialTheme"
     ];
 
     this.npmCode = "Loading...";
     this.yarnCode = "Loading...";
     this.assetsCode = "Loading...";
     this.tsCode = "Loading ...";
+    this.materialThemeCode = "Loading ...";
   }
   ngOnInit() {
     this.getExampleFiles();
@@ -46,6 +49,7 @@ export class OverviewInstallComponent implements OnInit {
         this.yarnCode = response[1];
         this.assetsCode = response[2];
         this.tsCode = response[3];
+        this.materialThemeCode = response[4];
       });
   }
 }

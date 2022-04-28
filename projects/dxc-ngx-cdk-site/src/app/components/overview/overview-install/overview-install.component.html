@@ -5,12 +5,8 @@
     to use it, you need to include it in an existing Angular project.
   </p>
   <p>
-    If you are creating a Angular application from scratch, we recommend take a look at this boiler plate. It's a clean app consuming halstack angular cdk.
-
-    <a href="https://github.com/mawelCaballero/halstack-angular-boiler-plate" target="_blank"
-      >Clean example app</a
-    >
-    otherwise follow the next steps to install from scratch.
+    If you are creating a Angular application from scratch, we recommend to
+    follow the next steps to install from scratch.
   </p>
   <p>
     DXC Angular Components is distributed as an npm package. To use it in an
@@ -48,7 +44,8 @@
     <a
       href="https://angular.io/guide/creating-libraries#use-typescript-path-mapping-for-peer-dependencies"
       target="_blank"
-      >Angular</a>
+      >Angular</a
+    >
     does it?
   </p>
   <app-code-playground [code]="tsCode" type="CONSOLE"> </app-code-playground>
@@ -61,14 +58,19 @@
   ></dxc-heading>
 
   <p>
-    The cdk uses a Dxc Halstack styling so if it's not added, the components will not
-    work as expected.
+    The cdk uses a Dxc Halstack styling so if it's not added, the components
+    will not work as expected.
   </p>
   <p>
     Furthermore, it is mandatory to add in your angular.json the library assets
     as well as the theme from Halstack Angular:
   </p>
   <app-code-playground [code]="assetsCode" type="CONSOLE">
+  </app-code-playground>
+  <p>
+    Some components make use of some material styling so its is neccessary to add this line to style.scss:
+  </p>
+  <app-code-playground [code]="materialThemeCode" type="CONSOLE">
   </app-code-playground>
   <p>
     Lastly, it is also needed our ThemeModule in your app so our default theme

@@ -19,7 +19,7 @@ import { DxcDateInputHelper } from "./dxc-date-input.helper";
 import { MatCalendar } from "@angular/material/datepicker";
 import { MdePopoverTrigger } from "@material-extended/mde";
 import { CssUtils } from "../utils";
-import dayjs from "dayjs";
+import { default as dayjs, Dayjs } from "dayjs";
 import {
   DateInputProperties,
   EmittedValue,
@@ -311,7 +311,7 @@ export class DxcDateInputComponent implements OnInit {
     }
   }
 
-  onSelectedChangeHandler(value: dayjs.Dayjs) {
+  onSelectedChangeHandler(value: Dayjs) {
     let _stringValue = this.getDateStringValue(value, this.format);
     let _dateReturn = {
       value: _stringValue,
@@ -376,7 +376,7 @@ export class DxcDateInputComponent implements OnInit {
     return dayjs(value, format.toUpperCase());
   }
 
-  private getDateStringValue(value: dayjs.Dayjs, format: string) {
+  private getDateStringValue(value: Dayjs, format: string) {
     return dayjs(value).format(format.toUpperCase());
   }
 }

@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { default as dayjs, Dayjs } from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";

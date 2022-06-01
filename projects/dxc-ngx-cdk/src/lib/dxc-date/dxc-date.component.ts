@@ -282,7 +282,10 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
           !event.target.getAttribute("class")
           .includes("mat-calendar-previous-button") &&
           !event.target.getAttribute("class")
-          .includes("mat-calendar-next-button")
+          .includes("mat-calendar-next-button") &&
+          !event.target.getAttribute("class")
+          .includes("mat-calendar")
+
       ) {
         this.checkOpenCalendar();
       }

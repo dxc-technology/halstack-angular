@@ -7,17 +7,23 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
+  forwardRef,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 @Component({
   selector: "dxc-slider",
   templateUrl: "./dxc-slider.component.html",
-  providers: [CssUtils],
+  providers: [CssUtils,{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcSliderComponent),
+    multi: true
+  }]
 })
-export class DxcSliderComponent implements OnInit, OnChanges {
+export class DxcSliderComponent implements OnInit, OnChanges, ControlValueAccessor{
   @HostBinding("class") className;
   @HostBinding("class.disabled") isDisabled: boolean = false;
 
@@ -109,6 +115,24 @@ export class DxcSliderComponent implements OnInit, OnChanges {
   };
 
   constructor(private utils: CssUtils) {}
+
+  public onTouched: () => void = () => { };
+  public onChangeRegister = (val) => { };
+  writeValue(val: any): void {
+    this.renderedValue = val || "";
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(boolv: boolean): void {
+    this.disabled = boolv;
+  }
 
   ngOnInit() {
     this.renderedValue = this.value;
@@ -295,6 +319,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     return css`
       font-size: 16px;
       font-family: var(--fontFamily);
+      color: var(--slider-font-color);
       margin-right: 15px;
     `;
   }
@@ -303,6 +328,7 @@ export class DxcSliderComponent implements OnInit, OnChanges {
     return css`
       font-size: 16px;
       font-family: var(--fontFamily);
+      color: var(--slider-font-color);
       margin-left: ${inputs.step === 1 ? "15px" : "20px"};
     `;
   }

@@ -1,6 +1,6 @@
 {
   "name": "@dxc-technology/halstack-angular",
-  "version": "1.83.0",
+  "version": "1.84.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "scripts": {
     "build-lib": "ng build dxc-ngx-cdk",

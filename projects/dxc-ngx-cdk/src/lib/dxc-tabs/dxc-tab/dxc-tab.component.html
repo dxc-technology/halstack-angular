@@ -3,7 +3,7 @@
     <div [ngClass]="labelClass" >
       <img *ngIf="iconSrc" src="{{ iconSrc }}" />
       <ng-content select="dxc-tab-icon"></ng-content>
-      <div class="dxc-tab-label">
+      <div class="dxc-tab-label" *ngIf="label">
         <span>{{ label }}</span>
       </div>
     </div>

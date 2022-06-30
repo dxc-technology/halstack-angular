@@ -9,8 +9,8 @@
   ]"
   [tabindex]="tabIndexValue"
 >
-  <div class="imageContainer">
-    <img *ngIf="imageSrc" src="{{ imageSrc }}" />
+  <div class="imageContainer" *ngIf="imageSrc">
+    <img src="{{ imageSrc }}" />
   </div>
   <div class="content" #content>
     <ng-content></ng-content>

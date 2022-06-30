@@ -447,6 +447,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       }
     `;
   }
+  
   getDynamicStyle() {
     return css`
       &.disabled {

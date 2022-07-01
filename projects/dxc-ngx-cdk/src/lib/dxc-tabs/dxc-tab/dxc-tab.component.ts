@@ -17,13 +17,43 @@ import { TabService } from "../services/tab.service";
   templateUrl: "./dxc-tab.component.html",
 })
 export class DxcTabComponent implements OnChanges {
-  //Default values
+  /**
+   * Text to be placed within the tab.
+   */
   @Input() label: string;
+
+  /**
+   * @deprecated The path of an icon to be placed within the tab.
+   */
   @Input() iconSrc: string;
+
+  /**
+   * Whether the tab is disabled or not.
+   */
   @Input() disabled: boolean = false;
+
+  /**
+   * It can have boolean type or number type.
+   * If the value is 'true', an empty badge will appear. If it is 'false',
+   * no badge will appear.
+   * If a number is put it will be shown as the label of the notification
+   * in the tab, taking into account that if that number is greater than 99,
+   * it will appear as '+99' in the badge.
+   */
+  @Input() notificationNumber: boolean | number;
+
+  /**
+   * This event will emit when the user clicks on a tab. The index
+   * of the clicked tab will be passed as a parameter.
+   */
+  @Output() onTabClick: EventEmitter<number> = new EventEmitter<number>();
+
+  /**
+   * This event will emit when the user is on hover on a tab.
+   */
+  @Output() onTabHover: EventEmitter<number> = new EventEmitter<number>();
+
   @Input() id: number;
-  @Output() onTabClick = new EventEmitter<any>();
-  @Output() onTabHover = new EventEmitter<any>();
 
   showDotIndicator: boolean = false;
   labelClass: string;
@@ -37,6 +67,8 @@ export class DxcTabComponent implements OnChanges {
 
   iconPosition: string;
 
+  notificationValue: any;
+
   constructor(private cdRef: ChangeDetectorRef, private service: TabService) {
     this.service.iconPosition.subscribe((value) => {
       if (value) {
@@ -44,6 +76,13 @@ export class DxcTabComponent implements OnChanges {
         this.getLabelClass();
       }
     });
+  }
+
+  public ngOnInit(): void {
+    this.notificationValue =
+      typeof this.notificationNumber === "boolean"
+        ? ""
+        : this.notificationNumber;
   }
 
   public ngOnChanges(): void {
@@ -60,12 +99,16 @@ export class DxcTabComponent implements OnChanges {
       this.tabIcon = true;
     }
     this.getLabelClass();
-    this.cdRef.detectChanges();
     this.matTab.disabled = this.disabled;
+    this.cdRef.detectChanges();
   }
 
   public onClickHandler(): void {
-    this.onTabClick.emit(this.id);
+    if (!this.matTab.disabled) {
+      this.onTabClick.emit(this.id);
+    } else {
+      this.matTab.isActive = false;
+    }
   }
 
   public onHoverHandler(): void {

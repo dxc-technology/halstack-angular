@@ -9,8 +9,7 @@ import {
   EventEmitter,
   SimpleChanges,
   ChangeDetectorRef,
-  Inject,
-  Optional
+  Optional,
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -20,6 +19,7 @@ import {
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
 import { BackgroundProviderService } from "../background-provider/service/background-provider.service";
+import { Space, Spacing, CardProperties } from "./dxc-card.types"
 
 @Component({
   selector: "dxc-card",
@@ -28,9 +28,52 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
   providers: [CssUtils],
 })
 export class DxcCardComponent implements OnInit {
+  /**
+   * URL of the image that will be placed in the card component.
+   */
   @Input() imageSrc: string;
-  @Input() imagePosition: string;
-  @Input() imagePadding: any;
+
+  /**
+   * Color of the image background.
+   */
+  @Input() imageBgColor: string = "black";
+
+  /**
+   * Size of the padding to be applied to the image section of the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
+   * in order to specify different padding sizes.
+   */
+  @Input() imagePadding: Space | Spacing;
+
+  /**
+   * Whether the image should appear in relation to the content.
+   */
+  @Input() imagePosition: "after" | "before" = "before";
+
+  /**
+   * Size of the padding to be applied to the content section of the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties
+   * in order to specify different padding sizes.
+   */
+  @Input() contentPadding: Space | Spacing;
+
+  /**
+   * If defined, the card will be displayed as an anchor, using this prop as "href".
+   * Component will show some visual feedback on hover.
+   */
+  @Input() linkHref: string;
+
+  /**
+   * This event will emit when the user clicks the card. Component will show some
+   * visual feedback on hover.
+   */
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * Whether the image must cover the whole image area of the card.
+   */
   @Input()
   get imageCover(): boolean {
     return this._imageCover;
@@ -39,9 +82,18 @@ export class DxcCardComponent implements OnInit {
     this._imageCover = coerceBooleanProperty(value);
   }
   private _imageCover = false;
-  @Input() imageBgColor: string;
-  @Input() margin: any;
-  @Input() linkHref: string;
+
+  /**
+   * Size of the margin to be applied to the component
+   * ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge'). 
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in 
+   * order to specify different margin sizes.
+   */
+  @Input() margin: Space | Spacing;
+
+  /**
+   * Value of the tabindex given when there is an href.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -49,23 +101,30 @@ export class DxcCardComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
+  private _tabIndexValue = 0;
 
-  @Output() onClick = new EventEmitter<any>();
+  /**
+   * Whether the card must be outlined.
+   */
+  @Input() outlined: boolean = true;
+
+  private isHovered: boolean;
 
   @HostBinding("class") className;
 
   @ViewChild("content", { static: false }) content: ElementRef;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<CardProperties>({
     imageSrc: null,
-    imagePosition: "before",
-    imagePadding: null,
-    imageCover: false,
     imageBgColor: "black",
-    margin: null,
+    imagePadding: null,
+    imagePosition: "before",
+    contentPadding: null,
     linkHref: null,
+    imageCover: false,
+    margin: null,
     tabIndexValue: 0,
+    outlined: true,
   });
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -80,15 +139,14 @@ export class DxcCardComponent implements OnInit {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 
-  constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef,
-    @Optional() @Inject("bgService") public bgProviderService: BackgroundProviderService) {
-  }
+  constructor(
+    private utils: CssUtils,
+    private cdRef: ChangeDetectorRef,
+    @Optional() public bgProviderService?: BackgroundProviderService
+  ) {}
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.bgProviderService?.$changeColor?.subscribe(resp => {
-      console.log(resp);
-    });
   }
 
   ngAfterContentChecked() {
@@ -110,18 +168,28 @@ export class DxcCardComponent implements OnInit {
 
   applyTheme(href, outlined) {
     return css`
-    mat-card {
-      background-color: var(--card-backgroundColor);
-      color: black;
-      ${!outlined ? this.utils.getBoxShadow("1") : this.utils.getBoxShadow(0)}
-    }
+      mat-card {
+        ${this.utils.getBoxShadow(0, true)}
+      }
 
       mat-card:hover {
-        ${!outlined
-          ? this.utils.getBoxShadow(this.getShadowDepthOnHover(href))
-          : this.utils.getBoxShadow("1")}
+        ${this.utils.getBoxShadow(0, true)}
       }
     `;
+  }
+
+  changeIsHovered(isHovered: boolean) {
+    this.isHovered = isHovered;
+  }
+
+  getShadowDepth() {
+    return !this.defaultInputs.value.outlined
+      ? "0"
+      : this.isHovered &&
+        this.onClick.observers.length > 0 &&
+        this.linkHref !== ""
+      ? "2"
+      : "1";
   }
 
   getCursor(href) {
@@ -145,19 +213,20 @@ export class DxcCardComponent implements OnInit {
   getDynamicStyle(inputs) {
     return css`
       display: inline-flex;
+      ${this.utils.getMargins(inputs.margin)}
+      ${this.getCursor(inputs.linkHref)}
+      width: var(--card-width);
+      height: var(--card-height);
+
       mat-card {
-        ${this.utils.getMargins(inputs.margin)}
-        ${this.getCursor(inputs.linkHref)}
-        font-family: var(--fontFamily);
         font-size: 14px;
         display: inline-flex;
-        width: 400px;
-        height: 220px;
         padding: 0px;
         ${this.tabIndexValue === -1 ? "outline:none;" : ""}
         .content {
           overflow: hidden;
           width: 260px;
+          ${this.utils.getPaddings(inputs.contentPadding)}
         }
         img,
         svg {
@@ -223,7 +292,6 @@ export class DxcCardComponent implements OnInit {
           border-bottom-right-radius: 4px;
         }
       }
-
       ${this.applyTheme(inputs.linkHref, inputs.outlined)}
     `;
   }

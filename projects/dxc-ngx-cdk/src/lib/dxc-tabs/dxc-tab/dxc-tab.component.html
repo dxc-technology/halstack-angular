@@ -1,11 +1,15 @@
 <mat-tab [disabled]="disabled">
   <ng-template mat-tab-label>
-    <div [ngClass]="labelClass" >
+    <div [ngClass]="labelClass">
       <img *ngIf="iconSrc" src="{{ iconSrc }}" />
       <ng-content select="dxc-tab-icon"></ng-content>
-      <div class="dxc-tab-label" *ngIf="label">
+      <div class="dxc-tab-label">
         <span>{{ label }}</span>
       </div>
+      <dxc-badge
+        *ngIf="notificationNumber"
+        [notificationText]="notificationValue"
+      ></dxc-badge>
     </div>
   </ng-template>
   <ng-content></ng-content>

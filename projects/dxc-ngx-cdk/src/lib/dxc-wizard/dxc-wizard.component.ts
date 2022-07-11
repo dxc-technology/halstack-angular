@@ -14,7 +14,8 @@ import { CssUtils } from "../utils";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
 import { WizardService } from "./services/wizard.service";
 import { ChangeDetectorRef } from "@angular/core";
-import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { coerceNumberProperty } from "@angular/cdk/coercion";
+import { Spacing, Space, WizardProperties } from "./dxc-wizard.types";
 
 @Component({
   selector: "dxc-wizard",
@@ -22,9 +23,41 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
   providers: [CssUtils, WizardService],
 })
 export class DxcWizardComponent {
-  @Input() mode: string = "horizontal";
-  @Input() currentStep: number;
-  @Input() margin: any;
+  /**
+   * The wizard can be showed in horizontal or vertical.
+   */
+  @Input() mode: "horizontal" | "vertical" = "horizontal";
+  /**
+   * Defines which step is marked as the current. The numeration starts at 0.
+   * If undefined, the component will be uncontrolled and the step will be managed internally by the component.
+   */
+  @Input()
+  get currentStep(): number {
+    return this._currentStep;
+  }
+  set currentStep(value: number) {
+    this._currentStep = coerceNumberProperty(value);
+  }
+  private _currentStep = 0;
+  /**
+   * Initially selected step, only when it is uncontrolled.
+   */
+  @Input()
+  get defaultCurrentStep(): number {
+    return this._defaultCurrentStep;
+  }
+  set defaultCurrentStep(value: number) {
+    this._defaultCurrentStep = coerceNumberProperty(value);
+  }
+  private _defaultCurrentStep = 0;
+  /**
+   * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
+   * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
+   */
+  @Input() margin: Spacing | Space;
+  /**
+   * Value of the tabindex attribute that is given to all the steps.
+   */
   @Input()
   get tabIndexValue(): number {
     return this._tabIndexValue;
@@ -32,18 +65,24 @@ export class DxcWizardComponent {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
-  private _tabIndexValue;
-  @Output() onStepClick = new EventEmitter<any>();
+  private _tabIndexValue = 0;
+  /**
+   * This event will emit in case the user clicks a step. The step
+   * number will be passed as a parameter.
+   */
+  @Output() onStepClick: EventEmitter<number> = new EventEmitter<number>();
 
   @ContentChildren(DxcWizardStepComponent)
   dxcWizardSteps: QueryList<DxcWizardStepComponent>;
 
   @HostBinding("class") className;
 
-  defaultInputs = new BehaviorSubject<any>({
+  defaultInputs = new BehaviorSubject<WizardProperties>({
     mode: "horizontal",
-    currentStep: null,
+    currentStep: 0,
     margin: null,
+    tabIndexValue: 0,
+    defaultCurrentStep: 0,
   });
 
   constructor(
@@ -54,6 +93,7 @@ export class DxcWizardComponent {
 
   ngAfterViewInit(): void {
     this.service.setSteps(this.dxcWizardSteps);
+    this.service.innerCurrentStep.next(this.currentStep);
     this.service.newCurrentStep.subscribe((value) => {
       if (value || value === 0) {
         this.handleStepClick(value);
@@ -67,7 +107,10 @@ export class DxcWizardComponent {
 
   ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
-    this.service.innerCurrentStep.next(this.currentStep || 0);
+    this.currentStep = this.currentStep
+      ? this.currentStep
+      : this.defaultCurrentStep ?? 0;
+    this.service.innerCurrentStep.next(this.currentStep);
     this.service.mode.next(this.mode || "horizontal");
     this.service.tabIndexValue.next(this.tabIndexValue);
   }
@@ -86,9 +129,7 @@ export class DxcWizardComponent {
   }
 
   public handleStepClick(i) {
-    if (!(this.currentStep || this.currentStep === 0)) {
-      this.service.innerCurrentStep.next(i);
-    }
+    this.service.innerCurrentStep.next(i);
     this.onStepClick.emit(i);
   }
 
@@ -99,56 +140,6 @@ export class DxcWizardComponent {
       flex-direction: ${inputs.mode === "vertical" ? "column" : "row"};
       justify-content: center;
       ${inputs.mode === "vertical" ? "height: 500px" : "width: 100%"};
-
-      svg,
-      img {
-        width: 19px;
-        height: 19px;
-        vertical-align: middle;
-      }
-
-      dxc-wizard-step {
-        :not(.current, .disabled) {
-          .iconContainer {
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--wizard-borderColor);
-          }
-          .number {
-            color: var(--wizard-fontColor);
-            font-family: var(--fontFamily);
-          }
-        }
-
-        .current,
-        .disabled {
-          .iconContainer {
-            width: 36px;
-            height: 36px;
-            border: none;
-          }
-        }
-
-        .current {
-          .iconContainer {
-            background: var(--wizard-selectedBackgroundColor);
-            color: var(--wizard-selectedFont);
-          }
-          .number {
-            color: var(--wizard-fontColor);
-          }
-        }
-
-        .disabled {
-          .iconContainer {
-            background: var(--wizard-disabledBackground);
-            color: var(--wizard-disabledFont);
-          }
-          .number {
-            color: var(--wizard-disabledFont);
-          }
-        }
-      }
     `;
   }
 }

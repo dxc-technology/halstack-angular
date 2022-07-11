@@ -1,5 +1,9 @@
-<mat-card
+
+<dxc-box [shadowDepth]="getShadowDepth()">
+  <mat-card
   (click)="onClickHandler($event)"
+  (mouseEnter)="changeIsHovered(true)"
+  (mouseLeave)="changeIsHovered(false)"
   [ngClass]="[
     imagePosition === 'before'
       ? 'before'
@@ -9,10 +13,12 @@
   ]"
   [tabindex]="tabIndexValue"
 >
-  <div class="imageContainer" *ngIf="imageSrc">
+  <div class="imageContainer" *ngIf="imageSrc" >
     <img src="{{ imageSrc }}" />
   </div>
   <div class="content" #content>
     <ng-content></ng-content>
   </div>
 </mat-card>
+
+</dxc-box>

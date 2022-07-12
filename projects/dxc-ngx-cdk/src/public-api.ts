@@ -144,6 +144,11 @@ export * from './lib/dxc-application-layout/dxc-application-layout-main/dxc-appl
 export * from './lib/dxc-application-layout/dxc-application-layout-sidenav/dxc-application-layout-sidenav.component';
 export * from './lib/dxc-application-layout/dxc-application-layout-header/dxc-application-layout-header.component';
 
+
+export * from "./lib/dxc-file-input/dxc-file-input.component";
+export * from "./lib/dxc-file-input/dxc-file-input.module";
+export * from "./lib/dxc-file-input/interfaces/file.interface";
+
 // export * from './lib/services/startup/configurationsetup.service';
 // export * from './lib/services/httpconfiguration/resourcerequest.service';
 // export * from './lib/services/httpconfiguration/httpcall.service';

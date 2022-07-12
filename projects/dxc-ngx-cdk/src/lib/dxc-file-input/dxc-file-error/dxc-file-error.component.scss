@@ -1,0 +1,9 @@
+.errorMessage {
+  text-align: left;
+  letter-spacing: 0.37px;
+  color: var(--fileInput-errorMessageFontColor);
+  font-family: var(--fileInput-errorMessageFontFamily);
+  font-size: var(--fileInput-errorMessageFontSize);
+  font-weight: var(--fileInput-errorMessageFontWeight);
+  line-height: var(--fileInput-errorMessageLineHeight);
+}

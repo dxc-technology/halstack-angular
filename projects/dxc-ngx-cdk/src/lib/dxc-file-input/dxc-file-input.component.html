@@ -1,0 +1,53 @@
+<label class="label" htmlFor="{{ id }}">{{ label }}</label>
+<span *ngIf="helperText" class="helperText">{{ helperText }}</span>
+<div class="fileInputContainer">
+  <input
+    #fileInput
+    data-testid="input"
+    type="file"
+    (change)="onFileInput($event)"
+    [accept]="accept"
+  />
+  <dxc-button
+    *ngIf="mode === 'file'"
+    [label]="buttonLabel"
+    mode="secondary"
+    [disabled]="disabled"
+    (onClick)="fileInput.click()"
+    [tabIndexValue]="tabIndexValue"
+  ></dxc-button>
+  <div
+    *ngIf="mode !== 'file'"
+    class="dragDropArea"
+    [ngClass]="{
+      hovering: hoveringWithFile === true
+    }"
+    (drop)="drop($event)"
+    (dragleave)="dragLeave($event)"
+    (dragover)="dragOver($event)"
+  >
+    <dxc-button
+      [label]="buttonLabel"
+      mode="secondary"
+      [disabled]="disabled"
+      [tabIndexValue]="tabIndexValue"
+      (onClick)="fileInput.click()"
+    ></dxc-button>
+    <span *ngIf="mode === 'filedrop' || mode === 'dropzone'" class="dropLabel"
+      >or drop files</span
+    >
+  </div>
+  <div class="fileContainer">
+    <dxc-file
+      *ngFor="let file of value"
+      [file]="file"
+      [showPreview]="showPreview"
+      [multiple]="!hasSingleFile"
+      [mode]="mode"
+      [tabIndexValue]="tabIndexValue"
+      [updatable]="callbackFile?.observers?.length > 0"
+    ></dxc-file>
+  </div>
+</div>
+
+<dxc-file-error *ngIf="hasShowError" [error]="value[0]?.error"></dxc-file-error>

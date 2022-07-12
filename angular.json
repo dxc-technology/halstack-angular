@@ -330,7 +330,7 @@
       }
     }
   },
-  "defaultProject": "angular-dxc-site",
+  "defaultProject": "dxc-ngx-cdk",
   "cli": {
     "analytics": false
   }

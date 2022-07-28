@@ -27,12 +27,19 @@
     (dragover)="dragOver($event)"
   >
     <dxc-button
-      [label]="buttonLabel"
       mode="secondary"
       [disabled]="disabled"
       [tabIndexValue]="tabIndexValue"
       (onClick)="fileInput.click()"
-    ></dxc-button>
+    >
+    <dxc-button-icon>
+      <span class="icon-dxc-wrapper">
+        <mat-icon class="mat-icon material-icons">
+          file_upload
+          </mat-icon>
+      </span>
+    </dxc-button-icon>
+  </dxc-button>
     <span *ngIf="mode === 'filedrop' || mode === 'dropzone'" class="dropLabel"
       >or drop files</span
     >

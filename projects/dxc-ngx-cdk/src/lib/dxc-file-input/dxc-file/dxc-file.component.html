@@ -15,10 +15,10 @@
   <img [src]="file.image" *ngIf="hasShowPreviewImage" />
 </div>
 
-<div class="infoContainer">
-  <div class="fileContainer">
+<div class="infoContainer w-100 justify-content-center align-items-center">
+  <div class="fileContainer w-100 justify-content-center align-items-center">
     <span class="fileName">{{ file.data.name }}</span>
-    <div class="fileIcons">
+    <div class="fileIcons" >
       <span *ngIf="hasError" aria-label="Error" class="errorIcon">
         <svg
           fill="currentColor"
@@ -54,7 +54,7 @@
       </span>
     </div>
   </div>
-  <div class="errorContainer">
-    <span *ngIf="hasShowError" class="errorMessage">{{ file.error }}</span>
+  <div class="errorContainer" *ngIf="hasShowError">
+    <span class="errorMessage">{{ file.error }}</span>
   </div>
 </div>

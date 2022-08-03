@@ -62,7 +62,10 @@ export class AppComponent {
   }
 
   selectVersion(value) {
-    window.location.href = this.versions.find((v) => v.label === value).url;
+    console.log("here: " + value);
+    window.location.href = this.versions.find(
+      (v) => v.label === value.value
+    ).url;
   }
 
   isArrowVisible = (page: string) => (page === "components" ? false : true);

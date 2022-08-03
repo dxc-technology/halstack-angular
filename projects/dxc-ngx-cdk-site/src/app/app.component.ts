@@ -62,7 +62,6 @@ export class AppComponent {
   }
 
   selectVersion(value) {
-    console.log("here: " + value);
     window.location.href = this.versions.find(
       (v) => v.label === value.value
     ).url;

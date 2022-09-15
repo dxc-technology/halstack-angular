@@ -193,17 +193,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       stringValue: value,
       dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
-    if (!this.customOutput) {
-      this.onChange.emit(_dateReturn);
-    }
-    if (!this.value || !this.customOutput) {
-      this.value = value;
-      this.dateValue = _dateValue;
-      if (this.customOutput) {
-        this.onChange.emit(this.value);
-      }
-    }
-
+    
     if (this.customOutput == true) {
       if (_dateReturn.dateValue instanceof Date) {
         this.value = this.datePipe.transform(_dateReturn.dateValue, this.format);
@@ -216,9 +206,15 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
         this.value = '';
       }
       else {
-        this.value = _dateReturn.stringValue;
+        this.renderedValue = _dateReturn.stringValue;
         return false;
       }
+      
+    }
+    else{
+      this.value = value;
+      this.dateValue = _dateValue;
+      this.onChange.emit(_dateReturn);
     }
   }
 
@@ -257,7 +253,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   onKeyPress($event) {
     var keyCode = $event.keyCode || $event.charCode;
     var value = String.fromCharCode(keyCode);
-    if (!$event.ctrlKey && !value.match(/^[0-9\/]+$/) && keyCode != 9 && keyCode != 37 &&
+    if (!$event.ctrlKey && !value.match(/^[0-9\/-]+$/) && keyCode != 9 && keyCode != 37 &&
       keyCode != 39 && keyCode != 8 && keyCode != 46 && keyCode != 35 && keyCode != 36) {
       $event.preventDefault();
     }

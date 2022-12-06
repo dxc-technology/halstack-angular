@@ -194,6 +194,14 @@ export class DxcTabsComponent implements OnChanges {
         tabLabels[index].addEventListener("mouseenter", function () {
           tab.onHoverHandler();
         });
+        tabLabels[index].addEventListener("keyup", function (e) {
+          if(e.key === 'Enter' || e.key === ' ')
+            tab.onClickHandler();
+        });
+        tabLabels[index].addEventListener("keydown", function (e) {
+          if(e.key === 'Enter' || e.key === ' ')
+            tab.onClickHandler()
+        });
       });
     }
   }

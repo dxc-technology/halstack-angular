@@ -1306,14 +1306,12 @@ export abstract class _MatSelectBase<C>
       &.mat-select {
         ${this.utils.calculateWidth(this.sizes, this)}
       }
-      height: 66.5px;
       position: relative;
 
       &.mat-select-disabled {
         cursor: not-allowed;
         .mat-select-trigger {
           cursor: not-allowed;
-          border-bottom: 1px solid var(--select-disabledColor) !important;
           outline: none !important;
         }
         .assistiveText {
@@ -1349,10 +1347,10 @@ export abstract class _MatSelectBase<C>
       }
 
       .mat-select-trigger {
-        border-top-width: 0.84375em;
-        border-top-style: solid;
-        border-top-color: transparent;
-        border-bottom: 1px solid var(--select-color);
+        // border-top-width: 0.84375em;
+        // border-top-style: solid;
+        // border-top-color: transparent;
+        //border-bottom: 1px solid var(--select-color);
         :focus{
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--select-focusColor);

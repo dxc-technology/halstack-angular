@@ -1314,7 +1314,6 @@ export abstract class _MatSelectBase<C>
 
       &.mat-select-disabled {
         cursor: not-allowed;
-        border-bottom: 1px solid var(--select-disabledColor) !important;
         .mat-select-trigger {
           cursor: not-allowed;
           outline: none !important;

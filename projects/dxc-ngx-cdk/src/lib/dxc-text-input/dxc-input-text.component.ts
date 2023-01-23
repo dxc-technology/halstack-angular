@@ -481,9 +481,6 @@ export class DxcTextInputComponent
           .mat-hint {
             color: var(--inputText-disabledFontColor);
           }
-          .mat-form-field-underline {
-            background-color: var(--inputText-disabledFontColor) !important;
-          }
           .mat-form-field-empty mat-label {
             color: var(--inputText-disabledFontColor);
           }
@@ -516,7 +513,6 @@ export class DxcTextInputComponent
               color: var(--inputText-fontColor);
             }
             .mat-form-field-underline {
-              background-color: var(--inputText-fontColor) !important;
               .mat-form-field-ripple {
                 background-color: var(--inputText-fontColor) !important;
               }

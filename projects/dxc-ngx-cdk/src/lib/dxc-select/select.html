@@ -8,7 +8,7 @@
  See https://github.com/angular/components/issues/20694
 -->
 <span class="assistiveText">{{assistiveText}}</span>
-<label class="selectLabel">
+<label class="selectLabel" *ngIf="label">
   <span *ngIf="required" class="select-required">*</span>
   <span>{{label}}</span>
 </label>

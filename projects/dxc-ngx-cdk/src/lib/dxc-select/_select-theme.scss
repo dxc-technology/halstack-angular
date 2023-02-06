@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '../core/theming/palette';
 @import '../core/theming/theming';
 @import '../core/style/private';
@@ -14,7 +15,7 @@
   $warn: map-get($config, warn);
 
   .mat-select-value {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-select-placeholder {
@@ -22,43 +23,43 @@
   }
 
   .mat-select-disabled .mat-select-value {
-    color: mat-color($foreground, disabled-text);
+    color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
   .mat-select-arrow {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-select-panel {
-    background: mat-color($background, card);
+    background: mat.get-color-from-palette($background, card);
     @include mat-private-theme-overridable-elevation(4, $config);
 
     .mat-option.mat-selected:not(.mat-option-multiple) {
-      background: mat-color($background, hover, 0.12);
+      background: mat.get-color-from-palette($background, hover, 0.12);
     }
   }
 
   .mat-form-field {
     &.mat-focused {
       &.mat-primary .mat-select-arrow {
-        color: mat-color($primary, text);
+        color: mat.get-color-from-palette($primary, text);
       }
 
       &.mat-accent .mat-select-arrow {
-        color: mat-color($accent, text);
+        color: mat.get-color-from-palette($accent, text);
       }
 
       &.mat-warn .mat-select-arrow {
-        color: mat-color($warn, text);
+        color: mat.get-color-from-palette($warn, text);
       }
     }
 
     .mat-select.mat-select-invalid .mat-select-arrow {
-      color: mat-color($warn, text);
+      color: mat.get-color-from-palette($warn, text);
     }
 
     .mat-select.mat-select-disabled .mat-select-arrow {
-      color: mat-color($foreground, disabled-text);
+      color: mat.get-color-from-palette($foreground, disabled-text);
     }
   }
 }
@@ -66,10 +67,10 @@
 @mixin mat-select-typography($config-or-theme) {
   $config: mat-get-typography-config($config-or-theme);
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   .mat-select {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-select-trigger {
@@ -87,13 +88,13 @@
     $typography: mat-get-typography-config($theme);
 
     @if $color != null {
-      @include mat-select-color($color);
+      @include mat.select-color($color);
     }
     @if $density != null {
       @include _mat-select-density($density);
     }
     @if $typography != null {
-      @include mat-select-typography($typography);
+      @include mat.select-typography($typography);
     }
   }
 }

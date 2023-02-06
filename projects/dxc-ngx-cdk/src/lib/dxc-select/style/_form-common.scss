@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '../theming/theming';
 
 // Renders a gradient for showing the dashed line when the input is disabled.
@@ -15,5 +16,5 @@
 @function mat-private-control-placeholder-color($config) {
   $foreground: map-get($config, foreground);
   $is-dark-theme: map-get($config, is-dark);
-  @return mat-color($foreground, secondary-text, if($is-dark-theme, 0.5, 0.42));
+  @return mat.get-color-from-palette($foreground, secondary-text, if($is-dark-theme, 0.5, 0.42));
 }

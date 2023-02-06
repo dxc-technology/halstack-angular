@@ -1,19 +1,20 @@
+@use '~@angular/material' as mat;
 @import './elevation';
 
-@mixin mat-private-theme-elevation($zValue, $config, $opacity: $mat-elevation-opacity) {
+@mixin mat-private-theme-elevation($zValue, $config, $opacity: 1) {
   $foreground: map-get($config, foreground);
   $elevation-color: map-get($foreground, elevation);
-  $elevation-color-or-default: if($elevation-color == null, $mat-elevation-color, $elevation-color);
+  $elevation-color-or-default: if($elevation-color == null, #000, $elevation-color);
 
-  @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
+  @include mat.elevation($zValue, $elevation-color-or-default, $opacity);
 }
 
-@mixin mat-private-theme-overridable-elevation($zValue, $config, $opacity: $mat-elevation-opacity) {
+@mixin mat-private-theme-overridable-elevation($zValue, $config, $opacity: 1) {
   $foreground: map-get($config, foreground);
   $elevation-color: map-get($foreground, elevation);
-  $elevation-color-or-default: if($elevation-color == null, $mat-elevation-color, $elevation-color);
+  $elevation-color-or-default: if($elevation-color == null, #000, $elevation-color);
 
-  @include mat-overridable-elevation($zValue, $elevation-color-or-default, $opacity);
+  @include mat.overridable-elevation($zValue, $elevation-color-or-default, $opacity);
 }
 
 // If the mat-animation-noop class is present on the components root element,

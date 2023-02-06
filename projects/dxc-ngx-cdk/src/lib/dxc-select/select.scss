@@ -1,3 +1,4 @@
+@use '~@angular/cdk' as cdk;
 @import "./style/menu-common";
 @import "./style/list-common";
 @import "./style/variables";
@@ -111,7 +112,7 @@ $mat-select-placeholder-arrow-space: 2 *
   min-width: 100%; // prevents some animation twitching and test inconsistencies in IE11
   border-radius: 4px;
   outline: 0;
-  @include cdk-high-contrast(active, off) {
+  @include cdk.high-contrast(active, off) {
     outline: solid 1px;
   }
   &::-webkit-scrollbar {

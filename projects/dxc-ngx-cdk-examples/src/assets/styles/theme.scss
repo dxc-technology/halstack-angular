@@ -1,3 +1,5 @@
+@use '~@angular/material' as mat;
+@use '~@angular/cdk' as cdk;
 @import './fonts/fonts.scss';
 
 // Import all the theming functionality.
@@ -6,12 +8,12 @@
 // We want overlays to always appear over user content, so set a baseline
 // very high z-index for the overlay container, which is where we create the new
 // stacking context for all overlays.
-$cdk-z-index-overlay-container: 1000;
-$cdk-z-index-overlay: 1000;
-$cdk-z-index-overlay-backdrop: 1000;
+cdk.$overlay-container-z-index: 1000;
+cdk.$overlay-z-index: 1000;
+cdk.$overlay-backdrop-z-index: 1000;
 
 // Background color for all of the backdrops
-$cdk-overlay-dark-backdrop-background: rgba(0, 0, 0, 0.32);
+cdk.$overlay-backdrop-color: rgba(0, 0, 0, 0.32);
 
 // Default backdrop animation is based on the Material Design swift-ease-out.
 $backdrop-animation-duration: 400ms !default;
@@ -33,7 +35,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
   // The overlay-container is an invisible element which contains all individual overlays.
   .cdk-overlay-container {
     position: fixed;
-    z-index: $cdk-z-index-overlay-container;
+    z-index: cdk.$overlay-container-z-index;
 
     &:empty {
       // Hide the element when it doesn't have any child nodes. This doesn't
@@ -49,7 +51,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
   .cdk-global-overlay-wrapper {
     display: flex;
     position: absolute;
-    z-index: $cdk-z-index-overlay;
+    z-index: cdk.$overlay-z-index;
   }
 
   // A single overlay pane.
@@ -59,7 +61,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     position: absolute;
     pointer-events: auto;
     box-sizing: border-box;
-    z-index: $cdk-z-index-overlay;
+    z-index: cdk.$overlay-z-index;
 
     // For connected-position overlays, we set `display: flex` in
     // order to force `max-width` and `max-height` to take effect.
@@ -75,7 +77,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: $cdk-z-index-overlay-backdrop;
+    z-index: cdk.$overlay-backdrop-z-index;
     pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
     transition: opacity $backdrop-animation-duration
@@ -96,7 +98,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
   }
 
   .cdk-overlay-dark-backdrop {
-    background: $cdk-overlay-dark-backdrop-background;
+    background: cdk.$overlay-backdrop-color;
   }
 
   .cdk-overlay-transparent-backdrop {
@@ -114,7 +116,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
   // overlay element's size to fit within the viewport.
   .cdk-overlay-connected-position-bounding-box {
     position: absolute;
-    z-index: $cdk-z-index-overlay;
+    z-index: cdk.$overlay-z-index;
 
     // We use `display: flex` on this element exclusively for centering connected overlays.
     // When *not* centering, a top/left/bottom/right will be set which overrides the normal
@@ -181,7 +183,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
 // Core styles that enable monitoring autofill state of text fields.
 @mixin cdk-text-field {
   // Keyframes that apply no styles, but allow us to monitor when an text field becomes autofilled
-  // by watching for the animation events that are fired when they start. Note: the /*!*/ comment is
+  // by watching for the animation events that are fired when they start. Note: the __<<ngThemingMigrationEscapedComment0>>__ comment is
   // needed to prevent LibSass from stripping the keyframes out.
   // Based on: https://medium.com/@brunn/detecting-autofilled-fields-in-javascript-aed598d25da7
   @keyframes cdk-text-field-autofill-start {
@@ -441,7 +443,7 @@ $swift-linear: all $swift-linear-duration $swift-linear-timing-function !default
 $mat-elevation-transition-duration: 280ms !default;
 
 // The default easing value for elevation transitions.
-$mat-elevation-transition-timing-function: $mat-fast-out-slow-in-timing-function;
+$mat-elevation-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 // The default color for elevation shadows.
 $mat-elevation-color: black !default;
@@ -456,8 +458,8 @@ $_mat-elevation-prefix: 'mat-elevation-z';
 // The $zValue must be between 0 and 24.
 @mixin mat-elevation(
   $zValue,
-  $color: $mat-elevation-color,
-  $opacity: $mat-elevation-opacity
+  $color: #000,
+  $opacity: 1
 ) {
   @if type-of($zValue) != number or not unitless($zValue) {
     @error "$zValue must be a unitless number";
@@ -472,44 +474,44 @@ $_mat-elevation-prefix: 'mat-elevation-z';
     #{map-get(_get-ambient-map($color, $opacity), $zValue)};
 }
 
-@mixin _mat-theme-elevation($zValue, $theme, $opacity: $mat-elevation-opacity) {
+@mixin _mat-theme-elevation($zValue, $theme, $opacity: 1) {
   $foreground: map-get($theme, foreground);
   $elevation-color: map-get($foreground, elevation);
   $elevation-color-or-default: if(
     $elevation-color == null,
-    $mat-elevation-color,
+    #000,
     $elevation-color
   );
 
-  @include mat-elevation($zValue, $elevation-color-or-default, $opacity);
+  @include mat.elevation($zValue, $elevation-color-or-default, $opacity);
 }
 
 // Applies the elevation to an element in a manner that allows
 // consumers to override it via the Material elevation classes.
 @mixin mat-overridable-elevation(
   $zValue,
-  $color: $mat-elevation-color,
-  $opacity: $mat-elevation-opacity
+  $color: #000,
+  $opacity: 1
 ) {
   &:not([class*='#{$_mat-elevation-prefix}']) {
-    @include mat-elevation($zValue, $color, $opacity);
+    @include mat.elevation($zValue, $color, $opacity);
   }
 }
 
 @mixin _mat-theme-overridable-elevation(
   $zValue,
   $theme,
-  $opacity: $mat-elevation-opacity
+  $opacity: 1
 ) {
   $foreground: map-get($theme, foreground);
   $elevation-color: map-get($foreground, elevation);
   $elevation-color-or-default: if(
     $elevation-color == null,
-    $mat-elevation-color,
+    #000,
     $elevation-color
   );
 
-  @include mat-overridable-elevation(
+  @include mat.overridable-elevation(
     $zValue,
     $elevation-color-or-default,
     $opacity
@@ -524,8 +526,8 @@ $_mat-elevation-prefix: 'mat-elevation-z';
 //   transition: mat-elevation-transition-property-value(), opacity 100ms ease;
 // }
 @function mat-elevation-transition-property-value(
-  $duration: $mat-elevation-transition-duration,
-  $easing: $mat-elevation-transition-timing-function
+  $duration: 280ms,
+  $easing: cubic-bezier(0.4, 0, 0.2, 1)
 ) {
   @return box-shadow #{$duration} #{$easing};
 }
@@ -537,8 +539,8 @@ $_mat-elevation-prefix: 'mat-elevation-z';
 // NOTE(traviskaufman): Both this mixin and the above function use default parameters so they can
 // be used in the same way by clients.
 @mixin mat-elevation-transition(
-  $duration: $mat-elevation-transition-duration,
-  $easing: $mat-elevation-transition-timing-function
+  $duration: 280ms,
+  $easing: cubic-bezier(0.4, 0, 0.2, 1)
 ) {
   transition: mat-elevation-transition-property-value($duration, $easing);
 }
@@ -585,7 +587,7 @@ $light-disabled-text: rgba(white, 0.5);
 $light-dividers: rgba(white, 0.12);
 $light-focused: rgba(white, 0.12);
 
-$mat-red: (
+mat.$red-palette: (
   50: #ffebee,
   100: #ffcdd2,
   200: #ef9a9a,
@@ -618,7 +620,7 @@ $mat-red: (
   )
 );
 
-$mat-pink: (
+mat.$pink-palette: (
   50: #fce4ec,
   100: #f8bbd0,
   200: #f48fb1,
@@ -651,7 +653,7 @@ $mat-pink: (
   )
 );
 
-$mat-purple: (
+mat.$purple-palette: (
   50: #f3e5f5,
   100: #e1bee7,
   200: #ce93d8,
@@ -684,7 +686,7 @@ $mat-purple: (
   )
 );
 
-$mat-deep-purple: (
+mat.$deep-purple-palette: (
   50: #ede7f6,
   100: #d1c4e9,
   200: #b39ddb,
@@ -717,7 +719,7 @@ $mat-deep-purple: (
   )
 );
 
-$mat-indigo: (
+mat.$indigo-palette: (
   50: #e8eaf6,
   100: #c5cae9,
   200: #9fa8da,
@@ -750,7 +752,7 @@ $mat-indigo: (
   )
 );
 
-$mat-blue: (
+mat.$blue-palette: (
   50: #e3f2fd,
   100: #bbdefb,
   200: #90caf9,
@@ -783,7 +785,7 @@ $mat-blue: (
   )
 );
 
-$mat-light-blue: (
+mat.$light-blue-palette: (
   50: #e1f5fe,
   100: #b3e5fc,
   200: #81d4fa,
@@ -816,7 +818,7 @@ $mat-light-blue: (
   )
 );
 
-$mat-cyan: (
+mat.$cyan-palette: (
   50: #e0f7fa,
   100: #b2ebf2,
   200: #80deea,
@@ -849,7 +851,7 @@ $mat-cyan: (
   )
 );
 
-$mat-teal: (
+mat.$teal-palette: (
   50: #e0f2f1,
   100: #b2dfdb,
   200: #80cbc4,
@@ -882,7 +884,7 @@ $mat-teal: (
   )
 );
 
-$mat-green: (
+mat.$green-palette: (
   50: #e8f5e9,
   100: #c8e6c9,
   200: #a5d6a7,
@@ -915,7 +917,7 @@ $mat-green: (
   )
 );
 
-$mat-light-green: (
+mat.$light-green-palette: (
   50: #f1f8e9,
   100: #dcedc8,
   200: #c5e1a5,
@@ -948,7 +950,7 @@ $mat-light-green: (
   )
 );
 
-$mat-lime: (
+mat.$lime-palette: (
   50: #f9fbe7,
   100: #f0f4c3,
   200: #e6ee9c,
@@ -981,7 +983,7 @@ $mat-lime: (
   )
 );
 
-$mat-yellow: (
+mat.$yellow-palette: (
   50: #fffde7,
   100: #fff9c4,
   200: #fff59d,
@@ -1014,7 +1016,7 @@ $mat-yellow: (
   )
 );
 
-$mat-amber: (
+mat.$amber-palette: (
   50: #fff8e1,
   100: #ffecb3,
   200: #ffe082,
@@ -1047,7 +1049,7 @@ $mat-amber: (
   )
 );
 
-$mat-orange: (
+mat.$orange-palette: (
   50: #fff3e0,
   100: #ffe0b2,
   200: #ffcc80,
@@ -1080,7 +1082,7 @@ $mat-orange: (
   )
 );
 
-$mat-deep-orange: (
+mat.$deep-orange-palette: (
   50: #fbe9e7,
   100: #ffccbc,
   200: #ffab91,
@@ -1113,7 +1115,7 @@ $mat-deep-orange: (
   )
 );
 
-$mat-brown: (
+mat.$brown-palette: (
   50: #efebe9,
   100: #d7ccc8,
   200: #bcaaa4,
@@ -1146,7 +1148,7 @@ $mat-brown: (
   )
 );
 
-$mat-grey: (
+mat.$grey-palette: (
   50: #fafafa,
   100: #f5f5f5,
   200: #eeeeee,
@@ -1180,9 +1182,9 @@ $mat-grey: (
 );
 
 // Alias for alternate spelling.
-$mat-gray: $mat-grey;
+mat.$gray-palette: mat.$grey-palette;
 
-$mat-blue-grey: (
+mat.$blue-grey-palette: (
   50: #eceff1,
   100: #cfd8dc,
   200: #b0bec5,
@@ -1216,46 +1218,46 @@ $mat-blue-grey: (
 );
 
 // Alias for alternate spelling.
-$mat-blue-gray: $mat-blue-grey;
+mat.$blue-gray-palette: mat.$blue-grey-palette;
 
 // Background palette for light themes.
-$mat-light-theme-background: (
-  status-bar: map_get($mat-grey, 300),
-  app-bar: map_get($mat-grey, 100),
-  background: map_get($mat-grey, 50),
+mat.$light-theme-background-palette: (
+  status-bar: map_get(mat.$grey-palette, 300),
+  app-bar: map_get(mat.$grey-palette, 100),
+  background: map_get(mat.$grey-palette, 50),
   hover: rgba(black, 0.04),
   card: white,
   dialog: white,
   disabled-button: rgba(black, 0.12),
   raised-button: white,
   focused-button: $dark-focused,
-  selected-button: map_get($mat-grey, 300),
-  selected-disabled-button: map_get($mat-grey, 400),
-  disabled-button-toggle: map_get($mat-grey, 200),
-  unselected-chip: map_get($mat-grey, 300),
-  disabled-list-option: map_get($mat-grey, 200)
+  selected-button: map_get(mat.$grey-palette, 300),
+  selected-disabled-button: map_get(mat.$grey-palette, 400),
+  disabled-button-toggle: map_get(mat.$grey-palette, 200),
+  unselected-chip: map_get(mat.$grey-palette, 300),
+  disabled-list-option: map_get(mat.$grey-palette, 200)
 );
 
 // Background palette for dark themes.
-$mat-dark-theme-background: (
+mat.$dark-theme-background-palette: (
   status-bar: black,
-  app-bar: map_get($mat-grey, 900),
+  app-bar: map_get(mat.$grey-palette, 900),
   background: #303030,
   hover: rgba(white, 0.04),
-  card: map_get($mat-grey, 800),
-  dialog: map_get($mat-grey, 800),
+  card: map_get(mat.$grey-palette, 800),
+  dialog: map_get(mat.$grey-palette, 800),
   disabled-button: rgba(white, 0.12),
-  raised-button: map-get($mat-grey, 800),
+  raised-button: map-get(mat.$grey-palette, 800),
   focused-button: $light-focused,
-  selected-button: map_get($mat-grey, 900),
-  selected-disabled-button: map_get($mat-grey, 800),
+  selected-button: map_get(mat.$grey-palette, 900),
+  selected-disabled-button: map_get(mat.$grey-palette, 800),
   disabled-button-toggle: black,
-  unselected-chip: map_get($mat-grey, 700),
+  unselected-chip: map_get(mat.$grey-palette, 700),
   disabled-list-option: black
 );
 
 // Foreground palette for light themes.
-$mat-light-theme-foreground: (
+mat.$light-theme-foreground-palette: (
   base: black,
   divider: $dark-dividers,
   dividers: $dark-dividers,
@@ -1274,7 +1276,7 @@ $mat-light-theme-foreground: (
 );
 
 // Foreground palette for dark themes.
-$mat-dark-theme-foreground: (
+mat.$dark-theme-foreground-palette: (
   base: white,
   divider: $light-dividers,
   dividers: $light-dividers,
@@ -1295,7 +1297,7 @@ $mat-dark-theme-foreground: (
 // For a given hue in a palette, return the contrast color from the map of contrast palettes.
 // @param $color-map
 // @param $hue
-@function mat-contrast($palette, $hue) {
+@function mat.get-contrast-color-from-palette($palette, $hue) {
   @return map-get(map-get($palette, contrast), $hue);
 }
 
@@ -1304,7 +1306,7 @@ $mat-dark-theme-foreground: (
 // @param $color-map
 // @param $primary
 // @param $lighter
-@function mat-palette(
+@function mat.define-palette(
   $base-palette,
   $default: 500,
   $lighter: 100,
@@ -1316,9 +1318,9 @@ $mat-dark-theme-foreground: (
       default: map-get($base-palette, $default),
       lighter: map-get($base-palette, $lighter),
       darker: map-get($base-palette, $darker),
-      default-contrast: mat-contrast($base-palette, $default),
-      lighter-contrast: mat-contrast($base-palette, $lighter),
-      darker-contrast: mat-contrast($base-palette, $darker)
+      default-contrast: mat.get-contrast-color-from-palette($base-palette, $default),
+      lighter-contrast: mat.get-contrast-color-from-palette($base-palette, $lighter),
+      darker-contrast: mat.get-contrast-color-from-palette($base-palette, $darker)
     )
   );
 
@@ -1327,7 +1329,7 @@ $mat-dark-theme-foreground: (
     $result: map_merge(
       $result,
       (
-        '#{$hue}-contrast': mat-contrast($base-palette, $hue)
+        '#{$hue}-contrast': mat.get-contrast-color-from-palette($base-palette, $hue)
       )
     );
   }
@@ -1343,11 +1345,11 @@ $mat-dark-theme-foreground: (
 // @param $hue The hue from the palette to use. If this is a value between 0 and 1, it will
 //     be treated as opacity.
 // @param $opacity The alpha channel value for the color.
-@function mat-color($palette, $hue: default, $opacity: null) {
+@function mat.get-color-from-palette($palette, $hue: default, $opacity: null) {
   // If hueKey is a number between zero and one, then it actually contains an
   // opacity value, so recall this function with the default hue and that given opacity.
   @if type-of($hue) == number and $hue >= 0 and $hue <= 1 {
-    @return mat-color($palette, default, $hue);
+    @return mat.get-color-from-palette($palette, default, $hue);
   }
 
   $color: map-get($palette, $hue);
@@ -1363,26 +1365,26 @@ $mat-dark-theme-foreground: (
 }
 
 // Creates a container object for a light theme to be given to individual component theme mixins.
-@function mat-light-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+@function mat.define-light-theme($primary, $accent, $warn: mat.define-palette(mat.$red-palette)) {
   @return (
     primary: $primary,
     accent: $accent,
     warn: $warn,
     is-dark: false,
-    foreground: $mat-light-theme-foreground,
-    background: $mat-light-theme-background
+    foreground: mat.$light-theme-foreground-palette,
+    background: mat.$light-theme-background-palette
   );
 }
 
 // Creates a container object for a dark theme to be given to individual component theme mixins.
-@function mat-dark-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+@function mat.define-dark-theme($primary, $accent, $warn: mat.define-palette(mat.$red-palette)) {
   @return (
     primary: $primary,
     accent: $accent,
     warn: $warn,
     is-dark: true,
-    foreground: $mat-dark-theme-foreground,
-    background: $mat-dark-theme-background
+    foreground: mat.$dark-theme-foreground-palette,
+    background: mat.$dark-theme-background-palette
   );
 }
 
@@ -1411,7 +1413,7 @@ $mat-ripple-color-opacity: 0.1;
     transform: scale(0);
 
     // In high contrast mode the ripple is opaque, causing it to obstruct the content.
-    @include cdk-high-contrast {
+    @include cdk.high-contrast {
       display: none;
     }
   }
@@ -1426,10 +1428,10 @@ $mat-ripple-color-opacity: 0.1;
     // If the ripple color is resolves to a color *type*, we can use it directly, otherwise
     // (e.g. it resolves to a CSS variable) we fall back to using the color and setting an opacity.
     @if type-of($foreground-base) == color {
-      background-color: rgba($foreground-base, $mat-ripple-color-opacity);
+      background-color: rgba($foreground-base, 0.1);
     } @else {
       background-color: $foreground-base;
-      opacity: $mat-ripple-color-opacity;
+      opacity: 0.1;
     }
   }
 }
@@ -1440,27 +1442,27 @@ $mat-ripple-color-opacity: 0.1;
 }
 
 // Gets the font size for a level inside a typography config.
-@function mat-font-size($config, $level) {
+@function mat.font-size($config, $level) {
   @return _mat-get-type-value($config, $level, font-size);
 }
 
 // Gets the line height for a level inside a typography config.
-@function mat-line-height($config, $level) {
+@function mat.line-height($config, $level) {
   @return _mat-get-type-value($config, $level, line-height);
 }
 
 // Gets the font weight for a level inside a typography config.
-@function mat-font-weight($config, $level) {
+@function mat.font-weight($config, $level) {
   @return _mat-get-type-value($config, $level, font-weight);
 }
 
 // Gets the letter spacing for a level inside a typography config.
-@function mat-letter-spacing($config, $level) {
+@function mat.letter-spacing($config, $level) {
   @return _mat-get-type-value($config, $level, letter-spacing);
 }
 
 // Gets the font-family from a typography config and removes the quotes around it.
-@function mat-font-family($config, $level: null) {
+@function mat.font-family($config, $level: null) {
   $font-family: map-get($config, font-family);
 
   @if $level != null {
@@ -1516,10 +1518,10 @@ $mat-ripple-color-opacity: 0.1;
 
 // Converts a typography level into CSS styles.
 @mixin mat-typography-level-to-styles($config, $level) {
-  $font-size: mat-font-size($config, $level);
-  $font-weight: mat-font-weight($config, $level);
-  $line-height: mat-line-height($config, $level);
-  $font-family: mat-font-family($config, $level);
+  $font-size: mat.font-size($config, $level);
+  $font-weight: mat.font-weight($config, $level);
+  $line-height: mat.line-height($config, $level);
+  $font-family: mat.font-family($config, $level);
 
   @include mat-typography-font-shorthand(
     $font-size,
@@ -1528,7 +1530,7 @@ $mat-ripple-color-opacity: 0.1;
     $font-family
   );
 
-  letter-spacing: mat-letter-spacing($config, $level);
+  letter-spacing: mat.letter-spacing($config, $level);
 }
 
 @mixin mat-option-theme($theme) {
@@ -1539,46 +1541,46 @@ $mat-ripple-color-opacity: 0.1;
   $warn: map-get($theme, warn);
 
   .mat-option {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
 
     &:hover:not(.mat-option-disabled),
     &:focus:not(.mat-option-disabled) {
-      background: mat-color($background, hover);
+      background: mat.get-color-from-palette($background, hover);
     }
 
     // In multiple mode there is a checkbox to show that the option is selected.
     &.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
-      background: mat-color($background, hover);
+      background: mat.get-color-from-palette($background, hover);
     }
 
     &.mat-active {
-      background: mat-color($background, hover);
-      color: mat-color($foreground, text);
+      background: mat.get-color-from-palette($background, hover);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     &.mat-option-disabled {
-      color: mat-color($foreground, hint-text);
+      color: mat.get-color-from-palette($foreground, hint-text);
     }
   }
 
   .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-    color: mat-color($primary);
+    color: mat.get-color-from-palette($primary);
   }
 
   .mat-accent .mat-option.mat-selected:not(.mat-option-disabled) {
-    color: mat-color($accent);
+    color: mat.get-color-from-palette($accent);
   }
 
   .mat-warn .mat-option.mat-selected:not(.mat-option-disabled) {
-    color: mat-color($warn);
+    color: mat.get-color-from-palette($warn);
   }
 }
 
 @mixin mat-option-typography($config) {
   .mat-option {
     font: {
-      family: mat-font-family($config);
-      size: mat-font-size($config, subheading-2);
+      family: mat.font-family($config);
+      size: mat.font-size($config, subheading-2);
     }
   }
 }
@@ -1587,17 +1589,17 @@ $mat-ripple-color-opacity: 0.1;
   $foreground: map-get($theme, foreground);
 
   .mat-optgroup-label {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-optgroup-disabled .mat-optgroup-label {
-    color: mat-color($foreground, hint-text);
+    color: mat.get-color-from-palette($foreground, hint-text);
   }
 }
 
 @mixin mat-optgroup-typography($config) {
   .mat-optgroup-label {
-    @include mat-typography-level-to-styles($config, body-2);
+    @include mat.typography-level($config, body-2);
   }
 }
 
@@ -1621,10 +1623,10 @@ $mat-ripple-color-opacity: 0.1;
   $colored-box-selector: '.mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate';
 
   .mat-pseudo-checkbox {
-    color: mat-color(map-get($theme, foreground), secondary-text);
+    color: mat.get-color-from-palette(map-get($theme, foreground), secondary-text);
 
     &::after {
-      color: mat-color($background, background);
+      color: mat.get-color-from-palette($background, background);
     }
   }
 
@@ -1639,17 +1641,17 @@ $mat-ripple-color-opacity: 0.1;
   .mat-pseudo-checkbox-indeterminate,
   .mat-accent .mat-pseudo-checkbox-checked,
   .mat-accent .mat-pseudo-checkbox-indeterminate {
-    background: mat-color(map-get($theme, accent));
+    background: mat.get-color-from-palette(map-get($theme, accent));
   }
 
   .mat-primary .mat-pseudo-checkbox-checked,
   .mat-primary .mat-pseudo-checkbox-indeterminate {
-    background: mat-color(map-get($theme, primary));
+    background: mat.get-color-from-palette(map-get($theme, primary));
   }
 
   .mat-warn .mat-pseudo-checkbox-checked,
   .mat-warn .mat-pseudo-checkbox-indeterminate {
-    background: mat-color(map-get($theme, warn));
+    background: mat.get-color-from-palette(map-get($theme, warn));
   }
 
   .mat-pseudo-checkbox-checked,
@@ -1661,7 +1663,7 @@ $mat-ripple-color-opacity: 0.1;
 }
 
 // Represents a typography level from the Material design spec.
-@function mat-typography-level(
+@function mat.define-typography-level(
   $font-size,
   $line-height: $font-size,
   $font-weight: 400,
@@ -1679,21 +1681,21 @@ $mat-ripple-color-opacity: 0.1;
 
 // Represents a collection of typography levels.
 // Defaults come from https://material.io/guidelines/style/typography.html
-@function mat-typography-config(
+@function mat.define-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif',
-  $display-4: mat-typography-level(112px, 112px, 300),
-  $display-3: mat-typography-level(56px, 56px, 400),
-  $display-2: mat-typography-level(45px, 48px, 400),
-  $display-1: mat-typography-level(34px, 40px, 400),
-  $headline: mat-typography-level(24px, 32px, 400),
-  $title: mat-typography-level(20px, 32px, 500),
-  $subheading-2: mat-typography-level(16px, 28px, 400),
-  $subheading-1: mat-typography-level(15px, 24px, 400),
-  $body-2: mat-typography-level(14px, 24px, 500),
-  $body-1: mat-typography-level(14px, 20px, 400),
-  $caption: mat-typography-level(12px, 20px, 400),
-  $button: mat-typography-level(14px, 14px, 500),
-  $input: mat-typography-level(inherit, 1.125, 400)
+  $display-4: mat.define-typography-level(112px, 112px, 300),
+  $display-3: mat.define-typography-level(56px, 56px, 400),
+  $display-2: mat.define-typography-level(45px, 48px, 400),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(16px, 28px, 400),
+  $subheading-1: mat.define-typography-level(15px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 24px, 500),
+  $body-1: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 20px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
+  $input: mat.define-typography-level(inherit, 1.125, 400)
 ) {
   // Declare an initial map with all of the levels.
   $config: (
@@ -1745,7 +1747,7 @@ $mat-ripple-color-opacity: 0.1;
   .mat-h1,
   .mat-headline,
   #{$selector} h1 {
-    @include mat-typography-level-to-styles($config, headline);
+    @include mat.typography-level($config, headline);
 
     margin: 0 0 16px;
   }
@@ -1753,7 +1755,7 @@ $mat-ripple-color-opacity: 0.1;
   .mat-h2,
   .mat-title,
   #{$selector} h2 {
-    @include mat-typography-level-to-styles($config, title);
+    @include mat.typography-level($config, title);
 
     margin: 0 0 16px;
   }
@@ -1761,7 +1763,7 @@ $mat-ripple-color-opacity: 0.1;
   .mat-h3,
   .mat-subheading-2,
   #{$selector} h3 {
-    @include mat-typography-level-to-styles($config, subheading-2);
+    @include mat.typography-level($config, subheading-2);
 
     margin: 0 0 16px;
   }
@@ -1769,7 +1771,7 @@ $mat-ripple-color-opacity: 0.1;
   .mat-h4,
   .mat-subheading-1,
   #{$selector} h4 {
-    @include mat-typography-level-to-styles($config, subheading-1);
+    @include mat.typography-level($config, subheading-1);
 
     margin: 0 0 16px;
   }
@@ -1780,10 +1782,10 @@ $mat-ripple-color-opacity: 0.1;
   .mat-h5,
   #{$selector} h5 {
     @include mat-typography-font-shorthand(
-      mat-font-size($config, body-1) * 0.83,
-      mat-font-weight($config, body-1),
-      mat-line-height($config, body-1),
-      mat-font-family($config, body-1)
+      mat.font-size($config, body-1) * 0.83,
+      mat.font-weight($config, body-1),
+      mat.line-height($config, body-1),
+      mat.font-family($config, body-1)
     );
 
     margin: 0 0 12px;
@@ -1792,10 +1794,10 @@ $mat-ripple-color-opacity: 0.1;
   .mat-h6,
   #{$selector} h6 {
     @include mat-typography-font-shorthand(
-      mat-font-size($config, body-1) * 0.67,
-      mat-font-weight($config, body-1),
-      mat-line-height($config, body-1),
-      mat-font-family($config, body-1)
+      mat.font-size($config, body-1) * 0.67,
+      mat.font-weight($config, body-1),
+      mat.line-height($config, body-1),
+      mat.font-family($config, body-1)
     );
 
     margin: 0 0 12px;
@@ -1803,13 +1805,13 @@ $mat-ripple-color-opacity: 0.1;
 
   .mat-body-strong,
   .mat-body-2 {
-    @include mat-typography-level-to-styles($config, body-2);
+    @include mat.typography-level($config, body-2);
   }
 
   .mat-body,
   .mat-body-1,
   #{$selector} {
-    @include mat-typography-level-to-styles($config, body-1);
+    @include mat.typography-level($config, body-1);
 
     p {
       margin: 0 0 12px;
@@ -1818,14 +1820,14 @@ $mat-ripple-color-opacity: 0.1;
 
   .mat-small,
   .mat-caption {
-    @include mat-typography-level-to-styles($config, caption);
+    @include mat.typography-level($config, caption);
   }
 
   // Note: The spec doesn't mention letter spacing. The value comes from
   // eyeballing it until it looked exactly like the spec examples.
   .mat-display-4,
   #{$selector} .mat-display-4 {
-    @include mat-typography-level-to-styles($config, display-4);
+    @include mat.typography-level($config, display-4);
 
     margin: 0 0 56px;
     letter-spacing: -0.05em;
@@ -1833,7 +1835,7 @@ $mat-ripple-color-opacity: 0.1;
 
   .mat-display-3,
   #{$selector} .mat-display-3 {
-    @include mat-typography-level-to-styles($config, display-3);
+    @include mat.typography-level($config, display-3);
 
     margin: 0 0 64px;
     letter-spacing: -0.02em;
@@ -1841,7 +1843,7 @@ $mat-ripple-color-opacity: 0.1;
 
   .mat-display-2,
   #{$selector} .mat-display-2 {
-    @include mat-typography-level-to-styles($config, display-2);
+    @include mat.typography-level($config, display-2);
 
     margin: 0 0 64px;
     letter-spacing: -0.005em;
@@ -1849,7 +1851,7 @@ $mat-ripple-color-opacity: 0.1;
 
   .mat-display-1,
   #{$selector} .mat-display-1 {
-    @include mat-typography-level-to-styles($config, display-1);
+    @include mat.typography-level($config, display-1);
 
     margin: 0 0 64px;
   }
@@ -1862,8 +1864,8 @@ $mat-ripple-color-opacity: 0.1;
   .mat-autocomplete-panel {
     @include _mat-theme-overridable-elevation(4, $theme);
 
-    background: mat-color($background, card);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
 
     // Selected options in autocompletes should not be gray, but we
     // only want to override the background for selected options if
@@ -1871,10 +1873,10 @@ $mat-ripple-color-opacity: 0.1;
     // made here because base option styles are shared between the
     // autocomplete and the select.
     .mat-option.mat-selected:not(.mat-active):not(:hover) {
-      background: mat-color($background, card);
+      background: mat.get-color-from-palette($background, card);
 
       &:not(.mat-option-disabled) {
-        color: mat-color($foreground, text);
+        color: mat.get-color-from-palette($foreground, text);
       }
     }
   }
@@ -1890,8 +1892,8 @@ $mat-ripple-color-opacity: 0.1;
 $mat-badge-font-size: 12px;
 $mat-badge-font-weight: 600;
 $mat-badge-default-size: 22px !default;
-$mat-badge-small-size: $mat-badge-default-size - 6;
-$mat-badge-large-size: $mat-badge-default-size + 6;
+$mat-badge-small-size: 22px - 6;
+$mat-badge-large-size: 22px + 6;
 
 // Mixin for building offset given different sizes
 @mixin _mat-badge-size($size) {
@@ -1976,10 +1978,10 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   $foreground: map-get($theme, foreground);
 
   .mat-badge-content {
-    color: mat-color($primary, default-contrast);
-    background: mat-color($primary);
+    color: mat.get-color-from-palette($primary, default-contrast);
+    background: mat.get-color-from-palette($primary);
 
-    @include cdk-high-contrast {
+    @include cdk.high-contrast {
       outline: solid 1px;
       border-radius: 0;
     }
@@ -1987,15 +1989,15 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
 
   .mat-badge-accent {
     .mat-badge-content {
-      background: mat-color($accent);
-      color: mat-color($accent, default-contrast);
+      background: mat.get-color-from-palette($accent);
+      color: mat.get-color-from-palette($accent, default-contrast);
     }
   }
 
   .mat-badge-warn {
     .mat-badge-content {
-      color: mat-color($warn, default-contrast);
-      background: mat-color($warn);
+      color: mat.get-color-from-palette($warn, default-contrast);
+      background: mat.get-color-from-palette($warn);
     }
   }
 
@@ -2011,8 +2013,8 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
 
   .mat-badge-disabled {
     .mat-badge-content {
-      $app-background: mat-color($background, 'background');
-      $badge-color: mat-color($foreground, disabled-button);
+      $app-background: mat.get-color-from-palette($background, 'background');
+      $badge-color: mat.get-color-from-palette($foreground, disabled-button);
 
       // The disabled color usually has some kind of opacity, but because the badge is overlayed
       // on top of something else, it won't look good if it's opaque. If it is a color *type*,
@@ -2031,7 +2033,7 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
         background: $badge-color;
       }
 
-      color: mat-color($foreground, disabled-text);
+      color: mat.get-color-from-palette($foreground, disabled-text);
     }
   }
 
@@ -2056,31 +2058,31 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   }
 
   .mat-badge-small {
-    @include _mat-badge-size($mat-badge-small-size);
+    @include _mat-badge-size(16px);
   }
 
   .mat-badge-medium {
-    @include _mat-badge-size($mat-badge-default-size);
+    @include _mat-badge-size(22px);
   }
 
   .mat-badge-large {
-    @include _mat-badge-size($mat-badge-large-size);
+    @include _mat-badge-size(28px);
   }
 }
 
 @mixin mat-badge-typography($config) {
   .mat-badge-content {
-    font-weight: $mat-badge-font-weight;
-    font-size: $mat-badge-font-size;
-    font-family: mat-font-family($config);
+    font-weight: 600;
+    font-size: 12px;
+    font-family: mat.font-family($config);
   }
 
   .mat-badge-small .mat-badge-content {
-    font-size: $mat-badge-font-size / 2;
+    font-size: 12px / 2;
   }
 
   .mat-badge-large .mat-badge-content {
-    font-size: $mat-badge-font-size * 2;
+    font-size: 12px * 2;
   }
 }
 
@@ -2091,14 +2093,14 @@ $mat-badge-large-size: $mat-badge-default-size + 6;
   .mat-bottom-sheet-container {
     @include _mat-theme-elevation(16, $theme);
 
-    background: mat-color($background, dialog);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, dialog);
+    color: mat.get-color-from-palette($foreground, text);
   }
 }
 
 @mixin mat-bottom-sheet-typography($config) {
   .mat-bottom-sheet-container {
-    @include mat-typography-level-to-styles($config, body-1);
+    @include mat.typography-level($config, body-1);
   }
 }
 
@@ -2111,15 +2113,15 @@ $_mat-button-ripple-opacity: 0.1;
   $warn: map-get($theme, warn);
 
   &.mat-primary .mat-button-focus-overlay {
-    background-color: mat-color($primary);
+    background-color: mat.get-color-from-palette($primary);
   }
 
   &.mat-accent .mat-button-focus-overlay {
-    background-color: mat-color($accent);
+    background-color: mat.get-color-from-palette($accent);
   }
 
   &.mat-warn .mat-button-focus-overlay {
-    background-color: mat-color($warn);
+    background-color: mat.get-color-from-palette($warn);
   }
 
   &[disabled] .mat-button-focus-overlay {
@@ -2137,15 +2139,15 @@ $_mat-button-ripple-opacity: 0.1;
   $warn: map-get($theme, warn);
 
   &.mat-primary .mat-ripple-element {
-    background-color: mat-color($primary, $hue, $opacity);
+    background-color: mat.get-color-from-palette($primary, $hue, $opacity);
   }
 
   &.mat-accent .mat-ripple-element {
-    background-color: mat-color($accent, $hue, $opacity);
+    background-color: mat.get-color-from-palette($accent, $hue, $opacity);
   }
 
   &.mat-warn .mat-ripple-element {
-    background-color: mat-color($warn, $hue, $opacity);
+    background-color: mat.get-color-from-palette($warn, $hue, $opacity);
   }
 }
 
@@ -2158,15 +2160,15 @@ $_mat-button-ripple-opacity: 0.1;
   $foreground: map-get($theme, foreground);
 
   &.mat-primary {
-    #{$property}: mat-color($primary, $hue);
+    #{$property}: mat.get-color-from-palette($primary, $hue);
   }
 
   &.mat-accent {
-    #{$property}: mat-color($accent, $hue);
+    #{$property}: mat.get-color-from-palette($accent, $hue);
   }
 
   &.mat-warn {
-    #{$property}: mat-color($warn, $hue);
+    #{$property}: mat.get-color-from-palette($warn, $hue);
   }
 
   &.mat-primary,
@@ -2176,7 +2178,7 @@ $_mat-button-ripple-opacity: 0.1;
     &[disabled] {
       $palette: if($property == 'color', $foreground, $background);
 
-      #{$property}: mat-color($palette, disabled-button);
+      #{$property}: mat.get-color-from-palette($palette, disabled-button);
     }
   }
 }
@@ -2217,7 +2219,7 @@ $_mat-button-ripple-opacity: 0.1;
   // Note: this needs a bit extra specificity, because we're not guaranteed the inclusion
   // order of the theme styles and the button reset may end up resetting this as well.
   .mat-stroked-button:not([disabled]) {
-    border-color: mat-color($foreground, divider);
+    border-color: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-flat-button,
@@ -2225,8 +2227,8 @@ $_mat-button-ripple-opacity: 0.1;
   .mat-fab,
   .mat-mini-fab {
     // Default font and background color when not using any color palette.
-    color: mat-color($foreground, text);
-    background-color: mat-color($background, raised-button);
+    color: mat.get-color-from-palette($foreground, text);
+    background-color: mat.get-color-from-palette($background, raised-button);
 
     @include _mat-button-theme-property($theme, 'color', default-contrast);
     @include _mat-button-theme-property($theme, 'background-color', default);
@@ -2273,9 +2275,9 @@ $_mat-button-ripple-opacity: 0.1;
   .mat-fab,
   .mat-mini-fab {
     font: {
-      family: mat-font-family($config, button);
-      size: mat-font-size($config, button);
-      weight: mat-font-weight($config, button);
+      family: mat.font-family($config, button);
+      size: mat.font-size($config, button);
+      weight: mat.font-weight($config, button);
     }
   }
 }
@@ -2283,7 +2285,7 @@ $_mat-button-ripple-opacity: 0.1;
 @mixin mat-button-toggle-theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
-  $divider-color: mat-color($foreground, divider);
+  $divider-color: mat.get-color-from-palette($foreground, divider);
 
   .mat-button-toggle-standalone,
   .mat-button-toggle-group {
@@ -2296,19 +2298,19 @@ $_mat-button-ripple-opacity: 0.1;
   }
 
   .mat-button-toggle {
-    color: mat-color($foreground, hint-text);
+    color: mat.get-color-from-palette($foreground, hint-text);
 
     .mat-button-toggle-focus-overlay {
-      background-color: mat-color($background, focused-button);
+      background-color: mat.get-color-from-palette($background, focused-button);
     }
   }
 
   .mat-button-toggle-appearance-standard {
-    color: mat-color($foreground, text);
-    background: mat-color($background, card);
+    color: mat.get-color-from-palette($foreground, text);
+    background: mat.get-color-from-palette($background, card);
 
     .mat-button-toggle-focus-overlay {
-      background-color: mat-color($background, focused-button, 1);
+      background-color: mat.get-color-from-palette($background, focused-button, 1);
     }
   }
 
@@ -2335,24 +2337,24 @@ $_mat-button-ripple-opacity: 0.1;
   }
 
   .mat-button-toggle-checked {
-    background-color: mat-color($background, selected-button);
-    color: mat-color($foreground, secondary-text);
+    background-color: mat.get-color-from-palette($background, selected-button);
+    color: mat.get-color-from-palette($foreground, secondary-text);
 
     &.mat-button-toggle-appearance-standard {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
   }
 
   .mat-button-toggle-disabled {
-    color: mat-color($foreground, disabled-button);
-    background-color: mat-color($background, disabled-button-toggle);
+    color: mat.get-color-from-palette($foreground, disabled-button);
+    background-color: mat.get-color-from-palette($background, disabled-button-toggle);
 
     &.mat-button-toggle-appearance-standard {
-      background: mat-color($background, card);
+      background: mat.get-color-from-palette($background, card);
     }
 
     &.mat-button-toggle-checked {
-      background-color: mat-color($background, selected-disabled-button);
+      background-color: mat.get-color-from-palette($background, selected-disabled-button);
     }
   }
 
@@ -2364,7 +2366,7 @@ $_mat-button-ripple-opacity: 0.1;
 
 @mixin mat-button-toggle-typography($config) {
   .mat-button-toggle {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 }
 
@@ -2375,8 +2377,8 @@ $_mat-button-ripple-opacity: 0.1;
   .mat-card {
     @include _mat-theme-overridable-elevation(1, $theme);
 
-    background: mat-color($background, card);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
 
     // Needs extra specificity to be able to override the elevation selectors.
     &.mat-card-flat {
@@ -2385,29 +2387,29 @@ $_mat-button-ripple-opacity: 0.1;
   }
 
   .mat-card-subtitle {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 }
 
 @mixin mat-card-typography($config) {
   .mat-card {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-card-title {
     font: {
-      size: mat-font-size($config, headline);
-      weight: mat-font-weight($config, title);
+      size: mat.font-size($config, headline);
+      weight: mat.font-weight($config, title);
     }
   }
 
   .mat-card-header .mat-card-title {
-    font-size: mat-font-size($config, title);
+    font-size: mat.font-size($config, title);
   }
 
   .mat-card-subtitle,
   .mat-card-content {
-    font-size: mat-font-size($config, body-1);
+    font-size: mat.font-size($config, body-1);
   }
 }
 
@@ -2420,7 +2422,7 @@ $_mat-button-ripple-opacity: 0.1;
   $foreground: map-get($theme, foreground);
 
   // The color of the checkbox's checkmark / mixedmark.
-  $checkbox-mark-color: mat-color($background, background);
+  $checkbox-mark-color: mat.get-color-from-palette($background, background);
 
   // NOTE(traviskaufman): While the spec calls for translucent blacks/whites for disabled colors,
   // this does not work well with elements layered on top of one another. To get around this we
@@ -2434,7 +2436,7 @@ $_mat-button-ripple-opacity: 0.1;
   );
 
   .mat-checkbox-frame {
-    border-color: mat-color($foreground, secondary-text);
+    border-color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-checkbox-checkmark {
@@ -2446,7 +2448,7 @@ $_mat-button-ripple-opacity: 0.1;
     // attribute on the SVG in order for line animation to work properly.
     stroke: $checkbox-mark-color !important;
 
-    @include cdk-high-contrast(black-on-white) {
+    @include cdk.high-contrast(black-on-white) {
       // Having the one above be !important ends up overriding the browser's automatic
       // color inversion so we need to re-invert it ourselves for black-on-white.
       stroke: #000 !important;
@@ -2460,15 +2462,15 @@ $_mat-button-ripple-opacity: 0.1;
   .mat-checkbox-indeterminate,
   .mat-checkbox-checked {
     &.mat-primary .mat-checkbox-background {
-      background-color: mat-color($primary);
+      background-color: mat.get-color-from-palette($primary);
     }
 
     &.mat-accent .mat-checkbox-background {
-      background-color: mat-color($accent);
+      background-color: mat.get-color-from-palette($accent);
     }
 
     &.mat-warn .mat-checkbox-background {
-      background-color: mat-color($warn);
+      background-color: mat.get-color-from-palette($warn);
     }
   }
 
@@ -2487,17 +2489,17 @@ $_mat-button-ripple-opacity: 0.1;
     }
 
     .mat-checkbox-label {
-      color: mat-color($foreground, secondary-text);
+      color: mat.get-color-from-palette($foreground, secondary-text);
     }
 
-    @include cdk-high-contrast {
+    @include cdk.high-contrast {
       opacity: 0.5;
     }
   }
 
   // This one is moved down here so it can target both
   // the theme colors and the disabled state.
-  @include cdk-high-contrast {
+  @include cdk.high-contrast {
     .mat-checkbox-background {
       // Needs to be removed because it hides the checkbox outline.
       background: none;
@@ -2506,27 +2508,27 @@ $_mat-button-ripple-opacity: 0.1;
 
   .mat-checkbox:not(.mat-checkbox-disabled) {
     &.mat-primary .mat-checkbox-ripple .mat-ripple-element {
-      background-color: mat-color($primary);
+      background-color: mat.get-color-from-palette($primary);
     }
 
     &.mat-accent .mat-checkbox-ripple .mat-ripple-element {
-      background-color: mat-color($accent);
+      background-color: mat.get-color-from-palette($accent);
     }
 
     &.mat-warn .mat-checkbox-ripple .mat-ripple-element {
-      background-color: mat-color($warn);
+      background-color: mat.get-color-from-palette($warn);
     }
   }
 }
 
 @mixin mat-checkbox-typography($config) {
   .mat-checkbox {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   // TODO(kara): Remove this style when fixing vertical baseline
   .mat-checkbox-layout .mat-checkbox-label {
-    line-height: mat-line-height($config, body-2);
+    line-height: mat.line-height($config, body-2);
   }
 }
 
@@ -2543,13 +2545,13 @@ $mat-chip-remove-font-size: 18px;
 }
 
 @mixin mat-chips-theme-color($palette) {
-  @include mat-chips-color(
-    mat-color($palette, default-contrast),
-    mat-color($palette)
+  @include mat.chips-color(
+    mat.get-color-from-palette($palette, default-contrast),
+    mat.get-color-from-palette($palette)
   );
 
   .mat-ripple-element {
-    background: mat-color($palette, default-contrast, 0.1);
+    background: mat.get-color-from-palette($palette, default-contrast, 0.1);
   }
 }
 
@@ -2561,11 +2563,11 @@ $mat-chip-remove-font-size: 18px;
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  $unselected-background: mat-color($background, unselected-chip);
-  $unselected-foreground: mat-color($foreground, text);
+  $unselected-background: mat.get-color-from-palette($background, unselected-chip);
+  $unselected-foreground: mat.get-color-from-palette($foreground, text);
 
   .mat-chip.mat-standard-chip {
-    @include mat-chips-color($unselected-foreground, $unselected-background);
+    @include mat.chips-color($unselected-foreground, $unselected-background);
 
     &:not(.mat-chip-disabled) {
       &:active {
@@ -2588,27 +2590,27 @@ $mat-chip-remove-font-size: 18px;
 
   .mat-chip.mat-standard-chip.mat-chip-selected {
     &.mat-primary {
-      @include mat-chips-theme-color($primary);
+      @include mat.chips-theme-color($primary);
     }
 
     &.mat-warn {
-      @include mat-chips-theme-color($warn);
+      @include mat.chips-theme-color($warn);
     }
 
     &.mat-accent {
-      @include mat-chips-theme-color($accent);
+      @include mat.chips-theme-color($accent);
     }
   }
 }
 
 @mixin mat-chips-typography($config) {
   .mat-chip {
-    font-size: mat-font-size($config, body-2);
-    font-weight: mat-font-weight($config, body-2);
+    font-size: mat.font-size($config, body-2);
+    font-weight: mat.font-weight($config, body-2);
 
     .mat-chip-trailing-icon.mat-icon,
     .mat-chip-remove.mat-icon {
-      font-size: $mat-chip-remove-font-size;
+      font-size: 18px;
     }
   }
 }
@@ -2618,7 +2620,7 @@ $mat-chip-remove-font-size: 18px;
   $foreground: map-get($theme, foreground);
 
   .mat-table {
-    background: mat-color($background, 'card');
+    background: mat.get-color-from-palette($background, 'card');
   }
 
   .mat-table thead,
@@ -2640,32 +2642,32 @@ $mat-chip-remove-font-size: 18px;
   th.mat-header-cell,
   td.mat-cell,
   td.mat-footer-cell {
-    border-bottom-color: mat-color($foreground, divider);
+    border-bottom-color: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-header-cell {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-cell,
   .mat-footer-cell {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 }
 
 @mixin mat-table-typography($config) {
   .mat-table {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-header-cell {
-    font-size: mat-font-size($config, caption);
-    font-weight: mat-font-weight($config, body-2);
+    font-size: mat.font-size($config, caption);
+    font-weight: mat.font-weight($config, body-2);
   }
 
   .mat-cell,
   .mat-footer-cell {
-    font-size: mat-font-size($config, body-1);
+    font-size: mat.font-size($config, body-1);
   }
 }
 
@@ -2677,28 +2679,28 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 @mixin _mat-datepicker-color($palette) {
   .mat-calendar-body-selected {
-    background-color: mat-color($palette);
-    color: mat-color($palette, default-contrast);
+    background-color: mat.get-color-from-palette($palette);
+    color: mat.get-color-from-palette($palette, default-contrast);
   }
 
   .mat-calendar-body-disabled > .mat-calendar-body-selected {
-    $background: mat-color($palette);
+    $background: mat.get-color-from-palette($palette);
 
     @if type-of($background) == color {
       background-color: fade-out(
         $background,
-        $mat-datepicker-selected-fade-amount
+        0.6
       );
     } @else {
       // If we couldn't resolve to background to a color (e.g. it's a CSS variable),
       // fall back to fading the content out via `opacity`.
-      opacity: $mat-datepicker-today-fade-amount;
+      opacity: 0.2;
     }
   }
 
   .mat-calendar-body-today.mat-calendar-body-selected {
-    box-shadow: inset 0 0 0 $mat-datepicker-selected-today-box-shadow-width
-      mat-color($palette, default-contrast);
+    box-shadow: inset 0 0 0 1px
+      mat.get-color-from-palette($palette, default-contrast);
   }
 }
 
@@ -2707,7 +2709,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $background: map-get($theme, background);
 
   .mat-calendar-arrow {
-    border-top-color: mat-color($foreground, icon);
+    border-top-color: mat.get-color-from-palette($foreground, icon);
   }
 
   // The prev/next buttons need a bit more specificity to
@@ -2715,51 +2717,51 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-datepicker-toggle,
   .mat-datepicker-content .mat-calendar-next-button,
   .mat-datepicker-content .mat-calendar-previous-button {
-    color: mat-color($foreground, icon);
+    color: mat.get-color-from-palette($foreground, icon);
   }
 
   .mat-calendar-table-header {
-    color: mat-color($foreground, hint-text);
+    color: mat.get-color-from-palette($foreground, hint-text);
   }
 
   .mat-calendar-table-header-divider::after {
-    background: mat-color($foreground, divider);
+    background: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-calendar-body-label {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-calendar-body-cell-content {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
     border-color: transparent;
   }
 
   .mat-calendar-body-disabled
     > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-    color: mat-color($foreground, disabled-text);
+    color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
   .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover,
   .cdk-keyboard-focused .mat-calendar-body-active,
   .cdk-program-focused .mat-calendar-body-active {
     & > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
-      background-color: mat-color($background, hover);
+      background-color: mat.get-color-from-palette($background, hover);
     }
   }
 
   .mat-calendar-body-today:not(.mat-calendar-body-selected) {
     // Note: though it's not text, the border is a hint about the fact that this is today's date,
     // so we use the hint color.
-    border-color: mat-color($foreground, hint-text);
+    border-color: mat.get-color-from-palette($foreground, hint-text);
   }
 
   .mat-calendar-body-disabled
     > .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-    $color: mat-color($foreground, hint-text);
+    $color: mat.get-color-from-palette($foreground, hint-text);
 
     @if type-of($color) == color {
-      border-color: fade-out($color, $mat-datepicker-today-fade-amount);
+      border-color: fade-out($color, 0.2);
     } @else {
       // If the color didn't resolve to a color value, but something like a CSS variable, we can't
       // fade it out so we fall back to reducing the element opacity. Note that we don't use the
@@ -2774,8 +2776,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-datepicker-content {
     @include _mat-theme-elevation(4, $theme);
 
-    background-color: mat-color($background, card);
-    color: mat-color($foreground, text);
+    background-color: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
 
     &.mat-accent {
       @include _mat-datepicker-color(map-get($theme, accent));
@@ -2791,39 +2793,39 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   .mat-datepicker-toggle-active {
-    color: mat-color(map-get($theme, primary));
+    color: mat.get-color-from-palette(map-get($theme, primary));
 
     &.mat-accent {
-      color: mat-color(map-get($theme, accent));
+      color: mat.get-color-from-palette(map-get($theme, accent));
     }
 
     &.mat-warn {
-      color: mat-color(map-get($theme, warn));
+      color: mat.get-color-from-palette(map-get($theme, warn));
     }
   }
 }
 
 @mixin mat-datepicker-typography($config) {
   .mat-calendar {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-calendar-body {
-    font-size: $mat-calendar-body-font-size;
+    font-size: 13px;
   }
 
   .mat-calendar-body-label,
   .mat-calendar-period-button {
     font: {
-      size: mat-font-size($config, button);
-      weight: mat-font-weight($config, button);
+      size: mat.font-size($config, button);
+      weight: mat.font-weight($config, button);
     }
   }
 
   .mat-calendar-table-header th {
     font: {
-      size: $mat-calendar-weekday-table-font-size;
-      weight: mat-font-weight($config, body-1);
+      size: 11px;
+      weight: mat.font-weight($config, body-1);
     }
   }
 }
@@ -2835,14 +2837,14 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-dialog-container {
     @include _mat-theme-elevation(24, $theme);
 
-    background: mat-color($background, dialog);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, dialog);
+    color: mat.get-color-from-palette($foreground, text);
   }
 }
 
 @mixin mat-dialog-typography($config) {
   .mat-dialog-title {
-    @include mat-typography-level-to-styles($config, title);
+    @include mat.typography-level($config, title);
   }
 }
 
@@ -2853,12 +2855,12 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-expansion-panel {
     @include _mat-theme-overridable-elevation(2, $theme);
 
-    background: mat-color($background, card);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, card);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-action-row {
-    border-top-color: mat-color($foreground, divider);
+    border-top-color: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header {
@@ -2866,7 +2868,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
       &.cdk-keyboard-focused,
       &.cdk-program-focused,
       &:hover {
-        background: mat-color($background, hover);
+        background: mat.get-color-from-palette($background, hover);
       }
     }
   }
@@ -2876,21 +2878,21 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   @media (hover: none) {
     .mat-expansion-panel:not(.mat-expanded):not([aria-disabled='true'])
       .mat-expansion-panel-header:hover {
-      background: mat-color($background, card);
+      background: mat.get-color-from-palette($background, card);
     }
   }
 
   .mat-expansion-panel-header-title {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-expansion-panel-header-description,
   .mat-expansion-indicator::after {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-expansion-panel-header[aria-disabled='true'] {
-    color: mat-color($foreground, disabled-button);
+    color: mat.get-color-from-palette($foreground, disabled-button);
 
     .mat-expansion-panel-header-title,
     .mat-expansion-panel-header-description {
@@ -2902,14 +2904,14 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 @mixin mat-expansion-panel-typography($config) {
   .mat-expansion-panel-header {
     font: {
-      family: mat-font-family($config, subheading-1);
-      size: mat-font-size($config, subheading-1);
-      weight: mat-font-weight($config, subheading-1);
+      family: mat.font-family($config, subheading-1);
+      size: mat.font-size($config, subheading-1);
+      weight: mat.font-weight($config, subheading-1);
     }
   }
 
   .mat-expansion-panel-content {
-    @include mat-typography-level-to-styles($config, body-1);
+    @include mat.typography-level($config, body-1);
   }
 }
 
@@ -2971,9 +2973,9 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 @mixin mat-grid-list-typography($config) {
   .mat-grid-tile-header,
   .mat-grid-tile-footer {
-    @include mat-line-base(mat-font-size($config, caption));
+    @include mat-line-base(mat.font-size($config, caption));
 
-    font-size: mat-font-size($config, body-1);
+    font-size: mat.font-size($config, body-1);
   }
 }
 
@@ -2987,15 +2989,15 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   .mat-icon {
     &.mat-primary {
-      color: mat-color($primary);
+      color: mat.get-color-from-palette($primary);
     }
 
     &.mat-accent {
-      color: mat-color($accent);
+      color: mat.get-color-from-palette($accent);
     }
 
     &.mat-warn {
-      color: mat-color($warn);
+      color: mat.get-color-from-palette($warn);
     }
   }
 }
@@ -3024,7 +3026,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  @return mat-color($foreground, secondary-text, if($is-dark-theme, 0.5, 0.42));
+  @return mat.get-color-from-palette($foreground, secondary-text, if($is-dark-theme, 0.5, 0.42));
 }
 
 /* stylelint-disable material/no-prefixes */
@@ -3077,17 +3079,17 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $foreground: map-get($theme, foreground);
 
   .mat-form-field-type-mat-native-select .mat-form-field-infix::after {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-input-element:disabled,
   .mat-form-field-type-mat-native-select.mat-form-field-disabled
     .mat-form-field-infix::after {
-    color: mat-color($foreground, disabled-text);
+    color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
   .mat-input-element {
-    caret-color: mat-color($primary);
+    caret-color: mat.get-color-from-palette($primary);
 
     @include input-placeholder {
       color: _mat-control-placeholder-color($theme);
@@ -3110,23 +3112,23 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   .mat-accent .mat-input-element {
-    caret-color: mat-color($accent);
+    caret-color: mat.get-color-from-palette($accent);
   }
 
   .mat-warn .mat-input-element,
   .mat-form-field-invalid .mat-input-element {
-    caret-color: mat-color($warn);
+    caret-color: mat.get-color-from-palette($warn);
   }
 
   .mat-form-field-type-mat-native-select.mat-form-field-invalid
     .mat-form-field-infix::after {
-    color: mat-color($warn);
+    color: mat.get-color-from-palette($warn);
   }
 }
 
 @mixin mat-input-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   // The amount of space between the top of the line and the top of the actual text
   // (as a fraction of the font-size).
@@ -3145,20 +3147,20 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   .mat-list-base {
     .mat-list-item {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     .mat-list-option {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     .mat-subheader {
-      color: mat-color($foreground, secondary-text);
+      color: mat.get-color-from-palette($foreground, secondary-text);
     }
   }
 
   .mat-list-item-disabled {
-    background-color: mat-color($background, disabled-list-option);
+    background-color: mat.get-color-from-palette($background, disabled-list-option);
   }
 
   .mat-list-option,
@@ -3166,13 +3168,13 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-action-list .mat-list-item {
     &:hover,
     &:focus {
-      background: mat-color($background, 'hover');
+      background: mat.get-color-from-palette($background, 'hover');
     }
   }
 }
 
 @mixin mat-list-typography($config) {
-  $font-family: mat-font-family($config);
+  $font-family: mat.font-family($config);
 
   .mat-list-item {
     font-family: $font-family;
@@ -3185,42 +3187,42 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   // Default list
   .mat-list-base {
     .mat-list-item {
-      font-size: mat-font-size($config, subheading-2);
+      font-size: mat.font-size($config, subheading-2);
 
-      @include mat-line-base(mat-font-size($config, body-1));
+      @include mat-line-base(mat.font-size($config, body-1));
     }
 
     .mat-list-option {
-      font-size: mat-font-size($config, subheading-2);
+      font-size: mat.font-size($config, subheading-2);
 
-      @include mat-line-base(mat-font-size($config, body-1));
+      @include mat-line-base(mat.font-size($config, body-1));
     }
 
     .mat-subheader {
-      font-family: mat-font-family($config, body-2);
-      font-size: mat-font-size($config, body-2);
-      font-weight: mat-font-weight($config, body-2);
+      font-family: mat.font-family($config, body-2);
+      font-size: mat.font-size($config, body-2);
+      font-weight: mat.font-weight($config, body-2);
     }
   }
 
   // Dense list
   .mat-list-base[dense] {
     .mat-list-item {
-      font-size: mat-font-size($config, caption);
+      font-size: mat.font-size($config, caption);
 
-      @include mat-line-base(mat-font-size($config, caption));
+      @include mat-line-base(mat.font-size($config, caption));
     }
 
     .mat-list-option {
-      font-size: mat-font-size($config, caption);
+      font-size: mat.font-size($config, caption);
 
-      @include mat-line-base(mat-font-size($config, caption));
+      @include mat-line-base(mat.font-size($config, caption));
     }
 
     .mat-subheader {
       font-family: $font-family;
-      font-size: mat-font-size($config, caption);
-      font-weight: mat-font-weight($config, body-2);
+      font-size: mat.font-size($config, caption);
+      font-weight: mat.font-weight($config, body-2);
     }
   }
 }
@@ -3232,26 +3234,26 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-menu-panel {
     @include _mat-theme-overridable-elevation(4, $theme);
 
-    background: mat-color($background, 'card');
+    background: mat.get-color-from-palette($background, 'card');
     max-width: none !important;
     min-width: fit-content !important;
   }
 
   .mat-menu-item {
     background: transparent;
-    color: mat-color($foreground, 'text');
+    color: mat.get-color-from-palette($foreground, 'text');
 
     &[disabled] {
       &,
       &::after {
-        color: mat-color($foreground, 'disabled');
+        color: mat.get-color-from-palette($foreground, 'disabled');
       }
     }
   }
 
   .mat-menu-item .mat-icon-no-color,
   .mat-menu-item-submenu-trigger::after {
-    color: mat-color($foreground, 'icon');
+    color: mat.get-color-from-palette($foreground, 'icon');
   }
 
   .mat-menu-item:hover,
@@ -3259,7 +3261,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-menu-item.cdk-keyboard-focused,
   .mat-menu-item-highlighted {
     &:not([disabled]) {
-      background: mat-color($background, 'hover');
+      background: mat.get-color-from-palette($background, 'hover');
     }
   }
 }
@@ -3267,9 +3269,9 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 @mixin mat-menu-typography($config) {
   .mat-menu-item {
     font: {
-      family: mat-font-family($config, body-1);
-      size: mat-font-size($config, body-1);
-      weight: mat-font-weight($config, body-1);
+      family: mat.font-family($config, body-1);
+      size: mat.font-size($config, body-1);
+      weight: mat.font-weight($config, body-1);
     }
   }
 }
@@ -3279,23 +3281,23 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $background: map-get($theme, background);
 
   .mat-paginator {
-    background: mat-color($background, 'card');
+    background: mat.get-color-from-palette($background, 'card');
   }
 
   .mat-paginator,
   .mat-paginator-page-size .mat-select-trigger {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-paginator-decrement,
   .mat-paginator-increment {
-    border-top: 2px solid mat-color($foreground, 'icon');
-    border-right: 2px solid mat-color($foreground, 'icon');
+    border-top: 2px solid mat.get-color-from-palette($foreground, 'icon');
+    border-right: 2px solid mat.get-color-from-palette($foreground, 'icon');
   }
 
   .mat-paginator-first,
   .mat-paginator-last {
-    border-top: 2px solid mat-color($foreground, 'icon');
+    border-top: 2px solid mat.get-color-from-palette($foreground, 'icon');
   }
 
   .mat-icon-button[disabled] {
@@ -3303,7 +3305,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     .mat-paginator-increment,
     .mat-paginator-first,
     .mat-paginator-last {
-      border-color: mat-color($foreground, 'disabled');
+      border-color: mat.get-color-from-palette($foreground, 'disabled');
     }
   }
 }
@@ -3312,8 +3314,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-paginator,
   .mat-paginator-page-size .mat-select-trigger {
     font: {
-      family: mat-font-family($config, caption);
-      size: mat-font-size($config, caption);
+      family: mat.font-family($config, caption);
+      size: mat.font-size($config, caption);
     }
   }
 }
@@ -3324,42 +3326,42 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $warn: map-get($theme, warn);
 
   .mat-progress-bar-background {
-    fill: mat-color($primary, lighter);
+    fill: mat.get-color-from-palette($primary, lighter);
   }
 
   .mat-progress-bar-buffer {
-    background-color: mat-color($primary, lighter);
+    background-color: mat.get-color-from-palette($primary, lighter);
   }
 
   .mat-progress-bar-fill::after {
-    background-color: mat-color($primary);
+    background-color: mat.get-color-from-palette($primary);
   }
 
   .mat-progress-bar.mat-accent {
     .mat-progress-bar-background {
-      fill: mat-color($accent, lighter);
+      fill: mat.get-color-from-palette($accent, lighter);
     }
 
     .mat-progress-bar-buffer {
-      background-color: mat-color($accent, lighter);
+      background-color: mat.get-color-from-palette($accent, lighter);
     }
 
     .mat-progress-bar-fill::after {
-      background-color: mat-color($accent);
+      background-color: mat.get-color-from-palette($accent);
     }
   }
 
   .mat-progress-bar.mat-warn {
     .mat-progress-bar-background {
-      fill: mat-color($warn, lighter);
+      fill: mat.get-color-from-palette($warn, lighter);
     }
 
     .mat-progress-bar-buffer {
-      background-color: mat-color($warn, lighter);
+      background-color: mat.get-color-from-palette($warn, lighter);
     }
 
     .mat-progress-bar-fill::after {
-      background-color: mat-color($warn);
+      background-color: mat.get-color-from-palette($warn);
     }
   }
 }
@@ -3375,15 +3377,15 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-progress-spinner,
   .mat-spinner {
     circle {
-      stroke: mat-color($primary);
+      stroke: mat.get-color-from-palette($primary);
     }
 
     &.mat-accent circle {
-      stroke: mat-color($accent);
+      stroke: mat.get-color-from-palette($accent);
     }
 
     &.mat-warn circle {
-      stroke: mat-color($warn);
+      stroke: mat.get-color-from-palette($warn);
     }
   }
 }
@@ -3393,14 +3395,14 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 @mixin _mat-radio-color($palette) {
   &.mat-radio-checked .mat-radio-outer-circle {
-    border-color: mat-color($palette);
+    border-color: mat.get-color-from-palette($palette);
   }
 
   .mat-radio-inner-circle,
   .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
   &.mat-radio-checked .mat-radio-persistent-ripple,
   &:active .mat-radio-persistent-ripple {
-    background-color: mat-color($palette);
+    background-color: mat.get-color-from-palette($palette);
   }
 }
 
@@ -3412,7 +3414,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $foreground: map-get($theme, foreground);
 
   .mat-radio-outer-circle {
-    border-color: mat-color($foreground, secondary-text);
+    border-color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-radio-button {
@@ -3434,16 +3436,16 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     &.mat-radio-disabled {
       &.mat-radio-checked .mat-radio-outer-circle,
       .mat-radio-outer-circle {
-        border-color: mat-color($foreground, disabled);
+        border-color: mat.get-color-from-palette($foreground, disabled);
       }
 
       .mat-radio-ripple .mat-ripple-element,
       .mat-radio-inner-circle {
-        background-color: mat-color($foreground, disabled);
+        background-color: mat.get-color-from-palette($foreground, disabled);
       }
 
       .mat-radio-label-content {
-        color: mat-color($foreground, disabled);
+        color: mat.get-color-from-palette($foreground, disabled);
       }
     }
 
@@ -3457,7 +3459,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 @mixin mat-radio-typography($config) {
   .mat-radio-button {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 }
 
@@ -3469,7 +3471,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $warn: map-get($theme, warn);
 
   .mat-select-value {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-select-placeholder {
@@ -3477,54 +3479,54 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   .mat-select-disabled .mat-select-value {
-    color: mat-color($foreground, disabled-text);
+    color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
   .mat-select-arrow {
-    color: mat-color($foreground, secondary-text);
+    color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-select-panel {
-    background: mat-color($background, card);
+    background: mat.get-color-from-palette($background, card);
 
     @include _mat-theme-overridable-elevation(4, $theme);
 
     .mat-option.mat-selected:not(.mat-option-multiple) {
-      background: mat-color($background, hover, 0.12);
+      background: mat.get-color-from-palette($background, hover, 0.12);
     }
   }
 
   .mat-form-field {
     &.mat-focused {
       &.mat-primary .mat-select-arrow {
-        color: mat-color($primary);
+        color: mat.get-color-from-palette($primary);
       }
 
       &.mat-accent .mat-select-arrow {
-        color: mat-color($accent);
+        color: mat.get-color-from-palette($accent);
       }
 
       &.mat-warn .mat-select-arrow {
-        color: mat-color($warn);
+        color: mat.get-color-from-palette($warn);
       }
     }
 
     .mat-select.mat-select-invalid .mat-select-arrow {
-      color: mat-color($warn);
+      color: mat.get-color-from-palette($warn);
     }
 
     .mat-select.mat-select-disabled .mat-select-arrow {
-      color: mat-color($foreground, disabled-text);
+      color: mat.get-color-from-palette($foreground, disabled-text);
     }
   }
 }
 
 @mixin mat-select-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   .mat-select {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-select-trigger {
@@ -3539,19 +3541,19 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  $drawer-background-color: mat-color($background, dialog);
-  $drawer-container-background-color: mat-color($background, background);
-  $drawer-push-background-color: mat-color($background, dialog);
-  $drawer-side-border: solid 1px mat-color($foreground, divider);
+  $drawer-background-color: mat.get-color-from-palette($background, dialog);
+  $drawer-container-background-color: mat.get-color-from-palette($background, background);
+  $drawer-push-background-color: mat.get-color-from-palette($background, dialog);
+  $drawer-side-border: solid 1px mat.get-color-from-palette($foreground, divider);
 
   .mat-drawer-container {
     background-color: $drawer-container-background-color;
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-drawer {
     background-color: $drawer-background-color;
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
 
     &.mat-drawer-push {
       background-color: $drawer-push-background-color;
@@ -3585,7 +3587,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   .mat-drawer-backdrop.mat-drawer-shown {
     $opacity: 0.6;
-    $backdrop-color: mat-color($background, card, $opacity);
+    $backdrop-color: mat.get-color-from-palette($background, card, $opacity);
 
     @if type-of($backdrop-color) == color {
       // We use invert() here to have the darken the background color expected to be used. If the
@@ -3607,19 +3609,19 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 @mixin _mat-slide-toggle-checked($palette, $thumb-checked-hue) {
   &.mat-checked {
     .mat-slide-toggle-thumb {
-      background-color: mat-color($palette, $thumb-checked-hue);
+      background-color: mat.get-color-from-palette($palette, $thumb-checked-hue);
     }
 
     .mat-slide-toggle-bar {
       // Opacity is determined from the specs for the selection controls.
       // See: https://material.io/design/components/selection-controls.html#specs
-      background-color: mat-color($palette, $thumb-checked-hue, 0.54);
+      background-color: mat.get-color-from-palette($palette, $thumb-checked-hue, 0.54);
     }
 
     .mat-ripple-element {
       // Set no opacity for the ripples because the ripple opacity will be adjusted dynamically
       // based on the type of interaction with the slide-toggle (e.g. for hover, focus)
-      background-color: mat-color($palette, $thumb-checked-hue);
+      background-color: mat.get-color-from-palette($palette, $thumb-checked-hue);
     }
   }
 }
@@ -3641,8 +3643,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $thumb-unchecked-hue: if($is-dark, 400, 50);
   $thumb-checked-hue: default;
 
-  $bar-unchecked-color: mat-color($foreground, disabled);
-  $ripple-unchecked-color: mat-color($foreground, base);
+  $bar-unchecked-color: mat.get-color-from-palette($foreground, disabled);
+  $ripple-unchecked-color: mat.get-color-from-palette($foreground, base);
 
   .mat-slide-toggle {
     @include _mat-slide-toggle-checked($accent, $thumb-checked-hue);
@@ -3665,7 +3667,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-slide-toggle-thumb {
     @include _mat-theme-elevation(1, $theme);
 
-    background-color: mat-color($mat-grey, $thumb-unchecked-hue);
+    background-color: mat.get-color-from-palette(mat.$grey-palette, $thumb-unchecked-hue);
   }
 
   .mat-slide-toggle-bar {
@@ -3675,7 +3677,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 @mixin mat-slide-toggle-typography($config) {
   .mat-slide-toggle-content {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 }
 
@@ -3683,11 +3685,11 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-slider-track-fill,
   .mat-slider-thumb,
   .mat-slider-thumb-label {
-    background-color: mat-color($palette);
+    background-color: mat.get-color-from-palette($palette);
   }
 
   .mat-slider-thumb-label-text {
-    color: mat-color($palette, default-contrast);
+    color: mat.get-color-from-palette($palette, default-contrast);
   }
 }
 
@@ -3698,17 +3700,17 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  $mat-slider-off-color: mat-color($foreground, slider-off);
-  $mat-slider-off-focused-color: mat-color($foreground, slider-off-active);
-  $mat-slider-disabled-color: mat-color($foreground, slider-off);
-  $mat-slider-labeled-min-value-thumb-color: mat-color($foreground, slider-min);
-  $mat-slider-labeled-min-value-thumb-label-color: mat-color(
+  $mat-slider-off-color: mat.get-color-from-palette($foreground, slider-off);
+  $mat-slider-off-focused-color: mat.get-color-from-palette($foreground, slider-off-active);
+  $mat-slider-disabled-color: mat.get-color-from-palette($foreground, slider-off);
+  $mat-slider-labeled-min-value-thumb-color: mat.get-color-from-palette($foreground, slider-min);
+  $mat-slider-labeled-min-value-thumb-label-color: mat.get-color-from-palette(
     $foreground,
     slider-off
   );
-  $mat-slider-focus-ring-color: mat-color($accent, default, 0.2);
-  $mat-slider-focus-ring-min-value-color: mat-color($foreground, base, 0.12);
-  $mat-slider-tick-color: mat-color($foreground, base, 0.7);
+  $mat-slider-focus-ring-color: mat.get-color-from-palette($accent, default, 0.2);
+  $mat-slider-focus-ring-min-value-color: mat.get-color-from-palette($foreground, base, 0.12);
+  $mat-slider-tick-color: mat.get-color-from-palette($foreground, base, 0.7);
   $mat-slider-tick-size: 2px;
 
   .mat-slider-track-background {
@@ -3828,9 +3830,9 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 @mixin mat-slider-typography($config) {
   .mat-slider-thumb-label-text {
     font: {
-      family: mat-font-family($config);
-      size: mat-font-size($config, caption);
-      weight: mat-font-weight($config, body-2);
+      family: mat.font-family($config);
+      size: mat.font-size($config, caption);
+      weight: mat.font-weight($config, body-2);
     }
   }
 }
@@ -3845,7 +3847,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     &.cdk-keyboard-focused,
     &.cdk-program-focused,
     &:hover {
-      background-color: mat-color($background, hover);
+      background-color: mat.get-color-from-palette($background, hover);
     }
 
     // On touch devices the :hover state will linger on the element after a tap.
@@ -3861,63 +3863,63 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     .mat-step-optional {
       // TODO(josephperrott): Update to using a corrected disabled-text contrast
       // instead of secondary-text.
-      color: mat-color($foreground, secondary-text);
+      color: mat.get-color-from-palette($foreground, secondary-text);
     }
 
     .mat-step-icon {
       // TODO(josephperrott): Update to using a corrected disabled-text contrast
       // instead of secondary-text.
-      background-color: mat-color($foreground, secondary-text);
-      color: mat-color($primary, default-contrast);
+      background-color: mat.get-color-from-palette($foreground, secondary-text);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
 
     .mat-step-icon-selected,
     .mat-step-icon-state-done,
     .mat-step-icon-state-edit {
-      background-color: mat-color($primary);
-      color: mat-color($primary, default-contrast);
+      background-color: mat.get-color-from-palette($primary);
+      color: mat.get-color-from-palette($primary, default-contrast);
     }
 
     .mat-step-icon-state-error {
       background-color: transparent;
-      color: mat-color($warn);
+      color: mat.get-color-from-palette($warn);
     }
 
     .mat-step-label.mat-step-label-active {
-      color: mat-color($foreground, text);
+      color: mat.get-color-from-palette($foreground, text);
     }
 
     .mat-step-label.mat-step-label-error {
-      color: mat-color($warn);
+      color: mat.get-color-from-palette($warn);
     }
   }
 
   .mat-stepper-horizontal,
   .mat-stepper-vertical {
-    background-color: mat-color($background, card);
+    background-color: mat.get-color-from-palette($background, card);
   }
 
   .mat-stepper-vertical-line::before {
-    border-left-color: mat-color($foreground, divider);
+    border-left-color: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-horizontal-stepper-header::before,
   .mat-horizontal-stepper-header::after,
   .mat-stepper-horizontal-line {
-    border-top-color: mat-color($foreground, divider);
+    border-top-color: mat.get-color-from-palette($foreground, divider);
   }
 }
 
 @mixin mat-stepper-typography($config) {
   .mat-stepper-vertical,
   .mat-stepper-horizontal {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-step-label {
     font: {
-      size: mat-font-size($config, body-1);
-      weight: mat-font-weight($config, body-1);
+      size: mat.font-size($config, body-1);
+      weight: mat.font-weight($config, body-1);
     }
   }
 
@@ -3926,13 +3928,13 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   .mat-step-label-error {
-    font-size: mat-font-size($config, body-2);
+    font-size: mat.font-size($config, body-2);
   }
 
   .mat-step-label-selected {
     font: {
-      size: mat-font-size($config, body-2);
-      weight: mat-font-weight($config, body-2);
+      size: mat.font-size($config, body-2);
+      weight: mat.font-weight($config, body-2);
     }
   }
 }
@@ -3942,8 +3944,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $foreground: map-get($theme, foreground);
 
   .mat-sort-header-arrow {
-    $table-background: mat-color($background, 'card');
-    $text-color: mat-color($foreground, secondary-text);
+    $table-background: mat.get-color-from-palette($background, 'card');
+    $text-color: mat.get-color-from-palette($foreground, secondary-text);
 
     // Because the arrow is made up of multiple elements that are stacked on top of each other,
     // we can't use the semi-trasparent color from the theme directly. If the value is a color
@@ -3974,7 +3976,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
-  $header-border: 1px solid mat-color($foreground, divider);
+  $header-border: 1px solid mat.get-color-from-palette($foreground, divider);
 
   .mat-tab-nav-bar,
   .mat-tab-header {
@@ -3991,19 +3993,19 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
   .mat-tab-label,
   .mat-tab-link {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
 
     &.mat-tab-disabled {
-      color: mat-color($foreground, disabled-text);
+      color: mat.get-color-from-palette($foreground, disabled-text);
     }
   }
 
   .mat-tab-header-pagination-chevron {
-    border-color: mat-color($foreground, text);
+    border-color: mat.get-color-from-palette($foreground, text);
   }
 
   .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-    border-color: mat-color($foreground, disabled-text);
+    border-color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
   // Remove header border when there is a background color
@@ -4046,7 +4048,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 @mixin _mat-ink-bar($color, $hue: default) {
   .mat-ink-bar {
-    background-color: mat-color($color, $hue);
+    background-color: mat.get-color-from-palette($color, $hue);
   }
 }
 
@@ -4056,7 +4058,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     &.cdk-keyboard-focused,
     &.cdk-program-focused {
       &:not(.mat-tab-disabled) {
-        background-color: mat-color($tab-focus-color, lighter, 0.3);
+        background-color: mat.get-color-from-palette($tab-focus-color, lighter, 0.3);
       }
     }
   }
@@ -4066,53 +4068,53 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   // Set background color for the tab group
   .mat-tab-header,
   .mat-tab-links {
-    background-color: mat-color($background-color);
+    background-color: mat.get-color-from-palette($background-color);
   }
 
   // Set labels to contrast against background
   .mat-tab-label,
   .mat-tab-link {
-    color: mat-color($background-color, default-contrast);
+    color: mat.get-color-from-palette($background-color, default-contrast);
 
     &.mat-tab-disabled {
-      color: mat-color($background-color, default-contrast, 0.4);
+      color: mat.get-color-from-palette($background-color, default-contrast, 0.4);
     }
   }
 
   // Set pagination chevrons to contrast background
   .mat-tab-header-pagination-chevron {
-    border-color: mat-color($background-color, default-contrast);
+    border-color: mat.get-color-from-palette($background-color, default-contrast);
   }
 
   .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-    border-color: mat-color($background-color, default-contrast, 0.4);
+    border-color: mat.get-color-from-palette($background-color, default-contrast, 0.4);
   }
 
   // Set ripples color to be the contrast color of the new background. Otherwise the ripple
   // color will be based on the app background color.
   .mat-ripple-element {
-    background-color: mat-color($background-color, default-contrast, 0.12);
+    background-color: mat.get-color-from-palette($background-color, default-contrast, 0.12);
   }
 }
 
 @mixin mat-tabs-typography($config) {
   .mat-tab-group {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-tab-label,
   .mat-tab-link {
     font: {
-      family: mat-font-family($config, button);
-      size: mat-font-size($config, button);
-      weight: mat-font-weight($config, button);
+      family: mat.font-family($config, button);
+      size: mat.font-size($config, button);
+      weight: mat.font-weight($config, button);
     }
   }
 }
 
 @mixin _mat-toolbar-color($palette) {
-  background: mat-color($palette);
-  color: mat-color($palette, default-contrast);
+  background: mat.get-color-from-palette($palette);
+  color: mat.get-color-from-palette($palette, default-contrast);
 }
 
 @mixin _mat-toolbar-form-field-overrides {
@@ -4143,8 +4145,8 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $foreground: map-get($theme, foreground);
 
   .mat-toolbar {
-    background: mat-color($background, app-bar);
-    color: mat-color($foreground, text);
+    background: mat.get-color-from-palette($background, app-bar);
+    color: mat.get-color-from-palette($foreground, text);
 
     &.mat-primary {
       @include _mat-toolbar-color($primary);
@@ -4170,7 +4172,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   .mat-toolbar h4,
   .mat-toolbar h5,
   .mat-toolbar h6 {
-    @include mat-typography-level-to-styles($config, title);
+    @include mat.typography-level($config, title);
 
     margin: 0;
   }
@@ -4179,33 +4181,33 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 $mat-tooltip-target-height: 22px;
 $mat-tooltip-font-size: 10px;
 $mat-tooltip-vertical-padding: (
-    $mat-tooltip-target-height - $mat-tooltip-font-size
+    22px - 10px
   ) / 2;
 
 $mat-tooltip-handset-target-height: 30px;
 $mat-tooltip-handset-font-size: 14px;
 $mat-tooltip-handset-vertical-padding: (
-    $mat-tooltip-handset-target-height - $mat-tooltip-handset-font-size
+    30px - 14px
   ) / 2;
 
 @mixin mat-tooltip-theme($theme) {
   .mat-tooltip {
-    background: mat-color($mat-grey, 700, 0.9);
+    background: mat.get-color-from-palette(mat.$grey-palette, 700, 0.9);
   }
 }
 
 @mixin mat-tooltip-typography($config) {
   .mat-tooltip {
-    font-family: mat-font-family($config);
-    font-size: $mat-tooltip-font-size;
-    padding-top: $mat-tooltip-vertical-padding;
-    padding-bottom: $mat-tooltip-vertical-padding;
+    font-family: mat.font-family($config);
+    font-size: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   .mat-tooltip-handset {
-    font-size: $mat-tooltip-handset-font-size;
-    padding-top: $mat-tooltip-handset-vertical-padding;
-    padding-bottom: $mat-tooltip-handset-vertical-padding;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 }
 
@@ -4217,21 +4219,21 @@ $mat-tooltip-handset-vertical-padding: (
     // Use the primary text on the dark theme, even though the lighter one uses
     // a secondary, because the contrast on the light primary text is poor.
     color: if($is-dark-theme, $dark-primary-text, $light-secondary-text);
-    background: if($is-dark-theme, map-get($mat-grey, 50), #323232);
+    background: if($is-dark-theme, map-get(mat.$grey-palette, 50), #323232);
 
     @include _mat-theme-elevation(6, $theme);
   }
 
   .mat-simple-snackbar-action {
-    color: if($is-dark-theme, inherit, mat-color($accent));
+    color: if($is-dark-theme, inherit, mat.get-color-from-palette($accent));
   }
 }
 
 @mixin mat-snack-bar-typography($config) {
   .mat-simple-snackbar {
     font: {
-      family: mat-font-family($config, body-1);
-      size: mat-font-size($config, body-1);
+      family: mat.font-family($config, body-1);
+      size: mat.font-size($config, body-1);
     }
   }
 
@@ -4240,7 +4242,7 @@ $mat-tooltip-handset-vertical-padding: (
     font: {
       family: inherit;
       size: inherit;
-      weight: mat-font-weight($config, button);
+      weight: mat.font-weight($config, button);
     }
   }
 }
@@ -4251,18 +4253,18 @@ $mat-tooltip-handset-vertical-padding: (
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  $fill-background: mat-color($foreground, base, if($is-dark-theme, 0.1, 0.04));
-  $fill-disabled-background: mat-color(
+  $fill-background: mat.get-color-from-palette($foreground, base, if($is-dark-theme, 0.1, 0.04));
+  $fill-disabled-background: mat.get-color-from-palette(
     $foreground,
     base,
     if($is-dark-theme, 0.05, 0.02)
   );
-  $underline-color: mat-color(
+  $underline-color: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 0.5, 0.42)
   );
-  $label-disabled-color: mat-color($foreground, disabled-text);
+  $label-disabled-color: mat.get-color-from-palette($foreground, disabled-text);
 
   .mat-form-field-appearance-fill {
     .mat-form-field-flex {
@@ -4312,7 +4314,7 @@ $mat-form-field-fill-dedupe: 0;
 
 @mixin mat-form-field-fill-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   // The amount to scale the font for the floating label and subscript.
   $subscript-font-scale: 0.75;
@@ -4372,8 +4374,8 @@ $mat-form-field-fill-dedupe: 0;
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  $label-color: mat-color($foreground, secondary-text);
-  $underline-color: mat-color(
+  $label-color: mat.get-color-from-palette($foreground, secondary-text);
+  $underline-color: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 0.7, 0.42)
@@ -4448,7 +4450,7 @@ $mat-form-field-legacy-dedupe: 0;
 
 @mixin mat-form-field-legacy-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   // The amount to scale the font for the floating label and subscript.
   $subscript-font-scale: 0.75;
@@ -4593,21 +4595,21 @@ $mat-form-field-legacy-dedupe: 0;
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  $label-disabled-color: mat-color($foreground, disabled-text);
-  $outline-color: mat-color(
+  $label-disabled-color: mat.get-color-from-palette($foreground, disabled-text);
+  $outline-color: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 0.3, 0.12)
   );
-  $outline-color-hover: mat-color(
+  $outline-color-hover: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 1, 0.87)
   );
-  $outline-color-primary: mat-color($primary);
-  $outline-color-accent: mat-color($accent);
-  $outline-color-warn: mat-color($warn);
-  $outline-color-disabled: mat-color(
+  $outline-color-primary: mat.get-color-from-palette($primary);
+  $outline-color-accent: mat.get-color-from-palette($accent);
+  $outline-color-warn: mat.get-color-from-palette($warn);
+  $outline-color-disabled: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 0.15, 0.06)
@@ -4678,7 +4680,7 @@ $mat-form-field-outline-dedupe: 0;
 
 @mixin mat-form-field-outline-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   // The amount to scale the font for the floating label and subscript.
   $subscript-font-scale: 0.75;
@@ -4747,7 +4749,7 @@ $mat-form-field-outline-dedupe: 0;
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  $underline-color: mat-color(
+  $underline-color: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 0.7, 0.42)
@@ -4777,23 +4779,23 @@ $mat-form-field-outline-dedupe: 0;
   $is-dark-theme: map-get($theme, is-dark);
 
   // Label colors. Required is used for the `*` star shown in the label.
-  $label-color: mat-color(
+  $label-color: mat.get-color-from-palette(
     $foreground,
     secondary-text,
     if($is-dark-theme, 0.7, 0.6)
   );
-  $focused-label-color: mat-color($primary);
-  $required-label-color: mat-color($accent);
+  $focused-label-color: mat.get-color-from-palette($primary);
+  $required-label-color: mat.get-color-from-palette($accent);
 
   // Underline colors.
-  $underline-color-base: mat-color(
+  $underline-color-base: mat.get-color-from-palette(
     $foreground,
     divider,
     if($is-dark-theme, 1, 0.87)
   );
-  $underline-color-accent: mat-color($accent);
-  $underline-color-warn: mat-color($warn);
-  $underline-focused-color: mat-color($primary);
+  $underline-color-accent: mat.get-color-from-palette($accent);
+  $underline-color-warn: mat.get-color-from-palette($warn);
+  $underline-focused-color: mat.get-color-from-palette($primary);
 
   .mat-form-field-label {
     color: $label-color;
@@ -4903,7 +4905,7 @@ $mat-form-field-dedupe: 0;
 
 @mixin mat-form-field-typography($config) {
   // The unit-less line-height from the font config.
-  $line-height: mat-line-height($config, input);
+  $line-height: mat.line-height($config, input);
 
   // The amount to scale the font for the floating label and subscript.
   $subscript-font-scale: 0.75;
@@ -4936,7 +4938,7 @@ $mat-form-field-dedupe: 0;
     $subscript-font-scale;
 
   .mat-form-field {
-    @include mat-typography-level-to-styles($config, input);
+    @include mat.typography-level($config, input);
   }
 
   .mat-form-field-wrapper {
@@ -5030,86 +5032,86 @@ $mat-form-field-dedupe: 0;
   $foreground: map-get($theme, foreground);
 
   .mat-tree {
-    background: mat-color($background, 'card');
+    background: mat.get-color-from-palette($background, 'card');
   }
 
   .mat-tree-node,
   .mat-nested-tree-node {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 }
 
 @mixin mat-tree-typography($config) {
   .mat-tree {
-    font-family: mat-font-family($config);
+    font-family: mat.font-family($config);
   }
 
   .mat-tree-node,
   .mat-nested-tree-node {
-    font-weight: mat-font-weight($config, body-1);
-    font-size: mat-font-size($config, body-1);
+    font-weight: mat.font-weight($config, body-1);
+    font-size: mat.font-size($config, body-1);
   }
 }
 
 // Includes all of the typographic styles.
 @mixin angular-material-typography($config: null) {
   @if $config == null {
-    $config: mat-typography-config();
+    $config: mat.define-typography-config();
   }
 
-  @include mat-badge-typography($config);
-  @include mat-base-typography($config);
-  @include mat-autocomplete-typography($config);
-  @include mat-bottom-sheet-typography($config);
-  @include mat-button-typography($config);
-  @include mat-button-toggle-typography($config);
-  @include mat-card-typography($config);
-  @include mat-checkbox-typography($config);
-  @include mat-chips-typography($config);
-  @include mat-table-typography($config);
-  @include mat-datepicker-typography($config);
-  @include mat-dialog-typography($config);
-  @include mat-expansion-panel-typography($config);
-  @include mat-form-field-typography($config);
-  @include mat-grid-list-typography($config);
-  @include mat-icon-typography($config);
-  @include mat-input-typography($config);
-  @include mat-menu-typography($config);
-  @include mat-paginator-typography($config);
-  @include mat-progress-bar-typography($config);
-  @include mat-progress-spinner-typography($config);
-  @include mat-radio-typography($config);
-  @include mat-select-typography($config);
-  @include mat-sidenav-typography($config);
-  @include mat-slide-toggle-typography($config);
-  @include mat-slider-typography($config);
-  @include mat-stepper-typography($config);
-  @include mat-sort-typography($config);
-  @include mat-tabs-typography($config);
-  @include mat-toolbar-typography($config);
-  @include mat-tooltip-typography($config);
-  @include mat-list-typography($config);
-  @include mat-option-typography($config);
-  @include mat-optgroup-typography($config);
-  @include mat-snack-bar-typography($config);
-  @include mat-tree-typography($config);
+  @include mat.badge-typography($config);
+  @include mat.typography-hierarchy($config);
+  @include mat.autocomplete-typography($config);
+  @include mat.bottom-sheet-typography($config);
+  @include mat.button-typography($config);
+  @include mat.button-toggle-typography($config);
+  @include mat.card-typography($config);
+  @include mat.checkbox-typography($config);
+  @include mat.chips-typography($config);
+  @include mat.table-typography($config);
+  @include mat.datepicker-typography($config);
+  @include mat.dialog-typography($config);
+  @include mat.expansion-typography($config);
+  @include mat.form-field-typography($config);
+  @include mat.grid-list-typography($config);
+  @include mat.icon-typography($config);
+  @include mat.input-typography($config);
+  @include mat.menu-typography($config);
+  @include mat.paginator-typography($config);
+  @include mat.progress-bar-typography($config);
+  @include mat.progress-spinner-typography($config);
+  @include mat.radio-typography($config);
+  @include mat.select-typography($config);
+  @include mat.sidenav-typography($config);
+  @include mat.slide-toggle-typography($config);
+  @include mat.slider-typography($config);
+  @include mat.stepper-typography($config);
+  @include mat.sort-typography($config);
+  @include mat.tabs-typography($config);
+  @include mat.toolbar-typography($config);
+  @include mat.tooltip-typography($config);
+  @include mat.list-typography($config);
+  @include mat.option-typography($config);
+  @include mat.optgroup-typography($config);
+  @include mat.snack-bar-typography($config);
+  @include mat.tree-typography($config);
 }
 
 // Mixin that renders all of the core styles that are not theme-dependent.
 @mixin mat-core($typography-config: null) {
-  @include angular-material-typography($typography-config);
-  @include mat-ripple;
-  @include cdk-a11y;
-  @include cdk-overlay;
-  @include cdk-text-field;
+  @include mat.all-component-typographies($typography-config);
+  @include mat.ripple;
+  @include cdk.a11y-visually-hidden;
+  @include cdk.overlay;
+  @include cdk.text-field;
 }
 
 // Mixin that renders all of the core styles that depend on the theme.
 @mixin mat-core-theme($theme) {
-  @include mat-ripple-theme($theme);
-  @include mat-option-theme($theme);
-  @include mat-optgroup-theme($theme);
-  @include mat-pseudo-checkbox-theme($theme);
+  @include mat.ripple-theme($theme);
+  @include mat.option-theme($theme);
+  @include mat.optgroup-theme($theme);
+  @include mat.pseudo-checkbox-theme($theme);
 
   // Provides external CSS classes for each elevation value. Each CSS class is formatted as
   // `mat-elevation-z$zValue` where `$zValue` corresponds to the z-space to which the element is
@@ -5127,8 +5129,8 @@ $mat-form-field-dedupe: 0;
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    background-color: mat-color($background, background);
-    color: mat-color($foreground, text);
+    background-color: mat.get-color-from-palette($background, background);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   // Marker that is used to determine whether the user has added a theme to their page.
@@ -5141,51 +5143,51 @@ $mat-form-field-dedupe: 0;
   $foreground: map-get($theme, foreground);
 
   .mat-divider {
-    border-top-color: mat-color($foreground, divider);
+    border-top-color: mat.get-color-from-palette($foreground, divider);
   }
 
   .mat-divider-vertical {
-    border-right-color: mat-color($foreground, divider);
+    border-right-color: mat.get-color-from-palette($foreground, divider);
   }
 }
 
 // Create a theme.
 @mixin angular-material-theme($theme) {
-  @include mat-core-theme($theme);
-  @include mat-autocomplete-theme($theme);
-  @include mat-badge-theme($theme);
-  @include mat-bottom-sheet-theme($theme);
-  @include mat-button-theme($theme);
-  @include mat-button-toggle-theme($theme);
-  @include mat-card-theme($theme);
-  @include mat-checkbox-theme($theme);
-  @include mat-chips-theme($theme);
-  @include mat-table-theme($theme);
-  @include mat-datepicker-theme($theme);
-  @include mat-dialog-theme($theme);
-  @include mat-divider-theme($theme);
-  @include mat-expansion-panel-theme($theme);
-  @include mat-form-field-theme($theme);
-  @include mat-grid-list-theme($theme);
-  @include mat-icon-theme($theme);
-  @include mat-input-theme($theme);
-  @include mat-list-theme($theme);
-  @include mat-menu-theme($theme);
-  @include mat-paginator-theme($theme);
-  @include mat-progress-bar-theme($theme);
-  @include mat-progress-spinner-theme($theme);
-  @include mat-radio-theme($theme);
-  @include mat-select-theme($theme);
-  @include mat-sidenav-theme($theme);
-  @include mat-slide-toggle-theme($theme);
-  @include mat-slider-theme($theme);
-  @include mat-stepper-theme($theme);
-  @include mat-sort-theme($theme);
-  @include mat-tabs-theme($theme);
-  @include mat-toolbar-theme($theme);
-  @include mat-tooltip-theme($theme);
-  @include mat-tree-theme($theme);
-  @include mat-snack-bar-theme($theme);
+  @include mat.core-theme($theme);
+  @include mat.autocomplete-theme($theme);
+  @include mat.badge-theme($theme);
+  @include mat.bottom-sheet-theme($theme);
+  @include mat.button-theme($theme);
+  @include mat.button-toggle-theme($theme);
+  @include mat.card-theme($theme);
+  @include mat.checkbox-theme($theme);
+  @include mat.chips-theme($theme);
+  @include mat.table-theme($theme);
+  @include mat.datepicker-theme($theme);
+  @include mat.dialog-theme($theme);
+  @include mat.divider-theme($theme);
+  @include mat.expansion-theme($theme);
+  @include mat.form-field-theme($theme);
+  @include mat.grid-list-theme($theme);
+  @include mat.icon-theme($theme);
+  @include mat.input-theme($theme);
+  @include mat.list-theme($theme);
+  @include mat.menu-theme($theme);
+  @include mat.paginator-theme($theme);
+  @include mat.progress-bar-theme($theme);
+  @include mat.progress-spinner-theme($theme);
+  @include mat.radio-theme($theme);
+  @include mat.select-theme($theme);
+  @include mat.sidenav-theme($theme);
+  @include mat.slide-toggle-theme($theme);
+  @include mat.slider-theme($theme);
+  @include mat.stepper-theme($theme);
+  @include mat.sort-theme($theme);
+  @include mat.tabs-theme($theme);
+  @include mat.toolbar-theme($theme);
+  @include mat.tooltip-theme($theme);
+  @include mat.tree-theme($theme);
+  @include mat.snack-bar-theme($theme);
 }
 
 // Plus imports for other components in your app.
@@ -5193,7 +5195,7 @@ $mat-form-field-dedupe: 0;
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core;
+@include mat.core;
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -5271,14 +5273,14 @@ $my-accent: (
 // $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent);
 
 //the first two are the custom palettes we declared above
-$my-theme-primary: mat-palette($my-primary);
-$my-theme-accent: mat-palette($my-accent);
+$my-theme-primary: mat.define-palette($my-primary);
+$my-theme-accent: mat.define-palette($my-accent);
 
 //the third, for the warn color, is the predefined material red palette
-$my-theme-warn: mat-palette($mat-red);
-$my-theme: mat-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+$my-theme-warn: mat.define-palette(mat.$red-palette);
+$my-theme: mat.define-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
 
-@include angular-material-theme($my-theme);
+@include mat.all-component-themes($my-theme);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

@@ -71,7 +71,7 @@
     "ngx-toastr": "^13.2.1",
     "pdfmake": "^0.1.65",
     "rgb-hex": "^3.0.0",
-    "rxjs": "~6.5.2",
+    "rxjs": "~6.5.5",
     "tinycolor2": "^1.4.2",
     "vanilla-text-mask": "^5.1.1",
     "xlsx": "^0.15.6",

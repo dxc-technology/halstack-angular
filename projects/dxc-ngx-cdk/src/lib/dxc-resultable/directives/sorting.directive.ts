@@ -34,11 +34,11 @@ export class Ordering {
       if (this.state === "default" || this.state === "down") {
         this.state = "up";
         this.parent.getMapStateHeaders().set(columnName, "up");
-        this.parent.changeAscIcon(this);
+        this.parent.changeAscIcon(this.elementRef);
       } else if (this.state === "up") {
         this.state = "down";
         this.parent.getMapStateHeaders().set(columnName, "down");
-        this.parent.changeDescIcon(this);
+        this.parent.changeDescIcon(this.elementRef);
       }
       let divHeader = document.getElementById(idHeader);
       divHeader.setAttribute("state", this.state);
@@ -50,13 +50,16 @@ export class Ordering {
 
   constructor(
     public elementRef: ElementRef,
-    public viewContainerRef: ViewContainerRef,
-    @Optional() parent: DxcResultTable<any>
+    public viewContainerRef: ViewContainerRef
   ) {
-    if (parent) {
-      this.parent = parent;
+    const _injector = this.viewContainerRef.parentInjector;
+    const _parent: DxcResultTable<any> =
+      _injector.get<DxcResultTable<any>>(DxcResultTable);
+
+    if (_parent) {
+      this.parent = _parent;
       //Register directive in the parent
-      parent.registerOrderingRef(this);
+      (this.parent as DxcResultTable<any>).registerOrderingRef(this.elementRef);
     }
   }
 }

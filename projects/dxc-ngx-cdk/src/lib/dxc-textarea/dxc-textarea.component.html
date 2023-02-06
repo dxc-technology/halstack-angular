@@ -22,12 +22,13 @@
     [attr.aria-required]="ariaRequired"
     [attr.aria-disabled]="disabled"
     [tabIndex]="disabled ? -1 : tabIndexValue"
-    [matAutosizeMaxRows]="autosizeMaxRows" 
     [attr.maxlength]="maxLength"
-    [matAutosizeMinRows]="autosizeMinRows" 
-    [matTextareaAutosize]="textareaAutosize"
     matTextareaAutosize
   >
   </textarea>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
 </mat-form-field>
+
+    <!-- [matAutosizeMaxRows]="autosizeMaxRows" 
+    [matAutosizeMinRows]="autosizeMinRows" 
+    [matTextareaAutosize]="textareaAutosize" -->

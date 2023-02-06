@@ -2,16 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
-    "module": "es2015",
+    "declarationMap": false,
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
     "inlineSources": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "target": "es2015",
+    "module": "es2020",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -21,12 +21,13 @@
     ]
   },
   "angularCompilerOptions": {
+    "compilationMode": "partial",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
+
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "enableResourceInlining": true,    
-    "enableIvy": false,
+    "enableResourceInlining": true,
     "preserveSymlinks": true
 },
   "exclude": [

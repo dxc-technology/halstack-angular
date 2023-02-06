@@ -1,4 +1,5 @@
 @use '@angular/cdk' as cdk;
+@use "sass:math";
 @import "./style/menu-common";
 @import "./style/list-common";
 @import "./style/variables";
@@ -153,7 +154,7 @@ $mat-select-placeholder-arrow-space: 2 *
 .mat-select-placeholder {
   // Delay the transition until the label has animated about a third of the way through, in
   // order to prevent the placeholder from overlapping for a split second.
-  transition: color $swift-ease-out-duration $swift-ease-out-duration / 3
+  transition: color $swift-ease-out-duration math.div($swift-ease-out-duration, 3)
     $swift-ease-out-timing-function;
 
   ._mat-animation-noopable & {

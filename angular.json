@@ -22,6 +22,7 @@
             "index": "projects/dxc-ngx-cdk-site/src/index.html",
             "main": "projects/dxc-ngx-cdk-site/src/main.ts",
             "polyfills": "projects/dxc-ngx-cdk-site/src/polyfills.ts",
+            "inlineStyleLanguage": "scss",
             "tsConfig": "projects/dxc-ngx-cdk-site/tsconfig.app.json",
             "aot": false,
             "assets": [
@@ -76,7 +77,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "4mb",
-                  "maximumError": "5mb"
+                  "maximumError": "6mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -266,7 +267,7 @@
       "prefix": "dxc-ngx-cdk",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.json",
             "project": "projects/dxc-ngx-cdk/ng-package.json"

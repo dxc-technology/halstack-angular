@@ -1,5 +1,4 @@
-import { Injectable } from "@angular/core";
-import { Ordering } from "../directives/sorting.directive";
+import { Injectable, ElementRef } from "@angular/core";
 
 @Injectable({
   providedIn: "root",
@@ -50,26 +49,20 @@ export class SortService {
   }
 
   /** Set default icon to the header. */
-  setDefaultIconSort(el: Ordering) {
-    let columnName = el.elementRef.nativeElement.id;
-    el.elementRef.nativeElement.children[0].innerHTML = this.getDefaultIcon(
-      columnName
-    );
+  setDefaultIconSort(el: ElementRef) {
+    let columnName = el.nativeElement.id;
+    el.nativeElement.children[0].innerHTML = this.getDefaultIcon(columnName);
   }
 
   /** Set asc icon to the header. */
-  setAscIconSort(el: Ordering) {
-    let columnName = el.elementRef.nativeElement.id;
-    el.elementRef.nativeElement.children[0].innerHTML = this.getAscIcon(
-      columnName
-    );
+  setAscIconSort(el: ElementRef) {
+    let columnName = el.nativeElement.id;
+    el.nativeElement.children[0].innerHTML = this.getAscIcon(columnName);
   }
   /** Set desc icon to the header. */
-  setDescIconSort(el: Ordering) {
-    let columnName = el.elementRef.nativeElement.id;
-    el.elementRef.nativeElement.children[0].innerHTML = this.getDescIcon(
-      columnName
-    );
+  setDescIconSort(el: ElementRef) {
+    let columnName = el.nativeElement.id;
+    el.nativeElement.children[0].innerHTML = this.getDescIcon(columnName);
   }
 
   /** Return default icon for the given header. */

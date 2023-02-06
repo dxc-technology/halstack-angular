@@ -1,4 +1,4 @@
-@use '~@angular/material' as mat;
+@use '@angular/material' as mat;
 @import './elevation';
 
 @mixin mat-private-theme-elevation($zValue, $config, $opacity: 1) {

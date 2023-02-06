@@ -69,7 +69,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -126,19 +125,6 @@
 
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk-site/tsconfig.app.json",
-              "projects/dxc-ngx-cdk-site/tsconfig.spec.json",
-              "projects/dxc-ngx-cdk-site/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
@@ -216,7 +202,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -271,18 +256,6 @@
               "projects/dxc-ngx-cdk-examples/src/assets"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk-examples/tsconfig.app.json",
-              "projects/dxc-ngx-cdk-examples/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -325,18 +298,6 @@
             "main": "projects/dxc-ngx-cdk/src/test.ts",
             "tsConfig": "projects/dxc-ngx-cdk/tsconfig.spec.json",
             "karmaConfig": "projects/dxc-ngx-cdk/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/dxc-ngx-cdk/tsconfig.lib.json",
-              "projects/dxc-ngx-cdk/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }

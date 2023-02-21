@@ -1,19 +1,26 @@
-<div class="dialog">
+<div class="dialog h-100 w-100 d-flex align-items-center justify-content-center">
   <div class="backOverlay" role="overlay" (click)="onBackgroundClickHandler($event)" [class.backVisible]="overlay">
   </div>
-  <div class="container">
-    <div class="dialogContainer">
-      <div class="content" tabindex="0" role="dialog" (keydown)="startKeyPress($event)" [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledBy" 
-      [attr.aria-describedby]="ariaDescribedBy" #dialogboxstart>
-        <a href="javascript:void(0);" class="closeIcon" *ngIf="isCloseVisible" [attr.aria-label]="closeButtonLabel" [matTooltip]="closeButtonLabel"
-          (click)="onCloseHandler($event)" [tabindex]="tabIndexValue" role="button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-          </svg>
-        </a>
-        <ng-content></ng-content>
+  <div [ngClass]="'container p-0 mw-100 mph-' + height + ' mpw-'+ width">
+    <div class="dialogContainer h-100 w-100" #dialogboxstart>
+      <div #dialogHeader [style.height.px]="headerHeight" class="dialog-header d-flex align-items-center justify-content-between px-2">
+        <span>
+          <ng-content select="dxc-dialog-header"></ng-content>
+        </span>
+        <span *ngIf="isCloseVisible" >
+          <a href="javascript:void(0);" class="closeIcon" [attr.aria-label]="closeButtonLabel"
+            [matTooltip]="closeButtonLabel" (click)="onCloseHandler($event)" [tabindex]="tabIndexValue" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+              <path d="M0 0h24v24H0z" fill="none" />
+            </svg>
+          </a>
+        </span>
+      </div>
+      <div class="content" tabindex="0" role="dialog" (keydown)="startKeyPress($event)" [attr.aria-label]="ariaLabel"
+        [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy">
+        <ng-content select="dxc-dialog-body"></ng-content>
         <span #dialogboxreturn tabindex="-1" (onblur)="returnFocusOut($event)"></span>
         <span #dialogboxend tabindex="0" (focus)="endFocus($event)"></span>
       </div>

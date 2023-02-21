@@ -42,6 +42,9 @@ export * from './lib/dxc-date/dxc-date.component';
 export * from './lib/dxc-date/dxc-date.module';
 
 export * from './lib/dxc-dialog/dxc-dialog.component';
+export * from './lib/dxc-dialog/dxc-dialog-header/dxc-dialog-header.component';
+export * from './lib/dxc-dialog/dxc-dialog-body/dxc-dialog-body.component';
+export * from './lib/dxc-dialog/props/dailog-props';
 export * from './lib/dxc-dialog/dxc-dialog.module';
 
 export * from './lib/dxc-dropdown/dxc-dropdown.component';

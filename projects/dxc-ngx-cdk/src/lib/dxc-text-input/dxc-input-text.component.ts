@@ -93,7 +93,7 @@ export class DxcTextInputComponent
   @Input() public value: string;
   @Input() public placeholder: string;
   @Input() public autocompleteOptions: any;
-
+  @Input() public autocomplete: string = "off";
   @Input() public margin: any;
   @Input() public size: string;
   @Input()

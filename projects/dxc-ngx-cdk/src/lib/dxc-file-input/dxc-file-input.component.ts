@@ -22,6 +22,9 @@ import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
 import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
+import { filemetadata } from './model/filemetadata';
+import { chunkmetadata } from './model/chunkmetadata';
+import { IfileuploadRequest, EventType } from "./services/fileupload.request.services";
 
 @Component({
   selector: "dxc-file-input",
@@ -130,12 +133,20 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
+  /**
+   * request object gets the value from APP and pass to halstack library.
+   */
+  @Input('requests') requests: IfileuploadRequest = null;
   private _tabIndexValue = 0;
   hasShowError: boolean = false;
   /**
    * This event will emit when the user selects or drops a file. The file or list of files will be sent as a parameter.
    */
   @Output() callbackFile = new EventEmitter<FileData[]>();
+  /**
+   * This event has been added to indicate only PREUPLOAD, UPLOAD and POSTUPLOAD events. The event type will be sent as a parameter.
+   */
+  @Output() uploadEventType = new EventEmitter<EventType>();
 
   defaultInputs = new BehaviorSubject<FileInputProperties>({
     name: null,
@@ -163,14 +174,26 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
   hasValue: boolean = false;
-
+  global_filehit: number = 0;
+  global_chunkcount: number = 0;
+  global_actualchunkcount: number = 0;
+  filedataupload: filemetadata;
+  GUID: string;
+  fileEventType: EventType = EventType.PREUPLOAD;
+  chunkresult: boolean;
+  data: any;
+  Postresp: any;
+  //fileinfo: any;
+  
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
       if (event !== "reset" && (files.length || this.hasValue)) {
+        this.data = files;
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
         this.hasSingleFile = this.isSingleFilesPrintables();
         this.callbackFile.emit(files);
+        this.uploadEventType.emit(this.fileEventType);
       }
     });
   }
@@ -264,6 +287,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         this.service.emptyArrayFiles();
       }
       this.getPreviewsFiles(event.dataTransfer.files);
+      this.processFiles(event.dataTransfer.files);
     }
   }
 
@@ -277,8 +301,140 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         this.service.emptyArrayFiles();
       }
       this.getPreviewsFiles(event.target.files);
+      this.processFiles(event.target.files);
       event.target.value = "";
     }
+  }
+
+    /**
+   * File upload logic to send file as chunk and receive response.
+   * @param event
+   */
+    processFiles(event) {
+    // var len = event.length;
+    // if(this.global_filehit == 0 && len > 0)
+    // {
+    //   this.files = event;
+    //   this.UploadFile(this.files);
+    // }
+    //this.UploadFile(event);
+    this.files=event;
+    this.fileEventType = EventType.UPLOAD;
+    for(let i=0;i<event.length;i++)
+    {
+      this.uploadChunkDoc(event[i])
+    }
+  }
+
+  UploadFile(eventFiles) {
+  //this.global_filehit = 1;
+  // Array.from(eventFiles).map((file) => {
+  //   this.uploadChunkDoc(file);
+  // });
+  this.uploadChunkDoc(eventFiles);
+}
+uploadChunkDoc(file) {
+  let lastChunksize = 0;
+  this.filedataupload = new filemetadata();
+  this.GUID = uuidv4();
+  this.global_actualchunkcount = 0;
+  this.global_chunkcount = file.size % 1000000 == 0 ? file.size / 1000000 : Math.floor(file.size / 1000000) + 1;
+
+  this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
+ }
+
+ uploadtoAPI(filedata,file, lastChunksize, result) {
+  lastChunksize = lastChunksize + 1000000;
+  this.chunkresult = result;
+  if(result) {
+    //Add you logic what do you want after reading the file
+      // this.upload(filedata).subscribe(resp => { 
+      // //global_actualchunkcount++;
+      // console.log(" Chunk Upload complete"); });
+      this.uploads(filedata);
+      this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
+
+  }
+  else if(this.global_actualchunkcount == this.global_chunkcount)
+  {
+    setTimeout(() => {
+      this.uploadcomplete(this.filedataupload).then(resp => { 
+        this.data[0].postresponse = resp;
+        this.fileEventType = EventType.POSTUPLOAD;
+        //let data = this.getPreview(file);
+        this.data[0].eventtype = this.fileEventType;
+        this.callbackFile.emit(this.data);
+        alert("File Upload completed"); });
+    }, 3000);
+    //this.uploadcomplete(this.filedataupload);
+  }
+ }
+
+ readFile(file,lastChunksize: number, callback) {
+  let filedata = new chunkmetadata();
+  filedata.fileName = this.global_actualchunkcount + "-" + this.GUID + file.name;
+   filedata.fileSize = file.size;
+   filedata.fileType = file.type;
+   this.filedataupload.GUID = this.GUID;
+  var chunk = file.slice(lastChunksize,lastChunksize+1000000);
+  if(chunk.size !=0) {
+    let fileReader = new FileReader();
+    fileReader.onloadend= (result)=>{
+      // Store base64 encoded representation of file
+    filedata.fileAsBase64 = fileReader.result.toString();
+    this.global_actualchunkcount++;
+    this.filedataupload.fileNames.push(filedata.fileName);
+    return callback(filedata,file,lastChunksize,fileReader.result)
+    }
+    fileReader.readAsDataURL(chunk);
+  }else {
+   return callback(filedata,file,lastChunksize,false);
+  }
+ }
+ public async uploads(theFile: chunkmetadata) 
+ {
+   const response = await fetch(this.requests.uploadrequest.url, {
+     method: 'POST',
+     body: JSON.stringify(theFile),
+     headers: {
+       'Content-Type': 'application/json',
+       Accept: 'application/json',
+       clientId: '0',
+       'Authorization': 'bearer '+ sessionStorage.session
+     }
+  });
+  if (!response.ok) {
+   throw new Error(`Error! status: ${response.status}`);
+ }
+
+ // const result: CreateUserResponse
+//  const result = (await response.json());
+
+//  console.log('result is: ', JSON.stringify(result, null, 4));
+
+//  return result;
+ }
+  public async uploadcomplete(theFiles: filemetadata) {
+    const response = await fetch(this.requests.uploadcompleterequest.url, {
+      method: 'POST',
+      body: JSON.stringify(theFiles),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        clientId: '0',
+        'Authorization': 'bearer '+ sessionStorage.session
+      }
+   });
+   if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+  }
+ 
+  // const result: CreateUserResponse
+   const result = (await response.json());
+ 
+  //console.log('result is: ', JSON.stringify(result, null, 4));
+ 
+   return result;
   }
 
   /**
@@ -305,6 +461,8 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           data: file,
           image: null,
           error: this.checkFileSize(file),
+          eventtype: this.fileEventType,
+          postresponse: this.Postresp
         };
         this.service.addFile(fileToAdd);
       } else {
@@ -312,6 +470,8 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           data: file,
           image: event.target["result"],
           error: this.checkFileSize(file),
+          eventtype: this.fileEventType,
+          postresponse: this.Postresp
         };
         this.service.addFile(fileToAdd);
       }

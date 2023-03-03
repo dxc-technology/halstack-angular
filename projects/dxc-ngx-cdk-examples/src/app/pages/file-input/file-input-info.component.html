@@ -1,0 +1,7 @@
+<div>
+  <dxc-file-input name="fileControl" mode="filedrop" label="Choose File" margin="xsmall"
+      buttonLabel="CHOOSE FILE" helperText="You can choose one file to import"
+      [value]="files" [showPreview]="true" [multiple] = "true" (callbackFile) = "FileUploadResponse($event)"
+      [requests] = "fileinfo.requests" (fileuploadEvents)="uploadEvents($event)">
+    </dxc-file-input>
+</div>

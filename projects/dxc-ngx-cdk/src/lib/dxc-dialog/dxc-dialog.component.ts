@@ -8,7 +8,8 @@ import {
   ViewChild,
   ElementRef,
   HostListener,
-  AfterViewInit
+  AfterViewInit,
+  OnDestroy
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
@@ -21,7 +22,7 @@ import { MODEL_HEIGHT, MODEL_WIDTH} from './props/dailog-props';
   styleUrls: ["./dxc-dialog.component.scss"],
   providers: [CssUtils],
 })
-export class DxcDialogComponent implements AfterViewInit {
+export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   @ViewChild('dialogboxstart', { read: ElementRef, static: false }) dialogboxstart: ElementRef;
   @ViewChild('dialogHeader', { read: ElementRef, static: false }) dialogHeader: ElementRef;
   @ViewChild('dialogboxreturn', { read: ElementRef, static: false }) dialogboxreturn: ElementRef;
@@ -83,10 +84,18 @@ export class DxcDialogComponent implements AfterViewInit {
     tabIndexValue: 0
   });
 
-  constructor(private utils: CssUtils) { }
+  constructor(private utils: CssUtils, private componentRef: ElementRef) { }
+  ngOnDestroy(): void {
+    let comDoc = this.componentRef.nativeElement.closest('body');
+    if (comDoc != null)
+      comDoc.classList.remove('dxc-dialog-opened');
+  }
 
   public ngOnInit() {
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+    let comDoc = this.componentRef.nativeElement.closest('body');
+    if (comDoc != null)
+      comDoc.classList.add('dxc-dialog-opened');
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

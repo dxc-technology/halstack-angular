@@ -64,14 +64,14 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   }
   private _tabIndexValue;
   @Input()
-  get headerHeight(): number {
+  get headerHeight(): string {
     return this._headerHeight;
   }
-  set headerHeight(value: number) {
+  set headerHeight(value: string) {
     this._headerHeight = value;
   }
-  private _headerHeight = 40;
-
+  private _headerHeight = 'auto';
+  private defaultHeaderHeight = 40;
   @Output() onCloseClick = new EventEmitter<any>();
   @Output() onBackgroundClick = new EventEmitter<any>();
 
@@ -119,7 +119,7 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.dialogboxstart.nativeElement.focus();
-      this.headerHeight = this.dialogHeader.nativeElement?.clientHeight ? this.dialogHeader.nativeElement : this.headerHeight;
+      this.headerHeight = this.dialogHeader.nativeElement?.clientHeight ? this.dialogHeader.nativeElement.clientHeight : this.defaultHeaderHeight;
     }, 1);
   }
 

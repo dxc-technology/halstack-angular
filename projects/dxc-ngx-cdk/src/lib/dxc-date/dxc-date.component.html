@@ -24,7 +24,7 @@
 >
   <dxc-input-suffix-icon >
     <dxc-button id="help" [tabIndexValue]="disabled ? -1 : tabIndexValue" class="caln-btn" size="small" [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy" [ariaDescribedBy]="ariaDescribedBy" [border]="false"
-        (onClick)="openCalendar()">
+    (onClick)="openCalendar()" #calendarButton>
         <dxc-button-icon>
           <span class="icon-dxc-wrapper">
             <mat-icon class="mat-icon material-icons">calendar_today</mat-icon>

@@ -140,8 +140,8 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   @ViewChild('calender', { read: ElementRef, static: false }) calender: ElementRef;
   @ViewChild(MdePopoverTrigger, { static: false })
   _dxcTrigger: MdePopoverTrigger;
-  @ViewChild("dxcCalendar", { static: false })
-  _dxcCalendar: MatCalendar<Moment>;
+  @ViewChild("dxcCalendar", { static: false }) _dxcCalendar: MatCalendar<Moment>;
+  @ViewChild('calendarButton', { read: ElementRef, static: false }) calendarButton: ElementRef;
 
   private _sizes = ["medium", "large", "fillParent"];
 
@@ -193,7 +193,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       stringValue: value,
       dateValue: _dateValue.isValid() ? _dateValue.toDate() : null,
     };
-    
+
     if (this.customOutput == true) {
       if (_dateReturn.dateValue instanceof Date) {
         this.value = this.datePipe.transform(_dateReturn.dateValue, this.format);
@@ -209,9 +209,9 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
         this.renderedValue = _dateReturn.stringValue;
         return false;
       }
-      
+
     }
-    else{
+    else {
       this.value = value;
       this.dateValue = _dateValue;
       this.onChange.emit(_dateReturn);
@@ -259,35 +259,15 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
     }
   }
 
-  @HostListener("document:click", ["$event"])
-  public onClickOutsideHandler(event) {
-    if (
-      event.target.offsetParent &&
-      event.target.offsetParent?.getAttribute("class")
-    ) {
-      if (
-        !event.target.offsetParent
-          .getAttribute("class")
-          .includes("mde-popover-panel") &&
-        !event.target.offsetParent
-          .getAttribute("class")
-          .includes("mat-calendar-period") &&
-        !event.target.offsetParent
-          .getAttribute("class")
-          .includes("mat-calendar-table") &&
-          !event.target.getAttribute("class")
-          .includes("mat-calendar-previous-button") &&
-          !event.target.getAttribute("class")
-          .includes("mat-calendar-next-button") &&
-          !event.target.getAttribute("class")
-          .includes("mat-calendar")
-
-      ) {
-        this.checkOpenCalendar();
-      }
-    } else {
-      this.checkOpenCalendar();
-    }
+  @HostListener("document:click", ["$event"]) 
+  public onClickOutsideHandler(event) 
+  { 
+    if (this._isCalendarOpened && !this.calender.nativeElement.contains(event.target) && !this.calendarButton.nativeElement.contains(event.target)) 
+    { 
+      this._isOpenClicked = false; 
+      this._isSelectingDate = false; 
+      this.checkOpenCalendar(); 
+    } 
   }
 
   private checkOpenCalendar() {
@@ -443,7 +423,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       }
     `;
   }
-  
+
   getDynamicStyle() {
     return css`
       &.disabled {

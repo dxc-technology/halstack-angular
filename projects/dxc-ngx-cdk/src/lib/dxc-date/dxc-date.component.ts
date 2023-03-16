@@ -262,7 +262,8 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   @HostListener("document:click", ["$event"]) 
   public onClickOutsideHandler(event) 
   { 
-    if (this._isCalendarOpened && !this.calender.nativeElement.contains(event.target) && !this.calendarButton.nativeElement.contains(event.target)) 
+    if (this._isCalendarOpened && !this.calender.nativeElement.contains(event.target) && !this.calendarButton.nativeElement.contains(event.target)
+    && !event.target.classList.contains('mat-calendar-body-cell-content')) 
     { 
       this._isOpenClicked = false; 
       this._isSelectingDate = false; 

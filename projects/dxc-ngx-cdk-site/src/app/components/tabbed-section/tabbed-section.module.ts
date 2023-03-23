@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { PortalModule } from '@angular/cdk/portal';
 import { TabbedSectionComponent } from './tabbed-section.component';
 import { DynamicModule } from '../dynamic-component/dynamic.module';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

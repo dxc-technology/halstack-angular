@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcSwitchComponent } from "./dxc-switch.component";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatLegacySlideToggleModule as MatSlideToggleModule } from "@angular/material/legacy-slide-toggle";
 
 describe("DxcSwitch tests", () => {
   test("should render dxc-switch", async () => {

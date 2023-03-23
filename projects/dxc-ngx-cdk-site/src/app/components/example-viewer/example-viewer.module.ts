@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { PortalModule } from '@angular/cdk/portal';
 import { DxcButtonModule, DxcTableModule } from '@dxc-technology/halstack-angular';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';

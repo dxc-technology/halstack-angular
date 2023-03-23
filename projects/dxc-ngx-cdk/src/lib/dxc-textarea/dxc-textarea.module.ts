@@ -2,9 +2,9 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { DxcTextareaComponent } from "./dxc-textarea.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { MatInputModule } from "@angular/material/input";
-import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
+import { MatLegacyAutocompleteModule as MatAutocompleteModule } from "@angular/material/legacy-autocomplete";
+import { MatLegacyFormFieldModule as MatFormFieldModule } from "@angular/material/legacy-form-field";
 
 @NgModule({
   declarations: [DxcTextareaComponent],

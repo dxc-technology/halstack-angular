@@ -1,6 +1,6 @@
 import { render } from "@testing-library/angular";
 import { DxcProgressbarComponent } from "./dxc-progressbar.component";
-import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatLegacyProgressBarModule as MatProgressBarModule } from "@angular/material/legacy-progress-bar";
 
 describe("DxcProgressbar tests", () => {
   test("should render dxc-progressbar", async () => {

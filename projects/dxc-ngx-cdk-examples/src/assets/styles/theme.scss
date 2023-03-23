@@ -1681,7 +1681,7 @@ $mat-ripple-color-opacity: 0.1;
 
 // Represents a collection of typography levels.
 // Defaults come from https://material.io/guidelines/style/typography.html
-@function mat.define-typography-config(
+@function mat.define-legacy-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif',
   $display-4: mat.define-typography-level(112px, 112px, 300),
   $display-3: mat.define-typography-level(56px, 56px, 400),
@@ -2545,7 +2545,7 @@ $mat-chip-remove-font-size: 18px;
 }
 
 @mixin mat-chips-theme-color($palette) {
-  @include mat.chips-color(
+  @include mat.legacy-chips-color(
     mat.get-color-from-palette($palette, default-contrast),
     mat.get-color-from-palette($palette)
   );
@@ -2567,7 +2567,7 @@ $mat-chip-remove-font-size: 18px;
   $unselected-foreground: mat.get-color-from-palette($foreground, text);
 
   .mat-chip.mat-standard-chip {
-    @include mat.chips-color($unselected-foreground, $unselected-background);
+    @include mat.legacy-chips-color($unselected-foreground, $unselected-background);
 
     &:not(.mat-chip-disabled) {
       &:active {
@@ -2590,15 +2590,15 @@ $mat-chip-remove-font-size: 18px;
 
   .mat-chip.mat-standard-chip.mat-chip-selected {
     &.mat-primary {
-      @include mat.chips-theme-color($primary);
+      @include mat.legacy-chips-theme-color($primary);
     }
 
     &.mat-warn {
-      @include mat.chips-theme-color($warn);
+      @include mat.legacy-chips-theme-color($warn);
     }
 
     &.mat-accent {
-      @include mat.chips-theme-color($accent);
+      @include mat.legacy-chips-theme-color($accent);
     }
   }
 }
@@ -5056,50 +5056,50 @@ $mat-form-field-dedupe: 0;
 // Includes all of the typographic styles.
 @mixin angular-material-typography($config: null) {
   @if $config == null {
-    $config: mat.define-typography-config();
+    $config: mat.define-legacy-typography-configmat.define-legacy-typography-configmat.define-legacy-typography-config();
   }
 
   @include mat.badge-typography($config);
-  @include mat.typography-hierarchy($config);
-  @include mat.autocomplete-typography($config);
+  @include mat.legacy-typography-hierarchy($config);
+  @include mat.legacy-autocomplete-typography($config);
   @include mat.bottom-sheet-typography($config);
-  @include mat.button-typography($config);
+  @include mat.legacy-button-typography($config);
   @include mat.button-toggle-typography($config);
-  @include mat.card-typography($config);
-  @include mat.checkbox-typography($config);
-  @include mat.chips-typography($config);
-  @include mat.table-typography($config);
+  @include mat.legacy-card-typography($config);
+  @include mat.legacy-checkbox-typography($config);
+  @include mat.legacy-chips-typography($config);
+  @include mat.legacy-table-typography($config);
   @include mat.datepicker-typography($config);
-  @include mat.dialog-typography($config);
+  @include mat.legacy-dialog-typography($config);
   @include mat.expansion-typography($config);
-  @include mat.form-field-typography($config);
+  @include mat.legacy-form-field-typography($config);
   @include mat.grid-list-typography($config);
   @include mat.icon-typography($config);
-  @include mat.input-typography($config);
-  @include mat.menu-typography($config);
-  @include mat.paginator-typography($config);
-  @include mat.progress-bar-typography($config);
-  @include mat.progress-spinner-typography($config);
-  @include mat.radio-typography($config);
-  @include mat.select-typography($config);
+  @include mat.legacy-input-typography($config);
+  @include mat.legacy-menu-typography($config);
+  @include mat.legacy-paginator-typography($config);
+  @include mat.legacy-progress-bar-typography($config);
+  @include mat.legacy-progress-spinner-typography($config);
+  @include mat.legacy-radio-typography($config);
+  @include mat.legacy-select-typography($config);
   @include mat.sidenav-typography($config);
-  @include mat.slide-toggle-typography($config);
-  @include mat.slider-typography($config);
+  @include mat.legacy-slide-toggle-typography($config);
+  @include mat.legacy-slider-typography($config);
   @include mat.stepper-typography($config);
   @include mat.sort-typography($config);
-  @include mat.tabs-typography($config);
+  @include mat.legacy-tabs-typography($config);
   @include mat.toolbar-typography($config);
-  @include mat.tooltip-typography($config);
-  @include mat.list-typography($config);
-  @include mat.option-typography($config);
-  @include mat.optgroup-typography($config);
-  @include mat.snack-bar-typography($config);
+  @include mat.legacy-tooltip-typography($config);
+  @include mat.legacy-list-typography($config);
+  @include mat.legacy-option-typography($config);
+  @include mat.legacy-optgroup-typography($config);
+  @include mat.legacy-snack-bar-typography($config);
   @include mat.tree-typography($config);
 }
 
 // Mixin that renders all of the core styles that are not theme-dependent.
 @mixin mat-core($typography-config: null) {
-  @include mat.all-component-typographies($typography-config);
+  @include mat.all-legacy-component-typographies($typography-config);
   @include mat.ripple;
   @include cdk.a11y-visually-hidden;
   @include cdk.overlay;
@@ -5109,8 +5109,8 @@ $mat-form-field-dedupe: 0;
 // Mixin that renders all of the core styles that depend on the theme.
 @mixin mat-core-theme($theme) {
   @include mat.ripple-theme($theme);
-  @include mat.option-theme($theme);
-  @include mat.optgroup-theme($theme);
+  @include mat.legacy-option-theme($theme);
+  @include mat.legacy-optgroup-theme($theme);
   @include mat.pseudo-checkbox-theme($theme);
 
   // Provides external CSS classes for each elevation value. Each CSS class is formatted as
@@ -5153,41 +5153,41 @@ $mat-form-field-dedupe: 0;
 
 // Create a theme.
 @mixin angular-material-theme($theme) {
-  @include mat.core-theme($theme);
-  @include mat.autocomplete-theme($theme);
+  @include mat.legacy-core-theme($theme);
+  @include mat.legacy-autocomplete-theme($theme);
   @include mat.badge-theme($theme);
   @include mat.bottom-sheet-theme($theme);
-  @include mat.button-theme($theme);
+  @include mat.legacy-button-theme($theme);
   @include mat.button-toggle-theme($theme);
-  @include mat.card-theme($theme);
-  @include mat.checkbox-theme($theme);
-  @include mat.chips-theme($theme);
-  @include mat.table-theme($theme);
+  @include mat.legacy-card-theme($theme);
+  @include mat.legacy-checkbox-theme($theme);
+  @include mat.legacy-chips-theme($theme);
+  @include mat.legacy-table-theme($theme);
   @include mat.datepicker-theme($theme);
-  @include mat.dialog-theme($theme);
+  @include mat.legacy-dialog-theme($theme);
   @include mat.divider-theme($theme);
   @include mat.expansion-theme($theme);
-  @include mat.form-field-theme($theme);
+  @include mat.legacy-form-field-theme($theme);
   @include mat.grid-list-theme($theme);
   @include mat.icon-theme($theme);
-  @include mat.input-theme($theme);
-  @include mat.list-theme($theme);
-  @include mat.menu-theme($theme);
-  @include mat.paginator-theme($theme);
-  @include mat.progress-bar-theme($theme);
-  @include mat.progress-spinner-theme($theme);
-  @include mat.radio-theme($theme);
-  @include mat.select-theme($theme);
+  @include mat.legacy-input-theme($theme);
+  @include mat.legacy-list-theme($theme);
+  @include mat.legacy-menu-theme($theme);
+  @include mat.legacy-paginator-theme($theme);
+  @include mat.legacy-progress-bar-theme($theme);
+  @include mat.legacy-progress-spinner-theme($theme);
+  @include mat.legacy-radio-theme($theme);
+  @include mat.legacy-select-theme($theme);
   @include mat.sidenav-theme($theme);
-  @include mat.slide-toggle-theme($theme);
-  @include mat.slider-theme($theme);
+  @include mat.legacy-slide-toggle-theme($theme);
+  @include mat.legacy-slider-theme($theme);
   @include mat.stepper-theme($theme);
   @include mat.sort-theme($theme);
-  @include mat.tabs-theme($theme);
+  @include mat.legacy-tabs-theme($theme);
   @include mat.toolbar-theme($theme);
-  @include mat.tooltip-theme($theme);
+  @include mat.legacy-tooltip-theme($theme);
   @include mat.tree-theme($theme);
-  @include mat.snack-bar-theme($theme);
+  @include mat.legacy-snack-bar-theme($theme);
 }
 
 // Plus imports for other components in your app.
@@ -5195,7 +5195,16 @@ $mat-form-field-dedupe: 0;
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core;
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies;
+@include mat.legacy-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -5280,7 +5289,7 @@ $my-theme-accent: mat.define-palette($my-accent);
 $my-theme-warn: mat.define-palette(mat.$red-palette);
 $my-theme: mat.define-light-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
 
-@include mat.all-component-themes($my-theme);
+@include mat.all-legacy-component-themes($my-theme);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

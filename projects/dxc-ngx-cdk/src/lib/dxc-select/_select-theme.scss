@@ -88,13 +88,13 @@
     $typography: mat-get-typography-config($theme);
 
     @if $color != null {
-      @include mat.select-color($color);
+      @include mat.legacy-select-color($color);
     }
     @if $density != null {
       @include _mat-select-density($density);
     }
     @if $typography != null {
-      @include mat.select-typography($typography);
+      @include mat.legacy-select-typography($typography);
     }
   }
 }

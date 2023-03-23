@@ -14,7 +14,7 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { ElementRef, HostListener } from "@angular/core";
-import { MatMenuTrigger } from "@angular/material/menu";
+import { MatLegacyMenuTrigger as MatMenuTrigger } from "@angular/material/legacy-menu";
 import {
   coerceBooleanProperty,
   coerceNumberProperty,

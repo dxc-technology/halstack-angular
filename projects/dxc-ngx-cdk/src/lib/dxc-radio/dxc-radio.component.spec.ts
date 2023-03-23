@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcRadioComponent } from "./dxc-radio.component";
-import { MatRadioModule } from "@angular/material/radio";
+import { MatLegacyRadioModule as MatRadioModule } from "@angular/material/legacy-radio";
 
 describe("DxcRadio tests", () => {
   test("should render dxc-radio", async () => {

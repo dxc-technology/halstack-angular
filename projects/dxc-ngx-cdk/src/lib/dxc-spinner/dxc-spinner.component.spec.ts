@@ -1,7 +1,7 @@
 import { render } from "@testing-library/angular";
 import { DxcSpinnerComponent } from "./dxc-spinner.component";
 import { MatIconModule } from "@angular/material/icon";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from "@angular/material/legacy-progress-spinner";
 
 describe("DxcSpinner tests", () => {
   test("should render dxc-spinner", async () => {

@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatCardModule } from "@angular/material/card";
+import { MatLegacyCardModule as MatCardModule } from "@angular/material/legacy-card";
 import { DxcCardComponent } from "./dxc-card.component";
 import { CommonModule } from "@angular/common";
 import { BackgroundProviderModule } from "../background-provider/background-provider.module";

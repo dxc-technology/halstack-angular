@@ -62,7 +62,7 @@ import {
 } from "@angular/core";
 import { ControlValueAccessor, NgControl, NgForm } from "@angular/forms";
 
-import { MatFormFieldControl } from "@angular/material/form-field";
+import { MatLegacyFormFieldControl as MatFormFieldControl } from "@angular/material/legacy-form-field";
 import { defer, merge, Observable, Subject } from "rxjs";
 import {
   distinctUntilChanged,

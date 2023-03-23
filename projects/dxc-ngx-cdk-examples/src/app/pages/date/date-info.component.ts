@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'date-info',
@@ -7,13 +7,13 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from
   styleUrls: ['./date-info.component.scss']
 })
 export class DateInfoComponent implements OnInit {
-  public pageForm: FormGroup;
+  public pageForm: UntypedFormGroup;
   customOutput: boolean = true;
   inputValue: string = "1995/12/03";
 
   isInvalidDate: boolean = false;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: UntypedFormBuilder) { 
     this.pageForm = this.fb.group({
       dateCtrl: ['19951203']
     });

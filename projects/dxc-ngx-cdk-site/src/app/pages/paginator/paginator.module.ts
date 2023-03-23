@@ -14,35 +14,30 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    PaginatorComponent,
-    PaginatorExampleComponent,
-    PaginatorTablePropertiesComponent,
-    PaginatorImportComponent,
-    PaginatorApiComponent,
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    DxcPaginatorModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule,
-    CodesandboxViewerModule
-  ],
-  exports: [
-    PaginatorComponent,
-    PaginatorApiComponent,
-  ],
-  entryComponents: [
-    PaginatorExampleComponent,
-    PaginatorTablePropertiesComponent,
-    PaginatorImportComponent
-  ]
+    declarations: [
+        PaginatorComponent,
+        PaginatorExampleComponent,
+        PaginatorTablePropertiesComponent,
+        PaginatorImportComponent,
+        PaginatorApiComponent,
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        DxcPaginatorModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule,
+        CodesandboxViewerModule
+    ],
+    exports: [
+        PaginatorComponent,
+        PaginatorApiComponent,
+    ]
 })
 export class PaginatorModule { }

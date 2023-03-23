@@ -16,37 +16,34 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    SliderComponent,
-    SliderPropertiesComponent,
-    SliderExampleComponent,
-    SliderImportComponent,
-    SliderApiComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcSliderModule,
-    CodesandboxViewerModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    SliderComponent,
-    SliderPropertiesComponent,
-    SliderExampleComponent,
-    SliderImportComponent,
-    SliderApiComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        SliderComponent,
+        SliderPropertiesComponent,
+        SliderExampleComponent,
+        SliderImportComponent,
+        SliderApiComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcSliderModule,
+        CodesandboxViewerModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        SliderComponent,
+        SliderPropertiesComponent,
+        SliderExampleComponent,
+        SliderImportComponent,
+        SliderApiComponent
+    ]
 })
 export class SliderModule { }

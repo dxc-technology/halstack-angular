@@ -7,22 +7,20 @@ import { CodesandboxServiceService } from '../../service/codesandbox-service.ser
 import { DxcHeadingModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
-  declarations: [
-    CodesandboxViewer
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    CodesandboxViewer
-  ],
-  entryComponents: [
-  ],
-  providers: [
-    CodesandboxServiceService
-  ]
+    declarations: [
+        CodesandboxViewer
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        CommonModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        CodesandboxViewer
+    ],
+    providers: [
+        CodesandboxServiceService
+    ]
 })
 export class CodesandboxViewerModule { }

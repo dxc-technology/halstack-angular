@@ -14,24 +14,21 @@ import { DynamicComponentComponent } from '../dynamic-component/dynamic-componen
 import { CodePlaygroundModule } from '../code-playground/code-playground.module';
 
 @NgModule({
-  declarations: [    
-    ExampleViewerComponent
+    declarations: [
+        ExampleViewerComponent
     ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    MatIconModule,
-    MatTabsModule,
-    DynamicModule,
-    CodePlaygroundModule,
-    MonacoEditorModule.forRoot() // use forRoot() in main app module only.
-  ],
-  exports: [
-    ExampleViewerComponent
-  ],
-  entryComponents: [
-      DynamicComponentComponent
-  ]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        CommonModule,
+        MatIconModule,
+        MatTabsModule,
+        DynamicModule,
+        CodePlaygroundModule,
+        MonacoEditorModule.forRoot() // use forRoot() in main app module only.
+    ],
+    exports: [
+        ExampleViewerComponent
+    ]
 })
 export class ExampleViewerModule {}

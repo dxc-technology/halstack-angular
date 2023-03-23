@@ -30,9 +30,8 @@ const DECLARATIONS = [
 const EXPORTED_DECLARATIONS = [DxcResultTable, DxcCellDef, DxcColumnDef];
 
 @NgModule({
-  exports: [EXPORTED_DECLARATIONS],
-  imports: [FormsModule, CommonModule, DxcTableModule, DxcPaginatorModule],
-  declarations: DECLARATIONS,
-  entryComponents: [DxcRowComponent, DxcHeaderRowComponent],
+    exports: [EXPORTED_DECLARATIONS],
+    imports: [FormsModule, CommonModule, DxcTableModule, DxcPaginatorModule],
+    declarations: DECLARATIONS
 })
 export class DxcResultsetTableModule {}

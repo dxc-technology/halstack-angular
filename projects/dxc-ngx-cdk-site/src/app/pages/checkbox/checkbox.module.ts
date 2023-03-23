@@ -16,38 +16,35 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CheckboxPropertiesComponent } from '../../components/examples/checkbox/properties/checkbox-properties/checkbox-properties.component';
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
 @NgModule({
-  declarations: [
-    CheckboxComponent,
-    CheckboxExampleComponent,
-    CheckboxPropertiesComponent,
-    CheckboxImportComponent,
-    CheckboxApiComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    DxcCheckboxModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcTableModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule,
-    CodesandboxViewerModule
-  ],
-  exports: [
-    CheckboxComponent,
-    CheckboxExampleComponent,
-    CheckboxPropertiesComponent,
-    CheckboxImportComponent,
-    CheckboxApiComponent,
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        CheckboxComponent,
+        CheckboxExampleComponent,
+        CheckboxPropertiesComponent,
+        CheckboxImportComponent,
+        CheckboxApiComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        CommonModule,
+        DxcCheckboxModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcTableModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule,
+        CodesandboxViewerModule
+    ],
+    exports: [
+        CheckboxComponent,
+        CheckboxExampleComponent,
+        CheckboxPropertiesComponent,
+        CheckboxImportComponent,
+        CheckboxApiComponent,
+    ]
 })
 export class CheckboxModule { }

@@ -13,7 +13,7 @@ import {
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
-import { FormControl } from "@angular/forms";
+import { UntypedFormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty, coerceBooleanProperty } from "@angular/cdk/coercion";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -124,7 +124,7 @@ export class DxcTextareaComponent
     tabIndexValue: 0
   });
 
-  public formControl = new FormControl();
+  public formControl = new UntypedFormControl();
 
   constructor(private utils: CssUtils) {
     this.numRows = 4;

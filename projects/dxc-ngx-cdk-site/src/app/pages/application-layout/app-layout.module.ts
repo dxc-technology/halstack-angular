@@ -20,26 +20,25 @@ import { CodePlaygroundModule } from "../../components/code-playground/code-play
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    ApplicationLayoutComponent,
-    ApplicationLayoutApiComponent,
-    ApplicationLayoutExamplesComponent,
-  ],
-  imports: [
-    BrowserModule,
-    DxcButtonModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcTableModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    DxcChipModule,
-    DxcLinkModule,
-    DxcHeadingModule,
-    CodesandboxViewerModule
-  ],
-  exports: [ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent],
-  entryComponents: [],
+    declarations: [
+        ApplicationLayoutComponent,
+        ApplicationLayoutApiComponent,
+        ApplicationLayoutExamplesComponent,
+    ],
+    imports: [
+        BrowserModule,
+        DxcButtonModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcTableModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        DxcChipModule,
+        DxcLinkModule,
+        DxcHeadingModule,
+        CodesandboxViewerModule
+    ],
+    exports: [ApplicationLayoutApiComponent, ApplicationLayoutExamplesComponent]
 })
 export class ApplicationLayoutModule {}

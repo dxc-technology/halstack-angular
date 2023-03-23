@@ -16,36 +16,33 @@ import { ColorPreviewModule } from 'src/app/components/color-preview/color-previ
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    ToggleGroupApiComponent,
-    ToggleGroupImportComponent,
-    ToggleGroupTablePropertiesComponent,
-    ToggleGroupComponent,
-    ToggleGroupExampleComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    DxcToggleGroupModule,
-    ExampleViewerModule,
-    CodePlaygroundModule,
-    CodesandboxViewerModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    ToggleGroupApiComponent,
-    ToggleGroupImportComponent,
-    ToggleGroupTablePropertiesComponent,
-    ToggleGroupComponent,
-    ToggleGroupExampleComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        ToggleGroupApiComponent,
+        ToggleGroupImportComponent,
+        ToggleGroupTablePropertiesComponent,
+        ToggleGroupComponent,
+        ToggleGroupExampleComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        DxcToggleGroupModule,
+        ExampleViewerModule,
+        CodePlaygroundModule,
+        CodesandboxViewerModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        ToggleGroupApiComponent,
+        ToggleGroupImportComponent,
+        ToggleGroupTablePropertiesComponent,
+        ToggleGroupComponent,
+        ToggleGroupExampleComponent
+    ]
 })
 export class ToggleGroupModule { }

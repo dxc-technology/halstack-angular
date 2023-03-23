@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
 import { List } from 'immutable';
 import { Button, DxcCrudTableComponent, DxcResizeService } from '@dxc-technology/halstack-angular';
 import { EFieldsType, EMethod, IFieldsBaseProperties, IRequest, ITextEditorproperties } from '@dxc-technology/halstack-angular';
@@ -11,12 +11,12 @@ import { EFieldsType, EMethod, IFieldsBaseProperties, IRequest, ITextEditorprope
 })
 export class CrudGridComponent implements OnInit {
   @ViewChild('crudgridcomponent', {static: false}) crudGridComponent: DxcCrudTableComponent;
-  testForm: FormGroup;
+  testForm: UntypedFormGroup;
   message:{ [key: string]: string };
   columns: Array<string>;
   gridToolbarList: List<Button>;
 
-  constructor( private fb: FormBuilder, private resizeSvc: DxcResizeService ) {
+  constructor( private fb: UntypedFormBuilder, private resizeSvc: DxcResizeService ) {
     
    }
 

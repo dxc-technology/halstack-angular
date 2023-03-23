@@ -16,38 +16,35 @@ import { TextInputApiComponent } from '../../components/examples/text-input/text
 import { ColorPreviewModule } from '../../components/color-preview/color-preview.module';
 
 @NgModule({
-  declarations: [
-    TextInputComponent,
-    TextInputExampleComponent,
-    TextInputTablePropertiesComponent,
-    TextInputImportComponent,
-    TextInputApiComponent,
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    DxcInputTextModule,
-    ExampleViewerModule,
-    CodesandboxViewerModule,
-    DxcLinkModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    DxcChipModule,
-    ColorPreviewModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    TextInputComponent,
-    TextInputExampleComponent,
-    TextInputTablePropertiesComponent,
-    TextInputImportComponent,
-    TextInputApiComponent,
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        TextInputComponent,
+        TextInputExampleComponent,
+        TextInputTablePropertiesComponent,
+        TextInputImportComponent,
+        TextInputApiComponent,
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        DxcInputTextModule,
+        ExampleViewerModule,
+        CodesandboxViewerModule,
+        DxcLinkModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        DxcChipModule,
+        ColorPreviewModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        TextInputComponent,
+        TextInputExampleComponent,
+        TextInputTablePropertiesComponent,
+        TextInputImportComponent,
+        TextInputApiComponent,
+    ]
 })
 export class TextInputModule { }

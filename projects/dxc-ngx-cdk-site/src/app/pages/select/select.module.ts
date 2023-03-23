@@ -18,38 +18,35 @@ import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/cod
 
 
 @NgModule({
-  declarations: [
-    SelectComponent,
-    SelectExampleComponent,
-    SelectPropertiesComponent,
-    SelectImportComponent,
-    SelectApiComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcTableModule,
-    DxcSelectModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    CodesandboxViewerModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    SelectComponent,
-    SelectExampleComponent,
-    SelectPropertiesComponent,
-    SelectImportComponent,
-    SelectApiComponent
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        SelectComponent,
+        SelectExampleComponent,
+        SelectPropertiesComponent,
+        SelectImportComponent,
+        SelectApiComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        CommonModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcTableModule,
+        DxcSelectModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        CodesandboxViewerModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        SelectComponent,
+        SelectExampleComponent,
+        SelectPropertiesComponent,
+        SelectImportComponent,
+        SelectApiComponent
+    ]
 })
 export class SelectModule { }

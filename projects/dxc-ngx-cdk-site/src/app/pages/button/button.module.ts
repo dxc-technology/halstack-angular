@@ -13,33 +13,31 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    ButtonComponent,
-    ButtonExampleComponent,
-    ButtonTablePropertiesComponent,
-    ButtonImportComponent,
-    ButtonApiComponent
-  ],
-  imports: [
-    BrowserModule,
-    DxcButtonModule,
-    TabbedSectionModule,
-    CodesandboxViewerModule,
-    DxcTableModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    ButtonExampleComponent,
-    ButtonTablePropertiesComponent,
-    ButtonImportComponent,
-    ButtonApiComponent
-  ],
-  entryComponents: [
-  ]
+    declarations: [
+        ButtonComponent,
+        ButtonExampleComponent,
+        ButtonTablePropertiesComponent,
+        ButtonImportComponent,
+        ButtonApiComponent
+    ],
+    imports: [
+        BrowserModule,
+        DxcButtonModule,
+        TabbedSectionModule,
+        CodesandboxViewerModule,
+        DxcTableModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        ButtonExampleComponent,
+        ButtonTablePropertiesComponent,
+        ButtonImportComponent,
+        ButtonApiComponent
+    ]
 })
 export class ButtonModule { }

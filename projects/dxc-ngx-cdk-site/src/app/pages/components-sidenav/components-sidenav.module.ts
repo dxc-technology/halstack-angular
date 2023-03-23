@@ -7,23 +7,20 @@ import { ComponentsSidenavMenuComponent } from './components-sidenav-menu/compon
 import { ComponentsSidenavComponent } from './components-sidenav.component';
 
 @NgModule({
-  declarations: [
-    ComponentsSidenavComponent,
-    ComponentsSidenavMenuComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    RouterModule,
-    DxcSideNavModule,
-    DxcLinkModule
-  ],
-  exports: [
-    ComponentsSidenavComponent,
-    ComponentsSidenavMenuComponent
-  ],
-  entryComponents: [
-    DxcSidenavComponent
-  ]
+    declarations: [
+        ComponentsSidenavComponent,
+        ComponentsSidenavMenuComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        RouterModule,
+        DxcSideNavModule,
+        DxcLinkModule
+    ],
+    exports: [
+        ComponentsSidenavComponent,
+        ComponentsSidenavMenuComponent
+    ]
 })
 export class ComponentsSidenavModule {}

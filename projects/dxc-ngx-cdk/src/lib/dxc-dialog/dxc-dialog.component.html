@@ -2,7 +2,7 @@
   <div class="backOverlay" role="overlay" (click)="onBackgroundClickHandler($event)" [class.backVisible]="overlay">
   </div>
   <div [ngClass]="'container p-0 mw-100 mph-' + height + ' mpw-'+ width">
-    <div class="dialogContainer h-100 w-100" #dialogboxstart>
+    <div class="dialogContainer h-100 w-100" tabindex="-1" #dialogboxstart>
       <div #dialogHeader [style.height.px]="headerHeight" class="dialog-header d-flex align-items-center justify-content-between px-2">
         <span>
           <ng-content select="dxc-dialog-header"></ng-content>

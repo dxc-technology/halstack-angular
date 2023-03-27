@@ -11,10 +11,6 @@
   [margin]="margin"
   [size]="size"
   [placeholder]="format"
-  [mdePopoverTriggerFor]="dxcPopover"
-  mdePopoverTriggerOn="none"
-  [mdePopoverOffsetX]="popOverOffsetX"
-  [mdePopoverPositionX]="'before'"
   [disabled]="disabled"
   [ariaLabel]="ariaLabel"
   [ariaLabelledBy]="ariaLabelledBy"
@@ -23,7 +19,7 @@
   [tabIndexValue]="disabled ? -1 : tabIndexValue"
 >
   <dxc-input-suffix-icon >
-    <dxc-button id="help" [tabIndexValue]="disabled ? -1 : tabIndexValue" class="caln-btn" size="small" [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy" [ariaDescribedBy]="ariaDescribedBy" [border]="false"
+    <dxc-button id="help" [tabIndexValue]="disabled ? -1 : tabIndexValue" class="caln-btn" [ngbPopover]="popCaln" [autoClose]="'outside'"	placement="bottom" size="small" [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy" [ariaDescribedBy]="ariaDescribedBy" [border]="false"
     (onClick)="openCalendar()" #calendarButton>
         <dxc-button-icon>
           <span class="icon-dxc-wrapper">
@@ -34,12 +30,13 @@
   </dxc-input-suffix-icon>
 </dxc-input-text>
 
-<mde-popover
+<!-- <mde-popover
   #dxcPopover="mdePopover"
   [mdePopoverOverlapTrigger]="false"
   [mdePopoverCloseOnClick]="false"
   [mdePopoverArrowWidth]="0"
->
+> -->
+<ng-template #popCaln>
   <div [class]="calendarDynamicStyle">
     <dxc-box theme size="fillParent" padding="xsmall" tabindex="0" [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledBy"  role="dialog" #calender>
       <mat-calendar
@@ -52,4 +49,5 @@
       </mat-calendar>
     </dxc-box>
   </div>
-</mde-popover>
+  </ng-template>
+<!-- </mde-popover> -->

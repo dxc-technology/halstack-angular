@@ -16,7 +16,6 @@
     "rxjs",
     "moment",
     "@angular/material-moment-adapter",
-    "@material-extended/mde",
     "emotion",
     "rgb-hex",
     "color",

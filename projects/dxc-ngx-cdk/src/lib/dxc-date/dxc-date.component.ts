@@ -18,7 +18,6 @@ import { CssUtils } from "../utils";
 import * as momentImported from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
-import { MdePopoverTrigger } from "@material-extended/mde";
 import { HostListener } from "@angular/core";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { DatePipe } from '@angular/common';
@@ -138,8 +137,8 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   date: string = '';
   calendarDynamicStyle: any;
   @ViewChild('calender', { read: ElementRef, static: false }) calender: ElementRef;
-  @ViewChild(MdePopoverTrigger, { static: false })
-  _dxcTrigger: MdePopoverTrigger;
+  // @ViewChild(MdePopoverTrigger, { static: false })
+  // _dxcTrigger: MdePopoverTrigger;
   @ViewChild("dxcCalendar", { static: false }) _dxcCalendar: MatCalendar<Moment>;
   @ViewChild('calendarButton', { read: ElementRef, static: false }) calendarButton: ElementRef;
 
@@ -287,7 +286,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
       ? this.dateValue
       : moment();
     this._dxcCalendar.currentView = "month";
-    this._dxcTrigger.openPopover();
+    //this._dxcTrigger.openPopover();
     setTimeout(() => {
       this.calender.nativeElement.focus();
     }, 100);
@@ -295,7 +294,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   }
 
   public closeCalendar() {
-    this._dxcTrigger.closePopover();
+    //this._dxcTrigger.closePopover();
     this.resetCalendarState();
   }
 

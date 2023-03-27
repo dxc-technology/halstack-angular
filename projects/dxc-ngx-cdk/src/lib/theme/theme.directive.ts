@@ -15,7 +15,7 @@ import { componentIcons } from "./componentTokens";
   selector: "[theme]",
 })
 export class ThemeDirective implements OnInit, OnDestroy {
-  private _destroy$ = new Subject();
+  private _destroy$ = new Subject<void>();
   theme: any;
 
   constructor(

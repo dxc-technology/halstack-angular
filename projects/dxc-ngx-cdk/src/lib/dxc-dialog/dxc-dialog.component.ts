@@ -134,7 +134,6 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
 
   endFocus($event: any) {
     if (this.dialogboxstart.nativeElement.focus){
-      this.dialogboxstart.nativeElement.tabindex = "0";
       this.dialogboxstart.nativeElement.focus();
     }
   }

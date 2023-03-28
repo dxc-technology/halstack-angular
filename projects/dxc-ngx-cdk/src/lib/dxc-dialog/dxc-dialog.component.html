@@ -2,7 +2,8 @@
   <div class="backOverlay" role="overlay" (click)="onBackgroundClickHandler($event)" [class.backVisible]="overlay">
   </div>
   <div [ngClass]="'container p-0 mw-100 mph-' + height + ' mpw-'+ width">
-    <div class="dialogContainer h-100 w-100" tabindex="-1" #dialogboxstart>
+    <div class="dialogContainer h-100 w-100" tabindex="0" role="dialog" (keydown)="startKeyPress($event)" [attr.aria-label]="ariaLabel"
+        [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy" #dialogboxstart>
       <div #dialogHeader [style.height.px]="headerHeight" class="dialog-header d-flex align-items-center justify-content-between px-2">
         <span>
           <ng-content select="dxc-dialog-header"></ng-content>
@@ -18,8 +19,7 @@
           </a>
         </span>
       </div>
-      <div class="content" tabindex="0" role="dialog" (keydown)="startKeyPress($event)" [attr.aria-label]="ariaLabel"
-        [attr.aria-labelledby]="ariaLabelledBy" [attr.aria-describedby]="ariaDescribedBy">
+      <div class="content">
         <ng-content select="dxc-dialog-body"></ng-content>
         <span #dialogboxreturn tabindex="-1" (onblur)="returnFocusOut($event)"></span>
         <span #dialogboxend tabindex="0" (focus)="endFocus($event)"></span>

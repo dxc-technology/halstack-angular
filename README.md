@@ -65,6 +65,14 @@ Or if there is no need to watch for changes, run the build process and pack it t
 npm run generate-lib
 ```
 
+or
+
+```bash
+npm run generate-lib-win
+```
+
+for windows based terminals.
+
 ### Documentation Application
 
 Contained in `projects\dxc-ngx-cdk-site` folder.
@@ -80,6 +88,12 @@ The Halstack Angular CDK needs to be linked to the application (from the folder 
 ```bash
 npm run link-lib
 ```
+
+```bash
+npm run unlink-lib
+```
+
+in case it needs to be unlinked.
 
 You can create your own application and link it to the dist folder.
 

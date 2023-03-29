@@ -89,6 +89,8 @@ The Halstack Angular CDK needs to be linked to the application (from the folder 
 npm run link-lib
 ```
 
+or
+
 ```bash
 npm run unlink-lib
 ```

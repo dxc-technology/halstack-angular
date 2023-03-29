@@ -1,14 +1,14 @@
 [![npm version](https://badge.fury.io/js/%40dxc-technology%2Fhalstack-angular.svg)](https://www.npmjs.com/@dxc-technology/halstack-angular)
-[![GitHub license](https://img.shields.io/badge/license-apache-blue.svg)](https://github.com/fxc-technology/halstack-angular/blob/master/LICENSE.md) 
+[![GitHub license](https://img.shields.io/badge/license-apache-blue.svg)](https://github.com/fxc-technology/halstack-angular/blob/master/LICENSE.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dxc-technology/halstack-angular/blob/master/CONTRIBUTING.md)
 ![Publish Next Version](https://github.com/dxc-technology/halstack-angular/workflows/Publish%20Next%20Version/badge.svg)
 ![Publish Release](https://github.com/dxc-technology/halstack-angular/workflows/Publish%20Release/badge.svg)
+
 # Halstack Angular CDK
- 
+
 Halstack Angular CDK is a npm library of reusable Angular components, made with the purpose of helping Angular developers with the task of implementing User Interfaces following the DXC Design Guidelines.
 
 - It increases visual and behavioral consistency across the applications using the library.
-  
 - It cuts down development efforts, taking the responsability of following the Design Guidelines away from the developer, and allowing him to focus on providing business value.
 
 ## Usage
@@ -45,19 +45,29 @@ Run the build process into `dist` folder, detecting and automatically building c
 npm run build-lib:watch
 ```
 
+Once the build is done copy the necessary files.
+
+```bash
+npm run post-build-lib
+```
+
+or
+
+```bash
+npm run post-build-lib-win
+```
+
+for windows based terminals.
+
 Or if there is no need to watch for changes, run the build process and pack it to generate the library.
 
 ```bash
 npm run generate-lib
 ```
 
-### Example Application
+### Documentation Application
 
-Contained in `projects\dxc-ngx-cdk-examples` folder.
-
-```bash
-cd projects/dxc-ngx-cdk-examples
-```
+Contained in `projects\dxc-ngx-cdk-site` folder.
 
 Install the application dependencies.
 
@@ -69,6 +79,12 @@ The Halstack Angular CDK needs to be linked to the application (from the folder 
 
 ```bash
 npm run link-lib
+```
+
+You can create your own application and link it to the dist folder.
+
+```bash
+npm link PATH-TO-DIST-FOLDER
 ```
 
 Start the application

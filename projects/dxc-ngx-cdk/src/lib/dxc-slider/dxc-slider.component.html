@@ -10,13 +10,12 @@
   [min]="minValue"
   [max]="maxValue"
   [step]="step"
-  [value]="renderedValue"
-  [tickInterval]="tickInterval"
+  [showTickMarks]=""
   [disabled]="disabled"
   (input)="valueChanged($event)"
   (mouseup)="mouseUp($event)"
   [tabIndex]="tabIndexValue"
-></mat-slider>
+><input [value]="renderedValue" matSliderThumb></mat-slider>
 <span
   [ngClass]="disabled ? 'disabled-span' : ''"
   *ngIf="showLimitsValues"

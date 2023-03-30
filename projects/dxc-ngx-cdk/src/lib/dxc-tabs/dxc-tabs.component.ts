@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
-import { MatLegacyTab as MatTab, MatLegacyTabGroup as MatTabGroup } from "@angular/material/legacy-tabs";
+import { MatTab, MatTabGroup } from "@angular/material/tabs";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";

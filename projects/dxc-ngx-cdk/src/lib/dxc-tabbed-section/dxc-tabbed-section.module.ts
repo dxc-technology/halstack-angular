@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
-import { MatLegacyTabsModule as MatTabsModule } from "@angular/material/legacy-tabs";
+import { MatTabsModule } from "@angular/material/tabs";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 

@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcTextInputComponent } from "./dxc-input-text.component";
-import { MatLegacyAutocompleteModule as MatAutocompleteModule } from "@angular/material/legacy-autocomplete";
-import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { screen, waitFor } from "@testing-library/dom";
 import { of } from "rxjs";

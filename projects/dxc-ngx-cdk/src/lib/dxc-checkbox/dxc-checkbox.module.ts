@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatLegacyCheckboxModule as MatCheckboxModule } from "@angular/material/legacy-checkbox";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { FormsModule } from "@angular/forms";
 import { DxcCheckboxComponent } from "./dxc-checkbox.component";
 import { CommonModule } from "@angular/common";

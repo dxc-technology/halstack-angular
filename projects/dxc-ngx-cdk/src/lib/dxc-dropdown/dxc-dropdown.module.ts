@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
-import { MatLegacyMenuModule as MatMenuModule } from "@angular/material/legacy-menu";
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatButtonModule } from "@angular/material/button";
 import { CommonModule } from "@angular/common";
 import { DxcDropdownComponent } from "./dxc-dropdown.component";
 import { DxcDropdownOptionComponent } from "./dxc-dropdown-option/dxc-dropdown-option.component";

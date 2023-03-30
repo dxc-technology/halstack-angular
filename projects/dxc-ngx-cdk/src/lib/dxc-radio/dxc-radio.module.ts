@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { DxcRadioComponent } from "./dxc-radio.component";
 import { FormsModule } from "@angular/forms";
-import { MatLegacyRadioModule as MatRadioModule } from "@angular/material/legacy-radio";
+import { MatRadioModule } from "@angular/material/radio";
 import { CommonModule } from "@angular/common";
 
 @NgModule({

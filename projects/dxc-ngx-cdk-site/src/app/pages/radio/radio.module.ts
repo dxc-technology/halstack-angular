@@ -10,7 +10,7 @@ import { ExampleViewerComponent } from '../../components/example-viewer/example-
 import { RadioComponent } from './radio.component';
 import { RadioExampleComponent } from 'src/app/components/examples/radio/radio-example/radio-example.component';
 import { RadioPropertiesComponent } from '../../components/examples/radio/properties/radio-properties/radio-properties.component';
-import { MatLegacyRadioModule as MatRadioModule } from '@angular/material/legacy-radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { RadioImportComponent } from '../../components/examples/radio/radio-import/radio-import.component';
 import { CodePlaygroundModule } from '../../components/code-playground/code-playground.module';
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';

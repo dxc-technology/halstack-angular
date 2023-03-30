@@ -8,7 +8,7 @@ import {
   ChangeDetectorRef,
   ContentChildren,
 } from "@angular/core";
-import { MatLegacyTab as MatTab } from "@angular/material/legacy-tabs";
+import { MatTab } from "@angular/material/tabs";
 import { DxcTabIconComponent } from "./dxc-tab-icon/dxc-tab-icon.component";
 import { QueryList } from "@angular/core";
 import { TabService } from "../services/tab.service";

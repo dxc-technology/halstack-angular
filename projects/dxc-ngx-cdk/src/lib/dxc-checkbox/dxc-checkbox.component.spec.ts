@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcCheckboxComponent } from "./dxc-checkbox.component";
-import { MatLegacyCheckboxModule as MatCheckboxModule } from "@angular/material/legacy-checkbox";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 describe("DxcCheckbox tests", () => {
   test("should render dxc-checkbox", async () => {

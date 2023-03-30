@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/angular";
 import { DxcCardComponent } from "./dxc-card.component";
-import { MatLegacyCardModule as MatCardModule } from "@angular/material/legacy-card";
+import { MatCardModule } from "@angular/material/card";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { TestBed } from "@angular/core/testing";
 import {

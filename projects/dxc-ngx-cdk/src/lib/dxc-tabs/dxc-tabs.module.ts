@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
-import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
-import { MatLegacyFormFieldModule as MatFormFieldModule } from "@angular/material/legacy-form-field";
-import { MatLegacyTabsModule as MatTabsModule, MatLegacyTab as MatTab, MatLegacyTabGroup as MatTabGroup } from "@angular/material/legacy-tabs";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatTabsModule, MatTab, MatTabGroup } from "@angular/material/tabs";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { DxcTabsComponent } from "./dxc-tabs.component";

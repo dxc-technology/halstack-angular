@@ -9,12 +9,12 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelectTrigger, DxcSelectComponent } from './select';
 import { DxcOptionModule } from './option/option.module';
 import { MatCommonModule } from './common-behaviors/common-module';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [

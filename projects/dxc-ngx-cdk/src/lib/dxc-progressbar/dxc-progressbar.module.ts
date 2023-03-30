@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatLegacyProgressBarModule as MatProgressBarModule } from "@angular/material/legacy-progress-bar";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { DxcProgressbarComponent } from "./dxc-progressbar.component";
 import { CommonModule } from "@angular/common";
 

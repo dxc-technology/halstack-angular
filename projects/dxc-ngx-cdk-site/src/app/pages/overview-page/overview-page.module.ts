@@ -8,7 +8,7 @@ import { OverviewSupportComponent } from 'src/app/components/overview/overview-s
 import { OverviewUseComponent } from 'src/app/components/overview/overview-use/overview-use.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { CodePlaygroundModule } from 'src/app/components/code-playground/code-playground.module';
 import { TabbedSectionModule } from 'src/app/components/tabbed-section/tabbed-section.module';

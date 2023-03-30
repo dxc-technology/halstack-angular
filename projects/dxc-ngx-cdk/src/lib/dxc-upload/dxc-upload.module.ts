@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MatLegacyTooltipModule as MatTooltipModule } from "@angular/material/legacy-tooltip";
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatButtonModule } from "@angular/material/button";
 import { DxcUploadComponent } from "./dxc-upload.component";
 import { DxcDragAndDropComponent } from "./dxc-drag-and-drop/dxc-drag-and-drop.component";
 import { DxcFilesToUploadComponent } from "./dxc-files-to-upload/dxc-files-to-upload.component";
@@ -12,7 +12,7 @@ import { DxcTransactionsComponent } from "./dxc-transactions/dxc-transactions.co
 import { DxcTransactionComponent } from "./dxc-transactions/dxc-transaction/dxc-transaction.component";
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcSpinnerModule } from "../dxc-spinner/dxc-spinner.module";
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from "@angular/material/legacy-progress-spinner";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [

@@ -12,7 +12,7 @@ import {
   MatMomentDateModule,
 } from "@angular/material-moment-adapter";
 import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
-//import { MdePopoverModule } from "@material-extended/mde";
+import { DxcPopoverModule } from "../dxc-popover/dxc-popover-module";
 
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
@@ -30,7 +30,7 @@ import { DatePipe } from '@angular/common';
     DxcInputTextModule,
     DxcBoxModule,
     ThemeModule,
-    //MdePopoverModule,
+    DxcPopoverModule,
     NgbPopoverModule,
     DxcButtonModule
   ],

@@ -142,7 +142,7 @@ $mat-select-placeholder-arrow-space: 2 *
 }
 
 .mat-form-field-type-mat-select {
-  &:not(.mat-form-field-disabled) .mat-form-field-flex {
+  &:not(.mat-form-field-disabled) .mat-mdc-form-field-flex {
     cursor: pointer;
   }
 

@@ -185,7 +185,7 @@ export class DxcTabsComponent implements OnChanges {
 
   setEventListeners() {
     let tabLabels =
-      this._element.nativeElement.getElementsByClassName("mat-tab-label");
+      this._element.nativeElement.getElementsByClassName("mat-mdc-tab");
     if (tabLabels?.length > 0) {
       this.tabs.map((tab, index) => {
         tabLabels[index].addEventListener("click", function () {
@@ -218,12 +218,12 @@ export class DxcTabsComponent implements OnChanges {
         width: 100%;
         background-color: var(--tabs-dividerColor);
       }
-      .mat-tab-group {
+      .mat-mdc-tab-group{
         position: relative;
         display: flex;
         flex-direction: column;
         ${this.utils.getMargins(inputs.margin)}
-        .mat-tab-header {
+        .mat-mdc-tab-header {
           background-color: white;
         }
         .mat-ink-bar {

@@ -290,7 +290,15 @@ export * from './lib/dxc-date/helpers/date-helper';
 
 // export * from './lib/helpers/localstorage/storage-config';
 // export * from './lib/helpers/localstorage/storage-serializer';
-// export * from './lib/helpers/date/date-helper';
+// export * from './lib/helpers/date/date-helper';.
+
+
+export * from './lib/dxc-popover/dxc-popover-module';
+export * from './lib/dxc-popover/dxc-popover';
+export * from './lib/dxc-popover/dxc-popover-animations';
+export * from './lib/dxc-popover/dxc-popover-interfaces';
+export * from './lib/dxc-popover/dxc-popover-trigger';
+export * from './lib/dxc-popover/dxc-popover-target';
 
 export * from "./lib/dxc-lib.module";
 // export * from "./lib/dxc-cron-editor/dxc-cron-editor.module";

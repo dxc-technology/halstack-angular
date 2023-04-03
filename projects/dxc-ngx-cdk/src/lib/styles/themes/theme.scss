@@ -3078,13 +3078,13 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $warn: map-get($theme, warn);
   $foreground: map-get($theme, foreground);
 
-  .mat-form-field-type-mat-native-select .mat-form-field-infix::after {
+  .mat-form-field-type-mat-native-select .mat-mdc-form-field-infix::after {
     color: mat.get-color-from-palette($foreground, secondary-text);
   }
 
   .mat-input-element:disabled,
   .mat-form-field-type-mat-native-select.mat-form-field-disabled
-    .mat-form-field-infix::after {
+    .mat-mdc-form-field-infix::after {
     color: mat.get-color-from-palette($foreground, disabled-text);
   }
 
@@ -3121,7 +3121,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   .mat-form-field-type-mat-native-select.mat-form-field-invalid
-    .mat-form-field-infix::after {
+    .mat-mdc-form-field-infix::after {
     color: mat.get-color-from-palette($warn);
   }
 }
@@ -3494,7 +3494,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
     }
   }
 
-  .mat-form-field {
+  .mat-mdc-form-field {
     &.mat-focused {
       &.mat-primary .mat-select-arrow {
         color: mat.get-color-from-palette($primary);
@@ -3977,13 +3977,13 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   $header-border: 1px solid mat.get-color-from-palette($foreground, divider);
 
   .mat-tab-nav-bar,
-  .mat-tab-header {
+  .mat-mdc-tab-header {
     border-bottom: $header-border;
   }
 
   .mat-tab-group-inverted-header {
     .mat-tab-nav-bar,
-    .mat-tab-header {
+    .mat-mdc-tab-header {
       border-top: $header-border;
       border-bottom: none;
     }
@@ -4007,13 +4007,13 @@ $mat-calendar-weekday-table-font-size: 11px !default;
   }
 
   // Remove header border when there is a background color
-  .mat-tab-group[class*='mat-background-'] .mat-tab-header,
+  .mat-mdc-tab-group[class*='mat-background-'] .mat-mdc-tab-header,
   .mat-tab-nav-bar[class*='mat-background-'] {
     border-bottom: none;
     border-top: none;
   }
 
-  .mat-tab-group,
+  .mat-mdc-tab-group,
   .mat-tab-nav-bar {
     $theme-colors: (
       primary: $primary,
@@ -4064,7 +4064,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 
 @mixin _mat-tabs-background($background-color) {
   // Set background color for the tab group
-  .mat-tab-header,
+  .mat-mdc-tab-header,
   .mat-tab-links {
     background-color: mat.get-color-from-palette($background-color);
   }
@@ -4096,7 +4096,7 @@ $mat-calendar-weekday-table-font-size: 11px !default;
 }
 
 @mixin mat-tabs-typography($config) {
-  .mat-tab-group {
+  .mat-mdc-tab-group{
     font-family: mat.font-family($config);
   }
 
@@ -4265,11 +4265,11 @@ $mat-tooltip-handset-vertical-padding: (
   $label-disabled-color: mat.get-color-from-palette($foreground, disabled-text);
 
   .mat-form-field-appearance-fill {
-    .mat-form-field-flex {
+    .mat-mdc-form-field-flex {
       background-color: $fill-background;
     }
 
-    &.mat-form-field-disabled .mat-form-field-flex {
+    &.mat-form-field-disabled .mat-mdc-form-field-flex {
       background-color: $fill-disabled-background;
     }
 
@@ -4330,7 +4330,7 @@ $mat-form-field-fill-dedupe: 0;
   $fill-appearance-label-offset: -0.5em;
 
   .mat-form-field-appearance-fill {
-    .mat-form-field-infix {
+    .mat-mdc-form-field-infix {
       padding: $infix-padding-top 0 $infix-padding-bottom 0;
     }
 
@@ -4464,7 +4464,7 @@ $mat-form-field-legacy-dedupe: 0;
   // The margin applied to the form-field-infix to reserve space for the floating label.
   $infix-margin-top: 1em * $line-height * $subscript-font-scale;
 
-  // The space between the bottom of the .mat-form-field-flex area and the subscript wrapper.
+  // The space between the bottom of the .mat-mdc-form-field-flex area and the subscript wrapper.
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size. We again need to subtract off the line spacing since the mocks measure to the edge of the
@@ -4482,7 +4482,7 @@ $mat-form-field-legacy-dedupe: 0;
       padding-bottom: $wrapper-padding-bottom;
     }
 
-    .mat-form-field-infix {
+    .mat-mdc-form-field-infix {
       padding: $infix-padding 0;
     }
 
@@ -4689,7 +4689,7 @@ $mat-form-field-outline-dedupe: 0;
   // The margin applied to the form-field-infix to reserve space for the floating label.
   $infix-margin-top: 1em * $line-height * $subscript-font-scale;
 
-  // The space between the bottom of the .mat-form-field-flex area and the subscript wrapper.
+  // The space between the bottom of the .mat-mdc-form-field-flex area and the subscript wrapper.
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
@@ -4705,7 +4705,7 @@ $mat-form-field-outline-dedupe: 0;
   $outline-appearance-label-offset: -0.25em;
 
   .mat-form-field-appearance-outline {
-    .mat-form-field-infix {
+    .mat-mdc-form-field-infix {
       padding: $infix-padding 0 $infix-padding 0;
     }
 
@@ -4838,15 +4838,15 @@ $mat-form-field-outline-dedupe: 0;
   }
 
   .mat-form-field-type-mat-native-select.mat-focused:not(.mat-form-field-invalid) {
-    .mat-form-field-infix::after {
+    .mat-mdc-form-field-infix::after {
       color: $underline-focused-color;
     }
 
-    &.mat-accent .mat-form-field-infix::after {
+    &.mat-accent .mat-mdc-form-field-infix::after {
       color: $underline-color-accent;
     }
 
-    &.mat-warn .mat-form-field-infix::after {
+    &.mat-warn .mat-mdc-form-field-infix::after {
       color: $underline-color-warn;
     }
   }
@@ -4923,7 +4923,7 @@ $mat-form-field-dedupe: 0;
   // Font size to use for the for the prefix and suffix icons.
   $prefix-suffix-icon-font-size: $prefix-suffix-icon-font-scale * 100%;
 
-  // The space between the bottom of the .mat-form-field-flex area and the subscript wrapper.
+  // The space between the bottom of the .mat-mdc-form-field-flex area and the subscript wrapper.
   // Mocks show half of the text size, but this margin is applied to an element with the subscript
   // text font size, so we need to divide by the scale factor to make it half of the original text
   // size.
@@ -4935,7 +4935,7 @@ $mat-form-field-dedupe: 0;
   $wrapper-padding-bottom: ($subscript-margin-top + $line-height) *
     $subscript-font-scale;
 
-  .mat-form-field {
+  .mat-mdc-form-field {
     @include mat.typography-level($config, input);
   }
 
@@ -4963,7 +4963,7 @@ $mat-form-field-dedupe: 0;
     }
   }
 
-  .mat-form-field-infix {
+  .mat-mdc-form-field-infix {
     padding: $infix-padding 0;
 
     // Throws off the baseline if we do it as a real margin, so we do it as a border instead.

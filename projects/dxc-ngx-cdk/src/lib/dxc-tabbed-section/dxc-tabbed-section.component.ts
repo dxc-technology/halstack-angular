@@ -96,7 +96,7 @@ export class DxcTabbedSectionComponent implements OnInit {
 
   setStyledDxcSectionTabbedGroup(input: any) {
     return css`
-      #dxcTabbedSection .mat-tab-group {
+      #dxcTabbedSection .mat-mdc-tab-group{
         ${input.stickAtPx
         ? css`
               z-index: 300;

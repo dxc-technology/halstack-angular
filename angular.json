@@ -306,6 +306,5 @@
   },
   "cli": {
     "analytics": false
-  },
-  "defaultProject": "dxc-ngx-cdk"
+  }
 }

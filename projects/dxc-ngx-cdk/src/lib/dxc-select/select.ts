@@ -1305,11 +1305,6 @@ export abstract class _MatSelectBase<C>
       ${this.utils.getMargins(this.margin)}
       &.mat-select {
         ${this.utils.calculateWidth(this.sizes, this)}
-         .mat-select-trigger {  
-          .mat-select-arrow {
-            margin: 0.9rem 0 0 0!important;
-          }
-      }
       position: relative;
 
       &.mat-select-disabled {

@@ -39,7 +39,7 @@
     }
   }
 
-  .mat-form-field {
+  .mat-mdc-form-field {
     &.mat-focused {
       &.mat-primary .mat-select-arrow {
         color: mat.get-color-from-palette($primary, text);

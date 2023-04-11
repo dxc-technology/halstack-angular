@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatIconModule } from "@angular/material/icon";
@@ -13,7 +12,6 @@ import {
 } from "@angular/material-moment-adapter";
 import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
 import { DxcPopoverModule } from "../dxc-popover/dxc-popover-module";
-
 import { DxcButtonModule } from "../dxc-button/dxc-button.module";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { ThemeModule } from "../theme/theme.module";
@@ -31,7 +29,6 @@ import { DatePipe } from '@angular/common';
     DxcBoxModule,
     ThemeModule,
     DxcPopoverModule,
-    NgbPopoverModule,
     DxcButtonModule
   ],
   providers: [

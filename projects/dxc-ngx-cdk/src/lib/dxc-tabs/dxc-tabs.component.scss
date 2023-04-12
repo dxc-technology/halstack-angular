@@ -6,7 +6,7 @@
       }
     }
   }
-  ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label:hover:not(.mat-tab-disabled)  {
+  ::ng-deep .mat-mdc-tab-list .mat-mdc-tab-labels .mat-tab-label:hover:not(.mat-tab-disabled)  {
     background-color: var(--tabs-hoverBackgroundColor);
   }
 }

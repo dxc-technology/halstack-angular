@@ -17,36 +17,33 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    DateComponent,
-    DateExampleComponent,
-    DatePropertiesComponent,
-    DateImportComponent,
-    DateApiComponent,
-  ],
-  imports: [
-    BrowserModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcTableModule,
-    DxcDateModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule,
-    CodesandboxViewerModule
-  ],
-  exports: [
-    DateComponent,
-    DatePropertiesComponent,
-    DateExampleComponent,
-    DateImportComponent,
-    DateApiComponent,
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        DateComponent,
+        DateExampleComponent,
+        DatePropertiesComponent,
+        DateImportComponent,
+        DateApiComponent,
+    ],
+    imports: [
+        BrowserModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcTableModule,
+        DxcDateModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule,
+        CodesandboxViewerModule
+    ],
+    exports: [
+        DateComponent,
+        DatePropertiesComponent,
+        DateExampleComponent,
+        DateImportComponent,
+        DateApiComponent,
+    ]
 })
 export class DateModule { }

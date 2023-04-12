@@ -6,9 +6,8 @@ import { DxcToggleComponent } from "./dxc-toggle/dxc-toggle.component";
 import { DxcToggleIconComponent } from './dxc-toggle-icon/dxc-toggle-icon.component';
 
 @NgModule({
-  declarations: [DxcToggleGroupComponent, DxcToggleComponent, DxcToggleIconComponent],
-  imports: [CommonModule, MatIconModule],
-  exports: [DxcToggleGroupComponent, DxcToggleComponent, DxcToggleIconComponent],
-  entryComponents: [],
+    declarations: [DxcToggleGroupComponent, DxcToggleComponent, DxcToggleIconComponent],
+    imports: [CommonModule, MatIconModule],
+    exports: [DxcToggleGroupComponent, DxcToggleComponent, DxcToggleIconComponent]
 })
 export class DxcToggleGroupModule {}

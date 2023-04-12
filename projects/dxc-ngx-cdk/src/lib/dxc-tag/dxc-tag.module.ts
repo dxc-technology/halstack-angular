@@ -7,9 +7,8 @@ import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';
 
 @NgModule({
-  declarations: [DxcTagComponent, DxcTagIconComponent],
-  imports: [CommonModule, MatIconModule, DxcBoxModule],
-  exports: [DxcTagComponent,DxcTagIconComponent],
-  entryComponents: [DxcBoxComponent],
+    declarations: [DxcTagComponent, DxcTagIconComponent],
+    imports: [CommonModule, MatIconModule, DxcBoxModule],
+    exports: [DxcTagComponent, DxcTagIconComponent]
 })
 export class DxcTagModule {}

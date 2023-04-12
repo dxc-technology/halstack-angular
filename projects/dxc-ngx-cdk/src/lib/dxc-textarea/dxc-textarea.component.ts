@@ -13,7 +13,7 @@ import {
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
-import { FormControl } from "@angular/forms";
+import { UntypedFormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty, coerceBooleanProperty } from "@angular/cdk/coercion";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -124,7 +124,7 @@ export class DxcTextareaComponent
     tabIndexValue: 0
   });
 
-  public formControl = new FormControl();
+  public formControl = new UntypedFormControl();
 
   constructor(private utils: CssUtils) {
     this.numRows = 4;
@@ -238,7 +238,7 @@ export class DxcTextareaComponent
       &.disabled {
         cursor: default;
       }
-      .mat-form-field {
+      .mat-mdc-form-field {
         font-family: var(--fontFamily);
         line-height: unset;
         width: 100%;
@@ -268,8 +268,8 @@ export class DxcTextareaComponent
             color: var(--textarea-disabledFontColor);
           }
           .mat-form-field-wrapper {
-            .mat-form-field-flex {
-              .mat-form-field-infix input {
+            .mat-mdc-form-field-flex {
+              .mat-mdc-form-field-infix input {
                 color: var(--textarea-disabledFontColor);
               }
             }
@@ -338,7 +338,7 @@ export class DxcTextareaComponent
         .mat-label{
           color: var(--textarea-error) !important;
         }
-        .mat-form-field {
+        .mat-mdc-form-field {
           &.mat-form-field-should-float {
             mat-label {
               color: var(--textarea-error);
@@ -349,9 +349,9 @@ export class DxcTextareaComponent
           color: var(--textarea-error);
         }
       }
-      .mat-form-field {
+      .mat-mdc-form-field {
         &.mat-form-field-should-float {
-          .mat-form-field-infix {
+          .mat-mdc-form-field-infix {
             padding-bottom: 7px;
           }
           mat-label {
@@ -372,13 +372,13 @@ export class DxcTextareaComponent
         .mat-form-field-subscript-wrapper {
           margin-top: 6px;
         }
-        .mat-form-field-infix {
+        .mat-mdc-form-field-infix {
           padding-top: 6px;
         }
       }
-      .mat-form-field-flex {
+      .mat-mdc-form-field-flex {
         align-items: center;
-        .mat-form-field-infix {
+        .mat-mdc-form-field-infix {
           border-top: unset;
         }
       }

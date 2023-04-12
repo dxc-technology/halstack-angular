@@ -28,7 +28,7 @@ $mat-menu-icon-margin: 16px !default;
   display: block;
   line-height: $mat-menu-item-height;
   height: $mat-menu-item-height;
-  padding: 0 $mat-menu-side-padding;
+  padding: 0 16px;
 
   text-align: left;
   text-decoration: none;   // necessary to reset anchor tags

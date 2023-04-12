@@ -194,8 +194,8 @@ export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
         display: inline-flex;
         width: 100%;
         &.cdk-focused:not(.mat-checkbox-disabled) {
-          label.mat-checkbox-layout {
-            .mat-checkbox-inner-container {
+          div.mdc-form-field {
+            .mdc-checkbox {
               .mat-checkbox-background {
                 outline: -webkit-focus-ring-color auto 1px;
                 outline-color: var(--checkbox-focusColor);
@@ -204,7 +204,7 @@ export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
             }
           }
         }
-        label.mat-checkbox-layout {
+        div.mdc-form-field {
           display: inline-flex;
           align-items: center;
           width: 100%;
@@ -217,7 +217,7 @@ export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
             font-family: var(--fontFamily);
           }
 
-          .mat-checkbox-inner-container {
+          .mdc-checkbox {
             margin: 10px 15px;
             width: 20px;
             height: 20px;
@@ -238,17 +238,17 @@ export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
         }
         &.mat-checkbox-disabled {
           cursor: not-allowed;
-          .mat-checkbox-inner-container {
+          .mdc-checkbox {
             .mat-checkbox-frame{
               border-color: var(--checkbox-disabledBorderColor) !important;
             }
           }
-          label.mat-checkbox-layout span.mat-checkbox-label {
+          div.mdc-form-field span.mat-checkbox-label {
             color: var(--checkbox-disabledFontColor) !important;
           }
         }
         &.mat-checkbox-disabled.mat-checkbox-checked {
-          .mat-checkbox-inner-container {
+          .mdc-checkbox {
             .mat-checkbox-frame{
               border-color: var(--checkbox-disabledBorderColor) !important;
             }

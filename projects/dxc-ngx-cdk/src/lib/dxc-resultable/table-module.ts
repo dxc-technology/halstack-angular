@@ -1,6 +1,4 @@
 import { NgModule } from "@angular/core";
-import { DataRowOutlet, DxcResultTable, HeaderOutlet } from "./table";
-import { DxcCellOutlet, DxcRowDef } from "./row";
 import { CommonModule } from "@angular/common";
 import { DxcHeaderRowComponent } from "./components/dxc-header-row/dxc-header-row.component";
 import { DxcRowComponent } from "./components/dxc-row/dxc-row.component";
@@ -10,6 +8,11 @@ import { FormsModule } from "@angular/forms";
 import { DxcTableModule } from "../dxc-table/dxc-table.module";
 import { DxcPaginatorModule } from "../dxc-paginator/dxc-paginator.module";
 import { Ordering } from "./directives/sorting.directive";
+import { HeaderOutlet } from "./directives/header-outlet.directive";
+import { DataRowOutlet } from "./directives/data-row-outlet.directive";
+import { DxcResultTable } from "./table";
+import { DxcRowDef } from "./directives/dxc-row-def.directive";
+import { DxcCellOutlet } from "./directives/dxc-cell-outlet.directive";
 
 const DECLARATIONS = [
   DxcResultTable,
@@ -24,17 +27,11 @@ const DECLARATIONS = [
   Ordering,
 ];
 
-const EXPORTED_DECLARATIONS = [
-  DxcResultTable,
-  DxcCellDef,
-  DxcColumnDef,
-  Ordering,
-];
+const EXPORTED_DECLARATIONS = [DxcResultTable, DxcCellDef, DxcColumnDef];
 
 @NgModule({
-  exports: [EXPORTED_DECLARATIONS],
-  imports: [FormsModule, CommonModule, DxcTableModule, DxcPaginatorModule],
-  declarations: DECLARATIONS,
-  entryComponents: [DxcRowComponent, DxcHeaderRowComponent],
+    exports: [EXPORTED_DECLARATIONS],
+    imports: [FormsModule, CommonModule, DxcTableModule, DxcPaginatorModule],
+    declarations: DECLARATIONS
 })
 export class DxcResultsetTableModule {}

@@ -8,7 +8,15 @@ export * from './lib/theme/theme.service';
 export * from './lib/theme/theme.module';
 export * from './lib/theme/theme.directive';
 
-export * from './lib/background-provider/background-provider.module';
+export * from "./lib/background-provider/service/background-provider.service";
+export * from "./lib/background-provider/background-provider.component";
+export * from "./lib/background-provider/background-provider.module";
+
+
+export * from "./lib/dxc-header/dxc-header.component";
+export * from "./lib/dxc-header/dxc-header-dropdown/dxc-header-dropdown.component";
+export * from "./lib/dxc-header/dxc-header.module";
+export * from "./lib/dxc-header/directives/closable.directive";
 
 export * from './lib/dxc-accordion/dxc-accordion.component';
 export * from './lib/dxc-accordion/dxc-accordion.module';
@@ -73,6 +81,9 @@ export * from './lib/dxc-radio/dxc-radio.component';
 export * from './lib/dxc-radio/dxc-radio.module';
 
 export * from './lib/dxc-select/select';
+export * from './lib/dxc-select/option/option.module';
+export * from './lib/dxc-select/option/option';
+export * from './lib/dxc-select/option/dxc-option-icon/dxc-option-icon.component';
 export * from './lib/dxc-select/select-module';
 
 export * from './lib/dxc-slider/dxc-slider.component';
@@ -119,6 +130,7 @@ export * from './lib/dxc-paginator/dxc-paginator.component';
 export * from './lib/dxc-paginator/dxc-paginator.module';
 
 export * from './lib/dxc-wizard/dxc-wizard.component';
+export * from './lib/dxc-wizard/dxc-wizard-icon/dxc-wizard-icon.component';
 export * from './lib/dxc-wizard/dxc-wizard.module';
 export * from './lib/dxc-wizard/dxc-wizard-step/dxc-wizard-step.component';
 
@@ -127,6 +139,9 @@ export * from './lib/dxc-link/dxc-link.module';
 export * from './lib/dxc-link/dxc-link-icon/dxc-link-icon.component';
 
 export * from './lib/dxc-sidenav/dxc-sidenav.component';
+export * from './lib/dxc-sidenav/dxc-sidenav-title/dxc-sidenav-title.component';
+export * from './lib/dxc-sidenav/dxc-sidenav-subtitle/dxc-sidenav-subtitle.component';
+export * from './lib/dxc-sidenav/dxc-sidenav-link/dxc-sidenav-link.component';
 export * from './lib/dxc-sidenav/dxc-sidenav.module';
 
 export * from './lib/dxc-heading/dxc-heading.component';
@@ -142,6 +157,7 @@ export * from './lib/dxc-resultable/directives/dxc-column-def.directive';
 export * from './lib/dxc-resultable/directives/sorting.directive';
 
 export * from './lib/dxc-application-layout/dxc-application-layout.component';
+export * from './lib/dxc-application-layout/dxc-application-layout-footer/dxc-application-layout-footer.component';
 export * from './lib/dxc-application-layout/dxc-application-layout.module';
 export * from './lib/dxc-application-layout/dxc-application-layout-main/dxc-application-layout-main.component';
 export * from './lib/dxc-application-layout/dxc-application-layout-sidenav/dxc-application-layout-sidenav.component';
@@ -274,7 +290,15 @@ export * from './lib/dxc-date/helpers/date-helper';
 
 // export * from './lib/helpers/localstorage/storage-config';
 // export * from './lib/helpers/localstorage/storage-serializer';
-// export * from './lib/helpers/date/date-helper';
+// export * from './lib/helpers/date/date-helper';.
+
+
+export * from './lib/dxc-popover/dxc-popover-module';
+export * from './lib/dxc-popover/dxc-popover';
+export * from './lib/dxc-popover/dxc-popover-animations';
+export * from './lib/dxc-popover/dxc-popover-interfaces';
+export * from './lib/dxc-popover/dxc-popover-trigger';
+export * from './lib/dxc-popover/dxc-popover-target';
 
 export * from "./lib/dxc-lib.module";
 // export * from "./lib/dxc-cron-editor/dxc-cron-editor.module";

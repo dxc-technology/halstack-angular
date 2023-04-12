@@ -21,32 +21,31 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    AutocompleteComponent,
-    AutocompleteExampleComponent,
-    AutocompleteUsageComponent,
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    DxcInputTextModule,
-    ExampleViewerModule,
-    CodesandboxViewerModule,
-    DxcLinkModule,
-    CodePlaygroundModule,
-    DxcTagModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    AutocompleteComponent,
-    AutocompleteExampleComponent,
-    AutocompleteUsageComponent,
-  ],
-  entryComponents: [ExampleViewerComponent]
+    declarations: [
+        AutocompleteComponent,
+        AutocompleteExampleComponent,
+        AutocompleteUsageComponent,
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        DxcInputTextModule,
+        ExampleViewerModule,
+        CodesandboxViewerModule,
+        DxcLinkModule,
+        CodePlaygroundModule,
+        DxcTagModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        AutocompleteComponent,
+        AutocompleteExampleComponent,
+        AutocompleteUsageComponent,
+    ]
 })
 export class AutocompleteModule { }

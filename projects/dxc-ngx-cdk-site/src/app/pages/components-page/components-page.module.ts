@@ -7,24 +7,19 @@ import { ComponentsPageComponent } from 'src/app/pages/components-page/component
 import { ComponentsSidenavModule } from '../components-sidenav/components-sidenav.module';
 
 @NgModule({
-  declarations: [
-    ComponentsPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    DxcBoxModule,
-    RouterModule,
-    DxcSideNavModule,
-    DxcLinkModule,
-    ComponentsSidenavModule,
-    DxcHeadingModule
-  ],
-  exports: [
-  ],
-  entryComponents: [
-    DxcBoxComponent,
-    DxcHeadingComponent
-  ]
+    declarations: [
+        ComponentsPageComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        DxcBoxModule,
+        RouterModule,
+        DxcSideNavModule,
+        DxcLinkModule,
+        ComponentsSidenavModule,
+        DxcHeadingModule
+    ],
+    exports: []
 })
 export class ComponentsPageModule {}

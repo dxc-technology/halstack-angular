@@ -11,7 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { LoaderService } from './services/spinner/loader.service';
 // import { ConfigurationsetupService } from './services/startup/configurationsetup.service';
 // import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
-import { MdePopoverModule } from '@material-extended/mde';
+// import { MdePopoverModule } from '@material-extended/mde';
 
 @NgModule({
   // declarations: [
@@ -24,7 +24,7 @@ import { MdePopoverModule } from '@material-extended/mde';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MdePopoverModule,
+   // MdePopoverModule,
     // ToastrModule.forRoot({ toastComponent: MessageToast }),
     // ToastContainerModule
   ],

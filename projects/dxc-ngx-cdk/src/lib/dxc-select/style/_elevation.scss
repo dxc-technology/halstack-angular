@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @import 'variables';
 
 
@@ -131,7 +132,7 @@
 $mat-elevation-transition-duration: 280ms !default;
 
 // The default easing value for elevation transitions.
-$mat-elevation-transition-timing-function: $mat-fast-out-slow-in-timing-function;
+$mat-elevation-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 // The default color for elevation shadows.
 $mat-elevation-color: black !default;
@@ -144,7 +145,7 @@ $mat-elevation-prefix: 'mat-elevation-z';
 
 // Applies the correct css rules to an element to give it the elevation specified by $zValue.
 // The $zValue must be between 0 and 24.
-@mixin mat-elevation($zValue, $color: $mat-elevation-color, $opacity: $mat-elevation-opacity) {
+@mixin mat-elevation($zValue, $color: #000, $opacity: 1) {
   @if type-of($zValue) != number or not unitless($zValue) {
     @error '$zValue must be a unitless number';
   }
@@ -161,10 +162,10 @@ $mat-elevation-prefix: 'mat-elevation-z';
 // consumers to override it via the Material elevation classes.
 @mixin mat-overridable-elevation(
     $zValue,
-    $color: $mat-elevation-color,
-    $opacity: $mat-elevation-opacity) {
-  &:not([class*='#{$mat-elevation-prefix}']) {
-    @include mat-elevation($zValue, $color, $opacity);
+    $color: #000,
+    $opacity: 1) {
+  &:not([class*='#{'mat-elevation-z'}']) {
+    @include mat.elevation($zValue, $color, $opacity);
   }
 }
 
@@ -176,8 +177,8 @@ $mat-elevation-prefix: 'mat-elevation-z';
 //   transition: mat-elevation-transition-property-value(), opacity 100ms ease;
 // }
 @function mat-elevation-transition-property-value(
-    $duration: $mat-elevation-transition-duration,
-    $easing: $mat-elevation-transition-timing-function) {
+    $duration: 280ms,
+    $easing: cubic-bezier(0.4, 0, 0.2, 1)) {
   @return box-shadow #{$duration} #{$easing};
 }
 
@@ -188,7 +189,7 @@ $mat-elevation-prefix: 'mat-elevation-z';
 // NOTE(traviskaufman): Both this mixin and the above function use default parameters so they can
 // be used in the same way by clients.
 @mixin mat-elevation-transition(
-    $duration: $mat-elevation-transition-duration,
-    $easing: $mat-elevation-transition-timing-function) {
+    $duration: 280ms,
+    $easing: cubic-bezier(0.4, 0, 0.2, 1)) {
   transition: mat-elevation-transition-property-value($duration, $easing);
 }

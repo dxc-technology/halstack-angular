@@ -15,15 +15,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import * as momentImported from "moment";
+import moment from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
 import { Moment } from "moment";
-import { MdePopoverTrigger } from "@material-extended/mde";
+import { DxcPopoverTrigger } from "../dxc-popover/dxc-popover-trigger";
 import { HostListener } from "@angular/core";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { DatePipe } from '@angular/common';
 import { DateHelper } from './helpers/date-helper';
-const moment = momentImported;
+//const moment = momentImported;
 
 @Component({
   selector: "dxc-date",
@@ -138,8 +138,8 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
   date: string = '';
   calendarDynamicStyle: any;
   @ViewChild('calender', { read: ElementRef, static: false }) calender: ElementRef;
-  @ViewChild(MdePopoverTrigger, { static: false })
-  _dxcTrigger: MdePopoverTrigger;
+  @ViewChild(DxcPopoverTrigger, { static: false })
+  _dxcTrigger: DxcPopoverTrigger;
   @ViewChild("dxcCalendar", { static: false }) _dxcCalendar: MatCalendar<Moment>;
   @ViewChild('calendarButton', { read: ElementRef, static: false }) calendarButton: ElementRef;
 

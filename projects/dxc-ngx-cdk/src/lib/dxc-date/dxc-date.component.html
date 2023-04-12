@@ -11,10 +11,10 @@
   [margin]="margin"
   [size]="size"
   [placeholder]="format"
-  [mdePopoverTriggerFor]="dxcPopover"
-  mdePopoverTriggerOn="none"
-  [mdePopoverOffsetX]="popOverOffsetX"
-  [mdePopoverPositionX]="'before'"
+  [dxcPopoverTriggerFor]="dxcPopover"
+  dxcPopoverTriggerOn="none"
+  [dxcPopoverOffsetX]="popOverOffsetX"
+  [dxcPopoverPositionX]="'before'"
   [disabled]="disabled"
   [ariaLabel]="ariaLabel"
   [ariaLabelledBy]="ariaLabelledBy"
@@ -34,11 +34,11 @@
   </dxc-input-suffix-icon>
 </dxc-input-text>
 
-<mde-popover
-  #dxcPopover="mdePopover"
-  [mdePopoverOverlapTrigger]="false"
-  [mdePopoverCloseOnClick]="false"
-  [mdePopoverArrowWidth]="0"
+<dxc-popover
+  #dxcPopover="dxcPopover"
+  [dxcPopoverOverlapTrigger]="false"
+  [dxcPopoverCloseOnClick]="false"
+  [dxcPopoverArrowWidth]="0"
 >
   <div [class]="calendarDynamicStyle">
     <dxc-box theme size="fillParent" padding="xsmall" tabindex="0" [attr.aria-label]="ariaLabel" [attr.aria-labelledby]="ariaLabelledBy"  role="dialog" #calender>
@@ -52,4 +52,4 @@
       </mat-calendar>
     </dxc-box>
   </div>
-</mde-popover>
+</dxc-popover>

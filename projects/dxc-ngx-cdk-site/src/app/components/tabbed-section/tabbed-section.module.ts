@@ -11,25 +11,22 @@ import { DynamicComponentComponent } from '../dynamic-component/dynamic-componen
 import { DxcTabbedSectionModule } from '@dxc-technology/halstack-angular';
 
 @NgModule({
-  declarations: [    
-    TabbedSectionComponent
+    declarations: [
+        TabbedSectionComponent
     ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    PortalModule,
-    DynamicModule,
-    MatTabsModule,
-    MatIconModule,
-    DxcTabbedSectionModule
-  ],
-  exports: [
-    TabbedSectionComponent
-  ],
-  entryComponents: [
-    DynamicComponentComponent
-  ]
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule,
+        PortalModule,
+        DynamicModule,
+        MatTabsModule,
+        MatIconModule,
+        DxcTabbedSectionModule
+    ],
+    exports: [
+        TabbedSectionComponent
+    ]
 })
 export class TabbedSectionModule {}

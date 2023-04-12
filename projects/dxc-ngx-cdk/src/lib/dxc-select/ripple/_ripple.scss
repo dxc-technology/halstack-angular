@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+@use '@angular/cdk' as cdk;
 @import '../theming/theming';
 @import '../../../cdk/a11y/a11y';
 
@@ -37,7 +39,7 @@ $mat-ripple-color-opacity: 0.1;
     transform: scale(0);
 
     // In high contrast mode the ripple is opaque, causing it to obstruct the content.
-    @include cdk-high-contrast(active, off) {
+    @include cdk.high-contrast(active, off) {
       display: none;
     }
   }
@@ -53,11 +55,11 @@ $mat-ripple-color-opacity: 0.1;
     // If the ripple color is resolves to a color *type*, we can use it directly, otherwise
     // (e.g. it resolves to a CSS variable) we fall back to using the color and setting an opacity.
     @if (type-of($foreground-base) == color) {
-      background-color: rgba($foreground-base, $mat-ripple-color-opacity);
+      background-color: rgba($foreground-base, 0.1);
     }
     @else {
       background-color: $foreground-base;
-      opacity: $mat-ripple-color-opacity;
+      opacity: 0.1;
     }
   }
 }
@@ -67,7 +69,7 @@ $mat-ripple-color-opacity: 0.1;
   @include mat-private-check-duplicate-theme-styles($theme, 'mat-ripple') {
     $color: mat-get-color-config($theme);
     @if $color != null {
-      @include mat-ripple-color($color);
+      @include mat.ripple-color($color);
     }
   }
 }

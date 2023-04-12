@@ -1,7 +1,12 @@
 .isSortable {
+  display: inline-flex;
   cursor: pointer;
   width: fit-content;
   svg {
     fill: var(--table-headerFontColor);
+  }
+  span {
+    display: inline-flex;
+    align-items: center;
   }
 }

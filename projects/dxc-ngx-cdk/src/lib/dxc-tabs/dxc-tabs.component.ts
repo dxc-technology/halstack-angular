@@ -185,7 +185,7 @@ export class DxcTabsComponent implements OnChanges {
 
   setEventListeners() {
     let tabLabels =
-      this._element.nativeElement.getElementsByClassName("mat-tab-label");
+      this._element.nativeElement.getElementsByClassName("mat-mdc-tab");
     if (tabLabels?.length > 0) {
       this.tabs.map((tab, index) => {
         tabLabels[index].addEventListener("click", function () {
@@ -204,7 +204,7 @@ export class DxcTabsComponent implements OnChanges {
 
   insertUnderline() {
     let tabList =
-      this._element.nativeElement.getElementsByClassName("mat-tab-list")[0];
+      this._element.nativeElement.getElementsByClassName("mat-mdc-tab-list")[0];
     tabList.insertAdjacentHTML("beforeend", '<div class="underline"></div>');
   }
 
@@ -213,17 +213,17 @@ export class DxcTabsComponent implements OnChanges {
       .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         box-shadow: none;
       }
-      .mat-tab-list .underline {
+      .mat-mdc-tab-list .underline {
         height: var(--tabs-dividerThickness);
         width: 100%;
         background-color: var(--tabs-dividerColor);
       }
-      .mat-tab-group {
+      .mat-mdc-tab-group{
         position: relative;
         display: flex;
         flex-direction: column;
         ${this.utils.getMargins(inputs.margin)}
-        .mat-tab-header {
+        .mat-mdc-tab-header {
           background-color: white;
         }
         .mat-ink-bar {
@@ -231,7 +231,7 @@ export class DxcTabsComponent implements OnChanges {
           height: var(--tabs-selectedUnderlineThickness);
         }
       }
-      .mat-tab-list .mat-tab-label {
+      .mat-mdc-tab-list .mat-mdc-tab-labels {
         height: ${this.getTabHeight()} !important;
         padding-right: 16px;
         padding-left: 16px;
@@ -341,7 +341,7 @@ export class DxcTabsComponent implements OnChanges {
         }
       }
       &.label-icons {
-        .mat-tab-list .mat-tab-label {
+        .mat-mdc-tab-list .mat-mdc-tab-labels {
           height: 76px;
         }
       }

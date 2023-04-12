@@ -15,35 +15,34 @@ import { TextAreaImportComponent } from '../../components/examples/text-area/tex
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    TextAreaComponent,
-    TextAreaApiComponent,
-    TextAreaPropertiesTableComponent,
-    TextAreaExampleComponent,
-    TextAreaImportComponent],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    DxcTextareaModule,
-    ExampleViewerModule,
-    CodesandboxViewerModule,
-    DxcLinkModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    TextAreaComponent,
-    TextAreaApiComponent,
-    TextAreaPropertiesTableComponent,
-    TextAreaExampleComponent,
-    TextAreaImportComponent],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        TextAreaComponent,
+        TextAreaApiComponent,
+        TextAreaPropertiesTableComponent,
+        TextAreaExampleComponent,
+        TextAreaImportComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        DxcTextareaModule,
+        ExampleViewerModule,
+        CodesandboxViewerModule,
+        DxcLinkModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        TextAreaComponent,
+        TextAreaApiComponent,
+        TextAreaPropertiesTableComponent,
+        TextAreaExampleComponent,
+        TextAreaImportComponent
+    ]
 })
 export class TextAreaModule { }

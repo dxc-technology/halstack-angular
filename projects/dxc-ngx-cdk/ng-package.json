@@ -1,15 +1,39 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "allowedNonPeerDependencies": [
+    "@ctrl/tinycolor",
+    "@angular/material",
+    "@angular/animations",
+    "@angular/cdk",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/core",
+    "@angular/forms",
+    "@angular/platform-browser",
+    "@angular/platform-browser-dynamic",
+    "@angular/router",
+    "typescript",
+    "rxjs",
+    "moment",
+    "@angular/material-moment-adapter",
+    "emotion",
+    "rgb-hex",
+    "color",
+    "rxjs",
+    "uuid",
+    "webpack",
+    "zone.js",
+    "sass",
+    "sass-loader",
+    "@testing-library/dom",
+    "@testing-library/angular",
+    "dayjs",
+    "jest",
+    "ng-mocks",
+    "tslib"
+  ],
   "dest": "../../dist/dxc-ngx-cdk",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "emotion": "emotion",
-      "moment": "momentImported",
-      "@material-extended/mde": "mde",
-      "util": "util",
-      "events": "events"
-    }
-  },
-  "whitelistedNonPeerDependencies": ["."]
+    "entryFile": "src/public-api.ts"
+  }
 }

@@ -9,7 +9,7 @@ import {
   MomentDateAdapter,
   MatMomentDateModule
 } from "@angular/material-moment-adapter";
-import { MdePopoverModule } from "@material-extended/mde";
+import { DxcPopoverModule } from "../dxc-popover/dxc-popover-module";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
 
@@ -25,7 +25,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -55,7 +55,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -85,7 +85,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -121,7 +121,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -158,7 +158,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -196,7 +196,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -234,7 +234,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],
@@ -276,7 +276,7 @@ describe("DxcDate", () => {
         MatNativeDateModule,
         MatInputModule,
         MatDatepickerModule,
-        MdePopoverModule,
+        DxcPopoverModule,
         DxcBoxModule,
         DxcInputTextModule,
       ],

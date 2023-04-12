@@ -16,35 +16,34 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    TabsComponent,
-    TabsTablePropertiesComponent,
-    TabsExampleComponent,
-    TabsImportComponent,
-    TabsApiComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    DxcTableModule,
-    TabbedSectionModule,
-    DxcTabsModule,
-    ExampleViewerModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule,
-    CodesandboxViewerModule
-  ],
-  exports: [
-    TabsComponent,
-    TabsTablePropertiesComponent,
-    TabsExampleComponent,
-    TabsImportComponent,
-    TabsApiComponent
-  ],
-  entryComponents: [ExampleViewerComponent]
+    declarations: [
+        TabsComponent,
+        TabsTablePropertiesComponent,
+        TabsExampleComponent,
+        TabsImportComponent,
+        TabsApiComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        DxcTableModule,
+        TabbedSectionModule,
+        DxcTabsModule,
+        ExampleViewerModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule,
+        CodesandboxViewerModule
+    ],
+    exports: [
+        TabsComponent,
+        TabsTablePropertiesComponent,
+        TabsExampleComponent,
+        TabsImportComponent,
+        TabsApiComponent
+    ]
 })
 export class TabsModule {}

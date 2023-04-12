@@ -15,33 +15,27 @@ import { TabbedSectionModule } from 'src/app/components/tabbed-section/tabbed-se
 import { OverviewThemesComponent } from 'src/app/components/overview/overview-themes/overview-themes.component';
 
 @NgModule({
-  declarations: [
-    OverviewPageComponent,
-    OverviewInstallComponent,
-    OverviewSupportComponent,
-    OverviewUseComponent,
-    OverviewThemesComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    TabbedSectionModule,
-    DxcBoxModule,
-    DxcTagModule,
-    RouterModule,
-    MatIconModule,
-    MatTabsModule,
-    FormsModule,
-    CodePlaygroundModule,
-    DxcHeadingModule
-  ],
-  exports: [
-  ],
-  entryComponents: [
-    DxcBoxComponent,
-    DxcTagComponent,
-    DxcHeadingComponent,
-  ]
+    declarations: [
+        OverviewPageComponent,
+        OverviewInstallComponent,
+        OverviewSupportComponent,
+        OverviewUseComponent,
+        OverviewThemesComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        TabbedSectionModule,
+        DxcBoxModule,
+        DxcTagModule,
+        RouterModule,
+        MatIconModule,
+        MatTabsModule,
+        FormsModule,
+        CodePlaygroundModule,
+        DxcHeadingModule
+    ],
+    exports: []
 })
 export class OverviewPageModule {}

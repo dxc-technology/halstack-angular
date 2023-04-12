@@ -1,0 +1,55 @@
+
+// @import '~@angular/material/theming';
+
+.dxc-popover-panel {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh + 48px);
+  // @include cdk-high-contrast {
+    // outline: solid 1px;
+  // }
+}
+
+.dxc-popover-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.dxc-popover-below {
+  .dxc-popover-direction-arrow {
+    // order: 0;
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom-width: 0 !important;
+    z-index: 99999;
+  }
+}
+
+.dxc-popover-above {
+  .dxc-popover-direction-arrow {
+    // order: 1;
+    position: absolute;
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-top-width: 0 !important;
+    z-index: 99999;
+  }
+}
+
+.dxc-popover-after {
+  .dxc-popover-direction-arrow {
+    left: 20px;
+  }
+}
+
+.dxc-popover-before {
+  .dxc-popover-direction-arrow {
+    right: 20px;
+  }
+}

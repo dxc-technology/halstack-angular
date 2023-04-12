@@ -1,3 +1,5 @@
+@use '@angular/cdk' as cdk;
+@use "sass:math";
 @import "../style/menu-common";
 @import "../style/vendor-prefixes";
 @import "../style/layout-common";
@@ -20,7 +22,7 @@
     cursor: default;
   }
 
-  @include cdk-high-contrast(active, off) {
+  @include cdk.high-contrast(active, off) {
     $high-contrast-border-width: 1px;
 
     // Add a margin to offset the border that we're adding to active option, in order
@@ -68,7 +70,7 @@
 }
 
 .mat-option-pseudo-checkbox {
-  $margin: $mat-menu-side-padding / 2;
+  $margin: math.div(16px, 2px);
   margin-right: $margin;
 
   [dir="rtl"] & {

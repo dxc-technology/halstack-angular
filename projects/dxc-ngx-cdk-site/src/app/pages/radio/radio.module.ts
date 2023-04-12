@@ -19,39 +19,36 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from 'src/app/components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    RadioComponent,
-    RadioExampleComponent,
-    RadioPropertiesComponent,
-    RadioApiComponent,
-    RadioImportComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    MatRadioModule,
-    DxcRadioModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcTableModule,
-    DxcTagModule,
-    CodesandboxViewerModule,
-    CodePlaygroundModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    RadioComponent,
-    RadioExampleComponent,
-    RadioPropertiesComponent,
-    RadioImportComponent,
-    RadioApiComponent,
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        RadioComponent,
+        RadioExampleComponent,
+        RadioPropertiesComponent,
+        RadioApiComponent,
+        RadioImportComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        CommonModule,
+        MatRadioModule,
+        DxcRadioModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcTableModule,
+        DxcTagModule,
+        CodesandboxViewerModule,
+        CodePlaygroundModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        RadioComponent,
+        RadioExampleComponent,
+        RadioPropertiesComponent,
+        RadioImportComponent,
+        RadioApiComponent,
+    ]
 })
 export class RadioModule { }

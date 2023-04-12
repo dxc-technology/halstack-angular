@@ -15,35 +15,32 @@ import { ColorPreviewModule } from '../../components/color-preview/color-preview
 import { CodesandboxViewerModule } from '../../components/codesandbox-viewer/codesandbox-viewer.module';
 
 @NgModule({
-  declarations: [
-    SwitchComponent,
-    SwitchExampleComponent,
-    SwitchTablePropertiesComponent,
-    SwitchImportComponent,
-    SwitchApiComponent,
-  ],
-  imports: [
-    BrowserModule,
-    TabbedSectionModule,
-    ExampleViewerModule,
-    DxcSwitchModule,
-    DxcTableModule,
-    DxcTagModule,
-    CodePlaygroundModule,
-    CodesandboxViewerModule,
-    ComponentsSidenavModule,
-    ColorPreviewModule,
-    DxcChipModule,
-    DxcHeadingModule
-  ],
-  exports: [
-    SwitchExampleComponent,
-    SwitchTablePropertiesComponent,
-    SwitchImportComponent,
-    SwitchApiComponent,
-  ],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    declarations: [
+        SwitchComponent,
+        SwitchExampleComponent,
+        SwitchTablePropertiesComponent,
+        SwitchImportComponent,
+        SwitchApiComponent,
+    ],
+    imports: [
+        BrowserModule,
+        TabbedSectionModule,
+        ExampleViewerModule,
+        DxcSwitchModule,
+        DxcTableModule,
+        DxcTagModule,
+        CodePlaygroundModule,
+        CodesandboxViewerModule,
+        ComponentsSidenavModule,
+        ColorPreviewModule,
+        DxcChipModule,
+        DxcHeadingModule
+    ],
+    exports: [
+        SwitchExampleComponent,
+        SwitchTablePropertiesComponent,
+        SwitchImportComponent,
+        SwitchApiComponent,
+    ]
 })
 export class SwitchModule { }

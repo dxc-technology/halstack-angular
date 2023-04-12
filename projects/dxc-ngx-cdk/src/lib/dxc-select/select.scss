@@ -1,3 +1,5 @@
+@use '@angular/cdk' as cdk;
+@use "sass:math";
 @import "./style/menu-common";
 @import "./style/list-common";
 @import "./style/variables";
@@ -111,7 +113,7 @@ $mat-select-placeholder-arrow-space: 2 *
   min-width: 100%; // prevents some animation twitching and test inconsistencies in IE11
   border-radius: 4px;
   outline: 0;
-  @include cdk-high-contrast(active, off) {
+  @include cdk.high-contrast(active, off) {
     outline: solid 1px;
   }
   &::-webkit-scrollbar {
@@ -140,7 +142,7 @@ $mat-select-placeholder-arrow-space: 2 *
 }
 
 .mat-form-field-type-mat-select {
-  &:not(.mat-form-field-disabled) .mat-form-field-flex {
+  &:not(.mat-form-field-disabled) .mat-mdc-form-field-flex {
     cursor: pointer;
   }
 
@@ -152,7 +154,7 @@ $mat-select-placeholder-arrow-space: 2 *
 .mat-select-placeholder {
   // Delay the transition until the label has animated about a third of the way through, in
   // order to prevent the placeholder from overlapping for a split second.
-  transition: color $swift-ease-out-duration $swift-ease-out-duration / 3
+  transition: color $swift-ease-out-duration math.div($swift-ease-out-duration, 3)
     $swift-ease-out-timing-function;
 
   ._mat-animation-noopable & {

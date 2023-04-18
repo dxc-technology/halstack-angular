@@ -25,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 The project is divided in two main folders. One is for the actual library, and the other one is a Angular application using the library.
 
-### Library
+### Library test
 
 Contained in the `projects\dxc-ngx-cdk`.
 

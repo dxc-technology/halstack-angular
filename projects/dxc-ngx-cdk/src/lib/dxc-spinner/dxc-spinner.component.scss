@@ -1,13 +1,16 @@
 :host {
   display: inline-block;
+
   &.large {
     height: 140px;
     width: 140px;
   }
+
   &.small {
     height: 30px;
     width: 30px;
   }
+
   &.overlay {
     height: 100vh;
     width: 100vw;
@@ -19,6 +22,7 @@
     align-items: center;
     z-index: 1000;
   }
+
   .spinnerContainer {
     .backOverlay {
       width: 100vw;
@@ -29,13 +33,16 @@
       top: 0;
       left: 0;
     }
+
     height: inherit;
     width: inherit;
     position: relative;
+
     &.overlayed {
       width: 140px;
       height: 140px;
     }
+
     &.notOverlayed {
       height: auto;
       width: auto;
@@ -44,26 +51,32 @@
       left: 0;
       z-index: 1;
     }
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     .mat-spinner,
-    .mat-progress-spinner {
+    .mat-mdc-progress-spinner {
       ::ng-deep {
         width: inherit !important;
         height: inherit !important;
+
         svg {
-          width: inherit !important;
-          height: inherit !important;
+          width: auto !important;
+          height: 100% !important;
         }
+
         circle {
           stroke-width: 6px !important;
         }
       }
     }
+
     &.smaller {
+
       .mat-spinner,
-      .mat-progress-spinner {
+      .mat-mdc-progress-spinner {
         ::ng-deep {
           circle {
             stroke-width: 16px !important;
@@ -71,6 +84,7 @@
         }
       }
     }
+
     .labelsContainer {
       position: absolute;
       margin: 0 auto;
@@ -78,8 +92,10 @@
       width: 110px;
       font-family: var(--fontFamily);
       font-size: 12px;
+
       p {
         margin: 0;
+
         &.label,
         &.value {
           width: 100%;
@@ -92,36 +108,44 @@
       }
     }
   }
+
   .mat-spinner,
-  .mat-progress-spinner {
+  .mat-mdc-progress-spinner {
     ::ng-deep {
       position: absolute;
     }
   }
+
   .spinnerContainer {
     .backOverlay {
       background-color: var(--spinner-overlayColor);
       opacity: 0.8;
     }
+
     .labelsContainer {
       color: #FFFFFF;
+
       &.notOverlayed {
         color: var(--spinner-fontColor);
       }
     }
   }
-  .mat-progress-spinner.backCircle {
+
+  .mat-mdc-progress-spinner.backCircle {
     ::ng-deep {
       circle {
         stroke: var(--spinner-totalCircleColor);
       }
     }
   }
+
   .mat-spinner.spinner,
-  .mat-progress-spinner.spinner {
+  .mat-mdc-progress-spinner {
     ::ng-deep {
-      circle {
-        stroke: var(--spinner-trackCircleColor);
+      .mdc-circular-progress__indeterminate-circle-graphic {
+        circle {
+          stroke: var(--spinner-trackCircleColor);
+        }
       }
     }
   }

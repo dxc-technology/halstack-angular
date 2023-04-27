@@ -213,10 +213,11 @@ export class DxcTabsComponent implements OnChanges {
       .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         box-shadow: none;
       }
-      .mat-mdc-tab-list .underline {
-        height: var(--tabs-dividerThickness);
+      .mat-mdc-tab-list .mdc-tab-indicator .mdc-tab-indicator__content--underline{
+        border-width: var(--tabs-dividerThickness, 2px);
         width: 100%;
-        background-color: var(--tabs-dividerColor);
+        border-color: var(--tabs-dividerColor);
+        border-style: solid
       }
       .mat-mdc-tab-group{
         position: relative;
@@ -225,6 +226,7 @@ export class DxcTabsComponent implements OnChanges {
         ${this.utils.getMargins(inputs.margin)}
         .mat-mdc-tab-header {
           background-color: white;
+          border-bottom: 1px solid var(--mat-tab-header-color)
         }
         .mat-ink-bar {
           background-color: var(--tabs-selectedUnderlineColor);
@@ -236,7 +238,7 @@ export class DxcTabsComponent implements OnChanges {
         padding-right: 16px;
         padding-left: 16px;
         min-width: 90px;
-        max-width: 360px;
+        max-width: fit-content;
         text-transform: var(--tabs-fontTextTransform) !important;
         opacity: 1 !important;
         color: var(--tabs-unselectedFontColor);
@@ -253,10 +255,15 @@ export class DxcTabsComponent implements OnChanges {
           font-style: var(--tabs-fontStyle);
           font-weight: var(--tabs-fontWeight);
         }
+        .mat-mdc-tab{
         &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--tabs-focusOutline);
           background-color: var(--tabs-hoverBackgroundColor) !important;
+          }
+          &.mdc-tab--active{
+            background-color: var(--tabs-hoverBackgroundColor) !important;
+          }
         }
         dxc-tab-icon {
           fill: var(--tabs-fontColor);

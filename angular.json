@@ -174,17 +174,10 @@
             "styles": [
               "projects/dxc-ngx-cdk-examples/src/styles.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "./node_modules/froala-editor/css/froala_style.min.css",
-              "./node_modules/codemirror/lib/codemirror.css",
-              "./node_modules/codemirror/theme/base16-light.css"
             ],
             "scripts": [
-              "./node_modules/codemirror/lib/codemirror.js",
-              "./node_modules/codemirror/mode/vb/vb.js",
-              "./node_modules/codemirror/addon/runmode/runmode.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
-              "./node_modules/froala-editor/js/froala_editor.pkgd.min.js"],
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -278,17 +271,10 @@
             }
           },
           "styles": [
-            "./node_modules/bootstrap/dist/css/bootstrap.css",
-            "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-            "./node_modules/froala-editor/css/froala_style.min.css",
-            "./node_modules/codemirror/lib/codemirror.css",
-            "./node_modules/codemirror/theme/material.css"
+            "./node_modules/bootstrap/dist/css/bootstrap.css"
           ],
           "scripts": [
             "../app/node_modules/jquery/dist/jquery.min.js",
-            "./node_modules/codemirror/mode/vb/vb.js",
-            "./node_modules/codemirror/addon/runmode/runmode.js",
-            "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
             "./node_modules/jstree/dist/jstree.min.js",
             "./node_modules/bootstrap/dist/js/bootstrap.js"
           ]

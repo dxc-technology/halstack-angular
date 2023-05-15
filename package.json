@@ -56,7 +56,7 @@
     "ngx-infinite-scroll": "^15.0.0",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-monaco-editor-v2": "15.0.1",
-    "ngx-toastr": "^16.1.1",
+    "ngx-toastr": "16.1.1",
     "rgb-hex": "^4.0.1",
     "rxjs": "~7.4.0",
     "tinycolor2": "^1.6.0",

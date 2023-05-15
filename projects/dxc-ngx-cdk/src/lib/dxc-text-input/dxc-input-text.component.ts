@@ -12,7 +12,7 @@ import {
   QueryList,
   forwardRef
 } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import {

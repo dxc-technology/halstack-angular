@@ -14,7 +14,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { DxcAccordionComponent } from "../dxc-accordion/dxc-accordion.component";
 import { AccordionService } from "./services/accordionService.service";
 import { ChangeDetectorRef } from "@angular/core";

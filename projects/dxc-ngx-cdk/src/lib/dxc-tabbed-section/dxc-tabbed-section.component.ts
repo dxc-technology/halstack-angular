@@ -6,7 +6,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { EventEmitter } from "events";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { DxcTabsComponent } from "../dxc-tabs/dxc-tabs.component";
 import { BehaviorSubject } from "rxjs";
 import {

@@ -1,4 +1,4 @@
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
 import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";

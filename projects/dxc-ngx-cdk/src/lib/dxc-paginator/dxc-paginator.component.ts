@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 @Component({
   selector: "dxc-paginator",

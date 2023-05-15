@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, EventEmitter } from "@angular/core";
 import { CssUtils } from "../utils";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { SimpleChanges, HostBinding } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty } from '@angular/cdk/coercion';

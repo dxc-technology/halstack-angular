@@ -14,7 +14,7 @@ import {
   Output,
   ViewChild,
 } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { v4 as uuidv4 } from "uuid";

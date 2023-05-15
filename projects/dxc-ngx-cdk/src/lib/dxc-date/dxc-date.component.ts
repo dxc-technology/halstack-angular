@@ -12,7 +12,7 @@ import {
   ElementRef
 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import moment from "moment";

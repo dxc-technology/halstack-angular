@@ -11,7 +11,7 @@ import {
   AfterViewChecked,
   forwardRef
 } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { UntypedFormControl } from "@angular/forms";
 import { CssUtils } from "../utils";

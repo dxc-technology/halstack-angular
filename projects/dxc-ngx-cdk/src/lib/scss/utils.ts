@@ -1,4 +1,4 @@
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { spaces } from "./variables";
 
 export class CssUtils {

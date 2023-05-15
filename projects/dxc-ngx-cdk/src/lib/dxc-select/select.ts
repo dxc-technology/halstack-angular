@@ -108,7 +108,7 @@ import {
   getMatSelectDynamicMultipleError,
 } from "./select-errors";
 import { SelectService } from "./services/select.service";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 
 let nextUniqueId = 0;

@@ -6,7 +6,7 @@ import {
   ChangeDetectorRef,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 import { HostListener, QueryList } from "@angular/core";
 import { SidenavService } from "./dxc-application-layout-sidenav/services/sidenav.service";

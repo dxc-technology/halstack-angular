@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostBinding, OnChanges } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 @Component({
   selector: "dxc-dropdown-icon",

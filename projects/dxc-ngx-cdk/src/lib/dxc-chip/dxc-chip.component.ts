@@ -9,7 +9,7 @@ import {
   ContentChildren,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 import {
   coerceBooleanProperty,

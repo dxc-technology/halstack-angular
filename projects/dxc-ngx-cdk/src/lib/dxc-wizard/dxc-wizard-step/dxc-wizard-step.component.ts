@@ -11,7 +11,7 @@ import {
   QueryList,
   ChangeDetectorRef,
 } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { DxcWizardIconComponent } from "../dxc-wizard-icon/dxc-wizard-icon.component";
 import { WizardService } from "../services/wizard.service";

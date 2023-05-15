@@ -1,4 +1,4 @@
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { spaces } from "./variables";
 import { Injectable } from "@angular/core";
 

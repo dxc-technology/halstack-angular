@@ -10,7 +10,7 @@ import {
   OnInit,
   SimpleChanges,
 } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { FileData } from "../interfaces/file.interface";
 import { FilesService } from "../services/files.services";

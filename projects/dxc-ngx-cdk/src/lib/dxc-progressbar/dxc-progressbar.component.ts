@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';

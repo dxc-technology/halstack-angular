@@ -10,7 +10,7 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { ToggleGroupService } from "./services/toggleGroup.service";
 

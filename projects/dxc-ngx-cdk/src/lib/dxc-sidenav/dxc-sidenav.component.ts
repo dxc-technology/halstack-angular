@@ -10,7 +10,7 @@ import {
   HostBinding,
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 import { responsiveSizes } from "./../variables";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';

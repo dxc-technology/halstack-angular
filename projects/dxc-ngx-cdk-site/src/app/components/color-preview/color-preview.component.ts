@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 @Component({
   selector: 'color-preview',

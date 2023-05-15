@@ -13,7 +13,7 @@ import {
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-icon.component";
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";

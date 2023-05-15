@@ -31,7 +31,7 @@ import {
   MAT_OPTION_PARENT_COMPONENT,
 } from "./option-parent";
 import { SelectService } from "../services/select.service";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 
 /**
  * Option IDs need to be unique across components, so this counter exists outside of

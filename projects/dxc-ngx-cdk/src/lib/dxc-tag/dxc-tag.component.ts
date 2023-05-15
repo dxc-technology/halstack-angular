@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { ContentChildren, ChangeDetectorRef } from '@angular/core';
 import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';

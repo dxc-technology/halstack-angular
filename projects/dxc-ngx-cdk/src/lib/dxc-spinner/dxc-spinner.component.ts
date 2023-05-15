@@ -6,7 +6,7 @@ import {
   SimpleChanges,
   Injector
 } from "@angular/core";
-import { css } from "emotion";
+import { css } from "@emotion/css";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';

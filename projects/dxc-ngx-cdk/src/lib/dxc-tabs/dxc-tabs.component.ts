@@ -235,8 +235,6 @@ export class DxcTabsComponent implements OnChanges {
       }
       .mat-mdc-tab-list .mat-mdc-tab-labels {
         height: ${this.getTabHeight()} !important;
-        padding-right: 16px;
-        padding-left: 16px;
         min-width: 90px;
         max-width: fit-content;
         text-transform: var(--tabs-fontTextTransform) !important;

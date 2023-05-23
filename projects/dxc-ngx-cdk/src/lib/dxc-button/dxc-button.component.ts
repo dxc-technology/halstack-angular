@@ -225,7 +225,7 @@ export class DxcButtonComponent {
     return css`
       background: var(--button-primaryBackgroundColor);
       color: var(--button-primaryFontColor);
-      ${this.border == true ? `span.mat-button-ripple { border: 2px solid transparent;}` : ``}
+      ${this.border == true ? `span.mat-mdc-button-ripple { border: 2px solid var(--button-secondaryOutlinedColor);}` : ``}
       &:hover:not([disabled]) {
         background: var(--button-primaryHoverBackgroundColor);
         color: var(--button-primaryHoverFontColor);
@@ -248,7 +248,7 @@ export class DxcButtonComponent {
     return css`
       color: var(--button-secondaryFontColor);
       background-color: var(--button-secondaryBackgroundColor);
-      ${this.border == true ? `span.mat-button-ripple {
+      ${this.border == true ? `span.mat-mdc-button-ripple {
         border: 2px solid var(--button-secondaryOutlinedColor);
       }` : ``}
       &:hover:not([disabled]) {
@@ -259,7 +259,7 @@ export class DxcButtonComponent {
       &:disabled {
         border-color: var(--button-disabledSecondaryOutlinedColor);
         color: var(--button-disabledSecondaryFontColor) !important;
-        ${this.border == true ? `span.mat-button-ripple {
+        ${this.border == true ? `span.mat-mdc-button-ripple {
           border: 2px solid var(--button-disabledSecondaryOutlinedColor);
         }` : ``}
       }
@@ -281,8 +281,8 @@ export class DxcButtonComponent {
     return css`
       background-color: var(--button-textBackgroundColor);
       color: var(--button-textFontColor);
-      ${this.border == true ? `span.mat-button-ripple {
-        border: 2px solid transparent;
+      ${this.border == true ? `span.mat-mdc-button-ripple {
+        border: 2px solid var(--button-secondaryOutlinedColor);
       }` : ``}
       &:hover:not([disabled]) {
         background: var(--button-textHoverBackgroundColor);

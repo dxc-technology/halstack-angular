@@ -213,6 +213,9 @@ export class DxcTabsComponent implements OnChanges {
       .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
         box-shadow: none;
       }
+      .mat-mdc-tab-body.mat-mdc-tab-body-active{
+        height:100%
+      }
       .mat-mdc-tab-list .mdc-tab-indicator .mdc-tab-indicator__content--underline{
         border-width: var(--tabs-dividerThickness, 2px);
         width: 100%;

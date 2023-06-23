@@ -36,6 +36,7 @@ export class DxcButtonComponent {
   @Input() label: string;
   @Input() iconSrc: string;
   @Input() iconPosition: string;
+  @Input() id: string = "button"; 
   @Input() margin: any;
   @Input() size: string;
   @Input() type: string = "button";

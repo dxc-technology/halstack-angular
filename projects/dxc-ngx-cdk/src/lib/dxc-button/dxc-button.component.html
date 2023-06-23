@@ -1,6 +1,7 @@
 <button
   disableRipple
   mat-button
+  [id]="id +'_button'"
   [disabled]="disabled"
   (click)="onClickHandler($event)"
   [tabindex]="disabled ? -1 : tabIndexValue"

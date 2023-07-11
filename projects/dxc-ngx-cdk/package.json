@@ -1,6 +1,6 @@
 {
   "name": "@dxc-technology/halstack-angular",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "DXC Angular CDK (Component Development Kit) based on Graphen Design System",
   "resolutions": {
     "webpack": "^5.0.0"

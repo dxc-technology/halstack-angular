@@ -54,6 +54,7 @@ export class DxcTabComponent implements OnChanges {
   @Output() onTabHover: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() id: number;
+  @Input() name: string;
 
   showDotIndicator: boolean = false;
   labelClass: string;

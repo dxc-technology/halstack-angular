@@ -166,7 +166,7 @@ export * from './lib/dxc-application-layout/dxc-application-layout-header/dxc-ap
 
 export * from "./lib/dxc-file-input/dxc-file-input.component";
 export * from "./lib/dxc-file-input/dxc-file-input.module";
-export * from "./lib/dxc-file-input/interfaces/file.interface";
+export * from "./lib/dxc-file-input/model/file-info";
 
 // export * from './lib/services/startup/configurationsetup.service';
 // export * from './lib/services/httpconfiguration/resourcerequest.service';
@@ -181,7 +181,9 @@ export * from './lib/dxc-date/helpers/date-helper';
 // export * from './lib/services/toaster/message.service';
 // export * from './lib/dxc-text-editor/text-editor/text-editor.service';
 
-// export * from './lib/directives/pipes/search/dxc-search.pipe';
+export * from "./lib/dxc-file-input/model/fileuploadrequest.data";
+export * from "./lib/dxc-file-input/model/file-info";
+export * from "./lib/dxc-file-input/model/IFileService";
 // export * from './lib/directives/pipes/search/dxc-search.module';
 // export * from './lib/directives/pipes/sort/dxc-sort.module';
 // export * from './lib/directives/pipes/sort/dxc-sort.pipe';

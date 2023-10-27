@@ -2,7 +2,7 @@ import { fireEvent, render } from "@testing-library/angular";
 import { DxcFileInputComponent } from "./dxc-file-input.component";
 import { DxcFileInputModule } from "./dxc-file-input.module";
 import { screen, waitFor } from "@testing-library/dom";
-import { FileData } from "./interfaces/file.interface";
+import { FileData } from "./model/file-info";
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,

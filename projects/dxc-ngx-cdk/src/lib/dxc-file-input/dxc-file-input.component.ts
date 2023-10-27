@@ -8,27 +8,51 @@ import {
   ElementRef,
   EventEmitter,
   HostBinding,
+  Inject,
   Input,
   OnChanges,
   OnInit,
   Output,
   ViewChild,
+  forwardRef,
 } from "@angular/core";
 import { css } from "@emotion/css";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subscription, take } from "rxjs";
 import { CssUtils } from "../utils";
 import { v4 as uuidv4 } from "uuid";
-import { FileData } from "./interfaces/file.interface";
+import { FileData } from "./model/file-info";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
 import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
-
+import { FileMetaData } from "./model/fileupload.metadata";
+import { ChunkMetaData } from "./model/chunk.metadata";
+import { IFileUploadRequest, EventType } from "./model/fileuploadrequest.data";
+import { RemoveFileData } from "./model/removefiledata";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { FILE_SERVICE } from "./services/file-provider..service";
+import { IFileService } from "./model/IFileService";
+import {
+  HttpEvent,
+  HttpEventType,
+  HttpHeaders,
+  HttpResponse,
+} from "@angular/common/http";
 @Component({
   selector: "dxc-file-input",
   templateUrl: "./dxc-file-input.component.html",
-  providers: [CssUtils, FilesService],
+  providers: [
+    CssUtils,
+    FilesService,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DxcFileInputComponent),
+      multi: true,
+    },
+  ],
 })
-export class DxcFileInputComponent implements OnChanges, OnInit {
+export class DxcFileInputComponent
+  implements OnChanges, OnInit, ControlValueAccessor
+{
   @ViewChild("fileInput", { static: false }) fileInputNative: ElementRef;
   @HostBinding("class") className;
   /**
@@ -116,6 +140,17 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   }
   private _maxSize;
   /**
+   * The maximum file count (in number) allowed. If the count of the files does not comply the maxFileCount, the file will have an error.
+   */
+  @Input()
+  get maxFileCount(): number {
+    return this._maxFileCount;
+  }
+  set maxFileCount(value: number) {
+    this._maxFileCount = coerceNumberProperty(value);
+  }
+  private _maxFileCount;
+  /**
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
    */
@@ -130,12 +165,26 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
+  /**
+   * request object gets the value from APP and pass to halstack library.
+   */
+  @Input("resources") resources: {
+    [key: string]: { description: string; type: string };
+  };
+  /**
+   * request object gets the value from APP and pass to halstack library.
+   */
+  @Input("requests") requests: IFileUploadRequest = null;
   private _tabIndexValue = 0;
   hasShowError: boolean = false;
   /**
    * This event will emit when the user selects or drops a file. The file or list of files will be sent as a parameter.
    */
   @Output() callbackFile = new EventEmitter<FileData[]>();
+  /**
+   * This event has been added to indicate only PREUPLOAD, UPLOAD and POSTUPLOAD events. The event type will be sent as a parameter.
+   */
+  @Output() uploadEventType = new EventEmitter<EventType>();
 
   defaultInputs = new BehaviorSubject<FileInputProperties>({
     name: null,
@@ -152,6 +201,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     value: null,
     maxSize: null,
     minSize: null,
+    maxFileCount: null,
   });
 
   id: string;
@@ -163,10 +213,38 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
   hasValue: boolean = false;
+  chunkFileInfo: {
+    fileName: string;
+    chunkNumber: number;
+    totalChunkCount: number;
+    uploadedChunkCount;
+  }[] = [];
+  fileDataUpload: FileMetaData;
+  fileEventType: EventType = EventType.PREUPLOAD;
+  chunkResult: boolean;
+  data: Array<FileData> = [];
+  postResp: Array<string> = [];
+  uniqueFileNameIndex: number = 0;
+  //in byte
+  uploadChunkSize: number = 1000000;
+  isDuplicateUpload: boolean = false;
+  uploadId: string;
+  renderedValue = "";
+  private totalUploadedChunkedSize = [];
+  chunkUploadSubscription: {
+    fileName: string;
+    uploadRequests: Subscription[];
+  }[] = [];
+  uploadIdSubscription: Subscription;
+  Subscription: Subscription;
 
-  constructor(private utils: CssUtils, private service: FilesService) {
-    this.service.files.subscribe(({ files, event }) => {
+  constructor(
+    @Inject(FILE_SERVICE) private fileService: IFileService,
+    private utils: CssUtils
+  ) {
+    this.Subscription = this.fileService.files.subscribe(({ files, event }) => {
       if (event !== "reset" && (files.length || this.hasValue)) {
+        this.data = files;
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
         this.hasSingleFile = this.isSingleFilesPrintables();
@@ -174,10 +252,33 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
     });
   }
+  onTouched: () => void = () => {};
+  onChangeRegister = (val) => {};
+
+  writeValue(fileNames: any): void {
+    this.renderedValue = fileNames || "";
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  ngOnDestroy(): void {
+    this.uploadIdSubscription?.unsubscribe();
+    this.Subscription?.unsubscribe();
+    this.chunkUploadSubscription.forEach((subs) => {
+      if (subs.uploadRequests.length > 0)
+        this.unsubscribeUploadRequest(subs.fileName);
+    });
+  }
 
   ngOnInit() {
     this.id = this.id || uuidv4();
-    this.value ? (this.hasValue = true) : (this.hasValue = false);
+    this.hasValue = this.value ? true : false;
     this.hasShowError = this.isErrorShow();
     this.hasMultipleFiles = this.isMultipleFilesPrintables();
     this.hasSingleFile = this.isSingleFilesPrintables();
@@ -200,12 +301,12 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     }
     if (this.value?.length > 0) {
       const arr: FileData[] = [];
-      this.service.files.next({ files: arr, event: "reset" });
+      this.fileService.files.next({ files: arr, event: "reset" });
       this.value.forEach((file) => {
         if (!file.error) {
           file.error = this.checkFileSize(file.data);
         }
-        this.service.addFile(file);
+        this.fileService.add(file);
       });
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -226,12 +327,15 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
 
   checkFileSize(file: File) {
     if (file.size < this.minSize) {
-      return "File size must be greater than min size.";
+      return this.resources.minSize.description + "-" + this.minSize;
     }
     if (file.size > this.maxSize) {
-      return "File size must be less than max size.";
+      return this.resources.maxSize.description + "-" + this.maxSize;
     }
-    return null;
+    if (this.data.length > this.maxFileCount) {
+      return this.resources.maxFileCount.description + "-" + this.maxFileCount;
+    }
+    //return null;
   }
 
   /**
@@ -261,9 +365,10 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this.hoveringWithFile = false;
     if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
-        this.service.emptyArrayFiles();
+        this.fileService.removeAll();
       }
       this.getPreviewsFiles(event.dataTransfer.files);
+      this.processFiles(event.dataTransfer.files);
     }
   }
 
@@ -274,11 +379,195 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   onFileInput(event) {
     if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
-        this.service.emptyArrayFiles();
+        this.fileService.removeAll();
       }
+      this.onChangeRegister(event.target.files);
       this.getPreviewsFiles(event.target.files);
+      for (let i = 0; i < this.data.length; i++) {
+        if (event.target.files[0].name == this.data[i].data.name) {
+          this.isDuplicateUpload = true;
+        }
+      }
+      if (!this.isDuplicateUpload) {
+        this.processFiles(event.target.files);
+      }
+
       event.target.value = "";
     }
+  }
+
+  /**
+   * File upload logic to send file as chunk and receive response.
+   * @param event
+   */
+  processFiles(event) {
+    this.files = event;
+    this.isDuplicateUpload = false;
+    this.fileEventType = EventType.UPLOAD;
+    for (let i = 0; i < event.length; i++) {
+      let fileDetails: any = event[i];
+      this.uploadIdSubscription = this.fileService
+        .uploadId(this.requests.uploadIdRequest.url + "/" + fileDetails.name)
+        .subscribe((uploadResponse: Object) => {
+          this.uploadId = uploadResponse as any;  //Prakash changes
+          this.uploadFile(fileDetails);
+        });
+    }
+  }
+
+  uploadFile(eventFiles) {
+    if (eventFiles.size < this.uploadChunkSize) {
+      this.uploadWholeDoc(eventFiles);
+    } else {
+      this.uploadChunkDoc(eventFiles);
+    }
+    if (
+      eventFiles.size < this.minSize ||
+      eventFiles.size > this.maxSize ||
+      this.data.length > this.maxFileCount
+    ) {
+      return;
+    }
+  }
+
+  uploadChunkDoc(file) {
+    let lastChunksize = 0;
+    this.fileDataUpload = new FileMetaData();
+    this.removeChunkFileInfo(file.name);
+    let totalChunkCount =
+      file.size % this.uploadChunkSize == 0
+        ? file.size / this.uploadChunkSize
+        : Math.floor(file.size / this.uploadChunkSize) + 1;
+    this.chunkFileInfo.push({
+      fileName: file.name,
+      chunkNumber: 0,
+      uploadedChunkCount: 0,
+      totalChunkCount,
+    });
+    this.totalUploadedChunkedSize = [];
+    this.chunkFileInfo.forEach((fileInfo) => {
+      if (fileInfo.fileName == file.name) {
+        this.totalUploadedChunkedSize.push(0);
+      }
+    });
+    for (let x = 0; x < totalChunkCount; x++) {}
+    this.fileDataUpload.fileName = file.name;
+    this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
+  }
+
+  uploadtoAPI(filedata, file, lastChunksize, result) {
+    lastChunksize = lastChunksize + this.uploadChunkSize;
+    this.chunkResult = result;
+    if (result) {
+      //Add you logic what do you want after reading the file
+      this.uploadChunks(filedata);
+      this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
+    }
+  }
+
+  uploadChunkComplete(fileName, progress) {
+    let fileInfo = this.chunkFileInfo.filter(
+      (fileInfo) => (fileInfo.fileName = fileName)
+    );
+    if (
+      fileInfo.length > 0 &&
+      fileInfo[0].uploadedChunkCount == fileInfo[0].totalChunkCount
+    ) {
+      this.fileDataUpload.totalChunks = fileInfo[0].totalChunkCount;
+      this.fileDataUpload.uploadId = this.uploadId;
+      this.fileService.uploadComplete(this.requests.uploadCompleteRequest.url, this.fileDataUpload).pipe(take(1)).subscribe(response => {
+        //need to ask
+        // if (!response.ok) {
+        //   progress.status = 'failed';
+        //   progress.value = 99;
+        //   this.updateProgress(fileName, progress);
+        // }
+        this.data[0].postResponse =  response as any //Prakash changes
+        this.data[this.uniqueFileNameIndex].data.uniqueFileName = response as any;
+        this.fileEventType = EventType.POSTUPLOAD;
+        this.data[0].eventType = this.fileEventType;
+        this.uniqueFileNameIndex++;
+        this.callbackFile.emit(this.data);
+        this.removeChunkFileInfo(fileName);
+         progress.status = "success";
+         progress.value = 100;
+         this.updateProgress(fileName, progress, response); //Prakash changes
+      });
+    }
+  }
+
+  readFile(file, lastChunksize: number, uploadtoAPI) {
+    let fileInfoIndex = this.chunkFileInfo.findIndex(
+      (fileInfo) => fileInfo.fileName == file.name
+    );
+    let filedata = new ChunkMetaData();
+    filedata.fileName = file.name;
+    filedata.fileType = file.type;
+    filedata.fileSize = file.size;
+    filedata.chunkNumber = this.chunkFileInfo[fileInfoIndex].chunkNumber;
+    filedata.uploadId = this.uploadId;
+    var chunk = file.slice(lastChunksize, lastChunksize + 1000000);
+    filedata.file = chunk;
+    filedata.chunkSize = chunk.size;
+    if (chunk.size != 0) {
+      let fileReader = new FileReader();
+      fileReader.onloadend = (result) => {
+        this.chunkFileInfo[fileInfoIndex].chunkNumber =
+          this.chunkFileInfo[fileInfoIndex].chunkNumber + 1;
+        return uploadtoAPI(filedata, file, lastChunksize, fileReader.result);
+      };
+      fileReader.readAsDataURL(chunk);
+    } else {
+      return uploadtoAPI(filedata, file, lastChunksize, false);
+    }
+  }
+
+  uploadWholeDoc(fileData) {
+    let formParams = new FormData();
+    formParams.set("file", fileData);
+    const headers = new HttpHeaders({
+      "Content-Type": "multipart/form-data",
+    });
+    const uploadSubscription = this.fileService
+      .upload(this.requests.uploadRequest.url, formParams, headers)
+      .subscribe((response: HttpEvent<Object>) => {
+        let progress: {
+          value: number;
+          status: "progress" | "failed" | "success";
+        } = {
+          value: 0,
+          status: "progress",
+        };
+        let postResponse;  //Prakash changes
+        switch (response.type) {
+          case HttpEventType.UploadProgress:
+            progress.value =
+              Math.round((100 * response.loaded) / response.total) > 99
+                ? 99
+                : Math.round((100 * response.loaded) / response.total);
+            progress.status = "progress";
+            break;
+          case HttpEventType.ResponseHeader:
+            if (!response?.ok) {
+              progress.status = "failed";
+            }
+            break;
+          case HttpEventType.Response:
+            if (response?.ok) {
+              progress.value = 100;
+              progress.status = "success";
+              postResponse = response?.body; //Prakash changes
+            }
+            
+            break;
+        }
+        this.updateProgress(fileData.name, progress, postResponse); //Prakash changes
+      });
+    const SubscriptionManager = {
+      fileName: fileData.fileName,
+      uploadRequests: [uploadSubscription],
+    };
+    this.chunkUploadSubscription.push(SubscriptionManager);
   }
 
   /**
@@ -305,35 +594,30 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           data: file,
           image: null,
           error: this.checkFileSize(file),
+          eventType: this.fileEventType,
+          postResponse: this.postResp,
+          progress: {
+            value: 0,
+            status: "progress",
+          },
         };
-        this.service.addFile(fileToAdd);
+        this.fileService.add(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
           image: event.target["result"],
           error: this.checkFileSize(file),
+          eventType: this.fileEventType,
+          postResponse: this.postResp,
+          progress: {
+            value: 0,
+            status: "progress",
+          },
         };
-        this.service.addFile(fileToAdd);
+        this.fileService.add(fileToAdd);
       }
     };
   }
-
-  private isMultipleFilesPrintables(isSingle = false) {
-    return isSingle
-      ? this.value?.length > 0 && !this.disabled && !this.multiple
-      : this.value?.length > 0 && !this.disabled && this.multiple;
-  }
-
-  private isSingleFilesPrintables() {
-    return this.mode === "file" && this.value?.length === 1 && !this.multiple;
-  }
-
-  private isErrorShow = (): boolean =>
-    this.value?.length === 1 &&
-    this.mode === "file" &&
-    this.value[0]?.error &&
-    !this.multiple &&
-    !this.disabled;
 
   /**
    * Define the type of file component. Just for styling
@@ -460,6 +744,30 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         .fileContainer {
           display: flex;
           flex-direction: column;
+          .success-progress-bar {
+            .mdc-linear-progress__bar-inner {
+              border-color: var(--file-input-success-progress-bar);
+            }
+            .mdc-linear-progress__buffer-bar {
+              background-color: var(--file-input-success-buffer-bar);
+            }
+          }
+          .active-progress-bar {
+            .mdc-linear-progress__bar-inner {
+              border-color: var(--file-input-active-progress-bar);
+            }
+            .mdc-linear-progress__buffer-bar {
+              background-color: var(--file-input-active-buffer-bar);
+            }
+          }
+          .failed-progress-bar {
+            .mdc-linear-progress__bar-inner {
+              border-color: var(--file-input-failed-progress-bar);
+            }
+            .mdc-linear-progress__buffer-bar {
+              background-color: var(--file-input-failed-buffer-bar);
+            }
+          }
         }
       }
       .label {
@@ -487,4 +795,172 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       }
     `;
   }
+
+  private uploadChunks(chunkFileDetails: ChunkMetaData) {
+    let formParams = new FormData();
+    formParams.append("file", chunkFileDetails.file);
+    formParams.append("fileName", chunkFileDetails.fileName);
+    formParams.append("fileSize", chunkFileDetails.fileSize.toString());
+    formParams.append("fileType", chunkFileDetails.fileType);
+    formParams.append("chunkNumber", chunkFileDetails.chunkNumber.toString());
+    formParams.append("chunkSize", chunkFileDetails.chunkSize.toString());
+    formParams.append("uploadId", this.uploadId);
+    const headers = new HttpHeaders({
+      "Content-Type": "multipart/form-data",
+    });
+    const uploadSubscription = this.fileService
+      .upload(this.requests.uploadChunkRequest.url, formParams, headers)
+      .subscribe((response: any) => {
+        let progress: {
+          value: number;
+          status: "progress" | "failed" | "success";
+        } = {
+          value: 0,
+          status: "progress",
+        };
+        switch (response.type) {
+          case HttpEventType.UploadProgress:
+            this.totalUploadedChunkedSize[chunkFileDetails.chunkNumber] =
+              Math.round((100 * response.loaded) / response.total);
+            let totalProgress = this.totalUploadedChunkedSize.reduce(
+              (accumulator, currentValue) => {
+                return accumulator + currentValue;
+              },
+              0
+            );
+            progress.value =
+              Math.round(
+                (100 * totalProgress) /
+                  (this.totalUploadedChunkedSize.length * 100)
+              ) > 99
+                ? 99
+                : Math.round(
+                    (100 * totalProgress) /
+                      (this.totalUploadedChunkedSize.length * 100)
+                  );
+            progress.status = "progress";
+            break;
+          case HttpEventType.ResponseHeader:
+            if (!response?.ok) {
+              progress.status = "failed";
+              this.unsubscribeUploadRequest(chunkFileDetails.fileName);
+              this.removeChunkFileInfo(chunkFileDetails.fileName);
+            }
+            break;
+          case HttpEventType.Response:
+            if (response?.ok) {
+              chunkFileDetails.fileName = chunkFileDetails.fileName;
+              this.fileDataUpload.fileChunks.push(chunkFileDetails);
+              let fileInfoIndex = this.chunkFileInfo.findIndex(
+                (fileInfo) => fileInfo.fileName == chunkFileDetails.fileName
+              );
+              this.chunkFileInfo[fileInfoIndex].uploadedChunkCount =
+                this.chunkFileInfo[fileInfoIndex].uploadedChunkCount + 1;
+              if (
+                this.chunkFileInfo[fileInfoIndex].uploadedChunkCount ==
+                this.chunkFileInfo[fileInfoIndex].totalChunkCount
+              ) {
+                this.uploadChunkComplete(chunkFileDetails.fileName, progress);
+                this.unsubscribeUploadRequest(chunkFileDetails.fileName);
+              }
+            } else if (!response?.ok) {
+              progress.status = "failed";
+              this.unsubscribeUploadRequest(chunkFileDetails.fileName);
+              this.removeChunkFileInfo(chunkFileDetails.fileName);
+            }
+            break;
+        }
+        this.updateProgress(chunkFileDetails.fileName, progress, response?.body); //Prakash changes
+      });
+    if (
+      this.chunkUploadSubscription.filter((Subscription) => {
+        return Subscription.fileName == chunkFileDetails.fileName;
+      }).length > 0
+    ) {
+      this.chunkUploadSubscription.map((Subscription) => {
+        if (Subscription.fileName == chunkFileDetails.fileName) {
+          Subscription.uploadRequests.push(uploadSubscription);
+        }
+      });
+    } else {
+      const SubscriptionManager = {
+        fileName: chunkFileDetails.fileName,
+        uploadRequests: [uploadSubscription],
+      };
+      this.chunkUploadSubscription.push(SubscriptionManager);
+    }
+  }
+
+  private removeChunkFileInfo(fileName: string) {
+    let uploadCompleteFileIndex = this.chunkFileInfo.findIndex(
+      (fileInfo) => fileInfo.fileName == fileName
+    );
+    if (uploadCompleteFileIndex > -1) {
+      this.chunkFileInfo.splice(uploadCompleteFileIndex, 1);
+    }
+  }
+
+  private unsubscribeUploadRequest(fileName: string) {
+    let currentSubsIndex = -1;
+    this.chunkUploadSubscription.forEach((subscription, index) => {
+      if (subscription.fileName == fileName) {
+        subscription.uploadRequests.forEach((request) => {
+          request.unsubscribe();
+        });
+        subscription.uploadRequests = [];
+        currentSubsIndex = index;
+      }
+    });
+    if (currentSubsIndex > -1) {
+      this.chunkUploadSubscription.splice(currentSubsIndex, 1);
+    }
+  }
+
+  public async removefromAPI(theFiles: RemoveFileData) {
+    if (
+      this.chunkUploadSubscription.filter((subscription) => {
+        return subscription.fileName == theFiles.fileName;
+      }).length > 0
+    ) {
+      this.unsubscribeUploadRequest(theFiles.fileName);
+    }
+    if (this.uniqueFileNameIndex == 0) {
+      this.uniqueFileNameIndex--;
+    }
+    
+    this.fileService.delete(this.requests.removeRequest.url, theFiles).pipe(take(1)).subscribe((response) =>{
+      
+    });
+  }
+
+  private isMultipleFilesPrintables(isSingle = false) {
+    return isSingle
+      ? this.value?.length > 0 && !this.disabled && !this.multiple
+      : this.value?.length > 0 && !this.disabled && this.multiple;
+  }
+
+  private isSingleFilesPrintables() {
+    return this.mode === "file" && this.value?.length === 1 && !this.multiple;
+  }
+  //Prakash changes
+  private updateProgress(fileName: string, progress: any, postResponse: any) {
+    let fileList = this.fileService.files.getValue();
+    fileList.files.forEach((file) => {
+      if (
+        file.data.name == fileName &&
+        (file?.progress?.value ?? 0) < (progress?.value ?? 0)
+      ) {
+        file.progress = progress;
+        file.postResponse = postResponse;  //Prakash changes
+      }
+      this.fileService.add(file);
+    });
+  }
+
+  private isErrorShow = (): boolean =>
+    this.value?.length === 1 &&
+    this.mode === "file" &&
+    this.value[0]?.error &&
+    !this.multiple &&
+    !this.disabled;
 }

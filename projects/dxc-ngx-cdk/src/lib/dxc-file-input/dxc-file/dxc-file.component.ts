@@ -6,14 +6,19 @@ import { C } from "@angular/cdk/keycodes";
 import {
   Component,
   HostBinding,
+  Inject,
   Input,
   OnInit,
   SimpleChanges,
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
-import { FileData } from "../interfaces/file.interface";
+import { FileData } from "../model/file-info";
 import { FilesService } from "../services/files.services";
+import { DxcFileInputComponent } from "../dxc-file-input.component";
+import { RemoveFileData } from "../model/removefiledata";
+import { IFileService } from "../model/IFileService";
+import { FILE_SERVICE } from "../services/file-provider..service";
 
 @Component({
   selector: "dxc-file",
@@ -42,6 +47,7 @@ export class DxcFileComponent implements OnInit {
     this._tabIndexValue = coerceNumberProperty(value);
   }
   private _tabIndexValue = 0;
+  public postResp: Array<string> = [];
 
   hasError: boolean = false;
   hasShowError: boolean = false;
@@ -55,7 +61,7 @@ export class DxcFileComponent implements OnInit {
     mode: null,
   });
 
-  constructor(private service: FilesService) {}
+  constructor(@Inject(FILE_SERVICE) private fileService: IFileService, private dxcfilecomponent: DxcFileInputComponent) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.file.error !== null &&
@@ -81,8 +87,14 @@ export class DxcFileComponent implements OnInit {
   }
 
   onRemoveHandler(event: any): void {
+    let filedata = new RemoveFileData();
+    filedata.fileName = this.file.data.name;
+    filedata.uniqueFileName = this.file.data.uniqueFileName;
+    filedata.uploadId = this.file.postResponse['uploadId'];  //Prakash changes
+    filedata.lastModified = this.file.data.lastModified;
     if (this.updatable) {
-      this.service.removeFile(this.file);
+      this.fileService.remove(this.file);
+      this.dxcfilecomponent.removefromAPI(filedata);
     }
   }
 

@@ -1,4 +1,4 @@
-import { FileData } from "./interfaces/file.interface";
+import { FileData } from "./model/file-info";
 
 export interface FileInputProperties {
   margin?: Space | Spacing;
@@ -15,6 +15,7 @@ export interface FileInputProperties {
   disabled?: boolean;
   minSize?: number;
   maxSize?: number;
+  maxFileCount?: number;
 }
 
 export type Space =

@@ -1,59 +1,27 @@
 <label class="label" htmlFor="{{ id }}">{{ label }}</label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="fileInputContainer">
-  <input
-    #fileInput
-    data-testid="input"
-    type="file"
-    (change)="onFileInput($event)"
-    [accept]="accept"
-  />
-  <dxc-button
-    *ngIf="mode === 'file'"
-    [label]="buttonLabel"
-    mode="secondary"
-    [disabled]="disabled"
-    (onClick)="fileInput.click()"
-    [tabIndexValue]="tabIndexValue"
-  ></dxc-button>
-  <div
-    *ngIf="mode !== 'file'"
-    class="dragDropArea"
-    [ngClass]="{
+  <input #fileInput data-testid="input" type="file" (change)="onFileInput($event)" [accept]="accept" />
+  <dxc-button *ngIf="mode === 'file'" [label]="buttonLabel" mode="secondary" [disabled]="disabled" (onClick)="fileInput.click()" [tabIndexValue]="tabIndexValue"></dxc-button>
+  <div *ngIf="mode !== 'file'" class="dragDropArea" [ngClass]="{
       hovering: hoveringWithFile === true
-    }"
-    (drop)="drop($event)"
-    (dragleave)="dragLeave($event)"
-    (dragover)="dragOver($event)"
-  >
-    <dxc-button
-      mode="secondary"
-      [disabled]="disabled"
-      [tabIndexValue]="tabIndexValue"
-      (onClick)="fileInput.click()"
-    >
-    <dxc-button-icon>
-      <span class="icon-dxc-wrapper">
-        <mat-icon class="mat-icon material-icons">
-          file_upload
+    }" (drop)="drop($event)" (dragleave)="dragLeave($event)" (dragover)="dragOver($event)">
+    <dxc-button mode="secondary" [disabled]="disabled" [tabIndexValue]="tabIndexValue" (onClick)="fileInput.click()">
+      <dxc-button-icon>
+        <span class="icon-dxc-wrapper">
+          <mat-icon class="mat-icon material-icons">
+            file_upload
           </mat-icon>
-      </span>
-    </dxc-button-icon>
-  </dxc-button>
-    <span *ngIf="mode === 'filedrop' || mode === 'dropzone'" class="dropLabel"
-      >or drop files</span
-    >
+        </span>
+      </dxc-button-icon>
+    </dxc-button>
+    <span *ngIf="mode === 'filedrop' || mode === 'dropzone'" class="dropLabel">or drop files</span>
   </div>
   <div class="fileContainer">
-    <dxc-file
-      *ngFor="let file of value"
-      [file]="file"
-      [showPreview]="showPreview"
-      [multiple]="!hasSingleFile"
-      [mode]="mode"
-      [tabIndexValue]="tabIndexValue"
-      [updatable]="callbackFile?.observers?.length > 0"
-    ></dxc-file>
+    <ng-container *ngFor="let file of value">
+      <dxc-file [file]="file" [showPreview]="showPreview" [multiple]="!hasSingleFile" [mode]="mode" [tabIndexValue]="tabIndexValue" [updatable]="callbackFile?.observers?.length > 0"></dxc-file>
+      <dxc-progressbar [ngClass]="{'success-progress-bar': file?.progress?.status == 'success', 'failed-progress-bar': file?.progress?.status == 'failed', 'active-progress-bar': file?.progress?.status == 'progress' }" [value]="file?.progress?.value ?? 0" mode="determinate"></dxc-progressbar>
+    </ng-container>
   </div>
 </div>
 

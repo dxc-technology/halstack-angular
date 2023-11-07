@@ -51,8 +51,7 @@ import {
   ],
 })
 export class DxcFileInputComponent
-  implements OnChanges, OnInit, ControlValueAccessor
-{
+  implements OnChanges, OnInit, ControlValueAccessor {
   @ViewChild("fileInput", { static: false }) fileInputNative: ElementRef;
   @HostBinding("class") className;
   /**
@@ -252,8 +251,8 @@ export class DxcFileInputComponent
       }
     });
   }
-  onTouched: () => void = () => {};
-  onChangeRegister = (val) => {};
+  onTouched: () => void = () => { };
+  onChangeRegister = (val) => { };
 
   writeValue(fileNames: any): void {
     this.renderedValue = fileNames || "";
@@ -450,7 +449,7 @@ export class DxcFileInputComponent
         this.totalUploadedChunkedSize.push(0);
       }
     });
-    for (let x = 0; x < totalChunkCount; x++) {}
+    for (let x = 0; x < totalChunkCount; x++) { }
     this.fileDataUpload.fileName = file.name;
     this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
   }
@@ -482,16 +481,16 @@ export class DxcFileInputComponent
         //   progress.value = 99;
         //   this.updateProgress(fileName, progress);
         // }
-        this.data[0].postResponse =  response as any //Prakash changes
+        this.data[0].postResponse = response as any //Prakash changes
         this.data[this.uniqueFileNameIndex].data.uniqueFileName = response as any;
         this.fileEventType = EventType.POSTUPLOAD;
         this.data[0].eventType = this.fileEventType;
         this.uniqueFileNameIndex++;
         this.callbackFile.emit(this.data);
         this.removeChunkFileInfo(fileName);
-         progress.status = "success";
-         progress.value = 100;
-         this.updateProgress(fileName, progress, response); //Prakash changes
+        progress.status = "success";
+        progress.value = 100;
+        this.updateProgress(fileName, progress, response); //Prakash changes
       });
     }
   }
@@ -558,7 +557,7 @@ export class DxcFileInputComponent
               progress.status = "success";
               postResponse = response?.body; //Prakash changes
             }
-            
+
             break;
         }
         this.updateProgress(fileData.name, progress, postResponse); //Prakash changes
@@ -643,8 +642,8 @@ export class DxcFileInputComponent
     return css`
       .fileInputContainer {
         flex-direction: ${this.value?.length > 1 || this.multiple
-          ? "column"
-          : "row"};
+        ? "column"
+        : "row"};
       }
     `;
   }
@@ -722,23 +721,23 @@ export class DxcFileInputComponent
           border: var(--fileInput-dropBorderThickness)
             var(--fileInput-dropBorderStyle)
             ${!inputs.disabled
-              ? "var(--fileInput-dropBorderColor)"
-              : "var(--fileInput-disabledDropBorderColor)"};
+        ? "var(--fileInput-dropBorderColor)"
+        : "var(--fileInput-disabledDropBorderColor)"};
           border-radius: var(--fileInput-dropBorderRadius);
           .dropLabel {
             text-align: left;
             letter-spacing: 0.49px;
             color: ${!inputs.disabled
-              ? "var(--fileInput-dropLabelFontColor)"
-              : "var(--fileInput-disabledDropLabelFontColor)"};
+        ? "var(--fileInput-dropLabelFontColor)"
+        : "var(--fileInput-disabledDropLabelFontColor)"};
             font-family: var(--fileInput-dropLabelFontFamily);
             font-size: var(--fileInput-dropLabelFontSize);
             font-weight: var(--fileInput-dropLabelFontWeight);
           }
           &.hovering {
             ${!inputs.disabled
-              ? "border: 2px solid var(--fileInput-focusDropBorderColor); background: var(--fileInput-dragoverDropBackgroundColor) 0% 0% no-repeat padding-box;"
-              : ""}
+        ? "border: 2px solid var(--fileInput-focusDropBorderColor); background: var(--fileInput-dragoverDropBackgroundColor) 0% 0% no-repeat padding-box;"
+        : ""}
           }
         }
         .fileContainer {
@@ -774,8 +773,8 @@ export class DxcFileInputComponent
         text-align: left;
         letter-spacing: 0px;
         color: ${!inputs.disabled
-          ? "var(--fileInput-labelFontColor)"
-          : "var(--fileInput-disabledLabelFontColor)"};
+        ? "var(--fileInput-labelFontColor)"
+        : "var(--fileInput-disabledLabelFontColor)"};
         font-family: var(--fileInput-labelFontFamily);
         font-size: var(--fileInput-labelFontSize);
         font-weight: var(--fileInput-labelFontWeight);
@@ -786,14 +785,31 @@ export class DxcFileInputComponent
         text-align: left;
         letter-spacing: 0px;
         color: ${!inputs.disabled
-          ? "var(--fileInput-helperTextFontColor)"
-          : "var(--fileInput-disabledHelperTextFontColor)"};
+        ? "var(--fileInput-helperTextFontColor)"
+        : "var(--fileInput-disabledHelperTextFontColor)"};
         font-family: var(--fileInput-helperTextFontFamily);
         font-size: var(--fileInput-helperTextFontSize);
         font-weight: var(--fileInput-helperTextFontWeight);
         line-height: var(--fileInput-helperTextLineHeight);
       }
     `;
+  }
+
+  fileRemoveHandler(fileData: RemoveFileData) {
+    if (
+      this.chunkUploadSubscription.filter((subscription) => {
+        return subscription.fileName == fileData.fileName;
+      }).length > 0
+    ) {
+      this.unsubscribeUploadRequest(fileData.fileName);
+    }
+    if (this.uniqueFileNameIndex == 0) {
+      this.uniqueFileNameIndex--;
+    }
+
+    this.fileService.delete(this.requests.removeRequest.url, fileData).pipe(take(1)).subscribe((response) => {
+
+    });
   }
 
   private uploadChunks(chunkFileDetails: ChunkMetaData) {
@@ -831,13 +847,13 @@ export class DxcFileInputComponent
             progress.value =
               Math.round(
                 (100 * totalProgress) /
-                  (this.totalUploadedChunkedSize.length * 100)
+                (this.totalUploadedChunkedSize.length * 100)
               ) > 99
                 ? 99
                 : Math.round(
-                    (100 * totalProgress) /
-                      (this.totalUploadedChunkedSize.length * 100)
-                  );
+                  (100 * totalProgress) /
+                  (this.totalUploadedChunkedSize.length * 100)
+                );
             progress.status = "progress";
             break;
           case HttpEventType.ResponseHeader:
@@ -914,23 +930,6 @@ export class DxcFileInputComponent
     if (currentSubsIndex > -1) {
       this.chunkUploadSubscription.splice(currentSubsIndex, 1);
     }
-  }
-
-  public async removefromAPI(theFiles: RemoveFileData) {
-    if (
-      this.chunkUploadSubscription.filter((subscription) => {
-        return subscription.fileName == theFiles.fileName;
-      }).length > 0
-    ) {
-      this.unsubscribeUploadRequest(theFiles.fileName);
-    }
-    if (this.uniqueFileNameIndex == 0) {
-      this.uniqueFileNameIndex--;
-    }
-    
-    this.fileService.delete(this.requests.removeRequest.url, theFiles).pipe(take(1)).subscribe((response) =>{
-      
-    });
   }
 
   private isMultipleFilesPrintables(isSingle = false) {

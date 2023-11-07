@@ -5,10 +5,12 @@ import {
 import { C } from "@angular/cdk/keycodes";
 import {
   Component,
+  EventEmitter,
   HostBinding,
   Inject,
   Input,
   OnInit,
+  Output,
   SimpleChanges,
 } from "@angular/core";
 import { css } from "@emotion/css";
@@ -44,6 +46,9 @@ export class DxcFileComponent implements OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
+
+  @Output() onFileRemove = new EventEmitter<RemoveFileData>();
+
   private _tabIndexValue = 0;
   public postResp: Array<string> = [];
 
@@ -92,7 +97,7 @@ export class DxcFileComponent implements OnInit {
     filedata.lastModified = this.file.data.lastModified;
     if (this.updatable) {
       this.fileService.remove(this.file);
-      //this.dxcfilecomponent.removefromAPI(filedata);
+      this.onFileRemove.emit(filedata);
     }
   }
 

@@ -19,7 +19,7 @@
   </div>
   <div class="fileContainer">
     <ng-container *ngFor="let file of value">
-      <dxc-file [file]="file" [showPreview]="showPreview" [multiple]="!hasSingleFile" [mode]="mode" [tabIndexValue]="tabIndexValue" [updatable]="callbackFile?.observers?.length > 0"></dxc-file>
+      <dxc-file [file]="file" (onFileRemove)="fileRemoveHandler($event)" [showPreview]="showPreview" [multiple]="!hasSingleFile" [mode]="mode" [tabIndexValue]="tabIndexValue" [updatable]="callbackFile?.observers?.length > 0"></dxc-file>
       <dxc-progressbar [ngClass]="{'success-progress-bar': file?.progress?.status == 'success', 'failed-progress-bar': file?.progress?.status == 'failed', 'active-progress-bar': file?.progress?.status == 'progress' }" [value]="file?.progress?.value ?? 0" mode="determinate"></dxc-progressbar>
     </ng-container>
   </div>

@@ -15,6 +15,7 @@ import {
   IFileServiceProvider,
 } from "./services/file-provider..service";
 import { DxcProgressbarModule } from "../dxc-progressbar/dxc-progressbar.module";
+import { MatTooltipModule } from "@angular/material/tooltip";
 @NgModule({
   declarations: [
     DxcFileInputComponent,
@@ -30,6 +31,7 @@ import { DxcProgressbarModule } from "../dxc-progressbar/dxc-progressbar.module"
     ReactiveFormsModule,
     DxcProgressbarModule,
     HttpClientModule,
+    MatTooltipModule
   ],
   exports: [DxcFileInputComponent],
 })

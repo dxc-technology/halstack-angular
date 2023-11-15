@@ -6,7 +6,7 @@
   <div *ngIf="mode !== 'file'" class="dragDropArea" [ngClass]="{
       hovering: hoveringWithFile === true
     }" (drop)="drop($event)" (dragleave)="dragLeave($event)" (dragover)="dragOver($event)">
-    <dxc-button mode="secondary" [disabled]="disabled" [tabIndexValue]="tabIndexValue" (onClick)="fileInput.click()">
+    <dxc-button mode="secondary" [matTooltip]="resources?.importButtonforfee?.description" [disabled]="disabled" [tabIndexValue]="tabIndexValue" (onClick)="fileInput.click()">
       <dxc-button-icon>
         <span class="icon-dxc-wrapper">
           <mat-icon class="mat-icon material-icons">

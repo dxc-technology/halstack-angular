@@ -1,7 +1,6 @@
 :host {
   display: block;
-  max-width: 80%;
-  min-width: 685px;
+  max-width: 95%;
   height: auto;
   .progressContainer {
     width: 100%;
@@ -47,7 +46,6 @@
       border-radius: 50px;
       height: 9px;
       max-width: 100%;
-      min-width: 685px;
       z-index: 1;
       width: auto;
       .mat-progress-bar-fill::after {
@@ -63,7 +61,6 @@
     font-size: 12px;
     font-family: var(--fontFamily);
     max-width: 100%;
-    min-width: 685px;
     margin-bottom: 8px;
     display: flex;
     color: white;

@@ -37,6 +37,7 @@ import {
   HttpHeaders,
   HttpResponse,
 } from "@angular/common/http";
+import { FileAddService } from "./services/file.add.service";
 @Component({
   selector: "dxc-file-input",
   templateUrl: "./dxc-file-input.component.html",
@@ -48,6 +49,7 @@ import {
       useExisting: forwardRef(() => DxcFileInputComponent),
       multi: true,
     },
+    FileAddService
   ],
 })
 export class DxcFileInputComponent
@@ -239,9 +241,10 @@ export class DxcFileInputComponent
 
   constructor(
     @Inject(FILE_SERVICE) private fileService: IFileService,
-    private utils: CssUtils
+    private utils: CssUtils,
+    private fileAddService: FileAddService
   ) {
-    this.Subscription = this.fileService.files.subscribe(({ files, event }) => {
+    this.Subscription = this.fileAddService.files.subscribe(({ files, event }) => {
       if (event !== "reset" && (files.length || this.hasValue)) {
         this.data = files;
         this.hasShowError = this.isErrorShow();
@@ -300,12 +303,12 @@ export class DxcFileInputComponent
     }
     if (this.value?.length > 0) {
       const arr: FileData[] = [];
-      this.fileService.files.next({ files: arr, event: "reset" });
+      this.fileAddService.files.next({ files: arr, event: "reset" });
       this.value.forEach((file) => {
         if (!file.error) {
           file.error = this.checkFileSize(file.data);
         }
-        this.fileService.add(file);
+        this.fileAddService.add(file);
       });
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -364,7 +367,7 @@ export class DxcFileInputComponent
     this.hoveringWithFile = false;
     if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
-        this.fileService.removeAll();
+        this.fileAddService.removeAll();
       }
       this.getPreviewsFiles(event.dataTransfer.files);
       this.processFiles(event.dataTransfer.files);
@@ -378,7 +381,7 @@ export class DxcFileInputComponent
   onFileInput(event) {
     if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
-        this.fileService.removeAll();
+        this.fileAddService.removeAll();
       }
       this.onChangeRegister(event.target.files);
       this.getPreviewsFiles(event.target.files);
@@ -600,7 +603,7 @@ export class DxcFileInputComponent
             status: "progress",
           },
         };
-        this.fileService.add(fileToAdd);
+        this.fileAddService.add(fileToAdd);
       } else {
         let fileToAdd: FileData = {
           data: file,
@@ -613,7 +616,7 @@ export class DxcFileInputComponent
             status: "progress",
           },
         };
-        this.fileService.add(fileToAdd);
+        this.fileAddService.add(fileToAdd);
       }
     };
   }
@@ -806,9 +809,9 @@ export class DxcFileInputComponent
     if (this.uniqueFileNameIndex == 0) {
       this.uniqueFileNameIndex--;
     }
-
     this.fileService.delete(this.requests.removeRequest.url, fileData).pipe(take(1)).subscribe((response) => {
-
+      const arr: FileData[] = [];
+      this.fileAddService.files.next({ files: arr, event: "remove" });
     });
   }
 
@@ -943,7 +946,7 @@ export class DxcFileInputComponent
   }
   //Prakash changes
   private updateProgress(fileName: string, progress: any, postResponse: any) {
-    let fileList = this.fileService.files.getValue();
+    let fileList = this.fileAddService.files.getValue();
     fileList.files.forEach((file) => {
       if (
         file.data.name == fileName &&
@@ -952,7 +955,7 @@ export class DxcFileInputComponent
         file.progress = progress;
         file.postResponse = postResponse;  //Prakash changes
       }
-      this.fileService.add(file);
+      this.fileAddService.add(file);
     });
   }
 

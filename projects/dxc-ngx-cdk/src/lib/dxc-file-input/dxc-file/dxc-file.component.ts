@@ -19,10 +19,12 @@ import { FileData } from "../model/file-info";
 import { RemoveFileData } from "../model/removefiledata";
 import { IFileService } from "../model/IFileService";
 import { FILE_SERVICE } from "../services/file-provider..service";
+import { FileAddService } from "../services/file.add.service";
 
 @Component({
   selector: "dxc-file",
   templateUrl: "./dxc-file.component.html",
+  providers: [FileAddService]
 })
 export class DxcFileComponent implements OnInit {
   @HostBinding("class") className;
@@ -64,12 +66,12 @@ export class DxcFileComponent implements OnInit {
     mode: null,
   });
 
-  constructor(@Inject(FILE_SERVICE) private fileService: IFileService) {}
+  constructor(private fileAddService: FileAddService) { }
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.file.error !== null &&
-    this.file.error !== undefined &&
-    this.file.error.length !== 0
+      this.file.error !== undefined &&
+      this.file.error.length !== 0
       ? (this.hasError = true)
       : (this.hasError = false);
     this.hasShowError = this.isErrorPrintable();
@@ -96,7 +98,7 @@ export class DxcFileComponent implements OnInit {
     filedata.uploadId = this.file.postResponse['uploadId'];  //Prakash changes
     filedata.lastModified = this.file.data.lastModified;
     if (this.updatable) {
-      this.fileService.remove(this.file);
+      this.fileAddService.remove(this.file);
       this.onFileRemove.emit(filedata);
     }
   }
@@ -111,15 +113,15 @@ export class DxcFileComponent implements OnInit {
   private isShowPreviewPrintable(containsImage = true) {
     return containsImage
       ? (this.showPreview && this.file.image && this.mode !== "file") ||
-          (this.showPreview &&
-            this.file.image &&
-            this.mode === "file" &&
-            this.multiple)
+      (this.showPreview &&
+        this.file.image &&
+        this.mode === "file" &&
+        this.multiple)
       : (this.showPreview && !this.file.image && this.mode !== "file") ||
-          (this.showPreview &&
-            !this.file.image &&
-            this.mode === "file" &&
-            this.multiple);
+      (this.showPreview &&
+        !this.file.image &&
+        this.mode === "file" &&
+        this.multiple);
   }
 
   private isErrorPrintable() {
@@ -152,14 +154,14 @@ export class DxcFileComponent implements OnInit {
         ? inputs.mode !== "file"
           ? "fit-content"
           : !inputs.multiple
-          ? "40px"
-          : "fit-content"
+            ? "40px"
+            : "fit-content"
         : this.hasShowPreviewImage || this.hasShowPreviewIcon
-        ? "64px"
-        : "40px"};
+          ? "64px"
+          : "40px"};
       background: ${this.hasError
-          ? "var(--fileInput-errorFileItemBackgroundColor)"
-          : "#ffffff"}
+        ? "var(--fileInput-errorFileItemBackgroundColor)"
+        : "#ffffff"}
         0% 0% no-repeat padding-box;
       border: var(--fileInput-fileItemBorderThickness)
         var(--fileInput-fileItemBorderStyle);
@@ -176,8 +178,8 @@ export class DxcFileComponent implements OnInit {
       margin-left: ${!inputs.multiple && inputs.mode === "file" ? "4px" : ""};
       .previewContainer {
         background-color: ${this.hasError
-          ? "var(--fileInput-errorFilePreviewBackgroundColor)"
-          : "var(--fileInput-filePreviewBackgroundColor)"};
+        ? "var(--fileInput-errorFilePreviewBackgroundColor)"
+        : "var(--fileInput-filePreviewBackgroundColor)"};
         display: flex;
         align-items: center;
         place-content: center;
@@ -188,8 +190,8 @@ export class DxcFileComponent implements OnInit {
         svg,
         img {
           fill: ${this.hasError
-            ? "var(--fileInput-errorFilePreviewIconColor)"
-            : "var(--fileInput-filePreviewIconColor)"};
+        ? "var(--fileInput-errorFilePreviewIconColor)"
+        : "var(--fileInput-filePreviewIconColor)"};
           height: 24px;
           width: 24px;
         }
@@ -198,11 +200,11 @@ export class DxcFileComponent implements OnInit {
         display: flex;
         flex-direction: column;
         width: ${(inputs.showPreview &&
-          inputs.mode === "file" &&
-          !inputs.multiple) ||
+        inputs.mode === "file" &&
+        !inputs.multiple) ||
         !inputs.showPreview
-          ? "100% "
-          : "calc(100% - 48px)"};
+        ? "100% "
+        : "calc(100% - 48px)"};
         .fileContainer {
           display: flex;
           flex-direction: row;

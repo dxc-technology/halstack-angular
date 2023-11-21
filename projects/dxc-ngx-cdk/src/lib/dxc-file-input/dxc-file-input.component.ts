@@ -328,6 +328,12 @@ export class DxcFileInputComponent
   }
 
   checkFileSize(file: File) {
+    if(file.name!=null){
+      let fileExtension = file.name.split('.').pop();
+      if(!this.accept.includes(fileExtension)){
+        return this.resources.acceptedFiles.description + this.accept;
+      }
+    }
     if (file.size < this.minSize) {
       return this.resources.minSize.description + "-" + this.minSize;
     }

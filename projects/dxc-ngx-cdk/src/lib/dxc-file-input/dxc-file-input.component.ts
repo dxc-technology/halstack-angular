@@ -369,8 +369,11 @@ export class DxcFileInputComponent
       if (!this.multiple) {
         this.fileAddService.removeAll();
       }
-      this.getPreviewsFiles(event.dataTransfer.files);
-      this.processFiles(event.dataTransfer.files);
+      
+      if((this.multiple == true && event?.dataTransfer?.files?.length > 1) || (this.multiple == false && event?.dataTransfer?.files?.length == 1) ){
+        this.getPreviewsFiles(event.dataTransfer.files);
+        this.processFiles(event.dataTransfer.files);
+        }
     }
   }
 

@@ -9,12 +9,12 @@
 
 Dear Community,
 
-We have decided to discontinue active maintenance and development of [Project Name].
+We have decided to discontinue active maintenance and development of Halstack Angular.
 
 **Key Points:**
 
 1. **No Further Updates:**
-   - we will no longer actively maintain or release new versions of [Halstack Angular. This decision is based on various factors, including shifts in project priorities and resource allocation.
+   - we will no longer actively maintain or release new versions of Halstack Angular. This decision is based on various factors, including shifts in project priorities and resource allocation.
 
 2. **GitHub Repository:**
    - The GitHub repository will remain accessible. While we won't actively address issues or pull requests, you are welcome to fork the project and continue its development independently.

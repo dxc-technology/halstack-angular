@@ -420,7 +420,7 @@ export class DxcFileInputComponent
       this.uploadIdSubscription = this.fileService
         .uploadId(this.requests.uploadIdRequest.url + "/" + fileDetails.name)
         .subscribe((uploadResponse: Object) => {
-          this.uploadId = uploadResponse as any;  //Prakash changes
+          this.uploadId = uploadResponse as any;  
           this.uploadFile(fileDetails);
         });
     }
@@ -467,13 +467,14 @@ export class DxcFileInputComponent
   }
 
   uploadtoAPI(filedata, file, lastChunksize, result) {
-    lastChunksize = lastChunksize + this.uploadChunkSize;
     this.chunkResult = result;
     if (result) {
       //Add you logic what do you want after reading the file
       this.uploadChunks(filedata);
+      lastChunksize = lastChunksize + this.uploadChunkSize;
       this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
     }
+    
   }
 
   uploadChunkComplete(fileName, progress) {
@@ -493,7 +494,7 @@ export class DxcFileInputComponent
         //   progress.value = 99;
         //   this.updateProgress(fileName, progress);
         // }
-        this.data[0].postResponse = response as any //Prakash changes
+        this.data[0].postResponse = response as any 
         this.data[this.uniqueFileNameIndex].data.uniqueFileName = response as any;
         this.fileEventType = EventType.POSTUPLOAD;
         this.data[0].eventType = this.fileEventType;
@@ -502,7 +503,7 @@ export class DxcFileInputComponent
         this.removeChunkFileInfo(fileName);
         progress.status = "success";
         progress.value = 100;
-        this.updateProgress(fileName, progress, response); //Prakash changes
+        this.updateProgress(fileName, progress, response); 
       });
     }
   }
@@ -549,7 +550,7 @@ export class DxcFileInputComponent
           value: 0,
           status: "progress",
         };
-        let postResponse;  //Prakash changes
+        let postResponse; 
         switch (response.type) {
           case HttpEventType.UploadProgress:
             progress.value =
@@ -567,12 +568,12 @@ export class DxcFileInputComponent
             if (response?.ok) {
               progress.value = 100;
               progress.status = "success";
-              postResponse = response?.body; //Prakash changes
+              postResponse = response?.body; 
             }
 
             break;
         }
-        this.updateProgress(fileData.name, progress, postResponse); //Prakash changes
+        this.updateProgress(fileData.name, progress, postResponse); 
       });
     const SubscriptionManager = {
       fileName: fileData.fileName,
@@ -826,7 +827,8 @@ export class DxcFileInputComponent
 
   private uploadChunks(chunkFileDetails: ChunkMetaData) {
     let formParams = new FormData();
-    formParams.append("file", chunkFileDetails.file);
+    let file = new File([chunkFileDetails.file], chunkFileDetails.fileName);
+    formParams.append("file", file);
     formParams.append("fileName", chunkFileDetails.fileName);
     formParams.append("fileSize", chunkFileDetails.fileSize.toString());
     formParams.append("fileType", chunkFileDetails.fileType);
@@ -835,6 +837,7 @@ export class DxcFileInputComponent
     formParams.append("uploadId", this.uploadId);
     const headers = new HttpHeaders({
       "Content-Type": "multipart/form-data",
+      "X-File-Identifier": chunkFileDetails.fileName.split('.')[0] + "$^$" + chunkFileDetails.chunkNumber +"$^$" + this.uploadId +"."+chunkFileDetails.fileName.split('.')[1],
     });
     const uploadSubscription = this.fileService
       .upload(this.requests.uploadChunkRequest.url, formParams, headers)
@@ -898,7 +901,7 @@ export class DxcFileInputComponent
             }
             break;
         }
-        this.updateProgress(chunkFileDetails.fileName, progress, response?.body); //Prakash changes
+        this.updateProgress(chunkFileDetails.fileName, progress, response?.body);
       });
     if (
       this.chunkUploadSubscription.filter((Subscription) => {
@@ -962,7 +965,7 @@ export class DxcFileInputComponent
         (file?.progress?.value ?? 0) < (progress?.value ?? 0)
       ) {
         file.progress = progress;
-        file.postResponse = postResponse;  //Prakash changes
+        file.postResponse = postResponse;
       }
       this.fileAddService.add(file);
     });

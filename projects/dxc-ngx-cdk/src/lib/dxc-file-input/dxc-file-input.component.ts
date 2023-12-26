@@ -308,7 +308,9 @@ export class DxcFileInputComponent
         if (!file.error) {
           file.error = this.checkFileSize(file.data);
         }
+        if (!file.error) {
         this.fileAddService.add(file);
+        }
       });
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -374,6 +376,27 @@ export class DxcFileInputComponent
     if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
         this.fileAddService.removeAll();
+
+        let fileToAdd: FileData = {
+          data: event?.dataTransfer?.files[0],
+          image: null,
+          error: this.checkFileSize(event?.dataTransfer?.files[0]),
+          eventType: this.fileEventType,
+          postResponse: this.postResp,
+          progress: {
+            value: 0,
+            status: "progress",
+          },
+        };
+    
+        if(fileToAdd.error){
+          let fileData: FileData[] = [];
+          fileData.push(fileToAdd);
+          this.value = fileData;
+          this.callbackFile.emit(fileData);
+          this.fileAddService.remove(fileToAdd);
+          return fileData;
+        }
       }
       
       if((this.multiple == true && event?.dataTransfer?.files?.length > 1) || (this.multiple == false && event?.dataTransfer?.files?.length == 1) ){
@@ -391,6 +414,28 @@ export class DxcFileInputComponent
     if (this.callbackFile.observers?.length > 0 && this.hasValue) {
       if (!this.multiple) {
         this.fileAddService.removeAll();
+        let fileToAdd: FileData = {
+          data: event?.target?.files[0],
+          image: null,
+          error: this.checkFileSize(event?.target?.files[0]),
+          eventType: this.fileEventType,
+          postResponse: this.postResp,
+          progress: {
+            value: 0,
+            status: "progress",
+          },
+        };
+    
+        if(fileToAdd.error){
+          let fileData: FileData[] = [];
+          fileData.push(fileToAdd);
+          this.value = fileData;
+          this.callbackFile.emit(fileData);
+          this.fileAddService.remove(fileToAdd);
+          event.target.value = "";
+          return fileData;
+        }
+
       }
       this.onChangeRegister(event.target.files);
       this.getPreviewsFiles(event.target.files);
@@ -970,7 +1015,7 @@ export class DxcFileInputComponent
       this.fileAddService.add(file);
     });
   }
-
+  
   private isErrorShow = (): boolean =>
     this.value?.length === 1 &&
     this.mode === "file" &&
@@ -978,3 +1023,4 @@ export class DxcFileInputComponent
     !this.multiple &&
     !this.disabled;
 }
+

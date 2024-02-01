@@ -36,6 +36,11 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    */
   @Input() public name: string = "";
   /**
+  /**
+   * ID attribute.
+   */
+  @Input() public id: string = "";
+  /**
    * Available modes of the component.
    */
   @Input() public mode: "file" | "filedrop" | "dropzone" = "file";
@@ -152,9 +157,9 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     value: null,
     maxSize: null,
     minSize: null,
+    id:null
   });
 
-  id: string;
   files: Array<FileData> = [];
   hoveringWithFile: boolean = false;
   filesLoaded: boolean = false;

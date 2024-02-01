@@ -3,7 +3,7 @@
 <div class="fileInputContainer">
   <input
     #fileInput
-    data-testid="input"
+    data-testid="input" [id]="id"
     type="file"
     (change)="onFileInput($event)"
     [accept]="accept"

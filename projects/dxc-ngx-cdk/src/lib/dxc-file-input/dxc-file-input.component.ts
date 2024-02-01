@@ -205,7 +205,7 @@ export class DxcFileInputComponent
     maxFileCount: null,
   });
 
-  id: string;
+  id: string;  
   files: Array<FileData> = [];
   hoveringWithFile: boolean = false;
   filesLoaded: boolean = false;

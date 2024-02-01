@@ -1,7 +1,7 @@
 <label class="label" htmlFor="{{ id }}">{{ label }}</label>
 <span *ngIf="helperText" class="helperText">{{ helperText }}</span>
 <div class="fileInputContainer">
-  <input #fileInput data-testid="input" type="file" (change)="onFileInput($event)" [accept]="accept" />
+  <input #fileInput data-testid="input" [id]="id" type="file" (change)="onFileInput($event)" [accept]="accept" />
   <dxc-button *ngIf="mode === 'file'" [label]="buttonLabel" mode="secondary" [disabled]="disabled" (onClick)="fileInput.click()" [tabIndexValue]="tabIndexValue"></dxc-button>
   <div *ngIf="mode !== 'file'" class="dragDropArea" [ngClass]="{
       hovering: hoveringWithFile === true

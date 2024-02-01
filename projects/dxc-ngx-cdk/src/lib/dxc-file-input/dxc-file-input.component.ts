@@ -61,6 +61,11 @@ export class DxcFileInputComponent
    */
   @Input() public name: string = "";
   /**
+  /**
+   * ID attribute.
+   */
+  @Input() public id: string = "";
+  /**
    * Available modes of the component.
    */
   @Input() public mode: "file" | "filedrop" | "dropzone" = "file";
@@ -203,9 +208,9 @@ export class DxcFileInputComponent
     maxSize: null,
     minSize: null,
     maxFileCount: null,
+    id:null
   });
 
-  id: string;  
   files: Array<FileData> = [];
   hoveringWithFile: boolean = false;
   filesLoaded: boolean = false;

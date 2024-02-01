@@ -16,6 +16,7 @@ export interface FileInputProperties {
   minSize?: number;
   maxSize?: number;
   maxFileCount?: number;
+  id?: string;
 }
 
 export type Space =
